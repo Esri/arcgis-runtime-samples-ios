@@ -1,0 +1,394 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9760C518158BAF2B00986512 /* CODialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9760C516158BAF2A00986512 /* CODialog.m */; };
+		97CFF48316794F0100DA8AC4 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 97CFF48216794F0100DA8AC4 /* libc++.dylib */; };
+		97CFF48516794F0700DA8AC4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97CFF48416794F0700DA8AC4 /* OpenGLES.framework */; };
+		97CFF48716794F2400DA8AC4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97CFF48616794F2400DA8AC4 /* Default-568h@2x.png */; };
+		DE053B121547435F00C09A74 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DE053B101547435F00C09A74 /* icon.png */; };
+		DE053B131547435F00C09A74 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE053B111547435F00C09A74 /* icon@2x.png */; };
+		DE4263711550855B00E6831A /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DE4263701550855B00E6831A /* ArcGIS.bundle */; };
+		DE90B7781544EE0200A07711 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE90B7771544EE0200A07711 /* UIKit.framework */; };
+		DE90B77A1544EE0200A07711 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE90B7791544EE0200A07711 /* Foundation.framework */; };
+		DE90B77C1544EE0200A07711 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE90B77B1544EE0200A07711 /* CoreGraphics.framework */; };
+		DE90B7821544EE0200A07711 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE90B7801544EE0200A07711 /* InfoPlist.strings */; };
+		DE90B7841544EE0200A07711 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE90B7831544EE0200A07711 /* main.m */; };
+		DE90B7881544EE0200A07711 /* WebmapSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE90B7871544EE0200A07711 /* WebmapSampleAppDelegate.m */; };
+		DE90B78B1544EE0200A07711 /* WebmapSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE90B78A1544EE0200A07711 /* WebmapSampleViewController.m */; };
+		DE90B78E1544EE0200A07711 /* WebmapSampleViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE90B78C1544EE0200A07711 /* WebmapSampleViewController_iPhone.xib */; };
+		DE90B7911544EE0200A07711 /* WebmapSampleViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE90B78F1544EE0200A07711 /* WebmapSampleViewController_iPad.xib */; };
+		DE90B7B41545151D00A07711 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE90B7B31545151D00A07711 /* CoreLocation.framework */; };
+		DE90B7B61545152800A07711 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE90B7B51545152800A07711 /* QuartzCore.framework */; };
+		DE90B7B81545153800A07711 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE90B7B71545153800A07711 /* CoreText.framework */; };
+		DE90B7BC1545154D00A07711 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE90B7BB1545154D00A07711 /* MediaPlayer.framework */; };
+		DE90B7BE1545155700A07711 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE90B7BD1545155700A07711 /* MobileCoreServices.framework */; };
+		DE90B7C01545156200A07711 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DE90B7BF1545156200A07711 /* libz.dylib */; };
+		DE90B7C21545156C00A07711 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE90B7C11545156C00A07711 /* Security.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9760C516158BAF2A00986512 /* CODialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CODialog.m; sourceTree = "<group>"; };
+		9760C517158BAF2A00986512 /* CODialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CODialog.h; sourceTree = "<group>"; };
+		97CFF48216794F0100DA8AC4 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		97CFF48416794F0700DA8AC4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		97CFF48616794F2400DA8AC4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		DE053B101547435F00C09A74 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		DE053B111547435F00C09A74 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		DE4263701550855B00E6831A /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
+		DE90B7731544EE0200A07711 /* WebmapSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebmapSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE90B7771544EE0200A07711 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DE90B7791544EE0200A07711 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DE90B77B1544EE0200A07711 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DE90B77F1544EE0200A07711 /* WebmapSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WebmapSample-Info.plist"; sourceTree = "<group>"; };
+		DE90B7811544EE0200A07711 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DE90B7831544EE0200A07711 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DE90B7851544EE0200A07711 /* WebmapSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WebmapSample-Prefix.pch"; sourceTree = "<group>"; };
+		DE90B7861544EE0200A07711 /* WebmapSampleAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebmapSampleAppDelegate.h; sourceTree = "<group>"; };
+		DE90B7871544EE0200A07711 /* WebmapSampleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebmapSampleAppDelegate.m; sourceTree = "<group>"; };
+		DE90B7891544EE0200A07711 /* WebmapSampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebmapSampleViewController.h; sourceTree = "<group>"; };
+		DE90B78A1544EE0200A07711 /* WebmapSampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebmapSampleViewController.m; sourceTree = "<group>"; };
+		DE90B78D1544EE0200A07711 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/WebmapSampleViewController_iPhone.xib; sourceTree = "<group>"; };
+		DE90B7901544EE0200A07711 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/WebmapSampleViewController_iPad.xib; sourceTree = "<group>"; };
+		DE90B7B31545151D00A07711 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		DE90B7B51545152800A07711 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DE90B7B71545153800A07711 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		DE90B7B91545154300A07711 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		DE90B7BB1545154D00A07711 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		DE90B7BD1545155700A07711 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		DE90B7BF1545156200A07711 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		DE90B7C11545156C00A07711 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DE90B7701544EE0200A07711 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97CFF48516794F0700DA8AC4 /* OpenGLES.framework in Frameworks */,
+				97CFF48316794F0100DA8AC4 /* libc++.dylib in Frameworks */,
+				DE90B7C21545156C00A07711 /* Security.framework in Frameworks */,
+				DE90B7C01545156200A07711 /* libz.dylib in Frameworks */,
+				DE90B7BE1545155700A07711 /* MobileCoreServices.framework in Frameworks */,
+				DE90B7BC1545154D00A07711 /* MediaPlayer.framework in Frameworks */,
+				DE90B7B81545153800A07711 /* CoreText.framework in Frameworks */,
+				DE90B7B61545152800A07711 /* QuartzCore.framework in Frameworks */,
+				DE90B7B41545151D00A07711 /* CoreLocation.framework in Frameworks */,
+				DE90B7781544EE0200A07711 /* UIKit.framework in Frameworks */,
+				DE90B77A1544EE0200A07711 /* Foundation.framework in Frameworks */,
+				DE90B77C1544EE0200A07711 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9760C5CE158BCA9F00986512 /* CODialog */ = {
+			isa = PBXGroup;
+			children = (
+				9760C516158BAF2A00986512 /* CODialog.m */,
+				9760C517158BAF2A00986512 /* CODialog.h */,
+			);
+			name = CODialog;
+			sourceTree = "<group>";
+		};
+		DE053B0E1547434300C09A74 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				97CFF48616794F2400DA8AC4 /* Default-568h@2x.png */,
+				DE053B101547435F00C09A74 /* icon.png */,
+				DE053B111547435F00C09A74 /* icon@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		DE90B7681544EE0200A07711 = {
+			isa = PBXGroup;
+			children = (
+				DE90B77D1544EE0200A07711 /* WebmapSample */,
+				DE90B7761544EE0200A07711 /* Frameworks */,
+				DE90B7741544EE0200A07711 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DE90B7741544EE0200A07711 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DE90B7731544EE0200A07711 /* WebmapSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DE90B7761544EE0200A07711 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97CFF48416794F0700DA8AC4 /* OpenGLES.framework */,
+				97CFF48216794F0100DA8AC4 /* libc++.dylib */,
+				DE4263701550855B00E6831A /* ArcGIS.bundle */,
+				DE90B7C11545156C00A07711 /* Security.framework */,
+				DE90B7BF1545156200A07711 /* libz.dylib */,
+				DE90B7BD1545155700A07711 /* MobileCoreServices.framework */,
+				DE90B7BB1545154D00A07711 /* MediaPlayer.framework */,
+				DE90B7B91545154300A07711 /* libstdc++.dylib */,
+				DE90B7B71545153800A07711 /* CoreText.framework */,
+				DE90B7B51545152800A07711 /* QuartzCore.framework */,
+				DE90B7B31545151D00A07711 /* CoreLocation.framework */,
+				DE90B7771544EE0200A07711 /* UIKit.framework */,
+				DE90B7791544EE0200A07711 /* Foundation.framework */,
+				DE90B77B1544EE0200A07711 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE90B77D1544EE0200A07711 /* WebmapSample */ = {
+			isa = PBXGroup;
+			children = (
+				9760C5CE158BCA9F00986512 /* CODialog */,
+				DE053B0E1547434300C09A74 /* Resources */,
+				DE90B7861544EE0200A07711 /* WebmapSampleAppDelegate.h */,
+				DE90B7871544EE0200A07711 /* WebmapSampleAppDelegate.m */,
+				DE90B7891544EE0200A07711 /* WebmapSampleViewController.h */,
+				DE90B78A1544EE0200A07711 /* WebmapSampleViewController.m */,
+				DE90B78C1544EE0200A07711 /* WebmapSampleViewController_iPhone.xib */,
+				DE90B78F1544EE0200A07711 /* WebmapSampleViewController_iPad.xib */,
+				DE90B77E1544EE0200A07711 /* Supporting Files */,
+			);
+			path = WebmapSample;
+			sourceTree = "<group>";
+		};
+		DE90B77E1544EE0200A07711 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DE90B77F1544EE0200A07711 /* WebmapSample-Info.plist */,
+				DE90B7801544EE0200A07711 /* InfoPlist.strings */,
+				DE90B7831544EE0200A07711 /* main.m */,
+				DE90B7851544EE0200A07711 /* WebmapSample-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DE90B7721544EE0200A07711 /* WebmapSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE90B7941544EE0200A07711 /* Build configuration list for PBXNativeTarget "WebmapSample" */;
+			buildPhases = (
+				DE90B76F1544EE0200A07711 /* Sources */,
+				DE90B7701544EE0200A07711 /* Frameworks */,
+				DE90B7711544EE0200A07711 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WebmapSample;
+			productName = WebmapSample;
+			productReference = DE90B7731544EE0200A07711 /* WebmapSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DE90B76A1544EE0200A07711 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = DE90B76D1544EE0200A07711 /* Build configuration list for PBXProject "WebmapSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DE90B7681544EE0200A07711;
+			productRefGroup = DE90B7741544EE0200A07711 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DE90B7721544EE0200A07711 /* WebmapSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DE90B7711544EE0200A07711 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE90B7821544EE0200A07711 /* InfoPlist.strings in Resources */,
+				DE90B78E1544EE0200A07711 /* WebmapSampleViewController_iPhone.xib in Resources */,
+				DE90B7911544EE0200A07711 /* WebmapSampleViewController_iPad.xib in Resources */,
+				DE053B121547435F00C09A74 /* icon.png in Resources */,
+				DE053B131547435F00C09A74 /* icon@2x.png in Resources */,
+				DE4263711550855B00E6831A /* ArcGIS.bundle in Resources */,
+				97CFF48716794F2400DA8AC4 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DE90B76F1544EE0200A07711 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE90B7841544EE0200A07711 /* main.m in Sources */,
+				DE90B7881544EE0200A07711 /* WebmapSampleAppDelegate.m in Sources */,
+				DE90B78B1544EE0200A07711 /* WebmapSampleViewController.m in Sources */,
+				9760C518158BAF2B00986512 /* CODialog.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DE90B7801544EE0200A07711 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE90B7811544EE0200A07711 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DE90B78C1544EE0200A07711 /* WebmapSampleViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE90B78D1544EE0200A07711 /* en */,
+			);
+			name = WebmapSampleViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		DE90B78F1544EE0200A07711 /* WebmapSampleViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE90B7901544EE0200A07711 /* en */,
+			);
+			name = WebmapSampleViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DE90B7921544EE0200A07711 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DE90B7931544EE0200A07711 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DE90B7951544EE0200A07711 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WebmapSample/WebmapSample-Prefix.pch";
+				INFOPLIST_FILE = "WebmapSample/WebmapSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DE90B7961544EE0200A07711 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WebmapSample/WebmapSample-Prefix.pch";
+				INFOPLIST_FILE = "WebmapSample/WebmapSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE90B76D1544EE0200A07711 /* Build configuration list for PBXProject "WebmapSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE90B7921544EE0200A07711 /* Debug */,
+				DE90B7931544EE0200A07711 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE90B7941544EE0200A07711 /* Build configuration list for PBXNativeTarget "WebmapSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE90B7951544EE0200A07711 /* Debug */,
+				DE90B7961544EE0200A07711 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DE90B76A1544EE0200A07711 /* Project object */;
+}

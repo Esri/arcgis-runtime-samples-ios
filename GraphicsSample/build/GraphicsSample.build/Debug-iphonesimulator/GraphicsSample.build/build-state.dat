@@ -1,0 +1,513 @@
+TGraphicsSample
+v5
+r1
+cCheck dependencies
+cProcessInfoPlistFile /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/Info.plist GraphicsSample-Info.plist
+cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/MainWindow.xib
+cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/FeatureDetailsView.xib
+cCpResource icon.png build/Debug-iphonesimulator/GraphicsSample.app/icon.png
+cCpResource icon@2x.png build/Debug-iphonesimulator/GraphicsSample.app/icon@2x.png
+cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/GraphicsSampleViewController.xib
+cCpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/GraphicsSample.app/ArcGIS.bundle
+cCpResource Default-568h@2x.png build/Debug-iphonesimulator/GraphicsSample.app/Default-568h@2x.png
+cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Resources-iPad/MainWindow-iPad.xib
+cProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GraphicsSample_Prefix-bpgaibzvuuuhmqfdqafjcflmnogb/GraphicsSample_Prefix.pch.pth GraphicsSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsSampleAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsSampleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsSampleViewController.o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsSampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/CountyInfoTemplate.o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/CountyInfoTemplate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/main.o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/FeatureDetailsViewController.o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/FeatureDetailsViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/GraphicsSample normal i386
+cGenerateDSYMFile /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app.dSYM /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/GraphicsSample
+cTouch /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk
+c00000000504916AD0000000000000110
+t1346967213
+s272
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000005060CC720000000000228FD0
+t1348521074
+s2265040
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
+c000000005060CC72000000000009C220
+t1348521074
+s639520
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreText.framework/CoreText
+c000000005060CC7200000000000F62E0
+t1348521074
+s1008352
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000005060CC7300000000003DCEF0
+t1348521075
+s4050672
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+c000000005060CC7600000000002C6C10
+t1348521078
+s2911248
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
+c000000005060CC7600000000000BCB50
+t1348521078
+s772944
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/OpenGLES.framework/OpenGLES
+c000000005060CC760000000000015400
+t1348521078
+s87040
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c000000005060CC7600000000001D57A0
+t1348521078
+s1922976
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Security.framework/Security
+c000000005060CC77000000000006E370
+t1348521079
+s451440
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000005060CC790000000000AB3D60
+t1348521081
+s11222368
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/usr/lib/libc++.dylib
+c000000005060CC8700000000000AFCD0
+t1348521095
+s720080
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/usr/lib/libz.dylib
+c000000005060CC880000000000013500
+t1348521096
+s79104
+
+N/Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle
+c0000000050D4B2000000000000000550
+t1356116480
+s1360
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/CountyInfoTemplate.m
+c000000005109ADCA0000000000000423
+t1359588810
+s1059
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/FeatureDetailsViewController.m
+c000000005109ADCA0000000000000FED
+t1359588810
+s4077
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsDemoAppDelegate.m
+c000000005109ADCA0000000000000364
+t1359588810
+s868
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsDemoViewController.m
+c000000005109ADCA00000000000026B8
+t1359588810
+s9912
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsSampleAppDelegate.m
+c000000005109B392000000000000036A
+t1359590290
+s874
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsSampleViewController.m
+c000000005109B39200000000000026BC
+t1359590290
+s9916
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Default-568h@2x.png
+c000000005109ADCA00000000000048A2
+t1359588810
+s18594
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/FeatureDetailsView.xib
+c000000005109ADCA0000000000002606
+t1359588810
+s9734
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/GraphicsDemoViewController.xib
+c000000005109ADCA0000000000003FB8
+t1359588810
+s16312
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/GraphicsDemo_Prefix.pch
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/GraphicsSampleViewController.xib
+c000000005109B3900000000000003834
+t1359590288
+s14388
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/GraphicsSample_Prefix.pch
+c000000005109ADCA00000000000000C9
+t1359588810
+s201
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/MainWindow.xib
+c000000005109B3AB00000000000029E5
+t1359590315
+s10725
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Resources-iPad/MainWindow-iPad.xib
+c000000005109B3AB0000000000003C9A
+t1359590315
+s15514
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app.dSYM
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/ArcGIS.bundle
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/Default-568h@2x.png
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/FeatureDetailsView.nib
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/GraphicsDemoViewController.nib
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/GraphicsSample
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/GraphicsSampleViewController.nib
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/Info.plist
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/MainWindow-iPad.nib
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/MainWindow.nib
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/PkgInfo
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/icon.png
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/icon@2x.png
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/CountyInfoTemplate.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/FeatureDetailsViewController.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsDemoAppDelegate.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsDemoViewController.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsSample.LinkFileList
+c000000005109B3AB0000000000000341
+t1359590315
+s833
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsSampleAppDelegate.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsSampleViewController.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/main.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/icon.png
+c000000005109ADCA0000000000000903
+t1359588810
+s2307
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/icon@2x.png
+c000000005109ADCA0000000000000A25
+t1359588810
+s2597
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/main.m
+c000000005109ADCA0000000000000272
+t1359588810
+s626
+
+N/var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GraphicsDemo_Prefix-dlxyfndbcjoxnrdzbwwnuxebxptc/GraphicsDemo_Prefix.pch.pth
+t2
+s0
+
+N/var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GraphicsSample_Prefix-bpgaibzvuuuhmqfdqafjcflmnogb/GraphicsSample_Prefix.pch.pth
+t2
+s0
+
+NGraphicsDemo-Info.plist
+c000000005109ADCA000000000000042E
+t1359588810
+s1070
+
+NGraphicsSample-Info.plist
+c000000005109ADCA000000000000042E
+t1359588810
+s1070
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/CountyInfoTemplate.m
+r0
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/FeatureDetailsViewController.m
+r0
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsDemoAppDelegate.m
+r0
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsDemoViewController.m
+r0
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsSampleAppDelegate.m
+r0
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsSampleViewController.m
+r0
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/main.m
+r0
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies10774d2bebb9b641^499e572bebb9b641^---0#1#0#--18"Check dependencies36"4C3AC972-47B7-4EE2-8E04-9F4212625C75-
+
+CCompileC build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/CountyInfoTemplate.o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/CountyInfoTemplate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381283116.617901
+e381283116.733262
+r1
+xCompileC
+xbuild/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/CountyInfoTemplate.o
+x/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/CountyInfoTemplate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection89"Compile /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/CountyInfoTemplate.m9e619e2cebb9b641^62bbbb2cebb9b641^---0#0#0#-19%DVTDocumentLocation2@97"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/CountyInfoTemplate.m0000000000000000^4224"CompileC build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/CountyInfoTemplate.o Classes/CountyInfoTemplate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GraphicsSample_Prefix-bpgaibzvuuuhmqfdqafjcflmnogb/GraphicsSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/CountyInfoTemplate.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/CountyInfoTemplate.dia -c /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/CountyInfoTemplate.m -o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/CountyInfoTemplate.o36"CCC01D07-2FD2-40E8-A439-ABAA5204B93E-
+
+CCompileC build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/FeatureDetailsViewController.o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/FeatureDetailsViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381283116.617926
+e381283116.783099
+r1
+xCompileC
+xbuild/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/FeatureDetailsViewController.o
+x/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/FeatureDetailsViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection99"Compile /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/FeatureDetailsViewController.m82589e2cebb9b641^9678c82cebb9b641^---0#0#0#-19%DVTDocumentLocation2@107"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/FeatureDetailsViewController.m0000000000000000^4284"CompileC build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/FeatureDetailsViewController.o Classes/FeatureDetailsViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GraphicsSample_Prefix-bpgaibzvuuuhmqfdqafjcflmnogb/GraphicsSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/FeatureDetailsViewController.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/FeatureDetailsViewController.dia -c /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/FeatureDetailsViewController.m -o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/FeatureDetailsViewController.o36"FE26DF7F-B12A-4295-916C-0810DEB4D6F1-
+
+CCompileC build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsDemoAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsDemoAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsDemoViewController.o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsDemoViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsSampleAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsSampleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381283116.617876
+e381283116.766692
+r1
+xCompileC
+xbuild/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsSampleAppDelegate.o
+x/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsSampleAppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection96"Compile /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsSampleAppDelegate.mac529e2cebb9b641^734ac42cebb9b641^---0#0#0#-19%DVTDocumentLocation2@104"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsSampleAppDelegate.m0000000000000000^4266"CompileC build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsSampleAppDelegate.o Classes/GraphicsSampleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GraphicsSample_Prefix-bpgaibzvuuuhmqfdqafjcflmnogb/GraphicsSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsSampleAppDelegate.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsSampleAppDelegate.dia -c /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsSampleAppDelegate.m -o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsSampleAppDelegate.o36"CAFB7D5B-2A54-486F-B632-DFC1CE51E8BE-
+
+CCompileC build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsSampleViewController.o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsSampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381283116.617885
+e381283116.784309
+r1
+xCompileC
+xbuild/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsSampleViewController.o
+x/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsSampleViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection99"Compile /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsSampleViewController.m205f9e2cebb9b641^cdccc82cebb9b641^---0#0#0#-19%DVTDocumentLocation2@107"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsSampleViewController.m0000000000000000^4284"CompileC build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsSampleViewController.o Classes/GraphicsSampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GraphicsSample_Prefix-bpgaibzvuuuhmqfdqafjcflmnogb/GraphicsSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsSampleViewController.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsSampleViewController.dia -c /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Classes/GraphicsSampleViewController.m -o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsSampleViewController.o36"8585CCA5-0711-4E37-8A24-8FF3483544EF-
+
+CCompileC build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/main.o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381283116.617922
+e381283116.680367
+r1
+xCompileC
+xbuild/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/main.o
+x/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection67"Compile /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/main.m71589e2cebb9b641^302dae2cebb9b641^---0#0#0#-19%DVTDocumentLocation2@75"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/main.m0000000000000000^4124"CompileC build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/main.o main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GraphicsSample_Prefix-bpgaibzvuuuhmqfdqafjcflmnogb/GraphicsSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/main.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/main.dia -c /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/main.m -o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/main.o36"800144A9-6B8E-417E-85D5-6D9A7262C117-
+
+CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/FeatureDetailsView.xib
+s381283115.370811
+e381283115.520370
+r1
+xCompileXIB
+x/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/FeatureDetailsView.xib
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Compiling /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/FeatureDetailsView.xib01dd5f2bebb9b641^b746882bebb9b641^---0#0#0#-19%DVTDocumentLocation2@91"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/FeatureDetailsView.xib0000000000000000^932"CompileXIB FeatureDetailsView.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/FeatureDetailsView.nib /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/FeatureDetailsView.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"57ED8BA6-BE7E-4274-AE5E-C6B56BFDE5FA-
+
+CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/GraphicsDemoViewController.xib
+r0
+
+CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/GraphicsSampleViewController.xib
+s381283115.370844
+e381283115.795865
+r1
+xCompileXIB
+x/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/GraphicsSampleViewController.xib
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection95"Compiling /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/GraphicsSampleViewController.xib38dc5f2bebb9b641^efc5cb2bebb9b641^---0#0#0#-19%DVTDocumentLocation2@101"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/GraphicsSampleViewController.xib0000000000000000^962"CompileXIB GraphicsSampleViewController.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/GraphicsSampleViewController.nib /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/GraphicsSampleViewController.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"6860F4D0-C93E-4184-BEFE-1A5A8F7FA18A-
+
+CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/MainWindow.xib
+s381283115.370797
+e381283116.105153
+r1
+xCompileXIB
+x/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/MainWindow.xib
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection77"Compiling /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/MainWindow.xibaad55f2bebb9b641^18ec1a2cebb9b641^---0#0#0#-19%DVTDocumentLocation2@83"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/MainWindow.xib0000000000000000^908"CompileXIB MainWindow.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/MainWindow.nib /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/MainWindow.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"2E7AA9E3-3A03-4777-A9B0-63D8552A8121-
+
+CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Resources-iPad/MainWindow-iPad.xib
+s381283115.370988
+e381283115.527626
+r1
+xCompileXIB
+x/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Resources-iPad/MainWindow-iPad.xib
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection97"Compiling /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Resources-iPad/MainWindow-iPad.xib9015602bebb9b641^234d882bebb9b641^---0#0#0#-19%DVTDocumentLocation2@103"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Resources-iPad/MainWindow-iPad.xib0000000000000000^953"CompileXIB Resources-iPad/MainWindow-iPad.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/MainWindow-iPad.nib /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Resources-iPad/MainWindow-iPad.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"0DDBC64C-D721-491B-BE9F-404A2D338C9C-
+
+CCpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/GraphicsSample.app/ArcGIS.bundle
+s381283115.370868
+e381283115.793188
+r1
+xCpResource
+x/Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle
+xbuild/Debug-iphonesimulator/GraphicsSample.app/ArcGIS.bundle
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection65"Copy build/Debug-iphonesimulator/GraphicsSample.app/ArcGIS.bundle3be35f2bebb9b641^e50ecb2bebb9b641^---0#0#0#-19%DVTDocumentLocation2@129"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/ArcGIS.bundle000000000080d041^735"CpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/GraphicsSample.app/ArcGIS.bundle    cd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app36"1EBA9EF7-7822-4119-8234-7F999D817A41-
+
+CCpResource Default-568h@2x.png build/Debug-iphonesimulator/GraphicsSample.app/Default-568h@2x.png
+s381283115.370983
+e381283115.434078
+r1
+xCpResource
+xDefault-568h@2x.png
+xbuild/Debug-iphonesimulator/GraphicsSample.app/Default-568h@2x.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection71"Copy build/Debug-iphonesimulator/GraphicsSample.app/Default-568h@2x.png9109602bebb9b641^4f216f2bebb9b641^---0#0#0#-19%DVTDocumentLocation2@135"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/Default-568h@2x.png000000000080d041^644"CpResource "Default-568h@2x.png" "build/Debug-iphonesimulator/GraphicsSample.app/Default-568h@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/Default-568h@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app36"654AAEC1-4907-4B48-BD2B-501C79D384B5-
+
+CCpResource icon.png build/Debug-iphonesimulator/GraphicsSample.app/icon.png
+s381283115.370808
+e381283115.434143
+r1
+xCpResource
+xicon.png
+xbuild/Debug-iphonesimulator/GraphicsSample.app/icon.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection60"Copy build/Debug-iphonesimulator/GraphicsSample.app/icon.png240f602bebb9b641^562b6f2bebb9b641^---0#0#0#-19%DVTDocumentLocation2@124"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/icon.png000000000080d041^605"CpResource icon.png build/Debug-iphonesimulator/GraphicsSample.app/icon.png    cd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/icon.png /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app36"DDFDDD9D-272C-4990-9D27-251E8F323CCC-
+
+CCpResource icon@2x.png build/Debug-iphonesimulator/GraphicsSample.app/icon@2x.png
+s381283115.370821
+e381283115.434242
+r1
+xCpResource
+xicon@2x.png
+xbuild/Debug-iphonesimulator/GraphicsSample.app/icon@2x.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection63"Copy build/Debug-iphonesimulator/GraphicsSample.app/icon@2x.pngf818602bebb9b641^51306f2bebb9b641^---0#0#0#-19%DVTDocumentLocation2@127"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/icon@2x.png000000000080d041^620"CpResource "icon@2x.png" "build/Debug-iphonesimulator/GraphicsSample.app/icon@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/icon@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app36"9979FF9D-EBD3-490B-B462-4D89F700EE5B-
+
+CGenerateDSYMFile /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app.dSYM /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/GraphicsSample
+s381283119.106435
+e381283123.252391
+r1
+xGenerateDSYMFile
+x/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app.dSYM
+x/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/GraphicsSample
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection115"Generating /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app.dSYM874e1b2febb9b641^399d4033ebb9b641^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app.dSYM000000000080d041^709"GenerateDSYMFile build/Debug-iphonesimulator/GraphicsSample.app.dSYM build/Debug-iphonesimulator/GraphicsSample.app/GraphicsSample    cd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/GraphicsSample -o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app.dSYM36"1FA8A2B8-C61A-460A-B586-DD6B8A060461-
+
+CLd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/GraphicsSample normal i386
+s381283116.791034
+e381283119.099900
+r1
+xLd
+x/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/GraphicsSample
+xnormal
+xi386
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection119"Link /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/GraphicsSamplebb98ca2cebb9b641^a393192febb9b641^---0#0#0#--1770"Ld build/Debug-iphonesimulator/GraphicsSample.app/GraphicsSample normal i386    cd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo    setenv IPHONEOS_DEPLOYMENT_TARGET 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -L/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator -F/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -filelist /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/Objects-normal/i386/GraphicsSample.LinkFileList -Xlinker -objc_abi_version -Xlinker 2 -ObjC -all_load -framework ArcGIS -fobjc-arc -fobjc-link-runtime -Xlinker -no_implicit_dylibs -mios-simulator-version-min=5.0 -framework OpenGLES -lc++ -framework QuartzCore -framework CoreLocation -framework Security -lz -framework MediaPlayer -framework MobileCoreServices -framework Foundation -framework UIKit -framework CoreGraphics -framework CoreText -o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/GraphicsSample36"0BCC84FF-ED5E-41A3-974E-39D9E3C34E36-
+
+CProcessInfoPlistFile /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/Info.plist GraphicsDemo-Info.plist
+r0
+
+CProcessInfoPlistFile /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/Info.plist GraphicsSample-Info.plist
+s381283115.347291
+e381283115.351978
+r1
+xProcessInfoPlistFile
+x/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/Info.plist
+xGraphicsSample-Info.plist
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection33"Process GraphicsSample-Info.plist6117592bebb9b641^6d1b5a2bebb9b641^---0#0#0#-19%DVTDocumentLocation2@94"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/GraphicsSample-Info.plist0000000000000000^711"ProcessInfoPlistFile build/Debug-iphonesimulator/GraphicsSample.app/Info.plist GraphicsSample-Info.plist    cd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility GraphicsSample-Info.plist -genpkginfo /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app/Info.plist36"FD46EBAC-E75C-4BC8-A0C8-7B8E6E958CD9-
+
+CProcessPCH /Users/dive0000/Library/Developer/Xcode/DerivedData/GraphicsSample-ccfmiyzfxjkxnnaqzbyhrsnqjkfx/Index/PrecompiledHeaders/GraphicsDemo_Prefix-ctxppsexyqypstdodbpalaomlohm_ast/GraphicsDemo_Prefix.pch.pth GraphicsDemo_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
+r0
+
+CProcessPCH /Users/dive0000/Library/Developer/Xcode/DerivedData/GraphicsSample-ccfmiyzfxjkxnnaqzbyhrsnqjkfx/Index/PrecompiledHeaders/GraphicsSample_Prefix-dmgkcimefnxzwxdupbuwtozgdbpg_ast/GraphicsSample_Prefix.pch.pth GraphicsSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
+r0
+
+CProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GraphicsDemo_Prefix-dlxyfndbcjoxnrdzbwwnuxebxptc/GraphicsDemo_Prefix.pch.pth GraphicsDemo_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GraphicsSample_Prefix-bpgaibzvuuuhmqfdqafjcflmnogb/GraphicsSample_Prefix.pch.pth GraphicsSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381283116.113062
+e381283116.611342
+r1
+xProcessPCH
+x/var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GraphicsSample_Prefix-bpgaibzvuuuhmqfdqafjcflmnogb/GraphicsSample_Prefix.pch.pth
+xGraphicsSample_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection36"Precompile GraphicsSample_Prefix.pche31c1d2cebb9b641^ca879c2cebb9b641^---0#0#0#-19%DVTDocumentLocation2@94"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/GraphicsSample_Prefix.pch0000000000000000^4161"ProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GraphicsSample_Prefix-bpgaibzvuuuhmqfdqafjcflmnogb/GraphicsSample_Prefix.pch.pth GraphicsSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/GraphicsSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/GraphicsSample.build/Debug-iphonesimulator/GraphicsSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad --serialize-diagnostics /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GraphicsSample_Prefix-bpgaibzvuuuhmqfdqafjcflmnogb/GraphicsSample_Prefix.pch.dia -c /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/GraphicsSample_Prefix.pch -o /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GraphicsSample_Prefix-bpgaibzvuuuhmqfdqafjcflmnogb/GraphicsSample_Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GraphicsSample_Prefix-bpgaibzvuuuhmqfdqafjcflmnogb/GraphicsSample_Prefix.pch.d36"AA37932D-CD08-49DB-81F0-5DBBDCCFA1F7-
+
+CTouch /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app
+s381283123.260591
+e381283123.312078
+r1
+xTouch
+x/Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection105"Touch /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app75c74233ebb9b641^21e54f33ebb9b641^---0#0#0#--430"Touch build/Debug-iphonesimulator/GraphicsSample.app    cd /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/dive0000/iOS/setup/OnlineSamples/GraphicsDemo/build/Debug-iphonesimulator/GraphicsSample.app36"83B417BA-B81A-4250-99D3-3AE7157BF294-
+

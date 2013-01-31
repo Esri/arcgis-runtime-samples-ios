@@ -1,0 +1,360 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		2160D8011475B7CE00598D70 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C54837561475A07E00626EEF /* MainWindow-iPad.xib */; };
+		21DE20841475B2C30080DC48 /* RootTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21DE20831475B2C20080DC48 /* RootTableViewController.xib */; };
+		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		3B7F19E910D1BEB900AFD7FB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7F19E810D1BEB900AFD7FB /* CoreLocation.framework */; };
+		3B7F19EB10D1BEB900AFD7FB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7F19EA10D1BEB900AFD7FB /* QuartzCore.framework */; };
+		9702E4C91446429F00A46CA5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9702E4C81446429F00A46CA5 /* Security.framework */; };
+		975E755A167A9CE0005FB57B /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 975E7559167A9CE0005FB57B /* libc++.dylib */; };
+		975E755C167A9CE7005FB57B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 975E755B167A9CE7005FB57B /* OpenGLES.framework */; };
+		975E755E167A9CF8005FB57B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 975E755D167A9CF8005FB57B /* Default-568h@2x.png */; };
+		9792DF5413B2613000C41657 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9792DF5313B2613000C41657 /* MediaPlayer.framework */; };
+		9792DF5613B2613800C41657 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9792DF5513B2613800C41657 /* MobileCoreServices.framework */; };
+		97B8E9121354F59700BF4243 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B8E9111354F59700BF4243 /* CoreText.framework */; };
+		AF699BB711D1703700DC3951 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AF699BB611D1703700DC3951 /* libz.dylib */; };
+		C5128CE514758D8100A5EBF7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C5128CD414758D8100A5EBF7 /* icon.png */; };
+		C5128CE614758D8100A5EBF7 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5128CD514758D8100A5EBF7 /* icon@2x.png */; };
+		C5128CE714758D8100A5EBF7 /* LocalTiledLayerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5128CD714758D8100A5EBF7 /* LocalTiledLayerAppDelegate.m */; };
+		C5128CE914758D8100A5EBF7 /* LocalTiledLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5128CDB14758D8100A5EBF7 /* LocalTiledLayerViewController.m */; };
+		C5128CEA14758D8100A5EBF7 /* LocalTiledLayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5128CDC14758D8100A5EBF7 /* LocalTiledLayerViewController.xib */; };
+		C5128CEB14758D8100A5EBF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5128CDD14758D8100A5EBF7 /* main.m */; };
+		C5128CEC14758D8100A5EBF7 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5128CDE14758D8100A5EBF7 /* MainWindow.xib */; };
+		C5128CED14758D8100A5EBF7 /* Parcels.tpk in Resources */ = {isa = PBXBuildFile; fileRef = C5128CDF14758D8100A5EBF7 /* Parcels.tpk */; };
+		C5128CEF14758D8100A5EBF7 /* RootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5128CE314758D8100A5EBF7 /* RootTableViewController.m */; };
+		C56B3FEC14C652C2003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B3FEB14C652C2003A46EB /* ArcGIS.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D6058910D05DD3D006BFB54 /* LocalTiledLayerSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalTiledLayerSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		21DE20831475B2C20080DC48 /* RootTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RootTableViewController.xib; path = LocalTiledLayerSample/RootTableViewController.xib; sourceTree = SOURCE_ROOT; };
+		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3B7F19E810D1BEB900AFD7FB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3B7F19EA10D1BEB900AFD7FB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9702E4C81446429F00A46CA5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9737933913144223000BE16E /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		975E7559167A9CE0005FB57B /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		975E755B167A9CE7005FB57B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		975E755D167A9CF8005FB57B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9792DF5313B2613000C41657 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		9792DF5513B2613800C41657 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		97B8E9111354F59700BF4243 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		AF699BB611D1703700DC3951 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		C5128CD414758D8100A5EBF7 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = LocalTiledLayerSample/icon.png; sourceTree = SOURCE_ROOT; };
+		C5128CD514758D8100A5EBF7 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "LocalTiledLayerSample/icon@2x.png"; sourceTree = SOURCE_ROOT; };
+		C5128CD614758D8100A5EBF7 /* LocalTiledLayerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalTiledLayerAppDelegate.h; path = LocalTiledLayerSample/LocalTiledLayerAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		C5128CD714758D8100A5EBF7 /* LocalTiledLayerAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalTiledLayerAppDelegate.m; path = LocalTiledLayerSample/LocalTiledLayerAppDelegate.m; sourceTree = SOURCE_ROOT; };
+		C5128CD814758D8100A5EBF7 /* LocalTiledLayerSample_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalTiledLayerSample_Prefix.pch; path = LocalTiledLayerSample/LocalTiledLayerSample_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		C5128CD914758D8100A5EBF7 /* LocalTiledLayerSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "LocalTiledLayerSample-Info.plist"; path = "LocalTiledLayerSample/LocalTiledLayerSample-Info.plist"; sourceTree = SOURCE_ROOT; };
+		C5128CDA14758D8100A5EBF7 /* LocalTiledLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalTiledLayerViewController.h; path = LocalTiledLayerSample/LocalTiledLayerViewController.h; sourceTree = SOURCE_ROOT; };
+		C5128CDB14758D8100A5EBF7 /* LocalTiledLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalTiledLayerViewController.m; path = LocalTiledLayerSample/LocalTiledLayerViewController.m; sourceTree = SOURCE_ROOT; };
+		C5128CDC14758D8100A5EBF7 /* LocalTiledLayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LocalTiledLayerViewController.xib; path = LocalTiledLayerSample/LocalTiledLayerViewController.xib; sourceTree = SOURCE_ROOT; };
+		C5128CDD14758D8100A5EBF7 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = LocalTiledLayerSample/main.m; sourceTree = SOURCE_ROOT; };
+		C5128CDE14758D8100A5EBF7 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindow.xib; path = LocalTiledLayerSample/MainWindow.xib; sourceTree = SOURCE_ROOT; };
+		C5128CDF14758D8100A5EBF7 /* Parcels.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = Parcels.tpk; path = LocalTiledLayerSample/Parcels.tpk; sourceTree = SOURCE_ROOT; };
+		C5128CE214758D8100A5EBF7 /* RootTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootTableViewController.h; path = LocalTiledLayerSample/RootTableViewController.h; sourceTree = SOURCE_ROOT; };
+		C5128CE314758D8100A5EBF7 /* RootTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootTableViewController.m; path = LocalTiledLayerSample/RootTableViewController.m; sourceTree = SOURCE_ROOT; };
+		C54837561475A07E00626EEF /* MainWindow-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "LocalTiledLayerSample/MainWindow-iPad.xib"; sourceTree = SOURCE_ROOT; };
+		C56B3FEB14C652C2003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				975E755C167A9CE7005FB57B /* OpenGLES.framework in Frameworks */,
+				975E755A167A9CE0005FB57B /* libc++.dylib in Frameworks */,
+				9702E4C91446429F00A46CA5 /* Security.framework in Frameworks */,
+				9792DF5613B2613800C41657 /* MobileCoreServices.framework in Frameworks */,
+				9792DF5413B2613000C41657 /* MediaPlayer.framework in Frameworks */,
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				3B7F19E910D1BEB900AFD7FB /* CoreLocation.framework in Frameworks */,
+				3B7F19EB10D1BEB900AFD7FB /* QuartzCore.framework in Frameworks */,
+				AF699BB711D1703700DC3951 /* libz.dylib in Frameworks */,
+				97B8E9121354F59700BF4243 /* CoreText.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* LocalTiledLayerSample */ = {
+			isa = PBXGroup;
+			children = (
+				C5128CF114758D9500A5EBF7 /* Supporting Files */,
+				C5128CD614758D8100A5EBF7 /* LocalTiledLayerAppDelegate.h */,
+				C5128CD714758D8100A5EBF7 /* LocalTiledLayerAppDelegate.m */,
+				C5128CDA14758D8100A5EBF7 /* LocalTiledLayerViewController.h */,
+				C5128CDB14758D8100A5EBF7 /* LocalTiledLayerViewController.m */,
+				C5128CDC14758D8100A5EBF7 /* LocalTiledLayerViewController.xib */,
+				C5128CDE14758D8100A5EBF7 /* MainWindow.xib */,
+				C54837561475A07E00626EEF /* MainWindow-iPad.xib */,
+				C5128CE214758D8100A5EBF7 /* RootTableViewController.h */,
+				C5128CE314758D8100A5EBF7 /* RootTableViewController.m */,
+				21DE20831475B2C20080DC48 /* RootTableViewController.xib */,
+			);
+			name = LocalTiledLayerSample;
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* LocalTiledLayerSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				975E755D167A9CF8005FB57B /* Default-568h@2x.png */,
+				C56B3FEB14C652C2003A46EB /* ArcGIS.bundle */,
+				080E96DDFE201D6D7F000001 /* LocalTiledLayerSample */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				975E755B167A9CE7005FB57B /* OpenGLES.framework */,
+				975E7559167A9CE0005FB57B /* libc++.dylib */,
+				9737933913144223000BE16E /* libstdc++.6.0.9.dylib */,
+				9702E4C81446429F00A46CA5 /* Security.framework */,
+				9792DF5313B2613000C41657 /* MediaPlayer.framework */,
+				9792DF5513B2613800C41657 /* MobileCoreServices.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+				3B7F19E810D1BEB900AFD7FB /* CoreLocation.framework */,
+				3B7F19EA10D1BEB900AFD7FB /* QuartzCore.framework */,
+				AF699BB611D1703700DC3951 /* libz.dylib */,
+				97B8E9111354F59700BF4243 /* CoreText.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C5128CF114758D9500A5EBF7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C5128CD414758D8100A5EBF7 /* icon.png */,
+				C5128CD514758D8100A5EBF7 /* icon@2x.png */,
+				C5128CD814758D8100A5EBF7 /* LocalTiledLayerSample_Prefix.pch */,
+				C5128CD914758D8100A5EBF7 /* LocalTiledLayerSample-Info.plist */,
+				C5128CDD14758D8100A5EBF7 /* main.m */,
+				C5128CDF14758D8100A5EBF7 /* Parcels.tpk */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* LocalTiledLayerSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "LocalTiledLayerSample" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LocalTiledLayerSample;
+			productName = Demo;
+			productReference = 1D6058910D05DD3D006BFB54 /* LocalTiledLayerSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "LocalTiledLayerSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* LocalTiledLayerSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5128CE514758D8100A5EBF7 /* icon.png in Resources */,
+				C5128CE614758D8100A5EBF7 /* icon@2x.png in Resources */,
+				C5128CEA14758D8100A5EBF7 /* LocalTiledLayerViewController.xib in Resources */,
+				C5128CEC14758D8100A5EBF7 /* MainWindow.xib in Resources */,
+				C5128CED14758D8100A5EBF7 /* Parcels.tpk in Resources */,
+				21DE20841475B2C30080DC48 /* RootTableViewController.xib in Resources */,
+				2160D8011475B7CE00598D70 /* MainWindow-iPad.xib in Resources */,
+				C56B3FEC14C652C2003A46EB /* ArcGIS.bundle in Resources */,
+				975E755E167A9CF8005FB57B /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5128CE714758D8100A5EBF7 /* LocalTiledLayerAppDelegate.m in Sources */,
+				C5128CE914758D8100A5EBF7 /* LocalTiledLayerViewController.m in Sources */,
+				C5128CEB14758D8100A5EBF7 /* main.m in Sources */,
+				C5128CEF14758D8100A5EBF7 /* RootTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = LocalTiledLayerSample/LocalTiledLayerSample_Prefix.pch;
+				INFOPLIST_FILE = "LocalTiledLayerSample/LocalTiledLayerSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+					"-framework",
+					ArcGIS,
+				);
+				PRODUCT_NAME = LocalTiledLayerSample;
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = LocalTiledLayerSample/LocalTiledLayerSample_Prefix.pch;
+				INFOPLIST_FILE = "LocalTiledLayerSample/LocalTiledLayerSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+					"-framework",
+					ArcGIS,
+				);
+				PRODUCT_NAME = LocalTiledLayerSample;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "LocalTiledLayerSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "LocalTiledLayerSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

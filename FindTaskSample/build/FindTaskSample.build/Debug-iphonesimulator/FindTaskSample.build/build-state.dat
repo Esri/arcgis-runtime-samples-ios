@@ -1,0 +1,472 @@
+TFindTaskSample
+v5
+r1
+cCheck dependencies
+cProcessInfoPlistFile /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/Info.plist FindTaskSample-Info.plist
+cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/ResultsViewController.xib
+cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/FindTaskSampleViewController.xib
+cCpResource icon.png build/Debug-iphonesimulator/FindTaskSample.app/icon.png
+cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/MainWindow.xib
+cCpResource icon@2x.png build/Debug-iphonesimulator/FindTaskSample.app/icon@2x.png
+cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Resources-iPad/MainWindow-iPad.xib
+cCpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/FindTaskSample.app/ArcGIS.bundle
+cCpResource Default-568h@2x.png build/Debug-iphonesimulator/FindTaskSample.app/Default-568h@2x.png
+cProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/FindTaskSample_Prefix-buhgxdbmqcqivndmkzvulfkelezv/FindTaskSample_Prefix.pch.pth FindTaskSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/main.o /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskSampoleAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskSampoleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskSampleViewController.o /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskSampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/ResultsViewController.o /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/ResultsViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/FindTaskSample normal i386
+cGenerateDSYMFile /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app.dSYM /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/FindTaskSample
+cTouch /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk
+c00000000504916AD0000000000000110
+t1346967213
+s272
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000005060CC720000000000228FD0
+t1348521074
+s2265040
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
+c000000005060CC72000000000009C220
+t1348521074
+s639520
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreText.framework/CoreText
+c000000005060CC7200000000000F62E0
+t1348521074
+s1008352
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000005060CC7300000000003DCEF0
+t1348521075
+s4050672
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+c000000005060CC7600000000002C6C10
+t1348521078
+s2911248
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
+c000000005060CC7600000000000BCB50
+t1348521078
+s772944
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/OpenGLES.framework/OpenGLES
+c000000005060CC760000000000015400
+t1348521078
+s87040
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c000000005060CC7600000000001D57A0
+t1348521078
+s1922976
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Security.framework/Security
+c000000005060CC77000000000006E370
+t1348521079
+s451440
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000005060CC790000000000AB3D60
+t1348521081
+s11222368
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/usr/lib/libc++.dylib
+c000000005060CC8700000000000AFCD0
+t1348521095
+s720080
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/usr/lib/libz.dylib
+c000000005060CC880000000000013500
+t1348521096
+s79104
+
+N/Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle
+c0000000050D4B2000000000000000550
+t1356116480
+s1360
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskDemoAppDelegate.m
+c000000005109ADC9000000000000035A
+t1359588809
+s858
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskDemoViewController.m
+c000000005109B012000000000000261C
+t1359589394
+s9756
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskSampleViewController.m
+c000000005109B012000000000000261C
+t1359589394
+s9756
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskSampoleAppDelegate.m
+c000000005109B0120000000000000362
+t1359589394
+s866
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/ResultsViewController.m
+c000000005109ADC90000000000000B0B
+t1359588809
+s2827
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/ResultsViewController.xib
+c000000005109ADC90000000000003067
+t1359588809
+s12391
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Default-568h@2x.png
+c000000005109ADC900000000000048A2
+t1359588809
+s18594
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/FindTaskDemoViewController.xib
+c000000005109ADC90000000000003222
+t1359588809
+s12834
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/FindTaskSampleViewController.xib
+c000000005109B0100000000000002964
+t1359589392
+s10596
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/FindTaskSample_Prefix.pch
+c000000005109ADC900000000000000C9
+t1359588809
+s201
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/MainWindow.xib
+c000000005109B02A0000000000001F93
+t1359589418
+s8083
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Resources-iPad/MainWindow-iPad.xib
+c000000005109B02A0000000000003326
+t1359589418
+s13094
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app.dSYM
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/ArcGIS.bundle
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/Default-568h@2x.png
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/FindTaskDemoViewController.nib
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/FindTaskSample
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/FindTaskSampleViewController.nib
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/Info.plist
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/MainWindow-iPad.nib
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/MainWindow.nib
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/PkgInfo
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/ResultsViewController.nib
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/icon.png
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/icon@2x.png
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskDemoAppDelegate.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskDemoViewController.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskSample.LinkFileList
+c000000005109B02A0000000000000297
+t1359589418
+s663
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskSampleViewController.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskSampoleAppDelegate.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/ResultsViewController.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/main.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/icon.png
+c000000005109ADC90000000000000903
+t1359588809
+s2307
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/icon@2x.png
+c000000005109ADC90000000000000A25
+t1359588809
+s2597
+
+N/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/main.m
+c000000005109ADC90000000000000274
+t1359588809
+s628
+
+N/var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/FindTaskSample_Prefix-buhgxdbmqcqivndmkzvulfkelezv/FindTaskSample_Prefix.pch.pth
+t2
+s0
+
+NFindTaskDemo-Info.plist
+c00000000000000000000000000000000
+t2
+s0
+
+NFindTaskSample-Info.plist
+c000000005109ADC9000000000000042E
+t1359588809
+s1070
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskDemoAppDelegate.m
+r0
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskDemoViewController.m
+r0
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskSampleViewController.m
+r0
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskSampoleAppDelegate.m
+r0
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/ResultsViewController.m
+r0
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/main.m
+r0
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies85d1dcaae7b9b641^d15df2aae7b9b641^---0#1#0#--18"Check dependencies36"D1BB8475-76E6-4FCC-ACD6-4B1C94E78AD6-
+
+CCompileC build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskDemoAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskDemoAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskDemoViewController.o /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskDemoViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskSampleViewController.o /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskSampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381282227.050931
+e381282227.226276
+r1
+xCompileC
+xbuild/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskSampleViewController.o
+x/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskSampleViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection99"Compile /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskSampleViewController.m07280db3e7b9b641^9eed39b3e7b9b641^---0#0#0#-19%DVTDocumentLocation2@107"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskSampleViewController.m0000000000000000^4284"CompileC build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskSampleViewController.o Classes/FindTaskSampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/FindTaskSample_Prefix-buhgxdbmqcqivndmkzvulfkelezv/FindTaskSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskSampleViewController.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskSampleViewController.dia -c /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskSampleViewController.m -o /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskSampleViewController.o36"1E2F0260-B209-4B0C-81A9-42FC69EA4E39-
+
+CCompileC build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskSampoleAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskSampoleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381282226.526877
+e381282227.049564
+r1
+xCompileC
+xbuild/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskSampoleAppDelegate.o
+x/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskSampoleAppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection97"Compile /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskSampoleAppDelegate.m690087b2e7b9b641^8db40cb3e7b9b641^---0#0#0#-19%DVTDocumentLocation2@105"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskSampoleAppDelegate.m0000000000000000^4272"CompileC build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskSampoleAppDelegate.o Classes/FindTaskSampoleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/FindTaskSample_Prefix-buhgxdbmqcqivndmkzvulfkelezv/FindTaskSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskSampoleAppDelegate.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskSampoleAppDelegate.dia -c /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/FindTaskSampoleAppDelegate.m -o /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskSampoleAppDelegate.o36"CF3D60BF-3BAF-48BB-A7B0-A695AB1B1BAB-
+
+CCompileC build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/ResultsViewController.o /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/ResultsViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381282227.227754
+e381282227.287465
+r1
+xCompileC
+xbuild/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/ResultsViewController.o
+x/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/ResultsViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection92"Compile /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/ResultsViewController.mf86b3ab3e7b9b641^c49749b3e7b9b641^---0#0#0#-19%DVTDocumentLocation2@100"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/ResultsViewController.m0000000000000000^4242"CompileC build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/ResultsViewController.o Classes/ResultsViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/FindTaskSample_Prefix-buhgxdbmqcqivndmkzvulfkelezv/FindTaskSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/ResultsViewController.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/ResultsViewController.dia -c /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/ResultsViewController.m -o /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/ResultsViewController.o36"209A35A1-43EA-4D09-A74B-4D4A234F4A89-
+
+CCompileC build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/main.o /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381282226.414407
+e381282226.525595
+r1
+xCompileC
+xbuild/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/main.o
+x/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection67"Compile /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/main.m2b326ab2e7b9b641^978d86b2e7b9b641^---0#0#0#-19%DVTDocumentLocation2@75"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/main.m0000000000000000^4124"CompileC build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/main.o main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/FindTaskSample_Prefix-buhgxdbmqcqivndmkzvulfkelezv/FindTaskSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/main.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/main.dia -c /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/main.m -o /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/main.o36"8DFEE136-3DFD-44BA-8FBC-4FCC3EB40681-
+
+CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/ResultsViewController.xib
+s381282218.977841
+e381282220.503764
+r1
+xCompileXIB
+x/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/ResultsViewController.xib
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection96"Compiling /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/ResultsViewController.xib187cfaaae7b9b641^44f780ace7b9b641^---0#0#0#-19%DVTDocumentLocation2@102"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/ResultsViewController.xib0000000000000000^957"CompileXIB Classes/ResultsViewController.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/ResultsViewController.nib /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Classes/ResultsViewController.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"BE0B68BC-2DCA-46B7-85EE-5DA793D39681-
+
+CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/FindTaskDemoViewController.xib
+r0
+
+CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/FindTaskSampleViewController.xib
+s381282218.977848
+e381282221.896801
+r1
+xCompileXIB
+x/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/FindTaskSampleViewController.xib
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection95"Compiling /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/FindTaskSampleViewController.xib2978faaae7b9b641^cfa0e5ade7b9b641^---0#0#0#-19%DVTDocumentLocation2@101"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/FindTaskSampleViewController.xib0000000000000000^962"CompileXIB FindTaskSampleViewController.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/FindTaskSampleViewController.nib /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/FindTaskSampleViewController.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"464287EE-05D9-44FD-AF4A-23DD9CBD29DB-
+
+CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/MainWindow.xib
+s381282218.977858
+e381282225.423577
+r1
+xCompileXIB
+x/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/MainWindow.xib
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection77"Compiling /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/MainWindow.xibc47bfaaae7b9b641^43746cb1e7b9b641^---0#0#0#-19%DVTDocumentLocation2@83"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/MainWindow.xib0000000000000000^908"CompileXIB MainWindow.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/MainWindow.nib /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/MainWindow.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"DCE6EE03-3467-4736-9762-43DF1B37401F-
+
+CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Resources-iPad/MainWindow-iPad.xib
+s381282218.986181
+e381282225.423477
+r1
+xCompileXIB
+x/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Resources-iPad/MainWindow-iPad.xib
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection97"Compiling /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Resources-iPad/MainWindow-iPad.xibec87fcaae7b9b641^b6696cb1e7b9b641^---0#0#0#-19%DVTDocumentLocation2@103"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Resources-iPad/MainWindow-iPad.xib0000000000000000^953"CompileXIB Resources-iPad/MainWindow-iPad.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/MainWindow-iPad.nib /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Resources-iPad/MainWindow-iPad.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"EBD37D7A-A9A7-4B0A-8B07-C10AE6398E4D-
+
+CCpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/FindTaskSample.app/ArcGIS.bundle
+s381282220.505069
+e381282221.634821
+r1
+xCpResource
+x/Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle
+xbuild/Debug-iphonesimulator/FindTaskSample.app/ArcGIS.bundle
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection65"Copy build/Debug-iphonesimulator/FindTaskSample.app/ArcGIS.bundlee16281ace7b9b641^5a84a2ade7b9b641^---0#0#0#-19%DVTDocumentLocation2@129"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/ArcGIS.bundle000000000080d041^735"CpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/FindTaskSample.app/ArcGIS.bundle    cd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app36"413420B4-C78E-43D8-8873-F0BEC78F02FB-
+
+CCpResource Default-568h@2x.png build/Debug-iphonesimulator/FindTaskSample.app/Default-568h@2x.png
+s381282221.636463
+e381282221.661804
+r1
+xCpResource
+xDefault-568h@2x.png
+xbuild/Debug-iphonesimulator/FindTaskSample.app/Default-568h@2x.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection71"Copy build/Debug-iphonesimulator/FindTaskSample.app/Default-568h@2x.png61fea2ade7b9b641^a46ca9ade7b9b641^---0#0#0#-19%DVTDocumentLocation2@135"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/Default-568h@2x.png000000000080d041^644"CpResource "Default-568h@2x.png" "build/Debug-iphonesimulator/FindTaskSample.app/Default-568h@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/Default-568h@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app36"F1E08D87-32EB-4C88-B440-72B4A00769EF-
+
+CCpResource icon.png build/Debug-iphonesimulator/FindTaskSample.app/icon.png
+s381282218.977849
+e381282218.980406
+r1
+xCpResource
+xicon.png
+xbuild/Debug-iphonesimulator/FindTaskSample.app/icon.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection60"Copy build/Debug-iphonesimulator/FindTaskSample.app/icon.pngce71faaae7b9b641^22e1fbaae7b9b641^---0#0#0#-19%DVTDocumentLocation2@124"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/icon.png000000000080d041^605"CpResource icon.png build/Debug-iphonesimulator/FindTaskSample.app/icon.png    cd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/icon.png /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app36"F427A69A-4E75-479C-99A9-47098C93FF63-
+
+CCpResource icon@2x.png build/Debug-iphonesimulator/FindTaskSample.app/icon@2x.png
+s381282218.981749
+e381282218.984976
+r1
+xCpResource
+xicon@2x.png
+xbuild/Debug-iphonesimulator/FindTaskSample.app/icon@2x.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection63"Copy build/Debug-iphonesimulator/FindTaskSample.app/icon@2x.pnge160fbaae7b9b641^e927fcaae7b9b641^---0#0#0#-19%DVTDocumentLocation2@127"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/icon@2x.png000000000080d041^620"CpResource "icon@2x.png" "build/Debug-iphonesimulator/FindTaskSample.app/icon@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/icon@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app36"EA8144DB-4D71-4D22-B8AD-43EAFE597FFF-
+
+CGenerateDSYMFile /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app.dSYM /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/FindTaskSample
+s381282231.948890
+e381282237.896334
+r1
+xGenerateDSYMFile
+x/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app.dSYM
+x/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/FindTaskSample
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection115"Generating /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app.dSYMecf9f2b7e7b9b641^0c78e5bde7b9b641^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app.dSYM000000000080d041^709"GenerateDSYMFile build/Debug-iphonesimulator/FindTaskSample.app.dSYM build/Debug-iphonesimulator/FindTaskSample.app/FindTaskSample    cd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/FindTaskSample -o /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app.dSYM36"78AB338D-1DAC-4CD4-8349-5105515B93D9-
+
+CLd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/FindTaskSample normal i386
+s381282227.294512
+e381282231.941837
+r1
+xLd
+x/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/FindTaskSample
+xnormal
+xi386
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection119"Link /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/FindTaskSample0b7a4bb3e7b9b641^3f1ff1b7e7b9b641^---0#0#0#--1770"Ld build/Debug-iphonesimulator/FindTaskSample.app/FindTaskSample normal i386    cd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo    setenv IPHONEOS_DEPLOYMENT_TARGET 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -L/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -filelist /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/Objects-normal/i386/FindTaskSample.LinkFileList -Xlinker -objc_abi_version -Xlinker 2 -ObjC -all_load -framework ArcGIS -fobjc-arc -fobjc-link-runtime -Xlinker -no_implicit_dylibs -mios-simulator-version-min=5.0 -framework OpenGLES -lc++ -framework Security -lz -framework MobileCoreServices -framework MediaPlayer -framework Foundation -framework UIKit -framework CoreGraphics -framework CoreLocation -framework QuartzCore -framework CoreText -o /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/FindTaskSample36"C30D8D33-BBC0-470F-9E43-1CAE0CAD6FCA-
+
+CProcessInfoPlistFile /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/Info.plist FindTaskDemo-Info.plist
+r0
+
+CProcessInfoPlistFile /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/Info.plist FindTaskSample-Info.plist
+s381282218.951782
+e381282218.969665
+r1
+xProcessInfoPlistFile
+x/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/Info.plist
+xFindTaskSample-Info.plist
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection33"Process FindTaskSample-Info.pliste1b5f3aae7b9b641^ecddfbaae7b9b641^---0#0#0#-19%DVTDocumentLocation2@94"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/FindTaskSample-Info.plist0000000000000000^711"ProcessInfoPlistFile build/Debug-iphonesimulator/FindTaskSample.app/Info.plist FindTaskSample-Info.plist    cd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility FindTaskSample-Info.plist -genpkginfo /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app/Info.plist36"BE01E8FD-04D0-483F-90C7-325B120D590A-
+
+CProcessPCH /Users/dive0000/Library/Developer/Xcode/DerivedData/FindTaskSample-fddqaocuuvinslevghnhkkqxhpfr/Index/PrecompiledHeaders/FindTaskSample_Prefix-bbeiljggkggvwmgkefnukfwtsnel_ast/FindTaskSample_Prefix.pch.pth FindTaskSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
+r0
+
+CProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/FindTaskSample_Prefix-buhgxdbmqcqivndmkzvulfkelezv/FindTaskSample_Prefix.pch.pth FindTaskSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381282225.431674
+e381282226.407351
+r1
+xProcessPCH
+x/var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/FindTaskSample_Prefix-buhgxdbmqcqivndmkzvulfkelezv/FindTaskSample_Prefix.pch.pth
+xFindTaskSample_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection36"Precompile FindTaskSample_Prefix.pchc0ae6eb1e7b9b641^384868b2e7b9b641^---0#0#0#-19%DVTDocumentLocation2@94"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/FindTaskSample_Prefix.pch0000000000000000^4161"ProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/FindTaskSample_Prefix-buhgxdbmqcqivndmkzvulfkelezv/FindTaskSample_Prefix.pch.pth FindTaskSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/FindTaskSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/FindTaskSample.build/Debug-iphonesimulator/FindTaskSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad --serialize-diagnostics /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/FindTaskSample_Prefix-buhgxdbmqcqivndmkzvulfkelezv/FindTaskSample_Prefix.pch.dia -c /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/FindTaskSample_Prefix.pch -o /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/FindTaskSample_Prefix-buhgxdbmqcqivndmkzvulfkelezv/FindTaskSample_Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/FindTaskSample_Prefix-buhgxdbmqcqivndmkzvulfkelezv/FindTaskSample_Prefix.pch.d36"C26B9920-373E-4528-9B28-957776503300-
+
+CTouch /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app
+s381282237.904749
+e381282237.940430
+r1
+xTouch
+x/Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection105"Touch /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app22abe7bde7b9b641^bce8f7bde7b9b641^---0#0#0#--430"Touch build/Debug-iphonesimulator/FindTaskSample.app    cd /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/dive0000/iOS/setup/OnlineSamples/FindTaskDemo/build/Debug-iphonesimulator/FindTaskSample.app36"1F465891-5F9C-45D0-B50A-5852F855C81E-
+

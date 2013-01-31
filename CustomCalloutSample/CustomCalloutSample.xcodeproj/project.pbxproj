@@ -1,0 +1,477 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		97B8C3A316780142003B6E1B /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B8C3A216780142003B6E1B /* libc++.dylib */; };
+		97B8C3A516780147003B6E1B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B8C3A416780147003B6E1B /* OpenGLES.framework */; };
+		97B8C3A716780163003B6E1B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B8C3A616780163003B6E1B /* Default-568h@2x.png */; };
+		C52E8F611475F164008F22F4 /* FireStation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C52E8F5F1475F164008F22F4 /* FireStation@2x.png */; };
+		C52E8F621475F164008F22F4 /* FireStation.png in Resources */ = {isa = PBXBuildFile; fileRef = C52E8F601475F164008F22F4 /* FireStation.png */; };
+		C52E8F661476EB7D008F22F4 /* CustomWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C52E8F641476EB7D008F22F4 /* CustomWebViewController.m */; };
+		C52E8F671476EB7D008F22F4 /* CustomWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C52E8F651476EB7D008F22F4 /* CustomWebViewController.xib */; };
+		C52E8F6B14770826008F22F4 /* CustomHybridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C52E8F6914770826008F22F4 /* CustomHybridViewController.m */; };
+		C52E8F6C14770826008F22F4 /* CustomHybridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C52E8F6A14770826008F22F4 /* CustomHybridViewController.xib */; };
+		C53ACA661486E70400146549 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C53ACA641486E70400146549 /* MainWindow-iPad.xib */; };
+		C545D9511475A966003B7137 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C545D9501475A966003B7137 /* libz.dylib */; };
+		C545D9651475CC8A003B7137 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C545D9641475CC8A003B7137 /* Security.framework */; };
+		C5675FA4148442D10057CB09 /* TrafficCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = C5675FA3148442D10057CB09 /* TrafficCamera.png */; };
+		C5675FA7148443300057CB09 /* TrafficCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5675FA6148443300057CB09 /* TrafficCamera@2x.png */; };
+		C5675FA9148443660057CB09 /* Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = C5675FA8148443660057CB09 /* Phone.png */; };
+		C5675FAB148444160057CB09 /* McDonalds.png in Resources */ = {isa = PBXBuildFile; fileRef = C5675FAA148444160057CB09 /* McDonalds.png */; };
+		C5675FAD148444610057CB09 /* Phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5675FAC148444610057CB09 /* Phone@2x.png */; };
+		C5675FAF1484448B0057CB09 /* McDonalds@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5675FAE1484448B0057CB09 /* McDonalds@2x.png */; };
+		C5675FB7148445770057CB09 /* Museum.png in Resources */ = {isa = PBXBuildFile; fileRef = C5675FB5148445770057CB09 /* Museum.png */; };
+		C5675FB9148446AC0057CB09 /* Museum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5675FB8148446AC0057CB09 /* Museum@2x.png */; };
+		C56B3F6514C6033A003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B3F6414C6033A003A46EB /* ArcGIS.bundle */; };
+		C58F018914056FC400C80593 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58F018814056FC400C80593 /* UIKit.framework */; };
+		C58F018B14056FC400C80593 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58F018A14056FC400C80593 /* Foundation.framework */; };
+		C58F018D14056FC400C80593 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58F018C14056FC400C80593 /* CoreGraphics.framework */; };
+		C58F018F14056FC400C80593 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58F018E14056FC400C80593 /* CoreText.framework */; };
+		C58F019114056FC400C80593 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58F019014056FC400C80593 /* CoreLocation.framework */; };
+		C58F019314056FC400C80593 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58F019214056FC400C80593 /* MediaPlayer.framework */; };
+		C58F019514056FC400C80593 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58F019414056FC400C80593 /* MobileCoreServices.framework */; };
+		C58F019714056FC400C80593 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58F019614056FC400C80593 /* QuartzCore.framework */; };
+		C58F01A014056FC400C80593 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C58F019F14056FC400C80593 /* main.m */; };
+		C58F01A314056FC400C80593 /* CustomCalloutSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C58F01A214056FC400C80593 /* CustomCalloutSampleAppDelegate.m */; };
+		C58F01A614056FC400C80593 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C58F01A414056FC400C80593 /* MainWindow.xib */; };
+		C58F01AB14056FC400C80593 /* CustomCalloutSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C58F01AA14056FC400C80593 /* CustomCalloutSampleViewController.m */; };
+		C58F01AE14056FC400C80593 /* CustomCalloutSampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C58F01AC14056FC400C80593 /* CustomCalloutSampleViewController.xib */; };
+		C59993EC14858BF00058F8C2 /* Building.png in Resources */ = {isa = PBXBuildFile; fileRef = C59993EA14858BF00058F8C2 /* Building.png */; };
+		C59993ED14858BF00058F8C2 /* Building@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C59993EB14858BF00058F8C2 /* Building@2x.png */; };
+		C59993F3148591D30058F8C2 /* ZoomIn.png in Resources */ = {isa = PBXBuildFile; fileRef = C59993EF148591D30058F8C2 /* ZoomIn.png */; };
+		C59993F4148591D30058F8C2 /* ZoomIn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C59993F0148591D30058F8C2 /* ZoomIn@2x.png */; };
+		C59993F5148591D30058F8C2 /* ZoomOut@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C59993F1148591D30058F8C2 /* ZoomOut@2x.png */; };
+		C59993F6148591D30058F8C2 /* ZoomOut.png in Resources */ = {isa = PBXBuildFile; fileRef = C59993F2148591D30058F8C2 /* ZoomOut.png */; };
+		C5EBE6A11486E94100358A9B /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C5EBE69F1486E94100358A9B /* icon.png */; };
+		C5EBE6A21486E94100358A9B /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5EBE6A01486E94100358A9B /* icon@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		97B8C3A216780142003B6E1B /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		97B8C3A416780147003B6E1B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		97B8C3A616780163003B6E1B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		C52E8F5F1475F164008F22F4 /* FireStation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FireStation@2x.png"; sourceTree = "<group>"; };
+		C52E8F601475F164008F22F4 /* FireStation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FireStation.png; sourceTree = "<group>"; };
+		C52E8F631476EB7D008F22F4 /* CustomWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWebViewController.h; sourceTree = "<group>"; };
+		C52E8F641476EB7D008F22F4 /* CustomWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWebViewController.m; sourceTree = "<group>"; };
+		C52E8F651476EB7D008F22F4 /* CustomWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomWebViewController.xib; sourceTree = "<group>"; };
+		C52E8F6814770826008F22F4 /* CustomHybridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomHybridViewController.h; sourceTree = "<group>"; };
+		C52E8F6914770826008F22F4 /* CustomHybridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomHybridViewController.m; sourceTree = "<group>"; };
+		C52E8F6A14770826008F22F4 /* CustomHybridViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomHybridViewController.xib; sourceTree = "<group>"; };
+		C53ACA651486E70400146549 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		C545D9501475A966003B7137 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		C545D9641475CC8A003B7137 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C5675FA3148442D10057CB09 /* TrafficCamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrafficCamera.png; sourceTree = "<group>"; };
+		C5675FA6148443300057CB09 /* TrafficCamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrafficCamera@2x.png"; sourceTree = "<group>"; };
+		C5675FA8148443660057CB09 /* Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Phone.png; sourceTree = "<group>"; };
+		C5675FAA148444160057CB09 /* McDonalds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = McDonalds.png; sourceTree = "<group>"; };
+		C5675FAC148444610057CB09 /* Phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Phone@2x.png"; sourceTree = "<group>"; };
+		C5675FAE1484448B0057CB09 /* McDonalds@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "McDonalds@2x.png"; sourceTree = "<group>"; };
+		C5675FB5148445770057CB09 /* Museum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Museum.png; sourceTree = "<group>"; };
+		C5675FB8148446AC0057CB09 /* Museum@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Museum@2x.png"; sourceTree = "<group>"; };
+		C56B3F6414C6033A003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
+		C58F018414056FC300C80593 /* CustomCalloutSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomCalloutSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C58F018814056FC400C80593 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C58F018A14056FC400C80593 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C58F018C14056FC400C80593 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C58F018E14056FC400C80593 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		C58F019014056FC400C80593 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C58F019214056FC400C80593 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		C58F019414056FC400C80593 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		C58F019614056FC400C80593 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C58F019A14056FC400C80593 /* CustomCalloutSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CustomCalloutSample-Info.plist"; sourceTree = "<group>"; };
+		C58F019E14056FC400C80593 /* CustomCalloutSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CustomCalloutSample-Prefix.pch"; sourceTree = "<group>"; };
+		C58F019F14056FC400C80593 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C58F01A114056FC400C80593 /* CustomCalloutSampleAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCalloutSampleAppDelegate.h; sourceTree = "<group>"; };
+		C58F01A214056FC400C80593 /* CustomCalloutSampleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutSampleAppDelegate.m; sourceTree = "<group>"; };
+		C58F01A514056FC400C80593 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		C58F01A914056FC400C80593 /* CustomCalloutSampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCalloutSampleViewController.h; sourceTree = "<group>"; };
+		C58F01AA14056FC400C80593 /* CustomCalloutSampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutSampleViewController.m; sourceTree = "<group>"; };
+		C58F01AD14056FC400C80593 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CustomCalloutSampleViewController.xib; sourceTree = "<group>"; };
+		C59993EA14858BF00058F8C2 /* Building.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Building.png; sourceTree = "<group>"; };
+		C59993EB14858BF00058F8C2 /* Building@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Building@2x.png"; sourceTree = "<group>"; };
+		C59993EF148591D30058F8C2 /* ZoomIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZoomIn.png; sourceTree = "<group>"; };
+		C59993F0148591D30058F8C2 /* ZoomIn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ZoomIn@2x.png"; sourceTree = "<group>"; };
+		C59993F1148591D30058F8C2 /* ZoomOut@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ZoomOut@2x.png"; sourceTree = "<group>"; };
+		C59993F2148591D30058F8C2 /* ZoomOut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZoomOut.png; sourceTree = "<group>"; };
+		C5EBE69F1486E94100358A9B /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		C5EBE6A01486E94100358A9B /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C58F018114056FC300C80593 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97B8C3A516780147003B6E1B /* OpenGLES.framework in Frameworks */,
+				97B8C3A316780142003B6E1B /* libc++.dylib in Frameworks */,
+				C545D9651475CC8A003B7137 /* Security.framework in Frameworks */,
+				C545D9511475A966003B7137 /* libz.dylib in Frameworks */,
+				C58F018914056FC400C80593 /* UIKit.framework in Frameworks */,
+				C58F018B14056FC400C80593 /* Foundation.framework in Frameworks */,
+				C58F018D14056FC400C80593 /* CoreGraphics.framework in Frameworks */,
+				C58F018F14056FC400C80593 /* CoreText.framework in Frameworks */,
+				C58F019114056FC400C80593 /* CoreLocation.framework in Frameworks */,
+				C58F019314056FC400C80593 /* MediaPlayer.framework in Frameworks */,
+				C58F019514056FC400C80593 /* MobileCoreServices.framework in Frameworks */,
+				C58F019714056FC400C80593 /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C53ACA631486E70200146549 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				C53ACA641486E70400146549 /* MainWindow-iPad.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		C58F017914056FC300C80593 = {
+			isa = PBXGroup;
+			children = (
+				C56B3F6414C6033A003A46EB /* ArcGIS.bundle */,
+				C58F019814056FC400C80593 /* CustomCalloutSample */,
+				C58F018714056FC400C80593 /* Frameworks */,
+				C58F018514056FC300C80593 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C58F018514056FC300C80593 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C58F018414056FC300C80593 /* CustomCalloutSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C58F018714056FC400C80593 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97B8C3A416780147003B6E1B /* OpenGLES.framework */,
+				97B8C3A216780142003B6E1B /* libc++.dylib */,
+				C545D9641475CC8A003B7137 /* Security.framework */,
+				C545D9501475A966003B7137 /* libz.dylib */,
+				C58F018814056FC400C80593 /* UIKit.framework */,
+				C58F018A14056FC400C80593 /* Foundation.framework */,
+				C58F018C14056FC400C80593 /* CoreGraphics.framework */,
+				C58F018E14056FC400C80593 /* CoreText.framework */,
+				C58F019014056FC400C80593 /* CoreLocation.framework */,
+				C58F019214056FC400C80593 /* MediaPlayer.framework */,
+				C58F019414056FC400C80593 /* MobileCoreServices.framework */,
+				C58F019614056FC400C80593 /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C58F019814056FC400C80593 /* CustomCalloutSample */ = {
+			isa = PBXGroup;
+			children = (
+				97B8C3A616780163003B6E1B /* Default-568h@2x.png */,
+				C53ACA631486E70200146549 /* iPad */,
+				C58F01A114056FC400C80593 /* CustomCalloutSampleAppDelegate.h */,
+				C58F01A214056FC400C80593 /* CustomCalloutSampleAppDelegate.m */,
+				C58F01A414056FC400C80593 /* MainWindow.xib */,
+				C58F01A914056FC400C80593 /* CustomCalloutSampleViewController.h */,
+				C58F01AA14056FC400C80593 /* CustomCalloutSampleViewController.m */,
+				C58F01AC14056FC400C80593 /* CustomCalloutSampleViewController.xib */,
+				C58F019914056FC400C80593 /* Supporting Files */,
+				C52E8F631476EB7D008F22F4 /* CustomWebViewController.h */,
+				C52E8F641476EB7D008F22F4 /* CustomWebViewController.m */,
+				C52E8F651476EB7D008F22F4 /* CustomWebViewController.xib */,
+				C52E8F6814770826008F22F4 /* CustomHybridViewController.h */,
+				C52E8F6914770826008F22F4 /* CustomHybridViewController.m */,
+				C52E8F6A14770826008F22F4 /* CustomHybridViewController.xib */,
+			);
+			path = CustomCalloutSample;
+			sourceTree = "<group>";
+		};
+		C58F019914056FC400C80593 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C5EBE69F1486E94100358A9B /* icon.png */,
+				C5EBE6A01486E94100358A9B /* icon@2x.png */,
+				C59993EF148591D30058F8C2 /* ZoomIn.png */,
+				C59993F0148591D30058F8C2 /* ZoomIn@2x.png */,
+				C59993F1148591D30058F8C2 /* ZoomOut@2x.png */,
+				C59993F2148591D30058F8C2 /* ZoomOut.png */,
+				C59993EA14858BF00058F8C2 /* Building.png */,
+				C59993EB14858BF00058F8C2 /* Building@2x.png */,
+				C5675FB8148446AC0057CB09 /* Museum@2x.png */,
+				C5675FB5148445770057CB09 /* Museum.png */,
+				C5675FAE1484448B0057CB09 /* McDonalds@2x.png */,
+				C5675FAC148444610057CB09 /* Phone@2x.png */,
+				C5675FAA148444160057CB09 /* McDonalds.png */,
+				C5675FA8148443660057CB09 /* Phone.png */,
+				C5675FA6148443300057CB09 /* TrafficCamera@2x.png */,
+				C5675FA3148442D10057CB09 /* TrafficCamera.png */,
+				C52E8F5F1475F164008F22F4 /* FireStation@2x.png */,
+				C52E8F601475F164008F22F4 /* FireStation.png */,
+				C58F019A14056FC400C80593 /* CustomCalloutSample-Info.plist */,
+				C58F019E14056FC400C80593 /* CustomCalloutSample-Prefix.pch */,
+				C58F019F14056FC400C80593 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C58F018314056FC300C80593 /* CustomCalloutSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C58F01B114056FC400C80593 /* Build configuration list for PBXNativeTarget "CustomCalloutSample" */;
+			buildPhases = (
+				C58F018014056FC300C80593 /* Sources */,
+				C58F018114056FC300C80593 /* Frameworks */,
+				C58F018214056FC300C80593 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CustomCalloutSample;
+			productName = CustomCalloutSample;
+			productReference = C58F018414056FC300C80593 /* CustomCalloutSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C58F017B14056FC300C80593 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = C58F017E14056FC300C80593 /* Build configuration list for PBXProject "CustomCalloutSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C58F017914056FC300C80593;
+			productRefGroup = C58F018514056FC300C80593 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C58F018314056FC300C80593 /* CustomCalloutSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C58F018214056FC300C80593 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C58F01A614056FC400C80593 /* MainWindow.xib in Resources */,
+				C58F01AE14056FC400C80593 /* CustomCalloutSampleViewController.xib in Resources */,
+				C52E8F611475F164008F22F4 /* FireStation@2x.png in Resources */,
+				C52E8F621475F164008F22F4 /* FireStation.png in Resources */,
+				C52E8F671476EB7D008F22F4 /* CustomWebViewController.xib in Resources */,
+				C52E8F6C14770826008F22F4 /* CustomHybridViewController.xib in Resources */,
+				C5675FA4148442D10057CB09 /* TrafficCamera.png in Resources */,
+				C5675FA7148443300057CB09 /* TrafficCamera@2x.png in Resources */,
+				C5675FA9148443660057CB09 /* Phone.png in Resources */,
+				C5675FAB148444160057CB09 /* McDonalds.png in Resources */,
+				C5675FAD148444610057CB09 /* Phone@2x.png in Resources */,
+				C5675FAF1484448B0057CB09 /* McDonalds@2x.png in Resources */,
+				C5675FB7148445770057CB09 /* Museum.png in Resources */,
+				C5675FB9148446AC0057CB09 /* Museum@2x.png in Resources */,
+				C59993EC14858BF00058F8C2 /* Building.png in Resources */,
+				C59993ED14858BF00058F8C2 /* Building@2x.png in Resources */,
+				C59993F3148591D30058F8C2 /* ZoomIn.png in Resources */,
+				C59993F4148591D30058F8C2 /* ZoomIn@2x.png in Resources */,
+				C59993F5148591D30058F8C2 /* ZoomOut@2x.png in Resources */,
+				C59993F6148591D30058F8C2 /* ZoomOut.png in Resources */,
+				C53ACA661486E70400146549 /* MainWindow-iPad.xib in Resources */,
+				C5EBE6A11486E94100358A9B /* icon.png in Resources */,
+				C5EBE6A21486E94100358A9B /* icon@2x.png in Resources */,
+				C56B3F6514C6033A003A46EB /* ArcGIS.bundle in Resources */,
+				97B8C3A716780163003B6E1B /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C58F018014056FC300C80593 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C58F01A014056FC400C80593 /* main.m in Sources */,
+				C58F01A314056FC400C80593 /* CustomCalloutSampleAppDelegate.m in Sources */,
+				C58F01AB14056FC400C80593 /* CustomCalloutSampleViewController.m in Sources */,
+				C52E8F661476EB7D008F22F4 /* CustomWebViewController.m in Sources */,
+				C52E8F6B14770826008F22F4 /* CustomHybridViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C53ACA641486E70400146549 /* MainWindow-iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C53ACA651486E70400146549 /* en */,
+			);
+			name = "MainWindow-iPad.xib";
+			sourceTree = "<group>";
+		};
+		C58F01A414056FC400C80593 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C58F01A514056FC400C80593 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		C58F01AC14056FC400C80593 /* CustomCalloutSampleViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C58F01AD14056FC400C80593 /* en */,
+			);
+			name = CustomCalloutSampleViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C58F01AF14056FC400C80593 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+					"-framework",
+					ArcGIS,
+				);
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C58F01B014056FC400C80593 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sreejith Parthasarathy (N3WX842HCK)";
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+					"-framework",
+					ArcGIS,
+				);
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E89AACA5-4D0F-4BD5-87F9-80588D33ADA4";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C58F01B214056FC400C80593 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CustomCalloutSample/CustomCalloutSample-Prefix.pch";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "CustomCalloutSample/CustomCalloutSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C58F01B314056FC400C80593 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CustomCalloutSample/CustomCalloutSample-Prefix.pch";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "CustomCalloutSample/CustomCalloutSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C58F017E14056FC300C80593 /* Build configuration list for PBXProject "CustomCalloutSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C58F01AF14056FC400C80593 /* Debug */,
+				C58F01B014056FC400C80593 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C58F01B114056FC400C80593 /* Build configuration list for PBXNativeTarget "CustomCalloutSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C58F01B214056FC400C80593 /* Debug */,
+				C58F01B314056FC400C80593 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C58F017B14056FC300C80593 /* Project object */;
+}

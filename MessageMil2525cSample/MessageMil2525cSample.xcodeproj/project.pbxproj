@@ -1,0 +1,370 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* MessageMil2525cSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* MessageMil2525cSampleAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		28D7ACF80DDB3853001CB0EB /* MessageMil2525cSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* MessageMil2525cSampleViewController.m */; };
+		3BB1591610D1CB860095F852 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB1591510D1CB860095F852 /* CoreLocation.framework */; };
+		3BB1591810D1CB860095F852 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB1591710D1CB860095F852 /* QuartzCore.framework */; };
+		4B8B240514062A7C00820FDB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8B240414062A7C00820FDB /* libz.dylib */; };
+		9702E5BD144657AF00A46CA5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9702E5BC144657AF00A46CA5 /* Security.framework */; };
+		970DD3961354F0D600237D7F /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970DD3951354F0D600237D7F /* CoreText.framework */; };
+		9792E01513B26A8600C41657 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9792E01413B26A8600C41657 /* MediaPlayer.framework */; };
+		9792E01713B26A8C00C41657 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9792E01613B26A8C00C41657 /* MobileCoreServices.framework */; };
+		AFD762AD124AAF5E00DBB854 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFD762AC124AAF5E00DBB854 /* MainWindow-iPad.xib */; };
+		AFD762B2124AAF7800DBB854 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AFD762B0124AAF7800DBB854 /* Icon.png */; };
+		AFD762B3124AAF7800DBB854 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AFD762B1124AAF7800DBB854 /* Icon@2x.png */; };
+		C56B406914C758B6003A46EB /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C56B406814C758B6003A46EB /* libstdc++.dylib */; };
+		E901D671166797DA00EAC4FC /* MessageMil2525cSampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E901D670166797DA00EAC4FC /* MessageMil2525cSampleViewController.xib */; };
+		E961A93C16526B96000BD267 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E961A93B16526B96000BD267 /* Default-568h@2x.png */; };
+		E961A94216526D0C000BD267 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E961A94116526D0C000BD267 /* libc++.dylib */; };
+		E961A94416526D15000BD267 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E961A94316526D15000BD267 /* OpenGLES.framework */; };
+		E961A94616526DEE000BD267 /* libc++abi.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E961A94516526DEE000BD267 /* libc++abi.dylib */; };
+		E962D0821663E19B004F2EB6 /* Mil2525CMessages.json in Resources */ = {isa = PBXBuildFile; fileRef = E962D0811663E19B004F2EB6 /* Mil2525CMessages.json */; };
+		E9FB73D81677BB1100FB4A01 /* mil2525c in Resources */ = {isa = PBXBuildFile; fileRef = E9FB73D71677BB1100FB4A01 /* mil2525c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* MessageMil2525cSampleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MessageMil2525cSampleAppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1D3623250D0F684500981E51 /* MessageMil2525cSampleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MessageMil2525cSampleAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		1D6058910D05DD3D006BFB54 /* MessageMil2525cSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessageMil2525cSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28D7ACF60DDB3853001CB0EB /* MessageMil2525cSampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MessageMil2525cSampleViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		28D7ACF70DDB3853001CB0EB /* MessageMil2525cSampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MessageMil2525cSampleViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3BB1591510D1CB860095F852 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3BB1591710D1CB860095F852 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4B8B240414062A7C00820FDB /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		9702E5BC144657AF00A46CA5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		970DD3951354F0D600237D7F /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		9792E01413B26A8600C41657 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		9792E01613B26A8C00C41657 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		AFD762AC124AAF5E00DBB854 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		AFD762B0124AAF7800DBB854 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		AFD762B1124AAF7800DBB854 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		C56B406814C758B6003A46EB /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		E901D670166797DA00EAC4FC /* MessageMil2525cSampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageMil2525cSampleViewController.xib; sourceTree = "<group>"; };
+		E961A93B16526B96000BD267 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E961A94116526D0C000BD267 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		E961A94316526D15000BD267 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		E961A94516526DEE000BD267 /* libc++abi.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++abi.dylib"; path = "usr/lib/libc++abi.dylib"; sourceTree = SDKROOT; };
+		E962D0811663E19B004F2EB6 /* Mil2525CMessages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Mil2525CMessages.json; sourceTree = "<group>"; };
+		E9B0F6A4166E273400537DE5 /* MessageMil2525cSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MessageMil2525cSample-Info.plist"; sourceTree = "<group>"; };
+		E9B0F6A6166E27B100537DE5 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<group>"; };
+		E9FB73D71677BB1100FB4A01 /* mil2525c */ = {isa = PBXFileReference; lastKnownFileType = text; name = mil2525c; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/Symbols/mil2525c; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E961A94616526DEE000BD267 /* libc++abi.dylib in Frameworks */,
+				E961A94416526D15000BD267 /* OpenGLES.framework in Frameworks */,
+				E961A94216526D0C000BD267 /* libc++.dylib in Frameworks */,
+				C56B406914C758B6003A46EB /* libstdc++.dylib in Frameworks */,
+				9702E5BD144657AF00A46CA5 /* Security.framework in Frameworks */,
+				9792E01713B26A8C00C41657 /* MobileCoreServices.framework in Frameworks */,
+				9792E01513B26A8600C41657 /* MediaPlayer.framework in Frameworks */,
+				970DD3961354F0D600237D7F /* CoreText.framework in Frameworks */,
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				3BB1591610D1CB860095F852 /* CoreLocation.framework in Frameworks */,
+				3BB1591810D1CB860095F852 /* QuartzCore.framework in Frameworks */,
+				4B8B240514062A7C00820FDB /* libz.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1D3623240D0F684500981E51 /* MessageMil2525cSampleAppDelegate.h */,
+				1D3623250D0F684500981E51 /* MessageMil2525cSampleAppDelegate.m */,
+				28D7ACF60DDB3853001CB0EB /* MessageMil2525cSampleViewController.h */,
+				28D7ACF70DDB3853001CB0EB /* MessageMil2525cSampleViewController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* MessageMil2525cSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				E961A93B16526B96000BD267 /* Default-568h@2x.png */,
+				E9B0F6A6166E27B100537DE5 /* ArcGIS.bundle */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				E9B0F6A4166E273400537DE5 /* MessageMil2525cSample-Info.plist */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E9FB73D71677BB1100FB4A01 /* mil2525c */,
+				E962D0811663E19B004F2EB6 /* Mil2525CMessages.json */,
+				AFD762B0124AAF7800DBB854 /* Icon.png */,
+				AFD762B1124AAF7800DBB854 /* Icon@2x.png */,
+				E901D670166797DA00EAC4FC /* MessageMil2525cSampleViewController.xib */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				AFD762AC124AAF5E00DBB854 /* MainWindow-iPad.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4B8B240414062A7C00820FDB /* libz.dylib */,
+				E961A94116526D0C000BD267 /* libc++.dylib */,
+				E961A94516526DEE000BD267 /* libc++abi.dylib */,
+				C56B406814C758B6003A46EB /* libstdc++.dylib */,
+				E961A94316526D15000BD267 /* OpenGLES.framework */,
+				9702E5BC144657AF00A46CA5 /* Security.framework */,
+				9792E01613B26A8C00C41657 /* MobileCoreServices.framework */,
+				9792E01413B26A8600C41657 /* MediaPlayer.framework */,
+				970DD3951354F0D600237D7F /* CoreText.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+				3BB1591510D1CB860095F852 /* CoreLocation.framework */,
+				3BB1591710D1CB860095F852 /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* MessageMil2525cSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "MessageMil2525cSample" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MessageMil2525cSample;
+			productName = MapViewDemo;
+			productReference = 1D6058910D05DD3D006BFB54 /* MessageMil2525cSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "MessageMil2525cSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* MessageMil2525cSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				AFD762AD124AAF5E00DBB854 /* MainWindow-iPad.xib in Resources */,
+				AFD762B2124AAF7800DBB854 /* Icon.png in Resources */,
+				AFD762B3124AAF7800DBB854 /* Icon@2x.png in Resources */,
+				E961A93C16526B96000BD267 /* Default-568h@2x.png in Resources */,
+				E962D0821663E19B004F2EB6 /* Mil2525CMessages.json in Resources */,
+				E901D671166797DA00EAC4FC /* MessageMil2525cSampleViewController.xib in Resources */,
+				E9FB73D81677BB1100FB4A01 /* mil2525c in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* MessageMil2525cSampleAppDelegate.m in Sources */,
+				28D7ACF80DDB3853001CB0EB /* MessageMil2525cSampleViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MessageMil2525cSample_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "$(SRCROOT)/MessageMil2525cSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+					"-framework",
+					ArcGIS,
+				);
+				PRODUCT_NAME = MessageMil2525cSample;
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MessageMil2525cSample_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "$(SRCROOT)/MessageMil2525cSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+					"-framework",
+					ArcGIS,
+				);
+				PRODUCT_NAME = MessageMil2525cSample;
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "MessageMil2525cSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "MessageMil2525cSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

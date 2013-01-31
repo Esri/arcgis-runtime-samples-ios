@@ -1,0 +1,422 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9702E5911446550700A46CA5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9702E5901446550700A46CA5 /* libz.dylib */; };
+		9702E5941446550C00A46CA5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9702E5931446550C00A46CA5 /* Security.framework */; };
+		C56B404214C748EF003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B404114C748EF003A46EB /* ArcGIS.bundle */; };
+		C57DAF851513D8300022A827 /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C57DAF841513D8300022A827 /* ActivityAlertView.m */; };
+		C57F6D8E13F4B70A00DAE553 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6D8D13F4B70A00DAE553 /* UIKit.framework */; };
+		C57F6D9013F4B70A00DAE553 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6D8F13F4B70A00DAE553 /* Foundation.framework */; };
+		C57F6D9213F4B70A00DAE553 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6D9113F4B70A00DAE553 /* CoreGraphics.framework */; };
+		C57F6D9413F4B70A00DAE553 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6D9313F4B70A00DAE553 /* CoreText.framework */; };
+		C57F6D9613F4B70A00DAE553 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6D9513F4B70A00DAE553 /* CoreLocation.framework */; };
+		C57F6D9813F4B70A00DAE553 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6D9713F4B70A00DAE553 /* MediaPlayer.framework */; };
+		C57F6D9A13F4B70A00DAE553 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6D9913F4B70A00DAE553 /* MobileCoreServices.framework */; };
+		C57F6D9C13F4B70A00DAE553 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6D9B13F4B70A00DAE553 /* QuartzCore.framework */; };
+		C57F6DA213F4B70A00DAE553 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C57F6DA013F4B70A00DAE553 /* InfoPlist.strings */; };
+		C57F6DA513F4B70B00DAE553 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C57F6DA413F4B70B00DAE553 /* main.m */; };
+		C57F6DA813F4B70B00DAE553 /* SynchronousGPSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C57F6DA713F4B70B00DAE553 /* SynchronousGPSampleAppDelegate.m */; };
+		C57F6DAB13F4B70B00DAE553 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57F6DA913F4B70B00DAE553 /* MainWindow.xib */; };
+		C57F6DB013F4B70B00DAE553 /* SynchronousGPSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C57F6DAF13F4B70B00DAE553 /* SynchronousGPSampleViewController.m */; };
+		C57F6DB313F4B70B00DAE553 /* SynchronousGPSampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57F6DB113F4B70B00DAE553 /* SynchronousGPSampleViewController.xib */; };
+		C57F6DEC13F4BA7A00DAE553 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57F6DEA13F4BA7A00DAE553 /* MainWindow-iPad.xib */; };
+		C57F6DEF13F4BB1500DAE553 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C57F6DED13F4BB1500DAE553 /* icon.png */; };
+		C57F6DF013F4BB1500DAE553 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C57F6DEE13F4BB1500DAE553 /* icon@2x.png */; };
+		E976B6251679ED8A00FBA4C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E976B6241679ED8A00FBA4C9 /* Default-568h@2x.png */; };
+		E976B6281679EDDE00FBA4C9 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E976B6271679EDDE00FBA4C9 /* libc++.dylib */; };
+		E976B62A1679EDE600FBA4C9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E976B6291679EDE600FBA4C9 /* OpenGLES.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9702E5901446550700A46CA5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		9702E5931446550C00A46CA5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9795C921157D729B0066C761 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		C56B404114C748EF003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
+		C57DAF831513D8300022A827 /* ActivityAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityAlertView.h; path = SynchronousGPSample/ActivityAlertView.h; sourceTree = "<group>"; };
+		C57DAF841513D8300022A827 /* ActivityAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityAlertView.m; path = SynchronousGPSample/ActivityAlertView.m; sourceTree = "<group>"; };
+		C57F6D8913F4B70A00DAE553 /* SynchronousGPSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SynchronousGPSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C57F6D8D13F4B70A00DAE553 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C57F6D8F13F4B70A00DAE553 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C57F6D9113F4B70A00DAE553 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C57F6D9313F4B70A00DAE553 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		C57F6D9513F4B70A00DAE553 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C57F6D9713F4B70A00DAE553 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		C57F6D9913F4B70A00DAE553 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		C57F6D9B13F4B70A00DAE553 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C57F6D9F13F4B70A00DAE553 /* SynchronousGPSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SynchronousGPSample-Info.plist"; sourceTree = "<group>"; };
+		C57F6DA113F4B70A00DAE553 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C57F6DA313F4B70A00DAE553 /* SynchronousGPSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SynchronousGPSample-Prefix.pch"; sourceTree = "<group>"; };
+		C57F6DA413F4B70B00DAE553 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C57F6DA613F4B70B00DAE553 /* SynchronousGPSampleAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SynchronousGPSampleAppDelegate.h; path = SynchronousGPSample/SynchronousGPSampleAppDelegate.h; sourceTree = "<group>"; };
+		C57F6DA713F4B70B00DAE553 /* SynchronousGPSampleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SynchronousGPSampleAppDelegate.m; path = SynchronousGPSample/SynchronousGPSampleAppDelegate.m; sourceTree = "<group>"; };
+		C57F6DAA13F4B70B00DAE553 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		C57F6DAE13F4B70B00DAE553 /* SynchronousGPSampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SynchronousGPSampleViewController.h; path = SynchronousGPSample/SynchronousGPSampleViewController.h; sourceTree = "<group>"; };
+		C57F6DAF13F4B70B00DAE553 /* SynchronousGPSampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SynchronousGPSampleViewController.m; path = SynchronousGPSample/SynchronousGPSampleViewController.m; sourceTree = "<group>"; };
+		C57F6DB213F4B70B00DAE553 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SynchronousGPSampleViewController.xib; sourceTree = "<group>"; };
+		C57F6DEB13F4BA7A00DAE553 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "SynchronousGPSample/iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		C57F6DED13F4BB1500DAE553 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		C57F6DEE13F4BB1500DAE553 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		E976B6241679ED8A00FBA4C9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E976B6271679EDDE00FBA4C9 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		E976B6291679EDE600FBA4C9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C57F6D8613F4B70A00DAE553 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E976B62A1679EDE600FBA4C9 /* OpenGLES.framework in Frameworks */,
+				E976B6281679EDDE00FBA4C9 /* libc++.dylib in Frameworks */,
+				9702E5941446550C00A46CA5 /* Security.framework in Frameworks */,
+				9702E5911446550700A46CA5 /* libz.dylib in Frameworks */,
+				C57F6D8E13F4B70A00DAE553 /* UIKit.framework in Frameworks */,
+				C57F6D9013F4B70A00DAE553 /* Foundation.framework in Frameworks */,
+				C57F6D9213F4B70A00DAE553 /* CoreGraphics.framework in Frameworks */,
+				C57F6D9413F4B70A00DAE553 /* CoreText.framework in Frameworks */,
+				C57F6D9613F4B70A00DAE553 /* CoreLocation.framework in Frameworks */,
+				C57F6D9813F4B70A00DAE553 /* MediaPlayer.framework in Frameworks */,
+				C57F6D9A13F4B70A00DAE553 /* MobileCoreServices.framework in Frameworks */,
+				C57F6D9C13F4B70A00DAE553 /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C57F6D7E13F4B70A00DAE553 = {
+			isa = PBXGroup;
+			children = (
+				E976B6291679EDE600FBA4C9 /* OpenGLES.framework */,
+				E976B6271679EDDE00FBA4C9 /* libc++.dylib */,
+				E976B6241679ED8A00FBA4C9 /* Default-568h@2x.png */,
+				C56B404114C748EF003A46EB /* ArcGIS.bundle */,
+				C57F6DE913F4BA7900DAE553 /* iPad */,
+				C57F6D9E13F4B70A00DAE553 /* Supporting Files */,
+				C57F6DBA13F4B76800DAE553 /* Classes */,
+				C57F6DB913F4B75E00DAE553 /* iPhone */,
+				C57F6D8C13F4B70A00DAE553 /* Frameworks */,
+				C57F6D8A13F4B70A00DAE553 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C57F6D8A13F4B70A00DAE553 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C57F6D8913F4B70A00DAE553 /* SynchronousGPSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C57F6D8C13F4B70A00DAE553 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9795C921157D729B0066C761 /* libstdc++.dylib */,
+				9702E5931446550C00A46CA5 /* Security.framework */,
+				9702E5901446550700A46CA5 /* libz.dylib */,
+				C57F6D8D13F4B70A00DAE553 /* UIKit.framework */,
+				C57F6D8F13F4B70A00DAE553 /* Foundation.framework */,
+				C57F6D9113F4B70A00DAE553 /* CoreGraphics.framework */,
+				C57F6D9313F4B70A00DAE553 /* CoreText.framework */,
+				C57F6D9513F4B70A00DAE553 /* CoreLocation.framework */,
+				C57F6D9713F4B70A00DAE553 /* MediaPlayer.framework */,
+				C57F6D9913F4B70A00DAE553 /* MobileCoreServices.framework */,
+				C57F6D9B13F4B70A00DAE553 /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C57F6D9E13F4B70A00DAE553 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C57F6DED13F4BB1500DAE553 /* icon.png */,
+				C57F6DEE13F4BB1500DAE553 /* icon@2x.png */,
+				C57F6D9F13F4B70A00DAE553 /* SynchronousGPSample-Info.plist */,
+				C57F6DA013F4B70A00DAE553 /* InfoPlist.strings */,
+				C57F6DA313F4B70A00DAE553 /* SynchronousGPSample-Prefix.pch */,
+				C57F6DA413F4B70B00DAE553 /* main.m */,
+			);
+			name = "Supporting Files";
+			path = SynchronousGPSample;
+			sourceTree = "<group>";
+		};
+		C57F6DB913F4B75E00DAE553 /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				C57F6DA913F4B70B00DAE553 /* MainWindow.xib */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
+		C57F6DBA13F4B76800DAE553 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C57DAF831513D8300022A827 /* ActivityAlertView.h */,
+				C57DAF841513D8300022A827 /* ActivityAlertView.m */,
+				C57F6DA613F4B70B00DAE553 /* SynchronousGPSampleAppDelegate.h */,
+				C57F6DA713F4B70B00DAE553 /* SynchronousGPSampleAppDelegate.m */,
+				C57F6DAE13F4B70B00DAE553 /* SynchronousGPSampleViewController.h */,
+				C57F6DAF13F4B70B00DAE553 /* SynchronousGPSampleViewController.m */,
+				C57F6DB113F4B70B00DAE553 /* SynchronousGPSampleViewController.xib */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		C57F6DE913F4BA7900DAE553 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				C57F6DEA13F4BA7A00DAE553 /* MainWindow-iPad.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C57F6D8813F4B70A00DAE553 /* SynchronousGPSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C57F6DB613F4B70B00DAE553 /* Build configuration list for PBXNativeTarget "SynchronousGPSample" */;
+			buildPhases = (
+				C57F6D8513F4B70A00DAE553 /* Sources */,
+				C57F6D8613F4B70A00DAE553 /* Frameworks */,
+				C57F6D8713F4B70A00DAE553 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SynchronousGPSample;
+			productName = SynchronousGPSample;
+			productReference = C57F6D8913F4B70A00DAE553 /* SynchronousGPSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C57F6D8013F4B70A00DAE553 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = C57F6D8313F4B70A00DAE553 /* Build configuration list for PBXProject "SynchronousGPSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C57F6D7E13F4B70A00DAE553;
+			productRefGroup = C57F6D8A13F4B70A00DAE553 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C57F6D8813F4B70A00DAE553 /* SynchronousGPSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C57F6D8713F4B70A00DAE553 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C57F6DA213F4B70A00DAE553 /* InfoPlist.strings in Resources */,
+				C57F6DAB13F4B70B00DAE553 /* MainWindow.xib in Resources */,
+				C57F6DB313F4B70B00DAE553 /* SynchronousGPSampleViewController.xib in Resources */,
+				C57F6DEC13F4BA7A00DAE553 /* MainWindow-iPad.xib in Resources */,
+				C57F6DEF13F4BB1500DAE553 /* icon.png in Resources */,
+				C57F6DF013F4BB1500DAE553 /* icon@2x.png in Resources */,
+				C56B404214C748EF003A46EB /* ArcGIS.bundle in Resources */,
+				E976B6251679ED8A00FBA4C9 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C57F6D8513F4B70A00DAE553 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C57F6DA513F4B70B00DAE553 /* main.m in Sources */,
+				C57F6DA813F4B70B00DAE553 /* SynchronousGPSampleAppDelegate.m in Sources */,
+				C57F6DB013F4B70B00DAE553 /* SynchronousGPSampleViewController.m in Sources */,
+				C57DAF851513D8300022A827 /* ActivityAlertView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C57F6DA013F4B70A00DAE553 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C57F6DA113F4B70A00DAE553 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C57F6DA913F4B70B00DAE553 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C57F6DAA13F4B70B00DAE553 /* en */,
+			);
+			name = MainWindow.xib;
+			path = SynchronousGPSample;
+			sourceTree = "<group>";
+		};
+		C57F6DB113F4B70B00DAE553 /* SynchronousGPSampleViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C57F6DB213F4B70B00DAE553 /* en */,
+			);
+			name = SynchronousGPSampleViewController.xib;
+			path = SynchronousGPSample;
+			sourceTree = "<group>";
+		};
+		C57F6DEA13F4BA7A00DAE553 /* MainWindow-iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C57F6DEB13F4BA7A00DAE553 /* en */,
+			);
+			name = "MainWindow-iPad.xib";
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C57F6DB413F4B70B00DAE553 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
+			};
+			name = Debug;
+		};
+		C57F6DB513F4B70B00DAE553 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
+			};
+			name = Release;
+		};
+		C57F6DB713F4B70B00DAE553 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SynchronousGPSample/SynchronousGPSample-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "SynchronousGPSample/SynchronousGPSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+					"-framework",
+					ArcGIS,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C57F6DB813F4B70B00DAE553 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SynchronousGPSample/SynchronousGPSample-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "SynchronousGPSample/SynchronousGPSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+					"-framework",
+					ArcGIS,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C57F6D8313F4B70A00DAE553 /* Build configuration list for PBXProject "SynchronousGPSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C57F6DB413F4B70B00DAE553 /* Debug */,
+				C57F6DB513F4B70B00DAE553 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C57F6DB613F4B70B00DAE553 /* Build configuration list for PBXNativeTarget "SynchronousGPSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C57F6DB713F4B70B00DAE553 /* Debug */,
+				C57F6DB813F4B70B00DAE553 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C57F6D8013F4B70A00DAE553 /* Project object */;
+}

@@ -1,0 +1,173 @@
+/**/
+"Cancel" = "Cancel";
+/**/
+"Delete" = "Delete";
+/**/
+"Open" = "Open";
+/**/
+"Edit" = "Edit";
+/**/
+"Yes" = "Yes";
+
+/*Geometry Edit Action Name*/
+"Apply Geometry" = "Apply Geometry";
+/*Geometry Edit Action Name*/
+"Clear Geometry" = "Clear Geometry";
+/*Geometry Edit Action Name*/
+"Delete Vertex" = "Delete Vertex";
+/*Geometry Edit Action Name*/
+"Insert Part" = "Insert Part";
+/*Geometry Edit Action Name*/
+"Insert Vertex" = "Insert Vertex";
+/*Geometry Edit Action Name*/
+"Move Vertex" = "Move Vertex";
+/*Geometry Edit Action Name*/
+"Remove Part" = "Remove Part";
+
+/*Collecting attachments*/
+"Add" = "Add";
+/*Collecting attachments*/
+"Take Photo or Video" = "Take Photo or Video";
+/*Collecting attachments*/
+"Choose From Library" = "Choose From Library";
+/*Collecting attachments*/
+"Photo" = "Photo";
+/*Collecting attachments*/
+"Video" = "Video";
+/*Collecting attachments*/
+"Save To Photo Library" = "Save To Photo Library";
+/*Collecting attachments*/
+"Download" = "Download";
+
+/*Date attribute*/
+"Today" = "Today";
+
+/**/
+"Attachments" = "Attachments";
+"Attributes" = "Attributes";
+
+/**/
+"Open in Safari" = "Open in Safari";
+
+/* Please enter a numeric value between 0 and 5.*/
+"Enter a number between %i and %i." = "Enter a number between %i and %i.";
+
+/* Please enter a numeric value between 0.5 and 5.0.*/
+"Enter a number between %f and %f." = "Enter a number between %f and %f.";
+
+/* string length error, when user enters too many characters in string attribute editor:
+  Too many characters.  Current: 512.  Allowed: 256 */
+"Too many characters (%@)" = "Too many characters (%@)";
+
+/* When a number is entered outside the range */
+"Number is outside the acceptable range." = "Number is outside the acceptable range.";
+
+/* BLOB, RASTER, etc */
+"Field type not supported" = "Field type not supported";
+
+/**/
+"%d of %d" = "%d of %d";
+
+/**/
+"Changing Feature Type" = "Changing Feature Type";
+"You are changing the feature type, which may potentially overwrite some field values. Are you sure you want to do this?" =  "You are changing the feature type, which may potentially overwrite some field values. Are you sure you want to do this?";
+
+/**/
+"Data for pie chart is invalid" = "Data for pie chart is invalid";
+"No data to create a pie chart" = "No data to create a pie chart";
+
+/**/
+"Created by %@ seconds ago" = "Created by %@ seconds ago";
+
+/**/
+"Created by %@ a minute ago" = "Created by %@ a minute ago";
+
+/**/
+"Edited by %@ seconds ago" = "Edited by %@ seconds ago";
+
+/**/
+"Edited by %@ a minute ago" = "Edited by %@ a minute ago";
+
+/**/
+"Created seconds ago" = "Created seconds ago";
+
+/**/
+"Created a minute ago" = "Created a minute ago";
+
+/**/
+"Edited seconds ago" = "Edited seconds ago";
+
+/**/
+"Edited a minute ago" = "Edited a minute ago";
+
+/**/
+"Created by %@ %d minutes ago" = "Created by %@ %d minutes ago";
+
+/**/
+"Created by %@ an hour ago" = "Created by %@ an hour ago";
+
+/**/
+"Created by %@ %d hours ago" = "Created by %@ %d hours ago";
+
+/*"Created by %@ on ${weekDay} at ${formattedTime}"*/
+"Created by %@ on %@ at %@ - day" = "Created by %@ on %@ at %@";
+
+/*"Created by %@ on ${formattedDate} at ${formattedTime}"*/
+"Created by %@ on %@ at %@ - full" = "Created by %@ on %@ at %@";
+
+/**/
+"Edited by %@ %d minutes ago" = "Edited by %@ %d minutes ago";
+
+/**/
+"Edited by %@ an hour ago" = "Edited by %@ an hour ago";
+
+/**/
+"Edited by %@ %d hours ago" = "Edited by %@ %d hours ago";
+
+/**/
+"Edited by %@ on %@ at %@ - day" = "Edited by %@ on %@ at %@";
+
+/**/
+"Edited by %@ on %@ at %@ - full" = "Edited by %@ on %@ at %@";
+
+/**/
+"Created by %@" = "Created by %@";
+
+/**/
+"Edited by %@" = "Edited by %@";
+
+/**/
+"Created %d minutes ago" = "Created %d minutes ago";
+
+/**/
+"Created an hour ago" = "Created an hour ago";
+
+/**/
+"Created %d hours ago" = "Created %d hours ago";
+
+/*"Created on ${weekDay} at ${formattedTime}"*/
+"Created on %@ at %@ - day" = "Created on %@ at %@";
+
+/*"Created on ${formattedDate} at ${formattedTime}"*/
+"Created on %@ at %@ - full" = "Created on %@ at %@";
+
+/**/
+"Edited %d minutes ago" = "Edited %d minutes ago";
+
+/**/
+"Edited an hour ago" = "Edited an hour ago";
+
+/**/
+"Edited %d hours ago" = "Edited %d hours ago";
+
+/*"Edited on ${weekDay} at ${formattedTime}"*/
+"Edited on %@ at %@ - day" = "Edited on %@ at %@";
+
+/*"Edited on ${formattedDate} at ${formattedTime}"*/
+"Edited on %@ at %@ - full" = "Edited on %@ at %@";
+
+/* Used to denote a required field */
+"Required" = "Required";
+
+/* Used for naming layers with no names */
+"Layer %d" = "Layer %d";

@@ -1,0 +1,397 @@
+TGeometryServiceTaskSample
+v5
+r1
+cCheck dependencies
+cProcessInfoPlistFile /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/Info.plist GeometryServiceTaskSample-Info.plist
+cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/GeometryServiceSampleViewController.xib
+cCpResource pushpin.png build/Debug-iphonesimulator/GeometryServiceTaskSample.app/pushpin.png
+cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/MainWindow.xib
+cCpResource icon.png build/Debug-iphonesimulator/GeometryServiceTaskSample.app/icon.png
+cCpResource icon@2x.png build/Debug-iphonesimulator/GeometryServiceTaskSample.app/icon@2x.png
+cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Resources-iPad/MainWindow-iPad.xib
+cCpResource Default-568h@2x.png build/Debug-iphonesimulator/GeometryServiceTaskSample.app/Default-568h@2x.png
+cCpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/GeometryServiceTaskSample.app/ArcGIS.bundle
+cProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeometryServiceTaskSample_Prefix-fduubaepdnvfgocvhzphvoxdrpxy/GeometryServiceTaskSample_Prefix.pch.pth GeometryServiceTaskSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/main.o /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/GeometryServiceSampleViewController.o /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Classes/GeometryServiceSampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/GeometryServiceSampleAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Classes/GeometryServiceSampleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLd /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/GeometryServiceTaskSample normal i386
+cGenerateDSYMFile /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app.dSYM /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/GeometryServiceTaskSample
+cTouch /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk
+c00000000504916AD0000000000000110
+t1346967213
+s272
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000005060CC720000000000228FD0
+t1348521074
+s2265040
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
+c000000005060CC72000000000009C220
+t1348521074
+s639520
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreText.framework/CoreText
+c000000005060CC7200000000000F62E0
+t1348521074
+s1008352
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000005060CC7300000000003DCEF0
+t1348521075
+s4050672
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+c000000005060CC7600000000002C6C10
+t1348521078
+s2911248
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
+c000000005060CC7600000000000BCB50
+t1348521078
+s772944
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/OpenGLES.framework/OpenGLES
+c000000005060CC760000000000015400
+t1348521078
+s87040
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c000000005060CC7600000000001D57A0
+t1348521078
+s1922976
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Security.framework/Security
+c000000005060CC77000000000006E370
+t1348521079
+s451440
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000005060CC790000000000AB3D60
+t1348521081
+s11222368
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/usr/lib/libc++.dylib
+c000000005060CC8700000000000AFCD0
+t1348521095
+s720080
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/usr/lib/libz.dylib
+c000000005060CC880000000000013500
+t1348521096
+s79104
+
+N/Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle
+c0000000050D4B2000000000000000550
+t1356116480
+s1360
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Classes/GeometryServiceSampleAppDelegate.m
+c000000005109ADCA00000000000003AE
+t1359588810
+s942
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Classes/GeometryServiceSampleViewController.m
+c000000005109ADCA00000000000027A5
+t1359588810
+s10149
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Default-568h@2x.png
+c000000005109ADC900000000000048A2
+t1359588809
+s18594
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/GeometryServiceSampleViewController.xib
+c000000005109ADC90000000000005502
+t1359588809
+s21762
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/GeometryServiceTaskSample_Prefix.pch
+c000000005109ADC900000000000000DB
+t1359588809
+s219
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/MainWindow.xib
+c000000005109ADC900000000000027C9
+t1359588809
+s10185
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Resources-iPad/MainWindow-iPad.xib
+c000000005109ADCA0000000000002E8F
+t1359588810
+s11919
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app.dSYM
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/ArcGIS.bundle
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/Default-568h@2x.png
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/GeometryServiceSampleViewController.nib
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/GeometryServiceTaskSample
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/Info.plist
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/MainWindow-iPad.nib
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/MainWindow.nib
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/PkgInfo
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/icon.png
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/icon@2x.png
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/pushpin.png
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/GeometryServiceSampleAppDelegate.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/GeometryServiceSampleViewController.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/GeometryServiceTaskSample.LinkFileList
+c000000005109B0900000000000000260
+t1359589520
+s608
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/main.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/icon.png
+c000000005109ADC90000000000000903
+t1359588809
+s2307
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/icon@2x.png
+c000000005109ADC90000000000000A25
+t1359588809
+s2597
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/main.m
+c000000005109ADC90000000000000272
+t1359588809
+s626
+
+N/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/pushpin.png
+c000000005109ADC900000000000004D7
+t1359588809
+s1239
+
+N/var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeometryServiceTaskSample_Prefix-fduubaepdnvfgocvhzphvoxdrpxy/GeometryServiceTaskSample_Prefix.pch.pth
+t2
+s0
+
+NGeometryServiceTaskSample-Info.plist
+c000000005109ADC9000000000000042E
+t1359588809
+s1070
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Classes/GeometryServiceSampleAppDelegate.m
+r0
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Classes/GeometryServiceSampleViewController.m
+r0
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/main.m
+r0
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependenciesed2cc210e8b9b641^e04ccc10e8b9b641^---0#1#0#--18"Check dependencies36"27EB408A-77D1-401D-BCFA-3B52C543435F-
+
+CCompileC build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/GeometryServiceSampleAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Classes/GeometryServiceSampleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381282323.722725
+e381282324.056347
+r1
+xCompileC
+xbuild/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/GeometryServiceSampleAppDelegate.o
+x/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Classes/GeometryServiceSampleAppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection114"Compile /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Classes/GeometryServiceSampleAppDelegate.m1022b913e8b9b641^f4700e14e8b9b641^---0#0#0#-19%DVTDocumentLocation2@122"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Classes/GeometryServiceSampleAppDelegate.m0000000000000000^4737"CompileC build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/GeometryServiceSampleAppDelegate.o Classes/GeometryServiceSampleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/GeometryServiceTaskSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/GeometryServiceTaskSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/GeometryServiceTaskSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/GeometryServiceTaskSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeometryServiceTaskSample_Prefix-fduubaepdnvfgocvhzphvoxdrpxy/GeometryServiceTaskSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/GeometryServiceSampleAppDelegate.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/GeometryServiceSampleAppDelegate.dia -c /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Classes/GeometryServiceSampleAppDelegate.m -o /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/GeometryServiceSampleAppDelegate.o36"F75C808B-91A3-44CC-AF43-8864E0AD4B69-
+
+CCompileC build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/GeometryServiceSampleViewController.o /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Classes/GeometryServiceSampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381282323.722678
+e381282324.096222
+r1
+xCompileC
+xbuild/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/GeometryServiceSampleViewController.o
+x/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Classes/GeometryServiceSampleViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection117"Compile /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Classes/GeometryServiceSampleViewController.m5322b913e8b9b641^12a21814e8b9b641^---0#0#0#-19%DVTDocumentLocation2@125"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Classes/GeometryServiceSampleViewController.m0000000000000000^4755"CompileC build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/GeometryServiceSampleViewController.o Classes/GeometryServiceSampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/GeometryServiceTaskSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/GeometryServiceTaskSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/GeometryServiceTaskSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/GeometryServiceTaskSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeometryServiceTaskSample_Prefix-fduubaepdnvfgocvhzphvoxdrpxy/GeometryServiceTaskSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/GeometryServiceSampleViewController.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/GeometryServiceSampleViewController.dia -c /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Classes/GeometryServiceSampleViewController.m -o /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/GeometryServiceSampleViewController.o36"795C3DF3-F003-4028-8820-AC77B785755D-
+
+CCompileC build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/main.o /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381282323.722675
+e381282323.999113
+r1
+xCompileC
+xbuild/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/main.o
+x/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection78"Compile /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/main.mee21b913e8b9b641^69c9ff13e8b9b641^---0#0#0#-19%DVTDocumentLocation2@86"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/main.m0000000000000000^4553"CompileC build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/main.o main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/GeometryServiceTaskSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/GeometryServiceTaskSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/GeometryServiceTaskSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/GeometryServiceTaskSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeometryServiceTaskSample_Prefix-fduubaepdnvfgocvhzphvoxdrpxy/GeometryServiceTaskSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/main.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/main.dia -c /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/main.m -o /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/main.o36"C8423509-C46B-4209-85CE-9BC9E8388B36-
+
+CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/GeometryServiceSampleViewController.xib
+s381282320.813676
+e381282321.364514
+r1
+xCompileXIB
+x/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/GeometryServiceSampleViewController.xib
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection113"Compiling /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/GeometryServiceSampleViewController.xib056bd010e8b9b641^d7515d11e8b9b641^---0#0#0#-19%DVTDocumentLocation2@119"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/GeometryServiceSampleViewController.xib0000000000000000^1027"CompileXIB GeometryServiceSampleViewController.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/GeometryServiceSampleViewController.nib /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/GeometryServiceSampleViewController.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"087622D0-8B94-4FE0-AD45-9985847E9971-
+
+CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/MainWindow.xib
+s381282320.813686
+e381282322.635211
+r1
+xCompileXIB
+x/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/MainWindow.xib
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection88"Compiling /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/MainWindow.xib0070d010e8b9b641^9414a412e8b9b641^---0#0#0#-19%DVTDocumentLocation2@94"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/MainWindow.xib0000000000000000^952"CompileXIB MainWindow.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/MainWindow.nib /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/MainWindow.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"CDC5A806-046A-49A6-BA25-1DAAC0FBA004-
+
+CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Resources-iPad/MainWindow-iPad.xib
+s381282320.813945
+e381282321.157973
+r1
+xCompileXIB
+x/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Resources-iPad/MainWindow-iPad.xib
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection108"Compiling /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Resources-iPad/MainWindow-iPad.xibed7fd010e8b9b641^f8712811e8b9b641^---0#0#0#-19%DVTDocumentLocation2@114"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Resources-iPad/MainWindow-iPad.xib0000000000000000^997"CompileXIB Resources-iPad/MainWindow-iPad.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/MainWindow-iPad.nib /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Resources-iPad/MainWindow-iPad.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"F0C25862-F9AA-4D2C-BEB2-568A48BDD5B6-
+
+CCpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/GeometryServiceTaskSample.app/ArcGIS.bundle
+s381282320.814068
+e381282321.363779
+r1
+xCpResource
+x/Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle
+xbuild/Debug-iphonesimulator/GeometryServiceTaskSample.app/ArcGIS.bundle
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"Copy build/Debug-iphonesimulator/GeometryServiceTaskSample.app/ArcGIS.bundlecb83d010e8b9b641^04215d11e8b9b641^---0#0#0#-19%DVTDocumentLocation2@151"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/ArcGIS.bundle000000000080d041^779"CpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/GeometryServiceTaskSample.app/ArcGIS.bundle    cd /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app36"CF72A632-5D13-4AE1-889E-1E6FE2BA44D1-
+
+CCpResource Default-568h@2x.png build/Debug-iphonesimulator/GeometryServiceTaskSample.app/Default-568h@2x.png
+s381282320.813958
+e381282320.822104
+r1
+xCpResource
+xDefault-568h@2x.png
+xbuild/Debug-iphonesimulator/GeometryServiceTaskSample.app/Default-568h@2x.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection82"Copy build/Debug-iphonesimulator/GeometryServiceTaskSample.app/Default-568h@2x.pngb379d010e8b9b641^bc75d210e8b9b641^---0#0#0#-19%DVTDocumentLocation2@157"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/Default-568h@2x.png000000000080d041^699"CpResource "Default-568h@2x.png" "build/Debug-iphonesimulator/GeometryServiceTaskSample.app/Default-568h@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/Default-568h@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app36"7A17B408-31C4-4E47-92FD-3D0227E3AC87-
+
+CCpResource icon.png build/Debug-iphonesimulator/GeometryServiceTaskSample.app/icon.png
+s381282320.813823
+e381282320.818228
+r1
+xCpResource
+xicon.png
+xbuild/Debug-iphonesimulator/GeometryServiceTaskSample.app/icon.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection71"Copy build/Debug-iphonesimulator/GeometryServiceTaskSample.app/icon.png8b6bd010e8b9b641^d977d110e8b9b641^---0#0#0#-19%DVTDocumentLocation2@146"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/icon.png000000000080d041^660"CpResource icon.png build/Debug-iphonesimulator/GeometryServiceTaskSample.app/icon.png    cd /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/icon.png /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app36"EE1A9346-4ECC-484E-8556-632D0CD3D2E8-
+
+CCpResource icon@2x.png build/Debug-iphonesimulator/GeometryServiceTaskSample.app/icon@2x.png
+s381282320.813915
+e381282320.820555
+r1
+xCpResource
+xicon@2x.png
+xbuild/Debug-iphonesimulator/GeometryServiceTaskSample.app/icon@2x.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection74"Copy build/Debug-iphonesimulator/GeometryServiceTaskSample.app/icon@2x.png1d75d010e8b9b641^4910d210e8b9b641^---0#0#0#-19%DVTDocumentLocation2@149"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/icon@2x.png000000000080d041^675"CpResource "icon@2x.png" "build/Debug-iphonesimulator/GeometryServiceTaskSample.app/icon@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/icon@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app36"5966A49C-0187-4347-976E-5205327546A6-
+
+CCpResource pushpin.png build/Debug-iphonesimulator/GeometryServiceTaskSample.app/pushpin.png
+s381282320.813681
+e381282320.815601
+r1
+xCpResource
+xpushpin.png
+xbuild/Debug-iphonesimulator/GeometryServiceTaskSample.app/pushpin.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection74"Copy build/Debug-iphonesimulator/GeometryServiceTaskSample.app/pushpin.png5760d010e8b9b641^18cfd010e8b9b641^---0#0#0#-19%DVTDocumentLocation2@149"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/pushpin.png000000000080d041^669"CpResource pushpin.png build/Debug-iphonesimulator/GeometryServiceTaskSample.app/pushpin.png    cd /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/pushpin.png /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app36"3852BE0F-5A65-4175-B7BA-DD36EC09FAE6-
+
+CGenerateDSYMFile /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app.dSYM /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/GeometryServiceTaskSample
+s381282326.434126
+e381282329.735269
+r1
+xGenerateDSYMFile
+x/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app.dSYM
+x/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/GeometryServiceTaskSample
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection137"Generating /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app.dSYM27326f16e8b9b641^043dbc19e8b9b641^---0#0#0#-19%DVTDocumentLocation2@142"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app.dSYM000000000080d041^808"GenerateDSYMFile build/Debug-iphonesimulator/GeometryServiceTaskSample.app.dSYM build/Debug-iphonesimulator/GeometryServiceTaskSample.app/GeometryServiceTaskSample    cd /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/GeometryServiceTaskSample -o /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app.dSYM36"D155E1BB-5FDB-40FC-9314-5F0EF2556AC7-
+
+CLd /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/GeometryServiceTaskSample normal i386
+s381282324.109363
+e381282326.427072
+r1
+xLd
+x/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/GeometryServiceTaskSample
+xnormal
+xi386
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection152"Link /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/GeometryServiceTaskSampleb9171c14e8b9b641^75586d16e8b9b641^---0#0#0#--1902"Ld build/Debug-iphonesimulator/GeometryServiceTaskSample.app/GeometryServiceTaskSample normal i386    cd /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo    setenv IPHONEOS_DEPLOYMENT_TARGET 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -L/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -filelist /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/Objects-normal/i386/GeometryServiceTaskSample.LinkFileList -Xlinker -objc_abi_version -Xlinker 2 -ObjC -all_load -framework ArcGIS -fobjc-arc -fobjc-link-runtime -Xlinker -no_implicit_dylibs -mios-simulator-version-min=5.0 -framework OpenGLES -lc++ -framework Security -lz -framework MobileCoreServices -framework MediaPlayer -framework Foundation -framework UIKit -framework CoreGraphics -framework QuartzCore -framework CoreLocation -framework CoreText -o /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/GeometryServiceTaskSample36"CDDEE4AF-58FC-49F9-A44B-E62C7801C5D6-
+
+CProcessInfoPlistFile /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/Info.plist GeometryServiceTaskSample-Info.plist
+s381282320.802568
+e381282320.805351
+r1
+xProcessInfoPlistFile
+x/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/Info.plist
+xGeometryServiceTaskSample-Info.plist
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Process GeometryServiceTaskSample-Info.plistba82cd10e8b9b641^0a2ece10e8b9b641^---0#0#0#-19%DVTDocumentLocation2@116"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/GeometryServiceTaskSample-Info.plist0000000000000000^799"ProcessInfoPlistFile build/Debug-iphonesimulator/GeometryServiceTaskSample.app/Info.plist GeometryServiceTaskSample-Info.plist    cd /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility GeometryServiceTaskSample-Info.plist -genpkginfo /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app/Info.plist36"6BD4781A-A338-45AE-A54B-36B472435584-
+
+CProcessPCH /Users/dive0000/Library/Developer/Xcode/DerivedData/GeometryServiceTaskSample-cgttzaygqurmrscfmcgpuofzkxip/Index/PrecompiledHeaders/GeometryServiceTaskSample_Prefix-fhgwwoelxpzcdkbjcickllqdfqdv_ast/GeometryServiceTaskSample_Prefix.pch.pth GeometryServiceTaskSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
+r0
+
+CProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeometryServiceTaskSample_Prefix-fduubaepdnvfgocvhzphvoxdrpxy/GeometryServiceTaskSample_Prefix.pch.pth GeometryServiceTaskSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381282322.642597
+e381282323.715449
+r1
+xProcessPCH
+x/var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeometryServiceTaskSample_Prefix-fduubaepdnvfgocvhzphvoxdrpxy/GeometryServiceTaskSample_Prefix.pch.pth
+xGeometryServiceTaskSample_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection47"Precompile GeometryServiceTaskSample_Prefix.pch399da412e8b9b641^aa2bb713e8b9b641^---0#0#0#-19%DVTDocumentLocation2@116"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/GeometryServiceTaskSample_Prefix.pch0000000000000000^4557"ProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeometryServiceTaskSample_Prefix-fduubaepdnvfgocvhzphvoxdrpxy/GeometryServiceTaskSample_Prefix.pch.pth GeometryServiceTaskSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/GeometryServiceTaskSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/GeometryServiceTaskSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/GeometryServiceTaskSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/GeometryServiceTaskSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/GeometryServiceTaskSample.build/Debug-iphonesimulator/GeometryServiceTaskSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad --serialize-diagnostics /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeometryServiceTaskSample_Prefix-fduubaepdnvfgocvhzphvoxdrpxy/GeometryServiceTaskSample_Prefix.pch.dia -c /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/GeometryServiceTaskSample_Prefix.pch -o /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeometryServiceTaskSample_Prefix-fduubaepdnvfgocvhzphvoxdrpxy/GeometryServiceTaskSample_Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeometryServiceTaskSample_Prefix-fduubaepdnvfgocvhzphvoxdrpxy/GeometryServiceTaskSample_Prefix.pch.d36"DF4607F1-A78A-4936-BFB2-0BA1FFDE16CA-
+
+CTouch /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app
+s381282329.743126
+e381282329.813950
+r1
+xTouch
+x/Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection127"Touch /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.appfd4bbe19e8b9b641^8d5fd019e8b9b641^---0#0#0#--474"Touch build/Debug-iphonesimulator/GeometryServiceTaskSample.app    cd /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/dive0000/iOS/setup/OnlineSamples/GeometryServiceTaskDemo/build/Debug-iphonesimulator/GeometryServiceTaskSample.app36"DB7ECB91-7B9B-4F42-8AC2-588BBB447928-
+

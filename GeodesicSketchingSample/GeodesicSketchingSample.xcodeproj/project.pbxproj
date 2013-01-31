@@ -1,0 +1,400 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		97B8C3E91678144B003B6E1B /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B8C3E81678144B003B6E1B /* libc++.dylib */; };
+		97B8C3EC16781458003B6E1B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B8C3EB16781458003B6E1B /* OpenGLES.framework */; };
+		97B8C3EE16781467003B6E1B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B8C3ED16781467003B6E1B /* Default-568h@2x.png */; };
+		DE490710153C8F45009D0F7B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE49070F153C8F45009D0F7B /* UIKit.framework */; };
+		DE490712153C8F45009D0F7B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE490711153C8F45009D0F7B /* Foundation.framework */; };
+		DE490714153C8F45009D0F7B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE490713153C8F45009D0F7B /* CoreGraphics.framework */; };
+		DE49071A153C8F45009D0F7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE490718153C8F45009D0F7B /* InfoPlist.strings */; };
+		DE49071C153C8F45009D0F7B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE49071B153C8F45009D0F7B /* main.m */; };
+		DE490720153C8F45009D0F7B /* AGSGeodesicSketchingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE49071F153C8F45009D0F7B /* AGSGeodesicSketchingAppDelegate.m */; };
+		DE490723153C8F45009D0F7B /* AGSGeodesicSketchingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE490722153C8F45009D0F7B /* AGSGeodesicSketchingViewController.m */; };
+		DE490726153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE490724153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPhone.xib */; };
+		DE490729153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE490727153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPad.xib */; };
+		DE490730153C9005009D0F7B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE49072F153C9005009D0F7B /* CoreLocation.framework */; };
+		DE490732153C900E009D0F7B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE490731153C900E009D0F7B /* QuartzCore.framework */; };
+		DE490734153C901D009D0F7B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE490733153C901D009D0F7B /* CoreText.framework */; };
+		DE490738153C9047009D0F7B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE490737153C9047009D0F7B /* MediaPlayer.framework */; };
+		DE49073A153C9054009D0F7B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE490739153C9054009D0F7B /* MobileCoreServices.framework */; };
+		DE49073C153C905F009D0F7B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DE49073B153C905F009D0F7B /* libz.dylib */; };
+		DE49073E153C9068009D0F7B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE49073D153C9068009D0F7B /* Security.framework */; };
+		DE6879FF1540C45B00CF0AF1 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DE6879F81540C45B00CF0AF1 /* icon.png */; };
+		DE687A001540C45B00CF0AF1 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE6879F91540C45B00CF0AF1 /* icon@2x.png */; };
+		DE687A021540C45B00CF0AF1 /* redo.gif in Resources */ = {isa = PBXBuildFile; fileRef = DE6879FB1540C45B00CF0AF1 /* redo.gif */; };
+		DE687A031540C45B00CF0AF1 /* tinyplane.png in Resources */ = {isa = PBXBuildFile; fileRef = DE6879FC1540C45B00CF0AF1 /* tinyplane.png */; };
+		DE687A041540C45B00CF0AF1 /* undo.gif in Resources */ = {isa = PBXBuildFile; fileRef = DE6879FD1540C45B00CF0AF1 /* undo.gif */; };
+		DE687A071540C54E00CF0AF1 /* AGSGeodesicSketchLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DE687A061540C54E00CF0AF1 /* AGSGeodesicSketchLayer.m */; };
+		DE7E391B1540C88F0077CB4D /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DE7E391A1540C88F0077CB4D /* ArcGIS.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		97B8C3E81678144B003B6E1B /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		97B8C3EB16781458003B6E1B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		97B8C3ED16781467003B6E1B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		DE49070B153C8F45009D0F7B /* GeodesicSketchingSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeodesicSketchingSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE49070F153C8F45009D0F7B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DE490711153C8F45009D0F7B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DE490713153C8F45009D0F7B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DE490717153C8F45009D0F7B /* GeodesicSketchingSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GeodesicSketchingSample-Info.plist"; sourceTree = "<group>"; };
+		DE490719153C8F45009D0F7B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DE49071B153C8F45009D0F7B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DE49071D153C8F45009D0F7B /* GeodesicSketchingSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeodesicSketchingSample-Prefix.pch"; sourceTree = "<group>"; };
+		DE49071E153C8F45009D0F7B /* AGSGeodesicSketchingAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGSGeodesicSketchingAppDelegate.h; sourceTree = "<group>"; };
+		DE49071F153C8F45009D0F7B /* AGSGeodesicSketchingAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AGSGeodesicSketchingAppDelegate.m; sourceTree = "<group>"; };
+		DE490721153C8F45009D0F7B /* AGSGeodesicSketchingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGSGeodesicSketchingViewController.h; sourceTree = "<group>"; };
+		DE490722153C8F45009D0F7B /* AGSGeodesicSketchingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AGSGeodesicSketchingViewController.m; sourceTree = "<group>"; };
+		DE490725153C8F45009D0F7B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AGSGeodesicSketchingViewController_iPhone.xib; sourceTree = "<group>"; };
+		DE490728153C8F45009D0F7B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AGSGeodesicSketchingViewController_iPad.xib; sourceTree = "<group>"; };
+		DE49072F153C9005009D0F7B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		DE490731153C900E009D0F7B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DE490733153C901D009D0F7B /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		DE490735153C903F009D0F7B /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		DE490737153C9047009D0F7B /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		DE490739153C9054009D0F7B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		DE49073B153C905F009D0F7B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		DE49073D153C9068009D0F7B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		DE6879F81540C45B00CF0AF1 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		DE6879F91540C45B00CF0AF1 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		DE6879FA1540C45B00CF0AF1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE6879FB1540C45B00CF0AF1 /* redo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = redo.gif; sourceTree = "<group>"; };
+		DE6879FC1540C45B00CF0AF1 /* tinyplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tinyplane.png; sourceTree = "<group>"; };
+		DE6879FD1540C45B00CF0AF1 /* undo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = undo.gif; sourceTree = "<group>"; };
+		DE687A051540C54E00CF0AF1 /* AGSGeodesicSketchLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSGeodesicSketchLayer.h; sourceTree = "<group>"; };
+		DE687A061540C54E00CF0AF1 /* AGSGeodesicSketchLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSGeodesicSketchLayer.m; sourceTree = "<group>"; };
+		DE7E391A1540C88F0077CB4D /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DE490708153C8F45009D0F7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97B8C3EC16781458003B6E1B /* OpenGLES.framework in Frameworks */,
+				97B8C3E91678144B003B6E1B /* libc++.dylib in Frameworks */,
+				DE49073E153C9068009D0F7B /* Security.framework in Frameworks */,
+				DE49073C153C905F009D0F7B /* libz.dylib in Frameworks */,
+				DE49073A153C9054009D0F7B /* MobileCoreServices.framework in Frameworks */,
+				DE490738153C9047009D0F7B /* MediaPlayer.framework in Frameworks */,
+				DE490734153C901D009D0F7B /* CoreText.framework in Frameworks */,
+				DE490732153C900E009D0F7B /* QuartzCore.framework in Frameworks */,
+				DE490730153C9005009D0F7B /* CoreLocation.framework in Frameworks */,
+				DE490710153C8F45009D0F7B /* UIKit.framework in Frameworks */,
+				DE490712153C8F45009D0F7B /* Foundation.framework in Frameworks */,
+				DE490714153C8F45009D0F7B /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DE490700153C8F44009D0F7B = {
+			isa = PBXGroup;
+			children = (
+				DE7E391A1540C88F0077CB4D /* ArcGIS.bundle */,
+				DE490715153C8F45009D0F7B /* GeodesicSketchingSample */,
+				DE49070E153C8F45009D0F7B /* Frameworks */,
+				DE49070C153C8F45009D0F7B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DE49070C153C8F45009D0F7B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DE49070B153C8F45009D0F7B /* GeodesicSketchingSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DE49070E153C8F45009D0F7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97B8C3EB16781458003B6E1B /* OpenGLES.framework */,
+				97B8C3E81678144B003B6E1B /* libc++.dylib */,
+				DE49073D153C9068009D0F7B /* Security.framework */,
+				DE49073B153C905F009D0F7B /* libz.dylib */,
+				DE490739153C9054009D0F7B /* MobileCoreServices.framework */,
+				DE490737153C9047009D0F7B /* MediaPlayer.framework */,
+				DE490735153C903F009D0F7B /* libstdc++.dylib */,
+				DE490733153C901D009D0F7B /* CoreText.framework */,
+				DE490731153C900E009D0F7B /* QuartzCore.framework */,
+				DE49072F153C9005009D0F7B /* CoreLocation.framework */,
+				DE49070F153C8F45009D0F7B /* UIKit.framework */,
+				DE490711153C8F45009D0F7B /* Foundation.framework */,
+				DE490713153C8F45009D0F7B /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE490715153C8F45009D0F7B /* GeodesicSketchingSample */ = {
+			isa = PBXGroup;
+			children = (
+				DE6879F61540C44A00CF0AF1 /* Resources */,
+				DE49071E153C8F45009D0F7B /* AGSGeodesicSketchingAppDelegate.h */,
+				DE49071F153C8F45009D0F7B /* AGSGeodesicSketchingAppDelegate.m */,
+				DE490721153C8F45009D0F7B /* AGSGeodesicSketchingViewController.h */,
+				DE687A051540C54E00CF0AF1 /* AGSGeodesicSketchLayer.h */,
+				DE687A061540C54E00CF0AF1 /* AGSGeodesicSketchLayer.m */,
+				DE490722153C8F45009D0F7B /* AGSGeodesicSketchingViewController.m */,
+				DE490724153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPhone.xib */,
+				DE490727153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPad.xib */,
+				DE490716153C8F45009D0F7B /* Supporting Files */,
+			);
+			path = GeodesicSketchingSample;
+			sourceTree = "<group>";
+		};
+		DE490716153C8F45009D0F7B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DE490717153C8F45009D0F7B /* GeodesicSketchingSample-Info.plist */,
+				DE490718153C8F45009D0F7B /* InfoPlist.strings */,
+				DE49071B153C8F45009D0F7B /* main.m */,
+				DE49071D153C8F45009D0F7B /* GeodesicSketchingSample-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DE6879F61540C44A00CF0AF1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				97B8C3ED16781467003B6E1B /* Default-568h@2x.png */,
+				DE6879F81540C45B00CF0AF1 /* icon.png */,
+				DE6879F91540C45B00CF0AF1 /* icon@2x.png */,
+				DE6879FA1540C45B00CF0AF1 /* Info.plist */,
+				DE6879FB1540C45B00CF0AF1 /* redo.gif */,
+				DE6879FC1540C45B00CF0AF1 /* tinyplane.png */,
+				DE6879FD1540C45B00CF0AF1 /* undo.gif */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DE49070A153C8F45009D0F7B /* GeodesicSketchingSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE49072C153C8F45009D0F7B /* Build configuration list for PBXNativeTarget "GeodesicSketchingSample" */;
+			buildPhases = (
+				DE490707153C8F45009D0F7B /* Sources */,
+				DE490708153C8F45009D0F7B /* Frameworks */,
+				DE490709153C8F45009D0F7B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GeodesicSketchingSample;
+			productName = GeodesicSketchingSample;
+			productReference = DE49070B153C8F45009D0F7B /* GeodesicSketchingSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DE490702153C8F44009D0F7B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = DE490705153C8F44009D0F7B /* Build configuration list for PBXProject "GeodesicSketchingSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DE490700153C8F44009D0F7B;
+			productRefGroup = DE49070C153C8F45009D0F7B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DE49070A153C8F45009D0F7B /* GeodesicSketchingSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DE490709153C8F45009D0F7B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE49071A153C8F45009D0F7B /* InfoPlist.strings in Resources */,
+				DE490726153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPhone.xib in Resources */,
+				DE490729153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPad.xib in Resources */,
+				DE6879FF1540C45B00CF0AF1 /* icon.png in Resources */,
+				DE687A001540C45B00CF0AF1 /* icon@2x.png in Resources */,
+				DE687A021540C45B00CF0AF1 /* redo.gif in Resources */,
+				DE687A031540C45B00CF0AF1 /* tinyplane.png in Resources */,
+				DE687A041540C45B00CF0AF1 /* undo.gif in Resources */,
+				DE7E391B1540C88F0077CB4D /* ArcGIS.bundle in Resources */,
+				97B8C3EE16781467003B6E1B /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DE490707153C8F45009D0F7B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE49071C153C8F45009D0F7B /* main.m in Sources */,
+				DE490720153C8F45009D0F7B /* AGSGeodesicSketchingAppDelegate.m in Sources */,
+				DE490723153C8F45009D0F7B /* AGSGeodesicSketchingViewController.m in Sources */,
+				DE687A071540C54E00CF0AF1 /* AGSGeodesicSketchLayer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DE490718153C8F45009D0F7B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE490719153C8F45009D0F7B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DE490724153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE490725153C8F45009D0F7B /* en */,
+			);
+			name = AGSGeodesicSketchingViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		DE490727153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE490728153C8F45009D0F7B /* en */,
+			);
+			name = AGSGeodesicSketchingViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DE49072A153C8F45009D0F7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DE49072B153C8F45009D0F7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DE49072D153C8F45009D0F7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GeodesicSketchingSample/GeodesicSketchingSample-Prefix.pch";
+				INFOPLIST_FILE = "GeodesicSketchingSample/GeodesicSketchingSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DE49072E153C8F45009D0F7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GeodesicSketchingSample/GeodesicSketchingSample-Prefix.pch";
+				INFOPLIST_FILE = "GeodesicSketchingSample/GeodesicSketchingSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE490705153C8F44009D0F7B /* Build configuration list for PBXProject "GeodesicSketchingSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE49072A153C8F45009D0F7B /* Debug */,
+				DE49072B153C8F45009D0F7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE49072C153C8F45009D0F7B /* Build configuration list for PBXNativeTarget "GeodesicSketchingSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE49072D153C8F45009D0F7B /* Debug */,
+				DE49072E153C8F45009D0F7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DE490702153C8F44009D0F7B /* Project object */;
+}

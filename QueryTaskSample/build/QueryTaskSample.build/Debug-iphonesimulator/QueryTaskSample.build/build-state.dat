@@ -1,0 +1,419 @@
+TQueryTaskSample
+v5
+r1
+cCheck dependencies
+cProcessInfoPlistFile /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/Info.plist QueryTaskSample-Info.plist
+cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/MainWindow.xib
+cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/RootViewController.xib
+cCpResource icon.png build/Debug-iphonesimulator/QueryTaskSample.app/icon.png
+cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/DetailsView.xib
+cCpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/QueryTaskSample.app/ArcGIS.bundle
+cCpResource icon@2x.png build/Debug-iphonesimulator/QueryTaskSample.app/icon@2x.png
+cCpResource Default-568h@2x.png build/Debug-iphonesimulator/QueryTaskSample.app/Default-568h@2x.png
+cProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/QueryTaskSample_Prefix-belqjsytgayhifexiepmxdhwjdvw/QueryTaskSample_Prefix.pch.pth QueryTaskSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/main.o /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/QueryTaskSampleAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/QueryTaskSampleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/RootViewController.o /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/RootViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/DetailsViewController.o /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/DetailsViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLd /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/QueryTaskSample normal i386
+cGenerateDSYMFile /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app.dSYM /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/QueryTaskSample
+cTouch /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk
+c00000000504916AD0000000000000110
+t1346967213
+s272
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000005060CC720000000000228FD0
+t1348521074
+s2265040
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
+c000000005060CC72000000000009C220
+t1348521074
+s639520
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreText.framework/CoreText
+c000000005060CC7200000000000F62E0
+t1348521074
+s1008352
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000005060CC7300000000003DCEF0
+t1348521075
+s4050672
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+c000000005060CC7600000000002C6C10
+t1348521078
+s2911248
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
+c000000005060CC7600000000000BCB50
+t1348521078
+s772944
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/OpenGLES.framework/OpenGLES
+c000000005060CC760000000000015400
+t1348521078
+s87040
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c000000005060CC7600000000001D57A0
+t1348521078
+s1922976
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Security.framework/Security
+c000000005060CC77000000000006E370
+t1348521079
+s451440
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000005060CC790000000000AB3D60
+t1348521081
+s11222368
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/usr/lib/libc++.dylib
+c000000005060CC8700000000000AFCD0
+t1348521095
+s720080
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/usr/lib/libz.dylib
+c000000005060CC880000000000013500
+t1348521096
+s79104
+
+N/Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle
+c0000000050D4B2000000000000000550
+t1356116480
+s1360
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/DetailsViewController.m
+c0000000050EB22D30000000000000D92
+t1357587155
+s3474
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/QueryTaskDemoAppDelegate.m
+c0000000050EB22D3000000000000042D
+t1357587155
+s1069
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/QueryTaskSampleAppDelegate.m
+c000000005109B3F40000000000000431
+t1359590388
+s1073
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/RootViewController.m
+c0000000050EB22D30000000000001652
+t1357587155
+s5714
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Default-568h@2x.png
+c0000000050EB22D300000000000048A2
+t1357587155
+s18594
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/DetailsView.xib
+c0000000050EB22D30000000000001C14
+t1357587155
+s7188
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/MainWindow.xib
+c000000005109B3F30000000000002D46
+t1359590387
+s11590
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/QueryTaskSample_Prefix.pch
+c0000000050EB22D3000000000000015A
+t1357587155
+s346
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/RootViewController.xib
+c0000000050EB22D3000000000000507D
+t1357587155
+s20605
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app.dSYM
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/ArcGIS.bundle
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/Default-568h@2x.png
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/DetailsView.nib
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/Info.plist
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/MainWindow.nib
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/PkgInfo
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/QueryTaskSample
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/RootViewController.nib
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/icon.png
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/icon@2x.png
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/DetailsViewController.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/QueryTaskDemoAppDelegate.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/QueryTaskSample.LinkFileList
+c000000005109B3FA0000000000000299
+t1359590394
+s665
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/QueryTaskSampleAppDelegate.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/RootViewController.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/main.o
+t2
+s0
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/icon.png
+c0000000050EB22D30000000000000903
+t1357587155
+s2307
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/icon@2x.png
+c0000000050EB22D30000000000000A25
+t1357587155
+s2597
+
+N/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/main.m
+c0000000050EB22D30000000000000272
+t1357587155
+s626
+
+N/var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/QueryTaskSample_Prefix-belqjsytgayhifexiepmxdhwjdvw/QueryTaskSample_Prefix.pch.pth
+t2
+s0
+
+NQueryTaskSample-Info.plist
+c0000000050EB22D300000000000003EB
+t1357587155
+s1003
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/DetailsViewController.m
+r0
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/QueryTaskDemoAppDelegate.m
+r0
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/QueryTaskSampleAppDelegate.m
+r0
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/RootViewController.m
+r0
+
+CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/main.m
+r0
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies3692b87aebb9b641^11abc37aebb9b641^---0#1#0#--18"Check dependencies36"A52B65FE-8BC6-47A8-ACD4-8907DD3F7225-
+
+CCompileC build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/DetailsViewController.o /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/DetailsViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381283197.428453
+e381283197.800442
+r1
+xCompileC
+xbuild/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/DetailsViewController.o
+x/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/DetailsViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection93"Compile /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/DetailsViewController.m5bce6d7debb9b641^89efcc7debb9b641^---0#0#0#-19%DVTDocumentLocation2@101"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/DetailsViewController.m0000000000000000^4281"CompileC build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/DetailsViewController.o Classes/DetailsViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/QueryTaskSample_Prefix-belqjsytgayhifexiepmxdhwjdvw/QueryTaskSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/DetailsViewController.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/DetailsViewController.dia -c /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/DetailsViewController.m -o /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/DetailsViewController.o36"34B93054-40CD-4666-8132-9543962B66F9-
+
+CCompileC build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/QueryTaskDemoAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/QueryTaskDemoAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/QueryTaskSampleAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/QueryTaskSampleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381283197.428360
+e381283197.781342
+r1
+xCompileC
+xbuild/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/QueryTaskSampleAppDelegate.o
+x/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/QueryTaskSampleAppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection98"Compile /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/QueryTaskSampleAppDelegate.m68cb6d7debb9b641^a708c87debb9b641^---0#0#0#-19%DVTDocumentLocation2@106"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/QueryTaskSampleAppDelegate.m0000000000000000^4311"CompileC build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/QueryTaskSampleAppDelegate.o Classes/QueryTaskSampleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/QueryTaskSample_Prefix-belqjsytgayhifexiepmxdhwjdvw/QueryTaskSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/QueryTaskSampleAppDelegate.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/QueryTaskSampleAppDelegate.dia -c /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/QueryTaskSampleAppDelegate.m -o /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/QueryTaskSampleAppDelegate.o36"2D914BB5-84C1-4341-B038-1E6F1739A13A-
+
+CCompileC build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/RootViewController.o /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/RootViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381283197.428401
+e381283197.807005
+r1
+xCompileC
+xbuild/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/RootViewController.o
+x/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/RootViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection90"Compile /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/RootViewController.m08ca6d7debb9b641^3598ce7debb9b641^---0#0#0#-19%DVTDocumentLocation2@98"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/RootViewController.m0000000000000000^4263"CompileC build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/RootViewController.o Classes/RootViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/QueryTaskSample_Prefix-belqjsytgayhifexiepmxdhwjdvw/QueryTaskSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/RootViewController.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/RootViewController.dia -c /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Classes/RootViewController.m -o /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/RootViewController.o36"47DF3765-4B1F-4D79-8399-2316E6BD1C77-
+
+CCompileC build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/main.o /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381283197.428352
+e381283197.677007
+r1
+xCompileC
+xbuild/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/main.o
+x/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection68"Compile /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/main.mc9c86d7debb9b641^9850ad7debb9b641^---0#0#0#-19%DVTDocumentLocation2@76"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/main.m0000000000000000^4163"CompileC build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/main.o main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/QueryTaskSample_Prefix-belqjsytgayhifexiepmxdhwjdvw/QueryTaskSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/main.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/main.dia -c /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/main.m -o /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/main.o36"5086D7F2-A9AA-4DB3-85D0-8DE3D1CB9008-
+
+CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/DetailsView.xib
+s381283194.796441
+e381283196.726934
+r1
+xCompileXIB
+x/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/DetailsView.xib
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection79"Compiling /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/DetailsView.xib4963cc7aebb9b641^1119ba7cebb9b641^---0#0#0#-19%DVTDocumentLocation2@85"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/DetailsView.xib0000000000000000^915"CompileXIB DetailsView.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/DetailsView.nib /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/DetailsView.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"BFA8C2DB-088B-4D56-9DC6-C4BC413DA6B0-
+
+CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/MainWindow.xib
+s381283194.796359
+e381283194.964686
+r1
+xCompileXIB
+x/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/MainWindow.xib
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection78"Compiling /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/MainWindow.xib8868cc7aebb9b641^fdf5f67aebb9b641^---0#0#0#-19%DVTDocumentLocation2@84"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/MainWindow.xib0000000000000000^912"CompileXIB MainWindow.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/MainWindow.nib /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/MainWindow.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"BF5256F7-0A8C-41AA-BAD6-59F32B8E0CDF-
+
+CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/RootViewController.xib
+s381283194.796387
+e381283195.127776
+r1
+xCompileXIB
+x/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/RootViewController.xib
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection86"Compiling /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/RootViewController.xibbf63cc7aebb9b641^31b6207bebb9b641^---0#0#0#-19%DVTDocumentLocation2@92"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/RootViewController.xib0000000000000000^936"CompileXIB RootViewController.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/RootViewController.nib /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/RootViewController.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"BC3CAE33-5F4B-4B01-A67C-AF3A011972ED-
+
+CCpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/QueryTaskSample.app/ArcGIS.bundle
+s381283194.796465
+e381283195.483989
+r1
+xCpResource
+x/Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle
+xbuild/Debug-iphonesimulator/QueryTaskSample.app/ArcGIS.bundle
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection66"Copy build/Debug-iphonesimulator/QueryTaskSample.app/ArcGIS.bundle2767cc7aebb9b641^7de77b7bebb9b641^---0#0#0#-19%DVTDocumentLocation2@131"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/ArcGIS.bundle000000000080d041^739"CpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/QueryTaskSample.app/ArcGIS.bundle    cd /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app36"DD83B289-A820-4D8F-B610-837F7F5C9DC7-
+
+CCpResource Default-568h@2x.png build/Debug-iphonesimulator/QueryTaskSample.app/Default-568h@2x.png
+s381283194.796495
+e381283194.849959
+r1
+xCpResource
+xDefault-568h@2x.png
+xbuild/Debug-iphonesimulator/QueryTaskSample.app/Default-568h@2x.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection72"Copy build/Debug-iphonesimulator/QueryTaskSample.app/Default-568h@2x.png2f69cc7aebb9b641^2998d97aebb9b641^---0#0#0#-19%DVTDocumentLocation2@137"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/Default-568h@2x.png000000000080d041^649"CpResource "Default-568h@2x.png" "build/Debug-iphonesimulator/QueryTaskSample.app/Default-568h@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/Default-568h@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app36"0D2FFF1F-7C8E-44D7-9557-A0A249CDF454-
+
+CCpResource icon.png build/Debug-iphonesimulator/QueryTaskSample.app/icon.png
+s381283194.796405
+e381283194.800103
+r1
+xCpResource
+xicon.png
+xbuild/Debug-iphonesimulator/QueryTaskSample.app/icon.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection61"Copy build/Debug-iphonesimulator/QueryTaskSample.app/icon.png9e40cc7aebb9b641^35d4cc7aebb9b641^---0#0#0#-19%DVTDocumentLocation2@126"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/icon.png000000000080d041^610"CpResource icon.png build/Debug-iphonesimulator/QueryTaskSample.app/icon.png    cd /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/icon.png /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app36"6287F994-FEC0-4BE1-8884-FC5991AF58D5-
+
+CCpResource icon@2x.png build/Debug-iphonesimulator/QueryTaskSample.app/icon@2x.png
+s381283194.796449
+e381283194.905909
+r1
+xCpResource
+xicon@2x.png
+xbuild/Debug-iphonesimulator/QueryTaskSample.app/icon@2x.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection64"Copy build/Debug-iphonesimulator/QueryTaskSample.app/icon@2x.png9c6bcc7aebb9b641^2deae77aebb9b641^---0#0#0#-19%DVTDocumentLocation2@129"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/icon@2x.png000000000080d041^625"CpResource "icon@2x.png" "build/Debug-iphonesimulator/QueryTaskSample.app/icon@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/icon@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app36"0CC6F400-05B1-4926-8726-3775663402B0-
+
+CGenerateDSYMFile /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app.dSYM /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/QueryTaskSample
+s381283200.141942
+e381283203.241188
+r1
+xGenerateDSYMFile
+x/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app.dSYM
+x/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/QueryTaskSample
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection117"Generating /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app.dSYM30652480ebb9b641^27bf3d83ebb9b641^---0#0#0#-19%DVTDocumentLocation2@122"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app.dSYM000000000080d041^718"GenerateDSYMFile build/Debug-iphonesimulator/QueryTaskSample.app.dSYM build/Debug-iphonesimulator/QueryTaskSample.app/QueryTaskSample    cd /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/QueryTaskSample -o /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app.dSYM36"BA4DC6D0-8EFB-4D25-8EA8-FDF1F0D4284A-
+
+CLd /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/QueryTaskSample normal i386
+s381283197.813648
+e381283200.135001
+r1
+xLd
+x/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/QueryTaskSample
+xnormal
+xi386
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection122"Link /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/QueryTaskSample6760d07debb9b641^b08f2280ebb9b641^---0#0#0#--1782"Ld build/Debug-iphonesimulator/QueryTaskSample.app/QueryTaskSample normal i386    cd /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo    setenv IPHONEOS_DEPLOYMENT_TARGET 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -L/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -filelist /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/Objects-normal/i386/QueryTaskSample.LinkFileList -Xlinker -objc_abi_version -Xlinker 2 -ObjC -all_load -framework ArcGIS -fobjc-arc -fobjc-link-runtime -Xlinker -no_implicit_dylibs -mios-simulator-version-min=5.0 -framework OpenGLES -lc++ -framework Security -lz -framework MediaPlayer -framework MobileCoreServices -framework Foundation -framework UIKit -framework CoreGraphics -framework QuartzCore -framework CoreLocation -framework CoreText -o /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/QueryTaskSample36"E745425A-7997-4A83-AA5B-488D7584C054-
+
+CProcessInfoPlistFile /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/Info.plist QueryTaskSample-Info.plist
+s381283194.770093
+e381283194.773320
+r1
+xProcessInfoPlistFile
+x/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/Info.plist
+xQueryTaskSample-Info.plist
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection34"Process QueryTaskSample-Info.plistda39c57aebb9b641^a531c67aebb9b641^---0#0#0#-19%DVTDocumentLocation2@96"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/QueryTaskSample-Info.plist0000000000000000^719"ProcessInfoPlistFile build/Debug-iphonesimulator/QueryTaskSample.app/Info.plist QueryTaskSample-Info.plist    cd /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility QueryTaskSample-Info.plist -genpkginfo /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app/Info.plist36"3D14E0A1-483F-490B-BF6E-689DFCF691FC-
+
+CProcessPCH /Users/dive0000/Library/Developer/Xcode/DerivedData/QueryTaskSample-dfjqdelbiphfnbdzxjftrlatzwdr/Index/PrecompiledHeaders/QueryTaskSample_Prefix-agcdbfcgogrrgsawtwyjzagqqxww_ast/QueryTaskSample_Prefix.pch.pth QueryTaskSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
+r0
+
+CProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/QueryTaskSample_Prefix-belqjsytgayhifexiepmxdhwjdvw/QueryTaskSample_Prefix.pch.pth QueryTaskSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s381283196.734942
+e381283197.421344
+r1
+xProcessPCH
+x/var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/QueryTaskSample_Prefix-belqjsytgayhifexiepmxdhwjdvw/QueryTaskSample_Prefix.pch.pth
+xQueryTaskSample_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection37"Precompile QueryTaskSample_Prefix.pch404ebc7cebb9b641^1ee26b7debb9b641^---0#0#0#-19%DVTDocumentLocation2@96"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/QueryTaskSample_Prefix.pch0000000000000000^4197"ProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/QueryTaskSample_Prefix-belqjsytgayhifexiepmxdhwjdvw/QueryTaskSample_Prefix.pch.pth QueryTaskSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/QueryTaskSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/QueryTaskSample.build/Debug-iphonesimulator/QueryTaskSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad --serialize-diagnostics /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/QueryTaskSample_Prefix-belqjsytgayhifexiepmxdhwjdvw/QueryTaskSample_Prefix.pch.dia -c /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/QueryTaskSample_Prefix.pch -o /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/QueryTaskSample_Prefix-belqjsytgayhifexiepmxdhwjdvw/QueryTaskSample_Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/QueryTaskSample_Prefix-belqjsytgayhifexiepmxdhwjdvw/QueryTaskSample_Prefix.pch.d36"B15951A9-20C9-4114-9DE4-8D70956BFF8B-
+
+CTouch /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app
+s381283203.248861
+e381283203.298688
+r1
+xTouch
+x/Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection107"Touch /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app2fc33f83ebb9b641^2c7d4c83ebb9b641^---0#0#0#--434"Touch build/Debug-iphonesimulator/QueryTaskSample.app    cd /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/dive0000/iOS/setup/OnlineSamples/QueryTaskDemo/build/Debug-iphonesimulator/QueryTaskSample.app36"2BD2A698-1259-4C00-99D8-082A8CAA5EDC-
+

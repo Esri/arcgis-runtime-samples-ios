@@ -1,620 +1,0 @@
-TRoutingSample
-v5
-r1
-cCheck dependencies
-cProcessInfoPlistFile /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/Info.plist RoutingSample-Info.plist
-cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/RoutingSampleViewController.xib
-cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/MainWindow.xib
-cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Resources-iPad/MainWindow-iPad.xib
-cCpResource GreenPushpin.png build/Debug-iphonesimulator/RoutingSample.app/GreenPushpin.png
-cCpResource remove24.png build/Debug-iphonesimulator/RoutingSample.app/remove24.png
-cCpResource RedPushpin.png build/Debug-iphonesimulator/RoutingSample.app/RedPushpin.png
-cCpResource remove24@2x.png build/Debug-iphonesimulator/RoutingSample.app/remove24@2x.png
-cCpResource GreenPushpin@2x.png build/Debug-iphonesimulator/RoutingSample.app/GreenPushpin@2x.png
-cCpResource next32.png build/Debug-iphonesimulator/RoutingSample.app/next32.png
-cCpResource RedPushpin@2x.png build/Debug-iphonesimulator/RoutingSample.app/RedPushpin@2x.png
-cCpResource next32@2x.png build/Debug-iphonesimulator/RoutingSample.app/next32@2x.png
-cCpResource prev32@2x.png build/Debug-iphonesimulator/RoutingSample.app/prev32@2x.png
-cCpResource prev32.png build/Debug-iphonesimulator/RoutingSample.app/prev32.png
-cCpResource Clear20.png build/Debug-iphonesimulator/RoutingSample.app/Clear20.png
-cCpResource Clear20@2x.png build/Debug-iphonesimulator/RoutingSample.app/Clear20@2x.png
-cCpResource icon.png build/Debug-iphonesimulator/RoutingSample.app/icon.png
-cCpResource icon@2x.png build/Debug-iphonesimulator/RoutingSample.app/icon@2x.png
-cCpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/RoutingSample.app/ArcGIS.bundle
-cCpResource Default-568h@2x.png build/Debug-iphonesimulator/RoutingSample.app/Default-568h@2x.png
-cProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/RoutingSample_Prefix-gahztxehfudbwhbflyrkewbthxzy/RoutingSample_Prefix.pch.pth RoutingSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/main.o /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/RoutingSampleAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Classes/RoutingSampleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/RoutingSampleViewController.o /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Classes/RoutingSampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cLd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/RoutingSample normal i386
-cGenerateDSYMFile /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app.dSYM /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/RoutingSample
-cTouch /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk
-c00000000504916AD0000000000000110
-t1346967213
-s272
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-c000000005060CC720000000000228FD0
-t1348521074
-s2265040
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
-c000000005060CC72000000000009C220
-t1348521074
-s639520
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreText.framework/CoreText
-c000000005060CC7200000000000F62E0
-t1348521074
-s1008352
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c000000005060CC7300000000003DCEF0
-t1348521075
-s4050672
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000005060CC7300000000000015F7
-t1348521075
-s5623
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
-c000000005060CC7600000000002C6C10
-t1348521078
-s2911248
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
-c000000005060CC7600000000000BCB50
-t1348521078
-s772944
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/OpenGLES.framework/OpenGLES
-c000000005060CC760000000000015400
-t1348521078
-s87040
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
-c000000005060CC7600000000001D57A0
-t1348521078
-s1922976
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Security.framework/Security
-c000000005060CC77000000000006E370
-t1348521079
-s451440
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
-c000000005060CC770000000000000E8D
-t1348521079
-s3725
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/UIKit.framework/UIKit
-c000000005060CC790000000000AB3D60
-t1348521081
-s11222368
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/usr/lib/libc++.dylib
-c000000005060CC8700000000000AFCD0
-t1348521095
-s720080
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/usr/lib/libz.dylib
-c000000005060CC880000000000013500
-t1348521096
-s79104
-
-N/Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle
-c0000000050D4B2000000000000000550
-t1356116480
-s1360
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Classes/RoutingSampleAppDelegate.m
-c0000000050EB22D3000000000000035B
-t1357587155
-s859
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Classes/RoutingSampleViewController.m
-c0000000050EB22D300000000000058A1
-t1357587155
-s22689
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Clear20.png
-c0000000050EB22D300000000000002F7
-t1357587155
-s759
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Clear20@2x.png
-c0000000050EB22D300000000000005EB
-t1357587155
-s1515
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Default-568h@2x.png
-c0000000050EB22D300000000000048A2
-t1357587155
-s18594
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/GreenPushpin.png
-c0000000050EB22D300000000000005FE
-t1357587155
-s1534
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/GreenPushpin@2x.png
-c0000000050EB22D30000000000000D2C
-t1357587155
-s3372
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/MainWindow.xib
-c0000000050EB22D3000000000000256B
-t1357587155
-s9579
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/RedPushpin.png
-c0000000050EB22D300000000000005FB
-t1357587155
-s1531
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/RedPushpin@2x.png
-c0000000050EB22D30000000000000CD0
-t1357587155
-s3280
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Resources-iPad/MainWindow-iPad.xib
-c0000000050EB22D3000000000000534E
-t1357587155
-s21326
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/RoutingSampleViewController.xib
-c0000000050EB22D30000000000008CE0
-t1357587155
-s36064
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/RoutingSample_Prefix.pch
-c0000000050EB22D300000000000000CB
-t1357587155
-s203
-i<Foundation/Foundation.h>
-i<UIKit/UIKit.h>
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app.dSYM
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/ArcGIS.bundle
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/Clear20.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/Clear20@2x.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/Default-568h@2x.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/GreenPushpin.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/GreenPushpin@2x.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/Info.plist
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/MainWindow-iPad.nib
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/MainWindow.nib
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/PkgInfo
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/RedPushpin.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/RedPushpin@2x.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/RoutingSample
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/RoutingSampleViewController.nib
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/icon.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/icon@2x.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/next32.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/next32@2x.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/prev32.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/prev32@2x.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/remove24.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/remove24@2x.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/RoutingSample.LinkFileList
-c0000000050F0AE3000000000000001EA
-t1357950512
-s490
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/RoutingSampleAppDelegate.o
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/RoutingSampleViewController.o
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/main.o
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/icon.png
-c0000000050EB22D30000000000000903
-t1357587155
-s2307
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/icon@2x.png
-c0000000050EB22D30000000000000A25
-t1357587155
-s2597
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/main.m
-c0000000050EB22D30000000000000272
-t1357587155
-s626
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/next32.png
-c0000000050EB22D3000000000000058E
-t1357587155
-s1422
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/next32@2x.png
-c0000000050EB22D30000000000000E5F
-t1357587155
-s3679
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/prev32.png
-c0000000050EB22D3000000000000057B
-t1357587155
-s1403
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/prev32@2x.png
-c0000000050EB22D30000000000000E2F
-t1357587155
-s3631
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/remove24.png
-c0000000050EB22D300000000000006EA
-t1357587155
-s1770
-
-N/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/remove24@2x.png
-c0000000050EB22D30000000000000C25
-t1357587155
-s3109
-
-N/var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/RoutingSample_Prefix-gahztxehfudbwhbflyrkewbthxzy/RoutingSample_Prefix.pch.pth
-t2
-s0
-
-NRoutingSample-Info.plist
-c0000000050EB22D30000000000000412
-t1357587155
-s1042
-
-CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Classes/RoutingSampleAppDelegate.m
-r0
-
-CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Classes/RoutingSampleViewController.m
-r0
-
-CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/main.m
-r0
-
-CCheck dependencies
-r0
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependenciesddea41b0e5a0b641^c84171b0e5a0b641^---0#1#0#--18"Check dependencies36"9CBF7E59-FADC-46C9-8F33-CACC262422D2-
-
-CCompileC build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/RoutingSampleAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Classes/RoutingSampleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s379643314.050553
-e379643314.549236
-r1
-xCompileC
-xbuild/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/RoutingSampleAppDelegate.o
-x/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Classes/RoutingSampleAppDelegate.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection96"Compile /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Classes/RoutingSampleAppDelegate.mfe0a0db2e5a0b641^a69b8cb2e5a0b641^---0#0#0#-19%DVTDocumentLocation2@104"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Classes/RoutingSampleAppDelegate.m0000000000000000^4247"CompileC build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/RoutingSampleAppDelegate.o Classes/RoutingSampleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/RoutingSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/RoutingSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/RoutingSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/RoutingSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/RoutingSample_Prefix-gahztxehfudbwhbflyrkewbthxzy/RoutingSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/RoutingSampleAppDelegate.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/RoutingSampleAppDelegate.dia -c /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Classes/RoutingSampleAppDelegate.m -o /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/RoutingSampleAppDelegate.o36"E7D27399-7A40-4306-93C3-AB1BB57EA564-
-
-CCompileC build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/RoutingSampleViewController.o /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Classes/RoutingSampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s379643314.050600
-e379643314.595722
-r1
-xCompileC
-xbuild/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/RoutingSampleViewController.o
-x/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Classes/RoutingSampleViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection99"Compile /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Classes/RoutingSampleViewController.m020e0db2e5a0b641^b68498b2e5a0b641^---0#0#0#-19%DVTDocumentLocation2@107"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Classes/RoutingSampleViewController.m0000000000000000^4265"CompileC build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/RoutingSampleViewController.o Classes/RoutingSampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/RoutingSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/RoutingSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/RoutingSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/RoutingSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/RoutingSample_Prefix-gahztxehfudbwhbflyrkewbthxzy/RoutingSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/RoutingSampleViewController.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/RoutingSampleViewController.dia -c /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Classes/RoutingSampleViewController.m -o /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/RoutingSampleViewController.o36"4AF4293C-96F1-4371-9FEC-8DCD9087763E-
-
-CCompileC build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/main.o /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s379643314.050482
-e379643314.134819
-r1
-xCompileC
-xbuild/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/main.o
-x/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/main.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection68"Compile /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/main.m31070db2e5a0b641^4d8722b2e5a0b641^---0#0#0#-19%DVTDocumentLocation2@76"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/main.m0000000000000000^4111"CompileC build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/main.o main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/RoutingSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/RoutingSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/RoutingSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/RoutingSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/RoutingSample_Prefix-gahztxehfudbwhbflyrkewbthxzy/RoutingSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/main.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/main.dia -c /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/main.m -o /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/main.o36"9EF01610-3617-4F2E-82BA-985151FFA38B-
-
-CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/MainWindow.xib
-s379643312.515943
-e379643312.918702
-r1
-xCompileXIB
-x/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/MainWindow.xib
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection78"Compiling /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/MainWindow.xibd76984b0e5a0b641^3c31ebb0e5a0b641^---0#0#0#-19%DVTDocumentLocation2@84"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/MainWindow.xib0000000000000000^910"CompileXIB MainWindow.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/MainWindow.nib /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/MainWindow.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"BF6B5051-76C2-4A2D-A9A9-8B1A20263E68-
-
-CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Resources-iPad/MainWindow-iPad.xib
-s379643312.515960
-e379643312.918279
-r1
-xCompileXIB
-x/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Resources-iPad/MainWindow-iPad.xib
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection98"Compiling /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Resources-iPad/MainWindow-iPad.xibdc6884b0e5a0b641^7215ebb0e5a0b641^---0#0#0#-19%DVTDocumentLocation2@104"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Resources-iPad/MainWindow-iPad.xib0000000000000000^955"CompileXIB Resources-iPad/MainWindow-iPad.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/MainWindow-iPad.nib /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Resources-iPad/MainWindow-iPad.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"6F7D0B41-6F40-43CC-A336-19725324534A-
-
-CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/RoutingSampleViewController.xib
-s379643312.515855
-e379643313.132981
-r1
-xCompileXIB
-x/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/RoutingSampleViewController.xib
-o/* com.apple.ibtool.document.notices */
-o/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/RoutingSampleViewController.xib:52: note: Value other than autosizing specified for width (System items, other than fixed spaces, should use autosizing) [11]
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection95"Compiling /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/RoutingSampleViewController.xibd76984b0e5a0b641^ed0d22b1e5a0b641^-39"/* com.apple.ibtool.document.notices */1(21%IDEActivityLogMessage2@110"Value other than autosizing specified for width (System items, other than fixed spaces, should use autosizing)47"Value other than autosizing specified for width379643313#18446744073709551615#0#-0#-23%DVTTextDocumentLocation3@101"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/RoutingSampleViewController.xib0000000000000000^51#18446744073709551615#51#18446744073709551615#18446744073709551615#0#25"Discouraged Configuration--0#0#0#-19%DVTDocumentLocation4@101"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/RoutingSampleViewController.xib0000000000000000^961"CompileXIB RoutingSampleViewController.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/RoutingSampleViewController.nib /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/RoutingSampleViewController.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"3F75C0B5-C5AB-4439-8017-2DADBC93798C-
-
-CCpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/RoutingSample.app/ArcGIS.bundle
-s379643312.610794
-e379643313.010264
-r1
-xCpResource
-x/Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle
-xbuild/Debug-iphonesimulator/RoutingSample.app/ArcGIS.bundle
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection64"Copy build/Debug-iphonesimulator/RoutingSample.app/ArcGIS.bundle126c9cb0e5a0b641^30a102b1e5a0b641^---0#0#0#-19%DVTDocumentLocation2@129"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/ArcGIS.bundle000000000080d041^735"CpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/RoutingSample.app/ArcGIS.bundle    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app36"0A2C5472-6983-4DD7-A109-5F7E460E31C9-
-
-CCpResource Clear20.png build/Debug-iphonesimulator/RoutingSample.app/Clear20.png
-s379643312.606590
-e379643312.610766
-r1
-xCpResource
-xClear20.png
-xbuild/Debug-iphonesimulator/RoutingSample.app/Clear20.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection62"Copy build/Debug-iphonesimulator/RoutingSample.app/Clear20.pngf75b9bb0e5a0b641^5b5b9cb0e5a0b641^---0#0#0#-19%DVTDocumentLocation2@127"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/Clear20.png000000000080d041^615"CpResource Clear20.png build/Debug-iphonesimulator/RoutingSample.app/Clear20.png    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Clear20.png /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app36"B3A908D8-D8BC-4B6C-9DA1-F1CA0C4B307E-
-
-CCpResource Clear20@2x.png build/Debug-iphonesimulator/RoutingSample.app/Clear20@2x.png
-s379643312.606595
-e379643312.611828
-r1
-xCpResource
-xClear20@2x.png
-xbuild/Debug-iphonesimulator/RoutingSample.app/Clear20@2x.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection65"Copy build/Debug-iphonesimulator/RoutingSample.app/Clear20@2x.png8e5c9bb0e5a0b641^ada19cb0e5a0b641^---0#0#0#-19%DVTDocumentLocation2@130"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/Clear20@2x.png000000000080d041^630"CpResource "Clear20@2x.png" "build/Debug-iphonesimulator/RoutingSample.app/Clear20@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Clear20@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app36"1A2DCA52-35F9-4A26-B6DD-B6255975FB60-
-
-CCpResource Default-568h@2x.png build/Debug-iphonesimulator/RoutingSample.app/Default-568h@2x.png
-s379643312.611991
-e379643312.690185
-r1
-xCpResource
-xDefault-568h@2x.png
-xbuild/Debug-iphonesimulator/RoutingSample.app/Default-568h@2x.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection70"Copy build/Debug-iphonesimulator/RoutingSample.app/Default-568h@2x.png17b89cb0e5a0b641^74b6b0b0e5a0b641^---0#0#0#-19%DVTDocumentLocation2@135"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/Default-568h@2x.png000000000080d041^645"CpResource "Default-568h@2x.png" "build/Debug-iphonesimulator/RoutingSample.app/Default-568h@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/Default-568h@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app36"ABE2D286-80FA-43A2-8D30-AB1A32FA0EEF-
-
-CCpResource GreenPushpin.png build/Debug-iphonesimulator/RoutingSample.app/GreenPushpin.png
-s379643312.516035
-e379643312.601773
-r1
-xCpResource
-xGreenPushpin.png
-xbuild/Debug-iphonesimulator/RoutingSample.app/GreenPushpin.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection67"Copy build/Debug-iphonesimulator/RoutingSample.app/GreenPushpin.pngd36b87b0e5a0b641^4d139ab0e5a0b641^---0#0#0#-19%DVTDocumentLocation2@132"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/GreenPushpin.png000000000080d041^630"CpResource GreenPushpin.png build/Debug-iphonesimulator/RoutingSample.app/GreenPushpin.png    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/GreenPushpin.png /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app36"3DBCEBBC-BE75-4F28-872C-4B34310B5779-
-
-CCpResource GreenPushpin@2x.png build/Debug-iphonesimulator/RoutingSample.app/GreenPushpin@2x.png
-s379643312.516182
-e379643312.601491
-r1
-xCpResource
-xGreenPushpin@2x.png
-xbuild/Debug-iphonesimulator/RoutingSample.app/GreenPushpin@2x.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection70"Copy build/Debug-iphonesimulator/RoutingSample.app/GreenPushpin@2x.pnga06f87b0e5a0b641^59fd99b0e5a0b641^---0#0#0#-19%DVTDocumentLocation2@135"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/GreenPushpin@2x.png000000000080d041^645"CpResource "GreenPushpin@2x.png" "build/Debug-iphonesimulator/RoutingSample.app/GreenPushpin@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/GreenPushpin@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app36"71934160-0789-4C5F-AA8A-CFD2943A9659-
-
-CCpResource RedPushpin.png build/Debug-iphonesimulator/RoutingSample.app/RedPushpin.png
-s379643312.516167
-e379643312.601581
-r1
-xCpResource
-xRedPushpin.png
-xbuild/Debug-iphonesimulator/RoutingSample.app/RedPushpin.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection65"Copy build/Debug-iphonesimulator/RoutingSample.app/RedPushpin.pngd76a87b0e5a0b641^c40b9ab0e5a0b641^---0#0#0#-19%DVTDocumentLocation2@130"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/RedPushpin.png000000000080d041^624"CpResource RedPushpin.png build/Debug-iphonesimulator/RoutingSample.app/RedPushpin.png    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/RedPushpin.png /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app36"C30AB030-04E1-4E86-8545-9393DAE7C96B-
-
-CCpResource RedPushpin@2x.png build/Debug-iphonesimulator/RoutingSample.app/RedPushpin@2x.png
-s379643312.602818
-e379643312.607371
-r1
-xCpResource
-xRedPushpin@2x.png
-xbuild/Debug-iphonesimulator/RoutingSample.app/RedPushpin@2x.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection68"Copy build/Debug-iphonesimulator/RoutingSample.app/RedPushpin@2x.png28659ab0e5a0b641^637d9bb0e5a0b641^---0#0#0#-19%DVTDocumentLocation2@133"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/RedPushpin@2x.png000000000080d041^639"CpResource "RedPushpin@2x.png" "build/Debug-iphonesimulator/RoutingSample.app/RedPushpin@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/RedPushpin@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app36"1DCC0D5D-51DA-47EB-B9E9-D5FC587E4C9B-
-
-CCpResource icon.png build/Debug-iphonesimulator/RoutingSample.app/icon.png
-s379643312.608536
-e379643312.661271
-r1
-xCpResource
-xicon.png
-xbuild/Debug-iphonesimulator/RoutingSample.app/icon.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection59"Copy build/Debug-iphonesimulator/RoutingSample.app/icon.pngf1d49bb0e5a0b641^b649a9b0e5a0b641^---0#0#0#-19%DVTDocumentLocation2@124"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/icon.png000000000080d041^606"CpResource icon.png build/Debug-iphonesimulator/RoutingSample.app/icon.png    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/icon.png /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app36"11837881-6177-416F-BB2B-9727EBFF898F-
-
-CCpResource icon@2x.png build/Debug-iphonesimulator/RoutingSample.app/icon@2x.png
-s379643312.609680
-e379643312.661528
-r1
-xCpResource
-xicon@2x.png
-xbuild/Debug-iphonesimulator/RoutingSample.app/icon@2x.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection62"Copy build/Debug-iphonesimulator/RoutingSample.app/icon@2x.png9e259cb0e5a0b641^3a5aa9b0e5a0b641^---0#0#0#-19%DVTDocumentLocation2@127"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/icon@2x.png000000000080d041^621"CpResource "icon@2x.png" "build/Debug-iphonesimulator/RoutingSample.app/icon@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/icon@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app36"F3546DF8-2628-41F6-8CFD-8ADDA50ADF38-
-
-CCpResource next32.png build/Debug-iphonesimulator/RoutingSample.app/next32.png
-s379643312.602802
-e379643312.606275
-r1
-xCpResource
-xnext32.png
-xbuild/Debug-iphonesimulator/RoutingSample.app/next32.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection61"Copy build/Debug-iphonesimulator/RoutingSample.app/next32.pngd4649ab0e5a0b641^f4359bb0e5a0b641^---0#0#0#-19%DVTDocumentLocation2@126"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/next32.png000000000080d041^612"CpResource next32.png build/Debug-iphonesimulator/RoutingSample.app/next32.png    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/next32.png /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app36"02EE4F22-C976-44CB-90FE-CBA83F546182-
-
-CCpResource next32@2x.png build/Debug-iphonesimulator/RoutingSample.app/next32@2x.png
-s379643312.602875
-e379643312.608553
-r1
-xCpResource
-xnext32@2x.png
-xbuild/Debug-iphonesimulator/RoutingSample.app/next32@2x.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection64"Copy build/Debug-iphonesimulator/RoutingSample.app/next32@2x.png2b689ab0e5a0b641^4fcb9bb0e5a0b641^---0#0#0#-19%DVTDocumentLocation2@129"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/next32@2x.png000000000080d041^627"CpResource "next32@2x.png" "build/Debug-iphonesimulator/RoutingSample.app/next32@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/next32@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app36"ED29F33B-6940-4CA2-823B-CD633B40ABBB-
-
-CCpResource prev32.png build/Debug-iphonesimulator/RoutingSample.app/prev32.png
-s379643312.602886
-e379643312.609606
-r1
-xCpResource
-xprev32.png
-xbuild/Debug-iphonesimulator/RoutingSample.app/prev32.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection61"Copy build/Debug-iphonesimulator/RoutingSample.app/prev32.png446a9ab0e5a0b641^12139cb0e5a0b641^---0#0#0#-19%DVTDocumentLocation2@126"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/prev32.png000000000080d041^612"CpResource prev32.png build/Debug-iphonesimulator/RoutingSample.app/prev32.png    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/prev32.png /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app36"83BADC32-8FF9-49EF-B686-719ED7242A85-
-
-CCpResource prev32@2x.png build/Debug-iphonesimulator/RoutingSample.app/prev32@2x.png
-s379643312.602880
-e379643312.605430
-r1
-xCpResource
-xprev32@2x.png
-xbuild/Debug-iphonesimulator/RoutingSample.app/prev32@2x.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection64"Copy build/Debug-iphonesimulator/RoutingSample.app/prev32@2x.png17659ab0e5a0b641^3ffe9ab0e5a0b641^---0#0#0#-19%DVTDocumentLocation2@129"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/prev32@2x.png000000000080d041^627"CpResource "prev32@2x.png" "build/Debug-iphonesimulator/RoutingSample.app/prev32@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/prev32@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app36"9A6B97BE-3849-4086-AED9-9A736C83FD30-
-
-CCpResource remove24.png build/Debug-iphonesimulator/RoutingSample.app/remove24.png
-s379643312.516155
-e379643312.601803
-r1
-xCpResource
-xremove24.png
-xbuild/Debug-iphonesimulator/RoutingSample.app/remove24.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection63"Copy build/Debug-iphonesimulator/RoutingSample.app/remove24.png6e6b87b0e5a0b641^e8169ab0e5a0b641^---0#0#0#-19%DVTDocumentLocation2@128"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/remove24.png000000000080d041^618"CpResource remove24.png build/Debug-iphonesimulator/RoutingSample.app/remove24.png    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/remove24.png /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app36"3EBC59CA-282C-4233-A6BC-E2B6A7439E9C-
-
-CCpResource remove24@2x.png build/Debug-iphonesimulator/RoutingSample.app/remove24@2x.png
-s379643312.516170
-e379643312.601655
-r1
-xCpResource
-xremove24@2x.png
-xbuild/Debug-iphonesimulator/RoutingSample.app/remove24@2x.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection66"Copy build/Debug-iphonesimulator/RoutingSample.app/remove24@2x.pngf2228bb0e5a0b641^2c0f9ab0e5a0b641^---0#0#0#-19%DVTDocumentLocation2@131"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/remove24@2x.png000000000080d041^633"CpResource "remove24@2x.png" "build/Debug-iphonesimulator/RoutingSample.app/remove24@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/remove24@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app36"5800D083-ACB8-4B14-9BD9-A5747D89A8F0-
-
-CGenerateDSYMFile /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app.dSYM /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/RoutingSample
-s379643318.489918
-e379643324.317330
-r1
-xGenerateDSYMFile
-x/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app.dSYM
-x/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/RoutingSample
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection115"Generating /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app.dSYMab7a7db6e5a0b641^0c3e51bce5a0b641^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app.dSYM000000000080d041^706"GenerateDSYMFile build/Debug-iphonesimulator/RoutingSample.app.dSYM build/Debug-iphonesimulator/RoutingSample.app/RoutingSample    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/RoutingSample -o /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app.dSYM36"969B572B-A978-4D5E-9043-31E36971E9ED-
-
-CLd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/RoutingSample normal i386
-s379643314.602778
-e379643318.482765
-r1
-xLd
-x/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/RoutingSample
-xnormal
-xi386
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection118"Link /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/RoutingSample1b649ab2e5a0b641^309c7bb6e5a0b641^---0#0#0#--1768"Ld build/Debug-iphonesimulator/RoutingSample.app/RoutingSample normal i386    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv IPHONEOS_DEPLOYMENT_TARGET 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -L/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator -F/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -filelist /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/Objects-normal/i386/RoutingSample.LinkFileList -Xlinker -objc_abi_version -Xlinker 2 -ObjC -all_load -framework ArcGIS -fobjc-arc -fobjc-link-runtime -Xlinker -no_implicit_dylibs -mios-simulator-version-min=5.0 -framework OpenGLES -lc++ -framework Security -lz -framework MobileCoreServices -framework MediaPlayer -framework Foundation -framework UIKit -framework CoreGraphics -framework CoreLocation -framework QuartzCore -framework CoreText -o /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/RoutingSample36"F02275EC-86D4-42F7-8434-4427DAF76D35-
-
-CProcessInfoPlistFile /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/Info.plist RoutingSample-Info.plist
-s379643312.448897
-e379643312.507562
-r1
-xProcessInfoPlistFile
-x/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/Info.plist
-xRoutingSample-Info.plist
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection32"Process RoutingSample-Info.plist68097eb0e5a0b641^c82487b0e5a0b641^---0#0#0#-19%DVTDocumentLocation2@94"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/RoutingSample-Info.plist0000000000000000^709"ProcessInfoPlistFile build/Debug-iphonesimulator/RoutingSample.app/Info.plist RoutingSample-Info.plist    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility RoutingSample-Info.plist -genpkginfo /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app/Info.plist36"3F2A9AB7-FF69-4781-9032-4E42C44CEB4F-
-
-CProcessPCH /Users/dive0000/Library/Developer/Xcode/DerivedData/RoutingSample-gxacnynjqgjgcxfwigpnyspglydy/Index/PrecompiledHeaders/RoutingSample_Prefix-bkuvooddqavjrpcpglrmsqqoazcw_ast/RoutingSample_Prefix.pch.pth RoutingSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
-r0
-
-CProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/RoutingSample_Prefix-gahztxehfudbwhbflyrkewbthxzy/RoutingSample_Prefix.pch.pth RoutingSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s379643313.141014
-e379643314.043461
-r1
-xProcessPCH
-x/var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/RoutingSample_Prefix-gahztxehfudbwhbflyrkewbthxzy/RoutingSample_Prefix.pch.pth
-xRoutingSample_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection35"Precompile RoutingSample_Prefix.pch403324b1e5a0b641^1c250bb2e5a0b641^---0#0#0#-19%DVTDocumentLocation2@94"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/RoutingSample_Prefix.pch0000000000000000^4145"ProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/RoutingSample_Prefix-gahztxehfudbwhbflyrkewbthxzy/RoutingSample_Prefix.pch.pth RoutingSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/RoutingSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/RoutingSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/RoutingSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/RoutingSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/RoutingSample.build/Debug-iphonesimulator/RoutingSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad --serialize-diagnostics /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/RoutingSample_Prefix-gahztxehfudbwhbflyrkewbthxzy/RoutingSample_Prefix.pch.dia -c /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/RoutingSample_Prefix.pch -o /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/RoutingSample_Prefix-gahztxehfudbwhbflyrkewbthxzy/RoutingSample_Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/RoutingSample_Prefix-gahztxehfudbwhbflyrkewbthxzy/RoutingSample_Prefix.pch.d36"5A54BE77-9810-431A-BE6F-FE5437478FF5-
-
-CTouch /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app
-s379643324.325571
-e379643324.405998
-r1
-xTouch
-x/Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection105"Touch /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app626653bce5a0b641^91f267bce5a0b641^---0#0#0#--430"Touch build/Debug-iphonesimulator/RoutingSample.app    cd /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/dive0000/iOS/setup/OnlineSamples/RoutingSample/build/Debug-iphonesimulator/RoutingSample.app36"4CB86683-6A52-4926-8467-D7BFF504569D-
-

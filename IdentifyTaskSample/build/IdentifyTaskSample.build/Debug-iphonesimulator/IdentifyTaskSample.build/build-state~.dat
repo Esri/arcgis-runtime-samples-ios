@@ -1,445 +1,0 @@
-TIdentifyTaskSample
-v5
-r1
-cCheck dependencies
-cProcessInfoPlistFile /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/Info.plist IdentifyTaskSample-Info.plist
-cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/MainWindow.xib
-cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/IdentifyTaskSampleViewController.xib
-cCpResource icon.png build/Debug-iphonesimulator/IdentifyTaskSample.app/icon.png
-cCpResource icon@2x.png build/Debug-iphonesimulator/IdentifyTaskSample.app/icon@2x.png
-cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Resources-iPad/MainWindow-iPad.xib
-cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/ResultsViewController.xib
-cCpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/IdentifyTaskSample.app/ArcGIS.bundle
-cCpResource Default-568h@2x.png build/Debug-iphonesimulator/IdentifyTaskSample.app/Default-568h@2x.png
-cProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/IdentifyTaskSample_Prefix-fkurqtiyzmmeougdkiulknollnba/IdentifyTaskSample_Prefix.pch.pth IdentifyTaskSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/main.o /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskSampleAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskSampleViewController.o /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk
-c00000000504916AD0000000000000110
-t1346967213
-s272
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-c000000005060CC720000000000228FD0
-t1348521074
-s2265040
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
-c000000005060CC72000000000009C220
-t1348521074
-s639520
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreText.framework/CoreText
-c000000005060CC7200000000000F62E0
-t1348521074
-s1008352
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c000000005060CC7300000000003DCEF0
-t1348521075
-s4050672
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
-c000000005060CC7600000000002C6C10
-t1348521078
-s2911248
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
-c000000005060CC7600000000000BCB50
-t1348521078
-s772944
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/OpenGLES.framework/OpenGLES
-c000000005060CC760000000000015400
-t1348521078
-s87040
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
-c000000005060CC7600000000001D57A0
-t1348521078
-s1922976
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Security.framework/Security
-c000000005060CC77000000000006E370
-t1348521079
-s451440
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/UIKit.framework/UIKit
-c000000005060CC790000000000AB3D60
-t1348521081
-s11222368
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/usr/lib/libc++.dylib
-c000000005060CC8700000000000AFCD0
-t1348521095
-s720080
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/usr/lib/libz.dylib
-c000000005060CC880000000000013500
-t1348521096
-s79104
-
-N/Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle
-c0000000050D4B2000000000000000550
-t1356116480
-s1360
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskDemoAppDelegate.m
-c000000005109ADCA00000000000003C6
-t1359588810
-s966
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskDemoViewController.m
-c00000000000000000000000000000000
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleAppDelegate.m
-c000000005109B0DD00000000000003CC
-t1359589597
-s972
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m
-c000000005109B0DE0000000000001822
-t1359589598
-s6178
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/ResultsViewController.m
-c000000005109ADCA0000000000000B81
-t1359588810
-s2945
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/ResultsViewController.xib
-c000000005109ADCA0000000000003067
-t1359588810
-s12391
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Default-568h@2x.png
-c000000005109ADCA00000000000048A2
-t1359588810
-s18594
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/IdentifyTaskDemoViewController.xib
-c000000005109ADCA0000000000002858
-t1359588810
-s10328
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/IdentifyTaskSampleViewController.xib
-c000000005109B0DB00000000000022BF
-t1359589595
-s8895
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/IdentifyTaskSample_Prefix.pch
-c000000005109ADCA00000000000000D1
-t1359588810
-s209
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/MainWindow.xib
-c000000005109B0F10000000000001FA2
-t1359589617
-s8098
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Resources-iPad/MainWindow-iPad.xib
-c000000005109B0F10000000000002D61
-t1359589617
-s11617
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app.dSYM
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/ArcGIS.bundle
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/Default-568h@2x.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/IdentifyTaskDemoViewController.nib
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/IdentifyTaskSample
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/IdentifyTaskSampleViewController.nib
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/Info.plist
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/MainWindow-iPad.nib
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/MainWindow.nib
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/PkgInfo
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/ResultsViewController.nib
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/icon.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/icon@2x.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskDemoAppDelegate.o
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskDemoViewController.o
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskSample.LinkFileList
-c000000005109B0F100000000000002CE
-t1359589617
-s718
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskSampleAppDelegate.o
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskSampleViewController.o
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/ResultsViewController.o
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/main.o
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/icon.png
-c000000005109ADCA0000000000000903
-t1359588810
-s2307
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/icon@2x.png
-c000000005109ADCA0000000000000A25
-t1359588810
-s2597
-
-N/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/main.m
-c000000005109ADCA00000000000002A2
-t1359588810
-s674
-
-N/var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/IdentifyTaskSample_Prefix-fkurqtiyzmmeougdkiulknollnba/IdentifyTaskSample_Prefix.pch.pth
-t2
-s0
-
-NIdentifyTaskSample-Info.plist
-c000000005109ADCA000000000000042E
-t1359588810
-s1070
-
-CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskDemoAppDelegate.m
-r0
-
-CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskDemoViewController.m
-r0
-
-CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleAppDelegate.m
-r0
-
-CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m
-r0
-
-CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/ResultsViewController.m
-r0
-
-CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/main.m
-r0
-
-CCheck dependencies
-r0
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies1a697d71e8b9b641^54fccb71e8b9b641^---0#1#0#--18"Check dependencies36"8DC1EA1F-1197-484C-A868-4794DDC1805B-
-
-CCompileC build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskDemoAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskDemoAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskDemoViewController.o /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskDemoViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskSampleAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s381282431.383068
-e381282432.506419
-r1
-xCompileC
-xbuild/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskSampleAppDelegate.o
-x/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleAppDelegate.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection104"Compile /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleAppDelegate.m82c7637fe8b9b641^dfa88180e8b9b641^---0#0#0#-19%DVTDocumentLocation2@112"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleAppDelegate.m0000000000000000^4435"CompileC build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskSampleAppDelegate.o Classes/IdentifyTaskSampleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/IdentifyTaskSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/IdentifyTaskSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/IdentifyTaskSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/IdentifyTaskSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/IdentifyTaskSample_Prefix-fkurqtiyzmmeougdkiulknollnba/IdentifyTaskSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskSampleAppDelegate.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskSampleAppDelegate.dia -c /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleAppDelegate.m -o /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskSampleAppDelegate.o36"07C8687D-A2C0-4C08-8180-066FBDBC3DFC-
-
-CCompileC build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskSampleViewController.o /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s381282432.507807
-e381282432.944403
-r0
-xCompileC
-xbuild/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskSampleViewController.o
-x/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-o/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m:84:33: error: property 'attributes' not found on object of type 'AGSGraphic *'
-o    resultsVC.results = graphic.attributes;
-o                                ^
-o/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m:115:88: error: property 'attributes' not found on object of type 'AGSGraphic *'
-o        NSString *stateName = [((AGSIdentifyResult*)[results objectAtIndex:0]).feature.attributes objectForKey:@"STATE_NAME"]; 
-o                                                                                       ^
-o/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m:120:10: warning: 'AGSMapView' may not respond to 'showCalloutAtPoint:forGraphic:animated:'
-o        [self.mapView showCalloutAtPoint:self.mappoint forGraphic:((AGSIdentifyResult*)[results objectAtIndex:0]).feature animated:YES];
-o         ^
-o/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m:124:5: warning: instance method '-dataChanged' not found (return type defaults to 'id')
-o    [self.graphicsLayer dataChanged];   
-o    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-o2 warnings and 2 errors generated.
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection107"Compile /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m001d8280e8b9b641^e8c1f180e8b9b641^-1294"/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m:84:33: error: property 'attributes' not found on object of type 'AGSGraphic *'    resultsVC.results = graphic.attributes;                                ^/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m:115:88: error: property 'attributes' not found on object of type 'AGSGraphic *'        NSString *stateName = [((AGSIdentifyResult*)[results objectAtIndex:0]).feature.attributes objectForKey:@"STATE_NAME"];                                                                                        ^/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m:120:10: warning: 'AGSMapView' may not respond to 'showCalloutAtPoint:forGraphic:animated:'        [self.mapView showCalloutAtPoint:self.mappoint forGraphic:((AGSIdentifyResult*)[results objectAtIndex:0]).feature animated:YES];         ^/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m:124:5: warning: instance method '-dataChanged' not found (return type defaults to 'id')    [self.graphicsLayer dataChanged];       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~2 warnings and 2 errors generated.4(36%IDEClangDiagnosticActivityLogMessage2@64"Property 'attributes' not found on object of type 'AGSGraphic *'-381282432#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@115"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m0000000000000000^83#32#83#32#3427#0#14"Semantic Issue--2@64"Property 'attributes' not found on object of type 'AGSGraphic *'-381282432#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@115"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m0000000000000000^114#87#114#87#4539#0#14"Semantic Issue--2@73"'AGSMapView' may not respond to 'showCalloutAtPoint:forGraphic:animated:'-381282432#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic3@115"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m0000000000000000^119#9#119#9#4740#0#14"Semantic Issue--2@71"Instance method '-dataChanged' not found (return type defaults to 'id')-381282432#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic3@115"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m0000000000000000^123#4#123#4#4955#0#14"Semantic Issue1(3@115"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m0000000000000000^123#4#123#36#4955#31#-0#0#0#-19%DVTDocumentLocation4@115"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m0000000000000000^4453"CompileC build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskSampleViewController.o Classes/IdentifyTaskSampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/IdentifyTaskSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/IdentifyTaskSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/IdentifyTaskSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/IdentifyTaskSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/IdentifyTaskSample_Prefix-fkurqtiyzmmeougdkiulknollnba/IdentifyTaskSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskSampleViewController.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskSampleViewController.dia -c /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/IdentifyTaskSampleViewController.m -o /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/IdentifyTaskSampleViewController.o36"C9AB2F05-E71F-4A9B-B0A3-825FF1ACE428-
-
-CCompileC build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/ResultsViewController.o /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/ResultsViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/main.o /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s381282431.383063
-e381282431.659880
-r1
-xCompileC
-xbuild/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/main.o
-x/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/main.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection71"Compile /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/main.m60cb637fe8b9b641^5af2a87fe8b9b641^---0#0#0#-19%DVTDocumentLocation2@79"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/main.m0000000000000000^4269"CompileC build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/main.o main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/IdentifyTaskSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/IdentifyTaskSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/IdentifyTaskSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/IdentifyTaskSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/IdentifyTaskSample_Prefix-fkurqtiyzmmeougdkiulknollnba/IdentifyTaskSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/main.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/main.dia -c /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/main.m -o /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/Objects-normal/i386/main.o36"C9E9F7DF-CE63-42B3-B79E-D63DE75D5F27-
-
-CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/ResultsViewController.xib
-s381282417.888440
-e381282428.843670
-r1
-xCompileXIB
-x/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/ResultsViewController.xib
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection100"Compiling /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/ResultsViewController.xib3081e371e8b9b641^48fbd77ce8b9b641^---0#0#0#-19%DVTDocumentLocation2@106"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/ResultsViewController.xib0000000000000000^973"CompileXIB Classes/ResultsViewController.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/ResultsViewController.nib /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Classes/ResultsViewController.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"EBCEAFE7-3ED4-44FB-B444-8A01F8282952-
-
-CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/IdentifyTaskDemoViewController.xib
-r0
-
-CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/IdentifyTaskSampleViewController.xib
-s381282417.849460
-e381282418.353279
-r1
-xCompileXIB
-x/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/IdentifyTaskSampleViewController.xib
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection103"Compiling /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/IdentifyTaskSampleViewController.xib4a98d971e8b9b641^9c6c5f72e8b9b641^---0#0#0#-19%DVTDocumentLocation2@109"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/IdentifyTaskSampleViewController.xib0000000000000000^990"CompileXIB IdentifyTaskSampleViewController.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/IdentifyTaskSampleViewController.nib /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/IdentifyTaskSampleViewController.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"6003B8CB-5CBC-409E-9CF5-E1453E9D8D1F-
-
-CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/MainWindow.xib
-s381282417.849443
-e381282418.123094
-r1
-xCompileXIB
-x/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/MainWindow.xib
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compiling /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/MainWindow.xib8193d971e8b9b641^db881f72e8b9b641^---0#0#0#-19%DVTDocumentLocation2@87"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/MainWindow.xib0000000000000000^924"CompileXIB MainWindow.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/MainWindow.nib /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/MainWindow.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"131176DE-FE4B-49F2-A7F1-2BCA3945BB68-
-
-CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Resources-iPad/MainWindow-iPad.xib
-s381282417.853571
-e381282418.122924
-r1
-xCompileXIB
-x/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Resources-iPad/MainWindow-iPad.xib
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection101"Compiling /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Resources-iPad/MainWindow-iPad.xibe197da71e8b9b641^03781f72e8b9b641^---0#0#0#-19%DVTDocumentLocation2@107"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Resources-iPad/MainWindow-iPad.xib0000000000000000^969"CompileXIB Resources-iPad/MainWindow-iPad.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/MainWindow-iPad.nib /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Resources-iPad/MainWindow-iPad.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"BCD59B06-5058-41B3-9FA6-457B6C393F4E-
-
-CCpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/IdentifyTaskSample.app/ArcGIS.bundle
-s381282418.125012
-e381282419.038402
-r1
-xCpResource
-x/Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle
-xbuild/Debug-iphonesimulator/IdentifyTaskSample.app/ArcGIS.bundle
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection69"Copy build/Debug-iphonesimulator/IdentifyTaskSample.app/ArcGIS.bundleb91b2072e8b9b641^c3d50973e8b9b641^---0#0#0#-19%DVTDocumentLocation2@137"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/ArcGIS.bundle000000000080d041^751"CpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/IdentifyTaskSample.app/ArcGIS.bundle    cd /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app36"35B25B95-B130-4F48-AA0D-C9A42D011967-
-
-CCpResource Default-568h@2x.png build/Debug-iphonesimulator/IdentifyTaskSample.app/Default-568h@2x.png
-s381282418.125026
-e381282418.300803
-r1
-xCpResource
-xDefault-568h@2x.png
-xbuild/Debug-iphonesimulator/IdentifyTaskSample.app/Default-568h@2x.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection75"Copy build/Debug-iphonesimulator/IdentifyTaskSample.app/Default-568h@2x.png3e202072e8b9b641^c3675f72e8b9b641^---0#0#0#-19%DVTDocumentLocation2@143"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/Default-568h@2x.png000000000080d041^664"CpResource "Default-568h@2x.png" "build/Debug-iphonesimulator/IdentifyTaskSample.app/Default-568h@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/Default-568h@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app36"5171C071-34B0-483C-B9C0-2FB2FFC43C9E-
-
-CCpResource icon.png build/Debug-iphonesimulator/IdentifyTaskSample.app/icon.png
-s381282417.849541
-e381282417.852319
-r1
-xCpResource
-xicon.png
-xbuild/Debug-iphonesimulator/IdentifyTaskSample.app/icon.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection64"Copy build/Debug-iphonesimulator/IdentifyTaskSample.app/icon.pngd996d971e8b9b641^a775fb71e8b9b641^---0#0#0#-19%DVTDocumentLocation2@132"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/icon.png000000000080d041^625"CpResource icon.png build/Debug-iphonesimulator/IdentifyTaskSample.app/icon.png    cd /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/icon.png /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app36"92F36F10-9801-4979-9D70-F1C1F485623A-
-
-CCpResource icon@2x.png build/Debug-iphonesimulator/IdentifyTaskSample.app/icon@2x.png
-s381282417.849577
-e381282417.886659
-r1
-xCpResource
-xicon@2x.png
-xbuild/Debug-iphonesimulator/IdentifyTaskSample.app/icon@2x.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection67"Copy build/Debug-iphonesimulator/IdentifyTaskSample.app/icon@2x.png82aad971e8b9b641^c077fb71e8b9b641^---0#0#0#-19%DVTDocumentLocation2@135"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/icon@2x.png000000000080d041^640"CpResource "icon@2x.png" "build/Debug-iphonesimulator/IdentifyTaskSample.app/icon@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/icon@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app36"BC21450F-21EA-4121-BF18-BFBD3EA52739-
-
-CGenerateDSYMFile /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app.dSYM /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/IdentifyTaskSample
-r0
-
-CLd /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/IdentifyTaskSample normal i386
-r0
-
-CProcessInfoPlistFile /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/Info.plist IdentifyTaskSample-Info.plist
-s381282417.825971
-e381282417.841191
-r1
-xProcessInfoPlistFile
-x/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/Info.plist
-xIdentifyTaskSample-Info.plist
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection37"Process IdentifyTaskSample-Info.plist598bd371e8b9b641^eb71fb71e8b9b641^---0#0#0#-19%DVTDocumentLocation2@102"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/IdentifyTaskSample-Info.plist0000000000000000^743"ProcessInfoPlistFile build/Debug-iphonesimulator/IdentifyTaskSample.app/Info.plist IdentifyTaskSample-Info.plist    cd /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility IdentifyTaskSample-Info.plist -genpkginfo /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app/Info.plist36"1B30BCBB-C703-4BB7-9E23-3A2957F71519-
-
-CProcessPCH /Users/dive0000/Library/Developer/Xcode/DerivedData/IdentifyTaskSample-dxjfobcunopaiwfqhckwzfwxhukw/Index/PrecompiledHeaders/IdentifyTaskSample_Prefix-flawynodibwfhoddutlxmlhnybbn_ast/IdentifyTaskSample_Prefix.pch.pth IdentifyTaskSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
-r0
-
-CProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/IdentifyTaskSample_Prefix-fkurqtiyzmmeougdkiulknollnba/IdentifyTaskSample_Prefix.pch.pth IdentifyTaskSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s381282428.851826
-e381282431.373685
-r1
-xProcessPCH
-x/var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/IdentifyTaskSample_Prefix-fkurqtiyzmmeougdkiulknollnba/IdentifyTaskSample_Prefix.pch.pth
-xIdentifyTaskSample_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection40"Precompile IdentifyTaskSample_Prefix.pch9431da7ce8b9b641^ff065d7fe8b9b641^---0#0#0#-19%DVTDocumentLocation2@102"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/IdentifyTaskSample_Prefix.pch0000000000000000^4294"ProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/IdentifyTaskSample_Prefix-fkurqtiyzmmeougdkiulknollnba/IdentifyTaskSample_Prefix.pch.pth IdentifyTaskSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/IdentifyTaskSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/IdentifyTaskSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/IdentifyTaskSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/IdentifyTaskSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/IdentifyTaskSample.build/Debug-iphonesimulator/IdentifyTaskSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad --serialize-diagnostics /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/IdentifyTaskSample_Prefix-fkurqtiyzmmeougdkiulknollnba/IdentifyTaskSample_Prefix.pch.dia -c /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/IdentifyTaskSample_Prefix.pch -o /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/IdentifyTaskSample_Prefix-fkurqtiyzmmeougdkiulknollnba/IdentifyTaskSample_Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/IdentifyTaskSample_Prefix-fkurqtiyzmmeougdkiulknollnba/IdentifyTaskSample_Prefix.pch.d36"D18D1B81-EBA8-433A-92AC-C98D048ABEE2-
-
-CTouch /Users/dive0000/iOS/setup/OnlineSamples/IdentifyTaskDemo/build/Debug-iphonesimulator/IdentifyTaskSample.app
-r0
-

@@ -1,491 +1,0 @@
-TGeocodingSample
-v5
-r1
-cCheck dependencies
-cProcessInfoPlistFile /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/Info.plist GeocodingSample-Info.plist
-cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/GeocodingSampleViewController.xib
-cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/MainWindow.xib
-cCpResource BluePushpin.png build/Debug-iphonesimulator/GeocodingSample.app/BluePushpin.png
-cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/ResultsViewController.xib
-cCpResource icon@2x.png build/Debug-iphonesimulator/GeocodingSample.app/icon@2x.png
-cCpResource icon.png build/Debug-iphonesimulator/GeocodingSample.app/icon.png
-cCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Resources-iPad/MainWindow-iPad.xib
-cCpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/GeocodingSample.app/ArcGIS.bundle
-cCpResource Default-568h@2x.png build/Debug-iphonesimulator/GeocodingSample.app/Default-568h@2x.png
-cProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeocodingSample_Prefix-fqgnbelglnscmxdkyrysoqthhiki/GeocodingSample_Prefix.pch.pth GeocodingSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingSampleAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingSampleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/main.o /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingSampleViewController.o /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingSampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/ResultsViewController.o /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/ResultsViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cLd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/GeocodingSample normal i386
-cGenerateDSYMFile /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app.dSYM /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/GeocodingSample
-cTouch /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk
-c00000000504916AD0000000000000110
-t1346967213
-s272
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-c000000005060CC720000000000228FD0
-t1348521074
-s2265040
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
-c000000005060CC72000000000009C220
-t1348521074
-s639520
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreText.framework/CoreText
-c000000005060CC7200000000000F62E0
-t1348521074
-s1008352
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c000000005060CC7300000000003DCEF0
-t1348521075
-s4050672
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
-c000000005060CC7600000000002C6C10
-t1348521078
-s2911248
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
-c000000005060CC7600000000000BCB50
-t1348521078
-s772944
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/OpenGLES.framework/OpenGLES
-c000000005060CC760000000000015400
-t1348521078
-s87040
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
-c000000005060CC7600000000001D57A0
-t1348521078
-s1922976
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Security.framework/Security
-c000000005060CC77000000000006E370
-t1348521079
-s451440
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/UIKit.framework/UIKit
-c000000005060CC790000000000AB3D60
-t1348521081
-s11222368
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/usr/lib/libc++.dylib
-c000000005060CC8700000000000AFCD0
-t1348521095
-s720080
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/usr/lib/libz.dylib
-c000000005060CC880000000000013500
-t1348521096
-s79104
-
-N/Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle
-c0000000050D4B2000000000000000550
-t1356116480
-s1360
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/BluePushpin.png
-c000000005109ADC900000000000004CA
-t1359588809
-s1226
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingDemoAppDelegate.m
-c000000005109AF280000000000000362
-t1359589160
-s866
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingDemoViewController.m
-c000000005109ADC900000000000024BA
-t1359588809
-s9402
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingSampleAppDelegate.m
-c000000005109AF3E0000000000000366
-t1359589182
-s870
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingSampleViewController.m
-c000000005109AF2800000000000024BE
-t1359589160
-s9406
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/ResultsViewController.m
-c000000005109ADC90000000000000B0B
-t1359588809
-s2827
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/ResultsViewController.xib
-c000000005109ADC90000000000003067
-t1359588809
-s12391
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Default-568h@2x.png
-c000000005109ADC900000000000048A2
-t1359588809
-s18594
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/GeocodingDemoViewController.xib
-c000000005109ADC9000000000000339F
-t1359588809
-s13215
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/GeocodingSampleViewController.xib
-c000000005109AF1B0000000000002AD6
-t1359589147
-s10966
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/GeocodingSample_Prefix.pch
-c000000005109ADC900000000000000CB
-t1359588809
-s203
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/MainWindow.xib
-c000000005109AF380000000000001F94
-t1359589176
-s8084
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Resources-iPad/MainWindow-iPad.xib
-c000000005109AF38000000000000229D
-t1359589176
-s8861
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app.dSYM
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/ArcGIS.bundle
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/BluePushpin.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/Default-568h@2x.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/GeocodingDemoViewController.nib
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/GeocodingSample
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/GeocodingSampleViewController.nib
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/Info.plist
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/MainWindow-iPad.nib
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/MainWindow.nib
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/PkgInfo
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/ResultsViewController.nib
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/icon.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/icon@2x.png
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingDemoAppDelegate.o
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingDemoViewController.o
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingSample.LinkFileList
-c000000005109AF4500000000000002A4
-t1359589189
-s676
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingSampleAppDelegate.o
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingSampleViewController.o
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/ResultsViewController.o
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/main.o
-t2
-s0
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/icon.png
-c000000005109ADC90000000000000903
-t1359588809
-s2307
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/icon@2x.png
-c000000005109ADC90000000000000A25
-t1359588809
-s2597
-
-N/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/main.m
-c000000005109ADC90000000000000272
-t1359588809
-s626
-
-N/var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeocodingSample_Prefix-fqgnbelglnscmxdkyrysoqthhiki/GeocodingSample_Prefix.pch.pth
-t2
-s0
-
-NGeocodingDemo-Info.plist
-c00000000000000000000000000000000
-t2
-s0
-
-NGeocodingSample-Info.plist
-c000000005109AEE5000000000000040C
-t1359589093
-s1036
-
-CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingDemoAppDelegate.m
-r0
-
-CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingDemoViewController.m
-r0
-
-CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingSampleAppDelegate.m
-r0
-
-CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingSampleViewController.m
-r0
-
-CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/ResultsViewController.m
-r0
-
-CBuild AST from /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/main.m
-r0
-
-CCheck dependencies
-r0
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies1f0e26c5e6b9b641^d17634c5e6b9b641^---0#1#0#--18"Check dependencies36"6D9A403D-3200-4708-B46D-5C646E094213-
-
-CCompileC build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingDemoAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingDemoAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingDemoViewController.o /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingDemoViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingSampleAppDelegate.o /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingSampleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s381281991.843386
-e381281992.486830
-r1
-xCompileC
-xbuild/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingSampleAppDelegate.o
-x/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingSampleAppDelegate.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection98"Compile /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingSampleAppDelegate.m9d0ed8c7e6b9b641^27a17cc8e6b9b641^---0#0#0#-19%DVTDocumentLocation2@106"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingSampleAppDelegate.m0000000000000000^4311"CompileC build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingSampleAppDelegate.o Classes/GeocodingSampleAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeocodingSample_Prefix-fqgnbelglnscmxdkyrysoqthhiki/GeocodingSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingSampleAppDelegate.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingSampleAppDelegate.dia -c /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingSampleAppDelegate.m -o /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingSampleAppDelegate.o36"E47387CD-3EBD-43BA-AECB-9F1EA67AFAED-
-
-CCompileC build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingSampleViewController.o /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingSampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s381281991.843399
-e381281992.488930
-r1
-xCompileC
-xbuild/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingSampleViewController.o
-x/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingSampleViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection101"Compile /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingSampleViewController.md80cd8c7e6b9b641^d82a7dc8e6b9b641^---0#0#0#-19%DVTDocumentLocation2@109"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingSampleViewController.m0000000000000000^4329"CompileC build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingSampleViewController.o Classes/GeocodingSampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeocodingSample_Prefix-fqgnbelglnscmxdkyrysoqthhiki/GeocodingSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingSampleViewController.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingSampleViewController.dia -c /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/GeocodingSampleViewController.m -o /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingSampleViewController.o36"D1CAC3DD-5F85-4FDE-959E-83646D1CA310-
-
-CCompileC build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/ResultsViewController.o /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/ResultsViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s381281991.843420
-e381281992.485598
-r1
-xCompileC
-xbuild/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/ResultsViewController.o
-x/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/ResultsViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection93"Compile /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/ResultsViewController.m4816d8c7e6b9b641^00557cc8e6b9b641^---0#0#0#-19%DVTDocumentLocation2@101"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/ResultsViewController.m0000000000000000^4281"CompileC build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/ResultsViewController.o Classes/ResultsViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeocodingSample_Prefix-fqgnbelglnscmxdkyrysoqthhiki/GeocodingSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/ResultsViewController.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/ResultsViewController.dia -c /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/ResultsViewController.m -o /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/ResultsViewController.o36"95935986-9CD5-45FF-8799-4E42C87AAE1D-
-
-CCompileC build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/main.o /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s381281991.843404
-e381281992.301908
-r1
-xCompileC
-xbuild/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/main.o
-x/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/main.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection68"Compile /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/main.mdd0bd8c7e6b9b641^e84d4dc8e6b9b641^---0#0#0#-19%DVTDocumentLocation2@76"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/main.m0000000000000000^4163"CompileC build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/main.o main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -include /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeocodingSample_Prefix-fqgnbelglnscmxdkyrysoqthhiki/GeocodingSample_Prefix.pch -MMD -MT dependencies -MF /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/main.d --serialize-diagnostics /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/main.dia -c /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/main.m -o /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/main.o36"9D799077-32A3-42A6-9CAB-5AD9C7D59561-
-
-CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/ResultsViewController.xib
-s381281989.228979
-e381281989.981346
-r1
-xCompileXIB
-x/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/ResultsViewController.xib
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection97"Compiling /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/ResultsViewController.xibd5063bc5e6b9b641^c139fbc5e6b9b641^---0#0#0#-19%DVTDocumentLocation2@103"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/ResultsViewController.xib0000000000000000^961"CompileXIB Classes/ResultsViewController.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/ResultsViewController.nib /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Classes/ResultsViewController.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"217BCDFE-CFE3-4A5E-B5EB-9F8034F4D449-
-
-CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/GeocodingDemoViewController.xib
-r0
-
-CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/GeocodingSampleViewController.xib
-s381281989.228940
-e381281990.971098
-r1
-xCompileXIB
-x/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/GeocodingSampleViewController.xib
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection97"Compiling /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/GeocodingSampleViewController.xib0f093bc5e6b9b641^f59cf8c6e6b9b641^---0#0#0#-19%DVTDocumentLocation2@103"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/GeocodingSampleViewController.xib0000000000000000^969"CompileXIB GeocodingSampleViewController.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/GeocodingSampleViewController.nib /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/GeocodingSampleViewController.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"EA7E6ED0-0855-4EF0-A6E0-6C34BE377E36-
-
-CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/MainWindow.xib
-s381281989.228942
-e381281989.739708
-r1
-xCompileXIB
-x/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/MainWindow.xib
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection78"Compiling /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/MainWindow.xibfa093bc5e6b9b641^b35dbdc5e6b9b641^---0#0#0#-19%DVTDocumentLocation2@84"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/MainWindow.xib0000000000000000^912"CompileXIB MainWindow.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/MainWindow.nib /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/MainWindow.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"33871D1A-5222-401E-AD35-8AE255C97583-
-
-CCompileXIB /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Resources-iPad/MainWindow-iPad.xib
-s381281989.229144
-e381281989.768988
-r1
-xCompileXIB
-x/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Resources-iPad/MainWindow-iPad.xib
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection98"Compiling /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Resources-iPad/MainWindow-iPad.xibe1073bc5e6b9b641^72ddc4c5e6b9b641^---0#0#0#-19%DVTDocumentLocation2@104"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Resources-iPad/MainWindow-iPad.xib0000000000000000^957"CompileXIB Resources-iPad/MainWindow-iPad.xib    cd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/MainWindow-iPad.nib /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Resources-iPad/MainWindow-iPad.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk36"6BA1217C-ECBC-48D1-AD30-4169462639BE-
-
-CCpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/GeocodingSample.app/ArcGIS.bundle
-s381281989.229277
-e381281989.949533
-r1
-xCpResource
-x/Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle
-xbuild/Debug-iphonesimulator/GeocodingSample.app/ArcGIS.bundle
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection66"Copy build/Debug-iphonesimulator/GeocodingSample.app/ArcGIS.bundle7c0f3bc5e6b9b641^fd14f3c5e6b9b641^---0#0#0#-19%DVTDocumentLocation2@131"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/ArcGIS.bundle000000000080d041^739"CpResource /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle build/Debug-iphonesimulator/GeocodingSample.app/ArcGIS.bundle    cd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app36"85A2C02D-768A-41B3-8069-3C2CC232F98B-
-
-CCpResource BluePushpin.png build/Debug-iphonesimulator/GeocodingSample.app/BluePushpin.png
-s381281989.228971
-e381281989.233469
-r1
-xCpResource
-xBluePushpin.png
-xbuild/Debug-iphonesimulator/GeocodingSample.app/BluePushpin.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection68"Copy build/Debug-iphonesimulator/GeocodingSample.app/BluePushpin.png65fd3ac5e6b9b641^47c93bc5e6b9b641^---0#0#0#-19%DVTDocumentLocation2@133"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/BluePushpin.png000000000080d041^631"CpResource BluePushpin.png build/Debug-iphonesimulator/GeocodingSample.app/BluePushpin.png    cd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/BluePushpin.png /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app36"88DFF78F-9B4D-40CB-BFF2-6E912FBF278F-
-
-CCpResource Default-568h@2x.png build/Debug-iphonesimulator/GeocodingSample.app/Default-568h@2x.png
-s381281989.233720
-e381281989.258629
-r1
-xCpResource
-xDefault-568h@2x.png
-xbuild/Debug-iphonesimulator/GeocodingSample.app/Default-568h@2x.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection72"Copy build/Debug-iphonesimulator/GeocodingSample.app/Default-568h@2x.png11e53bc5e6b9b641^8f3642c5e6b9b641^---0#0#0#-19%DVTDocumentLocation2@137"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/Default-568h@2x.png000000000080d041^649"CpResource "Default-568h@2x.png" "build/Debug-iphonesimulator/GeocodingSample.app/Default-568h@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/Default-568h@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app36"57861FB9-1A80-4EF5-ABAF-34BFAC89481D-
-
-CCpResource icon.png build/Debug-iphonesimulator/GeocodingSample.app/icon.png
-s381281989.229117
-e381281989.234446
-r1
-xCpResource
-xicon.png
-xbuild/Debug-iphonesimulator/GeocodingSample.app/icon.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection61"Copy build/Debug-iphonesimulator/GeocodingSample.app/icon.pngc5fe3ac5e6b9b641^0c053cc5e6b9b641^---0#0#0#-19%DVTDocumentLocation2@126"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/icon.png000000000080d041^610"CpResource icon.png build/Debug-iphonesimulator/GeocodingSample.app/icon.png    cd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/icon.png /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app36"B204CEDD-B9A5-4BA4-B134-EBAE258A2766-
-
-CCpResource icon@2x.png build/Debug-iphonesimulator/GeocodingSample.app/icon@2x.png
-s381281989.229115
-e381281989.232591
-r1
-xCpResource
-xicon@2x.png
-xbuild/Debug-iphonesimulator/GeocodingSample.app/icon@2x.png
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection64"Copy build/Debug-iphonesimulator/GeocodingSample.app/icon@2x.pngac003bc5e6b9b641^8b8b3bc5e6b9b641^---0#0#0#-19%DVTDocumentLocation2@129"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/icon@2x.png000000000080d041^625"CpResource "icon@2x.png" "build/Debug-iphonesimulator/GeocodingSample.app/icon@2x.png"    cd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/icon@2x.png" /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app36"50714551-9ECF-417D-9CC1-6EBDEAE8B437-
-
-CGenerateDSYMFile /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app.dSYM /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/GeocodingSample
-s381281996.541536
-e381282001.187807
-r1
-xGenerateDSYMFile
-x/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app.dSYM
-x/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/GeocodingSample
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection117"Generating /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app.dSYM18b28acce6b9b641^2b1530d1e6b9b641^---0#0#0#-19%DVTDocumentLocation2@122"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app.dSYM000000000080d041^718"GenerateDSYMFile build/Debug-iphonesimulator/GeocodingSample.app.dSYM build/Debug-iphonesimulator/GeocodingSample.app/GeocodingSample    cd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/GeocodingSample -o /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app.dSYM36"3D31092C-5310-4F0E-A2EF-189E1FD3274C-
-
-CLd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/GeocodingSample normal i386
-s381281992.495566
-e381281996.534720
-r1
-xLd
-x/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/GeocodingSample
-xnormal
-xi386
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection122"Link /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/GeocodingSamplef0fc7ec8e6b9b641^f3e688cce6b9b641^---0#0#0#--1782"Ld build/Debug-iphonesimulator/GeocodingSample.app/GeocodingSample normal i386    cd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo    setenv IPHONEOS_DEPLOYMENT_TARGET 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -L/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator -F/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad -filelist /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/Objects-normal/i386/GeocodingSample.LinkFileList -Xlinker -objc_abi_version -Xlinker 2 -ObjC -all_load -framework ArcGIS -fobjc-arc -fobjc-link-runtime -Xlinker -no_implicit_dylibs -mios-simulator-version-min=5.0 -framework OpenGLES -lc++ -framework Security -lz -framework MobileCoreServices -framework MediaPlayer -framework Foundation -framework UIKit -framework CoreGraphics -framework CoreLocation -framework QuartzCore -framework CoreText -o /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/GeocodingSample36"B4CC56FC-3F98-414A-8EB7-ECF2668172DF-
-
-CProcessInfoPlistFile /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/Info.plist GeocodingDemo-Info.plist
-r0
-
-CProcessInfoPlistFile /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/Info.plist GeocodingSample-Info.plist
-s381281989.216522
-e381281989.220577
-r1
-xProcessInfoPlistFile
-x/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/Info.plist
-xGeocodingSample-Info.plist
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection34"Process GeocodingSample-Info.plist9f8e37c5e6b9b641^687738c5e6b9b641^---0#0#0#-19%DVTDocumentLocation2@96"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/GeocodingSample-Info.plist0000000000000000^719"ProcessInfoPlistFile build/Debug-iphonesimulator/GeocodingSample.app/Info.plist GeocodingSample-Info.plist    cd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility GeocodingSample-Info.plist -genpkginfo /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app/Info.plist36"C412B499-3B79-42F3-B3FD-C0D9E9FB5B14-
-
-CProcessPCH /Users/dive0000/Library/Developer/Xcode/DerivedData/GeocodingSample-edidroqidgcopogowxahpqylfagt/Index/PrecompiledHeaders/GeocodingSample_Prefix-cypvaqrmkntbldddrgztlcyyggai_ast/GeocodingSample_Prefix.pch.pth GeocodingSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
-r0
-
-CProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeocodingSample_Prefix-fqgnbelglnscmxdkyrysoqthhiki/GeocodingSample_Prefix.pch.pth GeocodingSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s381281990.978514
-e381281991.836438
-r1
-xProcessPCH
-x/var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeocodingSample_Prefix-fqgnbelglnscmxdkyrysoqthhiki/GeocodingSample_Prefix.pch.pth
-xGeocodingSample_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection37"Precompile GeocodingSample_Prefix.pchf59efac6e6b9b641^6b27d6c7e6b9b641^---0#0#0#-19%DVTDocumentLocation2@96"file://localhost/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/GeocodingSample_Prefix.pch0000000000000000^4197"ProcessPCH /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeocodingSample_Prefix-fqgnbelglnscmxdkyrysoqthhiki/GeocodingSample_Prefix.pch.pth GeocodingSample_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=5.0 -iquote /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-generated-files.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-own-target-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-all-target-headers.hmap -iquote /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/GeocodingSample-project-headers.hmap -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/DerivedSources/i386 -I/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/GeocodingSample.build/Debug-iphonesimulator/GeocodingSample.build/DerivedSources -F/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator -F/Users/dive0000/Library/SDKs/ArcGIS/iOS -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Classes -F/Users/dive0000/Library/SDKs/ArcGIS/iOS/Samples/MapViewDemo/Resources-iPad --serialize-diagnostics /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeocodingSample_Prefix-fqgnbelglnscmxdkyrysoqthhiki/GeocodingSample_Prefix.pch.dia -c /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/GeocodingSample_Prefix.pch -o /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeocodingSample_Prefix-fqgnbelglnscmxdkyrysoqthhiki/GeocodingSample_Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/_4/1qckh7rn0r395hzvgkwmyghx8h6xk_/C/com.apple.Xcode.1359181386/SharedPrecompiledHeaders/GeocodingSample_Prefix-fqgnbelglnscmxdkyrysoqthhiki/GeocodingSample_Prefix.pch.d36"037922BD-26D2-4F63-9143-E6AE8711244B-
-
-CTouch /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app
-s381282001.195798
-e381282001.233243
-r1
-xTouch
-x/Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection107"Touch /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app952d32d1e6b9b641^56b63bd1e6b9b641^---0#0#0#--434"Touch build/Debug-iphonesimulator/GeocodingSample.app    cd /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/dive0000/iOS/setup/OnlineSamples/GeocodingDemo/build/Debug-iphonesimulator/GeocodingSample.app36"696C7005-EEB3-4A80-8B66-7F52635003AF-
-

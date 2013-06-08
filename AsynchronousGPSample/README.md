@@ -2,7 +2,10 @@
 
 This sample shows how to  perform analysis using ArcGIS Server Geoprocessing services.
 
-<img href="image.png"/>
+<img src="https://raw.github.com/Esri/arcgis-runtime-samples-ios/master/AsynchronousGPSample/image.png?login=dg0yal&token=f7a4ea724bbe0aa015c60526867f4d84"/>
+<img src="https://raw.github.com/Esri/arcgis-runtime-samples-ios/master/AsynchronousGPSample/image.png?login=dg0yal&token=f7a4ea724bbe0aa015c60526867f4d84"/>
+<img src="https://raw.github.com/Esri/arcgis-runtime-samples-ios/master/AsynchronousGPSample/image.png?login=dg0yal&token=f7a4ea724bbe0aa015c60526867f4d84"/>
+
 
 ###Instructions to use the sample
 1. Tap on any location on the map to perform a spill analysis. The result indicate what

@@ -2,10 +2,9 @@
 
 This sample shows how to  perform analysis using ArcGIS Server Geoprocessing services.
 
-<img src="https://raw.github.com/Esri/arcgis-runtime-samples-ios/master/AsynchronousGPSample/image.png?login=dg0yal&token=f7a4ea724bbe0aa015c60526867f4d84"/>
-<img src="https://raw.github.com/Esri/arcgis-runtime-samples-ios/master/AsynchronousGPSample/image.png?login=dg0yal&token=f7a4ea724bbe0aa015c60526867f4d84"/>
-<img src="https://raw.github.com/Esri/arcgis-runtime-samples-ios/master/AsynchronousGPSample/image.png?login=dg0yal&token=f7a4ea724bbe0aa015c60526867f4d84"/>
-![Alt text](/image.png "Optional title")
+![Initial](/image.png "Initial")
+![Settings](/image2.png "Settings")
+![Result](/image3.png "Result")
 
 ###Instructions to use the sample
 1. Tap on any location on the map to perform an analysis of areas that could be potentially impacted by hazardous material spill.

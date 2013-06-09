@@ -2,11 +2,11 @@
 
 This sample shows how to  perform analysis using ArcGIS Server Geoprocessing services.
 
-![Initial](/image.png "Initial")
+![Initial Scene](/image.png "Initial Scene")
 ![Settings](/image2.png "Settings")
 ![Result](/image3.png "Result")
 
-###Instructions to use the sample
+###Usage
 1. Tap on any location on the map to perform an analysis of areas that could be potentially impacted by hazardous material spill.
 2. Change settings such as the wind direction, material type, time or extent of spill to
 see how the results change.

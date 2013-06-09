@@ -8,7 +8,7 @@ This repository contains sample code demonstrating the capabilities of [ArcGIS R
 
 ## Resources
 
-* Get Started.[Download](http://www.esri.com/apps/products/download/index.cfm?fuseaction=download.main&downloadid=898) the SDK (requires Esri Global account)
+* [Download](http://www.esri.com/apps/products/download/index.cfm?fuseaction=download.main&downloadid=898) the SDK (requires Esri Global account)
 * Read the documentation : [Guide](http://developers.arcgis.com/en/ios/guide/introduction.htm) | [API Reference](http://developers.arcgis.com/en/ios/api-reference/index.htm)
 * Got a question? Ask the community on our [forum](http://forums.arcgis.com/forums/78-ArcGIS-for-iOS-SDK)
 

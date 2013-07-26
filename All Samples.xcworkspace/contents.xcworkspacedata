@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:AsynchronousGPSample/AsynchronousGPSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ClosestFacilitySample/ClosestFacilitySample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CustomCalloutSample/CustomCalloutSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CustomTiledLayerSample/CustomTiledLayerSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:FeatureLayerEditingSample/FeatureLayerEditingSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:FindTaskSample/FindTaskSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GeocodingSample/GeocodingSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GeodesicSketchingSample/GeodesicSketchingSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GeometrySample/GeometrySample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GeometryServiceTaskSample/GeometryServiceTaskSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GpsSample/GpsSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GPSSketchingSample/GpsSketchingSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GraphicsSample/GraphicsSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:IdentifyTaskSample/IdentifyTaskSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LegendSample/LegendSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LocalTiledLayerSample/LocalTiledLayerSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:MessageMil2525cSample/MessageMil2525cSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:OnlineOfflineEditingSample/OnlineOfflineEditingSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:PopupSample/PopupSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:PortalExplorerSample/PortalExplorerSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:QueryTaskSample/QueryTaskSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:RelatedRecordEditingSample/RelatedRecordEditingSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:RoutingSample/RoutingSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ServiceAreaSample/ServiceAreaSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SketchLayerSample/SketchLayerSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SynchronousGPSample/SynchronousGPSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:TableOfContentsSample/TableOfContentsSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:TemporalSample/TemporalSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:WeatherInfoSample/WeatherInfoSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:WebmapSample/WebmapSample.xcodeproj">
+   </FileRef>
+</Workspace>

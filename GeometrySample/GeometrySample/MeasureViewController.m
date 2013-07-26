@@ -96,7 +96,12 @@
     self.redoButton.enabled = [self.sketchLayer.undoManager canRedo];
     self.resetButton.enabled = ![self.sketchLayer.geometry isEmpty] && self.sketchLayer.geometry !=nil;
 
+    //return if we don't have a valid geometry yet
+    //polyline must have atleast 2 vertices, polygon must have atleast 3
     AGSGeometry *sketchGeometry = self.sketchLayer.geometry;
+    if (![sketchGeometry isValid]) {
+        return;
+    }
     
     // Update the distance and area whenever the geometry changes
     if ([sketchGeometry isKindOfClass:[AGSMutablePolyline class]]) {

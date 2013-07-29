@@ -1,4 +1,4 @@
-##Geocoding Sample 
+##Geometry Sample 
 
 This sample demonstrates ...
 

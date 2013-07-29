@@ -1,4 +1,4 @@
-##Geocoding Sample 
+##Geometry Service Task Sample 
 
 This sample demonstrates ...
 

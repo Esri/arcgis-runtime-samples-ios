@@ -1,4 +1,4 @@
-##Geocoding Sample 
+##GPS Sketching Sample 
 
 This sample demonstrates ...
 

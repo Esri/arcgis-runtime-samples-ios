@@ -39,6 +39,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.mapView.showMagnifierOnTapAndHold = YES;
+    self.mapView.allowMagnifierToPanMap = YES;
     self.mapView.layerDelegate = self;
 	// Load a tiled map service
 	NSURL *mapUrl = [NSURL URLWithString:kTiledMapServiceUrl];
@@ -46,13 +48,20 @@
     [self.mapView addMapLayer:tiledLyr withName:@"Tiled Layer"];
 	
 	// zoom to some location (this is San Francisco)
-	AGSSpatialReference *sr = [AGSSpatialReference spatialReferenceWithWKID:102100];
-	AGSEnvelope *env = [AGSEnvelope envelopeWithXmin:-13626513.829723023 
-												ymin:4549088.827634182 
-												xmax:-13626131.64458163 
-												ymax:4549638.218774935 
-									spatialReference:sr];
-	[self.mapView zoomToEnvelope:env animated:YES];
+	AGSSpatialReference *sr = [AGSSpatialReference wgs84SpatialReference];
+    //AGSPoint* petcoPark = [AGSPoint pointFromDecimalDegreesString:@"32.7073 , -117.1566" withSpatialReference:sr];
+    //AGSPoint* petcoPark  = [AGSPoint pointWithX:-117.1566 y:32.7073 spatialReference:sr];
+    AGSEnvelope* env = [AGSEnvelope envelopeWithXmin:-117.1566 ymin:32.70 xmax:-117.1560 ymax:32.75 spatialReference:sr];
+    
+    
+	 [self.mapView zoomToGeometry:env withPadding:0 animated:YES];
+//    NSLog(@"%@",petcoPark.envelope);
+//    
+//    AGSMutableEnvelope* newEnv = [petcoPark.envelope mutableCopy];
+//    [newEnv expandByFactor:10];
+//    NSLog(@"%@",newEnv);
+   // [self.mapView zoomToEnvelope:petcoPark.envelope animated:YES];
+   // [self.mapView zoomToGeometry:newEnv withPadding:0 animated:YES];
 	
 	// Setup the route task
 //	NSURL *routeTaskUrl = [NSURL URLWithString:kRouteTaskUrl];
@@ -60,7 +69,6 @@
 
     
     NSError* error = nil;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [[NSBundle mainBundle] resourcePath];
     NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"RuntimeSanDiego.geodatabase"];
     self.routeTask = [AGSRouteTask routeTaskWithDatabasePath:dataPath network:@"Streets_ND" error:&error];
@@ -461,7 +469,7 @@
 			AGSStopGraphic *stopGraphic = [AGSStopGraphic graphicWithGeometry:geometry 
 																	   symbol:symbol 
 																   attributes:attributes 
-														 infoTemplateDelegate:self];
+														 infoTemplateDelegate:nil];
 			stopGraphic.sequence = _numStops;
 			//You can set additional properties on the stop here
 			//refer to the conceptual helf for Routing task
@@ -478,7 +486,7 @@
 			AGSGraphic *g = [AGSGraphic graphicWithGeometry:geometry 
 													 symbol:symbol
 												 attributes:attributes
-									   infoTemplateDelegate:self];
+									   infoTemplateDelegate:nil];
 			[self.graphicsLayer addGraphic:g];
 			break;
         }
@@ -672,29 +680,6 @@
 	if (_directionIndex < self.routeResult.directions.graphics.count - 1) {
 		self.nextBtn.enabled = YES;
 	}
-}
-
-#pragma mark AGSMapViewTouchDelegate
-
-// 
-// determine if we should show a callout
-- (BOOL)mapView:(AGSMapView *)mapView shouldShowCalloutForGraphic:(AGSGraphic *)graphic {
-	
-	NSString *stopNum = [graphic attributeAsStringForKey:@"stopNumber"];
-	NSString *barrierNum = [graphic attributeAsStringForKey: @"barrierNumber"];
-
-	if (stopNum || barrierNum) {
-		self.selectedGraphic = graphic;
-		self.mapView.callout.customView = self.stopCalloutView;
-		[self.sketchLayer clear];
-		return YES;
-	}
-	return NO;
-}
-
-// if we showed a callout, clear the sketch layer
-- (void)mapView:(AGSMapView *)mapView didShowCalloutForGraphic:(AGSGraphic *)graphic {
-	[self.sketchLayer clear];
 }
 
 

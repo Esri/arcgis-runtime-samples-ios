@@ -60,14 +60,29 @@
     //if we haven't connected to the portal already
     //ask the user to log in
     if(!self.portal){
-            self.oauthLoginVC = [[SampleOAuthLoginViewController alloc] initWithURL:[NSURL URLWithString:kPortalURL] appID:kAppID];
-            self.oauthLoginVC.loginDelegate = self;
+            self.oauthLoginVC = [[AGSOAuthLoginViewController alloc] initWithPortalURL:[NSURL URLWithString:kPortalURL] clientId:kAppID ];
+        self.oauthLoginVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        __weak UserContentViewController *safeSelf = self;
+        self.oauthLoginVC.completion = ^(AGSCredential *credential, NSError *error){
+            if(error){
+                NSLog(@"Error: %@",error);
+            }else{
+                
+                [safeSelf.oauthLoginVC dismissModalViewControllerAnimated:YES];
+                //update the portal explorer with the credential provided by the user.
+                safeSelf.portal = [[AGSPortal alloc]initWithURL:[NSURL URLWithString: kPortalURL] credential:credential];
+                safeSelf.portal.delegate = self;
+                
+                [safeSelf dismissModalViewControllerAnimated:YES];
+            }
+        };
             [self presentModalViewController:self.oauthLoginVC animated:YES];
     }else{
             //start the process to get user's content
             [self getUserContents];
     }
     
+ 
 
 }
 
@@ -118,22 +133,6 @@
 
 
 
-#pragma mark SampleOAuthLoginViewControllerDelegate methods
-- (void)loginViewController:(SampleOAuthLoginViewController*)loginVC didLoginWithCredential:(AGSCredential*)credential {
-    
-    
-    [self.oauthLoginVC dismissModalViewControllerAnimated:YES];
-    //update the portal explorer with the credential provided by the user.
-    self.portal = [[AGSPortal alloc]initWithURL:[NSURL URLWithString: kPortalURL] credential:credential];
-    self.portal.delegate = self;
-    
-    [self dismissModalViewControllerAnimated:YES];
-    
-    
-}
-- (void)loginViewController:(SampleOAuthLoginViewController*)loginVC didFailToLoginWithCredential:(AGSCredential*)credential{
-    
-}
 - (void)loginViewControllerWasCancelled:(SampleOAuthLoginViewController*)loginVC{
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Required"
                                                     message:@"You need to login to continue"

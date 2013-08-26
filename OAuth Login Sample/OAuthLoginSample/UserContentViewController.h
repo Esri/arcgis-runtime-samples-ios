@@ -19,6 +19,6 @@
 //It derives from the ContentViewControllerBase class and override few methods to customize the appearance.
 @interface UserContentViewController : ContentViewControllerBase
 
-@property (nonatomic, strong) SampleOAuthLoginViewController *oauthLoginVC;
+@property (nonatomic, strong) AGSOAuthLoginViewController *oauthLoginVC;
 - (void) openMap:(AGSPortalItem*)item;
 @end

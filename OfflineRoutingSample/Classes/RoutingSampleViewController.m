@@ -15,7 +15,12 @@
 #define kTiledMapServiceUrl		@"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer" //@"http://services.arcgisonline.com/ArcGIS/rest/services/ESRI_StreetMap_World_2D/MapServer"
 #define kRouteTaskUrl			@"http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Network/USA/NAServer/Route"
 
-@implementation RoutingSampleViewController
+@implementation RoutingSampleViewController{
+    AGSGraphic* _lastStop;
+    NSOperation* _op;
+    BOOL _isExecuting;
+    AGSGraphic* _routeGraphic;
+}
 
 @synthesize mapView=_mapView;
 @synthesize graphicsLayer=_graphicsLayer;
@@ -38,9 +43,9 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.mapView.showMagnifierOnTapAndHold = YES;
-    self.mapView.allowMagnifierToPanMap = YES;
+    self.mapView.allowMagnifierToPanMap = NO;
     self.mapView.layerDelegate = self;
 	// Load a tiled map service
 	NSURL *mapUrl = [NSURL URLWithString:kTiledMapServiceUrl];
@@ -111,19 +116,38 @@
 	// update our banner
 	[self updateDirectionsLabel:@"Tap on the map to add stops & barriers"];
 	self.directionsBannerView.hidden = NO;
+    
+    AGSPoint* p = (AGSPoint*)[[AGSGeometryEngine defaultGeometryEngine] projectGeometry:[AGSPoint pointFromDecimalDegreesString:@"32.7073 , -117.1566" withSpatialReference:sr] toSpatialReference:[AGSSpatialReference webMercatorSpatialReference] ];
+                              NSLog(@"%@",p);
+    [self addStop:p];
+    self.mapView.touchDelegate = self;
+    _isExecuting = NO;
+}
+
+-(void) mapView:(AGSMapView *)mapView didMoveTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features {
+    if(_isExecuting)
+        return;
+    if(_lastStop==nil){
+        _lastStop = [self addStop:mappoint];
+    }else{
+        _lastStop.geometry = mappoint;
+    }
+    _isExecuting = YES;
+    [self routeBtnClicked:nil];
+    NSLog(@"ROUTING");
 }
 
 #pragma mark - AGSMapViewLayerDelegate 
 -(void)mapViewDidLoad:(AGSMapView *)mapView{
-    AGSMutablePoint *mp = [[AGSMutablePoint alloc] initWithSpatialReference:self.mapView.spatialReference];
-	self.sketchLayer = [[AGSSketchGraphicsLayer alloc] initWithGeometry:mp];
-	// add sketch layer to the map
-	[self.mapView addMapLayer:self.sketchLayer withName:@"sketchLayer"];
-    // set the mapView's touchDelegate to the sketchLayer so we get points symbolized when sketching
-	self.mapView.touchDelegate = self.sketchLayer;
-    //Register for "Geometry Changed" notifications
-	//We want to enable/disable UI elements when sketch geometry is modified
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToGeomChanged:) name:AGSSketchGraphicsLayerGeometryDidChangeNotification object:nil];
+//    AGSMutablePoint *mp = [[AGSMutablePoint alloc] initWithSpatialReference:self.mapView.spatialReference];
+//	self.sketchLayer = [[AGSSketchGraphicsLayer alloc] initWithGeometry:mp];
+//	// add sketch layer to the map
+//	[self.mapView addMapLayer:self.sketchLayer withName:@"sketchLayer"];
+//    // set the mapView's touchDelegate to the sketchLayer so we get points symbolized when sketching
+//	self.mapView.touchDelegate = self.sketchLayer;
+//    //Register for "Geometry Changed" notifications
+//	//We want to enable/disable UI elements when sketch geometry is modified
+//	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToGeomChanged:) name:AGSSketchGraphicsLayerGeometryDidChangeNotification object:nil];
 	
 }
 // Override to allow orientations other than the default portrait orientation.
@@ -154,6 +178,33 @@
 //
 - (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didRetrieveDefaultRouteTaskParameters:(AGSRouteTaskParameters *)routeParams {
 	self.routeTaskParams = routeParams;
+    
+    // this generalizes the route graphics that are returned
+	self.routeTaskParams.outputGeometryPrecision = 5.0;
+	self.routeTaskParams.outputGeometryPrecisionUnits = AGSUnitsMeters;
+    
+    // return the graphic representing the entire route, generalized by the previous
+    // 2 properties: outputGeometryPrecision and outputGeometryPrecisionUnits
+	self.routeTaskParams.returnRouteGraphics = YES;
+    
+	// this returns turn-by-turn directions
+	self.routeTaskParams.returnDirections = YES;
+	
+	// the next 3 lines will cause the task to find the
+	// best route regardless of the stop input order
+	self.routeTaskParams.findBestSequence = YES;
+	self.routeTaskParams.preserveFirstStop = YES;
+	self.routeTaskParams.preserveLastStop = NO;
+	
+	// since we used "findBestSequence" we need to
+	// get the newly reordered stops
+	self.routeTaskParams.returnStopGraphics = YES;
+	
+	// ensure the graphics are returned in our map's spatial reference
+	self.routeTaskParams.outSpatialReference = self.mapView.spatialReference;
+	
+	// let's ignore invalid locations
+	self.routeTaskParams.ignoreInvalidLocations = YES;
 }
 
 //
@@ -180,44 +231,53 @@
     [self updateDirectionsLabel:@"Routing completed"];
 	
 	// we know that we are only dealing with 1 route...
-	self.routeResult = [routeTaskResult.routeResults lastObject];
-	if (self.routeResult) {
+	AGSRouteResult* newResult = [routeTaskResult.routeResults lastObject];
+	if (newResult) {
+        
+        if(self.routeResult.routeGraphic)
+            [self.graphicsLayer removeGraphic:self.routeResult.routeGraphic];
+        
+        self.routeResult = newResult;
 		// symbolize the returned route graphic
 		self.routeResult.routeGraphic.symbol = [self routeSymbol];
+        
+        if(self.routeResult.routeGraphic.geometry.spatialReference!=self.mapView.spatialReference){
+            self.routeResult.routeGraphic.geometry = [[AGSGeometryEngine defaultGeometryEngine]projectGeometry:self.routeResult.routeGraphic.geometry toSpatialReference:self.mapView.spatialReference];
+        }
+
         
         // add the route graphic to the graphic's layer
 		[self.graphicsLayer addGraphic:self.routeResult.routeGraphic];
         
-        AGSPoint* p = [((AGSPolyline*)self.routeResult.routeGraphic.geometry) pointOnPath:0 atIndex:0];
-		
+
 		// enable the next button so the user can traverse directions
 		self.nextBtn.enabled = YES;
 		
-        // remove the stop graphics from the graphics layer
-        // careful not to attempt to mutate the graphics array while
-        // it is being enumerated
-		NSMutableArray *graphics = [self.graphicsLayer.graphics mutableCopy];
-		for (AGSGraphic *g in graphics) {
-			if ([g isKindOfClass:[AGSStopGraphic class]]) {
-				[self.graphicsLayer removeGraphic:g];
-			}
-		}
-		
-        // add the returned stops...it's possible these came back in a different order
-        // because we specified findBestSequence
-		for (AGSStopGraphic *sg in self.routeResult.stopGraphics) {
-            
-            // get the sequence from the attribetus
-            BOOL exists;
-			NSInteger sequence = [sg attributeAsIntForKey:@"Sequence" exists:&exists];
-            
-            // create a composite symbol using the sequence number
-			sg.symbol = [self stopSymbolWithNumber:sequence];
-            
-            // add the graphic
-			[self.graphicsLayer addGraphic:sg];
-		}
-        
+//        // remove the stop graphics from the graphics layer
+//        // careful not to attempt to mutate the graphics array while
+//        // it is being enumerated
+//		NSMutableArray *graphics = [self.graphicsLayer.graphics mutableCopy];
+//		for (AGSGraphic *g in graphics) {
+//			if ([g isKindOfClass:[AGSStopGraphic class]]) {
+//				[self.graphicsLayer removeGraphic:g];
+//			}
+//		}
+//		
+//        // add the returned stops...it's possible these came back in a different order
+//        // because we specified findBestSequence
+//		for (AGSStopGraphic *sg in self.routeResult.stopGraphics) {
+//            
+//            // get the sequence from the attribetus
+//            BOOL exists;
+//			NSInteger sequence = [sg attributeAsIntForKey:@"Sequence" exists:&exists];
+//            
+//            // create a composite symbol using the sequence number
+//			sg.symbol = [self stopSymbolWithNumber:sequence];
+//            
+//            // add the graphic
+//			[self.graphicsLayer addGraphic:sg];
+//		}
+        _isExecuting = NO;
 	}
 }
 
@@ -446,6 +506,26 @@
 	self.directionsLabel.text = newLabel;
 }
 
+
+- (AGSGraphic*)addStop:(AGSPoint*)geometry {
+	
+	//grab the geometry, then clear the sketch
+	//Prepare symbol and attributes for the Stop/Barrier
+	NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+	AGSSymbol *symbol;
+            _numStops++;
+            symbol = [self stopSymbolWithNumber:_numStops];
+			AGSStopGraphic *stopGraphic = [AGSStopGraphic graphicWithGeometry:geometry
+																	   symbol:symbol
+																   attributes:attributes
+														 infoTemplateDelegate:nil];
+			stopGraphic.sequence = _numStops;
+			//You can set additional properties on the stop here
+			//refer to the conceptual helf for Routing task
+			[self.graphicsLayer addGraphic:stopGraphic];
+    return stopGraphic;
+	
+}
 #pragma mark IBActions
 
 //
@@ -532,20 +612,20 @@
     // update our banner
 	[self updateDirectionsLabel:@"Routing..."];
 	
-    // if we have a sketch layer on the map, remove it
-	if ([self.mapView.mapLayers containsObject:self.sketchLayer]) {
-		[self.mapView removeMapLayerWithName:self.sketchLayer.name];
-		self.mapView.touchDelegate = nil;
-		self.sketchLayer = nil;
-		
-		//also disable the sketch control so that user cannot sketch
-		self.sketchModeSegCtrl.selectedSegmentIndex = -1;
-		for (int i =0; i<self.sketchModeSegCtrl.numberOfSegments; i++) {
-			[self.sketchModeSegCtrl setEnabled:NO forSegmentAtIndex:i];
-		}
-		
-		
-	}
+//    // if we have a sketch layer on the map, remove it
+//	if ([self.mapView.mapLayers containsObject:self.sketchLayer]) {
+//		[self.mapView removeMapLayerWithName:self.sketchLayer.name];
+//		self.mapView.touchDelegate = nil;
+//		self.sketchLayer = nil;
+//		
+//		//also disable the sketch control so that user cannot sketch
+//		self.sketchModeSegCtrl.selectedSegmentIndex = -1;
+//		for (int i =0; i<self.sketchModeSegCtrl.numberOfSegments; i++) {
+//			[self.sketchModeSegCtrl setEnabled:NO forSegmentAtIndex:i];
+//		}
+//		
+//		
+//	}
 	
 	NSMutableArray *stops = [NSMutableArray array];
 	NSMutableArray *polygonBarriers = [NSMutableArray array];
@@ -557,11 +637,11 @@
 			[stops addObject:g];
 		}
         
-        // if "barrierNumber" exists in the attributes, we know it is a barrier
-        // so add the object to our barriers
-		else if ([g attributeAsStringForKey:@"barrierNumber"]) {
-			[polygonBarriers addObject:g];
-		}
+//        // if "barrierNumber" exists in the attributes, we know it is a barrier
+//        // so add the object to our barriers
+//		else if ([g attributeAsStringForKey:@"barrierNumber"]) {
+//			[polygonBarriers addObject:g];
+//		}
 	}
 	
 	// set the stop and polygon barriers on the parameters object
@@ -569,43 +649,18 @@
 		[self.routeTaskParams setStopsWithFeatures:stops];
 	}
 	
-	if (polygonBarriers.count > 0) {
-		[self.routeTaskParams setPolygonBarriersWithFeatures:polygonBarriers];
-	}
+//	if (polygonBarriers.count > 0) {
+//		[self.routeTaskParams setPolygonBarriersWithFeatures:polygonBarriers];
+//	}
 	
-	// this generalizes the route graphics that are returned
-	self.routeTaskParams.outputGeometryPrecision = 5.0;
-	self.routeTaskParams.outputGeometryPrecisionUnits = AGSUnitsMeters;
-    
-    // return the graphic representing the entire route, generalized by the previous 
-    // 2 properties: outputGeometryPrecision and outputGeometryPrecisionUnits
-	self.routeTaskParams.returnRouteGraphics = YES;
 
-	// this returns turn-by-turn directions
-	self.routeTaskParams.returnDirections = YES;
-	
-	// the next 3 lines will cause the task to find the 
-	// best route regardless of the stop input order
-	self.routeTaskParams.findBestSequence = YES;
-	self.routeTaskParams.preserveFirstStop = YES;
-	self.routeTaskParams.preserveLastStop = NO;
-	
-	// since we used "findBestSequence" we need to 
-	// get the newly reordered stops
-	self.routeTaskParams.returnStopGraphics = YES;
-	
-	// ensure the graphics are returned in our map's spatial reference
-	self.routeTaskParams.outSpatialReference = self.mapView.spatialReference;
-	
-	// let's ignore invalid locations
-	self.routeTaskParams.ignoreInvalidLocations = YES;
 	
 	// you can also set additional properties here that should
 	// be considered during analysis.
 	// See the conceptual help for Routing task.
 	
 	// execute the route task
-	[self.routeTask solveWithParameters:self.routeTaskParams];
+	_op = [self.routeTask solveWithParameters:self.routeTaskParams];
 }
 
 //

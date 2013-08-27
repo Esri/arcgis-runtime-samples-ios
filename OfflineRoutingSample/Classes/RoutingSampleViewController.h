@@ -13,7 +13,7 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface RoutingSampleViewController : UIViewController<AGSMapViewLayerDelegate, AGSMapViewTouchDelegate, AGSRouteTaskDelegate, UIAlertViewDelegate, AGSMapViewTouchDelegate> {
+@interface RoutingSampleViewController : UIViewController<AGSMapViewLayerDelegate, AGSMapViewTouchDelegate, AGSRouteTaskDelegate> {
 	
 }
 
@@ -22,24 +22,7 @@
 @property (nonatomic, strong) IBOutlet UILabel				*directionsLabel;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem		*prevBtn;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem		*nextBtn;
-@property (nonatomic, strong) IBOutlet UIBarButtonItem		*addBtn;
 
-@property (nonatomic, strong) AGSGraphicsLayer				*graphicsLayerStops;
-@property (nonatomic, strong) AGSGraphicsLayer              *graphicsLayerRoute;
-@property (nonatomic, strong) AGSRouteTask					*routeTask;
-@property (nonatomic, strong) AGSRouteTaskParameters		*routeTaskParams;
-@property (nonatomic, strong) AGSStopGraphic				*currentStopGraphic;
-@property (nonatomic, strong) AGSGraphic					*selectedGraphic;
-@property (nonatomic, strong) AGSDirectionGraphic			*currentDirectionGraphic;
-@property (nonatomic, strong) AGSRouteResult				*routeResult;
-@property (nonatomic, strong) AGSNetworkDescription        *networkDesc;
-
-
-- (AGSCompositeSymbol*)stopSymbolWithNumber:(NSInteger)stopNumber;
-- (AGSCompositeSymbol*)routeSymbol;
-- (AGSCompositeSymbol*)currentDirectionSymbol;
-- (void)reset;
-- (void)updateDirectionsLabel:(NSString*)newLabel;
 
 - (IBAction)resetBtnClicked:(id)sender;
 - (IBAction)nextBtnClicked:(id)sender;

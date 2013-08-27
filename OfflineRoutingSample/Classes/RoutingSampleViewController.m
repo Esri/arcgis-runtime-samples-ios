@@ -12,9 +12,9 @@
 
 #import "RoutingSampleViewController.h"
 
-#define kTiledMapServiceUrl		@"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer" //@"http://services.arcgisonline.com/ArcGIS/rest/services/ESRI_StreetMap_World_2D/MapServer"
+#define kTiledMapServiceUrl		@"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer" 
 
-@implementation RoutingSampleViewController{
+@interface RoutingSampleViewController () {
     AGSGraphic* _lastStop;
     BOOL _isExecuting;
     AGSGraphic* _routeGraphic;
@@ -22,6 +22,22 @@
     int _directionIndex;
     BOOL _reorderStops;
 }
+@property (nonatomic, strong) AGSGraphicsLayer				*graphicsLayerStops;
+@property (nonatomic, strong) AGSGraphicsLayer              *graphicsLayerRoute;
+@property (nonatomic, strong) AGSRouteTask					*routeTask;
+@property (nonatomic, strong) AGSRouteTaskParameters		*routeTaskParams;
+@property (nonatomic, strong) AGSDirectionGraphic			*currentDirectionGraphic;
+@property (nonatomic, strong) AGSRouteResult				*routeResult;
+
+
+- (AGSCompositeSymbol*)stopSymbolWithNumber:(NSInteger)stopNumber;
+- (AGSCompositeSymbol*)currentDirectionSymbol;
+- (void)reset;
+- (void)updateDirectionsLabel:(NSString*)newLabel;
+
+@end
+
+@implementation RoutingSampleViewController
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -64,8 +80,7 @@
 
 
 		
-    // add graphics layer for Route
-    
+    // add graphics layer for displaying the route
     AGSCompositeSymbol *cs = [AGSCompositeSymbol compositeSymbol];
 	AGSSimpleLineSymbol *sls1 = [AGSSimpleLineSymbol simpleLineSymbol];
 	sls1.color = [UIColor yellowColor];
@@ -81,11 +96,9 @@
     self.graphicsLayerRoute.renderer = [AGSSimpleRenderer simpleRendererWithSymbol:cs];
     [self.mapView addMapLayer:self.graphicsLayerRoute withName:@"Route"];
     
-	// add graphics layer for Stops
+	// add graphics layer for displaying the stops
 	self.graphicsLayerStops = [AGSGraphicsLayer graphicsLayer];
 	[self.mapView addMapLayer:self.graphicsLayerStops withName:@"Stops"];
-	
-	
 	
 	// initialize stop counter
 	_numStops = 0;
@@ -96,15 +109,15 @@
 	self.directionsBannerView.hidden = NO;
     
     AGSPoint* p = (AGSPoint*)[[AGSGeometryEngine defaultGeometryEngine] projectGeometry:[AGSPoint pointFromDecimalDegreesString:@"32.7073 , -117.1566" withSpatialReference:sr] toSpatialReference:[AGSSpatialReference webMercatorSpatialReference] ];
-                              NSLog(@"%@",p);
     [self addStop:p];
     self.mapView.touchDelegate = self;
     _isExecuting = NO;
 }
+#pragma mark - AGSMapViewTouchDelegate
 
 -(void) mapView:(AGSMapView *)mapView didTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features {
     _lastStop = [self addStop:mappoint];
-    if(self.graphicsLayerRoute.graphics.count>1){
+    if(self.graphicsLayerStops.graphics.count>1){
         _isExecuting = YES;
         [self solveRoute];
     }
@@ -122,35 +135,15 @@
 
 #pragma mark - AGSMapViewLayerDelegate 
 -(void)mapViewDidLoad:(AGSMapView *)mapView{
-    
     if(self.routeTaskParams){
         self.routeTaskParams.outSpatialReference = self.mapView.spatialReference;
     }
-
-	
-}
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
-
-
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
 }
 
 
 
-#pragma mark AGSRouteTaskDelegate
+
+#pragma mark - AGSRouteTaskDelegate
 
 //
 // we got the default parameters from the service
@@ -179,16 +172,8 @@
 	
 	// let's ignore invalid locations
 	self.routeTaskParams.ignoreInvalidLocations = YES;
-    
-    [routeTask retrieveNetworkDescription];
 }
 
-- (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didRetrieveNetworkDescription:(AGSNetworkDescription *)networkDescription {
-    self.networkDesc = networkDescription;
-    for (AGSCostAttribute* ca in self.networkDesc.costAttributes) {
-        NSLog(@"%@",ca.name);
-    }
-}
 
 //
 // an error was encountered while getting defaults
@@ -196,11 +181,10 @@
 - (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didFailToRetrieveDefaultRouteTaskParametersWithError:(NSError *)error {
 	
 	// Create an alert to let the user know the retrieval failed
-	// Click Retry to attempt to retrieve the defaults again
 	UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" 
 												 message:@"Failed to retrieve default route parameters" 
-												delegate:self 
-									   cancelButtonTitle:@"Ok" otherButtonTitles:@"Retry",nil];
+												delegate:nil
+									   cancelButtonTitle:@"Ok" otherButtonTitles:nil];
 	[av show];
 }
 
@@ -275,23 +259,6 @@
         [av show];
 }
 
-#pragma mark UIAlertViewDelegate
-
-//
-// If the user clicks 'Retry' then we should attempt to retrieve the defaults again
-//
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	
-	// see which button was clicked, Ok or Retry
-	// Ok		index 0
-	// Retry	index 1
-	switch (buttonIndex) {
-		case 1:  // Retry
-			[self.routeTask retrieveDefaultRouteTaskParameters];
-		default:
-			break;
-	}
-}
 
 #pragma mark Misc
 
@@ -354,33 +321,7 @@
 //
 // reset button clicked
 //
-- (IBAction)resetBtnClicked:(id)sender {
-	[self reset];
-    if([NSThread isMainThread])
-        NSLog(@"YUP MAIN");
-    else
-        NSLog(@"NOPE NOT MAIN");
-}
 
-//
-// reset the sample so we can perform another route
-//
-- (void)reset {
-	
-	// set stop counter back to 0
-	_numStops = 0;
-	
-	
-	
-		
-	// remove all graphics
-	[self.graphicsLayerStops removeAllGraphics];
-    [self.graphicsLayerRoute removeAllGraphics];
-	
- 
-	[self resetDirections];
-    
-}
 
 
 //
@@ -413,9 +354,6 @@
 //
 // perform the route task's solve operation
 //
-- (IBAction)routeBtnClicked:(id)sender {
-    [self solveRoute];
-}
 
 -(void) solveRoute{
     [self resetDirections];
@@ -443,72 +381,33 @@
 	// execute the route task
 	[self.routeTask solveWithParameters:self.routeTaskParams];
 }
-
-
 //
-// move to the next direction in the direction set
+// reset the sample so we can perform another route
 //
-- (IBAction)nextBtnClicked:(id)sender {
-	_directionIndex++;
+- (void)reset {
 	
-    // remove current direction graphic, so we can display next one
-	if ([self.graphicsLayerStops.graphics containsObject:self.currentDirectionGraphic]) {
-		[self.graphicsLayerStops removeGraphic:self.currentDirectionGraphic];
-	}
-	
-    // get current direction and add it to the graphics layer
-	AGSDirectionSet *directions = self.routeResult.directions;
-	self.currentDirectionGraphic = [directions.graphics objectAtIndex:_directionIndex];
-	self.currentDirectionGraphic.symbol = [self currentDirectionSymbol];
-	[self.graphicsLayerRoute addGraphic:self.currentDirectionGraphic];
-	
-    // update banner
-	[self updateDirectionsLabel:self.currentDirectionGraphic.text];
-	
-    // zoom to envelope of the current direction (expanded by factor of 1.3)
-	AGSMutableEnvelope *env = [self.currentDirectionGraphic.geometry.envelope mutableCopy];
-	[env expandByFactor:1.3];
-	[self.mapView zoomToEnvelope:env animated:YES];
-	
-    // determine if we need to disable a next/prev button
-	if (_directionIndex >= self.routeResult.directions.graphics.count - 1) {
-		self.nextBtn.enabled = NO;
-	}
-	if (_directionIndex > 0) {
-		self.prevBtn.enabled = YES;
-	}
-
+	// set stop counter back to 0
+	_numStops = 0;
+    
+	// remove all graphics
+	[self.graphicsLayerStops removeAllGraphics];
+    [self.graphicsLayerRoute removeAllGraphics];
+	[self resetDirections];
 }
 
-- (IBAction)prevBtnClicked:(id)sender {
-	_directionIndex--;
-	
-    // remove current direction
-	if ([self.graphicsLayerStops.graphics containsObject:self.currentDirectionGraphic]) {
-		[self.graphicsLayerStops removeGraphic:self.currentDirectionGraphic];
-	}
-    
-	// get next direction
-	AGSDirectionSet *directions = self.routeResult.directions;
-	self.currentDirectionGraphic = [directions.graphics objectAtIndex:_directionIndex];
-	self.currentDirectionGraphic.symbol = [self currentDirectionSymbol];
-	[self.graphicsLayerRoute addGraphic:self.currentDirectionGraphic];
-	
-    // update banner text
-	[self updateDirectionsLabel:self.currentDirectionGraphic.text];
-	
-    // zoom to env factored by 1.3
-	AGSMutableEnvelope *env = [self.currentDirectionGraphic.geometry.envelope mutableCopy];
-	[env expandByFactor:1.3];
-	[self.mapView zoomToEnvelope:env animated:YES];
+-(void)resetDirections{
+    // disable the next/prev direction buttons
+    // reset direction index
+	_directionIndex = 0;
+	self.nextBtn.enabled = NO;
+	self.prevBtn.enabled = NO;
+    [self.graphicsLayerRoute removeGraphic:self.currentDirectionGraphic];
+}
 
-    // determine if we need to disable next/prev button
-	if (_directionIndex <= 0) {
-		self.prevBtn.enabled = NO;
-	}
-	if (_directionIndex < self.routeResult.directions.graphics.count - 1) {
-		self.nextBtn.enabled = YES;
-	}
+#pragma mark Action methods
+
+- (IBAction)routeBtnClicked:(id)sender {
+    [self solveRoute];
 }
 
 - (IBAction)routePreferenceChanged:(UISegmentedControl *)sender {
@@ -524,20 +423,97 @@
     [self solveRoute];
 }
 
--(void)resetDirections{
-    // disable the next/prev direction buttons
-    // reset direction index
-	_directionIndex = 0;
-	self.nextBtn.enabled = NO;
-	self.prevBtn.enabled = NO;
-    [self.graphicsLayerRoute removeGraphic:self.currentDirectionGraphic];
-}
-
 - (IBAction)reorderStops:(UIBarButtonItem *)sender {
     self.routeTaskParams.findBestSequence = YES;
     self.routeTaskParams.returnStopGraphics = YES;
     [self solveRoute];
     
 }
+//
+// move to the next direction in the direction set
+//
+- (IBAction)nextBtnClicked:(id)sender {
+	_directionIndex++;
+	
+    // remove current direction graphic, so we can display next one
+	if ([self.graphicsLayerRoute.graphics containsObject:self.currentDirectionGraphic]) {
+		[self.graphicsLayerRoute removeGraphic:self.currentDirectionGraphic];
+	}
+	
+    // get current direction and add it to the graphics layer
+	AGSDirectionSet *directions = self.routeResult.directions;
+	self.currentDirectionGraphic = [directions.graphics objectAtIndex:_directionIndex];
+	self.currentDirectionGraphic.symbol = [self currentDirectionSymbol];
+	[self.graphicsLayerRoute addGraphic:self.currentDirectionGraphic];
+	
+    // update banner
+	[self updateDirectionsLabel:self.currentDirectionGraphic.text];
+	
+     [self.mapView zoomToGeometry:self.currentDirectionGraphic.geometry withPadding:20 animated:YES];
+	
+    // determine if we need to disable a next/prev button
+	if (_directionIndex >= self.routeResult.directions.graphics.count - 1) {
+		self.nextBtn.enabled = NO;
+	}
+	if (_directionIndex > 0) {
+		self.prevBtn.enabled = YES;
+	}
 
+}
+
+- (IBAction)prevBtnClicked:(id)sender {
+	_directionIndex--;
+	
+    // remove current direction
+	if ([self.graphicsLayerRoute.graphics containsObject:self.currentDirectionGraphic]) {
+		[self.graphicsLayerRoute removeGraphic:self.currentDirectionGraphic];
+	}
+    
+	// get next direction
+	AGSDirectionSet *directions = self.routeResult.directions;
+	self.currentDirectionGraphic = [directions.graphics objectAtIndex:_directionIndex];
+	self.currentDirectionGraphic.symbol = [self currentDirectionSymbol];
+	[self.graphicsLayerRoute addGraphic:self.currentDirectionGraphic];
+	
+    // update banner text
+	[self updateDirectionsLabel:self.currentDirectionGraphic.text];
+	
+    [self.mapView zoomToGeometry:self.currentDirectionGraphic.geometry withPadding:20 animated:YES];
+
+    // determine if we need to disable next/prev button
+	if (_directionIndex <= 0) {
+		self.prevBtn.enabled = NO;
+	}
+	if (_directionIndex < self.routeResult.directions.graphics.count - 1) {
+		self.nextBtn.enabled = YES;
+	}
+}
+
+
+- (IBAction)resetBtnClicked:(id)sender {
+	[self reset];
+}
+
+
+
+#pragma mark - ViewController methods
+
+// Override to allow orientations other than the default portrait orientation.
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // Return YES for supported orientations
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc that aren't in use.
+}
+
+- (void)viewDidUnload {
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
+}
 @end

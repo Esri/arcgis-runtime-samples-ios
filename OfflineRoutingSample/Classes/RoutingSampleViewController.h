@@ -32,6 +32,7 @@
 @property (nonatomic, strong) AGSGraphic					*selectedGraphic;
 @property (nonatomic, strong) AGSDirectionGraphic			*currentDirectionGraphic;
 @property (nonatomic, strong) AGSRouteResult				*routeResult;
+@property (nonatomic, strong) AGSNetworkDescription        *networkDesc;
 
 
 - (AGSCompositeSymbol*)stopSymbolWithNumber:(NSInteger)stopNumber;
@@ -43,6 +44,8 @@
 - (IBAction)resetBtnClicked:(id)sender;
 - (IBAction)nextBtnClicked:(id)sender;
 - (IBAction)prevBtnClicked:(id)sender;
+- (IBAction)routePreferenceChanged:(UISegmentedControl *)sender;
+- (IBAction)reorderStops:(UIBarButtonItem *)sender ;
 
 
 

@@ -20,6 +20,7 @@
     AGSGraphic* _routeGraphic;
     int _numStops;
     int _directionIndex;
+    BOOL _reorderStops;
 }
 
 
@@ -103,23 +104,20 @@
 
 -(void) mapView:(AGSMapView *)mapView didTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features {
     _lastStop = [self addStop:mappoint];
-    _isExecuting = YES;
-    [self routeBtnClicked:nil];
+    if(self.graphicsLayerRoute.graphics.count>1){
+        _isExecuting = YES;
+        [self solveRoute];
+    }
 }
 
 -(void) mapView:(AGSMapView *)mapView didMoveTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features {
     if(_isExecuting)
         return;
-//    if(_lastStop==nil){
-//        _lastStop = [self addStop:mappoint];
-//    }else{
-//        _lastStop.geometry = mappoint;
-//    }
     _lastStop.geometry = mappoint;
-    
+    if(self.graphicsLayerStops.graphics.count<2)
+        return;
     _isExecuting = YES;
-    [self routeBtnClicked:nil];
-    NSLog(@"ROUTING");
+    [self solveRoute];
 }
 
 #pragma mark - AGSMapViewLayerDelegate 
@@ -174,13 +172,22 @@
 	
 	// since we used "findBestSequence" we need to
 	// get the newly reordered stops
-	self.routeTaskParams.returnStopGraphics = YES;
+	self.routeTaskParams.returnStopGraphics = NO;
 	
 	// ensure the graphics are returned in our map's spatial reference
 	self.routeTaskParams.outSpatialReference = self.mapView.spatialReference;
 	
 	// let's ignore invalid locations
 	self.routeTaskParams.ignoreInvalidLocations = YES;
+    
+    [routeTask retrieveNetworkDescription];
+}
+
+- (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didRetrieveNetworkDescription:(AGSNetworkDescription *)networkDescription {
+    self.networkDesc = networkDescription;
+    for (AGSCostAttribute* ca in self.networkDesc.costAttributes) {
+        NSLog(@"%@",ca.name);
+    }
 }
 
 //
@@ -207,12 +214,7 @@
     [self updateDirectionsLabel:@"Routing completed"];
 	
 	// we know that we are only dealing with 1 route...
-	AGSRouteResult* newResult = [routeTaskResult.routeResults lastObject];
-	if (newResult) {
-        
-        
-        self.routeResult = newResult;
-
+	self.routeResult = [routeTaskResult.routeResults lastObject];
         
         
         
@@ -236,32 +238,24 @@
         
         //UNCOMMENT THIS TO ADD STOPS THAT ARE RETURNED BY THE ROUTE TASK RESULTS
 		
-//        // remove the stop graphics from the graphics layer
-//        // careful not to attempt to mutate the graphics array while
-//        // it is being enumerated
-//		NSMutableArray *graphics = [self.graphicsLayer.graphics mutableCopy];
-//		for (AGSGraphic *g in graphics) {
-//			if ([g isKindOfClass:[AGSStopGraphic class]]) {
-//				[self.graphicsLayer removeGraphic:g];
-//			}
-//		}
-//		
-//        // add the returned stops...it's possible these came back in a different order
-//        // because we specified findBestSequence
-//		for (AGSStopGraphic *sg in self.routeResult.stopGraphics) {
-//            
-//            // get the sequence from the attribetus
-//            BOOL exists;
-//			NSInteger sequence = [sg attributeAsIntForKey:@"Sequence" exists:&exists];
-//            
-//            // create a composite symbol using the sequence number
-//			sg.symbol = [self stopSymbolWithNumber:sequence];
-//            
-//            // add the graphic
-//			[self.graphicsLayer addGraphic:sg];
-//		}
+        if(self.routeResult.stopGraphics){
+            [self.graphicsLayerStops removeAllGraphics];
+
+            
+            for (AGSStopGraphic* reorderedStop in self.routeResult.stopGraphics) {
+                BOOL exists;
+                NSInteger sequence = [reorderedStop attributeAsIntForKey:@"Sequence" exists:&exists];
+            
+                          // create a composite symbol using the sequence number
+                		reorderedStop.symbol = [self stopSymbolWithNumber:sequence];
+            
+                          // add the graphic
+                		[self.graphicsLayerRoute addGraphic:reorderedStop];
+            }
+            self.routeTaskParams.findBestSequence = NO;
+            self.routeTaskParams.returnStopGraphics = NO;
+        }
         _isExecuting = NO;
-	}
 }
 
 //
@@ -377,18 +371,15 @@
 	_numStops = 0;
 	
 	
-	// reset direction index
-	_directionIndex = 0;
+	
 		
 	// remove all graphics
 	[self.graphicsLayerStops removeAllGraphics];
     [self.graphicsLayerRoute removeAllGraphics];
 	
  
-	
-    // disable the next/prev direction buttons
-	self.nextBtn.enabled = NO;
-	self.prevBtn.enabled = NO;
+	[self resetDirections];
+    
 }
 
 
@@ -423,13 +414,17 @@
 // perform the route task's solve operation
 //
 - (IBAction)routeBtnClicked:(id)sender {
-	
+    [self solveRoute];
+}
+
+-(void) solveRoute{
+    [self resetDirections];
     // update our banner
 	[self updateDirectionsLabel:@"Routing..."];
 	
 	
 	NSMutableArray *stops = [NSMutableArray array];
-
+    
 	// get the stop, barriers for the route task
 	for (AGSGraphic *g in self.graphicsLayerStops.graphics) {
         // if it's a stop graphic, add the object to stops
@@ -465,7 +460,7 @@
 	AGSDirectionSet *directions = self.routeResult.directions;
 	self.currentDirectionGraphic = [directions.graphics objectAtIndex:_directionIndex];
 	self.currentDirectionGraphic.symbol = [self currentDirectionSymbol];
-	[self.graphicsLayerStops addGraphic:self.currentDirectionGraphic];
+	[self.graphicsLayerRoute addGraphic:self.currentDirectionGraphic];
 	
     // update banner
 	[self updateDirectionsLabel:self.currentDirectionGraphic.text];
@@ -497,7 +492,7 @@
 	AGSDirectionSet *directions = self.routeResult.directions;
 	self.currentDirectionGraphic = [directions.graphics objectAtIndex:_directionIndex];
 	self.currentDirectionGraphic.symbol = [self currentDirectionSymbol];
-	[self.graphicsLayerStops addGraphic:self.currentDirectionGraphic];
+	[self.graphicsLayerRoute addGraphic:self.currentDirectionGraphic];
 	
     // update banner text
 	[self updateDirectionsLabel:self.currentDirectionGraphic.text];
@@ -516,6 +511,33 @@
 	}
 }
 
+- (IBAction)routePreferenceChanged:(UISegmentedControl *)sender {
+    switch (sender.selectedSegmentIndex) {
+        case 0:
+            self.routeTaskParams.impedanceAttributeName = @"Minutes";
+            break;
+        case 1:
+            self.routeTaskParams.impedanceAttributeName = @"Meters";
+        default:
+            break;
+    }
+    [self solveRoute];
+}
 
+-(void)resetDirections{
+    // disable the next/prev direction buttons
+    // reset direction index
+	_directionIndex = 0;
+	self.nextBtn.enabled = NO;
+	self.prevBtn.enabled = NO;
+    [self.graphicsLayerRoute removeGraphic:self.currentDirectionGraphic];
+}
+
+- (IBAction)reorderStops:(UIBarButtonItem *)sender {
+    self.routeTaskParams.findBestSequence = YES;
+    self.routeTaskParams.returnStopGraphics = YES;
+    [self solveRoute];
+    
+}
 
 @end

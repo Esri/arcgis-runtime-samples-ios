@@ -13,30 +13,22 @@
 
 
 #import "PopupSampleViewController.h"
-#import "PopupHelper.h"
 
 
 @interface PopupSampleViewController() {
-    AGSWebMap *_webMap;
-    AGSMapView *_mapView;
-    NSString *_webMapId;
-    NSMutableArray *_queryableLayers;
-    AGSPopupsContainerViewController *_popupVC;
-    UIActivityIndicatorView *_activityIndicator;
-    PopupHelper* _popupHelper;
 }
+
+@property (nonatomic, strong) AGSWebMap *webMap;
+@property (nonatomic, strong) NSString *webMapId;
+@property (nonatomic, strong) NSMutableArray *queryableLayers;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) AGSPopupsContainerViewController *popupVC;
+
 
 @end
 
 @implementation PopupSampleViewController 
 
-@synthesize webMapId = _webMapId;
-@synthesize webMap = _webMap;
-@synthesize mapView = _mapView;
-@synthesize queryableLayers = _queryableLayers;
-@synthesize activityIndicator = _activityIndicator;
-@synthesize popupVC = _popupVC;
-@synthesize popupHelper = _popupHelper;
 
 #pragma mark - View lifecycle
 
@@ -50,7 +42,6 @@
     self.queryableLayers = nil;
     self.popupVC = nil;
     self.activityIndicator = nil;
-    self.popupHelper = nil;
     
     [super viewDidUnload];
 }
@@ -70,12 +61,6 @@
     self.mapView.touchDelegate = self;
     
     
-    self.queryableLayers = [NSMutableArray array];
-
-    self.popupHelper = [[PopupHelper alloc] init];
-    self.popupHelper.delegate = self;
-
-    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -92,10 +77,19 @@
 
 - (void)mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint graphics:(NSDictionary *)graphics {
 
-    //cancel any outstanding requests
-    [self.popupHelper cancelOutstandingRequests];
+    AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
+    AGSPolygon *buffer = [geometryEngine bufferGeometry:mappoint byDistance:(10 *mapView.resolution)];
+    BOOL willFetch = [self.webMap fetchPopupsForExtent:buffer.envelope];
+    if(!willFetch){
+        NSLog(@"Sorry, try again");
+    }else{
+        self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        self.mapView.callout.customView = self.activityIndicator;
+        [self.activityIndicator startAnimating];
+        [self.mapView.callout showCalloutAt:mappoint pixelOffset:CGPointZero animated:YES];
+    }
+    self.popupVC = nil;
 
-    [self.popupHelper findPopupsForMapView:mapView withGraphics:graphics atPoint:mappoint andWebMap:self.webMap withQueryableLayers:self.queryableLayers ];
 }
 
 #pragma mark - AGSCallout methods
@@ -104,142 +98,120 @@
     [self presentModalViewController:self.popupVC animated:YES];
 }
 
+#pragma mark - AGSWebMapDelegate methods
 
-#pragma mark - PopupHelperDelegate methods
-- (void)foundPopups:(NSArray*) popups atMapPonit:(AGSPoint*)mapPoint withMoreToFollow:(BOOL)more {
+- (void) webMapDidLoad:(AGSWebMap *)webMap {
+    if(![webMap hasPopupsDefined]){
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@""
+                                                     message:@"This webmap does not have any popups"
+                                                    delegate:self
+                                           cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+    }
+}
+
+- (void) webMap:(AGSWebMap *)webMap didFailToLoadWithError:(NSError *)error {
     
-    //Release the last popups vc
-    self.popupVC = nil;
+    // If the web map failed to load report an error
+    NSLog(@"Error while loading webMap: %@",[error localizedDescription]);
     
+    
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                 message:@"Failed to load the webmap"
+                                                delegate:self
+                                       cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [av show];
+}
+
+
+-(void) didLoadLayer:(AGSLayer *)layer {
+    
+    //Compose a list of dynamic and map service layers in the webmap
+    //for which we want to find popups
+    //Popups for feature layer will always be found regardless of this list
+    if([layer isKindOfClass:[AGSDynamicMapServiceLayer class]] || [layer isKindOfClass:[AGSTiledMapServiceLayer class]])
+        [self.queryableLayers addObject:layer];
+    
+}
+
+
+-(void)didFailToLoadLayer:(NSString*)layerTitle url:(NSURL*)url baseLayer:(BOOL)baseLayer withError:(NSError*)error{
+    
+    NSLog(@"Error while loading layer: %@",[error localizedDescription]);
+    
+    // If we have an error loading the layer report an error
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                 message:[NSString stringWithFormat:@"The layer %@ cannot be displayed",layerTitle]
+                                                delegate:self
+                                       cancelButtonTitle:@"OK"
+                                       otherButtonTitles:nil];
+    
+    [av show];
+    
+    
+    
+    // skip loading this layer
+    [self.webMap continueOpenAndSkipCurrentLayer];
+    
+}
+
+- (void)webMap:(AGSWebMap *)webMap didFetchPopups:(NSArray *)popups forExtent:(AGSEnvelope *)extent{
     // If we've found one or more popups
     if (popups.count > 0) {
-        //Create a popupsContainer view controller with the popups
-        self.popupVC = [[AGSPopupsContainerViewController alloc] initWithPopups:popups usingNavigationControllerStack:false];
-        self.popupVC.style = AGSPopupsContainerStyleBlack;
-        self.popupVC.delegate = self;
+        
+        if(!self.popupVC){
+            //Create a popupsContainer view controller with the popups
+            self.popupVC = [[AGSPopupsContainerViewController alloc] initWithPopups:popups usingNavigationControllerStack:false];
+            self.popupVC.style = AGSPopupsContainerStyleBlack;
+            self.popupVC.delegate = self;
+        }else{
+            [self.popupVC showAdditionalPopups:popups];
+        }
         
         // For iPad, display popup view controller in the callout
         if ([[AGSDevice currentDevice] isIPad]) {
             self.mapView.callout.customView = self.popupVC.view;
-            if(more){
-                // Start the activity indicator in the upper right corner of the
-                // popupsContainer view controller while we wait for the query results
-                self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-                UIBarButtonItem *blankButton = [[UIBarButtonItem alloc] initWithCustomView:(UIView*)self.activityIndicator];
-                self.popupVC.actionButton = blankButton;
-                [self.activityIndicator startAnimating];
-            }
+            // Start the activity indicator in the upper right corner of the
+            // popupsContainer view controller while we wait for the query results
+            self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+            UIBarButtonItem *blankButton = [[UIBarButtonItem alloc] initWithCustomView:(UIView*)self.activityIndicator];
+            self.popupVC.actionButton = blankButton;
+            [self.activityIndicator startAnimating];
         }
         else {
             //For iphone, display summary info in the callout
-            self.mapView.callout.title = [NSString stringWithFormat:@"%d Results", popups.count];
+            self.mapView.callout.title = [NSString stringWithFormat:@"%d Results", self.popupVC.popups.count];
             self.mapView.callout.accessoryButtonHidden = NO;
-            if(more)
-                self.mapView.callout.detail = @"loading more...";
-            else
-                self.mapView.callout.detail = @"";
-        }
-        
-    }else{
-        // If we did not find any popups yet, but we expect some to follow
-        // show the activity indicator in the callout while we wait for results
-        if(more) {
-            self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-            self.mapView.callout.customView = self.activityIndicator;
-            [self.activityIndicator startAnimating];
-        }
-        else{
-            //If don't have any popups, and we don't expect any more results
-            [self.activityIndicator stopAnimating];
+            self.mapView.callout.detail = @"loading more...";
             self.mapView.callout.customView = nil;
-            self.mapView.callout.accessoryButtonHidden = YES;
-            self.mapView.callout.title = @"No Results";
-            self.mapView.callout.detail = @"";
         }
-           
+        
     }
-    [self.mapView.callout showCalloutAt:mapPoint pixelOffset:CGPointZero animated:YES];
-
-    
 }
-
-- (void)foundAdditionalPopups:(NSArray*) popups withMoreToFollow:(BOOL)more{
-    
-    if(popups.count>0){
-        if (self.popupVC) {
-            [self.popupVC showAdditionalPopups:popups];
-        
-            // If these are the results of the final query stop the activityIndicator
-            if (!more) {
-                [self.activityIndicator stopAnimating];
-            
-                // If we are on iPhone display the number of results returned
-                if (![[AGSDevice currentDevice] isIPad]) {
-                    self.mapView.callout.customView = nil;
-                    NSString *results = self.popupVC.popups.count == 1 ? @"Result" : @"Results";
-                    self.mapView.callout.title = [NSString stringWithFormat:@"%d %@", self.popupVC.popups.count, results];
-                    self.mapView.callout.detail = @"";
-                }
-            }
-        } else {
-        
-            self.popupVC = [[AGSPopupsContainerViewController alloc] initWithPopups:popups];
-            self.popupVC.delegate = self;
-            self.popupVC.style = AGSPopupsContainerStyleBlack;
-    
-            // If we are on iPad set the popupsContainerViewController to be the callout's customView
-            if ([[AGSDevice currentDevice] isIPad]) {
-                self.mapView.callout.customView = self.popupVC.view;
-            }
-    
-            // If we have more popups coming, start the indicator on the popupVC
-            if (more) {
-                if ([[AGSDevice currentDevice] isIPad] ) {
-                    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-                    UIBarButtonItem *blankButton = [[UIBarButtonItem alloc] initWithCustomView:(UIView*)self.activityIndicator];
-                    self.popupVC.actionButton = blankButton;
-                    [self.activityIndicator startAnimating];
-                }
-        
-            }
-            // Otherwise if we are on iPhone display the number of results returned in the callout
-            else if (![[AGSDevice currentDevice] isIPad]) {
-                self.mapView.callout.customView = nil;
-                NSString *results = self.popupVC.popups.count == 1 ? @"Result" : @"Results";
-                self.mapView.callout.title = [NSString stringWithFormat:@"%d %@", self.popupVC.popups.count, results];
-                self.mapView.callout.detail = @"";
-            }
-        }
-    }else{
-        // If these are the results of the last query stop the activityIndicator
-        if (!more) {
+- (void) webMap:(AGSWebMap *)webMap didFinishFetchingPopupsForExtent:(AGSEnvelope *)extent{
+    if(self.popupVC){
+        if ([[AGSDevice currentDevice] isIPad])
             [self.activityIndicator stopAnimating];
-                
-            // If no query returned results
-            if (!self.popupVC) {
-                self.mapView.callout.customView = nil;
-                self.mapView.callout.accessoryButtonHidden = YES;
-                self.mapView.callout.title = @"No Results";
-                self.mapView.callout.detail = @"";
-            }
-            // Otherwise if we are on iPhone display the number of results returned in the callout
-            else if (![[AGSDevice currentDevice] isIPad]) {
-                self.mapView.callout.customView = nil;
-                NSString *results = self.popupVC.popups.count == 1 ? @"Result" : @"Results";
-                self.mapView.callout.title = [NSString stringWithFormat:@"%d %@", self.popupVC.popups.count, results];
-                self.mapView.callout.detail = @"";
-            }
-        }
+        else
+            self.mapView.callout.detail = @"";
+        
+    }else{
+        [self.activityIndicator stopAnimating];
+        self.mapView.callout.customView = nil;
+        self.mapView.callout.accessoryButtonHidden = YES;
+        self.mapView.callout.title = @"No Results";
+        self.mapView.callout.detail = @"";
 
     }
-   
 }
+
+
 
 #pragma mark - AGSPopupsContainerDelegate methods
 - (void)popupsContainerDidFinishViewingPopups:(id<AGSPopupsContainer>)popupsContainer {
     
     //cancel any outstanding requests
-    [self.popupHelper cancelOutstandingRequests];
+    [self.webMap cancelFetchPopups];
     
     // If we are on iPad dismiss the callout
     if ([[AGSDevice currentDevice] isIPad])
@@ -273,53 +245,6 @@ wantsToDeleteGraphicForPopup:		(AGSPopup *) 	popup {
 
 }
 
-
-#pragma mark - AGSWebMapDelegate methods
-
-- (void) webMap:(AGSWebMap *)webMap didFailToLoadWithError:(NSError *)error {
-    
-    // If the web map failed to load report an error
-    NSLog(@"Error while loading webMap: %@",[error localizedDescription]);
-    
-    
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" 
-                                                 message:@"Failed to load the webmap" 
-                                                delegate:self 
-                                       cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [av show];
-}
-
-
--(void) didLoadLayer:(AGSLayer *)layer {
-    
-    //Compose a list of dynamic and map service layers in the webmap
-    //for which we want to find popups
-    //Popups for feature layer will always be found regardless of this list
-    if([layer isKindOfClass:[AGSDynamicMapServiceLayer class]] || [layer isKindOfClass:[AGSTiledMapServiceLayer class]])
-        [self.queryableLayers addObject:layer];
-
-}
-
-
--(void)didFailToLoadLayer:(NSString*)layerTitle url:(NSURL*)url baseLayer:(BOOL)baseLayer withError:(NSError*)error{
-    
-    NSLog(@"Error while loading layer: %@",[error localizedDescription]);
-    
-    // If we have an error loading the layer report an error 
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" 
-                                                 message:[NSString stringWithFormat:@"The layer %@ cannot be displayed",layerTitle]
-                                                delegate:self 
-                                       cancelButtonTitle:@"OK" 
-                                       otherButtonTitles:nil];
-    
-    [av show];
-    
-    
-    
-    // skip loading this layer
-    [self.webMap continueOpenAndSkipCurrentLayer];
-    
-}
 
 
 

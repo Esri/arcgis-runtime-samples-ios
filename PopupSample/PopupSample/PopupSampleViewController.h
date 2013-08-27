@@ -13,23 +13,10 @@
 
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
-#import "PopupHelper.h"
 
-@interface PopupSampleViewController : UIViewController <AGSWebMapDelegate, AGSCalloutDelegate, AGSMapViewTouchDelegate, UIAlertViewDelegate, AGSPopupsContainerDelegate, PoupupHelperDelegate>
+@interface PopupSampleViewController : UIViewController <AGSWebMapDelegate, AGSCalloutDelegate, AGSMapViewTouchDelegate, UIAlertViewDelegate, AGSPopupsContainerDelegate>
 
 
-@property (nonatomic, strong) AGSWebMap *webMap;
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
-@property (nonatomic, strong) NSString *webMapId;
-@property (nonatomic, strong) NSMutableArray *queryableLayers;
-@property (nonatomic, strong) PopupHelper * popupHelper;
-
-@property (nonatomic,strong) UIActivityIndicatorView *activityIndicator;
-@property (nonatomic, strong) AGSPopupsContainerViewController *popupVC;
-
-
-
-- (void)foundPopups:(NSArray*) popups atMapPonit:(AGSPoint*)mapPoint withMoreToFollow:(BOOL)more;
-- (void)foundAdditionalPopups:(NSArray*) popups withMoreToFollow:(BOOL)more;
 
 @end

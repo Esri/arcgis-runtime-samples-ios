@@ -29,10 +29,10 @@
 		975E754E167A9620005FB57B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 975E754D167A9620005FB57B /* Default-568h@2x.png */; };
 		9792DF6D13B262A600C41657 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9792DF6C13B262A600C41657 /* MediaPlayer.framework */; };
 		9792DF7013B262AD00C41657 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9792DF6F13B262AD00C41657 /* MobileCoreServices.framework */; };
-		979CA0FD17CD692900211AB7 /* RedlandsLocator.plbs in Resources */ = {isa = PBXBuildFile; fileRef = 979CA0F917CD692900211AB7 /* RedlandsLocator.plbs */; };
-		979CA0FE17CD692900211AB7 /* RedlandsLocator.loc.xml in Resources */ = {isa = PBXBuildFile; fileRef = 979CA0FA17CD692900211AB7 /* RedlandsLocator.loc.xml */; };
-		979CA0FF17CD692900211AB7 /* RedlandsLocator.loc in Resources */ = {isa = PBXBuildFile; fileRef = 979CA0FB17CD692900211AB7 /* RedlandsLocator.loc */; };
-		979CA10017CD692900211AB7 /* RedlandsLocator.lox in Resources */ = {isa = PBXBuildFile; fileRef = 979CA0FC17CD692900211AB7 /* RedlandsLocator.lox */; };
+		979CA10517CD7D3E00211AB7 /* SanDiegoLocator.loc in Resources */ = {isa = PBXBuildFile; fileRef = 979CA10117CD7D3E00211AB7 /* SanDiegoLocator.loc */; };
+		979CA10617CD7D3E00211AB7 /* SanDiegoLocator.loc.xml in Resources */ = {isa = PBXBuildFile; fileRef = 979CA10217CD7D3E00211AB7 /* SanDiegoLocator.loc.xml */; };
+		979CA10717CD7D3E00211AB7 /* SanDiegoLocator.locb in Resources */ = {isa = PBXBuildFile; fileRef = 979CA10317CD7D3E00211AB7 /* SanDiegoLocator.locb */; };
+		979CA10817CD7D3E00211AB7 /* SanDiegoLocator.lox in Resources */ = {isa = PBXBuildFile; fileRef = 979CA10417CD7D3E00211AB7 /* SanDiegoLocator.lox */; };
 		AF5531B2125BB3330070ED0C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5531B0125BB3330070ED0C /* icon.png */; };
 		AF5531B3125BB3330070ED0C /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5531B1125BB3330070ED0C /* icon@2x.png */; };
 		C56B3F9D14C63EDA003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B3F9C14C63EDA003A46EB /* ArcGIS.bundle */; };
@@ -68,10 +68,10 @@
 		9792DF6C13B262A600C41657 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		9792DF6F13B262AD00C41657 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		9793170E1314439F003B935E /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
-		979CA0F917CD692900211AB7 /* RedlandsLocator.plbs */ = {isa = PBXFileReference; lastKnownFileType = file; path = RedlandsLocator.plbs; sourceTree = "<group>"; };
-		979CA0FA17CD692900211AB7 /* RedlandsLocator.loc.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RedlandsLocator.loc.xml; sourceTree = "<group>"; };
-		979CA0FB17CD692900211AB7 /* RedlandsLocator.loc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RedlandsLocator.loc; sourceTree = "<group>"; };
-		979CA0FC17CD692900211AB7 /* RedlandsLocator.lox */ = {isa = PBXFileReference; lastKnownFileType = file; path = RedlandsLocator.lox; sourceTree = "<group>"; };
+		979CA10117CD7D3E00211AB7 /* SanDiegoLocator.loc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SanDiegoLocator.loc; sourceTree = "<group>"; };
+		979CA10217CD7D3E00211AB7 /* SanDiegoLocator.loc.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SanDiegoLocator.loc.xml; sourceTree = "<group>"; };
+		979CA10317CD7D3E00211AB7 /* SanDiegoLocator.locb */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanDiegoLocator.locb; sourceTree = "<group>"; };
+		979CA10417CD7D3E00211AB7 /* SanDiegoLocator.lox */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanDiegoLocator.lox; sourceTree = "<group>"; };
 		AF5531B0125BB3330070ED0C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		AF5531B1125BB3330070ED0C /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		C56B3F9C14C63EDA003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
@@ -148,10 +148,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				979CA0F917CD692900211AB7 /* RedlandsLocator.plbs */,
-				979CA0FA17CD692900211AB7 /* RedlandsLocator.loc.xml */,
-				979CA0FB17CD692900211AB7 /* RedlandsLocator.loc */,
-				979CA0FC17CD692900211AB7 /* RedlandsLocator.lox */,
+				979CA10117CD7D3E00211AB7 /* SanDiegoLocator.loc */,
+				979CA10217CD7D3E00211AB7 /* SanDiegoLocator.loc.xml */,
+				979CA10317CD7D3E00211AB7 /* SanDiegoLocator.locb */,
+				979CA10417CD7D3E00211AB7 /* SanDiegoLocator.lox */,
 				975E754D167A9620005FB57B /* Default-568h@2x.png */,
 				1CF2FB351189EA0600D7A686 /* BluePushpin.png */,
 				AF5531B0125BB3330070ED0C /* icon.png */,
@@ -252,10 +252,10 @@
 				97282BA91354FD3E00282B76 /* MainWindow-iPad.xib in Resources */,
 				C56B3F9D14C63EDA003A46EB /* ArcGIS.bundle in Resources */,
 				975E754E167A9620005FB57B /* Default-568h@2x.png in Resources */,
-				979CA0FD17CD692900211AB7 /* RedlandsLocator.plbs in Resources */,
-				979CA0FE17CD692900211AB7 /* RedlandsLocator.loc.xml in Resources */,
-				979CA0FF17CD692900211AB7 /* RedlandsLocator.loc in Resources */,
-				979CA10017CD692900211AB7 /* RedlandsLocator.lox in Resources */,
+				979CA10517CD7D3E00211AB7 /* SanDiegoLocator.loc in Resources */,
+				979CA10617CD7D3E00211AB7 /* SanDiegoLocator.loc.xml in Resources */,
+				979CA10717CD7D3E00211AB7 /* SanDiegoLocator.locb in Resources */,
+				979CA10817CD7D3E00211AB7 /* SanDiegoLocator.lox in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

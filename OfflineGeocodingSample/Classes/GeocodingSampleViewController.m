@@ -37,6 +37,8 @@ static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/se
 	//create an instance of a tiled map service layer
 	//Add it to the map view
     NSURL *serviceUrl = [NSURL URLWithString:kMapServiceURL];
+    
+
     AGSTiledMapServiceLayer *tiledMapServiceLayer = [AGSTiledMapServiceLayer tiledMapServiceLayerWithURL:serviceUrl];
     [self.mapView addMapLayer:tiledMapServiceLayer withName:@"World Street Map"];
     
@@ -55,7 +57,8 @@ static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/se
     //create the AGSLocator with the geo locator URL
     //and set the delegate to self, so we get AGSLocatorDelegate notifications
     NSError* error;
-    self.locator = [AGSLocator locatorWithName:@"RedlandsLocator" error:&error];
+    //self.locator = [AGSLocator locatorWithName:@"RedlandsLocator" error:&error];
+    self.locator = [AGSLocator locatorWithName:@"SanDiegoLocator" error:&error];
     self.locator.delegate = self;
     [self.locator fetchLocatorInfo];
     

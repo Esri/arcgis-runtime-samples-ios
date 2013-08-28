@@ -18,8 +18,6 @@
 //The map service
 static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest/services/ESRI_StreetMap_World_2D/MapServer";
 
-//The geocode service
-static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Places_World/GeocodeServer";
 
 @synthesize mapView = _mapView;
 @synthesize searchBar = _searchBar;
@@ -46,13 +44,6 @@ static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/se
     //will be stored in and add it to the map
     self.graphicsLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:self.graphicsLayer withName:@"Graphics Layer"];
-}
-
-- (void)startGeocoding
-{
-    
-    //clear out previous results
-    [self.graphicsLayer removeAllGraphics];
     
     //create the AGSLocator with the geo locator URL
     //and set the delegate to self, so we get AGSLocatorDelegate notifications
@@ -61,6 +52,15 @@ static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/se
     self.locator = [AGSLocator locatorWithName:@"SanDiegoLocator" error:&error];
     self.locator.delegate = self;
     [self.locator fetchLocatorInfo];
+}
+
+- (void)startGeocoding
+{
+    
+    //clear out previous results
+    [self.graphicsLayer removeAllGraphics];
+    
+  
     
     //we want all out fields
     //Note that the "*" for out fields is supported for geocode services of
@@ -68,33 +68,33 @@ static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/se
     //NSArray *outFields = [NSArray arrayWithObject:@"*"];
     
 //    //for pre-10 ArcGIS Servers, you need to specify all the out fields:
-//    NSArray *outFields = [NSArray arrayWithObjects:@"Loc_name",
-//                          @"Shape",
-//                          @"Score",
-//                          @"Name",
-//                          @"Rank",
-//                          @"Match_addr",
-//                          @"Descr",
-//                          @"Latitude",
-//                          @"Longitude",
-//                          @"City",
-//                          @"County",
-//                          @"State",
-//                          @"State_Abbr",
-//                          @"Country",
-//                          @"Cntry_Abbr",
-//                          @"Type",
-//                          @"North_Lat",
-//                          @"South_Lat",
-//                          @"West_Lon",
-//                          @"East_Lon",
-//                          nil];
-//    
-//    //Create the address dictionary with the contents of the search bar
-//    NSDictionary *addresses = [NSDictionary dictionaryWithObjectsAndKeys:self.searchBar.text, @"PlaceName", nil];
-//
-//    //now request the location from the locator for our address
-//    [self.locator locationsForAddress:addresses returnFields:outFields];
+    NSArray *outFields = [NSArray arrayWithObjects:@"Loc_name",
+                          @"Shape",
+                          @"Score",
+                          @"Name",
+                          @"Rank",
+                          @"Match_addr",
+                          @"Descr",
+                          @"Latitude",
+                          @"Longitude",
+                          @"City",
+                          @"County",
+                          @"State",
+                          @"State_Abbr",
+                          @"Country",
+                          @"Cntry_Abbr",
+                          @"Type",
+                          @"North_Lat",
+                          @"South_Lat",
+                          @"West_Lon",
+                          @"East_Lon",
+                          nil];
+    
+    //Create the address dictionary with the contents of the search bar
+    NSDictionary *addresses = [NSDictionary dictionaryWithObjectsAndKeys:self.searchBar.text, @"Single Line Input", nil];
+
+    //now request the location from the locator for our address
+    [self.locator locationsForAddress:addresses returnFields:outFields];
 }
 
 #pragma mark -
@@ -174,8 +174,8 @@ static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/se
             marker.leaderPoint = CGPointMake(-9, 11);
                         
             //set the text and detail text based on 'Name' and 'Descr' fields in the attributes
-            self.calloutTemplate.titleTemplate = @"${Name}";
-            self.calloutTemplate.detailTemplate = @"${Descr}";
+            self.calloutTemplate.titleTemplate = @"${Match_addr}";
+            self.calloutTemplate.detailTemplate = @"Match Score: ${Score}";
 			
             //create the graphic
 			AGSGraphic *graphic = [[AGSGraphic alloc] initWithGeometry: pt
@@ -183,33 +183,13 @@ static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/se
 															attributes:[addressCandidate.attributes mutableCopy]
 														  infoTemplateDelegate:self.calloutTemplate];
             
-            
             //add the graphic to the graphics layer
 			[self.graphicsLayer addGraphic:graphic];
 			            
-            if ([candidates count] == 1)
-            {
-                //we have one result, center at that point
-                [self.mapView centerAtPoint:pt animated:NO];
-               
-				// set the width of the callout
-				self.mapView.callout.width = 250;
- 
-                //show the callout
-                [self.mapView.callout showCalloutAtPoint:(AGSPoint*)graphic.geometry forGraphic:graphic animated:YES];
-            }
-			
-			//release the graphic bb  
+
 		}
         
-        //if we have more than one result, zoom to the extent of all results
-        int nCount = [candidates count];
-        if (nCount > 1)
-        {            
-            AGSMutableEnvelope *extent = [AGSMutableEnvelope envelopeWithXmin:xmin ymin:ymin xmax:xmax ymax:ymax spatialReference:self.mapView.spatialReference];
-            [extent expandByFactor:1.5];
-			[self.mapView zoomToEnvelope:extent animated:YES];
-        }
+        [self.mapView zoomToGeometry:self.graphicsLayer.fullEnvelope withPadding:0 animated:YES];
 	}
     
 }

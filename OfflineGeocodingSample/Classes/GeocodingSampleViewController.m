@@ -12,6 +12,21 @@
 
 #import "GeocodingSampleViewController.h"
 #import "ResultsViewController.h"
+#import "RecentViewController.h"
+
+@interface GeocodingSampleViewController(){
+    CGPoint _magnifierOffset;
+}
+
+@property (nonatomic, strong) AGSGraphicsLayer *graphicsLayer;
+@property (nonatomic, strong) AGSLocator *locator;
+@property (nonatomic, strong) AGSCalloutTemplate *calloutTemplate;
+@property (nonatomic, strong) NSMutableArray* recentSearches;
+@property (nonatomic, strong) AGSAddressCandidate* reverseGeocodeResult;
+
+//This is the method that starts the geocoding operation
+- (void)startGeocoding;
+@end
 
 @implementation GeocodingSampleViewController
 
@@ -19,18 +34,26 @@
 static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest/services/ESRI_StreetMap_World_2D/MapServer";
 
 
-@synthesize mapView = _mapView;
-@synthesize searchBar = _searchBar;
-@synthesize graphicsLayer = _graphicsLayer;
-@synthesize locator = _locator;
-@synthesize calloutTemplate = _calloutTemplate;
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+
+    self.recentSearches = [NSMutableArray arrayWithObjects:
+                           @"100 Park Blvd, San Diego, CA 92101",
+                           @"500 Sea World Dr, San Diego, CA 92109",
+                           @"3225 N Harbor Dr, San Diego, CA 92101",
+                           @"1500 Orange Ave, Coronado, CA 92118",
+                           @"9449 Friars Rd, San Diego, CA 92108",
+                           @"2920 Zoo Dr, San Diego, CA 92101",
+                           nil ];
+    
     //set the delegate on the mapView so we get notifications for user interaction with the callout
     self.mapView.callout.delegate = self;
+    
+    self.mapView.touchDelegate = self;
+    self.mapView.showMagnifierOnTapAndHold = YES;
     
 	//create an instance of a tiled map service layer
 	//Add it to the map view
@@ -43,6 +66,21 @@ static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest
     //create the graphics layer that the geocoding result
     //will be stored in and add it to the map
     self.graphicsLayer = [AGSGraphicsLayer graphicsLayer];
+    
+    //create the callout template, used when the user displays the callout
+    self.calloutTemplate = [[AGSCalloutTemplate alloc]init];
+    //set the text and detail text based on 'Name' and 'Descr' fields in the attributes
+    self.calloutTemplate.titleTemplate = @"${Match_addr}";
+    self.calloutTemplate.detailTemplate = @"${Y}, ${X}";
+    self.graphicsLayer.calloutDelegate = self.calloutTemplate;
+    
+    //create a marker symbol to use in our graphic
+    AGSPictureMarkerSymbol *marker = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"BluePushpin.png"];
+    marker.offset = CGPointMake(9,16);
+    marker.leaderPoint = CGPointMake(-9, 11);
+    self.graphicsLayer.renderer = [AGSSimpleRenderer simpleRendererWithSymbol:marker];
+    
+    //add the graphics layer to the map
     [self.mapView addMapLayer:self.graphicsLayer withName:@"Graphics Layer"];
     
     //create the AGSLocator with the geo locator URL
@@ -51,7 +89,32 @@ static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest
     //self.locator = [AGSLocator locatorWithName:@"RedlandsLocator" error:&error];
     self.locator = [AGSLocator locatorWithName:@"SanDiegoLocator" error:&error];
     self.locator.delegate = self;
-    [self.locator fetchLocatorInfo];
+    
+    AGSEnvelope* env = [AGSEnvelope envelopeWithXmin:-117.1566 ymin:32.70 xmax:-117.1560 ymax:32.75 spatialReference:[AGSSpatialReference wgs84SpatialReference]];
+    
+    UIImage* img = [UIImage imageNamed:@"ArcGIS.bundle/Magnifier.png"];
+    _magnifierOffset = CGPointMake(0, -img.size.height/2);
+    
+    
+    [self.mapView zoomToGeometry:env withPadding:0 animated:YES];
+    
+}
+
+#pragma mark - AGSMapViewTouchDelegate
+
+- (void) mapView:(AGSMapView *)mapView didTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features {
+    self.mapView.callout.title = @"";
+    self.mapView.callout.detail = @"";
+    [self.mapView.callout showCalloutAt:mappoint screenOffset:_magnifierOffset animated:YES];
+    [self.locator addressForLocation:mappoint maxSearchDistance:25];
+}
+- (void) mapView:(AGSMapView *)mapView didMoveTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features{
+    [self.mapView.callout showCalloutAt:mappoint screenOffset:_magnifierOffset  animated:NO];
+    [self.locator addressForLocation:mappoint maxSearchDistance:25];
+}
+- (void) mapView:(AGSMapView *)mapView didEndTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features{
+    [self.mapView.callout showCalloutAt:mappoint screenOffset:CGPointZero  animated:NO];
+    
 }
 
 - (void)startGeocoding
@@ -60,41 +123,16 @@ static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest
     //clear out previous results
     [self.graphicsLayer removeAllGraphics];
     
-  
-    
-    //we want all out fields
-    //Note that the "*" for out fields is supported for geocode services of
-    //ArcGIS Server 10 and above
-    //NSArray *outFields = [NSArray arrayWithObject:@"*"];
-    
-//    //for pre-10 ArcGIS Servers, you need to specify all the out fields:
-    NSArray *outFields = [NSArray arrayWithObjects:@"Loc_name",
-                          @"Shape",
-                          @"Score",
-                          @"Name",
-                          @"Rank",
-                          @"Match_addr",
-                          @"Descr",
-                          @"Latitude",
-                          @"Longitude",
-                          @"City",
-                          @"County",
-                          @"State",
-                          @"State_Abbr",
-                          @"Country",
-                          @"Cntry_Abbr",
-                          @"Type",
-                          @"North_Lat",
-                          @"South_Lat",
-                          @"West_Lon",
-                          @"East_Lon",
-                          nil];
-    
     //Create the address dictionary with the contents of the search bar
-    NSDictionary *addresses = [NSDictionary dictionaryWithObjectsAndKeys:self.searchBar.text, @"Single Line Input", nil];
+    NSDictionary *addresses = @{
+        @"Single Line Input": self.searchBar.text
+    };
 
     //now request the location from the locator for our address
-    [self.locator locationsForAddress:addresses returnFields:outFields];
+    [self.locator locationsForAddress:addresses returnFields:@[@"*"]];
+    
+    if(![self.recentSearches containsObject:self.searchBar.text])
+        [self.recentSearches insertObject:self.searchBar.text atIndex:0];
 }
 
 #pragma mark -
@@ -102,13 +140,17 @@ static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest
 
 - (void) didClickAccessoryButtonForCallout:(AGSCallout *) 	callout
 {
-
-    AGSGraphic* graphic = (AGSGraphic*) callout.representedObject;
     //The user clicked the callout button, so display the complete set of results
     ResultsViewController *resultsVC = [[ResultsViewController alloc] initWithNibName:@"ResultsViewController" bundle:nil];
 
-    //set our attributes/results into the results VC
-    resultsVC.results = [graphic allAttributes];
+    AGSGraphic* graphic = (AGSGraphic*) callout.representedObject;
+    if(graphic){
+        //set our attributes/results into the results VC
+        resultsVC.results = [graphic allAttributes];
+    }else{
+        //we need to display results for the reverse geocoded location
+        resultsVC.results = self.reverseGeocodeResult.attributes;
+    }
     
     //display the results vc modally
     [self presentModalViewController:resultsVC animated:YES];  
@@ -138,50 +180,18 @@ static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest
 	}
 	else
 	{
-        //use these to calculate extent of results
-        double xmin = DBL_MAX;
-        double ymin = DBL_MAX;
-        double xmax = -DBL_MAX;
-        double ymax = -DBL_MAX;
-		
-		//create the callout template, used when the user displays the callout
-		self.calloutTemplate = [[AGSCalloutTemplate alloc]init];
+       
+
 
         //loop through all candidates/results and add to graphics layer
 		for (int i=0; i<[candidates count]; i++)
 		{            
-			AGSAddressCandidate *addressCandidate = (AGSAddressCandidate *)[candidates objectAtIndex:i];
-
-            //get the location from the candidate
-            AGSPoint *pt = addressCandidate.location;
-            
-            //accumulate the min/max
-            if (pt.x  < xmin)
-                xmin = pt.x;
-            
-            if (pt.x > xmax)
-                xmax = pt.x;
-            
-            if (pt.y < ymin)
-                ymin = pt.y;
-            
-            if (pt.y > ymax)
-                ymax = pt.y;
-
-			//create a marker symbol to use in our graphic
-            AGSPictureMarkerSymbol *marker = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"BluePushpin.png"];
-            marker.offset = CGPointMake(9,16);
-            marker.leaderPoint = CGPointMake(-9, 11);
+			AGSAddressCandidate *addressCandidate = (AGSAddressCandidate *)candidates[i];
                         
-            //set the text and detail text based on 'Name' and 'Descr' fields in the attributes
-            self.calloutTemplate.titleTemplate = @"${Match_addr}";
-            self.calloutTemplate.detailTemplate = @"Match Score: ${Score}";
-			
             //create the graphic
-			AGSGraphic *graphic = [[AGSGraphic alloc] initWithGeometry: pt
-																symbol:marker 
-															attributes:[addressCandidate.attributes mutableCopy]
-														  infoTemplateDelegate:self.calloutTemplate];
+			AGSGraphic *graphic = [[AGSGraphic alloc] initWithGeometry: addressCandidate.location
+																symbol:nil
+															attributes:addressCandidate.attributes];
             
             //add the graphic to the graphics layer
 			[self.graphicsLayer addGraphic:graphic];
@@ -206,6 +216,16 @@ static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest
     [alert show];
 }
 
+-(void)locator:(AGSLocator *)locator operation:(NSOperation *)op didFindAddressForLocation:(AGSAddressCandidate *)candidate{
+    self.reverseGeocodeResult = candidate;
+    self.mapView.callout.title = candidate.address[@"Street"];
+}
+
+-(void) locator:(AGSLocator *)locator operation:(NSOperation *)op didFailAddressForLocation:(NSError *)error{
+ /// @todo
+    self.mapView.callout.title = @"Address not available";
+}
+
 #pragma mark _
 #pragma mark UISearchBarDelegate
 
@@ -225,6 +245,20 @@ static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest
     [searchBar resignFirstResponder];
 }
 
+- (void)searchBarResultsListButtonClicked:(UISearchBar *)searchBar{
+    
+     RecentViewController* rvc = [[RecentViewController alloc]initWithItems:self.recentSearches];
+    rvc.completionBlock = ^(NSString* item){
+        if(item)
+            self.searchBar.text = item;
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [self.searchBar becomeFirstResponder];
+    };
+    
+    
+    [self presentViewController:[[UINavigationController alloc]initWithRootViewController:rvc] animated:YES completion:nil];
+    
+}
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations

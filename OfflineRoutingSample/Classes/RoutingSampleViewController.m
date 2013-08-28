@@ -162,6 +162,10 @@
 	self.routeTaskParams.findBestSequence = NO;
 	self.routeTaskParams.preserveFirstStop = YES;
 	self.routeTaskParams.preserveLastStop = YES;
+    
+    
+    self.routeTaskParams.impedanceAttributeName = @"Minutes";
+    self.routeTaskParams.accumulateAttributeNames = @[@"Meters", @"Minutes"];
 	
 	// since we used "findBestSequence" we need to
 	// get the newly reordered stops
@@ -200,7 +204,8 @@
 	// we know that we are only dealing with 1 route...
 	self.routeResult = [routeTaskResult.routeResults lastObject];
         
-        
+    NSString* resultSummary = [NSString stringWithFormat:@"%.0f mins, %.1f km",self.routeResult.totalTime, self.routeResult.totalLength/1000];
+    [self updateDirectionsLabel:resultSummary];
         
 //        if(self.routeResult.routeGraphic.geometry.spatialReference!=self.mapView.spatialReference){
 //            self.routeResult.routeGraphic.geometry = [[AGSGeometryEngine defaultGeometryEngine]projectGeometry:self.routeResult.routeGraphic.geometry toSpatialReference:self.mapView.spatialReference];
@@ -393,6 +398,7 @@
 	[self.graphicsLayerStops removeAllGraphics];
     [self.graphicsLayerRoute removeAllGraphics];
 	[self resetDirections];
+    [self updateDirectionsLabel:@"Tap & hold on the map to add stops"];
 }
 
 -(void)resetDirections{

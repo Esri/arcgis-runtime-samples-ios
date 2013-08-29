@@ -61,7 +61,15 @@
     //ask the user to log in
     if(!self.portal){
             self.oauthLoginVC = [[AGSOAuthLoginViewController alloc] initWithPortalURL:[NSURL URLWithString:kPortalURL] clientId:kAppID ];
-        self.oauthLoginVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        self.oauthLoginVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        
+        double delayInSeconds = 0.1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self presentModalViewController:self.oauthLoginVC animated:YES];
+        });
+        
+        
         __weak UserContentViewController *safeSelf = self;
         self.oauthLoginVC.completion = ^(AGSCredential *credential, NSError *error){
             if(error){
@@ -71,12 +79,13 @@
                 [safeSelf.oauthLoginVC dismissModalViewControllerAnimated:YES];
                 //update the portal explorer with the credential provided by the user.
                 safeSelf.portal = [[AGSPortal alloc]initWithURL:[NSURL URLWithString: kPortalURL] credential:credential];
-                safeSelf.portal.delegate = self;
+                safeSelf.portal.delegate = safeSelf;
                 
-                [safeSelf dismissModalViewControllerAnimated:YES];
             }
+            [safeSelf dismissModalViewControllerAnimated:YES];
         };
-            [self presentModalViewController:self.oauthLoginVC animated:YES];
+
+        
     }else{
             //start the process to get user's content
             [self getUserContents];

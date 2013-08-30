@@ -135,6 +135,7 @@
 
 #pragma mark - AGSMapViewLayerDelegate 
 -(void)mapViewDidLoad:(AGSMapView *)mapView{
+    
     if(self.routeTaskParams){
         self.routeTaskParams.outSpatialReference = self.mapView.spatialReference;
     }
@@ -157,11 +158,8 @@
 	// this returns turn-by-turn directions
 	self.routeTaskParams.returnDirections = YES;
 	
-	// the next 3 lines will cause the task to find the
-	// best route regardless of the stop input order
+
 	self.routeTaskParams.findBestSequence = NO;
-	self.routeTaskParams.preserveFirstStop = YES;
-	self.routeTaskParams.preserveLastStop = YES;
     
     
     self.routeTaskParams.impedanceAttributeName = @"Minutes";
@@ -204,18 +202,8 @@
 	// we know that we are only dealing with 1 route...
 	self.routeResult = [routeTaskResult.routeResults lastObject];
         
-    NSString* resultSummary = [NSString stringWithFormat:@"%.0f mins, %.1f km",self.routeResult.totalTime, self.routeResult.totalLength/1000];
+    NSString* resultSummary = [NSString stringWithFormat:@"%.0f mins, %.1f miles",self.routeResult.totalMinutes, self.routeResult.totalMiles];
     [self updateDirectionsLabel:resultSummary];
-        
-//        if(self.routeResult.routeGraphic.geometry.spatialReference!=self.mapView.spatialReference){
-//            self.routeResult.routeGraphic.geometry = [[AGSGeometryEngine defaultGeometryEngine]projectGeometry:self.routeResult.routeGraphic.geometry toSpatialReference:self.mapView.spatialReference];
-//        }
-
-        
-//        AGSPolyline* poly = (AGSPolyline*)self.routeResult.routeGraphic.geometry;
-//        for (int i = 0; i<[poly numPoints]; i++) {
-//            NSLog(@"VERTEX: %@",[poly pointOnPath:0 atIndex:i]);
-//        }
         
         // add the route graphic to the graphic's layer
         [self.graphicsLayerRoute removeAllGraphics];
@@ -225,21 +213,19 @@
 		// enable the next button so the user can traverse directions
 		self.nextBtn.enabled = YES;
         
-        //UNCOMMENT THIS TO ADD STOPS THAT ARE RETURNED BY THE ROUTE TASK RESULTS
-		
         if(self.routeResult.stopGraphics){
             [self.graphicsLayerStops removeAllGraphics];
-
             
             for (AGSStopGraphic* reorderedStop in self.routeResult.stopGraphics) {
                 BOOL exists;
                 NSInteger sequence = [reorderedStop attributeAsIntForKey:@"Sequence" exists:&exists];
             
+                NSLog(@"Seq %d",reorderedStop.sequence);
                           // create a composite symbol using the sequence number
                 		reorderedStop.symbol = [self stopSymbolWithNumber:sequence];
             
                           // add the graphic
-                		[self.graphicsLayerRoute addGraphic:reorderedStop];
+                		[self.graphicsLayerStops addGraphic:reorderedStop];
             }
             self.routeTaskParams.findBestSequence = NO;
             self.routeTaskParams.returnStopGraphics = NO;
@@ -373,6 +359,7 @@
         // if it's a stop graphic, add the object to stops
 		if ([g isKindOfClass:[AGSStopGraphic class]]) {
 			[stops addObject:g];
+            
 		}
         
 	}
@@ -431,6 +418,9 @@
 
 - (IBAction)reorderStops:(UIBarButtonItem *)sender {
     self.routeTaskParams.findBestSequence = YES;
+	self.routeTaskParams.preserveFirstStop = NO;
+	self.routeTaskParams.preserveLastStop = NO;
+
     self.routeTaskParams.returnStopGraphics = YES;
     [self solveRoute];
     

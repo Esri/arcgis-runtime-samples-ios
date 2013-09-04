@@ -53,6 +53,15 @@
       location = "group:MessageMil2525cSample/MessageMil2525cSample.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:OAuth Login Sample/OAuthLoginSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:OfflineGeocodingSample/OfflineGeocodingSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:OfflineRoutingSample/OfflineRoutingSample.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:OnlineOfflineEditingSample/OnlineOfflineEditingSample.xcodeproj">
    </FileRef>
    <FileRef

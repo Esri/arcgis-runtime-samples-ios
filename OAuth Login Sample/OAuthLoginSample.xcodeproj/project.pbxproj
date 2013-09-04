@@ -45,19 +45,19 @@
 		9743A8CE16FB840A0001A9E1 /* myContent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9743A89B16FB840A0001A9E1 /* myContent@2x.png */; };
 		9743A8CF16FB840A0001A9E1 /* myGroups.png in Resources */ = {isa = PBXBuildFile; fileRef = 9743A89C16FB840A0001A9E1 /* myGroups.png */; };
 		9743A8D016FB840A0001A9E1 /* myGroups@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9743A89D16FB840A0001A9E1 /* myGroups@2x.png */; };
-		9743A8D116FB840A0001A9E1 /* OAuthLoginSample-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9743A89E16FB840A0001A9E1 /* OAuthLoginSample-Info.plist */; };
 		9743A8D216FB840A0001A9E1 /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9743A8A016FB840A0001A9E1 /* Placeholder.png */; };
 		9743A8D316FB840A0001A9E1 /* PlaceholderGroup.png in Resources */ = {isa = PBXBuildFile; fileRef = 9743A8A116FB840A0001A9E1 /* PlaceholderGroup.png */; };
 		9743A8D416FB840A0001A9E1 /* PlaceholderMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 9743A8A216FB840A0001A9E1 /* PlaceholderMap.png */; };
 		9743A8D516FB840A0001A9E1 /* recent.png in Resources */ = {isa = PBXBuildFile; fileRef = 9743A8A316FB840A0001A9E1 /* recent.png */; };
 		9743A8D616FB840A0001A9E1 /* recent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9743A8A416FB840A0001A9E1 /* recent@2x.png */; };
-		9743A8D716FB840A0001A9E1 /* SampleOAuthLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9743A8A616FB840A0001A9E1 /* SampleOAuthLoginViewController.m */; };
 		9743A8D816FB840A0001A9E1 /* UserContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9743A8A816FB840A0001A9E1 /* UserContentViewController.m */; };
 		9743A8D916FB840A0001A9E1 /* UserContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9743A8A916FB840A0001A9E1 /* UserContentViewController.xib */; };
 		9743A8DA16FB840A0001A9E1 /* whiteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9743A8AA16FB840A0001A9E1 /* whiteButton.png */; };
 		975E7536167A8B7F005FB57B /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 975E7535167A8B7F005FB57B /* libc++.dylib */; };
 		975E7538167A8B8A005FB57B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 975E7537167A8B8A005FB57B /* OpenGLES.framework */; };
 		975E753A167A8BA5005FB57B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 975E7539167A8BA5005FB57B /* Default-568h@2x.png */; };
+		97CE1AB417D6A3CA0083936F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CE1AB217D6A3CA0083936F /* MainViewController.m */; };
+		97CE1AB517D6A3CA0083936F /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97CE1AB317D6A3CA0083936F /* MainViewController.xib */; };
 		C5B882F01559DFA900E635C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B882EF1559DFA900E635C5 /* UIKit.framework */; };
 		C5B882F21559DFA900E635C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B882F11559DFA900E635C5 /* Foundation.framework */; };
 		C5B882F41559DFA900E635C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B882F31559DFA900E635C5 /* CoreGraphics.framework */; };
@@ -125,8 +125,6 @@
 		9743A8A216FB840A0001A9E1 /* PlaceholderMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlaceholderMap.png; sourceTree = "<group>"; };
 		9743A8A316FB840A0001A9E1 /* recent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recent.png; sourceTree = "<group>"; };
 		9743A8A416FB840A0001A9E1 /* recent@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recent@2x.png"; sourceTree = "<group>"; };
-		9743A8A516FB840A0001A9E1 /* SampleOAuthLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleOAuthLoginViewController.h; sourceTree = "<group>"; };
-		9743A8A616FB840A0001A9E1 /* SampleOAuthLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleOAuthLoginViewController.m; sourceTree = "<group>"; };
 		9743A8A716FB840A0001A9E1 /* UserContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserContentViewController.h; sourceTree = "<group>"; };
 		9743A8A816FB840A0001A9E1 /* UserContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserContentViewController.m; sourceTree = "<group>"; };
 		9743A8A916FB840A0001A9E1 /* UserContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserContentViewController.xib; sourceTree = "<group>"; };
@@ -134,6 +132,9 @@
 		975E7535167A8B7F005FB57B /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		975E7537167A8B8A005FB57B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		975E7539167A8BA5005FB57B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		97CE1AB117D6A3CA0083936F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		97CE1AB217D6A3CA0083936F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		97CE1AB317D6A3CA0083936F /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		C5B882EB1559DFA900E635C5 /* OAuthLoginSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OAuthLoginSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B882EF1559DFA900E635C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C5B882F11559DFA900E635C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -181,11 +182,12 @@
 				9743A8DB16FB850E0001A9E1 /* Helper classes */,
 				9743A86E16FB840A0001A9E1 /* AppDelegate.h */,
 				9743A86F16FB840A0001A9E1 /* AppDelegate.m */,
+				97CE1AB117D6A3CA0083936F /* MainViewController.h */,
+				97CE1AB217D6A3CA0083936F /* MainViewController.m */,
+				97CE1AB317D6A3CA0083936F /* MainViewController.xib */,
 				9743A87716FB840A0001A9E1 /* MapViewController.xib */,
 				9743A89416FB840A0001A9E1 /* MapViewController.h */,
 				9743A89516FB840A0001A9E1 /* MapViewController.m */,
-				9743A8A516FB840A0001A9E1 /* SampleOAuthLoginViewController.h */,
-				9743A8A616FB840A0001A9E1 /* SampleOAuthLoginViewController.m */,
 				9743A8A716FB840A0001A9E1 /* UserContentViewController.h */,
 				9743A8A816FB840A0001A9E1 /* UserContentViewController.m */,
 				9743A8A916FB840A0001A9E1 /* UserContentViewController.xib */,
@@ -331,7 +333,7 @@
 		C5B882E21559DFA900E635C5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = C5B882E51559DFA900E635C5 /* Build configuration list for PBXProject "OAuthLoginSample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -386,7 +388,6 @@
 				9743A8CE16FB840A0001A9E1 /* myContent@2x.png in Resources */,
 				9743A8CF16FB840A0001A9E1 /* myGroups.png in Resources */,
 				9743A8D016FB840A0001A9E1 /* myGroups@2x.png in Resources */,
-				9743A8D116FB840A0001A9E1 /* OAuthLoginSample-Info.plist in Resources */,
 				9743A8D216FB840A0001A9E1 /* Placeholder.png in Resources */,
 				9743A8D316FB840A0001A9E1 /* PlaceholderGroup.png in Resources */,
 				9743A8D416FB840A0001A9E1 /* PlaceholderMap.png in Resources */,
@@ -394,6 +395,7 @@
 				9743A8D616FB840A0001A9E1 /* recent@2x.png in Resources */,
 				9743A8D916FB840A0001A9E1 /* UserContentViewController.xib in Resources */,
 				9743A8DA16FB840A0001A9E1 /* whiteButton.png in Resources */,
+				97CE1AB517D6A3CA0083936F /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,8 +415,8 @@
 				9743A8C516FB840A0001A9E1 /* LoadingTableViewCell.m in Sources */,
 				9743A8C716FB840A0001A9E1 /* main.m in Sources */,
 				9743A8C816FB840A0001A9E1 /* MapViewController.m in Sources */,
-				9743A8D716FB840A0001A9E1 /* SampleOAuthLoginViewController.m in Sources */,
 				9743A8D816FB840A0001A9E1 /* UserContentViewController.m in Sources */,
+				97CE1AB417D6A3CA0083936F /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +447,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -459,6 +465,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PROVISIONING_PROFILE = "";
@@ -473,6 +480,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -480,6 +491,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";

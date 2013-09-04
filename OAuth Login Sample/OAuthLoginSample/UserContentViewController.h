@@ -13,12 +13,11 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 #import "ContentViewControllerBase.h"
-#import "SampleOAuthLoginViewController.h"
 
 //This is the class used to show the contents of a user.
 //It derives from the ContentViewControllerBase class and override few methods to customize the appearance.
 @interface UserContentViewController : ContentViewControllerBase
 
-@property (nonatomic, strong) AGSOAuthLoginViewController *oauthLoginVC;
+- (id)initWithPortal:(AGSPortal *)portal ;
 - (void) openMap:(AGSPortalItem*)item;
 @end

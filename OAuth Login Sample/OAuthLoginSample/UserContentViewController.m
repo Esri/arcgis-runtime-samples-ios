@@ -13,12 +13,9 @@
 #import "UserContentViewController.h"
 #import "MapViewController.h"
 
-//Replace this with your own App ID
-#define kAppID @"pqN3y96tSb1j8ZAY"
 
-#define kPortalURL @"https://www.arcgis.com"
 
-@interface UserContentViewController() <AGSPortalDelegate, AGSPortalUserDelegate, IconDownloaderDelegate, SampleOAuthLoginDelegate, UIAlertViewDelegate>
+@interface UserContentViewController() <AGSPortalDelegate, AGSPortalUserDelegate, IconDownloaderDelegate, UIAlertViewDelegate>
 
 //array to hold the user content. 
 @property (nonatomic, strong) NSMutableArray *itemsArray;
@@ -47,7 +44,17 @@
     [self.contentsOp cancel];
 }
 
-
+- (id)initWithPortal:(AGSPortal*)portal
+{
+    
+    self = [super init];
+    if (self) {
+        //open the webmap with the portal item as specified
+        self.portal = portal;
+        self.portal.delegate = self;
+    }
+    return self;
+}
 
 
 #pragma mark - View lifecycle
@@ -57,43 +64,12 @@
     [super viewDidLoad];
     self.navigationItem.title = @"My Content";
     self.doneLoading = YES;
-    //if we haven't connected to the portal already
-    //ask the user to log in
-    if(!self.portal){
-            self.oauthLoginVC = [[AGSOAuthLoginViewController alloc] initWithPortalURL:[NSURL URLWithString:kPortalURL] clientId:kAppID ];
-        self.oauthLoginVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        
-        double delayInSeconds = 0.1;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [self presentModalViewController:self.oauthLoginVC animated:YES];
-        });
-        
-        
-        __weak UserContentViewController *safeSelf = self;
-        self.oauthLoginVC.completion = ^(AGSCredential *credential, NSError *error){
-            if(error){
-                NSLog(@"Error: %@",error);
-            }else{
-                
-                [safeSelf.oauthLoginVC dismissModalViewControllerAnimated:YES];
-                //update the portal explorer with the credential provided by the user.
-                safeSelf.portal = [[AGSPortal alloc]initWithURL:[NSURL URLWithString: kPortalURL] credential:credential];
-                safeSelf.portal.delegate = safeSelf;
-                
-            }
-            [safeSelf dismissModalViewControllerAnimated:YES];
-        };
-
-        
-    }else{
-            //start the process to get user's content
-            [self getUserContents];
-    }
-    
- 
+    //start the process to get user's content
+    [self getUserContents];
 
 }
+
+
 
 - (void)viewDidUnload
 {
@@ -142,17 +118,6 @@
 
 
 
-- (void)loginViewControllerWasCancelled:(SampleOAuthLoginViewController*)loginVC{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Required"
-                                                    message:@"You need to login to continue"
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    
-    [alert show];
-    [self dismissModalViewControllerAnimated:YES];
-    
-}
 
 #pragma mark - AGSPortalDelegate methods
 
@@ -215,12 +180,7 @@
 }
 
 
-#pragma mark - UIAlertViewDelegate methods
-- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex{
-    if([alertView.title isEqualToString:@"Login Required"]){
-        [self presentModalViewController:self.oauthLoginVC animated:YES];
-    }
-}
+
 
 #pragma mark - Overriden methods from base class
 //overridden method from the base class.

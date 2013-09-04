@@ -12,7 +12,6 @@
 
 #import "MapViewController.h"
 #import <ArcGIS/ArcGIS.h>
-#import "SampleOAuthLoginViewController.h"
 
 
 @interface MapViewController()<AGSMapViewLayerDelegate, AGSWebMapDelegate>

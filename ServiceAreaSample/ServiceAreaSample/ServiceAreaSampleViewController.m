@@ -63,12 +63,14 @@
     //step to call the mapViewDidLoad method to do the initiation of Service Area Task.
     self.mapView.layerDelegate = self;
     
-    //set the mapView's calloutDelegate so we can display callouts
-    self.mapView.calloutDelegate = self;
+    //set the mapView's callout Delegate so we can display callouts
+    self.mapView.callout.delegate = self;
     
     //add  graphics layer for showing results of the service area analysis
     self.graphicsLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:self.graphicsLayer withName:@"ServiceArea"];
+    
+
     
     //creating the fire stations layer
     self.facilitiesLayer = [AGSFeatureLayer featureServiceLayerWithURL:[NSURL URLWithString:kFacilitiesLayerURL] mode:AGSFeatureLayerModeSnapshot];
@@ -77,7 +79,6 @@
     AGSSimpleRenderer* renderer = [AGSSimpleRenderer simpleRendererWithSymbol:[AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"FireStation.png"]];
     self.facilitiesLayer.renderer = renderer;    
     self.facilitiesLayer.outFields = [NSArray arrayWithObject:@"*"];    
-    self.facilitiesLayer.infoTemplateDelegate = self.facilitiesLayer;
     
     //adding the fire stations feature layer to the map view. 
     [self.mapView addMapLayer:self.facilitiesLayer withName:@"Facilities"];
@@ -162,16 +163,15 @@
 	self.saTask.delegate = self; //required to respond to the service area task.
 }
 
-#pragma mark AGSMapViewTouchDelegate
+#pragma mark AGSCalloutDelegate
 
-// 
-// determine if we should show a callout
-- (BOOL)mapView:(AGSMapView *)mapView shouldShowCalloutForGraphic:(AGSGraphic *)graphic {
-	
+- (BOOL) callout:(AGSCallout *)callout willShowForFeature:(id<AGSFeature>)feature layer:(AGSLayer<AGSHitTestable> *)layer mapPoint:(AGSPoint *)mapPoint{
+    AGSGraphic* graphic = (AGSGraphic*)feature;
+    
     //if the graphic that was tapped on belongs to the "Facilities" layer, show the callout without a custom view
     if([graphic.layer.name isEqualToString:@"Facilities"])
     {
-        //we have to make sure that the sketch mode is not on. 
+        //we have to make sure that the sketch mode is not on.
         if(!self.sketchLayer)
         {
             self.selectedGraphic = graphic;
@@ -188,12 +188,12 @@
         
         if (barrierNum) {
             
-            //we have to make sure that the sketch mode is not on. 
+            //we have to make sure that the sketch mode is not on.
             if(!self.sketchLayer)
             {
                 self.selectedGraphic = graphic;
                 
-                //assign the custom callout that we created earlier, to the barrier graphic's callout view. 
+                //assign the custom callout that we created earlier, to the barrier graphic's callout view.
                 self.mapView.callout.customView = self.barrierCalloutView;
                 
                 //at this point, the sketch layer is cleared and the barrier is ready for deletion is required.
@@ -202,18 +202,18 @@
             }
             
         }
-    }    
+    }
 	
 	return NO;
 }
 
-// if we showed a callout, clear the sketch layer
-- (void)mapView:(AGSMapView *)mapView didShowCalloutForGraphic:(AGSGraphic *)graphic {    
-    
-    //if the layer is the ServiceArea graphics layer, clear the skech layer. 
-    if([graphic.layer.name isEqualToString:@"ServiceArea"])
-        [self.sketchLayer clear];
+// 
+// determine if we should show a callout
+- (BOOL)mapView:(AGSMapView *)mapView shouldShowCalloutForGraphic:(AGSGraphic *)graphic {
+	
+  
 }
+
 
 
 #pragma mark AGSServiceAreaTaskDelegate
@@ -491,8 +491,7 @@
     symbol = [self barrierSymbol];
     AGSGraphic *g = [AGSGraphic graphicWithGeometry:geometry 
                                              symbol:symbol
-                                         attributes:attributes
-                               infoTemplateDelegate:self];
+                                         attributes:attributes];
     [self.graphicsLayer addGraphic:g];
 }
 

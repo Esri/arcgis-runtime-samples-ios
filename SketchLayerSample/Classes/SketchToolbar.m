@@ -84,7 +84,7 @@
 		
 	}else {
 		//Add a new graphic to the graphics layer
-		AGSGraphic* graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:nil attributes:nil infoTemplateDelegate:nil];
+		AGSGraphic* graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:nil attributes:nil ];
 		[_graphicsLayer addGraphic:graphic];
 	}
 	

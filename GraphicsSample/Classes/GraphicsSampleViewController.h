@@ -16,7 +16,7 @@
 @class CountyInfoTemplate;
 
 //map view and query task delegates to get at behavior for map and query task
-@interface GraphicsSampleViewController : UIViewController <AGSMapViewLayerDelegate, AGSMapViewCalloutDelegate, AGSQueryTaskDelegate, AGSCalloutDelegate> {
+@interface GraphicsSampleViewController : UIViewController <AGSMapViewLayerDelegate, AGSQueryTaskDelegate, AGSCalloutDelegate> {
     
 	//views and layers for map, and graphics (county and cities)
 	AGSMapView *_mapView;

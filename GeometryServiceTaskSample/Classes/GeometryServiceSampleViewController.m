@@ -215,7 +215,7 @@
 	for (AGSGeometry* g	in bufferedGeometries) {
 		
 		// initialize the graphic for geometry
-		AGSGraphic *graphic = [[AGSGraphic alloc] initWithGeometry:g symbol:nil attributes:nil infoTemplateDelegate:nil];
+		AGSGraphic *graphic = [[AGSGraphic alloc] initWithGeometry:g symbol:nil attributes:nil ];
 		
 		// since we have 2 buffer distances, we know that 0-2 will be 100m buffer and 3-5 will be 300m buffer
 		if (i < [bufferedGeometries count]/2) {
@@ -279,7 +279,7 @@
 	pt.offset = CGPointMake(8,18);
     
 	// init pushpin with the AGSPictureMarkerSymbol we just created
-	AGSGraphic *pushpin = [[AGSGraphic alloc] initWithGeometry:mappoint symbol:pt attributes:nil infoTemplateDelegate:nil];
+	AGSGraphic *pushpin = [[AGSGraphic alloc] initWithGeometry:mappoint symbol:pt attributes:nil ];
 	
 	// add pushpin to our array
 	[self.pushpins addObject:pushpin];

@@ -128,9 +128,9 @@
 	AGSFeatureTemplate *template = [self templateForIndex:indexPath.row];
 	
 	// once we have the template, we can set the text and the image
-	AGSGraphic *proto = template.prototype;
+	AGSGraphic *proto = [[AGSGraphic alloc]initWithGeometry:nil symbol:nil attributes:template.prototypeAttributes];
 	cell.textLabel.text = template.name;
-	cell.imageView.image = [self.featureLayer.renderer swatchForGraphic:proto geometryType:self.featureLayer.geometryType size:CGSizeMake(20, 20)];
+	cell.imageView.image = [self.featureLayer.renderer swatchForFeature:proto geometryType:self.featureLayer.geometryType size:CGSizeMake(20, 20)];
 	
     return cell;
 }

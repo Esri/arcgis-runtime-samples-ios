@@ -13,7 +13,7 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface TemporalSampleViewController : UIViewController <AGSInfoTemplateDelegate> {
+@interface TemporalSampleViewController : UIViewController <AGSLayerCalloutDelegate> {
 	AGSMapView *_mapView;
 	UISegmentedControl* _segmentControl;
 	NSDate* _today;

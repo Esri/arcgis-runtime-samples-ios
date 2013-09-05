@@ -165,7 +165,7 @@
     
     // Create the graphic and assign it the correct symbol according to its geometry type
     // Note: Lines and polygons are symbolized with the simple line symbol here
-    AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:sketchLineSymbol attributes:nil infoTemplateDelegate:nil];
+    AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:sketchLineSymbol attributes:nil ];
     
     //Add a new graphic to the graphics layer
     [self.graphicsLayer addGraphic:graphic];
@@ -177,7 +177,7 @@
     
     AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
     AGSGeometry *offsetGeometry = [geometryEngine offsetGeometry:sketchGeometry byDistance:_offsetDistance withJointType:_offsetType bevelRatio:_bevelRatio flattenError:0];
-    AGSGraphic *offsetGraphic = [AGSGraphic graphicWithGeometry:offsetGeometry symbol:offsetLineSymbol attributes:nil infoTemplateDelegate:nil];
+    AGSGraphic *offsetGraphic = [AGSGraphic graphicWithGeometry:offsetGeometry symbol:offsetLineSymbol attributes:nil ];
 
     [self.lastOffset addObject:offsetGraphic];
     
@@ -205,7 +205,7 @@
     for (AGSGraphic *graphic in self.graphicsLayer.graphics) {
         AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
         AGSGeometry *newGeometry = [geometryEngine offsetGeometry:graphic.geometry byDistance:_offsetDistance withJointType:_offsetType bevelRatio:_bevelRatio flattenError:0];
-        AGSGraphic *newGraphic = [AGSGraphic graphicWithGeometry:newGeometry symbol:offsetLineSymbol attributes:nil infoTemplateDelegate:nil];
+        AGSGraphic *newGraphic = [AGSGraphic graphicWithGeometry:newGeometry symbol:offsetLineSymbol attributes:nil ];
         [newGraphics addObject:newGraphic];
     }
     

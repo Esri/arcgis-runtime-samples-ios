@@ -94,7 +94,6 @@
 
 - (void)viewDidLoad {
 	self.mapView.touchDelegate = self;
-	self.mapView.calloutDelegate = self;
     self.mapView.callout.delegate = self;
     self.mapView.showMagnifierOnTapAndHold = YES;
 	
@@ -107,7 +106,7 @@
 	// Add feature layer
 	self.featureLayer = [OnlineOfflineFeatureLayer featureServiceLayerWithURL:[NSURL URLWithString:FEATURE_SERVICE_URL] mode:AGSFeatureLayerModeOnDemand ];
     self.featureLayer.delegate = self;
-	self.featureLayer.infoTemplateDelegate = self;
+	self.featureLayer.calloutDelegate = self;
 	self.featureLayer.outFields = [NSArray arrayWithObject:@"*"];
 
     self.featureLayer.onlineOfflineDelegate = self;
@@ -225,27 +224,21 @@
 }
 
 #pragma mark -
-#pragma mark AGSInfoTemplate methods
-
-- (NSString *)titleForGraphic:(AGSGraphic *)graphic screenPoint:(CGPoint)screen mapPoint:(AGSPoint *)map{
-	
-	// return the type
-
-	NSString *val = [CodedValueUtility getCodedValueFromFeature:graphic forField:@"trailtype" inFeatureLayer:self.featureLayer];
-	
-	if ((NSNull*)val == [NSNull null]){
-		return nil;
+#pragma mark AGSLayerCalloutDelegate
+- (BOOL) callout:(AGSCallout *)callout willShowForFeature:(id<AGSFeature>)feature layer:(AGSLayer<AGSHitTestable> *)layer mapPoint:(AGSPoint *)mapPoint{
+    AGSGraphic* graphic = (AGSGraphic*)feature;
+    
+    //set title
+    NSString *val = [CodedValueUtility getCodedValueFromFeature:graphic forField:@"trailtype" inFeatureLayer:self.featureLayer];
+	if ((NSNull*)val != [NSNull null]){
+		callout.title = val;
 	}
-	
-	return val;
+    //set detail
+    AGSPoint *centerPoint = graphic.geometry.envelope.center;
+    callout.detail =  [NSString stringWithFormat:@"x = %0.2f, y = %0.2f",centerPoint.x,centerPoint.y];
+    return YES;
 }
 
-- (NSString *)detailForGraphic:(AGSGraphic *)graphic screenPoint:(CGPoint)screen mapPoint:(AGSPoint *)map{
-	
-	// get the center point of the geometry
-    AGSPoint *centerPoint = graphic.geometry.envelope.center;
-    return [NSString stringWithFormat:@"x = %0.2f, y = %0.2f",centerPoint.x,centerPoint.y];
-}
 
 #pragma mark -
 #pragma mark OnlineOfflineDelegate
@@ -256,7 +249,7 @@
     
     //create new feature layer, specifying online status...
     self.featureLayer = [OnlineOfflineFeatureLayer featureServiceLayerWithURL:[NSURL URLWithString:FEATURE_SERVICE_URL] mode:AGSFeatureLayerModeOnDemand online:online];
-    self.featureLayer.infoTemplateDelegate = self;
+    self.featureLayer.calloutDelegate = self;
     self.featureLayer.outFields = [NSArray arrayWithObject:@"*"];
     self.featureLayer.onlineOfflineDelegate = self;
     self.featureLayer.delegate = self;

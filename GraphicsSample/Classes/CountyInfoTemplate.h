@@ -14,7 +14,7 @@
 #import <ArcGIS/ArcGIS.h>
 
 //info template to get at the behavior of the callout window
-@interface CountyInfoTemplate : NSObject <AGSInfoTemplateDelegate> {
+@interface CountyInfoTemplate : NSObject <AGSLayerCalloutDelegate> {
 
 }
 

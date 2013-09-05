@@ -44,6 +44,11 @@ static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/se
     //will be stored in and add it to the map
     self.graphicsLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:self.graphicsLayer withName:@"Graphics Layer"];
+    
+    //set the text and detail text based on 'Name' and 'Descr' fields in the results
+    self.calloutTemplate.titleTemplate = @"${Name}";
+    self.calloutTemplate.detailTemplate = @"${Descr}";
+    self.graphicsLayer.calloutDelegate = self.calloutTemplate;
 }
 
 - (void)startGeocoding
@@ -164,15 +169,12 @@ static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/se
             marker.offset = CGPointMake(9,16);
             marker.leaderPoint = CGPointMake(-9, 11);
                         
-            //set the text and detail text based on 'Name' and 'Descr' fields in the attributes
-            self.calloutTemplate.titleTemplate = @"${Name}";
-            self.calloutTemplate.detailTemplate = @"${Descr}";
+
 			
             //create the graphic
 			AGSGraphic *graphic = [[AGSGraphic alloc] initWithGeometry: pt
 																symbol:marker 
-															attributes:[addressCandidate.attributes mutableCopy]
-														  infoTemplateDelegate:self.calloutTemplate];
+															attributes:[addressCandidate.attributes mutableCopy] ];
             
             
             //add the graphic to the graphics layer
@@ -187,7 +189,7 @@ static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/se
 				self.mapView.callout.width = 250;
  
                 //show the callout
-                [self.mapView.callout showCalloutAtPoint:(AGSPoint*)graphic.geometry forGraphic:graphic animated:YES];
+                [self.mapView.callout showCalloutAtPoint:(AGSPoint*)graphic.geometry forFeature:graphic layer:graphic.layer animated:YES];
             }
 			
 			//release the graphic bb  

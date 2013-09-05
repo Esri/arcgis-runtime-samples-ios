@@ -13,7 +13,7 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface RoutingSampleViewController : UIViewController<AGSMapViewCalloutDelegate, AGSInfoTemplateDelegate, AGSMapViewTouchDelegate, AGSRouteTaskDelegate, UIAlertViewDelegate> {
+@interface RoutingSampleViewController : UIViewController< AGSLayerCalloutDelegate, AGSMapViewTouchDelegate, AGSRouteTaskDelegate, UIAlertViewDelegate> {
 	AGSMapView					*_mapView;
 	AGSGraphicsLayer			*_graphicsLayer;
 	AGSSketchGraphicsLayer		*_sketchLayer;

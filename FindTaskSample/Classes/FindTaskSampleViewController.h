@@ -15,7 +15,7 @@
 #import <ArcGIS/ArcGIS.h>
 
 
-@interface FindTaskSampleViewController : UIViewController <AGSFindTaskDelegate,UISearchBarDelegate,AGSMapViewLayerDelegate, AGSCalloutDelegate> {
+@interface FindTaskSampleViewController : UIViewController <AGSFindTaskDelegate,UISearchBarDelegate,AGSMapViewLayerDelegate, AGSCalloutDelegate, AGSLayerCalloutDelegate> {
 
 	AGSMapView *_mapView;
 	AGSDynamicMapServiceLayer *_dynamicLayer;

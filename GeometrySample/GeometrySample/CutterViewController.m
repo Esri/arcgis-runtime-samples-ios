@@ -93,7 +93,7 @@
     AGSGeometry *sketchGeometry = [self.sketchLayer.geometry copy];
     
     //Create the graphic and add it to the graphics layer
-    AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:nil attributes:nil infoTemplateDelegate:nil];
+    AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:nil attributes:nil ];
     
     AGSSimpleLineSymbol* lineSymbol = [[AGSSimpleLineSymbol alloc] init];
 	lineSymbol.color= [UIColor yellowColor];
@@ -186,7 +186,7 @@
         // If the cut was succesful create a graphic and add it to the map
         if (newGeometries.count != 0) {
             for (AGSGeometry *geometry in newGeometries) {
-                AGSGraphic *newGraphic = [[AGSGraphic alloc] initWithGeometry:geometry symbol:compositeSymbol attributes:nil infoTemplateDelegate:nil];
+                AGSGraphic *newGraphic = [[AGSGraphic alloc] initWithGeometry:geometry symbol:compositeSymbol attributes:nil ];
                 [newGraphics addObject:newGraphic];
             }
         }

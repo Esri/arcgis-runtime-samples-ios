@@ -14,7 +14,7 @@
 #import <ArcGIS/ArcGIS.h>
 
 
-@interface CustomCalloutSampleViewController : UIViewController<AGSMapViewCalloutDelegate, AGSInfoTemplateDelegate>
+@interface CustomCalloutSampleViewController : UIViewController<AGSCalloutDelegate>
 
 
 

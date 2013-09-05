@@ -289,8 +289,6 @@
     NSTimeInterval timeInterval = [self.date timeIntervalSince1970];
     [self.feature setAttributeWithDouble:(timeInterval * 1000) forKey:@"recordedon" ];
     
-    //set the callout info template to the layer's infoTemplateDelegate
-    self.feature.infoTemplateDelegate = self.featureLayer.infoTemplateDelegate;
     
     //redraw the tableView
     [self.tableView reloadData];
@@ -570,7 +568,7 @@
 			cell.textLabel.text = [CodedValueUtility getCodedValueFromFeature:self.feature forField:@"trailtype" inFeatureLayer:self.featureLayer];
 			if (_newFeature) cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
 			if (_newFeature) cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-			cell.imageView.image = [self.featureLayer.renderer swatchForGraphic:self.feature size:CGSizeMake(20, 20)];
+			cell.imageView.image = [self.featureLayer.renderer swatchForFeature:self.feature size:CGSizeMake(20, 20)];
 		}
 
 	}

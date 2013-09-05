@@ -28,7 +28,6 @@
     [super viewDidLoad];
     
     self.mapView.layerDelegate = self;
-	self.mapView.calloutDelegate = self;
     self.mapView.callout.delegate = self;
     
 	//create an instance of a tiled map service layer
@@ -41,6 +40,11 @@
 	//add county graphics layer (data is loaded in mapViewDidLoad method)
     self.countyGraphicsLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:self.countyGraphicsLayer withName:@"States Graphics Layer"];
+
+    //callouts are only availabl efor counties layer in this sample
+    //create an instance of the callout template
+    self.countyInfoTemplate = [[CountyInfoTemplate alloc] init];
+    self.countyGraphicsLayer.calloutDelegate = self.countyInfoTemplate;
 
     //CITY
     self.cityGraphicsLayer = [AGSGraphicsLayer graphicsLayer];
@@ -156,11 +160,6 @@
     [self.cityQueryTask executeWithQuery:cityQuery];
 }
 
-#pragma mark - AGSMapViewCalloutDelegate
-//by default callouts are not visible
-- (BOOL)mapView:(AGSMapView *)mapView shouldShowCalloutForGraphic:(AGSGraphic *)graphic {
-    return TRUE;
-}
 
 #pragma mark - AGSCalloutDelegate
 
@@ -205,14 +204,11 @@
         fillSymbol.color = [[UIColor blackColor] colorWithAlphaComponent:0.25];
         fillSymbol.outline.color = [UIColor darkGrayColor];
         
-		//callouts are only availabl efor counties layer in this sample
-		//create an instance of the callout template
-        self.countyInfoTemplate = [[CountyInfoTemplate alloc] init];
+
         
 		//display counties on graphics layer and specify callout template
         for (AGSGraphic *graphic in featureSet.features) {
             graphic.symbol = fillSymbol;
-            graphic.infoTemplateDelegate = self.countyInfoTemplate;
             [self.countyGraphicsLayer addGraphic:graphic];
         }
 

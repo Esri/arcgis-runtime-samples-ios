@@ -16,7 +16,7 @@
 #import "ActivityAlertView.h"
 
 @interface ServiceAreaSampleViewController : UIViewController 
-<AGSMapViewTouchDelegate, AGSServiceAreaTaskDelegate, UIAlertViewDelegate, AGSMapViewLayerDelegate, AGSFeatureLayerQueryDelegate, AGSInfoTemplateDelegate, AGSMapViewCalloutDelegate> {
+<AGSMapViewTouchDelegate, AGSServiceAreaTaskDelegate, UIAlertViewDelegate, AGSMapViewLayerDelegate, AGSFeatureLayerQueryDelegate, AGSCalloutDelegate> {
     AGSMapView *_mapView;      
     AGSFeatureLayer *_facilitiesLayer;
 	AGSGraphicsLayer *_graphicsLayer;

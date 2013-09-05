@@ -35,7 +35,7 @@
 	AGSFeatureLayer* featureLyr = [AGSFeatureLayer featureServiceLayerWithURL:
 						   [NSURL URLWithString:kFeatureServiceURL] mode:AGSFeatureLayerModeSnapshot];
 	featureLyr.outFields = [NSArray arrayWithObject:@"*"];
-	featureLyr.infoTemplateDelegate = self;
+	featureLyr.calloutDelegate = self;
 	[self.mapView addMapLayer:featureLyr withName:@"Earthquakes Layer"];
 
     
@@ -102,28 +102,22 @@
 
 
 #pragma mark -
-#pragma mark AGSInfoTemplateDelegate methods
-
-- (NSString *) detailForGraphic:(AGSGraphic*)graphic
-					screenPoint:(CGPoint)screen
-					   mapPoint:(AGSPoint*)map	 {
-	//detail text for callout
-    BOOL exists;
-	NSString* detail = [NSString stringWithFormat:@"Depth: %.1f km, %@",
-						[graphic attributeAsDoubleForKey:@"depth" exists:&exists],
-						[graphic attributeAsStringForKey:@"region"]];
-	return detail;
-}
-- (NSString *) titleForGraphic:(AGSGraphic*)graphic
-				   screenPoint:(CGPoint)screen
-					  mapPoint:(AGSPoint*)map	{
-	//title text for callout
+#pragma mark AGSLayerCalloutDeleage methods
+-(BOOL)callout:(AGSCallout *)callout willShowForFeature:(id<AGSFeature>)feature layer:(AGSLayer<AGSHitTestable> *)layer mapPoint:(AGSPoint *)mapPoint{
+    AGSGraphic* graphic = (AGSGraphic*)feature;
+    //title text for callout
     BOOL exists;
 	NSString* title = [NSString stringWithFormat:@"Magnitude: %.1f",
 					   [graphic attributeAsDoubleForKey:@"magnitude" exists:&exists]];
-	return title;
-	
+	callout.title  = title;
+    
+	NSString* detail = [NSString stringWithFormat:@"Depth: %.1f km, %@",
+						[graphic attributeAsDoubleForKey:@"depth" exists:&exists],
+						[graphic attributeAsStringForKey:@"region"]];
+    callout.detail = detail;
+    return YES;
 }
+
 @end
 
 #pragma mark -

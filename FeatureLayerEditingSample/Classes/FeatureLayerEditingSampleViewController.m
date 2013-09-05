@@ -94,10 +94,10 @@
     if([layer isKindOfClass:[AGSFeatureLayer class]]){
         AGSFeatureLayer* featureLayer = (AGSFeatureLayer*)layer;
         
-        //set the feature layer as its infoTemplateDelegate 
+        //set the feature layer as its calloutDelegate 
         //this will then automatically set the callout's title to a value
         //from the display field of the feature service
-        featureLayer.infoTemplateDelegate = featureLayer;
+        featureLayer.calloutDelegate = featureLayer;
         
         //Get all the fields
         featureLayer.outFields = [NSArray arrayWithObject:@"*"];
@@ -189,16 +189,15 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
     
 }
 
-#pragma mark - AGSMapViewCalloutDelegate methods
+#pragma mark - AGSCalloutDelegate methods
 
-- (BOOL)mapView:(AGSMapView *) mapView shouldShowCalloutForGraphic:(AGSGraphic *) graphic {
+- (BOOL) callout:(AGSCallout *)callout willShowForFeature:(id<AGSFeature>)feature layer:(AGSLayer<AGSHitTestable> *)layer mapPoint:(AGSPoint *)mapPoint{
     //Dont show callout when the sketch layer is active. 
     //The user is sketching and even if he taps on a feature, 
     //we don't want to display the callout and interfere with the sketching workflow
     return self.mapView.touchDelegate != self.sketchLayer ;
 }
 
-#pragma mark - AGSCalloutDelegate methods
 - (void) didClickAccessoryButtonForCallout:		(AGSCallout *) 	callout {
     
     AGSGraphic* graphic = (AGSGraphic*)callout.representedObject;
@@ -311,7 +310,7 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
     //reset any sketch related changes we made to our main view controller
     [self.sketchLayer clear];
     self.mapView.touchDelegate = self;
-    self.mapView.calloutDelegate = self;
+    self.mapView.callout.delegate = self;
     self.bannerView.hidden = YES;
     self.popupVC = nil;
 }

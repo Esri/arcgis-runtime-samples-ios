@@ -105,7 +105,7 @@
     [myMarkerSymbol setOutline:[AGSSimpleLineSymbol simpleLineSymbolWithColor:[UIColor redColor] width:1]];
 	
 	//create a graphic
-	AGSGraphic *agsGraphic = [AGSGraphic graphicWithGeometry:mappoint symbol:myMarkerSymbol attributes:nil infoTemplateDelegate:nil];
+	AGSGraphic *agsGraphic = [AGSGraphic graphicWithGeometry:mappoint symbol:myMarkerSymbol attributes:nil];
 	
 	//add graphic to graphics layer
 	[self.graphicsLayer addGraphic:agsGraphic];

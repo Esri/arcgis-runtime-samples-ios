@@ -16,7 +16,7 @@
 #import "ActivityAlertView.h"
 
 @interface ClosestFacilitySampleViewController : UIViewController 
-<AGSMapViewTouchDelegate, AGSClosestFacilityTaskDelegate, UIAlertViewDelegate, AGSMapViewLayerDelegate, AGSFeatureLayerQueryDelegate, AGSInfoTemplateDelegate, AGSMapViewCalloutDelegate> {
+<AGSMapViewTouchDelegate, AGSClosestFacilityTaskDelegate, UIAlertViewDelegate, AGSMapViewLayerDelegate, AGSFeatureLayerQueryDelegate, AGSLayerCalloutDelegate> {
     AGSMapView *_mapView;   
     AGSFeatureLayer *_facilitiesLayer;
     AGSSketchGraphicsLayer *_sketchLayer;

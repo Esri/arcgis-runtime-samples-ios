@@ -182,7 +182,7 @@
 	AGSGeometry* sketchGeometry = [self.sketchLayer.geometry copy];
     
     //Add a new graphic to the graphics layer
-    AGSGraphic* graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:nil attributes:nil infoTemplateDelegate:nil];
+    AGSGraphic* graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:nil attributes:nil ];
     [self.graphicsLayer addGraphic:graphic];
     
     

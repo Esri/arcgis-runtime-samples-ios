@@ -148,7 +148,7 @@
     AGSGeometry *sketchGeometry = [self.sketchLayer.geometry copy];
     
     // Create the graphic and add it to the top graphics layer
-    AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:nil attributes:nil infoTemplateDelegate:nil];
+    AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:nil attributes:nil ];
     
     [self.graphicsLayer1 addGraphic:graphic];
     
@@ -157,10 +157,10 @@
     
     // Project the geometry to the spatial references of the other mapViews and create new graphics from the projected geometries
     AGSGeometry *map2Geometry = [geometryEngine projectGeometry:graphic.geometry toSpatialReference:self.mapView2.spatialReference];
-    AGSGraphic *map2Graphic = [AGSGraphic graphicWithGeometry:map2Geometry symbol:nil attributes:nil infoTemplateDelegate:nil];
+    AGSGraphic *map2Graphic = [AGSGraphic graphicWithGeometry:map2Geometry symbol:nil attributes:nil ];
 
     AGSGeometry *map3Geometry = [geometryEngine projectGeometry:graphic.geometry toSpatialReference:self.mapView3.spatialReference];
-    AGSGraphic *map3Graphic = [AGSGraphic graphicWithGeometry:map3Geometry symbol:nil attributes:nil infoTemplateDelegate:nil];
+    AGSGraphic *map3Graphic = [AGSGraphic graphicWithGeometry:map3Geometry symbol:nil attributes:nil ];
 
     
     // Add the new graphics to the graphics layers

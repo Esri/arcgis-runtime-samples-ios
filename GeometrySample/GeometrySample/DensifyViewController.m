@@ -128,7 +128,7 @@
         AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
         
         AGSGeometry *newGeometry = [geometryEngine densifyGeometry:geometry withMaxSegmentLength:_densifyDistance];
-        AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:newGeometry symbol:nil attributes:nil infoTemplateDelegate:nil];
+        AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:newGeometry symbol:nil attributes:nil ];
         [newGraphics addObject:graphic];
     }
     
@@ -178,7 +178,7 @@
     
     // Densify the geometry and create a graphic to add to the result graphics layer
     AGSGeometry *newGeometry = [geometryEngine densifyGeometry:sketchGeometry withMaxSegmentLength:_densifyDistance];
-    AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:newGeometry symbol:nil attributes:nil infoTemplateDelegate:nil];
+    AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:newGeometry symbol:nil attributes:nil ];
 
     [self.resultGraphicsLayer addGraphic:graphic];
     [self.sketchLayer clear];

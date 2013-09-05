@@ -77,12 +77,13 @@
 	// set the mapView's touchDelegate to the sketchLayer so we get points symbolized when sketching
 	self.mapView.touchDelegate = self.sketchLayer;
     
-    // set the mapView's calloutDelegate so we can display callouts
-	self.mapView.calloutDelegate = self;
 		
 	// add graphics layer
 	self.graphicsLayer = [AGSGraphicsLayer graphicsLayer];
 	[self.mapView addMapLayer:self.graphicsLayer withName:@"Route results"];
+    
+    // set the callout delegate so we can display callouts
+    self.graphicsLayer.calloutDelegate = self;
 	
 	// create a custom callout view using a button with an image
 	// this is to remove stops after we add them to the map
@@ -443,11 +444,11 @@
 		//Stop
 		case AGSGeometryTypePoint:{
             _numStops++;
+            [attributes setValue:[NSNumber numberWithInt:_numStops] forKey:@"stopNumber"];
             symbol = [self stopSymbolWithNumber:_numStops];
 			AGSStopGraphic *stopGraphic = [AGSStopGraphic graphicWithGeometry:geometry 
 																	   symbol:symbol 
-																   attributes:attributes 
-														 infoTemplateDelegate:self];
+																   attributes:attributes ];
 			stopGraphic.sequence = _numStops;
 			//You can set additional properties on the stop here
 			//refer to the conceptual helf for Routing task
@@ -463,8 +464,7 @@
 			symbol = [self barrierSymbol];
 			AGSGraphic *g = [AGSGraphic graphicWithGeometry:geometry 
 													 symbol:symbol
-												 attributes:attributes
-									   infoTemplateDelegate:self];
+												 attributes:attributes];
 			[self.graphicsLayer addGraphic:g];
 			break;
         }
@@ -660,28 +660,25 @@
 	}
 }
 
-#pragma mark AGSMapViewTouchDelegate
 
-// 
-// determine if we should show a callout
-- (BOOL)mapView:(AGSMapView *)mapView shouldShowCalloutForGraphic:(AGSGraphic *)graphic {
-	
+#pragma mark AGSLayerCalloutDelegate
+
+- (BOOL) callout:(AGSCallout *)callout willShowForFeature:(id<AGSFeature>)feature layer:(AGSLayer<AGSHitTestable> *)layer mapPoint:(AGSPoint *)mapPoint{
+    AGSGraphic* graphic = (AGSGraphic*)feature;
+    
 	NSString *stopNum = [graphic attributeAsStringForKey:@"stopNumber"];
 	NSString *barrierNum = [graphic attributeAsStringForKey: @"barrierNumber"];
-
+    
 	if (stopNum || barrierNum) {
 		self.selectedGraphic = graphic;
 		self.mapView.callout.customView = self.stopCalloutView;
 		[self.sketchLayer clear];
 		return YES;
-	}
-	return NO;
-}
+	}else{
+        return NO;
+    }
+ }
 
-// if we showed a callout, clear the sketch layer
-- (void)mapView:(AGSMapView *)mapView didShowCalloutForGraphic:(AGSGraphic *)graphic {
-	[self.sketchLayer clear];
-}
 
 
 

@@ -124,7 +124,7 @@
     
     // Create the graphic and assign it the correct symbol according to its geometry type
     // Note: Lines and polygons are symbolized with the simple line symbol here
-    AGSGraphic* graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:nil attributes:nil infoTemplateDelegate:nil];
+    AGSGraphic* graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:nil attributes:nil];
     
     if ([sketchGeometry isKindOfClass:[AGSPoint class]]) {
         graphic.symbol = pointSymbol;
@@ -145,7 +145,7 @@
     // Create the buffer graphics using the geometry engine
     AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
     AGSGeometry *newGeometry = [geometryEngine bufferGeometry:sketchGeometry byDistance:_bufferDistance];
-    AGSGraphic *newGraphic = [AGSGraphic graphicWithGeometry:newGeometry symbol:innerSymbol attributes:nil infoTemplateDelegate:nil];
+    AGSGraphic *newGraphic = [AGSGraphic graphicWithGeometry:newGeometry symbol:innerSymbol attributes:nil];
         
     [self.lastBuffer addObject:newGraphic];
     
@@ -201,7 +201,7 @@
     for (AGSGraphic *graphic in self.graphicsLayer.graphics) {
         AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
         AGSGeometry *newGeometry = [geometryEngine bufferGeometry:graphic.geometry byDistance:_bufferDistance];
-        AGSGraphic *newGraphic = [AGSGraphic graphicWithGeometry:newGeometry symbol:innerSymbol attributes:nil infoTemplateDelegate:nil];
+        AGSGraphic *newGraphic = [AGSGraphic graphicWithGeometry:newGeometry symbol:innerSymbol attributes:nil ];
         [newGraphics addObject:newGraphic];
     }
     

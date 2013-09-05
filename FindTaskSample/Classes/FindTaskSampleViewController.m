@@ -20,10 +20,6 @@
 #define kTiledMapServiceURL @"http://services.arcgisonline.com/ArcGIS/rest/services/ESRI_StreetMap_World_2D/MapServer"
 
 @implementation FindTaskSampleViewController
-@synthesize mapView=_mapView, dynamicLayer=_dynamicLayer;
-@synthesize graphicsLayer=_graphicsLayer, searchBar=_searchBar;
-@synthesize findTask=_findTask,findParams=_findParams;
-@synthesize cityCalloutTemplate=_cityCalloutTemplate,riverCalloutTemplate=_riverCalloutTemplate,stateCalloutTemplate=_stateCalloutTemplate;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -50,6 +46,8 @@
 	//create and add graphics layer to map
 	self.graphicsLayer = [AGSGraphicsLayer graphicsLayer];
 	[self.mapView addMapLayer:self.graphicsLayer withName:@"Graphics Layer"];
+    //set the callout delegate so that we can show an appropriate callout for graphics
+    self.graphicsLayer.calloutDelegate = self;
 	
 	//create find task and set the delegate
 	self.findTask = [[AGSFindTask alloc] initWithURL:[NSURL URLWithString:kDynamicMapServiceURL]];
@@ -79,7 +77,7 @@
     ResultsViewController *resultsVC = [[ResultsViewController alloc] initWithNibName:@"ResultsViewController" bundle:nil];
 	
     //set our attributes/results into the results VC
-    resultsVC.results = graphic.allAttributes;
+    resultsVC.results = [graphic allAttributes];
     
     //display the results vc modally
     [self presentModalViewController:resultsVC animated:YES]; 
@@ -119,23 +117,7 @@
 	//clear previous results
     [self.graphicsLayer removeAllGraphics];
 	
-	//set callout width
-	self.mapView.callout.width = 200;
 	
-	//create the city callout template, used when the user displays the callout
-	self.cityCalloutTemplate = [[AGSCalloutTemplate alloc]init];
-	self.cityCalloutTemplate.titleTemplate = @"${CITY_NAME}";
-	self.cityCalloutTemplate.detailTemplate = @"Click for more detail..";
-	
-	//create the river callout template, used when the user displays the callout
-	self.riverCalloutTemplate = [[AGSCalloutTemplate alloc]init];
-	self.riverCalloutTemplate.titleTemplate = @"${NAME}";
-	self.riverCalloutTemplate.detailTemplate = @"Click for more detail..";
-	
-	//create the state callout template, used when the user displays the callout
-	self.stateCalloutTemplate = [[AGSCalloutTemplate alloc]init];
-	self.stateCalloutTemplate.titleTemplate = @"${STATE_NAME}";
-	self.stateCalloutTemplate.detailTemplate = @"Click for more detail..";
 
 	//use these to calculate extent of results
 	double xmin = DBL_MAX;
@@ -174,8 +156,6 @@
 			symbol.style = AGSSimpleMarkerSymbolStyleDiamond;
 			result.feature.symbol = symbol;
 			
-			//set the city callout
-			result.feature.infoTemplateDelegate = self.cityCalloutTemplate;
 		}
 		else if ([result.feature.geometry isKindOfClass:[AGSPolyline class]]) {
 			
@@ -186,8 +166,6 @@
 			symbol.width = 2;
 			result.feature.symbol = symbol;
 			
-			//set the river callout
-			result.feature.infoTemplateDelegate = self.riverCalloutTemplate;
 		}
 		else if ([result.feature.geometry isKindOfClass:[AGSPolygon class]]) {
 			
@@ -202,8 +180,6 @@
 			
 			result.feature.symbol = symbol;
 			
-			//set the state callout
-			result.feature.infoTemplateDelegate = self.stateCalloutTemplate;
 		}
 				
 		//add graphic to graphics layer
@@ -216,7 +192,7 @@
 		[self.mapView centerAtPoint:result.feature.geometry.envelope.center animated:NO];
 		
 		//show the callout
-		[self.mapView.callout showCalloutAtPoint:(AGSPoint *)result.feature.geometry.envelope.center forGraphic:result.feature animated:YES];
+        [self.mapView.callout showCalloutAtPoint:result.feature.geometry.envelope.center forFeature:result.feature layer:result.feature.layer animated:YES];
 	}
 	
 	//if we have more than one result, zoom to the extent of all results
@@ -241,6 +217,21 @@
 	[alert show];
 }
 
+#pragma mark AGSLayerCalloutDelegate
+- (BOOL) callout:(AGSCallout *)callout willShowForFeature:(id<AGSFeature>)feature layer:(AGSLayer<AGSHitTestable> *)layer mapPoint:(AGSPoint *)mapPoint {
+    //set callout width
+	self.mapView.callout.width = 200;
+	self.mapView.callout.detail = @"Click for more detail..";
+    if([feature hasAttributeForKey:@"CITY_NAME"]){
+        self.mapView.callout.title = (NSString*)[feature attributeForKey:@"CITY_NAME"];
+    }else if([feature hasAttributeForKey:@"NAME"]){
+        self.mapView.callout.title = (NSString*)[feature attributeForKey:@"NAME"];
+    }else if([feature hasAttributeForKey:@"STATE_NAME"]){
+        self.mapView.callout.title = (NSString*)[feature attributeForKey:@"STATE_NAME"];
+    }
+    return YES;
+
+}
 
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

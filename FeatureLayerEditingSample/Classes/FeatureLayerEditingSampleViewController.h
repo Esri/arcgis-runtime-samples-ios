@@ -15,7 +15,7 @@
 #import "FeatureTemplatePickerViewController.h"
 #import "LoadingView.h"
 
-@interface FeatureLayerEditingSampleViewController : UIViewController<AGSAttachmentManagerDelegate, AGSMapViewLayerDelegate, AGSMapViewCalloutDelegate, AGSCalloutDelegate, AGSMapViewTouchDelegate,AGSPopupsContainerDelegate, AGSFeatureLayerEditingDelegate, AGSWebMapDelegate, FeatureTemplatePickerDelegate, UIAlertViewDelegate> {
+@interface FeatureLayerEditingSampleViewController : UIViewController<AGSAttachmentManagerDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate, AGSMapViewTouchDelegate,AGSPopupsContainerDelegate, AGSFeatureLayerEditingDelegate, AGSWebMapDelegate, FeatureTemplatePickerDelegate, UIAlertViewDelegate> {
     
 	AGSMapView *_mapView;
     AGSWebMap* _webmap;

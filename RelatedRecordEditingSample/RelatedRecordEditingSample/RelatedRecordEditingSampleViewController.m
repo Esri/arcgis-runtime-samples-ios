@@ -75,7 +75,7 @@
     //setup the incidents layer as a feature layer and add it to the map
     self.incidentsLayer = [AGSFeatureLayer featureServiceLayerWithURL:[NSURL URLWithString:kIncidentsLayerURL] mode:AGSFeatureLayerModeOnDemand]; 
     self.incidentsLayer.outFields = [NSArray arrayWithObject:@"*"];
-    self.incidentsLayer.infoTemplateDelegate = self.incidentsLayer;
+    self.incidentsLayer.calloutDelegate = self.incidentsLayer;
     
     [self.mapView addMapLayer:self.incidentsLayer withName:@"Incidents"];
     

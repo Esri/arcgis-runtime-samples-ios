@@ -14,7 +14,7 @@
 #import <ArcGIS/ArcGIS.h>
 #import "OnlineOfflineFeatureLayer.h"
 
-@interface OnlineOfflineEditingSampleViewController : UIViewController<AGSLayerDelegate,AGSMapViewTouchDelegate, AGSMapViewCalloutDelegate, AGSCalloutDelegate, AGSInfoTemplateDelegate, OnlineOfflineDelegate,
+@interface OnlineOfflineEditingSampleViewController : UIViewController<AGSLayerDelegate,AGSMapViewTouchDelegate, AGSLayerCalloutDelegate, AGSCalloutDelegate, OnlineOfflineDelegate,
 UIAlertViewDelegate> {
 	AGSMapView *_mapView;
 	OnlineOfflineFeatureLayer *_featureLayer;

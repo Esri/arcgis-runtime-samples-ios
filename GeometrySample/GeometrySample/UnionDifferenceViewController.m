@@ -112,7 +112,7 @@
     AGSGeometry *sketchGeometry = [self.sketchLayer.geometry copy];
     
     //Create the graphic and add it to the graphics layer
-    AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:nil attributes:nil infoTemplateDelegate:nil];
+    AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:nil attributes:nil ];
     
     [self.graphicsLayer addGraphic:graphic];
     
@@ -129,7 +129,7 @@
 
         // Make a new graphic with the difference of the two geometries
         AGSGeometry *differenceGeometry = [geometryEngine differenceOfGeometry:geometry1 andGeometry:geometry2];   
-        self.differenceGraphic = [AGSGraphic graphicWithGeometry:differenceGeometry symbol:nil attributes:nil infoTemplateDelegate:nil];
+        self.differenceGraphic = [AGSGraphic graphicWithGeometry:differenceGeometry symbol:nil attributes:nil ];
         
         NSArray *geometries = [NSArray arrayWithObjects:geometry1,geometry2, nil];
         
@@ -137,7 +137,7 @@
         self.unionGraphic = [AGSGraphic graphicWithGeometry:[geometryEngine unionGeometries:geometries]
                                                           symbol:nil 
                                                       attributes:nil
-                                            infoTemplateDelegate:nil];
+                                            ];
         
         [self unionDifference:self.segmentedControl];
         self.userInstructions.text = @"Toggle union and difference";

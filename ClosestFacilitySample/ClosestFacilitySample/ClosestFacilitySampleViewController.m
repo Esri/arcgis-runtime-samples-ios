@@ -19,24 +19,6 @@
 
 @implementation ClosestFacilitySampleViewController
 
-@synthesize mapView=_mapView;
-@synthesize facilitiesLayer = _facilitiesLayer;
-@synthesize sketchLayer = _sketchLayer;
-@synthesize graphicsLayer = _graphicsLayer;
-@synthesize selectedGraphic = _selectedGraphic;
-@synthesize cfTask =_cfTask, cfOp = _cfOp;
-@synthesize settingsViewController = _settingsViewController;
-@synthesize activityAlertView = _activityAlertView;
-
-@synthesize statusMessageLabel = _statusMessageLabel;
-@synthesize deleteCalloutView = _deleteCalloutView;  
-@synthesize sketchModeSegCtrl = _sketchModeSegCtrl;
-@synthesize addButton = _addButton;
-@synthesize clearSketchButton = _clearSketchButton;
-@synthesize findCFButton = _findCFButton;
-
-
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -68,12 +50,13 @@
     //step to call the mapViewDidLoad method to do the initiation of Closest Facility Task.
     self.mapView.layerDelegate = self;
     
-    // set the mapView's calloutDelegate so we can display callouts
-	self.mapView.calloutDelegate = self;
     
     //add  graphics layer for showing results of the closest facility analysis
     self.graphicsLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:self.graphicsLayer withName:@"ClosestFacility"];
+
+    // set the callout delegate so we can display callouts
+    self.graphicsLayer.calloutDelegate = self;
     
     
     //creating the facilities (fire stations) layer
@@ -83,7 +66,6 @@
     AGSSimpleRenderer* renderer = [AGSSimpleRenderer simpleRendererWithSymbol:[AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"FireStation.png"]];
     self.facilitiesLayer.renderer = renderer;    
     self.facilitiesLayer.outFields = [NSArray arrayWithObject:@"*"]; 
-    self.facilitiesLayer.infoTemplateDelegate = self.facilitiesLayer;
     
     //adding the fire stations feature layer to the map view. 
     [self.mapView addMapLayer:self.facilitiesLayer withName:@"Facilities"];
@@ -161,36 +143,51 @@
 }
 
 
-#pragma mark AGSMapViewTouchDelegate
+#pragma mark AGSCalloutDelegate
 
-// 
-// determine if we should show a callout
-- (BOOL)mapView:(AGSMapView *)mapView shouldShowCalloutForGraphic:(AGSGraphic *)graphic {
-	
-    
-    
-	NSString *incidentNum = [graphic attributeAsStringForKey:@"incidentNumber"];
+- (BOOL) callout:(AGSCallout *)callout willShowForFeature:(id<AGSFeature>)feature layer:(AGSLayer<AGSHitTestable> *)layer mapPoint:(AGSPoint *)mapPoint{
+    AGSGraphic* graphic = (AGSGraphic*)feature;
+    NSString *incidentNum = [graphic attributeAsStringForKey:@"incidentNumber"];
 	NSString *barrierNum = [graphic attributeAsStringForKey:@"barrierNumber"];
     
     self.selectedGraphic = graphic;
     [self.sketchLayer clear];
     
-	if (incidentNum || barrierNum) 
+	if (incidentNum || barrierNum) {
 		self.mapView.callout.customView = self.deleteCalloutView;
-    
-    //if the graphic that was tapped on belongs to the "Facilities" layer, dont show callout.
-    if([graphic.layer.name isEqualToString:@"Facilities"])
-    {
+        return YES;
+    }
+    else{
         return NO;
     }
-    
-	return YES;
 }
 
-// if we showed a callout, clear the sketch layer
-- (void)mapView:(AGSMapView *)mapView didShowCalloutForGraphic:(AGSGraphic *)graphic {
-	[self.sketchLayer clear];
-}
+ 
+//// determine if we should show a callout
+//- (BOOL)mapView:(AGSMapView *)mapView shouldShowCalloutForGraphic:(AGSGraphic *)graphic {
+//	
+//    
+//    
+//	NSString *incidentNum = [graphic attributeAsStringForKey:@"incidentNumber"];
+//	NSString *barrierNum = [graphic attributeAsStringForKey:@"barrierNumber"];
+//    
+//    self.selectedGraphic = graphic;
+//    [self.sketchLayer clear];
+//    
+//	if (incidentNum || barrierNum) {
+//		self.mapView.callout.customView = self.deleteCalloutView;
+//        return YES;
+//    }
+//    else{
+//        return NO;
+//    }
+//    
+//}
+//
+//// if we showed a callout, clear the sketch layer
+//- (void)mapView:(AGSMapView *)mapView didShowCalloutForGraphic:(AGSGraphic *)graphic {
+//	[self.sketchLayer clear];
+//}
 
 #pragma mark AGSClosestFacilityTaskDelegate
 
@@ -382,10 +379,7 @@
             
             //getting the symbol for the incident graphic
             symbol = [self incidentSymbol];
-			g = [AGSGraphic graphicWithGeometry:geometry 
-																	   symbol:symbol 
-																   attributes:attributes 
-														 infoTemplateDelegate:self];
+            g = [AGSGraphic graphicWithGeometry:geometry symbol:symbol attributes:attributes];
 			//You can set additional properties on the incident here
 			[self.graphicsLayer addGraphic:g];
             //enable the findFCButton
@@ -401,8 +395,7 @@
 			symbol = [self barrierSymbol];
 			g = [AGSGraphic graphicWithGeometry:geometry 
 													 symbol:symbol
-												 attributes:attributes
-									   infoTemplateDelegate:self];
+												 attributes:attributes];
 			[self.graphicsLayer addGraphic:g];
 			break;
         default:

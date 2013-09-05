@@ -196,7 +196,7 @@
 - (IBAction)add {
     // Get the sketch layer's geometry and add a new graphic to the graphics layer
     AGSGeometry *sketchGeometry = [self.sketchLayer.geometry copy];
-    AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:nil attributes:nil infoTemplateDelegate:nil];
+    AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:nil attributes:nil ];
 
     [self.graphicsLayer addGraphic:graphic];
     

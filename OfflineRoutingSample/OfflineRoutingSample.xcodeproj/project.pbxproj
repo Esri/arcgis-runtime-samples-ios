@@ -19,18 +19,13 @@
 		3B7F19EB10D1BEB900AFD7FB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7F19EA10D1BEB900AFD7FB /* QuartzCore.framework */; };
 		9702E56A1446538E00A46CA5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9702E5691446538E00A46CA5 /* Security.framework */; };
 		973C8DBD17C6C2650045392D /* RuntimeSanDiego.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = 973C8DB517C6C2650045392D /* RuntimeSanDiego.geodatabase */; };
-		973C8DBE17C6C2650045392D /* Streets_ND_adjacencies in Resources */ = {isa = PBXBuildFile; fileRef = 973C8DB717C6C2650045392D /* Streets_ND_adjacencies */; };
-		973C8DBF17C6C2650045392D /* Streets_ND_edge_chains in Resources */ = {isa = PBXBuildFile; fileRef = 973C8DB817C6C2650045392D /* Streets_ND_edge_chains */; };
-		973C8DC017C6C2650045392D /* Streets_ND_historical_traffic in Resources */ = {isa = PBXBuildFile; fileRef = 973C8DB917C6C2650045392D /* Streets_ND_historical_traffic */; };
-		973C8DC117C6C2650045392D /* Streets_ND_schema in Resources */ = {isa = PBXBuildFile; fileRef = 973C8DBA17C6C2650045392D /* Streets_ND_schema */; };
-		973C8DC217C6C2650045392D /* Streets_ND_source_data in Resources */ = {isa = PBXBuildFile; fileRef = 973C8DBB17C6C2650045392D /* Streets_ND_source_data */; };
-		973C8DC317C6C2650045392D /* Streets_ND_weight_values in Resources */ = {isa = PBXBuildFile; fileRef = 973C8DBC17C6C2650045392D /* Streets_ND_weight_values */; };
 		9744BD5913550BAE007AD325 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9744BD5813550BAE007AD325 /* CoreText.framework */; };
 		9755BA1F167B965900518E4D /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9755BA1E167B965900518E4D /* libc++.dylib */; };
 		9755BA21167B965E00518E4D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9755BA20167B965E00518E4D /* OpenGLES.framework */; };
 		9755BA23167B966F00518E4D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9755BA22167B966F00518E4D /* Default-568h@2x.png */; };
 		975A5ED0134BE79900759B4A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 975A5ECE134BE79900759B4A /* icon.png */; };
 		975A5ED1134BE79900759B4A /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 975A5ECF134BE79900759B4A /* icon@2x.png */; };
+		9773943117D93A4300F94D84 /* RuntimeSanDiego.tn in Resources */ = {isa = PBXBuildFile; fileRef = 9773943017D93A4300F94D84 /* RuntimeSanDiego.tn */; };
 		9792DFC613B266EB00C41657 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9792DFC513B266EB00C41657 /* MediaPlayer.framework */; };
 		9792DFC913B266F100C41657 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9792DFC813B266F100C41657 /* MobileCoreServices.framework */; };
 		ACB8033F1319B6C100654F30 /* GreenPushpin.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB8033D1319B6C100654F30 /* GreenPushpin.png */; };
@@ -69,12 +64,6 @@
 		9702E5671446538A00A46CA5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		9702E5691446538E00A46CA5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		973C8DB517C6C2650045392D /* RuntimeSanDiego.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = RuntimeSanDiego.geodatabase; sourceTree = "<group>"; };
-		973C8DB717C6C2650045392D /* Streets_ND_adjacencies */ = {isa = PBXFileReference; lastKnownFileType = file; path = Streets_ND_adjacencies; sourceTree = "<group>"; };
-		973C8DB817C6C2650045392D /* Streets_ND_edge_chains */ = {isa = PBXFileReference; lastKnownFileType = file; path = Streets_ND_edge_chains; sourceTree = "<group>"; };
-		973C8DB917C6C2650045392D /* Streets_ND_historical_traffic */ = {isa = PBXFileReference; lastKnownFileType = file; path = Streets_ND_historical_traffic; sourceTree = "<group>"; };
-		973C8DBA17C6C2650045392D /* Streets_ND_schema */ = {isa = PBXFileReference; lastKnownFileType = file; path = Streets_ND_schema; sourceTree = "<group>"; };
-		973C8DBB17C6C2650045392D /* Streets_ND_source_data */ = {isa = PBXFileReference; lastKnownFileType = file; path = Streets_ND_source_data; sourceTree = "<group>"; };
-		973C8DBC17C6C2650045392D /* Streets_ND_weight_values */ = {isa = PBXFileReference; lastKnownFileType = file; path = Streets_ND_weight_values; sourceTree = "<group>"; };
 		9744BD5813550BAE007AD325 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		9755BA1E167B965900518E4D /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		9755BA20167B965E00518E4D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -82,6 +71,7 @@
 		975A5E95134BC4A500759B4A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = iphoneos4.0/System/Library/Frameworks/CoreText.framework; sourceTree = "<group>"; };
 		975A5ECE134BE79900759B4A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		975A5ECF134BE79900759B4A /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		9773943017D93A4300F94D84 /* RuntimeSanDiego.tn */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RuntimeSanDiego.tn; sourceTree = "<group>"; };
 		9792DFC513B266EB00C41657 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		9792DFC813B266F100C41657 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		ACB8033D1319B6C100654F30 /* GreenPushpin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenPushpin.png; sourceTree = "<group>"; };
@@ -172,7 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				973C8DB517C6C2650045392D /* RuntimeSanDiego.geodatabase */,
-				973C8DB617C6C2650045392D /* RuntimeSanDiego.tn */,
+				9773943017D93A4300F94D84 /* RuntimeSanDiego.tn */,
 				975A5ECE134BE79900759B4A /* icon.png */,
 				975A5ECF134BE79900759B4A /* icon@2x.png */,
 				ACB803A0131A36C300654F30 /* next32.png */,
@@ -213,19 +203,6 @@
 				9744BD5813550BAE007AD325 /* CoreText.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		973C8DB617C6C2650045392D /* RuntimeSanDiego.tn */ = {
-			isa = PBXGroup;
-			children = (
-				973C8DB717C6C2650045392D /* Streets_ND_adjacencies */,
-				973C8DB817C6C2650045392D /* Streets_ND_edge_chains */,
-				973C8DB917C6C2650045392D /* Streets_ND_historical_traffic */,
-				973C8DBA17C6C2650045392D /* Streets_ND_schema */,
-				973C8DBB17C6C2650045392D /* Streets_ND_source_data */,
-				973C8DBC17C6C2650045392D /* Streets_ND_weight_values */,
-			);
-			path = RuntimeSanDiego.tn;
 			sourceTree = "<group>";
 		};
 		AF6FBC8A12550E5300F476B4 /* Resources-iPad */ = {
@@ -309,12 +286,7 @@
 				C56B401814C74314003A46EB /* ArcGIS.bundle in Resources */,
 				9755BA23167B966F00518E4D /* Default-568h@2x.png in Resources */,
 				973C8DBD17C6C2650045392D /* RuntimeSanDiego.geodatabase in Resources */,
-				973C8DBE17C6C2650045392D /* Streets_ND_adjacencies in Resources */,
-				973C8DBF17C6C2650045392D /* Streets_ND_edge_chains in Resources */,
-				973C8DC017C6C2650045392D /* Streets_ND_historical_traffic in Resources */,
-				973C8DC117C6C2650045392D /* Streets_ND_schema in Resources */,
-				973C8DC217C6C2650045392D /* Streets_ND_source_data in Resources */,
-				973C8DC317C6C2650045392D /* Streets_ND_weight_values in Resources */,
+				9773943117D93A4300F94D84 /* RuntimeSanDiego.tn in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

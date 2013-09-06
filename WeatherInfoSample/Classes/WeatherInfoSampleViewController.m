@@ -54,10 +54,7 @@
 }
 
 
-- (void) mapView:		(AGSMapView *) 	mapView
- didClickAtPoint:		(CGPoint) 	screen
-		mapPoint:		(AGSPoint *) 	mappoint
-		graphics:		(NSDictionary *) 	graphics {	 
+- (void)mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features{
 	
 	//Cancel any outstanding operations for previous webservice requests
 	[self.queue cancelAllOperations];
@@ -65,7 +62,7 @@
 	
     //Show an activity indicator while we initiate a new request
 	self.mapView.callout.customView = self.loadingView;
-	[self.mapView.callout showCalloutAt:mappoint pixelOffset:CGPointZero animated:YES];
+	[self.mapView.callout showCalloutAt:mappoint screenOffset:CGPointZero animated:YES];
 
     AGSPoint* latLong = (AGSPoint*) [[AGSGeometryEngine defaultGeometryEngine] projectGeometry:mappoint toSpatialReference:[AGSSpatialReference wgs84SpatialReference]];
 	//Set up the parameters to send the webservice

@@ -130,12 +130,9 @@
 	
 }
 
-- (void) mapView:(AGSMapView*)mapView
- didClickAtPoint:(CGPoint)screen
-		mapPoint:(AGSPoint*)mappoint
-		graphics:(NSDictionary*)graphics {
+- (void)mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features{
 	//find which graphic to modify
-	NSEnumerator *enumerator = [graphics objectEnumerator];
+	NSEnumerator *enumerator = [features objectEnumerator];
 	NSArray* graphicArray = (NSArray*) [enumerator nextObject];
 	if(graphicArray!=nil && [graphicArray count]>0){
 		//Get the graphic's geometry to the sketch layer so that it can be modified

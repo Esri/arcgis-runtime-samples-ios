@@ -93,8 +93,7 @@
 
 #pragma mark AGSMapViewTouchDelegate
 
--(void)mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint graphics:(NSDictionary *)graphics{
-    
+- (void)mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features{
     //clear graphic layer before any update.   
 	[self.graphicsLayer removeAllGraphics];
     

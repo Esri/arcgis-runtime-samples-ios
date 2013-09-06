@@ -86,12 +86,6 @@
 }
 
 
-#pragma mark - AGSMapViewCalloutDelegate methods
-
-- (BOOL)mapView:(AGSMapView *) mapView shouldShowCalloutForGraphic:(AGSGraphic *) graphic
-{    
-    return YES;
-}
 
 #pragma mark - AGSCalloutDelegate methods
 

@@ -25,7 +25,6 @@
 - (void)viewDidLoad {
 	
 	self.mapView.touchDelegate = self;
-    self.mapView.calloutDelegate = self;
     self.mapView.callout.delegate = self;
 	
 	// create a dynamic map service layer
@@ -53,9 +52,10 @@
     [super viewDidLoad];
 }
 
-#pragma mark - AGSMapViewCalloutDelegate methods
+#pragma mark - AGSMapViewTouchDelegate methods
 
-- (void)mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint graphics:(NSDictionary *)graphics {
+- (void)mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features{
+
 
     //store for later use
     self.mappoint = mappoint;
@@ -119,7 +119,7 @@
         self.mapView.callout.detail = @"Click for more detail..";
         
         //show callout
-        [self.mapView.callout showCalloutAtPoint:self.mappoint forGraphic:((AGSIdentifyResult*)[results objectAtIndex:0]).feature animated:YES];
+        [self.mapView.callout showCalloutAtPoint:self.mappoint forFeature:((AGSIdentifyResult*)[results objectAtIndex:0]).feature layer:((AGSIdentifyResult*)[results objectAtIndex:0]).feature.layer animated:YES];
     }
     
 

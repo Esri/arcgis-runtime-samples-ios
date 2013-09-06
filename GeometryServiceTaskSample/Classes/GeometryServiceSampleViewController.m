@@ -257,7 +257,8 @@
 #pragma mark -
 #pragma mark AGSMapViewTouchDelegate methods
 
-- (void)mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint graphics:(NSDictionary *)graphics {
+- (void)mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features{
+
 	
 	// create our geometry array if needed
 	if (self.geometryArray == nil) {

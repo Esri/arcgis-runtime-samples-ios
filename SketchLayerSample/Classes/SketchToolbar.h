@@ -30,10 +30,6 @@
 
 - (id)initWithToolbar:(UIToolbar*)toolbar sketchLayer:(AGSSketchGraphicsLayer*)sketchLayer mapView:(AGSMapView*) mapView graphicsLayer:(AGSGraphicsLayer*)graphicsLayer;
 
-- (void) mapView:(AGSMapView*)mapView
- didClickAtPoint:(CGPoint)screen
-		mapPoint:(AGSPoint*)mappoint
-		graphics:(NSDictionary*)graphics ;	
 
 
 @end

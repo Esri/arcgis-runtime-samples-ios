@@ -25,10 +25,6 @@
 @property (nonatomic, strong) NSOperationQueue *queue;
 @property (nonatomic, strong) UIView* loadingView;
 
-- (void) mapView:		(AGSMapView *) 	mapView
- didClickAtPoint:		(CGPoint) 	screen
-		mapPoint:		(AGSPoint *) 	mappoint
-		graphics:		(NSDictionary *) 	graphics;
 
 - (void)operation:(NSOperation*)op didSucceedWithResponse:(NSDictionary *)weatherInfo ;
 

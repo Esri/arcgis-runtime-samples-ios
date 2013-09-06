@@ -75,7 +75,8 @@
 
 #pragma mark - AGSMapViewTouchDelegate methods
 
-- (void)mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint graphics:(NSDictionary *)graphics {
+- (void)mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features{
+
 
     AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
     AGSPolygon *buffer = [geometryEngine bufferGeometry:mappoint byDistance:(10 *mapView.resolution)];
@@ -86,7 +87,7 @@
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         self.mapView.callout.customView = self.activityIndicator;
         [self.activityIndicator startAnimating];
-        [self.mapView.callout showCalloutAt:mappoint pixelOffset:CGPointZero animated:YES];
+        [self.mapView.callout showCalloutAt:mappoint screenOffset:CGPointZero animated:YES];
     }
     self.popupVC = nil;
 

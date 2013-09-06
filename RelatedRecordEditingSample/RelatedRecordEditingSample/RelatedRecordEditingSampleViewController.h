@@ -14,7 +14,7 @@
 #import <ArcGIS/ArcGIS.h>
 #import "NotesViewController.h"
 
-@interface RelatedRecordEditingSampleViewController : UIViewController <AGSAttachmentManagerDelegate, AGSMapViewCalloutDelegate, AGSPopupsContainerDelegate, UIAlertViewDelegate, NotesViewControllerDelegate, AGSCalloutDelegate>
+@interface RelatedRecordEditingSampleViewController : UIViewController <AGSAttachmentManagerDelegate, AGSPopupsContainerDelegate, UIAlertViewDelegate, NotesViewControllerDelegate, AGSCalloutDelegate>
 
 
 

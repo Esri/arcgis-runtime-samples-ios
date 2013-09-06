@@ -94,7 +94,6 @@
 
 - (void)viewDidLoad {
 	self.mapView.touchDelegate = self;
-    self.mapView.callout.delegate = self;
     self.mapView.showMagnifierOnTapAndHold = YES;
 	
 	//Load the tile package
@@ -205,15 +204,8 @@
 }
 
 #pragma mark -
-#pragma mark AGSMapViewCalloutDelegate
-
-- (BOOL)mapView:(AGSMapView *)mapView shouldShowCalloutForGraphic:(AGSGraphic *)graphic
-{
-    //only show callout if we're not editing
-    return !_editingMode;
-}
-#pragma mark -
 #pragma mark AGSCalloutDelegate
+
 - (void) didClickAccessoryButtonForCallout: (AGSCallout *) 	callout{
     AGSGraphic* graphic = (AGSGraphic*) callout.representedObject;
 	// Show the details for an existing feature	
@@ -226,6 +218,11 @@
 #pragma mark -
 #pragma mark AGSLayerCalloutDelegate
 - (BOOL) callout:(AGSCallout *)callout willShowForFeature:(id<AGSFeature>)feature layer:(AGSLayer<AGSHitTestable> *)layer mapPoint:(AGSPoint *)mapPoint{
+    
+    //only show callout if we're not editing
+    if(_editingMode)
+        return NO;
+    
     AGSGraphic* graphic = (AGSGraphic*)feature;
     
     //set title

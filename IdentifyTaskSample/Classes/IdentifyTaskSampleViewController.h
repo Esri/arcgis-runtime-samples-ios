@@ -15,7 +15,7 @@
 #import <ArcGIS/ArcGIS.h>
 #import "ResultsViewController.h"
 
-@interface IdentifyTaskSampleViewController : UIViewController <AGSMapViewTouchDelegate, AGSMapViewCalloutDelegate, AGSCalloutDelegate, AGSIdentifyTaskDelegate> {
+@interface IdentifyTaskSampleViewController : UIViewController <AGSMapViewTouchDelegate, AGSCalloutDelegate, AGSIdentifyTaskDelegate> {
 
 	AGSMapView *_mapView;
 	AGSGraphicsLayer *_graphicsLayer;

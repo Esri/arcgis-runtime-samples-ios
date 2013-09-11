@@ -25,10 +25,7 @@
 {
     // Override point for customization after application launch.
     
-    if( [[[UIDevice currentDevice] systemVersion] compare:@"4.0" options:NSNumericSearch] == NSOrderedAscending )
-        [self.window addSubview:self.viewController.view];
-    else
-        self.window.rootViewController = self.viewController;
+    [self.window setRootViewController:self.viewController];
     
     [self.window makeKeyAndVisible];
     return YES;

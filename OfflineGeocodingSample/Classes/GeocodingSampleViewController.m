@@ -153,7 +153,7 @@ static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest
     }
     
     //display the results vc modally
-    [self presentModalViewController:resultsVC animated:YES];  
+    [self presentViewController:resultsVC animated:YES completion:nil];
 	
 }
 

@@ -340,13 +340,13 @@
 		
 		//present settings view
 		self.settingsViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-		[self presentModalViewController:self.settingsViewController animated:YES];
+        [self presentViewController:self.settingsViewController animated:YES completion:nil];
 		self.settingsViewController.view.superview.bounds = CGRectMake(0, 0, 400, 300);
 	}
 	else {
 		//present settings view
 		self.settingsViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-		[self presentModalViewController:self.settingsViewController animated:YES];
+        [self presentViewController:self.settingsViewController animated:YES completion:nil];
 	}
     
 }

@@ -141,7 +141,7 @@
     if(self.loginVC)
     {
         [self.loadingView removeView];
-        [self.loginVC dismissModalViewControllerAnimated:YES];        
+        [self.loginVC dismissViewControllerAnimated:YES completion:nil];
         self.loginVC = nil;
     }
     
@@ -184,10 +184,10 @@
         
         self.loginVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         self.loginVC.modalPresentationStyle = UIModalPresentationFormSheet;
-        [self.popOver.contentViewController presentModalViewController:self.loginVC animated:YES];
-           
+        [self.popOver.contentViewController presentViewController:self.loginVC animated:YES completion:nil];
+        
     }else{
-        [self.portalExplorer presentModalViewController:self.loginVC animated:YES];
+        [self.portalExplorer presentViewController:self.loginVC animated:YES completion:nil];
     }
     
 }
@@ -214,7 +214,7 @@
     if([[AGSDevice currentDevice]isIPad]){
         [self.popOver dismissPopoverAnimated:YES];
     }else{
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 
 }
@@ -224,7 +224,7 @@
     if([[AGSDevice currentDevice]isIPad]){
         [self.popOver dismissPopoverAnimated:YES];
     }else{
-        [self dismissModalViewControllerAnimated:YES];
+       [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
@@ -246,7 +246,7 @@
     [self.loadingView removeView];
     
     //dismiss the login view. 
-    [self.portalExplorer dismissModalViewControllerAnimated:YES];
+    [self.portalExplorer dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark Helper
@@ -299,8 +299,7 @@
         portalExplorerNavController.navigationBar.barStyle = UIBarStyleDefault;
         
         //Present modally for iphone
-        [self presentModalViewController:portalExplorerNavController 
-                                animated:YES];
+        [self presentViewController:portalExplorerNavController animated:YES completion:nil];
     }
 }
 

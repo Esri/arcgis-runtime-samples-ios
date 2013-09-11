@@ -96,11 +96,10 @@
 #pragma mark - AGSCallout methods
 
 - (void) didClickAccessoryButtonForCallout:(AGSCallout *) 	callout {
-    [self presentModalViewController:self.popupVC animated:YES];
+    [self presentViewController:self.popupVC animated:YES completion:nil];
 }
 
 #pragma mark - AGSWebMapDelegate methods
-
 - (void) webMapDidLoad:(AGSWebMap *)webMap {
     if(![webMap hasPopupsDefined]){
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@""
@@ -219,7 +218,7 @@
         self.mapView.callout.hidden = YES;
     else
         //dismiss the modal viewcontroller for iPhone
-        [self.popupVC dismissModalViewControllerAnimated:YES];
+      [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 

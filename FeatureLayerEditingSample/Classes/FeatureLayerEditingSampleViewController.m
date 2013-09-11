@@ -39,12 +39,12 @@
     self.featureTemplatePickerViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
     //Present
-    [self presentModalViewController:self.featureTemplatePickerViewController animated:YES];
+    [self presentViewController:self.featureTemplatePickerViewController animated:YES completion:nil];
 }
 
 -(void)sketchComplete{
     self.navigationItem.rightBarButtonItem = self.pickTemplateButton;
-    [self presentModalViewController:self.popupVC animated:YES];
+    [self presentViewController:self.popupVC animated:YES completion:nil];
     self.mapView.touchDelegate = self;
     self.bannerView.hidden = YES;
 
@@ -147,7 +147,7 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
 #pragma mark - FeatureTemplatePickerDelegate methods
 
 -(void)featureTemplatePickerViewControllerWasDismissed: (FeatureTemplatePickerViewController*) featureTemplatePickerViewController{
-    [self dismissModalViewControllerAnimated:YES];
+       [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -181,10 +181,10 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
     self.popupVC.modalTransitionStyle =  UIModalTransitionStyleFlipHorizontal;
     
     //First, dismiss the Feature Template Picker
-    [self dismissModalViewControllerAnimated:NO];
+       [self dismissViewControllerAnimated:NO completion:nil];
     
     //Next, Present the popup view controller
-    [self presentModalViewController:self.popupVC animated:YES];
+    [self presentViewController:self.popupVC animated:YES completion:nil];
     [self.popupVC startEditingCurrentPopup];
     
 }
@@ -209,7 +209,7 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
     //If iPad, use a modal presentation style
     if([[AGSDevice currentDevice] isIPad])
         self.popupVC.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentModalViewController:self.popupVC animated:YES];
+    [self presentViewController:self.popupVC animated:YES completion:nil];
 
 }
 
@@ -224,7 +224,7 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
 
 - (void)popupsContainer:(id) popupsContainer readyToEditGraphicGeometry:(AGSGeometry *) geometry forPopup:(AGSPopup *) popup{
     //Dismiss the popup view controller
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
     //Prepare the current view controller for sketch mode
     self.bannerView.hidden = NO;
@@ -293,13 +293,13 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
 
 - (void)popupsContainerDidFinishViewingPopups:(id) popupsContainer {
     //dismiss the popups view controller
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     self.popupVC = nil;
 }
 
 - (void)popupsContainer:(id) popupsContainer didCancelEditingGraphicForPopup:(AGSPopup *) popup {
     //dismiss the popups view controller
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 
     //if we had begun adding a new feature, remove it from the layer because the user hit cancel.
     if(_newFeature!=nil){
@@ -369,7 +369,7 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
             //Dismiss the popup view controller and hide the callout which may have been shown for
             //the deleted feature.
             self.mapView.callout.hidden = YES;
-            [self dismissModalViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
             self.popupVC = nil;
         }
 

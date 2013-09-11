@@ -208,14 +208,14 @@
 - (void)didSelectAreaUnit:(AGSAreaUnits)unit {
     _areaUnit = unit;
     [self updateArea:unit];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 // Delegate method called by UnitSelectorViewController to update the area units
 - (void)didSelectDistanceUnit:(AGSSRUnit)unit {
     _distanceUnit = unit;
     [self updateDistance:unit];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 // Called when the button under user instructions is tapped
@@ -237,7 +237,7 @@
     inputVC.modalPresentationStyle = UIModalPresentationFormSheet;
     inputVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
-    [self presentModalViewController:inputVC animated:YES];
+    [self presentViewController:inputVC animated:YES completion:nil];
     inputVC.view.superview.bounds = CGRectMake(-150, 0, 300, 220);
 }
 

@@ -65,7 +65,7 @@ canChangeVisibility:(BOOL)canChangeVisibility
         [self labelWithPrimaryColor:[UIColor blackColor] 
                          selectedColor:[UIColor whiteColor] 
                               fontSize:16.0 bold:YES];
-		self.valueLabel.textAlignment = UITextAlignmentLeft;
+		self.valueLabel.textAlignment = NSTextAlignmentLeft;
 		[content addSubview:self.valueLabel];
         
         if(_canChangeVisibility)

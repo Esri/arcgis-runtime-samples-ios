@@ -779,8 +779,7 @@
 				else {
 					imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
 				}
-
-				[self presentModalViewController:imgPicker animated:YES];
+                [self presentViewController:imgPicker animated:YES completion:nil];
 			}
 			else {
 				// if they click on an existing media attachment
@@ -899,11 +898,12 @@
 	}
 	
 	[self.tableView reloadData];
-	[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
-	[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark -

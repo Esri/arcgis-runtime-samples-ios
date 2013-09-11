@@ -88,7 +88,7 @@
 		[self.popOverController presentPopoverFromRect:self.infoButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES ];		
 	}
     else {
-		[self presentModalViewController:self.tocViewController animated:YES];
+        [self presentViewController:self.tocViewController animated:YES completion:nil];
 	}    
 }
 

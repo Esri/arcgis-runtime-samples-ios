@@ -47,7 +47,7 @@
 		self.legendLabel = [self labelWithPrimaryColor:[UIColor blackColor] 
                          selectedColor:[UIColor whiteColor] 
                               fontSize:16.0 bold:YES];
-		self.legendLabel.textAlignment = UITextAlignmentLeft;
+		self.legendLabel.textAlignment = NSTextAlignmentLeft;
 		[content addSubview:self.legendLabel];
 		
 		self.legendImage = [[UIImageView alloc] initWithImage:nil];

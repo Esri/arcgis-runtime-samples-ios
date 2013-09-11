@@ -165,7 +165,7 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
 	[self.searchBar resignFirstResponder];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - AGSPortalDelegate

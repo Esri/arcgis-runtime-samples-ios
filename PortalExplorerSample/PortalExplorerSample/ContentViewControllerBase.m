@@ -270,7 +270,7 @@
         if (portalGroup.thumbnail)
         {
             image = portalGroup.thumbnail;
-        }else if (portalGroup.thumbnailFileName != nil && portalGroup.thumbnailFileName != @"")
+        }else if (portalGroup.thumbnailFileName != nil && ![portalGroup.thumbnailFileName isEqual: @""])
         {
            //obtain the thumbnail to fill the place holder
            [self startIconDownload:portalGroup forIndexPath:indexPath withSize:groupTableViewCell.thumbnailImageView.bounds.size];
@@ -317,7 +317,7 @@
         if (portalItem.thumbnail)
         {
             image = portalItem.thumbnail;
-        }else if (portalItem.thumbnailFileName != nil && portalItem.thumbnailFileName != @"")
+        }else if (portalItem.thumbnailFileName != nil && ![portalItem.thumbnailFileName isEqual: @""])
         {
             //obtain the thumbnail to fill the place holder
             [self startIconDownload:portalItem forIndexPath:indexPath withSize:itemTableViewCell.thumbnailImageView.bounds.size];

@@ -109,7 +109,7 @@
 }
 
 - (IBAction)done:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)timeChanged:(id)sender {

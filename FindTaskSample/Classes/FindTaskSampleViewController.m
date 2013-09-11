@@ -80,7 +80,7 @@
     resultsVC.results = [graphic allAttributes];
     
     //display the results vc modally
-    [self presentModalViewController:resultsVC animated:YES]; 
+    [self presentViewController:resultsVC animated:YES completion:nil];
 
 }
 

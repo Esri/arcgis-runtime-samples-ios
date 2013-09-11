@@ -191,7 +191,7 @@ CODialogSynth(highlightedIndex)
   if (self.title.length > 0) {
     titleHeight = [self.title sizeWithFont:self.titleFont
                          constrainedToSize:CGSizeMake(layoutWidth, MAXFLOAT)
-                             lineBreakMode:UILineBreakModeWordWrap].height;
+                             lineBreakMode:NSLineBreakByWordWrapping].height;
     minY += kCODialogPadding;
   }
   layout.titleRect = CGRectMake(CGRectGetMinX(layoutFrame), minY, layoutWidth, titleHeight);
@@ -202,7 +202,7 @@ CODialogSynth(highlightedIndex)
   if (self.subtitle.length > 0) {
     subtitleHeight = [self.subtitle sizeWithFont:self.subtitleFont
                                constrainedToSize:CGSizeMake(layoutWidth, MAXFLOAT)
-                                   lineBreakMode:UILineBreakModeWordWrap].height;
+                                   lineBreakMode:NSLineBreakByWordWrapping].height;
     minY += kCODialogPadding;
   }
   layout.subtitleRect = CGRectMake(CGRectGetMinX(layoutFrame), minY, layoutWidth, subtitleHeight);
@@ -408,8 +408,7 @@ CODialogSynth(highlightedIndex)
 }
 
 - (void)showOrUpdateAnimatedInternal:(BOOL)flag {
-  CODialogAssertMQ();
-  
+
   CODialogWindowOverlay *overlay = self.overlay;
   BOOL show = (overlay == nil);
   
@@ -445,14 +444,12 @@ CODialogSynth(highlightedIndex)
 }
 
 - (void)showOrUpdateAnimated:(BOOL)flag {
-  CODialogAssertMQ();
   SEL selector = @selector(showOrUpdateAnimatedInternal:);
   [NSObject cancelPreviousPerformRequestsWithTarget:self selector:selector object:nil];
   [self performSelector:selector withObject:[NSNumber numberWithBool:flag] afterDelay:self.batchDelay];
 }
 
 - (void)hideAnimated:(BOOL)flag {
-  CODialogAssertMQ();
   
   CODialogWindowOverlay *overlay = self.overlay;
   
@@ -474,7 +471,6 @@ CODialogSynth(highlightedIndex)
 }
 
 - (void)hideAnimated:(BOOL)flag afterDelay:(NSTimeInterval)delay {
-  CODialogAssertMQ();
   
   SEL selector = @selector(hideAnimated:);
   [NSObject cancelPreviousPerformRequestsWithTarget:self selector:selector object:nil];
@@ -661,7 +657,7 @@ CODialogSynth(highlightedIndex)
   CGContextSetShadowWithColor(ctx, CGSizeMake(0.0, -1.0), 0.0, [UIColor blackColor].CGColor);
   
   [[UIColor whiteColor] set];
-  [title drawInRect:textFrame withFont:self.titleFont lineBreakMode:UILineBreakModeMiddleTruncation alignment:UITextAlignmentCenter];
+  [title drawInRect:textFrame withFont:self.titleFont lineBreakMode:NSLineBreakByTruncatingMiddle alignment:NSTextAlignmentCenter];
   
   CGContextRestoreGState(ctx);
   
@@ -681,7 +677,7 @@ CODialogSynth(highlightedIndex)
     
     [[UIColor whiteColor] set];
     
-    [title drawInRect:rect withFont:font lineBreakMode:UILineBreakModeMiddleTruncation alignment:UITextAlignmentCenter];
+    [title drawInRect:rect withFont:font lineBreakMode:NSLineBreakByTruncatingMiddle alignment:NSTextAlignmentCenter];
     
     CGContextRestoreGState(ctx);
   }

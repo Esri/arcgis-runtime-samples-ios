@@ -27,7 +27,7 @@
 	if([[AGSDevice currentDevice] isIPad])
 		[self.popOverController dismissPopoverAnimated:YES];
 	else
-		[self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

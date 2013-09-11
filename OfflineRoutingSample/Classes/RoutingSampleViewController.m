@@ -54,19 +54,11 @@
 	
 	// zoom to some location (this is San Francisco)
 	AGSSpatialReference *sr = [AGSSpatialReference wgs84SpatialReference];
-    //AGSPoint* petcoPark = [AGSPoint pointFromDecimalDegreesString:@"32.7073 , -117.1566" withSpatialReference:sr];
-    //AGSPoint* petcoPark  = [AGSPoint pointWithX:-117.1566 y:32.7073 spatialReference:sr];
     AGSEnvelope* env = [AGSEnvelope envelopeWithXmin:-117.1566 ymin:32.70 xmax:-117.1560 ymax:32.75 spatialReference:sr];
     
     
 	 [self.mapView zoomToGeometry:env withPadding:0 animated:YES];
-//    NSLog(@"%@",petcoPark.envelope);
-//    
-//    AGSMutableEnvelope* newEnv = [petcoPark.envelope mutableCopy];
-//    [newEnv expandByFactor:10];
-//    NSLog(@"%@",newEnv);
-   // [self.mapView zoomToEnvelope:petcoPark.envelope animated:YES];
-   // [self.mapView zoomToGeometry:newEnv withPadding:0 animated:YES];
+
 	
 	// Setup the route task
     NSError* error = nil;
@@ -219,10 +211,9 @@
             for (AGSStopGraphic* reorderedStop in self.routeResult.stopGraphics) {
                 BOOL exists;
                 NSInteger sequence = [reorderedStop attributeAsIntForKey:@"Sequence" exists:&exists];
-            
-                NSLog(@"Seq %d",reorderedStop.sequence);
-                          // create a composite symbol using the sequence number
-                		reorderedStop.symbol = [self stopSymbolWithNumber:sequence];
+                
+                // create a composite symbol using the sequence number
+                reorderedStop.symbol = [self stopSymbolWithNumber:sequence];
             
                           // add the graphic
                 		[self.graphicsLayerStops addGraphic:reorderedStop];

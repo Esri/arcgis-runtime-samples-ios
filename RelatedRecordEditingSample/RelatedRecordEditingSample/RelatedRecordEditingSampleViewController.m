@@ -106,7 +106,7 @@
     //If iPad, use a modal presentation style
     if([[AGSDevice currentDevice] isIPad])
         self.popupVC.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentModalViewController:self.popupVC animated:YES];
+    [self presentViewController:self.popupVC animated:YES completion:nil];
 
 }
 
@@ -116,7 +116,7 @@
 
 - (void)popupsContainerDidFinishViewingPopups:(id) popupsContainer {
     //dismiss the popups view controller
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     self.popupVC = nil;
 }
 
@@ -139,7 +139,7 @@
     //instantiate the notes view to show the related notes
     NotesViewController *controller = [[NotesViewController alloc] initWithIncidentOID:incidentOID incidentLayer:self.incidentsLayer];    
     controller.delegate = self;    
-    [self.popupVC presentModalViewController:controller animated:YES];
+    [self.popupVC presentViewController:controller animated:YES completion:nil];
 }
 
 #pragma mark - NotesViewControllerDelegate
@@ -147,7 +147,8 @@
 - (void)didFinishWithNotes 
 {
     //dismiss the notes view.
-    [self.popupVC dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 

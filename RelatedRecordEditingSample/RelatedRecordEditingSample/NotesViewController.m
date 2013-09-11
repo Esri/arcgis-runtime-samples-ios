@@ -308,8 +308,8 @@
         //If iPad, use a modal presentation style
         if([[AGSDevice currentDevice] isIPad])
             self.notesPopupVC.modalPresentationStyle = UIModalPresentationFormSheet;
-        [self presentModalViewController:self.notesPopupVC animated:YES];
-        
+        [self presentViewController:self.notesPopupVC animated:YES completion:nil];
+
         //set the popup's editing mode
         [self.notesPopupVC startEditingCurrentPopup];
     }
@@ -342,7 +342,8 @@
 - (void)popupsContainer:(id) popupsContainer didCancelEditingGraphicForPopup:(AGSPopup *) popup {
     
     //dismiss the popups view controller
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
     self.notesPopupVC = nil;
 }
 
@@ -390,7 +391,8 @@
             [self.relatedFeaturesResultsArray addObject:self.notesPopupVC.currentPopup.graphic];
             
             //dismiss the popup view controller
-            [self dismissModalViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
+
             self.notesPopupVC = nil;  
         }
         
@@ -404,7 +406,8 @@
         else
         {            
             //dismiss the popup view controller
-            [self dismissModalViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
+
             self.notesPopupVC = nil;  
         }
     }else if([editResults.deleteResults count]>0){
@@ -469,7 +472,7 @@
     //If iPad, use a modal presentation style
     if([[AGSDevice currentDevice] isIPad])
         self.notesPopupVC.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentModalViewController:self.notesPopupVC animated:YES];
+    [self presentViewController:self.notesPopupVC animated:YES completion:nil];
     [self.notesPopupVC startEditingCurrentPopup];  
     
 }

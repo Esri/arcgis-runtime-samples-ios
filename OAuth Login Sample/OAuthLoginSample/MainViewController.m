@@ -45,8 +45,7 @@
     nvc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     self.oauthLoginVC.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelLogin)];
     
-    [self presentModalViewController:nvc animated:YES];
-    
+    [self presentViewController:nvc animated:YES completion:nil];
     
     __weak MainViewController *safeSelf = self;
     self.oauthLoginVC.completion = ^(AGSCredential *credential, NSError *error){
@@ -85,7 +84,7 @@
 - (void) cancelLogin{
     UIAlertView *av = [[UIAlertView alloc]initWithTitle:nil message:@"You must sign in to continue."  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [av show];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 @end

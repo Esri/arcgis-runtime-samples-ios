@@ -219,7 +219,7 @@ static float kButtonInset = 2.0;
             
             //add organization title
             UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(84, 8, 188, 64)];
-            [titleLabel setLineBreakMode:UILineBreakModeWordWrap];
+            [titleLabel setLineBreakMode:NSLineBreakByWordWrapping];
             [titleLabel setNumberOfLines:0];
             [titleLabel setFont:[UIFont boldSystemFontOfSize:kTitleFontSize]];
             titleLabel.tag = kTitleTag;
@@ -608,7 +608,7 @@ static float kButtonInset = 2.0;
     if([self.delegate respondsToSelector:@selector(portalExplorer:didSelectPortalItem:)])
     {
         [self.delegate portalExplorer:self didSelectPortalItem:portalItem];
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 

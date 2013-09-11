@@ -25,13 +25,6 @@
 @property (nonatomic, strong) NSDate* today;
 @property (nonatomic, strong) AGSCalloutTemplate* calloutTemplate;
 
-- (NSString *) detailForGraphic:(AGSGraphic*)graphic
-					screenPoint:(CGPoint)screen
-					   mapPoint:(AGSPoint*)map ;
-
-- (NSString *) titleForGraphic:(AGSGraphic *)graphic
-				   screenPoint:(CGPoint)screen
-					  mapPoint:(AGSPoint *)map ;
 
 - (IBAction) datePicked;
 

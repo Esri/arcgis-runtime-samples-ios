@@ -69,7 +69,6 @@
 	[self.mapView zoomToEnvelope:env animated:YES];
     
     //Set up the map view
-	self.mapView.calloutDelegate = self;
     self.mapView.callout.delegate = self;
 	
     //setup the incidents layer as a feature layer and add it to the map

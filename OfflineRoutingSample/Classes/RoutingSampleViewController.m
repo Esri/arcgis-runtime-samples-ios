@@ -324,8 +324,7 @@
             symbol = [self stopSymbolWithNumber:_numStops];
 			AGSStopGraphic *stopGraphic = [AGSStopGraphic graphicWithGeometry:geometry
 																	   symbol:symbol
-																   attributes:attributes
-														 infoTemplateDelegate:nil];
+																   attributes:attributes];
 			stopGraphic.sequence = _numStops;
 			//You can set additional properties on the stop here
 			//refer to the conceptual helf for Routing task

@@ -70,7 +70,6 @@
     //Set up the map view
 	self.mapView.layerDelegate = self;
 	self.mapView.touchDelegate = self;
-	self.mapView.calloutDelegate = self;
     self.mapView.callout.delegate = self;
     self.mapView.showMagnifierOnTapAndHold = YES;
 	

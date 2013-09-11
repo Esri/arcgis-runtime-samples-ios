@@ -68,7 +68,7 @@
 			
 			//Get information of Template to display as a legend item
 			LegendInfo* info = [[LegendInfo alloc] init];
-			info.image = [featLayer.renderer swatchForGraphic:template.prototype geometryType:featLayer.geometryType size:CGSizeMake(20, 20)];
+			info.image = [featLayer.renderer swatchForFeatureWithAttributes:template.prototypeAttributes geometryType:featLayer.geometryType size:CGSizeMake(20, 20)];
 			info.name = type.name;
 			[self.legendInfos addObject:info];
 		}
@@ -79,7 +79,7 @@
 
 			//Get information of Template to display as a legend item
 			LegendInfo* info = [[LegendInfo alloc] init];
-			info.image = [featLayer.renderer swatchForGraphic:template.prototype geometryType:featLayer.geometryType size:CGSizeMake(20, 20)];
+			info.image = [featLayer.renderer swatchForFeatureWithAttributes:template.prototypeAttributes geometryType:featLayer.geometryType size:CGSizeMake(20, 20)];
 			info.name = template.name;
 			[self.legendInfos addObject:info];
 		}		

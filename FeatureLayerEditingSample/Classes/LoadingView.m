@@ -108,7 +108,7 @@
 	loadingLabel.text = text;
 	loadingLabel.textColor = [UIColor whiteColor];
 	loadingLabel.backgroundColor = [UIColor clearColor];
-	loadingLabel.textAlignment = UITextAlignmentCenter;
+	loadingLabel.textAlignment = NSTextAlignmentCenter;
 	loadingLabel.font = [UIFont boldSystemFontOfSize:[UIFont labelFontSize]];
 	loadingLabel.autoresizingMask =
 		UIViewAutoresizingFlexibleLeftMargin |

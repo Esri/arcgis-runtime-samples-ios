@@ -49,11 +49,11 @@
     // Set up the cell...
     
     //text is the key at the given indexPath
-    NSString *keyAtIndexPath = [[self.results allKeys] objectAtIndex:indexPath.row];
+    NSString *keyAtIndexPath = [self.results allKeys][indexPath.row];
     cell.textLabel.text = keyAtIndexPath;
     
     //detail text is the value associated with the key above
-    id detailValue = [self.results objectForKey:keyAtIndexPath];
+    id detailValue = (self.results)[keyAtIndexPath];
     
     //figure out if the value is a NSDecimalNumber or NSString
     if ([detailValue isKindOfClass:[NSString class]])

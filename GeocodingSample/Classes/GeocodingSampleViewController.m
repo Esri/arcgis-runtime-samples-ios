@@ -16,10 +16,10 @@
 @implementation GeocodingSampleViewController
 
 //The map service
-static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest/services/ESRI_StreetMap_World_2D/MapServer";
+static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer";
 
 //The geocode service
-static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Places_World/GeocodeServer";
+static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer";
 
 @synthesize mapView = _mapView;
 @synthesize searchBar = _searchBar;
@@ -68,7 +68,7 @@ static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/se
     //NSArray *outFields = [NSArray arrayWithObject:@"*"];
     
     //for pre-10 ArcGIS Servers, you need to specify all the out fields:
-    NSArray *outFields = [NSArray arrayWithObjects:@"Loc_name",
+    NSArray *outFields = @[@"Loc_name",
                           @"Shape",
                           @"Score",
                           @"Name",
@@ -87,11 +87,10 @@ static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/se
                           @"North_Lat",
                           @"South_Lat",
                           @"West_Lon",
-                          @"East_Lon",
-                          nil];
+                          @"East_Lon"];
     
     //Create the address dictionary with the contents of the search bar
-    NSDictionary *addresses = [NSDictionary dictionaryWithObjectsAndKeys:self.searchBar.text, @"PlaceName", nil];
+    NSDictionary *addresses = @{@"SingleLine": self.searchBar.text};
 
     //now request the location from the locator for our address
     [self.locator locationsForAddress:addresses returnFields:outFields];
@@ -146,33 +145,36 @@ static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/se
         //loop through all candidates/results and add to graphics layer
 		for (int i=0; i<[candidates count]; i++)
 		{            
-			AGSAddressCandidate *addressCandidate = (AGSAddressCandidate *)[candidates objectAtIndex:i];
+			AGSAddressCandidate *addressCandidate = (AGSAddressCandidate *)candidates[i];
 
             //get the location from the candidate
             AGSPoint *pt = addressCandidate.location;
             
-            //accumulate the min/max
-            if (pt.x  < xmin)
-                xmin = pt.x;
-            
-            if (pt.x > xmax)
-                xmax = pt.x;
-            
-            if (pt.y < ymin)
-                ymin = pt.y;
-            
-            if (pt.y > ymax)
-                ymax = pt.y;
-
 			//create a marker symbol to use in our graphic
             AGSPictureMarkerSymbol *marker = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"BluePushpin.png"];
             marker.offset = CGPointMake(9,16);
             marker.leaderPoint = CGPointMake(-9, 11);
-                        
-
+            
+            // re-project to web marcator
+            
+            AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
+            AGSPoint *webMerkatorPoint = (AGSPoint*) [geometryEngine projectGeometry:pt toSpatialReference:self.mapView.spatialReference];
+            
+            //accumulate the min/max
+            if (webMerkatorPoint.x  < xmin)
+                xmin = webMerkatorPoint.x;
+            
+            if (webMerkatorPoint.x > xmax)
+                xmax = webMerkatorPoint.x;
+            
+            if (webMerkatorPoint.y < ymin)
+                ymin = webMerkatorPoint.y;
+            
+            if (webMerkatorPoint.y > ymax)
+                ymax = webMerkatorPoint.y;
 			
             //create the graphic
-			AGSGraphic *graphic = [[AGSGraphic alloc] initWithGeometry: pt
+			AGSGraphic *graphic = [[AGSGraphic alloc] initWithGeometry: webMerkatorPoint
 																symbol:marker 
 															attributes:[addressCandidate.attributes mutableCopy] ];
             
@@ -183,7 +185,7 @@ static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/se
             if ([candidates count] == 1)
             {
                 //we have one result, center at that point
-                [self.mapView centerAtPoint:pt animated:NO];
+                [self.mapView centerAtPoint:webMerkatorPoint animated:NO];
                
 				// set the width of the callout
 				self.mapView.callout.width = 250;

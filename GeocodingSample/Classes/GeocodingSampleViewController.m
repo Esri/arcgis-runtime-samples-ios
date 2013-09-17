@@ -27,6 +27,12 @@ static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/servic
 @synthesize locator = _locator;
 @synthesize calloutTemplate = _calloutTemplate;
 
+// in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];

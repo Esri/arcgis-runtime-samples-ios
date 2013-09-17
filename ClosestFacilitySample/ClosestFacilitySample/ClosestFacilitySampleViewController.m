@@ -16,7 +16,6 @@
 #define kFacilitiesLayerURL @"http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Louisville/LOJIC_PublicSafety_Louisville/MapServer/1"
 
 #define kCFTask @"http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Network/USA/NAServer/Closest%20Facility"
-//#define kCFTask @"http://logistics.arcgis.com/arcgis/rest/services/World/ClosestFacility"
 
 
 @implementation ClosestFacilitySampleViewController
@@ -32,9 +31,16 @@
 #pragma mark - View lifecycle
 
 
+// in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
-{ 	
+{
+    
 	//Add the basemap - the tiled layer 
 	NSURL *mapUrl = [NSURL URLWithString:kBaseMap];
 	AGSTiledMapServiceLayer *tiledLyr = [AGSTiledMapServiceLayer tiledMapServiceLayerWithURL:mapUrl];

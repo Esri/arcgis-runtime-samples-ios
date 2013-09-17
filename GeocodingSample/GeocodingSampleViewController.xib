@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <searchBar opaque="NO" multipleTouchEnabled="YES" contentMode="redraw" barStyle="blackTranslucent" text="Disneyland" prompt="Enter a place or address to Geocode" placeholder="Place" showsCancelButton="YES" id="12">
-                    <rect key="frame" x="0.0" y="17" width="320" height="75"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
@@ -26,7 +26,7 @@
                     </connections>
                 </searchBar>
                 <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="10" customClass="AGSMapView">
-                    <rect key="frame" x="0.0" y="90" width="320" height="390"/>
+                    <rect key="frame" x="0.0" y="75" width="320" height="405"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>

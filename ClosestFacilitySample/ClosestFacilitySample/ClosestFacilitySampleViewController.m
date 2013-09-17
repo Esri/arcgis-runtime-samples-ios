@@ -14,7 +14,9 @@
 
 #define kBaseMap @"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
 #define kFacilitiesLayerURL @"http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Louisville/LOJIC_PublicSafety_Louisville/MapServer/1"
+
 #define kCFTask @"http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Network/USA/NAServer/Closest%20Facility"
+//#define kCFTask @"http://logistics.arcgis.com/arcgis/rest/services/World/ClosestFacility"
 
 
 @implementation ClosestFacilitySampleViewController
@@ -56,7 +58,8 @@
     [self.mapView addMapLayer:self.graphicsLayer withName:@"ClosestFacility"];
 
     // set the callout delegate so we can display callouts
-    self.graphicsLayer.calloutDelegate = self;
+    // updated the callout to the map instead of the layer.
+    self.mapView.callout.delegate = self;
     
     
     //creating the facilities (fire stations) layer
@@ -65,7 +68,7 @@
     //specifying the symbol for the fire stations. 
     AGSSimpleRenderer* renderer = [AGSSimpleRenderer simpleRendererWithSymbol:[AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"FireStation.png"]];
     self.facilitiesLayer.renderer = renderer;    
-    self.facilitiesLayer.outFields = [NSArray arrayWithObject:@"*"]; 
+    self.facilitiesLayer.outFields = @[@"*"]; 
     
     //adding the fire stations feature layer to the map view. 
     [self.mapView addMapLayer:self.facilitiesLayer withName:@"Facilities"];
@@ -375,7 +378,7 @@
 		case AGSGeometryTypePoint:
             _numIncidents++;
             //ading an attribute for the incident graphic
-            [attributes setValue:[NSNumber numberWithInt:_numIncidents] forKey:@"incidentNumber"];
+            [attributes setValue:@(_numIncidents) forKey:@"incidentNumber"];
             
             //getting the symbol for the incident graphic
             symbol = [self incidentSymbol];
@@ -390,7 +393,7 @@
 		case AGSGeometryTypePolygon:
 			_numBarriers++;
             
-			[attributes setValue:[NSNumber numberWithInt:_numBarriers] forKey:@"barrierNumber"];
+			[attributes setValue:@(_numBarriers) forKey:@"barrierNumber"];
 			//getting the symbol for the incident graphic
 			symbol = [self barrierSymbol];
 			g = [AGSGraphic graphicWithGeometry:geometry 

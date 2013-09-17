@@ -17,9 +17,15 @@
 #define kViewTitle @"US State/City/River"
 #define kSearchBarPlaceholder @"Find State/City/River"
 #define kDynamicMapServiceURL @"http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StatesCitiesRivers_USA/MapServer"
-#define kTiledMapServiceURL @"http://services.arcgisonline.com/ArcGIS/rest/services/ESRI_StreetMap_World_2D/MapServer"
+#define kTiledMapServiceURL @"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
 
 @implementation FindTaskSampleViewController
+
+// in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -62,9 +68,14 @@
 
 - (void)mapViewDidLoad:(AGSMapView *)mapView {
 		
+    AGSSpatialReference *spatialReference = [AGSSpatialReference spatialReferenceWithWKID:4326];
 	//zoom to dynamic layer
-	AGSEnvelope *envelope = [AGSEnvelope envelopeWithXmin:-178.217598362366 ymin:18.9247817993164 xmax:-66.9692710360024 ymax:71.4062353532712 spatialReference:self.mapView.spatialReference];
-	[self.mapView zoomToEnvelope:envelope animated:YES];
+	AGSEnvelope *envelope = [AGSEnvelope envelopeWithXmin:-178.217598362366 ymin:18.9247817993164 xmax:-66.9692710360024 ymax:71.4062353532712 spatialReference:spatialReference];
+    
+    AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
+    AGSEnvelope * webMercatorEnvelope = (AGSEnvelope*) [geometryEngine projectGeometry:envelope toSpatialReference:self.mapView.spatialReference];
+    
+	[self.mapView zoomToEnvelope:webMercatorEnvelope animated:YES];
 }
 
 #pragma mark -

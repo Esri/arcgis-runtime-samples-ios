@@ -54,7 +54,7 @@ static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/servic
     //set the text and detail text based on 'Name' and 'Descr' fields in the results
     self.calloutTemplate.titleTemplate = @"${Name}";
     self.calloutTemplate.detailTemplate = @"${Descr}";
-    self.graphicsLayer.calloutDelegate = self.calloutTemplate;
+    self.mapView.callout.delegate =  self; //self.calloutTemplate;
 }
 
 - (void)startGeocoding
@@ -68,38 +68,14 @@ static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/servic
     self.locator = [AGSLocator locatorWithURL:[NSURL URLWithString:kGeoLocatorURL]];
     self.locator.delegate = self;
     
-    //we want all out fields
     //Note that the "*" for out fields is supported for geocode services of
     //ArcGIS Server 10 and above
     //NSArray *outFields = [NSArray arrayWithObject:@"*"];
-    
-    //for pre-10 ArcGIS Servers, you need to specify all the out fields:
-    NSArray *outFields = @[@"Loc_name",
-                          @"Shape",
-                          @"Score",
-                          @"Name",
-                          @"Rank",
-                          @"Match_addr",
-                          @"Descr",
-                          @"Latitude",
-                          @"Longitude",
-                          @"City",
-                          @"County",
-                          @"State",
-                          @"State_Abbr",
-                          @"Country",
-                          @"Cntry_Abbr",
-                          @"Type",
-                          @"North_Lat",
-                          @"South_Lat",
-                          @"West_Lon",
-                          @"East_Lon"];
-    
-    //Create the address dictionary with the contents of the search bar
-    NSDictionary *addresses = @{@"SingleLine": self.searchBar.text};
-
-    //now request the location from the locator for our address
-    [self.locator locationsForAddress:addresses returnFields:outFields];
+    AGSLocatorFindParameters *parameters = [[AGSLocatorFindParameters alloc] init];
+    parameters.text =self.searchBar.text;
+    parameters.outSpatialReference = self.mapView.spatialReference;
+    parameters.outFields = @[@"*"];
+    [self.locator findWithParameters:parameters];
 }
 
 #pragma mark -
@@ -123,10 +99,11 @@ static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/servic
 #pragma mark -
 #pragma mark AGSLocatorDelegate
 
-- (void)locator:(AGSLocator *)locator operation:(NSOperation *)op didFindLocationsForAddress:(NSArray *)candidates
+//- (void)locator:(AGSLocator *)locator operation:(NSOperation *)op didFindLocationsForAddress:(NSArray *)candidates
+- (void)locator:(AGSLocator*)locator operation:(NSOperation*)op didFind:(NSArray*)results
 {
     //check and see if we didn't get any results
-	if (candidates == nil || [candidates count] == 0)
+	if (results == nil || [results count] == 0)
 	{
         //show alert if we didn't get results
          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Results"
@@ -149,64 +126,57 @@ static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/servic
 		self.calloutTemplate = [[AGSCalloutTemplate alloc]init];
 
         //loop through all candidates/results and add to graphics layer
-		for (int i=0; i<[candidates count]; i++)
+		for (int i=0; i<[results count]; i++)
 		{            
-			AGSAddressCandidate *addressCandidate = (AGSAddressCandidate *)candidates[i];
-            if ( addressCandidate.score == 100 ) {
+			//AGSAddressCandidate *addressCandidate = (AGSAddressCandidate *)candidates[i];
+            AGSLocatorFindResult *addressCandidate = (AGSLocatorFindResult *)results[i];
+           // if ( addressCandidate.score == 100 ) {
 
             //get the location from the candidate
-            AGSPoint *pt = addressCandidate.location;
+            AGSPoint *pt = (AGSPoint*)addressCandidate.graphic.geometry;
             
 			//create a marker symbol to use in our graphic
             AGSPictureMarkerSymbol *marker = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"BluePushpin.png"];
             marker.offset = CGPointMake(9,16);
             marker.leaderPoint = CGPointMake(-9, 11);
             
-            // re-project to web marcator
-            
-            AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
-            AGSPoint *webMerkatorPoint = (AGSPoint*) [geometryEngine projectGeometry:pt toSpatialReference:self.mapView.spatialReference];
+            [addressCandidate.graphic setSymbol:marker];
             
             //accumulate the min/max
-            if (webMerkatorPoint.x  < xmin)
-                xmin = webMerkatorPoint.x;
+            if (pt.x  < xmin)
+                xmin = pt.x;
             
-            if (webMerkatorPoint.x > xmax)
-                xmax = webMerkatorPoint.x;
+            if (pt.x > xmax)
+                xmax = pt.x;
             
-            if (webMerkatorPoint.y < ymin)
-                ymin = webMerkatorPoint.y;
+            if (pt.y < ymin)
+                ymin = pt.y;
             
-            if (webMerkatorPoint.y > ymax)
-                ymax = webMerkatorPoint.y;
-			
-            //create the graphic
-			AGSGraphic *graphic = [[AGSGraphic alloc] initWithGeometry: webMerkatorPoint
-																symbol:marker 
-															attributes:[addressCandidate.attributes mutableCopy] ];
-            
+            if (pt.y > ymax)
+                ymax = pt.y;
+			 
             
             //add the graphic to the graphics layer
-			[self.graphicsLayer addGraphic:graphic];
+			[self.graphicsLayer addGraphic:addressCandidate.graphic];
 			            
-                if ([candidates count] == 1)
+                if ([results count] == 1)
                 {
                     //we have one result, center at that point
-                    [self.mapView centerAtPoint:webMerkatorPoint animated:NO];
+                    [self.mapView centerAtPoint:pt animated:NO];
                     
                     // set the width of the callout
                     self.mapView.callout.width = 250;
                     
                     //show the callout
-                    [self.mapView.callout showCalloutAtPoint:(AGSPoint*)graphic.geometry forFeature:graphic layer:graphic.layer animated:YES];
+                    [self.mapView.callout showCalloutAtPoint:(AGSPoint*)addressCandidate.graphic.geometry forFeature:addressCandidate.graphic layer:addressCandidate.graphic.layer animated:YES];
                 }
-            }
+           // }
 			
-			//release the graphic bb  
+			  
 		}
         
         //if we have more than one result, zoom to the extent of all results
-        int nCount = [candidates count];
+        int nCount = [results count];
         if (nCount > 1)
         {            
             AGSMutableEnvelope *extent = [AGSMutableEnvelope envelopeWithXmin:xmin ymin:ymin xmax:xmax ymax:ymax spatialReference:self.mapView.spatialReference];

@@ -17,7 +17,7 @@
 #define kViewTitle @"US State/City/River"
 #define kSearchBarPlaceholder @"Find State/City/River"
 #define kDynamicMapServiceURL @"http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StatesCitiesRivers_USA/MapServer"
-#define kTiledMapServiceURL @"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
+#define kTiledMapServiceURL @"http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer"
 
 @implementation FindTaskSampleViewController
 

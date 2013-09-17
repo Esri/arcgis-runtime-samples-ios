@@ -146,6 +146,7 @@ static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/servic
 		for (int i=0; i<[candidates count]; i++)
 		{            
 			AGSAddressCandidate *addressCandidate = (AGSAddressCandidate *)candidates[i];
+            if ( addressCandidate.score == 100 ) {
 
             //get the location from the candidate
             AGSPoint *pt = addressCandidate.location;
@@ -182,16 +183,17 @@ static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/servic
             //add the graphic to the graphics layer
 			[self.graphicsLayer addGraphic:graphic];
 			            
-            if ([candidates count] == 1)
-            {
-                //we have one result, center at that point
-                [self.mapView centerAtPoint:webMerkatorPoint animated:NO];
-               
-				// set the width of the callout
-				self.mapView.callout.width = 250;
- 
-                //show the callout
-                [self.mapView.callout showCalloutAtPoint:(AGSPoint*)graphic.geometry forFeature:graphic layer:graphic.layer animated:YES];
+                if ([candidates count] == 1)
+                {
+                    //we have one result, center at that point
+                    [self.mapView centerAtPoint:webMerkatorPoint animated:NO];
+                    
+                    // set the width of the callout
+                    self.mapView.callout.width = 250;
+                    
+                    //show the callout
+                    [self.mapView.callout showCalloutAtPoint:(AGSPoint*)graphic.geometry forFeature:graphic layer:graphic.layer animated:YES];
+                }
             }
 			
 			//release the graphic bb  

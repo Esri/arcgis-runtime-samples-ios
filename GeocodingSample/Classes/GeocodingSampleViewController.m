@@ -52,9 +52,11 @@ static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/servic
     [self.mapView addMapLayer:self.graphicsLayer withName:@"Graphics Layer"];
     
     //set the text and detail text based on 'Name' and 'Descr' fields in the results
-    self.calloutTemplate.titleTemplate = @"${Name}";
-    self.calloutTemplate.detailTemplate = @"${Descr}";
-    self.mapView.callout.delegate =  self; //self.calloutTemplate;
+    //create the callout template, used when the user displays the callout
+    self.calloutTemplate = [[AGSCalloutTemplate alloc]init];
+    self.calloutTemplate.titleTemplate = @"${Match_addr}";
+    self.calloutTemplate.detailTemplate = @"${Place_addr}";
+    self.graphicsLayer.calloutDelegate = self.calloutTemplate;
 }
 
 - (void)startGeocoding
@@ -122,9 +124,6 @@ static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/servic
         double xmax = -DBL_MAX;
         double ymax = -DBL_MAX;
 		
-		//create the callout template, used when the user displays the callout
-		self.calloutTemplate = [[AGSCalloutTemplate alloc]init];
-
         //loop through all candidates/results and add to graphics layer
 		for (int i=0; i<[results count]; i++)
 		{            

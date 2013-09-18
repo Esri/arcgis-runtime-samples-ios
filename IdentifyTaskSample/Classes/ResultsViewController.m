@@ -18,6 +18,12 @@
 @synthesize results = _results;
 @synthesize tableView = _tableView;
 
+// in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 - (IBAction)done:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];

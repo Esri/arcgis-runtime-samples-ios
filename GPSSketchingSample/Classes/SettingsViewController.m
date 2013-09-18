@@ -40,6 +40,12 @@ NSString * const kSetupInfoKeyDistanceFilter = @"SetupInfoKeyDistanceFilter";
 @synthesize accuracyControl = _accuracyControl;
 @synthesize setupInfo = _setupInfo;
 
+// in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 - (id)initWithNibName:(NSString *)nibName bundle:(NSBundle *)nibBundle
 {
     self = [super initWithNibName:nibName bundle:nil];

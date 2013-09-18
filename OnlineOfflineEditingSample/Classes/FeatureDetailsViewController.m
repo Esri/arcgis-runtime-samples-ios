@@ -41,6 +41,12 @@
 
 #pragma mark - helper methods
 
+// in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 -(BOOL)filepathIsJPG:(NSString*)filepath{
 	return [[[filepath pathExtension]lowercaseString] isEqualToString:@"jpg"];
 }

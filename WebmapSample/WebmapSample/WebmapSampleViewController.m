@@ -47,6 +47,11 @@ static NSString * const kPrivateWebmapId = @"9a5e8ffd9eb7438b894becd6c8a85751";
     self.webmapId = nil;
     [super viewDidUnload];
 }
+// in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 
 // Do any additional setup after loading the view
 - (void)viewDidLoad

@@ -68,6 +68,12 @@ CODialogSynth(highlightedIndex)
   return [[self alloc] initWithWindow:hostWindow];
 }
 
+// in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 - (id)initWithWindow:(UIWindow *)hostWindow {
     CGRect appFrame = [[UIScreen mainScreen] applicationFrame];
     CGRect insetFrame = CGRectIntegral(CGRectInset(appFrame, 20.0, 20.0));

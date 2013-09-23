@@ -118,12 +118,6 @@ static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/servic
 	}
 	else
 	{
-        //use these to calculate extent of results
-        double xmin = DBL_MAX;
-        double ymin = DBL_MAX;
-        double xmax = -DBL_MAX;
-        double ymax = -DBL_MAX;
-		
         //loop through all candidates/results and add to graphics layer
 		for (int i=0; i<[results count]; i++)
 		{            
@@ -141,19 +135,6 @@ static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/servic
             
             [addressCandidate.graphic setSymbol:marker];
             
-            //accumulate the min/max
-            if (pt.x  < xmin)
-                xmin = pt.x;
-            
-            if (pt.x > xmax)
-                xmax = pt.x;
-            
-            if (pt.y < ymin)
-                ymin = pt.y;
-            
-            if (pt.y > ymax)
-                ymax = pt.y;
-			 
             
             //add the graphic to the graphics layer
 			[self.graphicsLayer addGraphic:addressCandidate.graphic];
@@ -177,10 +158,8 @@ static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/servic
         //if we have more than one result, zoom to the extent of all results
         int nCount = [results count];
         if (nCount > 1)
-        {            
-            AGSMutableEnvelope *extent = [AGSMutableEnvelope envelopeWithXmin:xmin ymin:ymin xmax:xmax ymax:ymax spatialReference:self.mapView.spatialReference];
-            [extent expandByFactor:1.5];
-			[self.mapView zoomToEnvelope:extent animated:YES];
+        {  
+			[self.mapView zoomToEnvelope:self.graphicsLayer.fullEnvelope animated:YES];
         }
 	}
     

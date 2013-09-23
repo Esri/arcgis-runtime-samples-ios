@@ -68,7 +68,7 @@
 
 - (void)mapViewDidLoad:(AGSMapView *)mapView {
 		
-    AGSSpatialReference *spatialReference = [AGSSpatialReference spatialReferenceWithWKID:4326];
+    AGSSpatialReference *spatialReference = [AGSSpatialReference wgs84SpatialReference];
 	//zoom to dynamic layer
 	AGSEnvelope *envelope = [AGSEnvelope envelopeWithXmin:-178.217598362366 ymin:18.9247817993164 xmax:-66.9692710360024 ymax:71.4062353532712 spatialReference:spatialReference];
     

@@ -53,6 +53,12 @@ typedef enum {
 #pragma mark - View lifecycle
 
 
+// in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
@@ -232,14 +238,14 @@ typedef enum {
     
     //Graphic for demonstrating Bing's aerial view
     graphicPoint = [AGSPoint pointWithX:-9546541.78950715 y:4615710.12174574 spatialReference:self.mapView.spatialReference];    
-    graphicAttributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:EmbeddedMapView], @"type", nil];    
+    graphicAttributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:@(EmbeddedMapView), @"type", nil];    
     graphicSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"Building.png"];  
     graphic = [AGSGraphic graphicWithGeometry:graphicPoint symbol:graphicSymbol attributes:graphicAttributes ];    
     [self.graphicsLayer addGraphic:graphic];
     
     //Graphic for demonstrating embedded Web view (traffic camera feed)
     graphicPoint = [AGSPoint pointWithX:-9552294.6205 y:4618447.7069 spatialReference:self.mapView.spatialReference];    
-    graphicAttributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:EmbeddedWebView], @"type", @"http://www.trimarc.org/images/snapshots/CCTV060.jpg", @"url", nil];    
+    graphicAttributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:@(EmbeddedWebView), @"type", @"http://www.trimarc.org/images/snapshots/CCTV060.jpg", @"url", nil];    
     graphicSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"TrafficCamera.png"];  
     graphic = [AGSGraphic graphicWithGeometry:graphicPoint symbol:graphicSymbol attributes:graphicAttributes ];    
     [self.graphicsLayer addGraphic:graphic];
@@ -247,7 +253,7 @@ typedef enum {
     //Graphic for demonstrating custom callout with buttons
     graphicPoint = [AGSPoint pointWithX:-9550988.22392791 y:4614761.34217867 spatialReference:self.mapView.spatialReference];    
     graphicAttributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                         [NSNumber numberWithInt:CustomInfoView], @"type", 
+                         @(CustomInfoView), @"type", 
                          @"MacDonald's", @"name", 
                          @"2720 West Broadway, Louisville, KY 40211-1320", @"address", 
                          @"5027787110", @"phone", 
@@ -260,7 +266,7 @@ typedef enum {
     //Graphic for demonstrating simple callout
     graphicPoint = [AGSPoint pointWithX:-9547261.91529309 y:4615891.15535562 spatialReference:self.mapView.spatialReference];    
     graphicAttributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                         [NSNumber numberWithInt:SimpleView], @"type", 
+                         @(SimpleView), @"type", 
                          @"Frazier Museum", @"name", 
                          @"829 West Main Street, Louisville, KY 40202", @"address",
                          nil];    

@@ -16,16 +16,22 @@
 @implementation GeocodingSampleViewController
 
 //The map service
-static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest/services/ESRI_StreetMap_World_2D/MapServer";
+static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer";
 
 //The geocode service
-static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Places_World/GeocodeServer";
+static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer";
 
 @synthesize mapView = _mapView;
 @synthesize searchBar = _searchBar;
 @synthesize graphicsLayer = _graphicsLayer;
 @synthesize locator = _locator;
 @synthesize calloutTemplate = _calloutTemplate;
+
+// in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -46,8 +52,10 @@ static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/se
     [self.mapView addMapLayer:self.graphicsLayer withName:@"Graphics Layer"];
     
     //set the text and detail text based on 'Name' and 'Descr' fields in the results
-    self.calloutTemplate.titleTemplate = @"${Name}";
-    self.calloutTemplate.detailTemplate = @"${Descr}";
+    //create the callout template, used when the user displays the callout
+    self.calloutTemplate = [[AGSCalloutTemplate alloc]init];
+    self.calloutTemplate.titleTemplate = @"${Match_addr}";
+    self.calloutTemplate.detailTemplate = @"${Place_addr}";
     self.graphicsLayer.calloutDelegate = self.calloutTemplate;
 }
 
@@ -62,39 +70,14 @@ static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/se
     self.locator = [AGSLocator locatorWithURL:[NSURL URLWithString:kGeoLocatorURL]];
     self.locator.delegate = self;
     
-    //we want all out fields
     //Note that the "*" for out fields is supported for geocode services of
     //ArcGIS Server 10 and above
     //NSArray *outFields = [NSArray arrayWithObject:@"*"];
-    
-    //for pre-10 ArcGIS Servers, you need to specify all the out fields:
-    NSArray *outFields = [NSArray arrayWithObjects:@"Loc_name",
-                          @"Shape",
-                          @"Score",
-                          @"Name",
-                          @"Rank",
-                          @"Match_addr",
-                          @"Descr",
-                          @"Latitude",
-                          @"Longitude",
-                          @"City",
-                          @"County",
-                          @"State",
-                          @"State_Abbr",
-                          @"Country",
-                          @"Cntry_Abbr",
-                          @"Type",
-                          @"North_Lat",
-                          @"South_Lat",
-                          @"West_Lon",
-                          @"East_Lon",
-                          nil];
-    
-    //Create the address dictionary with the contents of the search bar
-    NSDictionary *addresses = [NSDictionary dictionaryWithObjectsAndKeys:self.searchBar.text, @"PlaceName", nil];
-
-    //now request the location from the locator for our address
-    [self.locator locationsForAddress:addresses returnFields:outFields];
+    AGSLocatorFindParameters *parameters = [[AGSLocatorFindParameters alloc] init];
+    parameters.text =self.searchBar.text;
+    parameters.outSpatialReference = self.mapView.spatialReference;
+    parameters.outFields = @[@"*"];
+    [self.locator findWithParameters:parameters];
 }
 
 #pragma mark -
@@ -118,10 +101,11 @@ static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/se
 #pragma mark -
 #pragma mark AGSLocatorDelegate
 
-- (void)locator:(AGSLocator *)locator operation:(NSOperation *)op didFindLocationsForAddress:(NSArray *)candidates
+//- (void)locator:(AGSLocator *)locator operation:(NSOperation *)op didFindLocationsForAddress:(NSArray *)candidates
+- (void)locator:(AGSLocator*)locator operation:(NSOperation*)op didFind:(NSArray*)results
 {
     //check and see if we didn't get any results
-	if (candidates == nil || [candidates count] == 0)
+	if (results == nil || [results count] == 0)
 	{
         //show alert if we didn't get results
          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Results"
@@ -134,74 +118,48 @@ static NSString *kGeoLocatorURL = @"http://tasks.arcgisonline.com/ArcGIS/rest/se
 	}
 	else
 	{
-        //use these to calculate extent of results
-        double xmin = DBL_MAX;
-        double ymin = DBL_MAX;
-        double xmax = -DBL_MAX;
-        double ymax = -DBL_MAX;
-		
-		//create the callout template, used when the user displays the callout
-		self.calloutTemplate = [[AGSCalloutTemplate alloc]init];
-
         //loop through all candidates/results and add to graphics layer
-		for (int i=0; i<[candidates count]; i++)
+		for (int i=0; i<[results count]; i++)
 		{            
-			AGSAddressCandidate *addressCandidate = (AGSAddressCandidate *)[candidates objectAtIndex:i];
+			//AGSAddressCandidate *addressCandidate = (AGSAddressCandidate *)candidates[i];
+            AGSLocatorFindResult *addressCandidate = (AGSLocatorFindResult *)results[i];
+           // if ( addressCandidate.score == 100 ) {
 
             //get the location from the candidate
-            AGSPoint *pt = addressCandidate.location;
+            AGSPoint *pt = (AGSPoint*)addressCandidate.graphic.geometry;
             
-            //accumulate the min/max
-            if (pt.x  < xmin)
-                xmin = pt.x;
-            
-            if (pt.x > xmax)
-                xmax = pt.x;
-            
-            if (pt.y < ymin)
-                ymin = pt.y;
-            
-            if (pt.y > ymax)
-                ymax = pt.y;
-
 			//create a marker symbol to use in our graphic
             AGSPictureMarkerSymbol *marker = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"BluePushpin.png"];
             marker.offset = CGPointMake(9,16);
             marker.leaderPoint = CGPointMake(-9, 11);
-                        
-
-			
-            //create the graphic
-			AGSGraphic *graphic = [[AGSGraphic alloc] initWithGeometry: pt
-																symbol:marker 
-															attributes:[addressCandidate.attributes mutableCopy] ];
+            
+            [addressCandidate.graphic setSymbol:marker];
             
             
             //add the graphic to the graphics layer
-			[self.graphicsLayer addGraphic:graphic];
+			[self.graphicsLayer addGraphic:addressCandidate.graphic];
 			            
-            if ([candidates count] == 1)
-            {
-                //we have one result, center at that point
-                [self.mapView centerAtPoint:pt animated:NO];
-               
-				// set the width of the callout
-				self.mapView.callout.width = 250;
- 
-                //show the callout
-                [self.mapView.callout showCalloutAtPoint:(AGSPoint*)graphic.geometry forFeature:graphic layer:graphic.layer animated:YES];
-            }
+                if ([results count] == 1)
+                {
+                    //we have one result, center at that point
+                    [self.mapView centerAtPoint:pt animated:NO];
+                    
+                    // set the width of the callout
+                    self.mapView.callout.width = 250;
+                    
+                    //show the callout
+                    [self.mapView.callout showCalloutAtPoint:(AGSPoint*)addressCandidate.graphic.geometry forFeature:addressCandidate.graphic layer:addressCandidate.graphic.layer animated:YES];
+                }
+           // }
 			
-			//release the graphic bb  
+			  
 		}
         
         //if we have more than one result, zoom to the extent of all results
-        int nCount = [candidates count];
+        int nCount = [results count];
         if (nCount > 1)
-        {            
-            AGSMutableEnvelope *extent = [AGSMutableEnvelope envelopeWithXmin:xmin ymin:ymin xmax:xmax ymax:ymax spatialReference:self.mapView.spatialReference];
-            [extent expandByFactor:1.5];
-			[self.mapView zoomToEnvelope:extent animated:YES];
+        {  
+			[self.mapView zoomToEnvelope:self.graphicsLayer.fullEnvelope animated:YES];
         }
 	}
     

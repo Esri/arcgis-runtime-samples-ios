@@ -22,6 +22,11 @@
 @synthesize cityGraphicsLayer = _cityGraphicsLayer, cityQueryTask = _cityQueryTask;
 @synthesize countyInfoTemplate = _countyInfoTemplate;
 
+// in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -32,7 +37,7 @@
     
 	//create an instance of a tiled map service layer
 	//Add it to the map view
-    NSURL *serviceUrl = [NSURL URLWithString:@"http://services.arcgisonline.com/ArcGIS/rest/services/ESRI_StreetMap_World_2D/MapServer"];
+    NSURL *serviceUrl = [NSURL URLWithString:@"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"];
     AGSTiledMapServiceLayer *tiledMapServiceLayer = [AGSTiledMapServiceLayer tiledMapServiceLayerWithURL:serviceUrl];
     [self.mapView addMapLayer:tiledMapServiceLayer withName:@"World Street Map"];
     

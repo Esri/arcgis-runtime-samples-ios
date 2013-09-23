@@ -29,6 +29,12 @@
 #pragma mark - Handlers for Navigation Bar buttons
 
 
+// in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 -(void)presentFeatureTemplatePicker{
     //Only for iPad, set presentation style to Form sheet 
     //We don't want it to cover the entire screen

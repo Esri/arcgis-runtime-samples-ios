@@ -25,6 +25,13 @@
 @synthesize pushpins = _pushpins;
 @synthesize gst = _gst;
 
+
+// in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 -(IBAction) clearGraphicsBtnClicked:(id)sender {
 	
 	// remove previously buffered geometries

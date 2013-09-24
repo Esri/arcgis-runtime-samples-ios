@@ -11,6 +11,7 @@
 
 @interface MainViewController ()
 @property (nonatomic,strong) AGSOAuthLoginViewController* oauthLoginVC;
+@property (nonatomic,strong) NSError* error;
 
 @end
 
@@ -45,7 +46,8 @@
 }
 
 - (IBAction)signIn:(id)sender {
-    self.oauthLoginVC = [[AGSOAuthLoginViewController alloc] initWithPortalURL:[NSURL URLWithString:@"https://www.arcgis.com"] clientID:@"pqN3y96tSb1j8ZAY" ];
+    NSString* portalURL = @"https://www.arcgis.com";
+    self.oauthLoginVC = [[AGSOAuthLoginViewController alloc] initWithPortalURL:[NSURL URLWithString:portalURL] clientID:@"pqN3y96tSb1j8ZAY" ];
     
     UINavigationController* nvc = [[UINavigationController alloc]initWithRootViewController:self.oauthLoginVC];
     nvc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
@@ -59,28 +61,28 @@
             
             if(error.code == NSUserCancelledError){
                 [safeSelf cancelLogin];
-            }else{
+            }else if (error.code == NSURLErrorServerCertificateUntrusted){
+                //keep a reference to the error so that the uialertview deleate can accesss it
+                safeSelf.error = error;
+                UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"Error" message:[[error localizedDescription] stringByAppendingString:[error localizedRecoverySuggestion]] delegate:safeSelf cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
+                [av show];
+            }
+            else{
                 UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [av show];
             }
         }else{
             
             //update the portal explorer with the credential provided by the user.
-            AGSPortal* portal = [[AGSPortal alloc]initWithURL:[NSURL URLWithString: @"https://www.arcgis.com"] credential:credential];
+            AGSPortal* portal = [[AGSPortal alloc]initWithURL:[NSURL URLWithString: portalURL] credential:credential];
             
-           
+            
             
             [safeSelf dismissViewControllerAnimated:NO completion:^(){
-//                UserContentViewController* uvc = [[UserContentViewController alloc]initWithPortal:portal];
-//                uvc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-//                [safeSelf presentModalViewController:uvc animated:YES];
-                
                 UserContentViewController* uvc = [[UserContentViewController alloc]initWithPortal:portal];
-                
                 [safeSelf.navigationController setViewControllers:@[uvc] animated:YES];
-//                [safeSelf.navigationController pushViewController:uvc animated:YES];
             }];
-
+            
             
         }
         
@@ -88,9 +90,29 @@
 }
 
 - (void) cancelLogin{
-    UIAlertView *av = [[UIAlertView alloc]initWithTitle:nil message:@"You must sign in to continue."  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [av show];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        UIAlertView *av = [[UIAlertView alloc]initWithTitle:nil message:@"You must sign in to continue."  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [av show];
+    }];
     
 }
+
+#pragma mark - UIAlertViewDelegate
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex==0){
+        [self cancelLogin];
+    }else{
+        NSURL* url = [self.error userInfo][NSURLErrorFailingURLErrorKey];
+        //add to trusted hosts
+        [[NSURLConnection ags_trustedHosts]addObject:[url host]];
+        //make a test connection to force UIWebView to accept the host
+        AGSJSONRequestOperation* rop = [[AGSJSONRequestOperation alloc]initWithURL:url];
+        [[AGSRequestOperation sharedOperationQueue] addOperation:rop];
+        [self.oauthLoginVC reload];
+    }
+    
+}
+
 @end

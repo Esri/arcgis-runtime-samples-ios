@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController <UIAlertViewDelegate>
 - (IBAction)signIn:(id)sender;
 
 @end

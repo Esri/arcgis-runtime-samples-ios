@@ -1,0 +1,54 @@
+
+LocFileUseUTF8 = True
+Category = Address
+Description = US Dual Range Addresses
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  Properties Required by ArcGIS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+CLSID = {DA70B7E3-10B2-42E3-BFF7-6C81355862BC}
+UICLSID = {AE5A3A0E-F756-11D2-9F4F-00C04F8ED1C4}
+
+Interpolate.SideValue.Left = L
+Interpolate.SideValue.Right = R
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  Esri Geocoder Misc Optional Properties
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+IntersectionConnectors = & @ | and
+MinimumMatchScore = 85
+MinimumCandidateScore = 10
+EndOffset = 3
+SideOffset = 20
+SideOffsetUnits = Feet
+SpellingSensitivity = 80
+MatchIfScoresTie = true
+WriteXYCoordFields = false
+WriteStandardizedAddressField = false
+WriteReferenceIDField = true
+WritePercentAlongField = false
+
+BatchPresortInputs = State
+BatchPresortInputs = ZIP
+BatchPresortInputs = City
+
+EndOffsetUnits = Percent
+LocatorWorkspaceString = ProgID = esriDataSourcesFile.ShapefileWorkspaceFactory; Path = C:\runtime_data\sdk_data\SanFranciscoLocator\v101\
+MaxCandidates = 200
+MaxPerfectCandidates = 200
+RebuildStartTime = 129520012815250000
+RebuildStartTimeAscii = 10:08:01
+RuntimeMemoryLimit = 128000000
+SafeLocatorName = SanFranciscoLocator
+SearchTimeout = 1
+ShowElapsedTime = false
+StorageSegmentSizeKB = 128
+StoreStandardizedRefData = true
+UseMultithreading = True
+WriteAdditionalOutputFields = true
+reportScorePerComponent = false
+supportsEmptyHouseNumber = false
+supportsIntersections = true
+supportsWeightedHouseNumber = true

@@ -52,22 +52,15 @@
     self.mapView.showMagnifierOnTapAndHold = YES;
     self.mapView.allowMagnifierToPanMap = NO;
     self.mapView.layerDelegate = self;
-	// Load a tiled map service
-	NSURL *mapUrl = [NSURL URLWithString:kTiledMapServiceUrl];
-	AGSTiledMapServiceLayer *tiledLyr = [AGSTiledMapServiceLayer tiledMapServiceLayerWithURL:mapUrl];
-    [self.mapView addMapLayer:tiledLyr withName:@"Tiled Layer"];
-	
-	// zoom to some location (this is San Francisco)
-	AGSSpatialReference *sr = [AGSSpatialReference wgs84SpatialReference];
-    AGSEnvelope* env = [AGSEnvelope envelopeWithXmin:-117.1566 ymin:32.70 xmax:-117.1560 ymax:32.75 spatialReference:sr];
-    
-    
-	 [self.mapView zoomToGeometry:env withPadding:0 animated:YES];
 
+    
+    
+    // Load a tiled map service
+    [self.mapView addMapLayer:[AGSLocalTiledLayer localTiledLayerWithName:@"SanFrancisco.tpk"] ];
 	
 	// Setup the route task
     NSError* error = nil;
-    self.routeTask = [AGSRouteTask routeTaskWithDatabaseName:@"RuntimeSanDiego" network:@"Streets_ND" error:&error];
+    self.routeTask = [AGSRouteTask routeTaskWithDatabaseName:@"RuntimeSanFrancisco" network:@"Streets_ND" error:&error];
     // assign delegate to this view controller
 	self.routeTask.delegate = self;
 	
@@ -99,14 +92,13 @@
 	
 	// initialize stop counter
 	_numStops = 0;
-	
-	
+
+    
 	// update our banner
 	[self updateDirectionsLabel:@"Tap & hold on the map to add stops"];
 	self.directionsBannerView.hidden = NO;
     
-    AGSPoint* p = (AGSPoint*)[[AGSGeometryEngine defaultGeometryEngine] projectGeometry:[AGSPoint pointFromDecimalDegreesString:@"32.7073 , -117.1566" withSpatialReference:sr] toSpatialReference:[AGSSpatialReference webMercatorSpatialReference] ];
-    [self addStop:p];
+
     self.mapView.touchDelegate = self;
     _isExecuting = NO;
 }
@@ -132,6 +124,10 @@
 
 #pragma mark - AGSMapViewLayerDelegate 
 -(void)mapViewDidLoad:(AGSMapView *)mapView{
+    
+	
+    AGSPoint* museumOfMA = [AGSPoint pointFromDecimalDegreesString:@"37.785 , -122.400" withSpatialReference:[AGSSpatialReference wgs84SpatialReference]];
+    [self addStop:(AGSPoint*)[[AGSGeometryEngine defaultGeometryEngine]projectGeometry:museumOfMA toSpatialReference:self.mapView.spatialReference]];
     
     if(self.routeTaskParams){
         self.routeTaskParams.outSpatialReference = self.mapView.spatialReference;

@@ -30,8 +30,6 @@
 
 @implementation GeocodingSampleViewController
 
-//The map service
-static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest/services/ESRI_StreetMap_World_2D/MapServer";
 
 
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
@@ -47,12 +45,13 @@ static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest
     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
 
     self.recentSearches = [NSMutableArray arrayWithObjects:
-                           @"100 Park Blvd, San Diego, CA 92101",
-                           @"500 Sea World Dr, San Diego, CA 92109",
-                           @"3225 N Harbor Dr, San Diego, CA 92101",
-                           @"1500 Orange Ave, Coronado, CA 92118",
-                           @"9449 Friars Rd, San Diego, CA 92108",
-                           @"2920 Zoo Dr, San Diego, CA 92101",
+                           @"1455 Market St, San Francisco, CA 94103",
+                           @"2011 Mission St, San Francisco  CA  94110",
+                           @"820 Bryant St, San Francisco  CA  94103",
+                           @"1 Zoo Rd, San Francisco, 944132",
+                           @"1201 Mason Street, San Francisco, CA 94108",
+                           @"151 Third Street, San Francisco, CA 94103",
+                           @"1050 Lombard Street, San Francisco, CA 94109",
                            nil ];
     
     //set the delegate on the mapView so we get notifications for user interaction with the callout
@@ -61,13 +60,9 @@ static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest
     self.mapView.touchDelegate = self;
     self.mapView.showMagnifierOnTapAndHold = YES;
     
-	//create an instance of a tiled map service layer
+	//create an instance of a local tiled layer
 	//Add it to the map view
-    NSURL *serviceUrl = [NSURL URLWithString:kMapServiceURL];
-    
-
-    AGSTiledMapServiceLayer *tiledMapServiceLayer = [AGSTiledMapServiceLayer tiledMapServiceLayerWithURL:serviceUrl];
-    [self.mapView addMapLayer:tiledMapServiceLayer withName:@"World Street Map"];
+    [self.mapView addMapLayer:[AGSLocalTiledLayer localTiledLayerWithName:@"SanFrancisco"]];
     
     //create the graphics layer that the geocoding result
     //will be stored in and add it to the map
@@ -77,7 +72,7 @@ static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest
     self.calloutTemplate = [[AGSCalloutTemplate alloc]init];
     //set the text and detail text based on 'Name' and 'Descr' fields in the attributes
     self.calloutTemplate.titleTemplate = @"${Match_addr}";
-    self.calloutTemplate.detailTemplate = @"${Y}, ${X}";
+    self.calloutTemplate.detailTemplate = @"${City}, ${ZIP}";
     self.graphicsLayer.calloutDelegate = self.calloutTemplate;
     
     //create a marker symbol to use in our graphic
@@ -93,16 +88,14 @@ static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest
     //and set the delegate to self, so we get AGSLocatorDelegate notifications
     NSError* error;
     //self.locator = [AGSLocator locatorWithName:@"RedlandsLocator" error:&error];
-    self.locator = [AGSLocator locatorWithName:@"SanDiegoLocator" error:&error];
+    self.locator = [AGSLocator locatorWithName:@"SanFranciscoLocator" error:&error];
     self.locator.delegate = self;
     
-    AGSEnvelope* env = [AGSEnvelope envelopeWithXmin:-117.1566 ymin:32.70 xmax:-117.1560 ymax:32.75 spatialReference:[AGSSpatialReference wgs84SpatialReference]];
     
     UIImage* img = [UIImage imageNamed:@"ArcGIS.bundle/Magnifier.png"];
     _magnifierOffset = CGPointMake(0, -img.size.height/2);
     
-    
-    [self.mapView zoomToGeometry:env withPadding:0 animated:YES];
+
     
 }
 

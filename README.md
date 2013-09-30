@@ -1,10 +1,14 @@
 arcgis-runtime-samples-ios
 ==========================
+This repository contains sample code demonstrating the capabilities of [ArcGIS Runtime SDK for iOS](http://developers.arcgis.com/en/ios/). 
 
-### General Help
+### Instructions
 [New to Github? Get started here.](http://htmlpreview.github.com/?https://github.com/Esri/esri.github.com/blob/master/help/esri-getting-to-know-github.html)
 
-This repository contains sample code demonstrating the capabilities of [ArcGIS Runtime SDK for iOS](http://developers.arcgis.com/en/ios/). 
+## Requirements
+* XCode 4.5 (or higher)
+* iOS 5 SDK (or higher)
+* ArcGIS Runtime SDK for iOS 10.1.1
 
 ## Resources
 
@@ -35,7 +39,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-A copy of the license is available in the repository's [license.txt]( https://raw.github.com/Esri/quickstart-map-js/master/license.txt) file.
+A copy of the license is available in the repository's [license.txt]( https://raw.github.com/Esri/arcgis-runtime-samples-ios/master/license.txt) file.
 
 [](Esri Tags: ArcGIS Runtime iOS SDK Samples)
 [](Esri Language: Objective-C)​

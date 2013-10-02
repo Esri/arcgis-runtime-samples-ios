@@ -88,6 +88,8 @@
     AGSEnvelope *testEnvelope = [self.mapView toMapEnvelope:userResizableView.frame];
     NSLog(@"Box Test %@ Extent %@", userResizableView, testEnvelope);
     self.lastResizableView = userResizableView;
+    
+    self.results.text = [[NSString alloc] initWithFormat:@"%@", testEnvelope ];
 }
 
 

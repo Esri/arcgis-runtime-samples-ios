@@ -18,6 +18,7 @@
 		885197831625F96800EEF3F9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 885197821625F96800EEF3F9 /* MobileCoreServices.framework */; };
 		885197851625F96F00EEF3F9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 885197841625F96F00EEF3F9 /* libz.dylib */; };
 		885197871625F97500EEF3F9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 885197861625F97500EEF3F9 /* Security.framework */; };
+		88C06D5217FDDF3C0074BB5A /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C06D5117FDDF3C0074BB5A /* Timer.m */; };
 		88F72A0417ECC3D900C7BE67 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F72A0317ECC3D900C7BE67 /* libc++.dylib */; };
 		88F72A0617ECC3E400C7BE67 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F72A0517ECC3E400C7BE67 /* OpenGLES.framework */; };
 		88F72A1617F0B61B00C7BE67 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F72A0917F0B61B00C7BE67 /* AppDelegate.m */; };
@@ -49,6 +50,8 @@
 		885197821625F96800EEF3F9 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		885197841625F96F00EEF3F9 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		885197861625F97500EEF3F9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		88C06D5017FDDF3C0074BB5A /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		88C06D5117FDDF3C0074BB5A /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
 		88F72A0317ECC3D900C7BE67 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		88F72A0517ECC3E400C7BE67 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		88F72A0817F0B61B00C7BE67 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -134,9 +137,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		88C06D4F17FDDF3C0074BB5A /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				88C06D5017FDDF3C0074BB5A /* Timer.h */,
+				88C06D5117FDDF3C0074BB5A /* Timer.m */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
 		88F72A0717F0B61B00C7BE67 /* TilePackageSample */ = {
 			isa = PBXGroup;
 			children = (
+				88C06D4F17FDDF3C0074BB5A /* Timer */,
 				88F72A3817F0E63700C7BE67 /* Resources */,
 				88F72A3417F0DCA700C7BE67 /* Extent */,
 				88F72A1F17F0B62E00C7BE67 /* Supporting Files */,
@@ -253,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88C06D5217FDDF3C0074BB5A /* Timer.m in Sources */,
 				88F72A1E17F0B61B00C7BE67 /* ViewController.m in Sources */,
 				88F72A1C17F0B61B00C7BE67 /* main.m in Sources */,
 				88F72A3717F0DCA700C7BE67 /* SPUserResizableView.m in Sources */,

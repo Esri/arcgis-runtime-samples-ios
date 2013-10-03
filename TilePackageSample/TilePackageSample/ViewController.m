@@ -35,6 +35,9 @@
 
 @property (nonatomic) double lastLod;
 @property (nonatomic,strong) id operationToCancel;
+
+@property (strong,nonatomic) Timer *helperTimer;
+@property (nonatomic,strong) IBOutlet UILabel *timerLabel;
 @end
 
 @implementation ViewController
@@ -89,7 +92,7 @@
     NSLog(@"Box Test %@ Extent %@", userResizableView, testEnvelope);
     self.lastResizableView = userResizableView;
     
-    self.results.text = [[NSString alloc] initWithFormat:@"%@", testEnvelope ];
+    self.results.text = [[NSString alloc] initWithFormat:@"XMin:%f XMax:%f YMin:%f YMax:%f", testEnvelope.xmin, testEnvelope.xmax, testEnvelope.ymin, testEnvelope.ymax ];
 }
 
 
@@ -133,8 +136,8 @@
     NSLog(@"Box Test %@ Extent %@", self.lastResizableView, extent);
     
     AGSGenerateTileCacheParams *params = [[AGSGenerateTileCacheParams alloc] initWithLevelsOfDetail:arrayLods areaOfInterest:extent];
-    params.recompressionFactor = self.progressBar.progress;
-    NSLog(@"recompressionFactor %f",params.recompressionFactor);
+    params.recompressionQuality = self.progressBar.progress;
+    NSLog(@"recompressionFactor %f",params.recompressionQuality);
     
     [self showOverlay];
     self.results.text = @"Processing ...";
@@ -190,14 +193,19 @@
     // Get the map coordinate extent from view control
     AGSEnvelope *extent = [self.mapView toMapEnvelope:self.lastResizableView.frame];
     
+    //Start Timer
+    self.helperTimer = [[Timer alloc] init];
+    [self.helperTimer start];
+    
     AGSGenerateTileCacheParams *params = [[AGSGenerateTileCacheParams alloc] initWithLevelsOfDetail:arrayLods areaOfInterest:extent];
-    params.recompressionFactor = self.progressBar.progress;
+    params.recompressionQuality = self.progressBar.progress;
     
     [self showOverlay];
     
     self.operationToCancel = [self.tileCacheTask generateTileCacheAndDownloadWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSAsyncServerJobStatus status, NSDictionary *userInfo) {
         
         NSArray *allMessages =  [userInfo objectForKey:@"messages"];
+        self.timerLabel.text = self.helperTimer.result;
         
         if ( allMessages.count > 0) {
             NSString *gpDescription = [[allMessages objectAtIndex:allMessages.count-1 ] description];
@@ -229,14 +237,19 @@
             
             self.results.text = [error description];
             [self hideOverlay];
+            [self.helperTimer stop];
         }
         else{
             [self hideOverlay];
             
-            self.results.text = @"Done!";
+            self.results.text = [NSString stringWithFormat:@"Time taken to Create & Fetch - %@",[self.helperTimer stop]];
+            
             [self.mapView reset];
             [self.mapView addMapLayer:localTiledLayer withName:@"offline"];
             [self.mapView zoomToEnvelope:localTiledLayer.fullEnvelope animated:NO];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cache completed" message:self.results.text delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
             
         }
     }];

@@ -10,6 +10,7 @@
 #import <ArcGIS/ArcGIS.h>
 
 #import "SPUserResizableView.h"
+#import "Timer.h"
 
 #define ExportTilesMapService @"http://63.241.159.63:6080/arcgis/rest/services/World_Street_Map/MapServer"
 //#define ExportTilesMapService @"http://pathik1:6080/arcgis/rest/services/usa/MapServer"

@@ -169,6 +169,7 @@
                         <outlet property="percentageValue" destination="daW-Me-cfR" id="RHi-k0-sUT"/>
                         <outlet property="processButton" destination="qcA-lu-Xvm" id="CuW-eW-ed0"/>
                         <outlet property="progressBar" destination="hqd-Fp-8U2" id="gKQ-nG-s2w"/>
+                        <outlet property="recompressionQualitySlider" destination="Q2a-jT-3ZG" id="pEn-H7-6Ca"/>
                         <outlet property="results" destination="c32-ob-Bn1" id="DAM-VK-Cia"/>
                         <outlet property="statusLabel" destination="u0k-L6-riB" id="hiN-z3-DXE"/>
                         <outlet property="timerLabel" destination="CWr-px-PDF" id="OAS-Qt-VjR"/>

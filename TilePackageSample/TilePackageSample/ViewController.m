@@ -38,6 +38,7 @@
 
 @property (strong,nonatomic) Timer *helperTimer;
 @property (nonatomic,strong) IBOutlet UILabel *timerLabel;
+@property (nonatomic,strong) IBOutlet UISlider *recompressionQualitySlider;
 @end
 
 @implementation ViewController
@@ -198,9 +199,12 @@
     [self.helperTimer start];
     
     AGSGenerateTileCacheParams *params = [[AGSGenerateTileCacheParams alloc] initWithLevelsOfDetail:arrayLods areaOfInterest:extent];
-    params.recompressionQuality = self.progressBar.progress;
+    params.recompressionQuality = self.recompressionQualitySlider.value;
+    NSLog(@"recompressionQuality is %f", params.recompressionQuality);
     
     [self showOverlay];
+    self.results.text = @"";
+    NSMutableString *timerResults = [[NSMutableString alloc] init];
     
     self.operationToCancel = [self.tileCacheTask generateTileCacheAndDownloadWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSAsyncServerJobStatus status, NSDictionary *userInfo) {
         
@@ -229,6 +233,13 @@
             }
         }
         
+        if ( status == AGSAsyncServerJobStatusDone ){
+            [timerResults appendFormat:@"Fetched %@", [self.helperTimer stop]];
+            self.results.text = timerResults;
+            self.helperTimer = [[Timer alloc] init];
+            [self.helperTimer start];
+        }
+        
         
         NSLog(@"tpk status: %d - %@", status, userInfo);
     } completion:^(AGSLocalTiledLayer *localTiledLayer, NSError *error) {
@@ -242,13 +253,14 @@
         else{
             [self hideOverlay];
             
-            self.results.text = [NSString stringWithFormat:@"Time taken to Create & Fetch - %@",[self.helperTimer stop]];
+            [timerResults appendFormat:@" Downloaded %@", [self.helperTimer stop]];
+            self.results.text = timerResults;
             
             [self.mapView reset];
             [self.mapView addMapLayer:localTiledLayer withName:@"offline"];
             [self.mapView zoomToEnvelope:localTiledLayer.fullEnvelope animated:NO];
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cache completed" message:self.results.text delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cache completed" message:timerResults delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
             
         }

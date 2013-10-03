@@ -44,7 +44,7 @@
 		self.result = [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
 		}
 	
-	NSLog(@"time interval -> %@",self.result);
+	//NSLog(@"time interval -> %@",self.result);
 }
 
 -(NSString *)stop

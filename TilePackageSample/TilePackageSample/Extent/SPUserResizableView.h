@@ -6,6 +6,8 @@
 //
 //  SPUserResizableView is a user-resizable, user-repositionable
 //  UIView subclass.
+// More information about this control created by Stephe Poletto here
+// https://github.com/spoletto/SPUserResizableView
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>

@@ -4,6 +4,8 @@
 //
 //  Created by Stephen Poletto on 12/10/11.
 //
+// More information about this control created by Stephe Poletto here
+// https://github.com/spoletto/SPUserResizableView
 
 #import "SPUserResizableView.h"
 

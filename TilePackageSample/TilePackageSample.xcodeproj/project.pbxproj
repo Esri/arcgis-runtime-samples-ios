@@ -19,6 +19,7 @@
 		885197851625F96F00EEF3F9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 885197841625F96F00EEF3F9 /* libz.dylib */; };
 		885197871625F97500EEF3F9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 885197861625F97500EEF3F9 /* Security.framework */; };
 		88C06D5217FDDF3C0074BB5A /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C06D5117FDDF3C0074BB5A /* Timer.m */; };
+		88C06D5817FF3EB00074BB5A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C06D5717FF3EB00074BB5A /* Default-568h@2x.png */; };
 		88F72A0417ECC3D900C7BE67 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F72A0317ECC3D900C7BE67 /* libc++.dylib */; };
 		88F72A0617ECC3E400C7BE67 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F72A0517ECC3E400C7BE67 /* OpenGLES.framework */; };
 		88F72A1617F0B61B00C7BE67 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F72A0917F0B61B00C7BE67 /* AppDelegate.m */; };
@@ -49,6 +50,7 @@
 		885197861625F97500EEF3F9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		88C06D5017FDDF3C0074BB5A /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		88C06D5117FDDF3C0074BB5A /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
+		88C06D5717FF3EB00074BB5A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		88F72A0317ECC3D900C7BE67 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		88F72A0517ECC3E400C7BE67 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		88F72A0817F0B61B00C7BE67 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		885197461625F8E400EEF3F9 = {
 			isa = PBXGroup;
 			children = (
+				88C06D5717FF3EB00074BB5A /* Default-568h@2x.png */,
 				885197861625F97500EEF3F9 /* Security.framework */,
 				885197841625F96F00EEF3F9 /* libz.dylib */,
 				885197821625F96800EEF3F9 /* MobileCoreServices.framework */,
@@ -243,6 +246,7 @@
 				88F72A2117F0B68B00C7BE67 /* Images.xcassets in Resources */,
 				88F72A3A17F0E63700C7BE67 /* BlackImage.jpeg in Resources */,
 				88F72A1B17F0B61B00C7BE67 /* MainStoryboard.storyboard in Resources */,
+				88C06D5817FF3EB00074BB5A /* Default-568h@2x.png in Resources */,
 				88F72A1A17F0B61B00C7BE67 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,8 +343,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/**";
@@ -367,8 +369,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: ESRI Enterprise";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ESRI Enterprise";
 				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/**";

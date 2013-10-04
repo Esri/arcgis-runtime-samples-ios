@@ -78,7 +78,7 @@
     [userResizableView showEditingHandles];   
     [self.view addSubview:userResizableView];
     self.lastResizableView = userResizableView;
-
+    
     // Init the tile cache task
     if ( self.tileCacheTask == nil) {
         NSURL *tiledUrl = [[NSURL alloc] initWithString:ExportTilesMapService];
@@ -86,11 +86,10 @@
     }
 
     [self hideGrayBox];
-    
 
 }
 
-
+// Gets called after resizing the extent box
 - (void)userResizableViewDidEndEditing:(SPUserResizableView *)userResizableView
 {
     AGSEnvelope *testEnvelope = [self.mapView toMapEnvelope:userResizableView.frame];
@@ -140,6 +139,10 @@
     AGSEnvelope *extent = [self.mapView toMapEnvelope:self.lastResizableView.frame];
     NSLog(@"Box Test %@ Extent %@", self.lastResizableView, extent);
     
+    //Start Timer
+    self.helperTimer = [[Timer alloc] init];
+    [self.helperTimer start];
+    
     AGSGenerateTileCacheParams *params = [[AGSGenerateTileCacheParams alloc] initWithLevelsOfDetail:arrayLods areaOfInterest:extent];
     params.recompressionQuality = self.progressBar.progress;
     NSLog(@"recompressionFactor %f",params.recompressionQuality);
@@ -150,6 +153,7 @@
         
         NSLog(@"Processing estimate %@", messages);
         NSLog(@"Estimate %@", [messages description]);
+        self.timerLabel.text = self.helperTimer.result;
         
         if ( messages.count > 0) {
             NSString * gpDescription =  [[messages objectAtIndex:messages.count-1] description];
@@ -168,6 +172,7 @@
             
             [self hideOverlay];
             [self showGrayBox];
+            [self.helperTimer stop];
         }
         
         if ( error != nil) {
@@ -175,6 +180,7 @@
             self.results.text = error.description;
             [self hideOverlay];
             [self showGrayBox];
+            [self.helperTimer stop];
         }
     }];
     
@@ -341,8 +347,6 @@
     [self.activity startAnimating];
     self.statusLabel.text = @"Starting...";
     
-    
-    
 }
 
 - (void) hideOverlay
@@ -351,9 +355,7 @@
     self.progressBar.hidden = YES;
     self.percentageValue.hidden = YES;
     [self.activity stopAnimating];
-    
-    
-    
+        
 }
 
 - (double) parsePercentage:(NSString*)percentageString

@@ -182,12 +182,15 @@
         return NO;
     }
     
+    //The locator we are using in this sample returns 'Match_addr' attribute for geocoded results and
+    //'Street' for reverse-geocoded results
     if ([feature hasAttributeForKey:@"Match_addr"]) {
         callout.title = [feature attributeForKey:@"Match_addr"];
     }else if([feature hasAttributeForKey:@"Street"]){
         callout.title = [feature attributeForKey:@"Street"];
     }
     
+    //It also returns 'City' and 'ZIP' for both kind of results
     self.mapView.callout.detail = [ (NSString*)[feature attributeForKey:@"City"] stringByAppendingFormat:@", %@", [feature attributeForKey:@"ZIP"] ];
     return  YES;
     

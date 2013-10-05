@@ -20,9 +20,9 @@
 
 @property (nonatomic, strong) AGSGraphicsLayer *graphicsLayer;
 @property (nonatomic, strong) AGSLocator *locator;
-@property (nonatomic, strong) AGSCalloutTemplate *calloutTemplate;
+@property (nonatomic, strong) AGSCalloutTemplate *geocodeResultCalloutTemplate;
+@property (nonatomic, strong) AGSCalloutTemplate* revGeoResultCalloutTemplate;
 @property (nonatomic, strong) NSMutableArray* recentSearches;
-@property (nonatomic, strong) AGSAddressCandidate* reverseGeocodeResult;
 
 //This is the method that starts the geocoding operation
 - (void)startGeocoding;
@@ -67,13 +67,8 @@
     //create the graphics layer that the geocoding result
     //will be stored in and add it to the map
     self.graphicsLayer = [AGSGraphicsLayer graphicsLayer];
+    self.graphicsLayer.calloutDelegate = self;
     
-    //create the callout template, used when the user displays the callout
-    self.calloutTemplate = [[AGSCalloutTemplate alloc]init];
-    //set the text and detail text based on 'Name' and 'Descr' fields in the attributes
-    self.calloutTemplate.titleTemplate = @"${Match_addr}";
-    self.calloutTemplate.detailTemplate = @"${City}, ${ZIP}";
-    self.graphicsLayer.calloutDelegate = self.calloutTemplate;
     
     //create a marker symbol to use in our graphic
     AGSPictureMarkerSymbol *marker = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"BluePushpin.png"];
@@ -87,13 +82,18 @@
     //create the AGSLocator with the geo locator URL
     //and set the delegate to self, so we get AGSLocatorDelegate notifications
     NSError* error;
-    //self.locator = [AGSLocator locatorWithName:@"RedlandsLocator" error:&error];
     self.locator = [AGSLocator locatorWithName:@"SanFranciscoLocator" error:&error];
     self.locator.delegate = self;
     
     
+    //the amount by which we will need to offset the callout along y-axis
+    //from the center of the magnifier to the head of the pushpin
+    int pushpinHeadOffset = 60;
+    
+    //the total amount by which we will need to offset the callout along y-axis
+    //to show it correctly centered on the pushpin's head in the magnifier
     UIImage* img = [UIImage imageNamed:@"ArcGIS.bundle/Magnifier.png"];
-    _magnifierOffset = CGPointMake(0, -img.size.height/2);
+    _magnifierOffset = CGPointMake(0, -(img.size.height/2+pushpinHeadOffset)); //
     
 
     
@@ -102,17 +102,37 @@
 #pragma mark - AGSMapViewTouchDelegate
 
 - (void) mapView:(AGSMapView *)mapView didTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features {
+    //clear out any previous information in the callout
     self.mapView.callout.title = @"";
     self.mapView.callout.detail = @"";
-    [self.mapView.callout showCalloutAt:mappoint screenOffset:_magnifierOffset animated:YES];
+    
+    //remove any previous results from the layer
+    [self.graphicsLayer removeAllGraphics];
+    
+    //reverse-geocode the location
     [self.locator addressForLocation:mappoint maxSearchDistance:25];
+
+    //add a graphic where the user began tap&hold & show callout
+    [self.graphicsLayer addGraphic:[AGSGraphic graphicWithGeometry:mappoint symbol:nil attributes:nil]];
+    
+    //show callout for the graphic taking into account the enlarged map in the magnifier
+    [self.mapView.callout showCalloutAt:mappoint screenOffset:_magnifierOffset  animated:YES];
 }
 - (void) mapView:(AGSMapView *)mapView didMoveTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features{
+    
+    //update the graphic & callout location as user moves tap&hold
+    [(AGSGraphic*)[self.graphicsLayer graphics][0] setGeometry:mappoint];
     [self.mapView.callout showCalloutAt:mappoint screenOffset:_magnifierOffset  animated:NO];
+    
+    //reverse-geocode new location
     [self.locator addressForLocation:mappoint maxSearchDistance:25];
 }
 - (void) mapView:(AGSMapView *)mapView didEndTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features{
-    [self.mapView.callout showCalloutAt:mappoint screenOffset:CGPointZero  animated:NO];
+
+    //update callout's position to show it correctly on the regular map display (not enlarged)
+    [self.mapView.callout showCalloutAtPoint:mappoint forFeature:self.graphicsLayer.graphics[0] layer:self.graphicsLayer animated:NO];
+    
+
     
 }
 
@@ -143,17 +163,35 @@
     ResultsViewController *resultsVC = [[ResultsViewController alloc] initWithNibName:@"ResultsViewController" bundle:nil];
 
     AGSGraphic* graphic = (AGSGraphic*) callout.representedObject;
-    if(graphic){
-        //set our attributes/results into the results VC
-        resultsVC.results = [graphic allAttributes];
-    }else{
-        //we need to display results for the reverse geocoded location
-        resultsVC.results = self.reverseGeocodeResult.attributes;
-    }
+
+    //set our attributes/results into the results VC
+    resultsVC.results = [graphic allAttributes];
     
     //display the results vc modally
     [self presentViewController:resultsVC animated:YES completion:nil];
 	
+}
+
+#pragma mark -
+#pragma mark AGSLayerCalloutDelegate
+
+-(BOOL)callout:(AGSCallout*)callout willShowForFeature:(id<AGSFeature>)feature layer:(AGSLayer<AGSHitTestable>*)layer mapPoint:(AGSPoint *)mapPoint {
+    
+    //If the result does not have any attributes, don't show the callout
+    if(![feature allAttributes] || [[feature allAttributes]allKeys].count == 0){
+        return NO;
+    }
+    
+    if ([feature hasAttributeForKey:@"Match_addr"]) {
+        callout.title = [feature attributeForKey:@"Match_addr"];
+    }else if([feature hasAttributeForKey:@"Street"]){
+        callout.title = [feature attributeForKey:@"Street"];
+    }
+    
+    self.mapView.callout.detail = [ (NSString*)[feature attributeForKey:@"City"] stringByAppendingFormat:@", %@", [feature attributeForKey:@"ZIP"] ];
+    return  YES;
+    
+    
 }
 
 #pragma mark -
@@ -179,14 +217,17 @@
 	}
 	else
 	{
-       
 
-
+        
+        //sort the results based on score
+        candidates = [candidates sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+            double first = [(AGSAddressCandidate*)a score];
+            double second = [(AGSAddressCandidate*)b score];
+            return (first>second? NSOrderedAscending : NSOrderedDescending);
+        }];
+        
         //loop through all candidates/results and add to graphics layer
-		for (int i=0; i<[candidates count]; i++)
-		{            
-			AGSAddressCandidate *addressCandidate = (AGSAddressCandidate *)candidates[i];
-                        
+		for (AGSAddressCandidate* addressCandidate in candidates) {
             //create the graphic
 			AGSGraphic *graphic = [[AGSGraphic alloc] initWithGeometry: addressCandidate.location
 																symbol:nil
@@ -194,11 +235,19 @@
             
             //add the graphic to the graphics layer
 			[self.graphicsLayer addGraphic:graphic];
-			            
+            
+            //if we have a 90% confidence in the first result.
+            if (addressCandidate.score>90) {
+                //show the callout for the one result we have
+                [self.mapView.callout showCalloutAtPoint:addressCandidate.location forFeature:graphic layer:self.graphicsLayer animated:YES];
+                //don't process anymore results
+                break;
+            }
 
 		}
         
         [self.mapView zoomToGeometry:self.graphicsLayer.fullEnvelope withPadding:0 animated:YES];
+
 	}
     
 }
@@ -216,13 +265,17 @@
 }
 
 -(void)locator:(AGSLocator *)locator operation:(NSOperation *)op didFindAddressForLocation:(AGSAddressCandidate *)candidate{
-    self.reverseGeocodeResult = candidate;
-    self.mapView.callout.title = candidate.address[@"Street"];
+    //show the Street, City, and ZIP attributes in the callout
+    self.mapView.callout.title = candidate.attributes[@"Street"];
+    self.mapView.callout.detail =  [candidate.attributes[@"City"] stringByAppendingFormat:@", %@",candidate.attributes[@"ZIP"]];
+    
+    [self.graphicsLayer.graphics[0] setAttributes:candidate.attributes];
 }
 
 -(void) locator:(AGSLocator *)locator operation:(NSOperation *)op didFailAddressForLocation:(NSError *)error{
- /// @todo
     self.mapView.callout.title = @"Address not available";
+    self.mapView.callout.detail = @"";
+    [self.graphicsLayer.graphics[0] setAttributes:nil];
 }
 
 #pragma mark _

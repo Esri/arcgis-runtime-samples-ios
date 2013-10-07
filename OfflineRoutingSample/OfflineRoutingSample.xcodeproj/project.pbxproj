@@ -18,14 +18,15 @@
 		3B7F19E910D1BEB900AFD7FB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7F19E810D1BEB900AFD7FB /* CoreLocation.framework */; };
 		3B7F19EB10D1BEB900AFD7FB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7F19EA10D1BEB900AFD7FB /* QuartzCore.framework */; };
 		9702E56A1446538E00A46CA5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9702E5691446538E00A46CA5 /* Security.framework */; };
-		973C8DBD17C6C2650045392D /* RuntimeSanDiego.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = 973C8DB517C6C2650045392D /* RuntimeSanDiego.geodatabase */; };
 		9744BD5913550BAE007AD325 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9744BD5813550BAE007AD325 /* CoreText.framework */; };
 		9755BA1F167B965900518E4D /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9755BA1E167B965900518E4D /* libc++.dylib */; };
 		9755BA21167B965E00518E4D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9755BA20167B965E00518E4D /* OpenGLES.framework */; };
 		9755BA23167B966F00518E4D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9755BA22167B966F00518E4D /* Default-568h@2x.png */; };
 		975A5ED0134BE79900759B4A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 975A5ECE134BE79900759B4A /* icon.png */; };
 		975A5ED1134BE79900759B4A /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 975A5ECF134BE79900759B4A /* icon@2x.png */; };
-		9773943117D93A4300F94D84 /* RuntimeSanDiego.tn in Resources */ = {isa = PBXBuildFile; fileRef = 9773943017D93A4300F94D84 /* RuntimeSanDiego.tn */; };
+		97825AA817F658D40044D1FD /* SanFrancisco.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 97825AA717F658D40044D1FD /* SanFrancisco.tpk */; };
+		97825AAB17F658F40044D1FD /* RuntimeSanFrancisco.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = 97825AA917F658F40044D1FD /* RuntimeSanFrancisco.geodatabase */; };
+		97825AAC17F658F40044D1FD /* RuntimeSanFrancisco.tn in Resources */ = {isa = PBXBuildFile; fileRef = 97825AAA17F658F40044D1FD /* RuntimeSanFrancisco.tn */; };
 		9792DFC613B266EB00C41657 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9792DFC513B266EB00C41657 /* MediaPlayer.framework */; };
 		9792DFC913B266F100C41657 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9792DFC813B266F100C41657 /* MobileCoreServices.framework */; };
 		ACB8033F1319B6C100654F30 /* GreenPushpin.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB8033D1319B6C100654F30 /* GreenPushpin.png */; };
@@ -63,7 +64,6 @@
 		8D1107310486CEB800E47090 /* OfflineRoutingSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OfflineRoutingSample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9702E5671446538A00A46CA5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		9702E5691446538E00A46CA5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		973C8DB517C6C2650045392D /* RuntimeSanDiego.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = RuntimeSanDiego.geodatabase; sourceTree = "<group>"; };
 		9744BD5813550BAE007AD325 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		9755BA1E167B965900518E4D /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		9755BA20167B965E00518E4D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -71,7 +71,9 @@
 		975A5E95134BC4A500759B4A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = iphoneos4.0/System/Library/Frameworks/CoreText.framework; sourceTree = "<group>"; };
 		975A5ECE134BE79900759B4A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		975A5ECF134BE79900759B4A /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
-		9773943017D93A4300F94D84 /* RuntimeSanDiego.tn */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RuntimeSanDiego.tn; sourceTree = "<group>"; };
+		97825AA717F658D40044D1FD /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "../Data/tile package/SanFrancisco.tpk"; sourceTree = SOURCE_ROOT; };
+		97825AA917F658F40044D1FD /* RuntimeSanFrancisco.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; name = RuntimeSanFrancisco.geodatabase; path = "../Data/network dataset/SanFrancisco/RuntimeSanFrancisco.geodatabase"; sourceTree = "<group>"; };
+		97825AAA17F658F40044D1FD /* RuntimeSanFrancisco.tn */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RuntimeSanFrancisco.tn; path = "../Data/network dataset/SanFrancisco/RuntimeSanFrancisco.tn"; sourceTree = "<group>"; };
 		9792DFC513B266EB00C41657 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		9792DFC813B266F100C41657 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		ACB8033D1319B6C100654F30 /* GreenPushpin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenPushpin.png; sourceTree = "<group>"; };
@@ -161,8 +163,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				973C8DB517C6C2650045392D /* RuntimeSanDiego.geodatabase */,
-				9773943017D93A4300F94D84 /* RuntimeSanDiego.tn */,
+				97825AA717F658D40044D1FD /* SanFrancisco.tpk */,
+				97825AA917F658F40044D1FD /* RuntimeSanFrancisco.geodatabase */,
+				97825AAA17F658F40044D1FD /* RuntimeSanFrancisco.tn */,
 				975A5ECE134BE79900759B4A /* icon.png */,
 				975A5ECF134BE79900759B4A /* icon@2x.png */,
 				ACB803A0131A36C300654F30 /* next32.png */,
@@ -276,17 +279,18 @@
 				ACB80399131A367000654F30 /* GreenPushpin@2x.png in Resources */,
 				ACB8039A131A367000654F30 /* RedPushpin@2x.png in Resources */,
 				ACB803A4131A36C300654F30 /* next32.png in Resources */,
+				97825AAC17F658F40044D1FD /* RuntimeSanFrancisco.tn in Resources */,
 				ACB803A5131A36C300654F30 /* next32@2x.png in Resources */,
 				ACB803A6131A36C300654F30 /* prev32.png in Resources */,
 				ACB803A7131A36C300654F30 /* prev32@2x.png in Resources */,
 				ACB80506131A601200654F30 /* Clear20.png in Resources */,
 				ACB80507131A601200654F30 /* Clear20@2x.png in Resources */,
+				97825AA817F658D40044D1FD /* SanFrancisco.tpk in Resources */,
+				97825AAB17F658F40044D1FD /* RuntimeSanFrancisco.geodatabase in Resources */,
 				975A5ED0134BE79900759B4A /* icon.png in Resources */,
 				975A5ED1134BE79900759B4A /* icon@2x.png in Resources */,
 				C56B401814C74314003A46EB /* ArcGIS.bundle in Resources */,
 				9755BA23167B966F00518E4D /* Default-568h@2x.png in Resources */,
-				973C8DBD17C6C2650045392D /* RuntimeSanDiego.geodatabase in Resources */,
-				9773943117D93A4300F94D84 /* RuntimeSanDiego.tn in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,12 +29,13 @@
 		975E754E167A9620005FB57B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 975E754D167A9620005FB57B /* Default-568h@2x.png */; };
 		977828CE17CE7EF9001ED2F8 /* RecentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 977828CC17CE7EF9001ED2F8 /* RecentViewController.m */; };
 		977828CF17CE7EF9001ED2F8 /* RecentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 977828CD17CE7EF9001ED2F8 /* RecentViewController.xib */; };
+		97825AB217F65D830044D1FD /* SanFranciscoLocator.loc in Resources */ = {isa = PBXBuildFile; fileRef = 97825AAD17F65D830044D1FD /* SanFranciscoLocator.loc */; };
+		97825AB317F65D830044D1FD /* SanFranciscoLocator.loc.xml in Resources */ = {isa = PBXBuildFile; fileRef = 97825AAE17F65D830044D1FD /* SanFranciscoLocator.loc.xml */; };
+		97825AB417F65D830044D1FD /* SanFranciscoLocator.locb in Resources */ = {isa = PBXBuildFile; fileRef = 97825AAF17F65D830044D1FD /* SanFranciscoLocator.locb */; };
+		97825AB517F65D830044D1FD /* SanFranciscoLocator.lox in Resources */ = {isa = PBXBuildFile; fileRef = 97825AB017F65D830044D1FD /* SanFranciscoLocator.lox */; };
+		97825AB617F65D830044D1FD /* SanFrancisco.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 97825AB117F65D830044D1FD /* SanFrancisco.tpk */; };
 		9792DF6D13B262A600C41657 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9792DF6C13B262A600C41657 /* MediaPlayer.framework */; };
 		9792DF7013B262AD00C41657 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9792DF6F13B262AD00C41657 /* MobileCoreServices.framework */; };
-		979CA10517CD7D3E00211AB7 /* SanDiegoLocator.loc in Resources */ = {isa = PBXBuildFile; fileRef = 979CA10117CD7D3E00211AB7 /* SanDiegoLocator.loc */; };
-		979CA10617CD7D3E00211AB7 /* SanDiegoLocator.loc.xml in Resources */ = {isa = PBXBuildFile; fileRef = 979CA10217CD7D3E00211AB7 /* SanDiegoLocator.loc.xml */; };
-		979CA10717CD7D3E00211AB7 /* SanDiegoLocator.locb in Resources */ = {isa = PBXBuildFile; fileRef = 979CA10317CD7D3E00211AB7 /* SanDiegoLocator.locb */; };
-		979CA10817CD7D3E00211AB7 /* SanDiegoLocator.lox in Resources */ = {isa = PBXBuildFile; fileRef = 979CA10417CD7D3E00211AB7 /* SanDiegoLocator.lox */; };
 		AF5531B2125BB3330070ED0C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5531B0125BB3330070ED0C /* icon.png */; };
 		AF5531B3125BB3330070ED0C /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5531B1125BB3330070ED0C /* icon@2x.png */; };
 		C56B3F9D14C63EDA003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B3F9C14C63EDA003A46EB /* ArcGIS.bundle */; };
@@ -70,13 +71,14 @@
 		977828CB17CE7EF9001ED2F8 /* RecentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentViewController.h; sourceTree = "<group>"; };
 		977828CC17CE7EF9001ED2F8 /* RecentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentViewController.m; sourceTree = "<group>"; };
 		977828CD17CE7EF9001ED2F8 /* RecentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentViewController.xib; sourceTree = "<group>"; };
+		97825AAD17F65D830044D1FD /* SanFranciscoLocator.loc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SanFranciscoLocator.loc; path = "../Data/address locator/SanFrancisco/SanFranciscoLocator.loc"; sourceTree = "<group>"; };
+		97825AAE17F65D830044D1FD /* SanFranciscoLocator.loc.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = SanFranciscoLocator.loc.xml; path = "../Data/address locator/SanFrancisco/SanFranciscoLocator.loc.xml"; sourceTree = "<group>"; };
+		97825AAF17F65D830044D1FD /* SanFranciscoLocator.locb */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFranciscoLocator.locb; path = "../Data/address locator/SanFrancisco/SanFranciscoLocator.locb"; sourceTree = "<group>"; };
+		97825AB017F65D830044D1FD /* SanFranciscoLocator.lox */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFranciscoLocator.lox; path = "../Data/address locator/SanFrancisco/SanFranciscoLocator.lox"; sourceTree = "<group>"; };
+		97825AB117F65D830044D1FD /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "../Data/tile package/SanFrancisco.tpk"; sourceTree = "<group>"; };
 		9792DF6C13B262A600C41657 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		9792DF6F13B262AD00C41657 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		9793170E1314439F003B935E /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
-		979CA10117CD7D3E00211AB7 /* SanDiegoLocator.loc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SanDiegoLocator.loc; sourceTree = "<group>"; };
-		979CA10217CD7D3E00211AB7 /* SanDiegoLocator.loc.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SanDiegoLocator.loc.xml; sourceTree = "<group>"; };
-		979CA10317CD7D3E00211AB7 /* SanDiegoLocator.locb */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanDiegoLocator.locb; sourceTree = "<group>"; };
-		979CA10417CD7D3E00211AB7 /* SanDiegoLocator.lox */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanDiegoLocator.lox; sourceTree = "<group>"; };
 		AF5531B0125BB3330070ED0C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		AF5531B1125BB3330070ED0C /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		C56B3F9C14C63EDA003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
@@ -157,10 +159,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				979CA10117CD7D3E00211AB7 /* SanDiegoLocator.loc */,
-				979CA10217CD7D3E00211AB7 /* SanDiegoLocator.loc.xml */,
-				979CA10317CD7D3E00211AB7 /* SanDiegoLocator.locb */,
-				979CA10417CD7D3E00211AB7 /* SanDiegoLocator.lox */,
+				97825AAD17F65D830044D1FD /* SanFranciscoLocator.loc */,
+				97825AAE17F65D830044D1FD /* SanFranciscoLocator.loc.xml */,
+				97825AAF17F65D830044D1FD /* SanFranciscoLocator.locb */,
+				97825AB017F65D830044D1FD /* SanFranciscoLocator.lox */,
+				97825AB117F65D830044D1FD /* SanFrancisco.tpk */,
 				975E754D167A9620005FB57B /* Default-568h@2x.png */,
 				1CF2FB351189EA0600D7A686 /* BluePushpin.png */,
 				AF5531B0125BB3330070ED0C /* icon.png */,
@@ -255,16 +258,17 @@
 				2899E5220DE3E06400AC0155 /* GeocodingSampleViewController.xib in Resources */,
 				1CF2FB361189EA0600D7A686 /* BluePushpin.png in Resources */,
 				1CF2FBFB118A23E200D7A686 /* ResultsViewController.xib in Resources */,
+				97825AB317F65D830044D1FD /* SanFranciscoLocator.loc.xml in Resources */,
+				97825AB617F65D830044D1FD /* SanFrancisco.tpk in Resources */,
 				AF5531B2125BB3330070ED0C /* icon.png in Resources */,
 				AF5531B3125BB3330070ED0C /* icon@2x.png in Resources */,
 				97282BA91354FD3E00282B76 /* MainWindow-iPad.xib in Resources */,
+				97825AB417F65D830044D1FD /* SanFranciscoLocator.locb in Resources */,
 				C56B3F9D14C63EDA003A46EB /* ArcGIS.bundle in Resources */,
 				975E754E167A9620005FB57B /* Default-568h@2x.png in Resources */,
-				979CA10517CD7D3E00211AB7 /* SanDiegoLocator.loc in Resources */,
-				979CA10617CD7D3E00211AB7 /* SanDiegoLocator.loc.xml in Resources */,
-				979CA10717CD7D3E00211AB7 /* SanDiegoLocator.locb in Resources */,
-				979CA10817CD7D3E00211AB7 /* SanDiegoLocator.lox in Resources */,
 				977828CF17CE7EF9001ED2F8 /* RecentViewController.xib in Resources */,
+				97825AB517F65D830044D1FD /* SanFranciscoLocator.lox in Resources */,
+				97825AB217F65D830044D1FD /* SanFranciscoLocator.loc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

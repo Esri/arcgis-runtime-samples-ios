@@ -14,7 +14,7 @@
 #import <ArcGIS/ArcGIS.h>
 
 
-@interface GeocodingSampleViewController : UIViewController <UISearchBarDelegate, AGSLocatorDelegate, AGSCalloutDelegate, AGSMapViewTouchDelegate> {
+@interface GeocodingSampleViewController : UIViewController <UISearchBarDelegate, AGSLocatorDelegate, AGSCalloutDelegate, AGSMapViewTouchDelegate, AGSLayerCalloutDelegate> {
     
 }
 

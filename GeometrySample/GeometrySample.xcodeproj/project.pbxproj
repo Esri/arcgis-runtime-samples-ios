@@ -491,7 +491,6 @@
 				INFOPLIST_FILE = "GeometrySample/GeometrySample-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
 				);
@@ -510,7 +509,6 @@
 				INFOPLIST_FILE = "GeometrySample/GeometrySample-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
 				);

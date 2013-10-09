@@ -523,7 +523,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
 				);
@@ -544,7 +543,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
 				);

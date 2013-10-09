@@ -328,7 +328,6 @@
 				GCC_PREFIX_HEADER = "PopupSample/PopupSample-Prefix.pch";
 				INFOPLIST_FILE = "PopupSample/PopupSample-Info.plist";
 				OTHER_LDFLAGS = (
-					"-all_load",
 					"-ObjC",
 					"-framework",
 					ArcGIS,
@@ -347,7 +346,6 @@
 				GCC_PREFIX_HEADER = "PopupSample/PopupSample-Prefix.pch";
 				INFOPLIST_FILE = "PopupSample/PopupSample-Info.plist";
 				OTHER_LDFLAGS = (
-					"-all_load",
 					"-ObjC",
 					"-framework",
 					ArcGIS,

@@ -356,7 +356,6 @@
 				INFOPLIST_FILE = "WebmapSample/WebmapSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
-					"-all_load",
 					"-ObjC",
 					"-framework",
 					ArcGIS,
@@ -376,7 +375,6 @@
 				INFOPLIST_FILE = "WebmapSample/WebmapSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
-					"-all_load",
 					"-ObjC",
 					"-framework",
 					ArcGIS,

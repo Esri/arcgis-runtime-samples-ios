@@ -294,7 +294,6 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
 					"-lstdc++",
@@ -325,7 +324,6 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
 					"-lstdc++",
@@ -353,7 +351,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
 					"-lstdc++",
@@ -378,7 +375,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
 					"-lstdc++",

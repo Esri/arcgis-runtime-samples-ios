@@ -264,7 +264,6 @@
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
 				);
@@ -292,7 +291,6 @@
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
 				);

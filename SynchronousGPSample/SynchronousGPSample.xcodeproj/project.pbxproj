@@ -353,7 +353,6 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
 				);
@@ -381,7 +380,6 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
 				);

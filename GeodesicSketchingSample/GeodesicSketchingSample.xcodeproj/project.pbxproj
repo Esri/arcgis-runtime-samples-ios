@@ -362,7 +362,6 @@
 				INFOPLIST_FILE = "GeodesicSketchingSample/GeodesicSketchingSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
-					"-all_load",
 					"-ObjC",
 					"-framework",
 					ArcGIS,
@@ -382,7 +381,6 @@
 				INFOPLIST_FILE = "GeodesicSketchingSample/GeodesicSketchingSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
-					"-all_load",
 					"-ObjC",
 					"-framework",
 					ArcGIS,

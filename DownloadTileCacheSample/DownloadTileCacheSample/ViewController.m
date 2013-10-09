@@ -100,8 +100,7 @@
     AGSEnvelope *testEnvelope = [self.mapView toMapEnvelope:userResizableView.frame];
     NSLog(@"Box Test %@ Extent %@", userResizableView, testEnvelope);
     self.lastResizableView = userResizableView;
-    
-    //self.results.text = [[NSString alloc] initWithFormat:@"XMin:%f XMax:%f YMin:%f YMax:%f", testEnvelope.xmin, testEnvelope.xmax, testEnvelope.ymin, testEnvelope.ymax ];
+ 
 }
 
 
@@ -163,7 +162,6 @@
         
         if ( status == AGSTileCacheJobSucceeded) {
             // Hide progress show labels
-             NSLog(@"Finished Processing estimate %@", result);
             AGSTileCacheSizeEstimate *estimateResult = result;
             
             if ( estimateResult != nil){
@@ -206,7 +204,7 @@
     [self hideGrayBox];
     
     NSArray *arrayLods = [self generateLods];
-    NSLog(@"LODs %@", arrayLods);
+    NSLog(@"LODs to be requested for the cache : %@", arrayLods);
     
     // Get the map coordinate extent from view control
     AGSEnvelope *extent = [self.mapView toMapEnvelope:self.lastResizableView.frame];
@@ -237,13 +235,9 @@
                     self.percentageValue.text = [[NSString alloc] initWithFormat:@"%d%%", (int)dPercentage  ];
                     [self.progressBar setProgress:dPercentage/100 animated:YES];
                 }
-                
-                self.estimateLabel.text = detailsMessages.description;
             }
         }
         
-        
-        NSLog(@"tpk status: %d - %@", status, userInfo);
     } completion:^(AGSLocalTiledLayer *localTiledLayer, NSError *error) {
         if (error){
             [[[UIAlertView alloc]initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
@@ -252,14 +246,11 @@
         }
         else{
             [self hideOverlay];
-            
-            self.estimateLabel.text = [[NSString alloc] initWithFormat:@"Finished downloading tile cache."];
-            
             [self.mapView reset];
             [self.mapView addMapLayer:localTiledLayer withName:@"offline"];
             [self.mapView zoomToEnvelope:localTiledLayer.fullEnvelope animated:NO];
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cache completed" message:self.estimateLabel.text delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Download complete" message:@"The tile cache has been added to the map." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
             
         }
@@ -291,7 +282,7 @@
     
     // Get the map coordinate extent from view control
     AGSEnvelope *extent = [self.mapView toMapEnvelope:self.lastResizableView.frame];
-    NSLog(@"Box Test %@ Extent %@", self.lastResizableView, extent);
+    NSLog(@"Extent on map: %@", extent);
     
     //double extentResolution = self.mapView.resolution;
     double mapWidth = [self.mapView toScreenRect:extent].size.width;
@@ -366,7 +357,6 @@
     NSRange range = [percentageString rangeOfString:@"Finished:: "];
     if ( range.length > 0) {
         NSString *substring = [percentageString substringFromIndex:NSMaxRange(range)];
-        NSLog(@"Substring %@", substring);
         substring = [substring stringByReplacingOccurrencesOfString:@" percent"
                                              withString:@""];
         

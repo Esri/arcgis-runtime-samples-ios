@@ -10,14 +10,14 @@
             <objects>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fZa-6c-8Bw"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ofe-8d-Fya"/>
+                        <viewControllerLayoutGuide type="top" id="ue1-ae-2di"/>
+                        <viewControllerLayoutGuide type="bottom" id="XRm-s6-TrF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3" customClass="AGSMapView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5ey-rE-dvB">
+                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5ey-rE-dvB">
                                 <rect key="frame" x="151" y="51" width="149" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
@@ -28,7 +28,7 @@
                                     <action selector="goOfflineOnline:" destination="2" eventType="valueChanged" id="hrE-dl-5qx"/>
                                 </connections>
                             </segmentedControl>
-                            <view alpha="0.90000000000000002" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o3G-N7-S23">
+                            <view alpha="0.90000000000000002" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o3G-N7-S23">
                                 <rect key="frame" x="9" y="94" width="302" height="143"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -72,8 +72,8 @@
                                     </label>
                                 </subviews>
                             </view>
-                            <view alpha="0.90000000000000002" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LzI-P6-30j">
-                                <rect key="frame" x="9" y="349" width="302" height="143"/>
+                            <view alpha="0.90000000000000002" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LzI-P6-30j">
+                                <rect key="frame" x="9" y="419" width="302" height="143"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BlackImage.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="KB1-gf-kHc">
@@ -132,6 +132,12 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LzI-P6-30j" firstAttribute="height" secondItem="o3G-N7-S23" secondAttribute="height" id="KX0-5D-uKQ"/>
+                            <constraint firstItem="LzI-P6-30j" firstAttribute="width" secondItem="o3G-N7-S23" secondAttribute="width" id="OTO-1P-YnD"/>
+                            <constraint firstItem="XRm-s6-TrF" firstAttribute="top" secondItem="o3G-N7-S23" secondAttribute="bottom" constant="6" id="as5-6p-WEn"/>
+                            <constraint firstItem="XRm-s6-TrF" firstAttribute="top" secondItem="LzI-P6-30j" secondAttribute="bottom" constant="6" id="y4O-6B-wbE"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="_mapView" destination="3" id="71v-cS-Yhl"/>
@@ -155,6 +161,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BlackImage.jpeg" width="275" height="183"/>
         <image name="BlackImage.jpeg" width="275" height="183"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

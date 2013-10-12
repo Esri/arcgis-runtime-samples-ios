@@ -67,7 +67,7 @@
     [self.mapView addMapLayer:self.tiledLayer withName:@"World Street Map"];
     
     //Zoom in to Barcelona
-    AGSEnvelope *env = [AGSEnvelope envelopeWithXmin:239370.783 ymin:5065332.002 xmax:243145.221 ymax:5069219.836 spatialReference:self.mapView.spatialReference];
+    AGSEnvelope *env = [AGSEnvelope envelopeWithXmin:-460859.966049 ymin:4851749.196338 xmax:-360033.250384 ymax:4996687.600106 spatialReference:self.mapView.spatialReference];
 	[self.mapView zoomToEnvelope:env animated:YES];
     
     // (1) Create a user resizable view with a simple red background content view.
@@ -88,7 +88,7 @@
         self.tileCacheTask = [[AGSTileCacheTask alloc] initWithURL:tiledUrl];
     }
 
-    [self hideGrayBox];
+    [self showGrayBox];
     
     self.scaleLabel.numberOfLines = 0;
 
@@ -98,11 +98,27 @@
 - (void)userResizableViewDidEndEditing:(SPUserResizableView *)userResizableView
 {
     AGSEnvelope *testEnvelope = [self.mapView toMapEnvelope:userResizableView.frame];
-    NSLog(@"Box Test %@ Extent %@", userResizableView, testEnvelope);
     self.lastResizableView = userResizableView;
- 
+    AGSLOD* bestLOD = [self bestFitLODForEnvelope:testEnvelope];
+    self.lodLabel.text = [[NSNumber numberWithInt:bestLOD.level] stringValue];
+    self.scaleLabel.text = [NSString stringWithFormat:@"Scale\n1:%@", [NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithInt:bestLOD.scale] numberStyle:NSNumberFormatterDecimalStyle]];
+    NSLog(@"%@",self.lodLabel.text);
 }
 
+- (AGSLOD*) bestFitLODForEnvelope:(AGSEnvelope*)env{
+    CGRect screenRect = [self.mapView toScreenRect:env];
+    double impliedResolution = env.width /    screenRect.size.width;
+    
+    AGSMapServiceInfo *mapServiceInfo = self.tiledLayer.mapServiceInfo;
+    
+    for ( int i=0; i < mapServiceInfo.tileInfo.lods.count; i++ ) {
+        AGSLOD * tempLod = [mapServiceInfo.tileInfo.lods objectAtIndex:i];
+        if(impliedResolution > tempLod.resolution)
+            return tempLod;
+    }
+    return [mapServiceInfo.tileInfo.lods lastObject];
+
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -145,9 +161,7 @@
     
     
     AGSGenerateTileCacheParams *params = [[AGSGenerateTileCacheParams alloc] initWithLevelsOfDetail:arrayLods areaOfInterest:extent];
-    params.recompressionQuality = self.progressBar.progress;
-    NSLog(@"recompressionFactor %f",params.recompressionQuality);
-    
+
     [self showOverlay];
     [self.tileCacheTask estimateSizeWithParameters:params status:^(NSString *jobId, AGSTileCacheJobStatus status, NSArray *messages, id result, NSError *error) {
         
@@ -282,9 +296,7 @@
     
     // Get the map coordinate extent from view control
     AGSEnvelope *extent = [self.mapView toMapEnvelope:self.lastResizableView.frame];
-    NSLog(@"Extent on map: %@", extent);
     
-    //double extentResolution = self.mapView.resolution;
     double mapWidth = [self.mapView toScreenRect:extent].size.width;
     double extentResolution = (extent.width / mapWidth);
     
@@ -301,7 +313,7 @@
     }
     
     NSMutableArray *arrayLods = [[NSMutableArray alloc] init];
-    for (int i=startLod; i <= self.lastLod; i++) {
+    for (int i=0/*startLod*/; i <= self.lastLod; i++) {
         [arrayLods addObject:[NSString stringWithFormat:@"%d", i]];
     }
     
@@ -315,9 +327,9 @@
     self.lastResizableView.hidden = NO;
     self.lastResizableView.hidden = NO;
     
-    if ( [[UIScreen mainScreen] bounds].size.height > 500) {
-        self.floatingView.frame = CGRectMake(self.floatingView.frame.origin.x, 400, self.floatingView.frame.size.width, self.floatingView.frame.size.height);
-    }
+    //if ( [[UIScreen mainScreen] bounds].size.height > 500) {
+   //     self.floatingView.frame = CGRectMake(self.floatingView.frame.origin.x, (self.view.frame.size.height+self.view.frame.origin.y)-self.floatingView.frame.size.height, self.floatingView.frame.size.width, self.floatingView.frame.size.height);
+    //}
 }
 
 - (void) hideGrayBox
@@ -336,9 +348,9 @@
     [self.activity startAnimating];
     self.statusLabel.text = @"Starting...";
     
-    if ( [[UIScreen mainScreen] bounds].size.height > 500) {
-        self.overlay.frame = CGRectMake(self.overlay.frame.origin.x, 400, self.overlay.frame.size.width, self.overlay.frame.size.height);
-    }
+//    if ( [[UIScreen mainScreen] bounds].size.height > 500) {
+//        self.overlay.frame = CGRectMake(self.overlay.frame.origin.x, (self.view.frame.size.height+self.view.frame.origin.x)-self.overlay.frame.size.height, self.overlay.frame.size.width, self.overlay.frame.size.height);
+//    }
 
     
 }

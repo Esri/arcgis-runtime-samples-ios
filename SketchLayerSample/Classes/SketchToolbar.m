@@ -36,6 +36,10 @@
 		//Get references to the UI elements in the toolbar
 		//Each UI element was assigned a "tag" in the nib file to make it easy to find them
 		_sketchTools = (UISegmentedControl* )[toolbar viewWithTag:55];
+        
+        //disable the select tool if no graphics available
+        [_sketchTools setEnabled:(graphicsLayer.graphicsCount>0) forSegmentAtIndex:3];
+        
 		_undoTool = (UIButton*) [toolbar viewWithTag:56];
 		_redoTool = (UIButton*) [toolbar viewWithTag:57];
 		_saveTool = (UIButton*) [toolbar viewWithTag:58];
@@ -92,6 +96,10 @@
 		//Add a new graphic to the graphics layer
 		AGSGraphic* graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:nil attributes:nil ];
 		[_graphicsLayer addGraphic:graphic];
+        
+        //enable the select tool if there is atleast one graphic to select
+        [_sketchTools setEnabled:(_graphicsLayer.graphicsCount>0) forSegmentAtIndex:3];
+
 	}
 	
 	[_sketchLayer clear];

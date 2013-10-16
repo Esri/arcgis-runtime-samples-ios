@@ -269,7 +269,7 @@
         if (portalItem.thumbnail)
         {
             image = portalItem.thumbnail;
-        }else if (portalItem.thumbnailFileName != nil && portalItem.thumbnailFileName != @"")
+        }else if (portalItem.thumbnailFileName != nil && ![portalItem.thumbnailFileName  isEqual: @""])
         {
             //obtain the thumbnail to fill the place holder
             [self startIconDownload:portalItem forIndexPath:indexPath withSize:itemTableViewCell.thumbnailImageView.bounds.size];
@@ -363,6 +363,7 @@
 //        }  
     
         //open map if view controller responds to that message
+        #pragma GCC diagnostic ignored "-Wundeclared-selector"
         if ([viewController respondsToSelector:@selector(openMap:)]) {
             [viewController performSelector:@selector(openMap:) withObject:portalItem];
         }

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		975E7536167A8B7F005FB57B /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 975E7535167A8B7F005FB57B /* libc++.dylib */; };
-		975E7538167A8B8A005FB57B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 975E7537167A8B8A005FB57B /* OpenGLES.framework */; };
 		975E753A167A8BA5005FB57B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 975E7539167A8BA5005FB57B /* Default-568h@2x.png */; };
 		97B4A830159A4DD000C0CFCC /* defaultOrganization.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B4A82F159A4DCE00C0CFCC /* defaultOrganization.png */; };
 		97B4A834159A533E00C0CFCC /* PlaceholderMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B4A833159A533D00C0CFCC /* PlaceholderMap.png */; };
@@ -37,21 +35,11 @@
 		C52B06CF1563284700AC0E87 /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = C52B06CE1563284700AC0E87 /* Placeholder.png */; };
 		C52B06D3156419DA00AC0E87 /* GalleryFeaturedContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C52B06D1156419DA00AC0E87 /* GalleryFeaturedContentViewController.m */; };
 		C52B06D4156419DA00AC0E87 /* GalleryFeaturedContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C52B06D2156419DA00AC0E87 /* GalleryFeaturedContentViewController.xib */; };
-		C5B882F01559DFA900E635C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B882EF1559DFA900E635C5 /* UIKit.framework */; };
-		C5B882F21559DFA900E635C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B882F11559DFA900E635C5 /* Foundation.framework */; };
-		C5B882F41559DFA900E635C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B882F31559DFA900E635C5 /* CoreGraphics.framework */; };
 		C5B882FA1559DFA900E635C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C5B882F81559DFA900E635C5 /* InfoPlist.strings */; };
 		C5B882FC1559DFA900E635C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B882FB1559DFA900E635C5 /* main.m */; };
 		C5B883001559DFA900E635C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B882FF1559DFA900E635C5 /* AppDelegate.m */; };
 		C5B883031559DFA900E635C5 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B883021559DFA900E635C5 /* RootViewController.m */; };
 		C5B883061559DFA900E635C5 /* RootViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5B883041559DFA900E635C5 /* RootViewController_iPhone.xib */; };
-		C5B883191559DFC900E635C5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B8830F1559DFC900E635C5 /* libz.dylib */; };
-		C5B8831B1559DFC900E635C5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B883111559DFC900E635C5 /* Security.framework */; };
-		C5B8831C1559DFC900E635C5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B883121559DFC900E635C5 /* MobileCoreServices.framework */; };
-		C5B8831D1559DFC900E635C5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B883131559DFC900E635C5 /* MediaPlayer.framework */; };
-		C5B8831F1559DFC900E635C5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B883151559DFC900E635C5 /* CoreLocation.framework */; };
-		C5B883201559DFC900E635C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B883161559DFC900E635C5 /* QuartzCore.framework */; };
-		C5B883211559DFC900E635C5 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B883171559DFC900E635C5 /* CoreText.framework */; };
 		C5B883241559E05800E635C5 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C5B883231559E05800E635C5 /* ArcGIS.bundle */; };
 		C5B88330155AFCE000E635C5 /* PortalExplorer.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B8832E155AFCE000E635C5 /* PortalExplorer.m */; };
 		C5B88331155AFCE000E635C5 /* PortalExplorer.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5B8832F155AFCE000E635C5 /* PortalExplorer.xib */; };
@@ -92,8 +80,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		975E7535167A8B7F005FB57B /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		975E7537167A8B8A005FB57B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		975E7539167A8BA5005FB57B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		97B4A82F159A4DCE00C0CFCC /* defaultOrganization.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultOrganization.png; sourceTree = "<group>"; };
 		97B4A833159A533D00C0CFCC /* PlaceholderMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlaceholderMap.png; sourceTree = "<group>"; };
@@ -128,9 +114,6 @@
 		C52B06D1156419DA00AC0E87 /* GalleryFeaturedContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryFeaturedContentViewController.m; sourceTree = "<group>"; };
 		C52B06D2156419DA00AC0E87 /* GalleryFeaturedContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryFeaturedContentViewController.xib; sourceTree = "<group>"; };
 		C5B882EB1559DFA900E635C5 /* PortalExplorerSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PortalExplorerSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C5B882EF1559DFA900E635C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C5B882F11559DFA900E635C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C5B882F31559DFA900E635C5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C5B882F71559DFA900E635C5 /* PortalExplorerSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PortalExplorerSample-Info.plist"; sourceTree = "<group>"; };
 		C5B882F91559DFA900E635C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C5B882FB1559DFA900E635C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -140,16 +123,6 @@
 		C5B883011559DFA900E635C5 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		C5B883021559DFA900E635C5 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 2; path = RootViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C5B883051559DFA900E635C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController_iPhone.xib; sourceTree = "<group>"; };
-		C5B8830F1559DFC900E635C5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		C5B883101559DFC900E635C5 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
-		C5B883111559DFC900E635C5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		C5B883121559DFC900E635C5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		C5B883131559DFC900E635C5 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		C5B883141559DFC900E635C5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C5B883151559DFC900E635C5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		C5B883161559DFC900E635C5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		C5B883171559DFC900E635C5 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		C5B883181559DFC900E635C5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C5B883231559E05800E635C5 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		C5B8832D155AFCE000E635C5 /* PortalExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalExplorer.h; sourceTree = "<group>"; };
 		C5B8832E155AFCE000E635C5 /* PortalExplorer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalExplorer.m; sourceTree = "<group>"; };
@@ -207,18 +180,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				975E7538167A8B8A005FB57B /* OpenGLES.framework in Frameworks */,
-				975E7536167A8B7F005FB57B /* libc++.dylib in Frameworks */,
-				C5B882F01559DFA900E635C5 /* UIKit.framework in Frameworks */,
-				C5B882F21559DFA900E635C5 /* Foundation.framework in Frameworks */,
-				C5B882F41559DFA900E635C5 /* CoreGraphics.framework in Frameworks */,
-				C5B883191559DFC900E635C5 /* libz.dylib in Frameworks */,
-				C5B8831B1559DFC900E635C5 /* Security.framework in Frameworks */,
-				C5B8831C1559DFC900E635C5 /* MobileCoreServices.framework in Frameworks */,
-				C5B8831D1559DFC900E635C5 /* MediaPlayer.framework in Frameworks */,
-				C5B8831F1559DFC900E635C5 /* CoreLocation.framework in Frameworks */,
-				C5B883201559DFC900E635C5 /* QuartzCore.framework in Frameworks */,
-				C5B883211559DFC900E635C5 /* CoreText.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,21 +263,6 @@
 		C5B882EE1559DFA900E635C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				975E7537167A8B8A005FB57B /* OpenGLES.framework */,
-				975E7535167A8B7F005FB57B /* libc++.dylib */,
-				C5B8830F1559DFC900E635C5 /* libz.dylib */,
-				C5B883101559DFC900E635C5 /* libstdc++.dylib */,
-				C5B883111559DFC900E635C5 /* Security.framework */,
-				C5B883121559DFC900E635C5 /* MobileCoreServices.framework */,
-				C5B883131559DFC900E635C5 /* MediaPlayer.framework */,
-				C5B883141559DFC900E635C5 /* CoreGraphics.framework */,
-				C5B883151559DFC900E635C5 /* CoreLocation.framework */,
-				C5B883161559DFC900E635C5 /* QuartzCore.framework */,
-				C5B883171559DFC900E635C5 /* CoreText.framework */,
-				C5B883181559DFC900E635C5 /* CoreGraphics.framework */,
-				C5B882EF1559DFA900E635C5 /* UIKit.framework */,
-				C5B882F11559DFA900E635C5 /* Foundation.framework */,
-				C5B882F31559DFA900E635C5 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -587,6 +533,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
@@ -619,6 +566,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
@@ -654,6 +602,8 @@
 					"-ObjC",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -674,6 +624,8 @@
 					"-ObjC",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

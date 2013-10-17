@@ -7,22 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2160D8011475B7CE00598D70 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C54837561475A07E00626EEF /* MainWindow-iPad.xib */; };
 		21DE20841475B2C30080DC48 /* RootTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21DE20831475B2C20080DC48 /* RootTableViewController.xib */; };
-		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
-		3B7F19E910D1BEB900AFD7FB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7F19E810D1BEB900AFD7FB /* CoreLocation.framework */; };
-		3B7F19EB10D1BEB900AFD7FB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7F19EA10D1BEB900AFD7FB /* QuartzCore.framework */; };
-		9702E4C91446429F00A46CA5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9702E4C81446429F00A46CA5 /* Security.framework */; };
-		975E755A167A9CE0005FB57B /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 975E7559167A9CE0005FB57B /* libc++.dylib */; };
-		975E755C167A9CE7005FB57B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 975E755B167A9CE7005FB57B /* OpenGLES.framework */; };
 		975E755E167A9CF8005FB57B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 975E755D167A9CF8005FB57B /* Default-568h@2x.png */; };
-		9792DF5413B2613000C41657 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9792DF5313B2613000C41657 /* MediaPlayer.framework */; };
-		9792DF5613B2613800C41657 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9792DF5513B2613800C41657 /* MobileCoreServices.framework */; };
-		97B8E9121354F59700BF4243 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B8E9111354F59700BF4243 /* CoreText.framework */; };
 		97E5EF0517E0DA23008E2B27 /* Campus.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 97E5EF0417E0DA23008E2B27 /* Campus.tpk */; };
-		AF699BB711D1703700DC3951 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AF699BB611D1703700DC3951 /* libz.dylib */; };
 		C5128CE514758D8100A5EBF7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C5128CD414758D8100A5EBF7 /* icon.png */; };
 		C5128CE614758D8100A5EBF7 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5128CD514758D8100A5EBF7 /* icon@2x.png */; };
 		C5128CE714758D8100A5EBF7 /* LocalTiledLayerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5128CD714758D8100A5EBF7 /* LocalTiledLayerAppDelegate.m */; };
@@ -35,23 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* LocalTiledLayerSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalTiledLayerSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		21DE20831475B2C20080DC48 /* RootTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RootTableViewController.xib; path = LocalTiledLayerSample/RootTableViewController.xib; sourceTree = SOURCE_ROOT; };
-		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		3B7F19E810D1BEB900AFD7FB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		3B7F19EA10D1BEB900AFD7FB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		9702E4C81446429F00A46CA5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		9737933913144223000BE16E /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
-		975E7559167A9CE0005FB57B /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		975E755B167A9CE7005FB57B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		975E755D167A9CF8005FB57B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		9792DF5313B2613000C41657 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		9792DF5513B2613800C41657 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		97B8E9111354F59700BF4243 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		97E5EF0417E0DA23008E2B27 /* Campus.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = Campus.tpk; sourceTree = "<group>"; };
-		AF699BB611D1703700DC3951 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C5128CD414758D8100A5EBF7 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = LocalTiledLayerSample/icon.png; sourceTree = SOURCE_ROOT; };
 		C5128CD514758D8100A5EBF7 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "LocalTiledLayerSample/icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		C5128CD614758D8100A5EBF7 /* LocalTiledLayerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalTiledLayerAppDelegate.h; path = LocalTiledLayerSample/LocalTiledLayerAppDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -74,18 +49,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				975E755C167A9CE7005FB57B /* OpenGLES.framework in Frameworks */,
-				975E755A167A9CE0005FB57B /* libc++.dylib in Frameworks */,
-				9702E4C91446429F00A46CA5 /* Security.framework in Frameworks */,
-				9792DF5613B2613800C41657 /* MobileCoreServices.framework in Frameworks */,
-				9792DF5413B2613000C41657 /* MediaPlayer.framework in Frameworks */,
-				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
-				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
-				3B7F19E910D1BEB900AFD7FB /* CoreLocation.framework in Frameworks */,
-				3B7F19EB10D1BEB900AFD7FB /* QuartzCore.framework in Frameworks */,
-				AF699BB711D1703700DC3951 /* libz.dylib in Frameworks */,
-				97B8E9121354F59700BF4243 /* CoreText.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,19 +98,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				975E755B167A9CE7005FB57B /* OpenGLES.framework */,
-				975E7559167A9CE0005FB57B /* libc++.dylib */,
-				9737933913144223000BE16E /* libstdc++.6.0.9.dylib */,
-				9702E4C81446429F00A46CA5 /* Security.framework */,
-				9792DF5313B2613000C41657 /* MediaPlayer.framework */,
-				9792DF5513B2613800C41657 /* MobileCoreServices.framework */,
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
-				3B7F19E810D1BEB900AFD7FB /* CoreLocation.framework */,
-				3B7F19EA10D1BEB900AFD7FB /* QuartzCore.framework */,
-				AF699BB611D1703700DC3951 /* libz.dylib */,
-				97B8E9111354F59700BF4243 /* CoreText.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -262,6 +212,8 @@
 					"-ObjC",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PRODUCT_NAME = LocalTiledLayerSample;
 				SDKROOT = iphoneos;
@@ -285,6 +237,8 @@
 					"-ObjC",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PRODUCT_NAME = LocalTiledLayerSample;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -296,6 +250,7 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -312,6 +267,7 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;

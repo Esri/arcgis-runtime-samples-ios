@@ -7,19 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9702E4AF1446416B00A46CA5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9702E4AE1446416B00A46CA5 /* libz.dylib */; };
-		9702E4B21446417100A46CA5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9702E4B11446417100A46CA5 /* Security.framework */; };
 		C56B3F4614C60031003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B3F4514C60031003A46EB /* ArcGIS.bundle */; };
 		C56C52061512C4B800C64597 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C52041512C4B800C64597 /* SettingsViewController.m */; };
 		C56C52071512C4B800C64597 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56C52051512C4B800C64597 /* SettingsViewController.xib */; };
-		C57F6E0C13F5A74000DAE553 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6E0B13F5A74000DAE553 /* UIKit.framework */; };
-		C57F6E0E13F5A74000DAE553 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6E0D13F5A74000DAE553 /* Foundation.framework */; };
-		C57F6E1013F5A74000DAE553 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6E0F13F5A74000DAE553 /* CoreGraphics.framework */; };
-		C57F6E1213F5A74000DAE553 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6E1113F5A74000DAE553 /* CoreText.framework */; };
-		C57F6E1413F5A74000DAE553 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6E1313F5A74000DAE553 /* CoreLocation.framework */; };
-		C57F6E1613F5A74000DAE553 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6E1513F5A74000DAE553 /* MediaPlayer.framework */; };
-		C57F6E1813F5A74000DAE553 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6E1713F5A74000DAE553 /* MobileCoreServices.framework */; };
-		C57F6E1A13F5A74000DAE553 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6E1913F5A74000DAE553 /* QuartzCore.framework */; };
 		C57F6E2013F5A74000DAE553 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C57F6E1E13F5A74000DAE553 /* InfoPlist.strings */; };
 		C57F6E2313F5A74000DAE553 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C57F6E2213F5A74000DAE553 /* main.m */; };
 		C57F6E2613F5A74000DAE553 /* AsynchronousGPSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C57F6E2513F5A74000DAE553 /* AsynchronousGPSampleAppDelegate.m */; };
@@ -30,26 +20,14 @@
 		C57F6E5F13F5AD0800DAE553 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C57F6E5D13F5AD0800DAE553 /* icon@2x.png */; };
 		C57F6E6313F5AD1B00DAE553 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57F6E6113F5AD1B00DAE553 /* MainWindow-iPad.xib */; };
 		E976B61B1679EA1F00FBA4C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E976B61A1679EA1F00FBA4C9 /* Default-568h@2x.png */; };
-		E976B61D1679EB5600FBA4C9 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E976B61C1679EB5600FBA4C9 /* libc++.dylib */; };
-		E976B61F1679EB6000FBA4C9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E976B61E1679EB6000FBA4C9 /* OpenGLES.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9702E4AE1446416B00A46CA5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		9702E4B11446417100A46CA5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C56B3F4514C60031003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		C56C52031512C4B800C64597 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = AsynchronousGPSample/SettingsViewController.h; sourceTree = "<group>"; };
 		C56C52041512C4B800C64597 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = AsynchronousGPSample/SettingsViewController.m; sourceTree = "<group>"; };
 		C56C52051512C4B800C64597 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = AsynchronousGPSample/SettingsViewController.xib; sourceTree = "<group>"; };
 		C57F6E0713F5A74000DAE553 /* AsynchronousGPSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsynchronousGPSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C57F6E0B13F5A74000DAE553 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C57F6E0D13F5A74000DAE553 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C57F6E0F13F5A74000DAE553 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C57F6E1113F5A74000DAE553 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		C57F6E1313F5A74000DAE553 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		C57F6E1513F5A74000DAE553 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		C57F6E1713F5A74000DAE553 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		C57F6E1913F5A74000DAE553 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C57F6E1D13F5A74000DAE553 /* AsynchronousGPSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AsynchronousGPSample-Info.plist"; sourceTree = "<group>"; };
 		C57F6E1F13F5A74000DAE553 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C57F6E2113F5A74000DAE553 /* AsynchronousGPSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AsynchronousGPSample-Prefix.pch"; sourceTree = "<group>"; };
@@ -73,18 +51,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E976B61F1679EB6000FBA4C9 /* OpenGLES.framework in Frameworks */,
-				E976B61D1679EB5600FBA4C9 /* libc++.dylib in Frameworks */,
-				9702E4B21446417100A46CA5 /* Security.framework in Frameworks */,
-				9702E4AF1446416B00A46CA5 /* libz.dylib in Frameworks */,
-				C57F6E0C13F5A74000DAE553 /* UIKit.framework in Frameworks */,
-				C57F6E0E13F5A74000DAE553 /* Foundation.framework in Frameworks */,
-				C57F6E1013F5A74000DAE553 /* CoreGraphics.framework in Frameworks */,
-				C57F6E1213F5A74000DAE553 /* CoreText.framework in Frameworks */,
-				C57F6E1413F5A74000DAE553 /* CoreLocation.framework in Frameworks */,
-				C57F6E1613F5A74000DAE553 /* MediaPlayer.framework in Frameworks */,
-				C57F6E1813F5A74000DAE553 /* MobileCoreServices.framework in Frameworks */,
-				C57F6E1A13F5A74000DAE553 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,16 +84,6 @@
 		C57F6E0A13F5A74000DAE553 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9702E4AE1446416B00A46CA5 /* libz.dylib */,
-				C57F6E0B13F5A74000DAE553 /* UIKit.framework */,
-				C57F6E0D13F5A74000DAE553 /* Foundation.framework */,
-				C57F6E0F13F5A74000DAE553 /* CoreGraphics.framework */,
-				C57F6E1113F5A74000DAE553 /* CoreText.framework */,
-				C57F6E1313F5A74000DAE553 /* CoreLocation.framework */,
-				C57F6E1513F5A74000DAE553 /* MediaPlayer.framework */,
-				C57F6E1713F5A74000DAE553 /* MobileCoreServices.framework */,
-				C57F6E1913F5A74000DAE553 /* QuartzCore.framework */,
-				9702E4B11446417100A46CA5 /* Security.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -314,6 +270,8 @@
 					"-ObjC",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -341,6 +299,8 @@
 					"-ObjC",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E89AACA5-4D0F-4BD5-87F9-80588D33ADA4";
@@ -353,6 +313,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
@@ -368,6 +329,8 @@
 					"-ObjC",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -380,6 +343,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -395,6 +359,8 @@
 					"-ObjC",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

@@ -15,7 +15,7 @@
 #import <ArcGIS/ArcGIS.h>
 #import "CODialog.h"
 
-@interface WebmapSampleViewController : UIViewController <AGSWebMapDelegate, UIAlertViewDelegate >
+@interface WebmapSampleViewController : UIViewController <AGSWebMapDelegate, UIAlertViewDelegate , AGSCalloutDelegate, AGSPopupsContainerDelegate>
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
 

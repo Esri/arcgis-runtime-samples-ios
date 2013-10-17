@@ -180,6 +180,12 @@ typedef struct CGPointSPUserResizableViewAnchorPointPair {
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    if(event.allTouches.count>1){
+        [super touchesBegan:touches withEvent:event];
+        return;
+    }
+    
     // Notify the delegate we've begun our editing session.
     if (self.delegate && [self.delegate respondsToSelector:@selector(userResizableViewDidBeginEditing:)]) {
         [self.delegate userResizableViewDidBeginEditing:self];
@@ -198,12 +204,30 @@ typedef struct CGPointSPUserResizableViewAnchorPointPair {
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    if(event.allTouches.count>1){
+        [super touchesEnded:touches withEvent:event];
+        return;
+    }
+    
     // Notify the delegate we've ended our editing session.
     if (self.delegate && [self.delegate respondsToSelector:@selector(userResizableViewDidEndEditing:)]) {
         [self.delegate userResizableViewDidEndEditing:self];
     }
 }
 
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    if(event.allTouches.count>1){
+        [super touchesMoved:touches withEvent:event];
+        return;
+    }
+ 
+    if ([self isResizing]) {
+        [self resizeUsingTouchLocation:[[touches anyObject] locationInView:self.superview]];
+    } else {
+        [self translateUsingTouchLocation:[[touches anyObject] locationInView:self]];
+    }
+}
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     // Notify the delegate we've ended our editing session.
     if (self.delegate && [self.delegate respondsToSelector:@selector(userResizableViewDidEndEditing:)]) {
@@ -307,13 +331,7 @@ typedef struct CGPointSPUserResizableViewAnchorPointPair {
     self.center = newCenter;
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    if ([self isResizing]) {
-        [self resizeUsingTouchLocation:[[touches anyObject] locationInView:self.superview]];
-    } else {
-        [self translateUsingTouchLocation:[[touches anyObject] locationInView:self]];
-    }
-}
+
 
 - (void)dealloc {
     [contentView removeFromSuperview];

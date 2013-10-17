@@ -47,7 +47,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gg-Vk-ZbI">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gg-Vk-ZbI">
                                         <rect key="frame" x="122" y="110" width="59" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Cancel">
@@ -71,6 +71,9 @@
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="7gg-Vk-ZbI" secondAttribute="centerX" constant="-0.5" id="QNh-uf-hWc"/>
+                                </constraints>
                             </view>
                             <view alpha="0.90000000000000002" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LzI-P6-30j">
                                 <rect key="frame" x="9" y="419" width="302" height="143"/>
@@ -161,7 +164,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BlackImage.jpeg" width="275" height="183"/>
         <image name="BlackImage.jpeg" width="275" height="183"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -59,7 +59,7 @@
     self.overlay.hidden = YES;
     
     //You can change this to any other service on tiledbasemaps.arcgis.com
-    NSString* tileServiceURL = @"http://tiledbasemaps.arcgis.com/arcgis/rest/services/World_Street_Map/MapServer";
+    NSString* tileServiceURL = @"http://morphine:7777/arcgis/rest/services/World_Street_Map/MapServer";
     
     NSURL *tiledUrl = [[NSURL alloc] initWithString:tileServiceURL];
     self.tiledLayer = [[AGSTiledMapServiceLayer alloc] initWithURL:tiledUrl];

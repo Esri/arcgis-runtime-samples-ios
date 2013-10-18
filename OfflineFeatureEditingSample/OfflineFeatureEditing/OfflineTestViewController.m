@@ -587,7 +587,7 @@
     else if (!_offline){
         _offlineStatusLabel.text = @"Live data"; //@"online";
         _goOfflineButton.title = @"download"; //@"go offline";
-        [_badgeView removeFromSuperview];
+        [_badge removeFromSuperview];
     }
     
     _goOfflineButton.enabled = !_goingOffline && !_goingOnline;

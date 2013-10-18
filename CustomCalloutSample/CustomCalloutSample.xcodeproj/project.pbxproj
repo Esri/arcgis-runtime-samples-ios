@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		97B8C3A316780142003B6E1B /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B8C3A216780142003B6E1B /* libc++.dylib */; };
-		97B8C3A516780147003B6E1B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B8C3A416780147003B6E1B /* OpenGLES.framework */; };
 		97B8C3A716780163003B6E1B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B8C3A616780163003B6E1B /* Default-568h@2x.png */; };
 		C52E8F611475F164008F22F4 /* FireStation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C52E8F5F1475F164008F22F4 /* FireStation@2x.png */; };
 		C52E8F621475F164008F22F4 /* FireStation.png in Resources */ = {isa = PBXBuildFile; fileRef = C52E8F601475F164008F22F4 /* FireStation.png */; };
@@ -17,8 +15,6 @@
 		C52E8F6B14770826008F22F4 /* CustomHybridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C52E8F6914770826008F22F4 /* CustomHybridViewController.m */; };
 		C52E8F6C14770826008F22F4 /* CustomHybridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C52E8F6A14770826008F22F4 /* CustomHybridViewController.xib */; };
 		C53ACA661486E70400146549 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C53ACA641486E70400146549 /* MainWindow-iPad.xib */; };
-		C545D9511475A966003B7137 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C545D9501475A966003B7137 /* libz.dylib */; };
-		C545D9651475CC8A003B7137 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C545D9641475CC8A003B7137 /* Security.framework */; };
 		C5675FA4148442D10057CB09 /* TrafficCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = C5675FA3148442D10057CB09 /* TrafficCamera.png */; };
 		C5675FA7148443300057CB09 /* TrafficCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5675FA6148443300057CB09 /* TrafficCamera@2x.png */; };
 		C5675FA9148443660057CB09 /* Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = C5675FA8148443660057CB09 /* Phone.png */; };
@@ -28,14 +24,6 @@
 		C5675FB7148445770057CB09 /* Museum.png in Resources */ = {isa = PBXBuildFile; fileRef = C5675FB5148445770057CB09 /* Museum.png */; };
 		C5675FB9148446AC0057CB09 /* Museum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5675FB8148446AC0057CB09 /* Museum@2x.png */; };
 		C56B3F6514C6033A003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B3F6414C6033A003A46EB /* ArcGIS.bundle */; };
-		C58F018914056FC400C80593 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58F018814056FC400C80593 /* UIKit.framework */; };
-		C58F018B14056FC400C80593 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58F018A14056FC400C80593 /* Foundation.framework */; };
-		C58F018D14056FC400C80593 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58F018C14056FC400C80593 /* CoreGraphics.framework */; };
-		C58F018F14056FC400C80593 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58F018E14056FC400C80593 /* CoreText.framework */; };
-		C58F019114056FC400C80593 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58F019014056FC400C80593 /* CoreLocation.framework */; };
-		C58F019314056FC400C80593 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58F019214056FC400C80593 /* MediaPlayer.framework */; };
-		C58F019514056FC400C80593 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58F019414056FC400C80593 /* MobileCoreServices.framework */; };
-		C58F019714056FC400C80593 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58F019614056FC400C80593 /* QuartzCore.framework */; };
 		C58F01A014056FC400C80593 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C58F019F14056FC400C80593 /* main.m */; };
 		C58F01A314056FC400C80593 /* CustomCalloutSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C58F01A214056FC400C80593 /* CustomCalloutSampleAppDelegate.m */; };
 		C58F01A614056FC400C80593 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C58F01A414056FC400C80593 /* MainWindow.xib */; };
@@ -52,8 +40,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		97B8C3A216780142003B6E1B /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		97B8C3A416780147003B6E1B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		97B8C3A616780163003B6E1B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		C52E8F5F1475F164008F22F4 /* FireStation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FireStation@2x.png"; sourceTree = "<group>"; };
 		C52E8F601475F164008F22F4 /* FireStation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FireStation.png; sourceTree = "<group>"; };
@@ -64,8 +50,6 @@
 		C52E8F6914770826008F22F4 /* CustomHybridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomHybridViewController.m; sourceTree = "<group>"; };
 		C52E8F6A14770826008F22F4 /* CustomHybridViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomHybridViewController.xib; sourceTree = "<group>"; };
 		C53ACA651486E70400146549 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
-		C545D9501475A966003B7137 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		C545D9641475CC8A003B7137 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C5675FA3148442D10057CB09 /* TrafficCamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrafficCamera.png; sourceTree = "<group>"; };
 		C5675FA6148443300057CB09 /* TrafficCamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrafficCamera@2x.png"; sourceTree = "<group>"; };
 		C5675FA8148443660057CB09 /* Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Phone.png; sourceTree = "<group>"; };
@@ -76,14 +60,6 @@
 		C5675FB8148446AC0057CB09 /* Museum@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Museum@2x.png"; sourceTree = "<group>"; };
 		C56B3F6414C6033A003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		C58F018414056FC300C80593 /* CustomCalloutSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomCalloutSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C58F018814056FC400C80593 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C58F018A14056FC400C80593 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C58F018C14056FC400C80593 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C58F018E14056FC400C80593 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		C58F019014056FC400C80593 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		C58F019214056FC400C80593 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		C58F019414056FC400C80593 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		C58F019614056FC400C80593 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C58F019A14056FC400C80593 /* CustomCalloutSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CustomCalloutSample-Info.plist"; sourceTree = "<group>"; };
 		C58F019E14056FC400C80593 /* CustomCalloutSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CustomCalloutSample-Prefix.pch"; sourceTree = "<group>"; };
 		C58F019F14056FC400C80593 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -108,18 +84,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97B8C3A516780147003B6E1B /* OpenGLES.framework in Frameworks */,
-				97B8C3A316780142003B6E1B /* libc++.dylib in Frameworks */,
-				C545D9651475CC8A003B7137 /* Security.framework in Frameworks */,
-				C545D9511475A966003B7137 /* libz.dylib in Frameworks */,
-				C58F018914056FC400C80593 /* UIKit.framework in Frameworks */,
-				C58F018B14056FC400C80593 /* Foundation.framework in Frameworks */,
-				C58F018D14056FC400C80593 /* CoreGraphics.framework in Frameworks */,
-				C58F018F14056FC400C80593 /* CoreText.framework in Frameworks */,
-				C58F019114056FC400C80593 /* CoreLocation.framework in Frameworks */,
-				C58F019314056FC400C80593 /* MediaPlayer.framework in Frameworks */,
-				C58F019514056FC400C80593 /* MobileCoreServices.framework in Frameworks */,
-				C58F019714056FC400C80593 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,18 +119,6 @@
 		C58F018714056FC400C80593 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				97B8C3A416780147003B6E1B /* OpenGLES.framework */,
-				97B8C3A216780142003B6E1B /* libc++.dylib */,
-				C545D9641475CC8A003B7137 /* Security.framework */,
-				C545D9501475A966003B7137 /* libz.dylib */,
-				C58F018814056FC400C80593 /* UIKit.framework */,
-				C58F018A14056FC400C80593 /* Foundation.framework */,
-				C58F018C14056FC400C80593 /* CoreGraphics.framework */,
-				C58F018E14056FC400C80593 /* CoreText.framework */,
-				C58F019014056FC400C80593 /* CoreLocation.framework */,
-				C58F019214056FC400C80593 /* MediaPlayer.framework */,
-				C58F019414056FC400C80593 /* MobileCoreServices.framework */,
-				C58F019614056FC400C80593 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -347,6 +299,7 @@
 		C58F01AF14056FC400C80593 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -373,9 +326,10 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -387,6 +341,7 @@
 		C58F01B014056FC400C80593 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -410,9 +365,10 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E89AACA5-4D0F-4BD5-87F9-80588D33ADA4";
@@ -463,7 +419,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

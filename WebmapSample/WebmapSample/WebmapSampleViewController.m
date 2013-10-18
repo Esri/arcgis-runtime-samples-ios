@@ -24,15 +24,11 @@ static NSString * const kPrivateWebmapId = @"9a5e8ffd9eb7438b894becd6c8a85751";
 @property (nonatomic, strong) AGSWebMap *webMap;
 @property (nonatomic, strong) CODialog* loginDialog;
 @property (nonatomic, strong) NSString* webmapId;
+@property (nonatomic, strong) NSMutableArray* popups;
 
 @end
 
 @implementation WebmapSampleViewController 
-
-@synthesize webMap = _webMap;
-@synthesize mapView = _mapView;
-@synthesize loginDialog = _loginDialog;
-@synthesize webmapId = _webmapId;
 
 
 #pragma mark - View lifecycle
@@ -58,6 +54,7 @@ static NSString * const kPrivateWebmapId = @"9a5e8ffd9eb7438b894becd6c8a85751";
 {
     [super viewDidLoad];
     
+    self.mapView.callout.delegate = self;
     //Ask the user which webmap to load : Public or Private?
     UIAlertView* webmapPickerAlertView = [[UIAlertView alloc] initWithTitle:@"Which webmap would you like to open?" message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
     [webmapPickerAlertView addButtonWithTitle:@"Public"];
@@ -171,6 +168,30 @@ withError:(NSError *) 	error {
 }
 
 
+- (void) webMap:(AGSWebMap *)webMap didFetchPopups:(NSArray *)popups forExtent:(AGSEnvelope *)extent {
+    //hold on to the results
+    for (AGSPopup* popup in popups) {
+        //disable editing because this sample does not implement any editing functionality.
+        //only permit viewing of popups
+        popup.allowEdit = NO;
+        popup.allowEditGeometry = NO;
+        popup.allowDelete = NO;
+        [self.popups addObject:popup];
+    }
+}
+
+- (void) webMap:(AGSWebMap *)webMap didFinishFetchingPopupsForExtent:(AGSEnvelope *)extent {
+    // hide the progress dialog
+    [self.loginDialog hideAnimated:YES];
+    
+    //show the popups
+    AGSPopupsContainerViewController* pvc =
+    [[AGSPopupsContainerViewController alloc]initWithPopups:self.popups];
+    pvc.delegate = self;
+    [self presentViewController:pvc animated:YES completion:nil];
+    
+}
+
 #pragma mark - Sign in methods
 
 -(void)signInWebMap{
@@ -233,6 +254,26 @@ withError:(NSError *) 	error {
     [self.webMap continueOpenAndSkipCurrentLayer];
 }
 
+#pragma  mark - AGSCalloutDelegte methods
+- (void) didClickAccessoryButtonForCallout:(AGSCallout *)callout {
+    //fetch popups
+    [self.webMap fetchPopupsForExtent:callout.mapLocation.envelope];
+    
+    //reinitialize the popups array that will hold the results
+    self.popups = [[NSMutableArray alloc]init];
+    
+    //show a progress dialog in case it takes time to fetch popups
+    [self.loginDialog resetLayout];
+    self.loginDialog.title = @"Loading";
+    self.loginDialog.dialogStyle = CODialogStyleIndeterminate;
+    [self.loginDialog showOrUpdateAnimated:YES];
+}
+
+
+#pragma mark - AGSPopupsContainerDelegate
+- (void) popupsContainerDidFinishViewingPopups:(id<AGSPopupsContainer>)popupsContainer{
+    [(AGSPopupsContainerViewController*)popupsContainer dismissViewControllerAnimated:YES completion:nil];
+}
 #pragma  mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if(buttonIndex == 0){
@@ -264,6 +305,7 @@ withError:(NSError *) 	error {
 {
     return  YES;
 }
+
 
 
 @end

@@ -1,11 +1,14 @@
+// Copyright 2013 ESRI
 //
-//  MainViewController.m
-//  OAuthLoginSample
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
 //
-//  Created by Divesh Goyal on 9/3/13.
+// You may freely redistribute and use this sample code, with or
+// without modification, provided you include the original copyright
+// notice and use restrictions.
 //
+// See the use restrictions at http://help.arcgis.com/en/sdk/10.0/usageRestrictions.htm
 //
-
 #import "MainViewController.h"
 #import "UserContentViewController.h"
 
@@ -91,10 +94,7 @@
 
 - (void) cancelLogin{
     
-    [self dismissViewControllerAnimated:YES completion:^{
-        UIAlertView *av = [[UIAlertView alloc]initWithTitle:nil message:@"You must sign in to continue."  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [av show];
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 

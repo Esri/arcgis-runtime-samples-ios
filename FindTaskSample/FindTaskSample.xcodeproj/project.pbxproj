@@ -9,62 +9,37 @@
 /* Begin PBXBuildFile section */
 		1D3623260D0F684500981E51 /* FindTaskSampoleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* FindTaskSampoleAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2165C87A1210C06300228570 /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2165C8781210C06300228570 /* ResultsViewController.m */; };
 		2165C87B1210C06300228570 /* ResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2165C8791210C06300228570 /* ResultsViewController.xib */; };
-		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		2899E5220DE3E06400AC0155 /* FindTaskSampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* FindTaskSampleViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* FindTaskSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* FindTaskSampleViewController.m */; };
-		3B7F19E910D1BEB900AFD7FB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7F19E810D1BEB900AFD7FB /* CoreLocation.framework */; };
-		3B7F19EB10D1BEB900AFD7FB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7F19EA10D1BEB900AFD7FB /* QuartzCore.framework */; };
-		9702E4E61446439100A46CA5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9702E4E51446439100A46CA5 /* libz.dylib */; };
-		9702E4E91446439700A46CA5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9702E4E81446439700A46CA5 /* Security.framework */; };
-		973A261F1354FBD000B7072B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 973A261E1354FBD000B7072B /* CoreText.framework */; };
 		973A26251354FBFC00B7072B /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 973A26241354FBFC00B7072B /* MainWindow-iPad.xib */; };
-		9792DF6013B261D500C41657 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9792DF5F13B261D500C41657 /* MediaPlayer.framework */; };
-		9792DF6313B261DB00C41657 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9792DF6213B261DB00C41657 /* MobileCoreServices.framework */; };
 		AF553144125BB29C0070ED0C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AF553142125BB29C0070ED0C /* icon.png */; };
 		AF553145125BB29C0070ED0C /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF553143125BB29C0070ED0C /* icon@2x.png */; };
 		C56B3F8E14C63D74003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B3F8D14C63D74003A46EB /* ArcGIS.bundle */; };
 		E976B6351679F32900FBA4C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E976B6341679F32900FBA4C9 /* Default-568h@2x.png */; };
-		E976B6371679F36000FBA4C9 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E976B6361679F36000FBA4C9 /* libc++.dylib */; };
-		E976B6391679F36900FBA4C9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E976B6381679F36900FBA4C9 /* OpenGLES.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* FindTaskSampoleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindTaskSampoleAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* FindTaskSampoleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindTaskSampoleAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* FindTaskSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindTaskSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2165C8771210C06300228570 /* ResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
 		2165C8781210C06300228570 /* ResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
 		2165C8791210C06300228570 /* ResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsViewController.xib; sourceTree = "<group>"; };
-		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2899E5210DE3E06400AC0155 /* FindTaskSampleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindTaskSampleViewController.xib; sourceTree = "<group>"; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		28D7ACF60DDB3853001CB0EB /* FindTaskSampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindTaskSampleViewController.h; sourceTree = "<group>"; };
 		28D7ACF70DDB3853001CB0EB /* FindTaskSampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindTaskSampleViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* FindTaskSample_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindTaskSample_Prefix.pch; sourceTree = "<group>"; };
-		3B7F19E810D1BEB900AFD7FB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		3B7F19EA10D1BEB900AFD7FB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* FindTaskSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FindTaskSample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		9702E4E51446439100A46CA5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		9702E4E81446439700A46CA5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		973A261E1354FBD000B7072B /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		973A26241354FBFC00B7072B /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
-		9792DF5F13B261D500C41657 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		9792DF6213B261DB00C41657 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		979316E313144327003B935E /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		AF553142125BB29C0070ED0C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		AF553143125BB29C0070ED0C /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		C56B3F8D14C63D74003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		E976B6341679F32900FBA4C9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		E976B6361679F36000FBA4C9 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		E976B6381679F36900FBA4C9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,18 +47,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E976B6391679F36900FBA4C9 /* OpenGLES.framework in Frameworks */,
-				E976B6371679F36000FBA4C9 /* libc++.dylib in Frameworks */,
-				9702E4E91446439700A46CA5 /* Security.framework in Frameworks */,
-				9702E4E61446439100A46CA5 /* libz.dylib in Frameworks */,
-				9792DF6313B261DB00C41657 /* MobileCoreServices.framework in Frameworks */,
-				9792DF6013B261D500C41657 /* MediaPlayer.framework in Frameworks */,
-				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
-				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
-				3B7F19E910D1BEB900AFD7FB /* CoreLocation.framework in Frameworks */,
-				3B7F19EB10D1BEB900AFD7FB /* QuartzCore.framework in Frameworks */,
-				973A261F1354FBD000B7072B /* CoreText.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,8 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				E976B6341679F32900FBA4C9 /* Default-568h@2x.png */,
-				9792DF6213B261DB00C41657 /* MobileCoreServices.framework */,
-				9792DF5F13B261D500C41657 /* MediaPlayer.framework */,
 				AF553142125BB29C0070ED0C /* icon.png */,
 				AF553143125BB29C0070ED0C /* icon@2x.png */,
 				2899E5210DE3E06400AC0155 /* FindTaskSampleViewController.xib */,
@@ -153,17 +114,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E976B6381679F36900FBA4C9 /* OpenGLES.framework */,
-				E976B6361679F36000FBA4C9 /* libc++.dylib */,
-				9702E4E51446439100A46CA5 /* libz.dylib */,
-				9702E4E81446439700A46CA5 /* Security.framework */,
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
-				3B7F19E810D1BEB900AFD7FB /* CoreLocation.framework */,
-				3B7F19EA10D1BEB900AFD7FB /* QuartzCore.framework */,
-				979316E313144327003B935E /* libstdc++.6.0.9.dylib */,
-				973A261E1354FBD000B7072B /* CoreText.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -272,15 +222,15 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PRODUCT_NAME = FindTaskSample;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = armv7;
 			};
 			name = Debug;
 		};
@@ -299,22 +249,23 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PRODUCT_NAME = FindTaskSample;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = armv7;
 			};
 			name = Release;
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -336,13 +287,13 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				VALID_ARCHS = armv7;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -363,7 +314,6 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E89AACA5-4D0F-4BD5-87F9-80588D33ADA4";
 				SDKROOT = iphoneos;
-				VALID_ARCHS = armv7;
 			};
 			name = Release;
 		};

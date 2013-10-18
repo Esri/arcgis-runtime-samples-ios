@@ -8,59 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		2899E5220DE3E06400AC0155 /* WeatherInfoSampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* WeatherInfoSampleViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		3B7F19E910D1BEB900AFD7FB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7F19E810D1BEB900AFD7FB /* CoreLocation.framework */; };
-		3B7F19EB10D1BEB900AFD7FB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7F19EA10D1BEB900AFD7FB /* QuartzCore.framework */; };
-		9702E5B0144655A500A46CA5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9702E5AF144655A500A46CA5 /* libz.dylib */; };
-		9702E5B3144655AA00A46CA5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9702E5B2144655AA00A46CA5 /* Security.framework */; };
 		972505A013379F6900E4BC8C /* WeatherInfoSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9725059D13379F6900E4BC8C /* WeatherInfoSampleAppDelegate.m */; };
 		972505A113379F6900E4BC8C /* WeatherInfoSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9725059F13379F6900E4BC8C /* WeatherInfoSampleViewController.m */; };
 		972505C41337A55100E4BC8C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 972505C21337A55100E4BC8C /* icon.png */; };
 		972505C51337A55100E4BC8C /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 972505C31337A55100E4BC8C /* icon@2x.png */; };
-		973787EE135CF64700085EA9 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 973787ED135CF64700085EA9 /* CoreText.framework */; };
 		973787F2135CFB8200085EA9 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 973787F1135CFB8200085EA9 /* LoadingView.xib */; };
-		9792DFED13B268D300C41657 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9792DFEC13B268D300C41657 /* MobileCoreServices.framework */; };
-		9792DFF013B268D900C41657 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9792DFEF13B268D900C41657 /* MediaPlayer.framework */; };
-		97B8C40016785A98003B6E1B /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B8C3FF16785A98003B6E1B /* libc++.dylib */; };
-		97B8C40216785A9E003B6E1B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B8C40116785A9E003B6E1B /* OpenGLES.framework */; };
 		97B8C40416785AAC003B6E1B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B8C40316785AAC003B6E1B /* Default-568h@2x.png */; };
 		AF6FBC8C12550E5300F476B4 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6FBC8B12550E5300F476B4 /* MainWindow-iPad.xib */; };
 		C56B405E14C7526E003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B405D14C7526E003A46EB /* ArcGIS.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* WeatherInfoSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherInfoSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2899E5210DE3E06400AC0155 /* WeatherInfoSampleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherInfoSampleViewController.xib; sourceTree = "<group>"; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* WeatherInfoSample_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherInfoSample_Prefix.pch; sourceTree = "<group>"; };
-		3B7F19E810D1BEB900AFD7FB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		3B7F19EA10D1BEB900AFD7FB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* WeatherInfoSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WeatherInfoSample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		9702E5AF144655A500A46CA5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		9702E5B2144655AA00A46CA5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9725059C13379F6900E4BC8C /* WeatherInfoSampleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherInfoSampleAppDelegate.h; sourceTree = "<group>"; };
 		9725059D13379F6900E4BC8C /* WeatherInfoSampleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherInfoSampleAppDelegate.m; sourceTree = "<group>"; };
 		9725059E13379F6900E4BC8C /* WeatherInfoSampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherInfoSampleViewController.h; sourceTree = "<group>"; };
 		9725059F13379F6900E4BC8C /* WeatherInfoSampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherInfoSampleViewController.m; sourceTree = "<group>"; };
 		972505C21337A55100E4BC8C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		972505C31337A55100E4BC8C /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
-		973787ED135CF64700085EA9 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		973787F1135CFB8200085EA9 /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
-		9792DFEC13B268D300C41657 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		9792DFEF13B268D900C41657 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		97B8C3FF16785A98003B6E1B /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		97B8C40116785A9E003B6E1B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		97B8C40316785AAC003B6E1B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AF6FBC8B12550E5300F476B4 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
-		C56B405B14C7513E003A46EB /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		C56B405D14C7526E003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -69,18 +44,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97B8C40216785A9E003B6E1B /* OpenGLES.framework in Frameworks */,
-				97B8C40016785A98003B6E1B /* libc++.dylib in Frameworks */,
-				9702E5B3144655AA00A46CA5 /* Security.framework in Frameworks */,
-				9702E5B0144655A500A46CA5 /* libz.dylib in Frameworks */,
-				9792DFF013B268D900C41657 /* MediaPlayer.framework in Frameworks */,
-				9792DFED13B268D300C41657 /* MobileCoreServices.framework in Frameworks */,
-				973787EE135CF64700085EA9 /* CoreText.framework in Frameworks */,
-				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
-				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
-				3B7F19E910D1BEB900AFD7FB /* CoreLocation.framework in Frameworks */,
-				3B7F19EB10D1BEB900AFD7FB /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,19 +109,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				97B8C40116785A9E003B6E1B /* OpenGLES.framework */,
-				97B8C3FF16785A98003B6E1B /* libc++.dylib */,
-				C56B405B14C7513E003A46EB /* libstdc++.dylib */,
-				9702E5B2144655AA00A46CA5 /* Security.framework */,
-				9702E5AF144655A500A46CA5 /* libz.dylib */,
-				9792DFEF13B268D900C41657 /* MediaPlayer.framework */,
-				9792DFEC13B268D300C41657 /* MobileCoreServices.framework */,
-				973787ED135CF64700085EA9 /* CoreText.framework */,
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
-				3B7F19E810D1BEB900AFD7FB /* CoreLocation.framework */,
-				3B7F19EA10D1BEB900AFD7FB /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -265,14 +215,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PRODUCT_NAME = WeatherInfoSample;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = armv7;
 			};
 			name = Debug;
 		};
@@ -290,21 +240,22 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PRODUCT_NAME = WeatherInfoSample;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = armv7;
 			};
 			name = Release;
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -315,13 +266,13 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				VALID_ARCHS = armv7;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -331,7 +282,6 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				VALID_ARCHS = armv7;
 			};
 			name = Release;
 		};

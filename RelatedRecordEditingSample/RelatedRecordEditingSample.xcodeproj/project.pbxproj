@@ -7,19 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
-		3B7F19E910D1BEB900AFD7FB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7F19E810D1BEB900AFD7FB /* CoreLocation.framework */; };
-		3B7F19EB10D1BEB900AFD7FB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7F19EA10D1BEB900AFD7FB /* QuartzCore.framework */; };
-		9702E4D4144642E600A46CA5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9702E4D3144642E600A46CA5 /* libz.dylib */; };
-		9702E4DB1446430200A46CA5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9702E4DA1446430200A46CA5 /* Security.framework */; };
-		97CFF48D1679538000DA8AC4 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 97CFF48C1679538000DA8AC4 /* libc++.dylib */; };
-		97CFF4901679538500DA8AC4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97CFF48F1679538500DA8AC4 /* OpenGLES.framework */; };
 		97CFF4921679539000DA8AC4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97CFF4911679539000DA8AC4 /* Default-568h@2x.png */; };
-		AF03A3E313565931002EDADF /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF03A3E213565931002EDADF /* CoreText.framework */; };
-		AF97907A13955D8900835041 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF97907913955D8900835041 /* MediaPlayer.framework */; };
-		AF97907C13955D8900835041 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF97907B13955D8900835041 /* MobileCoreServices.framework */; };
 		C5128CBC147480F000A5EBF7 /* Agree.png in Resources */ = {isa = PBXBuildFile; fileRef = C5128CA7147480F000A5EBF7 /* Agree.png */; };
 		C5128CBD147480F000A5EBF7 /* Disagree.png in Resources */ = {isa = PBXBuildFile; fileRef = C5128CA8147480F000A5EBF7 /* Disagree.png */; };
 		C5128CBE147480F000A5EBF7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C5128CA9147480F000A5EBF7 /* icon.png */; };
@@ -38,20 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* RelatedRecordEditingSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RelatedRecordEditingSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		3B7F19E810D1BEB900AFD7FB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		3B7F19EA10D1BEB900AFD7FB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		9702E4D3144642E600A46CA5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		9702E4DA1446430200A46CA5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		97CFF48C1679538000DA8AC4 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		97CFF48F1679538500DA8AC4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		97CFF4911679539000DA8AC4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		AF03A3E213565931002EDADF /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		AF97907913955D8900835041 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		AF97907B13955D8900835041 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		C5128CA7147480F000A5EBF7 /* Agree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Agree.png; path = RelatedRecordEditingSample/Agree.png; sourceTree = SOURCE_ROOT; };
 		C5128CA8147480F000A5EBF7 /* Disagree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Disagree.png; path = RelatedRecordEditingSample/Disagree.png; sourceTree = SOURCE_ROOT; };
 		C5128CA9147480F000A5EBF7 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = RelatedRecordEditingSample/icon.png; sourceTree = SOURCE_ROOT; };
@@ -73,7 +49,6 @@
 		C5128CBA147480F000A5EBF7 /* RelatedRecordEditingSampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RelatedRecordEditingSampleViewController.m; path = RelatedRecordEditingSample/RelatedRecordEditingSampleViewController.m; sourceTree = SOURCE_ROOT; };
 		C5128CBB147480F000A5EBF7 /* RelatedRecordEditingSampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RelatedRecordEditingSampleViewController.xib; path = RelatedRecordEditingSample/RelatedRecordEditingSampleViewController.xib; sourceTree = SOURCE_ROOT; };
 		C56B400C14C74162003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
-		C5D0F06914C1059A00931433 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,18 +56,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97CFF4901679538500DA8AC4 /* OpenGLES.framework in Frameworks */,
-				97CFF48D1679538000DA8AC4 /* libc++.dylib in Frameworks */,
-				9702E4DB1446430200A46CA5 /* Security.framework in Frameworks */,
-				9702E4D4144642E600A46CA5 /* libz.dylib in Frameworks */,
-				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
-				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
-				3B7F19E910D1BEB900AFD7FB /* CoreLocation.framework in Frameworks */,
-				3B7F19EB10D1BEB900AFD7FB /* QuartzCore.framework in Frameworks */,
-				AF03A3E313565931002EDADF /* CoreText.framework in Frameworks */,
-				AF97907A13955D8900835041 /* MediaPlayer.framework in Frameworks */,
-				AF97907C13955D8900835041 /* MobileCoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,19 +85,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				97CFF48F1679538500DA8AC4 /* OpenGLES.framework */,
-				97CFF48C1679538000DA8AC4 /* libc++.dylib */,
-				C5D0F06914C1059A00931433 /* libstdc++.dylib */,
-				9702E4DA1446430200A46CA5 /* Security.framework */,
-				9702E4D3144642E600A46CA5 /* libz.dylib */,
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
-				3B7F19E810D1BEB900AFD7FB /* CoreLocation.framework */,
-				3B7F19EA10D1BEB900AFD7FB /* QuartzCore.framework */,
-				AF03A3E213565931002EDADF /* CoreText.framework */,
-				AF97907913955D8900835041 /* MediaPlayer.framework */,
-				AF97907B13955D8900835041 /* MobileCoreServices.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -285,14 +235,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PRODUCT_NAME = RelatedRecordEditingSample;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				VALID_ARCHS = armv7;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -312,14 +262,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PRODUCT_NAME = RelatedRecordEditingSample;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				VALID_ARCHS = armv7;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -328,6 +278,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -337,7 +288,6 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				VALID_ARCHS = armv7;
 			};
 			name = Debug;
 		};
@@ -345,6 +295,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -354,7 +305,6 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				VALID_ARCHS = armv7;
 			};
 			name = Release;
 		};

@@ -7,20 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9702E4BC1446421B00A46CA5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9702E4BB1446421B00A46CA5 /* libz.dylib */; };
-		9702E4BF1446422200A46CA5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9702E4BE1446422200A46CA5 /* Security.framework */; };
-		9755BA05167B8FF600518E4D /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9755BA04167B8FF600518E4D /* libc++.dylib */; };
-		9755BA07167B8FFB00518E4D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9755BA06167B8FFB00518E4D /* OpenGLES.framework */; };
 		9755BA09167B902400518E4D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9755BA08167B902400518E4D /* Default-568h@2x.png */; };
 		C56B3F5514C60251003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B3F5414C60251003A46EB /* ArcGIS.bundle */; };
-		C57F6ED313F6054600DAE553 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6ED213F6054600DAE553 /* UIKit.framework */; };
-		C57F6ED513F6054600DAE553 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6ED413F6054600DAE553 /* Foundation.framework */; };
-		C57F6ED713F6054600DAE553 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6ED613F6054600DAE553 /* CoreGraphics.framework */; };
-		C57F6ED913F6054600DAE553 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6ED813F6054600DAE553 /* CoreText.framework */; };
-		C57F6EDB13F6054600DAE553 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6EDA13F6054600DAE553 /* CoreLocation.framework */; };
-		C57F6EDD13F6054600DAE553 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6EDC13F6054600DAE553 /* MediaPlayer.framework */; };
-		C57F6EDF13F6054600DAE553 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6EDE13F6054600DAE553 /* MobileCoreServices.framework */; };
-		C57F6EE113F6054600DAE553 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F6EE013F6054600DAE553 /* QuartzCore.framework */; };
 		C57F6EE713F6054600DAE553 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C57F6EE513F6054600DAE553 /* InfoPlist.strings */; };
 		C57F6EEA13F6054600DAE553 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C57F6EE913F6054600DAE553 /* main.m */; };
 		C57F6EED13F6054600DAE553 /* ClosestFacilitySampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C57F6EEC13F6054600DAE553 /* ClosestFacilitySampleAppDelegate.m */; };
@@ -42,22 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9702E4BB1446421B00A46CA5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		9702E4BE1446422200A46CA5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		973CA800157D47780084BB5D /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
-		9755BA04167B8FF600518E4D /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		9755BA06167B8FFB00518E4D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		9755BA08167B902400518E4D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C56B3F5414C60251003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		C57F6ECE13F6054600DAE553 /* ClosestFacilitySample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClosestFacilitySample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C57F6ED213F6054600DAE553 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C57F6ED413F6054600DAE553 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C57F6ED613F6054600DAE553 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C57F6ED813F6054600DAE553 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		C57F6EDA13F6054600DAE553 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		C57F6EDC13F6054600DAE553 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		C57F6EDE13F6054600DAE553 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		C57F6EE013F6054600DAE553 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C57F6EE413F6054600DAE553 /* ClosestFacilitySample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ClosestFacilitySample-Info.plist"; sourceTree = "<group>"; };
 		C57F6EE613F6054600DAE553 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C57F6EE813F6054600DAE553 /* ClosestFacilitySample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ClosestFacilitySample-Prefix.pch"; sourceTree = "<group>"; };
@@ -89,18 +64,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9755BA07167B8FFB00518E4D /* OpenGLES.framework in Frameworks */,
-				9755BA05167B8FF600518E4D /* libc++.dylib in Frameworks */,
-				9702E4BF1446422200A46CA5 /* Security.framework in Frameworks */,
-				9702E4BC1446421B00A46CA5 /* libz.dylib in Frameworks */,
-				C57F6ED313F6054600DAE553 /* UIKit.framework in Frameworks */,
-				C57F6ED513F6054600DAE553 /* Foundation.framework in Frameworks */,
-				C57F6ED713F6054600DAE553 /* CoreGraphics.framework in Frameworks */,
-				C57F6ED913F6054600DAE553 /* CoreText.framework in Frameworks */,
-				C57F6EDB13F6054600DAE553 /* CoreLocation.framework in Frameworks */,
-				C57F6EDD13F6054600DAE553 /* MediaPlayer.framework in Frameworks */,
-				C57F6EDF13F6054600DAE553 /* MobileCoreServices.framework in Frameworks */,
-				C57F6EE113F6054600DAE553 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,19 +94,6 @@
 		C57F6ED113F6054600DAE553 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9755BA06167B8FFB00518E4D /* OpenGLES.framework */,
-				9755BA04167B8FF600518E4D /* libc++.dylib */,
-				973CA800157D47780084BB5D /* libstdc++.dylib */,
-				9702E4BB1446421B00A46CA5 /* libz.dylib */,
-				9702E4BE1446422200A46CA5 /* Security.framework */,
-				C57F6ED213F6054600DAE553 /* UIKit.framework */,
-				C57F6ED413F6054600DAE553 /* Foundation.framework */,
-				C57F6ED613F6054600DAE553 /* CoreGraphics.framework */,
-				C57F6ED813F6054600DAE553 /* CoreText.framework */,
-				C57F6EDA13F6054600DAE553 /* CoreLocation.framework */,
-				C57F6EDC13F6054600DAE553 /* MediaPlayer.framework */,
-				C57F6EDE13F6054600DAE553 /* MobileCoreServices.framework */,
-				C57F6EE013F6054600DAE553 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -345,15 +295,15 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = armv7;
 			};
 			name = Debug;
 		};
@@ -373,15 +323,15 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E89AACA5-4D0F-4BD5-87F9-80588D33ADA4";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = armv7;
 			};
 			name = Release;
 		};
@@ -389,6 +339,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
@@ -401,14 +352,14 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -417,6 +368,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -429,16 +381,16 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9760C52D158BC2D500986512 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9760C52C158BC2D500986512 /* UIKit.framework */; };
-		9760C52F158BC2D500986512 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9760C52E158BC2D500986512 /* Foundation.framework */; };
-		9760C531158BC2D500986512 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9760C530158BC2D500986512 /* CoreGraphics.framework */; };
 		9760C537158BC2D500986512 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9760C535158BC2D500986512 /* InfoPlist.strings */; };
 		9760C539158BC2D500986512 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9760C538158BC2D500986512 /* main.m */; };
 		9760C576158BC3ED00986512 /* checkbox_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 9760C567158BC3ED00986512 /* checkbox_empty.png */; };
@@ -24,13 +21,6 @@
 		9760C580158BC3ED00986512 /* line.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9760C571158BC3ED00986512 /* line.gif */; };
 		9760C582158BC3ED00986512 /* MeasureDistance48.png in Resources */ = {isa = PBXBuildFile; fileRef = 9760C573158BC3ED00986512 /* MeasureDistance48.png */; };
 		9760C584158BC3ED00986512 /* MeasureArea48.png in Resources */ = {isa = PBXBuildFile; fileRef = 9760C575158BC3ED00986512 /* MeasureArea48.png */; };
-		9760C586158BC42D00986512 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9760C585158BC42D00986512 /* CoreLocation.framework */; };
-		9760C588158BC43C00986512 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9760C587158BC43C00986512 /* QuartzCore.framework */; };
-		9760C58A158BC44A00986512 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9760C589158BC44A00986512 /* CoreText.framework */; };
-		9760C58E158BC45800986512 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9760C58D158BC45800986512 /* MediaPlayer.framework */; };
-		9760C590158BC45D00986512 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9760C58F158BC45D00986512 /* MobileCoreServices.framework */; };
-		9760C592158BC46600986512 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9760C591158BC46600986512 /* libz.dylib */; };
-		9760C594158BC46B00986512 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9760C593158BC46B00986512 /* Security.framework */; };
 		9760C597158BC50A00986512 /* RelationshipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9760C595158BC50A00986512 /* RelationshipViewController.m */; };
 		9760C5AA158BC53C00986512 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9760C598158BC53C00986512 /* RootViewController.m */; };
 		9760C5AB158BC53C00986512 /* BufferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9760C599158BC53C00986512 /* BufferViewController.m */; };
@@ -51,16 +41,11 @@
 		9760C5C3158BC5A800986512 /* CutterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9760C5C1158BC5A800986512 /* CutterView.xib */; };
 		9760C5C4158BC5A800986512 /* BufferView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9760C5C2158BC5A800986512 /* BufferView.xib */; };
 		9760C635158BDCA500986512 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9760C634158BDCA500986512 /* AppDelegate.m */; };
-		97B8C3831677D107003B6E1B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B8C3821677D107003B6E1B /* OpenGLES.framework */; };
-		97B8C3851677D10F003B6E1B /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B8C3841677D10F003B6E1B /* libc++.dylib */; };
 		DE60C5E015A63FCD005B36DA /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DE60C5DF15A63FCD005B36DA /* ArcGIS.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9760C528158BC2D500986512 /* GeometrySample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeometrySample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9760C52C158BC2D500986512 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		9760C52E158BC2D500986512 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		9760C530158BC2D500986512 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		9760C534158BC2D500986512 /* GeometrySample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GeometrySample-Info.plist"; sourceTree = "<group>"; };
 		9760C536158BC2D500986512 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9760C538158BC2D500986512 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -78,14 +63,6 @@
 		9760C571158BC3ED00986512 /* line.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = line.gif; path = images/line.gif; sourceTree = "<group>"; };
 		9760C573158BC3ED00986512 /* MeasureDistance48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MeasureDistance48.png; path = images/MeasureDistance48.png; sourceTree = "<group>"; };
 		9760C575158BC3ED00986512 /* MeasureArea48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MeasureArea48.png; path = images/MeasureArea48.png; sourceTree = "<group>"; };
-		9760C585158BC42D00986512 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		9760C587158BC43C00986512 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		9760C589158BC44A00986512 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		9760C58B158BC45000986512 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
-		9760C58D158BC45800986512 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		9760C58F158BC45D00986512 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		9760C591158BC46600986512 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		9760C593158BC46B00986512 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9760C595158BC50A00986512 /* RelationshipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelationshipViewController.m; sourceTree = "<group>"; };
 		9760C596158BC50A00986512 /* RelationshipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelationshipViewController.h; sourceTree = "<group>"; };
 		9760C598158BC53C00986512 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
@@ -116,8 +93,6 @@
 		9760C5C1158BC5A800986512 /* CutterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CutterView.xib; sourceTree = "<group>"; };
 		9760C5C2158BC5A800986512 /* BufferView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BufferView.xib; sourceTree = "<group>"; };
 		9760C634158BDCA500986512 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		97B8C3821677D107003B6E1B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		97B8C3841677D10F003B6E1B /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		DE60C5DF15A63FCD005B36DA /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -126,18 +101,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97B8C3851677D10F003B6E1B /* libc++.dylib in Frameworks */,
-				97B8C3831677D107003B6E1B /* OpenGLES.framework in Frameworks */,
-				9760C594158BC46B00986512 /* Security.framework in Frameworks */,
-				9760C592158BC46600986512 /* libz.dylib in Frameworks */,
-				9760C590158BC45D00986512 /* MobileCoreServices.framework in Frameworks */,
-				9760C58E158BC45800986512 /* MediaPlayer.framework in Frameworks */,
-				9760C58A158BC44A00986512 /* CoreText.framework in Frameworks */,
-				9760C588158BC43C00986512 /* QuartzCore.framework in Frameworks */,
-				9760C586158BC42D00986512 /* CoreLocation.framework in Frameworks */,
-				9760C52D158BC2D500986512 /* UIKit.framework in Frameworks */,
-				9760C52F158BC2D500986512 /* Foundation.framework in Frameworks */,
-				9760C531158BC2D500986512 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,19 +128,6 @@
 		9760C52B158BC2D500986512 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				97B8C3841677D10F003B6E1B /* libc++.dylib */,
-				97B8C3821677D107003B6E1B /* OpenGLES.framework */,
-				9760C593158BC46B00986512 /* Security.framework */,
-				9760C591158BC46600986512 /* libz.dylib */,
-				9760C58F158BC45D00986512 /* MobileCoreServices.framework */,
-				9760C58D158BC45800986512 /* MediaPlayer.framework */,
-				9760C58B158BC45000986512 /* libstdc++.dylib */,
-				9760C589158BC44A00986512 /* CoreText.framework */,
-				9760C587158BC43C00986512 /* QuartzCore.framework */,
-				9760C585158BC42D00986512 /* CoreLocation.framework */,
-				9760C52C158BC2D500986512 /* UIKit.framework */,
-				9760C52E158BC2D500986512 /* Foundation.framework */,
-				9760C530158BC2D500986512 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -425,6 +375,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
@@ -449,7 +400,6 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
-				VALID_ARCHS = armv7;
 			};
 			name = Debug;
 		};
@@ -458,6 +408,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
@@ -477,7 +428,6 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = armv7;
 			};
 			name = Release;
 		};
@@ -491,9 +441,10 @@
 				INFOPLIST_FILE = "GeometrySample/GeometrySample-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -510,9 +461,10 @@
 				INFOPLIST_FILE = "GeometrySample/GeometrySample-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-framework",
 					ArcGIS,
+					"-l",
+					"c++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

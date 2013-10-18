@@ -18,9 +18,9 @@
 
 #import "OfflineTestViewController.h"
 #import "AppDelegate.h"
-#import "ConnectionManager.h"
 #import "FeatureTemplatePickerViewController.h"
 #import "SVProgressHUD.h"
+#import "JSBadgeView.h"
 
 
 
@@ -37,6 +37,8 @@
     AGSGDBFeature *_addFeature;
     AGSEnvelope *_lastExtent;
     
+    JSBadgeView* _badge;
+    int _syncButtonIndex;
     
     BOOL _goingOffline;
     BOOL _goingOnline;
@@ -55,6 +57,8 @@
     UIPopoverController* _pvc;
     FeatureTemplatePickerViewController* _vc;
 }
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UIView *badgeView;
 
 @property (nonatomic, strong) AGSGDBGeodatabase *geodatabase;
 @property (nonatomic, strong) AGSGDBTask *gdbTask;
@@ -77,17 +81,13 @@
         
         _tpkURL = [NSURL URLWithString:@"http://sds2-appgrp.esri.com:6080/arcgis/rest/services/RedlandsBasemap2/MapServer"];
         
-//        _featureLayerMgr = [[ConnectionManager alloc]init];
-//
-//        _connectionMgrs = @[ _featureLayerMgr];
-        
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(connectionStatusChanged:) name:ConnectionManagerChangedNotification object:nil];
     }
     return self;
 }
 
 - (void)viewDidLoad{
     
+    [super viewDidLoad];
     self.mapView = [[AGSMapView alloc]initWithFrame:self.mapContainer.bounds];
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.mapContainer addSubview:self.mapView];
@@ -97,6 +97,8 @@
     self.mapView.layerDelegate = self;
     self.mapView.callout.delegate = self;
 
+        _localTiledLayer =  [AGSLocalTiledLayer localTiledLayerWithName:@"SanFrancisco"];
+    [self.mapView addMapLayer:_localTiledLayer];
     self.gdbTask = [[AGSGDBTask alloc]initWithURL:[NSURL URLWithString:@"http://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/Wildfire/FeatureServer"]];
     self.gdbTask.timeoutInterval = 300;
     __weak OfflineTestViewController* weakSelf = self;
@@ -110,14 +112,13 @@
             fl.delegate = weakSelf;
             fl.editingDelegate = weakSelf;
             [weakSelf.mapView addMapLayer:fl];
+            [SVProgressHUD showProgress:-1 status:@"Loading layers"];
+
         }
     };
 
-    _localTiledLayer =  [AGSLocalTiledLayer localTiledLayerWithName:@"SanFrancisco"];
     _allStatus = [NSMutableString string];
     
-    
-
     self.offlineStatusLabel.text = @"online";
     self.statusLabel.text = @"";
     
@@ -139,9 +140,13 @@
     [_statusLabel addGestureRecognizer:gr2];
     _statusLabel.userInteractionEnabled = YES;
     
-    [self goOnline];
+    //[self goOnline];
+    [self clearStatus];
     
-    [super viewDidLoad];
+    self.syncButton.enabled = NO;
+    
+
+
 }
 
 - (void)viewDidUnload{
@@ -177,17 +182,23 @@
 
 #pragma mark layer delegate
 
-//-(void)layerDidLoad:(AGSLayer *)layer{
-//    if (layer == _fl){
-//        [_featureLayerMgr successfullyWentOnline];
-//    }
-//}
-//
-//-(void)layer:(AGSLayer *)layer didFailToLoadWithError:(NSError *)error{
-//    if (layer == _fl){
-//        [_featureLayerMgr failedToGoOnline];
-//    }
-//}
+-(void)layerDidLoad:(AGSLayer *)layer{
+    if([layer isKindOfClass:[AGSFeatureLayer class]]){
+        AGSFeatureLayer* fl = (AGSFeatureLayer*)layer;
+        [self logStatus:[NSString stringWithFormat:@"Loaded %@",fl.URL]];
+        [SVProgressHUD popActivity];
+        [self.mapView zoomToScale:fl.minScale animated:YES];
+    }
+}
+
+-(void)layer:(AGSLayer *)layer didFailToLoadWithError:(NSError *)error{
+    if([layer isKindOfClass:[AGSFeatureLayer class]]){
+        AGSFeatureLayer* fl = (AGSFeatureLayer*)layer;
+        [self logStatus:[NSString stringWithFormat:@"Failed to load %@. Error:%@",fl.URL, error]];
+        [SVProgressHUD popActivity];
+        
+    }
+}
 
 
 #pragma mark - AGSMapViewTouchDelegate methods
@@ -438,6 +449,11 @@
             AGSEditResult *result = [popup.gdbFeatureTable updateFeature:popup.gdbFeature];
             [self logStatus:[NSString stringWithFormat:@"update result: %@ feature: %@", result, popup.gdbFeature.shortDescription]];
         }
+        
+        [_badge removeFromSuperview];
+        _badge = [[JSBadgeView alloc]initWithParentView:self.badgeView alignment:JSBadgeViewAlignmentCenterLeft];
+        _badge.badgeText = [self numberOfEditsInGeodatabase:popup.gdbFeatureTable.geodatabase];
+
     }
     
     else if (popup.graphic){
@@ -448,12 +464,25 @@
             [popup.featureLayer updateFeatures:@[popup.graphic]];
         }
     }
+    
+}
+
+- (NSString*) numberOfEditsInGeodatabase:(AGSGDBGeodatabase*)gdb{
+    int total = 0;
+    for (AGSGDBFeatureTable* ftable in gdb.featureTables) {
+        total += [ftable addedFeatures].count + [ftable deletedFeatures].count + [ftable updatedFeatures].count;
+    }
+    return [[NSNumber numberWithInt:total] stringValue];
 }
 
 -(void) popupsContainer:(id<AGSPopupsContainer>)popupsContainer wantsToDeleteForPopup:(AGSPopup *)popup{
     if([popup.feature isKindOfClass:[AGSGDBFeature class]]){
        AGSEditResult *result = [popup.gdbFeature.table deleteFeature:popup.gdbFeature];
         [self logStatus:[NSString stringWithFormat:@"delete result: %@ feature: %@", result, popup.gdbFeature.shortDescription]];
+        [_badge removeFromSuperview];
+        _badge = [[JSBadgeView alloc]initWithParentView:self.badgeView alignment:JSBadgeViewAlignmentCenterLeft];
+        _badge.badgeText = [self numberOfEditsInGeodatabase:popup.gdbFeatureTable.geodatabase];
+
     }else{
         AGSFeatureLayer* fLayer = (AGSFeatureLayer*) popup.graphic.layer;
         
@@ -527,7 +556,7 @@
     AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
     [app logAppStatus:status];
     
-    [self performSelector:@selector(clearStatus) withObject:nil afterDelay:5];
+    [self performSelector:@selector(clearStatus) withObject:nil afterDelay:2];
 }
 
 -(void)clearStatus{
@@ -541,20 +570,6 @@
         return;
     }
     
-//    BOOL offlineBefore = _offline;
-//        
-//    _goingOffline = NO;
-//    _goingOnline = NO;
-//    _offline = YES;
-//    for (ConnectionManager *cm in _connectionMgrs){
-//        if (cm.isGoingOffline){
-//            _goingOffline = YES;
-//        }
-//        if (cm.isGoingOnline){
-//            _goingOnline = YES;
-//        }
-//        _offline = _offline && cm.isOffline;
-//    }
     
     // set status
     if (_goingOffline){
@@ -573,6 +588,9 @@
     }
     
     _goOfflineButton.enabled = !_goingOffline && !_goingOnline;
+    self.syncButton.enabled = _offline;
+    if(!self.syncButton.enabled)
+        [_badgeView removeFromSuperview];
 
 
 }
@@ -589,11 +607,18 @@
         [self goOnline];
     }
     else{
+        if([self.geodatabase hasLocalEdits]){
+            UIAlertView* av = [[UIAlertView alloc]initWithTitle:nil message:@"Do you want to sync local edits with the service?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+            [av show];
+            return;
+        }
+
         [self goOffline];
     }
 }
 
 -(void)goOnline{
+    
     _goingOnline = YES;
     
     [self logStatus:@"going online"];
@@ -604,7 +629,6 @@
         [_mapView zoomToEnvelope:_lastExtent animated:NO];
     }
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(featureLayerDidLoadFeatures:) name:AGSFeatureLayerDidLoadFeaturesNotification object:nil];
     self.gdbTask = [[AGSGDBTask alloc]initWithURL:[NSURL URLWithString:@"http://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/Wildfire/FeatureServer"]];
     self.gdbTask.timeoutInterval = 300;
     __weak OfflineTestViewController* weakSelf = self;
@@ -620,15 +644,14 @@
         
             [weakSelf.mapView addMapLayer:fl];
             [weakSelf logStatus:[NSString stringWithFormat:@"loading: %@", [fl.URL absoluteString]]];
-
         }
+        [weakSelf logStatus:@"now online"];
+        [weakSelf updateOfflineStatus];
     };
+
     _goingOnline = NO;
     _offline = NO;
-    [self logStatus:@"now online"];
-    [self updateOfflineStatus];
 
-    
  }
 
 -(void)featureLayerDidLoadFeatures:(NSNotification*)notification{
@@ -683,7 +706,13 @@
             [SVProgressHUD showSuccessWithStatus:@"Now offline"];
         }
         [self updateOfflineStatus];
-
+        if ([geodatabase hasLocalEdits]) {
+            [_badge removeFromSuperview];
+            _badge = [[JSBadgeView alloc]initWithParentView:self.badgeView alignment:JSBadgeViewAlignmentCenterLeft];
+            _badge.badgeText = [self numberOfEditsInGeodatabase:geodatabase];
+            
+        }
+    
         
     }];
 }
@@ -712,8 +741,10 @@
             [SVProgressHUD showErrorWithStatus:@"Error encountered"];
         }
         else{
-            [weakSelf logStatus:[NSString stringWithFormat:@"synchronization complete"]];
+            [weakSelf logStatus:[NSString stringWithFormat:@"sync complete"]];
             [SVProgressHUD showSuccessWithStatus:@"Sync complete"];
+            [_badge removeFromSuperview];
+
         }
         
     }];

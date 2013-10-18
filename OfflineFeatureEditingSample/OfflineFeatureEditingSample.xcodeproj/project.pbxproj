@@ -9,18 +9,14 @@
 /* Begin PBXBuildFile section */
 		4B1921171746F5D000E724BE /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4B1921161746F5D000E724BE /* ArcGIS.bundle */; };
 		97110215180A17240085B216 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97110204180A17240085B216 /* AppDelegate.m */; };
-		97110216180A17240085B216 /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 97110206180A17240085B216 /* ConnectionManager.m */; };
 		97110217180A17240085B216 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97110207180A17240085B216 /* Default-568h@2x.png */; };
 		97110218180A17240085B216 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 97110208180A17240085B216 /* Default.png */; };
 		97110219180A17240085B216 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97110209180A17240085B216 /* Default@2x.png */; };
 		9711021A180A17240085B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9711020A180A17240085B216 /* InfoPlist.strings */; };
-		9711021B180A17240085B216 /* icon-route.png in Resources */ = {isa = PBXBuildFile; fileRef = 9711020C180A17240085B216 /* icon-route.png */; };
 		9711021C180A17240085B216 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9711020D180A17240085B216 /* main.m */; };
-		9711021D180A17240085B216 /* OfflineFeatureEditingSample-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9711020E180A17240085B216 /* OfflineFeatureEditingSample-Info.plist */; };
 		9711021E180A17240085B216 /* OfflineTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97110211180A17240085B216 /* OfflineTestViewController.m */; };
 		9711021F180A17240085B216 /* OfflineTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97110212180A17240085B216 /* OfflineTestViewController.xib */; };
 		97110220180A17240085B216 /* OfflineTestViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97110213180A17240085B216 /* OfflineTestViewController~ipad.xib */; };
-		97110221180A17240085B216 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 97110214180A17240085B216 /* Settings.bundle */; };
 		975579C9180A18CB00904382 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 975579C7180A18CA00904382 /* icon.png */; };
 		975579CA180A18CB00904382 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 975579C8180A18CB00904382 /* icon@2x.png */; };
 		975579CC180A1DB600904382 /* SanFrancisco.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 975579CB180A1DB600904382 /* SanFrancisco.tpk */; };
@@ -28,32 +24,18 @@
 		975579D1180A5AE000904382 /* FeatureTemplatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 975579D0180A5AE000904382 /* FeatureTemplatePickerViewController.xib */; };
 		975579D7180B624300904382 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 975579D4180B624300904382 /* SVProgressHUD.bundle */; };
 		975579D8180B624300904382 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 975579D6180B624300904382 /* SVProgressHUD.m */; };
+		9786549018109EF000073680 /* JSBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9786548F18109EF000073680 /* JSBadgeView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4B1920D31746ECC900E724BE /* OfflineFeatureEditingSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfflineFeatureEditingSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B1920D61746ECC900E724BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		4B1920D81746ECC900E724BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		4B1920DA1746ECC900E724BE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		4B1921041746F45500E724BE /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		4B1921061746F45A00E724BE /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		4B1921081746F46300E724BE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		4B19210A1746F52E00E724BE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		4B19210C1746F54800E724BE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		4B19210E1746F54D00E724BE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		4B1921101746F55900E724BE /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		4B1921121746F55E00E724BE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		4B1921141746F56600E724BE /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4B1921161746F5D000E724BE /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		97110203180A17240085B216 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		97110204180A17240085B216 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		97110205180A17240085B216 /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionManager.h; sourceTree = "<group>"; };
-		97110206180A17240085B216 /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
 		97110207180A17240085B216 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		97110208180A17240085B216 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		97110209180A17240085B216 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		9711020B180A17240085B216 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9711020C180A17240085B216 /* icon-route.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-route.png"; sourceTree = "<group>"; };
 		9711020D180A17240085B216 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9711020E180A17240085B216 /* OfflineFeatureEditingSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OfflineFeatureEditingSample-Info.plist"; sourceTree = "<group>"; };
 		9711020F180A17240085B216 /* OfflineFeatureEditingSample-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OfflineFeatureEditingSample-Prefix.pch"; sourceTree = "<group>"; };
@@ -61,7 +43,6 @@
 		97110211180A17240085B216 /* OfflineTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineTestViewController.m; sourceTree = "<group>"; };
 		97110212180A17240085B216 /* OfflineTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OfflineTestViewController.xib; sourceTree = "<group>"; };
 		97110213180A17240085B216 /* OfflineTestViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "OfflineTestViewController~ipad.xib"; sourceTree = "<group>"; };
-		97110214180A17240085B216 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		975579C7180A18CA00904382 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		975579C8180A18CB00904382 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		975579CB180A1DB600904382 /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "../Data/tile package/SanFrancisco.tpk"; sourceTree = "<group>"; };
@@ -72,6 +53,8 @@
 		975579D4180B624300904382 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		975579D5180B624300904382 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		975579D6180B624300904382 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		9786548E18109EF000073680 /* JSBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBadgeView.h; sourceTree = "<group>"; };
+		9786548F18109EF000073680 /* JSBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBadgeView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +71,7 @@
 		4B1920CA1746ECC900E724BE = {
 			isa = PBXGroup;
 			children = (
+				9786548D18109EF000073680 /* JSBadgeView */,
 				975579D2180B624300904382 /* SVProgressHUD */,
 				975579CB180A1DB600904382 /* SanFrancisco.tpk */,
 				97110202180A17240085B216 /* OfflineFeatureEditing */,
@@ -108,18 +92,6 @@
 		4B1920D51746ECC900E724BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4B1921141746F56600E724BE /* MobileCoreServices.framework */,
-				4B1921121746F55E00E724BE /* SystemConfiguration.framework */,
-				4B1921101746F55900E724BE /* MediaPlayer.framework */,
-				4B19210E1746F54D00E724BE /* Security.framework */,
-				4B19210C1746F54800E724BE /* CoreLocation.framework */,
-				4B19210A1746F52E00E724BE /* QuartzCore.framework */,
-				4B1921081746F46300E724BE /* CoreText.framework */,
-				4B1921061746F45A00E724BE /* libc++.dylib */,
-				4B1921041746F45500E724BE /* OpenGLES.framework */,
-				4B1920D61746ECC900E724BE /* UIKit.framework */,
-				4B1920D81746ECC900E724BE /* Foundation.framework */,
-				4B1920DA1746ECC900E724BE /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -127,28 +99,20 @@
 		97110202180A17240085B216 /* OfflineFeatureEditing */ = {
 			isa = PBXGroup;
 			children = (
+				9786548C1810917200073680 /* Resources */,
 				97110203180A17240085B216 /* AppDelegate.h */,
 				97110204180A17240085B216 /* AppDelegate.m */,
-				97110205180A17240085B216 /* ConnectionManager.h */,
-				975579C7180A18CA00904382 /* icon.png */,
-				975579C8180A18CB00904382 /* icon@2x.png */,
-				97110206180A17240085B216 /* ConnectionManager.m */,
-				97110207180A17240085B216 /* Default-568h@2x.png */,
-				97110208180A17240085B216 /* Default.png */,
-				97110209180A17240085B216 /* Default@2x.png */,
 				9711020A180A17240085B216 /* InfoPlist.strings */,
-				9711020C180A17240085B216 /* icon-route.png */,
 				9711020D180A17240085B216 /* main.m */,
 				9711020E180A17240085B216 /* OfflineFeatureEditingSample-Info.plist */,
 				9711020F180A17240085B216 /* OfflineFeatureEditingSample-Prefix.pch */,
 				97110210180A17240085B216 /* OfflineTestViewController.h */,
 				97110211180A17240085B216 /* OfflineTestViewController.m */,
+				97110212180A17240085B216 /* OfflineTestViewController.xib */,
+				97110213180A17240085B216 /* OfflineTestViewController~ipad.xib */,
 				975579CD180A561300904382 /* FeatureTemplatePickerViewController.m */,
 				975579CE180A561300904382 /* FeatureTemplatePickerViewController.h */,
 				975579D0180A5AE000904382 /* FeatureTemplatePickerViewController.xib */,
-				97110212180A17240085B216 /* OfflineTestViewController.xib */,
-				97110213180A17240085B216 /* OfflineTestViewController~ipad.xib */,
-				97110214180A17240085B216 /* Settings.bundle */,
 			);
 			path = OfflineFeatureEditing;
 			sourceTree = "<group>";
@@ -162,6 +126,27 @@
 				975579D6180B624300904382 /* SVProgressHUD.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		9786548C1810917200073680 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				975579C7180A18CA00904382 /* icon.png */,
+				975579C8180A18CB00904382 /* icon@2x.png */,
+				97110207180A17240085B216 /* Default-568h@2x.png */,
+				97110208180A17240085B216 /* Default.png */,
+				97110209180A17240085B216 /* Default@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		9786548D18109EF000073680 /* JSBadgeView */ = {
+			isa = PBXGroup;
+			children = (
+				9786548E18109EF000073680 /* JSBadgeView.h */,
+				9786548F18109EF000073680 /* JSBadgeView.m */,
+			);
+			path = JSBadgeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,7 +175,7 @@
 		4B1920CB1746ECC900E724BE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Esri;
 			};
 			buildConfigurationList = 4B1920CE1746ECC900E724BE /* Build configuration list for PBXProject "OfflineFeatureEditingSample" */;
@@ -217,11 +202,8 @@
 			files = (
 				9711021F180A17240085B216 /* OfflineTestViewController.xib in Resources */,
 				97110219180A17240085B216 /* Default@2x.png in Resources */,
-				97110221180A17240085B216 /* Settings.bundle in Resources */,
 				4B1921171746F5D000E724BE /* ArcGIS.bundle in Resources */,
-				9711021D180A17240085B216 /* OfflineFeatureEditingSample-Info.plist in Resources */,
 				975579CA180A18CB00904382 /* icon@2x.png in Resources */,
-				9711021B180A17240085B216 /* icon-route.png in Resources */,
 				975579C9180A18CB00904382 /* icon.png in Resources */,
 				97110218180A17240085B216 /* Default.png in Resources */,
 				97110217180A17240085B216 /* Default-568h@2x.png in Resources */,
@@ -243,8 +225,8 @@
 				9711021E180A17240085B216 /* OfflineTestViewController.m in Sources */,
 				975579CF180A561300904382 /* FeatureTemplatePickerViewController.m in Sources */,
 				97110215180A17240085B216 /* AppDelegate.m in Sources */,
+				9786549018109EF000073680 /* JSBadgeView.m in Sources */,
 				9711021C180A17240085B216 /* main.m in Sources */,
-				97110216180A17240085B216 /* ConnectionManager.m in Sources */,
 				975579D8180B624300904382 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +251,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -288,7 +271,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -301,6 +284,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -313,7 +297,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -330,6 +314,7 @@
 				GCC_PREFIX_HEADER = "OfflineFeatureEditing/OfflineFeatureEditingSample-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/OfflineFeatureEditing/OfflineFeatureEditingSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",

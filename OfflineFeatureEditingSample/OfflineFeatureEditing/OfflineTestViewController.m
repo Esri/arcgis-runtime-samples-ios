@@ -111,6 +111,8 @@
             AGSFeatureLayer* fl = [AGSFeatureLayer featureServiceLayerWithURL:url mode:AGSFeatureLayerModeOnDemand];
             fl.delegate = weakSelf;
             fl.editingDelegate = weakSelf;
+            fl.expirationInterval = 120;
+            fl.autoRefreshOnExpiration = YES;
             [weakSelf.mapView addMapLayer:fl];
             [SVProgressHUD showProgress:-1 status:@"Loading layers"];
 
@@ -119,7 +121,7 @@
 
     _allStatus = [NSMutableString string];
     
-    self.offlineStatusLabel.text = @"online";
+    self.offlineStatusLabel.text = @"Live data" ;//@"online";
     self.statusLabel.text = @"";
     
     CGRect f = self.mapView.frame;
@@ -579,20 +581,33 @@
         _offlineStatusLabel.text = @"going online...";
     }
     else if (_offline){
-        _offlineStatusLabel.text = @"offline";
-        _goOfflineButton.title = @"go online";
+        _offlineStatusLabel.text = @"Local data"; //@"offline";
+        _goOfflineButton.title = @"go live"; //@"go online";
     }
     else if (!_offline){
-        _offlineStatusLabel.text = @"online";
-        _goOfflineButton.title = @"go offline";
+        _offlineStatusLabel.text = @"Live data"; //@"online";
+        _goOfflineButton.title = @"download"; //@"go offline";
+        [_badgeView removeFromSuperview];
     }
     
     _goOfflineButton.enabled = !_goingOffline && !_goingOnline;
     self.syncButton.enabled = _offline;
-    if(!self.syncButton.enabled)
-        [_badgeView removeFromSuperview];
 
 
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case 0: //No, just switch to live
+            [self goOnline];
+            break;
+        case 1: //Yes, first sync, then switch to live
+            [self syncAction:nil];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (IBAction)goOfflineAction:(id)sender {
@@ -604,14 +619,13 @@
     _lastExtent = _mapView.visibleAreaEnvelope;
     
     if (_offline){
-        [self goOnline];
-    }
-    else{
         if([self.geodatabase hasLocalEdits]){
             UIAlertView* av = [[UIAlertView alloc]initWithTitle:nil message:@"Do you want to sync local edits with the service?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
             [av show];
             return;
         }
+    }
+    else{
 
         [self goOffline];
     }
@@ -635,7 +649,7 @@
     __weak AGSGDBTask* weakTask = self.gdbTask;
     self.gdbTask.loadCompletion = ^(NSError* error){
         for (AGSMapServiceLayerInfo* info in weakTask.featureServiceInfo.layerInfos) {
-            [SVProgressHUD showProgress:-1 status:@"Going online"];
+            [SVProgressHUD showProgress:-1 status:@"Switching to \n live data"];
             NSURL* url = [weakTask.URL URLByAppendingPathComponent:[NSString stringWithFormat:@"%d",info.layerId]];
             
             AGSFeatureLayer* fl = [AGSFeatureLayer featureServiceLayerWithURL:url mode:AGSFeatureLayerModeOnDemand];
@@ -659,7 +673,7 @@
 }
 -(void)goOffline{
     
-    [SVProgressHUD showWithStatus:@"Going Offline"];
+    [SVProgressHUD showWithStatus:@"Downloading \n features"/*@"Going Offline*/];
     // feature layer
     [self generateGDB];
 
@@ -689,7 +703,7 @@
         if (error){
             _goingOffline = NO;
             _offline = NO;
-            [self logStatus:[NSString stringWithFormat:@"error taking feature layers offline: %@", error]];
+            [wself logStatus:[NSString stringWithFormat:@"error taking feature layers offline: %@", error]];
             [SVProgressHUD showErrorWithStatus:@"Couldn't go offline"];
         }
         else{
@@ -703,15 +717,15 @@
                     [wself.mapView addMapLayer:[[AGSFeatureTableLayer alloc]initWithFeatureTable:fTable]];
                 }
             }
-            [SVProgressHUD showSuccessWithStatus:@"Now offline"];
+            [SVProgressHUD showSuccessWithStatus:@"Switching to \n local data"];
         }
-        [self updateOfflineStatus];
         if ([geodatabase hasLocalEdits]) {
             [_badge removeFromSuperview];
-            _badge = [[JSBadgeView alloc]initWithParentView:self.badgeView alignment:JSBadgeViewAlignmentCenterLeft];
-            _badge.badgeText = [self numberOfEditsInGeodatabase:geodatabase];
+            _badge = [[JSBadgeView alloc]initWithParentView:wself.badgeView alignment:JSBadgeViewAlignmentCenterLeft];
+            _badge.badgeText = [wself numberOfEditsInGeodatabase:geodatabase];
             
         }
+        [wself updateOfflineStatus];
     
         
     }];
@@ -727,7 +741,7 @@
         // if already syncing just return
         return;
     }
-    [SVProgressHUD showWithStatus:@"Sync in progress"];
+    [SVProgressHUD showWithStatus:@"Synchronizing \n data"];
     [self logStatus:@"Starting sync process..."];
     
     __weak OfflineTestViewController *weakSelf = self;

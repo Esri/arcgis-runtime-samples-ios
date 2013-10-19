@@ -56,6 +56,8 @@
     
     UIPopoverController* _pvc;
     FeatureTemplatePickerViewController* _vc;
+    
+    BOOL _newlyDownloaded;
 }
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UIView *badgeView;
@@ -384,12 +386,13 @@
     for (NSString *file in files){
         BOOL remove = [file hasSuffix:@".geodatabase"] || [file hasSuffix:@".geodatabase-shm"] || [file hasSuffix:@".geodatabase-wal"];
         if (remove){
-            [[NSFileManager defaultManager]removeItemAtPath:file error:nil];
+            NSError* error;
+            [[NSFileManager defaultManager]removeItemAtPath:[path stringByAppendingPathComponent:file] error:&error];
             [self logStatus:[NSString stringWithFormat:@"deleting %@",file]];
             
         }
     }
-    [self logStatus:[NSString stringWithFormat:@"done."]];
+    [self logStatus:[NSString stringWithFormat:@"deleted all local data"]];
 }
 
 #pragma mark popups container view controller delegate
@@ -645,7 +648,7 @@
     
     if (_offline){
         if([self.geodatabase hasLocalEdits]){
-            UIAlertView* av = [[UIAlertView alloc]initWithTitle:nil message:@"Do you want to sync local edits with the service?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+            UIAlertView* av = [[UIAlertView alloc]initWithTitle:nil message:@"Do you want to sync local edits with the service?" delegate:self cancelButtonTitle:@"Later" otherButtonTitles:@"Yes", nil];
             [av show];
             return;
         }else{
@@ -702,7 +705,6 @@
 -(void)goOffline{
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 
-    [SVProgressHUD showWithStatus:@"Downloading \n features"/*@"Going Offline*/];
     // feature layer
     [self generateGDB];
 
@@ -726,8 +728,12 @@
         [layers addObject:[NSNumber numberWithInt: layerInfo.layerId]];
     }
     params.layerIDs = layers;
+    _newlyDownloaded = NO;
+    [SVProgressHUD showWithStatus:@"Downloading \n features"/*@"Going Offline*/];
     [self.gdbTask generateGeodatabaseAndDownloadWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSAsyncServerJobStatus status, NSDictionary *userInfo) {
-        [wself logStatus:[NSString stringWithFormat:@"going offline status: %@ - %@", [self statusMessageForAsyncStatus:status], userInfo]];
+        if(status == AGSAsyncServerJobStatusFetchingResult)
+            _newlyDownloaded = YES;
+        [wself logStatus:[NSString stringWithFormat:@"going offline status: %@", [self statusMessageForAsyncStatus:status]]];
     } completion:^(AGSGDBGeodatabase *geodatabase, NSError *error) {
         if (error){
             _goingOffline = NO;
@@ -746,7 +752,15 @@
                     [wself.mapView addMapLayer:[[AGSFeatureTableLayer alloc]initWithFeatureTable:fTable]];
                 }
             }
-            [SVProgressHUD showSuccessWithStatus:@"Switching to \n local data"];
+            if (_newlyDownloaded) {
+                [SVProgressHUD showSuccessWithStatus:@"Finished \n downloading"];
+            }else{
+                [SVProgressHUD dismiss];
+                UIAlertView* av = [[UIAlertView alloc]initWithTitle:nil message:@"Found existing data. Do you want to refresh it?" delegate:nil cancelButtonTitle:@"Later" otherButtonTitles:@"Yes", nil];
+                [av show];
+                //[SVProgressHUD showSuccessWithStatus:@"Found \n existing data"];
+                ;
+            }
         }
         if ([geodatabase hasLocalEdits]) {
             [_badge removeFromSuperview];

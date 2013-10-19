@@ -64,6 +64,7 @@
 @property (nonatomic, strong) AGSGDBTask *gdbTask;
 @property (nonatomic, strong) id<AGSCancellable> cancellable;
 @property (nonatomic, strong) AGSMapView* mapView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *liveActivityIndicator;
 
 //
 // iPhone geometry editing ui
@@ -111,7 +112,7 @@
             AGSFeatureLayer* fl = [AGSFeatureLayer featureServiceLayerWithURL:url mode:AGSFeatureLayerModeOnDemand];
             fl.delegate = weakSelf;
             fl.editingDelegate = weakSelf;
-            fl.expirationInterval = 120;
+            fl.expirationInterval = 60;
             fl.autoRefreshOnExpiration = YES;
             [weakSelf.mapView addMapLayer:fl];
             [SVProgressHUD showProgress:-1 status:@"Loading layers"];
@@ -147,7 +148,7 @@
     
     self.syncButton.enabled = NO;
     
-
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(featuresLoaded:) name:AGSFeatureLayerDidLoadFeaturesNotification object:nil];
 
 }
 
@@ -191,6 +192,15 @@
         [SVProgressHUD popActivity];
         [self.mapView zoomToScale:fl.minScale animated:YES];
     }
+}
+
+- (void) featuresLoaded:(NSNotification*) notification{
+    [self.liveActivityIndicator startAnimating];
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.5 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self logStatus:@"Refreshed live data"];
+        [self.liveActivityIndicator stopAnimating];
+    });
 }
 
 -(void)layer:(AGSLayer *)layer didFailToLoadWithError:(NSError *)error{
@@ -362,7 +372,7 @@
 
 - (IBAction)deleteGDBAction:(id)sender {
     if (_offline || _goingOffline){
-        [self logStatus:@"cannot delete local replica when offline or going offline"];
+        [self logStatus:@"cannot delete local data while displaying it"];
         return;
     }
     _geodatabase = nil;
@@ -444,20 +454,30 @@
         
         if (popup.gdbFeature == _addFeature){
             AGSEditResult *result = [popup.gdbFeatureTable addFeature:popup.gdbFeature];
-            [self logStatus:[NSString stringWithFormat:@"add result: %@ feature: %@", result, popup.gdbFeature.shortDescription]];
+            if(result.success){
+                [self logStatus:[NSString stringWithFormat:@"add succeded (ID:%d)", result.objectId]];
+                [_badge removeFromSuperview];
+                _badge = [[JSBadgeView alloc]initWithParentView:self.badgeView alignment:JSBadgeViewAlignmentCenterLeft];
+                _badge.badgeText = [self numberOfEditsInGeodatabase:popup.gdbFeatureTable.geodatabase];
+
+            }else{
+                [self logStatus:[NSString stringWithFormat:@"add failed: %@", result.error.errorDescription]];
+            }
             _addFeature = nil;
         }
         else{
             AGSEditResult *result = [popup.gdbFeatureTable updateFeature:popup.gdbFeature];
-            [self logStatus:[NSString stringWithFormat:@"update result: %@ feature: %@", result, popup.gdbFeature.shortDescription]];
+            if(result.success){
+                [self logStatus:[NSString stringWithFormat:@"update succeded (ID:%d)", result.objectId]];
+                [_badge removeFromSuperview];
+                _badge = [[JSBadgeView alloc]initWithParentView:self.badgeView alignment:JSBadgeViewAlignmentCenterLeft];
+                _badge.badgeText = [self numberOfEditsInGeodatabase:popup.gdbFeatureTable.geodatabase];
+                
+            }else{
+                [self logStatus:[NSString stringWithFormat:@"update failed: %@", result.error.errorDescription]];
+            }
         }
-        
-        [_badge removeFromSuperview];
-        _badge = [[JSBadgeView alloc]initWithParentView:self.badgeView alignment:JSBadgeViewAlignmentCenterLeft];
-        _badge.badgeText = [self numberOfEditsInGeodatabase:popup.gdbFeatureTable.geodatabase];
-
     }
-    
     else if (popup.graphic){
         if ([popup.featureLayer objectIdForFeature:popup.graphic]<0){
             [popup.featureLayer addFeatures:@[popup.graphic]];
@@ -480,10 +500,15 @@
 -(void) popupsContainer:(id<AGSPopupsContainer>)popupsContainer wantsToDeleteForPopup:(AGSPopup *)popup{
     if([popup.feature isKindOfClass:[AGSGDBFeature class]]){
        AGSEditResult *result = [popup.gdbFeature.table deleteFeature:popup.gdbFeature];
-        [self logStatus:[NSString stringWithFormat:@"delete result: %@ feature: %@", result, popup.gdbFeature.shortDescription]];
-        [_badge removeFromSuperview];
-        _badge = [[JSBadgeView alloc]initWithParentView:self.badgeView alignment:JSBadgeViewAlignmentCenterLeft];
-        _badge.badgeText = [self numberOfEditsInGeodatabase:popup.gdbFeatureTable.geodatabase];
+        if(result.success){
+            [self logStatus:[NSString stringWithFormat:@"delete succeded (ID:%d)", result.objectId]];
+            [_badge removeFromSuperview];
+            _badge = [[JSBadgeView alloc]initWithParentView:self.badgeView alignment:JSBadgeViewAlignmentCenterLeft];
+            _badge.badgeText = [self numberOfEditsInGeodatabase:popup.gdbFeatureTable.geodatabase];
+        }
+        else{
+            [self logStatus:[NSString stringWithFormat:@"delete failed: %@", result.error.errorDescription]];
+        }
 
     }else{
         AGSFeatureLayer* fLayer = (AGSFeatureLayer*) popup.graphic.layer;
@@ -623,6 +648,8 @@
             UIAlertView* av = [[UIAlertView alloc]initWithTitle:nil message:@"Do you want to sync local edits with the service?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
             [av show];
             return;
+        }else{
+            [self goOnline];
         }
     }
     else{
@@ -636,7 +663,6 @@
     _goingOnline = YES;
     
     [self logStatus:@"going online"];
-    
     [_mapView reset];
     [_mapView addMapLayer:_localTiledLayer];
     if (_lastExtent){
@@ -655,7 +681,9 @@
             AGSFeatureLayer* fl = [AGSFeatureLayer featureServiceLayerWithURL:url mode:AGSFeatureLayerModeOnDemand];
             fl.delegate = weakSelf;
             fl.editingDelegate = weakSelf;
-        
+            fl.expirationInterval = 60;
+            fl.autoRefreshOnExpiration = YES;
+
             [weakSelf.mapView addMapLayer:fl];
             [weakSelf logStatus:[NSString stringWithFormat:@"loading: %@", [fl.URL absoluteString]]];
         }
@@ -672,7 +700,8 @@
     [SVProgressHUD popActivity];
 }
 -(void)goOffline{
-    
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+
     [SVProgressHUD showWithStatus:@"Downloading \n features"/*@"Going Offline*/];
     // feature layer
     [self generateGDB];
@@ -741,7 +770,7 @@
         // if already syncing just return
         return;
     }
-    [SVProgressHUD showWithStatus:@"Synchronizing \n data"];
+    [SVProgressHUD showWithStatus:@"Synchronizing \n changes"];
     [self logStatus:@"Starting sync process..."];
     
     __weak OfflineTestViewController *weakSelf = self;

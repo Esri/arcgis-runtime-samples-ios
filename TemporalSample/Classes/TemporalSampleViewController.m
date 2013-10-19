@@ -38,13 +38,15 @@
 	
 	//Add Earthquakes layer showing earthquakes from last 7 days
 	//Using Snapshot mode because number of earthquakes won't be too large (hopefully)
-	AGSFeatureLayer* featureLyr = [AGSFeatureLayer featureServiceLayerWithURL:
+	_featureLyr = [AGSFeatureLayer featureServiceLayerWithURL:
 						   [NSURL URLWithString:kFeatureServiceURL] mode:AGSFeatureLayerModeSnapshot];
-	featureLyr.outFields = [NSArray arrayWithObject:@"*"];
-	featureLyr.calloutDelegate = self;
-	[self.mapView addMapLayer:featureLyr withName:@"Earthquakes Layer"];
+	_featureLyr.outFields = [NSArray arrayWithObject:@"*"];
+	_featureLyr.calloutDelegate = self;
+//	[self.mapView addMapLayer:_featureLyr withName:@"Earthquakes Layer"];
 
     
+    AGSDynamicMapServiceLayer* dy = [AGSDynamicMapServiceLayer dynamicMapServiceLayerWithURL:[NSURL URLWithString:@"http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Earthquakes/EarthquakesFromLastSevenDays/MapServer"]];
+    [self.mapView addMapLayer:dy];
 	//Customizing the callout look
 	self.mapView.callout.accessoryButtonHidden = YES;
 	self.mapView.callout.color = [UIColor colorWithRed:.475 green:.545 blue:.639 alpha:1];
@@ -86,6 +88,8 @@
 		//Set a time extent ranging from start to end
 		AGSTimeExtent* extent = [[AGSTimeExtent alloc] initWithStart:start end:end];
 		self.mapView.timeExtent = extent;
+        
+       // [_featureLyr refresh];
 
 		//hide callout incase it was pointing to an earthquake from another date
 		self.mapView.callout.hidden = YES;

@@ -12,6 +12,7 @@
                 <outlet property="deleteGDBButton" destination="20" id="23"/>
                 <outlet property="goOfflineButton" destination="5" id="26"/>
                 <outlet property="leftContainer" destination="13" id="15"/>
+                <outlet property="liveActivityIndicator" destination="IMZ-9z-y7O" id="njF-ZM-FZf"/>
                 <outlet property="mapContainer" destination="7" id="8"/>
                 <outlet property="offlineStatusLabel" destination="27" id="28"/>
                 <outlet property="statusLabel" destination="9" id="10"/>
@@ -84,6 +85,10 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" id="IMZ-9z-y7O">
+                    <rect key="frame" x="735" y="24" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

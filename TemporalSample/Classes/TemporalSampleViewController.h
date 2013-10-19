@@ -18,6 +18,7 @@
 	UISegmentedControl* _segmentControl;
 	NSDate* _today;
 	AGSCalloutTemplate* _calloutTemplate;
+    AGSFeatureLayer* _featureLyr;
 }
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;

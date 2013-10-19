@@ -10,6 +10,7 @@
                 <outlet property="badgeView" destination="qrB-lW-Wrf" id="U0w-tZ-aTK"/>
                 <outlet property="geometryEditToolbar" destination="25" id="29"/>
                 <outlet property="goOfflineButton" destination="5" id="21"/>
+                <outlet property="liveActivityIndicator" destination="ftT-A8-gaD" id="pmz-WL-EAh"/>
                 <outlet property="mapContainer" destination="7" id="8"/>
                 <outlet property="offlineStatusLabel" destination="35" id="36"/>
                 <outlet property="statusLabel" destination="9" id="10"/>
@@ -73,6 +74,12 @@
                     <color key="textColor" red="0.0050738790760869179" green="0.0050738790760869179" blue="0.0050738790760869179" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" id="qrB-lW-Wrf" userLabel="BadgeView">
+                    <rect key="frame" x="122" y="440" width="28" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </view>
                 <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="25" userLabel="GeometryEditToolbar">
                     <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -90,12 +97,10 @@
                         </barButtonItem>
                     </items>
                 </toolbar>
-                <view userInteractionEnabled="NO" contentMode="scaleToFill" id="qrB-lW-Wrf" userLabel="BadgeView">
-                    <rect key="frame" x="122" y="440" width="28" height="24"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                </view>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" id="ftT-A8-gaD">
+                    <rect key="frame" x="295" y="22" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

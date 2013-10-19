@@ -55,6 +55,9 @@
 		//Register for "Geometry Changed" notifications 
 		//We want to enable/disable UI elements when sketch geometry is modified
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToGeomChanged:) name:AGSSketchGraphicsLayerGeometryDidChangeNotification object:nil];
+
+        //call this so we can properly initialize the state of undo,redo,clear, and save
+        [self respondToGeomChanged:nil];
     }
     return self;
 }
@@ -91,6 +94,7 @@
 		[_sketchTools setEnabled:YES forSegmentAtIndex:0];
 		[_sketchTools setEnabled:YES forSegmentAtIndex:1];
 		[_sketchTools setEnabled:YES forSegmentAtIndex:2];
+        [_sketchTools setEnabled:YES forSegmentAtIndex:3];
 		
 	}else {
 		//Add a new graphic to the graphics layer
@@ -112,18 +116,21 @@
 			//sketch layer should begin tracking touch events to sketch a point
 			_mapView.touchDelegate = _sketchLayer;  
 			_sketchLayer.geometry = [[AGSMutablePoint alloc] initWithX:NAN y:NAN spatialReference:_mapView.spatialReference];
+            [[_sketchLayer undoManager]removeAllActions];
 			break;
 		
 		case 1://polyline tool
 			//sketch layer should begin tracking touch events to sketch a polyline
 			_mapView.touchDelegate = _sketchLayer; 
 			_sketchLayer.geometry = [[AGSMutablePolyline alloc] initWithSpatialReference:_mapView.spatialReference];
+            [[_sketchLayer undoManager]removeAllActions];
 			break;
 		
 		case 2://polygon tool
 			//sketch layer should begin tracking touch events to sketch a polygon
 			_mapView.touchDelegate = _sketchLayer; 
 			_sketchLayer.geometry = [[AGSMutablePolygon alloc] initWithSpatialReference:_mapView.spatialReference];
+            [[_sketchLayer undoManager]removeAllActions];
 			break;
 		
 		case 3: //select tool
@@ -133,10 +140,7 @@
 			//We will track touch events to find which graphic to modify
 			_mapView.touchDelegate = self; 
 			
-			//Disable other tools until we finish modifying a graphic
-			[_sketchTools setEnabled:NO forSegmentAtIndex:0];
-			[_sketchTools setEnabled:NO forSegmentAtIndex:1];
-			[_sketchTools setEnabled:NO forSegmentAtIndex:2];
+
 			break;
 		default:
 			break;
@@ -152,7 +156,24 @@
 		//Get the graphic's geometry to the sketch layer so that it can be modified
 		self.activeGraphic = (AGSGraphic*)[graphicArray objectAtIndex:0];
 		AGSGeometry* geom = [self.activeGraphic.geometry mutableCopy];
+        
+        //clear out the graphic's geometry so that it is not displayed under the sketch
+        self.activeGraphic.geometry = nil;
+        
+        //Feed the graphic's geometry to the sketch layer so that user can modify it
+		_sketchLayer.geometry = geom;
+        [[_sketchLayer undoManager]removeAllActions];
+
+		//sketch layer should begin tracking touch events to modify the sketch
+		_mapView.touchDelegate = _sketchLayer;
 		
+        //Disable other tools until we finish modifying a graphic
+        [_sketchTools setEnabled:NO forSegmentAtIndex:0];
+        [_sketchTools setEnabled:NO forSegmentAtIndex:1];
+        [_sketchTools setEnabled:NO forSegmentAtIndex:2];
+        [_sketchTools setEnabled:NO forSegmentAtIndex:3];
+        
+        
 		//Activate the appropriate sketch tool
 		if([geom isKindOfClass:[AGSPoint class]]){
 			[_sketchTools setSelectedSegmentIndex:0];
@@ -162,11 +183,9 @@
 			[_sketchTools setSelectedSegmentIndex:2];
 		}
 
-		//Feed the graphic's geometry to the sketch layer so that user can modify it
-		_sketchLayer.geometry = geom;
 
-		//sketch layer should begin tracking touch events to modify the sketch
-		_mapView.touchDelegate = _sketchLayer;
+        
+
 	}
 }
 

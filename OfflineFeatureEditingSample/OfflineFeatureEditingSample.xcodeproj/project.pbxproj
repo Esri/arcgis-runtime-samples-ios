@@ -14,9 +14,10 @@
 		97110219180A17240085B216 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97110209180A17240085B216 /* Default@2x.png */; };
 		9711021A180A17240085B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9711020A180A17240085B216 /* InfoPlist.strings */; };
 		9711021C180A17240085B216 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9711020D180A17240085B216 /* main.m */; };
-		9711021E180A17240085B216 /* OfflineTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97110211180A17240085B216 /* OfflineTestViewController.m */; };
-		9711021F180A17240085B216 /* OfflineTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97110212180A17240085B216 /* OfflineTestViewController.xib */; };
-		97110220180A17240085B216 /* OfflineTestViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97110213180A17240085B216 /* OfflineTestViewController~ipad.xib */; };
+		9711021E180A17240085B216 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97110211180A17240085B216 /* MainViewController.m */; };
+		9711021F180A17240085B216 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97110212180A17240085B216 /* MainViewController.xib */; };
+		97110220180A17240085B216 /* MainViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97110213180A17240085B216 /* MainViewController~ipad.xib */; };
+		974FC71518137FE80013F877 /* UIAlertView+NSCookbook.m in Sources */ = {isa = PBXBuildFile; fileRef = 974FC71418137FE80013F877 /* UIAlertView+NSCookbook.m */; };
 		975579C9180A18CB00904382 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 975579C7180A18CA00904382 /* icon.png */; };
 		975579CA180A18CB00904382 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 975579C8180A18CB00904382 /* icon@2x.png */; };
 		975579CC180A1DB600904382 /* SanFrancisco.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 975579CB180A1DB600904382 /* SanFrancisco.tpk */; };
@@ -39,10 +40,12 @@
 		9711020D180A17240085B216 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9711020E180A17240085B216 /* OfflineFeatureEditingSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OfflineFeatureEditingSample-Info.plist"; sourceTree = "<group>"; };
 		9711020F180A17240085B216 /* OfflineFeatureEditingSample-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OfflineFeatureEditingSample-Prefix.pch"; sourceTree = "<group>"; };
-		97110210180A17240085B216 /* OfflineTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineTestViewController.h; sourceTree = "<group>"; };
-		97110211180A17240085B216 /* OfflineTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineTestViewController.m; sourceTree = "<group>"; };
-		97110212180A17240085B216 /* OfflineTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OfflineTestViewController.xib; sourceTree = "<group>"; };
-		97110213180A17240085B216 /* OfflineTestViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "OfflineTestViewController~ipad.xib"; sourceTree = "<group>"; };
+		97110210180A17240085B216 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		97110211180A17240085B216 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		97110212180A17240085B216 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		97110213180A17240085B216 /* MainViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainViewController~ipad.xib"; sourceTree = "<group>"; };
+		974FC71318137FE80013F877 /* UIAlertView+NSCookbook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+NSCookbook.h"; sourceTree = "<group>"; };
+		974FC71418137FE80013F877 /* UIAlertView+NSCookbook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+NSCookbook.m"; sourceTree = "<group>"; };
 		975579C7180A18CA00904382 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		975579C8180A18CB00904382 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		975579CB180A1DB600904382 /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "../Data/tile package/SanFrancisco.tpk"; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 		4B1920CA1746ECC900E724BE = {
 			isa = PBXGroup;
 			children = (
+				974FC71618137FF00013F877 /* UIAlertView+NSCookbook */,
 				9786548D18109EF000073680 /* JSBadgeView */,
 				975579D2180B624300904382 /* SVProgressHUD */,
 				975579CB180A1DB600904382 /* SanFrancisco.tpk */,
@@ -106,15 +110,24 @@
 				9711020D180A17240085B216 /* main.m */,
 				9711020E180A17240085B216 /* OfflineFeatureEditingSample-Info.plist */,
 				9711020F180A17240085B216 /* OfflineFeatureEditingSample-Prefix.pch */,
-				97110210180A17240085B216 /* OfflineTestViewController.h */,
-				97110211180A17240085B216 /* OfflineTestViewController.m */,
-				97110212180A17240085B216 /* OfflineTestViewController.xib */,
-				97110213180A17240085B216 /* OfflineTestViewController~ipad.xib */,
+				97110210180A17240085B216 /* MainViewController.h */,
+				97110211180A17240085B216 /* MainViewController.m */,
+				97110212180A17240085B216 /* MainViewController.xib */,
+				97110213180A17240085B216 /* MainViewController~ipad.xib */,
 				975579CD180A561300904382 /* FeatureTemplatePickerViewController.m */,
 				975579CE180A561300904382 /* FeatureTemplatePickerViewController.h */,
 				975579D0180A5AE000904382 /* FeatureTemplatePickerViewController.xib */,
 			);
 			path = OfflineFeatureEditing;
+			sourceTree = "<group>";
+		};
+		974FC71618137FF00013F877 /* UIAlertView+NSCookbook */ = {
+			isa = PBXGroup;
+			children = (
+				974FC71318137FE80013F877 /* UIAlertView+NSCookbook.h */,
+				974FC71418137FE80013F877 /* UIAlertView+NSCookbook.m */,
+			);
+			name = "UIAlertView+NSCookbook";
 			sourceTree = "<group>";
 		};
 		975579D2180B624300904382 /* SVProgressHUD */ = {
@@ -200,7 +213,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9711021F180A17240085B216 /* OfflineTestViewController.xib in Resources */,
+				9711021F180A17240085B216 /* MainViewController.xib in Resources */,
 				97110219180A17240085B216 /* Default@2x.png in Resources */,
 				4B1921171746F5D000E724BE /* ArcGIS.bundle in Resources */,
 				975579CA180A18CB00904382 /* icon@2x.png in Resources */,
@@ -208,7 +221,7 @@
 				97110218180A17240085B216 /* Default.png in Resources */,
 				97110217180A17240085B216 /* Default-568h@2x.png in Resources */,
 				975579D7180B624300904382 /* SVProgressHUD.bundle in Resources */,
-				97110220180A17240085B216 /* OfflineTestViewController~ipad.xib in Resources */,
+				97110220180A17240085B216 /* MainViewController~ipad.xib in Resources */,
 				975579CC180A1DB600904382 /* SanFrancisco.tpk in Resources */,
 				9711021A180A17240085B216 /* InfoPlist.strings in Resources */,
 				975579D1180A5AE000904382 /* FeatureTemplatePickerViewController.xib in Resources */,
@@ -222,7 +235,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9711021E180A17240085B216 /* OfflineTestViewController.m in Sources */,
+				9711021E180A17240085B216 /* MainViewController.m in Sources */,
+				974FC71518137FE80013F877 /* UIAlertView+NSCookbook.m in Sources */,
 				975579CF180A561300904382 /* FeatureTemplatePickerViewController.m in Sources */,
 				97110215180A17240085B216 /* AppDelegate.m in Sources */,
 				9786549018109EF000073680 /* JSBadgeView.m in Sources */,

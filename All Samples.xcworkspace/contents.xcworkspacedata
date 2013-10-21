@@ -14,6 +14,9 @@
       location = "group:CustomTiledLayerSample/CustomTiledLayerSample.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:DownloadTileCacheSample/DownloadTileCacheSample.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:FeatureLayerEditingSample/FeatureLayerEditingSample.xcodeproj">
    </FileRef>
    <FileRef
@@ -54,6 +57,9 @@
    </FileRef>
    <FileRef
       location = "group:OAuth Login Sample/OAuthLoginSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:OfflineFeatureEditingSample/OfflineFeatureEditingSample.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:OfflineGeocodingSample/OfflineGeocodingSample.xcodeproj">

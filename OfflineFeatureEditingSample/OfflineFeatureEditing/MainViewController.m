@@ -27,7 +27,6 @@
     AGSPopupsContainerViewController *_popupsVC;
     AGSSketchGraphicsLayer *_sgl;
     AGSGDBFeature *_addFeature;
-    AGSEnvelope *_lastExtent;
     
     JSBadgeView* _badge;
     
@@ -61,10 +60,6 @@
 
 @implementation MainViewController
 
-- (id)initWithFSURL:(NSURL*)url TPKURL:(NSURL*)tpkurl {
-    self = [super initWithNibName:@"MainViewController" bundle:nil];
-    return self;
-}
 
 - (void)viewDidLoad{
     
@@ -82,33 +77,10 @@
     _localTiledLayer =  [AGSLocalTiledLayer localTiledLayerWithName:@"SanFrancisco"];
     [self.mapView addMapLayer:_localTiledLayer];
     
-    //Create a task pointing to the Wildfire service
-    self.gdbTask = [[AGSGDBTask alloc]initWithURL:[NSURL URLWithString:@"http://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/Wildfire/FeatureServer"]];
-    __weak MainViewController* weakSelf = self;
-    self.gdbTask.loadCompletion = ^(NSError* error){
-        
-        //Iterate through all the layers in the service
-        for (AGSMapServiceLayerInfo* info in weakSelf.gdbTask.featureServiceInfo.layerInfos) {
-            NSURL* url = [weakSelf.gdbTask.URL URLByAppendingPathComponent:[NSString stringWithFormat:@"%d",info.layerId]];
-            AGSFeatureLayer* fl = [AGSFeatureLayer featureServiceLayerWithURL:url mode:AGSFeatureLayerModeOnDemand];
-            fl.delegate = weakSelf;
-            fl.editingDelegate = weakSelf;
-            
-            //set layer to automatically refresh every 60 seconds
-            fl.expirationInterval = 60;
-            fl.autoRefreshOnExpiration = YES;
-            
-            //add layer to map
-            [weakSelf.mapView addMapLayer:fl];
-            [SVProgressHUD showProgress:-1 status:@"Loading layers"];
 
-        }
-    };
 
     _allStatus = [NSMutableString string];
     
-    self.offlineStatusLabel.text = @"Live data" ;
-    self.logsLabel.text = @"";
     
     //Add a view that will display logs
     CGRect f = self.mapView.frame;
@@ -131,11 +103,10 @@
     [self.view addSubview:_logsTextView];
     
     
-    [self clearStatus];
-    
-    self.syncButton.enabled = NO;
-    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(featuresLoaded:) name:AGSFeatureLayerDidLoadFeaturesNotification object:nil];
+    
+    [self switchToLiveData];
+
 
 }
 
@@ -156,7 +127,7 @@
 }
 
 
-#pragma mark gesture recognizers
+#pragma mark Gesture Recognizers
 
 -(void)hideLogsGesture:(UIGestureRecognizer*)gr{
     _logsTextView.hidden = YES;
@@ -171,8 +142,8 @@
 -(void)layerDidLoad:(AGSLayer *)layer{
     if([layer isKindOfClass:[AGSFeatureLayer class]]){
         AGSFeatureLayer* fl = (AGSFeatureLayer*)layer;
-        [self logStatus:[NSString stringWithFormat:@"Loaded %@",fl.URL]];
-        [self.mapView zoomToScale:fl.minScale animated:YES];
+        if(self.mapView.mapScale>fl.minScale)
+            [self.mapView zoomToScale:fl.minScale animated:YES];
         [SVProgressHUD popActivity];
     }
 }
@@ -191,9 +162,10 @@
 - (void) featuresLoaded:(NSNotification*) notification{
     //Show the activity indicator for a couple of seconds
     [self.liveActivityIndicator startAnimating];
+    AGSFeatureLayer* fLyr = (AGSFeatureLayer*)notification.object;
+    [self logStatus:[NSString stringWithFormat:@"Refreshed live data %@",fLyr.URL]];
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.5 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self logStatus:@"Refreshed live data"];
         [self.liveActivityIndicator stopAnimating];
     });
 }
@@ -201,7 +173,7 @@
 #pragma mark - AGSMapViewTouchDelegate methods
 - (void) mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features {
     
-    //Show popups for features that were tapps on
+    //Show popups for features that were tapped on
     NSMutableArray *tappedFeatures = [[NSMutableArray alloc]init];
     NSEnumerator* keys = [features keyEnumerator];
     for (NSString* key in keys) {
@@ -216,6 +188,7 @@
     
 }
 
+#pragma mark - Showing popups
 -(void)showPopupsForFeatures:(NSArray*)features{
     NSMutableArray *popups = [NSMutableArray arrayWithCapacity:features.count];
 
@@ -328,8 +301,6 @@
     [self logStatus:[NSString stringWithFormat:@"deleted all local data"]];
 }
 
-#pragma mark Sync methods
-
 - (IBAction)syncAction:(id)sender {
     
     if (self.cancellable){
@@ -363,15 +334,11 @@
     }];
 }
 
-#pragma mark - Online/Offline methods
-
-- (IBAction)switchDataAction:(id)sender {
+- (IBAction)switchModeAction:(id)sender {
     
     if (_goingLocal){
         return;
     }
-    
-    _lastExtent = _mapView.visibleAreaEnvelope;
     
     if (_viewingLocal){
         if([self.geodatabase hasLocalEdits]){
@@ -398,26 +365,31 @@
         [self switchToLocalData];
     }
 }
+#pragma mark - Online/Offline methods
+
+
 
 -(void)switchToLiveData{
     
     _goingLive = YES;
     
     [self logStatus:@"loading live data"];
-    [_mapView reset];
-    [_mapView addMapLayer:_localTiledLayer];
-    if (_lastExtent){
-        [_mapView zoomToEnvelope:_lastExtent animated:NO];
-    }
-    
+
     self.gdbTask = [[AGSGDBTask alloc]initWithURL:[NSURL URLWithString:@"http://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/Wildfire/FeatureServer"]];
-    self.gdbTask.timeoutInterval = 300;
     __weak MainViewController* weakSelf = self;
-    __weak AGSGDBTask* weakTask = self.gdbTask;
     self.gdbTask.loadCompletion = ^(NSError* error){
-        for (AGSMapServiceLayerInfo* info in weakTask.featureServiceInfo.layerInfos) {
-            [SVProgressHUD showProgress:-1 status:@"Switching to \n live data"];
-            NSURL* url = [weakTask.URL URLByAppendingPathComponent:[NSString stringWithFormat:@"%d",info.layerId]];
+        
+        //Remove all local feature layers
+        for (AGSLayer* lyr in weakSelf.mapView.mapLayers) {
+            if ([lyr isKindOfClass:[AGSFeatureTableLayer class]]) {
+                [weakSelf.mapView removeMapLayer:lyr];
+            }
+        }
+        
+        //Add live feature layers
+        for (AGSMapServiceLayerInfo* info in weakSelf.gdbTask.featureServiceInfo.layerInfos) {
+            [SVProgressHUD showProgress:-1 status:@"Loading \n live data"];
+            NSURL* url = [weakSelf.gdbTask.URL URLByAppendingPathComponent:[NSString stringWithFormat:@"%d",info.layerId]];
             
             AGSFeatureLayer* fl = [AGSFeatureLayer featureServiceLayerWithURL:url mode:AGSFeatureLayerModeOnDemand];
             fl.delegate = weakSelf;
@@ -428,7 +400,7 @@
             [weakSelf.mapView addMapLayer:fl];
             [weakSelf logStatus:[NSString stringWithFormat:@"loading: %@", [fl.URL absoluteString]]];
         }
-        [weakSelf logStatus:@"now viewing live data"];
+        [weakSelf logStatus:@"now in live mode"];
         [weakSelf updateStatus];
     };
     
@@ -437,24 +409,10 @@
     
 }
 -(void)switchToLocalData{
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
     
-    // feature layer
-    [self generateGDB];
-    
-    [self.mapView reset];
-    [self.mapView addMapLayer:_localTiledLayer];
-    
-    if (_lastExtent){
-        [_mapView zoomToEnvelope:_lastExtent animated:NO];
-    }
-    
-}
-
--(void)generateGDB{
     _goingLocal = YES;
     AGSGDBGenerateParameters *params = [[AGSGDBGenerateParameters alloc]initWithFeatureServiceInfo:self.gdbTask.featureServiceInfo];
-
+    
     //NOTE: You should typically set this to a smaller envelope covering an area of interest
     //Setting to maxEnvelope here because sample data covers limited area in San Francisco
     params.extent = self.mapView.maxEnvelope;
@@ -469,7 +427,7 @@
     [self.gdbTask generateGeodatabaseAndDownloadWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSAsyncServerJobStatus status, NSDictionary *userInfo) {
         if(status == AGSAsyncServerJobStatusFetchingResult)
             _newlyDownloaded = YES;
-        [self logStatus:[NSString stringWithFormat:@"going offline status: %@", [self statusMessageForAsyncStatus:status]]];
+        [self logStatus:[NSString stringWithFormat:@"Status: %@", [self statusMessageForAsyncStatus:status]]];
     } completion:^(AGSGDBGeodatabase *geodatabase, NSError *error) {
         if (error){
             _goingLocal = NO;
@@ -480,7 +438,12 @@
         else{
             _goingLocal = NO;
             _viewingLocal = YES;
-            [self logStatus:@"viewing local data"];
+            [self logStatus:@"now viewing local data"];
+            
+            for (AGSLayer* lyr in self.mapView.mapLayers) {
+                if([lyr isKindOfClass:[AGSFeatureLayer class]])
+                    [self.mapView removeMapLayer:lyr];
+            }
             
             self.geodatabase = geodatabase;
             for (AGSFeatureTable* fTable in geodatabase.featureTables) {
@@ -505,13 +468,19 @@
                             break;
                     }
                 }];
-
+                
             }
         }
         [self updateStatus];
         
         
     }];
+    
+    
+}
+
+-(void)generateGDB{
+   
 }
 
 
@@ -605,7 +574,6 @@
         _sgl.geometry = geometry;
     }
     
-    //
     // if we are on iPhone, hide the popupsVC and show editing UI
     if (![[AGSDevice currentDevice] isIPad]) {
         [_popupsVC dismissViewControllerAnimated:YES completion:nil];
@@ -771,25 +739,25 @@
 -(void)updateStatus{
     
     if (![NSThread isMainThread]){
-        [self performSelectorOnMainThread:@selector(updateOfflineStatus) withObject:nil waitUntilDone:NO];
+        [self performSelectorOnMainThread:@selector(updateStatus) withObject:nil waitUntilDone:NO];
         return;
     }
     
     
     // set status
     if (_goingLocal){
-        _offlineStatusLabel.text = @"going offline...";
+        _offlineStatusLabel.text = @"switching to local data...";
     }
     else if (_goingLive){
-        _offlineStatusLabel.text = @"going online...";
+        _offlineStatusLabel.text = @"switching to live data...";
     }
     else if (_viewingLocal){
-        _offlineStatusLabel.text = @"Local data"; //@"offline";
-        _goOfflineButton.title = @"switch to live"; //@"go online";
+        _offlineStatusLabel.text = @"Local data";
+        _goOfflineButton.title = @"switch to live";
     }
     else if (!_viewingLocal){
-        _offlineStatusLabel.text = @"Live data"; //@"online";
-        _goOfflineButton.title = @"download"; //@"go offline";
+        _offlineStatusLabel.text = @"Live data";
+        _goOfflineButton.title = @"download";
         [self showEditsInGeodatabaseAsBadge:nil];
     }
     

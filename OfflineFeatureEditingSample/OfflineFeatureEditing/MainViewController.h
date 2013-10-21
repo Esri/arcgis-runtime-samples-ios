@@ -28,7 +28,6 @@
 - (IBAction)deleteGDBAction:(id)sender;
 - (IBAction)addFeatureAction:(id)sender;
 - (IBAction)syncAction:(id)sender;
-- (IBAction)switchDataAction:(id)sender;
+- (IBAction)switchModeAction:(id)sender;
 
-- (id)initWithFSURL:(NSURL*)url TPKURL:(NSURL*)tpkurl;
 @end

@@ -1,4 +1,4 @@
-##Routing Editing Sample 
+##Offline Routing Sample 
 
 This sample demonstrates ...
 
@@ -13,7 +13,7 @@ This sample demonstrates ...
 ![](/image.png)
 ![](/image2.png)
 ![](/image3.png)
-![](/image4.png)
+
 
 
 

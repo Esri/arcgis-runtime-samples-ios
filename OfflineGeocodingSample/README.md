@@ -1,4 +1,4 @@
-##Geocoding Sample 
+##Offline Geocoding Sample 
 
 This sample demonstrates ...
 

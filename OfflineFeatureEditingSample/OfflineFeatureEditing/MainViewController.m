@@ -21,7 +21,6 @@
 @interface MainViewController () <AGSLayerDelegate, AGSMapViewTouchDelegate, AGSPopupsContainerDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate, AGSFeatureLayerEditingDelegate, FeatureTemplatePickerDelegate>{
     
     
-    AGSGDBTask *_gdbTask;
     AGSLocalTiledLayer *_localTiledLayer;
 
     NSString *_replicaJobId;
@@ -32,17 +31,17 @@
     
     JSBadgeView* _badge;
     
-    BOOL _goingOffline;
-    BOOL _goingOnline;
-    BOOL _offline;
+    BOOL _goingLocal;
+    BOOL _goingLive;
+    BOOL _viewingLocal;
     
     
-    UITextView *_statusTextView;
+    UITextView *_logsTextView;
     
     NSMutableString *_allStatus;
     
     UIPopoverController* _pvc;
-    FeatureTemplatePickerViewController* _vc;
+    FeatureTemplatePickerViewController* _featureTemplatePickerVC;
     
     BOOL _newlyDownloaded;
 }
@@ -70,30 +69,36 @@
 - (void)viewDidLoad{
     
     [super viewDidLoad];
+    
+    //Add a map view to the UI
     self.mapView = [[AGSMapView alloc]initWithFrame:self.mapContainer.bounds];
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.mapContainer addSubview:self.mapView];
-    
-    
     self.mapView.touchDelegate = self;
     self.mapView.layerDelegate = self;
     self.mapView.callout.delegate = self;
 
-        _localTiledLayer =  [AGSLocalTiledLayer localTiledLayerWithName:@"SanFrancisco"];
+    //Add the basemap layer from a tile package
+    _localTiledLayer =  [AGSLocalTiledLayer localTiledLayerWithName:@"SanFrancisco"];
     [self.mapView addMapLayer:_localTiledLayer];
+    
+    //Create a task pointing to the Wildfire service
     self.gdbTask = [[AGSGDBTask alloc]initWithURL:[NSURL URLWithString:@"http://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/Wildfire/FeatureServer"]];
-    self.gdbTask.timeoutInterval = 300;
     __weak MainViewController* weakSelf = self;
     self.gdbTask.loadCompletion = ^(NSError* error){
+        
+        //Iterate through all the layers in the service
         for (AGSMapServiceLayerInfo* info in weakSelf.gdbTask.featureServiceInfo.layerInfos) {
-            
             NSURL* url = [weakSelf.gdbTask.URL URLByAppendingPathComponent:[NSString stringWithFormat:@"%d",info.layerId]];
-             
             AGSFeatureLayer* fl = [AGSFeatureLayer featureServiceLayerWithURL:url mode:AGSFeatureLayerModeOnDemand];
             fl.delegate = weakSelf;
             fl.editingDelegate = weakSelf;
+            
+            //set layer to automatically refresh every 60 seconds
             fl.expirationInterval = 60;
             fl.autoRefreshOnExpiration = YES;
+            
+            //add layer to map
             [weakSelf.mapView addMapLayer:fl];
             [SVProgressHUD showProgress:-1 status:@"Loading layers"];
 
@@ -102,26 +107,29 @@
 
     _allStatus = [NSMutableString string];
     
-    self.offlineStatusLabel.text = @"Live data" ;//@"online";
-    self.statusLabel.text = @"";
+    self.offlineStatusLabel.text = @"Live data" ;
+    self.logsLabel.text = @"";
     
+    //Add a view that will display logs
     CGRect f = self.mapView.frame;
-    _statusTextView = [[UITextView alloc]initWithFrame:f];
-    _statusTextView.hidden = YES;
-    _statusTextView.userInteractionEnabled = YES;
-    _statusTextView.autoresizingMask = _mapView.autoresizingMask;
-    _statusTextView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:.78];
-    _statusTextView.textColor = [UIColor whiteColor];
-    _statusTextView.editable = NO;
+    _logsTextView = [[UITextView alloc]initWithFrame:f];
+    _logsTextView.hidden = YES;
+    _logsTextView.userInteractionEnabled = YES;
+    _logsTextView.autoresizingMask = _mapView.autoresizingMask;
+    _logsTextView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:.78];
+    _logsTextView.textColor = [UIColor whiteColor];
+    _logsTextView.editable = NO;
     
-    UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(statusTextViewGesture:)];
-    [_statusTextView addGestureRecognizer:gr];
-    [self.view addSubview:_statusTextView];
-    
-    UISwipeGestureRecognizer *gr2 = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(statusLabelGesture:)];
+    //Add a swipe gesture recognizer that will show this view
+    UISwipeGestureRecognizer *gr2 = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(showLogsGesture:)];
     gr2.direction = UISwipeGestureRecognizerDirectionUp;
-    [_statusLabel addGestureRecognizer:gr2];
-    _statusLabel.userInteractionEnabled = YES;
+    [self.logsLabel addGestureRecognizer:gr2];
+
+    //Add a tap gesture recognizer that will hide this view
+    UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideLogsGesture:)];
+    [_logsTextView addGestureRecognizer:gr];
+    [self.view addSubview:_logsTextView];
+    
     
     [self clearStatus];
     
@@ -133,7 +141,7 @@
 
 - (void)viewDidUnload{
     [self setMapContainer:nil];
-    [self setStatusLabel:nil];
+    [self setLogsLabel:nil];
     [self setLeftContainer:nil];
     [self setAddFeatureButton:nil];
     [self setSyncButton:nil];
@@ -150,12 +158,12 @@
 
 #pragma mark gesture recognizers
 
--(void)statusTextViewGesture:(UIGestureRecognizer*)gr{
-    _statusTextView.hidden = YES;
+-(void)hideLogsGesture:(UIGestureRecognizer*)gr{
+    _logsTextView.hidden = YES;
 }
 
--(void)statusLabelGesture:(UIGestureRecognizer*)gr{
-    _statusTextView.hidden = NO;
+-(void)showLogsGesture:(UIGestureRecognizer*)gr{
+    _logsTextView.hidden = NO;
 }
 
 #pragma mark AGSLayerDelegate methods
@@ -164,8 +172,8 @@
     if([layer isKindOfClass:[AGSFeatureLayer class]]){
         AGSFeatureLayer* fl = (AGSFeatureLayer*)layer;
         [self logStatus:[NSString stringWithFormat:@"Loaded %@",fl.URL]];
-        [SVProgressHUD popActivity];
         [self.mapView zoomToScale:fl.minScale animated:YES];
+        [SVProgressHUD popActivity];
     }
 }
 
@@ -181,6 +189,7 @@
 
 #pragma mark - AGSFeatureLayerDidLoadFeaturesNotification
 - (void) featuresLoaded:(NSNotification*) notification{
+    //Show the activity indicator for a couple of seconds
     [self.liveActivityIndicator startAnimating];
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.5 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -191,15 +200,15 @@
 
 #pragma mark - AGSMapViewTouchDelegate methods
 - (void) mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features {
-    NSMutableArray *allFeatures = [[NSMutableArray alloc]init];
     
-    
+    //Show popups for features that were tapps on
+    NSMutableArray *tappedFeatures = [[NSMutableArray alloc]init];
     NSEnumerator* keys = [features keyEnumerator];
     for (NSString* key in keys) {
-        [allFeatures addObjectsFromArray:[features objectForKey:key]];
+        [tappedFeatures addObjectsFromArray:[features objectForKey:key]];
     }
-        if (allFeatures.count){
-            [self showPopupsForFeatures:allFeatures];
+        if (tappedFeatures.count){
+            [self showPopupsForFeatures:tappedFeatures];
         }
         else{
             [self hidePopupsVC];
@@ -212,11 +221,14 @@
 
     for (id<AGSFeature> feature in features) {
         AGSPopup* popup;
+        
+        //If the feature is a graphic (means we are in Live mode)
         if([feature isKindOfClass:[AGSGraphic class]]){
             AGSGraphic* graphic = (AGSGraphic*)feature;
             AGSPopupInfo* popupInfo = [AGSPopupInfo popupInfoForFeatureLayer:(AGSFeatureLayer*)graphic.layer];
             popup = [AGSPopup popupWithGraphic:graphic popupInfo:popupInfo];
             
+        //If the feature is a gdbfeature (means we are in Local mode)
         }else if ([feature isKindOfClass:[AGSGDBFeature class]]){
             AGSGDBFeature* gdbFeature = (AGSGDBFeature*)feature;
             AGSPopupInfo* popupInfo = [AGSPopupInfo popupInfoForGDBFeatureTable:gdbFeature.table];
@@ -249,19 +261,20 @@
     
     [self hidePopupsVC];
     
-    if (!_popupsVC) {
+    //Create the view controller for the popups
         _popupsVC = [[AGSPopupsContainerViewController alloc]initWithPopups:popups usingNavigationControllerStack:NO];
         _popupsVC.delegate = self;
         _popupsVC.style = AGSPopupsContainerStyleBlack;
         _popupsVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;        
-    }
     
+    //On ipad, display the popups vc a form sheet on the left
     if ([[AGSDevice currentDevice] isIPad]) {
         _leftContainer.hidden = NO;
         _popupsVC.modalPresentationStyle = UIModalPresentationFormSheet;
         _popupsVC.view.frame = _leftContainer.bounds;
         [_leftContainer addSubview:_popupsVC.view];
     }
+    //On iphone, display the vc in full screen
     else {
         _popupsVC.modalPresentationStyle = UIModalPresentationFullScreen;
         _popupsVC.view.frame = self.view.bounds;
@@ -274,28 +287,32 @@
 
 - (IBAction)addFeatureAction:(id)sender {
     
-    _vc = [[FeatureTemplatePickerViewController alloc]init];
-    _vc.delegate = self;
-    [_vc addTemplatesForLayersInMap:self.mapView];
+    //Initialize the template picker view controller
+    _featureTemplatePickerVC = [[FeatureTemplatePickerViewController alloc]init];
+    _featureTemplatePickerVC.delegate = self;
+    [_featureTemplatePickerVC addTemplatesForLayersInMap:self.mapView];
+    
+    //On iPad, display the template picker vc in a popover
     if ([[AGSDevice currentDevice]isIPad]) {
-        _pvc = [[UIPopoverController alloc]initWithContentViewController:_vc];
+        _pvc = [[UIPopoverController alloc]initWithContentViewController:_featureTemplatePickerVC];
         [_pvc presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
         
+    //On iPhone, display the vc full screen
     }else{
-        [self presentViewController:_vc animated:YES completion:nil];
+        [self presentViewController:_featureTemplatePickerVC animated:YES completion:nil];
     }
     
 
 }
 
 - (IBAction)deleteGDBAction:(id)sender {
-    if (_offline || _goingOffline){
+    if (_viewingLocal || _goingLocal){
         [self logStatus:@"cannot delete local data while displaying it"];
         return;
     }
     _geodatabase = nil;
     
-    
+    //Remove all files with .geodatabase, .geodatabase-shm, and .geodatabase-wal file extensions
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *path = [paths objectAtIndex:0];
     NSArray *files = [[NSFileManager defaultManager]contentsOfDirectoryAtPath:path error:nil];
@@ -322,9 +339,13 @@
     [SVProgressHUD showWithStatus:@"Synchronizing \n changes"];
     [self logStatus:@"Starting sync process..."];
     
+    //Create default sync params based on the geodatabase
+    //You can modify the param to change sync options (sync direction, included layers, etc)
     AGSGDBSyncParameters* param = [[AGSGDBSyncParameters alloc]initWithGeodatabase:self.geodatabase];
+
+    //kick off the sync operation
     self.cancellable = [self.gdbTask syncGeodatabase:self.geodatabase params:param status:^(AGSAsyncServerJobStatus status, NSDictionary *userInfo) {
-        [self logStatus:[NSString stringWithFormat:@"sync status: %d - %@", status, userInfo]];
+        [self logStatus:[NSString stringWithFormat:@"sync status: %@", [self statusMessageForAsyncStatus:status]]];
     } completion:^(NSError *error) {
         self.cancellable = nil;
         if (error){
@@ -334,6 +355,7 @@
         else{
             [self logStatus:[NSString stringWithFormat:@"sync complete"]];
             [SVProgressHUD showSuccessWithStatus:@"Sync complete"];
+            //Remove the local edits badge from the sync button
             [self showEditsInGeodatabaseAsBadge:nil];
             
         }
@@ -343,21 +365,21 @@
 
 #pragma mark - Online/Offline methods
 
-- (IBAction)goOfflineAction:(id)sender {
+- (IBAction)switchDataAction:(id)sender {
     
-    if (_goingOffline){
+    if (_goingLocal){
         return;
     }
     
     _lastExtent = _mapView.visibleAreaEnvelope;
     
-    if (_offline){
+    if (_viewingLocal){
         if([self.geodatabase hasLocalEdits]){
-            UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Detected edits in local data" message:@"Do you want to push the edits to the service?" delegate:nil cancelButtonTitle:@"Later" otherButtonTitles:@"Yes", nil];
+            UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Local data contains edits" message:@"Do you want to sync them with the service?" delegate:nil cancelButtonTitle:@"Later" otherButtonTitles:@"Yes", nil];
             [av showWithCompletion:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 switch (buttonIndex) {
                     case 0: //No, just switch to live
-                        [self goOnline];
+                        [self switchToLiveData];
                         break;
                     case 1: //Yes, sync instead
                         [self syncAction:nil];
@@ -368,20 +390,20 @@
             }];
             return;
         }else{
-            [self goOnline];
+            [self switchToLiveData];
         }
     }
     else{
         
-        [self goOffline];
+        [self switchToLocalData];
     }
 }
 
--(void)goOnline{
+-(void)switchToLiveData{
     
-    _goingOnline = YES;
+    _goingLive = YES;
     
-    [self logStatus:@"going online"];
+    [self logStatus:@"loading live data"];
     [_mapView reset];
     [_mapView addMapLayer:_localTiledLayer];
     if (_lastExtent){
@@ -406,15 +428,15 @@
             [weakSelf.mapView addMapLayer:fl];
             [weakSelf logStatus:[NSString stringWithFormat:@"loading: %@", [fl.URL absoluteString]]];
         }
-        [weakSelf logStatus:@"now online"];
-        [weakSelf updateOfflineStatus];
+        [weakSelf logStatus:@"now viewing live data"];
+        [weakSelf updateStatus];
     };
     
-    _goingOnline = NO;
-    _offline = NO;
+    _goingLive = NO;
+    _viewingLocal = NO;
     
 }
--(void)goOffline{
+-(void)switchToLocalData{
     [[NSNotificationCenter defaultCenter]removeObserver:self];
     
     // feature layer
@@ -430,10 +452,10 @@
 }
 
 -(void)generateGDB{
-    _goingOffline = YES;
+    _goingLocal = YES;
     AGSGDBGenerateParameters *params = [[AGSGDBGenerateParameters alloc]initWithFeatureServiceInfo:self.gdbTask.featureServiceInfo];
 
-    //NOTE: You should typically set this to a smaller evenlope covering the user's area of interest
+    //NOTE: You should typically set this to a smaller envelope covering an area of interest
     //Setting to maxEnvelope here because sample data covers limited area in San Francisco
     params.extent = self.mapView.maxEnvelope;
     params.outSpatialReference = [AGSSpatialReference wgs84SpatialReference];
@@ -443,21 +465,21 @@
     }
     params.layerIDs = layers;
     _newlyDownloaded = NO;
-    [SVProgressHUD showWithStatus:@"Downloading \n features"/*@"Going Offline*/];
+    [SVProgressHUD showWithStatus:@"Downloading \n features"];
     [self.gdbTask generateGeodatabaseAndDownloadWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSAsyncServerJobStatus status, NSDictionary *userInfo) {
         if(status == AGSAsyncServerJobStatusFetchingResult)
             _newlyDownloaded = YES;
         [self logStatus:[NSString stringWithFormat:@"going offline status: %@", [self statusMessageForAsyncStatus:status]]];
     } completion:^(AGSGDBGeodatabase *geodatabase, NSError *error) {
         if (error){
-            _goingOffline = NO;
-            _offline = NO;
+            _goingLocal = NO;
+            _viewingLocal = NO;
             [self logStatus:[NSString stringWithFormat:@"error taking feature layers offline: %@", error]];
             [SVProgressHUD showErrorWithStatus:@"Couldn't download features"];
         }
         else{
-            _goingOffline = NO;
-            _offline = YES;
+            _goingLocal = NO;
+            _viewingLocal = YES;
             [self logStatus:@"viewing local data"];
             
             self.geodatabase = geodatabase;
@@ -471,12 +493,12 @@
             }else{
                 [SVProgressHUD dismiss];
                 [self showEditsInGeodatabaseAsBadge:geodatabase];
-                UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Found local data" message:@" It may contain edits or may be out of date. Do you want synchronize changes?" delegate:nil cancelButtonTitle:@"Later" otherButtonTitles:@"Yes", nil];
+                UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Found local data" message:@" It may contain edits or may be out of date. Do you want synchronize it with the service?" delegate:nil cancelButtonTitle:@"Later" otherButtonTitles:@"Yes", nil];
                 [av showWithCompletion:^(UIAlertView *alertView, NSInteger buttonIndex) {
                     switch (buttonIndex) {
                         case 0: //do nothing
                             break;
-                        case 1: //Yes, sync instead
+                        case 1: //Yes, sync
                             [self syncAction:nil];
                             break;
                         default:
@@ -486,7 +508,7 @@
 
             }
         }
-        [self updateOfflineStatus];
+        [self updateStatus];
         
         
     }];
@@ -718,7 +740,7 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(clearStatus) object:nil];
     
     // show basic status
-    self.statusLabel.text = status;
+    self.logsLabel.text = status;
     
     NSString *hideText = @"\nTap to hide...";
     
@@ -728,10 +750,10 @@
     status = [NSString stringWithFormat:@"%@ - %@\n\n", [df stringFromDate:[NSDate date]], status];
     [_allStatus insertString:status atIndex:0];
     if ([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPad){
-        _statusTextView.text = [NSString stringWithFormat:@"%@\n\n%@", hideText, _allStatus];
+        _logsTextView.text = [NSString stringWithFormat:@"%@\n\n%@", hideText, _allStatus];
     }
     else{
-        _statusTextView.text = [NSString stringWithFormat:@"%@\n\n%@", hideText, _allStatus];
+        _logsTextView.text = [NSString stringWithFormat:@"%@\n\n%@", hideText, _allStatus];
     }
     NSLog(@"%@", status);
     
@@ -743,10 +765,10 @@
 }
 
 -(void)clearStatus{
-    self.statusLabel.text = @"swipe up to show activity log   ";
+    self.logsLabel.text = @"swipe up to show activity log   ";
 }
 
--(void)updateOfflineStatus{
+-(void)updateStatus{
     
     if (![NSThread isMainThread]){
         [self performSelectorOnMainThread:@selector(updateOfflineStatus) withObject:nil waitUntilDone:NO];
@@ -755,24 +777,24 @@
     
     
     // set status
-    if (_goingOffline){
+    if (_goingLocal){
         _offlineStatusLabel.text = @"going offline...";
     }
-    else if (_goingOnline){
+    else if (_goingLive){
         _offlineStatusLabel.text = @"going online...";
     }
-    else if (_offline){
+    else if (_viewingLocal){
         _offlineStatusLabel.text = @"Local data"; //@"offline";
         _goOfflineButton.title = @"switch to live"; //@"go online";
     }
-    else if (!_offline){
+    else if (!_viewingLocal){
         _offlineStatusLabel.text = @"Live data"; //@"online";
         _goOfflineButton.title = @"download"; //@"go offline";
         [self showEditsInGeodatabaseAsBadge:nil];
     }
     
-    _goOfflineButton.enabled = !_goingOffline && !_goingOnline;
-    self.syncButton.enabled = _offline;
+    _goOfflineButton.enabled = !_goingLocal && !_goingLive;
+    self.syncButton.enabled = _viewingLocal;
 
 
 }

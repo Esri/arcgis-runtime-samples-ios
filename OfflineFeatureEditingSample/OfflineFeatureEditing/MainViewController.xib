@@ -11,9 +11,9 @@
                 <outlet property="geometryEditToolbar" destination="25" id="29"/>
                 <outlet property="goOfflineButton" destination="5" id="21"/>
                 <outlet property="liveActivityIndicator" destination="ftT-A8-gaD" id="pmz-WL-EAh"/>
+                <outlet property="logsLabel" destination="9" id="D5P-Ut-U3c"/>
                 <outlet property="mapContainer" destination="7" id="8"/>
                 <outlet property="offlineStatusLabel" destination="35" id="36"/>
-                <outlet property="statusLabel" destination="9" id="10"/>
                 <outlet property="syncButton" destination="w8H-ua-Fbq" id="mrk-6a-ZjT"/>
                 <outlet property="toolbar" destination="4" id="IWn-6j-9Zf"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -30,7 +30,7 @@
                     <items>
                         <barButtonItem title="download" id="5">
                             <connections>
-                                <action selector="goOfflineAction:" destination="-1" id="6"/>
+                                <action selector="switchDataAction:" destination="-1" id="DOs-DJ-RAB"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="39"/>
@@ -66,7 +66,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9">
+                <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9">
                     <rect key="frame" x="0.0" y="412" width="320" height="24"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>

@@ -16,7 +16,7 @@
 
 @interface MainViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *mapContainer;
-@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UILabel *logsLabel;
 @property (strong, nonatomic) IBOutlet UIView *leftContainer;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *addFeatureButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *deleteGDBButton;
@@ -28,7 +28,7 @@
 - (IBAction)deleteGDBAction:(id)sender;
 - (IBAction)addFeatureAction:(id)sender;
 - (IBAction)syncAction:(id)sender;
-- (IBAction)goOfflineAction:(id)sender;
+- (IBAction)switchDataAction:(id)sender;
 
 - (id)initWithFSURL:(NSURL*)url TPKURL:(NSURL*)tpkurl;
 @end

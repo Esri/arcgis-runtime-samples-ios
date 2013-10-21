@@ -1,16 +1,19 @@
 arcgis-runtime-samples-ios
 ==========================
 
+This repository contains sample code demonstrating the capabilities of [ArcGIS Runtime SDK for iOS](http://developers.arcgis.com/en/ios/).
+
+Before you can begin, [sign up](https://developers.arcgis.com/en/sign-up/) for a free developer account to get access to the SDK. 
+You need to [download](http://www.esri.com/apps/products/download/index.cfm?fuseaction=download.main&downloadid=898) 
+and install <b>v10.2</b> of the SDK. All the sample projects in this repo have been pre-configured to 
+reference an installed SDK on your machine. 
+
+ 
 ### General Help
 [New to Github? Get started here.](http://htmlpreview.github.com/?https://github.com/Esri/esri.github.com/blob/master/help/esri-getting-to-know-github.html)
 
-This repository contains sample code demonstrating the capabilities of [ArcGIS Runtime SDK for iOS](http://developers.arcgis.com/en/ios/).
-The XCode projects have been pre-configured to reference an installed SDK on your machine. You need to install <b>v10.2</b> of the SDK. You can download it
- [here](http://www.esri.com/apps/products/download/index.cfm?fuseaction=download.main&downloadid=898) (requires Esri Global account; free to sign up).
-
 ## Resources
-
-* Need help installing? 
+* Need help installing? [Read](https://developers.arcgis.com/en/ios/info/install.htm) how to install & setup a new XCode project.
 * Try out some basic [Tutorials](https://developers.arcgis.com/en/ios/guide/adding-a-map.htm)
 * Read the documentation : [Guide](http://developers.arcgis.com/en/ios/guide/introduction.htm) | [API Reference](http://developers.arcgis.com/en/ios/api-reference/index.htm)
 * Got a question? Ask the community on our [forum](http://forums.arcgis.com/forums/78-ArcGIS-for-iOS-SDK)

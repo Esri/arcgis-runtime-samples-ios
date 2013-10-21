@@ -17,6 +17,8 @@
 #import "JSBadgeView.h"
 #import "UIAlertView+NSCookbook.h"
 
+#define kTilePackageName @"SanFrancisco"
+#define kFeatureServiceURL @"http://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/Wildfire/FeatureServer"
 
 @interface MainViewController () <AGSLayerDelegate, AGSMapViewTouchDelegate, AGSPopupsContainerDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate, AGSFeatureLayerEditingDelegate, FeatureTemplatePickerDelegate>{
     
@@ -74,7 +76,7 @@
     self.mapView.callout.delegate = self;
 
     //Add the basemap layer from a tile package
-    _localTiledLayer =  [AGSLocalTiledLayer localTiledLayerWithName:@"SanFrancisco"];
+    _localTiledLayer =  [AGSLocalTiledLayer localTiledLayerWithName:kTilePackageName];
     [self.mapView addMapLayer:_localTiledLayer];
     
 
@@ -375,7 +377,7 @@
     
     [self logStatus:@"loading live data"];
 
-    self.gdbTask = [[AGSGDBTask alloc]initWithURL:[NSURL URLWithString:@"http://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/Wildfire/FeatureServer"]];
+    self.gdbTask = [[AGSGDBTask alloc]initWithURL:[NSURL URLWithString:kFeatureServiceURL]];
     __weak MainViewController* weakSelf = self;
     self.gdbTask.loadCompletion = ^(NSError* error){
         

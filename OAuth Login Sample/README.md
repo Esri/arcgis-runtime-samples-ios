@@ -7,9 +7,9 @@ a list of web maps that belong to the user. You can tap on any web map to view i
 ###Using the sample
 1. Tap on the <b>Sign in</b> button. This displays a new screen where you can sign in. 
 2. Enter your ArcGIS Online credentials and sign in. 
-3. Upon completion, the view controller will be dismissed and the web maps that belong
-to you will be displayed. You can tap on any of web map to view it.
-4. If you don't sign in step 2 above, you can hit <b>Cancel</b> to come back to the main screen. 
+3. Upon completion, web maps that belong to you will be displayed. 
+4. You can tap on any web map to view it.
+5. If you don't sign in step 2 above, you can hit <b>Cancel</b> to come back to the main screen. 
 The sample does not allow you to view web maps unless you sign in.
 
 ![](/image.png)

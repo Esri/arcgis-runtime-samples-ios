@@ -394,6 +394,7 @@
             NSURL* url = [weakSelf.gdbTask.URL URLByAppendingPathComponent:[NSString stringWithFormat:@"%d",info.layerId]];
             
             AGSFeatureLayer* fl = [AGSFeatureLayer featureServiceLayerWithURL:url mode:AGSFeatureLayerModeOnDemand];
+            fl.outFields = @[@"*"];
             fl.delegate = weakSelf;
             fl.editingDelegate = weakSelf;
             fl.expirationInterval = 60;

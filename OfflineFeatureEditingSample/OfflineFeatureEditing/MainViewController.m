@@ -418,7 +418,7 @@
     //NOTE: You should typically set this to a smaller envelope covering an area of interest
     //Setting to maxEnvelope here because sample data covers limited area in San Francisco
     params.extent = self.mapView.maxEnvelope;
-    params.outSpatialReference = [AGSSpatialReference wgs84SpatialReference];
+    params.outSpatialReference = self.mapView.spatialReference;
     NSMutableArray* layers = [[NSMutableArray alloc]init];
     for (AGSMapServiceLayerInfo* layerInfo in self.gdbTask.featureServiceInfo.layerInfos) {
         [layers addObject:[NSNumber numberWithInt: layerInfo.layerId]];

@@ -1,8 +1,9 @@
 ##Offline Routing Sample 
 
 This sample demonstrates how you can compute routes even when the device does not have any network connectivity.
-The sample uses a tile package (.tpk file) containing basemap tiles for downtown San Francisco. 
-The sample also contains a network dataset with information about the streets network for the area.
+The sample contains a network dataset with information about the streets network for the downtown San Francisco area. Routes
+are computed based on this dataset. The sample displays basemap tiles using a tile package (.tpk file) so that the basemap
+is visible even when the device is offline.
 
 
 ###Using the sample

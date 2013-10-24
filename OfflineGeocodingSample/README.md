@@ -1,17 +1,22 @@
 ##Offline Geocoding Sample 
 
-This sample demonstrates ...
+This sample demonstrates how you can geocode addresses to locations and reverse geocode locations to addresses even when the device
+does not have network connectivity. The sample uses a tile package (.tpk file) containing basemap tiles for downtown San Francisco.
+The sample also contains an address locator dataset (*.loc and associated files) that contains address information about the area.
 
-###Key concepts
-- 
--
+
 
 ###Using the sample
-1. 
-2. 
+1. Type an address in the search bar, or pick from a list of recent searches. 
+2. The address will be displayed on the map with a pushpin symbol. 
+3. Tap on the pushpin to display a callout for the result, and tap on the accessory button to see details.
+4. Tap-and-hold anywhere on the map to bring up a magnifier. 
+5. Move your finger on the map. The location underneath your finger
+is reverse-geocoded and the address is displayed in a callout.
 
 ![](/image.png)
 ![](/image2.png)
 ![](/image3.png)
 
 
+###Key concepts

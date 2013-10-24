@@ -7,15 +7,14 @@ San Francisco using a tile package (.tpk file) so that the basemap is visible ev
 
 
 ###Using the sample
-1. Upon startup, the map displays "Live" features from an ArcGIS Feature service.
+1. Upon startup, the app is in "Live Data" mode where the map displays features from an ArcGIS Feature service.
 These features are refreshed every minute to ensure you can see any changes made on the service. The device needs a network connection
 to ensure these features are displayed properly.
 2. You can tap on any feature to view information about it in a popup. 
 3. You can edit attributes, geometry, or attachments of the feature.
 4. You can add new feature using the **+** button on the bottom toolbar.
 5. Any edits you make while in "Live" mode are pushed immediately to the service.
-6. You can tap the **download** button on the toolbar to download the features. The map then displays these
-features from "Local" geodatabase. You don't need any network connectivity once the features are downloaded.
+6. You can tap the **download** button on the toolbar to download the features to the device.  The app moves into "Local Data" mode, the map displays features from the replica geodatabase on the deivce. You don't need any network connectivity to view or edit features in this mode.
 7. You can tap on any feature to display information about it in a popup. 
 8. You can edit attributes, geometry, or attachments of the feature.
 9. Or you can add new feature using the **+** button on the bottom toolbar.
@@ -32,9 +31,8 @@ local geodatabase is left intact in case you want to download features again.
 ![](/image3.png)
 
 ###Key concepts
-The ```MainViewController``` contains an ```AGSMapView``` to display a map. The map contains ```AGSLocalTiledLayer``` to display
-basemap tiles from SanFrancisco.tpk tile package. The map also contains ```AGSFeatureLayer``` for each layer in the ArcGIS Feature service
-to display features. These layers have ```expirationInterval``` property set to 60 seconds and ```autoRefreshOnExpiration``` enabled to refresh
-the feature data periodically. The ```editingDelegate``` of these layers is set to the main view controller which applies any edits
-immediately to the service.
+The ```MainViewController``` contains an ```AGSMapView``` to display a map. The map contains ```AGSLocalTiledLayer``` to display basemap tiles from SanFrancisco.tpk tile package. 
 
+In the "Live Data" mode, the map also contains ```AGSFeatureLayer``` for each layer in the [wildfire feature service](http://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/Wildfire/FeatureServer)   to display features. These layers have ```expirationInterval``` property set to 60 seconds and ```autoRefreshOnExpiration``` enabled to refresh the feature data periodically. The ```editingDelegate``` of these layers is set to be the main view controller which applies any edits immediately to the service.
+
+In the "Local Data" mode, the features are downloded from the service as a replica geodatabase using ```AGSGDBTask```. When the download completes, each dataset in the geodatabase accessed via ```AGSGDBFeatureTable``` and added to the map as an ```AGSFeatureTableLayer```. Features are  added, updated, or deleted using methods on ```AGSGDBFeatureTable``` and then later synchronized with the service using ```AGSGDBTask```

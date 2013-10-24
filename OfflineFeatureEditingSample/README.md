@@ -7,15 +7,15 @@ San Francisco using a tile package (.tpk file) so that the basemap is visible ev
 
 
 ###Using the sample
-1. Upon startup, the sample is in "Live" mode. The map displays features from an ArcGIS Feature service.
+1. Upon startup, the map displays "Live" features from an ArcGIS Feature service.
 These features are refreshed every minute to ensure you can see any changes made on the service. The device needs a network connection
 to ensure these features are displayed properly.
 2. You can tap on any feature to view information about it in a popup. 
 3. You can edit attributes, geometry, or attachments of the feature.
 4. You can add new feature using the **+** button on the bottom toolbar.
 5. Any edits you make while in "Live" mode are pushed immediately to the service.
-6. You can tap the **download** button on the toolbar to download the features. The app now is in "Local" mode viewing
-a local copy of the features in a replica geodatabase. You don't need any network connectivity once the features are downloaded.
+6. You can tap the **download** button on the toolbar to download the features. The map then displays these
+features from "Local" geodatabase. You don't need any network connectivity once the features are downloaded.
 7. You can tap on any feature to display information about it in a popup. 
 8. You can edit attributes, geometry, or attachments of the feature.
 9. Or you can add new feature using the **+** button on the bottom toolbar.

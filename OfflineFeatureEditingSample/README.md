@@ -25,12 +25,16 @@ and bring down any changes from the service into your local geodatabase.
 12. After the sync completes, you can continue making edits in "Local" mode and synchronize as often as you like.
 13. Tap the **switch to live** button when you're ready to start viewing live feature data from the service again. Your
 local geodatabase is left intact in case you want to download features again.
-14. Tap the **Delete** button to delete any local geodatabases that have been created.
+14. Tap the **Delete** button to delete all local geodatabases that have been created.
 
 ![](/image.png)
 ![](/image2.png)
 ![](/image3.png)
 
 ###Key concepts
-- 
--
+The ```MainViewController``` contains an ```AGSMapView``` to display a map. The map contains ```AGSLocalTiledLayer``` to display
+basemap tiles from SanFrancisco.tpk tile package. The map also contains ```AGSFeatureLayer``` for each layer in the ArcGIS Feature service
+to display features. These layers have ```expirationInterval``` property set to 60 seconds and ```autoRefreshOnExpiration``` enabled to refresh
+the feature data periodically. The ```editingDelegate``` of these layers is set to the main view controller which applies any edits
+immediately to the service.
+

@@ -22,6 +22,6 @@ is reverse-geocoded and the address is displayed in a callout.
 ###Key concepts
 The <code>GeocodingSampleViewController</code> contains an <code>AGSMapView</code> to display a map.
 The map view contains an <code>AGSLocalTiledLayer</code> to display tiles from SanFrancisco.tpk tile package. The
-view controller also initialize an <code>AGSLocator</code> with the SanFranciscoLocator.loc locator to geocode and reverse-geocode.
+view controller initializes an <code>AGSLocator</code> with the SanFranciscoLocator.loc locator dataset to use for geocoding and reverse-geocoding.
 The results are displayed as pushpin graphics using an <code>AGSGraphicsLayer</code>.
 The map view's <code>touchDelegate</code> is used to track tap-and-hold gestures on the map and kick off reverse-geocoding operations.

@@ -6,9 +6,9 @@ This sample demonstrates how to view a webmap from ArcGIS Online. The sample can
 
 2) The webmap is private and requires credentials to permit access. However, all webmap layers use publicly accessible services. 
 
-3) The webmap is private. Some layers use secured services. These services can be accessed using the same credentails as the web map.
+3) The webmap is private. Some layers use secured services which can be accessed using the same credentails as the web map.
 
-4) The webmap is private. Some layers use secured services. These services require a different set of credentials to permit access.
+4) The webmap is private. Some layers use secured services which require a different set of credentials to permit access.
 
 
 

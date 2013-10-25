@@ -5,6 +5,7 @@ the features even when the devices does not have any network connectivity, synch
 to push your edits up and pull down any changes from the service. The sample displays basemap tiles for downtown 
 San Francisco using a tile package (.tpk file) so that the basemap is visible even when the device is offline.
 
+**Note:** This sample uses functionality that is in beta at v10.2 of ArcGIS Runtime SDK for iOS.
 
 ###Using the sample
 1. Upon startup, the app is in "Live Data" mode where the map displays features from an ArcGIS Feature service.

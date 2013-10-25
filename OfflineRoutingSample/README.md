@@ -1,10 +1,11 @@
-##Offline Routing Sample 
+##Offline Routing Sample (Beta)
 
 This sample demonstrates how you can compute routes even when the device does not have any network connectivity.
 The sample contains a network dataset with information about the streets network for the downtown San Francisco area. Routes
 are computed based on this dataset. The sample displays basemap tiles using a tile package (.tpk file) so that the basemap
 is visible even when the device is offline.
 
+**Note:** This sample uses functionality that is in beta at v10.2 of ArcGIS Runtime SDK for iOS.
 
 ###Using the sample
 1. Tap-and-hold anywhere on the map to add a stop. Move your finger while still holding down on the map to move the stop. 

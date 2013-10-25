@@ -22,7 +22,7 @@ is reverse-geocoded and the address is displayed in a callout.
 ![](/image3.png)
 
 
-###API Usage
+###Using the API
 The <code>GeocodingSampleViewController</code> contains an <code>AGSMapView</code> to display a map.
 The map view contains an <code>AGSLocalTiledLayer</code> to display tiles from SanFrancisco.tpk tile package. The
 view controller initializes an <code>AGSLocator</code> with the SanFranciscoLocator.loc locator dataset to use for geocoding and reverse-geocoding.

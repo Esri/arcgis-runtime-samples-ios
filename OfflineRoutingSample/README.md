@@ -21,7 +21,7 @@ is visible even when the device is offline.
 ![](/image3.png)
 
 
-###API Usage
+###Using the API
 The ```RoutingSampleViewController``` contains an ```AGSMapView``` to display a map. The map view contains an 
 AGSLocalTiledLayer to display tiles from SanFrancisco.tpk tile package. The view controller initializes
 n ```AGSRouteTask``` with the RuntimeSanFrancisco network dataset to use for computing routes. The stops and route results are 

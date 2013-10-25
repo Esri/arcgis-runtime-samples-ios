@@ -16,7 +16,7 @@ The sample does not allow you to view web maps unless you sign in.
 ![](/image2.png)
 ![](/image3.png)
 
-###API Usage
+###Using the API
 
 The sample uses the class <code>AGSOAuthViewController</code> to handle the sign in process. 
 When a user attempts to sign in,  <code>MainViewController</code> instantiates an <code>AGSOAuthViewController</code> 

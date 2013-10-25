@@ -2,7 +2,7 @@
 
 This sample demonstrates ...
 
-###Key concepts
+###Using the API
 - 
 -
 

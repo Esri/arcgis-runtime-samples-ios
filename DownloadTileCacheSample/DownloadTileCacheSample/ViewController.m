@@ -313,7 +313,7 @@
     }
     
     NSMutableArray *arrayLods = [[NSMutableArray alloc] init];
-    for (int i=0/*startLod*/; i <= self.lastLod; i++) {
+    for (int i=startLod; i <= self.lastLod; i++) {
         [arrayLods addObject:[NSString stringWithFormat:@"%d", i]];
     }
     

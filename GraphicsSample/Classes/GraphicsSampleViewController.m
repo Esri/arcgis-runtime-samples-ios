@@ -152,6 +152,7 @@
     countyQuery.where = @"STATE_NAME = 'California'";
     countyQuery.outFields = [NSArray arrayWithObject:@"*"];
 	countyQuery.returnGeometry = YES;
+    countyQuery.outSpatialReference = self.mapView.spatialReference;
     [self.countyQueryTask executeWithQuery:countyQuery];
 
 	//set up query task for cities and perform query returning all atrributes
@@ -162,6 +163,7 @@
     cityQuery.where = @"STATE_NAME = 'California'";
     cityQuery.outFields = [NSArray arrayWithObject:@"*"];
 	cityQuery.returnGeometry = YES;
+    cityQuery.outSpatialReference = self.mapView.spatialReference;
     [self.cityQueryTask executeWithQuery:cityQuery];
 }
 

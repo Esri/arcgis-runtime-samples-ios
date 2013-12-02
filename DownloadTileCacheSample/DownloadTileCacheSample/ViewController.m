@@ -236,8 +236,8 @@
             NSString *gpDescription = [[allMessages objectAtIndex:allMessages.count-1 ] description];
             self.statusLabel.text = [self parseMessagesDescription:gpDescription];
             
-            AGSGPMessage *detailsMessages = [allMessages objectAtIndex:allMessages.count-2 ];
-            if ( detailsMessages != nil) {
+            if ( allMessages.count>1) {
+                AGSGPMessage *detailsMessages = [allMessages objectAtIndex:allMessages.count-2 ];
                 
                 NSLog(@"Percentage %@", detailsMessages.description);
                 
@@ -313,8 +313,8 @@
     }
     
     NSMutableArray *arrayLods = [[NSMutableArray alloc] init];
-    for (int i=startLod; i <= self.lastLod; i++) {
-        [arrayLods addObject:[NSString stringWithFormat:@"%d", i]];
+    for (int i=0/*startLod*/; i <= self.lastLod; i++) {
+        [arrayLods addObject:[NSString stringWithFormat:@"%d", (int)(startLod+i)]];
     }
     
     return arrayLods;

@@ -53,6 +53,7 @@
     [self presentViewController:self.popupVC animated:YES completion:nil];
     self.mapView.touchDelegate = self;
     self.bannerView.hidden = YES;
+    self.mapView.allowCallout = YES;
 
 }
 
@@ -196,13 +197,6 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
 
 #pragma mark - AGSCalloutDelegate methods
 
-- (BOOL) callout:(AGSCallout *)callout willShowForFeature:(id<AGSFeature>)feature layer:(AGSLayer<AGSHitTestable> *)layer mapPoint:(AGSPoint *)mapPoint{
-    //Dont show callout when the sketch layer is active. 
-    //The user is sketching and even if he taps on a feature, 
-    //we don't want to display the callout and interfere with the sketching workflow
-    return self.mapView.touchDelegate != self.sketchLayer ;
-}
-
 - (void) didClickAccessoryButtonForCallout:		(AGSCallout *) 	callout {
     
     AGSGraphic* graphic = (AGSGraphic*)callout.representedObject;
@@ -227,7 +221,7 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
     return AGSMutableGeometryFromType( ((AGSFeatureLayer*)popup.graphic.layer).geometryType, self.mapView.spatialReference);
 }
 
-- (void)popupsContainer:(id) popupsContainer readyToEditGraphicGeometry:(AGSGeometry *) geometry forPopup:(AGSPopup *) popup{
+- (void)popupsContainer:(id) popupsContainer readyToEditGeometry:(AGSGeometry *) geometry forPopup:(AGSPopup *) popup{
     //Dismiss the popup view controller
     [self dismissViewControllerAnimated:YES completion:nil];
     
@@ -235,6 +229,11 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
     self.bannerView.hidden = NO;
     self.mapView.touchDelegate = self.sketchLayer; //activate the sketch layer
     self.mapView.callout.hidden = YES;
+
+    //Dont show callout when the sketch layer is active.
+    //The user is sketching and even if he taps on a feature,
+    //we don't want to display the callout and interfere with the sketching workflow
+    self.mapView.allowCallout = NO;
     
     //Assign the sketch layer the geometry that is being passed to us for 
     //the active popup's graphic. This is the starting point of the sketch
@@ -262,7 +261,7 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
     self.sketchCompleteButton.enabled = NO;
 }
 
-- (void)popupsContainer:(id<AGSPopupsContainer>) popupsContainer wantsToDeleteGraphicForPopup:(AGSPopup *) popup {
+- (void)popupsContainer:(id<AGSPopupsContainer>) popupsContainer wantsToDeleteForPopup:(AGSPopup *) popup {
     //Call method on feature layer to delete the feature
     NSNumber* number = [NSNumber numberWithInteger: [self.activeFeatureLayer objectIdForFeature:popup.graphic]];
     NSArray* oids = [NSArray arrayWithObject: number ];
@@ -271,7 +270,7 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
 
 }
 
--(void)popupsContainer:(id<AGSPopupsContainer>)popupsContainer didFinishEditingGraphicForPopup:(AGSPopup*)popup{
+-(void)popupsContainer:(id<AGSPopupsContainer>)popupsContainer didFinishEditingForPopup:(AGSPopup*)popup{
 	// simplify the geometry, this will take care of self intersecting polygons and 
 	popup.graphic.geometry = [[AGSGeometryEngine defaultGeometryEngine]simplifyGeometry:popup.graphic.geometry];
     //normalize the geometry, this will take care of geometries that extend beyone the dateline 
@@ -302,7 +301,7 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
     self.popupVC = nil;
 }
 
-- (void)popupsContainer:(id) popupsContainer didCancelEditingGraphicForPopup:(AGSPopup *) popup {
+- (void)popupsContainer:(id) popupsContainer didCancelEditingForPopup:(AGSPopup *) popup {
     //dismiss the popups view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 

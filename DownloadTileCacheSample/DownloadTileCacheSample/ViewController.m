@@ -163,46 +163,28 @@
     AGSGenerateTileCacheParams *params = [[AGSGenerateTileCacheParams alloc] initWithLevelsOfDetail:arrayLods areaOfInterest:extent];
 
     [self showOverlay];
-    [self.tileCacheTask estimateSizeWithParameters:params status:^(NSString *jobId, AGSTileCacheJobStatus status, NSArray *messages, id result, NSError *error) {
-        
-        NSLog(@"Processing estimate %@", messages);
-        NSLog(@"Estimate %@", [messages description]);
-        
-        if ( messages.count > 0) {
-            NSString * gpDescription =  [[messages objectAtIndex:messages.count-1] description];
-            gpDescription = [self parseMessagesDescription:gpDescription];
-            self.statusLabel.text = gpDescription;
-        }
-        
-        if ( status == AGSTileCacheJobSucceeded) {
-            // Hide progress show labels
-            AGSTileCacheSizeEstimate *estimateResult = result;
-            
-            if ( estimateResult != nil){
-                NSNumberFormatter* tileCountFormatter = [[NSNumberFormatter alloc]init];
-                [tileCountFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-                [tileCountFormatter setMaximumFractionDigits:0];
-                
-                NSString* tileCountString = [tileCountFormatter stringFromNumber:[NSNumber numberWithInt:estimateResult.tileCount]];
-
-                NSByteCountFormatter* byteCountFormatter = [[NSByteCountFormatter alloc]init];
-                NSString* byteCountString = [byteCountFormatter stringFromByteCount:estimateResult.fileSize];
-                self.estimateLabel.text = [[NSString alloc] initWithFormat:@"%@  / %@ tiles", byteCountString, tileCountString];
-            }
-            self.statusLabel.text = @"Done";
-            
-            [self hideOverlay];
-            [self showGrayBox];
-        }
-        
+    [self.tileCacheTask estimateTileCacheSizeWithParameters:params status:^(AGSAsyncServerJobStatus status, NSDictionary *userInfo) {
+        NSLog(@"%@, %@", AGSAsyncServerJobStatusAsString(status) ,userInfo);
+    } completion:^(AGSTileCacheSizeEstimate *tileCacheSizeEstimate, NSError *error) {
+        [self hideOverlay];
+        [self showGrayBox];
         if ( error != nil) {
-            // Hide the screen and display error
-            [self hideOverlay];
-            [self showGrayBox];
             [[[UIAlertView alloc]initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+        }else{
+            NSNumberFormatter* tileCountFormatter = [[NSNumberFormatter alloc]init];
+            [tileCountFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+            [tileCountFormatter setMaximumFractionDigits:0];
+            
+            NSString* tileCountString = [tileCountFormatter stringFromNumber:[NSNumber numberWithInt:tileCacheSizeEstimate.tileCount]];
+            
+            NSByteCountFormatter* byteCountFormatter = [[NSByteCountFormatter alloc]init];
+            NSString* byteCountString = [byteCountFormatter stringFromByteCount:tileCacheSizeEstimate.fileSize];
+            self.estimateLabel.text = [[NSString alloc] initWithFormat:@"%@  / %@ tiles", byteCountString, tileCountString];
+            self.statusLabel.text = @"Done";
+        
         }
+
     }];
-    
     
 }
 
@@ -229,7 +211,7 @@
     self.estimateLabel.text = @"";
     
     self.operationToCancel = [self.tileCacheTask generateTileCacheAndDownloadWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSAsyncServerJobStatus status, NSDictionary *userInfo) {
-        
+          NSLog(@"%@, %@", AGSAsyncServerJobStatusAsString(status) ,userInfo);
         NSArray *allMessages =  [userInfo objectForKey:@"messages"];
         
         if ( allMessages.count > 0) {
@@ -249,6 +231,19 @@
                     self.percentageValue.text = [[NSString alloc] initWithFormat:@"%d%%", (int)dPercentage  ];
                     [self.progressBar setProgress:dPercentage/100 animated:YES];
                 }
+            }
+        }
+        
+        if (status == AGSAsyncServerJobStatusFetchingResult) {
+            NSNumber* totalBytesDownloaded = userInfo[@"AGSDownloadProgressTotalBytesDownloaded"];
+            NSNumber* totalBytesExpected = userInfo[@"AGSDownloadProgressTotalBytesExpected"];
+            if(totalBytesDownloaded!=nil && totalBytesExpected!=nil){
+                self.statusLabel.text = @"Downloading";
+                self.progressBar.hidden = NO;
+                self.percentageValue.hidden = NO;
+                double dPercentage = (double)([totalBytesDownloaded doubleValue]/[totalBytesExpected doubleValue]);
+                self.percentageValue.text = [[NSString alloc] initWithFormat:@"%d%%", (int)(dPercentage*100) ];
+                [self.progressBar setProgress:dPercentage animated:NO];
             }
         }
         

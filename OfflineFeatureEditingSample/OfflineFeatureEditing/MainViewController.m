@@ -317,7 +317,7 @@
     AGSGDBSyncParameters* param = [[AGSGDBSyncParameters alloc]initWithGeodatabase:self.geodatabase];
 
     //kick off the sync operation
-    self.cancellable = [self.gdbTask syncGeodatabase:self.geodatabase params:param status:^(AGSAsyncServerJobStatus status, NSDictionary *userInfo) {
+    self.cancellable = [self.gdbTask syncGeodatabase:self.geodatabase params:param status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
         [self logStatus:[NSString stringWithFormat:@"sync status: %@", [self statusMessageForAsyncStatus:status]]];
     } completion:^(NSError *error) {
         self.cancellable = nil;
@@ -427,8 +427,8 @@
     params.layerIDs = layers;
     _newlyDownloaded = NO;
     [SVProgressHUD showWithStatus:@"Downloading \n features"];
-    [self.gdbTask generateGeodatabaseAndDownloadWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSAsyncServerJobStatus status, NSDictionary *userInfo) {
-        if(status == AGSAsyncServerJobStatusFetchingResult)
+    [self.gdbTask generateGeodatabaseAndDownloadWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
+        if(status == AGSResumableTaskJobStatusFetchingResult)
             _newlyDownloaded = YES;
         [self logStatus:[NSString stringWithFormat:@"Status: %@", [self statusMessageForAsyncStatus:status]]];
     } completion:^(AGSGDBGeodatabase *geodatabase, NSError *error) {
@@ -607,24 +607,26 @@
     if (popup.gdbFeature){
         
         if (popup.gdbFeature == _addFeature){
-            AGSEditResult *result = [popup.gdbFeatureTable addFeature:popup.gdbFeature];
-            if(result.success){
-                [self logStatus:[NSString stringWithFormat:@"add succeded (ID:%d)", result.objectId]];
+            NSError* err;
+            BOOL success = [popup.gdbFeatureTable addFeature:popup.gdbFeature error:&err];
+            if(success){
+                [self logStatus:@"add succeded"];
                 [self showEditsInGeodatabaseAsBadge:popup.gdbFeatureTable.geodatabase];
 
             }else{
-                [self logStatus:[NSString stringWithFormat:@"add failed: %@", result.error.errorDescription]];
+                [self logStatus:[NSString stringWithFormat:@"add failed: %@", [err localizedDescription]]];
             }
             _addFeature = nil;
         }
         else{
-            AGSEditResult *result = [popup.gdbFeatureTable updateFeature:popup.gdbFeature];
-            if(result.success){
-                [self logStatus:[NSString stringWithFormat:@"update succeded (ID:%d)", result.objectId]];
+            NSError* err;
+            BOOL success = [popup.gdbFeatureTable updateFeature:popup.gdbFeature error:&err];
+            if(success){
+                [self logStatus:@"update succeded"];
                 [self showEditsInGeodatabaseAsBadge:popup.gdbFeatureTable.geodatabase];
                 
             }else{
-                [self logStatus:[NSString stringWithFormat:@"update failed: %@", result.error.errorDescription]];
+                [self logStatus:[NSString stringWithFormat:@"update failed: %@", [err localizedDescription]]];
             }
         }
     }
@@ -643,13 +645,14 @@
 
 -(void) popupsContainer:(id<AGSPopupsContainer>)popupsContainer wantsToDeleteForPopup:(AGSPopup *)popup{
     if([popup.feature isKindOfClass:[AGSGDBFeature class]]){
-       AGSEditResult *result = [popup.gdbFeature.table deleteFeature:popup.gdbFeature];
-        if(result.success){
-            [self logStatus:[NSString stringWithFormat:@"delete succeded (ID:%d)", result.objectId]];
+        NSError* err;
+       BOOL success = [popup.gdbFeature.table deleteFeature:popup.gdbFeature error:&err];
+        if(success){
+            [self logStatus:@"delete succeded"];
             [self showEditsInGeodatabaseAsBadge:popup.gdbFeatureTable.geodatabase];
         }
         else{
-            [self logStatus:[NSString stringWithFormat:@"delete failed: %@", result.error.errorDescription]];
+            [self logStatus:[NSString stringWithFormat:@"delete failed: %@", [err localizedDescription]]];
         }
 
     }else{
@@ -770,34 +773,34 @@
 
 }
 
--(NSString*)statusMessageForAsyncStatus:(AGSAsyncServerJobStatus)status
+-(NSString*)statusMessageForAsyncStatus:(AGSResumableTaskJobStatus)status
 {
     switch (status) {
-        case AGSAsyncServerJobStatusNotStarted:
+        case AGSResumableTaskJobStatusNotStarted:
             return @"Not yet started";
             break;
-        case AGSAsyncServerJobStatusWaitingForDefaultParameters:
+        case AGSResumableTaskJobStatusWaitingForDefaultParameters:
             return @"Waiting for default parameters";
             break;
-        case AGSAsyncServerJobStatusPreProcessingJob:
+        case AGSResumableTaskJobStatusPreProcessingJob:
             return @"Preprocessing";
             break;
-        case AGSAsyncServerJobStatusStartingJob:
+        case AGSResumableTaskJobStatusStartingJob:
             return @"Starting";
             break;
-        case AGSAsyncServerJobStatusPolling:
+        case AGSResumableTaskJobStatusPolling:
             return @"In Progress";
             break;
-        case AGSAsyncServerJobStatusFetchingResult:
+        case AGSResumableTaskJobStatusFetchingResult:
             return @"Downloading Result";
             break;
-        case AGSAsyncServerJobStatusInBGWaitingToFinish:
+        case AGSResumableTaskJobStatusInBGWaitingToFinish:
             return @"Backgrounded;waiting to finish";
             break;
-        case AGSAsyncServerJobStatusDone:
+        case AGSResumableTaskJobStatusDone:
             return @"Done";
             break;
-        case AGSAsyncServerJobStatusCancelled:
+        case AGSResumableTaskJobStatusCancelled:
             return @"Cancelled";
             break;
         default:

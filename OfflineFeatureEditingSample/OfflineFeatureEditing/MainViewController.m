@@ -426,10 +426,17 @@
     }
     params.layerIDs = layers;
     _newlyDownloaded = NO;
-    [SVProgressHUD showWithStatus:@"Downloading \n features"];
+    [SVProgressHUD showWithStatus:@"Preparing to \n download"];
     [self.gdbTask generateGeodatabaseAndDownloadWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
-        if(status == AGSResumableTaskJobStatusFetchingResult)
+        if(status == AGSResumableTaskJobStatusFetchingResult){
             _newlyDownloaded = YES;
+            NSNumber* totalBytesDownloaded = userInfo[@"AGSDownloadProgressTotalBytesDownloaded"];
+            NSNumber* totalBytesExpected = userInfo[@"AGSDownloadProgressTotalBytesExpected"];
+            if(totalBytesDownloaded!=nil && totalBytesExpected!=nil){
+                double dPercentage = (double)([totalBytesDownloaded doubleValue]/[totalBytesExpected doubleValue]);
+                [SVProgressHUD showProgress:dPercentage status:@"Downloading \n features"];
+            }
+        }
         [self logStatus:[NSString stringWithFormat:@"Status: %@", [self statusMessageForAsyncStatus:status]]];
     } completion:^(AGSGDBGeodatabase *geodatabase, NSError *error) {
         if (error){

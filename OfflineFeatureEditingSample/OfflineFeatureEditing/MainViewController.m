@@ -436,8 +436,11 @@
                 double dPercentage = (double)([totalBytesDownloaded doubleValue]/[totalBytesExpected doubleValue]);
                 [SVProgressHUD showProgress:dPercentage status:@"Downloading \n features"];
             }
+        }else{
+            //don't want to log status for "fetching result" state because
+            //status block gets called many times a second when downloading
+            [self logStatus:[NSString stringWithFormat:@"Status: %@", [self statusMessageForAsyncStatus:status]]];
         }
-        [self logStatus:[NSString stringWithFormat:@"Status: %@", [self statusMessageForAsyncStatus:status]]];
     } completion:^(AGSGDBGeodatabase *geodatabase, NSError *error) {
         if (error){
             _goingLocal = NO;

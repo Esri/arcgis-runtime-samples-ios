@@ -322,6 +322,7 @@
 		4B1920FA1746ECC900E724BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = "~/Library/SDKs/ArcGIS/iOS";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -344,6 +345,7 @@
 		4B1920FB1746ECC900E724BE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = "~/Library/SDKs/ArcGIS/iOS";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

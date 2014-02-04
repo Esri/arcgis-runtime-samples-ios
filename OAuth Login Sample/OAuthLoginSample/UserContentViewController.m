@@ -12,6 +12,7 @@
 
 #import "UserContentViewController.h"
 #import "MapViewController.h"
+#import "MainViewController.h"
 
 
 
@@ -68,14 +69,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"My Content";
-    self.doneLoading = YES;
+    if(self.portal.credential.username)
+    self.navigationItem.title = [NSString stringWithFormat:@" %@'s content",self.portal.credential.username];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout)];
     //start the process to get user's content
     [self getUserContents];
-
 }
 
+- (void)logout{
+    self.portal = nil;
+    AGSKeychainItemWrapper* wrapper = [[AGSKeychainItemWrapper alloc]initWithIdentifier:@"com.esri.OAuthLoginSample" accessGroup:nil];
+    [wrapper reset];
+    
+    [self.navigationController setViewControllers:@[[[MainViewController alloc]init]] animated:YES];
 
+}
 
 - (void)viewDidUnload
 {
@@ -105,7 +113,7 @@
 
 - (void)getUserContents
 {    
-    
+
     //the portal is shared by many view controllers
     //setting the delegate to be self when this view controller is made visible
     super.portal.user.delegate = self;
@@ -117,8 +125,6 @@
     //fetch the user content
     self.contentsOp = [super.portal.user fetchContent];
     
-    //set the done loading flag. 
-    super.doneLoading = NO;
     
 }
 
@@ -142,6 +148,10 @@
                                           otherButtonTitles:nil];
     
     [alert show];
+    
+    //Show "No content available" cells
+    self.doneLoading = YES;
+    [self.tableView reloadData];
     
 }
 

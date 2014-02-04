@@ -12,6 +12,9 @@
 #import "MainViewController.h"
 #import "UserContentViewController.h"
 
+#define kPortalUrl @"https://www.arcgis.com"
+#define kClientID @"pqN3y96tSb1j8ZAY"
+
 @interface MainViewController ()
 @property (nonatomic,strong) AGSOAuthLoginViewController* oauthLoginVC;
 @property (nonatomic,strong) NSError* error;
@@ -39,7 +42,23 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"oAuth Sample";
-    // Do any additional setup after loading the view from its nib.
+    [[NSURLConnection ags_trustedHosts]addObject:@"www.arcgis.com"];
+    
+    //Check to see if we previously saved the user's credentails in the keychain
+    //and if so, use it to sign in to the portal
+    AGSKeychainItemWrapper* wrapper = [[AGSKeychainItemWrapper alloc]initWithIdentifier:@"com.esri.OAuthLoginSample" accessGroup:nil];
+    AGSCredential* credential = (AGSCredential*)[wrapper keychainObject];
+    if (credential) {
+        NSLog(@"Found credential in keychain. Logging into portal");
+        
+        //Connect to the portal
+        AGSPortal* portal = [[AGSPortal alloc]initWithURL:[NSURL URLWithString: kPortalUrl] credential:credential];
+        
+        //Display the user's items
+        UserContentViewController* uvc = [[UserContentViewController alloc]initWithPortal:portal];
+        [self.navigationController setViewControllers:@[uvc] animated:YES];
+
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,8 +68,9 @@
 }
 
 - (IBAction)signIn:(id)sender {
-    NSString* portalURL = @"https://www.arcgis.com";
-    self.oauthLoginVC = [[AGSOAuthLoginViewController alloc] initWithPortalURL:[NSURL URLWithString:portalURL] clientID:@"pqN3y96tSb1j8ZAY" ];
+    self.oauthLoginVC = [[AGSOAuthLoginViewController alloc] initWithPortalURL:[NSURL URLWithString:kPortalUrl] clientID:kClientID];
+    //request a permanent refresh token so user doesn't have to login in
+    self.oauthLoginVC.refreshTokenExpirationInterval = -1;
     
     UINavigationController* nvc = [[UINavigationController alloc]initWithRootViewController:self.oauthLoginVC];
     nvc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
@@ -76,11 +96,15 @@
             }
         }else{
             
-            //update the portal explorer with the credential provided by the user.
-            AGSPortal* portal = [[AGSPortal alloc]initWithURL:[NSURL URLWithString: portalURL] credential:credential];
+            //Store the credential securely in the keychain so that we can use it later
+            //when the app is restarted.
+            AGSKeychainItemWrapper* wrapper = [[AGSKeychainItemWrapper alloc]initWithIdentifier:@"com.esri.OAuthLoginSample" accessGroup:nil];
+            [wrapper setKeychainObject:credential];
+
+            //Connect to the portal using the credential provided by the user.
+            AGSPortal* portal = [[AGSPortal alloc]initWithURL:[NSURL URLWithString: kPortalUrl] credential:credential];
             
-            
-            
+            //Display the user's  items
             [safeSelf dismissViewControllerAnimated:NO completion:^(){
                 UserContentViewController* uvc = [[UserContentViewController alloc]initWithPortal:portal];
                 [safeSelf.navigationController setViewControllers:@[uvc] animated:YES];

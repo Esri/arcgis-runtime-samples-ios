@@ -30,6 +30,22 @@
     return YES;
 }
 
+- (void) saveCredentialToKeychain:(AGSCredential*)credential{
+    AGSKeychainItemWrapper* wrapper = [[AGSKeychainItemWrapper alloc]initWithIdentifier:@"com.esri.OAuthLoginSample" accessGroup:nil];
+    [wrapper setKeychainObject:credential];
+}
+
+- (void) removeCredentialFromKeychain{
+    AGSKeychainItemWrapper* wrapper = [[AGSKeychainItemWrapper alloc]initWithIdentifier:@"com.esri.OAuthLoginSample" accessGroup:nil];
+    [wrapper reset];
+}
+
+- (AGSCredential*) fetchCredentialFromKeychain{
+    AGSKeychainItemWrapper* wrapper = [[AGSKeychainItemWrapper alloc]initWithIdentifier:@"com.esri.OAuthLoginSample" accessGroup:nil];
+    return (AGSCredential*)[wrapper keychainObject];
+}
+
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     /*
@@ -68,5 +84,6 @@
      See also applicationDidEnterBackground:.
      */
 }
+
 
 @end

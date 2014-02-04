@@ -11,6 +11,7 @@
 //
 #import "MainViewController.h"
 #import "UserContentViewController.h"
+#import "AppDelegate.h"
 
 #define kPortalUrl @"https://www.arcgis.com"
 #define kClientID @"pqN3y96tSb1j8ZAY"
@@ -46,18 +47,17 @@
     
     //Check to see if we previously saved the user's credentails in the keychain
     //and if so, use it to sign in to the portal
-    AGSKeychainItemWrapper* wrapper = [[AGSKeychainItemWrapper alloc]initWithIdentifier:@"com.esri.OAuthLoginSample" accessGroup:nil];
-    AGSCredential* credential = (AGSCredential*)[wrapper keychainObject];
+    AGSCredential* credential = [(AppDelegate*)[UIApplication sharedApplication].delegate fetchCredentialFromKeychain];
     if (credential) {
+        
+        [self.signInButton setTitle:@"Signing in..." forState:UIControlStateNormal];
+        self.signInButton.enabled = NO;
         NSLog(@"Found credential in keychain. Logging into portal");
         
         //Connect to the portal
-        AGSPortal* portal = [[AGSPortal alloc]initWithURL:[NSURL URLWithString: kPortalUrl] credential:credential];
+        self.portal = [[AGSPortal alloc]initWithURL:[NSURL URLWithString: kPortalUrl] credential:credential];
+        self.portal.delegate = self;
         
-        //Display the user's items
-        UserContentViewController* uvc = [[UserContentViewController alloc]initWithPortal:portal];
-        [self.navigationController setViewControllers:@[uvc] animated:YES];
-
     }
 }
 
@@ -81,36 +81,27 @@
     __weak MainViewController *safeSelf = self;
     self.oauthLoginVC.completion = ^(AGSCredential *credential, NSError *error){
         if(error){
-            
-            if(error.code == NSUserCancelledError){
+            if(error.code == NSUserCancelledError){ //if user cancelled login
+             
                 [safeSelf cancelLogin];
-            }else if (error.code == NSURLErrorServerCertificateUntrusted){
+                
+            }else if (error.code == NSURLErrorServerCertificateUntrusted){ //if self-signed certificate error
+                
                 //keep a reference to the error so that the uialertview deleate can accesss it
                 safeSelf.error = error;
                 UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"Error" message:[[error localizedDescription] stringByAppendingString:[error localizedRecoverySuggestion]] delegate:safeSelf cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
                 [av show];
-            }
-            else{
+                
+            } else { //all other errors
+                
                 UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [av show];
+                
             }
         }else{
-            
-            //Store the credential securely in the keychain so that we can use it later
-            //when the app is restarted.
-            AGSKeychainItemWrapper* wrapper = [[AGSKeychainItemWrapper alloc]initWithIdentifier:@"com.esri.OAuthLoginSample" accessGroup:nil];
-            [wrapper setKeychainObject:credential];
-
             //Connect to the portal using the credential provided by the user.
-            AGSPortal* portal = [[AGSPortal alloc]initWithURL:[NSURL URLWithString: kPortalUrl] credential:credential];
-            
-            //Display the user's  items
-            [safeSelf dismissViewControllerAnimated:NO completion:^(){
-                UserContentViewController* uvc = [[UserContentViewController alloc]initWithPortal:portal];
-                [safeSelf.navigationController setViewControllers:@[uvc] animated:YES];
-            }];
-            
-            
+            safeSelf.portal = [[AGSPortal alloc]initWithURL:[NSURL URLWithString: kPortalUrl] credential:credential];
+            safeSelf.portal.delegate = safeSelf;
         }
         
     };
@@ -125,18 +116,53 @@
 #pragma mark - UIAlertViewDelegate
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if(buttonIndex==0){
+    //This alert view is asking the user if he/she wants to trust the self signed certificate
+    if(buttonIndex==0){ //No, don't trust
         [self cancelLogin];
-    }else{
+    }else { //Yes, trust
         NSURL* url = [self.error userInfo][NSURLErrorFailingURLErrorKey];
         //add to trusted hosts
         [[NSURLConnection ags_trustedHosts]addObject:[url host]];
         //make a test connection to force UIWebView to accept the host
         AGSJSONRequestOperation* rop = [[AGSJSONRequestOperation alloc]initWithURL:url];
         [[AGSRequestOperation sharedOperationQueue] addOperation:rop];
+        //Reload the oAuth vc
         [self.oauthLoginVC reload];
     }
     
 }
+
+#pragma mark - AGSPortalDelegate methods
+
+- (void)portalDidLoad:(AGSPortal *)portal {
+    
+    //Now that we were able to connect to the portal using the credential,
+    //store the credential securely in the keychain so that we can use it later
+    //when the app is restarted.
+    [(AppDelegate*)[UIApplication sharedApplication].delegate saveCredentialToKeychain:portal.credential];
+    
+    //If we presented any other view controller, dismiss it
+    if(self.presentedViewController)
+        [self dismissViewControllerAnimated:YES completion:nil];
+    
+    //Display the user's  items
+    UserContentViewController* uvc = [[UserContentViewController alloc]initWithPortal:self.portal];
+    [self.navigationController setViewControllers:@[uvc] animated:YES];
+    
+}
+
+- (void)portal:(AGSPortal *)portal didFailToLoadWithError:(NSError *)error {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:@"Could not connect to portal"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    
+    [alert show];
+    NSLog(@"%@",[error localizedDescription]);
+}
+
+
+
 
 @end

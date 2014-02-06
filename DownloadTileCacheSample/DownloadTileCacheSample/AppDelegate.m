@@ -11,15 +11,37 @@
 //
 
 #import "AppDelegate.h"
-
+#import <ArcGIS/ArcGIS.h>
 @implementation AppDelegate
 
+
+- (void) application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+    NSLog(@"performFetchWithCompletionHandler");
+    if ([[[AGSTask activeResumeIDs] allKeys] count]) {
+        //
+        // this allow AGSTileCacheTask to trigger status checks for any active jobs. If a job is done
+        // and a download is available, a download will be kicked off
+        [AGSTask checkStatusForAllResumableTaskJobsWithCompletion:completionHandler];
+    }
+    else {
+        //
+        // we should call this right away so the OS sees us as a good citizen.
+        completionHandler(UIBackgroundFetchResultNoData);
+    }
+}
+
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler {
+    // this will allow the AGSTileCacheTask to monitor status of background download and invoke its
+    // completion handler when the download is done.
+    [[AGSURLSessionManager sharedManager] setBackgroundURLSessionCompletionHandler:completionHandler forIdentifier:identifier];
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -28,7 +50,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 

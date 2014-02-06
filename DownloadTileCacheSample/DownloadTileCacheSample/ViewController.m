@@ -163,8 +163,8 @@
     AGSGenerateTileCacheParams *params = [[AGSGenerateTileCacheParams alloc] initWithLevelsOfDetail:arrayLods areaOfInterest:extent];
 
     [self showOverlay];
-    [self.tileCacheTask estimateTileCacheSizeWithParameters:params status:^(AGSAsyncServerJobStatus status, NSDictionary *userInfo) {
-        NSLog(@"%@, %@", AGSAsyncServerJobStatusAsString(status) ,userInfo);
+    [self.tileCacheTask estimateTileCacheSizeWithParameters:params status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
+        NSLog(@"%@, %@", AGSResumableTaskJobStatusAsString(status) ,userInfo);
     } completion:^(AGSTileCacheSizeEstimate *tileCacheSizeEstimate, NSError *error) {
         [self hideOverlay];
         [self showGrayBox];
@@ -210,8 +210,8 @@
     [self showOverlay];
     self.estimateLabel.text = @"";
     
-    self.operationToCancel = [self.tileCacheTask generateTileCacheAndDownloadWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSAsyncServerJobStatus status, NSDictionary *userInfo) {
-          NSLog(@"%@, %@", AGSAsyncServerJobStatusAsString(status) ,userInfo);
+    self.operationToCancel = [self.tileCacheTask generateTileCacheAndDownloadWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
+          NSLog(@"%@, %@", AGSResumableTaskJobStatusAsString(status) ,userInfo);
         NSArray *allMessages =  [userInfo objectForKey:@"messages"];
         
         if ( allMessages.count > 0) {
@@ -234,7 +234,7 @@
             }
         }
         
-        if (status == AGSAsyncServerJobStatusFetchingResult) {
+        if (status == AGSResumableTaskJobStatusFetchingResult) {
             NSNumber* totalBytesDownloaded = userInfo[@"AGSDownloadProgressTotalBytesDownloaded"];
             NSNumber* totalBytesExpected = userInfo[@"AGSDownloadProgressTotalBytesExpected"];
             if(totalBytesDownloaded!=nil && totalBytesExpected!=nil){

@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface MainViewController : UIViewController <UIAlertViewDelegate>
+@interface MainViewController : UIViewController <UIAlertViewDelegate,AGSPortalDelegate>
+@property (nonatomic, strong)AGSPortal* portal;
 - (IBAction)signIn:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *signInButton;
 @end

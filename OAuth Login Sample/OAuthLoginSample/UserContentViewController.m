@@ -12,7 +12,8 @@
 
 #import "UserContentViewController.h"
 #import "MapViewController.h"
-
+#import "MainViewController.h"
+#import "AppDelegate.h"
 
 
 @interface UserContentViewController() <AGSPortalDelegate, AGSPortalUserDelegate, IconDownloaderDelegate, UIAlertViewDelegate>
@@ -49,9 +50,11 @@
     
     self = [super init];
     if (self) {
-        //open the webmap with the portal item as specified
+        //Hold on to the portal reference
         self.portal = portal;
-        self.portal.delegate = self;
+        if(self.portal.credential.username)
+            self.navigationItem.title = [NSString stringWithFormat:@" %@'s content",self.portal.credential.username];
+
     }
     return self;
 }
@@ -68,13 +71,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"My Content";
-    self.doneLoading = YES;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout)];
+
     //start the process to get user's content
     [self getUserContents];
 
 }
 
+- (void)logout{
+    self.portal = nil;
+    [(AppDelegate*)[UIApplication sharedApplication].delegate removeCredentialFromKeychain];
+    [self.navigationController setViewControllers:@[[[MainViewController alloc]init]] animated:YES];
+    
+}
 
 
 - (void)viewDidUnload
@@ -105,45 +114,21 @@
 
 - (void)getUserContents
 {    
-    
-    //the portal is shared by many view controllers
-    //setting the delegate to be self when this view controller is made visible
-    super.portal.user.delegate = self;
-    
+
+
     //instantiate the items and folders array.
     self.itemsArray = [NSMutableArray array];
     self.foldersArray = [NSMutableArray array];
     
     //fetch the user content
+    self.portal.user.delegate = self;
     self.contentsOp = [super.portal.user fetchContent];
-    
-    //set the done loading flag. 
-    super.doneLoading = NO;
-    
 }
 
 
 
 
-#pragma mark - AGSPortalDelegate methods
 
-- (void)portalDidLoad:(AGSPortal *)portal {
-    //start the process to get featured content
-    [self getUserContents];
-
-    
-}
-
-- (void)portal:(AGSPortal *)portal didFailToLoadWithError:(NSError *)error {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                    message:@"Could not connect to portal"
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    
-    [alert show];
-    
-}
 
 #pragma mark -  AGSPortalUserDelegate
 

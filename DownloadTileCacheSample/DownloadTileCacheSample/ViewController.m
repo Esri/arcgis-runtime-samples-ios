@@ -163,8 +163,8 @@
     AGSGenerateTileCacheParams *params = [[AGSGenerateTileCacheParams alloc] initWithLevelsOfDetail:arrayLods areaOfInterest:extent];
 
     [self showOverlay];
-    [self.tileCacheTask estimateTileCacheSizeWithParameters:params status:^(AGSAsyncServerJobStatus status, NSDictionary *userInfo) {
-        NSLog(@"%@, %@", AGSAsyncServerJobStatusAsString(status) ,userInfo);
+    [self.tileCacheTask estimateTileCacheSizeWithParameters:params status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
+        NSLog(@"%@, %@", AGSResumableTaskJobStatusAsString(status) ,userInfo);
     } completion:^(AGSTileCacheSizeEstimate *tileCacheSizeEstimate, NSError *error) {
         [self hideOverlay];
         [self showGrayBox];
@@ -181,6 +181,7 @@
             NSString* byteCountString = [byteCountFormatter stringFromByteCount:tileCacheSizeEstimate.fileSize];
             self.estimateLabel.text = [[NSString alloc] initWithFormat:@"%@  / %@ tiles", byteCountString, tileCountString];
             self.statusLabel.text = @"Done";
+            
         
         }
 
@@ -210,8 +211,8 @@
     [self showOverlay];
     self.estimateLabel.text = @"";
     
-    self.operationToCancel = [self.tileCacheTask generateTileCacheAndDownloadWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSAsyncServerJobStatus status, NSDictionary *userInfo) {
-          NSLog(@"%@, %@", AGSAsyncServerJobStatusAsString(status) ,userInfo);
+    self.operationToCancel = [self.tileCacheTask generateTileCacheAndDownloadWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
+          NSLog(@"%@, %@", AGSResumableTaskJobStatusAsString(status) ,userInfo);
         NSArray *allMessages =  [userInfo objectForKey:@"messages"];
         
         if ( allMessages.count > 0) {
@@ -234,7 +235,7 @@
             }
         }
         
-        if (status == AGSAsyncServerJobStatusFetchingResult) {
+        if (status == AGSResumableTaskJobStatusFetchingResult) {
             NSNumber* totalBytesDownloaded = userInfo[@"AGSDownloadProgressTotalBytesDownloaded"];
             NSNumber* totalBytesExpected = userInfo[@"AGSDownloadProgressTotalBytesExpected"];
             if(totalBytesDownloaded!=nil && totalBytesExpected!=nil){
@@ -262,6 +263,17 @@
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Download complete" message:@"The tile cache has been added to the map." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
             
+            //It's possible this completion handler is getting called in the background if
+            //the downlaod finished in the background. In this case, post a local notification
+            //to inform the user.
+            UIApplicationState state = [[UIApplication sharedApplication] applicationState];
+            if (state == UIApplicationStateBackground || state == UIApplicationStateInactive)
+            {
+                UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+                localNotification.alertBody = @"Tile cache has been downloaded";
+                [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+                
+            }
         }
     }];
 }

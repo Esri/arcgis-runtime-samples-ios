@@ -16,9 +16,9 @@ is visible even when the device is offline.
 6. You can use the **Prev** and **Next** buttons to step through the directions turn-by-turn. 
 7. Tap **Reset** to clear all stops/routes and start again.
 
-![](/image.png)
-![](/image2.png)
-![](/image3.png)
+![](image.png)
+![](image2.png)
+![](image3.png)
 
 
 ###Using the API

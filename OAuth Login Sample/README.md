@@ -12,9 +12,9 @@ a list of web maps that belong to the user. You can tap on any web map to view i
 5. If you don't sign in step 2 above, you can hit <b>Cancel</b> to come back to the main screen. 
 The sample does not allow you to view web maps unless you sign in.
 
-![](/image.png)
-![](/image2.png)
-![](/image3.png)
+![](image.png)
+![](image2.png)
+![](image3.png)
 
 ###Using the API
 

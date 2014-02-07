@@ -17,9 +17,9 @@ is visible even when the device is offline.
 5. Move your finger on the map. The location underneath your finger
 is reverse-geocoded and the address is displayed in a callout.
 
-![](/image.png)
-![](/image2.png)
-![](/image3.png)
+![](image.png)
+![](image2.png)
+![](image3.png)
 
 
 ###Using the API

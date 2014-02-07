@@ -10,7 +10,7 @@ This sample demonstrates ...
 1. 
 2. 
 
-![](/image.png)
+![](image.png)
 
 
 

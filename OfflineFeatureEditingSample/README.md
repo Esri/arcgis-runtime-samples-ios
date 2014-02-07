@@ -27,9 +27,9 @@ and bring down any changes from the service into your local geodatabase.
 local geodatabase is left intact in case you want to download features again.
 14. Tap the **Delete** button to delete all local geodatabases that have been created.
 
-![](/image.png)
-![](/image2.png)
-![](/image3.png)
+![](image.png)
+![](image2.png)
+![](image3.png)
 
 ###Using the API
 The ```MainViewController``` contains an ```AGSMapView``` to display a map. The map contains ```AGSLocalTiledLayer``` to display basemap tiles from SanFrancisco.tpk tile package. 

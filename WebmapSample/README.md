@@ -19,9 +19,9 @@ This sample demonstrates how to view a webmap from ArcGIS Online. The sample can
 4. The sample will then ask you to provide credentials to access the secured [Major Cities](http://mobilesampleserver.arcgisonline.com/ArcGIS/rest/services/SDKSamples/MajorCities/FeatureServer/0) layer.
 5. Enter _sdksample_ as the username, and _sample@380_ as the password. The web map will be displayed.
 
-![](/image.png)
-![](/image2.png)
-![](/image3.png)
+![](image.png)
+![](image2.png)
+![](image3.png)
 
 
 ###Using the API

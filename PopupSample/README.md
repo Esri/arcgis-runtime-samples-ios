@@ -10,10 +10,10 @@ This sample demonstrates ...
 1. 
 2. 
 
-![](/image.png)
-![](/image2.png)
-![](/image3.png)
-![](/image4.png)
+![](image.png)
+![](image2.png)
+![](image3.png)
+![](image4.png)
 
 
 

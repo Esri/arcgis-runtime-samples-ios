@@ -3,10 +3,10 @@
 This sample shows how to find facilities that are closest to an incident on a map.
 For example, finding the hospital that is closest to the scene of an accident.
 
-![Initial Scene](/image.png "Initial Scene")
-![Settings](/image2.png "Settings")
-![Incident & Barriers](/image3.png "Incident & Barriers")
-![Result](/image3.png "Result")
+![Initial Scene](image.png "Initial Scene")
+![Settings](image2.png "Settings")
+![Incident & Barriers](image3.png "Incident & Barriers")
+![Result](image3.png "Result")
 
 
 ###Usage

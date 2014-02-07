@@ -319,13 +319,16 @@
     //kick off the sync operation
     self.cancellable = [self.gdbTask syncGeodatabase:self.geodatabase params:param status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
         [self logStatus:[NSString stringWithFormat:@"sync status: %@", [self statusMessageForAsyncStatus:status]]];
-    } completion:^(NSError *error) {
+    } completion:^(NSArray* syncEditErrors, NSError *syncError) {
         self.cancellable = nil;
-        if (error){
-            [self logStatus:[NSString stringWithFormat:@"error sync'ing: %@", error]];
+        if (syncError){
+            [self logStatus:[NSString stringWithFormat:@"error sync'ing: %@", syncError]];
             [SVProgressHUD showErrorWithStatus:@"Error encountered"];
         }
         else{
+ 
+// TODO: Handle sync edit errors
+            
             [self logStatus:[NSString stringWithFormat:@"sync complete"]];
             [SVProgressHUD showSuccessWithStatus:@"Sync complete"];
             //Remove the local edits badge from the sync button
@@ -391,7 +394,7 @@
         //Add live feature layers
         for (AGSMapServiceLayerInfo* info in weakSelf.gdbTask.featureServiceInfo.layerInfos) {
             [SVProgressHUD showProgress:-1 status:@"Loading \n live data"];
-            NSURL* url = [weakSelf.gdbTask.URL URLByAppendingPathComponent:[NSString stringWithFormat:@"%d",info.layerId]];
+            NSURL* url = [weakSelf.gdbTask.URL URLByAppendingPathComponent:[NSString stringWithFormat:@"%lu",(unsigned long)info.layerId]];
             
             AGSFeatureLayer* fl = [AGSFeatureLayer featureServiceLayerWithURL:url mode:AGSFeatureLayerModeOnDemand];
             fl.outFields = @[@"*"];
@@ -422,7 +425,7 @@
     params.outSpatialReference = self.mapView.spatialReference;
     NSMutableArray* layers = [[NSMutableArray alloc]init];
     for (AGSMapServiceLayerInfo* layerInfo in self.gdbTask.featureServiceInfo.layerInfos) {
-        [layers addObject:[NSNumber numberWithInt: layerInfo.layerId]];
+        [layers addObject:[NSNumber numberWithInt: (int)layerInfo.layerId]];
     }
     params.layerIDs = layers;
     _newlyDownloaded = NO;
@@ -681,7 +684,7 @@
             [self logStatus:[NSString stringWithFormat:@"add failed: %@", res.error]];
         }
         else{
-            [self logStatus:[NSString stringWithFormat:@"add succeeded: %d", res.objectId]];
+            [self logStatus:[NSString stringWithFormat:@"add succeeded: %ld", (long)res.objectId]];
         }
     }
     
@@ -690,7 +693,7 @@
             [self logStatus:[NSString stringWithFormat:@"update failed: %@", res.error]];
         }
         else{
-            [self logStatus:[NSString stringWithFormat:@"update succeeded: %d", res.objectId]];
+            [self logStatus:[NSString stringWithFormat:@"update succeeded: %ld", (long)res.objectId]];
         }
     }
     
@@ -699,7 +702,7 @@
             [self logStatus:[NSString stringWithFormat:@"delete failed: %@", res.error]];
         }
         else{
-            [self logStatus:[NSString stringWithFormat:@"delete succeeded: %d", res.objectId]];
+            [self logStatus:[NSString stringWithFormat:@"delete succeeded: %ld", (long)res.objectId]];
         }
     }
 }

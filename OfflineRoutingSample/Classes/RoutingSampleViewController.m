@@ -267,7 +267,7 @@
 	[cs addSymbol:sms];
 	
 //    // add number as a text symbol
-	AGSTextSymbol *ts = [[AGSTextSymbol alloc] initWithText:[NSString stringWithFormat:@"%d", stopNumber]
+	AGSTextSymbol *ts = [[AGSTextSymbol alloc] initWithText:[NSString stringWithFormat:@"%ld", (long)stopNumber]
 															   color:[UIColor blackColor]] ;
 	ts.vAlignment = AGSTextSymbolVAlignmentMiddle;
 	ts.hAlignment = AGSTextSymbolHAlignmentCenter;
@@ -339,8 +339,6 @@
 
 -(void) solveRoute{
     [self resetDirections];
-    // update our banner
-	[self updateDirectionsLabel:@"Routing..."];
 	
 	
 	NSMutableArray *stops = [NSMutableArray array];
@@ -357,12 +355,14 @@
 	
 	// set the stop and polygon barriers on the parameters object
 	if (stops.count > 0) {
+        // update our banner
+        [self updateDirectionsLabel:@"Routing..."];
 		[self.routeTaskParams setStopsWithFeatures:stops];
+        // execute the route task
+        [self.routeTask solveWithParameters:self.routeTaskParams];
 	}
 	
 	
-	// execute the route task
-	[self.routeTask solveWithParameters:self.routeTaskParams];
 }
 //
 // reset the sample so we can perform another route

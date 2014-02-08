@@ -1,14 +1,6 @@
 ##Routing Editing Sample 
 
-This sample demonstrates ...
-
-###Using the API
-- 
--
-
-###Using the sample
-1. 
-2. 
+This sample demonstrates how to to calculate multi-point routes and driving directions. The sample allows a user to add stops interactively, and also barriers to avoid certain roads and intersections. Users can step through the directions turn-by-turn and see it highlighted on the map.
 
 ![](image.png)
 ![](image2.png)

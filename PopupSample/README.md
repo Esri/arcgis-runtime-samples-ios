@@ -1,14 +1,6 @@
 ##Popup Sample 
 
-This sample demonstrates ...
-
-###Using the API
-- 
--
-
-###Using the sample
-1. 
-2. 
+This sample shows how to display popups configured in a webmap. Webmaps may be composed of a variety of different types of layers i.e. feature layers, tiled map service layers, and dynamic map service layers. The logic to display popups for each of these layer types is provided in this sample. The sample also contains logic to query the backing service (if needed) to retrieve feature details that need to be display in the popup. The sample also honors scale dependency and visibility of layers when determining whether to display the popup or not for each layer.
 
 ![](image.png)
 ![](image2.png)

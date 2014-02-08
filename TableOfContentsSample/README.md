@@ -1,14 +1,6 @@
 ##Table Of Contents (TOC) Sample 
 
-This sample demonstrates ...
-
-###Using the API
-- 
--
-
-###Using the sample
-1. 
-2. 
+This sample allows the users to interact with the contents of a map. Users can view the layers in a tree structure, change visibilities of groups and layers, view the legend. 
 
 ![](image.png)
 

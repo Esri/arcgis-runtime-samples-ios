@@ -50,7 +50,7 @@
 @property (weak, nonatomic) IBOutlet UIView *badgeView;
 
 @property (nonatomic, strong) AGSGDBGeodatabase *geodatabase;
-@property (nonatomic, strong) AGSGDBTask *gdbTask;
+@property (nonatomic, strong) AGSGDBSyncTask *gdbTask;
 @property (nonatomic, strong) id<AGSCancellable> cancellable;
 @property (nonatomic, strong) AGSMapView* mapView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *liveActivityIndicator;
@@ -380,7 +380,7 @@
     
     [self logStatus:@"loading live data"];
 
-    self.gdbTask = [[AGSGDBTask alloc]initWithURL:[NSURL URLWithString:kFeatureServiceURL]];
+    self.gdbTask = [[AGSGDBSyncTask alloc]initWithURL:[NSURL URLWithString:kFeatureServiceURL]];
     __weak MainViewController* weakSelf = self;
     self.gdbTask.loadCompletion = ^(NSError* error){
         

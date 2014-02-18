@@ -618,30 +618,8 @@
     
     // dealing with 'offline' feature
     if (popup.gdbFeature){
-        
-        if (popup.gdbFeature == _addFeature){
-            NSError* err;
-            BOOL success = [popup.gdbFeatureTable addFeature:popup.gdbFeature error:&err];
-            if(success){
-                [self logStatus:@"add succeded"];
-                [self showEditsInGeodatabaseAsBadge:popup.gdbFeatureTable.geodatabase];
-
-            }else{
-                [self logStatus:[NSString stringWithFormat:@"add failed: %@", [err localizedDescription]]];
-            }
-            _addFeature = nil;
-        }
-        else{
-            NSError* err;
-            BOOL success = [popup.gdbFeatureTable updateFeature:popup.gdbFeature error:&err];
-            if(success){
-                [self logStatus:@"update succeded"];
-                [self showEditsInGeodatabaseAsBadge:popup.gdbFeatureTable.geodatabase];
-                
-            }else{
-                [self logStatus:[NSString stringWithFormat:@"update failed: %@", [err localizedDescription]]];
-            }
-        }
+        [self showEditsInGeodatabaseAsBadge:popup.gdbFeatureTable.geodatabase];
+        [self logStatus:@"feature saved"];
     }
     else if (popup.graphic){
         if ([popup.featureLayer objectIdForFeature:popup.graphic]<0){
@@ -788,39 +766,7 @@
 
 -(NSString*)statusMessageForAsyncStatus:(AGSResumableTaskJobStatus)status
 {
-    switch (status) {
-        case AGSResumableTaskJobStatusNotStarted:
-            return @"Not yet started";
-            break;
-        case AGSResumableTaskJobStatusWaitingForDefaultParameters:
-            return @"Waiting for default parameters";
-            break;
-        case AGSResumableTaskJobStatusPreProcessingJob:
-            return @"Preprocessing";
-            break;
-        case AGSResumableTaskJobStatusStartingJob:
-            return @"Starting";
-            break;
-        case AGSResumableTaskJobStatusPolling:
-            return @"In Progress";
-            break;
-        case AGSResumableTaskJobStatusFetchingResult:
-            return @"Downloading Result";
-            break;
-        case AGSResumableTaskJobStatusInBGWaitingToFinish:
-            return @"Backgrounded;waiting to finish";
-            break;
-        case AGSResumableTaskJobStatusDone:
-            return @"Done";
-            break;
-        case AGSResumableTaskJobStatusCancelled:
-            return @"Cancelled";
-            break;
-        default:
-            return @"";
-            break;
-    }
-    
+    return AGSResumableTaskJobStatusAsString(status);
 }
 
 - (void) showEditsInGeodatabaseAsBadge:(AGSGDBGeodatabase*)geodatabase{

@@ -42,7 +42,7 @@
 
 - (IBAction) dismiss;
 - (void) addTemplatesForLayersInMap:(AGSMapView*)mapView;
-- (void) addTemplatesFromLayer:(id<AGSGDBFeatureSourceInfo>)layer;
+- (void) addTemplatesFromSource:(id<AGSGDBFeatureSourceInfo>)source renderer:(AGSRenderer*)renderer;
 
 @end
 
@@ -54,7 +54,8 @@
 
 @property (nonatomic, weak) AGSFeatureType* featureType;
 @property (nonatomic, weak) AGSFeatureTemplate* featureTemplate;
-@property (nonatomic, weak) id<AGSGDBFeatureSourceInfo> layer;
+@property (nonatomic, weak) id<AGSGDBFeatureSourceInfo> source;
+@property (nonatomic, weak) AGSRenderer* renderer;
 
 @end
 

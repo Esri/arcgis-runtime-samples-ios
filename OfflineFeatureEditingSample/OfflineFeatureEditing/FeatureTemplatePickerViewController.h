@@ -29,13 +29,12 @@
 
 
 @interface FeatureTemplatePickerViewController : UIViewController <UITableViewDataSource,UITableViewDelegate> {
-	UITableView* _featureTemplatesTableView;
     id<FeatureTemplatePickerDelegate> __weak _delegate;
     NSMutableArray* _infos;
 }
 
 @property (nonatomic, weak) id<FeatureTemplatePickerDelegate> delegate;
-@property (nonatomic,strong) IBOutlet UITableView* featureTemplatesTableView;
+@property (nonatomic, weak) IBOutlet UITableView* featureTemplatesTableView;
 @property (nonatomic, strong) NSMutableArray* infos;
 
 
@@ -52,10 +51,10 @@
     
 }
 
-@property (nonatomic, weak) AGSFeatureType* featureType;
-@property (nonatomic, weak) AGSFeatureTemplate* featureTemplate;
-@property (nonatomic, weak) id<AGSGDBFeatureSourceInfo> source;
-@property (nonatomic, weak) AGSRenderer* renderer;
+@property (nonatomic, strong) AGSFeatureType* featureType;
+@property (nonatomic, strong) AGSFeatureTemplate* featureTemplate;
+@property (nonatomic, strong) id<AGSGDBFeatureSourceInfo> source;
+@property (nonatomic, strong) AGSRenderer* renderer;
 
 @end
 

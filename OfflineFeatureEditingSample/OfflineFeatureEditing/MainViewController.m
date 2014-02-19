@@ -48,14 +48,14 @@
 }
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UIView *badgeView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *liveActivityIndicator;
+@property (weak, nonatomic) IBOutlet UIToolbar *geometryEditToolbar;
+
 
 @property (nonatomic, strong) AGSGDBGeodatabase *geodatabase;
 @property (nonatomic, strong) AGSGDBSyncTask *gdbTask;
 @property (nonatomic, strong) id<AGSCancellable> cancellable;
 @property (nonatomic, strong) AGSMapView* mapView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *liveActivityIndicator;
-
-@property (strong, nonatomic) IBOutlet UIToolbar *geometryEditToolbar;
 - (IBAction)cancelEditingGeometry:(id)sender;
 - (IBAction)doneEditingGeometry:(id)sender;
 @end
@@ -122,6 +122,12 @@
     [self setGoOfflineButton:nil];
     [self setOfflineStatusLabel:nil];
     [super viewDidUnload];
+}
+
+- (void)didReceiveMemoryWarning{
+    [super didReceiveMemoryWarning];
+    _pvc =  nil;
+    _featureTemplatePickerVC = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
@@ -263,13 +269,17 @@
 - (IBAction)addFeatureAction:(id)sender {
     
     //Initialize the template picker view controller
-    _featureTemplatePickerVC = [[FeatureTemplatePickerViewController alloc]init];
-    _featureTemplatePickerVC.delegate = self;
-    [_featureTemplatePickerVC addTemplatesForLayersInMap:self.mapView];
+    if(!_featureTemplatePickerVC){
+        _featureTemplatePickerVC = [[FeatureTemplatePickerViewController alloc]init];
+        _featureTemplatePickerVC.delegate = self;
+        [_featureTemplatePickerVC addTemplatesForLayersInMap:self.mapView];
+    }
     
     //On iPad, display the template picker vc in a popover
     if ([[AGSDevice currentDevice]isIPad]) {
-        _pvc = [[UIPopoverController alloc]initWithContentViewController:_featureTemplatePickerVC];
+        if(!_pvc){
+            _pvc = [[UIPopoverController alloc]initWithContentViewController:_featureTemplatePickerVC];
+        }
         [_pvc presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
         
     //On iPhone, display the vc full screen
@@ -608,6 +618,7 @@
     [_mapView removeMapLayer:_sgl];
     _sgl = nil;
     _mapView.touchDelegate = self;
+    [self hidePopupsVC];
 }
 
 -(void) popupsContainer:(id<AGSPopupsContainer>)popupsContainer didFinishEditingForPopup:(AGSPopup *)popup {

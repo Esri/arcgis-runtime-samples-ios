@@ -16,6 +16,7 @@
 #import "SVProgressHUD.h"
 #import "JSBadgeView.h"
 #import "UIAlertView+NSCookbook.h"
+#import "LoadingView.h"
 
 #define kTilePackageName @"SanFrancisco"
 #define kFeatureServiceURL @"http://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/Wildfire/FeatureServer"
@@ -31,6 +32,7 @@
     AGSGDBFeature *_addFeature;
     
     JSBadgeView* _badge;
+    LoadingView* _loadingView;
     
     BOOL _goingLocal;
     BOOL _goingLive;
@@ -126,8 +128,10 @@
 
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
-    _pvc =  nil;
-    _featureTemplatePickerVC = nil;
+    if(!_pvc.popoverVisible){
+        _pvc =  nil;
+        _featureTemplatePickerVC = nil;
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
@@ -505,11 +509,6 @@
     
 }
 
--(void)generateGDB{
-   
-}
-
-
 #pragma mark - FeatureTemplatePickerViewControllerDelegate methods
 
 - (void)featureTemplatePickerViewController:(FeatureTemplatePickerViewController *)featureTemplatePickerViewController didSelectFeatureTemplate:(AGSFeatureTemplate *)template forLayer:(id<AGSGDBFeatureSourceInfo>)layer{
@@ -628,11 +627,16 @@
     _mapView.touchDelegate = self;
     
     // dealing with 'offline' feature
+    // popup vc has already committed edits to the local geodatabase
     if (popup.gdbFeature){
         [self showEditsInGeodatabaseAsBadge:popup.gdbFeatureTable.geodatabase];
         [self logStatus:@"feature saved"];
+        [self hidePopupsVC];
     }
+    // dealing with 'online' feature
+    // we must apply edits to the server
     else if (popup.graphic){
+        _loadingView = [LoadingView loadingViewInView:_popupsVC.view withText:@"Applying edit to server..."];
         if ([popup.featureLayer objectIdForFeature:popup.graphic]<0){
             [popup.featureLayer addFeatures:@[popup.graphic]];
         }
@@ -643,55 +647,52 @@
     
 }
 
-
+-(void) popupsContainer:(id<AGSPopupsContainer>)popupsContainer didDeleteForPopup:(AGSPopup *)popup {
+    [self logStatus:@"delete succeded"];
+    [self showEditsInGeodatabaseAsBadge:popup.gdbFeatureTable.geodatabase];
+    [self hidePopupsVC];
+}
 
 -(void) popupsContainer:(id<AGSPopupsContainer>)popupsContainer wantsToDeleteForPopup:(AGSPopup *)popup{
-    if([popup.feature isKindOfClass:[AGSGDBFeature class]]){
-        NSError* err;
-       BOOL success = [popup.gdbFeature.table deleteFeature:popup.gdbFeature error:&err];
-        if(success){
-            [self logStatus:@"delete succeded"];
-            [self showEditsInGeodatabaseAsBadge:popup.gdbFeatureTable.geodatabase];
-        }
-        else{
-            [self logStatus:[NSString stringWithFormat:@"delete failed: %@", [err localizedDescription]]];
-        }
-
-    }else{
-        AGSFeatureLayer* fLayer = (AGSFeatureLayer*) popup.graphic.layer;
-        
-        [fLayer deleteFeaturesWithObjectIds:@[[NSNumber numberWithLongLong:[fLayer objectIdForFeature:popup.graphic]]]];
-    }
-    [self hidePopupsVC];
+    AGSFeatureLayer* fLayer = (AGSFeatureLayer*) popup.graphic.layer;
+    [fLayer deleteFeaturesWithObjectIds:@[[NSNumber numberWithLongLong:[fLayer objectIdForFeature:popup.graphic]]]];
+    _loadingView = [LoadingView loadingViewInView:_popupsVC.view withText:@"Applying edit to server..."];
 }
 
 #pragma mark AGSFeatureLayerEditingDelegate methods
 
 -(void)featureLayer:(AGSFeatureLayer *)featureLayer operation:(NSOperation *)op didFeatureEditsWithResults:(AGSFeatureLayerEditResults *)editResults{
-    for (AGSEditResult *res in editResults.addResults){
+    [_loadingView removeView];
+    if(editResults.addResults){
+        AGSEditResult* res = editResults.addResults[0];
         if (res.error){
             [self logStatus:[NSString stringWithFormat:@"add failed: %@", res.error]];
         }
         else{
             [self logStatus:[NSString stringWithFormat:@"add succeeded: %ld", (long)res.objectId]];
+            [self hidePopupsVC];
         }
     }
     
-    for (AGSEditResult *res in editResults.updateResults){
+    if(editResults.updateResults){
+        AGSEditResult* res = editResults.updateResults[0];
         if (res.error){
             [self logStatus:[NSString stringWithFormat:@"update failed: %@", res.error]];
         }
         else{
             [self logStatus:[NSString stringWithFormat:@"update succeeded: %ld", (long)res.objectId]];
+            [self hidePopupsVC];
         }
     }
     
-    for (AGSEditResult *res in editResults.deleteResults){
+    if(editResults.deleteResults){
+        AGSEditResult* res = editResults.deleteResults[0];
         if (res.error){
             [self logStatus:[NSString stringWithFormat:@"delete failed: %@", res.error]];
         }
         else{
             [self logStatus:[NSString stringWithFormat:@"delete succeeded: %ld", (long)res.objectId]];
+            [self hidePopupsVC];
         }
     }
 }

@@ -26,6 +26,7 @@
 		975579D7180B624300904382 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 975579D4180B624300904382 /* SVProgressHUD.bundle */; };
 		975579D8180B624300904382 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 975579D6180B624300904382 /* SVProgressHUD.m */; };
 		9786549018109EF000073680 /* JSBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9786548F18109EF000073680 /* JSBadgeView.m */; };
+		97DDDEC318B57FD700D8A6E6 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DDDEC218B57FD700D8A6E6 /* LoadingView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,8 @@
 		975579D6180B624300904382 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		9786548E18109EF000073680 /* JSBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBadgeView.h; sourceTree = "<group>"; };
 		9786548F18109EF000073680 /* JSBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBadgeView.m; sourceTree = "<group>"; };
+		97DDDEC118B57FD700D8A6E6 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		97DDDEC218B57FD700D8A6E6 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,7 @@
 		4B1920CA1746ECC900E724BE = {
 			isa = PBXGroup;
 			children = (
+				97DDDEC018B57FCC00D8A6E6 /* LoadingView */,
 				974FC71618137FF00013F877 /* UIAlertView+NSCookbook */,
 				9786548D18109EF000073680 /* JSBadgeView */,
 				975579D2180B624300904382 /* SVProgressHUD */,
@@ -162,6 +166,15 @@
 			path = JSBadgeView;
 			sourceTree = "<group>";
 		};
+		97DDDEC018B57FCC00D8A6E6 /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				97DDDEC118B57FD700D8A6E6 /* LoadingView.h */,
+				97DDDEC218B57FD700D8A6E6 /* LoadingView.m */,
+			);
+			name = LoadingView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -236,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9711021E180A17240085B216 /* MainViewController.m in Sources */,
+				97DDDEC318B57FD700D8A6E6 /* LoadingView.m in Sources */,
 				974FC71518137FE80013F877 /* UIAlertView+NSCookbook.m in Sources */,
 				975579CF180A561300904382 /* FeatureTemplatePickerViewController.m in Sources */,
 				97110215180A17240085B216 /* AppDelegate.m in Sources */,

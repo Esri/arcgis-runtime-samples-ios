@@ -22,6 +22,7 @@
 @property (nonatomic, strong) IBOutlet UILabel				*directionsLabel;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem		*prevBtn;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem		*nextBtn;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *reorderBtn;
 
 
 - (IBAction)resetBtnClicked:(id)sender;

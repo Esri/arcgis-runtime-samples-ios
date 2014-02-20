@@ -148,7 +148,7 @@
     };
 
     //now request the location from the locator for our address
-    [self.locator locationsForAddress:addresses returnFields:@[@"*"]];
+    [self.locator locationsForAddress:addresses returnFields:@[@"*"] outSpatialReference:self.mapView.spatialReference];
     
     if(![self.recentSearches containsObject:self.searchBar.text])
         [self.recentSearches insertObject:self.searchBar.text atIndex:0];

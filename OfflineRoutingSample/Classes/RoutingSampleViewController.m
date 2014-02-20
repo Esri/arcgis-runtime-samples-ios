@@ -122,6 +122,14 @@
     [self solveRoute];
 }
 
+-(void)mapView:(AGSMapView *)mapView didEndTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features{
+    if(self.graphicsLayerStops.graphics.count<2){
+        self.reorderBtn.enabled = NO;
+    }else{
+        self.reorderBtn.enabled = YES;
+    }
+}
+
 #pragma mark - AGSMapViewLayerDelegate 
 -(void)mapViewDidLoad:(AGSMapView *)mapView{
     
@@ -377,6 +385,7 @@
     [self.graphicsLayerRoute removeAllGraphics];
 	[self resetDirections];
     [self updateDirectionsLabel:@"Tap & hold on the map to add stops"];
+    self.reorderBtn.enabled = NO;
 }
 
 -(void)resetDirections{

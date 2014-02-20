@@ -1,16 +1,9 @@
 ##Message Mil2525c Sample 
 
-This sample demonstrates ...
+This sample shows how to use the `AGSMPMessageProcessor` class to process messages and display symbols on a map based on the Military-Standard (MIL-STD) 2525C
 
-###Using the API
-- 
--
 
-###Using the sample
-1. 
-2. 
-
-![](/image.png)
+![](image.png)
 
 
 

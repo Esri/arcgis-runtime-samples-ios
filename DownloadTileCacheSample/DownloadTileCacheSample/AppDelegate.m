@@ -19,7 +19,7 @@
     NSLog(@"performFetchWithCompletionHandler");
     if ([[[AGSTask activeResumeIDs] allKeys] count]) {
         //
-        // this allow AGSTileCacheTask to trigger status checks for any active jobs. If a job is done
+        // this allow AGSExportTileCacheTask to trigger status checks for any active jobs. If a job is done
         // and a download is available, a download will be kicked off
         [AGSTask checkStatusForAllResumableTaskJobsWithCompletion:completionHandler];
     }
@@ -31,7 +31,7 @@
 }
 
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler {
-    // this will allow the AGSTileCacheTask to monitor status of background download and invoke its
+    // this will allow the AGSExportTileCacheTask to monitor status of background download and invoke its
     // completion handler when the download is done.
     [[AGSURLSessionManager sharedManager] setBackgroundURLSessionCompletionHandler:completionHandler forIdentifier:identifier];
 }

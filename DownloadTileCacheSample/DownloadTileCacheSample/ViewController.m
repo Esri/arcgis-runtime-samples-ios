@@ -17,7 +17,7 @@
 @property (nonatomic,strong) IBOutlet AGSMapView *mapView;
 @property (nonatomic,strong) AGSTiledMapServiceLayer *tiledLayer;
 @property (nonatomic,strong) IBOutlet UIView *floatingView;
-@property (nonatomic,strong) AGSTileCacheTask *tileCacheTask;
+@property (nonatomic,strong) AGSExportTileCacheTask *tileCacheTask;
 @property (nonatomic,strong) IBOutlet UILabel *scaleLabel;
 @property (nonatomic,strong) IBOutlet UILabel *estimateLabel;
 @property (nonatomic,strong) IBOutlet UILabel *lodLabel;
@@ -85,7 +85,7 @@
     // Init the tile cache task
     if ( self.tileCacheTask == nil) {
         NSURL *tiledUrl = [[NSURL alloc] initWithString:tileServiceURL];
-        self.tileCacheTask = [[AGSTileCacheTask alloc] initWithURL:tiledUrl];
+        self.tileCacheTask = [[AGSExportTileCacheTask alloc] initWithURL:tiledUrl];
     }
 
     [self showGrayBox];
@@ -160,12 +160,12 @@
     NSLog(@"Box Test %@ Extent %@", self.lastResizableView, extent);
     
     
-    AGSGenerateTileCacheParams *params = [[AGSGenerateTileCacheParams alloc] initWithLevelsOfDetail:arrayLods areaOfInterest:extent];
+    AGSExportTileCacheParams *params = [[AGSExportTileCacheParams alloc] initWithLevelsOfDetail:arrayLods areaOfInterest:extent];
 
     [self showOverlay];
     [self.tileCacheTask estimateTileCacheSizeWithParameters:params status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
         NSLog(@"%@, %@", AGSResumableTaskJobStatusAsString(status) ,userInfo);
-    } completion:^(AGSTileCacheSizeEstimate *tileCacheSizeEstimate, NSError *error) {
+    } completion:^(AGSExportTileCacheSizeEstimate *tileCacheSizeEstimate, NSError *error) {
         [self hideOverlay];
         [self showGrayBox];
         if ( error != nil) {
@@ -175,7 +175,7 @@
             [tileCountFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
             [tileCountFormatter setMaximumFractionDigits:0];
             
-            NSString* tileCountString = [tileCountFormatter stringFromNumber:[NSNumber numberWithInt:tileCacheSizeEstimate.tileCount]];
+            NSString* tileCountString = [tileCountFormatter stringFromNumber:[NSNumber numberWithInteger:tileCacheSizeEstimate.tileCount]];
             
             NSByteCountFormatter* byteCountFormatter = [[NSByteCountFormatter alloc]init];
             NSString* byteCountString = [byteCountFormatter stringFromByteCount:tileCacheSizeEstimate.fileSize];
@@ -206,12 +206,12 @@
     // Get the map coordinate extent from view control
     AGSEnvelope *extent = [self.mapView toMapEnvelope:self.lastResizableView.frame];
     
-    AGSGenerateTileCacheParams *params = [[AGSGenerateTileCacheParams alloc] initWithLevelsOfDetail:arrayLods areaOfInterest:extent];
+    AGSExportTileCacheParams *params = [[AGSExportTileCacheParams alloc] initWithLevelsOfDetail:arrayLods areaOfInterest:extent];
 
     [self showOverlay];
     self.estimateLabel.text = @"";
     
-    self.operationToCancel = [self.tileCacheTask generateTileCacheAndDownloadWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
+    self.operationToCancel = [self.tileCacheTask exportTileCacheWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
           NSLog(@"%@, %@", AGSResumableTaskJobStatusAsString(status) ,userInfo);
         NSArray *allMessages =  [userInfo objectForKey:@"messages"];
         

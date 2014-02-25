@@ -444,7 +444,7 @@
     params.layerIDs = layers;
     _newlyDownloaded = NO;
     [SVProgressHUD showWithStatus:@"Preparing to \n download"];
-    [self.gdbTask generateGeodatabaseAndDownloadWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
+    [self.gdbTask generateGeodatabaseWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
         if(status == AGSResumableTaskJobStatusFetchingResult){
             _newlyDownloaded = YES;
             NSNumber* totalBytesDownloaded = userInfo[@"AGSDownloadProgressTotalBytesDownloaded"];

@@ -410,7 +410,7 @@
             [SVProgressHUD showProgress:-1 status:@"Loading \n live data"];
             NSURL* url = [weakSelf.gdbTask.URL URLByAppendingPathComponent:[NSString stringWithFormat:@"%lu",(unsigned long)info.layerId]];
             
-            AGSFeatureLayer* fl = [AGSFeatureLayer featureServiceLayerWithURL:url mode:AGSFeatureLayerModeOnDemand];
+            AGSFeatureLayer* fl = [AGSFeatureLayer featureServiceLayerWithURL:url mode:AGSFeatureLayerModeOnDemand credential:weakSelf.gdbTask.credential];
             fl.outFields = @[@"*"];
             fl.delegate = weakSelf;
             fl.editingDelegate = weakSelf;

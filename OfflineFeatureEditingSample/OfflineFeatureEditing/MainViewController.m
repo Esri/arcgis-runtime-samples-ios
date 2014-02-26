@@ -161,13 +161,15 @@
     if([layer isKindOfClass:[AGSFeatureLayer class]]){
         AGSFeatureLayer* fl = (AGSFeatureLayer*)layer;
         errmsg = [NSString stringWithFormat:@"Failed to load %@. Error:%@",fl.URL, error];
+        
+        // activity shown when loading online layer, dismiss this
+        [SVProgressHUD popActivity];
     }
     else if([layer isKindOfClass:[AGSLocalTiledLayer class]]){
         errmsg = [NSString stringWithFormat:@"Failed to load local tiled layer. Error:%@", error];
     }
     
     [self logStatus:errmsg];
-    [SVProgressHUD popActivity];
 }
 
 #pragma mark - AGSFeatureLayerDidLoadFeaturesNotification

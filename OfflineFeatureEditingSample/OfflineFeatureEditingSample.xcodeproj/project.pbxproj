@@ -26,6 +26,7 @@
 		975579D7180B624300904382 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 975579D4180B624300904382 /* SVProgressHUD.bundle */; };
 		975579D8180B624300904382 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 975579D6180B624300904382 /* SVProgressHUD.m */; };
 		9786549018109EF000073680 /* JSBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9786548F18109EF000073680 /* JSBadgeView.m */; };
+		97C0BB0A18BFC7BA0027B90C /* BackgroundHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 97C0BB0918BFC7BA0027B90C /* BackgroundHelper.m */; };
 		97DDDEC318B57FD700D8A6E6 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DDDEC218B57FD700D8A6E6 /* LoadingView.m */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,8 @@
 		975579D6180B624300904382 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		9786548E18109EF000073680 /* JSBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBadgeView.h; sourceTree = "<group>"; };
 		9786548F18109EF000073680 /* JSBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBadgeView.m; sourceTree = "<group>"; };
+		97C0BB0818BFC7BA0027B90C /* BackgroundHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundHelper.h; sourceTree = "<group>"; };
+		97C0BB0918BFC7BA0027B90C /* BackgroundHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundHelper.m; sourceTree = "<group>"; };
 		97DDDEC118B57FD700D8A6E6 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		97DDDEC218B57FD700D8A6E6 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +113,8 @@
 				9786548C1810917200073680 /* Resources */,
 				97110203180A17240085B216 /* AppDelegate.h */,
 				97110204180A17240085B216 /* AppDelegate.m */,
+				97C0BB0818BFC7BA0027B90C /* BackgroundHelper.h */,
+				97C0BB0918BFC7BA0027B90C /* BackgroundHelper.m */,
 				9711020A180A17240085B216 /* InfoPlist.strings */,
 				9711020D180A17240085B216 /* main.m */,
 				9711020E180A17240085B216 /* OfflineFeatureEditingSample-Info.plist */,
@@ -203,6 +208,15 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Esri;
+				TargetAttributes = {
+					4B1920D21746ECC900E724BE = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 4B1920CE1746ECC900E724BE /* Build configuration list for PBXProject "OfflineFeatureEditingSample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -256,6 +270,7 @@
 				9786549018109EF000073680 /* JSBadgeView.m in Sources */,
 				9711021C180A17240085B216 /* main.m in Sources */,
 				975579D8180B624300904382 /* SVProgressHUD.m in Sources */,
+				97C0BB0A18BFC7BA0027B90C /* BackgroundHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

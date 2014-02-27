@@ -3,9 +3,9 @@
 This sample demonstrates how you can download features from a sync-enabled ArcGIS Feature Serivce, display and edit
 the features even when the devices does not have any network connectivity, synchronize changes with the service
 to push your edits up and pull down any changes from the service. The sample displays basemap tiles for downtown 
-San Francisco using a tile package (.tpk file) so that the basemap is visible even when the device is offline.
+San Francisco using a tile package (.tpk file) so that the basemap is visible even when the device is offline. 
+If the app is background'ed while features are being downloaded or changes are being synced, the app can continue to monitor the progess of those operations and post a notification when they complete. This depends upon the OS giving the app some execution time while it is in the background. You can simulate this on the simulator by first tapping the home button while the app is running to move it to the background, and then using the <i>Debug</i> > <i>Simulate Background Fetch</i> option in XCode.
 
-**Note:** This sample uses functionality that is in beta at v10.2 of ArcGIS Runtime SDK for iOS.
 
 ###Using the sample
 1. Upon startup, the app is in "Live Data" mode where the map displays features from an ArcGIS Feature service.
@@ -37,3 +37,5 @@ The ```MainViewController``` contains an ```AGSMapView``` to display a map. The 
 In the "Live Data" mode, the map also contains ```AGSFeatureLayer``` for each layer in the [wildfire feature service](http://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/Wildfire/FeatureServer)   to display features. These layers have ```expirationInterval``` property set to 60 seconds and ```autoRefreshOnExpiration``` enabled to refresh the feature data periodically. The ```editingDelegate``` of these layers is set to be the main view controller which applies any edits immediately to the service.
 
 In the "Local Data" mode, the features are downloded from the service as a replica geodatabase using ```AGSGDBTask```. When the download completes, each dataset in the geodatabase accessed via ```AGSGDBFeatureTable``` and added to the map as an ```AGSFeatureTableLayer```. Features are  added, updated, or deleted using methods on ```AGSGDBFeatureTable``` and then later synchronized with the service using ```AGSGDBTask```
+
+The app delegate uses the ```Background Helper``` utility class to continue downloading features or synchronizing changes if the user backgrounds the app or switches to another app while the operation is in progress. When the operation completes, local notifications are posted using the ```Background Helper``` if the app is still in the background. 

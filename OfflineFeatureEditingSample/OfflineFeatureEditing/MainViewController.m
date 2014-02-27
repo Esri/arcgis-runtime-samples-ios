@@ -17,6 +17,7 @@
 #import "JSBadgeView.h"
 #import "UIAlertView+NSCookbook.h"
 #import "LoadingView.h"
+#import "BackgroundHelper.h"
 
 #define kTilePackageName @"SanFrancisco"
 #define kFeatureServiceURL @"http://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/Wildfire/FeatureServer"
@@ -345,6 +346,8 @@
             
             [self logStatus:[NSString stringWithFormat:@"sync complete"]];
             [SVProgressHUD showSuccessWithStatus:@"Sync complete"];
+            [BackgroundHelper postLocalNotificationIfAppNotActive:@"sync complete"];
+            
             //Remove the local edits badge from the sync button
             [self showEditsInGeodatabaseAsBadge:nil];
             
@@ -445,6 +448,8 @@
     _newlyDownloaded = NO;
     [SVProgressHUD showWithStatus:@"Preparing to \n download"];
     [self.gdbTask generateGeodatabaseWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
+        
+        //If we are fetching result, display download progress
         if(status == AGSResumableTaskJobStatusFetchingResult){
             _newlyDownloaded = YES;
             NSNumber* totalBytesDownloaded = userInfo[@"AGSDownloadProgressTotalBytesDownloaded"];
@@ -455,32 +460,39 @@
             }
         }else{
             //don't want to log status for "fetching result" state because
-            //status block gets called many times a second when downloading
+            //status block gets called many times a second when downloading.
+            //we only log status for other states here
             [self logStatus:[NSString stringWithFormat:@"Status: %@", [self statusMessageForAsyncStatus:status]]];
         }
     } completion:^(AGSGDBGeodatabase *geodatabase, NSError *error) {
         if (error){
+            //handle the error
             _goingLocal = NO;
             _viewingLocal = NO;
             [self logStatus:[NSString stringWithFormat:@"error taking feature layers offline: %@", error]];
             [SVProgressHUD showErrorWithStatus:@"Couldn't download features"];
         }
         else{
+            //take app into offline mode
             _goingLocal = NO;
             _viewingLocal = YES;
             [self logStatus:@"now viewing local data"];
+            [BackgroundHelper postLocalNotificationIfAppNotActive:@"Features downloaded."];
             
+            //remove the live feature layers
             for (AGSLayer* lyr in self.mapView.mapLayers) {
                 if([lyr isKindOfClass:[AGSFeatureLayer class]])
                     [self.mapView removeMapLayer:lyr];
             }
             
+            //add layers from local geodatabase
             self.geodatabase = geodatabase;
             for (AGSFeatureTable* fTable in geodatabase.featureTables) {
                 if ([fTable hasGeometry]) {
                     [self.mapView addMapLayer:[[AGSFeatureTableLayer alloc]initWithFeatureTable:fTable]];
                 }
             }
+            
             if (_newlyDownloaded) {
                 [SVProgressHUD showSuccessWithStatus:@"Finished \n downloading"];
             }else{

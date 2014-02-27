@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 
 #import "MainViewController.h"
+#import "BackgroundHelper.h"
 
 @interface AppDelegate(){
     NSString *_logPath;
@@ -24,12 +25,14 @@
 
 
 -(void)logAppStatus:(NSString *)status{
+    //If we don't already have a log file, let's set one up
     if (!_logPath.length){
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *path = [paths objectAtIndex:0];
         _logPath = [path stringByAppendingPathComponent:@"appLog.txt"];
     }
 
+    //Write to the file
     NSFileHandle *logFileHandle = [NSFileHandle fileHandleForWritingAtPath:_logPath];
     if (logFileHandle){
         [logFileHandle seekToEndOfFile];
@@ -40,6 +43,17 @@
         [status writeToFile:_logPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
     }
 }
+
+//This will get called periodically by the system when the app is background'ed if
+//the app declares it supports "Background Fetch" capability in XCode project settings
+- (void) application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+    [BackgroundHelper checkJobStatusInBackground:completionHandler];
+}
+
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler {
+    [BackgroundHelper downloadJobResultInBackgroundWithURLSession:identifier completionHandler:completionHandler];
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

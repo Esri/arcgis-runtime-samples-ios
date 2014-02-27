@@ -31,8 +31,9 @@
 }
 
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler {
-    // this will allow the AGSExportTileCacheTask to monitor status of background download and invoke its
-    // completion handler when the download is done.
+    //
+    // this will allow the AGSExportTileCacheTask to monitor status of background download and invoke its own
+    // completion block when the download is done.
     [[AGSURLSessionManager sharedManager] setBackgroundURLSessionCompletionHandler:completionHandler forIdentifier:identifier];
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

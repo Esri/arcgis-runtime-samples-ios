@@ -80,6 +80,10 @@
 
     //Add the basemap layer from a tile package
     _localTiledLayer =  [AGSLocalTiledLayer localTiledLayerWithName:kTilePackageName];
+    
+    //Add layer delegate to catch errors in case the local tiled layer is replaced and problems arise
+    _localTiledLayer.delegate = self;
+    
     [self.mapView addMapLayer:_localTiledLayer];
     
 
@@ -163,12 +167,20 @@
 
 
 -(void)layer:(AGSLayer *)layer didFailToLoadWithError:(NSError *)error{
+    NSString *errmsg;
+    
     if([layer isKindOfClass:[AGSFeatureLayer class]]){
         AGSFeatureLayer* fl = (AGSFeatureLayer*)layer;
-        [self logStatus:[NSString stringWithFormat:@"Failed to load %@. Error:%@",fl.URL, error]];
-        [SVProgressHUD popActivity];
+        errmsg = [NSString stringWithFormat:@"Failed to load %@. Error:%@",fl.URL, error];
         
+        // activity shown when loading online layer, dismiss this
+        [SVProgressHUD popActivity];
     }
+    else if([layer isKindOfClass:[AGSLocalTiledLayer class]]){
+        errmsg = [NSString stringWithFormat:@"Failed to load local tiled layer. Error:%@", error];
+    }
+    
+    [self logStatus:errmsg];
 }
 
 #pragma mark - AGSFeatureLayerDidLoadFeaturesNotification

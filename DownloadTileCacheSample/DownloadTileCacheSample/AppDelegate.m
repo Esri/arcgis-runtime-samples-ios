@@ -12,30 +12,20 @@
 
 #import "AppDelegate.h"
 #import <ArcGIS/ArcGIS.h>
+#import "BackgroundHelper.h"
 @implementation AppDelegate
 
 
+//This will get called periodically by the system when the app is background'ed if
+//the app declares it supports "Background Fetch" capability in XCode project settings
 - (void) application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
-    NSLog(@"performFetchWithCompletionHandler");
-    if ([[[AGSTask activeResumeIDs] allKeys] count]) {
-        //
-        // this allow AGSExportTileCacheTask to trigger status checks for any active jobs. If a job is done
-        // and a download is available, a download will be kicked off
-        [AGSTask checkStatusForAllResumableTaskJobsWithCompletion:completionHandler];
-    }
-    else {
-        //
-        // we should call this right away so the OS sees us as a good citizen.
-        completionHandler(UIBackgroundFetchResultNoData);
-    }
+    [BackgroundHelper checkJobStatusInBackground:completionHandler];
 }
 
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler {
-    //
-    // this will allow the AGSExportTileCacheTask to monitor status of background download and invoke its own
-    // completion block when the download is done.
-    [[AGSURLSessionManager sharedManager] setBackgroundURLSessionCompletionHandler:completionHandler forIdentifier:identifier];
+    [BackgroundHelper downloadJobResultInBackgroundWithURLSession:identifier completionHandler:completionHandler];
 }
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.

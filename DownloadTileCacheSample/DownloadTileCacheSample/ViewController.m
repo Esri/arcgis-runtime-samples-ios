@@ -11,6 +11,7 @@
 //
 
 #import "ViewController.h"
+#import "BackgroundHelper.h"
 
 @interface ViewController ()
 
@@ -263,17 +264,7 @@
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Download complete" message:@"The tile cache has been added to the map." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
             
-            //It's possible this completion handler is getting called in the background if
-            //the downlaod finished in the background. In this case, post a local notification
-            //to inform the user.
-            UIApplicationState state = [[UIApplication sharedApplication] applicationState];
-            if (state == UIApplicationStateBackground || state == UIApplicationStateInactive)
-            {
-                UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-                localNotification.alertBody = @"Tile cache has been downloaded";
-                [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-                
-            }
+            [BackgroundHelper postLocalNotificationIfAppNotActive:@"Tile cache downloaded."];
         }
     }];
 }

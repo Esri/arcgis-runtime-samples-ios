@@ -17,7 +17,7 @@
 		88F72A2117F0B68B00C7BE67 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88F72A2017F0B68B00C7BE67 /* Images.xcassets */; };
 		88F72A3717F0DCA700C7BE67 /* SPUserResizableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F72A3617F0DCA700C7BE67 /* SPUserResizableView.m */; };
 		88F72A3A17F0E63700C7BE67 /* BlackImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 88F72A3917F0E63700C7BE67 /* BlackImage.jpeg */; };
-		973FB33B1804DF1700DAC106 /* DownloadTileCacheSample-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88F72A1217F0B61B00C7BE67 /* DownloadTileCacheSample-Info.plist */; };
+		97C0BB0D18BFEB620027B90C /* BackgroundHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 97C0BB0C18BFEB620027B90C /* BackgroundHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +36,8 @@
 		88F72A3517F0DCA700C7BE67 /* SPUserResizableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUserResizableView.h; sourceTree = "<group>"; };
 		88F72A3617F0DCA700C7BE67 /* SPUserResizableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPUserResizableView.m; sourceTree = "<group>"; };
 		88F72A3917F0E63700C7BE67 /* BlackImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BlackImage.jpeg; sourceTree = "<group>"; };
+		97C0BB0B18BFEB620027B90C /* BackgroundHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundHelper.h; sourceTree = "<group>"; };
+		97C0BB0C18BFEB620027B90C /* BackgroundHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,8 @@
 				88F72A1117F0B61B00C7BE67 /* main.m */,
 				88F72A1417F0B61B00C7BE67 /* ViewController.h */,
 				88F72A1517F0B61B00C7BE67 /* ViewController.m */,
+				97C0BB0B18BFEB620027B90C /* BackgroundHelper.h */,
+				97C0BB0C18BFEB620027B90C /* BackgroundHelper.m */,
 			);
 			path = DownloadTileCacheSample;
 			sourceTree = "<group>";
@@ -183,7 +187,6 @@
 				88F72A2117F0B68B00C7BE67 /* Images.xcassets in Resources */,
 				88F72A3A17F0E63700C7BE67 /* BlackImage.jpeg in Resources */,
 				88F72A1B17F0B61B00C7BE67 /* MainStoryboard.storyboard in Resources */,
-				973FB33B1804DF1700DAC106 /* DownloadTileCacheSample-Info.plist in Resources */,
 				88C06D5817FF3EB00074BB5A /* Default-568h@2x.png in Resources */,
 				88F72A1A17F0B61B00C7BE67 /* InfoPlist.strings in Resources */,
 			);
@@ -200,6 +203,7 @@
 				88F72A1C17F0B61B00C7BE67 /* main.m in Sources */,
 				88F72A3717F0DCA700C7BE67 /* SPUserResizableView.m in Sources */,
 				88F72A1617F0B61B00C7BE67 /* AppDelegate.m in Sources */,
+				97C0BB0D18BFEB620027B90C /* BackgroundHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

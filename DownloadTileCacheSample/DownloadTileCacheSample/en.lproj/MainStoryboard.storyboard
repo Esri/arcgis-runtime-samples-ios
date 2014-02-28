@@ -13,17 +13,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="5ey-rE-dvB">
-                                <rect key="frame" x="151" y="51" width="149" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Online"/>
-                                    <segment title="Offline"/>
-                                </segments>
-                                <connections>
-                                    <action selector="goOfflineOnline:" destination="2" eventType="valueChanged" id="hrE-dl-5qx"/>
-                                </connections>
-                            </segmentedControl>
                             <view contentMode="scaleToFill" id="fnN-9h-mr9" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="418"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -92,11 +81,10 @@
                         <outlet property="estimateButton" destination="qcA-lu-Xvm" id="YIh-1p-7Tx"/>
                         <outlet property="estimateLabel" destination="Gxi-ZC-GrT" id="tyB-N6-uWG"/>
                         <outlet property="floatingView" destination="LzI-P6-30j" id="RFS-OW-Jvh"/>
+                        <outlet property="levelStepper" destination="4Gu-A4-2fj" id="puC-gF-EWD"/>
                         <outlet property="lodLabel" destination="otW-fG-pod" id="E9C-ob-pAe"/>
                         <outlet property="mapView" destination="fnN-9h-mr9" id="iU3-4Y-XRa"/>
-                        <outlet property="offlineOnlineControl" destination="5ey-rE-dvB" id="7NG-vo-BEh"/>
                         <outlet property="scaleLabel" destination="gwl-Uk-jPn" id="23F-t9-WQP"/>
-                        <outlet property="scaleStepper" destination="4Gu-A4-2fj" id="Dk5-fy-PyA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>

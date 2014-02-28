@@ -13,7 +13,6 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 
-#import "SPUserResizableView.h"
 
 
 
@@ -27,22 +26,14 @@
 @property (nonatomic,strong) IBOutlet UILabel *scaleLabel;
 @property (nonatomic,strong) IBOutlet UILabel *estimateLabel;
 @property (nonatomic,strong) IBOutlet UILabel *lodLabel;
-@property (nonatomic) CGFloat lastScale;
-@property (nonatomic,strong) IBOutlet UISegmentedControl *offlineOnlineControl;
 
 
 @property (nonatomic,strong) IBOutlet UIButton *estimateButton;
 @property (nonatomic,strong) IBOutlet UIButton *downloadButton;
-@property (nonatomic,strong) IBOutlet UIStepper*scaleStepper;
+@property (nonatomic,strong) IBOutlet UIStepper*levelStepper;
 
-@property (nonatomic,strong) IBOutlet UIImageView *backgroundGray;
-@property (nonatomic,strong) IBOutlet UIImageView *backgroundOverlay;
-
-@property (nonatomic) double lastLod;
-@property (nonatomic,strong) id operationToCancel;
 
 @property (nonatomic,strong) IBOutlet UILabel *timerLabel;
 
-- (NSArray*) generateLods;
 
 @end

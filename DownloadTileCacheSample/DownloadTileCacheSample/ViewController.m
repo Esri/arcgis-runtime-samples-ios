@@ -30,14 +30,14 @@
 {
     [super viewDidLoad];
     
-    
     //You can change this to any other service on tiledbasemaps.arcgis.com if you have an ArcGIS for Organizations subscription
     NSString* tileServiceURL = @"http://sampleserver6.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer";
     
+    //Add basemap layer to the map
+    //Set delegate to be notified of success or failure while loading
     NSURL *tiledUrl = [[NSURL alloc] initWithString:tileServiceURL];
     self.tiledLayer = [[AGSTiledMapServiceLayer alloc] initWithURL:tiledUrl];
     self.tiledLayer.delegate  = self;
-    
     [self.mapView addMapLayer:self.tiledLayer withName:@"World Street Map"];
     
        
@@ -48,81 +48,70 @@
     }
 
     self.scaleLabel.numberOfLines = 0;
-    
-
 }
 
 
 
 - (void)layer:(AGSLayer *)layer didFailToLoadWithError:(NSError *)error{
+    //Alert user of error
     [[[UIAlertView alloc]initWithTitle:@"Error" message:[error localizedDescription] delegate:Nil cancelButtonTitle:nil otherButtonTitles:nil, nil] show];
 }
 
 - (void)layerDidLoad:(AGSLayer *)layer{
     if (layer == self.tiledLayer) {
-        self.scaleStepper.value = 0;
-        self.scaleStepper.minimumValue = 0;
-        self.scaleStepper.maximumValue = self.tiledLayer.tileInfo.lods.count;
+        //Initialize UIStepper based on number of scale levels in the tiled layer
+        self.levelStepper.value = 0;
+        self.levelStepper.minimumValue = 0;
+        self.levelStepper.maximumValue = self.tiledLayer.tileInfo.lods.count;
+        
+        //Register observer for mapScale property so we can reset the stepper and other UI when map is zoomed in/out
         [self.mapView addObserver:self forKeyPath:@"mapScale" options:NSKeyValueObservingOptionNew context:NULL];
     }
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    //Clear out any estimate or previously chosen levels by the user
+    //They are no longer relevant as the map's scale has changed
+    //Disable buttons to force the user to specify levels again
     self.estimateLabel.text = @"";
     self.scaleLabel.text = @"";
     self.lodLabel.text = @"";
     self.estimateButton.enabled = NO;
     self.downloadButton.enabled = NO;
 
-    
+    //Re-initialize the stepper with possible values based on current map scale
     NSInteger index = [self.tiledLayer.mapServiceInfo.tileInfo.lods indexOfObject:self.tiledLayer.currentLOD];
-    self.scaleStepper.maximumValue = self.tiledLayer.tileInfo.lods.count - index;
-    self.scaleStepper.minimumValue = 0;
-    self.scaleStepper.value = 0;
+    self.levelStepper.maximumValue = self.tiledLayer.tileInfo.lods.count - index;
+    self.levelStepper.minimumValue = 0;
+    self.levelStepper.value = 0;
 }
 
-- (AGSLOD*) bestFitLODForEnvelope:(AGSEnvelope*)env{
-    CGRect screenRect = [self.mapView toScreenRect:env];
-    double impliedResolution = env.width /    screenRect.size.width;
-    
-    AGSMapServiceInfo *mapServiceInfo = self.tiledLayer.mapServiceInfo;
-    
-    for ( int i=0; i < mapServiceInfo.tileInfo.lods.count; i++ ) {
-        AGSLOD * tempLod = [mapServiceInfo.tileInfo.lods objectAtIndex:i];
-        if(impliedResolution > tempLod.resolution)
-            return tempLod;
-    }
-    return [mapServiceInfo.tileInfo.lods lastObject];
-
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (IBAction)changeLevels:(id)sender
 {
+    //Enable buttons because the user has specified how many levels to download
     self.estimateButton.enabled = YES;
     self.downloadButton.enabled = YES;
-    self.scaleStepper.minimumValue = 1;
-    
-    AGSLOD * lod = [self.tiledLayer.mapServiceInfo.tileInfo.lods objectAtIndex:self.scaleStepper.value];
-    self.lodLabel.text = [[NSNumber numberWithInt:self.scaleStepper.value] stringValue];
-    self.scaleLabel.text = [NSString stringWithFormat:@"1:%@\n  to\n1:%@", [NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithInt:self.tiledLayer.currentLOD.scale] numberStyle:NSNumberFormatterDecimalStyle],[NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithInt:lod.scale] numberStyle:NSNumberFormatterDecimalStyle]];
+    self.levelStepper.minimumValue = 1;
+
+    //Display the levels
+    self.lodLabel.text = [[NSNumber numberWithInt:self.levelStepper.value] stringValue];
+
+    //Display the scale range that will be downloaded based on specified levels
+    NSString* currentScale = [NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithInt:self.tiledLayer.currentLOD.scale] numberStyle:NSNumberFormatterDecimalStyle];
+    AGSLOD * maxLOD = [self.tiledLayer.mapServiceInfo.tileInfo.lods objectAtIndex:self.levelStepper.value];
+    NSString* maxScale = [NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithInt:maxLOD.scale] numberStyle:NSNumberFormatterDecimalStyle];
+    self.scaleLabel.text = [NSString stringWithFormat:@"1:%@\n  to\n1:%@",currentScale , maxScale];
 }
 
 - (IBAction)estimateAction:(id)sender
 {
     
-    NSArray *arrayLods = [self generateLods];
-    NSLog(@"LODs %@", arrayLods);
+    NSArray *desiredLevels = [self levelsWithCount:self.levelStepper.value startingAt:self.tiledLayer.currentLOD fromLODs:self.tiledLayer.tileInfo.lods];
+    NSLog(@"LODs %@", desiredLevels);
     
     AGSEnvelope *extent = [self.mapView visibleAreaEnvelope];
-    
-    
-    AGSExportTileCacheParams *params = [[AGSExportTileCacheParams alloc] initWithLevelsOfDetail:arrayLods areaOfInterest:extent];
+    AGSExportTileCacheParams *params = [[AGSExportTileCacheParams alloc] initWithLevelsOfDetail:desiredLevels areaOfInterest:extent];
 
     [SVProgressHUD showWithStatus:@"Estimating\n size" maskType:SVProgressHUDMaskTypeGradient];
     [self.tileCacheTask estimateTileCacheSizeWithParameters:params status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
@@ -154,18 +143,18 @@
 - (IBAction)downloadAction:(id)sender
 {
     
-    NSArray *arrayLods = [self generateLods];
-    NSLog(@"LODs to be requested for the cache : %@", arrayLods);
+    NSArray *desiredLevels = [self levelsWithCount:self.levelStepper.value startingAt:self.tiledLayer.currentLOD fromLODs:self.tiledLayer.tileInfo.lods];
+    NSLog(@"LODs to be requested for the cache : %@", desiredLevels);
     
     // Get the map coordinate extent from view control
     AGSEnvelope *extent = [self.mapView visibleAreaEnvelope];
     
-    AGSExportTileCacheParams *params = [[AGSExportTileCacheParams alloc] initWithLevelsOfDetail:arrayLods areaOfInterest:extent];
+    AGSExportTileCacheParams *params = [[AGSExportTileCacheParams alloc] initWithLevelsOfDetail:desiredLevels areaOfInterest:extent];
 
     self.estimateLabel.text = @"";
     [SVProgressHUD showWithStatus:@"Preparing\n to download" maskType:SVProgressHUDMaskTypeGradient];
     
-    self.operationToCancel = [self.tileCacheTask exportTileCacheWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
+    [self.tileCacheTask exportTileCacheWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
           NSLog(@"%@, %@", AGSResumableTaskJobStatusAsString(status) ,userInfo);
         NSArray *allMessages =  [userInfo objectForKey:@"messages"];
         
@@ -205,19 +194,18 @@
 
 
 
-- (NSArray*) generateLods
+- (NSArray*) levelsWithCount:(NSInteger)count startingAt:(AGSLOD*)startLOD fromLODs:(NSArray*)allLODs
 {
     
-    AGSLOD* displayedLOD  = self.tiledLayer.currentLOD;
-    NSInteger index = [self.tiledLayer.mapServiceInfo.tileInfo.lods indexOfObject:displayedLOD];
-    NSRange range = NSMakeRange( index, self.scaleStepper.value );
-    NSArray *lods = [self.tiledLayer.mapServiceInfo.tileInfo.lods subarrayWithRange: range];
-    NSMutableArray *arrayLods = [[NSMutableArray alloc] init];
-    for (AGSLOD* lod  in lods) {
-        [arrayLods addObject:[NSNumber numberWithInteger:lod.level]];
+    NSInteger index = [allLODs indexOfObject:startLOD];
+    NSRange range = NSMakeRange( index, count);
+    NSArray *desiredLODs = [allLODs subarrayWithRange: range];
+    NSMutableArray *desiredLevels = [[NSMutableArray alloc] init];
+    for (AGSLOD* LOD  in desiredLODs) {
+        [desiredLevels addObject:[NSNumber numberWithInteger:LOD.level]];
     }
     
-    return arrayLods;
+    return desiredLevels;
     
 
 }

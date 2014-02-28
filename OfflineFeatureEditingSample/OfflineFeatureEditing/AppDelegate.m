@@ -58,6 +58,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   
+    NSError* err;
+    [AGSRuntimeEnvironment setClientID:@"FH6mKSp7DMRfi9KH" error:&err];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     self.viewController = [[MainViewController alloc] init];

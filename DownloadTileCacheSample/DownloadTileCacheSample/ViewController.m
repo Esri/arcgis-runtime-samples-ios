@@ -101,7 +101,7 @@
     NSString* currentScale = [NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithInt:self.tiledLayer.currentLOD.scale] numberStyle:NSNumberFormatterDecimalStyle];
     AGSLOD * maxLOD = [self.tiledLayer.mapServiceInfo.tileInfo.lods objectAtIndex:self.levelStepper.value];
     NSString* maxScale = [NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithInt:maxLOD.scale] numberStyle:NSNumberFormatterDecimalStyle];
-    self.scaleLabel.text = [NSString stringWithFormat:@"1:%@\n  to\n1:%@",currentScale , maxScale];
+    self.scaleLabel.text = [NSString stringWithFormat:@"1:%@\n\tto\n1:%@",currentScale , maxScale];
 }
 
 - (IBAction)estimateAction:(id)sender
@@ -137,7 +137,7 @@
             NSByteCountFormatter* byteCountFormatter = [[NSByteCountFormatter alloc]init];
             NSString* byteCountString = [byteCountFormatter stringFromByteCount:tileCacheSizeEstimate.fileSize];
             self.estimateLabel.text = [[NSString alloc] initWithFormat:@"%@  / %@ tiles", byteCountString, tileCountString];
-            [SVProgressHUD showSuccessWithStatus:[[NSString alloc] initWithFormat:@"%@  / %@ tiles", byteCountString, tileCountString]];
+            [SVProgressHUD showSuccessWithStatus:[[NSString alloc] initWithFormat:@"Estimated size:\n%@  / %@ tiles", byteCountString, tileCountString]];
         
         }
 

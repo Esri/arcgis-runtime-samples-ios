@@ -3,9 +3,11 @@
 This sample demonstrates how you can edit geographic data in an ArcGIS Feature service. You can add new features with photo/video as attachment(s), or you can edit and delete existing features. 
 
 
-![Initial Scene](image.png "Initial Scene")
-![Settings](image2.png "Settings")
-![Result](image3.png "Result")
+![](image.png )
+![](image2.png )
+![](image3.png )
+![](image4.png )
+
 
 ###Usage
 1. Tap on any location on the map to perform an analysis of areas that could be potentially impacted by hazardous material spill.

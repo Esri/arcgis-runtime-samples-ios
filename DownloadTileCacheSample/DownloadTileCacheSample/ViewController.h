@@ -21,7 +21,7 @@
 
 @property (nonatomic,strong) IBOutlet AGSMapView *mapView;
 @property (nonatomic,strong) AGSTiledMapServiceLayer *tiledLayer;
-@property (nonatomic,strong) IBOutlet UIView *floatingView;
+@property (nonatomic,strong) IBOutlet UIView *downloadPanel;
 @property (nonatomic,strong) AGSExportTileCacheTask *tileCacheTask;
 @property (nonatomic,strong) IBOutlet UILabel *scaleLabel;
 @property (nonatomic,strong) IBOutlet UILabel *estimateLabel;

@@ -107,24 +107,31 @@
 - (IBAction)estimateAction:(id)sender
 {
     
+    //Prepare list of levels to download
     NSArray *desiredLevels = [self levelsWithCount:self.levelStepper.value startingAt:self.tiledLayer.currentLOD fromLODs:self.tiledLayer.tileInfo.lods];
-    NSLog(@"LODs %@", desiredLevels);
+    NSLog(@"LODs requested %@", desiredLevels);
     
+    //Use current envelope to download
     AGSEnvelope *extent = [self.mapView visibleAreaEnvelope];
+    
+    //Prepare params with levels and envelope
     AGSExportTileCacheParams *params = [[AGSExportTileCacheParams alloc] initWithLevelsOfDetail:desiredLevels areaOfInterest:extent];
 
-    [SVProgressHUD showWithStatus:@"Estimating\n size" maskType:SVProgressHUDMaskTypeGradient];
+    //kick-off operation to estimate size
     [self.tileCacheTask estimateTileCacheSizeWithParameters:params status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
         NSLog(@"%@, %@", AGSResumableTaskJobStatusAsString(status) ,userInfo);
     } completion:^(AGSExportTileCacheSizeEstimate *tileCacheSizeEstimate, NSError *error) {
         if ( error != nil) {
+            
+            //Report error to user
             [[[UIAlertView alloc]initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
             [SVProgressHUD dismiss];
         }else{
+            
+            //Display results (# of bytes and tiles), properly formatted, ofcourse
             NSNumberFormatter* tileCountFormatter = [[NSNumberFormatter alloc]init];
             [tileCountFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
             [tileCountFormatter setMaximumFractionDigits:0];
-            
             NSString* tileCountString = [tileCountFormatter stringFromNumber:[NSNumber numberWithInteger:tileCacheSizeEstimate.tileCount]];
             
             NSByteCountFormatter* byteCountFormatter = [[NSByteCountFormatter alloc]init];
@@ -135,7 +142,8 @@
         }
 
     }];
-    
+    [SVProgressHUD showWithStatus:@"Estimating\n size" maskType:SVProgressHUDMaskTypeGradient];
+
 }
 
 
@@ -143,21 +151,24 @@
 - (IBAction)downloadAction:(id)sender
 {
     
+    //Prepare list of levels to download
     NSArray *desiredLevels = [self levelsWithCount:self.levelStepper.value startingAt:self.tiledLayer.currentLOD fromLODs:self.tiledLayer.tileInfo.lods];
-    NSLog(@"LODs to be requested for the cache : %@", desiredLevels);
+    NSLog(@"LODs requested %@", desiredLevels);
     
-    // Get the map coordinate extent from view control
+    //Use current envelope to download
     AGSEnvelope *extent = [self.mapView visibleAreaEnvelope];
     
+    //Prepare params using levels and envelope
     AGSExportTileCacheParams *params = [[AGSExportTileCacheParams alloc] initWithLevelsOfDetail:desiredLevels areaOfInterest:extent];
 
-    self.estimateLabel.text = @"";
-    [SVProgressHUD showWithStatus:@"Preparing\n to download" maskType:SVProgressHUDMaskTypeGradient];
-    
+    //Kick-off operation
     [self.tileCacheTask exportTileCacheWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
-          NSLog(@"%@, %@", AGSResumableTaskJobStatusAsString(status) ,userInfo);
+        
+        //Print the job status
+        NSLog(@"%@, %@", AGSResumableTaskJobStatusAsString(status) ,userInfo);
         NSArray *allMessages =  [userInfo objectForKey:@"messages"];
         
+        //Display download progress if we are fetching result
         if (status == AGSResumableTaskJobStatusFetchingResult) {
             NSNumber* totalBytesDownloaded = userInfo[@"AGSDownloadProgressTotalBytesDownloaded"];
             NSNumber* totalBytesExpected = userInfo[@"AGSDownloadProgressTotalBytesExpected"];
@@ -166,6 +177,8 @@
                 [SVProgressHUD showProgress:dPercentage status:@"Downloading" maskType:SVProgressHUDMaskTypeGradient];
             }
         }else if ( allMessages.count) {
+            
+            //Else, display latest progress message provided by the service
             [SVProgressHUD showWithStatus:[MessageHelper extractMostRecentMessage:allMessages] maskType:SVProgressHUDMaskTypeGradient];
         }
         
@@ -173,23 +186,30 @@
     } completion:^(AGSLocalTiledLayer *localTiledLayer, NSError *error) {
         [SVProgressHUD dismiss];
         if (error){
+            
+            //alert the user
             [[[UIAlertView alloc]initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
             self.estimateLabel.text = @"";
         }
         else{
+            
+            //clear out the map, and add the downloaded tile cache to the map
             [self.mapView reset];
             [self.mapView addMapLayer:localTiledLayer withName:@"offline"];
-            [self.mapView zoomToEnvelope:localTiledLayer.fullEnvelope animated:NO];
-            
+
+            //Tell the user we're done
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Download complete" message:@"The tile cache has been added to the map." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
             
-            [[self.floatingView subviews]
+            //Remove the option to download again.
+            [[self.downloadPanel subviews]
              makeObjectsPerformSelector:@selector(removeFromSuperview)];
             
             [BackgroundHelper postLocalNotificationIfAppNotActive:@"Tile cache downloaded."];
         }
     }];
+    [SVProgressHUD showWithStatus:@"Preparing\n to download" maskType:SVProgressHUDMaskTypeGradient];
+
 }
 
 

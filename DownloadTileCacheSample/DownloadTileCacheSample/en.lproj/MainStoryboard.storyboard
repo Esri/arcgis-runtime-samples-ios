@@ -78,9 +78,9 @@
                     </view>
                     <connections>
                         <outlet property="downloadButton" destination="stj-m1-sH0" id="78W-se-xrg"/>
+                        <outlet property="downloadPanel" destination="LzI-P6-30j" id="UTa-lP-ZVI"/>
                         <outlet property="estimateButton" destination="qcA-lu-Xvm" id="YIh-1p-7Tx"/>
                         <outlet property="estimateLabel" destination="Gxi-ZC-GrT" id="tyB-N6-uWG"/>
-                        <outlet property="floatingView" destination="LzI-P6-30j" id="RFS-OW-Jvh"/>
                         <outlet property="levelStepper" destination="4Gu-A4-2fj" id="puC-gF-EWD"/>
                         <outlet property="lodLabel" destination="otW-fG-pod" id="E9C-ob-pAe"/>
                         <outlet property="mapView" destination="fnN-9h-mr9" id="iU3-4Y-XRa"/>

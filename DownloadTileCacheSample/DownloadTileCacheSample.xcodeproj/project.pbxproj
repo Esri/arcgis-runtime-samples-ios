@@ -15,8 +15,10 @@
 		88F72A1C17F0B61B00C7BE67 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F72A1117F0B61B00C7BE67 /* main.m */; };
 		88F72A1E17F0B61B00C7BE67 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F72A1517F0B61B00C7BE67 /* ViewController.m */; };
 		88F72A2117F0B68B00C7BE67 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88F72A2017F0B68B00C7BE67 /* Images.xcassets */; };
-		88F72A3717F0DCA700C7BE67 /* SPUserResizableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F72A3617F0DCA700C7BE67 /* SPUserResizableView.m */; };
 		88F72A3A17F0E63700C7BE67 /* BlackImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 88F72A3917F0E63700C7BE67 /* BlackImage.jpeg */; };
+		9708654918C011DE000BCECE /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9708654618C011DE000BCECE /* SVProgressHUD.bundle */; };
+		9708654A18C011DE000BCECE /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9708654818C011DE000BCECE /* SVProgressHUD.m */; };
+		9708654E18C01F36000BCECE /* MessageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9708654D18C01F36000BCECE /* MessageHelper.m */; };
 		97C0BB0D18BFEB620027B90C /* BackgroundHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 97C0BB0C18BFEB620027B90C /* BackgroundHelper.m */; };
 /* End PBXBuildFile section */
 
@@ -33,9 +35,13 @@
 		88F72A1417F0B61B00C7BE67 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		88F72A1517F0B61B00C7BE67 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		88F72A2017F0B68B00C7BE67 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		88F72A3517F0DCA700C7BE67 /* SPUserResizableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUserResizableView.h; sourceTree = "<group>"; };
-		88F72A3617F0DCA700C7BE67 /* SPUserResizableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPUserResizableView.m; sourceTree = "<group>"; };
 		88F72A3917F0E63700C7BE67 /* BlackImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BlackImage.jpeg; sourceTree = "<group>"; };
+		9708654518C011DE000BCECE /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		9708654618C011DE000BCECE /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		9708654718C011DE000BCECE /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		9708654818C011DE000BCECE /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		9708654C18C01F36000BCECE /* MessageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageHelper.h; path = ../MessageHelper.h; sourceTree = "<group>"; };
+		9708654D18C01F36000BCECE /* MessageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageHelper.m; path = ../MessageHelper.m; sourceTree = "<group>"; };
 		97C0BB0B18BFEB620027B90C /* BackgroundHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundHelper.h; sourceTree = "<group>"; };
 		97C0BB0C18BFEB620027B90C /* BackgroundHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,8 +87,8 @@
 		88F72A0717F0B61B00C7BE67 /* DownloadTileCacheSample */ = {
 			isa = PBXGroup;
 			children = (
+				9708654B18C011E6000BCECE /* SVProgressHUD */,
 				88F72A3817F0E63700C7BE67 /* Resources */,
-				88F72A3417F0DCA700C7BE67 /* Extent */,
 				88F72A1F17F0B62E00C7BE67 /* Supporting Files */,
 				88F72A0817F0B61B00C7BE67 /* AppDelegate.h */,
 				88F72A0917F0B61B00C7BE67 /* AppDelegate.m */,
@@ -92,6 +98,8 @@
 				88F72A1517F0B61B00C7BE67 /* ViewController.m */,
 				97C0BB0B18BFEB620027B90C /* BackgroundHelper.h */,
 				97C0BB0C18BFEB620027B90C /* BackgroundHelper.m */,
+				9708654C18C01F36000BCECE /* MessageHelper.h */,
+				9708654D18C01F36000BCECE /* MessageHelper.m */,
 			);
 			path = DownloadTileCacheSample;
 			sourceTree = "<group>";
@@ -106,21 +114,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		88F72A3417F0DCA700C7BE67 /* Extent */ = {
-			isa = PBXGroup;
-			children = (
-				88F72A3517F0DCA700C7BE67 /* SPUserResizableView.h */,
-				88F72A3617F0DCA700C7BE67 /* SPUserResizableView.m */,
-			);
-			path = Extent;
-			sourceTree = "<group>";
-		};
 		88F72A3817F0E63700C7BE67 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				88F72A3917F0E63700C7BE67 /* BlackImage.jpeg */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		9708654B18C011E6000BCECE /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				9708654518C011DE000BCECE /* SVProgressHUD-Prefix.pch */,
+				9708654618C011DE000BCECE /* SVProgressHUD.bundle */,
+				9708654718C011DE000BCECE /* SVProgressHUD.h */,
+				9708654818C011DE000BCECE /* SVProgressHUD.m */,
+			);
+			name = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88F72A2117F0B68B00C7BE67 /* Images.xcassets in Resources */,
+				9708654918C011DE000BCECE /* SVProgressHUD.bundle in Resources */,
 				88F72A3A17F0E63700C7BE67 /* BlackImage.jpeg in Resources */,
 				88F72A1B17F0B61B00C7BE67 /* MainStoryboard.storyboard in Resources */,
 				88C06D5817FF3EB00074BB5A /* Default-568h@2x.png in Resources */,
@@ -201,9 +212,10 @@
 			files = (
 				88F72A1E17F0B61B00C7BE67 /* ViewController.m in Sources */,
 				88F72A1C17F0B61B00C7BE67 /* main.m in Sources */,
-				88F72A3717F0DCA700C7BE67 /* SPUserResizableView.m in Sources */,
+				9708654E18C01F36000BCECE /* MessageHelper.m in Sources */,
 				88F72A1617F0B61B00C7BE67 /* AppDelegate.m in Sources */,
 				97C0BB0D18BFEB620027B90C /* BackgroundHelper.m in Sources */,
+				9708654A18C011DE000BCECE /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

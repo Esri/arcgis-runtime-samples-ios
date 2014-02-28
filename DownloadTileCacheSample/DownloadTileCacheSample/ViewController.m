@@ -12,37 +12,10 @@
 
 #import "ViewController.h"
 #import "BackgroundHelper.h"
+#import "SVProgressHUD.h"
+#import "MessageHelper.h"
 
 @interface ViewController ()
-
-@property (nonatomic,strong) IBOutlet AGSMapView *mapView;
-@property (nonatomic,strong) AGSTiledMapServiceLayer *tiledLayer;
-@property (nonatomic,strong) IBOutlet UIView *floatingView;
-@property (nonatomic,strong) AGSExportTileCacheTask *tileCacheTask;
-@property (nonatomic,strong) IBOutlet UILabel *scaleLabel;
-@property (nonatomic,strong) IBOutlet UILabel *estimateLabel;
-@property (nonatomic,strong) IBOutlet UILabel *lodLabel;
-@property (nonatomic,strong) SPUserResizableView *lastResizableView;
-@property (nonatomic) CGFloat lastScale;
-@property (nonatomic,strong) IBOutlet UISegmentedControl *offlineOnlineControl;
-
-// Overlay
-@property (nonatomic,strong) IBOutlet UIView *overlay;
-@property (nonatomic,strong) IBOutlet UILabel *statusLabel;
-@property (nonatomic,strong) IBOutlet UIActivityIndicatorView *activity;
-@property (nonatomic,strong) IBOutlet UIProgressView *progressBar;
-@property (nonatomic,strong) IBOutlet UILabel *percentageValue;
-
-@property (nonatomic,strong) IBOutlet UIButton *estimateButton;
-@property (nonatomic,strong) IBOutlet UIButton *downloadButton;
-
-@property (nonatomic,strong) IBOutlet UIImageView *backgroundGray;
-@property (nonatomic,strong) IBOutlet UIImageView *backgroundOverlay;
-
-@property (nonatomic) double lastLod;
-@property (nonatomic,strong) id operationToCancel;
-
-@property (nonatomic,strong) IBOutlet UILabel *timerLabel;
 @end
 
 @implementation ViewController
@@ -57,53 +30,55 @@
 {
     [super viewDidLoad];
     
-    self.overlay.hidden = YES;
     
     //You can change this to any other service on tiledbasemaps.arcgis.com if you have an ArcGIS for Organizations subscription
-    NSString* tileServiceURL = @"http://tiledbasemaps.arcgis.com/arcgis/rest/services/World_Street_Map/MapServer";
+    NSString* tileServiceURL = @"http://sampleserver6.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer";
     
     NSURL *tiledUrl = [[NSURL alloc] initWithString:tileServiceURL];
     self.tiledLayer = [[AGSTiledMapServiceLayer alloc] initWithURL:tiledUrl];
+    self.tiledLayer.delegate  = self;
     
     [self.mapView addMapLayer:self.tiledLayer withName:@"World Street Map"];
     
-    //Zoom in to Barcelona
-    AGSEnvelope *env = [AGSEnvelope envelopeWithXmin:-460859.966049 ymin:4851749.196338 xmax:-360033.250384 ymax:4996687.600106 spatialReference:self.mapView.spatialReference];
-	[self.mapView zoomToEnvelope:env animated:YES];
-    
-    // (1) Create a user resizable view with a simple red background content view.
-    CGRect gripFrame = CGRectMake(50, 150, 200, 150);
-    SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
-    UIView *contentView = [[UIView alloc] initWithFrame:gripFrame];
-    [contentView setBackgroundColor:[UIColor blackColor]];
-    contentView.alpha = 0.4;
-    userResizableView.contentView = contentView;
-    userResizableView.delegate = self;
-    [userResizableView showEditingHandles];   
-    [self.view addSubview:userResizableView];
-    self.lastResizableView = userResizableView;
-    
+       
     // Init the tile cache task
     if ( self.tileCacheTask == nil) {
         NSURL *tiledUrl = [[NSURL alloc] initWithString:tileServiceURL];
         self.tileCacheTask = [[AGSExportTileCacheTask alloc] initWithURL:tiledUrl];
     }
 
-    [self showGrayBox];
-    
     self.scaleLabel.numberOfLines = 0;
+    
 
 }
 
-// Gets called after resizing the extent box
-- (void)userResizableViewDidEndEditing:(SPUserResizableView *)userResizableView
-{
-    AGSEnvelope *testEnvelope = [self.mapView toMapEnvelope:userResizableView.frame];
-    self.lastResizableView = userResizableView;
-    AGSLOD* bestLOD = [self bestFitLODForEnvelope:testEnvelope];
-    self.lodLabel.text = [[NSNumber numberWithInt:bestLOD.level] stringValue];
-    self.scaleLabel.text = [NSString stringWithFormat:@"Scale\n1:%@", [NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithInt:bestLOD.scale] numberStyle:NSNumberFormatterDecimalStyle]];
-    NSLog(@"%@",self.lodLabel.text);
+
+
+- (void)layer:(AGSLayer *)layer didFailToLoadWithError:(NSError *)error{
+    [[[UIAlertView alloc]initWithTitle:@"Error" message:[error localizedDescription] delegate:Nil cancelButtonTitle:nil otherButtonTitles:nil, nil] show];
+}
+
+- (void)layerDidLoad:(AGSLayer *)layer{
+    if (layer == self.tiledLayer) {
+        self.scaleStepper.value = 0;
+        self.scaleStepper.minimumValue = 0;
+        self.scaleStepper.maximumValue = self.tiledLayer.tileInfo.lods.count;
+        [self.mapView addObserver:self forKeyPath:@"mapScale" options:NSKeyValueObservingOptionNew context:NULL];
+    }
+}
+
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    self.estimateLabel.text = @"";
+    self.scaleLabel.text = @"";
+    self.lodLabel.text = @"";
+    self.estimateButton.enabled = NO;
+    self.downloadButton.enabled = NO;
+
+    
+    NSInteger index = [self.tiledLayer.mapServiceInfo.tileInfo.lods indexOfObject:self.tiledLayer.currentLOD];
+    self.scaleStepper.maximumValue = self.tiledLayer.tileInfo.lods.count - index;
+    self.scaleStepper.minimumValue = 0;
+    self.scaleStepper.value = 0;
 }
 
 - (AGSLOD*) bestFitLODForEnvelope:(AGSEnvelope*)env{
@@ -127,50 +102,35 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)changeLODs:(id)sender
+- (IBAction)changeLevels:(id)sender
 {
-    self.offlineOnlineControl.enabled = YES;
     self.estimateButton.enabled = YES;
     self.downloadButton.enabled = YES;
+    self.scaleStepper.minimumValue = 1;
     
-    AGSMapServiceInfo *mapServiceInfo = self.tiledLayer.mapServiceInfo;    
-    AGSLOD * lastLod = [mapServiceInfo.tileInfo.lods objectAtIndex:mapServiceInfo.tileInfo.lods.count-1];
-    
-    UIStepper *stepper = (UIStepper*)sender;
-    if (stepper.value < 0 )
-        return;
-    if ( stepper.value > lastLod.level ) {
-        stepper.value = lastLod.level;
-        return;
-    }
-    
-    self.lastLod = stepper.value;
-    
-    AGSLOD * lod = [mapServiceInfo.tileInfo.lods objectAtIndex:stepper.value];
-    self.lodLabel.text = [[NSNumber numberWithInt:stepper.value] stringValue];
-    self.scaleLabel.text = [NSString stringWithFormat:@"Scale\n1:%@", [NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithInt:lod.scale] numberStyle:NSNumberFormatterDecimalStyle]];
+    AGSLOD * lod = [self.tiledLayer.mapServiceInfo.tileInfo.lods objectAtIndex:self.scaleStepper.value];
+    self.lodLabel.text = [[NSNumber numberWithInt:self.scaleStepper.value] stringValue];
+    self.scaleLabel.text = [NSString stringWithFormat:@"1:%@\n  to\n1:%@", [NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithInt:self.tiledLayer.currentLOD.scale] numberStyle:NSNumberFormatterDecimalStyle],[NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithInt:lod.scale] numberStyle:NSNumberFormatterDecimalStyle]];
 }
-- (IBAction)calculateSize:(id)sender
+
+- (IBAction)estimateAction:(id)sender
 {
-    [self hideGrayBox];
     
     NSArray *arrayLods = [self generateLods];
     NSLog(@"LODs %@", arrayLods);
     
-    AGSEnvelope *extent = [self.mapView toMapEnvelope:self.lastResizableView.frame];
-    NSLog(@"Box Test %@ Extent %@", self.lastResizableView, extent);
+    AGSEnvelope *extent = [self.mapView visibleAreaEnvelope];
     
     
     AGSExportTileCacheParams *params = [[AGSExportTileCacheParams alloc] initWithLevelsOfDetail:arrayLods areaOfInterest:extent];
 
-    [self showOverlay];
+    [SVProgressHUD showWithStatus:@"Estimating\n size" maskType:SVProgressHUDMaskTypeGradient];
     [self.tileCacheTask estimateTileCacheSizeWithParameters:params status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
         NSLog(@"%@, %@", AGSResumableTaskJobStatusAsString(status) ,userInfo);
     } completion:^(AGSExportTileCacheSizeEstimate *tileCacheSizeEstimate, NSError *error) {
-        [self hideOverlay];
-        [self showGrayBox];
         if ( error != nil) {
             [[[UIAlertView alloc]initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+            [SVProgressHUD dismiss];
         }else{
             NSNumberFormatter* tileCountFormatter = [[NSNumberFormatter alloc]init];
             [tileCountFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -181,8 +141,7 @@
             NSByteCountFormatter* byteCountFormatter = [[NSByteCountFormatter alloc]init];
             NSString* byteCountString = [byteCountFormatter stringFromByteCount:tileCacheSizeEstimate.fileSize];
             self.estimateLabel.text = [[NSString alloc] initWithFormat:@"%@  / %@ tiles", byteCountString, tileCountString];
-            self.statusLabel.text = @"Done";
-            
+            [SVProgressHUD showSuccessWithStatus:[[NSString alloc] initWithFormat:@"%@  / %@ tiles", byteCountString, tileCountString]];
         
         }
 
@@ -190,73 +149,45 @@
     
 }
 
-- (IBAction)cancelAll:(id)sender {
-    
-    [self.operationToCancel cancel];
-    
-    [self hideOverlay];
-}
 
-- (IBAction)download:(id)sender
+
+- (IBAction)downloadAction:(id)sender
 {
-    [self hideGrayBox];
     
     NSArray *arrayLods = [self generateLods];
     NSLog(@"LODs to be requested for the cache : %@", arrayLods);
     
     // Get the map coordinate extent from view control
-    AGSEnvelope *extent = [self.mapView toMapEnvelope:self.lastResizableView.frame];
+    AGSEnvelope *extent = [self.mapView visibleAreaEnvelope];
     
     AGSExportTileCacheParams *params = [[AGSExportTileCacheParams alloc] initWithLevelsOfDetail:arrayLods areaOfInterest:extent];
 
-    [self showOverlay];
     self.estimateLabel.text = @"";
+    [SVProgressHUD showWithStatus:@"Preparing\n to download" maskType:SVProgressHUDMaskTypeGradient];
     
     self.operationToCancel = [self.tileCacheTask exportTileCacheWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
           NSLog(@"%@, %@", AGSResumableTaskJobStatusAsString(status) ,userInfo);
         NSArray *allMessages =  [userInfo objectForKey:@"messages"];
         
-        if ( allMessages.count > 0) {
-            NSString *gpDescription = [[allMessages objectAtIndex:allMessages.count-1 ] description];
-            self.statusLabel.text = [self parseMessagesDescription:gpDescription];
-            
-            if ( allMessages.count>1) {
-                AGSGPMessage *detailsMessages = [allMessages objectAtIndex:allMessages.count-2 ];
-                
-                NSLog(@"Percentage %@", detailsMessages.description);
-                
-                double dPercentage = [self parsePercentage:detailsMessages.description];
-                if (dPercentage > 0 )
-                {
-                    self.progressBar.hidden = NO;
-                    self.percentageValue.hidden = NO;
-                    self.percentageValue.text = [[NSString alloc] initWithFormat:@"%d%%", (int)dPercentage  ];
-                    [self.progressBar setProgress:dPercentage/100 animated:YES];
-                }
-            }
-        }
-        
         if (status == AGSResumableTaskJobStatusFetchingResult) {
             NSNumber* totalBytesDownloaded = userInfo[@"AGSDownloadProgressTotalBytesDownloaded"];
             NSNumber* totalBytesExpected = userInfo[@"AGSDownloadProgressTotalBytesExpected"];
             if(totalBytesDownloaded!=nil && totalBytesExpected!=nil){
-                self.statusLabel.text = @"Downloading";
-                self.progressBar.hidden = NO;
-                self.percentageValue.hidden = NO;
                 double dPercentage = (double)([totalBytesDownloaded doubleValue]/[totalBytesExpected doubleValue]);
-                self.percentageValue.text = [[NSString alloc] initWithFormat:@"%d%%", (int)(dPercentage*100) ];
-                [self.progressBar setProgress:dPercentage animated:NO];
+                [SVProgressHUD showProgress:dPercentage status:@"Downloading" maskType:SVProgressHUDMaskTypeGradient];
             }
+        }else if ( allMessages.count) {
+            [SVProgressHUD showWithStatus:[MessageHelper extractMostRecentMessage:allMessages] maskType:SVProgressHUDMaskTypeGradient];
         }
         
+        
     } completion:^(AGSLocalTiledLayer *localTiledLayer, NSError *error) {
+        [SVProgressHUD dismiss];
         if (error){
             [[[UIAlertView alloc]initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
             self.estimateLabel.text = @"";
-            [self hideOverlay];
         }
         else{
-            [self hideOverlay];
             [self.mapView reset];
             [self.mapView addMapLayer:localTiledLayer withName:@"offline"];
             [self.mapView zoomToEnvelope:localTiledLayer.fullEnvelope animated:NO];
@@ -264,127 +195,32 @@
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Download complete" message:@"The tile cache has been added to the map." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
             
+            [[self.floatingView subviews]
+             makeObjectsPerformSelector:@selector(removeFromSuperview)];
+            
             [BackgroundHelper postLocalNotificationIfAppNotActive:@"Tile cache downloaded."];
         }
     }];
 }
 
-- (IBAction)goOfflineOnline:(id)sender {
-    
-    UISegmentedControl *offlineOnline = (UISegmentedControl*) sender;
-    //Online
-    if ( offlineOnline.selectedSegmentIndex == 0 )
-    {
-        AGSEnvelope *currentEnvelope = self.mapView.visibleAreaEnvelope;
-        [self.mapView reset];
-        [self.mapView addMapLayer:self.tiledLayer withName:@"World Street Map"];
-        [self.mapView zoomToEnvelope:currentEnvelope animated:NO];
-        
-        [self hideGrayBox];
-    }
-    // Offline
-    else{
-        [self showGrayBox];
-    }
-}
 
 
 - (NSArray*) generateLods
 {
     
-    // Get the map coordinate extent from view control
-    AGSEnvelope *extent = [self.mapView toMapEnvelope:self.lastResizableView.frame];
-    
-    double mapWidth = [self.mapView toScreenRect:extent].size.width;
-    double extentResolution = (extent.width / mapWidth);
-    
-    AGSMapServiceInfo *mapServiceInfo = self.tiledLayer.mapServiceInfo;
-   
-    double startLod = 0;
-    for ( int i=0; i < mapServiceInfo.tileInfo.lods.count; i++ ) {
-        AGSLOD * tempLod = [mapServiceInfo.tileInfo.lods objectAtIndex:i];
-        NSLog(@" Lod resolution %f and target resolution %f", tempLod.resolution, extentResolution);
-        if ( tempLod.resolution <= extentResolution) {
-            startLod = tempLod.level;
-            break;
-        }
-    }
-    
+    AGSLOD* displayedLOD  = self.tiledLayer.currentLOD;
+    NSInteger index = [self.tiledLayer.mapServiceInfo.tileInfo.lods indexOfObject:displayedLOD];
+    NSRange range = NSMakeRange( index, self.scaleStepper.value );
+    NSArray *lods = [self.tiledLayer.mapServiceInfo.tileInfo.lods subarrayWithRange: range];
     NSMutableArray *arrayLods = [[NSMutableArray alloc] init];
-    for (int i=0/*startLod*/; i <= self.lastLod; i++) {
-        [arrayLods addObject:[NSString stringWithFormat:@"%d", (int)(startLod+i)]];
+    for (AGSLOD* lod  in lods) {
+        [arrayLods addObject:[NSNumber numberWithInteger:lod.level]];
     }
     
     return arrayLods;
-}
-
-- (void) showGrayBox
-{
-    // Enable the rest
-    self.floatingView.hidden = NO;
-    self.lastResizableView.hidden = NO;
-    self.lastResizableView.hidden = NO;
     
-    //if ( [[UIScreen mainScreen] bounds].size.height > 500) {
-   //     self.floatingView.frame = CGRectMake(self.floatingView.frame.origin.x, (self.view.frame.size.height+self.view.frame.origin.y)-self.floatingView.frame.size.height, self.floatingView.frame.size.width, self.floatingView.frame.size.height);
-    //}
+
 }
 
-- (void) hideGrayBox
-{
-    // Disable the rest
-    self.floatingView.hidden = YES;
-    self.lastResizableView.hidden = YES;
-    self.lastResizableView.hidden = YES;
-}
-
-- (void) showOverlay
-{
-    self.overlay.hidden = NO;
-    self.progressBar.hidden = YES;
-    self.percentageValue.hidden = YES;
-    [self.activity startAnimating];
-    self.statusLabel.text = @"Starting...";
-    
-//    if ( [[UIScreen mainScreen] bounds].size.height > 500) {
-//        self.overlay.frame = CGRectMake(self.overlay.frame.origin.x, (self.view.frame.size.height+self.view.frame.origin.x)-self.overlay.frame.size.height, self.overlay.frame.size.width, self.overlay.frame.size.height);
-//    }
-
-    
-}
-
-- (void) hideOverlay
-{
-    self.overlay.hidden = YES;
-    self.progressBar.hidden = YES;
-    self.percentageValue.hidden = YES;
-    [self.activity stopAnimating];
-        
-}
-
-- (double) parsePercentage:(NSString*)percentageString
-{
-    NSRange range = [percentageString rangeOfString:@"Finished:: "];
-    if ( range.length > 0) {
-        NSString *substring = [percentageString substringFromIndex:NSMaxRange(range)];
-        substring = [substring stringByReplacingOccurrencesOfString:@" percent"
-                                             withString:@""];
-        
-        return [substring doubleValue];
-    }
-    return 0;
-}
-
-- (NSString *) parseMessagesDescription:(NSString*)description
-{
-    NSRange range = [description rangeOfString:@"description:"];
-    if ( range.length > 0 )
-    {
-        NSString *substring = [description substringFromIndex:NSMaxRange(range)];        
-        return substring;
-    }
-    
-    return description;
-}
 
 @end

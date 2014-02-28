@@ -346,7 +346,7 @@
     //kick off the sync operation
     self.cancellable = [self.gdbTask syncGeodatabase:self.geodatabase params:param status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
         [self logStatus:[NSString stringWithFormat:@"sync status: %@", [self statusMessageForAsyncStatus:status]]];
-    } completion:^(NSArray* syncEditErrors, NSError *syncError) {
+    } completion:^(AGSGDBEditErrors* editErrors, NSError *syncError) {
         self.cancellable = nil;
         if (syncError){
             [self logStatus:[NSString stringWithFormat:@"error sync'ing: %@", syncError]];

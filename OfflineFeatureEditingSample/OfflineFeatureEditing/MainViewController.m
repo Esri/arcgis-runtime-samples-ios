@@ -406,8 +406,11 @@
 -(void)switchToLiveData{
     
     _goingLive = YES;
-    
     [self logStatus:@"loading live data"];
+
+    //Clear out the template picker so that we create it again when needed using templates in the live data
+    _featureTemplatePickerVC = nil;
+
 
     self.gdbTask = [[AGSGDBSyncTask alloc]initWithURL:[NSURL URLWithString:kFeatureServiceURL]];
     __weak MainViewController* weakSelf = self;
@@ -446,6 +449,11 @@
 -(void)switchToLocalData{
     
     _goingLocal = YES;
+    
+    //Clear out the template picker so that we create it again when needed using templates in the local data
+    _featureTemplatePickerVC = nil;
+
+    
     AGSGDBGenerateParameters *params = [[AGSGDBGenerateParameters alloc]initWithFeatureServiceInfo:self.gdbTask.featureServiceInfo];
     
     //NOTE: You should typically set this to a smaller envelope covering an area of interest

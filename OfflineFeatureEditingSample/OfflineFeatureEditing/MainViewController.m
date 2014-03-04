@@ -30,7 +30,6 @@
     NSString *_replicaJobId;
     AGSPopupsContainerViewController *_popupsVC;
     AGSSketchGraphicsLayer *_sgl;
-    AGSGDBFeature *_addFeature;
     
     JSBadgeView* _badge;
     LoadingView* _loadingView;
@@ -405,6 +404,7 @@
 
 -(void)switchToLiveData{
     
+    _featureTemplatePickerVC = nil;
     _goingLive = YES;
     
     [self logStatus:@"loading live data"];
@@ -445,6 +445,7 @@
 }
 -(void)switchToLocalData{
     
+    _featureTemplatePickerVC = nil;
     _goingLocal = YES;
     AGSGDBGenerateParameters *params = [[AGSGDBGenerateParameters alloc]initWithFeatureServiceInfo:self.gdbTask.featureServiceInfo];
     
@@ -550,7 +551,6 @@
         }else if([layer isKindOfClass:[AGSGDBFeatureTable class]]){
             AGSGDBFeatureTable* fTable = (AGSGDBFeatureTable*) layer;
             AGSGDBFeature* feature = [fTable featureWithTemplate:template];
-            _addFeature = feature;
             AGSPopupInfo *pi = [AGSPopupInfo popupInfoForGDBFeatureTable:fTable];
             AGSPopup *p = [[AGSPopup alloc]initWithGDBFeature:feature popupInfo:pi];
             [self showPopupsVCForPopups:@[p]];
@@ -570,7 +570,6 @@
             }else if([layer isKindOfClass:[AGSGDBFeatureTable class]]){
                 AGSGDBFeatureTable* fTable = (AGSGDBFeatureTable*) layer;
                 AGSGDBFeature* feature = [fTable featureWithTemplate:template];
-                _addFeature = feature;
                 AGSPopupInfo *pi = [AGSPopupInfo popupInfoForGDBFeatureTable:fTable];
                 AGSPopup *p = [[AGSPopup alloc]initWithGDBFeature:feature popupInfo:pi];
                 [self showPopupsVCForPopups:@[p]];

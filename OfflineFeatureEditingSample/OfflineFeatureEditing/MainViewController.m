@@ -404,7 +404,6 @@
 
 -(void)switchToLiveData{
     
-    _featureTemplatePickerVC = nil;
     _goingLive = YES;
     [self logStatus:@"loading live data"];
 
@@ -448,7 +447,6 @@
 }
 -(void)switchToLocalData{
     
-    _featureTemplatePickerVC = nil;
     _goingLocal = YES;
     
     //Clear out the template picker so that we create it again when needed using templates in the local data

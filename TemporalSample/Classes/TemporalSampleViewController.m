@@ -42,7 +42,7 @@
 						   [NSURL URLWithString:kFeatureServiceURL] mode:AGSFeatureLayerModeSnapshot];
 	_featureLyr.outFields = [NSArray arrayWithObject:@"*"];
 	_featureLyr.calloutDelegate = self;
-//	[self.mapView addMapLayer:_featureLyr withName:@"Earthquakes Layer"];
+	[self.mapView addMapLayer:_featureLyr withName:@"Earthquakes Layer"];
 
     
     AGSDynamicMapServiceLayer* dy = [AGSDynamicMapServiceLayer dynamicMapServiceLayerWithURL:[NSURL URLWithString:@"http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Earthquakes/EarthquakesFromLastSevenDays/MapServer"]];

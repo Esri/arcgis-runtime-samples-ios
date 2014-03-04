@@ -47,7 +47,7 @@
     if(!self.infos)
         self.infos = [[NSMutableArray alloc] init];
     
-    if(source.types!=nil){
+    if(source.types!=nil && source.types.count){
         //For each type
         for (AGSFeatureType* type in source.types) {
             //For each template in type

@@ -2,21 +2,18 @@ arcgis-runtime-samples-ios
 ==========================
 This repository contains sample code demonstrating the capabilities of [ArcGIS Runtime SDK for iOS](http://developers.arcgis.com/en/ios/). Each sample is an entire project that can be opened in XCode and instantly run on a simulator or a device.
 
-The ```master``` branch of this repository contains samples configured for the latest available version of ArcGIS Runtime SDK for iOS. Older versions of the samples are available in separate branches containing version numbers.
+The ```master``` branch of this repository contains samples configured for the latest available version of [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/en/ios/). For samples configured for older versions of the SDK,  look under the ```tags``` for the version needed.
 
 ## Requirements
 * XCode 5 (or higher)
 * iOS 7 SDK (or higher)
-* [ArcGIS Runtime SDK for iOS 10.2](https://developers.arcgis.com/en/ios/) (Requires ArcGIS for Developers account; free to sign up)
+* [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/en/ios/) (Requires ArcGIS for Developers account; free to sign up)
 
 ## Instructions
 
 1. Get the code in this repository. Don't know how? [Get started here.](http://htmlpreview.github.com/?https://github.com/Esri/esri.github.com/blob/master/help/esri-getting-to-know-github.html)
 1. Double-click the ```AllSamples.xcworkspace``` file to open all projects together in a single XCode window, or alternatively, double-click an individual project's ```.xcodeproj``` file to open it separately.
 1. Choose a Target and Device/Simulator combination from the Scheme menu and hit Run to run the sample application. 
-
-
-
 
 
 ##Additional Resources

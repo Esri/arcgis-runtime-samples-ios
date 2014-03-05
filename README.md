@@ -2,7 +2,7 @@ arcgis-runtime-samples-ios
 ==========================
 This repository contains sample code demonstrating the capabilities of [ArcGIS Runtime SDK for iOS](http://developers.arcgis.com/en/ios/). Each sample is an entire project that can be opened in XCode and instantly run on a simulator or a device.
 
-The ```master``` branch of this repository contains samples configured for the latest available version of [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/en/ios/). For samples configured for older versions of the SDK,  look under the ```tags``` for the version needed.
+The ```master``` branch of this repository contains samples configured for the latest available version of [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/en/ios/). For samples configured for older versions of the SDK,  look under the ```Releases``` tab for a specific version.
 
 ## Requirements
 * XCode 5 (or higher)

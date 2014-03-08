@@ -221,8 +221,9 @@ didFetchPopups:(NSArray *)popups
 
 #pragma mark - AGSPopupsContainerDelegate edit methods
 
-- (AGSGeometry *)popupsContainer:(id<AGSPopupsContainer>)popupsContainer
- wantsNewMutableGeometryForPopup:(AGSPopup *)popup {
+-(void)popupsContainer:(id<AGSPopupsContainer>)popupsContainer
+   readyToEditGeometry:(AGSGeometry*)geometry
+              forPopup:(AGSPopup*)popup {
     
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Not Implemented"
                                                  message:@"This sample only demonstrates how to display popups. It does not implement editing or deleting features. Please refer to the Feature Layer Editing Sample instead."
@@ -231,7 +232,7 @@ didFetchPopups:(NSArray *)popups
                                        otherButtonTitles:nil];
     
     [av show];
-    return nil;
+    
     
 }
 

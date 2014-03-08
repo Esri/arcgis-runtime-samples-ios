@@ -160,7 +160,9 @@
     
 }
 
-- (void)webMap:(AGSWebMap *)webMap didFetchPopups:(NSArray *)popups forExtent:(AGSEnvelope *)extent{
+- (void)webMap:(AGSWebMap *)webMap
+didFetchPopups:(NSArray *)popups
+     forExtent:(AGSEnvelope *)extent{
     // If we've found one or more popups
     if (popups.count > 0) {
         
@@ -227,10 +229,28 @@
     
 }
 
-- (void) popupsContainer:		(id< AGSPopupsContainer >) 	popupsContainer
-didStartEditingGraphicForPopup:		(AGSPopup *) 	popup {
+
+#pragma mark - AGSPopupsContainerDelegate edit methods
+
+- (AGSGeometry *)popupsContainer:(id<AGSPopupsContainer>)popupsContainer
+ wantsNewMutableGeometryForPopup:(AGSPopup *)popup {
+    
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Not Implemented"
-                                                 message:@"This sample only demonstrates how to display popups. It does not allow you to edit or delete features. Please refer to the Feature Layer Editing Sample instead."
+                                                 message:@"This sample only demonstrates how to display popups. It does not implement editing or deleting features. Please refer to the Feature Layer Editing Sample instead."
+                                                delegate:self
+                                       cancelButtonTitle:@"OK"
+                                       otherButtonTitles:nil];
+    
+    [av show];
+    return nil;
+    
+}
+
+- (void) popupsContainer:(id<AGSPopupsContainer>)popupsContainer
+didFinishEditingForPopup:(AGSPopup *)popup {
+    
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Not Implemented"
+                                                 message:@"This sample only demonstrates how to display popups. It does not implement editing or deleting features. Please refer to the Feature Layer Editing Sample instead."
                                                 delegate:self
                                        cancelButtonTitle:@"OK"
                                        otherButtonTitles:nil];
@@ -238,8 +258,9 @@ didStartEditingGraphicForPopup:		(AGSPopup *) 	popup {
     [av show];
 }
 
-- (void) popupsContainer:		(id< AGSPopupsContainer >) 	popupsContainer
-wantsToDeleteGraphicForPopup:		(AGSPopup *) 	popup {
+- (void) popupsContainer:(id< AGSPopupsContainer >)popupsContainer
+wantsToDeleteForPopup:(AGSPopup *) popup {
+    
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Not Implemented"
                                                  message:@"This sample only demonstrates how to display popups. It does not allow you to edit or delete features. Please refer to the Feature Layer Editing Sample instead."
                                                 delegate:self

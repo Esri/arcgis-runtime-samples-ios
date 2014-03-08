@@ -184,12 +184,16 @@ didFetchPopups:(NSArray *)popups
         
     }
 }
+
 - (void) webMap:(AGSWebMap *)webMap didFinishFetchingPopupsForExtent:(AGSEnvelope *)extent{
     if(self.popupVC){
-        if ([[AGSDevice currentDevice] isIPad])
+        if ([[AGSDevice currentDevice] isIPad]){
             [self.activityIndicator stopAnimating];
-        else
+            self.popupVC.actionButton = self.popupVC.defaultActionButton;
+        }
+        else {
             self.mapView.callout.detail = @"";
+        }
         
     }else{
         [self.activityIndicator stopAnimating];

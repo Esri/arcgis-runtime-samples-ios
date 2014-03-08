@@ -20,7 +20,6 @@
 
 @property (nonatomic, strong) AGSWebMap *webMap;
 @property (nonatomic, strong) NSString *webMapId;
-@property (nonatomic, strong) NSMutableArray *queryableLayers;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) AGSPopupsContainerViewController *popupVC;
 
@@ -44,7 +43,6 @@
     self.webMap = nil;
     self.mapView = nil;
     self.webMapId = nil;
-    self.queryableLayers = nil;
     self.popupVC = nil;
     self.activityIndicator = nil;
     
@@ -129,15 +127,6 @@
 }
 
 
--(void) didLoadLayer:(AGSLayer *)layer {
-    
-    //Compose a list of dynamic and map service layers in the webmap
-    //for which we want to find popups
-    //Popups for feature layer will always be found regardless of this list
-    if([layer isKindOfClass:[AGSDynamicMapServiceLayer class]] || [layer isKindOfClass:[AGSTiledMapServiceLayer class]])
-        [self.queryableLayers addObject:layer];
-    
-}
 
 
 -(void)didFailToLoadLayer:(NSString*)layerTitle url:(NSURL*)url baseLayer:(BOOL)baseLayer withError:(NSError*)error{

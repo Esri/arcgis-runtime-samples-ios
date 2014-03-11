@@ -122,7 +122,6 @@
     
     //update the graphic & callout location as user moves tap&hold
     [(AGSGraphic*)[self.graphicsLayer graphics][0] setGeometry:mappoint];
-    [self.mapView.callout showCalloutAt:mappoint screenOffset:_magnifierOffset  animated:NO];
     
     //reverse-geocode new location
     [self.locator addressForLocation:mappoint maxSearchDistance:25];
@@ -268,6 +267,9 @@
 }
 
 -(void)locator:(AGSLocator *)locator operation:(NSOperation *)op didFindAddressForLocation:(AGSAddressCandidate *)candidate{
+    //display callout
+    [self.mapView.callout showCalloutAt:candidate.location screenOffset:_magnifierOffset  animated:NO];
+
     //show the Street, City, and ZIP attributes in the callout
     self.mapView.callout.title = candidate.attributes[@"Street"];
     self.mapView.callout.detail =  [candidate.attributes[@"City"] stringByAppendingFormat:@", %@",candidate.attributes[@"ZIP"]];
@@ -276,9 +278,8 @@
 }
 
 -(void) locator:(AGSLocator *)locator operation:(NSOperation *)op didFailAddressForLocation:(NSError *)error{
-    self.mapView.callout.title = @"Address not available";
-    self.mapView.callout.detail = @"";
-    [self.graphicsLayer.graphics[0] setAttributes:nil];
+    //dismiss the callout because we don't have an address to display
+    [self.mapView.callout dismiss];
 }
 
 #pragma mark _

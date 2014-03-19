@@ -7,26 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E36334518DA125200F39DA1 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E36334418DA125200F39DA1 /* Main_iPhone.storyboard */; };
 		C56B3F4614C60031003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B3F4514C60031003A46EB /* ArcGIS.bundle */; };
 		C56C52061512C4B800C64597 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C52041512C4B800C64597 /* SettingsViewController.m */; };
-		C56C52071512C4B800C64597 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56C52051512C4B800C64597 /* SettingsViewController.xib */; };
 		C57F6E2013F5A74000DAE553 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C57F6E1E13F5A74000DAE553 /* InfoPlist.strings */; };
 		C57F6E2313F5A74000DAE553 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C57F6E2213F5A74000DAE553 /* main.m */; };
 		C57F6E2613F5A74000DAE553 /* AsynchronousGPSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C57F6E2513F5A74000DAE553 /* AsynchronousGPSampleAppDelegate.m */; };
 		C57F6E2913F5A74000DAE553 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57F6E2713F5A74000DAE553 /* MainWindow.xib */; };
 		C57F6E2E13F5A74000DAE553 /* AsynchronousGPSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C57F6E2D13F5A74000DAE553 /* AsynchronousGPSampleViewController.m */; };
-		C57F6E3113F5A74000DAE553 /* AsynchronousGPSampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57F6E2F13F5A74000DAE553 /* AsynchronousGPSampleViewController.xib */; };
 		C57F6E5E13F5AD0800DAE553 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C57F6E5C13F5AD0800DAE553 /* icon.png */; };
 		C57F6E5F13F5AD0800DAE553 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C57F6E5D13F5AD0800DAE553 /* icon@2x.png */; };
-		C57F6E6313F5AD1B00DAE553 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57F6E6113F5AD1B00DAE553 /* MainWindow-iPad.xib */; };
 		E976B61B1679EA1F00FBA4C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E976B61A1679EA1F00FBA4C9 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E36334418DA125200F39DA1 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		C56B3F4514C60031003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		C56C52031512C4B800C64597 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = AsynchronousGPSample/SettingsViewController.h; sourceTree = "<group>"; };
 		C56C52041512C4B800C64597 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = AsynchronousGPSample/SettingsViewController.m; sourceTree = "<group>"; };
-		C56C52051512C4B800C64597 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = AsynchronousGPSample/SettingsViewController.xib; sourceTree = "<group>"; };
 		C57F6E0713F5A74000DAE553 /* AsynchronousGPSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsynchronousGPSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57F6E1D13F5A74000DAE553 /* AsynchronousGPSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AsynchronousGPSample-Info.plist"; sourceTree = "<group>"; };
 		C57F6E1F13F5A74000DAE553 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -37,10 +35,8 @@
 		C57F6E2813F5A74000DAE553 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		C57F6E2C13F5A74000DAE553 /* AsynchronousGPSampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AsynchronousGPSampleViewController.h; path = AsynchronousGPSample/AsynchronousGPSampleViewController.h; sourceTree = "<group>"; };
 		C57F6E2D13F5A74000DAE553 /* AsynchronousGPSampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AsynchronousGPSampleViewController.m; path = AsynchronousGPSample/AsynchronousGPSampleViewController.m; sourceTree = "<group>"; };
-		C57F6E3013F5A74000DAE553 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AsynchronousGPSampleViewController.xib; sourceTree = "<group>"; };
 		C57F6E5C13F5AD0800DAE553 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		C57F6E5D13F5AD0800DAE553 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
-		C57F6E6213F5AD1B00DAE553 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "AsynchronousGPSample/iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		E976B61A1679EA1F00FBA4C9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E976B61C1679EB5600FBA4C9 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		E976B61E1679EB6000FBA4C9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -60,11 +56,8 @@
 		C57F6DFC13F5A74000DAE553 = {
 			isa = PBXGroup;
 			children = (
-				E976B61E1679EB6000FBA4C9 /* OpenGLES.framework */,
-				E976B61C1679EB5600FBA4C9 /* libc++.dylib */,
+				3E36334418DA125200F39DA1 /* Main_iPhone.storyboard */,
 				E976B61A1679EA1F00FBA4C9 /* Default-568h@2x.png */,
-				C56B3F4514C60031003A46EB /* ArcGIS.bundle */,
-				C57F6E6013F5AD1900DAE553 /* iPad */,
 				C57F6E1C13F5A74000DAE553 /* Supporting Files */,
 				C57F6E5313F5AAC000DAE553 /* Classes */,
 				C57F6E1B13F5A74000DAE553 /* iPhone */,
@@ -84,6 +77,9 @@
 		C57F6E0A13F5A74000DAE553 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C56B3F4514C60031003A46EB /* ArcGIS.bundle */,
+				E976B61E1679EB6000FBA4C9 /* OpenGLES.framework */,
+				E976B61C1679EB5600FBA4C9 /* libc++.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -116,22 +112,12 @@
 			children = (
 				C56C52031512C4B800C64597 /* SettingsViewController.h */,
 				C56C52041512C4B800C64597 /* SettingsViewController.m */,
-				C56C52051512C4B800C64597 /* SettingsViewController.xib */,
 				C57F6E2413F5A74000DAE553 /* AsynchronousGPSampleAppDelegate.h */,
 				C57F6E2513F5A74000DAE553 /* AsynchronousGPSampleAppDelegate.m */,
 				C57F6E2C13F5A74000DAE553 /* AsynchronousGPSampleViewController.h */,
 				C57F6E2D13F5A74000DAE553 /* AsynchronousGPSampleViewController.m */,
-				C57F6E2F13F5A74000DAE553 /* AsynchronousGPSampleViewController.xib */,
 			);
 			name = Classes;
-			sourceTree = "<group>";
-		};
-		C57F6E6013F5AD1900DAE553 /* iPad */ = {
-			isa = PBXGroup;
-			children = (
-				C57F6E6113F5AD1B00DAE553 /* MainWindow-iPad.xib */,
-			);
-			name = iPad;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,13 +172,11 @@
 			files = (
 				C57F6E2013F5A74000DAE553 /* InfoPlist.strings in Resources */,
 				C57F6E2913F5A74000DAE553 /* MainWindow.xib in Resources */,
-				C57F6E3113F5A74000DAE553 /* AsynchronousGPSampleViewController.xib in Resources */,
 				C57F6E5E13F5AD0800DAE553 /* icon.png in Resources */,
 				C57F6E5F13F5AD0800DAE553 /* icon@2x.png in Resources */,
-				C57F6E6313F5AD1B00DAE553 /* MainWindow-iPad.xib in Resources */,
 				C56B3F4614C60031003A46EB /* ArcGIS.bundle in Resources */,
-				C56C52071512C4B800C64597 /* SettingsViewController.xib in Resources */,
 				E976B61B1679EA1F00FBA4C9 /* Default-568h@2x.png in Resources */,
+				3E36334518DA125200F39DA1 /* Main_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,23 +211,6 @@
 				C57F6E2813F5A74000DAE553 /* en */,
 			);
 			name = MainWindow.xib;
-			sourceTree = "<group>";
-		};
-		C57F6E2F13F5A74000DAE553 /* AsynchronousGPSampleViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C57F6E3013F5A74000DAE553 /* en */,
-			);
-			name = AsynchronousGPSampleViewController.xib;
-			path = AsynchronousGPSample;
-			sourceTree = "<group>";
-		};
-		C57F6E6113F5AD1B00DAE553 /* MainWindow-iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C57F6E6213F5AD1B00DAE553 /* en */,
-			);
-			name = "MainWindow-iPad.xib";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

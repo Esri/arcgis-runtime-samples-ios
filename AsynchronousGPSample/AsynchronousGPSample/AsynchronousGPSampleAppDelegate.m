@@ -25,10 +25,6 @@
 {
     // Override point for customization after application launch.
     
-    [self.window setRootViewController:self.viewController];
-
-    
-    [self.window makeKeyAndVisible];
     return YES;
 }
 

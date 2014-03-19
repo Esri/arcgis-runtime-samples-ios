@@ -28,7 +28,7 @@
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
 {
-    return YES;
+    return NO;
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -60,7 +60,9 @@
     [self.mapView addMapLayer:self.graphicsLayer withName:@"ChemicalERG"];
     
     //preparing the Settings View Controller
-    self.settingsViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+    UIStoryboard *iphoneStoryboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:[NSBundle mainBundle]];
+    self.settingsViewController = [iphoneStoryboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
+//    self.settingsViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
     
     [super viewDidLoad];
     

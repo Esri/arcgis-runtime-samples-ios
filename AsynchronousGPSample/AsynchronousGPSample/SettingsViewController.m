@@ -1,3 +1,4 @@
+
 // Copyright 2011 ESRI
 //
 // All rights reserved under the copyright laws of the United States
@@ -18,16 +19,14 @@
 @synthesize materialArray = _materialArray, parameterDic = _parameterDic;
 @synthesize materialLabel = _materialLabel, timeSwitch = _timeSwitch, spillTypeSwitch = _spillTypeSwitch, materialPicker = _materialPicker;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
     if (self) {
         //initiating default paramenter dictionary
         self.parameterDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"Anhydrous ammonia", @"Material_Type", @"Day", @"Day_or_Night_incident", @"Large", @"Large_or_Small_spill", nil];
     }
     return self;
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -42,6 +41,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.materialArray = [NSMutableArray array];
     
     [self.materialArray addObject:@"Anhydrous ammonia"];

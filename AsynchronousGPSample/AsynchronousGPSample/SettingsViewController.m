@@ -1,3 +1,4 @@
+
 // Copyright 2011 ESRI
 //
 // All rights reserved under the copyright laws of the United States
@@ -15,19 +16,14 @@
 
 @implementation SettingsViewController
 
-@synthesize materialArray = _materialArray, parameterDic = _parameterDic;
-@synthesize materialLabel = _materialLabel, timeSwitch = _timeSwitch, spillTypeSwitch = _spillTypeSwitch, materialPicker = _materialPicker;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
     if (self) {
         //initiating default paramenter dictionary
         self.parameterDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"Anhydrous ammonia", @"Material_Type", @"Day", @"Day_or_Night_incident", @"Large", @"Large_or_Small_spill", nil];
     }
     return self;
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -42,6 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.materialArray = [NSMutableArray array];
     
     [self.materialArray addObject:@"Anhydrous ammonia"];
@@ -55,9 +52,13 @@
     [self.materialArray addObject:@"Hydrogen sulphide"];
     [self.materialArray addObject:@"Methyl bromide"];
     
-    //start with the default material
-    [self.materialPicker selectRow:0 inComponent:0 animated:YES];
-    self.materialLabel.text = [_materialArray objectAtIndex:0];   
+    //update view to show selected material
+    [self.materialPicker selectRow:[self.materialArray indexOfObject:self.parameters.materialType] inComponent:0 animated:YES];
+    self.materialLabel.text = self.parameters.materialType;
+    
+    //reflect the current selections
+    self.timeSwitch.selectedSegmentIndex = [self.parameters.dayOrNightIncident isEqualToString:@"Day"] ? 0 : 1;
+    self.spillTypeSwitch.selectedSegmentIndex = [self.parameters.largeOrSmallSpill isEqualToString:@"Large"] ? 0 : 1;
     
 }
 
@@ -95,7 +96,7 @@
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {    
     self.materialLabel.text = [self.materialArray objectAtIndex:row];
-    [self.parameterDic setObject:[self.materialArray objectAtIndex:[self.materialPicker selectedRowInComponent:0]] forKey:@"Material_Type"];
+    self.parameters.materialType = [self.materialArray objectAtIndex:row];
 }
 
 
@@ -103,9 +104,9 @@
 
 - (IBAction)spillTypeChanged:(id)sender {
     if(self.spillTypeSwitch.selectedSegmentIndex == 0)
-        [self.parameterDic setObject:@"Large" forKey:@"Large_or_Small_spill"];
+        self.parameters.largeOrSmallSpill = @"Large";
     else
-        [self.parameterDic setObject:@"Small" forKey:@"Large_or_Small_spill"];
+        self.parameters.largeOrSmallSpill = @"Small";
 }
 
 - (IBAction)done:(id)sender {
@@ -114,8 +115,8 @@
 
 - (IBAction)timeChanged:(id)sender {
     if(self.timeSwitch.selectedSegmentIndex == 0)
-        [self.parameterDic setObject:@"Day" forKey:@"Day_or_Night_incident"];
+        self.parameters.dayOrNightIncident = @"Day";
     else
-        [self.parameterDic setObject:@"Night" forKey:@"Day_or_Night_incident"];
+        self.parameters.dayOrNightIncident = @"Night";
 }
 @end

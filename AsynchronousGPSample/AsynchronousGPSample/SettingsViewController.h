@@ -11,20 +11,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Parameters.h"
 
 
-@interface SettingsViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource> {
-    
-    UILabel *_materialLabel;
-    UISegmentedControl *_timeSwitch;
-    UISegmentedControl *_spillTypeSwitch;
-    UIPickerView *_materialPicker;
-    
-    NSMutableArray *_materialArray;
-    NSMutableDictionary *_parameterDic;
-    
-
-}
+@interface SettingsViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray* materialArray;
 @property (nonatomic, strong) NSMutableDictionary *parameterDic;
@@ -34,6 +24,7 @@
 @property (nonatomic, strong) IBOutlet UISegmentedControl *spillTypeSwitch;
 @property (nonatomic, strong) IBOutlet UIPickerView *materialPicker;
 
+@property (nonatomic, strong) Parameters *parameters;
 
 - (IBAction)timeChanged:(id)sender;
 - (IBAction)spillTypeChanged:(id)sender;

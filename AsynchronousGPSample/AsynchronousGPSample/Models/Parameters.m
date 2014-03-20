@@ -1,9 +1,13 @@
+// Copyright 2011 ESRI
 //
-//  Parameters.m
-//  AsynchronousGPSample
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
 //
-//  Created by Gagandeep Singh on 3/20/14.
+// You may freely redistribute and use this sample code, with or
+// without modification, provided you include the original copyright
+// notice and use restrictions.
 //
+// See the use restrictions at http://help.arcgis.com/en/sdk/10.0/usageRestrictions.htm
 //
 
 #import "Parameters.h"
@@ -31,7 +35,7 @@
     AGSGPParameterValue *paramType = [AGSGPParameterValue parameterWithName:@"Large_or_Small_spill" type:AGSGPParameterTypeString value:self.largeOrSmallSpill];
     
     //add parameters to arrary
-	NSArray *params = [NSArray arrayWithObjects:paramloc, paramDegree, paramTime, paramType, paramMaterial, nil];
+	NSArray *params = @[paramloc, paramDegree, paramTime, paramType, paramMaterial];
     
     return params;
 }

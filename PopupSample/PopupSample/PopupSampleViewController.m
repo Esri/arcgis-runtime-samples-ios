@@ -103,7 +103,7 @@
 }
 
 #pragma mark - AGSWebMapDelegate methods
-- (void) webMapDidLoad:(AGSWebMap *)webMap {
+- (void) didOpenWebMap:(AGSWebMap *)webMap intoMapView:(AGSMapView *)mapView {
     if(![webMap hasPopupsDefined]){
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@""
                                                      message:@"This webmap does not have any popups"

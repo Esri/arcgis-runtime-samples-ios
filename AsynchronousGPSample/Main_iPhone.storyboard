@@ -111,7 +111,7 @@
                     <navigationItem key="navigationItem" title="Chemical ERG" id="vDM-Vj-9gv">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="Otp-27-P1E">
                             <connections>
-                                <action selector="openSettings:" destination="hqb-Sk-iwZ" id="lJo-6F-YOg"/>
+                                <segue destination="vEn-6b-ey5" kind="modal" identifier="SettingsSegue" id="65V-sb-teh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -139,7 +139,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hjw-gA-DvW">
-                                <rect key="frame" x="20" y="20" width="280" height="175"/>
+                                <rect key="frame" x="20" y="20" width="280" height="133"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Material Type:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Uc3-57-lfP">
@@ -164,35 +164,8 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Time:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="c4q-V0-luB">
-                                        <rect key="frame" x="41" y="70" width="43" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="43" id="Xlv-Lb-miM"/>
-                                            <constraint firstAttribute="height" constant="21" id="yy7-co-R8r"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="N9F-t6-7xn">
-                                        <rect key="frame" x="92" y="67" width="147" height="29"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="147" id="UT3-zv-brC"/>
-                                            <constraint firstAttribute="height" constant="28" id="zwf-Qc-AdZ"/>
-                                        </constraints>
-                                        <segments>
-                                            <segment title="Day"/>
-                                            <segment title="Night"/>
-                                        </segments>
-                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <action selector="timeChanged:" destination="vEn-6b-ey5" eventType="valueChanged" id="zAh-F9-Wx4"/>
-                                        </connections>
-                                    </segmentedControl>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Spill:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="QFf-0v-x33">
-                                        <rect key="frame" x="41" y="123" width="43" height="21"/>
+                                        <rect key="frame" x="41" y="88" width="43" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="43" id="Y4u-8d-JwD"/>
@@ -203,7 +176,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="apl-8a-Dd4">
-                                        <rect key="frame" x="92" y="120" width="147" height="29"/>
+                                        <rect key="frame" x="92" y="85" width="147" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="147" id="XTy-HW-GqJ"/>
@@ -218,27 +191,54 @@
                                             <action selector="spillTypeChanged:" destination="vEn-6b-ey5" eventType="valueChanged" id="ELY-LZ-LOa"/>
                                         </connections>
                                     </segmentedControl>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Time:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="c4q-V0-luB">
+                                        <rect key="frame" x="41" y="52" width="43" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="43" id="Xlv-Lb-miM"/>
+                                            <constraint firstAttribute="height" constant="21" id="yy7-co-R8r"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="N9F-t6-7xn">
+                                        <rect key="frame" x="92" y="49" width="147" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="147" id="UT3-zv-brC"/>
+                                            <constraint firstAttribute="height" constant="28" id="zwf-Qc-AdZ"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Day"/>
+                                            <segment title="Night"/>
+                                        </segments>
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="timeChanged:" destination="vEn-6b-ey5" eventType="valueChanged" id="zAh-F9-Wx4"/>
+                                        </connections>
+                                    </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Uc3-57-lfP" firstAttribute="top" secondItem="Hjw-gA-DvW" secondAttribute="top" constant="20" id="0VT-IA-UOS"/>
-                                    <constraint firstItem="N9F-t6-7xn" firstAttribute="top" secondItem="m3P-tF-HpS" secondAttribute="bottom" constant="26" id="5vS-8v-2aa"/>
+                                    <constraint firstItem="N9F-t6-7xn" firstAttribute="top" secondItem="m3P-tF-HpS" secondAttribute="bottom" constant="8" id="5vS-8v-2aa"/>
                                     <constraint firstItem="apl-8a-Dd4" firstAttribute="leading" secondItem="QFf-0v-x33" secondAttribute="trailing" constant="8" id="6IS-Yr-fFo"/>
                                     <constraint firstItem="N9F-t6-7xn" firstAttribute="leading" secondItem="c4q-V0-luB" secondAttribute="trailing" constant="8" id="Ksx-1p-ZX1"/>
-                                    <constraint firstAttribute="height" constant="175" id="N4S-l2-8z7"/>
-                                    <constraint firstItem="apl-8a-Dd4" firstAttribute="top" secondItem="N9F-t6-7xn" secondAttribute="bottom" constant="25" id="UAt-Le-NN9"/>
+                                    <constraint firstAttribute="height" constant="133" id="N4S-l2-8z7"/>
+                                    <constraint firstItem="apl-8a-Dd4" firstAttribute="top" secondItem="N9F-t6-7xn" secondAttribute="bottom" constant="8" id="UAt-Le-NN9"/>
                                     <constraint firstAttribute="width" constant="280" id="UfO-q0-L88"/>
                                     <constraint firstItem="QFf-0v-x33" firstAttribute="leading" secondItem="Hjw-gA-DvW" secondAttribute="leading" constant="41" id="aQp-Av-UgT"/>
                                     <constraint firstItem="c4q-V0-luB" firstAttribute="leading" secondItem="Hjw-gA-DvW" secondAttribute="leading" constant="41" id="c54-hL-3HB"/>
-                                    <constraint firstItem="c4q-V0-luB" firstAttribute="top" secondItem="Uc3-57-lfP" secondAttribute="bottom" constant="29" id="hiY-Dx-V1i"/>
-                                    <constraint firstItem="QFf-0v-x33" firstAttribute="top" secondItem="c4q-V0-luB" secondAttribute="bottom" constant="32" id="oSE-LC-7ly"/>
+                                    <constraint firstItem="c4q-V0-luB" firstAttribute="top" secondItem="Uc3-57-lfP" secondAttribute="bottom" constant="11" id="hiY-Dx-V1i"/>
+                                    <constraint firstItem="QFf-0v-x33" firstAttribute="top" secondItem="c4q-V0-luB" secondAttribute="bottom" constant="15" id="oSE-LC-7ly"/>
                                     <constraint firstItem="m3P-tF-HpS" firstAttribute="leading" secondItem="Uc3-57-lfP" secondAttribute="trailing" constant="-9" id="que-i1-jDu"/>
                                     <constraint firstItem="Uc3-57-lfP" firstAttribute="leading" secondItem="Hjw-gA-DvW" secondAttribute="leading" id="rux-oV-Hvb"/>
                                     <constraint firstItem="m3P-tF-HpS" firstAttribute="top" secondItem="Hjw-gA-DvW" secondAttribute="top" constant="20" id="wwY-si-las"/>
                                 </constraints>
                             </view>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uej-wr-mor">
-                                <rect key="frame" x="0.0" y="162" width="320" height="162"/>
+                                <rect key="frame" x="0.0" y="127" width="320" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="KNI-v2-S7F"/>
@@ -250,10 +250,9 @@
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJK-um-WMy">
-                                <rect key="frame" x="263" y="20" width="37" height="30"/>
+                                <rect key="frame" x="142" y="280" width="37" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="aEs-b7-d5G"/>
                                     <constraint firstAttribute="width" constant="37" id="r6d-hn-mA0"/>
                                 </constraints>
                                 <state key="normal" title="Done">
@@ -266,10 +265,10 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="SqZ-r7-OmS" firstAttribute="top" secondItem="yJK-um-WMy" secondAttribute="bottom" constant="-30" id="0ST-qn-6Lc"/>
                             <constraint firstAttribute="centerX" secondItem="uej-wr-mor" secondAttribute="centerX" id="4vF-kG-EuN"/>
-                            <constraint firstAttribute="trailing" secondItem="yJK-um-WMy" secondAttribute="trailing" constant="20" id="9g2-TJ-13E"/>
-                            <constraint firstItem="uej-wr-mor" firstAttribute="top" secondItem="Hjw-gA-DvW" secondAttribute="bottom" constant="-33" id="WuU-Ru-DIF"/>
+                            <constraint firstItem="yJK-um-WMy" firstAttribute="top" secondItem="uej-wr-mor" secondAttribute="bottom" constant="-9" id="Mqr-3g-RUQ"/>
+                            <constraint firstAttribute="centerX" secondItem="yJK-um-WMy" secondAttribute="centerX" constant="-0.5" id="Sv6-I4-fSF"/>
+                            <constraint firstItem="uej-wr-mor" firstAttribute="top" secondItem="Hjw-gA-DvW" secondAttribute="bottom" constant="-26" id="WuU-Ru-DIF"/>
                             <constraint firstItem="Hjw-gA-DvW" firstAttribute="top" secondItem="SqZ-r7-OmS" secondAttribute="bottom" id="tji-6j-x2a"/>
                             <constraint firstAttribute="centerX" secondItem="Hjw-gA-DvW" secondAttribute="centerX" id="wLn-wU-zPV"/>
                         </constraints>

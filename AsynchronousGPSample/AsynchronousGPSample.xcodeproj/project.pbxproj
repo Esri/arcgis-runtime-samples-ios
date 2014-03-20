@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3E36334518DA125200F39DA1 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E36334418DA125200F39DA1 /* Main_iPhone.storyboard */; };
+		3E36334A18DB484000F39DA1 /* Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E36334918DB484000F39DA1 /* Parameters.m */; };
 		C56B3F4614C60031003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B3F4514C60031003A46EB /* ArcGIS.bundle */; };
 		C56C52061512C4B800C64597 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C52041512C4B800C64597 /* SettingsViewController.m */; };
 		C57F6E2013F5A74000DAE553 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C57F6E1E13F5A74000DAE553 /* InfoPlist.strings */; };
 		C57F6E2313F5A74000DAE553 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C57F6E2213F5A74000DAE553 /* main.m */; };
 		C57F6E2613F5A74000DAE553 /* AsynchronousGPSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C57F6E2513F5A74000DAE553 /* AsynchronousGPSampleAppDelegate.m */; };
-		C57F6E2913F5A74000DAE553 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57F6E2713F5A74000DAE553 /* MainWindow.xib */; };
 		C57F6E2E13F5A74000DAE553 /* AsynchronousGPSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C57F6E2D13F5A74000DAE553 /* AsynchronousGPSampleViewController.m */; };
 		C57F6E5E13F5AD0800DAE553 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C57F6E5C13F5AD0800DAE553 /* icon.png */; };
 		C57F6E5F13F5AD0800DAE553 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C57F6E5D13F5AD0800DAE553 /* icon@2x.png */; };
@@ -22,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		3E36334418DA125200F39DA1 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
+		3E36334818DB484000F39DA1 /* Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parameters.h; path = AsynchronousGPSample/Models/Parameters.h; sourceTree = "<group>"; };
+		3E36334918DB484000F39DA1 /* Parameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Parameters.m; path = AsynchronousGPSample/Models/Parameters.m; sourceTree = "<group>"; };
 		C56B3F4514C60031003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		C56C52031512C4B800C64597 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = AsynchronousGPSample/SettingsViewController.h; sourceTree = "<group>"; };
 		C56C52041512C4B800C64597 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = AsynchronousGPSample/SettingsViewController.m; sourceTree = "<group>"; };
@@ -32,12 +34,11 @@
 		C57F6E2213F5A74000DAE553 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C57F6E2413F5A74000DAE553 /* AsynchronousGPSampleAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AsynchronousGPSampleAppDelegate.h; path = AsynchronousGPSample/AsynchronousGPSampleAppDelegate.h; sourceTree = "<group>"; };
 		C57F6E2513F5A74000DAE553 /* AsynchronousGPSampleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AsynchronousGPSampleAppDelegate.m; path = AsynchronousGPSample/AsynchronousGPSampleAppDelegate.m; sourceTree = "<group>"; };
-		C57F6E2813F5A74000DAE553 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		C57F6E2C13F5A74000DAE553 /* AsynchronousGPSampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AsynchronousGPSampleViewController.h; path = AsynchronousGPSample/AsynchronousGPSampleViewController.h; sourceTree = "<group>"; };
 		C57F6E2D13F5A74000DAE553 /* AsynchronousGPSampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AsynchronousGPSampleViewController.m; path = AsynchronousGPSample/AsynchronousGPSampleViewController.m; sourceTree = "<group>"; };
 		C57F6E5C13F5AD0800DAE553 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		C57F6E5D13F5AD0800DAE553 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
-		E976B61A1679EA1F00FBA4C9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E976B61A1679EA1F00FBA4C9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		E976B61C1679EB5600FBA4C9 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		E976B61E1679EB6000FBA4C9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -53,14 +54,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E36334618DB472100F39DA1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3E36334818DB484000F39DA1 /* Parameters.h */,
+				3E36334918DB484000F39DA1 /* Parameters.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		3E36334718DB481200F39DA1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C56C52031512C4B800C64597 /* SettingsViewController.h */,
+				C56C52041512C4B800C64597 /* SettingsViewController.m */,
+				C57F6E2C13F5A74000DAE553 /* AsynchronousGPSampleViewController.h */,
+				C57F6E2D13F5A74000DAE553 /* AsynchronousGPSampleViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		C57F6DFC13F5A74000DAE553 = {
 			isa = PBXGroup;
 			children = (
 				3E36334418DA125200F39DA1 /* Main_iPhone.storyboard */,
-				E976B61A1679EA1F00FBA4C9 /* Default-568h@2x.png */,
 				C57F6E1C13F5A74000DAE553 /* Supporting Files */,
 				C57F6E5313F5AAC000DAE553 /* Classes */,
-				C57F6E1B13F5A74000DAE553 /* iPhone */,
 				C57F6E0A13F5A74000DAE553 /* Frameworks */,
 				C57F6E0813F5A74000DAE553 /* Products */,
 			);
@@ -84,18 +103,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C57F6E1B13F5A74000DAE553 /* iPhone */ = {
-			isa = PBXGroup;
-			children = (
-				C57F6E2713F5A74000DAE553 /* MainWindow.xib */,
-			);
-			name = iPhone;
-			path = AsynchronousGPSample;
-			sourceTree = "<group>";
-		};
 		C57F6E1C13F5A74000DAE553 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E976B61A1679EA1F00FBA4C9 /* Default-568h@2x.png */,
 				C57F6E5C13F5AD0800DAE553 /* icon.png */,
 				C57F6E5D13F5AD0800DAE553 /* icon@2x.png */,
 				C57F6E1D13F5A74000DAE553 /* AsynchronousGPSample-Info.plist */,
@@ -110,12 +121,10 @@
 		C57F6E5313F5AAC000DAE553 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C56C52031512C4B800C64597 /* SettingsViewController.h */,
-				C56C52041512C4B800C64597 /* SettingsViewController.m */,
+				3E36334718DB481200F39DA1 /* Controllers */,
+				3E36334618DB472100F39DA1 /* Models */,
 				C57F6E2413F5A74000DAE553 /* AsynchronousGPSampleAppDelegate.h */,
 				C57F6E2513F5A74000DAE553 /* AsynchronousGPSampleAppDelegate.m */,
-				C57F6E2C13F5A74000DAE553 /* AsynchronousGPSampleViewController.h */,
-				C57F6E2D13F5A74000DAE553 /* AsynchronousGPSampleViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -171,7 +180,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C57F6E2013F5A74000DAE553 /* InfoPlist.strings in Resources */,
-				C57F6E2913F5A74000DAE553 /* MainWindow.xib in Resources */,
 				C57F6E5E13F5AD0800DAE553 /* icon.png in Resources */,
 				C57F6E5F13F5AD0800DAE553 /* icon@2x.png in Resources */,
 				C56B3F4614C60031003A46EB /* ArcGIS.bundle in Resources */,
@@ -187,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E36334A18DB484000F39DA1 /* Parameters.m in Sources */,
 				C57F6E2313F5A74000DAE553 /* main.m in Sources */,
 				C57F6E2613F5A74000DAE553 /* AsynchronousGPSampleAppDelegate.m in Sources */,
 				C57F6E2E13F5A74000DAE553 /* AsynchronousGPSampleViewController.m in Sources */,
@@ -203,14 +212,6 @@
 				C57F6E1F13F5A74000DAE553 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		C57F6E2713F5A74000DAE553 /* MainWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C57F6E2813F5A74000DAE553 /* en */,
-			);
-			name = MainWindow.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

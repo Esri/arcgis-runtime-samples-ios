@@ -18,27 +18,16 @@
 #define kGPTask @"http://sampleserver2.arcgisonline.com/ArcGIS/rest/services/PublicSafety/EMModels/GPServer/ERGByChemical"
 
 @interface AsynchronousGPSampleViewController : UIViewController 
-<AGSMapViewTouchDelegate, AGSGeoprocessorDelegate, UIAlertViewDelegate, AGSMapViewLayerDelegate> {
-    AGSMapView *_mapView;   
-	AGSGraphicsLayer *_graphicsLayer;
-	AGSGeoprocessor *_gpTask;
-    SettingsViewController *_settingsViewController;
-    
-    UISlider *_wdDegreeSlider;
-    UILabel *_wdDegreeLabel;
-    UILabel *_statusMsgLabel;
-}
+<AGSMapViewTouchDelegate, AGSGeoprocessorDelegate, UIAlertViewDelegate, AGSMapViewLayerDelegate> 
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
 @property (nonatomic, strong) AGSGraphicsLayer *graphicsLayer;
 @property (nonatomic, strong) AGSGeoprocessor *gpTask;
-@property (nonatomic, strong) SettingsViewController *settingsViewController;
 
 @property (nonatomic, strong) IBOutlet UISlider *wdDegreeSlider;
 @property (nonatomic, strong) IBOutlet UILabel *wdDegreeLabel;
 @property (nonatomic, strong) IBOutlet UILabel *statusMsgLabel;
 
-- (IBAction)openSettings:(id)sender;
 - (IBAction)degreeSliderChanged:(id)sender;
 
 @end

@@ -11,17 +11,19 @@
 //
 
 #import "AsynchronousGPSampleViewController.h"
+#import "Parameters.h"
 
 #define kBaseMap @"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
 #define kGPTask @"http://sampleserver2.arcgisonline.com/ArcGIS/rest/services/PublicSafety/EMModels/GPServer/ERGByChemical"
+#define kSettingsSegueName @"SettingsSegue"
+
+@interface AsynchronousGPSampleViewController ()
+
+@property (nonatomic, strong) Parameters *parameters;
+
+@end
 
 @implementation AsynchronousGPSampleViewController
-
-@synthesize mapView=_mapView;
-@synthesize graphicsLayer=_graphicsLayer;
-@synthesize gpTask =_gpTask;
-@synthesize settingsViewController = _settingsViewController;
-@synthesize wdDegreeLabel = _wdDegreeLabel, wdDegreeSlider = _wdDegreeSlider, statusMsgLabel = _statusMsgLabel;
 
 #pragma mark - View lifecycle
 
@@ -59,10 +61,8 @@
     
     [self.mapView addMapLayer:self.graphicsLayer withName:@"ChemicalERG"];
     
-    //preparing the Settings View Controller
-    UIStoryboard *iphoneStoryboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:[NSBundle mainBundle]];
-    self.settingsViewController = [iphoneStoryboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
-//    self.settingsViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+    //instantiate Parameter Object
+    self.parameters = [[Parameters alloc] init];
     
     [super viewDidLoad];
     
@@ -120,20 +120,17 @@
     //create a feature set for the input pareameter
 	AGSFeatureSet *featureSet = [[AGSFeatureSet alloc] init];
 	featureSet.features = [NSArray arrayWithObjects:agsGraphic, nil];
+
+    //assign the new feature set and wind direction values to the parameter object
+    self.parameters.featureSet = featureSet;
+    self.parameters.windDirection = [[NSDecimalNumber alloc] initWithDouble:self.wdDegreeSlider.value];
     
-    //create parameters
-	AGSGPParameterValue *paramloc = [AGSGPParameterValue parameterWithName:@"Incident_Point" type:AGSGPParameterTypeFeatureRecordSetLayer value:featureSet];
-	AGSGPParameterValue *paramDegree = [AGSGPParameterValue parameterWithName:@"Wind_Bearing__direction_blowing_to__0_-_360_" type:AGSGPParameterTypeDouble value:[NSNumber numberWithDouble:self.wdDegreeSlider.value]];
-    AGSGPParameterValue *paramMaterial = [AGSGPParameterValue parameterWithName:@"Material_Type" type:AGSGPParameterTypeString value:[NSString stringWithFormat:@"%@", [self.settingsViewController.parameterDic objectForKey:@"Material_Type"]]];
-    AGSGPParameterValue *paramTime = [AGSGPParameterValue parameterWithName:@"Day_or_Night_incident" type:AGSGPParameterTypeString value:[NSString stringWithFormat:@"%@", [self.settingsViewController.parameterDic objectForKey:@"Day_or_Night_incident"]]];
-    AGSGPParameterValue *paramType = [AGSGPParameterValue parameterWithName:@"Large_or_Small_spill" type:AGSGPParameterTypeString value:[NSString stringWithFormat:@"%@", [self.settingsViewController.parameterDic objectForKey:@"Large_or_Small_spill"]]];
-    
-    //add parameters to arrary
-	NSArray *params = [NSArray arrayWithObjects:paramloc, paramDegree, paramTime, paramType, paramMaterial, nil]; 
+    //get the parameters array from the parameters object
+    NSArray *parametersArray = [self.parameters parametersArray];
     
     //submit the gp job.
 	//the interval property of the gptask is not set to a value explicitly. default is 5 secs.
-    [self.gpTask submitJobWithParameters:params]; 
+    [self.gpTask submitJobWithParameters:parametersArray];
 }
 
 #pragma mark GeoprocessorDelegate
@@ -209,18 +206,6 @@
 
 #pragma mark Action Methods
 
-- (IBAction)openSettings:(id)sender {
-	
-	//if ipad show formsheet
-	if ([[AGSDevice currentDevice] isIPad]) {
-		self.settingsViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-	}
-	
-	//present settings view
-    self.settingsViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentViewController:self.settingsViewController animated:YES completion:nil];
-}
-
 - (IBAction)degreeSliderChanged:(id)sender {
 	
 	//show direction angle
@@ -231,6 +216,18 @@
 	
 	//show status
     self.statusMsgLabel.text = (NSString*) message;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:kSettingsSegueName]) {
+        SettingsViewController *controller = [segue destinationViewController];
+        controller.parameters = self.parameters;
+        
+        //if ipad show formsheet
+        if ([[AGSDevice currentDevice] isIPad]) {
+            controller.modalPresentationStyle = UIModalPresentationFormSheet;
+        }
+    }
 }
 
 @end

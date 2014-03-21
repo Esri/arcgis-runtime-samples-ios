@@ -20,7 +20,7 @@
 #define kClientID @"7BbmlX6v4hiNpUwj"
 
 //This is the key that will be used to store information in the keychain
-#define kKeyChainKey @"com.esri.LicenseYouSample"
+#define kKeyChainKey @"com.esri.LicenseOrgAccountSample"
 
 //This is the portal the user will sign in to
 #define kPortalUrl @"https://www.arcgis.com"

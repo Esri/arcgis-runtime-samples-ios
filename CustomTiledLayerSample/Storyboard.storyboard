@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="TKm-Kf-lkQ">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--Custom Layer View Controller-->
+        <scene sceneID="joL-CY-yLt">
+            <objects>
+                <viewController id="TKm-Kf-lkQ" customClass="CustomLayerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hl6-yw-BPd"/>
+                        <viewControllerLayoutGuide type="bottom" id="C15-sN-Y7F"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="hNh-aF-p9c">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thM-GQ-ChR" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                            </view>
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="TXa-ii-O6G">
+                                <rect key="frame" x="1" y="992" width="64" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="DYV-ID-QMk"/>
+                                    <constraint firstAttribute="height" constant="32" id="Q3C-qH-VM3"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TXa-ii-O6G" firstAttribute="leading" secondItem="hNh-aF-p9c" secondAttribute="leading" constant="1" id="AFK-qu-k3Y"/>
+                            <constraint firstItem="C15-sN-Y7F" firstAttribute="top" secondItem="TXa-ii-O6G" secondAttribute="bottom" id="NmL-d9-vKs"/>
+                            <constraint firstItem="C15-sN-Y7F" firstAttribute="top" secondItem="thM-GQ-ChR" secondAttribute="bottom" id="SM7-MT-Fpt"/>
+                            <constraint firstAttribute="centerY" secondItem="thM-GQ-ChR" secondAttribute="centerY" id="XOc-yN-6l2"/>
+                            <constraint firstAttribute="centerX" secondItem="thM-GQ-ChR" secondAttribute="centerX" id="jP3-Fv-Zfp"/>
+                            <constraint firstItem="thM-GQ-ChR" firstAttribute="leading" secondItem="hNh-aF-p9c" secondAttribute="leading" id="laJ-F0-LlC"/>
+                        </constraints>
+                        <simulatedMetricsInferredSentinel key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="thM-GQ-ChR" id="NXy-Ok-mcb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rn1-NN-Rby" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1990" y="-355"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="lightContent"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>

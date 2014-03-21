@@ -15,15 +15,9 @@
 
 @implementation CustomLayerAppDelegate
 
-@synthesize window;
-@synthesize viewController;
-
-
-- (void)applicationDidFinishLaunching:(UIApplication *)application {    
-    [window setRootViewController:viewController];
-    [window makeKeyAndVisible];
+-(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    return YES;
 }
-
 
 
 

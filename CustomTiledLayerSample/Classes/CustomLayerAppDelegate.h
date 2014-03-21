@@ -14,10 +14,7 @@
 
 @class CustomLayerViewController;
 
-@interface CustomLayerAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    CustomLayerViewController *viewController;
-}
+@interface CustomLayerAppDelegate : NSObject <UIApplicationDelegate> 
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
 @property (nonatomic, strong) IBOutlet CustomLayerViewController *viewController;

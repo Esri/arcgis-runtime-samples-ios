@@ -35,7 +35,7 @@
 
     if ([[LicenseHelper sharedLicenseHelper] savedInformationExists]) {
         //if the license helper has saved information, log in immediately
-        [self licenseButtonPressed:self.licenseButton];
+        [self signInAction:self.licenseButton];
         [self updateLogWithString:@"Signing in..."];
     }
     else {
@@ -44,7 +44,7 @@
     }
 }
 
-- (IBAction)licenseButtonPressed:(id)sender {
+- (IBAction)signInAction:(id)sender {
     
     if (self.signedIn) {
         [[LicenseHelper sharedLicenseHelper] unlicense];
@@ -53,26 +53,21 @@
     }
     else {
         [[LicenseHelper sharedLicenseHelper] standardLicenseFromPortal:[NSURL URLWithString:kPortalUrl]
-                                                  parentViewController:self
-                                                            completion:^(AGSLicenseResult licenseResult,
-                                                                         BOOL usedSavedLicenseInfo,
-                                                                         NSError *error) {
-                                                                
-                                                                if (error) {
-                                                                    [self updateLogWithString:[NSString stringWithFormat:@"There was an error licensing the app:\n  license result: %@\n  error: %@",
-                                                                          AGSLicenseResultAsString(licenseResult),
-                                                                          error.localizedDescription]];
-                                                                } else {
-                                                                    if (usedSavedLicenseInfo) {
-                                                                        [self updateLogWithString:@"The application was licensed using the saved encrypted license info."];
-                                                                    }
-                                                                    else {
-                                                                        [self updateLogWithString:@"The application was licensed by logging into the portal."];
-                                                                    }
-                                                                }
-                                                                
-                                                                [self updateStatus];
-                                                            }];
+                parentViewController:self
+              completion:^(AGSLicenseResult licenseResult, BOOL usedSavedLicenseInfo, NSError *error) {
+                    if (error) {
+                      
+                        [self updateLogWithString:[NSString stringWithFormat:@"There was an error licensing the app:\n  license result: %@\n  error: %@",AGSLicenseResultAsString(licenseResult), error.localizedDescription]];
+                    } else {
+                        if (usedSavedLicenseInfo) {
+                            [self updateLogWithString:@"The application was licensed using the saved encrypted license info."];
+                        }else {
+                            [self updateLogWithString:@"The application was licensed by logging into the portal."];
+                        }
+                    }
+                
+                    [self updateStatus];
+        }];
         
         [self updateLogWithString:@"Signing in..."];
     }

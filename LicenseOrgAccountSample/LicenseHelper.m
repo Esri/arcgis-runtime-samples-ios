@@ -58,7 +58,7 @@ static LicenseHelper* _sharedLicenseHelper = nil;
 }
 
 -(void)standardLicenseFromPortal:(NSURL *)portalURL
-            parentViewController:(AGSViewController *)parentVC
+            parentViewController:(UIViewController *)parentVC
                       completion:(void (^)(AGSLicenseResult licenseResult,
                                            BOOL usedSavedLicenseInfo,
                                            NSError *error))completion

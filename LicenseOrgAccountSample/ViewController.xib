@@ -53,7 +53,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="licenseButtonPressed:" destination="-1" eventType="touchUpInside" id="PXo-Cu-oMP"/>
+                        <action selector="signInAction:" destination="-1" eventType="touchUpInside" id="xRT-Gk-S1n"/>
                     </connections>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="LogView" translatesAutoresizingMaskIntoConstraints="NO" id="LVG-fr-Wcr">

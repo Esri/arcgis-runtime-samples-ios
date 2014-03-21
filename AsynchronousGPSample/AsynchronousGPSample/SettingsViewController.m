@@ -19,8 +19,7 @@
 -(id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        //initiating default paramenter dictionary
-        self.parameterDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"Anhydrous ammonia", @"Material_Type", @"Day", @"Day_or_Night_incident", @"Large", @"Large_or_Small_spill", nil];
+        //do some intialization
     }
     return self;
 }

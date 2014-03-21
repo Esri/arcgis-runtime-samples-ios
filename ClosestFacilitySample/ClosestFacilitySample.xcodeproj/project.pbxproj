@@ -7,30 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E36334C18DB67DA00F39DA1 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E36334B18DB67DA00F39DA1 /* Storyboard.storyboard */; };
+		3EE6BBDD18DBB8570092054A /* Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6BBDC18DBB8570092054A /* Parameters.m */; };
 		9755BA09167B902400518E4D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9755BA08167B902400518E4D /* Default-568h@2x.png */; };
 		C56B3F5514C60251003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B3F5414C60251003A46EB /* ArcGIS.bundle */; };
 		C57F6EE713F6054600DAE553 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C57F6EE513F6054600DAE553 /* InfoPlist.strings */; };
 		C57F6EEA13F6054600DAE553 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C57F6EE913F6054600DAE553 /* main.m */; };
 		C57F6EED13F6054600DAE553 /* ClosestFacilitySampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C57F6EEC13F6054600DAE553 /* ClosestFacilitySampleAppDelegate.m */; };
-		C57F6EF013F6054600DAE553 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57F6EEE13F6054600DAE553 /* MainWindow.xib */; };
 		C57F6EF513F6054600DAE553 /* ClosestFacilitySampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C57F6EF413F6054600DAE553 /* ClosestFacilitySampleViewController.m */; };
-		C57F6EF813F6054600DAE553 /* ClosestFacilitySampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57F6EF613F6054600DAE553 /* ClosestFacilitySampleViewController.xib */; };
 		C58F0152140451E800C80593 /* remove24.png in Resources */ = {isa = PBXBuildFile; fileRef = C58F014E140451E800C80593 /* remove24.png */; };
 		C58F0153140451E800C80593 /* remove24@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C58F014F140451E800C80593 /* remove24@2x.png */; };
 		C58F0154140451E800C80593 /* Clear20.png in Resources */ = {isa = PBXBuildFile; fileRef = C58F0150140451E800C80593 /* Clear20.png */; };
 		C58F0155140451E800C80593 /* Clear20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C58F0151140451E800C80593 /* Clear20@2x.png */; };
 		C5E0C8E713F9E78200DE6D97 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E0C8E513F9E78200DE6D97 /* SettingsViewController.m */; };
-		C5E0C8E813F9E78200DE6D97 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5E0C8E613F9E78200DE6D97 /* SettingsViewController.xib */; };
 		C5E0C9CF13FC3F3300DE6D97 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E0C9CD13FC3F3300DE6D97 /* icon.png */; };
 		C5E0C9D013FC3F3300DE6D97 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E0C9CE13FC3F3300DE6D97 /* icon@2x.png */; };
 		C5E0C9D413FC411400DE6D97 /* FireStation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E0C9D213FC411400DE6D97 /* FireStation@2x.png */; };
 		C5E0C9D513FC411400DE6D97 /* FireStation.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E0C9D313FC411400DE6D97 /* FireStation.png */; };
 		C5E0C9EC13FC4FC200DE6D97 /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E0C9EB13FC4FC200DE6D97 /* ActivityAlertView.m */; };
-		C5E0CA1313FC860E00DE6D97 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5E0CA1113FC860E00DE6D97 /* MainWindow-iPad.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9755BA08167B902400518E4D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3E36334B18DB67DA00F39DA1 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = ClosestFacilitySample/Storyboard.storyboard; sourceTree = "<group>"; };
+		3EE6BBDB18DBB8570092054A /* Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parameters.h; path = ClosestFacilitySample/Models/Parameters.h; sourceTree = "<group>"; };
+		3EE6BBDC18DBB8570092054A /* Parameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Parameters.m; path = ClosestFacilitySample/Models/Parameters.m; sourceTree = "<group>"; };
+		9755BA08167B902400518E4D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		C56B3F5414C60251003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		C57F6ECE13F6054600DAE553 /* ClosestFacilitySample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClosestFacilitySample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57F6EE413F6054600DAE553 /* ClosestFacilitySample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ClosestFacilitySample-Info.plist"; sourceTree = "<group>"; };
@@ -39,24 +40,20 @@
 		C57F6EE913F6054600DAE553 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C57F6EEB13F6054600DAE553 /* ClosestFacilitySampleAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ClosestFacilitySampleAppDelegate.h; path = ClosestFacilitySample/ClosestFacilitySampleAppDelegate.h; sourceTree = "<group>"; };
 		C57F6EEC13F6054600DAE553 /* ClosestFacilitySampleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ClosestFacilitySampleAppDelegate.m; path = ClosestFacilitySample/ClosestFacilitySampleAppDelegate.m; sourceTree = "<group>"; };
-		C57F6EEF13F6054600DAE553 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		C57F6EF313F6054600DAE553 /* ClosestFacilitySampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ClosestFacilitySampleViewController.h; path = ClosestFacilitySample/ClosestFacilitySampleViewController.h; sourceTree = "<group>"; };
 		C57F6EF413F6054600DAE553 /* ClosestFacilitySampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ClosestFacilitySampleViewController.m; path = ClosestFacilitySample/ClosestFacilitySampleViewController.m; sourceTree = "<group>"; };
-		C57F6EF713F6054600DAE553 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ClosestFacilitySampleViewController.xib; sourceTree = "<group>"; };
 		C58F014E140451E800C80593 /* remove24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove24.png; sourceTree = "<group>"; };
 		C58F014F140451E800C80593 /* remove24@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remove24@2x.png"; sourceTree = "<group>"; };
 		C58F0150140451E800C80593 /* Clear20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clear20.png; sourceTree = "<group>"; };
 		C58F0151140451E800C80593 /* Clear20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Clear20@2x.png"; sourceTree = "<group>"; };
 		C5E0C8E413F9E78200DE6D97 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = ClosestFacilitySample/SettingsViewController.h; sourceTree = "<group>"; };
 		C5E0C8E513F9E78200DE6D97 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = ClosestFacilitySample/SettingsViewController.m; sourceTree = "<group>"; };
-		C5E0C8E613F9E78200DE6D97 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = ClosestFacilitySample/SettingsViewController.xib; sourceTree = "<group>"; };
 		C5E0C9CD13FC3F3300DE6D97 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		C5E0C9CE13FC3F3300DE6D97 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		C5E0C9D213FC411400DE6D97 /* FireStation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FireStation@2x.png"; sourceTree = "<group>"; };
 		C5E0C9D313FC411400DE6D97 /* FireStation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FireStation.png; sourceTree = "<group>"; };
 		C5E0C9EA13FC4FC200DE6D97 /* ActivityAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityAlertView.h; path = ClosestFacilitySample/ActivityAlertView.h; sourceTree = "<group>"; };
 		C5E0C9EB13FC4FC200DE6D97 /* ActivityAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityAlertView.m; path = ClosestFacilitySample/ActivityAlertView.m; sourceTree = "<group>"; };
-		C5E0CA1213FC860E00DE6D97 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,13 +67,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3EE6BBD918DBB7730092054A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3EE6BBDB18DBB8570092054A /* Parameters.h */,
+				3EE6BBDC18DBB8570092054A /* Parameters.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		3EE6BBDA18DBB77C0092054A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C5E0C8E413F9E78200DE6D97 /* SettingsViewController.h */,
+				C5E0C8E513F9E78200DE6D97 /* SettingsViewController.m */,
+				C57F6EF313F6054600DAE553 /* ClosestFacilitySampleViewController.h */,
+				C57F6EF413F6054600DAE553 /* ClosestFacilitySampleViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3EE6BBDE18DC98BA0092054A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C5E0C9EA13FC4FC200DE6D97 /* ActivityAlertView.h */,
+				C5E0C9EB13FC4FC200DE6D97 /* ActivityAlertView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		C57F6EC313F6054600DAE553 = {
 			isa = PBXGroup;
 			children = (
-				C56B3F5414C60251003A46EB /* ArcGIS.bundle */,
+				3E36334B18DB67DA00F39DA1 /* Storyboard.storyboard */,
 				C57F6EE313F6054600DAE553 /* Supporting Files */,
-				C5E0CA5813FC919D00DE6D97 /* iPhone */,
-				C5E0CA1013FC860B00DE6D97 /* iPad */,
 				C5E0CA5613FC916200DE6D97 /* Classes */,
 				C57F6ED113F6054600DAE553 /* Frameworks */,
 				C57F6ECF13F6054600DAE553 /* Products */,
@@ -94,6 +118,7 @@
 		C57F6ED113F6054600DAE553 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C56B3F5414C60251003A46EB /* ArcGIS.bundle */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -101,6 +126,7 @@
 		C57F6EE313F6054600DAE553 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9755BA08167B902400518E4D /* Default-568h@2x.png */,
 				C58F014E140451E800C80593 /* remove24.png */,
 				C58F014F140451E800C80593 /* remove24@2x.png */,
 				C58F0150140451E800C80593 /* Clear20.png */,
@@ -118,39 +144,16 @@
 			path = ClosestFacilitySample;
 			sourceTree = "<group>";
 		};
-		C5E0CA1013FC860B00DE6D97 /* iPad */ = {
-			isa = PBXGroup;
-			children = (
-				C5E0CA1113FC860E00DE6D97 /* MainWindow-iPad.xib */,
-			);
-			name = iPad;
-			path = ClosestFacilitySample;
-			sourceTree = "<group>";
-		};
 		C5E0CA5613FC916200DE6D97 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3EE6BBDE18DC98BA0092054A /* Views */,
+				3EE6BBDA18DBB77C0092054A /* Controllers */,
+				3EE6BBD918DBB7730092054A /* Models */,
 				C57F6EEB13F6054600DAE553 /* ClosestFacilitySampleAppDelegate.h */,
 				C57F6EEC13F6054600DAE553 /* ClosestFacilitySampleAppDelegate.m */,
-				C5E0C9EA13FC4FC200DE6D97 /* ActivityAlertView.h */,
-				C5E0C9EB13FC4FC200DE6D97 /* ActivityAlertView.m */,
-				C5E0C8E413F9E78200DE6D97 /* SettingsViewController.h */,
-				C5E0C8E513F9E78200DE6D97 /* SettingsViewController.m */,
-				C5E0C8E613F9E78200DE6D97 /* SettingsViewController.xib */,
-				C57F6EF313F6054600DAE553 /* ClosestFacilitySampleViewController.h */,
-				C57F6EF413F6054600DAE553 /* ClosestFacilitySampleViewController.m */,
-				C57F6EF613F6054600DAE553 /* ClosestFacilitySampleViewController.xib */,
 			);
 			name = Classes;
-			sourceTree = "<group>";
-		};
-		C5E0CA5813FC919D00DE6D97 /* iPhone */ = {
-			isa = PBXGroup;
-			children = (
-				9755BA08167B902400518E4D /* Default-568h@2x.png */,
-				C57F6EEE13F6054600DAE553 /* MainWindow.xib */,
-			);
-			name = iPhone;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,14 +207,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C57F6EE713F6054600DAE553 /* InfoPlist.strings in Resources */,
-				C57F6EF013F6054600DAE553 /* MainWindow.xib in Resources */,
-				C57F6EF813F6054600DAE553 /* ClosestFacilitySampleViewController.xib in Resources */,
-				C5E0C8E813F9E78200DE6D97 /* SettingsViewController.xib in Resources */,
 				C5E0C9CF13FC3F3300DE6D97 /* icon.png in Resources */,
+				3E36334C18DB67DA00F39DA1 /* Storyboard.storyboard in Resources */,
 				C5E0C9D013FC3F3300DE6D97 /* icon@2x.png in Resources */,
 				C5E0C9D413FC411400DE6D97 /* FireStation@2x.png in Resources */,
 				C5E0C9D513FC411400DE6D97 /* FireStation.png in Resources */,
-				C5E0CA1313FC860E00DE6D97 /* MainWindow-iPad.xib in Resources */,
 				C58F0152140451E800C80593 /* remove24.png in Resources */,
 				C58F0153140451E800C80593 /* remove24@2x.png in Resources */,
 				C58F0154140451E800C80593 /* Clear20.png in Resources */,
@@ -233,6 +233,7 @@
 				C57F6EF513F6054600DAE553 /* ClosestFacilitySampleViewController.m in Sources */,
 				C5E0C8E713F9E78200DE6D97 /* SettingsViewController.m in Sources */,
 				C5E0C9EC13FC4FC200DE6D97 /* ActivityAlertView.m in Sources */,
+				3EE6BBDD18DBB8570092054A /* Parameters.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,32 +246,6 @@
 				C57F6EE613F6054600DAE553 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		C57F6EEE13F6054600DAE553 /* MainWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C57F6EEF13F6054600DAE553 /* en */,
-			);
-			name = MainWindow.xib;
-			path = ClosestFacilitySample;
-			sourceTree = "<group>";
-		};
-		C57F6EF613F6054600DAE553 /* ClosestFacilitySampleViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C57F6EF713F6054600DAE553 /* en */,
-			);
-			name = ClosestFacilitySampleViewController.xib;
-			path = ClosestFacilitySample;
-			sourceTree = "<group>";
-		};
-		C5E0CA1113FC860E00DE6D97 /* MainWindow-iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C5E0CA1213FC860E00DE6D97 /* en */,
-			);
-			name = "MainWindow-iPad.xib";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

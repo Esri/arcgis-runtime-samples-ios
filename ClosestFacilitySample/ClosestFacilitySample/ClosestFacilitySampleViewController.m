@@ -11,12 +11,20 @@
 //
 
 #import "ClosestFacilitySampleViewController.h"
+#import "Parameters.h"
 
 #define kBaseMap @"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
 #define kFacilitiesLayerURL @"http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Louisville/LOJIC_PublicSafety_Louisville/MapServer/1"
 
 #define kCFTask @"http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Network/USA/NAServer/Closest%20Facility"
 
+#define kSettingsSegueName @"SettingsSegue"
+
+@interface ClosestFacilitySampleViewController ()
+
+@property (nonatomic, strong) Parameters *parameters;
+
+@end
 
 @implementation ClosestFacilitySampleViewController
 
@@ -34,7 +42,7 @@
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
 {
-    return YES;
+    return NO;
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -120,6 +128,9 @@
                                message:@"\n\n"
                                delegate:self cancelButtonTitle:@"Cancel" 
                                otherButtonTitles:nil];
+    
+    //instantiate the parameters object
+    self.parameters = [[Parameters alloc] init];
     
     [super viewDidLoad];
 }
@@ -264,12 +275,12 @@
     //specify some custom parameters
     
     //Number of facilities to be returned
-    closestFacilityParams.defaultTargetFacilityCount = self.settingsViewController.facilityCount;
+    closestFacilityParams.defaultTargetFacilityCount = [self.parameters.facilityCount intValue];
     
     //The kind of the cuttoff attribute - Time, Length etc. We are using Time
     closestFacilityParams.impedanceAttributeName = @"Time";
     //Specify the cuttoff travelling time to the facility. In minutes.
-    closestFacilityParams.defaultCutoffValue = self.settingsViewController.cutoffTime;
+    closestFacilityParams.defaultCutoffValue = [self.parameters.cutoffTime doubleValue];
     
     //Specify the travel direction. 
     closestFacilityParams.travelDirection = AGSNATravelDirectionFromFacility;
@@ -277,7 +288,7 @@
     //specifying the spatial reference output
     closestFacilityParams.outSpatialReference = self.mapView.spatialReference;
     
-    //settings the incidents for the CF task. We have only one here - the tapped location. 
+    //setting the incidents for the CF task. We have only one here - the tapped location.
     
     NSMutableArray *incidents = [NSMutableArray array];
 	NSMutableArray *polygonBarriers = [NSMutableArray array];
@@ -339,27 +350,6 @@
 }
 
 #pragma mark Action Methods
-
-- (IBAction)openSettings:(id)sender {
-	
-    //if ipad show formsheet
-	if ([[AGSDevice currentDevice] isIPad]) {
-		
-		self.settingsViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-		
-		//present settings view
-		self.settingsViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        [self presentViewController:self.settingsViewController animated:YES completion:nil];
-		self.settingsViewController.view.superview.bounds = CGRectMake(0, 0, 400, 300);
-	}
-	else {
-		//present settings view
-		self.settingsViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        [self presentViewController:self.settingsViewController animated:YES completion:nil];
-	}
-    
-}
-
 
 // reset button clicked
 - (IBAction)resetBtnClicked:(id)sender {
@@ -651,7 +641,20 @@
     
 }
 
+#pragma mark -
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:kSettingsSegueName]) {
+        SettingsViewController *controller = [segue destinationViewController];
+        controller.parameters = self.parameters;
+        
+        //if ipad show formsheet
+        if ([[AGSDevice currentDevice] isIPad]) {
+            controller.modalPresentationStyle = UIModalPresentationFormSheet;
+            controller.view.superview.bounds = CGRectMake(0, 0, 400, 300);
+        }
+    }
+}
 
 
 @end

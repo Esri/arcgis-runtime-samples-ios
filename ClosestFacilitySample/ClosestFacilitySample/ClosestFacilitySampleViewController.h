@@ -16,27 +16,7 @@
 #import "ActivityAlertView.h"
 
 @interface ClosestFacilitySampleViewController : UIViewController 
-<AGSMapViewTouchDelegate, AGSClosestFacilityTaskDelegate, UIAlertViewDelegate, AGSMapViewLayerDelegate, AGSFeatureLayerQueryDelegate, AGSCalloutDelegate> {
-    AGSMapView *_mapView;   
-    AGSFeatureLayer *_facilitiesLayer;
-    AGSSketchGraphicsLayer *_sketchLayer;
-    AGSGraphic *_selectedGraphic;
-	AGSGraphicsLayer *_graphicsLayer;
-	AGSClosestFacilityTask *_cfTask;
-    NSOperation *_cfOp;
-    SettingsViewController *_settingsViewController;
-    ActivityAlertView *_activityAlertView;
-    
-    int	_numIncidents;
-	int	_numBarriers;
-    
-    UILabel *_statusMessageLabel;
-    UIView	*_deleteCalloutView; 
-    UISegmentedControl *_sketchModeSegCtrl;
-    UIBarButtonItem	*_addButton;
-    UIBarButtonItem	*_clearSketchButton;
-    UIBarButtonItem *_findCFButton;
-}
+<AGSMapViewTouchDelegate, AGSClosestFacilityTaskDelegate, UIAlertViewDelegate, AGSMapViewLayerDelegate, AGSFeatureLayerQueryDelegate, AGSCalloutDelegate>
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
 @property (nonatomic, strong) AGSFeatureLayer* facilitiesLayer;
@@ -47,6 +27,8 @@
 @property (nonatomic, strong) NSOperation *cfOp;
 @property (nonatomic, strong) SettingsViewController *settingsViewController;
 @property (nonatomic, strong) ActivityAlertView *activityAlertView;
+@property (nonatomic, assign) int numIncidents;
+@property (nonatomic, assign) int numBarriers;
 
 @property (nonatomic, strong) IBOutlet UILabel *statusMessageLabel;
 @property (nonatomic, strong) UIView	*deleteCalloutView; 
@@ -56,7 +38,6 @@
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *findCFButton;
 
 
-- (IBAction)openSettings:(id)sender;
 - (void)respondToGeomChanged:(NSNotification*) notification ;
 - (IBAction)addIncidentOrBarrier:(id)sender;
 - (IBAction)resetButttonClicked:(id)sender;

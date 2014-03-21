@@ -16,20 +16,10 @@
 
 @implementation ClosestFacilitySampleAppDelegate
 
-
-@synthesize window=_window;
-
-@synthesize viewController=_viewController;
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    
-   [self.window setRootViewController:self.viewController];
-    
-    [self.window makeKeyAndVisible];
     return YES;
-
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -37,11 +37,7 @@
         self.view.userInteractionEnabled = YES;
         self.view.alpha = .9;
         
-        //initialize the bing map layer
-        AGSBingMapLayer* bingLayer = [[AGSBingMapLayer alloc] initWithAppID:@"ApW8SZU7fZGUZ9eoEfyp6nJZdrcVM7s2TMWqtDx7PWEh74OZBN1lHVaAiZf-fUwZ" style:AGSBingMapLayerStyleAerialWithLabels]; //Do not forget to replace this app id with your own app id. 
         
-        //add the bing map layer to the hybrid map view
-        [self.hybridView addMapLayer:bingLayer withName:@"Bing"];     
     }
     return self;
 }
@@ -61,7 +57,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    //initialize the open street map layer
+    AGSOpenStreetMapLayer *streetMapLayer = [[AGSOpenStreetMapLayer alloc] init];
+    //add the bing map layer to the hybrid map view
+    [self.hybridView addMapLayer:streetMapLayer withName:@"StreetMap"];
 }
 
 - (void)viewDidUnload

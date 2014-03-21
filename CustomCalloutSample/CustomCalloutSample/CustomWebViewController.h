@@ -14,7 +14,6 @@
 
 @interface CustomWebViewController : UIViewController
 
-- (id)initWithFrame:(CGRect)frame;
 - (void)loadUrlWithRepeatInterval:(NSURL *)url withRepeatInterval:(NSUInteger)interval;
 
 @end

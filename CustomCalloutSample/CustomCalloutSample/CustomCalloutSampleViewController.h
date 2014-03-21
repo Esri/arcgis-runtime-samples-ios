@@ -16,7 +16,4 @@
 
 @interface CustomCalloutSampleViewController : UIViewController<AGSCalloutDelegate>
 
-
-
-
 @end

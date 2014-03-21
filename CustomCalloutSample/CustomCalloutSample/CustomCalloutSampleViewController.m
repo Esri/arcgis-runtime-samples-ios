@@ -16,6 +16,8 @@
 
 //base map url for the sample
 #define kBaseMap @"http://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer"
+#define kCustomHybridViewControllerIdentifier @"CustomHybridViewController"
+#define kCustomWebViewControllerIdentifier @"CustomWebViewController"
 
 //this enum is used to determin the type of graphic created 
 typedef enum {
@@ -84,14 +86,21 @@ typedef enum {
     //add the graphics layer to the map
     [self.mapView addMapLayer:self.graphicsLayer withName:@"SampleGraphics"];
     
-    //initialize the hybrid map view with Bing Aerial map
+    //reference to the storyboard
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
+    
+    //initialize the hybrid map view with street map
     CGRect frame = CGRectMake(0, 0, 125, 125);
-	self.hybridViewController = [[CustomHybridViewController alloc] initWithFrame:frame];
+    self.hybridViewController = [storyboard instantiateViewControllerWithIdentifier:kCustomHybridViewControllerIdentifier];
+    [self.hybridViewController.view setFrame:frame];
+    [self.hybridViewController.view setClipsToBounds:YES];
     
     //initialize the traffic camera view
     frame = CGRectMake(0, 0, 125, 125);
-	self.cameraViewController = [[CustomWebViewController alloc] initWithFrame:frame];
-	    
+	self.cameraViewController = [storyboard instantiateViewControllerWithIdentifier:kCustomWebViewControllerIdentifier];
+	[self.cameraViewController.view setFrame:frame];
+    [self.cameraViewController.view setClipsToBounds:YES];
+    
     [super viewDidLoad];
 }
 

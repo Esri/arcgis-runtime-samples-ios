@@ -29,7 +29,7 @@
 @property (nonatomic, strong) NSURL* portalURL;
 @property (nonatomic, strong) NSError* error;
 @property (nonatomic, strong, readwrite) AGSPortal* portal;
-@property (nonatomic, strong) void(^completionBlock)(AGSLicenseResult licenseResult, BOOL usedSavedLicenseInfo, NSError *error);
+@property (nonatomic, strong) void(^completionBlock)(AGSLicenseResult licenseResult, BOOL usedSavedLicenseInfo, AGSPortal *portal, AGSCredential *credentail, NSError *error);
 @property (nonatomic, strong, readwrite) AGSCredential* credential;
 @property (nonatomic, strong) AGSKeychainItemWrapper* keychainWrapper;
 
@@ -61,6 +61,8 @@ static LicenseHelper* _sharedLicenseHelper = nil;
             parentViewController:(UIViewController *)parentVC
                       completion:(void (^)(AGSLicenseResult licenseResult,
                                            BOOL usedSavedLicenseInfo,
+                                           AGSPortal *portal,
+                                           AGSCredential *credential,
                                            NSError *error))completion
 {
     
@@ -69,14 +71,15 @@ static LicenseHelper* _sharedLicenseHelper = nil;
     self.portalURL = portalURL;
     
     if ([self autoLicense]) {
-        //saved license information was found and we've set a valid license, now
-        //login using saved credentials.  The completion block will by called by
-        //either portalDidLoad: or portal:didFailToLoadWithError:
+        // License information and credentials were found in the keychain.
+        // License has already been initialized using saved information.
+        // Use credentials to load portal.  The completion block will by called by
+        // either portalDidLoad: or portal:didFailToLoadWithError:
         self.portal = [[AGSPortal alloc]initWithURL:self.portalURL credential:self.credential];
         self.portal.delegate = self;
     }
     else {
-        //need login and online
+        // Need user to log in
         [self login];
     }
 }
@@ -106,13 +109,17 @@ static LicenseHelper* _sharedLicenseHelper = nil;
 
 -(void)portalDidLoad:(AGSPortal *)portal {
     
+    // Update our reference to the credential
+    // The credential associated with the portal has information about the user etc
+    self.credential = self.portal.credential;
+    
     //check to see if we already have saved license information from the keychain.
     //If we do, this means we've used that saved information to license the app
     //and log in to the portal; therefore, can just call the completion block and return
     if ([self savedInformationExists]) {
         //we have been called after retrieving the license from the keychain.
         //The fact that this completed means we're on-line
-        [self callCompletionHandler:AGSLicenseResultValid usedSavedLicenseInfo:YES error:nil];
+        [self callCompletionHandler:AGSLicenseResultValid usedSavedLicenseInfo:YES portal:portal credential:portal.credential error:nil];
         return;
     }
 
@@ -120,6 +127,8 @@ static LicenseHelper* _sharedLicenseHelper = nil;
     NSError *error = nil;
     AGSLicenseResult result;
     AGSLicenseInfo *licenseInfo = [[AGSLicenseInfo alloc] initWithPortalInfo:portal.portalInfo];
+
+    //TODO: We need to reinitalize license to renew time window
     if ([[AGSRuntimeEnvironment license] licenseLevel] == AGSLicenseLevelStandard) {
         //already licensed, don't re-license because that's not allowed
         //but we will store the licenseInfo for the current portal, below
@@ -147,7 +156,7 @@ static LicenseHelper* _sharedLicenseHelper = nil;
     }
     
     //we're done, call the completion handler
-    [self callCompletionHandler:result usedSavedLicenseInfo:NO error:error];
+    [self callCompletionHandler:result usedSavedLicenseInfo:NO portal:portal credential:portal.credential error:error];
 }
 
 -(void)portal:(AGSPortal *)portal didFailToLoadWithError:(NSError *)error {
@@ -163,15 +172,14 @@ static LicenseHelper* _sharedLicenseHelper = nil;
         result = AGSLicenseResultValid;
         error = nil;
     }
-    self.portal = nil;
-    [self callCompletionHandler:result usedSavedLicenseInfo:usingSavedLicenseInfo error:error];
+    [self callCompletionHandler:result usedSavedLicenseInfo:usingSavedLicenseInfo portal:nil credential:self.credential error:error];
 }
 
 #pragma mark - internal
 
 -(void)cancelLogin {
     [self.parentVC dismissViewControllerAnimated:YES completion:nil];
-    [self callCompletionHandler:AGSLicenseResultLoginRequired usedSavedLicenseInfo:NO error:[self userCancelledError]];
+    [self callCompletionHandler:AGSLicenseResultLoginRequired usedSavedLicenseInfo:NO portal:self.portal credential:self.credential error:[self userCancelledError]];
 }
 
 -(BOOL)autoLicense {
@@ -254,9 +262,9 @@ static LicenseHelper* _sharedLicenseHelper = nil;
     return [self errorWithDescription:@"User cancelled portal login"];
 }
 
--(void)callCompletionHandler:(AGSLicenseResult)licenseResult usedSavedLicenseInfo:(BOOL)usedSavedLicenseInfo error:(NSError *)error {
+-(void)callCompletionHandler:(AGSLicenseResult)licenseResult usedSavedLicenseInfo:(BOOL)usedSavedLicenseInfo portal:(AGSPortal *)portal credential:(AGSCredential*)credential error:(NSError *)error {
     if (self.completionBlock) {
-        self.completionBlock(licenseResult, usedSavedLicenseInfo, error);
+        self.completionBlock(licenseResult, usedSavedLicenseInfo, portal, credential, error);
         self.completionBlock = nil;
     }
 }

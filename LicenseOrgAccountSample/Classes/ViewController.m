@@ -22,6 +22,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *licenseLevelLabel;
 @property (strong, nonatomic) IBOutlet UILabel *expiryLabel;
 @property (strong, nonatomic) IBOutlet UIButton *licenseButton;
+@property (weak, nonatomic) IBOutlet UIImageView *networkImageView;
+@property (weak, nonatomic) IBOutlet UILabel *portalConnectionLabel;
 @property (strong, nonatomic) IBOutlet UITextView *logTextView;
 
 @property (assign, nonatomic, readonly) BOOL signedIn;
@@ -40,7 +42,7 @@
     }
     else {
         [self updateLogWithString:@""];
-        [self updateStatus];
+        [self updateStatusWithCredential:nil];
     }
 }
 
@@ -49,24 +51,34 @@
     if (self.signedIn) {
         [[LicenseHelper sharedLicenseHelper] unlicense];
         [self updateLogWithString:@"The application has been signed out and all saved license and credential information has been deleted."];
-        [self updateStatus];
+      self.networkImageView.image = nil;
+      self.portalConnectionLabel.text = @"";
+      [self updateStatusWithCredential:nil];
     }
     else {
         [[LicenseHelper sharedLicenseHelper] standardLicenseFromPortal:[NSURL URLWithString:kPortalUrl]
                 parentViewController:self
-              completion:^(AGSLicenseResult licenseResult, BOOL usedSavedLicenseInfo, NSError *error) {
+              completion:^(AGSLicenseResult licenseResult, BOOL usedSavedLicenseInfo, AGSPortal *portal, AGSCredential *credential, NSError *error) {
                     if (error) {
                       
                         [self updateLogWithString:[NSString stringWithFormat:@"There was an error licensing the app:\n  license result: %@\n  error: %@",AGSLicenseResultAsString(licenseResult), error.localizedDescription]];
                     } else {
                         if (usedSavedLicenseInfo) {
-                            [self updateLogWithString:@"The application was licensed using the saved encrypted license info."];
+                            [self updateLogWithString:@"The application was licensed using the saved license info in the keychain"];
                         }else {
                             [self updateLogWithString:@"The application was licensed by logging into the portal."];
                         }
                     }
                 
-                    [self updateStatus];
+                  if(portal){
+                    self.networkImageView.image = [UIImage imageNamed:@"blue-network"];
+                    self.portalConnectionLabel.text = @"Connected to portal";
+                  }else{
+                    self.networkImageView.image = [UIImage imageNamed:@"gray-network"];
+                    self.portalConnectionLabel.text = @"Could not connect to portal";
+                  }
+                
+                    [self updateStatusWithCredential:credential];
         }];
         
         [self updateLogWithString:@"Signing in..."];
@@ -80,7 +92,7 @@
     return [LicenseHelper sharedLicenseHelper].credential != nil;
 }
 
--(void)updateStatus {
+-(void)updateStatusWithCredential:(AGSCredential*)credential {
     AGSLicense *license = [AGSRuntimeEnvironment license];
     self.licenseLevelLabel.text = AGSLicenseLevelAsString(license.licenseLevel);
 
@@ -94,14 +106,13 @@
                                                       timeStyle:NSDateFormatterShortStyle];
     }
     self.expiryLabel.text = expiryString;
-    [self.licenseButton setTitle:(self.signedIn ? @"Sign Out" : @"Sign In") forState:UIControlStateNormal];
+    [self.licenseButton setTitle:(self.signedIn ? [@"Sign Out" stringByAppendingFormat:@" (%@)",credential.username] : @"Sign In") forState:UIControlStateNormal];
 }
 
 -(void)updateLogWithString:(NSString *)logText
 {
     if (logText) {
-        [self.logTextView setSelectedRange:NSMakeRange(0, [self.logTextView.text length])];
-        [self.logTextView insertText:logText];
+      self.logTextView.text = logText;
     }
 }
 

@@ -72,6 +72,8 @@
             parentViewController:(AGSViewController *)parentVC
                       completion:(void (^)(AGSLicenseResult licenseResult,
                                            BOOL usedSavedLicenseInfo,
+                                           AGSPortal *portal,
+                                           AGSCredential *credential,
                                            NSError *error))completion;
 
 /** Unlicenses the application.

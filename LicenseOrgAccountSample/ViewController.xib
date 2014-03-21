@@ -11,6 +11,8 @@
                 <outlet property="licenseButton" destination="nAx-uL-wdX" id="W1n-Hh-tfg"/>
                 <outlet property="licenseLevelLabel" destination="aWk-td-d4g" id="PRG-xx-BVb"/>
                 <outlet property="logTextView" destination="LVG-fr-Wcr" id="1bh-yS-dl5"/>
+                <outlet property="networkImageView" destination="9ch-0A-HzO" id="C2p-vm-fIJ"/>
+                <outlet property="portalConnectionLabel" destination="RXt-oP-we9" id="NY8-E4-N8c"/>
                 <outlet property="view" destination="6" id="7"/>
             </connections>
         </placeholder>
@@ -56,14 +58,25 @@
                         <action selector="signInAction:" destination="-1" eventType="touchUpInside" id="xRT-Gk-S1n"/>
                     </connections>
                 </button>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="LogView" translatesAutoresizingMaskIntoConstraints="NO" id="LVG-fr-Wcr">
-                    <rect key="frame" x="20" y="234" width="281" height="278"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="LogView" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LVG-fr-Wcr">
+                    <rect key="frame" x="20" y="234" width="281" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ch-0A-HzO">
+                    <rect key="frame" x="124" y="342" width="72" height="62"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXt-oP-we9">
+                    <rect key="frame" x="31" y="408" width="269" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>

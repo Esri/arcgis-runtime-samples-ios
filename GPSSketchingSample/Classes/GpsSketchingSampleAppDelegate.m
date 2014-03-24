@@ -12,25 +12,13 @@
 
 
 #import "GpsSketchingSampleAppDelegate.h"
-#import "GpsSketchingSampleViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
 @implementation GpsSketchingSampleAppDelegate
 
-@synthesize window;
-@synthesize viewController;
-
-
-- (void)applicationDidFinishLaunching:(UIApplication *)application {    
-    
-     
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after app launch    
-    [window setRootViewController:viewController];
-    [window makeKeyAndVisible];
+    // Override point for customization after app launch
     
     // Create a location manager instance to determine if location services are enabled. This manager instance will be
     // immediately released afterwards.

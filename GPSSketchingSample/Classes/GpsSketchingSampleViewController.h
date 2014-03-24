@@ -16,11 +16,9 @@
 #import "SettingsViewController.h"
 
 
-@interface GpsSketchingSampleViewController : UIViewController <AGSMapViewLayerDelegate, CLLocationManagerDelegate, SettingsViewControllerDelegate>
-
+@interface GpsSketchingSampleViewController : UIViewController <AGSMapViewLayerDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
-
 
 @end
 

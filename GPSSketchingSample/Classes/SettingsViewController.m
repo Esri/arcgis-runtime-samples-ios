@@ -13,11 +13,6 @@
 #import "SettingsViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
-//constants to be used for the keys. 
-NSString * const kSetupInfoKeyAccuracy = @"SetupInfoKeyAccuracy";
-NSString * const kSetupInfoKeyDistanceFilter = @"SetupInfoKeyDistanceFilter";
-
-
 @interface SettingsViewController()
 
 //used for setting the frequency distance in meters for the location updates. 
@@ -26,6 +21,8 @@ NSString * const kSetupInfoKeyDistanceFilter = @"SetupInfoKeyDistanceFilter";
 //used for setting the accuracy in meters for the location updates. 
 @property (nonatomic, strong) IBOutlet UISegmentedControl *accuracyControl;
 
+//used to store the possible values for accuracy and freqeuncy
+@property (nonatomic, strong) NSArray *accuracyValues, *frequencyValues;
 
 
 //dismisses the settings view controller. 
@@ -35,38 +32,23 @@ NSString * const kSetupInfoKeyDistanceFilter = @"SetupInfoKeyDistanceFilter";
 
 @implementation SettingsViewController
 
-@synthesize delegate;
-@synthesize frequencyControl = _frequencyControl;
-@synthesize accuracyControl = _accuracyControl;
-@synthesize setupInfo = _setupInfo;
-
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
 }
 
-- (id)initWithNibName:(NSString *)nibName bundle:(NSBundle *)nibBundle
-{
-    self = [super initWithNibName:nibName bundle:nil];
-    if (self) {
-        //setup the dictionary. 
-        self.setupInfo = [NSMutableDictionary dictionary];
-        [self.setupInfo setObject:[NSNumber numberWithDouble:1.0] forKey:kSetupInfoKeyDistanceFilter]; 
-        [self.setupInfo setObject:[NSNumber numberWithDouble:kCLLocationAccuracyHundredMeters] forKey:kSetupInfoKeyAccuracy];
-
-    }
-    return self;}
-
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //set the state of the outlets. 
-    self.frequencyControl.selectedSegmentIndex = 0;
-    self.accuracyControl.selectedSegmentIndex = 0;
+    self.accuracyValues = @[[NSNumber numberWithDouble:kCLLocationAccuracyBest], [NSNumber numberWithDouble:kCLLocationAccuracyNearestTenMeters], [NSNumber numberWithDouble:kCLLocationAccuracyHundredMeters], [NSNumber numberWithDouble:kCLLocationAccuracyKilometer]];
+    self.frequencyValues = @[[NSNumber numberWithDouble:1.0], [NSNumber numberWithDouble:10.0], [NSNumber numberWithDouble:100.0], [NSNumber numberWithDouble:1000.0]];
+    
+    //update segment control selection based on the parameter object
+    [self.accuracyControl setSelectedSegmentIndex:[self.accuracyValues indexOfObject:self.parameters.accuracyValue]];
+    [self.frequencyControl setSelectedSegmentIndex:[self.frequencyValues indexOfObject:self.parameters.frequencyValue]];
 
 }
 
@@ -78,7 +60,6 @@ NSString * const kSetupInfoKeyDistanceFilter = @"SetupInfoKeyDistanceFilter";
 - (IBAction)done:(id)sender 
 { 
     [self dismissViewControllerAnimated:YES completion:nil];
-    [delegate didFinishWithSettings];   
 }
 
 - (IBAction)controlChanged:(id)sender
@@ -86,52 +67,15 @@ NSString * const kSetupInfoKeyDistanceFilter = @"SetupInfoKeyDistanceFilter";
     //set the appropriate value in the settings dict according to the selection. 
     if(sender == self.frequencyControl)
     {
-        switch (self.frequencyControl.selectedSegmentIndex) {
-            case 0:
-                [self.setupInfo setObject:[NSNumber numberWithDouble:1.0] forKey:kSetupInfoKeyDistanceFilter];
-                break;
-            case 1:
-                [self.setupInfo setObject:[NSNumber numberWithDouble:10.0] forKey:kSetupInfoKeyDistanceFilter];
-                break;
-            case 2:
-                [self.setupInfo setObject:[NSNumber numberWithDouble:100.0] forKey:kSetupInfoKeyDistanceFilter];
-                break;
-            case 3:
-                [self.setupInfo setObject:[NSNumber numberWithDouble:1000.0] forKey:kSetupInfoKeyDistanceFilter];
-                break;
-                
-            default:
-                break;
-        }
+        self.parameters.frequencyValue = [self.frequencyValues objectAtIndex:[self.frequencyControl selectedSegmentIndex]];
     }
     
     //set the appropriate value in the settings dict according to the selection. 
     if(sender == self.accuracyControl)
     {
-        switch (self.accuracyControl.selectedSegmentIndex) {
-            case 0:
-                 [self.setupInfo setObject:[NSNumber numberWithDouble:kCLLocationAccuracyBest] forKey:kSetupInfoKeyAccuracy];
-                break;
-            case 1:
-                [self.setupInfo setObject:[NSNumber numberWithDouble:kCLLocationAccuracyNearestTenMeters] forKey:kSetupInfoKeyDistanceFilter];
-                break;
-            case 2:
-                [self.setupInfo setObject:[NSNumber numberWithDouble:kCLLocationAccuracyHundredMeters] forKey:kSetupInfoKeyDistanceFilter];
-                break;
-            case 3:
-                [self.setupInfo setObject:[NSNumber numberWithDouble:kCLLocationAccuracyKilometer] forKey:kSetupInfoKeyDistanceFilter];
-                break;
-                
-            default:
-                break;
-        }
+        self.parameters.accuracyValue = [self.accuracyValues objectAtIndex:[self.accuracyControl selectedSegmentIndex]];
 
     }
 }
-
-- (void)dealloc {
-	self.delegate = nil;
-}
-
 
 @end

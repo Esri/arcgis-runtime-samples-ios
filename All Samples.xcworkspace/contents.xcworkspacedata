@@ -50,6 +50,9 @@
       location = "group:LegendSample/LegendSample.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:LicenseByOrgAccountSample/LicenseByOrgAccountSample.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:LocalTiledLayerSample/LocalTiledLayerSample.xcodeproj">
    </FileRef>
    <FileRef
@@ -66,9 +69,6 @@
    </FileRef>
    <FileRef
       location = "group:OfflineRoutingSample/OfflineRoutingSample.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:OnlineOfflineEditingSample/OnlineOfflineEditingSample.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:PopupSample/PopupSample.xcodeproj">

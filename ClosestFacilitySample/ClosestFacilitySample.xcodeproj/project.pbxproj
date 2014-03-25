@@ -10,6 +10,8 @@
 		3E36334C18DB67DA00F39DA1 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E36334B18DB67DA00F39DA1 /* Storyboard.storyboard */; };
 		3EE6BBDD18DBB8570092054A /* Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6BBDC18DBB8570092054A /* Parameters.m */; };
 		9755BA09167B902400518E4D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9755BA08167B902400518E4D /* Default-568h@2x.png */; };
+		978E970818E0FD9C001E6341 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 978E970518E0FD9C001E6341 /* SVProgressHUD.bundle */; };
+		978E970918E0FD9C001E6341 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 978E970718E0FD9C001E6341 /* SVProgressHUD.m */; };
 		C56B3F5514C60251003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B3F5414C60251003A46EB /* ArcGIS.bundle */; };
 		C57F6EE713F6054600DAE553 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C57F6EE513F6054600DAE553 /* InfoPlist.strings */; };
 		C57F6EEA13F6054600DAE553 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C57F6EE913F6054600DAE553 /* main.m */; };
@@ -24,7 +26,6 @@
 		C5E0C9D013FC3F3300DE6D97 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E0C9CE13FC3F3300DE6D97 /* icon@2x.png */; };
 		C5E0C9D413FC411400DE6D97 /* FireStation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E0C9D213FC411400DE6D97 /* FireStation@2x.png */; };
 		C5E0C9D513FC411400DE6D97 /* FireStation.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E0C9D313FC411400DE6D97 /* FireStation.png */; };
-		C5E0C9EC13FC4FC200DE6D97 /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E0C9EB13FC4FC200DE6D97 /* ActivityAlertView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,10 @@
 		3EE6BBDB18DBB8570092054A /* Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parameters.h; path = ClosestFacilitySample/Models/Parameters.h; sourceTree = "<group>"; };
 		3EE6BBDC18DBB8570092054A /* Parameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Parameters.m; path = ClosestFacilitySample/Models/Parameters.m; sourceTree = "<group>"; };
 		9755BA08167B902400518E4D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		978E970418E0FD9C001E6341 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		978E970518E0FD9C001E6341 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		978E970618E0FD9C001E6341 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		978E970718E0FD9C001E6341 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		C56B3F5414C60251003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		C57F6ECE13F6054600DAE553 /* ClosestFacilitySample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClosestFacilitySample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57F6EE413F6054600DAE553 /* ClosestFacilitySample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ClosestFacilitySample-Info.plist"; sourceTree = "<group>"; };
@@ -52,8 +57,6 @@
 		C5E0C9CE13FC3F3300DE6D97 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		C5E0C9D213FC411400DE6D97 /* FireStation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FireStation@2x.png"; sourceTree = "<group>"; };
 		C5E0C9D313FC411400DE6D97 /* FireStation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FireStation.png; sourceTree = "<group>"; };
-		C5E0C9EA13FC4FC200DE6D97 /* ActivityAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityAlertView.h; path = ClosestFacilitySample/ActivityAlertView.h; sourceTree = "<group>"; };
-		C5E0C9EB13FC4FC200DE6D97 /* ActivityAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityAlertView.m; path = ClosestFacilitySample/ActivityAlertView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,10 +93,20 @@
 		3EE6BBDE18DC98BA0092054A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C5E0C9EA13FC4FC200DE6D97 /* ActivityAlertView.h */,
-				C5E0C9EB13FC4FC200DE6D97 /* ActivityAlertView.m */,
+				978E970318E0FD9C001E6341 /* SVProgressHUD */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		978E970318E0FD9C001E6341 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				978E970418E0FD9C001E6341 /* SVProgressHUD-Prefix.pch */,
+				978E970518E0FD9C001E6341 /* SVProgressHUD.bundle */,
+				978E970618E0FD9C001E6341 /* SVProgressHUD.h */,
+				978E970718E0FD9C001E6341 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		C57F6EC313F6054600DAE553 = {
@@ -182,7 +195,7 @@
 		C57F6EC513F6054600DAE553 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = C57F6EC813F6054600DAE553 /* Build configuration list for PBXProject "ClosestFacilitySample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -214,6 +227,7 @@
 				C5E0C9D513FC411400DE6D97 /* FireStation.png in Resources */,
 				C58F0152140451E800C80593 /* remove24.png in Resources */,
 				C58F0153140451E800C80593 /* remove24@2x.png in Resources */,
+				978E970818E0FD9C001E6341 /* SVProgressHUD.bundle in Resources */,
 				C58F0154140451E800C80593 /* Clear20.png in Resources */,
 				C58F0155140451E800C80593 /* Clear20@2x.png in Resources */,
 				C56B3F5514C60251003A46EB /* ArcGIS.bundle in Resources */,
@@ -232,8 +246,8 @@
 				C57F6EED13F6054600DAE553 /* ClosestFacilitySampleAppDelegate.m in Sources */,
 				C57F6EF513F6054600DAE553 /* ClosestFacilitySampleViewController.m in Sources */,
 				C5E0C8E713F9E78200DE6D97 /* SettingsViewController.m in Sources */,
-				C5E0C9EC13FC4FC200DE6D97 /* ActivityAlertView.m in Sources */,
 				3EE6BBDD18DBB8570092054A /* Parameters.m in Sources */,
+				978E970918E0FD9C001E6341 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +328,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
@@ -344,7 +357,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

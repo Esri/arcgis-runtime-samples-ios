@@ -122,12 +122,6 @@
     //preparing the Settings View Controller
     self.settingsViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
     
-    //setting up the alert view to show th ebusy indicator. 
-    self.activityAlertView = [[ActivityAlertView alloc] 
-                               initWithTitle:@"Finding Closest Facilities"
-                               message:@"\n\n"
-                               delegate:self cancelButtonTitle:@"Cancel" 
-                               otherButtonTitles:nil];
     
     //instantiate the parameters object
     self.parameters = [[Parameters alloc] init];
@@ -243,7 +237,7 @@
     }
 	
     //stop activity indicator
-    [self.activityAlertView close];
+    [SVProgressHUD dismiss];
     
     //changing the status message label. 
     self.statusMessageLabel.text = @"Tap reset to start over";
@@ -257,7 +251,7 @@
 //if error encountered while executing cf task
 - (void)closestFacilityTask:(AGSClosestFacilityTask *) closestFacilityTask operation:(NSOperation *) op didFailSolveWithError:(NSError *) error {
     //stop activity indicator
-    [self.activityAlertView close];
+    [SVProgressHUD dismiss];
     
     //show error message
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
@@ -327,7 +321,7 @@
 - (void)closestFacilityTask:(AGSClosestFacilityTask *) closestFacilityTask operation:(NSOperation *) op didFailToRetrieveDefaultClosestFacilityTaskParametersWithError:(NSError *) error {
     
     //stop activity indicator
-    [self.activityAlertView close];
+    [SVProgressHUD dismiss];
     
     //show error message
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
@@ -460,9 +454,9 @@
     //the caOp property will keep tract of the operation in case we need to cancel it at any point. 
     self.cfOp = [self.cfTask retrieveDefaultClosestFacilityTaskParameters]; 
     
-    //showing activity indicator
-    [self.activityAlertView show];    
-	
+#warning
+    [SVProgressHUD showWithStatus:@"Search for closest facilities" ];
+//	[self.activityAlertView show];
 	
 }
 

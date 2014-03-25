@@ -13,9 +13,9 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 #import "SettingsViewController.h"
-#import "ActivityAlertView.h"
+#import "SVProgressHUD.h"
 
-@interface ClosestFacilitySampleViewController : UIViewController 
+@interface ClosestFacilitySampleViewController : UIViewController
 <AGSMapViewTouchDelegate, AGSClosestFacilityTaskDelegate, UIAlertViewDelegate, AGSMapViewLayerDelegate, AGSFeatureLayerQueryDelegate, AGSCalloutDelegate>
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
@@ -26,7 +26,6 @@
 @property (nonatomic, strong) AGSClosestFacilityTask *cfTask;
 @property (nonatomic, strong) NSOperation *cfOp;
 @property (nonatomic, strong) SettingsViewController *settingsViewController;
-@property (nonatomic, strong) ActivityAlertView *activityAlertView;
 @property (nonatomic, assign) int numIncidents;
 @property (nonatomic, assign) int numBarriers;
 

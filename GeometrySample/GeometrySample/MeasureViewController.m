@@ -195,29 +195,6 @@
     [self dismissPopOver];
 }
 
-//// Called when the button under user instructions is tapped
-//- (IBAction)selectUnit {
-//    // Create a UnitSelectorViewController
-//    UnitSelectorViewController *inputVC = [[UnitSelectorViewController alloc] initWithNibName:@"UnitSelectorViewController" bundle:nil];
-//    // Set the delegate to self
-//    inputVC.delegate = self;
-//    
-//    // Tell the view controller wheather we want distance units or area units
-//    if (self.measureMethod.selectedSegmentIndex == 0) {
-//        inputVC.useAreaUnits = NO;
-//    }
-//    else {
-//        inputVC.useAreaUnits = YES;
-//    }
-//    
-//    // Make the contoller the correct size and style
-//    inputVC.modalPresentationStyle = UIModalPresentationFormSheet;
-//    inputVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-//    
-//    [self presentViewController:inputVC animated:YES completion:nil];
-//    inputVC.view.superview.bounds = CGRectMake(-150, 0, 300, 220);
-//}
-
 #pragma mark - actions
 
 - (IBAction)reset {

@@ -9,13 +9,10 @@
 /* Begin PBXBuildFile section */
 		1CF2FB361189EA0600D7A686 /* BluePushpin.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF2FB351189EA0600D7A686 /* BluePushpin.png */; };
 		1CF2FBFA118A23E200D7A686 /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF2FBF8118A23E200D7A686 /* ResultsViewController.m */; };
-		1CF2FBFB118A23E200D7A686 /* ResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CF2FBF9118A23E200D7A686 /* ResultsViewController.xib */; };
 		1D3623260D0F684500981E51 /* GeocodingSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* GeocodingSampleAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		2899E5220DE3E06400AC0155 /* GeocodingSampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* GeocodingSampleViewController.xib */; };
-		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* GeocodingSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* GeocodingSampleViewController.m */; };
-		97282BA91354FD3E00282B76 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97282BA81354FD3E00282B76 /* MainWindow-iPad.xib */; };
+		3EE6BBF118E0F9E50092054A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EE6BBF018E0F9E50092054A /* Storyboard.storyboard */; };
 		975E754E167A9620005FB57B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 975E754D167A9620005FB57B /* Default-568h@2x.png */; };
 		AF5531B2125BB3330070ED0C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5531B0125BB3330070ED0C /* icon.png */; };
 		AF5531B3125BB3330070ED0C /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5531B1125BB3330070ED0C /* icon@2x.png */; };
@@ -26,18 +23,15 @@
 		1CF2FB351189EA0600D7A686 /* BluePushpin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BluePushpin.png; sourceTree = "<group>"; };
 		1CF2FBF7118A23E200D7A686 /* ResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
 		1CF2FBF8118A23E200D7A686 /* ResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
-		1CF2FBF9118A23E200D7A686 /* ResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsViewController.xib; sourceTree = "<group>"; };
 		1D3623240D0F684500981E51 /* GeocodingSampleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeocodingSampleAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* GeocodingSampleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeocodingSampleAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* GeocodingSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeocodingSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2899E5210DE3E06400AC0155 /* GeocodingSampleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeocodingSampleViewController.xib; sourceTree = "<group>"; };
-		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		28D7ACF60DDB3853001CB0EB /* GeocodingSampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeocodingSampleViewController.h; sourceTree = "<group>"; };
 		28D7ACF70DDB3853001CB0EB /* GeocodingSampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeocodingSampleViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* GeocodingSample_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeocodingSample_Prefix.pch; sourceTree = "<group>"; };
+		3EE6BBF018E0F9E50092054A /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* GeocodingSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GeocodingSample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		97282BA81354FD3E00282B76 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		975E754D167A9620005FB57B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AF5531B0125BB3330070ED0C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		AF5531B1125BB3330070ED0C /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
@@ -58,13 +52,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3EE6BBF218E0FF9B0092054A /* Controllers */,
 				1D3623240D0F684500981E51 /* GeocodingSampleAppDelegate.h */,
 				1D3623250D0F684500981E51 /* GeocodingSampleAppDelegate.m */,
-				28D7ACF60DDB3853001CB0EB /* GeocodingSampleViewController.h */,
-				28D7ACF70DDB3853001CB0EB /* GeocodingSampleViewController.m */,
-				1CF2FBF7118A23E200D7A686 /* ResultsViewController.h */,
-				1CF2FBF8118A23E200D7A686 /* ResultsViewController.m */,
-				1CF2FBF9118A23E200D7A686 /* ResultsViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -80,11 +70,10 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				C56B3F9C14C63EDA003A46EB /* ArcGIS.bundle */,
+				3EE6BBF018E0F9E50092054A /* Storyboard.storyboard */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
-				97282BA71354FD3D00282B76 /* Resources-iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -107,8 +96,6 @@
 				1CF2FB351189EA0600D7A686 /* BluePushpin.png */,
 				AF5531B0125BB3330070ED0C /* icon.png */,
 				AF5531B1125BB3330070ED0C /* icon@2x.png */,
-				2899E5210DE3E06400AC0155 /* GeocodingSampleViewController.xib */,
-				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* GeocodingSample-Info.plist */,
 			);
 			name = Resources;
@@ -117,16 +104,20 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C56B3F9C14C63EDA003A46EB /* ArcGIS.bundle */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		97282BA71354FD3D00282B76 /* Resources-iPad */ = {
+		3EE6BBF218E0FF9B0092054A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				97282BA81354FD3E00282B76 /* MainWindow-iPad.xib */,
+				28D7ACF60DDB3853001CB0EB /* GeocodingSampleViewController.h */,
+				28D7ACF70DDB3853001CB0EB /* GeocodingSampleViewController.m */,
+				1CF2FBF7118A23E200D7A686 /* ResultsViewController.h */,
+				1CF2FBF8118A23E200D7A686 /* ResultsViewController.m */,
 			);
-			name = "Resources-iPad";
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,15 +172,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				2899E5220DE3E06400AC0155 /* GeocodingSampleViewController.xib in Resources */,
 				1CF2FB361189EA0600D7A686 /* BluePushpin.png in Resources */,
-				1CF2FBFB118A23E200D7A686 /* ResultsViewController.xib in Resources */,
 				AF5531B2125BB3330070ED0C /* icon.png in Resources */,
 				AF5531B3125BB3330070ED0C /* icon@2x.png in Resources */,
-				97282BA91354FD3E00282B76 /* MainWindow-iPad.xib in Resources */,
 				C56B3F9D14C63EDA003A46EB /* ArcGIS.bundle in Resources */,
 				975E754E167A9620005FB57B /* Default-568h@2x.png in Resources */,
+				3EE6BBF118E0F9E50092054A /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,15 +12,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class GeocodingSampleViewController;
-
-@interface GeocodingSampleAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    GeocodingSampleViewController *viewController;
-}
+@interface GeocodingSampleAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
-@property (nonatomic, strong) IBOutlet GeocodingSampleViewController *viewController;
 
 @end
 

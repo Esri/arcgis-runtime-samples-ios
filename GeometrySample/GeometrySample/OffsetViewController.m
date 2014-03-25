@@ -12,54 +12,13 @@
 
 #import "OffsetViewController.h"
 
-@interface OffsetViewController () {
-    UIToolbar *_toolbar1;
-    UIToolbar *_toolbar2;
-    UISegmentedControl *_segmentedControl;
-    UISlider *_distanceSlider;
-    UISlider *_bevelSlider;
-    UIBarButtonItem *_distance;
-    UIBarButtonItem *_bevel;
-    UISegmentedControl *_geometrySelect;
-    UIBarButtonItem *_addButton;
-    UIBarButtonItem *_offsetButton;
-    UIBarButtonItem *_resetButton;
-    UILabel *_userInstructions;
-    
-    AGSMapView *_mapView;
-    AGSSketchGraphicsLayer *_sketchLayer;
-    AGSGraphicsLayer *_graphicsLayer;
-    NSMutableArray *_lastOffset;
-    
-    int _offsetDistance;
-    double _bevelRatio;
-    AGSGeometryOffsetType _offsetType;
-    
-}
+@interface OffsetViewController ()
 
 - (void)updateOffset;
 
 @end
 
 @implementation OffsetViewController
-
-@synthesize segmentedControl = _segmentedControl;
-@synthesize userInstructions = _userInstructions;
-@synthesize lastOffset = _lastOffset;
-@synthesize toolbar1 = _toolbar1;
-@synthesize toolbar2 = _toolbar2;
-@synthesize distanceSlider = _distanceSlider;
-@synthesize bevelSlider = _bevelSlider;
-@synthesize distance = _distance;
-@synthesize bevel = _bevel;
-@synthesize geometrySelect = _geometrySelect;
-@synthesize addButton = _addButton;
-@synthesize offsetButton = _offsetButton;
-@synthesize resetButton = _resetButton;
-@synthesize mapView = _mapView;
-@synthesize sketchLayer = _sketchLayer;
-@synthesize graphicsLayer = _graphicsLayer;
-
 
 - (void)viewDidLoad
 {

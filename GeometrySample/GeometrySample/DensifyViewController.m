@@ -13,37 +13,7 @@
 #import <ArcGIS/ArcGIS.h>
 #import "DensifyViewController.h"
 
-@interface DensifyViewController () {
-    UIToolbar *_toolbar;
-    UIBarButtonItem *_resetButton;
-    UIBarButtonItem *_distance;
-    UISlider *_slider;
-    UILabel *_userInstructions;
-    UISegmentedControl *_geometryControl;
-    
-    AGSMapView *_mapView;
-    AGSSketchGraphicsLayer *_sketchLayer;
-    AGSGraphicsLayer *_resultGraphicsLayer;
-    NSMutableArray *_sketchGeometries;
-    
-    int _densifyDistance;
-}
-
-@end
-
 @implementation DensifyViewController
-
-@synthesize geometryControl = _geometryControl;
-@synthesize sketchGeometries = _sketchGeometries;
-@synthesize userInstructions = _userInstructions;
-@synthesize toolbar = _toolbar;
-@synthesize resetButton = _resetButton;
-@synthesize distance = _distance;
-@synthesize slider = _slider;
-@synthesize mapView = _mapView;
-@synthesize sketchLayer = _sketchLayer;
-@synthesize resultGraphicsLayer = _resultGraphicsLayer;
-
 
 // Do any additional setup after loading the view from its nib.
 - (void)viewDidLoad

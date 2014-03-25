@@ -18,7 +18,7 @@
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *distanceUnits;
 @property (nonatomic, strong) NSArray *areaUnits;
-@property BOOL useAreaUnits;
+@property (nonatomic, assign) BOOL useAreaUnits;
 
 @end
 

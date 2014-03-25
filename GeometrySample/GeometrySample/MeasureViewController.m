@@ -12,25 +12,11 @@
 
 #import "MeasureViewController.h"
 #import "UnitSelectorViewController.h"
+#define kUnitSelectorSegue @"UnitSelectorSegue"
 
-@interface MeasureViewController () {
-    AGSMapView *_mapView;
-    UIToolbar  *_toolbar;
-    UISegmentedControl *_measureMethod;
-    UIBarButtonItem *_undoButton;
-    UIBarButtonItem *_redoButton;
-    UIBarButtonItem *_resetButton;
-    AGSGraphicsLayer *_graphicsLayer;
-    AGSSketchGraphicsLayer *_sketchLayer;
-    UILabel *_userInstructions;
-    UIButton *_selectUnitButton;
-    
-    
-    double _distance;
-    double _area;
-    AGSSRUnit _distanceUnit;
-    AGSAreaUnits _areaUnit;
-}
+@interface MeasureViewController ()
+
+@property (nonatomic, strong) UIPopoverController *popOverController;
 
 - (void)updateDistance:(AGSSRUnit)unit ;
 - (void)updateArea:(AGSAreaUnits)unit ;
@@ -39,17 +25,6 @@
 @end
 
 @implementation MeasureViewController
-
-@synthesize userInstructions = _userInstructions;
-@synthesize resetButton = _resetButton;
-@synthesize redoButton = _redoButton;
-@synthesize undoButton = _undoButton;
-@synthesize measureMethod = _measureMethod;
-@synthesize mapView =_mapView;
-@synthesize toolbar = _toolbar;
-@synthesize sketchLayer = _sketchLayer;
-@synthesize selectUnitButton = _selectUnitButton;
-
 
 - (void)viewDidLoad
 {
@@ -204,42 +179,46 @@
     }
 }
 
+#pragma mark - UnitSelectorViewControllerDelegate methods
+
 // Delegate method called by UnitSelectorViewController to update the distance unit
 - (void)didSelectAreaUnit:(AGSAreaUnits)unit {
     _areaUnit = unit;
     [self updateArea:unit];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissPopOver];
 }
 
 // Delegate method called by UnitSelectorViewController to update the area units
 - (void)didSelectDistanceUnit:(AGSSRUnit)unit {
     _distanceUnit = unit;
     [self updateDistance:unit];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissPopOver];
 }
 
-// Called when the button under user instructions is tapped
-- (IBAction)selectUnit {
-    // Create a UnitSelectorViewController
-    UnitSelectorViewController *inputVC = [[UnitSelectorViewController alloc] initWithNibName:@"UnitSelectorViewController" bundle:nil];
-    // Set the delegate to self
-    inputVC.delegate = self;
-    
-    // Tell the view controller wheather we want distance units or area units
-    if (self.measureMethod.selectedSegmentIndex == 0) {
-        inputVC.useAreaUnits = NO;
-    }
-    else {
-        inputVC.useAreaUnits = YES;
-    }
-    
-    // Make the contoller the correct size and style
-    inputVC.modalPresentationStyle = UIModalPresentationFormSheet;
-    inputVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    
-    [self presentViewController:inputVC animated:YES completion:nil];
-    inputVC.view.superview.bounds = CGRectMake(-150, 0, 300, 220);
-}
+//// Called when the button under user instructions is tapped
+//- (IBAction)selectUnit {
+//    // Create a UnitSelectorViewController
+//    UnitSelectorViewController *inputVC = [[UnitSelectorViewController alloc] initWithNibName:@"UnitSelectorViewController" bundle:nil];
+//    // Set the delegate to self
+//    inputVC.delegate = self;
+//    
+//    // Tell the view controller wheather we want distance units or area units
+//    if (self.measureMethod.selectedSegmentIndex == 0) {
+//        inputVC.useAreaUnits = NO;
+//    }
+//    else {
+//        inputVC.useAreaUnits = YES;
+//    }
+//    
+//    // Make the contoller the correct size and style
+//    inputVC.modalPresentationStyle = UIModalPresentationFormSheet;
+//    inputVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//    
+//    [self presentViewController:inputVC animated:YES completion:nil];
+//    inputVC.view.superview.bounds = CGRectMake(-150, 0, 300, 220);
+//}
+
+#pragma mark - actions
 
 - (IBAction)reset {
     self.userInstructions.text = @"Sketch on the map to measure distance or area";
@@ -257,6 +236,22 @@
     if ([self.sketchLayer.undoManager canRedo])
         [self.sketchLayer.undoManager redo];
     
+}
+
+- (void)dismissPopOver {
+    [self.popOverController dismissPopoverAnimated:YES];
+}
+
+#pragma mark - segues
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:kUnitSelectorSegue]) {
+        self.popOverController = [(UIStoryboardPopoverSegue*)segue popoverController];
+        UnitSelectorViewController *controller = [segue destinationViewController];
+        controller.useAreaUnits = (self.measureMethod.selectedSegmentIndex == 0) ? NO : YES;
+        
+        controller.delegate = self;
+    }
 }
 
 

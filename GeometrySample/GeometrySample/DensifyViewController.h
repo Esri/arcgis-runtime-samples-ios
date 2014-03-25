@@ -24,4 +24,6 @@
 @property (nonatomic, strong) AGSSketchGraphicsLayer *sketchLayer;
 @property (nonatomic, strong) IBOutlet UILabel *userInstructions;
 @property (nonatomic, strong) NSMutableArray *sketchGeometries;
+@property (nonatomic, assign) int densifyDistance;
+
 @end

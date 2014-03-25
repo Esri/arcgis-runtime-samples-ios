@@ -7,23 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E715CD318E1F984004FB946 /* undo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E715CD118E1F984004FB946 /* undo.png */; };
+		3E715CD418E1F984004FB946 /* undo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E715CD218E1F984004FB946 /* undo@2x.png */; };
+		3E715CD718E1FA32004FB946 /* Redo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E715CD518E1FA32004FB946 /* Redo.png */; };
+		3E715CD818E1FA32004FB946 /* Redo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E715CD618E1FA32004FB946 /* Redo@2x.png */; };
+		3EE6BBF418E1E4F00092054A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EE6BBF318E1E4F00092054A /* Storyboard.storyboard */; };
 		97B8C3EE16781467003B6E1B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B8C3ED16781467003B6E1B /* Default-568h@2x.png */; };
 		DE49071A153C8F45009D0F7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE490718153C8F45009D0F7B /* InfoPlist.strings */; };
 		DE49071C153C8F45009D0F7B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE49071B153C8F45009D0F7B /* main.m */; };
 		DE490720153C8F45009D0F7B /* AGSGeodesicSketchingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE49071F153C8F45009D0F7B /* AGSGeodesicSketchingAppDelegate.m */; };
 		DE490723153C8F45009D0F7B /* AGSGeodesicSketchingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE490722153C8F45009D0F7B /* AGSGeodesicSketchingViewController.m */; };
-		DE490726153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE490724153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPhone.xib */; };
-		DE490729153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE490727153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPad.xib */; };
 		DE6879FF1540C45B00CF0AF1 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DE6879F81540C45B00CF0AF1 /* icon.png */; };
 		DE687A001540C45B00CF0AF1 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE6879F91540C45B00CF0AF1 /* icon@2x.png */; };
-		DE687A021540C45B00CF0AF1 /* redo.gif in Resources */ = {isa = PBXBuildFile; fileRef = DE6879FB1540C45B00CF0AF1 /* redo.gif */; };
 		DE687A031540C45B00CF0AF1 /* tinyplane.png in Resources */ = {isa = PBXBuildFile; fileRef = DE6879FC1540C45B00CF0AF1 /* tinyplane.png */; };
-		DE687A041540C45B00CF0AF1 /* undo.gif in Resources */ = {isa = PBXBuildFile; fileRef = DE6879FD1540C45B00CF0AF1 /* undo.gif */; };
 		DE687A071540C54E00CF0AF1 /* AGSGeodesicSketchLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DE687A061540C54E00CF0AF1 /* AGSGeodesicSketchLayer.m */; };
 		DE7E391B1540C88F0077CB4D /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DE7E391A1540C88F0077CB4D /* ArcGIS.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E715CD118E1F984004FB946 /* undo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = undo.png; sourceTree = "<group>"; };
+		3E715CD218E1F984004FB946 /* undo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "undo@2x.png"; sourceTree = "<group>"; };
+		3E715CD518E1FA32004FB946 /* Redo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Redo.png; sourceTree = "<group>"; };
+		3E715CD618E1FA32004FB946 /* Redo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Redo@2x.png"; sourceTree = "<group>"; };
+		3EE6BBF318E1E4F00092054A /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = GeodesicSketchingSample/Storyboard.storyboard; sourceTree = "<group>"; };
 		97B8C3ED16781467003B6E1B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		DE49070B153C8F45009D0F7B /* GeodesicSketchingSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeodesicSketchingSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE490717153C8F45009D0F7B /* GeodesicSketchingSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GeodesicSketchingSample-Info.plist"; sourceTree = "<group>"; };
@@ -34,14 +40,10 @@
 		DE49071F153C8F45009D0F7B /* AGSGeodesicSketchingAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AGSGeodesicSketchingAppDelegate.m; sourceTree = "<group>"; };
 		DE490721153C8F45009D0F7B /* AGSGeodesicSketchingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGSGeodesicSketchingViewController.h; sourceTree = "<group>"; };
 		DE490722153C8F45009D0F7B /* AGSGeodesicSketchingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AGSGeodesicSketchingViewController.m; sourceTree = "<group>"; };
-		DE490725153C8F45009D0F7B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AGSGeodesicSketchingViewController_iPhone.xib; sourceTree = "<group>"; };
-		DE490728153C8F45009D0F7B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AGSGeodesicSketchingViewController_iPad.xib; sourceTree = "<group>"; };
 		DE6879F81540C45B00CF0AF1 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		DE6879F91540C45B00CF0AF1 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		DE6879FA1540C45B00CF0AF1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DE6879FB1540C45B00CF0AF1 /* redo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = redo.gif; sourceTree = "<group>"; };
 		DE6879FC1540C45B00CF0AF1 /* tinyplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tinyplane.png; sourceTree = "<group>"; };
-		DE6879FD1540C45B00CF0AF1 /* undo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = undo.gif; sourceTree = "<group>"; };
 		DE687A051540C54E00CF0AF1 /* AGSGeodesicSketchLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSGeodesicSketchLayer.h; sourceTree = "<group>"; };
 		DE687A061540C54E00CF0AF1 /* AGSGeodesicSketchLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSGeodesicSketchLayer.m; sourceTree = "<group>"; };
 		DE7E391A1540C88F0077CB4D /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
@@ -58,10 +60,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E715CD018E1F670004FB946 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				3E715CD518E1FA32004FB946 /* Redo.png */,
+				3E715CD618E1FA32004FB946 /* Redo@2x.png */,
+				3E715CD118E1F984004FB946 /* undo.png */,
+				3E715CD218E1F984004FB946 /* undo@2x.png */,
+				97B8C3ED16781467003B6E1B /* Default-568h@2x.png */,
+				DE6879F81540C45B00CF0AF1 /* icon.png */,
+				DE6879F91540C45B00CF0AF1 /* icon@2x.png */,
+				DE6879FC1540C45B00CF0AF1 /* tinyplane.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		3E715CD918E1FF54004FB946 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DE490721153C8F45009D0F7B /* AGSGeodesicSketchingViewController.h */,
+				DE490722153C8F45009D0F7B /* AGSGeodesicSketchingViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3E715CDA18E1FF7B004FB946 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				DE687A051540C54E00CF0AF1 /* AGSGeodesicSketchLayer.h */,
+				DE687A061540C54E00CF0AF1 /* AGSGeodesicSketchLayer.m */,
+			);
+			name = Layers;
+			sourceTree = "<group>";
+		};
 		DE490700153C8F44009D0F7B = {
 			isa = PBXGroup;
 			children = (
-				DE7E391A1540C88F0077CB4D /* ArcGIS.bundle */,
+				3EE6BBF318E1E4F00092054A /* Storyboard.storyboard */,
 				DE490715153C8F45009D0F7B /* GeodesicSketchingSample */,
 				DE49070E153C8F45009D0F7B /* Frameworks */,
 				DE49070C153C8F45009D0F7B /* Products */,
@@ -79,6 +114,7 @@
 		DE49070E153C8F45009D0F7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DE7E391A1540C88F0077CB4D /* ArcGIS.bundle */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -86,15 +122,11 @@
 		DE490715153C8F45009D0F7B /* GeodesicSketchingSample */ = {
 			isa = PBXGroup;
 			children = (
-				DE6879F61540C44A00CF0AF1 /* Resources */,
+				3E715CDA18E1FF7B004FB946 /* Layers */,
+				3E715CD918E1FF54004FB946 /* Controllers */,
 				DE49071E153C8F45009D0F7B /* AGSGeodesicSketchingAppDelegate.h */,
 				DE49071F153C8F45009D0F7B /* AGSGeodesicSketchingAppDelegate.m */,
-				DE490721153C8F45009D0F7B /* AGSGeodesicSketchingViewController.h */,
-				DE687A051540C54E00CF0AF1 /* AGSGeodesicSketchLayer.h */,
-				DE687A061540C54E00CF0AF1 /* AGSGeodesicSketchLayer.m */,
-				DE490722153C8F45009D0F7B /* AGSGeodesicSketchingViewController.m */,
-				DE490724153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPhone.xib */,
-				DE490727153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPad.xib */,
+				DE6879F61540C44A00CF0AF1 /* Resources */,
 				DE490716153C8F45009D0F7B /* Supporting Files */,
 			);
 			path = GeodesicSketchingSample;
@@ -114,13 +146,8 @@
 		DE6879F61540C44A00CF0AF1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				97B8C3ED16781467003B6E1B /* Default-568h@2x.png */,
-				DE6879F81540C45B00CF0AF1 /* icon.png */,
-				DE6879F91540C45B00CF0AF1 /* icon@2x.png */,
+				3E715CD018E1F670004FB946 /* Images */,
 				DE6879FA1540C45B00CF0AF1 /* Info.plist */,
-				DE6879FB1540C45B00CF0AF1 /* redo.gif */,
-				DE6879FC1540C45B00CF0AF1 /* tinyplane.png */,
-				DE6879FD1540C45B00CF0AF1 /* undo.gif */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -176,15 +203,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE49071A153C8F45009D0F7B /* InfoPlist.strings in Resources */,
-				DE490726153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPhone.xib in Resources */,
-				DE490729153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPad.xib in Resources */,
+				3E715CD318E1F984004FB946 /* undo.png in Resources */,
+				3EE6BBF418E1E4F00092054A /* Storyboard.storyboard in Resources */,
+				3E715CD818E1FA32004FB946 /* Redo@2x.png in Resources */,
 				DE6879FF1540C45B00CF0AF1 /* icon.png in Resources */,
 				DE687A001540C45B00CF0AF1 /* icon@2x.png in Resources */,
-				DE687A021540C45B00CF0AF1 /* redo.gif in Resources */,
 				DE687A031540C45B00CF0AF1 /* tinyplane.png in Resources */,
-				DE687A041540C45B00CF0AF1 /* undo.gif in Resources */,
 				DE7E391B1540C88F0077CB4D /* ArcGIS.bundle in Resources */,
+				3E715CD718E1FA32004FB946 /* Redo.png in Resources */,
 				97B8C3EE16781467003B6E1B /* Default-568h@2x.png in Resources */,
+				3E715CD418E1F984004FB946 /* undo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,22 +239,6 @@
 				DE490719153C8F45009D0F7B /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		DE490724153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DE490725153C8F45009D0F7B /* en */,
-			);
-			name = AGSGeodesicSketchingViewController_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		DE490727153C8F45009D0F7B /* AGSGeodesicSketchingViewController_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DE490728153C8F45009D0F7B /* en */,
-			);
-			name = AGSGeodesicSketchingViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

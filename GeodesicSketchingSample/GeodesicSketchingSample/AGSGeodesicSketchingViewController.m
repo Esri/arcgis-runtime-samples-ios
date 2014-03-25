@@ -13,34 +13,15 @@
 #import "AGSGeodesicSketchingViewController.h"
 #import "AGSGeodesicSketchLayer.h"
 
-@interface AGSGeodesicSketchingViewController() {
-    AGSMapView *_mapView;
-    AGSGraphicsLayer *_graphicsLayer;
-    AGSGeodesicSketchLayer *_sketchLayer;
-    AGSGeometryEngine *_geometryEngine;
-    UIBarButtonItem *_addButton;
-    UIBarButtonItem *_undoButton;
-    UIBarButtonItem *_resetButton;
-    UIBarButtonItem *_redoButton;
-    UILabel *_bannerLabel;
-    double _currentDistance;
-}
+@interface AGSGeodesicSketchingViewController()
+
+@property (nonatomic, assign) double currentDistance;
 
 - (void)enableSketching;
 
 @end
 
 @implementation AGSGeodesicSketchingViewController
-@synthesize redoButton = _redoButton;
-@synthesize bannerLabel = _bannerLabel;
-@synthesize resetButton = _resetButton;
-@synthesize undoButton = _undoButton;
-@synthesize addButton = _addButton;
-@synthesize mapView = _mapView;
-@synthesize graphicsLayer = _graphicsLayer;
-@synthesize sketchLayer = _sketchLayer;
-@synthesize geometryEngine = _geometryEngine;
-
 
 #pragma mark - View lifecycle
 

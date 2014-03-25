@@ -25,21 +25,6 @@
 
 @implementation CustomWebViewController
 
-@synthesize webView = _webView;
-@synthesize reloadTimer = _reloadTimer;
-
-
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithNibName:@"CustomWebViewController" bundle:nil];
-    if (self) {
-        self.view.frame = frame;
-        self.view.userInteractionEnabled = NO;
-        self.view.alpha = .9;
-    }
-    return self;
-}
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -53,7 +38,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.view.userInteractionEnabled = NO;
+    self.view.alpha = .9;
+    [self.webView setScalesPageToFit:YES];
 }
 
 - (void)viewDidUnload

@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3EE6BBE018DCBCE80092054A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EE6BBDF18DCBCE80092054A /* Storyboard.storyboard */; };
 		97B8C3A716780163003B6E1B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B8C3A616780163003B6E1B /* Default-568h@2x.png */; };
 		C52E8F611475F164008F22F4 /* FireStation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C52E8F5F1475F164008F22F4 /* FireStation@2x.png */; };
 		C52E8F621475F164008F22F4 /* FireStation.png in Resources */ = {isa = PBXBuildFile; fileRef = C52E8F601475F164008F22F4 /* FireStation.png */; };
 		C52E8F661476EB7D008F22F4 /* CustomWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C52E8F641476EB7D008F22F4 /* CustomWebViewController.m */; };
-		C52E8F671476EB7D008F22F4 /* CustomWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C52E8F651476EB7D008F22F4 /* CustomWebViewController.xib */; };
 		C52E8F6B14770826008F22F4 /* CustomHybridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C52E8F6914770826008F22F4 /* CustomHybridViewController.m */; };
-		C52E8F6C14770826008F22F4 /* CustomHybridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C52E8F6A14770826008F22F4 /* CustomHybridViewController.xib */; };
-		C53ACA661486E70400146549 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C53ACA641486E70400146549 /* MainWindow-iPad.xib */; };
 		C5675FA4148442D10057CB09 /* TrafficCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = C5675FA3148442D10057CB09 /* TrafficCamera.png */; };
 		C5675FA7148443300057CB09 /* TrafficCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5675FA6148443300057CB09 /* TrafficCamera@2x.png */; };
 		C5675FA9148443660057CB09 /* Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = C5675FA8148443660057CB09 /* Phone.png */; };
@@ -26,9 +24,7 @@
 		C56B3F6514C6033A003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B3F6414C6033A003A46EB /* ArcGIS.bundle */; };
 		C58F01A014056FC400C80593 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C58F019F14056FC400C80593 /* main.m */; };
 		C58F01A314056FC400C80593 /* CustomCalloutSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C58F01A214056FC400C80593 /* CustomCalloutSampleAppDelegate.m */; };
-		C58F01A614056FC400C80593 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C58F01A414056FC400C80593 /* MainWindow.xib */; };
 		C58F01AB14056FC400C80593 /* CustomCalloutSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C58F01AA14056FC400C80593 /* CustomCalloutSampleViewController.m */; };
-		C58F01AE14056FC400C80593 /* CustomCalloutSampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C58F01AC14056FC400C80593 /* CustomCalloutSampleViewController.xib */; };
 		C59993EC14858BF00058F8C2 /* Building.png in Resources */ = {isa = PBXBuildFile; fileRef = C59993EA14858BF00058F8C2 /* Building.png */; };
 		C59993ED14858BF00058F8C2 /* Building@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C59993EB14858BF00058F8C2 /* Building@2x.png */; };
 		C59993F3148591D30058F8C2 /* ZoomIn.png in Resources */ = {isa = PBXBuildFile; fileRef = C59993EF148591D30058F8C2 /* ZoomIn.png */; };
@@ -40,16 +36,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3EE6BBDF18DCBCE80092054A /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = CustomCalloutSample/Storyboard.storyboard; sourceTree = "<group>"; };
 		97B8C3A616780163003B6E1B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		C52E8F5F1475F164008F22F4 /* FireStation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FireStation@2x.png"; sourceTree = "<group>"; };
 		C52E8F601475F164008F22F4 /* FireStation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FireStation.png; sourceTree = "<group>"; };
 		C52E8F631476EB7D008F22F4 /* CustomWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWebViewController.h; sourceTree = "<group>"; };
 		C52E8F641476EB7D008F22F4 /* CustomWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWebViewController.m; sourceTree = "<group>"; };
-		C52E8F651476EB7D008F22F4 /* CustomWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomWebViewController.xib; sourceTree = "<group>"; };
 		C52E8F6814770826008F22F4 /* CustomHybridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomHybridViewController.h; sourceTree = "<group>"; };
 		C52E8F6914770826008F22F4 /* CustomHybridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomHybridViewController.m; sourceTree = "<group>"; };
-		C52E8F6A14770826008F22F4 /* CustomHybridViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomHybridViewController.xib; sourceTree = "<group>"; };
-		C53ACA651486E70400146549 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		C5675FA3148442D10057CB09 /* TrafficCamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrafficCamera.png; sourceTree = "<group>"; };
 		C5675FA6148443300057CB09 /* TrafficCamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrafficCamera@2x.png"; sourceTree = "<group>"; };
 		C5675FA8148443660057CB09 /* Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Phone.png; sourceTree = "<group>"; };
@@ -65,10 +59,8 @@
 		C58F019F14056FC400C80593 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C58F01A114056FC400C80593 /* CustomCalloutSampleAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCalloutSampleAppDelegate.h; sourceTree = "<group>"; };
 		C58F01A214056FC400C80593 /* CustomCalloutSampleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutSampleAppDelegate.m; sourceTree = "<group>"; };
-		C58F01A514056FC400C80593 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		C58F01A914056FC400C80593 /* CustomCalloutSampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCalloutSampleViewController.h; sourceTree = "<group>"; };
 		C58F01AA14056FC400C80593 /* CustomCalloutSampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutSampleViewController.m; sourceTree = "<group>"; };
-		C58F01AD14056FC400C80593 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CustomCalloutSampleViewController.xib; sourceTree = "<group>"; };
 		C59993EA14858BF00058F8C2 /* Building.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Building.png; sourceTree = "<group>"; };
 		C59993EB14858BF00058F8C2 /* Building@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Building@2x.png"; sourceTree = "<group>"; };
 		C59993EF148591D30058F8C2 /* ZoomIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZoomIn.png; sourceTree = "<group>"; };
@@ -90,64 +82,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C53ACA631486E70200146549 /* iPad */ = {
+		3EE6BBE118DCE6210092054A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C53ACA641486E70400146549 /* MainWindow-iPad.xib */,
+				C58F01A914056FC400C80593 /* CustomCalloutSampleViewController.h */,
+				C58F01AA14056FC400C80593 /* CustomCalloutSampleViewController.m */,
+				C52E8F631476EB7D008F22F4 /* CustomWebViewController.h */,
+				C52E8F641476EB7D008F22F4 /* CustomWebViewController.m */,
+				C52E8F6814770826008F22F4 /* CustomHybridViewController.h */,
+				C52E8F6914770826008F22F4 /* CustomHybridViewController.m */,
 			);
-			name = iPad;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
-		C58F017914056FC300C80593 = {
-			isa = PBXGroup;
-			children = (
-				C56B3F6414C6033A003A46EB /* ArcGIS.bundle */,
-				C58F019814056FC400C80593 /* CustomCalloutSample */,
-				C58F018714056FC400C80593 /* Frameworks */,
-				C58F018514056FC300C80593 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		C58F018514056FC300C80593 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C58F018414056FC300C80593 /* CustomCalloutSample.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		C58F018714056FC400C80593 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		C58F019814056FC400C80593 /* CustomCalloutSample */ = {
+		3EE6BBE218DCE64D0092054A /* Images */ = {
 			isa = PBXGroup;
 			children = (
 				97B8C3A616780163003B6E1B /* Default-568h@2x.png */,
-				C53ACA631486E70200146549 /* iPad */,
-				C58F01A114056FC400C80593 /* CustomCalloutSampleAppDelegate.h */,
-				C58F01A214056FC400C80593 /* CustomCalloutSampleAppDelegate.m */,
-				C58F01A414056FC400C80593 /* MainWindow.xib */,
-				C58F01A914056FC400C80593 /* CustomCalloutSampleViewController.h */,
-				C58F01AA14056FC400C80593 /* CustomCalloutSampleViewController.m */,
-				C58F01AC14056FC400C80593 /* CustomCalloutSampleViewController.xib */,
-				C58F019914056FC400C80593 /* Supporting Files */,
-				C52E8F631476EB7D008F22F4 /* CustomWebViewController.h */,
-				C52E8F641476EB7D008F22F4 /* CustomWebViewController.m */,
-				C52E8F651476EB7D008F22F4 /* CustomWebViewController.xib */,
-				C52E8F6814770826008F22F4 /* CustomHybridViewController.h */,
-				C52E8F6914770826008F22F4 /* CustomHybridViewController.m */,
-				C52E8F6A14770826008F22F4 /* CustomHybridViewController.xib */,
-			);
-			path = CustomCalloutSample;
-			sourceTree = "<group>";
-		};
-		C58F019914056FC400C80593 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				C5EBE69F1486E94100358A9B /* icon.png */,
 				C5EBE6A01486E94100358A9B /* icon@2x.png */,
 				C59993EF148591D30058F8C2 /* ZoomIn.png */,
@@ -166,6 +117,51 @@
 				C5675FA3148442D10057CB09 /* TrafficCamera.png */,
 				C52E8F5F1475F164008F22F4 /* FireStation@2x.png */,
 				C52E8F601475F164008F22F4 /* FireStation.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		C58F017914056FC300C80593 = {
+			isa = PBXGroup;
+			children = (
+				3EE6BBDF18DCBCE80092054A /* Storyboard.storyboard */,
+				C58F019814056FC400C80593 /* CustomCalloutSample */,
+				C58F018714056FC400C80593 /* Frameworks */,
+				C58F018514056FC300C80593 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C58F018514056FC300C80593 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C58F018414056FC300C80593 /* CustomCalloutSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C58F018714056FC400C80593 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C56B3F6414C6033A003A46EB /* ArcGIS.bundle */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C58F019814056FC400C80593 /* CustomCalloutSample */ = {
+			isa = PBXGroup;
+			children = (
+				3EE6BBE118DCE6210092054A /* Controllers */,
+				C58F01A114056FC400C80593 /* CustomCalloutSampleAppDelegate.h */,
+				C58F01A214056FC400C80593 /* CustomCalloutSampleAppDelegate.m */,
+				C58F019914056FC400C80593 /* Supporting Files */,
+			);
+			path = CustomCalloutSample;
+			sourceTree = "<group>";
+		};
+		C58F019914056FC400C80593 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3EE6BBE218DCE64D0092054A /* Images */,
 				C58F019A14056FC400C80593 /* CustomCalloutSample-Info.plist */,
 				C58F019E14056FC400C80593 /* CustomCalloutSample-Prefix.pch */,
 				C58F019F14056FC400C80593 /* main.m */,
@@ -223,15 +219,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C58F01A614056FC400C80593 /* MainWindow.xib in Resources */,
-				C58F01AE14056FC400C80593 /* CustomCalloutSampleViewController.xib in Resources */,
 				C52E8F611475F164008F22F4 /* FireStation@2x.png in Resources */,
 				C52E8F621475F164008F22F4 /* FireStation.png in Resources */,
-				C52E8F671476EB7D008F22F4 /* CustomWebViewController.xib in Resources */,
-				C52E8F6C14770826008F22F4 /* CustomHybridViewController.xib in Resources */,
 				C5675FA4148442D10057CB09 /* TrafficCamera.png in Resources */,
 				C5675FA7148443300057CB09 /* TrafficCamera@2x.png in Resources */,
 				C5675FA9148443660057CB09 /* Phone.png in Resources */,
+				3EE6BBE018DCBCE80092054A /* Storyboard.storyboard in Resources */,
 				C5675FAB148444160057CB09 /* McDonalds.png in Resources */,
 				C5675FAD148444610057CB09 /* Phone@2x.png in Resources */,
 				C5675FAF1484448B0057CB09 /* McDonalds@2x.png in Resources */,
@@ -243,7 +236,6 @@
 				C59993F4148591D30058F8C2 /* ZoomIn@2x.png in Resources */,
 				C59993F5148591D30058F8C2 /* ZoomOut@2x.png in Resources */,
 				C59993F6148591D30058F8C2 /* ZoomOut.png in Resources */,
-				C53ACA661486E70400146549 /* MainWindow-iPad.xib in Resources */,
 				C5EBE6A11486E94100358A9B /* icon.png in Resources */,
 				C5EBE6A21486E94100358A9B /* icon@2x.png in Resources */,
 				C56B3F6514C6033A003A46EB /* ArcGIS.bundle in Resources */,
@@ -267,33 +259,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		C53ACA641486E70400146549 /* MainWindow-iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C53ACA651486E70400146549 /* en */,
-			);
-			name = "MainWindow-iPad.xib";
-			sourceTree = "<group>";
-		};
-		C58F01A414056FC400C80593 /* MainWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C58F01A514056FC400C80593 /* en */,
-			);
-			name = MainWindow.xib;
-			sourceTree = "<group>";
-		};
-		C58F01AC14056FC400C80593 /* CustomCalloutSampleViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C58F01AD14056FC400C80593 /* en */,
-			);
-			name = CustomCalloutSampleViewController.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C58F01AF14056FC400C80593 /* Debug */ = {

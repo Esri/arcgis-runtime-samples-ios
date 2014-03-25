@@ -15,22 +15,6 @@
 
 @implementation SettingsViewController
 
-@synthesize facilityCount = _facilityCount, cutoffTime = _cutoffTime;
-@synthesize facilityCountLabel = _facilityCountLabel, cutoffTimeLabel = _cutoffTimeLabel;
-
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        //do any initiation here if needed. 
-        _facilityCount = 3;
-        _cutoffTime = 10;
-    }
-    return self;
-}
-
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -45,6 +29,12 @@
 {
     [super viewDidLoad];
     
+    //reflect default values in sliders
+    self.facilityCountSlider.value = [self.parameters.facilityCount intValue];
+    self.facilityCountLabel.text = [NSString stringWithFormat:@"%@", self.parameters.facilityCount];
+    
+    self.cutOffTimeSlider.value = [self.parameters.cutoffTime intValue];
+    self.cutoffTimeLabel.text = [NSString stringWithFormat:@"%@", self.parameters.cutoffTime];
 }
 
 - (void)viewDidUnload
@@ -65,15 +55,15 @@
 
 - (IBAction)facilityCountChanged:(id)sender {    
     UISlider *facilityCountSlider = (UISlider *) sender;
-    _facilityCount = facilityCountSlider.value;
-    self.facilityCountLabel.text = [NSString stringWithFormat:@"%d", _facilityCount];
+    self.parameters.facilityCount = [NSNumber numberWithInt:facilityCountSlider.value];
+    self.facilityCountLabel.text = [NSString stringWithFormat:@"%@", self.parameters.facilityCount];
 }
 
 
 - (IBAction)cutoffTimeChanged:(id)sender {
     UISlider *cutoffTimeSlider = (UISlider *) sender;
-    _cutoffTime = cutoffTimeSlider.value;
-    self.cutoffTimeLabel.text = [NSString stringWithFormat:@"%d", _cutoffTime];
+    self.parameters.cutoffTime = [NSNumber numberWithInt:cutoffTimeSlider.value];
+    self.cutoffTimeLabel.text = [NSString stringWithFormat:@"%@", self.parameters.cutoffTime];
 }
 
 - (IBAction)done:(id)sender {

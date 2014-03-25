@@ -11,22 +11,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Parameters.h"
 
+@interface SettingsViewController : UIViewController
 
-@interface SettingsViewController : UIViewController {
-    
-    
-    NSUInteger _facilityCount;
-    NSUInteger _cutoffTime;
-    
-    UILabel *_facilityCountLabel;
-    UILabel *_cutoffTimeLabel;
-}
-
-@property (nonatomic, readonly) NSUInteger facilityCount;
-@property (nonatomic, readonly) NSUInteger cutoffTime;
 @property (nonatomic, strong) IBOutlet UILabel *facilityCountLabel;
 @property (nonatomic, strong) IBOutlet UILabel *cutoffTimeLabel;
+@property (nonatomic, strong) Parameters *parameters;
+
+@property (weak, nonatomic) IBOutlet UISlider *facilityCountSlider;
+@property (weak, nonatomic) IBOutlet UISlider *cutOffTimeSlider;
 
 - (IBAction)facilityCountChanged:(id)sender;
 - (IBAction)cutoffTimeChanged:(id)sender;

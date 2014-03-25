@@ -17,7 +17,6 @@
 @interface SettingsViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray* materialArray;
-@property (nonatomic, strong) NSMutableDictionary *parameterDic;
 
 @property (nonatomic, strong) IBOutlet UILabel *materialLabel;
 @property (nonatomic, strong) IBOutlet UISegmentedControl *timeSwitch;

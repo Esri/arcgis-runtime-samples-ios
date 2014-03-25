@@ -24,8 +24,6 @@
 
 @implementation CustomHybridViewController
 
-@synthesize hybridView = _hybridView;
-
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -58,10 +56,10 @@
 {
     [super viewDidLoad];
     
-    //initialize the open street map layer
-    AGSOpenStreetMapLayer *streetMapLayer = [[AGSOpenStreetMapLayer alloc] init];
+    //initialize the satellite imagery layer
+    AGSOpenStreetMapLayer *satelliteImageryLayer = [AGSTiledMapServiceLayer tiledMapServiceLayerWithURL:[NSURL URLWithString:@"http://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer"]];
     //add the bing map layer to the hybrid map view
-    [self.hybridView addMapLayer:streetMapLayer withName:@"StreetMap"];
+    [self.hybridView addMapLayer:satelliteImageryLayer withName:@"Satellite "];
 }
 
 - (void)viewDidUnload
@@ -79,19 +77,9 @@
 
 -(void)showHybridMapAtGraphic:(AGSGraphic*)graphic
 {
-	
-    //getting the scale of the hybrid map view
-	double scale = self.hybridView.mapScale;
-    
-    //this is the scale that we are interested in for a particular point
-	double targetScale = 10000;
-    
-    //zooms to the appropriate scale. 
-	[self.hybridView zoomWithFactor:targetScale/scale atAnchorPoint:CGPointZero animated:NO];
-    
-    //center the hybrid
-	[self.hybridView centerAtPoint:graphic.geometry.envelope.center animated:YES];
-	
+	//Zoom in to the building footprint
+    //Resolution 0.597 = Level 18 of the tiled map service
+    [self.hybridView zoomToResolution:0.597 withCenterPoint:graphic.geometry.envelope.center animated:YES];
 }
 
 #pragma mark - Action Methods

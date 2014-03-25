@@ -41,6 +41,7 @@
         [self updateLogWithString:@"Signing in..."];
     }
     else {
+        //update UI and wait for user to sign in
         [self updateLogWithString:@""];
         [self updateStatusWithCredential:nil];
     }
@@ -49,13 +50,15 @@
 - (IBAction)signInAction:(id)sender {
     
     if (self.signedIn) {
+        //User wants to sign out, reset saved information
         [[LicenseHelper sharedLicenseHelper] resetSavedInformation];
         [self updateLogWithString:@"The application has been signed out and all saved license and credential information has been deleted."];
-      self.networkImageView.image = nil;
-      self.portalConnectionLabel.text = @"";
-      [self updateStatusWithCredential:nil];
+        self.networkImageView.image = nil;
+        self.portalConnectionLabel.text = @"";
+        [self updateStatusWithCredential:nil];
     }
     else {
+        //Use the helper to allow the user to sign in and license the app
         [[LicenseHelper sharedLicenseHelper] standardLicenseFromPortal:[NSURL URLWithString:kPortalUrl]
                 parentViewController:self
               completion:^(AGSLicenseResult licenseResult, BOOL usedSavedLicenseInfo, AGSPortal *portal, AGSCredential *credential, NSError *error) {

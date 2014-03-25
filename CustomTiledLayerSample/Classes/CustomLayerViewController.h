@@ -13,9 +13,7 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface CustomLayerViewController : UIViewController {
-	AGSMapView *_mapView;
-}
+@interface CustomLayerViewController : UIViewController 
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
 

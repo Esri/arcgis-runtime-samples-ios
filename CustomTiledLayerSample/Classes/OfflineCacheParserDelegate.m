@@ -15,17 +15,6 @@
 
 @implementation OfflineCacheParserDelegate
 
-@synthesize currentElement = _currentElement;
-@synthesize tileFormat = _tileFormat;
-@synthesize WKT = _WKT;
-@synthesize tileOrigin = _tileOrigin;
-@synthesize lod = _lod;
-@synthesize lods = _lods;
-@synthesize spatialReference = _spatialReference;
-@synthesize fullEnvelope = _fullEnvelope;
-@synthesize tileInfo = _tileCacheInfo;
-@synthesize error = _error;
-
 #pragma mark -
 #pragma mark NSXMLParserDelegate methods
 

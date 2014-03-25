@@ -9,9 +9,8 @@
 /* Begin PBXBuildFile section */
 		1D3623260D0F684500981E51 /* CustomLayerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* CustomLayerAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		2899E5220DE3E06400AC0155 /* CustomLayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* CustomLayerViewController.xib */; };
-		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* CustomLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* CustomLayerViewController.m */; };
+		3EE6BBE418DCED060092054A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EE6BBE318DCED060092054A /* Storyboard.storyboard */; };
 		9721FCA41282152B00CF5485 /* OfflineCacheParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9721FC9F1282152B00CF5485 /* OfflineCacheParserDelegate.m */; };
 		9721FCA51282152B00CF5485 /* OfflineTiledLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9721FCA11282152B00CF5485 /* OfflineTiledLayer.m */; };
 		9721FCA61282152B00CF5485 /* OfflineTileOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9721FCA31282152B00CF5485 /* OfflineTileOperation.m */; };
@@ -27,12 +26,11 @@
 		1D3623240D0F684500981E51 /* CustomLayerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLayerAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* CustomLayerAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLayerAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* CustomTiledLayerSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomTiledLayerSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2899E5210DE3E06400AC0155 /* CustomLayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomLayerViewController.xib; sourceTree = "<group>"; };
-		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		28D7ACF60DDB3853001CB0EB /* CustomLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLayerViewController.h; sourceTree = "<group>"; };
 		28D7ACF70DDB3853001CB0EB /* CustomLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLayerViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* CustomTiledLayerSample_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTiledLayerSample_Prefix.pch; sourceTree = "<group>"; };
+		3EE6BBE318DCED060092054A /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CustomTiledLayerSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CustomTiledLayerSample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9721FC9E1282152B00CF5485 /* OfflineCacheParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineCacheParserDelegate.h; sourceTree = "<group>"; };
 		9721FC9F1282152B00CF5485 /* OfflineCacheParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineCacheParserDelegate.m; sourceTree = "<group>"; };
@@ -82,7 +80,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				C56B3F7314C6041D003A46EB /* ArcGIS.bundle */,
+				3EE6BBE318DCED060092054A /* Storyboard.storyboard */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -109,8 +107,6 @@
 				9755BA37167BB57C00518E4D /* Default-568h@2x.png */,
 				97B273E81288D5F800CF17E5 /* icon@2x.png */,
 				97B273E91288D5F800CF17E5 /* icon.png */,
-				2899E5210DE3E06400AC0155 /* CustomLayerViewController.xib */,
-				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* CustomTiledLayerSample-Info.plist */,
 			);
 			name = Resources;
@@ -119,6 +115,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C56B3F7314C6041D003A46EB /* ArcGIS.bundle */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -196,8 +193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				2899E5220DE3E06400AC0155 /* CustomLayerViewController.xib in Resources */,
+				3EE6BBE418DCED060092054A /* Storyboard.storyboard in Resources */,
 				AF6FBC8C12550E5300F476B4 /* MainWindow-iPad.xib in Resources */,
 				97CC0948128342B00002F66E /* cache_World in Resources */,
 				97B273EA1288D5F800CF17E5 /* icon@2x.png in Resources */,

@@ -16,12 +16,6 @@
 
 @implementation OfflineTileOperation
 
-@synthesize tileKey;
-@synthesize target;
-@synthesize action;
-@synthesize allLayersPath;
-@synthesize imageData;
-
 - (id)initWithTileKey:(AGSTileKey *)tk dataFramePath:(NSString *)path target:(id)t action:(SEL)a {
 	
 	if (self = [super init]) {
@@ -42,11 +36,11 @@
 	//Fetch the tile for the requested Level, Row, Column
 	@try {
 		//Level ('L' followed by 2 decimal digits)
-		NSString *decLevel = [NSString stringWithFormat:@"L%02d",self.tileKey.level];
+		NSString *decLevel = [NSString stringWithFormat:@"L%02ld",(long)self.tileKey.level];
 		//Row ('R' followed by 8 hex digits)
-		NSString *hexRow = [NSString stringWithFormat:@"R%08x",self.tileKey.row];
+		NSString *hexRow = [NSString stringWithFormat:@"R%08lx",(long)self.tileKey.row];
 		//Column ('C' followed by 8 hex digits)  
-		NSString *hexCol = [NSString stringWithFormat:@"C%08x",self.tileKey.column];
+		NSString *hexCol = [NSString stringWithFormat:@"C%08lx",(long)self.tileKey.column];
 		
 		NSString* dir = [self.allLayersPath stringByAppendingFormat:@"/%@/%@",decLevel,hexRow];
 		

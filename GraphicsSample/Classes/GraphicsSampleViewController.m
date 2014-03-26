@@ -14,13 +14,9 @@
 #import "CountyInfoTemplate.h"
 #import "FeatureDetailsViewController.h"
 
+#define kFeatureDetailControllerIdentifier @"FeatureDetailViewController"
 
 @implementation GraphicsSampleViewController
-
-@synthesize mapView = _mapView;
-@synthesize countyGraphicsLayer = _countyGraphicsLayer, countyQueryTask = _countyQueryTask;
-@synthesize cityGraphicsLayer = _cityGraphicsLayer, cityQueryTask = _cityQueryTask;
-@synthesize countyInfoTemplate = _countyInfoTemplate;
 
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
@@ -117,9 +113,6 @@
     self.cityQueryTask = nil;
 }
 
-
-
-
 - (IBAction)toggleGraphicsLayer:(id)sender {
 	
 	//toggles between Cities and Counties graphics layer
@@ -172,13 +165,20 @@
 
 //when a user clicks the detail disclosure button on the call out
 - (void) didClickAccessoryButtonForCallout:		(AGSCallout *) 	callout	{
-    //lazily create the view for the feature details
-    FeatureDetailsViewController *featureDetailsView = [[FeatureDetailsViewController alloc] initWithNibName:@"FeatureDetailsView"
-                                                                                                      bundle:nil];
-    //give feature info to details view and push on to stack (i.e. make it visible)
-	featureDetailsView.feature = (AGSGraphic*)callout.representedObject;
-    featureDetailsView.displayFieldName = @"NAME";
-    [self.navigationController pushViewController:featureDetailsView animated:YES];
+    //
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
+    FeatureDetailsViewController *featureDetailsViewController = [storyboard instantiateViewControllerWithIdentifier:kFeatureDetailControllerIdentifier];
+
+	featureDetailsViewController.feature = (AGSGraphic*)callout.representedObject;
+    featureDetailsViewController.displayFieldName = @"NAME";
+    
+    if ([[AGSDevice currentDevice] isIPad]) {
+        [featureDetailsViewController setModalPresentationStyle:UIModalPresentationFormSheet];
+        [self.navigationController presentViewController:featureDetailsViewController animated:YES completion:nil];
+    }
+    else {
+        [self.navigationController presentViewController:featureDetailsViewController animated:YES completion:nil];
+    }
 }
 
 

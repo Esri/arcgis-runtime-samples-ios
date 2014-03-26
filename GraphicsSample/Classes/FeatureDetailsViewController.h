@@ -14,16 +14,7 @@
 #import <ArcGIS/ArcGIS.h>
 
 //this class representas the table view that will display all the attributes from a callout window 
-@interface FeatureDetailsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
-    UITableView *detailsTable;
-    
-    AGSGraphic *feature;
-    NSString *displayFieldName;
-    
-@private
-    NSArray *keys;
-    NSMutableArray *aliases;
-}
+@interface FeatureDetailsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *detailsTable;
 

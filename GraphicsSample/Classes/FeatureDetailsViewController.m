@@ -12,41 +12,14 @@
 
 #import "FeatureDetailsViewController.h"
 
+@interface FeatureDetailsViewController ()
+
+@property (nonatomic, strong) NSArray *keys;
+@property (nonatomic, strong) NSMutableArray *aliases;
+
+@end
 
 @implementation FeatureDetailsViewController
-
-@synthesize detailsTable, feature, displayFieldName;
-
-/*
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
-
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-*/
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
@@ -69,7 +42,7 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.title = [feature attributeAsStringForKey:displayFieldName];
+    self.title = [self.feature attributeAsStringForKey:self.displayFieldName];
     [self.detailsTable reloadData];
 }
 
@@ -77,22 +50,22 @@
 
 //get the attributes
 - (void)setFeature:(AGSGraphic *)f {
-    feature = f;
+    _feature = f;
     
     
-    NSDictionary *theDict = [feature allAttributes];
+    NSDictionary *theDict = [self.feature allAttributes];
     NSArray *allKeys = [theDict allKeys];
-    keys = allKeys;
-    aliases = (NSMutableArray*)keys;
+    self.keys = allKeys;
+    self.aliases = (NSMutableArray*)self.keys;
 }
 
 //get the field aliases
 - (void)setFieldAliases:(NSDictionary *)fa {
-    if (keys) {
+    if (self.keys) {
 
-        aliases = [[NSMutableArray alloc] initWithCapacity:[keys count]];
-        for (NSString *key in keys) {
-            [aliases addObject:[fa valueForKey:key]];
+        _aliases = [[NSMutableArray alloc] initWithCapacity:[self.keys count]];
+        for (NSString *key in self.keys) {
+            [_aliases addObject:[fa valueForKey:key]];
         }
     }
 }
@@ -103,8 +76,8 @@
 
 //the section in the table is as large as the number of attributes the feature has
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (keys) {
-        return [keys count];
+    if (self.keys) {
+        return [self.keys count];
     }
     
     return 0;
@@ -124,18 +97,23 @@
     
 	//extract the attribute and its value and display both in the cell
     NSUInteger row = [indexPath row];
-    cell.textLabel.text = [aliases objectAtIndex:row];
+    cell.textLabel.text = [self.aliases objectAtIndex:row];
     
-    NSString *key = [keys objectAtIndex:row];
+    NSString *key = [self.keys objectAtIndex:row];
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [feature attributeAsStringForKey:key]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [self.feature attributeAsStringForKey:key]];
 
     return cell;
 }
 
 
 #pragma mark -
-#pragma mark UITableViewDelegate
+#pragma mark actions
+
+- (IBAction)done:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 
 @end

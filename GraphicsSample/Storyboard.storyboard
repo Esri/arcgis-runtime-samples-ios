@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="113-hW-88J">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--Graphics Sample View Controller - Welcome to California-->
+        <scene sceneID="YXl-fq-lBX">
+            <objects>
+                <viewController id="CMt-aI-Vx6" customClass="GraphicsSampleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vwx-hp-WWe"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cl7-qh-Oe4"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="xmU-rv-lpc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WRZ-Nt-ckh" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="Up4-oB-OgA">
+                                        <rect key="frame" x="7" y="484" width="56" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="5d7-N9-zNg"/>
+                                            <constraint firstAttribute="height" constant="32" id="Di1-SO-6Ta"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Up4-oB-OgA" secondAttribute="bottom" constant="8" id="BVD-Ar-gtn"/>
+                                    <constraint firstItem="Up4-oB-OgA" firstAttribute="leading" secondItem="WRZ-Nt-ckh" secondAttribute="leading" constant="7" id="vtH-VN-kqf"/>
+                                </constraints>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OyN-Cz-X7c">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="3fx-iK-2cw"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="oSd-Ob-RG1"/>
+                                    <barButtonItem style="plain" id="qee-Uh-ZfT">
+                                        <segmentedControl key="customView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Vlv-Qg-5Kv">
+                                            <rect key="frame" x="56" y="7" width="207" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Counties"/>
+                                                <segment title="Cities"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="toggleGraphicsLayer:" destination="CMt-aI-Vx6" eventType="valueChanged" id="Wsd-c1-0yc"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="r38-mr-92A"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WRZ-Nt-ckh" firstAttribute="leading" secondItem="xmU-rv-lpc" secondAttribute="leading" id="2Sz-nF-jUh"/>
+                            <constraint firstAttribute="trailing" secondItem="WRZ-Nt-ckh" secondAttribute="trailing" id="3Mn-Wa-LNt"/>
+                            <constraint firstItem="WRZ-Nt-ckh" firstAttribute="top" secondItem="xmU-rv-lpc" secondAttribute="top" id="Bme-0N-enC"/>
+                            <constraint firstAttribute="bottom" secondItem="OyN-Cz-X7c" secondAttribute="bottom" id="GsQ-uh-YUd"/>
+                            <constraint firstItem="OyN-Cz-X7c" firstAttribute="top" secondItem="WRZ-Nt-ckh" secondAttribute="bottom" id="Qth-ok-abN"/>
+                            <constraint firstItem="OyN-Cz-X7c" firstAttribute="leading" secondItem="xmU-rv-lpc" secondAttribute="leading" id="alU-bV-ghd"/>
+                            <constraint firstAttribute="trailing" secondItem="OyN-Cz-X7c" secondAttribute="trailing" id="kOa-v7-oR9"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Welcome to California" id="bw5-Wv-PK9"/>
+                    <connections>
+                        <outlet property="mapView" destination="WRZ-Nt-ckh" id="yJp-0G-91C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6hc-pa-zHD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="845" y="132"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aVy-jy-sNv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="113-hW-88J" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sfc-ex-wng">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CMt-aI-Vx6" kind="relationship" relationship="rootViewController" id="S3O-hF-r7k"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Sm-WS-wct" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="319" y="132"/>
+        </scene>
+        <!--Feature Details View Controller-->
+        <scene sceneID="QM4-Cf-Dr1">
+            <objects>
+                <viewController storyboardIdentifier="FeatureDetailViewController" id="MVP-Hn-2o6" customClass="FeatureDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KZb-nm-K0z"/>
+                        <viewControllerLayoutGuide type="bottom" id="2rS-Hl-2dw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XQH-8T-K6e">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6a-m9-f2Z">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="zH9-2l-h4R"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="qoq-5w-dfI">
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="OsV-YX-rgl">
+                                            <connections>
+                                                <action selector="done:" destination="MVP-Hn-2o6" id="NHY-Hu-A1i"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bouncesZoom="NO" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Gbd-eP-mBl">
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="MVP-Hn-2o6" id="JhA-g2-wqr"/>
+                                    <outlet property="delegate" destination="MVP-Hn-2o6" id="PK3-zf-qoY"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Gbd-eP-mBl" firstAttribute="leading" secondItem="XQH-8T-K6e" secondAttribute="leading" id="Bhy-Rw-L3o"/>
+                            <constraint firstItem="k6a-m9-f2Z" firstAttribute="leading" secondItem="XQH-8T-K6e" secondAttribute="leading" id="Dw4-QW-ARp"/>
+                            <constraint firstAttribute="trailing" secondItem="k6a-m9-f2Z" secondAttribute="trailing" id="RyR-EX-bfG"/>
+                            <constraint firstItem="Gbd-eP-mBl" firstAttribute="top" secondItem="k6a-m9-f2Z" secondAttribute="bottom" id="YpP-ps-sok"/>
+                            <constraint firstItem="k6a-m9-f2Z" firstAttribute="top" secondItem="XQH-8T-K6e" secondAttribute="top" id="eE9-8T-EcJ"/>
+                            <constraint firstAttribute="bottom" secondItem="Gbd-eP-mBl" secondAttribute="bottom" id="grd-um-WJU"/>
+                            <constraint firstAttribute="trailing" secondItem="Gbd-eP-mBl" secondAttribute="trailing" id="zH7-aq-7gs"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                        <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    </view>
+                    <connections>
+                        <outlet property="detailsTable" destination="Gbd-eP-mBl" id="eiV-HE-5bS"/>
+                        <outlet property="navigationItem" destination="qoq-5w-dfI" id="fB9-Ki-lrs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LLD-kb-qbg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1275" y="132"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

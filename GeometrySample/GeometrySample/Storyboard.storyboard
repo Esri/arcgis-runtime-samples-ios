@@ -78,7 +78,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="Y8s-j0-gkh">
-                                        <rect key="frame" x="10" y="939.99999975785613" width="56" height="32"/>
+                                        <rect key="frame" x="10" y="939.99999951371933" width="56" height="32"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="56" id="6qi-Td-7Y9"/>
@@ -185,17 +185,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nau-dV-LZo">
-                                        <rect key="frame" x="20" y="924.00000079472863" width="52" height="36"/>
+                                        <rect key="frame" x="20" y="924" width="56" height="32"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="52" id="iWH-CO-tqi"/>
-                                            <constraint firstAttribute="height" constant="36" id="kWg-wO-ad0"/>
+                                            <constraint firstAttribute="width" constant="56" id="iWH-CO-tqi"/>
+                                            <constraint firstAttribute="height" constant="32" id="kWg-wO-ad0"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Nau-dV-LZo" secondAttribute="bottom" constant="20" id="7UJ-t1-Qrw"/>
+                                    <constraint firstAttribute="bottom" secondItem="Nau-dV-LZo" secondAttribute="bottom" constant="24" id="7UJ-t1-Qrw"/>
                                     <constraint firstAttribute="width" secondItem="tGl-GP-YgC" secondAttribute="width" id="AOg-oS-tN9"/>
                                     <constraint firstItem="tGl-GP-YgC" firstAttribute="top" secondItem="kCF-nL-09U" secondAttribute="top" constant="1" id="Qlm-fP-aaT"/>
                                     <constraint firstItem="tGl-GP-YgC" firstAttribute="leading" secondItem="kCF-nL-09U" secondAttribute="leading" id="mMP-w6-1mV"/>
@@ -289,20 +289,34 @@
                                 <rect key="frame" x="0.0" y="44" width="768" height="980"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="hNZ-qO-v3J">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="hNZ-qO-v3J">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="58"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.30982940050000002" green="0.30982940050000002" blue="0.30982940050000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="58" id="AUK-Hk-X10"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="uc3-xa-I0U">
-                                        <rect key="frame" x="20" y="924.00000079472863" width="52" height="36"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="uc3-xa-I0U">
+                                        <rect key="frame" x="20" y="924" width="56" height="32"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="Kwg-MM-HEs"/>
+                                            <constraint firstAttribute="width" constant="56" id="q4v-80-EH0"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="hNZ-qO-v3J" firstAttribute="leading" secondItem="npN-Vf-5Fr" secondAttribute="leading" id="3Ev-Er-JKt"/>
+                                    <constraint firstAttribute="bottom" secondItem="uc3-xa-I0U" secondAttribute="bottom" constant="24" id="5zV-83-lPE"/>
+                                    <constraint firstItem="hNZ-qO-v3J" firstAttribute="width" secondItem="npN-Vf-5Fr" secondAttribute="width" id="gHT-NA-REn"/>
+                                    <constraint firstItem="uc3-xa-I0U" firstAttribute="leading" secondItem="npN-Vf-5Fr" secondAttribute="leading" constant="20" id="hXu-gg-enh"/>
+                                    <constraint firstItem="hNZ-qO-v3J" firstAttribute="top" secondItem="npN-Vf-5Fr" secondAttribute="top" id="sUY-gK-eeO"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -391,11 +405,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="VvY-CQ-QoD">
-                                        <rect key="frame" x="20" y="924.00000079472863" width="52" height="36"/>
+                                        <rect key="frame" x="20" y="924" width="56" height="32"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="52" id="I64-qY-oU3"/>
-                                            <constraint firstAttribute="height" constant="36" id="zas-1M-xQf"/>
+                                            <constraint firstAttribute="width" constant="56" id="I64-qY-oU3"/>
+                                            <constraint firstAttribute="height" constant="32" id="zas-1M-xQf"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -404,7 +418,7 @@
                                     <constraint firstItem="VvY-CQ-QoD" firstAttribute="leading" secondItem="CL0-xn-73y" secondAttribute="leading" constant="20" id="6Wg-Ee-XoZ"/>
                                     <constraint firstAttribute="width" secondItem="Fq3-3S-sOY" secondAttribute="width" id="B3p-no-VzW"/>
                                     <constraint firstItem="Fq3-3S-sOY" firstAttribute="top" secondItem="CL0-xn-73y" secondAttribute="top" id="KHH-OH-aBG"/>
-                                    <constraint firstAttribute="bottom" secondItem="VvY-CQ-QoD" secondAttribute="bottom" constant="20" id="MTy-Ms-Ifc"/>
+                                    <constraint firstAttribute="bottom" secondItem="VvY-CQ-QoD" secondAttribute="bottom" constant="24" id="MTy-Ms-Ifc"/>
                                     <constraint firstItem="Fq3-3S-sOY" firstAttribute="leading" secondItem="CL0-xn-73y" secondAttribute="leading" id="fyV-22-wGX"/>
                                 </constraints>
                             </view>
@@ -505,18 +519,18 @@
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="l15-9G-VD7">
-                                <rect key="frame" x="20" y="970" width="52" height="36"/>
+                                <rect key="frame" x="20" y="970" width="56" height="32"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="52" id="m3o-HZ-XGv"/>
-                                    <constraint firstAttribute="height" constant="36" id="qpp-Ca-1yY"/>
+                                    <constraint firstAttribute="width" constant="56" id="m3o-HZ-XGv"/>
+                                    <constraint firstAttribute="height" constant="32" id="qpp-Ca-1yY"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="oqY-pq-Cc4" firstAttribute="top" secondItem="Soq-BJ-dkI" secondAttribute="bottom" id="5fa-ql-HiB"/>
-                            <constraint firstAttribute="bottom" secondItem="l15-9G-VD7" secondAttribute="bottom" constant="18" id="7z7-gG-3ko"/>
+                            <constraint firstAttribute="bottom" secondItem="l15-9G-VD7" secondAttribute="bottom" constant="22" id="7z7-gG-3ko"/>
                             <constraint firstAttribute="bottom" secondItem="0gF-NF-Pqb" secondAttribute="bottom" id="82f-2H-jsN"/>
                             <constraint firstItem="Mrw-f1-HIK" firstAttribute="height" secondItem="oqY-pq-Cc4" secondAttribute="height" id="9XI-YR-lXN"/>
                             <constraint firstItem="Mrw-f1-HIK" firstAttribute="top" secondItem="oqY-pq-Cc4" secondAttribute="bottom" constant="8" id="D5a-AQ-82M"/>
@@ -612,7 +626,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="MK6-d8-spk">
-                                        <rect key="frame" x="598" y="664.99999964823473" width="159.99999970383956" height="305"/>
+                                        <rect key="frame" x="597.99999942228203" y="664.99999929284309" width="160" height="305"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="0.49625318880000002" green="0.49625318880000002" blue="0.49625318880000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -621,11 +635,11 @@
                                         </constraints>
                                     </tableView>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="aTY-1V-VrN">
-                                        <rect key="frame" x="20" y="924.00000079472852" width="52" height="36"/>
+                                        <rect key="frame" x="20" y="924" width="56" height="32"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="52" id="Ly4-CA-yfZ"/>
-                                            <constraint firstAttribute="height" constant="36" id="mEs-A1-ukN"/>
+                                            <constraint firstAttribute="width" constant="56" id="Ly4-CA-yfZ"/>
+                                            <constraint firstAttribute="height" constant="32" id="mEs-A1-ukN"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -633,7 +647,7 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="MK6-d8-spk" secondAttribute="bottom" constant="10" id="1xm-sX-hQa"/>
                                     <constraint firstItem="IoW-e9-8DX" firstAttribute="width" secondItem="7L8-TV-dgZ" secondAttribute="width" id="5qi-2W-RPq"/>
-                                    <constraint firstAttribute="bottom" secondItem="aTY-1V-VrN" secondAttribute="bottom" constant="20" id="DW4-lh-AtS"/>
+                                    <constraint firstAttribute="bottom" secondItem="aTY-1V-VrN" secondAttribute="bottom" constant="24" id="DW4-lh-AtS"/>
                                     <constraint firstItem="aTY-1V-VrN" firstAttribute="leading" secondItem="7L8-TV-dgZ" secondAttribute="leading" constant="20" id="PeQ-QA-2jj"/>
                                     <constraint firstItem="IoW-e9-8DX" firstAttribute="top" secondItem="7L8-TV-dgZ" secondAttribute="top" id="Q16-DN-mvc"/>
                                     <constraint firstAttribute="trailing" secondItem="MK6-d8-spk" secondAttribute="trailing" constant="10" id="Vks-BY-da6"/>
@@ -721,11 +735,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="2ZS-jn-CY8">
-                                        <rect key="frame" x="20" y="924.00000079472852" width="52" height="36"/>
+                                        <rect key="frame" x="20" y="924" width="56" height="32"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="bxx-RO-GLm"/>
-                                            <constraint firstAttribute="width" constant="52" id="pZs-f9-Pgk"/>
+                                            <constraint firstAttribute="height" constant="32" id="bxx-RO-GLm"/>
+                                            <constraint firstAttribute="width" constant="56" id="pZs-f9-Pgk"/>
                                         </constraints>
                                     </imageView>
                                     <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L62-1Y-w7S">
@@ -781,7 +795,7 @@
                                     <constraint firstItem="2ZS-jn-CY8" firstAttribute="leading" secondItem="3g4-5i-y1U" secondAttribute="leading" constant="20" id="F4A-8c-nNW"/>
                                     <constraint firstItem="L62-1Y-w7S" firstAttribute="leading" secondItem="3g4-5i-y1U" secondAttribute="leading" id="RKN-kb-inK"/>
                                     <constraint firstAttribute="trailing" secondItem="L62-1Y-w7S" secondAttribute="trailing" id="b19-L0-CLJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="2ZS-jn-CY8" secondAttribute="bottom" constant="20" id="w83-j1-yVY"/>
+                                    <constraint firstAttribute="bottom" secondItem="2ZS-jn-CY8" secondAttribute="bottom" constant="24" id="w83-j1-yVY"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -888,18 +902,18 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="o9I-xm-dzt">
-                                        <rect key="frame" x="20" y="879.99999984270983" width="52" height="36"/>
+                                        <rect key="frame" x="20" y="880" width="56" height="32"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="52" id="Q7U-Jq-v52"/>
-                                            <constraint firstAttribute="height" constant="36" id="sIh-6d-tF1"/>
+                                            <constraint firstAttribute="width" constant="56" id="Q7U-Jq-v52"/>
+                                            <constraint firstAttribute="height" constant="32" id="sIh-6d-tF1"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="8Cs-Rn-LN8" firstAttribute="top" secondItem="ETS-eK-oGq" secondAttribute="top" id="01d-qk-8gc"/>
-                                    <constraint firstAttribute="bottom" secondItem="o9I-xm-dzt" secondAttribute="bottom" constant="20" id="I92-Zd-2Cy"/>
+                                    <constraint firstAttribute="bottom" secondItem="o9I-xm-dzt" secondAttribute="bottom" constant="24" id="I92-Zd-2Cy"/>
                                     <constraint firstItem="8Cs-Rn-LN8" firstAttribute="width" secondItem="ETS-eK-oGq" secondAttribute="width" id="SnG-dJ-DQf"/>
                                     <constraint firstItem="o9I-xm-dzt" firstAttribute="leading" secondItem="ETS-eK-oGq" secondAttribute="leading" constant="20" id="h6W-Yq-7xp"/>
                                     <constraint firstItem="8Cs-Rn-LN8" firstAttribute="leading" secondItem="ETS-eK-oGq" secondAttribute="leading" id="r5Y-cc-5bD"/>

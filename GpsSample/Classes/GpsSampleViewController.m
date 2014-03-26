@@ -14,11 +14,6 @@
 
 @implementation GpsSampleViewController
 
-@synthesize label = _label;
-@synthesize northArrowImage = _northArrowImage;
-@synthesize autoPanModeControl = _autoPanModeControl;
-@synthesize mapView=_mapView;
-
 #pragma mark - UIViewController methods
 
 
@@ -46,8 +41,16 @@
                    forKeyPath:@"rotationAngle"
                       options:(NSKeyValueObservingOptionNew)
                       context:NULL];
-
-
+    
+    //to display actual images in iOS 7 for segmented control
+    if ([[[UIDevice currentDevice] systemVersion] integerValue] >= 7) {
+        NSUInteger index = self.autoPanModeControl.numberOfSegments;
+        for (int i = 0; i < index; i++) {
+            UIImage *image = [self.autoPanModeControl imageForSegmentAtIndex:i];
+            UIImage *newImage = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+            [self.autoPanModeControl setImage:newImage forSegmentAtIndex:i];
+        }
+    }
 }
 
 
@@ -64,19 +67,19 @@
         switch (self.mapView.locationDisplay.autoPanMode) {
             case AGSLocationDisplayAutoPanModeOff:
                 mode = @"Off";
-                self.label.textColor = [UIColor redColor];
+                self.label.textColor = [UIColor whiteColor];
                 break;
             case AGSLocationDisplayAutoPanModeDefault:
                 mode = @"Default";
-                self.label.textColor = [UIColor blueColor];
+                self.label.textColor = [UIColor whiteColor];
                 break;
             case AGSLocationDisplayAutoPanModeNavigation:
                 mode = @"Navigation";
-                self.label.textColor = [UIColor blueColor];
+                self.label.textColor = [UIColor whiteColor];
                 break;
             case AGSLocationDisplayAutoPanModeCompassNavigation:
                 mode = @"Compass Navigation";
-                self.label.textColor = [UIColor blueColor];
+                self.label.textColor = [UIColor whiteColor];
                 break;
                 
             default:

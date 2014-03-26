@@ -15,15 +15,9 @@
 
 @implementation GeometryServiceSampleAppDelegate
 
-@synthesize window;
-@synthesize viewController;
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
     // Override point for customization after app launch    
-    [window setRootViewController:viewController];
-    [window makeKeyAndVisible];
 	
 	return YES;
 }

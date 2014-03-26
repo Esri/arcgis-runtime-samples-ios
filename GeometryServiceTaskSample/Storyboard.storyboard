@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="kkv-o8-BvG">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--Geometry Service Sample View Controller-->
+        <scene sceneID="s0B-4b-7kb">
+            <objects>
+                <viewController id="kkv-o8-BvG" customClass="GeometryServiceSampleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2DP-s1-9GE"/>
+                        <viewControllerLayoutGuide type="bottom" id="LYh-AB-8CT"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="mmz-ZN-rGs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wo5-eA-8vS">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="f7s-PH-jrO"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Geometry Task" id="iNx-1R-VXg">
+                                        <barButtonItem key="leftBarButtonItem" title="Clear" id="fQv-G8-xw2" userLabel="clearGraphicsBtn">
+                                            <connections>
+                                                <action selector="clearGraphicsBtnClicked:" destination="kkv-o8-BvG" id="fN6-Jv-400"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Go" id="Mky-s4-SWT" userLabel="goBtn">
+                                            <connections>
+                                                <action selector="goBtnClicked:" destination="kkv-o8-BvG" id="lIt-R1-c82"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9M-wc-gSN" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Click points to buffer around" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="lSY-8v-P9M" userLabel="statusViewLabel">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="7OI-ZJ-iBD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="90T-wP-Z63">
+                                        <rect key="frame" x="10" y="482" width="56" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="DKF-2a-SiN"/>
+                                            <constraint firstAttribute="width" constant="56" id="bzg-wV-mv4"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="lSY-8v-P9M" firstAttribute="leading" secondItem="g9M-wc-gSN" secondAttribute="leading" id="6cb-9R-u53"/>
+                                    <constraint firstItem="lSY-8v-P9M" firstAttribute="top" secondItem="g9M-wc-gSN" secondAttribute="top" id="CzG-KN-GqQ"/>
+                                    <constraint firstItem="90T-wP-Z63" firstAttribute="leading" secondItem="g9M-wc-gSN" secondAttribute="leading" constant="10" id="PK1-Xz-CIv"/>
+                                    <constraint firstAttribute="bottom" secondItem="90T-wP-Z63" secondAttribute="bottom" constant="10" id="rTC-nC-0Dh"/>
+                                    <constraint firstAttribute="width" secondItem="lSY-8v-P9M" secondAttribute="width" id="y9D-d4-ZFl"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="g9M-wc-gSN" secondAttribute="bottom" id="Ab3-Dd-sga"/>
+                            <constraint firstItem="wo5-eA-8vS" firstAttribute="leading" secondItem="mmz-ZN-rGs" secondAttribute="leading" id="DRH-fl-kdn"/>
+                            <constraint firstAttribute="trailing" secondItem="wo5-eA-8vS" secondAttribute="trailing" id="Ffa-Ep-KPh"/>
+                            <constraint firstItem="wo5-eA-8vS" firstAttribute="top" secondItem="mmz-ZN-rGs" secondAttribute="top" id="XIw-B4-8i2"/>
+                            <constraint firstItem="g9M-wc-gSN" firstAttribute="leading" secondItem="mmz-ZN-rGs" secondAttribute="leading" id="kOV-ms-CIC"/>
+                            <constraint firstItem="g9M-wc-gSN" firstAttribute="width" secondItem="wo5-eA-8vS" secondAttribute="width" id="ulz-AN-fZ1"/>
+                            <constraint firstItem="g9M-wc-gSN" firstAttribute="top" secondItem="wo5-eA-8vS" secondAttribute="bottom" id="xoQ-Bd-YQO"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="g9M-wc-gSN" id="kr1-q6-n2x"/>
+                        <outlet property="statusLabel" destination="lSY-8v-P9M" id="SuF-wm-bNk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XgA-Zf-wPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="412" y="183"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

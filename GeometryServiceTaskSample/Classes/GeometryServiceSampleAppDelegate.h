@@ -12,15 +12,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class GeometryServiceSampleViewController;
-
-@interface GeometryServiceSampleAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    GeometryServiceSampleViewController *viewController;
-}
+@interface GeometryServiceSampleAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
-@property (nonatomic, strong) IBOutlet GeometryServiceSampleViewController *viewController;
 
 @end
 

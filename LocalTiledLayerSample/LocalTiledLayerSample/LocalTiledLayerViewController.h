@@ -15,9 +15,7 @@
 
 @interface LocalTiledLayerViewController : UIViewController 
 
-
-
-- (id)initWithTilePackage:(NSString *)tilePackage;
+@property (nonatomic, strong) NSString *tilePackage;
 
 @end
 

@@ -13,11 +13,7 @@
 #import <UIKit/UIKit.h>
 #import "LegendDataSource.h"
 
-@interface LegendViewController : UIViewController {
-	UITableView* _legendTableView;
-	LegendDataSource* _legendDataSource;
-	UIPopoverController* _popOverController;
-}
+@interface LegendViewController : UIViewController 
 
 @property (nonatomic,strong) IBOutlet UITableView* legendTableView;
 @property (nonatomic,strong) LegendDataSource* legendDataSource;

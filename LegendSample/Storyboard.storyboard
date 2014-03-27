@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ggy-G6-Eye">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="WsG-Bz-hmu">
+            <objects>
+                <viewController id="Ggy-G6-Eye" customClass="MainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oV6-sg-zWn"/>
+                        <viewControllerLayoutGuide type="bottom" id="ryB-bW-bS8"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="a3a-Mg-BMQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6Z-6Y-Brf" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgX-Bo-K6x">
+                                        <rect key="frame" x="278" y="20" width="22" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.98392939130000001" blue="0.99598234779999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="N6x-Hw-0Zy"/>
+                                            <constraint firstAttribute="width" constant="22" id="a2b-4W-Iu6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="mIc-1k-xQx" kind="custom" identifier="LegendViewControllerSegue" customClass="CustomSegue" id="r6w-dk-cRr"/>
+                                        </connections>
+                                    </button>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="edB-9g-z2q">
+                                        <rect key="frame" x="11" y="527" width="56" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="2Bt-9k-00r"/>
+                                            <constraint firstAttribute="width" constant="56" id="4UM-CB-kd5"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="bgX-Bo-K6x" secondAttribute="trailing" constant="20" id="GbF-Lf-XPB"/>
+                                    <constraint firstItem="edB-9g-z2q" firstAttribute="leading" secondItem="j6Z-6Y-Brf" secondAttribute="leading" constant="11" id="Ndv-gY-591"/>
+                                    <constraint firstAttribute="bottom" secondItem="edB-9g-z2q" secondAttribute="bottom" constant="9" id="qkg-PJ-K6X"/>
+                                    <constraint firstItem="bgX-Bo-K6x" firstAttribute="top" secondItem="j6Z-6Y-Brf" secondAttribute="top" constant="20" id="vJF-oV-s7y"/>
+                                </constraints>
+                                <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="j6Z-6Y-Brf" secondAttribute="trailing" id="3pi-ul-2sl"/>
+                            <constraint firstAttribute="bottom" secondItem="j6Z-6Y-Brf" secondAttribute="bottom" id="75G-f2-uZd"/>
+                            <constraint firstItem="j6Z-6Y-Brf" firstAttribute="top" secondItem="a3a-Mg-BMQ" secondAttribute="top" id="B7y-y5-AUy"/>
+                            <constraint firstItem="j6Z-6Y-Brf" firstAttribute="leading" secondItem="a3a-Mg-BMQ" secondAttribute="leading" id="Yyw-eF-Ieg"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <connections>
+                        <outlet property="infoButton" destination="bgX-Bo-K6x" id="UkA-H5-76F"/>
+                        <outlet property="mapView" destination="j6Z-6Y-Brf" id="gDU-YL-bqJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wj1-bK-qrA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-139" y="83"/>
+        </scene>
+        <!--Legend View Controller-->
+        <scene sceneID="eud-g6-jfA">
+            <objects>
+                <viewController id="mIc-1k-xQx" customClass="LegendViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gfB-Wl-sD8"/>
+                        <viewControllerLayoutGuide type="bottom" id="hRi-gO-Tpp"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="aYs-HT-lnb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vnp-t9-RQZ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="MUv-S5-3Jv"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="done" id="oeo-gZ-FO8">
+                                        <connections>
+                                            <action selector="dismiss" destination="mIc-1k-xQx" id="cd8-Yy-TDO"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="r3e-dG-uMj">
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vnp-t9-RQZ" firstAttribute="top" secondItem="aYs-HT-lnb" secondAttribute="top" id="4UI-Ro-oD2"/>
+                            <constraint firstAttribute="trailing" secondItem="vnp-t9-RQZ" secondAttribute="trailing" id="7qE-TY-sgX"/>
+                            <constraint firstItem="r3e-dG-uMj" firstAttribute="top" secondItem="vnp-t9-RQZ" secondAttribute="bottom" id="Eig-nv-AhZ"/>
+                            <constraint firstItem="vnp-t9-RQZ" firstAttribute="width" secondItem="r3e-dG-uMj" secondAttribute="width" id="NPt-KI-5uE"/>
+                            <constraint firstItem="vnp-t9-RQZ" firstAttribute="leading" secondItem="aYs-HT-lnb" secondAttribute="leading" id="Wa8-Fx-E5W"/>
+                            <constraint firstAttribute="bottom" secondItem="r3e-dG-uMj" secondAttribute="bottom" id="gUL-VI-A3E"/>
+                            <constraint firstItem="r3e-dG-uMj" firstAttribute="leading" secondItem="aYs-HT-lnb" secondAttribute="leading" id="k3r-4s-KgZ"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <connections>
+                        <outlet property="legendTableView" destination="r3e-dG-uMj" id="aHq-VU-BHq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rMw-PG-XEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="260" y="83"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

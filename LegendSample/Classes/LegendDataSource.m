@@ -14,7 +14,6 @@
 
 
 @implementation LegendDataSource
-@synthesize legendInfos=_legendInfos;
 
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
@@ -169,7 +168,6 @@
 
 //A convenience class to hold information about each legend item
 @implementation LegendInfo
-@synthesize image = _image,name=_name,detail=_detail;
 
 
 @end

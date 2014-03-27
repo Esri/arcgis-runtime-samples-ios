@@ -14,10 +14,10 @@
 #import <Foundation/Foundation.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface LegendDataSource : NSObject <UITableViewDataSource,AGSMapServiceInfoDelegate> {
-	UITableView* _tableView;
-	NSMutableArray* _legendInfos;
-}
+@interface LegendDataSource : NSObject <UITableViewDataSource,AGSMapServiceInfoDelegate>
+
+@property (nonatomic, strong) UITableView* tableView;
+@property (nonatomic, strong) NSMutableArray* legendInfos;
 
 - (id) init;
 - (void) reload;
@@ -27,16 +27,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section ;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath ;
 
-@property (nonatomic, strong) NSMutableArray* legendInfos;
-
 @end
 
-@interface LegendInfo : NSObject {
-@protected
-    NSString *_name;
-    UIImage *_image;
-	NSString *_detail;
-}
+@interface LegendInfo : NSObject
 
 @property (nonatomic,strong) NSString *name;
 @property (nonatomic,strong) NSString *detail;

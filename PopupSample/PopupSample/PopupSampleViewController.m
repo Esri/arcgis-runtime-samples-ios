@@ -15,8 +15,7 @@
 #import "PopupSampleViewController.h"
 
 
-@interface PopupSampleViewController() {
-}
+@interface PopupSampleViewController() 
 
 @property (nonatomic, strong) AGSWebMap *webMap;
 @property (nonatomic, strong) NSString *webMapId;
@@ -176,7 +175,7 @@ didFetchPopups:(NSArray *)popups
         }
         else {
             //For iphone, display summary info in the callout
-            self.mapView.callout.title = [NSString stringWithFormat:@"%d Results", self.popupVC.popups.count];
+            self.mapView.callout.title = [NSString stringWithFormat:@"%lu Results", (unsigned long)self.popupVC.popups.count];
             self.mapView.callout.accessoryButtonHidden = NO;
             self.mapView.callout.detail = @"loading more...";
             self.mapView.callout.customView = nil;

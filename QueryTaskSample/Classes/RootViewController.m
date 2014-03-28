@@ -28,9 +28,6 @@
 
 @implementation RootViewController
 
-@synthesize searchBar = _searchBar;
-@synthesize queryTask = _queryTask, query = _query, featureSet = _featureSet, detailsViewController = _detailsViewController;
-
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
 {
@@ -113,7 +110,8 @@
 	
 	//if view controller not created, create it, set up the field names to display
 	if (nil == self.detailsViewController) {
-		self.detailsViewController = [[DetailsViewController alloc] initWithNibName:@"DetailsView" bundle:nil];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
+		self.detailsViewController = [storyboard instantiateViewControllerWithIdentifier:@"DetailsViewController"];
 		self.detailsViewController.fieldAliases = self.featureSet.fieldAliases;
 		self.detailsViewController.displayFieldName = self.featureSet.displayFieldName;
 	}

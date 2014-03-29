@@ -7,39 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E49445618E635B50081F701 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E49445518E635B50081F701 /* Storyboard.storyboard */; };
 		97CFF4921679539000DA8AC4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97CFF4911679539000DA8AC4 /* Default-568h@2x.png */; };
 		C5128CBC147480F000A5EBF7 /* Agree.png in Resources */ = {isa = PBXBuildFile; fileRef = C5128CA7147480F000A5EBF7 /* Agree.png */; };
 		C5128CBD147480F000A5EBF7 /* Disagree.png in Resources */ = {isa = PBXBuildFile; fileRef = C5128CA8147480F000A5EBF7 /* Disagree.png */; };
 		C5128CBE147480F000A5EBF7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C5128CA9147480F000A5EBF7 /* icon.png */; };
 		C5128CBF147480F000A5EBF7 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5128CAA147480F000A5EBF7 /* icon@2x.png */; };
-		C5128CC0147480F000A5EBF7 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5128CAC147480F000A5EBF7 /* MainWindow-iPad.xib */; };
 		C5128CC1147480F000A5EBF7 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5128CAE147480F000A5EBF7 /* LoadingView.m */; };
 		C5128CC2147480F000A5EBF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5128CAF147480F000A5EBF7 /* main.m */; };
-		C5128CC3147480F000A5EBF7 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5128CB0147480F000A5EBF7 /* MainWindow.xib */; };
 		C5128CC4147480F000A5EBF7 /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5128CB2147480F000A5EBF7 /* NotesViewController.m */; };
-		C5128CC5147480F000A5EBF7 /* NotesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5128CB3147480F000A5EBF7 /* NotesViewController.xib */; };
 		C5128CC6147480F000A5EBF7 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = C5128CB4147480F000A5EBF7 /* pencil.png */; };
 		C5128CC8147480F000A5EBF7 /* RelatedRecordEditingSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5128CB8147480F000A5EBF7 /* RelatedRecordEditingSampleAppDelegate.m */; };
 		C5128CC9147480F000A5EBF7 /* RelatedRecordEditingSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5128CBA147480F000A5EBF7 /* RelatedRecordEditingSampleViewController.m */; };
-		C5128CCA147480F000A5EBF7 /* RelatedRecordEditingSampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5128CBB147480F000A5EBF7 /* RelatedRecordEditingSampleViewController.xib */; };
 		C56B400D14C74162003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B400C14C74162003A46EB /* ArcGIS.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D6058910D05DD3D006BFB54 /* RelatedRecordEditingSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RelatedRecordEditingSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		97CFF4911679539000DA8AC4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3E49445518E635B50081F701 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = RelatedRecordEditingSample/Storyboard.storyboard; sourceTree = "<group>"; };
+		97CFF4911679539000DA8AC4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		C5128CA7147480F000A5EBF7 /* Agree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Agree.png; path = RelatedRecordEditingSample/Agree.png; sourceTree = SOURCE_ROOT; };
 		C5128CA8147480F000A5EBF7 /* Disagree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Disagree.png; path = RelatedRecordEditingSample/Disagree.png; sourceTree = SOURCE_ROOT; };
 		C5128CA9147480F000A5EBF7 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = RelatedRecordEditingSample/icon.png; sourceTree = SOURCE_ROOT; };
 		C5128CAA147480F000A5EBF7 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "RelatedRecordEditingSample/icon@2x.png"; sourceTree = SOURCE_ROOT; };
-		C5128CAC147480F000A5EBF7 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		C5128CAD147480F000A5EBF7 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingView.h; path = RelatedRecordEditingSample/LoadingView.h; sourceTree = SOURCE_ROOT; };
 		C5128CAE147480F000A5EBF7 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadingView.m; path = RelatedRecordEditingSample/LoadingView.m; sourceTree = SOURCE_ROOT; };
 		C5128CAF147480F000A5EBF7 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RelatedRecordEditingSample/main.m; sourceTree = SOURCE_ROOT; };
-		C5128CB0147480F000A5EBF7 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindow.xib; path = RelatedRecordEditingSample/MainWindow.xib; sourceTree = SOURCE_ROOT; };
 		C5128CB1147480F000A5EBF7 /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotesViewController.h; path = RelatedRecordEditingSample/NotesViewController.h; sourceTree = SOURCE_ROOT; };
 		C5128CB2147480F000A5EBF7 /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotesViewController.m; path = RelatedRecordEditingSample/NotesViewController.m; sourceTree = SOURCE_ROOT; };
-		C5128CB3147480F000A5EBF7 /* NotesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotesViewController.xib; path = RelatedRecordEditingSample/NotesViewController.xib; sourceTree = SOURCE_ROOT; };
 		C5128CB4147480F000A5EBF7 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pencil.png; path = RelatedRecordEditingSample/pencil.png; sourceTree = SOURCE_ROOT; };
 		C5128CB5147480F000A5EBF7 /* RelatedRecordEditingSample_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RelatedRecordEditingSample_Prefix.pch; path = RelatedRecordEditingSample/RelatedRecordEditingSample_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		C5128CB6147480F000A5EBF7 /* RelatedRecordEditingSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "RelatedRecordEditingSample-Info.plist"; path = "RelatedRecordEditingSample/RelatedRecordEditingSample-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -47,7 +42,6 @@
 		C5128CB8147480F000A5EBF7 /* RelatedRecordEditingSampleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RelatedRecordEditingSampleAppDelegate.m; path = RelatedRecordEditingSample/RelatedRecordEditingSampleAppDelegate.m; sourceTree = SOURCE_ROOT; };
 		C5128CB9147480F000A5EBF7 /* RelatedRecordEditingSampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RelatedRecordEditingSampleViewController.h; path = RelatedRecordEditingSample/RelatedRecordEditingSampleViewController.h; sourceTree = SOURCE_ROOT; };
 		C5128CBA147480F000A5EBF7 /* RelatedRecordEditingSampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RelatedRecordEditingSampleViewController.m; path = RelatedRecordEditingSample/RelatedRecordEditingSampleViewController.m; sourceTree = SOURCE_ROOT; };
-		C5128CBB147480F000A5EBF7 /* RelatedRecordEditingSampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RelatedRecordEditingSampleViewController.xib; path = RelatedRecordEditingSample/RelatedRecordEditingSampleViewController.xib; sourceTree = SOURCE_ROOT; };
 		C56B400C14C74162003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -73,8 +67,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				C56B400C14C74162003A46EB /* ArcGIS.bundle */,
-				97CFF4911679539000DA8AC4 /* Default-568h@2x.png */,
+				3E49445518E635B50081F701 /* Storyboard.storyboard */,
 				C552BCFD146DE2F400DCEC6F /* RelatedRecordEditingSample */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -85,34 +78,38 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C56B400C14C74162003A46EB /* ArcGIS.bundle */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C5128CAB147480F000A5EBF7 /* iPad */ = {
+		3E49445718E645BE0081F701 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C5128CAC147480F000A5EBF7 /* MainWindow-iPad.xib */,
+				C5128CB1147480F000A5EBF7 /* NotesViewController.h */,
+				C5128CB2147480F000A5EBF7 /* NotesViewController.m */,
+				C5128CB9147480F000A5EBF7 /* RelatedRecordEditingSampleViewController.h */,
+				C5128CBA147480F000A5EBF7 /* RelatedRecordEditingSampleViewController.m */,
 			);
-			name = iPad;
-			path = RelatedRecordEditingSample/iPad;
-			sourceTree = SOURCE_ROOT;
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3E49445818E645DD0081F701 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C5128CAD147480F000A5EBF7 /* LoadingView.h */,
+				C5128CAE147480F000A5EBF7 /* LoadingView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
 		};
 		C552BCFD146DE2F400DCEC6F /* RelatedRecordEditingSample */ = {
 			isa = PBXGroup;
 			children = (
-				C5128CAB147480F000A5EBF7 /* iPad */,
-				C5128CAD147480F000A5EBF7 /* LoadingView.h */,
-				C5128CAE147480F000A5EBF7 /* LoadingView.m */,
-				C5128CB0147480F000A5EBF7 /* MainWindow.xib */,
-				C5128CB1147480F000A5EBF7 /* NotesViewController.h */,
-				C5128CB2147480F000A5EBF7 /* NotesViewController.m */,
-				C5128CB3147480F000A5EBF7 /* NotesViewController.xib */,
+				3E49445818E645DD0081F701 /* Views */,
+				3E49445718E645BE0081F701 /* Controllers */,
 				C5128CB7147480F000A5EBF7 /* RelatedRecordEditingSampleAppDelegate.h */,
 				C5128CB8147480F000A5EBF7 /* RelatedRecordEditingSampleAppDelegate.m */,
-				C5128CB9147480F000A5EBF7 /* RelatedRecordEditingSampleViewController.h */,
-				C5128CBA147480F000A5EBF7 /* RelatedRecordEditingSampleViewController.m */,
-				C5128CBB147480F000A5EBF7 /* RelatedRecordEditingSampleViewController.xib */,
 				C552BD29146DE30400DCEC6F /* Supporting Files */,
 			);
 			name = RelatedRecordEditingSample;
@@ -122,6 +119,7 @@
 		C552BD29146DE30400DCEC6F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				97CFF4911679539000DA8AC4 /* Default-568h@2x.png */,
 				C5128CAF147480F000A5EBF7 /* main.m */,
 				C5128CB4147480F000A5EBF7 /* pencil.png */,
 				C5128CB5147480F000A5EBF7 /* RelatedRecordEditingSample_Prefix.pch */,
@@ -190,11 +188,8 @@
 				C5128CBD147480F000A5EBF7 /* Disagree.png in Resources */,
 				C5128CBE147480F000A5EBF7 /* icon.png in Resources */,
 				C5128CBF147480F000A5EBF7 /* icon@2x.png in Resources */,
-				C5128CC0147480F000A5EBF7 /* MainWindow-iPad.xib in Resources */,
-				C5128CC3147480F000A5EBF7 /* MainWindow.xib in Resources */,
-				C5128CC5147480F000A5EBF7 /* NotesViewController.xib in Resources */,
+				3E49445618E635B50081F701 /* Storyboard.storyboard in Resources */,
 				C5128CC6147480F000A5EBF7 /* pencil.png in Resources */,
-				C5128CCA147480F000A5EBF7 /* RelatedRecordEditingSampleViewController.xib in Resources */,
 				C56B400D14C74162003A46EB /* ArcGIS.bundle in Resources */,
 				97CFF4921679539000DA8AC4 /* Default-568h@2x.png in Resources */,
 			);

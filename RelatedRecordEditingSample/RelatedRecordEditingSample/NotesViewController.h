@@ -18,10 +18,7 @@
 - (void)didFinishWithNotes;
 @end
 
-@interface NotesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, AGSPopupsContainerDelegate, AGSFeatureLayerEditingDelegate, AGSFeatureLayerQueryDelegate>{
-    
-    id <NotesViewControllerDelegate>    __weak delegate;
-}
+@interface NotesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, AGSPopupsContainerDelegate, AGSFeatureLayerEditingDelegate, AGSFeatureLayerQueryDelegate>
 
 @property (nonatomic, weak) id <NotesViewControllerDelegate> delegate;
 

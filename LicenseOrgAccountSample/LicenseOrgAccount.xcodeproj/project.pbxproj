@@ -64,8 +64,6 @@
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* ViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* ViewController.m */,
-				974AEC7318DCE126001D69F0 /* gray-network.png */,
-				974AEC7418DCE126001D69F0 /* blue-network.png */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -104,6 +102,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				974AEC7318DCE126001D69F0 /* gray-network.png */,
+				974AEC7418DCE126001D69F0 /* blue-network.png */,
 				97FCF808165C1B7D00251D55 /* Default-568h@2x.png */,
 				AFD762B0124AAF7800DBB854 /* Icon.png */,
 				AFD762B1124AAF7800DBB854 /* Icon@2x.png */,

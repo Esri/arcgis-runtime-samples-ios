@@ -70,9 +70,18 @@ static LicenseHelper* _sharedLicenseHelper = nil;
     self.parentVC = parentVC;
     self.portalURL = portalURL;
     
-    if ([self autoLicense]) {
-        // License information and credentials were found in the keychain.
-        // License has already been initialized using saved information.
+    //check if we have credential
+        //yes - load portal with credential
+        //refresh license info
+    
+        //no - ask user to authenticate
+        //
+    
+    //Determine if we have credential in the keychain
+    NSDictionary *keyChainDict = (NSDictionary *)[self.keychainWrapper keychainObject];
+    self.credential = (AGSCredential *)keyChainDict[kCredentialKey];
+    
+    if (self.credential) {
         // Use credentials to load portal.  The completion block will by called by
         // either portalDidLoad: or portal:didFailToLoadWithError:
         self.portal = [[AGSPortal alloc]initWithURL:self.portalURL credential:self.credential];
@@ -84,13 +93,13 @@ static LicenseHelper* _sharedLicenseHelper = nil;
     }
 }
 
--(void)unlicense {
+-(void)resetSavedInformation {
     //reset the portal
     self.portal = nil;
     self.credential = nil;
     
     //remove stored license info, which will force a login next time the app starts
-    [self.keychainWrapper reset];
+    [self.keychainWrapper setKeychainObject:nil];
 }
 
 -(BOOL)savedInformationExists {
@@ -113,30 +122,13 @@ static LicenseHelper* _sharedLicenseHelper = nil;
     // The credential associated with the portal has information about the user etc
     self.credential = self.portal.credential;
     
-    //check to see if we already have saved license information from the keychain.
-    //If we do, this means we've used that saved information to license the app
-    //and log in to the portal; therefore, can just call the completion block and return
-    if ([self savedInformationExists]) {
-        //we have been called after retrieving the license from the keychain.
-        //The fact that this completed means we're on-line
-        [self callCompletionHandler:AGSLicenseResultValid usedSavedLicenseInfo:YES portal:portal credential:portal.credential error:nil];
-        return;
-    }
-
     //portal loaded Ok, get license info
     NSError *error = nil;
     AGSLicenseResult result;
     AGSLicenseInfo *licenseInfo = [[AGSLicenseInfo alloc] initWithPortalInfo:portal.portalInfo];
 
-    //TODO: We need to reinitalize license to renew time window
-    if ([[AGSRuntimeEnvironment license] licenseLevel] == AGSLicenseLevelStandard) {
-        //already licensed, don't re-license because that's not allowed
-        //but we will store the licenseInfo for the current portal, below
-        result = AGSLicenseResultValid;
-    }
-    else {
-        result = [[AGSRuntimeEnvironment license] setLicenseInfo:licenseInfo];
-    }
+
+    result = [[AGSRuntimeEnvironment license] setLicenseInfo:licenseInfo];
     
     if (result == AGSLicenseResultExpired) {
         error = [self errorWithDescription:@"License has expired"];
@@ -160,51 +152,39 @@ static LicenseHelper* _sharedLicenseHelper = nil;
 }
 
 -(void)portal:(AGSPortal *)portal didFailToLoadWithError:(NSError *)error {
+    BOOL usingSavedLicenseInfo = YES;
     
-    //if the license level is already standard, then we tried to load the portal using stored credentials
-    BOOL usingSavedLicenseInfo = ([[AGSRuntimeEnvironment license] licenseLevel] == AGSLicenseLevelStandard);
-
-    AGSLicenseResult result = AGSLicenseResultInvalid;
-
-    if (usingSavedLicenseInfo && error.code == kCFURLErrorNotConnectedToInternet) {
-        //no internet error; we are using saved info and offline; ignore the error
-        //The fact that we got this far with saved info means the license is valid
-        result = AGSLicenseResultValid;
-        error = nil;
-    }
+    //Determine if we have info in the keychain
+    NSDictionary *keyChainDict = (NSDictionary *)[self.keychainWrapper keychainObject];
+    
+    //get the saved license info
+    NSDictionary *licenseInfoJSON = keyChainDict[kLicenseKey];
+    //if (licenseInfoJSON) {
+        //Create license info and set it into the license, then check the result
+        AGSLicenseInfo *licenseInfo = [[AGSLicenseInfo alloc] initWithJSON:licenseInfoJSON];
+        AGSLicenseResult result = [[AGSRuntimeEnvironment license] setLicenseInfo:licenseInfo];
+        if (result != AGSLicenseResultValid) {
+            //There's a problem with the saved license (maybe it expired)
+            //[self.keychainWrapper reset];
+        }
+    //}
+    
     [self callCompletionHandler:result usedSavedLicenseInfo:usingSavedLicenseInfo portal:nil credential:self.credential error:error];
 }
 
 #pragma mark - internal
 
 -(void)cancelLogin {
-    [self.parentVC dismissViewControllerAnimated:YES completion:nil];
-    [self callCompletionHandler:AGSLicenseResultLoginRequired usedSavedLicenseInfo:NO portal:self.portal credential:self.credential error:[self userCancelledError]];
+    [self.parentVC dismissViewControllerAnimated:YES completion:^{
+        [self callCompletionHandler:AGSLicenseResultLoginRequired usedSavedLicenseInfo:NO portal:self.portal credential:self.credential error:[self userCancelledError]];
+    }];
 }
 
 -(BOOL)autoLicense {
     
     BOOL success = NO;
     
-    //Determine if we already are logged in; i.e., if we have an license info json key in the keychain
-    NSDictionary *keyChainDict = (NSDictionary *)[self.keychainWrapper keychainObject];
-    NSDictionary *licenseInfoJSON = keyChainDict[kLicenseKey];
-    if (licenseInfoJSON) {
-        //Having a stored dictionary means we've already logged in sometime in the past...
-        //Create license info and set it into the license, then check the result
-        AGSLicenseInfo *licenseInfo = [[AGSLicenseInfo alloc] initWithJSON:licenseInfoJSON];
-        AGSLicenseResult result = [[AGSRuntimeEnvironment license] setLicenseInfo:licenseInfo];
-        if (result == AGSLicenseResultValid) {
-            //license result is valid, no prompting for user credentials required
-            //get self.credential from keychainDict
-            self.credential = (AGSCredential *)keyChainDict[kCredentialKey];
-            success = YES;
-        }
-        else {
-            //There's a problem with the saved credentials.  Delete them.
-            [self.keychainWrapper reset];
-        }
-    }
+   
     
     return success;
 }

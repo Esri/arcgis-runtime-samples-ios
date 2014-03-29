@@ -78,7 +78,7 @@
 
 /** Unlicenses the application.
  */
--(void)unlicense;
+-(void)resetSavedInformation;
 
 /** Indicates whether there is saved license/credential information.
  */

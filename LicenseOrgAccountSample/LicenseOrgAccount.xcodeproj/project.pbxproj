@@ -15,7 +15,6 @@
 		974AEC7518DCE126001D69F0 /* gray-network.png in Resources */ = {isa = PBXBuildFile; fileRef = 974AEC7318DCE126001D69F0 /* gray-network.png */; };
 		974AEC7618DCE126001D69F0 /* blue-network.png in Resources */ = {isa = PBXBuildFile; fileRef = 974AEC7418DCE126001D69F0 /* blue-network.png */; };
 		9779764518DBB21B00AB9FF9 /* LicenseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9779764118DBB21B00AB9FF9 /* LicenseHelper.m */; };
-		9779764618DBB21B00AB9FF9 /* LicenseUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9779764418DBB21B00AB9FF9 /* LicenseUtility.m */; };
 		97FCF809165C1B7D00251D55 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97FCF808165C1B7D00251D55 /* Default-568h@2x.png */; };
 		97FCF80D165C1C9D00251D55 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 97FCF80C165C1C9D00251D55 /* ArcGIS.bundle */; };
 		AFD762AD124AAF5E00DBB854 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFD762AC124AAF5E00DBB854 /* MainWindow-iPad.xib */; };
@@ -39,8 +38,6 @@
 		9779764018DBB21B00AB9FF9 /* LicenseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LicenseHelper.h; path = ../LicenseHelper.h; sourceTree = "<group>"; };
 		9779764118DBB21B00AB9FF9 /* LicenseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LicenseHelper.m; path = ../LicenseHelper.m; sourceTree = "<group>"; };
 		9779764218DBB21B00AB9FF9 /* LicenseHelperConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LicenseHelperConstants.h; path = ../LicenseHelperConstants.h; sourceTree = "<group>"; };
-		9779764318DBB21B00AB9FF9 /* LicenseUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LicenseUtility.h; path = ../LicenseUtility.h; sourceTree = "<group>"; };
-		9779764418DBB21B00AB9FF9 /* LicenseUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LicenseUtility.m; path = ../LicenseUtility.m; sourceTree = "<group>"; };
 		97FCF808165C1B7D00251D55 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		97FCF80C165C1C9D00251D55 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		AFD762AC124AAF5E00DBB854 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
@@ -130,8 +127,6 @@
 				9779764018DBB21B00AB9FF9 /* LicenseHelper.h */,
 				9779764118DBB21B00AB9FF9 /* LicenseHelper.m */,
 				9779764218DBB21B00AB9FF9 /* LicenseHelperConstants.h */,
-				9779764318DBB21B00AB9FF9 /* LicenseUtility.h */,
-				9779764418DBB21B00AB9FF9 /* LicenseUtility.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -214,7 +209,6 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				9779764518DBB21B00AB9FF9 /* LicenseHelper.m in Sources */,
-				9779764618DBB21B00AB9FF9 /* LicenseUtility.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* ViewController.m in Sources */,
 			);

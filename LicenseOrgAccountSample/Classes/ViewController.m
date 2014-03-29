@@ -32,8 +32,8 @@
 @implementation ViewController
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 
     if ([[LicenseHelper sharedLicenseHelper] savedInformationExists]) {
         //if the license helper has saved information, log in immediately
@@ -49,7 +49,7 @@
 - (IBAction)signInAction:(id)sender {
     
     if (self.signedIn) {
-        [[LicenseHelper sharedLicenseHelper] unlicense];
+        [[LicenseHelper sharedLicenseHelper] resetSavedInformation];
         [self updateLogWithString:@"The application has been signed out and all saved license and credential information has been deleted."];
       self.networkImageView.image = nil;
       self.portalConnectionLabel.text = @"";
@@ -59,26 +59,25 @@
         [[LicenseHelper sharedLicenseHelper] standardLicenseFromPortal:[NSURL URLWithString:kPortalUrl]
                 parentViewController:self
               completion:^(AGSLicenseResult licenseResult, BOOL usedSavedLicenseInfo, AGSPortal *portal, AGSCredential *credential, NSError *error) {
-                    if (error) {
-                      
-                        [self updateLogWithString:[NSString stringWithFormat:@"There was an error licensing the app:\n  license result: %@\n  error: %@",AGSLicenseResultAsString(licenseResult), error.localizedDescription]];
-                    } else {
-                        if (usedSavedLicenseInfo) {
-                            [self updateLogWithString:@"The application was licensed using the saved license info in the keychain"];
-                        }else {
-                            [self updateLogWithString:@"The application was licensed by logging into the portal."];
-                        }
-                    }
                 
-                  if(portal){
-                    self.networkImageView.image = [UIImage imageNamed:@"blue-network"];
-                    self.portalConnectionLabel.text = @"Connected to portal";
-                  }else{
-                    self.networkImageView.image = [UIImage imageNamed:@"gray-network"];
-                    self.portalConnectionLabel.text = @"Could not connect to portal";
+                if(licenseResult==AGSLicenseResultValid){
+                  if (usedSavedLicenseInfo) {
+                    [self updateLogWithString:@"The application was licensed at Standard level using the saved license info in the keychain"];
+                  }else {
+                    [self updateLogWithString:@"The application was licensed at Standard level by logging into the portal."];
                   }
-                
-                    [self updateStatusWithCredential:credential];
+                }else{
+                  [self updateLogWithString:[NSString stringWithFormat:@"Couldn't initialize a Standard level license.\n  license status: %@\n  reason: %@",AGSLicenseResultAsString(licenseResult), error.localizedDescription]];
+                }
+                if(portal){
+                  self.networkImageView.image = [UIImage imageNamed:@"blue-network"];
+                  self.portalConnectionLabel.text = @"Connected to portal";
+                }else{
+                  self.networkImageView.image = [UIImage imageNamed:@"gray-network"];
+                  self.portalConnectionLabel.text = @"Could not connect to portal";
+                }
+              
+                [self updateStatusWithCredential:credential];
         }];
         
         [self updateLogWithString:@"Signing in..."];

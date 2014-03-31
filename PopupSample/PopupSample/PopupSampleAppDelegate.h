@@ -11,12 +11,8 @@
 //
 #import <UIKit/UIKit.h>
 
-@class PopupSampleViewController;
-
 @interface PopupSampleAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) PopupSampleViewController *viewController;
 
 @end

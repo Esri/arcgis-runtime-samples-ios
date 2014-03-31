@@ -13,16 +13,9 @@
 
 #import <UIKit/UIKit.h>
 
-
-@class GpsSketchingSampleViewController;
-
-@interface GpsSketchingSampleAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    GpsSketchingSampleViewController *viewController;
-}
+@interface GpsSketchingSampleAppDelegate : NSObject <UIApplicationDelegate> 
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
-@property (nonatomic, strong) IBOutlet GpsSketchingSampleViewController *viewController;
 
 @end
 

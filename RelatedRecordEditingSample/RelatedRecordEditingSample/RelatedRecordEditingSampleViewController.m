@@ -39,14 +39,6 @@
 
 @implementation RelatedRecordEditingSampleViewController
 
-
-@synthesize mapView = _mapView;
-@synthesize incidentsLayer = _incidentsLayer;
-@synthesize popupVC = _popupVC;
-@synthesize loadingView = _loadingView;
-@synthesize customActionButton = _customActionButton;
-
-
 #pragma mark -  UIView methods
 
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
@@ -139,7 +131,7 @@
     
     BOOL exists;
     //obtain the OID of the current popup graphic
-    NSNumber *incidentOID = [NSNumber numberWithInt:[currentPopup.graphic attributeAsIntegerForKey:@"objectid" exists:&exists]];
+    NSNumber *incidentOID = [NSNumber numberWithLong:[currentPopup.graphic attributeAsIntegerForKey:@"objectid" exists:&exists]];
     
     //instantiate the notes view to show the related notes
     NotesViewController *controller = [[NotesViewController alloc] initWithIncidentOID:incidentOID incidentLayer:self.incidentsLayer];    

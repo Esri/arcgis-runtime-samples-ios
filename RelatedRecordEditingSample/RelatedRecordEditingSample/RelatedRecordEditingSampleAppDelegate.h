@@ -12,15 +12,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class RelatedRecordEditingSampleViewController;
-
-@interface RelatedRecordEditingSampleAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    UINavigationController *viewController;
-}
+@interface RelatedRecordEditingSampleAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
-@property (nonatomic, strong) IBOutlet UINavigationController *viewController;
 
 @end
 

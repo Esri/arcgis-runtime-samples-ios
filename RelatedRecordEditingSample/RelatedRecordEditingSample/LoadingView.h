@@ -13,9 +13,6 @@
 #import <UIKit/UIKit.h>
 
 @interface LoadingView : UIView
-{
-
-}
 
 + (id)loadingViewInView:(UIView *)aSuperview  withText:(NSString*)text;
 - (void)removeView;

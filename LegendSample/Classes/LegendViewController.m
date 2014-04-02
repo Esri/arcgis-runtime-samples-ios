@@ -27,7 +27,7 @@
 }
 
 - (IBAction) dismiss {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"dismissLegend" object:nil];
+    [self.delegate dismissLegend];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

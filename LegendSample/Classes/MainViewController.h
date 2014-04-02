@@ -15,7 +15,7 @@
 #import "LegendDataSource.h"
 #import "LegendViewController.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController <LegendViewControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
 @property (nonatomic, strong) IBOutlet UIButton* infoButton;

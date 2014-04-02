@@ -28,7 +28,6 @@
 
     // Register for geometry changed notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToLayerLoaded:) name:AGSLayerDidLoadNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissLegend) name:@"dismissLegend" object:nil];
     
 	NSURL *mapUrl = [NSURL URLWithString:@"http://services.arcgisonline.com/ArcGIS/rest/services/Specialty/Soil_Survey_Map/MapServer"];
 	AGSTiledMapServiceLayer *tiledLyr = [AGSTiledMapServiceLayer tiledMapServiceLayerWithURL:mapUrl];
@@ -44,13 +43,6 @@
     
 	//Add legend for each layer added to the map
 	[self.legendDataSource addLegendForLayer:(AGSLayer *)notification.object];
-}
-
-- (void)dismissLegend {
-	if([[AGSDevice currentDevice] isIPad])
-		[self.popOverController dismissPopoverAnimated:YES];
-	else
-        [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
@@ -84,18 +76,41 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AGSLayerDidLoadNotification object:nil];
 }
 
+#pragma mark - LegendViewControllerDelegate methods
+
+- (void)dismissLegend {
+    //in case of iPad dismiss the pop over controller
+	if([[AGSDevice currentDevice] isIPad])
+		[self.popOverController dismissPopoverAnimated:YES];
+	else    //in case of iphone dismiss the modal view controller
+        [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - segues
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //check for the segue identifier
     if ([segue.identifier isEqualToString:kLegendViewControllerSegue]) {
+        //get a reference to the destination controller from the segue
         LegendViewController *controller = [segue destinationViewController];
+        //assign the data source
         controller.legendDataSource = self.legendDataSource;
+        //assign the delegate
+        controller.delegate = self;
         
+        //using custom segue to handle transitions in iPad and iPhone differently
+        //in case of iPad, going to show a pop over controller
+        //for which we need to assign three attributes on the segue before performing segue
+        //view ::: the view in which the pop over controller will be presented
+        //rect ::: the CGRect which will be the target, e.g. the frame of the button which fires the segue
+        //popOverController ::: the controller which will be shown as the popOverController
         if ([[AGSDevice currentDevice] isIPad]) {
+            
             self.popOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
             [self.popOverController setPopoverContentSize:CGSizeMake(200, 600)];
             [controller.legendTableView setBackgroundColor:[UIColor whiteColor]];
             CustomSegue *customSegue = (CustomSegue*)segue;
+            
             customSegue.view = self.view;
             customSegue.rect = self.infoButton.frame;
             customSegue.popOverController = self.popOverController;

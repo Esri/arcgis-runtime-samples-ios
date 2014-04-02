@@ -69,7 +69,7 @@
     self.bannerLabel.text = @"Tap on the map to draw a flight path";
     
     // Start the distance out at zero
-    _currentDistance = 0;
+    self.currentDistance = 0;
     
     // Add the sketch layer
     self.sketchLayer = [[AGSGeodesicSketchLayer alloc] init];
@@ -92,7 +92,7 @@
     self.sketchLayer.geometry = [[AGSMutablePolyline alloc] initWithSpatialReference:self.mapView.spatialReference];  
     
     // Reset the distance to 0
-    _currentDistance = 0;
+    self.currentDistance = 0;
     
 }
 
@@ -121,13 +121,13 @@
     
     
     // Get the distance of the flight path in miles
-    _currentDistance = [self.geometryEngine  geodesicLengthOfGeometry:self.sketchLayer.geometry inUnit:AGSSRUnitSurveyMile];
+    self.currentDistance = [self.geometryEngine  geodesicLengthOfGeometry:self.sketchLayer.geometry inUnit:AGSSRUnitSurveyMile];
     
     
     // If the current distance is greater than zero we have a line so report it
     // otherwise instruct the user
-    if (_currentDistance > 0) {
-        self.bannerLabel.text = [NSString stringWithFormat:@"Distance: %d miles", (int)_currentDistance];
+    if (self.currentDistance > 0) {
+        self.bannerLabel.text = [NSString stringWithFormat:@"Distance: %d miles", (int)self.currentDistance];
     }
     else {
         self.bannerLabel.text = @"Tap on the map to draw a flight path";
@@ -155,7 +155,7 @@
     // Remove all graphics from the graphics layer
     [self.graphicsLayer removeAllGraphics];
     // Reset the distance
-    _currentDistance = 0;
+    self.currentDistance = 0;
     
     //Start sketching again
     [self enableSketching];
@@ -176,7 +176,7 @@
     [self.sketchLayer clear];
     
     // Reset the distance
-    _currentDistance = 0;
+    self.currentDistance = 0;
     
     // Start sketching again
     [self enableSketching];

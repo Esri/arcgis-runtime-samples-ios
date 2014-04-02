@@ -33,7 +33,7 @@
 	[self.graphicsLayer refresh];
 	
 	// reset the number of clicked points
-	_numPoints = 0;
+	self.numPoints = 0;
 	
 	// reset our "directions" label
 	self.statusLabel.text = @"Click points to buffer around";
@@ -288,10 +288,10 @@
 	[self.graphicsLayer refresh];
 	
 	// increment the number of points the user has clicked
-	_numPoints++;
+	self.numPoints++;
 	
 	// Update label with number of points clicked
-	self.statusLabel.text = [NSString stringWithFormat:@"%ld point(s) selected", (long)_numPoints];
+	self.statusLabel.text = [NSString stringWithFormat:@"%ld point(s) selected", (long)self.numPoints];
 }
 
 #pragma mark -

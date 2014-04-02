@@ -48,10 +48,10 @@
     self.selectUnitButton.backgroundColor = [UIColor clearColor];
 
     // Set the default measures and units
-    _distance = 0;
-    _area = 0;
-    _distanceUnit = AGSSRUnitSurveyMile;
-    _areaUnit = AGSAreaUnitsAcres;
+    self.distance = 0;
+    self.area = 0;
+    self.distanceUnit = AGSSRUnitSurveyMile;
+    self.areaUnit = AGSAreaUnitsAcres;
 
 }
 
@@ -80,10 +80,10 @@
     
     // Update the distance and area whenever the geometry changes
     if ([sketchGeometry isKindOfClass:[AGSMutablePolyline class]]) {
-        [self updateDistance:_distanceUnit];
+        [self updateDistance:self.distanceUnit];
     }
     else if ([sketchGeometry isKindOfClass:[AGSMutablePolygon class]]){
-        [self updateArea:_areaUnit];
+        [self updateArea:self.areaUnit];
     }
 }
 
@@ -95,11 +95,11 @@
     AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
 
     // Get the geodesic distance of the current line
-    _distance = [geometryEngine geodesicLengthOfGeometry:sketchGeometry inUnit:_distanceUnit];
+    self.distance = [geometryEngine geodesicLengthOfGeometry:sketchGeometry inUnit:self.distanceUnit];
     
     // Display the current unit
     NSString *distanceUnitString = nil;
-    switch (_distanceUnit) {
+    switch (self.distanceUnit) {
         case AGSSRUnitSurveyMile:
             distanceUnitString = @"Miles";
             break;
@@ -123,7 +123,7 @@
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     [formatter setMaximumFractionDigits:0];
     
-    self.userInstructions.text = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithDouble:_distance]]];
+    self.userInstructions.text = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithDouble:self.distance]]];
     [self.selectUnitButton setTitle:distanceUnitString forState:UIControlStateNormal];
     
 
@@ -136,11 +136,11 @@
     AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
     
     // Get the area of the current polygon
-    _area = [geometryEngine shapePreservingAreaOfGeometry:sketchGeometry inUnit:_areaUnit];
+    self.area = [geometryEngine shapePreservingAreaOfGeometry:sketchGeometry inUnit:self.areaUnit];
     
     // Display the current unit
     NSString *areaUnitString = nil;
-    switch (_areaUnit) {
+    switch (self.areaUnit) {
         case AGSAreaUnitsSquareMiles:
             areaUnitString = @"Square Miles";
             break;
@@ -163,7 +163,7 @@
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     [formatter setMaximumFractionDigits:0];
     
-    self.userInstructions.text = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithDouble:_area]]];
+    self.userInstructions.text = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithDouble:self.area]]];
     [self.selectUnitButton setTitle:areaUnitString forState:UIControlStateNormal];
     
 }
@@ -183,14 +183,14 @@
 
 // Delegate method called by UnitSelectorViewController to update the distance unit
 - (void)didSelectAreaUnit:(AGSAreaUnits)unit {
-    _areaUnit = unit;
+    self.areaUnit = unit;
     [self updateArea:unit];
     [self dismissPopOver];
 }
 
 // Delegate method called by UnitSelectorViewController to update the area units
 - (void)didSelectDistanceUnit:(AGSSRUnit)unit {
-    _distanceUnit = unit;
+    self.distanceUnit = unit;
     [self updateDistance:unit];
     [self dismissPopOver];
 }

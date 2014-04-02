@@ -78,7 +78,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="Y8s-j0-gkh">
-                                        <rect key="frame" x="10" y="939.99999951371933" width="56" height="32"/>
+                                        <rect key="frame" x="10" y="939.99999926757312" width="56" height="32"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="56" id="6qi-Td-7Y9"/>
@@ -185,7 +185,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nau-dV-LZo">
-                                        <rect key="frame" x="20" y="924" width="56" height="32"/>
+                                        <rect key="frame" x="20" y="923.99999938532721" width="56" height="32"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="56" id="iWH-CO-tqi"/>
@@ -301,7 +301,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="uc3-xa-I0U">
-                                        <rect key="frame" x="20" y="924" width="56" height="32"/>
+                                        <rect key="frame" x="20" y="923.99999938532721" width="56" height="32"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="Kwg-MM-HEs"/>
@@ -405,7 +405,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="VvY-CQ-QoD">
-                                        <rect key="frame" x="20" y="924" width="56" height="32"/>
+                                        <rect key="frame" x="20" y="923.99999938532721" width="56" height="32"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="56" id="I64-qY-oU3"/>
@@ -626,7 +626,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="MK6-d8-spk">
-                                        <rect key="frame" x="597.99999942228203" y="664.99999929284309" width="160" height="305"/>
+                                        <rect key="frame" x="597.99999911849955" y="665" width="160" height="305"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="0.49625318880000002" green="0.49625318880000002" blue="0.49625318880000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -635,7 +635,7 @@
                                         </constraints>
                                     </tableView>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="aTY-1V-VrN">
-                                        <rect key="frame" x="20" y="924" width="56" height="32"/>
+                                        <rect key="frame" x="20" y="923.99999938532721" width="56" height="32"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="56" id="Ly4-CA-yfZ"/>
@@ -735,7 +735,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="2ZS-jn-CY8">
-                                        <rect key="frame" x="20" y="924" width="56" height="32"/>
+                                        <rect key="frame" x="20" y="923.9999993853271" width="56" height="32"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="bxx-RO-GLm"/>
@@ -902,7 +902,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="o9I-xm-dzt">
-                                        <rect key="frame" x="20" y="880" width="56" height="32"/>
+                                        <rect key="frame" x="20" y="880" width="56" height="32.000000178813842"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="56" id="Q7U-Jq-v52"/>

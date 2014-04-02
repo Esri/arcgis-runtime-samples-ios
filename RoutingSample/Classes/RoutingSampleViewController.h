@@ -13,30 +13,7 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface RoutingSampleViewController : UIViewController< AGSLayerCalloutDelegate, AGSMapViewTouchDelegate, AGSRouteTaskDelegate, UIAlertViewDelegate> {
-	AGSMapView					*_mapView;
-	AGSGraphicsLayer			*_graphicsLayer;
-	AGSSketchGraphicsLayer		*_sketchLayer;
-	AGSStopGraphic				*_currentStopGraphic;
-	AGSGraphic					*_selectedGraphic;
-	AGSDirectionGraphic			*_currentDirectionGraphic;
-	AGSRouteTask				*_routeTask;
-	AGSRouteTaskParameters		*_routeTaskParams;
-	AGSRouteResult				*_routeResult;
-	
-	int							 _numStops;
-	int							 _numBarriers;
-	int							 _directionIndex;
-	
-	UIView						*_stopCalloutView;
-	UIView						*_directionsBannerView;
-	UILabel						*_directionsLabel;
-	UISegmentedControl			*_sketchModeSegCtrl;
-	UIBarButtonItem				*_prevBtn;
-	UIBarButtonItem				*_nextBtn;
-	UIBarButtonItem				*_addBtn;
-	UIBarButtonItem				*_clearSketchBtn;
-}
+@interface RoutingSampleViewController : UIViewController< AGSLayerCalloutDelegate, AGSMapViewTouchDelegate, AGSRouteTaskDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) IBOutlet AGSMapView			*mapView;
 @property (nonatomic, strong) IBOutlet UISegmentedControl	*sketchModeSegCtrl;
@@ -57,6 +34,9 @@
 @property (nonatomic, strong) UIView						*stopCalloutView;
 @property (nonatomic, strong) AGSRouteResult				*routeResult;
 
+@property (nonatomic, assign) int                             numStops;
+@property (nonatomic, assign) int                             numBarriers;
+@property (nonatomic, assign) int                             directionIndex;
 
 - (AGSCompositeSymbol*)stopSymbolWithNumber:(NSInteger)stopNumber;
 - (AGSCompositeSymbol*)barrierSymbol;

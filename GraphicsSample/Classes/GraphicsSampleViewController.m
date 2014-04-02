@@ -165,20 +165,20 @@
 
 //when a user clicks the detail disclosure button on the call out
 - (void) didClickAccessoryButtonForCallout:		(AGSCallout *) 	callout	{
-    //
+    //instantiate an object of the FeatureDetailsViewController
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
     FeatureDetailsViewController *featureDetailsViewController = [storyboard instantiateViewControllerWithIdentifier:kFeatureDetailControllerIdentifier];
 
+    //assign the feature to be presented in the details view
 	featureDetailsViewController.feature = (AGSGraphic*)callout.representedObject;
     featureDetailsViewController.displayFieldName = @"NAME";
     
+    //in case of an iPad present as a form sheet
     if ([[AGSDevice currentDevice] isIPad]) {
         [featureDetailsViewController setModalPresentationStyle:UIModalPresentationFormSheet];
-        [self.navigationController presentViewController:featureDetailsViewController animated:YES completion:nil];
     }
-    else {
-        [self.navigationController presentViewController:featureDetailsViewController animated:YES completion:nil];
-    }
+    
+    [self.navigationController presentViewController:featureDetailsViewController animated:YES completion:nil];
 }
 
 

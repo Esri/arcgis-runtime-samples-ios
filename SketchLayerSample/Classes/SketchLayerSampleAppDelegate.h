@@ -12,15 +12,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class SketchLayerSampleViewController;
-
-@interface SketchLayerSampleAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    SketchLayerSampleViewController *viewController;
-}
+@interface SketchLayerSampleAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
-@property (nonatomic, strong) IBOutlet SketchLayerSampleViewController *viewController;
 
 @end
 

@@ -15,7 +15,6 @@
 
 
 @implementation SketchToolbar
-@synthesize activeGraphic=_activeGraphic;
 
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
@@ -29,28 +28,38 @@
     if (self) {
 		
 		//hold references to the mapView, graphicsLayer, and sketchLayer
-		_sketchLayer = sketchLayer;
-		_mapView = mapView;
-		_graphicsLayer = graphicsLayer;
+		self.sketchLayer = sketchLayer;
+		self.mapView = mapView;
+		self.graphicsLayer = graphicsLayer;
 
 		//Get references to the UI elements in the toolbar
 		//Each UI element was assigned a "tag" in the nib file to make it easy to find them
-		_sketchTools = (UISegmentedControl* )[toolbar viewWithTag:55];
+		self.sketchTools = (UISegmentedControl* )[toolbar viewWithTag:55];
+        
+        //to display actual images in iOS 7 for segmented control
+        if ([[[UIDevice currentDevice] systemVersion] integerValue] >= 7) {
+            NSUInteger index = self.sketchTools.numberOfSegments;
+            for (int i = 0; i < index; i++) {
+                UIImage *image = [self.sketchTools imageForSegmentAtIndex:i];
+                UIImage *newImage = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+                [self.sketchTools setImage:newImage forSegmentAtIndex:i];
+            }
+        }
         
         //disable the select tool if no graphics available
-        [_sketchTools setEnabled:(graphicsLayer.graphicsCount>0) forSegmentAtIndex:3];
+        [self.sketchTools setEnabled:(graphicsLayer.graphicsCount>0) forSegmentAtIndex:3];
         
-		_undoTool = (UIButton*) [toolbar viewWithTag:56];
-		_redoTool = (UIButton*) [toolbar viewWithTag:57];
-		_saveTool = (UIButton*) [toolbar viewWithTag:58];
-		_clearTool = (UIButton*) [toolbar viewWithTag:59];
+		self.undoTool = (UIButton*) [toolbar viewWithTag:56];
+		self.redoTool = (UIButton*) [toolbar viewWithTag:57];
+		self.saveTool = (UIButton*) [toolbar viewWithTag:58];
+		self.clearTool = (UIButton*) [toolbar viewWithTag:59];
 		
 		//Set target-actions for the UI elements in the toolbar
-		[_sketchTools addTarget:self action:@selector(toolSelected) forControlEvents:UIControlEventValueChanged];
-		[_undoTool addTarget:self action:@selector(undo) forControlEvents:UIControlEventTouchUpInside];
-		[_redoTool addTarget:self action:@selector(redo) forControlEvents:UIControlEventTouchUpInside];
-		[_saveTool addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
-		[_clearTool addTarget:self action:@selector(clear) forControlEvents:UIControlEventTouchUpInside];
+		[self.sketchTools addTarget:self action:@selector(toolSelected) forControlEvents:UIControlEventValueChanged];
+		[self.undoTool addTarget:self action:@selector(undo) forControlEvents:UIControlEventTouchUpInside];
+		[self.redoTool addTarget:self action:@selector(redo) forControlEvents:UIControlEventTouchUpInside];
+		[self.saveTool addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
+		[self.clearTool addTarget:self action:@selector(clear) forControlEvents:UIControlEventTouchUpInside];
 		
 		//Register for "Geometry Changed" notifications 
 		//We want to enable/disable UI elements when sketch geometry is modified
@@ -64,25 +73,25 @@
 
 - (void)respondToGeomChanged: (NSNotification*) notification {
 	//Enable/disable UI elements appropriately
-	_undoTool.enabled = [_sketchLayer.undoManager canUndo];
-	_redoTool.enabled = [_sketchLayer.undoManager canRedo];
-	_clearTool.enabled = ![_sketchLayer.geometry isEmpty] && _sketchLayer.geometry!=nil;
-	_saveTool.enabled = [_sketchLayer.geometry isValid];
+	self.undoTool.enabled = [self.sketchLayer.undoManager canUndo];
+	self.redoTool.enabled = [self.sketchLayer.undoManager canRedo];
+	self.clearTool.enabled = ![self.sketchLayer.geometry isEmpty] && self.sketchLayer.geometry!=nil;
+	self.saveTool.enabled = [self.sketchLayer.geometry isValid];
 }
 - (IBAction) undo {
-	if([_sketchLayer.undoManager canUndo]) //extra check, just to be sure
-		[_sketchLayer.undoManager undo];
+	if([self.sketchLayer.undoManager canUndo]) //extra check, just to be sure
+		[self.sketchLayer.undoManager undo];
 }
 - (IBAction) redo {
-	if([_sketchLayer.undoManager canRedo]) //extra check, just to be sure
-		[_sketchLayer.undoManager redo];
+	if([self.sketchLayer.undoManager canRedo]) //extra check, just to be sure
+		[self.sketchLayer.undoManager redo];
 }
 - (IBAction) clear {
-	[_sketchLayer clear];
+	[self.sketchLayer clear];
 }
 - (IBAction) save {
 	//Get the sketch geometry
-	AGSGeometry* sketchGeometry = [_sketchLayer.geometry copy];
+	AGSGeometry* sketchGeometry = [self.sketchLayer.geometry copy];
 
 	//If this is not a new sketch (i.e we are modifying an existing graphic)
 	if(self.activeGraphic!=nil){
@@ -91,54 +100,54 @@
 		self.activeGraphic = nil;
 		
 		//Re-enable the sketch tools
-		[_sketchTools setEnabled:YES forSegmentAtIndex:0];
-		[_sketchTools setEnabled:YES forSegmentAtIndex:1];
-		[_sketchTools setEnabled:YES forSegmentAtIndex:2];
-        [_sketchTools setEnabled:YES forSegmentAtIndex:3];
+		[self.sketchTools setEnabled:YES forSegmentAtIndex:0];
+		[self.sketchTools setEnabled:YES forSegmentAtIndex:1];
+		[self.sketchTools setEnabled:YES forSegmentAtIndex:2];
+        [self.sketchTools setEnabled:YES forSegmentAtIndex:3];
 		
 	}else {
 		//Add a new graphic to the graphics layer
 		AGSGraphic* graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:nil attributes:nil ];
-		[_graphicsLayer addGraphic:graphic];
+		[self.graphicsLayer addGraphic:graphic];
         
         //enable the select tool if there is atleast one graphic to select
-        [_sketchTools setEnabled:(_graphicsLayer.graphicsCount>0) forSegmentAtIndex:3];
+        [self.sketchTools setEnabled:(self.graphicsLayer.graphicsCount>0) forSegmentAtIndex:3];
 
 	}
 	
-	[_sketchLayer clear];
-	[_sketchLayer.undoManager removeAllActions];
+	[self.sketchLayer clear];
+	[self.sketchLayer.undoManager removeAllActions];
 }
 
 - (IBAction) toolSelected {
-	switch (_sketchTools.selectedSegmentIndex) {
+	switch (self.sketchTools.selectedSegmentIndex) {
 		case 0://point tool
 			//sketch layer should begin tracking touch events to sketch a point
-			_mapView.touchDelegate = _sketchLayer;  
-			_sketchLayer.geometry = [[AGSMutablePoint alloc] initWithX:NAN y:NAN spatialReference:_mapView.spatialReference];
-            [[_sketchLayer undoManager]removeAllActions];
+			self.mapView.touchDelegate = self.sketchLayer;  
+			self.sketchLayer.geometry = [[AGSMutablePoint alloc] initWithX:NAN y:NAN spatialReference:self.mapView.spatialReference];
+            [[self.sketchLayer undoManager]removeAllActions];
 			break;
 		
 		case 1://polyline tool
 			//sketch layer should begin tracking touch events to sketch a polyline
-			_mapView.touchDelegate = _sketchLayer; 
-			_sketchLayer.geometry = [[AGSMutablePolyline alloc] initWithSpatialReference:_mapView.spatialReference];
-            [[_sketchLayer undoManager]removeAllActions];
+			self.mapView.touchDelegate = self.sketchLayer; 
+			self.sketchLayer.geometry = [[AGSMutablePolyline alloc] initWithSpatialReference:self.mapView.spatialReference];
+            [[self.sketchLayer undoManager]removeAllActions];
 			break;
 		
 		case 2://polygon tool
 			//sketch layer should begin tracking touch events to sketch a polygon
-			_mapView.touchDelegate = _sketchLayer; 
-			_sketchLayer.geometry = [[AGSMutablePolygon alloc] initWithSpatialReference:_mapView.spatialReference];
-            [[_sketchLayer undoManager]removeAllActions];
+			self.mapView.touchDelegate = self.sketchLayer; 
+			self.sketchLayer.geometry = [[AGSMutablePolygon alloc] initWithSpatialReference:self.mapView.spatialReference];
+            [[self.sketchLayer undoManager]removeAllActions];
 			break;
 		
 		case 3: //select tool
 			//nothing to sketch
-			_sketchLayer.geometry = nil; 
+			self.sketchLayer.geometry = nil; 
 			
 			//We will track touch events to find which graphic to modify
-			_mapView.touchDelegate = self; 
+			self.mapView.touchDelegate = self; 
 			
 
 			break;
@@ -161,31 +170,27 @@
         self.activeGraphic.geometry = nil;
         
         //Feed the graphic's geometry to the sketch layer so that user can modify it
-		_sketchLayer.geometry = geom;
-        [[_sketchLayer undoManager]removeAllActions];
+		self.sketchLayer.geometry = geom;
+        [[self.sketchLayer undoManager]removeAllActions];
 
 		//sketch layer should begin tracking touch events to modify the sketch
-		_mapView.touchDelegate = _sketchLayer;
+		self.mapView.touchDelegate = self.sketchLayer;
 		
         //Disable other tools until we finish modifying a graphic
-        [_sketchTools setEnabled:NO forSegmentAtIndex:0];
-        [_sketchTools setEnabled:NO forSegmentAtIndex:1];
-        [_sketchTools setEnabled:NO forSegmentAtIndex:2];
-        [_sketchTools setEnabled:NO forSegmentAtIndex:3];
+        [self.sketchTools setEnabled:NO forSegmentAtIndex:0];
+        [self.sketchTools setEnabled:NO forSegmentAtIndex:1];
+        [self.sketchTools setEnabled:NO forSegmentAtIndex:2];
+        [self.sketchTools setEnabled:NO forSegmentAtIndex:3];
         
         
 		//Activate the appropriate sketch tool
 		if([geom isKindOfClass:[AGSPoint class]]){
-			[_sketchTools setSelectedSegmentIndex:0];
+			[self.sketchTools setSelectedSegmentIndex:0];
 		}else if ([geom isKindOfClass:[AGSPolyline class]]) {
-			[_sketchTools setSelectedSegmentIndex:1];
+			[self.sketchTools setSelectedSegmentIndex:1];
 		}else if ([geom isKindOfClass:[AGSPolygon class]]) {
-			[_sketchTools setSelectedSegmentIndex:2];
+			[self.sketchTools setSelectedSegmentIndex:2];
 		}
-
-
-        
-
 	}
 }
 

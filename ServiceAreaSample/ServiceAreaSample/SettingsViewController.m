@@ -15,22 +15,6 @@
 
 @implementation SettingsViewController
 
-@synthesize firstTimeBreak = _firstTimeBreak, secondTimeBreak = _secondTimeBreak;
-@synthesize firstTimeBreakLabel = _firstTimeBreakLabel, secondTimeBreakLabel = _secondTimeBreakLabel;
-
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        //initialize the default values. 
-        _firstTimeBreak = 3;
-        _secondTimeBreak = 8;
-    }
-    return self;
-}
-
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -51,6 +35,11 @@
 {
     [super viewDidLoad];
     
+    //assign values to the segment controls based on the parameters value
+    [self.firstTimeBreakSlider setValue:self.parameters.firstTimeBreak animated:YES];
+    self.firstTimeBreakLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.parameters.firstTimeBreak];
+    [self.secondTimeBreakSlider setValue:self.parameters.secondTimeBreak animated:YES];
+    self.secondTimeBreakLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.parameters.secondTimeBreak];
 }
 
 - (void)viewDidUnload
@@ -71,21 +60,20 @@
 
 - (IBAction)firstTimeBreakChanged:(id)sender {    
     UISlider *firstTimeBreakSlider = (UISlider *) sender;
-    _firstTimeBreak = firstTimeBreakSlider.value;
-    self.firstTimeBreakLabel.text = [NSString stringWithFormat:@"%d", _firstTimeBreak];
+    self.parameters.firstTimeBreak = firstTimeBreakSlider.value;
+    self.firstTimeBreakLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)firstTimeBreakSlider.value];
 }
 
 
 - (IBAction)secondTimeBreakChanged:(id)sender {
     UISlider *secondTimeBreakSlider = (UISlider *) sender;
-    _secondTimeBreak = secondTimeBreakSlider.value;
-    self.secondTimeBreakLabel.text = [NSString stringWithFormat:@"%d", _secondTimeBreak];
+    self.parameters.secondTimeBreak = secondTimeBreakSlider.value;
+    self.secondTimeBreakLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)secondTimeBreakSlider.value];
   
 }
 
 - (IBAction)done:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
-
 }
 
 @end

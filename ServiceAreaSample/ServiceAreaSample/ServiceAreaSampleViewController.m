@@ -10,27 +10,21 @@
 // See the use restrictions at http://help.arcgis.com/en/sdk/10.0/usageRestrictions.htm
 //
 #import "ServiceAreaSampleViewController.h"
+#import "Parameters.h"
+#import "SVProgressHUD.h"
 
 #define kDefaultMap @"http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer"
 #define kFacilitiesLayerURL @"http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Louisville/LOJIC_PublicSafety_Louisville/MapServer/1"
 #define kSATask @"http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Network/USA/NAServer/Service%20Area"
+#define kSettingsSegueIdentifier @"SettingsSegue"
+
+@interface ServiceAreaSampleViewController ()
+
+@property (nonatomic, strong) Parameters *parameters;
+
+@end
 
 @implementation ServiceAreaSampleViewController
-
-@synthesize mapView=_mapView;
-@synthesize facilitiesLayer = _facilitiesLayer;
-@synthesize graphicsLayer=_graphicsLayer, sketchLayer = _sketchLayer, selectedGraphic=_selectedGraphic;;
-@synthesize saTask =_saTask, saOp = _saOp;
-@synthesize settingsViewController = _settingsViewController;
-@synthesize activityAlertView = _activityAlertView;
-@synthesize barrierCalloutView = _barrierCalloutView;
-@synthesize facilitiesCalloutView = _facilitiesCalloutView;
-
-@synthesize statusMessageLabel = _statusMessageLabel;
-@synthesize activitySegControl = _activitySegControl;
-@synthesize addBarrierButton = _addBarrierButton;
-@synthesize clearSketchButton = _clearSketchButton;
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -130,17 +124,13 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToGeomChanged:) name:AGSSketchGraphicsLayerGeometryDidChangeNotification object:nil];
     
     //preparing the Settings View Controller
-    self.settingsViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+    //self.settingsViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
     
-    //setting up the alert view to show th ebusy indicator. 
-    self.activityAlertView = [[ActivityAlertView alloc] 
-                               initWithTitle:@"Finding Service Area"
-                               message:@"\n\n"
-                               delegate:self cancelButtonTitle:@"Cancel" 
-                               otherButtonTitles:nil];
+    //instantiate a parameter object to feed values to the api
+    self.parameters = [[Parameters alloc] init];
     
     // initialize barrier counter
-	_numBarriers = 0;
+	self.numBarriers = 0;
     
     [super viewDidLoad];
 }
@@ -248,7 +238,7 @@
 	
     
     //stop activity indicator
-    [self.activityAlertView close];
+    [SVProgressHUD dismiss];
     
     //hide the callout
     self.mapView.callout.hidden = YES;
@@ -265,7 +255,7 @@
 - (void)serviceAreaTask:(AGSServiceAreaTask *) serviceAreaTask operation:(NSOperation *) op didFailSolveWithError:(NSError *) error {
     
     //stop activity indicator
-    [self.activityAlertView close];
+    [SVProgressHUD dismiss];
     
     //show error message
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
@@ -287,8 +277,8 @@
     //Specify the time breaks for the service area of the facility. In minutes.
     NSMutableArray* breaks = [[NSMutableArray alloc] init];
     //getting the breaks from the settingsViewController
-    [breaks addObject:[NSNumber numberWithInt:self.settingsViewController.firstTimeBreak]];
-    [breaks addObject:[NSNumber numberWithInt:self.settingsViewController.secondTimeBreak]];
+    [breaks addObject:[NSNumber numberWithUnsignedInteger:self.parameters.firstTimeBreak]];
+    [breaks addObject:[NSNumber numberWithUnsignedInteger:self.parameters.secondTimeBreak]];
     serviceAreaParams.defaultBreaks = breaks;
     
     //adding some restrictions to the service area analysis. Restrictions can be found on the rest endpoint of the service. 
@@ -323,7 +313,7 @@
 - (void)serviceAreaTask:(AGSServiceAreaTask *) serviceAreaTask operation:(NSOperation *) op didFailToRetrieveDefaultServiceAreaTaskParametersWithError:(NSError *) error {
     
     //stop activity indicator
-    [self.activityAlertView close];
+    [SVProgressHUD dismiss];
     
     //show error message
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
@@ -355,7 +345,7 @@
     self.saOp = [self.saTask retrieveDefaultServiceAreaTaskParameters]; 
     
     //showing activity indicator
-    [self.activityAlertView show];        
+    [SVProgressHUD showWithStatus:@"Finding service area"];
 
 }
 
@@ -364,7 +354,7 @@
 - (IBAction)removeBarrierClicked {
 	
     //barrier count decreases
-    _numBarriers--;	
+    self.numBarriers--;	
 	
     //remove the selected graphic
 	[self.graphicsLayer removeGraphic:self.selectedGraphic];
@@ -377,31 +367,11 @@
 	self.mapView.callout.hidden = YES;
 }
 
-
-- (IBAction)openSettings:(id)sender {
-	
-	//if ipad show formsheet
-	if ([[AGSDevice currentDevice] isIPad]) {
-		
-		self.settingsViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-		
-		//present settings view
-		self.settingsViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        [self presentViewController:self.settingsViewController animated:YES completion:nil];
-		self.settingsViewController.view.superview.bounds = CGRectMake(0, 0, 400, 300);
-	}
-	else {
-		//present settings view
-		self.settingsViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        [self presentViewController:self.settingsViewController animated:YES completion:nil];
-	}
-}
-
 //if user clears everything on the map to start over. 
 - (IBAction)clearAll:(id)sender {
     
     //set barrier counter back to 0
-	_numBarriers = 0;
+	self.numBarriers = 0;
     
 	//remove all graphics
 	[self.graphicsLayer removeAllGraphics];
@@ -480,10 +450,10 @@
 	AGSSymbol *symbol;
 	
     //increament the barrier count
-    _numBarriers++;
+    self.numBarriers++;
     
     //add the barrier count to the graphic attributes dictionary
-    [attributes setValue:[NSNumber numberWithInt:_numBarriers] forKey:@"barrierNumber"];
+    [attributes setValue:[NSNumber numberWithInt:self.numBarriers] forKey:@"barrierNumber"];
     
     //you can set additional properties on the barrier here
     symbol = [self barrierSymbol];
@@ -571,7 +541,19 @@
 	return cs;
 }
 
+#pragma mark - segues
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:kSettingsSegueIdentifier]) {
+        SettingsViewController *controller = [segue destinationViewController];
+        controller.parameters = self.parameters;
+        
+        //present as form sheet for iPad
+        if ([[AGSDevice currentDevice] isIPad]) {
+            [controller setModalPresentationStyle:UIModalPresentationFormSheet];
+        }
+    }
+}
 
 
 @end

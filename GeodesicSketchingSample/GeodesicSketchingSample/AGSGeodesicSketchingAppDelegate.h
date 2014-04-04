@@ -13,12 +13,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class AGSGeodesicSketchingViewController;
-
 @interface AGSGeodesicSketchingAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) AGSGeodesicSketchingViewController *viewController;
 
 @end

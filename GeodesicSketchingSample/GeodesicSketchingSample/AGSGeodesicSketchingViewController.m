@@ -13,34 +13,15 @@
 #import "AGSGeodesicSketchingViewController.h"
 #import "AGSGeodesicSketchLayer.h"
 
-@interface AGSGeodesicSketchingViewController() {
-    AGSMapView *_mapView;
-    AGSGraphicsLayer *_graphicsLayer;
-    AGSGeodesicSketchLayer *_sketchLayer;
-    AGSGeometryEngine *_geometryEngine;
-    UIBarButtonItem *_addButton;
-    UIBarButtonItem *_undoButton;
-    UIBarButtonItem *_resetButton;
-    UIBarButtonItem *_redoButton;
-    UILabel *_bannerLabel;
-    double _currentDistance;
-}
+@interface AGSGeodesicSketchingViewController()
+
+@property (nonatomic, assign) double currentDistance;
 
 - (void)enableSketching;
 
 @end
 
 @implementation AGSGeodesicSketchingViewController
-@synthesize redoButton = _redoButton;
-@synthesize bannerLabel = _bannerLabel;
-@synthesize resetButton = _resetButton;
-@synthesize undoButton = _undoButton;
-@synthesize addButton = _addButton;
-@synthesize mapView = _mapView;
-@synthesize graphicsLayer = _graphicsLayer;
-@synthesize sketchLayer = _sketchLayer;
-@synthesize geometryEngine = _geometryEngine;
-
 
 #pragma mark - View lifecycle
 
@@ -88,7 +69,7 @@
     self.bannerLabel.text = @"Tap on the map to draw a flight path";
     
     // Start the distance out at zero
-    _currentDistance = 0;
+    self.currentDistance = 0;
     
     // Add the sketch layer
     self.sketchLayer = [[AGSGeodesicSketchLayer alloc] init];
@@ -111,7 +92,7 @@
     self.sketchLayer.geometry = [[AGSMutablePolyline alloc] initWithSpatialReference:self.mapView.spatialReference];  
     
     // Reset the distance to 0
-    _currentDistance = 0;
+    self.currentDistance = 0;
     
 }
 
@@ -140,13 +121,13 @@
     
     
     // Get the distance of the flight path in miles
-    _currentDistance = [self.geometryEngine  geodesicLengthOfGeometry:self.sketchLayer.geometry inUnit:AGSSRUnitSurveyMile];
+    self.currentDistance = [self.geometryEngine  geodesicLengthOfGeometry:self.sketchLayer.geometry inUnit:AGSSRUnitSurveyMile];
     
     
     // If the current distance is greater than zero we have a line so report it
     // otherwise instruct the user
-    if (_currentDistance > 0) {
-        self.bannerLabel.text = [NSString stringWithFormat:@"Distance: %d miles", (int)_currentDistance];
+    if (self.currentDistance > 0) {
+        self.bannerLabel.text = [NSString stringWithFormat:@"Distance: %d miles", (int)self.currentDistance];
     }
     else {
         self.bannerLabel.text = @"Tap on the map to draw a flight path";
@@ -174,7 +155,7 @@
     // Remove all graphics from the graphics layer
     [self.graphicsLayer removeAllGraphics];
     // Reset the distance
-    _currentDistance = 0;
+    self.currentDistance = 0;
     
     //Start sketching again
     [self enableSketching];
@@ -195,7 +176,7 @@
     [self.sketchLayer clear];
     
     // Reset the distance
-    _currentDistance = 0;
+    self.currentDistance = 0;
     
     // Start sketching again
     [self enableSketching];

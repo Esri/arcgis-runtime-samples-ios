@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="81w-hF-nn8">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--Geodesic Sketching View Controller-->
+        <scene sceneID="gGr-ZC-xtJ">
+            <objects>
+                <viewController id="81w-hF-nn8" customClass="AGSGeodesicSketchingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WSb-tS-HcK"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZeE-48-8zm"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="cTo-Je-1tr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="rB4-on-9ga" colorLabel="IBBuiltInLabel-Red">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="SS7-Mg-AiV"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="add" id="TMx-pb-9af">
+                                        <connections>
+                                            <action selector="addSketch" destination="81w-hF-nn8" id="kmc-JV-yk8"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="nyO-hm-DJX"/>
+                                    <barButtonItem image="undo.png" id="R1Y-0q-McO">
+                                        <connections>
+                                            <action selector="undo" destination="81w-hF-nn8" id="57h-mZ-2cK"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="Redo.png" id="53A-SK-QX1">
+                                        <connections>
+                                            <action selector="redo" destination="81w-hF-nn8" id="ie9-RS-fr5"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Reset" id="Kvg-BM-04o">
+                                        <connections>
+                                            <action selector="reset" destination="81w-hF-nn8" id="taM-QN-ba3"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmy-SR-2z3" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="suo-Xu-ib0">
+                                        <rect key="frame" x="6" y="487" width="56" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="FND-By-I5e"/>
+                                            <constraint firstAttribute="width" constant="56" id="bQV-f0-Frb"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="center" text="Label" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mc3-FG-Qg2">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="NYZ-oD-gF5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Mc3-FG-Qg2" firstAttribute="leading" secondItem="hmy-SR-2z3" secondAttribute="leading" id="D1c-f3-z0G"/>
+                                    <constraint firstItem="Mc3-FG-Qg2" firstAttribute="width" secondItem="hmy-SR-2z3" secondAttribute="width" id="bCo-eX-2GS"/>
+                                    <constraint firstItem="Mc3-FG-Qg2" firstAttribute="top" secondItem="hmy-SR-2z3" secondAttribute="top" id="jP3-tx-UlY"/>
+                                    <constraint firstItem="suo-Xu-ib0" firstAttribute="leading" secondItem="hmy-SR-2z3" secondAttribute="leading" constant="6" id="leP-up-bN0"/>
+                                    <constraint firstAttribute="bottom" secondItem="suo-Xu-ib0" secondAttribute="bottom" constant="5" id="ml8-Dr-MwB"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="hmy-SR-2z3" secondAttribute="bottom" id="0x1-Xo-Qng"/>
+                            <constraint firstAttribute="trailing" secondItem="rB4-on-9ga" secondAttribute="trailing" id="FNR-am-tO7"/>
+                            <constraint firstItem="hmy-SR-2z3" firstAttribute="leading" secondItem="cTo-Je-1tr" secondAttribute="leading" id="MLU-K1-LqW"/>
+                            <constraint firstItem="hmy-SR-2z3" firstAttribute="width" secondItem="rB4-on-9ga" secondAttribute="width" id="bsT-76-4Ux"/>
+                            <constraint firstItem="hmy-SR-2z3" firstAttribute="top" secondItem="rB4-on-9ga" secondAttribute="bottom" id="vI4-sC-7Ws"/>
+                            <constraint firstItem="rB4-on-9ga" firstAttribute="leading" secondItem="cTo-Je-1tr" secondAttribute="leading" id="wME-od-4iu"/>
+                            <constraint firstItem="rB4-on-9ga" firstAttribute="top" secondItem="cTo-Je-1tr" secondAttribute="top" id="ymk-0T-2JH"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <connections>
+                        <outlet property="addButton" destination="TMx-pb-9af" id="p83-BD-cAn"/>
+                        <outlet property="bannerLabel" destination="Mc3-FG-Qg2" id="7na-io-WtQ"/>
+                        <outlet property="mapView" destination="hmy-SR-2z3" id="ZDo-zL-IQt"/>
+                        <outlet property="redoButton" destination="53A-SK-QX1" id="f6o-Bx-faa"/>
+                        <outlet property="resetButton" destination="Kvg-BM-04o" id="nHD-No-YBH"/>
+                        <outlet property="undoButton" destination="R1Y-0q-McO" id="4s9-vg-vsw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y8o-1e-Dku" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="332" y="135"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+        <image name="Redo.png" width="30" height="30"/>
+        <image name="undo.png" width="30" height="30"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

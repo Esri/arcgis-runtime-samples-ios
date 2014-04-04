@@ -11,11 +11,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TemporalSampleAppDelegate.h"
 
 int main(int argc, char *argv[]) {
     
     @autoreleasepool {
-        int retVal = UIApplicationMain(argc, argv, nil, nil);
+        int retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass([TemporalSampleAppDelegate class]));
         return retVal;
     }
 }

@@ -21,34 +21,16 @@
 
 #define kWebMercator			102100
 
-@interface GeometryServiceSampleViewController : UIViewController <	AGSGeometryServiceTaskDelegate, AGSMapViewLayerDelegate, AGSMapViewTouchDelegate > {
-	
-	UINavigationBar		*_navBar;
-	UIButton			*_goBtn;
-	UIButton			*_clearGraphicsBtn;		
-	UIView				*_statusView;
-	UILabel				*_statusLabel;		/* label that informs user to click points/number of pts clicked	*/
-	
-	AGSMapView			*_mapView;
-	AGSGraphicsLayer	*_graphicsLayer;	
-	
-	NSMutableArray		*_geometryArray;	/* holds on to the buffered geometries until "clear" clicked		*/
-	NSInteger			 _numPoints;		/* keeps track of the number of points the user has clicked			*/
-	NSMutableArray		*_pushpins;			/* holds on to the pushpins that mark where the user clicks			*/
-	
-	AGSGeometryServiceTask *_gst;			/* The Geometry Service Task we will use to execute operations		*/
-}
+@interface GeometryServiceSampleViewController : UIViewController <	AGSGeometryServiceTaskDelegate, AGSMapViewLayerDelegate, AGSMapViewTouchDelegate >
 
-@property (nonatomic, strong) IBOutlet UIButton *goBtn;
-@property (nonatomic, strong) IBOutlet UIButton *clearGraphicsBtn;
-@property (nonatomic, strong) IBOutlet UINavigationBar *navBar;
-@property (nonatomic, strong) IBOutlet UIView *statusView;
 @property (nonatomic, strong) IBOutlet UILabel *statusLabel;
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
 @property (nonatomic, strong) AGSGraphicsLayer *graphicsLayer;
 @property (nonatomic, strong) NSMutableArray *geometryArray;
 @property (nonatomic, strong) NSMutableArray *pushpins;
+
+@property (nonatomic, assign) NSInteger numPoints;
 
 @property (nonatomic, strong) AGSGeometryServiceTask *gst;
 

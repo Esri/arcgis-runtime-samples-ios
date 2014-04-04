@@ -18,10 +18,6 @@
 
 @interface TOCViewController() <LayerInfoCellDelegate, UITableViewDelegate, UITableViewDataSource>
 
-
-//mapView to create the TOC for
-@property (nonatomic, weak) AGSMapView *mapView;
-
 //this is the map level layer info object, acting as the invisible root of the entire tree. 
 @property (nonatomic, strong) LayerInfo *mapViewLevelLayerInfo;
 
@@ -38,41 +34,16 @@
 //method to add/remove the layers to/from the ToC
 - (void)processMapLayers;
 
-//to dismiss the view. 
-- (IBAction)doneButtonPressed;
-
 @end
 
 
 @implementation TOCViewController
 
-@synthesize mapView = _mapView;
-@synthesize mapViewLevelLayerInfo = _mapViewLevelLayerInfo;
-@synthesize popOverController = _popOverController;
-@synthesize navBar = _navBar;
-@synthesize tableView = _tableView;
 
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
-}
-
-- (id)initWithMapView:(AGSMapView *)mapView
-{
-    self = [super initWithNibName:@"TOCViewController" bundle:nil];
-    if (self) {
-        
-        //assign the mapView
-        self.mapView = mapView;
-        
-        //process the map layers. 
-        [self processMapLayers];
-        
-        //create the map level layer info object with id of -2 and layer view as nil.       
-        self.mapViewLevelLayerInfo = [[LayerInfo alloc] initWithLayer:nil layerID:-2 name:@"Map" target:nil];
-    }
-    return self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,6 +66,10 @@
 {
     [super viewWillAppear:animated];
     
+    //create the map level layer info object with id of -2 and layer view as nil.
+    self.mapViewLevelLayerInfo = [[LayerInfo alloc] initWithLayer:nil layerID:-2 name:@"Map" target:nil];
+    
+    //process the map layers.
     [self processMapLayers];
 }
 
@@ -110,11 +85,6 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (void)dealloc
-{
-    self.popOverController = nil;
 }
 
 #pragma mark -
@@ -141,15 +111,6 @@
      LayerInfo *layerInfo = [[LayerInfo alloc] initWithLayer:layer layerID:-1 name:layer.name target:self];
     [self.mapViewLevelLayerInfo insertChild:layerInfo atIndex:index];
 }
-
-- (void)doneButtonPressed {
-    if([[AGSDevice currentDevice] isIPad])
-		[self.popOverController dismissPopoverAnimated:YES];
-	else
-        [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
-
 
 #pragma mark -
 #pragma mark Table view data source
@@ -334,6 +295,12 @@
     
     //reload the table view.
     [self.tableView reloadData];
+}
+
+#pragma mark - actions
+
+- (IBAction)doneAction:(id)sender {
+    [self.delegate dismissTOCViewController:self];
 }
 
 

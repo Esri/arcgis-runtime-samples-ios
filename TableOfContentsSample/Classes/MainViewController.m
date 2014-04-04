@@ -11,19 +11,10 @@
 //
 #import "MainViewController.h"
 #import "TOCViewController.h"
-
-@interface MainViewController()
-
-@property (nonatomic, strong) TOCViewController *tocViewController;
-
-@end
+#import "CustomSegue.h"
+#define kTOCViewControllerSegue @"TOCViewControllerSegue"
 
 @implementation MainViewController
-
-@synthesize mapView=_mapView;
-@synthesize infoButton=_infoButton;
-@synthesize tocViewController = _tocViewController;
-@synthesize popOverController = _popOverController;
 
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
@@ -34,10 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];    
 
-    
-    //create the toc view controller
-    self.tocViewController = [[TOCViewController alloc] initWithMapView:self.mapView]; 
-	
     //add the base map. 
 	NSURL *mapUrl = [NSURL URLWithString:@"http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"];
 	AGSTiledMapServiceLayer *tiledLyr = [AGSTiledMapServiceLayer tiledMapServiceLayerWithURL:mapUrl];
@@ -79,23 +66,16 @@
 
 #pragma mark -
 
-
-
-- (IBAction)presentTableOfContents:(id)sender
-{
-    //If iPad, show legend in the PopOver, else transition to the separate view controller
-	if([[AGSDevice currentDevice] isIPad]) {
-        if(!self.popOverController) {
-            self.popOverController = [[UIPopoverController alloc] initWithContentViewController:self.tocViewController];
-            self.tocViewController.popOverController = self.popOverController;
-            self.popOverController.popoverContentSize = CGSizeMake(320, 500);
-            self.popOverController.passthroughViews = [NSArray arrayWithObject:self.view];
-        }        
-		[self.popOverController presentPopoverFromRect:self.infoButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES ];		
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+	//Re-show popOver to position it correctly after orientation change
+	if([[AGSDevice currentDevice] isIPad] && self.popOverController.popoverVisible) {
+		[self.popOverController dismissPopoverAnimated:NO];
+		[self.popOverController presentPopoverFromRect:self.infoButton.frame
+												inView:self.view
+							  permittedArrowDirections:UIPopoverArrowDirectionUp
+											  animated:YES ];
 	}
-    else {
-        [self presentViewController:self.tocViewController animated:YES completion:nil];
-	}    
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -107,15 +87,53 @@
 }
 
 - (void)viewDidUnload {
-
     [super viewDidUnload];
 	self.mapView = nil;
 	self.infoButton = nil;
-    self.tocViewController = nil;
     if([[AGSDevice currentDevice] isIPad])
         self.popOverController = nil;
 }
 
+#pragma mark - segues
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //check for the segue identifier
+    if ([segue.identifier isEqualToString:kTOCViewControllerSegue]) {
+        //get a reference to the destination controller from the segue
+        TOCViewController *controller = [segue destinationViewController];
+        controller.mapView = self.mapView;
+        //assign the delegate
+        controller.delegate = self;
+        
+        //using custom segue to handle transitions in iPad and iPhone differently
+        //in case of iPad, going to show a pop over controller
+        //for which we need to assign three attributes on the segue before performing segue
+        //view ::: the view in which the pop over controller will be presented
+        //rect ::: the CGRect which will be the target, e.g. the frame of the button which fires the segue
+        //popOverController ::: the controller which will be shown as the popOverController
+        if ([[AGSDevice currentDevice] isIPad]) {
+            
+            self.popOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
+            [self.popOverController setPopoverContentSize:CGSizeMake(320, 500)];
+            
+            //[controller.legendTableView setBackgroundColor:[UIColor whiteColor]];
+            CustomSegue *customSegue = (CustomSegue*)segue;
+            
+            customSegue.view = self.view;
+            customSegue.rect = self.infoButton.frame;
+            customSegue.popOverController = self.popOverController;
+        }
+    }
+}
+
+#pragma mark - TOCViewControllerDelegate methods
+
+-(void)dismissTOCViewController:(UIViewController *)controller {
+    //in case of iPad dismiss the pop over controller
+	if([[AGSDevice currentDevice] isIPad])
+		[self.popOverController dismissPopoverAnimated:YES];
+	else    //in case of iphone dismiss the modal view controller
+        [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

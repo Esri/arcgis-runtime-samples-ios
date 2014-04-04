@@ -12,20 +12,13 @@
 
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
+#import "TOCViewController.h"
 
-@interface MainViewController : UIViewController <AGSMapViewLayerDelegate> {
-	AGSMapView *_mapView;
-	UIButton* _infoButton;
-    
-    //Only used with iPad
-	UIPopoverController* _popOverController;
-}
+@interface MainViewController : UIViewController <AGSMapViewLayerDelegate, TOCViewControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
 @property (nonatomic, strong) IBOutlet UIButton* infoButton;
 @property (nonatomic, strong) UIPopoverController *popOverController;
-
-- (IBAction)presentTableOfContents:(id)sender;
 
 @end
 

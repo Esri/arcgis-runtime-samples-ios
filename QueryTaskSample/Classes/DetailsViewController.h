@@ -14,14 +14,7 @@
 #import <ArcGIS/ArcGIS.h>
 
 
-@interface DetailsViewController : UITableViewController {
-	
-	//store info from selected feature
-	NSDictionary *_fieldAliases;
-	AGSGraphic *__weak _feature;
-	NSString *_displayFieldName;
-	NSArray *_aliases;
-}
+@interface DetailsViewController : UITableViewController 
 
 @property (nonatomic, strong) NSDictionary *fieldAliases;
 @property (nonatomic, copy) NSString *displayFieldName;

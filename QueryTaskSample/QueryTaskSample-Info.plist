@@ -26,7 +26,7 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSMainNibFile</key>
-	<string>MainWindow</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Storyboard</string>
 </dict>
 </plist>

@@ -21,21 +21,7 @@
 #define kMapServiceLayerURL @"http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Demographics/ESRI_Census_USA/MapServer/3"
 
 //Search bar and query task delegates to get at the query and result behavior
-@interface RootViewController : UITableViewController <UISearchBarDelegate, AGSQueryTaskDelegate> {
-	
-	//search bar to get user input
-	//search string setnt via query task
-	//the query itself
-	//results are put in to a feature set
-	//results displayed in another view
-	
-	UISearchBar *_searchBar;
-	
-	AGSQueryTask *_queryTask;
-	AGSQuery *_query;
-	AGSFeatureSet *_featureSet;
-	DetailsViewController *_detailsViewController;
-}
+@interface RootViewController : UITableViewController <UISearchBarDelegate, AGSQueryTaskDelegate> 
 
 @property (nonatomic, strong) IBOutlet UISearchBar *searchBar;
 

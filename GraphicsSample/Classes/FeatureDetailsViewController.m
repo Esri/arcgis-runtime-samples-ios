@@ -48,7 +48,7 @@
 
 
 
-//get the attributes
+//set the attributes
 - (void)setFeature:(AGSGraphic *)f {
     _feature = f;
     
@@ -59,13 +59,13 @@
     self.aliases = (NSMutableArray*)self.keys;
 }
 
-//get the field aliases
+//set the field aliases
 - (void)setFieldAliases:(NSDictionary *)fa {
     if (self.keys) {
 
-        _aliases = [[NSMutableArray alloc] initWithCapacity:[self.keys count]];
+        self.aliases = [[NSMutableArray alloc] initWithCapacity:[self.keys count]];
         for (NSString *key in self.keys) {
-            [_aliases addObject:[fa valueForKey:key]];
+            [self.aliases addObject:[fa valueForKey:key]];
         }
     }
 }

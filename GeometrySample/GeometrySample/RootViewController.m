@@ -20,9 +20,16 @@
 #import "RelationshipViewController.h"
 #import "MeasureViewController.h"
 
-@implementation RootViewController
+#define kBufferViewControllerIdentifier @"BufferViewController"
+#define kCutterViewControllerIdentifier @"CutterViewController"
+#define kDensifyViewControllerIdentifier @"DensifyViewController"
+#define kUnionDifferenceViewControllerIdentifier @"UnionDifferenceViewController"
+#define kOffsetViewControllerIdentifier @"OffsetViewController"
+#define kProjectViewControllerIdentifier @"ProjectViewController"
+#define kRelationshipViewControllerIdentifier @"RelationshipViewController"
+#define kMeasureViewControllerIdentifier @"MeasureViewController"
 
-@synthesize splitViewController;
+@implementation RootViewController
 
 #pragma mark -
 #pragma mark Table view data source
@@ -86,38 +93,45 @@
     
     NSUInteger row = indexPath.row;
     
+    //Obtain an instance of storyboard to create an object of the desired view controller
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
+    NSString *desiredViewControllerIdentifier;
+    
     // Create and configure a new detail view controller appropriate for the selection.
     UIViewController *detailViewController = nil;
 
     if (row == 0) {
-        detailViewController = [[BufferViewController alloc] init];
+        desiredViewControllerIdentifier = kBufferViewControllerIdentifier;
     }
     else if (row == 1) {
-        detailViewController = [[CutterViewController alloc] init];
+        desiredViewControllerIdentifier = kCutterViewControllerIdentifier;
     }
     else if (row == 2) {
-        detailViewController = [[DensifyViewController alloc] init];
+        desiredViewControllerIdentifier = kDensifyViewControllerIdentifier;
     }
     else if (row == 3) {
-        detailViewController = [[UnionDifferenceViewController alloc] init];
+        desiredViewControllerIdentifier = kUnionDifferenceViewControllerIdentifier;
     }
     else if (row == 4) {
-        detailViewController = [[OffsetViewController alloc] init];
+        desiredViewControllerIdentifier = kOffsetViewControllerIdentifier;
     }
     else if (row == 5) {
-        detailViewController = [[ProjectViewController alloc] init];
+        desiredViewControllerIdentifier = kProjectViewControllerIdentifier;
     }
     else if (row == 6) {
-        detailViewController = [[RelationshipViewController alloc] init];
+        desiredViewControllerIdentifier = kRelationshipViewControllerIdentifier;
     }
     else {
-        detailViewController = [[MeasureViewController alloc] init];
+        desiredViewControllerIdentifier = kMeasureViewControllerIdentifier;
     }
     
-
+    //instantiate the desired view controller
+    detailViewController = [storyboard instantiateViewControllerWithIdentifier:desiredViewControllerIdentifier];
+    
     // Update the split view controller's view controllers array.
+    UISplitViewController *splitViewController = [self.navigationController splitViewController];
     NSArray *viewControllers = [[NSArray alloc] initWithObjects:self.navigationController, detailViewController, nil];
-    self.splitViewController.viewControllers = viewControllers;
+    splitViewController.viewControllers = viewControllers;
     
 }
 
@@ -129,12 +143,6 @@
     
     [super viewDidLoad];
     self.title = @"Operations";
-}
-
--(void) viewDidUnload {
-	[super viewDidUnload];
-	
-	self.splitViewController = nil;
 }
 
 #pragma mark -

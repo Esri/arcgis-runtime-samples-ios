@@ -12,54 +12,13 @@
 
 #import "OffsetViewController.h"
 
-@interface OffsetViewController () {
-    UIToolbar *_toolbar1;
-    UIToolbar *_toolbar2;
-    UISegmentedControl *_segmentedControl;
-    UISlider *_distanceSlider;
-    UISlider *_bevelSlider;
-    UIBarButtonItem *_distance;
-    UIBarButtonItem *_bevel;
-    UISegmentedControl *_geometrySelect;
-    UIBarButtonItem *_addButton;
-    UIBarButtonItem *_offsetButton;
-    UIBarButtonItem *_resetButton;
-    UILabel *_userInstructions;
-    
-    AGSMapView *_mapView;
-    AGSSketchGraphicsLayer *_sketchLayer;
-    AGSGraphicsLayer *_graphicsLayer;
-    NSMutableArray *_lastOffset;
-    
-    int _offsetDistance;
-    double _bevelRatio;
-    AGSGeometryOffsetType _offsetType;
-    
-}
+@interface OffsetViewController ()
 
 - (void)updateOffset;
 
 @end
 
 @implementation OffsetViewController
-
-@synthesize segmentedControl = _segmentedControl;
-@synthesize userInstructions = _userInstructions;
-@synthesize lastOffset = _lastOffset;
-@synthesize toolbar1 = _toolbar1;
-@synthesize toolbar2 = _toolbar2;
-@synthesize distanceSlider = _distanceSlider;
-@synthesize bevelSlider = _bevelSlider;
-@synthesize distance = _distance;
-@synthesize bevel = _bevel;
-@synthesize geometrySelect = _geometrySelect;
-@synthesize addButton = _addButton;
-@synthesize offsetButton = _offsetButton;
-@synthesize resetButton = _resetButton;
-@synthesize mapView = _mapView;
-@synthesize sketchLayer = _sketchLayer;
-@synthesize graphicsLayer = _graphicsLayer;
-
 
 - (void)viewDidLoad
 {
@@ -86,7 +45,7 @@
     self.distanceSlider.value = 1000;
     
     int distValue = (int)self.distanceSlider.value;
-    _offsetDistance = distValue;
+    self.offsetDistance = distValue;
     
     // Display the distance via the title of the bar button item
     self.distance.title = [NSString stringWithFormat:@"%dm", distValue];
@@ -97,12 +56,12 @@
     self.bevelSlider.value = 0.5;
     
     double bevelValue = self.bevelSlider.value;
-    _bevelRatio = bevelValue;
+    self.bevelRatio = bevelValue;
     
     // Display the bevel ratio via the title of the bar button item
     self.bevel.title = [NSString stringWithFormat:@"%fm", bevelValue];
     
-    _offsetType = AGSGeometryOffsetTypeMitered;
+    self.offsetType = AGSGeometryOffsetTypeMitered;
     
     // Create an envelope and zoom to it
     AGSSpatialReference *sr = [AGSSpatialReference spatialReferenceWithWKID:102100];    
@@ -131,16 +90,16 @@
     //Set the offset type to match the selected offset type
     switch (control.selectedSegmentIndex) {
         case 0:
-            _offsetType = AGSGeometryOffsetTypeMitered;
+            self.offsetType = AGSGeometryOffsetTypeMitered;
             break;
         case 1:
-            _offsetType = AGSGeometryOffsetTypeRounded;
+            self.offsetType = AGSGeometryOffsetTypeRounded;
             break;
         case 2:
-            _offsetType = AGSGeometryOffsetTypeSquare;
+            self.offsetType = AGSGeometryOffsetTypeSquare;
             break;
         case 3:
-            _offsetType = AGSGeometryOffsetTypeBevelled;
+            self.offsetType = AGSGeometryOffsetTypeBevelled;
         
         default:
             break;
@@ -176,7 +135,7 @@
     offsetLineSymbol.width = 4;
     
     AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
-    AGSGeometry *offsetGeometry = [geometryEngine offsetGeometry:sketchGeometry byDistance:_offsetDistance withJointType:_offsetType bevelRatio:_bevelRatio flattenError:0];
+    AGSGeometry *offsetGeometry = [geometryEngine offsetGeometry:sketchGeometry byDistance:self.offsetDistance withJointType:self.offsetType bevelRatio:self.bevelRatio flattenError:0];
     AGSGraphic *offsetGraphic = [AGSGraphic graphicWithGeometry:offsetGeometry symbol:offsetLineSymbol attributes:nil ];
 
     [self.lastOffset addObject:offsetGraphic];
@@ -204,7 +163,7 @@
     NSMutableArray *newGraphics = [NSMutableArray array];
     for (AGSGraphic *graphic in self.graphicsLayer.graphics) {
         AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
-        AGSGeometry *newGeometry = [geometryEngine offsetGeometry:graphic.geometry byDistance:_offsetDistance withJointType:_offsetType bevelRatio:_bevelRatio flattenError:0];
+        AGSGeometry *newGeometry = [geometryEngine offsetGeometry:graphic.geometry byDistance:self.offsetDistance withJointType:self.offsetType bevelRatio:self.bevelRatio flattenError:0];
         AGSGraphic *newGraphic = [AGSGraphic graphicWithGeometry:newGeometry symbol:offsetLineSymbol attributes:nil ];
         [newGraphics addObject:newGraphic];
     }
@@ -240,7 +199,7 @@
     
     // Get the value of the slider and update
     int value = (int)slider.value;
-    _offsetDistance = value;
+    self.offsetDistance = value;
     self.distance.title = [NSString stringWithFormat:@"%dm", value];
     
     [self updateOffset];
@@ -251,7 +210,7 @@
     
     // Get the value of the slider and update
     double value = (double)slider.value;
-    _bevelRatio = value;
+    self.bevelRatio = value;
     self.bevel.title = [NSString stringWithFormat:@"%fm", value];
    
     [self updateOffset];

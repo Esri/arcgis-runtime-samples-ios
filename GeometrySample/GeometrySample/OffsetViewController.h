@@ -33,4 +33,9 @@
 @property (nonatomic, strong) AGSGraphicsLayer *graphicsLayer;
 @property (nonatomic, strong) NSMutableArray *lastOffset;
 
+@property (nonatomic, assign) int offsetDistance;
+@property (nonatomic, assign) double bevelRatio;
+
+@property (nonatomic, assign) AGSGeometryOffsetType offsetType;
+
 @end

@@ -13,22 +13,7 @@
 #import "UnitSelectorViewController.h"
 #import <ArcGIS/ArcGIS.h>
 
-@interface UnitSelectorViewController () {
-    UITableView *_tableView;
-    NSArray *_distanceUnits;
-    NSArray *_areaUnits;
-    BOOL _useAreaUnits;
-}
-
-@end
-
 @implementation UnitSelectorViewController
-@synthesize distanceUnits = _distanceUnits;
-@synthesize areaUnits = _areaUnits;
-@synthesize tableView = _tableView;
-@synthesize useAreaUnits;
-@synthesize delegate;
-
 
 - (void)viewDidLoad
 {

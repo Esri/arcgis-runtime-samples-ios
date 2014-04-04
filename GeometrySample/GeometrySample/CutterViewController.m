@@ -12,37 +12,7 @@
 
 #import "CutterViewController.h"
 
-
-@interface CutterViewController() {
-    UIToolbar *_toolbar;
-    UIBarButtonItem *_addButton;
-    UIBarButtonItem *_polygonButton;
-    UIBarButtonItem *_resetButton;
-    UIBarButtonItem *_cutButton;
-    UIBarButtonItem *_drawButton;
-    UILabel *_userInstructions;
-    
-    AGSMapView *_mapView;
-    AGSGraphicsLayer *_graphicsLayer;
-    AGSSketchGraphicsLayer *_sketchLayer;
-}
-
-@end
-
-
 @implementation CutterViewController
-
-@synthesize userInstructions = _userInstructions;
-@synthesize drawButton = _drawButton;
-@synthesize toolbar = _toolbar;
-@synthesize addButton = _addButton;
-@synthesize polygonButton = _polygonButton;
-@synthesize resetButton = _resetButton;
-@synthesize cutButton = _cutButton;
-@synthesize mapView = _mapView;
-@synthesize graphicsLayer = _graphicsLayer;
-@synthesize sketchLayer = _sketchLayer;
-
 	
 #pragma mark -
 #pragma mark View lifecycle

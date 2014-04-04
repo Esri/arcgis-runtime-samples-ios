@@ -12,41 +12,7 @@
 
 #import "ProjectViewController.h"
 
-@interface ProjectViewController () {
-    UIToolbar *_toolbar;
-    UISegmentedControl *_geometrySelect;
-    UIBarButtonItem *_resetButton;
-    UIBarButtonItem *_projectButton;
-    UILabel *_userInstructions;
-    
-    AGSMapView *_mapView1;
-    AGSMapView *_mapView2;
-    AGSMapView *_mapView3;
-    
-    AGSSketchGraphicsLayer  *_sketchLayer;
-    AGSGraphicsLayer *_graphicsLayer1;
-    AGSGraphicsLayer *_graphicsLayer2;
-    AGSGraphicsLayer *_graphicsLayer3;
-}
-
-@end
-
 @implementation ProjectViewController
-
-@synthesize userInstructions = _userInstructions;
-@synthesize toolbar = _toolbar;
-@synthesize geometrySelect = _geometrySelect;
-@synthesize resetButton = _resetButton;
-@synthesize projectButton = _projectButton;
-@synthesize mapView1 = _mapView1;
-@synthesize mapView2 = _mapView2;
-@synthesize mapView3 = _mapView3;
-@synthesize sketchLayer = _sketchLayer;
-@synthesize graphicsLayer1 = _graphicsLayer1;
-@synthesize graphicsLayer2 = _graphicsLayer2;
-@synthesize graphicsLayer3 = _graphicsLayer3;
-
-
 
 #pragma mark -
 #pragma mark View lifecycle

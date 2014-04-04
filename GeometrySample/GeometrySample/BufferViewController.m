@@ -12,48 +12,16 @@
 
 #import "BufferViewController.h"
 
-
-
-@interface BufferViewController() {
-    UIToolbar *_toolbar;
-    UIBarButtonItem *__weak _bufferButton;
-    UIBarButtonItem *_resetButton;
-    UISegmentedControl *_geometrySelect;
-    UIBarButtonItem *_distance;
-    UISlider *_slider;
-    AGSMapView *_mapView;
-    AGSGraphicsLayer *_graphicsLayer;
-    AGSSketchGraphicsLayer *_sketchLayer;
-    NSMutableArray *_lastBuffer;
-    UILabel *_userInstructions;
-    
-    int _bufferDistance;
-    
-}
-
-@end
-
-
-
 @implementation BufferViewController
-
-@synthesize geometrySelect = _geometrySelect;
-@synthesize userInstructions = _userInstructions;
-@synthesize lastBuffer = _lastBuffer;
-@synthesize distance = _distance;
-@synthesize slider = _slider;
-@synthesize resetButton = _resetButton;
-@synthesize bufferButton = _bufferButton;
-@synthesize graphicsLayer = _graphicsLayer;
-@synthesize sketchLayer = _sketchLayer;
-@synthesize mapView = _mapView;
-@synthesize toolbar = _toolbar;
-
-
 
 #pragma mark -
 #pragma mark View lifecycle
 
+// in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

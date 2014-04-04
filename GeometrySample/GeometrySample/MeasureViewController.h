@@ -27,4 +27,8 @@
 @property (nonatomic, strong) IBOutlet UILabel *userInstructions;
 @property (nonatomic, strong) IBOutlet UIButton *selectUnitButton;
 
+@property (nonatomic, assign) double distance;
+@property (nonatomic, assign) double area;
+@property (nonatomic, assign) AGSSRUnit distanceUnit;
+@property (nonatomic, assign) AGSAreaUnits areaUnit;
 @end

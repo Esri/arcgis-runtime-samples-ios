@@ -13,37 +13,7 @@
 #import <ArcGIS/ArcGIS.h>
 #import "DensifyViewController.h"
 
-@interface DensifyViewController () {
-    UIToolbar *_toolbar;
-    UIBarButtonItem *_resetButton;
-    UIBarButtonItem *_distance;
-    UISlider *_slider;
-    UILabel *_userInstructions;
-    UISegmentedControl *_geometryControl;
-    
-    AGSMapView *_mapView;
-    AGSSketchGraphicsLayer *_sketchLayer;
-    AGSGraphicsLayer *_resultGraphicsLayer;
-    NSMutableArray *_sketchGeometries;
-    
-    int _densifyDistance;
-}
-
-@end
-
 @implementation DensifyViewController
-
-@synthesize geometryControl = _geometryControl;
-@synthesize sketchGeometries = _sketchGeometries;
-@synthesize userInstructions = _userInstructions;
-@synthesize toolbar = _toolbar;
-@synthesize resetButton = _resetButton;
-@synthesize distance = _distance;
-@synthesize slider = _slider;
-@synthesize mapView = _mapView;
-@synthesize sketchLayer = _sketchLayer;
-@synthesize resultGraphicsLayer = _resultGraphicsLayer;
-
 
 // Do any additional setup after loading the view from its nib.
 - (void)viewDidLoad
@@ -89,7 +59,7 @@
     self.slider.value = 3000;
     
     int value = (int)self.slider.value;
-    _densifyDistance = value;
+    self.densifyDistance = value;
     self.distance.title = [NSString stringWithFormat:@"%dm", value];
     
     // Create an envelope and zoom the map to it
@@ -116,7 +86,7 @@
     // Get the value of the slider
     // and densify the geometries using the new value
     int value = (int)slider.value;
-    _densifyDistance = value;
+    self.densifyDistance = value;
     self.distance.title = [NSString stringWithFormat:@"%dm", value];
     
     [self.resultGraphicsLayer removeAllGraphics];
@@ -127,7 +97,7 @@
     for (AGSGeometry *geometry in self.sketchGeometries) {
         AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
         
-        AGSGeometry *newGeometry = [geometryEngine densifyGeometry:geometry withMaxSegmentLength:_densifyDistance];
+        AGSGeometry *newGeometry = [geometryEngine densifyGeometry:geometry withMaxSegmentLength:self.densifyDistance];
         AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:newGeometry symbol:nil attributes:nil ];
         [newGraphics addObject:graphic];
     }
@@ -177,7 +147,7 @@
     AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
     
     // Densify the geometry and create a graphic to add to the result graphics layer
-    AGSGeometry *newGeometry = [geometryEngine densifyGeometry:sketchGeometry withMaxSegmentLength:_densifyDistance];
+    AGSGeometry *newGeometry = [geometryEngine densifyGeometry:sketchGeometry withMaxSegmentLength:self.densifyDistance];
     AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:newGeometry symbol:nil attributes:nil ];
 
     [self.resultGraphicsLayer addGraphic:graphic];

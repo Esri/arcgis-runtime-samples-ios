@@ -116,7 +116,6 @@
             self.popOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
             [self.popOverController setPopoverContentSize:CGSizeMake(320, 500)];
             
-            //[controller.legendTableView setBackgroundColor:[UIColor whiteColor]];
             CustomSegue *customSegue = (CustomSegue*)segue;
             
             customSegue.view = self.view;
@@ -128,7 +127,7 @@
 
 #pragma mark - TOCViewControllerDelegate methods
 
--(void)dismissTOCViewController:(UIViewController *)controller {
+-(void)dismissTOCViewController:(TOCViewController *)controller {
     //in case of iPad dismiss the pop over controller
 	if([[AGSDevice currentDevice] isIPad])
 		[self.popOverController dismissPopoverAnimated:YES];

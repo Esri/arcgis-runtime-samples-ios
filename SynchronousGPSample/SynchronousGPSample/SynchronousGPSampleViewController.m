@@ -11,17 +11,12 @@
 //
 
 #import "SynchronousGPSampleViewController.h"
+#import "SVProgressHUD.h"
 
 #define kDefaultMap @"http://services.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer"
 #define kGPTask @"http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Elevation/ESRI_Elevation_World/GPServer/Viewshed"
 
 @implementation SynchronousGPSampleViewController
-
-@synthesize mapView=_mapView;
-@synthesize graphicsView = _graphicsView, graphicsLayer=_graphicsLayer;
-@synthesize gpTask =_gpTask, gpOp = _gpOp;
-@synthesize activityAlertView = _activityAlertView;
-@synthesize vsDistanceLabel = _vsDistanceLabel, vsDistanceSlider = _vsDistanceSlider;
 
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
@@ -67,13 +62,6 @@
     //add  graphics layer for showing results of the viewshed calculation
     self.graphicsLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:self.graphicsLayer withName:@"Viewshed"];
-    
-    //setting up the alert view to show th ebusy indicator. 
-    self.activityAlertView = [[ActivityAlertView alloc] 
-                               initWithTitle:@"Calculating Viewshed..."
-                               message:@"\n\n"
-                               delegate:self cancelButtonTitle:@"Cancel" 
-                               otherButtonTitles:nil];
     
     [super viewDidLoad];
 }
@@ -141,7 +129,7 @@
 	self.gpOp = [self.gpTask executeWithParameters:params]; // keep track of the gp operation so that we can cancel it if user wants.
     
     //showing activity indicator
-    [self.activityAlertView show];   
+    [SVProgressHUD showWithStatus:@"Loading Viewshed..."];
      
 }
 
@@ -170,7 +158,7 @@
 		}
 
 		//stop activity indicator
-		[self.activityAlertView close];
+		[SVProgressHUD dismiss];
 		
 		//zoom to graphics layer extent
 		AGSMutableEnvelope *env = [self.graphicsLayer.fullEnvelope mutableCopy];
@@ -184,7 +172,7 @@
 -(void)geoprocessor:(AGSGeoprocessor *)geoprocessor operation:(NSOperation *)op didFailExecuteWithError:(NSError *)error{
     
     //stop activity indicator
-    [self.activityAlertView close];
+    [SVProgressHUD dismiss];
     
     //show error message
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
@@ -199,8 +187,8 @@
 
 - (IBAction)vsDistanceSliderChanged:(id)sender {
     //show current distance
-    self.vsDistanceLabel.text = [NSString stringWithFormat:@"%0.0f mile(s)", self.vsDistanceSlider.value];
-    
+    [self.vsDistanceLabel setTitle:[NSString stringWithFormat:@"%.1f miles", self.vsDistanceSlider.value]];
+    NSLog(@"slider value %f", self.vsDistanceSlider.value);
 }
 
 #pragma mark UIAlertViewDelegate Methods 

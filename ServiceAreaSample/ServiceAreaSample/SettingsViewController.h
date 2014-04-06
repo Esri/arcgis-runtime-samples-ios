@@ -11,22 +11,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Parameters.h"
 
 
-@interface SettingsViewController : UIViewController {
-    
-    
-    NSUInteger _firstTimeBreak;
-    NSUInteger _secondTimeBreak;
-    
-    UILabel *_firstTimeBreakLabel;
-    UILabel *_secondTimeBreakLabel;
-}
+@interface SettingsViewController : UIViewController
 
-@property (nonatomic, readonly) NSUInteger firstTimeBreak;
-@property (nonatomic, readonly) NSUInteger secondTimeBreak;
 @property (nonatomic, strong) IBOutlet UILabel *firstTimeBreakLabel;
 @property (nonatomic, strong) IBOutlet UILabel *secondTimeBreakLabel;
+@property (nonatomic, strong) Parameters *parameters;
+
+@property (weak, nonatomic) IBOutlet UISlider *firstTimeBreakSlider;
+@property (weak, nonatomic) IBOutlet UISlider *secondTimeBreakSlider;
 
 - (IBAction)firstTimeBreakChanged:(id)sender;
 - (IBAction)secondTimeBreakChanged:(id)sender;

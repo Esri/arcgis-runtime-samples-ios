@@ -13,15 +13,19 @@
 #import <UIKit/UIKit.h>
 #import "LegendDataSource.h"
 
-@interface LegendViewController : UIViewController {
-	UITableView* _legendTableView;
-	LegendDataSource* _legendDataSource;
-	UIPopoverController* _popOverController;
-}
+@protocol LegendViewControllerDelegate <NSObject>
+
+- (void)dismissLegend;
+
+@end
+
+@interface LegendViewController : UIViewController 
 
 @property (nonatomic,strong) IBOutlet UITableView* legendTableView;
 @property (nonatomic,strong) LegendDataSource* legendDataSource;
 @property (nonatomic,strong) UIPopoverController* popOverController;
+
+@property (weak, nonatomic) id <LegendViewControllerDelegate> delegate;
 
 - (IBAction) dismiss;
 

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="g7E-w4-0Ep">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Routing Sample View Controller-->
+        <scene sceneID="HaQ-JW-ZI4">
+            <objects>
+                <viewController id="g7E-w4-0Ep" customClass="RoutingSampleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FhK-xV-e5E"/>
+                        <viewControllerLayoutGuide type="bottom" id="zeD-0c-sGm"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="sEP-Y5-GOg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="82T-f8-CrH">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="koY-no-Wnt"/>
+                                </constraints>
+                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem title="Routing Sample" id="okB-Gb-HMN">
+                                        <barButtonItem key="leftBarButtonItem" title="Reset" id="6VI-Z6-xvf">
+                                            <connections>
+                                                <action selector="resetBtnClicked:" destination="g7E-w4-0Ep" id="cFC-OA-4Rk"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Route" id="UWx-hR-6E7" userLabel="Route Btn">
+                                            <connections>
+                                                <action selector="routeBtnClicked:" destination="g7E-w4-0Ep" id="TQI-Wu-Qx3"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KcF-2C-MMn" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="8jk-mY-ESQ" userLabel="Directions Label">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="oAv-aw-b8d"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </label>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="zMp-wb-fyH">
+                                        <rect key="frame" x="10" y="440" width="56" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="Rfr-RA-0U0"/>
+                                            <constraint firstAttribute="height" constant="32" id="vtg-K2-hZf"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="zMp-wb-fyH" firstAttribute="leading" secondItem="KcF-2C-MMn" secondAttribute="leading" constant="10" id="9aR-bv-V1c"/>
+                                    <constraint firstAttribute="width" secondItem="8jk-mY-ESQ" secondAttribute="width" id="OD9-Kl-YfK"/>
+                                    <constraint firstItem="8jk-mY-ESQ" firstAttribute="top" secondItem="KcF-2C-MMn" secondAttribute="top" id="YV4-Od-uTm"/>
+                                    <constraint firstAttribute="bottom" secondItem="zMp-wb-fyH" secondAttribute="bottom" constant="8" id="jKg-pc-dff"/>
+                                    <constraint firstItem="8jk-mY-ESQ" firstAttribute="leading" secondItem="KcF-2C-MMn" secondAttribute="leading" id="sbA-rV-avD"/>
+                                </constraints>
+                                <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ge3-Rx-HeO">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="kKs-gC-PtY"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem enabled="NO" systemItem="add" id="E3D-ED-cU8" userLabel="Add Stop Btn">
+                                        <connections>
+                                            <action selector="addStopOrBarrier:" destination="g7E-w4-0Ep" id="lqc-rV-HUH"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="uOx-Hw-QS9">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="2zn-G0-9Er">
+                                            <rect key="frame" x="43" y="7" width="140" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Stops"/>
+                                                <segment title="Barriers"/>
+                                            </segments>
+                                            <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="stopsBarriersValChanged:" destination="g7E-w4-0Ep" eventType="valueChanged" id="dsL-Qq-T97"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem image="Clear20.png" id="pHp-nn-d7Q" userLabel="Clear Btn">
+                                        <connections>
+                                            <action selector="clearSketchLayer:" destination="g7E-w4-0Ep" id="5hd-gp-QUv"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="9" style="plain" systemItem="flexibleSpace" id="H1l-SB-Whr"/>
+                                    <barButtonItem enabled="NO" image="prev32.png" width="6" style="plain" id="TDm-4c-odc" userLabel="Prev Btn">
+                                        <connections>
+                                            <action selector="prevBtnClicked:" destination="g7E-w4-0Ep" id="56F-PV-dvi"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="4" style="plain" systemItem="fixedSpace" id="401-sB-Zae"/>
+                                    <barButtonItem enabled="NO" image="next32.png" width="35" style="plain" id="7Yj-Hi-zXI" userLabel="Next Btn">
+                                        <connections>
+                                            <action selector="nextBtnClicked:" destination="g7E-w4-0Ep" id="BAh-WT-TQN"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KcF-2C-MMn" firstAttribute="top" secondItem="82T-f8-CrH" secondAttribute="bottom" id="59n-Df-vae"/>
+                            <constraint firstItem="KcF-2C-MMn" firstAttribute="width" secondItem="82T-f8-CrH" secondAttribute="width" id="7yf-qz-OWo"/>
+                            <constraint firstAttribute="width" secondItem="Ge3-Rx-HeO" secondAttribute="width" id="ATp-9t-l9W"/>
+                            <constraint firstItem="Ge3-Rx-HeO" firstAttribute="top" secondItem="KcF-2C-MMn" secondAttribute="bottom" id="BJo-Tm-wCX"/>
+                            <constraint firstItem="Ge3-Rx-HeO" firstAttribute="leading" secondItem="sEP-Y5-GOg" secondAttribute="leading" id="XWk-oB-kwx"/>
+                            <constraint firstItem="KcF-2C-MMn" firstAttribute="leading" secondItem="sEP-Y5-GOg" secondAttribute="leading" id="Xie-GT-u9s"/>
+                            <constraint firstItem="82T-f8-CrH" firstAttribute="top" secondItem="sEP-Y5-GOg" secondAttribute="top" id="hPA-aN-fN9"/>
+                            <constraint firstAttribute="bottom" secondItem="Ge3-Rx-HeO" secondAttribute="bottom" id="i9Q-hV-gWp"/>
+                            <constraint firstAttribute="width" secondItem="82T-f8-CrH" secondAttribute="width" id="mlR-uc-rQD"/>
+                            <constraint firstItem="82T-f8-CrH" firstAttribute="leading" secondItem="sEP-Y5-GOg" secondAttribute="leading" id="uUW-KP-4G7"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <connections>
+                        <outlet property="addBtn" destination="E3D-ED-cU8" id="qCT-EX-Ds2"/>
+                        <outlet property="clearSketchBtn" destination="pHp-nn-d7Q" id="agm-L4-hQp"/>
+                        <outlet property="directionsLabel" destination="8jk-mY-ESQ" id="9V4-4Y-lmV"/>
+                        <outlet property="mapView" destination="KcF-2C-MMn" id="ef1-cw-vN5"/>
+                        <outlet property="nextBtn" destination="7Yj-Hi-zXI" id="Sbl-lj-8Ya"/>
+                        <outlet property="prevBtn" destination="TDm-4c-odc" id="4iZ-Dy-hos"/>
+                        <outlet property="sketchModeSegCtrl" destination="2zn-G0-9Er" id="LkA-CY-dsU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="daW-pa-DD3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="355" y="104"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+        <image name="Clear20.png" width="20" height="20"/>
+        <image name="next32.png" width="32" height="32"/>
+        <image name="prev32.png" width="32" height="32"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

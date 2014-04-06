@@ -17,24 +17,6 @@
 
 @implementation RoutingSampleViewController
 
-@synthesize mapView=_mapView;
-@synthesize graphicsLayer=_graphicsLayer;
-@synthesize sketchLayer=_sketchLayer;
-@synthesize routeTask=_routeTask;
-@synthesize routeTaskParams=_routeTaskParams;
-@synthesize stopCalloutView=_stopCalloutView;
-@synthesize currentStopGraphic=_currentStopGraphic;
-@synthesize selectedGraphic=_selectedGraphic;
-@synthesize sketchModeSegCtrl=_sketchModeSegCtrl;
-@synthesize directionsBannerView=_directionsBannerView;
-@synthesize directionsLabel=_directionsLabel;
-@synthesize prevBtn=_prevBtn;
-@synthesize nextBtn=_nextBtn;
-@synthesize addBtn=_addBtn;
-@synthesize clearSketchBtn=_clearSketchBtn;
-@synthesize routeResult=_routeResult;
-@synthesize currentDirectionGraphic=_currentDirectionGraphic;
-
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
 {
@@ -102,10 +84,10 @@
 	self.stopCalloutView = removeStopBtn;
 	
 	// initialize stop counter
-	_numStops = 0;
+	self.numStops = 0;
 	
 	// initialize barrier counter
-	_numBarriers = 0;
+	self.numBarriers = 0;
 	
 	// update our banner
 	[self updateDirectionsLabel:@"Tap on the map to add stops & barriers"];
@@ -215,7 +197,7 @@
 	// the solve route failed...
 	// let the user know
 	UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Solve Route Failed" 
-												 message:[NSString stringWithFormat:@"Error: %@", error] 
+												 message:[NSString stringWithFormat:@"Error: %@", error.localizedFailureReason]
 												delegate:nil 
 									   cancelButtonTitle:@"Ok" 
 									   otherButtonTitles:nil];
@@ -363,13 +345,13 @@
 - (void)reset {
 	
 	// set stop counter back to 0
-	_numStops = 0;
+	self.numStops = 0;
 	
 	// set barrier counter back to 0
-	_numBarriers = 0;
+	self.numBarriers = 0;
 	
 	// reset direction index
-	_directionIndex = 0;
+	self.directionIndex = 0;
 		
 	// remove all graphics
 	[self.graphicsLayer removeAllGraphics];
@@ -410,11 +392,11 @@
 - (void)removeStopClicked {
 	if ([self.selectedGraphic isKindOfClass:[AGSStopGraphic class]]) {
 		// we have a stop
-		_numStops--;
+		self.numStops--;
 	}
 	else {
 		//barrier
-		_numBarriers--;
+		self.numBarriers--;
 	}
 	
 	[self.graphicsLayer removeGraphic:self.selectedGraphic];
@@ -449,13 +431,13 @@
 	switch (AGSGeometryTypeForGeometry(geometry)) {
 		//Stop
 		case AGSGeometryTypePoint:{
-            _numStops++;
-            [attributes setValue:[NSNumber numberWithInt:_numStops] forKey:@"stopNumber"];
-            symbol = [self stopSymbolWithNumber:_numStops];
+            self.numStops++;
+            [attributes setValue:[NSNumber numberWithInt:self.numStops] forKey:@"stopNumber"];
+            symbol = [self stopSymbolWithNumber:self.numStops];
 			AGSStopGraphic *stopGraphic = [AGSStopGraphic graphicWithGeometry:geometry 
 																	   symbol:symbol 
 																   attributes:attributes ];
-			stopGraphic.sequence = _numStops;
+			stopGraphic.sequence = self.numStops;
 			//You can set additional properties on the stop here
 			//refer to the conceptual helf for Routing task
 			[self.graphicsLayer addGraphic:stopGraphic];
@@ -463,8 +445,8 @@
 		//Barrier
 		}
         case AGSGeometryTypePolygon:{
-			_numBarriers++;
-			[attributes setValue:[NSNumber numberWithInt:_numBarriers] forKey:@"barrierNumber"];
+			self.numBarriers++;
+			[attributes setValue:[NSNumber numberWithInt:self.numBarriers] forKey:@"barrierNumber"];
 			//you can set additional properties on the barrier here
 			//refer to the conceptual helf for Routing task
 			symbol = [self barrierSymbol];
@@ -604,7 +586,7 @@
 // move to the next direction in the direction set
 //
 - (IBAction)nextBtnClicked:(id)sender {
-	_directionIndex++;
+	self.directionIndex++;
 	
     // remove current direction graphic, so we can display next one
 	if ([self.graphicsLayer.graphics containsObject:self.currentDirectionGraphic]) {
@@ -613,7 +595,7 @@
 	
     // get current direction and add it to the graphics layer
 	AGSDirectionSet *directions = self.routeResult.directions;
-	self.currentDirectionGraphic = [directions.graphics objectAtIndex:_directionIndex];
+	self.currentDirectionGraphic = [directions.graphics objectAtIndex:self.directionIndex];
 	self.currentDirectionGraphic.symbol = [self currentDirectionSymbol];
 	[self.graphicsLayer addGraphic:self.currentDirectionGraphic];
 	
@@ -626,17 +608,17 @@
 	[self.mapView zoomToEnvelope:env animated:YES];
 	
     // determine if we need to disable a next/prev button
-	if (_directionIndex >= self.routeResult.directions.graphics.count - 1) {
+	if (self.directionIndex >= self.routeResult.directions.graphics.count - 1) {
 		self.nextBtn.enabled = NO;
 	}
-	if (_directionIndex > 0) {
+	if (self.directionIndex > 0) {
 		self.prevBtn.enabled = YES;
 	}
 
 }
 
 - (IBAction)prevBtnClicked:(id)sender {
-	_directionIndex--;
+	self.directionIndex--;
 	
     // remove current direction
 	if ([self.graphicsLayer.graphics containsObject:self.currentDirectionGraphic]) {
@@ -645,7 +627,7 @@
     
 	// get next direction
 	AGSDirectionSet *directions = self.routeResult.directions;
-	self.currentDirectionGraphic = [directions.graphics objectAtIndex:_directionIndex];
+	self.currentDirectionGraphic = [directions.graphics objectAtIndex:self.directionIndex];
 	self.currentDirectionGraphic.symbol = [self currentDirectionSymbol];
 	[self.graphicsLayer addGraphic:self.currentDirectionGraphic];
 	
@@ -658,14 +640,13 @@
 	[self.mapView zoomToEnvelope:env animated:YES];
 
     // determine if we need to disable next/prev button
-	if (_directionIndex <= 0) {
+	if (self.directionIndex <= 0) {
 		self.prevBtn.enabled = NO;
 	}
-	if (_directionIndex < self.routeResult.directions.graphics.count - 1) {
+	if (self.directionIndex < self.routeResult.directions.graphics.count - 1) {
 		self.nextBtn.enabled = YES;
 	}
 }
-
 
 #pragma mark AGSLayerCalloutDelegate
 
@@ -684,8 +665,5 @@
         return NO;
     }
  }
-
-
-
 
 @end

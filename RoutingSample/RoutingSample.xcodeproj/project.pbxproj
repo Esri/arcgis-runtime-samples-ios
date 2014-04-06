@@ -9,9 +9,8 @@
 /* Begin PBXBuildFile section */
 		1D3623260D0F684500981E51 /* RoutingSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* RoutingSampleAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		2899E5220DE3E06400AC0155 /* RoutingSampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* RoutingSampleViewController.xib */; };
-		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* RoutingSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* RoutingSampleViewController.m */; };
+		3EA670BF18EC92B100791CD7 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EA670BE18EC92B100791CD7 /* Storyboard.storyboard */; };
 		9755BA23167B966F00518E4D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9755BA22167B966F00518E4D /* Default-568h@2x.png */; };
 		975A5ED0134BE79900759B4A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 975A5ECE134BE79900759B4A /* icon.png */; };
 		975A5ED1134BE79900759B4A /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 975A5ECF134BE79900759B4A /* icon@2x.png */; };
@@ -27,7 +26,6 @@
 		ACB803A7131A36C300654F30 /* prev32@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB803A3131A36C300654F30 /* prev32@2x.png */; };
 		ACB80506131A601200654F30 /* Clear20.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB80504131A601200654F30 /* Clear20.png */; };
 		ACB80507131A601200654F30 /* Clear20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB80505131A601200654F30 /* Clear20@2x.png */; };
-		AF6FBC8C12550E5300F476B4 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6FBC8B12550E5300F476B4 /* MainWindow-iPad.xib */; };
 		C56B401814C74314003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B401714C74314003A46EB /* ArcGIS.bundle */; };
 /* End PBXBuildFile section */
 
@@ -35,15 +33,13 @@
 		1D3623240D0F684500981E51 /* RoutingSampleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutingSampleAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* RoutingSampleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutingSampleAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* RoutingSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoutingSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2899E5210DE3E06400AC0155 /* RoutingSampleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoutingSampleViewController.xib; sourceTree = "<group>"; };
-		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		28D7ACF60DDB3853001CB0EB /* RoutingSampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutingSampleViewController.h; sourceTree = "<group>"; };
 		28D7ACF70DDB3853001CB0EB /* RoutingSampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutingSampleViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* RoutingSample_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutingSample_Prefix.pch; sourceTree = "<group>"; };
+		3EA670BE18EC92B100791CD7 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* RoutingSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RoutingSample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9755BA22167B966F00518E4D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		975A5E95134BC4A500759B4A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = iphoneos4.0/System/Library/Frameworks/CoreText.framework; sourceTree = "<group>"; };
 		975A5ECE134BE79900759B4A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		975A5ECF134BE79900759B4A /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		ACB8033D1319B6C100654F30 /* GreenPushpin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenPushpin.png; sourceTree = "<group>"; };
@@ -58,7 +54,6 @@
 		ACB803A3131A36C300654F30 /* prev32@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prev32@2x.png"; sourceTree = "<group>"; };
 		ACB80504131A601200654F30 /* Clear20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clear20.png; sourceTree = "<group>"; };
 		ACB80505131A601200654F30 /* Clear20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Clear20@2x.png"; sourceTree = "<group>"; };
-		AF6FBC8B12550E5300F476B4 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		C56B401714C74314003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -95,12 +90,10 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				9755BA22167B966F00518E4D /* Default-568h@2x.png */,
-				C56B401714C74314003A46EB /* ArcGIS.bundle */,
+				3EA670BE18EC92B100791CD7 /* Storyboard.storyboard */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
-				AF6FBC8A12550E5300F476B4 /* Resources-iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -119,6 +112,24 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3EA670C018EC934800791CD7 /* Images */,
+				8D1107310486CEB800E47090 /* RoutingSample-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C56B401714C74314003A46EB /* ArcGIS.bundle */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3EA670C018EC934800791CD7 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				9755BA22167B966F00518E4D /* Default-568h@2x.png */,
 				975A5ECE134BE79900759B4A /* icon.png */,
 				975A5ECF134BE79900759B4A /* icon@2x.png */,
 				ACB803A0131A36C300654F30 /* next32.png */,
@@ -133,27 +144,8 @@
 				ACB8036E131A31EC00654F30 /* remove24@2x.png */,
 				ACB80504131A601200654F30 /* Clear20.png */,
 				ACB80505131A601200654F30 /* Clear20@2x.png */,
-				2899E5210DE3E06400AC0155 /* RoutingSampleViewController.xib */,
-				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
-				8D1107310486CEB800E47090 /* RoutingSample-Info.plist */,
 			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		AF6FBC8A12550E5300F476B4 /* Resources-iPad */ = {
-			isa = PBXGroup;
-			children = (
-				975A5E95134BC4A500759B4A /* CoreText.framework */,
-				AF6FBC8B12550E5300F476B4 /* MainWindow-iPad.xib */,
-			);
-			name = "Resources-iPad";
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,7 +174,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "RoutingSample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -208,15 +200,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				2899E5220DE3E06400AC0155 /* RoutingSampleViewController.xib in Resources */,
-				AF6FBC8C12550E5300F476B4 /* MainWindow-iPad.xib in Resources */,
 				ACB8033F1319B6C100654F30 /* GreenPushpin.png in Resources */,
 				ACB803401319B6C100654F30 /* RedPushpin.png in Resources */,
 				ACB8036F131A31EC00654F30 /* remove24.png in Resources */,
 				ACB80370131A31EC00654F30 /* remove24@2x.png in Resources */,
 				ACB80399131A367000654F30 /* GreenPushpin@2x.png in Resources */,
 				ACB8039A131A367000654F30 /* RedPushpin@2x.png in Resources */,
+				3EA670BF18EC92B100791CD7 /* Storyboard.storyboard in Resources */,
 				ACB803A4131A36C300654F30 /* next32.png in Resources */,
 				ACB803A5131A36C300654F30 /* next32@2x.png in Resources */,
 				ACB803A6131A36C300654F30 /* prev32.png in Resources */,
@@ -250,7 +240,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
@@ -277,7 +266,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
@@ -301,7 +289,6 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -309,6 +296,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -318,7 +306,6 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

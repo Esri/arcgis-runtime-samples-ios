@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="oub-Tw-dYa">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Temporal Sample View Controller-->
+        <scene sceneID="PNb-wx-0Nz">
+            <objects>
+                <viewController id="oub-Tw-dYa" customClass="TemporalSampleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mrV-y0-fpi"/>
+                        <viewControllerLayoutGuide type="bottom" id="3Sb-Xl-DtD"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="XqE-XW-T5N">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wwn-SO-ipJ" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="O3q-j3-Rwf">
+                                        <rect key="frame" x="9" y="487" width="56" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="I1P-Fz-c9N"/>
+                                            <constraint firstAttribute="height" constant="32" id="ecJ-mz-Dri"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="O3q-j3-Rwf" firstAttribute="leading" secondItem="Wwn-SO-ipJ" secondAttribute="leading" constant="9" id="YgO-H9-Ef5"/>
+                                </constraints>
+                                <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                            </view>
+                            <segmentedControl opaque="NO" alpha="0.80985915660858154" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="YkF-9v-D0l">
+                                <rect key="frame" x="0.0" y="526" width="320" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="cJZ-4L-tQX"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                </segments>
+                                <connections>
+                                    <action selector="datePicked" destination="oub-Tw-dYa" eventType="valueChanged" id="u7s-qF-ezh"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Wwn-SO-ipJ" firstAttribute="top" secondItem="XqE-XW-T5N" secondAttribute="top" id="3hl-B6-9vk"/>
+                            <constraint firstAttribute="bottom" secondItem="YkF-9v-D0l" secondAttribute="bottom" constant="13" id="6GE-Fy-mOE"/>
+                            <constraint firstAttribute="width" secondItem="Wwn-SO-ipJ" secondAttribute="width" id="PKn-uR-cD5"/>
+                            <constraint firstItem="Wwn-SO-ipJ" firstAttribute="leading" secondItem="XqE-XW-T5N" secondAttribute="leading" id="Q8b-EJ-2a0"/>
+                            <constraint firstAttribute="width" secondItem="YkF-9v-D0l" secondAttribute="width" id="SgU-W4-fBa"/>
+                            <constraint firstItem="YkF-9v-D0l" firstAttribute="leading" secondItem="XqE-XW-T5N" secondAttribute="leading" id="dZh-kE-dXw"/>
+                            <constraint firstItem="YkF-9v-D0l" firstAttribute="top" secondItem="O3q-j3-Rwf" secondAttribute="bottom" constant="7" id="kDG-bK-mia"/>
+                            <constraint firstAttribute="height" secondItem="Wwn-SO-ipJ" secondAttribute="height" id="y9u-NE-7iL"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Wwn-SO-ipJ" id="wik-Ml-Au0"/>
+                        <outlet property="segmentControl" destination="YkF-9v-D0l" id="J7K-4C-cft"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8IW-5l-KbX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="193" y="115"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

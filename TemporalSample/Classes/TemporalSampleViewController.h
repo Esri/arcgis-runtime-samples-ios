@@ -13,22 +13,15 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface TemporalSampleViewController : UIViewController <AGSLayerCalloutDelegate> {
-	AGSMapView *_mapView;
-	UISegmentedControl* _segmentControl;
-	NSDate* _today;
-	AGSCalloutTemplate* _calloutTemplate;
-    AGSFeatureLayer* _featureLyr;
-}
+@interface TemporalSampleViewController : UIViewController <AGSLayerCalloutDelegate>
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
 @property (nonatomic, strong) IBOutlet UISegmentedControl* segmentControl;
 @property (nonatomic, strong) NSDate* today;
 @property (nonatomic, strong) AGSCalloutTemplate* calloutTemplate;
-
+@property (nonatomic, strong) AGSFeatureLayer* featureLyr;
 
 - (IBAction) datePicked;
-
 
 @end
 

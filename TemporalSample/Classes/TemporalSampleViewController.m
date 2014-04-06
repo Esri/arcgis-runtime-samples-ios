@@ -17,11 +17,6 @@
 
 @implementation TemporalSampleViewController
 
-@synthesize mapView=_mapView;
-@synthesize segmentControl=_segmentControl;
-@synthesize today=_today;
-@synthesize calloutTemplate=_calloutTemplate;
-
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
 {
@@ -38,11 +33,11 @@
 	
 	//Add Earthquakes layer showing earthquakes from last 7 days
 	//Using Snapshot mode because number of earthquakes won't be too large (hopefully)
-	_featureLyr = [AGSFeatureLayer featureServiceLayerWithURL:
+	self.featureLyr = [AGSFeatureLayer featureServiceLayerWithURL:
 						   [NSURL URLWithString:kFeatureServiceURL] mode:AGSFeatureLayerModeSnapshot];
-	_featureLyr.outFields = [NSArray arrayWithObject:@"*"];
-	_featureLyr.calloutDelegate = self;
-	[self.mapView addMapLayer:_featureLyr withName:@"Earthquakes Layer"];
+	self.featureLyr.outFields = [NSArray arrayWithObject:@"*"];
+	self.featureLyr.calloutDelegate = self;
+	[self.mapView addMapLayer:self.featureLyr withName:@"Earthquakes Layer"];
 
     
     AGSDynamicMapServiceLayer* dy = [AGSDynamicMapServiceLayer dynamicMapServiceLayerWithURL:[NSURL URLWithString:@"http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Earthquakes/EarthquakesFromLastSevenDays/MapServer"]];
@@ -88,8 +83,6 @@
 		//Set a time extent ranging from start to end
 		AGSTimeExtent* extent = [[AGSTimeExtent alloc] initWithStart:start end:end];
 		self.mapView.timeExtent = extent;
-        
-       // [_featureLyr refresh];
 
 		//hide callout incase it was pointing to an earthquake from another date
 		self.mapView.callout.hidden = YES;

@@ -14,11 +14,7 @@
 #import <ArcGIS/ArcGIS.h>
 #import "SketchToolbar.h"
 
-@interface SketchLayerSampleViewController : UIViewController {
-	AGSMapView *_mapView;
-	UIToolbar* _toolbar;
-	SketchToolbar* _sketchToolbar;
-}
+@interface SketchLayerSampleViewController : UIViewController
 
 @property (nonatomic,strong) IBOutlet AGSMapView *mapView;
 @property (nonatomic,strong) IBOutlet UIToolbar* toolbar;

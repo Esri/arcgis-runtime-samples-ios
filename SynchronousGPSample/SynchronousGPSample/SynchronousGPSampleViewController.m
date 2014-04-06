@@ -187,7 +187,7 @@
 
 - (IBAction)vsDistanceSliderChanged:(id)sender {
     //show current distance
-    [self.vsDistanceLabel setTitle:[NSString stringWithFormat:@"%.1f mile(s)", self.vsDistanceSlider.value]];
+    [self.vsDistanceLabel setTitle:[NSString stringWithFormat:@"%.1f miles", self.vsDistanceSlider.value]];
     NSLog(@"slider value %f", self.vsDistanceSlider.value);
 }
 

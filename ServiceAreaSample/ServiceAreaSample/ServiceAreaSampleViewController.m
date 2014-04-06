@@ -123,9 +123,6 @@
 	//We want to enable/disable UI elements when sketch geometry is modified
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToGeomChanged:) name:AGSSketchGraphicsLayerGeometryDidChangeNotification object:nil];
     
-    //preparing the Settings View Controller
-    //self.settingsViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
-    
     //instantiate a parameter object to feed values to the api
     self.parameters = [[Parameters alloc] init];
     

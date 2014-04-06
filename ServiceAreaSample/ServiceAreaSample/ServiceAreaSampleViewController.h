@@ -24,7 +24,6 @@
 @property (nonatomic, strong) AGSGraphic *selectedGraphic;
 @property (nonatomic, strong) AGSServiceAreaTask *saTask;
 @property (nonatomic, strong) NSOperation *saOp;
-@property (nonatomic, strong) SettingsViewController *settingsViewController;
 @property (nonatomic, strong) UIView *barrierCalloutView;
 @property (nonatomic, strong) UIView *facilitiesCalloutView;
 

@@ -12,15 +12,19 @@
 
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
+@protocol TOCViewControllerDelegate ;
 
 @interface TOCViewController : UIViewController
 
+//mapView to create the TOC for
+@property (nonatomic, weak) AGSMapView *mapView;
 
-@property (nonatomic, weak) UIPopoverController *popOverController;
+@property (nonatomic, weak) id <TOCViewControllerDelegate> delegate;
 
-- (id)initWithMapView:(AGSMapView *)mapView;
+@end
 
+@protocol TOCViewControllerDelegate <NSObject>
 
-
+- (void)dismissTOCViewController:(TOCViewController*)controller;
 
 @end

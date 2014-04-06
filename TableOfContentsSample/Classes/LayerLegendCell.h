@@ -12,12 +12,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LayerLegendCell : UITableViewCell {
-    UIImageView *_legendImage;
-	UILabel *_legendLabel;
-    
-    int _level;
-}
+@interface LayerLegendCell : UITableViewCell 
 
 @property (nonatomic, strong) UIImageView *legendImage;
 @property (nonatomic, strong) UILabel *legendLabel;

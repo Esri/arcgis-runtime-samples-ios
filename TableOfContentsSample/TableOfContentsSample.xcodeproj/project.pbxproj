@@ -9,14 +9,13 @@
 /* Begin PBXBuildFile section */
 		1D3623260D0F684500981E51 /* LegendSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* LegendSampleAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		2899E5220DE3E06400AC0155 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* MainViewController.xib */; };
-		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* MainViewController.m */; };
+		3EA670EC18EF24F800791CD7 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EA670EB18EF24F800791CD7 /* Storyboard.storyboard */; };
+		3EA670F018EF296700791CD7 /* CustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA670EF18EF296700791CD7 /* CustomSegue.m */; };
 		97B8C41A16786197003B6E1B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B8C41916786197003B6E1B /* Default-568h@2x.png */; };
 		97E8186C1304CDDF001E3C72 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E8186A1304CDDF001E3C72 /* icon.png */; };
 		97E8186D1304CDDF001E3C72 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E8186B1304CDDF001E3C72 /* icon@2x.png */; };
 		AF6FBC8C12550E5300F476B4 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6FBC8B12550E5300F476B4 /* MainWindow-iPad.xib */; };
-		C56B409314C78B6C003A46EB /* TOCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56B409114C78B6C003A46EB /* TOCViewController.xib */; };
 		C56B40D414CF877E003A46EB /* TOCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56B409014C78B6C003A46EB /* TOCViewController.m */; };
 		C56B40D714CF920A003A46EB /* LayerInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C56B40D614CF920A003A46EB /* LayerInfoCell.m */; };
 		C56B40DA14CF923B003A46EB /* CircleArrowRight_sml.png in Resources */ = {isa = PBXBuildFile; fileRef = C56B40D814CF923A003A46EB /* CircleArrowRight_sml.png */; };
@@ -32,12 +31,13 @@
 		1D3623240D0F684500981E51 /* LegendSampleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegendSampleAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* LegendSampleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegendSampleAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* TableOfContentsSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableOfContentsSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2899E5210DE3E06400AC0155 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		28D7ACF60DDB3853001CB0EB /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		28D7ACF70DDB3853001CB0EB /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* TableOfContentsSample_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableOfContentsSample_Prefix.pch; sourceTree = "<group>"; };
+		3EA670EB18EF24F800791CD7 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		3EA670EE18EF296700791CD7 /* CustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomSegue.h; path = Segues/CustomSegue.h; sourceTree = "<group>"; };
+		3EA670EF18EF296700791CD7 /* CustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomSegue.m; path = Segues/CustomSegue.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TableOfContentsSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TableOfContentsSample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		97B8C41916786197003B6E1B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		97E8186A1304CDDF001E3C72 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -45,7 +45,6 @@
 		AF6FBC8B12550E5300F476B4 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		C56B408F14C78B6C003A46EB /* TOCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOCViewController.h; sourceTree = "<group>"; };
 		C56B409014C78B6C003A46EB /* TOCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOCViewController.m; sourceTree = "<group>"; };
-		C56B409114C78B6C003A46EB /* TOCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TOCViewController.xib; path = Classes/TOCViewController.xib; sourceTree = "<group>"; };
 		C56B40D514CF920A003A46EB /* LayerInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerInfoCell.h; sourceTree = "<group>"; };
 		C56B40D614CF920A003A46EB /* LayerInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayerInfoCell.m; sourceTree = "<group>"; };
 		C56B40D814CF923A003A46EB /* CircleArrowRight_sml.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CircleArrowRight_sml.png; path = Classes/CircleArrowRight_sml.png; sourceTree = "<group>"; };
@@ -73,11 +72,11 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3EA670F118EF56CA00791CD7 /* Controllers */,
+				3EA670ED18EF294700791CD7 /* Segue */,
 				C56B411814D8C297003A46EB /* TOC */,
 				1D3623240D0F684500981E51 /* LegendSampleAppDelegate.h */,
 				1D3623250D0F684500981E51 /* LegendSampleAppDelegate.m */,
-				28D7ACF60DDB3853001CB0EB /* MainViewController.h */,
-				28D7ACF70DDB3853001CB0EB /* MainViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -93,7 +92,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				C5F53D7414EDC11600360A58 /* ArcGIS.bundle */,
+				3EA670EB18EF24F800791CD7 /* Storyboard.storyboard */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -116,16 +115,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				97B8C41916786197003B6E1B /* Default-568h@2x.png */,
-				C56B40D814CF923A003A46EB /* CircleArrowRight_sml.png */,
-				C56B40D914CF923A003A46EB /* CircleArrowDown_sml.png */,
-				C56B40FF14D722BF003A46EB /* checkbox_checked.png */,
-				C56B410014D722BF003A46EB /* checkbox_unchecked.png */,
-				97E8186A1304CDDF001E3C72 /* icon.png */,
-				97E8186B1304CDDF001E3C72 /* icon@2x.png */,
-				C56B409114C78B6C003A46EB /* TOCViewController.xib */,
-				2899E5210DE3E06400AC0155 /* MainViewController.xib */,
-				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				3EA670F218EF56DC00791CD7 /* Images */,
 				8D1107310486CEB800E47090 /* TableOfContentsSample-Info.plist */,
 			);
 			name = Resources;
@@ -134,8 +124,41 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C5F53D7414EDC11600360A58 /* ArcGIS.bundle */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3EA670ED18EF294700791CD7 /* Segue */ = {
+			isa = PBXGroup;
+			children = (
+				3EA670EE18EF296700791CD7 /* CustomSegue.h */,
+				3EA670EF18EF296700791CD7 /* CustomSegue.m */,
+			);
+			name = Segue;
+			sourceTree = "<group>";
+		};
+		3EA670F118EF56CA00791CD7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				28D7ACF60DDB3853001CB0EB /* MainViewController.h */,
+				28D7ACF70DDB3853001CB0EB /* MainViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3EA670F218EF56DC00791CD7 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				97B8C41916786197003B6E1B /* Default-568h@2x.png */,
+				C56B40D814CF923A003A46EB /* CircleArrowRight_sml.png */,
+				C56B40D914CF923A003A46EB /* CircleArrowDown_sml.png */,
+				C56B40FF14D722BF003A46EB /* checkbox_checked.png */,
+				C56B410014D722BF003A46EB /* checkbox_unchecked.png */,
+				97E8186A1304CDDF001E3C72 /* icon.png */,
+				97E8186B1304CDDF001E3C72 /* icon@2x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		AF6FBC8A12550E5300F476B4 /* Resources-iPad */ = {
@@ -195,7 +218,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TableOfContentsSample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -221,15 +244,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				2899E5220DE3E06400AC0155 /* MainViewController.xib in Resources */,
 				AF6FBC8C12550E5300F476B4 /* MainWindow-iPad.xib in Resources */,
 				97E8186C1304CDDF001E3C72 /* icon.png in Resources */,
 				97E8186D1304CDDF001E3C72 /* icon@2x.png in Resources */,
-				C56B409314C78B6C003A46EB /* TOCViewController.xib in Resources */,
 				C56B40DA14CF923B003A46EB /* CircleArrowRight_sml.png in Resources */,
 				C56B40DB14CF923B003A46EB /* CircleArrowDown_sml.png in Resources */,
 				C56B410114D722BF003A46EB /* checkbox_checked.png in Resources */,
+				3EA670EC18EF24F800791CD7 /* Storyboard.storyboard in Resources */,
 				C56B410214D722BF003A46EB /* checkbox_unchecked.png in Resources */,
 				C5F53D7514EDC11600360A58 /* ArcGIS.bundle in Resources */,
 				97B8C41A16786197003B6E1B /* Default-568h@2x.png in Resources */,
@@ -247,6 +268,7 @@
 				1D3623260D0F684500981E51 /* LegendSampleAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* MainViewController.m in Sources */,
 				C5B80C0414BD1CD300E3703E /* LayerInfo.m in Sources */,
+				3EA670F018EF296700791CD7 /* CustomSegue.m in Sources */,
 				C56B40D414CF877E003A46EB /* TOCViewController.m in Sources */,
 				C56B40D714CF920A003A46EB /* LayerInfoCell.m in Sources */,
 				C56B40E214CFA067003A46EB /* LayerLegendCell.m in Sources */,
@@ -260,7 +282,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -291,7 +312,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

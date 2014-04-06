@@ -31,9 +31,6 @@
 
 @implementation LayerLegendCell
 
-@synthesize legendLabel = _legendLabel, legendImage = _legendImage;
-@synthesize level = _level;
-
 - (id)initWithStyle:(UITableViewCellStyle)style 
 	reuseIdentifier:(NSString *)reuseIdentifier 
 			  level:(NSUInteger)level {

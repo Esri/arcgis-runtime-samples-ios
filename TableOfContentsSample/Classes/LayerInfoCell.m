@@ -30,9 +30,7 @@
 
 @end
 
-@interface CheckBox : UIButton {
-	BOOL _isChecked;
-}
+@interface CheckBox : UIButton
 
 @property (nonatomic,readonly) BOOL isChecked;
 
@@ -42,9 +40,6 @@
 @end
 
 @implementation LayerInfoCell
-
-@synthesize valueLabel = _valueLabel, visibilitySwitch = _visibilitySwitch, arrowImage = _arrowImage;
-@synthesize level = _level, expanded = _expanded, canChangeVisibility = _canChangeVisibility, layerInfoCellDelegate = _layerInfoCellDelegate;
 
 - (id)initWithStyle:(UITableViewCellStyle)style 
 	reuseIdentifier:(NSString *)reuseIdentifier 

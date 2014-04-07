@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9760C518158BAF2B00986512 /* CODialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9760C516158BAF2A00986512 /* CODialog.m */; };
+		3E4324CC18F342F400504DFD /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E4324CB18F342F400504DFD /* Storyboard.storyboard */; };
+		3E4324D318F34E4100504DFD /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E4324D018F34E4100504DFD /* SVProgressHUD.bundle */; };
+		3E4324D418F34E4100504DFD /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4324D218F34E4100504DFD /* SVProgressHUD.m */; };
 		97CFF48716794F2400DA8AC4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97CFF48616794F2400DA8AC4 /* Default-568h@2x.png */; };
 		DE053B121547435F00C09A74 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DE053B101547435F00C09A74 /* icon.png */; };
 		DE053B131547435F00C09A74 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE053B111547435F00C09A74 /* icon@2x.png */; };
@@ -16,13 +18,14 @@
 		DE90B7841544EE0200A07711 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE90B7831544EE0200A07711 /* main.m */; };
 		DE90B7881544EE0200A07711 /* WebmapSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE90B7871544EE0200A07711 /* WebmapSampleAppDelegate.m */; };
 		DE90B78B1544EE0200A07711 /* WebmapSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE90B78A1544EE0200A07711 /* WebmapSampleViewController.m */; };
-		DE90B78E1544EE0200A07711 /* WebmapSampleViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE90B78C1544EE0200A07711 /* WebmapSampleViewController_iPhone.xib */; };
-		DE90B7911544EE0200A07711 /* WebmapSampleViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE90B78F1544EE0200A07711 /* WebmapSampleViewController_iPad.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9760C516158BAF2A00986512 /* CODialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CODialog.m; sourceTree = "<group>"; };
-		9760C517158BAF2A00986512 /* CODialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CODialog.h; sourceTree = "<group>"; };
+		3E4324CB18F342F400504DFD /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		3E4324CF18F34E4100504DFD /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		3E4324D018F34E4100504DFD /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		3E4324D118F34E4100504DFD /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		3E4324D218F34E4100504DFD /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		97CFF48616794F2400DA8AC4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		DE053B101547435F00C09A74 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		DE053B111547435F00C09A74 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
@@ -36,8 +39,6 @@
 		DE90B7871544EE0200A07711 /* WebmapSampleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebmapSampleAppDelegate.m; sourceTree = "<group>"; };
 		DE90B7891544EE0200A07711 /* WebmapSampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebmapSampleViewController.h; sourceTree = "<group>"; };
 		DE90B78A1544EE0200A07711 /* WebmapSampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebmapSampleViewController.m; sourceTree = "<group>"; };
-		DE90B78D1544EE0200A07711 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/WebmapSampleViewController_iPhone.xib; sourceTree = "<group>"; };
-		DE90B7901544EE0200A07711 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/WebmapSampleViewController_iPad.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,13 +52,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9760C5CE158BCA9F00986512 /* CODialog */ = {
+		3E4324CD18F34E3300504DFD /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				9760C516158BAF2A00986512 /* CODialog.m */,
-				9760C517158BAF2A00986512 /* CODialog.h */,
+				3E4324CE18F34E4100504DFD /* SVProgressHUD */,
 			);
-			name = CODialog;
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		3E4324CE18F34E4100504DFD /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				3E4324CF18F34E4100504DFD /* SVProgressHUD-Prefix.pch */,
+				3E4324D018F34E4100504DFD /* SVProgressHUD.bundle */,
+				3E4324D118F34E4100504DFD /* SVProgressHUD.h */,
+				3E4324D218F34E4100504DFD /* SVProgressHUD.m */,
+			);
+			name = SVProgressHUD;
+			path = Libraries/SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		3E4324D518F354A400504DFD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DE90B7891544EE0200A07711 /* WebmapSampleViewController.h */,
+				DE90B78A1544EE0200A07711 /* WebmapSampleViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		DE053B0E1547434300C09A74 /* Resources */ = {
@@ -98,14 +119,12 @@
 		DE90B77D1544EE0200A07711 /* WebmapSample */ = {
 			isa = PBXGroup;
 			children = (
-				9760C5CE158BCA9F00986512 /* CODialog */,
-				DE053B0E1547434300C09A74 /* Resources */,
+				3E4324CB18F342F400504DFD /* Storyboard.storyboard */,
+				3E4324D518F354A400504DFD /* Controllers */,
 				DE90B7861544EE0200A07711 /* WebmapSampleAppDelegate.h */,
 				DE90B7871544EE0200A07711 /* WebmapSampleAppDelegate.m */,
-				DE90B7891544EE0200A07711 /* WebmapSampleViewController.h */,
-				DE90B78A1544EE0200A07711 /* WebmapSampleViewController.m */,
-				DE90B78C1544EE0200A07711 /* WebmapSampleViewController_iPhone.xib */,
-				DE90B78F1544EE0200A07711 /* WebmapSampleViewController_iPad.xib */,
+				DE053B0E1547434300C09A74 /* Resources */,
+				3E4324CD18F34E3300504DFD /* Libraries */,
 				DE90B77E1544EE0200A07711 /* Supporting Files */,
 			);
 			path = WebmapSample;
@@ -148,7 +167,7 @@
 		DE90B76A1544EE0200A07711 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = DE90B76D1544EE0200A07711 /* Build configuration list for PBXProject "WebmapSample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -173,10 +192,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE90B7821544EE0200A07711 /* InfoPlist.strings in Resources */,
-				DE90B78E1544EE0200A07711 /* WebmapSampleViewController_iPhone.xib in Resources */,
-				DE90B7911544EE0200A07711 /* WebmapSampleViewController_iPad.xib in Resources */,
+				3E4324D318F34E4100504DFD /* SVProgressHUD.bundle in Resources */,
 				DE053B121547435F00C09A74 /* icon.png in Resources */,
 				DE053B131547435F00C09A74 /* icon@2x.png in Resources */,
+				3E4324CC18F342F400504DFD /* Storyboard.storyboard in Resources */,
 				DE4263711550855B00E6831A /* ArcGIS.bundle in Resources */,
 				97CFF48716794F2400DA8AC4 /* Default-568h@2x.png in Resources */,
 			);
@@ -191,8 +210,8 @@
 			files = (
 				DE90B7841544EE0200A07711 /* main.m in Sources */,
 				DE90B7881544EE0200A07711 /* WebmapSampleAppDelegate.m in Sources */,
+				3E4324D418F34E4100504DFD /* SVProgressHUD.m in Sources */,
 				DE90B78B1544EE0200A07711 /* WebmapSampleViewController.m in Sources */,
-				9760C518158BAF2B00986512 /* CODialog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,22 +226,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		DE90B78C1544EE0200A07711 /* WebmapSampleViewController_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DE90B78D1544EE0200A07711 /* en */,
-			);
-			name = WebmapSampleViewController_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		DE90B78F1544EE0200A07711 /* WebmapSampleViewController_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DE90B7901544EE0200A07711 /* en */,
-			);
-			name = WebmapSampleViewController_iPad.xib;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -230,7 +233,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -269,7 +271,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;

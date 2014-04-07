@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="IfX-U4-wQZ">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Webmap Sample View Controller-->
+        <scene sceneID="lVn-PW-DCT">
+            <objects>
+                <viewController id="IfX-U4-wQZ" customClass="WebmapSampleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WQr-qw-pX4"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lhq-xH-md8"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="s1F-Cq-NhA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MlP-V3-hVi" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="Lg2-Sp-iSu">
+                                        <rect key="frame" x="12" y="526" width="56" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="Gnk-FH-zJL"/>
+                                            <constraint firstAttribute="width" constant="56" id="Yaw-ik-79Y"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Lg2-Sp-iSu" secondAttribute="bottom" constant="10" id="Alg-qc-Kob"/>
+                                    <constraint firstItem="Lg2-Sp-iSu" firstAttribute="leading" secondItem="MlP-V3-hVi" secondAttribute="leading" constant="12" id="tRT-QR-YiN"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MlP-V3-hVi" firstAttribute="leading" secondItem="s1F-Cq-NhA" secondAttribute="leading" id="9i2-Lb-ga7"/>
+                            <constraint firstItem="MlP-V3-hVi" firstAttribute="width" secondItem="s1F-Cq-NhA" secondAttribute="width" id="TVx-U0-uJn"/>
+                            <constraint firstItem="MlP-V3-hVi" firstAttribute="height" secondItem="s1F-Cq-NhA" secondAttribute="height" id="VHx-YU-O2U"/>
+                            <constraint firstItem="MlP-V3-hVi" firstAttribute="top" secondItem="s1F-Cq-NhA" secondAttribute="top" id="fEA-QZ-ls7"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="MlP-V3-hVi" id="eCB-L6-OPZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P9x-sV-LfT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="352" y="24"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

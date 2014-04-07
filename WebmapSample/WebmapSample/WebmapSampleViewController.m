@@ -12,17 +12,19 @@
 
 
 #import "WebmapSampleViewController.h"
-#import "CODialog.h"
+#import "SVProgressHUD.h"
+
+#define PRIVACY_ALERT_TAG 0
+#define WEB_MAP_ALERT_TAG 1
+#define LAYER_ALERT_TAG 2
 
 static NSString * const kPublicWebmapId = @"8a567ebac15748d39a747649a2e86cf4";
 static NSString * const kPrivateWebmapId = @"9a5e8ffd9eb7438b894becd6c8a85751";
 
 
-@interface WebmapSampleViewController() {
-}
+@interface WebmapSampleViewController()
 
 @property (nonatomic, strong) AGSWebMap *webMap;
-@property (nonatomic, strong) CODialog* loginDialog;
 @property (nonatomic, strong) NSString* webmapId;
 @property (nonatomic, strong) NSMutableArray* popups;
 
@@ -37,7 +39,6 @@ static NSString * const kPrivateWebmapId = @"9a5e8ffd9eb7438b894becd6c8a85751";
 // Release any retained subviews of the main view.
 - (void)viewDidUnload
 {
-    self.loginDialog = nil;
     self.webMap = nil;
     self.mapView = nil;
     self.webmapId = nil;
@@ -56,7 +57,7 @@ static NSString * const kPrivateWebmapId = @"9a5e8ffd9eb7438b894becd6c8a85751";
     
     self.mapView.callout.delegate = self;
     //Ask the user which webmap to load : Public or Private?
-    UIAlertView* webmapPickerAlertView = [[UIAlertView alloc] initWithTitle:@"Which webmap would you like to open?" message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+    UIAlertView* webmapPickerAlertView = [[UIAlertView alloc] initWithTitle:@"Which web map would you like to open?" message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
     [webmapPickerAlertView addButtonWithTitle:@"Public"];
     [webmapPickerAlertView addButtonWithTitle:@"Private"];
     [webmapPickerAlertView show];
@@ -65,10 +66,8 @@ static NSString * const kPrivateWebmapId = @"9a5e8ffd9eb7438b894becd6c8a85751";
 
 #pragma mark - AGSWebMapDelegagte methods
 - (void) webMapDidLoad:(AGSWebMap *)webMap {
-    //If we were previously showing the login dialog, let's hide it
-    //because the webmap loaded successfully
-    if(self.loginDialog)
-        [self.loginDialog hideAnimated:YES];
+
+    [SVProgressHUD dismiss];
 }
 
 
@@ -79,21 +78,10 @@ static NSString * const kPrivateWebmapId = @"9a5e8ffd9eb7438b894becd6c8a85751";
     // If we have an error loading the webmap due to an invalid or missing credential
     // prompt the user for login information
     if (error.ags_isAuthenticationError) {
-        
-            if(!self.loginDialog)
-                self.loginDialog = [CODialog dialogWithWindow:self.view.window];
-            else
-                [self.loginDialog resetLayout];
-        
-            self.loginDialog.title = @"Please sign in to access the webmap";
-            self.loginDialog.subtitle =@"Tip: use 'AGSSample' and 'agssample'";
-            
-            [self.loginDialog addTextFieldWithPlaceholder:@"Username" secure:NO];
-            [self.loginDialog addTextFieldWithPlaceholder:@"Password" secure:YES];
-            [self.loginDialog addButtonWithTitle:@"Cancel" target:self selector:@selector(cancelSignInWebMap)];
-            [self.loginDialog addButtonWithTitle:@"Login" target:self selector:@selector(signInWebMap)];
-            [self.loginDialog showOrUpdateAnimated:YES];
-            
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please sign in to access the web map" message:@"Tip: use 'AGSSample' and 'agssample'" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Login", nil];
+        [alertView setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
+        [alertView setTag:WEB_MAP_ALERT_TAG];
+        [alertView show];
         
     }
     // For any other error alert the user
@@ -106,53 +94,34 @@ static NSString * const kPrivateWebmapId = @"9a5e8ffd9eb7438b894becd6c8a85751";
     }
 }
 
-
-- (void) webMap:(AGSWebMap *) 	webMap
-   didLoadLayer:(AGSLayer *) 	layer {
-    if(self.loginDialog)
-        [self.loginDialog hideAnimated:YES];
+- (void)webMap:(AGSWebMap *)webMap didLoadLayer:(AGSLayer *)layer {
+    [SVProgressHUD dismiss];
 }
 
 
-- (void) webMap:(AGSWebMap *) 	webMap
-didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
-baseLayer:(BOOL) 	baseLayer
-federated:(BOOL) 	federated
-withError:(NSError *) 	error {
-    
+- (void) webMap:(AGSWebMap *) webMap didFailToLoadLayer:(AGSWebMapLayerInfo *)layerInfo baseLayer:(BOOL)baseLayer federated:(BOOL)federated withError:(NSError *)error
+{
     NSLog(@"Error while loading layer: %@",[error localizedDescription]);
     
     // If we have an error loading the layer due to an invalid or missing credential
     // prompt the user for login information
     if (error.ags_isAuthenticationError) {
-        
-        if(!self.loginDialog)
-            self.loginDialog = [CODialog dialogWithWindow:self.view.window];
-        else
-            [self.loginDialog resetLayout];
-        
-        self.loginDialog.dialogStyle = CODialogStyleDefault;
-        self.loginDialog.title = [NSString stringWithFormat:@"This webmap uses a secure layer '%@'. \n Sign in to access the layer", layerInfo.title];
-        self.loginDialog.subtitle = @"Tip: use 'sdksample' and 'sample@380'";
-        
-        [self.loginDialog addTextFieldWithPlaceholder:@"Username" secure:NO];
-        [self.loginDialog addTextFieldWithPlaceholder:@"Password" secure:YES];
-        [self.loginDialog addButtonWithTitle:@"Cancel" target:self selector:@selector(cancelSignInLayer)];
-        [self.loginDialog addButtonWithTitle:@"Login" target:self selector:@selector(signInLayer)];
-        [self.loginDialog showOrUpdateAnimated:YES];
-        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"This webmap uses a secure layer '%@'. \n Sign in to access the layer", layerInfo.title]
+                                                            message:@"Tip: use 'sdksample' and 'sample@380'"
+                                                           delegate:self cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"Login", nil];
+        [alertView setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
+        [alertView setTag:LAYER_ALERT_TAG];
+        [alertView show];
     }
     // For any other error alert the user
     else {
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" 
-                                                     message:[NSString stringWithFormat:@"The layer %@ cannot be displayed",layerInfo.title]
-                                                    delegate:self 
+                                            message:[NSString stringWithFormat:@"The layer %@ cannot be displayed",layerInfo.title]
+                                            delegate:self
                                            cancelButtonTitle:@"OK" 
                                            otherButtonTitles:nil];
-        
         [av show];
-        
-        
         
         // and skip loading this layer
         [self.webMap continueOpenAndSkipCurrentLayer];
@@ -181,8 +150,6 @@ withError:(NSError *) 	error {
 }
 
 - (void) webMap:(AGSWebMap *)webMap didFinishFetchingPopupsForExtent:(AGSEnvelope *)extent {
-    // hide the progress dialog
-    [self.loginDialog hideAnimated:YES];
     
     //show the popups
     AGSPopupsContainerViewController* pvc =
@@ -194,11 +161,11 @@ withError:(NSError *) 	error {
 
 #pragma mark - Sign in methods
 
--(void)signInWebMap{
+-(void)signInWebMap:(UIAlertView*)alertView {
      
     //Get the credential the user entered
-    NSString* username = [self.loginDialog textForTextFieldAtIndex:0];
-    NSString* password = [self.loginDialog textForTextFieldAtIndex:1];
+    NSString* username = [[alertView textFieldAtIndex:0] text];
+    NSString* password = [[alertView textFieldAtIndex:1] text];
    AGSCredential *credential = [[AGSCredential alloc] initWithUser:username password:password];
 
     // Recreate the webmap object; this time with the credentials
@@ -208,48 +175,31 @@ withError:(NSError *) 	error {
     // open webmap into mapview
     [self.webMap openIntoMapView:self.mapView];
     
-    //Change the login dialog to give feedback to the user
-    [self.loginDialog resetLayout];
-    self.loginDialog.title = @"Loading";
-    self.loginDialog.dialogStyle = CODialogStyleIndeterminate;
-    [self.loginDialog showOrUpdateAnimated:YES];
+    [SVProgressHUD showWithStatus:@"Loading"];
     
 }
 
 -(void)cancelSignInWebMap{
     //Tell the user we cant load the private webmap 
     //because we don't have a credential to use
-    [self.loginDialog resetLayout];
-    self.loginDialog.dialogStyle = CODialogStyleError;
-    self.loginDialog.title = @"Failed to load the private webmap";
-    self.loginDialog.subtitle = @"No credentials provided";
-    [self.loginDialog showOrUpdateAnimated:YES];
-    [self.loginDialog hideAnimated:YES afterDelay:3];
+    [[[UIAlertView alloc] initWithTitle:@"Failed to load the private webmap" message:@"No credentials provided" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil] show];
 }
 
--(void)signInLayer{
+-(void)signInLayer:(UIAlertView*)alertView {
     //Get the credentials the user entered
-    NSString* username = [self.loginDialog textForTextFieldAtIndex:0];
-    NSString* password = [self.loginDialog textForTextFieldAtIndex:1];
+    NSString* username = [[alertView textFieldAtIndex:0] text];
+    NSString* password = [[alertView textFieldAtIndex:1] text];
     AGSCredential *credential = [[AGSCredential alloc] initWithUser:username password:password];
     
     // Pass the credential to the webmap so that it can
     // continue to open the layer with the credential
     [self.webMap continueOpenWithCredential:credential];
    
-    
-    //Change the login dialog to give feedback to the user
-    [self.loginDialog resetLayout];
-    self.loginDialog.title = @"Loading";
-    self.loginDialog.dialogStyle = CODialogStyleIndeterminate;
-    [self.loginDialog showOrUpdateAnimated:YES];
+    [SVProgressHUD showWithStatus:@"Loading"];
     
 }
 
 -(void)cancelSignInLayer{
-    // hide the login dialog
-    [self.loginDialog hideAnimated:YES];
-
     // skip loading this layer
     [self.webMap continueOpenAndSkipCurrentLayer];
 }
@@ -261,12 +211,6 @@ withError:(NSError *) 	error {
     
     //reinitialize the popups array that will hold the results
     self.popups = [[NSMutableArray alloc]init];
-    
-    //show a progress dialog in case it takes time to fetch popups
-    [self.loginDialog resetLayout];
-    self.loginDialog.title = @"Loading";
-    self.loginDialog.dialogStyle = CODialogStyleIndeterminate;
-    [self.loginDialog showOrUpdateAnimated:YES];
 }
 
 
@@ -274,29 +218,58 @@ withError:(NSError *) 	error {
 - (void) popupsContainerDidFinishViewingPopups:(id<AGSPopupsContainer>)popupsContainer{
     [(AGSPopupsContainerViewController*)popupsContainer dismissViewControllerAnimated:YES completion:nil];
 }
+
+
 #pragma  mark - UIAlertViewDelegate
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if(buttonIndex == 0){
-        //user wants to open public webmap
-        self.webmapId = kPublicWebmapId;
-    }else{
-        //user want to open private webmap
-        self.webmapId = kPrivateWebmapId;
+    if (alertView.tag == PRIVACY_ALERT_TAG) {
+        if(buttonIndex == 0){
+            //user wants to open public webmap
+            self.webmapId = kPublicWebmapId;
+            [SVProgressHUD showWithStatus:@"Loading"];
+        }else{
+            //user want to open private webmap
+            self.webmapId = kPrivateWebmapId;
+        }
+        
+        // The private webmap needs to be accessed with these credentials -
+        // Username: AGSSample
+        // Password: agssample  (note, lowercase)
+        
+        // Create a webmap using the ID
+        self.webMap = [AGSWebMap webMapWithItemId:self.webmapId credential:nil];
+        
+        // Set self as the webmap's delegate so that we get notified
+        // if the web map opens successfully or if errors are encounterer
+        self.webMap.delegate = self;
+        
+        // Open the webmap
+        [self.webMap openIntoMapView:self.mapView];
+
     }
-
-    // The private webmap needs to be accessed with these credentials - 
-    // Username: AGSSample
-    // Password: agssample  (note, lowercase)
-    
-    // Create a webmap using the ID
-    self.webMap = [AGSWebMap webMapWithItemId:self.webmapId credential:nil];
-
-    // Set self as the webmap's delegate so that we get notified
-    // if the web map opens successfully or if errors are encounterer
-    self.webMap.delegate = self;
-
-    // Open the webmap
-    [self.webMap openIntoMapView:self.mapView];
+    else if (alertView.tag == WEB_MAP_ALERT_TAG) {
+        switch (buttonIndex) {
+            case 0: //cancel button tapped
+                [self cancelSignInWebMap];
+                break;
+            case 1: //login button tapped
+                [self signInWebMap:alertView];
+            default:
+                break;
+        }
+    }
+    else if (alertView.tag == LAYER_ALERT_TAG) {
+        switch (buttonIndex) {
+            case 0:     //cancel button tapped
+                [self cancelSignInLayer];
+                break;
+            case 1:     //login button tapped
+                [self signInLayer:alertView];
+            default:
+                break;
+        }
+    }
 }
 
 #pragma mark -

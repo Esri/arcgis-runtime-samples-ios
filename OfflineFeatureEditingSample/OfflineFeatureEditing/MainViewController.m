@@ -22,7 +22,7 @@
 #define kTilePackageName @"SanFrancisco"
 #define kFeatureServiceURL @"http://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/Wildfire/FeatureServer"
 
-@interface MainViewController () <AGSLayerDelegate, AGSMapViewTouchDelegate, AGSPopupsContainerDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate, AGSFeatureLayerEditingDelegate, FeatureTemplatePickerDelegate>{
+@interface MainViewController () <AGSLayerDelegate, AGSMapViewTouchDelegate, AGSPopupsContainerDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate, FeatureTemplatePickerDelegate>{
     
     
     AGSLocalTiledLayer *_localTiledLayer;
@@ -110,10 +110,6 @@
     [_logsTextView addGestureRecognizer:gr];
     [self.view addSubview:_logsTextView];
     
-    
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(featuresLoaded:) name:AGSFeatureLayerDidLoadFeaturesNotification object:nil];
-    
-    [self switchToLiveData];
 
 
 }
@@ -142,6 +138,13 @@
     return YES;
 }
 
+#pragma mark AGSMapViewLayerDelegate methods
+-(void) mapViewDidLoad:(AGSMapView *)mapView {
+
+    //Load live layers
+    [self switchToLiveData];
+
+}
 
 #pragma mark Gesture Recognizers
 
@@ -156,10 +159,10 @@
 #pragma mark AGSLayerDelegate methods
 
 -(void)layerDidLoad:(AGSLayer *)layer{
-    if([layer isKindOfClass:[AGSFeatureLayer class]]){
-        AGSFeatureLayer* fl = (AGSFeatureLayer*)layer;
-        if(self.mapView.mapScale>fl.minScale)
-            [self.mapView zoomToScale:fl.minScale animated:YES];
+    if([layer isKindOfClass:[AGSFeatureTableLayer class]]){
+        AGSFeatureTableLayer* ftLayer = (AGSFeatureTableLayer*)layer;
+        if(self.mapView.mapScale>ftLayer.minScale)
+            [self.mapView zoomToScale:ftLayer.minScale animated:YES];
         [SVProgressHUD popActivity];
     }
 }
@@ -168,9 +171,9 @@
 -(void)layer:(AGSLayer *)layer didFailToLoadWithError:(NSError *)error{
     NSString *errmsg;
     
-    if([layer isKindOfClass:[AGSFeatureLayer class]]){
-        AGSFeatureLayer* fl = (AGSFeatureLayer*)layer;
-        errmsg = [NSString stringWithFormat:@"Failed to load %@. Error:%@",fl.URL, error];
+    if([layer isKindOfClass:[AGSFeatureTableLayer class]]){
+        AGSFeatureTableLayer* ftLayer = (AGSFeatureTableLayer*)layer;
+        errmsg = [NSString stringWithFormat:@"Failed to load %@. Error:%@",ftLayer.name, error];
         
         // activity shown when loading online layer, dismiss this
         [SVProgressHUD popActivity];
@@ -182,17 +185,6 @@
     [self logStatus:errmsg];
 }
 
-#pragma mark - AGSFeatureLayerDidLoadFeaturesNotification
-- (void) featuresLoaded:(NSNotification*) notification{
-    //Show the activity indicator for a couple of seconds
-    [self.liveActivityIndicator startAnimating];
-    AGSFeatureLayer* fLyr = (AGSFeatureLayer*)notification.object;
-    [self logStatus:[NSString stringWithFormat:@"Refreshed live data %@",fLyr.URL]];
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.5 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self.liveActivityIndicator stopAnimating];
-    });
-}
 
 #pragma mark - AGSMapViewTouchDelegate methods
 - (void) mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features {
@@ -218,23 +210,13 @@
 
     for (id<AGSFeature> feature in features) {
         AGSPopup* popup;
-        
-        //If the feature is a graphic (means we are in Live mode)
-        if([feature isKindOfClass:[AGSGraphic class]]){
-            AGSGraphic* graphic = (AGSGraphic*)feature;
-            AGSPopupInfo* popupInfo = [AGSPopupInfo popupInfoForFeatureLayer:(AGSFeatureLayer*)graphic.layer];
-            popup = [AGSPopup popupWithGraphic:graphic popupInfo:popupInfo];
-            
-        //If the feature is a gdbfeature (means we are in Local mode)
-        }else if ([feature isKindOfClass:[AGSGDBFeature class]]){
-            AGSGDBFeature* gdbFeature = (AGSGDBFeature*)feature;
-            AGSPopupInfo* popupInfo = [AGSPopupInfo popupInfoForGDBFeatureTable:gdbFeature.table];
-            popup = [AGSPopup popupWithGDBFeature:gdbFeature popupInfo:popupInfo];
-        }
+        AGSGDBFeature* gdbFeature = (AGSGDBFeature*)feature;
+        AGSPopupInfo* popupInfo = [AGSPopupInfo popupInfoForGDBFeatureTable:gdbFeature.table];
+        popup = [AGSPopup popupWithGDBFeature:gdbFeature popupInfo:popupInfo];
         [popups addObject:popup];
     }
     
-        [self showPopupsVCForPopups:popups];
+    [self showPopupsVCForPopups:popups];
 }
 
 -(void)hidePopupsVC{
@@ -427,15 +409,14 @@
             [SVProgressHUD showProgress:-1 status:@"Loading \n live data"];
             NSURL* url = [weakSelf.gdbTask.URL URLByAppendingPathComponent:[NSString stringWithFormat:@"%lu",(unsigned long)info.layerId]];
             
-            AGSFeatureLayer* fl = [AGSFeatureLayer featureServiceLayerWithURL:url mode:AGSFeatureLayerModeOnDemand credential:weakSelf.gdbTask.credential];
-            fl.outFields = @[@"*"];
-            fl.delegate = weakSelf;
-            fl.editingDelegate = weakSelf;
-            fl.expirationInterval = 60;
-            fl.autoRefreshOnExpiration = YES;
+            AGSGDBFeatureServiceTable* fst = [[AGSGDBFeatureServiceTable alloc]initWithServiceURL:url credential:weakSelf.gdbTask.credential spatialReference:weakSelf.mapView.spatialReference];
+            AGSFeatureTableLayer* ftLayer = [[AGSFeatureTableLayer alloc]initWithFeatureTable:fst];
+            ftLayer.delegate = weakSelf;
             
-            [weakSelf.mapView addMapLayer:fl];
-            [weakSelf logStatus:[NSString stringWithFormat:@"loading: %@", [fl.URL absoluteString]]];
+            
+            
+            [weakSelf.mapView addMapLayer:ftLayer];
+            [weakSelf logStatus:[NSString stringWithFormat:@"loading: %@", [fst.serviceURL absoluteString]]];
         }
         [weakSelf logStatus:@"now in live mode"];
         [weakSelf updateStatus];
@@ -500,7 +481,7 @@
             
             //remove the live feature layers
             for (AGSLayer* lyr in self.mapView.mapLayers) {
-                if([lyr isKindOfClass:[AGSFeatureLayer class]])
+                if([lyr isKindOfClass:[AGSFeatureTableLayer class]])
                     [self.mapView removeMapLayer:lyr];
             }
             
@@ -543,44 +524,35 @@
 #pragma mark - FeatureTemplatePickerViewControllerDelegate methods
 
 - (void)featureTemplatePickerViewController:(FeatureTemplatePickerViewController *)featureTemplatePickerViewController didSelectFeatureTemplate:(AGSFeatureTemplate *)template forLayer:(id<AGSGDBFeatureSourceInfo>)layer{
+    
+    //if iPad
     if ([[AGSDevice currentDevice]isIPad]) {
-        [_pvc
-         dismissPopoverAnimated:YES];
-        if([layer isKindOfClass:[AGSFeatureLayer class]]){
-            AGSFeatureLayer* fLayer = (AGSFeatureLayer*)layer;
-            AGSGraphic* graphic = [fLayer featureWithTemplate:template];
-            [fLayer addGraphic:graphic];
-            AGSPopupInfo *pi = [AGSPopupInfo popupInfoForFeatureLayer:fLayer];
-            AGSPopup *p = [[AGSPopup alloc]initWithGraphic:graphic popupInfo:pi featureLayer:fLayer];
-            [self showPopupsVCForPopups:@[p]];
-            [_popupsVC startEditingCurrentPopup];
-        }else if([layer isKindOfClass:[AGSGDBFeatureTable class]]){
+        //Dismiss popover
+        [_pvc dismissPopoverAnimated:YES];
+        
+        //Create new feature with temaplate
+        AGSGDBFeatureTable* fTable = (AGSGDBFeatureTable*) layer;
+        AGSGDBFeature* feature = [fTable featureWithTemplate:template];
+        
+        //Create popup for new feature, commence edit mode
+        AGSPopupInfo *pi = [AGSPopupInfo popupInfoForGDBFeatureTable:fTable];
+        AGSPopup *p = [[AGSPopup alloc]initWithGDBFeature:feature popupInfo:pi];
+        [self showPopupsVCForPopups:@[p]];
+        [_popupsVC startEditingCurrentPopup];
+
+    }else{
+        //if iPhone, dismiss modal view controller
+        [featureTemplatePickerViewController dismissViewControllerAnimated:YES completion:^{
+            
+            //Create new feature with temaplate
             AGSGDBFeatureTable* fTable = (AGSGDBFeatureTable*) layer;
             AGSGDBFeature* feature = [fTable featureWithTemplate:template];
+
+            //Create popup for new feature, commence edit mode
             AGSPopupInfo *pi = [AGSPopupInfo popupInfoForGDBFeatureTable:fTable];
             AGSPopup *p = [[AGSPopup alloc]initWithGDBFeature:feature popupInfo:pi];
             [self showPopupsVCForPopups:@[p]];
             [_popupsVC startEditingCurrentPopup];
-        }
-
-    }else{
-        [featureTemplatePickerViewController dismissViewControllerAnimated:YES completion:^{
-            if([layer isKindOfClass:[AGSFeatureLayer class]]){
-                AGSFeatureLayer* fLayer = (AGSFeatureLayer*)layer;
-                AGSGraphic* graphic = [fLayer featureWithTemplate:template];
-                [fLayer addGraphic:graphic];
-                AGSPopupInfo *pi = [AGSPopupInfo popupInfoForFeatureLayer:fLayer];
-                AGSPopup *p = [[AGSPopup alloc]initWithGraphic:graphic popupInfo:pi featureLayer:fLayer];
-                [self showPopupsVCForPopups:@[p]];
-                [_popupsVC startEditingCurrentPopup];
-            }else if([layer isKindOfClass:[AGSGDBFeatureTable class]]){
-                AGSGDBFeatureTable* fTable = (AGSGDBFeatureTable*) layer;
-                AGSGDBFeature* feature = [fTable featureWithTemplate:template];
-                AGSPopupInfo *pi = [AGSPopupInfo popupInfoForGDBFeatureTable:fTable];
-                AGSPopup *p = [[AGSPopup alloc]initWithGDBFeature:feature popupInfo:pi];
-                [self showPopupsVCForPopups:@[p]];
-                [_popupsVC startEditingCurrentPopup];
-            }
 
         }];
     }
@@ -589,8 +561,7 @@
 
 - (void) featureTemplatePickerViewControllerWasDismissed:(FeatureTemplatePickerViewController *)featureTemplatePickerViewController{
     if ([[AGSDevice currentDevice]isIPad]) {
-        [_pvc
-         dismissPopoverAnimated:YES];
+        [_pvc dismissPopoverAnimated:YES];
     }else{
         [featureTemplatePickerViewController dismissViewControllerAnimated:YES completion:nil];
     }
@@ -651,87 +622,105 @@
 
 -(void) popupsContainer:(id<AGSPopupsContainer>)popupsContainer didFinishEditingForPopup:(AGSPopup *)popup {
 
+    // Remove sketch layer
     [_mapView removeMapLayer:_sgl];
     _sgl = nil;
     _mapView.touchDelegate = self;
+
     
-    // dealing with 'offline' feature
-    // popup vc has already committed edits to the local geodatabase
-    if (popup.gdbFeature){
+    // popup vc has already committed edits to the local geodatabase at this point
+    
+    //if we are in local data mode, show edits as badge over the sync button
+    //and wait for the user to explicitly sync changes back up to the service
+    if(_viewingLocal) {
         [self showEditsInGeodatabaseAsBadge:popup.gdbFeatureTable.geodatabase];
-        [self logStatus:@"feature saved"];
+        [self logStatus:@"feature saved in local geodatabase"];
         [self hidePopupsVC];
-    }
-    // dealing with 'online' feature
-    // we must apply edits to the server
-    else if (popup.graphic){
+    }else{
+        //we are in live data mode, apply edits to the service immediately
         _loadingView = [LoadingView loadingViewInView:_popupsVC.view withText:@"Applying edit to server..."];
-        if ([popup.featureLayer objectIdForFeature:popup.graphic]<0){
-            [popup.featureLayer addFeatures:@[popup.graphic]];
-        }
-        else{
-            [popup.featureLayer updateFeatures:@[popup.graphic]];
-        }
+        AGSGDBFeatureServiceTable* fst = (AGSGDBFeatureServiceTable*) popup.gdbFeature.table;
+        [fst applyEditsWithCompletion:^(AGSGDBEditErrors *editErrors, NSError *error) {
+            [_loadingView removeView];
+            if(error){
+                UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Could not apply edit to server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [av show];
+                NSLog(@"Error while applying edit : %@",[error localizedDescription]);
+            }else{
+                for (AGSGDBFeatureEditError* featureEditError in editErrors.featureErrors) {
+                    NSLog(@"Edit to feature(OBJECTID = %lld) rejected by server because : %@",featureEditError.objectID, [featureEditError localizedDescription]);
+                }
+                _loadingView = [LoadingView loadingViewInView:_popupsVC.view withText:@"Applying attachment edits to server..."];
+                
+                [fst applyAttachmentEditsWithCompletion:^(AGSGDBEditErrors *editErrors, NSError *error) {
+                    
+                    [_loadingView removeView];
+                    
+                    if(error){
+                        UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Could not apply edit to server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                        [av show];
+                        NSLog(@"Error while applying attachment edit : %@",[error localizedDescription]);
+                        
+                    }else{
+                        
+                        for (AGSGDBFeatureEditError* attachmentEditError in editErrors.attachmentErrors) {
+                            NSLog(@"Edit to attachment(OBJECTID = %lld) rejected by server because : %@",attachmentEditError.attachmentID, [attachmentEditError localizedDescription]);
+                        }
+                        
+                        //Dismiss the popups VC. All edits have been applied.
+                        [self hidePopupsVC];
+                    }
+                }];
+            }
+            
+        }];
     }
     
 }
 
 -(void) popupsContainer:(id<AGSPopupsContainer>)popupsContainer didDeleteForPopup:(AGSPopup *)popup {
-    [self logStatus:@"delete succeded"];
-    [self showEditsInGeodatabaseAsBadge:popup.gdbFeatureTable.geodatabase];
-    [self hidePopupsVC];
-}
-
--(void) popupsContainer:(id<AGSPopupsContainer>)popupsContainer wantsToDeleteForPopup:(AGSPopup *)popup{
-    AGSFeatureLayer* fLayer = (AGSFeatureLayer*) popup.graphic.layer;
-    [fLayer deleteFeaturesWithObjectIds:@[[NSNumber numberWithLongLong:[fLayer objectIdForFeature:popup.graphic]]]];
-    _loadingView = [LoadingView loadingViewInView:_popupsVC.view withText:@"Applying edit to server..."];
-}
-
-#pragma mark AGSFeatureLayerEditingDelegate methods
-
--(void)featureLayer:(AGSFeatureLayer *)featureLayer operation:(NSOperation *)op didFeatureEditsWithResults:(AGSFeatureLayerEditResults *)editResults{
-    [_loadingView removeView];
-    if(editResults.addResults){
-        AGSEditResult* res = editResults.addResults[0];
-        if (res.error){
-            [self logStatus:[NSString stringWithFormat:@"add failed: %@", res.error]];
-        }
-        else{
-            [self logStatus:[NSString stringWithFormat:@"add succeeded: %ld", (long)res.objectId]];
-            [self hidePopupsVC];
-        }
-    }
+    // popup vc has already committed edits to the local geodatabase at this point
     
-    if(editResults.updateResults){
-        AGSEditResult* res = editResults.updateResults[0];
-        if (res.error){
-            [self logStatus:[NSString stringWithFormat:@"update failed: %@", res.error]];
-        }
-        else{
-            [self logStatus:[NSString stringWithFormat:@"update succeeded: %ld", (long)res.objectId]];
-            [self hidePopupsVC];
-        }
+    //if we are in local data mode, show edits as badge over the sync button
+    //and wait for the user to explicitly sync changes back up to the service
+    if(_viewingLocal) {
+        [self showEditsInGeodatabaseAsBadge:popup.gdbFeatureTable.geodatabase];
+        [self logStatus:@"feature deleted in local geodatabase"];
+        [self hidePopupsVC];
+    }else{
+        //we are in live data mode, apply edits to the service immediately
+        _loadingView = [LoadingView loadingViewInView:_popupsVC.view withText:@"Applying edit to server..."];
+        AGSGDBFeatureServiceTable* fst = (AGSGDBFeatureServiceTable*) popup.gdbFeature.table;
+        [fst applyEditsWithCompletion:^(AGSGDBEditErrors *editErrors, NSError *error) {
+            [_loadingView removeView];
+            if(error){
+                UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Could not apply edit to server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [av show];
+                [self logStatus:[NSString stringWithFormat:@"Error while applying edit : %@",[error localizedDescription]]];
+            }else{
+                for (AGSGDBFeatureEditError* featureEditError in editErrors.featureErrors) {
+                    [self logStatus:[NSString stringWithFormat:@"Deleting feature(OBJECTID = %lld) rejected by server because : %@",featureEditError.objectID, [featureEditError localizedDescription]]];
+                }
+
+                [self logStatus:@"feature deleted in server"];
+                
+                [self hidePopupsVC];
+
+            }
+            
+        }];
     }
-    
-    if(editResults.deleteResults){
-        AGSEditResult* res = editResults.deleteResults[0];
-        if (res.error){
-            [self logStatus:[NSString stringWithFormat:@"delete failed: %@", res.error]];
-        }
-        else{
-            [self logStatus:[NSString stringWithFormat:@"delete succeeded: %ld", (long)res.objectId]];
-            [self hidePopupsVC];
-        }
-    }
+
 }
+
+
 
 #pragma mark - Convenience methods
 
 - (NSNumber*) numberOfEditsInGeodatabase:(AGSGDBGeodatabase*)gdb{
     int total = 0;
     for (AGSGDBFeatureTable* ftable in gdb.featureTables) {
-        total += [ftable addedFeatures].count + [ftable deletedFeatures].count + [ftable updatedFeatures].count;
+        total += ftable.addedFeaturesCount+ftable.deletedFeaturesCount+ftable.updatedFeaturesCount;
     }
     return [NSNumber numberWithInt:total] ;
 }
@@ -820,9 +809,6 @@
 }
 
 
--(void)featureLayerDidLoadFeatures:(NSNotification*)notification{
-    [SVProgressHUD popActivity];
-}
 
 #pragma mark Sketch toolbar UI
 

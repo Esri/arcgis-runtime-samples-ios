@@ -640,19 +640,19 @@
         //we are in live data mode, apply edits to the service immediately
         _loadingView = [LoadingView loadingViewInView:_popupsVC.view withText:@"Applying edit to server..."];
         AGSGDBFeatureServiceTable* fst = (AGSGDBFeatureServiceTable*) popup.gdbFeature.table;
-        [fst applyEditsWithCompletion:^(AGSGDBEditErrors *editErrors, NSError *error) {
+        [fst applyFeatureEditsWithCompletion:^(NSArray *featureEditErrors, NSError *error) {
             [_loadingView removeView];
             if(error){
                 UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Could not apply edit to server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [av show];
                 NSLog(@"Error while applying edit : %@",[error localizedDescription]);
             }else{
-                for (AGSGDBFeatureEditError* featureEditError in editErrors.featureErrors) {
+                for (AGSGDBFeatureEditError* featureEditError in featureEditErrors) {
                     NSLog(@"Edit to feature(OBJECTID = %lld) rejected by server because : %@",featureEditError.objectID, [featureEditError localizedDescription]);
                 }
                 _loadingView = [LoadingView loadingViewInView:_popupsVC.view withText:@"Applying attachment edits to server..."];
                 
-                [fst applyAttachmentEditsWithCompletion:^(AGSGDBEditErrors *editErrors, NSError *error) {
+                [fst applyAttachmentEditsWithCompletion:^(NSArray *attachmentEditErrors, NSError *error) {
                     
                     [_loadingView removeView];
                     
@@ -663,7 +663,7 @@
                         
                     }else{
                         
-                        for (AGSGDBFeatureEditError* attachmentEditError in editErrors.attachmentErrors) {
+                        for (AGSGDBFeatureEditError* attachmentEditError in attachmentEditErrors) {
                             NSLog(@"Edit to attachment(OBJECTID = %lld) rejected by server because : %@",attachmentEditError.attachmentID, [attachmentEditError localizedDescription]);
                         }
                         
@@ -691,14 +691,14 @@
         //we are in live data mode, apply edits to the service immediately
         _loadingView = [LoadingView loadingViewInView:_popupsVC.view withText:@"Applying edit to server..."];
         AGSGDBFeatureServiceTable* fst = (AGSGDBFeatureServiceTable*) popup.gdbFeature.table;
-        [fst applyEditsWithCompletion:^(AGSGDBEditErrors *editErrors, NSError *error) {
+        [fst applyFeatureEditsWithCompletion:^(NSArray *featureEditErrors, NSError *error) {
             [_loadingView removeView];
             if(error){
                 UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Could not apply edit to server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [av show];
                 [self logStatus:[NSString stringWithFormat:@"Error while applying edit : %@",[error localizedDescription]]];
             }else{
-                for (AGSGDBFeatureEditError* featureEditError in editErrors.featureErrors) {
+                for (AGSGDBFeatureEditError* featureEditError in featureEditErrors) {
                     [self logStatus:[NSString stringWithFormat:@"Deleting feature(OBJECTID = %lld) rejected by server because : %@",featureEditError.objectID, [featureEditError localizedDescription]]];
                 }
 

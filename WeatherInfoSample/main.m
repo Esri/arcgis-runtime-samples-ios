@@ -11,11 +11,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeatherInfoSampleAppDelegate.h"
 
 int main(int argc, char *argv[]) {
     
     @autoreleasepool {
-        int retVal = UIApplicationMain(argc, argv, nil, nil);
+        int retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass([WeatherInfoSampleAppDelegate class]));
         return retVal;
     }
 }

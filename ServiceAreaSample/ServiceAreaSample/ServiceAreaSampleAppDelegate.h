@@ -14,12 +14,8 @@
 
 @class ServiceAreaSampleViewController;
 
-@interface ServiceAreaSampleAppDelegate : NSObject <UIApplicationDelegate> {
-
-}
+@interface ServiceAreaSampleAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
-
-@property (nonatomic, strong) IBOutlet ServiceAreaSampleViewController *viewController;
 
 @end

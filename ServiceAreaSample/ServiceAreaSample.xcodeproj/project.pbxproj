@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3EA670C218ECC6C800791CD7 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EA670C118ECC6C800791CD7 /* Storyboard.storyboard */; };
+		3EA670CE18EDDE4000791CD7 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3EA670CB18EDDE4000791CD7 /* SVProgressHUD.bundle */; };
+		3EA670CF18EDDE4000791CD7 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA670CD18EDDE4000791CD7 /* SVProgressHUD.m */; };
+		3EA670D318EDDFD300791CD7 /* Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA670D218EDDFD300791CD7 /* Parameters.m */; };
 		9755BA14167B94AC00518E4D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9755BA13167B94AC00518E4D /* Default-568h@2x.png */; };
 		C56B402714C7439E003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B402614C7439D003A46EB /* ArcGIS.bundle */; };
 		C5E0CA8513FD7A0E00DE6D97 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C5E0CA8313FD7A0E00DE6D97 /* InfoPlist.strings */; };
 		C5E0CA8813FD7A0E00DE6D97 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E0CA8713FD7A0E00DE6D97 /* main.m */; };
 		C5E0CA8B13FD7A0E00DE6D97 /* ServiceAreaSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E0CA8A13FD7A0E00DE6D97 /* ServiceAreaSampleAppDelegate.m */; };
-		C5E0CA8E13FD7A0E00DE6D97 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5E0CA8C13FD7A0E00DE6D97 /* MainWindow.xib */; };
 		C5E0CA9313FD7A0E00DE6D97 /* ServiceAreaSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E0CA9213FD7A0E00DE6D97 /* ServiceAreaSampleViewController.m */; };
-		C5E0CA9613FD7A0E00DE6D97 /* ServiceAreaSampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5E0CA9413FD7A0E00DE6D97 /* ServiceAreaSampleViewController.xib */; };
 		C5E0CAA713FD7A7100DE6D97 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E0CAA513FD7A7100DE6D97 /* SettingsViewController.m */; };
-		C5E0CAA813FD7A7100DE6D97 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5E0CAA613FD7A7100DE6D97 /* SettingsViewController.xib */; };
-		C5E0CAAB13FD7A8600DE6D97 /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E0CAAA13FD7A8600DE6D97 /* ActivityAlertView.m */; };
 		C5E0CAB013FDB0DE00DE6D97 /* FireStation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E0CAAC13FDB0DE00DE6D97 /* FireStation@2x.png */; };
 		C5E0CAB113FDB0DE00DE6D97 /* FireStation.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E0CAAD13FDB0DE00DE6D97 /* FireStation.png */; };
 		C5E0CAB213FDB0DE00DE6D97 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E0CAAE13FDB0DE00DE6D97 /* icon.png */; };
@@ -26,10 +26,16 @@
 		C5E0CAC913FEE96000DE6D97 /* remove24@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E0CAC513FEE96000DE6D97 /* remove24@2x.png */; };
 		C5E0CACA13FEE96000DE6D97 /* Clear20.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E0CAC613FEE96000DE6D97 /* Clear20.png */; };
 		C5E0CACB13FEE96000DE6D97 /* Clear20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E0CAC713FEE96000DE6D97 /* Clear20@2x.png */; };
-		C5E0CB2D1402EF5400DE6D97 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5E0CB2B1402EF5400DE6D97 /* MainWindow-iPad.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3EA670C118ECC6C800791CD7 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = ServiceAreaSample/Storyboard.storyboard; sourceTree = "<group>"; };
+		3EA670CA18EDDE4000791CD7 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		3EA670CB18EDDE4000791CD7 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		3EA670CC18EDDE4000791CD7 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		3EA670CD18EDDE4000791CD7 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		3EA670D118EDDFD300791CD7 /* Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parameters.h; sourceTree = "<group>"; };
+		3EA670D218EDDFD300791CD7 /* Parameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parameters.m; sourceTree = "<group>"; };
 		9755BA13167B94AC00518E4D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		C56B402614C7439D003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		C5E0CA6C13FD7A0E00DE6D97 /* ServiceAreaSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ServiceAreaSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,15 +45,10 @@
 		C5E0CA8713FD7A0E00DE6D97 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C5E0CA8913FD7A0E00DE6D97 /* ServiceAreaSampleAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ServiceAreaSampleAppDelegate.h; path = ServiceAreaSample/ServiceAreaSampleAppDelegate.h; sourceTree = "<group>"; };
 		C5E0CA8A13FD7A0E00DE6D97 /* ServiceAreaSampleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ServiceAreaSampleAppDelegate.m; path = ServiceAreaSample/ServiceAreaSampleAppDelegate.m; sourceTree = "<group>"; };
-		C5E0CA8D13FD7A0E00DE6D97 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		C5E0CA9113FD7A0E00DE6D97 /* ServiceAreaSampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ServiceAreaSampleViewController.h; path = ServiceAreaSample/ServiceAreaSampleViewController.h; sourceTree = "<group>"; };
 		C5E0CA9213FD7A0E00DE6D97 /* ServiceAreaSampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ServiceAreaSampleViewController.m; path = ServiceAreaSample/ServiceAreaSampleViewController.m; sourceTree = "<group>"; };
-		C5E0CA9513FD7A0E00DE6D97 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ServiceAreaSampleViewController.xib; sourceTree = "<group>"; };
 		C5E0CAA413FD7A7100DE6D97 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = ServiceAreaSample/SettingsViewController.h; sourceTree = "<group>"; };
 		C5E0CAA513FD7A7100DE6D97 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = ServiceAreaSample/SettingsViewController.m; sourceTree = "<group>"; };
-		C5E0CAA613FD7A7100DE6D97 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = ServiceAreaSample/SettingsViewController.xib; sourceTree = "<group>"; };
-		C5E0CAA913FD7A8600DE6D97 /* ActivityAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityAlertView.h; path = ServiceAreaSample/ActivityAlertView.h; sourceTree = "<group>"; };
-		C5E0CAAA13FD7A8600DE6D97 /* ActivityAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityAlertView.m; path = ServiceAreaSample/ActivityAlertView.m; sourceTree = "<group>"; };
 		C5E0CAAC13FDB0DE00DE6D97 /* FireStation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FireStation@2x.png"; sourceTree = "<group>"; };
 		C5E0CAAD13FDB0DE00DE6D97 /* FireStation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FireStation.png; sourceTree = "<group>"; };
 		C5E0CAAE13FDB0DE00DE6D97 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		C5E0CAC513FEE96000DE6D97 /* remove24@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remove24@2x.png"; sourceTree = "<group>"; };
 		C5E0CAC613FEE96000DE6D97 /* Clear20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clear20.png; sourceTree = "<group>"; };
 		C5E0CAC713FEE96000DE6D97 /* Clear20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Clear20@2x.png"; sourceTree = "<group>"; };
-		C5E0CB2C1402EF5400DE6D97 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,14 +70,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3EA670C718EDD65D00791CD7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C5E0CA9113FD7A0E00DE6D97 /* ServiceAreaSampleViewController.h */,
+				C5E0CA9213FD7A0E00DE6D97 /* ServiceAreaSampleViewController.m */,
+				C5E0CAA413FD7A7100DE6D97 /* SettingsViewController.h */,
+				C5E0CAA513FD7A7100DE6D97 /* SettingsViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3EA670C818EDDE2700791CD7 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				3EA670C918EDDE4000791CD7 /* SVProgressHUD */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		3EA670C918EDDE4000791CD7 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				3EA670CA18EDDE4000791CD7 /* SVProgressHUD-Prefix.pch */,
+				3EA670CB18EDDE4000791CD7 /* SVProgressHUD.bundle */,
+				3EA670CC18EDDE4000791CD7 /* SVProgressHUD.h */,
+				3EA670CD18EDDE4000791CD7 /* SVProgressHUD.m */,
+			);
+			name = SVProgressHUD;
+			path = ServiceAreaSample/Libraries/SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		3EA670D018EDDFD300791CD7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3EA670D118EDDFD300791CD7 /* Parameters.h */,
+				3EA670D218EDDFD300791CD7 /* Parameters.m */,
+			);
+			name = Models;
+			path = ServiceAreaSample/Models;
+			sourceTree = "<group>";
+		};
 		C5E0CA6113FD7A0E00DE6D97 = {
 			isa = PBXGroup;
 			children = (
-				C56B402614C7439D003A46EB /* ArcGIS.bundle */,
+				3EA670C118ECC6C800791CD7 /* Storyboard.storyboard */,
 				C5E0CA8113FD7A0E00DE6D97 /* Supporting Files */,
-				C5E0CB2A1402EF5300DE6D97 /* iPad */,
 				C5E0CB321402F63F00DE6D97 /* Classes */,
-				C5E0CB311402F63B00DE6D97 /* iPhone */,
+				3EA670C818EDDE2700791CD7 /* Libraries */,
 				C5E0CA6F13FD7A0E00DE6D97 /* Frameworks */,
 				C5E0CA6D13FD7A0E00DE6D97 /* Products */,
 			);
@@ -94,6 +134,7 @@
 		C5E0CA6F13FD7A0E00DE6D97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C56B402614C7439D003A46EB /* ArcGIS.bundle */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -119,34 +160,11 @@
 			path = ServiceAreaSample;
 			sourceTree = "<group>";
 		};
-		C5E0CB2A1402EF5300DE6D97 /* iPad */ = {
-			isa = PBXGroup;
-			children = (
-				C5E0CB2B1402EF5400DE6D97 /* MainWindow-iPad.xib */,
-			);
-			name = iPad;
-			path = ServiceAreaSample;
-			sourceTree = "<group>";
-		};
-		C5E0CB311402F63B00DE6D97 /* iPhone */ = {
-			isa = PBXGroup;
-			children = (
-				C5E0CA8C13FD7A0E00DE6D97 /* MainWindow.xib */,
-			);
-			name = iPhone;
-			sourceTree = "<group>";
-		};
 		C5E0CB321402F63F00DE6D97 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C5E0CA9113FD7A0E00DE6D97 /* ServiceAreaSampleViewController.h */,
-				C5E0CA9213FD7A0E00DE6D97 /* ServiceAreaSampleViewController.m */,
-				C5E0CA9413FD7A0E00DE6D97 /* ServiceAreaSampleViewController.xib */,
-				C5E0CAA913FD7A8600DE6D97 /* ActivityAlertView.h */,
-				C5E0CAAA13FD7A8600DE6D97 /* ActivityAlertView.m */,
-				C5E0CAA413FD7A7100DE6D97 /* SettingsViewController.h */,
-				C5E0CAA513FD7A7100DE6D97 /* SettingsViewController.m */,
-				C5E0CAA613FD7A7100DE6D97 /* SettingsViewController.xib */,
+				3EA670D018EDDFD300791CD7 /* Models */,
+				3EA670C718EDD65D00791CD7 /* Controllers */,
 				C5E0CA8913FD7A0E00DE6D97 /* ServiceAreaSampleAppDelegate.h */,
 				C5E0CA8A13FD7A0E00DE6D97 /* ServiceAreaSampleAppDelegate.m */,
 			);
@@ -179,7 +197,7 @@
 		C5E0CA6313FD7A0E00DE6D97 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = C5E0CA6613FD7A0E00DE6D97 /* Build configuration list for PBXProject "ServiceAreaSample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -204,10 +222,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5E0CA8513FD7A0E00DE6D97 /* InfoPlist.strings in Resources */,
-				C5E0CA8E13FD7A0E00DE6D97 /* MainWindow.xib in Resources */,
-				C5E0CA9613FD7A0E00DE6D97 /* ServiceAreaSampleViewController.xib in Resources */,
-				C5E0CAA813FD7A7100DE6D97 /* SettingsViewController.xib in Resources */,
+				3EA670CE18EDDE4000791CD7 /* SVProgressHUD.bundle in Resources */,
 				C5E0CAB013FDB0DE00DE6D97 /* FireStation@2x.png in Resources */,
+				3EA670C218ECC6C800791CD7 /* Storyboard.storyboard in Resources */,
 				C5E0CAB113FDB0DE00DE6D97 /* FireStation.png in Resources */,
 				C5E0CAB213FDB0DE00DE6D97 /* icon.png in Resources */,
 				C5E0CAB313FDB0DE00DE6D97 /* icon@2x.png in Resources */,
@@ -215,7 +232,6 @@
 				C5E0CAC913FEE96000DE6D97 /* remove24@2x.png in Resources */,
 				C5E0CACA13FEE96000DE6D97 /* Clear20.png in Resources */,
 				C5E0CACB13FEE96000DE6D97 /* Clear20@2x.png in Resources */,
-				C5E0CB2D1402EF5400DE6D97 /* MainWindow-iPad.xib in Resources */,
 				C56B402714C7439E003A46EB /* ArcGIS.bundle in Resources */,
 				9755BA14167B94AC00518E4D /* Default-568h@2x.png in Resources */,
 			);
@@ -228,11 +244,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EA670D318EDDFD300791CD7 /* Parameters.m in Sources */,
 				C5E0CA8813FD7A0E00DE6D97 /* main.m in Sources */,
 				C5E0CA8B13FD7A0E00DE6D97 /* ServiceAreaSampleAppDelegate.m in Sources */,
 				C5E0CA9313FD7A0E00DE6D97 /* ServiceAreaSampleViewController.m in Sources */,
+				3EA670CF18EDDE4000791CD7 /* SVProgressHUD.m in Sources */,
 				C5E0CAA713FD7A7100DE6D97 /* SettingsViewController.m in Sources */,
-				C5E0CAAB13FD7A8600DE6D97 /* ActivityAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,39 +264,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		C5E0CA8C13FD7A0E00DE6D97 /* MainWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C5E0CA8D13FD7A0E00DE6D97 /* en */,
-			);
-			name = MainWindow.xib;
-			path = ServiceAreaSample;
-			sourceTree = "<group>";
-		};
-		C5E0CA9413FD7A0E00DE6D97 /* ServiceAreaSampleViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C5E0CA9513FD7A0E00DE6D97 /* en */,
-			);
-			name = ServiceAreaSampleViewController.xib;
-			path = ServiceAreaSample;
-			sourceTree = "<group>";
-		};
-		C5E0CB2B1402EF5400DE6D97 /* MainWindow-iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C5E0CB2C1402EF5400DE6D97 /* en */,
-			);
-			name = "MainWindow-iPad.xib";
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C5E0CA9713FD7A0E00DE6D97 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -293,6 +283,7 @@
 				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -303,7 +294,6 @@
 		C5E0CA9813FD7A0E00DE6D97 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -326,7 +316,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -359,7 +348,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;

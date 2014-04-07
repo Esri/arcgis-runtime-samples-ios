@@ -13,23 +13,20 @@
 #import <Foundation/Foundation.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface SketchToolbar : NSObject <AGSMapViewTouchDelegate> {
-	AGSSketchGraphicsLayer* _sketchLayer;
-	AGSMapView* _mapView;
-	AGSGraphicsLayer* _graphicsLayer;
-	AGSGraphic* _activeGraphic;
-	
-	UISegmentedControl* _sketchTools ;
-	UIButton* _undoTool;
-	UIButton* _redoTool;
-	UIButton* _saveTool;
-	UIButton* _clearTool;
-}
+@interface SketchToolbar : NSObject <AGSMapViewTouchDelegate> 
+
+@property (nonatomic,strong) AGSSketchGraphicsLayer* sketchLayer;
+@property (nonatomic,strong) AGSMapView* mapView;
+@property (nonatomic,strong) AGSGraphicsLayer* graphicsLayer;
+
+@property (nonatomic,strong) UISegmentedControl* sketchTools ;
+@property (nonatomic,strong) UIButton* undoTool;
+@property (nonatomic,strong) UIButton* redoTool;
+@property (nonatomic,strong) UIButton* saveTool;
+@property (nonatomic,strong) UIButton* clearTool;
 
 @property (nonatomic,strong) AGSGraphic* activeGraphic;
 
 - (id)initWithToolbar:(UIToolbar*)toolbar sketchLayer:(AGSSketchGraphicsLayer*)sketchLayer mapView:(AGSMapView*) mapView graphicsLayer:(AGSGraphicsLayer*)graphicsLayer;
-
-
 
 @end

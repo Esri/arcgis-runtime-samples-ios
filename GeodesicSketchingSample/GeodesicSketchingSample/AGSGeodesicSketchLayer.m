@@ -13,17 +13,7 @@
 
 #import "AGSGeodesicSketchLayer.h"
 
-@interface AGSGeodesicSketchLayer() {
-    AGSGeometryEngine *_geometryEngine;
-}
-
-@end
-
-
 @implementation AGSGeodesicSketchLayer
-
-@synthesize geometryEngine = _geometryEngine;
-
 
 // Override init method to initialize our geometry engine
 // you may want to override initWithGeometry: as well
@@ -41,7 +31,7 @@
 }
 
 // Override the method to get the desired functionality
--(void)insertVertex:(AGSPoint*)point inPart:(int)partIndex atIndex:(int)coordinateIndex{
+-(void)insertVertex:(AGSPoint*)point inPart:(NSInteger)partIndex atIndex:(NSInteger)coordinateIndex{
     
     // If we can no longer undo, then the next vertex inserted
     // will create a single point not a polyline so don't densify

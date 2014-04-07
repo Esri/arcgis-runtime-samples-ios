@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="VG4-Am-2D4">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--SynchronousGP Sample View Controller-->
+        <scene sceneID="xnF-6y-787">
+            <objects>
+                <viewController id="VG4-Am-2D4" customClass="SynchronousGPSampleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l6y-OL-ept"/>
+                        <viewControllerLayoutGuide type="bottom" id="BBL-uX-FhR"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="RnK-li-qVb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="1ea-Mp-Kr7" userLabel="Navigation Bar">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="WGq-dp-Rby"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Calculate Viewshed" id="5NY-aN-kZG"/>
+                                </items>
+                            </navigationBar>
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R2t-hm-2Qj" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Tap on the map to calculate the viewshed" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="hq0-ng-HGJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="2rJ-DD-nOI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="v6m-BB-cgQ">
+                                        <rect key="frame" x="10" y="438" width="56" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="0fu-Fe-g5S"/>
+                                            <constraint firstAttribute="height" constant="32" id="h3i-v0-0l9"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="hq0-ng-HGJ" firstAttribute="top" secondItem="R2t-hm-2Qj" secondAttribute="top" id="25X-3J-bbS"/>
+                                    <constraint firstItem="v6m-BB-cgQ" firstAttribute="leading" secondItem="R2t-hm-2Qj" secondAttribute="leading" constant="10" id="Czb-fM-vn1"/>
+                                    <constraint firstItem="hq0-ng-HGJ" firstAttribute="leading" secondItem="R2t-hm-2Qj" secondAttribute="leading" id="TIi-oV-rmt"/>
+                                    <constraint firstAttribute="width" secondItem="hq0-ng-HGJ" secondAttribute="width" id="U2v-DD-AgW"/>
+                                    <constraint firstAttribute="bottom" secondItem="v6m-BB-cgQ" secondAttribute="bottom" constant="10" id="nvn-zl-dcd"/>
+                                </constraints>
+                                <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Z8X-Wy-UyE">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="D0V-Jg-e9R"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" id="O2Q-UK-R2m">
+                                        <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="1" maxValue="5" id="Nbu-V0-9JY">
+                                            <rect key="frame" x="14" y="8" width="212" height="29"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <connections>
+                                                <action selector="vsDistanceSliderChanged:" destination="VG4-Am-2D4" eventType="valueChanged" id="9Qc-xb-geE"/>
+                                            </connections>
+                                        </slider>
+                                    </barButtonItem>
+                                    <barButtonItem title="3.0 miles" style="plain" id="gSe-zW-byJ">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Z8X-Wy-UyE" firstAttribute="leading" secondItem="RnK-li-qVb" secondAttribute="leading" id="7J3-eA-nHd"/>
+                            <constraint firstItem="1ea-Mp-Kr7" firstAttribute="top" secondItem="RnK-li-qVb" secondAttribute="top" id="Fvi-yb-OtD"/>
+                            <constraint firstItem="R2t-hm-2Qj" firstAttribute="top" secondItem="1ea-Mp-Kr7" secondAttribute="bottom" id="J71-vU-zAH"/>
+                            <constraint firstAttribute="bottom" secondItem="Z8X-Wy-UyE" secondAttribute="bottom" id="Sb3-Bq-Sl2"/>
+                            <constraint firstItem="1ea-Mp-Kr7" firstAttribute="leading" secondItem="RnK-li-qVb" secondAttribute="leading" id="aqD-mz-aoG"/>
+                            <constraint firstItem="Z8X-Wy-UyE" firstAttribute="top" secondItem="R2t-hm-2Qj" secondAttribute="bottom" id="cWI-yl-iyQ"/>
+                            <constraint firstItem="1ea-Mp-Kr7" firstAttribute="width" secondItem="R2t-hm-2Qj" secondAttribute="width" id="dBf-yX-Fid"/>
+                            <constraint firstAttribute="width" secondItem="1ea-Mp-Kr7" secondAttribute="width" id="iUt-Vb-598"/>
+                            <constraint firstItem="Z8X-Wy-UyE" firstAttribute="width" secondItem="R2t-hm-2Qj" secondAttribute="width" id="idV-zd-9Ec"/>
+                            <constraint firstItem="R2t-hm-2Qj" firstAttribute="leading" secondItem="RnK-li-qVb" secondAttribute="leading" id="ySk-VF-dfN"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="R2t-hm-2Qj" id="osg-du-UCr"/>
+                        <outlet property="vsDistanceLabel" destination="gSe-zW-byJ" id="Pjj-dq-66R"/>
+                        <outlet property="vsDistanceSlider" destination="Nbu-V0-9JY" id="bTa-je-HxI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EIT-jJ-y9g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="92" y="139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

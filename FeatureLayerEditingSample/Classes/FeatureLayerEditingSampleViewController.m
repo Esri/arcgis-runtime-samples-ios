@@ -11,6 +11,7 @@
 //
 
 #import "FeatureLayerEditingSampleViewController.h"
+#define kFeatureTemplatePickerViewController @"FeatureTemplatePickerViewController"
 
 
 @implementation FeatureLayerEditingSampleViewController
@@ -32,7 +33,7 @@
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
 {
-    return YES;
+    return NO;
 }
 
 -(void)presentFeatureTemplatePicker{
@@ -70,7 +71,8 @@
     self.navigationItem.rightBarButtonItem = self.pickTemplateButton;
     
     //Initialize the feature template picker so that we can show it later when needed
-    self.featureTemplatePickerViewController =  [[FeatureTemplatePickerViewController alloc] initWithNibName:@"FeatureTemplatePickerViewController" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
+    self.featureTemplatePickerViewController = [storyboard instantiateViewControllerWithIdentifier:kFeatureTemplatePickerViewController];
     self.featureTemplatePickerViewController.delegate = self;
 
 

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="uZe-Nx-dAE">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--Gps Sketching Sample View Controller - GPS Sketching-->
+        <scene sceneID="gai-jG-Quz">
+            <objects>
+                <viewController id="AMz-JT-oR4" customClass="GpsSketchingSampleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fxN-kB-F2V"/>
+                        <viewControllerLayoutGuide type="bottom" id="cPi-Ir-mZI"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="eQt-Hu-tMi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3MG-ug-29D" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                            </view>
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="R6h-wd-Arj">
+                                <rect key="frame" x="7" y="487" width="56" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="PdR-x3-Ja4"/>
+                                    <constraint firstAttribute="height" constant="32" id="Ugq-ZJ-Dwl"/>
+                                </constraints>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRk-qi-Njr">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="3tP-Ww-iOS"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Settings" id="B55-J5-IVX">
+                                        <connections>
+                                            <segue destination="MDh-P7-jFb" kind="modal" identifier="SettingsViewSegue" id="Foe-qN-dfP"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Pke-wh-QE1"/>
+                                    <barButtonItem image="bullseye.png" width="37" id="uha-KT-qqq">
+                                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="3"/>
+                                        <connections>
+                                            <action selector="showCurrentLocation" destination="AMz-JT-oR4" id="fec-ZN-FsP"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lRk-qi-Njr" firstAttribute="top" secondItem="R6h-wd-Arj" secondAttribute="bottom" constant="5" id="CGM-LC-H8r"/>
+                            <constraint firstItem="3MG-ug-29D" firstAttribute="top" secondItem="eQt-Hu-tMi" secondAttribute="top" id="Cxl-qe-G0V"/>
+                            <constraint firstItem="3MG-ug-29D" firstAttribute="leading" secondItem="eQt-Hu-tMi" secondAttribute="leading" id="Ecj-Ht-YLI"/>
+                            <constraint firstItem="lRk-qi-Njr" firstAttribute="leading" secondItem="eQt-Hu-tMi" secondAttribute="leading" id="PAs-iV-gsf"/>
+                            <constraint firstAttribute="trailing" secondItem="lRk-qi-Njr" secondAttribute="trailing" id="SnK-Ri-ZFn"/>
+                            <constraint firstItem="R6h-wd-Arj" firstAttribute="leading" secondItem="eQt-Hu-tMi" secondAttribute="leading" constant="7" id="TpU-0I-qYs"/>
+                            <constraint firstAttribute="bottom" secondItem="lRk-qi-Njr" secondAttribute="bottom" id="if4-4u-jZ6"/>
+                            <constraint firstAttribute="bottom" secondItem="3MG-ug-29D" secondAttribute="bottom" id="kDR-Rt-g2t"/>
+                            <constraint firstAttribute="trailing" secondItem="3MG-ug-29D" secondAttribute="trailing" id="kRT-rk-zZJ"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="GPS Sketching" id="W67-Up-8LI">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Add Current" id="2p4-Gn-LAs">
+                            <connections>
+                                <action selector="addCurrentLocationAsVertex" destination="AMz-JT-oR4" id="9Wh-KX-piW"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Start" id="KLp-pQ-D4I">
+                            <connections>
+                                <action selector="startGPSSketching:" destination="AMz-JT-oR4" id="UZL-RY-OJL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addCurrentLocButton" destination="2p4-Gn-LAs" id="5Y0-Ps-hnM"/>
+                        <outlet property="mapView" destination="3MG-ug-29D" id="oGe-IK-efG"/>
+                        <outlet property="startStopButton" destination="KLp-pQ-D4I" id="WXZ-DG-jVt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="db8-Q6-77o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="709" y="104"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="iw2-bT-0hF">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" id="MDh-P7-jFb" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tVg-jP-4Qq"/>
+                        <viewControllerLayoutGuide type="bottom" id="Rsr-Oa-aaK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xcB-sS-iYk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xom-vi-6Jb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="3fT-sS-9kh"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Settings" id="kqE-er-ekj">
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="beG-Mr-NdB">
+                                            <connections>
+                                                <action selector="done:" destination="MDh-P7-jFb" id="Gid-99-CJI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Frequency" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bfc-hu-CgC">
+                                <rect key="frame" x="24" y="59" width="81" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="81" id="8Vp-eE-204"/>
+                                    <constraint firstAttribute="height" constant="21" id="qnn-fj-E7b"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Aly-ww-fnf">
+                                <rect key="frame" x="24" y="88" width="272" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="272" id="TeH-e9-46c"/>
+                                    <constraint firstAttribute="height" constant="29" id="UUl-qW-lZP"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="1 m"/>
+                                    <segment title="10m"/>
+                                    <segment title="100m"/>
+                                    <segment title="1km"/>
+                                </segments>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="controlChanged:" destination="MDh-P7-jFb" eventType="valueChanged" id="w3u-Oi-0Vn"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Minimum distance to move laterally to get an update (in meters and kms)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" minimumFontSize="10" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="272" translatesAutoresizingMaskIntoConstraints="NO" id="iHM-EW-5rq">
+                                <rect key="frame" x="24" y="116" width="272" height="51"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="IVL-Lw-xdy"/>
+                                    <constraint firstAttribute="width" constant="272" id="xWw-1U-Ins"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Accuracy" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="8Cy-HH-Tac">
+                                <rect key="frame" x="28" y="196" width="72" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="gUJ-gD-I6K"/>
+                                    <constraint firstAttribute="height" constant="21" id="p4m-w2-5Xv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="efb-x1-XMI">
+                                <rect key="frame" x="28" y="225" width="272" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="272" id="CRC-we-vX0"/>
+                                    <constraint firstAttribute="height" constant="29" id="dt4-bo-TiS"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Best"/>
+                                    <segment title="10m"/>
+                                    <segment title="100m"/>
+                                    <segment title="1km"/>
+                                </segments>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="controlChanged:" destination="MDh-P7-jFb" eventType="valueChanged" id="J6R-gL-R82"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="The accuracy of the location data update" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" minimumFontSize="10" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="272" translatesAutoresizingMaskIntoConstraints="NO" id="hhZ-I7-y1q">
+                                <rect key="frame" x="24" y="257" width="272" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="272" id="kDx-xW-Hxu"/>
+                                    <constraint firstAttribute="height" constant="30" id="nFz-EV-Olw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xom-vi-6Jb" firstAttribute="top" secondItem="xcB-sS-iYk" secondAttribute="top" id="8uJ-dA-lg6"/>
+                            <constraint firstItem="xom-vi-6Jb" firstAttribute="leading" secondItem="xcB-sS-iYk" secondAttribute="leading" id="Bf8-WS-VZd"/>
+                            <constraint firstAttribute="centerX" secondItem="efb-x1-XMI" secondAttribute="centerX" constant="-4" id="Kkd-UY-qSa"/>
+                            <constraint firstAttribute="trailing" secondItem="xom-vi-6Jb" secondAttribute="trailing" id="Q5r-Ss-cYf"/>
+                            <constraint firstAttribute="centerX" secondItem="hhZ-I7-y1q" secondAttribute="centerX" id="QQ3-sx-vBU"/>
+                            <constraint firstItem="Aly-ww-fnf" firstAttribute="top" secondItem="Bfc-hu-CgC" secondAttribute="bottom" constant="8" id="VMF-Dq-MLk"/>
+                            <constraint firstItem="efb-x1-XMI" firstAttribute="leading" secondItem="8Cy-HH-Tac" secondAttribute="leading" id="WZr-D4-dYA"/>
+                            <constraint firstAttribute="centerX" secondItem="Aly-ww-fnf" secondAttribute="centerX" id="Xzv-Zl-drb"/>
+                            <constraint firstItem="hhZ-I7-y1q" firstAttribute="top" secondItem="efb-x1-XMI" secondAttribute="bottom" constant="3" id="gQZ-qc-aQk"/>
+                            <constraint firstItem="Bfc-hu-CgC" firstAttribute="top" secondItem="xom-vi-6Jb" secondAttribute="bottom" constant="15" id="hV3-Gd-EBC"/>
+                            <constraint firstItem="efb-x1-XMI" firstAttribute="top" secondItem="8Cy-HH-Tac" secondAttribute="bottom" constant="8" id="kL0-CE-GIO"/>
+                            <constraint firstAttribute="centerX" secondItem="iHM-EW-5rq" secondAttribute="centerX" id="rNc-Wc-TqS"/>
+                            <constraint firstItem="8Cy-HH-Tac" firstAttribute="top" secondItem="iHM-EW-5rq" secondAttribute="bottom" constant="29" id="sQq-Z9-npP"/>
+                            <constraint firstItem="iHM-EW-5rq" firstAttribute="top" secondItem="Aly-ww-fnf" secondAttribute="bottom" constant="-1" id="t2U-Hm-U7a"/>
+                            <constraint firstItem="Bfc-hu-CgC" firstAttribute="leading" secondItem="Aly-ww-fnf" secondAttribute="leading" id="uLv-FB-6ux"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="accuracyControl" destination="efb-x1-XMI" id="bE7-XC-cv2"/>
+                        <outlet property="frequencyControl" destination="Aly-ww-fnf" id="7ea-Zo-ynp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zMf-62-UY1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1112" y="104"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Imw-zl-seG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uZe-Nx-dAE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4dM-nI-rVO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AMz-JT-oR4" kind="relationship" relationship="rootViewController" id="lpz-gc-3bJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EdW-7G-8N8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="183" y="104"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="24" height="25"/>
+        <image name="bullseye.png" width="24" height="25"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

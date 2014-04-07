@@ -12,10 +12,13 @@
 
 #import "GpsSketchingSampleViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "Parameters.h"
 
 //base map rest url
 #define kBaseMapURL @"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
-
+#define kSettingsSegueIdentifier @"SettingsViewSegue"
+#define kAccuracyValueKeyPath @"self.parameters.accuracyValue"
+#define kFrequencyValueKeyPath @"self.parameters.frequencyValue"
 
 @interface GpsSketchingSampleViewController()
 
@@ -25,18 +28,16 @@
 //the sketch layer used to draw the gps track
 @property (nonatomic, strong) AGSSketchGraphicsLayer *gpsSketchLayer;
 
-@property (nonatomic, strong) SettingsViewController *settingsViewController;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *startStopButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *addCurrentLocButton;
 
+@property (nonatomic, strong) Parameters *parameters;
 
 //starts the sketching of location updates
 - (IBAction)startGPSSketching:(id)sender;
 
 //stops the gps sketching
 - (IBAction)stopGPSSketching;
-
-- (IBAction)showSettings;
 
 - (IBAction)showCurrentLocation;
 
@@ -46,25 +47,16 @@
 //stops the CLLocation manager from seding updates
 - (void)stopUpdatingLocation;
 
-
-
 @end
 
 @implementation GpsSketchingSampleViewController
-
-@synthesize mapView = _mapView;
-@synthesize settingsViewController = _settingsViewController;
-@synthesize startStopButton = _startStopButton;
-@synthesize addCurrentLocButton = _addCurrentLocButton;
-@synthesize locationManager = _locationManager;
-@synthesize gpsSketchLayer = _gpsSketchLayer;
 
 #pragma mark - UIViewController methods
 
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
 {
-    return YES;
+    return NO;
 }
 
 - (void)viewDidLoad {
@@ -80,10 +72,6 @@
     //set the layer delegate to self to check when the layers are loaded. Required to start the gps. 
     self.mapView.layerDelegate = self;
     
-    //preparing the Settings View Controller
-    self.settingsViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];   
-    self.settingsViewController.delegate = self;
-    
     //preparing the gps sketch layer. 
     self.gpsSketchLayer = [[AGSSketchGraphicsLayer alloc] initWithGeometry:nil];
 	[self.mapView addMapLayer:self.gpsSketchLayer withName:@"Sketch layer"];
@@ -93,8 +81,13 @@
     
     self.startStopButton.enabled = NO;
     
+    //instantiate the parameters object
+    self.parameters = [[Parameters alloc] init];
+    
+    //observe for changes in the parameters/settings
+    [self addObserver:self forKeyPath:kAccuracyValueKeyPath options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:self forKeyPath:kFrequencyValueKeyPath options:NSKeyValueObservingOptionNew context:nil];
 }
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     //Pass the interface orientation on to the map's gps so that
@@ -115,11 +108,20 @@
     self.mapView = nil;
     self.gpsSketchLayer = nil;
     self.startStopButton = nil;
-    self.settingsViewController = nil;
     self.addCurrentLocButton = nil;
 }
 
+#pragma mark - 
 
+//update the location manager parameters if the settings are changed during sketching
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:kAccuracyValueKeyPath]) {
+        self.locationManager.desiredAccuracy = [self.parameters.accuracyValue doubleValue];
+    }
+    else if ([keyPath isEqualToString:kFrequencyValueKeyPath]) {
+        self.locationManager.distanceFilter = [self.parameters.frequencyValue doubleValue];
+    }
+}
 
 #pragma mark - AGSMapViewLayerDelegate methods
 
@@ -138,24 +140,6 @@
 }
 
 #pragma mark - Action methods
-
-- (IBAction)showSettings 
-{
-    //if ipad show formsheet
-	if ([[AGSDevice currentDevice] isIPad]) {
-		self.settingsViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-		
-		//present settings view
-		self.settingsViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        [self presentViewController:self.settingsViewController animated:YES completion:nil];
-		self.settingsViewController.view.superview.bounds = CGRectMake(0, 0, 400, 300);
-	}
-	else {
-		//present settings view
-		self.settingsViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        [self presentViewController:self.settingsViewController animated:YES completion:nil];
-	}
-}
 
 - (IBAction)showCurrentLocation
 {
@@ -184,8 +168,8 @@
     self.locationManager.delegate = self;
     
     //set the preferences that was configured using the settings view. 
-    self.locationManager.desiredAccuracy = [[self.settingsViewController.setupInfo valueForKey:kSetupInfoKeyAccuracy] doubleValue];
-    self.locationManager.distanceFilter = [[self.settingsViewController.setupInfo valueForKey:kSetupInfoKeyDistanceFilter] doubleValue];
+    self.locationManager.desiredAccuracy = [self.parameters.accuracyValue doubleValue];
+    self.locationManager.distanceFilter = [self.parameters.frequencyValue doubleValue];
     
     //start the location maneger. 
     [self.locationManager startUpdatingLocation];
@@ -214,15 +198,6 @@
     //change the selector on the start stop button back to "startGPSSketching"
     [self.startStopButton setAction:@selector(startGPSSketching:)];
     
-}
-
-#pragma mark - SettingsViewControllerDelegate methods
-
-- (void)didFinishWithSettings
-{    
-    //set the preferences that was configured using the settings view. 
-    self.locationManager.desiredAccuracy = [[self.settingsViewController.setupInfo valueForKey:kSetupInfoKeyAccuracy] doubleValue];
-    self.locationManager.distanceFilter = [[self.settingsViewController.setupInfo valueForKey:kSetupInfoKeyDistanceFilter] doubleValue];  
 }
 
 
@@ -256,5 +231,21 @@
     self.locationManager.delegate = nil;
 }
 
+#pragma mark - 
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:kSettingsSegueIdentifier]) {
+        SettingsViewController *controller = [segue destinationViewController];
+        controller.parameters = self.parameters;
+        
+        if ([[AGSDevice currentDevice] isIPad]) {
+            controller.modalPresentationStyle = UIModalPresentationFormSheet;
+    
+            //present settings view
+            controller.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+            controller.view.superview.bounds = CGRectMake(0, 0, 400, 300);
+        }
+    }
+}
 
 @end

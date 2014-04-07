@@ -13,6 +13,8 @@
 #import "GeocodingSampleViewController.h"
 #import "ResultsViewController.h"
 
+#define kResultsViewController @"ResultsViewController"
+
 @implementation GeocodingSampleViewController
 
 //The map service
@@ -20,12 +22,6 @@ static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest
 
 //The geocode service
 static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer";
-
-@synthesize mapView = _mapView;
-@synthesize searchBar = _searchBar;
-@synthesize graphicsLayer = _graphicsLayer;
-@synthesize locator = _locator;
-@synthesize calloutTemplate = _calloutTemplate;
 
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
@@ -88,7 +84,8 @@ static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/servic
 
     AGSGraphic* graphic = (AGSGraphic*) callout.representedObject;
     //The user clicked the callout button, so display the complete set of results
-    ResultsViewController *resultsVC = [[ResultsViewController alloc] initWithNibName:@"ResultsViewController" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
+    ResultsViewController *resultsVC = [storyboard instantiateViewControllerWithIdentifier:kResultsViewController];
 
     //set our attributes/results into the results VC
     resultsVC.results = [graphic allAttributes];

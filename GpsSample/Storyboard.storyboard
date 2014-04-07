@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="fXj-U9-b0X">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--Gps Sample View Controller-->
+        <scene sceneID="kvJ-6G-D9M">
+            <objects>
+                <viewController id="fXj-U9-b0X" customClass="GpsSampleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6gs-Iu-4dg"/>
+                        <viewControllerLayoutGuide type="bottom" id="ij9-8B-jgM"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="BF0-cQ-7Ca">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Lr-fm-Xa6">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="6mS-UQ-b09"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Uup-vU-gb8"/>
+                                    <barButtonItem style="plain" id="Amp-lC-lXz">
+                                        <segmentedControl key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" id="RyN-hd-RiE">
+                                            <rect key="frame" x="50" y="7" width="219" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="" image="ArcGIS.bundle/LocationDisplay.png"/>
+                                                <segment title="" image="ArcGIS.bundle/LocationDisplayCourse.png"/>
+                                                <segment title="" image="ArcGIS.bundle/LocationDisplayHeading.png"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="autoPanModeChanged:" destination="fXj-U9-b0X" eventType="valueChanged" id="Csa-RX-HKj"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="YnP-AX-xUK"/>
+                                </items>
+                            </toolbar>
+                            <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AHT-zx-u5u" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Please select a mode" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="fn3-eX-Ub5">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="k3X-4d-FPf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="northarrow.gif" translatesAutoresizingMaskIntoConstraints="NO" id="cU9-jQ-UiL">
+                                        <rect key="frame" x="253" y="48" width="64" height="61"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="61" id="QDC-pv-Hgf"/>
+                                            <constraint firstAttribute="width" constant="64" id="Vzr-jD-Ceo"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="NWK-nw-0ub">
+                                        <rect key="frame" x="7" y="484" width="56" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="BUv-il-NZr"/>
+                                            <constraint firstAttribute="height" constant="32" id="dk4-2a-09s"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="cU9-jQ-UiL" secondAttribute="trailing" constant="3" id="0y7-FC-Sj3"/>
+                                    <constraint firstItem="NWK-nw-0ub" firstAttribute="leading" secondItem="AHT-zx-u5u" secondAttribute="leading" constant="7" id="57g-mh-gTR"/>
+                                    <constraint firstAttribute="bottom" secondItem="NWK-nw-0ub" secondAttribute="bottom" constant="8" id="7hq-HI-WiI"/>
+                                    <constraint firstItem="fn3-eX-Ub5" firstAttribute="leading" secondItem="AHT-zx-u5u" secondAttribute="leading" id="Dqh-DV-7Xd"/>
+                                    <constraint firstItem="fn3-eX-Ub5" firstAttribute="top" secondItem="AHT-zx-u5u" secondAttribute="top" id="EVP-da-mIU"/>
+                                    <constraint firstItem="cU9-jQ-UiL" firstAttribute="top" secondItem="fn3-eX-Ub5" secondAttribute="bottom" constant="4" id="UKS-FP-lNE"/>
+                                    <constraint firstAttribute="trailing" secondItem="fn3-eX-Ub5" secondAttribute="trailing" id="wwi-wO-ahS"/>
+                                </constraints>
+                                <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AHT-zx-u5u" firstAttribute="top" secondItem="7Lr-fm-Xa6" secondAttribute="bottom" id="4rr-Zo-Rge"/>
+                            <constraint firstItem="7Lr-fm-Xa6" firstAttribute="top" secondItem="BF0-cQ-7Ca" secondAttribute="top" id="Ygr-Pz-R78"/>
+                            <constraint firstItem="AHT-zx-u5u" firstAttribute="width" secondItem="7Lr-fm-Xa6" secondAttribute="width" id="ZXB-0z-AWR"/>
+                            <constraint firstAttribute="trailing" secondItem="7Lr-fm-Xa6" secondAttribute="trailing" id="mLT-Or-N2v"/>
+                            <constraint firstItem="7Lr-fm-Xa6" firstAttribute="leading" secondItem="BF0-cQ-7Ca" secondAttribute="leading" id="mLz-Fl-fll"/>
+                            <constraint firstAttribute="bottom" secondItem="AHT-zx-u5u" secondAttribute="bottom" id="oGI-YO-qHc"/>
+                            <constraint firstItem="AHT-zx-u5u" firstAttribute="leading" secondItem="BF0-cQ-7Ca" secondAttribute="leading" id="vA0-av-P93"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <connections>
+                        <outlet property="autoPanModeControl" destination="RyN-hd-RiE" id="Uhz-2k-2eS"/>
+                        <outlet property="label" destination="fn3-eX-Ub5" id="acj-ma-eNa"/>
+                        <outlet property="mapView" destination="AHT-zx-u5u" id="gle-Zj-PxF"/>
+                        <outlet property="northArrowImage" destination="cU9-jQ-UiL" id="YVW-34-c4l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I17-fQ-pTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="157" y="92"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/LocationDisplay.png" width="16" height="16"/>
+        <image name="ArcGIS.bundle/LocationDisplayCourse.png" width="16" height="16"/>
+        <image name="ArcGIS.bundle/LocationDisplayHeading.png" width="16" height="16"/>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+        <image name="northarrow.gif" width="88" height="88"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

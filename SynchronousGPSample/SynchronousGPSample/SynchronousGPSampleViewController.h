@@ -12,30 +12,18 @@
 
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
-#import "ActivityAlertView.h"
 
 @interface SynchronousGPSampleViewController : UIViewController 
-<AGSMapViewTouchDelegate, AGSGeoprocessorDelegate, UIAlertViewDelegate, AGSMapViewLayerDelegate> {
-    AGSMapView *_mapView;   
-    UIView *_graphicsView;
-	AGSGraphicsLayer *_graphicsLayer;
-	AGSGeoprocessor *_gpTask;
-    NSOperation *_gpOp;		// keep track of the gp operation so that we can cancel it if user wants.
-    ActivityAlertView *_activityAlertView;
-    
-    UISlider *_vsDistanceSlider;
-    UILabel *_vsDistanceLabel;
-}
+<AGSMapViewTouchDelegate, AGSGeoprocessorDelegate, UIAlertViewDelegate, AGSMapViewLayerDelegate> 
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
 @property (nonatomic, strong) UIView *graphicsView;
 @property (nonatomic, strong) AGSGraphicsLayer *graphicsLayer;
 @property (nonatomic, strong) AGSGeoprocessor *gpTask;
 @property (nonatomic, strong) NSOperation *gpOp;
-@property (nonatomic, strong) ActivityAlertView *activityAlertView;
 
 @property (nonatomic, strong) IBOutlet UISlider *vsDistanceSlider;
-@property (nonatomic, strong) IBOutlet UILabel *vsDistanceLabel;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *vsDistanceLabel;
 
 - (IBAction)vsDistanceSliderChanged:(id)sender;
 

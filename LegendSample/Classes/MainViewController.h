@@ -15,17 +15,7 @@
 #import "LegendDataSource.h"
 #import "LegendViewController.h"
 
-@interface MainViewController : UIViewController  {
-	AGSMapView *_mapView;
-	UIButton* _infoButton;
-
-	LegendDataSource* _legendDataSource;
-	LegendViewController* _legendViewController;
-	
-	//Only used with iPad
-	UIPopoverController* _popOverController;
-	
-}
+@interface MainViewController : UIViewController <LegendViewControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
 @property (nonatomic, strong) IBOutlet UIButton* infoButton;
@@ -33,9 +23,6 @@
 @property (nonatomic, strong) LegendDataSource *legendDataSource;
 @property (nonatomic, strong) LegendViewController *legendViewController;
 @property (nonatomic, strong) UIPopoverController *popOverController;
-
-
-- (IBAction) presentLegendViewController:(id)sender;
 
 @end
 

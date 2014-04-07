@@ -31,5 +31,5 @@
 @property (nonatomic, strong) AGSSketchGraphicsLayer *sketchLayer;
 @property (nonatomic, strong) NSMutableArray *lastBuffer;
 
-
+@property (nonatomic, assign) int bufferDistance;
 @end

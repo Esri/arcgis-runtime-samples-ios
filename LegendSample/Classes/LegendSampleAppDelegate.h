@@ -14,13 +14,9 @@
 
 @class MainViewController;
 
-@interface LegendSampleAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    MainViewController *viewController;
-}
+@interface LegendSampleAppDelegate : NSObject <UIApplicationDelegate> 
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
-@property (nonatomic, strong) IBOutlet MainViewController *viewController;
 
 @end
 

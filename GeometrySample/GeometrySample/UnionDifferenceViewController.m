@@ -12,36 +12,7 @@
 
 #import "UnionDifferenceViewController.h"
 
-@interface UnionDifferenceViewController () {
-    UISegmentedControl *_segmentedControl;
-    UIBarButtonItem *_resetButton;
-    UIBarButtonItem *_addButton;
-    UILabel *_userInstructions;
-    UIToolbar *_toolbar;
-    AGSGraphic *_unionGraphic;
-    AGSGraphic *_differenceGraphic;
-
-    AGSMapView *_mapView;
-    AGSSketchGraphicsLayer *_sketchLayer;
-    AGSGraphicsLayer *_graphicsLayer;
-}
-
-@end
-
 @implementation UnionDifferenceViewController
-
-@synthesize unionGraphic = _unionGraphic;
-@synthesize differenceGraphic = _differenceGraphic;
-@synthesize userInstructions = _userInstructions;
-@synthesize addButton = _addButton;
-@synthesize resetButton = _resetButton;
-@synthesize mapView = _mapView;
-@synthesize sketchLayer = _sketchLayer;
-@synthesize graphicsLayer = _graphicsLayer;
-@synthesize toolbar = _toolbar;
-@synthesize segmentedControl = _segmentedControl;
-
-
 
 #pragma mark -
 #pragma mark View lifecycle

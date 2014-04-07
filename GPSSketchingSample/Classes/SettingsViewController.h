@@ -11,30 +11,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
-// Keys for the dictionary provided to the delegate.
-extern NSString * const kSetupInfoKeyAccuracy;
-extern NSString * const kSetupInfoKeyDistanceFilter;
-
-
-@class SettingsViewController;
-
-@protocol SettingsViewControllerDelegate <NSObject>
-
-@required
-- (void)didFinishWithSettings;
-@end
+#import "SettingsViewController.h"
+#import "Parameters.h"
 
 
 @interface SettingsViewController : UIViewController
-{
-    id <SettingsViewControllerDelegate> __weak delegate;
-}
 
-@property (nonatomic, weak) id <SettingsViewControllerDelegate> delegate;
-
-//dictionary containing settings. 
-@property (nonatomic, strong) NSMutableDictionary *setupInfo;
-
+@property (nonatomic, strong) Parameters *parameters;
 
 @end

@@ -8,32 +8,14 @@
 
 #import "AppDelegate.h"
 
-#import "BufferViewController.h"
-
-#import "RootViewController.h"
-
 @implementation AppDelegate
-
-@synthesize window = _window;
-@synthesize splitViewController = _splitViewController;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-
-    RootViewController *rootViewController = [[RootViewController alloc] init];
-    UINavigationController *masterNavigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
-
-    BufferViewController *detailViewController = [[BufferViewController alloc] init];
-
-    self.splitViewController = [[UISplitViewController alloc] init];
-    self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailViewController, nil];
-    rootViewController.splitViewController = self.splitViewController;
-
-    self.window.rootViewController = self.splitViewController;
-    [self.window makeKeyAndVisible];
+    //to remove status bar
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    
     return YES;
 }
 

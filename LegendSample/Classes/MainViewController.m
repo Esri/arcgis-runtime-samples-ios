@@ -11,14 +11,11 @@
 //
 
 #import "MainViewController.h"
+#import "CustomSegue.h"
+
+#define kLegendViewControllerSegue @"LegendViewControllerSegue"
 
 @implementation MainViewController
-
-@synthesize mapView=_mapView;
-@synthesize infoButton=_infoButton;
-@synthesize legendDataSource=_legendDataSource;
-@synthesize legendViewController=_legendViewController;
-@synthesize popOverController=_popOverController;
 
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
@@ -31,34 +28,16 @@
 
     // Register for geometry changed notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToLayerLoaded:) name:AGSLayerDidLoadNotification object:nil];
-	
+    
 	NSURL *mapUrl = [NSURL URLWithString:@"http://services.arcgisonline.com/ArcGIS/rest/services/Specialty/Soil_Survey_Map/MapServer"];
 	AGSTiledMapServiceLayer *tiledLyr = [AGSTiledMapServiceLayer tiledMapServiceLayerWithURL:mapUrl];
 	[self.mapView addMapLayer:tiledLyr withName:@"Tiled Layer"];
 
 	//A data source that will hold the legend items
 	self.legendDataSource = [[LegendDataSource alloc] init];
-	
-	//Initialize the legend view controller
-	//This will be displayed when user clicks on the info button
-
-	self.legendViewController = [[LegendViewController alloc] initWithNibName:@"LegendViewController" bundle:nil];
-	self.legendViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-	self.legendViewController.legendDataSource = self.legendDataSource;
-	
-	if([[AGSDevice currentDevice] isIPad]){
-        
-		self.popOverController = [[UIPopoverController alloc]
-								  initWithContentViewController:self.legendViewController];
-		[self.popOverController setPopoverContentSize:CGSizeMake(250, 500)];
-		self.popOverController.passthroughViews = [NSArray arrayWithObject:self.view];
-		self.legendViewController.popOverController = self.popOverController;
-	}
 }
 
 #pragma mark -
-#pragma mark AGSMapViewDelegate
-
 
 - (void)respondToLayerLoaded:(NSNotification*)notification {
     
@@ -66,17 +45,6 @@
 	[self.legendDataSource addLegendForLayer:(AGSLayer *)notification.object];
 }
 
-
-- (IBAction) presentLegendViewController: (id) sender{
-	//If iPad, show legend in the PopOver, else transition to the separate view controller
-	if([[AGSDevice currentDevice] isIPad]){
-		[_popOverController presentPopoverFromRect:self.infoButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES ];
-		
-	}else {
-        [self presentViewController:self.legendViewController animated:YES completion:nil];
-	}
-
-}
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
 	//Re-show popOver to position it correctly after orientation change
 	if([[AGSDevice currentDevice] isIPad] && self.popOverController.popoverVisible) {
@@ -106,6 +74,48 @@
 	if([[AGSDevice currentDevice] isIPad])
 		self.popOverController = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AGSLayerDidLoadNotification object:nil];
+}
+
+#pragma mark - LegendViewControllerDelegate methods
+
+- (void)dismissLegend {
+    //in case of iPad dismiss the pop over controller
+	if([[AGSDevice currentDevice] isIPad])
+		[self.popOverController dismissPopoverAnimated:YES];
+	else    //in case of iphone dismiss the modal view controller
+        [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - segues
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //check for the segue identifier
+    if ([segue.identifier isEqualToString:kLegendViewControllerSegue]) {
+        //get a reference to the destination controller from the segue
+        LegendViewController *controller = [segue destinationViewController];
+        //assign the data source
+        controller.legendDataSource = self.legendDataSource;
+        //assign the delegate
+        controller.delegate = self;
+        
+        //using custom segue to handle transitions in iPad and iPhone differently
+        //in case of iPad, going to show a pop over controller
+        //for which we need to assign three attributes on the segue before performing segue
+        //view ::: the view in which the pop over controller will be presented
+        //rect ::: the CGRect which will be the target, e.g. the frame of the button which fires the segue
+        //popOverController ::: the controller which will be shown as the popOverController
+        if ([[AGSDevice currentDevice] isIPad]) {
+            
+            self.popOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
+            [self.popOverController setPopoverContentSize:CGSizeMake(200, 600)];
+            [controller.legendTableView setBackgroundColor:[UIColor whiteColor]];
+            CustomSegue *customSegue = (CustomSegue*)segue;
+            
+            customSegue.view = self.view;
+            customSegue.rect = self.infoButton.frame;
+            customSegue.popOverController = self.popOverController;
+        }
+    }
 }
 
 

@@ -14,18 +14,6 @@
 
 @implementation GeometryServiceSampleViewController
 
-@synthesize mapView = _mapView;
-@synthesize goBtn = _goBtn;
-@synthesize clearGraphicsBtn = _clearGraphicsBtn;
-@synthesize navBar = _navBar;
-@synthesize geometryArray = _geometryArray;
-@synthesize graphicsLayer = _graphicsLayer;
-@synthesize statusView = _statusView;
-@synthesize statusLabel = _statusLabel;
-@synthesize pushpins = _pushpins;
-@synthesize gst = _gst;
-
-
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
 {
@@ -45,7 +33,7 @@
 	[self.graphicsLayer refresh];
 	
 	// reset the number of clicked points
-	_numPoints = 0;
+	self.numPoints = 0;
 	
 	// reset our "directions" label
 	self.statusLabel.text = @"Click points to buffer around";
@@ -185,7 +173,7 @@
 	
 	
 	UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Results" 
-												 message:[NSString stringWithFormat:@"Returned %d buffered geometries", [bufferedGeometries count]] 
+												 message:[NSString stringWithFormat:@"Returned %lu buffered geometries", (unsigned long)[bufferedGeometries count]]
 												delegate:self 
 									   cancelButtonTitle:@"Ok" 
 									   otherButtonTitles:nil];
@@ -300,10 +288,10 @@
 	[self.graphicsLayer refresh];
 	
 	// increment the number of points the user has clicked
-	_numPoints++;
+	self.numPoints++;
 	
 	// Update label with number of points clicked
-	self.statusLabel.text = [NSString stringWithFormat:@"%d point(s) selected", _numPoints];
+	self.statusLabel.text = [NSString stringWithFormat:@"%ld point(s) selected", (long)self.numPoints];
 }
 
 #pragma mark -

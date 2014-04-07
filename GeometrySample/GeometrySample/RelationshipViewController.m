@@ -11,7 +11,7 @@
 //
 
 #import "RelationshipViewController.h"
-
+#import <QuartzCore/QuartzCore.h>
 
 @interface SpatialRelationshipContainer : NSObject 
 
@@ -27,10 +27,6 @@
 
 @implementation SpatialRelationshipContainer
 
-@synthesize name;
-@synthesize checked;
-@synthesize spatialRelationship;
-
 - (id)initWithSpatialRelationship:(int)relationship 
                           andName:(NSString*)relationshipName {
     if (self = [super init]) {
@@ -45,39 +41,7 @@
 
 @end
 
-
-@interface RelationshipViewController () {
-    AGSMapView *_mapView;
-    UITableView *_relationshipTable;
-    UIToolbar *_toolbar;
-    UIBarButtonItem *_addButton;
-    UIBarButtonItem *_resetButton;
-    UISegmentedControl *_geometrySelect;
-    UILabel *_userInstructions;
-    
-    NSMutableArray *_spatialRelationships;
-    AGSGraphicsLayer *_graphicsLayer;
-    AGSSketchGraphicsLayer *_sketchLayer;
-}
-
-
-@end
-
 @implementation RelationshipViewController
-
-@synthesize userInstructions = _userInstructions;
-@synthesize graphicsLayer = _graphicsLayer;
-@synthesize spatialRelationships = _spatialRelationships;
-@synthesize sketchLayer = _sketchLayer;
-@synthesize mapView =_mapView;
-@synthesize relationshipTable = _relationshipTable;
-@synthesize toolbar = _toolbar;
-@synthesize addButton = _addButton;
-@synthesize resetButton = _resetButton;
-@synthesize geometrySelect = _geometrySelect;
-
-
-
 
 // Do any additional setup after loading the view from its nib.
 - (void)viewDidLoad
@@ -112,6 +76,11 @@
     self.relationshipTable.delegate = self;
     self.relationshipTable.dataSource = self;
     self.relationshipTable.scrollEnabled = NO;
+    [self.relationshipTable setBackgroundColor:[UIColor whiteColor]];
+    [self.relationshipTable.layer setCornerRadius:5];
+    [self.relationshipTable.layer setBorderWidth:1];
+    [self.relationshipTable.layer setBorderColor:[UIColor grayColor].CGColor];
+    [self.relationshipTable setAlpha:0.8];
     
     AGSSimpleMarkerSymbol *pointSymbol = [AGSSimpleMarkerSymbol simpleMarkerSymbol];
     pointSymbol.color = [UIColor blueColor];
@@ -162,7 +131,7 @@
 	if (cell == nil)
 	{
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCustomCellID];
-        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.textColor = [UIColor blackColor];
     }
     
     // Disable selection

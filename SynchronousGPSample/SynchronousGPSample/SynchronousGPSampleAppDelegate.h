@@ -12,14 +12,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class SynchronousGPSampleViewController;
-
-@interface SynchronousGPSampleAppDelegate : NSObject <UIApplicationDelegate> {
-
-}
+@interface SynchronousGPSampleAppDelegate : NSObject <UIApplicationDelegate> 
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
-
-@property (nonatomic, strong) IBOutlet SynchronousGPSampleViewController *viewController;
 
 @end

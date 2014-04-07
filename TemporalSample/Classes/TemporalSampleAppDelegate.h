@@ -14,13 +14,9 @@
 
 @class TemporalSampleViewController;
 
-@interface TemporalSampleAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    TemporalSampleViewController *viewController;
-}
+@interface TemporalSampleAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
-@property (nonatomic, strong) IBOutlet TemporalSampleViewController *viewController;
 
 @end
 

@@ -14,11 +14,6 @@
 
 @implementation SketchLayerSampleViewController
 
-@synthesize mapView=_mapView;
-@synthesize toolbar = _toolbar;
-@synthesize sketchToolbar = _sketchToolbar;
-
-
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
 {

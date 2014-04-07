@@ -10,14 +10,9 @@
 // See the use restrictions at http://help.arcgis.com/en/sdk/10.0/usageRestrictions.htm
 //
 
-@interface QueryTaskSampleAppDelegate : NSObject <UIApplicationDelegate> {
-    
-    UIWindow *window;
-    UINavigationController *navigationController;
-}
+@interface QueryTaskSampleAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
-@property (nonatomic, strong) IBOutlet UINavigationController *navigationController;
 
 @end
 

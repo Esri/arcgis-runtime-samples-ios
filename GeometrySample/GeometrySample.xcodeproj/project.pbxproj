@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E715CDC18E201C9004FB946 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E715CDB18E201C9004FB946 /* Storyboard.storyboard */; };
+		3E715CE218E24A43004FB946 /* Redo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E715CDE18E24A43004FB946 /* Redo.png */; };
+		3E715CE318E24A43004FB946 /* Redo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E715CDF18E24A43004FB946 /* Redo@2x.png */; };
+		3E715CE418E24A43004FB946 /* undo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E715CE018E24A43004FB946 /* undo.png */; };
+		3E715CE518E24A43004FB946 /* undo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E715CE118E24A43004FB946 /* undo@2x.png */; };
 		9760C537158BC2D500986512 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9760C535158BC2D500986512 /* InfoPlist.strings */; };
 		9760C539158BC2D500986512 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9760C538158BC2D500986512 /* main.m */; };
 		9760C576158BC3ED00986512 /* checkbox_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 9760C567158BC3ED00986512 /* checkbox_empty.png */; };
 		9760C577158BC3ED00986512 /* checkbox_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 9760C568158BC3ED00986512 /* checkbox_full.png */; };
 		9760C579158BC3ED00986512 /* scissors.png in Resources */ = {isa = PBXBuildFile; fileRef = 9760C56A158BC3ED00986512 /* scissors.png */; };
-		9760C57A158BC3ED00986512 /* undo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9760C56B158BC3ED00986512 /* undo.gif */; };
-		9760C57B158BC3ED00986512 /* redo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9760C56C158BC3ED00986512 /* redo.gif */; };
 		9760C57C158BC3ED00986512 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9760C56D158BC3ED00986512 /* icon@2x.png */; };
 		9760C57D158BC3ED00986512 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9760C56E158BC3ED00986512 /* icon.png */; };
 		9760C57E158BC3ED00986512 /* polygon.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9760C56F158BC3ED00986512 /* polygon.gif */; };
@@ -31,20 +34,16 @@
 		9760C5B0158BC53C00986512 /* MeasureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9760C59F158BC53C00986512 /* MeasureViewController.m */; };
 		9760C5B1158BC53C00986512 /* UnitSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9760C5A0158BC53C00986512 /* UnitSelectorViewController.m */; };
 		9760C5B2158BC53C00986512 /* ProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9760C5A1158BC53C00986512 /* ProjectViewController.m */; };
-		9760C5B4158BC55D00986512 /* RelationshipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9760C5B3158BC55D00986512 /* RelationshipViewController.xib */; };
-		9760C5BB158BC57900986512 /* ProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9760C5B5158BC57900986512 /* ProjectViewController.xib */; };
-		9760C5BC158BC57900986512 /* MeasureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9760C5B6158BC57900986512 /* MeasureViewController.xib */; };
-		9760C5BD158BC57900986512 /* UnitSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9760C5B7158BC57900986512 /* UnitSelectorViewController.xib */; };
-		9760C5BE158BC57900986512 /* OffsetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9760C5B8158BC57900986512 /* OffsetViewController.xib */; };
-		9760C5BF158BC57900986512 /* DensifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9760C5B9158BC57900986512 /* DensifyViewController.xib */; };
-		9760C5C0158BC57900986512 /* UnionDifferenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9760C5BA158BC57900986512 /* UnionDifferenceViewController.xib */; };
-		9760C5C3158BC5A800986512 /* CutterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9760C5C1158BC5A800986512 /* CutterView.xib */; };
-		9760C5C4158BC5A800986512 /* BufferView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9760C5C2158BC5A800986512 /* BufferView.xib */; };
 		9760C635158BDCA500986512 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9760C634158BDCA500986512 /* AppDelegate.m */; };
 		DE60C5E015A63FCD005B36DA /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DE60C5DF15A63FCD005B36DA /* ArcGIS.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E715CDB18E201C9004FB946 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = GeometrySample/Storyboard.storyboard; sourceTree = "<group>"; };
+		3E715CDE18E24A43004FB946 /* Redo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Redo.png; path = images/Redo.png; sourceTree = "<group>"; };
+		3E715CDF18E24A43004FB946 /* Redo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Redo@2x.png"; path = "images/Redo@2x.png"; sourceTree = "<group>"; };
+		3E715CE018E24A43004FB946 /* undo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = undo.png; path = images/undo.png; sourceTree = "<group>"; };
+		3E715CE118E24A43004FB946 /* undo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "undo@2x.png"; path = "images/undo@2x.png"; sourceTree = "<group>"; };
 		9760C528158BC2D500986512 /* GeometrySample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeometrySample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9760C534158BC2D500986512 /* GeometrySample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GeometrySample-Info.plist"; sourceTree = "<group>"; };
 		9760C536158BC2D500986512 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -54,8 +53,6 @@
 		9760C567158BC3ED00986512 /* checkbox_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox_empty.png; path = images/checkbox_empty.png; sourceTree = "<group>"; };
 		9760C568158BC3ED00986512 /* checkbox_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox_full.png; path = images/checkbox_full.png; sourceTree = "<group>"; };
 		9760C56A158BC3ED00986512 /* scissors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = scissors.png; path = images/scissors.png; sourceTree = "<group>"; };
-		9760C56B158BC3ED00986512 /* undo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = undo.gif; path = images/undo.gif; sourceTree = "<group>"; };
-		9760C56C158BC3ED00986512 /* redo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = redo.gif; path = images/redo.gif; sourceTree = "<group>"; };
 		9760C56D158BC3ED00986512 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "images/icon@2x.png"; sourceTree = "<group>"; };
 		9760C56E158BC3ED00986512 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = images/icon.png; sourceTree = "<group>"; };
 		9760C56F158BC3ED00986512 /* polygon.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = polygon.gif; path = images/polygon.gif; sourceTree = "<group>"; };
@@ -83,15 +80,6 @@
 		9760C5A7158BC53C00986512 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		9760C5A8158BC53C00986512 /* CutterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CutterViewController.h; sourceTree = "<group>"; };
 		9760C5A9158BC53C00986512 /* UnionDifferenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnionDifferenceViewController.h; sourceTree = "<group>"; };
-		9760C5B3158BC55D00986512 /* RelationshipViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RelationshipViewController.xib; sourceTree = "<group>"; };
-		9760C5B5158BC57900986512 /* ProjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectViewController.xib; sourceTree = "<group>"; };
-		9760C5B6158BC57900986512 /* MeasureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeasureViewController.xib; sourceTree = "<group>"; };
-		9760C5B7158BC57900986512 /* UnitSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnitSelectorViewController.xib; sourceTree = "<group>"; };
-		9760C5B8158BC57900986512 /* OffsetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OffsetViewController.xib; sourceTree = "<group>"; };
-		9760C5B9158BC57900986512 /* DensifyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DensifyViewController.xib; sourceTree = "<group>"; };
-		9760C5BA158BC57900986512 /* UnionDifferenceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnionDifferenceViewController.xib; sourceTree = "<group>"; };
-		9760C5C1158BC5A800986512 /* CutterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CutterView.xib; sourceTree = "<group>"; };
-		9760C5C2158BC5A800986512 /* BufferView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BufferView.xib; sourceTree = "<group>"; };
 		9760C634158BDCA500986512 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DE60C5DF15A63FCD005B36DA /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -107,10 +95,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E715CDD18E203D2004FB946 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				3E715CDE18E24A43004FB946 /* Redo.png */,
+				3E715CDF18E24A43004FB946 /* Redo@2x.png */,
+				3E715CE018E24A43004FB946 /* undo.png */,
+				3E715CE118E24A43004FB946 /* undo@2x.png */,
+				9760C567158BC3ED00986512 /* checkbox_empty.png */,
+				9760C568158BC3ED00986512 /* checkbox_full.png */,
+				9760C56A158BC3ED00986512 /* scissors.png */,
+				9760C56D158BC3ED00986512 /* icon@2x.png */,
+				9760C56E158BC3ED00986512 /* icon.png */,
+				9760C56F158BC3ED00986512 /* polygon.gif */,
+				9760C570158BC3ED00986512 /* point.gif */,
+				9760C571158BC3ED00986512 /* line.gif */,
+				9760C573158BC3ED00986512 /* MeasureDistance48.png */,
+				9760C575158BC3ED00986512 /* MeasureArea48.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		9760C51D158BC2D500986512 = {
 			isa = PBXGroup;
 			children = (
-				DE60C5DF15A63FCD005B36DA /* ArcGIS.bundle */,
+				3E715CDB18E201C9004FB946 /* Storyboard.storyboard */,
 				9760C532158BC2D500986512 /* GeometrySample */,
 				9760C52B158BC2D500986512 /* Frameworks */,
 				9760C529158BC2D500986512 /* Products */,
@@ -128,6 +137,7 @@
 		9760C52B158BC2D500986512 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DE60C5DF15A63FCD005B36DA /* ArcGIS.bundle */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -135,14 +145,14 @@
 		9760C532158BC2D500986512 /* GeometrySample */ = {
 			isa = PBXGroup;
 			children = (
-				9760C5CD158BC65400986512 /* Densify */,
-				9760C5CC158BC64900986512 /* Offset */,
-				9760C5CB158BC60200986512 /* Relationship */,
-				9760C5C9158BC5D400986512 /* UnionDifference */,
-				9760C5C8158BC5CB00986512 /* Cut */,
-				9760C5C7158BC5C400986512 /* Project */,
-				9760C5C6158BC5B700986512 /* Measure */,
 				9760C5C5158BC5AE00986512 /* Buffer */,
+				9760C5C8158BC5CB00986512 /* Cut */,
+				9760C5CD158BC65400986512 /* Densify */,
+				9760C5C9158BC5D400986512 /* UnionDifference */,
+				9760C5CC158BC64900986512 /* Offset */,
+				9760C5C7158BC5C400986512 /* Project */,
+				9760C5CB158BC60200986512 /* Relationship */,
+				9760C5C6158BC5B700986512 /* Measure */,
 				9760C598158BC53C00986512 /* RootViewController.m */,
 				9760C5A7158BC53C00986512 /* RootViewController.h */,
 				9760C634158BDCA500986512 /* AppDelegate.m */,
@@ -155,18 +165,7 @@
 		9760C533158BC2D500986512 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9760C567158BC3ED00986512 /* checkbox_empty.png */,
-				9760C568158BC3ED00986512 /* checkbox_full.png */,
-				9760C56A158BC3ED00986512 /* scissors.png */,
-				9760C56B158BC3ED00986512 /* undo.gif */,
-				9760C56C158BC3ED00986512 /* redo.gif */,
-				9760C56D158BC3ED00986512 /* icon@2x.png */,
-				9760C56E158BC3ED00986512 /* icon.png */,
-				9760C56F158BC3ED00986512 /* polygon.gif */,
-				9760C570158BC3ED00986512 /* point.gif */,
-				9760C571158BC3ED00986512 /* line.gif */,
-				9760C573158BC3ED00986512 /* MeasureDistance48.png */,
-				9760C575158BC3ED00986512 /* MeasureArea48.png */,
+				3E715CDD18E203D2004FB946 /* Images */,
 				9760C534158BC2D500986512 /* GeometrySample-Info.plist */,
 				9760C535158BC2D500986512 /* InfoPlist.strings */,
 				9760C538158BC2D500986512 /* main.m */,
@@ -180,7 +179,6 @@
 			children = (
 				9760C599158BC53C00986512 /* BufferViewController.m */,
 				9760C59A158BC53C00986512 /* BufferViewController.h */,
-				9760C5C2158BC5A800986512 /* BufferView.xib */,
 			);
 			name = Buffer;
 			sourceTree = "<group>";
@@ -188,12 +186,10 @@
 		9760C5C6158BC5B700986512 /* Measure */ = {
 			isa = PBXGroup;
 			children = (
-				9760C5B6158BC57900986512 /* MeasureViewController.xib */,
+				9760C59F158BC53C00986512 /* MeasureViewController.m */,
 				9760C5A3158BC53C00986512 /* MeasureViewController.h */,
-				9760C5B7158BC57900986512 /* UnitSelectorViewController.xib */,
 				9760C5A2158BC53C00986512 /* UnitSelectorViewController.h */,
 				9760C5A0158BC53C00986512 /* UnitSelectorViewController.m */,
-				9760C59F158BC53C00986512 /* MeasureViewController.m */,
 			);
 			name = Measure;
 			sourceTree = "<group>";
@@ -202,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				9760C5A5158BC53C00986512 /* ProjectViewController.h */,
-				9760C5B5158BC57900986512 /* ProjectViewController.xib */,
 				9760C5A1158BC53C00986512 /* ProjectViewController.m */,
 			);
 			name = Project;
@@ -211,9 +206,8 @@
 		9760C5C8158BC5CB00986512 /* Cut */ = {
 			isa = PBXGroup;
 			children = (
-				9760C59D158BC53C00986512 /* CutterViewController.m */,
 				9760C5A8158BC53C00986512 /* CutterViewController.h */,
-				9760C5C1158BC5A800986512 /* CutterView.xib */,
+				9760C59D158BC53C00986512 /* CutterViewController.m */,
 			);
 			name = Cut;
 			sourceTree = "<group>";
@@ -221,9 +215,8 @@
 		9760C5C9158BC5D400986512 /* UnionDifference */ = {
 			isa = PBXGroup;
 			children = (
-				9760C5BA158BC57900986512 /* UnionDifferenceViewController.xib */,
-				9760C59C158BC53C00986512 /* UnionDifferenceViewController.m */,
 				9760C5A9158BC53C00986512 /* UnionDifferenceViewController.h */,
+				9760C59C158BC53C00986512 /* UnionDifferenceViewController.m */,
 			);
 			name = UnionDifference;
 			sourceTree = "<group>";
@@ -231,7 +224,6 @@
 		9760C5CB158BC60200986512 /* Relationship */ = {
 			isa = PBXGroup;
 			children = (
-				9760C5B3158BC55D00986512 /* RelationshipViewController.xib */,
 				9760C595158BC50A00986512 /* RelationshipViewController.m */,
 				9760C596158BC50A00986512 /* RelationshipViewController.h */,
 			);
@@ -243,7 +235,6 @@
 			children = (
 				9760C59B158BC53C00986512 /* OffsetViewController.m */,
 				9760C5A6158BC53C00986512 /* OffsetViewController.h */,
-				9760C5B8158BC57900986512 /* OffsetViewController.xib */,
 			);
 			name = Offset;
 			sourceTree = "<group>";
@@ -251,9 +242,8 @@
 		9760C5CD158BC65400986512 /* Densify */ = {
 			isa = PBXGroup;
 			children = (
-				9760C5B9158BC57900986512 /* DensifyViewController.xib */,
-				9760C59E158BC53C00986512 /* DensifyViewController.m */,
 				9760C5A4158BC53C00986512 /* DensifyViewController.h */,
+				9760C59E158BC53C00986512 /* DensifyViewController.m */,
 			);
 			name = Densify;
 			sourceTree = "<group>";
@@ -284,7 +274,7 @@
 		9760C51F158BC2D500986512 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = 9760C522158BC2D500986512 /* Build configuration list for PBXProject "GeometrySample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -310,10 +300,10 @@
 			files = (
 				9760C537158BC2D500986512 /* InfoPlist.strings in Resources */,
 				9760C576158BC3ED00986512 /* checkbox_empty.png in Resources */,
+				3E715CE418E24A43004FB946 /* undo.png in Resources */,
 				9760C577158BC3ED00986512 /* checkbox_full.png in Resources */,
 				9760C579158BC3ED00986512 /* scissors.png in Resources */,
-				9760C57A158BC3ED00986512 /* undo.gif in Resources */,
-				9760C57B158BC3ED00986512 /* redo.gif in Resources */,
+				3E715CDC18E201C9004FB946 /* Storyboard.storyboard in Resources */,
 				9760C57C158BC3ED00986512 /* icon@2x.png in Resources */,
 				9760C57D158BC3ED00986512 /* icon.png in Resources */,
 				9760C57E158BC3ED00986512 /* polygon.gif in Resources */,
@@ -321,15 +311,9 @@
 				9760C580158BC3ED00986512 /* line.gif in Resources */,
 				9760C582158BC3ED00986512 /* MeasureDistance48.png in Resources */,
 				9760C584158BC3ED00986512 /* MeasureArea48.png in Resources */,
-				9760C5B4158BC55D00986512 /* RelationshipViewController.xib in Resources */,
-				9760C5BB158BC57900986512 /* ProjectViewController.xib in Resources */,
-				9760C5BC158BC57900986512 /* MeasureViewController.xib in Resources */,
-				9760C5BD158BC57900986512 /* UnitSelectorViewController.xib in Resources */,
-				9760C5BE158BC57900986512 /* OffsetViewController.xib in Resources */,
-				9760C5BF158BC57900986512 /* DensifyViewController.xib in Resources */,
-				9760C5C0158BC57900986512 /* UnionDifferenceViewController.xib in Resources */,
-				9760C5C3158BC5A800986512 /* CutterView.xib in Resources */,
-				9760C5C4158BC5A800986512 /* BufferView.xib in Resources */,
+				3E715CE318E24A43004FB946 /* Redo@2x.png in Resources */,
+				3E715CE218E24A43004FB946 /* Redo.png in Resources */,
+				3E715CE518E24A43004FB946 /* undo@2x.png in Resources */,
 				DE60C5E015A63FCD005B36DA /* ArcGIS.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,9 +358,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -392,11 +377,15 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -407,9 +396,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -418,9 +408,12 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";

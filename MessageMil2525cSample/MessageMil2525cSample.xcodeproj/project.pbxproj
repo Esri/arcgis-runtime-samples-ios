@@ -35,7 +35,7 @@
 		E961A93B16526B96000BD267 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E962D0811663E19B004F2EB6 /* Mil2525CMessages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Mil2525CMessages.json; sourceTree = "<group>"; };
 		E9B0F6A4166E273400537DE5 /* MessageMil2525cSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MessageMil2525cSample-Info.plist"; sourceTree = "<group>"; };
-		E9B0F6A6166E27B100537DE5 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<group>"; };
+		E9B0F6A6166E27B100537DE5 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		E9FB73D71677BB1100FB4A01 /* mil2525c */ = {isa = PBXFileReference; lastKnownFileType = text; name = mil2525c; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/Symbols/mil2525c; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 

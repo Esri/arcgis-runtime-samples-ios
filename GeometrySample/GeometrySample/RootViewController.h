@@ -12,12 +12,6 @@
 #import <UIKit/UIKit.h>
 
 
-@interface RootViewController : UITableViewController <UISplitViewControllerDelegate> {
-	
-	UISplitViewController * splitViewController;
-    
-}
-
-@property (nonatomic, strong) UISplitViewController *splitViewController;
+@interface RootViewController : UITableViewController <UISplitViewControllerDelegate> 
 
 @end

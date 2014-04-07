@@ -12,25 +12,11 @@
 
 #import "MeasureViewController.h"
 #import "UnitSelectorViewController.h"
+#define kUnitSelectorSegue @"UnitSelectorSegue"
 
-@interface MeasureViewController () {
-    AGSMapView *_mapView;
-    UIToolbar  *_toolbar;
-    UISegmentedControl *_measureMethod;
-    UIBarButtonItem *_undoButton;
-    UIBarButtonItem *_redoButton;
-    UIBarButtonItem *_resetButton;
-    AGSGraphicsLayer *_graphicsLayer;
-    AGSSketchGraphicsLayer *_sketchLayer;
-    UILabel *_userInstructions;
-    UIButton *_selectUnitButton;
-    
-    
-    double _distance;
-    double _area;
-    AGSSRUnit _distanceUnit;
-    AGSAreaUnits _areaUnit;
-}
+@interface MeasureViewController ()
+
+@property (nonatomic, strong) UIPopoverController *popOverController;
 
 - (void)updateDistance:(AGSSRUnit)unit ;
 - (void)updateArea:(AGSAreaUnits)unit ;
@@ -39,17 +25,6 @@
 @end
 
 @implementation MeasureViewController
-
-@synthesize userInstructions = _userInstructions;
-@synthesize resetButton = _resetButton;
-@synthesize redoButton = _redoButton;
-@synthesize undoButton = _undoButton;
-@synthesize measureMethod = _measureMethod;
-@synthesize mapView =_mapView;
-@synthesize toolbar = _toolbar;
-@synthesize sketchLayer = _sketchLayer;
-@synthesize selectUnitButton = _selectUnitButton;
-
 
 - (void)viewDidLoad
 {
@@ -73,10 +48,10 @@
     self.selectUnitButton.backgroundColor = [UIColor clearColor];
 
     // Set the default measures and units
-    _distance = 0;
-    _area = 0;
-    _distanceUnit = AGSSRUnitSurveyMile;
-    _areaUnit = AGSAreaUnitsAcres;
+    self.distance = 0;
+    self.area = 0;
+    self.distanceUnit = AGSSRUnitSurveyMile;
+    self.areaUnit = AGSAreaUnitsAcres;
 
 }
 
@@ -105,10 +80,10 @@
     
     // Update the distance and area whenever the geometry changes
     if ([sketchGeometry isKindOfClass:[AGSMutablePolyline class]]) {
-        [self updateDistance:_distanceUnit];
+        [self updateDistance:self.distanceUnit];
     }
     else if ([sketchGeometry isKindOfClass:[AGSMutablePolygon class]]){
-        [self updateArea:_areaUnit];
+        [self updateArea:self.areaUnit];
     }
 }
 
@@ -120,11 +95,11 @@
     AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
 
     // Get the geodesic distance of the current line
-    _distance = [geometryEngine geodesicLengthOfGeometry:sketchGeometry inUnit:_distanceUnit];
+    self.distance = [geometryEngine geodesicLengthOfGeometry:sketchGeometry inUnit:self.distanceUnit];
     
     // Display the current unit
     NSString *distanceUnitString = nil;
-    switch (_distanceUnit) {
+    switch (self.distanceUnit) {
         case AGSSRUnitSurveyMile:
             distanceUnitString = @"Miles";
             break;
@@ -148,7 +123,7 @@
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     [formatter setMaximumFractionDigits:0];
     
-    self.userInstructions.text = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithDouble:_distance]]];
+    self.userInstructions.text = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithDouble:self.distance]]];
     [self.selectUnitButton setTitle:distanceUnitString forState:UIControlStateNormal];
     
 
@@ -161,11 +136,11 @@
     AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
     
     // Get the area of the current polygon
-    _area = [geometryEngine shapePreservingAreaOfGeometry:sketchGeometry inUnit:_areaUnit];
+    self.area = [geometryEngine shapePreservingAreaOfGeometry:sketchGeometry inUnit:self.areaUnit];
     
     // Display the current unit
     NSString *areaUnitString = nil;
-    switch (_areaUnit) {
+    switch (self.areaUnit) {
         case AGSAreaUnitsSquareMiles:
             areaUnitString = @"Square Miles";
             break;
@@ -188,7 +163,7 @@
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     [formatter setMaximumFractionDigits:0];
     
-    self.userInstructions.text = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithDouble:_area]]];
+    self.userInstructions.text = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithDouble:self.area]]];
     [self.selectUnitButton setTitle:areaUnitString forState:UIControlStateNormal];
     
 }
@@ -204,42 +179,23 @@
     }
 }
 
+#pragma mark - UnitSelectorViewControllerDelegate methods
+
 // Delegate method called by UnitSelectorViewController to update the distance unit
 - (void)didSelectAreaUnit:(AGSAreaUnits)unit {
-    _areaUnit = unit;
+    self.areaUnit = unit;
     [self updateArea:unit];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissPopOver];
 }
 
 // Delegate method called by UnitSelectorViewController to update the area units
 - (void)didSelectDistanceUnit:(AGSSRUnit)unit {
-    _distanceUnit = unit;
+    self.distanceUnit = unit;
     [self updateDistance:unit];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissPopOver];
 }
 
-// Called when the button under user instructions is tapped
-- (IBAction)selectUnit {
-    // Create a UnitSelectorViewController
-    UnitSelectorViewController *inputVC = [[UnitSelectorViewController alloc] initWithNibName:@"UnitSelectorViewController" bundle:nil];
-    // Set the delegate to self
-    inputVC.delegate = self;
-    
-    // Tell the view controller wheather we want distance units or area units
-    if (self.measureMethod.selectedSegmentIndex == 0) {
-        inputVC.useAreaUnits = NO;
-    }
-    else {
-        inputVC.useAreaUnits = YES;
-    }
-    
-    // Make the contoller the correct size and style
-    inputVC.modalPresentationStyle = UIModalPresentationFormSheet;
-    inputVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    
-    [self presentViewController:inputVC animated:YES completion:nil];
-    inputVC.view.superview.bounds = CGRectMake(-150, 0, 300, 220);
-}
+#pragma mark - actions
 
 - (IBAction)reset {
     self.userInstructions.text = @"Sketch on the map to measure distance or area";
@@ -257,6 +213,22 @@
     if ([self.sketchLayer.undoManager canRedo])
         [self.sketchLayer.undoManager redo];
     
+}
+
+- (void)dismissPopOver {
+    [self.popOverController dismissPopoverAnimated:YES];
+}
+
+#pragma mark - segues
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:kUnitSelectorSegue]) {
+        self.popOverController = [(UIStoryboardPopoverSegue*)segue popoverController];
+        UnitSelectorViewController *controller = [segue destinationViewController];
+        controller.useAreaUnits = (self.measureMethod.selectedSegmentIndex == 0) ? NO : YES;
+        
+        controller.delegate = self;
+    }
 }
 
 

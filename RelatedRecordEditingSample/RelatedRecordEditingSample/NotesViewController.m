@@ -46,20 +46,11 @@
 
 @implementation NotesViewController
 
-@synthesize delegate;
-@synthesize tableView = _tableView;
-@synthesize incidentLayer = _incidentLayer;
-@synthesize incidentNotesLayer = _incidentNotesLayer;
-@synthesize incidentOID = _incidentOID;
-@synthesize relatedFeaturesResultsArray = _relatedFeaturesResultsArray;
-@synthesize notesPopupVC = _notesPopupVC;
-@synthesize loadingView = _loadingView;
-@synthesize indexPathForDeleteOperation = _indexPathForDeleteOperation;
-
 //cutom init method
 - (id)initWithIncidentOID:(NSNumber*)incidentOID incidentLayer:(AGSFeatureLayer *)layer
 {
-    self = [super initWithNibName:@"NotesViewController" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
+    self = [storyboard instantiateViewControllerWithIdentifier:@"NotesViewController"];
     if (self) {
         //store the incident Object ID locally
         self.incidentOID = incidentOID;       
@@ -189,14 +180,14 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {   
     //Once the user initiates the deletion, the record is deleted from both the incidentnotes layer and the local array of features. 
-    int oid = [self.incidentNotesLayer objectIdForFeature:[self.relatedFeaturesResultsArray objectAtIndex:indexPath.row]];
+    long oid = [self.incidentNotesLayer objectIdForFeature:[self.relatedFeaturesResultsArray objectAtIndex:indexPath.row]];
 		
     if(oid > 0)
     {
         self.loadingView = [LoadingView loadingViewInView:self.notesPopupVC.view withText:@"Deleting record..."]; 
         //feature has a valid objectid, this means it exists on the server
         //and we simply update the exisiting feature
-        [self.incidentNotesLayer deleteFeaturesWithObjectIds:[NSArray arrayWithObjects:[NSNumber numberWithInt:oid], nil]];
+        [self.incidentNotesLayer deleteFeaturesWithObjectIds:[NSArray arrayWithObjects:[NSNumber numberWithLong:oid], nil]];
         
         //store the indexpath for updating the table view later. 
         self.indexPathForDeleteOperation = indexPath;
@@ -328,7 +319,7 @@
 
 -(void)popupsContainer:(id<AGSPopupsContainer>)popupsContainer didFinishEditingGraphicForPopup:(AGSPopup*)popup {
     
-    int oid = [self.incidentNotesLayer objectIdForFeature:popup.graphic];
+    long oid = [self.incidentNotesLayer objectIdForFeature:popup.graphic];
 	if (oid > 0){
 		//feature has a valid objectid, this means it exists on the server
         //and we simply update the exisiting feature

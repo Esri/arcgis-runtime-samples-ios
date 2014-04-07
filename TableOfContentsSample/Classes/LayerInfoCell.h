@@ -15,17 +15,7 @@
 @class CheckBox;
 @protocol LayerInfoCellDelegate;
 
-@interface LayerInfoCell : UITableViewCell {
-	UILabel *_valueLabel;
-    CheckBox *_visibilitySwitch;
-	UIImageView *_arrowImage;
-	
-	int _level;
-    BOOL _canChangeVisibility;
-	BOOL _expanded;
-    
-    id <LayerInfoCellDelegate> __weak _layerInfoCellDelegate;
-}
+@interface LayerInfoCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *valueLabel;
 @property (nonatomic, strong) CheckBox *visibilitySwitch;

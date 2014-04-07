@@ -16,17 +16,10 @@
 
 @implementation LegendSampleAppDelegate
 
-@synthesize window;
-@synthesize viewController;
-
-
-- (void)applicationDidFinishLaunching:(UIApplication *)application {    
+-(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    // Override point for customization after app launch    
-    [window setRootViewController:viewController];
-    [window makeKeyAndVisible];
+    return YES;
 }
-
 
 
 

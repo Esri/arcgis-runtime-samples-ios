@@ -11,34 +11,15 @@
 //
 
 #import "QueryTaskSampleAppDelegate.h"
-#import "RootViewController.h"
-
 
 @implementation QueryTaskSampleAppDelegate
-
-@synthesize window;
-@synthesize navigationController;
-
 
 #pragma mark -
 #pragma mark Application lifecycle
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {    
-    
-    // Override point for customization after app launch    
-	[window setRootViewController:navigationController];
-    [window makeKeyAndVisible];
+-(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    return YES;
 }
-
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-	// Save data if appropriate
-}
-
-
-#pragma mark -
-#pragma mark Memory management
-
 
 
 @end

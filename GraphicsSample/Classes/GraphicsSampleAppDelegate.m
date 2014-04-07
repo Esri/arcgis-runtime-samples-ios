@@ -15,18 +15,10 @@
 
 @implementation GraphicsSampleAppDelegate
 
-@synthesize window;
-@synthesize navigationController;
-
-
-- (void)applicationDidFinishLaunching:(UIApplication *)application {    
+-(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    // Override point for customization after app launch    
-    [window setRootViewController:navigationController];
-    [window makeKeyAndVisible];
+    return YES;
 }
-
-
 
 
 @end

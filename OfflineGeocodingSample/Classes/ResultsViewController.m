@@ -15,9 +15,6 @@
 
 @implementation ResultsViewController
 
-@synthesize results = _results;
-@synthesize tableView = _tableView;
-
 - (IBAction)done:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];

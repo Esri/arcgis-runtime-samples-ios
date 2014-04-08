@@ -13,24 +13,24 @@
 #import "GeocodingSampleViewController.h"
 #import "ResultsViewController.h"
 #import "RecentViewController.h"
+#define kResultsViewSegueIdentifier @"ResultsViewSegue"
 
-@interface GeocodingSampleViewController(){
-    CGPoint _magnifierOffset;
-}
+@interface GeocodingSampleViewController()
 
 @property (nonatomic, strong) AGSGraphicsLayer *graphicsLayer;
 @property (nonatomic, strong) AGSLocator *locator;
 @property (nonatomic, strong) AGSCalloutTemplate *geocodeResultCalloutTemplate;
 @property (nonatomic, strong) AGSCalloutTemplate* revGeoResultCalloutTemplate;
 @property (nonatomic, strong) NSMutableArray* recentSearches;
+@property (nonatomic, strong) AGSGraphic *selectedGraphic;
+@property (nonatomic, assign) CGPoint magnifierOffset;
 
 //This is the method that starts the geocoding operation
 - (void)startGeocoding;
+
 @end
 
 @implementation GeocodingSampleViewController
-
-
 
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
@@ -42,8 +42,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
-
     self.recentSearches = [NSMutableArray arrayWithObjects:
                            @"1455 Market St, San Francisco, CA 94103",
                            @"2011 Mission St, San Francisco  CA  94110",
@@ -93,7 +91,7 @@
     //the total amount by which we will need to offset the callout along y-axis
     //to show it correctly centered on the pushpin's head in the magnifier
     UIImage* img = [UIImage imageNamed:@"ArcGIS.bundle/Magnifier.png"];
-    _magnifierOffset = CGPointMake(0, -(img.size.height/2+pushpinHeadOffset)); //
+    self.magnifierOffset = CGPointMake(0, -(img.size.height/2+pushpinHeadOffset)); //
     
 
     
@@ -116,7 +114,7 @@
     [self.graphicsLayer addGraphic:[AGSGraphic graphicWithGeometry:mappoint symbol:nil attributes:nil]];
     
     //show callout for the graphic taking into account the enlarged map in the magnifier
-    [self.mapView.callout showCalloutAt:mappoint screenOffset:_magnifierOffset  animated:YES];
+    [self.mapView.callout showCalloutAt:mappoint screenOffset:self.magnifierOffset  animated:YES];
 }
 - (void) mapView:(AGSMapView *)mapView didMoveTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features{
     
@@ -158,17 +156,12 @@
 
 - (void) didClickAccessoryButtonForCallout:(AGSCallout *) 	callout
 {
-    //The user clicked the callout button, so display the complete set of results
-    ResultsViewController *resultsVC = [[ResultsViewController alloc] initWithNibName:@"ResultsViewController" bundle:nil];
-
     AGSGraphic* graphic = (AGSGraphic*) callout.representedObject;
-
-    //set our attributes/results into the results VC
-    resultsVC.results = [graphic allAttributes];
+    //save a reference to the selected graphic, in order to pass it to the results view controller in prepareForSegue method
+    self.selectedGraphic = graphic;
     
-    //display the results vc modally
-    [self presentViewController:resultsVC animated:YES completion:nil];
-	
+    //perform the segue to transition to Results view controller
+    [self performSegueWithIdentifier:kResultsViewSegueIdentifier sender:self];
 }
 
 #pragma mark -
@@ -268,7 +261,7 @@
 
 -(void)locator:(AGSLocator *)locator operation:(NSOperation *)op didFindAddressForLocation:(AGSAddressCandidate *)candidate{
     //display callout
-    [self.mapView.callout showCalloutAt:candidate.location screenOffset:_magnifierOffset  animated:NO];
+    [self.mapView.callout showCalloutAt:candidate.location screenOffset:self.magnifierOffset  animated:NO];
 
     //show the Street, City, and ZIP attributes in the callout
     self.mapView.callout.title = candidate.attributes[@"Street"];
@@ -303,7 +296,7 @@
 
 - (void)searchBarResultsListButtonClicked:(UISearchBar *)searchBar{
     
-     RecentViewController* rvc = [[RecentViewController alloc]initWithItems:self.recentSearches];
+    RecentViewController* rvc = [[RecentViewController alloc]initWithItems:self.recentSearches];
     rvc.completionBlock = ^(NSString* item){
         if(item)
             self.searchBar.text = item;
@@ -321,5 +314,13 @@
     return YES;
 }
 
+#pragma mark - segues
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:kResultsViewSegueIdentifier]) {
+        ResultsViewController *controller = [segue destinationViewController];
+        controller.results = [self.selectedGraphic allAttributes];
+    }
+}
 
 @end

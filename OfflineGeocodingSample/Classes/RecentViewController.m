@@ -11,6 +11,7 @@
 @interface RecentViewController ()
 
 @property (nonatomic,copy) NSArray* items;
+
 @end
 
 @implementation RecentViewController

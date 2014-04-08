@@ -11,6 +11,7 @@
 @interface RecentViewController : UITableViewController
 
 @property (nonatomic,copy) void (^completionBlock)(NSString*);
+
 - (id)initWithItems:(NSArray*) items;
 
 @end

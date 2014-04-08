@@ -7,25 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2160D8011475B7CE00598D70 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C54837561475A07E00626EEF /* MainWindow-iPad.xib */; };
-		21DE20841475B2C30080DC48 /* RootTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21DE20831475B2C20080DC48 /* RootTableViewController.xib */; };
-		975E755E167A9CF8005FB57B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 975E755D167A9CF8005FB57B /* Default-568h@2x.png */; };
+		3E715CFA18E4CD0A004FB946 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E715CF918E4CD0A004FB946 /* Storyboard.storyboard */; };
+		3EE622C418E4D5BA00693502 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EE622C318E4D5BA00693502 /* Default-568h@2x.png */; };
 		97E5EF0517E0DA23008E2B27 /* Campus.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 97E5EF0417E0DA23008E2B27 /* Campus.tpk */; };
 		C5128CE514758D8100A5EBF7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C5128CD414758D8100A5EBF7 /* icon.png */; };
 		C5128CE614758D8100A5EBF7 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5128CD514758D8100A5EBF7 /* icon@2x.png */; };
 		C5128CE714758D8100A5EBF7 /* LocalTiledLayerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5128CD714758D8100A5EBF7 /* LocalTiledLayerAppDelegate.m */; };
 		C5128CE914758D8100A5EBF7 /* LocalTiledLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5128CDB14758D8100A5EBF7 /* LocalTiledLayerViewController.m */; };
-		C5128CEA14758D8100A5EBF7 /* LocalTiledLayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5128CDC14758D8100A5EBF7 /* LocalTiledLayerViewController.xib */; };
 		C5128CEB14758D8100A5EBF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5128CDD14758D8100A5EBF7 /* main.m */; };
-		C5128CEC14758D8100A5EBF7 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5128CDE14758D8100A5EBF7 /* MainWindow.xib */; };
 		C5128CEF14758D8100A5EBF7 /* RootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5128CE314758D8100A5EBF7 /* RootTableViewController.m */; };
 		C56B3FEC14C652C2003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B3FEB14C652C2003A46EB /* ArcGIS.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D6058910D05DD3D006BFB54 /* LocalTiledLayerSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalTiledLayerSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		21DE20831475B2C20080DC48 /* RootTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RootTableViewController.xib; path = LocalTiledLayerSample/RootTableViewController.xib; sourceTree = SOURCE_ROOT; };
-		975E755D167A9CF8005FB57B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3E715CF918E4CD0A004FB946 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = LocalTiledLayerSample/Storyboard.storyboard; sourceTree = "<group>"; };
+		3EE622C318E4D5BA00693502 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		97E5EF0417E0DA23008E2B27 /* Campus.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = Campus.tpk; sourceTree = "<group>"; };
 		C5128CD414758D8100A5EBF7 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = LocalTiledLayerSample/icon.png; sourceTree = SOURCE_ROOT; };
 		C5128CD514758D8100A5EBF7 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "LocalTiledLayerSample/icon@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -35,12 +32,9 @@
 		C5128CD914758D8100A5EBF7 /* LocalTiledLayerSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "LocalTiledLayerSample-Info.plist"; path = "LocalTiledLayerSample/LocalTiledLayerSample-Info.plist"; sourceTree = SOURCE_ROOT; };
 		C5128CDA14758D8100A5EBF7 /* LocalTiledLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalTiledLayerViewController.h; path = LocalTiledLayerSample/LocalTiledLayerViewController.h; sourceTree = SOURCE_ROOT; };
 		C5128CDB14758D8100A5EBF7 /* LocalTiledLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalTiledLayerViewController.m; path = LocalTiledLayerSample/LocalTiledLayerViewController.m; sourceTree = SOURCE_ROOT; };
-		C5128CDC14758D8100A5EBF7 /* LocalTiledLayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LocalTiledLayerViewController.xib; path = LocalTiledLayerSample/LocalTiledLayerViewController.xib; sourceTree = SOURCE_ROOT; };
 		C5128CDD14758D8100A5EBF7 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = LocalTiledLayerSample/main.m; sourceTree = SOURCE_ROOT; };
-		C5128CDE14758D8100A5EBF7 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindow.xib; path = LocalTiledLayerSample/MainWindow.xib; sourceTree = SOURCE_ROOT; };
 		C5128CE214758D8100A5EBF7 /* RootTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootTableViewController.h; path = LocalTiledLayerSample/RootTableViewController.h; sourceTree = SOURCE_ROOT; };
 		C5128CE314758D8100A5EBF7 /* RootTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootTableViewController.m; path = LocalTiledLayerSample/RootTableViewController.m; sourceTree = SOURCE_ROOT; };
-		C54837561475A07E00626EEF /* MainWindow-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "LocalTiledLayerSample/MainWindow-iPad.xib"; sourceTree = SOURCE_ROOT; };
 		C56B3FEB14C652C2003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -63,12 +57,8 @@
 				C5128CD714758D8100A5EBF7 /* LocalTiledLayerAppDelegate.m */,
 				C5128CDA14758D8100A5EBF7 /* LocalTiledLayerViewController.h */,
 				C5128CDB14758D8100A5EBF7 /* LocalTiledLayerViewController.m */,
-				C5128CDC14758D8100A5EBF7 /* LocalTiledLayerViewController.xib */,
-				C5128CDE14758D8100A5EBF7 /* MainWindow.xib */,
-				C54837561475A07E00626EEF /* MainWindow-iPad.xib */,
 				C5128CE214758D8100A5EBF7 /* RootTableViewController.h */,
 				C5128CE314758D8100A5EBF7 /* RootTableViewController.m */,
-				21DE20831475B2C20080DC48 /* RootTableViewController.xib */,
 			);
 			name = LocalTiledLayerSample;
 			path = Classes;
@@ -85,8 +75,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				975E755D167A9CF8005FB57B /* Default-568h@2x.png */,
-				C56B3FEB14C652C2003A46EB /* ArcGIS.bundle */,
+				3E715CF918E4CD0A004FB946 /* Storyboard.storyboard */,
 				97E5EF0417E0DA23008E2B27 /* Campus.tpk */,
 				080E96DDFE201D6D7F000001 /* LocalTiledLayerSample */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -98,6 +87,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C56B3FEB14C652C2003A46EB /* ArcGIS.bundle */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -105,6 +95,7 @@
 		C5128CF114758D9500A5EBF7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3EE622C318E4D5BA00693502 /* Default-568h@2x.png */,
 				C5128CD414758D8100A5EBF7 /* icon.png */,
 				C5128CD514758D8100A5EBF7 /* icon@2x.png */,
 				C5128CD814758D8100A5EBF7 /* LocalTiledLayerSample_Prefix.pch */,
@@ -168,13 +159,10 @@
 			files = (
 				C5128CE514758D8100A5EBF7 /* icon.png in Resources */,
 				C5128CE614758D8100A5EBF7 /* icon@2x.png in Resources */,
-				C5128CEA14758D8100A5EBF7 /* LocalTiledLayerViewController.xib in Resources */,
-				C5128CEC14758D8100A5EBF7 /* MainWindow.xib in Resources */,
-				21DE20841475B2C30080DC48 /* RootTableViewController.xib in Resources */,
-				2160D8011475B7CE00598D70 /* MainWindow-iPad.xib in Resources */,
 				C56B3FEC14C652C2003A46EB /* ArcGIS.bundle in Resources */,
-				975E755E167A9CF8005FB57B /* Default-568h@2x.png in Resources */,
 				97E5EF0517E0DA23008E2B27 /* Campus.tpk in Resources */,
+				3E715CFA18E4CD0A004FB946 /* Storyboard.storyboard in Resources */,
+				3EE622C418E4D5BA00693502 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,9 +13,7 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface RoutingSampleViewController : UIViewController<AGSMapViewLayerDelegate, AGSMapViewTouchDelegate, AGSRouteTaskDelegate> {
-	
-}
+@interface RoutingSampleViewController : UIViewController<AGSMapViewLayerDelegate, AGSMapViewTouchDelegate, AGSRouteTaskDelegate>
 
 @property (nonatomic, strong) IBOutlet AGSMapView			*mapView;
 @property (nonatomic, strong) IBOutlet UIView				*directionsBannerView;
@@ -30,10 +28,6 @@
 - (IBAction)prevBtnClicked:(id)sender;
 - (IBAction)routePreferenceChanged:(UISegmentedControl *)sender;
 - (IBAction)reorderStops:(UIBarButtonItem *)sender ;
-
-
-
-
 
 @end
 

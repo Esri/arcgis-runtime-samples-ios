@@ -14,21 +14,20 @@
 
 #define kTiledMapServiceUrl		@"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer" 
 
-@interface RoutingSampleViewController () {
-    AGSGraphic* _lastStop;
-    BOOL _isExecuting;
-    AGSGraphic* _routeGraphic;
-    int _numStops;
-    int _directionIndex;
-    BOOL _reorderStops;
-}
+@interface RoutingSampleViewController ()
+
 @property (nonatomic, strong) AGSGraphicsLayer				*graphicsLayerStops;
 @property (nonatomic, strong) AGSGraphicsLayer              *graphicsLayerRoute;
 @property (nonatomic, strong) AGSRouteTask					*routeTask;
 @property (nonatomic, strong) AGSRouteTaskParameters		*routeTaskParams;
 @property (nonatomic, strong) AGSDirectionGraphic			*currentDirectionGraphic;
 @property (nonatomic, strong) AGSRouteResult				*routeResult;
-
+@property (nonatomic, strong) AGSGraphic* lastStop;
+@property (nonatomic, assign) BOOL isExecuting;
+@property (nonatomic, strong) AGSGraphic* routeGraphic;
+@property (nonatomic, assign) int numStops;
+@property (nonatomic, assign) int directionIndex;
+@property (nonatomic, assign) BOOL reorderStops;
 
 - (AGSCompositeSymbol*)stopSymbolWithNumber:(NSInteger)stopNumber;
 - (AGSCompositeSymbol*)currentDirectionSymbol;
@@ -91,34 +90,33 @@
 	[self.mapView addMapLayer:self.graphicsLayerStops withName:@"Stops"];
 	
 	// initialize stop counter
-	_numStops = 0;
+	self.numStops = 0;
 
     
 	// update our banner
 	[self updateDirectionsLabel:@"Tap & hold on the map to add stops"];
-	self.directionsBannerView.hidden = NO;
-    
+	self.directionsLabel.hidden = NO;
 
     self.mapView.touchDelegate = self;
-    _isExecuting = NO;
+    self.isExecuting = NO;
 }
 #pragma mark - AGSMapViewTouchDelegate
 
 -(void) mapView:(AGSMapView *)mapView didTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features {
-    _lastStop = [self addStop:mappoint];
+    self.lastStop = [self addStop:mappoint];
     if(self.graphicsLayerStops.graphics.count>1){
-        _isExecuting = YES;
+        self.isExecuting = YES;
         [self solveRoute];
     }
 }
 
 -(void) mapView:(AGSMapView *)mapView didMoveTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features {
-    if(_isExecuting)
+    if(self.isExecuting)
         return;
-    _lastStop.geometry = mappoint;
+    self.lastStop.geometry = mappoint;
     if(self.graphicsLayerStops.graphics.count<2)
         return;
-    _isExecuting = YES;
+    self.isExecuting = YES;
     [self solveRoute];
 }
 
@@ -230,7 +228,7 @@
             self.routeTaskParams.findBestSequence = NO;
             self.routeTaskParams.returnStopGraphics = NO;
         }
-        _isExecuting = NO;
+        self.isExecuting = NO;
 }
 
 //
@@ -329,12 +327,12 @@
 	//Prepare symbol and attributes for the Stop/Barrier
 	NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
 	AGSSymbol *symbol;
-            _numStops++;
-            symbol = [self stopSymbolWithNumber:_numStops];
+            self.numStops++;
+            symbol = [self stopSymbolWithNumber:self.numStops];
 			AGSStopGraphic *stopGraphic = [AGSStopGraphic graphicWithGeometry:geometry
 																	   symbol:symbol
 																   attributes:attributes];
-			stopGraphic.sequence = _numStops;
+			stopGraphic.sequence = self.numStops;
 			//You can set additional properties on the stop here
 			//refer to the conceptual helf for Routing task
 			[self.graphicsLayerStops addGraphic:stopGraphic];
@@ -378,7 +376,7 @@
 - (void)reset {
 	
 	// set stop counter back to 0
-	_numStops = 0;
+	self.numStops = 0;
     
 	// remove all graphics
 	[self.graphicsLayerStops removeAllGraphics];
@@ -391,7 +389,7 @@
 -(void)resetDirections{
     // disable the next/prev direction buttons
     // reset direction index
-	_directionIndex = 0;
+	self.directionIndex = 0;
 	self.nextBtn.enabled = NO;
 	self.prevBtn.enabled = NO;
     [self.graphicsLayerRoute removeGraphic:self.currentDirectionGraphic];
@@ -429,7 +427,7 @@
 // move to the next direction in the direction set
 //
 - (IBAction)nextBtnClicked:(id)sender {
-	_directionIndex++;
+	self.directionIndex++;
 	
     // remove current direction graphic, so we can display next one
 	if ([self.graphicsLayerRoute.graphics containsObject:self.currentDirectionGraphic]) {
@@ -438,7 +436,7 @@
 	
     // get current direction and add it to the graphics layer
 	AGSDirectionSet *directions = self.routeResult.directions;
-	self.currentDirectionGraphic = [directions.graphics objectAtIndex:_directionIndex];
+	self.currentDirectionGraphic = [directions.graphics objectAtIndex:self.directionIndex];
 	self.currentDirectionGraphic.symbol = [self currentDirectionSymbol];
 	[self.graphicsLayerRoute addGraphic:self.currentDirectionGraphic];
 	
@@ -448,17 +446,17 @@
      [self.mapView zoomToGeometry:self.currentDirectionGraphic.geometry withPadding:20 animated:YES];
 	
     // determine if we need to disable a next/prev button
-	if (_directionIndex >= self.routeResult.directions.graphics.count - 1) {
+	if (self.directionIndex >= self.routeResult.directions.graphics.count - 1) {
 		self.nextBtn.enabled = NO;
 	}
-	if (_directionIndex > 0) {
+	if (self.directionIndex > 0) {
 		self.prevBtn.enabled = YES;
 	}
 
 }
 
 - (IBAction)prevBtnClicked:(id)sender {
-	_directionIndex--;
+	self.directionIndex--;
 	
     // remove current direction
 	if ([self.graphicsLayerRoute.graphics containsObject:self.currentDirectionGraphic]) {
@@ -467,7 +465,7 @@
     
 	// get next direction
 	AGSDirectionSet *directions = self.routeResult.directions;
-	self.currentDirectionGraphic = [directions.graphics objectAtIndex:_directionIndex];
+	self.currentDirectionGraphic = [directions.graphics objectAtIndex:self.directionIndex];
 	self.currentDirectionGraphic.symbol = [self currentDirectionSymbol];
 	[self.graphicsLayerRoute addGraphic:self.currentDirectionGraphic];
 	
@@ -477,10 +475,10 @@
     [self.mapView zoomToGeometry:self.currentDirectionGraphic.geometry withPadding:20 animated:YES];
 
     // determine if we need to disable next/prev button
-	if (_directionIndex <= 0) {
+	if (self.directionIndex <= 0) {
 		self.prevBtn.enabled = NO;
 	}
-	if (_directionIndex < self.routeResult.directions.graphics.count - 1) {
+	if (self.directionIndex < self.routeResult.directions.graphics.count - 1) {
 		self.nextBtn.enabled = YES;
 	}
 }

@@ -11,11 +11,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RoutingSampleAppDelegate.h"
 
 int main(int argc, char *argv[]) {
     
     @autoreleasepool {
-        int retVal = UIApplicationMain(argc, argv, nil, nil);
+        int retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass([RoutingSampleAppDelegate class]));
         return retVal;
     }
 }

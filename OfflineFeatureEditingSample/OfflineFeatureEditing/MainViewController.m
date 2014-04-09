@@ -652,25 +652,28 @@
                 }
                 _loadingView = [LoadingView loadingViewInView:_popupsVC.view withText:@"Applying attachment edits to server..."];
                 
-                [fst applyAttachmentEditsWithCompletion:^(NSArray *attachmentEditErrors, NSError *error) {
+                //If the dataset support attachments, apply attachment edits.
+                if([fst hasAttachments]){
+                    [fst applyAttachmentEditsWithCompletion:^(NSArray *attachmentEditErrors, NSError *error) {
                     
-                    [_loadingView removeView];
+                        [_loadingView removeView];
                     
-                    if(error){
-                        UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Could not apply edit to server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                        [av show];
-                        NSLog(@"Error while applying attachment edit : %@",[error localizedDescription]);
+                        if(error){
+                            UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Could not apply edit to server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                            [av show];
+                            NSLog(@"Error while applying attachment edit : %@",[error localizedDescription]);
                         
-                    }else{
+                        }else{
                         
-                        for (AGSGDBFeatureEditError* attachmentEditError in attachmentEditErrors) {
-                            NSLog(@"Edit to attachment(OBJECTID = %lld) rejected by server because : %@",attachmentEditError.attachmentID, [attachmentEditError localizedDescription]);
-                        }
+                            for (AGSGDBFeatureEditError* attachmentEditError in attachmentEditErrors) {
+                                NSLog(@"Edit to attachment(OBJECTID = %lld) rejected by server because : %@",attachmentEditError.attachmentID, [attachmentEditError localizedDescription]);
+                            }
                         
                         //Dismiss the popups VC. All edits have been applied.
-                        [self hidePopupsVC];
-                    }
-                }];
+                            [self hidePopupsVC];
+                        }
+                    }];
+                }
             }
             
         }];

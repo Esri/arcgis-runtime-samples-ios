@@ -1,12 +1,10 @@
-##Offline Geocoding Sample (Beta)
+##Offline Geocoding Sample
 
 This sample demonstrates how you can geocode addresses to locations and reverse geocode locations to addresses even when the device
 does not have network connectivity. The sample  contains an address locator dataset (*.loc and associated files) that
 contains address information for downtown San Francisco. Geocoding and Reverse geocoding operations use this data.
 The sample displays basemap tiles using a tile package (.tpk file) so that the basemap
 is visible even when the device is offline.
-
-**Note:** This sample uses functionality that is in beta at v10.2 of ArcGIS Runtime SDK for iOS.
 
 
 ###Using the sample

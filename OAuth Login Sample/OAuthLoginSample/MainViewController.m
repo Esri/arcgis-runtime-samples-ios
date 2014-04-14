@@ -24,15 +24,6 @@
 
 @implementation MainViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
 {
@@ -49,15 +40,25 @@
     //and if so, use it to sign in to the portal
     AGSCredential* credential = [(AppDelegate*)[UIApplication sharedApplication].delegate fetchCredentialFromKeychain];
     if (credential) {
-        
-        [self.signInButton setTitle:@"Signing in..." forState:UIControlStateNormal];
-        self.signInButton.enabled = NO;
         NSLog(@"Found credential in keychain. Logging into portal");
         
         //Connect to the portal
         self.portal = [[AGSPortal alloc]initWithURL:[NSURL URLWithString: kPortalUrl] credential:credential];
         self.portal.delegate = self;
         
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    AGSCredential* credential = [(AppDelegate*)[UIApplication sharedApplication].delegate fetchCredentialFromKeychain];
+    if (credential) {
+        
+        [self.signInButton setTitle:@"Signing in..." forState:UIControlStateNormal];
+        self.signInButton.enabled = NO;
+    }
+    else {
+        [self.signInButton setTitle:@"Sign In" forState:UIControlStateNormal];
+        self.signInButton.enabled = YES;
     }
 }
 
@@ -98,7 +99,8 @@
                 [av show];
                 
             }
-        }else{
+        }
+        else{
             //Connect to the portal using the credential provided by the user.
             safeSelf.portal = [[AGSPortal alloc]initWithURL:[NSURL URLWithString: kPortalUrl] credential:credential];
             safeSelf.portal.delegate = safeSelf;
@@ -146,9 +148,8 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     
     //Display the user's  items
-    UserContentViewController* uvc = [[UserContentViewController alloc]initWithPortal:self.portal];
-    [self.navigationController setViewControllers:@[uvc] animated:YES];
-    
+    UserContentViewController* uvc = [[UserContentViewController alloc] initWithPortal:self.portal];
+    [self.navigationController pushViewController:uvc animated:YES];
 }
 
 - (void)portal:(AGSPortal *)portal didFailToLoadWithError:(NSError *)error {

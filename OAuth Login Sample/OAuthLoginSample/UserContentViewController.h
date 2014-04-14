@@ -20,4 +20,5 @@
 
 - (id)initWithPortal:(AGSPortal *)portal ;
 - (void) openMap:(AGSPortalItem*)item;
+
 @end

@@ -12,17 +12,14 @@
 
 #import <UIKit/UIKit.h>
 
-@class RootViewController;
 @class AGSCredential;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) RootViewController *viewController;
-@property (strong, nonatomic) UINavigationController *navigationController;
-
 - (void) saveCredentialToKeychain:(AGSCredential*)credential;
 - (void) removeCredentialFromKeychain;
 - (AGSCredential*) fetchCredentialFromKeychain;
+
 @end

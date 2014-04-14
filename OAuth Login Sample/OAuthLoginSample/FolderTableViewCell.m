@@ -20,11 +20,6 @@
 
 @implementation FolderTableViewCell
 
-@synthesize titleLabel = _titleLabel;
-@synthesize descriptionLabel = _descriptionLabel;
-@synthesize thumbnailImageView = _thumbnailImageView;
-@synthesize content = _content;
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

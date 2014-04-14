@@ -12,15 +12,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class IdentifyTaskSampleViewController;
-
-@interface IdentifyTaskSampleAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    IdentifyTaskSampleViewController *viewController;
-}
+@interface IdentifyTaskSampleAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
-@property (nonatomic, strong) IBOutlet IdentifyTaskSampleViewController *viewController;
 
 @end
 

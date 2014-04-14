@@ -9,12 +9,9 @@
 /* Begin PBXBuildFile section */
 		1D3623260D0F684500981E51 /* IdentifyTaskSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* IdentifyTaskSampleAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		2899E5220DE3E06400AC0155 /* IdentifyTaskSampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* IdentifyTaskSampleViewController.xib */; };
-		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* IdentifyTaskSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* IdentifyTaskSampleViewController.m */; };
+		3E4324E918FCA41F00504DFD /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E4324E818FCA41F00504DFD /* Storyboard.storyboard */; };
 		9702E5CA1447B26F00A46CA5 /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9702E5C81447B26F00A46CA5 /* ResultsViewController.m */; };
-		9702E5CB1447B26F00A46CA5 /* ResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9702E5C91447B26F00A46CA5 /* ResultsViewController.xib */; };
-		976311411355049E0029CEFE /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 976311401355049E0029CEFE /* MainWindow-iPad.xib */; };
 		97B8C3C8167802C2003B6E1B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B8C3C7167802C2003B6E1B /* Default-568h@2x.png */; };
 		AF55317F125BB2E80070ED0C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AF55317D125BB2E80070ED0C /* icon.png */; };
 		AF553180125BB2E80070ED0C /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF55317E125BB2E80070ED0C /* icon@2x.png */; };
@@ -25,17 +22,14 @@
 		1D3623240D0F684500981E51 /* IdentifyTaskSampleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentifyTaskSampleAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* IdentifyTaskSampleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentifyTaskSampleAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* IdentifyTaskSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdentifyTaskSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2899E5210DE3E06400AC0155 /* IdentifyTaskSampleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdentifyTaskSampleViewController.xib; sourceTree = "<group>"; };
-		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		28D7ACF60DDB3853001CB0EB /* IdentifyTaskSampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentifyTaskSampleViewController.h; sourceTree = "<group>"; };
 		28D7ACF70DDB3853001CB0EB /* IdentifyTaskSampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentifyTaskSampleViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* IdentifyTaskSample_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentifyTaskSample_Prefix.pch; sourceTree = "<group>"; };
+		3E4324E818FCA41F00504DFD /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* IdentifyTaskSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "IdentifyTaskSample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9702E5C71447B26F00A46CA5 /* ResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
 		9702E5C81447B26F00A46CA5 /* ResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
-		9702E5C91447B26F00A46CA5 /* ResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsViewController.xib; sourceTree = "<group>"; };
-		976311401355049E0029CEFE /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		97B8C3C7167802C2003B6E1B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AF55317D125BB2E80070ED0C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		AF55317E125BB2E80070ED0C /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
@@ -56,13 +50,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				9702E5C71447B26F00A46CA5 /* ResultsViewController.h */,
-				9702E5C81447B26F00A46CA5 /* ResultsViewController.m */,
-				9702E5C91447B26F00A46CA5 /* ResultsViewController.xib */,
+				3E1E5A5F18FCAD0900633F50 /* Controllers */,
 				1D3623240D0F684500981E51 /* IdentifyTaskSampleAppDelegate.h */,
 				1D3623250D0F684500981E51 /* IdentifyTaskSampleAppDelegate.m */,
-				28D7ACF60DDB3853001CB0EB /* IdentifyTaskSampleViewController.h */,
-				28D7ACF70DDB3853001CB0EB /* IdentifyTaskSampleViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -78,11 +68,10 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				C56B3FC214C646A3003A46EB /* ArcGIS.bundle */,
+				3E4324E818FCA41F00504DFD /* Storyboard.storyboard */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
-				9763113F1355049E0029CEFE /* Resources-iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -104,8 +93,6 @@
 				97B8C3C7167802C2003B6E1B /* Default-568h@2x.png */,
 				AF55317D125BB2E80070ED0C /* icon.png */,
 				AF55317E125BB2E80070ED0C /* icon@2x.png */,
-				2899E5210DE3E06400AC0155 /* IdentifyTaskSampleViewController.xib */,
-				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* IdentifyTaskSample-Info.plist */,
 			);
 			name = Resources;
@@ -114,16 +101,20 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C56B3FC214C646A3003A46EB /* ArcGIS.bundle */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9763113F1355049E0029CEFE /* Resources-iPad */ = {
+		3E1E5A5F18FCAD0900633F50 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				976311401355049E0029CEFE /* MainWindow-iPad.xib */,
+				9702E5C71447B26F00A46CA5 /* ResultsViewController.h */,
+				9702E5C81447B26F00A46CA5 /* ResultsViewController.m */,
+				28D7ACF60DDB3853001CB0EB /* IdentifyTaskSampleViewController.h */,
+				28D7ACF70DDB3853001CB0EB /* IdentifyTaskSampleViewController.m */,
 			);
-			name = "Resources-iPad";
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,7 +143,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "IdentifyTaskSample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -178,12 +169,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				2899E5220DE3E06400AC0155 /* IdentifyTaskSampleViewController.xib in Resources */,
+				3E4324E918FCA41F00504DFD /* Storyboard.storyboard in Resources */,
 				AF55317F125BB2E80070ED0C /* icon.png in Resources */,
 				AF553180125BB2E80070ED0C /* icon@2x.png in Resources */,
-				976311411355049E0029CEFE /* MainWindow-iPad.xib in Resources */,
-				9702E5CB1447B26F00A46CA5 /* ResultsViewController.xib in Resources */,
 				C56B3FC314C646A3003A46EB /* ArcGIS.bundle in Resources */,
 				97B8C3C8167802C2003B6E1B /* Default-568h@2x.png in Resources */,
 			);
@@ -210,7 +198,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
@@ -237,7 +224,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
@@ -261,15 +247,25 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -279,13 +275,22 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PROVISIONING_PROFILE = "";

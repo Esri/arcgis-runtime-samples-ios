@@ -45,13 +45,6 @@
 
 @implementation ContentViewControllerBase
 
-@synthesize portal = _portal;
-@synthesize doneLoading = _doneLoading;
-@synthesize currentIconDownloads = _currentIconDownloads;
-@synthesize searchResponseArray = _searchResponseArray;
-
-
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -101,7 +94,7 @@
 // Customize the number of rows in the table view.
 // subclasses must override this
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	int count = [self numberOfRowsInSection:section];
+	NSInteger count = [self numberOfRowsInSection:section];
 	
 	// if we're still loading data, return enough rows to fill the screen
     //Note if doneLoading is YES, then there is no data at all

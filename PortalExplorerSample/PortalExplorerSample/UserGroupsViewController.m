@@ -25,9 +25,6 @@
 
 @implementation UserGroupsViewController
 
-@synthesize groupsArray = _groupsArray;
-
-
 - (id)initWithPortal:(AGSPortal *)portal
 {
     self = [super initWithNibName:@"UserGroupsViewController" bundle:nil];

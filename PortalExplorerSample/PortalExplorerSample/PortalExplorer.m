@@ -60,13 +60,6 @@ static float kButtonInset = 2.0;
 
 @implementation PortalExplorer
 
-@synthesize delegate = _delegate;
-@synthesize tableView = _tableView;
-@synthesize portal = _portal;
-@synthesize portalURL = _portalURL;
-@synthesize backupPortal = _backupPortal;
-@synthesize credential = _credential;
-
 - (void)dealloc {    
     self.delegate = nil;
 }

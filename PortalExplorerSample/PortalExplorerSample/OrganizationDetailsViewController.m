@@ -30,13 +30,6 @@
 
 @implementation OrganizationDetailsViewController
 
-@synthesize nameLabel = _nameLabel;
-@synthesize descriptionWebView = _descriptionWebView;
-@synthesize scrollView = _scrollView;
-@synthesize thumbnailImageView = _thumbnailImageView;
-@synthesize portalInfo = _portalInfo;
-
-
 - (id)initWithPortalInfo:(AGSPortalInfo *)portalInfo
 {
     self = [super initWithNibName:@"OrganizationDetailsViewController" bundle:nil];

@@ -14,9 +14,9 @@
 #import "WebmapSampleViewController.h"
 #import "SVProgressHUD.h"
 
-#define PRIVACY_ALERT_TAG 0
-#define WEB_MAP_ALERT_TAG 1
-#define LAYER_ALERT_TAG 2
+#define CHOOSE_WEBMAP_TAG 0
+#define SIGN_IN_WEBMAP_TAG 1
+#define SIGN_IN_LAYER_TAG 2
 
 static NSString * const kPublicWebmapId = @"8a567ebac15748d39a747649a2e86cf4";
 static NSString * const kPrivateWebmapId = @"9a5e8ffd9eb7438b894becd6c8a85751";
@@ -60,6 +60,8 @@ static NSString * const kPrivateWebmapId = @"9a5e8ffd9eb7438b894becd6c8a85751";
     UIAlertView* webmapPickerAlertView = [[UIAlertView alloc] initWithTitle:@"Which web map would you like to open?" message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
     [webmapPickerAlertView addButtonWithTitle:@"Public"];
     [webmapPickerAlertView addButtonWithTitle:@"Private"];
+    //Set tag so we know which action this alertview is being shown for
+    [webmapPickerAlertView setTag:CHOOSE_WEBMAP_TAG];
     [webmapPickerAlertView show];
     
 }
@@ -80,7 +82,8 @@ static NSString * const kPrivateWebmapId = @"9a5e8ffd9eb7438b894becd6c8a85751";
     if (error.ags_isAuthenticationError) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please sign in to access the web map" message:@"Tip: use 'AGSSample' and 'agssample'" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Login", nil];
         [alertView setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
-        [alertView setTag:WEB_MAP_ALERT_TAG];
+        //Set tag so we know which action this alertview is being shown for
+        [alertView setTag:SIGN_IN_WEBMAP_TAG];
         [alertView show];
         
     }
@@ -111,7 +114,8 @@ static NSString * const kPrivateWebmapId = @"9a5e8ffd9eb7438b894becd6c8a85751";
                                                            delegate:self cancelButtonTitle:@"Cancel"
                                                   otherButtonTitles:@"Login", nil];
         [alertView setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
-        [alertView setTag:LAYER_ALERT_TAG];
+        //Set tag so we know which action this alertview is being shown for
+        [alertView setTag:SIGN_IN_LAYER_TAG];
         [alertView show];
     }
     // For any other error alert the user
@@ -223,7 +227,8 @@ static NSString * const kPrivateWebmapId = @"9a5e8ffd9eb7438b894becd6c8a85751";
 #pragma  mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (alertView.tag == PRIVACY_ALERT_TAG) {
+    // If the user was asked to pick a web map
+    if (alertView.tag == CHOOSE_WEBMAP_TAG) {
         if(buttonIndex == 0){
             //user wants to open public webmap
             self.webmapId = kPublicWebmapId;
@@ -248,7 +253,8 @@ static NSString * const kPrivateWebmapId = @"9a5e8ffd9eb7438b894becd6c8a85751";
         [self.webMap openIntoMapView:self.mapView];
 
     }
-    else if (alertView.tag == WEB_MAP_ALERT_TAG) {
+    // If the user was asked to sign in to access a secured web map
+    else if (alertView.tag == SIGN_IN_WEBMAP_TAG) {
         switch (buttonIndex) {
             case 0: //cancel button tapped
                 [self cancelSignInWebMap];
@@ -259,7 +265,8 @@ static NSString * const kPrivateWebmapId = @"9a5e8ffd9eb7438b894becd6c8a85751";
                 break;
         }
     }
-    else if (alertView.tag == LAYER_ALERT_TAG) {
+    // If the user was asked to sign in to access a secured layer within the web map
+    else if (alertView.tag == SIGN_IN_LAYER_TAG) {
         switch (buttonIndex) {
             case 0:     //cancel button tapped
                 [self cancelSignInLayer];

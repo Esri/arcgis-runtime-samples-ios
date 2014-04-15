@@ -13,12 +13,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class WebmapSampleViewController;
-
 @interface WebmapSampleAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) WebmapSampleViewController *viewController;
 
 @end

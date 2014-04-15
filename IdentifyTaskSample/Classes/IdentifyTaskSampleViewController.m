@@ -14,11 +14,16 @@
 #import "IdentifyTaskSampleViewController.h"
 #define kDynamicMapServiceURL @"http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Demographics/ESRI_Census_USA/MapServer"
 
+#define kResultsViewControllerIdentifier @"ResultsViewController"
+#define kResultsSegueIdentifier @"ResultsSegue"
+
+@interface IdentifyTaskSampleViewController ()
+
+@property (nonatomic, strong) AGSGraphic *selectedGraphic;
+
+@end
+
 @implementation IdentifyTaskSampleViewController
-@synthesize mapView=_mapView;
-@synthesize graphicsLayer=_graphicsLayer;
-@synthesize identifyTask=_identifyTask,identifyParams=_identifyParams; 
-@synthesize mappoint = _mappoint;
 
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
@@ -83,18 +88,10 @@
 //show the attributes if accessory button is clicked
 - (void) didClickAccessoryButtonForCallout:(AGSCallout *)callout	{
     
-
-    AGSGraphic* graphic = (AGSGraphic*) callout.representedObject;
-    //The user clicked the callout button, so display the complete set of results
-    ResultsViewController *resultsVC = [[ResultsViewController alloc] initWithNibName:@"ResultsViewController" bundle:nil];
-	
-    //set our attributes/results into the results VC
-    resultsVC.results = [graphic allAttributes];
+    //save the selected graphic, to later assign to the results view controller
+    self.selectedGraphic = (AGSGraphic*) callout.representedObject;
     
-    //display the results vc modally
-    [self presentViewController:resultsVC animated:YES completion:nil];
-	
-	//cleanup
+    [self performSegueWithIdentifier:kResultsSegueIdentifier sender:self];
 }
 
 
@@ -163,6 +160,15 @@
 	// e.g. self.myOutlet = nil;
 }
 
+#pragma mark - segues
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:kResultsSegueIdentifier]) {
+        ResultsViewController *controller = [segue destinationViewController];
+        //set our attributes/results into the results VC
+        controller.results = [self.selectedGraphic allAttributes];
+    }
+}
 
 
 @end

@@ -12,15 +12,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class FindTaskSampleViewController;
-
-@interface FindTaskSampoleAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    FindTaskSampleViewController *viewController;
-}
+@interface FindTaskSampoleAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
-@property (nonatomic, strong) IBOutlet FindTaskSampleViewController *viewController;
 
 @end
 

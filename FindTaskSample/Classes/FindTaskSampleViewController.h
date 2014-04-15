@@ -15,18 +15,7 @@
 #import <ArcGIS/ArcGIS.h>
 
 
-@interface FindTaskSampleViewController : UIViewController <AGSFindTaskDelegate,UISearchBarDelegate,AGSMapViewLayerDelegate, AGSCalloutDelegate, AGSLayerCalloutDelegate> {
-
-	AGSMapView *_mapView;
-	AGSDynamicMapServiceLayer *_dynamicLayer;
-	UISearchBar *_searchBar;
-	AGSGraphicsLayer *_graphicsLayer;
-	AGSFindTask *_findTask;
-	AGSFindParameters *_findParams;
-	AGSCalloutTemplate *_cityCalloutTemplate;
-	AGSCalloutTemplate *_riverCalloutTemplate;
-	AGSCalloutTemplate *_stateCalloutTemplate;
-}
+@interface FindTaskSampleViewController : UIViewController <AGSFindTaskDelegate,UISearchBarDelegate,AGSMapViewLayerDelegate, AGSCalloutDelegate, AGSLayerCalloutDelegate> 
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
 @property (nonatomic, strong) IBOutlet UISearchBar *searchBar;

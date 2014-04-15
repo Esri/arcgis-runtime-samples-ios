@@ -42,13 +42,6 @@
 
 @implementation ContentViewControllerBase
 
-@synthesize portal = _portal;
-@synthesize doneLoading = _doneLoading;
-@synthesize currentIconDownloads = _currentIconDownloads;
-@synthesize searchResponseArray = _searchResponseArray;
-
-
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -98,7 +91,7 @@
 // Customize the number of rows in the table view.
 // subclasses must override this
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	int count = [self numberOfRowsInSection:section];
+	NSInteger count = [self numberOfRowsInSection:section];
 	
 	// if we're still loading data, return enough rows to fill the screen
     //Note if doneLoading is YES, then there is no data at all
@@ -353,7 +346,7 @@
         //get the topmost view controller (portal explorer)
         //then check and make sure it response to 'openMap'
         NSArray *vcs = self.navigationController.viewControllers;
-        UIViewController *viewController = [vcs objectAtIndex:0];
+        UIViewController *viewController = [vcs objectAtIndex:1];
         
         //if the view controller is nil. means we are showing the search results,
         //and the navigation controller is now being pointed to by parentNavController

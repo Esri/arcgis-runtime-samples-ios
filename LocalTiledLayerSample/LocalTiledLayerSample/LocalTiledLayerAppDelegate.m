@@ -14,17 +14,10 @@
 
 @implementation LocalTiledLayerAppDelegate
 
-@synthesize window;
-@synthesize navController;
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
     // Override point for customization after application launch.
-    
-    // Add the view controller's view to the window and display.
-    [window setRootViewController:navController];
-    [window makeKeyAndVisible];
-    
+
     return YES;
 }
 

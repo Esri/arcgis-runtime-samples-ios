@@ -12,15 +12,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class WeatherInfoSampleViewController;
-
-@interface WeatherInfoSampleAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    WeatherInfoSampleViewController *viewController;
-}
+@interface WeatherInfoSampleAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
-@property (nonatomic, strong) IBOutlet WeatherInfoSampleViewController *viewController;
 
 @end
 

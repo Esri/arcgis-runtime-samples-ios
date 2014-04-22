@@ -13,13 +13,9 @@
 #import <UIKit/UIKit.h>
 
 
-@interface GraphicsSampleAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    UINavigationController *navigationController;
-}
+@interface GraphicsSampleAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
-@property (nonatomic, strong) IBOutlet UINavigationController *navigationController;
 
 @end
 

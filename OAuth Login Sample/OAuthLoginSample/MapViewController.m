@@ -13,6 +13,7 @@
 #import "MapViewController.h"
 #import <ArcGIS/ArcGIS.h>
 
+#define kMapViewControllerIdentifier @"MapViewController"
 
 @interface MapViewController()<AGSMapViewLayerDelegate, AGSWebMapDelegate>
 
@@ -103,8 +104,8 @@
 
 - (id)initWithPortalItem:(AGSPortalItem *)portalItem
 {
-    
-    self = [super init];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
+    self = [storyboard instantiateViewControllerWithIdentifier:kMapViewControllerIdentifier];
     if (self) {
         //open the webmap with the portal item as specified
         self.webMap = [AGSWebMap webMapWithPortalItem:portalItem];

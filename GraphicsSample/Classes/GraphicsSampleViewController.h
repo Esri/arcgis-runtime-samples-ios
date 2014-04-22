@@ -16,18 +16,7 @@
 @class CountyInfoTemplate;
 
 //map view and query task delegates to get at behavior for map and query task
-@interface GraphicsSampleViewController : UIViewController <AGSMapViewLayerDelegate, AGSQueryTaskDelegate, AGSCalloutDelegate> {
-    
-	//views and layers for map, and graphics (county and cities)
-	AGSMapView *_mapView;
-
-    AGSGraphicsLayer *_countyGraphicsLayer;
-    AGSQueryTask *_countyQueryTask;
-    
-    AGSGraphicsLayer *_cityGraphicsLayer;
-    AGSQueryTask *_cityQueryTask;
-	CountyInfoTemplate *_countyInfoTemplate;
-}
+@interface GraphicsSampleViewController : UIViewController <AGSMapViewLayerDelegate, AGSQueryTaskDelegate, AGSCalloutDelegate> 
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
 

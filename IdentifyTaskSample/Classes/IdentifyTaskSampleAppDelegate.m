@@ -11,22 +11,11 @@
 //
 
 #import "IdentifyTaskSampleAppDelegate.h"
-#import "IdentifyTaskSampleViewController.h"
 
 @implementation IdentifyTaskSampleAppDelegate
 
-@synthesize window;
-@synthesize viewController;
-
-
-- (void)applicationDidFinishLaunching:(UIApplication *)application {    
-    
-    // Override point for customization after app launch    
-    [window setRootViewController:viewController];
-    [window makeKeyAndVisible];
+-(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    return YES;
 }
-
-
-
 
 @end

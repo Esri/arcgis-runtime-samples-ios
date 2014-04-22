@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="C85-Df-VQU">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Find Task Sample View Controller-->
+        <scene sceneID="OJr-cS-Zdt">
+            <objects>
+                <viewController id="C85-Df-VQU" customClass="FindTaskSampleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zwc-ze-Qsj"/>
+                        <viewControllerLayoutGuide type="bottom" id="woD-Jd-s1D"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Wrf-wB-sjZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar opaque="NO" multipleTouchEnabled="YES" contentMode="redraw" text="Colorado" prompt="Enter a State/City/River to find" placeholder="Find State/City/River" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HDJ-dI-H19">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="HF4-xS-dGo"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="C85-Df-VQU" id="NdB-Am-UMo"/>
+                                </connections>
+                            </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QQv-CB-qir" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="75" width="320" height="493"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rd4-FC-7la">
+                                        <rect key="frame" x="9" y="452" width="56" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="8oS-im-5LB"/>
+                                            <constraint firstAttribute="width" constant="56" id="Znu-PB-koj"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Rd4-FC-7la" secondAttribute="bottom" constant="9" id="C7X-qc-lkD"/>
+                                    <constraint firstItem="Rd4-FC-7la" firstAttribute="leading" secondItem="QQv-CB-qir" secondAttribute="leading" constant="9" id="q5A-H9-xpI"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QQv-CB-qir" firstAttribute="top" secondItem="HDJ-dI-H19" secondAttribute="bottom" id="4uS-NY-ilH"/>
+                            <constraint firstItem="HDJ-dI-H19" firstAttribute="top" secondItem="Wrf-wB-sjZ" secondAttribute="top" id="BZX-nD-RFc"/>
+                            <constraint firstAttribute="bottom" secondItem="QQv-CB-qir" secondAttribute="bottom" id="fb1-pi-0VN"/>
+                            <constraint firstItem="HDJ-dI-H19" firstAttribute="width" secondItem="QQv-CB-qir" secondAttribute="width" id="qF4-Wp-XEh"/>
+                            <constraint firstItem="HDJ-dI-H19" firstAttribute="width" secondItem="Wrf-wB-sjZ" secondAttribute="width" id="soR-iO-66T"/>
+                            <constraint firstItem="QQv-CB-qir" firstAttribute="leading" secondItem="Wrf-wB-sjZ" secondAttribute="leading" id="tDz-fF-g25"/>
+                            <constraint firstItem="HDJ-dI-H19" firstAttribute="leading" secondItem="Wrf-wB-sjZ" secondAttribute="leading" id="wjS-gm-dos"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="QQv-CB-qir" id="6RC-yr-xjc"/>
+                        <segue destination="6PW-mu-JYP" kind="modal" identifier="ResultsSegue" id="TyK-XG-W3O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t2q-0t-5jc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="344" y="145"/>
+        </scene>
+        <!--Results View Controller-->
+        <scene sceneID="rBe-ij-7ov">
+            <objects>
+                <viewController id="6PW-mu-JYP" customClass="ResultsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8ZY-wD-H2F"/>
+                        <viewControllerLayoutGuide type="bottom" id="UXM-lC-all"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DDw-FP-QwJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ort-UC-yRf">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="lLC-qv-74j">
+                                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="6TN-dS-Ipd">
+                                            <connections>
+                                                <action selector="done:" destination="6PW-mu-JYP" id="GEc-wF-TAK"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="I75-em-PoH">
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="6PW-mu-JYP" id="L83-ee-Z9z"/>
+                                    <outlet property="delegate" destination="6PW-mu-JYP" id="cci-wC-iVd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ort-UC-yRf" firstAttribute="leading" secondItem="DDw-FP-QwJ" secondAttribute="leading" id="4hW-0R-mkc"/>
+                            <constraint firstItem="ort-UC-yRf" firstAttribute="width" secondItem="I75-em-PoH" secondAttribute="width" id="Lrr-I2-kQa"/>
+                            <constraint firstItem="ort-UC-yRf" firstAttribute="top" secondItem="DDw-FP-QwJ" secondAttribute="top" id="OVu-VV-grL"/>
+                            <constraint firstAttribute="bottom" secondItem="I75-em-PoH" secondAttribute="bottom" id="dwf-BK-QSy"/>
+                            <constraint firstItem="I75-em-PoH" firstAttribute="top" secondItem="ort-UC-yRf" secondAttribute="bottom" id="f5y-Ng-6c7"/>
+                            <constraint firstItem="ort-UC-yRf" firstAttribute="width" secondItem="DDw-FP-QwJ" secondAttribute="width" id="uQx-PI-XyZ"/>
+                            <constraint firstItem="I75-em-PoH" firstAttribute="leading" secondItem="DDw-FP-QwJ" secondAttribute="leading" id="xMh-RE-Ozg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="I75-em-PoH" id="uWg-hZ-fgz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SgK-UO-qeA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="766" y="145"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

@@ -13,12 +13,7 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface WeatherInfoSampleViewController : UIViewController <AGSMapViewTouchDelegate>{
-	AGSMapView *_mapView;
-	NSOperationQueue* _queue;
-	AGSJSONRequestOperation* _currentJsonOp;
-    UIView* _loadingView;
-}
+@interface WeatherInfoSampleViewController : UIViewController <AGSMapViewTouchDelegate>
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
 @property (nonatomic, strong) AGSJSONRequestOperation* currentJsonOp;

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hvx-1g-dTi">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Identify Task Sample View Controller-->
+        <scene sceneID="a59-RZ-JNK">
+            <objects>
+                <viewController id="hvx-1g-dTi" customClass="IdentifyTaskSampleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7ue-gX-yJX"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZKA-Ns-fDJ"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="OEW-Ix-SL7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1g-vu-AIA" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="iRu-7V-dhl">
+                                        <rect key="frame" x="10" y="528" width="56" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="4Q5-eR-MnF"/>
+                                            <constraint firstAttribute="width" constant="56" id="OOX-U3-Xp9"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="iRu-7V-dhl" firstAttribute="leading" secondItem="E1g-vu-AIA" secondAttribute="leading" constant="10" id="SJX-LU-qyF"/>
+                                    <constraint firstAttribute="bottom" secondItem="iRu-7V-dhl" secondAttribute="bottom" constant="8" id="Sjr-Sg-aWR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="E1g-vu-AIA" firstAttribute="height" secondItem="OEW-Ix-SL7" secondAttribute="height" id="PO9-zS-sNE"/>
+                            <constraint firstItem="E1g-vu-AIA" firstAttribute="top" secondItem="OEW-Ix-SL7" secondAttribute="top" id="cc3-Pd-F7j"/>
+                            <constraint firstItem="E1g-vu-AIA" firstAttribute="width" secondItem="OEW-Ix-SL7" secondAttribute="width" id="hZb-av-pM2"/>
+                            <constraint firstItem="E1g-vu-AIA" firstAttribute="leading" secondItem="OEW-Ix-SL7" secondAttribute="leading" id="uvW-fP-xFX"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="E1g-vu-AIA" id="a1r-sJ-IUF"/>
+                        <segue destination="ZVX-qR-8Tl" kind="modal" identifier="ResultsSegue" id="vlk-t4-aCL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QXf-sy-tgk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="337" y="75"/>
+        </scene>
+        <!--Results View Controller-->
+        <scene sceneID="z7y-KT-EqK">
+            <objects>
+                <viewController storyboardIdentifier="ResultsViewController" id="ZVX-qR-8Tl" customClass="ResultsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KZB-wA-5CT"/>
+                        <viewControllerLayoutGuide type="bottom" id="jzH-Ia-hnr"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="XpW-IO-ccI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEj-K5-E34">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="73Y-sf-r73"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem id="h7N-Ej-duo">
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="bWB-kj-Ehc">
+                                            <connections>
+                                                <action selector="done:" destination="ZVX-qR-8Tl" id="Vdu-b6-unW"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OYw-nq-Ftv">
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ZVX-qR-8Tl" id="cnj-Ha-OHf"/>
+                                    <outlet property="delegate" destination="ZVX-qR-8Tl" id="OsW-JT-Qxn"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fEj-K5-E34" firstAttribute="top" secondItem="XpW-IO-ccI" secondAttribute="top" id="DQP-ag-CB3"/>
+                            <constraint firstItem="fEj-K5-E34" firstAttribute="leading" secondItem="XpW-IO-ccI" secondAttribute="leading" id="Ii9-Iy-YN9"/>
+                            <constraint firstItem="OYw-nq-Ftv" firstAttribute="top" secondItem="fEj-K5-E34" secondAttribute="bottom" id="IwQ-bn-77c"/>
+                            <constraint firstItem="OYw-nq-Ftv" firstAttribute="leading" secondItem="XpW-IO-ccI" secondAttribute="leading" id="TIf-w3-pzk"/>
+                            <constraint firstItem="fEj-K5-E34" firstAttribute="width" secondItem="XpW-IO-ccI" secondAttribute="width" id="jY1-or-9dP"/>
+                            <constraint firstItem="fEj-K5-E34" firstAttribute="width" secondItem="OYw-nq-Ftv" secondAttribute="width" id="qnt-HX-Voq"/>
+                            <constraint firstAttribute="bottom" secondItem="OYw-nq-Ftv" secondAttribute="bottom" id="uCh-iX-mQ3"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="OYw-nq-Ftv" id="bzg-QO-Zru"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qAx-6y-m2E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="757" y="75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

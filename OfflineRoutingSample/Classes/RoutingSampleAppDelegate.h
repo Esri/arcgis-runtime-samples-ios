@@ -12,15 +12,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class RoutingSampleViewController;
-
-@interface RoutingSampleAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    RoutingSampleViewController *viewController;
-}
+@interface RoutingSampleAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
-@property (nonatomic, strong) IBOutlet RoutingSampleViewController *viewController;
 
 @end
 

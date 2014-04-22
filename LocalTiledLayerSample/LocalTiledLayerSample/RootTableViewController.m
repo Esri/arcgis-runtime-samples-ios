@@ -13,6 +13,8 @@
 #import "RootTableViewController.h"
 #import "LocalTiledLayerViewController.h"
 
+#define kLocalTiledLayerViewControllerIdentifier @"LocalTiledLayerViewController"
+
 @interface RootTableViewController()
 
 //Array to hold the paths of tile packages in the app bundle
@@ -24,10 +26,7 @@
 @end
 
 @implementation RootTableViewController
-
-@synthesize tilePackagesFromBundle = _tilePackagesFromBundle;
-@synthesize tilePackagesFromDocuments = _tilePackagesFromDocuments;
-
+ 
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -214,11 +213,14 @@
             return;
     }
 
-    //initializes the map controller with the appropriate tile package selected. 
-    LocalTiledLayerViewController *viewController = [[LocalTiledLayerViewController alloc] initWithTilePackage:[tilePackage lastPathComponent]];
+    //initializes the map controller with the appropriate tile package selected.
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
+    LocalTiledLayerViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:kLocalTiledLayerViewControllerIdentifier];
+    viewController.tilePackage = [tilePackage lastPathComponent];
     
     //sets the title of the map controller
     viewController.navigationItem.title = [[tilePackage lastPathComponent] stringByDeletingPathExtension];
+
                 
     [self.navigationController pushViewController:viewController animated:YES];
      

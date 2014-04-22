@@ -33,11 +33,6 @@
 
 @implementation FolderItemsViewController
 
-@synthesize queryParams = _queryParams;
-@synthesize itemsArray = _itemsArray;
-@synthesize folderItemsOp = _folderItemsOp;
-@synthesize folderID = _folderID;
-
 - (void)dealloc {
     [self.folderItemsOp cancel];
     super.portal = nil;

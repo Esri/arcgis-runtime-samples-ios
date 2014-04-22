@@ -15,5 +15,6 @@
 
 @interface MapViewController : UIViewController
 
-- (id)initWithPortalItem:(AGSPortalItem *)portalItem ;
+- (id)initWithPortalItem:(AGSPortalItem *)portalItem;
+
 @end

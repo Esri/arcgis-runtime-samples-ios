@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E4324E318FC63A500504DFD /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E4324E218FC63A500504DFD /* Storyboard.storyboard */; };
 		9743A8AB16FB840A0001A9E1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9743A86F16FB840A0001A9E1 /* AppDelegate.m */; };
 		9743A8AC16FB840A0001A9E1 /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9743A87016FB840A0001A9E1 /* blueButton.png */; };
 		9743A8AD16FB840A0001A9E1 /* ContentViewControllerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9743A87216FB840A0001A9E1 /* ContentViewControllerBase.m */; };
 		9743A8AE16FB840A0001A9E1 /* ContentViewControllerBase.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9743A87316FB840A0001A9E1 /* ContentViewControllerBase.xib */; };
 		9743A8AF16FB840A0001A9E1 /* defaultOrganization.png in Resources */ = {isa = PBXBuildFile; fileRef = 9743A87416FB840A0001A9E1 /* defaultOrganization.png */; };
 		9743A8B016FB840A0001A9E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9743A87516FB840A0001A9E1 /* InfoPlist.strings */; };
-		9743A8B116FB840A0001A9E1 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9743A87716FB840A0001A9E1 /* MapViewController.xib */; };
 		9743A8B216FB840A0001A9E1 /* featuredContent.png in Resources */ = {isa = PBXBuildFile; fileRef = 9743A87916FB840A0001A9E1 /* featuredContent.png */; };
 		9743A8B316FB840A0001A9E1 /* featuredContent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9743A87A16FB840A0001A9E1 /* featuredContent@2x.png */; };
 		9743A8B416FB840A0001A9E1 /* featuredGroups.png in Resources */ = {isa = PBXBuildFile; fileRef = 9743A87B16FB840A0001A9E1 /* featuredGroups.png */; };
@@ -51,15 +51,14 @@
 		9743A8D516FB840A0001A9E1 /* recent.png in Resources */ = {isa = PBXBuildFile; fileRef = 9743A8A316FB840A0001A9E1 /* recent.png */; };
 		9743A8D616FB840A0001A9E1 /* recent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9743A8A416FB840A0001A9E1 /* recent@2x.png */; };
 		9743A8D816FB840A0001A9E1 /* UserContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9743A8A816FB840A0001A9E1 /* UserContentViewController.m */; };
-		9743A8D916FB840A0001A9E1 /* UserContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9743A8A916FB840A0001A9E1 /* UserContentViewController.xib */; };
 		9743A8DA16FB840A0001A9E1 /* whiteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9743A8AA16FB840A0001A9E1 /* whiteButton.png */; };
 		975E753A167A8BA5005FB57B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 975E7539167A8BA5005FB57B /* Default-568h@2x.png */; };
 		97CE1AB417D6A3CA0083936F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CE1AB217D6A3CA0083936F /* MainViewController.m */; };
-		97CE1AB517D6A3CA0083936F /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97CE1AB317D6A3CA0083936F /* MainViewController.xib */; };
 		C5B883241559E05800E635C5 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C5B883231559E05800E635C5 /* ArcGIS.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E4324E218FC63A500504DFD /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = OAuthLoginSample/Storyboard.storyboard; sourceTree = "<group>"; };
 		9743A86E16FB840A0001A9E1 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9743A86F16FB840A0001A9E1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9743A87016FB840A0001A9E1 /* blueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButton.png; sourceTree = "<group>"; };
@@ -68,7 +67,6 @@
 		9743A87316FB840A0001A9E1 /* ContentViewControllerBase.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentViewControllerBase.xib; sourceTree = "<group>"; };
 		9743A87416FB840A0001A9E1 /* defaultOrganization.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultOrganization.png; sourceTree = "<group>"; };
 		9743A87616FB840A0001A9E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9743A87816FB840A0001A9E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MapViewController.xib; sourceTree = "<group>"; };
 		9743A87916FB840A0001A9E1 /* featuredContent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = featuredContent.png; sourceTree = "<group>"; };
 		9743A87A16FB840A0001A9E1 /* featuredContent@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "featuredContent@2x.png"; sourceTree = "<group>"; };
 		9743A87B16FB840A0001A9E1 /* featuredGroups.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = featuredGroups.png; sourceTree = "<group>"; };
@@ -115,12 +113,10 @@
 		9743A8A416FB840A0001A9E1 /* recent@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recent@2x.png"; sourceTree = "<group>"; };
 		9743A8A716FB840A0001A9E1 /* UserContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserContentViewController.h; sourceTree = "<group>"; };
 		9743A8A816FB840A0001A9E1 /* UserContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserContentViewController.m; sourceTree = "<group>"; };
-		9743A8A916FB840A0001A9E1 /* UserContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserContentViewController.xib; sourceTree = "<group>"; };
 		9743A8AA16FB840A0001A9E1 /* whiteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteButton.png; sourceTree = "<group>"; };
 		975E7539167A8BA5005FB57B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		97CE1AB117D6A3CA0083936F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		97CE1AB217D6A3CA0083936F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		97CE1AB317D6A3CA0083936F /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		C5B882EB1559DFA900E635C5 /* OAuthLoginSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OAuthLoginSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B883231559E05800E635C5 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -136,22 +132,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9743A86D16FB840A0001A9E1 /* OAuthLoginSample */ = {
+		3E4324E418FC6B1000504DFD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9743A8DC16FB85500001A9E1 /* Images */,
-				9743A8DB16FB850E0001A9E1 /* Helper classes */,
-				9743A86E16FB840A0001A9E1 /* AppDelegate.h */,
-				9743A86F16FB840A0001A9E1 /* AppDelegate.m */,
 				97CE1AB117D6A3CA0083936F /* MainViewController.h */,
 				97CE1AB217D6A3CA0083936F /* MainViewController.m */,
-				97CE1AB317D6A3CA0083936F /* MainViewController.xib */,
-				9743A87716FB840A0001A9E1 /* MapViewController.xib */,
 				9743A89416FB840A0001A9E1 /* MapViewController.h */,
 				9743A89516FB840A0001A9E1 /* MapViewController.m */,
 				9743A8A716FB840A0001A9E1 /* UserContentViewController.h */,
 				9743A8A816FB840A0001A9E1 /* UserContentViewController.m */,
-				9743A8A916FB840A0001A9E1 /* UserContentViewController.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		9743A86D16FB840A0001A9E1 /* OAuthLoginSample */ = {
+			isa = PBXGroup;
+			children = (
+				3E4324E418FC6B1000504DFD /* Controllers */,
+				9743A8DB16FB850E0001A9E1 /* Helper classes */,
+				9743A86E16FB840A0001A9E1 /* AppDelegate.h */,
+				9743A86F16FB840A0001A9E1 /* AppDelegate.m */,
+				9743A8DC16FB85500001A9E1 /* Images */,
 				9743A8E116FB859A0001A9E1 /* Supporting Files */,
 			);
 			path = OAuthLoginSample;
@@ -231,8 +232,8 @@
 		C5B882E01559DFA900E635C5 = {
 			isa = PBXGroup;
 			children = (
+				3E4324E218FC63A500504DFD /* Storyboard.storyboard */,
 				9743A86D16FB840A0001A9E1 /* OAuthLoginSample */,
-				C5B883231559E05800E635C5 /* ArcGIS.bundle */,
 				C5B882EE1559DFA900E635C5 /* Frameworks */,
 				C5B882EC1559DFA900E635C5 /* Products */,
 			);
@@ -249,6 +250,7 @@
 		C5B882EE1559DFA900E635C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C5B883231559E05800E635C5 /* ArcGIS.bundle */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -279,7 +281,7 @@
 		C5B882E21559DFA900E635C5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = C5B882E51559DFA900E635C5 /* Build configuration list for PBXProject "OAuthLoginSample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -309,7 +311,6 @@
 				9743A8AE16FB840A0001A9E1 /* ContentViewControllerBase.xib in Resources */,
 				9743A8AF16FB840A0001A9E1 /* defaultOrganization.png in Resources */,
 				9743A8B016FB840A0001A9E1 /* InfoPlist.strings in Resources */,
-				9743A8B116FB840A0001A9E1 /* MapViewController.xib in Resources */,
 				9743A8B216FB840A0001A9E1 /* featuredContent.png in Resources */,
 				9743A8B316FB840A0001A9E1 /* featuredContent@2x.png in Resources */,
 				9743A8B416FB840A0001A9E1 /* featuredGroups.png in Resources */,
@@ -332,6 +333,7 @@
 				9743A8CC16FB840A0001A9E1 /* mostPopular@2x.png in Resources */,
 				9743A8CD16FB840A0001A9E1 /* myContent.png in Resources */,
 				9743A8CE16FB840A0001A9E1 /* myContent@2x.png in Resources */,
+				3E4324E318FC63A500504DFD /* Storyboard.storyboard in Resources */,
 				9743A8CF16FB840A0001A9E1 /* myGroups.png in Resources */,
 				9743A8D016FB840A0001A9E1 /* myGroups@2x.png in Resources */,
 				9743A8D216FB840A0001A9E1 /* Placeholder.png in Resources */,
@@ -339,9 +341,7 @@
 				9743A8D416FB840A0001A9E1 /* PlaceholderMap.png in Resources */,
 				9743A8D516FB840A0001A9E1 /* recent.png in Resources */,
 				9743A8D616FB840A0001A9E1 /* recent@2x.png in Resources */,
-				9743A8D916FB840A0001A9E1 /* UserContentViewController.xib in Resources */,
 				9743A8DA16FB840A0001A9E1 /* whiteButton.png in Resources */,
-				97CE1AB517D6A3CA0083936F /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,14 +375,6 @@
 				9743A87616FB840A0001A9E1 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		9743A87716FB840A0001A9E1 /* MapViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9743A87816FB840A0001A9E1 /* en */,
-			);
-			name = MapViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -461,7 +453,6 @@
 		C5B8830D1559DFA900E635C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = "$HOME/Library/SDKs/ArcGIS/iOS/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -476,7 +467,7 @@
 					"c++",
 				);
 				PRODUCT_NAME = OAuthLoginSample;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -484,7 +475,6 @@
 		C5B8830E1559DFA900E635C5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = "$HOME/Library/SDKs/ArcGIS/iOS/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -499,7 +489,7 @@
 					"c++",
 				);
 				PRODUCT_NAME = OAuthLoginSample;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

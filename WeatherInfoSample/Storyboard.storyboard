@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hmb-YK-M6g">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Weather Info Sample View Controller-->
+        <scene sceneID="fbk-ik-brt">
+            <objects>
+                <viewController id="hmb-YK-M6g" customClass="WeatherInfoSampleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GVX-cU-uzs"/>
+                        <viewControllerLayoutGuide type="bottom" id="uF2-rI-kJL"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="jxX-N6-Wyq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mp3-tI-H85" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Tap on a location to get weather data" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rze-I3-GnY">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="2b5-bz-c3i"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </label>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="1LM-uo-8Lp">
+                                        <rect key="frame" x="9" y="528" width="56" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="Eeg-Oa-zMO"/>
+                                            <constraint firstAttribute="height" constant="32" id="teV-2b-Wyl"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Rze-I3-GnY" firstAttribute="top" secondItem="Mp3-tI-H85" secondAttribute="top" id="JN1-hs-q1t"/>
+                                    <constraint firstItem="Rze-I3-GnY" firstAttribute="leading" secondItem="Mp3-tI-H85" secondAttribute="leading" id="Mp5-tj-OUX"/>
+                                    <constraint firstAttribute="bottom" secondItem="1LM-uo-8Lp" secondAttribute="bottom" constant="8" id="gfI-8F-eNX"/>
+                                    <constraint firstItem="Rze-I3-GnY" firstAttribute="width" secondItem="Mp3-tI-H85" secondAttribute="width" id="uIJ-ce-iE5"/>
+                                    <constraint firstItem="1LM-uo-8Lp" firstAttribute="leading" secondItem="Mp3-tI-H85" secondAttribute="leading" constant="9" id="vog-LX-Ck2"/>
+                                </constraints>
+                                <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Mp3-tI-H85" firstAttribute="top" secondItem="jxX-N6-Wyq" secondAttribute="top" id="Wa2-mQ-UWF"/>
+                            <constraint firstAttribute="height" secondItem="Mp3-tI-H85" secondAttribute="height" id="ajV-5h-Ad8"/>
+                            <constraint firstAttribute="width" secondItem="Mp3-tI-H85" secondAttribute="width" id="q5Z-WT-kCz"/>
+                            <constraint firstItem="Mp3-tI-H85" firstAttribute="leading" secondItem="jxX-N6-Wyq" secondAttribute="leading" id="wW8-Vt-U2e"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Mp3-tI-H85" id="FP2-of-xYQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5OQ-Gz-vB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="357" y="-92"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="56" height="32"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

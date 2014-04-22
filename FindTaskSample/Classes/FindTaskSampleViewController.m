@@ -18,6 +18,13 @@
 #define kSearchBarPlaceholder @"Find State/City/River"
 #define kDynamicMapServiceURL @"http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StatesCitiesRivers_USA/MapServer"
 #define kTiledMapServiceURL @"http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer"
+#define kResultsSegueIdentifier @"ResultsSegue"
+
+@interface FindTaskSampleViewController ()
+
+@property (nonatomic, strong) AGSGraphic *selectedGraphic;
+
+@end
 
 @implementation FindTaskSampleViewController
 
@@ -82,17 +89,10 @@
 #pragma mark AGSCalloutDelegate
 
 - (void) didClickAccessoryButtonForCallout:(AGSCallout *) 	callout {
+    //save selected graphic to assign it to the results view controller
+    self.selectedGraphic = (AGSGraphic*) callout.representedObject;
     
-    AGSGraphic* graphic = (AGSGraphic*) callout.representedObject;
-    //The user clicked the callout button, so display the complete set of results
-    ResultsViewController *resultsVC = [[ResultsViewController alloc] initWithNibName:@"ResultsViewController" bundle:nil];
-	
-    //set our attributes/results into the results VC
-    resultsVC.results = [graphic allAttributes];
-    
-    //display the results vc modally
-    [self presentViewController:resultsVC animated:YES completion:nil];
-
+    [self performSegueWithIdentifier:kResultsSegueIdentifier sender:self];
 }
 
 #pragma mark - UISearchBarDelegate
@@ -262,5 +262,13 @@
 	// e.g. self.myOutlet = nil;
 }
 
+#pragma mark - segues
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:kResultsSegueIdentifier]) {
+        ResultsViewController *controller = segue.destinationViewController;
+        controller.results = [self.selectedGraphic allAttributes];
+    }
+}
 
 @end

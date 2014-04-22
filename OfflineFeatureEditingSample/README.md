@@ -1,4 +1,4 @@
-##Offline Feature Editing Sample (Beta)
+##Offline Feature Editing Sample
 
 This sample demonstrates how you can download features from a sync-enabled ArcGIS Feature Serivce, display and edit
 the features even when the devices does not have any network connectivity, synchronize changes with the service

@@ -13,11 +13,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface ResultsViewController : UIViewController {
-    NSDictionary *_results;
-    UITableView *_tableView;
-
-}
+@interface ResultsViewController : UIViewController 
 
 //results are the attributes of the result of the geocode operation
 @property (nonatomic, strong) NSDictionary *results;

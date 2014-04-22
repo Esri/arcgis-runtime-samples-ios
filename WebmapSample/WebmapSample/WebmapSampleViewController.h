@@ -13,7 +13,6 @@
 
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
-#import "CODialog.h"
 
 @interface WebmapSampleViewController : UIViewController <AGSWebMapDelegate, UIAlertViewDelegate , AGSCalloutDelegate, AGSPopupsContainerDelegate>
 

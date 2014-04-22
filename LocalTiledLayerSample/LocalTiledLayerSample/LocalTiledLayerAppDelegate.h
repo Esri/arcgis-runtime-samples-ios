@@ -14,13 +14,9 @@
 
 @class RootTableViewController;
 
-@interface LocalTiledLayerAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    UINavigationController *navController;
-}
+@interface LocalTiledLayerAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
-@property (nonatomic, strong) IBOutlet UINavigationController *navController;
 
 @end
 

@@ -15,6 +15,7 @@
 #import "MainViewController.h"
 #import "AppDelegate.h"
 
+#define kUserContentViewControllerIdentifier @"UserContentViewController"
 
 @interface UserContentViewController() <AGSPortalDelegate, AGSPortalUserDelegate, IconDownloaderDelegate, UIAlertViewDelegate>
 
@@ -34,27 +35,22 @@
 
 @implementation UserContentViewController
 
-
-@synthesize itemsArray = _itemsArray;
-@synthesize foldersArray = _foldersArray;
-@synthesize contentsOp = _contentsOp;
-@synthesize doneLoading = _doneLoading;
-
-
 - (void)dealloc {
     [self.contentsOp cancel];
 }
 
 - (id)initWithPortal:(AGSPortal*)portal
 {
-    
-    self = [super init];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
+    self = [storyboard instantiateViewControllerWithIdentifier:kUserContentViewControllerIdentifier];
     if (self) {
         //Hold on to the portal reference
         self.portal = portal;
         if(self.portal.credential.username)
             self.navigationItem.title = [NSString stringWithFormat:@" %@'s content",self.portal.credential.username];
-
+        
+        //hide the back button
+        self.navigationItem.hidesBackButton = YES;
     }
     return self;
 }
@@ -81,7 +77,7 @@
 - (void)logout{
     self.portal = nil;
     [(AppDelegate*)[UIApplication sharedApplication].delegate removeCredentialFromKeychain];
-    [self.navigationController setViewControllers:@[[[MainViewController alloc]init]] animated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
     
 }
 
@@ -107,15 +103,13 @@
 
 #pragma mark - Helper methods
 -(void)openMap:(AGSPortalItem *)item{
-    MapViewController* mapVC = [[MapViewController alloc]initWithPortalItem:item] ;
+    MapViewController* mapVC = [[MapViewController alloc] initWithPortalItem:item] ;
     [self.navigationController pushViewController:mapVC animated:YES];
     
 }
 
 - (void)getUserContents
-{    
-
-
+{
     //instantiate the items and folders array.
     self.itemsArray = [NSMutableArray array];
     self.foldersArray = [NSMutableArray array];
@@ -124,11 +118,6 @@
     self.portal.user.delegate = self;
     self.contentsOp = [super.portal.user fetchContent];
 }
-
-
-
-
-
 
 #pragma mark -  AGSPortalUserDelegate
 
@@ -147,7 +136,7 @@
     self.foldersArray = [NSMutableArray arrayWithArray:folders];
     
     //we're done loading, set the flag
-    super.doneLoading = YES;
+    self.doneLoading = YES;
     
     //reload the data to show the newly loaded list of items and  folders
 	[self.tableView reloadData];
@@ -160,7 +149,7 @@
 -(void)portalUser:(AGSPortalUser*)portalUser operation:(NSOperation*)op didFailToFetchContentInFolder:(NSString*)folderId withError:(NSError*)error;
 {
     //failed to load. set the flag.
-    super.doneLoading = YES;
+    self.doneLoading = YES;
     
     //cancel the op
     [self.contentsOp cancel];

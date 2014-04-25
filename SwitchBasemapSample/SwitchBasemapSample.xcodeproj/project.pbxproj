@@ -16,36 +16,14 @@
 		3E90B63F18FDC98B009C3B8E /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B63E18FDC98B009C3B8E /* ArcGIS.bundle */; };
 		3E90B64318FDEF34009C3B8E /* SwitchBasemapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E90B64218FDEF34009C3B8E /* SwitchBasemapViewController.m */; };
 		3E90B64918FF2173009C3B8E /* BasemapsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E90B64818FF2173009C3B8E /* BasemapsCollectionViewController.m */; };
-		3E90B65318FF24D0009C3B8E /* Imagery.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B64B18FF24D0009C3B8E /* Imagery.jpg */; };
-		3E90B65418FF24D0009C3B8E /* Imagery@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B64C18FF24D0009C3B8E /* Imagery@2x.jpg */; };
-		3E90B65518FF24D0009C3B8E /* ImageryHybrid.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B64D18FF24D0009C3B8E /* ImageryHybrid.jpg */; };
-		3E90B65618FF24D0009C3B8E /* ImageryHybrid@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B64E18FF24D0009C3B8E /* ImageryHybrid@2x.jpg */; };
-		3E90B65718FF24D0009C3B8E /* Ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B64F18FF24D0009C3B8E /* Ocean.jpg */; };
-		3E90B65818FF24D0009C3B8E /* Ocean@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B65018FF24D0009C3B8E /* Ocean@2x.jpg */; };
-		3E90B65918FF24D0009C3B8E /* WorldGlobe1812.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B65118FF24D0009C3B8E /* WorldGlobe1812.jpg */; };
-		3E90B65A18FF24D0009C3B8E /* WorldGlobe1812@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B65218FF24D0009C3B8E /* WorldGlobe1812@2x.jpg */; };
-		3E90B66318FF3314009C3B8E /* LightGrayCanvas.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B65B18FF3314009C3B8E /* LightGrayCanvas.jpg */; };
-		3E90B66418FF3314009C3B8E /* LightGrayCanvas@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B65C18FF3314009C3B8E /* LightGrayCanvas@2x.jpg */; };
-		3E90B66518FF3314009C3B8E /* NatGeo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B65D18FF3314009C3B8E /* NatGeo.jpg */; };
-		3E90B66618FF3314009C3B8E /* NatGeo@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B65E18FF3314009C3B8E /* NatGeo@2x.jpg */; };
-		3E90B66718FF3314009C3B8E /* Streets.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B65F18FF3314009C3B8E /* Streets.jpg */; };
-		3E90B66818FF3314009C3B8E /* Streets@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B66018FF3314009C3B8E /* Streets@2x.jpg */; };
-		3E90B66918FF3314009C3B8E /* Topographic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B66118FF3314009C3B8E /* Topographic.jpg */; };
-		3E90B66A18FF3314009C3B8E /* Topographic@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B66218FF3314009C3B8E /* Topographic@2x.jpg */; };
-		3E90B67118FF4742009C3B8E /* Delorme.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B66B18FF4742009C3B8E /* Delorme.jpg */; };
-		3E90B67218FF4742009C3B8E /* Delorme@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B66C18FF4742009C3B8E /* Delorme@2x.jpg */; };
-		3E90B67318FF4742009C3B8E /* OpenStreet.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B66D18FF4742009C3B8E /* OpenStreet.jpg */; };
-		3E90B67418FF4742009C3B8E /* OpenStreet@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B66E18FF4742009C3B8E /* OpenStreet@2x.jpg */; };
-		3E90B67518FF4742009C3B8E /* Physical.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B66F18FF4742009C3B8E /* Physical.jpg */; };
-		3E90B67618FF4742009C3B8E /* Physical@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B67018FF4742009C3B8E /* Physical@2x.jpg */; };
 		3E90B67818FF5521009C3B8E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B67718FF5521009C3B8E /* Images.xcassets */; };
 		3EE7CEFA1901A097009C008F /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3EE7CEF71901A097009C008F /* SVProgressHUD.bundle */; };
 		3EE7CEFB1901A097009C008F /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE7CEF91901A097009C008F /* SVProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3E7E531319008E5A0074C02C /* PortalBasemapHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PortalBasemapHelper.h; path = Repositories/PortalBasemapHelper.h; sourceTree = "<group>"; };
-		3E7E531419008E5A0074C02C /* PortalBasemapHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PortalBasemapHelper.m; path = Repositories/PortalBasemapHelper.m; sourceTree = "<group>"; };
+		3E7E531319008E5A0074C02C /* PortalBasemapHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PortalBasemapHelper.h; path = Helper/PortalBasemapHelper.h; sourceTree = "<group>"; };
+		3E7E531419008E5A0074C02C /* PortalBasemapHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PortalBasemapHelper.m; path = Helper/PortalBasemapHelper.m; sourceTree = "<group>"; };
 		3E7E53171900C8710074C02C /* BasemapsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasemapsListViewController.h; path = Controllers/BasemapsListViewController.h; sourceTree = "<group>"; };
 		3E7E53181900C8710074C02C /* BasemapsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasemapsListViewController.m; path = Controllers/BasemapsListViewController.m; sourceTree = "<group>"; };
 		3E90B60618FDC1F4009C3B8E /* SwitchBasemapSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwitchBasemapSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,28 +40,6 @@
 		3E90B64618FDF22F009C3B8E /* AppConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
 		3E90B64718FF2173009C3B8E /* BasemapsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasemapsCollectionViewController.h; path = Controllers/BasemapsCollectionViewController.h; sourceTree = "<group>"; };
 		3E90B64818FF2173009C3B8E /* BasemapsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasemapsCollectionViewController.m; path = Controllers/BasemapsCollectionViewController.m; sourceTree = "<group>"; };
-		3E90B64B18FF24D0009C3B8E /* Imagery.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Imagery.jpg; path = Images/Imagery.jpg; sourceTree = "<group>"; };
-		3E90B64C18FF24D0009C3B8E /* Imagery@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Imagery@2x.jpg"; path = "Images/Imagery@2x.jpg"; sourceTree = "<group>"; };
-		3E90B64D18FF24D0009C3B8E /* ImageryHybrid.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ImageryHybrid.jpg; path = Images/ImageryHybrid.jpg; sourceTree = "<group>"; };
-		3E90B64E18FF24D0009C3B8E /* ImageryHybrid@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "ImageryHybrid@2x.jpg"; path = "Images/ImageryHybrid@2x.jpg"; sourceTree = "<group>"; };
-		3E90B64F18FF24D0009C3B8E /* Ocean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Ocean.jpg; path = Images/Ocean.jpg; sourceTree = "<group>"; };
-		3E90B65018FF24D0009C3B8E /* Ocean@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Ocean@2x.jpg"; path = "Images/Ocean@2x.jpg"; sourceTree = "<group>"; };
-		3E90B65118FF24D0009C3B8E /* WorldGlobe1812.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = WorldGlobe1812.jpg; path = Images/WorldGlobe1812.jpg; sourceTree = "<group>"; };
-		3E90B65218FF24D0009C3B8E /* WorldGlobe1812@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "WorldGlobe1812@2x.jpg"; path = "Images/WorldGlobe1812@2x.jpg"; sourceTree = "<group>"; };
-		3E90B65B18FF3314009C3B8E /* LightGrayCanvas.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = LightGrayCanvas.jpg; path = Images/LightGrayCanvas.jpg; sourceTree = "<group>"; };
-		3E90B65C18FF3314009C3B8E /* LightGrayCanvas@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "LightGrayCanvas@2x.jpg"; path = "Images/LightGrayCanvas@2x.jpg"; sourceTree = "<group>"; };
-		3E90B65D18FF3314009C3B8E /* NatGeo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = NatGeo.jpg; path = Images/NatGeo.jpg; sourceTree = "<group>"; };
-		3E90B65E18FF3314009C3B8E /* NatGeo@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "NatGeo@2x.jpg"; path = "Images/NatGeo@2x.jpg"; sourceTree = "<group>"; };
-		3E90B65F18FF3314009C3B8E /* Streets.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Streets.jpg; path = Images/Streets.jpg; sourceTree = "<group>"; };
-		3E90B66018FF3314009C3B8E /* Streets@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Streets@2x.jpg"; path = "Images/Streets@2x.jpg"; sourceTree = "<group>"; };
-		3E90B66118FF3314009C3B8E /* Topographic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Topographic.jpg; path = Images/Topographic.jpg; sourceTree = "<group>"; };
-		3E90B66218FF3314009C3B8E /* Topographic@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Topographic@2x.jpg"; path = "Images/Topographic@2x.jpg"; sourceTree = "<group>"; };
-		3E90B66B18FF4742009C3B8E /* Delorme.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Delorme.jpg; path = Images/Delorme.jpg; sourceTree = "<group>"; };
-		3E90B66C18FF4742009C3B8E /* Delorme@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Delorme@2x.jpg"; path = "Images/Delorme@2x.jpg"; sourceTree = "<group>"; };
-		3E90B66D18FF4742009C3B8E /* OpenStreet.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = OpenStreet.jpg; path = Images/OpenStreet.jpg; sourceTree = "<group>"; };
-		3E90B66E18FF4742009C3B8E /* OpenStreet@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "OpenStreet@2x.jpg"; path = "Images/OpenStreet@2x.jpg"; sourceTree = "<group>"; };
-		3E90B66F18FF4742009C3B8E /* Physical.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Physical.jpg; path = Images/Physical.jpg; sourceTree = "<group>"; };
-		3E90B67018FF4742009C3B8E /* Physical@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Physical@2x.jpg"; path = "Images/Physical@2x.jpg"; sourceTree = "<group>"; };
 		3E90B67718FF5521009C3B8E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3EE7CEF61901A097009C008F /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		3EE7CEF71901A097009C008F /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
@@ -102,13 +58,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3E7E531619008E6A0074C02C /* Repositories */ = {
+		3E7E531619008E6A0074C02C /* Helper */ = {
 			isa = PBXGroup;
 			children = (
 				3E7E531319008E5A0074C02C /* PortalBasemapHelper.h */,
 				3E7E531419008E5A0074C02C /* PortalBasemapHelper.m */,
 			);
-			name = Repositories;
+			name = Helper;
 			sourceTree = "<group>";
 		};
 		3E90B5FD18FDC1F4009C3B8E = {
@@ -139,7 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				3EE7CEF41901A097009C008F /* Libraries */,
-				3E7E531619008E6A0074C02C /* Repositories */,
+				3E7E531619008E6A0074C02C /* Helper */,
 				3E90B64018FDEEFA009C3B8E /* Controllers */,
 				3E90B61818FDC1F4009C3B8E /* AppDelegate.h */,
 				3E90B61918FDC1F4009C3B8E /* AppDelegate.m */,
@@ -153,7 +109,6 @@
 		3E90B61018FDC1F4009C3B8E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3E90B64A18FF24AA009C3B8E /* Images */,
 				3E90B63E18FDC98B009C3B8E /* ArcGIS.bundle */,
 				3E90B61118FDC1F4009C3B8E /* SwitchBasemapSample-Info.plist */,
 				3E90B61218FDC1F4009C3B8E /* InfoPlist.strings */,
@@ -175,35 +130,6 @@
 				3E7E53181900C8710074C02C /* BasemapsListViewController.m */,
 			);
 			name = Controllers;
-			sourceTree = "<group>";
-		};
-		3E90B64A18FF24AA009C3B8E /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				3E90B66B18FF4742009C3B8E /* Delorme.jpg */,
-				3E90B66C18FF4742009C3B8E /* Delorme@2x.jpg */,
-				3E90B66D18FF4742009C3B8E /* OpenStreet.jpg */,
-				3E90B66E18FF4742009C3B8E /* OpenStreet@2x.jpg */,
-				3E90B66F18FF4742009C3B8E /* Physical.jpg */,
-				3E90B67018FF4742009C3B8E /* Physical@2x.jpg */,
-				3E90B65B18FF3314009C3B8E /* LightGrayCanvas.jpg */,
-				3E90B65C18FF3314009C3B8E /* LightGrayCanvas@2x.jpg */,
-				3E90B65D18FF3314009C3B8E /* NatGeo.jpg */,
-				3E90B65E18FF3314009C3B8E /* NatGeo@2x.jpg */,
-				3E90B65F18FF3314009C3B8E /* Streets.jpg */,
-				3E90B66018FF3314009C3B8E /* Streets@2x.jpg */,
-				3E90B66118FF3314009C3B8E /* Topographic.jpg */,
-				3E90B66218FF3314009C3B8E /* Topographic@2x.jpg */,
-				3E90B64B18FF24D0009C3B8E /* Imagery.jpg */,
-				3E90B64C18FF24D0009C3B8E /* Imagery@2x.jpg */,
-				3E90B64D18FF24D0009C3B8E /* ImageryHybrid.jpg */,
-				3E90B64E18FF24D0009C3B8E /* ImageryHybrid@2x.jpg */,
-				3E90B64F18FF24D0009C3B8E /* Ocean.jpg */,
-				3E90B65018FF24D0009C3B8E /* Ocean@2x.jpg */,
-				3E90B65118FF24D0009C3B8E /* WorldGlobe1812.jpg */,
-				3E90B65218FF24D0009C3B8E /* WorldGlobe1812@2x.jpg */,
-			);
-			name = Images;
 			sourceTree = "<group>";
 		};
 		3EE7CEF41901A097009C008F /* Libraries */ = {
@@ -282,33 +208,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E90B65318FF24D0009C3B8E /* Imagery.jpg in Resources */,
 				3E90B61418FDC1F4009C3B8E /* InfoPlist.strings in Resources */,
-				3E90B67418FF4742009C3B8E /* OpenStreet@2x.jpg in Resources */,
 				3E90B67818FF5521009C3B8E /* Images.xcassets in Resources */,
-				3E90B67518FF4742009C3B8E /* Physical.jpg in Resources */,
-				3E90B65418FF24D0009C3B8E /* Imagery@2x.jpg in Resources */,
-				3E90B66918FF3314009C3B8E /* Topographic.jpg in Resources */,
-				3E90B66618FF3314009C3B8E /* NatGeo@2x.jpg in Resources */,
 				3E90B63F18FDC98B009C3B8E /* ArcGIS.bundle in Resources */,
-				3E90B66A18FF3314009C3B8E /* Topographic@2x.jpg in Resources */,
 				3EE7CEFA1901A097009C008F /* SVProgressHUD.bundle in Resources */,
-				3E90B66318FF3314009C3B8E /* LightGrayCanvas.jpg in Resources */,
-				3E90B67218FF4742009C3B8E /* Delorme@2x.jpg in Resources */,
-				3E90B67318FF4742009C3B8E /* OpenStreet.jpg in Resources */,
-				3E90B65718FF24D0009C3B8E /* Ocean.jpg in Resources */,
-				3E90B67118FF4742009C3B8E /* Delorme.jpg in Resources */,
-				3E90B65618FF24D0009C3B8E /* ImageryHybrid@2x.jpg in Resources */,
-				3E90B66418FF3314009C3B8E /* LightGrayCanvas@2x.jpg in Resources */,
-				3E90B65A18FF24D0009C3B8E /* WorldGlobe1812@2x.jpg in Resources */,
-				3E90B65818FF24D0009C3B8E /* Ocean@2x.jpg in Resources */,
-				3E90B66718FF3314009C3B8E /* Streets.jpg in Resources */,
 				3E90B61D18FDC1F4009C3B8E /* Storyboard.storyboard in Resources */,
-				3E90B65918FF24D0009C3B8E /* WorldGlobe1812.jpg in Resources */,
-				3E90B66818FF3314009C3B8E /* Streets@2x.jpg in Resources */,
-				3E90B67618FF4742009C3B8E /* Physical@2x.jpg in Resources */,
-				3E90B65518FF24D0009C3B8E /* ImageryHybrid.jpg in Resources */,
-				3E90B66518FF3314009C3B8E /* NatGeo.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,32 @@
+// Copyright 2014 ESRI
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// You may freely redistribute and use this sample code, with or
+// without modification, provided you include the original copyright
+// notice and use restrictions.
+//
+// See the use restrictions at http://help.arcgis.com/en/sdk/10.0/usageRestrictions.htm
+//
+
+#import <UIKit/UIKit.h>
+#import <ArcGIS/ArcGIS.h>
+#import "PortalBasemapHelper.h"
+
+@class BasemapsCollectionViewController;
+
+
+@protocol BasemapsCollectionViewControllerDelegate
+
+-(void)basemapsCollectionViewController:(BasemapsCollectionViewController*)controller didSelectMapWithItemId:(NSString*)itemId credential:(AGSCredential*)credential;
+-(void)basemapsCollectionViewControllerDidCancel:(BasemapsCollectionViewController*)controller;
+
+@end
+
+
+@interface BasemapsCollectionViewController : UIViewController <AGSPortalDelegate, PortalBasemapHelperDelegate>
+
+@property (weak, nonatomic) id <BasemapsCollectionViewControllerDelegate> delegate;
+
+@end

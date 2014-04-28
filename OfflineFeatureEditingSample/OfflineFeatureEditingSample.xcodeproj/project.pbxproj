@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E92AFB7190AFBDE002F5A9D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E92AFB6190AFBDE002F5A9D /* Storyboard.storyboard */; };
+		3E92AFB9190B1211002F5A9D /* Storyboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E92AFB8190B1211002F5A9D /* Storyboard_iPad.storyboard */; };
 		4B1921171746F5D000E724BE /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4B1921161746F5D000E724BE /* ArcGIS.bundle */; };
 		97110215180A17240085B216 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97110204180A17240085B216 /* AppDelegate.m */; };
 		97110217180A17240085B216 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97110207180A17240085B216 /* Default-568h@2x.png */; };
@@ -15,14 +17,11 @@
 		9711021A180A17240085B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9711020A180A17240085B216 /* InfoPlist.strings */; };
 		9711021C180A17240085B216 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9711020D180A17240085B216 /* main.m */; };
 		9711021E180A17240085B216 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97110211180A17240085B216 /* MainViewController.m */; };
-		9711021F180A17240085B216 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97110212180A17240085B216 /* MainViewController.xib */; };
-		97110220180A17240085B216 /* MainViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97110213180A17240085B216 /* MainViewController~ipad.xib */; };
 		974FC71518137FE80013F877 /* UIAlertView+NSCookbook.m in Sources */ = {isa = PBXBuildFile; fileRef = 974FC71418137FE80013F877 /* UIAlertView+NSCookbook.m */; };
 		975579C9180A18CB00904382 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 975579C7180A18CA00904382 /* icon.png */; };
 		975579CA180A18CB00904382 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 975579C8180A18CB00904382 /* icon@2x.png */; };
 		975579CC180A1DB600904382 /* SanFrancisco.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 975579CB180A1DB600904382 /* SanFrancisco.tpk */; };
 		975579CF180A561300904382 /* FeatureTemplatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975579CD180A561300904382 /* FeatureTemplatePickerViewController.m */; };
-		975579D1180A5AE000904382 /* FeatureTemplatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 975579D0180A5AE000904382 /* FeatureTemplatePickerViewController.xib */; };
 		975579D7180B624300904382 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 975579D4180B624300904382 /* SVProgressHUD.bundle */; };
 		975579D8180B624300904382 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 975579D6180B624300904382 /* SVProgressHUD.m */; };
 		9786549018109EF000073680 /* JSBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9786548F18109EF000073680 /* JSBadgeView.m */; };
@@ -31,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E92AFB6190AFBDE002F5A9D /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = OfflineFeatureEditing/Storyboard.storyboard; sourceTree = "<group>"; };
+		3E92AFB8190B1211002F5A9D /* Storyboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPad.storyboard; path = OfflineFeatureEditing/Storyboard_iPad.storyboard; sourceTree = "<group>"; };
 		4B1920D31746ECC900E724BE /* OfflineFeatureEditingSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfflineFeatureEditingSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B1921161746F5D000E724BE /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		97110203180A17240085B216 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -44,8 +45,6 @@
 		9711020F180A17240085B216 /* OfflineFeatureEditingSample-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OfflineFeatureEditingSample-Prefix.pch"; sourceTree = "<group>"; };
 		97110210180A17240085B216 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		97110211180A17240085B216 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		97110212180A17240085B216 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		97110213180A17240085B216 /* MainViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainViewController~ipad.xib"; sourceTree = "<group>"; };
 		974FC71318137FE80013F877 /* UIAlertView+NSCookbook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+NSCookbook.h"; sourceTree = "<group>"; };
 		974FC71418137FE80013F877 /* UIAlertView+NSCookbook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+NSCookbook.m"; sourceTree = "<group>"; };
 		975579C7180A18CA00904382 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -53,7 +52,6 @@
 		975579CB180A1DB600904382 /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "../Data/tile package/SanFrancisco.tpk"; sourceTree = "<group>"; };
 		975579CD180A561300904382 /* FeatureTemplatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeatureTemplatePickerViewController.m; sourceTree = "<group>"; };
 		975579CE180A561300904382 /* FeatureTemplatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeatureTemplatePickerViewController.h; sourceTree = "<group>"; };
-		975579D0180A5AE000904382 /* FeatureTemplatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeatureTemplatePickerViewController.xib; sourceTree = "<group>"; };
 		975579D3180B624300904382 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		975579D4180B624300904382 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		975579D5180B624300904382 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
@@ -77,16 +75,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4B1920CA1746ECC900E724BE = {
+		3E92AFBC190EFFA5002F5A9D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9711020F180A17240085B216 /* OfflineFeatureEditingSample-Prefix.pch */,
+				9711020A180A17240085B216 /* InfoPlist.strings */,
+				9711020D180A17240085B216 /* main.m */,
+				9711020E180A17240085B216 /* OfflineFeatureEditingSample-Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3E92AFBD190EFFBD002F5A9D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				97C0BB0818BFC7BA0027B90C /* BackgroundHelper.h */,
+				97C0BB0918BFC7BA0027B90C /* BackgroundHelper.m */,
+				97110210180A17240085B216 /* MainViewController.h */,
+				97110211180A17240085B216 /* MainViewController.m */,
+				975579CD180A561300904382 /* FeatureTemplatePickerViewController.m */,
+				975579CE180A561300904382 /* FeatureTemplatePickerViewController.h */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3E92AFBE190EFFF2002F5A9D /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
 				97DDDEC018B57FCC00D8A6E6 /* LoadingView */,
 				974FC71618137FF00013F877 /* UIAlertView+NSCookbook */,
 				9786548D18109EF000073680 /* JSBadgeView */,
 				975579D2180B624300904382 /* SVProgressHUD */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		4B1920CA1746ECC900E724BE = {
+			isa = PBXGroup;
+			children = (
+				3E92AFB8190B1211002F5A9D /* Storyboard_iPad.storyboard */,
+				3E92AFB6190AFBDE002F5A9D /* Storyboard.storyboard */,
 				975579CB180A1DB600904382 /* SanFrancisco.tpk */,
 				97110202180A17240085B216 /* OfflineFeatureEditing */,
-				4B1921161746F5D000E724BE /* ArcGIS.bundle */,
 				4B1920D51746ECC900E724BE /* Frameworks */,
 				4B1920D41746ECC900E724BE /* Products */,
 			);
@@ -110,22 +140,12 @@
 		97110202180A17240085B216 /* OfflineFeatureEditing */ = {
 			isa = PBXGroup;
 			children = (
+				3E92AFBE190EFFF2002F5A9D /* Libraries */,
+				3E92AFBD190EFFBD002F5A9D /* Controllers */,
+				3E92AFBC190EFFA5002F5A9D /* Supporting Files */,
 				9786548C1810917200073680 /* Resources */,
 				97110203180A17240085B216 /* AppDelegate.h */,
 				97110204180A17240085B216 /* AppDelegate.m */,
-				97C0BB0818BFC7BA0027B90C /* BackgroundHelper.h */,
-				97C0BB0918BFC7BA0027B90C /* BackgroundHelper.m */,
-				9711020A180A17240085B216 /* InfoPlist.strings */,
-				9711020D180A17240085B216 /* main.m */,
-				9711020E180A17240085B216 /* OfflineFeatureEditingSample-Info.plist */,
-				9711020F180A17240085B216 /* OfflineFeatureEditingSample-Prefix.pch */,
-				97110210180A17240085B216 /* MainViewController.h */,
-				97110211180A17240085B216 /* MainViewController.m */,
-				97110212180A17240085B216 /* MainViewController.xib */,
-				97110213180A17240085B216 /* MainViewController~ipad.xib */,
-				975579CD180A561300904382 /* FeatureTemplatePickerViewController.m */,
-				975579CE180A561300904382 /* FeatureTemplatePickerViewController.h */,
-				975579D0180A5AE000904382 /* FeatureTemplatePickerViewController.xib */,
 			);
 			path = OfflineFeatureEditing;
 			sourceTree = "<group>";
@@ -137,6 +157,7 @@
 				974FC71418137FE80013F877 /* UIAlertView+NSCookbook.m */,
 			);
 			name = "UIAlertView+NSCookbook";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		975579D2180B624300904382 /* SVProgressHUD */ = {
@@ -147,12 +168,14 @@
 				975579D5180B624300904382 /* SVProgressHUD.h */,
 				975579D6180B624300904382 /* SVProgressHUD.m */,
 			);
-			path = SVProgressHUD;
+			name = SVProgressHUD;
+			path = ../SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		9786548C1810917200073680 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4B1921161746F5D000E724BE /* ArcGIS.bundle */,
 				975579C7180A18CA00904382 /* icon.png */,
 				975579C8180A18CB00904382 /* icon@2x.png */,
 				97110207180A17240085B216 /* Default-568h@2x.png */,
@@ -168,7 +191,8 @@
 				9786548E18109EF000073680 /* JSBadgeView.h */,
 				9786548F18109EF000073680 /* JSBadgeView.m */,
 			);
-			path = JSBadgeView;
+			name = JSBadgeView;
+			path = ../JSBadgeView;
 			sourceTree = "<group>";
 		};
 		97DDDEC018B57FCC00D8A6E6 /* LoadingView */ = {
@@ -178,6 +202,7 @@
 				97DDDEC218B57FD700D8A6E6 /* LoadingView.m */,
 			);
 			name = LoadingView;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,7 +265,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9711021F180A17240085B216 /* MainViewController.xib in Resources */,
 				97110219180A17240085B216 /* Default@2x.png in Resources */,
 				4B1921171746F5D000E724BE /* ArcGIS.bundle in Resources */,
 				975579CA180A18CB00904382 /* icon@2x.png in Resources */,
@@ -248,10 +272,10 @@
 				97110218180A17240085B216 /* Default.png in Resources */,
 				97110217180A17240085B216 /* Default-568h@2x.png in Resources */,
 				975579D7180B624300904382 /* SVProgressHUD.bundle in Resources */,
-				97110220180A17240085B216 /* MainViewController~ipad.xib in Resources */,
+				3E92AFB9190B1211002F5A9D /* Storyboard_iPad.storyboard in Resources */,
+				3E92AFB7190AFBDE002F5A9D /* Storyboard.storyboard in Resources */,
 				975579CC180A1DB600904382 /* SanFrancisco.tpk in Resources */,
 				9711021A180A17240085B216 /* InfoPlist.strings in Resources */,
-				975579D1180A5AE000904382 /* FeatureTemplatePickerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

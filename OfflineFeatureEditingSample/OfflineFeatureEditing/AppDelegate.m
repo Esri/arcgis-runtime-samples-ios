@@ -15,32 +15,31 @@
 #import "MainViewController.h"
 #import "BackgroundHelper.h"
 
-@interface AppDelegate(){
-    NSString *_logPath;
-}
+@interface AppDelegate()
+
+@property (nonatomic, strong) NSString *logPath;
 
 @end
 
 @implementation AppDelegate
 
-
 -(void)logAppStatus:(NSString *)status{
     //If we don't already have a log file, let's set one up
-    if (!_logPath.length){
+    if (!self.logPath.length){
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *path = [paths objectAtIndex:0];
-        _logPath = [path stringByAppendingPathComponent:@"appLog.txt"];
+        self.logPath = [path stringByAppendingPathComponent:@"appLog.txt"];
     }
 
     //Write to the file
-    NSFileHandle *logFileHandle = [NSFileHandle fileHandleForWritingAtPath:_logPath];
+    NSFileHandle *logFileHandle = [NSFileHandle fileHandleForWritingAtPath:self.logPath];
     if (logFileHandle){
         [logFileHandle seekToEndOfFile];
         [logFileHandle writeData:[status dataUsingEncoding:NSUTF8StringEncoding]];
     }
     else{
         // have to create the file...
-        [status writeToFile:_logPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        [status writeToFile:self.logPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
     }
 }
 
@@ -57,13 +56,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
-    self.viewController = [[MainViewController alloc] init];
-
-    self.window.rootViewController = self.viewController;
-    [self.window makeKeyAndVisible];
     return YES;
 }
 

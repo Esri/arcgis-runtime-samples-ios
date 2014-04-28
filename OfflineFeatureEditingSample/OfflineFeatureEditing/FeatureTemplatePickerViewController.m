@@ -14,10 +14,6 @@
 #import "FeatureTemplatePickerViewController.h"
 
 @implementation FeatureTemplatePickerViewController
-@synthesize featureTemplatesTableView = _featureTemplatesTableView;
-@synthesize delegate = _delegate;
-@synthesize infos = _infos;
-
 
 // in iOS7 this gets called and hides the status bar so the view does not go under the top iPhone status bar
 - (BOOL)prefersStatusBarHidden
@@ -27,8 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
 }
 
 - (void) addTemplatesForLayersInMap:(AGSMapView*)mapView {

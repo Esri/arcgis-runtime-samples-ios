@@ -28,10 +28,7 @@
 @end
 
 
-@interface FeatureTemplatePickerViewController : UIViewController <UITableViewDataSource,UITableViewDelegate> {
-    id<FeatureTemplatePickerDelegate> __weak _delegate;
-    NSMutableArray* _infos;
-}
+@interface FeatureTemplatePickerViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, weak) id<FeatureTemplatePickerDelegate> delegate;
 @property (nonatomic, weak) IBOutlet UITableView* featureTemplatesTableView;
@@ -47,9 +44,7 @@
 
 
 /** A value object to hold information about the feature type, template and layer */
-@interface FeatureTemplatePickerInfo : NSObject {
-    
-}
+@interface FeatureTemplatePickerInfo : NSObject 
 
 @property (nonatomic, strong) AGSFeatureType* featureType;
 @property (nonatomic, strong) AGSFeatureTemplate* featureTemplate;

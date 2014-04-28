@@ -25,6 +25,8 @@
 
 @property (nonatomic, strong) AGSCredential *credential;
 
+@property (nonatomic, assign) BOOL thumbnailLoaded;
+
 @end
 
 @implementation BasemapsCollectionViewController
@@ -75,6 +77,7 @@ static id sharedInstance = nil;
     //viewDidLoad called everytime you trigger the segue
     //so in order to avoid reloading data everytime add a condition
     if (!self.portalItems) {
+        self.thumbnailLoaded = NO;
         [self loadBasemaps];
     }
 }
@@ -134,11 +137,20 @@ static id sharedInstance = nil;
         
         AGSPortalItem *item = [self.portalItems objectAtIndex:indexPath.item];
         
-        UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
-        [imageView setImage:item.thumbnail];
+        if (self.thumbnailLoaded) {
+            UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
+            [imageView setImage:item.thumbnail];
+        }
         
         UILabel *label = (UILabel*)[cell viewWithTag:2];
         [label setText:item.title];
+        
+        //add shadow to the cell
+        [cell.layer setShadowOpacity:1];
+        [cell.layer setShadowColor:[UIColor lightGrayColor].CGColor];
+        [cell.layer setShadowRadius:2];
+        [cell.layer setShadowOffset:CGSizeMake(2, 2)];
+        [cell setClipsToBounds:NO];
         
         return cell;
     }
@@ -199,6 +211,7 @@ static id sharedInstance = nil;
 }
 
 -(void)portalBasemapHelperDidFinishFetchingThumbnails:(PortalBasemapHelper *)portalBasemapHelper {
+    self.thumbnailLoaded = YES;
     //once all the images are downloaded, reload the view
     [self.collectionView reloadData];
 }

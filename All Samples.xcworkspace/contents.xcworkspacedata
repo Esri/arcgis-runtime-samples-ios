@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SwitchBasemapSample/SwitchBasemapSample.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:AsynchronousGPSample/AsynchronousGPSample.xcodeproj">
    </FileRef>
    <FileRef
@@ -93,6 +90,9 @@
    </FileRef>
    <FileRef
       location = "group:SketchLayerSample/SketchLayerSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SwitchBasemapSample/SwitchBasemapSample.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:SynchronousGPSample/SynchronousGPSample.xcodeproj">

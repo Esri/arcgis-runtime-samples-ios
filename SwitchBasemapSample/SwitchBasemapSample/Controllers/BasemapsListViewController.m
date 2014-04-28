@@ -21,6 +21,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *loadButton;
 @property (nonatomic, weak) IBOutlet UIView *footerView;
 @property (nonatomic, strong) AGSCredential *credential;
+@property (nonatomic, assign) BOOL thumbnailLoaded;
 
 @end
 
@@ -71,10 +72,8 @@ static id sharedInstance = nil;
     //viewDidLoad called everytime you trigger the segue
     //so in order to avoid reloading data everytime add a condition
     if (!self.portalItems) {
+        self.thumbnailLoaded = NO;
         [self loadBasemaps];
-    }
-    else {
-        [self.tableView reloadData];
     }
 }
 
@@ -136,8 +135,10 @@ static id sharedInstance = nil;
     
     AGSPortalItem *item = [self.portalItems objectAtIndex:indexPath.item];
     
-    UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
-    [imageView setImage:item.thumbnail];
+    if (self.thumbnailLoaded) {
+        UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
+        [imageView setImage:item.thumbnail];
+    }
     
     UILabel *label = (UILabel*)[cell viewWithTag:2];
     [label setText:item.title];
@@ -178,6 +179,7 @@ static id sharedInstance = nil;
 }
 
 -(void)portalBasemapHelperDidFinishFetchingThumbnails:(PortalBasemapHelper *)portalBasemapHelper {
+    self.thumbnailLoaded = YES;
     //once all the thumbnails are downloaded, reload data
     [self.tableView reloadData];
 }

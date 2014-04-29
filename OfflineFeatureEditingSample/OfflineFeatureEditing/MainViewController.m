@@ -91,15 +91,15 @@
     
     
     //Add a view that will display logs
-    CGRect f = self.mapView.frame;
-    self.logsTextView = [[UITextView alloc]initWithFrame:f];
+    self.logsTextView = [[UITextView alloc]initWithFrame:self.view.bounds];
     self.logsTextView.hidden = YES;
     self.logsTextView.userInteractionEnabled = YES;
-    self.logsTextView.autoresizingMask = self.mapView.autoresizingMask;
+    self.logsTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.logsTextView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:.78];
     self.logsTextView.textColor = [UIColor whiteColor];
     self.logsTextView.editable = NO;
-    
+    [self.view addSubview:self.logsTextView];
+
     //Add a swipe gesture recognizer that will show this view
     UISwipeGestureRecognizer *gr2 = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(showLogsGesture:)];
     gr2.direction = UISwipeGestureRecognizerDirectionUp;
@@ -108,7 +108,6 @@
     //Add a tap gesture recognizer that will hide this view
     UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideLogsGesture:)];
     [self.logsTextView addGestureRecognizer:gr];
-    [self.view addSubview:self.logsTextView];
     
 
 

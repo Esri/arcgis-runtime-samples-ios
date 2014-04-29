@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13A603" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="JJP-bx-nOc">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="jF3-MD-rAa">
+            <objects>
+                <viewController id="JJP-bx-nOc" customClass="MainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RU4-kP-kYF"/>
+                        <viewControllerLayoutGuide type="bottom" id="hFJ-p4-eok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NpQ-VH-aTm">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="r2j-ar-XyJ">
+                                <rect key="frame" x="0.0" y="980" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Yic-GR-K10"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="download" id="fNe-dA-4Hv">
+                                        <connections>
+                                            <action selector="switchModeAction:" destination="JJP-bx-nOc" id="vzR-B8-p6D"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Fyd-d0-AKE"/>
+                                    <barButtonItem systemItem="refresh" id="YvC-E4-Wno">
+                                        <connections>
+                                            <action selector="syncAction:" destination="JJP-bx-nOc" id="h58-yT-cAS"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ryM-br-zo9"/>
+                                    <barButtonItem systemItem="add" id="39x-Xf-OSC">
+                                        <connections>
+                                            <action selector="addFeatureAction:" destination="JJP-bx-nOc" id="8Dz-kj-w42"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="5th-sg-z6o"/>
+                                    <barButtonItem systemItem="trash" id="XPM-td-9QP">
+                                        <connections>
+                                            <action selector="deleteGDBAction:" destination="JJP-bx-nOc" id="30L-PT-DuN"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B37-bO-hX6">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhg-aa-6mk">
+                                <rect key="frame" x="597" y="20" width="171" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="171" id="MCv-Yg-0pF"/>
+                                    <constraint firstAttribute="height" constant="28" id="VZS-Em-NtB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HfV-TA-znj">
+                                <rect key="frame" x="0.0" y="952" width="768" height="28"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="sWT-92-6N5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E4A-y2-vvZ">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="980"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ksy-7s-yxy" userLabel="BadgeView">
+                                <rect key="frame" x="307" y="983" width="28" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="28" id="53q-9f-S8b"/>
+                                    <constraint firstAttribute="height" constant="27" id="qpT-sQ-B2j"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="uhp-56-NN7">
+                                <rect key="frame" x="735" y="24" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="B37-bO-hX6" firstAttribute="top" secondItem="NpQ-VH-aTm" secondAttribute="top" id="14Z-wO-ptp"/>
+                            <constraint firstItem="r2j-ar-XyJ" firstAttribute="top" secondItem="B37-bO-hX6" secondAttribute="bottom" id="3p8-qM-ExG"/>
+                            <constraint firstAttribute="bottom" secondItem="r2j-ar-XyJ" secondAttribute="bottom" id="DI9-kj-euR"/>
+                            <constraint firstItem="r2j-ar-XyJ" firstAttribute="leading" secondItem="NpQ-VH-aTm" secondAttribute="leading" id="Mrl-vE-o9h"/>
+                            <constraint firstAttribute="bottom" secondItem="ksy-7s-yxy" secondAttribute="bottom" constant="14" id="QpT-br-e3x"/>
+                            <constraint firstAttribute="trailing" secondItem="ksy-7s-yxy" secondAttribute="trailing" constant="433" id="U12-TK-egP"/>
+                            <constraint firstAttribute="trailing" secondItem="B37-bO-hX6" secondAttribute="trailing" id="ZP1-zf-0Sz"/>
+                            <constraint firstItem="B37-bO-hX6" firstAttribute="leading" secondItem="NpQ-VH-aTm" secondAttribute="leading" id="bBz-eN-7wT"/>
+                            <constraint firstAttribute="trailing" secondItem="HfV-TA-znj" secondAttribute="trailing" id="eNp-Es-jBZ"/>
+                            <constraint firstAttribute="trailing" secondItem="r2j-ar-XyJ" secondAttribute="trailing" id="etv-QU-bsv"/>
+                            <constraint firstItem="r2j-ar-XyJ" firstAttribute="top" secondItem="HfV-TA-znj" secondAttribute="bottom" id="lf3-fZ-AWc"/>
+                            <constraint firstItem="HfV-TA-znj" firstAttribute="leading" secondItem="NpQ-VH-aTm" secondAttribute="leading" id="qtk-KW-L69"/>
+                            <constraint firstItem="qhg-aa-6mk" firstAttribute="top" secondItem="NpQ-VH-aTm" secondAttribute="top" constant="20" id="uOU-2o-Olk"/>
+                            <constraint firstAttribute="trailing" secondItem="qhg-aa-6mk" secondAttribute="trailing" id="ydM-Ip-ZVy"/>
+                        </constraints>
+                        <simulatedMetricsInferredSentinel key="simulatedStatusBarMetrics"/>
+                        <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    </view>
+                    <connections>
+                        <outlet property="addFeatureButton" destination="39x-Xf-OSC" id="PHg-n0-2u2"/>
+                        <outlet property="badgeView" destination="ksy-7s-yxy" id="P2x-kq-kiK"/>
+                        <outlet property="deleteGDBButton" destination="XPM-td-9QP" id="JgK-MC-aT7"/>
+                        <outlet property="goOfflineButton" destination="fNe-dA-4Hv" id="7dP-12-kgC"/>
+                        <outlet property="leftContainer" destination="E4A-y2-vvZ" id="fsG-sh-0Cs"/>
+                        <outlet property="liveActivityIndicator" destination="uhp-56-NN7" id="UIt-v6-DSG"/>
+                        <outlet property="logsLabel" destination="HfV-TA-znj" id="Yoq-gr-xcz"/>
+                        <outlet property="mapContainer" destination="B37-bO-hX6" id="Kf0-kV-99s"/>
+                        <outlet property="offlineStatusLabel" destination="qhg-aa-6mk" id="SzO-v8-Xbl"/>
+                        <outlet property="syncButton" destination="YvC-E4-Wno" id="aiK-yU-AXQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FeY-hf-4lj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="46" y="-206"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>

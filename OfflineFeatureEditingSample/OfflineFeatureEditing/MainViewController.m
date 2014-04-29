@@ -22,44 +22,44 @@
 #define kTilePackageName @"SanFrancisco"
 #define kFeatureServiceURL @"http://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/Wildfire/FeatureServer"
 
-@interface MainViewController () <AGSLayerDelegate, AGSMapViewTouchDelegate, AGSPopupsContainerDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate, FeatureTemplatePickerDelegate>{
-    
-    
-    AGSLocalTiledLayer *_localTiledLayer;
+@interface MainViewController () <AGSLayerDelegate, AGSMapViewTouchDelegate, AGSPopupsContainerDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate, FeatureTemplatePickerDelegate>
 
-    NSString *_replicaJobId;
-    AGSPopupsContainerViewController *_popupsVC;
-    AGSSketchGraphicsLayer *_sgl;
-    
-    JSBadgeView* _badge;
-    LoadingView* _loadingView;
-    
-    BOOL _goingLocal;
-    BOOL _goingLive;
-    BOOL _viewingLocal;
-    
-    
-    UITextView *_logsTextView;
-    
-    NSMutableString *_allStatus;
-    
-    UIPopoverController* _pvc;
-    FeatureTemplatePickerViewController* _featureTemplatePickerVC;
-    
-    BOOL _newlyDownloaded;
-}
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UIView *badgeView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *liveActivityIndicator;
 @property (weak, nonatomic) IBOutlet UIToolbar *geometryEditToolbar;
 
-
 @property (nonatomic, strong) AGSGDBGeodatabase *geodatabase;
 @property (nonatomic, strong) AGSGDBSyncTask *gdbTask;
 @property (nonatomic, strong) id<AGSCancellable> cancellable;
 @property (nonatomic, strong) AGSMapView* mapView;
+
+@property (nonatomic, strong) AGSLocalTiledLayer *localTiledLayer;
+
+@property (nonatomic, strong) NSString *replicaJobId;
+@property (nonatomic, strong) AGSPopupsContainerViewController *popupsVC;
+@property (nonatomic, strong) AGSSketchGraphicsLayer *sgl;
+
+@property (nonatomic, strong) JSBadgeView* badge;
+@property (nonatomic, strong) LoadingView* loadingView;
+
+@property (nonatomic, assign) BOOL goingLocal;
+@property (nonatomic, assign) BOOL goingLive;
+@property (nonatomic, assign) BOOL viewingLocal;
+
+
+@property (nonatomic, strong) UITextView *logsTextView;
+
+@property (nonatomic, strong) NSMutableString *allStatus;
+
+@property (nonatomic, strong) UIPopoverController* pvc;
+@property (nonatomic, strong) FeatureTemplatePickerViewController* featureTemplatePickerVC;
+
+@property (nonatomic, assign) BOOL newlyDownloaded;
+
 - (IBAction)cancelEditingGeometry:(id)sender;
 - (IBAction)doneEditingGeometry:(id)sender;
+
 @end
 
 @implementation MainViewController
@@ -78,28 +78,28 @@
     self.mapView.callout.delegate = self;
 
     //Add the basemap layer from a tile package
-    _localTiledLayer =  [AGSLocalTiledLayer localTiledLayerWithName:kTilePackageName];
+    self.localTiledLayer =  [AGSLocalTiledLayer localTiledLayerWithName:kTilePackageName];
     
     //Add layer delegate to catch errors in case the local tiled layer is replaced and problems arise
-    _localTiledLayer.delegate = self;
+    self.localTiledLayer.delegate = self;
     
-    [self.mapView addMapLayer:_localTiledLayer];
+    [self.mapView addMapLayer:self.localTiledLayer];
     
 
 
-    _allStatus = [NSMutableString string];
+    self.allStatus = [NSMutableString string];
     
     
     //Add a view that will display logs
-    CGRect f = self.mapView.frame;
-    _logsTextView = [[UITextView alloc]initWithFrame:f];
-    _logsTextView.hidden = YES;
-    _logsTextView.userInteractionEnabled = YES;
-    _logsTextView.autoresizingMask = _mapView.autoresizingMask;
-    _logsTextView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:.78];
-    _logsTextView.textColor = [UIColor whiteColor];
-    _logsTextView.editable = NO;
-    
+    self.logsTextView = [[UITextView alloc]initWithFrame:self.view.bounds];
+    self.logsTextView.hidden = YES;
+    self.logsTextView.userInteractionEnabled = YES;
+    self.logsTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.logsTextView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:.78];
+    self.logsTextView.textColor = [UIColor whiteColor];
+    self.logsTextView.editable = NO;
+    [self.view addSubview:self.logsTextView];
+
     //Add a swipe gesture recognizer that will show this view
     UISwipeGestureRecognizer *gr2 = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(showLogsGesture:)];
     gr2.direction = UISwipeGestureRecognizerDirectionUp;
@@ -107,8 +107,7 @@
 
     //Add a tap gesture recognizer that will hide this view
     UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideLogsGesture:)];
-    [_logsTextView addGestureRecognizer:gr];
-    [self.view addSubview:_logsTextView];
+    [self.logsTextView addGestureRecognizer:gr];
     
 
 
@@ -128,9 +127,9 @@
 
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
-    if(!_pvc.popoverVisible){
-        _pvc =  nil;
-        _featureTemplatePickerVC = nil;
+    if(!self.pvc.popoverVisible){
+        self.pvc =  nil;
+        self.featureTemplatePickerVC = nil;
     }
 }
 
@@ -149,11 +148,11 @@
 #pragma mark Gesture Recognizers
 
 -(void)hideLogsGesture:(UIGestureRecognizer*)gr{
-    _logsTextView.hidden = YES;
+    self.logsTextView.hidden = YES;
 }
 
 -(void)showLogsGesture:(UIGestureRecognizer*)gr{
-    _logsTextView.hidden = NO;
+    self.logsTextView.hidden = NO;
 }
 
 #pragma mark AGSLayerDelegate methods
@@ -221,15 +220,15 @@
 
 -(void)hidePopupsVC{
     if ([[AGSDevice currentDevice] isIPad]) {
-        for (UIView *sv in _leftContainer.subviews){
+        for (UIView *sv in self.leftContainer.subviews){
             [sv removeFromSuperview];
         }
-        _popupsVC = nil;
-        _leftContainer.hidden = YES;
+        self.popupsVC = nil;
+        self.leftContainer.hidden = YES;
     }
     else {
-        [_popupsVC dismissViewControllerAnimated:YES completion:^{
-            _popupsVC = nil;
+        [self.popupsVC dismissViewControllerAnimated:YES completion:^{
+            self.popupsVC = nil;
         }];
     }
     
@@ -241,23 +240,23 @@
     [self hidePopupsVC];
     
     //Create the view controller for the popups
-        _popupsVC = [[AGSPopupsContainerViewController alloc]initWithPopups:popups usingNavigationControllerStack:NO];
-        _popupsVC.delegate = self;
-        _popupsVC.style = AGSPopupsContainerStyleBlack;
-        _popupsVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;        
+        self.popupsVC = [[AGSPopupsContainerViewController alloc]initWithPopups:popups usingNavigationControllerStack:NO];
+        self.popupsVC.delegate = self;
+        self.popupsVC.style = AGSPopupsContainerStyleBlack;
+        self.popupsVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;        
     
     //On ipad, display the popups vc a form sheet on the left
     if ([[AGSDevice currentDevice] isIPad]) {
-        _leftContainer.hidden = NO;
-        _popupsVC.modalPresentationStyle = UIModalPresentationFormSheet;
-        _popupsVC.view.frame = _leftContainer.bounds;
-        [_leftContainer addSubview:_popupsVC.view];
+        self.leftContainer.hidden = NO;
+        self.popupsVC.modalPresentationStyle = UIModalPresentationFormSheet;
+        self.popupsVC.view.frame = self.leftContainer.bounds;
+        [self.leftContainer addSubview:self.popupsVC.view];
     }
     //On iphone, display the vc in full screen
     else {
-        _popupsVC.modalPresentationStyle = UIModalPresentationFullScreen;
-        _popupsVC.view.frame = self.view.bounds;
-        [self presentViewController:_popupsVC animated:YES completion:nil];
+        self.popupsVC.modalPresentationStyle = UIModalPresentationFullScreen;
+        self.popupsVC.view.frame = self.view.bounds;
+        [self presentViewController:self.popupsVC animated:YES completion:nil];
 
     }
 }
@@ -267,33 +266,31 @@
 - (IBAction)addFeatureAction:(id)sender {
     
     //Initialize the template picker view controller
-    if(!_featureTemplatePickerVC){
-        _featureTemplatePickerVC = [[FeatureTemplatePickerViewController alloc]init];
-        _featureTemplatePickerVC.delegate = self;
-        [_featureTemplatePickerVC addTemplatesForLayersInMap:self.mapView];
+    if(!self.featureTemplatePickerVC){
+        self.featureTemplatePickerVC = [[FeatureTemplatePickerViewController alloc]init];
+        self.featureTemplatePickerVC.delegate = self;
+        [self.featureTemplatePickerVC addTemplatesForLayersInMap:self.mapView];
     }
     
     //On iPad, display the template picker vc in a popover
     if ([[AGSDevice currentDevice]isIPad]) {
-        if(!_pvc){
-            _pvc = [[UIPopoverController alloc]initWithContentViewController:_featureTemplatePickerVC];
-        }
-        [_pvc presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
+        self.pvc = [[UIPopoverController alloc]initWithContentViewController:self.featureTemplatePickerVC];
+        [self.pvc presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
         
     //On iPhone, display the vc full screen
     }else{
-        [self presentViewController:_featureTemplatePickerVC animated:YES completion:nil];
+        [self presentViewController:self.featureTemplatePickerVC animated:YES completion:nil];
     }
     
 
 }
 
 - (IBAction)deleteGDBAction:(id)sender {
-    if (_viewingLocal || _goingLocal){
+    if (self.viewingLocal || self.goingLocal){
         [self logStatus:@"cannot delete local data while displaying it"];
         return;
     }
-    _geodatabase = nil;
+    self.geodatabase = nil;
     
     //Remove all files with .geodatabase, .geodatabase-shm, and .geodatabase-wal file extensions
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -351,11 +348,11 @@
 
 - (IBAction)switchModeAction:(id)sender {
     
-    if (_goingLocal){
+    if (self.goingLocal){
         return;
     }
     
-    if (_viewingLocal){
+    if (self.viewingLocal){
         if([self.geodatabase hasLocalEdits]){
             UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Local data contains edits" message:@"Do you want to sync them with the service?" delegate:nil cancelButtonTitle:@"Later" otherButtonTitles:@"Yes", nil];
             [av showWithCompletion:^(UIAlertView *alertView, NSInteger buttonIndex) {
@@ -386,11 +383,11 @@
 
 -(void)switchToLiveData{
     
-    _goingLive = YES;
+    self.goingLive = YES;
     [self logStatus:@"loading live data"];
 
     //Clear out the template picker so that we create it again when needed using templates in the live data
-    _featureTemplatePickerVC = nil;
+    self.featureTemplatePickerVC = nil;
 
 
     self.gdbTask = [[AGSGDBSyncTask alloc]initWithURL:[NSURL URLWithString:kFeatureServiceURL]];
@@ -422,16 +419,16 @@
         [weakSelf updateStatus];
     };
     
-    _goingLive = NO;
-    _viewingLocal = NO;
+    self.goingLive = NO;
+    self.viewingLocal = NO;
     
 }
 -(void)switchToLocalData{
     
-    _goingLocal = YES;
+    self.goingLocal = YES;
     
     //Clear out the template picker so that we create it again when needed using templates in the local data
-    _featureTemplatePickerVC = nil;
+    self.featureTemplatePickerVC = nil;
 
     
     AGSGDBGenerateParameters *params = [[AGSGDBGenerateParameters alloc]initWithFeatureServiceInfo:self.gdbTask.featureServiceInfo];
@@ -445,13 +442,13 @@
         [layers addObject:[NSNumber numberWithInt: (int)layerInfo.layerId]];
     }
     params.layerIDs = layers;
-    _newlyDownloaded = NO;
+    self.newlyDownloaded = NO;
     [SVProgressHUD showWithStatus:@"Preparing to \n download"];
     [self.gdbTask generateGeodatabaseWithParameters:params downloadFolderPath:nil useExisting:YES status:^(AGSResumableTaskJobStatus status, NSDictionary *userInfo) {
         
         //If we are fetching result, display download progress
         if(status == AGSResumableTaskJobStatusFetchingResult){
-            _newlyDownloaded = YES;
+            self.newlyDownloaded = YES;
             NSNumber* totalBytesDownloaded = userInfo[@"AGSDownloadProgressTotalBytesDownloaded"];
             NSNumber* totalBytesExpected = userInfo[@"AGSDownloadProgressTotalBytesExpected"];
             if(totalBytesDownloaded!=nil && totalBytesExpected!=nil){
@@ -467,15 +464,15 @@
     } completion:^(AGSGDBGeodatabase *geodatabase, NSError *error) {
         if (error){
             //handle the error
-            _goingLocal = NO;
-            _viewingLocal = NO;
+            self.goingLocal = NO;
+            self.viewingLocal = NO;
             [self logStatus:[NSString stringWithFormat:@"error taking feature layers offline: %@", error]];
             [SVProgressHUD showErrorWithStatus:@"Couldn't download features"];
         }
         else{
             //take app into offline mode
-            _goingLocal = NO;
-            _viewingLocal = YES;
+            self.goingLocal = NO;
+            self.viewingLocal = YES;
             [self logStatus:@"now viewing local data"];
             [BackgroundHelper postLocalNotificationIfAppNotActive:@"Features downloaded."];
             
@@ -493,7 +490,7 @@
                 }
             }
             
-            if (_newlyDownloaded) {
+            if (self.newlyDownloaded) {
                 [SVProgressHUD showSuccessWithStatus:@"Finished \n downloading"];
             }else{
                 [SVProgressHUD dismiss];
@@ -528,7 +525,8 @@
     //if iPad
     if ([[AGSDevice currentDevice]isIPad]) {
         //Dismiss popover
-        [_pvc dismissPopoverAnimated:YES];
+        [self.pvc dismissPopoverAnimated:YES];
+        self.pvc = nil;
         
         //Create new feature with temaplate
         AGSGDBFeatureTable* fTable = (AGSGDBFeatureTable*) layer;
@@ -538,7 +536,7 @@
         AGSPopupInfo *pi = [AGSPopupInfo popupInfoForGDBFeatureTable:fTable];
         AGSPopup *p = [[AGSPopup alloc]initWithGDBFeature:feature popupInfo:pi];
         [self showPopupsVCForPopups:@[p]];
-        [_popupsVC startEditingCurrentPopup];
+        [self.popupsVC startEditingCurrentPopup];
 
     }else{
         //if iPhone, dismiss modal view controller
@@ -552,7 +550,7 @@
             AGSPopupInfo *pi = [AGSPopupInfo popupInfoForGDBFeatureTable:fTable];
             AGSPopup *p = [[AGSPopup alloc]initWithGDBFeature:feature popupInfo:pi];
             [self showPopupsVCForPopups:@[p]];
-            [_popupsVC startEditingCurrentPopup];
+            [self.popupsVC startEditingCurrentPopup];
 
         }];
     }
@@ -561,7 +559,8 @@
 
 - (void) featureTemplatePickerViewControllerWasDismissed:(FeatureTemplatePickerViewController *)featureTemplatePickerViewController{
     if ([[AGSDevice currentDevice]isIPad]) {
-        [_pvc dismissPopoverAnimated:YES];
+        [self.pvc dismissPopoverAnimated:YES];
+        self.pvc = nil;
     }else{
         [featureTemplatePickerViewController dismissViewControllerAnimated:YES completion:nil];
     }
@@ -590,18 +589,18 @@
 
 -(void) popupsContainer:(id<AGSPopupsContainer>)popupsContainer readyToEditGeometry:(AGSGeometry *)geometry forPopup:(AGSPopup *)popup {
 
-    if (!_sgl){
-        _sgl = [[AGSSketchGraphicsLayer alloc]initWithGeometry:geometry];
-        [_mapView addMapLayer:_sgl];
-        _mapView.touchDelegate = _sgl;
+    if (!self.sgl){
+        self.sgl = [[AGSSketchGraphicsLayer alloc]initWithGeometry:geometry];
+        [self.mapView addMapLayer:self.sgl];
+        self.mapView.touchDelegate = self.sgl;
     }
     else{
-        _sgl.geometry = geometry;
+        self.sgl.geometry = geometry;
     }
     
     // if we are on iPhone, hide the popupsVC and show editing UI
     if (![[AGSDevice currentDevice] isIPad]) {
-        [_popupsVC dismissViewControllerAnimated:YES completion:nil];
+        [self.popupsVC dismissViewControllerAnimated:YES completion:nil];
         [self toggleGeometryEditUI];
     }
 }
@@ -609,39 +608,39 @@
 
 -(void)popupsContainerDidFinishViewingPopups:(id<AGSPopupsContainer>)popupsContainer{
     //
-    // this clears _currentPopups
+    // this clears self.currentPopups
     [self hidePopupsVC];
 }
 
 -(void)popupsContainer:(id<AGSPopupsContainer>)popupsContainer didCancelEditingForPopup:(AGSPopup *)popup {
-    [_mapView removeMapLayer:_sgl];
-    _sgl = nil;
-    _mapView.touchDelegate = self;
+    [self.mapView removeMapLayer:self.sgl];
+    self.sgl = nil;
+    self.mapView.touchDelegate = self;
     [self hidePopupsVC];
 }
 
 -(void) popupsContainer:(id<AGSPopupsContainer>)popupsContainer didFinishEditingForPopup:(AGSPopup *)popup {
 
     // Remove sketch layer
-    [_mapView removeMapLayer:_sgl];
-    _sgl = nil;
-    _mapView.touchDelegate = self;
+    [self.mapView removeMapLayer:self.sgl];
+    self.sgl = nil;
+    self.mapView.touchDelegate = self;
 
     
     // popup vc has already committed edits to the local geodatabase at this point
     
     //if we are in local data mode, show edits as badge over the sync button
     //and wait for the user to explicitly sync changes back up to the service
-    if(_viewingLocal) {
+    if(self.viewingLocal) {
         [self showEditsInGeodatabaseAsBadge:popup.gdbFeatureTable.geodatabase];
         [self logStatus:@"feature saved in local geodatabase"];
         [self hidePopupsVC];
     }else{
         //we are in live data mode, apply edits to the service immediately
-        _loadingView = [LoadingView loadingViewInView:_popupsVC.view withText:@"Applying edit to server..."];
+        self.loadingView = [LoadingView loadingViewInView:self.popupsVC.view withText:@"Applying edit to server..."];
         AGSGDBFeatureServiceTable* fst = (AGSGDBFeatureServiceTable*) popup.gdbFeature.table;
         [fst applyFeatureEditsWithCompletion:^(NSArray *featureEditErrors, NSError *error) {
-            [_loadingView removeView];
+            [self.loadingView removeView];
             if(error){
                 UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Could not apply edit to server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [av show];
@@ -650,13 +649,15 @@
                 for (AGSGDBFeatureEditError* featureEditError in featureEditErrors) {
                     NSLog(@"Edit to feature(OBJECTID = %lld) rejected by server because : %@",featureEditError.objectID, [featureEditError localizedDescription]);
                 }
-                _loadingView = [LoadingView loadingViewInView:_popupsVC.view withText:@"Applying attachment edits to server..."];
+                
                 
                 //If the dataset support attachments, apply attachment edits.
                 if([fst hasAttachments]){
+                    self.loadingView = [LoadingView loadingViewInView:self.popupsVC.view withText:@"Applying attachment edits to server..."];
+                    
                     [fst applyAttachmentEditsWithCompletion:^(NSArray *attachmentEditErrors, NSError *error) {
                     
-                        [_loadingView removeView];
+                        [self.loadingView removeView];
                     
                         if(error){
                             UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Could not apply edit to server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -686,16 +687,16 @@
     
     //if we are in local data mode, show edits as badge over the sync button
     //and wait for the user to explicitly sync changes back up to the service
-    if(_viewingLocal) {
+    if(self.viewingLocal) {
         [self showEditsInGeodatabaseAsBadge:popup.gdbFeatureTable.geodatabase];
         [self logStatus:@"feature deleted in local geodatabase"];
         [self hidePopupsVC];
     }else{
         //we are in live data mode, apply edits to the service immediately
-        _loadingView = [LoadingView loadingViewInView:_popupsVC.view withText:@"Applying edit to server..."];
+        self.loadingView = [LoadingView loadingViewInView:self.popupsVC.view withText:@"Applying edit to server..."];
         AGSGDBFeatureServiceTable* fst = (AGSGDBFeatureServiceTable*) popup.gdbFeature.table;
         [fst applyFeatureEditsWithCompletion:^(NSArray *featureEditErrors, NSError *error) {
-            [_loadingView removeView];
+            [self.loadingView removeView];
             if(error){
                 UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Could not apply edit to server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [av show];
@@ -746,12 +747,12 @@
     df.dateStyle = NSDateFormatterNoStyle;
     df.timeStyle = NSDateFormatterShortStyle;
     status = [NSString stringWithFormat:@"%@ - %@\n\n", [df stringFromDate:[NSDate date]], status];
-    [_allStatus insertString:status atIndex:0];
+    [self.allStatus insertString:status atIndex:0];
     if ([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPad){
-        _logsTextView.text = [NSString stringWithFormat:@"%@\n\n%@", hideText, _allStatus];
+        self.logsTextView.text = [NSString stringWithFormat:@"%@\n\n%@", hideText, self.allStatus];
     }
     else{
-        _logsTextView.text = [NSString stringWithFormat:@"%@\n\n%@", hideText, _allStatus];
+        self.logsTextView.text = [NSString stringWithFormat:@"%@\n\n%@", hideText, self.allStatus];
     }
     NSLog(@"%@", status);
     
@@ -775,24 +776,24 @@
     
     
     // set status
-    if (_goingLocal){
-        _offlineStatusLabel.text = @"switching to local data...";
+    if (self.goingLocal){
+        self.offlineStatusLabel.text = @"switching to local data...";
     }
-    else if (_goingLive){
-        _offlineStatusLabel.text = @"switching to live data...";
+    else if (self.goingLive){
+        self.offlineStatusLabel.text = @"switching to live data...";
     }
-    else if (_viewingLocal){
-        _offlineStatusLabel.text = @"Local data";
-        _goOfflineButton.title = @"switch to live";
+    else if (self.viewingLocal){
+        self.offlineStatusLabel.text = @"Local data";
+        self.goOfflineButton.title = @"switch to live";
     }
-    else if (!_viewingLocal){
-        _offlineStatusLabel.text = @"Live data";
-        _goOfflineButton.title = @"download";
+    else if (!self.viewingLocal){
+        self.offlineStatusLabel.text = @"Live data";
+        self.goOfflineButton.title = @"download";
         [self showEditsInGeodatabaseAsBadge:nil];
     }
     
-    _goOfflineButton.enabled = !_goingLocal && !_goingLive;
-    self.syncButton.enabled = _viewingLocal;
+    self.goOfflineButton.enabled = !self.goingLocal && !self.goingLive;
+    self.syncButton.enabled = self.viewingLocal;
 
 
 }
@@ -803,10 +804,10 @@
 }
 
 - (void) showEditsInGeodatabaseAsBadge:(AGSGDBGeodatabase*)geodatabase{
-    [_badge removeFromSuperview];
+    [self.badge removeFromSuperview];
     if ([geodatabase hasLocalEdits]) {
-        _badge = [[JSBadgeView alloc]initWithParentView:self.badgeView alignment:JSBadgeViewAlignmentCenterRight];
-        _badge.badgeText = [[self numberOfEditsInGeodatabase:geodatabase] stringValue];
+        self.badge = [[JSBadgeView alloc]initWithParentView:self.badgeView alignment:JSBadgeViewAlignmentCenterRight];
+        self.badge.badgeText = [[self numberOfEditsInGeodatabase:geodatabase] stringValue];
         
     }
 }
@@ -824,11 +825,11 @@
 }
 
 - (IBAction)doneEditingGeometry:(id)sender {
-    [_mapView removeMapLayer:_sgl];
-    _sgl = nil;
-    _mapView.touchDelegate = self;
+    [self.mapView removeMapLayer:self.sgl];
+    self.sgl = nil;
+    self.mapView.touchDelegate = self;
     [self toggleGeometryEditUI];
-    [self presentViewController:_popupsVC animated:YES completion:nil];
+    [self presentViewController:self.popupsVC animated:YES completion:nil];
 }
 
 #pragma mark -

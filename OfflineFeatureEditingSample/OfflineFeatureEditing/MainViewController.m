@@ -275,9 +275,7 @@
     
     //On iPad, display the template picker vc in a popover
     if ([[AGSDevice currentDevice]isIPad]) {
-        if(!self.pvc){
-            self.pvc = [[UIPopoverController alloc]initWithContentViewController:self.featureTemplatePickerVC];
-        }
+        self.pvc = [[UIPopoverController alloc]initWithContentViewController:self.featureTemplatePickerVC];
         [self.pvc presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
         
     //On iPhone, display the vc full screen
@@ -529,6 +527,7 @@
     if ([[AGSDevice currentDevice]isIPad]) {
         //Dismiss popover
         [self.pvc dismissPopoverAnimated:YES];
+        self.pvc = nil;
         
         //Create new feature with temaplate
         AGSGDBFeatureTable* fTable = (AGSGDBFeatureTable*) layer;
@@ -562,6 +561,7 @@
 - (void) featureTemplatePickerViewControllerWasDismissed:(FeatureTemplatePickerViewController *)featureTemplatePickerViewController{
     if ([[AGSDevice currentDevice]isIPad]) {
         [self.pvc dismissPopoverAnimated:YES];
+        self.pvc = nil;
     }else{
         [featureTemplatePickerViewController dismissViewControllerAnimated:YES completion:nil];
     }

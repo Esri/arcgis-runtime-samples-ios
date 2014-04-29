@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="m5P-La-B8s">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="m5P-La-B8s">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -14,11 +14,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Qtc-hH-ozF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CXd-Dn-H9l">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5d-jP-1n7">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -35,7 +35,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <label opaque="NO" clipsSubviews="YES" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQo-6y-DT7">
-                                <rect key="frame" x="0.0" y="500" width="320" height="24"/>
+                                <rect key="frame" x="0.0" y="412" width="320" height="24"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -45,14 +45,8 @@
                                 <color key="textColor" red="0.0050738790759999996" green="0.0050738790759999996" blue="0.0050738790759999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X5z-xj-HcR" userLabel="BadgeView">
-                                <rect key="frame" x="152" y="528" width="28" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="nl5-V2-kIG">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="NM6-9k-rwK"/>
@@ -83,8 +77,18 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5z-xj-HcR" userLabel="BadgeView">
+                                <rect key="frame" x="152" y="440" width="28" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="28" id="mj0-qv-teM"/>
+                                    <constraint firstAttribute="height" constant="24" id="uQl-vn-tcN"/>
+                                </constraints>
+                                <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                            </view>
                             <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="GTn-Ys-glR" userLabel="GeometryEditToolbar">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="8lu-UF-MGz"/>
@@ -115,9 +119,11 @@
                             <constraint firstItem="GTn-Ys-glR" firstAttribute="leading" secondItem="CXd-Dn-H9l" secondAttribute="leading" id="QlF-SH-cIH"/>
                             <constraint firstItem="S5d-jP-1n7" firstAttribute="leading" secondItem="CXd-Dn-H9l" secondAttribute="leading" id="RMy-KE-EkH"/>
                             <constraint firstItem="nl5-V2-kIG" firstAttribute="top" secondItem="S5d-jP-1n7" secondAttribute="bottom" id="SsP-xd-dfZ"/>
+                            <constraint firstAttribute="bottom" secondItem="X5z-xj-HcR" secondAttribute="bottom" constant="16" id="VxO-y2-26e"/>
                             <constraint firstAttribute="trailing" secondItem="nl5-V2-kIG" secondAttribute="trailing" id="gHR-ee-u6T"/>
                             <constraint firstAttribute="trailing" secondItem="S5d-jP-1n7" secondAttribute="trailing" id="jkH-WH-7IJ"/>
                             <constraint firstItem="S5d-jP-1n7" firstAttribute="top" secondItem="CXd-Dn-H9l" secondAttribute="top" id="mGl-S6-Yec"/>
+                            <constraint firstAttribute="trailing" secondItem="X5z-xj-HcR" secondAttribute="trailing" constant="140" id="nTt-D1-fx0"/>
                             <constraint firstItem="nl5-V2-kIG" firstAttribute="leading" secondItem="CXd-Dn-H9l" secondAttribute="leading" id="t9h-Eb-a0D"/>
                         </constraints>
                         <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -141,6 +147,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>

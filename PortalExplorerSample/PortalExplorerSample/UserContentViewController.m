@@ -33,13 +33,6 @@
 
 @implementation UserContentViewController
 
-
-@synthesize itemsArray = _itemsArray;
-@synthesize foldersArray = _foldersArray;
-@synthesize contentsOp = _contentsOp;
-@synthesize doneLoading = _doneLoading;
-
-
 - (void)dealloc {
     [self.contentsOp cancel];
 }

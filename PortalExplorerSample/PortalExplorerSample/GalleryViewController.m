@@ -40,13 +40,6 @@
 
 @implementation GalleryViewController
 
-@synthesize portal = _portal;
-@synthesize listStrings = _listStrings;
-@synthesize listImages = _listImages;
-@synthesize searchStrings = _searchStrings;
-
-
-
 - (id)initWithPortal:(AGSPortal *)portal
 {
     self = [super initWithNibName:@"GalleryViewController" bundle:nil];

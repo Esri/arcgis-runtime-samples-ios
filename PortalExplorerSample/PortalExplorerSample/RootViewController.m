@@ -16,6 +16,7 @@
 #import "LoginViewController.h"
 #import "LoadingView.h"
 
+#define kLoginViewController @"LoginViewController"
 
 //contants for layers
 
@@ -51,13 +52,6 @@
 @end
 
 @implementation RootViewController
-
-@synthesize mapView = _mapView;
-@synthesize webMap = _webMap;
-@synthesize portalExplorer = _portalExplorer;
-@synthesize loginVC = _loginVC;
-@synthesize loadingView = _loadingView;
-@synthesize popOver = _popOver;
 
 
 - (void)didReceiveMemoryWarning
@@ -182,7 +176,8 @@
     //show the login view  
     
     if(!self.loginVC){
-        self.loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
+        self.loginVC = [storyboard instantiateViewControllerWithIdentifier:kLoginViewController];
         self.loginVC.delegate = self;
     }
     

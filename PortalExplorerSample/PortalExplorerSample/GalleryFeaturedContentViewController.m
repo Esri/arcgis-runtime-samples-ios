@@ -25,12 +25,6 @@
 
 @implementation GalleryFeaturedContentViewController
 
-@synthesize itemsArray = _itemsArray;
-@synthesize relatedItemsOp = _relatedItemsOp;
-@synthesize featuredContentOp = _featuredContentOp;
-@synthesize currentIconDownloads = _currentIconDownloads;
-@synthesize searchResponseArray = _searchResponseArray;
-
 - (void)dealloc {
     [self.relatedItemsOp cancel];
     [self.featuredContentOp cancel];

@@ -27,12 +27,6 @@
 
 @implementation IconDownloader
 
-@synthesize delegate = _delegate;
-@synthesize icOp = _icOp;
-@synthesize contentType = _contentType;
-@synthesize indexPath = _indexPath;
-@synthesize iconSize = _iconSize;
-
 #pragma mark - 
 
 //returns an autorelease instance of the class. 

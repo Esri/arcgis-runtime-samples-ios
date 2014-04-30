@@ -28,11 +28,6 @@
 
 @implementation LoginViewController
 
-@synthesize delegate = _delegate;
-@synthesize txtUsername = _txtUsername;
-@synthesize txtPassword = _txtPassword;
-@synthesize credential = _credential;
-
 - (void)dealloc {
     
     self.delegate = nil;
@@ -113,9 +108,6 @@
     {
         [self.delegate userDidProvideCredential:self.credential];
     }
-    
-
-    
     
 }
 

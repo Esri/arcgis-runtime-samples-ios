@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="g7G-dD-tZD">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Root View Controller-->
+        <scene sceneID="2nt-9d-GbL">
+            <objects>
+                <viewController id="g7G-dD-tZD" customClass="RootViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rLX-2p-wnU"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Ds-Zi-f67"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="gAm-OD-fY3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fog-Di-NlF">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="hpg-lx-4rC"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Portal" id="a9T-oM-hbe">
+                                        <barButtonItem key="rightBarButtonItem" title="Explore" id="PFm-pe-Eth">
+                                            <connections>
+                                                <action selector="showPortalExplorer:" destination="g7G-dD-tZD" id="noP-qp-r4z"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5o-hn-leD" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="go8-oo-Mbk">
+                                        <rect key="frame" x="14" y="479" width="56" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="fso-Sc-pdh"/>
+                                            <constraint firstAttribute="width" constant="56" id="nBW-OL-XVc"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="go8-oo-Mbk" secondAttribute="bottom" constant="13" id="PO9-5L-AAv"/>
+                                    <constraint firstItem="go8-oo-Mbk" firstAttribute="leading" secondItem="T5o-hn-leD" secondAttribute="leading" constant="14" id="dcb-an-Oek"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Fog-Di-NlF" firstAttribute="top" secondItem="gAm-OD-fY3" secondAttribute="top" id="AaW-aw-ERr"/>
+                            <constraint firstAttribute="bottom" secondItem="T5o-hn-leD" secondAttribute="bottom" id="BvQ-rS-kNL"/>
+                            <constraint firstItem="Fog-Di-NlF" firstAttribute="leading" secondItem="gAm-OD-fY3" secondAttribute="leading" id="VRx-Lv-dac"/>
+                            <constraint firstItem="T5o-hn-leD" firstAttribute="top" secondItem="Fog-Di-NlF" secondAttribute="bottom" id="Ztz-rf-zuQ"/>
+                            <constraint firstItem="T5o-hn-leD" firstAttribute="leading" secondItem="gAm-OD-fY3" secondAttribute="leading" id="iYJ-1M-iek"/>
+                            <constraint firstAttribute="width" secondItem="Fog-Di-NlF" secondAttribute="width" id="qzp-rf-g1c"/>
+                            <constraint firstItem="T5o-hn-leD" firstAttribute="width" secondItem="Fog-Di-NlF" secondAttribute="width" id="vWe-PD-etd"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="T5o-hn-leD" id="Knv-Fp-qMb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bwz-JW-upW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6" y="272"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="NFh-bW-xI2">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="HCT-ub-GMD" customClass="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bnF-vM-4if"/>
+                        <viewControllerLayoutGuide type="bottom" id="9ng-Ng-hJb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="y1C-Qd-rfu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="opS-zw-HCX">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="cXG-nV-Zpw"/>
+                                </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <items>
+                                    <navigationItem title="Login" id="clM-xO-A5l">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="mbn-TH-f18">
+                                            <connections>
+                                                <action selector="cancel" destination="HCT-ub-GMD" id="XVh-vx-imr"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Username" clearsOnBeginEditing="YES" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="xyL-Qm-BXf">
+                                <rect key="frame" x="20" y="77" width="280" height="31"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="5Qj-e1-lAU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eZF-ZP-N55">
+                                <rect key="frame" x="20" y="129" width="280" height="31"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="SwB-WE-W42"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1KC-bh-OIr">
+                                <rect key="frame" x="20" y="223" width="280" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="7vK-kJ-k09"/>
+                                </constraints>
+                                <state key="normal" title="Login">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="login" destination="HCT-ub-GMD" eventType="touchUpInside" id="nB4-n7-Iff"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="opS-zw-HCX" firstAttribute="leading" secondItem="y1C-Qd-rfu" secondAttribute="leading" id="2MP-Hf-M2p"/>
+                            <constraint firstAttribute="trailing" secondItem="eZF-ZP-N55" secondAttribute="trailing" constant="20" id="4nd-dQ-Tbe"/>
+                            <constraint firstAttribute="trailing" secondItem="xyL-Qm-BXf" secondAttribute="trailing" constant="20" id="5jG-Uw-BEP"/>
+                            <constraint firstItem="1KC-bh-OIr" firstAttribute="leading" secondItem="y1C-Qd-rfu" secondAttribute="leading" constant="20" id="C1h-Pl-bsI"/>
+                            <constraint firstItem="opS-zw-HCX" firstAttribute="top" secondItem="y1C-Qd-rfu" secondAttribute="top" id="FET-IB-Wmc"/>
+                            <constraint firstItem="eZF-ZP-N55" firstAttribute="top" secondItem="xyL-Qm-BXf" secondAttribute="bottom" constant="21" id="PxF-gY-4jx"/>
+                            <constraint firstAttribute="trailing" secondItem="1KC-bh-OIr" secondAttribute="trailing" constant="20" id="TCs-s7-cpT"/>
+                            <constraint firstItem="opS-zw-HCX" firstAttribute="width" secondItem="y1C-Qd-rfu" secondAttribute="width" id="Y9h-Al-BCO"/>
+                            <constraint firstItem="1KC-bh-OIr" firstAttribute="top" secondItem="eZF-ZP-N55" secondAttribute="bottom" constant="63" id="nVk-aG-z6T"/>
+                            <constraint firstItem="eZF-ZP-N55" firstAttribute="leading" secondItem="y1C-Qd-rfu" secondAttribute="leading" constant="20" id="nkd-KM-Rn6"/>
+                            <constraint firstItem="xyL-Qm-BXf" firstAttribute="top" secondItem="opS-zw-HCX" secondAttribute="bottom" constant="33" id="t2c-Kv-oIS"/>
+                            <constraint firstItem="xyL-Qm-BXf" firstAttribute="leading" secondItem="y1C-Qd-rfu" secondAttribute="leading" constant="20" id="wBT-R9-hZn"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <connections>
+                        <outlet property="txtPassword" destination="eZF-ZP-N55" id="R71-bo-FJ8"/>
+                        <outlet property="txtUsername" destination="xyL-Qm-BXf" id="7eE-ZB-6U4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="16S-8l-fqc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="448" y="272"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

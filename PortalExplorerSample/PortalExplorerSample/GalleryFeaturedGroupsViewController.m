@@ -28,10 +28,6 @@
 
 @implementation GalleryFeaturedGroupsViewController
 
-@synthesize featuredGroupsQueriesArray = _featuredGroupsQueriesArray;
-@synthesize groupsArray = _groupsArray;
-@synthesize operationArray = _operationArray;
-
 
 - (void)dealloc {
     [self.operationArray makeObjectsPerformSelector:@selector(cancel)];

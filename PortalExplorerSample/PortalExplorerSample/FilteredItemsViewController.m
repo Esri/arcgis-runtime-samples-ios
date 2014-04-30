@@ -26,12 +26,6 @@
 
 @implementation FilteredItemsViewController
 
-@synthesize queryParams = _queryParams;
-@synthesize itemsArray = _itemsArray;
-@synthesize filteredItemsOp = _filteredItemsOp;
-
-
-
 - (void)dealloc {
     [self.filteredItemsOp cancel];
 }

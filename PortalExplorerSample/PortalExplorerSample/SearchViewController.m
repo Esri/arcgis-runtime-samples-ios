@@ -44,13 +44,6 @@
 
 @implementation SearchViewController
 
-@synthesize searchBar = _searchBar;
-@synthesize itemsArray = _itemsArray;
-@synthesize itemsQueryOp = _itemsQueryOp;
-@synthesize itemsDoneLoading = _itemsDoneLoading;
-@synthesize groupsArray = _groupsArray;
-@synthesize groupsQueryOp = _groupsQueryOp;
-@synthesize groupsDoneLoading = _groupsDoneLoading;
 
 - (void)dealloc {
     

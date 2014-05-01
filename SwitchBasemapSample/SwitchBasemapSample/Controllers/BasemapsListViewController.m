@@ -145,6 +145,8 @@ static id sharedInstance = nil;
     UILabel *descriptionLabel = (UILabel*)[cell viewWithTag:3];
     [descriptionLabel setText:item.snippet];
     
+    //disable highlighting of selected cell
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 

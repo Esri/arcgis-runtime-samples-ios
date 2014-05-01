@@ -13,4 +13,4 @@ This sample shows how to change the basemap for an `AGSWebMap`. It also provides
 3. The web map is loaded with the chosen option as the basemap.
 
 ###How the sample works
-The sample uses the `- openIntoMapView:withAlternateBaseMap:` method on `AGSWebMap` to load an alternate basemap for a given web map. The sample also includes a helper class to connect to a portal and access the basemaps in that portal. The helper class serves as the data source for both the collection view and the table view.
+The sample uses the `-switchBaseMapOnMapView:basemap` method on `AGSWebMap` to load an alternate basemap for a given web map. The sample also includes a helper class to connect to a portal and access the basemaps in that portal. The helper class serves as the data source for both the collection view and the table view.

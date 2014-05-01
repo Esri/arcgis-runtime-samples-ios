@@ -60,12 +60,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="SwitchBasemapSample" id="QPc-pz-osb">
-                        <barButtonItem key="leftBarButtonItem" title="Table" id="ejQ-CQ-PgC">
+                        <barButtonItem key="leftBarButtonItem" title="List" id="ejQ-CQ-PgC">
                             <connections>
                                 <segue destination="azg-o0-Ykr" kind="modal" identifier="OptionsTableSegue" id="rpH-Uz-2zd"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Collection" id="Ola-Ip-Oeh">
+                        <barButtonItem key="rightBarButtonItem" title="Grid" id="Ola-Ip-Oeh">
                             <connections>
                                 <segue destination="fjU-DB-SZB" kind="modal" identifier="OptionsSegue" id="TUY-0A-vG8"/>
                             </connections>

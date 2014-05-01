@@ -49,7 +49,6 @@
 -(void)addWebMapWithItemId:(NSString*)itemId {
     self.webMap = [AGSWebMap webMapWithItemId:itemId credential:nil];
     [self.webMap setDelegate:self];
-    [self.webMap setZoomToDefaultExtentOnOpen:YES];
 }
 
 //once the user selects a different web map on the list or collection
@@ -75,7 +74,7 @@
     //else if the web map is a newly selected web map, then switch the base map
     //for the default web map
     else if (webMap == self.selectedWebMap) {
-        [self.webMap openIntoMapView:self.mapView withAlternateBaseMap:self.selectedWebMap.baseMap];
+        [self.webMap switchBaseMapOnMapView:self.selectedWebMap.baseMap];
     }
 }
 

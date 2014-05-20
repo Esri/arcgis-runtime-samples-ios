@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
+            <connections>
+                <outlet property="expiryLabel" destination="FQD-2q-3LY" id="GQm-2I-oP5"/>
+                <outlet property="licenseButton" destination="nAx-uL-wdX" id="W1n-Hh-tfg"/>
+                <outlet property="licenseLevelLabel" destination="aWk-td-d4g" id="PRG-xx-BVb"/>
+                <outlet property="logTextView" destination="LVG-fr-Wcr" id="1bh-yS-dl5"/>
+                <outlet property="view" destination="6" id="7"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="6">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4Q-1a-SQn">
+                    <rect key="frame" x="0.0" y="86" width="320" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWk-td-d4g">
+                    <rect key="frame" x="0.0" y="123" width="321" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiry" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bj-v4-ecD">
+                    <rect key="frame" x="0.0" y="160" width="321" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiry" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQD-2q-3LY">
+                    <rect key="frame" x="0.0" y="197" width="321" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAx-uL-wdX">
+                    <rect key="frame" x="124" y="37" width="73" height="41"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <state key="normal" title="Sign In">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="licenseButtonPressed:" destination="-1" eventType="touchUpInside" id="PXo-Cu-oMP"/>
+                    </connections>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="LogView" translatesAutoresizingMaskIntoConstraints="NO" id="LVG-fr-Wcr">
+                    <rect key="frame" x="20" y="234" width="281" height="278"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="nAx-uL-wdX" firstAttribute="centerX" secondItem="N4Q-1a-SQn" secondAttribute="centerX" id="0PJ-ED-MBR"/>
+                <constraint firstItem="FQD-2q-3LY" firstAttribute="leading" secondItem="N4Q-1a-SQn" secondAttribute="leading" id="1Df-nz-wlv"/>
+                <constraint firstItem="aWk-td-d4g" firstAttribute="top" secondItem="N4Q-1a-SQn" secondAttribute="bottom" constant="8" symbolic="YES" id="Aj7-iu-hZa"/>
+                <constraint firstItem="nAx-uL-wdX" firstAttribute="top" secondItem="6" secondAttribute="top" constant="37" id="F9p-6n-vA5"/>
+                <constraint firstItem="LVG-fr-Wcr" firstAttribute="top" secondItem="FQD-2q-3LY" secondAttribute="bottom" constant="8" symbolic="YES" id="Fh1-ak-TYc"/>
+                <constraint firstItem="FQD-2q-3LY" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="JdI-v7-EXu"/>
+                <constraint firstItem="FQD-2q-3LY" firstAttribute="leading" secondItem="4bj-v4-ecD" secondAttribute="leading" id="KaV-mX-w3b"/>
+                <constraint firstAttribute="bottom" secondItem="LVG-fr-Wcr" secondAttribute="bottom" constant="56" id="Ogl-Zv-f4p"/>
+                <constraint firstItem="nAx-uL-wdX" firstAttribute="centerX" secondItem="4bj-v4-ecD" secondAttribute="centerX" id="Qfz-ul-W1r"/>
+                <constraint firstItem="nAx-uL-wdX" firstAttribute="centerX" secondItem="FQD-2q-3LY" secondAttribute="centerX" id="Uac-9l-Zfn"/>
+                <constraint firstItem="FQD-2q-3LY" firstAttribute="leading" secondItem="aWk-td-d4g" secondAttribute="leading" id="aBm-kz-L5G"/>
+                <constraint firstItem="FQD-2q-3LY" firstAttribute="top" secondItem="4bj-v4-ecD" secondAttribute="bottom" constant="8" id="cBM-fe-paB"/>
+                <constraint firstItem="LVG-fr-Wcr" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="20" symbolic="YES" id="cQl-4h-p5n"/>
+                <constraint firstItem="N4Q-1a-SQn" firstAttribute="top" secondItem="nAx-uL-wdX" secondAttribute="bottom" constant="8" id="clD-IU-cTU"/>
+                <constraint firstItem="FQD-2q-3LY" firstAttribute="top" secondItem="4bj-v4-ecD" secondAttribute="bottom" constant="8" symbolic="YES" id="ex6-xt-257"/>
+                <constraint firstItem="4bj-v4-ecD" firstAttribute="top" secondItem="aWk-td-d4g" secondAttribute="bottom" constant="8" id="gI3-tU-FBb"/>
+                <constraint firstAttribute="trailing" secondItem="N4Q-1a-SQn" secondAttribute="trailing" id="lok-JM-Fxo"/>
+                <constraint firstItem="nAx-uL-wdX" firstAttribute="centerX" secondItem="aWk-td-d4g" secondAttribute="centerX" id="oaq-9e-6Vd"/>
+                <constraint firstItem="nAx-uL-wdX" firstAttribute="centerX" secondItem="LVG-fr-Wcr" secondAttribute="centerX" id="tBQ-yN-5Wc"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+</document>

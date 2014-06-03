@@ -12,9 +12,8 @@
 
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
-#import "BasemapsCollectionViewController.h"
-#import "BasemapsListViewController.h"
+#import "BasemapPickerDelegate.h"
 
-@interface SwitchBasemapViewController : UIViewController <AGSWebMapDelegate, BasemapsCollectionViewControllerDelegate, BasemapsListViewControllerDelegate>
+@interface SwitchBasemapViewController : UIViewController <AGSWebMapDelegate, BasemapPickerDelegate>
 
 @end

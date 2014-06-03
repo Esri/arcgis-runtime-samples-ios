@@ -13,20 +13,10 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 #import "PortalBasemapHelper.h"
+#import "BasemapPickerDelegate.h"
 
-@class BasemapsCollectionViewController;
+@interface BasemapsCollectionViewController : UIViewController <AGSPortalDelegate, PortalBasemapHelperDelegate, AGSWebMapDelegate>
 
-
-@protocol BasemapsCollectionViewControllerDelegate
-
--(void)basemapsCollectionViewController:(BasemapsCollectionViewController*)controller didSelectMapWithItemId:(NSString*)itemId credential:(AGSCredential*)credential;
--(void)basemapsCollectionViewControllerDidCancel:(BasemapsCollectionViewController*)controller;
-
-@end
-
-
-@interface BasemapsCollectionViewController : UIViewController <AGSPortalDelegate, PortalBasemapHelperDelegate>
-
-@property (weak, nonatomic) id <BasemapsCollectionViewControllerDelegate> delegate;
+@property (weak, nonatomic) id <BasemapPickerDelegate> delegate;
 
 @end

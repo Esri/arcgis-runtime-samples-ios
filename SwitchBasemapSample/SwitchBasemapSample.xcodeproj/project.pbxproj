@@ -22,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E549109191941A5002AABFF /* BasemapPickerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BasemapPickerDelegate.h; path = Delegates/BasemapPickerDelegate.h; sourceTree = "<group>"; };
 		3E7E531319008E5A0074C02C /* PortalBasemapHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PortalBasemapHelper.h; path = Helper/PortalBasemapHelper.h; sourceTree = "<group>"; };
 		3E7E531419008E5A0074C02C /* PortalBasemapHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PortalBasemapHelper.m; path = Helper/PortalBasemapHelper.m; sourceTree = "<group>"; };
 		3E7E53171900C8710074C02C /* BasemapsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasemapsListViewController.h; path = Controllers/BasemapsListViewController.h; sourceTree = "<group>"; };
@@ -94,6 +95,7 @@
 		3E90B60F18FDC1F4009C3B8E /* SwitchBasemapSample */ = {
 			isa = PBXGroup;
 			children = (
+				3E92B09819193991002F5A9D /* Delegates */,
 				3EE7CEF41901A097009C008F /* Libraries */,
 				3E7E531619008E6A0074C02C /* Helper */,
 				3E90B64018FDEEFA009C3B8E /* Controllers */,
@@ -130,6 +132,14 @@
 				3E7E53181900C8710074C02C /* BasemapsListViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3E92B09819193991002F5A9D /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				3E549109191941A5002AABFF /* BasemapPickerDelegate.h */,
+			);
+			name = Delegates;
 			sourceTree = "<group>";
 		};
 		3EE7CEF41901A097009C008F /* Libraries */ = {

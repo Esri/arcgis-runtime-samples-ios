@@ -12,12 +12,13 @@
 
 #import "SwitchBasemapViewController.h"
 #import "AppConstants.h"
+#import "BasemapsCollectionViewController.h"
+#import "BasemapsListViewController.h"
 
 @interface SwitchBasemapViewController ()
 
 @property (strong, nonatomic) IBOutlet AGSMapView *mapView;
 @property (strong, nonatomic) AGSWebMap *webMap;
-@property (strong, nonatomic) AGSWebMap *selectedWebMap;
 @property (strong, nonatomic) AGSPortal *portal;
 
 @end
@@ -51,11 +52,10 @@
     [self.webMap setDelegate:self];
 }
 
-//once the user selects a different web map on the list or collection
-//load that web map using the credential provided
--(void)switchBasemapWithItemId:(NSString*)itemId credential:(AGSCredential*)credential {
-    self.selectedWebMap = [AGSWebMap webMapWithItemId:itemId credential:credential];
-    [self.selectedWebMap setDelegate:self];
+//once the user selects a different basemap on the list or collection
+//switch the basemap
+-(void)switchBasemapWithBasemap:(AGSWebMapBaseMap*)selectedBasemap {
+    [self.webMap switchBaseMapOnMapView:selectedBasemap];
 }
 
 #pragma mark - AGSWebMapDelegate methods
@@ -67,40 +67,20 @@
 
 //able to load the web map
 -(void)webMapDidLoad:(AGSWebMap *)webMap {
-    //if the web map is the default one then simply show the web map
-    if (webMap == self.webMap) {
-        [webMap openIntoMapView:self.mapView];
-    }
-    //else if the web map is a newly selected web map, then switch the base map
-    //for the default web map
-    else if (webMap == self.selectedWebMap) {
-        [self.webMap switchBaseMapOnMapView:self.selectedWebMap.baseMap];
-    }
+    //show the web map
+    [webMap openIntoMapView:self.mapView];
 }
 
-#pragma mark - BasemapsCollectionViewControllerDelegate methods
+#pragma mark - BasemapPickerDelegate methods
 
-//user selected a new web map from the collection
--(void)basemapsCollectionViewController:(BasemapsCollectionViewController *)controller didSelectMapWithItemId:(NSString *)itemId credential:(AGSCredential*)credential {
+//user selected a new base map from the collection
+-(void)basemapPickerController:(UIViewController *)controller didSelectBasemap:(AGSWebMapBaseMap *)basemap {
+    [self switchBasemapWithBasemap:basemap];
     [self dismissViewControllerAnimated:YES completion:nil];
-    [self switchBasemapWithItemId:itemId credential:credential];
 }
 
 //user tapped cancel button
--(void)basemapsCollectionViewControllerDidCancel:(BasemapsCollectionViewController *)controller {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark - BasemapsListViewControllerDelegate methods
-
-//user selected a new web map from the list
--(void)basemapsListViewController:(BasemapsListViewController *)controller didSelectMapWithItemId:(NSString *)itemId credential:(AGSCredential *)credential{
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [self switchBasemapWithItemId:itemId credential:credential];
-}
-
-//user tapped cancel button
--(void)basemapsListViewControllerDidCancel:(BasemapsListViewController *)controller {
+-(void)basemapPickerControllerDidCancel:(UIViewController *)controller {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -22,6 +22,8 @@
 @property (nonatomic, weak) IBOutlet UIView *footerView;
 @property (nonatomic, strong) AGSCredential *credential;
 @property (nonatomic, assign) BOOL thumbnailLoaded;
+@property (nonatomic, strong) AGSWebMap *selectedWebMap;
+@property (nonatomic, strong) NSMutableDictionary *basemapDictionary;
 
 @end
 
@@ -66,6 +68,11 @@ static id sharedInstance = nil;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //initialize the basedictionary if nil
+    if (!self.basemapDictionary) {
+        self.basemapDictionary = [NSMutableDictionary dictionary];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -97,7 +104,7 @@ static id sharedInstance = nil;
     //if required create a credential
     //self.credential = [[AGSCredential alloc] initWithUser:kUserName password:kPassword];
     self.credential = nil;
-    [self.portalBasemapHelper connectToPortal:portalUrl withCredential:self.credential];
+    [self.portalBasemapHelper fetchWebmapsFromPortal:portalUrl withCredential:self.credential];
 }
 
 //hide footer in case no more results
@@ -154,7 +161,14 @@ static id sharedInstance = nil;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     AGSPortalItem *item = (AGSPortalItem*)[self.portalItems objectAtIndex:indexPath.item];
-    [self.delegate basemapsListViewController:self didSelectMapWithItemId:item.itemId credential:self.credential];
+    AGSWebMapBaseMap *basemap = [self cachedBasemapForItemId:item.itemId];
+    if (basemap) {
+        [self.delegate basemapPickerController:self didSelectBasemap:basemap];
+    }
+    else {
+        self.selectedWebMap = [[AGSWebMap alloc] initWithPortalItem:item];
+        [self.selectedWebMap setDelegate:self];
+    }
 }
 
 #pragma mark - PortalBasemapHelperDelegate methods
@@ -186,15 +200,30 @@ static id sharedInstance = nil;
     [self.tableView reloadData];
 }
 
+#pragma mark - WebMap delegate methods
+
+-(void)webMapDidLoad:(AGSWebMap *)webMap {
+    //cache the base map
+    [self.basemapDictionary setValue:webMap.baseMap forKeyPath:webMap.portalItem.itemId];
+    [self.delegate basemapPickerController:self didSelectBasemap:self.selectedWebMap.baseMap];
+}
+
 #pragma mark - actions
 
 -(IBAction)cancel:(id)sender {
-    [self.delegate basemapsListViewControllerDidCancel:self];
+    [self.delegate basemapPickerControllerDidCancel:self];
 }
 
 //load more results
 -(IBAction)loadMoreResults:(id)sender {
-    [self.portalBasemapHelper nextResults];
+    [self.portalBasemapHelper fetchNextResults];
+}
+
+#pragma mark - local/cached basemap methods
+
+-(AGSWebMapBaseMap*)cachedBasemapForItemId:(NSString*)itemId {
+    AGSWebMapBaseMap *basemap = [self.basemapDictionary objectForKey:itemId];
+    return basemap;
 }
 
 @end

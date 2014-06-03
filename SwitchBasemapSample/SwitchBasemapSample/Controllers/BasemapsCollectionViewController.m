@@ -20,12 +20,11 @@
 @property (nonatomic, strong) NSArray *portalItems;
 @property (nonatomic, strong) AGSPortal *portal;
 @property (nonatomic, strong) PortalBasemapHelper *portalBasemapHelper;
-
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
 @property (nonatomic, strong) AGSCredential *credential;
-
 @property (nonatomic, assign) BOOL thumbnailLoaded;
+@property (nonatomic, strong) AGSWebMap *selectedWebMap;
+@property (nonatomic, strong) NSMutableDictionary *basemapDictionary;
 
 @end
 
@@ -71,6 +70,11 @@ static id sharedInstance = nil;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //initialize the basedictionary if nil
+    if (!self.basemapDictionary) {
+        self.basemapDictionary = [NSMutableDictionary dictionary];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -103,7 +107,7 @@ static id sharedInstance = nil;
     //if required create a credential
     //self.credential = [[AGSCredential alloc] initWithUser:kUserName password:kPassword];
     self.credential = nil;
-    [self.portalBasemapHelper connectToPortal:portalUrl withCredential:self.credential];
+    [self.portalBasemapHelper fetchWebmapsFromPortal:portalUrl withCredential:self.credential];
 }
 
 #pragma mark - dataSource methods
@@ -161,7 +165,14 @@ static id sharedInstance = nil;
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (!([self.portalBasemapHelper hasMoreResults] && indexPath.item == self.portalItems.count)) {
         AGSPortalItem *item = (AGSPortalItem*)[self.portalItems objectAtIndex:indexPath.item];
-        [self.delegate basemapsCollectionViewController:self didSelectMapWithItemId:item.itemId credential:self.credential];
+        AGSWebMapBaseMap *basemap = [self cachedBasemapForItemId:item.itemId];
+        if (basemap) {
+            [self.delegate basemapPickerController:self didSelectBasemap:basemap];
+        }
+        else {
+            self.selectedWebMap = [[AGSWebMap alloc] initWithPortalItem:item];
+            [self.selectedWebMap setDelegate:self];
+        }
     }
 }
 
@@ -185,15 +196,23 @@ static id sharedInstance = nil;
     }
 }
 
+#pragma mark - Web map delegate methods
+
+-(void)webMapDidLoad:(AGSWebMap *)webMap {
+    //cache the base map
+    [self.basemapDictionary setValue:webMap.baseMap forKeyPath:webMap.portalItem.itemId];
+    [self.delegate basemapPickerController:self didSelectBasemap:self.selectedWebMap.baseMap];
+}
+
 #pragma mark - actions
 
 -(IBAction)cancel:(id)sender {
-    [self.delegate basemapsCollectionViewControllerDidCancel:self];
+    [self.delegate basemapPickerControllerDidCancel:self];
 }
 
 //load the next set of results
 -(IBAction)loadMoreResults:(id)sender {
-    [self.portalBasemapHelper nextResults];
+    [self.portalBasemapHelper fetchNextResults];
 }
 
 #pragma mark - PortalBasemapHelperDelegate methods
@@ -219,6 +238,13 @@ static id sharedInstance = nil;
 //reload the data to adjust the layout based on orientation
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     [self.collectionView reloadData];
+}
+
+#pragma mark - local/cached basemap methods
+
+-(AGSWebMapBaseMap*)cachedBasemapForItemId:(NSString*)itemId {
+    AGSWebMapBaseMap *basemap = [self.basemapDictionary objectForKey:itemId];
+    return basemap;
 }
 
 @end

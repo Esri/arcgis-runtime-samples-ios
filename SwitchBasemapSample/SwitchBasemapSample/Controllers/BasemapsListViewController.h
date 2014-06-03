@@ -12,20 +12,12 @@
 
 #import <UIKit/UIKit.h>
 #import "PortalBasemapHelper.h"
+#import "BasemapPickerDelegate.h"
 
-@protocol BasemapsListViewControllerDelegate;
-
-@interface BasemapsListViewController : UIViewController <PortalBasemapHelperDelegate>
+@interface BasemapsListViewController : UIViewController <PortalBasemapHelperDelegate, AGSWebMapDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (weak, nonatomic) id <BasemapsListViewControllerDelegate> delegate;
-
-@end
-
-@protocol BasemapsListViewControllerDelegate
-
--(void)basemapsListViewController:(BasemapsListViewController*)controller didSelectMapWithItemId:(NSString*)itemId credential:(AGSCredential*)credential;
--(void)basemapsListViewControllerDidCancel:(BasemapsListViewController*)controller;
+@property (weak, nonatomic) id <BasemapPickerDelegate> delegate;
 
 @end

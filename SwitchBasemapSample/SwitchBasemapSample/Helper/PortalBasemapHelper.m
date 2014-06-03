@@ -30,7 +30,7 @@
 
 //method to connect to the given portal url with the provided credential
 //portalURL is required but the credential can be nil
-- (void)connectToPortal:(NSURL*)portalURL withCredential:(AGSCredential*)credential {
+- (void)fetchWebmapsFromPortal:(NSURL*)portalURL withCredential:(AGSCredential*)credential {
     self.portalUrl = portalURL;
     self.credential = credential;
     self.portal = [[AGSPortal alloc] initWithURL:portalURL credential:credential];
@@ -47,7 +47,7 @@
 
 //method to request for the next set of results
 //the results are returned via the delegate
-- (void)nextResults {
+- (void)fetchNextResults {
     if ([self.lastestResultSet nextQueryParams]) {
         [self.portal findItemsWithQueryParams:[self.lastestResultSet nextQueryParams]];
     }

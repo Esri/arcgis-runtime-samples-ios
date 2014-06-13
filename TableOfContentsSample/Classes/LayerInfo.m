@@ -110,6 +110,15 @@
                 [self constructTree:dynamicMSL.mapServiceInfo];              
             }
             
+            if([layer isKindOfClass:[AGSImageServiceLayer class]])
+            {
+                //since this is the root layer on the map, we depend on the view's hidden property.
+                _visible = self.layer.visible;
+                
+                self.legendElements = nil;
+                
+            }
+            
              //check if the layer is tiled map service layer
             if([layer isKindOfClass:[AGSTiledMapServiceLayer class]])
             {

@@ -14,14 +14,14 @@
 #import <Foundation/Foundation.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface LegendDataSource : NSObject <UITableViewDataSource,AGSMapServiceInfoDelegate>
+@interface LegendDataSource : NSObject <UITableViewDataSource>
 
+@property (nonatomic,strong) AGSMapContentsTree* layerTree;
 @property (nonatomic, strong) UITableView* tableView;
 @property (nonatomic, strong) NSMutableArray* legendInfos;
 
-- (id) init;
-- (void) reload;
-- (void) addLegendForLayer:(AGSLayer*)layer;
+
+- (id) initWithLayerTree:(AGSMapContentsTree*)layerTree;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView ;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section ;

@@ -26,24 +26,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Register for geometry changed notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToLayerLoaded:) name:AGSLayerDidLoadNotification object:nil];
-    
 	NSURL *mapUrl = [NSURL URLWithString:@"http://services.arcgisonline.com/ArcGIS/rest/services/Specialty/Soil_Survey_Map/MapServer"];
 	AGSTiledMapServiceLayer *tiledLyr = [AGSTiledMapServiceLayer tiledMapServiceLayerWithURL:mapUrl];
-	[self.mapView addMapLayer:tiledLyr withName:@"Tiled Layer"];
+	[self.mapView addMapLayer:tiledLyr withName:@"Soils"];
 
-	//A data source that will hold the legend items
-	self.legendDataSource = [[LegendDataSource alloc] init];
+	//A data source that will hold the legend items for all the map contents (layers)
+	self.legendDataSource = [[LegendDataSource alloc] initWithLayerTree:[[AGSMapContentsTree alloc]initWithMapView:self.mapView manageLayerVisibility:NO]];
+    
+    [self.mapView addMapLayer:[AGSDynamicMapServiceLayer dynamicMapServiceLayerWithURL:[NSURL URLWithString:@"http://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/MapServer"]] withName:@"Recreation"];
+    
+    [self.mapView addMapLayer:[AGSFeatureLayer featureServiceLayerWithURL:[NSURL URLWithString:@"http://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0"] mode:AGSFeatureLayerModeOnDemand] withName:@"Incidents"];
 }
 
 #pragma mark -
 
-- (void)respondToLayerLoaded:(NSNotification*)notification {
-    
-	//Add legend for each layer added to the map
-	[self.legendDataSource addLegendForLayer:(AGSLayer *)notification.object];
-}
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
 	//Re-show popOver to position it correctly after orientation change

@@ -18,7 +18,6 @@
 		97B273EA1288D5F800CF17E5 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B273E81288D5F800CF17E5 /* icon@2x.png */; };
 		97B273EB1288D5F800CF17E5 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B273E91288D5F800CF17E5 /* icon.png */; };
 		97CC0948128342B00002F66E /* cache_World in Resources */ = {isa = PBXBuildFile; fileRef = 97CC07BB128342B00002F66E /* cache_World */; };
-		AF6FBC8C12550E5300F476B4 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6FBC8B12550E5300F476B4 /* MainWindow-iPad.xib */; };
 		C56B3F7414C6041D003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B3F7314C6041D003A46EB /* ArcGIS.bundle */; };
 /* End PBXBuildFile section */
 
@@ -194,7 +193,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EE6BBE418DCED060092054A /* Storyboard.storyboard in Resources */,
-				AF6FBC8C12550E5300F476B4 /* MainWindow-iPad.xib in Resources */,
 				97CC0948128342B00002F66E /* cache_World in Resources */,
 				97B273EA1288D5F800CF17E5 /* icon@2x.png in Resources */,
 				97B273EB1288D5F800CF17E5 /* icon.png in Resources */,

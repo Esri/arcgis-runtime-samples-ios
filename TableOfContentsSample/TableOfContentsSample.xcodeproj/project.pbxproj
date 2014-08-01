@@ -15,7 +15,6 @@
 		97B8C41A16786197003B6E1B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B8C41916786197003B6E1B /* Default-568h@2x.png */; };
 		97E8186C1304CDDF001E3C72 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E8186A1304CDDF001E3C72 /* icon.png */; };
 		97E8186D1304CDDF001E3C72 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E8186B1304CDDF001E3C72 /* icon@2x.png */; };
-		AF6FBC8C12550E5300F476B4 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6FBC8B12550E5300F476B4 /* MainWindow-iPad.xib */; };
 		C56B40D414CF877E003A46EB /* TOCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56B409014C78B6C003A46EB /* TOCViewController.m */; };
 		C56B40D714CF920A003A46EB /* LayerInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C56B40D614CF920A003A46EB /* LayerInfoCell.m */; };
 		C56B40DA14CF923B003A46EB /* CircleArrowRight_sml.png in Resources */ = {isa = PBXBuildFile; fileRef = C56B40D814CF923A003A46EB /* CircleArrowRight_sml.png */; };
@@ -42,7 +41,6 @@
 		97B8C41916786197003B6E1B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		97E8186A1304CDDF001E3C72 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		97E8186B1304CDDF001E3C72 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
-		AF6FBC8B12550E5300F476B4 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		C56B408F14C78B6C003A46EB /* TOCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOCViewController.h; sourceTree = "<group>"; };
 		C56B409014C78B6C003A46EB /* TOCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOCViewController.m; sourceTree = "<group>"; };
 		C56B40D514CF920A003A46EB /* LayerInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerInfoCell.h; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 		AF6FBC8A12550E5300F476B4 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
-				AF6FBC8B12550E5300F476B4 /* MainWindow-iPad.xib */,
 			);
 			name = "Resources-iPad";
 			sourceTree = "<group>";
@@ -244,7 +241,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF6FBC8C12550E5300F476B4 /* MainWindow-iPad.xib in Resources */,
 				97E8186C1304CDDF001E3C72 /* icon.png in Resources */,
 				97E8186D1304CDDF001E3C72 /* icon@2x.png in Resources */,
 				C56B40DA14CF923B003A46EB /* CircleArrowRight_sml.png in Resources */,

@@ -161,7 +161,7 @@
     
     [alert show];
     NSLog(@"%@",[error localizedDescription]);
-    if([error ags_isAuthenticationError]){
+    if([[error localizedDescription] containsString:@"expired"]){
         //The oAuth refresh token probably expired, user needs to sign in again.
         //This will probably never happen in this sample because we set the refreshTokenExpirationInterval to -1 (never expires)
         [self.signInButton setTitle:@"Sign In" forState:UIControlStateNormal];

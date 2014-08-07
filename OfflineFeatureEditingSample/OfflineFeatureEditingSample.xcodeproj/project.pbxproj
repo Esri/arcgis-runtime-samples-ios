@@ -24,6 +24,7 @@
 		975579CF180A561300904382 /* FeatureTemplatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975579CD180A561300904382 /* FeatureTemplatePickerViewController.m */; };
 		975579D7180B624300904382 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 975579D4180B624300904382 /* SVProgressHUD.bundle */; };
 		975579D8180B624300904382 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 975579D6180B624300904382 /* SVProgressHUD.m */; };
+		975BF2BE1993F42200BF63F8 /* FeatureTemplatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 975BF2BD1993F42200BF63F8 /* FeatureTemplatePickerViewController.xib */; };
 		9786549018109EF000073680 /* JSBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9786548F18109EF000073680 /* JSBadgeView.m */; };
 		97C0BB0A18BFC7BA0027B90C /* BackgroundHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 97C0BB0918BFC7BA0027B90C /* BackgroundHelper.m */; };
 		97DDDEC318B57FD700D8A6E6 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DDDEC218B57FD700D8A6E6 /* LoadingView.m */; };
@@ -56,6 +57,7 @@
 		975579D4180B624300904382 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		975579D5180B624300904382 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		975579D6180B624300904382 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		975BF2BD1993F42200BF63F8 /* FeatureTemplatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeatureTemplatePickerViewController.xib; sourceTree = "<group>"; };
 		9786548E18109EF000073680 /* JSBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBadgeView.h; sourceTree = "<group>"; };
 		9786548F18109EF000073680 /* JSBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBadgeView.m; sourceTree = "<group>"; };
 		97C0BB0818BFC7BA0027B90C /* BackgroundHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundHelper.h; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				97110210180A17240085B216 /* MainViewController.h */,
 				97110211180A17240085B216 /* MainViewController.m */,
 				975579CD180A561300904382 /* FeatureTemplatePickerViewController.m */,
+				975BF2BD1993F42200BF63F8 /* FeatureTemplatePickerViewController.xib */,
 				975579CE180A561300904382 /* FeatureTemplatePickerViewController.h */,
 			);
 			name = Controllers;
@@ -274,6 +277,7 @@
 				975579D7180B624300904382 /* SVProgressHUD.bundle in Resources */,
 				3E92AFB9190B1211002F5A9D /* Storyboard_iPad.storyboard in Resources */,
 				3E92AFB7190AFBDE002F5A9D /* Storyboard.storyboard in Resources */,
+				975BF2BE1993F42200BF63F8 /* FeatureTemplatePickerViewController.xib in Resources */,
 				975579CC180A1DB600904382 /* SanFrancisco.tpk in Resources */,
 				9711021A180A17240085B216 /* InfoPlist.strings in Resources */,
 			);

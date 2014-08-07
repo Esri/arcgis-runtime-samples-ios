@@ -30,14 +30,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    //Remove the file extension (if it exists) from the name
+    NSString* fileExtension = [self.tilePackage pathExtension];
+    if (![fileExtension isEqualToString:@""]) {
+        self.tilePackage = [self.tilePackage stringByDeletingPathExtension];
+    }
     
 	//Initialze the layer
 	self.localTiledLayer = [AGSLocalTiledLayer localTiledLayerWithName:self.tilePackage];
+    
 
 	//If layer was initialized properly, add to the map 
-	if(self.localTiledLayer != nil){
+	if(self.localTiledLayer != nil && !self.localTiledLayer.error){
 			[self.mapView addMapLayer:self.localTiledLayer withName:@"Local Tiled Layer"];
-	}
+	}else{
+        [[[UIAlertView alloc]initWithTitle:@"Could not load tile package" message:[self.localTiledLayer.error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+    }
 }
 
 - (void)viewDidUnload 

@@ -249,6 +249,7 @@
     if ([[AGSDevice currentDevice] isIPad]) {
         self.leftContainer.hidden = NO;
         self.popupsVC.modalPresentationStyle = UIModalPresentationFormSheet;
+        self.popupsVC.modalPresenter = self;
         self.popupsVC.view.frame = self.leftContainer.bounds;
         [self.leftContainer addSubview:self.popupsVC.view];
     }

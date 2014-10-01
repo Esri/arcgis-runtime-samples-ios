@@ -142,7 +142,7 @@
     self.countyQueryTask.delegate = self;
     
     AGSQuery *countyQuery = [AGSQuery query];
-    countyQuery.where = @"STATE_NAME = 'California'";
+    countyQuery.whereClause = @"STATE_NAME = 'California'";
     countyQuery.outFields = [NSArray arrayWithObject:@"*"];
 	countyQuery.returnGeometry = YES;
     countyQuery.outSpatialReference = self.mapView.spatialReference;
@@ -153,7 +153,7 @@
     self.cityQueryTask.delegate = self;
     
     AGSQuery *cityQuery = [AGSQuery query];
-    cityQuery.where = @"STATE_NAME = 'California'";
+    cityQuery.whereClause = @"STATE_NAME = 'California'";
     cityQuery.outFields = [NSArray arrayWithObject:@"*"];
 	cityQuery.returnGeometry = YES;
     cityQuery.outSpatialReference = self.mapView.spatialReference;

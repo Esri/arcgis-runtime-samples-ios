@@ -192,8 +192,11 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
        [self dismissViewControllerAnimated:NO completion:nil];
     
     //Next, Present the popup view controller
-    [self presentViewController:self.popupVC animated:YES completion:nil];
-    [self.popupVC startEditingCurrentPopup];
+    [self presentViewController:self.popupVC animated:YES completion:^{
+        //and put it in edit mode to start capturing feature details
+        [self.popupVC startEditingCurrentPopup];
+    }];
+    
     
 }
 
@@ -280,7 +283,7 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
 	popup.graphic.geometry = [[AGSGeometryEngine defaultGeometryEngine]normalizeCentralMeridianOfGeometry:popup.graphic.geometry];
 	
     
-	int oid = [self.activeFeatureLayer objectIdForFeature:popup.graphic];
+	long long oid = [self.activeFeatureLayer objectIdForFeature:popup.graphic];
 	
 	if (oid > 0){
 		//feature has a valid objectid, this means it exists on the server

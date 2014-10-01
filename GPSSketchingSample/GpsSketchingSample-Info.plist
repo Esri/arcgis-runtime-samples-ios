@@ -30,5 +30,7 @@
 	<string>Storyboard</string>
 	<key>UIMainStoryboardFile~ipad</key>
 	<string>Storyboard</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>To show your location on the map</string>
 </dict>
 </plist>

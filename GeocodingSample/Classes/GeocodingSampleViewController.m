@@ -153,7 +153,7 @@ static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/servic
 		}
         
         //if we have more than one result, zoom to the extent of all results
-        int nCount = [results count];
+        NSUInteger nCount = [results count];
         if (nCount > 1)
         {  
 			[self.mapView zoomToEnvelope:self.graphicsLayer.fullEnvelope animated:YES];

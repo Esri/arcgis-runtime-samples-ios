@@ -45,9 +45,9 @@
 		9755BA22167B966F00518E4D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		975A5ECE134BE79900759B4A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		975A5ECF134BE79900759B4A /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
-		97825AA717F658D40044D1FD /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "../Data/tile package/SanFrancisco.tpk"; sourceTree = SOURCE_ROOT; };
-		97825AA917F658F40044D1FD /* RuntimeSanFrancisco.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; name = RuntimeSanFrancisco.geodatabase; path = "../Data/network dataset/SanFrancisco/RuntimeSanFrancisco.geodatabase"; sourceTree = "<group>"; };
-		97825AAA17F658F40044D1FD /* RuntimeSanFrancisco.tn */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RuntimeSanFrancisco.tn; path = "../Data/network dataset/SanFrancisco/RuntimeSanFrancisco.tn"; sourceTree = "<group>"; };
+		97825AA717F658D40044D1FD /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "../../Data/tile package/SanFrancisco.tpk"; sourceTree = SOURCE_ROOT; };
+		97825AA917F658F40044D1FD /* RuntimeSanFrancisco.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; name = RuntimeSanFrancisco.geodatabase; path = "../../Data/network dataset/SanFrancisco/RuntimeSanFrancisco.geodatabase"; sourceTree = "<group>"; };
+		97825AAA17F658F40044D1FD /* RuntimeSanFrancisco.tn */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RuntimeSanFrancisco.tn; path = "../../Data/network dataset/SanFrancisco/RuntimeSanFrancisco.tn"; sourceTree = "<group>"; };
 		ACB8033D1319B6C100654F30 /* GreenPushpin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenPushpin.png; sourceTree = "<group>"; };
 		ACB8033E1319B6C100654F30 /* RedPushpin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedPushpin.png; sourceTree = "<group>"; };
 		ACB8036D131A31EC00654F30 /* remove24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove24.png; sourceTree = "<group>"; };

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cp5-U9-kX6">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <scenes>
+        <!--Offline Routing-->
+        <scene sceneID="OMS-Ug-amf">
+            <objects>
+                <viewController id="cp5-U9-kX6" customClass="ViewController" customModule="OfflineRouting" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9II-ab-bNU"/>
+                        <viewControllerLayoutGuide type="bottom" id="OaW-Jn-hNy"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="9vY-Rg-G9d">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5TT-oU-Uzn" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <subviews>
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="y3C-M2-Uph" userLabel="Directions Label">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="A5s-0l-yIa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </label>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="iom-Ew-i6D">
+                                        <rect key="frame" x="8" y="451" width="56" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="OLA-O8-CIo"/>
+                                            <constraint firstAttribute="height" constant="32" id="jUF-SE-tuC"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="y3C-M2-Uph" secondAttribute="width" id="9ax-vw-XJY"/>
+                                    <constraint firstItem="y3C-M2-Uph" firstAttribute="top" secondItem="5TT-oU-Uzn" secondAttribute="top" id="HCJ-AT-I2g"/>
+                                    <constraint firstAttribute="bottom" secondItem="iom-Ew-i6D" secondAttribute="bottom" constant="9" id="Jr6-qd-Nld"/>
+                                    <constraint firstItem="iom-Ew-i6D" firstAttribute="leading" secondItem="5TT-oU-Uzn" secondAttribute="leading" constant="8" id="Kbi-xv-cpp"/>
+                                    <constraint firstItem="y3C-M2-Uph" firstAttribute="leading" secondItem="5TT-oU-Uzn" secondAttribute="leading" id="XWc-l2-mj5"/>
+                                </constraints>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zOh-ub-Sxs">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="g4z-uV-Cla"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" id="2Bf-0f-k5u">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="hQB-05-MKD">
+                                            <rect key="frame" x="16" y="7" width="136" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Fastest"/>
+                                                <segment title="Shortest"/>
+                                            </segments>
+                                            <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="routePreferenceChanged:" destination="cp5-U9-kX6" eventType="valueChanged" id="S7T-ia-inB"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem width="9" style="plain" systemItem="flexibleSpace" id="oaY-lh-pcV"/>
+                                    <barButtonItem enabled="NO" title="Reorder" id="icu-be-9qp">
+                                        <connections>
+                                            <action selector="reorderStops:" destination="cp5-U9-kX6" id="0cE-d8-Bjd"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Ypd-9x-0a5"/>
+                                    <barButtonItem enabled="NO" image="prev32.png" width="6" style="plain" id="lfX-ya-Tvg" userLabel="Prev Btn">
+                                        <connections>
+                                            <action selector="prevBtnClicked:" destination="cp5-U9-kX6" id="xDH-BE-AFZ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="4" style="plain" systemItem="fixedSpace" id="CHU-eA-sRt"/>
+                                    <barButtonItem enabled="NO" image="next32.png" width="35" style="plain" id="7T8-Xo-keC" userLabel="Next Btn">
+                                        <connections>
+                                            <action selector="nextBtnClicked:" destination="cp5-U9-kX6" id="DyH-ma-iTu"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5TT-oU-Uzn" firstAttribute="leading" secondItem="9vY-Rg-G9d" secondAttribute="leading" id="DZK-ZX-PDE"/>
+                            <constraint firstItem="zOh-ub-Sxs" firstAttribute="top" secondItem="5TT-oU-Uzn" secondAttribute="bottom" id="IEU-Uz-8iA"/>
+                            <constraint firstAttribute="bottom" secondItem="zOh-ub-Sxs" secondAttribute="bottom" id="XaG-fd-dmw"/>
+                            <constraint firstItem="zOh-ub-Sxs" firstAttribute="width" secondItem="9vY-Rg-G9d" secondAttribute="width" id="a4q-YN-BdQ"/>
+                            <constraint firstItem="zOh-ub-Sxs" firstAttribute="leading" secondItem="9vY-Rg-G9d" secondAttribute="leading" id="b2F-Mj-jc2"/>
+                            <constraint firstItem="5TT-oU-Uzn" firstAttribute="top" secondItem="9II-ab-bNU" secondAttribute="bottom" id="heu-l9-LK3"/>
+                            <constraint firstItem="5TT-oU-Uzn" firstAttribute="width" secondItem="9vY-Rg-G9d" secondAttribute="width" id="tMo-3u-udo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Offline Routing" id="l9x-Ig-N2g">
+                        <barButtonItem key="rightBarButtonItem" title="Reset" id="jPY-Mk-F7h">
+                            <connections>
+                                <action selector="resetBtnClicked:" destination="cp5-U9-kX6" id="Frn-OD-EYH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="directionsLabel" destination="y3C-M2-Uph" id="5uZ-lY-FUs"/>
+                        <outlet property="mapView" destination="5TT-oU-Uzn" id="d39-38-gFd"/>
+                        <outlet property="nextBtn" destination="7T8-Xo-keC" id="pSv-qW-1LI"/>
+                        <outlet property="prevBtn" destination="lfX-ya-Tvg" id="WkM-tt-Y4D"/>
+                        <outlet property="reorderBtn" destination="icu-be-9qp" id="crA-Sp-UoZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xux-UU-bDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1537" y="83"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="56" height="32"/>
+        <image name="next32.png" width="56" height="32"/>
+        <image name="prev32.png" width="56" height="32"/>
+    </resources>
+</document>

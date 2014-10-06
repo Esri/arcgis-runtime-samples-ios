@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YWu-PR-1X2">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <scenes>
+        <!--Popup-->
+        <scene sceneID="66i-vD-5GM">
+            <objects>
+                <viewController title="Popup" id="YWu-PR-1X2" customClass="ViewController" customModule="Popup" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="e3D-1e-7p2"/>
+                        <viewControllerLayoutGuide type="bottom" id="f4g-ia-xCn"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="x1O-9A-CZ1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oTK-Ax-5lh" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="DeN-BM-jkM">
+                                        <rect key="frame" x="10" y="558" width="56" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="Q4J-QE-V3L"/>
+                                            <constraint firstAttribute="width" constant="56" id="nDj-m3-Aar"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="DeN-BM-jkM" secondAttribute="bottom" constant="10" id="5QL-Fc-ePe"/>
+                                    <constraint firstItem="DeN-BM-jkM" firstAttribute="leading" secondItem="oTK-Ax-5lh" secondAttribute="leading" constant="10" id="xDi-k3-pyq"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oTK-Ax-5lh" firstAttribute="top" secondItem="x1O-9A-CZ1" secondAttribute="top" id="Lpe-Zx-q6A"/>
+                            <constraint firstAttribute="trailing" secondItem="oTK-Ax-5lh" secondAttribute="trailing" id="Qv9-xw-GYD"/>
+                            <constraint firstAttribute="bottom" secondItem="oTK-Ax-5lh" secondAttribute="bottom" id="WQ5-VG-K3h"/>
+                            <constraint firstItem="oTK-Ax-5lh" firstAttribute="leading" secondItem="x1O-9A-CZ1" secondAttribute="leading" id="rYF-sK-hT5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="oTK-Ax-5lh" id="WV5-Je-Umd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5zg-oo-eHW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="484" y="414"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+    </resources>
+</document>

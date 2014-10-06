@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GjR-Rb-0hZ">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <scenes>
+        <!--Recent View Controller-->
+        <scene sceneID="ZUj-Un-eEo">
+            <objects>
+                <viewController id="JoG-WL-H4x" customClass="RecentViewController" customModule="OfflineGeocoding" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bIm-28-nuh"/>
+                        <viewControllerLayoutGuide type="bottom" id="tep-ws-KVI"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="h9b-HF-O15">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CSa-Pc-6UF">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="dOd-hd-60y"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Recent Searches" id="ziE-RE-ScZ">
+                                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="tEl-2X-4cM">
+                                            <connections>
+                                                <action selector="cancel:" destination="JoG-WL-H4x" id="BLq-XE-RCs"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3UL-Sc-TXR">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="JoG-WL-H4x" id="EET-VQ-QX7"/>
+                                    <outlet property="delegate" destination="JoG-WL-H4x" id="brs-m3-zzi"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="CSa-Pc-6UF" secondAttribute="width" id="C9a-2J-iJS"/>
+                            <constraint firstAttribute="bottom" secondItem="3UL-Sc-TXR" secondAttribute="bottom" id="GCo-J0-KzE"/>
+                            <constraint firstItem="CSa-Pc-6UF" firstAttribute="top" secondItem="h9b-HF-O15" secondAttribute="top" id="HSU-Nt-Zaf"/>
+                            <constraint firstItem="3UL-Sc-TXR" firstAttribute="top" secondItem="CSa-Pc-6UF" secondAttribute="bottom" id="WNB-8A-6F3"/>
+                            <constraint firstItem="CSa-Pc-6UF" firstAttribute="leading" secondItem="h9b-HF-O15" secondAttribute="leading" id="wYX-kx-QpC"/>
+                            <constraint firstAttribute="width" secondItem="3UL-Sc-TXR" secondAttribute="width" id="xeP-NJ-fzU"/>
+                            <constraint firstItem="3UL-Sc-TXR" firstAttribute="leading" secondItem="h9b-HF-O15" secondAttribute="leading" id="zc6-yt-kMB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="D54-Ai-peE"/>
+                    <connections>
+                        <outlet property="tableView" destination="3UL-Sc-TXR" id="tA3-Do-ChL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vB6-gV-Oke" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="997" y="596"/>
+        </scene>
+        <!--Offline Geocoding-->
+        <scene sceneID="U5E-RS-ae6">
+            <objects>
+                <viewController title="Offline Geocoding" id="GjR-Rb-0hZ" customClass="ViewController" customModule="OfflineGeocoding" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RS1-DF-UE8"/>
+                        <viewControllerLayoutGuide type="bottom" id="uOD-XJ-qZy"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="cC2-d7-xkb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar opaque="NO" multipleTouchEnabled="YES" contentMode="redraw" barStyle="black" text="1 Stockton St, San Francisco, CA 94108" prompt="Enter a place or address to Geocode" placeholder="Address" showsSearchResultsButton="YES" showsCancelButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyN-Fh-90P">
+                                <rect key="frame" x="0.0" y="64" width="600" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="soW-av-G9g"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="GjR-Rb-0hZ" id="7ER-x3-42x"/>
+                                </connections>
+                            </searchBar>
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3z-nd-1rz" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="139" width="600" height="461"/>
+                                <subviews>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="rHc-bK-5R3">
+                                        <rect key="frame" x="8" y="420" width="56" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="DJr-Uu-cgx"/>
+                                            <constraint firstAttribute="width" constant="56" id="aCf-4e-8u9"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="rHc-bK-5R3" secondAttribute="bottom" constant="9" id="F5x-wK-qu6"/>
+                                    <constraint firstItem="rHc-bK-5R3" firstAttribute="leading" secondItem="k3z-nd-1rz" secondAttribute="leading" constant="8" id="NK8-FA-Lry"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jyN-Fh-90P" firstAttribute="top" secondItem="cC2-d7-xkb" secondAttribute="top" id="0jy-Tc-ojH"/>
+                            <constraint firstItem="k3z-nd-1rz" firstAttribute="top" secondItem="jyN-Fh-90P" secondAttribute="bottom" id="L1l-S8-eYu"/>
+                            <constraint firstAttribute="bottom" secondItem="k3z-nd-1rz" secondAttribute="bottom" id="SPW-eT-GkN"/>
+                            <constraint firstItem="jyN-Fh-90P" firstAttribute="top" secondItem="RS1-DF-UE8" secondAttribute="bottom" id="dRE-kL-vBn"/>
+                            <constraint firstItem="jyN-Fh-90P" firstAttribute="leading" secondItem="cC2-d7-xkb" secondAttribute="leading" id="duH-CU-GJO"/>
+                            <constraint firstItem="jyN-Fh-90P" firstAttribute="width" secondItem="cC2-d7-xkb" secondAttribute="width" id="gFk-Nu-KlH"/>
+                            <constraint firstItem="k3z-nd-1rz" firstAttribute="leading" secondItem="cC2-d7-xkb" secondAttribute="leading" id="l9u-oQ-z3Z"/>
+                            <constraint firstAttribute="width" secondItem="k3z-nd-1rz" secondAttribute="width" id="zhd-5c-0f7"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0jy-Tc-ojH"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="mapView" destination="k3z-nd-1rz" id="M6Q-cS-jlh"/>
+                        <outlet property="searchBar" destination="jyN-Fh-90P" id="eVb-lU-Lql"/>
+                        <segue destination="Jbb-CX-GtH" kind="presentation" identifier="ResultsViewSegue" id="qDB-dv-Myu"/>
+                        <segue destination="JoG-WL-H4x" kind="presentation" identifier="RecentViewSegue" id="77P-dg-kzF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d6h-TJ-2MJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="269" y="230"/>
+        </scene>
+        <!--Results View Controller-->
+        <scene sceneID="odJ-QK-9SS">
+            <objects>
+                <viewController id="Jbb-CX-GtH" customClass="ResultsViewController" customModule="OfflineGeocoding" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eEa-Rx-HyO"/>
+                        <viewControllerLayoutGuide type="bottom" id="LTv-An-WuV"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="kDt-jb-2Ba">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T07-FA-sDY">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Rq4-re-iFR"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem id="JLL-c2-asx">
+                                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="Qf9-xB-KJW">
+                                            <connections>
+                                                <action selector="done:" destination="Jbb-CX-GtH" id="wjC-T0-fTH"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xBV-kB-mQ2">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Jbb-CX-GtH" id="tMk-v9-ElV"/>
+                                    <outlet property="delegate" destination="Jbb-CX-GtH" id="tLS-Pg-QjV"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="T07-FA-sDY" firstAttribute="top" secondItem="kDt-jb-2Ba" secondAttribute="top" id="LfK-8N-w97"/>
+                            <constraint firstAttribute="width" secondItem="T07-FA-sDY" secondAttribute="width" id="MI7-tJ-8fL"/>
+                            <constraint firstAttribute="width" secondItem="xBV-kB-mQ2" secondAttribute="width" id="U1N-a2-uTX"/>
+                            <constraint firstItem="xBV-kB-mQ2" firstAttribute="leading" secondItem="kDt-jb-2Ba" secondAttribute="leading" id="VU6-pp-chb"/>
+                            <constraint firstAttribute="bottom" secondItem="xBV-kB-mQ2" secondAttribute="bottom" id="agx-nd-84P"/>
+                            <constraint firstItem="xBV-kB-mQ2" firstAttribute="top" secondItem="T07-FA-sDY" secondAttribute="bottom" id="tPg-Fn-msl"/>
+                            <constraint firstItem="T07-FA-sDY" firstAttribute="leading" secondItem="kDt-jb-2Ba" secondAttribute="leading" id="ur3-r8-eIA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="xBV-kB-mQ2" id="ROJ-u0-J5l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5CX-dL-V3E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationItem id="bLJ-O2-bpy"/>
+            </objects>
+            <point key="canvasLocation" x="997" y="-104"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+    </resources>
+</document>

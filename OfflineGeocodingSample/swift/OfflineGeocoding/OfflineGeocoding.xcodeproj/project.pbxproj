@@ -51,7 +51,7 @@
 		97F6687719E25F91001D1724 /* SanFranciscoLocator.locb */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFranciscoLocator.locb; path = "../../../../Data/address locator/SanFrancisco/SanFranciscoLocator.locb"; sourceTree = "<group>"; };
 		97F6687819E25F91001D1724 /* SanFranciscoLocator.lox */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFranciscoLocator.lox; path = "../../../../Data/address locator/SanFrancisco/SanFranciscoLocator.lox"; sourceTree = "<group>"; };
 		97F6687E19E25FFE001D1724 /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "../../../../Data/tile package/SanFrancisco.tpk"; sourceTree = "<group>"; };
-		97F6688019E26051001D1724 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = ../../../../../Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<group>"; };
+		97F6688019E26051001D1724 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>";  };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

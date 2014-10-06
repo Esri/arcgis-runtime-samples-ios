@@ -1,0 +1,513 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		97F668E219E33CEC001D1724 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F668E119E33CEC001D1724 /* AppDelegate.swift */; };
+		97F668E419E33CEC001D1724 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F668E319E33CEC001D1724 /* ViewController.swift */; };
+		97F668E719E33CEC001D1724 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97F668E519E33CEC001D1724 /* Main.storyboard */; };
+		97F668E919E33CEC001D1724 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97F668E819E33CEC001D1724 /* Images.xcassets */; };
+		97F668EC19E33CEC001D1724 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F668EA19E33CEC001D1724 /* LaunchScreen.xib */; };
+		97F668F819E33CEC001D1724 /* OfflineFeatureEditingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F668F719E33CEC001D1724 /* OfflineFeatureEditingTests.swift */; };
+		97F6690219E33D5F001D1724 /* FeatureTemplatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6690119E33D5F001D1724 /* FeatureTemplatePickerViewController.swift */; };
+		97F6690419E33D68001D1724 /* BackgroundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6690319E33D68001D1724 /* BackgroundHelper.swift */; };
+		97F6690D19E33E01001D1724 /* JSBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F6690719E33E01001D1724 /* JSBadgeView.m */; };
+		97F6690E19E33E01001D1724 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 97F6690A19E33E01001D1724 /* SVProgressHUD.bundle */; };
+		97F6690F19E33E01001D1724 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F6690C19E33E01001D1724 /* SVProgressHUD.m */; };
+		97F6691419E33E83001D1724 /* UIAlertView+NSCookbook.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F6691319E33E83001D1724 /* UIAlertView+NSCookbook.m */; };
+		97F6691619E33EFA001D1724 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 97F6691519E33EFA001D1724 /* ArcGIS.bundle */; };
+		97F6691819E33F45001D1724 /* SanFrancisco.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 97F6691719E33F45001D1724 /* SanFrancisco.tpk */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		97F668F219E33CEC001D1724 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97F668D419E33CEC001D1724 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 97F668DB19E33CEC001D1724;
+			remoteInfo = OfflineFeatureEditing;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		97F668DC19E33CEC001D1724 /* OfflineFeatureEditing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfflineFeatureEditing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		97F668E019E33CEC001D1724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97F668E119E33CEC001D1724 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		97F668E319E33CEC001D1724 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		97F668E619E33CEC001D1724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		97F668E819E33CEC001D1724 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		97F668EB19E33CEC001D1724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		97F668F119E33CEC001D1724 /* OfflineFeatureEditingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OfflineFeatureEditingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		97F668F619E33CEC001D1724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97F668F719E33CEC001D1724 /* OfflineFeatureEditingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineFeatureEditingTests.swift; sourceTree = "<group>"; };
+		97F6690119E33D5F001D1724 /* FeatureTemplatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureTemplatePickerViewController.swift; sourceTree = "<group>"; };
+		97F6690319E33D68001D1724 /* BackgroundHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundHelper.swift; sourceTree = "<group>"; };
+		97F6690619E33E01001D1724 /* JSBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBadgeView.h; sourceTree = "<group>"; };
+		97F6690719E33E01001D1724 /* JSBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBadgeView.m; sourceTree = "<group>"; };
+		97F6690919E33E01001D1724 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		97F6690A19E33E01001D1724 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		97F6690B19E33E01001D1724 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		97F6690C19E33E01001D1724 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		97F6691019E33E3D001D1724 /* OfflineFeatureEditing-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OfflineFeatureEditing-Bridging-Header.h"; sourceTree = "<group>"; };
+		97F6691219E33E83001D1724 /* UIAlertView+NSCookbook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+NSCookbook.h"; sourceTree = "<group>"; };
+		97F6691319E33E83001D1724 /* UIAlertView+NSCookbook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+NSCookbook.m"; sourceTree = "<group>"; };
+		97F6691519E33EFA001D1724 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>";  };
+		97F6691719E33F45001D1724 /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "../../Data/tile package/SanFrancisco.tpk"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		97F668D919E33CEC001D1724 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97F668EE19E33CEC001D1724 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		97F668D319E33CEC001D1724 = {
+			isa = PBXGroup;
+			children = (
+				97F6691719E33F45001D1724 /* SanFrancisco.tpk */,
+				97F668DE19E33CEC001D1724 /* OfflineFeatureEditing */,
+				97F668F419E33CEC001D1724 /* OfflineFeatureEditingTests */,
+				97F668DD19E33CEC001D1724 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		97F668DD19E33CEC001D1724 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				97F668DC19E33CEC001D1724 /* OfflineFeatureEditing.app */,
+				97F668F119E33CEC001D1724 /* OfflineFeatureEditingTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		97F668DE19E33CEC001D1724 /* OfflineFeatureEditing */ = {
+			isa = PBXGroup;
+			children = (
+				97F668E119E33CEC001D1724 /* AppDelegate.swift */,
+				97F668E319E33CEC001D1724 /* ViewController.swift */,
+				97F6690119E33D5F001D1724 /* FeatureTemplatePickerViewController.swift */,
+				97F6690319E33D68001D1724 /* BackgroundHelper.swift */,
+				97F668E519E33CEC001D1724 /* Main.storyboard */,
+				97F6691019E33E3D001D1724 /* OfflineFeatureEditing-Bridging-Header.h */,
+				97F6691119E33E83001D1724 /* UIAlertView+NSCookbook */,
+				97F6690519E33E01001D1724 /* JSBadgeView */,
+				97F6690819E33E01001D1724 /* SVProgressHUD */,
+				97F668E819E33CEC001D1724 /* Images.xcassets */,
+				97F6691519E33EFA001D1724 /* ArcGIS.bundle */,
+				97F668EA19E33CEC001D1724 /* LaunchScreen.xib */,
+				97F668DF19E33CEC001D1724 /* Supporting Files */,
+			);
+			path = OfflineFeatureEditing;
+			sourceTree = "<group>";
+		};
+		97F668DF19E33CEC001D1724 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				97F668E019E33CEC001D1724 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		97F668F419E33CEC001D1724 /* OfflineFeatureEditingTests */ = {
+			isa = PBXGroup;
+			children = (
+				97F668F719E33CEC001D1724 /* OfflineFeatureEditingTests.swift */,
+				97F668F519E33CEC001D1724 /* Supporting Files */,
+			);
+			path = OfflineFeatureEditingTests;
+			sourceTree = "<group>";
+		};
+		97F668F519E33CEC001D1724 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				97F668F619E33CEC001D1724 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		97F6690519E33E01001D1724 /* JSBadgeView */ = {
+			isa = PBXGroup;
+			children = (
+				97F6690619E33E01001D1724 /* JSBadgeView.h */,
+				97F6690719E33E01001D1724 /* JSBadgeView.m */,
+			);
+			path = JSBadgeView;
+			sourceTree = "<group>";
+		};
+		97F6690819E33E01001D1724 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				97F6690919E33E01001D1724 /* SVProgressHUD-Prefix.pch */,
+				97F6690A19E33E01001D1724 /* SVProgressHUD.bundle */,
+				97F6690B19E33E01001D1724 /* SVProgressHUD.h */,
+				97F6690C19E33E01001D1724 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		97F6691119E33E83001D1724 /* UIAlertView+NSCookbook */ = {
+			isa = PBXGroup;
+			children = (
+				97F6691219E33E83001D1724 /* UIAlertView+NSCookbook.h */,
+				97F6691319E33E83001D1724 /* UIAlertView+NSCookbook.m */,
+			);
+			path = "UIAlertView+NSCookbook";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		97F668DB19E33CEC001D1724 /* OfflineFeatureEditing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97F668FB19E33CEC001D1724 /* Build configuration list for PBXNativeTarget "OfflineFeatureEditing" */;
+			buildPhases = (
+				97F668D819E33CEC001D1724 /* Sources */,
+				97F668D919E33CEC001D1724 /* Frameworks */,
+				97F668DA19E33CEC001D1724 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OfflineFeatureEditing;
+			productName = OfflineFeatureEditing;
+			productReference = 97F668DC19E33CEC001D1724 /* OfflineFeatureEditing.app */;
+			productType = "com.apple.product-type.application";
+		};
+		97F668F019E33CEC001D1724 /* OfflineFeatureEditingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97F668FE19E33CEC001D1724 /* Build configuration list for PBXNativeTarget "OfflineFeatureEditingTests" */;
+			buildPhases = (
+				97F668ED19E33CEC001D1724 /* Sources */,
+				97F668EE19E33CEC001D1724 /* Frameworks */,
+				97F668EF19E33CEC001D1724 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				97F668F319E33CEC001D1724 /* PBXTargetDependency */,
+			);
+			name = OfflineFeatureEditingTests;
+			productName = OfflineFeatureEditingTests;
+			productReference = 97F668F119E33CEC001D1724 /* OfflineFeatureEditingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		97F668D419E33CEC001D1724 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = Esri;
+				TargetAttributes = {
+					97F668DB19E33CEC001D1724 = {
+						CreatedOnToolsVersion = 6.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					97F668F019E33CEC001D1724 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 97F668DB19E33CEC001D1724;
+					};
+				};
+			};
+			buildConfigurationList = 97F668D719E33CEC001D1724 /* Build configuration list for PBXProject "OfflineFeatureEditing" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 97F668D319E33CEC001D1724;
+			productRefGroup = 97F668DD19E33CEC001D1724 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				97F668DB19E33CEC001D1724 /* OfflineFeatureEditing */,
+				97F668F019E33CEC001D1724 /* OfflineFeatureEditingTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		97F668DA19E33CEC001D1724 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97F668E719E33CEC001D1724 /* Main.storyboard in Resources */,
+				97F668EC19E33CEC001D1724 /* LaunchScreen.xib in Resources */,
+				97F668E919E33CEC001D1724 /* Images.xcassets in Resources */,
+				97F6690E19E33E01001D1724 /* SVProgressHUD.bundle in Resources */,
+				97F6691619E33EFA001D1724 /* ArcGIS.bundle in Resources */,
+				97F6691819E33F45001D1724 /* SanFrancisco.tpk in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97F668EF19E33CEC001D1724 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		97F668D819E33CEC001D1724 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97F6690219E33D5F001D1724 /* FeatureTemplatePickerViewController.swift in Sources */,
+				97F6691419E33E83001D1724 /* UIAlertView+NSCookbook.m in Sources */,
+				97F6690419E33D68001D1724 /* BackgroundHelper.swift in Sources */,
+				97F668E419E33CEC001D1724 /* ViewController.swift in Sources */,
+				97F6690D19E33E01001D1724 /* JSBadgeView.m in Sources */,
+				97F668E219E33CEC001D1724 /* AppDelegate.swift in Sources */,
+				97F6690F19E33E01001D1724 /* SVProgressHUD.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97F668ED19E33CEC001D1724 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97F668F819E33CEC001D1724 /* OfflineFeatureEditingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		97F668F319E33CEC001D1724 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 97F668DB19E33CEC001D1724 /* OfflineFeatureEditing */;
+			targetProxy = 97F668F219E33CEC001D1724 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		97F668E519E33CEC001D1724 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				97F668E619E33CEC001D1724 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		97F668EA19E33CEC001D1724 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				97F668EB19E33CEC001D1724 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		97F668F919E33CEC001D1724 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		97F668FA19E33CEC001D1724 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		97F668FC19E33CEC001D1724 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = $HOME/Library/SDKs/ArcGIS/iOS;
+				INFOPLIST_FILE = OfflineFeatureEditing/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OfflineFeatureEditing/OfflineFeatureEditing-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		97F668FD19E33CEC001D1724 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = $HOME/Library/SDKs/ArcGIS/iOS;
+				INFOPLIST_FILE = OfflineFeatureEditing/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OfflineFeatureEditing/OfflineFeatureEditing-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		97F668FF19E33CEC001D1724 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = OfflineFeatureEditingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OfflineFeatureEditing.app/OfflineFeatureEditing";
+			};
+			name = Debug;
+		};
+		97F6690019E33CEC001D1724 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = OfflineFeatureEditingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OfflineFeatureEditing.app/OfflineFeatureEditing";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		97F668D719E33CEC001D1724 /* Build configuration list for PBXProject "OfflineFeatureEditing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97F668F919E33CEC001D1724 /* Debug */,
+				97F668FA19E33CEC001D1724 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		97F668FB19E33CEC001D1724 /* Build configuration list for PBXNativeTarget "OfflineFeatureEditing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97F668FC19E33CEC001D1724 /* Debug */,
+				97F668FD19E33CEC001D1724 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		97F668FE19E33CEC001D1724 /* Build configuration list for PBXNativeTarget "OfflineFeatureEditingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97F668FF19E33CEC001D1724 /* Debug */,
+				97F6690019E33CEC001D1724 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 97F668D419E33CEC001D1724 /* Project object */;
+}

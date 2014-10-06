@@ -110,6 +110,11 @@ class ViewController: UIViewController, AGSWebMapDelegate, AGSCalloutDelegate, A
             // For iPad, display popup view controller in the callout
             if AGSDevice.currentDevice().isIPad() {
                 self.mapView.callout.customView = self.popupVC.view
+                
+                //set the modal presentation options for subsequent popup view transitions
+                self.popupVC.modalPresenter =  self
+                self.popupVC.modalPresentationStyle = .FormSheet
+                
                 // Start the activity indicator in the upper right corner of the
                 // popupsContainer view controller while we wait for the query results
                 self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .White)

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LwX-rW-xZ4">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <scenes>
+        <!--Routing Sample-->
+        <scene sceneID="Zf7-tZ-Erp">
+            <objects>
+                <viewController id="dAO-ul-xyr" customClass="ViewController" customModule="Routing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vSv-Jy-HY0"/>
+                        <viewControllerLayoutGuide type="bottom" id="3sR-Hv-ZTR"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="P6l-oP-Cr0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3GX-lv-aoD" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="536"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="qiE-xf-OMo" userLabel="Directions Label">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="mmU-3A-BMg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </label>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="qwi-1f-gPz">
+                                        <rect key="frame" x="10" y="496" width="56" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="ZpC-zX-D4b"/>
+                                            <constraint firstAttribute="width" constant="56" id="n3Z-Jw-sYI"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pK1-Ov-NAd">
+                                        <rect key="frame" x="527" y="498" width="65" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="65" id="ElS-Dh-O9N"/>
+                                        </constraints>
+                                        <state key="normal" title="Reset">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetBtnClicked" destination="dAO-ul-xyr" eventType="touchUpInside" id="WPE-1a-jFE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="pK1-Ov-NAd" secondAttribute="trailing" constant="8" id="Gkr-fm-2fO"/>
+                                    <constraint firstAttribute="bottom" secondItem="qwi-1f-gPz" secondAttribute="bottom" constant="8" id="HU1-79-gXo"/>
+                                    <constraint firstAttribute="bottom" secondItem="pK1-Ov-NAd" secondAttribute="bottom" constant="8" id="Ntc-6S-goO"/>
+                                    <constraint firstAttribute="trailing" secondItem="pK1-Ov-NAd" secondAttribute="trailing" constant="8" id="PFh-Zq-KCt"/>
+                                    <constraint firstAttribute="bottom" secondItem="pK1-Ov-NAd" secondAttribute="bottom" constant="8" id="QIE-e7-Bht"/>
+                                    <constraint firstItem="qiE-xf-OMo" firstAttribute="leading" secondItem="3GX-lv-aoD" secondAttribute="leading" id="cJ7-nC-GTE"/>
+                                    <constraint firstAttribute="width" secondItem="qiE-xf-OMo" secondAttribute="width" id="ir0-bu-DKa"/>
+                                    <constraint firstItem="qwi-1f-gPz" firstAttribute="leading" secondItem="3GX-lv-aoD" secondAttribute="leading" constant="10" id="x4Z-0O-9np"/>
+                                    <constraint firstItem="qiE-xf-OMo" firstAttribute="top" secondItem="3GX-lv-aoD" secondAttribute="top" id="xQa-aQ-ZQe"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Gkr-fm-2fO"/>
+                                        <exclude reference="QIE-e7-Bht"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="INd-Ew-t38">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="AaQ-VW-hef"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem enabled="NO" systemItem="add" id="VRl-dh-VmR" userLabel="Add Stop Btn">
+                                        <connections>
+                                            <action selector="addStopOrBarrier" destination="dAO-ul-xyr" id="ZJi-cC-Cc8"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="Xit-Bu-YTV">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="BX1-7s-YhF">
+                                            <rect key="frame" x="43" y="7" width="140" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Stops"/>
+                                                <segment title="Barriers"/>
+                                            </segments>
+                                            <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="stopsBarriersValChanged:" destination="dAO-ul-xyr" eventType="valueChanged" id="514-Xf-U4w"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem image="Clear20.png" id="lAi-4d-BTd" userLabel="Clear Btn">
+                                        <connections>
+                                            <action selector="clearSketchLayer" destination="dAO-ul-xyr" id="6ZQ-hr-1gs"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="9" style="plain" systemItem="flexibleSpace" id="TZQ-vH-jQe"/>
+                                    <barButtonItem enabled="NO" image="prev32.png" width="6" style="plain" id="sSC-Sg-E1C" userLabel="Prev Btn">
+                                        <connections>
+                                            <action selector="prevBtnClicked" destination="dAO-ul-xyr" id="U6T-qF-UU1"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="4" style="plain" systemItem="fixedSpace" id="9nC-Ig-mpM"/>
+                                    <barButtonItem enabled="NO" image="next32.png" width="35" style="plain" id="WBR-HJ-Ukv" userLabel="Next Btn">
+                                        <connections>
+                                            <action selector="nextBtnClicked" destination="dAO-ul-xyr" id="PMp-Ct-BdV"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="INd-Ew-t38" firstAttribute="leading" secondItem="P6l-oP-Cr0" secondAttribute="leading" id="BfH-4i-NCm"/>
+                            <constraint firstItem="3GX-lv-aoD" firstAttribute="leading" secondItem="P6l-oP-Cr0" secondAttribute="leading" id="GMz-jK-h5v"/>
+                            <constraint firstAttribute="bottom" secondItem="INd-Ew-t38" secondAttribute="bottom" id="R37-Ip-Ydz"/>
+                            <constraint firstAttribute="width" secondItem="INd-Ew-t38" secondAttribute="width" id="ZX3-HX-EDA"/>
+                            <constraint firstAttribute="trailing" secondItem="3GX-lv-aoD" secondAttribute="trailing" id="aOU-9R-ywY"/>
+                            <constraint firstItem="INd-Ew-t38" firstAttribute="top" secondItem="3GX-lv-aoD" secondAttribute="bottom" id="h8q-lf-Hvm"/>
+                            <constraint firstItem="3GX-lv-aoD" firstAttribute="top" secondItem="vSv-Jy-HY0" secondAttribute="bottom" id="hA3-tX-8Kp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Routing Sample" id="Et5-oh-6Zl">
+                        <barButtonItem key="rightBarButtonItem" title="Route" id="WYS-3V-Mld" userLabel="Route Btn">
+                            <connections>
+                                <action selector="routeBtnClicked" destination="dAO-ul-xyr" id="Blm-Q0-LYY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addBtn" destination="VRl-dh-VmR" id="fgb-Fg-xbF"/>
+                        <outlet property="clearSketchBtn" destination="lAi-4d-BTd" id="edW-Da-Na0"/>
+                        <outlet property="directionsLabel" destination="qiE-xf-OMo" id="hR2-Vq-22W"/>
+                        <outlet property="mapView" destination="3GX-lv-aoD" id="Ums-wG-L0h"/>
+                        <outlet property="nextBtn" destination="WBR-HJ-Ukv" id="hcW-Di-m3J"/>
+                        <outlet property="prevBtn" destination="sSC-Sg-E1C" id="bEc-do-jwH"/>
+                        <outlet property="sketchModeSegCtrl" destination="BX1-7s-YhF" id="dkB-Xu-5U7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fuH-FU-TFW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="355" y="104"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4Y6-po-kH0">
+            <objects>
+                <navigationController id="LwX-rW-xZ4" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="G7d-gG-C38">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dAO-ul-xyr" kind="relationship" relationship="rootViewController" id="Qhr-VR-nQw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZpT-Wf-LwI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+        <image name="Clear20.png" width="16" height="16"/>
+        <image name="next32.png" width="16" height="16"/>
+        <image name="prev32.png" width="16" height="16"/>
+    </resources>
+</document>

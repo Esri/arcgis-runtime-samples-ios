@@ -1,0 +1,442 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		97F6682219E23F79001D1724 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6682119E23F79001D1724 /* AppDelegate.swift */; };
+		97F6682419E23F79001D1724 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6682319E23F79001D1724 /* ViewController.swift */; };
+		97F6682719E23F79001D1724 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97F6682519E23F79001D1724 /* Main.storyboard */; };
+		97F6682919E23F79001D1724 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97F6682819E23F79001D1724 /* Images.xcassets */; };
+		97F6682C19E23F79001D1724 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F6682A19E23F79001D1724 /* LaunchScreen.xib */; };
+		97F6683819E23F79001D1724 /* RoutingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6683719E23F79001D1724 /* RoutingTests.swift */; };
+		97F6684219E241A2001D1724 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 97F6684119E241A2001D1724 /* ArcGIS.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		97F6683219E23F79001D1724 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97F6681419E23F79001D1724 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 97F6681B19E23F79001D1724;
+			remoteInfo = Routing;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		97F6681C19E23F79001D1724 /* Routing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Routing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		97F6682019E23F79001D1724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97F6682119E23F79001D1724 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		97F6682319E23F79001D1724 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		97F6682619E23F79001D1724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		97F6682819E23F79001D1724 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		97F6682B19E23F79001D1724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		97F6683119E23F79001D1724 /* RoutingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoutingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		97F6683619E23F79001D1724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97F6683719E23F79001D1724 /* RoutingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingTests.swift; sourceTree = "<group>"; };
+		97F6684119E241A2001D1724 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>";  };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		97F6681919E23F79001D1724 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97F6682E19E23F79001D1724 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		97F6681319E23F79001D1724 = {
+			isa = PBXGroup;
+			children = (
+				97F6681E19E23F79001D1724 /* Routing */,
+				97F6683419E23F79001D1724 /* RoutingTests */,
+				97F6681D19E23F79001D1724 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		97F6681D19E23F79001D1724 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				97F6681C19E23F79001D1724 /* Routing.app */,
+				97F6683119E23F79001D1724 /* RoutingTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		97F6681E19E23F79001D1724 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				97F6682119E23F79001D1724 /* AppDelegate.swift */,
+				97F6682319E23F79001D1724 /* ViewController.swift */,
+				97F6682519E23F79001D1724 /* Main.storyboard */,
+				97F6682819E23F79001D1724 /* Images.xcassets */,
+				97F6682A19E23F79001D1724 /* LaunchScreen.xib */,
+				97F6684119E241A2001D1724 /* ArcGIS.bundle */,
+				97F6681F19E23F79001D1724 /* Supporting Files */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
+		97F6681F19E23F79001D1724 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				97F6682019E23F79001D1724 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		97F6683419E23F79001D1724 /* RoutingTests */ = {
+			isa = PBXGroup;
+			children = (
+				97F6683719E23F79001D1724 /* RoutingTests.swift */,
+				97F6683519E23F79001D1724 /* Supporting Files */,
+			);
+			path = RoutingTests;
+			sourceTree = "<group>";
+		};
+		97F6683519E23F79001D1724 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				97F6683619E23F79001D1724 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		97F6681B19E23F79001D1724 /* Routing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97F6683B19E23F79001D1724 /* Build configuration list for PBXNativeTarget "Routing" */;
+			buildPhases = (
+				97F6681819E23F79001D1724 /* Sources */,
+				97F6681919E23F79001D1724 /* Frameworks */,
+				97F6681A19E23F79001D1724 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Routing;
+			productName = Routing;
+			productReference = 97F6681C19E23F79001D1724 /* Routing.app */;
+			productType = "com.apple.product-type.application";
+		};
+		97F6683019E23F79001D1724 /* RoutingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97F6683E19E23F79001D1724 /* Build configuration list for PBXNativeTarget "RoutingTests" */;
+			buildPhases = (
+				97F6682D19E23F79001D1724 /* Sources */,
+				97F6682E19E23F79001D1724 /* Frameworks */,
+				97F6682F19E23F79001D1724 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				97F6683319E23F79001D1724 /* PBXTargetDependency */,
+			);
+			name = RoutingTests;
+			productName = RoutingTests;
+			productReference = 97F6683119E23F79001D1724 /* RoutingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		97F6681419E23F79001D1724 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = Esri;
+				TargetAttributes = {
+					97F6681B19E23F79001D1724 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					97F6683019E23F79001D1724 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 97F6681B19E23F79001D1724;
+					};
+				};
+			};
+			buildConfigurationList = 97F6681719E23F79001D1724 /* Build configuration list for PBXProject "Routing" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 97F6681319E23F79001D1724;
+			productRefGroup = 97F6681D19E23F79001D1724 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				97F6681B19E23F79001D1724 /* Routing */,
+				97F6683019E23F79001D1724 /* RoutingTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		97F6681A19E23F79001D1724 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97F6682719E23F79001D1724 /* Main.storyboard in Resources */,
+				97F6682C19E23F79001D1724 /* LaunchScreen.xib in Resources */,
+				97F6684219E241A2001D1724 /* ArcGIS.bundle in Resources */,
+				97F6682919E23F79001D1724 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97F6682F19E23F79001D1724 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		97F6681819E23F79001D1724 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97F6682419E23F79001D1724 /* ViewController.swift in Sources */,
+				97F6682219E23F79001D1724 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97F6682D19E23F79001D1724 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97F6683819E23F79001D1724 /* RoutingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		97F6683319E23F79001D1724 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 97F6681B19E23F79001D1724 /* Routing */;
+			targetProxy = 97F6683219E23F79001D1724 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		97F6682519E23F79001D1724 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				97F6682619E23F79001D1724 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		97F6682A19E23F79001D1724 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				97F6682B19E23F79001D1724 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		97F6683919E23F79001D1724 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		97F6683A19E23F79001D1724 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		97F6683C19E23F79001D1724 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = $HOME/Library/SDKs/ArcGIS/iOS;
+				INFOPLIST_FILE = Routing/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		97F6683D19E23F79001D1724 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = $HOME/Library/SDKs/ArcGIS/iOS;
+				INFOPLIST_FILE = Routing/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		97F6683F19E23F79001D1724 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RoutingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Routing.app/Routing";
+			};
+			name = Debug;
+		};
+		97F6684019E23F79001D1724 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RoutingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Routing.app/Routing";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		97F6681719E23F79001D1724 /* Build configuration list for PBXProject "Routing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97F6683919E23F79001D1724 /* Debug */,
+				97F6683A19E23F79001D1724 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		97F6683B19E23F79001D1724 /* Build configuration list for PBXNativeTarget "Routing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97F6683C19E23F79001D1724 /* Debug */,
+				97F6683D19E23F79001D1724 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		97F6683E19E23F79001D1724 /* Build configuration list for PBXNativeTarget "RoutingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97F6683F19E23F79001D1724 /* Debug */,
+				97F6684019E23F79001D1724 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 97F6681419E23F79001D1724 /* Project object */;
+}

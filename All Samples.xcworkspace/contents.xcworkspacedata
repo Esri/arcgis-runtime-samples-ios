@@ -53,6 +53,17 @@
       location = "group:FindTaskSample/FindTaskSample.xcodeproj">
    </FileRef>
    <Group
+      location = "group:GenerateRendererSample"
+      name = "GenerateRendererSample">
+      <Group
+         location = "group:objective-c"
+         name = "objective-c">
+         <FileRef
+            location = "group:GenerateRendererSample.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
+   <Group
       location = "container:"
       name = "Geocoding">
       <Group

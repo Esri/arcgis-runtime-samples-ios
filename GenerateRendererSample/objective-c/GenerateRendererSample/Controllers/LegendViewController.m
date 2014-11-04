@@ -56,6 +56,9 @@
 
 @property (nonatomic, weak) id<AGSCancellable> lastRendererOperation;
 
+@property (nonatomic, strong) UIPopoverController *popOverController;
+@property (nonatomic, strong) OptionsViewController *optionsViewController;
+
 @end
 
 @implementation LegendViewController
@@ -398,33 +401,33 @@
 //using the textField delegate to display the popover view controller instead of the keyboard
 //and based on the textfield selected passing the corresponding options
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(legendViewController:wantsToShowPopOverWithOptions:forTextField:)]) {
-        if (textField == self.classificationTextField) {
-            NSArray *options;
-            if (self.segmentedControl.selectedSegmentIndex == 0) {
-                options = [self namesArrayFromFieldsArray:self.classBreakClassificationFields];
-            }
-            else {
-                options = [self namesArrayFromFieldsArray:self.uniqueValueClassificationFields];
-            }
-            [self.delegate legendViewController:self wantsToShowPopOverWithOptions:options forTextField:textField];
+
+    NSArray *options;
+    if (textField == self.classificationTextField) {
+        if (self.segmentedControl.selectedSegmentIndex == 0) {
+            options = [self namesArrayFromFieldsArray:self.classBreakClassificationFields];
         }
-        else if (textField == self.normalizationTextField) {
-            NSMutableArray *options = [[self namesArrayFromFieldsArray:self.classBreakClassificationFields] mutableCopy];
-            [options insertObject:NONE_FIELD_VALUE atIndex:0];
-            [self.delegate legendViewController:self wantsToShowPopOverWithOptions:options forTextField:textField];
-        }
-        else if (textField == self.methodTextField) {
-            [self.delegate legendViewController:self wantsToShowPopOverWithOptions:self.classificationMethods forTextField:textField];
-        }
-        else if (textField == self.algorithmTextField) {
-            [self.delegate legendViewController:self wantsToShowPopOverWithOptions:self.colorRampAlgorithms forTextField:textField];
+        else {
+            options = [self namesArrayFromFieldsArray:self.uniqueValueClassificationFields];
         }
     }
+    else if (textField == self.normalizationTextField) {
+        NSMutableArray *temp = [[self namesArrayFromFieldsArray:self.classBreakClassificationFields] mutableCopy];
+        [temp insertObject:NONE_FIELD_VALUE atIndex:0];
+        options = temp;
+    }
+    else if (textField == self.methodTextField) {
+        options = self.classificationMethods;
+    }
+    else if (textField == self.algorithmTextField) {
+        options = self.colorRampAlgorithms;
+    }
+    
+    [self showPopOverController:options forTextField:textField];
     return NO;
 }
 
-#pragma mark - ClassificationFieldList Delegate
+#pragma mark - OptionsViewControllerDelegate Delegate
 
 //updating the selection index for the textField passed and generating a new renderer
 -(void)optionsViewController:(OptionsViewController *)optionsViewController didSelectIndex:(NSInteger)index forTextField:(UITextField *)textField {
@@ -442,6 +445,28 @@
         self.selectedAlgorithmIndex = index;
     }
     [self generateRenderer];
+}
+
+- (void)showPopOverController:(NSArray*)options forTextField:(UITextField*)textField {
+    //using pop over controller to show options for each text field
+    //the pop over controller contains the optionsViewController as a tableView controller
+    //with all the possible values for that textField
+    if (self.optionsViewController == nil) {
+        self.optionsViewController = [[OptionsViewController alloc] init];
+        //using the legendViewController as the delegate for the optionsViewController
+        self.optionsViewController.delegate = self;
+    }
+    if (self.popOverController == nil) {
+        self.popOverController = [[UIPopoverController alloc] initWithContentViewController:self.optionsViewController];
+        [self.popOverController setPopoverContentSize:CGSizeMake(240, 200)];
+    }
+    
+    self.optionsViewController.textField = textField;
+    self.optionsViewController.options = options;
+    
+    //use the frame of the textField as the origination rect for the pop over controller
+    CGRect textFieldRect = textField.frame;
+    [self.popOverController presentPopoverFromRect:textFieldRect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
 }
 
 @end

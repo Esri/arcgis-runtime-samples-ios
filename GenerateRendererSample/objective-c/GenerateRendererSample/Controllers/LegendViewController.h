@@ -37,8 +37,6 @@
 
 //notifies the delegate that the renderer was generated successfully
 -(void)legendViewController:(LegendViewController*)legendViewController didGenerateRenderer:(AGSRenderer*)renderer;
-//notifies the delegate the popover view controller is to be shown for the passed textfield and specified options
--(void)legendViewController:(LegendViewController*)legendViewController wantsToShowPopOverWithOptions:(NSArray*)options forTextField:(UITextField*)textField;
 //notifies the delegate it failed to generate renderer with the error
 -(void)legendViewController:(LegendViewController*)legendViewController failedToGenerateRendererWithError:(NSError*)error;
 @end

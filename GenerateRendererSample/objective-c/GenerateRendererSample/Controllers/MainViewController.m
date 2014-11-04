@@ -28,8 +28,6 @@
 @property (nonatomic, strong) AGSFeatureLayer *featureLayer;
 
 @property (nonatomic, strong) LegendViewController *legendViewController;
-@property (nonatomic, strong) UIPopoverController *popOverController;
-@property (nonatomic, strong) OptionsViewController *optionsViewController;
 
 @end
 
@@ -127,41 +125,11 @@
     }
 }
 
-#pragma mark - show/hide pop over
-
-- (void)showPopOverController:(NSArray*)options forTextField:(UITextField*)textField {
-    //using pop over controller to show options for each text field
-    //the pop over controller contains the optionsViewController as a tableView controller
-    //with all the possible values for that textField
-    if (self.optionsViewController == nil) {
-        self.optionsViewController = [[OptionsViewController alloc] init];
-        //using the legendViewController as the delegate for the optionsViewController
-        self.optionsViewController.delegate = self.legendViewController;
-    }
-    if (self.popOverController == nil) {
-        self.popOverController = [[UIPopoverController alloc] initWithContentViewController:self.optionsViewController];
-        [self.popOverController setPopoverContentSize:CGSizeMake(240, 200)];
-    }
-    
-    self.optionsViewController.textField = textField;
-    self.optionsViewController.options = options;
-    
-    //use the frame of the textField as the origination rect for the pop over controller
-    CGRect textFieldRect = textField.frame;
-    CGRect convertedRect = [self.view convertRect:textFieldRect fromView:self.legendViewController.view];
-    [self.popOverController presentPopoverFromRect:convertedRect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
-}
-
 #pragma mark - LegendViewController delegate
 
 -(void)legendViewController:(LegendViewController *)legendViewController didGenerateRenderer:(AGSRenderer *)renderer {
     //assign the new renderer to the feature layer
     self.featureLayer.renderer = renderer;
-}
-
--(void)legendViewController:(LegendViewController *)legendViewController wantsToShowPopOverWithOptions:(NSArray *)options forTextField:(UITextField *)textField {
-    //show the pop over controller with supplied options and textField
-    [self showPopOverController:options forTextField:textField];
 }
 
 -(void)legendViewController:(LegendViewController *)legendViewController failedToGenerateRendererWithError:(NSError *)error {

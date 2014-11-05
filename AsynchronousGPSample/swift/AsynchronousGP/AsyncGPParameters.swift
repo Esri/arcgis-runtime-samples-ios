@@ -20,7 +20,7 @@ class AsyncGPParameters {
     var largeOrSmallSpill:String
     
     init() {
-        windDirection = NSDecimalNumber.decimalNumberWithString("90")
+        windDirection = NSDecimalNumber(double: 90)
         materialType = "Anhydrous ammonia"
         dayOrNightIncident = "Day"
         largeOrSmallSpill = "Large"

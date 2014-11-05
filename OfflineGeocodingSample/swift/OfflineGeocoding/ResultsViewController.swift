@@ -60,7 +60,7 @@ class ResultsViewController: UIViewController, UITableViewDataSource, UITableVie
         
         //text is the key at the given indexPath
         let keyAtIndexPath = Array(self.results.keys)[indexPath.row]
-        cell.textLabel?.text = keyAtIndexPath as? String
+        cell.textLabel.text = keyAtIndexPath as? String
         
         //detail text is the value associated with the key above
         if let detailValue: AnyObject = self.results[keyAtIndexPath] {

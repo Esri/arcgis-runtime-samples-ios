@@ -119,10 +119,10 @@
 		9760C51D158BC2D500986512 = {
 			isa = PBXGroup;
 			children = (
-				3E715CDB18E201C9004FB946 /* Storyboard.storyboard */,
-				9760C532158BC2D500986512 /* GeometrySample */,
 				9760C52B158BC2D500986512 /* Frameworks */,
+				9760C532158BC2D500986512 /* GeometrySample */,
 				9760C529158BC2D500986512 /* Products */,
+				3E715CDB18E201C9004FB946 /* Storyboard.storyboard */,
 			);
 			sourceTree = "<group>";
 		};

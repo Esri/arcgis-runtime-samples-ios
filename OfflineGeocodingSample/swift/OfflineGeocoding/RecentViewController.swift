@@ -60,7 +60,7 @@ class RecentViewController: UIViewController {
             cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
         }
 
-        cell.textLabel?.text = self.items[indexPath.row]
+        cell.textLabel.text = self.items[indexPath.row]
         
         return cell
     }

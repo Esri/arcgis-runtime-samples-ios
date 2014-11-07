@@ -102,9 +102,9 @@ class FeatureTemplatePickerController: UIViewController {
         
         //Set its label, image, etc for the template
         let info = self.infos[indexPath.row]
-        cell.textLabel?.font = UIFont.systemFontOfSize(12)
-        cell.textLabel?.text = info.featureTemplate.name
-        cell.imageView?.image = info.featureLayer.renderer.swatchForFeatureWithAttributes(info.featureTemplate.prototypeAttributes, geometryType: info.featureLayer.geometryType, size: CGSizeMake(20, 20))
+        cell.textLabel.font = UIFont.systemFontOfSize(12)
+        cell.textLabel.text = info.featureTemplate.name
+        cell.imageView.image = info.featureLayer.renderer.swatchForFeatureWithAttributes(info.featureTemplate.prototypeAttributes, geometryType: info.featureLayer.geometryType, size: CGSizeMake(20, 20))
         
         return cell
     }

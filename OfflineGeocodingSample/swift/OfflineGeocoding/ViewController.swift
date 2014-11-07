@@ -79,7 +79,7 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSMapViewTouchDeleg
         //the total amount by which we will need to offset the callout along y-axis
         //to show it correctly centered on the pushpin's head in the magnifier
         let img = UIImage(named: "ArcGIS.bundle/Magnifier.png")
-        self.magnifierOffset = CGPoint(x: 0, y: -(img.size.height/2+pushpinHeadOffset))
+        self.magnifierOffset = CGPoint(x: 0, y: -(img!.size.height/2+pushpinHeadOffset))
     }
     
     override func didReceiveMemoryWarning() {

@@ -46,12 +46,12 @@
 		97F6686719E25EF1001D1724 /* OfflineGeocodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineGeocodingTests.swift; sourceTree = "<group>"; };
 		97F6687119E25F47001D1724 /* RecentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
 		97F6687219E25F47001D1724 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
-		97F6687519E25F91001D1724 /* SanFranciscoLocator.loc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SanFranciscoLocator.loc; path = "../../../../Data/address locator/SanFrancisco/SanFranciscoLocator.loc"; sourceTree = "<group>"; };
-		97F6687619E25F91001D1724 /* SanFranciscoLocator.loc.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = SanFranciscoLocator.loc.xml; path = "../../../../Data/address locator/SanFrancisco/SanFranciscoLocator.loc.xml"; sourceTree = "<group>"; };
-		97F6687719E25F91001D1724 /* SanFranciscoLocator.locb */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFranciscoLocator.locb; path = "../../../../Data/address locator/SanFrancisco/SanFranciscoLocator.locb"; sourceTree = "<group>"; };
-		97F6687819E25F91001D1724 /* SanFranciscoLocator.lox */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFranciscoLocator.lox; path = "../../../../Data/address locator/SanFrancisco/SanFranciscoLocator.lox"; sourceTree = "<group>"; };
-		97F6687E19E25FFE001D1724 /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "../../../../Data/tile package/SanFrancisco.tpk"; sourceTree = "<group>"; };
-		97F6688019E26051001D1724 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>";  };
+		97F6687519E25F91001D1724 /* SanFranciscoLocator.loc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SanFranciscoLocator.loc; sourceTree = "<group>"; };
+		97F6687619E25F91001D1724 /* SanFranciscoLocator.loc.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SanFranciscoLocator.loc.xml; sourceTree = "<group>"; };
+		97F6687719E25F91001D1724 /* SanFranciscoLocator.locb */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanFranciscoLocator.locb; sourceTree = "<group>"; };
+		97F6687819E25F91001D1724 /* SanFranciscoLocator.lox */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanFranciscoLocator.lox; sourceTree = "<group>"; };
+		97F6687E19E25FFE001D1724 /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "../../../Data/tile package/SanFrancisco.tpk"; sourceTree = "<group>"; };
+		97F6688019E26051001D1724 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +142,7 @@
 				97F6687819E25F91001D1724 /* SanFranciscoLocator.lox */,
 			);
 			name = SanFranciscoLocator;
+			path = "../../../Data/address locator/SanFrancisco";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -463,6 +464,7 @@
 				97F6686D19E25EF1001D1724 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		97F6686E19E25EF1001D1724 /* Build configuration list for PBXNativeTarget "OfflineGeocodingTests" */ = {
 			isa = XCConfigurationList;
@@ -471,6 +473,7 @@
 				97F6687019E25EF1001D1724 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -53,25 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        //using specific storyboard based on the device
-        var storyboard:UIStoryboard?
-        var initialViewController:UIViewController?
-        
-        //iPad
-        if AGSDevice.currentDevice().isIPad() {
-            storyboard = UIStoryboard(name: "Main_iPad", bundle: NSBundle.mainBundle())
-            initialViewController = storyboard!.instantiateInitialViewController() as? UIViewController
-            self.splitViewController = initialViewController as? UISplitViewController
-        }
-            //iPhone
-        else {
-            storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-            initialViewController = storyboard!.instantiateInitialViewController() as? UIViewController
-        }
-        
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window!.rootViewController = initialViewController
-        self.window!.makeKeyAndVisible()
         return true
     }
 }

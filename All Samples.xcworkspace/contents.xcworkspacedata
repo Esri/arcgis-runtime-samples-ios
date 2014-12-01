@@ -56,6 +56,13 @@
       location = "group:GenerateRendererSample"
       name = "GenerateRendererSample">
       <Group
+         location = "container:"
+         name = "Swift">
+         <FileRef
+            location = "group:GenerateRendererSample/Swift/GenerateRenderer/GenerateRenderer.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
          location = "group:objective-c"
          name = "objective-c">
          <FileRef

@@ -1,0 +1,414 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3E7E531519008E5A0074C02C /* PortalBasemapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7E531419008E5A0074C02C /* PortalBasemapHelper.m */; };
+		3E7E53191900C8710074C02C /* BasemapsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7E53181900C8710074C02C /* BasemapsListViewController.m */; };
+		3E90B61418FDC1F4009C3B8E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B61218FDC1F4009C3B8E /* InfoPlist.strings */; };
+		3E90B61618FDC1F4009C3B8E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E90B61518FDC1F4009C3B8E /* main.m */; };
+		3E90B61A18FDC1F4009C3B8E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E90B61918FDC1F4009C3B8E /* AppDelegate.m */; };
+		3E90B61D18FDC1F4009C3B8E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B61B18FDC1F4009C3B8E /* Storyboard.storyboard */; };
+		3E90B63F18FDC98B009C3B8E /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B63E18FDC98B009C3B8E /* ArcGIS.bundle */; };
+		3E90B64318FDEF34009C3B8E /* SwitchBasemapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E90B64218FDEF34009C3B8E /* SwitchBasemapViewController.m */; };
+		3E90B64918FF2173009C3B8E /* BasemapsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E90B64818FF2173009C3B8E /* BasemapsCollectionViewController.m */; };
+		3E90B67818FF5521009C3B8E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E90B67718FF5521009C3B8E /* Images.xcassets */; };
+		3EE7CEFA1901A097009C008F /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3EE7CEF71901A097009C008F /* SVProgressHUD.bundle */; };
+		3EE7CEFB1901A097009C008F /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE7CEF91901A097009C008F /* SVProgressHUD.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3E549109191941A5002AABFF /* BasemapPickerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BasemapPickerDelegate.h; path = Delegates/BasemapPickerDelegate.h; sourceTree = "<group>"; };
+		3E7E531319008E5A0074C02C /* PortalBasemapHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PortalBasemapHelper.h; path = Helper/PortalBasemapHelper.h; sourceTree = "<group>"; };
+		3E7E531419008E5A0074C02C /* PortalBasemapHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PortalBasemapHelper.m; path = Helper/PortalBasemapHelper.m; sourceTree = "<group>"; };
+		3E7E53171900C8710074C02C /* BasemapsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasemapsListViewController.h; path = Controllers/BasemapsListViewController.h; sourceTree = "<group>"; };
+		3E7E53181900C8710074C02C /* BasemapsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasemapsListViewController.m; path = Controllers/BasemapsListViewController.m; sourceTree = "<group>"; };
+		3E90B60618FDC1F4009C3B8E /* SwitchBasemapSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwitchBasemapSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E90B61118FDC1F4009C3B8E /* SwitchBasemapSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SwitchBasemapSample-Info.plist"; sourceTree = "<group>"; };
+		3E90B61318FDC1F4009C3B8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3E90B61518FDC1F4009C3B8E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3E90B61718FDC1F4009C3B8E /* SwitchBasemapSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwitchBasemapSample-Prefix.pch"; sourceTree = "<group>"; };
+		3E90B61818FDC1F4009C3B8E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3E90B61918FDC1F4009C3B8E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3E90B61C18FDC1F4009C3B8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Storyboard.storyboard; sourceTree = "<group>"; };
+		3E90B63E18FDC98B009C3B8E /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
+		3E90B64118FDEF34009C3B8E /* SwitchBasemapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwitchBasemapViewController.h; path = Controllers/SwitchBasemapViewController.h; sourceTree = "<group>"; };
+		3E90B64218FDEF34009C3B8E /* SwitchBasemapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwitchBasemapViewController.m; path = Controllers/SwitchBasemapViewController.m; sourceTree = "<group>"; };
+		3E90B64618FDF22F009C3B8E /* AppConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
+		3E90B64718FF2173009C3B8E /* BasemapsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasemapsCollectionViewController.h; path = Controllers/BasemapsCollectionViewController.h; sourceTree = "<group>"; };
+		3E90B64818FF2173009C3B8E /* BasemapsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasemapsCollectionViewController.m; path = Controllers/BasemapsCollectionViewController.m; sourceTree = "<group>"; };
+		3E90B67718FF5521009C3B8E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3EE7CEF61901A097009C008F /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		3EE7CEF71901A097009C008F /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		3EE7CEF81901A097009C008F /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		3EE7CEF91901A097009C008F /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3E90B60318FDC1F4009C3B8E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3E7E531619008E6A0074C02C /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				3E7E531319008E5A0074C02C /* PortalBasemapHelper.h */,
+				3E7E531419008E5A0074C02C /* PortalBasemapHelper.m */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		3E90B5FD18FDC1F4009C3B8E = {
+			isa = PBXGroup;
+			children = (
+				3E90B60F18FDC1F4009C3B8E /* SwitchBasemapSample */,
+				3E90B60818FDC1F4009C3B8E /* Frameworks */,
+				3E90B60718FDC1F4009C3B8E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3E90B60718FDC1F4009C3B8E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3E90B60618FDC1F4009C3B8E /* SwitchBasemapSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3E90B60818FDC1F4009C3B8E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3E90B60F18FDC1F4009C3B8E /* SwitchBasemapSample */ = {
+			isa = PBXGroup;
+			children = (
+				3E92B09819193991002F5A9D /* Delegates */,
+				3EE7CEF41901A097009C008F /* Libraries */,
+				3E7E531619008E6A0074C02C /* Helper */,
+				3E90B64018FDEEFA009C3B8E /* Controllers */,
+				3E90B61818FDC1F4009C3B8E /* AppDelegate.h */,
+				3E90B61918FDC1F4009C3B8E /* AppDelegate.m */,
+				3E90B61B18FDC1F4009C3B8E /* Storyboard.storyboard */,
+				3E90B67718FF5521009C3B8E /* Images.xcassets */,
+				3E90B61018FDC1F4009C3B8E /* Supporting Files */,
+			);
+			path = SwitchBasemapSample;
+			sourceTree = "<group>";
+		};
+		3E90B61018FDC1F4009C3B8E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3E90B63E18FDC98B009C3B8E /* ArcGIS.bundle */,
+				3E90B61118FDC1F4009C3B8E /* SwitchBasemapSample-Info.plist */,
+				3E90B61218FDC1F4009C3B8E /* InfoPlist.strings */,
+				3E90B61518FDC1F4009C3B8E /* main.m */,
+				3E90B61718FDC1F4009C3B8E /* SwitchBasemapSample-Prefix.pch */,
+				3E90B64618FDF22F009C3B8E /* AppConstants.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3E90B64018FDEEFA009C3B8E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3E90B64118FDEF34009C3B8E /* SwitchBasemapViewController.h */,
+				3E90B64218FDEF34009C3B8E /* SwitchBasemapViewController.m */,
+				3E90B64718FF2173009C3B8E /* BasemapsCollectionViewController.h */,
+				3E90B64818FF2173009C3B8E /* BasemapsCollectionViewController.m */,
+				3E7E53171900C8710074C02C /* BasemapsListViewController.h */,
+				3E7E53181900C8710074C02C /* BasemapsListViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3E92B09819193991002F5A9D /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				3E549109191941A5002AABFF /* BasemapPickerDelegate.h */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		3EE7CEF41901A097009C008F /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				3EE7CEF51901A097009C008F /* SVProgressHUD */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		3EE7CEF51901A097009C008F /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				3EE7CEF61901A097009C008F /* SVProgressHUD-Prefix.pch */,
+				3EE7CEF71901A097009C008F /* SVProgressHUD.bundle */,
+				3EE7CEF81901A097009C008F /* SVProgressHUD.h */,
+				3EE7CEF91901A097009C008F /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3E90B60518FDC1F4009C3B8E /* SwitchBasemapSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E90B63818FDC1F4009C3B8E /* Build configuration list for PBXNativeTarget "SwitchBasemapSample" */;
+			buildPhases = (
+				3E90B60218FDC1F4009C3B8E /* Sources */,
+				3E90B60318FDC1F4009C3B8E /* Frameworks */,
+				3E90B60418FDC1F4009C3B8E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwitchBasemapSample;
+			productName = SwitchBasemapSample;
+			productReference = 3E90B60618FDC1F4009C3B8E /* SwitchBasemapSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3E90B5FE18FDC1F4009C3B8E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Gagandeep Singh";
+				TargetAttributes = {
+					3E90B60518FDC1F4009C3B8E = {
+						DevelopmentTeam = P8HGHS7JQ8;
+					};
+				};
+			};
+			buildConfigurationList = 3E90B60118FDC1F4009C3B8E /* Build configuration list for PBXProject "SwitchBasemapSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3E90B5FD18FDC1F4009C3B8E;
+			productRefGroup = 3E90B60718FDC1F4009C3B8E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3E90B60518FDC1F4009C3B8E /* SwitchBasemapSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3E90B60418FDC1F4009C3B8E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E90B61418FDC1F4009C3B8E /* InfoPlist.strings in Resources */,
+				3E90B67818FF5521009C3B8E /* Images.xcassets in Resources */,
+				3E90B63F18FDC98B009C3B8E /* ArcGIS.bundle in Resources */,
+				3EE7CEFA1901A097009C008F /* SVProgressHUD.bundle in Resources */,
+				3E90B61D18FDC1F4009C3B8E /* Storyboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3E90B60218FDC1F4009C3B8E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E90B64318FDEF34009C3B8E /* SwitchBasemapViewController.m in Sources */,
+				3EE7CEFB1901A097009C008F /* SVProgressHUD.m in Sources */,
+				3E7E531519008E5A0074C02C /* PortalBasemapHelper.m in Sources */,
+				3E90B64918FF2173009C3B8E /* BasemapsCollectionViewController.m in Sources */,
+				3E7E53191900C8710074C02C /* BasemapsListViewController.m in Sources */,
+				3E90B61A18FDC1F4009C3B8E /* AppDelegate.m in Sources */,
+				3E90B61618FDC1F4009C3B8E /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3E90B61218FDC1F4009C3B8E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E90B61318FDC1F4009C3B8E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3E90B61B18FDC1F4009C3B8E /* Storyboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E90B61C18FDC1F4009C3B8E /* Base */,
+			);
+			name = Storyboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3E90B63618FDC1F4009C3B8E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3E90B63718FDC1F4009C3B8E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3E90B63918FDC1F4009C3B8E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SwitchBasemapSample/SwitchBasemapSample-Prefix.pch";
+				INFOPLIST_FILE = "SwitchBasemapSample/SwitchBasemapSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3E90B63A18FDC1F4009C3B8E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SwitchBasemapSample/SwitchBasemapSample-Prefix.pch";
+				INFOPLIST_FILE = "SwitchBasemapSample/SwitchBasemapSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3E90B60118FDC1F4009C3B8E /* Build configuration list for PBXProject "SwitchBasemapSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E90B63618FDC1F4009C3B8E /* Debug */,
+				3E90B63718FDC1F4009C3B8E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3E90B63818FDC1F4009C3B8E /* Build configuration list for PBXNativeTarget "SwitchBasemapSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E90B63918FDC1F4009C3B8E /* Debug */,
+				3E90B63A18FDC1F4009C3B8E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3E90B5FE18FDC1F4009C3B8E /* Project object */;
+}

@@ -245,6 +245,9 @@
       location = "group:SketchLayerSample/SketchLayerSample.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:SwitchBasemapSample/SwitchBasemapSample.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:SynchronousGPSample/SynchronousGPSample.xcodeproj">
    </FileRef>
    <FileRef

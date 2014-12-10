@@ -19,9 +19,24 @@
          </FileRef>
       </Group>
    </Group>
-   <FileRef
-      location = "group:ClosestFacilitySample/ClosestFacilitySample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "group:ClosestFacilitySample"
+      name = "ClosestFacility">
+      <Group
+         location = "container:"
+         name = "Swift">
+         <FileRef
+            location = "group:ClosestFacilitySample/Swift/ClosestFacility.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "ObjectiveC">
+         <FileRef
+            location = "group:ClosestFacilitySample/ClosestFacilitySample.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:CustomCalloutSample/CustomCalloutSample.xcodeproj">
    </FileRef>

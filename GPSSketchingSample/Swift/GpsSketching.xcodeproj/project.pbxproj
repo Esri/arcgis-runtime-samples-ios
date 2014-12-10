@@ -1,0 +1,341 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3E0E149A1A37B316001CC14A /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E0E14991A37B316001CC14A /* ArcGIS.bundle */; };
+		3E5CD5671A362D620029ED37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CD5661A362D620029ED37 /* AppDelegate.swift */; };
+		3E5CD56C1A362D620029ED37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5CD56A1A362D620029ED37 /* Main.storyboard */; };
+		3E5CD56E1A362D620029ED37 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E5CD56D1A362D620029ED37 /* Images.xcassets */; };
+		3E5CD5711A362D620029ED37 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E5CD56F1A362D620029ED37 /* LaunchScreen.xib */; };
+		3E5CD5881A362E6E0029ED37 /* GpsSketchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CD5871A362E6E0029ED37 /* GpsSketchingViewController.swift */; };
+		3E5CD58B1A36321E0029ED37 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CD58A1A36321E0029ED37 /* Parameters.swift */; };
+		3E5CD58D1A36476D0029ED37 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CD58C1A36476D0029ED37 /* SettingsViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3E0E14991A37B316001CC14A /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
+		3E5CD5611A362D620029ED37 /* GpsSketching.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GpsSketching.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E5CD5651A362D620029ED37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E5CD5661A362D620029ED37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3E5CD56B1A362D620029ED37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3E5CD56D1A362D620029ED37 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3E5CD5701A362D620029ED37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3E5CD5871A362E6E0029ED37 /* GpsSketchingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GpsSketchingViewController.swift; path = Controllers/GpsSketchingViewController.swift; sourceTree = "<group>"; };
+		3E5CD58A1A36321E0029ED37 /* Parameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Parameters.swift; path = Models/Parameters.swift; sourceTree = "<group>"; };
+		3E5CD58C1A36476D0029ED37 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Controllers/SettingsViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3E5CD55E1A362D620029ED37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3E5CD5581A362D620029ED37 = {
+			isa = PBXGroup;
+			children = (
+				3E5CD5631A362D620029ED37 /* GpsSketching */,
+				3E5CD5621A362D620029ED37 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3E5CD5621A362D620029ED37 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3E5CD5611A362D620029ED37 /* GpsSketching.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3E5CD5631A362D620029ED37 /* GpsSketching */ = {
+			isa = PBXGroup;
+			children = (
+				3E5CD5891A3632040029ED37 /* Models */,
+				3E5CD5861A362E410029ED37 /* Controllers */,
+				3E5CD5661A362D620029ED37 /* AppDelegate.swift */,
+				3E5CD56A1A362D620029ED37 /* Main.storyboard */,
+				3E5CD56D1A362D620029ED37 /* Images.xcassets */,
+				3E5CD56F1A362D620029ED37 /* LaunchScreen.xib */,
+				3E5CD5641A362D620029ED37 /* Supporting Files */,
+			);
+			path = GpsSketching;
+			sourceTree = "<group>";
+		};
+		3E5CD5641A362D620029ED37 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3E0E14991A37B316001CC14A /* ArcGIS.bundle */,
+				3E5CD5651A362D620029ED37 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3E5CD5861A362E410029ED37 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3E5CD5871A362E6E0029ED37 /* GpsSketchingViewController.swift */,
+				3E5CD58C1A36476D0029ED37 /* SettingsViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3E5CD5891A3632040029ED37 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3E5CD58A1A36321E0029ED37 /* Parameters.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3E5CD5601A362D620029ED37 /* GpsSketching */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E5CD5801A362D620029ED37 /* Build configuration list for PBXNativeTarget "GpsSketching" */;
+			buildPhases = (
+				3E5CD55D1A362D620029ED37 /* Sources */,
+				3E5CD55E1A362D620029ED37 /* Frameworks */,
+				3E5CD55F1A362D620029ED37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GpsSketching;
+			productName = GpsSketching;
+			productReference = 3E5CD5611A362D620029ED37 /* GpsSketching.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3E5CD5591A362D620029ED37 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Esri;
+				TargetAttributes = {
+					3E5CD5601A362D620029ED37 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 3E5CD55C1A362D620029ED37 /* Build configuration list for PBXProject "GpsSketching" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3E5CD5581A362D620029ED37;
+			productRefGroup = 3E5CD5621A362D620029ED37 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3E5CD5601A362D620029ED37 /* GpsSketching */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3E5CD55F1A362D620029ED37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E5CD56C1A362D620029ED37 /* Main.storyboard in Resources */,
+				3E5CD5711A362D620029ED37 /* LaunchScreen.xib in Resources */,
+				3E0E149A1A37B316001CC14A /* ArcGIS.bundle in Resources */,
+				3E5CD56E1A362D620029ED37 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3E5CD55D1A362D620029ED37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E5CD5881A362E6E0029ED37 /* GpsSketchingViewController.swift in Sources */,
+				3E5CD5671A362D620029ED37 /* AppDelegate.swift in Sources */,
+				3E5CD58D1A36476D0029ED37 /* SettingsViewController.swift in Sources */,
+				3E5CD58B1A36321E0029ED37 /* Parameters.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3E5CD56A1A362D620029ED37 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E5CD56B1A362D620029ED37 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3E5CD56F1A362D620029ED37 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E5CD5701A362D620029ED37 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3E5CD57E1A362D620029ED37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3E5CD57F1A362D620029ED37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3E5CD5811A362D620029ED37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/";
+				INFOPLIST_FILE = GpsSketching/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3E5CD5821A362D620029ED37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/";
+				INFOPLIST_FILE = GpsSketching/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3E5CD55C1A362D620029ED37 /* Build configuration list for PBXProject "GpsSketching" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E5CD57E1A362D620029ED37 /* Debug */,
+				3E5CD57F1A362D620029ED37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3E5CD5801A362D620029ED37 /* Build configuration list for PBXNativeTarget "GpsSketching" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E5CD5811A362D620029ED37 /* Debug */,
+				3E5CD5821A362D620029ED37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3E5CD5591A362D620029ED37 /* Project object */;
+}

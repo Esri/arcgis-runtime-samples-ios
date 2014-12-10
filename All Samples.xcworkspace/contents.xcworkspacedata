@@ -33,7 +33,7 @@
          location = "container:"
          name = "ObjectiveC">
          <FileRef
-            location = "group:ClosestFacilitySample/ClosestFacilitySample.xcodeproj">
+            location = "group:ClosestFacilitySample/ObjectiveC/ClosestFacilitySample.xcodeproj">
          </FileRef>
       </Group>
    </Group>

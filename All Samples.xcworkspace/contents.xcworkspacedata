@@ -256,6 +256,17 @@
    <FileRef
       location = "group:TemporalSample/TemporalSample.xcodeproj">
    </FileRef>
+   <Group
+      location = "group:WeatherInfoSample/../DynamicSubLayerReorderSample"
+      name = "DynamicSubLayerReorderSample">
+      <Group
+         location = "group:DynamicSubLayerReorderSample/Objective-C"
+         name = "Objective-C">
+         <FileRef
+            location = "group:DynamicSubLayerReorderSample/Objective-C/DynamicSubLayerReorderSample.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:WeatherInfoSample/WeatherInfoSample.xcodeproj">
    </FileRef>

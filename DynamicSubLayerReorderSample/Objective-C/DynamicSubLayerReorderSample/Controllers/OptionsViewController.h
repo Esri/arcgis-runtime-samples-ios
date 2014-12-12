@@ -15,6 +15,7 @@
  */
 
 #import <UIKit/UIKit.h>
+#import <ArcGIS/ArcGIS.h>
 
 @protocol OptionsDelegate;
 
@@ -27,6 +28,6 @@
 
 @protocol OptionsDelegate <NSObject>
 
--(void)optionsViewController:(OptionsViewController*)optionsViewController didSelectOption:(id)option;
+-(void)optionsViewController:(OptionsViewController*)optionsViewController didSelectOption:(AGSLayerInfo*)option;
 
 @end

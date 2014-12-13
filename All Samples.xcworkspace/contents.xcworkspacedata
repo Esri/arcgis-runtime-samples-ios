@@ -145,9 +145,24 @@
          </FileRef>
       </Group>
    </Group>
-   <FileRef
-      location = "group:GPSSketchingSample/GpsSketchingSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "GpsSketching">
+      <Group
+         location = "container:"
+         name = "Swift">
+         <FileRef
+            location = "group:GPSSketchingSample/swift/GpsSketching.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "ObjectiveC">
+         <FileRef
+            location = "group:GPSSketchingSample/objective-c/GpsSketchingSample.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <Group
       location = "container:"
       name = "GraphicsSample">

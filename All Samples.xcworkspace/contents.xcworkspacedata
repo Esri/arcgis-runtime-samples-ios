@@ -95,14 +95,14 @@
          location = "container:"
          name = "ObjectiveC">
          <FileRef
-            location = "group:GeodesicSketchingSample/ObjectiveC/GeodesicSketchingSample.xcodeproj">
+            location = "group:GeodesicSketchingSample/objective-c/GeodesicSketchingSample.xcodeproj">
          </FileRef>
       </Group>
       <Group
          location = "container:"
          name = "Swift">
          <FileRef
-            location = "group:GeodesicSketchingSample/Swift/GeodesicSketching.xcodeproj">
+            location = "group:GeodesicSketchingSample/swift/GeodesicSketching.xcodeproj">
          </FileRef>
       </Group>
    </Group>

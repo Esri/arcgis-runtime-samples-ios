@@ -122,7 +122,7 @@
          location = "container:"
          name = "Swift">
          <FileRef
-            location = "group:GPSSketchingSample/swift/GpsSketching/GpsSketching.xcodeproj">
+            location = "group:GPSSketchingSample/swift/GpsSketching.xcodeproj">
          </FileRef>
       </Group>
       <Group

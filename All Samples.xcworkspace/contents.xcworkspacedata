@@ -22,9 +22,24 @@
    <FileRef
       location = "group:ClosestFacilitySample/ClosestFacilitySample.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:CustomCalloutSample/CustomCalloutSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "CustomCallout">
+      <Group
+         location = "container:"
+         name = "Objective-C">
+         <FileRef
+            location = "group:CustomCalloutSample/objective-c/CustomCalloutSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Swift">
+         <FileRef
+            location = "group:CustomCalloutSample/swift/CustomCallout.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:CustomTiledLayerSample/CustomTiledLayerSample.xcodeproj">
    </FileRef>
@@ -49,9 +64,24 @@
          </FileRef>
       </Group>
    </Group>
-   <FileRef
-      location = "group:FindTaskSample/FindTaskSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "FindTask">
+      <Group
+         location = "container:"
+         name = "Objective-C">
+         <FileRef
+            location = "group:FindTaskSample/objective-c/FindTaskSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Swift">
+         <FileRef
+            location = "group:FindTaskSample/swift/FindTask.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <Group
       location = "group:GenerateRendererSample"
       name = "GenerateRendererSample">
@@ -133,9 +163,24 @@
          </FileRef>
       </Group>
    </Group>
-   <FileRef
-      location = "group:GraphicsSample/GraphicsSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "GraphicsSample">
+      <Group
+         location = "container:"
+         name = "Swift">
+         <FileRef
+            location = "group:GraphicsSample/swift/GraphicsSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Objective-C">
+         <FileRef
+            location = "group:GraphicsSample/objective-c/GraphicsSample.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:IdentifyTaskSample/IdentifyTaskSample.xcodeproj">
    </FileRef>
@@ -271,6 +316,17 @@
    <FileRef
       location = "group:TemporalSample/TemporalSample.xcodeproj">
    </FileRef>
+   <Group
+      location = "group:WeatherInfoSample/../DynamicSubLayerReorderSample"
+      name = "DynamicSubLayerReorderSample">
+      <Group
+         location = "group:DynamicSubLayerReorderSample/Objective-C"
+         name = "Objective-C">
+         <FileRef
+            location = "group:DynamicSubLayerReorderSample/Objective-C/DynamicSubLayerReorderSample.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:WeatherInfoSample/WeatherInfoSample.xcodeproj">
    </FileRef>

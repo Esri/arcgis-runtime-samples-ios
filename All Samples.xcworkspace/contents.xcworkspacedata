@@ -118,9 +118,24 @@
          </FileRef>
       </Group>
    </Group>
-   <FileRef
-      location = "group:GeodesicSketchingSample/GeodesicSketchingSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "GeodesicSketching">
+      <Group
+         location = "container:"
+         name = "ObjectiveC">
+         <FileRef
+            location = "group:GeodesicSketchingSample/objective-c/GeodesicSketchingSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Swift">
+         <FileRef
+            location = "group:GeodesicSketchingSample/swift/GeodesicSketching.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:GeometrySample/GeometrySample.xcodeproj">
    </FileRef>

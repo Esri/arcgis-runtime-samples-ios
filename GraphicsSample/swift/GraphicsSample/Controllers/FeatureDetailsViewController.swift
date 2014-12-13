@@ -79,7 +79,7 @@ class FeatureDetailsViewController: UIViewController, UITableViewDataSource, UIT
         }
         
         //extract the attribute and its value and display both in the cell
-        cell?.textLabel.text = self.aliases[indexPath.row]
+        cell?.textLabel?.text = self.aliases[indexPath.row]
         
         let key = self.keys[indexPath.row]
         

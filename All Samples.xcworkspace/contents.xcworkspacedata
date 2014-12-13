@@ -27,16 +27,16 @@
       name = "CustomCallout">
       <Group
          location = "container:"
-         name = "ObjectiveC">
+         name = "Objective-C">
          <FileRef
-            location = "group:CustomCalloutSample/ObjectiveC/CustomCalloutSample.xcodeproj">
+            location = "group:CustomCalloutSample/objective-c/CustomCalloutSample.xcodeproj">
          </FileRef>
       </Group>
       <Group
          location = "container:"
          name = "Swift">
          <FileRef
-            location = "group:CustomCalloutSample/Swift/CustomCallout.xcodeproj">
+            location = "group:CustomCalloutSample/swift/CustomCallout.xcodeproj">
          </FileRef>
       </Group>
    </Group>

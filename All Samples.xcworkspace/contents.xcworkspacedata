@@ -119,20 +119,20 @@
       location = "group:GPSSketchingSample/GpsSketchingSample.xcodeproj">
    </FileRef>
    <Group
-      location = "group:GPSSketchingSample/../GraphicsSample"
+      location = "container:"
       name = "GraphicsSample">
       <Group
-         location = "group:GraphicsSample/ObjectiveC"
-         name = "ObjectiveC">
+         location = "container:"
+         name = "Swift">
          <FileRef
-            location = "group:GraphicsSample/ObjectiveC/GraphicsSample.xcodeproj">
+            location = "group:GraphicsSample/swift/GraphicsSample.xcodeproj">
          </FileRef>
       </Group>
       <Group
-         location = "group:GraphicsSample/Swift"
-         name = "Swift">
+         location = "container:"
+         name = "Objective-C">
          <FileRef
-            location = "group:GraphicsSample/Swift/GraphicsSample.xcodeproj">
+            location = "group:GraphicsSample/objective-c/GraphicsSample.xcodeproj">
          </FileRef>
       </Group>
    </Group>

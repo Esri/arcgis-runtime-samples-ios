@@ -54,16 +54,16 @@
       name = "FindTask">
       <Group
          location = "container:"
-         name = "ObjectiveC">
+         name = "Objective-C">
          <FileRef
-            location = "group:FindTaskSample/ObjectiveC/FindTaskSample.xcodeproj">
+            location = "group:FindTaskSample/objective-c/FindTaskSample.xcodeproj">
          </FileRef>
       </Group>
       <Group
          location = "container:"
          name = "Swift">
          <FileRef
-            location = "group:FindTaskSample/Swift/FindTask.xcodeproj">
+            location = "group:FindTaskSample/swift/FindTask.xcodeproj">
          </FileRef>
       </Group>
    </Group>

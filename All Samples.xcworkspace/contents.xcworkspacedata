@@ -64,9 +64,24 @@
          </FileRef>
       </Group>
    </Group>
-   <FileRef
-      location = "group:FindTaskSample/FindTaskSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "FindTask">
+      <Group
+         location = "container:"
+         name = "Objective-C">
+         <FileRef
+            location = "group:FindTaskSample/objective-c/FindTaskSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Swift">
+         <FileRef
+            location = "group:FindTaskSample/swift/FindTask.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <Group
       location = "group:GenerateRendererSample"
       name = "GenerateRendererSample">

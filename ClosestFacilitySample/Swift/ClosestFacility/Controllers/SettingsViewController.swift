@@ -28,10 +28,10 @@ class SettingsViewController: UIViewController {
 
         //reflect default values in sliders
         self.facilityCountSlider.value = Float(self.parameters.facilityCount)
-        self.facilityCountLabel.text = "\(self.parameters.facilityCount)"
+        self.facilityCountLabel.text = "\(Int(self.parameters.facilityCount))"
         
         self.cutOffTimeSlider.value = Float(self.parameters.cutoffTime)
-        self.cutoffTimeLabel.text = "\(self.parameters.cutoffTime)"
+        self.cutoffTimeLabel.text = "\(Int(self.parameters.cutoffTime))"
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,7 +49,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func cutoffTimeChanged(cutoffTimeSlider:UISlider) {
         self.parameters.cutoffTime = Double(cutoffTimeSlider.value)
-        self.cutoffTimeLabel.text = "\(self.parameters.cutoffTime)"
+        self.cutoffTimeLabel.text = "\(Int(self.parameters.cutoffTime))"
     }
     
     @IBAction func done(sender:AnyObject) {

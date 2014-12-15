@@ -272,6 +272,6 @@
     </scenes>
     <resources>
         <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
-        <image name="Clear20.png" width="16" height="16"/>
+        <image name="Clear20.png" width="20" height="20"/>
     </resources>
 </document>

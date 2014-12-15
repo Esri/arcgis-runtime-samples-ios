@@ -151,7 +151,9 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
         let barrierNum = graphic.attributeAsStringForKey("barrierNumber")
         
         self.selectedGraphic = graphic
-        self.sketchLayer.clear()
+        if self.sketchLayer != nil {
+            self.sketchLayer.clear()
+        }
         
         if incidentNum != nil || barrierNum != nil {
             self.mapView.callout.customView = self.deleteCalloutView
@@ -315,6 +317,7 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
             //getting the symbol for the incident graphic
             symbol = self.barrierSymbol()
             g = AGSGraphic(geometry: geometry, symbol: symbol, attributes: attributes)
+            self.graphicsLayer.addGraphic(g)
         default:
             break
         }
@@ -357,16 +360,17 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
         self.statusMessageLabel.text = "Finding closest facilities"
         
         // if we have a sketch layer on the map, remove it
-        //TODO:
-        if contains(self.mapView.mapLayers as [AGSLayer], self.sketchLayer) {
-            self.mapView.removeMapLayerWithName(self.sketchLayer.name)
-            self.mapView.touchDelegate = nil
-            self.sketchLayer = nil
-            
-            //also disable the sketch control so that user cannot sketch
-            self.sketchModeSegCtrl.selectedSegmentIndex = -1
-            for (var i = 0 ; i < self.sketchModeSegCtrl.numberOfSegments; i++) {
-                self.sketchModeSegCtrl.setEnabled(false, forSegmentAtIndex: i)
+        if self.sketchLayer != nil {
+            if contains(self.mapView.mapLayers as [AGSLayer], self.sketchLayer) {
+                self.mapView.removeMapLayerWithName(self.sketchLayer.name)
+                self.mapView.touchDelegate = nil
+                self.sketchLayer = nil
+                
+                //also disable the sketch control so that user cannot sketch
+                self.sketchModeSegCtrl.selectedSegmentIndex = -1
+                for (var i = 0 ; i < self.sketchModeSegCtrl.numberOfSegments; i++) {
+                    self.sketchModeSegCtrl.setEnabled(false, forSegmentAtIndex: i)
+                }
             }
         }
     

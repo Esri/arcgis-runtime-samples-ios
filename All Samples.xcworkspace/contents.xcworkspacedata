@@ -6,16 +6,16 @@
       name = "AsynchronousGP">
       <Group
          location = "container:"
-         name = "Swift">
+         name = "Objective-C">
          <FileRef
-            location = "group:AsynchronousGPSample/swift/AsynchronousGP.xcodeproj">
+            location = "group:AsynchronousGPSample/objective-c/AsynchronousGPSample.xcodeproj">
          </FileRef>
       </Group>
       <Group
          location = "container:"
-         name = "Objective-C">
+         name = "Swift">
          <FileRef
-            location = "group:AsynchronousGPSample/objective-c/AsynchronousGPSample.xcodeproj">
+            location = "group:AsynchronousGPSample/swift/AsynchronousGP.xcodeproj">
          </FileRef>
       </Group>
    </Group>
@@ -37,9 +37,24 @@
          </FileRef>
       </Group>
    </Group>
-   <FileRef
-      location = "group:CustomCalloutSample/CustomCalloutSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "CustomCallout">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:CustomCalloutSample/objective-c/CustomCalloutSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:CustomCalloutSample/swift/CustomCallout.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:CustomTiledLayerSample/CustomTiledLayerSample.xcodeproj">
    </FileRef>
@@ -51,37 +66,52 @@
       name = "FeatureLayerEditing">
       <Group
          location = "container:"
-         name = "Swift">
-         <FileRef
-            location = "group:FeatureLayerEditingSample/swift/FeatureLayerEditing.xcodeproj">
-         </FileRef>
-      </Group>
-      <Group
-         location = "container:"
-         name = "Objective-C">
+         name = "objective-c">
          <FileRef
             location = "group:FeatureLayerEditingSample/objective-c/FeatureLayerEditingSample.xcodeproj">
          </FileRef>
       </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:FeatureLayerEditingSample/swift/FeatureLayerEditing.xcodeproj">
+         </FileRef>
+      </Group>
    </Group>
-   <FileRef
-      location = "group:FindTaskSample/FindTaskSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "FindTask">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:FindTaskSample/objective-c/FindTaskSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:FindTaskSample/swift/FindTask.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <Group
       location = "group:GenerateRendererSample"
       name = "GenerateRendererSample">
-      <Group
-         location = "container:"
-         name = "Swift">
-         <FileRef
-            location = "group:GenerateRendererSample/Swift/GenerateRenderer/GenerateRenderer.xcodeproj">
-         </FileRef>
-      </Group>
       <Group
          location = "group:objective-c"
          name = "objective-c">
          <FileRef
             location = "group:GenerateRendererSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:GenerateRendererSample/Swift/GenerateRenderer/GenerateRenderer.xcodeproj">
          </FileRef>
       </Group>
    </Group>
@@ -90,22 +120,37 @@
       name = "Geocoding">
       <Group
          location = "container:"
-         name = "Swift">
-         <FileRef
-            location = "group:GeocodingSample/swift/Geocoding/Geocoding.xcodeproj">
-         </FileRef>
-      </Group>
-      <Group
-         location = "container:"
-         name = "Objective-C">
+         name = "objective-c">
          <FileRef
             location = "group:GeocodingSample/objective-c/GeocodingSample.xcodeproj">
          </FileRef>
       </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:GeocodingSample/swift/Geocoding/Geocoding.xcodeproj">
+         </FileRef>
+      </Group>
    </Group>
-   <FileRef
-      location = "group:GeodesicSketchingSample/GeodesicSketchingSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "GeodesicSketching">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:GeodesicSketchingSample/objective-c/GeodesicSketchingSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:GeodesicSketchingSample/swift/GeodesicSketching.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:GeometrySample/GeometrySample.xcodeproj">
    </FileRef>
@@ -117,25 +162,55 @@
       name = "Gps">
       <Group
          location = "container:"
-         name = "Swift">
-         <FileRef
-            location = "group:GpsSample/swift/Gps/Gps.xcodeproj">
-         </FileRef>
-      </Group>
-      <Group
-         location = "container:"
-         name = "Objective-C">
+         name = "objective-c">
          <FileRef
             location = "group:GpsSample/objective-c/GpsSample.xcodeproj">
          </FileRef>
       </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:GpsSample/swift/Gps/Gps.xcodeproj">
+         </FileRef>
+      </Group>
    </Group>
-   <FileRef
-      location = "group:GPSSketchingSample/GpsSketchingSample.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:GraphicsSample/GraphicsSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "GpsSketching">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:GPSSketchingSample/objective-c/GpsSketchingSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:GPSSketchingSample/swift/GpsSketching.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
+   <Group
+      location = "container:"
+      name = "GraphicsSample">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:GraphicsSample/objective-c/GraphicsSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:GraphicsSample/swift/GraphicsSample.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:IdentifyTaskSample/IdentifyTaskSample.xcodeproj">
    </FileRef>
@@ -159,16 +234,16 @@
       name = "OfflineFeatureEditing">
       <Group
          location = "container:"
-         name = "Swift">
+         name = "objective-c">
          <FileRef
-            location = "group:OfflineFeatureEditingSample/swift/OfflineFeatureEditing.xcodeproj">
+            location = "group:OfflineFeatureEditingSample/objective-c/OfflineFeatureEditingSample.xcodeproj">
          </FileRef>
       </Group>
       <Group
          location = "container:"
-         name = "Objective-C">
+         name = "swift">
          <FileRef
-            location = "group:OfflineFeatureEditingSample/objective-c/OfflineFeatureEditingSample.xcodeproj">
+            location = "group:OfflineFeatureEditingSample/swift/OfflineFeatureEditing.xcodeproj">
          </FileRef>
       </Group>
    </Group>
@@ -177,16 +252,16 @@
       name = "OfflineGeocoding">
       <Group
          location = "container:"
-         name = "Swift">
+         name = "objective-c">
          <FileRef
-            location = "group:OfflineGeocodingSample/swift/OfflineGeocoding.xcodeproj">
+            location = "group:OfflineGeocodingSample/objective-c/OfflineGeocodingSample.xcodeproj">
          </FileRef>
       </Group>
       <Group
          location = "container:"
-         name = "Objective-C">
+         name = "swift">
          <FileRef
-            location = "group:OfflineGeocodingSample/objective-c/OfflineGeocodingSample.xcodeproj">
+            location = "group:OfflineGeocodingSample/swift/OfflineGeocoding.xcodeproj">
          </FileRef>
       </Group>
    </Group>
@@ -195,16 +270,16 @@
       name = "OfflineRouting">
       <Group
          location = "container:"
-         name = "Swift">
+         name = "objective-c">
          <FileRef
-            location = "group:OfflineRoutingSample/swift/OfflineRouting.xcodeproj">
+            location = "group:OfflineRoutingSample/objective-c/OfflineRoutingSample.xcodeproj">
          </FileRef>
       </Group>
       <Group
          location = "container:"
-         name = "Objective-C">
+         name = "swift">
          <FileRef
-            location = "group:OfflineRoutingSample/objective-c/OfflineRoutingSample.xcodeproj">
+            location = "group:OfflineRoutingSample/swift/OfflineRouting.xcodeproj">
          </FileRef>
       </Group>
    </Group>
@@ -213,16 +288,16 @@
       name = "Popup">
       <Group
          location = "container:"
-         name = "Swift">
+         name = "objective-c">
          <FileRef
-            location = "group:PopupSample/swift/Popup.xcodeproj">
+            location = "group:PopupSample/objective-c/PopupSample.xcodeproj">
          </FileRef>
       </Group>
       <Group
          location = "container:"
-         name = "Objective-C">
+         name = "swift">
          <FileRef
-            location = "group:PopupSample/objective-c/PopupSample.xcodeproj">
+            location = "group:PopupSample/swift/Popup.xcodeproj">
          </FileRef>
       </Group>
    </Group>
@@ -240,16 +315,16 @@
       name = "Routing">
       <Group
          location = "container:"
-         name = "Swift">
+         name = "objective-c">
          <FileRef
-            location = "group:RoutingSample/swift/Routing/Routing.xcodeproj">
+            location = "group:RoutingSample/objective-c/RoutingSample.xcodeproj">
          </FileRef>
       </Group>
       <Group
          location = "container:"
-         name = "Objective-C">
+         name = "swift">
          <FileRef
-            location = "group:RoutingSample/objective-c/RoutingSample.xcodeproj">
+            location = "group:RoutingSample/swift/Routing/Routing.xcodeproj">
          </FileRef>
       </Group>
    </Group>
@@ -271,6 +346,17 @@
    <FileRef
       location = "group:TemporalSample/TemporalSample.xcodeproj">
    </FileRef>
+   <Group
+      location = "group:WeatherInfoSample/../DynamicSubLayerReorderSample"
+      name = "DynamicSubLayerReorderSample">
+      <Group
+         location = "group:DynamicSubLayerReorderSample/Objective-C"
+         name = "objective-c">
+         <FileRef
+            location = "group:DynamicSubLayerReorderSample/Objective-C/DynamicSubLayerReorderSample.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:WeatherInfoSample/WeatherInfoSample.xcodeproj">
    </FileRef>
@@ -279,16 +365,16 @@
       name = "Webmap">
       <Group
          location = "container:"
-         name = "Swift">
+         name = "objective-c">
          <FileRef
-            location = "group:WebmapSample/swift/Webmap.xcodeproj">
+            location = "group:WebmapSample/objective-c/WebmapSample.xcodeproj">
          </FileRef>
       </Group>
       <Group
          location = "container:"
-         name = "Objective-C">
+         name = "swift">
          <FileRef
-            location = "group:WebmapSample/objective-c/WebmapSample.xcodeproj">
+            location = "group:WebmapSample/swift/Webmap.xcodeproj">
          </FileRef>
       </Group>
    </Group>

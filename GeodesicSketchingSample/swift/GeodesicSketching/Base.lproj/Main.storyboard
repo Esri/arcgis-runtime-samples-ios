@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PRJ-z1-Thw">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <scenes>
+        <!--Geodesic Sketching View Controller-->
+        <scene sceneID="C4c-Us-EfX">
+            <objects>
+                <viewController id="PRJ-z1-Thw" customClass="GeodesicSketchingViewController" customModule="GeodesicSketching" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tIQ-Ka-qxX"/>
+                        <viewControllerLayoutGuide type="bottom" id="e0c-4q-kS9"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="L3M-Uf-fle">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gNf-Re-8Mo" colorLabel="IBBuiltInLabel-Red">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="O3H-ak-jmR"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="add" id="9I7-hI-pGs">
+                                        <connections>
+                                            <action selector="addSketch" destination="PRJ-z1-Thw" id="fAd-Ir-JLD"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="zyC-h2-Xwv"/>
+                                    <barButtonItem image="undo.png" id="kde-LF-D5h">
+                                        <connections>
+                                            <action selector="undo" destination="PRJ-z1-Thw" id="Mb6-2U-LUf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="Redo.png" id="24T-hu-4Ph">
+                                        <connections>
+                                            <action selector="redo" destination="PRJ-z1-Thw" id="86c-2f-bu9"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Reset" id="rpy-NQ-aEd">
+                                        <connections>
+                                            <action selector="reset" destination="PRJ-z1-Thw" id="M6W-MG-imc"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vee-pN-ZEw" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="5bJ-Xv-lOy">
+                                        <rect key="frame" x="6" y="519" width="56" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="7mj-2O-3X9"/>
+                                            <constraint firstAttribute="height" constant="32" id="FcD-gT-pvj"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="center" text="Label" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="DWa-DC-JRU">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="bxP-LH-AHM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="5bJ-Xv-lOy" secondAttribute="bottom" constant="5" id="FbQ-Pp-Mv8"/>
+                                    <constraint firstItem="DWa-DC-JRU" firstAttribute="leading" secondItem="Vee-pN-ZEw" secondAttribute="leading" id="JL2-X1-bTq"/>
+                                    <constraint firstItem="DWa-DC-JRU" firstAttribute="top" secondItem="Vee-pN-ZEw" secondAttribute="top" id="ic8-tM-T4X"/>
+                                    <constraint firstItem="5bJ-Xv-lOy" firstAttribute="leading" secondItem="Vee-pN-ZEw" secondAttribute="leading" constant="6" id="xNk-HR-cQt"/>
+                                    <constraint firstItem="DWa-DC-JRU" firstAttribute="width" secondItem="Vee-pN-ZEw" secondAttribute="width" id="xny-77-tqI"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Vee-pN-ZEw" firstAttribute="top" secondItem="gNf-Re-8Mo" secondAttribute="bottom" id="1BG-aD-e48"/>
+                            <constraint firstItem="Vee-pN-ZEw" firstAttribute="leading" secondItem="L3M-Uf-fle" secondAttribute="leading" id="HJD-1f-yLS"/>
+                            <constraint firstItem="Vee-pN-ZEw" firstAttribute="width" secondItem="gNf-Re-8Mo" secondAttribute="width" id="Nge-Wv-4ia"/>
+                            <constraint firstItem="gNf-Re-8Mo" firstAttribute="leading" secondItem="L3M-Uf-fle" secondAttribute="leading" id="WiH-Da-W9t"/>
+                            <constraint firstItem="gNf-Re-8Mo" firstAttribute="top" secondItem="L3M-Uf-fle" secondAttribute="top" id="nsg-LK-T2D"/>
+                            <constraint firstAttribute="bottom" secondItem="Vee-pN-ZEw" secondAttribute="bottom" id="rUC-VR-K95"/>
+                            <constraint firstAttribute="trailing" secondItem="gNf-Re-8Mo" secondAttribute="trailing" id="wnC-gd-1qo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addButton" destination="9I7-hI-pGs" id="mRU-zH-m2E"/>
+                        <outlet property="bannerLabel" destination="DWa-DC-JRU" id="Eqz-Ik-hV8"/>
+                        <outlet property="mapView" destination="Vee-pN-ZEw" id="W6e-BH-eJ1"/>
+                        <outlet property="redoButton" destination="24T-hu-4Ph" id="iY2-5C-lUa"/>
+                        <outlet property="resetButton" destination="rpy-NQ-aEd" id="XPy-bm-EwP"/>
+                        <outlet property="undoButton" destination="kde-LF-D5h" id="pBB-ot-Ebf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R6X-2t-Inl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-28" y="101"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="30" height="30"/>
+        <image name="Redo.png" width="30" height="30"/>
+        <image name="undo.png" width="30" height="30"/>
+    </resources>
+</document>

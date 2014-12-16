@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JKp-gm-z30" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1A-4p-8cP">
+                                <rect key="frame" x="10" y="340" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="O3X-u8-VUs"/>
+                                    <constraint firstAttribute="width" constant="250" id="PsL-bD-ZQK"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="4V5-2V-8mC" kind="embed" identifier="ListEmbedSegue" id="cqq-pn-Ipw"/>
+                                </connections>
+                            </containerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="4hY-Pf-s6w">
+                                <rect key="frame" x="534" y="558" width="56" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="3jw-vo-zYj"/>
+                                    <constraint firstAttribute="width" constant="56" id="8ea-ag-Ysa"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JKp-gm-z30" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="IJ5-hw-5zn"/>
+                            <constraint firstItem="JKp-gm-z30" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Sax-64-NC5"/>
+                            <constraint firstAttribute="trailing" secondItem="4hY-Pf-s6w" secondAttribute="trailing" constant="10" id="XWd-yA-5od"/>
+                            <constraint firstAttribute="trailing" secondItem="JKp-gm-z30" secondAttribute="trailing" id="Zfd-jo-78s"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JKp-gm-z30" secondAttribute="bottom" id="aai-dN-qO5"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4hY-Pf-s6w" secondAttribute="bottom" constant="10" id="b5c-mW-EKe"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="E1A-4p-8cP" secondAttribute="bottom" constant="10" id="deN-XI-eRg"/>
+                            <constraint firstItem="E1A-4p-8cP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="jX4-qO-nd7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="listContainerView" destination="E1A-4p-8cP" id="A4C-GO-UFR"/>
+                        <outlet property="mapView" destination="JKp-gm-z30" id="bHq-cu-sLe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="624" y="477"/>
+        </scene>
+        <!--Layers List View Controller-->
+        <scene sceneID="gaB-0Y-pV9">
+            <objects>
+                <viewController id="4V5-2V-8mC" customClass="LayersListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4wY-E2-eWf"/>
+                        <viewControllerLayoutGuide type="bottom" id="kEV-dl-7xq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="o8O-Pi-T2L">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rZe-tK-zKp">
+                                <rect key="frame" x="0.0" y="44" width="250" height="206"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LayersListCell" id="0kc-k4-99z">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0kc-k4-99z" id="Jgd-8c-eQs">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="4V5-2V-8mC" id="8cF-nW-jfd"/>
+                                    <outlet property="delegate" destination="4V5-2V-8mC" id="Vam-OP-jcO"/>
+                                </connections>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nDj-Gu-cmA">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="WlH-1V-1Zr"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem id="m1g-j2-JPa">
+                                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Add" id="gEv-XC-tfE">
+                                            <connections>
+                                                <action selector="addAction:" destination="4V5-2V-8mC" id="cnI-pa-bNI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="rZe-tK-zKp" secondAttribute="trailing" id="Ld3-sK-w04"/>
+                            <constraint firstItem="kEV-dl-7xq" firstAttribute="top" secondItem="rZe-tK-zKp" secondAttribute="bottom" id="Mvk-9W-OEP"/>
+                            <constraint firstItem="nDj-Gu-cmA" firstAttribute="leading" secondItem="o8O-Pi-T2L" secondAttribute="leading" id="RJu-aT-JYs"/>
+                            <constraint firstAttribute="trailing" secondItem="nDj-Gu-cmA" secondAttribute="trailing" id="YGs-Ws-wey"/>
+                            <constraint firstItem="rZe-tK-zKp" firstAttribute="top" secondItem="o8O-Pi-T2L" secondAttribute="top" constant="44" id="kSt-S3-ZWb"/>
+                            <constraint firstItem="nDj-Gu-cmA" firstAttribute="top" secondItem="4wY-E2-eWf" secondAttribute="bottom" id="mej-da-l6W"/>
+                            <constraint firstItem="rZe-tK-zKp" firstAttribute="top" secondItem="nDj-Gu-cmA" secondAttribute="bottom" id="pg3-JS-fng"/>
+                            <constraint firstItem="rZe-tK-zKp" firstAttribute="leading" secondItem="o8O-Pi-T2L" secondAttribute="leading" id="xD9-qJ-S8k"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="kSt-S3-ZWb"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="5vi-1c-7er"/>
+                    <connections>
+                        <outlet property="addButton" destination="gEv-XC-tfE" id="Wre-7o-uim"/>
+                        <outlet property="tableView" destination="rZe-tK-zKp" id="wUW-AT-BS4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1hI-Hx-hhY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="624" y="993"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="30" height="30"/>
+    </resources>
+</document>

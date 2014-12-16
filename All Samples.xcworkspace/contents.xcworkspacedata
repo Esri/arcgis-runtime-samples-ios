@@ -24,16 +24,16 @@
       name = "ClosestFacility">
       <Group
          location = "container:"
-         name = "Swift">
+         name = "objective-c">
          <FileRef
-            location = "group:ClosestFacilitySample/Swift/ClosestFacility.xcodeproj">
+            location = "group:ClosestFacilitySample/objective-c/ClosestFacilitySample.xcodeproj">
          </FileRef>
       </Group>
       <Group
          location = "container:"
-         name = "ObjectiveC">
+         name = "swift">
          <FileRef
-            location = "group:ClosestFacilitySample/ObjectiveC/ClosestFacilitySample.xcodeproj">
+            location = "group:ClosestFacilitySample/swift/ClosestFacility.xcodeproj">
          </FileRef>
       </Group>
    </Group>

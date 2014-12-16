@@ -1,0 +1,341 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3E0E149D1A38BC8C001CC14A /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E0E149C1A38BC8C001CC14A /* ArcGIS.bundle */; };
+		3E5B62931A251DF900695EB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B62921A251DF900695EB8 /* AppDelegate.swift */; };
+		3E5B62981A251DF900695EB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5B62961A251DF900695EB8 /* Main.storyboard */; };
+		3E5B629A1A251DF900695EB8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E5B62991A251DF900695EB8 /* Images.xcassets */; };
+		3E5B629D1A251DF900695EB8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E5B629B1A251DF900695EB8 /* LaunchScreen.xib */; };
+		3E5B62B41A2520AF00695EB8 /* ClosestFacilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B62B31A2520AF00695EB8 /* ClosestFacilityViewController.swift */; };
+		3E5B62B61A25227400695EB8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B62B51A25227400695EB8 /* SettingsViewController.swift */; };
+		3E5B62B81A2528E800695EB8 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B62B71A2528E800695EB8 /* Parameters.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3E0E149C1A38BC8C001CC14A /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
+		3E5B628D1A251DF900695EB8 /* ClosestFacility.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClosestFacility.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E5B62911A251DF900695EB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E5B62921A251DF900695EB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3E5B62971A251DF900695EB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3E5B62991A251DF900695EB8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3E5B629C1A251DF900695EB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3E5B62B31A2520AF00695EB8 /* ClosestFacilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClosestFacilityViewController.swift; path = Controllers/ClosestFacilityViewController.swift; sourceTree = "<group>"; };
+		3E5B62B51A25227400695EB8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Controllers/SettingsViewController.swift; sourceTree = "<group>"; };
+		3E5B62B71A2528E800695EB8 /* Parameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Parameters.swift; path = Models/Parameters.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3E5B628A1A251DF900695EB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3E0E149B1A38BC42001CC14A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3E5B62B71A2528E800695EB8 /* Parameters.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		3E5B62841A251DF900695EB8 = {
+			isa = PBXGroup;
+			children = (
+				3E5B628F1A251DF900695EB8 /* ClosestFacility */,
+				3E5B628E1A251DF900695EB8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3E5B628E1A251DF900695EB8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3E5B628D1A251DF900695EB8 /* ClosestFacility.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3E5B628F1A251DF900695EB8 /* ClosestFacility */ = {
+			isa = PBXGroup;
+			children = (
+				3E0E149B1A38BC42001CC14A /* Models */,
+				3E5B62B21A251E0900695EB8 /* Controllers */,
+				3E5B62921A251DF900695EB8 /* AppDelegate.swift */,
+				3E5B62961A251DF900695EB8 /* Main.storyboard */,
+				3E5B62991A251DF900695EB8 /* Images.xcassets */,
+				3E5B629B1A251DF900695EB8 /* LaunchScreen.xib */,
+				3E5B62901A251DF900695EB8 /* Supporting Files */,
+			);
+			path = ClosestFacility;
+			sourceTree = "<group>";
+		};
+		3E5B62901A251DF900695EB8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3E0E149C1A38BC8C001CC14A /* ArcGIS.bundle */,
+				3E5B62911A251DF900695EB8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3E5B62B21A251E0900695EB8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3E5B62B31A2520AF00695EB8 /* ClosestFacilityViewController.swift */,
+				3E5B62B51A25227400695EB8 /* SettingsViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3E5B628C1A251DF900695EB8 /* ClosestFacility */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E5B62AC1A251DF900695EB8 /* Build configuration list for PBXNativeTarget "ClosestFacility" */;
+			buildPhases = (
+				3E5B62891A251DF900695EB8 /* Sources */,
+				3E5B628A1A251DF900695EB8 /* Frameworks */,
+				3E5B628B1A251DF900695EB8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClosestFacility;
+			productName = ClosestFacility;
+			productReference = 3E5B628D1A251DF900695EB8 /* ClosestFacility.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3E5B62851A251DF900695EB8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Esri;
+				TargetAttributes = {
+					3E5B628C1A251DF900695EB8 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 3E5B62881A251DF900695EB8 /* Build configuration list for PBXProject "ClosestFacility" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3E5B62841A251DF900695EB8;
+			productRefGroup = 3E5B628E1A251DF900695EB8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3E5B628C1A251DF900695EB8 /* ClosestFacility */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3E5B628B1A251DF900695EB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E5B62981A251DF900695EB8 /* Main.storyboard in Resources */,
+				3E5B629D1A251DF900695EB8 /* LaunchScreen.xib in Resources */,
+				3E0E149D1A38BC8C001CC14A /* ArcGIS.bundle in Resources */,
+				3E5B629A1A251DF900695EB8 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3E5B62891A251DF900695EB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E5B62B81A2528E800695EB8 /* Parameters.swift in Sources */,
+				3E5B62931A251DF900695EB8 /* AppDelegate.swift in Sources */,
+				3E5B62B41A2520AF00695EB8 /* ClosestFacilityViewController.swift in Sources */,
+				3E5B62B61A25227400695EB8 /* SettingsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3E5B62961A251DF900695EB8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E5B62971A251DF900695EB8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3E5B629B1A251DF900695EB8 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E5B629C1A251DF900695EB8 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3E5B62AA1A251DF900695EB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3E5B62AB1A251DF900695EB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3E5B62AD1A251DF900695EB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/";
+				INFOPLIST_FILE = ClosestFacility/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3E5B62AE1A251DF900695EB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/";
+				INFOPLIST_FILE = ClosestFacility/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3E5B62881A251DF900695EB8 /* Build configuration list for PBXProject "ClosestFacility" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E5B62AA1A251DF900695EB8 /* Debug */,
+				3E5B62AB1A251DF900695EB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3E5B62AC1A251DF900695EB8 /* Build configuration list for PBXNativeTarget "ClosestFacility" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E5B62AD1A251DF900695EB8 /* Debug */,
+				3E5B62AE1A251DF900695EB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3E5B62851A251DF900695EB8 /* Project object */;
+}

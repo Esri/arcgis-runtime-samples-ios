@@ -252,7 +252,6 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
         
         // set the incidents and polygon barriers on the parameters object
         if incidents.count > 0 {
-            println(incidents[0])
             closestFacilityParams.setIncidentsWithFeatures(incidents)
         }
         
@@ -397,7 +396,6 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
         //Enable/disable UI elements appropriately
         self.addButton.enabled = self.sketchLayer.geometry.isValid()
         self.clearSketchButton.enabled = !self.sketchLayer.geometry.isEmpty()
-        println("respondToGeomChanged \(self.sketchLayer.geometry)")
     }
     
     

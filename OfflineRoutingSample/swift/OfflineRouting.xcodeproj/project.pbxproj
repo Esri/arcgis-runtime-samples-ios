@@ -40,10 +40,10 @@
 		97F668A019E26427001D1724 /* OfflineRoutingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OfflineRoutingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		97F668A519E26427001D1724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97F668A619E26427001D1724 /* OfflineRoutingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineRoutingTests.swift; sourceTree = "<group>"; };
-		97F668B019E26497001D1724 /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "../../../../Data/tile package/SanFrancisco.tpk"; sourceTree = "<group>"; };
-		97F668B219E264A9001D1724 /* RuntimeSanFrancisco.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; name = RuntimeSanFrancisco.geodatabase; path = "../../../../Data/network dataset/SanFrancisco/RuntimeSanFrancisco.geodatabase"; sourceTree = "<group>"; };
-		97F668CF19E26616001D1724 /* RuntimeSanFrancisco.tn */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RuntimeSanFrancisco.tn; path = "../../../../Data/network dataset/SanFrancisco/RuntimeSanFrancisco.tn"; sourceTree = "<group>"; };
-		97F668D119E26697001D1724 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>";  };
+		97F668B019E26497001D1724 /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "../../../Data/tile package/SanFrancisco.tpk"; sourceTree = "<group>"; };
+		97F668B219E264A9001D1724 /* RuntimeSanFrancisco.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; name = RuntimeSanFrancisco.geodatabase; path = "../../../Data/network dataset/SanFrancisco/RuntimeSanFrancisco.geodatabase"; sourceTree = "<group>"; };
+		97F668CF19E26616001D1724 /* RuntimeSanFrancisco.tn */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RuntimeSanFrancisco.tn; path = "../../../Data/network dataset/SanFrancisco/RuntimeSanFrancisco.tn"; sourceTree = "<group>"; };
+		97F668D119E26697001D1724 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

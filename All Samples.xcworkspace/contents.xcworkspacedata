@@ -98,20 +98,20 @@
       </Group>
    </Group>
    <Group
-      location = "group:GenerateRendererSample"
+      location = "container:"
       name = "GenerateRendererSample">
       <Group
          location = "group:objective-c"
          name = "objective-c">
          <FileRef
-            location = "group:GenerateRendererSample.xcodeproj">
+            location = "group:GenerateRendererSample/objective-c/GenerateRendererSample.xcodeproj">
          </FileRef>
       </Group>
       <Group
          location = "container:"
          name = "swift">
          <FileRef
-            location = "group:GenerateRendererSample/Swift/GenerateRenderer/GenerateRenderer.xcodeproj">
+            location = "group:GenerateRendererSample/swift/GenerateRenderer.xcodeproj">
          </FileRef>
       </Group>
    </Group>

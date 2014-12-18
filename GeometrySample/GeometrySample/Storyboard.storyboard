@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="j4n-fT-K0M">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="j4n-fT-K0M">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--Buffer View Controller-->
@@ -19,7 +19,6 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Aj-ZA-cpw">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="DMg-tq-ZH0"/>
                                 </constraints>
@@ -64,11 +63,9 @@
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYt-aV-1b4" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="44" width="768" height="980"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="BPd-Zr-clo">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="56"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.27375637759999999" green="0.27375637759999999" blue="0.27375637759999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="3jj-Z0-7qC"/>
@@ -78,8 +75,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="Y8s-j0-gkh">
-                                        <rect key="frame" x="10" y="939.99999926757312" width="56" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                        <rect key="frame" x="10" y="940" width="56" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="56" id="6qi-Td-7Y9"/>
                                             <constraint firstAttribute="height" constant="32" id="aUL-bk-IJ2"/>
@@ -104,7 +100,6 @@
                             <constraint firstAttribute="trailing" secondItem="lYt-aV-1b4" secondAttribute="trailing" id="sUz-ab-hPe"/>
                             <constraint firstAttribute="trailing" secondItem="0Aj-ZA-cpw" secondAttribute="trailing" id="ute-Yo-HFV"/>
                         </constraints>
-                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     </view>
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -136,7 +131,6 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3A2-eJ-pMh">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Avc-CA-eVr"/>
                                 </constraints>
@@ -171,11 +165,9 @@
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCF-nL-09U" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="44" width="768" height="980"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="tGl-GP-YgC">
                                         <rect key="frame" x="0.0" y="1" width="768" height="57"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.20998086730000001" green="0.20998086730000001" blue="0.20998086730000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="57" id="tz6-ZI-CI4"/>
@@ -185,8 +177,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nau-dV-LZo">
-                                        <rect key="frame" x="20" y="923.99999938532721" width="56" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                        <rect key="frame" x="20" y="924" width="56" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="56" id="iWH-CO-tqi"/>
                                             <constraint firstAttribute="height" constant="32" id="kWg-wO-ad0"/>
@@ -213,7 +204,6 @@
                             <constraint firstAttribute="trailing" secondItem="3A2-eJ-pMh" secondAttribute="trailing" id="mL2-94-e0J"/>
                             <constraint firstItem="3A2-eJ-pMh" firstAttribute="leading" secondItem="d0f-az-C3w" secondAttribute="leading" id="pfz-cO-7qW"/>
                         </constraints>
-                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     </view>
                     <connections>
                         <outlet property="addButton" destination="CHK-he-OVE" id="nf5-Nm-UiP"/>
@@ -243,7 +233,6 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Upv-0i-rtL">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="xq0-1P-BAu"/>
                                 </constraints>
@@ -287,11 +276,9 @@
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npN-Vf-5Fr" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="44" width="768" height="980"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="hNZ-qO-v3J">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="58"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.30982940050000002" green="0.30982940050000002" blue="0.30982940050000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="58" id="AUK-Hk-X10"/>
@@ -301,8 +288,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="uc3-xa-I0U">
-                                        <rect key="frame" x="20" y="923.99999938532721" width="56" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                        <rect key="frame" x="20" y="924" width="56" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="Kwg-MM-HEs"/>
                                             <constraint firstAttribute="width" constant="56" id="q4v-80-EH0"/>
@@ -329,7 +315,6 @@
                             <constraint firstItem="npN-Vf-5Fr" firstAttribute="top" secondItem="Upv-0i-rtL" secondAttribute="bottom" id="bjs-Nf-iLc"/>
                             <constraint firstAttribute="trailing" secondItem="Upv-0i-rtL" secondAttribute="trailing" id="yTA-36-qNw"/>
                         </constraints>
-                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     </view>
                     <connections>
                         <outlet property="distance" destination="Ias-5a-1be" id="Adi-us-hrW"/>
@@ -358,7 +343,6 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0T-t3-1S9">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Rvq-ct-bNV"/>
                                 </constraints>
@@ -391,11 +375,9 @@
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CL0-xn-73y" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="44" width="768" height="980"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Fq3-3S-sOY">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="56"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.34644052930000002" green="0.34644052930000002" blue="0.34644052930000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="ngy-fa-QrV"/>
@@ -405,8 +387,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="VvY-CQ-QoD">
-                                        <rect key="frame" x="20" y="923.99999938532721" width="56" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                        <rect key="frame" x="20" y="924" width="56" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="56" id="I64-qY-oU3"/>
                                             <constraint firstAttribute="height" constant="32" id="zas-1M-xQf"/>
@@ -433,7 +414,6 @@
                             <constraint firstItem="CL0-xn-73y" firstAttribute="leading" secondItem="Zk7-h0-Ein" secondAttribute="leading" id="nTb-ej-KxU"/>
                             <constraint firstItem="CL0-xn-73y" firstAttribute="width" secondItem="y0T-t3-1S9" secondAttribute="width" id="s3j-OF-w2O"/>
                         </constraints>
-                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     </view>
                     <connections>
                         <outlet property="addButton" destination="ILn-oy-1Mm" id="z1d-uZ-5LX"/>
@@ -461,7 +441,6 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Soq-BJ-dkI">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="CtK-2I-XPi"/>
                                 </constraints>
@@ -495,11 +474,9 @@
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oqY-pq-Cc4" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="44" width="768" height="486"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="7HN-tz-Z5U">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="56"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.24431999360000001" green="0.24431999360000001" blue="0.24431999360000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -510,17 +487,14 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mrw-f1-HIK" userLabel="Map View 2" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="538" width="380" height="486"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gF-NF-Pqb" userLabel="Map View 3" customClass="AGSMapView">
                                 <rect key="frame" x="388" y="538" width="380" height="486"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="l15-9G-VD7">
                                 <rect key="frame" x="20" y="970" width="56" height="32"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="56" id="m3o-HZ-XGv"/>
                                     <constraint firstAttribute="height" constant="32" id="qpp-Ca-1yY"/>
@@ -547,7 +521,6 @@
                             <constraint firstItem="oqY-pq-Cc4" firstAttribute="leading" secondItem="ibM-O1-SHw" secondAttribute="leading" id="uMH-VB-zrs"/>
                             <constraint firstItem="Soq-BJ-dkI" firstAttribute="top" secondItem="ibM-O1-SHw" secondAttribute="top" id="zWL-H8-P1M"/>
                         </constraints>
-                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     </view>
                     <connections>
                         <outlet property="geometrySelect" destination="zrT-gN-ty3" id="FkM-nw-WL8"/>
@@ -577,7 +550,6 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="93e-xn-hqE">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="VCI-yb-6Fv"/>
                                 </constraints>
@@ -612,11 +584,9 @@
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7L8-TV-dgZ" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="44" width="768" height="980"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="IoW-e9-8DX">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="57"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="57" id="JOj-6h-LDD"/>
@@ -626,8 +596,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="MK6-d8-spk">
-                                        <rect key="frame" x="597.99999911849955" y="665" width="160" height="305"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                        <rect key="frame" x="598" y="665" width="160" height="305"/>
                                         <color key="backgroundColor" red="0.49625318880000002" green="0.49625318880000002" blue="0.49625318880000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="NBs-P6-wR7"/>
@@ -635,8 +604,7 @@
                                         </constraints>
                                     </tableView>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="aTY-1V-VrN">
-                                        <rect key="frame" x="20" y="923.99999938532721" width="56" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                        <rect key="frame" x="20" y="924" width="56" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="56" id="Ly4-CA-yfZ"/>
                                             <constraint firstAttribute="height" constant="32" id="mEs-A1-ukN"/>
@@ -665,7 +633,6 @@
                             <constraint firstItem="93e-xn-hqE" firstAttribute="width" secondItem="7L8-TV-dgZ" secondAttribute="width" id="uwe-w8-7XQ"/>
                             <constraint firstItem="93e-xn-hqE" firstAttribute="leading" secondItem="gXe-J4-Xyc" secondAttribute="leading" id="yMI-84-92Y"/>
                         </constraints>
-                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     </view>
                     <connections>
                         <outlet property="addButton" destination="2Iv-mD-9LO" id="bQV-0o-hag"/>
@@ -694,7 +661,6 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OjN-5r-cii">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Xgg-Z8-Zhc"/>
                                 </constraints>
@@ -732,11 +698,9 @@
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3g4-5i-y1U" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="44" width="768" height="980"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="2ZS-jn-CY8">
-                                        <rect key="frame" x="20" y="923.9999993853271" width="56" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                        <rect key="frame" x="20" y="924" width="56" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="bxx-RO-GLm"/>
                                             <constraint firstAttribute="width" constant="56" id="pZs-f9-Pgk"/>
@@ -744,11 +708,9 @@
                                     </imageView>
                                     <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L62-1Y-w7S">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="56"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6o-Wd-bp2">
                                                 <rect key="frame" x="523" y="13" width="225" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="225" id="Cph-48-KlI"/>
@@ -769,7 +731,6 @@
                                             </button>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="YtE-Bc-N48">
                                                 <rect key="frame" x="15" y="12" width="500" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="mJw-xu-7wQ"/>
                                                 </constraints>
@@ -809,7 +770,6 @@
                             <constraint firstItem="OjN-5r-cii" firstAttribute="top" secondItem="mhY-uc-Z8g" secondAttribute="top" id="g3q-p1-Sc0"/>
                             <constraint firstAttribute="bottom" secondItem="3g4-5i-y1U" secondAttribute="bottom" id="htI-Tz-t1c"/>
                         </constraints>
-                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="3g4-5i-y1U" id="Rgt-Mn-AIB"/>
@@ -839,7 +799,6 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qS0-N0-lS8">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="hkr-Mm-AMo"/>
                                 </constraints>
@@ -888,11 +847,9 @@
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETS-eK-oGq" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="44" width="768" height="936"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="8Cs-Rn-LN8">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="56"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.28236607139999997" green="0.28236607139999997" blue="0.28236607139999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="NRW-pv-jZT"/>
@@ -902,8 +859,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="o9I-xm-dzt">
-                                        <rect key="frame" x="20" y="880" width="56" height="32.000000178813842"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                        <rect key="frame" x="20" y="880" width="56" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="56" id="Q7U-Jq-v52"/>
                                             <constraint firstAttribute="height" constant="32" id="sIh-6d-tF1"/>
@@ -921,7 +877,6 @@
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="nYx-TJ-zWI">
                                 <rect key="frame" x="0.0" y="980" width="768" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="BQn-3H-hYO"/>
                                 </constraints>
@@ -965,7 +920,6 @@
                             <constraint firstAttribute="trailing" secondItem="nYx-TJ-zWI" secondAttribute="trailing" id="so4-gv-fNh"/>
                             <constraint firstItem="ETS-eK-oGq" firstAttribute="top" secondItem="qS0-N0-lS8" secondAttribute="bottom" id="zDI-PD-hm4"/>
                         </constraints>
-                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     </view>
                     <connections>
                         <outlet property="bevel" destination="NeC-xk-dc8" id="tfP-WH-jv4"/>
@@ -984,12 +938,12 @@
             </objects>
             <point key="canvasLocation" x="524" y="1681"/>
         </scene>
-        <!--Root View Controller - Root View Controller-->
+        <!--Root View Controller-->
         <scene sceneID="AgM-3A-R3k">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="KAm-I2-i1k" customClass="RootViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XhT-3l-iqe">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="308" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1028,15 +982,14 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OLd-LF-ru0">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="200"/>
                     <connections>
                         <outlet property="tableView" destination="OLd-LF-ru0" id="a8t-1d-tIh"/>
                     </connections>

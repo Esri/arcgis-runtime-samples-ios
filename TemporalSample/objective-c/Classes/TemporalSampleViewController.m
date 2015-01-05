@@ -39,9 +39,7 @@
 	self.featureLyr.calloutDelegate = self;
 	[self.mapView addMapLayer:self.featureLyr withName:@"Earthquakes Layer"];
 
-    
-    AGSDynamicMapServiceLayer* dy = [AGSDynamicMapServiceLayer dynamicMapServiceLayerWithURL:[NSURL URLWithString:@"http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Earthquakes/EarthquakesFromLastSevenDays/MapServer"]];
-    [self.mapView addMapLayer:dy];
+
 	//Customizing the callout look
 	self.mapView.callout.accessoryButtonHidden = YES;
 	self.mapView.callout.color = [UIColor colorWithRed:.475 green:.545 blue:.639 alpha:1];

@@ -225,7 +225,7 @@
          location = "container:"
          name = "swift">
          <FileRef
-            location = "group:IdentifyTaskSample/Swift/IdentifyTask.xcodeproj">
+            location = "group:IdentifyTaskSample/swift/IdentifyTask.xcodeproj">
          </FileRef>
       </Group>
    </Group>

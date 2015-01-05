@@ -307,9 +307,24 @@
    <FileRef
       location = "group:QueryTaskSample/QueryTaskSample.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:RelatedRecordEditingSample/RelatedRecordEditingSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "RelatedRecordEditing">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:RelatedRecordEditingSample/objective-c/RelatedRecordEditingSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:RelatedRecordEditingSample/swift/RelatedRecordEditing.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <Group
       location = "container:"
       name = "Routing">

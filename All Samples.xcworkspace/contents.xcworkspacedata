@@ -358,9 +358,24 @@
          </FileRef>
       </Group>
    </Group>
-   <FileRef
-      location = "group:ServiceAreaSample/ServiceAreaSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "ServiceArea">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:ServiceAreaSample/objective-c/ServiceAreaSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:ServiceAreaSample/swift/ServiceArea.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:SketchLayerSample/SketchLayerSample.xcodeproj">
    </FileRef>

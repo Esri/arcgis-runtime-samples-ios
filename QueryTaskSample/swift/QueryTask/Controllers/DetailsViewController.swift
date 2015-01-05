@@ -16,6 +16,10 @@ import ArcGIS
 
 class DetailsViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     var fieldAliases:[NSObject:AnyObject]! {
         didSet {
             self.aliases = Array(fieldAliases.keys) as [NSObject]

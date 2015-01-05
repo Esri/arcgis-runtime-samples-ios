@@ -348,7 +348,7 @@
       name = "TemporalSample">
       <Group
          location = "container:"
-         name = "objective-C">
+         name = "objective-c">
          <FileRef
             location = "group:TemporalSample/objective-c/TemporalSample.xcodeproj">
          </FileRef>

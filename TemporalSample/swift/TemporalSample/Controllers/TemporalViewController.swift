@@ -44,8 +44,7 @@ class TemporalViewController: UIViewController, AGSLayerCalloutDelegate {
         self.mapView.addMapLayer(self.featureLyr, withName:"Earthquakes Layer")
         
         
-        let dy = AGSDynamicMapServiceLayer(URL: NSURL(string: "http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Earthquakes/EarthquakesFromLastSevenDays/MapServer"))
-        self.mapView.addMapLayer(dy)
+ 
         //Customizing the callout look
         self.mapView.callout.accessoryButtonHidden = true
         self.mapView.callout.color = UIColor(red: 0.475, green:0.545, blue:0.639, alpha:1)

@@ -79,7 +79,6 @@ class MainViewController: UIViewController, LegendViewControllerDelegate {
                 
                 self.popOverController = UIPopoverController(contentViewController: controller)
                 self.popOverController.popoverContentSize = CGSizeMake(200, 600)
-                controller.legendTableView.backgroundColor = UIColor.whiteColor()
                 let customSegue = segue as CustomSegue
                 
                 customSegue.view = self.view

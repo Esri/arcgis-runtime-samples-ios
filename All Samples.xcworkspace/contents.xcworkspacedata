@@ -211,9 +211,24 @@
          </FileRef>
       </Group>
    </Group>
-   <FileRef
-      location = "group:IdentifyTaskSample/IdentifyTaskSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "IdentifyTask">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:IdentifyTaskSample/objective-c/IdentifyTaskSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:IdentifyTaskSample/Swift/IdentifyTask.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:LegendSample/LegendSample.xcodeproj">
    </FileRef>

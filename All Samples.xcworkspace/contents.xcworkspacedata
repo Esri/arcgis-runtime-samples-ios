@@ -337,9 +337,24 @@
    <FileRef
       location = "group:SwitchBasemapSample/SwitchBasemapSample.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:SynchronousGPSample/SynchronousGPSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "SynchronousGP">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:SynchronousGPSample/objective-c/SynchronousGPSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:SynchronousGPSample/swift/SynchronousGP.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:TableOfContentsSample/TableOfContentsSample.xcodeproj">
    </FileRef>

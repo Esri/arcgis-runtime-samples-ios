@@ -343,9 +343,24 @@
    <FileRef
       location = "group:TableOfContentsSample/TableOfContentsSample.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:TemporalSample/TemporalSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "TemporalSample">
+      <Group
+         location = "container:"
+         name = "objective-C">
+         <FileRef
+            location = "group:TemporalSample/objective-c/TemporalSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:TemporalSample/swift/TemporalSample.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <Group
       location = "group:WeatherInfoSample/../DynamicSubLayerReorderSample"
       name = "DynamicSubLayerReorderSample">

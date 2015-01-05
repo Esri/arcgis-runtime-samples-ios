@@ -304,9 +304,24 @@
    <FileRef
       location = "group:PortalExplorerSample/PortalExplorerSample.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:QueryTaskSample/QueryTaskSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "QueryTask">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:QueryTaskSample/objective-c/QueryTaskSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:QueryTaskSample/swift/QueryTask.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:RelatedRecordEditingSample/RelatedRecordEditingSample.xcodeproj">
    </FileRef>

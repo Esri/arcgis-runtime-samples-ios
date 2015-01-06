@@ -168,7 +168,7 @@
          location = "container:"
          name = "swift">
          <FileRef
-            location = "group:GeometryServiceTaskSample/Swift/GeometryServiceTask.xcodeproj">
+            location = "group:GeometryServiceTaskSample/swift/GeometryServiceTask.xcodeproj">
          </FileRef>
       </Group>
    </Group>

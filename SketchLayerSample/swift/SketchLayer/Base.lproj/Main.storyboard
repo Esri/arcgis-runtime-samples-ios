@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5Xl-oa-JR3">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <scenes>
+        <!--Sketch Layer View Controller-->
+        <scene sceneID="wbE-pC-VU4">
+            <objects>
+                <viewController id="5Xl-oa-JR3" customClass="SketchLayerViewController" customModule="SketchLayer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="scg-Wx-tbE"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gp2-En-lZj"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="3y3-D9-Zfd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NlY-oc-iDn">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <barButtonItem id="IHX-N5-sCj">
+                                        <segmentedControl key="customView" opaque="NO" tag="55" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" id="vpP-tm-HBQ">
+                                            <rect key="frame" x="16" y="7" width="141" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="" image="point.gif"/>
+                                                <segment title="" image="line.gif"/>
+                                                <segment title="" image="polygon.gif"/>
+                                                <segment title="" image="selectfeature.gif"/>
+                                            </segments>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="GSu-cC-C8R"/>
+                                    <barButtonItem width="30" style="plain" id="m9i-rP-T0e">
+                                        <button key="customView" opaque="NO" tag="56" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="BvY-L4-Guu" userLabel="Undo button">
+                                            <rect key="frame" x="157" y="4" width="30" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                            <state key="normal" image="undo.gif">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="disabled" image="undoX.gif"/>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem width="30" style="plain" id="ce3-tw-1C1">
+                                        <button key="customView" opaque="NO" tag="57" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="fq3-CH-whS" userLabel="Redo button">
+                                            <rect key="frame" x="197" y="6" width="30" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                            <state key="normal" image="redo.gif">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="disabled" image="redoX.gif"/>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Te6-uq-osa"/>
+                                    <barButtonItem style="plain" id="WWR-2g-djW">
+                                        <button key="customView" opaque="NO" tag="58" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="Tbc-Uu-oFg" userLabel="Save Button">
+                                            <rect key="frame" x="226" y="6" width="38" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                            <state key="normal" image="savesketch.gif">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="disabled" image="savesketchX.gif"/>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem width="30" style="plain" id="HU4-HL-NtJ">
+                                        <button key="customView" opaque="NO" tag="59" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="L8H-fQ-YgN" userLabel="Discard button">
+                                            <rect key="frame" x="274" y="8" width="30" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                            <state key="normal" image="clearsketch.gif">
+                                                <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="disabled" image="clearsketchX.gif"/>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FGZ-1W-bTH" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <subviews>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="TGv-Pz-PYL">
+                                        <rect key="frame" x="8" y="516" width="56" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="U7d-ZC-NfR"/>
+                                            <constraint firstAttribute="width" constant="56" id="Xdl-oy-pxK"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="TGv-Pz-PYL" firstAttribute="leading" secondItem="FGZ-1W-bTH" secondAttribute="leading" constant="8" id="Amj-07-H2P"/>
+                                    <constraint firstAttribute="bottom" secondItem="TGv-Pz-PYL" secondAttribute="bottom" constant="8" id="zmR-Wl-NdP"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NlY-oc-iDn" firstAttribute="width" secondItem="FGZ-1W-bTH" secondAttribute="width" id="72f-Uc-7ta"/>
+                            <constraint firstAttribute="bottom" secondItem="FGZ-1W-bTH" secondAttribute="bottom" id="7wd-Ub-WqW"/>
+                            <constraint firstItem="NlY-oc-iDn" firstAttribute="leading" secondItem="3y3-D9-Zfd" secondAttribute="leading" id="JEN-Gd-rlR"/>
+                            <constraint firstItem="NlY-oc-iDn" firstAttribute="top" secondItem="3y3-D9-Zfd" secondAttribute="top" id="KhP-a8-DDl"/>
+                            <constraint firstItem="FGZ-1W-bTH" firstAttribute="leading" secondItem="3y3-D9-Zfd" secondAttribute="leading" id="LZN-Ba-SO8"/>
+                            <constraint firstAttribute="width" secondItem="NlY-oc-iDn" secondAttribute="width" id="bzF-5e-zTR"/>
+                            <constraint firstItem="FGZ-1W-bTH" firstAttribute="top" secondItem="NlY-oc-iDn" secondAttribute="bottom" id="lHZ-uy-pcx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="FGZ-1W-bTH" id="31f-Zx-glI"/>
+                        <outlet property="toolbar" destination="NlY-oc-iDn" id="wN4-8M-XfC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oyL-av-iKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="299" y="106"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="28" height="28"/>
+        <image name="clearsketch.gif" width="28" height="28"/>
+        <image name="clearsketchX.gif" width="28" height="28"/>
+        <image name="line.gif" width="28" height="28"/>
+        <image name="point.gif" width="28" height="28"/>
+        <image name="polygon.gif" width="28" height="28"/>
+        <image name="redo.gif" width="28" height="28"/>
+        <image name="redoX.gif" width="28" height="28"/>
+        <image name="savesketch.gif" width="28" height="28"/>
+        <image name="savesketchX.gif" width="28" height="28"/>
+        <image name="selectfeature.gif" width="28" height="28"/>
+        <image name="undo.gif" width="28" height="28"/>
+        <image name="undoX.gif" width="28" height="28"/>
+    </resources>
+</document>

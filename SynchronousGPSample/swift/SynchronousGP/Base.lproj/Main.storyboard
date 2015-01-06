@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="w3Q-db-Bv0">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <scenes>
+        <!--SynchronousGP View Controller-->
+        <scene sceneID="E7E-3N-RPk">
+            <objects>
+                <viewController id="w3Q-db-Bv0" customClass="SynchronousGPViewController" customModule="SynchronousGP" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dI2-8M-wgQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="gVk-3t-Fdy"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="0Ar-2S-KdR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="MCE-xA-UZM" userLabel="Navigation Bar">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="erf-e5-h0a"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Calculate Viewshed" id="rcj-If-l1u"/>
+                                </items>
+                            </navigationBar>
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0R9-c0-rdQ" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="600" height="512"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Tap on the map to calculate the viewshed" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="dDl-0A-uYr">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="gSd-3f-CQS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="nqA-2f-FG8">
+                                        <rect key="frame" x="10" y="470" width="56" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="Izk-qZ-Gf5"/>
+                                            <constraint firstAttribute="width" constant="56" id="vsy-FB-hFw"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="nqA-2f-FG8" secondAttribute="bottom" constant="10" id="2MN-bt-R2Q"/>
+                                    <constraint firstItem="dDl-0A-uYr" firstAttribute="leading" secondItem="0R9-c0-rdQ" secondAttribute="leading" id="Ejo-Wh-5cn"/>
+                                    <constraint firstItem="dDl-0A-uYr" firstAttribute="top" secondItem="0R9-c0-rdQ" secondAttribute="top" id="Lah-EV-QbN"/>
+                                    <constraint firstItem="nqA-2f-FG8" firstAttribute="leading" secondItem="0R9-c0-rdQ" secondAttribute="leading" constant="10" id="js7-Hg-BLw"/>
+                                    <constraint firstAttribute="width" secondItem="dDl-0A-uYr" secondAttribute="width" id="xBa-xv-61p"/>
+                                </constraints>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="5Nt-mu-6Vx">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="apJ-Fb-mXg"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" id="W9Y-LC-l4i">
+                                        <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="1" maxValue="5" id="kVC-fK-sfx">
+                                            <rect key="frame" x="14" y="7.5" width="492" height="29"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <connections>
+                                                <action selector="vsDistanceSliderChanged:" destination="w3Q-db-Bv0" eventType="valueChanged" id="G4N-TM-UNj"/>
+                                            </connections>
+                                        </slider>
+                                    </barButtonItem>
+                                    <barButtonItem title="3.0 miles" style="plain" id="iPx-Gv-C1q">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0R9-c0-rdQ" firstAttribute="top" secondItem="MCE-xA-UZM" secondAttribute="bottom" id="0fo-Ro-h8c"/>
+                            <constraint firstItem="MCE-xA-UZM" firstAttribute="width" secondItem="0R9-c0-rdQ" secondAttribute="width" id="10Y-Th-Vvi"/>
+                            <constraint firstItem="MCE-xA-UZM" firstAttribute="leading" secondItem="0Ar-2S-KdR" secondAttribute="leading" id="A7X-8k-HKV"/>
+                            <constraint firstAttribute="bottom" secondItem="5Nt-mu-6Vx" secondAttribute="bottom" id="MGF-iQ-040"/>
+                            <constraint firstItem="5Nt-mu-6Vx" firstAttribute="top" secondItem="0R9-c0-rdQ" secondAttribute="bottom" id="WW2-I1-wWm"/>
+                            <constraint firstItem="MCE-xA-UZM" firstAttribute="top" secondItem="0Ar-2S-KdR" secondAttribute="top" id="WvO-ac-NtI"/>
+                            <constraint firstItem="5Nt-mu-6Vx" firstAttribute="width" secondItem="0R9-c0-rdQ" secondAttribute="width" id="bk9-gT-5qs"/>
+                            <constraint firstItem="5Nt-mu-6Vx" firstAttribute="leading" secondItem="0Ar-2S-KdR" secondAttribute="leading" id="l2q-ia-Ok2"/>
+                            <constraint firstItem="0R9-c0-rdQ" firstAttribute="leading" secondItem="0Ar-2S-KdR" secondAttribute="leading" id="rzz-5c-jHy"/>
+                            <constraint firstAttribute="width" secondItem="MCE-xA-UZM" secondAttribute="width" id="wGg-DK-yfu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="0R9-c0-rdQ" id="igu-5X-Sax"/>
+                        <outlet property="vsDistanceLabel" destination="iPx-Gv-C1q" id="3rx-eK-dMa"/>
+                        <outlet property="vsDistanceSlider" destination="kVC-fK-sfx" id="3O4-U5-6cD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yvD-b1-VB0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="92" y="139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+    </resources>
+</document>

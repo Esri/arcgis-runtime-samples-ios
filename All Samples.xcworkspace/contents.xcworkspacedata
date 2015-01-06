@@ -211,12 +211,42 @@
          </FileRef>
       </Group>
    </Group>
-   <FileRef
-      location = "group:IdentifyTaskSample/IdentifyTaskSample.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:LegendSample/LegendSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "IdentifyTask">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:IdentifyTaskSample/objective-c/IdentifyTaskSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:IdentifyTaskSample/swift/IdentifyTask.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
+   <Group
+      location = "container:"
+      name = "LegendSample">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:LegendSample/objective-c/LegendSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:LegendSample/swift/LegendSample.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:LicenseByOrgAccountSample/LicenseByOrgAccountSample.xcodeproj">
    </FileRef>
@@ -304,9 +334,24 @@
    <FileRef
       location = "group:PortalExplorerSample/PortalExplorerSample.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:QueryTaskSample/QueryTaskSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "QueryTask">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:QueryTaskSample/objective-c/QueryTaskSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:QueryTaskSample/swift/QueryTask.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <Group
       location = "container:"
       name = "RelatedRecordEditing">
@@ -343,24 +388,84 @@
          </FileRef>
       </Group>
    </Group>
-   <FileRef
-      location = "group:ServiceAreaSample/ServiceAreaSample.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:SketchLayerSample/SketchLayerSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "ServiceArea">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:ServiceAreaSample/objective-c/ServiceAreaSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:ServiceAreaSample/swift/ServiceArea.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
+   <Group
+   location = "container:"
+     name = "SketchLayer">
+     <Group
+        location = "container:"
+        name = "objective-c">
+        <FileRef
+           location = "group:SketchLayerSample/objective-c/SketchLayerSample.xcodeproj">
+        </FileRef>
+     </Group>
+     <Group
+        location = "container:"
+        name = "swift">
+        <FileRef
+           location = "group:SketchLayerSample/swift/SketchLayer.xcodeproj">
+        </FileRef>
+     </Group>
+   </Group>
    <FileRef
       location = "group:SwitchBasemapSample/SwitchBasemapSample.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:SynchronousGPSample/SynchronousGPSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "SynchronousGP">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:SynchronousGPSample/objective-c/SynchronousGPSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:SynchronousGPSample/swift/SynchronousGP.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:TableOfContentsSample/TableOfContentsSample.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:TemporalSample/TemporalSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "TemporalSample">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:TemporalSample/objective-c/TemporalSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:TemporalSample/swift/TemporalSample.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <Group
       location = "group:WeatherInfoSample/../DynamicSubLayerReorderSample"
       name = "DynamicSubLayerReorderSample">

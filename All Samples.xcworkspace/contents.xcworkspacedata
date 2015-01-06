@@ -154,9 +154,24 @@
    <FileRef
       location = "group:GeometrySample/GeometrySample.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:GeometryServiceTaskSample/GeometryServiceTaskSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "GeometryServiceTask">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:GeometryServiceTaskSample/objective-c/GeometryServiceTaskSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:GeometryServiceTaskSample/swift/GeometryServiceTask.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <Group
       location = "container:"
       name = "Gps">

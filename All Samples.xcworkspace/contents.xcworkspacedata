@@ -229,9 +229,24 @@
          </FileRef>
       </Group>
    </Group>
-   <FileRef
-      location = "group:LegendSample/LegendSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "LegendSample">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:LegendSample/objective-c/LegendSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:LegendSample/swift/LegendSample.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:LicenseByOrgAccountSample/LicenseByOrgAccountSample.xcodeproj">
    </FileRef>

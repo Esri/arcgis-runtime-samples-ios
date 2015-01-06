@@ -376,9 +376,24 @@
          </FileRef>
       </Group>
    </Group>
-   <FileRef
-      location = "group:SketchLayerSample/SketchLayerSample.xcodeproj">
-   </FileRef>
+   <Group
+   location = "container:"
+     name = "SketchLayer">
+     <Group
+        location = "container:"
+        name = "objective-c">
+        <FileRef
+           location = "group:SketchLayerSample/objective-c/SketchLayerSample.xcodeproj">
+        </FileRef>
+     </Group>
+     <Group
+        location = "container:"
+        name = "swift">
+        <FileRef
+           location = "group:SketchLayerSample/swift/SketchLayer.xcodeproj">
+        </FileRef>
+     </Group>
+   </Group>
    <FileRef
       location = "group:SwitchBasemapSample/SwitchBasemapSample.xcodeproj">
    </FileRef>

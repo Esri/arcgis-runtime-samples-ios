@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gRU-ev-iXb">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <scenes>
+        <!--Temporal View Controller-->
+        <scene sceneID="sam-kO-2fJ">
+            <objects>
+                <viewController id="gRU-ev-iXb" customClass="TemporalViewController" customModule="TemporalSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="koO-ly-GWf"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ai7-vZ-tIk"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="V2X-Mp-H54">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KfU-Oa-KYw" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="E8Q-HU-zTU">
+                                        <rect key="frame" x="9" y="519" width="56" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="6w5-9a-e20"/>
+                                            <constraint firstAttribute="width" constant="56" id="Wvs-FD-OTj"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="E8Q-HU-zTU" firstAttribute="leading" secondItem="KfU-Oa-KYw" secondAttribute="leading" constant="9" id="21M-pZ-qRq"/>
+                                </constraints>
+                            </view>
+                            <segmentedControl opaque="NO" alpha="0.80985915660858154" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="BuT-EM-rnr">
+                                <rect key="frame" x="0.0" y="558" width="600" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="lBN-QG-PLo"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                </segments>
+                                <connections>
+                                    <action selector="datePicked" destination="gRU-ev-iXb" eventType="valueChanged" id="rCf-Xb-vp8"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KfU-Oa-KYw" firstAttribute="leading" secondItem="V2X-Mp-H54" secondAttribute="leading" id="Y4q-T8-xTt"/>
+                            <constraint firstAttribute="width" secondItem="BuT-EM-rnr" secondAttribute="width" id="bgI-iT-vUm"/>
+                            <constraint firstItem="BuT-EM-rnr" firstAttribute="top" secondItem="E8Q-HU-zTU" secondAttribute="bottom" constant="7" id="hR6-5y-Tmg"/>
+                            <constraint firstItem="BuT-EM-rnr" firstAttribute="leading" secondItem="V2X-Mp-H54" secondAttribute="leading" id="k1f-v6-Bpb"/>
+                            <constraint firstAttribute="bottom" secondItem="BuT-EM-rnr" secondAttribute="bottom" constant="13" id="sXL-Bc-t0x"/>
+                            <constraint firstItem="KfU-Oa-KYw" firstAttribute="top" secondItem="V2X-Mp-H54" secondAttribute="top" id="tyc-d8-Lim"/>
+                            <constraint firstAttribute="height" secondItem="KfU-Oa-KYw" secondAttribute="height" id="x4H-C5-tYU"/>
+                            <constraint firstAttribute="width" secondItem="KfU-Oa-KYw" secondAttribute="width" id="x8w-PA-ptQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="KfU-Oa-KYw" id="GE4-2J-OMg"/>
+                        <outlet property="segmentControl" destination="BuT-EM-rnr" id="LyX-26-xMt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IS9-pc-mMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="193" y="115"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+    </resources>
+</document>

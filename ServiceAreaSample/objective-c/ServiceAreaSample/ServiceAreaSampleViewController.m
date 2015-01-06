@@ -97,7 +97,7 @@
     UILabel *removeBarrierLabel = [[UILabel alloc] init];
     removeBarrierLabel.frame = CGRectMake(30, 0, 110, 24);
     removeBarrierLabel.backgroundColor = [UIColor clearColor];
-    removeBarrierLabel.textColor = [UIColor whiteColor];
+    removeBarrierLabel.textColor = [UIColor redColor];
     removeBarrierLabel.text = @"Delete Barrier";
     [customView addSubview:removeBarrierLabel];
 

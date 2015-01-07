@@ -73,7 +73,7 @@ class ViewController: UIViewController, AGSLayerDelegate {
             //Initialize UIStepper based on number of scale levels in the tiled layer
             self.levelStepper.value = 0
             self.levelStepper.minimumValue = 0
-            self.levelStepper.maximumValue = Double(self.tiledLayer.tileInfo.lods.count)
+            self.levelStepper.maximumValue = Double(self.tiledLayer.tileInfo.lods.count-1)
             
             //Register observer for mapScale property so we can reset the stepper and other UI when map is zoomed in/out
             self.mapView.addObserver(self, forKeyPath: "mapScale", options: .New, context: nil)

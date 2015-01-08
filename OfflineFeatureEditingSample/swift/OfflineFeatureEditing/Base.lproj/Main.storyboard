@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NGy-Nr-rrc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NGy-Nr-rrc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Feature Template Picker View Controller-->
         <scene sceneID="hbz-XN-I03">
             <objects>
-                <viewController storyboardIdentifier="FeatureTemplatePickerViewController" id="OJ1-am-OMu" customClass="FeatureTemplatePickerViewController" customModule="arcgis_runtime_samples_ios_swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeatureTemplatePickerViewController" id="OJ1-am-OMu" customClass="FeatureTemplatePickerViewController" customModule="OfflineFeatureEditing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5Wt-Yl-gjQ"/>
                         <viewControllerLayoutGuide type="bottom" id="9fR-05-fcW"/>
@@ -20,7 +20,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2AV-YU-Cxp">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="dEO-le-LkA">
+                                    <navigationItem id="dEO-le-LkA">
                                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="o6m-YA-Osd">
                                             <connections>
                                                 <action selector="dismiss" destination="OJ1-am-OMu" id="YVf-z0-PJV"/>
@@ -243,8 +243,8 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="constraints">
-                                <include reference="j34-7s-B1J"/>
                                 <exclude reference="N82-IB-Wsc"/>
+                                <include reference="j34-7s-B1J"/>
                             </mask>
                         </variation>
                     </view>

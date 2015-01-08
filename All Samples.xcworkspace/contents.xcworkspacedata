@@ -283,9 +283,24 @@
    <FileRef
       location = "group:LocalTiledLayerSample/LocalTiledLayerSample.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:MessageMil2525cSample/MessageMil2525cSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "MessageMil2525c">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:MessageMil2525cSample/objective-c/MessageMil2525cSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:MessageMil2525cSample/swift/MessageMil2525c.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:OAuth Login Sample/OAuthLoginSample.xcodeproj">
    </FileRef>

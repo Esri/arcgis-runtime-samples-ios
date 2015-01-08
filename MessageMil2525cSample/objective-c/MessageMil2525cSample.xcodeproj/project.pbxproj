@@ -11,6 +11,7 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* MessageMil2525cSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* MessageMil2525cSampleViewController.m */; };
+		3ECAFE891A5F07E90016A680 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3ECAFE881A5F07E90016A680 /* ArcGIS.bundle */; };
 		AFD762AD124AAF5E00DBB854 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFD762AC124AAF5E00DBB854 /* MainWindow-iPad.xib */; };
 		AFD762B2124AAF7800DBB854 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AFD762B0124AAF7800DBB854 /* Icon.png */; };
 		AFD762B3124AAF7800DBB854 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AFD762B1124AAF7800DBB854 /* Icon@2x.png */; };
@@ -28,6 +29,7 @@
 		28D7ACF60DDB3853001CB0EB /* MessageMil2525cSampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MessageMil2525cSampleViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		28D7ACF70DDB3853001CB0EB /* MessageMil2525cSampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MessageMil2525cSampleViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3ECAFE881A5F07E90016A680 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		AFD762AC124AAF5E00DBB854 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		AFD762B0124AAF7800DBB854 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		AFD762B1124AAF7800DBB854 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
@@ -35,7 +37,6 @@
 		E961A93B16526B96000BD267 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E962D0811663E19B004F2EB6 /* Mil2525CMessages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Mil2525CMessages.json; sourceTree = "<group>"; };
 		E9B0F6A4166E273400537DE5 /* MessageMil2525cSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MessageMil2525cSample-Info.plist"; sourceTree = "<group>"; };
-		E9B0F6A6166E27B100537DE5 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		E9FB73D71677BB1100FB4A01 /* mil2525c */ = {isa = PBXFileReference; lastKnownFileType = text; name = mil2525c; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/Symbols/mil2525c; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -73,7 +74,6 @@
 			isa = PBXGroup;
 			children = (
 				E961A93B16526B96000BD267 /* Default-568h@2x.png */,
-				E9B0F6A6166E27B100537DE5 /* ArcGIS.bundle */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -95,6 +95,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3ECAFE881A5F07E90016A680 /* ArcGIS.bundle */,
 				E9FB73D71677BB1100FB4A01 /* mil2525c */,
 				E962D0811663E19B004F2EB6 /* Mil2525CMessages.json */,
 				AFD762B0124AAF7800DBB854 /* Icon.png */,
@@ -168,6 +169,7 @@
 				AFD762B3124AAF7800DBB854 /* Icon@2x.png in Resources */,
 				E961A93C16526B96000BD267 /* Default-568h@2x.png in Resources */,
 				E962D0821663E19B004F2EB6 /* Mil2525CMessages.json in Resources */,
+				3ECAFE891A5F07E90016A680 /* ArcGIS.bundle in Resources */,
 				E901D671166797DA00EAC4FC /* MessageMil2525cSampleViewController.xib in Resources */,
 				E9FB73D81677BB1100FB4A01 /* mil2525c in Resources */,
 			);

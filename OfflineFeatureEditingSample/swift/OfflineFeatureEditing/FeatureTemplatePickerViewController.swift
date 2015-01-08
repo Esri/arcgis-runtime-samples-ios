@@ -116,9 +116,9 @@ class FeatureTemplatePickerViewController:UIViewController, UITableViewDataSourc
         
         //Set its label, image, etc for the template
         let info = self.infos[indexPath.row]
-        cell.textLabel.font = UIFont.systemFontOfSize(12)
-        cell.textLabel.text = info.featureTemplate.name
-        cell.imageView.image = info.renderer.swatchForFeatureWithAttributes(info.featureTemplate.prototypeAttributes, geometryType: info.source.geometryType, size: CGSizeMake(20, 20))
+        cell.textLabel?.font = UIFont.systemFontOfSize(12)
+        cell.textLabel?.text = info.featureTemplate.name
+        cell.imageView?.image = info.renderer.swatchForFeatureWithAttributes(info.featureTemplate.prototypeAttributes, geometryType: info.source.geometryType, size: CGSizeMake(20, 20))
         
         return cell
     }

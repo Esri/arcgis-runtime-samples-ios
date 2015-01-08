@@ -179,7 +179,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
         
         //Initialize the template picker view controller
         if self.featureTemplatePickerVC == nil {
-            let storyboard = UIStoryboard(name: "Offline Feature Editing", bundle: NSBundle.mainBundle())
+            let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
             if let controller = storyboard.instantiateViewControllerWithIdentifier("FeatureTemplatePickerViewController") as? FeatureTemplatePickerViewController {
                 self.featureTemplatePickerVC = controller
                 self.featureTemplatePickerVC.delegate = self

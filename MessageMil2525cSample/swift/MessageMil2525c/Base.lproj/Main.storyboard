@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UFZ-0D-6EY">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <scenes>
+        <!--Message Mil252 5c View Controller-->
+        <scene sceneID="veh-QT-F8t">
+            <objects>
+                <viewController id="UFZ-0D-6EY" customClass="MessageMil2525cViewController" customModule="MessageMil2525c" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JPr-KO-vu7"/>
+                        <viewControllerLayoutGuide type="bottom" id="PTm-MD-ysd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="C9B-Oh-uU6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTl-NR-Nrk" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="uKg-rK-i8Q">
+                                <rect key="frame" x="10" y="558" width="56" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="TGl-y5-Xgc"/>
+                                    <constraint firstAttribute="height" constant="32" id="rhN-9P-Vle"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PTm-MD-ysd" firstAttribute="top" secondItem="GTl-NR-Nrk" secondAttribute="bottom" id="6SE-2R-WmJ"/>
+                            <constraint firstItem="GTl-NR-Nrk" firstAttribute="top" secondItem="C9B-Oh-uU6" secondAttribute="top" id="OTQ-aJ-I7i"/>
+                            <constraint firstItem="uKg-rK-i8Q" firstAttribute="leading" secondItem="C9B-Oh-uU6" secondAttribute="leading" constant="10" id="RLd-mQ-4fj"/>
+                            <constraint firstItem="PTm-MD-ysd" firstAttribute="top" secondItem="uKg-rK-i8Q" secondAttribute="bottom" constant="10" id="cA4-bR-Syp"/>
+                            <constraint firstItem="GTl-NR-Nrk" firstAttribute="leading" secondItem="C9B-Oh-uU6" secondAttribute="leading" id="keb-Le-lPD"/>
+                            <constraint firstAttribute="trailing" secondItem="GTl-NR-Nrk" secondAttribute="trailing" id="zc7-eb-q1p"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="GTl-NR-Nrk" id="BJf-9A-1dC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hPu-ea-QPL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="580" y="497"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+    </resources>
+</document>

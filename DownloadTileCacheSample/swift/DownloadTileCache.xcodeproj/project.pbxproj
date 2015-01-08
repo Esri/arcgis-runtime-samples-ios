@@ -1,0 +1,381 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3ECAFE811A5DE7460016A680 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3ECAFE801A5DE7460016A680 /* ArcGIS.bundle */; };
+		3EF4A6D61A1EC1A300028AD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF4A6D51A1EC1A300028AD9 /* AppDelegate.swift */; };
+		3EF4A6D81A1EC1A300028AD9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF4A6D71A1EC1A300028AD9 /* ViewController.swift */; };
+		3EF4A6DB1A1EC1A300028AD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EF4A6D91A1EC1A300028AD9 /* Main.storyboard */; };
+		3EF4A6DD1A1EC1A300028AD9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EF4A6DC1A1EC1A300028AD9 /* Images.xcassets */; };
+		3EF4A6E01A1EC1A300028AD9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EF4A6DE1A1EC1A300028AD9 /* LaunchScreen.xib */; };
+		3EF4A6F81A1FB21100028AD9 /* BackgroundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF4A6F71A1FB21100028AD9 /* BackgroundHelper.swift */; };
+		3EF4A6FA1A1FB2B900028AD9 /* MessageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF4A6F91A1FB2B900028AD9 /* MessageHelper.swift */; };
+		3EF4A7051A1FD23200028AD9 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3EF4A7021A1FD23200028AD9 /* SVProgressHUD.bundle */; };
+		3EF4A7061A1FD23200028AD9 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF4A7041A1FD23200028AD9 /* SVProgressHUD.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3ECAFE801A5DE7460016A680 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
+		3EF4A6D01A1EC1A300028AD9 /* DownloadTileCache.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DownloadTileCache.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EF4A6D41A1EC1A300028AD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3EF4A6D51A1EC1A300028AD9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3EF4A6D71A1EC1A300028AD9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3EF4A6DA1A1EC1A300028AD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3EF4A6DC1A1EC1A300028AD9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3EF4A6DF1A1EC1A300028AD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3EF4A6F71A1FB21100028AD9 /* BackgroundHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BackgroundHelper.swift; path = Helpers/BackgroundHelper.swift; sourceTree = "<group>"; };
+		3EF4A6F91A1FB2B900028AD9 /* MessageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageHelper.swift; path = Helpers/MessageHelper.swift; sourceTree = "<group>"; };
+		3EF4A6FB1A1FD19200028AD9 /* DownloadTileCache-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DownloadTileCache-Bridging-Header.h"; sourceTree = "<group>"; };
+		3EF4A7011A1FD23200028AD9 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		3EF4A7021A1FD23200028AD9 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		3EF4A7031A1FD23200028AD9 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		3EF4A7041A1FD23200028AD9 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3EF4A6CD1A1EC1A300028AD9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3EF4A6C71A1EC1A300028AD9 = {
+			isa = PBXGroup;
+			children = (
+				3EF4A6D21A1EC1A300028AD9 /* DownloadTileCache */,
+				3EF4A6D11A1EC1A300028AD9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3EF4A6D11A1EC1A300028AD9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3EF4A6D01A1EC1A300028AD9 /* DownloadTileCache.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3EF4A6D21A1EC1A300028AD9 /* DownloadTileCache */ = {
+			isa = PBXGroup;
+			children = (
+				3EF4A6FF1A1FD23200028AD9 /* Libraries */,
+				3EF4A6F61A1FB1A800028AD9 /* Helpers */,
+				3EF4A6F51A1EC1B200028AD9 /* Controllers */,
+				3EF4A6D51A1EC1A300028AD9 /* AppDelegate.swift */,
+				3EF4A6D91A1EC1A300028AD9 /* Main.storyboard */,
+				3EF4A6DC1A1EC1A300028AD9 /* Images.xcassets */,
+				3EF4A6DE1A1EC1A300028AD9 /* LaunchScreen.xib */,
+				3EF4A6D31A1EC1A300028AD9 /* Supporting Files */,
+				3EF4A6FB1A1FD19200028AD9 /* DownloadTileCache-Bridging-Header.h */,
+			);
+			path = DownloadTileCache;
+			sourceTree = "<group>";
+		};
+		3EF4A6D31A1EC1A300028AD9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3ECAFE801A5DE7460016A680 /* ArcGIS.bundle */,
+				3EF4A6D41A1EC1A300028AD9 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3EF4A6F51A1EC1B200028AD9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3EF4A6D71A1EC1A300028AD9 /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3EF4A6F61A1FB1A800028AD9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3EF4A6F71A1FB21100028AD9 /* BackgroundHelper.swift */,
+				3EF4A6F91A1FB2B900028AD9 /* MessageHelper.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		3EF4A6FF1A1FD23200028AD9 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				3EF4A7001A1FD23200028AD9 /* SVProgressHUD */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		3EF4A7001A1FD23200028AD9 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				3EF4A7011A1FD23200028AD9 /* SVProgressHUD-Prefix.pch */,
+				3EF4A7021A1FD23200028AD9 /* SVProgressHUD.bundle */,
+				3EF4A7031A1FD23200028AD9 /* SVProgressHUD.h */,
+				3EF4A7041A1FD23200028AD9 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3EF4A6CF1A1EC1A300028AD9 /* DownloadTileCache */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3EF4A6EF1A1EC1A300028AD9 /* Build configuration list for PBXNativeTarget "DownloadTileCache" */;
+			buildPhases = (
+				3EF4A6CC1A1EC1A300028AD9 /* Sources */,
+				3EF4A6CD1A1EC1A300028AD9 /* Frameworks */,
+				3EF4A6CE1A1EC1A300028AD9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DownloadTileCache;
+			productName = DownloadTileCache;
+			productReference = 3EF4A6D01A1EC1A300028AD9 /* DownloadTileCache.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3EF4A6C81A1EC1A300028AD9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Esri;
+				TargetAttributes = {
+					3EF4A6CF1A1EC1A300028AD9 = {
+						CreatedOnToolsVersion = 6.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 3EF4A6CB1A1EC1A300028AD9 /* Build configuration list for PBXProject "DownloadTileCache" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3EF4A6C71A1EC1A300028AD9;
+			productRefGroup = 3EF4A6D11A1EC1A300028AD9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3EF4A6CF1A1EC1A300028AD9 /* DownloadTileCache */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3EF4A6CE1A1EC1A300028AD9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3EF4A6DB1A1EC1A300028AD9 /* Main.storyboard in Resources */,
+				3EF4A6E01A1EC1A300028AD9 /* LaunchScreen.xib in Resources */,
+				3EF4A6DD1A1EC1A300028AD9 /* Images.xcassets in Resources */,
+				3EF4A7051A1FD23200028AD9 /* SVProgressHUD.bundle in Resources */,
+				3ECAFE811A5DE7460016A680 /* ArcGIS.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3EF4A6CC1A1EC1A300028AD9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3EF4A6F81A1FB21100028AD9 /* BackgroundHelper.swift in Sources */,
+				3EF4A6D81A1EC1A300028AD9 /* ViewController.swift in Sources */,
+				3EF4A7061A1FD23200028AD9 /* SVProgressHUD.m in Sources */,
+				3EF4A6D61A1EC1A300028AD9 /* AppDelegate.swift in Sources */,
+				3EF4A6FA1A1FB2B900028AD9 /* MessageHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3EF4A6D91A1EC1A300028AD9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3EF4A6DA1A1EC1A300028AD9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3EF4A6DE1A1EC1A300028AD9 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3EF4A6DF1A1EC1A300028AD9 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3EF4A6ED1A1EC1A300028AD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3EF4A6EE1A1EC1A300028AD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3EF4A6F01A1EC1A300028AD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/";
+				INFOPLIST_FILE = DownloadTileCache/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DownloadTileCache/DownloadTileCache-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3EF4A6F11A1EC1A300028AD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/";
+				INFOPLIST_FILE = DownloadTileCache/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DownloadTileCache/DownloadTileCache-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3EF4A6CB1A1EC1A300028AD9 /* Build configuration list for PBXProject "DownloadTileCache" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3EF4A6ED1A1EC1A300028AD9 /* Debug */,
+				3EF4A6EE1A1EC1A300028AD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3EF4A6EF1A1EC1A300028AD9 /* Build configuration list for PBXNativeTarget "DownloadTileCache" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3EF4A6F01A1EC1A300028AD9 /* Debug */,
+				3EF4A6F11A1EC1A300028AD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3EF4A6C81A1EC1A300028AD9 /* Project object */;
+}

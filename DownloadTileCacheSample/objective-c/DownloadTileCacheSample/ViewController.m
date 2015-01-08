@@ -136,8 +136,8 @@
             
             NSByteCountFormatter* byteCountFormatter = [[NSByteCountFormatter alloc]init];
             NSString* byteCountString = [byteCountFormatter stringFromByteCount:tileCacheSizeEstimate.fileSize];
-            self.estimateLabel.text = [[NSString alloc] initWithFormat:@"%@  / %@ tiles", byteCountString, tileCountString];
-            [SVProgressHUD showSuccessWithStatus:[[NSString alloc] initWithFormat:@"Estimated size:\n%@  / %@ tiles", byteCountString, tileCountString]];
+            self.estimateLabel.text = [[NSString alloc] initWithFormat:@"%@ / %@ tiles", byteCountString, tileCountString];
+            [SVProgressHUD showSuccessWithStatus:[[NSString alloc] initWithFormat:@"Estimated size:\n%@ bytes / %@ tiles", byteCountString, tileCountString]];
         
         }
 

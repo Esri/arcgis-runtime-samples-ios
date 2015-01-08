@@ -58,9 +58,24 @@
    <FileRef
       location = "group:CustomTiledLayerSample/CustomTiledLayerSample.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:DownloadTileCacheSample/DownloadTileCacheSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "DownloadTileCache">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:DownloadTileCacheSample/objective-c/DownloadTileCacheSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:DownloadTileCacheSample/swift/DownloadTileCache.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <Group
       location = "container:"
       name = "FeatureLayerEditing">
@@ -422,22 +437,22 @@
       </Group>
    </Group>
    <Group
-   location = "container:"
-     name = "SketchLayer">
-     <Group
-        location = "container:"
-        name = "objective-c">
-        <FileRef
-           location = "group:SketchLayerSample/objective-c/SketchLayerSample.xcodeproj">
-        </FileRef>
-     </Group>
-     <Group
-        location = "container:"
-        name = "swift">
-        <FileRef
-           location = "group:SketchLayerSample/swift/SketchLayer.xcodeproj">
-        </FileRef>
-     </Group>
+      location = "container:"
+      name = "SketchLayer">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:SketchLayerSample/objective-c/SketchLayerSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:SketchLayerSample/swift/SketchLayer.xcodeproj">
+         </FileRef>
+      </Group>
    </Group>
    <FileRef
       location = "group:SwitchBasemapSample/SwitchBasemapSample.xcodeproj">

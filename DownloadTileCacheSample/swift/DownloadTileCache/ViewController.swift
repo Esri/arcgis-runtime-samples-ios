@@ -124,7 +124,7 @@ class ViewController: UIViewController, AGSLayerDelegate {
     @IBAction func estimateAction(sender:AnyObject) {
         
         //Prepare list of levels to download
-        let desiredLevels = self.levelsWithCount(self.levelStepper.value, startingAt:self.tiledLayer.currentLOD(), fromLODs:self.tiledLayer.tileInfo.lods as [AGSLOD])
+        let desiredLevels = self.levelsWithCount(Int(self.levelStepper.value), startingAt:self.tiledLayer.currentLOD(), fromLODs:self.tiledLayer.tileInfo.lods as [AGSLOD])
         println("LODs requested \(desiredLevels)")
         
         //Use current envelope to download
@@ -168,7 +168,7 @@ class ViewController: UIViewController, AGSLayerDelegate {
     @IBAction func downloadAction(sender:AnyObject) {
         
         //Prepare list of levels to download
-        let desiredLevels = self.levelsWithCount(self.levelStepper.value, startingAt:self.tiledLayer.currentLOD(), fromLODs:self.tiledLayer.tileInfo.lods as [AGSLOD])
+        let desiredLevels = self.levelsWithCount(Int(self.levelStepper.value), startingAt:self.tiledLayer.currentLOD(), fromLODs:self.tiledLayer.tileInfo.lods as [AGSLOD])
         println("LODs requested \(desiredLevels)")
         
         //Use current envelope to download
@@ -234,9 +234,9 @@ class ViewController: UIViewController, AGSLayerDelegate {
     
     
     
-    func levelsWithCount(count:Double, startingAt startLOD:AGSLOD, fromLODs allLODs:[AGSLOD]) -> [UInt] {
+    func levelsWithCount(count:Int, startingAt startLOD:AGSLOD, fromLODs allLODs:[AGSLOD]) -> [UInt] {
         if let index = find(allLODs, startLOD) {
-            let endIndex = index + Int(count)
+            let endIndex = index + count-1
             let desiredLODs = Array(allLODs[index...endIndex])
             var desiredLevels = [UInt]()
             for LOD  in desiredLODs {

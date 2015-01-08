@@ -152,9 +152,9 @@ class ViewController: UIViewController, AGSLayerDelegate {
 //                NSByteCountFormatter* byteCountFormatter = [[NSByteCountFormatter alloc]init];
 //                NSString* byteCountString = [byteCountFormatter stringFromByteCount:tileCacheSizeEstimate.fileSize];
 //                self.estimateLabel.text = [[NSString alloc] initWithFormat:@"%@  / %@ tiles", byteCountString, tileCountString];
-                self.estimateLabel.text = "\(tileCacheSizeEstimate.fileSize) / \(tileCountString)"
+                self.estimateLabel.text = "\(tileCacheSizeEstimate.fileSize) bytes / \(tileCountString) tiles"
                 
-                SVProgressHUD.showSuccessWithStatus("Estimated size:\n\(tileCacheSizeEstimate.fileSize)  / \(tileCountString) tiles")
+                SVProgressHUD.showSuccessWithStatus("Estimated size:\n\(tileCacheSizeEstimate.fileSize) bytes / \(tileCountString) tiles")
                 
             }
         }

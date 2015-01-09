@@ -1,0 +1,357 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3E506C1A1A521A1E00277090 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E506C191A521A1E00277090 /* AppDelegate.swift */; };
+		3E506C1F1A521A1E00277090 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E506C1D1A521A1E00277090 /* Main.storyboard */; };
+		3E506C211A521A1E00277090 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E506C201A521A1E00277090 /* Images.xcassets */; };
+		3E506C241A521A1E00277090 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E506C221A521A1E00277090 /* LaunchScreen.xib */; };
+		3E506C3B1A521BA300277090 /* SynchronousGPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E506C3A1A521BA300277090 /* SynchronousGPViewController.swift */; };
+		3E506C421A571A1800277090 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E506C3F1A571A1800277090 /* SVProgressHUD.bundle */; };
+		3E506C431A571A1800277090 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E506C411A571A1800277090 /* SVProgressHUD.m */; };
+		3E506C481A57206700277090 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E506C471A57206700277090 /* ArcGIS.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3E506C141A521A1E00277090 /* SynchronousGP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SynchronousGP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E506C181A521A1E00277090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E506C191A521A1E00277090 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3E506C1E1A521A1E00277090 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3E506C201A521A1E00277090 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3E506C231A521A1E00277090 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3E506C3A1A521BA300277090 /* SynchronousGPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SynchronousGPViewController.swift; path = Controllers/SynchronousGPViewController.swift; sourceTree = "<group>"; };
+		3E506C3E1A571A1800277090 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		3E506C3F1A571A1800277090 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		3E506C401A571A1800277090 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		3E506C411A571A1800277090 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		3E506C441A571B3000277090 /* SynchronousGP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SynchronousGP-Bridging-Header.h"; sourceTree = "<group>"; };
+		3E506C471A57206700277090 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3E506C111A521A1E00277090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3E506C0B1A521A1E00277090 = {
+			isa = PBXGroup;
+			children = (
+				3E506C161A521A1E00277090 /* SynchronousGP */,
+				3E506C151A521A1E00277090 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3E506C151A521A1E00277090 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3E506C141A521A1E00277090 /* SynchronousGP.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3E506C161A521A1E00277090 /* SynchronousGP */ = {
+			isa = PBXGroup;
+			children = (
+				3E506C3C1A571A1800277090 /* Libraries */,
+				3E506C391A521B2300277090 /* Controllers */,
+				3E506C191A521A1E00277090 /* AppDelegate.swift */,
+				3E506C1D1A521A1E00277090 /* Main.storyboard */,
+				3E506C201A521A1E00277090 /* Images.xcassets */,
+				3E506C221A521A1E00277090 /* LaunchScreen.xib */,
+				3E506C171A521A1E00277090 /* Supporting Files */,
+				3E506C441A571B3000277090 /* SynchronousGP-Bridging-Header.h */,
+			);
+			path = SynchronousGP;
+			sourceTree = "<group>";
+		};
+		3E506C171A521A1E00277090 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3E506C471A57206700277090 /* ArcGIS.bundle */,
+				3E506C181A521A1E00277090 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3E506C391A521B2300277090 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3E506C3A1A521BA300277090 /* SynchronousGPViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3E506C3C1A571A1800277090 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				3E506C3D1A571A1800277090 /* SVProgressHUD */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		3E506C3D1A571A1800277090 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				3E506C3E1A571A1800277090 /* SVProgressHUD-Prefix.pch */,
+				3E506C3F1A571A1800277090 /* SVProgressHUD.bundle */,
+				3E506C401A571A1800277090 /* SVProgressHUD.h */,
+				3E506C411A571A1800277090 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3E506C131A521A1E00277090 /* SynchronousGP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E506C331A521A1E00277090 /* Build configuration list for PBXNativeTarget "SynchronousGP" */;
+			buildPhases = (
+				3E506C101A521A1E00277090 /* Sources */,
+				3E506C111A521A1E00277090 /* Frameworks */,
+				3E506C121A521A1E00277090 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SynchronousGP;
+			productName = SynchronousGP;
+			productReference = 3E506C141A521A1E00277090 /* SynchronousGP.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3E506C0C1A521A1E00277090 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Esri;
+				TargetAttributes = {
+					3E506C131A521A1E00277090 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 3E506C0F1A521A1E00277090 /* Build configuration list for PBXProject "SynchronousGP" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3E506C0B1A521A1E00277090;
+			productRefGroup = 3E506C151A521A1E00277090 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3E506C131A521A1E00277090 /* SynchronousGP */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3E506C121A521A1E00277090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E506C1F1A521A1E00277090 /* Main.storyboard in Resources */,
+				3E506C241A521A1E00277090 /* LaunchScreen.xib in Resources */,
+				3E506C211A521A1E00277090 /* Images.xcassets in Resources */,
+				3E506C421A571A1800277090 /* SVProgressHUD.bundle in Resources */,
+				3E506C481A57206700277090 /* ArcGIS.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3E506C101A521A1E00277090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E506C1A1A521A1E00277090 /* AppDelegate.swift in Sources */,
+				3E506C3B1A521BA300277090 /* SynchronousGPViewController.swift in Sources */,
+				3E506C431A571A1800277090 /* SVProgressHUD.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3E506C1D1A521A1E00277090 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E506C1E1A521A1E00277090 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3E506C221A521A1E00277090 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E506C231A521A1E00277090 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3E506C311A521A1E00277090 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3E506C321A521A1E00277090 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3E506C341A521A1E00277090 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = $HOME/Library/SDKs/ArcGIS/iOS;
+				INFOPLIST_FILE = SynchronousGP/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SynchronousGP/SynchronousGP-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		3E506C351A521A1E00277090 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = $HOME/Library/SDKs/ArcGIS/iOS;
+				INFOPLIST_FILE = SynchronousGP/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SynchronousGP/SynchronousGP-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3E506C0F1A521A1E00277090 /* Build configuration list for PBXProject "SynchronousGP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E506C311A521A1E00277090 /* Debug */,
+				3E506C321A521A1E00277090 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3E506C331A521A1E00277090 /* Build configuration list for PBXNativeTarget "SynchronousGP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E506C341A521A1E00277090 /* Debug */,
+				3E506C351A521A1E00277090 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3E506C0C1A521A1E00277090 /* Project object */;
+}

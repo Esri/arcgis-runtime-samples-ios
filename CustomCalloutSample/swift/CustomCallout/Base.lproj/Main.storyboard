@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CN0-kI-cZA">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <scenes>
+        <!--Custom Callout View Controller-->
+        <scene sceneID="Pha-tU-wbZ">
+            <objects>
+                <viewController id="CN0-kI-cZA" customClass="CustomCalloutViewController" customModule="CustomCallout" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UKt-c1-180"/>
+                        <viewControllerLayoutGuide type="bottom" id="MAk-yA-eeZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4PZ-kR-pZQ" userLabel="ParentView">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sR7-cT-pFr" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Tap on the graphic to see callout" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="PBb-3z-G7I">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="tGt-VX-HuH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qjn-I0-ws0">
+                                        <rect key="frame" x="11" y="558" width="56" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="IyN-8W-ILC"/>
+                                            <constraint firstAttribute="width" constant="56" id="NsM-e2-0kb"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="PBb-3z-G7I" firstAttribute="width" secondItem="sR7-cT-pFr" secondAttribute="width" id="O0J-x7-89r"/>
+                                    <constraint firstItem="Qjn-I0-ws0" firstAttribute="leading" secondItem="sR7-cT-pFr" secondAttribute="leading" constant="11" id="aCq-lo-nH1"/>
+                                    <constraint firstItem="PBb-3z-G7I" firstAttribute="top" secondItem="sR7-cT-pFr" secondAttribute="top" id="foy-KR-Uh8"/>
+                                    <constraint firstAttribute="bottom" secondItem="Qjn-I0-ws0" secondAttribute="bottom" constant="10" id="ghe-rW-rBG"/>
+                                    <constraint firstItem="PBb-3z-G7I" firstAttribute="leading" secondItem="sR7-cT-pFr" secondAttribute="leading" id="uWd-iE-egV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MAk-yA-eeZ" firstAttribute="top" secondItem="sR7-cT-pFr" secondAttribute="bottom" id="0bd-K1-HWa"/>
+                            <constraint firstAttribute="centerX" secondItem="sR7-cT-pFr" secondAttribute="centerX" id="MqQ-46-0pl"/>
+                            <constraint firstAttribute="centerY" secondItem="sR7-cT-pFr" secondAttribute="centerY" id="WLZ-nz-cid"/>
+                            <constraint firstItem="sR7-cT-pFr" firstAttribute="leading" secondItem="4PZ-kR-pZQ" secondAttribute="leading" id="rvv-WN-pUu"/>
+                        </constraints>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="sR7-cT-pFr" id="7OR-hS-Lba"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OQS-li-yVn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="16" y="46"/>
+        </scene>
+        <!--Custom Hybrid View Controller-->
+        <scene sceneID="tU9-M3-v98">
+            <objects>
+                <viewController storyboardIdentifier="CustomHybridViewController" id="xjy-g7-jo7" customClass="CustomHybridViewController" customModule="CustomCallout" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mwT-KF-dUA"/>
+                        <viewControllerLayoutGuide type="bottom" id="jcC-eJ-Jcb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="udx-K5-Arc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbw-Le-2pd" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFA-Bs-Pg9">
+                                <rect key="frame" x="6" y="30" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="21z-FT-vwN"/>
+                                    <constraint firstAttribute="height" constant="24" id="wSY-Fd-RbJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="ZoomIn.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="zoomIn:" destination="xjy-g7-jo7" eventType="touchUpInside" id="KjG-H7-QCi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VfB-WZ-aqa">
+                                <rect key="frame" x="6" y="59" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="4tg-at-vtx"/>
+                                    <constraint firstAttribute="width" constant="24" id="bF8-of-pe2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="ZoomOut.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="zoomOut:" destination="xjy-g7-jo7" eventType="touchUpInside" id="JbI-zy-k0S"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gFA-Bs-Pg9" firstAttribute="leading" secondItem="udx-K5-Arc" secondAttribute="leading" constant="6" id="DgG-9g-pqf"/>
+                            <constraint firstAttribute="centerX" secondItem="lbw-Le-2pd" secondAttribute="centerX" id="KPu-iV-Lr2"/>
+                            <constraint firstItem="mwT-KF-dUA" firstAttribute="top" secondItem="gFA-Bs-Pg9" secondAttribute="bottom" constant="-34" id="Kzm-rh-Szr"/>
+                            <constraint firstItem="VfB-WZ-aqa" firstAttribute="top" secondItem="mwT-KF-dUA" secondAttribute="bottom" constant="39" id="aeS-TL-GNQ"/>
+                            <constraint firstAttribute="centerY" secondItem="lbw-Le-2pd" secondAttribute="centerY" id="cMq-Xe-zyV"/>
+                            <constraint firstItem="jcC-eJ-Jcb" firstAttribute="top" secondItem="lbw-Le-2pd" secondAttribute="bottom" id="dBX-LQ-ye3"/>
+                            <constraint firstItem="lbw-Le-2pd" firstAttribute="leading" secondItem="udx-K5-Arc" secondAttribute="leading" id="oay-Ru-vtv"/>
+                            <constraint firstItem="VfB-WZ-aqa" firstAttribute="leading" secondItem="udx-K5-Arc" secondAttribute="leading" constant="6" id="tQl-3A-s2I"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="hybridView" destination="lbw-Le-2pd" id="1La-3I-2rt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gNI-wk-Lf1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="745" y="46"/>
+        </scene>
+        <!--Custom Web View Controller-->
+        <scene sceneID="6Tz-5s-sWy">
+            <objects>
+                <viewController storyboardIdentifier="CustomWebViewController" id="zAN-8L-tJf" customClass="CustomWebViewController" customModule="CustomCallout" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KxH-Jf-pSt"/>
+                        <viewControllerLayoutGuide type="bottom" id="vGV-T2-ydM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JI2-EI-o4R">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K1i-kP-RHe">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="K1i-kP-RHe" firstAttribute="leading" secondItem="JI2-EI-o4R" secondAttribute="leading" id="8WO-N0-2JM"/>
+                            <constraint firstAttribute="centerY" secondItem="K1i-kP-RHe" secondAttribute="centerY" id="HCn-oo-z2z"/>
+                            <constraint firstAttribute="centerX" secondItem="K1i-kP-RHe" secondAttribute="centerX" id="fmc-bz-Out"/>
+                            <constraint firstItem="vGV-T2-ydM" firstAttribute="top" secondItem="K1i-kP-RHe" secondAttribute="bottom" id="iOQ-gz-xnj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="K1i-kP-RHe" id="46A-CZ-i2l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y2n-vr-WKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1456" y="46"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+        <image name="ZoomIn.png" width="24" height="24"/>
+        <image name="ZoomOut.png" width="24" height="24"/>
+    </resources>
+</document>

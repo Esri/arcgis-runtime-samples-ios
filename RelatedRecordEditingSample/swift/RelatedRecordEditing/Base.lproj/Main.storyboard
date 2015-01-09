@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nzs-ct-fHB">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <scenes>
+        <!--SF Incident Reporter-->
+        <scene sceneID="czq-Gs-8yq">
+            <objects>
+                <viewController id="h4j-pN-4v2" customClass="RelatedRecordEditingViewController" customModule="RelatedRecordEditing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xae-cv-cAK"/>
+                        <viewControllerLayoutGuide type="bottom" id="Blv-n9-zhh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ou7-LF-nMR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wUR-UO-nwY" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="NOL-aH-Erd">
+                                <rect key="frame" x="10" y="558" width="56" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="dY5-HN-3TG"/>
+                                    <constraint firstAttribute="width" constant="56" id="wH0-3u-EzQ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wUR-UO-nwY" firstAttribute="top" secondItem="Ou7-LF-nMR" secondAttribute="top" id="DBh-hC-O4C"/>
+                            <constraint firstItem="NOL-aH-Erd" firstAttribute="leading" secondItem="Ou7-LF-nMR" secondAttribute="leading" constant="10" id="HIr-ww-IVk"/>
+                            <constraint firstAttribute="bottom" secondItem="wUR-UO-nwY" secondAttribute="bottom" id="XNh-kl-aO8"/>
+                            <constraint firstAttribute="trailing" secondItem="wUR-UO-nwY" secondAttribute="trailing" id="aqQ-eG-PXh"/>
+                            <constraint firstItem="Blv-n9-zhh" firstAttribute="top" secondItem="NOL-aH-Erd" secondAttribute="bottom" constant="10" id="guA-qC-9P3"/>
+                            <constraint firstItem="wUR-UO-nwY" firstAttribute="leading" secondItem="Ou7-LF-nMR" secondAttribute="leading" id="ojd-5W-qe7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="SF Incident Reporter" id="nnY-hI-bNV"/>
+                    <connections>
+                        <outlet property="mapView" destination="wUR-UO-nwY" id="VzN-Fj-6Ys"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dIU-SX-BiL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="870" y="158"/>
+        </scene>
+        <!--Notes View Controller-->
+        <scene sceneID="MTt-WM-Iqq">
+            <objects>
+                <viewController storyboardIdentifier="NotesViewController" id="oOo-aq-IjW" customClass="NotesViewController" customModule="RelatedRecordEditing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OLU-c5-Ey6"/>
+                        <viewControllerLayoutGuide type="bottom" id="jVQ-98-Mwd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="l2s-35-0g1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YRa-wL-TBk">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="S9P-Wm-pqN"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Related Notes" id="HWE-Sq-yVF">
+                                        <barButtonItem key="leftBarButtonItem" title="Done" id="mHu-Ot-av8">
+                                            <connections>
+                                                <action selector="done" destination="oOo-aq-IjW" id="yS5-VZ-6ZY"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="8Ue-8w-rlj">
+                                            <connections>
+                                                <action selector="addNewNote" destination="oOo-aq-IjW" id="4AF-fo-beT"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qdG-H0-NV5">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="oOo-aq-IjW" id="DcG-Nj-6Zu"/>
+                                    <outlet property="delegate" destination="oOo-aq-IjW" id="9gO-Ws-rDN"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YRa-wL-TBk" firstAttribute="leading" secondItem="l2s-35-0g1" secondAttribute="leading" id="BsP-YS-XXf"/>
+                            <constraint firstItem="YRa-wL-TBk" firstAttribute="width" secondItem="qdG-H0-NV5" secondAttribute="width" id="Crx-Ah-AMf"/>
+                            <constraint firstItem="qdG-H0-NV5" firstAttribute="leading" secondItem="l2s-35-0g1" secondAttribute="leading" id="WHC-pN-aIR"/>
+                            <constraint firstAttribute="bottom" secondItem="qdG-H0-NV5" secondAttribute="bottom" id="aQP-6a-rdA"/>
+                            <constraint firstItem="qdG-H0-NV5" firstAttribute="top" secondItem="YRa-wL-TBk" secondAttribute="bottom" id="aQc-ed-Gzz"/>
+                            <constraint firstItem="YRa-wL-TBk" firstAttribute="top" secondItem="l2s-35-0g1" secondAttribute="top" id="chk-mw-Ggx"/>
+                            <constraint firstAttribute="trailing" secondItem="YRa-wL-TBk" secondAttribute="trailing" id="vdK-Ga-Agw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="qdG-H0-NV5" id="pLH-wr-rZ9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p54-4t-Z8p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1676" y="158"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EgB-C7-a4K">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nzs-ct-fHB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jlx-Tu-5Og">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="h4j-pN-4v2" kind="relationship" relationship="rootViewController" id="bwy-j7-Qv7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eWB-Lt-Iag" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="93" y="158"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+    </resources>
+</document>

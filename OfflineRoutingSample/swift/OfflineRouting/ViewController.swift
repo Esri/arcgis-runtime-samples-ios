@@ -140,6 +140,8 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
         if self.routeTaskParams != nil {
             self.routeTaskParams.outSpatialReference = self.mapView.spatialReference;
         }
+        
+        mapView.zoomIn(false);
     }
     
     //MARK: - AGSRouteTaskDelegate

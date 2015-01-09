@@ -138,6 +138,8 @@
     if(self.routeTaskParams){
         self.routeTaskParams.outSpatialReference = self.mapView.spatialReference;
     }
+    
+    [self.mapView zoomIn:NO];
 }
 
 

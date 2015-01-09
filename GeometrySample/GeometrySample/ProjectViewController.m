@@ -26,8 +26,12 @@
     
     self.mapView1.layerDelegate = self;
 
-    // Load a Dynamic map service with spatial reference 4326
-	NSURL *map1Url = [NSURL URLWithString:@"http://mobilesampleserver.arcgisonline.com/ArcGIS/rest/services/UCDemo/World/MapServer"];
+    //Adding empty graphics layer to set the map spatial reference to World_WGS84
+    AGSGraphicsLayer* gl = [[AGSGraphicsLayer alloc]initWithSpatialReference:[AGSSpatialReference wgs84SpatialReference]];
+    [self.mapView1 addMapLayer:gl];
+    
+    //Add world map service
+	NSURL *map1Url = [NSURL URLWithString:@"http://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Dark_Gray_Base/MapServer"];
     AGSDynamicMapServiceLayer *dynamicLyr1 = [AGSDynamicMapServiceLayer dynamicMapServiceLayerWithURL:map1Url];
     [self.mapView1 addMapLayer:dynamicLyr1 withName:@"Dynamic Layer 1"];
     
@@ -41,8 +45,13 @@
     self.mapView2.layerDelegate = self;
     self.mapView2.userInteractionEnabled = NO;
     
-    // Load a Dynamic map service with spatial reference 54024
-    NSURL *map2Url = [NSURL URLWithString:@"http://mobilesampleserver.arcgisonline.com/ArcGIS/rest/services/UCDemo/WorldAitoff/MapServer"];
+    //Adding empty graphics layer to set the map spatial reference to World_Bonne
+    AGSGraphicsLayer* gl2 = [[AGSGraphicsLayer alloc]initWithSpatialReference:[AGSSpatialReference spatialReferenceWithWKID:54024]];
+    [self.mapView2 addMapLayer:gl2];
+    
+
+    //Add world map service
+    NSURL *map2Url = [NSURL URLWithString:@"http://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer"];
     AGSDynamicMapServiceLayer *dynamicLyr2 = [AGSDynamicMapServiceLayer dynamicMapServiceLayerWithURL:map2Url];
     [self.mapView2 addMapLayer:dynamicLyr2 withName:@"Dynamic Layer 2"];
     
@@ -52,11 +61,16 @@
     
     // Map 3
     
+    
     self.mapView3.layerDelegate = self;
     self.mapView3.userInteractionEnabled = NO;
-    
-    // Load a Dynamic map service with spatial reference 54021
-    NSURL *map3Url = [NSURL URLWithString:@"http://mobilesampleserver.arcgisonline.com/ArcGIS/rest/services/UCDemo/WorldPolyconic/MapServer"];
+
+    //Adding empty graphics layer to set the map spatial reference to World_Two_Point_Equidistant
+    AGSGraphicsLayer* gl3 = [[AGSGraphicsLayer alloc]initWithSpatialReference:[AGSSpatialReference spatialReferenceWithWKID:54031]];
+    [self.mapView3 addMapLayer:gl3];
+
+    //Add world map service
+    NSURL *map3Url = [NSURL URLWithString:@"http://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer"];
     AGSDynamicMapServiceLayer *dynamicLyr3 = [AGSDynamicMapServiceLayer dynamicMapServiceLayerWithURL:map3Url];    
     [self.mapView3 addMapLayer:dynamicLyr3 withName:@"Dynamic Layer 3"];
     

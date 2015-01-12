@@ -1,0 +1,403 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3E8980D61A647DB000459853 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E8980D51A647DB000459853 /* ArcGIS.bundle */; };
+		3EC2F64E1A647740003CA123 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2F64D1A647740003CA123 /* AppDelegate.swift */; };
+		3EC2F6551A647740003CA123 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2F6541A647740003CA123 /* Images.xcassets */; };
+		3EC2F6581A647740003CA123 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2F6561A647740003CA123 /* LaunchScreen.xib */; };
+		3EC2F6711A6477B6003CA123 /* BasemapsGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2F66E1A6477B6003CA123 /* BasemapsGridViewController.swift */; };
+		3EC2F6721A6477B6003CA123 /* BasemapsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2F66F1A6477B6003CA123 /* BasemapsListViewController.swift */; };
+		3EC2F6731A6477B6003CA123 /* SwitchBasemapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2F6701A6477B6003CA123 /* SwitchBasemapViewController.swift */; };
+		3EC2F67A1A6477C2003CA123 /* BasemapPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2F6751A6477C2003CA123 /* BasemapPickerDelegate.swift */; };
+		3EC2F67B1A6477C2003CA123 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2F6771A6477C2003CA123 /* UIViewControllerExtension.swift */; };
+		3EC2F67C1A6477C2003CA123 /* PortalBasemapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2F6791A6477C2003CA123 /* PortalBasemapHelper.swift */; };
+		3EC2F67F1A6477CB003CA123 /* Switch Basemap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2F67E1A6477CB003CA123 /* Switch Basemap.storyboard */; };
+		3EC2F6811A6477F8003CA123 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2F6801A6477F8003CA123 /* Constants.swift */; };
+		3EC2F6891A6479BC003CA123 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2F6861A6479BC003CA123 /* SVProgressHUD.bundle */; };
+		3EC2F68A1A6479BC003CA123 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2F6881A6479BC003CA123 /* SVProgressHUD.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3E8980D51A647DB000459853 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
+		3EC2F6481A647740003CA123 /* SwitchBasemap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwitchBasemap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EC2F64C1A647740003CA123 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3EC2F64D1A647740003CA123 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3EC2F6541A647740003CA123 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3EC2F6571A647740003CA123 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3EC2F66E1A6477B6003CA123 /* BasemapsGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasemapsGridViewController.swift; sourceTree = "<group>"; };
+		3EC2F66F1A6477B6003CA123 /* BasemapsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasemapsListViewController.swift; sourceTree = "<group>"; };
+		3EC2F6701A6477B6003CA123 /* SwitchBasemapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchBasemapViewController.swift; sourceTree = "<group>"; };
+		3EC2F6751A6477C2003CA123 /* BasemapPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasemapPickerDelegate.swift; sourceTree = "<group>"; };
+		3EC2F6771A6477C2003CA123 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		3EC2F6791A6477C2003CA123 /* PortalBasemapHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortalBasemapHelper.swift; sourceTree = "<group>"; };
+		3EC2F67E1A6477CB003CA123 /* Switch Basemap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Switch Basemap.storyboard"; sourceTree = "<group>"; };
+		3EC2F6801A6477F8003CA123 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3EC2F6821A647965003CA123 /* SwitchBasemap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwitchBasemap-Bridging-Header.h"; sourceTree = "<group>"; };
+		3EC2F6851A6479BC003CA123 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		3EC2F6861A6479BC003CA123 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		3EC2F6871A6479BC003CA123 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		3EC2F6881A6479BC003CA123 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3EC2F6451A647740003CA123 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3EC2F63F1A647740003CA123 = {
+			isa = PBXGroup;
+			children = (
+				3EC2F64A1A647740003CA123 /* SwitchBasemap */,
+				3EC2F6491A647740003CA123 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3EC2F6491A647740003CA123 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3EC2F6481A647740003CA123 /* SwitchBasemap.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3EC2F64A1A647740003CA123 /* SwitchBasemap */ = {
+			isa = PBXGroup;
+			children = (
+				3EC2F6831A6479BC003CA123 /* Libraries */,
+				3EC2F67D1A6477CB003CA123 /* Storyboard */,
+				3EC2F6741A6477C2003CA123 /* Delegates */,
+				3EC2F6761A6477C2003CA123 /* Extensions */,
+				3EC2F6781A6477C2003CA123 /* Helper */,
+				3EC2F66D1A6477B6003CA123 /* Controllers */,
+				3EC2F64D1A647740003CA123 /* AppDelegate.swift */,
+				3EC2F6541A647740003CA123 /* Images.xcassets */,
+				3EC2F6561A647740003CA123 /* LaunchScreen.xib */,
+				3EC2F64B1A647740003CA123 /* Supporting Files */,
+				3EC2F6821A647965003CA123 /* SwitchBasemap-Bridging-Header.h */,
+			);
+			path = SwitchBasemap;
+			sourceTree = "<group>";
+		};
+		3EC2F64B1A647740003CA123 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3E8980D51A647DB000459853 /* ArcGIS.bundle */,
+				3EC2F6801A6477F8003CA123 /* Constants.swift */,
+				3EC2F64C1A647740003CA123 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3EC2F66D1A6477B6003CA123 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3EC2F66E1A6477B6003CA123 /* BasemapsGridViewController.swift */,
+				3EC2F66F1A6477B6003CA123 /* BasemapsListViewController.swift */,
+				3EC2F6701A6477B6003CA123 /* SwitchBasemapViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3EC2F6741A6477C2003CA123 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				3EC2F6751A6477C2003CA123 /* BasemapPickerDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		3EC2F6761A6477C2003CA123 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3EC2F6771A6477C2003CA123 /* UIViewControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3EC2F6781A6477C2003CA123 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				3EC2F6791A6477C2003CA123 /* PortalBasemapHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		3EC2F67D1A6477CB003CA123 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3EC2F67E1A6477CB003CA123 /* Switch Basemap.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		3EC2F6831A6479BC003CA123 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				3EC2F6841A6479BC003CA123 /* SVProgressHUD */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		3EC2F6841A6479BC003CA123 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				3EC2F6851A6479BC003CA123 /* SVProgressHUD-Prefix.pch */,
+				3EC2F6861A6479BC003CA123 /* SVProgressHUD.bundle */,
+				3EC2F6871A6479BC003CA123 /* SVProgressHUD.h */,
+				3EC2F6881A6479BC003CA123 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3EC2F6471A647740003CA123 /* SwitchBasemap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3EC2F6671A647740003CA123 /* Build configuration list for PBXNativeTarget "SwitchBasemap" */;
+			buildPhases = (
+				3EC2F6441A647740003CA123 /* Sources */,
+				3EC2F6451A647740003CA123 /* Frameworks */,
+				3EC2F6461A647740003CA123 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwitchBasemap;
+			productName = SwitchBasemap;
+			productReference = 3EC2F6481A647740003CA123 /* SwitchBasemap.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3EC2F6401A647740003CA123 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Esri;
+				TargetAttributes = {
+					3EC2F6471A647740003CA123 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 3EC2F6431A647740003CA123 /* Build configuration list for PBXProject "SwitchBasemap" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3EC2F63F1A647740003CA123;
+			productRefGroup = 3EC2F6491A647740003CA123 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3EC2F6471A647740003CA123 /* SwitchBasemap */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3EC2F6461A647740003CA123 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3EC2F6581A647740003CA123 /* LaunchScreen.xib in Resources */,
+				3EC2F6551A647740003CA123 /* Images.xcassets in Resources */,
+				3EC2F67F1A6477CB003CA123 /* Switch Basemap.storyboard in Resources */,
+				3EC2F6891A6479BC003CA123 /* SVProgressHUD.bundle in Resources */,
+				3E8980D61A647DB000459853 /* ArcGIS.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3EC2F6441A647740003CA123 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3EC2F6721A6477B6003CA123 /* BasemapsListViewController.swift in Sources */,
+				3EC2F67A1A6477C2003CA123 /* BasemapPickerDelegate.swift in Sources */,
+				3EC2F67B1A6477C2003CA123 /* UIViewControllerExtension.swift in Sources */,
+				3EC2F67C1A6477C2003CA123 /* PortalBasemapHelper.swift in Sources */,
+				3EC2F6711A6477B6003CA123 /* BasemapsGridViewController.swift in Sources */,
+				3EC2F68A1A6479BC003CA123 /* SVProgressHUD.m in Sources */,
+				3EC2F6731A6477B6003CA123 /* SwitchBasemapViewController.swift in Sources */,
+				3EC2F64E1A647740003CA123 /* AppDelegate.swift in Sources */,
+				3EC2F6811A6477F8003CA123 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3EC2F6561A647740003CA123 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3EC2F6571A647740003CA123 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3EC2F6651A647740003CA123 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3EC2F6661A647740003CA123 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3EC2F6681A647740003CA123 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = $HOME/Library/SDKs/ArcGIS/iOS;
+				INFOPLIST_FILE = SwitchBasemap/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwitchBasemap/SwitchBasemap-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		3EC2F6691A647740003CA123 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = $HOME/Library/SDKs/ArcGIS/iOS;
+				INFOPLIST_FILE = SwitchBasemap/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwitchBasemap/SwitchBasemap-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3EC2F6431A647740003CA123 /* Build configuration list for PBXProject "SwitchBasemap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3EC2F6651A647740003CA123 /* Debug */,
+				3EC2F6661A647740003CA123 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3EC2F6671A647740003CA123 /* Build configuration list for PBXNativeTarget "SwitchBasemap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3EC2F6681A647740003CA123 /* Debug */,
+				3EC2F6691A647740003CA123 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3EC2F6401A647740003CA123 /* Project object */;
+}

@@ -469,9 +469,24 @@
          </FileRef>
       </Group>
    </Group>
-   <FileRef
-      location = "group:SwitchBasemapSample/SwitchBasemapSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "SwitchBasemap">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:SwitchBasemapSample/objective-c/SwitchBasemapSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:SwitchBasemapSample/swift/SwitchBasemap.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <Group
       location = "container:"
       name = "SynchronousGP">

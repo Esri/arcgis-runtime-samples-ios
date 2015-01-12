@@ -522,9 +522,24 @@
          </FileRef>
       </Group>
    </Group>
-   <FileRef
-      location = "group:WeatherInfoSample/WeatherInfoSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "WeatherInfo">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:WeatherInfoSample/objective-c/WeatherInfoSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:WeatherInfoSample/swift/WeatherInfo.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <Group
       location = "container:"
       name = "Webmap">

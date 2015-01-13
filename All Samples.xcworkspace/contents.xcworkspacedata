@@ -521,6 +521,13 @@
             location = "group:DynamicSubLayerReorderSample/Objective-C/DynamicSubLayerReorderSample.xcodeproj">
          </FileRef>
       </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:DynamicSubLayerReorderSample/swift/DynamicSubLayerReorder.xcodeproj">
+         </FileRef>
+      </Group>
    </Group>
    <Group
       location = "container:"

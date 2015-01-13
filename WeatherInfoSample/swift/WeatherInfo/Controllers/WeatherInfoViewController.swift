@@ -108,7 +108,7 @@ class WeatherInfoViewController: UIViewController, AGSMapViewTouchDelegate {
         
         var detail = ""
         if temp != nil {
-            detail = "\(temp!)\u{00B0}"
+            detail = "\(temp!)\u{00B0}F"
         }
         if humidity != nil {
             detail = "\(detail), \(humidity!)% Humidity"

@@ -97,7 +97,7 @@
     
     self.mapView.callout.customView = nil;
     self.mapView.callout.title = [NSString stringWithFormat:@"%@, %@", placeName, country];
-    self.mapView.callout.detail = [NSString stringWithFormat:@"%@\u00B0, %@%% Humidity", temp, humidity];
+    self.mapView.callout.detail = [NSString stringWithFormat:@"%@\u00B0F, %@%% Humidity", temp, humidity];
     
 }
 

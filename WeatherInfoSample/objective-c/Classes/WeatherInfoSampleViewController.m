@@ -67,11 +67,12 @@
     AGSPoint* latLong = (AGSPoint*) [[AGSGeometryEngine defaultGeometryEngine] projectGeometry:mappoint toSpatialReference:[AGSSpatialReference wgs84SpatialReference]];
 	//Set up the parameters to send the webservice
 	NSMutableDictionary* params = [NSMutableDictionary dictionary];
-	[params setObject:[NSNumber numberWithDouble:latLong.x] forKey:@"lng"];
+	[params setObject:[NSNumber numberWithDouble:latLong.x] forKey:@"lon"];
 	[params setObject:[NSNumber numberWithDouble:latLong.y] forKey:@"lat"];
+    [params setObject:@"imperial" forKey:@"units"];
 
 	//Set up an operation for the current request
-	NSURL* url = [NSURL URLWithString:@"http://ws.geonames.org/findNearByWeatherJSON"];
+	NSURL* url = [NSURL URLWithString:@"http://api.openweathermap.org/data/2.5/weather/"];
 	self.currentJsonOp = [[AGSJSONRequestOperation alloc]initWithURL:url queryParameters:params];
 	self.currentJsonOp.target = self;
 	self.currentJsonOp.action = @selector(operation:didSucceedWithResponse:);
@@ -89,22 +90,15 @@
 	//Print the response to see what the JSON payload looks like.
 	NSLog(@"%@", weatherInfo);
 	
-	//If we got any weather information	
-	if([weatherInfo objectForKey:@"weatherObservation"]!=nil){
-		NSString* station = [[weatherInfo objectForKey:@"weatherObservation"] objectForKey:@"stationName"];
-		NSString* clouds = [[weatherInfo objectForKey:@"weatherObservation"] objectForKey:@"clouds"];
-		NSString* temp = [[weatherInfo objectForKey:@"weatherObservation"] objectForKey:@"temperature"];
-		NSString* humidity = [[weatherInfo objectForKey:@"weatherObservation"] objectForKey:@"humidity"];
-		//Hide the progress indicator, display weather information
-		self.mapView.callout.customView = nil;
-		self.mapView.callout.title = station;
-		self.mapView.callout.detail = [NSString stringWithFormat:@"%@\u00B0c, %@%% Humidity, Condition:%@",temp,humidity,clouds];
-	}else {
-		//display the message returned by the webservice
-		self.mapView.callout.customView = nil;
-		self.mapView.callout.title = [[weatherInfo objectForKey:@"status"] objectForKey:@"message"];
-		self.mapView.callout.detail = @"";
-	}
+    NSString *placeName = weatherInfo[@"name"];
+    NSString *country = weatherInfo[@"sys"][@"country"];
+    NSString *temp = weatherInfo[@"main"][@"temp"];
+    NSString *humidity = weatherInfo[@"main"][@"humidity"];
+    
+    self.mapView.callout.customView = nil;
+    self.mapView.callout.title = [NSString stringWithFormat:@"%@, %@", placeName, country];
+    self.mapView.callout.detail = [NSString stringWithFormat:@"%@\u00B0F, %@%% Humidity", temp, humidity];
+    
 }
 
 - (void)operation:(NSOperation*)op didFailWithError:(NSError *)error {

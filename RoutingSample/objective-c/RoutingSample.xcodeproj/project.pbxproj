@@ -11,6 +11,7 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		28D7ACF80DDB3853001CB0EB /* RoutingSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* RoutingSampleViewController.m */; };
 		3EA670BF18EC92B100791CD7 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EA670BE18EC92B100791CD7 /* Storyboard.storyboard */; };
+		3EE660261AB37A2F00D02DCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EE660251AB37A2F00D02DCB /* Images.xcassets */; };
 		9755BA23167B966F00518E4D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9755BA22167B966F00518E4D /* Default-568h@2x.png */; };
 		975A5ED0134BE79900759B4A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 975A5ECE134BE79900759B4A /* icon.png */; };
 		975A5ED1134BE79900759B4A /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 975A5ECF134BE79900759B4A /* icon@2x.png */; };
@@ -38,6 +39,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* RoutingSample_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutingSample_Prefix.pch; sourceTree = "<group>"; };
 		3EA670BE18EC92B100791CD7 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		3EE660251AB37A2F00D02DCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RoutingSample/Images.xcassets; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* RoutingSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RoutingSample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9755BA22167B966F00518E4D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		975A5ECE134BE79900759B4A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3EE660251AB37A2F00D02DCB /* Images.xcassets */,
 				3EA670C018EC934800791CD7 /* Images */,
 				8D1107310486CEB800E47090 /* RoutingSample-Info.plist */,
 			);
@@ -209,6 +212,7 @@
 				3EA670BF18EC92B100791CD7 /* Storyboard.storyboard in Resources */,
 				ACB803A4131A36C300654F30 /* next32.png in Resources */,
 				ACB803A5131A36C300654F30 /* next32@2x.png in Resources */,
+				3EE660261AB37A2F00D02DCB /* Images.xcassets in Resources */,
 				ACB803A6131A36C300654F30 /* prev32.png in Resources */,
 				ACB803A7131A36C300654F30 /* prev32@2x.png in Resources */,
 				ACB80506131A601200654F30 /* Clear20.png in Resources */,
@@ -240,6 +244,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
@@ -266,6 +272,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";

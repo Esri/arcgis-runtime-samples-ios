@@ -12,19 +12,8 @@
 		97F667BF19E23879001D1724 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97F667BD19E23879001D1724 /* Main.storyboard */; };
 		97F667C119E23879001D1724 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97F667C019E23879001D1724 /* Images.xcassets */; };
 		97F667C419E23879001D1724 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F667C219E23879001D1724 /* LaunchScreen.xib */; };
-		97F667D019E23879001D1724 /* PopupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F667CF19E23879001D1724 /* PopupTests.swift */; };
 		97F667DA19E23945001D1724 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 97F667D919E23945001D1724 /* ArcGIS.bundle */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		97F667CA19E23879001D1724 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 97F667AC19E23879001D1724 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 97F667B319E23879001D1724;
-			remoteInfo = Popup;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		97F667B419E23879001D1724 /* Popup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Popup.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,21 +23,11 @@
 		97F667BE19E23879001D1724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		97F667C019E23879001D1724 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		97F667C319E23879001D1724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		97F667C919E23879001D1724 /* PopupTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopupTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		97F667CE19E23879001D1724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		97F667CF19E23879001D1724 /* PopupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupTests.swift; sourceTree = "<group>"; };
 		97F667D919E23945001D1724 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		97F667B119E23879001D1724 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		97F667C619E23879001D1724 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -62,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				97F667B619E23879001D1724 /* Popup */,
-				97F667CC19E23879001D1724 /* PopupTests */,
 				97F667B519E23879001D1724 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,7 +49,6 @@
 			isa = PBXGroup;
 			children = (
 				97F667B419E23879001D1724 /* Popup.app */,
-				97F667C919E23879001D1724 /* PopupTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,23 +75,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		97F667CC19E23879001D1724 /* PopupTests */ = {
-			isa = PBXGroup;
-			children = (
-				97F667CF19E23879001D1724 /* PopupTests.swift */,
-				97F667CD19E23879001D1724 /* Supporting Files */,
-			);
-			path = PopupTests;
-			sourceTree = "<group>";
-		};
-		97F667CD19E23879001D1724 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				97F667CE19E23879001D1724 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,24 +95,6 @@
 			productReference = 97F667B419E23879001D1724 /* Popup.app */;
 			productType = "com.apple.product-type.application";
 		};
-		97F667C819E23879001D1724 /* PopupTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 97F667D619E23879001D1724 /* Build configuration list for PBXNativeTarget "PopupTests" */;
-			buildPhases = (
-				97F667C519E23879001D1724 /* Sources */,
-				97F667C619E23879001D1724 /* Frameworks */,
-				97F667C719E23879001D1724 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				97F667CB19E23879001D1724 /* PBXTargetDependency */,
-			);
-			name = PopupTests;
-			productName = PopupTests;
-			productReference = 97F667C919E23879001D1724 /* PopupTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -164,10 +106,6 @@
 				TargetAttributes = {
 					97F667B319E23879001D1724 = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					97F667C819E23879001D1724 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 97F667B319E23879001D1724;
 					};
 				};
 			};
@@ -185,7 +123,6 @@
 			projectRoot = "";
 			targets = (
 				97F667B319E23879001D1724 /* Popup */,
-				97F667C819E23879001D1724 /* PopupTests */,
 			);
 		};
 /* End PBXProject section */
@@ -202,13 +139,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		97F667C719E23879001D1724 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -221,23 +151,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		97F667C519E23879001D1724 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				97F667D019E23879001D1724 /* PopupTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		97F667CB19E23879001D1724 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 97F667B319E23879001D1724 /* Popup */;
-			targetProxy = 97F667CA19E23879001D1724 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		97F667BD19E23879001D1724 /* Main.storyboard */ = {
@@ -374,40 +288,6 @@
 			};
 			name = Release;
 		};
-		97F667D719E23879001D1724 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PopupTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Popup.app/Popup";
-			};
-			name = Debug;
-		};
-		97F667D819E23879001D1724 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PopupTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Popup.app/Popup";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -427,14 +307,7 @@
 				97F667D519E23879001D1724 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		97F667D619E23879001D1724 /* Build configuration list for PBXNativeTarget "PopupTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				97F667D719E23879001D1724 /* Debug */,
-				97F667D819E23879001D1724 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

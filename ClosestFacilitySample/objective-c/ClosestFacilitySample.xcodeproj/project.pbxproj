@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3E36334C18DB67DA00F39DA1 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E36334B18DB67DA00F39DA1 /* Storyboard.storyboard */; };
+		3EE660041AB373ED00D02DCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EE660031AB373ED00D02DCB /* Images.xcassets */; };
 		3EE6BBDD18DBB8570092054A /* Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6BBDC18DBB8570092054A /* Parameters.m */; };
 		9755BA09167B902400518E4D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9755BA08167B902400518E4D /* Default-568h@2x.png */; };
 		978E970818E0FD9C001E6341 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 978E970518E0FD9C001E6341 /* SVProgressHUD.bundle */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		3E36334B18DB67DA00F39DA1 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = ClosestFacilitySample/Storyboard.storyboard; sourceTree = "<group>"; };
+		3EE660031AB373ED00D02DCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ClosestFacilitySample/Images.xcassets; sourceTree = "<group>"; };
 		3EE6BBDB18DBB8570092054A /* Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parameters.h; path = ClosestFacilitySample/Models/Parameters.h; sourceTree = "<group>"; };
 		3EE6BBDC18DBB8570092054A /* Parameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Parameters.m; path = ClosestFacilitySample/Models/Parameters.m; sourceTree = "<group>"; };
 		9755BA08167B902400518E4D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		C57F6EC313F6054600DAE553 = {
 			isa = PBXGroup;
 			children = (
+				3EE660031AB373ED00D02DCB /* Images.xcassets */,
 				3E36334B18DB67DA00F39DA1 /* Storyboard.storyboard */,
 				C57F6EE313F6054600DAE553 /* Supporting Files */,
 				C5E0CA5613FC916200DE6D97 /* Classes */,
@@ -228,6 +231,7 @@
 				C58F0152140451E800C80593 /* remove24.png in Resources */,
 				C58F0153140451E800C80593 /* remove24@2x.png in Resources */,
 				978E970818E0FD9C001E6341 /* SVProgressHUD.bundle in Resources */,
+				3EE660041AB373ED00D02DCB /* Images.xcassets in Resources */,
 				C58F0154140451E800C80593 /* Clear20.png in Resources */,
 				C58F0155140451E800C80593 /* Clear20@2x.png in Resources */,
 				C56B3F5514C60251003A46EB /* ArcGIS.bundle in Resources */,
@@ -328,6 +332,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
@@ -357,6 +363,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

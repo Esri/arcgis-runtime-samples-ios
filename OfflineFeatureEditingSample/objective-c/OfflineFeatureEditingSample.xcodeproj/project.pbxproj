@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3E92AFB7190AFBDE002F5A9D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E92AFB6190AFBDE002F5A9D /* Storyboard.storyboard */; };
 		3E92AFB9190B1211002F5A9D /* Storyboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E92AFB8190B1211002F5A9D /* Storyboard_iPad.storyboard */; };
+		3EE6601C1AB3792700D02DCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EE6601B1AB3792700D02DCB /* Images.xcassets */; };
 		4B1921171746F5D000E724BE /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4B1921161746F5D000E724BE /* ArcGIS.bundle */; };
 		97110215180A17240085B216 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97110204180A17240085B216 /* AppDelegate.m */; };
 		97110217180A17240085B216 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97110207180A17240085B216 /* Default-568h@2x.png */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		3E92AFB6190AFBDE002F5A9D /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = OfflineFeatureEditing/Storyboard.storyboard; sourceTree = "<group>"; };
 		3E92AFB8190B1211002F5A9D /* Storyboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPad.storyboard; path = OfflineFeatureEditing/Storyboard_iPad.storyboard; sourceTree = "<group>"; };
+		3EE6601B1AB3792700D02DCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = OfflineFeatureEditingSample/Images.xcassets; sourceTree = "<group>"; };
 		4B1920D31746ECC900E724BE /* OfflineFeatureEditingSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfflineFeatureEditingSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B1921161746F5D000E724BE /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		97110203180A17240085B216 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		4B1920CA1746ECC900E724BE = {
 			isa = PBXGroup;
 			children = (
+				3EE6601B1AB3792700D02DCB /* Images.xcassets */,
 				3E92AFB8190B1211002F5A9D /* Storyboard_iPad.storyboard */,
 				3E92AFB6190AFBDE002F5A9D /* Storyboard.storyboard */,
 				975579CB180A1DB600904382 /* SanFrancisco.tpk */,
@@ -271,6 +274,7 @@
 				97110219180A17240085B216 /* Default@2x.png in Resources */,
 				4B1921171746F5D000E724BE /* ArcGIS.bundle in Resources */,
 				975579CA180A18CB00904382 /* icon@2x.png in Resources */,
+				3EE6601C1AB3792700D02DCB /* Images.xcassets in Resources */,
 				975579C9180A18CB00904382 /* icon.png in Resources */,
 				97110218180A17240085B216 /* Default.png in Resources */,
 				97110217180A17240085B216 /* Default-568h@2x.png in Resources */,
@@ -380,6 +384,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = "~/Library/SDKs/ArcGIS/iOS";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -403,6 +409,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = "~/Library/SDKs/ArcGIS/iOS";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

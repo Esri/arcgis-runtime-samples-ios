@@ -12,22 +12,11 @@
 		97F6674F19E224E9001D1724 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97F6674D19E224E9001D1724 /* Main.storyboard */; };
 		97F6675119E224E9001D1724 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97F6675019E224E9001D1724 /* Images.xcassets */; };
 		97F6675419E224E9001D1724 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F6675219E224E9001D1724 /* LaunchScreen.xib */; };
-		97F6676019E224E9001D1724 /* FeatureLayerEditingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6675F19E224E9001D1724 /* FeatureLayerEditingTests.swift */; };
 		97F6676A19E22596001D1724 /* FeatureTemplatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6676919E22596001D1724 /* FeatureTemplatePickerController.swift */; };
 		97F6677019E22616001D1724 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 97F6676D19E22616001D1724 /* SVProgressHUD.bundle */; };
 		97F6677119E22616001D1724 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F6676F19E22616001D1724 /* SVProgressHUD.m */; };
 		97F6677619E22CAC001D1724 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 97F6677519E22CAC001D1724 /* ArcGIS.bundle */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		97F6675A19E224E9001D1724 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 97F6673C19E224E9001D1724 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 97F6674319E224E9001D1724;
-			remoteInfo = FeatureLayerEditing;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		97F6674419E224E9001D1724 /* FeatureLayerEditing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeatureLayerEditing.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,9 +26,6 @@
 		97F6674E19E224E9001D1724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		97F6675019E224E9001D1724 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		97F6675319E224E9001D1724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		97F6675919E224E9001D1724 /* FeatureLayerEditingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeatureLayerEditingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		97F6675E19E224E9001D1724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		97F6675F19E224E9001D1724 /* FeatureLayerEditingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureLayerEditingTests.swift; sourceTree = "<group>"; };
 		97F6676919E22596001D1724 /* FeatureTemplatePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureTemplatePickerController.swift; sourceTree = "<group>"; };
 		97F6676C19E22616001D1724 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		97F6676D19E22616001D1724 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
@@ -57,13 +43,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		97F6675619E224E9001D1724 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -72,7 +51,6 @@
 			children = (
 				97F6676B19E22616001D1724 /* SVProgressHUD */,
 				97F6674619E224E9001D1724 /* FeatureLayerEditing */,
-				97F6675C19E224E9001D1724 /* FeatureLayerEditingTests */,
 				97F6674519E224E9001D1724 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,7 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				97F6674419E224E9001D1724 /* FeatureLayerEditing.app */,
-				97F6675919E224E9001D1724 /* FeatureLayerEditingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,23 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				97F6674819E224E9001D1724 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		97F6675C19E224E9001D1724 /* FeatureLayerEditingTests */ = {
-			isa = PBXGroup;
-			children = (
-				97F6675F19E224E9001D1724 /* FeatureLayerEditingTests.swift */,
-				97F6675D19E224E9001D1724 /* Supporting Files */,
-			);
-			path = FeatureLayerEditingTests;
-			sourceTree = "<group>";
-		};
-		97F6675D19E224E9001D1724 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				97F6675E19E224E9001D1724 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -158,24 +118,6 @@
 			productReference = 97F6674419E224E9001D1724 /* FeatureLayerEditing.app */;
 			productType = "com.apple.product-type.application";
 		};
-		97F6675819E224E9001D1724 /* FeatureLayerEditingTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 97F6676619E224E9001D1724 /* Build configuration list for PBXNativeTarget "FeatureLayerEditingTests" */;
-			buildPhases = (
-				97F6675519E224E9001D1724 /* Sources */,
-				97F6675619E224E9001D1724 /* Frameworks */,
-				97F6675719E224E9001D1724 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				97F6675B19E224E9001D1724 /* PBXTargetDependency */,
-			);
-			name = FeatureLayerEditingTests;
-			productName = FeatureLayerEditingTests;
-			productReference = 97F6675919E224E9001D1724 /* FeatureLayerEditingTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -187,10 +129,6 @@
 				TargetAttributes = {
 					97F6674319E224E9001D1724 = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					97F6675819E224E9001D1724 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 97F6674319E224E9001D1724;
 					};
 				};
 			};
@@ -208,7 +146,6 @@
 			projectRoot = "";
 			targets = (
 				97F6674319E224E9001D1724 /* FeatureLayerEditing */,
-				97F6675819E224E9001D1724 /* FeatureLayerEditingTests */,
 			);
 		};
 /* End PBXProject section */
@@ -226,13 +163,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		97F6675719E224E9001D1724 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -247,23 +177,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		97F6675519E224E9001D1724 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				97F6676019E224E9001D1724 /* FeatureLayerEditingTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		97F6675B19E224E9001D1724 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 97F6674319E224E9001D1724 /* FeatureLayerEditing */;
-			targetProxy = 97F6675A19E224E9001D1724 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		97F6674D19E224E9001D1724 /* Main.storyboard */ = {
@@ -402,40 +316,6 @@
 			};
 			name = Release;
 		};
-		97F6676719E224E9001D1724 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = FeatureLayerEditingTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeatureLayerEditing.app/FeatureLayerEditing";
-			};
-			name = Debug;
-		};
-		97F6676819E224E9001D1724 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = FeatureLayerEditingTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeatureLayerEditing.app/FeatureLayerEditing";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -455,14 +335,7 @@
 				97F6676519E224E9001D1724 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		97F6676619E224E9001D1724 /* Build configuration list for PBXNativeTarget "FeatureLayerEditingTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				97F6676719E224E9001D1724 /* Debug */,
-				97F6676819E224E9001D1724 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

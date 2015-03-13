@@ -12,6 +12,7 @@
 		28D7ACF80DDB3853001CB0EB /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* MainViewController.m */; };
 		3EA670EC18EF24F800791CD7 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EA670EB18EF24F800791CD7 /* Storyboard.storyboard */; };
 		3EA670F018EF296700791CD7 /* CustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA670EF18EF296700791CD7 /* CustomSegue.m */; };
+		3EE6602E1AB37AF900D02DCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EE6602D1AB37AF900D02DCB /* Images.xcassets */; };
 		97B8C41A16786197003B6E1B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B8C41916786197003B6E1B /* Default-568h@2x.png */; };
 		97E8186C1304CDDF001E3C72 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E8186A1304CDDF001E3C72 /* icon.png */; };
 		97E8186D1304CDDF001E3C72 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E8186B1304CDDF001E3C72 /* icon@2x.png */; };
@@ -37,6 +38,7 @@
 		3EA670EB18EF24F800791CD7 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		3EA670EE18EF296700791CD7 /* CustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomSegue.h; path = Segues/CustomSegue.h; sourceTree = "<group>"; };
 		3EA670EF18EF296700791CD7 /* CustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomSegue.m; path = Segues/CustomSegue.m; sourceTree = "<group>"; };
+		3EE6602D1AB37AF900D02DCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TableOfContentsSample/Images.xcassets; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TableOfContentsSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TableOfContentsSample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		97B8C41916786197003B6E1B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		97E8186A1304CDDF001E3C72 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3EE6602D1AB37AF900D02DCB /* Images.xcassets */,
 				3EA670F218EF56DC00791CD7 /* Images */,
 				8D1107310486CEB800E47090 /* TableOfContentsSample-Info.plist */,
 			);
@@ -242,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97E8186C1304CDDF001E3C72 /* icon.png in Resources */,
+				3EE6602E1AB37AF900D02DCB /* Images.xcassets in Resources */,
 				97E8186D1304CDDF001E3C72 /* icon@2x.png in Resources */,
 				C56B40DA14CF923B003A46EB /* CircleArrowRight_sml.png in Resources */,
 				C56B40DB14CF923B003A46EB /* CircleArrowDown_sml.png in Resources */,
@@ -278,6 +282,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -308,6 +314,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

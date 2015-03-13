@@ -11,6 +11,7 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		28D7ACF80DDB3853001CB0EB /* GpsSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* GpsSampleViewController.m */; };
 		3E715CEA18E33D12004FB946 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E715CE918E33D12004FB946 /* Storyboard.storyboard */; };
+		3EE6600E1AB3775700D02DCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EE6600D1AB3775700D02DCB /* Images.xcassets */; };
 		9704D4B8142AC69A00C7D727 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9704D4B6142AC69A00C7D727 /* icon@2x.png */; };
 		9704D4B9142AC69A00C7D727 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9704D4B7142AC69A00C7D727 /* icon.png */; };
 		97B8C3DE16780421003B6E1B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B8C3DD16780421003B6E1B /* Default-568h@2x.png */; };
@@ -28,6 +29,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* GpsSample_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GpsSample_Prefix.pch; sourceTree = "<group>"; };
 		3E715CE918E33D12004FB946 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		3EE6600D1AB3775700D02DCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GpsSample/Images.xcassets; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* GpsSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GpsSample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9704D4B6142AC69A00C7D727 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		9704D4B7142AC69A00C7D727 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3EE6600D1AB3775700D02DCB /* Images.xcassets */,
 				97B8C3DD16780421003B6E1B /* Default-568h@2x.png */,
 				97D382EC142D3DFF006372FD /* northarrow.gif */,
 				9704D4B6142AC69A00C7D727 /* icon@2x.png */,
@@ -168,6 +171,7 @@
 			files = (
 				3E715CEA18E33D12004FB946 /* Storyboard.storyboard in Resources */,
 				9704D4B8142AC69A00C7D727 /* icon@2x.png in Resources */,
+				3EE6600E1AB3775700D02DCB /* Images.xcassets in Resources */,
 				9704D4B9142AC69A00C7D727 /* icon.png in Resources */,
 				97D382ED142D3DFF006372FD /* northarrow.gif in Resources */,
 				C56B3F2514C11722003A46EB /* ArcGIS.bundle in Resources */,
@@ -195,6 +199,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -227,6 +233,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

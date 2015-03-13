@@ -12,21 +12,10 @@
 		97F6678B19E23448001D1724 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97F6678919E23448001D1724 /* Main.storyboard */; };
 		97F6678D19E23448001D1724 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97F6678C19E23448001D1724 /* Images.xcassets */; };
 		97F6679019E23448001D1724 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F6678E19E23448001D1724 /* LaunchScreen.xib */; };
-		97F6679C19E23448001D1724 /* GeocodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6679B19E23448001D1724 /* GeocodingTests.swift */; };
 		97F667A619E23509001D1724 /* GeocodingResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F667A519E23509001D1724 /* GeocodingResultsViewController.swift */; };
 		97F667A819E23572001D1724 /* BluePushpin.png in Resources */ = {isa = PBXBuildFile; fileRef = 97F667A719E23572001D1724 /* BluePushpin.png */; };
 		97F667AA19E23724001D1724 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 97F667A919E23724001D1724 /* ArcGIS.bundle */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		97F6679619E23448001D1724 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 97F6677819E23448001D1724 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 97F6677F19E23448001D1724;
-			remoteInfo = Geocoding;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		97F6678019E23448001D1724 /* Geocoding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geocoding.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,23 +25,13 @@
 		97F6678A19E23448001D1724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		97F6678C19E23448001D1724 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		97F6678F19E23448001D1724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		97F6679519E23448001D1724 /* GeocodingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeocodingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		97F6679A19E23448001D1724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		97F6679B19E23448001D1724 /* GeocodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodingTests.swift; sourceTree = "<group>"; };
 		97F667A519E23509001D1724 /* GeocodingResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocodingResultsViewController.swift; sourceTree = "<group>"; };
 		97F667A719E23572001D1724 /* BluePushpin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BluePushpin.png; sourceTree = "<group>"; };
-		97F667A919E23724001D1724 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>";  };
+		97F667A919E23724001D1724 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		97F6677D19E23448001D1724 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		97F6679219E23448001D1724 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -66,7 +45,6 @@
 			isa = PBXGroup;
 			children = (
 				97F6678219E23448001D1724 /* Geocoding */,
-				97F6679819E23448001D1724 /* GeocodingTests */,
 				97F6678119E23448001D1724 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,7 +53,6 @@
 			isa = PBXGroup;
 			children = (
 				97F6678019E23448001D1724 /* Geocoding.app */,
-				97F6679519E23448001D1724 /* GeocodingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,23 +81,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		97F6679819E23448001D1724 /* GeocodingTests */ = {
-			isa = PBXGroup;
-			children = (
-				97F6679B19E23448001D1724 /* GeocodingTests.swift */,
-				97F6679919E23448001D1724 /* Supporting Files */,
-			);
-			path = GeocodingTests;
-			sourceTree = "<group>";
-		};
-		97F6679919E23448001D1724 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				97F6679A19E23448001D1724 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,24 +101,6 @@
 			productReference = 97F6678019E23448001D1724 /* Geocoding.app */;
 			productType = "com.apple.product-type.application";
 		};
-		97F6679419E23448001D1724 /* GeocodingTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 97F667A219E23448001D1724 /* Build configuration list for PBXNativeTarget "GeocodingTests" */;
-			buildPhases = (
-				97F6679119E23448001D1724 /* Sources */,
-				97F6679219E23448001D1724 /* Frameworks */,
-				97F6679319E23448001D1724 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				97F6679719E23448001D1724 /* PBXTargetDependency */,
-			);
-			name = GeocodingTests;
-			productName = GeocodingTests;
-			productReference = 97F6679519E23448001D1724 /* GeocodingTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -170,10 +112,6 @@
 				TargetAttributes = {
 					97F6677F19E23448001D1724 = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					97F6679419E23448001D1724 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 97F6677F19E23448001D1724;
 					};
 				};
 			};
@@ -191,7 +129,6 @@
 			projectRoot = "";
 			targets = (
 				97F6677F19E23448001D1724 /* Geocoding */,
-				97F6679419E23448001D1724 /* GeocodingTests */,
 			);
 		};
 /* End PBXProject section */
@@ -209,13 +146,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		97F6679319E23448001D1724 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -229,23 +159,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		97F6679119E23448001D1724 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				97F6679C19E23448001D1724 /* GeocodingTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		97F6679719E23448001D1724 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 97F6677F19E23448001D1724 /* Geocoding */;
-			targetProxy = 97F6679619E23448001D1724 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		97F6678919E23448001D1724 /* Main.storyboard */ = {
@@ -382,40 +296,6 @@
 			};
 			name = Release;
 		};
-		97F667A319E23448001D1724 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = GeocodingTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Geocoding.app/Geocoding";
-			};
-			name = Debug;
-		};
-		97F667A419E23448001D1724 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = GeocodingTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Geocoding.app/Geocoding";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -435,14 +315,7 @@
 				97F667A119E23448001D1724 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		97F667A219E23448001D1724 /* Build configuration list for PBXNativeTarget "GeocodingTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				97F667A319E23448001D1724 /* Debug */,
-				97F667A419E23448001D1724 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

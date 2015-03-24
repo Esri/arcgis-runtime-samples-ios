@@ -1,0 +1,370 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3E8C01D81ABA03BD000A4ADE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C01D71ABA03BD000A4ADE /* AppDelegate.swift */; };
+		3E8C01DD1ABA03BD000A4ADE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8C01DB1ABA03BD000A4ADE /* Main.storyboard */; };
+		3E8C01DF1ABA03BD000A4ADE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E8C01DE1ABA03BD000A4ADE /* Images.xcassets */; };
+		3E8C01E21ABA03BD000A4ADE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E8C01E01ABA03BD000A4ADE /* LaunchScreen.xib */; };
+		3E8C01FE1ABA2D9E000A4ADE /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C01FD1ABA2D9E000A4ADE /* SignInViewController.swift */; };
+		3E8C02011ABA3917000A4ADE /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E8C02001ABA3917000A4ADE /* ArcGIS.bundle */; };
+		3E9A798F1ABA4C0C004F5AA3 /* JVFloatLabeledTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A798A1ABA4C0C004F5AA3 /* JVFloatLabeledTextField.m */; };
+		3E9A79901ABA4C0C004F5AA3 /* JVFloatLabeledTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A798C1ABA4C0C004F5AA3 /* JVFloatLabeledTextView.m */; };
+		3E9A79911ABA4C0C004F5AA3 /* NSString+TextDirectionality.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A798E1ABA4C0C004F5AA3 /* NSString+TextDirectionality.m */; };
+		3E9A79971ABA4EBB004F5AA3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A79961ABA4EBB004F5AA3 /* ProfileViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3E8C01D21ABA03BD000A4ADE /* OAuthLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OAuthLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E8C01D61ABA03BD000A4ADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E8C01D71ABA03BD000A4ADE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3E8C01DC1ABA03BD000A4ADE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3E8C01DE1ABA03BD000A4ADE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3E8C01E11ABA03BD000A4ADE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3E8C01FD1ABA2D9E000A4ADE /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = Controllers/SignInViewController.swift; sourceTree = "<group>"; };
+		3E8C02001ABA3917000A4ADE /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
+		3E9A79891ABA4C0C004F5AA3 /* JVFloatLabeledTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFloatLabeledTextField.h; sourceTree = "<group>"; };
+		3E9A798A1ABA4C0C004F5AA3 /* JVFloatLabeledTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFloatLabeledTextField.m; sourceTree = "<group>"; };
+		3E9A798B1ABA4C0C004F5AA3 /* JVFloatLabeledTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFloatLabeledTextView.h; sourceTree = "<group>"; };
+		3E9A798C1ABA4C0C004F5AA3 /* JVFloatLabeledTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFloatLabeledTextView.m; sourceTree = "<group>"; };
+		3E9A798D1ABA4C0C004F5AA3 /* NSString+TextDirectionality.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TextDirectionality.h"; sourceTree = "<group>"; };
+		3E9A798E1ABA4C0C004F5AA3 /* NSString+TextDirectionality.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TextDirectionality.m"; sourceTree = "<group>"; };
+		3E9A79951ABA4C4D004F5AA3 /* OAuthLogin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OAuthLogin-Bridging-Header.h"; sourceTree = "<group>"; };
+		3E9A79961ABA4EBB004F5AA3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/ProfileViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3E8C01CF1ABA03BD000A4ADE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3E8C01C91ABA03BD000A4ADE = {
+			isa = PBXGroup;
+			children = (
+				3E8C01D41ABA03BD000A4ADE /* OAuthLogin */,
+				3E8C01D31ABA03BD000A4ADE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3E8C01D31ABA03BD000A4ADE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3E8C01D21ABA03BD000A4ADE /* OAuthLogin.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3E8C01D41ABA03BD000A4ADE /* OAuthLogin */ = {
+			isa = PBXGroup;
+			children = (
+				3E9A79871ABA4BBE004F5AA3 /* Libraries */,
+				3E8C02001ABA3917000A4ADE /* ArcGIS.bundle */,
+				3E8C01FC1ABA2D40000A4ADE /* Controllers */,
+				3E8C01D71ABA03BD000A4ADE /* AppDelegate.swift */,
+				3E8C01DB1ABA03BD000A4ADE /* Main.storyboard */,
+				3E8C01DE1ABA03BD000A4ADE /* Images.xcassets */,
+				3E8C01E01ABA03BD000A4ADE /* LaunchScreen.xib */,
+				3E8C01D51ABA03BD000A4ADE /* Supporting Files */,
+				3E9A79951ABA4C4D004F5AA3 /* OAuthLogin-Bridging-Header.h */,
+			);
+			path = OAuthLogin;
+			sourceTree = "<group>";
+		};
+		3E8C01D51ABA03BD000A4ADE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3E8C01D61ABA03BD000A4ADE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3E8C01FC1ABA2D40000A4ADE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3E8C01FD1ABA2D9E000A4ADE /* SignInViewController.swift */,
+				3E9A79961ABA4EBB004F5AA3 /* ProfileViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3E9A79871ABA4BBE004F5AA3 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				3E9A79881ABA4C0C004F5AA3 /* JVFloatLabeledTextField */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		3E9A79881ABA4C0C004F5AA3 /* JVFloatLabeledTextField */ = {
+			isa = PBXGroup;
+			children = (
+				3E9A79891ABA4C0C004F5AA3 /* JVFloatLabeledTextField.h */,
+				3E9A798A1ABA4C0C004F5AA3 /* JVFloatLabeledTextField.m */,
+				3E9A798B1ABA4C0C004F5AA3 /* JVFloatLabeledTextView.h */,
+				3E9A798C1ABA4C0C004F5AA3 /* JVFloatLabeledTextView.m */,
+				3E9A798D1ABA4C0C004F5AA3 /* NSString+TextDirectionality.h */,
+				3E9A798E1ABA4C0C004F5AA3 /* NSString+TextDirectionality.m */,
+			);
+			name = JVFloatLabeledTextField;
+			path = Libraries/JVFloatLabeledTextField;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3E8C01D11ABA03BD000A4ADE /* OAuthLogin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E8C01F11ABA03BD000A4ADE /* Build configuration list for PBXNativeTarget "OAuthLogin" */;
+			buildPhases = (
+				3E8C01CE1ABA03BD000A4ADE /* Sources */,
+				3E8C01CF1ABA03BD000A4ADE /* Frameworks */,
+				3E8C01D01ABA03BD000A4ADE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OAuthLogin;
+			productName = OAuthLogin;
+			productReference = 3E8C01D21ABA03BD000A4ADE /* OAuthLogin.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3E8C01CA1ABA03BD000A4ADE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Esri;
+				TargetAttributes = {
+					3E8C01D11ABA03BD000A4ADE = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 3E8C01CD1ABA03BD000A4ADE /* Build configuration list for PBXProject "OAuthLogin" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3E8C01C91ABA03BD000A4ADE;
+			productRefGroup = 3E8C01D31ABA03BD000A4ADE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3E8C01D11ABA03BD000A4ADE /* OAuthLogin */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3E8C01D01ABA03BD000A4ADE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E8C01DD1ABA03BD000A4ADE /* Main.storyboard in Resources */,
+				3E8C01E21ABA03BD000A4ADE /* LaunchScreen.xib in Resources */,
+				3E8C02011ABA3917000A4ADE /* ArcGIS.bundle in Resources */,
+				3E8C01DF1ABA03BD000A4ADE /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3E8C01CE1ABA03BD000A4ADE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E9A798F1ABA4C0C004F5AA3 /* JVFloatLabeledTextField.m in Sources */,
+				3E9A79911ABA4C0C004F5AA3 /* NSString+TextDirectionality.m in Sources */,
+				3E8C01D81ABA03BD000A4ADE /* AppDelegate.swift in Sources */,
+				3E9A79971ABA4EBB004F5AA3 /* ProfileViewController.swift in Sources */,
+				3E8C01FE1ABA2D9E000A4ADE /* SignInViewController.swift in Sources */,
+				3E9A79901ABA4C0C004F5AA3 /* JVFloatLabeledTextView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3E8C01DB1ABA03BD000A4ADE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E8C01DC1ABA03BD000A4ADE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3E8C01E01ABA03BD000A4ADE /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E8C01E11ABA03BD000A4ADE /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3E8C01EF1ABA03BD000A4ADE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3E8C01F01ABA03BD000A4ADE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3E8C01F21ABA03BD000A4ADE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = $HOME/Library/SDKs/ArcGIS/iOS;
+				INFOPLIST_FILE = OAuthLogin/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OAuthLogin/OAuthLogin-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		3E8C01F31ABA03BD000A4ADE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = $HOME/Library/SDKs/ArcGIS/iOS;
+				INFOPLIST_FILE = OAuthLogin/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OAuthLogin/OAuthLogin-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3E8C01CD1ABA03BD000A4ADE /* Build configuration list for PBXProject "OAuthLogin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E8C01EF1ABA03BD000A4ADE /* Debug */,
+				3E8C01F01ABA03BD000A4ADE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3E8C01F11ABA03BD000A4ADE /* Build configuration list for PBXNativeTarget "OAuthLogin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E8C01F21ABA03BD000A4ADE /* Debug */,
+				3E8C01F31ABA03BD000A4ADE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3E8C01CA1ABA03BD000A4ADE /* Project object */;
+}

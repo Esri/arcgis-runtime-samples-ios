@@ -69,7 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				3E9A79871ABA4BBE004F5AA3 /* Libraries */,
-				3E8C02001ABA3917000A4ADE /* ArcGIS.bundle */,
 				3E8C01FC1ABA2D40000A4ADE /* Controllers */,
 				3E8C01D71ABA03BD000A4ADE /* AppDelegate.swift */,
 				3E8C01DB1ABA03BD000A4ADE /* Main.storyboard */,
@@ -84,6 +83,7 @@
 		3E8C01D51ABA03BD000A4ADE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3E8C02001ABA3917000A4ADE /* ArcGIS.bundle */,
 				3E8C01D61ABA03BD000A4ADE /* Info.plist */,
 			);
 			name = "Supporting Files";

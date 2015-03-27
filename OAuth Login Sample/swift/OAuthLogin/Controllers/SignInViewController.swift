@@ -144,11 +144,7 @@ class SignInViewController: UIViewController, UIAlertViewDelegate, AGSPortalDele
         if self.presentedViewController != nil {
             self.dismissViewControllerAnimated(true, completion:nil)
         }
-        
-        //Display the user's  items
-//        UserContentViewController* uvc = [[UserContentViewController alloc] initWithPortal:self.portal];
-//        [self.navigationController pushViewController:uvc animated:YES];
-        //TODO: segue
+        //show the profile view controller
         self.performSegueWithIdentifier("SegueProfileVC", sender: self)
     }
     

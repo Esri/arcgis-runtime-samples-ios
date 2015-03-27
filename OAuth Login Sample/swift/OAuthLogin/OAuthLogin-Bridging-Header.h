@@ -7,3 +7,4 @@
 //
 
 #import "JVFloatLabeledTextField.h"
+#import "JVFloatLabeledTextView.h"

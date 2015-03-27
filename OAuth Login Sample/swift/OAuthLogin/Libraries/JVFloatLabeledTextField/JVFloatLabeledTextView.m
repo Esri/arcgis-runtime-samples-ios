@@ -52,6 +52,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
+        self.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8);
         [self commonInit];
 
         // force setter to be called on a placeholder defined in a NIB/Storyboard
@@ -67,6 +68,8 @@
     self.startingTextContainerInsetTop = self.textContainerInset.top;
     self.floatingLabelShouldLockToTop = 1;
     self.textContainer.lineFragmentPadding = 0;
+    
+    self.floatingLabelYPadding = 5;
     
     _placeholderLabel = [[UILabel alloc] initWithFrame:self.frame];
     _placeholderLabel.font = self.font;
@@ -86,7 +89,8 @@
     // some basic default fonts/colors
     _floatingLabelFont = [UIFont boldSystemFontOfSize:12.0f];
     _floatingLabel.font = _floatingLabelFont;
-    _floatingLabelTextColor = [UIColor grayColor];
+//    _floatingLabelTextColor = [UIColor grayColor];
+    _floatingLabelTextColor = self.tintColor;
     _floatingLabel.textColor = _floatingLabelTextColor;
     _floatingLabelActiveTextColor = self.tintColor;
     _animateEvenIfNotFirstResponder = NO;
@@ -202,7 +206,7 @@
         if (self.floatingLabelShouldLockToTop) {
             top += self.contentOffset.y;
         }
-        _floatingLabel.frame = CGRectMake(_floatingLabel.frame.origin.x,
+        _floatingLabel.frame = CGRectMake(_floatingLabel.frame.origin.x + self.textContainerInset.left,
                                           top,
                                           _floatingLabel.frame.size.width,
                                           _floatingLabel.frame.size.height);

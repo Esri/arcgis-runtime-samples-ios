@@ -26,7 +26,7 @@ class ProfileViewController: UIViewController, AGSPortalUserDelegate {
     @IBOutlet weak var emailTextField:JVFloatLabeledTextField!
     @IBOutlet weak var memberSinceTextField:JVFloatLabeledTextField!
     @IBOutlet weak var roleTextField:JVFloatLabeledTextField!
-    @IBOutlet weak var bioTextField:JVFloatLabeledTextField!
+    @IBOutlet weak var bioTextView:JVFloatLabeledTextView!
     
     @IBOutlet weak var signOutButton:UIButton!
     
@@ -46,6 +46,9 @@ class ProfileViewController: UIViewController, AGSPortalUserDelegate {
         //add corner radius for the button
         self.signOutButton.layer.cornerRadius = self.signOutButton.bounds.size.height/2
         
+        //setup text view
+        self.setupTextView()
+
         //populate the data using the user object on portal
         self.populateData()
     }
@@ -63,7 +66,9 @@ class ProfileViewController: UIViewController, AGSPortalUserDelegate {
         }
         else {
             self.portal.user.delegate = self
-            self.portal.user.fetchThumbnail()
+            if self.portal.user.thumbnailFileName != nil && !self.portal.user.thumbnailFileName.isEmpty {
+                self.portal.user.fetchThumbnail()
+            }
         }
         
         //show the corresponding values in the textfields
@@ -82,12 +87,21 @@ class ProfileViewController: UIViewController, AGSPortalUserDelegate {
             self.memberSinceTextField.text = "NA"
         }
         
-        self.bioTextField.text = "NA"
         if let userDescription = self.portal.user.userDescription {
             if !userDescription.isEmpty {
-                self.bioTextField.text = userDescription
+                self.bioTextView.text = userDescription
             }
         }
+    }
+    
+    func setupTextView() {
+        //setup text view
+        self.bioTextView.placeholder = "Bio"
+        self.bioTextView.layer.borderColor = UIColor(red: 75.0/255.0, green: 131.0/255.0, blue: 201.0/255.0, alpha: 1.0).CGColor
+        self.bioTextView.layer.borderWidth = 1
+        self.bioTextView.layer.cornerRadius = 8
+        self.bioTextView.textContainerInset = UIEdgeInsets(top: 0, left: 8, bottom: 8, right: 8)
+        self.bioTextView.floatingLabelShouldLockToTop = 0
     }
     
     //get a description for the role enum

@@ -28,11 +28,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
     //request permission for local notifications in iOS 8
     if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
     }
+#endif
     return YES;
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

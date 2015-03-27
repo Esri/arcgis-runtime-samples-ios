@@ -17,7 +17,7 @@ import ArcGIS
 class MainViewController: UIViewController, AGSMapViewLayerDelegate, TOCViewControllerDelegate {
 
     @IBOutlet weak var mapView:AGSMapView!
-    @IBOutlet weak var contentButton: UIBarButtonItem!
+    @IBOutlet weak var layersButton: UIBarButtonItem!
     
     var contentsTree:AGSMapContentsTree!
     var popOverController:UIPopoverController!
@@ -104,9 +104,10 @@ class MainViewController: UIViewController, AGSMapViewLayerDelegate, TOCViewCont
         //present the view as popOver if current device is iPad
         //else present modally
         if AGSDevice.currentDevice().isIPad() {
+            tOCViewController.preferredContentSize = CGSize(width: 300, height: 500)
             self.popOverController = UIPopoverController(contentViewController: tOCViewController)
-            self.popOverController.setPopoverContentSize(CGSizeMake(320, 500), animated: true)
-            self.popOverController.presentPopoverFromBarButtonItem(self.contentButton, permittedArrowDirections: .Any, animated: true)
+//            self.popOverController.setPopoverContentSize(CGSizeMake(200, 500), animated: true)
+            self.popOverController.presentPopoverFromBarButtonItem(self.layersButton, permittedArrowDirections: .Any, animated: true)
         }
         else {
             self.presentViewController(tOCViewController, animated: true, completion: nil)

@@ -114,6 +114,9 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 //in order to expand the layer info
                 self.addChildrenForSelectedLayerInfo(layerInfo)
                 layerInfo.expanded = true
+                
+//                println("sibling index :: \(self.indexOfNextSibling(layerInfo))")
+//                println(self.itemsArray)
             }
             else {
                 //else remove the children from the items array
@@ -183,14 +186,72 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
         //find the index of the layer info in the items array
         //and remove the sublayers/legendItems following it
-        if let index = find(self.itemsArray as [NSObject], layerInfo) {
-            if layerInfo.subLayers.count > 0 {
-                self.itemsArray.removeRange(index+1...index+layerInfo.subLayers.count)
+        if let layerInfoIndex = find(self.itemsArray as [NSObject], layerInfo) {
+        
+            //find the index of the next sibling in the items array
+            //remove all the items between the layerInfo index and the sibling layerInfoIndex
+            //if sibling not present then simply remove all items after layerInfoIndex
+            //also update the expanded state property to false for these items
+            var endOfRange:Int = 0
+            let siblingLayerInfoIndex = self.indexOfNextSibling(layerInfo)
+            if siblingLayerInfoIndex == -2 {
+                println("Unexpected error while finding siblings")
+                return
             }
-            else if layerInfo.legendItems.count > 0 {
-                self.itemsArray.removeRange(index+1...index+layerInfo.legendItems.count)
+            else if siblingLayerInfoIndex == -1 { //no sibling found, simply remove all items after the layerInfo
+                endOfRange = self.itemsArray.count-1
+            }
+            else {
+                endOfRange = siblingLayerInfoIndex-1
+            }
+            
+            if layerInfoIndex != endOfRange { //to check for items with no children
+                //update the expanded state to false
+                for i in layerInfoIndex+1...endOfRange {
+                    let tempObject: AnyObject = self.itemsArray[i]
+                    if tempObject is AGSMapContentsLayerInfo {
+                        (tempObject as AGSMapContentsLayerInfo).expanded = false
+                    }
+                }
+                //remove the items
+                self.itemsArray.removeRange(layerInfoIndex+1...endOfRange)
             }
         }
+    }
+    
+    //find the next sibling in the items array
+    //if not present then recursively check for the parent node
+    //returns -1 if layerInfo is the last node
+    //returns -2 unexpected behavior
+    func indexOfNextSibling(layerInfo:AGSMapContentsLayerInfo) -> Int {
+        var siblingsArray:[AGSMapContentsLayerInfo]
+        //get the siblings array
+        if layerInfo.parent != nil {
+            siblingsArray = layerInfo.parent.subLayers as [AGSMapContentsLayerInfo]
+        }
+        else {
+            //use the root as the parent
+            return -1
+        }
+        
+        //find the index of the layerInfo in the siblings array
+        if let layerInfoIndex = find(siblingsArray, layerInfo) {
+            if layerInfoIndex < siblingsArray.count - 1 {
+                //get the sibling layerInfo
+                let siblingLayerInfo = siblingsArray[layerInfoIndex+1]
+                //find the index of sibling in the itemsArray
+                if let siblingLayerInfoIndex = find(self.itemsArray as [NSObject], siblingLayerInfo as NSObject) {
+                    return siblingLayerInfoIndex
+                }
+                else {
+                    return -2
+                }
+            }
+            else {
+                return self.indexOfNextSibling(layerInfo.parent)
+            }
+        }
+        return -2
     }
     
     //MARK: - actions

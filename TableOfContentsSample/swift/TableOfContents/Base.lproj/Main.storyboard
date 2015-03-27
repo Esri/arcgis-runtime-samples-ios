@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2os-Fb-ahb">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <scenes>
+        <!--Table of Contents-->
+        <scene sceneID="6UI-UW-M8C">
+            <objects>
+                <viewController id="hFD-48-7V3" customClass="MainViewController" customModule="TableOfContents" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MUM-Dt-ILS"/>
+                        <viewControllerLayoutGuide type="bottom" id="J2H-tu-JLL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MnL-di-G8c">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rgt-42-GKu" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="Diy-A3-WdV">
+                                        <rect key="frame" x="8" y="560" width="56" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="NwN-bJ-ZgW"/>
+                                            <constraint firstAttribute="width" constant="56" id="cIL-y8-8v1"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Diy-A3-WdV" firstAttribute="leading" secondItem="Rgt-42-GKu" secondAttribute="leading" constant="8" id="a8p-Zh-UhT"/>
+                                    <constraint firstAttribute="bottom" secondItem="Diy-A3-WdV" secondAttribute="bottom" constant="8" id="rDa-mv-iYk"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Rgt-42-GKu" firstAttribute="leading" secondItem="MnL-di-G8c" secondAttribute="leading" id="JLe-fc-VVC"/>
+                            <constraint firstItem="Rgt-42-GKu" firstAttribute="top" secondItem="MnL-di-G8c" secondAttribute="top" id="flV-vM-z5g"/>
+                            <constraint firstItem="J2H-tu-JLL" firstAttribute="top" secondItem="Rgt-42-GKu" secondAttribute="bottom" id="gOf-M0-QIR"/>
+                            <constraint firstAttribute="trailing" secondItem="Rgt-42-GKu" secondAttribute="trailing" id="jXM-U1-33h"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Table of Contents" id="6sg-C2-n4f">
+                        <barButtonItem key="rightBarButtonItem" title="Layers" id="a5P-bR-8JB">
+                            <connections>
+                                <action selector="contentButtonAction" destination="hFD-48-7V3" id="twe-kW-bEn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="layersButton" destination="a5P-bR-8JB" id="qQ8-jp-8Ne"/>
+                        <outlet property="mapView" destination="Rgt-42-GKu" id="If2-qi-dk0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rUc-F5-wGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="652" y="401"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rYx-Ym-nWw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2os-Fb-ahb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Liq-Wr-glz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hFD-48-7V3" kind="relationship" relationship="rootViewController" id="MNv-bG-B6A"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aQb-4C-mcg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-160" y="401"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+    </resources>
+</document>

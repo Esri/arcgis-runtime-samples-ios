@@ -535,9 +535,24 @@
          </FileRef>
       </Group>
    </Group>
-   <FileRef
-      location = "group:TableOfContentsSample/TableOfContentsSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "TableOfContents">
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:TableOfContentsSample/swift/TableOfContents.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:TableOfContentsSample/objective-c/TableOfContentsSample.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <Group
       location = "container:"
       name = "TemporalSample">

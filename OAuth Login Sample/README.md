@@ -12,9 +12,9 @@ a list of web maps that belong to the user. You can tap on any web map to view i
 5. If you don't sign in step 2 above, you can hit <b>Cancel</b> to come back to the main screen. 
 The sample does not allow you to view web maps unless you sign in.
 
-![](image.png)
-![](image2.png)
-![](image3.png)
+![](image.png) 
+![](image2.png) 
+![](image3.png) 
 
 ###Using the API
 
@@ -23,5 +23,5 @@ When a user attempts to sign in,  <code>MainViewController</code> instantiates a
 and displays it in a container view controller with a
 Cancel button on the top right corner. When a user signs in successfully, the completion handler of <code>AGSOAuthViewController</code>
 is invoked with an <code>AGSCredential</code> representing that user. The handler uses the credential to connect to a portal and then displays
-the <code>UserContentViewController</code> to display the web maps that belong to the user. 
+the <code>ProfileViewController</code> to display the user's profile. 
 

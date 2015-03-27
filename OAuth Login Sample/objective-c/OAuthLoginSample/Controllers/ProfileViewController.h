@@ -17,13 +17,8 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface ProfileViewController : UIViewController
 
-@property (strong, nonatomic) UIWindow *window;
-
-- (void) saveCredentialToKeychain:(AGSCredential*)credential;
-- (void) removeCredentialFromKeychain;
-- (AGSCredential*) fetchCredentialFromKeychain;
+@property (nonatomic, strong) AGSPortal *portal;
 
 @end
-

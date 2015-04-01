@@ -15,15 +15,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#import <ArcGIS/ArcGIS.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
-- (void) saveCredentialToKeychain:(AGSCredential*)credential;
-- (void) removeCredentialFromKeychain;
-- (AGSCredential*) fetchCredentialFromKeychain;
+@interface SignInViewController : UIViewController
 
 @end
-

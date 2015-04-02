@@ -1,0 +1,374 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3EA7F9101AC5F2840055DB73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7F90F1AC5F2840055DB73 /* main.m */; };
+		3EA7F9131AC5F2840055DB73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7F9121AC5F2840055DB73 /* AppDelegate.m */; };
+		3EA7F9191AC5F2840055DB73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EA7F9171AC5F2840055DB73 /* Main.storyboard */; };
+		3EA7F91B1AC5F2840055DB73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EA7F91A1AC5F2840055DB73 /* Images.xcassets */; };
+		3EA7F91E1AC5F2840055DB73 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EA7F91C1AC5F2840055DB73 /* LaunchScreen.xib */; };
+		3EA7F9361AC5F6390055DB73 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7F9351AC5F6390055DB73 /* SignInViewController.m */; };
+		3EA7F9391AC5FA430055DB73 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7F9381AC5FA430055DB73 /* ProfileViewController.m */; };
+		3EA7F9461AC601200055DB73 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3EA7F9451AC601200055DB73 /* ArcGIS.bundle */; };
+		3EA7F94E1AC605710055DB73 /* JVFloatLabeledTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7F9491AC605710055DB73 /* JVFloatLabeledTextField.m */; };
+		3EA7F94F1AC605710055DB73 /* JVFloatLabeledTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7F94B1AC605710055DB73 /* JVFloatLabeledTextView.m */; };
+		3EA7F9501AC605710055DB73 /* NSString+TextDirectionality.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7F94D1AC605710055DB73 /* NSString+TextDirectionality.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3EA7F90A1AC5F2840055DB73 /* OAuthLoginSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OAuthLoginSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EA7F90E1AC5F2840055DB73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3EA7F90F1AC5F2840055DB73 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3EA7F9111AC5F2840055DB73 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3EA7F9121AC5F2840055DB73 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3EA7F9181AC5F2840055DB73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3EA7F91A1AC5F2840055DB73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3EA7F91D1AC5F2840055DB73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3EA7F9341AC5F6390055DB73 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignInViewController.h; path = Controllers/SignInViewController.h; sourceTree = "<group>"; };
+		3EA7F9351AC5F6390055DB73 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignInViewController.m; path = Controllers/SignInViewController.m; sourceTree = "<group>"; };
+		3EA7F9371AC5FA430055DB73 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Controllers/ProfileViewController.h; sourceTree = "<group>"; };
+		3EA7F9381AC5FA430055DB73 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Controllers/ProfileViewController.m; sourceTree = "<group>"; };
+		3EA7F9451AC601200055DB73 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
+		3EA7F9481AC605710055DB73 /* JVFloatLabeledTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFloatLabeledTextField.h; sourceTree = "<group>"; };
+		3EA7F9491AC605710055DB73 /* JVFloatLabeledTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFloatLabeledTextField.m; sourceTree = "<group>"; };
+		3EA7F94A1AC605710055DB73 /* JVFloatLabeledTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFloatLabeledTextView.h; sourceTree = "<group>"; };
+		3EA7F94B1AC605710055DB73 /* JVFloatLabeledTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFloatLabeledTextView.m; sourceTree = "<group>"; };
+		3EA7F94C1AC605710055DB73 /* NSString+TextDirectionality.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TextDirectionality.h"; sourceTree = "<group>"; };
+		3EA7F94D1AC605710055DB73 /* NSString+TextDirectionality.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TextDirectionality.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3EA7F9071AC5F2840055DB73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3EA7F9011AC5F2840055DB73 = {
+			isa = PBXGroup;
+			children = (
+				3EA7F90C1AC5F2840055DB73 /* OAuthLoginSample */,
+				3EA7F90B1AC5F2840055DB73 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3EA7F90B1AC5F2840055DB73 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3EA7F90A1AC5F2840055DB73 /* OAuthLoginSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3EA7F90C1AC5F2840055DB73 /* OAuthLoginSample */ = {
+			isa = PBXGroup;
+			children = (
+				3EA7F93A1AC5FB0B0055DB73 /* Libraries */,
+				3EA7F9331AC5F6090055DB73 /* Controllers */,
+				3EA7F9111AC5F2840055DB73 /* AppDelegate.h */,
+				3EA7F9121AC5F2840055DB73 /* AppDelegate.m */,
+				3EA7F9171AC5F2840055DB73 /* Main.storyboard */,
+				3EA7F91A1AC5F2840055DB73 /* Images.xcassets */,
+				3EA7F91C1AC5F2840055DB73 /* LaunchScreen.xib */,
+				3EA7F90D1AC5F2840055DB73 /* Supporting Files */,
+			);
+			path = OAuthLoginSample;
+			sourceTree = "<group>";
+		};
+		3EA7F90D1AC5F2840055DB73 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3EA7F9451AC601200055DB73 /* ArcGIS.bundle */,
+				3EA7F90E1AC5F2840055DB73 /* Info.plist */,
+				3EA7F90F1AC5F2840055DB73 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3EA7F9331AC5F6090055DB73 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3EA7F9341AC5F6390055DB73 /* SignInViewController.h */,
+				3EA7F9351AC5F6390055DB73 /* SignInViewController.m */,
+				3EA7F9371AC5FA430055DB73 /* ProfileViewController.h */,
+				3EA7F9381AC5FA430055DB73 /* ProfileViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3EA7F93A1AC5FB0B0055DB73 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				3EA7F9471AC605710055DB73 /* JVFloatLabeledTextField */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		3EA7F9471AC605710055DB73 /* JVFloatLabeledTextField */ = {
+			isa = PBXGroup;
+			children = (
+				3EA7F9481AC605710055DB73 /* JVFloatLabeledTextField.h */,
+				3EA7F9491AC605710055DB73 /* JVFloatLabeledTextField.m */,
+				3EA7F94A1AC605710055DB73 /* JVFloatLabeledTextView.h */,
+				3EA7F94B1AC605710055DB73 /* JVFloatLabeledTextView.m */,
+				3EA7F94C1AC605710055DB73 /* NSString+TextDirectionality.h */,
+				3EA7F94D1AC605710055DB73 /* NSString+TextDirectionality.m */,
+			);
+			name = JVFloatLabeledTextField;
+			path = Libraries/JVFloatLabeledTextField;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3EA7F9091AC5F2840055DB73 /* OAuthLoginSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3EA7F92D1AC5F2840055DB73 /* Build configuration list for PBXNativeTarget "OAuthLoginSample" */;
+			buildPhases = (
+				3EA7F9061AC5F2840055DB73 /* Sources */,
+				3EA7F9071AC5F2840055DB73 /* Frameworks */,
+				3EA7F9081AC5F2840055DB73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OAuthLoginSample;
+			productName = OAuthLoginSample;
+			productReference = 3EA7F90A1AC5F2840055DB73 /* OAuthLoginSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3EA7F9021AC5F2840055DB73 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = Esri;
+				TargetAttributes = {
+					3EA7F9091AC5F2840055DB73 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+				};
+			};
+			buildConfigurationList = 3EA7F9051AC5F2840055DB73 /* Build configuration list for PBXProject "OAuthLoginSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3EA7F9011AC5F2840055DB73;
+			productRefGroup = 3EA7F90B1AC5F2840055DB73 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3EA7F9091AC5F2840055DB73 /* OAuthLoginSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3EA7F9081AC5F2840055DB73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3EA7F9191AC5F2840055DB73 /* Main.storyboard in Resources */,
+				3EA7F91E1AC5F2840055DB73 /* LaunchScreen.xib in Resources */,
+				3EA7F9461AC601200055DB73 /* ArcGIS.bundle in Resources */,
+				3EA7F91B1AC5F2840055DB73 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3EA7F9061AC5F2840055DB73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3EA7F94F1AC605710055DB73 /* JVFloatLabeledTextView.m in Sources */,
+				3EA7F9131AC5F2840055DB73 /* AppDelegate.m in Sources */,
+				3EA7F9501AC605710055DB73 /* NSString+TextDirectionality.m in Sources */,
+				3EA7F9361AC5F6390055DB73 /* SignInViewController.m in Sources */,
+				3EA7F9391AC5FA430055DB73 /* ProfileViewController.m in Sources */,
+				3EA7F94E1AC605710055DB73 /* JVFloatLabeledTextField.m in Sources */,
+				3EA7F9101AC5F2840055DB73 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3EA7F9171AC5F2840055DB73 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3EA7F9181AC5F2840055DB73 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3EA7F91C1AC5F2840055DB73 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3EA7F91D1AC5F2840055DB73 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3EA7F92B1AC5F2840055DB73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3EA7F92C1AC5F2840055DB73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3EA7F92E1AC5F2840055DB73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = $HOME/Library/SDKs/ArcGIS/iOS;
+				INFOPLIST_FILE = OAuthLoginSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3EA7F92F1AC5F2840055DB73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = $HOME/Library/SDKs/ArcGIS/iOS;
+				INFOPLIST_FILE = OAuthLoginSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3EA7F9051AC5F2840055DB73 /* Build configuration list for PBXProject "OAuthLoginSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3EA7F92B1AC5F2840055DB73 /* Debug */,
+				3EA7F92C1AC5F2840055DB73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3EA7F92D1AC5F2840055DB73 /* Build configuration list for PBXNativeTarget "OAuthLoginSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3EA7F92E1AC5F2840055DB73 /* Debug */,
+				3EA7F92F1AC5F2840055DB73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3EA7F9021AC5F2840055DB73 /* Project object */;
+}

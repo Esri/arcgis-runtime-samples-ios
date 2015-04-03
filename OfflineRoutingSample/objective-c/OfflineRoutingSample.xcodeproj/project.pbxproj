@@ -11,6 +11,7 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		28D7ACF80DDB3853001CB0EB /* RoutingSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* RoutingSampleViewController.m */; };
 		3E4324DC18F3705B00504DFD /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E4324DB18F3705B00504DFD /* Storyboard.storyboard */; };
+		3EE6601E1AB3797900D02DCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EE6601D1AB3797900D02DCB /* Images.xcassets */; };
 		9755BA23167B966F00518E4D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9755BA22167B966F00518E4D /* Default-568h@2x.png */; };
 		975A5ED0134BE79900759B4A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 975A5ECE134BE79900759B4A /* icon.png */; };
 		975A5ED1134BE79900759B4A /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 975A5ECF134BE79900759B4A /* icon@2x.png */; };
@@ -41,6 +42,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* OfflineRoutingSample_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineRoutingSample_Prefix.pch; sourceTree = "<group>"; };
 		3E4324DB18F3705B00504DFD /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		3EE6601D1AB3797900D02DCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = OfflineRoutingSample/Images.xcassets; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* OfflineRoutingSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OfflineRoutingSample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9755BA22167B966F00518E4D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		975A5ECE134BE79900759B4A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3EE6601D1AB3797900D02DCB /* Images.xcassets */,
 				3E4324DD18F486E300504DFD /* Images */,
 				97825AA717F658D40044D1FD /* SanFrancisco.tpk */,
 				97825AA917F658F40044D1FD /* RuntimeSanFrancisco.geodatabase */,
@@ -226,6 +229,7 @@
 				ACB8039A131A367000654F30 /* RedPushpin@2x.png in Resources */,
 				ACB803A4131A36C300654F30 /* next32.png in Resources */,
 				97825AAC17F658F40044D1FD /* RuntimeSanFrancisco.tn in Resources */,
+				3EE6601E1AB3797900D02DCB /* Images.xcassets in Resources */,
 				ACB803A5131A36C300654F30 /* next32@2x.png in Resources */,
 				ACB803A6131A36C300654F30 /* prev32.png in Resources */,
 				ACB803A7131A36C300654F30 /* prev32@2x.png in Resources */,
@@ -260,6 +264,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
@@ -286,6 +292,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";

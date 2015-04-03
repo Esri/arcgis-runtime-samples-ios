@@ -12,7 +12,6 @@
 		97F668E719E33CEC001D1724 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97F668E519E33CEC001D1724 /* Main.storyboard */; };
 		97F668E919E33CEC001D1724 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97F668E819E33CEC001D1724 /* Images.xcassets */; };
 		97F668EC19E33CEC001D1724 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F668EA19E33CEC001D1724 /* LaunchScreen.xib */; };
-		97F668F819E33CEC001D1724 /* OfflineFeatureEditingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F668F719E33CEC001D1724 /* OfflineFeatureEditingTests.swift */; };
 		97F6690219E33D5F001D1724 /* FeatureTemplatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6690119E33D5F001D1724 /* FeatureTemplatePickerViewController.swift */; };
 		97F6690419E33D68001D1724 /* BackgroundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6690319E33D68001D1724 /* BackgroundHelper.swift */; };
 		97F6690D19E33E01001D1724 /* JSBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F6690719E33E01001D1724 /* JSBadgeView.m */; };
@@ -23,16 +22,6 @@
 		97F6691819E33F45001D1724 /* SanFrancisco.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 97F6691719E33F45001D1724 /* SanFrancisco.tpk */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		97F668F219E33CEC001D1724 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 97F668D419E33CEC001D1724 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 97F668DB19E33CEC001D1724;
-			remoteInfo = OfflineFeatureEditing;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		97F668DC19E33CEC001D1724 /* OfflineFeatureEditing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfflineFeatureEditing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97F668E019E33CEC001D1724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -41,9 +30,6 @@
 		97F668E619E33CEC001D1724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		97F668E819E33CEC001D1724 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		97F668EB19E33CEC001D1724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		97F668F119E33CEC001D1724 /* OfflineFeatureEditingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OfflineFeatureEditingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		97F668F619E33CEC001D1724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		97F668F719E33CEC001D1724 /* OfflineFeatureEditingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineFeatureEditingTests.swift; sourceTree = "<group>"; };
 		97F6690119E33D5F001D1724 /* FeatureTemplatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureTemplatePickerViewController.swift; sourceTree = "<group>"; };
 		97F6690319E33D68001D1724 /* BackgroundHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundHelper.swift; sourceTree = "<group>"; };
 		97F6690619E33E01001D1724 /* JSBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBadgeView.h; sourceTree = "<group>"; };
@@ -55,19 +41,12 @@
 		97F6691019E33E3D001D1724 /* OfflineFeatureEditing-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OfflineFeatureEditing-Bridging-Header.h"; sourceTree = "<group>"; };
 		97F6691219E33E83001D1724 /* UIAlertView+NSCookbook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+NSCookbook.h"; sourceTree = "<group>"; };
 		97F6691319E33E83001D1724 /* UIAlertView+NSCookbook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+NSCookbook.m"; sourceTree = "<group>"; };
-		97F6691519E33EFA001D1724 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>";  };
+		97F6691519E33EFA001D1724 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		97F6691719E33F45001D1724 /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "../../Data/tile package/SanFrancisco.tpk"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		97F668D919E33CEC001D1724 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		97F668EE19E33CEC001D1724 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -82,7 +61,6 @@
 			children = (
 				97F6691719E33F45001D1724 /* SanFrancisco.tpk */,
 				97F668DE19E33CEC001D1724 /* OfflineFeatureEditing */,
-				97F668F419E33CEC001D1724 /* OfflineFeatureEditingTests */,
 				97F668DD19E33CEC001D1724 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,7 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				97F668DC19E33CEC001D1724 /* OfflineFeatureEditing.app */,
-				97F668F119E33CEC001D1724 /* OfflineFeatureEditingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -120,23 +97,6 @@
 			isa = PBXGroup;
 			children = (
 				97F668E019E33CEC001D1724 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		97F668F419E33CEC001D1724 /* OfflineFeatureEditingTests */ = {
-			isa = PBXGroup;
-			children = (
-				97F668F719E33CEC001D1724 /* OfflineFeatureEditingTests.swift */,
-				97F668F519E33CEC001D1724 /* Supporting Files */,
-			);
-			path = OfflineFeatureEditingTests;
-			sourceTree = "<group>";
-		};
-		97F668F519E33CEC001D1724 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				97F668F619E33CEC001D1724 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -190,24 +150,6 @@
 			productReference = 97F668DC19E33CEC001D1724 /* OfflineFeatureEditing.app */;
 			productType = "com.apple.product-type.application";
 		};
-		97F668F019E33CEC001D1724 /* OfflineFeatureEditingTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 97F668FE19E33CEC001D1724 /* Build configuration list for PBXNativeTarget "OfflineFeatureEditingTests" */;
-			buildPhases = (
-				97F668ED19E33CEC001D1724 /* Sources */,
-				97F668EE19E33CEC001D1724 /* Frameworks */,
-				97F668EF19E33CEC001D1724 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				97F668F319E33CEC001D1724 /* PBXTargetDependency */,
-			);
-			name = OfflineFeatureEditingTests;
-			productName = OfflineFeatureEditingTests;
-			productReference = 97F668F119E33CEC001D1724 /* OfflineFeatureEditingTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -225,10 +167,6 @@
 							};
 						};
 					};
-					97F668F019E33CEC001D1724 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 97F668DB19E33CEC001D1724;
-					};
 				};
 			};
 			buildConfigurationList = 97F668D719E33CEC001D1724 /* Build configuration list for PBXProject "OfflineFeatureEditing" */;
@@ -245,7 +183,6 @@
 			projectRoot = "";
 			targets = (
 				97F668DB19E33CEC001D1724 /* OfflineFeatureEditing */,
-				97F668F019E33CEC001D1724 /* OfflineFeatureEditingTests */,
 			);
 		};
 /* End PBXProject section */
@@ -261,13 +198,6 @@
 				97F6690E19E33E01001D1724 /* SVProgressHUD.bundle in Resources */,
 				97F6691619E33EFA001D1724 /* ArcGIS.bundle in Resources */,
 				97F6691819E33F45001D1724 /* SanFrancisco.tpk in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		97F668EF19E33CEC001D1724 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,23 +218,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		97F668ED19E33CEC001D1724 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				97F668F819E33CEC001D1724 /* OfflineFeatureEditingTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		97F668F319E33CEC001D1724 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 97F668DB19E33CEC001D1724 /* OfflineFeatureEditing */;
-			targetProxy = 97F668F219E33CEC001D1724 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		97F668E519E33CEC001D1724 /* Main.storyboard */ = {
@@ -443,40 +357,6 @@
 			};
 			name = Release;
 		};
-		97F668FF19E33CEC001D1724 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = OfflineFeatureEditingTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OfflineFeatureEditing.app/OfflineFeatureEditing";
-			};
-			name = Debug;
-		};
-		97F6690019E33CEC001D1724 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = OfflineFeatureEditingTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OfflineFeatureEditing.app/OfflineFeatureEditing";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -494,15 +374,6 @@
 			buildConfigurations = (
 				97F668FC19E33CEC001D1724 /* Debug */,
 				97F668FD19E33CEC001D1724 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		97F668FE19E33CEC001D1724 /* Build configuration list for PBXNativeTarget "OfflineFeatureEditingTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				97F668FF19E33CEC001D1724 /* Debug */,
-				97F6690019E33CEC001D1724 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

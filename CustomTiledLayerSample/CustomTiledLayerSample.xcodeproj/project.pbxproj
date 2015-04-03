@@ -10,6 +10,7 @@
 		1D3623260D0F684500981E51 /* CustomLayerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* CustomLayerAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		28D7ACF80DDB3853001CB0EB /* CustomLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* CustomLayerViewController.m */; };
+		3EE660081AB3749B00D02DCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EE660071AB3749B00D02DCB /* Images.xcassets */; };
 		3EE6BBE418DCED060092054A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EE6BBE318DCED060092054A /* Storyboard.storyboard */; };
 		9721FCA41282152B00CF5485 /* OfflineCacheParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9721FC9F1282152B00CF5485 /* OfflineCacheParserDelegate.m */; };
 		9721FCA51282152B00CF5485 /* OfflineTiledLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9721FCA11282152B00CF5485 /* OfflineTiledLayer.m */; };
@@ -29,6 +30,7 @@
 		28D7ACF70DDB3853001CB0EB /* CustomLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLayerViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* CustomTiledLayerSample_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTiledLayerSample_Prefix.pch; sourceTree = "<group>"; };
+		3EE660071AB3749B00D02DCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CustomTiledLayerSample/Images.xcassets; sourceTree = "<group>"; };
 		3EE6BBE318DCED060092054A /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CustomTiledLayerSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CustomTiledLayerSample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9721FC9E1282152B00CF5485 /* OfflineCacheParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineCacheParserDelegate.h; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3EE660071AB3749B00D02DCB /* Images.xcassets */,
 				9755BA37167BB57C00518E4D /* Default-568h@2x.png */,
 				97B273E81288D5F800CF17E5 /* icon@2x.png */,
 				97B273E91288D5F800CF17E5 /* icon.png */,
@@ -194,6 +197,7 @@
 			files = (
 				3EE6BBE418DCED060092054A /* Storyboard.storyboard in Resources */,
 				97CC0948128342B00002F66E /* cache_World in Resources */,
+				3EE660081AB3749B00D02DCB /* Images.xcassets in Resources */,
 				97B273EA1288D5F800CF17E5 /* icon@2x.png in Resources */,
 				97B273EB1288D5F800CF17E5 /* icon.png in Resources */,
 				C56B3F7414C6041D003A46EB /* ArcGIS.bundle in Resources */,
@@ -225,6 +229,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -258,6 +264,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;

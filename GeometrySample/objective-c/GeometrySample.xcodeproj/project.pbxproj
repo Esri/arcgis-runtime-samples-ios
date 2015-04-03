@@ -12,6 +12,7 @@
 		3E715CE318E24A43004FB946 /* Redo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E715CDF18E24A43004FB946 /* Redo@2x.png */; };
 		3E715CE418E24A43004FB946 /* undo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E715CE018E24A43004FB946 /* undo.png */; };
 		3E715CE518E24A43004FB946 /* undo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E715CE118E24A43004FB946 /* undo@2x.png */; };
+		3EE6600C1AB3770E00D02DCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EE6600B1AB3770E00D02DCB /* Images.xcassets */; };
 		9760C537158BC2D500986512 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9760C535158BC2D500986512 /* InfoPlist.strings */; };
 		9760C539158BC2D500986512 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9760C538158BC2D500986512 /* main.m */; };
 		9760C576158BC3ED00986512 /* checkbox_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 9760C567158BC3ED00986512 /* checkbox_empty.png */; };
@@ -44,6 +45,7 @@
 		3E715CDF18E24A43004FB946 /* Redo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Redo@2x.png"; path = "images/Redo@2x.png"; sourceTree = "<group>"; };
 		3E715CE018E24A43004FB946 /* undo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = undo.png; path = images/undo.png; sourceTree = "<group>"; };
 		3E715CE118E24A43004FB946 /* undo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "undo@2x.png"; path = "images/undo@2x.png"; sourceTree = "<group>"; };
+		3EE6600B1AB3770E00D02DCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9760C528158BC2D500986512 /* GeometrySample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeometrySample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9760C534158BC2D500986512 /* GeometrySample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GeometrySample-Info.plist"; sourceTree = "<group>"; };
 		9760C536158BC2D500986512 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				9760C5A7158BC53C00986512 /* RootViewController.h */,
 				9760C634158BDCA500986512 /* AppDelegate.m */,
 				9760C53B158BC2D500986512 /* AppDelegate.h */,
+				3EE6600B1AB3770E00D02DCB /* Images.xcassets */,
 				9760C533158BC2D500986512 /* Supporting Files */,
 			);
 			path = GeometrySample;
@@ -307,6 +310,7 @@
 				9760C57C158BC3ED00986512 /* icon@2x.png in Resources */,
 				9760C57D158BC3ED00986512 /* icon.png in Resources */,
 				9760C57E158BC3ED00986512 /* polygon.gif in Resources */,
+				3EE6600C1AB3770E00D02DCB /* Images.xcassets in Resources */,
 				9760C57F158BC3ED00986512 /* point.gif in Resources */,
 				9760C580158BC3ED00986512 /* line.gif in Resources */,
 				9760C582158BC3ED00986512 /* MeasureDistance48.png in Resources */,
@@ -427,6 +431,8 @@
 		9760C547158BC2D500986512 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -447,6 +453,8 @@
 		9760C548158BC2D500986512 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

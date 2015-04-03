@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3E715CFA18E4CD0A004FB946 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E715CF918E4CD0A004FB946 /* Storyboard.storyboard */; };
 		3EE622C418E4D5BA00693502 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EE622C318E4D5BA00693502 /* Default-568h@2x.png */; };
+		3EE660161AB3787D00D02DCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EE660151AB3787D00D02DCB /* Images.xcassets */; };
 		97E5EF0517E0DA23008E2B27 /* Campus.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 97E5EF0417E0DA23008E2B27 /* Campus.tpk */; };
 		C5128CE514758D8100A5EBF7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C5128CD414758D8100A5EBF7 /* icon.png */; };
 		C5128CE614758D8100A5EBF7 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5128CD514758D8100A5EBF7 /* icon@2x.png */; };
@@ -23,6 +24,7 @@
 		1D6058910D05DD3D006BFB54 /* LocalTiledLayerSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalTiledLayerSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E715CF918E4CD0A004FB946 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = LocalTiledLayerSample/Storyboard.storyboard; sourceTree = "<group>"; };
 		3EE622C318E4D5BA00693502 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		3EE660151AB3787D00D02DCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = LocalTiledLayerSample/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		97E5EF0417E0DA23008E2B27 /* Campus.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = Campus.tpk; sourceTree = "<group>"; };
 		C5128CD414758D8100A5EBF7 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = LocalTiledLayerSample/icon.png; sourceTree = SOURCE_ROOT; };
 		C5128CD514758D8100A5EBF7 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "LocalTiledLayerSample/icon@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -59,6 +61,7 @@
 				C5128CDB14758D8100A5EBF7 /* LocalTiledLayerViewController.m */,
 				C5128CE214758D8100A5EBF7 /* RootTableViewController.h */,
 				C5128CE314758D8100A5EBF7 /* RootTableViewController.m */,
+				3EE660151AB3787D00D02DCB /* Images.xcassets */,
 			);
 			name = LocalTiledLayerSample;
 			path = Classes;
@@ -159,6 +162,7 @@
 			files = (
 				C5128CE514758D8100A5EBF7 /* icon.png in Resources */,
 				C5128CE614758D8100A5EBF7 /* icon@2x.png in Resources */,
+				3EE660161AB3787D00D02DCB /* Images.xcassets in Resources */,
 				C56B3FEC14C652C2003A46EB /* ArcGIS.bundle in Resources */,
 				97E5EF0517E0DA23008E2B27 /* Campus.tpk in Resources */,
 				3E715CFA18E4CD0A004FB946 /* Storyboard.storyboard in Resources */,
@@ -188,6 +192,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
@@ -215,6 +221,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;

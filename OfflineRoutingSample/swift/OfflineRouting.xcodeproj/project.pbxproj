@@ -12,22 +12,11 @@
 		97F6689619E26427001D1724 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97F6689419E26427001D1724 /* Main.storyboard */; };
 		97F6689819E26427001D1724 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97F6689719E26427001D1724 /* Images.xcassets */; };
 		97F6689B19E26427001D1724 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F6689919E26427001D1724 /* LaunchScreen.xib */; };
-		97F668A719E26427001D1724 /* OfflineRoutingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F668A619E26427001D1724 /* OfflineRoutingTests.swift */; };
 		97F668B119E26497001D1724 /* SanFrancisco.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 97F668B019E26497001D1724 /* SanFrancisco.tpk */; };
 		97F668B419E264A9001D1724 /* RuntimeSanFrancisco.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = 97F668B219E264A9001D1724 /* RuntimeSanFrancisco.geodatabase */; };
 		97F668D019E26616001D1724 /* RuntimeSanFrancisco.tn in Resources */ = {isa = PBXBuildFile; fileRef = 97F668CF19E26616001D1724 /* RuntimeSanFrancisco.tn */; };
 		97F668D219E26697001D1724 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 97F668D119E26697001D1724 /* ArcGIS.bundle */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		97F668A119E26427001D1724 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 97F6688319E26427001D1724 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 97F6688A19E26427001D1724;
-			remoteInfo = OfflineRouting;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		97F6688B19E26427001D1724 /* OfflineRouting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfflineRouting.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,9 +26,6 @@
 		97F6689519E26427001D1724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		97F6689719E26427001D1724 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		97F6689A19E26427001D1724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		97F668A019E26427001D1724 /* OfflineRoutingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OfflineRoutingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		97F668A519E26427001D1724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		97F668A619E26427001D1724 /* OfflineRoutingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineRoutingTests.swift; sourceTree = "<group>"; };
 		97F668B019E26497001D1724 /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "../../../Data/tile package/SanFrancisco.tpk"; sourceTree = "<group>"; };
 		97F668B219E264A9001D1724 /* RuntimeSanFrancisco.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; name = RuntimeSanFrancisco.geodatabase; path = "../../../Data/network dataset/SanFrancisco/RuntimeSanFrancisco.geodatabase"; sourceTree = "<group>"; };
 		97F668CF19E26616001D1724 /* RuntimeSanFrancisco.tn */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RuntimeSanFrancisco.tn; path = "../../../Data/network dataset/SanFrancisco/RuntimeSanFrancisco.tn"; sourceTree = "<group>"; };
@@ -54,13 +40,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		97F6689D19E26427001D1724 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -68,7 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				97F6688D19E26427001D1724 /* OfflineRouting */,
-				97F668A319E26427001D1724 /* OfflineRoutingTests */,
 				97F6688C19E26427001D1724 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,7 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				97F6688B19E26427001D1724 /* OfflineRouting.app */,
-				97F668A019E26427001D1724 /* OfflineRoutingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -107,23 +84,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		97F668A319E26427001D1724 /* OfflineRoutingTests */ = {
-			isa = PBXGroup;
-			children = (
-				97F668A619E26427001D1724 /* OfflineRoutingTests.swift */,
-				97F668A419E26427001D1724 /* Supporting Files */,
-			);
-			path = OfflineRoutingTests;
-			sourceTree = "<group>";
-		};
-		97F668A419E26427001D1724 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				97F668A519E26427001D1724 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,24 +104,6 @@
 			productReference = 97F6688B19E26427001D1724 /* OfflineRouting.app */;
 			productType = "com.apple.product-type.application";
 		};
-		97F6689F19E26427001D1724 /* OfflineRoutingTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 97F668AD19E26427001D1724 /* Build configuration list for PBXNativeTarget "OfflineRoutingTests" */;
-			buildPhases = (
-				97F6689C19E26427001D1724 /* Sources */,
-				97F6689D19E26427001D1724 /* Frameworks */,
-				97F6689E19E26427001D1724 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				97F668A219E26427001D1724 /* PBXTargetDependency */,
-			);
-			name = OfflineRoutingTests;
-			productName = OfflineRoutingTests;
-			productReference = 97F668A019E26427001D1724 /* OfflineRoutingTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -173,10 +115,6 @@
 				TargetAttributes = {
 					97F6688A19E26427001D1724 = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					97F6689F19E26427001D1724 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 97F6688A19E26427001D1724;
 					};
 				};
 			};
@@ -194,7 +132,6 @@
 			projectRoot = "";
 			targets = (
 				97F6688A19E26427001D1724 /* OfflineRouting */,
-				97F6689F19E26427001D1724 /* OfflineRoutingTests */,
 			);
 		};
 /* End PBXProject section */
@@ -214,13 +151,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		97F6689E19E26427001D1724 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -233,23 +163,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		97F6689C19E26427001D1724 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				97F668A719E26427001D1724 /* OfflineRoutingTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		97F668A219E26427001D1724 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 97F6688A19E26427001D1724 /* OfflineRouting */;
-			targetProxy = 97F668A119E26427001D1724 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		97F6689419E26427001D1724 /* Main.storyboard */ = {
@@ -386,40 +300,6 @@
 			};
 			name = Release;
 		};
-		97F668AE19E26427001D1724 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = OfflineRoutingTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OfflineRouting.app/OfflineRouting";
-			};
-			name = Debug;
-		};
-		97F668AF19E26427001D1724 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = OfflineRoutingTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OfflineRouting.app/OfflineRouting";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -439,14 +319,7 @@
 				97F668AC19E26427001D1724 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		97F668AD19E26427001D1724 /* Build configuration list for PBXNativeTarget "OfflineRoutingTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				97F668AE19E26427001D1724 /* Debug */,
-				97F668AF19E26427001D1724 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

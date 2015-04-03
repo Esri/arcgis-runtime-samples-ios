@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		3EA670D518EDF17700791CD7 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EA670D418EDF17700791CD7 /* Storyboard.storyboard */; };
+		3EE6602A1AB37A9600D02DCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EE660291AB37A9600D02DCB /* Images.xcassets */; };
 		973A2A4B1677C5B4009B9AFE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 973A2A4A1677C5B4009B9AFE /* Default-568h@2x.png */; };
 		9786AC451300BF80006C03E9 /* SketchLayerSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9786AC401300BF80006C03E9 /* SketchLayerSampleAppDelegate.m */; };
 		9786AC461300BF80006C03E9 /* SketchLayerSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9786AC421300BF80006C03E9 /* SketchLayerSampleViewController.m */; };
@@ -35,6 +36,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* SketchLayerSample_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SketchLayerSample_Prefix.pch; sourceTree = "<group>"; };
 		3EA670D418EDF17700791CD7 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		3EE660291AB37A9600D02DCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SketchLayerSample/Images.xcassets; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* SketchLayerSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SketchLayerSample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		973A2A4A1677C5B4009B9AFE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9786AC3F1300BF80006C03E9 /* SketchLayerSampleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SketchLayerSampleAppDelegate.h; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3EE660291AB37A9600D02DCB /* Images.xcassets */,
 				3EA670D618EDF20100791CD7 /* Images */,
 				8D1107310486CEB800E47090 /* SketchLayerSample-Info.plist */,
 			);
@@ -222,6 +225,7 @@
 				9786AC5D1300BFD7006C03E9 /* redoX.gif in Resources */,
 				3EA670D518EDF17700791CD7 /* Storyboard.storyboard in Resources */,
 				9786AC5E1300BFD7006C03E9 /* savesketch.gif in Resources */,
+				3EE6602A1AB37A9600D02DCB /* Images.xcassets in Resources */,
 				9786AC5F1300BFD7006C03E9 /* savesketchX.gif in Resources */,
 				9786AC601300BFD7006C03E9 /* selectfeature.gif in Resources */,
 				9786AC631300BFD7006C03E9 /* undo.gif in Resources */,
@@ -254,6 +258,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
@@ -280,6 +286,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;

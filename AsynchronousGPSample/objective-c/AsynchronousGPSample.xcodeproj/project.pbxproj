@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3E36334518DA125200F39DA1 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E36334418DA125200F39DA1 /* Main_iPhone.storyboard */; };
 		3E36334A18DB484000F39DA1 /* Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E36334918DB484000F39DA1 /* Parameters.m */; };
+		3EE660021AB3737B00D02DCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EE660011AB3737B00D02DCB /* Images.xcassets */; };
 		C56B3F4614C60031003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B3F4514C60031003A46EB /* ArcGIS.bundle */; };
 		C56C52061512C4B800C64597 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C52041512C4B800C64597 /* SettingsViewController.m */; };
 		C57F6E2013F5A74000DAE553 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C57F6E1E13F5A74000DAE553 /* InfoPlist.strings */; };
@@ -24,6 +25,7 @@
 		3E36334418DA125200F39DA1 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main_iPhone.storyboard; path = AsynchronousGPSample/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		3E36334818DB484000F39DA1 /* Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parameters.h; path = AsynchronousGPSample/Models/Parameters.h; sourceTree = "<group>"; };
 		3E36334918DB484000F39DA1 /* Parameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Parameters.m; path = AsynchronousGPSample/Models/Parameters.m; sourceTree = "<group>"; };
+		3EE660011AB3737B00D02DCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = AsynchronousGPSample/Images.xcassets; sourceTree = "<group>"; };
 		C56B3F4514C60031003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		C56C52031512C4B800C64597 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = AsynchronousGPSample/SettingsViewController.h; sourceTree = "<group>"; };
 		C56C52041512C4B800C64597 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = AsynchronousGPSample/SettingsViewController.m; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		C57F6DFC13F5A74000DAE553 = {
 			isa = PBXGroup;
 			children = (
+				3EE660011AB3737B00D02DCB /* Images.xcassets */,
 				3E36334418DA125200F39DA1 /* Main_iPhone.storyboard */,
 				C57F6E1C13F5A74000DAE553 /* Supporting Files */,
 				C57F6E5313F5AAC000DAE553 /* Classes */,
@@ -181,6 +184,7 @@
 			files = (
 				C57F6E2013F5A74000DAE553 /* InfoPlist.strings in Resources */,
 				C57F6E5E13F5AD0800DAE553 /* icon.png in Resources */,
+				3EE660021AB3737B00D02DCB /* Images.xcassets in Resources */,
 				C57F6E5F13F5AD0800DAE553 /* icon@2x.png in Resources */,
 				C56B3F4614C60031003A46EB /* ArcGIS.bundle in Resources */,
 				E976B61B1679EA1F00FBA4C9 /* Default-568h@2x.png in Resources */,
@@ -282,6 +286,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
@@ -313,6 +319,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

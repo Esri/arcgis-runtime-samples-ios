@@ -9,16 +9,14 @@
 /* Begin PBXBuildFile section */
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		2899E5220DE3E06400AC0155 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* ViewController.xib */; };
-		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* ViewController.m */; };
+		3E0909CF1AD2E9BA00BEA65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0909CE1AD2E9BA00BEA65D /* Main.storyboard */; };
 		3EE660141AB3786C00D02DCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EE660131AB3786C00D02DCB /* Images.xcassets */; };
 		974AEC7518DCE126001D69F0 /* gray-network.png in Resources */ = {isa = PBXBuildFile; fileRef = 974AEC7318DCE126001D69F0 /* gray-network.png */; };
 		974AEC7618DCE126001D69F0 /* blue-network.png in Resources */ = {isa = PBXBuildFile; fileRef = 974AEC7418DCE126001D69F0 /* blue-network.png */; };
 		9779764518DBB21B00AB9FF9 /* LicenseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9779764118DBB21B00AB9FF9 /* LicenseHelper.m */; };
 		97FCF809165C1B7D00251D55 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97FCF808165C1B7D00251D55 /* Default-568h@2x.png */; };
 		97FCF80D165C1C9D00251D55 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 97FCF80C165C1C9D00251D55 /* ArcGIS.bundle */; };
-		AFD762AD124AAF5E00DBB854 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFD762AC124AAF5E00DBB854 /* MainWindow-iPad.xib */; };
 		AFD762B2124AAF7800DBB854 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AFD762B0124AAF7800DBB854 /* Icon.png */; };
 		AFD762B3124AAF7800DBB854 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AFD762B1124AAF7800DBB854 /* Icon@2x.png */; };
 /* End PBXBuildFile section */
@@ -27,12 +25,11 @@
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* LicenseByOrgAccountSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LicenseByOrgAccountSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2899E5210DE3E06400AC0155 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
-		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		28D7ACF60DDB3853001CB0EB /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		28D7ACF70DDB3853001CB0EB /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; tabWidth = 2; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* LicenseByOrgAccountSample_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseByOrgAccountSample_Prefix.pch; sourceTree = "<group>"; };
+		3E0909CE1AD2E9BA00BEA65D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = SOURCE_ROOT; };
 		3EE660131AB3786C00D02DCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = LicenseByOrgAccountSample/Images.xcassets; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* LicenseByOrgAccountSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "LicenseByOrgAccountSample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		974AEC7318DCE126001D69F0 /* gray-network.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gray-network.png"; sourceTree = SOURCE_ROOT; };
@@ -42,7 +39,6 @@
 		9779764218DBB21B00AB9FF9 /* LicenseHelperConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LicenseHelperConstants.h; path = ../LicenseHelperConstants.h; sourceTree = "<group>"; };
 		97FCF808165C1B7D00251D55 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		97FCF80C165C1C9D00251D55 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
-		AFD762AC124AAF5E00DBB854 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		AFD762B0124AAF7800DBB854 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		AFD762B1124AAF7800DBB854 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +62,7 @@
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* ViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* ViewController.m */,
+				3E0909CE1AD2E9BA00BEA65D /* Main.storyboard */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -84,7 +81,6 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
-				AFD762AB124AAF5E00DBB854 /* Resources-iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -110,8 +106,6 @@
 				97FCF808165C1B7D00251D55 /* Default-568h@2x.png */,
 				AFD762B0124AAF7800DBB854 /* Icon.png */,
 				AFD762B1124AAF7800DBB854 /* Icon@2x.png */,
-				2899E5210DE3E06400AC0155 /* ViewController.xib */,
-				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* LicenseByOrgAccountSample-Info.plist */,
 			);
 			name = Resources;
@@ -132,14 +126,6 @@
 				9779764218DBB21B00AB9FF9 /* LicenseHelperConstants.h */,
 			);
 			name = Helper;
-			sourceTree = "<group>";
-		};
-		AFD762AB124AAF5E00DBB854 /* Resources-iPad */ = {
-			isa = PBXGroup;
-			children = (
-				AFD762AC124AAF5E00DBB854 /* MainWindow-iPad.xib */,
-			);
-			name = "Resources-iPad";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,9 +179,7 @@
 			files = (
 				974AEC7618DCE126001D69F0 /* blue-network.png in Resources */,
 				3EE660141AB3786C00D02DCB /* Images.xcassets in Resources */,
-				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				2899E5220DE3E06400AC0155 /* ViewController.xib in Resources */,
-				AFD762AD124AAF5E00DBB854 /* MainWindow-iPad.xib in Resources */,
+				3E0909CF1AD2E9BA00BEA65D /* Main.storyboard in Resources */,
 				AFD762B2124AAF7800DBB854 /* Icon.png in Resources */,
 				AFD762B3124AAF7800DBB854 /* Icon@2x.png in Resources */,
 				974AEC7518DCE126001D69F0 /* gray-network.png in Resources */,

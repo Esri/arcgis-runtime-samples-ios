@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E18D7A31AD351F4007B4A0F /* Campus.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 3E18D7A21AD351F4007B4A0F /* Campus.tpk */; };
 		3E715CFA18E4CD0A004FB946 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E715CF918E4CD0A004FB946 /* Storyboard.storyboard */; };
 		3EE622C418E4D5BA00693502 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EE622C318E4D5BA00693502 /* Default-568h@2x.png */; };
 		3EE660161AB3787D00D02DCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EE660151AB3787D00D02DCB /* Images.xcassets */; };
-		97E5EF0517E0DA23008E2B27 /* Campus.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 97E5EF0417E0DA23008E2B27 /* Campus.tpk */; };
 		C5128CE514758D8100A5EBF7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C5128CD414758D8100A5EBF7 /* icon.png */; };
 		C5128CE614758D8100A5EBF7 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5128CD514758D8100A5EBF7 /* icon@2x.png */; };
 		C5128CE714758D8100A5EBF7 /* LocalTiledLayerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5128CD714758D8100A5EBF7 /* LocalTiledLayerAppDelegate.m */; };
@@ -22,10 +22,10 @@
 
 /* Begin PBXFileReference section */
 		1D6058910D05DD3D006BFB54 /* LocalTiledLayerSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalTiledLayerSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E18D7A21AD351F4007B4A0F /* Campus.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = Campus.tpk; path = "../../../Data/tile package/Campus.tpk"; sourceTree = "<group>"; };
 		3E715CF918E4CD0A004FB946 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = LocalTiledLayerSample/Storyboard.storyboard; sourceTree = "<group>"; };
 		3EE622C318E4D5BA00693502 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		3EE660151AB3787D00D02DCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = LocalTiledLayerSample/Images.xcassets; sourceTree = SOURCE_ROOT; };
-		97E5EF0417E0DA23008E2B27 /* Campus.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = Campus.tpk; sourceTree = "<group>"; };
 		C5128CD414758D8100A5EBF7 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = LocalTiledLayerSample/icon.png; sourceTree = SOURCE_ROOT; };
 		C5128CD514758D8100A5EBF7 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "LocalTiledLayerSample/icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		C5128CD614758D8100A5EBF7 /* LocalTiledLayerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalTiledLayerAppDelegate.h; path = LocalTiledLayerSample/LocalTiledLayerAppDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -79,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				3E715CF918E4CD0A004FB946 /* Storyboard.storyboard */,
-				97E5EF0417E0DA23008E2B27 /* Campus.tpk */,
 				080E96DDFE201D6D7F000001 /* LocalTiledLayerSample */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -98,6 +97,7 @@
 		C5128CF114758D9500A5EBF7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3E18D7A21AD351F4007B4A0F /* Campus.tpk */,
 				3EE622C318E4D5BA00693502 /* Default-568h@2x.png */,
 				C5128CD414758D8100A5EBF7 /* icon.png */,
 				C5128CD514758D8100A5EBF7 /* icon@2x.png */,
@@ -164,9 +164,9 @@
 				C5128CE614758D8100A5EBF7 /* icon@2x.png in Resources */,
 				3EE660161AB3787D00D02DCB /* Images.xcassets in Resources */,
 				C56B3FEC14C652C2003A46EB /* ArcGIS.bundle in Resources */,
-				97E5EF0517E0DA23008E2B27 /* Campus.tpk in Resources */,
 				3E715CFA18E4CD0A004FB946 /* Storyboard.storyboard in Resources */,
 				3EE622C418E4D5BA00693502 /* Default-568h@2x.png in Resources */,
+				3E18D7A31AD351F4007B4A0F /* Campus.tpk in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

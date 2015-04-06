@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FLA-Ny-egd">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <scenes>
+        <!--Local Tiled Layer View Controller-->
+        <scene sceneID="mFs-Nz-HuK">
+            <objects>
+                <viewController storyboardIdentifier="LocalTiledLayerViewController" id="bcc-mN-8H3" customClass="LocalTiledLayerViewController" customModule="LocalTiledLayer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9UR-0G-pOo"/>
+                        <viewControllerLayoutGuide type="bottom" id="UUD-rr-JNe"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="NVd-Pp-f27">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="525-95-zTY" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="ArcGIS.bundle/esri.png" translatesAutoresizingMaskIntoConstraints="NO" id="qSy-SR-wqQ">
+                                        <rect key="frame" x="10" y="559" width="56" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="MDn-BT-9O5"/>
+                                            <constraint firstAttribute="height" constant="32" id="hut-If-f6Q"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="qSy-SR-wqQ" firstAttribute="leading" secondItem="525-95-zTY" secondAttribute="leading" constant="10" id="Wok-Ru-O1b"/>
+                                    <constraint firstAttribute="bottom" secondItem="qSy-SR-wqQ" secondAttribute="bottom" constant="9" id="b4f-iB-LMJ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="525-95-zTY" firstAttribute="leading" secondItem="NVd-Pp-f27" secondAttribute="leading" id="5wy-F1-6S2"/>
+                            <constraint firstAttribute="trailing" secondItem="525-95-zTY" secondAttribute="trailing" id="cVH-Lu-tdn"/>
+                            <constraint firstAttribute="bottom" secondItem="525-95-zTY" secondAttribute="bottom" id="g8Y-fR-qWI"/>
+                            <constraint firstItem="525-95-zTY" firstAttribute="top" secondItem="NVd-Pp-f27" secondAttribute="top" id="tni-gr-zHu"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="20o-Gi-PPA"/>
+                    <connections>
+                        <outlet property="mapView" destination="525-95-zTY" id="sPu-qU-0YF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AuO-cg-MfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1461" y="80"/>
+        </scene>
+        <!--Tile Packages-->
+        <scene sceneID="zbX-Lb-rJW">
+            <objects>
+                <tableViewController id="eHb-zv-zY5" customClass="RootTableViewController" customModule="LocalTiledLayer" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tdb-ui-O1c">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="uaa-By-yAn">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uaa-By-yAn" id="Lyo-AQ-Be3">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="eHb-zv-zY5" id="Usd-wM-mRp"/>
+                            <outlet property="delegate" destination="eHb-zv-zY5" id="Oh8-6u-zTT"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Tile Packages" id="OzU-bX-214"/>
+                    <connections>
+                        <segue destination="bcc-mN-8H3" kind="push" identifier="SegueLocalTiledLayerVC" id="dDH-Z6-2wu"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uv9-L5-Uqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="750" y="80"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eaR-hF-xri">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FLA-Ny-egd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ILz-xc-hkH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eHb-zv-zY5" kind="relationship" relationship="rootViewController" id="PPB-4R-UC5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6vi-s1-tFD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="16" y="80"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ArcGIS.bundle/esri.png" width="16" height="16"/>
+    </resources>
+</document>

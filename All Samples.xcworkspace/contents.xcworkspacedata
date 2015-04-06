@@ -310,9 +310,24 @@
          </FileRef>
       </Group>
    </Group>
-   <FileRef
-      location = "group:LocalTiledLayerSample/LocalTiledLayerSample.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "LocalTiledLayer">
+      <Group
+         location = "container:"
+         name = "objective-c">
+         <FileRef
+            location = "group:LocalTiledLayerSample/objective-c/LocalTiledLayerSample.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "swift">
+         <FileRef
+            location = "group:LocalTiledLayerSample/swift/LocalTiledLayer.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
    <Group
       location = "container:"
       name = "MessageMil2525c">

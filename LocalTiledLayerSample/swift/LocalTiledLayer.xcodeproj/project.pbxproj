@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E18D7A51AD35202007B4A0F /* Campus.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 3E18D7A41AD35202007B4A0F /* Campus.tpk */; };
 		3E8B8B6D1ACDC80A00ACEB1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8B8B6C1ACDC80A00ACEB1F /* AppDelegate.swift */; };
 		3E8B8B721ACDC80A00ACEB1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8B8B701ACDC80A00ACEB1F /* Main.storyboard */; };
 		3E8B8B741ACDC80A00ACEB1F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E8B8B731ACDC80A00ACEB1F /* Images.xcassets */; };
 		3E8B8B771ACDC80A00ACEB1F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E8B8B751ACDC80A00ACEB1F /* LaunchScreen.xib */; };
 		3E8B8B8E1ACDC8C800ACEB1F /* LocalTiledLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8B8B8D1ACDC8C800ACEB1F /* LocalTiledLayerViewController.swift */; };
 		3E8B8B901ACDCB0600ACEB1F /* RootTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8B8B8F1ACDCB0600ACEB1F /* RootTableViewController.swift */; };
-		3E8B8B921ACDDD4700ACEB1F /* Campus.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 3E8B8B911ACDDCF500ACEB1F /* Campus.tpk */; };
 		3EDC8D571ACDF4D600560533 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC8D561ACDF4D600560533 /* ArcGIS.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E18D7A41AD35202007B4A0F /* Campus.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = Campus.tpk; path = "../../../Data/tile package/Campus.tpk"; sourceTree = "<group>"; };
 		3E8B8B671ACDC80A00ACEB1F /* LocalTiledLayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalTiledLayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8B8B6B1ACDC80A00ACEB1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E8B8B6C1ACDC80A00ACEB1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -26,7 +27,6 @@
 		3E8B8B761ACDC80A00ACEB1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3E8B8B8D1ACDC8C800ACEB1F /* LocalTiledLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalTiledLayerViewController.swift; path = Controllers/LocalTiledLayerViewController.swift; sourceTree = "<group>"; };
 		3E8B8B8F1ACDCB0600ACEB1F /* RootTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootTableViewController.swift; path = Controllers/RootTableViewController.swift; sourceTree = "<group>"; };
-		3E8B8B911ACDDCF500ACEB1F /* Campus.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = Campus.tpk; sourceTree = "<group>"; };
 		3EDC8D561ACDF4D600560533 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -73,8 +73,8 @@
 		3E8B8B6A1ACDC80A00ACEB1F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3E18D7A41AD35202007B4A0F /* Campus.tpk */,
 				3EDC8D561ACDF4D600560533 /* ArcGIS.bundle */,
-				3E8B8B911ACDDCF500ACEB1F /* Campus.tpk */,
 				3E8B8B6B1ACDC80A00ACEB1F /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -146,9 +146,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E8B8B921ACDDD4700ACEB1F /* Campus.tpk in Resources */,
 				3E8B8B721ACDC80A00ACEB1F /* Main.storyboard in Resources */,
 				3E8B8B771ACDC80A00ACEB1F /* LaunchScreen.xib in Resources */,
+				3E18D7A51AD35202007B4A0F /* Campus.tpk in Resources */,
 				3E8B8B741ACDC80A00ACEB1F /* Images.xcassets in Resources */,
 				3EDC8D571ACDF4D600560533 /* ArcGIS.bundle in Resources */,
 			);

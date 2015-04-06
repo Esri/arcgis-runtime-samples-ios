@@ -20,9 +20,6 @@
 
 @implementation AppDelegate
 
-@synthesize window;
-@synthesize viewController;
-
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     
@@ -33,10 +30,6 @@
     if (!valid) {
         NSLog(@"setClientID failed: %@", error.localizedDescription);
     }
-
-    // Override point for customization after app launch
-    [window setRootViewController:viewController];
-    [window makeKeyAndVisible];
 }
 
 @end

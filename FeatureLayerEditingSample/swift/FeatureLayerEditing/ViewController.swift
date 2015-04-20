@@ -51,6 +51,10 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapViewTouch
         self.webmap.delegate = self
         self.webmap.openIntoMapView(self.mapView)
         
+        //Initialize the template picker view controller
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        self.featureTemplatePickerController = storyboard.instantiateViewControllerWithIdentifier("FeatureTemplatePickerController") as FeatureTemplatePickerController
+        self.featureTemplatePickerController.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,6 +82,9 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapViewTouch
             
             //This view controller should be notified when features are edited
             featureLayer.editingDelegate = self
+            
+            //Add templates from this layer to the Feature Template Picker
+            self.featureTemplatePickerController.addTemplatesFromLayer(self.activeFeatureLayer)
         }
     }
     
@@ -387,14 +394,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapViewTouch
     //MARK: - actions
     
     func presentFeatureTemplatePicker() {
-        //Initialize the template picker view controller
-        if self.featureTemplatePickerController == nil {
-            let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-            self.featureTemplatePickerController = storyboard.instantiateViewControllerWithIdentifier("FeatureTemplatePickerController") as FeatureTemplatePickerController
-            self.featureTemplatePickerController.delegate = self
-            self.featureTemplatePickerController.addTemplatesFromLayer(self.activeFeatureLayer)
-            self.featureTemplatePickerController.modalPresentationStyle = .FormSheet
-        }
+        self.featureTemplatePickerController.modalPresentationStyle = .FormSheet
         
         self.presentViewController(self.featureTemplatePickerController, animated: true, completion: nil)
     }

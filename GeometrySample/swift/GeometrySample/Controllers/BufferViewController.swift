@@ -92,7 +92,7 @@ class BufferViewController: UIViewController, AGSMapViewLayerDelegate {
         self.userInstructions.text = "Reset or add another geometry"
         
         //Get the sketch geometry
-        let sketchGeometry = self.sketchLayer.geometry.copy() as AGSGeometry
+        let sketchGeometry = self.sketchLayer.geometry.copy() as! AGSGeometry
         
         // A symbol for points on the graphics layer
         let pointSymbol = AGSSimpleMarkerSymbol()

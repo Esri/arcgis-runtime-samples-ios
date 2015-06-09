@@ -108,7 +108,7 @@ class GeometryServiceViewController: UIViewController, AGSMapViewLayerDelegate, 
         //		3				pt1 buffered at 300m
         //		4				pt2 buffered at 300m
         //		5				pt3 buffered at 300m
-        for g in bufferedGeometries as [AGSGeometry] {
+        for g in bufferedGeometries as! [AGSGeometry] {
             
             // initialize the graphic for geometry
             let graphic = AGSGraphic(geometry: g, symbol:nil, attributes:nil)

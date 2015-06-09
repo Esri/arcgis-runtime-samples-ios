@@ -29,7 +29,7 @@ class Mil2525Message: NSObject, AGSCoding {
         self.message = AGSMPMessage()
         
         for (key, value) in json {
-            self.message.setProperty(value, forKey: key as NSString)
+            self.message.setProperty(value, forKey: key as! NSString as String)
         }
     }
 }
@@ -96,11 +96,11 @@ class MessageMil2525cViewController: UIViewController, AGSMapViewLayerDelegate {
         let jsonString = String(contentsOfFile: filePath!, encoding: NSUTF8StringEncoding, error: nil)
         
         //Store the JSON string in a dictionary
-        let json = parser.objectWithString(jsonString) as [NSObject:AnyObject]
+        let json = parser.objectWithString(jsonString) as! [NSObject:AnyObject]
         println(json)
         //Decode the JSON in the dictionary
         let temp = AGSJSONUtility.decodeFromDictionary(json, withKey: "messages", fromClass: Mil2525Message.self)
-        self.milMessages = AGSJSONUtility.decodeFromDictionary(json, withKey: "messages", fromClass: Mil2525Message.self) as AnyObject as [Mil2525Message]
+        self.milMessages = AGSJSONUtility.decodeFromDictionary(json, withKey: "messages", fromClass: Mil2525Message.self) as AnyObject as! [Mil2525Message]
         
         //Process every message in the decoded JSON
         for message in self.milMessages {

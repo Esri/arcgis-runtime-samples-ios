@@ -104,7 +104,7 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
         // create a custom callout view using a button with an image
         // this is to remove incidents and barriers after we add them to the map
         let customView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 24))
-        let deleteBtn = UIButton.buttonWithType(.Custom) as UIButton
+        let deleteBtn = UIButton.buttonWithType(.Custom) as! UIButton
         deleteBtn.frame = CGRect(x: 8, y: 0, width: 24, height: 24)
         deleteBtn.setImage(UIImage(named: "remove24.png"), forState:.Normal)
         deleteBtn.addTarget(self, action: "removeIncidentBarrierClicked", forControlEvents: .TouchUpInside)
@@ -146,7 +146,7 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
     
     func callout(callout: AGSCallout!, willShowForFeature feature: AGSFeature!, layer: AGSLayer!, mapPoint: AGSPoint!) -> Bool {
         
-        let graphic = feature as AGSGraphic
+        let graphic = feature as! AGSGraphic
         let incidentNum = graphic.attributeAsStringForKey("incidentNumber")
         let barrierNum = graphic.attributeAsStringForKey("barrierNumber")
         
@@ -176,7 +176,7 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
         //careful not to attempt to mutate the graphics array while
         //it is being enumerated
         let graphics = self.graphicsLayer.graphics
-        for g in graphics as [AGSGraphic] {
+        for g in graphics as! [AGSGraphic] {
             if !(g.attributeAsStringForKey("barrierNumber") == nil ||
                 g.attributeAsStringForKey("incidentNumber") == nil) {
                 self.graphicsLayer.removeGraphic(g)
@@ -184,7 +184,7 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
         }
     
         //iterate through the closest facility results array in the closestFacilityTaskResult returned by the task
-        for cfResult in closestFacilityTaskResult.closestFacilityResults as [AGSClosestFacilityResult] {
+        for cfResult in closestFacilityTaskResult.closestFacilityResults as! [AGSClosestFacilityResult] {
             //symbolize the returned route graphic
             cfResult.routeGraphic.symbol = self.routeSymbol()
             
@@ -199,7 +199,7 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
         self.statusMessageLabel.text = "Tap reset to start over"
         
         //zoom to graphics layer extent
-        var env = self.graphicsLayer.fullEnvelope as AGSMutableEnvelope
+        var env = self.graphicsLayer.fullEnvelope as! AGSMutableEnvelope
         env.expandByFactor(1.2)
         self.mapView.zoomToEnvelope(env, animated:true)
     }
@@ -237,7 +237,7 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
         var polygonBarriers = [AGSGraphic]()
         
         // get the incidents, barriers for the cf task
-        for g in self.graphicsLayer.graphics as [AGSGraphic] {
+        for g in self.graphicsLayer.graphics as! [AGSGraphic] {
             // if it's a incident graphic, add the object to incidents
             if g.attributeAsStringForKey("incidentNumber") != nil {
                 incidents.append(g)
@@ -286,7 +286,7 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
     @IBAction func addIncidentOrBarrier(sender:AnyObject) {
         
         //grab the geometry, then clear the sketch
-        let geometry : AGSGeometry = self.sketchLayer.geometry.copy() as AGSGeometry
+        let geometry : AGSGeometry = self.sketchLayer.geometry.copy() as! AGSGeometry
         self.sketchLayer.clear()
         //Prepare symbol and attributes for the Incident/Barrier
         var attributes = [String:AnyObject]()
@@ -360,7 +360,7 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
         
         // if we have a sketch layer on the map, remove it
         if self.sketchLayer != nil {
-            if contains(self.mapView.mapLayers as [AGSLayer], self.sketchLayer) {
+            if contains(self.mapView.mapLayers as! [AGSLayer], self.sketchLayer) {
                 self.mapView.removeMapLayerWithName(self.sketchLayer.name)
                 self.mapView.touchDelegate = nil
                 self.sketchLayer = nil
@@ -537,7 +537,7 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == kSettingsSegueName {
-            let controller = segue.destinationViewController as SettingsViewController
+            let controller = segue.destinationViewController as! SettingsViewController
             controller.parameters = self.parameters
             
             //if ipad show formsheet

@@ -21,7 +21,7 @@ extension AGSMapContentsLegendElement {
     var level:Int {
         get {
             if let optionalValue: AnyObject = objc_getAssociatedObject(self, &elementLevelHandle) {
-                return optionalValue as Int
+                return optionalValue as! Int
             }
             return 0
         }

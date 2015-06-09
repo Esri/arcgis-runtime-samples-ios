@@ -296,15 +296,15 @@ class LegendViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "LegendCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as LegendCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! LegendCell
         
         if self.segmentedControl.selectedSegmentIndex == 0 {
-            let classBreak = self.classBreakRenderer.classBreaks[indexPath.row] as AGSClassBreak
+            let classBreak = self.classBreakRenderer.classBreaks[indexPath.row] as! AGSClassBreak
             cell.colorView.backgroundColor = classBreak.symbol.color
             cell.label.text = classBreak.label
         }
         else {
-            let value = self.uniqueValueRenderer.uniqueValues[indexPath.row] as AGSUniqueValue
+            let value = self.uniqueValueRenderer.uniqueValues[indexPath.row] as! AGSUniqueValue
             cell.colorView.backgroundColor = value.symbol.color
             cell.label.text = value.label
         }
@@ -340,11 +340,11 @@ class LegendViewController: UIViewController, UITableViewDataSource, UITableView
             field = self.classBreakClassificationFields[self.selectedFieldIndex]
             definition = AGSClassBreaksDefinition(classificationField: field.name, classificationMethod: AGSClassBreaksDefinitionClassificationMethod(rawValue: self.selectedMethodIndex)!, breakCount: UInt(self.selectedClassCount))
             definition.colorRamp = gradientRamp
-            (definition as AGSClassBreaksDefinition).standardDeviationInterval = 1
+            (definition as! AGSClassBreaksDefinition).standardDeviationInterval = 1
             if self.selectedNormalizationIndex > 0 {
                 let selectedNormalizationField = self.classBreakClassificationFields[self.selectedNormalizationIndex-1]
-                (definition as AGSClassBreaksDefinition).normalizationField = selectedNormalizationField.name
-                (definition as AGSClassBreaksDefinition).normalizationType = .ByField
+                (definition as! AGSClassBreaksDefinition).normalizationField = selectedNormalizationField.name
+                (definition as! AGSClassBreaksDefinition).normalizationType = .ByField
             }
         }
         else {
@@ -375,10 +375,10 @@ class LegendViewController: UIViewController, UITableViewDataSource, UITableView
                     //hide the footer view
                     //notify the delegate
                     if weakSelf.segmentedControl.selectedSegmentIndex == 0 {
-                        weakSelf.classBreakRenderer = renderer as AGSClassBreaksRenderer
+                        weakSelf.classBreakRenderer = renderer as! AGSClassBreaksRenderer
                     }
                     else {
-                        weakSelf.uniqueValueRenderer = renderer as AGSUniqueValueRenderer
+                        weakSelf.uniqueValueRenderer = renderer as! AGSUniqueValueRenderer
                     }
                     weakSelf.hideLoadingFooterView()
                     

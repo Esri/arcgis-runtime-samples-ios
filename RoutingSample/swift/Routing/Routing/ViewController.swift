@@ -97,7 +97,7 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
         
         // create a custom callout view using a button with an image
         // this is to remove stops after we add them to the map
-        let removeStopBtn = UIButton.buttonWithType(.Custom) as UIButton
+        let removeStopBtn = UIButton.buttonWithType(.Custom) as! UIButton
         removeStopBtn.frame = CGRectMake(0, 0, 24, 24)
         removeStopBtn.setImage(UIImage(named: "remove24.png"), forState:.Normal)
         removeStopBtn.addTarget(self, action: "removeStopClicked", forControlEvents: .TouchUpInside)
@@ -140,7 +140,7 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
         self.updateDirectionsLabel("Routing completed")
         
         // we know that we are only dealing with 1 route...
-        self.routeResult = routeTaskResult.routeResults.last as AGSRouteResult
+        self.routeResult = routeTaskResult.routeResults.last as! AGSRouteResult
         if self.routeResult != nil {
             // symbolize the returned route graphic
             self.routeResult.routeGraphic.symbol = self.routeSymbol()
@@ -158,13 +158,13 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
             let graphics = self.graphicsLayer.graphics
             for g in graphics {
                 if g is AGSStopGraphic {
-                    self.graphicsLayer.removeGraphic(g as AGSStopGraphic)
+                    self.graphicsLayer.removeGraphic(g as! AGSStopGraphic)
                 }
             }
             
             // add the returned stops...it's possible these came back in a different order
             // because we specified findBestSequence
-            for sg in self.routeResult.stopGraphics as [AGSStopGraphic] {
+            for sg in self.routeResult.stopGraphics as! [AGSStopGraphic] {
                 
                 // get the sequence from the attribetus
                 var exists:ObjCBool = false
@@ -196,7 +196,7 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
     //
     // If the user clicks 'Retry' then we should attempt to retrieve the defaults again
     //
-    func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int) {
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         // see which button was clicked, Ok or Retry
         // Ok		index 0
         // Retry	index 1
@@ -405,7 +405,7 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
         
         //grab the geometry, then clear the sketch
         //TODO: check for copy
-        let geometry = self.sketchLayer.geometry.copy() as AGSGeometry
+        let geometry = self.sketchLayer.geometry.copy() as! AGSGeometry
         self.sketchLayer.clear()
         
         //Prepare symbol and attributes for the Stop/Barrier
@@ -471,7 +471,7 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
         self.updateDirectionsLabel("Routing...")
         
         // if we have a sketch layer on the map, remove it
-        if let sketchLayer = find(self.mapView.mapLayers as [AGSLayer], self.sketchLayer as AGSLayer) {
+        if let sketchLayer = find(self.mapView.mapLayers as! [AGSLayer], self.sketchLayer as AGSLayer) {
             self.mapView.removeMapLayerWithName(self.sketchLayer.name)
             self.mapView.touchDelegate = nil
             self.sketchLayer = nil
@@ -490,14 +490,14 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
         for g in self.graphicsLayer.graphics {
             // if it's a stop graphic, add the object to stops
             if g is AGSStopGraphic {
-                stops.append(g as AGSStopGraphic)
+                stops.append(g as! AGSStopGraphic)
             }
                 
                 // if "barrierNumber" exists in the attributes, we know it is a barrier
                 // so add the object to our barriers
             else if g.attributeAsStringForKey("barrierNumber") != nil {
                 print(g.dynamicType.description())
-                polygonBarriers.append(g as AGSGraphic)
+                polygonBarriers.append(g as! AGSGraphic)
             }
         }
         
@@ -560,14 +560,14 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
         
         // remove current direction graphic, so we can display next one
         if self.currentDirectionGraphic != nil {
-            if let graphic = find(self.graphicsLayer.graphics as [AGSGraphic], self.currentDirectionGraphic as AGSGraphic) {
+            if let graphic = find(self.graphicsLayer.graphics as! [AGSGraphic], self.currentDirectionGraphic as AGSGraphic) {
                 self.graphicsLayer.removeGraphic(self.currentDirectionGraphic)
             }
         }
         
         // get current direction and add it to the graphics layer
         let directions = self.routeResult.directions
-        self.currentDirectionGraphic = directions.graphics[self.directionIndex] as AGSDirectionGraphic
+        self.currentDirectionGraphic = directions.graphics[self.directionIndex] as! AGSDirectionGraphic
         self.currentDirectionGraphic.symbol = self.currentDirectionSymbol()
         self.graphicsLayer.addGraphic(self.currentDirectionGraphic)
         
@@ -575,7 +575,7 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
         self.updateDirectionsLabel(self.currentDirectionGraphic.text)
         
         // zoom to envelope of the current direction (expanded by factor of 1.3)
-        let env = self.currentDirectionGraphic.geometry.envelope.mutableCopy() as AGSMutableEnvelope
+        let env = self.currentDirectionGraphic.geometry.envelope.mutableCopy() as! AGSMutableEnvelope
         env.expandByFactor(1.3)
         self.mapView.zoomToEnvelope(env, animated:true)
         
@@ -593,14 +593,14 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
         
         // remove current direction
         if self.currentDirectionGraphic != nil {
-            if let graphic = find(self.graphicsLayer.graphics as [AGSGraphic], self.currentDirectionGraphic as AGSGraphic) {
+            if let graphic = find(self.graphicsLayer.graphics as! [AGSGraphic], self.currentDirectionGraphic as AGSGraphic) {
                 self.graphicsLayer.removeGraphic(self.currentDirectionGraphic)
             }
         }
         
         // get next direction
         let directions = self.routeResult.directions
-        self.currentDirectionGraphic = directions.graphics[self.directionIndex] as AGSDirectionGraphic
+        self.currentDirectionGraphic = directions.graphics[self.directionIndex] as! AGSDirectionGraphic
         self.currentDirectionGraphic.symbol = self.currentDirectionSymbol()
         self.graphicsLayer.addGraphic(self.currentDirectionGraphic)
         
@@ -608,7 +608,7 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
         self.updateDirectionsLabel(self.currentDirectionGraphic.text)
         
         // zoom to env factored by 1.3
-        let env = self.currentDirectionGraphic.geometry.envelope.mutableCopy() as AGSMutableEnvelope
+        let env = self.currentDirectionGraphic.geometry.envelope.mutableCopy() as! AGSMutableEnvelope
         env.expandByFactor(1.3)
         self.mapView.zoomToEnvelope(env, animated:true)
         
@@ -624,7 +624,7 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
     //MARK: - AGSLayerCalloutDelegate
     
     func callout(callout: AGSCallout!, willShowForFeature feature: AGSFeature!, layer: AGSLayer!, mapPoint: AGSPoint!) -> Bool {
-        let graphic = feature as AGSGraphic
+        let graphic = feature as! AGSGraphic
         
         let stopNum = graphic.attributeAsStringForKey("stopNumber")
         let barrierNum = graphic.attributeAsStringForKey("barrierNumber")

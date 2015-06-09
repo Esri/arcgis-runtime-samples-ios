@@ -94,7 +94,7 @@ class IdentifyTaskViewController: UIViewController, AGSMapViewTouchDelegate, AGS
     func didClickAccessoryButtonForCallout(callout: AGSCallout!) {
         
         //save the selected graphic, to later assign to the results view controller
-        self.selectedGraphic = callout.representedObject as AGSGraphic
+        self.selectedGraphic = callout.representedObject as! AGSGraphic
         
         self.performSegueWithIdentifier(kResultsSegueIdentifier, sender:self)
     }
@@ -115,19 +115,19 @@ class IdentifyTaskViewController: UIViewController, AGSMapViewTouchDelegate, AGS
             symbol.color = UIColor(red: 0, green:0, blue:1, alpha:0.5)
             
             // for each result, set the symbol and add it to the graphics layer
-            for result in results as [AGSIdentifyResult] {
+            for result in results as! [AGSIdentifyResult] {
                 result.feature.symbol = symbol
                 self.graphicsLayer.addGraphic(result.feature)
             }
             
             //set the callout content for the first result
             //get the state name
-            let stateName = (results[0] as AGSIdentifyResult).feature.attributeAsStringForKey("STATE_NAME")
+            let stateName = (results[0] as! AGSIdentifyResult).feature.attributeAsStringForKey("STATE_NAME")
             self.mapView.callout.title = stateName
             self.mapView.callout.detail = "Click for more detail.."
             
             //show callout
-            self.mapView.callout.showCalloutAtPoint(self.mappoint, forFeature:(results[0] as AGSIdentifyResult).feature, layer:(results[0] as AGSIdentifyResult).feature.layer, animated:true)
+            self.mapView.callout.showCalloutAtPoint(self.mappoint, forFeature:(results[0] as! AGSIdentifyResult).feature, layer:(results[0] as! AGSIdentifyResult).feature.layer, animated:true)
         }
     }
     
@@ -141,7 +141,7 @@ class IdentifyTaskViewController: UIViewController, AGSMapViewTouchDelegate, AGS
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == kResultsSegueIdentifier {
-            let controller = segue.destinationViewController as ResultsViewController
+            let controller = segue.destinationViewController as! ResultsViewController
             //set our attributes/results into the results VC
             controller.results = self.selectedGraphic.allAttributes()
         }

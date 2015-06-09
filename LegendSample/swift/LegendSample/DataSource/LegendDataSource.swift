@@ -69,7 +69,7 @@ class LegendDataSource: NSObject, UITableViewDataSource {
     func processLayerTreeStartingAt(layerNode:AGSMapContentsLayerInfo) -> [LegendInfo] {
         var legendInfos = [LegendInfo]()
         if layerNode.legendItems != nil && layerNode.legendItems.count > 0 {
-            for legendElement in layerNode.legendItems as [AGSMapContentsLegendElement] {
+            for legendElement in layerNode.legendItems as! [AGSMapContentsLegendElement] {
                 let li = LegendInfo()
                 li.name = layerNode.layerName
                 li.detail = legendElement.title
@@ -78,7 +78,7 @@ class LegendDataSource: NSObject, UITableViewDataSource {
             }
         }
         
-        for subLayerNode in layerNode.subLayers as [AGSMapContentsLayerInfo] {
+        for subLayerNode in layerNode.subLayers as! [AGSMapContentsLayerInfo] {
             legendInfos = legendInfos + self.processLayerTreeStartingAt(subLayerNode)
         }
         return legendInfos

@@ -123,11 +123,11 @@ class SynchronousGPViewController: UIViewController, AGSMapViewTouchDelegate, AG
         if results != nil && results.count > 0 {
             
             //get the first result
-            let result = results[0] as AGSGPParameterValue
-            let fs = result.value as AGSFeatureSet
+            let result = results[0] as! AGSGPParameterValue
+            let fs = result.value as! AGSFeatureSet
             
             //loop through all graphics in feature set and add them to map
-            for graphic in fs.features as [AGSGraphic] {
+            for graphic in fs.features as! [AGSGraphic] {
                 
                 //create and set a symbol to graphic
                 let fillSymbol = AGSSimpleFillSymbol()
@@ -142,7 +142,7 @@ class SynchronousGPViewController: UIViewController, AGSMapViewTouchDelegate, AG
             SVProgressHUD.dismiss()
             
             //zoom to graphics layer extent
-            let env = self.graphicsLayer.fullEnvelope.mutableCopy() as AGSMutableEnvelope
+            let env = self.graphicsLayer.fullEnvelope.mutableCopy() as! AGSMutableEnvelope
             env.expandByFactor(1.2)
             self.mapView.zoomToEnvelope(env, animated:true)
         }

@@ -120,7 +120,7 @@ class RootViewController: UITableViewController, UISplitViewControllerDelegate {
         }
         
         //instantiate the desired view controller
-        detailViewController = storyboard.instantiateViewControllerWithIdentifier(desiredViewControllerIdentifier) as UIViewController
+        detailViewController = storyboard.instantiateViewControllerWithIdentifier(desiredViewControllerIdentifier) as! UIViewController
         
         // Update the split view controller's view controllers array.
         let splitViewController = self.navigationController?.splitViewController

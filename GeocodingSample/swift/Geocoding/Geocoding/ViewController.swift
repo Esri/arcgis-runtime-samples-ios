@@ -86,7 +86,7 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSLocatorDelegate, 
     
     func didClickAccessoryButtonForCallout(callout: AGSCallout!) {
         
-        self.selectedGraphic = callout.representedObject as AGSGraphic
+        self.selectedGraphic = callout.representedObject as! AGSGraphic
         
         //The user clicked the callout button, so display the complete set of results
         self.performSegueWithIdentifier("ResultsSegue", sender: self)
@@ -103,10 +103,10 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSLocatorDelegate, 
         else
         {
             //loop through all candidates/results and add to graphics layer
-            for candidate in results as [AGSLocatorFindResult] {
+            for candidate in results as! [AGSLocatorFindResult] {
                 
                 //get the location from the candidate
-                let pt = candidate.graphic.geometry as AGSPoint
+                let pt = candidate.graphic.geometry as! AGSPoint
                 
                 //create a marker symbol to use in our graphic
                 let marker = AGSPictureMarkerSymbol(imageNamed: "BluePushpin")
@@ -126,7 +126,7 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSLocatorDelegate, 
                     self.mapView.callout.width = 250
                     
                     //show the callout
-                    self.mapView.callout.showCalloutAtPoint(candidate.graphic.geometry as AGSPoint, forFeature: candidate.graphic, layer:candidate.graphic.layer, animated:true)
+                    self.mapView.callout.showCalloutAtPoint(candidate.graphic.geometry as! AGSPoint, forFeature: candidate.graphic, layer:candidate.graphic.layer, animated:true)
                 }
                 
             }
@@ -146,7 +146,7 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSLocatorDelegate, 
     
     //MARK: - UISearchBarDelegate
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar!) {
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         //hide the callout
         self.mapView.callout.hidden = true
         
@@ -155,7 +155,7 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSLocatorDelegate, 
         self.startGeocoding()
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar!) {
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         //hide the keyboard
         searchBar.resignFirstResponder()
     }
@@ -164,7 +164,7 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSLocatorDelegate, 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "ResultsSegue" {
-            let controller = segue.destinationViewController as GeocodingResultsViewController
+            let controller = segue.destinationViewController as! GeocodingResultsViewController
             controller.results = self.selectedGraphic.allAttributes()
         }
     }

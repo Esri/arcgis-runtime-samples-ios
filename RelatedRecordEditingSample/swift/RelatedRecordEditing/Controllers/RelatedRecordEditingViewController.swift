@@ -73,8 +73,8 @@ class RelatedRecordEditingViewController: UIViewController, AGSCalloutDelegate, 
     
     func didClickAccessoryButtonForCallout(callout: AGSCallout!) {
         
-        let graphic = callout.representedObject as AGSGraphic
-        self.incidentsLayer = graphic.layer as AGSFeatureLayer
+        let graphic = callout.representedObject as! AGSGraphic
+        self.incidentsLayer = graphic.layer as! AGSFeatureLayer
         
         //Show popup for the graphic because the user tapped on the callout accessory button
         //this is a client side popup based on the graphic that was selected.
@@ -118,7 +118,7 @@ class RelatedRecordEditingViewController: UIViewController, AGSCalloutDelegate, 
         //show the related notes
         self.selectedIncidentsOID = incidentOID
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let notesVC = storyboard.instantiateViewControllerWithIdentifier("NotesViewController") as NotesViewController
+        let notesVC = storyboard.instantiateViewControllerWithIdentifier("NotesViewController") as! NotesViewController
         notesVC.delegate = self
         notesVC.incidentOID = incidentOID
         notesVC.incidentLayer = self.incidentsLayer

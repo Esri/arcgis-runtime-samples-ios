@@ -43,11 +43,11 @@ class GeocodingResultsViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("GeocodingResultCell") as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("GeocodingResultCell") as! UITableViewCell
         
         //text is the key at the given indexPath
         let keyAtIndexPath = Array(self.results.keys)[indexPath.row]
-        cell.textLabel.text = keyAtIndexPath as? String
+        cell.textLabel?.text = keyAtIndexPath as? String
         
         //detail text is the value associated with the key above
         if let detailValue: AnyObject = self.results[keyAtIndexPath] {
@@ -59,7 +59,7 @@ class GeocodingResultsViewController: UIViewController, UITableViewDataSource, U
             }
             else if detailValue is NSNumber {
                 //value is a NSDecimalNumber, format the result as a double
-                cell.detailTextLabel?.text = "\((detailValue as NSNumber).doubleValue)"
+                cell.detailTextLabel?.text = "\((detailValue as! NSNumber).doubleValue)"
             }
             else {
                 //not a NSDecimalNumber or a NSString,

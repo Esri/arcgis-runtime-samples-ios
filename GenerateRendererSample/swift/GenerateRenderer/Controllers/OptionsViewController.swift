@@ -63,7 +63,7 @@ class OptionsViewController: UITableViewController {
             cell = UITableViewCell(style: .Default, reuseIdentifier: reuseIdentifier)
         }
         let option = self.options[indexPath.row]
-        cell?.textLabel.text = option
+        cell?.textLabel!.text = option
         //clear cell background color
         cell?.backgroundColor = UIColor.clearColor()
         return cell!

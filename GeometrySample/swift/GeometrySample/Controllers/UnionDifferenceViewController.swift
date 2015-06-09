@@ -91,7 +91,7 @@ class UnionDifferenceViewController: UIViewController, AGSMapViewLayerDelegate {
     @IBAction func add() {
         
         //Get the geometry of the sketch layer
-        let sketchGeometry = self.sketchLayer.geometry.copy() as AGSGeometry
+        let sketchGeometry = self.sketchLayer.geometry.copy() as! AGSGeometry
         
         //Create the graphic and add it to the graphics layer
         let graphic = AGSGraphic(geometry: sketchGeometry, symbol:nil, attributes:nil)

@@ -63,7 +63,7 @@ class MainViewController: UIViewController, LegendViewControllerDelegate {
         //check for the segue identifier
         if segue.identifier == kLegendViewControllerSegue {
             //get a reference to the destination controller from the segue
-            let controller = segue.destinationViewController as LegendViewController
+            let controller = segue.destinationViewController as! LegendViewController
             //assign the data source
             controller.legendDataSource = self.legendDataSource
             //assign the delegate
@@ -79,7 +79,7 @@ class MainViewController: UIViewController, LegendViewControllerDelegate {
                 
                 self.popOverController = UIPopoverController(contentViewController: controller)
                 self.popOverController.popoverContentSize = CGSizeMake(200, 600)
-                let customSegue = segue as CustomSegue
+                let customSegue = segue as! CustomSegue
                 
                 customSegue.view = self.view
                 customSegue.rect = self.infoButton.frame

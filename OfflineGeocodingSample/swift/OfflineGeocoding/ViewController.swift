@@ -110,7 +110,7 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSMapViewTouchDeleg
     
     func mapView(mapView: AGSMapView!, didMoveTapAndHoldAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint!, features: [NSObject : AnyObject]!) {
         //update the graphic & callout location as user moves tap&hold
-        (self.graphicsLayer.graphics[0] as AGSGraphic).geometry = mappoint
+        (self.graphicsLayer.graphics[0] as! AGSGraphic).geometry = mappoint
         
         //reverse-geocode new location
         self.locator.addressForLocation(mappoint, maxSearchDistance:25)
@@ -119,7 +119,7 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSMapViewTouchDeleg
     func mapView(mapView: AGSMapView!, didEndTapAndHoldAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint!, features: [NSObject : AnyObject]!) {
         
         //update callout's position to show it correctly on the regular map display (not enlarged)
-        self.mapView.callout.showCalloutAtPoint(mappoint, forFeature: self.graphicsLayer.graphics.first as AGSFeature, layer: self.graphicsLayer, animated: false)
+        self.mapView.callout.showCalloutAtPoint(mappoint, forFeature: self.graphicsLayer.graphics.first as! AGSFeature, layer: self.graphicsLayer, animated: false)
     }
     
     func startGeocoding() {
@@ -140,7 +140,7 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSMapViewTouchDeleg
     //MARK: - AGSCalloutDelegate
     
     func didClickAccessoryButtonForCallout(callout: AGSCallout!) {
-        let graphic = callout.representedObject as AGSGraphic
+        let graphic = callout.representedObject as! AGSGraphic
         //save a reference to the selected graphic, in order to pass it to the results view controller in prepareForSegue method
         self.selectedGraphic = graphic
         
@@ -159,14 +159,14 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSMapViewTouchDeleg
         //The locator we are using in this sample returns 'Match_addr' attribute for geocoded results and
         //'Street' for reverse-geocoded results
         if feature.hasAttributeForKey("Match_addr") {
-            callout.title = feature.attributeForKey("Match_addr") as String
+            callout.title = feature.attributeForKey("Match_addr") as! String
         }
         else if feature.hasAttributeForKey("Street") {
-            callout.title = feature.attributeForKey("Street") as String
+            callout.title = feature.attributeForKey("Street") as! String
         }
         
         //It also returns 'City' and 'ZIP' for both kind of results
-        let zip = feature.attributeForKey("ZIP") as String
+        let zip = feature.attributeForKey("ZIP") as! String
         self.mapView.callout.detail = feature.attributeForKey("City").stringByAppendingString(", \(zip)")
         return true
     }
@@ -188,13 +188,13 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSMapViewTouchDeleg
         {
             //sort the results based on score
             sorted(candidates, { (a, b) -> Bool in
-                let first = (a as AGSAddressCandidate).score
-                let second = (b as AGSAddressCandidate).score
+                let first = (a as! AGSAddressCandidate).score
+                let second = (b as! AGSAddressCandidate).score
                 return first > second
             })
             
             //loop through all candidates/results and add to graphics layer
-            for candidate in candidates as [AGSAddressCandidate] {
+            for candidate in candidates as! [AGSAddressCandidate] {
                 let graphic = AGSGraphic(geometry: candidate.location, symbol:nil, attributes:candidate.attributes)
                 
                 //add the graphic to the graphics layer
@@ -225,11 +225,11 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSMapViewTouchDeleg
         
         //show the Street, City, and ZIP attributes in the callout
         if let street:AnyObject = candidate.attributes["Street"] {
-            self.mapView.callout.title = street as String
+            self.mapView.callout.title = street as! String
         }
         if let zip:AnyObject = candidate.attributes["ZIP"] {
             if let city:AnyObject = candidate.attributes["City"] {
-                self.mapView.callout.detail =  (city as String).stringByAppendingString(", \(zip)")
+                self.mapView.callout.detail =  (city as! String).stringByAppendingString(", \(zip)")
             }
         }
         
@@ -243,7 +243,7 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSMapViewTouchDeleg
     
     //MARK: - UISearchBarDelegate methods
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar!) {
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
         //hide the callout
         self.mapView.callout.hidden = true
@@ -253,12 +253,12 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSMapViewTouchDeleg
         self.startGeocoding()
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar!) {
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         //hide the keyboard
         self.view.endEditing(true)
     }
     
-    func searchBarResultsListButtonClicked(searchBar: UISearchBar!) {
+    func searchBarResultsListButtonClicked(searchBar: UISearchBar) {
         self.performSegueWithIdentifier(kRecentViewSegueIdentifier, sender: self)
     }
     
@@ -266,11 +266,11 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSMapViewTouchDeleg
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == kResultsViewSegueIdentifier {
-            let controller = segue.destinationViewController as ResultsViewController
+            let controller = segue.destinationViewController as! ResultsViewController
             controller.results = self.selectedGraphic.allAttributes()
         }
         else if segue.identifier == kRecentViewSegueIdentifier {
-            let controller = segue.destinationViewController as RecentViewController
+            let controller = segue.destinationViewController as! RecentViewController
             controller.items = self.recentSearches
             controller.completion = { [weak self] (item) in
                 if let weakSelf = self {

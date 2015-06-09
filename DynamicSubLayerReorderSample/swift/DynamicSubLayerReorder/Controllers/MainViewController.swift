@@ -64,7 +64,7 @@ class MainViewController: UIViewController, AGSLayerDelegate, LayersListDelegate
             //un hide the container view
             self.listContainerView.hidden = false
             //pass the dynamicLayerInfos array to the list view
-            self.layersListViewController.layerInfos = self.dynamicMapServiceLayer.mapServiceInfo.layerInfos as [AGSLayerInfo]
+            self.layersListViewController.layerInfos = self.dynamicMapServiceLayer.mapServiceInfo.layerInfos as! [AGSLayerInfo]
         }
     }
     
@@ -75,7 +75,7 @@ class MainViewController: UIViewController, AGSLayerDelegate, LayersListDelegate
         //when its embeded in the container view
         //and assign self as the delegate
         if segue.identifier == "ListEmbedSegue" {
-            self.layersListViewController = segue.destinationViewController as LayersListViewController
+            self.layersListViewController = segue.destinationViewController as! LayersListViewController
             self.layersListViewController.delegate = self
         }
     }

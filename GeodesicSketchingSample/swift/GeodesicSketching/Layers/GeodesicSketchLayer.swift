@@ -28,7 +28,7 @@ class GeodesicSketchLayer: AGSSketchGraphicsLayer {
         
         // Densify the geometry to get geodesic lines drawn rather than just straight lines
         if self.geometry is AGSPolyline && firstPointPlaced {
-            let densified = self.geometryEngine.geodesicDensifyGeometry(self.geometry, withMaxSegmentLength:50, inUnit:AGSSRUnit.UnitSurveyMile) as AGSPolyline
+            let densified = self.geometryEngine.geodesicDensifyGeometry(self.geometry, withMaxSegmentLength:50, inUnit:AGSSRUnit.UnitSurveyMile) as! AGSPolyline
             
             self.applyGeometry(densified)
         }

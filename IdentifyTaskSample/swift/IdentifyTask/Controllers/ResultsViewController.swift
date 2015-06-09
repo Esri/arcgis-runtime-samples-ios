@@ -80,7 +80,7 @@ class ResultsViewController: UIViewController, UITableViewDataSource, UITableVie
             }
             else if detailValue is NSDecimalNumber {
                 //value is a NSDecimalNumber, format the result as a double
-                cell?.detailTextLabel?.text = String(format: "%0.0f", detailValue as NSDecimalNumber)
+                cell?.detailTextLabel?.text = String(format: "%0.0f", detailValue as! NSDecimalNumber)
             }
             else {
                 //not a NSDecimalNumber or a NSString,

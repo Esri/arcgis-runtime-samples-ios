@@ -74,7 +74,7 @@ class DetailsViewController: UITableViewController, UITableViewDataSource, UITab
         //extract the attribute and its value and display both in the cell
         let key:NSObject = self.aliases[indexPath.row] as NSObject
         cell?.textLabel?.text = self.fieldAliases[key] as? String
-        cell?.detailTextLabel?.text = "\(self.feature.attributeAsStringForKey(key as String))"
+        cell?.detailTextLabel?.text = "\(self.feature.attributeAsStringForKey(key as! String))"
         
         return cell!
     }

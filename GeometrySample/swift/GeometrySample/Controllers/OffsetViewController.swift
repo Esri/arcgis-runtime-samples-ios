@@ -133,7 +133,7 @@ class OffsetViewController: UIViewController, AGSMapViewLayerDelegate {
         self.userInstructions.text = "Adjust distance and bevel ratio, tap reset to start over"
         
         //Get the sketch geometry
-        let sketchGeometry = self.sketchLayer.geometry.copy() as AGSGeometry
+        let sketchGeometry = self.sketchLayer.geometry.copy() as! AGSGeometry
         
         //A symbol for lines on the graphics layer
         let sketchLineSymbol = AGSSimpleLineSymbol()

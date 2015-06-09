@@ -72,8 +72,8 @@ class ProfileViewController: UIViewController, AGSPortalUserDelegate {
         }
         
         //show the corresponding values in the textfields
-        self.fullNameTextField.text = self.portal?.user?.fullName? ?? "NA"
-        self.usernameTextField.text = self.portal?.user?.username? ?? "NA"
+        self.fullNameTextField.text = self.portal?.user?.fullName ?? "NA"
+        self.usernameTextField.text = self.portal?.user?.username ?? "NA"
         self.emailTextField.text = self.portal?.user?.email ?? "NA"
         self.roleTextField.text = self.roleDescription(self.portal?.user?.role ?? .None)
         
@@ -135,7 +135,7 @@ class ProfileViewController: UIViewController, AGSPortalUserDelegate {
     //MARK: - Actions
     
     @IBAction func signOutAction() {
-        (UIApplication.sharedApplication().delegate as AppDelegate).removeCredentialFromKeychain()
+        (UIApplication.sharedApplication().delegate as! AppDelegate).removeCredentialFromKeychain()
         self.navigationController?.popViewControllerAnimated(true)
     }
 }

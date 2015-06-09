@@ -37,7 +37,7 @@ class SketchToolbar: NSObject, AGSMapViewTouchDelegate {
         
         //Get references to the UI elements in the toolbar
         //Each UI element was assigned a "tag" in the nib file to make it easy to find them
-        self.sketchTools = toolbar.viewWithTag(55) as UISegmentedControl
+        self.sketchTools = toolbar.viewWithTag(55) as! UISegmentedControl
         
         //to display actual images in iOS 7 for segmented control
         let version = (UIDevice.currentDevice().systemVersion as NSString).integerValue
@@ -54,10 +54,10 @@ class SketchToolbar: NSObject, AGSMapViewTouchDelegate {
         //disable the select tool if no graphics available
         self.sketchTools.setEnabled(graphicsLayer.graphicsCount > 0, forSegmentAtIndex: 3)
         
-        self.undoTool = toolbar.viewWithTag(56) as UIButton
-        self.redoTool = toolbar.viewWithTag(57) as UIButton
-        self.saveTool = toolbar.viewWithTag(58) as UIButton
-        self.clearTool = toolbar.viewWithTag(59) as UIButton
+        self.undoTool = toolbar.viewWithTag(56) as! UIButton
+        self.redoTool = toolbar.viewWithTag(57) as! UIButton
+        self.saveTool = toolbar.viewWithTag(58) as! UIButton
+        self.clearTool = toolbar.viewWithTag(59) as! UIButton
         
         super.init()
         
@@ -102,7 +102,7 @@ class SketchToolbar: NSObject, AGSMapViewTouchDelegate {
     
     @IBAction func save() {
         //Get the sketch geometry
-        let sketchGeometry = self.sketchLayer.geometry.copy() as AGSGeometry
+        let sketchGeometry = self.sketchLayer.geometry.copy() as! AGSGeometry
         
         //If this is not a new sketch (i.e we are modifying an existing graphic)
         if self.activeGraphic != nil {
@@ -167,11 +167,11 @@ class SketchToolbar: NSObject, AGSMapViewTouchDelegate {
         
         //find which graphic to modify
         let valuesArray = Array(features.values)
-        for graphicsArray in valuesArray as [[AGSGraphic]] {
+        for graphicsArray in valuesArray as! [[AGSGraphic]] {
             if graphicsArray.count > 0 {
                 //Get the graphic's geometry to the sketch layer so that it can be modified
                 self.activeGraphic = graphicsArray[0]
-                let geom = self.activeGraphic.geometry.mutableCopy() as AGSGeometry
+                let geom = self.activeGraphic.geometry.mutableCopy() as! AGSGeometry
                 
                 //clear out the graphic's geometry so that it is not displayed under the sketch
                 self.activeGraphic.geometry = nil

@@ -53,7 +53,7 @@ class WeatherInfoViewController: UIViewController, AGSMapViewTouchDelegate {
         self.mapView.callout.detailColor = UIColor.blackColor()
         
         //Prepare the view we will display while loading weather information
-        self.loadingView =  NSBundle.mainBundle().loadNibNamed("LoadingView", owner:nil, options:nil)[0] as UIView
+        self.loadingView =  NSBundle.mainBundle().loadNibNamed("LoadingView", owner:nil, options:nil)[0] as! UIView
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,7 +71,7 @@ class WeatherInfoViewController: UIViewController, AGSMapViewTouchDelegate {
         self.mapView.callout.customView = self.loadingView
         self.mapView.callout.showCalloutAt(mappoint, screenOffset:CGPointZero, animated:true)
         
-        let latLong = AGSGeometryEngine.defaultGeometryEngine().projectGeometry(mappoint, toSpatialReference:AGSSpatialReference.wgs84SpatialReference()) as AGSPoint
+        let latLong = AGSGeometryEngine.defaultGeometryEngine().projectGeometry(mappoint, toSpatialReference:AGSSpatialReference.wgs84SpatialReference()) as! AGSPoint
         //Set up the parameters to send the webservice
         var params = [NSObject:AnyObject]()
         params["lon"] = latLong.x

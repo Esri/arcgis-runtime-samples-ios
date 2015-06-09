@@ -92,7 +92,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
     
     func layerDidLoad(layer: AGSLayer!) {
         if layer is AGSFeatureTableLayer {
-            let featureTableLayer = layer as AGSFeatureTableLayer
+            let featureTableLayer = layer as! AGSFeatureTableLayer
             if self.mapView.mapScale > featureTableLayer.minScale {
                 self.mapView.zoomToScale(featureTableLayer.minScale, animated: true)
             }
@@ -103,7 +103,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
     func layer(layer: AGSLayer!, didFailToLoadWithError error: NSError!) {
         var errormsg:String!
         if layer is AGSFeatureTableLayer {
-            let featureTableLayer = layer as AGSFeatureTableLayer
+            let featureTableLayer = layer as! AGSFeatureTableLayer
             errormsg = "Failed to load \(featureTableLayer.name). Error: \(error)"
             
             //activity shown when loading online layer, dismiss this
@@ -123,7 +123,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
         var tappedFeatures = [AGSFeature]()
         
         for (key, value) in features {
-            let graphics = value as [AGSFeature]
+            let graphics = value as! [AGSFeature]
             for graphic in graphics as [AGSFeature] {
                 tappedFeatures.append(graphic)
             }
@@ -144,7 +144,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
         
         for feature in features as [AGSFeature] {
             
-            let gdbFeature = feature as AGSGDBFeature
+            let gdbFeature = feature as! AGSGDBFeature
             let popupInfo = AGSPopupInfo(forGDBFeatureTable: gdbFeature.table)
             let popup = AGSPopup(GDBFeature: gdbFeature, popupInfo: popupInfo)
             popups.append(popup)
@@ -193,7 +193,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
     }
     
     @IBAction func deleteGDBAction(sender:AnyObject) {
-        if self.viewingLocal | self.goingLocal {
+        if self.viewingLocal || self.goingLocal {
             self.logStatus("cannot delete local data while displaying it")
             return
         }
@@ -201,10 +201,10 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
         
         //Remove all files with .geodatabase, .geodatabase-shm and .geodatabase-wal file extensions
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        let path = paths[0] as String
+        let path = paths[0] as! String
         let files = NSFileManager.defaultManager().contentsOfDirectoryAtPath(path, error: nil)
-        for file in files as [String] {
-            let remove = file.hasSuffix(".geodatabase") | file.hasSuffix(".geodatabase-shm") | file.hasSuffix(".geodatabase-wal")
+        for file in files as! [String] {
+            let remove = file.hasSuffix(".geodatabase") || file.hasSuffix(".geodatabase-shm") || file.hasSuffix(".geodatabase-wal")
             if remove {
                 NSFileManager.defaultManager().removeItemAtPath(path.stringByAppendingPathComponent(file), error: nil)
                 self.logStatus("deleting file: \(file)")
@@ -301,12 +301,12 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
                 //remove all local feature layers
                 for layer in weakSelf.mapView.mapLayers {  //tried using the optional chaining in the for loop but getting an error
                     if layer is AGSFeatureTableLayer {
-                        weakSelf.mapView.removeMapLayer(layer as AGSFeatureTableLayer)
+                        weakSelf.mapView.removeMapLayer(layer as! AGSFeatureTableLayer)
                     }
                 }
                 
                 //Add live feature layers
-                for info in weakSelf.gdbTask.featureServiceInfo.layerInfos as [AGSMapServiceLayerInfo] {
+                for info in weakSelf.gdbTask.featureServiceInfo.layerInfos as! [AGSMapServiceLayerInfo] {
                     let url = weakSelf.gdbTask.URL.URLByAppendingPathComponent("\(info.layerId)")
                     
                     let featureServiceTable = AGSGDBFeatureServiceTable(serviceURL: url, credential: weakSelf.gdbTask.credential, spatialReference: weakSelf.mapView.spatialReference)
@@ -340,7 +340,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
         params.extent = self.mapView.maxEnvelope
         params.outSpatialReference = self.mapView.spatialReference
         var layers = [UInt]()
-        for layerInfo in self.gdbTask.featureServiceInfo.layerInfos as [AGSMapServiceLayerInfo] {
+        for layerInfo in self.gdbTask.featureServiceInfo.layerInfos as! [AGSMapServiceLayerInfo] {
             layers += [layerInfo.layerId]
         }
         params.layerIDs = layers
@@ -354,7 +354,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
                     let totalBytesDownloaded: AnyObject? = userInfo?["AGSDownloadProgressTotalBytesDownloaded"]
                     let totalBytesExpected: AnyObject? = userInfo?["AGSDownloadProgressTotalBytesExpected"]
                     if totalBytesDownloaded != nil && totalBytesExpected != nil {
-                        let dPercentage = Float(totalBytesDownloaded! as NSNumber)/Float(totalBytesExpected! as NSNumber)
+                        let dPercentage = Float(totalBytesDownloaded! as! NSNumber)/Float(totalBytesExpected! as! NSNumber)
                         SVProgressHUD.showProgress(dPercentage, status: "Downloading \n features")
                     }
                 }
@@ -383,7 +383,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
                         BackgroundHelper.postLocalNotificationIfAppNotActive("Features downloaded.")
                         
                         //remove the live feature layers
-                        for layer in weakSelf.mapView.mapLayers as [AGSLayer] { //check if explicitly assigning AGSLayer affects layer from being AGSFeatureLayer
+                        for layer in weakSelf.mapView.mapLayers as! [AGSLayer] { //check if explicitly assigning AGSLayer affects layer from being AGSFeatureLayer
                             if layer is AGSFeatureTableLayer {
                                 weakSelf.mapView.removeMapLayer(layer)
                             }
@@ -391,7 +391,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
                         
                         //Add layers from local database
                         weakSelf.geodatabase = geodatabase
-                        for featureTable in geodatabase.featureTables() as [AGSFeatureTable] {
+                        for featureTable in geodatabase.featureTables() as! [AGSFeatureTable] {
                             if featureTable.hasGeometry() {
                                 weakSelf.mapView.addMapLayer(AGSFeatureTableLayer(featureTable: featureTable))
                             }
@@ -429,7 +429,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
         controller.dismissViewControllerAnimated(true, completion: { () -> Void in
             
             //Create new feature with template
-            let featureTable = layer as AGSGDBFeatureTable
+            let featureTable = layer as! AGSGDBFeatureTable
             let feature = featureTable.featureWithTemplate(template)
             
             //Create popup for new feature, commence edit mode
@@ -506,7 +506,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
         else {
             //we are in live data mode, apply edits to the service immediately
             SVProgressHUD.showWithStatus("Applying edit to server...")
-            let featureServiceTable = popup.gdbFeatureTable as AGSGDBFeatureServiceTable
+            let featureServiceTable = popup.gdbFeatureTable as! AGSGDBFeatureServiceTable
             featureServiceTable.applyFeatureEditsWithCompletion({ [weak self] (featureEditErrors, error) -> Void in
                 if let weakSelf = self {
                     SVProgressHUD.dismiss()
@@ -516,7 +516,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
                         weakSelf.logStatus("Error while applying edit: \(error.localizedDescription)")
                     }
                     else {
-                        for featureEditError in featureEditErrors as [AGSGDBFeatureEditError] {
+                        for featureEditError in featureEditErrors as! [AGSGDBFeatureEditError] {
                             weakSelf.logStatus("Edit to feature (OBJECTID = \(featureEditError.objectID) rejected by server because : \(featureEditError.localizedDescription))")
                         }
                         
@@ -534,7 +534,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
                                     }
                                     else {
                                         if attachmentEditErrors != nil {
-                                            for attachmentEditError in attachmentEditErrors as [AGSGDBFeatureEditError] {
+                                            for attachmentEditError in attachmentEditErrors as! [AGSGDBFeatureEditError] {
                                                 weakSelf.logStatus("Edit to attachment (OBJECTID = \(attachmentEditError.attachmentID) rejected by server because : \(attachmentEditError.localizedDescription))")
                                             }
                                         }
@@ -564,7 +564,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
         else {
             //we are in live data mode, apply edits to the service immediately
             SVProgressHUD.showWithStatus("Applying edit to server...")
-            let featureServiceTable = popup.gdbFeatureTable as AGSGDBFeatureServiceTable
+            let featureServiceTable = popup.gdbFeatureTable as! AGSGDBFeatureServiceTable
             featureServiceTable.applyFeatureEditsWithCompletion({ [weak self] (featureEditErrors, error) -> Void in
                 if let weakSelf = self {
                     SVProgressHUD.dismiss()
@@ -574,7 +574,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
                         weakSelf.logStatus("Error while applying edit: \(error.localizedDescription)")
                     }
                     else {
-                        for featureEditError in featureEditErrors as [AGSGDBFeatureEditError] {
+                        for featureEditError in featureEditErrors as! [AGSGDBFeatureEditError] {
                             weakSelf.logStatus("Deleting feature (OBJECTID = \(featureEditError.objectID) rejected by server because : \(featureEditError.localizedDescription))")
                         }
                         weakSelf.logStatus("feature deleted in server")
@@ -590,7 +590,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
     
     func numberOfEditsInGeodatabase(geodatabase:AGSGDBGeodatabase) -> Int {
         var total = 0
-        for featureTable in geodatabase.featureTables() as [AGSGDBFeatureTable] {
+        for featureTable in geodatabase.featureTables() as! [AGSGDBFeatureTable] {
             total += featureTable.addedFeatures().count + featureTable.deletedFeatures().count + featureTable.updatedFeatures().count
         }
         return total
@@ -615,7 +615,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
             //            println("textview text \(self.logsTextView.text)")
             
             //write to log file
-            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             appDelegate.logAppStatus(status)
             
             let delay = 2 * Double(NSEC_PER_SEC)

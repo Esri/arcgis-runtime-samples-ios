@@ -22,7 +22,7 @@ extension AGSMapContentsLayerInfo {
     var expanded:Bool {
         get {
             if let optionalValue: AnyObject = objc_getAssociatedObject(self, &expandedHandle) {
-                return optionalValue as Bool
+                return optionalValue as! Bool
             }
             return false
         }
@@ -35,7 +35,7 @@ extension AGSMapContentsLayerInfo {
     var level:Int {
         get {
             if let optionalValue: AnyObject = objc_getAssociatedObject(self, &levelHandle) {
-                return optionalValue as Int
+                return optionalValue as! Int
             }
             return 0
         }

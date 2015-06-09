@@ -120,7 +120,7 @@ class NotesViewController: UIViewController, AGSFeatureLayerQueryDelegate, AGSFe
         let oid = self.incidentNotesLayer.objectIdForFeature(self.relatedFeaturesResultsArray[indexPath.row])
         
         if oid > 0 {
-            self.loadingView = LoadingView.loadingViewInView(self.notesPopupVC.view, withText:"Deleting record...") as LoadingView
+            self.loadingView = LoadingView.loadingViewInView(self.notesPopupVC.view, withText:"Deleting record...") as! LoadingView
             //feature has a valid objectid, this means it exists on the server
             //and we simply update the exisiting feature
             self.incidentNotesLayer.deleteFeaturesWithObjectIds([Int(oid)])
@@ -195,14 +195,14 @@ class NotesViewController: UIViewController, AGSFeatureLayerQueryDelegate, AGSFe
         }
         
         // Set the image.
-        let imageView = cell.viewWithTag(IMAGE_TAG) as UIImageView
+        let imageView = cell.viewWithTag(IMAGE_TAG) as! UIImageView
         imageView.image = image
         
         //assigns the notes text to the notes field.
         let notesText = note.attributeAsStringForKey("notes")
         
         // Set the notes text.
-        let label = cell.viewWithTag(NOTES_TAG) as UILabel
+        let label = cell.viewWithTag(NOTES_TAG) as! UILabel
         label.text = notesText
     }
     
@@ -257,7 +257,7 @@ class NotesViewController: UIViewController, AGSFeatureLayerQueryDelegate, AGSFe
         }
         
         //Tell the user edits are being saved int the background
-        self.loadingView = LoadingView.loadingViewInView(self.notesPopupVC.view, withText:"Saving Notes...") as LoadingView
+        self.loadingView = LoadingView.loadingViewInView(self.notesPopupVC.view, withText:"Saving Notes...") as! LoadingView
     
     }
     
@@ -284,8 +284,8 @@ class NotesViewController: UIViewController, AGSFeatureLayerQueryDelegate, AGSFe
         //if the related records already exist we fill the related feature array with the features from the dictionary's result set.
         if relatedFeatures.count > 0 {
             println("Yes, we have related records for this incident")
-            let resultsSet = relatedFeatures[self.incidentOID] as AGSFeatureSet
-            self.relatedFeaturesResultsArray  =  resultsSet.features as [AGSGraphic]
+            let resultsSet = relatedFeatures[self.incidentOID] as! AGSFeatureSet
+            self.relatedFeaturesResultsArray  =  resultsSet.features as! [AGSGraphic]
         }
         else {
             self.relatedFeaturesResultsArray  =  [AGSGraphic]()
@@ -302,7 +302,7 @@ class NotesViewController: UIViewController, AGSFeatureLayerQueryDelegate, AGSFe
         
         if editResults.addResults.count > 0 {
             //we were adding a new feature
-            let result = editResults.addResults[0] as AGSEditResult
+            let result = editResults.addResults[0] as! AGSEditResult
             if !result.success {
                 //Inform user
                 self.warnUserOfErrorWithMessage("Could not add feature. Please try again")
@@ -321,7 +321,7 @@ class NotesViewController: UIViewController, AGSFeatureLayerQueryDelegate, AGSFe
         }
         else if editResults.updateResults.count > 0 {
             //we were updating a feature
-            let result = editResults.updateResults[0] as AGSEditResult
+            let result = editResults.updateResults[0] as! AGSEditResult
             if !result.success {
                 //Inform user
                 self.warnUserOfErrorWithMessage("Could not update feature. Please try again")
@@ -335,7 +335,7 @@ class NotesViewController: UIViewController, AGSFeatureLayerQueryDelegate, AGSFe
             }
         }
         else if editResults.deleteResults.count > 0 {
-            let result = editResults.deleteResults[0] as AGSEditResult
+            let result = editResults.deleteResults[0] as! AGSEditResult
             if !result.success {
                 //Delete operation failed. Inform user
                 self.warnUserOfErrorWithMessage("Could not delete feature. Please try again")
@@ -365,7 +365,7 @@ class NotesViewController: UIViewController, AGSFeatureLayerQueryDelegate, AGSFe
     func addNewNote() {
         
         //create a new feature with the template available from the notes layer.
-        let note = self.incidentNotesLayer.featureWithTemplate(self.incidentNotesLayer.templates[0] as AGSFeatureTemplate)
+        let note = self.incidentNotesLayer.featureWithTemplate(self.incidentNotesLayer.templates[0] as! AGSFeatureTemplate)
         
         //set the relevant attributes
         //we are setting the ID of  source incident to establish  a relationship between the note  and the incident
@@ -430,10 +430,10 @@ class NotesViewController: UIViewController, AGSFeatureLayerQueryDelegate, AGSFe
         query.definitionExpression = "1=1"
         
         //Perform query
-        let op = self.incidentLayer.queryRelatedFeatures(query) as AGSJSONRequestOperation
+        let op = self.incidentLayer.queryRelatedFeatures(query) as! AGSJSONRequestOperation
         op.state.setObject(self.incidentOID, forKey:"objectid")
         
         //show the loading view to indicate the process
-        self.loadingView = LoadingView.loadingViewInView(self.view, withText: "Querying related records...") as LoadingView
+        self.loadingView = LoadingView.loadingViewInView(self.view, withText: "Querying related records...") as! LoadingView
     }
 }

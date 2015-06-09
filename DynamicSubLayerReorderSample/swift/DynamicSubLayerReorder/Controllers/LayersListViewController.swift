@@ -81,7 +81,7 @@ class LayersListViewController: UIViewController, OptionsDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let reusableIdentifier = "LayersListCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(reusableIdentifier) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(reusableIdentifier) as! UITableViewCell
         
         let layerInfo = self.layerInfos[indexPath.row]
         cell.textLabel?.text = layerInfo.name

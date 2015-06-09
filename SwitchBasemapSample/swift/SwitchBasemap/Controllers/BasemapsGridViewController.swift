@@ -51,16 +51,16 @@ class BasemapsGridViewController:UIViewController, UICollectionViewDelegate, UIC
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         //item cell for next results
         if self.portalBasemapHelper.hasMoreResults() && indexPath.item == self.portalBasemapHelper.webmapsArray.count {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("LoadCell", forIndexPath: indexPath) as UICollectionViewCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("LoadCell", forIndexPath: indexPath) as! UICollectionViewCell
             return cell
         }
         //item cell for the regular data
         else {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionCell", forIndexPath: indexPath) as UICollectionViewCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionCell", forIndexPath: indexPath) as! UICollectionViewCell
             
             let portalItem = self.portalBasemapHelper.webmapsArray[indexPath.item] as AGSPortalItem
             //use thumbnail image if present or else use the placeholder image
-            let thumbnailView = cell.viewWithTag(1) as UIImageView
+            let thumbnailView = cell.viewWithTag(1) as! UIImageView
             if portalItem.thumbnail != nil {
                 thumbnailView.image = portalItem.thumbnail
             }
@@ -69,7 +69,7 @@ class BasemapsGridViewController:UIViewController, UICollectionViewDelegate, UIC
             }
             
             //use the portal item title as the label
-            let label = cell.viewWithTag(2) as UILabel
+            let label = cell.viewWithTag(2) as! UILabel
             label.text = portalItem.title
             
             return cell
@@ -113,7 +113,7 @@ class BasemapsGridViewController:UIViewController, UICollectionViewDelegate, UIC
             //get the cell corresponding to the index
             if let cell = self.collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0)) {            
                 //check if the cell is visible
-                let isVisible = contains(visibleCells as [UICollectionViewCell], cell)
+                let isVisible = contains(visibleCells as! [UICollectionViewCell], cell)
                 //if visible update the image
                 if isVisible {
                     self.collectionView.reloadItemsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)])

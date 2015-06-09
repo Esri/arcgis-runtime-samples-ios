@@ -85,7 +85,7 @@ class RootViewController: UITableViewController, AGSQueryTaskDelegate, UITableVi
         //get selected feature and extract the name attribute
         //display name in cell
         //add detail disclosure button. This will allow user to see all the attributes in a different view
-        let feature = self.featureSet.features[indexPath.row] as AGSGraphic
+        let feature = self.featureSet.features[indexPath.row] as! AGSGraphic
         cell?.textLabel?.text = feature.attributeAsStringForKey("NAME") //The display field name for the service we are using
         cell?.accessoryType = .DisclosureIndicator
         
@@ -99,13 +99,13 @@ class RootViewController: UITableViewController, AGSQueryTaskDelegate, UITableVi
         //if view controller not created, create it, set up the field names to display
         if nil == self.detailsViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-            self.detailsViewController = storyboard.instantiateViewControllerWithIdentifier("DetailsViewController") as DetailsViewController
+            self.detailsViewController = storyboard.instantiateViewControllerWithIdentifier("DetailsViewController") as! DetailsViewController
             self.detailsViewController.fieldAliases = self.featureSet.fieldAliases
             self.detailsViewController.displayFieldName = self.featureSet.displayFieldName
         }
         
         //the details view controller needs to know about the selected feature to get its value
-        self.detailsViewController.feature = self.featureSet.features[indexPath.row] as AGSGraphic
+        self.detailsViewController.feature = self.featureSet.features[indexPath.row] as! AGSGraphic
         
         //display the feature attributes
         self.navigationController?.pushViewController(self.detailsViewController, animated:true)

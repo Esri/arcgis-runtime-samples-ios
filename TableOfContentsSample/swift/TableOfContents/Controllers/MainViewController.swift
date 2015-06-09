@@ -96,7 +96,7 @@ class MainViewController: UIViewController, AGSMapViewLayerDelegate, TOCViewCont
     @IBAction func contentButtonAction() {
         //using the TOCStoryboard instantiate the TOCViewController
         let storyboard = UIStoryboard(name: "TOCStoryboard", bundle: nil)
-        let tOCViewController = storyboard.instantiateInitialViewController() as TOCViewController
+        let tOCViewController = storyboard.instantiateInitialViewController() as! TOCViewController
         //pass the sublayers on the root layer info to the TOCViewController
         tOCViewController.itemsArray = self.contentsTree.root.subLayers
         //set the delegate

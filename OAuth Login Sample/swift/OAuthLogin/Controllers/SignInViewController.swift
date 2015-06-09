@@ -35,7 +35,7 @@ class SignInViewController: UIViewController, UIAlertViewDelegate, AGSPortalDele
         
         //Check to see if we previously saved the user's credentails in the keychain
         //and if so, use it to sign in to the portal
-        if let credential = (UIApplication.sharedApplication().delegate as AppDelegate).fetchCredentialFromKeychain() {
+        if let credential = (UIApplication.sharedApplication().delegate as! AppDelegate).fetchCredentialFromKeychain() {
             
             //Connect to the portal
             self.portal = AGSPortal(URL: NSURL(string: kPortalUrl), credential:credential)
@@ -45,7 +45,7 @@ class SignInViewController: UIViewController, UIAlertViewDelegate, AGSPortalDele
     
     override func viewWillAppear(animated:Bool) {
         super.viewWillAppear(animated)
-        if let credential = (UIApplication.sharedApplication().delegate as AppDelegate).fetchCredentialFromKeychain() {
+        if let credential = (UIApplication.sharedApplication().delegate as! AppDelegate).fetchCredentialFromKeychain() {
             
             self.signInButton.setTitle("Signing in...", forState: .Normal)
             self.signInButton.enabled = false
@@ -138,7 +138,7 @@ class SignInViewController: UIViewController, UIAlertViewDelegate, AGSPortalDele
         //Now that we were able to connect to the portal using the credential,
         //store the credential securely in the keychain so that we can use it later
         //when the app is restarted.
-        (UIApplication.sharedApplication().delegate as AppDelegate).saveCredentialToKeychain(portal.credential)
+        (UIApplication.sharedApplication().delegate as! AppDelegate).saveCredentialToKeychain(portal.credential)
         
         //If we presented any other view controller, dismiss it
         if self.presentedViewController != nil {
@@ -163,7 +163,7 @@ class SignInViewController: UIViewController, UIAlertViewDelegate, AGSPortalDele
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "SegueProfileVC" {
-            let controller = segue.destinationViewController as ProfileViewController
+            let controller = segue.destinationViewController as! ProfileViewController
             controller.portal = self.portal
         }
     }

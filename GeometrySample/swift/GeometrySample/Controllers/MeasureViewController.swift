@@ -215,8 +215,8 @@ class MeasureViewController: UIViewController, AGSMapViewLayerDelegate, UnitSele
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == kUnitSelectorSegue {
-            self.popOverController = (segue as UIStoryboardPopoverSegue).popoverController
-            let controller = segue.destinationViewController as UnitSelectorViewController
+            self.popOverController = (segue as! UIStoryboardPopoverSegue).popoverController
+            let controller = segue.destinationViewController as! UnitSelectorViewController
             controller.useAreaUnits = (self.measureMethod.selectedSegmentIndex == 0) ? false : true
             
             controller.delegate = self

@@ -43,7 +43,7 @@ class FeatureTemplatePickerController: UIViewController {
         //if layer contains only templates (no feature types)
         if layer.templates != nil && layer.templates.count > 0 {
             //for each template
-            for template in layer.templates as [AGSFeatureTemplate] {
+            for template in layer.templates as! [AGSFeatureTemplate] {
                 let info = FeatureTemplateInfo()
                 info.featureLayer = layer
                 info.featureTemplate = template
@@ -56,9 +56,9 @@ class FeatureTemplatePickerController: UIViewController {
         //otherwise if layer contains feature types
         else  {
             //for each type
-            for type in layer.types as [AGSFeatureType] {
+            for type in layer.types as! [AGSFeatureType] {
                 //for each temple in type
-                for template in type.templates as [AGSFeatureTemplate] {
+                for template in type.templates as! [AGSFeatureTemplate] {
                     let info = FeatureTemplateInfo()
                     info.featureLayer = layer
                     info.featureTemplate = template
@@ -93,7 +93,7 @@ class FeatureTemplatePickerController: UIViewController {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //Get a cell
         let cellIdentifier = "TemplatePickerCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UITableViewCell!
         
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellIdentifier)

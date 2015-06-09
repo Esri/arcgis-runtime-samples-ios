@@ -5,9 +5,15 @@ This repository contains sample code demonstrating the capabilities of [ArcGIS R
 The ```master``` branch of this repository contains samples configured for the latest available version of [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/en/ios/). For samples configured for older versions of the SDK,  look under the ```Releases``` tab for a specific version.
 
 ## Requirements
+[ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/en/ios/) (Requires ArcGIS for Developers account; free to sign up)
+
+For Objective-C :
 * XCode 5 (or higher)
 * iOS 7 SDK (or higher)
-* [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/en/ios/) (Requires ArcGIS for Developers account; free to sign up)
+
+For Swift : 
+* XCode 6.3 (or higher)
+* iOS 8 SDK (or higher)
 
 ## Instructions
 

@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //If we don't already have a log file path, lets set one up
         if self.logPath == nil {
             var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-            var path = paths[0] as String
+            var path = paths[0] as! String
             self.logPath = path.stringByAppendingPathComponent("appLog.txt")
         }
         

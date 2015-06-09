@@ -78,7 +78,7 @@ class CutterViewController: UIViewController, AGSMapViewLayerDelegate {
         self.userInstructions.text = "Tap the line button and sketch a line crossing the polygon"
         
         //Get the sketch geometry
-        let sketchGeometry = self.sketchLayer.geometry.copy() as AGSGeometry
+        let sketchGeometry = self.sketchLayer.geometry.copy() as! AGSGeometry
         
         //Create the graphic and add it to the graphics layer
         let graphic = AGSGraphic(geometry: sketchGeometry, symbol:nil, attributes:nil)
@@ -168,12 +168,12 @@ class CutterViewController: UIViewController, AGSMapViewLayerDelegate {
         // Create the new geometries using the geometry engine to cut the old ones by the cutter
         var newGraphics = [AGSGraphic]()
         if self.sketchLayer.geometry is AGSPolyline {
-            for graphic in self.graphicsLayer.graphics as [AGSGraphic] {
-                let newGeometries = geometryEngine.cutGeometry(graphic.geometry, withCutter:self.sketchLayer.geometry as AGSPolyline)
+            for graphic in self.graphicsLayer.graphics as! [AGSGraphic] {
+                let newGeometries = geometryEngine.cutGeometry(graphic.geometry, withCutter:self.sketchLayer.geometry as! AGSPolyline)
                 
                 // If the cut was succesful create a graphic and add it to the map
                 if newGeometries.count != 0 {
-                    for geometry in newGeometries as [AGSGeometry] {
+                    for geometry in newGeometries as! [AGSGeometry] {
                         let newGraphic = AGSGraphic(geometry: geometry, symbol:compositeSymbol, attributes:nil)
                         newGraphics.append(newGraphic)
                     }

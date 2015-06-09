@@ -59,8 +59,8 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
         //if the object is a layer info  then create a LayerInfoCell
         if tempObject is AGSMapContentsLayerInfo {
-            let layerInfo = tempObject as AGSMapContentsLayerInfo
-            let layerInfoCell = tableView.dequeueReusableCellWithIdentifier(LayerInfoCellIdentifier) as LayerInfoCell
+            let layerInfo = tempObject as! AGSMapContentsLayerInfo
+            let layerInfoCell = tableView.dequeueReusableCellWithIdentifier(LayerInfoCellIdentifier) as! LayerInfoCell
             layerInfoCell.level = layerInfo.level
             layerInfoCell.canChangeVisibility = layerInfo.canChangeVisibility
             layerInfoCell.visibility = layerInfo.visible
@@ -79,8 +79,8 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         //else if it is a legend info class, create a legend info cell.
         else {
-            let legendElement = tempObject as AGSMapContentsLegendElement
-            let layerLegendCell = tableView.dequeueReusableCellWithIdentifier(LayerLegendCellIdentifier) as LayerLegendCell
+            let legendElement = tempObject as! AGSMapContentsLegendElement
+            let layerLegendCell = tableView.dequeueReusableCellWithIdentifier(LayerLegendCellIdentifier) as! LayerLegendCell
             layerLegendCell.level = legendElement.level
             
             //assign the title.
@@ -108,7 +108,7 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
         //if the selected row is of type layer info
         //then expand the layerInfo if not already expanded or vice versa
         if tempObject is AGSMapContentsLayerInfo {
-            let layerInfo = tempObject as AGSMapContentsLayerInfo
+            let layerInfo = tempObject as! AGSMapContentsLayerInfo
             if !layerInfo.expanded {
                 //add the children to the items array
                 //in order to expand the layer info
@@ -135,7 +135,7 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
         //retrieve the corresponding cell
         if let cellIndexPath = self.tableView.indexPathForCell(layerInfoCell) {
             //get the layer info represented by the cell
-            let layerInfo = self.itemsArray[cellIndexPath.row] as AGSMapContentsLayerInfo
+            let layerInfo = self.itemsArray[cellIndexPath.row] as! AGSMapContentsLayerInfo
             
             //set the visibility of the layer info.
             layerInfo.visible = visibility
@@ -152,12 +152,12 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
         self.expandedLayerInfos.append(layerInfo)
         
         //get the index of the layer info in the items array
-        if let index = find(self.itemsArray as [NSObject], layerInfo) {
+        if let index = find(self.itemsArray as! [NSObject], layerInfo) {
             //check if the layer info has sublayers
             if layerInfo.subLayers.count > 0 {
                 //if true add the sublayers after the parent layer info in the items array
                 var i = 1
-                for subLayerInfo in layerInfo.subLayers as [AGSMapContentsLayerInfo] {
+                for subLayerInfo in layerInfo.subLayers as! [AGSMapContentsLayerInfo] {
                     subLayerInfo.level = layerInfo.level + 1
                     self.itemsArray.insert(subLayerInfo, atIndex: index + i)
                     i++
@@ -167,7 +167,7 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
             else if layerInfo.legendItems.count > 0 {
                 //if yes, then add those elements after the parent layer info
                 var i = 1
-                for legendElement in layerInfo.legendItems as [AGSMapContentsLegendElement] {
+                for legendElement in layerInfo.legendItems as! [AGSMapContentsLegendElement] {
                     legendElement.level = layerInfo.level + 1
                     self.itemsArray.insert(legendElement, atIndex: index + i)
                     i++
@@ -186,7 +186,7 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
         //find the index of the layer info in the items array
         //and remove the sublayers/legendItems following it
-        if let layerInfoIndex = find(self.itemsArray as [NSObject], layerInfo) {
+        if let layerInfoIndex = find(self.itemsArray as! [NSObject], layerInfo) {
         
             //find the index of the next sibling in the items array
             //remove all the items between the layerInfo index and the sibling layerInfoIndex
@@ -210,7 +210,7 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 for i in layerInfoIndex+1...endOfRange {
                     let tempObject: AnyObject = self.itemsArray[i]
                     if tempObject is AGSMapContentsLayerInfo {
-                        (tempObject as AGSMapContentsLayerInfo).expanded = false
+                        (tempObject as! AGSMapContentsLayerInfo).expanded = false
                     }
                 }
                 //remove the items
@@ -227,7 +227,7 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
         var siblingsArray:[AGSMapContentsLayerInfo]
         //get the siblings array
         if layerInfo.parent != nil {
-            siblingsArray = layerInfo.parent.subLayers as [AGSMapContentsLayerInfo]
+            siblingsArray = layerInfo.parent.subLayers as! [AGSMapContentsLayerInfo]
         }
         else {
             //use the root as the parent
@@ -240,7 +240,7 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 //get the sibling layerInfo
                 let siblingLayerInfo = siblingsArray[layerInfoIndex+1]
                 //find the index of sibling in the itemsArray
-                if let siblingLayerInfoIndex = find(self.itemsArray as [NSObject], siblingLayerInfo as NSObject) {
+                if let siblingLayerInfoIndex = find(self.itemsArray as! [NSObject], siblingLayerInfo as NSObject) {
                     return siblingLayerInfoIndex
                 }
                 else {

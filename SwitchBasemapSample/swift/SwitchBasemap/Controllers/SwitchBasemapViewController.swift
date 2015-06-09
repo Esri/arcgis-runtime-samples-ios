@@ -81,10 +81,10 @@ class SwitchBasemapViewController: UIViewController, AGSWebMapDelegate, BasemapP
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)  {
         //assign delegate for the list and grid view controllers
         if segue.identifier == kSegueListView {
-            (segue.destinationViewController as BasemapsListViewController).delegate = self
+            (segue.destinationViewController as! BasemapsListViewController).delegate = self
         }
         else if segue.identifier == kSegueGridView {
-            (segue.destinationViewController as BasemapsGridViewController).delegate = self
+            (segue.destinationViewController as! BasemapsGridViewController).delegate = self
         }
     }
 }

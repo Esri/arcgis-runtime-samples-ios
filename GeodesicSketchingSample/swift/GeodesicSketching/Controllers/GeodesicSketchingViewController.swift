@@ -164,7 +164,7 @@ class GeodesicSketchingViewController: UIViewController, AGSMapViewLayerDelegate
     @IBAction func addSketch() {
     
         //Get the sketch geometry
-        let sketchGeometry = self.sketchLayer.geometry.copy() as AGSGeometry
+        let sketchGeometry = self.sketchLayer.geometry.copy() as! AGSGeometry
         
         //Add a new graphic to the graphics layer
         let graphic = AGSGraphic(geometry: sketchGeometry, symbol: nil, attributes: nil)

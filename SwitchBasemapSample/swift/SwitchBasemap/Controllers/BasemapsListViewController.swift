@@ -69,17 +69,17 @@ class BasemapsListViewController:UIViewController, UITableViewDataSource, UITabl
     
     //using the title of the portal item as the label, snippet for description and thumbnail as image view
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TableCell") as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("TableCell") as! UITableViewCell
         
         let webmap = portalBasemapHelper.webmapsArray[indexPath.row]
         
-        let titleLabel = cell.viewWithTag(2) as UILabel
+        let titleLabel = cell.viewWithTag(2) as! UILabel
         titleLabel.text = webmap.title
         
-        let descriptionLabel = cell.viewWithTag(3) as UILabel
+        let descriptionLabel = cell.viewWithTag(3) as! UILabel
         descriptionLabel.text = webmap.snippet
         
-        let thumbnailImageView = cell.viewWithTag(1) as UIImageView
+        let thumbnailImageView = cell.viewWithTag(1) as! UIImageView
         //Use the thumbnail image if there else use the placeholder image
         if webmap.thumbnail != nil {
             thumbnailImageView.image = webmap.thumbnail
@@ -128,7 +128,7 @@ class BasemapsListViewController:UIViewController, UITableViewDataSource, UITabl
             //get the cell corresponding to the index
             if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) {
                 //check if the cell is visible
-                let isVisible = contains(visibleCells as [UITableViewCell], cell)
+                let isVisible = contains(visibleCells as! [UITableViewCell], cell)
                 //and if visible then update the image
                 if isVisible {
                     self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation:.None)

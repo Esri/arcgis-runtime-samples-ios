@@ -23,8 +23,8 @@ class ViewController:UIViewController, AGSMapViewTouchDelegate, AGSGeoprocessorD
     @IBOutlet weak var statusMsgLabel: UILabel!
     @IBOutlet weak var wdDegreeSlider: UISlider!
     
-    var graphicsLayer:AGSGraphicsLayer?
-    var gpTask:AGSGeoprocessor?
+    var graphicsLayer:AGSGraphicsLayer!
+    var gpTask:AGSGeoprocessor!
     var parameters = AsyncGPParameters()
     
     override func viewDidLoad() {
@@ -59,9 +59,9 @@ class ViewController:UIViewController, AGSMapViewTouchDelegate, AGSGeoprocessorD
     func mapViewDidLoad(mapView: AGSMapView!) {
         //set up the gp task
         self.gpTask = AGSGeoprocessor(URL: NSURL(string: kGPTask))
-        self.gpTask!.delegate = self
-        self.gpTask!.processSpatialReference = self.mapView.spatialReference
-        self.gpTask!.outputSpatialReference = self.mapView.spatialReference
+        self.gpTask.delegate = self
+        self.gpTask.processSpatialReference = self.mapView.spatialReference
+        self.gpTask.outputSpatialReference = self.mapView.spatialReference
     }
     
     //MARK: AGSMapViewTouchDelegate
@@ -71,7 +71,7 @@ class ViewController:UIViewController, AGSMapViewTouchDelegate, AGSGeoprocessorD
         self.graphicsLayer?.removeAllGraphics()
         
         //create a symbol to show user tap location on map
-        var myMarkerSymbol = AGSSimpleMarkerSymbol.simpleMarkerSymbolWithColor(UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.25)) as AGSSimpleMarkerSymbol
+        var myMarkerSymbol = AGSSimpleMarkerSymbol.simpleMarkerSymbolWithColor(UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.25)) as! AGSSimpleMarkerSymbol
         myMarkerSymbol.size = CGSizeMake(10, 10)
         myMarkerSymbol.outline = AGSSimpleLineSymbol(color: UIColor.redColor(), width: 1)
         
@@ -79,12 +79,12 @@ class ViewController:UIViewController, AGSMapViewTouchDelegate, AGSGeoprocessorD
         var graphic = AGSGraphic(geometry: mappoint, symbol: myMarkerSymbol, attributes: nil)
         
         //add graphic to graphics layer
-        self.graphicsLayer!.addGraphic(graphic)
+        self.graphicsLayer.addGraphic(graphic)
         
         //create a feature set for the input parameter
         var featureSet = AGSFeatureSet()
         featureSet.features = [graphic]
-        println("Feature set count \(graphic.description)")
+
         //assign the new feature set and wind direction values to the parameter object
         self.parameters.featureSet = featureSet
         self.parameters.windDirection = NSDecimalNumber(float: self.wdDegreeSlider.value)
@@ -105,34 +105,31 @@ class ViewController:UIViewController, AGSMapViewTouchDelegate, AGSGeoprocessorD
     //this is the delegate method that gets called when job submits successfully
     func geoprocessor(geoprocessor: AGSGeoprocessor!, operation op: NSOperation!, didSubmitJob jobInfo: AGSGPJobInfo!) {
         //update the status
-        //        println("Operation Submitted :: \(op)")
         self.statusMsgLabel.text = "Geoprocessing Job Submitted!"
     }
     
     //this is the delegate method that gets called when geoprocessing task completes successfully
     func geoprocessor(geoprocessor: AGSGeoprocessor!, operation op: NSOperation!, jobDidSucceed jobInfo: AGSGPJobInfo!) {
         //job succeeded, query result data
-        //        println("Operation did succeed :: \(op)")
         geoprocessor.queryResultData(jobInfo.jobId, paramName: "outerg_shp")
     }
     
     func geoprocessor(geoprocessor: AGSGeoprocessor!, operation op: NSOperation!, didQueryWithResult result: AGSGPParameterValue!, forJob jobId: String!) {
-        //        println("Operation did query with result :: \(op)")
         //get the result
-        var featureSet = result.value as AGSFeatureSet
+        var featureSet = result.value as! AGSFeatureSet
         //loop through all the graphics in feature set and add them to the map
         for graphic in featureSet.features {
             //create and set a symbol to graphic
-            var fillSymbol = AGSSimpleFillSymbol.simpleFillSymbol() as AGSSimpleFillSymbol
+            var fillSymbol = AGSSimpleFillSymbol.simpleFillSymbol() as! AGSSimpleFillSymbol
             fillSymbol.color = UIColor.purpleColor().colorWithAlphaComponent(0.25)
-            (graphic as AGSGraphic).symbol = fillSymbol
+            (graphic as! AGSGraphic).symbol = fillSymbol
             
             //add graphic to graphics layer
-            self.graphicsLayer!.addGraphic(graphic as AGSGraphic)
+            self.graphicsLayer.addGraphic(graphic as! AGSGraphic)
         }
         
         //zoom to the graphic layer extent
-        var envelope = self.graphicsLayer!.fullEnvelope.mutableCopy() as AGSMutableEnvelope
+        var envelope = self.graphicsLayer.fullEnvelope.mutableCopy() as! AGSMutableEnvelope
         envelope.expandByFactor(1.2)
         self.mapView.zoomToEnvelope(envelope, animated: true)
         
@@ -150,7 +147,6 @@ class ViewController:UIViewController, AGSMapViewTouchDelegate, AGSGeoprocessorD
     
     //if error encountered while executing gp task
     func geoprocessor(geoprocessor: AGSGeoprocessor!, operation op: NSOperation!, ofType opType: AGSGPAsyncOperationType, didFailWithError error: NSError!, forJob jobId: String!) {
-        //        println("Operation did fail :: \(op)")
         self.dismissHUD()
         UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
     }
@@ -159,7 +155,7 @@ class ViewController:UIViewController, AGSMapViewTouchDelegate, AGSGeoprocessorD
     func geoprocessor(geoprocessor: AGSGeoprocessor!, operation op: NSOperation!, jobDidFail jobInfo: AGSGPJobInfo!) {
         self.dismissHUD()
         for message in jobInfo.messages {
-            println("\((message as AGSGPMessage).description)")
+            println("\((message as! AGSGPMessage).description)")
         }
         
         //Update status
@@ -187,7 +183,7 @@ class ViewController:UIViewController, AGSMapViewTouchDelegate, AGSGeoprocessorD
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == kSegueSettingsView {
-            (segue.destinationViewController as AsyncGPSettingsViewController).parameters = self.parameters
+            (segue.destinationViewController as! AsyncGPSettingsViewController).parameters = self.parameters
         }
     }
     

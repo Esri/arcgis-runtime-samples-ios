@@ -91,7 +91,7 @@ class PortalBasemapHelper: NSObject, AGSPortalDelegate, AGSPortalItemDelegate, A
     @param credential   The credential used to login to the portal, if required
     **/
     internal func fetchWebmaps(portalURL:NSString, credential:AGSCredential?) {
-        self.portal = AGSPortal(URL: NSURL(string:portalURL), credential: credential)
+        self.portal = AGSPortal(URL: NSURL(string:portalURL as String), credential: credential)
         self.portal.delegate = self
     }
     
@@ -203,7 +203,7 @@ class PortalBasemapHelper: NSObject, AGSPortalDelegate, AGSPortalItemDelegate, A
     **/
     func portal(portal: AGSPortal!, operation: NSOperation!, didFindGroups resultSet: AGSPortalQueryResultSet!) {
         if resultSet.results.count > 0 {
-            var group:AGSPortalGroup = resultSet.results[0] as AGSPortalGroup
+            var group:AGSPortalGroup = resultSet.results[0] as! AGSPortalGroup
             fetchBasemaps(fromGroupId: group.groupId)
         }
         else {
@@ -226,7 +226,7 @@ class PortalBasemapHelper: NSObject, AGSPortalDelegate, AGSPortalItemDelegate, A
         self.latestResultSet = resultSet;
         
         //filter out just webmaps
-        var webmaps = filterOutWebmaps(resultSet.results as [AGSPortalItem])
+        var webmaps = filterOutWebmaps(resultSet.results as! [AGSPortalItem])
         
         if self.webmapsArray.count > 0 {
             self.webmapsArray += webmaps

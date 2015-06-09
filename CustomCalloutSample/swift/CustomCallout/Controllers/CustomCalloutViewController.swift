@@ -71,12 +71,12 @@ class CustomCalloutViewController: UIViewController, AGSCalloutDelegate {
         
         //initialize the hybrid map view with street map
         let frame = CGRect(x: 0, y: 0, width: 125, height: 125)
-        self.hybridViewController = storyboard.instantiateViewControllerWithIdentifier(kCustomHybridViewControllerIdentifier) as CustomHybridViewController
+        self.hybridViewController = storyboard.instantiateViewControllerWithIdentifier(kCustomHybridViewControllerIdentifier) as! CustomHybridViewController
         self.hybridViewController.view.frame = frame
         self.hybridViewController.view.clipsToBounds = true
         
         //initialize the traffic camera view
-        self.cameraViewController = storyboard.instantiateViewControllerWithIdentifier(kCustomWebViewControllerIdentifier) as CustomWebViewController
+        self.cameraViewController = storyboard.instantiateViewControllerWithIdentifier(kCustomWebViewControllerIdentifier) as! CustomWebViewController
         self.cameraViewController.view.frame = frame
         self.cameraViewController.view.clipsToBounds = true
     }
@@ -90,10 +90,10 @@ class CustomCalloutViewController: UIViewController, AGSCalloutDelegate {
     
     func callout(callout: AGSCallout!, willShowForFeature feature: AGSFeature!, layer: AGSLayer!, mapPoint: AGSPoint!) -> Bool {
         
-        let graphic = feature as AGSGraphic
+        let graphic = feature as! AGSGraphic
         
         //extract the type of graphics to check.
-        let typeNumber = graphic.attributeForKey("type") as Int
+        let typeNumber = graphic.attributeForKey("type") as! Int
         if let graphicType = GraphicType(rawValue: typeNumber) {
         
             switch graphicType {
@@ -176,7 +176,7 @@ class CustomCalloutViewController: UIViewController, AGSCalloutDelegate {
     }
     
     func didClickAccessoryButtonForCallout(callout: AGSCallout!) {
-        let graphic = callout.representedFeature as AGSGraphic
+        let graphic = callout.representedFeature as! AGSGraphic
         //extract the type of graphics to check.
         var exists = ObjCBool(false)
         var typeNumber = graphic.attributeAsIntegerForKey("type", exists: &exists)

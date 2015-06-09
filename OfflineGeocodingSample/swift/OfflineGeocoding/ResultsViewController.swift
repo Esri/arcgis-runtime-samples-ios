@@ -52,7 +52,7 @@ class ResultsViewController: UIViewController, UITableViewDataSource, UITableVie
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cellIdentifier = "ResultsCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UITableViewCell!
 
         if cell == nil {
             cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
@@ -60,7 +60,7 @@ class ResultsViewController: UIViewController, UITableViewDataSource, UITableVie
         
         //text is the key at the given indexPath
         let keyAtIndexPath = Array(self.results.keys)[indexPath.row]
-        cell.textLabel.text = keyAtIndexPath as? String
+        cell.textLabel?.text = keyAtIndexPath as? String
         
         //detail text is the value associated with the key above
         if let detailValue: AnyObject = self.results[keyAtIndexPath] {
@@ -72,7 +72,7 @@ class ResultsViewController: UIViewController, UITableViewDataSource, UITableVie
             }
             else if detailValue is NSDecimalNumber {
                 //value is a NSDecimalNumber, format the result as a double
-                cell.detailTextLabel?.text = "\((detailValue as NSDecimalNumber).doubleValue)"
+                cell.detailTextLabel?.text = "\((detailValue as! NSDecimalNumber).doubleValue)"
             }
             else {
                 //not a NSDecimalNumber or a NSString,

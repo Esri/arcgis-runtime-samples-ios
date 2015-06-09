@@ -137,7 +137,7 @@ class ProjectViewController: UIViewController, AGSMapViewLayerDelegate {
     @IBAction func project() {
     
         //Get the sketch geometry
-        let sketchGeometry = self.sketchLayer.geometry.copy() as AGSGeometry
+        let sketchGeometry = self.sketchLayer.geometry.copy() as! AGSGeometry
         
         // Create the graphic and add it to the top graphics layer
         let graphic = AGSGraphic(geometry: sketchGeometry, symbol:nil, attributes:nil)

@@ -103,7 +103,7 @@ class TemporalViewController: UIViewController, AGSLayerCalloutDelegate {
     
     //MARK: - AGSLayerCalloutDeleage methods
     func callout(callout: AGSCallout!, willShowForFeature feature: AGSFeature!, layer: AGSLayer!, mapPoint: AGSPoint!) -> Bool {
-        let graphic = feature as AGSGraphic
+        let graphic = feature as! AGSGraphic
         //title text for callout
         
         let title = String(format: "Magnitude: %.1f", graphic.attributeAsDoubleForKey("magnitude", exists:nil))

@@ -53,7 +53,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapViewTouch
         
         //Initialize the template picker view controller
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        self.featureTemplatePickerController = storyboard.instantiateViewControllerWithIdentifier("FeatureTemplatePickerController") as FeatureTemplatePickerController
+        self.featureTemplatePickerController = storyboard.instantiateViewControllerWithIdentifier("FeatureTemplatePickerController") as! FeatureTemplatePickerController
         self.featureTemplatePickerController.delegate = self
     }
     
@@ -69,7 +69,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapViewTouch
         //The last feature layer we encounter we will use for editing features
         //If the web map contains more than one feature layer, the sample may need to be modified to handle that
         if layer is AGSFeatureLayer {
-            let featureLayer = layer as AGSFeatureLayer
+            let featureLayer = layer as! AGSFeatureLayer
             self.activeFeatureLayer = featureLayer
             
             //set the feature layer as its calloutDelegate
@@ -159,8 +159,8 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapViewTouch
     //MARK: - AGSCalloutDelegate methods
     
     func didClickAccessoryButtonForCallout(callout: AGSCallout!) {
-        let graphic = callout.representedObject as AGSGraphic
-        self.activeFeatureLayer = graphic.layer as AGSFeatureLayer
+        let graphic = callout.representedObject as! AGSGraphic
+        self.activeFeatureLayer = graphic.layer as! AGSFeatureLayer
         
         //Show popup for the graphic because the user tapped on the callout accessory button
         self.popupVC = AGSPopupsContainerViewController(webMap: self.webmap, forFeature: graphic, usingNavigationControllerStack: false)
@@ -177,7 +177,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapViewTouch
     
     func popupsContainer(popupsContainer: AGSPopupsContainer!, wantsNewMutableGeometryForPopup popup: AGSPopup!) -> AGSGeometry! {
         //Return an empty mutable geometry of the type that our feature layer uses
-        return AGSMutableGeometryFromType((popup.graphic.layer as AGSFeatureLayer).geometryType, self.mapView.spatialReference)
+        return AGSMutableGeometryFromType((popup.graphic.layer as! AGSFeatureLayer).geometryType, self.mapView.spatialReference)
     }
     
     func popupsContainer(popupsContainer: AGSPopupsContainer!, readyToEditGeometry geometry: AGSGeometry!, forPopup popup: AGSPopup!) {
@@ -211,7 +211,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapViewTouch
         }
         
         if env != nil {
-            let mutableEnv  = env.mutableCopy() as AGSMutableEnvelope
+            let mutableEnv  = env.mutableCopy() as! AGSMutableEnvelope
             mutableEnv.expandByFactor(1.4)
             self.mapView.zoomToEnvelope(mutableEnv, animated:true)
         }
@@ -306,7 +306,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapViewTouch
         
         if editResults.addResults != nil && editResults.addResults.count > 0 {
             //we were adding a new feature
-            let result = editResults.addResults[0] as AGSEditResult
+            let result = editResults.addResults[0] as! AGSEditResult
             if !result.success {
                 //Add operation failed. We will not update attachments
                 updateAttachments = false
@@ -316,7 +316,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapViewTouch
         }
         else if editResults.updateResults != nil && editResults.updateResults.count > 0 {
             //we were updating a feature
-            let result = editResults.updateResults[0] as AGSEditResult
+            let result = editResults.updateResults[0] as! AGSEditResult
             if !result.success {
                 //Update operation failed. We will not update attachments
                 updateAttachments = false
@@ -327,7 +327,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapViewTouch
         else if editResults.deleteResults != nil && editResults.deleteResults.count > 0 {
             //we were deleting a feature
             updateAttachments = false
-            let result = editResults.deleteResults[0] as AGSEditResult
+            let result = editResults.deleteResults[0] as! AGSEditResult
             if !result.success {
                 //Delete operation failed. Inform user
                 self.warnUserOfErrorWithMessage("Could not delete feature. Please try again")
@@ -372,7 +372,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapViewTouch
         //loop through all attachments looking for failures
         var anyFailure = false
         
-        for attachment in attachmentsPosted as [AGSAttachment] {
+        for attachment in attachmentsPosted as! [AGSAttachment] {
             if attachment.networkError != nil || attachment.editResultError != nil {
                 anyFailure = true
                 var reason:String!

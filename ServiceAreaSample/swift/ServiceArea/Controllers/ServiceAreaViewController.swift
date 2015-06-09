@@ -142,7 +142,7 @@ class ServiceAreaViewController: UIViewController, AGSMapViewTouchDelegate, AGSM
     //MARK: - AGSCalloutDelegate
     func callout(callout: AGSCallout!, willShowForFeature feature: AGSFeature!, layer: AGSLayer!, mapPoint: AGSPoint!) -> Bool {
         
-        let graphic = feature as AGSGraphic
+        let graphic = feature as! AGSGraphic
         
         //if the graphic that was tapped on belongs to the "Facilities" layer, show the callout without a custom view
         if graphic.layer.name == "Facilities" {
@@ -187,7 +187,7 @@ class ServiceAreaViewController: UIViewController, AGSMapViewTouchDelegate, AGSM
         //careful not to attempt to mutate the graphics array while
         //it is being enumerated
         let graphics = self.graphicsLayer.graphics
-        for g in graphics as [AGSGraphic] {
+        for g in graphics as! [AGSGraphic] {
             if g.attributeAsStringForKey("barrierNumber") == nil {
                 self.graphicsLayer.removeGraphic(g)
             }
@@ -195,7 +195,7 @@ class ServiceAreaViewController: UIViewController, AGSMapViewTouchDelegate, AGSM
         
         //iterate through the service area results array in the serviceAreaTaskResult returned by the task
         for (var i=0; i < serviceAreaTaskResult.serviceAreaPolygons.count; i++) {
-            let saResultPolygon = serviceAreaTaskResult.serviceAreaPolygons[i] as AGSGraphic
+            let saResultPolygon = serviceAreaTaskResult.serviceAreaPolygons[i] as! AGSGraphic
             //if the first one, it is the first time break polygon
             if i == 0 {
                 saResultPolygon.symbol = self.serviceAreaSymbolBreak1() //get the appropriate symbol
@@ -218,7 +218,7 @@ class ServiceAreaViewController: UIViewController, AGSMapViewTouchDelegate, AGSM
         self.mapView.callout.hidden = true
         
         //zoom to service area graphics layer extent
-        let env = self.graphicsLayer.fullEnvelope as AGSMutableEnvelope
+        let env = self.graphicsLayer.fullEnvelope as! AGSMutableEnvelope
         env.expandByFactor(1.2)
         self.mapView.zoomToEnvelope(env, animated:true)
     }
@@ -262,7 +262,7 @@ class ServiceAreaViewController: UIViewController, AGSMapViewTouchDelegate, AGSM
         //adding the barriers to the parameters
         var polygonBarriers = [AGSGraphic]()
         // get the barriers for the service area task
-        for g in self.graphicsLayer.graphics as [AGSGraphic] {
+        for g in self.graphicsLayer.graphics as! [AGSGraphic] {
             if g.attributeAsStringForKey("barrierNumber") != nil {
                 polygonBarriers.append(g)
             }
@@ -367,7 +367,7 @@ class ServiceAreaViewController: UIViewController, AGSMapViewTouchDelegate, AGSM
             self.statusMessageLabel.text = "Select the facility to find its service area"
             
             // if we have a sketch layer on the map, remove it
-            if contains(self.mapView.mapLayers as [AGSLayer], self.sketchLayer) {
+            if contains(self.mapView.mapLayers as! [AGSLayer], self.sketchLayer) {
                 self.mapView.removeMapLayerWithName(self.sketchLayer.name)
                 self.sketchLayer = nil
                 //assiging the touch delegate to self instead of sketch layer
@@ -395,7 +395,7 @@ class ServiceAreaViewController: UIViewController, AGSMapViewTouchDelegate, AGSM
     @IBAction func addBarier(sender:AnyObject) {
     
         //grab the geometry, then clear the sketch
-        let geometry = self.sketchLayer.geometry.copy() as AGSGeometry
+        let geometry = self.sketchLayer.geometry.copy() as! AGSGeometry
         self.sketchLayer.clear()
         
         //Prepare symbol and attributes for the Stop/Barrier
@@ -488,7 +488,7 @@ class ServiceAreaViewController: UIViewController, AGSMapViewTouchDelegate, AGSM
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == kSettingsSegueIdentifier {
-            let controller = segue.destinationViewController as SettingsViewController
+            let controller = segue.destinationViewController as! SettingsViewController
             controller.parameters = self.parameters
             
             //present as form sheet for iPad

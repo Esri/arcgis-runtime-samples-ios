@@ -154,10 +154,10 @@ class GraphicsSampleViewController: UIViewController, AGSMapViewLayerDelegate, A
     func didClickAccessoryButtonForCallout(callout: AGSCallout!) {
         //instantiate an object of the FeatureDetailsViewController
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let featureDetailsViewController = storyboard.instantiateViewControllerWithIdentifier(kFeatureDetailControllerIdentifier) as FeatureDetailsViewController
+        let featureDetailsViewController = storyboard.instantiateViewControllerWithIdentifier(kFeatureDetailControllerIdentifier) as! FeatureDetailsViewController
         
         //assign the feature to be presented in the details view
-        featureDetailsViewController.feature = callout.representedObject as AGSGraphic
+        featureDetailsViewController.feature = callout.representedObject as! AGSGraphic
         featureDetailsViewController.displayFieldName = "NAME"
         
         //in case of an iPad present as a form sheet
@@ -181,7 +181,7 @@ class GraphicsSampleViewController: UIViewController, AGSMapViewLayerDelegate, A
         
         //determine if it's a query on counties or cities then assign to applicable layer
         if featureSet.displayFieldName == "CITY_NAME" {
-            for graphic in featureSet.features as [AGSGraphic] {
+            for graphic in featureSet.features as! [AGSGraphic] {
                 self.cityGraphicsLayer.addGraphic(graphic)
             }
             
@@ -193,7 +193,7 @@ class GraphicsSampleViewController: UIViewController, AGSMapViewLayerDelegate, A
             fillSymbol.outline.color = UIColor.darkGrayColor()
             
             //display counties on graphics layer and specify callout template
-            for graphic in featureSet.features as [AGSGraphic] {
+            for graphic in featureSet.features as! [AGSGraphic] {
                 graphic.symbol = fillSymbol
                 self.countyGraphicsLayer.addGraphic(graphic)
             }

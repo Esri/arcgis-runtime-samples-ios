@@ -22,7 +22,7 @@ class FeatureDetailsViewController: UIViewController, UITableViewDataSource, UIT
         didSet {
             let theDict = self.feature.allAttributes()
             let allKeys = Array(theDict.keys)
-            self.keys = allKeys as [String]
+            self.keys = allKeys as! [String]
             self.aliases = self.keys
         }
     }
@@ -57,7 +57,7 @@ class FeatureDetailsViewController: UIViewController, UITableViewDataSource, UIT
             
             self.aliases = [String]()
             for key in self.keys {
-                let alias = fa[key] as String
+                let alias = fa[key] as! String
                 self.aliases.append(alias)
             }
         }

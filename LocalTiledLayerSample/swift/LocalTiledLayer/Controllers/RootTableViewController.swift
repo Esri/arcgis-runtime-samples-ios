@@ -30,14 +30,14 @@ class RootTableViewController: UITableViewController {
         super.viewDidLoad()
 
         //gets all the paths for the files with extension ".tpk" in the app bundle
-        self.tilePackagesFromBundle = NSBundle.mainBundle().pathsForResourcesOfType("tpk", inDirectory: nil) as [String]
+        self.tilePackagesFromBundle = NSBundle.mainBundle().pathsForResourcesOfType("tpk", inDirectory: nil) as! [String]
         
         //procedure to get all the tile packages from the documents directory, if any
         let ext = "tpk"
         let fileManager = NSFileManager.defaultManager()
         let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-        let documentsDirectory = paths[0] as String
-        let contents = fileManager.contentsOfDirectoryAtPath(documentsDirectory, error: nil) as [String]
+        let documentsDirectory = paths[0] as! String
+        let contents = fileManager.contentsOfDirectoryAtPath(documentsDirectory, error: nil) as! [String]
         for filename in contents {
             if filename.pathExtension == ext {
                 self.tilePackagesFromDocuments.append(filename)
@@ -89,7 +89,7 @@ class RootTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "Cell"
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UITableViewCell
         
         // Configure the cell...
         if indexPath.section == 0 {
@@ -151,7 +151,7 @@ class RootTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "SegueLocalTiledLayerVC" {
-            let controller = segue.destinationViewController as LocalTiledLayerViewController
+            let controller = segue.destinationViewController as! LocalTiledLayerViewController
             controller.tilePackage = self.selectedTilePackage.lastPathComponent
             controller.title = self.selectedTilePackage.lastPathComponent.stringByDeletingPathExtension
         }

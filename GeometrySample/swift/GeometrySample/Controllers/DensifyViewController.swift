@@ -152,7 +152,7 @@ class DensifyViewController: UIViewController, AGSMapViewLayerDelegate {
         self.userInstructions.text = "Adjust slider to see changes, tap reset to start over "
         
         // Get the sketch layer's geometry
-        let sketchGeometry = self.sketchLayer.geometry.copy() as AGSGeometry
+        let sketchGeometry = self.sketchLayer.geometry.copy() as! AGSGeometry
         
         // Keep the original geometries to densify again later
         self.sketchGeometries.append(sketchGeometry)

@@ -161,7 +161,7 @@ class RelationshipViewController: UIViewController, AGSMapViewLayerDelegate, UIT
     
     @IBAction func add() {
         // Get the sketch layer's geometry and add a new graphic to the graphics layer
-        let sketchGeometry = self.sketchLayer.geometry.copy() as AGSGeometry
+        let sketchGeometry = self.sketchLayer.geometry.copy() as! AGSGeometry
         let graphic = AGSGraphic(geometry: sketchGeometry, symbol:nil, attributes:nil)
         
         self.graphicsLayer.addGraphic(graphic)
@@ -173,8 +173,8 @@ class RelationshipViewController: UIViewController, AGSMapViewLayerDelegate, UIT
             let geometryEngine = AGSGeometryEngine()
             
             // Get the geometries from the graphicslayer's graphics
-            let graphic1 = self.graphicsLayer.graphics[0] as AGSGraphic
-            let graphic2 = self.graphicsLayer.graphics[1] as AGSGraphic
+            let graphic1 = self.graphicsLayer.graphics[0] as! AGSGraphic
+            let graphic2 = self.graphicsLayer.graphics[1] as! AGSGraphic
             
             // If any of the spatial relationships occur set that spatial relationship container's checked property
             if geometryEngine.geometry(graphic1.geometry, withinGeometry: graphic2.geometry) {

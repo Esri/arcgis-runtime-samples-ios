@@ -42,10 +42,10 @@ class FeatureTemplatePickerViewController:UIViewController, UITableViewDataSourc
     func addTemplatesForLayersInMap(mapView:AGSMapView) {
         for layer in mapView.mapLayers {
             if layer is AGSFeatureLayer {
-                self.addTemplatesFromSource(layer as AGSFeatureLayer, renderer: (layer as AGSFeatureLayer).renderer)
+                self.addTemplatesFromSource(layer as! AGSFeatureLayer, renderer: (layer as! AGSFeatureLayer).renderer)
             }
             else if layer is AGSFeatureTableLayer {
-                self.addTemplatesFromSource(((layer as AGSFeatureTableLayer).table as AGSGDBFeatureTable), renderer: (layer as AGSFeatureTableLayer).renderer)
+                self.addTemplatesFromSource(((layer as! AGSFeatureTableLayer).table as! AGSGDBFeatureTable), renderer: (layer as! AGSFeatureTableLayer).renderer)
             }
         }
     }
@@ -54,9 +54,9 @@ class FeatureTemplatePickerViewController:UIViewController, UITableViewDataSourc
         
         if source.types != nil && source.types.count > 0 {
             //for each type
-            for type in source.types as [AGSFeatureType] {
+            for type in source.types as! [AGSFeatureType] {
                 //for each temple in type
-                for template in type.templates as [AGSFeatureTemplate] {
+                for template in type.templates as! [AGSFeatureTemplate] {
                     let info = FeatureTemplatePickerInfo()
                     info.source = source
                     info.renderer = renderer
@@ -71,7 +71,7 @@ class FeatureTemplatePickerViewController:UIViewController, UITableViewDataSourc
         //if layer contains only templates (no feature types)
         else if source.templates != nil {
             //for each template
-            for template in source.templates as [AGSFeatureTemplate] {
+            for template in source.templates as! [AGSFeatureTemplate] {
                 let info = FeatureTemplatePickerInfo()
                 info.source = source
                 info.renderer = renderer
@@ -106,7 +106,7 @@ class FeatureTemplatePickerViewController:UIViewController, UITableViewDataSourc
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //Get a cell
         let cellIdentifier = "TemplatePickerCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UITableViewCell!
         
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellIdentifier)

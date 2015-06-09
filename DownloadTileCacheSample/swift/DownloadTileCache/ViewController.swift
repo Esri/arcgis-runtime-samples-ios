@@ -95,7 +95,7 @@ class ViewController: UIViewController, AGSLayerDelegate {
         
         //Re-initialize the stepper with possible values based on current map scale
         if self.tiledLayer.currentLOD() != nil {
-            if let index = find(self.tiledLayer.mapServiceInfo.tileInfo.lods as [AGSLOD], self.tiledLayer.currentLOD()) {
+            if let index = find(self.tiledLayer.mapServiceInfo.tileInfo.lods as! [AGSLOD], self.tiledLayer.currentLOD()) {
                 self.levelStepper.maximumValue = Double(self.tiledLayer.tileInfo.lods.count - index)
                 self.levelStepper.minimumValue = 0
                 self.levelStepper.value = 0
@@ -116,7 +116,7 @@ class ViewController: UIViewController, AGSLayerDelegate {
         
         //Display the scale range that will be downloaded based on specified levels
         let currentScale = "\(Int(self.tiledLayer.currentLOD().scale))"
-        let maxLOD = self.tiledLayer.mapServiceInfo.tileInfo.lods[Int(self.levelStepper.value)] as AGSLOD
+        let maxLOD = self.tiledLayer.mapServiceInfo.tileInfo.lods[Int(self.levelStepper.value)] as! AGSLOD
         let maxScale = "\(Int(maxLOD.scale))"
         self.scaleLabel.text = String(format: "1:%@\n\tto\n1:%@",currentScale , maxScale)
     }
@@ -124,7 +124,7 @@ class ViewController: UIViewController, AGSLayerDelegate {
     @IBAction func estimateAction(sender:AnyObject) {
         
         //Prepare list of levels to download
-        let desiredLevels = self.levelsWithCount(Int(self.levelStepper.value), startingAt:self.tiledLayer.currentLOD(), fromLODs:self.tiledLayer.tileInfo.lods as [AGSLOD])
+        let desiredLevels = self.levelsWithCount(Int(self.levelStepper.value), startingAt:self.tiledLayer.currentLOD(), fromLODs:self.tiledLayer.tileInfo.lods as! [AGSLOD])
         println("LODs requested \(desiredLevels)")
         
         //Use current envelope to download
@@ -167,7 +167,7 @@ class ViewController: UIViewController, AGSLayerDelegate {
     @IBAction func downloadAction(sender:AnyObject) {
         
         //Prepare list of levels to download
-        let desiredLevels = self.levelsWithCount(Int(self.levelStepper.value), startingAt:self.tiledLayer.currentLOD(), fromLODs:self.tiledLayer.tileInfo.lods as [AGSLOD])
+        let desiredLevels = self.levelsWithCount(Int(self.levelStepper.value), startingAt:self.tiledLayer.currentLOD(), fromLODs:self.tiledLayer.tileInfo.lods as! [AGSLOD])
         println("LODs requested \(desiredLevels)")
         
         //Use current envelope to download

@@ -186,7 +186,7 @@ class GpsSketchingViewController: UIViewController, AGSMapViewLayerDelegate, CLL
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == kSettingsSegueIdentifier {
-            let controller = segue.destinationViewController as SettingsViewController
+            let controller = segue.destinationViewController as! SettingsViewController
             controller.parameters = self.parameters
             
             if AGSDevice.currentDevice().isIPad() {

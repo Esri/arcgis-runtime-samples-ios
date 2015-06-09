@@ -81,7 +81,7 @@ class LicenseHelper: NSObject, AGSPortalDelegate, UIAlertViewDelegate {
         
         //Determine if we have credential in the keychain
         if let keychainDict = self.keychainWrapper.keychainObject() as? [String: NSObject] {
-            self.credential = keychainDict[kCredentialKey] as AGSCredential
+            self.credential = keychainDict[kCredentialKey] as! AGSCredential
        
             // Use credentials to load portal.  The completion block will by called by
             // either portalDidLoad: or portal:didFailToLoadWithError:
@@ -104,7 +104,7 @@ class LicenseHelper: NSObject, AGSPortalDelegate, UIAlertViewDelegate {
     }
     
     func savedInformationExists() -> Bool {
-        return (self.keychainWrapper.keychainObject() != nil ?? false)
+        return (self.keychainWrapper.keychainObject() != nil) ?? false
     }
     
     //MARK: - AGSPortalDelegate
@@ -144,10 +144,10 @@ class LicenseHelper: NSObject, AGSPortalDelegate, UIAlertViewDelegate {
         let usingSavedLicenseInfo = true
         
         //Determine if we have info in the keychain
-        let keychainDict = self.keychainWrapper.keychainObject() as [String:NSObject]
+        let keychainDict = self.keychainWrapper.keychainObject() as! [String:NSObject]
         
         //get the saved license info
-        let licenseInfoJSON = keychainDict[kLicenseKey] as [NSObject:AnyObject]
+        let licenseInfoJSON = keychainDict[kLicenseKey] as! [NSObject:AnyObject]
         //if (licenseInfoJSON) {
         //Create license info and set it into the license, then check the result
         let licenseInfo = AGSLicenseInfo(JSON: licenseInfoJSON)

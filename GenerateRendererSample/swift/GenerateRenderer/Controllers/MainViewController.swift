@@ -79,7 +79,7 @@ class MainViewController: UIViewController, AGSMapViewLayerDelegate, AGSCalloutD
     func layerDidLoad(layer: AGSLayer!) {
         //once the feature layer gets loaded
         //assign the layer's fields to the legend view controller
-        self.legendViewController.classificationFields = self.featureLayer.fields as [AGSField]
+        self.legendViewController.classificationFields = self.featureLayer.fields as! [AGSField]
     }
     
     func layer(layer: AGSLayer!, didFailToLoadWithError error: NSError!) {
@@ -106,7 +106,7 @@ class MainViewController: UIViewController, AGSMapViewLayerDelegate, AGSCalloutD
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "LegendEmbedSegue" {
-            self.legendViewController = segue.destinationViewController as LegendViewController
+            self.legendViewController = segue.destinationViewController as! LegendViewController
             //assign self as the delegate for legendViewController
             self.legendViewController.delegate = self
         }

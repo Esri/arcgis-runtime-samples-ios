@@ -27,7 +27,7 @@ class CustomSegue: UIStoryboardSegue {
         }
             //in case of iPhone present view as a modal view
         else {
-            self.sourceViewController.presentViewController(self.destinationViewController as UIViewController, animated:true, completion:nil)
+            self.sourceViewController.presentViewController(self.destinationViewController as! UIViewController, animated:true, completion:nil)
         }
     }
 }

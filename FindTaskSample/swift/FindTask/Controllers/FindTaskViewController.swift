@@ -89,7 +89,7 @@ class FindTaskViewController: UIViewController, AGSMapViewLayerDelegate, AGSCall
         let envelope = AGSEnvelope(xmin: -178.217598362366, ymin:18.9247817993164, xmax:-66.9692710360024, ymax:71.4062353532712, spatialReference:spatialReference)
         
         let geometryEngine = AGSGeometryEngine()
-        let webMercatorEnvelope = geometryEngine.projectGeometry(envelope, toSpatialReference: self.mapView.spatialReference) as AGSEnvelope
+        let webMercatorEnvelope = geometryEngine.projectGeometry(envelope, toSpatialReference: self.mapView.spatialReference) as! AGSEnvelope
         
         self.mapView.zoomToEnvelope(webMercatorEnvelope, animated:true)
     }
@@ -99,7 +99,7 @@ class FindTaskViewController: UIViewController, AGSMapViewLayerDelegate, AGSCall
     
     func didClickAccessoryButtonForCallout(callout: AGSCallout!) {
         //save selected graphic to assign it to the results view controller
-        self.selectedGraphic = callout.representedObject as AGSGraphic
+        self.selectedGraphic = callout.representedObject as! AGSGraphic
         
         self.performSegueWithIdentifier(kResultsSegueIdentifier, sender:self)
     }
@@ -149,7 +149,7 @@ class FindTaskViewController: UIViewController, AGSMapViewLayerDelegate, AGSCall
         for (var i=0 ; i < results.count ; i++) {
             
             //set the result object
-            result = results[i] as AGSFindResult
+            result = results[i] as! AGSFindResult
             
             //accumulate the min/max
             if (result.feature.geometry.envelope.xmin < xmin) {
@@ -246,7 +246,7 @@ class FindTaskViewController: UIViewController, AGSMapViewLayerDelegate, AGSCall
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == kResultsSegueIdentifier {
-            let controller = segue.destinationViewController as ResultsViewController
+            let controller = segue.destinationViewController as! ResultsViewController
             controller.results = self.selectedGraphic.allAttributes()
         }
     }

@@ -17,7 +17,7 @@ import ArcGIS
 class CountyInfoTemplate: NSObject, AGSLayerCalloutDelegate {
     
     func callout(callout: AGSCallout!, willShowForFeature feature: AGSFeature!, layer: AGSLayer!, mapPoint: AGSPoint!) -> Bool {
-        let graphic = feature as AGSGraphic
+        let graphic = feature as! AGSGraphic
         callout.title =  graphic.attributeAsStringForKey("NAME")
         callout.detail = String(format: "'90: %@, '99: %@", graphic.attributeAsStringForKey("POP1990"), graphic.attributeAsStringForKey("POP1999"))
         return true

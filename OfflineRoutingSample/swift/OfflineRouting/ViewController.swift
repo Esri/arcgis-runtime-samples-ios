@@ -135,7 +135,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
     
     func mapViewDidLoad(mapView: AGSMapView!) {
         var museumOfMA = AGSPoint(fromDecimalDegreesString: "37.785 , -122.400", withSpatialReference:AGSSpatialReference.wgs84SpatialReference())
-        self.addStop((AGSGeometryEngine.defaultGeometryEngine().projectGeometry(museumOfMA, toSpatialReference: self.mapView.spatialReference)) as AGSPoint)
+        self.addStop((AGSGeometryEngine.defaultGeometryEngine().projectGeometry(museumOfMA, toSpatialReference: self.mapView.spatialReference)) as! AGSPoint)
         
         if self.routeTaskParams != nil {
             self.routeTaskParams.outSpatialReference = self.mapView.spatialReference;
@@ -195,9 +195,10 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
         self.updateDirectionsLabel("Routing completed")
         
         // we know that we are only dealing with 1 route...
-        self.routeResult = routeTaskResult.routeResults.last as AGSRouteResult
+        self.routeResult = routeTaskResult.routeResults.last as! AGSRouteResult
         
-        var resultSummary = "\(self.routeResult.totalMinutes) mins, \(self.routeResult.totalMiles) miles"
+        var resultSummary = String(format: "%.0f mins, %.2f miles", self.routeResult.totalMinutes, self.routeResult.totalMiles)
+//        var resultSummary = "\(self.routeResult.totalMinutes) mins, \(self.routeResult.totalMiles) miles"
         self.updateDirectionsLabel(resultSummary)
         
         // add the route graphic to the graphic's layer
@@ -211,7 +212,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
         if self.routeResult.stopGraphics != nil {
             self.graphicsLayerStops.removeAllGraphics()
             
-            for reorderedStop in self.routeResult.stopGraphics as [AGSStopGraphic] {
+            for reorderedStop in self.routeResult.stopGraphics as! [AGSStopGraphic] {
                 var exists:ObjCBool = false
                 var sequence = UInt(reorderedStop.attributeAsIntegerForKey("Sequence", exists: &exists))
                 
@@ -324,10 +325,10 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
         var stops = [AGSStopGraphic]()
         
         // get the stop, barriers for the route task
-        for graphic in self.graphicsLayerStops.graphics as [AGSGraphic] {
+        for graphic in self.graphicsLayerStops.graphics as! [AGSGraphic] {
             // if it's a stop graphic, add the object to stops
             if graphic is AGSStopGraphic {
-                stops.append(graphic as AGSStopGraphic)
+                stops.append(graphic as! AGSStopGraphic)
             }
         }
         
@@ -379,7 +380,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
         
         // get current direction and add it to the graphics layer
         var directions = self.routeResult.directions
-        self.currentDirectionGraphic = directions.graphics[self.directionIndex] as AGSDirectionGraphic
+        self.currentDirectionGraphic = directions.graphics[self.directionIndex] as! AGSDirectionGraphic
         self.currentDirectionGraphic.symbol = self.currentDirectionSymbol()
         self.graphicsLayerRoute.addGraphic(self.currentDirectionGraphic)
         
@@ -406,7 +407,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
         
         // get next direction
         var directions = self.routeResult.directions
-        self.currentDirectionGraphic = directions.graphics[self.directionIndex] as AGSDirectionGraphic
+        self.currentDirectionGraphic = directions.graphics[self.directionIndex] as! AGSDirectionGraphic
         self.currentDirectionGraphic.symbol = self.currentDirectionSymbol()
         self.graphicsLayerRoute.addGraphic(self.currentDirectionGraphic)
         

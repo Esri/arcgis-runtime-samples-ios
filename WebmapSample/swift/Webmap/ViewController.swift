@@ -103,7 +103,7 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSWebMapDelegate, U
     
     func webMap(webMap: AGSWebMap!, didFetchPopups popups: [AnyObject]!, forExtent extent: AGSEnvelope!) {
         //hold on to the results
-        for popup in popups as [AGSPopup] {
+        for popup in popups as! [AGSPopup] {
             //disable editing because this sample does not implement any editing functionality.
             //only permit viewing of popups
             popup.allowEdit = false
@@ -176,13 +176,13 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSWebMapDelegate, U
     
     //MARK: - AGSPopupsContainerDelegate
     func popupsContainerDidFinishViewingPopups(popupsContainer: AGSPopupsContainer!) {
-        (popupsContainer as AGSPopupsContainerViewController).dismissViewControllerAnimated(true, completion: nil)
+        (popupsContainer as! AGSPopupsContainerViewController).dismissViewControllerAnimated(true, completion: nil)
     }
     
     
     //MARK: - UIAlertViewDelegate
     
-    func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int) {
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         // If the user was asked to pick a web map
         if alertView.tag == CHOOSE_WEBMAP_TAG {
             if buttonIndex == 0 {

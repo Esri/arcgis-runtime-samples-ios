@@ -300,9 +300,9 @@ class NotesViewController: UIViewController, AGSFeatureLayerQueryDelegate, AGSFe
     
         self.loadingView.removeView()
         
-        if editResults.addResults.count > 0 {
+        if let addResults = editResults.addResults where addResults.count > 0 {
             //we were adding a new feature
-            let result = editResults.addResults[0] as! AGSEditResult
+            let result = addResults[0] as! AGSEditResult
             if !result.success {
                 //Inform user
                 self.warnUserOfErrorWithMessage("Could not add feature. Please try again")
@@ -319,9 +319,9 @@ class NotesViewController: UIViewController, AGSFeatureLayerQueryDelegate, AGSFe
             }
             
         }
-        else if editResults.updateResults.count > 0 {
+        else if let updateResults = editResults.updateResults where updateResults.count > 0 {
             //we were updating a feature
-            let result = editResults.updateResults[0] as! AGSEditResult
+            let result = updateResults[0] as! AGSEditResult
             if !result.success {
                 //Inform user
                 self.warnUserOfErrorWithMessage("Could not update feature. Please try again")
@@ -334,8 +334,8 @@ class NotesViewController: UIViewController, AGSFeatureLayerQueryDelegate, AGSFe
                 self.notesPopupVC = nil
             }
         }
-        else if editResults.deleteResults.count > 0 {
-            let result = editResults.deleteResults[0] as! AGSEditResult
+        else if let deleteResults = editResults.deleteResults where deleteResults.count > 0 {
+            let result = deleteResults[0] as! AGSEditResult
             if !result.success {
                 //Delete operation failed. Inform user
                 self.warnUserOfErrorWithMessage("Could not delete feature. Please try again")

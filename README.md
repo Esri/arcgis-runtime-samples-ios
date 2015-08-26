@@ -18,7 +18,7 @@ For Swift :
 ## Instructions
 
 1. Get the code in this repository. Don't know how? [Get started here.](http://htmlpreview.github.com/?https://github.com/Esri/esri.github.com/blob/master/help/esri-getting-to-know-github.html)
-1. Double-click the ```AllSamples.xcworkspace``` file to open all projects together in a single XCode window, or alternatively, double-click an individual project's ```.xcodeproj``` file to open it separately.
+1. Double-click the ```arcgis-ios-sdk-samples.xcodeproj``` file to open the samples project in XCode.
 1. Choose a Target and Device/Simulator combination from the Scheme menu and hit Run to run the sample application. 
 
 
@@ -26,7 +26,7 @@ For Swift :
 
 * Want to start a new project? [Setup](https://developers.arcgis.com/en/ios/beta/info/install.htm) your dev environment
 * New to the API? Explore the documentation : [Guide](http://developers.arcgis.com/en/ios/beta/guide/introduction.htm) | [API Reference](http://developers.arcgis.com/en/ios/beta/api-reference/index.htm)
-* Got a question? Ask the community on our [forum](http://forums.arcgis.com/forums/78-ArcGIS-for-iOS-SDK)
+* Got a question? Ask the community on our [forum](https://earlyadopter.esri.com/project/forum/topic.html?cap=59D261350FB84BE48C01CF04BF2A3AA1&forid=%7bF6786AAB-E6F4-4996-982D-C6A7BA08BC3A%7d)
 
 ## Issues
 

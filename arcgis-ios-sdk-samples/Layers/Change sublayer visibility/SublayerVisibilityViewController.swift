@@ -1,0 +1,73 @@
+// Copyright 2015 Esri.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+import UIKit
+import ArcGIS
+
+class SublayerVisibilityViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+    
+    @IBOutlet private weak var mapView:AGSMapView!
+    
+    private var map:AGSMap!
+    private var mapImageLayer:AGSArcGISMapImageLayer!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //add the source code button item to the right of navigation bar
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SublayerVisibilityViewController","SublayersTableViewController"]
+        
+        //initialize map with topographic basemap
+        self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
+        
+        //initialize the map image layer using a url
+        self.mapImageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
+        
+        //add the image layer to the map
+        self.map.operationalLayers.addObject(self.mapImageLayer)
+        
+        //assign the map to the map view
+        self.mapView.map = self.map
+        
+        //zoom to a custom viewpoint
+        self.mapView.setViewpointCenter(AGSPoint(x: -11e6, y: 6e6, spatialReference: AGSSpatialReference.webMercator()), scale: 9e7, completion: nil)
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "SublayersPopover" {
+            //get the destination view controller as BookmarksListViewController
+            let controller = segue.destinationViewController as! SublayersTableViewController
+            controller.sublayers = self.mapImageLayer.mapImageSublayers
+            
+            //popover presentation logic
+            controller.popoverPresentationController?.delegate = self
+            controller.preferredContentSize = CGSize(width: 300, height: 200)
+        }
+    }
+    
+    //MARK: - UIPopoverPresentationControllerDelegate
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        //for popover or non modal presentation
+        return UIModalPresentationStyle.None
+    }
+}

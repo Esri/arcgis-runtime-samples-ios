@@ -255,8 +255,8 @@
 		3E4B05F41B39EF250072E514 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		3E4B05F51B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		3E4B05F61B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
-		3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayerURLViewController.swift; path = "Features/Feature layer (URL)/FeatureLayerURLViewController.swift"; sourceTree = "<group>"; };
-		3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FeatureLayerURL.storyboard; path = "Features/Feature layer (URL)/FeatureLayerURL.storyboard"; sourceTree = "<group>"; };
+		3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayerURLViewController.swift; path = "Features/Feature layer (feature service)/FeatureLayerURLViewController.swift"; sourceTree = "<group>"; };
+		3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FeatureLayerURL.storyboard; path = "Features/Feature layer (feature service)/FeatureLayerURL.storyboard"; sourceTree = "<group>"; };
 		3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Camera Shutter.caf"; sourceTree = "<group>"; };
 		3E8526331B90D92700690EBD /* Bookmarks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Bookmarks.storyboard; path = "Maps/Manage bookmarks/Bookmarks.storyboard"; sourceTree = "<group>"; };
 		3E8526341B90D92700690EBD /* BookmarksListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarksListViewController.swift; path = "Maps/Manage bookmarks/BookmarksListViewController.swift"; sourceTree = "<group>"; };
@@ -514,13 +514,13 @@
 			path = TPKeyboardAvoiding;
 			sourceTree = "<group>";
 		};
-		3E5848FC1B91222200AB3CE9 /* Feature layer (URL) */ = {
+		3E5848FC1B91222200AB3CE9 /* Feature layer (feature service) */ = {
 			isa = PBXGroup;
 			children = (
 				3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */,
 				3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */,
 			);
-			name = "Feature layer (URL)";
+			name = "Feature layer (feature service)";
 			sourceTree = "<group>";
 		};
 		3E676DEF1B1D0B6000D4029A /* Audio Files */ = {
@@ -577,7 +577,7 @@
 		3ED027FE1B8E39DD00ACA70D /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				3E5848FC1B91222200AB3CE9 /* Feature layer (URL) */,
+				3E5848FC1B91222200AB3CE9 /* Feature layer (feature service) */,
 				3ED028D31B8E3AA500ACA70D /* Service feature table (cache) */,
 				3ED028DB1B8E3AA500ACA70D /* Service feature table (no cache) */,
 				3ED028D71B8E3AA500ACA70D /* Service feature table (manual cache) */,

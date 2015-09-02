@@ -176,7 +176,7 @@
             <array>
                 <dict>
                     <key>displayName</key>
-                    <string>Feature layer (URL)</string>
+                    <string>Feature layer (feature service)</string>
                     <key>storyboardName</key>
                     <string>FeatureLayerURL</string>
                     <key>descriptionText</key>

@@ -20,11 +20,11 @@
 		3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A680D1B0D2A7000A318AA /* ListViewController.swift */; };
 		3E2A68121B14E04300A318AA /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E2A68111B14E04300A318AA /* ArcGIS.bundle */; };
 		3E2A68181B153CDE00A318AA /* SourceCodeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A68171B153CDE00A318AA /* SourceCodeBarButtonItem.swift */; };
-		3E3519861B90D2E5002994D0 /* EditFeaturesOnline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E35197F1B90D2E5002994D0 /* EditFeaturesOnline.storyboard */; };
-		3E3519871B90D2E5002994D0 /* EditFeaturesOnlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3519801B90D2E5002994D0 /* EditFeaturesOnlineViewController.swift */; };
-		3E3519881B90D2E5002994D0 /* FeatureTemplatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3519811B90D2E5002994D0 /* FeatureTemplatePickerViewController.swift */; };
-		3E35198D1B90D45D002994D0 /* EditFeaturesOnlineViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E3519801B90D2E5002994D0 /* EditFeaturesOnlineViewController.swift */; };
-		3E35198E1B90D45D002994D0 /* FeatureTemplatePickerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E3519811B90D2E5002994D0 /* FeatureTemplatePickerViewController.swift */; };
+		3E39F6D21B9790A9000DEC6C /* EditFeaturesOnline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E39F6CF1B9790A9000DEC6C /* EditFeaturesOnline.storyboard */; };
+		3E39F6D31B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39F6D01B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift */; };
+		3E39F6D41B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */; };
+		3E39F6D51B979135000DEC6C /* EditFeaturesOnlineViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E39F6D01B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift */; };
+		3E39F6D61B979135000DEC6C /* FeatureTemplatePickerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */; };
 		3E4B05F71B39EF250072E514 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B05E91B39EF250072E514 /* SVIndefiniteAnimatedView.m */; };
 		3E4B05F81B39EF250072E514 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E4B05EB1B39EF250072E514 /* SVProgressHUD.bundle */; };
 		3E4B05F91B39EF250072E514 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B05ED1B39EF250072E514 /* SVProgressHUD.m */; };
@@ -172,12 +172,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3E39F6D51B979135000DEC6C /* EditFeaturesOnlineViewController.swift in CopyFiles */,
+				3E39F6D61B979135000DEC6C /* FeatureTemplatePickerViewController.swift in CopyFiles */,
 				3E5849011B91256300AB3CE9 /* BookmarksListViewController.swift in CopyFiles */,
 				3E5849021B91256300AB3CE9 /* BookmarksViewController.swift in CopyFiles */,
 				3E5849031B91256300AB3CE9 /* FeatureLayerURLViewController.swift in CopyFiles */,
 				3E8526401B90E19C00690EBD /* DisplayMapViewController.swift in CopyFiles */,
-				3E35198D1B90D45D002994D0 /* EditFeaturesOnlineViewController.swift in CopyFiles */,
-				3E35198E1B90D45D002994D0 /* FeatureTemplatePickerViewController.swift in CopyFiles */,
 				3ED029781B8E571700ACA70D /* OpenExistingMapViewController.swift in CopyFiles */,
 				3ED029791B8E571700ACA70D /* SwitchBasemapViewController.swift in CopyFiles */,
 				3ED0297A1B8E571700ACA70D /* SetInitialMapAreaViewController.swift in CopyFiles */,
@@ -238,9 +238,9 @@
 		3E2A680D1B0D2A7000A318AA /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewController.swift; path = "Content Display Logic/Controllers/ListViewController.swift"; sourceTree = "<group>"; };
 		3E2A68111B14E04300A318AA /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Static/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		3E2A68171B153CDE00A318AA /* SourceCodeBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SourceCodeBarButtonItem.swift; path = "Content Display Logic/Custom BarButtonItem/SourceCodeBarButtonItem.swift"; sourceTree = "<group>"; };
-		3E35197F1B90D2E5002994D0 /* EditFeaturesOnline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EditFeaturesOnline.storyboard; path = "../../Edit data/Edit Features (connected)/EditFeaturesOnline.storyboard"; sourceTree = "<group>"; };
-		3E3519801B90D2E5002994D0 /* EditFeaturesOnlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditFeaturesOnlineViewController.swift; path = "../../Edit data/Edit Features (connected)/EditFeaturesOnlineViewController.swift"; sourceTree = "<group>"; };
-		3E3519811B90D2E5002994D0 /* FeatureTemplatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureTemplatePickerViewController.swift; path = "../../Edit data/Edit Features (connected)/FeatureTemplatePickerViewController.swift"; sourceTree = "<group>"; };
+		3E39F6CF1B9790A9000DEC6C /* EditFeaturesOnline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EditFeaturesOnline.storyboard; path = "Edit data/Edit features (connected)/EditFeaturesOnline.storyboard"; sourceTree = "<group>"; };
+		3E39F6D01B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditFeaturesOnlineViewController.swift; path = "Edit data/Edit features (connected)/EditFeaturesOnlineViewController.swift"; sourceTree = "<group>"; };
+		3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureTemplatePickerViewController.swift; path = "Edit data/Edit features (connected)/FeatureTemplatePickerViewController.swift"; sourceTree = "<group>"; };
 		3E4B05E81B39EF250072E514 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		3E4B05E91B39EF250072E514 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		3E4B05EA1B39EF250072E514 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
@@ -457,16 +457,15 @@
 			name = "Custom BarButtonItem";
 			sourceTree = "<group>";
 		};
-		3E35197E1B90D2E5002994D0 /* Edit Features (connected) */ = {
+		3E39F6CE1B979087000DEC6C /* Edit features (connected) */ = {
 			isa = PBXGroup;
 			children = (
-				3E35197F1B90D2E5002994D0 /* EditFeaturesOnline.storyboard */,
-				3E3519801B90D2E5002994D0 /* EditFeaturesOnlineViewController.swift */,
-				3E3519811B90D2E5002994D0 /* FeatureTemplatePickerViewController.swift */,
+				3E39F6CF1B9790A9000DEC6C /* EditFeaturesOnline.storyboard */,
+				3E39F6D01B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift */,
+				3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */,
 			);
-			name = "Edit Features (connected)";
-			path = "arcgis-ios-sdk-samples/Features/Edit Features (connected)";
-			sourceTree = SOURCE_ROOT;
+			name = "Edit features (connected)";
+			sourceTree = "<group>";
 		};
 		3E4B05E51B39EE920072E514 /* Shared resources */ = {
 			isa = PBXGroup;
@@ -558,7 +557,7 @@
 				3ED029521B8E3ACD00ACA70D /* Update attributes (feature service) */,
 				3ED0295B1B8E3ACD00ACA70D /* Update geometries (feature service) */,
 				3ED0294D1B8E3ACD00ACA70D /* Edit feature attachments */,
-				3E35197E1B90D2E5002994D0 /* Edit Features (connected) */,
+				3E39F6CE1B979087000DEC6C /* Edit features (connected) */,
 			);
 			name = "Edit data";
 			sourceTree = "<group>";
@@ -1023,7 +1022,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E8526371B90D92700690EBD /* Bookmarks.storyboard in Resources */,
-				3E3519861B90D2E5002994D0 /* EditFeaturesOnline.storyboard in Resources */,
 				3E85263F1B90E06F00690EBD /* DisplayMap.storyboard in Resources */,
 				3ED028991B8E3A8500ACA70D /* ShowMagnifier.storyboard in Resources */,
 				3ED028E11B8E3AA500ACA70D /* OverrideRenderer.storyboard in Resources */,
@@ -1061,6 +1059,7 @@
 				3ED029391B8E3AB300ACA70D /* MILShowLegend.storyboard in Resources */,
 				3E4B05F81B39EF250072E514 /* SVProgressHUD.bundle in Resources */,
 				3ED029281B8E3AB300ACA70D /* GORenderers.storyboard in Resources */,
+				3E39F6D21B9790A9000DEC6C /* EditFeaturesOnline.storyboard in Resources */,
 				3ED028621B8E3A8500ACA70D /* SwitchBasemap.storyboard in Resources */,
 				3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */,
 				3ED028EE1B8E3AA500ACA70D /* FLSelection.storyboard in Resources */,
@@ -1099,8 +1098,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E39F6D41B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift in Sources */,
 				3ED029381B8E3AB300ACA70D /* MILLegendTableViewController.swift in Sources */,
-				3E3519871B90D2E5002994D0 /* EditFeaturesOnlineViewController.swift in Sources */,
 				3ED029321B8E3AB300ACA70D /* CalloutViewController.swift in Sources */,
 				3ED028841B8E3A8500ACA70D /* MapRotationViewController.swift in Sources */,
 				3ED0294C1B8E3AB300ACA70D /* SketchViewController.swift in Sources */,
@@ -1148,7 +1147,6 @@
 				3E8526391B90D92700690EBD /* BookmarksViewController.swift in Sources */,
 				3ED028631B8E3A8500ACA70D /* SwitchBasemapViewController.swift in Sources */,
 				3ED028591B8E3A8500ACA70D /* AuthoringOptionsViewController.swift in Sources */,
-				3E3519881B90D2E5002994D0 /* FeatureTemplatePickerViewController.swift in Sources */,
 				3ED0296A1B8E3ACD00ACA70D /* EditAttributesViewController.swift in Sources */,
 				3E4B05F71B39EF250072E514 /* SVIndefiniteAnimatedView.m in Sources */,
 				3ED028741B8E3A8500ACA70D /* MapViewDrawStatusViewController.swift in Sources */,
@@ -1157,6 +1155,7 @@
 				3ED0289D1B8E3A8500ACA70D /* MapViewScreenshotViewController.swift in Sources */,
 				3E5848FE1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift in Sources */,
 				3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */,
+				3E39F6D31B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift in Sources */,
 				3ED5EB751B740A58009F9B75 /* SegmentedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

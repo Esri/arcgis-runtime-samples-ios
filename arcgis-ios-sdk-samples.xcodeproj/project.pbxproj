@@ -238,9 +238,9 @@
 		3E2A680D1B0D2A7000A318AA /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewController.swift; path = "Content Display Logic/Controllers/ListViewController.swift"; sourceTree = "<group>"; };
 		3E2A68111B14E04300A318AA /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Static/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		3E2A68171B153CDE00A318AA /* SourceCodeBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SourceCodeBarButtonItem.swift; path = "Content Display Logic/Custom BarButtonItem/SourceCodeBarButtonItem.swift"; sourceTree = "<group>"; };
-		3E35197F1B90D2E5002994D0 /* EditFeaturesOnline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditFeaturesOnline.storyboard; sourceTree = "<group>"; };
-		3E3519801B90D2E5002994D0 /* EditFeaturesOnlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFeaturesOnlineViewController.swift; sourceTree = "<group>"; };
-		3E3519811B90D2E5002994D0 /* FeatureTemplatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureTemplatePickerViewController.swift; sourceTree = "<group>"; };
+		3E35197F1B90D2E5002994D0 /* EditFeaturesOnline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EditFeaturesOnline.storyboard; path = "../../Edit data/Edit Features (connected)/EditFeaturesOnline.storyboard"; sourceTree = "<group>"; };
+		3E3519801B90D2E5002994D0 /* EditFeaturesOnlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditFeaturesOnlineViewController.swift; path = "../../Edit data/Edit Features (connected)/EditFeaturesOnlineViewController.swift"; sourceTree = "<group>"; };
+		3E3519811B90D2E5002994D0 /* FeatureTemplatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureTemplatePickerViewController.swift; path = "../../Edit data/Edit Features (connected)/FeatureTemplatePickerViewController.swift"; sourceTree = "<group>"; };
 		3E4B05E81B39EF250072E514 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		3E4B05E91B39EF250072E514 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		3E4B05EA1B39EF250072E514 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
@@ -558,6 +558,7 @@
 				3ED029521B8E3ACD00ACA70D /* Update attributes (feature service) */,
 				3ED0295B1B8E3ACD00ACA70D /* Update geometries (feature service) */,
 				3ED0294D1B8E3ACD00ACA70D /* Edit feature attachments */,
+				3E35197E1B90D2E5002994D0 /* Edit Features (connected) */,
 			);
 			name = "Edit data";
 			sourceTree = "<group>";
@@ -585,7 +586,6 @@
 				3ED028C61B8E3AA500ACA70D /* Feature layer query */,
 				3ED028C01B8E3AA500ACA70D /* Feature layer definition expression */,
 				3ED028BA1B8E3AA500ACA70D /* Change feature layer renderer */,
-				3E35197E1B90D2E5002994D0 /* Edit Features (connected) */,
 			);
 			name = Features;
 			sourceTree = "<group>";

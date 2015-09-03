@@ -176,7 +176,7 @@
             <array>
                 <dict>
                     <key>displayName</key>
-                    <string>Feature layer (URL)</string>
+                    <string>Feature layer (feature service)</string>
                     <key>storyboardName</key>
                     <string>FeatureLayerURL</string>
                     <key>descriptionText</key>
@@ -238,14 +238,6 @@
                     <key>descriptionText</key>
                     <string>The feature layer comes with a default renderer but you can also override this renderer using your custom renderer</string>
                 </dict>
-                <dict>
-                    <key>displayName</key>
-                    <string>Edit features online</string>
-                    <key>storyboardName</key>
-                    <string>EditFeaturesOnline</string>
-                    <key>descriptionText</key>
-                    <string>This sample shows you how to add or edit features in an online feature layer using popups. The new popups provide inline editing for fast editing experience</string>
-                </dict> 
             </array>
         </dict>
         <dict>
@@ -323,6 +315,14 @@
                     <string>EditAttachment</string>
                     <key>descriptionText</key>
                     <string>Tap on a feature to display a callout. The callout shows the number of attachments associated with that feature. Tap on the info button to open the list view. You can add, delete or download an attachment in this list</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Edit features (connected)</string>
+                    <key>storyboardName</key>
+                    <string>EditFeaturesOnline</string>
+                    <key>descriptionText</key>
+                    <string>This sample shows you how to add or edit features in an online feature layer using popups. The new popups provide inline editing for fast editing experience</string>
                 </dict>
             </array>
         </dict>

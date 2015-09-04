@@ -36,10 +36,7 @@ class OpenExistingMapViewController: UIViewController, UITableViewDataSource, UI
         self.map = AGSMap(URL: NSURL(string: itemURL1)!)
         
         self.mapView.map = self.map
-        
-        //TODO: Keep this manual zoom until the initial extent is not working
-        self.mapView.setViewpointCenter(AGSPoint(x: -1e7, y: 5e6, spatialReference: AGSSpatialReference.webMercator()), scale: 2e7, completion: nil)
-        
+                
         //UI setup
         //add rounded corners for table's parent view
         self.tableParentView.layer.cornerRadius = 10

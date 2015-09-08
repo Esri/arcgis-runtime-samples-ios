@@ -294,6 +294,22 @@
             <array>
                 <dict>
                     <key>displayName</key>
+                    <string>Add features (feature service)</string>
+                    <key>storyboardName</key>
+                    <string>AddFeatures</string>
+                    <key>descriptionText</key>
+                    <string>Tap on a location on the map to add a new feature at that location</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Delete features (feature service)</string>
+                    <key>storyboardName</key>
+                    <string>DeleteFeatures</string>
+                    <key>descriptionText</key>
+                    <string>Tap on a feature to select it and then tap on the info button to delete the feature</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
                     <string>Update attributes (feature service)</string>
                     <key>storyboardName</key>
                     <string>EditAttributes</string>

@@ -20,7 +20,7 @@ The sample comes with a button on the bottom, says `Stop` by default. When you t
 
 Each `AGSMapView` has its own instance of `AGSLocationDisplay`, stored as `locationDisplay`. The `dataSource` on `AGSLocationDisplay` is responsible for providing periodic location updates. The default dataSource uses the platform's location service (CLLocationManager). To start displaying location, you need to call `(void) - startWithCompletion:`. To stop displaying location, you need to call `(void) - stop`. Use the `autoPanMode` property to change the how the map behaves when location updates are received.
 
-**Note**: As of iOS 7, you are required to request for user's permission in order to enable location services. You must include either `NSLocationWhenInUseUsageDescription` or `NSLocationAlwaysUsageDescription` along with a brief description on how you would be using the location services in the info.plist of your project.
+**Note**: As of iOS 8, you are required to request for user's permission in order to enable location services. You must include either `NSLocationWhenInUseUsageDescription` or `NSLocationAlwaysUsageDescription` along with a brief description on how you would be using the location services in the info.plist of your project.
 
 
 

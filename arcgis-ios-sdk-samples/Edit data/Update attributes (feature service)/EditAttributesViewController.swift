@@ -54,11 +54,11 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
         // Dispose of any resources that can be recreated.
     }
     
-    func showCallout(feature:AGSFeature) {
+    func showCallout(feature:AGSFeature, tapLocation:AGSPoint?) {
         let title = feature.attributeValueForKey("typdamage") as! String
         self.mapView.callout.title = title
         self.mapView.callout.delegate = self
-        self.mapView.callout.showCalloutForFeature(feature, layer: self.featureLayer, tapLocation: AGSPoint(x: 0, y: 0, spatialReference: self.map.spatialReference), animated: true)
+        self.mapView.callout.showCalloutForFeature(feature, layer: self.featureLayer, tapLocation: tapLocation, animated: true)
     }
     
     //MARK: - AGSMapViewTouchDelegate
@@ -90,7 +90,7 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
             else {
                 if let feature = result.enumerator().nextObject() {
                     //show callout for the first feature
-                    self?.showCallout(feature)
+                    self?.showCallout(feature, tapLocation: mappoint)
                     //update selected feature
                     self?.selectedFeature = feature
                 }
@@ -132,7 +132,7 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
                         println(error)
                     }
                     else {
-                        self?.showCallout(self!.selectedFeature)
+                        self?.showCallout(self!.selectedFeature, tapLocation: nil)
                     }
                 })
             }

@@ -25,6 +25,12 @@
 		3E39F6D41B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */; };
 		3E39F6D51B979135000DEC6C /* EditFeaturesOnlineViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E39F6D01B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift */; };
 		3E39F6D61B979135000DEC6C /* FeatureTemplatePickerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */; };
+		3E41DD721B9A1F4600DA11CC /* AddFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */; };
+		3E41DD741B9A241600DA11CC /* AddFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E41DD731B9A241500DA11CC /* AddFeatures.storyboard */; };
+		3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E41DD761B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift */; };
+		3E41DD791B9F609500DA11CC /* DeleteFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E41DD781B9F609500DA11CC /* DeleteFeatures.storyboard */; };
+		3E41DD7A1B9F836600DA11CC /* AddFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */; };
+		3E41DD7B1B9F836600DA11CC /* DeleteFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E41DD761B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift */; };
 		3E4B05F71B39EF250072E514 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B05E91B39EF250072E514 /* SVIndefiniteAnimatedView.m */; };
 		3E4B05F81B39EF250072E514 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E4B05EB1B39EF250072E514 /* SVProgressHUD.bundle */; };
 		3E4B05F91B39EF250072E514 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B05ED1B39EF250072E514 /* SVProgressHUD.m */; };
@@ -175,7 +181,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+
 				3E7162361BA21932008DE398 /* GraphicsWithSymbolsViewController.swift in CopyFiles */,
+				3E41DD7A1B9F836600DA11CC /* AddFeaturesViewController.swift in CopyFiles */,
+				3E41DD7B1B9F836600DA11CC /* DeleteFeaturesViewController.swift in CopyFiles */,
 				3E39F6D51B979135000DEC6C /* EditFeaturesOnlineViewController.swift in CopyFiles */,
 				3E39F6D61B979135000DEC6C /* FeatureTemplatePickerViewController.swift in CopyFiles */,
 				3E5849011B91256300AB3CE9 /* BookmarksListViewController.swift in CopyFiles */,
@@ -233,7 +242,7 @@
 		3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ContentPList.plist; path = "Content Display Logic/ContentPList.plist"; sourceTree = "<group>"; };
 		3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentTableViewController.swift; path = "Content Display Logic/Controllers/ContentTableViewController.swift"; sourceTree = "<group>"; };
 		3E0D3AD61AFD481900FC60D6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "Content Display Logic/Storyboard/Main.storyboard"; sourceTree = "<group>"; };
-		3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArcGIS.framework; path = ../../../../Library/SDKs/ArcGIS/iOS/Frameworks/Static/ArcGIS.framework; sourceTree = "<group>"; };
+		3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArcGIS.framework; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Static/ArcGIS.framework; sourceTree = "<absolute>"; };
 		3E23A9E01AFC28F6002E2214 /* arcgis-ios-sdk-samples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "arcgis-ios-sdk-samples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E23A9E41AFC28F6002E2214 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -245,6 +254,10 @@
 		3E39F6CF1B9790A9000DEC6C /* EditFeaturesOnline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EditFeaturesOnline.storyboard; path = "Edit data/Edit features (connected)/EditFeaturesOnline.storyboard"; sourceTree = "<group>"; };
 		3E39F6D01B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditFeaturesOnlineViewController.swift; path = "Edit data/Edit features (connected)/EditFeaturesOnlineViewController.swift"; sourceTree = "<group>"; };
 		3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureTemplatePickerViewController.swift; path = "Edit data/Edit features (connected)/FeatureTemplatePickerViewController.swift"; sourceTree = "<group>"; };
+		3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddFeaturesViewController.swift; path = "Edit data/Add features (feature service)/AddFeaturesViewController.swift"; sourceTree = "<group>"; };
+		3E41DD731B9A241500DA11CC /* AddFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddFeatures.storyboard; path = "Edit data/Add features (feature service)/AddFeatures.storyboard"; sourceTree = "<group>"; };
+		3E41DD761B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeleteFeaturesViewController.swift; path = "Edit data/Delete features (feature service)/DeleteFeaturesViewController.swift"; sourceTree = "<group>"; };
+		3E41DD781B9F609500DA11CC /* DeleteFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DeleteFeatures.storyboard; path = "Edit data/Delete features (feature service)/DeleteFeatures.storyboard"; sourceTree = "<group>"; };
 		3E4B05E81B39EF250072E514 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		3E4B05E91B39EF250072E514 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		3E4B05EA1B39EF250072E514 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
@@ -473,6 +486,24 @@
 			name = "Edit features (connected)";
 			sourceTree = "<group>";
 		};
+		3E41DD6D1B9A1EA800DA11CC /* Add features (feature service) */ = {
+			isa = PBXGroup;
+			children = (
+				3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */,
+				3E41DD731B9A241500DA11CC /* AddFeatures.storyboard */,
+			);
+			name = "Add features (feature service)";
+			sourceTree = "<group>";
+		};
+		3E41DD751B9F5AC800DA11CC /* Delete features (feature service) */ = {
+			isa = PBXGroup;
+			children = (
+				3E41DD761B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift */,
+				3E41DD781B9F609500DA11CC /* DeleteFeatures.storyboard */,
+			);
+			name = "Delete features (feature service)";
+			sourceTree = "<group>";
+		};
 		3E4B05E51B39EE920072E514 /* Shared resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -569,6 +600,8 @@
 		3ED027FC1B8E38F400ACA70D /* Edit data */ = {
 			isa = PBXGroup;
 			children = (
+				3E41DD6D1B9A1EA800DA11CC /* Add features (feature service) */,
+				3E41DD751B9F5AC800DA11CC /* Delete features (feature service) */,
 				3ED029521B8E3ACD00ACA70D /* Update attributes (feature service) */,
 				3ED0295B1B8E3ACD00ACA70D /* Update geometries (feature service) */,
 				3ED0294D1B8E3ACD00ACA70D /* Edit feature attachments */,
@@ -1058,6 +1091,7 @@
 				3ED028F71B8E3AA500ACA70D /* ManualCache.storyboard in Resources */,
 				3ED028641B8E3A8500ACA70D /* GriffithParkJson.txt in Resources */,
 				3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */,
+				3E41DD741B9A241600DA11CC /* AddFeatures.storyboard in Resources */,
 				3E2A68121B14E04300A318AA /* ArcGIS.bundle in Resources */,
 				3ED5EB771B752A42009F9B75 /* style.css in Resources */,
 				3ED028AF1B8E3A9800ACA70D /* MILUsingURL.storyboard in Resources */,
@@ -1078,6 +1112,7 @@
 				3ED029281B8E3AB300ACA70D /* GORenderers.storyboard in Resources */,
 				3E39F6D21B9790A9000DEC6C /* EditFeaturesOnline.storyboard in Resources */,
 				3ED028621B8E3A8500ACA70D /* SwitchBasemap.storyboard in Resources */,
+				3E41DD791B9F609500DA11CC /* DeleteFeatures.storyboard in Resources */,
 				3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */,
 				3ED028EE1B8E3AA500ACA70D /* FLSelection.storyboard in Resources */,
 				97DD84671B2B869300184B41 /* xcode.css in Resources */,
@@ -1149,10 +1184,12 @@
 				3ED029661B8E3ACD00ACA70D /* EditAttachmentViewController.swift in Sources */,
 				3ED028B31B8E3A9800ACA70D /* TLUsingURLViewController.swift in Sources */,
 				3ED028EA1B8E3AA500ACA70D /* FLQueryViewController.swift in Sources */,
+				3E41DD721B9A1F4600DA11CC /* AddFeaturesViewController.swift in Sources */,
 				3ED028961B8E3A8500ACA70D /* SetMapsSRViewController.swift in Sources */,
 				3ED0288E1B8E3A8500ACA70D /* SetInitialMapAreaViewController.swift in Sources */,
 				3ED028F51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift in Sources */,
 				3ED028E21B8E3AA500ACA70D /* OverrideRendererViewController.swift in Sources */,
+				3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */,
 				3E4B05FC1B39EF250072E514 /* TPKeyboardAvoidingTableView.m in Sources */,
 				3ED028F81B8E3AA500ACA70D /* ManualCacheViewController.swift in Sources */,
 				3ED029291B8E3AB300ACA70D /* GORenderersViewController.swift in Sources */,

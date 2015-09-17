@@ -66,21 +66,21 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
         //hide the callout
         self.mapView.callout.dismiss()
         
-        var tolerance:Double = 22
-        var mapTolerance = tolerance * self.mapView.unitsPerPixel
-        var envelope = AGSEnvelope(XMin: mappoint.x - mapTolerance,
+        let tolerance:Double = 22
+        let mapTolerance = tolerance * self.mapView.unitsPerPixel
+        let envelope = AGSEnvelope(XMin: mappoint.x - mapTolerance,
             yMin: mappoint.y - mapTolerance,
             xMax: mappoint.x + mapTolerance,
             yMax: mappoint.y + mapTolerance,
             spatialReference: self.map.spatialReference)
         
-        var queryParams = AGSQueryParameters()
+        let queryParams = AGSQueryParameters()
         queryParams.geometry = envelope
         queryParams.outFields = ["*"]
         
         self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult!, error:NSError!) -> Void in
             if let error = error {
-                println(error)
+                print(error)
             }
             else {
                 if let feature = result.enumerator().nextObject() {
@@ -124,7 +124,7 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
             self.selectedFeature.geometry = newGeometry
             self.featureTable.updateFeature(self.selectedFeature, completion: { [weak self] (succeeded:Bool, error:NSError!) -> Void in
                 if let error = error {
-                    println(error)
+                    print(error)
                     
                     //un hide the feature
                     self?.featureLayer.setFeature(self?.selectedFeature, visible: true)
@@ -132,7 +132,7 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
                 else {
                     self?.featureTable.applyEditsWithCompletion({ [weak self] (result:[AnyObject]!, error:NSError!) -> Void in
                         if let error = error {
-                            println(error)
+                            print(error)
                         }
                         else {
                             SVProgressHUD.showSuccessWithStatus("Saved successfully!")

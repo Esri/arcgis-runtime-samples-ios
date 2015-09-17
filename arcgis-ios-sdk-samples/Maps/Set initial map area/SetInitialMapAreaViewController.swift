@@ -44,6 +44,6 @@ class SetInitialMapAreaViewController: UIViewController {
     }
     
     deinit {
-        println("Set initial map area deinit")
+        print("Set initial map area deinit")
     }
 }

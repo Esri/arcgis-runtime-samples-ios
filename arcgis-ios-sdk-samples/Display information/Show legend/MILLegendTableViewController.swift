@@ -41,7 +41,7 @@ class MILLegendTableViewController: UITableViewController {
                 self.orderArray.append(layer)
                 layer.fetchLegendInfosWithCompletion({ [weak self] (legendInfos:[AnyObject]?, error:NSError?) -> Void in
                     if let error = error {
-                        println(error)
+                        print(error)
                     }
                     else {
                         if let legendInfos = legendInfos as? [AGSLegendInfo] {
@@ -79,7 +79,7 @@ class MILLegendTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MILLegendCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MILLegendCell", forIndexPath: indexPath) 
 
         let layer = self.orderArray[indexPath.section]
         let legendInfos = self.legendInfosDict[self.hashString(layer)]!
@@ -91,7 +91,7 @@ class MILLegendTableViewController: UITableViewController {
             cell.imageView?.image = markerSymbol.image
         }
         else {
-            println("symbol is not picture marker symbol")
+            print("symbol is not picture marker symbol")
         }
         
         cell.backgroundColor = UIColor.clearColor()

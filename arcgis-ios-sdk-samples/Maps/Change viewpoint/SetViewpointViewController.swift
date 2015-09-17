@@ -41,7 +41,6 @@ class SetViewpointViewController: UIViewController {
         
         if let griffithParkGeometry = self.geometryFromTextFile("GriffithParkJson") {
             self.griffithParkGeometry = griffithParkGeometry as! AGSPolygon
-            let lineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.Solid, color: UIColor.yellowColor(), width: 1, antialias: true, opacity: 1.0)
             let griffithParkSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.Solid, color: UIColor(red: 0, green: 0.5, blue: 0, alpha: 0.7), opacity: 1, outline: nil)
             let griffithParkGraphic = AGSGraphic(geometry: griffithParkGeometry, symbol: griffithParkSymbol)
             graphicsOverlay.graphics.addObject(griffithParkGraphic)
@@ -61,9 +60,9 @@ class SetViewpointViewController: UIViewController {
     
     func geometryFromTextFile(filename:String) -> AGSGeometry? {
         if let filepath = NSBundle.mainBundle().pathForResource(filename, ofType: "txt") {
-            if let jsonString = String(contentsOfFile: filepath, encoding: NSUTF8StringEncoding, error: nil) {
+            if let jsonString = try? String(contentsOfFile: filepath, encoding: NSUTF8StringEncoding) {
                 let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-                let dictionary = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.allZeros, error: nil) as! [NSObject:AnyObject]
+                let dictionary = (try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions())) as! [NSObject:AnyObject]
                 let geometry = AGSGeometry.fromJSON(dictionary)
                 return geometry
             }
@@ -75,7 +74,6 @@ class SetViewpointViewController: UIViewController {
     //MARK: - Actions
     
     @IBAction private func valueChanged(control:UISegmentedControl) {
-        var extent:AGSEnvelope!
         switch control.selectedSegmentIndex {
         case 0:
             self.mapView.setViewpointGeometry(self.griffithParkGeometry, padding: 50, completion: nil)
@@ -91,7 +89,7 @@ class SetViewpointViewController: UIViewController {
                 }
             })
         default:
-            println("Never should get here")
+            print("Never should get here")
             
             
         }

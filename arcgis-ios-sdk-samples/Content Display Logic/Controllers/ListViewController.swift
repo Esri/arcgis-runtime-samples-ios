@@ -51,7 +51,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     //MARK: tableview delegate
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ListCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ListCell")!
         
         cell.textLabel?.text = self.list[indexPath.row]
         cell.backgroundColor = UIColor.clearColor()

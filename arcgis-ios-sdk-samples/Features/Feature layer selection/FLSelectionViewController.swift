@@ -62,24 +62,24 @@ class FLSelectionViewController: UIViewController, AGSMapViewTouchDelegate {
             lastQuery.cancel()
         }
         
-        var tolerance:Double = 22
-        var mapTolerance = tolerance * self.mapView.unitsPerPixel
-        var envelope = AGSEnvelope(XMin: mappoint.x - mapTolerance,
+        let tolerance:Double = 22
+        let mapTolerance = tolerance * self.mapView.unitsPerPixel
+        let envelope = AGSEnvelope(XMin: mappoint.x - mapTolerance,
             yMin: mappoint.y - mapTolerance,
             xMax: mappoint.x + mapTolerance,
             yMax: mappoint.y + mapTolerance,
             spatialReference: self.map.spatialReference)
         
-        var queryParams = AGSQueryParameters()
+        let queryParams = AGSQueryParameters()
         queryParams.geometry = envelope
         queryParams.outFields = ["*"]
         
-        self.featureLayer.selectFeaturesWithQuery(queryParams, mode: AGSSelectionMode.New) { [weak self] (queryResult:AGSFeatureQueryResult!, error:NSError!) -> Void in
+        self.featureLayer.selectFeaturesWithQuery(queryParams, mode: AGSSelectionMode.New) { (queryResult:AGSFeatureQueryResult!, error:NSError!) -> Void in
             if let error = error {
-                println(error)
+                print(error)
             }
             if let result = queryResult, enumerator = result.enumerator() {
-                println("\(enumerator.allObjects.count) feature(s) selected")
+                print("\(enumerator.allObjects.count) feature(s) selected")
             }
         }
     }

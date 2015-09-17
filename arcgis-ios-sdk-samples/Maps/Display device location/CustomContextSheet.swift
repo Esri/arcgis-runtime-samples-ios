@@ -66,7 +66,7 @@ class CustomContextSheet: UIView {
         fatalError("init(frame:) has not been implemented")
     }
     
-    required internal init(coder aDecoder: NSCoder) {
+    required internal init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -128,7 +128,7 @@ class CustomContextSheet: UIView {
     
     func button(image:String, highlightImage:String?, action:Selector) -> UIButton {
         let button = UIButton(frame: CGRectZero)
-        button.setTranslatesAutoresizingMaskIntoConstraints(false)
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.center = self.center
         button.setImage(UIImage(named: image), forState: UIControlState.Normal)
         if highlightImage != nil {
@@ -158,7 +158,7 @@ class CustomContextSheet: UIView {
     
     func label(title:String) -> UILabel {
         let label = UILabel(frame: CGRectZero)
-        label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = UIColor.clearColor()
         label.attributedText = self.attributedText(title)
         label.alpha = 0
@@ -193,7 +193,9 @@ class CustomContextSheet: UIView {
             let animation = self.maskLayerAnimation(true)
             self.maskLayer.addAnimation(animation, forKey: animation.keyPath)
             
-            self.buttonsCollection.map({$0.hidden = false})
+            for button in self.buttonsCollection {
+                button.hidden = false
+            }
             
             let constraints = self.centerYConstraints
             
@@ -201,7 +203,7 @@ class CustomContextSheet: UIView {
                 if let weakSelf = self {
                     let count = constraints.count
                     for i in 0...count-1 {
-                        UIView.addKeyframeWithRelativeStartTime(Double(i)/Double(count), relativeDuration: 1/Double(count), animations: { [weak self] () -> Void in
+                        UIView.addKeyframeWithRelativeStartTime(Double(i)/Double(count), relativeDuration: 1/Double(count), animations: { () -> Void in
                             for j in i...count-1 {
                                 let layout = constraints[j]
                                 layout.constant -= weakSelf.buttonDisplacement
@@ -232,7 +234,7 @@ class CustomContextSheet: UIView {
                 if let weakSelf = self {
                     let count = constraints.count
                     for i in 0...count-1 {
-                        UIView.addKeyframeWithRelativeStartTime(Double(i)/Double(count), relativeDuration: 1/Double(count), animations: { [weak self] () -> Void in
+                        UIView.addKeyframeWithRelativeStartTime(Double(i)/Double(count), relativeDuration: 1/Double(count), animations: { () -> Void in
                             for j in (count - 1 - i)...count-1 {
                                 let layout = constraints[j]
                                 layout.constant += weakSelf.buttonDisplacement
@@ -244,9 +246,11 @@ class CustomContextSheet: UIView {
                     
                 }
             }, completion: { [weak self] (finished:Bool) -> Void in
-                    self?.isAnimating = false
-                    self?.isButtonPressed = false
-                self?.buttonsCollection.map({$0.hidden = true})
+                self?.isAnimating = false
+                self?.isButtonPressed = false
+                for button in self!.buttonsCollection {
+                    button.hidden = true
+                }
                 self?.updateSelectionButton(self!.selectedIndex)
             })
         }
@@ -263,7 +267,7 @@ class CustomContextSheet: UIView {
     
     func valueChanged(sender:UIButton) {
         //get index of sender
-        if let index = find(self.buttonsCollection, sender) {
+        if let index = self.buttonsCollection.indexOf(sender) {
             self.selectedIndex = index
 //            self.updateSelectionButton(index)
             //inform delegate

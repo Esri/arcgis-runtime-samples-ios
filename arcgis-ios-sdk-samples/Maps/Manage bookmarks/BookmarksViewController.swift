@@ -113,8 +113,8 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIPopoverP
         //use the text as the bookmark name
         //otherwise do nothing
         if buttonIndex == 1 {
-            if let textField = alertView.textFieldAtIndex(0) where !textField.text.isEmpty {
-                self.addBookmark(textField.text)
+            if let text = alertView.textFieldAtIndex(0)?.text {
+                self.addBookmark(text)
             }
         }
     }

@@ -42,7 +42,7 @@ class SublayersTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SublayerCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("SublayerCell")!
         cell.backgroundColor = UIColor.clearColor()
         
         let sublayer = self.sublayers[UInt(indexPath.row)] as! AGSArcGISMapImageSublayer

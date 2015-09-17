@@ -91,7 +91,7 @@ class ContentTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let reuseIdentifier = "Cell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier)!
 
         let node = self.nodesArray[indexPath.row]
         if let titleLabel = cell.viewWithTag(1) as? UILabel {
@@ -124,7 +124,7 @@ class ContentTableViewController: UITableViewController {
             self.updateExpandedRow(indexPath, collapseIfSelected: false)
             
             let storyboard = UIStoryboard(name: node.storyboardName, bundle: NSBundle.mainBundle())
-            let controller = storyboard.instantiateInitialViewController() as! UIViewController
+            let controller = storyboard.instantiateInitialViewController()!
             controller.title = node.displayName
             let navController = UINavigationController(rootViewController: controller)
             

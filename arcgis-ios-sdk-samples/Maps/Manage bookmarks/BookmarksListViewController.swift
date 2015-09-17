@@ -53,7 +53,7 @@ class BookmarksListViewController: UIViewController, UITableViewDataSource, UITa
     //MARK: - TableView delegates
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BookmarkCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("BookmarkCell")!
         cell.backgroundColor = UIColor.clearColor()
         //get the respective bookmark
         let bookmark = self.bookmarks[UInt(indexPath.row)] as! AGSBookmark

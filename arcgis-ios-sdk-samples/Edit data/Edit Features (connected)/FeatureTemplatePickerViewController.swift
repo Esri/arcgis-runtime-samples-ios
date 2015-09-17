@@ -73,7 +73,7 @@ class FeatureTemplatePickerViewController: UIViewController {
             }
         }
         
-        println("infos count :: \(self.infos.count)")
+        print("infos count :: \(self.infos.count)")
     }
     
     @IBAction func cancelAction() {
@@ -98,7 +98,7 @@ class FeatureTemplatePickerViewController: UIViewController {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //Get a cell
         let cellIdentifier = "TemplatePickerCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UITableViewCell!
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
         
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellIdentifier)

@@ -68,16 +68,16 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
         var cell:UITableViewCell
         
         if indexPath.section == 0 {
-            cell = tableView.dequeueReusableCellWithIdentifier("MMLLayersCell") as! UITableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier("MMLLayersCell")!
             //layers in reverse order
             let index = self.dataSourceIndexForIndexPath(self.layers, indexpath: indexPath)
             cell.textLabel?.text = self.layers[UInt(index)].name
         }
         else {
-            cell = tableView.dequeueReusableCellWithIdentifier("MMLDeletedLayersCell") as! UITableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier("MMLDeletedLayersCell")!
             let layer = self.deletedLayers[indexPath.row]
             cell.textLabel?.text = layer.name
-            let plusButton = UIButton.buttonWithType(UIButtonType.ContactAdd) as! UIButton
+            let plusButton = UIButton(type: UIButtonType.ContactAdd)
             plusButton.enabled = false
             cell.accessoryView = plusButton
             
@@ -139,7 +139,7 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
             self.tableView.endUpdates()
         }
         else {
-            println("Editing style other than delete")
+            print("Editing style other than delete")
         }
     }
     

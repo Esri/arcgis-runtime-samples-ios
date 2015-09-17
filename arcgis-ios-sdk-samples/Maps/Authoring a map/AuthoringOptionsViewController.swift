@@ -40,7 +40,7 @@ class AuthoringOptionsViewController: UIViewController, UITableViewDataSource, U
 
         //populate layers array
         for urlString in self.layerURLs {
-            var layer = AGSArcGISMapImageLayer(URL: NSURL(string: urlString)!)
+            let layer = AGSArcGISMapImageLayer(URL: NSURL(string: urlString)!)
             self.layers.append(layer)
         }
         
@@ -77,7 +77,7 @@ class AuthoringOptionsViewController: UIViewController, UITableViewDataSource, U
         var cell:UITableViewCell
         
         if indexPath.section == 0 {
-            cell = tableView.dequeueReusableCellWithIdentifier("AuthoringBasemapCell") as! UITableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier("AuthoringBasemapCell")!
             let basemap = self.basemaps[indexPath.row]
             cell.textLabel?.text = basemap.name
             
@@ -90,11 +90,11 @@ class AuthoringOptionsViewController: UIViewController, UITableViewDataSource, U
             }
         }
         else {
-            cell = tableView.dequeueReusableCellWithIdentifier("AuthoringLayerCell") as! UITableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier("AuthoringLayerCell")!
             let layer = self.layers[indexPath.row]
             cell.textLabel?.text = layer.name
             //accessory view
-            if contains(self.selectedLayersIndex, indexPath.row) {
+            if self.selectedLayersIndex.contains(indexPath.row) {
                 cell.accessoryType = .Checkmark
             }
             else {
@@ -120,9 +120,9 @@ class AuthoringOptionsViewController: UIViewController, UITableViewDataSource, U
         }
         else {
             //check if already selected
-            if contains(self.selectedLayersIndex, indexPath.row) {
+            if self.selectedLayersIndex.contains(indexPath.row) {
                 //remove the selection
-                self.selectedLayersIndex.removeAtIndex(find(self.selectedLayersIndex, indexPath.row)!)
+                self.selectedLayersIndex.removeAtIndex(self.selectedLayersIndex.indexOf(indexPath.row)!)
             }
             else {
                 self.selectedLayersIndex.append(indexPath.row)

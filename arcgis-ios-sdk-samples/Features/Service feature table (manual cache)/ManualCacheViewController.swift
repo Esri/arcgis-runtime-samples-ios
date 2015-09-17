@@ -52,15 +52,15 @@ class ManualCacheViewController: UIViewController {
         params.outFields = ["*"]
         
         //populate features based on query
-        featureTable.populateFromServiceWithParameters(params, clearCache: true) { [weak self] (result:AGSFeatureQueryResult!, error:NSError!) -> Void in
+        featureTable.populateFromServiceWithParameters(params, clearCache: true) { (result:AGSFeatureQueryResult!, error:NSError!) -> Void in
             //check for error
             if let error = error {
-                println("populateFromServiceWithParameters error :: \(error.localizedDescription)")
+                print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
             }
             else {
                 //the resulting features should be displayed on the map
                 //you can print the count of features
-                println(result.enumerator().allObjects.count)
+                print(result.enumerator().allObjects.count)
             }
         }
         

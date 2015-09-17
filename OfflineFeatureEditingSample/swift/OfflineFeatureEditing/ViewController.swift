@@ -14,7 +14,7 @@ import UIKit
 import ArcGIS
 
 let kTilePackageName = "SanFrancisco"
-let kFeatureServiceURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer"
+let kFeatureServiceURL = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer"
 
 class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate, FeatureTemplatePickerDelegate, AGSPopupsContainerDelegate {
     

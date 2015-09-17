@@ -20,7 +20,7 @@
 #import "BackgroundHelper.h"
 
 #define kTilePackageName @"SanFrancisco"
-#define kFeatureServiceURL @"https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer"
+#define kFeatureServiceURL @"http://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer"
 
 @interface MainViewController () <AGSLayerDelegate, AGSMapViewTouchDelegate, AGSPopupsContainerDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate, FeatureTemplatePickerDelegate>
 

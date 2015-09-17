@@ -13,8 +13,6 @@
 		3EE660101AB377C500D02DCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EE6600F1AB377C500D02DCB /* Images.xcassets */; };
 		3EE6BBEA18E0A0CA0092054A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EE6BBE918E0A0CA0092054A /* Storyboard.storyboard */; };
 		3EE6BBEE18E0ACD20092054A /* Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6BBED18E0ACD20092054A /* Parameters.m */; };
-		9704D4B8142AC69A00C7D727 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9704D4B6142AC69A00C7D727 /* icon@2x.png */; };
-		9704D4B9142AC69A00C7D727 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9704D4B7142AC69A00C7D727 /* icon.png */; };
 		97B8C37C1677CBB8003B6E1B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B8C37B1677CBB8003B6E1B /* Default-568h@2x.png */; };
 		97D382ED142D3DFF006372FD /* northarrow.gif in Resources */ = {isa = PBXBuildFile; fileRef = 97D382EC142D3DFF006372FD /* northarrow.gif */; };
 		C55320D914885972008EA256 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55320D714885972008EA256 /* SettingsViewController.m */; };
@@ -35,8 +33,6 @@
 		3EE6BBEC18E0ACD20092054A /* Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parameters.h; path = Models/Parameters.h; sourceTree = "<group>"; };
 		3EE6BBED18E0ACD20092054A /* Parameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Parameters.m; path = Models/Parameters.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* GpsSketchingSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GpsSketchingSample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		9704D4B6142AC69A00C7D727 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
-		9704D4B7142AC69A00C7D727 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		97B8C37B1677CBB8003B6E1B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		97D382EC142D3DFF006372FD /* northarrow.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = northarrow.gif; sourceTree = "<group>"; };
 		C55320D614885972008EA256 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -104,8 +100,6 @@
 				97B8C37B1677CBB8003B6E1B /* Default-568h@2x.png */,
 				C5F3C642149FEB3A009C00C2 /* bullseye.png */,
 				97D382EC142D3DFF006372FD /* northarrow.gif */,
-				9704D4B6142AC69A00C7D727 /* icon@2x.png */,
-				9704D4B7142AC69A00C7D727 /* icon.png */,
 				8D1107310486CEB800E47090 /* GpsSketchingSample-Info.plist */,
 			);
 			name = Resources;
@@ -190,8 +184,6 @@
 			files = (
 				3EE6BBEA18E0A0CA0092054A /* Storyboard.storyboard in Resources */,
 				3EE660101AB377C500D02DCB /* Images.xcassets in Resources */,
-				9704D4B8142AC69A00C7D727 /* icon@2x.png in Resources */,
-				9704D4B9142AC69A00C7D727 /* icon.png in Resources */,
 				97D382ED142D3DFF006372FD /* northarrow.gif in Resources */,
 				C5F3C643149FEB3A009C00C2 /* bullseye.png in Resources */,
 				C5F53D4514EC5C9500360A58 /* ArcGIS.bundle in Resources */,

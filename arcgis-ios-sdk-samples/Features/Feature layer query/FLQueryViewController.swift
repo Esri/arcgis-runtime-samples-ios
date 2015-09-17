@@ -64,7 +64,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         }
         
         let queryParams = AGSQueryParameters()
-        queryParams.whereClause = "upper(STATE_NAME) LIKE '%\(state)%'"
+        queryParams.whereClause = "upper(STATE_NAME) = upper('\(state)')"
         queryParams.outFields = ["*"]
 
         self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult!, error:NSError!) -> Void in

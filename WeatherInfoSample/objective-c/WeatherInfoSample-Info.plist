@@ -50,6 +50,13 @@
                 <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
                 <false/>
             </dict>
+            <key>openweathermap.org</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
         </dict>
     </dict>
 </dict>

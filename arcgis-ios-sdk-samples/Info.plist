@@ -39,6 +39,15 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+            <key>esri.com</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+                <false/>
+            </dict>
 			<key>arcgis.com</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>

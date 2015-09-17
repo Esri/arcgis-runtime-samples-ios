@@ -37,27 +37,29 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-    <key>NSExceptionDomains</key>
+    <key>NSAppTransportSecurity</key>
     <dict>
-        <key>arcgisonline.com</key>
+        <key>NSExceptionDomains</key>
         <dict>
-            <key>NSIncludesSubdomains</key>
-            <true/>
-            <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
-            <true/>
-            <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-            <false/>
-        </dict>
-        <key>arcgis.com</key>
-        <dict>
-            <key>NSIncludesSubdomains</key>
-            <true/>
-            <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
-            <true/>
-            <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-            <false/>
+            <key>arcgisonline.com</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+                <false/>
+            </dict>
+            <key>arcgis.com</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+                <false/>
+            </dict>
         </dict>
     </dict>
 </dict>
-
 </plist>

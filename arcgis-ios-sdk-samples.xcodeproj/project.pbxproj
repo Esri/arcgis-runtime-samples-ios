@@ -44,6 +44,9 @@
 		3E5849021B91256300AB3CE9 /* BookmarksViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8526351B90D92700690EBD /* BookmarksViewController.swift */; };
 		3E5849031B91256300AB3CE9 /* FeatureLayerURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */; };
 		3E676DF11B1D0B6000D4029A /* Camera Shutter.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */; };
+		3E71621F1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71621E1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift */; };
+		3E7162351BA1F529008DE398 /* GraphicsWithSymbols.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E7162341BA1F529008DE398 /* GraphicsWithSymbols.storyboard */; };
+		3E7162361BA21932008DE398 /* GraphicsWithSymbolsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E71621E1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift */; };
 		3E8526371B90D92700690EBD /* Bookmarks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8526331B90D92700690EBD /* Bookmarks.storyboard */; };
 		3E8526381B90D92700690EBD /* BookmarksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8526341B90D92700690EBD /* BookmarksListViewController.swift */; };
 		3E8526391B90D92700690EBD /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8526351B90D92700690EBD /* BookmarksViewController.swift */; };
@@ -178,6 +181,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+
+				3E7162361BA21932008DE398 /* GraphicsWithSymbolsViewController.swift in CopyFiles */,
 				3E41DD7A1B9F836600DA11CC /* AddFeaturesViewController.swift in CopyFiles */,
 				3E41DD7B1B9F836600DA11CC /* DeleteFeaturesViewController.swift in CopyFiles */,
 				3E39F6D51B979135000DEC6C /* EditFeaturesOnlineViewController.swift in CopyFiles */,
@@ -270,6 +275,8 @@
 		3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayerURLViewController.swift; path = "Features/Feature layer (feature service)/FeatureLayerURLViewController.swift"; sourceTree = "<group>"; };
 		3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FeatureLayerURL.storyboard; path = "Features/Feature layer (feature service)/FeatureLayerURL.storyboard"; sourceTree = "<group>"; };
 		3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Camera Shutter.caf"; sourceTree = "<group>"; };
+		3E71621E1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphicsWithSymbolsViewController.swift; path = "Display information/Add graphics with symbols/GraphicsWithSymbolsViewController.swift"; sourceTree = "<group>"; };
+		3E7162341BA1F529008DE398 /* GraphicsWithSymbols.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GraphicsWithSymbols.storyboard; path = "Display information/Add graphics with symbols/GraphicsWithSymbols.storyboard"; sourceTree = "<group>"; };
 		3E8526331B90D92700690EBD /* Bookmarks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Bookmarks.storyboard; path = "Maps/Manage bookmarks/Bookmarks.storyboard"; sourceTree = "<group>"; };
 		3E8526341B90D92700690EBD /* BookmarksListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarksListViewController.swift; path = "Maps/Manage bookmarks/BookmarksListViewController.swift"; sourceTree = "<group>"; };
 		3E8526351B90D92700690EBD /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarksViewController.swift; path = "Maps/Manage bookmarks/BookmarksViewController.swift"; sourceTree = "<group>"; };
@@ -561,6 +568,15 @@
 			path = "Content Display Logic/Audio Files";
 			sourceTree = "<group>";
 		};
+		3E71621D1BA0D7C2008DE398 /* Add graphics with symbols */ = {
+			isa = PBXGroup;
+			children = (
+				3E71621E1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift */,
+				3E7162341BA1F529008DE398 /* GraphicsWithSymbols.storyboard */,
+			);
+			name = "Add graphics with symbols";
+			sourceTree = "<group>";
+		};
 		3E8526321B90D7F400690EBD /* Manage bookmarks */ = {
 			isa = PBXGroup;
 			children = (
@@ -598,6 +614,7 @@
 			isa = PBXGroup;
 			children = (
 				3ED028FD1B8E3AB300ACA70D /* Add graphics with renderer */,
+				3E71621D1BA0D7C2008DE398 /* Add graphics with symbols */,
 				3ED029021B8E3AB300ACA70D /* Identify graphics */,
 				3ED029151B8E3AB300ACA70D /* Sketch on the map */,
 				3ED029081B8E3AB300ACA70D /* Show callout */,
@@ -1089,6 +1106,7 @@
 				3ED029701B8E3ACD00ACA70D /* EditGeometry.storyboard in Resources */,
 				3E5849001B9123E900AB3CE9 /* FeatureLayerURL.storyboard in Resources */,
 				3ED028E91B8E3AA500ACA70D /* FLQuery.storyboard in Resources */,
+				3E7162351BA1F529008DE398 /* GraphicsWithSymbols.storyboard in Resources */,
 				3ED029391B8E3AB300ACA70D /* MILShowLegend.storyboard in Resources */,
 				3E4B05F81B39EF250072E514 /* SVProgressHUD.bundle in Resources */,
 				3ED029281B8E3AB300ACA70D /* GORenderers.storyboard in Resources */,
@@ -1151,6 +1169,7 @@
 				3ED028B91B8E3A9800ACA70D /* SublayerVisibilityViewController.swift in Sources */,
 				3ED5EB731B7404D0009F9B75 /* SampleInfoViewController.swift in Sources */,
 				3ED028B71B8E3A9800ACA70D /* SublayersTableViewController.swift in Sources */,
+				3E71621F1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift in Sources */,
 				3E2A68181B153CDE00A318AA /* SourceCodeBarButtonItem.swift in Sources */,
 				3ED028581B8E3A8500ACA70D /* AuthoringMapViewController.swift in Sources */,
 				3E4B05FD1B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,

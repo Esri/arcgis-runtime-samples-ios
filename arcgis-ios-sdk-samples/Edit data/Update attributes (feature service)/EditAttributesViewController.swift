@@ -54,7 +54,7 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
         // Dispose of any resources that can be recreated.
     }
     
-    func showCallout(feature:AGSFeature, tapLocation:AGSPoint) {
+    func showCallout(feature:AGSFeature, tapLocation:AGSPoint?) {
         let title = feature.attributeValueForKey("typdamage") as! String
         self.mapView.callout.title = title
         self.mapView.callout.delegate = self
@@ -132,7 +132,7 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
                         println(error)
                     }
                     else {
-                        self?.showCallout(self!.selectedFeature)
+                        self?.showCallout(self!.selectedFeature, tapLocation: nil)
                     }
                 })
             }

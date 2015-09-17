@@ -255,6 +255,14 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
+                    <string>Add graphics with symbols</string>
+                    <key>storyboardName</key>
+                    <string>GraphicsWithSymbols</string>
+                    <key>descriptionText</key>
+                    <string>You can add graphics to a map using the new Graphics Overlay and specify symbol for each graphic</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
                     <string>Identify graphics</string>
                     <key>storyboardName</key>
                     <string>GOIdentify</string>

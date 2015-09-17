@@ -35,7 +35,7 @@ class DisplayLocationViewController: UIViewController, CustomContextSheetDelegat
         
         //setup the context sheet
         self.sheet = CustomContextSheet(images: ["LocationDisplayDisabledIcon", "LocationDisplayOffIcon", "LocationDisplayDefaultIcon", "LocationDisplayNavigationIcon2", "LocationDisplayHeadingIcon2"], highlightImages: nil, titles: ["Stop", "On", "Re-Center", "Navigation", "Compass"])
-        self.sheet.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.sheet.translatesAutoresizingMaskIntoConstraints = false
         self.sheet.delegate = self
         self.view.addSubview(self.sheet)
         

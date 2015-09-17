@@ -35,7 +35,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     func loadAttachments() {
         self.feature.fetchAttachmentInfosWithCompletion { [weak self] (attachmentInfos:[AnyObject]!, error:NSError!) -> Void in
             if let error = error {
-                println(error)
+                print(error)
             }
             else {
                 self?.attachmentInfos = attachmentInfos as! [AGSAttachmentInfo]
@@ -62,7 +62,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     //MARK: - Table view delegate
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("AttachmentCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("AttachmentCell")!
         
         let attachmentInfo = self.attachmentInfos[indexPath.row]
         cell.textLabel?.text = attachmentInfo.name
@@ -87,16 +87,16 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
             let attachmentInfo = self.attachmentInfos[indexPath.row]
             self.feature.deleteAttachment(attachmentInfo, completion: { [weak self] (error:NSError!) -> Void in
                 if let error = error {
-                    println(error)
+                    print(error)
                 }
                 else {
-                    println("Attachment deleted")
+                    print("Attachment deleted")
                     (self?.feature.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion({ [weak self] (result, error) -> Void in
                         if let error = error {
-                            println(error)
+                            print(error)
                         }
                         else {
-                            println("Apply edits finished successfully")
+                            print("Apply edits finished successfully")
                             self?.loadAttachments()
                         }
                     })
@@ -109,13 +109,16 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         let attachmentInfo = self.attachmentInfos[indexPath.row]
         attachmentInfo.fetchDataWithCompletion { [weak self] (data:NSData!, error:NSError!) -> Void in
             if let error = error {
-                println(error)
+                print(error)
             }
             else {
+                guard let weakSelf = self else {
+                    return
+                }
                 let image = UIImage(data: data)
-                let cell = self?.tableView.cellForRowAtIndexPath(indexPath)
-                if contains(self?.tableView.visibleCells() as! [UITableViewCell], cell!) {
-                    cell?.imageView?.image = image
+                let cell = weakSelf.tableView.cellForRowAtIndexPath(indexPath)!
+                if weakSelf.tableView.visibleCells.contains(cell) {
+                    cell.imageView?.image = image
                 }
             }
         }
@@ -128,18 +131,18 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     @IBAction func addAction() {
-        let data = UIImagePNGRepresentation(UIImage(named: "LocationDisplayOffIcon"))
+        let data = UIImagePNGRepresentation(UIImage(named: "LocationDisplayOffIcon")!)
         self.feature.addAttachmentWithName("Attachment.png", contentType: "png", data: data) { [weak self] (info:AGSAttachmentInfo!, error:NSError!) -> Void in
             if let error = error {
-                println(error)
+                print(error)
             }
             else {
                 (self?.feature.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion({ [weak self] (result, error) -> Void in
                     if let error = error {
-                        println(error)
+                        print(error)
                     }
                     else {
-                        println("Apply edits finished successfully")
+                        print("Apply edits finished successfully")
                         self?.loadAttachments()
                     }
                 })

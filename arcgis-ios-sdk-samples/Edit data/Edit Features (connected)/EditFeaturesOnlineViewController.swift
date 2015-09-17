@@ -63,7 +63,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
     }
     
     func applyEdits() {
-        (self.featureLayer.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion { [weak self] (result:[AnyObject]!, error:NSError!) -> Void in
+        (self.featureLayer.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion { (result:[AnyObject]!, error:NSError!) -> Void in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus("Error while applying edits :: \(error.localizedDescription)")
             }
@@ -80,17 +80,17 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
             lastQuery.cancel()
         }
         
-        var tolerance:Double = 22
-        var mapTolerance = tolerance * self.mapView.unitsPerPixel
-        var envelope = AGSEnvelope(XMin: mappoint.x - mapTolerance, yMin: mappoint.y - mapTolerance, xMax: mappoint.x + mapTolerance, yMax: mappoint.y + mapTolerance, spatialReference: self.map.spatialReference)
-        var queryParams = AGSQueryParameters()
+        let tolerance:Double = 22
+        let mapTolerance = tolerance * self.mapView.unitsPerPixel
+        let envelope = AGSEnvelope(XMin: mappoint.x - mapTolerance, yMin: mappoint.y - mapTolerance, xMax: mappoint.x + mapTolerance, yMax: mappoint.y + mapTolerance, spatialReference: self.map.spatialReference)
+        let queryParams = AGSQueryParameters()
         queryParams.geometry = envelope
         queryParams.outFields = ["*"]
         
 
         self.lastQuery = self.featureLayer.featureTable.queryFeaturesWithParameters(queryParams){ [weak self] (queryResult, error) in
             if let error = error {
-                println(error)
+                print(error)
             }
             if let result = queryResult,
                 enumerator = result.enumerator(), weakSelf = self {
@@ -98,7 +98,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
                     
                     while let f = enumerator.nextObject() as? AGSArcGISFeature{
 
-                        var popup = AGSPopup(geoElement: f)
+                        let popup = AGSPopup(geoElement: f)
                         popups.append(popup)
                     }
                     
@@ -110,7 +110,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
                     }
             }
             else if let error = error{
-                println("error querying feature layer: \(error)")
+                print("error querying feature layer: \(error)")
             }
         }
     }
@@ -252,7 +252,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
         
         self.featureLayer.featureTable.addFeature(self.newFeature, completion: { [weak self] (succeeded:Bool, error:NSError!) -> Void in
             if let error = error {
-                println("Error while adding feature :: \(error.localizedDescription)")
+                print("Error while adding feature :: \(error.localizedDescription)")
             }
             else if succeeded {
                 if let weakSelf = self {

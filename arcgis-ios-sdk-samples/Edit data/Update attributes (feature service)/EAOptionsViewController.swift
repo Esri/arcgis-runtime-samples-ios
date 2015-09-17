@@ -53,7 +53,7 @@ class EAOptionsViewController: UIViewController, UITableViewDataSource, UITableV
     //MARK: - Table view delegate
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("EAOptionsCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("EAOptionsCell")!
         
         cell.textLabel?.text = self.options[indexPath.row]
         

@@ -74,7 +74,7 @@ class OpenExistingMapViewController: UIViewController, UITableViewDataSource, UI
     //MARK: - TableView delegates
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ExistingMapCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ExistingMapCell")!
         cell.backgroundColor = UIColor.clearColor()
         
         cell.textLabel?.text = self.titles[indexPath.row]

@@ -55,17 +55,16 @@ class SaveAsViewController: UIViewController {
     
     @IBAction private func saveAction() {
         //Validations
-        if self.titleTextField.text.isEmpty || self.tagsTextField.text.isEmpty {
+        guard let title = self.titleTextField.text, tags = self.tagsTextField.text else {
             //show error message
             UIAlertView(title: "Error", message: "Title and tags are required fields", delegate: nil, cancelButtonTitle: "Ok").show()
             return
         }
         
-        var tags: [String], itemDescription: String?
-        let text = self.tagsTextField.text
-        tags = text.componentsSeparatedByString(",")
-        //TODO: trim not working with map, fix this
-        tags.map({
+        var itemDescription: String?
+        var tagsArray = tags.componentsSeparatedByString(",")
+
+        tagsArray = tagsArray.map ({
             $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         })
         
@@ -73,6 +72,6 @@ class SaveAsViewController: UIViewController {
             itemDescription = self.descriptionTextView.text
         }
         
-        self.delegate?.saveAsViewController(self, didInitiateSaveWithTitle: self.titleTextField.text, tags: tags, itemDescription: itemDescription)
+        self.delegate?.saveAsViewController(self, didInitiateSaveWithTitle: title, tags: tagsArray, itemDescription: itemDescription)
     }
 }

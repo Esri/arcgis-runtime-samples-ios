@@ -22,12 +22,12 @@ extension UIImage {
         let originX = (self.size.width - size.width)/2
         let originY = (self.size.height - size.height)/2
         
-        var scale = UIScreen.mainScreen().scale
+        let scale = UIScreen.mainScreen().scale
         let rect = CGRect(x: originX*scale, y: originY*scale, width: size.width*scale, height: size.height*scale)
         
         //crop image
-        let croppedCGImage = CGImageCreateWithImageInRect(self.CGImage, rect)
-        let croppedImage = UIImage(CGImage: croppedCGImage, scale: scale, orientation: UIImageOrientation.Up)!
+        let croppedCGImage = CGImageCreateWithImageInRect(self.CGImage, rect)!
+        let croppedImage = UIImage(CGImage: croppedCGImage, scale: scale, orientation: UIImageOrientation.Up)
         
         return croppedImage
     }
@@ -124,7 +124,7 @@ class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, 
         self.portal = AGSPortal(URL: NSURL(string: "http://www.arcgis.com")!, loginRequired: true)
         self.portal.loadWithCompletion { (error) -> Void in
             if let error = error {
-                println(error)
+                print(error)
             }
             else {
                 //get title etc
@@ -181,14 +181,14 @@ class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, 
             if let weakSelf = self {
                 //crop the image from the center
                 //also to cut on the size
-                var croppedImage:UIImage? = image?.croppedImage(CGSize(width: 200, height: 200))
+                let croppedImage:UIImage? = image?.croppedImage(CGSize(width: 200, height: 200))
                 
                 weakSelf.mapView.map?.saveAs(title, portal: weakSelf.portal!, tags: tags, folder: nil, itemDescription: itemDescription, thumbnail: croppedImage, completion: { [weak self] (error) -> Void in
                     
                     //dismiss progress hud
                     SVProgressHUD.dismiss()
                     if let error = error {
-                        UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "Ok")
+                        UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "Ok").show()
                     }
                     else {
                         dispatch_async(dispatch_get_main_queue(), { [weak self] () -> Void in

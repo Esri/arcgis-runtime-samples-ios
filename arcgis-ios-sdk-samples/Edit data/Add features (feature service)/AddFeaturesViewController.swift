@@ -68,7 +68,7 @@ class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
         self.featureTable.addFeature(feature, completion: { [weak self] (succeeded, error) -> Void in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus("Error while adding feature :: \(error.localizedDescription)")
-                println("Error while adding feature :: \(error)")
+                print("Error while adding feature :: \(error)")
             }
             else {
                 //applied edits on success
@@ -80,7 +80,7 @@ class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
     }
     
     func applyEdits() {
-        self.featureTable.applyEditsWithCompletion { [weak self] (featureEditResults: [AnyObject]!, error: NSError!) -> Void in
+        self.featureTable.applyEditsWithCompletion { (featureEditResults: [AnyObject]!, error: NSError!) -> Void in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus("Error while applying edits :: \(error.localizedDescription)")
             }

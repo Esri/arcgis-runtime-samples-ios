@@ -33,11 +33,11 @@ class SampleInfoViewController: UIViewController {
 
         if let path = NSBundle.mainBundle().pathForResource("README", ofType: ".md", inDirectory: folderName) {
             //read the content of the file
-            if let content = String(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil) {
+            if let content = try? String(contentsOfFile: path, encoding: NSUTF8StringEncoding) {
                 //remove the images
                 let pattern = "!\\[.*\\]\\(.*\\)"
-                if let regex = NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions.CaseInsensitive, error: nil) {
-                    let newContent = regex.stringByReplacingMatchesInString(content, options: NSMatchingOptions.allZeros, range: NSMakeRange(0, count(content)), withTemplate: "")
+                if let regex = try? NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions.CaseInsensitive) {
+                    let newContent = regex.stringByReplacingMatchesInString(content, options: NSMatchingOptions(), range: NSMakeRange(0, content.characters.count), withTemplate: "")
                     self.displayHTML(newContent)
                 }
             }

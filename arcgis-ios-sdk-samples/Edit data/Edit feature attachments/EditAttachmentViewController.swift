@@ -75,7 +75,7 @@ class EditAttachmentViewController: UIViewController, AGSMapViewTouchDelegate, A
         
         self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult!, error:NSError!) -> Void in
             if let error = error {
-                println(error)
+                print(error)
             }
             else {
                 if let feature = result.enumerator().nextObject() as? AGSArcGISFeature {
@@ -85,7 +85,7 @@ class EditAttachmentViewController: UIViewController, AGSMapViewTouchDelegate, A
                     //fetch attachment info
                     feature.fetchAttachmentInfosWithCompletion({ [weak self] (attachmentInfos:[AnyObject]!, error:NSError!) -> Void in
                         if let error = error {
-                            println(error)
+                            print(error)
                         }
                         else {
                             

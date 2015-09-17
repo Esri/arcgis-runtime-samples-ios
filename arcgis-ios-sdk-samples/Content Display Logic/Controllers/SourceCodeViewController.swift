@@ -61,7 +61,7 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIPopoverPr
         //find the path of the file
         if let path = NSBundle.mainBundle().pathForResource(name, ofType: ".swift") {
             //read the content of the file
-            if let content = String(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil) {
+            if let content = try? String(contentsOfFile: path, encoding: NSUTF8StringEncoding) {
                 return content
             }
         }
@@ -117,7 +117,7 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIPopoverPr
     
     //MARK: - Navigation
     
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if self.filenames.count > 1 {
             return true
         }

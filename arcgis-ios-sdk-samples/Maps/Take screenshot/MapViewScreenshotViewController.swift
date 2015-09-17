@@ -88,7 +88,7 @@ class MapViewScreenshotViewController: UIViewController {
         flashView.backgroundColor = UIColor.whiteColor()
         self.mapView.addSubview(flashView)
         //animate the white flash view on and off to show the flash effect
-        UIView.animateWithDuration(0.3, animations: { [weak self] () -> Void in
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
             flashView.alpha = 0
             }, completion: { [weak self] (finished) -> Void in
                 //On completion play the shutter sound
@@ -104,9 +104,8 @@ class MapViewScreenshotViewController: UIViewController {
     func playShutterSound() {
         if self.shutterSound == 0 {
             if let filepath = NSBundle.mainBundle().pathForResource("Camera Shutter", ofType: "caf") {
-                if let url = NSURL(fileURLWithPath: filepath) {
-                    AudioServicesCreateSystemSoundID(url, &self.shutterSound)
-                }
+                let url = NSURL(fileURLWithPath: filepath)
+                AudioServicesCreateSystemSoundID(url, &self.shutterSound)
             }
         }
         

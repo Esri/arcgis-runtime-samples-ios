@@ -78,9 +78,9 @@ class GOIdentifyViewController: UIViewController, AGSMapViewTouchDelegate {
         //use `identifyGraphicsOverlaysAtScreenCoordinate:tolerance:maximumGraphics:completion:` method provided on map view
         let tolerance:Double = 44
         
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenCoordinate: screen, tolerance: tolerance, maximumGraphics: 10) { [weak self] (graphics:[AnyObject]?, error:NSError?) -> Void in
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenCoordinate: screen, tolerance: tolerance, maximumGraphics: 10) { (graphics:[AnyObject]?, error:NSError?) -> Void in
             if let error = error {
-                println("error while identifying :: \(error.localizedDescription)")
+                print("error while identifying :: \(error.localizedDescription)")
             }
             else {
                 //if a graphics is found then show an alert

@@ -71,21 +71,21 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
         //hide the callout
         self.mapView.callout.dismiss()
         
-        var tolerance:Double = 22
-        var mapTolerance = tolerance * self.mapView.unitsPerPixel
-        var env = AGSEnvelope(XMin: mappoint.x - mapTolerance,
+        let tolerance:Double = 22
+        let mapTolerance = tolerance * self.mapView.unitsPerPixel
+        let env = AGSEnvelope(XMin: mappoint.x - mapTolerance,
             yMin: mappoint.y - mapTolerance,
             xMax: mappoint.x + mapTolerance,
             yMax: mappoint.y + mapTolerance,
             spatialReference: self.map.spatialReference)
         
-        var queryParams = AGSQueryParameters()
+        let queryParams = AGSQueryParameters()
         queryParams.geometry = env
         queryParams.outFields = ["*"]
         
         self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult!, error:NSError!) -> Void in
             if let error = error {
-                println(error)
+                print(error)
             }
             else {
                 if let feature = result.enumerator().nextObject() {
@@ -124,12 +124,12 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
         self.selectedFeature.setAttributeValue(self.types[index], forKey: "typdamage")
         self.featureTable.updateFeature(self.selectedFeature, completion: { [weak self] (succeeded:Bool, error:NSError!) -> Void in
             if let error = error {
-                println(error)
+                print(error)
             }
             else {
                 self?.featureTable.applyEditsWithCompletion({ [weak self] (result:[AnyObject]!, error:NSError!) -> Void in
                     if let error = error {
-                        println(error)
+                        print(error)
                     }
                     else {
                         self?.showCallout(self!.selectedFeature, tapLocation: nil)

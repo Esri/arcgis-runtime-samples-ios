@@ -65,7 +65,7 @@ class DeleteFeaturesViewController: UIViewController, AGSMapViewTouchDelegate, A
     func deleteFeature(feature:AGSFeature) {
         self.featureTable.deleteFeature(feature, completion: { (succeeded:Bool, error:NSError!) -> Void in
             if let error = error {
-                println("Error while deleting feature : \(error.localizedDescription)")
+                print("Error while deleting feature : \(error.localizedDescription)")
             }
             else {
                 self.applyEdits()
@@ -74,7 +74,7 @@ class DeleteFeaturesViewController: UIViewController, AGSMapViewTouchDelegate, A
     }
     
     func applyEdits() {
-        self.featureTable.applyEditsWithCompletion { [weak self] (featureEditResults: [AnyObject]!, error: NSError!) -> Void in
+        self.featureTable.applyEditsWithCompletion { (featureEditResults: [AnyObject]!, error: NSError!) -> Void in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus("Error while applying edits :: \(error.localizedDescription)")
             }
@@ -96,21 +96,21 @@ class DeleteFeaturesViewController: UIViewController, AGSMapViewTouchDelegate, A
         //hide the callout
         self.mapView.callout.dismiss()
         
-        var tolerance:Double = 22
-        var mapTolerance = tolerance * self.mapView.unitsPerPixel
-        var env = AGSEnvelope(XMin: mappoint.x - mapTolerance,
+        let tolerance:Double = 22
+        let mapTolerance = tolerance * self.mapView.unitsPerPixel
+        let env = AGSEnvelope(XMin: mappoint.x - mapTolerance,
             yMin: mappoint.y - mapTolerance,
             xMax: mappoint.x + mapTolerance,
             yMax: mappoint.y + mapTolerance,
             spatialReference: self.mapView.map!.spatialReference)
         
-        var queryParams = AGSQueryParameters()
+        let queryParams = AGSQueryParameters()
         queryParams.geometry = env
         queryParams.outFields = ["*"]
         
         self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult!, error:NSError!) -> Void in
             if let error = error {
-                println(error)
+                print(error)
             }
             else {
                 if let feature = result.enumerator().nextObject() {
@@ -130,7 +130,7 @@ class DeleteFeaturesViewController: UIViewController, AGSMapViewTouchDelegate, A
         self.mapView.callout.dismiss()
         
         //confirmation
-        let alertController = UIAlertController(title: "Are you sure you want to delete the feature", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let alertController = UIAlertController(title: "Are you sure you want to delete the feature", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         //action for Yes
         let alertAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default) { [weak self] (action:UIAlertAction!) -> Void in
             self?.deleteFeature(self!.selectedFeature)

@@ -37,7 +37,7 @@ class DefinitionExpressionViewController: UIViewController {
         self.mapView.map = self.map
         
         //create feature table using a url to feature server's layer
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0"))
+        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0")!)
         //create feature layer using this feature table
         self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
         

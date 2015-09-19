@@ -37,7 +37,7 @@ class EditAttachmentViewController: UIViewController, AGSMapViewTouchDelegate, A
         //set initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -471534.03, y: 7297552.03, spatialReference: AGSSpatialReference.webMercator()), scale: 6e6)
         
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL))
+        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL)!)
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         self.map.operationalLayers.addObject(self.featureLayer)
@@ -73,32 +73,29 @@ class EditAttachmentViewController: UIViewController, AGSMapViewTouchDelegate, A
         queryParams.geometry = envelope
         queryParams.outFields = ["*"]
         
-        self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult!, error:NSError!) -> Void in
+        self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult?, error:NSError?) -> Void in
             if let error = error {
                 print(error)
             }
-            else {
-                if let feature = result.enumerator().nextObject() as? AGSArcGISFeature {
-                    //show callout for the first feature
-                    let title = feature.attributeValueForKey("typdamage") as! String
-                    
-                    //fetch attachment info
-                    feature.fetchAttachmentInfosWithCompletion({ [weak self] (attachmentInfos:[AnyObject]!, error:NSError!) -> Void in
-                        if let error = error {
-                            print(error)
-                        }
-                        else {
-                            
-                            let detail = "Number of attachments :: \(attachmentInfos.count)"
-                            self?.mapView.callout.title = title
-                            self?.mapView.callout.detail = detail
-                            self?.mapView.callout.delegate = self
-                            self?.mapView.callout.showCalloutForFeature(feature, layer: self!.featureLayer, tapLocation: mappoint, animated: true)
-                            //update selected feature
-                            self?.selectedFeature = feature
-                        }
-                    })
-                }
+            else if let feature = result?.enumerator()?.nextObject() as? AGSArcGISFeature {
+                //show callout for the first feature
+                let title = feature.attributeValueForKey("typdamage") as! String
+                
+                //fetch attachment info
+                feature.fetchAttachmentInfosWithCompletion({ (attachmentInfos:[AnyObject]?, error:NSError?) -> Void in
+                    if let error = error {
+                        print(error)
+                    }
+                    else if let attachmentInfos = attachmentInfos {
+                        let detail = "Number of attachments :: \(attachmentInfos.count)"
+                        self?.mapView.callout.title = title
+                        self?.mapView.callout.detail = detail
+                        self?.mapView.callout.delegate = self
+                        self?.mapView.callout.showCalloutForFeature(feature, layer: self!.featureLayer, tapLocation: mappoint, animated: true)
+                        //update selected feature
+                        self?.selectedFeature = feature
+                    }
+                })
             }
         })
     }

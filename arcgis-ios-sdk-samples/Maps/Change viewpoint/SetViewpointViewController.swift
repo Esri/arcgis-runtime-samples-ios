@@ -37,7 +37,7 @@ class SetViewpointViewController: UIViewController {
         //create a graphicsOverlay to show the graphics
         let graphicsOverlay = AGSGraphicsOverlay()
         
-        self.londonCoordinate = AGSPoint(fromDecimalDegreesString: "51.5072 N, 0.1275 W", withSpatialReference: AGSSpatialReference.WGS84())
+        self.londonCoordinate = AGSPoint(x: 0.1275, y: 51.5072, spatialReference: AGSSpatialReference.WGS84())
         
         if let griffithParkGeometry = self.geometryFromTextFile("GriffithParkJson") {
             self.griffithParkGeometry = griffithParkGeometry as! AGSPolygon

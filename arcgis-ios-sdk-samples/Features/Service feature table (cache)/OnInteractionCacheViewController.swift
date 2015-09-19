@@ -40,7 +40,7 @@ class OnInteractionCacheViewController: UIViewController {
             spatialReference: AGSSpatialReference.webMercator()))
         
         //feature layer
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL))
+        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL)!)
         //set the request mode
         featureTable.featureRequestMode = AGSFeatureRequestMode.OnInteractionCache
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)

@@ -39,7 +39,7 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
         //set initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -9030446.96, y: 943791.32, spatialReference: AGSSpatialReference.webMercator()), scale: 2e6)
         
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL))
+        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL)!)
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         self.map.operationalLayers.addObject(self.featureLayer)
@@ -78,20 +78,18 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
         queryParams.geometry = envelope
         queryParams.outFields = ["*"]
         
-        self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult!, error:NSError!) -> Void in
+        self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult?, error:NSError?) -> Void in
             if let error = error {
                 print(error)
             }
-            else {
-                if let feature = result.enumerator().nextObject() {
-                    //show callout for the first feature
-                    let title = feature.attributeValueForKey("typdamage") as! String
-                    self?.mapView.callout.title = title
-                    self?.mapView.callout.delegate = self
-                    self?.mapView.callout.showCalloutForFeature(feature, layer: self!.featureLayer, tapLocation: mappoint, animated: true)
-                    //update selected feature
-                    self?.selectedFeature = feature
-                }
+            else if let feature = result?.enumerator()?.nextObject() {
+                //show callout for the first feature
+                let title = feature.attributeValueForKey("typdamage") as! String
+                self?.mapView.callout.title = title
+                self?.mapView.callout.delegate = self
+                self?.mapView.callout.showCalloutForFeature(feature, layer: self!.featureLayer, tapLocation: mappoint, animated: true)
+                //update selected feature
+                self?.selectedFeature = feature
             }
         })
     }
@@ -122,15 +120,15 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
     @IBAction func doneAction() {
         if let newGeometry = self.sketchGraphicsOverlay.geometry {
             self.selectedFeature.geometry = newGeometry
-            self.featureTable.updateFeature(self.selectedFeature, completion: { [weak self] (succeeded:Bool, error:NSError!) -> Void in
+            self.featureTable.updateFeature(self.selectedFeature, completion: { [weak self] (error:NSError?) -> Void in
                 if let error = error {
                     print(error)
                     
                     //un hide the feature
-                    self?.featureLayer.setFeature(self?.selectedFeature, visible: true)
+                    self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
                 }
                 else {
-                    self?.featureTable.applyEditsWithCompletion({ [weak self] (result:[AnyObject]!, error:NSError!) -> Void in
+                    self?.featureTable.applyEditsWithCompletion({ (result:[AnyObject]?, error:NSError?) -> Void in
                         if let error = error {
                             print(error)
                         }
@@ -138,7 +136,7 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
                             SVProgressHUD.showSuccessWithStatus("Saved successfully!")
                         }
                         //un hide the feature
-                        self?.featureLayer.setFeature(self?.selectedFeature, visible: true)
+                        self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
                     })
                 }
             })

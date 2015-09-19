@@ -40,7 +40,7 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
         //set initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: AGSSpatialReference.webMercator()), scale: 2e6)
         
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL))
+        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL)!)
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         self.map.operationalLayers.addObject(self.featureLayer)
@@ -83,17 +83,15 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
         queryParams.geometry = env
         queryParams.outFields = ["*"]
         
-        self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult!, error:NSError!) -> Void in
+        self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult?, error:NSError?) -> Void in
             if let error = error {
                 print(error)
             }
-            else {
-                if let feature = result.enumerator().nextObject() {
-                    //show callout for the first feature
-                    self?.showCallout(feature, tapLocation: mappoint)
-                    //update selected feature
-                    self?.selectedFeature = feature
-                }
+            else if let feature = result?.enumerator()?.nextObject() {
+                //show callout for the first feature
+                self?.showCallout(feature, tapLocation: mappoint)
+                //update selected feature
+                self?.selectedFeature = feature
             }
         })
     }
@@ -122,12 +120,12 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
     
     func optionsViewController(optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int) {
         self.selectedFeature.setAttributeValue(self.types[index], forKey: "typdamage")
-        self.featureTable.updateFeature(self.selectedFeature, completion: { [weak self] (succeeded:Bool, error:NSError!) -> Void in
+        self.featureTable.updateFeature(self.selectedFeature) { [weak self] (error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }
             else {
-                self?.featureTable.applyEditsWithCompletion({ [weak self] (result:[AnyObject]!, error:NSError!) -> Void in
+                self?.featureTable.applyEditsWithCompletion({ (result:[AnyObject]?, error:NSError?) -> Void in
                     if let error = error {
                         print(error)
                     }
@@ -136,6 +134,6 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
                     }
                 })
             }
-        })
+        }
     }
 }

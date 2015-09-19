@@ -33,7 +33,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func loadAttachments() {
-        self.feature.fetchAttachmentInfosWithCompletion { [weak self] (attachmentInfos:[AnyObject]!, error:NSError!) -> Void in
+        self.feature.fetchAttachmentInfosWithCompletion { [weak self] (attachmentInfos:[AnyObject]?, error:NSError?) -> Void in
             if let error = error {
                 print(error)
             }
@@ -85,7 +85,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             let attachmentInfo = self.attachmentInfos[indexPath.row]
-            self.feature.deleteAttachment(attachmentInfo, completion: { [weak self] (error:NSError!) -> Void in
+            self.feature.deleteAttachment(attachmentInfo, completion: { [weak self] (error:NSError?) -> Void in
                 if let error = error {
                     print(error)
                 }
@@ -107,12 +107,12 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     
     func setImage(indexPath:NSIndexPath) {
         let attachmentInfo = self.attachmentInfos[indexPath.row]
-        attachmentInfo.fetchDataWithCompletion { [weak self] (data:NSData!, error:NSError!) -> Void in
+        attachmentInfo.fetchDataWithCompletion { [weak self] (data:NSData?, error:NSError?) -> Void in
             if let error = error {
                 print(error)
             }
             else {
-                guard let weakSelf = self else {
+                guard let weakSelf = self, data = data else {
                     return
                 }
                 let image = UIImage(data: data)
@@ -131,8 +131,8 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     @IBAction func addAction() {
-        let data = UIImagePNGRepresentation(UIImage(named: "LocationDisplayOffIcon")!)
-        self.feature.addAttachmentWithName("Attachment.png", contentType: "png", data: data) { [weak self] (info:AGSAttachmentInfo!, error:NSError!) -> Void in
+        let data = UIImagePNGRepresentation(UIImage(named: "LocationDisplayOffIcon")!)!
+        self.feature.addAttachmentWithName("Attachment.png", contentType: "png", data: data) { [weak self] (info:AGSAttachmentInfo?, error:NSError?) -> Void in
             if let error = error {
                 print(error)
             }

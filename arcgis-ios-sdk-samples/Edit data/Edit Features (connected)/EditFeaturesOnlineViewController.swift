@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegate, AGSPopupsContainerDelegate, FeatureTemplatePickerDelegate {
+class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegate, AGSPopupsViewControllerDelegate, FeatureTemplatePickerDelegate {
     
     @IBOutlet private weak var mapView:AGSMapView!
     @IBOutlet private weak var sketchToolbar:UIToolbar!
@@ -23,7 +23,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
     
     private var map:AGSMap!
     private var featureLayer:AGSFeatureLayer!
-    private var popupsContainerVC:AGSPopupsContainerViewController!
+    private var popupsVC:AGSPopupsViewController!
     private var sketchGraphicsOverlay:AGSSketchGraphicsOverlay!
     
     private var lastQuery:AGSCancellable!
@@ -44,7 +44,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
         
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"))
+        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         featureTable.outFields = ["*"]
         self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
         self.map.operationalLayers.addObject(featureLayer)
@@ -63,7 +63,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
     }
     
     func applyEdits() {
-        (self.featureLayer.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion { (result:[AnyObject]!, error:NSError!) -> Void in
+        (self.featureLayer.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion { (result:[AnyObject]?, error:NSError?) -> Void in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus("Error while applying edits :: \(error.localizedDescription)")
             }
@@ -88,12 +88,11 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
         queryParams.outFields = ["*"]
         
 
-        self.lastQuery = self.featureLayer.featureTable.queryFeaturesWithParameters(queryParams){ [weak self] (queryResult, error) in
+        self.lastQuery = self.featureLayer.featureTable!.queryFeaturesWithParameters(queryParams){ [weak self] (queryResult, error) in
             if let error = error {
                 print(error)
             }
-            if let result = queryResult,
-                enumerator = result.enumerator(), weakSelf = self {
+            if let enumerator = queryResult?.enumerator(), weakSelf = self {
                     var popups = [AGSPopup]()
                     
                     while let f = enumerator.nextObject() as? AGSArcGISFeature{
@@ -103,10 +102,10 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
                     }
                     
                     if popups.count > 0 {
-                        weakSelf.popupsContainerVC = AGSPopupsContainerViewController(popups: popups, usingNavigationControllerStack: false)
-                        weakSelf.popupsContainerVC.modalPresentationStyle = .FormSheet
-                        weakSelf.presentViewController(weakSelf.popupsContainerVC, animated: true, completion: nil)
-                        weakSelf.popupsContainerVC?.delegate = weakSelf
+                        weakSelf.popupsVC = AGSPopupsViewController(popups: popups, usingNavigationControllerStack: false)
+                        weakSelf.popupsVC.modalPresentationStyle = .FormSheet
+                        weakSelf.presentViewController(weakSelf.popupsVC, animated: true, completion: nil)
+                        weakSelf.popupsVC.delegate = weakSelf
                     }
             }
             else if let error = error{
@@ -117,12 +116,12 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
     
     //MARK: -  AGSPopupsContainerDelegate methods
     
-    func popupsContainer(popupsContainer: AGSPopupsContainer!, wantsNewGeometryBuilderForPopup popup: AGSPopup!) -> AGSGeometryBuilder! {
+    func popupsViewController(popupsViewController: AGSPopupsViewController, wantsNewGeometryBuilderForPopup popup: AGSPopup) -> AGSGeometryBuilder {
         //Return an empty mutable geometry of the type that our feature layer uses
-        return AGSGeometryBuilder(geometryType: (popup.geoElement as! AGSFeature).geometry.geometryType, spatialReference: self.map.spatialReference)
+        return AGSGeometryBuilder(geometryType: (popup.geoElement as! AGSFeature).geometry!.geometryType, spatialReference: self.map.spatialReference)
     }
     
-    func popupsContainer(popupsContainer: AGSPopupsContainer!, readyToEditGeometryWithBuilder geometryBuilder: AGSGeometryBuilder!, forPopup popup: AGSPopup!) {
+    func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryWithBuilder geometryBuilder: AGSGeometryBuilder, forPopup popup: AGSPopup) {
         
         //Dismiss the popup view controller
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -137,7 +136,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
         
         
         //zoom to the existing feature's geometry
-        self.mapView.setViewpointGeometry(geometryBuilder!.toGeometry(), padding: 10, completion: nil)
+        self.mapView.setViewpointGeometry(geometryBuilder.toGeometry(), padding: 10, completion: nil)
         
         //hide the back button
         self.navigationItem.hidesBackButton = true
@@ -151,13 +150,13 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "geometryChanged:", name: AGSSketchGraphicsOverlayGeometryDidChangeNotification, object: nil)
     }
     
-    func popupsContainer(popupsContainer: AGSPopupsContainer!, didDeleteForPopup popup: AGSPopup!) {
+    func popupsViewController(popupsViewController: AGSPopupsViewController, didDeleteForPopup popup: AGSPopup) {
         self.dismissViewControllerAnimated(true, completion: nil)
         
         self.applyEdits()
     }
     
-    func popupsContainer(popupsContainer: AGSPopupsContainer!, didFinishEditingForPopup popup: AGSPopup!) {
+    func popupsViewController(popupsViewController: AGSPopupsViewController, didFinishEditingForPopup popup: AGSPopup) {
         
         self.clearSketchGraphicsOverlay()
         
@@ -166,31 +165,31 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
         
         let feature = popup.geoElement as! AGSFeature
         // simplify the geometry, this will take care of self intersecting polygons and
-        feature.geometry = AGSGeometryEngine.simplifyGeometry(feature.geometry)
+        feature.geometry = AGSGeometryEngine.simplifyGeometry(feature.geometry!)
         //normalize the geometry, this will take care of geometries that extend beyone the dateline
         //(ifwraparound was enabled on the map)
-        feature.geometry = AGSGeometryEngine.normalizeCentralMeridianOfGeometry(feature.geometry)
+        feature.geometry = AGSGeometryEngine.normalizeCentralMeridianOfGeometry(feature.geometry!)
 
         self.applyEdits()
         self.newFeature = nil
     }
     
-    func popupsContainer(popupsContainer: AGSPopupsContainer!, didCancelEditingForPopup popup: AGSPopup!) {
+    func popupsViewController(popupsViewController: AGSPopupsViewController, didCancelEditingForPopup popup: AGSPopup) {
         
         self.clearSketchGraphicsOverlay()
 
         //if we had begun adding a new feature, remove it from the layer because the user hit cancel.
         if self.newFeature != nil {
-            self.featureLayer.featureTable.deleteFeature(self.newFeature, completion: { [weak self] (succeeded:Bool, error:NSError!) -> Void in
+            self.featureLayer.featureTable?.deleteFeature(self.newFeature, completion: { [weak self] (error: NSError?) -> Void in
                 self?.newFeature = nil
             })
         }
     }
     
-    func popupsContainerDidFinishViewingPopups(popupsContainer: AGSPopupsContainer!) {
+    func popupsViewControllerDidFinishViewingPopups(popupsViewController: AGSPopupsViewController) {
         //dismiss the popups view controller
         self.dismissViewControllerAnimated(true, completion:nil)
-        self.popupsContainerVC = nil
+        self.popupsVC = nil
     }
     
     func geometryChanged(notification:NSNotification) {
@@ -204,7 +203,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
     @IBAction func sketchDoneAction() {
         self.navigationItem.hidesBackButton = false
         self.navigationItem.rightBarButtonItem?.enabled = true
-        self.presentViewController(self.popupsContainerVC, animated:true, completion:nil)
+        self.presentViewController(self.popupsVC, animated:true, completion:nil)
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
@@ -249,30 +248,27 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
         //we will manually need to remove this
         //feature from the feature layer (see implementation for popupsContainer:didCancelEditingGraphicForPopup: below)
 
-        
-        self.featureLayer.featureTable.addFeature(self.newFeature, completion: { [weak self] (succeeded:Bool, error:NSError!) -> Void in
+        self.featureLayer.featureTable?.addFeature(self.newFeature, completion: { [weak self] (error: NSError?) -> Void in
             if let error = error {
                 print("Error while adding feature :: \(error.localizedDescription)")
             }
-            else if succeeded {
-                if let weakSelf = self {
-                    //Iniitalize a popup view controller
-                    let popup = AGSPopup(geoElement: self?.newFeature)
-                    
-                    weakSelf.popupsContainerVC = AGSPopupsContainerViewController(popups: [popup], usingNavigationControllerStack: false)
-                    weakSelf.popupsContainerVC.delegate = weakSelf
-                    
-                    //Only for iPad, set presentation style to Form sheet
-                    //We don't want it to cover the entire screen
-                    weakSelf.popupsContainerVC.modalPresentationStyle = .FormSheet
-                    
-                    //First, dismiss the Feature Template Picker
-                    weakSelf.dismissViewControllerAnimated(false, completion:nil)
-                    
-                    //Next, Present the popup view controller
-                    weakSelf.presentViewController(weakSelf.popupsContainerVC, animated: true) { [weak self] () -> Void in
-                        self?.popupsContainerVC.startEditingCurrentPopup()
-                    }
+            else if let weakSelf = self {
+                //Iniitalize a popup view controller
+                let popup = AGSPopup(geoElement: weakSelf.newFeature)
+                
+                weakSelf.popupsVC = AGSPopupsViewController(popups: [popup], usingNavigationControllerStack: false)
+                weakSelf.popupsVC.delegate = weakSelf
+                
+                //Only for iPad, set presentation style to Form sheet
+                //We don't want it to cover the entire screen
+                weakSelf.popupsVC.modalPresentationStyle = .FormSheet
+                
+                //First, dismiss the Feature Template Picker
+                weakSelf.dismissViewControllerAnimated(false, completion:nil)
+                
+                //Next, Present the popup view controller
+                weakSelf.presentViewController(weakSelf.popupsVC, animated: true) { () -> Void in
+                    weakSelf.popupsVC.startEditingCurrentPopup()
                 }
             }
         })

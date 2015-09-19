@@ -40,7 +40,7 @@ class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
         self.mapView.touchDelegate = self
         
         //instantiate service feature table using the url to the service
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"))
+        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         //create a feature layer using the service feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
@@ -65,7 +65,7 @@ class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
         let feature = self.featureTable.createFeatureWithAttributes(featureAttributes, geometry: mappoint)
         
         //add the feature to the feature table
-        self.featureTable.addFeature(feature, completion: { [weak self] (succeeded, error) -> Void in
+        self.featureTable.addFeature(feature) { [weak self] (error: NSError?) -> Void in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus("Error while adding feature :: \(error.localizedDescription)")
                 print("Error while adding feature :: \(error)")
@@ -76,11 +76,11 @@ class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
             }
             //enable interaction with map view
             self?.mapView.userInteractionEnabled = true
-        })
+        }
     }
     
     func applyEdits() {
-        self.featureTable.applyEditsWithCompletion { (featureEditResults: [AnyObject]!, error: NSError!) -> Void in
+        self.featureTable.applyEditsWithCompletion { (featureEditResults: [AnyObject]?, error: NSError?) -> Void in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus("Error while applying edits :: \(error.localizedDescription)")
             }

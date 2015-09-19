@@ -37,7 +37,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         self.mapView.map = self.map
         
         //create feature table using a url
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer/2"))
+        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer/2")!)
         //create feature layer using this feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
@@ -67,14 +67,13 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         queryParams.whereClause = "upper(STATE_NAME) = upper('\(state)')"
         queryParams.outFields = ["*"]
 
-        self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult!, error:NSError!) -> Void in
+        self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult?, error:NSError?) -> Void in
             if let error = error {
                 print(error.localizedDescription)
                 //update selected features array
                 self?.selectedFeatures.removeAll(keepCapacity: false)
             }
-            else {
-                let features = result.enumerator().allObjects
+            else if let features = result?.enumerator()?.allObjects {
                 if features.count > 0 {
                     self?.featureLayer.selectFeatures(features)
                     //zoom to the selected feature

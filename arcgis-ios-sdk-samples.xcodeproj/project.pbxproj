@@ -1046,7 +1046,6 @@
 				TargetAttributes = {
 					3E23A9DF1AFC28F6002E2214 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = P8HGHS7JQ8;
 					};
 				};
 			};
@@ -1145,7 +1144,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "echo $BUILT_PRODUCTS_DIR\n#readme for the project to skip\nDEFAULT_README=$SRCROOT/$TARGET_NAME/README.md\n#find all README.md files in the project\nfind ${SRCROOT} -name \"README.md\" | while read file\ndo\n    #skip if its the default readme for project\n    if [ \"$file\" = \"$TEMP\" ]\n    then\n        continue\n    fi\n    #extract the folder name from the path\n    FILE_PATH=$(dirname \"$file\")\n    FOLDER_NAME=$(basename \"$FILE_PATH\")\n    #path of the folder to be created for each readme\n    BUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/${FOLDER_NAME}\n\n    #for legacy setting the build folder is also within the SRCROOT folder\n    #check if source path is equal to destination then skip\n    if [ \"$file\" != \"${BUILD_APP_DIR}/README.md\" ]\n    then\n        mkdir -p \"${BUILD_APP_DIR}\"\n        cp \"${file}\" \"${BUILD_APP_DIR}/README.md\"\n    fi\ndone";
+			shellScript = "echo $BUILT_PRODUCTS_DIR\n#readme for the project to skip\nDEFAULT_README=$SRCROOT/README.md\necho $DEFAULT_README\n#find all README.md files in the project\nfind ${SRCROOT} -name \"README.md\" | while read file\ndo\n    #skip if its the default readme for project\n    echo $file\n    if [ \"$file\" = \"$DEFAULT_README\" ]\n    then\n        echo \"inside if++++++++++++++++++++++++\"\n        continue\n    fi\n    #extract the folder name from the path\n    FILE_PATH=$(dirname \"$file\")\n    FOLDER_NAME=$(basename \"$FILE_PATH\")\n    #path of the folder to be created for each readme\n    BUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/${FOLDER_NAME}\n\n    #for legacy setting the build folder is also within the SRCROOT folder\n    #check if source path is equal to destination then skip\n    if [ \"$file\" != \"${BUILD_APP_DIR}/README.md\" ]\n    then\n        mkdir -p \"${BUILD_APP_DIR}\"\n        cp \"${file}\" \"${BUILD_APP_DIR}/README.md\"\n    fi\ndone";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1318,6 +1317,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/SDKs/ArcGIS/iOS/Frameworks/Static",
@@ -1334,7 +1334,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "95d1f0d5-8b91-4cf9-8fda-d965ca79d04f";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "arcgis-ios-sdk-samples/Content Display Logic/Samples-Bridging-Header.h";
 			};
 			name = Debug;
@@ -1344,6 +1344,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/SDKs/ArcGIS/iOS/Frameworks/Static",
@@ -1360,7 +1361,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "95d1f0d5-8b91-4cf9-8fda-d965ca79d04f";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "arcgis-ios-sdk-samples/Content Display Logic/Samples-Bridging-Header.h";
 			};
 			name = Release;

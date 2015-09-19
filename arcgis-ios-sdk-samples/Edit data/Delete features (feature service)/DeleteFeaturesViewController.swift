@@ -41,7 +41,7 @@ class DeleteFeaturesViewController: UIViewController, AGSMapViewTouchDelegate, A
         self.mapView.touchDelegate = self
         
         //instantiate service feature table using the url to the service
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"))
+        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         //create a feature layer using the service feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
@@ -63,18 +63,18 @@ class DeleteFeaturesViewController: UIViewController, AGSMapViewTouchDelegate, A
     }
     
     func deleteFeature(feature:AGSFeature) {
-        self.featureTable.deleteFeature(feature, completion: { (succeeded:Bool, error:NSError!) -> Void in
+        self.featureTable.deleteFeature(feature) { [weak self] (error: NSError?) -> Void in
             if let error = error {
                 print("Error while deleting feature : \(error.localizedDescription)")
             }
             else {
-                self.applyEdits()
+                self?.applyEdits()
             }
-        })
+        }
     }
     
     func applyEdits() {
-        self.featureTable.applyEditsWithCompletion { (featureEditResults: [AnyObject]!, error: NSError!) -> Void in
+        self.featureTable.applyEditsWithCompletion { (featureEditResults: [AnyObject]?, error: NSError?) -> Void in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus("Error while applying edits :: \(error.localizedDescription)")
             }
@@ -108,17 +108,15 @@ class DeleteFeaturesViewController: UIViewController, AGSMapViewTouchDelegate, A
         queryParams.geometry = env
         queryParams.outFields = ["*"]
         
-        self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult!, error:NSError!) -> Void in
+        self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult?, error:NSError?) -> Void in
             if let error = error {
                 print(error)
             }
-            else {
-                if let feature = result.enumerator().nextObject() {
-                    //show callout for the first feature
-                    self?.showCallout(feature, tapLocation: mappoint)
-                    //update selected feature
-                    self?.selectedFeature = feature
-                }
+            else if let feature = result?.enumerator()?.nextObject() {
+                //show callout for the first feature
+                self?.showCallout(feature, tapLocation: mappoint)
+                //update selected feature
+                self?.selectedFeature = feature
             }
         })
     }

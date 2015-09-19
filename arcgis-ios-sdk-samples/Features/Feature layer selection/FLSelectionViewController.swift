@@ -41,7 +41,7 @@ class FLSelectionViewController: UIViewController, AGSMapViewTouchDelegate {
         self.mapView.touchDelegate = self
         
         //create feature table using a url
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL))
+        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL)!)
         //create feature layer using this feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         self.featureLayer.selectionColor = UIColor.cyanColor()
@@ -74,7 +74,7 @@ class FLSelectionViewController: UIViewController, AGSMapViewTouchDelegate {
         queryParams.geometry = envelope
         queryParams.outFields = ["*"]
         
-        self.featureLayer.selectFeaturesWithQuery(queryParams, mode: AGSSelectionMode.New) { (queryResult:AGSFeatureQueryResult!, error:NSError!) -> Void in
+        self.featureLayer.selectFeaturesWithQuery(queryParams, mode: AGSSelectionMode.New) { (queryResult:AGSFeatureQueryResult?, error:NSError?) -> Void in
             if let error = error {
                 print(error)
             }

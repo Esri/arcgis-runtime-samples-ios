@@ -36,7 +36,7 @@ class ManualCacheViewController: UIViewController {
         self.mapView.map = self.map
         
         //create feature table using a url
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0"))
+        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0")!)
         //set the feature request mode to Manual Cache
         featureTable.featureRequestMode = AGSFeatureRequestMode.ManualCache
         //create feature layer using this feature table
@@ -52,7 +52,7 @@ class ManualCacheViewController: UIViewController {
         params.outFields = ["*"]
         
         //populate features based on query
-        featureTable.populateFromServiceWithParameters(params, clearCache: true) { (result:AGSFeatureQueryResult!, error:NSError!) -> Void in
+        featureTable.populateFromServiceWithParameters(params, clearCache: true) { (result:AGSFeatureQueryResult?, error:NSError?) -> Void in
             //check for error
             if let error = error {
                 print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
@@ -60,11 +60,9 @@ class ManualCacheViewController: UIViewController {
             else {
                 //the resulting features should be displayed on the map
                 //you can print the count of features
-                print(result.enumerator().allObjects.count)
+                print(result?.enumerator()?.allObjects.count)
             }
         }
-        
-        
     }
     
     override func didReceiveMemoryWarning() {

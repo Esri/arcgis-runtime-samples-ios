@@ -12,8 +12,9 @@ For Objective-C :
 * iOS 8 SDK (or higher)
 
 For Swift : 
-* XCode 6.3 (or higher)
+* XCode 7 (or higher)
 * iOS 8 SDK (or higher)
+* If you need to use Xcode 6.3 you can find samples under the ```quartz-beta-swift-1.2``` tag
 
 ## Instructions
 

@@ -19,6 +19,10 @@ import ArcGIS
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
+    
+    private var indexArray:[String]!
+    private var wordsDictionary:[String: [String]]!
+    private var readmeDirectoriesURLs:[NSURL]!
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         if url.absoluteString.rangeOfString("auth", options: [], range: nil, locale: nil) != nil {
@@ -84,6 +88,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         }
         return true
     }
-
 }
 

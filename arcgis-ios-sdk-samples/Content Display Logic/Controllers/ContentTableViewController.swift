@@ -14,10 +14,13 @@
 
 import UIKit
 
-class ContentTableViewController: UITableViewController {
+class ContentTableViewController: UITableViewController, CustomSearchHeaderViewDelegate {
 
     var nodesArray:[Node]!
     private var expandedRowIndex:Int = -1
+    
+    private var headerView:CustomSearchHeaderView!
+    var containsSearchResults = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,15 +28,15 @@ class ContentTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 100
         
-        //if content not set then start from scratch as root node
-        if self.nodesArray == nil {
-            self.populateTree()
+        if containsSearchResults {
+            self.tableView.tableHeaderView?.removeFromSuperview()
+            self.tableView.tableHeaderView = nil
         }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
+        else {
+            self.headerView = self.tableView.tableHeaderView! as! CustomSearchHeaderView
+            self.headerView.delegate = self
+            self.headerView.hideSuggestionsTable()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,42 +44,11 @@ class ContentTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func populateTree() {
-        
-        let path = NSBundle.mainBundle().pathForResource("ContentPList", ofType: "plist")
-        let content = NSArray(contentsOfFile: path!)
-        self.nodesArray = self.populateNodesArray(content! as [AnyObject])
-        self.tableView.reloadData()
-    }
-    
-    func populateNodesArray(array:[AnyObject]) -> [Node] {
-        var nodesArray = [Node]()
-        for object in array {
-            let node = self.populateNode(object as! [String:AnyObject])
-            nodesArray.append(node)
-        }
-        return nodesArray
-    }
-    
-    func populateNode(dict:[String:AnyObject]) -> Node {
-        let node = Node()
-        if let displayName = dict["displayName"] as? String {
-            node.displayName = displayName
-        }
-        if let descriptionText = dict["descriptionText"] as? String {
-            node.descriptionText = descriptionText
-        }
-        if let storyboardName = dict["storyboardName"] as? String {
-            node.storyboardName = storyboardName
-        }
-        if let children = dict["children"] as? [AnyObject] {
-            node.children = self.populateNodesArray(children)
-        }
-//        if let readmeURLString = dict["readmeURLString"] as? String {
-//            println("Populate \(readmeURLString)")
-//            node.readmeURLString = readmeURLString
-//        }
-        return node
+    func nodesByDisplayNames(names:[String]) -> [Node] {
+        var nodes = [Node]()
+        let matchingNodes = self.nodesArray.filter({ return names.contains($0.displayName) })
+        nodes.appendContentsOf(matchingNodes)
+        return nodes
     }
 
     // MARK: - Table view data source
@@ -90,22 +62,27 @@ class ContentTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let reuseIdentifier = "Cell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier)!
+        let reuseIdentifier = "ContentTableCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! ContentTableCell
 
         let node = self.nodesArray[indexPath.row]
-        if let titleLabel = cell.viewWithTag(1) as? UILabel {
-            titleLabel.text = node.displayName
+        cell.titleLabel.text = node.displayName
+        
+        if self.expandedRowIndex == indexPath.row {
+            cell.detailLabel.text = node.descriptionText
         }
-        if let detailLabel = cell.viewWithTag(2) as? UILabel {
-            if self.expandedRowIndex == indexPath.row {
-                detailLabel.text = node.descriptionText
-            }
-            else {
-                detailLabel.text = nil
-            }
+        else {
+            cell.detailLabel.text = nil
         }
-        cell.accessoryType = node.children != nil ? .DisclosureIndicator : .DetailButton
+        
+        cell.infoButton.addTarget(self, action: "expandCell:", forControlEvents: UIControlEvents.TouchUpInside)
+        cell.infoButton.tag = indexPath.row
+
+        cell.backgroundColor = UIColor.clearColor()
+        
+        cell.layer.shadowColor = UIColor.lightGrayColor().CGColor
+        cell.layer.shadowOffset = CGSize(width: 1, height: 1)
+        cell.layer.shadowOpacity = 0.5
         
         return cell
     }
@@ -113,40 +90,32 @@ class ContentTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let node = self.nodesArray[indexPath.row]
         
-        if node.children != nil { //sub content view
-            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("ContentTableViewController") as! ContentTableViewController
-            controller.nodesArray = node.children
-            controller.title = node.displayName
-            self.navigationController?.showViewController(controller, sender: self)
+        //expand the selected cell
+        self.updateExpandedRow(indexPath, collapseIfSelected: false)
+        
+        let storyboard = UIStoryboard(name: node.storyboardName, bundle: NSBundle.mainBundle())
+        let controller = storyboard.instantiateInitialViewController()!
+        controller.title = node.displayName
+        let navController = UINavigationController(rootViewController: controller)
+        
+        self.splitViewController?.showDetailViewController(navController, sender: self)
+        
+        //add the button on the left on the detail view controller
+        if let splitViewController = self.view.window?.rootViewController as? UISplitViewController {
+            controller.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
+            controller.navigationItem.leftItemsSupplementBackButton = true
         }
-        else {  //detail view controller
-            //expand the selected cell
-            self.updateExpandedRow(indexPath, collapseIfSelected: false)
-            
-            let storyboard = UIStoryboard(name: node.storyboardName, bundle: NSBundle.mainBundle())
-            let controller = storyboard.instantiateInitialViewController()!
-            controller.title = node.displayName
-            let navController = UINavigationController(rootViewController: controller)
-            
-            self.splitViewController?.showDetailViewController(navController, sender: self)
-            
-            //add the button on the left on the detail view controller
-            if let splitViewController = self.view.window?.rootViewController as? UISplitViewController {
-                controller.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
-                controller.navigationItem.leftItemsSupplementBackButton = true
-            }
-            
-            //create the info button and
-            //assign the readme url
-            let infoBBI = SourceCodeBarButtonItem()
-            infoBBI.folderName = node.displayName
-            infoBBI.navController = navController
-            controller.navigationItem.rightBarButtonItem = infoBBI
-        }
+        
+        //create the info button and
+        //assign the readme url
+        let infoBBI = SourceCodeBarButtonItem()
+        infoBBI.folderName = node.displayName
+        infoBBI.navController = navController
+        controller.navigationItem.rightBarButtonItem = infoBBI
     }
     
-    override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
-        self.updateExpandedRow(indexPath, collapseIfSelected: true)
+    func expandCell(sender:UIButton) {
+        self.updateExpandedRow(NSIndexPath(forRow: sender.tag, inSection: 0), collapseIfSelected: true)
     }
     
     func updateExpandedRow(indexPath:NSIndexPath, collapseIfSelected:Bool) {
@@ -167,5 +136,44 @@ class ContentTableViewController: UITableViewController {
             tableView.reloadRowsAtIndexPaths([previouslyExpandedIndexPath, indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         }
     }
+    
+    //MARK: - CustomSearchHeaderViewDelegate
+    
+    func customSearchHeaderViewWillShowSuggestions(customSearchHeaderView: CustomSearchHeaderView) {
+        var headerViewFrame = self.headerView.frame
+        headerViewFrame.size.height = customSearchHeaderView.expandedViewHeight
+        
+        UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            self.headerView.frame = headerViewFrame
+            self.tableView.tableHeaderView = self.headerView
+        }, completion: nil)
+    }
+    
+    func customSearchHeaderViewWillHideSuggestions(customSearchHeaderView: CustomSearchHeaderView) {
+        var headerViewFrame = self.headerView.frame
+        headerViewFrame.size.height = customSearchHeaderView.shrinkedViewHeight
 
+        UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            self.headerView.frame = headerViewFrame
+            self.tableView.tableHeaderView = self.headerView
+        }, completion: nil)
+    }
+    
+    func customSearchHeaderView(customSearchHeaderView: CustomSearchHeaderView, didFindSamples sampleNames: [String]?) {
+        if let sampleNames = sampleNames {
+            let resultNodes = self.nodesByDisplayNames(sampleNames)
+            if resultNodes.count > 0 {
+                //show the results
+                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("ContentTableViewController") as! ContentTableViewController
+                controller.nodesArray = resultNodes
+                controller.title = "Search results"
+                controller.containsSearchResults = true
+                self.navigationController?.showViewController(controller, sender: self)
+                return
+            }
+        }
+        
+        UIAlertView(title: "Error", message: "No match found", delegate: nil, cancelButtonTitle: "Ok").show()
+        
+    }
 }

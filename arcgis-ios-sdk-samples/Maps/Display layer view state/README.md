@@ -1,4 +1,4 @@
-#Layer view status changed
+#Display layer view state
 
 This sample demonstrates how to get view status for layers in a map. The layer's view status could be 
 
@@ -13,7 +13,6 @@ This sample demonstrates how to get view status for layers in a map. The layer's
 The sample displays the list of operational layers in the map. Each row in this list also has the view status corresponding to that layer. If you pan or zoom the map, the view status of some layers may change.
 
 ![](image1.png)
-![](image2.png)
 
 ##How it works
 

@@ -33,12 +33,12 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func loadAttachments() {
-        self.feature.fetchAttachmentInfosWithCompletion { [weak self] (attachmentInfos:[AnyObject]?, error:NSError?) -> Void in
+        self.feature.fetchAttachmentInfosWithCompletion { [weak self] (attachmentInfos:[AGSAttachmentInfo]?, error:NSError?) -> Void in
             if let error = error {
                 print(error)
             }
             else {
-                self?.attachmentInfos = attachmentInfos as! [AGSAttachmentInfo]
+                self?.attachmentInfos = attachmentInfos
                 self?.tableView.reloadData()
             }
         }

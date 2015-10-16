@@ -77,13 +77,13 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
                 if features.count > 0 {
                     self?.featureLayer.selectFeatures(features)
                     //zoom to the selected feature
-                    self?.mapView.setViewpointGeometry(features[0].geometry, padding: 200, completion: nil)
+                    self?.mapView.setViewpointGeometry(features[0].geometry!, padding: 200, completion: nil)
                 }
                 else {
                     UIAlertView(title: "Error", message: "No state by that name", delegate: nil, cancelButtonTitle: "Ok").show()
                 }
                 //update selected features array
-                self?.selectedFeatures = features as! [AGSFeature]
+                self?.selectedFeatures = features 
             }
         })
     }

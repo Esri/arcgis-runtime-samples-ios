@@ -80,7 +80,7 @@ class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
     }
     
     func applyEdits() {
-        self.featureTable.applyEditsWithCompletion { (featureEditResults: [AnyObject]?, error: NSError?) -> Void in
+        self.featureTable.applyEditsWithCompletion { (featureEditResults: [AGSFeatureEditResult]?, error: NSError?) -> Void in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus("Error while applying edits :: \(error.localizedDescription)")
             }
@@ -94,7 +94,7 @@ class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
   
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView!, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint!) {
+    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         //add a feature at the tapped location
         self.addFeature(mappoint)
     }

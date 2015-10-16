@@ -82,13 +82,9 @@ class GraphicsWithSymbolsViewController: UIViewController {
         let craigleithLocation = AGSPoint(x: -2.720324, y: 56.073569, spatialReference: wgs84)
         
         //create text symbols
-        let bassRockSymbol = AGSTextSymbol(size: 10, text: "Bass Rock", color: UIColor(red: 0, green: 0, blue: 230/255.0, alpha: 1))
-        bassRockSymbol.horizontalAlignment = AGSHorizontalAlignment.Left
-        bassRockSymbol.verticalAlignment = AGSVerticalAlignment.Bottom
+        let bassRockSymbol = AGSTextSymbol(size: 10, text: "Bass Rock", color: UIColor(red: 0, green: 0, blue: 230/255.0, alpha: 1), horizontalAlignment: AGSHorizontalAlignment.Left, verticalAlignment: AGSVerticalAlignment.Bottom)
         
-        let craigleithSymbol = AGSTextSymbol(size: 10, text: "Craigleith", color: UIColor(red: 0, green: 0, blue: 230/255.0, alpha: 1))
-        craigleithSymbol.horizontalAlignment = .Right
-        craigleithSymbol.verticalAlignment = .Top
+        let craigleithSymbol = AGSTextSymbol(size: 10, text: "Craigleith", color: UIColor(red: 0, green: 0, blue: 230/255.0, alpha: 1), horizontalAlignment: AGSHorizontalAlignment.Right, verticalAlignment: AGSVerticalAlignment.Top)
         
         //define a graphic from the geometry and symbol
         let bassRockGraphic = AGSGraphic(geometry: bassLocation, symbol: bassRockSymbol)

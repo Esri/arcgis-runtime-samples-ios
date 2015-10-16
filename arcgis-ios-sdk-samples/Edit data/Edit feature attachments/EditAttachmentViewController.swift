@@ -53,7 +53,7 @@ class EditAttachmentViewController: UIViewController, AGSMapViewTouchDelegate, A
     
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView!, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint!) {
+    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
@@ -82,7 +82,7 @@ class EditAttachmentViewController: UIViewController, AGSMapViewTouchDelegate, A
                 let title = feature.attributeValueForKey("typdamage") as! String
                 
                 //fetch attachment info
-                feature.fetchAttachmentInfosWithCompletion({ (attachmentInfos:[AnyObject]?, error:NSError?) -> Void in
+                feature.fetchAttachmentInfosWithCompletion({ (attachmentInfos:[AGSAttachmentInfo]?, error:NSError?) -> Void in
                     if let error = error {
                         print(error)
                     }

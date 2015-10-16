@@ -72,13 +72,13 @@ class GOIdentifyViewController: UIViewController, AGSMapViewTouchDelegate {
     
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView!, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint!) {
+    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         //use the following method to identify graphics in a specific graphics overlay
         //otherwise if you need to identify on all the graphics overlay present in the map view
         //use `identifyGraphicsOverlaysAtScreenCoordinate:tolerance:maximumGraphics:completion:` method provided on map view
         let tolerance:Double = 44
         
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenCoordinate: screen, tolerance: tolerance, maximumGraphics: 10) { (graphics:[AnyObject]?, error:NSError?) -> Void in
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenCoordinate: screen, tolerance: tolerance, maximumGraphics: 10) { (graphics:[AGSGraphic]?, error:NSError?) -> Void in
             if let error = error {
                 print("error while identifying :: \(error.localizedDescription)")
             }

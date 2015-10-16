@@ -46,7 +46,7 @@ class FeatureTemplatePickerViewController: UIViewController {
         //if layer contains only templates (no feature types)
         if let templates = featureTable.featureTemplates where templates.count > 0 {
             //for each template
-            for template in templates as! [AGSFeatureTemplate] {
+            for template in templates {
                 let info = FeatureTemplateInfo()
                 info.featureLayer = featureLayer
                 info.featureTemplate = template
@@ -59,9 +59,9 @@ class FeatureTemplatePickerViewController: UIViewController {
             //otherwise if layer contains feature types
         else  {
             //for each type
-            for type in featureTable.featureTypes as! [AGSFeatureType] {
+            for type in featureTable.featureTypes! {
                 //for each temple in type
-                for template in type.templates as! [AGSFeatureTemplate] {
+                for template in type.templates! {
                     let info = FeatureTemplateInfo()
                     info.featureLayer = featureLayer
                     info.featureTemplate = template

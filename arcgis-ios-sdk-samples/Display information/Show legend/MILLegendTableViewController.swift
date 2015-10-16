@@ -39,12 +39,12 @@ class MILLegendTableViewController: UITableViewController {
             else {
                 //else if no sublayers fetch legend info
                 self.orderArray.append(layer)
-                layer.fetchLegendInfosWithCompletion({ [weak self] (legendInfos:[AnyObject]?, error:NSError?) -> Void in
+                layer.fetchLegendInfosWithCompletion({ [weak self] (legendInfos:[AGSLegendInfo]?, error:NSError?) -> Void in
                     if let error = error {
                         print(error)
                     }
                     else {
-                        if let legendInfos = legendInfos as? [AGSLegendInfo] {
+                        if let legendInfos = legendInfos {
                             self?.legendInfosDict[self!.hashString(layer)] = legendInfos
                             self?.tableView.reloadData()
                         }

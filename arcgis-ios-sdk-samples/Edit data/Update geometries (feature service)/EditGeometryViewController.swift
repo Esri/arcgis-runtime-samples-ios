@@ -58,7 +58,7 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
     
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView!, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint!) {
+    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
@@ -128,7 +128,7 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
                     self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
                 }
                 else {
-                    self?.featureTable.applyEditsWithCompletion({ (result:[AnyObject]?, error:NSError?) -> Void in
+                    self?.featureTable.applyEditsWithCompletion({ (result:[AGSFeatureEditResult]?, error:NSError?) -> Void in
                         if let error = error {
                             print(error)
                         }

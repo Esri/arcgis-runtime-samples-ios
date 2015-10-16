@@ -54,7 +54,7 @@ class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, 
         super.viewDidLoad()
         
         //Auth Manager settings
-        AGSAuthenticationManager.setClientIDForPortalURLHandler { (portalURL:String) -> String in
+        AGSAuthenticationManager.setClientIDForPortalURLHandler { (portalURL:NSURL) -> String? in
             return "RsFgCI1clPQ7TVwD"
         }
         AGSAuthenticationManager.setRedirectURLHandler { () -> String in

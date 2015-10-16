@@ -82,7 +82,7 @@ class SetViewpointViewController: UIViewController {
         case 2:
             let currentScale = self.mapView.mapScale
             let targetScale = currentScale / 2.5 //zoom in
-            let currentCenter = self.mapView.visibleArea?.extent.center
+            let currentCenter = self.mapView.visibleArea!.extent.center
             self.mapView.setViewpoint(AGSViewpoint(center: currentCenter, scale: targetScale), duration: 5, curve: AGSAnimationCurve.EaseInOutSine, completion: { (finishedWithoutInterruption) -> Void in
                 if(finishedWithoutInterruption){
                     self.mapView.setViewpoint(AGSViewpoint(center: currentCenter, scale: currentScale), duration: 5, curve: AGSAnimationCurve.EaseInOutSine, completion:  nil);

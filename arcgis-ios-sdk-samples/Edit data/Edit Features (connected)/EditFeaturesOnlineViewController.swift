@@ -63,7 +63,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
     }
     
     func applyEdits() {
-        (self.featureLayer.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion { (result:[AnyObject]?, error:NSError?) -> Void in
+        (self.featureLayer.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion { (result:[AGSFeatureEditResult]?, error:NSError?) -> Void in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus("Error while applying edits :: \(error.localizedDescription)")
             }
@@ -75,7 +75,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
     
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView!, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint!) {
+    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }

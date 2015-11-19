@@ -81,6 +81,14 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
+                    <string>Display layer view state</string>
+                    <key>storyboardName</key>
+                    <string>LayerStatus</string>
+                    <key>descriptionText</key>
+                    <string>You can get the view status for each layer in your map. It tells you if the that layer is currently active or not currently visible or if an error occured while loading it etc</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
                     <string>Change viewpoint</string>
                     <key>storyboardName</key>
                     <string>SetViewpoint</string>
@@ -126,14 +134,6 @@
                     <string>AuthoringMap</string>
                     <key>descriptionText</key>
                     <string>With the new APIs you get to author a map on you mobile device. You can create a map by adding a basemap and one or more operational layers and save it to your portal</string>
-                </dict>
-                <dict>
-                    <key>displayName</key>
-                    <string>Display layer view state</string>
-                    <key>storyboardName</key>
-                    <string>LayerStatus</string>
-                    <key>descriptionText</key>
-                    <string>You can get the view status for each layer in your map. It tells you if the that layer is currently active or not currently visible or if an error occured while loading it etc</string>
                 </dict>
             </array>
         </dict>

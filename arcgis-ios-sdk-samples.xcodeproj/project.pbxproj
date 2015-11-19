@@ -18,6 +18,7 @@
 		3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */; };
 		3E23A9EF1AFC28F6002E2214 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E23A9EE1AFC28F6002E2214 /* Images.xcassets */; };
 		3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */; };
+		3E24E6741BFE560B00322DAC /* LayerStatusViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */; };
 		3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A680D1B0D2A7000A318AA /* ListViewController.swift */; };
 		3E2A68121B14E04300A318AA /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E2A68111B14E04300A318AA /* ArcGIS.bundle */; };
 		3E2A68181B153CDE00A318AA /* SourceCodeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A68171B153CDE00A318AA /* SourceCodeBarButtonItem.swift */; };
@@ -56,7 +57,6 @@
 		3E8526401B90E19C00690EBD /* DisplayMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E85263C1B90DE2C00690EBD /* DisplayMapViewController.swift */; };
 		3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ECCFE381BD0401A00CE256D /* LayerStatus.storyboard */; settings = {ASSET_TAGS = (); }; };
 		3ECCFE3C1BD0401A00CE256D /* LayerStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		3ECCFE3D1BD0401A00CE256D /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3ECCFE3A1BD0401A00CE256D /* README.md */; settings = {ASSET_TAGS = (); }; };
 		3ED028571B8E3A8500ACA70D /* AuthoringMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028021B8E3A8400ACA70D /* AuthoringMap.storyboard */; };
 		3ED028581B8E3A8500ACA70D /* AuthoringMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028031B8E3A8400ACA70D /* AuthoringMapViewController.swift */; };
 		3ED028591B8E3A8500ACA70D /* AuthoringOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028041B8E3A8400ACA70D /* AuthoringOptionsViewController.swift */; };
@@ -185,6 +185,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3E24E6741BFE560B00322DAC /* LayerStatusViewController.swift in CopyFiles */,
 				3E7162361BA21932008DE398 /* GraphicsWithSymbolsViewController.swift in CopyFiles */,
 				3E41DD7A1B9F836600DA11CC /* AddFeaturesViewController.swift in CopyFiles */,
 				3E41DD7B1B9F836600DA11CC /* DeleteFeaturesViewController.swift in CopyFiles */,
@@ -289,7 +290,6 @@
 		3EA34D591B38C3B3003DC0E8 /* Samples-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Samples-Bridging-Header.h"; path = "Content Display Logic/Samples-Bridging-Header.h"; sourceTree = "<group>"; };
 		3ECCFE381BD0401A00CE256D /* LayerStatus.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LayerStatus.storyboard; sourceTree = "<group>"; };
 		3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerStatusViewController.swift; sourceTree = "<group>"; };
-		3ECCFE3A1BD0401A00CE256D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3ED028021B8E3A8400ACA70D /* AuthoringMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AuthoringMap.storyboard; sourceTree = "<group>"; };
 		3ED028031B8E3A8400ACA70D /* AuthoringMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthoringMapViewController.swift; sourceTree = "<group>"; };
 		3ED028041B8E3A8400ACA70D /* AuthoringOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthoringOptionsViewController.swift; sourceTree = "<group>"; };
@@ -610,7 +610,6 @@
 			children = (
 				3ECCFE381BD0401A00CE256D /* LayerStatus.storyboard */,
 				3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */,
-				3ECCFE3A1BD0401A00CE256D /* README.md */,
 			);
 			name = "Display layer view state";
 			path = "arcgis-ios-sdk-samples/Maps/Display layer view state";
@@ -679,13 +678,13 @@
 				3ED028251B8E3A8500ACA70D /* Manage operational layers */,
 				3E8526321B90D7F400690EBD /* Manage bookmarks */,
 				3ED028201B8E3A8400ACA70D /* Display drawing status */,
+				3ECCFE371BD0401A00CE256D /* Display layer view state */,
 				3ED028101B8E3A8400ACA70D /* Change viewpoint */,
 				3ED028331B8E3A8500ACA70D /* Map rotation */,
 				3ED0284D1B8E3A8500ACA70D /* Show magnifier */,
 				3ED028181B8E3A8400ACA70D /* Display device location */,
 				3ED028521B8E3A8500ACA70D /* Take screenshot */,
 				3ED028011B8E3A8400ACA70D /* Authoring a map */,
-				3ECCFE371BD0401A00CE256D /* Display layer view state */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
@@ -1227,7 +1226,6 @@
 				3ED028591B8E3A8500ACA70D /* AuthoringOptionsViewController.swift in Sources */,
 				3ED0296A1B8E3ACD00ACA70D /* EditAttributesViewController.swift in Sources */,
 				3E4B05F71B39EF250072E514 /* SVIndefiniteAnimatedView.m in Sources */,
-				3ECCFE3D1BD0401A00CE256D /* README.md in Sources */,
 				3ED028741B8E3A8500ACA70D /* MapViewDrawStatusViewController.swift in Sources */,
 				3ECCFE3C1BD0401A00CE256D /* LayerStatusViewController.swift in Sources */,
 				3EE692021B03D22500C167B8 /* Node.swift in Sources */,

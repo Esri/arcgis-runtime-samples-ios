@@ -88,6 +88,7 @@ class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
                 if let featureEditResults = featureEditResults where featureEditResults.count > 0 && featureEditResults[0].completedWithErrors == false {
                     SVProgressHUD.showSuccessWithStatus("Edits applied successfully")
                 }
+                SVProgressHUD.dismiss()
             }
         }
     }

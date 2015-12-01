@@ -20,7 +20,7 @@ class BookmarksListViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var tableView:UITableView!
     
     //list of bookmarks
-    var bookmarks:AGSList!
+    var bookmarks:[AGSBookmark]!
     
     //private property to store selection action for table cell
     private var selectAction:((AGSViewpoint) -> Void)!
@@ -56,7 +56,7 @@ class BookmarksListViewController: UIViewController, UITableViewDataSource, UITa
         let cell = tableView.dequeueReusableCellWithIdentifier("BookmarkCell")!
         cell.backgroundColor = UIColor.clearColor()
         //get the respective bookmark
-        let bookmark = self.bookmarks[UInt(indexPath.row)] as! AGSBookmark
+        let bookmark = self.bookmarks[indexPath.row]
         //assign the bookmark's name as the title for the cell
         cell.textLabel?.text = bookmark.name
         
@@ -64,7 +64,7 @@ class BookmarksListViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let bookmark = self.bookmarks[UInt(indexPath.row)] as! AGSBookmark
+        let bookmark = self.bookmarks[indexPath.row]
         //execute the closure if it exists
         if self.selectAction != nil {
             self.selectAction(bookmark.viewpoint!)

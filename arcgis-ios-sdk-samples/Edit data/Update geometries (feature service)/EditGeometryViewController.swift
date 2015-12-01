@@ -82,7 +82,7 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
             if let error = error {
                 print(error)
             }
-            else if let feature = result?.enumerator()?.nextObject() {
+            else if let feature = result?.nextObject() {
                 //show callout for the first feature
                 let title = feature.attributeValueForKey("typdamage") as! String
                 self?.mapView.callout.title = title

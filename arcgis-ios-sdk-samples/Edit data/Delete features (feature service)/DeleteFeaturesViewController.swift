@@ -112,7 +112,7 @@ class DeleteFeaturesViewController: UIViewController, AGSMapViewTouchDelegate, A
             if let error = error {
                 print(error)
             }
-            else if let feature = result?.enumerator()?.nextObject() {
+            else if let feature = result?.nextObject() {
                 //show callout for the first feature
                 self?.showCallout(feature, tapLocation: mappoint)
                 //update selected feature

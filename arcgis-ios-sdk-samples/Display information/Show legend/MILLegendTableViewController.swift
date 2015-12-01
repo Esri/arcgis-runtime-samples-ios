@@ -25,21 +25,22 @@ class MILLegendTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.orderArray = [AGSLayerContent]()
-        self.populateLegends(self.operationalLayers)
+        self.populateLegends(self.operationalLayers.array as! [AGSLayerContent])
     }
     
-    func populateLegends(layers:AGSList) {
+    func populateLegends(layers:[AGSLayerContent]) {
 
         for i in 0...layers.count-1 {
-            let layer = layers[UInt(i)] as! AGSLayerContent
+            let layer = layers[i]
 
-            if let sublayers = layer.sublayers where sublayers.count > 0 {
+            if let sublayers = layer.subLayerContents where sublayers.count > 0 {
                 self.populateLegends(sublayers)
             }
             else {
                 //else if no sublayers fetch legend info
                 self.orderArray.append(layer)
                 layer.fetchLegendInfosWithCompletion({ [weak self] (legendInfos:[AGSLegendInfo]?, error:NSError?) -> Void in
+                    print("\(layer.name) \(legendInfos)")
                     if let error = error {
                         print(error)
                     }

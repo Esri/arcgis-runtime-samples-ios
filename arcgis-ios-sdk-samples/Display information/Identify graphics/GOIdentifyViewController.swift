@@ -57,7 +57,7 @@ class GOIdentifyViewController: UIViewController, AGSMapViewTouchDelegate {
         polygonGeometry.addPointWithX(20e5, y: 20e5)
         polygonGeometry.addPointWithX(20e5, y: -20e5)
         polygonGeometry.addPointWithX(-20e5, y: -20e5)
-        let polygonSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.Solid, color: UIColor.yellowColor(), opacity: 0.7, outline: nil)
+        let polygonSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.Solid, color: UIColor.yellowColor(), outline: nil)
         let polygonGraphic = AGSGraphic(geometry: polygonGeometry.toGeometry())
         
         //initialize the graphics overlay

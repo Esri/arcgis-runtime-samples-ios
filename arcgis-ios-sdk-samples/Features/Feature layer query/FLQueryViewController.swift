@@ -42,8 +42,8 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         //set a new renderer
-        let lineSymbol = AGSSimpleLineSymbol(style: .Solid, color: UIColor.blackColor(), width: 1, antialias: true, opacity: 0.6)
-        let fillSymbol = AGSSimpleFillSymbol(style: .Solid, color: UIColor.yellowColor(), opacity: 0.5, outline: lineSymbol)
+        let lineSymbol = AGSSimpleLineSymbol(style: .Solid, color: UIColor.blackColor(), width: 1)
+        let fillSymbol = AGSSimpleFillSymbol(style: .Solid, color: UIColor.yellowColor(), outline: lineSymbol)
         self.featureLayer.renderer = AGSSimpleRenderer(symbol: fillSymbol)
         
         //add feature layer to the map
@@ -73,7 +73,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
                 //update selected features array
                 self?.selectedFeatures.removeAll(keepCapacity: false)
             }
-            else if let features = result?.enumerator()?.allObjects {
+            else if let features = result?.allObjects {
                 if features.count > 0 {
                     self?.featureLayer.selectFeatures(features)
                     //zoom to the selected feature

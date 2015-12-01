@@ -60,7 +60,7 @@ class ManualCacheViewController: UIViewController {
             else {
                 //the resulting features should be displayed on the map
                 //you can print the count of features
-                print(result?.enumerator()?.allObjects.count)
+                print(result?.allObjects.count)
             }
         }
     }

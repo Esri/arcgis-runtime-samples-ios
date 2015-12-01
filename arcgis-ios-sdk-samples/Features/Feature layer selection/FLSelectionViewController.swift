@@ -78,8 +78,8 @@ class FLSelectionViewController: UIViewController, AGSMapViewTouchDelegate {
             if let error = error {
                 print(error)
             }
-            if let result = queryResult, enumerator = result.enumerator() {
-                print("\(enumerator.allObjects.count) feature(s) selected")
+            if let result = queryResult {
+                print("\(result.allObjects.count) feature(s) selected")
             }
         }
     }

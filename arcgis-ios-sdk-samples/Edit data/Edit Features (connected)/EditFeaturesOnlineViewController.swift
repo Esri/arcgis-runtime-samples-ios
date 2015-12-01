@@ -92,10 +92,10 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
             if let error = error {
                 print(error)
             }
-            if let enumerator = queryResult?.enumerator(), weakSelf = self {
+            if let queryResult = queryResult, weakSelf = self {
                     var popups = [AGSPopup]()
                     
-                    while let f = enumerator.nextObject() as? AGSArcGISFeature{
+                    while let f = queryResult.nextObject() as? AGSArcGISFeature{
 
                         let popup = AGSPopup(geoElement: f)
                         popups.append(popup)

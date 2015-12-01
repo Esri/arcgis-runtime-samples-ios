@@ -77,7 +77,7 @@ class EditAttachmentViewController: UIViewController, AGSMapViewTouchDelegate, A
             if let error = error {
                 print(error)
             }
-            else if let feature = result?.enumerator()?.nextObject() as? AGSArcGISFeature {
+            else if let feature = result?.nextObject() as? AGSArcGISFeature {
                 //show callout for the first feature
                 let title = feature.attributeValueForKey("typdamage") as! String
                 

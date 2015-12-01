@@ -62,7 +62,7 @@ class GraphicsWithSymbolsViewController: UIViewController {
         
         
         //create a marker symbol
-        let buoyMarker = AGSSimpleMarkerSymbol(style: AGSSimpleMarkerSymbolStyle.Circle, color: UIColor.redColor(), size: 10)
+        let buoyMarker = AGSSimpleMarkerSymbol(color: UIColor.redColor(), size: 10, style: AGSSimpleMarkerSymbolStyle.Circle)
         
         
         //create graphics
@@ -102,7 +102,7 @@ class GraphicsWithSymbolsViewController: UIViewController {
         //define a line symbol
         let lineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.Dash,
             color: UIColor(red: 0.5, green: 0, blue: 0.5, alpha: 1),
-            width: 4, antialias: true, opacity: 1)
+            width: 4)
         
         //create the graphic
         let boatTripGraphic = AGSGraphic(geometry: boatRoute, symbol: lineSymbol)
@@ -118,10 +118,9 @@ class GraphicsWithSymbolsViewController: UIViewController {
         //define the fill symbol and outline
         let outlineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.Dash,
             color: UIColor(red: 0, green: 0, blue: 0.5, alpha: 1),
-            width: 1, antialias: true, opacity: 1)
+            width: 1)
         let fillSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.DiagonalCross,
-            color: UIColor(red: 0, green: 80/255.0, blue: 0, alpha: 1),
-            opacity: 1, outline: outlineSymbol)
+            color: UIColor(red: 0, green: 80/255.0, blue: 0, alpha: 1), outline: outlineSymbol)
         
         //nesting graphic
         let nestingGraphic = AGSGraphic(geometry: nestingGround, symbol: fillSymbol)

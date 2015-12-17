@@ -195,7 +195,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
     func geometryChanged(notification:NSNotification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the sketchCompleteButton
-        if let geometry = self.sketchGraphicsOverlay.geometry where !geometry.isEmpty() {
+        if let geometry = self.sketchGraphicsOverlay.geometry where !geometry.isEmpty {
             self.doneBBI.enabled = true
         }
     }

@@ -33,8 +33,8 @@ class MILLegendTableViewController: UITableViewController {
         for i in 0...layers.count-1 {
             let layer = layers[i]
 
-            if let sublayers = layer.subLayerContents where sublayers.count > 0 {
-                self.populateLegends(sublayers)
+            if layer.subLayerContents.count > 0 {
+                self.populateLegends(layer.subLayerContents)
             }
             else {
                 //else if no sublayers fetch legend info

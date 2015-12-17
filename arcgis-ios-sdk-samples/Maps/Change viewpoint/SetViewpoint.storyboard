@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="O0j-PN-S95">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="O0j-PN-S95">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Set Viewpoint View Controller-->
@@ -17,11 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zB8-MV-vlb" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FPq-Wp-vde">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="Ukg-o7-Jsj"/>
                                 </constraints>
@@ -29,8 +32,9 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="aRf-J6-aqU"/>
                                     <barButtonItem style="plain" id="vQJ-Mf-7w8">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" id="bdB-Q0-hd5">
-                                            <rect key="frame" x="238" y="7" width="300" height="30"/>
+                                            <rect key="frame" x="150" y="7" width="300" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
                                             <segments>
                                                 <segment title="Geometry"/>
                                                 <segment title="Center &amp; Scale"/>
@@ -45,16 +49,23 @@
                                 </items>
                             </toolbar>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="TEg-Hd-Ide" firstAttribute="top" secondItem="zB8-MV-vlb" secondAttribute="bottom" id="37f-vU-Kzy"/>
                             <constraint firstAttribute="trailing" secondItem="FPq-Wp-vde" secondAttribute="trailing" id="7Sv-MH-8rr"/>
                             <constraint firstItem="zB8-MV-vlb" firstAttribute="leading" secondItem="2GG-4w-cuN" secondAttribute="leading" id="Dlo-lW-6pi"/>
                             <constraint firstItem="zB8-MV-vlb" firstAttribute="top" secondItem="2GG-4w-cuN" secondAttribute="top" id="E55-vm-7Td"/>
+                            <constraint firstItem="FPq-Wp-vde" firstAttribute="top" secondItem="zB8-MV-vlb" secondAttribute="bottom" id="IHb-xH-3Pi"/>
                             <constraint firstItem="TEg-Hd-Ide" firstAttribute="top" secondItem="FPq-Wp-vde" secondAttribute="bottom" id="sEG-VF-aug"/>
                             <constraint firstAttribute="trailing" secondItem="zB8-MV-vlb" secondAttribute="trailing" id="uf7-lc-2No"/>
                             <constraint firstItem="FPq-Wp-vde" firstAttribute="leading" secondItem="2GG-4w-cuN" secondAttribute="leading" id="xJe-cH-0QU"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="37f-vU-Kzy"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="zB8-MV-vlb" id="DG3-wl-cjJ"/>

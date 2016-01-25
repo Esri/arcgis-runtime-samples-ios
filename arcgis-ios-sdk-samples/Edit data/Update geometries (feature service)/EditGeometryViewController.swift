@@ -76,7 +76,6 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
         
         let queryParams = AGSQueryParameters()
         queryParams.geometry = envelope
-        queryParams.outFields = ["*"]
         
         self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult?, error:NSError?) -> Void in
             if let error = error {

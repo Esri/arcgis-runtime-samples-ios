@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         if url.absoluteString.rangeOfString("auth", options: [], range: nil, locale: nil) != nil {
-            AGSApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+            AGSApplicationDelegate.sharedApplicationDelegate().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
         }
         return true
     }

@@ -71,7 +71,7 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
             cell = tableView.dequeueReusableCellWithIdentifier("MMLLayersCell")!
             //layers in reverse order
             let index = self.dataSourceIndexForIndexPath(self.layers, indexpath: indexPath)
-            cell.textLabel?.text = self.layers[UInt(index)].name
+            cell.textLabel?.text = self.layers[index].name
         }
         else {
             cell = tableView.dequeueReusableCellWithIdentifier("MMLDeletedLayersCell")!
@@ -110,7 +110,7 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
         let sourceIndex = self.dataSourceIndexForIndexPath(self.layers, indexpath: sourceIndexPath)
         let destinationIndex = self.dataSourceIndexForIndexPath(self.layers, indexpath: destinationIndexPath)
         
-        let layer = self.layers[UInt(sourceIndex)] as! AGSLayer
+        let layer = self.layers[sourceIndex] as! AGSLayer
         
         self.layers.removeObjectAtIndex(sourceIndex)
         self.layers.insertObject(layer, atIndex:destinationIndex)
@@ -123,7 +123,7 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
             let index = self.dataSourceIndexForIndexPath(self.layers, indexpath: indexPath)
             
             //save the object in the deleted layers array
-            let layer = self.layers[UInt(index)] as! AGSLayer
+            let layer = self.layers[index] as! AGSLayer
             
             tableView.beginUpdates()
             //remove the layer from the data source array

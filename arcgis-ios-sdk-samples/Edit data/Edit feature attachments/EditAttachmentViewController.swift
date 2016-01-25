@@ -61,22 +61,12 @@ class EditAttachmentViewController: UIViewController, AGSMapViewTouchDelegate, A
         //hide the callout
         self.mapView.callout.dismiss()
         
-        let tolerance:Double = 22
-        let mapTolerance = tolerance * self.mapView.unitsPerPixel
-        let envelope = AGSEnvelope(XMin: mappoint.x - mapTolerance,
-            yMin: mappoint.y - mapTolerance,
-            xMax: mappoint.x + mapTolerance,
-            yMax: mappoint.y + mapTolerance,
-            spatialReference: self.map.spatialReference)
-        
-        let queryParams = AGSQueryParameters()
-        queryParams.geometry = envelope
-        
-        self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult?, error:NSError?) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenCoordinate: screen, tolerance: 44, maximumElements: 1) { [weak self] (geoElement: [AGSGeoElement]?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }
-            else if let feature = result?.nextObject() as? AGSArcGISFeature {
+            else if let features = geoElement as? [AGSArcGISFeature] where features.count > 0 {
+                let feature = features[0]
                 //show callout for the first feature
                 let title = feature.attributeValueForKey("typdamage") as! String
                 
@@ -96,7 +86,7 @@ class EditAttachmentViewController: UIViewController, AGSMapViewTouchDelegate, A
                     }
                 })
             }
-        })
+        }
     }
     
     //MARK: - AGSCalloutDelegate

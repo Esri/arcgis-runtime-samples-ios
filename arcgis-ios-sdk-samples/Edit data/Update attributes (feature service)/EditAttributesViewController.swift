@@ -71,28 +71,17 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
         //hide the callout
         self.mapView.callout.dismiss()
         
-        let tolerance:Double = 22
-        let mapTolerance = tolerance * self.mapView.unitsPerPixel
-        let env = AGSEnvelope(XMin: mappoint.x - mapTolerance,
-            yMin: mappoint.y - mapTolerance,
-            xMax: mappoint.x + mapTolerance,
-            yMax: mappoint.y + mapTolerance,
-            spatialReference: self.map.spatialReference)
-        
-        let queryParams = AGSQueryParameters()
-        queryParams.geometry = env
-        
-        self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult?, error:NSError?) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenCoordinate: screen, tolerance: 44, maximumElements: 1) { [weak self] (geoElements: [AGSGeoElement]?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }
-            else if let feature = result?.nextObject() {
+            else if let features = geoElements as? [AGSArcGISFeature] where features.count > 0 {
                 //show callout for the first feature
-                self?.showCallout(feature, tapLocation: mappoint)
+                self?.showCallout(features[0], tapLocation: mappoint)
                 //update selected feature
-                self?.selectedFeature = feature
+                self?.selectedFeature = features[0]
             }
-        })
+        }
     }
     
     

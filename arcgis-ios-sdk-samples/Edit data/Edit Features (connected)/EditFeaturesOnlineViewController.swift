@@ -78,24 +78,17 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
-        
-        let tolerance:Double = 22
-        let mapTolerance = tolerance * self.mapView.unitsPerPixel
-        let envelope = AGSEnvelope(XMin: mappoint.x - mapTolerance, yMin: mappoint.y - mapTolerance, xMax: mappoint.x + mapTolerance, yMax: mappoint.y + mapTolerance, spatialReference: self.map.spatialReference)
-        let queryParams = AGSQueryParameters()
-        queryParams.geometry = envelope
-        
 
-        self.lastQuery = self.featureLayer.featureTable!.queryFeaturesWithParameters(queryParams){ [weak self] (queryResult, error) in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenCoordinate: screen, tolerance: 44, maximumElements: 10) { [weak self] (geoElements: [AGSGeoElement]?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }
-            if let queryResult = queryResult, weakSelf = self {
+            else if let geoElements = geoElements, let weakSelf = self {
                     var popups = [AGSPopup]()
                     
-                    while let f = queryResult.nextObject() as? AGSArcGISFeature{
+                    for geoElement in geoElements {
 
-                        let popup = AGSPopup(geoElement: f)
+                        let popup = AGSPopup(geoElement: geoElement)
                         popups.append(popup)
                     }
                     

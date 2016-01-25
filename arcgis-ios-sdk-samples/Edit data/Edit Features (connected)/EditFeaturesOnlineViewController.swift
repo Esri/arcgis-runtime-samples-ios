@@ -45,7 +45,6 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
         self.mapView.touchDelegate = self
         
         let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
-        featureTable.outFields = ["*"]
         self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
         self.map.operationalLayers.addObject(featureLayer)
                 
@@ -85,7 +84,6 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
         let envelope = AGSEnvelope(XMin: mappoint.x - mapTolerance, yMin: mappoint.y - mapTolerance, xMax: mappoint.x + mapTolerance, yMax: mappoint.y + mapTolerance, spatialReference: self.map.spatialReference)
         let queryParams = AGSQueryParameters()
         queryParams.geometry = envelope
-        queryParams.outFields = ["*"]
         
 
         self.lastQuery = self.featureLayer.featureTable!.queryFeaturesWithParameters(queryParams){ [weak self] (queryResult, error) in

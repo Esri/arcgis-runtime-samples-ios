@@ -45,7 +45,7 @@ class SublayersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("SublayerCell")!
         cell.backgroundColor = UIColor.clearColor()
         
-        let sublayer = self.sublayers[UInt(indexPath.row)] as! AGSArcGISMapImageSublayer
+        let sublayer = self.sublayers[indexPath.row] as! AGSArcGISMapImageSublayer
         cell.textLabel?.text = sublayer.name
         
         //accessory switch
@@ -60,7 +60,7 @@ class SublayersTableViewController: UITableViewController {
     func switchChanged(sender:UISwitch) {
         let index = sender.tag
         //change the visiblity
-        let sublayer = self.sublayers[UInt(index)] as! AGSArcGISMapImageSublayer
+        let sublayer = self.sublayers[index] as! AGSArcGISMapImageSublayer
         sublayer.isVisible = sender.on
     }
 }

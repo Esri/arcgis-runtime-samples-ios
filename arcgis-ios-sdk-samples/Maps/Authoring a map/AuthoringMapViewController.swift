@@ -54,14 +54,9 @@ class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, 
         super.viewDidLoad()
         
         //Auth Manager settings
-        AGSAuthenticationManager.setClientIDForPortalURLHandler { (portalURL:NSURL) -> String? in
-            return "RsFgCI1clPQ7TVwD"
-        }
-        AGSAuthenticationManager.setRedirectURLHandler { () -> String in
-            return "iOSSamples://auth"
-        }
-//        AGSAuthenticationManager.credentialCache().enableAutoSyncToKeychainWithIdentifier("Samples_App", accessGroup: nil)
-        AGSAuthenticationManager.credentialCache().removeAllCredentials()
+        let config = AGSOAuthConfiguration(portalURL: nil, clientID: "RsFgCI1clPQ7TVwD", redirectURL: "iOSSamples://auth")
+        AGSAuthenticationManager.sharedAuthenticationManager().OAuthConfigurations.addObject(config)
+        AGSAuthenticationManager.sharedAuthenticationManager().credentialCache.removeAllCredentials()
         
         let map = AGSMap(basemap: AGSBasemap.imageryBasemap())
         

@@ -71,7 +71,6 @@ class EditAttachmentViewController: UIViewController, AGSMapViewTouchDelegate, A
         
         let queryParams = AGSQueryParameters()
         queryParams.geometry = envelope
-        queryParams.outFields = ["*"]
         
         self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult?, error:NSError?) -> Void in
             if let error = error {

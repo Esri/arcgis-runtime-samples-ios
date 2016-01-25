@@ -42,8 +42,4 @@ class SetInitialMapAreaViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    deinit {
-        print("Set initial map area deinit")
-    }
 }

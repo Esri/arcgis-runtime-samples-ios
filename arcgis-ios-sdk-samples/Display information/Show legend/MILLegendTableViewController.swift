@@ -33,14 +33,14 @@ class MILLegendTableViewController: UITableViewController {
         for i in 0...layers.count-1 {
             let layer = layers[i]
 
-            if let sublayers = layer.subLayerContents where sublayers.count > 0 {
-                self.populateLegends(sublayers)
+            if layer.subLayerContents.count > 0 {
+                self.populateLegends(layer.subLayerContents)
             }
             else {
                 //else if no sublayers fetch legend info
                 self.orderArray.append(layer)
                 layer.fetchLegendInfosWithCompletion({ [weak self] (legendInfos:[AGSLegendInfo]?, error:NSError?) -> Void in
-                    print("\(layer.name) \(legendInfos)")
+//                    print("\(layer.name) \(legendInfos)")
                     if let error = error {
                         print(error)
                     }
@@ -88,16 +88,26 @@ class MILLegendTableViewController: UITableViewController {
 
         cell.textLabel?.text = legendInfo.name
         
-        if let markerSymbol = legendInfo.symbol as? AGSPictureMarkerSymbol {
-            cell.imageView?.image = markerSymbol.image
-        }
-        else {
-            print("symbol is not picture marker symbol")
-        }
+        legendInfo.symbol?.createSwatchWithGeometryType(self.geometryTypeForSymbol(legendInfo.symbol!), width: 40, height: 40, DPI: 163, backgroundColor: UIColor.clearColor(), completion: { (image: UIImage?, error: NSError?) -> Void in
+            
+            cell.imageView?.image = image
+        })
         
         cell.backgroundColor = UIColor.clearColor()
         
         return cell
+    }
+    
+    func geometryTypeForSymbol(symbol:AGSSymbol) -> AGSGeometryType {
+        if symbol is AGSFillSymbol {
+            return AGSGeometryType.Polygon
+        }
+        else if symbol is AGSLineSymbol {
+            return .Polyline
+        }
+        else {
+            return .Point
+        }
     }
 
     //MARK: - Helper functions

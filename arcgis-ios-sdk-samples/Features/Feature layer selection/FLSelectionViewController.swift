@@ -72,7 +72,6 @@ class FLSelectionViewController: UIViewController, AGSMapViewTouchDelegate {
         
         let queryParams = AGSQueryParameters()
         queryParams.geometry = envelope
-        queryParams.outFields = ["*"]
         
         self.featureLayer.selectFeaturesWithQuery(queryParams, mode: AGSSelectionMode.New) { (queryResult:AGSFeatureQueryResult?, error:NSError?) -> Void in
             if let error = error {

@@ -62,8 +62,8 @@ class GraphicsWithSymbolsViewController: UIViewController {
         
         
         //create a marker symbol
-        let buoyMarker = AGSSimpleMarkerSymbol(color: UIColor.redColor(), size: 10, style: AGSSimpleMarkerSymbolStyle.Circle)
-        
+        let buoyMarker = AGSSimpleMarkerSymbol(style: .Circle, color: UIColor.redColor(), size: 10)
+
         
         //create graphics
         let buoyGraphic1 = AGSGraphic(geometry: buoy1Loc, symbol: buoyMarker)
@@ -82,9 +82,9 @@ class GraphicsWithSymbolsViewController: UIViewController {
         let craigleithLocation = AGSPoint(x: -2.720324, y: 56.073569, spatialReference: wgs84)
         
         //create text symbols
-        let bassRockSymbol = AGSTextSymbol(size: 10, text: "Bass Rock", color: UIColor(red: 0, green: 0, blue: 230/255.0, alpha: 1), horizontalAlignment: AGSHorizontalAlignment.Left, verticalAlignment: AGSVerticalAlignment.Bottom)
+        let bassRockSymbol = AGSTextSymbol(text: "Bass Rock", color: UIColor(red: 0, green: 0, blue: 230/255.0, alpha: 1), size: 10, horizontalAlignment: AGSHorizontalAlignment.Left, verticalAlignment: AGSVerticalAlignment.Bottom)
         
-        let craigleithSymbol = AGSTextSymbol(size: 10, text: "Craigleith", color: UIColor(red: 0, green: 0, blue: 230/255.0, alpha: 1), horizontalAlignment: AGSHorizontalAlignment.Right, verticalAlignment: AGSVerticalAlignment.Top)
+        let craigleithSymbol = AGSTextSymbol(text: "Craigleith", color: UIColor(red: 0, green: 0, blue: 230/255.0, alpha: 1), size: 10, horizontalAlignment: AGSHorizontalAlignment.Right, verticalAlignment: AGSVerticalAlignment.Top)
         
         //define a graphic from the geometry and symbol
         let bassRockGraphic = AGSGraphic(geometry: bassLocation, symbol: bassRockSymbol)

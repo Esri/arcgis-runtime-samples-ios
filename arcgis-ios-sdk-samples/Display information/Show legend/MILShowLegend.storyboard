@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XE8-79-pxI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XE8-79-pxI">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Show Legend View Controller-->
@@ -17,11 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2R-ZE-V6z" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKR-pu-EO6">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="noz-mx-gZh"/>
                                 </constraints>
@@ -36,6 +39,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="e2R-ZE-V6z" secondAttribute="trailing" id="0Tj-vn-0PM"/>
@@ -45,7 +49,13 @@
                             <constraint firstItem="vMC-H7-xN7" firstAttribute="top" secondItem="e2R-ZE-V6z" secondAttribute="bottom" id="fWu-Jl-omM"/>
                             <constraint firstItem="e2R-ZE-V6z" firstAttribute="top" secondItem="l1M-f6-dAu" secondAttribute="top" id="hg4-z4-SeW"/>
                             <constraint firstItem="e2R-ZE-V6z" firstAttribute="leading" secondItem="l1M-f6-dAu" secondAttribute="leading" id="sAF-C0-Siz"/>
+                            <constraint firstItem="zKR-pu-EO6" firstAttribute="top" secondItem="e2R-ZE-V6z" secondAttribute="bottom" id="yjY-O2-XzN"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fWu-Jl-omM"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="legendBBI" destination="5Ty-Vq-L40" id="Yf5-W2-4hX"/>
@@ -63,13 +73,18 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NqX-qv-pGi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MILLegendCell" id="Ybg-Dq-Lgg">
+                                <rect key="frame" x="0.0" y="22" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ybg-Dq-Lgg" id="jpC-zR-v5d">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
                                 </tableViewCellContentView>
+                                <animations/>
                             </tableViewCell>
                         </prototypes>
                         <connections>

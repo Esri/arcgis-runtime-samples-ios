@@ -49,10 +49,9 @@ class ManualCacheViewController: UIViewController {
         //for specific request type
         params.whereClause = "req_Type = 'Tree Maintenance or Damage'"
         //get all fields
-        params.outFields = ["*"]
         
         //populate features based on query
-        featureTable.populateFromServiceWithParameters(params, clearCache: true) { (result:AGSFeatureQueryResult?, error:NSError?) -> Void in
+        featureTable.populateFromServiceWithParameters(params, clearCache: true, outFields: ["*"]) {  (result:AGSFeatureQueryResult?, error:NSError?) -> Void in
             //check for error
             if let error = error {
                 print("populateFromServiceWithParameters error :: \(error.localizedDescription)")

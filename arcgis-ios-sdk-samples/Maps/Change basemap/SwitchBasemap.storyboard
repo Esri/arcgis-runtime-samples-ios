@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="suP-hl-tFv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="suP-hl-tFv">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Switch Basemap-->
@@ -17,11 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZPF-Hk-sgi" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDG-ym-VhV">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="4w4-Ay-3PH"/>
                                 </constraints>
@@ -29,8 +32,9 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="nvK-RO-FbS"/>
                                     <barButtonItem style="plain" id="vCb-iO-r75">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="D16-sZ-PnD">
-                                            <rect key="frame" x="100" y="7" width="300" height="30"/>
+                                            <rect key="frame" x="150" y="7" width="300" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
                                             <segments>
                                                 <segment title="Topographic"/>
                                                 <segment title="Streets"/>
@@ -46,9 +50,11 @@
                                 </items>
                             </toolbar>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZPF-Hk-sgi" firstAttribute="top" secondItem="Ksc-DO-eLV" secondAttribute="top" id="4eV-yZ-a9J"/>
+                            <constraint firstItem="qDG-ym-VhV" firstAttribute="top" secondItem="ZPF-Hk-sgi" secondAttribute="bottom" id="Rh2-lA-Wa0"/>
                             <constraint firstItem="qDG-ym-VhV" firstAttribute="leading" secondItem="Ksc-DO-eLV" secondAttribute="leading" id="SmW-fJ-Saz"/>
                             <constraint firstAttribute="trailing" secondItem="qDG-ym-VhV" secondAttribute="trailing" id="Tm4-xc-muW"/>
                             <constraint firstItem="QpG-xB-nFa" firstAttribute="top" secondItem="ZPF-Hk-sgi" secondAttribute="bottom" id="VNp-0z-52M"/>
@@ -56,6 +62,11 @@
                             <constraint firstItem="ZPF-Hk-sgi" firstAttribute="leading" secondItem="Ksc-DO-eLV" secondAttribute="leading" id="aSW-WW-S7M"/>
                             <constraint firstItem="QpG-xB-nFa" firstAttribute="top" secondItem="qDG-ym-VhV" secondAttribute="bottom" id="vew-uD-C8U"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="VNp-0z-52M"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Switch Basemap" id="Nbr-BJ-QTZ"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

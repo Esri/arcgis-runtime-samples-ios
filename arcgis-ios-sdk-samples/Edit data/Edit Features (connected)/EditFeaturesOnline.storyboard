@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pS3-la-wY4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pS3-la-wY4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Edit Features Online View Controller-->
@@ -18,10 +19,12 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NzB-bg-pvw" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brw-un-veL" userLabel="New feature toolbar">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="4gf-SW-UEN"/>
                                 </constraints>
@@ -37,6 +40,7 @@
                             </toolbar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XdC-IV-Urg" userLabel="Sketch toolbar">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <animations/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="rCS-8S-QOr"/>
                                     <barButtonItem enabled="NO" systemItem="done" id="3ul-lM-Dhw">
@@ -47,6 +51,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="brw-un-veL" firstAttribute="width" secondItem="XdC-IV-Urg" secondAttribute="width" id="AQw-mc-Mju"/>
@@ -86,6 +91,7 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jIV-jv-8bf">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="ANc-QX-RZz"/>
                                 </constraints>
@@ -101,6 +107,7 @@
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lhb-q7-O1w">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="E5N-S0-TC2" id="9mC-mY-fxW"/>
@@ -108,6 +115,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="jIV-jv-8bf" secondAttribute="trailing" id="Aho-SY-EpJ"/>

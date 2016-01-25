@@ -45,7 +45,7 @@ class GORenderersViewController: UIViewController {
     func addGraphicsOverlay() {
         //point graphic
         let pointGeometry = AGSPoint(x: 40e5, y: 40e5, spatialReference: AGSSpatialReference.webMercator())
-        let pointSymbol = AGSSimpleMarkerSymbol(color: UIColor.redColor(), size: 10, style: AGSSimpleMarkerSymbolStyle.Diamond)
+        let pointSymbol = AGSSimpleMarkerSymbol(style: AGSSimpleMarkerSymbolStyle.Diamond, color: UIColor.redColor(), size: 10)
         let pointGraphic = AGSGraphic(geometry: pointGeometry)
         
         //create graphics overlay for point

@@ -34,10 +34,6 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIPopoverPr
         if self.filenames != nil && self.filenames.count > 0 {
             self.loadHTMLPage(self.filenames[0])
         }
-        else {
-            //show an alert
-//            self.showAlert()
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,10 +46,6 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIPopoverPr
             self.setupToolbarTitle(filename, arrowPointingDown: true)
             let htmlString = self.htmlStringForContent(content)
             self.webView.loadHTMLString(htmlString, baseURL: NSURL(fileURLWithPath: NSBundle.mainBundle().bundlePath))
-        }
-        else {
-            //show an alert
-//            self.showAlert()
         }
     }
     
@@ -94,16 +86,6 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIPopoverPr
             self.toolbarTitleButton.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.blackColor()], forState: UIControlState.Normal)
         }
         self.toolbarTitleButton.title = titleString
-    }
-    
-    func showAlert() {
-        let alertController = UIAlertController(title: "Error", message: "Source file not found", preferredStyle: UIAlertControllerStyle.Alert)
-        let alertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: { [weak self] (alertAction:UIAlertAction!) -> Void in
-            //navigate back to previous view controller
-            self?.navigationController?.popViewControllerAnimated(true)
-            })
-        alertController.addAction(alertAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     //MARK: - web view delegate

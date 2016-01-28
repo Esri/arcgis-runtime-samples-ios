@@ -72,10 +72,6 @@ class ContentTableViewController: UITableViewController {
         if let children = dict["children"] as? [AnyObject] {
             node.children = self.populateNodesArray(children)
         }
-//        if let readmeURLString = dict["readmeURLString"] as? String {
-//            println("Populate \(readmeURLString)")
-//            node.readmeURLString = readmeURLString
-//        }
         return node
     }
 

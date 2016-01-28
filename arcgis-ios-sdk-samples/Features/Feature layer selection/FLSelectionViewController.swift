@@ -63,7 +63,7 @@ class FLSelectionViewController: UIViewController, AGSMapViewTouchDelegate {
         }
         
         let tolerance:Double = 22
-        let mapTolerance = tolerance * self.mapView.unitsPerPixel
+        let mapTolerance = tolerance * self.mapView.unitsPerPoint
         let envelope = AGSEnvelope(XMin: mappoint.x - mapTolerance,
             yMin: mappoint.y - mapTolerance,
             xMax: mappoint.x + mapTolerance,

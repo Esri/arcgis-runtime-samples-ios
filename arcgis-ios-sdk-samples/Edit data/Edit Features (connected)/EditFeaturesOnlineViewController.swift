@@ -79,7 +79,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
             lastQuery.cancel()
         }
 
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenCoordinate: screen, tolerance: 44, maximumElements: 10) { [weak self] (geoElements: [AGSGeoElement]?, error: NSError?) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenCoordinate: screen, tolerance: 44, maximumResults: 10) { [weak self] (geoElements: [AGSGeoElement]?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }
@@ -98,9 +98,6 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
                         weakSelf.presentViewController(weakSelf.popupsVC, animated: true, completion: nil)
                         weakSelf.popupsVC.delegate = weakSelf
                     }
-            }
-            else if let error = error{
-                print("error querying feature layer: \(error)")
             }
         }
     }

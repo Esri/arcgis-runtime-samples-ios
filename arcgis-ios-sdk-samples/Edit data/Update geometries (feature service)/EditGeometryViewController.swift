@@ -77,7 +77,7 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
         //hide the callout
         self.mapView.callout.dismiss()
         
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenCoordinate: screen, tolerance: 44, maximumElements: 1) { [weak self] (geoElements: [AGSGeoElement]?, error: NSError?) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenCoordinate: screen, tolerance: 44, maximumResults: 1) { [weak self] (geoElements: [AGSGeoElement]?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }

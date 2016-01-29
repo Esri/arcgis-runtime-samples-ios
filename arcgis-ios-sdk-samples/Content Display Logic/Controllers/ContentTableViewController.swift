@@ -88,6 +88,9 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //hide keyboard if visible
+        self.view.endEditing(true)
+        
         let node = self.nodesArray[indexPath.row]
         
         //expand the selected cell

@@ -297,6 +297,45 @@
         </dict>
         <dict>
             <key>displayName</key>
+            <string>Search</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Find address</string>
+                    <key>storyboardName</key>
+                    <string>FindAddress</string>
+                    <key>descriptionText</key>
+                    <string>---</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Reverse geocode</string>
+                    <key>storyboardName</key>
+                    <string>ReverseGeocode</string>
+                    <key>descriptionText</key>
+                    <string>---</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Find place</string>
+                    <key>storyboardName</key>
+                    <string>FindPlace</string>
+                    <key>descriptionText</key>
+                    <string>---</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Offline geocode</string>
+                    <key>storyboardName</key>
+                    <string>OfflineGeocode</string>
+                    <key>descriptionText</key>
+                    <string>---</string>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
             <string>Edit data</string>
             <key>children</key>
             <array>

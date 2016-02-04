@@ -127,7 +127,7 @@
         //make a test connection to force UIWebView to accept the host
         AGSJSONRequestOperation* rop = [[AGSJSONRequestOperation alloc]initWithURL:url];
         [[AGSRequestOperation sharedOperationQueue] addOperation:rop];
-        //Reload the oAuth vc
+        //Reload the OAuth vc
         [self.oauthLoginVC reload];
     }
     

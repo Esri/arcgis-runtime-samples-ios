@@ -1,6 +1,6 @@
 ##OAuth Login Sample
 
-This sample demonstrates how you can allow users to sign in to ArcGIS Online using oAuth 2.0. Upon signing in, the sample displays
+This sample demonstrates how you can allow users to sign in to ArcGIS Online using OAuth 2.0. Upon signing in, the sample displays
 the user's profile
 
 

@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ import ArcGIS
 class ReverseGeocodeViewController: UIViewController, AGSMapViewTouchDelegate {
     
     @IBOutlet weak var mapView: AGSMapView!
-    var map:AGSMap!
+    private var map:AGSMap!
     
     private var locatorTask:AGSLocatorTask!
     private var reverseGeocodeParameters:AGSReverseGeocodeParameters!
@@ -68,6 +68,7 @@ class ReverseGeocodeViewController: UIViewController, AGSMapViewTouchDelegate {
         //TODO: remove loadWithCompletion for locatorTask
         self.locatorTask.loadWithCompletion { (error:NSError?) -> Void in
             
+            //reverse geocode
             self.locatorTask.reverseGeocodeWithLocation(normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: NSError?) -> Void in
                 if let error = error {
                     self?.showAlert(error.localizedDescription)
@@ -87,7 +88,8 @@ class ReverseGeocodeViewController: UIViewController, AGSMapViewTouchDelegate {
         }
     }
     
-    func graphicForPoint(point: AGSPoint) -> AGSGraphic {
+    //method returns a graphic object for the specified point and attributes
+    private func graphicForPoint(point: AGSPoint) -> AGSGraphic {
         let markerImage = UIImage(named: "RedMarker")!
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
         symbol.leaderOffsetY = markerImage.size.height/2
@@ -96,7 +98,10 @@ class ReverseGeocodeViewController: UIViewController, AGSMapViewTouchDelegate {
         return graphic
     }
     
-    func showCalloutForGraphic(graphic:AGSGraphic, tapLocation:AGSPoint) {
+    //method to show callout for the graphic
+    //it gets the attributes from the graphic and populates the title
+    //and detail for the callout
+    private func showCalloutForGraphic(graphic:AGSGraphic, tapLocation:AGSPoint) {
         let cityString = graphic.attributes?["City"] as? String ?? ""
         let addressString = graphic.attributes?["Address"] as? String ?? ""
         let stateString = graphic.attributes?["State"] as? String ?? ""
@@ -104,13 +109,6 @@ class ReverseGeocodeViewController: UIViewController, AGSMapViewTouchDelegate {
         self.mapView.callout.detail = "\(cityString) \(stateString)"
         self.mapView.callout.accessoryButtonHidden = true
         self.mapView.callout.showCalloutForGraphic(graphic, overlay: self.graphicsOverlay, tapLocation: tapLocation, animated: true)
-    }
-    
-    func showCallout(title:String, detail:String, tapLocation:AGSPoint) {
-        self.mapView.callout.title = title
-        self.mapView.callout.detail = detail
-        self.mapView.callout.accessoryButtonHidden = true
-        self.mapView.callout.showCalloutAt(tapLocation, screenOffset: CGPointZero, rotateOffsetWithMap: false, animated: true)
     }
     
     private func showAlert(message:String) {

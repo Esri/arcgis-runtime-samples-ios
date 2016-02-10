@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -59,10 +59,13 @@ class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
         //disable interaction with map view
         self.mapView.userInteractionEnabled = false
         
+        //normalize geometry
+        let normalizedGeometry = AGSGeometryEngine.normalizeCentralMeridianOfGeometry(mappoint)!
+        
         //attributes for the new feature
         let featureAttributes = ["typdamage" : "Minor", "primcause" : "Earthquake"]
         //create a new feature
-        let feature = self.featureTable.createFeatureWithAttributes(featureAttributes, geometry: mappoint)
+        let feature = self.featureTable.createFeatureWithAttributes(featureAttributes, geometry: normalizedGeometry)
         
         //add the feature to the feature table
         self.featureTable.addFeature(feature) { [weak self] (error: NSError?) -> Void in

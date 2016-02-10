@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -33,10 +33,12 @@ class FindAddressViewController: UIViewController, AGSMapViewTouchDelegate, UISe
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindAddressViewController", "WorldAddressesViewController"]
         
-        let map = AGSMap(basemap: AGSBasemap.imageryBasemap())
+        //instantiate a map with an imagery with labels basemap
+        let map = AGSMap(basemap: AGSBasemap.imageryWithLabelsBasemap())
         self.mapView.map = map
         self.mapView.touchDelegate = self
         
+        //initialize the graphics overlay and add to the map view
         self.graphicsOverlay = AGSGraphicsOverlay()
         self.mapView.graphicsOverlays.addObject(self.graphicsOverlay)
         
@@ -48,10 +50,14 @@ class FindAddressViewController: UIViewController, AGSMapViewTouchDelegate, UISe
         self.geocodeParameters.resultAttributeNames.appendContentsOf(["*"])
         self.geocodeParameters.minScore = 75
         
+        //register self for the keyboard show notification
+        //in order to un hide the cancel button for search
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
     }
     
-    func graphicForPoint(point: AGSPoint, attributes: [String: AnyObject]?) -> AGSGraphic {
+    //method that returns a graphic object for the specified point and attributes
+    //also sets the leader offset and offset
+    private func graphicForPoint(point: AGSPoint, attributes: [String: AnyObject]?) -> AGSGraphic {
         let markerImage = UIImage(named: "RedMarker")!
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
         symbol.leaderOffsetY = markerImage.size.height/2
@@ -60,36 +66,30 @@ class FindAddressViewController: UIViewController, AGSMapViewTouchDelegate, UISe
         return graphic
     }
     
-    func zoomToGraphics(graphics:[AGSGraphic]) {
-        if graphics.count > 0 {
-            let multipoint = AGSMultipointBuilder(spatialReference: graphics[0].geometry!.spatialReference)
-            for graphic in graphics {
-                multipoint.points.addPoint(graphic.geometry as! AGSPoint)
-            }
-            self.mapView.setViewpoint(AGSViewpoint(targetExtent: multipoint.extent), completion: { (finished:Bool) -> Void in
-            })
-        }
-    }
-    
     private func geocodeSearchText(text:String) {
         //clear already existing graphics
         self.graphicsOverlay.graphics.removeAllObjects()
         
+        //dismiss the callout if already visible
         self.mapView.callout.dismiss()
         
         //TODO: remove loadWithCompletion for locatorTask
         self.locatorTask.loadWithCompletion { (error) -> Void in
+            //perform geocode with input text
             self.locatorTask.geocodeWithSearchText(text, parameters: self.geocodeParameters, completion: { [weak self] (results:[AGSGeocodeResult]?, error:NSError?) -> Void in
                 if let error = error {
                     self?.showAlert(error.localizedDescription)
                 }
                 else {
                     if let results = results where results.count > 0 {
+                        //create a graphic for the first result and add to the graphics overlay
                         let graphic = self?.graphicForPoint(results[0].displayLocation!, attributes: results[0].attributes)
                         self?.graphicsOverlay.graphics.addObject(graphic!)
-                        self?.zoomToGraphics(self!.graphicsOverlay.graphics.array as! [AGSGraphic])
+                        //zoom to the extent of the graphic to highlight the result
+                        self?.mapView.setViewpointGeometry(results[0].displayLocation!.extent, completion: nil)
                     }
                     else {
+                        //provide feedback in case of failure
                         self?.showAlert("No results found")
                     }
                 }
@@ -99,7 +99,10 @@ class FindAddressViewController: UIViewController, AGSMapViewTouchDelegate, UISe
     
     //MARK: - Callout
     
-    func showCalloutForGraphic(graphic:AGSGraphic, tapLocation:AGSPoint) {
+    //method shows the callout for the specified graphic,
+    //populates the title and detail of the callout with specific attributes
+    //hides the accessory button
+    private func showCalloutForGraphic(graphic:AGSGraphic, tapLocation:AGSPoint) {
         let addressType = graphic.attributeValueForKey("Addr_type") as! String
         self.mapView.callout.title = graphic.attributeValueForKey("Match_addr") as? String ?? ""
         
@@ -124,14 +127,14 @@ class FindAddressViewController: UIViewController, AGSMapViewTouchDelegate, UISe
         //dismiss the callout
         self.mapView.callout.dismiss()
         
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenCoordinate: screen, tolerance: 44, maximumResults: 1) { (graphics: [AGSGraphic]?, error: NSError?) -> Void in
+        //identify graphics at the tapped location
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenCoordinate: screen, tolerance: 5, maximumResults: 1) { (graphics: [AGSGraphic]?, error: NSError?) -> Void in
             if let error = error {
                 self.showAlert(error.localizedDescription)
             }
             else if let graphics = graphics where graphics.count > 0 {
-                //normalize the tap point
-                let normalizedPoint = AGSGeometryEngine.normalizeCentralMeridianOfGeometry(mappoint) as! AGSPoint
-                self.showCalloutForGraphic(graphics[0], tapLocation: normalizedPoint)
+                //show callout for the graphic
+                self.showCalloutForGraphic(graphics[0], tapLocation: mappoint)
             }
         }
     }
@@ -155,7 +158,7 @@ class FindAddressViewController: UIViewController, AGSMapViewTouchDelegate, UISe
     }
     
     //MARK: - Actions
-    func keyboardWillShow(sender:AnyObject) {
+    private func keyboardWillShow(sender:AnyObject) {
         self.button.hidden = false
     }
     

@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -51,7 +51,7 @@ class SublayersTableViewController: UITableViewController {
         //accessory switch
         let visibilitySwitch = UISwitch(frame: CGRectZero)
         visibilitySwitch.tag = indexPath.row
-        visibilitySwitch.on = sublayer.isVisible
+        visibilitySwitch.on = sublayer.visible
         visibilitySwitch.addTarget(self, action: "switchChanged:", forControlEvents: UIControlEvents.ValueChanged)
         cell.accessoryView = visibilitySwitch
         return cell
@@ -61,6 +61,6 @@ class SublayersTableViewController: UITableViewController {
         let index = sender.tag
         //change the visiblity
         let sublayer = self.sublayers[index] as! AGSArcGISMapImageSublayer
-        sublayer.isVisible = sender.on
+        sublayer.visible = sender.on
     }
 }

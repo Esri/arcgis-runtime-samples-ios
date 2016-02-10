@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -35,15 +35,22 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OfflineGeocodeViewController", "SanDiegoAddressesViewController"]
         
+        //create a local tiled layer using tile package
         let path = NSBundle.mainBundle().pathForResource("streetmap_SD", ofType: "tpk")!
         let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(path: path))
         
+        //instantiate map and add the local tiled layer
         let map = AGSMap()
         map.operationalLayers.addObject(localTiledLayer)
         
+        //assign the map to the map view
         self.mapView.map = map
+        //register self as the touch delgate for the map view
+        //will need that to show callout
         self.mapView.touchDelegate = self
         
+        //initialize the graphics overlay and add to the map view
+        //will add the resulting graphics to this overlay
         self.graphicsOverlay = AGSGraphicsOverlay()
         self.mapView.graphicsOverlays.addObject(self.graphicsOverlay)
         
@@ -60,30 +67,44 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
         self.reverseGeocodeParameters.maxResults = 1
         self.reverseGeocodeParameters.resultAttributeNames.appendContentsOf(["*"])
         
+        //add self as the observer for the keyboard show notification
+        //will display a button every time keyboard is display so the user
+        //can tap and cancel search and hide the keyboard
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        
+        //zoom to San Diego
+        self.mapView.setViewpointCenter(AGSPoint(x: -13042254.715252, y: 3857970.236806, spatialReference: AGSSpatialReference(WKID: 3857)), scale: 2e4, completion: nil)
     }
     
     private func geocodeSearchText(text:String) {
         //hide keyboard
         self.hideKeyboard()
         
+        //dismiss the callout if already visible
         self.mapView.callout.dismiss()
         
+        //remove all previous graphics
         self.graphicsOverlay.graphics.removeAllObjects()
         
         //TODO: remove loadWithCompletion for locatorTask
         self.locatorTask.loadWithCompletion { (error) -> Void in
+            //perform geocode with the input
             self.locatorTask.geocodeWithSearchText(text, parameters: self.geocodeParameters, completion: { [weak self]  (results:[AGSGeocodeResult]?, error:NSError?) -> Void in
                 if let error = error {
                     self?.showAlert(error.localizedDescription)
                 }
                 else {
+                    //if a result was returned display the graphic on the map view
+                    //using the first result, as it is the more relevant
                     if let results = results where results.count > 0 {
                         let graphic = self?.graphicForPoint(results[0].displayLocation!, attributes: results[0].attributes)
                         self?.graphicsOverlay.graphics.addObject(graphic!)
-                        self?.zoomToGraphics(self!.graphicsOverlay.graphics.array as! [AGSGraphic])
+                        
+                        //zoom to the extent of the graphic
+                        self?.mapView.setViewpointGeometry(results[0].displayLocation!.extent, completion: nil)
                     }
                     else {
+                        //if no result found, inform the user
                         self?.showAlert("No results found")
                     }
                 }
@@ -92,28 +113,39 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
     }
     
     private func reverseGeocode(point:AGSPoint) {
+        //clear the search bar text to give feedback that the graphic
+        //is based on the tap and not search
         self.searchBar.text = ""
         
+        //dismiss the callout if already visible
         self.mapView.callout.dismiss()
+        
+        //remove all previous graphics
         self.graphicsOverlay.graphics.removeAllObjects()
         
+        //normalize the point
         let normalizedPoint = AGSGeometryEngine.normalizeCentralMeridianOfGeometry(point) as! AGSPoint
         
+        //cancel all previous operations
         if self.locatorTaskOperation != nil {
             self.locatorTaskOperation.cancel()
         }
         
+        //create a graphic and add to the overlay
         let graphic = self.graphicForPoint(normalizedPoint, attributes: nil)
         self.graphicsOverlay.graphics.addObject(graphic)
         
         //TODO: remove loadWithCompletion for locatorTask
         self.locatorTask.loadWithCompletion { [weak self] (error:NSError?) -> Void in
-            
+            //perform reverse geocode
             self?.locatorTaskOperation = self!.locatorTask.reverseGeocodeWithLocation(normalizedPoint, parameters: self!.reverseGeocodeParameters) { (results: [AGSGeocodeResult]?, error: NSError?) -> Void in
                 if let error = error {
                     self?.showAlert(error.localizedDescription)
                 }
                 else {
+                    //if a result is found extract the required attributes
+                    //assign the attributes to the graphic
+                    //and show the callout
                     if let results = results where results.count > 0 {
                         let cityString = results.first?.attributes?["City"] as? String ?? ""
                         let streetString = results.first?.attributes?["Street"] as? String ?? ""
@@ -123,16 +155,20 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
                         return
                     }
                     else {
-                        //                        self?.showAlert("No address found")
+                        //provide feedback that no result was found
+                        //using print in log instead of alert to 
+                        //avoid breaking the flow
                         print("No address found")
                     }
                 }
+                //in case of error or no results, remove the graphics
                 self?.graphicsOverlay.graphics.removeObject(graphic)
             }
         }
     }
     
-    func graphicForPoint(point: AGSPoint, attributes: [String: AnyObject]?) -> AGSGraphic {
+    //method returns a graphic object for the point and attributes provided
+    private func graphicForPoint(point: AGSPoint, attributes: [String: AnyObject]?) -> AGSGraphic {
         let markerImage = UIImage(named: "RedMarker")!
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
         symbol.leaderOffsetY = markerImage.size.height/2
@@ -141,18 +177,8 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
         return graphic
     }
     
-    func zoomToGraphics(graphics:[AGSGraphic]) {
-        if graphics.count > 0 {
-            let multipoint = AGSMultipointBuilder(spatialReference: graphics[0].geometry!.spatialReference)
-            for graphic in graphics {
-                multipoint.points.addPoint(graphic.geometry as! AGSPoint)
-            }
-            self.mapView.setViewpoint(AGSViewpoint(targetExtent: multipoint.extent), completion: { (finished:Bool) -> Void in
-            })
-        }
-    }
-    
-    func showCalloutForGraphic(graphic:AGSGraphic, tapLocation:AGSPoint, animated:Bool) {
+    //method to show the callout for the provided graphic, with tap location details
+    private func showCalloutForGraphic(graphic:AGSGraphic, tapLocation:AGSPoint, animated:Bool) {
         self.mapView.callout.title = graphic.attributeValueForKey("Match_addr") as? String
         self.mapView.callout.accessoryButtonHidden = true
         self.mapView.callout.showCalloutForGraphic(graphic, overlay: self.graphicsOverlay, tapLocation: tapLocation, animated: animated)
@@ -165,26 +191,28 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
     //MARK: - AGSMapViewTouchDelegate
     
     func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
-        //dismiss the callout
+        //dismiss the callout if already visible
         self.mapView.callout.dismiss()
         
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenCoordinate: screen, tolerance: 44, maximumResults: 1) { (graphics: [AGSGraphic]?, error: NSError?) -> Void in
+        //get the graphics at the tap location
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenCoordinate: screen, tolerance: 5, maximumResults: 1) { (graphics: [AGSGraphic]?, error: NSError?) -> Void in
             if let error = error {
                 self.showAlert(error.localizedDescription)
             }
             else if let graphics = graphics where graphics.count > 0 {
-                //normalize the tap point
-                let normalizedPoint = AGSGeometryEngine.normalizeCentralMeridianOfGeometry(mappoint) as! AGSPoint
-                self.showCalloutForGraphic(graphics.first!, tapLocation: normalizedPoint, animated: true)
+                //show the callout for the first graphic found
+                self.showCalloutForGraphic(graphics.first!, tapLocation: mappoint, animated: true)
             }
         }
     }
     
     func mapView(mapView: AGSMapView, didLongPressAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+        //on long press perform reverse geocode
         self.reverseGeocode(mappoint)
     }
     
     func mapView(mapView: AGSMapView, didMoveLongPressToPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+        //perform geocode for the updated location
         self.reverseGeocode(mappoint)
     }
     
@@ -203,7 +231,7 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
     }
     
     //MARK: - Actions
-    func keyboardWillShow(sender:AnyObject) {
+    private func keyboardWillShow(sender:AnyObject) {
         self.button.hidden = false
     }
     
@@ -233,6 +261,8 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
     
     //MARK: - SanDiegoAddressesVCDelegate
     
+    //when the user selects an address from the list
+    //update the search bar text, geocode the selected address
     func sanDiegoAddressesViewController(sanDiegoAddressesViewController: SanDiegoAddressesViewController, didSelectAddress address: String) {
         self.searchBar.text = address
         self.geocodeSearchText(address)

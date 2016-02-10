@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,7 +22,12 @@ class SanDiegoAddressesViewController: UITableViewController {
     
     weak var delegate:SanDiegoAddressesVCDelegate?
     
-    private var addresses = ["910 N Harbor Dr, San Diego, CA 92101", "2920 Zoo Dr, San Diego, CA 92101", "111 W Harbor Dr, San Diego, CA 92101", "868 4th Ave, San Diego, CA 92101", "750 B St, San Diego, CA 92101"]
+    //prepopulated list of addresses
+    private var addresses = ["910 N Harbor Dr, San Diego, CA 92101",
+        "2920 Zoo Dr, San Diego, CA 92101",
+        "111 W Harbor Dr, San Diego, CA 92101",
+        "868 4th Ave, San Diego, CA 92101",
+        "750 A St, San Diego, CA 92101"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

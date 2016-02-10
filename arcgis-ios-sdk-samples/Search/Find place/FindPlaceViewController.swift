@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -56,8 +56,6 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     private var isUsingCurrentLocation = false
     private let tableViewHeight:CGFloat = 120
     
-    var dispatchOnceToken:dispatch_once_t = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,6 +65,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         //create an instance of a map with ESRI topographic basemap
         self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
         
+        //assign the map to the map view
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
         
@@ -74,32 +73,37 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.mapView.locationDisplay.autoPanMode = .Default
         self.mapView.locationDisplay.startWithCompletion { [weak self] (error: NSError?) -> Void in
             if error == nil {
+                //if the location display starts, update the preferred search location
+                //textfield's text
                 self?.preferredSearchLocationTextField.text = self!.currentLocationText
             }
         }
         
+        //logic to show the extent search button
         self.mapView.visibleAreaChangedHandler = { [weak self] (polygon: AGSPolygon) -> Void in
             if self?.canDoExtentSearch ?? false {
                 self?.extentSearchButton.hidden = false
             }
         }
         
+        //instantiate the graphicsOverlay and add to the map view
         self.graphicsOverlay = AGSGraphicsOverlay()
         self.mapView.graphicsOverlays.addObject(self.graphicsOverlay)
         
         //initialize locator task
         self.locatorTask = AGSLocatorTask(URL: NSURL(string: "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer")!)
         
-        //hide suggest result table view
+        //hide suggest result table view by default
         self.animateTableView(false)
         
-        //hide the overlay view initially
+        //hide the overlay view by default
         self.overlayView.hidden = true
         
         //register for keyboard notification in order to toggle overlay view on and off
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showOverlayView", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "hideOverlayView", name: UIKeyboardWillHideNotification, object: nil)
         
+        //add the left view images for both the textfields
         self.setupTextFieldLeftViews()
     }
     
@@ -108,6 +112,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
+    //method to show search icon and pin icon for the textfields
     private func setupTextFieldLeftViews() {
         var leftView = self.textFieldViewWithImage("SearchIcon")
         self.poiTextField.leftView = leftView
@@ -118,6 +123,8 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.preferredSearchLocationTextField.leftViewMode = UITextFieldViewMode.Always
     }
     
+    //method returns a UIView with an imageView as the subview
+    //with an image instantiated using the name provided
     private func textFieldViewWithImage(imageName:String) -> UIView {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 25, height: 30))
         let imageView = UIImageView(image: UIImage(named: imageName))
@@ -126,6 +133,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         return view
     }
     
+    //method to toggle the suggestions table view on and off
     private func animateTableView(expand:Bool) {
         if (expand != self.isTableViewVisible) && !self.isTableViewAnimating {
             self.isTableViewAnimating = true
@@ -139,13 +147,17 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
+    //method to clear prefered location information
+    //hide the suggestions table view, empty previously selected
+    //suggest result and previously fetch search location
     private func clearPreferredLocationInfo() {
         self.animateTableView(false)
         self.selectedSuggestResult = nil
         self.preferredSearchLocation = nil
     }
     
-    func showCalloutForGraphic(graphic:AGSGraphic, tapLocation:AGSPoint) {
+    //method to show callout for a graphic
+    private func showCalloutForGraphic(graphic:AGSGraphic, tapLocation:AGSPoint) {
         let addressType = graphic.attributeValueForKey("Addr_type") as! String
         self.mapView.callout.title = graphic.attributeValueForKey("Match_addr") as? String ?? ""
         
@@ -159,7 +171,8 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.mapView.callout.showCalloutForGraphic(graphic, overlay: self.graphicsOverlay, tapLocation: tapLocation, animated: true)
     }
     
-    func graphicForPoint(point: AGSPoint, attributes:[String:AnyObject]?) -> AGSGraphic {
+    //method returns a graphic object for the specified point and attributes
+    private func graphicForPoint(point: AGSPoint, attributes:[String:AnyObject]?) -> AGSGraphic {
         let markerImage = UIImage(named: "RedMarker")!
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
         symbol.leaderOffsetY = markerImage.size.height/2
@@ -168,6 +181,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         return graphic
     }
     
+    //method to zoom to an array of graphics
     func zoomToGraphics(graphics:[AGSGraphic]) {
         if graphics.count > 0 {
             let multipoint = AGSMultipointBuilder(spatialReference: graphics[0].geometry!.spatialReference)
@@ -176,24 +190,24 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
             }
             self.mapView.setViewpoint(AGSViewpoint(targetExtent: multipoint.extent), completion: { [weak self] (finished:Bool) -> Void in
                 self?.canDoExtentSearch = true
-                })
+            })
         }
     }
     
     //MARK: - AGSMapViewTouchDelegate
     
     func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
-        //dismiss the callout
+        //dismiss the callout if already visible
         self.mapView.callout.dismiss()
         
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenCoordinate: screen, tolerance: 44, maximumResults: 1) { (graphics: [AGSGraphic]?, error: NSError?) -> Void in
+        //identify graphics at the tapped location
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenCoordinate: screen, tolerance: 5, maximumResults: 1) { (graphics: [AGSGraphic]?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }
             else if let graphics = graphics where graphics.count > 0 {
-                //normalize the tap point
-                let normalizedPoint = AGSGeometryEngine.normalizeCentralMeridianOfGeometry(mappoint) as! AGSPoint
-                self.showCalloutForGraphic(graphics[0], tapLocation: normalizedPoint)
+                //show callout for the first graphic in the array
+                self.showCalloutForGraphic(graphics[0], tapLocation: mappoint)
             }
         }
     }
@@ -243,7 +257,6 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         if self.selectedTextField == self.preferredSearchLocationTextField {
             if indexPath.row == 0 {
                 self.preferredSearchLocationTextField.text = self.currentLocationText
-                //                self.preferredSearchLocation = self.mapView.locationDisplay.mapLocation
             }
             else {
                 let suggestResult = self.suggestResults[indexPath.row - 1]
@@ -320,12 +333,14 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         suggestParameters.categories = flag ? ["POI"] : ["Populated Place"]
         suggestParameters.preferredSearchLocation = flag ? nil : self.mapView.locationDisplay.mapLocation
         
+        //get suggestions
         self.suggestRequestOperation = self.locatorTask.suggestWithSearchText(string, parameters: suggestParameters) { (result: [AGSSuggestResult]?, error: NSError?) -> Void in
             if string == textField.text { //check if the search string has not changed in the meanwhile
                 if let error = error {
                     print(error.localizedDescription)
                 }
                 else {
+                    //update the suggest results and reload the table
                     self.suggestResults = result
                     self.tableView.reloadData()
                 }
@@ -344,7 +359,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
             let params = AGSGeocodeParameters()
             params.outputSpatialReference = self?.mapView.spatialReference
             
-            //geocode suggestion
+            //geocode with selected suggest result
             self?.locatorTask.geocodeWithSuggestResult(suggestResult, parameters: params) { (result: [AGSGeocodeResult]?, error: NSError?) -> Void in
                 if let error = error {
                     print(error.localizedDescription)

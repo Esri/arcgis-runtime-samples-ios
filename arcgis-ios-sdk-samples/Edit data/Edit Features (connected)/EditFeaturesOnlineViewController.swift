@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -79,7 +79,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
             lastQuery.cancel()
         }
 
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenCoordinate: screen, tolerance: 44, maximumResults: 10) { [weak self] (geoElements: [AGSGeoElement]?, error: NSError?) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenCoordinate: screen, tolerance: 5, maximumResults: 10) { [weak self] (geoElements: [AGSGeoElement]?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }
@@ -183,7 +183,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
     func geometryChanged(notification:NSNotification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the sketchCompleteButton
-        if let geometry = self.sketchGraphicsOverlay.geometry where !geometry.isEmpty {
+        if let geometry = self.sketchGraphicsOverlay.geometry where !geometry.empty {
             self.doneBBI.enabled = true
         }
     }

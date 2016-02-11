@@ -231,7 +231,7 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
     }
     
     //MARK: - Actions
-    private func keyboardWillShow(sender:AnyObject) {
+    func keyboardWillShow(sender:AnyObject) {
         self.button.hidden = false
     }
     

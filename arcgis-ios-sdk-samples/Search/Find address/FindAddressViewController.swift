@@ -158,7 +158,7 @@ class FindAddressViewController: UIViewController, AGSMapViewTouchDelegate, UISe
     }
     
     //MARK: - Actions
-    private func keyboardWillShow(sender:AnyObject) {
+    func keyboardWillShow(sender:AnyObject) {
         self.button.hidden = false
     }
     

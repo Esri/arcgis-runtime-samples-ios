@@ -1,10 +1,10 @@
 #Offline geocode
 
-This sample demonstrates how you can geocode addresses to locations and reverse geocode locations to addresses even when the device does not have network connectivity 
+This sample demonstrates how you can geocode addresses to locations and reverse geocode locations to addresses when the device does not have network connectivity 
 
 ##How to use the sample
 
-To locate an address either type in or choose from the list of addresses. And to find an address for a point or location on the map tap and hold on the map. You can also tap hold and move to update location and get instant results
+To locate an address either type in or choose from the list of addresses. To find an address for a point or location on the map tap and hold on the map. You can also tap, hold and move to update location to get instant results
 
 ![](image1.png)
 

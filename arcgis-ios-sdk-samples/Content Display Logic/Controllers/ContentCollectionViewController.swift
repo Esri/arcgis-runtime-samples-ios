@@ -1,10 +1,16 @@
+// Copyright 2016 Esri.
 //
-//  ContentCollectionViewController.swift
-//  arcgis-ios-sdk-samples
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-//  Created by Gagandeep Singh on 9/30/15.
-//  Copyright © 2015 Esri. All rights reserved.
+//   http://www.apache.org/licenses/LICENSE-2.0
 //
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 import UIKit
 
@@ -100,7 +106,7 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         var nodes = [Node]()
         for node in self.nodesArray {
             let children = node.children
-            let matchingNodes = children.filter({ print($0.displayName); return names.contains($0.displayName) })
+            let matchingNodes = children.filter({ return names.contains($0.displayName) })
             nodes.appendContentsOf(matchingNodes)
         }
         return nodes
@@ -155,6 +161,9 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     //MARK: - UICollectionViewDelegate
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        //hide keyboard if visible
+        self.view.endEditing(true)
+        
         let node = self.nodesArray[indexPath.item]
         let controller = self.storyboard!.instantiateViewControllerWithIdentifier("ContentTableViewController") as! ContentTableViewController
         controller.nodesArray = node.children

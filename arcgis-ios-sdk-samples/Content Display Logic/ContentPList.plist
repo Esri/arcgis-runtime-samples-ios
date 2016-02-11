@@ -297,6 +297,45 @@
         </dict>
         <dict>
             <key>displayName</key>
+            <string>Search</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Find address</string>
+                    <key>storyboardName</key>
+                    <string>FindAddress</string>
+                    <key>descriptionText</key>
+                    <string>Type in or select a prepopulated address to show it on the map</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Reverse geocode</string>
+                    <key>storyboardName</key>
+                    <string>ReverseGeocode</string>
+                    <key>descriptionText</key>
+                    <string>Tap on a location on the map to find its address</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Find place</string>
+                    <key>storyboardName</key>
+                    <string>FindPlace</string>
+                    <key>descriptionText</key>
+                    <string>Search for a point of interest either near by or across the world or around a particular location</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Offline geocode</string>
+                    <key>storyboardName</key>
+                    <string>OfflineGeocode</string>
+                    <key>descriptionText</key>
+                    <string>Tap and hold to get address for a point on the map from an offline locator. You can also tap hold and move to get instant results</string>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
             <string>Edit data</string>
             <key>children</key>
             <array>

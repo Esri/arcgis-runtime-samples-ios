@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -76,7 +76,7 @@ class GOIdentifyViewController: UIViewController, AGSMapViewTouchDelegate {
         //use the following method to identify graphics in a specific graphics overlay
         //otherwise if you need to identify on all the graphics overlay present in the map view
         //use `identifyGraphicsOverlaysAtScreenCoordinate:tolerance:maximumGraphics:completion:` method provided on map view
-        let tolerance:Double = 44
+        let tolerance:Double = 5
         
         self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenCoordinate: screen, tolerance: tolerance, maximumResults: 10) { (graphics:[AGSGraphic]?, error:NSError?) -> Void in
             if let error = error {

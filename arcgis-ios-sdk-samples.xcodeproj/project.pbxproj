@@ -11,9 +11,9 @@
 		3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */; };
 		3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */ = {isa = PBXBuildFile; fileRef = 3E03F0981B056F9C0078EB36 /* highlight.pack.js */; };
 		3E03F09B1B05714A0078EB36 /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 3E03F09A1B05714A0078EB36 /* default.css */; };
-		3E0830BA1BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0830B91BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift */; settings = {ASSET_TAGS = (); }; };
-		3E0830BC1BC31B69001AF9A7 /* CustomSearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0830BB1BC31B69001AF9A7 /* CustomSearchHeaderView.xib */; settings = {ASSET_TAGS = (); }; };
-		3E0830BE1BC33681001AF9A7 /* SuggestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0830BD1BC33681001AF9A7 /* SuggestionTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		3E0830BA1BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0830B91BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift */; };
+		3E0830BC1BC31B69001AF9A7 /* CustomSearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0830BB1BC31B69001AF9A7 /* CustomSearchHeaderView.xib */; };
+		3E0830BE1BC33681001AF9A7 /* SuggestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0830BD1BC33681001AF9A7 /* SuggestionTableViewCell.xib */; };
 		3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */; };
 		3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */; };
 		3E0D3AD71AFD481900FC60D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD61AFD481900FC60D6 /* Main.storyboard */; };
@@ -45,6 +45,27 @@
 		3E4B05FB1B39EF250072E514 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B05F21B39EF250072E514 /* TPKeyboardAvoidingScrollView.m */; };
 		3E4B05FC1B39EF250072E514 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B05F41B39EF250072E514 /* TPKeyboardAvoidingTableView.m */; };
 		3E4B05FD1B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B05F61B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		3E4BF4421C5AE98300D85919 /* FindAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF4411C5AE98300D85919 /* FindAddressViewController.swift */; };
+		3E4BF4441C5AEA6500D85919 /* WorldAddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF4431C5AEA6500D85919 /* WorldAddressesViewController.swift */; };
+		3E4BF4461C5AED5100D85919 /* FindAddress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF4451C5AED5100D85919 /* FindAddress.storyboard */; };
+		3E4BF4481C5AEF3D00D85919 /* ReverseGeocode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF4471C5AEF3D00D85919 /* ReverseGeocode.storyboard */; };
+		3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF4491C5AEF8800D85919 /* ReverseGeocodeViewController.swift */; };
+		3E4BF44C1C5AF04300D85919 /* FindPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF44B1C5AF04300D85919 /* FindPlaceViewController.swift */; };
+		3E4BF44E1C5AF0AD00D85919 /* FindPlace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF44D1C5AF0AD00D85919 /* FindPlace.storyboard */; };
+		3E4BF4561C5BD66C00D85919 /* OfflineGeocodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF4551C5BD66C00D85919 /* OfflineGeocodeViewController.swift */; };
+		3E4BF4581C5BD6C400D85919 /* SanDiegoAddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF4571C5BD6C400D85919 /* SanDiegoAddressesViewController.swift */; };
+		3E4BF45A1C5BD77300D85919 /* OfflineGeocode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF4591C5BD77300D85919 /* OfflineGeocode.storyboard */; };
+		3E4BF47C1C5BDDCA00D85919 /* san-diego-locator.loc in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF4781C5BDDCA00D85919 /* san-diego-locator.loc */; };
+		3E4BF47D1C5BDDCA00D85919 /* san-diego-locator.loc.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF4791C5BDDCA00D85919 /* san-diego-locator.loc.xml */; };
+		3E4BF47E1C5BDDCA00D85919 /* san-diego-locator.locb in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF47A1C5BDDCA00D85919 /* san-diego-locator.locb */; };
+		3E4BF47F1C5BDDCA00D85919 /* san-diego-locator.lox in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF47B1C5BDDCA00D85919 /* san-diego-locator.lox */; };
+		3E4BF4801C5BDF0900D85919 /* FindAddressViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4411C5AE98300D85919 /* FindAddressViewController.swift */; };
+		3E4BF4811C5BDF0900D85919 /* WorldAddressesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4431C5AEA6500D85919 /* WorldAddressesViewController.swift */; };
+		3E4BF4821C5BDF0900D85919 /* ReverseGeocodeViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4491C5AEF8800D85919 /* ReverseGeocodeViewController.swift */; };
+		3E4BF4831C5BDF0900D85919 /* FindPlaceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF44B1C5AF04300D85919 /* FindPlaceViewController.swift */; };
+		3E4BF4841C5BDF0900D85919 /* OfflineGeocodeViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4551C5BD66C00D85919 /* OfflineGeocodeViewController.swift */; };
+		3E4BF4851C5BDF0900D85919 /* SanDiegoAddressesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4571C5BD6C400D85919 /* SanDiegoAddressesViewController.swift */; };
+		3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */; };
 		3E5848FE1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */; };
 		3E5849001B9123E900AB3CE9 /* FeatureLayerURL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */; };
 		3E5849011B91256300AB3CE9 /* BookmarksListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8526341B90D92700690EBD /* BookmarksListViewController.swift */; };
@@ -188,6 +209,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3E4BF4801C5BDF0900D85919 /* FindAddressViewController.swift in CopyFiles */,
+				3E4BF4811C5BDF0900D85919 /* WorldAddressesViewController.swift in CopyFiles */,
+				3E4BF4821C5BDF0900D85919 /* ReverseGeocodeViewController.swift in CopyFiles */,
+				3E4BF4831C5BDF0900D85919 /* FindPlaceViewController.swift in CopyFiles */,
+				3E4BF4841C5BDF0900D85919 /* OfflineGeocodeViewController.swift in CopyFiles */,
+				3E4BF4851C5BDF0900D85919 /* SanDiegoAddressesViewController.swift in CopyFiles */,
 				3E7162361BA21932008DE398 /* GraphicsWithSymbolsViewController.swift in CopyFiles */,
 				3E41DD7A1B9F836600DA11CC /* AddFeaturesViewController.swift in CopyFiles */,
 				3E41DD7B1B9F836600DA11CC /* DeleteFeaturesViewController.swift in CopyFiles */,
@@ -285,6 +312,21 @@
 		3E4B05F41B39EF250072E514 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		3E4B05F51B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		3E4B05F61B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		3E4BF4411C5AE98300D85919 /* FindAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindAddressViewController.swift; path = "Search/Find address/FindAddressViewController.swift"; sourceTree = "<group>"; };
+		3E4BF4431C5AEA6500D85919 /* WorldAddressesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorldAddressesViewController.swift; path = "Search/Find address/WorldAddressesViewController.swift"; sourceTree = "<group>"; };
+		3E4BF4451C5AED5100D85919 /* FindAddress.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FindAddress.storyboard; path = "Search/Find address/FindAddress.storyboard"; sourceTree = "<group>"; };
+		3E4BF4471C5AEF3D00D85919 /* ReverseGeocode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ReverseGeocode.storyboard; path = "Search/Reverse geocode/ReverseGeocode.storyboard"; sourceTree = "<group>"; };
+		3E4BF4491C5AEF8800D85919 /* ReverseGeocodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReverseGeocodeViewController.swift; path = "Search/Reverse geocode/ReverseGeocodeViewController.swift"; sourceTree = "<group>"; };
+		3E4BF44B1C5AF04300D85919 /* FindPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindPlaceViewController.swift; path = "Search/Find place/FindPlaceViewController.swift"; sourceTree = "<group>"; };
+		3E4BF44D1C5AF0AD00D85919 /* FindPlace.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FindPlace.storyboard; path = "Search/Find place/FindPlace.storyboard"; sourceTree = "<group>"; };
+		3E4BF4551C5BD66C00D85919 /* OfflineGeocodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineGeocodeViewController.swift; path = "Search/Offline geocode/OfflineGeocodeViewController.swift"; sourceTree = "<group>"; };
+		3E4BF4571C5BD6C400D85919 /* SanDiegoAddressesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SanDiegoAddressesViewController.swift; path = "Search/Offline geocode/SanDiegoAddressesViewController.swift"; sourceTree = "<group>"; };
+		3E4BF4591C5BD77300D85919 /* OfflineGeocode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OfflineGeocode.storyboard; path = "Search/Offline geocode/OfflineGeocode.storyboard"; sourceTree = "<group>"; };
+		3E4BF4781C5BDDCA00D85919 /* san-diego-locator.loc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "san-diego-locator.loc"; sourceTree = "<group>"; };
+		3E4BF4791C5BDDCA00D85919 /* san-diego-locator.loc.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "san-diego-locator.loc.xml"; sourceTree = "<group>"; };
+		3E4BF47A1C5BDDCA00D85919 /* san-diego-locator.locb */ = {isa = PBXFileReference; lastKnownFileType = file; path = "san-diego-locator.locb"; sourceTree = "<group>"; };
+		3E4BF47B1C5BDDCA00D85919 /* san-diego-locator.lox */ = {isa = PBXFileReference; lastKnownFileType = file; path = "san-diego-locator.lox"; sourceTree = "<group>"; };
+		3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = streetmap_SD.tpk; path = "Shared resources/Tile packages/streetmap_SD.tpk"; sourceTree = "<group>"; };
 		3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayerURLViewController.swift; path = "Features/Feature layer (feature service)/FeatureLayerURLViewController.swift"; sourceTree = "<group>"; };
 		3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FeatureLayerURL.storyboard; path = "Features/Feature layer (feature service)/FeatureLayerURL.storyboard"; sourceTree = "<group>"; };
 		3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Camera Shutter.caf"; sourceTree = "<group>"; };
@@ -434,10 +476,11 @@
 				3ED027FF1B8E39EE00ACA70D /* Layers */,
 				3ED027FE1B8E39DD00ACA70D /* Features */,
 				3ED027FD1B8E392500ACA70D /* Display information */,
+				3E4BF43C1C5AC66700D85919 /* Search */,
 				3ED027FC1B8E38F400ACA70D /* Edit data */,
 				3E4B05E51B39EE920072E514 /* Shared resources */,
-				3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */,
 				3E23AA071AFC2DE0002E2214 /* Content Display Logic */,
+				3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */,
 			);
 			path = "arcgis-ios-sdk-samples";
 			sourceTree = "<group>";
@@ -533,6 +576,8 @@
 		3E4B05E51B39EE920072E514 /* Shared resources */ = {
 			isa = PBXGroup;
 			children = (
+				3E4BF45D1C5BD84900D85919 /* Locator */,
+				3E4BF45B1C5BD7A900D85919 /* Tile packages */,
 				3E4B05E61B39EF250072E514 /* Libraries */,
 			);
 			name = "Shared resources";
@@ -574,6 +619,83 @@
 				3E4B05F61B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
 			);
 			path = TPKeyboardAvoiding;
+			sourceTree = "<group>";
+		};
+		3E4BF43C1C5AC66700D85919 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BF43D1C5AC68A00D85919 /* Find address */,
+				3E4BF4401C5AE8A200D85919 /* Reverse geocode */,
+				3E4BF43F1C5AC6B500D85919 /* Find place */,
+				3E4BF43E1C5AC6A400D85919 /* Offline geocode */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		3E4BF43D1C5AC68A00D85919 /* Find address */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BF4411C5AE98300D85919 /* FindAddressViewController.swift */,
+				3E4BF4431C5AEA6500D85919 /* WorldAddressesViewController.swift */,
+				3E4BF4451C5AED5100D85919 /* FindAddress.storyboard */,
+			);
+			name = "Find address";
+			sourceTree = "<group>";
+		};
+		3E4BF43E1C5AC6A400D85919 /* Offline geocode */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BF4551C5BD66C00D85919 /* OfflineGeocodeViewController.swift */,
+				3E4BF4571C5BD6C400D85919 /* SanDiegoAddressesViewController.swift */,
+				3E4BF4591C5BD77300D85919 /* OfflineGeocode.storyboard */,
+			);
+			name = "Offline geocode";
+			sourceTree = "<group>";
+		};
+		3E4BF43F1C5AC6B500D85919 /* Find place */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BF44B1C5AF04300D85919 /* FindPlaceViewController.swift */,
+				3E4BF44D1C5AF0AD00D85919 /* FindPlace.storyboard */,
+			);
+			name = "Find place";
+			sourceTree = "<group>";
+		};
+		3E4BF4401C5AE8A200D85919 /* Reverse geocode */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BF4491C5AEF8800D85919 /* ReverseGeocodeViewController.swift */,
+				3E4BF4471C5AEF3D00D85919 /* ReverseGeocode.storyboard */,
+			);
+			name = "Reverse geocode";
+			sourceTree = "<group>";
+		};
+		3E4BF45B1C5BD7A900D85919 /* Tile packages */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */,
+			);
+			name = "Tile packages";
+			sourceTree = "<group>";
+		};
+		3E4BF45D1C5BD84900D85919 /* Locator */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BF4771C5BDDCA00D85919 /* san-diego */,
+			);
+			name = Locator;
+			path = "Shared resources/Locator";
+			sourceTree = "<group>";
+		};
+		3E4BF4771C5BDDCA00D85919 /* san-diego */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BF4781C5BDDCA00D85919 /* san-diego-locator.loc */,
+				3E4BF4791C5BDDCA00D85919 /* san-diego-locator.loc.xml */,
+				3E4BF47A1C5BDDCA00D85919 /* san-diego-locator.locb */,
+				3E4BF47B1C5BDDCA00D85919 /* san-diego-locator.lox */,
+			);
+			path = "san-diego";
 			sourceTree = "<group>";
 		};
 		3E5163361BBEF69B00D42C4C /* Views */ = {
@@ -1113,6 +1235,7 @@
 				3ED028E11B8E3AA500ACA70D /* OverrideRenderer.storyboard in Resources */,
 				3ED028731B8E3A8500ACA70D /* MapViewDrawStatus.storyboard in Resources */,
 				3ED028881B8E3A8500ACA70D /* OpenExistingMap.storyboard in Resources */,
+				3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */,
 				3ED028651B8E3A8500ACA70D /* HighwayJson.txt in Resources */,
 				3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */,
 				3ED028E41B8E3AA500ACA70D /* DefinitionExpression.storyboard in Resources */,
@@ -1121,6 +1244,7 @@
 				3ED0294B1B8E3AB300ACA70D /* Sketch.storyboard in Resources */,
 				3ED028571B8E3A8500ACA70D /* AuthoringMap.storyboard in Resources */,
 				3ED029411B8E3AB300ACA70D /* point.gif in Resources */,
+				3E4BF45A1C5BD77300D85919 /* OfflineGeocode.storyboard in Resources */,
 				3ED029401B8E3AB300ACA70D /* line.gif in Resources */,
 				3E23A9EF1AFC28F6002E2214 /* Images.xcassets in Resources */,
 				3ED0286C1B8E3A8500ACA70D /* DisplayLocation.storyboard in Resources */,
@@ -1128,8 +1252,10 @@
 				3ED028F71B8E3AA500ACA70D /* ManualCache.storyboard in Resources */,
 				3ED028641B8E3A8500ACA70D /* GriffithParkJson.txt in Resources */,
 				3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */,
+				3E4BF44E1C5AF0AD00D85919 /* FindPlace.storyboard in Resources */,
 				3E0830BE1BC33681001AF9A7 /* SuggestionTableViewCell.xib in Resources */,
 				3E41DD741B9A241600DA11CC /* AddFeatures.storyboard in Resources */,
+				3E4BF47C1C5BDDCA00D85919 /* san-diego-locator.loc in Resources */,
 				3E2A68121B14E04300A318AA /* ArcGIS.bundle in Resources */,
 				3E0257201BAB5D7700ACAC18 /* Default-568h@2x.png in Resources */,
 				3ED5EB771B752A42009F9B75 /* style.css in Resources */,
@@ -1139,18 +1265,23 @@
 				3ED028F41B8E3AA500ACA70D /* OnInteractionCache.storyboard in Resources */,
 				3ED028FA1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard in Resources */,
 				3ED028691B8E3A8500ACA70D /* SetViewpoint.storyboard in Resources */,
+				3E4BF4461C5AED5100D85919 /* FindAddress.storyboard in Resources */,
 				3ED028951B8E3A8500ACA70D /* SetMapsSpatialReference.storyboard in Resources */,
+				3E4BF47D1C5BDDCA00D85919 /* san-diego-locator.loc.xml in Resources */,
 				3E0D3AD71AFD481900FC60D6 /* Main.storyboard in Resources */,
 				3ED029311B8E3AB300ACA70D /* Callout.storyboard in Resources */,
+				3E4BF47F1C5BDDCA00D85919 /* san-diego-locator.lox in Resources */,
 				3ED029701B8E3ACD00ACA70D /* EditGeometry.storyboard in Resources */,
 				3E5849001B9123E900AB3CE9 /* FeatureLayerURL.storyboard in Resources */,
 				3ED028E91B8E3AA500ACA70D /* FLQuery.storyboard in Resources */,
 				3E7162351BA1F529008DE398 /* GraphicsWithSymbols.storyboard in Resources */,
 				3ED029391B8E3AB300ACA70D /* MILShowLegend.storyboard in Resources */,
+				3E4BF47E1C5BDDCA00D85919 /* san-diego-locator.locb in Resources */,
 				3E4B05F81B39EF250072E514 /* SVProgressHUD.bundle in Resources */,
 				3E0830BC1BC31B69001AF9A7 /* CustomSearchHeaderView.xib in Resources */,
 				3ED029281B8E3AB300ACA70D /* GORenderers.storyboard in Resources */,
 				3E39F6D21B9790A9000DEC6C /* EditFeaturesOnline.storyboard in Resources */,
+				3E4BF4481C5AEF3D00D85919 /* ReverseGeocode.storyboard in Resources */,
 				3ED028621B8E3A8500ACA70D /* SwitchBasemap.storyboard in Resources */,
 				3E41DD791B9F609500DA11CC /* DeleteFeatures.storyboard in Resources */,
 				3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */,
@@ -1199,7 +1330,9 @@
 				3ED029711B8E3ACD00ACA70D /* EditGeometryViewController.swift in Sources */,
 				3ED028791B8E3A8500ACA70D /* ManageMapLayersViewController.swift in Sources */,
 				3E4B05FA1B39EF250072E514 /* TPKeyboardAvoidingCollectionView.m in Sources */,
+				3E4BF44C1C5AF04300D85919 /* FindPlaceViewController.swift in Sources */,
 				3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */,
+				3E4BF4441C5AEA6500D85919 /* WorldAddressesViewController.swift in Sources */,
 				3ED028EF1B8E3AA500ACA70D /* FLSelectionViewController.swift in Sources */,
 				3E8526381B90D92700690EBD /* BookmarksListViewController.swift in Sources */,
 				3ED0286A1B8E3A8500ACA70D /* SetViewpointViewController.swift in Sources */,
@@ -1231,6 +1364,7 @@
 				3ED0288E1B8E3A8500ACA70D /* SetInitialMapAreaViewController.swift in Sources */,
 				3ED028F51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift in Sources */,
 				3ED028E21B8E3AA500ACA70D /* OverrideRendererViewController.swift in Sources */,
+				3E4BF4561C5BD66C00D85919 /* OfflineGeocodeViewController.swift in Sources */,
 				3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */,
 				3E4B05FC1B39EF250072E514 /* TPKeyboardAvoidingTableView.m in Sources */,
 				3ED028F81B8E3AA500ACA70D /* ManualCacheViewController.swift in Sources */,
@@ -1239,15 +1373,18 @@
 				3ED0287A1B8E3A8500ACA70D /* MMLLayersViewController.swift in Sources */,
 				3ED028891B8E3A8500ACA70D /* OpenExistingMapViewController.swift in Sources */,
 				3ED028FB1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift in Sources */,
+				3E4BF4421C5AE98300D85919 /* FindAddressViewController.swift in Sources */,
 				3ED0293A1B8E3AB300ACA70D /* MILShowLegendViewController.swift in Sources */,
 				3ED0292D1B8E3AB300ACA70D /* GOIdentifyViewController.swift in Sources */,
 				3E8526391B90D92700690EBD /* BookmarksViewController.swift in Sources */,
 				3ED028631B8E3A8500ACA70D /* SwitchBasemapViewController.swift in Sources */,
 				3ED028591B8E3A8500ACA70D /* AuthoringOptionsViewController.swift in Sources */,
+				3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */,
 				3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */,
 				3ED0296A1B8E3ACD00ACA70D /* EditAttributesViewController.swift in Sources */,
 				3E4B05F71B39EF250072E514 /* SVIndefiniteAnimatedView.m in Sources */,
 				3ED028741B8E3A8500ACA70D /* MapViewDrawStatusViewController.swift in Sources */,
+				3E4BF4581C5BD6C400D85919 /* SanDiegoAddressesViewController.swift in Sources */,
 				3EE692021B03D22500C167B8 /* Node.swift in Sources */,
 				3ED028E51B8E3AA500ACA70D /* DefinitionExpressionViewController.swift in Sources */,
 				3ED0289D1B8E3A8500ACA70D /* MapViewScreenshotViewController.swift in Sources */,

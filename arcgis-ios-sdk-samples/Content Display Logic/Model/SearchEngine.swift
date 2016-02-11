@@ -1,10 +1,16 @@
+// Copyright 2016 Esri.
 //
-//  SearchEngine.swift
-//  arcgis-ios-sdk-samples
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-//  Created by Gagandeep Singh on 10/1/15.
-//  Copyright © 2015 Esri. All rights reserved.
+//   http://www.apache.org/licenses/LICENSE-2.0
 //
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 import UIKit
 
@@ -81,9 +87,9 @@ class SearchEngine: NSObject {
         
         let tagger = NSLinguisticTagger(tagSchemes: [NSLinguisticTagSchemeTokenType, NSLinguisticTagSchemeNameType, NSLinguisticTagSchemeLexicalClass], options: 0)
         
-        autoreleasepool {
-            for directoryURL in readmeDirectoriesURLs {
-                
+        
+        for directoryURL in readmeDirectoriesURLs {
+            autoreleasepool {
                 if let contentString = self.contentOfReadmeFile(directoryURL.path!) {
                     
                     //sample display name
@@ -91,9 +97,8 @@ class SearchEngine: NSObject {
                     
                     tagger.string = contentString
                     let range = NSMakeRange(0, contentString.characters.count)
-                    var stop:ObjCBool?
-                    tagger.enumerateTagsInRange(range, scheme: NSLinguisticTagSchemeLexicalClass, options: [NSLinguisticTaggerOptions.OmitWhitespace, NSLinguisticTaggerOptions.OmitPunctuation], usingBlock: { (tag:String, tokenRange:NSRange, sentenceRange:NSRange, stop) -> Void in
-                        if tag == NSLinguisticTagNoun {
+                    tagger.enumerateTagsInRange(range, scheme: NSLinguisticTagSchemeLexicalClass, options: [NSLinguisticTaggerOptions.OmitWhitespace, NSLinguisticTaggerOptions.OmitPunctuation], usingBlock: { (tag:String, tokenRange:NSRange, sentenceRange:NSRange, _) -> Void in
+                        if tag == NSLinguisticTagNoun || tag == NSLinguisticTagOtherWord {
                             let word = (contentString as NSString).substringWithRange(tokenRange) as String
                             //trivial comparisons
                             if word != "`." && word != "```" && word != "`" {

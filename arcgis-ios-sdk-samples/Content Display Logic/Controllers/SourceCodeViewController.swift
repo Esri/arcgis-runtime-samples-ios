@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIPopoverPr
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.webView.delegate = self
         
         if self.filenames != nil && self.filenames.count > 0 {
@@ -76,9 +76,9 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIPopoverPr
             "<meta name='viewport' content='width=device-width, initial-scale='\(scale)'/> " +
             "<link rel=\"stylesheet\" href=\"\(cssPath)\">" +
             "<script src=\"\(jsPath)\"></script>" +
-            "<script>hljs.initHighlightingOnLoad();</script> <body>" +
+            "<script>hljs.initHighlightingOnLoad();</script> </head> <body>" +
             "<pre><code class=\"Swift\"> \(content) </code></pre>" +
-            "</body> </head> </html>"
+            "</body> </html>"
 //        println(stringForHTML)
         // style=\"white-space:initial;\"
         return stringForHTML

@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -62,7 +62,7 @@ class FLSelectionViewController: UIViewController, AGSMapViewTouchDelegate {
             lastQuery.cancel()
         }
         
-        let tolerance:Double = 22
+        let tolerance:Double = 5
         let mapTolerance = tolerance * self.mapView.unitsPerPoint
         let envelope = AGSEnvelope(XMin: mappoint.x - mapTolerance,
             yMin: mappoint.y - mapTolerance,

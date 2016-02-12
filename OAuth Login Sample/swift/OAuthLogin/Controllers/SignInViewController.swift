@@ -45,7 +45,7 @@ class SignInViewController: UIViewController, UIAlertViewDelegate, AGSPortalDele
     
     override func viewWillAppear(animated:Bool) {
         super.viewWillAppear(animated)
-        if let credential = (UIApplication.sharedApplication().delegate as! AppDelegate).fetchCredentialFromKeychain() {
+        if let _ = (UIApplication.sharedApplication().delegate as! AppDelegate).fetchCredentialFromKeychain() {
             
             self.signInButton.setTitle("Signing in...", forState: .Normal)
             self.signInButton.enabled = false
@@ -116,7 +116,7 @@ class SignInViewController: UIViewController, UIAlertViewDelegate, AGSPortalDele
         }
         else { //Yes, trust
             
-            if let url = self.error.userInfo?[NSURLErrorFailingURLErrorKey] as? NSURL {
+            if let url = self.error.userInfo[NSURLErrorFailingURLErrorKey] as? NSURL {
                 //add to trusted hosts
                 if let host = url.host {
                     NSURLConnection.ags_trustedHosts().addObject(host)

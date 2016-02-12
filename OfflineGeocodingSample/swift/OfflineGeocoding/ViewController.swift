@@ -67,8 +67,7 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSMapViewTouchDeleg
         
         //create the AGSLocator with the geo locator URL
         //and set the delegate to self, so we get AGSLocatorDelegate notifications
-        var error:NSError?
-        self.locator = AGSLocator(name: "SanFranciscoLocator", error:&error)
+        self.locator = try! AGSLocator(name: "SanFranciscoLocator")
         self.locator.delegate = self
         
         
@@ -127,13 +126,13 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSMapViewTouchDeleg
         self.graphicsLayer.removeAllGraphics()
         
         //Create the address dictionary with the contents of the search bar
-        let addresses =  ["Single Line Input": self.searchBar.text]
+        let addresses =  ["Single Line Input": self.searchBar.text!]
         
         //now request the location from the locator for our address
         self.locator.locationsForAddress(addresses, returnFields:["*"], outSpatialReference:self.mapView.spatialReference)
         
-        if !contains(self.recentSearches, self.searchBar.text) {
-            self.recentSearches.insert(self.searchBar.text, atIndex: 0)
+        if !self.recentSearches.contains(self.searchBar.text!) {
+            self.recentSearches.insert(self.searchBar.text!, atIndex: 0)
         }
     }
     
@@ -174,7 +173,7 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSMapViewTouchDeleg
     //MARK: - AGSLocatorDelegate methods
     
     func locator(locator: AGSLocator!, operation op: NSOperation!, didFetchLocatorInfo locatorInfo: AGSLocatorInfo!) {
-        println(locatorInfo.singleLineAddressField)
+        print(locatorInfo.singleLineAddressField)
     }
     
     func locator(locator: AGSLocator!, operation op: NSOperation!, didFindLocationsForAddress candidates: [AnyObject]!) {
@@ -187,14 +186,14 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSMapViewTouchDeleg
         else
         {
             //sort the results based on score
-            sorted(candidates, { (a, b) -> Bool in
+            let sortedCandidates = candidates.sort({ (a, b) -> Bool in
                 let first = (a as! AGSAddressCandidate).score
                 let second = (b as! AGSAddressCandidate).score
                 return first > second
             })
             
             //loop through all candidates/results and add to graphics layer
-            for candidate in candidates as! [AGSAddressCandidate] {
+            for candidate in sortedCandidates as! [AGSAddressCandidate] {
                 let graphic = AGSGraphic(geometry: candidate.location, symbol:nil, attributes:candidate.attributes)
                 
                 //add the graphic to the graphics layer

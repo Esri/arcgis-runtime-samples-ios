@@ -68,7 +68,7 @@ class GpsSketchingViewController: UIViewController, AGSMapViewLayerDelegate, CLL
     //MARK: -
     
     //update the location manager parameters if the settings are changed during sketching
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         
         if keyPath == kAccuracyValueKeyPath {
             self.locationManager.desiredAccuracy = self.parameters.accuracyValue
@@ -156,7 +156,7 @@ class GpsSketchingViewController: UIViewController, AGSMapViewLayerDelegate, CLL
     *      going to use horizontal accuracy as the deciding factor. In other cases, you may wish to use vertical
     *      accuracy, or both together.
     */
-    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         
         // test that the horizontal accuracy does not indicate an invalid measurement
         if newLocation.horizontalAccuracy < 0 {
@@ -168,7 +168,7 @@ class GpsSketchingViewController: UIViewController, AGSMapViewLayerDelegate, CLL
         self.gpsSketchLayer.insertVertex(self.mapView.locationDisplay.mapLocation(), inPart:0, atIndex:-1)
     }
     
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
 
         // The location "unknown" error simply means the manager is currently unable to get the location.
         if error.code != CLError.LocationUnknown.rawValue {

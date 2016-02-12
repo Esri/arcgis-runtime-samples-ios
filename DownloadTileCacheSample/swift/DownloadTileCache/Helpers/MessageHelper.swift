@@ -35,7 +35,7 @@ class MessageHelper {
                 
                     if !range.isEmpty {
                         var substring = percentageString.substringFromIndex(range.endIndex) as String
-                        substring = substring.stringByReplacingOccurrencesOfString(" percent", withString: "", options: nil, range: nil)
+                        substring = substring.stringByReplacingOccurrencesOfString(" percent", withString: "", options: .CaseInsensitiveSearch, range: nil)
                         message = message.stringByAppendingString(" (\(substring)% completed)")
                     }
                 }

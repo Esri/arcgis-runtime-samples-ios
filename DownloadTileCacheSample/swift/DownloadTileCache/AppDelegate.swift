@@ -29,7 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //request permission for local notifications in iOS 8
         if(UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:"))) {
-            application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+            if #available(iOS 8.0, *) {
+                application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Sound, .Alert, .Badge], categories: nil))
+            } else {
+                // Fallback on earlier versions
+            }
         }
         return true
     }

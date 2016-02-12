@@ -44,17 +44,8 @@ class GeometryServiceViewController: UIViewController, AGSMapViewLayerDelegate, 
         self.mapView.layerDelegate = self
         self.mapView.touchDelegate = self
         
-        var error:NSError?
-        
         // Create map service info with URL of base map
-        var msi = AGSMapServiceInfo(URL: NSURL(string: kBaseMapService), error: &error)
-        
-        if error != nil {
-            // some error occurred
-            // handle it here
-            println("There was an error!")
-            return
-        }
+        let msi = AGSMapServiceInfo(URL: NSURL(string: kBaseMapService), credential: nil)
         
         // Create the base layer
         let baseLayer = AGSTiledMapServiceLayer(mapServiceInfo: msi)

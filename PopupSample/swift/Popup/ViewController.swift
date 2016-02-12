@@ -53,7 +53,7 @@ class ViewController: UIViewController, AGSWebMapDelegate, AGSCalloutDelegate, A
         let buffer = geometryEngine.bufferGeometry(mappoint, byDistance:(10 * mapView.resolution))
         let willFetch = self.webMap.fetchPopupsForExtent(buffer.envelope)
         if !willFetch {
-            println("Sorry, try again")
+            print("Sorry, try again")
         }
         else {
             self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
@@ -79,13 +79,13 @@ class ViewController: UIViewController, AGSWebMapDelegate, AGSCalloutDelegate, A
     
     func webMap(webMap: AGSWebMap!, didFailToLoadWithError error: NSError!) {
         // If the web map failed to load report an error
-        println("Error while loading webMap: \(error.localizedDescription)")
+        print("Error while loading webMap: \(error.localizedDescription)")
         
         UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
     }
     
     func didFailToLoadLayer(layerTitle: String!, url: NSURL!, baseLayer: Bool, withError error: NSError!) {
-        println("Error while loading webMap: \(error.localizedDescription)")
+        print("Error while loading webMap: \(error.localizedDescription)")
         
         // If we have an error loading the layer report an error
         UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()

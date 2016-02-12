@@ -54,15 +54,15 @@ class RecentViewController: UIViewController {
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "RecentCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UITableViewCell!
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
 
         if cell == nil {
             cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
         }
 
-        cell.textLabel!.text = self.items[indexPath.row]
+        cell?.textLabel?.text = self.items[indexPath.row]
         
-        return cell
+        return cell!
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

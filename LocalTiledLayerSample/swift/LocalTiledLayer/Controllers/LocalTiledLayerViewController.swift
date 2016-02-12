@@ -28,9 +28,9 @@ class LocalTiledLayerViewController: UIViewController {
         super.viewDidLoad()
 
         //Remove the file extension (if it exists) from the name
-        let fileExtension = self.tilePackage.pathExtension
+        let fileExtension = (self.tilePackage as NSString).pathExtension
         if (!fileExtension.isEmpty) {
-            self.tilePackage = self.tilePackage.stringByDeletingPathExtension
+            self.tilePackage = (self.tilePackage as NSString).stringByDeletingPathExtension
         }
         
         //Initialze the layer

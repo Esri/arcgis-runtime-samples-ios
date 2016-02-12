@@ -67,7 +67,7 @@ class UnitSelectorViewController: UIViewController, UITableViewDelegate, UITable
         let kCustomCellID = "MyCellID"
         
         // Create a cell
-        var cell = tableView.dequeueReusableCellWithIdentifier(kCustomCellID) as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(kCustomCellID)
         if (cell == nil)
         {
             cell = UITableViewCell(style: .Default, reuseIdentifier: kCustomCellID)

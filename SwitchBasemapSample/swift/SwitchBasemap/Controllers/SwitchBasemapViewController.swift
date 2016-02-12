@@ -29,7 +29,7 @@ class SwitchBasemapViewController: UIViewController, AGSWebMapDelegate, BasemapP
         //
 //        let query = AGSQuery()
 //        query.`where`
-        println("something \(webMap)")
+        print("something \(webMap)")
         //
     }
 
@@ -48,7 +48,7 @@ class SwitchBasemapViewController: UIViewController, AGSWebMapDelegate, BasemapP
     
     //web map loaded successfully, open the web map into the map view
     func webMapDidLoad(webMap: AGSWebMap!) {
-        println("Web map loaded!!");
+        print("Web map loaded!!");
         webMap.openIntoMapView(self.mapView)
     }
     

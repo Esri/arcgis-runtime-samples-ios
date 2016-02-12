@@ -121,7 +121,7 @@ class PortalBasemapHelper: NSObject, AGSPortalDelegate, AGSPortalItemDelegate, A
     @return         Basemap if exists, else nil
     **/
     internal func cachedBasemap(forItemId itemId:String) -> AGSWebMapBaseMap? {
-        var basemap = self.basemapDictionary[itemId]
+        let basemap = self.basemapDictionary[itemId]
         return basemap
     }
     
@@ -139,7 +139,7 @@ class PortalBasemapHelper: NSObject, AGSPortalDelegate, AGSPortalItemDelegate, A
     /** Fires a query for the basemapGalleryGroup to the portal
     **/
     private func findBasemapGroup() {
-        var queryParams = AGSPortalQueryParams(query: self.portal!.portalInfo.basemapGalleryGroupQuery)
+        let queryParams = AGSPortalQueryParams(query: self.portal!.portalInfo.basemapGalleryGroupQuery)
         self.portal.findGroupsWithQueryParams(queryParams)
     }
     
@@ -147,7 +147,7 @@ class PortalBasemapHelper: NSObject, AGSPortalDelegate, AGSPortalItemDelegate, A
     @param groupId  The id of the group for which the items are to be fetched
     **/
     private func fetchBasemaps(fromGroupId groupId:String) {
-        var queryParams = AGSPortalQueryParams(forItemsInGroup: groupId)
+        let queryParams = AGSPortalQueryParams(forItemsInGroup: groupId)
         queryParams.limit = 4
         self.portal.findItemsWithQueryParams(queryParams)
     }
@@ -203,11 +203,11 @@ class PortalBasemapHelper: NSObject, AGSPortalDelegate, AGSPortalItemDelegate, A
     **/
     func portal(portal: AGSPortal!, operation: NSOperation!, didFindGroups resultSet: AGSPortalQueryResultSet!) {
         if resultSet.results.count > 0 {
-            var group:AGSPortalGroup = resultSet.results[0] as! AGSPortalGroup
+            let group:AGSPortalGroup = resultSet.results[0] as! AGSPortalGroup
             fetchBasemaps(fromGroupId: group.groupId)
         }
         else {
-            println("basemap group not found");
+            print("basemap group not found");
         }
     }
     
@@ -226,7 +226,7 @@ class PortalBasemapHelper: NSObject, AGSPortalDelegate, AGSPortalItemDelegate, A
         self.latestResultSet = resultSet;
         
         //filter out just webmaps
-        var webmaps = filterOutWebmaps(resultSet.results as! [AGSPortalItem])
+        let webmaps = filterOutWebmaps(resultSet.results as! [AGSPortalItem])
         
         if self.webmapsArray.count > 0 {
             self.webmapsArray += webmaps

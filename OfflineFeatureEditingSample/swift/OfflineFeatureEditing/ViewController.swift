@@ -85,7 +85,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
     
     func showLogsGesture(gestureRecognizer:UIGestureRecognizer) {
         self.logsTextView.hidden = false
-        println("textview text \(self.logsTextView.text)")
+        print("textview text \(self.logsTextView.text)")
     }
     
     //MARK: - AGSLayerDelegate methods
@@ -122,7 +122,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
         //Show popups for features that were tapped on
         var tappedFeatures = [AGSFeature]()
         
-        for (key, value) in features {
+        for (_, value) in features {
             let graphics = value as! [AGSFeature]
             for graphic in graphics as [AGSFeature] {
                 tappedFeatures.append(graphic)
@@ -201,16 +201,21 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
         
         //Remove all files with .geodatabase, .geodatabase-shm and .geodatabase-wal file extensions
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        let path = paths[0] as! String
-        let files = NSFileManager.defaultManager().contentsOfDirectoryAtPath(path, error: nil)
-        for file in files as! [String] {
-            let remove = file.hasSuffix(".geodatabase") || file.hasSuffix(".geodatabase-shm") || file.hasSuffix(".geodatabase-wal")
-            if remove {
-                NSFileManager.defaultManager().removeItemAtPath(path.stringByAppendingPathComponent(file), error: nil)
-                self.logStatus("deleting file: \(file)")
+        let path = paths[0]
+        do {
+            let files = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(path)
+            for file in files {
+                let remove = file.hasSuffix(".geodatabase") || file.hasSuffix(".geodatabase-shm") || file.hasSuffix(".geodatabase-wal")
+                if remove {
+                    try NSFileManager.defaultManager().removeItemAtPath((path as NSString).stringByAppendingPathComponent(file))
+                    self.logStatus("deleting file: \(file)")
+                }
             }
+            self.logStatus("deleted all local data")
         }
-        self.logStatus("deleted all local data")
+        catch {
+            print(error)
+        }
     }
     
     @IBAction func syncAction() {
@@ -372,7 +377,7 @@ class ViewController:UIViewController, AGSLayerDelegate, AGSMapViewTouchDelegate
                         weakSelf.goingLocal = false
                         weakSelf.viewingLocal = false
                         weakSelf.logStatus("error taking feature layers offline: \(error)")
-                        println(error)
+                        print(error)
                         SVProgressHUD.showErrorWithStatus("Couldn't download features")
                     }
                     else {

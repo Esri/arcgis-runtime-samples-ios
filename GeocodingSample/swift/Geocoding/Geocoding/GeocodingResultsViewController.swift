@@ -43,7 +43,7 @@ class GeocodingResultsViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("GeocodingResultCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("GeocodingResultCell")!
         
         //text is the key at the given indexPath
         let keyAtIndexPath = Array(self.results.keys)[indexPath.row]

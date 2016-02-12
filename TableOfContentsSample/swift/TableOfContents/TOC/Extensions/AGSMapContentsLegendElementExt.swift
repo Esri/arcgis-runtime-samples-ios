@@ -26,7 +26,7 @@ extension AGSMapContentsLegendElement {
             return 0
         }
         set {
-            objc_setAssociatedObject(self, &elementLevelHandle, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_ASSIGN))
+            objc_setAssociatedObject(self, &elementLevelHandle, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
         }
     }
 }

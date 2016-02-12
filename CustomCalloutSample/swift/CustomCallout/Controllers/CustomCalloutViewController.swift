@@ -99,7 +99,7 @@ class CustomCalloutViewController: UIViewController, AGSCalloutDelegate {
             switch graphicType {
                 //graphic's callout is an embedded map view
             case .EmbeddedMapView:
-                println("Tapped on Building")
+                print("Tapped on Building")
                 
                 //call the helper method to update the hybrid map view according to the graphic
                 self.hybridViewController.showHybridMapAtGraphic(graphic)
@@ -111,7 +111,7 @@ class CustomCalloutViewController: UIViewController, AGSCalloutDelegate {
                 
                 //graphic's callout is an embedded map view
             case .EmbeddedWebView:
-                println("Tapped on Camera")
+                print("Tapped on Camera")
                 
                 //get the url for the image feed from the camera
                 if let imageURL = graphic.attributeAsStringForKey("url") {
@@ -130,7 +130,7 @@ class CustomCalloutViewController: UIViewController, AGSCalloutDelegate {
 
                 //graphic's callout is a view with title, detail, custom accessory button and an image.
             case .CustomInfoView:
-                println("Tapped on McDonalds")
+                print("Tapped on McDonalds")
                 
                 //clear the custom view.
                 self.mapView.callout.customView = nil
@@ -151,7 +151,7 @@ class CustomCalloutViewController: UIViewController, AGSCalloutDelegate {
 
                 //graphic's callout is a simple view with just the title and detail
             case .SimpleView:
-                println("Tapped on Monument")
+                print("Tapped on Monument")
                 
                 //clear the custom view.
                 self.mapView.callout.customView = nil
@@ -165,9 +165,6 @@ class CustomCalloutViewController: UIViewController, AGSCalloutDelegate {
                 self.mapView.callout.image = nil
                 
                 return true
-                
-            default:
-                break
             }
         }
     
@@ -179,20 +176,20 @@ class CustomCalloutViewController: UIViewController, AGSCalloutDelegate {
         let graphic = callout.representedFeature as! AGSGraphic
         //extract the type of graphics to check.
         var exists = ObjCBool(false)
-        var typeNumber = graphic.attributeAsIntegerForKey("type", exists: &exists)
+        let typeNumber = graphic.attributeAsIntegerForKey("type", exists: &exists)
         if (exists) {
             if let graphicType = GraphicType(rawValue: typeNumber)
             {
                 switch graphicType {
                     //only this graphic's callout has an accessory view.
                 case .CustomInfoView:
-                    println("Tapped accessory button on McDonalds callout")
+                    print("Tapped accessory button on McDonalds callout")
                     
                     //get the phone number and create the proper string.
                     if let phoneString = graphic.attributeAsStringForKey("phone") {
                         let phoneNumber = "tel://\(phoneString)"
                         //call the number.
-                        UIApplication.sharedApplication().openURL(NSURL(string: phoneString)!)
+                        UIApplication.sharedApplication().openURL(NSURL(string: phoneNumber)!)
                     }
             
                 default:

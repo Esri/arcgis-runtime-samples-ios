@@ -116,8 +116,6 @@ class ProfileViewController: UIViewController, AGSPortalUserDelegate {
             roleDescription = "Publisher"
         case .Admin:
             roleDescription = "Administrator"
-        default:
-            roleDescription = "The user does not belong to an organization"
         }
         return roleDescription
     }
@@ -129,7 +127,7 @@ class ProfileViewController: UIViewController, AGSPortalUserDelegate {
     }
     
     func portalUser(portalUser: AGSPortalUser!, operation op: NSOperation!, didFailToFetchThumbnailWithError error: NSError!) {
-        println("Error while loading user thumbnail :: \(error.localizedDescription)")
+        print("Error while loading user thumbnail :: \(error.localizedDescription)")
     }
     
     //MARK: - Actions

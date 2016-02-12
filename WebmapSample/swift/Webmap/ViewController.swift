@@ -54,7 +54,7 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSWebMapDelegate, U
     
     func webMap(webMap: AGSWebMap!, didFailToLoadWithError error: NSError!) {
         
-        println("Error while loading webMap: \(error.localizedDescription)")
+        print("Error while loading webMap: \(error.localizedDescription)")
         // If we have an error loading the webmap due to an invalid or missing credential
         // prompt the user for login information
         if error.ags_isAuthenticationError() {
@@ -75,7 +75,7 @@ class ViewController: UIViewController, AGSCalloutDelegate, AGSWebMapDelegate, U
     }
     
     func webMap(webMap: AGSWebMap!, didFailToLoadLayer layerInfo: AGSWebMapLayerInfo!, baseLayer: Bool, federated: Bool, withError error: NSError!) {
-        println("Error while loading layer: \(error.localizedDescription)")
+        print("Error while loading layer: \(error.localizedDescription)")
         
         // If we have an error loading the layer due to an invalid or missing credential
         // prompt the user for login information

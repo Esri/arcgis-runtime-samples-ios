@@ -103,7 +103,7 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
     //MARK: - table view delegates
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var tempObject: AnyObject = self.itemsArray[indexPath.row]
+        let tempObject: AnyObject = self.itemsArray[indexPath.row]
         
         //if the selected row is of type layer info
         //then expand the layerInfo if not already expanded or vice versa
@@ -152,7 +152,7 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
         self.expandedLayerInfos.append(layerInfo)
         
         //get the index of the layer info in the items array
-        if let index = find(self.itemsArray as! [NSObject], layerInfo) {
+        if let index = (self.itemsArray as! [NSObject]).indexOf(layerInfo) {
             //check if the layer info has sublayers
             if layerInfo.subLayers.count > 0 {
                 //if true add the sublayers after the parent layer info in the items array
@@ -180,13 +180,13 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
         //find the index of the layer info in the expandedLayerInfos array
         //and use the index to remove the layer info from that array,
         //as we will be collapsing this layer info
-        if let index = find(self.expandedLayerInfos, layerInfo) {
+        if let index = self.expandedLayerInfos.indexOf(layerInfo) {
             self.expandedLayerInfos.removeAtIndex(index)
         }
         
         //find the index of the layer info in the items array
         //and remove the sublayers/legendItems following it
-        if let layerInfoIndex = find(self.itemsArray as! [NSObject], layerInfo) {
+        if let layerInfoIndex = (self.itemsArray as! [NSObject]).indexOf(layerInfo) {
         
             //find the index of the next sibling in the items array
             //remove all the items between the layerInfo index and the sibling layerInfoIndex
@@ -195,7 +195,7 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
             var endOfRange:Int = 0
             let siblingLayerInfoIndex = self.indexOfNextSibling(layerInfo)
             if siblingLayerInfoIndex == -2 {
-                println("Unexpected error while finding siblings")
+                print("Unexpected error while finding siblings")
                 return
             }
             else if siblingLayerInfoIndex == -1 { //no sibling found, simply remove all items after the layerInfo
@@ -227,7 +227,7 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
         var siblingsArray:[AGSMapContentsLayerInfo]
         //get the siblings array
         if layerInfo.parent != nil {
-            siblingsArray = layerInfo.parent.subLayers as! [AGSMapContentsLayerInfo]
+            siblingsArray = layerInfo.parent!.subLayers as! [AGSMapContentsLayerInfo]
         }
         else {
             //use the root as the parent
@@ -235,12 +235,12 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         
         //find the index of the layerInfo in the siblings array
-        if let layerInfoIndex = find(siblingsArray, layerInfo) {
+        if let layerInfoIndex = siblingsArray.indexOf(layerInfo) {
             if layerInfoIndex < siblingsArray.count - 1 {
                 //get the sibling layerInfo
                 let siblingLayerInfo = siblingsArray[layerInfoIndex+1]
                 //find the index of sibling in the itemsArray
-                if let siblingLayerInfoIndex = find(self.itemsArray as! [NSObject], siblingLayerInfo as NSObject) {
+                if let siblingLayerInfoIndex = (self.itemsArray as! [NSObject]).indexOf(siblingLayerInfo as NSObject) {
                     return siblingLayerInfoIndex
                 }
                 else {
@@ -248,7 +248,7 @@ class TOCViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 }
             }
             else {
-                return self.indexOfNextSibling(layerInfo.parent)
+                return self.indexOfNextSibling(layerInfo.parent!)
             }
         }
         return -2

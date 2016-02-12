@@ -51,7 +51,7 @@ class ResultsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let reusableIdentifier = "Cell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(reusableIdentifier) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(reusableIdentifier)!
         
         //text is the key at the given indexPath
         let keyAtIndexPath = Array(self.results.keys)[indexPath.row] as! String

@@ -241,7 +241,7 @@ class LegendViewController: UIViewController, UITableViewDataSource, UITableView
     
     //returns the name of the currently selected classification field
     func selectedFieldName() -> String {
-        return self.classificationTextField.text
+        return self.classificationTextField.text!
     }
     
     //MARK: - actions

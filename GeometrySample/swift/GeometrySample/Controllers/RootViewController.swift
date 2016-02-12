@@ -47,7 +47,7 @@ class RootViewController: UITableViewController, UISplitViewControllerDelegate {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "RootViewControllerCellIdentifier"
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
         if cell == nil {
             cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
         }
@@ -120,11 +120,11 @@ class RootViewController: UITableViewController, UISplitViewControllerDelegate {
         }
         
         //instantiate the desired view controller
-        detailViewController = storyboard.instantiateViewControllerWithIdentifier(desiredViewControllerIdentifier) as! UIViewController
+        detailViewController = storyboard.instantiateViewControllerWithIdentifier(desiredViewControllerIdentifier)
         
         // Update the split view controller's view controllers array.
         let splitViewController = self.navigationController?.splitViewController
-        let viewControllers = [self.navigationController, detailViewController]
+        let viewControllers = [self.navigationController!, detailViewController!]
         splitViewController?.viewControllers = viewControllers
     }
 }

@@ -27,7 +27,7 @@ extension AGSMapContentsLayerInfo {
             return false
         }
         set {
-            objc_setAssociatedObject(self, &expandedHandle, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_ASSIGN))
+            objc_setAssociatedObject(self, &expandedHandle, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
         }
     }
     
@@ -40,7 +40,7 @@ extension AGSMapContentsLayerInfo {
             return 0
         }
         set {
-            objc_setAssociatedObject(self, &levelHandle, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_ASSIGN))
+            objc_setAssociatedObject(self, &levelHandle, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
         }
     }
 }

@@ -72,7 +72,7 @@ class FeatureDetailsViewController: UIViewController, UITableViewDataSource, UIT
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "FeatureDetailsViewControllerCellIdentifier"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
         if cell == nil {
             
             cell = UITableViewCell(style: .Value1, reuseIdentifier: cellIdentifier)

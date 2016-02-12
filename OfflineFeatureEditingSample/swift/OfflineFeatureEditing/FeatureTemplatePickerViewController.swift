@@ -106,28 +106,28 @@ class FeatureTemplatePickerViewController:UIViewController, UITableViewDataSourc
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //Get a cell
         let cellIdentifier = "TemplatePickerCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UITableViewCell!
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
         
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellIdentifier)
         }
         
-        cell.selectionStyle = .Blue
+        cell!.selectionStyle = .Blue
         
         //Set its label, image, etc for the template
         let info = self.infos[indexPath.row]
-        cell.textLabel?.font = UIFont.systemFontOfSize(12)
-        cell.textLabel?.text = info.featureTemplate.name
-        cell.imageView?.image = info.renderer.swatchForFeatureWithAttributes(info.featureTemplate.prototypeAttributes, geometryType: info.source.geometryType, size: CGSizeMake(20, 20))
+        cell!.textLabel?.font = UIFont.systemFontOfSize(12)
+        cell!.textLabel?.text = info.featureTemplate.name
+        cell!.imageView?.image = info.renderer.swatchForFeatureWithAttributes(info.featureTemplate.prototypeAttributes, geometryType: info.source.geometryType, size: CGSizeMake(20, 20))
         
-        return cell
+        return cell!
     }
     
     //MARK: - table view delegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //Notify the delegate that the user picked a feature template
         let info = self.infos[indexPath.row]
-        println("\(self), \(info.featureTemplate), \(info.source), \(self.delegate)")
+        print("\(self), \(info.featureTemplate), \(info.source), \(self.delegate)")
         self.delegate?.featureTemplatePickerViewController(self , didSelectFeatureTemplate: info.featureTemplate, forLayer: info.source)
         
         //unselect the cell

@@ -127,7 +127,7 @@ class RelationshipViewController: UIViewController, AGSMapViewLayerDelegate, UIT
         let kCustomCellID = "MyCellID"
         
         // Create a cell
-        var cell = tableView.dequeueReusableCellWithIdentifier(kCustomCellID) as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(kCustomCellID)
         if cell == nil {
             cell = UITableViewCell(style: .Default, reuseIdentifier: kCustomCellID)
             cell?.textLabel?.textColor = UIColor.blackColor()

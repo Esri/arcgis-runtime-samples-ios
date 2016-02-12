@@ -87,7 +87,7 @@ class NotesViewController: UIViewController, AGSFeatureLayerQueryDelegate, AGSFe
         var cell:UITableViewCell?
         
         if self.relatedFeaturesResultsArray != nil && self.relatedFeaturesResultsArray.count > 0 {
-            cell = tableView.dequeueReusableCellWithIdentifier(kRecordsIdentifier) as? UITableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier(kRecordsIdentifier)
             
             if cell == nil {
                 cell = self.tableViewCellWithReuseIdentifier(kRecordsIdentifier)
@@ -96,7 +96,7 @@ class NotesViewController: UIViewController, AGSFeatureLayerQueryDelegate, AGSFe
             self.configureCell(cell!, forIndexPath:indexPath)
         }
         else {
-            cell = tableView.dequeueReusableCellWithIdentifier(kNoRecordsIdentifier) as? UITableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier(kNoRecordsIdentifier)
             if cell == nil {
                 cell = UITableViewCell(style: .Default, reuseIdentifier: kNoRecordsIdentifier)
             }
@@ -149,7 +149,7 @@ class NotesViewController: UIViewController, AGSFeatureLayerQueryDelegate, AGSFe
     func tableViewCellWithReuseIdentifier(identifier:String) -> UITableViewCell {
         
         //Create an instance of UITableViewCell and add tagged subviews for the image and notes.
-        var cell = UITableViewCell(style: .Default, reuseIdentifier: identifier)
+        let cell = UITableViewCell(style: .Default, reuseIdentifier: identifier)
         
         //Create label an image for the cell
         var label:UILabel!
@@ -274,7 +274,7 @@ class NotesViewController: UIViewController, AGSFeatureLayerQueryDelegate, AGSFe
     func featureLayer(featureLayer: AGSFeatureLayer!, operation op: NSOperation!, didFailQueryRelatedFeaturesWithError error: NSError!) {
         self.loadingView.removeView()
         self.warnUserOfErrorWithMessage("Could not perform query. Please try again")
-        println("Error querying notes : \(error)")
+        print("Error querying notes : \(error)")
     }
     
     func featureLayer(featureLayer: AGSFeatureLayer!, operation op: NSOperation!, didQueryRelatedFeaturesWithResults relatedFeatures: [NSObject : AnyObject]!) {
@@ -283,7 +283,7 @@ class NotesViewController: UIViewController, AGSFeatureLayerQueryDelegate, AGSFe
         
         //if the related records already exist we fill the related feature array with the features from the dictionary's result set.
         if relatedFeatures.count > 0 {
-            println("Yes, we have related records for this incident")
+            print("Yes, we have related records for this incident")
             let resultsSet = relatedFeatures[self.incidentOID] as! AGSFeatureSet
             self.relatedFeaturesResultsArray  =  resultsSet.features as! [AGSGraphic]
         }
@@ -352,7 +352,7 @@ class NotesViewController: UIViewController, AGSFeatureLayerQueryDelegate, AGSFe
     }
     
     func featureLayer(featureLayer: AGSFeatureLayer!, operation op: NSOperation!, didFailFeatureEditsWithError error: NSError!) {
-        println("Could not commit edits because: \(error.localizedDescription)")
+        print("Could not commit edits because: \(error.localizedDescription)")
         self.loadingView.removeView()
         self.warnUserOfErrorWithMessage("Could not save edits. Please try again")
     }

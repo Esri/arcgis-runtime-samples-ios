@@ -81,7 +81,7 @@ class LayersListViewController: UIViewController, OptionsDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let reusableIdentifier = "LayersListCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(reusableIdentifier) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(reusableIdentifier)!
         
         let layerInfo = self.layerInfos[indexPath.row]
         cell.textLabel?.text = layerInfo.name
@@ -127,7 +127,7 @@ class LayersListViewController: UIViewController, OptionsDelegate, UITableViewDa
             self.updateAddButtonStatus()
         }
         else {
-            println("Editing style other than delete")
+            print("Editing style other than delete")
         }
     }
     
@@ -177,7 +177,7 @@ class LayersListViewController: UIViewController, OptionsDelegate, UITableViewDa
         //hide the popover controller
         self.popover.dismissPopoverAnimated(true)
         //remove the layer info from deleted layer Infos
-        if let index = find(self.deletedLayerInfos, option) {
+        if let index = self.deletedLayerInfos.indexOf(option) {
             self.deletedLayerInfos.removeAtIndex(index)
         }
         //and add it to the layer infos

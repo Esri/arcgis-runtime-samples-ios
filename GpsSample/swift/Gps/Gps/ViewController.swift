@@ -56,7 +56,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         
         //if autoPanMode changed
         if keyPath == "autoPanMode" {
@@ -71,8 +71,6 @@ class ViewController: UIViewController {
                 mode = "Navigation"
             case .CompassNavigation:
                 mode = "Compass Navigation"
-            default:
-                break
             }
             self.label.textColor = UIColor.whiteColor()
             self.label.text = "AutoPan Mode: \(mode)"

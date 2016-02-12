@@ -93,13 +93,12 @@ class MessageMil2525cViewController: UIViewController, AGSMapViewLayerDelegate {
         let parser = AGSSBJsonParser()
         
         //Store the contents of the JSON file in a string
-        let jsonString = String(contentsOfFile: filePath!, encoding: NSUTF8StringEncoding, error: nil)
+        let jsonString = try! String(contentsOfFile: filePath!, encoding: NSUTF8StringEncoding)
         
         //Store the JSON string in a dictionary
         let json = parser.objectWithString(jsonString) as! [NSObject:AnyObject]
-        println(json)
+        
         //Decode the JSON in the dictionary
-        let temp = AGSJSONUtility.decodeFromDictionary(json, withKey: "messages", fromClass: Mil2525Message.self)
         self.milMessages = AGSJSONUtility.decodeFromDictionary(json, withKey: "messages", fromClass: Mil2525Message.self) as AnyObject as! [Mil2525Message]
         
         //Process every message in the decoded JSON

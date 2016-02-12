@@ -14,7 +14,7 @@
 import UIKit
 import ArcGIS
 
-class DetailsViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class DetailsViewController: UITableViewController {
     
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -66,7 +66,7 @@ class DetailsViewController: UITableViewController, UITableViewDataSource, UITab
         let kDetailsViewControllerCellIdentifier = "DetailsViewControllerCellIdentifier"
         
         //as cells roll off screen get the reusable cell, if we can't create a new one
-        var cell = tableView.dequeueReusableCellWithIdentifier(kDetailsViewControllerCellIdentifier) as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(kDetailsViewControllerCellIdentifier)
         if cell == nil {
             cell = UITableViewCell(style: .Value1, reuseIdentifier: kDetailsViewControllerCellIdentifier)
         }

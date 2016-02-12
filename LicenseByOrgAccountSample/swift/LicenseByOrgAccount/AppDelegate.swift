@@ -27,13 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         //set client id.
         //this gives us Basic license level capabilites
-        var error:NSError?
-
-        let valid = AGSRuntimeEnvironment.setClientID(kClientID, error: &error)
-        if !valid {
-            if error != nil {
-                println("setClientID failed: \(error!.localizedDescription)")
-            }
+        
+        do {
+            try AGSRuntimeEnvironment.setClientID(kClientID)
+        }
+        catch {
+            print("setClientID failed: \(error)")
         }
         
         return true

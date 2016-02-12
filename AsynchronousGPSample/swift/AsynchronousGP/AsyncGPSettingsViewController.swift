@@ -25,7 +25,8 @@ class AsyncGPSettingsViewController:UIViewController, UIPickerViewDelegate, UIPi
     
     override func viewDidLoad() {
         //update view to show selected material
-        if let index = find(self.materialsArray, self.parameters.materialType) {
+        
+        if let index = self.materialsArray.indexOf(self.parameters.materialType) {
             self.materialPicker.selectRow(index, inComponent: 0, animated: true)
             self.materialLabel.text = self.parameters.materialType
         }
@@ -44,7 +45,7 @@ class AsyncGPSettingsViewController:UIViewController, UIPickerViewDelegate, UIPi
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return self.materialsArray.count
     }
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return self.materialsArray[row]
     }
     

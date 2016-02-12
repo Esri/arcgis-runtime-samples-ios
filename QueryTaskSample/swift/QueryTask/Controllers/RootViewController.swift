@@ -19,7 +19,7 @@ let kViewTitle = "US Counties Info"
 let kSearchBarPlaceholder = "Find Counties (e.g. Los Angeles)"
 let kMapServiceLayerURL = "http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Demographics/ESRI_Census_USA/MapServer/3"
 
-class RootViewController: UITableViewController, AGSQueryTaskDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class RootViewController: UITableViewController, AGSQueryTaskDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar:UISearchBar!
     
@@ -77,7 +77,7 @@ class RootViewController: UITableViewController, AGSQueryTaskDelegate, UITableVi
         let kRootViewControllerCellIdentifier = "RootViewControllerCellIdentifier"
         
         //as cells roll off screen get the reusable cell, if we can't create a new one
-        var cell = tableView.dequeueReusableCellWithIdentifier(kRootViewControllerCellIdentifier) as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(kRootViewControllerCellIdentifier)
         if cell == nil {
             cell = UITableViewCell(style: .Default, reuseIdentifier: kRootViewControllerCellIdentifier)
         }

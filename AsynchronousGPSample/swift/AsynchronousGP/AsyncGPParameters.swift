@@ -28,13 +28,13 @@ class AsyncGPParameters {
     
     func parametersArray() -> [AGSGPParameterValue] {
         //create parameters
-        var paramLoc = AGSGPParameterValue(name: "Incident_Point", type: .FeatureRecordSetLayer, value: self.featureSet!)
-        var paramDegree = AGSGPParameterValue(name: "Wind_Bearing__direction_blowing_to__0_-_360_", type: .Double, value: self.windDirection.doubleValue)
-        var paramMaterial = AGSGPParameterValue(name: "Material_Type", type: .String, value: self.materialType)
-        var paramTime = AGSGPParameterValue(name: "Day_or_Night_incident", type: .String, value: self.dayOrNightIncident)
-        var paramType = AGSGPParameterValue(name: "Large_or_Small_spill", type: .String, value: self.largeOrSmallSpill)
+        let paramLoc = AGSGPParameterValue(name: "Incident_Point", type: .FeatureRecordSetLayer, value: self.featureSet!)
+        let paramDegree = AGSGPParameterValue(name: "Wind_Bearing__direction_blowing_to__0_-_360_", type: .Double, value: self.windDirection.doubleValue)
+        let paramMaterial = AGSGPParameterValue(name: "Material_Type", type: .String, value: self.materialType)
+        let paramTime = AGSGPParameterValue(name: "Day_or_Night_incident", type: .String, value: self.dayOrNightIncident)
+        let paramType = AGSGPParameterValue(name: "Large_or_Small_spill", type: .String, value: self.largeOrSmallSpill)
         
-        var params:[AGSGPParameterValue] = [paramLoc, paramDegree, paramTime, paramType, paramMaterial]
+        let params:[AGSGPParameterValue] = [paramLoc, paramDegree, paramTime, paramType, paramMaterial]
         
         return params
     }

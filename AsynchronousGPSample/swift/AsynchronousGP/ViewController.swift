@@ -29,13 +29,13 @@ class ViewController:UIViewController, AGSMapViewTouchDelegate, AGSGeoprocessorD
     
     override func viewDidLoad() {
         //Add teh basemap
-        var mapUrl = NSURL(string: kDefaultMap)
-        var tiledLayer = AGSTiledMapServiceLayer(URL: mapUrl)
+        let mapUrl = NSURL(string: kDefaultMap)
+        let tiledLayer = AGSTiledMapServiceLayer(URL: mapUrl)
         self.mapView.addMapLayer(tiledLayer)
         
         //Zooming to an intial envelope with the specified spatial reference of the map
-        var spatialReference = AGSSpatialReference(WKID: 102100)
-        var envelope = AGSEnvelope(xmin: -13639984, ymin: 4537387, xmax: -13606734, ymax: 4558866, spatialReference: spatialReference)
+        let spatialReference = AGSSpatialReference(WKID: 102100)
+        let envelope = AGSEnvelope(xmin: -13639984, ymin: 4537387, xmax: -13606734, ymax: 4558866, spatialReference: spatialReference)
         self.mapView.zoomToEnvelope(envelope, animated: true)
         
         //important step in detecting the touch events on the map
@@ -71,18 +71,18 @@ class ViewController:UIViewController, AGSMapViewTouchDelegate, AGSGeoprocessorD
         self.graphicsLayer?.removeAllGraphics()
         
         //create a symbol to show user tap location on map
-        var myMarkerSymbol = AGSSimpleMarkerSymbol.simpleMarkerSymbolWithColor(UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.25)) as! AGSSimpleMarkerSymbol
+        let myMarkerSymbol = AGSSimpleMarkerSymbol.simpleMarkerSymbolWithColor(UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.25)) as! AGSSimpleMarkerSymbol
         myMarkerSymbol.size = CGSizeMake(10, 10)
         myMarkerSymbol.outline = AGSSimpleLineSymbol(color: UIColor.redColor(), width: 1)
         
         //create a graphic
-        var graphic = AGSGraphic(geometry: mappoint, symbol: myMarkerSymbol, attributes: nil)
+        let graphic = AGSGraphic(geometry: mappoint, symbol: myMarkerSymbol, attributes: nil)
         
         //add graphic to graphics layer
         self.graphicsLayer.addGraphic(graphic)
         
         //create a feature set for the input parameter
-        var featureSet = AGSFeatureSet()
+        let featureSet = AGSFeatureSet()
         featureSet.features = [graphic]
 
         //assign the new feature set and wind direction values to the parameter object
@@ -90,7 +90,7 @@ class ViewController:UIViewController, AGSMapViewTouchDelegate, AGSGeoprocessorD
         self.parameters.windDirection = NSDecimalNumber(float: self.wdDegreeSlider.value)
         
         //get the parameters array from the parameters object
-        var parametersArray = self.parameters.parametersArray()
+        let parametersArray = self.parameters.parametersArray()
         
         //submit the gp job
         //the interval property of the gptask is not set to a value explicitly, default is 5 sec
@@ -116,11 +116,11 @@ class ViewController:UIViewController, AGSMapViewTouchDelegate, AGSGeoprocessorD
     
     func geoprocessor(geoprocessor: AGSGeoprocessor!, operation op: NSOperation!, didQueryWithResult result: AGSGPParameterValue!, forJob jobId: String!) {
         //get the result
-        var featureSet = result.value as! AGSFeatureSet
+        let featureSet = result.value as! AGSFeatureSet
         //loop through all the graphics in feature set and add them to the map
         for graphic in featureSet.features {
             //create and set a symbol to graphic
-            var fillSymbol = AGSSimpleFillSymbol.simpleFillSymbol() as! AGSSimpleFillSymbol
+            let fillSymbol = AGSSimpleFillSymbol.simpleFillSymbol() as! AGSSimpleFillSymbol
             fillSymbol.color = UIColor.purpleColor().colorWithAlphaComponent(0.25)
             (graphic as! AGSGraphic).symbol = fillSymbol
             
@@ -129,7 +129,7 @@ class ViewController:UIViewController, AGSMapViewTouchDelegate, AGSGeoprocessorD
         }
         
         //zoom to the graphic layer extent
-        var envelope = self.graphicsLayer.fullEnvelope.mutableCopy() as! AGSMutableEnvelope
+        let envelope = self.graphicsLayer.fullEnvelope.mutableCopy() as! AGSMutableEnvelope
         envelope.expandByFactor(1.2)
         self.mapView.zoomToEnvelope(envelope, animated: true)
         
@@ -155,7 +155,7 @@ class ViewController:UIViewController, AGSMapViewTouchDelegate, AGSGeoprocessorD
     func geoprocessor(geoprocessor: AGSGeoprocessor!, operation op: NSOperation!, jobDidFail jobInfo: AGSGPJobInfo!) {
         self.dismissHUD()
         for message in jobInfo.messages {
-            println("\((message as! AGSGPMessage).description)")
+            print("\((message as! AGSGPMessage).description)")
         }
         
         //Update status

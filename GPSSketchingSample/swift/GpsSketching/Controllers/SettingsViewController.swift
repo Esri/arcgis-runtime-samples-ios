@@ -39,10 +39,11 @@ class SettingsViewController: UIViewController {
         self.frequencyValues = [1.0, 10.0, 100.0, 1000.0]
         
         //update segment control selection based on the parameter object
-        if let accuracyIndex = find(self.accuracyValues, self.parameters.accuracyValue) {
+        
+        if let accuracyIndex = self.accuracyValues.indexOf(self.parameters.accuracyValue) {
             self.accuracyControl.selectedSegmentIndex = accuracyIndex
         }
-        if let frequencyIndex = find(self.frequencyValues, self.parameters.frequencyValue) {
+        if let frequencyIndex = self.frequencyValues.indexOf(self.parameters.frequencyValue) {
             self.frequencyControl.selectedSegmentIndex = frequencyIndex
         }
     }

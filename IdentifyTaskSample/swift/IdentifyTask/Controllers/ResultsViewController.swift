@@ -59,7 +59,7 @@ class ResultsViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let cellIdentifier = "Cell"
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: cellIdentifier)
         }

@@ -24,19 +24,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //If we don't already have a log file path, lets set one up
         if self.logPath == nil {
             var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-            var path = paths[0] as! String
-            self.logPath = path.stringByAppendingPathComponent("appLog.txt")
+            let path = paths[0]
+            self.logPath = (path as NSString).stringByAppendingPathComponent("appLog.txt")
         }
         
         //write to the file
-        var logFileHandle:NSFileHandle? = NSFileHandle(forWritingAtPath: self.logPath!)
+        let logFileHandle:NSFileHandle? = NSFileHandle(forWritingAtPath: self.logPath!)
         if logFileHandle != nil {
             logFileHandle!.seekToEndOfFile()
             logFileHandle!.writeData(status.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
         }
         else {
             //have to create the file
-            status.writeToFile(self.logPath!, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+            try! status.writeToFile(self.logPath!, atomically: true, encoding: NSUTF8StringEncoding)
         }
     }
     
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         //request permission for local notifications in iOS 8
         if(UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:"))) {
-            application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+            application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Sound, .Alert, .Badge], categories: nil))
         }
         return true
     }

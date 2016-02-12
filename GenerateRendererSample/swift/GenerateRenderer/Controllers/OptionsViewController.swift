@@ -57,15 +57,15 @@ class OptionsViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let reuseIdentifier = "OptionCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier)
         
         if cell == nil {
             cell = UITableViewCell(style: .Default, reuseIdentifier: reuseIdentifier)
         }
         let option = self.options[indexPath.row]
-        cell?.textLabel!.text = option
+        cell!.textLabel!.text = option
         //clear cell background color
-        cell?.backgroundColor = UIColor.clearColor()
+        cell!.backgroundColor = UIColor.clearColor()
         return cell!
     }
     

@@ -39,11 +39,11 @@ class BackgroundHelper {
     
     class func postLocalNotificationIfAppNotActive(message:String) {
         //Only post notification if app not active
-        var state = UIApplication.sharedApplication().applicationState
+        let state = UIApplication.sharedApplication().applicationState
         
         if state != .Active
         {
-            var localNotification = UILocalNotification()
+            let localNotification = UILocalNotification()
             localNotification.alertBody = message
             UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         }

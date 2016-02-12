@@ -104,7 +104,7 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
         // create a custom callout view using a button with an image
         // this is to remove incidents and barriers after we add them to the map
         let customView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 24))
-        let deleteBtn = UIButton.buttonWithType(.Custom) as! UIButton
+        let deleteBtn = UIButton(type: .Custom)
         deleteBtn.frame = CGRect(x: 8, y: 0, width: 24, height: 24)
         deleteBtn.setImage(UIImage(named: "remove24.png"), forState:.Normal)
         deleteBtn.addTarget(self, action: "removeIncidentBarrierClicked", forControlEvents: .TouchUpInside)
@@ -199,7 +199,7 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
         self.statusMessageLabel.text = "Tap reset to start over"
         
         //zoom to graphics layer extent
-        var env = self.graphicsLayer.fullEnvelope as! AGSMutableEnvelope
+        let env = self.graphicsLayer.fullEnvelope as! AGSMutableEnvelope
         env.expandByFactor(1.2)
         self.mapView.zoomToEnvelope(env, animated:true)
     }
@@ -270,7 +270,7 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
         //stop activity indicator
 //        SVProgressHUD.dismiss()
         
-        UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
+        UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
     }
     
     //MARK: - Action Methods
@@ -360,7 +360,8 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
         
         // if we have a sketch layer on the map, remove it
         if self.sketchLayer != nil {
-            if contains(self.mapView.mapLayers as! [AGSLayer], self.sketchLayer) {
+            let layers = self.mapView.mapLayers as! [AGSLayer]
+            if layers.contains(self.sketchLayer) {
                 self.mapView.removeMapLayerWithName(self.sketchLayer.name)
                 self.mapView.touchDelegate = nil
                 self.sketchLayer = nil
@@ -447,7 +448,7 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
     func removeIncidentBarrierClicked() {
     
         //redunce the incident number is the removed item is an incident point
-        if let incidentNum = self.selectedGraphic.attributeAsStringForKey("incidentNumber") {
+        if let _ = self.selectedGraphic.attributeAsStringForKey("incidentNumber") {
             self.numIncidents--
             if self.numIncidents == 0 {
                 //disable the findCFButton
@@ -456,7 +457,7 @@ class ClosestFacilityViewController: UIViewController, AGSMapViewLayerDelegate, 
         }
         
         //redunce the barrier number is the removed item is a barrier polygon
-        if let let barrierNum = self.selectedGraphic.attributeAsStringForKey("barrierNumber") {
+        if let _ = self.selectedGraphic.attributeAsStringForKey("barrierNumber") {
             self.numBarriers--
         }
         

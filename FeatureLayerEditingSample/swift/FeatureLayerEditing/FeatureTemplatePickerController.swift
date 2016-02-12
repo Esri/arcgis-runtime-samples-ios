@@ -93,16 +93,10 @@ class FeatureTemplatePickerController: UIViewController {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //Get a cell
         let cellIdentifier = "TemplatePickerCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UITableViewCell!
-        
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellIdentifier)
-        }
-        cell.selectionStyle = .Blue
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)!
         
         //Set its label, image, etc for the template
         let info = self.infos[indexPath.row]
-        cell.textLabel?.font = UIFont.systemFontOfSize(12)
         cell.textLabel?.text = info.featureTemplate.name
         cell.imageView?.image = info.featureLayer.renderer.swatchForFeatureWithAttributes(info.featureTemplate.prototypeAttributes, geometryType: info.featureLayer.geometryType, size: CGSizeMake(20, 20))
         

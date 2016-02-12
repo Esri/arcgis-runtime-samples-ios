@@ -18,3 +18,5 @@ DerivedData
 
 *.xccheckout
 *.xcworkspacedata
+All Samples.xcworkspace/xcshareddata/All Samples.xcscmblueprint
+arcgis-ios-sdk-samples.xcodeproj/project.xcworkspace/xcshareddata/arcgis-ios-sdk-samples.xcscmblueprint

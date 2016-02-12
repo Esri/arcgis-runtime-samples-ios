@@ -60,7 +60,7 @@ class OptionsViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let reusableIdentifier = "OptionCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(reusableIdentifier) as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(reusableIdentifier)
         if cell == nil {
             cell = UITableViewCell(style: .Default, reuseIdentifier: reusableIdentifier)
         }

@@ -145,7 +145,7 @@ class ServiceAreaViewController: UIViewController, AGSMapViewTouchDelegate, AGSM
         let graphic = feature as! AGSGraphic
         
         //if the graphic that was tapped on belongs to the "Facilities" layer, show the callout without a custom view
-        if graphic.layer.name == "Facilities" {
+        if graphic.layer!.name == "Facilities" {
             //we have to make sure that the sketch mode is not on.
             if self.sketchLayer == nil {
                 self.selectedGraphic = graphic
@@ -157,7 +157,7 @@ class ServiceAreaViewController: UIViewController, AGSMapViewTouchDelegate, AGSM
         //if the graphic that was tapped on belongs to the graphics layer and that it is a barrier graphic, show the callout with a custom view
         else {
             //getting the barrier number from the attributes dictionary of the graphic
-            if let barrierNum = graphic.attributeAsStringForKey("barrierNumber") {
+            if let _ = graphic.attributeAsStringForKey("barrierNumber") {
                 
                 //we have to make sure that the sketch mode is not on.
                 if self.sketchLayer == nil {
@@ -367,7 +367,7 @@ class ServiceAreaViewController: UIViewController, AGSMapViewTouchDelegate, AGSM
             self.statusMessageLabel.text = "Select the facility to find its service area"
             
             // if we have a sketch layer on the map, remove it
-            if contains(self.mapView.mapLayers as! [AGSLayer], self.sketchLayer) {
+            if (self.mapView.mapLayers as! [AGSLayer]).contains(self.sketchLayer) {
                 self.mapView.removeMapLayerWithName(self.sketchLayer.name)
                 self.sketchLayer = nil
                 //assiging the touch delegate to self instead of sketch layer

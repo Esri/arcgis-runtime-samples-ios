@@ -97,7 +97,7 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
         
         // create a custom callout view using a button with an image
         // this is to remove stops after we add them to the map
-        let removeStopBtn = UIButton.buttonWithType(.Custom) as! UIButton
+        let removeStopBtn = UIButton(type: .Custom)
         removeStopBtn.frame = CGRectMake(0, 0, 24, 24)
         removeStopBtn.setImage(UIImage(named: "remove24.png"), forState:.Normal)
         removeStopBtn.addTarget(self, action: "removeStopClicked", forControlEvents: .TouchUpInside)
@@ -188,7 +188,7 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
         // the solve route failed...
         // let the user know
         UIAlertView(title: "Solve Route Failed", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "Ok").show()
-        println("Solve Route Failed :: \(error)")
+        print("Solve Route Failed :: \(error)")
     }
     
     //MARK: - UIAlertViewDelegate
@@ -471,7 +471,7 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
         self.updateDirectionsLabel("Routing...")
         
         // if we have a sketch layer on the map, remove it
-        if let sketchLayer = find(self.mapView.mapLayers as! [AGSLayer], self.sketchLayer as AGSLayer) {
+        if (self.mapView.mapLayers as! [AGSLayer]).contains(self.sketchLayer) {
             self.mapView.removeMapLayerWithName(self.sketchLayer.name)
             self.mapView.touchDelegate = nil
             self.sketchLayer = nil
@@ -496,7 +496,7 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
                 // if "barrierNumber" exists in the attributes, we know it is a barrier
                 // so add the object to our barriers
             else if g.attributeAsStringForKey("barrierNumber") != nil {
-                print(g.dynamicType.description())
+                print(g.dynamicType.description(), terminator: "")
                 polygonBarriers.append(g as! AGSGraphic)
             }
         }
@@ -560,9 +560,7 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
         
         // remove current direction graphic, so we can display next one
         if self.currentDirectionGraphic != nil {
-            if let graphic = find(self.graphicsLayer.graphics as! [AGSGraphic], self.currentDirectionGraphic as AGSGraphic) {
-                self.graphicsLayer.removeGraphic(self.currentDirectionGraphic)
-            }
+            self.graphicsLayer.removeGraphic(self.currentDirectionGraphic)
         }
         
         // get current direction and add it to the graphics layer
@@ -593,9 +591,7 @@ class ViewController: UIViewController, AGSRouteTaskDelegate, AGSLayerCalloutDel
         
         // remove current direction
         if self.currentDirectionGraphic != nil {
-            if let graphic = find(self.graphicsLayer.graphics as! [AGSGraphic], self.currentDirectionGraphic as AGSGraphic) {
-                self.graphicsLayer.removeGraphic(self.currentDirectionGraphic)
-            }
+            self.graphicsLayer.removeGraphic(self.currentDirectionGraphic)
         }
         
         // get next direction

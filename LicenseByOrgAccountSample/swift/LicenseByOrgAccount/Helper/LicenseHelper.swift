@@ -254,7 +254,7 @@ class LicenseHelper: NSObject, AGSPortalDelegate, UIAlertViewDelegate {
                 self.cancelLogin()
             }
             else {
-                if let url = self.error.userInfo?[NSURLErrorFailingURLErrorKey] as? NSURL {
+                if let url = self.error.userInfo[NSURLErrorFailingURLErrorKey] as? NSURL {
                     //add to trusted hosts
                     if let host = url.host {
                         NSURLConnection.ags_trustedHosts().addObject(host)

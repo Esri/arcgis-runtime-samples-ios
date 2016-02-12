@@ -81,8 +81,7 @@ class ViewController: UIViewController, AGSLayerDelegate {
     }
     
     //MARK: - KVO
-    
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         //Clear out any estimate or previously chosen levels by the user
         //They are no longer relevant as the map's scale has changed
         //Disable buttons to force the user to specify levels again
@@ -95,7 +94,9 @@ class ViewController: UIViewController, AGSLayerDelegate {
         
         //Re-initialize the stepper with possible values based on current map scale
         if self.tiledLayer.currentLOD() != nil {
-            if let index = find(self.tiledLayer.mapServiceInfo.tileInfo.lods as! [AGSLOD], self.tiledLayer.currentLOD()) {
+            let lods = self.tiledLayer.mapServiceInfo.tileInfo.lods as! [AGSLOD]
+            
+            if let index = lods.indexOf(self.tiledLayer.currentLOD()) {
                 self.levelStepper.maximumValue = Double(self.tiledLayer.tileInfo.lods.count - index)
                 self.levelStepper.minimumValue = 0
                 self.levelStepper.value = 0
@@ -125,7 +126,7 @@ class ViewController: UIViewController, AGSLayerDelegate {
         
         //Prepare list of levels to download
         let desiredLevels = self.levelsWithCount(Int(self.levelStepper.value), startingAt:self.tiledLayer.currentLOD(), fromLODs:self.tiledLayer.tileInfo.lods as! [AGSLOD])
-        println("LODs requested \(desiredLevels)")
+        print("LODs requested \(desiredLevels)")
         
         //Use current envelope to download
         let extent = self.mapView.visibleAreaEnvelope
@@ -136,7 +137,7 @@ class ViewController: UIViewController, AGSLayerDelegate {
         //kick-off operation to estimate size
         self.tileCacheTask.estimateTileCacheSizeWithParameters(params, status: { (status, userInfo) -> Void in
             
-            println("\(AGSResumableTaskJobStatusAsString(status)), \(userInfo)")
+            print("\(AGSResumableTaskJobStatusAsString(status)), \(userInfo)")
             
         }) { (tileCacheSizeEstimate, error) -> Void in
             
@@ -168,7 +169,7 @@ class ViewController: UIViewController, AGSLayerDelegate {
         
         //Prepare list of levels to download
         let desiredLevels = self.levelsWithCount(Int(self.levelStepper.value), startingAt:self.tiledLayer.currentLOD(), fromLODs:self.tiledLayer.tileInfo.lods as! [AGSLOD])
-        println("LODs requested \(desiredLevels)")
+        print("LODs requested \(desiredLevels)")
         
         //Use current envelope to download
         let extent = self.mapView.visibleAreaEnvelope
@@ -179,7 +180,7 @@ class ViewController: UIViewController, AGSLayerDelegate {
         //Kick-off operation
         self.tileCacheTask.exportTileCacheWithParameters(params, downloadFolderPath: nil, useExisting: true, status: { (status, userInfo) -> Void in
             //Print the job status
-            println("\(AGSResumableTaskJobStatusAsString(status)), \(userInfo)")
+            print("\(AGSResumableTaskJobStatusAsString(status)), \(userInfo)")
             if userInfo != nil {
                 
                 let allMessages =  userInfo["messages"] as? [AGSGPMessage]
@@ -189,7 +190,7 @@ class ViewController: UIViewController, AGSLayerDelegate {
                     let totalBytesExpected = userInfo["AGSDownloadProgressTotalBytesExpected"] as? Double
                     if totalBytesDownloaded != nil && totalBytesExpected != nil {
                         let dPercentage = totalBytesDownloaded!/totalBytesExpected!
-                        println("\(totalBytesDownloaded) / \(totalBytesExpected) = \(dPercentage)")
+                        print("\(totalBytesDownloaded) / \(totalBytesExpected) = \(dPercentage)")
                         SVProgressHUD.showProgress(Float(dPercentage), status: "Downloading", maskType: 4)
                     }
                 }
@@ -197,7 +198,7 @@ class ViewController: UIViewController, AGSLayerDelegate {
                     
                     //Else, display latest progress message provided by the service
                     if let message = MessageHelper.extractMostRecentMessage(allMessages!) {
-                        println(message)
+                        print(message)
                         SVProgressHUD.showWithStatus(message, maskType:4)
                     }
                 }
@@ -234,7 +235,7 @@ class ViewController: UIViewController, AGSLayerDelegate {
     
     
     func levelsWithCount(count:Int, startingAt startLOD:AGSLOD, fromLODs allLODs:[AGSLOD]) -> [UInt] {
-        if let index = find(allLODs, startLOD) {
+        if let index = allLODs.indexOf(startLOD) {
             let endIndex = index + count-1
             let desiredLODs = Array(allLODs[index...endIndex])
             var desiredLevels = [UInt]()

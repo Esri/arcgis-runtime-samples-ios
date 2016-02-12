@@ -30,18 +30,23 @@ class RootTableViewController: UITableViewController {
         super.viewDidLoad()
 
         //gets all the paths for the files with extension ".tpk" in the app bundle
-        self.tilePackagesFromBundle = NSBundle.mainBundle().pathsForResourcesOfType("tpk", inDirectory: nil) as! [String]
+        self.tilePackagesFromBundle = NSBundle.mainBundle().pathsForResourcesOfType("tpk", inDirectory: nil) 
         
         //procedure to get all the tile packages from the documents directory, if any
         let ext = "tpk"
         let fileManager = NSFileManager.defaultManager()
         let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-        let documentsDirectory = paths[0] as! String
-        let contents = fileManager.contentsOfDirectoryAtPath(documentsDirectory, error: nil) as! [String]
-        for filename in contents {
-            if filename.pathExtension == ext {
-                self.tilePackagesFromDocuments.append(filename)
+        let documentsDirectory = paths[0]
+        do {
+            let contents = try fileManager.contentsOfDirectoryAtPath(documentsDirectory)
+            for filename in contents {
+                if (filename as NSString).pathExtension == ext {
+                    self.tilePackagesFromDocuments.append(filename)
+                }
             }
+        }
+        catch {
+            print(error)
         }
     }
 
@@ -89,14 +94,14 @@ class RootTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "Cell"
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)!
         
         // Configure the cell...
         if indexPath.section == 0 {
             if self.tilePackagesFromBundle.count > 0 {
                 //retrieves the file name from the array object according to the present cell index.
                 //gets only the file name without the extension for display.
-                let fileName = (self.tilePackagesFromBundle[indexPath.row] as String).lastPathComponent.stringByDeletingPathExtension
+                let fileName = ((self.tilePackagesFromBundle[indexPath.row] as NSString).lastPathComponent as NSString).stringByDeletingPathExtension
                 cell.textLabel?.text = fileName;
                 cell.accessoryType = .DisclosureIndicator
             }
@@ -109,7 +114,7 @@ class RootTableViewController: UITableViewController {
             if self.tilePackagesFromDocuments.count > 0 {
                 //retrieves the file name from the array object according to the present cell index.
                 //gets only the file name without the extension for display.
-                let fileName = (self.tilePackagesFromDocuments[indexPath.row] as String).lastPathComponent.stringByDeletingPathExtension
+                let fileName = ((self.tilePackagesFromDocuments[indexPath.row] as NSString).lastPathComponent as NSString).stringByDeletingPathExtension
                 cell.textLabel?.text = fileName
                 cell.accessoryType = .DisclosureIndicator
             }   
@@ -152,8 +157,8 @@ class RootTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "SegueLocalTiledLayerVC" {
             let controller = segue.destinationViewController as! LocalTiledLayerViewController
-            controller.tilePackage = self.selectedTilePackage.lastPathComponent
-            controller.title = self.selectedTilePackage.lastPathComponent.stringByDeletingPathExtension
+            controller.tilePackage = (self.selectedTilePackage as NSString).lastPathComponent
+            controller.title = ((self.selectedTilePackage as NSString).lastPathComponent as NSString).stringByDeletingPathExtension
         }
     }
 

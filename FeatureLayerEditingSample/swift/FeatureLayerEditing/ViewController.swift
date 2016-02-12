@@ -98,8 +98,8 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapViewTouch
     }
     
     func webMap(webMap: AGSWebMap!, didFailToLoadLayer layerInfo: AGSWebMapLayerInfo!, baseLayer: Bool, federated: Bool, withError error: NSError!) {
-        println("Failed to load layer : \(layerInfo.title)")
-        println("Sample may not work at expected")
+        print("Failed to load layer : \(layerInfo.title)")
+        print("Sample may not work at expected")
         
         //continue anyway
         self.webmap.continueOpenAndSkipCurrentLayer()
@@ -358,7 +358,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapViewTouch
     }
     
     func featureLayer(featureLayer: AGSFeatureLayer!, operation op: NSOperation!, didFailFeatureEditsWithError error: NSError!) {
-        println("Could not commit edits because: \(error.localizedDescription)")
+        print("Could not commit edits because: \(error.localizedDescription)")
         
         SVProgressHUD.dismiss()
         self.warnUserOfErrorWithMessage("Could not save edits. Please try again")
@@ -382,7 +382,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapViewTouch
                 else if attachment.editResultError != nil {
                     reason = attachment.editResultError.errorDescription
                 }
-                println("Attachment \(attachment.attachmentInfo.name) could not be synced with server because \(reason)")
+                print("Attachment \(attachment.attachmentInfo.name) could not be synced with server because \(reason)")
             }
         }
         

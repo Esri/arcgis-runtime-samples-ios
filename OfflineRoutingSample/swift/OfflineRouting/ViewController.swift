@@ -52,8 +52,8 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
         self.mapView.addMapLayer(AGSLocalTiledLayer(name: "SanFrancisco.tpk"))
         
         // Setup the route task
-        var error:NSError? = nil
-        self.routeTask = AGSRouteTask(databaseName: "RuntimeSanFrancisco", network:"Streets_ND", error:&error)
+        self.routeTask = try! AGSRouteTask(databaseName: "RuntimeSanFrancisco", network:"Streets_ND")
+
         // assign delegate to this view controller
         self.routeTask.delegate = self
         
@@ -64,13 +64,13 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
         
         
         // add graphics layer for displaying the route
-        var cs = AGSCompositeSymbol()
-        var sls1 = AGSSimpleLineSymbol()
+        let cs = AGSCompositeSymbol()
+        let sls1 = AGSSimpleLineSymbol()
         sls1.color = UIColor.yellowColor()
         sls1.style = .Solid
         sls1.width = 8
         cs.addSymbol(sls1)
-        var sls2 = AGSSimpleLineSymbol()
+        let sls2 = AGSSimpleLineSymbol()
         sls2.color = UIColor.blueColor()
         sls2.style = .Solid
         sls2.width = 4
@@ -134,7 +134,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
     //MARK: - AGSMapViewLayerDelegate
     
     func mapViewDidLoad(mapView: AGSMapView!) {
-        var museumOfMA = AGSPoint(fromDecimalDegreesString: "37.785 , -122.400", withSpatialReference:AGSSpatialReference.wgs84SpatialReference())
+        let museumOfMA = AGSPoint(fromDecimalDegreesString: "37.785 , -122.400", withSpatialReference:AGSSpatialReference.wgs84SpatialReference())
         self.addStop((AGSGeometryEngine.defaultGeometryEngine().projectGeometry(museumOfMA, toSpatialReference: self.mapView.spatialReference)) as! AGSPoint)
         
         if self.routeTaskParams != nil {
@@ -181,7 +181,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
         // Create an alert to let the user know the retrieval failed
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             UIAlertView(title: "Error", message: "Failed to retrieve default route parameters", delegate: nil, cancelButtonTitle: "OK").show()
-            println("Failed to retrieve default route parameters: \(error)")
+            print("Failed to retrieve default route parameters: \(error)")
         })
     }
     
@@ -197,7 +197,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
         // we know that we are only dealing with 1 route...
         self.routeResult = routeTaskResult.routeResults.last as! AGSRouteResult
         
-        var resultSummary = String(format: "%.0f mins, %.2f miles", self.routeResult.totalMinutes, self.routeResult.totalMiles)
+        let resultSummary = String(format: "%.0f mins, %.2f miles", self.routeResult.totalMinutes, self.routeResult.totalMiles)
 //        var resultSummary = "\(self.routeResult.totalMinutes) mins, \(self.routeResult.totalMiles) miles"
         self.updateDirectionsLabel(resultSummary)
         
@@ -214,7 +214,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
             
             for reorderedStop in self.routeResult.stopGraphics as! [AGSStopGraphic] {
                 var exists:ObjCBool = false
-                var sequence = UInt(reorderedStop.attributeAsIntegerForKey("Sequence", exists: &exists))
+                let sequence = UInt(reorderedStop.attributeAsIntegerForKey("Sequence", exists: &exists))
                 
                 // create a composite symbol using the sequence number
                 reorderedStop.symbol = self.stopSymbolWithNumber(sequence)
@@ -247,16 +247,16 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
     // create a composite symbol with a number
     //
     func stopSymbolWithNumber(stopNumber:UInt) -> AGSCompositeSymbol {
-        var cs = AGSCompositeSymbol()
+        let cs = AGSCompositeSymbol()
         
         // create outline
-        var sls = AGSSimpleLineSymbol()
+        let sls = AGSSimpleLineSymbol()
         sls.color = UIColor.blackColor()
         sls.width = 2
         sls.style = .Solid
         
         // create main circle
-        var sms = AGSSimpleMarkerSymbol()
+        let sms = AGSSimpleMarkerSymbol()
         sms.color = UIColor.greenColor()
         sms.outline = sls
         sms.size = CGSizeMake(20, 20)
@@ -264,7 +264,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
         cs.addSymbol(sms)
         
         //    // add number as a text symbol
-        var ts = AGSTextSymbol(text: "\(stopNumber)", color: UIColor.blackColor())
+        let ts = AGSTextSymbol(text: "\(stopNumber)", color: UIColor.blackColor())
         ts.vAlignment = .Middle
         ts.hAlignment = .Center
         ts.fontSize	= 16
@@ -277,15 +277,15 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
     // represents the current direction
     //
     func currentDirectionSymbol() -> AGSCompositeSymbol {
-        var cs = AGSCompositeSymbol()
+        let cs = AGSCompositeSymbol()
         
-        var sls1 = AGSSimpleLineSymbol()
+        let sls1 = AGSSimpleLineSymbol()
         sls1.color = UIColor.whiteColor()
         sls1.style = .Solid
         sls1.width = 8
         cs.addSymbol(sls1)
         
-        var sls2 = AGSSimpleLineSymbol()
+        let sls2 = AGSSimpleLineSymbol()
         sls2.color = UIColor.redColor()
         sls2.style = .Dash
         sls2.width = 4
@@ -306,8 +306,8 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
         //grab the geometry, then clear the sketch
         //Prepare symbol and attributes for the Stop/Barrier
         self.numStops++
-        var symbol = self.stopSymbolWithNumber(self.numStops)
-        var stopGraphic = AGSStopGraphic(geometry: geometry, symbol:symbol, attributes:nil)
+        let symbol = self.stopSymbolWithNumber(self.numStops)
+        let stopGraphic = AGSStopGraphic(geometry: geometry, symbol:symbol, attributes:nil)
         stopGraphic.sequence = self.numStops
         
         //You can set additional properties on the stop here
@@ -379,7 +379,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
         self.graphicsLayerRoute.removeGraphic(self.currentDirectionGraphic)
         
         // get current direction and add it to the graphics layer
-        var directions = self.routeResult.directions
+        let directions = self.routeResult.directions
         self.currentDirectionGraphic = directions.graphics[self.directionIndex] as! AGSDirectionGraphic
         self.currentDirectionGraphic.symbol = self.currentDirectionSymbol()
         self.graphicsLayerRoute.addGraphic(self.currentDirectionGraphic)
@@ -390,7 +390,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
         self.mapView.zoomToGeometry(self.currentDirectionGraphic.geometry, withPadding:20, animated:true)
         
         // determine if we need to disable a next/prev button
-        var count = self.routeResult.directions.graphics.count
+        let count = self.routeResult.directions.graphics.count
         if self.directionIndex >= (count - 1) {
             self.nextBtn.enabled = false
         }
@@ -406,7 +406,7 @@ class ViewController: UIViewController, AGSMapViewLayerDelegate, AGSRouteTaskDel
         self.graphicsLayerRoute.removeGraphic(self.currentDirectionGraphic)
         
         // get next direction
-        var directions = self.routeResult.directions
+        let directions = self.routeResult.directions
         self.currentDirectionGraphic = directions.graphics[self.directionIndex] as! AGSDirectionGraphic
         self.currentDirectionGraphic.symbol = self.currentDirectionSymbol()
         self.graphicsLayerRoute.addGraphic(self.currentDirectionGraphic)

@@ -164,7 +164,6 @@ class SynchronousGPViewController: UIViewController, AGSMapViewTouchDelegate, AG
     @IBAction func vsDistanceSliderChanged(sender:AnyObject) {
         //show current distance
         self.vsDistanceLabel.title = String(format: "%.1f miles", self.vsDistanceSlider.value)
-        println("slider value \(self.vsDistanceSlider.value)")
     }
     
     //MARK: - UIAlertViewDelegate Methods

@@ -78,8 +78,8 @@ class TemporalViewController: UIViewController, AGSLayerCalloutDelegate {
             
             //Based on selected segment, find the start of the desired date
             offset.day = -self.segmentControl.selectedSegmentIndex
-            if let picked =  calendar.dateByAddingComponents(offset, toDate:self.today, options:nil) {
-                offset =  calendar.components(.HourCalendarUnit | .MinuteCalendarUnit | .SecondCalendarUnit, fromDate:picked)
+            if let picked =  calendar.dateByAddingComponents(offset, toDate:self.today, options:NSCalendarOptions.MatchFirst) {
+                offset =  calendar.components([NSCalendarUnit.Hour, .Minute, .Second], fromDate:picked)
                 
                 let seconds = offset.second + 60 * offset.minute + 3600 * offset.hour
                 let diff = picked.timeIntervalSinceReferenceDate - Double(seconds)
@@ -88,7 +88,7 @@ class TemporalViewController: UIViewController, AGSLayerCalloutDelegate {
                 //Also, find the end of the desired date
                 offset = NSDateComponents()
                 offset.day = 1
-                let end =  calendar.dateByAddingComponents(offset, toDate:start, options:nil)
+                let end =  calendar.dateByAddingComponents(offset, toDate:start, options:NSCalendarOptions.MatchFirst)
                 
                 //Set a time extent ranging from start to end
                 let extent = AGSTimeExtent(start: start, end:end)
@@ -125,7 +125,7 @@ class TemporalViewController: UIViewController, AGSLayerCalloutDelegate {
         //Assigning values of 5 recent days to the first 5 segments
         for var i=0; i < self.segmentControl.numberOfSegments-1 ; i++ {
             offset.day = -i
-            let temp = calendar.dateByAddingComponents(offset, toDate:today, options:nil)
+            let temp = calendar.dateByAddingComponents(offset, toDate:today, options:NSCalendarOptions.MatchFirst)
             let str = formatter.stringFromDate(temp!)
             self.segmentControl.setTitle(str, forSegmentAtIndex:i)
         }

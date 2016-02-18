@@ -72,7 +72,7 @@ class GraphicsWithSymbolsViewController: UIViewController {
         let buoyGraphic4 = AGSGraphic(geometry: buoy4Loc, symbol: buoyMarker)
         
         //add the graphics to the graphics overlay
-        graphicsOverlay.graphics.addObjects([buoyGraphic1, buoyGraphic2, buoyGraphic3, buoyGraphic4])
+        graphicsOverlay.graphics.addObjectsFromArray([buoyGraphic1, buoyGraphic2, buoyGraphic3, buoyGraphic4])
     }
     
     private func addText(graphicsOverlay:AGSGraphicsOverlay) {

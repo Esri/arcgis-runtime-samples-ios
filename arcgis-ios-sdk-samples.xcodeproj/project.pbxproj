@@ -72,6 +72,13 @@
 		3E5849021B91256300AB3CE9 /* BookmarksViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8526351B90D92700690EBD /* BookmarksViewController.swift */; };
 		3E5849031B91256300AB3CE9 /* FeatureLayerURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */; };
 		3E676DF11B1D0B6000D4029A /* Camera Shutter.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */; };
+		3E6AE3EC1C6D11BA0026E59C /* OfflineRouting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6AE3EB1C6D11BA0026E59C /* OfflineRouting.storyboard */; };
+		3E6AE3EE1C6D11FD0026E59C /* OfflineRoutingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AE3ED1C6D11FD0026E59C /* OfflineRoutingViewController.swift */; };
+		3E6AE3F11C6D1B2E0026E59C /* san-diego in Resources */ = {isa = PBXBuildFile; fileRef = 3E6AE3F01C6D1B2E0026E59C /* san-diego */; };
+		3E6AE3F21C6D1C490026E59C /* OfflineRoutingViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6AE3ED1C6D11FD0026E59C /* OfflineRoutingViewController.swift */; };
+		3E6AE3F91C73B5480026E59C /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */; };
+		3E6AE3FA1C73B5480026E59C /* FindRoute.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6AE3F71C73B5480026E59C /* FindRoute.storyboard */; };
+		3E6AE3FB1C73B5480026E59C /* FindRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */; };
 		3E71621F1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71621E1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift */; };
 		3E7162351BA1F529008DE398 /* GraphicsWithSymbols.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E7162341BA1F529008DE398 /* GraphicsWithSymbols.storyboard */; };
 		3E7162361BA21932008DE398 /* GraphicsWithSymbolsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E71621E1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift */; };
@@ -195,6 +202,8 @@
 		3ED0299E1B8E571700ACA70D /* EditGeometryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED0295D1B8E3ACD00ACA70D /* EditGeometryViewController.swift */; };
 		3ED0299F1B8E571700ACA70D /* AttachmentsListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED0294E1B8E3ACD00ACA70D /* AttachmentsListViewController.swift */; };
 		3ED029A01B8E571700ACA70D /* EditAttachmentViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029501B8E3ACD00ACA70D /* EditAttachmentViewController.swift */; };
+		3ED5D36F1C75985C0091D621 /* FindRouteViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */; };
+		3ED5D3701C75985C0091D621 /* DirectionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */; };
 		3ED5EB731B7404D0009F9B75 /* SampleInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5EB721B7404D0009F9B75 /* SampleInfoViewController.swift */; };
 		3ED5EB751B740A58009F9B75 /* SegmentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5EB741B740A58009F9B75 /* SegmentedViewController.swift */; };
 		3ED5EB771B752A42009F9B75 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 3ED5EB761B752A42009F9B75 /* style.css */; };
@@ -209,6 +218,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3ED5D36F1C75985C0091D621 /* FindRouteViewController.swift in CopyFiles */,
+				3ED5D3701C75985C0091D621 /* DirectionsViewController.swift in CopyFiles */,
+				3E6AE3F21C6D1C490026E59C /* OfflineRoutingViewController.swift in CopyFiles */,
 				3E4BF4801C5BDF0900D85919 /* FindAddressViewController.swift in CopyFiles */,
 				3E4BF4811C5BDF0900D85919 /* WorldAddressesViewController.swift in CopyFiles */,
 				3E4BF4821C5BDF0900D85919 /* ReverseGeocodeViewController.swift in CopyFiles */,
@@ -330,6 +342,12 @@
 		3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayerURLViewController.swift; path = "Features/Feature layer (feature service)/FeatureLayerURLViewController.swift"; sourceTree = "<group>"; };
 		3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FeatureLayerURL.storyboard; path = "Features/Feature layer (feature service)/FeatureLayerURL.storyboard"; sourceTree = "<group>"; };
 		3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Camera Shutter.caf"; sourceTree = "<group>"; };
+		3E6AE3EB1C6D11BA0026E59C /* OfflineRouting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OfflineRouting.storyboard; path = "Route & Navigation/Offline routing/OfflineRouting.storyboard"; sourceTree = "<group>"; };
+		3E6AE3ED1C6D11FD0026E59C /* OfflineRoutingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineRoutingViewController.swift; path = "Route & Navigation/Offline routing/OfflineRoutingViewController.swift"; sourceTree = "<group>"; };
+		3E6AE3F01C6D1B2E0026E59C /* san-diego */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "san-diego"; path = "Shared resources/Network data/san-diego"; sourceTree = "<group>"; };
+		3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectionsViewController.swift; path = "Route & Navigation/Find route/DirectionsViewController.swift"; sourceTree = "<group>"; };
+		3E6AE3F71C73B5480026E59C /* FindRoute.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FindRoute.storyboard; path = "Route & Navigation/Find route/FindRoute.storyboard"; sourceTree = "<group>"; };
+		3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindRouteViewController.swift; path = "Route & Navigation/Find route/FindRouteViewController.swift"; sourceTree = "<group>"; };
 		3E71621E1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphicsWithSymbolsViewController.swift; path = "Display information/Add graphics with symbols/GraphicsWithSymbolsViewController.swift"; sourceTree = "<group>"; };
 		3E7162341BA1F529008DE398 /* GraphicsWithSymbols.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GraphicsWithSymbols.storyboard; path = "Display information/Add graphics with symbols/GraphicsWithSymbols.storyboard"; sourceTree = "<group>"; };
 		3E8526331B90D92700690EBD /* Bookmarks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Bookmarks.storyboard; path = "Maps/Manage bookmarks/Bookmarks.storyboard"; sourceTree = "<group>"; };
@@ -478,6 +496,7 @@
 				3ED027FD1B8E392500ACA70D /* Display information */,
 				3E4BF43C1C5AC66700D85919 /* Search */,
 				3ED027FC1B8E38F400ACA70D /* Edit data */,
+				3E6AE3E91C6D10DA0026E59C /* Route & Navigation */,
 				3E4B05E51B39EE920072E514 /* Shared resources */,
 				3E23AA071AFC2DE0002E2214 /* Content Display Logic */,
 				3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */,
@@ -576,6 +595,7 @@
 		3E4B05E51B39EE920072E514 /* Shared resources */ = {
 			isa = PBXGroup;
 			children = (
+				3E6AE3EF1C6D15C40026E59C /* Network data */,
 				3E4BF45D1C5BD84900D85919 /* Locator */,
 				3E4BF45B1C5BD7A900D85919 /* Tile packages */,
 				3E4B05E61B39EF250072E514 /* Libraries */,
@@ -723,6 +743,42 @@
 			);
 			name = "Audio Files";
 			path = "Content Display Logic/Audio Files";
+			sourceTree = "<group>";
+		};
+		3E6AE3E91C6D10DA0026E59C /* Route & Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				3E6AE3F31C6D1C920026E59C /* Find route */,
+				3E6AE3EA1C6D10F70026E59C /* Offline routing */,
+			);
+			name = "Route & Navigation";
+			sourceTree = "<group>";
+		};
+		3E6AE3EA1C6D10F70026E59C /* Offline routing */ = {
+			isa = PBXGroup;
+			children = (
+				3E6AE3EB1C6D11BA0026E59C /* OfflineRouting.storyboard */,
+				3E6AE3ED1C6D11FD0026E59C /* OfflineRoutingViewController.swift */,
+			);
+			name = "Offline routing";
+			sourceTree = "<group>";
+		};
+		3E6AE3EF1C6D15C40026E59C /* Network data */ = {
+			isa = PBXGroup;
+			children = (
+				3E6AE3F01C6D1B2E0026E59C /* san-diego */,
+			);
+			name = "Network data";
+			sourceTree = "<group>";
+		};
+		3E6AE3F31C6D1C920026E59C /* Find route */ = {
+			isa = PBXGroup;
+			children = (
+				3E6AE3F71C73B5480026E59C /* FindRoute.storyboard */,
+				3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */,
+				3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */,
+			);
+			name = "Find route";
 			sourceTree = "<group>";
 		};
 		3E71621D1BA0D7C2008DE398 /* Add graphics with symbols */ = {
@@ -1246,13 +1302,16 @@
 				3ED029411B8E3AB300ACA70D /* point.gif in Resources */,
 				3E4BF45A1C5BD77300D85919 /* OfflineGeocode.storyboard in Resources */,
 				3ED029401B8E3AB300ACA70D /* line.gif in Resources */,
+				3E6AE3EC1C6D11BA0026E59C /* OfflineRouting.storyboard in Resources */,
 				3E23A9EF1AFC28F6002E2214 /* Images.xcassets in Resources */,
 				3ED0286C1B8E3A8500ACA70D /* DisplayLocation.storyboard in Resources */,
 				3E03F09B1B05714A0078EB36 /* default.css in Resources */,
 				3ED028F71B8E3AA500ACA70D /* ManualCache.storyboard in Resources */,
 				3ED028641B8E3A8500ACA70D /* GriffithParkJson.txt in Resources */,
 				3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */,
+				3E6AE3F11C6D1B2E0026E59C /* san-diego in Resources */,
 				3E4BF44E1C5AF0AD00D85919 /* FindPlace.storyboard in Resources */,
+				3E6AE3FA1C73B5480026E59C /* FindRoute.storyboard in Resources */,
 				3E0830BE1BC33681001AF9A7 /* SuggestionTableViewCell.xib in Resources */,
 				3E41DD741B9A241600DA11CC /* AddFeatures.storyboard in Resources */,
 				3E4BF47C1C5BDDCA00D85919 /* san-diego-locator.loc in Resources */,
@@ -1323,6 +1382,7 @@
 			files = (
 				3E39F6D41B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift in Sources */,
 				3ED029381B8E3AB300ACA70D /* MILLegendTableViewController.swift in Sources */,
+				3E6AE3F91C73B5480026E59C /* DirectionsViewController.swift in Sources */,
 				3ED029321B8E3AB300ACA70D /* CalloutViewController.swift in Sources */,
 				3ED028841B8E3A8500ACA70D /* MapRotationViewController.swift in Sources */,
 				3ED0294C1B8E3AB300ACA70D /* SketchViewController.swift in Sources */,
@@ -1377,6 +1437,7 @@
 				3ED0293A1B8E3AB300ACA70D /* MILShowLegendViewController.swift in Sources */,
 				3ED0292D1B8E3AB300ACA70D /* GOIdentifyViewController.swift in Sources */,
 				3E8526391B90D92700690EBD /* BookmarksViewController.swift in Sources */,
+				3E6AE3EE1C6D11FD0026E59C /* OfflineRoutingViewController.swift in Sources */,
 				3ED028631B8E3A8500ACA70D /* SwitchBasemapViewController.swift in Sources */,
 				3ED028591B8E3A8500ACA70D /* AuthoringOptionsViewController.swift in Sources */,
 				3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */,
@@ -1387,6 +1448,7 @@
 				3E4BF4581C5BD6C400D85919 /* SanDiegoAddressesViewController.swift in Sources */,
 				3EE692021B03D22500C167B8 /* Node.swift in Sources */,
 				3ED028E51B8E3AA500ACA70D /* DefinitionExpressionViewController.swift in Sources */,
+				3E6AE3FB1C73B5480026E59C /* FindRouteViewController.swift in Sources */,
 				3ED0289D1B8E3A8500ACA70D /* MapViewScreenshotViewController.swift in Sources */,
 				3E5848FE1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift in Sources */,
 				3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */,
@@ -1494,7 +1556,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ESRI Enterprise";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1512,7 +1574,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "38db0051-d2a5-40cf-b9d3-06d8d278bd16";
 				SWIFT_OBJC_BRIDGING_HEADER = "arcgis-ios-sdk-samples/Content Display Logic/Samples-Bridging-Header.h";
 			};
 			name = Debug;
@@ -1521,7 +1583,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ESRI Enterprise";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1539,7 +1601,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "38db0051-d2a5-40cf-b9d3-06d8d278bd16";
 				SWIFT_OBJC_BRIDGING_HEADER = "arcgis-ios-sdk-samples/Content Display Logic/Samples-Bridging-Header.h";
 			};
 			name = Release;

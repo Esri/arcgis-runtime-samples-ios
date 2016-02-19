@@ -423,7 +423,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
             //set the canDoExtentSearch flag to true
             //else if search is based on extent, no need to zoom, simply set the flag to true
             if !areExtentBased {
-                self.zoomToGraphics(self.graphicsOverlay.graphics.array as! [AGSGraphic])
+                self.zoomToGraphics(self.graphicsOverlay.graphics as AnyObject as! [AGSGraphic])
             }
             else {
                 self.canDoExtentSearch = true

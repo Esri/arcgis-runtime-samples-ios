@@ -155,7 +155,7 @@ class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, 
         
         //add the selected operational layers
         if let layers = layers {
-            map.operationalLayers.addObjects(layers)
+            map.operationalLayers.addObjectsFromArray(layers)
         }
         //assign the new map to the map view
         self.mapView.map = map

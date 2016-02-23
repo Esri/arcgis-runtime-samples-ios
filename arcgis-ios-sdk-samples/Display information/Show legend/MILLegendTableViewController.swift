@@ -17,7 +17,7 @@ import ArcGIS
 
 class MILLegendTableViewController: UITableViewController {
 
-    var operationalLayers:AGSList!
+    var operationalLayers:NSMutableArray!
     var legendInfosDict = [String:[AGSLegendInfo]]()
     private var orderArray:[AGSLayerContent]!
     
@@ -25,7 +25,7 @@ class MILLegendTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.orderArray = [AGSLayerContent]()
-        self.populateLegends(self.operationalLayers.array as! [AGSLayerContent])
+        self.populateLegends(self.operationalLayers as AnyObject as! [AGSLayerContent])
     }
     
     func populateLegends(layers:[AGSLayerContent]) {

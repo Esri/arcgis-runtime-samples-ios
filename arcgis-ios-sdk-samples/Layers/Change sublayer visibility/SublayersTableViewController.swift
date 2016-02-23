@@ -18,7 +18,7 @@ import ArcGIS
 class SublayersTableViewController: UITableViewController {
 
     //list of sublayers
-    var sublayers:AGSList!
+    var sublayers:NSMutableArray!
     
     override func viewDidLoad() {
         super.viewDidLoad()

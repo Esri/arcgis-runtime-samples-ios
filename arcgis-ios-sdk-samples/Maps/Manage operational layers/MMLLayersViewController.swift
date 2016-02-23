@@ -23,7 +23,7 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet private weak var tableView:UITableView!
     
-    var layers:AGSList!
+    var layers:NSMutableArray!
     var deletedLayers:[AGSLayer]!
     
     weak var delegate:MMLLayersViewControllerDelegate?
@@ -44,7 +44,7 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
-    func dataSourceIndexForIndexPath(dataSource:AGSList, indexpath:NSIndexPath) -> Int {
+    func dataSourceIndexForIndexPath(dataSource:NSMutableArray, indexpath:NSIndexPath) -> Int {
         return dataSource.count - indexpath.row - 1
     }
     

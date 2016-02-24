@@ -79,25 +79,25 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
             lastQuery.cancel()
         }
 
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenCoordinate: screen, tolerance: 5, maximumResults: 10) { [weak self] (geoElements: [AGSGeoElement]?, error: NSError?) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenCoordinate: screen, tolerance: 5, maximumResults: 10) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }
-            else if let geoElements = geoElements, let weakSelf = self {
-                    var popups = [AGSPopup]()
-                    
-                    for geoElement in geoElements {
+            else if let geoElements = identifyLayerResult?.geoElements, let weakSelf = self {
+                var popups = [AGSPopup]()
+                
+                for geoElement in geoElements {
 
-                        let popup = AGSPopup(geoElement: geoElement)
-                        popups.append(popup)
-                    }
-                    
-                    if popups.count > 0 {
-                        weakSelf.popupsVC = AGSPopupsViewController(popups: popups, usingNavigationControllerStack: false)
-                        weakSelf.popupsVC.modalPresentationStyle = .FormSheet
-                        weakSelf.presentViewController(weakSelf.popupsVC, animated: true, completion: nil)
-                        weakSelf.popupsVC.delegate = weakSelf
-                    }
+                    let popup = AGSPopup(geoElement: geoElement)
+                    popups.append(popup)
+                }
+                
+                if popups.count > 0 {
+                    weakSelf.popupsVC = AGSPopupsViewController(popups: popups, usingNavigationControllerStack: false)
+                    weakSelf.popupsVC.modalPresentationStyle = .FormSheet
+                    weakSelf.presentViewController(weakSelf.popupsVC, animated: true, completion: nil)
+                    weakSelf.popupsVC.delegate = weakSelf
+                }
             }
         }
     }

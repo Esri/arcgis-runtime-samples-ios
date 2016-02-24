@@ -71,11 +71,11 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
         //hide the callout
         self.mapView.callout.dismiss()
         
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenCoordinate: screen, tolerance: 5, maximumResults: 1) { [weak self] (geoElements: [AGSGeoElement]?, error: NSError?) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenCoordinate: screen, tolerance: 5, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }
-            else if let features = geoElements as? [AGSArcGISFeature] where features.count > 0 {
+            else if let features = identifyLayerResult?.geoElements as? [AGSArcGISFeature] where features.count > 0 {
                 //show callout for the first feature
                 self?.showCallout(features[0], tapLocation: mappoint)
                 //update selected feature

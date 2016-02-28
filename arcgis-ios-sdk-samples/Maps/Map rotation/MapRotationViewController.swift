@@ -40,7 +40,7 @@ class MapRotationViewController: UIViewController {
         self.mapView.allowInteractiveRotation = true
         
         //update the slider value when the user rotates by pinching
-        self.mapView.visibleAreaChangedHandler = { [weak self] (polygon) in
+        self.mapView.viewpointChangedHandler = { [weak self] () in
             self?.slider.value = Float(self!.mapView.rotation)
             self?.rotationLabel.text = "\(Int(self!.slider.value))\u{00B0}"
             self?.compassButton.transform = CGAffineTransformMakeRotation(CGFloat(-self!.mapView.rotation * M_PI/180))

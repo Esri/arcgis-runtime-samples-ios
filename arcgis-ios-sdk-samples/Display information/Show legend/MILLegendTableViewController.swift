@@ -88,7 +88,7 @@ class MILLegendTableViewController: UITableViewController {
 
         cell.textLabel?.text = legendInfo.name
         
-        legendInfo.symbol?.createSwatchWithGeometryType(self.geometryTypeForSymbol(legendInfo.symbol!), width: 40, height: 40, DPI: 163, backgroundColor: UIColor.clearColor(), completion: { (image: UIImage?, error: NSError?) -> Void in
+        legendInfo.symbol?.createSwatchWithBackgroundColor(UIColor.clearColor(), completion: { (image: UIImage?, error: NSError?) -> Void in
             
             cell.imageView?.image = image
         })

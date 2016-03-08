@@ -62,7 +62,7 @@ class EditAttachmentViewController: UIViewController, AGSMapViewTouchDelegate, A
         self.mapView.callout.dismiss()
         
         
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenCoordinate: screen, tolerance: 5, maximumResults: 1, completion: { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screen, tolerance: 5, maximumResults: 1, completion: { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }

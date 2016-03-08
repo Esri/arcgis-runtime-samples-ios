@@ -80,7 +80,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         }
         
         //logic to show the extent search button
-        self.mapView.visibleAreaChangedHandler = { [weak self] (polygon: AGSPolygon) -> Void in
+        self.mapView.viewpointChangedHandler = { [weak self] () -> Void in
             if self?.canDoExtentSearch ?? false {
                 self?.extentSearchButton.hidden = false
             }
@@ -201,7 +201,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.mapView.callout.dismiss()
         
         //identify graphics at the tapped location
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenCoordinate: screen, tolerance: 5, maximumResults: 1) { (graphics: [AGSGraphic]?, error: NSError?) -> Void in
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screen, tolerance: 5, maximumResults: 1) { (graphics: [AGSGraphic]?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }

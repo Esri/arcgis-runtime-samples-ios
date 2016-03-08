@@ -117,9 +117,6 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
         //is based on the tap and not search
         self.searchBar.text = ""
         
-        //dismiss the callout if already visible
-        self.mapView.callout.dismiss()
-        
         //remove all previous graphics
         self.graphicsOverlay.graphics.removeAllObjects()
         
@@ -155,10 +152,14 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
                         return
                     }
                     else {
-                        //provide feedback that no result was found
-                        //using print in log instead of alert to 
+                        //no result was found
+                        //using print in log instead of alert to
                         //avoid breaking the flow
                         print("No address found")
+
+                        //dismiss the callout if already visible
+                        self?.mapView.callout.dismiss()
+
                     }
                 }
                 //in case of error or no results, remove the graphics
@@ -195,7 +196,7 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
         self.mapView.callout.dismiss()
         
         //get the graphics at the tap location
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenCoordinate: screen, tolerance: 5, maximumResults: 1) { (graphics: [AGSGraphic]?, error: NSError?) -> Void in
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screen, tolerance: 5, maximumResults: 1) { (graphics: [AGSGraphic]?, error: NSError?) -> Void in
             if let error = error {
                 self.showAlert(error.localizedDescription)
             }

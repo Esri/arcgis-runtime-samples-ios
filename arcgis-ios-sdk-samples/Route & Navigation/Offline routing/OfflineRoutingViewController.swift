@@ -51,7 +51,7 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
         
         //add graphics overlay, one for the stop graphics
         //and other for the route graphics
-        self.mapView.graphicsOverlays.addObjects([self.routeGraphicsOverlay, self.stopGraphicsOverlay])
+        self.mapView.graphicsOverlays.addObjectsFromArray([self.routeGraphicsOverlay, self.stopGraphicsOverlay])
         
         //setup route task
         self.setupRouteTask()
@@ -129,7 +129,8 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
             else {
                 self?.params = params
             }
-            })
+            print(self?.routeTask.routeTaskInfo().costAttributes)
+        })
     }
     
     func route(isLongPressed:Bool) {
@@ -146,8 +147,8 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
         
         //create stops using the last two graphics in the overlay
         let count = self.stopGraphicsOverlay.graphics.count
-        let geometry1 = (self.stopGraphicsOverlay.graphics.array[count-2] as! AGSGraphic).geometry as! AGSPoint
-        let geometry2 = (self.stopGraphicsOverlay.graphics.array[count-1] as! AGSGraphic).geometry as! AGSPoint
+        let geometry1 = (self.stopGraphicsOverlay.graphics[count-2] as! AGSGraphic).geometry as! AGSPoint
+        let geometry2 = (self.stopGraphicsOverlay.graphics[count-1] as! AGSGraphic).geometry as! AGSPoint
         let stop1 = AGSStop(point: (geometry1))
         let stop2 = AGSStop(point: (geometry2))
         let stops = [stop1, stop2]
@@ -156,6 +157,11 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
         self.params.clearStops()
         //add the new stops
         self.params.setStops(stops)
+        
+        let travelMode = AGSTravelMode()
+        travelMode.impedanceAttributeName = "Meters"
+        
+        self.params.travelMode = travelMode
         
         //solve for route
         self.routeTaskOperation = self.routeTask.solveRouteWithParameters(params) { [weak self] (routeResult:AGSRouteResult?, error:NSError?) -> Void in

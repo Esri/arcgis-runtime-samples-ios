@@ -39,7 +39,7 @@ class FindRouteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindRouteViewController", "DirectionsViewController"]
         
@@ -48,7 +48,7 @@ class FindRouteViewController: UIViewController {
         self.mapView.map = map
         
         //add graphicsOverlays to the map view
-        self.mapView.graphicsOverlays.addObjects([routeGraphicsOverlay, stopGraphicsOverlay])
+        self.mapView.graphicsOverlays.addObjectsFromArray([routeGraphicsOverlay, stopGraphicsOverlay])
         
         //zoom to viewpoint
         self.mapView.setViewpointCenter(AGSPoint(x: -13041154.715252, y: 3858170.236806, spatialReference: AGSSpatialReference(WKID: 3857)), scale: 1e5, completion: nil)
@@ -70,7 +70,7 @@ class FindRouteViewController: UIViewController {
         let startStopGraphic = AGSGraphic(geometry: self.stop1Geometry, symbol: self.stopSymbol("Start", textColor: UIColor.blueColor()))
         let endStopGraphic = AGSGraphic(geometry: self.stop2Geometry, symbol: self.stopSymbol("End", textColor: UIColor.redColor()))
         
-        self.stopGraphicsOverlay.graphics.addObjects([startStopGraphic, endStopGraphic])
+        self.stopGraphicsOverlay.graphics.addObjectsFromArray([startStopGraphic, endStopGraphic])
     }
 
     //method provides a text symbol for stop with specified parameters

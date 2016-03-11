@@ -98,8 +98,10 @@ class SearchEngine: NSObject {
                     tagger.string = contentString
                     let range = NSMakeRange(0, contentString.characters.count)
                     tagger.enumerateTagsInRange(range, scheme: NSLinguisticTagSchemeLexicalClass, options: [NSLinguisticTaggerOptions.OmitWhitespace, NSLinguisticTaggerOptions.OmitPunctuation], usingBlock: { (tag:String, tokenRange:NSRange, sentenceRange:NSRange, _) -> Void in
-                        if tag == NSLinguisticTagNoun || tag == NSLinguisticTagOtherWord {
+
+                        if tag == NSLinguisticTagNoun || tag == NSLinguisticTagVerb || tag == NSLinguisticTagAdjective || tag == NSLinguisticTagOtherWord {
                             let word = (contentString as NSString).substringWithRange(tokenRange) as String
+                            
                             //trivial comparisons
                             if word != "`." && word != "```" && word != "`" {
                                 var samples = self.wordsDictionary[word]

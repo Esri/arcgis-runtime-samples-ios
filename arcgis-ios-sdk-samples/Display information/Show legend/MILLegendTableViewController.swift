@@ -122,10 +122,10 @@ class MILLegendTableViewController: UITableViewController {
 
     func nameForLayerContent(layerContent:AGSLayerContent) -> String {
         if let layer = layerContent as? AGSLayer {
-            return layer.name!
+            return layer.name
         }
         else {
-            return (layerContent as! AGSArcGISSublayer).name!
+            return (layerContent as! AGSArcGISSublayer).name
         }
     }
 }

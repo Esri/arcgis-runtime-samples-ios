@@ -27,7 +27,7 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
     private var sketchGraphicsOverlay:AGSSketchGraphicsOverlay!
     private var lastQuery:AGSCancellable!
     
-    private var selectedFeature:AGSFeature!
+    private var selectedFeature:AGSArcGISFeature!
     private let FEATURE_SERVICE_URL = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
@@ -65,6 +65,19 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
         UIView.animateWithDuration(0.3) { [weak self] () -> Void in
             self?.view.layoutIfNeeded()
         }
+    }
+    
+    func applyEdits() {
+        self.featureTable.applyEditsWithCompletion({ [weak self] (result:[AGSFeatureEditResult]?, error:NSError?) -> Void in
+            if let error = error {
+                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+            }
+            else {
+                SVProgressHUD.showSuccessWithStatus("Saved successfully!")
+            }
+            //un hide the feature
+            self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
+        })
     }
     
     //MARK: - AGSMapViewTouchDelegate
@@ -120,28 +133,28 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
     
     @IBAction func doneAction() {
         if let newGeometry = self.sketchGraphicsOverlay.geometry {
-            self.selectedFeature.geometry = newGeometry
-            self.featureTable.updateFeature(self.selectedFeature, completion: { [weak self] (error:NSError?) -> Void in
+            self.selectedFeature.loadWithCompletion({ [weak self] (error:NSError?) -> Void in
                 if let error = error {
-                    print(error)
-                    
-                    //un hide the feature
-                    self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
+                    print("Error while loading feature :: \(error.localizedDescription)")
                 }
                 else {
-                    self?.featureTable.applyEditsWithCompletion({ (result:[AGSFeatureEditResult]?, error:NSError?) -> Void in
+                    self?.selectedFeature.geometry = newGeometry
+                    self?.featureTable.updateFeature(self!.selectedFeature, completion: { (error:NSError?) -> Void in
                         if let error = error {
                             print(error)
+                            
+                            //un hide the feature
+                            self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
                         }
                         else {
-                            SVProgressHUD.showSuccessWithStatus("Saved successfully!")
+                            //apply edits
+                            self?.applyEdits()
                         }
-                        //un hide the feature
-                        self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
                     })
                 }
             })
         }
+        
         //hide toolbar
 //        self.toolbar.hidden = true
         self.toggleToolbar(false)

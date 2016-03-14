@@ -25,7 +25,7 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
     private var lastQuery:AGSCancellable!
     
     private var types = ["Destroyed", "Major", "Minor", "Affected", "Inaccessible"]
-    private var selectedFeature:AGSFeature!
+    private var selectedFeature:AGSArcGISFeature!
     private let optionsSegueName = "OptionsSegue"
     
     private let FEATURE_SERVICE_URL = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
@@ -59,6 +59,20 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
         self.mapView.callout.title = title
         self.mapView.callout.delegate = self
         self.mapView.callout.showCalloutForFeature(feature, layer: self.featureLayer, tapLocation: tapLocation, animated: true)
+    }
+    
+    func applyEdits() {
+        SVProgressHUD.showWithStatus("Applying edits")
+        
+        self.featureTable.applyEditsWithCompletion({ [weak self] (result:[AGSFeatureEditResult]?, error:NSError?) -> Void in
+            if let error = error {
+                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+            }
+            else {
+                SVProgressHUD.showSuccessWithStatus("Edits applied successfully")
+                self?.showCallout(self!.selectedFeature, tapLocation: nil)
+            }
+        })
     }
     
     //MARK: - AGSMapViewTouchDelegate
@@ -107,20 +121,23 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
     //MARK: - EAOptionsVCDelegate
     
     func optionsViewController(optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int) {
-        self.selectedFeature.setAttributeValue(self.types[index], forKey: "typdamage")
-        self.featureTable.updateFeature(self.selectedFeature) { [weak self] (error: NSError?) -> Void in
+        SVProgressHUD.showWithStatus("Updating")
+        
+        //load feature
+        self.selectedFeature.loadWithCompletion { [weak self] (error:NSError?) -> Void in
             if let error = error {
-                print(error)
+                print("Error while loading feature :: \(error.localizedDescription)")
             }
             else {
-                self?.featureTable.applyEditsWithCompletion({ (result:[AGSFeatureEditResult]?, error:NSError?) -> Void in
+                self?.selectedFeature.setAttributeValue(self!.types[index], forKey: "typdamage")
+                self?.featureTable.updateFeature(self!.selectedFeature) { (error: NSError?) -> Void in
                     if let error = error {
                         print(error)
                     }
                     else {
-                        self?.showCallout(self!.selectedFeature, tapLocation: nil)
+                        self?.applyEdits()
                     }
-                })
+                }
             }
         }
     }

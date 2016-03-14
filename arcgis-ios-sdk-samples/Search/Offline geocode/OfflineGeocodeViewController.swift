@@ -27,8 +27,6 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
     private var graphicsOverlay:AGSGraphicsOverlay!
     private var locatorTaskOperation:AGSCancellable!
     
-    private let locatorURL = "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

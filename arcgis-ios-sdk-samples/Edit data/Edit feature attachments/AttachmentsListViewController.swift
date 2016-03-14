@@ -32,6 +32,18 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         self.loadAttachments()
     }
     
+    func applyEdits() {
+        (self.feature.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion({ [weak self] (result, error) -> Void in
+            if let error = error {
+                print(error)
+            }
+            else {
+                print("Apply edits finished successfully")
+                self?.loadAttachments()
+            }
+        })
+    }
+    
     func loadAttachments() {
         self.feature.fetchAttachmentInfosWithCompletion { [weak self] (attachmentInfos:[AGSAttachmentInfo]?, error:NSError?) -> Void in
             if let error = error {
@@ -91,15 +103,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
                 }
                 else {
                     print("Attachment deleted")
-                    (self?.feature.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion({ [weak self] (result, error) -> Void in
-                        if let error = error {
-                            print(error)
-                        }
-                        else {
-                            print("Apply edits finished successfully")
-                            self?.loadAttachments()
-                        }
-                    })
+                    self?.applyEdits()
                 }
             })
         }
@@ -132,20 +136,19 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     
     @IBAction func addAction() {
         let data = UIImagePNGRepresentation(UIImage(named: "LocationDisplayOffIcon")!)!
-        self.feature.addAttachmentWithName("Attachment.png", contentType: "png", data: data) { [weak self] (info:AGSAttachmentInfo?, error:NSError?) -> Void in
+        self.feature.loadWithCompletion { [weak self] (error: NSError?) -> Void in
             if let error = error {
-                print(error)
+                print("Error while loading feature :: \(error.localizedDescription)")
             }
             else {
-                (self?.feature.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion({ [weak self] (result, error) -> Void in
+                self?.feature.addAttachmentWithName("Attachment.png", contentType: "png", data: data) { [weak self] (info:AGSAttachmentInfo?, error:NSError?) -> Void in
                     if let error = error {
                         print(error)
                     }
                     else {
-                        print("Apply edits finished successfully")
-                        self?.loadAttachments()
+                        self?.applyEdits()
                     }
-                })
+                }
             }
         }
     }

@@ -17,7 +17,9 @@ import ArcGIS
 
 class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
     
-    @IBOutlet weak var mapView: AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
+    @IBOutlet var segmentedControl:UISegmentedControl!
+    
     var map:AGSMap!
     var routeTask:AGSRouteTask!
     var params:AGSRouteParameters!
@@ -106,7 +108,7 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
     
     private func setupRouteTask() {
         //get the path for the geodatabase in the bundle
-        let path = NSBundle.mainBundle().pathForResource("san-diego-network", ofType: "geodatabase", inDirectory: "san-diego")!
+        let path = NSBundle.mainBundle().pathForResource("sandiego", ofType: "geodatabase", inDirectory: "san-diego")!
         //initialize the route task using the path and the network name
         self.routeTask = AGSRouteTask(pathToDatabase: path, networkName: "Streets_ND")
         //load the task and get the default parameters
@@ -136,8 +138,12 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
     func route(isLongPressed:Bool) {
         //if either default parameters failed to generate or
         //the number of stops is less than two, return
-        if self.params == nil || self.stopGraphicsOverlay.graphics.count < 2 {
-            print("Either failed to generate default parameters or the stop count is less than 2")
+        if self.params == nil {
+            print("Failed to generate default parameters")
+            return
+        }
+        if self.stopGraphicsOverlay.graphics.count < 2 {
+            print("The stop count is less than 2")
             return
         }
         
@@ -158,10 +164,13 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
         //add the new stops
         self.params.setStops(stops)
         
-        let travelMode = AGSTravelMode()
-        travelMode.impedanceAttributeName = "Meters"
+        //set the new travel mode
+        self.params.travelMode = self.routeTask.routeTaskInfo().travelModes![self.segmentedControl.selectedSegmentIndex]
         
-        self.params.travelMode = travelMode
+        self.route(self.params, isLongPressed: isLongPressed)
+    }
+    
+    func route(params:AGSRouteParameters, isLongPressed:Bool) {
         
         //solve for route
         self.routeTaskOperation = self.routeTask.solveRouteWithParameters(params) { [weak self] (routeResult:AGSRouteResult?, error:NSError?) -> Void in
@@ -208,5 +217,28 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
         //empty both graphic overlays
         self.routeGraphicsOverlay.graphics.removeAllObjects()
         self.stopGraphicsOverlay.graphics.removeAllObjects()
+    }
+    
+    @IBAction func modeChanged(segmentedControl:UISegmentedControl) {
+        //re route for already added stops
+        
+        if self.stopGraphicsOverlay.graphics.count > 1 {
+            var stops = [AGSStop]()
+            for graphic in self.stopGraphicsOverlay.graphics as AnyObject as! [AGSGraphic] {
+                let stop = AGSStop(point: graphic.geometry! as! AGSPoint)
+                stops.append(stop)
+            }
+            
+            self.params.clearStops()
+            self.params.setStops(stops)
+        }
+        
+        //set the new travel mode
+        self.params.travelMode = self.routeTask.routeTaskInfo().travelModes![self.segmentedControl.selectedSegmentIndex]
+        
+        //clear all previous routes
+        self.routeGraphicsOverlay.graphics.removeAllObjects()
+        //route
+        self.route(self.params, isLongPressed: false)
     }
 }

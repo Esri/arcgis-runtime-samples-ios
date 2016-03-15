@@ -142,7 +142,7 @@ class FindRouteViewController: UIViewController {
                 //show the resulting route on the map
                 //also save a reference to the route object
                 //in order to access directions
-                self.generatedRoute = routeResult!.routes![0]
+                self.generatedRoute = routeResult!.routes[0]
                 let routeGraphic = AGSGraphic(geometry: self.generatedRoute.routeGeometry, symbol: self.routeSymbol())
                 self.routeGraphicsOverlay.graphics.addObject(routeGraphic)
             }

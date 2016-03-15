@@ -56,6 +56,25 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
+    func deleteAttachment(attachmentInfo:AGSAttachmentInfo) {
+        self.feature.loadWithCompletion({ [weak self] (error: NSError?) -> Void in
+            if let error = error {
+                print("Error while loading feature :: \(error.localizedDescription)")
+            }
+            else {
+                self?.feature.deleteAttachment(attachmentInfo, completion: { (error:NSError?) -> Void in
+                    if let error = error {
+                        print(error)
+                    }
+                    else {
+                        print("Attachment deleted")
+                        self?.applyEdits()
+                    }
+                })
+            }
+        })
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -97,15 +116,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             let attachmentInfo = self.attachmentInfos[indexPath.row]
-            self.feature.deleteAttachment(attachmentInfo, completion: { [weak self] (error:NSError?) -> Void in
-                if let error = error {
-                    print(error)
-                }
-                else {
-                    print("Attachment deleted")
-                    self?.applyEdits()
-                }
-            })
+            self.deleteAttachment(attachmentInfo)
         }
     }
     
@@ -115,10 +126,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
             if let error = error {
                 print(error)
             }
-            else {
-                guard let weakSelf = self, data = data else {
-                    return
-                }
+            else if let weakSelf = self, data = data {
                 let image = UIImage(data: data)
                 let cell = weakSelf.tableView.cellForRowAtIndexPath(indexPath)!
                 if weakSelf.tableView.visibleCells.contains(cell) {

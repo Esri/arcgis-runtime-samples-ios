@@ -165,7 +165,7 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
         self.params.setStops(stops)
         
         //set the new travel mode
-        self.params.travelMode = self.routeTask.routeTaskInfo().travelModes![self.segmentedControl.selectedSegmentIndex]
+        self.params.travelMode = self.routeTask.routeTaskInfo().travelModes[self.segmentedControl.selectedSegmentIndex]
         
         self.route(self.params, isLongPressed: isLongPressed)
     }
@@ -234,7 +234,7 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
         }
         
         //set the new travel mode
-        self.params.travelMode = self.routeTask.routeTaskInfo().travelModes![self.segmentedControl.selectedSegmentIndex]
+        self.params.travelMode = self.routeTask.routeTaskInfo().travelModes[self.segmentedControl.selectedSegmentIndex]
         
         //clear all previous routes
         self.routeGraphicsOverlay.graphics.removeAllObjects()

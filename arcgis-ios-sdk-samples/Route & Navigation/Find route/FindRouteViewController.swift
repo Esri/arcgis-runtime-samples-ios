@@ -133,7 +133,11 @@ class FindRouteViewController: UIViewController {
         self.routeParameters.clearStops()
         
         //set the stops
-        self.routeParameters.setStops([AGSStop(point: self.stop1Geometry), AGSStop(point: self.stop2Geometry)])
+        let stop1 = AGSStop(point: self.stop1Geometry)
+        stop1.name = "Start"
+        let stop2 = AGSStop(point: self.stop2Geometry)
+        stop2.name = "Finish"
+        self.routeParameters.setStops([stop1, stop2])
         self.routeTask.solveRouteWithParameters(self.routeParameters) { (routeResult: AGSRouteResult?, error: NSError?) -> Void in
             if let error = error {
                 print(error)

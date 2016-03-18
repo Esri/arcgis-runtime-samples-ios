@@ -31,7 +31,7 @@ class SampleInfoViewController: UIViewController {
     
     func fetchFileContent(folderName:String) {
 
-        if let path = NSBundle.mainBundle().pathForResource("README", ofType: ".md", inDirectory: folderName) {
+        if let path = NSBundle.mainBundle().pathForResource("README", ofType: "md", inDirectory: folderName) {
             //read the content of the file
             if let content = try? String(contentsOfFile: path, encoding: NSUTF8StringEncoding) {
                 //remove the images

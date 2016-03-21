@@ -118,7 +118,10 @@ class ExportTilesViewController: UIViewController {
         //get the parameters by specifying the selected area, 
         //mapview's current scale as the minScale and tiled layer's max scale as maxScale
         let params = self.exportTask.exportTileCacheParametersWith(self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale)
-
+        
+        let index = params.levelsOfDetail.first!.integerValue
+        let minScale = self.tiledLayer.tileInfo!.levelsOfDetail[index].scale
+        
         //get the job
         self.job = self.exportTask.exportTileCacheJobWithParameters(params, downloadFilePath: destinationPath)
         //run the job
@@ -148,8 +151,18 @@ class ExportTilesViewController: UIViewController {
                 })
                 
                 let tileCache = result as! AGSTileCache
-                let tiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
-                self?.previewMapView.map = AGSMap(basemap: AGSBasemap(baseLayer: tiledLayer))
+                let newTiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
+                newTiledLayer.loadWithCompletion({ (error: NSError?) -> Void in
+                    if let error = error {
+                        print("Error while loading tiled layer :: \(error.localizedDescription)")
+                    }
+                    else {
+                        print(newTiledLayer.minScale)
+                        newTiledLayer.minScale = minScale
+                        print(newTiledLayer.minScale)
+                        self?.previewMapView.map = AGSMap(basemap: AGSBasemap(baseLayer: newTiledLayer))
+                    }
+                })
             }
         }
     }

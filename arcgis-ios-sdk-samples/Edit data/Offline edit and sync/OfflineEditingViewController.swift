@@ -315,7 +315,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
         
         //create a generate job from the sync task
-        self.generateJob = self.syncTask.generateJobWithParameters(params, downloadPath: "\(path)/\(dateFormatter.stringFromDate(NSDate())).geodatabase")
+        self.generateJob = self.syncTask.generateJobWithParameters(params, downloadFilePath: "\(path)/\(dateFormatter.stringFromDate(NSDate())).geodatabase")
         
         //start the job
         self.generateJob.startWithStatusHandler({ (status: AGSJobStatus) -> Void in

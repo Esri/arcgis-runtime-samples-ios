@@ -107,7 +107,7 @@ class GenerateGeodatabaseViewController: UIViewController {
         self.syncTask = AGSGeodatabaseSyncTask(URL: self.FEATURE_SERVICE_URL)
         let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
         
-        self.generateJob = self.syncTask.generateJobWithParameters(params, downloadPath: "\(path)/\(dateFormatter.stringFromDate(NSDate())).geodatabase")
+        self.generateJob = self.syncTask.generateJobWithParameters(params, downloadFilePath: "\(path)/\(dateFormatter.stringFromDate(NSDate())).geodatabase")
         self.generateJob.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 SVProgressHUD.showWithStatus(status.statusString(), maskType: SVProgressHUDMaskType.Gradient)

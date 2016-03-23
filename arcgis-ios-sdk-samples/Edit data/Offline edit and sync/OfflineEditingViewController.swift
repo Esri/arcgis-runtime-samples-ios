@@ -191,7 +191,6 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
         do {
             let files = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(path)
-            print(files)
             for file in files {
                 let remove = file.hasSuffix(".geodatabase") || file.hasSuffix(".geodatabase-shm") || file.hasSuffix(".geodatabase-wal")
                 if remove {
@@ -382,18 +381,22 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         
         self.syncJob = self.syncTask.syncJobWithParameters(params, geodatabase: self.generatedGeodatabase)
         self.syncJob.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
-            print(status.rawValue)
-            }, completion: { (object: AnyObject?, error: NSError?) -> Void in
-                
-                //call completion
-                completion?()
-                
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                SVProgressHUD.showWithStatus(status.statusString(), maskType: .Gradient)
+            })
+        }, completion: { (object: AnyObject?, error: NSError?) -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 if let error = error {
-                    print(error)
+                    SVProgressHUD.showErrorWithStatus(error.localizedDescription)
                 }
                 else {
+                    SVProgressHUD.dismiss()
                     self.updateUI()
                 }
+            })
+            
+            //call completion
+            completion?()
         })
         
     }
@@ -463,12 +466,14 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         //sync changes if in service mode
         if self.liveMode {
             (feature.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion { (featureEditResult: [AGSFeatureEditResult]?, error: NSError?) -> Void in
-                if let error = error {
-                    print("Error while applying edits :: \(error.localizedDescription)")
-                }
-                else {
-                    print("Edits applied successfully")
-                }
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    if let error = error {
+                        SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                    }
+                    else {
+                        SVProgressHUD.showSuccessWithStatus("Edits applied successfully")
+                    }
+                })
             }
         }
         else {

@@ -39,6 +39,9 @@ class VectorTileLayerViewController: UIViewController {
         
         //assign the map to the map view
         self.mapView.map = map
+        
+        //enable rotation
+        self.mapView.allowInteractiveRotation = true
     }
 
     override func didReceiveMemoryWarning() {

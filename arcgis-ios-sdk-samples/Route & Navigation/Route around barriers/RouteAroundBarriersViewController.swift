@@ -67,7 +67,6 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
         //        self.directionsListAction()
         self.toggleRouteDetails(false)
         
-        
     }
     
     //MARK: - Route logic
@@ -93,9 +92,8 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
                 self?.routeParameters = params
                 //enable bar button item
                 self?.routeParametersBBI.enabled = true
-                self?.routeBBI.enabled = true
             }
-            })
+        })
     }
     
     @IBAction func route() {
@@ -117,6 +115,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
         var stops = [AGSStop]()
         for graphic in self.stopGraphicsOverlay.graphics as AnyObject as! [AGSGraphic] {
             let stop = AGSStop(point: graphic.geometry as! AGSPoint)
+            stop.name = "\(self.stopGraphicsOverlay.graphics.indexOfObject(graphic))"
             stops.append(stop)
         }
         self.routeParameters.clearStops()
@@ -141,19 +140,8 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
                 let route = routeResult!.routes[0]
                 let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self.routeSymbol())
                 self.routeGraphicsOverlay.graphics.addObject(routeGraphic)
-                self.addStopsAsGraphics(route.stops)
                 self.generatedRoute = route
             }
-        }
-    }
-    
-    func addStopsAsGraphics(stops:[AGSStop]) {
-        //remove the previous graphics
-        self.stopGraphicsOverlay.graphics.removeAllObjects()
-        
-        for stop in stops {
-            let graphic = AGSGraphic(geometry: stop.geometry!, symbol: self.stopSymbol(stop.sequence))
-            self.stopGraphicsOverlay.graphics.addObject(graphic)
         }
     }
     
@@ -179,9 +167,15 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
         
         if segmentedControl.selectedSegmentIndex == 0 {
             //create a graphic for stop and add to the graphics overlay
-            let symbol = self.stopSymbol(self.stopGraphicsOverlay.graphics.count+1)
+            let graphicsCount = self.stopGraphicsOverlay.graphics.count
+            let symbol = self.stopSymbol(graphicsCount+1)
             let graphic = AGSGraphic(geometry: normalizedPoint, symbol: symbol)
             self.stopGraphicsOverlay.graphics.addObject(graphic)
+            
+            //enable route button
+            if graphicsCount > 0 {
+                self.routeBBI.enabled = true
+            }
         }
         else {
             let bufferedGeometry = AGSGeometryEngine.bufferGeometry(normalizedPoint, byDistance: 500)
@@ -196,6 +190,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
     @IBAction func clearAction() {
         if segmentedControl.selectedSegmentIndex == 0 {
             self.stopGraphicsOverlay.graphics.removeAllObjects()
+            self.routeBBI.enabled = false
         }
         else {
             self.barrierGraphicsOverlay.graphics.removeAllObjects()
@@ -260,6 +255,6 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
         self.directionsGraphicsOverlay.graphics.addObject(directionGraphic)
         
         //zoom to the direction
-        self.mapView.setViewpointGeometry(directionManeuver.geometry!.extent, completion: nil)
+        self.mapView.setViewpointGeometry(directionManeuver.geometry!.extent, padding: 100, completion: nil)
     }
 }

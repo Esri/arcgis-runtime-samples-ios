@@ -115,7 +115,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
         var stops = [AGSStop]()
         for graphic in self.stopGraphicsOverlay.graphics as AnyObject as! [AGSGraphic] {
             let stop = AGSStop(point: graphic.geometry as! AGSPoint)
-            stop.name = "\(self.stopGraphicsOverlay.graphics.indexOfObject(graphic))"
+            stop.name = "\(self.stopGraphicsOverlay.graphics.indexOfObject(graphic)+1)"
             stops.append(stop)
         }
         self.routeParameters.clearStops()

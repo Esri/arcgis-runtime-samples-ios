@@ -124,7 +124,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
         
         
         //zoom to the existing feature's geometry
-        self.mapView.setViewpointGeometry(geometryBuilder.toGeometry(), padding: 10, completion: nil)
+        self.mapView.setViewpointGeometry(geometryBuilder.extent, padding: 10, completion: nil)
         
         //hide the back button
         self.navigationItem.hidesBackButton = true
@@ -171,6 +171,8 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
             self.featureLayer.featureTable?.deleteFeature(self.newFeature, completion: { [weak self] (error: NSError?) -> Void in
                 self?.newFeature = nil
             })
+            //dismiss popups view controller
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     

@@ -24,7 +24,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
     @IBOutlet var serviceModeToolbar:UIToolbar!
     @IBOutlet var geodatabaseModeToolbar:UIToolbar!
     @IBOutlet var doneBBI:UIBarButtonItem!
-    @IBOutlet var downloadBBI:UIBarButtonItem!
+    @IBOutlet var barButtonItem:UIBarButtonItem!
     @IBOutlet var syncBBI:UIBarButtonItem!
     @IBOutlet var instructionsLabel:UILabel!
     @IBOutlet var featureLayersContainerView:UIView!
@@ -130,16 +130,16 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
                 }
             }
             //enable generate geodatabase bbi
-            self?.downloadBBI.enabled = true
+            self?.barButtonItem.enabled = true
         }
     }
     
     func frameToExtent() -> AGSEnvelope {
         let frame = self.mapView.convertRect(self.extentView.frame, fromView: self.view)
         
-        let minPoints = self.mapView.screenToLocation(frame.origin)
-        let maxPoints = self.mapView.screenToLocation(CGPoint(x: frame.origin.x+frame.width, y: frame.origin.y+frame.height))
-        let extent = AGSEnvelope(min: minPoints, max: maxPoints)
+        let minPoint = self.mapView.screenToLocation(frame.origin)
+        let maxPoint = self.mapView.screenToLocation(CGPoint(x: frame.origin.x+frame.width, y: frame.origin.y+frame.height))
+        let extent = AGSEnvelope(min: minPoint, max: maxPoint)
         return extent
     }
     
@@ -151,7 +151,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
             if weakSelf.liveMode {
                 weakSelf.serviceModeToolbar.hidden = false
                 weakSelf.instructionsLabel.hidden = true
-                weakSelf.downloadBBI.title = "Generate geodatabase"
+                weakSelf.barButtonItem.title = "Generate geodatabase"
             }
             else {
                 weakSelf.serviceModeToolbar.hidden = true
@@ -186,7 +186,6 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
     }
     
     private func deleteAllGeodatabases() {
-        //TODO: check if we have -shm -wal files now
         //Remove all files with .geodatabase, .geodatabase-shm and .geodatabase-wal file extensions
         let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
         do {
@@ -217,7 +216,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
     
     func geometryChanged(notification:NSNotification) {
         //Check if the sketch geometry is valid to decide whether to enable
-        //the sketchCompleteButton
+        //the done bar button item
         if let geometry = self.sketchGraphicsOverlay.geometry where !geometry.empty {
             self.doneBBI.enabled = true
         }
@@ -251,7 +250,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
     //MARK: - Actions
     
     @IBAction func generateGeodatabaseAction() {
-        if self.downloadBBI.title! == "Generate geodatabase" {
+        if self.barButtonItem.title! == "Generate geodatabase" {
             //show the instructions label and update the text
             self.instructionsLabel.hidden = false
             self.instructionsLabel.text = "Choose an extent by keeping the desired area within the shown block"
@@ -260,9 +259,9 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
             self.extentView.hidden = false
             
             //update to done button
-            self.downloadBBI.title = "Done"
+            self.barButtonItem.title = "Done"
         }
-        else if self.downloadBBI.title! == "Done" {
+        else if self.barButtonItem.title! == "Done" {
             //hide extent view
             self.extentView.hidden = true
             
@@ -273,7 +272,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
             self.featureLayersContainerView.hidden = false
             
             //update to download button
-            self.downloadBBI.title = "Download"
+            self.barButtonItem.title = "Download"
             
             self.featureLayersVC?.featureLayerInfos = self.featureLayerInfos
         }
@@ -294,11 +293,11 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         }
     }
     
-    func generateGeodatabase(layerIds:[Int], extent:AGSEnvelope) {
+    func generateGeodatabase(layerIDs:[Int], extent:AGSEnvelope) {
         //create AGSGenerateLayerOption objects with selected layerIds
         var layerOptions = [AGSGenerateLayerOption]()
-        for layerId in layerIds {
-            let layerOption = AGSGenerateLayerOption(layerID: layerId)
+        for layerID in layerIDs {
+            let layerOption = AGSGenerateLayerOption(layerID: layerID)
             layerOptions.append(layerOption)
         }
         
@@ -311,10 +310,8 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
-        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-        
         //create a generate job from the sync task
-        self.generateJob = self.syncTask.generateJobWithParameters(params, downloadFilePath: "\(path)/\(dateFormatter.stringFromDate(NSDate())).geodatabase")
+        self.generateJob = self.syncTask.generateJobWithParameters(params, downloadFilePath: dateFormatter.stringFromDate(NSDate()))
         
         //start the job
         self.generateJob.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
@@ -366,7 +363,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
     
     func syncAction(completion: (() -> Void)?) {
         if !self.generatedGeodatabase.hasLocalEdits() {
-            print("No local edits")
+            UIAlertView(title: "Info", message: "No local edits", delegate: nil, cancelButtonTitle: "Ok").show()
             return
         }
         
@@ -452,9 +449,6 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         
         self.clearSketchGraphicsOverlay()
         
-        //Tell the user edits are being saved int the background
-        //        SVProgressHUD.showWithStatus("Saving feature details...")
-        
         let feature = popup.geoElement as! AGSFeature
         // simplify the geometry, this will take care of self intersecting polygons and
         feature.geometry = AGSGeometryEngine.simplifyGeometry(feature.geometry!)
@@ -465,6 +459,10 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         
         //sync changes if in service mode
         if self.liveMode {
+            
+            //Tell the user edits are being saved int the background
+            SVProgressHUD.showWithStatus("Saving feature details...")
+            
             (feature.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion { (featureEditResult: [AGSFeatureEditResult]?, error: NSError?) -> Void in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     if let error = error {

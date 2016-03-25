@@ -75,15 +75,16 @@ class ExportTilesViewController: UIViewController {
     func frameToExtent() -> AGSEnvelope {
         let frame = self.mapView.convertRect(self.extentView.frame, fromView: self.view)
         
-        let minPoints = self.mapView.screenToLocation(frame.origin)
-        let maxPoints = self.mapView.screenToLocation(CGPoint(x: frame.origin.x+frame.width, y: frame.origin.y+frame.height))
-        let extent = AGSEnvelope(min: minPoints, max: maxPoints)
+        let minPoint = self.mapView.screenToLocation(frame.origin)
+        let maxPoint = self.mapView.screenToLocation(CGPoint(x: frame.origin.x+frame.width, y: frame.origin.y+frame.height))
+        let extent = AGSEnvelope(min: minPoint, max: maxPoint)
         return extent
     }
     
     @IBAction func barButtonItemAction() {
         if downloading {
             //cancel download
+            self.cancelDownload()
         }
         else {
             //download
@@ -157,9 +158,8 @@ class ExportTilesViewController: UIViewController {
                         print("Error while loading tiled layer :: \(error.localizedDescription)")
                     }
                     else {
-                        print(newTiledLayer.minScale)
+                        //TODO: Remove this once the issue is fixed
                         newTiledLayer.minScale = minScale
-                        print(newTiledLayer.minScale)
                         self?.previewMapView.map = AGSMap(basemap: AGSBasemap(baseLayer: newTiledLayer))
                     }
                 })

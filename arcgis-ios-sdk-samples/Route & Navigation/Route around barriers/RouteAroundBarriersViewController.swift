@@ -64,9 +64,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
         self.setupRouteTask()
         
         //hide directions list
-        //        self.directionsListAction()
         self.toggleRouteDetails(false)
-        
     }
     
     //MARK: - Route logic
@@ -75,7 +73,9 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
         self.routeTask = AGSRouteTask(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route")!)
         self.routeTask.loadWithCompletion { [weak self] (error:NSError?) -> Void in
             if let error = error {
-                print(error)
+                dispatch_async(dispatch_get_main_queue(), { 
+                    SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                })
             }
             else {
                 self?.getDefaultParameters()
@@ -86,7 +86,9 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
     func getDefaultParameters() {
         self.routeTask.generateDefaultParametersWithCompletion({ [weak self] (params: AGSRouteParameters?, error: NSError?) -> Void in
             if let error = error {
-                print(error)
+                dispatch_async(dispatch_get_main_queue(), {
+                    SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                })
             }
             else {
                 self?.routeParameters = params
@@ -99,7 +101,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
     @IBAction func route() {
         //add check
         if self.routeParameters == nil || self.stopGraphicsOverlay.graphics.count < 2 {
-            print("Either parameters not loaded or not sufficient stops")
+            SVProgressHUD.showErrorWithStatus("Either parameters not loaded or not sufficient stops")
             return
         }
         
@@ -131,16 +133,20 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
         self.routeParameters.clearPolygonBarriers()
         self.routeParameters.setPolygonBarriers(barriers)
         
-        self.routeTask.solveRouteWithParameters(self.routeParameters) { (routeResult:AGSRouteResult?, error:NSError?) -> Void in
-            SVProgressHUD.dismiss()
+        self.routeTask.solveRouteWithParameters(self.routeParameters) { [weak self] (routeResult:AGSRouteResult?, error:NSError?) -> Void in
             if let error = error {
-                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                dispatch_async(dispatch_get_main_queue(), { 
+                    SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                })
             }
             else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    SVProgressHUD.dismiss()
+                })
                 let route = routeResult!.routes[0]
-                let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self.routeSymbol())
-                self.routeGraphicsOverlay.graphics.addObject(routeGraphic)
-                self.generatedRoute = route
+                let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self!.routeSymbol())
+                self?.routeGraphicsOverlay.graphics.addObject(routeGraphic)
+                self?.generatedRoute = route
             }
         }
     }
@@ -157,6 +163,10 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
     
     func stopSymbol(stopNumber:Int) -> AGSTextSymbol {
         return AGSTextSymbol(text: "\(stopNumber)", color: UIColor.redColor(), size: 20, horizontalAlignment: .Center, verticalAlignment: .Middle)
+    }
+    
+    func barrierSymbol() -> AGSSimpleFillSymbol {
+        return AGSSimpleFillSymbol(style: .DiagonalCross, color: UIColor.redColor(), outline: nil)
     }
     
     //MARK: - AGSMapViewTouchDelegate
@@ -179,7 +189,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
         }
         else {
             let bufferedGeometry = AGSGeometryEngine.bufferGeometry(normalizedPoint, byDistance: 500)
-            let symbol = AGSSimpleFillSymbol(style: .DiagonalCross, color: UIColor.redColor(), outline: nil)
+            let symbol = self.barrierSymbol()
             let graphic = AGSGraphic(geometry: bufferedGeometry, symbol: symbol)
             self.barrierGraphicsOverlay.graphics.addObject(graphic)
         }

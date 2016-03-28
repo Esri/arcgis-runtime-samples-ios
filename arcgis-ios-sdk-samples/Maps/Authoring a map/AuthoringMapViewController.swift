@@ -167,7 +167,7 @@ class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, 
     //MARK: - SaveAsVCDelegate
     
     func saveAsViewController(saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String?) {
-        SVProgressHUD.showWithStatus("Saving")
+        SVProgressHUD.showWithStatus("Saving", maskType: .Gradient)
         //set the initial viewpoint from map view
         self.mapView.map?.initialViewpoint = self.mapView.currentViewpointWithType(AGSViewpointType.CenterAndScale)
         

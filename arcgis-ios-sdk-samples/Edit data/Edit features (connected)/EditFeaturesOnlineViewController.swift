@@ -149,7 +149,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
         self.clearSketchGraphicsOverlay()
         
         //Tell the user edits are being saved int the background
-        SVProgressHUD.showWithStatus("Saving feature details...")
+        SVProgressHUD.showWithStatus("Saving feature details...", maskType: .Gradient)
         
         let feature = popup.geoElement as! AGSFeature
         // simplify the geometry, this will take care of self intersecting polygons and

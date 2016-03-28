@@ -83,7 +83,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
     //MARK: - AGSMapViewTouchDelegate
     
     func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
-        SVProgressHUD.showWithStatus("Loading", maskType: .Clear)
+        SVProgressHUD.showWithStatus("Loading", maskType: .Gradient)
         self.mapView.identifyLayersAtScreenPoint(screen, tolerance: 5) { [weak self] (results: [AGSIdentifyLayerResult]?, error: NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 if let error = error {
@@ -461,7 +461,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         if self.liveMode {
             
             //Tell the user edits are being saved int the background
-            SVProgressHUD.showWithStatus("Saving feature details...")
+            SVProgressHUD.showWithStatus("Saving feature details...", maskType: .Gradient)
             
             (feature.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion { (featureEditResult: [AGSFeatureEditResult]?, error: NSError?) -> Void in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in

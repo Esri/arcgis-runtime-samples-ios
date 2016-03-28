@@ -88,6 +88,32 @@
 		3E85263D1B90DE2C00690EBD /* DisplayMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E85263C1B90DE2C00690EBD /* DisplayMapViewController.swift */; };
 		3E85263F1B90E06F00690EBD /* DisplayMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E85263E1B90E06F00690EBD /* DisplayMap.storyboard */; };
 		3E8526401B90E19C00690EBD /* DisplayMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E85263C1B90DE2C00690EBD /* DisplayMapViewController.swift */; };
+		3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */; };
+		3EC39C1E1C9A59B9003F6459 /* DirectionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */; };
+		3EC39C1F1C9A59B9003F6459 /* RouteParametersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */; };
+		3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C201C9A59D5003F6459 /* RouteAroundBarriers.storyboard */; };
+		3EC39C221C9A643E003F6459 /* RouteAroundBarriersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */; };
+		3EC39C231C9A643E003F6459 /* DirectionsListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */; };
+		3EC39C241C9A643E003F6459 /* RouteParametersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */; };
+		3EC39C271C9A699C003F6459 /* LocalTiledLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C261C9A699C003F6459 /* LocalTiledLayer.storyboard */; };
+		3EC39C291C9A69F4003F6459 /* LocalTiledLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C281C9A69F4003F6459 /* LocalTiledLayerViewController.swift */; };
+		3EC39C2B1C9A6A6B003F6459 /* TilePackagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C2A1C9A6A6B003F6459 /* TilePackagesListViewController.swift */; };
+		3EC39C2E1C9B0A9D003F6459 /* Campus.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C2C1C9B0A9D003F6459 /* Campus.tpk */; };
+		3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C2D1C9B0A9D003F6459 /* SanFrancisco.tpk */; };
+		3EC39C321C9B0DF6003F6459 /* ExportTilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C311C9B0DF6003F6459 /* ExportTilesViewController.swift */; };
+		3EC39C341C9B106D003F6459 /* ExportTiles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C331C9B106D003F6459 /* ExportTiles.storyboard */; };
+		3EC39C371C9B1ADA003F6459 /* AGSExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C361C9B1ADA003F6459 /* AGSExtensions.swift */; };
+		3EC39C3A1C9B23DF003F6459 /* GenerateGeodatabase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C391C9B23DF003F6459 /* GenerateGeodatabase.storyboard */; };
+		3EC39C3C1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C3B1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift */; };
+		3EC39C3F1C9B47C2003F6459 /* OfflineEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */; };
+		3EC39C411C9B4857003F6459 /* FeatureLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */; };
+		3EC39C431C9B4872003F6459 /* OfflineEditing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */; };
+		3EC39C441C9B515D003F6459 /* TilePackagesListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C2A1C9A6A6B003F6459 /* TilePackagesListViewController.swift */; };
+		3EC39C451C9B515D003F6459 /* LocalTiledLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C281C9A69F4003F6459 /* LocalTiledLayerViewController.swift */; };
+		3EC39C461C9B515D003F6459 /* ExportTilesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C311C9B0DF6003F6459 /* ExportTilesViewController.swift */; };
+		3EC39C471C9B515D003F6459 /* GenerateGeodatabaseViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C3B1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift */; };
+		3EC39C481C9B515D003F6459 /* OfflineEditingViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */; };
+		3EC39C491C9B515D003F6459 /* FeatureLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */; };
 		3ED028571B8E3A8500ACA70D /* AuthoringMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028021B8E3A8400ACA70D /* AuthoringMap.storyboard */; };
 		3ED028581B8E3A8500ACA70D /* AuthoringMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028031B8E3A8400ACA70D /* AuthoringMapViewController.swift */; };
 		3ED028591B8E3A8500ACA70D /* AuthoringOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028041B8E3A8400ACA70D /* AuthoringOptionsViewController.swift */; };
@@ -208,6 +234,9 @@
 		3ED5EB751B740A58009F9B75 /* SegmentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5EB741B740A58009F9B75 /* SegmentedViewController.swift */; };
 		3ED5EB771B752A42009F9B75 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 3ED5EB761B752A42009F9B75 /* style.css */; };
 		3EE692021B03D22500C167B8 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE692011B03D22500C167B8 /* Node.swift */; };
+		3EE8B9531CA08E54003AA705 /* VectorTileLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */; };
+		3EE8B9551CA08E71003AA705 /* VectorTileLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */; };
+		3EE8B9591CA0C020003AA705 /* VectorTileLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
 /* End PBXBuildFile section */
 
@@ -218,6 +247,16 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3EE8B9591CA0C020003AA705 /* VectorTileLayerViewController.swift in CopyFiles */,
+				3EC39C441C9B515D003F6459 /* TilePackagesListViewController.swift in CopyFiles */,
+				3EC39C451C9B515D003F6459 /* LocalTiledLayerViewController.swift in CopyFiles */,
+				3EC39C461C9B515D003F6459 /* ExportTilesViewController.swift in CopyFiles */,
+				3EC39C471C9B515D003F6459 /* GenerateGeodatabaseViewController.swift in CopyFiles */,
+				3EC39C481C9B515D003F6459 /* OfflineEditingViewController.swift in CopyFiles */,
+				3EC39C491C9B515D003F6459 /* FeatureLayersViewController.swift in CopyFiles */,
+				3EC39C221C9A643E003F6459 /* RouteAroundBarriersViewController.swift in CopyFiles */,
+				3EC39C231C9A643E003F6459 /* DirectionsListViewController.swift in CopyFiles */,
+				3EC39C241C9A643E003F6459 /* RouteParametersViewController.swift in CopyFiles */,
 				3ED5D36F1C75985C0091D621 /* FindRouteViewController.swift in CopyFiles */,
 				3ED5D3701C75985C0091D621 /* DirectionsViewController.swift in CopyFiles */,
 				3E6AE3F21C6D1C490026E59C /* OfflineRoutingViewController.swift in CopyFiles */,
@@ -356,6 +395,23 @@
 		3E85263C1B90DE2C00690EBD /* DisplayMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisplayMapViewController.swift; path = "arcgis-ios-sdk-samples/Maps/Display a map/DisplayMapViewController.swift"; sourceTree = SOURCE_ROOT; };
 		3E85263E1B90E06F00690EBD /* DisplayMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DisplayMap.storyboard; path = "arcgis-ios-sdk-samples/Maps/Display a map/DisplayMap.storyboard"; sourceTree = SOURCE_ROOT; };
 		3EA34D591B38C3B3003DC0E8 /* Samples-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Samples-Bridging-Header.h"; path = "Content Display Logic/Samples-Bridging-Header.h"; sourceTree = "<group>"; };
+		3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteAroundBarriersViewController.swift; path = "Route & Navigation/Route around barriers/RouteAroundBarriersViewController.swift"; sourceTree = "<group>"; };
+		3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectionsListViewController.swift; path = "Route & Navigation/Route around barriers/DirectionsListViewController.swift"; sourceTree = "<group>"; };
+		3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteParametersViewController.swift; path = "Route & Navigation/Route around barriers/RouteParametersViewController.swift"; sourceTree = "<group>"; };
+		3EC39C201C9A59D5003F6459 /* RouteAroundBarriers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = RouteAroundBarriers.storyboard; path = "Route & Navigation/Route around barriers/RouteAroundBarriers.storyboard"; sourceTree = "<group>"; };
+		3EC39C261C9A699C003F6459 /* LocalTiledLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LocalTiledLayer.storyboard; path = "Layers/ArcGIS tiled layer (tile cache)/LocalTiledLayer.storyboard"; sourceTree = "<group>"; };
+		3EC39C281C9A69F4003F6459 /* LocalTiledLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalTiledLayerViewController.swift; path = "Layers/ArcGIS tiled layer (tile cache)/LocalTiledLayerViewController.swift"; sourceTree = "<group>"; };
+		3EC39C2A1C9A6A6B003F6459 /* TilePackagesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TilePackagesListViewController.swift; path = "Layers/ArcGIS tiled layer (tile cache)/TilePackagesListViewController.swift"; sourceTree = "<group>"; };
+		3EC39C2C1C9B0A9D003F6459 /* Campus.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = Campus.tpk; path = "Shared resources/Tile packages/Campus.tpk"; sourceTree = "<group>"; };
+		3EC39C2D1C9B0A9D003F6459 /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "Shared resources/Tile packages/SanFrancisco.tpk"; sourceTree = "<group>"; };
+		3EC39C311C9B0DF6003F6459 /* ExportTilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExportTilesViewController.swift; path = "Layers/Export tiles/ExportTilesViewController.swift"; sourceTree = "<group>"; };
+		3EC39C331C9B106D003F6459 /* ExportTiles.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ExportTiles.storyboard; path = "Layers/Export tiles/ExportTiles.storyboard"; sourceTree = "<group>"; };
+		3EC39C361C9B1ADA003F6459 /* AGSExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AGSExtensions.swift; path = "Shared resources/Extensions/AGSExtensions.swift"; sourceTree = "<group>"; };
+		3EC39C391C9B23DF003F6459 /* GenerateGeodatabase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GenerateGeodatabase.storyboard; path = "Features/Generate geodatabase/GenerateGeodatabase.storyboard"; sourceTree = "<group>"; };
+		3EC39C3B1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenerateGeodatabaseViewController.swift; path = "Features/Generate geodatabase/GenerateGeodatabaseViewController.swift"; sourceTree = "<group>"; };
+		3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineEditingViewController.swift; path = "Edit data/Offline edit and sync/OfflineEditingViewController.swift"; sourceTree = "<group>"; };
+		3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayersViewController.swift; path = "Edit data/Offline edit and sync/FeatureLayersViewController.swift"; sourceTree = "<group>"; };
+		3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OfflineEditing.storyboard; path = "Edit data/Offline edit and sync/OfflineEditing.storyboard"; sourceTree = "<group>"; };
 		3ED028021B8E3A8400ACA70D /* AuthoringMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AuthoringMap.storyboard; sourceTree = "<group>"; };
 		3ED028031B8E3A8400ACA70D /* AuthoringMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthoringMapViewController.swift; sourceTree = "<group>"; };
 		3ED028041B8E3A8400ACA70D /* AuthoringOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthoringOptionsViewController.swift; sourceTree = "<group>"; };
@@ -435,6 +491,8 @@
 		3ED5EB741B740A58009F9B75 /* SegmentedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentedViewController.swift; path = "Content Display Logic/Controllers/SegmentedViewController.swift"; sourceTree = "<group>"; };
 		3ED5EB761B752A42009F9B75 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		3EE692011B03D22500C167B8 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Node.swift; path = "Content Display Logic/Model/Node.swift"; sourceTree = "<group>"; };
+		3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = VectorTileLayer.storyboard; path = "Layers/Vector tile layer/VectorTileLayer.storyboard"; sourceTree = "<group>"; };
+		3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VectorTileLayerViewController.swift; path = "Layers/Vector tile layer/VectorTileLayerViewController.swift"; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -595,6 +653,7 @@
 		3E4B05E51B39EE920072E514 /* Shared resources */ = {
 			isa = PBXGroup;
 			children = (
+				3EC39C351C9B1A7A003F6459 /* Extensions */,
 				3E6AE3EF1C6D15C40026E59C /* Network data */,
 				3E4BF45D1C5BD84900D85919 /* Locator */,
 				3E4BF45B1C5BD7A900D85919 /* Tile packages */,
@@ -693,6 +752,8 @@
 		3E4BF45B1C5BD7A900D85919 /* Tile packages */ = {
 			isa = PBXGroup;
 			children = (
+				3EC39C2C1C9B0A9D003F6459 /* Campus.tpk */,
+				3EC39C2D1C9B0A9D003F6459 /* SanFrancisco.tpk */,
 				3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */,
 			);
 			name = "Tile packages";
@@ -749,6 +810,7 @@
 			isa = PBXGroup;
 			children = (
 				3E6AE3F31C6D1C920026E59C /* Find route */,
+				3EC39C191C9A5770003F6459 /* Route around barriers */,
 				3E6AE3EA1C6D10F70026E59C /* Offline routing */,
 			);
 			name = "Route & Navigation";
@@ -810,6 +872,63 @@
 			path = "Maps/Open an existing map";
 			sourceTree = "<group>";
 		};
+		3EC39C191C9A5770003F6459 /* Route around barriers */ = {
+			isa = PBXGroup;
+			children = (
+				3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */,
+				3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */,
+				3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */,
+				3EC39C201C9A59D5003F6459 /* RouteAroundBarriers.storyboard */,
+			);
+			name = "Route around barriers";
+			sourceTree = "<group>";
+		};
+		3EC39C251C9A68EC003F6459 /* ArcGIS tiled layer (tile cache) */ = {
+			isa = PBXGroup;
+			children = (
+				3EC39C261C9A699C003F6459 /* LocalTiledLayer.storyboard */,
+				3EC39C2A1C9A6A6B003F6459 /* TilePackagesListViewController.swift */,
+				3EC39C281C9A69F4003F6459 /* LocalTiledLayerViewController.swift */,
+			);
+			name = "ArcGIS tiled layer (tile cache)";
+			sourceTree = "<group>";
+		};
+		3EC39C301C9B0DAE003F6459 /* Export tiles */ = {
+			isa = PBXGroup;
+			children = (
+				3EC39C311C9B0DF6003F6459 /* ExportTilesViewController.swift */,
+				3EC39C331C9B106D003F6459 /* ExportTiles.storyboard */,
+			);
+			name = "Export tiles";
+			sourceTree = "<group>";
+		};
+		3EC39C351C9B1A7A003F6459 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3EC39C361C9B1ADA003F6459 /* AGSExtensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		3EC39C381C9B2136003F6459 /* Generate geodatabase */ = {
+			isa = PBXGroup;
+			children = (
+				3EC39C391C9B23DF003F6459 /* GenerateGeodatabase.storyboard */,
+				3EC39C3B1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift */,
+			);
+			name = "Generate geodatabase";
+			sourceTree = "<group>";
+		};
+		3EC39C3D1C9B4754003F6459 /* Offline edit and sync */ = {
+			isa = PBXGroup;
+			children = (
+				3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */,
+				3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */,
+				3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */,
+			);
+			name = "Offline edit and sync";
+			sourceTree = "<group>";
+		};
 		3ED027FC1B8E38F400ACA70D /* Edit data */ = {
 			isa = PBXGroup;
 			children = (
@@ -819,6 +938,7 @@
 				3ED0295B1B8E3ACD00ACA70D /* Update geometries (feature service) */,
 				3ED0294D1B8E3ACD00ACA70D /* Edit feature attachments */,
 				3E39F6CE1B979087000DEC6C /* Edit features (connected) */,
+				3EC39C3D1C9B4754003F6459 /* Offline edit and sync */,
 			);
 			name = "Edit data";
 			sourceTree = "<group>";
@@ -847,6 +967,7 @@
 				3ED028C61B8E3AA500ACA70D /* Feature layer query */,
 				3ED028C01B8E3AA500ACA70D /* Feature layer definition expression */,
 				3ED028BA1B8E3AA500ACA70D /* Change feature layer renderer */,
+				3EC39C381C9B2136003F6459 /* Generate geodatabase */,
 			);
 			name = Features;
 			sourceTree = "<group>";
@@ -855,8 +976,11 @@
 			isa = PBXGroup;
 			children = (
 				3ED028A41B8E3A9800ACA70D /* ArcGIS tiled layer (URL) */,
+				3EC39C251C9A68EC003F6459 /* ArcGIS tiled layer (tile cache) */,
+				3EC39C301C9B0DAE003F6459 /* Export tiles */,
 				3ED0289F1B8E3A9800ACA70D /* ArcGIS map image layer (URL) */,
 				3ED028A71B8E3A9800ACA70D /* Change sublayer visibility */,
+				3EE8B9511CA08E16003AA705 /* Vector tile layer */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -1223,6 +1347,15 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		3EE8B9511CA08E16003AA705 /* Vector tile layer */ = {
+			isa = PBXGroup;
+			children = (
+				3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */,
+				3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */,
+			);
+			name = "Vector tile layer";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1258,7 +1391,6 @@
 				TargetAttributes = {
 					3E23A9DF1AFC28F6002E2214 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = P8HGHS7JQ8;
 					};
 				};
 			};
@@ -1293,6 +1425,7 @@
 				3ED028881B8E3A8500ACA70D /* OpenExistingMap.storyboard in Resources */,
 				3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */,
 				3ED028651B8E3A8500ACA70D /* HighwayJson.txt in Resources */,
+				3EC39C3A1C9B23DF003F6459 /* GenerateGeodatabase.storyboard in Resources */,
 				3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */,
 				3ED028E41B8E3AA500ACA70D /* DefinitionExpression.storyboard in Resources */,
 				3ED028B81B8E3A9800ACA70D /* SublayerVisibility.storyboard in Resources */,
@@ -1304,6 +1437,7 @@
 				3ED029401B8E3AB300ACA70D /* line.gif in Resources */,
 				3E6AE3EC1C6D11BA0026E59C /* OfflineRouting.storyboard in Resources */,
 				3E23A9EF1AFC28F6002E2214 /* Images.xcassets in Resources */,
+				3EC39C271C9A699C003F6459 /* LocalTiledLayer.storyboard in Resources */,
 				3ED0286C1B8E3A8500ACA70D /* DisplayLocation.storyboard in Resources */,
 				3E03F09B1B05714A0078EB36 /* default.css in Resources */,
 				3ED028F71B8E3AA500ACA70D /* ManualCache.storyboard in Resources */,
@@ -1318,6 +1452,7 @@
 				3E2A68121B14E04300A318AA /* ArcGIS.bundle in Resources */,
 				3E0257201BAB5D7700ACAC18 /* Default-568h@2x.png in Resources */,
 				3ED5EB771B752A42009F9B75 /* style.css in Resources */,
+				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
 				3ED028AF1B8E3A9800ACA70D /* MILUsingURL.storyboard in Resources */,
 				3E676DF11B1D0B6000D4029A /* Camera Shutter.caf in Resources */,
 				3ED029651B8E3ACD00ACA70D /* EditAttachment.storyboard in Resources */,
@@ -1325,9 +1460,11 @@
 				3ED028FA1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard in Resources */,
 				3ED028691B8E3A8500ACA70D /* SetViewpoint.storyboard in Resources */,
 				3E4BF4461C5AED5100D85919 /* FindAddress.storyboard in Resources */,
+				3EC39C431C9B4872003F6459 /* OfflineEditing.storyboard in Resources */,
 				3ED028951B8E3A8500ACA70D /* SetMapsSpatialReference.storyboard in Resources */,
 				3E4BF47D1C5BDDCA00D85919 /* san-diego-locator.loc.xml in Resources */,
 				3E0D3AD71AFD481900FC60D6 /* Main.storyboard in Resources */,
+				3EE8B9531CA08E54003AA705 /* VectorTileLayer.storyboard in Resources */,
 				3ED029311B8E3AB300ACA70D /* Callout.storyboard in Resources */,
 				3E4BF47F1C5BDDCA00D85919 /* san-diego-locator.lox in Resources */,
 				3ED029701B8E3ACD00ACA70D /* EditGeometry.storyboard in Resources */,
@@ -1347,10 +1484,13 @@
 				3ED028EE1B8E3AA500ACA70D /* FLSelection.storyboard in Resources */,
 				97DD84671B2B869300184B41 /* xcode.css in Resources */,
 				3ED0289C1B8E3A8500ACA70D /* MapViewScreenshot.storyboard in Resources */,
+				3EC39C2E1C9B0A9D003F6459 /* Campus.tpk in Resources */,
 				3ED0292C1B8E3AB300ACA70D /* GOIdentify.storyboard in Resources */,
+				3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */,
 				3ED029421B8E3AB300ACA70D /* polygon.gif in Resources */,
 				3ED028911B8E3A8500ACA70D /* SetInitialMapLocation.storyboard in Resources */,
 				3ED0288D1B8E3A8500ACA70D /* SetInitialMapArea.storyboard in Resources */,
+				3EC39C341C9B106D003F6459 /* ExportTiles.storyboard in Resources */,
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
 				3ED029691B8E3ACD00ACA70D /* EditAttributes.storyboard in Resources */,
 				3ED028831B8E3A8500ACA70D /* MapRotation.storyboard in Resources */,
@@ -1380,7 +1520,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EC39C291C9A69F4003F6459 /* LocalTiledLayerViewController.swift in Sources */,
 				3E39F6D41B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift in Sources */,
+				3EC39C411C9B4857003F6459 /* FeatureLayersViewController.swift in Sources */,
 				3ED029381B8E3AB300ACA70D /* MILLegendTableViewController.swift in Sources */,
 				3E6AE3F91C73B5480026E59C /* DirectionsViewController.swift in Sources */,
 				3ED029321B8E3AB300ACA70D /* CalloutViewController.swift in Sources */,
@@ -1399,11 +1541,14 @@
 				3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */,
 				3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */,
 				3ED0289A1B8E3A8500ACA70D /* ShowMagnifierViewController.swift in Sources */,
+				3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */,
 				3E4B05FB1B39EF250072E514 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				3ED028B91B8E3A9800ACA70D /* SublayerVisibilityViewController.swift in Sources */,
+				3EC39C1F1C9A59B9003F6459 /* RouteParametersViewController.swift in Sources */,
 				3ED5EB731B7404D0009F9B75 /* SampleInfoViewController.swift in Sources */,
 				3ED028B71B8E3A9800ACA70D /* SublayersTableViewController.swift in Sources */,
 				3E71621F1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift in Sources */,
+				3EC39C3C1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift in Sources */,
 				3E2A68181B153CDE00A318AA /* SourceCodeBarButtonItem.swift in Sources */,
 				3ED028581B8E3A8500ACA70D /* AuthoringMapViewController.swift in Sources */,
 				3E4B05FD1B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
@@ -1423,6 +1568,7 @@
 				3ED028961B8E3A8500ACA70D /* SetMapsSRViewController.swift in Sources */,
 				3ED0288E1B8E3A8500ACA70D /* SetInitialMapAreaViewController.swift in Sources */,
 				3ED028F51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift in Sources */,
+				3EC39C3F1C9B47C2003F6459 /* OfflineEditingViewController.swift in Sources */,
 				3ED028E21B8E3AA500ACA70D /* OverrideRendererViewController.swift in Sources */,
 				3E4BF4561C5BD66C00D85919 /* OfflineGeocodeViewController.swift in Sources */,
 				3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */,
@@ -1437,7 +1583,9 @@
 				3ED0293A1B8E3AB300ACA70D /* MILShowLegendViewController.swift in Sources */,
 				3ED0292D1B8E3AB300ACA70D /* GOIdentifyViewController.swift in Sources */,
 				3E8526391B90D92700690EBD /* BookmarksViewController.swift in Sources */,
+				3EC39C1E1C9A59B9003F6459 /* DirectionsListViewController.swift in Sources */,
 				3E6AE3EE1C6D11FD0026E59C /* OfflineRoutingViewController.swift in Sources */,
+				3EC39C321C9B0DF6003F6459 /* ExportTilesViewController.swift in Sources */,
 				3ED028631B8E3A8500ACA70D /* SwitchBasemapViewController.swift in Sources */,
 				3ED028591B8E3A8500ACA70D /* AuthoringOptionsViewController.swift in Sources */,
 				3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */,
@@ -1447,12 +1595,15 @@
 				3ED028741B8E3A8500ACA70D /* MapViewDrawStatusViewController.swift in Sources */,
 				3E4BF4581C5BD6C400D85919 /* SanDiegoAddressesViewController.swift in Sources */,
 				3EE692021B03D22500C167B8 /* Node.swift in Sources */,
+				3EC39C2B1C9A6A6B003F6459 /* TilePackagesListViewController.swift in Sources */,
 				3ED028E51B8E3AA500ACA70D /* DefinitionExpressionViewController.swift in Sources */,
 				3E6AE3FB1C73B5480026E59C /* FindRouteViewController.swift in Sources */,
 				3ED0289D1B8E3A8500ACA70D /* MapViewScreenshotViewController.swift in Sources */,
 				3E5848FE1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift in Sources */,
 				3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */,
+				3EE8B9551CA08E71003AA705 /* VectorTileLayerViewController.swift in Sources */,
 				3E39F6D31B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift in Sources */,
+				3EC39C371C9B1ADA003F6459 /* AGSExtensions.swift in Sources */,
 				3E3B2C1F1BBCA37F00A99C5E /* ContentCollectionViewController.swift in Sources */,
 				3ED5EB751B740A58009F9B75 /* SegmentedViewController.swift in Sources */,
 			);
@@ -1556,7 +1707,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ESRI Enterprise";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1574,7 +1726,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "38db0051-d2a5-40cf-b9d3-06d8d278bd16";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "arcgis-ios-sdk-samples/Content Display Logic/Samples-Bridging-Header.h";
 			};
 			name = Debug;
@@ -1583,7 +1735,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ESRI Enterprise";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1601,7 +1754,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "38db0051-d2a5-40cf-b9d3-06d8d278bd16";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "arcgis-ios-sdk-samples/Content Display Logic/Samples-Bridging-Header.h";
 			};
 			name = Release;

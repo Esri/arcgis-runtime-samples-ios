@@ -142,6 +142,22 @@
 				<key>descriptionText</key>
 				<string>You can create a tiled layer using the url to the service</string>
 			</dict>
+            <dict>
+                <key>displayName</key>
+                <string>ArcGIS tiled layer (tile cache)</string>
+                <key>storyboardName</key>
+                <string>LocalTiledLayer</string>
+                <key>descriptionText</key>
+                <string>You can create a tiled layer using a tpk</string>
+            </dict>
+            <dict>
+                <key>displayName</key>
+                <string>Export tiles</string>
+                <key>storyboardName</key>
+                <string>ExportTiles</string>
+                <key>descriptionText</key>
+                <string>You can create a tpk from a map service</string>
+            </dict>
 			<dict>
 				<key>displayName</key>
 				<string>ArcGIS map image layer (URL)</string>
@@ -158,6 +174,14 @@
 				<key>descriptionText</key>
 				<string>You can show or hide individual sublayers in a map image layer</string>
 			</dict>
+            <dict>
+                <key>displayName</key>
+                <string>Vector tile layer</string>
+                <key>storyboardName</key>
+                <string>VectorTileLayer</string>
+                <key>descriptionText</key>
+                <string>You can now add vector tile layers</string>
+            </dict>
 		</array>
 	</dict>
 	<dict>
@@ -229,6 +253,14 @@
 				<key>descriptionText</key>
 				<string>The feature layer comes with a default renderer but you can also override this renderer using your custom renderer</string>
 			</dict>
+            <dict>
+                <key>displayName</key>
+                <string>Generate geodatabase</string>
+                <key>storyboardName</key>
+                <string>GenerateGeodatabase</string>
+                <key>descriptionText</key>
+                <string>The sample shows you how to take features offline</string>
+            </dict>
 		</array>
 	</dict>
 	<dict>
@@ -378,6 +410,14 @@
 				<key>descriptionText</key>
 				<string>This sample shows you how to add or edit features in an online feature layer using popups. The new popups provide inline editing for fast editing experience</string>
 			</dict>
+            <dict>
+                <key>displayName</key>
+                <string>Offline edit and sync</string>
+                <key>storyboardName</key>
+                <string>OfflineEditing</string>
+                <key>descriptionText</key>
+                <string>The sample shows you how to take features offline, make changes and sync them back to the service</string>
+            </dict>
 		</array>
 	</dict>
     <dict>
@@ -392,6 +432,14 @@
                 <string>FindRoute</string>
                 <key>descriptionText</key>
                 <string>The sample comes loaded with start and end stops. Tap on the Route button to solve for route between these stops. On completion the route is displayed on the map and the directions button is enabled. Tap on the button to see the list of directions</string>
+            </dict>
+            <dict>
+                <key>displayName</key>
+                <string>Route around barriers</string>
+                <key>storyboardName</key>
+                <string>RouteAroundBarriers</string>
+                <key>descriptionText</key>
+                <string>Add stops and barriers to the map, set the route parameters and tap route. A route will be shown connecting the stops with a list of directions</string>
             </dict>
             <dict>
                 <key>displayName</key>

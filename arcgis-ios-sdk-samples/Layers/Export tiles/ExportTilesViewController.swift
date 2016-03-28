@@ -145,11 +145,8 @@ class ExportTilesViewController: UIViewController {
             self?.downloading = false
             
             if let error = error {
-                //hide progress view
-                SVProgressHUD.dismiss()
-                
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    UIAlertView(title: "Error", message: error.localizedFailureReason, delegate: nil, cancelButtonTitle: "Ok").show()
+                    SVProgressHUD.showErrorWithStatus(error.localizedFailureReason, maskType: .Gradient)
                 })
             }
             else {

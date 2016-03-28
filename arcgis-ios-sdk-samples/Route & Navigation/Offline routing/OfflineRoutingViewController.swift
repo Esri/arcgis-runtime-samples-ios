@@ -223,7 +223,6 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
     
     @IBAction func modeChanged(segmentedControl:UISegmentedControl) {
         //re route for already added stops
-        
         if self.stopGraphicsOverlay.graphics.count > 1 {
             var stops = [AGSStop]()
             for graphic in self.stopGraphicsOverlay.graphics as AnyObject as! [AGSGraphic] {
@@ -233,14 +232,14 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
             
             self.params.clearStops()
             self.params.setStops(stops)
+            
+            //set the new travel mode
+            self.params.travelMode = self.routeTask.routeTaskInfo().travelModes[self.segmentedControl.selectedSegmentIndex]
+            
+            //clear all previous routes
+            self.routeGraphicsOverlay.graphics.removeAllObjects()
+            //route
+            self.route(self.params, isLongPressed: false)
         }
-        
-        //set the new travel mode
-        self.params.travelMode = self.routeTask.routeTaskInfo().travelModes[self.segmentedControl.selectedSegmentIndex]
-        
-        //clear all previous routes
-        self.routeGraphicsOverlay.graphics.removeAllObjects()
-        //route
-        self.route(self.params, isLongPressed: false)
     }
 }

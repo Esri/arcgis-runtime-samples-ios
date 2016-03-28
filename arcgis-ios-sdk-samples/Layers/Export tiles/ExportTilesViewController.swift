@@ -104,6 +104,18 @@ class ExportTilesViewController: UIViewController {
     }
     
     private func downloadTiles() {
+        
+        //get the parameters by specifying the selected area,
+        //mapview's current scale as the minScale and tiled layer's max scale as maxScale
+        let minScale = self.mapView.mapScale
+        let maxScale = self.self.tiledLayer.maxScale
+        
+        //TODO: Remove this code once design has been udpated
+        if minScale == maxScale {
+            UIAlertView(title: "Error", message: "Min scale and max scale cannot be the same", delegate: nil, cancelButtonTitle: "Ok").show()
+            return
+        }
+        
         //set the state
         self.downloading = true
         
@@ -116,12 +128,8 @@ class ExportTilesViewController: UIViewController {
         
         //initialize the export task
         self.exportTask = AGSExportTileCacheTask(mapServiceInfo: self.tiledLayer.mapServiceInfo!)
-        //get the parameters by specifying the selected area, 
-        //mapview's current scale as the minScale and tiled layer's max scale as maxScale
-        let params = self.exportTask.exportTileCacheParametersWith(self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale)
         
-        let index = params.levelsOfDetail.first!.integerValue
-        let minScale = self.tiledLayer.tileInfo!.levelsOfDetail[index].scale
+        let params = self.exportTask.exportTileCacheParametersWith(self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale)
         
         //get the job
         self.job = self.exportTask.exportTileCacheJobWithParameters(params, downloadFilePath: destinationPath)
@@ -153,14 +161,17 @@ class ExportTilesViewController: UIViewController {
                 
                 let tileCache = result as! AGSTileCache
                 let newTiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
+                self?.previewMapView.map = AGSMap(basemap: AGSBasemap(baseLayer: newTiledLayer))
                 newTiledLayer.loadWithCompletion({ (error: NSError?) -> Void in
                     if let error = error {
                         print("Error while loading tiled layer :: \(error.localizedDescription)")
                     }
                     else {
+                        //work around for making the tiles visible on load
                         //TODO: Remove this once the issue is fixed
-                        newTiledLayer.minScale = minScale
-                        self?.previewMapView.map = AGSMap(basemap: AGSBasemap(baseLayer: newTiledLayer))
+                        var envBuilder = AGSEnvelopeBuilder(envelope: newTiledLayer.fullExtent)
+                        envBuilder = envBuilder.expandByFactor(0.85)
+                        self?.previewMapView.setViewpoint(AGSViewpoint(targetExtent: envBuilder.toGeometry()))
                     }
                 })
             }

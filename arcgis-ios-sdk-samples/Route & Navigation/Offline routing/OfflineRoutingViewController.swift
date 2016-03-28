@@ -83,6 +83,9 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
         let graphic = self.graphicForLocation(mappoint)
         self.stopGraphicsOverlay.graphics.addObject(graphic)
         
+        //clear the route graphic
+        self.longPressedRouteGraphic = nil
+        
         self.route(false)
     }
     
@@ -131,7 +134,6 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
             else {
                 self?.params = params
             }
-            print(self?.routeTask.routeTaskInfo().costAttributes)
         })
     }
     

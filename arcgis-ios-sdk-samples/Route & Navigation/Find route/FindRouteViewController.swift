@@ -16,7 +16,7 @@ import UIKit
 import ArcGIS
 
 class FindRouteViewController: UIViewController {
-
+    
     @IBOutlet var mapView:AGSMapView!
     @IBOutlet var routeBBI:UIBarButtonItem!
     @IBOutlet var directionsListBBI:UIBarButtonItem!
@@ -56,7 +56,7 @@ class FindRouteViewController: UIViewController {
         //initialize route task
         self.setupRouteTask()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -67,12 +67,12 @@ class FindRouteViewController: UIViewController {
         self.stop1Geometry = AGSPoint(x: -13041171.537945, y: 3860988.271378, spatialReference: AGSSpatialReference(WKID: 3857))
         self.stop2Geometry = AGSPoint(x: -13041693.562570, y: 3856006.859684, spatialReference: AGSSpatialReference(WKID: 3857))
         
-        let startStopGraphic = AGSGraphic(geometry: self.stop1Geometry, symbol: self.stopSymbol("Start", textColor: UIColor.blueColor()))
-        let endStopGraphic = AGSGraphic(geometry: self.stop2Geometry, symbol: self.stopSymbol("End", textColor: UIColor.redColor()))
+        let startStopGraphic = AGSGraphic(geometry: self.stop1Geometry, symbol: self.stopSymbol("Origin", textColor: UIColor.blueColor()))
+        let endStopGraphic = AGSGraphic(geometry: self.stop2Geometry, symbol: self.stopSymbol("Destination", textColor: UIColor.redColor()))
         
         self.stopGraphicsOverlay.graphics.addObjectsFromArray([startStopGraphic, endStopGraphic])
     }
-
+    
     //method provides a text symbol for stop with specified parameters
     func stopSymbol(stopName:String, textColor:UIColor) -> AGSTextSymbol {
         return AGSTextSymbol(text: stopName, color: textColor, size: 20, horizontalAlignment: .Center, verticalAlignment: .Middle)
@@ -114,7 +114,7 @@ class FindRouteViewController: UIViewController {
                 //enable bar button item
                 self?.routeBBI.enabled = true
             }
-        })
+            })
     }
     
     @IBAction func route() {
@@ -134,10 +134,11 @@ class FindRouteViewController: UIViewController {
         
         //set the stops
         let stop1 = AGSStop(point: self.stop1Geometry)
-        stop1.name = "Start"
+        stop1.name = "Origin"
         let stop2 = AGSStop(point: self.stop2Geometry)
-        stop2.name = "Finish"
+        stop2.name = "Destination"
         self.routeParameters.setStops([stop1, stop2])
+        
         self.routeTask.solveRouteWithParameters(self.routeParameters) { (routeResult: AGSRouteResult?, error: NSError?) -> Void in
             if let error = error {
                 print(error)

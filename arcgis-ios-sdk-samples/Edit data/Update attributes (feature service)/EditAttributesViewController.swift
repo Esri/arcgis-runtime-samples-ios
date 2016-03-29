@@ -62,7 +62,7 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
     }
     
     func applyEdits() {
-        SVProgressHUD.showWithStatus("Applying edits")
+        SVProgressHUD.showWithStatus("Applying edits", maskType: .Gradient)
         
         self.featureTable.applyEditsWithCompletion({ [weak self] (result:[AGSFeatureEditResult]?, error:NSError?) -> Void in
             if let error = error {
@@ -121,7 +121,7 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
     //MARK: - EAOptionsVCDelegate
     
     func optionsViewController(optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int) {
-        SVProgressHUD.showWithStatus("Updating")
+        SVProgressHUD.showWithStatus("Updating", maskType: .Gradient)
         
         //load feature
         self.selectedFeature.loadWithCompletion { [weak self] (error:NSError?) -> Void in

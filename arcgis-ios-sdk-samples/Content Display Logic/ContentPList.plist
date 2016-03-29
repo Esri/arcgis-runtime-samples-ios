@@ -447,7 +447,7 @@
                 <key>storyboardName</key>
                 <string>OfflineRouting</string>
                 <key>descriptionText</key>
-                <string>Tap on the map to add a stop. Tap and hold to move a stop and route on the fly.</string>
+                <string>Tap on the map to add the first stop. Add additional stops to display the route. To route &apos;on the fly&apos; tap, hold and move to show the route dynamically.</string>
             </dict>
         </array>
     </dict>

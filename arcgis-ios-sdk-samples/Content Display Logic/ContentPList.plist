@@ -144,14 +144,6 @@
 			</dict>
             <dict>
                 <key>displayName</key>
-                <string>ArcGIS tiled layer (tile cache)</string>
-                <key>storyboardName</key>
-                <string>LocalTiledLayer</string>
-                <key>descriptionText</key>
-                <string>You can create a tiled layer using a tpk</string>
-            </dict>
-            <dict>
-                <key>displayName</key>
                 <string>Export tiles</string>
                 <key>storyboardName</key>
                 <string>ExportTiles</string>

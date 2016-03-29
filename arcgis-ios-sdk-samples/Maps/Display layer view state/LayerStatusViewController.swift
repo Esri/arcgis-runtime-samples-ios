@@ -48,7 +48,7 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         self.map.operationalLayers.addObject(imageLayer)
         
         //create feature layer using a url
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0"))
+        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0")!)
         let featurelayer = AGSFeatureLayer(featureTable: featureTable)
         //add it to the map
         self.map.operationalLayers.addObject(featurelayer)
@@ -84,7 +84,7 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
     
     //initialize status array to `Unknown`
     func populateViewStatusArray() {
-        for i in 0...self.map.operationalLayers.count-1 {
+        for _ in 0...self.map.operationalLayers.count-1 {
             self.viewStatusArray.append("Unknown")
         }
     }
@@ -97,15 +97,15 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
     //return string for current status name
     func viewStatusString(status: AGSLayerViewStatus) -> String {
         switch status {
-        case .Active:
+        case AGSLayerViewStatus.Active:
             return "Active"
-        case .NotVisible:
+        case AGSLayerViewStatus.NotVisible:
             return "Not Visible"
-        case .OutOfScale:
+        case AGSLayerViewStatus.OutOfScale:
             return "Out of Scale"
-        case .Loading:
+        case AGSLayerViewStatus.Loading:
             return "Loading"
-        case .Error:
+        case AGSLayerViewStatus.Error:
             return "Error"
         default:
             return "Unknown"
@@ -125,15 +125,13 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
     //MARK: - Table view delegates
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("LayerStatusCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("LayerStatusCell")!
         cell.backgroundColor = UIColor.clearColor()
-        let layer = self.map.operationalLayers[UInt(indexPath.row)] as! AGSLayer
+        let layer = self.map.operationalLayers[indexPath.row] as! AGSLayer
         
         cell.textLabel?.text = layer.name ?? "Layer \(indexPath.row)"
         cell.detailTextLabel?.text = self.viewStatusArray[indexPath.row]
         
         return cell
     }
-    
-    
 }

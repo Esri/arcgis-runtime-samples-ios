@@ -21,6 +21,7 @@
 		3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */; };
 		3E23A9EF1AFC28F6002E2214 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E23A9EE1AFC28F6002E2214 /* Images.xcassets */; };
 		3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */; };
+		3E24E6741BFE560B00322DAC /* LayerStatusViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */; };
 		3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A680D1B0D2A7000A318AA /* ListViewController.swift */; };
 		3E2A68121B14E04300A318AA /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E2A68111B14E04300A318AA /* ArcGIS.bundle */; };
 		3E2A68181B153CDE00A318AA /* SourceCodeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A68171B153CDE00A318AA /* SourceCodeBarButtonItem.swift */; };
@@ -88,6 +89,7 @@
 		3E85263D1B90DE2C00690EBD /* DisplayMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E85263C1B90DE2C00690EBD /* DisplayMapViewController.swift */; };
 		3E85263F1B90E06F00690EBD /* DisplayMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E85263E1B90E06F00690EBD /* DisplayMap.storyboard */; };
 		3E8526401B90E19C00690EBD /* DisplayMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E85263C1B90DE2C00690EBD /* DisplayMapViewController.swift */; };
+
 		3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */; };
 		3EC39C1E1C9A59B9003F6459 /* DirectionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */; };
 		3EC39C1F1C9A59B9003F6459 /* RouteParametersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */; };
@@ -109,6 +111,8 @@
 		3EC39C471C9B515D003F6459 /* GenerateGeodatabaseViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C3B1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift */; };
 		3EC39C481C9B515D003F6459 /* OfflineEditingViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */; };
 		3EC39C491C9B515D003F6459 /* FeatureLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */; };
+		3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ECCFE381BD0401A00CE256D /* LayerStatus.storyboard */; settings = {ASSET_TAGS = (); }; };
+		3ECCFE3C1BD0401A00CE256D /* LayerStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		3ED028571B8E3A8500ACA70D /* AuthoringMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028021B8E3A8400ACA70D /* AuthoringMap.storyboard */; };
 		3ED028581B8E3A8500ACA70D /* AuthoringMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028031B8E3A8400ACA70D /* AuthoringMapViewController.swift */; };
 		3ED028591B8E3A8500ACA70D /* AuthoringOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028041B8E3A8400ACA70D /* AuthoringOptionsViewController.swift */; };
@@ -259,6 +263,7 @@
 				3E4BF4831C5BDF0900D85919 /* FindPlaceViewController.swift in CopyFiles */,
 				3E4BF4841C5BDF0900D85919 /* OfflineGeocodeViewController.swift in CopyFiles */,
 				3E4BF4851C5BDF0900D85919 /* SanDiegoAddressesViewController.swift in CopyFiles */,
+				3E24E6741BFE560B00322DAC /* LayerStatusViewController.swift in CopyFiles */,
 				3E7162361BA21932008DE398 /* GraphicsWithSymbolsViewController.swift in CopyFiles */,
 				3E41DD7A1B9F836600DA11CC /* AddFeaturesViewController.swift in CopyFiles */,
 				3E41DD7B1B9F836600DA11CC /* DeleteFeaturesViewController.swift in CopyFiles */,
@@ -402,6 +407,8 @@
 		3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineEditingViewController.swift; path = "Edit data/Offline edit and sync/OfflineEditingViewController.swift"; sourceTree = "<group>"; };
 		3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayersViewController.swift; path = "Edit data/Offline edit and sync/FeatureLayersViewController.swift"; sourceTree = "<group>"; };
 		3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OfflineEditing.storyboard; path = "Edit data/Offline edit and sync/OfflineEditing.storyboard"; sourceTree = "<group>"; };
+		3ECCFE381BD0401A00CE256D /* LayerStatus.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LayerStatus.storyboard; sourceTree = "<group>"; };
+		3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerStatusViewController.swift; sourceTree = "<group>"; };
 		3ED028021B8E3A8400ACA70D /* AuthoringMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AuthoringMap.storyboard; sourceTree = "<group>"; };
 		3ED028031B8E3A8400ACA70D /* AuthoringMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthoringMapViewController.swift; sourceTree = "<group>"; };
 		3ED028041B8E3A8400ACA70D /* AuthoringOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthoringOptionsViewController.swift; sourceTree = "<group>"; };
@@ -908,6 +915,16 @@
 			);
 			name = "Offline edit and sync";
 			sourceTree = "<group>";
+        };
+		3ECCFE371BD0401A00CE256D /* Display layer view state */ = {
+			isa = PBXGroup;
+			children = (
+				3ECCFE381BD0401A00CE256D /* LayerStatus.storyboard */,
+				3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */,
+			);
+			name = "Display layer view state";
+			path = "arcgis-ios-sdk-samples/Maps/Display layer view state";
+			sourceTree = SOURCE_ROOT;
 		};
 		3ED027FC1B8E38F400ACA70D /* Edit data */ = {
 			isa = PBXGroup;
@@ -976,6 +993,7 @@
 				3ED028251B8E3A8500ACA70D /* Manage operational layers */,
 				3E8526321B90D7F400690EBD /* Manage bookmarks */,
 				3ED028201B8E3A8400ACA70D /* Display drawing status */,
+				3ECCFE371BD0401A00CE256D /* Display layer view state */,
 				3ED028101B8E3A8400ACA70D /* Change viewpoint */,
 				3ED028331B8E3A8500ACA70D /* Map rotation */,
 				3ED0284D1B8E3A8500ACA70D /* Show magnifier */,
@@ -1471,6 +1489,7 @@
 				3EC39C341C9B106D003F6459 /* ExportTiles.storyboard in Resources */,
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
 				3ED029691B8E3ACD00ACA70D /* EditAttributes.storyboard in Resources */,
+				3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */,
 				3ED028831B8E3A8500ACA70D /* MapRotation.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1571,6 +1590,7 @@
 				3E4B05F71B39EF250072E514 /* SVIndefiniteAnimatedView.m in Sources */,
 				3ED028741B8E3A8500ACA70D /* MapViewDrawStatusViewController.swift in Sources */,
 				3E4BF4581C5BD6C400D85919 /* SanDiegoAddressesViewController.swift in Sources */,
+				3ECCFE3C1BD0401A00CE256D /* LayerStatusViewController.swift in Sources */,
 				3EE692021B03D22500C167B8 /* Node.swift in Sources */,
 				3ED028E51B8E3AA500ACA70D /* DefinitionExpressionViewController.swift in Sources */,
 				3E6AE3FB1C73B5480026E59C /* FindRouteViewController.swift in Sources */,

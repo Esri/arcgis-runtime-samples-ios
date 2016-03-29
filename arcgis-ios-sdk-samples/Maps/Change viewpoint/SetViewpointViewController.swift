@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -37,11 +37,11 @@ class SetViewpointViewController: UIViewController {
         //create a graphicsOverlay to show the graphics
         let graphicsOverlay = AGSGraphicsOverlay()
         
-        self.londonCoordinate = AGSPoint(fromDecimalDegreesString: "51.5072 N, 0.1275 W", withSpatialReference: AGSSpatialReference.WGS84())
+        self.londonCoordinate = AGSPoint(x: 0.1275, y: 51.5072, spatialReference: AGSSpatialReference.WGS84())
         
         if let griffithParkGeometry = self.geometryFromTextFile("GriffithParkJson") {
             self.griffithParkGeometry = griffithParkGeometry as! AGSPolygon
-            let griffithParkSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.Solid, color: UIColor(red: 0, green: 0.5, blue: 0, alpha: 0.7), opacity: 1, outline: nil)
+            let griffithParkSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.Solid, color: UIColor(red: 0, green: 0.5, blue: 0, alpha: 0.7), outline: nil)
             let griffithParkGraphic = AGSGraphic(geometry: griffithParkGeometry, symbol: griffithParkSymbol)
             graphicsOverlay.graphics.addObject(griffithParkGraphic)
         }
@@ -82,8 +82,9 @@ class SetViewpointViewController: UIViewController {
         case 2:
             let currentScale = self.mapView.mapScale
             let targetScale = currentScale / 2.5 //zoom in
-            let currentCenter = self.mapView.visibleArea?.extent.center
+            let currentCenter = self.mapView.visibleArea!.extent.center
             self.mapView.setViewpoint(AGSViewpoint(center: currentCenter, scale: targetScale), duration: 5, curve: AGSAnimationCurve.EaseInOutSine, completion: { (finishedWithoutInterruption) -> Void in
+                print(finishedWithoutInterruption)
                 if(finishedWithoutInterruption){
                     self.mapView.setViewpoint(AGSViewpoint(center: currentCenter, scale: currentScale), duration: 5, curve: AGSAnimationCurve.EaseInOutSine, completion:  nil);
                 }

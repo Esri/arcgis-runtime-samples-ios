@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -37,13 +37,13 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         self.mapView.map = self.map
         
         //create feature table using a url
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer/2"))
+        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer/2")!)
         //create feature layer using this feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         //set a new renderer
-        let lineSymbol = AGSSimpleLineSymbol(style: .Solid, color: UIColor.blackColor(), width: 1, antialias: true, opacity: 0.6)
-        let fillSymbol = AGSSimpleFillSymbol(style: .Solid, color: UIColor.yellowColor(), opacity: 0.5, outline: lineSymbol)
+        let lineSymbol = AGSSimpleLineSymbol(style: .Solid, color: UIColor.blackColor(), width: 1)
+        let fillSymbol = AGSSimpleFillSymbol(style: .Solid, color: UIColor.yellowColor().colorWithAlphaComponent(0.5), outline: lineSymbol)
         self.featureLayer.renderer = AGSSimpleRenderer(symbol: fillSymbol)
         
         //add feature layer to the map
@@ -64,27 +64,25 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         }
         
         let queryParams = AGSQueryParameters()
-        queryParams.whereClause = "upper(STATE_NAME) = upper('\(state)')"
-        queryParams.outFields = ["*"]
+        queryParams.whereClause = "upper(STATE_NAME) LIKE '%\(state.uppercaseString)%'"
 
-        self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult!, error:NSError!) -> Void in
+        self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult?, error:NSError?) -> Void in
             if let error = error {
                 print(error.localizedDescription)
                 //update selected features array
                 self?.selectedFeatures.removeAll(keepCapacity: false)
             }
-            else {
-                let features = result.enumerator().allObjects
+            else if let features = result?.allObjects {
                 if features.count > 0 {
                     self?.featureLayer.selectFeatures(features)
                     //zoom to the selected feature
-                    self?.mapView.setViewpointGeometry(features[0].geometry, padding: 200, completion: nil)
+                    self?.mapView.setViewpointGeometry(features[0].geometry!, padding: 200, completion: nil)
                 }
                 else {
                     UIAlertView(title: "Error", message: "No state by that name", delegate: nil, cancelButtonTitle: "Ok").show()
                 }
                 //update selected features array
-                self?.selectedFeatures = features as! [AGSFeature]
+                self?.selectedFeatures = features 
             }
         })
     }

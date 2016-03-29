@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ class MILShowLegendViewController: UIViewController, UIPopoverPresentationContro
         self.map.operationalLayers.addObject(self.mapImageLayer)
         
         //create feature table using a url
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0"))
+        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0")!)
         //create feature layer using this feature table
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         //add feature layer to the map

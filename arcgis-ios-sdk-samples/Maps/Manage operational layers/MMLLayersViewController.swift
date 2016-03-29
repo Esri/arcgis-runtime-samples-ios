@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet private weak var tableView:UITableView!
     
-    var layers:AGSList!
+    var layers:NSMutableArray!
     var deletedLayers:[AGSLayer]!
     
     weak var delegate:MMLLayersViewControllerDelegate?
@@ -44,7 +44,7 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
-    func dataSourceIndexForIndexPath(dataSource:AGSList, indexpath:NSIndexPath) -> Int {
+    func dataSourceIndexForIndexPath(dataSource:NSMutableArray, indexpath:NSIndexPath) -> Int {
         return dataSource.count - indexpath.row - 1
     }
     
@@ -71,7 +71,7 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
             cell = tableView.dequeueReusableCellWithIdentifier("MMLLayersCell")!
             //layers in reverse order
             let index = self.dataSourceIndexForIndexPath(self.layers, indexpath: indexPath)
-            cell.textLabel?.text = self.layers[UInt(index)].name
+            cell.textLabel?.text = self.layers[index].name
         }
         else {
             cell = tableView.dequeueReusableCellWithIdentifier("MMLDeletedLayersCell")!
@@ -110,7 +110,7 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
         let sourceIndex = self.dataSourceIndexForIndexPath(self.layers, indexpath: sourceIndexPath)
         let destinationIndex = self.dataSourceIndexForIndexPath(self.layers, indexpath: destinationIndexPath)
         
-        let layer = self.layers[UInt(sourceIndex)] as! AGSLayer
+        let layer = self.layers[sourceIndex] as! AGSLayer
         
         self.layers.removeObjectAtIndex(sourceIndex)
         self.layers.insertObject(layer, atIndex:destinationIndex)
@@ -123,7 +123,7 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
             let index = self.dataSourceIndexForIndexPath(self.layers, indexpath: indexPath)
             
             //save the object in the deleted layers array
-            let layer = self.layers[UInt(index)] as! AGSLayer
+            let layer = self.layers[index] as! AGSLayer
             
             tableView.beginUpdates()
             //remove the layer from the data source array

@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ class SampleInfoViewController: UIViewController {
     
     func fetchFileContent(folderName:String) {
 
-        if let path = NSBundle.mainBundle().pathForResource("README", ofType: ".md", inDirectory: folderName) {
+        if let path = NSBundle.mainBundle().pathForResource("README", ofType: "md", inDirectory: folderName) {
             //read the content of the file
             if let content = try? String(contentsOfFile: path, encoding: NSUTF8StringEncoding) {
                 //remove the images

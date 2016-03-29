@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qaY-0E-3mj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qaY-0E-3mj">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Manual Cache View Controller-->
@@ -17,15 +18,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rfl-e1-EjP" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1R-eX-QZi">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="GEB-Si-V9K"/>
+                                    <barButtonItem title="Populate" id="WM4-61-D93">
+                                        <connections>
+                                            <action selector="populateAction:" destination="qaY-0E-3mj" id="Ers-hL-Erj"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="VyD-Bp-WMQ"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="jgT-pQ-D6A" firstAttribute="top" secondItem="k1R-eX-QZi" secondAttribute="bottom" id="2Ef-TT-KDI"/>
+                            <constraint firstAttribute="trailing" secondItem="k1R-eX-QZi" secondAttribute="trailing" id="45j-fC-8CK"/>
                             <constraint firstItem="Rfl-e1-EjP" firstAttribute="leading" secondItem="ELe-Fw-mro" secondAttribute="leading" id="5j2-Hy-dE3"/>
+                            <constraint firstItem="k1R-eX-QZi" firstAttribute="top" secondItem="Rfl-e1-EjP" secondAttribute="bottom" id="DeK-bR-3D1"/>
                             <constraint firstItem="Rfl-e1-EjP" firstAttribute="top" secondItem="ELe-Fw-mro" secondAttribute="top" id="KyA-gs-p8n"/>
-                            <constraint firstItem="jgT-pQ-D6A" firstAttribute="top" secondItem="Rfl-e1-EjP" secondAttribute="bottom" id="WfV-vi-r4j"/>
+                            <constraint firstItem="k1R-eX-QZi" firstAttribute="leading" secondItem="ELe-Fw-mro" secondAttribute="leading" id="W4r-gd-g3r"/>
                             <constraint firstAttribute="trailing" secondItem="Rfl-e1-EjP" secondAttribute="trailing" id="whE-AX-F4g"/>
                         </constraints>
                     </view>

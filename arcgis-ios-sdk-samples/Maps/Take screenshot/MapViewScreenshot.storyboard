@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zQN-FK-eXU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zQN-FK-eXU">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Map View Screenshot View Controller-->
@@ -17,7 +18,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIx-yi-7Un" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rIO-Go-6A0" userLabel="OverlayParentView">
@@ -25,9 +27,11 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jXa-pu-ZFX">
                                         <rect key="frame" x="15" y="15" width="570" height="506"/>
+                                        <animations/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmO-fw-Kfb">
                                         <rect key="frame" x="566" y="20" width="14" height="24"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="14" id="Cze-aC-aK3"/>
                                             <constraint firstAttribute="height" constant="24" id="M9S-QK-EWl"/>
@@ -37,6 +41,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="jXa-pu-ZFX" secondAttribute="trailing" constant="15" id="K1L-AT-KXt"/>
@@ -49,6 +54,7 @@
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nC5-ad-vb8">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="KKi-S9-DCR"/>
                                 </constraints>
@@ -63,6 +69,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="RIx-yi-7Un" firstAttribute="top" secondItem="5z9-sL-swC" secondAttribute="top" id="ARB-FL-Qma"/>
@@ -74,9 +81,15 @@
                             <constraint firstItem="6JI-Mf-3Io" firstAttribute="top" secondItem="nC5-ad-vb8" secondAttribute="bottom" id="glv-Kk-ZLf"/>
                             <constraint firstAttribute="trailing" secondItem="nC5-ad-vb8" secondAttribute="trailing" id="jQJ-Bz-NUL"/>
                             <constraint firstItem="nC5-ad-vb8" firstAttribute="top" secondItem="rIO-Go-6A0" secondAttribute="bottom" id="jcU-Sc-QFq"/>
+                            <constraint firstItem="nC5-ad-vb8" firstAttribute="top" secondItem="RIx-yi-7Un" secondAttribute="bottom" id="nP0-lb-vyl"/>
                             <constraint firstAttribute="trailing" secondItem="rIO-Go-6A0" secondAttribute="trailing" id="nUF-qG-QHJ"/>
                             <constraint firstItem="rIO-Go-6A0" firstAttribute="leading" secondItem="5z9-sL-swC" secondAttribute="leading" id="oa2-W3-2Lw"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="dMX-tf-C65"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="RIx-yi-7Un" id="CmA-vT-xhE"/>

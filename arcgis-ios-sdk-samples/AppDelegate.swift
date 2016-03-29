@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,10 +19,14 @@ import ArcGIS
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
+    
+    private var indexArray:[String]!
+    private var wordsDictionary:[String: [String]]!
+    private var readmeDirectoriesURLs:[NSURL]!
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         if url.absoluteString.rangeOfString("auth", options: [], range: nil, locale: nil) != nil {
-            AGSApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+            AGSApplicationDelegate.sharedApplicationDelegate().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
         }
         return true
     }
@@ -84,6 +88,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         }
         return true
     }
-
 }
 

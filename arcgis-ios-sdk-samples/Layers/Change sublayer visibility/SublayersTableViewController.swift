@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ import ArcGIS
 class SublayersTableViewController: UITableViewController {
 
     //list of sublayers
-    var sublayers:AGSList!
+    var sublayers:NSMutableArray!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,13 +45,13 @@ class SublayersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("SublayerCell")!
         cell.backgroundColor = UIColor.clearColor()
         
-        let sublayer = self.sublayers[UInt(indexPath.row)] as! AGSArcGISMapImageSublayer
+        let sublayer = self.sublayers[indexPath.row] as! AGSArcGISMapImageSublayer
         cell.textLabel?.text = sublayer.name
         
         //accessory switch
         let visibilitySwitch = UISwitch(frame: CGRectZero)
         visibilitySwitch.tag = indexPath.row
-        visibilitySwitch.on = sublayer.isVisible
+        visibilitySwitch.on = sublayer.visible
         visibilitySwitch.addTarget(self, action: "switchChanged:", forControlEvents: UIControlEvents.ValueChanged)
         cell.accessoryView = visibilitySwitch
         return cell
@@ -60,7 +60,7 @@ class SublayersTableViewController: UITableViewController {
     func switchChanged(sender:UISwitch) {
         let index = sender.tag
         //change the visiblity
-        let sublayer = self.sublayers[UInt(index)] as! AGSArcGISMapImageSublayer
-        sublayer.isVisible = sender.on
+        let sublayer = self.sublayers[index] as! AGSArcGISMapImageSublayer
+        sublayer.visible = sender.on
     }
 }

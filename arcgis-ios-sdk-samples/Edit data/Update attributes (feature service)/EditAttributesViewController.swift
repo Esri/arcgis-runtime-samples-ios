@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
     private var lastQuery:AGSCancellable!
     
     private var types = ["Destroyed", "Major", "Minor", "Affected", "Inaccessible"]
-    private var selectedFeature:AGSFeature!
+    private var selectedFeature:AGSArcGISFeature!
     private let optionsSegueName = "OptionsSegue"
     
     private let FEATURE_SERVICE_URL = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
@@ -40,7 +40,7 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
         //set initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: AGSSpatialReference.webMercator()), scale: 2e6)
         
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL))
+        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL)!)
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         self.map.operationalLayers.addObject(self.featureLayer)
@@ -61,9 +61,23 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
         self.mapView.callout.showCalloutForFeature(feature, layer: self.featureLayer, tapLocation: tapLocation, animated: true)
     }
     
+    func applyEdits() {
+        SVProgressHUD.showWithStatus("Applying edits", maskType: .Gradient)
+        
+        self.featureTable.applyEditsWithCompletion({ [weak self] (result:[AGSFeatureEditResult]?, error:NSError?) -> Void in
+            if let error = error {
+                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+            }
+            else {
+                SVProgressHUD.showSuccessWithStatus("Edits applied successfully")
+                self?.showCallout(self!.selectedFeature, tapLocation: nil)
+            }
+        })
+    }
+    
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView!, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint!) {
+    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
@@ -71,31 +85,17 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
         //hide the callout
         self.mapView.callout.dismiss()
         
-        let tolerance:Double = 22
-        let mapTolerance = tolerance * self.mapView.unitsPerPixel
-        let env = AGSEnvelope(XMin: mappoint.x - mapTolerance,
-            yMin: mappoint.y - mapTolerance,
-            xMax: mappoint.x + mapTolerance,
-            yMax: mappoint.y + mapTolerance,
-            spatialReference: self.map.spatialReference)
-        
-        let queryParams = AGSQueryParameters()
-        queryParams.geometry = env
-        queryParams.outFields = ["*"]
-        
-        self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult!, error:NSError!) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screen, tolerance: 5, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }
-            else {
-                if let feature = result.enumerator().nextObject() {
-                    //show callout for the first feature
-                    self?.showCallout(feature, tapLocation: mappoint)
-                    //update selected feature
-                    self?.selectedFeature = feature
-                }
+            else if let features = identifyLayerResult?.geoElements as? [AGSArcGISFeature] where features.count > 0 {
+                //show callout for the first feature
+                self?.showCallout(features[0], tapLocation: mappoint)
+                //update selected feature
+                self?.selectedFeature = features[0]
             }
-        })
+        }
     }
     
     
@@ -121,21 +121,24 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
     //MARK: - EAOptionsVCDelegate
     
     func optionsViewController(optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int) {
-        self.selectedFeature.setAttributeValue(self.types[index], forKey: "typdamage")
-        self.featureTable.updateFeature(self.selectedFeature, completion: { [weak self] (succeeded:Bool, error:NSError!) -> Void in
+        SVProgressHUD.showWithStatus("Updating", maskType: .Gradient)
+        
+        //load feature
+        self.selectedFeature.loadWithCompletion { [weak self] (error:NSError?) -> Void in
             if let error = error {
-                print(error)
+                print("Error while loading feature :: \(error.localizedDescription)")
             }
             else {
-                self?.featureTable.applyEditsWithCompletion({ [weak self] (result:[AnyObject]!, error:NSError!) -> Void in
+                self?.selectedFeature.setAttributeValue(self!.types[index], forKey: "typdamage")
+                self?.featureTable.updateFeature(self!.selectedFeature) { (error: NSError?) -> Void in
                     if let error = error {
                         print(error)
                     }
                     else {
-                        self?.showCallout(self!.selectedFeature, tapLocation: nil)
+                        self?.applyEdits()
                     }
-                })
+                }
             }
-        })
+        }
     }
 }

@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -62,8 +62,8 @@ class GraphicsWithSymbolsViewController: UIViewController {
         
         
         //create a marker symbol
-        let buoyMarker = AGSSimpleMarkerSymbol(style: AGSSimpleMarkerSymbolStyle.Circle, color: UIColor.redColor(), size: 10)
-        
+        let buoyMarker = AGSSimpleMarkerSymbol(style: .Circle, color: UIColor.redColor(), size: 10)
+
         
         //create graphics
         let buoyGraphic1 = AGSGraphic(geometry: buoy1Loc, symbol: buoyMarker)
@@ -72,7 +72,7 @@ class GraphicsWithSymbolsViewController: UIViewController {
         let buoyGraphic4 = AGSGraphic(geometry: buoy4Loc, symbol: buoyMarker)
         
         //add the graphics to the graphics overlay
-        graphicsOverlay.graphics.addObjects([buoyGraphic1, buoyGraphic2, buoyGraphic3, buoyGraphic4])
+        graphicsOverlay.graphics.addObjectsFromArray([buoyGraphic1, buoyGraphic2, buoyGraphic3, buoyGraphic4])
     }
     
     private func addText(graphicsOverlay:AGSGraphicsOverlay) {
@@ -82,13 +82,9 @@ class GraphicsWithSymbolsViewController: UIViewController {
         let craigleithLocation = AGSPoint(x: -2.720324, y: 56.073569, spatialReference: wgs84)
         
         //create text symbols
-        let bassRockSymbol = AGSTextSymbol(size: 10, text: "Bass Rock", color: UIColor(red: 0, green: 0, blue: 230/255.0, alpha: 1))
-        bassRockSymbol.horizontalAlignment = AGSHorizontalAlignment.Left
-        bassRockSymbol.verticalAlignment = AGSVerticalAlignment.Bottom
+        let bassRockSymbol = AGSTextSymbol(text: "Bass Rock", color: UIColor(red: 0, green: 0, blue: 230/255.0, alpha: 1), size: 10, horizontalAlignment: AGSHorizontalAlignment.Left, verticalAlignment: AGSVerticalAlignment.Bottom)
         
-        let craigleithSymbol = AGSTextSymbol(size: 10, text: "Craigleith", color: UIColor(red: 0, green: 0, blue: 230/255.0, alpha: 1))
-        craigleithSymbol.horizontalAlignment = .Right
-        craigleithSymbol.verticalAlignment = .Top
+        let craigleithSymbol = AGSTextSymbol(text: "Craigleith", color: UIColor(red: 0, green: 0, blue: 230/255.0, alpha: 1), size: 10, horizontalAlignment: AGSHorizontalAlignment.Right, verticalAlignment: AGSVerticalAlignment.Top)
         
         //define a graphic from the geometry and symbol
         let bassRockGraphic = AGSGraphic(geometry: bassLocation, symbol: bassRockSymbol)
@@ -106,7 +102,7 @@ class GraphicsWithSymbolsViewController: UIViewController {
         //define a line symbol
         let lineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.Dash,
             color: UIColor(red: 0.5, green: 0, blue: 0.5, alpha: 1),
-            width: 4, antialias: true, opacity: 1)
+            width: 4)
         
         //create the graphic
         let boatTripGraphic = AGSGraphic(geometry: boatRoute, symbol: lineSymbol)
@@ -122,10 +118,9 @@ class GraphicsWithSymbolsViewController: UIViewController {
         //define the fill symbol and outline
         let outlineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.Dash,
             color: UIColor(red: 0, green: 0, blue: 0.5, alpha: 1),
-            width: 1, antialias: true, opacity: 1)
+            width: 1)
         let fillSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.DiagonalCross,
-            color: UIColor(red: 0, green: 80/255.0, blue: 0, alpha: 1),
-            opacity: 1, outline: outlineSymbol)
+            color: UIColor(red: 0, green: 80/255.0, blue: 0, alpha: 1), outline: outlineSymbol)
         
         //nesting graphic
         let nestingGraphic = AGSGraphic(geometry: nestingGround, symbol: fillSymbol)

@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@ class FLSelectionViewController: UIViewController, AGSMapViewTouchDelegate {
         self.mapView.touchDelegate = self
         
         //create feature table using a url
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL))
+        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL)!)
         //create feature layer using this feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         self.featureLayer.selectionColor = UIColor.cyanColor()
@@ -57,13 +57,13 @@ class FLSelectionViewController: UIViewController, AGSMapViewTouchDelegate {
     
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView!, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint!) {
+    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
         
-        let tolerance:Double = 22
-        let mapTolerance = tolerance * self.mapView.unitsPerPixel
+        let tolerance:Double = 5
+        let mapTolerance = tolerance * self.mapView.unitsPerPoint
         let envelope = AGSEnvelope(XMin: mappoint.x - mapTolerance,
             yMin: mappoint.y - mapTolerance,
             xMax: mappoint.x + mapTolerance,
@@ -72,14 +72,13 @@ class FLSelectionViewController: UIViewController, AGSMapViewTouchDelegate {
         
         let queryParams = AGSQueryParameters()
         queryParams.geometry = envelope
-        queryParams.outFields = ["*"]
         
-        self.featureLayer.selectFeaturesWithQuery(queryParams, mode: AGSSelectionMode.New) { (queryResult:AGSFeatureQueryResult!, error:NSError!) -> Void in
+        self.featureLayer.selectFeaturesWithQuery(queryParams, mode: AGSSelectionMode.New) { (queryResult:AGSFeatureQueryResult?, error:NSError?) -> Void in
             if let error = error {
                 print(error)
             }
-            if let result = queryResult, enumerator = result.enumerator() {
-                print("\(enumerator.allObjects.count) feature(s) selected")
+            if let result = queryResult {
+                print("\(result.allObjects.count) feature(s) selected")
             }
         }
     }

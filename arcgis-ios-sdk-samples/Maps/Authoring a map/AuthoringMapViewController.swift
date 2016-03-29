@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -54,14 +54,9 @@ class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, 
         super.viewDidLoad()
         
         //Auth Manager settings
-        AGSAuthenticationManager.setClientIDForPortalURLHandler { (portalURL:String) -> String in
-            return "RsFgCI1clPQ7TVwD"
-        }
-        AGSAuthenticationManager.setRedirectURLHandler { () -> String in
-            return "iOSSamples://auth"
-        }
-//        AGSAuthenticationManager.credentialCache().enableAutoSyncToKeychainWithIdentifier("Samples_App", accessGroup: nil)
-        AGSAuthenticationManager.credentialCache().removeAllCredentials()
+        let config = AGSOAuthConfiguration(portalURL: nil, clientID: "RsFgCI1clPQ7TVwD", redirectURL: "iOSSamples://auth")
+        AGSAuthenticationManager.sharedAuthenticationManager().OAuthConfigurations.addObject(config)
+        AGSAuthenticationManager.sharedAuthenticationManager().credentialCache.removeAllCredentials()
         
         let map = AGSMap(basemap: AGSBasemap.imageryBasemap())
         
@@ -160,7 +155,7 @@ class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, 
         
         //add the selected operational layers
         if let layers = layers {
-            map.operationalLayers.addObjects(layers)
+            map.operationalLayers.addObjectsFromArray(layers)
         }
         //assign the new map to the map view
         self.mapView.map = map
@@ -172,7 +167,7 @@ class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, 
     //MARK: - SaveAsVCDelegate
     
     func saveAsViewController(saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String?) {
-        SVProgressHUD.showWithStatus("Saving")
+        SVProgressHUD.showWithStatus("Saving", maskType: .Gradient)
         //set the initial viewpoint from map view
         self.mapView.map?.initialViewpoint = self.mapView.currentViewpointWithType(AGSViewpointType.CenterAndScale)
         

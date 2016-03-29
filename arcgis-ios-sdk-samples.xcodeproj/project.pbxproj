@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3E0257201BAB5D7700ACAC18 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E02571F1BAB5D7700ACAC18 /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
+		3E0257201BAB5D7700ACAC18 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E02571F1BAB5D7700ACAC18 /* Default-568h@2x.png */; };
 		3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */; };
 		3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */ = {isa = PBXBuildFile; fileRef = 3E03F0981B056F9C0078EB36 /* highlight.pack.js */; };
 		3E03F09B1B05714A0078EB36 /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 3E03F09A1B05714A0078EB36 /* default.css */; };
+		3E0830BA1BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0830B91BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift */; };
+		3E0830BC1BC31B69001AF9A7 /* CustomSearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0830BB1BC31B69001AF9A7 /* CustomSearchHeaderView.xib */; };
+		3E0830BE1BC33681001AF9A7 /* SuggestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0830BD1BC33681001AF9A7 /* SuggestionTableViewCell.xib */; };
 		3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */; };
 		3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */; };
 		3E0D3AD71AFD481900FC60D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD61AFD481900FC60D6 /* Main.storyboard */; };
@@ -27,6 +30,9 @@
 		3E39F6D41B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */; };
 		3E39F6D51B979135000DEC6C /* EditFeaturesOnlineViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E39F6D01B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift */; };
 		3E39F6D61B979135000DEC6C /* FeatureTemplatePickerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */; };
+		3E3B2C1F1BBCA37F00A99C5E /* ContentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B2C1E1BBCA37F00A99C5E /* ContentCollectionViewController.swift */; };
+		3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B2C211BBCADDB00A99C5E /* ContentTableCell.swift */; };
+		3E3B2C241BBD9CD300A99C5E /* SearchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B2C231BBD9CD300A99C5E /* SearchEngine.swift */; };
 		3E41DD721B9A1F4600DA11CC /* AddFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */; };
 		3E41DD741B9A241600DA11CC /* AddFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E41DD731B9A241500DA11CC /* AddFeatures.storyboard */; };
 		3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E41DD761B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift */; };
@@ -40,12 +46,40 @@
 		3E4B05FB1B39EF250072E514 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B05F21B39EF250072E514 /* TPKeyboardAvoidingScrollView.m */; };
 		3E4B05FC1B39EF250072E514 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B05F41B39EF250072E514 /* TPKeyboardAvoidingTableView.m */; };
 		3E4B05FD1B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B05F61B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		3E4BF4421C5AE98300D85919 /* FindAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF4411C5AE98300D85919 /* FindAddressViewController.swift */; };
+		3E4BF4441C5AEA6500D85919 /* WorldAddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF4431C5AEA6500D85919 /* WorldAddressesViewController.swift */; };
+		3E4BF4461C5AED5100D85919 /* FindAddress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF4451C5AED5100D85919 /* FindAddress.storyboard */; };
+		3E4BF4481C5AEF3D00D85919 /* ReverseGeocode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF4471C5AEF3D00D85919 /* ReverseGeocode.storyboard */; };
+		3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF4491C5AEF8800D85919 /* ReverseGeocodeViewController.swift */; };
+		3E4BF44C1C5AF04300D85919 /* FindPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF44B1C5AF04300D85919 /* FindPlaceViewController.swift */; };
+		3E4BF44E1C5AF0AD00D85919 /* FindPlace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF44D1C5AF0AD00D85919 /* FindPlace.storyboard */; };
+		3E4BF4561C5BD66C00D85919 /* OfflineGeocodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF4551C5BD66C00D85919 /* OfflineGeocodeViewController.swift */; };
+		3E4BF4581C5BD6C400D85919 /* SanDiegoAddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF4571C5BD6C400D85919 /* SanDiegoAddressesViewController.swift */; };
+		3E4BF45A1C5BD77300D85919 /* OfflineGeocode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF4591C5BD77300D85919 /* OfflineGeocode.storyboard */; };
+		3E4BF47C1C5BDDCA00D85919 /* san-diego-locator.loc in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF4781C5BDDCA00D85919 /* san-diego-locator.loc */; };
+		3E4BF47D1C5BDDCA00D85919 /* san-diego-locator.loc.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF4791C5BDDCA00D85919 /* san-diego-locator.loc.xml */; };
+		3E4BF47E1C5BDDCA00D85919 /* san-diego-locator.locb in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF47A1C5BDDCA00D85919 /* san-diego-locator.locb */; };
+		3E4BF47F1C5BDDCA00D85919 /* san-diego-locator.lox in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF47B1C5BDDCA00D85919 /* san-diego-locator.lox */; };
+		3E4BF4801C5BDF0900D85919 /* FindAddressViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4411C5AE98300D85919 /* FindAddressViewController.swift */; };
+		3E4BF4811C5BDF0900D85919 /* WorldAddressesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4431C5AEA6500D85919 /* WorldAddressesViewController.swift */; };
+		3E4BF4821C5BDF0900D85919 /* ReverseGeocodeViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4491C5AEF8800D85919 /* ReverseGeocodeViewController.swift */; };
+		3E4BF4831C5BDF0900D85919 /* FindPlaceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF44B1C5AF04300D85919 /* FindPlaceViewController.swift */; };
+		3E4BF4841C5BDF0900D85919 /* OfflineGeocodeViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4551C5BD66C00D85919 /* OfflineGeocodeViewController.swift */; };
+		3E4BF4851C5BDF0900D85919 /* SanDiegoAddressesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4571C5BD6C400D85919 /* SanDiegoAddressesViewController.swift */; };
+		3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */; };
 		3E5848FE1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */; };
 		3E5849001B9123E900AB3CE9 /* FeatureLayerURL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */; };
 		3E5849011B91256300AB3CE9 /* BookmarksListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8526341B90D92700690EBD /* BookmarksListViewController.swift */; };
 		3E5849021B91256300AB3CE9 /* BookmarksViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8526351B90D92700690EBD /* BookmarksViewController.swift */; };
 		3E5849031B91256300AB3CE9 /* FeatureLayerURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */; };
 		3E676DF11B1D0B6000D4029A /* Camera Shutter.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */; };
+		3E6AE3EC1C6D11BA0026E59C /* OfflineRouting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6AE3EB1C6D11BA0026E59C /* OfflineRouting.storyboard */; };
+		3E6AE3EE1C6D11FD0026E59C /* OfflineRoutingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AE3ED1C6D11FD0026E59C /* OfflineRoutingViewController.swift */; };
+		3E6AE3F11C6D1B2E0026E59C /* san-diego in Resources */ = {isa = PBXBuildFile; fileRef = 3E6AE3F01C6D1B2E0026E59C /* san-diego */; };
+		3E6AE3F21C6D1C490026E59C /* OfflineRoutingViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6AE3ED1C6D11FD0026E59C /* OfflineRoutingViewController.swift */; };
+		3E6AE3F91C73B5480026E59C /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */; };
+		3E6AE3FA1C73B5480026E59C /* FindRoute.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6AE3F71C73B5480026E59C /* FindRoute.storyboard */; };
+		3E6AE3FB1C73B5480026E59C /* FindRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */; };
 		3E71621F1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71621E1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift */; };
 		3E7162351BA1F529008DE398 /* GraphicsWithSymbols.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E7162341BA1F529008DE398 /* GraphicsWithSymbols.storyboard */; };
 		3E7162361BA21932008DE398 /* GraphicsWithSymbolsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E71621E1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift */; };
@@ -55,6 +89,28 @@
 		3E85263D1B90DE2C00690EBD /* DisplayMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E85263C1B90DE2C00690EBD /* DisplayMapViewController.swift */; };
 		3E85263F1B90E06F00690EBD /* DisplayMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E85263E1B90E06F00690EBD /* DisplayMap.storyboard */; };
 		3E8526401B90E19C00690EBD /* DisplayMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E85263C1B90DE2C00690EBD /* DisplayMapViewController.swift */; };
+
+		3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */; };
+		3EC39C1E1C9A59B9003F6459 /* DirectionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */; };
+		3EC39C1F1C9A59B9003F6459 /* RouteParametersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */; };
+		3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C201C9A59D5003F6459 /* RouteAroundBarriers.storyboard */; };
+		3EC39C221C9A643E003F6459 /* RouteAroundBarriersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */; };
+		3EC39C231C9A643E003F6459 /* DirectionsListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */; };
+		3EC39C241C9A643E003F6459 /* RouteParametersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */; };
+		3EC39C2E1C9B0A9D003F6459 /* Campus.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C2C1C9B0A9D003F6459 /* Campus.tpk */; };
+		3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C2D1C9B0A9D003F6459 /* SanFrancisco.tpk */; };
+		3EC39C321C9B0DF6003F6459 /* ExportTilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C311C9B0DF6003F6459 /* ExportTilesViewController.swift */; };
+		3EC39C341C9B106D003F6459 /* ExportTiles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C331C9B106D003F6459 /* ExportTiles.storyboard */; };
+		3EC39C371C9B1ADA003F6459 /* AGSExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C361C9B1ADA003F6459 /* AGSExtensions.swift */; };
+		3EC39C3A1C9B23DF003F6459 /* GenerateGeodatabase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C391C9B23DF003F6459 /* GenerateGeodatabase.storyboard */; };
+		3EC39C3C1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C3B1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift */; };
+		3EC39C3F1C9B47C2003F6459 /* OfflineEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */; };
+		3EC39C411C9B4857003F6459 /* FeatureLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */; };
+		3EC39C431C9B4872003F6459 /* OfflineEditing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */; };
+		3EC39C461C9B515D003F6459 /* ExportTilesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C311C9B0DF6003F6459 /* ExportTilesViewController.swift */; };
+		3EC39C471C9B515D003F6459 /* GenerateGeodatabaseViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C3B1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift */; };
+		3EC39C481C9B515D003F6459 /* OfflineEditingViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */; };
+		3EC39C491C9B515D003F6459 /* FeatureLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */; };
 		3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ECCFE381BD0401A00CE256D /* LayerStatus.storyboard */; settings = {ASSET_TAGS = (); }; };
 		3ECCFE3C1BD0401A00CE256D /* LayerStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		3ED028571B8E3A8500ACA70D /* AuthoringMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028021B8E3A8400ACA70D /* AuthoringMap.storyboard */; };
@@ -171,10 +227,15 @@
 		3ED0299E1B8E571700ACA70D /* EditGeometryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED0295D1B8E3ACD00ACA70D /* EditGeometryViewController.swift */; };
 		3ED0299F1B8E571700ACA70D /* AttachmentsListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED0294E1B8E3ACD00ACA70D /* AttachmentsListViewController.swift */; };
 		3ED029A01B8E571700ACA70D /* EditAttachmentViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029501B8E3ACD00ACA70D /* EditAttachmentViewController.swift */; };
+		3ED5D36F1C75985C0091D621 /* FindRouteViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */; };
+		3ED5D3701C75985C0091D621 /* DirectionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */; };
 		3ED5EB731B7404D0009F9B75 /* SampleInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5EB721B7404D0009F9B75 /* SampleInfoViewController.swift */; };
 		3ED5EB751B740A58009F9B75 /* SegmentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5EB741B740A58009F9B75 /* SegmentedViewController.swift */; };
 		3ED5EB771B752A42009F9B75 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 3ED5EB761B752A42009F9B75 /* style.css */; };
 		3EE692021B03D22500C167B8 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE692011B03D22500C167B8 /* Node.swift */; };
+		3EE8B9531CA08E54003AA705 /* VectorTileLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */; };
+		3EE8B9551CA08E71003AA705 /* VectorTileLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */; };
+		3EE8B9591CA0C020003AA705 /* VectorTileLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
 /* End PBXBuildFile section */
 
@@ -185,6 +246,23 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3EE8B9591CA0C020003AA705 /* VectorTileLayerViewController.swift in CopyFiles */,
+				3EC39C461C9B515D003F6459 /* ExportTilesViewController.swift in CopyFiles */,
+				3EC39C471C9B515D003F6459 /* GenerateGeodatabaseViewController.swift in CopyFiles */,
+				3EC39C481C9B515D003F6459 /* OfflineEditingViewController.swift in CopyFiles */,
+				3EC39C491C9B515D003F6459 /* FeatureLayersViewController.swift in CopyFiles */,
+				3EC39C221C9A643E003F6459 /* RouteAroundBarriersViewController.swift in CopyFiles */,
+				3EC39C231C9A643E003F6459 /* DirectionsListViewController.swift in CopyFiles */,
+				3EC39C241C9A643E003F6459 /* RouteParametersViewController.swift in CopyFiles */,
+				3ED5D36F1C75985C0091D621 /* FindRouteViewController.swift in CopyFiles */,
+				3ED5D3701C75985C0091D621 /* DirectionsViewController.swift in CopyFiles */,
+				3E6AE3F21C6D1C490026E59C /* OfflineRoutingViewController.swift in CopyFiles */,
+				3E4BF4801C5BDF0900D85919 /* FindAddressViewController.swift in CopyFiles */,
+				3E4BF4811C5BDF0900D85919 /* WorldAddressesViewController.swift in CopyFiles */,
+				3E4BF4821C5BDF0900D85919 /* ReverseGeocodeViewController.swift in CopyFiles */,
+				3E4BF4831C5BDF0900D85919 /* FindPlaceViewController.swift in CopyFiles */,
+				3E4BF4841C5BDF0900D85919 /* OfflineGeocodeViewController.swift in CopyFiles */,
+				3E4BF4851C5BDF0900D85919 /* SanDiegoAddressesViewController.swift in CopyFiles */,
 				3E24E6741BFE560B00322DAC /* LayerStatusViewController.swift in CopyFiles */,
 				3E7162361BA21932008DE398 /* GraphicsWithSymbolsViewController.swift in CopyFiles */,
 				3E41DD7A1B9F836600DA11CC /* AddFeaturesViewController.swift in CopyFiles */,
@@ -244,6 +322,9 @@
 		3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SourceCodeViewController.swift; path = "Content Display Logic/Controllers/SourceCodeViewController.swift"; sourceTree = "<group>"; };
 		3E03F0981B056F9C0078EB36 /* highlight.pack.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.pack.js; sourceTree = "<group>"; };
 		3E03F09A1B05714A0078EB36 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
+		3E0830B91BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomSearchHeaderView.swift; path = "Content Display Logic/Views/CustomSearchHeaderView.swift"; sourceTree = "<group>"; };
+		3E0830BB1BC31B69001AF9A7 /* CustomSearchHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomSearchHeaderView.xib; path = "Content Display Logic/Views/CustomSearchHeaderView.xib"; sourceTree = "<group>"; };
+		3E0830BD1BC33681001AF9A7 /* SuggestionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SuggestionTableViewCell.xib; path = "Content Display Logic/Cells/SuggestionTableViewCell.xib"; sourceTree = "<group>"; };
 		3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ContentPList.plist; path = "Content Display Logic/ContentPList.plist"; sourceTree = "<group>"; };
 		3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentTableViewController.swift; path = "Content Display Logic/Controllers/ContentTableViewController.swift"; sourceTree = "<group>"; };
 		3E0D3AD61AFD481900FC60D6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "Content Display Logic/Storyboard/Main.storyboard"; sourceTree = "<group>"; };
@@ -259,6 +340,9 @@
 		3E39F6CF1B9790A9000DEC6C /* EditFeaturesOnline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EditFeaturesOnline.storyboard; path = "Edit data/Edit features (connected)/EditFeaturesOnline.storyboard"; sourceTree = "<group>"; };
 		3E39F6D01B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditFeaturesOnlineViewController.swift; path = "Edit data/Edit features (connected)/EditFeaturesOnlineViewController.swift"; sourceTree = "<group>"; };
 		3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureTemplatePickerViewController.swift; path = "Edit data/Edit features (connected)/FeatureTemplatePickerViewController.swift"; sourceTree = "<group>"; };
+		3E3B2C1E1BBCA37F00A99C5E /* ContentCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentCollectionViewController.swift; path = "Content Display Logic/Controllers/ContentCollectionViewController.swift"; sourceTree = "<group>"; };
+		3E3B2C211BBCADDB00A99C5E /* ContentTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentTableCell.swift; path = "Content Display Logic/Cells/ContentTableCell.swift"; sourceTree = "<group>"; };
+		3E3B2C231BBD9CD300A99C5E /* SearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchEngine.swift; path = "Content Display Logic/Model/SearchEngine.swift"; sourceTree = "<group>"; };
 		3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddFeaturesViewController.swift; path = "Edit data/Add features (feature service)/AddFeaturesViewController.swift"; sourceTree = "<group>"; };
 		3E41DD731B9A241500DA11CC /* AddFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddFeatures.storyboard; path = "Edit data/Add features (feature service)/AddFeatures.storyboard"; sourceTree = "<group>"; };
 		3E41DD761B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeleteFeaturesViewController.swift; path = "Edit data/Delete features (feature service)/DeleteFeaturesViewController.swift"; sourceTree = "<group>"; };
@@ -277,9 +361,30 @@
 		3E4B05F41B39EF250072E514 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		3E4B05F51B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		3E4B05F61B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		3E4BF4411C5AE98300D85919 /* FindAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindAddressViewController.swift; path = "Search/Find address/FindAddressViewController.swift"; sourceTree = "<group>"; };
+		3E4BF4431C5AEA6500D85919 /* WorldAddressesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorldAddressesViewController.swift; path = "Search/Find address/WorldAddressesViewController.swift"; sourceTree = "<group>"; };
+		3E4BF4451C5AED5100D85919 /* FindAddress.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FindAddress.storyboard; path = "Search/Find address/FindAddress.storyboard"; sourceTree = "<group>"; };
+		3E4BF4471C5AEF3D00D85919 /* ReverseGeocode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ReverseGeocode.storyboard; path = "Search/Reverse geocode/ReverseGeocode.storyboard"; sourceTree = "<group>"; };
+		3E4BF4491C5AEF8800D85919 /* ReverseGeocodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReverseGeocodeViewController.swift; path = "Search/Reverse geocode/ReverseGeocodeViewController.swift"; sourceTree = "<group>"; };
+		3E4BF44B1C5AF04300D85919 /* FindPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindPlaceViewController.swift; path = "Search/Find place/FindPlaceViewController.swift"; sourceTree = "<group>"; };
+		3E4BF44D1C5AF0AD00D85919 /* FindPlace.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FindPlace.storyboard; path = "Search/Find place/FindPlace.storyboard"; sourceTree = "<group>"; };
+		3E4BF4551C5BD66C00D85919 /* OfflineGeocodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineGeocodeViewController.swift; path = "Search/Offline geocode/OfflineGeocodeViewController.swift"; sourceTree = "<group>"; };
+		3E4BF4571C5BD6C400D85919 /* SanDiegoAddressesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SanDiegoAddressesViewController.swift; path = "Search/Offline geocode/SanDiegoAddressesViewController.swift"; sourceTree = "<group>"; };
+		3E4BF4591C5BD77300D85919 /* OfflineGeocode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OfflineGeocode.storyboard; path = "Search/Offline geocode/OfflineGeocode.storyboard"; sourceTree = "<group>"; };
+		3E4BF4781C5BDDCA00D85919 /* san-diego-locator.loc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "san-diego-locator.loc"; sourceTree = "<group>"; };
+		3E4BF4791C5BDDCA00D85919 /* san-diego-locator.loc.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "san-diego-locator.loc.xml"; sourceTree = "<group>"; };
+		3E4BF47A1C5BDDCA00D85919 /* san-diego-locator.locb */ = {isa = PBXFileReference; lastKnownFileType = file; path = "san-diego-locator.locb"; sourceTree = "<group>"; };
+		3E4BF47B1C5BDDCA00D85919 /* san-diego-locator.lox */ = {isa = PBXFileReference; lastKnownFileType = file; path = "san-diego-locator.lox"; sourceTree = "<group>"; };
+		3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = streetmap_SD.tpk; path = "Shared resources/Tile packages/streetmap_SD.tpk"; sourceTree = "<group>"; };
 		3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayerURLViewController.swift; path = "Features/Feature layer (feature service)/FeatureLayerURLViewController.swift"; sourceTree = "<group>"; };
 		3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FeatureLayerURL.storyboard; path = "Features/Feature layer (feature service)/FeatureLayerURL.storyboard"; sourceTree = "<group>"; };
 		3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Camera Shutter.caf"; sourceTree = "<group>"; };
+		3E6AE3EB1C6D11BA0026E59C /* OfflineRouting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OfflineRouting.storyboard; path = "Route & Navigation/Offline routing/OfflineRouting.storyboard"; sourceTree = "<group>"; };
+		3E6AE3ED1C6D11FD0026E59C /* OfflineRoutingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineRoutingViewController.swift; path = "Route & Navigation/Offline routing/OfflineRoutingViewController.swift"; sourceTree = "<group>"; };
+		3E6AE3F01C6D1B2E0026E59C /* san-diego */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "san-diego"; path = "Shared resources/Network data/san-diego"; sourceTree = "<group>"; };
+		3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectionsViewController.swift; path = "Route & Navigation/Find route/DirectionsViewController.swift"; sourceTree = "<group>"; };
+		3E6AE3F71C73B5480026E59C /* FindRoute.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FindRoute.storyboard; path = "Route & Navigation/Find route/FindRoute.storyboard"; sourceTree = "<group>"; };
+		3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindRouteViewController.swift; path = "Route & Navigation/Find route/FindRouteViewController.swift"; sourceTree = "<group>"; };
 		3E71621E1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphicsWithSymbolsViewController.swift; path = "Display information/Add graphics with symbols/GraphicsWithSymbolsViewController.swift"; sourceTree = "<group>"; };
 		3E7162341BA1F529008DE398 /* GraphicsWithSymbols.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GraphicsWithSymbols.storyboard; path = "Display information/Add graphics with symbols/GraphicsWithSymbols.storyboard"; sourceTree = "<group>"; };
 		3E8526331B90D92700690EBD /* Bookmarks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Bookmarks.storyboard; path = "Maps/Manage bookmarks/Bookmarks.storyboard"; sourceTree = "<group>"; };
@@ -288,6 +393,20 @@
 		3E85263C1B90DE2C00690EBD /* DisplayMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisplayMapViewController.swift; path = "arcgis-ios-sdk-samples/Maps/Display a map/DisplayMapViewController.swift"; sourceTree = SOURCE_ROOT; };
 		3E85263E1B90E06F00690EBD /* DisplayMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DisplayMap.storyboard; path = "arcgis-ios-sdk-samples/Maps/Display a map/DisplayMap.storyboard"; sourceTree = SOURCE_ROOT; };
 		3EA34D591B38C3B3003DC0E8 /* Samples-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Samples-Bridging-Header.h"; path = "Content Display Logic/Samples-Bridging-Header.h"; sourceTree = "<group>"; };
+		3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteAroundBarriersViewController.swift; path = "Route & Navigation/Route around barriers/RouteAroundBarriersViewController.swift"; sourceTree = "<group>"; };
+		3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectionsListViewController.swift; path = "Route & Navigation/Route around barriers/DirectionsListViewController.swift"; sourceTree = "<group>"; };
+		3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteParametersViewController.swift; path = "Route & Navigation/Route around barriers/RouteParametersViewController.swift"; sourceTree = "<group>"; };
+		3EC39C201C9A59D5003F6459 /* RouteAroundBarriers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = RouteAroundBarriers.storyboard; path = "Route & Navigation/Route around barriers/RouteAroundBarriers.storyboard"; sourceTree = "<group>"; };
+		3EC39C2C1C9B0A9D003F6459 /* Campus.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = Campus.tpk; path = "Shared resources/Tile packages/Campus.tpk"; sourceTree = "<group>"; };
+		3EC39C2D1C9B0A9D003F6459 /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "Shared resources/Tile packages/SanFrancisco.tpk"; sourceTree = "<group>"; };
+		3EC39C311C9B0DF6003F6459 /* ExportTilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExportTilesViewController.swift; path = "Layers/Export tiles/ExportTilesViewController.swift"; sourceTree = "<group>"; };
+		3EC39C331C9B106D003F6459 /* ExportTiles.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ExportTiles.storyboard; path = "Layers/Export tiles/ExportTiles.storyboard"; sourceTree = "<group>"; };
+		3EC39C361C9B1ADA003F6459 /* AGSExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AGSExtensions.swift; path = "Shared resources/Extensions/AGSExtensions.swift"; sourceTree = "<group>"; };
+		3EC39C391C9B23DF003F6459 /* GenerateGeodatabase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GenerateGeodatabase.storyboard; path = "Features/Generate geodatabase/GenerateGeodatabase.storyboard"; sourceTree = "<group>"; };
+		3EC39C3B1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenerateGeodatabaseViewController.swift; path = "Features/Generate geodatabase/GenerateGeodatabaseViewController.swift"; sourceTree = "<group>"; };
+		3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineEditingViewController.swift; path = "Edit data/Offline edit and sync/OfflineEditingViewController.swift"; sourceTree = "<group>"; };
+		3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayersViewController.swift; path = "Edit data/Offline edit and sync/FeatureLayersViewController.swift"; sourceTree = "<group>"; };
+		3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OfflineEditing.storyboard; path = "Edit data/Offline edit and sync/OfflineEditing.storyboard"; sourceTree = "<group>"; };
 		3ECCFE381BD0401A00CE256D /* LayerStatus.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LayerStatus.storyboard; sourceTree = "<group>"; };
 		3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerStatusViewController.swift; sourceTree = "<group>"; };
 		3ED028021B8E3A8400ACA70D /* AuthoringMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AuthoringMap.storyboard; sourceTree = "<group>"; };
@@ -369,6 +488,8 @@
 		3ED5EB741B740A58009F9B75 /* SegmentedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentedViewController.swift; path = "Content Display Logic/Controllers/SegmentedViewController.swift"; sourceTree = "<group>"; };
 		3ED5EB761B752A42009F9B75 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		3EE692011B03D22500C167B8 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Node.swift; path = "Content Display Logic/Model/Node.swift"; sourceTree = "<group>"; };
+		3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = VectorTileLayer.storyboard; path = "Layers/Vector tile layer/VectorTileLayer.storyboard"; sourceTree = "<group>"; };
+		3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VectorTileLayerViewController.swift; path = "Layers/Vector tile layer/VectorTileLayerViewController.swift"; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -428,10 +549,12 @@
 				3ED027FF1B8E39EE00ACA70D /* Layers */,
 				3ED027FE1B8E39DD00ACA70D /* Features */,
 				3ED027FD1B8E392500ACA70D /* Display information */,
+				3E4BF43C1C5AC66700D85919 /* Search */,
 				3ED027FC1B8E38F400ACA70D /* Edit data */,
+				3E6AE3E91C6D10DA0026E59C /* Route & Navigation */,
 				3E4B05E51B39EE920072E514 /* Shared resources */,
-				3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */,
 				3E23AA071AFC2DE0002E2214 /* Content Display Logic */,
+				3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */,
 			);
 			path = "arcgis-ios-sdk-samples";
 			sourceTree = "<group>";
@@ -449,17 +572,19 @@
 		3E23AA071AFC2DE0002E2214 /* Content Display Logic */ = {
 			isa = PBXGroup;
 			children = (
-				3E676DEF1B1D0B6000D4029A /* Audio Files */,
-				3E2A68161B153C8B00A318AA /* Custom BarButtonItem */,
 				3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */,
 				3E23A9EE1AFC28F6002E2214 /* Images.xcassets */,
 				3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */,
-				3E03F0971B056F9C0078EB36 /* Js */,
+				3EA34D591B38C3B3003DC0E8 /* Samples-Bridging-Header.h */,
+				3E676DEF1B1D0B6000D4029A /* Audio Files */,
+				3E3B2C201BBCADB300A99C5E /* Cells */,
 				3E23AA0B1AFC327F002E2214 /* Controllers */,
+				3E2A68161B153C8B00A318AA /* Custom BarButtonItem */,
+				3E03F0971B056F9C0078EB36 /* Js */,
 				3EE692001B03D1FC00C167B8 /* Model */,
 				3E0D3AD51AFD47BF00FC60D6 /* Storyboard */,
 				3E23A9E31AFC28F6002E2214 /* Supporting Files */,
-				3EA34D591B38C3B3003DC0E8 /* Samples-Bridging-Header.h */,
+				3E5163361BBEF69B00D42C4C /* Views */,
 			);
 			name = "Content Display Logic";
 			sourceTree = "<group>";
@@ -472,6 +597,7 @@
 				3E2A680D1B0D2A7000A318AA /* ListViewController.swift */,
 				3ED5EB721B7404D0009F9B75 /* SampleInfoViewController.swift */,
 				3ED5EB741B740A58009F9B75 /* SegmentedViewController.swift */,
+				3E3B2C1E1BBCA37F00A99C5E /* ContentCollectionViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -492,6 +618,15 @@
 				3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */,
 			);
 			name = "Edit features (connected)";
+			sourceTree = "<group>";
+		};
+		3E3B2C201BBCADB300A99C5E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3E0830BD1BC33681001AF9A7 /* SuggestionTableViewCell.xib */,
+				3E3B2C211BBCADDB00A99C5E /* ContentTableCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		3E41DD6D1B9A1EA800DA11CC /* Add features (feature service) */ = {
@@ -515,6 +650,10 @@
 		3E4B05E51B39EE920072E514 /* Shared resources */ = {
 			isa = PBXGroup;
 			children = (
+				3EC39C351C9B1A7A003F6459 /* Extensions */,
+				3E6AE3EF1C6D15C40026E59C /* Network data */,
+				3E4BF45D1C5BD84900D85919 /* Locator */,
+				3E4BF45B1C5BD7A900D85919 /* Tile packages */,
 				3E4B05E61B39EF250072E514 /* Libraries */,
 			);
 			name = "Shared resources";
@@ -558,6 +697,94 @@
 			path = TPKeyboardAvoiding;
 			sourceTree = "<group>";
 		};
+		3E4BF43C1C5AC66700D85919 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BF43D1C5AC68A00D85919 /* Find address */,
+				3E4BF4401C5AE8A200D85919 /* Reverse geocode */,
+				3E4BF43F1C5AC6B500D85919 /* Find place */,
+				3E4BF43E1C5AC6A400D85919 /* Offline geocode */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		3E4BF43D1C5AC68A00D85919 /* Find address */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BF4411C5AE98300D85919 /* FindAddressViewController.swift */,
+				3E4BF4431C5AEA6500D85919 /* WorldAddressesViewController.swift */,
+				3E4BF4451C5AED5100D85919 /* FindAddress.storyboard */,
+			);
+			name = "Find address";
+			sourceTree = "<group>";
+		};
+		3E4BF43E1C5AC6A400D85919 /* Offline geocode */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BF4551C5BD66C00D85919 /* OfflineGeocodeViewController.swift */,
+				3E4BF4571C5BD6C400D85919 /* SanDiegoAddressesViewController.swift */,
+				3E4BF4591C5BD77300D85919 /* OfflineGeocode.storyboard */,
+			);
+			name = "Offline geocode";
+			sourceTree = "<group>";
+		};
+		3E4BF43F1C5AC6B500D85919 /* Find place */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BF44B1C5AF04300D85919 /* FindPlaceViewController.swift */,
+				3E4BF44D1C5AF0AD00D85919 /* FindPlace.storyboard */,
+			);
+			name = "Find place";
+			sourceTree = "<group>";
+		};
+		3E4BF4401C5AE8A200D85919 /* Reverse geocode */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BF4491C5AEF8800D85919 /* ReverseGeocodeViewController.swift */,
+				3E4BF4471C5AEF3D00D85919 /* ReverseGeocode.storyboard */,
+			);
+			name = "Reverse geocode";
+			sourceTree = "<group>";
+		};
+		3E4BF45B1C5BD7A900D85919 /* Tile packages */ = {
+			isa = PBXGroup;
+			children = (
+				3EC39C2C1C9B0A9D003F6459 /* Campus.tpk */,
+				3EC39C2D1C9B0A9D003F6459 /* SanFrancisco.tpk */,
+				3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */,
+			);
+			name = "Tile packages";
+			sourceTree = "<group>";
+		};
+		3E4BF45D1C5BD84900D85919 /* Locator */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BF4771C5BDDCA00D85919 /* san-diego */,
+			);
+			name = Locator;
+			path = "Shared resources/Locator";
+			sourceTree = "<group>";
+		};
+		3E4BF4771C5BDDCA00D85919 /* san-diego */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BF4781C5BDDCA00D85919 /* san-diego-locator.loc */,
+				3E4BF4791C5BDDCA00D85919 /* san-diego-locator.loc.xml */,
+				3E4BF47A1C5BDDCA00D85919 /* san-diego-locator.locb */,
+				3E4BF47B1C5BDDCA00D85919 /* san-diego-locator.lox */,
+			);
+			path = "san-diego";
+			sourceTree = "<group>";
+		};
+		3E5163361BBEF69B00D42C4C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3E0830B91BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift */,
+				3E0830BB1BC31B69001AF9A7 /* CustomSearchHeaderView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		3E5848FC1B91222200AB3CE9 /* Feature layer (feature service) */ = {
 			isa = PBXGroup;
 			children = (
@@ -574,6 +801,43 @@
 			);
 			name = "Audio Files";
 			path = "Content Display Logic/Audio Files";
+			sourceTree = "<group>";
+		};
+		3E6AE3E91C6D10DA0026E59C /* Route & Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				3E6AE3F31C6D1C920026E59C /* Find route */,
+				3EC39C191C9A5770003F6459 /* Route around barriers */,
+				3E6AE3EA1C6D10F70026E59C /* Offline routing */,
+			);
+			name = "Route & Navigation";
+			sourceTree = "<group>";
+		};
+		3E6AE3EA1C6D10F70026E59C /* Offline routing */ = {
+			isa = PBXGroup;
+			children = (
+				3E6AE3EB1C6D11BA0026E59C /* OfflineRouting.storyboard */,
+				3E6AE3ED1C6D11FD0026E59C /* OfflineRoutingViewController.swift */,
+			);
+			name = "Offline routing";
+			sourceTree = "<group>";
+		};
+		3E6AE3EF1C6D15C40026E59C /* Network data */ = {
+			isa = PBXGroup;
+			children = (
+				3E6AE3F01C6D1B2E0026E59C /* san-diego */,
+			);
+			name = "Network data";
+			sourceTree = "<group>";
+		};
+		3E6AE3F31C6D1C920026E59C /* Find route */ = {
+			isa = PBXGroup;
+			children = (
+				3E6AE3F71C73B5480026E59C /* FindRoute.storyboard */,
+				3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */,
+				3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */,
+			);
+			name = "Find route";
 			sourceTree = "<group>";
 		};
 		3E71621D1BA0D7C2008DE398 /* Add graphics with symbols */ = {
@@ -605,6 +869,53 @@
 			path = "Maps/Open an existing map";
 			sourceTree = "<group>";
 		};
+		3EC39C191C9A5770003F6459 /* Route around barriers */ = {
+			isa = PBXGroup;
+			children = (
+				3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */,
+				3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */,
+				3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */,
+				3EC39C201C9A59D5003F6459 /* RouteAroundBarriers.storyboard */,
+			);
+			name = "Route around barriers";
+			sourceTree = "<group>";
+		};
+		3EC39C301C9B0DAE003F6459 /* Export tiles */ = {
+			isa = PBXGroup;
+			children = (
+				3EC39C311C9B0DF6003F6459 /* ExportTilesViewController.swift */,
+				3EC39C331C9B106D003F6459 /* ExportTiles.storyboard */,
+			);
+			name = "Export tiles";
+			sourceTree = "<group>";
+		};
+		3EC39C351C9B1A7A003F6459 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3EC39C361C9B1ADA003F6459 /* AGSExtensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		3EC39C381C9B2136003F6459 /* Generate geodatabase */ = {
+			isa = PBXGroup;
+			children = (
+				3EC39C391C9B23DF003F6459 /* GenerateGeodatabase.storyboard */,
+				3EC39C3B1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift */,
+			);
+			name = "Generate geodatabase";
+			sourceTree = "<group>";
+		};
+		3EC39C3D1C9B4754003F6459 /* Offline edit and sync */ = {
+			isa = PBXGroup;
+			children = (
+				3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */,
+				3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */,
+				3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */,
+			);
+			name = "Offline edit and sync";
+			sourceTree = "<group>";
+        };
 		3ECCFE371BD0401A00CE256D /* Display layer view state */ = {
 			isa = PBXGroup;
 			children = (
@@ -624,6 +935,7 @@
 				3ED0295B1B8E3ACD00ACA70D /* Update geometries (feature service) */,
 				3ED0294D1B8E3ACD00ACA70D /* Edit feature attachments */,
 				3E39F6CE1B979087000DEC6C /* Edit features (connected) */,
+				3EC39C3D1C9B4754003F6459 /* Offline edit and sync */,
 			);
 			name = "Edit data";
 			sourceTree = "<group>";
@@ -652,6 +964,7 @@
 				3ED028C61B8E3AA500ACA70D /* Feature layer query */,
 				3ED028C01B8E3AA500ACA70D /* Feature layer definition expression */,
 				3ED028BA1B8E3AA500ACA70D /* Change feature layer renderer */,
+				3EC39C381C9B2136003F6459 /* Generate geodatabase */,
 			);
 			name = Features;
 			sourceTree = "<group>";
@@ -660,8 +973,10 @@
 			isa = PBXGroup;
 			children = (
 				3ED028A41B8E3A9800ACA70D /* ArcGIS tiled layer (URL) */,
+				3EC39C301C9B0DAE003F6459 /* Export tiles */,
 				3ED0289F1B8E3A9800ACA70D /* ArcGIS map image layer (URL) */,
 				3ED028A71B8E3A9800ACA70D /* Change sublayer visibility */,
+				3EE8B9511CA08E16003AA705 /* Vector tile layer */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -1024,8 +1339,18 @@
 			isa = PBXGroup;
 			children = (
 				3EE692011B03D22500C167B8 /* Node.swift */,
+				3E3B2C231BBD9CD300A99C5E /* SearchEngine.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		3EE8B9511CA08E16003AA705 /* Vector tile layer */ = {
+			isa = PBXGroup;
+			children = (
+				3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */,
+				3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */,
+			);
+			name = "Vector tile layer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1063,7 +1388,6 @@
 				TargetAttributes = {
 					3E23A9DF1AFC28F6002E2214 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = P8HGHS7JQ8;
 					};
 				};
 			};
@@ -1096,7 +1420,9 @@
 				3ED028E11B8E3AA500ACA70D /* OverrideRenderer.storyboard in Resources */,
 				3ED028731B8E3A8500ACA70D /* MapViewDrawStatus.storyboard in Resources */,
 				3ED028881B8E3A8500ACA70D /* OpenExistingMap.storyboard in Resources */,
+				3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */,
 				3ED028651B8E3A8500ACA70D /* HighwayJson.txt in Resources */,
+				3EC39C3A1C9B23DF003F6459 /* GenerateGeodatabase.storyboard in Resources */,
 				3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */,
 				3ED028E41B8E3AA500ACA70D /* DefinitionExpression.storyboard in Resources */,
 				3ED028B81B8E3A9800ACA70D /* SublayerVisibility.storyboard in Resources */,
@@ -1104,44 +1430,63 @@
 				3ED0294B1B8E3AB300ACA70D /* Sketch.storyboard in Resources */,
 				3ED028571B8E3A8500ACA70D /* AuthoringMap.storyboard in Resources */,
 				3ED029411B8E3AB300ACA70D /* point.gif in Resources */,
+				3E4BF45A1C5BD77300D85919 /* OfflineGeocode.storyboard in Resources */,
 				3ED029401B8E3AB300ACA70D /* line.gif in Resources */,
+				3E6AE3EC1C6D11BA0026E59C /* OfflineRouting.storyboard in Resources */,
 				3E23A9EF1AFC28F6002E2214 /* Images.xcassets in Resources */,
 				3ED0286C1B8E3A8500ACA70D /* DisplayLocation.storyboard in Resources */,
 				3E03F09B1B05714A0078EB36 /* default.css in Resources */,
 				3ED028F71B8E3AA500ACA70D /* ManualCache.storyboard in Resources */,
 				3ED028641B8E3A8500ACA70D /* GriffithParkJson.txt in Resources */,
 				3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */,
+				3E6AE3F11C6D1B2E0026E59C /* san-diego in Resources */,
+				3E4BF44E1C5AF0AD00D85919 /* FindPlace.storyboard in Resources */,
+				3E6AE3FA1C73B5480026E59C /* FindRoute.storyboard in Resources */,
+				3E0830BE1BC33681001AF9A7 /* SuggestionTableViewCell.xib in Resources */,
 				3E41DD741B9A241600DA11CC /* AddFeatures.storyboard in Resources */,
+				3E4BF47C1C5BDDCA00D85919 /* san-diego-locator.loc in Resources */,
 				3E2A68121B14E04300A318AA /* ArcGIS.bundle in Resources */,
 				3E0257201BAB5D7700ACAC18 /* Default-568h@2x.png in Resources */,
 				3ED5EB771B752A42009F9B75 /* style.css in Resources */,
+				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
 				3ED028AF1B8E3A9800ACA70D /* MILUsingURL.storyboard in Resources */,
 				3E676DF11B1D0B6000D4029A /* Camera Shutter.caf in Resources */,
 				3ED029651B8E3ACD00ACA70D /* EditAttachment.storyboard in Resources */,
 				3ED028F41B8E3AA500ACA70D /* OnInteractionCache.storyboard in Resources */,
 				3ED028FA1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard in Resources */,
 				3ED028691B8E3A8500ACA70D /* SetViewpoint.storyboard in Resources */,
+				3E4BF4461C5AED5100D85919 /* FindAddress.storyboard in Resources */,
+				3EC39C431C9B4872003F6459 /* OfflineEditing.storyboard in Resources */,
 				3ED028951B8E3A8500ACA70D /* SetMapsSpatialReference.storyboard in Resources */,
+				3E4BF47D1C5BDDCA00D85919 /* san-diego-locator.loc.xml in Resources */,
 				3E0D3AD71AFD481900FC60D6 /* Main.storyboard in Resources */,
+				3EE8B9531CA08E54003AA705 /* VectorTileLayer.storyboard in Resources */,
 				3ED029311B8E3AB300ACA70D /* Callout.storyboard in Resources */,
+				3E4BF47F1C5BDDCA00D85919 /* san-diego-locator.lox in Resources */,
 				3ED029701B8E3ACD00ACA70D /* EditGeometry.storyboard in Resources */,
 				3E5849001B9123E900AB3CE9 /* FeatureLayerURL.storyboard in Resources */,
 				3ED028E91B8E3AA500ACA70D /* FLQuery.storyboard in Resources */,
 				3E7162351BA1F529008DE398 /* GraphicsWithSymbols.storyboard in Resources */,
 				3ED029391B8E3AB300ACA70D /* MILShowLegend.storyboard in Resources */,
+				3E4BF47E1C5BDDCA00D85919 /* san-diego-locator.locb in Resources */,
 				3E4B05F81B39EF250072E514 /* SVProgressHUD.bundle in Resources */,
+				3E0830BC1BC31B69001AF9A7 /* CustomSearchHeaderView.xib in Resources */,
 				3ED029281B8E3AB300ACA70D /* GORenderers.storyboard in Resources */,
 				3E39F6D21B9790A9000DEC6C /* EditFeaturesOnline.storyboard in Resources */,
+				3E4BF4481C5AEF3D00D85919 /* ReverseGeocode.storyboard in Resources */,
 				3ED028621B8E3A8500ACA70D /* SwitchBasemap.storyboard in Resources */,
 				3E41DD791B9F609500DA11CC /* DeleteFeatures.storyboard in Resources */,
 				3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */,
 				3ED028EE1B8E3AA500ACA70D /* FLSelection.storyboard in Resources */,
 				97DD84671B2B869300184B41 /* xcode.css in Resources */,
 				3ED0289C1B8E3A8500ACA70D /* MapViewScreenshot.storyboard in Resources */,
+				3EC39C2E1C9B0A9D003F6459 /* Campus.tpk in Resources */,
 				3ED0292C1B8E3AB300ACA70D /* GOIdentify.storyboard in Resources */,
+				3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */,
 				3ED029421B8E3AB300ACA70D /* polygon.gif in Resources */,
 				3ED028911B8E3A8500ACA70D /* SetInitialMapLocation.storyboard in Resources */,
 				3ED0288D1B8E3A8500ACA70D /* SetInitialMapArea.storyboard in Resources */,
+				3EC39C341C9B106D003F6459 /* ExportTiles.storyboard in Resources */,
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
 				3ED029691B8E3ACD00ACA70D /* EditAttributes.storyboard in Resources */,
 				3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */,
@@ -1163,7 +1508,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "echo $BUILT_PRODUCTS_DIR\n#readme for the project to skip\nDEFAULT_README=$SRCROOT/README.md\n#find all README.md files in the project\nfind ${SRCROOT} -name \"README.md\" | while read file\ndo\n    #skip if its the default readme for project\n    if [ \"$file\" = \"$DEFAULT_README\" ]\n    then\n        continue\n    fi\n    #extract the folder name from the path\n    FILE_PATH=$(dirname \"$file\")\n    FOLDER_NAME=$(basename \"$FILE_PATH\")\n    #path of the folder to be created for each readme\n    BUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/${FOLDER_NAME}\n\n    #for legacy setting the build folder is also within the SRCROOT folder\n    #check if source path is equal to destination then skip\n    if [ \"$file\" != \"${BUILD_APP_DIR}/README.md\" ]\n    then\n        mkdir -p \"${BUILD_APP_DIR}\"\n        cp \"${file}\" \"${BUILD_APP_DIR}/README.md\"\n    fi\ndone";
+			shellScript = "echo $BUILT_PRODUCTS_DIR\n#readme for the project to skip\nDEFAULT_README=$SRCROOT/README.md\n#find all README.md files in the project\nfind ${SRCROOT} -name \"README.md\" | while read file\ndo\n    #skip if its the default readme for project\n    if [ \"$file\" = \"$DEFAULT_README\" ]\n    then\n        echo $BUILT_PRODUCTS_DIR\n        continue\n    fi\n    #extract the folder name from the path\n    FILE_PATH=$(dirname \"$file\")\n    FOLDER_NAME=$(basename \"$FILE_PATH\")\n    #path of the folder to be created for each readme\n    BUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/${FOLDER_NAME}\n\n    #for legacy setting the build folder is also within the SRCROOT folder\n    #check if source path is equal to destination then skip\n    if [ \"$file\" != \"${BUILD_APP_DIR}/README.md\" ]\n    then\n        mkdir -p \"${BUILD_APP_DIR}\"\n        cp \"${file}\" \"${BUILD_APP_DIR}/README.md\"\n    fi\ndone";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1173,30 +1518,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E39F6D41B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift in Sources */,
+				3EC39C411C9B4857003F6459 /* FeatureLayersViewController.swift in Sources */,
 				3ED029381B8E3AB300ACA70D /* MILLegendTableViewController.swift in Sources */,
+				3E6AE3F91C73B5480026E59C /* DirectionsViewController.swift in Sources */,
 				3ED029321B8E3AB300ACA70D /* CalloutViewController.swift in Sources */,
 				3ED028841B8E3A8500ACA70D /* MapRotationViewController.swift in Sources */,
 				3ED0294C1B8E3AB300ACA70D /* SketchViewController.swift in Sources */,
+				3E0830BA1BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift in Sources */,
 				3ED029711B8E3ACD00ACA70D /* EditGeometryViewController.swift in Sources */,
 				3ED028791B8E3A8500ACA70D /* ManageMapLayersViewController.swift in Sources */,
 				3E4B05FA1B39EF250072E514 /* TPKeyboardAvoidingCollectionView.m in Sources */,
+				3E4BF44C1C5AF04300D85919 /* FindPlaceViewController.swift in Sources */,
 				3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */,
+				3E4BF4441C5AEA6500D85919 /* WorldAddressesViewController.swift in Sources */,
 				3ED028EF1B8E3AA500ACA70D /* FLSelectionViewController.swift in Sources */,
 				3E8526381B90D92700690EBD /* BookmarksListViewController.swift in Sources */,
 				3ED0286A1B8E3A8500ACA70D /* SetViewpointViewController.swift in Sources */,
 				3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */,
 				3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */,
 				3ED0289A1B8E3A8500ACA70D /* ShowMagnifierViewController.swift in Sources */,
+				3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */,
 				3E4B05FB1B39EF250072E514 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				3ED028B91B8E3A9800ACA70D /* SublayerVisibilityViewController.swift in Sources */,
+				3EC39C1F1C9A59B9003F6459 /* RouteParametersViewController.swift in Sources */,
 				3ED5EB731B7404D0009F9B75 /* SampleInfoViewController.swift in Sources */,
 				3ED028B71B8E3A9800ACA70D /* SublayersTableViewController.swift in Sources */,
 				3E71621F1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift in Sources */,
+				3EC39C3C1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift in Sources */,
 				3E2A68181B153CDE00A318AA /* SourceCodeBarButtonItem.swift in Sources */,
 				3ED028581B8E3A8500ACA70D /* AuthoringMapViewController.swift in Sources */,
 				3E4B05FD1B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				3ED029641B8E3ACD00ACA70D /* AttachmentsListViewController.swift in Sources */,
 				3ED0285F1B8E3A8500ACA70D /* SaveAsViewController.swift in Sources */,
+				3E3B2C241BBD9CD300A99C5E /* SearchEngine.swift in Sources */,
 				3ED028B01B8E3A9800ACA70D /* MILUsingURLViewController.swift in Sources */,
 				3ED0286D1B8E3A8500ACA70D /* DisplayLocationViewController.swift in Sources */,
 				3E85263D1B90DE2C00690EBD /* DisplayMapViewController.swift in Sources */,
@@ -1210,7 +1564,9 @@
 				3ED028961B8E3A8500ACA70D /* SetMapsSRViewController.swift in Sources */,
 				3ED0288E1B8E3A8500ACA70D /* SetInitialMapAreaViewController.swift in Sources */,
 				3ED028F51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift in Sources */,
+				3EC39C3F1C9B47C2003F6459 /* OfflineEditingViewController.swift in Sources */,
 				3ED028E21B8E3AA500ACA70D /* OverrideRendererViewController.swift in Sources */,
+				3E4BF4561C5BD66C00D85919 /* OfflineGeocodeViewController.swift in Sources */,
 				3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */,
 				3E4B05FC1B39EF250072E514 /* TPKeyboardAvoidingTableView.m in Sources */,
 				3ED028F81B8E3AA500ACA70D /* ManualCacheViewController.swift in Sources */,
@@ -1219,21 +1575,32 @@
 				3ED0287A1B8E3A8500ACA70D /* MMLLayersViewController.swift in Sources */,
 				3ED028891B8E3A8500ACA70D /* OpenExistingMapViewController.swift in Sources */,
 				3ED028FB1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift in Sources */,
+				3E4BF4421C5AE98300D85919 /* FindAddressViewController.swift in Sources */,
 				3ED0293A1B8E3AB300ACA70D /* MILShowLegendViewController.swift in Sources */,
 				3ED0292D1B8E3AB300ACA70D /* GOIdentifyViewController.swift in Sources */,
 				3E8526391B90D92700690EBD /* BookmarksViewController.swift in Sources */,
+				3EC39C1E1C9A59B9003F6459 /* DirectionsListViewController.swift in Sources */,
+				3E6AE3EE1C6D11FD0026E59C /* OfflineRoutingViewController.swift in Sources */,
+				3EC39C321C9B0DF6003F6459 /* ExportTilesViewController.swift in Sources */,
 				3ED028631B8E3A8500ACA70D /* SwitchBasemapViewController.swift in Sources */,
 				3ED028591B8E3A8500ACA70D /* AuthoringOptionsViewController.swift in Sources */,
+				3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */,
+				3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */,
 				3ED0296A1B8E3ACD00ACA70D /* EditAttributesViewController.swift in Sources */,
 				3E4B05F71B39EF250072E514 /* SVIndefiniteAnimatedView.m in Sources */,
 				3ED028741B8E3A8500ACA70D /* MapViewDrawStatusViewController.swift in Sources */,
+				3E4BF4581C5BD6C400D85919 /* SanDiegoAddressesViewController.swift in Sources */,
 				3ECCFE3C1BD0401A00CE256D /* LayerStatusViewController.swift in Sources */,
 				3EE692021B03D22500C167B8 /* Node.swift in Sources */,
 				3ED028E51B8E3AA500ACA70D /* DefinitionExpressionViewController.swift in Sources */,
+				3E6AE3FB1C73B5480026E59C /* FindRouteViewController.swift in Sources */,
 				3ED0289D1B8E3A8500ACA70D /* MapViewScreenshotViewController.swift in Sources */,
 				3E5848FE1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift in Sources */,
 				3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */,
+				3EE8B9551CA08E71003AA705 /* VectorTileLayerViewController.swift in Sources */,
 				3E39F6D31B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift in Sources */,
+				3EC39C371C9B1ADA003F6459 /* AGSExtensions.swift in Sources */,
+				3E3B2C1F1BBCA37F00A99C5E /* ContentCollectionViewController.swift in Sources */,
 				3ED5EB751B740A58009F9B75 /* SegmentedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1337,6 +1704,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/SDKs/ArcGIS/iOS/Frameworks/Static",
@@ -1353,7 +1722,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "95d1f0d5-8b91-4cf9-8fda-d965ca79d04f";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "arcgis-ios-sdk-samples/Content Display Logic/Samples-Bridging-Header.h";
 			};
 			name = Debug;
@@ -1363,6 +1732,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/SDKs/ArcGIS/iOS/Frameworks/Static",
@@ -1379,7 +1750,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "95d1f0d5-8b91-4cf9-8fda-d965ca79d04f";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "arcgis-ios-sdk-samples/Content Display Logic/Samples-Bridging-Header.h";
 			};
 			name = Release;

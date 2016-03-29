@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ class ManualCacheViewController: UIViewController {
     @IBOutlet private weak var mapView:AGSMapView!
     
     private var map:AGSMap!
+    var featureTable:AGSServiceFeatureTable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,35 +37,13 @@ class ManualCacheViewController: UIViewController {
         self.mapView.map = self.map
         
         //create feature table using a url
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0"))
+        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0")!)
         //set the feature request mode to Manual Cache
         featureTable.featureRequestMode = AGSFeatureRequestMode.ManualCache
         //create feature layer using this feature table
-        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         //add feature layer to the map
         self.map.operationalLayers.addObject(featureLayer)
-        
-        //set query parameters
-        let params = AGSQueryParameters()
-        //for specific request type
-        params.whereClause = "req_Type = 'Tree Maintenance or Damage'"
-        //get all fields
-        params.outFields = ["*"]
-        
-        //populate features based on query
-        featureTable.populateFromServiceWithParameters(params, clearCache: true) { (result:AGSFeatureQueryResult!, error:NSError!) -> Void in
-            //check for error
-            if let error = error {
-                print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
-            }
-            else {
-                //the resulting features should be displayed on the map
-                //you can print the count of features
-                print(result.enumerator().allObjects.count)
-            }
-        }
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,4 +51,32 @@ class ManualCacheViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: - Actions
+    
+    @IBAction func populateAction(sender: AnyObject) {
+        //set query parameters
+        let params = AGSQueryParameters()
+        //for specific request type
+        params.whereClause = "req_Type = 'Tree Maintenance or Damage'"
+        
+        self.featureTable.loadWithCompletion { [weak self] (error: NSError?) -> Void in
+            if let error = error {
+                print(error)
+            }
+            else {
+                //populate features based on query
+                self?.featureTable.populateFromServiceWithParameters(params, clearCache: true, outFields: ["*"]) {  (result:AGSFeatureQueryResult?, error:NSError?) -> Void in
+                    //check for error
+                    if let error = error {
+                        print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
+                    }
+                    else {
+                        //the resulting features should be displayed on the map
+                        //you can print the count of features
+                        print(result?.allObjects.count)
+                    }
+                }
+            }
+        }
+    }
 }

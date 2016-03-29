@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GSk-lW-Mjg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GSk-lW-Mjg">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Edit Geometry View Controller-->
@@ -17,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8E0-Q1-C3I" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJv-2z-hgI">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJv-2z-hgI">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="Nee-S1-CYT"/>
@@ -39,16 +40,23 @@
                         <constraints>
                             <constraint firstItem="hdG-0i-5pm" firstAttribute="top" secondItem="8E0-Q1-C3I" secondAttribute="bottom" id="SDW-0Y-e02"/>
                             <constraint firstItem="8E0-Q1-C3I" firstAttribute="leading" secondItem="wIC-Qr-QYb" secondAttribute="leading" id="Z76-FY-fQl"/>
+                            <constraint firstItem="YJv-2z-hgI" firstAttribute="top" secondItem="8E0-Q1-C3I" secondAttribute="bottom" id="gMJ-NI-nlb"/>
                             <constraint firstAttribute="trailing" secondItem="8E0-Q1-C3I" secondAttribute="trailing" id="gRf-Or-rMc"/>
                             <constraint firstItem="hdG-0i-5pm" firstAttribute="top" secondItem="YJv-2z-hgI" secondAttribute="bottom" id="n4h-qi-X3x"/>
                             <constraint firstItem="8E0-Q1-C3I" firstAttribute="top" secondItem="wIC-Qr-QYb" secondAttribute="top" id="nRL-dC-mdY"/>
                             <constraint firstItem="YJv-2z-hgI" firstAttribute="leading" secondItem="wIC-Qr-QYb" secondAttribute="leading" id="oD7-C2-3aF"/>
                             <constraint firstAttribute="trailing" secondItem="YJv-2z-hgI" secondAttribute="trailing" id="tLF-nu-CsL"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="SDW-0Y-e02"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="8E0-Q1-C3I" id="JMq-CE-9Yo"/>
                         <outlet property="toolbar" destination="YJv-2z-hgI" id="mxe-fV-G9h"/>
+                        <outlet property="toolbarBottomConstraint" destination="n4h-qi-X3x" id="pGo-u4-PGV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dNO-8s-AjQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

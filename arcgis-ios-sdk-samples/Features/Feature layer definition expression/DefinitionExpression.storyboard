@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gQq-Ov-i0h">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gQq-Ov-i0h">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Definition Expression View Controller-->
@@ -17,11 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSj-1P-Z69" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZQ-70-c5r">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="Vso-9X-HM9"/>
                                 </constraints>
@@ -40,16 +43,23 @@
                                 </items>
                             </toolbar>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="oSj-1P-Z69" firstAttribute="top" secondItem="uDF-pp-vPG" secondAttribute="top" id="IKC-Dj-zZA"/>
                             <constraint firstItem="oSj-1P-Z69" firstAttribute="leading" secondItem="uDF-pp-vPG" secondAttribute="leading" id="Tcd-y9-uYd"/>
+                            <constraint firstItem="XZQ-70-c5r" firstAttribute="top" secondItem="oSj-1P-Z69" secondAttribute="bottom" id="ZG2-Zt-dM3"/>
                             <constraint firstAttribute="trailing" secondItem="XZQ-70-c5r" secondAttribute="trailing" id="dJ3-ae-aLw"/>
                             <constraint firstItem="caR-6x-GMS" firstAttribute="top" secondItem="oSj-1P-Z69" secondAttribute="bottom" id="gmd-CC-D2P"/>
                             <constraint firstAttribute="trailing" secondItem="oSj-1P-Z69" secondAttribute="trailing" id="hkT-91-k6U"/>
                             <constraint firstItem="caR-6x-GMS" firstAttribute="top" secondItem="XZQ-70-c5r" secondAttribute="bottom" id="qzK-sh-ftl"/>
                             <constraint firstItem="XZQ-70-c5r" firstAttribute="leading" secondItem="uDF-pp-vPG" secondAttribute="leading" id="snD-g0-EbW"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="gmd-CC-D2P"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="oSj-1P-Z69" id="FcO-nr-Emw"/>

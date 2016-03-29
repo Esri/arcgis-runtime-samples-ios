@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
     
     @IBOutlet private weak var mapView:AGSMapView!
     @IBOutlet private weak var toolbar:UIToolbar!
+    @IBOutlet private var toolbarBottomConstraint:NSLayoutConstraint!
     
     private var map:AGSMap!
     private var featureTable:AGSServiceFeatureTable!
@@ -26,7 +27,7 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
     private var sketchGraphicsOverlay:AGSSketchGraphicsOverlay!
     private var lastQuery:AGSCancellable!
     
-    private var selectedFeature:AGSFeature!
+    private var selectedFeature:AGSArcGISFeature!
     private let FEATURE_SERVICE_URL = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
@@ -39,7 +40,7 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
         //set initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -9030446.96, y: 943791.32, spatialReference: AGSSpatialReference.webMercator()), scale: 2e6)
         
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL))
+        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL)!)
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         self.map.operationalLayers.addObject(self.featureLayer)
@@ -49,6 +50,9 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
         
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
+        
+        //default state for toolbar is off
+        self.toggleToolbar(false)
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,9 +60,29 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
         // Dispose of any resources that can be recreated.
     }
     
+    func toggleToolbar(on:Bool) {
+        self.toolbarBottomConstraint.constant = on ? 0 : -44
+        UIView.animateWithDuration(0.3) { [weak self] () -> Void in
+            self?.view.layoutIfNeeded()
+        }
+    }
+    
+    func applyEdits() {
+        self.featureTable.applyEditsWithCompletion({ [weak self] (result:[AGSFeatureEditResult]?, error:NSError?) -> Void in
+            if let error = error {
+                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+            }
+            else {
+                SVProgressHUD.showSuccessWithStatus("Saved successfully!")
+            }
+            //un hide the feature
+            self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
+        })
+    }
+    
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView!, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint!) {
+    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
@@ -66,34 +90,21 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
         //hide the callout
         self.mapView.callout.dismiss()
         
-        let tolerance:Double = 22
-        let mapTolerance = tolerance * self.mapView.unitsPerPixel
-        let envelope = AGSEnvelope(XMin: mappoint.x - mapTolerance,
-            yMin: mappoint.y - mapTolerance,
-            xMax: mappoint.x + mapTolerance,
-            yMax: mappoint.y + mapTolerance,
-            spatialReference: self.map.spatialReference)
-        
-        let queryParams = AGSQueryParameters()
-        queryParams.geometry = envelope
-        queryParams.outFields = ["*"]
-        
-        self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult!, error:NSError!) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screen, tolerance: 5, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }
-            else {
-                if let feature = result.enumerator().nextObject() {
-                    //show callout for the first feature
-                    let title = feature.attributeValueForKey("typdamage") as! String
-                    self?.mapView.callout.title = title
-                    self?.mapView.callout.delegate = self
-                    self?.mapView.callout.showCalloutForFeature(feature, layer: self!.featureLayer, tapLocation: mappoint, animated: true)
-                    //update selected feature
-                    self?.selectedFeature = feature
-                }
+            else if let features = identifyLayerResult?.geoElements as? [AGSArcGISFeature] where features.count > 0 {
+                let feature = features[0]
+                //show callout for the first feature
+                let title = feature.attributeValueForKey("typdamage") as! String
+                self?.mapView.callout.title = title
+                self?.mapView.callout.delegate = self
+                self?.mapView.callout.showCalloutForFeature(feature, layer: self!.featureLayer, tapLocation: mappoint, animated: true)
+                //update selected feature
+                self?.selectedFeature = feature
             }
-        })
+        }
     }
     
     //MARK: - AGSCalloutDelegate
@@ -111,7 +122,8 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
         self.mapView.touchDelegate = self.sketchGraphicsOverlay
         
         //show the toolbar
-        self.toolbar.hidden = false
+//        self.toolbar.hidden = false
+        self.toggleToolbar(true)
         
         //hide the feature for time being
         self.featureLayer.setFeature(self.selectedFeature, visible: false)
@@ -121,30 +133,32 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
     
     @IBAction func doneAction() {
         if let newGeometry = self.sketchGraphicsOverlay.geometry {
-            self.selectedFeature.geometry = newGeometry
-            self.featureTable.updateFeature(self.selectedFeature, completion: { [weak self] (succeeded:Bool, error:NSError!) -> Void in
+            self.selectedFeature.loadWithCompletion({ [weak self] (error:NSError?) -> Void in
                 if let error = error {
-                    print(error)
-                    
-                    //un hide the feature
-                    self?.featureLayer.setFeature(self?.selectedFeature, visible: true)
+                    print("Error while loading feature :: \(error.localizedDescription)")
                 }
                 else {
-                    self?.featureTable.applyEditsWithCompletion({ [weak self] (result:[AnyObject]!, error:NSError!) -> Void in
+                    self?.selectedFeature.geometry = newGeometry
+                    self?.featureTable.updateFeature(self!.selectedFeature, completion: { (error:NSError?) -> Void in
                         if let error = error {
                             print(error)
+                            
+                            //un hide the feature
+                            self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
                         }
                         else {
-                            SVProgressHUD.showSuccessWithStatus("Saved successfully!")
+                            //apply edits
+                            self?.applyEdits()
                         }
-                        //un hide the feature
-                        self?.featureLayer.setFeature(self?.selectedFeature, visible: true)
                     })
                 }
             })
         }
+        
         //hide toolbar
-        self.toolbar.hidden = true
+//        self.toolbar.hidden = true
+        self.toggleToolbar(false)
+        
         //assign self as the touch delegate
         self.mapView.touchDelegate = self
         //clear sketch graphics overlay

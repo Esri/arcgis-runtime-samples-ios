@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
         self.mapView.touchDelegate = self
         
         //instantiate service feature table using the url to the service
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"))
+        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         //create a feature layer using the service feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
@@ -59,13 +59,16 @@ class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
         //disable interaction with map view
         self.mapView.userInteractionEnabled = false
         
+        //normalize geometry
+        let normalizedGeometry = AGSGeometryEngine.normalizeCentralMeridianOfGeometry(mappoint)!
+        
         //attributes for the new feature
         let featureAttributes = ["typdamage" : "Minor", "primcause" : "Earthquake"]
         //create a new feature
-        let feature = self.featureTable.createFeatureWithAttributes(featureAttributes, geometry: mappoint)
+        let feature = self.featureTable.createFeatureWithAttributes(featureAttributes, geometry: normalizedGeometry)
         
         //add the feature to the feature table
-        self.featureTable.addFeature(feature, completion: { [weak self] (succeeded, error) -> Void in
+        self.featureTable.addFeature(feature) { [weak self] (error: NSError?) -> Void in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus("Error while adding feature :: \(error.localizedDescription)")
                 print("Error while adding feature :: \(error)")
@@ -76,11 +79,11 @@ class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
             }
             //enable interaction with map view
             self?.mapView.userInteractionEnabled = true
-        })
+        }
     }
     
     func applyEdits() {
-        self.featureTable.applyEditsWithCompletion { (featureEditResults: [AnyObject]!, error: NSError!) -> Void in
+        self.featureTable.applyEditsWithCompletion { (featureEditResults: [AGSFeatureEditResult]?, error: NSError?) -> Void in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus("Error while applying edits :: \(error.localizedDescription)")
             }
@@ -88,13 +91,14 @@ class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
                 if let featureEditResults = featureEditResults where featureEditResults.count > 0 && featureEditResults[0].completedWithErrors == false {
                     SVProgressHUD.showSuccessWithStatus("Edits applied successfully")
                 }
+                SVProgressHUD.dismiss()
             }
         }
     }
   
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView!, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint!) {
+    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         //add a feature at the tapped location
         self.addFeature(mappoint)
     }

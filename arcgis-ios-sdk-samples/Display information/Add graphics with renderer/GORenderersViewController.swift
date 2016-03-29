@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -65,7 +65,7 @@ class GORenderersViewController: UIViewController {
         let lineGeometry = AGSPolylineBuilder(spatialReference: AGSSpatialReference.webMercator())
         lineGeometry.addPointWithX(-10e5, y: 40e5)
         lineGeometry.addPointWithX(20e5, y: 50e5)
-        let lineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.Solid, color: UIColor.blueColor(), width: 5, antialias: true, opacity: 1)
+        let lineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.Solid, color: UIColor.blueColor(), width: 5)
         let lineGraphic = AGSGraphic(geometry: lineGeometry.toGeometry())
         
         // create graphics overlay for polyline
@@ -87,7 +87,7 @@ class GORenderersViewController: UIViewController {
         polygonGeometry.addPointWithX(20e5, y: 20e5)
         polygonGeometry.addPointWithX(20e5, y: -20e5)
         polygonGeometry.addPointWithX(-20e5, y: -20e5)
-        let polygonSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.Solid, color: UIColor.yellowColor(), opacity: 0.7, outline: nil)
+        let polygonSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.Solid, color: UIColor.yellowColor(), outline: nil)
         let polygonGraphic = AGSGraphic(geometry: polygonGeometry.toGeometry())
         
         //create graphics overlay for polygon

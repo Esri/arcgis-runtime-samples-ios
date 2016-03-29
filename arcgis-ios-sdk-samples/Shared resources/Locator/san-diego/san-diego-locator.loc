@@ -1,0 +1,21 @@
+
+LocFileUseUTF8 = True
+Category = Address
+Description = US Dual Range Addresses
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  Properties Required by ArcGIS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+CLSID = {DA70B7E3-10B2-42E3-BFF7-6C81355862BC}
+UICLSID = {AE5A3A0E-F756-11D2-9F4F-00C04F8ED1C4}
+LocatorWorkspaceString = ProgID = esriDataSourcesFile.ShapefileWorkspaceFactory; Path = D:\data\
+RebuildStartTime = 130035800357230000
+RebuildStartTimeAscii = 9:33:55 AM
+SafeLocatorName = SanDiegoLocator
+UseMultithreading = True
+MaxPerfectCandidates = 10
+MaxCandidates = 10
+supportsEmptyHouseNumber = true
+;supportsWeightedHouseNumber = false
+;supportsIntersections = true

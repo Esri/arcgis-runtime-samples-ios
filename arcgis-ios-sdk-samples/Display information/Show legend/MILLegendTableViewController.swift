@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@ import ArcGIS
 
 class MILLegendTableViewController: UITableViewController {
 
-    var operationalLayers:AGSList!
+    var operationalLayers:NSMutableArray!
     var legendInfosDict = [String:[AGSLegendInfo]]()
     private var orderArray:[AGSLayerContent]!
     
@@ -25,26 +25,27 @@ class MILLegendTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.orderArray = [AGSLayerContent]()
-        self.populateLegends(self.operationalLayers)
+        self.populateLegends(self.operationalLayers as AnyObject as! [AGSLayerContent])
     }
     
-    func populateLegends(layers:AGSList) {
+    func populateLegends(layers:[AGSLayerContent]) {
 
         for i in 0...layers.count-1 {
-            let layer = layers[UInt(i)] as! AGSLayerContent
+            let layer = layers[i]
 
-            if let sublayers = layer.sublayers where sublayers.count > 0 {
-                self.populateLegends(sublayers)
+            if layer.subLayerContents.count > 0 {
+                self.populateLegends(layer.subLayerContents)
             }
             else {
                 //else if no sublayers fetch legend info
                 self.orderArray.append(layer)
-                layer.fetchLegendInfosWithCompletion({ [weak self] (legendInfos:[AnyObject]?, error:NSError?) -> Void in
+                layer.fetchLegendInfosWithCompletion({ [weak self] (legendInfos:[AGSLegendInfo]?, error:NSError?) -> Void in
+//                    print("\(layer.name) \(legendInfos)")
                     if let error = error {
                         print(error)
                     }
                     else {
-                        if let legendInfos = legendInfos as? [AGSLegendInfo] {
+                        if let legendInfos = legendInfos {
                             self?.legendInfosDict[self!.hashString(layer)] = legendInfos
                             self?.tableView.reloadData()
                         }
@@ -87,16 +88,30 @@ class MILLegendTableViewController: UITableViewController {
 
         cell.textLabel?.text = legendInfo.name
         
-        if let markerSymbol = legendInfo.symbol as? AGSPictureMarkerSymbol {
-            cell.imageView?.image = markerSymbol.image
-        }
-        else {
-            print("symbol is not picture marker symbol")
-        }
+        legendInfo.symbol?.createSwatchWithBackgroundColor(UIColor.clearColor(), completion: { (image: UIImage?, error: NSError?) -> Void in
+            if let updateCell = tableView.cellForRowAtIndexPath(indexPath) {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    updateCell.imageView?.image = image
+                    updateCell.setNeedsLayout()
+                })
+            }
+        })
         
         cell.backgroundColor = UIColor.clearColor()
         
         return cell
+    }
+    
+    func geometryTypeForSymbol(symbol:AGSSymbol) -> AGSGeometryType {
+        if symbol is AGSFillSymbol {
+            return AGSGeometryType.Polygon
+        }
+        else if symbol is AGSLineSymbol {
+            return .Polyline
+        }
+        else {
+            return .Point
+        }
     }
 
     //MARK: - Helper functions
@@ -107,10 +122,10 @@ class MILLegendTableViewController: UITableViewController {
 
     func nameForLayerContent(layerContent:AGSLayerContent) -> String {
         if let layer = layerContent as? AGSLayer {
-            return layer.name!
+            return layer.name
         }
         else {
-            return (layerContent as! AGSArcGISSublayer).name!
+            return (layerContent as! AGSArcGISSublayer).name
         }
     }
 }

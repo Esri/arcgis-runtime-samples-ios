@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -32,16 +32,47 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         self.loadAttachments()
     }
     
-    func loadAttachments() {
-        self.feature.fetchAttachmentInfosWithCompletion { [weak self] (attachmentInfos:[AnyObject]!, error:NSError!) -> Void in
+    func applyEdits() {
+        (self.feature.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion({ [weak self] (result, error) -> Void in
             if let error = error {
                 print(error)
             }
             else {
-                self?.attachmentInfos = attachmentInfos as! [AGSAttachmentInfo]
+                print("Apply edits finished successfully")
+                self?.loadAttachments()
+            }
+        })
+    }
+    
+    func loadAttachments() {
+        self.feature.fetchAttachmentInfosWithCompletion { [weak self] (attachmentInfos:[AGSAttachmentInfo]?, error:NSError?) -> Void in
+            if let error = error {
+                print(error)
+            }
+            else {
+                self?.attachmentInfos = attachmentInfos
                 self?.tableView.reloadData()
             }
         }
+    }
+    
+    func deleteAttachment(attachmentInfo:AGSAttachmentInfo) {
+        self.feature.loadWithCompletion({ [weak self] (error: NSError?) -> Void in
+            if let error = error {
+                print("Error while loading feature :: \(error.localizedDescription)")
+            }
+            else {
+                self?.feature.deleteAttachment(attachmentInfo, completion: { (error:NSError?) -> Void in
+                    if let error = error {
+                        print(error)
+                    }
+                    else {
+                        print("Attachment deleted")
+                        self?.applyEdits()
+                    }
+                })
+            }
+        })
     }
     
     override func didReceiveMemoryWarning() {
@@ -85,36 +116,17 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             let attachmentInfo = self.attachmentInfos[indexPath.row]
-            self.feature.deleteAttachment(attachmentInfo, completion: { [weak self] (error:NSError!) -> Void in
-                if let error = error {
-                    print(error)
-                }
-                else {
-                    print("Attachment deleted")
-                    (self?.feature.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion({ [weak self] (result, error) -> Void in
-                        if let error = error {
-                            print(error)
-                        }
-                        else {
-                            print("Apply edits finished successfully")
-                            self?.loadAttachments()
-                        }
-                    })
-                }
-            })
+            self.deleteAttachment(attachmentInfo)
         }
     }
     
     func setImage(indexPath:NSIndexPath) {
         let attachmentInfo = self.attachmentInfos[indexPath.row]
-        attachmentInfo.fetchDataWithCompletion { [weak self] (data:NSData!, error:NSError!) -> Void in
+        attachmentInfo.fetchDataWithCompletion { [weak self] (data:NSData?, error:NSError?) -> Void in
             if let error = error {
                 print(error)
             }
-            else {
-                guard let weakSelf = self else {
-                    return
-                }
+            else if let weakSelf = self, data = data {
                 let image = UIImage(data: data)
                 let cell = weakSelf.tableView.cellForRowAtIndexPath(indexPath)!
                 if weakSelf.tableView.visibleCells.contains(cell) {
@@ -131,21 +143,20 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     @IBAction func addAction() {
-        let data = UIImagePNGRepresentation(UIImage(named: "LocationDisplayOffIcon")!)
-        self.feature.addAttachmentWithName("Attachment.png", contentType: "png", data: data) { [weak self] (info:AGSAttachmentInfo!, error:NSError!) -> Void in
+        let data = UIImagePNGRepresentation(UIImage(named: "LocationDisplayOffIcon")!)!
+        self.feature.loadWithCompletion { [weak self] (error: NSError?) -> Void in
             if let error = error {
-                print(error)
+                print("Error while loading feature :: \(error.localizedDescription)")
             }
             else {
-                (self?.feature.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion({ [weak self] (result, error) -> Void in
+                self?.feature.addAttachmentWithName("Attachment.png", contentType: "png", data: data) { [weak self] (info:AGSAttachmentInfo?, error:NSError?) -> Void in
                     if let error = error {
                         print(error)
                     }
                     else {
-                        print("Apply edits finished successfully")
-                        self?.loadAttachments()
+                        self?.applyEdits()
                     }
-                })
+                }
             }
         }
     }

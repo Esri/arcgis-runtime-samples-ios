@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@ class DeleteFeaturesViewController: UIViewController, AGSMapViewTouchDelegate, A
         self.mapView.touchDelegate = self
         
         //instantiate service feature table using the url to the service
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"))
+        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         //create a feature layer using the service feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
@@ -63,18 +63,18 @@ class DeleteFeaturesViewController: UIViewController, AGSMapViewTouchDelegate, A
     }
     
     func deleteFeature(feature:AGSFeature) {
-        self.featureTable.deleteFeature(feature, completion: { (succeeded:Bool, error:NSError!) -> Void in
+        self.featureTable.deleteFeature(feature) { [weak self] (error: NSError?) -> Void in
             if let error = error {
                 print("Error while deleting feature : \(error.localizedDescription)")
             }
             else {
-                self.applyEdits()
+                self?.applyEdits()
             }
-        })
+        }
     }
     
     func applyEdits() {
-        self.featureTable.applyEditsWithCompletion { (featureEditResults: [AnyObject]!, error: NSError!) -> Void in
+        self.featureTable.applyEditsWithCompletion { (featureEditResults: [AGSFeatureEditResult]?, error: NSError?) -> Void in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus("Error while applying edits :: \(error.localizedDescription)")
             }
@@ -88,7 +88,7 @@ class DeleteFeaturesViewController: UIViewController, AGSMapViewTouchDelegate, A
     
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView!, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint!) {
+    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
@@ -96,31 +96,17 @@ class DeleteFeaturesViewController: UIViewController, AGSMapViewTouchDelegate, A
         //hide the callout
         self.mapView.callout.dismiss()
         
-        let tolerance:Double = 22
-        let mapTolerance = tolerance * self.mapView.unitsPerPixel
-        let env = AGSEnvelope(XMin: mappoint.x - mapTolerance,
-            yMin: mappoint.y - mapTolerance,
-            xMax: mappoint.x + mapTolerance,
-            yMax: mappoint.y + mapTolerance,
-            spatialReference: self.mapView.map!.spatialReference)
-        
-        let queryParams = AGSQueryParameters()
-        queryParams.geometry = env
-        queryParams.outFields = ["*"]
-        
-        self.lastQuery = self.featureTable.queryFeaturesWithParameters(queryParams, completion: { [weak self] (result:AGSFeatureQueryResult!, error:NSError!) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screen, tolerance: 5, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }
-            else {
-                if let feature = result.enumerator().nextObject() {
-                    //show callout for the first feature
-                    self?.showCallout(feature, tapLocation: mappoint)
-                    //update selected feature
-                    self?.selectedFeature = feature
-                }
+            else if let features = identifyLayerResult?.geoElements as? [AGSFeature] where features.count > 0 {
+                //show callout for the first feature
+                self?.showCallout(features[0], tapLocation: mappoint)
+                //update selected feature
+                self?.selectedFeature = features[0]
             }
-        })
+        }
     }
     
     //MARK: - AGSCalloutDelegate

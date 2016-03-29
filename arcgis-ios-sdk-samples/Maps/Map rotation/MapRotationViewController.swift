@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ class MapRotationViewController: UIViewController {
         self.mapView.allowInteractiveRotation = true
         
         //update the slider value when the user rotates by pinching
-        self.mapView.visibleAreaChangedHandler = { [weak self] (polygon) in
+        self.mapView.viewpointChangedHandler = { [weak self] () in
             self?.slider.value = Float(self!.mapView.rotation)
             self?.rotationLabel.text = "\(Int(self!.slider.value))\u{00B0}"
             self?.compassButton.transform = CGAffineTransformMakeRotation(CGFloat(-self!.mapView.rotation * M_PI/180))

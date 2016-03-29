@@ -1,4 +1,4 @@
-// Copyright 2015 Esri.
+// Copyright 2016 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ class OverrideRendererViewController: UIViewController {
         self.mapView.map = self.map
         
         //initialize feature table using a url to feature server url
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0"))
+        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0")!)
         //initialize feature layer with feature table
         self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
         //add the feature layer to the operational layers on the map view
@@ -52,7 +52,7 @@ class OverrideRendererViewController: UIViewController {
     
     @IBAction private func overrideRenderer() {
         //create a symbol to be used in the renderer
-        let symbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.Solid, color: UIColor.blueColor(), width: 2, antialias: true, opacity: 1)
+        let symbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.Solid, color: UIColor.blueColor(), width: 2)
         //create a new renderer using the symbol just created
         let renderer = AGSSimpleRenderer(symbol: symbol)
         //assign the new renderer to the feature layer

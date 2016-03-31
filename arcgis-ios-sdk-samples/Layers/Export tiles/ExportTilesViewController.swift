@@ -137,7 +137,7 @@ class ExportTilesViewController: UIViewController {
         self.job.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
             //show job status
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                SVProgressHUD.showWithStatus(status.statusString())
+                SVProgressHUD.showWithStatus(status.statusString(), maskType: .Gradient)
             })
             
         }) { [weak self] (result: AnyObject?, error: NSError?) -> Void in

@@ -26,6 +26,7 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
     private var reverseGeocodeParameters:AGSReverseGeocodeParameters!
     private var graphicsOverlay:AGSGraphicsOverlay!
     private var locatorTaskOperation:AGSCancellable!
+    private var magnifierOffset:CGPoint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +73,14 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
         
         //zoom to San Diego
         self.mapView.setViewpointCenter(AGSPoint(x: -13042254.715252, y: 3857970.236806, spatialReference: AGSSpatialReference(WKID: 3857)), scale: 2e4, completion: nil)
+        
+        //enable magnifier for better experience while using tap n hold to add a location
+        self.mapView.magnifierEnabled = true
+        
+        //the total amount by which we will need to offset the callout along y-axis
+        //to show it correctly centered on the pushpin's head in the magnifier
+        let img = UIImage(named: "ArcGIS.bundle/Magnifier.png")!
+        self.magnifierOffset = CGPoint(x: 0, y: -img.size.height)
     }
     
     private func geocodeSearchText(text:String) {
@@ -146,7 +155,7 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
                         let streetString = results.first?.attributes?["Street"] as? String ?? ""
                         let stateString = results.first?.attributes?["State"] as? String ?? ""
                         graphic.attributes = ["Match_addr":"\(streetString) \(cityString) \(stateString)"]
-                        self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint, animated: false)
+                        self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint, animated: false, offset: true)
                         return
                     }
                     else {
@@ -177,10 +186,16 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
     }
     
     //method to show the callout for the provided graphic, with tap location details
-    private func showCalloutForGraphic(graphic:AGSGraphic, tapLocation:AGSPoint, animated:Bool) {
+    private func showCalloutForGraphic(graphic:AGSGraphic, tapLocation:AGSPoint, animated:Bool, offset:Bool) {
         self.mapView.callout.title = graphic.attributeValueForKey("Match_addr") as? String
         self.mapView.callout.accessoryButtonHidden = true
-        self.mapView.callout.showCalloutForGraphic(graphic, overlay: self.graphicsOverlay, tapLocation: tapLocation, animated: animated)
+        
+        if !offset {
+            self.mapView.callout.showCalloutForGraphic(graphic, overlay: self.graphicsOverlay, tapLocation: tapLocation, animated: animated)
+        }
+        else {
+            self.mapView.callout.showCalloutAt(tapLocation, screenOffset: self.magnifierOffset, rotateOffsetWithMap: false, animated: animated)
+        }
     }
     
     private func showAlert(message:String) {
@@ -200,7 +215,7 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
             }
             else if let graphics = graphics where graphics.count > 0 {
                 //show the callout for the first graphic found
-                self.showCalloutForGraphic(graphics.first!, tapLocation: mappoint, animated: true)
+                self.showCalloutForGraphic(graphics.first!, tapLocation: mappoint, animated: true, offset: false)
             }
         }
     }
@@ -213,6 +228,12 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
     func mapView(mapView: AGSMapView, didMoveLongPressToPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         //perform geocode for the updated location
         self.reverseGeocode(mappoint)
+    }
+    
+    func mapView(mapView: AGSMapView, didEndLongPressAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+        //the callout right now will be at an offset
+        //update the callout to show on top of the graphic
+        self.mapView.touchDelegate?.mapView?(self.mapView, didTapAtPoint: screen, mapPoint: mappoint)
     }
     
     //MARK: - UISearchBar delegates

@@ -176,7 +176,7 @@
 			</dict>
             <dict>
                 <key>displayName</key>
-                <string>Vector tile layer</string>
+                <string>ArcGIS vector tiled layer (URL)</string>
                 <key>storyboardName</key>
                 <string>VectorTileLayer</string>
                 <key>descriptionText</key>

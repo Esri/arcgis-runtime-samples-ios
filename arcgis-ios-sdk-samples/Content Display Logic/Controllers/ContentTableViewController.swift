@@ -75,7 +75,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             cell.detailLabel.text = nil
         }
         
-        cell.infoButton.addTarget(self, action: "expandCell:", forControlEvents: UIControlEvents.TouchUpInside)
+        cell.infoButton.addTarget(self, action: #selector(ContentTableViewController.expandCell(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         cell.infoButton.tag = indexPath.row
 
         cell.backgroundColor = UIColor.clearColor()

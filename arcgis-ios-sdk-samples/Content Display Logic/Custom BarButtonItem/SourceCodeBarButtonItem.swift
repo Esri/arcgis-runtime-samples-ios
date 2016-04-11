@@ -24,7 +24,7 @@ class SourceCodeBarButtonItem: UIBarButtonItem {
         super.init()
         self.image = UIImage(named: "InfoIcon")
         self.target = self
-        self.action = "showSegmentedVC"
+        self.action = #selector(SourceCodeBarButtonItem.showSegmentedVC)
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -40,7 +40,7 @@ class MapViewScreenshotViewController: UIViewController {
         self.mapView.map = self.map
         
         //initialize and assign tap gesture to hide overlay parent view
-        self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "hideOverlayParentView")
+        self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MapViewScreenshotViewController.hideOverlayParentView))
         self.overlayParentView.addGestureRecognizer(self.tapGestureRecognizer)
         
         //add border to the overlay image view

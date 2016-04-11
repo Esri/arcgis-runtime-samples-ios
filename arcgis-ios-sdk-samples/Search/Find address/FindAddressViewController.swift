@@ -52,7 +52,7 @@ class FindAddressViewController: UIViewController, AGSMapViewTouchDelegate, UISe
         
         //register self for the keyboard show notification
         //in order to un hide the cancel button for search
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FindAddressViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
     }
     
     //method that returns a graphic object for the specified point and attributes

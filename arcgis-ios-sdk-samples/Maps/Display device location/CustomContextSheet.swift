@@ -81,7 +81,7 @@ class CustomContextSheet: UIView {
         self.centerYConstraints.removeAll(keepCapacity: false)
         
         //selection button
-        self.selectionButton = self.button(self.images[self.selectedIndex], highlightImage: nil, action: "toggleButtons")
+        self.selectionButton = self.button(self.images[self.selectedIndex], highlightImage: nil, action: #selector(CustomContextSheet.toggleButtons))
         self.addSubview(self.selectionButton)
         
         //constraints
@@ -103,7 +103,7 @@ class CustomContextSheet: UIView {
         //other buttons
         for i in 0...self.images.count-1 {
             
-            let button = self.button(self.images[i], highlightImage: self.highlightImages?[i] ?? nil, action: "valueChanged:")
+            let button = self.button(self.images[i], highlightImage: self.highlightImages?[i] ?? nil, action: #selector(CustomContextSheet.valueChanged(_:)))
             button.hidden = true
             self.insertSubview(button, atIndex: 0)
             self.buttonsCollection.append(button)

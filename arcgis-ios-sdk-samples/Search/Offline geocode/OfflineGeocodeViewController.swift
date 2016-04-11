@@ -69,7 +69,7 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
         //add self as the observer for the keyboard show notification
         //will display a button every time keyboard is display so the user
         //can tap and cancel search and hide the keyboard
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GeocodeOfflineViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         
         //zoom to San Diego
         self.mapView.setViewpointCenter(AGSPoint(x: -13042254.715252, y: 3857970.236806, spatialReference: AGSSpatialReference(WKID: 3857)), scale: 2e4, completion: nil)

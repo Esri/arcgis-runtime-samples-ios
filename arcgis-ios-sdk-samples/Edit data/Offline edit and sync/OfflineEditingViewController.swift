@@ -438,7 +438,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         //disable the done button until any geometry changes
         self.doneBBI.enabled = false
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "geometryChanged:", name: AGSSketchGraphicsOverlayGeometryDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(OfflineEditingViewController.geometryChanged(_:)), name: AGSSketchGraphicsOverlayGeometryDidChangeNotification, object: nil)
     }
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, didDeleteForPopup popup: AGSPopup) {

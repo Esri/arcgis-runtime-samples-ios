@@ -2,17 +2,17 @@ arcgis-runtime-samples-ios
 ==========================
 This branch contains sample code demonstrating the capabilities of [ArcGIS Runtime SDK for iOS](http://developers.arcgis.com/en/ios/beta) for Quartz Beta 2. 
 
-The ```master``` branch of this repository contains samples configured for the latest available version of [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/en/ios/). For samples configured for older versions of the SDK,  look under the ```Releases``` tab for a specific version.
+The `master` branch of this repository contains samples configured for the latest available version of [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/en/ios/). For samples configured for older versions of the SDK,  look under the `Releases` tab for a specific version.
 
 ## Requirements
 * [ArcGIS Runtime SDK for iOS ](https://developers.arcgis.com/en/ios/beta) Quartz Beta 2 (Requires ArcGIS for Developers account; free to sign up)
-* XCode 7 (or higher)
-* iOS 9 SDK (or higher)
+* XCode 7.3 (or higher)
+* iOS 9.3 SDK (or higher)
 
 ## Instructions
 
 1. Get the code in this repository. Don't know how? [Get started here.](http://htmlpreview.github.com/?https://github.com/Esri/esri.github.com/blob/master/help/esri-getting-to-know-github.html)
-1. Double-click the ```arcgis-ios-sdk-samples.xcodeproj``` file to open the samples project in XCode.
+1. Double-click the `arcgis-ios-sdk-samples.xcodeproj` file to open the samples project in XCode.
 1. Choose a Target and Device/Simulator combination from the Scheme menu and hit Run to run the sample application. 
 
 

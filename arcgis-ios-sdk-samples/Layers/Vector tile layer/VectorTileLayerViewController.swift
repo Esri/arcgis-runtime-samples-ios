@@ -21,10 +21,10 @@ class VectorTileLayerViewController: UIViewController {
 
     @IBOutlet var mapView:AGSMapView!
     
-    private var navigationURLString = "http://www.arcgis.com/sharing/rest/content/items/00cd8e843bae49b3a040423e5d65416b/resources/styles/root.json"
-    private var streetsURLString = "http://www.arcgis.com/sharing/rest/content/items/3b8814f6ddbd485cae67e8018992246e/resources/styles/root.json"
-    private var nightURLString = "http://www.arcgis.com/sharing/rest/content/items/f96366254a564adda1dc468b447ed956/resources/styles/root.json"
-    private var topographicURLString = "http://www.arcgis.com/sharing/rest/content/items/be44936bcdd24db588a1ae5076e36f34/resources/styles/root.json"
+    private var navigationURLString = "http://www.arcgis.com/home/item.html?id=00cd8e843bae49b3a040423e5d65416b"
+    private var streetsURLString = "http://www.arcgis.com/home/item.html?id=3b8814f6ddbd485cae67e8018992246e"
+    private var nightURLString = "http://www.arcgis.com/home/item.html?id=f96366254a564adda1dc468b447ed956"
+    private var topographicURLString = "http://www.arcgis.com/home/item.html?id=be44936bcdd24db588a1ae5076e36f34"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +42,10 @@ class VectorTileLayerViewController: UIViewController {
         
         //enable rotation
         self.mapView.allowInteractiveRotation = true
+
+        //center on Miami, Fl
+        self.mapView.setViewpointCenter(AGSPoint(x: -80.18, y: 25.778135, spatialReference: AGSSpatialReference.WGS84()), scale: 150000, completion: nil)
+
     }
 
     override func didReceiveMemoryWarning() {

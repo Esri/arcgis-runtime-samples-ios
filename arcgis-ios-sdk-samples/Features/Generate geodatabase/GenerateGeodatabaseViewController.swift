@@ -109,29 +109,24 @@ class GenerateGeodatabaseViewController: UIViewController {
         
         self.generateJob = self.syncTask.generateJobWithParameters(params, downloadFilePath: "\(path)/\(dateFormatter.stringFromDate(NSDate())).geodatabase")
         self.generateJob.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                SVProgressHUD.showWithStatus(status.statusString(), maskType: SVProgressHUDMaskType.Gradient)
-            })
+            SVProgressHUD.showWithStatus(status.statusString(), maskType: SVProgressHUDMaskType.Gradient)
         }) { [weak self] (object: AnyObject?, error: NSError?) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                if let error = error {
-                    SVProgressHUD.showErrorWithStatus(error.localizedDescription)
-                }
-                else {
-                    SVProgressHUD.dismiss()
-                    self?.generatedGeodatabase = object as! AGSGeodatabase
-                    self?.displayLayersFromGeodatabase(object as! AGSGeodatabase)
-                }
-            })
+            if let error = error {
+                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+            }
+            else {
+                SVProgressHUD.dismiss()
+                self?.generatedGeodatabase = object as! AGSGeodatabase
+                self?.displayLayersFromGeodatabase(object as! AGSGeodatabase)
+            }
         }
     }
     
     func displayLayersFromGeodatabase(geodatabase:AGSGeodatabase) {
         self.generatedGeodatabase.loadWithCompletion({ [weak self] (error:NSError?) -> Void in
+
             if let error = error {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    SVProgressHUD.showErrorWithStatus(error.localizedDescription)
-                })
+                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
             }
             else {
                 self?.map.operationalLayers.removeAllObjects()
@@ -140,10 +135,8 @@ class GenerateGeodatabaseViewController: UIViewController {
                     self?.map.operationalLayers.addObject(featureLayer)
                 }
                 
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    SVProgressHUD.showSuccessWithStatus("Now showing data from geodatabase")
-                    self?.downloadBBI.enabled = false
-                })
+                SVProgressHUD.showSuccessWithStatus("Now showing data from geodatabase")
+                self?.downloadBBI.enabled = false
                 
                 //unregister geodatabase as the sample wont be editing or syncing features
                 self?.unregisterGeodatabase()
@@ -157,14 +150,13 @@ class GenerateGeodatabaseViewController: UIViewController {
     func unregisterGeodatabase() {
         if self.generatedGeodatabase != nil {
             self.syncTask.unregisterGeodatabase(self.generatedGeodatabase) { (error: NSError?) -> Void in
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    if let error = error {
-                        SVProgressHUD.showErrorWithStatus(error.localizedDescription)
-                    }
-                    else {
-                        SVProgressHUD.showInfoWithStatus("Geodatabase unregistered since we wont be editing it in this sample")
-                    }
-                })
+
+                if let error = error {
+                    SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                }
+                else {
+                    SVProgressHUD.showInfoWithStatus("Geodatabase unregistered since we wont be editing it in this sample")
+                }
             }
         }
     }

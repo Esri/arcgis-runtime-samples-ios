@@ -36,9 +36,7 @@ class ExportTilesViewController: UIViewController {
     
     private var downloading = false {
         didSet {
-            dispatch_async(dispatch_get_main_queue()) { [weak self] () -> Void in
-                self?.barButtonItem?.title = self!.downloading ? "Cancel" : "Export tiles"
-            }
+            self.barButtonItem?.title = self.downloading ? "Cancel" : "Export tiles"
         }
     }
     
@@ -136,25 +134,19 @@ class ExportTilesViewController: UIViewController {
         //run the job
         self.job.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
             //show job status
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                SVProgressHUD.showWithStatus(status.statusString(), maskType: .Gradient)
-            })
+            SVProgressHUD.showWithStatus(status.statusString(), maskType: .Gradient)
             
         }) { [weak self] (result: AnyObject?, error: NSError?) -> Void in
-
             self?.downloading = false
             
             if let error = error {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    SVProgressHUD.showErrorWithStatus(error.localizedFailureReason, maskType: .Gradient)
-                })
+                SVProgressHUD.showErrorWithStatus(error.localizedFailureReason, maskType: .Gradient)
             }
             else {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    //hide progress view
-                    SVProgressHUD.dismiss()
-                    self?.visualEffectView.hidden = false
-                })
+                
+                //hide progress view
+                SVProgressHUD.dismiss()
+                self?.visualEffectView.hidden = false
                 
                 let tileCache = result as! AGSTileCache
                 let newTiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)

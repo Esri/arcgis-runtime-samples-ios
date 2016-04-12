@@ -40,7 +40,7 @@ class MILLegendTableViewController: UITableViewController {
                 //else if no sublayers fetch legend info
                 self.orderArray.append(layer)
                 layer.fetchLegendInfosWithCompletion({ [weak self] (legendInfos:[AGSLegendInfo]?, error:NSError?) -> Void in
-//                    print("\(layer.name) \(legendInfos)")
+
                     if let error = error {
                         print(error)
                     }
@@ -90,10 +90,8 @@ class MILLegendTableViewController: UITableViewController {
         
         legendInfo.symbol?.createSwatchWithBackgroundColor(UIColor.clearColor(), completion: { (image: UIImage?, error: NSError?) -> Void in
             if let updateCell = tableView.cellForRowAtIndexPath(indexPath) {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    updateCell.imageView?.image = image
-                    updateCell.setNeedsLayout()
-                })
+                updateCell.imageView?.image = image
+                updateCell.setNeedsLayout()
             }
         })
         

@@ -73,9 +73,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
         self.routeTask = AGSRouteTask(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route")!)
         self.routeTask.loadWithCompletion { [weak self] (error:NSError?) -> Void in
             if let error = error {
-                dispatch_async(dispatch_get_main_queue(), { 
-                    SVProgressHUD.showErrorWithStatus(error.localizedDescription)
-                })
+                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
             }
             else {
                 self?.getDefaultParameters()
@@ -86,9 +84,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
     func getDefaultParameters() {
         self.routeTask.generateDefaultParametersWithCompletion({ [weak self] (params: AGSRouteParameters?, error: NSError?) -> Void in
             if let error = error {
-                dispatch_async(dispatch_get_main_queue(), {
-                    SVProgressHUD.showErrorWithStatus(error.localizedDescription)
-                })
+                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
             }
             else {
                 self?.routeParameters = params
@@ -135,14 +131,10 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
         
         self.routeTask.solveRouteWithParameters(self.routeParameters) { [weak self] (routeResult:AGSRouteResult?, error:NSError?) -> Void in
             if let error = error {
-                dispatch_async(dispatch_get_main_queue(), { 
-                    SVProgressHUD.showErrorWithStatus(error.localizedDescription)
-                })
+                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
             }
             else {
-                dispatch_async(dispatch_get_main_queue(), {
-                    SVProgressHUD.dismiss()
-                })
+                SVProgressHUD.dismiss()
                 let route = routeResult!.routes[0]
                 let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self!.routeSymbol())
                 self?.routeGraphicsOverlay.graphics.addObject(routeGraphic)

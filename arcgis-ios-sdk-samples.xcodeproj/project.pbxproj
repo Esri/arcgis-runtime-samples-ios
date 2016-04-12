@@ -975,7 +975,7 @@
 				3EC39C301C9B0DAE003F6459 /* Export tiles */,
 				3ED0289F1B8E3A9800ACA70D /* ArcGIS map image layer (URL) */,
 				3ED028A71B8E3A9800ACA70D /* Change sublayer visibility */,
-				3EE8B9511CA08E16003AA705 /* Vector tile layer */,
+				3EE8B9511CA08E16003AA705 /* ArcGIS vector tile layer (URL) */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -1343,13 +1343,13 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		3EE8B9511CA08E16003AA705 /* Vector tile layer */ = {
+		3EE8B9511CA08E16003AA705 /* ArcGIS vector tile layer (URL) */ = {
 			isa = PBXGroup;
 			children = (
 				3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */,
 				3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */,
 			);
-			name = "Vector tile layer";
+			name = "ArcGIS vector tile layer (URL)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

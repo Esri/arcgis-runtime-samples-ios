@@ -186,9 +186,7 @@ class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, 
                         UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "Ok").show()
                     }
                     else {
-                        dispatch_async(dispatch_get_main_queue(), { [weak self] () -> Void in
-                            self?.showSuccess()
-                        })
+                        self?.showSuccess()
                     }
                     weakSelf.saveAsVC.resetInputFields()
                 })

@@ -85,9 +85,7 @@ class GOIdentifyViewController: UIViewController, AGSMapViewTouchDelegate {
             else {
                 //if a graphics is found then show an alert
                 if graphics?.count > 0 {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        UIAlertView(title: "Alert", message: "Tapped on graphic", delegate: nil, cancelButtonTitle: "Ok").show()
-                    })
+                    UIAlertView(title: "Alert", message: "Tapped on graphic", delegate: nil, cancelButtonTitle: "Ok").show()
                 }
             }
         }

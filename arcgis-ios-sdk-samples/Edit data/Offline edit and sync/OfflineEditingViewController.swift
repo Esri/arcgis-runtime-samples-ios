@@ -85,29 +85,28 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
     func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         SVProgressHUD.showWithStatus("Loading", maskType: .Gradient)
         self.mapView.identifyLayersAtScreenPoint(screen, tolerance: 5) { [weak self] (results: [AGSIdentifyLayerResult]?, error: NSError?) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                if let error = error {
-                    SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+
+            if let error = error {
+                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+            }
+            else {
+                SVProgressHUD.dismiss()
+                
+                var popups = [AGSPopup]()
+                for result in results! {
+                    for geoElement in result.geoElements {
+                        popups.append(AGSPopup(geoElement: geoElement))
+                    }
+                }
+                if popups.count > 0 {
+                    self?.popupsVC = AGSPopupsViewController(popups: popups, usingNavigationControllerStack: false)
+                    self?.popupsVC.delegate = self!
+                    self?.presentViewController(self!.popupsVC, animated: true, completion: nil)
                 }
                 else {
-                    SVProgressHUD.dismiss()
-                    
-                    var popups = [AGSPopup]()
-                    for result in results! {
-                        for geoElement in result.geoElements {
-                            popups.append(AGSPopup(geoElement: geoElement))
-                        }
-                    }
-                    if popups.count > 0 {
-                        self?.popupsVC = AGSPopupsViewController(popups: popups, usingNavigationControllerStack: false)
-                        self?.popupsVC.delegate = self!
-                        self?.presentViewController(self!.popupsVC, animated: true, completion: nil)
-                    }
-                    else {
-                        print("No feature selected")
-                    }
+                    print("No feature selected")
                 }
-            })
+            }
         }
     }
     
@@ -144,21 +143,16 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
     }
     
     func updateUI() {
-        dispatch_async(dispatch_get_main_queue()) { [weak self] () -> Void in
-            guard let weakSelf = self else {
-                return
-            }
-            if weakSelf.liveMode {
-                weakSelf.serviceModeToolbar.hidden = false
-                weakSelf.instructionsLabel.hidden = true
-                weakSelf.barButtonItem.title = "Generate geodatabase"
-            }
-            else {
-                weakSelf.serviceModeToolbar.hidden = true
-                let count = weakSelf.numberOfEditsInGeodatabase(weakSelf.generatedGeodatabase)
-                weakSelf.syncBBI?.enabled = count > 0
-                weakSelf.instructionsLabel?.text = "Data from geodatabase : \(count) edits"
-            }
+        if self.liveMode {
+            self.serviceModeToolbar.hidden = false
+            self.instructionsLabel.hidden = true
+            self.barButtonItem.title = "Generate geodatabase"
+        }
+        else {
+            self.serviceModeToolbar.hidden = true
+            let count = self.numberOfEditsInGeodatabase(self.generatedGeodatabase)
+            self.syncBBI?.enabled = count > 0
+            self.instructionsLabel?.text = "Data from geodatabase : \(count) edits"
         }
     }
     
@@ -315,22 +309,20 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         
         //start the job
         self.generateJob.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                SVProgressHUD.showWithStatus(status.statusString(), maskType: .Gradient)
-            })
+            SVProgressHUD.showWithStatus(status.statusString(), maskType: .Gradient)
+            
         }) { [weak self] (object: AnyObject?, error: NSError?) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                if let error = error {
-                    SVProgressHUD.showErrorWithStatus(error.localizedDescription)
-                }
-                else {
-                    SVProgressHUD.dismiss()
-                    //save a reference to the geodatabase
-                    self?.generatedGeodatabase = object as! AGSGeodatabase
-                    //add te
-                    self?.displayLayersFromGeodatabase(object as! AGSGeodatabase)
-                }
-            })
+            
+            if let error = error {
+                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+            }
+            else {
+                SVProgressHUD.dismiss()
+                //save a reference to the geodatabase
+                self?.generatedGeodatabase = object as! AGSGeodatabase
+                //add te
+                self?.displayLayersFromGeodatabase(object as! AGSGeodatabase)
+            }
         }
     }
     
@@ -378,19 +370,17 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         
         self.syncJob = self.syncTask.syncJobWithParameters(params, geodatabase: self.generatedGeodatabase)
         self.syncJob.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                SVProgressHUD.showWithStatus(status.statusString(), maskType: .Gradient)
-            })
+            
+            SVProgressHUD.showWithStatus(status.statusString(), maskType: .Gradient)
+            
         }, completion: { (object: AnyObject?, error: NSError?) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                if let error = error {
-                    SVProgressHUD.showErrorWithStatus(error.localizedDescription)
-                }
-                else {
-                    SVProgressHUD.dismiss()
-                    self.updateUI()
-                }
-            })
+            if let error = error {
+                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+            }
+            else {
+                SVProgressHUD.dismiss()
+                self.updateUI()
+            }
             
             //call completion
             completion?()
@@ -464,14 +454,13 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
             SVProgressHUD.showWithStatus("Saving feature details...", maskType: .Gradient)
             
             (feature.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion { (featureEditResult: [AGSFeatureEditResult]?, error: NSError?) -> Void in
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    if let error = error {
-                        SVProgressHUD.showErrorWithStatus(error.localizedDescription)
-                    }
-                    else {
-                        SVProgressHUD.showSuccessWithStatus("Edits applied successfully")
-                    }
-                })
+                
+                if let error = error {
+                    SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                }
+                else {
+                    SVProgressHUD.showSuccessWithStatus("Edits applied successfully")
+                }
             }
         }
         else {

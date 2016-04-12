@@ -1,4 +1,4 @@
-#Vector tile layer
+#ArcGIS vector tiled layer (URL)
 
 This sample demonstrates how to create a vector tile layer from a URL
 

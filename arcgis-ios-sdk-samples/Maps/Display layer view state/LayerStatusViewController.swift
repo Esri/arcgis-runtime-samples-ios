@@ -129,7 +129,15 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         cell.backgroundColor = UIColor.clearColor()
         let layer = self.map.operationalLayers[indexPath.row] as! AGSLayer
         
-        cell.textLabel?.text = layer.name ?? "Layer \(indexPath.row)"
+        //if the layer is loaded then show the name
+        //else use a template
+        if layer.loadStatus == .Loaded {
+            cell.textLabel?.text = layer.name
+        }
+        else {
+            cell.textLabel?.text = "Layer \(indexPath.row)"
+        }
+        
         cell.detailTextLabel?.text = self.viewStatusArray[indexPath.row]
         
         return cell

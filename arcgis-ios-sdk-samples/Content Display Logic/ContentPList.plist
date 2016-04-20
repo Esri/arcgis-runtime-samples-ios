@@ -294,9 +294,9 @@
 			</dict>
             <dict>
                 <key>displayName</key>
-                <string>Control graphic draw index</string>
+                <string>Control graphic draw order</string>
                 <key>storyboardName</key>
-                <string>GraphicDrawIndex</string>
+                <string>GraphicDrawOrder</string>
                 <key>descriptionText</key>
                 <string>You can change the drawing order of graphics in graphics overlay using the z index</string>
             </dict>

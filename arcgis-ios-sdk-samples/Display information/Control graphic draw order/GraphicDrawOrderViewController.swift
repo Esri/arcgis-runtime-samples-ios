@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class GraphicDrawIndexViewController: UIViewController {
+class GraphicDrawOrderViewController: UIViewController {
     
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var buttons:[UIButton]!
@@ -32,7 +32,7 @@ class GraphicDrawIndexViewController: UIViewController {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GraphicDrawIndexViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GraphicDrawOrderViewController"]
         
         //create an instance of a map with ESRI topographic basemap
         self.map = AGSMap(basemap: AGSBasemap.streetsBasemap())
@@ -45,12 +45,15 @@ class GraphicDrawIndexViewController: UIViewController {
         //add the graphics to the overlay
         self.addGraphics()
         
+        //set map scale
+        let mapScale:Double = 53500
+        
         //initial viewpoint
-        self.mapView.setViewpointCenter(AGSPoint(x: -13148960, y: 4000040, spatialReference: AGSSpatialReference.webMercator()), scale: 33000, completion: nil)
+        self.mapView.setViewpointCenter(AGSPoint(x: -13148960, y: 4000040, spatialReference: AGSSpatialReference.webMercator()), scale: mapScale, completion: nil)
         
         //restricting map scale to preserve the graphics overlapping
-        self.map.minScale = 33000
-        self.map.maxScale = 33000
+        self.map.minScale = mapScale
+        self.map.maxScale = mapScale
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,7 +66,7 @@ class GraphicDrawIndexViewController: UIViewController {
         let x:Double = -13149000
         let y:Double = 4e6
         //distance between the graphics
-        let delta:Double = 80
+        let delta:Double = 100
         
         //graphics array for reference when a button is tapped
         self.graphics = [AGSGraphic]()
@@ -102,8 +105,9 @@ class GraphicDrawIndexViewController: UIViewController {
         //increment draw index by 1 and assign as the zIndex for the respective graphic
         self.drawIndex += 1
         
-        //subtracting 10, since the buttons are tagged from 10 - 13
-        self.graphics[sender.tag-10].zIndex = self.drawIndex
+        //the button's tag value specifies which graphic to re-index
+        //for example, a button tag value of 1 will move self.graphics[1] - the red marker
+        self.graphics[sender.tag].zIndex = self.drawIndex
     }
 }
 

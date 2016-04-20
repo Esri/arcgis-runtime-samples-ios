@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Graphic Draw Index View Controller-->
+        <!--Graphic Draw Order View Controller-->
         <scene sceneID="RsA-7i-Xcz">
             <objects>
-                <viewController id="K2u-zA-P0T" customClass="GraphicDrawIndexViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="K2u-zA-P0T" customClass="GraphicDrawOrderViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RZG-Fl-Z76"/>
                         <viewControllerLayoutGuide type="bottom" id="TyM-wu-Ly2"/>
@@ -24,7 +24,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BlX-iV-bLo">
                                 <rect key="frame" x="154.5" y="550" width="291" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lXb-b6-Nb5">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lXb-b6-Nb5">
                                         <rect key="frame" x="5" y="3" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="HIy-ZE-YoA"/>
@@ -35,7 +35,7 @@
                                             <action selector="buttonAction:" destination="K2u-zA-P0T" eventType="touchUpInside" id="NDo-jv-9mO"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDt-Ae-yUb">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDt-Ae-yUb">
                                         <rect key="frame" x="84" y="3" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="8HN-jC-Cs7"/>
@@ -46,7 +46,7 @@
                                             <action selector="buttonAction:" destination="K2u-zA-P0T" eventType="touchUpInside" id="EZL-w1-coQ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mu2-JN-oA5">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mu2-JN-oA5">
                                         <rect key="frame" x="163" y="3" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="vR7-Zy-epx"/>
@@ -57,7 +57,7 @@
                                             <action selector="buttonAction:" destination="K2u-zA-P0T" eventType="touchUpInside" id="SKE-iS-PVR"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPk-HQ-2d5">
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPk-HQ-2d5">
                                         <rect key="frame" x="242" y="3" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="IXO-YT-7nt"/>
@@ -97,8 +97,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="ns6-4A-OHG"/>
                                 <exclude reference="Er1-xm-fgl"/>
+                                <exclude reference="ns6-4A-OHG"/>
                             </mask>
                         </variation>
                     </view>
@@ -116,9 +116,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BlueMarker" width="64" height="64"/>
-        <image name="GreenMarker" width="64" height="64"/>
+        <image name="BlueMarker" width="44" height="44"/>
+        <image name="GreenMarker" width="44" height="44"/>
         <image name="RedMarker2" width="44" height="44"/>
-        <image name="VioletMarker" width="64" height="64"/>
+        <image name="VioletMarker" width="44" height="44"/>
     </resources>
 </document>

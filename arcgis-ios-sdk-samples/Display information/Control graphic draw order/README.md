@@ -1,4 +1,4 @@
-#Control graphic draw index
+#Control graphic draw order
 
 This sample demonstrates how to change the drawing order for a graphic
 

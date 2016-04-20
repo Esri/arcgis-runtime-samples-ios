@@ -30,8 +30,8 @@
                                             <rect key="frame" x="200" y="7.5" width="200" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
-                                                <segment title="Aesthetics"/>
                                                 <segment title="Scale"/>
+                                                <segment title="Aesthetics"/>
                                             </segments>
                                             <connections>
                                                 <action selector="valueChanged:" destination="tlU-aT-Lv9" eventType="valueChanged" id="gNm-Gl-gEj"/>

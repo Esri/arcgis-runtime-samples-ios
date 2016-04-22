@@ -300,6 +300,14 @@
 				<key>descriptionText</key>
 				<string>You can use the identify method on map view to get the graphics at a location. It could be the location, user interacted with, via tap gesture or simply some custom location</string>
 			</dict>
+            <dict>
+                <key>displayName</key>
+                <string>Control graphic draw order</string>
+                <key>storyboardName</key>
+                <string>GraphicDrawOrder</string>
+                <key>descriptionText</key>
+                <string>You can change the drawing order of graphics in graphics overlay using the z index</string>
+            </dict>
 			<dict>
 				<key>displayName</key>
 				<string>Sketch on the map</string>

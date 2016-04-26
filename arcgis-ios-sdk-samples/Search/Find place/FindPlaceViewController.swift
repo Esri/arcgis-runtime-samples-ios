@@ -70,7 +70,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.mapView.touchDelegate = self
         
         //start location display
-        self.mapView.locationDisplay.autoPanMode = .Default
+        self.mapView.locationDisplay.autoPanMode = .Recenter
         self.mapView.locationDisplay.startWithCompletion { [weak self] (error: NSError?) -> Void in
             if error == nil {
                 //if the location display starts, update the preferred search location

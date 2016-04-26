@@ -67,12 +67,12 @@
 		3E4BF4841C5BDF0900D85919 /* OfflineGeocodeViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4551C5BD66C00D85919 /* OfflineGeocodeViewController.swift */; };
 		3E4BF4851C5BDF0900D85919 /* SanDiegoAddressesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4571C5BD6C400D85919 /* SanDiegoAddressesViewController.swift */; };
 		3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */; };
-		3E54D2331CC697F100BB9904 /* GraphicDrawOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E54D2321CC697F100BB9904 /* GraphicDrawOrderViewController.swift */; };
-		3E54D2351CC6985200BB9904 /* GraphicDrawOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E54D2341CC6985200BB9904 /* GraphicDrawOrder.storyboard */; };
-		3E54D2361CC69E5E00BB9904 /* GraphicDrawOrderViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E54D2321CC697F100BB9904 /* GraphicDrawOrderViewController.swift */; };
 		3E54D2291CC1453600BB9904 /* TLRenderModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E54D2281CC1453600BB9904 /* TLRenderModeViewController.swift */; };
 		3E54D22B1CC1552B00BB9904 /* TiledLayerRenderMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E54D22A1CC1552B00BB9904 /* TiledLayerRenderMode.storyboard */; };
 		3E54D2301CC5998C00BB9904 /* TLRenderModeViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E54D2281CC1453600BB9904 /* TLRenderModeViewController.swift */; };
+		3E54D2331CC697F100BB9904 /* GraphicDrawOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E54D2321CC697F100BB9904 /* GraphicDrawOrderViewController.swift */; };
+		3E54D2351CC6985200BB9904 /* GraphicDrawOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E54D2341CC6985200BB9904 /* GraphicDrawOrder.storyboard */; };
+		3E54D2361CC69E5E00BB9904 /* GraphicDrawOrderViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E54D2321CC697F100BB9904 /* GraphicDrawOrderViewController.swift */; };
 		3E5848FE1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */; };
 		3E5849001B9123E900AB3CE9 /* FeatureLayerURL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */; };
 		3E5849011B91256300AB3CE9 /* BookmarksListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8526341B90D92700690EBD /* BookmarksListViewController.swift */; };
@@ -86,6 +86,13 @@
 		3E6AE3F91C73B5480026E59C /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */; };
 		3E6AE3FA1C73B5480026E59C /* FindRoute.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6AE3F71C73B5480026E59C /* FindRoute.storyboard */; };
 		3E6AE3FB1C73B5480026E59C /* FindRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */; };
+		3E6C77161CCFC4B200E89873 /* IdentifyLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6C77151CCFC4B200E89873 /* IdentifyLayersViewController.swift */; };
+		3E6C77191CCFC51800E89873 /* GeoElementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6C77171CCFC51800E89873 /* GeoElementCell.swift */; };
+		3E6C771A1CCFC51800E89873 /* IdentifyResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6C77181CCFC51800E89873 /* IdentifyResultsViewController.swift */; };
+		3E6C771C1CCFC53B00E89873 /* IdentifyLayers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6C771B1CCFC53B00E89873 /* IdentifyLayers.storyboard */; };
+		3E6C771D1CCFE5AD00E89873 /* IdentifyLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6C77151CCFC4B200E89873 /* IdentifyLayersViewController.swift */; };
+		3E6C771E1CCFE5AD00E89873 /* GeoElementCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6C77171CCFC51800E89873 /* GeoElementCell.swift */; };
+		3E6C771F1CCFE5AD00E89873 /* IdentifyResultsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6C77181CCFC51800E89873 /* IdentifyResultsViewController.swift */; };
 		3E71621F1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71621E1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift */; };
 		3E7162351BA1F529008DE398 /* GraphicsWithSymbols.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E7162341BA1F529008DE398 /* GraphicsWithSymbols.storyboard */; };
 		3E7162361BA21932008DE398 /* GraphicsWithSymbolsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E71621E1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift */; };
@@ -251,6 +258,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3E6C771D1CCFE5AD00E89873 /* IdentifyLayersViewController.swift in CopyFiles */,
+				3E6C771E1CCFE5AD00E89873 /* GeoElementCell.swift in CopyFiles */,
+				3E6C771F1CCFE5AD00E89873 /* IdentifyResultsViewController.swift in CopyFiles */,
 				3E54D2361CC69E5E00BB9904 /* GraphicDrawOrderViewController.swift in CopyFiles */,
 				3E54D2301CC5998C00BB9904 /* TLRenderModeViewController.swift in CopyFiles */,
 				3EE8B9591CA0C020003AA705 /* VectorTileLayerViewController.swift in CopyFiles */,
@@ -383,10 +393,10 @@
 		3E4BF47A1C5BDDCA00D85919 /* san-diego-locator.locb */ = {isa = PBXFileReference; lastKnownFileType = file; path = "san-diego-locator.locb"; sourceTree = "<group>"; };
 		3E4BF47B1C5BDDCA00D85919 /* san-diego-locator.lox */ = {isa = PBXFileReference; lastKnownFileType = file; path = "san-diego-locator.lox"; sourceTree = "<group>"; };
 		3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = streetmap_SD.tpk; path = "Shared resources/Tile packages/streetmap_SD.tpk"; sourceTree = "<group>"; };
-		3E54D2321CC697F100BB9904 /* GraphicDrawOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphicDrawOrderViewController.swift; path = "Display information/Control graphic draw order/GraphicDrawOrderViewController.swift"; sourceTree = "<group>"; };
-		3E54D2341CC6985200BB9904 /* GraphicDrawOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GraphicDrawOrder.storyboard; path = "Display information/Control graphic draw order/GraphicDrawOrder.storyboard"; sourceTree = "<group>"; };
 		3E54D2281CC1453600BB9904 /* TLRenderModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TLRenderModeViewController.swift; path = "Layers/Tiled layer render mode/TLRenderModeViewController.swift"; sourceTree = "<group>"; };
 		3E54D22A1CC1552B00BB9904 /* TiledLayerRenderMode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TiledLayerRenderMode.storyboard; path = "Layers/Tiled layer render mode/TiledLayerRenderMode.storyboard"; sourceTree = "<group>"; };
+		3E54D2321CC697F100BB9904 /* GraphicDrawOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphicDrawOrderViewController.swift; path = "Display information/Control graphic draw order/GraphicDrawOrderViewController.swift"; sourceTree = "<group>"; };
+		3E54D2341CC6985200BB9904 /* GraphicDrawOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GraphicDrawOrder.storyboard; path = "Display information/Control graphic draw order/GraphicDrawOrder.storyboard"; sourceTree = "<group>"; };
 		3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayerURLViewController.swift; path = "Features/Feature layer (feature service)/FeatureLayerURLViewController.swift"; sourceTree = "<group>"; };
 		3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FeatureLayerURL.storyboard; path = "Features/Feature layer (feature service)/FeatureLayerURL.storyboard"; sourceTree = "<group>"; };
 		3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Camera Shutter.caf"; sourceTree = "<group>"; };
@@ -396,6 +406,10 @@
 		3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectionsViewController.swift; path = "Route & Navigation/Find route/DirectionsViewController.swift"; sourceTree = "<group>"; };
 		3E6AE3F71C73B5480026E59C /* FindRoute.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FindRoute.storyboard; path = "Route & Navigation/Find route/FindRoute.storyboard"; sourceTree = "<group>"; };
 		3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindRouteViewController.swift; path = "Route & Navigation/Find route/FindRouteViewController.swift"; sourceTree = "<group>"; };
+		3E6C77151CCFC4B200E89873 /* IdentifyLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IdentifyLayersViewController.swift; path = "Maps/Identify layers/IdentifyLayersViewController.swift"; sourceTree = "<group>"; };
+		3E6C77171CCFC51800E89873 /* GeoElementCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeoElementCell.swift; path = "Maps/Identify layers/GeoElementCell.swift"; sourceTree = "<group>"; };
+		3E6C77181CCFC51800E89873 /* IdentifyResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IdentifyResultsViewController.swift; path = "Maps/Identify layers/IdentifyResultsViewController.swift"; sourceTree = "<group>"; };
+		3E6C771B1CCFC53B00E89873 /* IdentifyLayers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = IdentifyLayers.storyboard; path = "Maps/Identify layers/IdentifyLayers.storyboard"; sourceTree = "<group>"; };
 		3E71621E1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphicsWithSymbolsViewController.swift; path = "Display information/Add graphics with symbols/GraphicsWithSymbolsViewController.swift"; sourceTree = "<group>"; };
 		3E7162341BA1F529008DE398 /* GraphicsWithSymbols.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GraphicsWithSymbols.storyboard; path = "Display information/Add graphics with symbols/GraphicsWithSymbols.storyboard"; sourceTree = "<group>"; };
 		3E8526331B90D92700690EBD /* Bookmarks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Bookmarks.storyboard; path = "Maps/Manage bookmarks/Bookmarks.storyboard"; sourceTree = "<group>"; };
@@ -796,15 +810,6 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		3E54D2311CC697A000BB9904 /* Control graphic draw order */ = {
-			isa = PBXGroup;
-			children = (
-				3E54D2321CC697F100BB9904 /* GraphicDrawOrderViewController.swift */,
-				3E54D2341CC6985200BB9904 /* GraphicDrawOrder.storyboard */,
-			);
-			name = "Control graphic draw order";
-            sourceTree = "<group>";
-        };
 		3E54D2271CC13B6A00BB9904 /* Tiled layer render mode */ = {
 			isa = PBXGroup;
 			children = (
@@ -812,6 +817,15 @@
 				3E54D22A1CC1552B00BB9904 /* TiledLayerRenderMode.storyboard */,
 			);
 			name = "Tiled layer render mode";
+			sourceTree = "<group>";
+		};
+		3E54D2311CC697A000BB9904 /* Control graphic draw order */ = {
+			isa = PBXGroup;
+			children = (
+				3E54D2321CC697F100BB9904 /* GraphicDrawOrderViewController.swift */,
+				3E54D2341CC6985200BB9904 /* GraphicDrawOrder.storyboard */,
+			);
+			name = "Control graphic draw order";
 			sourceTree = "<group>";
 		};
 		3E5848FC1B91222200AB3CE9 /* Feature layer (feature service) */ = {
@@ -867,6 +881,17 @@
 				3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */,
 			);
 			name = "Find route";
+			sourceTree = "<group>";
+		};
+		3E6C77141CCFC33100E89873 /* Identify layers */ = {
+			isa = PBXGroup;
+			children = (
+				3E6C77151CCFC4B200E89873 /* IdentifyLayersViewController.swift */,
+				3E6C77171CCFC51800E89873 /* GeoElementCell.swift */,
+				3E6C77181CCFC51800E89873 /* IdentifyResultsViewController.swift */,
+				3E6C771B1CCFC53B00E89873 /* IdentifyLayers.storyboard */,
+			);
+			name = "Identify layers";
 			sourceTree = "<group>";
 		};
 		3E71621D1BA0D7C2008DE398 /* Add graphics with symbols */ = {
@@ -1031,6 +1056,7 @@
 				3ED028181B8E3A8400ACA70D /* Display device location */,
 				3ED028521B8E3A8500ACA70D /* Take screenshot */,
 				3ED028011B8E3A8400ACA70D /* Authoring a map */,
+				3E6C77141CCFC33100E89873 /* Identify layers */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
@@ -1521,6 +1547,7 @@
 				3ED0288D1B8E3A8500ACA70D /* SetInitialMapArea.storyboard in Resources */,
 				3EC39C341C9B106D003F6459 /* ExportTiles.storyboard in Resources */,
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
+				3E6C771C1CCFC53B00E89873 /* IdentifyLayers.storyboard in Resources */,
 				3ED029691B8E3ACD00ACA70D /* EditAttributes.storyboard in Resources */,
 				3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */,
 				3ED028831B8E3A8500ACA70D /* MapRotation.storyboard in Resources */,
@@ -1559,6 +1586,7 @@
 				3ED0294C1B8E3AB300ACA70D /* SketchViewController.swift in Sources */,
 				3E0830BA1BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift in Sources */,
 				3ED029711B8E3ACD00ACA70D /* EditGeometryViewController.swift in Sources */,
+				3E6C77191CCFC51800E89873 /* GeoElementCell.swift in Sources */,
 				3ED028791B8E3A8500ACA70D /* ManageMapLayersViewController.swift in Sources */,
 				3E4B05FA1B39EF250072E514 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				3E4BF44C1C5AF04300D85919 /* FindPlaceViewController.swift in Sources */,
@@ -1622,7 +1650,9 @@
 				3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */,
 				3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */,
 				3ED0296A1B8E3ACD00ACA70D /* EditAttributesViewController.swift in Sources */,
+				3E6C77161CCFC4B200E89873 /* IdentifyLayersViewController.swift in Sources */,
 				3E4B05F71B39EF250072E514 /* SVIndefiniteAnimatedView.m in Sources */,
+				3E6C771A1CCFC51800E89873 /* IdentifyResultsViewController.swift in Sources */,
 				3ED028741B8E3A8500ACA70D /* MapViewDrawStatusViewController.swift in Sources */,
 				3E4BF4581C5BD6C400D85919 /* SanDiegoAddressesViewController.swift in Sources */,
 				3ECCFE3C1BD0401A00CE256D /* LayerStatusViewController.swift in Sources */,

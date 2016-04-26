@@ -86,7 +86,7 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
     
     private func identifyLayers(screen: CGPoint) {
         //show progress hud
-        SVProgressHUD.showWithStatus("Loading")
+        SVProgressHUD.showWithStatus("Loading", maskType: .Gradient)
         
         self.mapView.identifyLayersAtScreenPoint(screen, tolerance: 22, maximumResultsPerLayer: 10) { (results: [AGSIdentifyLayerResult]?, error: NSError?) in
             
@@ -94,7 +94,7 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
             SVProgressHUD.dismiss()
             
             if let error = error {
-                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
             }
             else {
                 //get all the geoElements from the results
@@ -109,7 +109,7 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
                     self.selectGeoElement(self.selectedGeoElements[0])
                 }
                 else {
-                    SVProgressHUD.showInfoWithStatus("No element found")
+                    SVProgressHUD.showInfoWithStatus("No element found", maskType: .Gradient)
                     //hide the container view
                     self.toggleContainerView(false, animated: true)
                     //clear any graphics in the graphics overlay

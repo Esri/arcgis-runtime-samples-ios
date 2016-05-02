@@ -87,7 +87,8 @@ class MILLegendTableViewController: UITableViewController {
         let legendInfo = legendInfos[indexPath.row]
 
         cell.textLabel?.text = legendInfo.name
-        legendInfo.symbol?.createSwatchWithCompletion({ (image: UIImage?, error: NSError?) -> Void in
+        
+        legendInfo.symbol?.createSwatchWithBackgroundColor(UIColor.clearColor(), completion: { (image: UIImage?, error: NSError?) -> Void in
             if let updateCell = tableView.cellForRowAtIndexPath(indexPath) {
                 updateCell.imageView?.image = image
                 updateCell.setNeedsLayout()

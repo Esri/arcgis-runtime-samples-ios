@@ -50,7 +50,7 @@ class DisplayLocationViewController: UIViewController, CustomContextSheetDelegat
             switch autoPanMode {
             case .Off:
                 self?.sheet.selectedIndex = 1
-            case .Recenter:
+            case .Default:
                 self?.sheet.selectedIndex = 2
             case .Navigation:
                 self?.sheet.selectedIndex = 3
@@ -78,7 +78,7 @@ class DisplayLocationViewController: UIViewController, CustomContextSheetDelegat
         case 1:
             self.startLocationDisplay(AGSLocationDisplayAutoPanMode.Off)
         case 2:
-            self.startLocationDisplay(AGSLocationDisplayAutoPanMode.Recenter)
+            self.startLocationDisplay(AGSLocationDisplayAutoPanMode.Default)
         case 3:
             self.startLocationDisplay(AGSLocationDisplayAutoPanMode.Navigation)
         default:

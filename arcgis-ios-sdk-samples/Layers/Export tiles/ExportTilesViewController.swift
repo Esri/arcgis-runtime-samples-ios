@@ -31,7 +31,7 @@ class ExportTilesViewController: UIViewController {
     private var extentGraphic:AGSGraphic!
     
     private var tiledLayer:AGSArcGISTiledLayer!
-    private var job:AGSExportTileCacheJob!
+    private var job:AGSJob!
     private var exportTask:AGSExportTileCacheTask!
     
     private var downloading = false {
@@ -126,7 +126,8 @@ class ExportTilesViewController: UIViewController {
         
         //initialize the export task
         self.exportTask = AGSExportTileCacheTask(mapServiceInfo: self.tiledLayer.mapServiceInfo!)
-        let params = self.exportTask.exportTileCacheParametersWithAreaOfInterest(self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale)
+        
+        let params = self.exportTask.exportTileCacheParametersWith(self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale)
         
         //get the job
         self.job = self.exportTask.exportTileCacheJobWithParameters(params, downloadFilePath: destinationPath)
@@ -134,6 +135,7 @@ class ExportTilesViewController: UIViewController {
         self.job.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
             //show job status
             SVProgressHUD.showWithStatus(status.statusString(), maskType: .Gradient)
+            
         }) { [weak self] (result: AnyObject?, error: NSError?) -> Void in
             self?.downloading = false
             

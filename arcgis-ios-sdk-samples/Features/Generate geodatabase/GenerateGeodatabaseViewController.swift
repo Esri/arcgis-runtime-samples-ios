@@ -27,7 +27,7 @@ class GenerateGeodatabaseViewController: UIViewController {
     private var featureServiceInfo:AGSArcGISFeatureServiceInfo!
     private var featureLayerInfos:[AGSArcGISFeatureLayerInfo]!
     private var syncTask:AGSGeodatabaseSyncTask!
-    private var generateJob:AGSGenerateGeodatabaseJob!
+    private var generateJob:AGSJob!
     private var generatedGeodatabase:AGSGeodatabase!
     
     override func viewDidLoad() {

@@ -37,7 +37,7 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIPopoverP
         self.addDefaultBookmarks()
         
         //zoom to the last bookmark
-        self.map.initialViewpoint = self.map.bookmarks.lastObject?.viewpoint
+        self.map.initialViewpoint = self.map.bookmarks.last?.viewpoint
         
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["BookmarksViewController","BookmarksListViewController"]
@@ -53,7 +53,7 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIPopoverP
         bookmark.name = "Mysterious Desert Pattern"
         bookmark.viewpoint = viewpoint
         //add the bookmark to the map
-        self.map.bookmarks.addObject(bookmark)
+        self.map.bookmarks.append(bookmark)
         
         //Strange Symbol
         viewpoint = AGSViewpoint(latitude: 37.401573, longitude: -116.867808, scale: 6e3)
@@ -61,7 +61,7 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIPopoverP
         bookmark.name = "Strange Symbol"
         bookmark.viewpoint = viewpoint
         //add the bookmark to the map
-        self.map.bookmarks.addObject(bookmark)
+        self.map.bookmarks.append(bookmark)
         
         //Guitar-Shaped Forest
         viewpoint = AGSViewpoint(latitude: -33.867886, longitude: -63.985, scale: 4e4)
@@ -69,7 +69,7 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIPopoverP
         bookmark.name = "Guitar-Shaped Forest"
         bookmark.viewpoint = viewpoint
         //add the bookmark to the map
-        self.map.bookmarks.addObject(bookmark)
+        self.map.bookmarks.append(bookmark)
         
         //Grand Prismatic Spring
         viewpoint = AGSViewpoint(latitude: 44.525049, longitude: -110.83819, scale: 6e3)
@@ -77,7 +77,7 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIPopoverP
         bookmark.name = "Grand Prismatic Spring"
         bookmark.viewpoint = viewpoint
         //add the bookmark to the map
-        self.map.bookmarks.addObject(bookmark)
+        self.map.bookmarks.append(bookmark)
     }
     
     override func didReceiveMemoryWarning() {
@@ -100,7 +100,7 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIPopoverP
         bookmark.name = name
         bookmark.viewpoint = self.mapView.currentViewpointWithType(AGSViewpointType.BoundingGeometry)
         //add the bookmark to the map
-        self.map.bookmarks.addObject(bookmark)
+        self.map.bookmarks.append(bookmark)
         //refresh the table view if it exists
         self.bookmarksListVC?.tableView.reloadData()
     }
@@ -131,7 +131,7 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIPopoverP
             controller.popoverPresentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             //assign the bookmarks to be shown
-            controller.bookmarks = self.map.bookmarks as AnyObject as! [AGSBookmark]
+            controller.bookmarks = self.map.bookmarks
             //set the closure to be executed when the user selects a bookmark
             controller.setSelectAction({ [weak self] (viewpoint:AGSViewpoint) -> Void in
                 self?.mapView.setViewpoint(viewpoint)

@@ -205,7 +205,7 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
     
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         //dismiss the callout if already visible
         self.mapView.callout.dismiss()
         
@@ -221,20 +221,20 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
         }
     }
     
-    func mapView(mapView: AGSMapView, didLongPressAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func mapView(mapView: AGSMapView, didLongPressAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         //on long press perform reverse geocode
         self.reverseGeocode(mappoint)
     }
     
-    func mapView(mapView: AGSMapView, didMoveLongPressToPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func mapView(mapView: AGSMapView, didMoveLongPressToScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         //perform geocode for the updated location
         self.reverseGeocode(mappoint)
     }
     
-    func mapView(mapView: AGSMapView, didEndLongPressAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func mapView(mapView: AGSMapView, didEndLongPressAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         //the callout right now will be at an offset
         //update the callout to show on top of the graphic
-        self.mapView.touchDelegate?.mapView?(self.mapView, didTapAtPoint: screen, mapPoint: mappoint)
+        self.mapView.touchDelegate?.mapView?(self.mapView, didTapAtScreenPoint: screen, mapPoint: mappoint)
     }
     
     //MARK: - UISearchBar delegates

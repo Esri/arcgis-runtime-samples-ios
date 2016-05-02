@@ -196,7 +196,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         //dismiss the callout if already visible
         self.mapView.callout.dismiss()
         

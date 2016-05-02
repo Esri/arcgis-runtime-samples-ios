@@ -35,8 +35,8 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
     private var featureTable:AGSServiceFeatureTable!
     private var syncTask:AGSGeodatabaseSyncTask!
     private var generatedGeodatabase:AGSGeodatabase!
-    private var generateJob:AGSJob!
-    private var syncJob:AGSJob!
+    private var generateJob:AGSGenerateGeodatabaseJob!
+    private var syncJob:AGSSyncGeodatabaseJob!
     private var featureServiceInfo:AGSArcGISFeatureServiceInfo!
     private var featureLayerInfos:[AGSArcGISFeatureLayerInfo]!
     private var popupsVC:AGSPopupsViewController!
@@ -82,7 +82,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
     
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         SVProgressHUD.showWithStatus("Loading", maskType: .Gradient)
         self.mapView.identifyLayersAtScreenPoint(screen, tolerance: 5) { [weak self] (results: [AGSIdentifyLayerResult]?, error: NSError?) -> Void in
 
@@ -373,11 +373,12 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
             
             SVProgressHUD.showWithStatus(status.statusString(), maskType: .Gradient)
             
-        }, completion: { (object: AnyObject?, error: NSError?) -> Void in
+        }, completion: { (results: [AGSSyncLayerResult]?, error: NSError?) -> Void in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription)
             }
             else {
+                //TODO: use the results object
                 SVProgressHUD.dismiss()
                 self.updateUI()
             }

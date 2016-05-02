@@ -98,7 +98,7 @@ class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
   
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         //add a feature at the tapped location
         self.addFeature(mappoint)
     }

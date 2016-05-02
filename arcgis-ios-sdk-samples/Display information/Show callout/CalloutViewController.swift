@@ -46,7 +46,7 @@ class CalloutViewController: UIViewController, AGSMapViewTouchDelegate {
     //MARK: - AGSMapViewTouchDelegate
     
     //user tapped on the map
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         //if the callout is not shown, show the callout with the coordinates of the tapped location
         if self.mapView.callout.hidden {
             self.mapView.callout.title = "Location"

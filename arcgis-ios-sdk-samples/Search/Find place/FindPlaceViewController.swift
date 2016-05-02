@@ -70,7 +70,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.mapView.touchDelegate = self
         
         //start location display
-        self.mapView.locationDisplay.autoPanMode = .Default
+        self.mapView.locationDisplay.autoPanMode = .Recenter
         self.mapView.locationDisplay.startWithCompletion { [weak self] (error: NSError?) -> Void in
             if error == nil {
                 //if the location display starts, update the preferred search location
@@ -196,7 +196,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         //dismiss the callout if already visible
         self.mapView.callout.dismiss()
         

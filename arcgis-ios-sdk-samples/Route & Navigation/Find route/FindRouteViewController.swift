@@ -102,7 +102,7 @@ class FindRouteViewController: UIViewController {
     
     //method to get the default parameters for the route task
     func getDefaultParameters() {
-        self.routeTask.generateDefaultParametersWithCompletion({ [weak self] (params: AGSRouteParameters?, error: NSError?) -> Void in
+        self.routeTask.defaultRouteParametersWithCompletion({ [weak self] (params: AGSRouteParameters?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }

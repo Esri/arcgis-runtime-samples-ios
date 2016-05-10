@@ -131,7 +131,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
         
         self.routeTask.solveRouteWithParameters(self.routeParameters) { [weak self] (routeResult:AGSRouteResult?, error:NSError?) -> Void in
             if let error = error {
-                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                SVProgressHUD.showErrorWithStatus("\(error.localizedDescription) \(error.localizedFailureReason ?? "")")
             }
             else {
                 SVProgressHUD.dismiss()

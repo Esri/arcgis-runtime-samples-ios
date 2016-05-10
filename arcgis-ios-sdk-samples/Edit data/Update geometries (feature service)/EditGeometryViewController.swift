@@ -97,7 +97,7 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
             else if let features = identifyLayerResult?.geoElements as? [AGSArcGISFeature] where features.count > 0 {
                 let feature = features[0]
                 //show callout for the first feature
-                let title = feature.attributeValueForKey("typdamage") as! String
+                let title = feature.attributes["typdamage"] as! String
                 self?.mapView.callout.title = title
                 self?.mapView.callout.delegate = self
                 self?.mapView.callout.showCalloutForFeature(feature, layer: self!.featureLayer, tapLocation: mappoint, animated: true)

@@ -137,7 +137,7 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
         }
         
         //create a graphic and add to the overlay
-        let graphic = self.graphicForPoint(normalizedPoint, attributes: nil)
+        let graphic = self.graphicForPoint(normalizedPoint, attributes: [String:AnyObject]())
         self.graphicsOverlay.graphics.addObject(graphic)
         
         //TODO: remove loadWithCompletion for locatorTask
@@ -157,7 +157,7 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
                         let cityString = results.first?.attributes?["City"] as? String ?? ""
                         let streetString = results.first?.attributes?["Street"] as? String ?? ""
                         let stateString = results.first?.attributes?["State"] as? String ?? ""
-                        graphic.attributes = ["Match_addr":"\(streetString) \(cityString) \(stateString)"]
+                        graphic.attributes.addEntriesFromDictionary(["Match_addr":"\(streetString) \(cityString) \(stateString)"])
                         self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint, animated: false, offset: self!.longPressedAndMoving)
                         return
                     }
@@ -190,7 +190,7 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
     
     //method to show the callout for the provided graphic, with tap location details
     private func showCalloutForGraphic(graphic:AGSGraphic, tapLocation:AGSPoint, animated:Bool, offset:Bool) {
-        self.mapView.callout.title = graphic.attributeValueForKey("Match_addr") as? String
+        self.mapView.callout.title = graphic.attributes["Match_addr"] as? String
         self.mapView.callout.accessoryButtonHidden = true
         
         if !offset {

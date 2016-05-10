@@ -20,7 +20,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     @IBOutlet private weak var tableView:UITableView!
     
     var feature:AGSArcGISFeature!
-    private var attachmentInfos:[AGSAttachmentInfo]!
+    private var attachments:[AGSAttachment]!
     
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -45,24 +45,24 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func loadAttachments() {
-        self.feature.fetchAttachmentInfosWithCompletion { [weak self] (attachmentInfos:[AGSAttachmentInfo]?, error:NSError?) -> Void in
+        self.feature.fetchAttachmentsWithCompletion { [weak self] (attachments:[AGSAttachment]?, error:NSError?) in
             if let error = error {
                 print(error)
             }
             else {
-                self?.attachmentInfos = attachmentInfos
+                self?.attachments = attachments
                 self?.tableView.reloadData()
             }
         }
     }
     
-    func deleteAttachment(attachmentInfo:AGSAttachmentInfo) {
+    func deleteAttachment(attachment:AGSAttachment) {
         self.feature.loadWithCompletion({ [weak self] (error: NSError?) -> Void in
             if let error = error {
                 print("Error while loading feature :: \(error.localizedDescription)")
             }
             else {
-                self?.feature.deleteAttachment(attachmentInfo, completion: { (error:NSError?) -> Void in
+                self?.feature.deleteAttachment(attachment, completion: { (error:NSError?) -> Void in
                     if let error = error {
                         print(error)
                     }
@@ -87,7 +87,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.attachmentInfos?.count ?? 0
+        return self.attachments?.count ?? 0
     }
     
     //MARK: - Table view delegate
@@ -95,14 +95,14 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("AttachmentCell")!
         
-        let attachmentInfo = self.attachmentInfos[indexPath.row]
-        cell.textLabel?.text = attachmentInfo.name
+        let attachment = self.attachments[indexPath.row]
+        cell.textLabel?.text = attachment.name
         
         cell.imageView?.image = UIImage(named: "ArcGIS.bundle/CloudDownload")
         cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         cell.imageView?.autoresizingMask = .None
         cell.imageView?.clipsToBounds = true
-        if attachmentInfo.hasFetchedData {
+        if attachment.hasFetchedData {
             self.setImage(indexPath)
         }
         
@@ -115,14 +115,14 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            let attachmentInfo = self.attachmentInfos[indexPath.row]
-            self.deleteAttachment(attachmentInfo)
+            let attachment = self.attachments[indexPath.row]
+            self.deleteAttachment(attachment)
         }
     }
     
     func setImage(indexPath:NSIndexPath) {
-        let attachmentInfo = self.attachmentInfos[indexPath.row]
-        attachmentInfo.fetchDataWithCompletion { [weak self] (data:NSData?, error:NSError?) -> Void in
+        let attachment = self.attachments[indexPath.row]
+        attachment.fetchDataWithCompletion { [weak self] (data:NSData?, error:NSError?) -> Void in
             if let error = error {
                 print(error)
             }
@@ -149,7 +149,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
                 print("Error while loading feature :: \(error.localizedDescription)")
             }
             else {
-                self?.feature.addAttachmentWithName("Attachment.png", contentType: "png", data: data) { [weak self] (info:AGSAttachmentInfo?, error:NSError?) -> Void in
+                self?.feature.addAttachmentWithName("Attachment.png", contentType: "png", data: data) { [weak self] (attachment:AGSAttachment?, error:NSError?) -> Void in
                     if let error = error {
                         print(error)
                     }

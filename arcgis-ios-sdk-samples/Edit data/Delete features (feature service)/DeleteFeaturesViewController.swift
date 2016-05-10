@@ -55,7 +55,7 @@ class DeleteFeaturesViewController: UIViewController, AGSMapViewTouchDelegate, A
     }
     
     func showCallout(feature:AGSFeature, tapLocation:AGSPoint) {
-        let title = feature.attributeValueForKey("typdamage") as! String
+        let title = feature.attributes["typdamage"] as! String
         self.mapView.callout.title = title
         self.mapView.callout.delegate = self
         self.mapView.callout.accessoryButtonImage = UIImage(named: "Discard")

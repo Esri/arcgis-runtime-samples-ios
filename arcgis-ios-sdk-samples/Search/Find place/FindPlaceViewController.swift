@@ -158,11 +158,11 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     
     //method to show callout for a graphic
     private func showCalloutForGraphic(graphic:AGSGraphic, tapLocation:AGSPoint) {
-        let addressType = graphic.attributeValueForKey("Addr_type") as! String
-        self.mapView.callout.title = graphic.attributeValueForKey("Match_addr") as? String ?? ""
+        let addressType = graphic.attributes["Addr_type"] as! String
+        self.mapView.callout.title = graphic.attributes["Match_addr"] as? String ?? ""
         
         if addressType == "POI" {
-            self.mapView.callout.detail = graphic.attributeValueForKey("Place_addr") as? String ?? ""
+            self.mapView.callout.detail = graphic.attributes["Place_addr"] as? String ?? ""
         }
         else {
             self.mapView.callout.detail = nil

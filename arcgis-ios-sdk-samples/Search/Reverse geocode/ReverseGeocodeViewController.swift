@@ -75,7 +75,7 @@ class ReverseGeocodeViewController: UIViewController, AGSMapViewTouchDelegate {
                 }
                 else {
                     if let results = results where results.count > 0 {
-                        graphic.attributes = results.first?.attributes
+                        graphic.attributes.addEntriesFromDictionary(results.first!.attributes!)
                         self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint)
                         return
                     }
@@ -94,7 +94,7 @@ class ReverseGeocodeViewController: UIViewController, AGSMapViewTouchDelegate {
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
         symbol.leaderOffsetY = markerImage.size.height/2
         symbol.offsetY = markerImage.size.height/2
-        let graphic = AGSGraphic(geometry: point, attributes: nil, symbol: symbol)
+        let graphic = AGSGraphic(geometry: point, attributes: [String:AnyObject](), symbol: symbol)
         return graphic
     }
     
@@ -102,9 +102,9 @@ class ReverseGeocodeViewController: UIViewController, AGSMapViewTouchDelegate {
     //it gets the attributes from the graphic and populates the title
     //and detail for the callout
     private func showCalloutForGraphic(graphic:AGSGraphic, tapLocation:AGSPoint) {
-        let cityString = graphic.attributes?["City"] as? String ?? ""
-        let addressString = graphic.attributes?["Address"] as? String ?? ""
-        let stateString = graphic.attributes?["State"] as? String ?? ""
+        let cityString = graphic.attributes["City"] as? String ?? ""
+        let addressString = graphic.attributes["Address"] as? String ?? ""
+        let stateString = graphic.attributes["State"] as? String ?? ""
         self.mapView.callout.title = addressString
         self.mapView.callout.detail = "\(cityString) \(stateString)"
         self.mapView.callout.accessoryButtonHidden = true

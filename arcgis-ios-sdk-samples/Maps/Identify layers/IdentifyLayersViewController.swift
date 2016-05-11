@@ -17,8 +17,10 @@ import ArcGIS
 
 class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, IdentifyResultsVCDelegate {
     
-    @IBOutlet weak var mapView: AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
+    @IBOutlet var containerView:UIView!
     @IBOutlet var containerViewBottomConstraint:NSLayoutConstraint!
+    @IBOutlet var containerViewHeightConstraint:NSLayoutConstraint!
     
     private var map:AGSMap!
     
@@ -30,18 +32,16 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
     private var identifyResultsVC:IdentifyResultsViewController!
     private var graphicsOverlay = AGSGraphicsOverlay()
     
-    private let containerViewHeight:CGFloat = 200
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["IdentifyLayersViewController", "IdentifyResultsViewController", "GeoElementCell"]
         
-        //create an instance of a map with ESRI topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
+        //create an instance of a map
+        self.map = AGSMap()
         
-        self.mapImageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
+        self.mapImageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
         
         self.map.operationalLayers.addObject(self.mapImageLayer)
         
@@ -54,7 +54,7 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
         self.map.operationalLayers.addObject(self.featureLayer)
         
         //set initial viewpoint to a specific region
-        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -12184555.499738, y: 4295772.420171, spatialReference: AGSSpatialReference(WKID: 3857)), scale: 10036672.207094161)
+        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -10977012.785807, y: 4514257.550369, spatialReference: AGSSpatialReference(WKID: 3857)), scale: 68015210)
         
         //assign map to the map view
         self.mapView.map = self.map
@@ -65,7 +65,6 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
         //add graphics overlay, used for highlighting identified elements
         self.mapView.graphicsOverlays.addObject(self.graphicsOverlay)
         
-        //hide container view for results
         self.toggleContainerView(false, animated: false)
     }
     
@@ -86,7 +85,7 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
     
     private func identifyLayers(screen: CGPoint) {
         //show progress hud
-        SVProgressHUD.showWithStatus("Loading", maskType: .Gradient)
+        SVProgressHUD.showWithStatus("Identifying", maskType: .Gradient)
         
         self.mapView.identifyLayersAtScreenPoint(screen, tolerance: 22, maximumResultsPerLayer: 10) { (results: [AGSIdentifyLayerResult]?, error: NSError?) in
             
@@ -103,10 +102,16 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
                 self.identifyResultsVC.geoElements = self.selectedGeoElements
                 
                 if self.selectedGeoElements.count > 0 {
-                    //show the container view populated with the geo elements
-                    self.toggleContainerView(true, animated: true)
+                    
                     //select the first geo element on the map view
-                    self.selectGeoElement(self.selectedGeoElements[0])
+                    self.selectGeoElement(self.selectedGeoElements[0], completion: {
+                        
+                        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
+                        dispatch_after(delayTime, dispatch_get_main_queue(), { [weak self] in
+                            //show the container view populated with the geo elements
+                            self?.toggleContainerView(true, animated: true)
+                        })
+                    })
                 }
                 else {
                     SVProgressHUD.showInfoWithStatus("No element found", maskType: .Gradient)
@@ -121,20 +126,20 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
     
     //MARK: - Helper methods
     
-    private func selectGeoElement(geoElement:AGSGeoElement) {
+    private func selectGeoElement(geoElement:AGSGeoElement, completion: (Void -> Void)? ) {
         //clear graphics overlay to remove any previous highlighted geometry
         self.graphicsOverlay.graphics.removeAllObjects()
         
         //create symbol based on the type of geometry
         var symbol:AGSSymbol
         if geoElement.geometry is AGSPoint {
-            symbol = AGSSimpleMarkerSymbol(style: .Circle, color: UIColor.blueColor().colorWithAlphaComponent(0.5), size: 10)
+            symbol = AGSSimpleMarkerSymbol(style: .Circle, color: UIColor.cyanColor().colorWithAlphaComponent(0.8), size: 15)
         }
         else if geoElement is AGSPolyline {
-            symbol = AGSSimpleLineSymbol(style: .Dash, color: UIColor.blueColor().colorWithAlphaComponent(0.5), width: 5)
+            symbol = AGSSimpleLineSymbol(style: .Dash, color: UIColor.cyanColor().colorWithAlphaComponent(0.8), width: 5)
         }
         else {
-            symbol = AGSSimpleFillSymbol(style: .Cross, color: UIColor.blueColor().colorWithAlphaComponent(0.5), outline: nil)
+            symbol = AGSSimpleFillSymbol(style: .Cross, color: UIColor.cyanColor().colorWithAlphaComponent(0.8), outline: nil)
         }
         let graphic = AGSGraphic(geometry: geoElement.geometry!, symbol: symbol)
         
@@ -142,12 +147,14 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
         graphicsOverlay.graphics.addObject(graphic)
         
         //zoom to the added graphic
-        self.mapView.setViewpointGeometry(geoElement.geometry!.extent, padding: 50, completion: nil)
+        self.mapView.setViewpointGeometry(geoElement.geometry!.extent, padding: 50) { (finished) in
+            completion?()
+        }
     }
     
     private func geoElementsFromResults(results:[AGSIdentifyLayerResult]) -> [AGSGeoElement] {
         //create temp variable to allow additions to array
-        var tempResults = Array(results.reverse())
+        var tempResults = results
         
         //using Depth First Search approach to handle recursion
         var geoElements = [AGSGeoElement]()
@@ -190,7 +197,7 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
     //MARK: - Show/Hide container view
     
     private func toggleContainerView(on:Bool, animated:Bool) {
-        self.containerViewBottomConstraint.constant = on ? 0 : -self.containerViewHeight
+        self.containerViewBottomConstraint.constant = on ? 0 : -300
         if !animated {
             self.view.layoutIfNeeded()
         }
@@ -207,7 +214,7 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
     
     func identifyResultsViewController(identifyResultsViewController: IdentifyResultsViewController, didSelectGeoElementAtIndex index: Int) {
         //select the geoElement on the map view
-        self.selectGeoElement(self.selectedGeoElements[index])
+        self.selectGeoElement(self.selectedGeoElements[index], completion: nil)
     }
     
     func identifyResultsViewControllerWantsToClose(identifyResultsViewController: IdentifyResultsViewController) {

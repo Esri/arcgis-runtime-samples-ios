@@ -19,8 +19,8 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
     
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var containerView:UIView!
-    @IBOutlet var containerViewBottomConstraint:NSLayoutConstraint!
-    @IBOutlet var containerViewHeightConstraint:NSLayoutConstraint!
+    @IBOutlet var mapViewBottomConstraint:NSLayoutConstraint!
+    @IBOutlet var mapViewZeroBottomConstraint:NSLayoutConstraint!
     
     private var map:AGSMap!
     
@@ -65,6 +65,7 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
         //add graphics overlay, used for highlighting identified elements
         self.mapView.graphicsOverlays.addObject(self.graphicsOverlay)
         
+        //hide the results view controller initially
         self.toggleContainerView(false, animated: false)
     }
     
@@ -197,7 +198,9 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
     //MARK: - Show/Hide container view
     
     private func toggleContainerView(on:Bool, animated:Bool) {
-        self.containerViewBottomConstraint.constant = on ? 0 : -300
+        self.mapViewBottomConstraint.active = on
+        self.mapViewZeroBottomConstraint.active = !on
+        
         if !animated {
             self.view.layoutIfNeeded()
         }

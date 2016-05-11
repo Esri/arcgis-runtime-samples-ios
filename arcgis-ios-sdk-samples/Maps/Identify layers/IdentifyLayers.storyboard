@@ -25,7 +25,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gJw-Qw-7Rr">
                                 <rect key="frame" x="0.0" y="400" width="600" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" priority="999" constant="200" id="zkE-eR-t5E">
+                                    <constraint firstAttribute="height" priority="900" constant="200" id="zkE-eR-t5E">
                                         <variation key="heightClass=compact" constant="200"/>
                                         <variation key="heightClass=regular" constant="300"/>
                                     </constraint>
@@ -40,18 +40,22 @@
                             <constraint firstItem="cSB-aK-nTO" firstAttribute="width" secondItem="fdX-Lz-ssY" secondAttribute="width" id="2l2-z6-veH"/>
                             <constraint firstAttribute="trailing" secondItem="cSB-aK-nTO" secondAttribute="trailing" id="BWZ-ce-WG2"/>
                             <constraint firstAttribute="trailing" secondItem="gJw-Qw-7Rr" secondAttribute="trailing" id="NE9-5x-mQJ"/>
+                            <constraint firstItem="68g-lH-81W" firstAttribute="top" secondItem="cSB-aK-nTO" secondAttribute="bottom" priority="998" id="O8E-TL-DQI"/>
                             <constraint firstItem="cSB-aK-nTO" firstAttribute="top" secondItem="zzP-py-cE6" secondAttribute="bottom" id="QTQ-mw-8BT"/>
                             <constraint firstItem="cSB-aK-nTO" firstAttribute="leading" secondItem="fdX-Lz-ssY" secondAttribute="leading" id="TPt-qA-inn"/>
-                            <constraint firstAttribute="bottom" secondItem="gJw-Qw-7Rr" secondAttribute="bottom" id="ZCs-Bg-2oS"/>
+                            <constraint firstItem="68g-lH-81W" firstAttribute="top" secondItem="cSB-aK-nTO" secondAttribute="bottom" priority="999" constant="200" id="g4w-pa-vNv">
+                                <variation key="heightClass=compact" constant="200"/>
+                                <variation key="heightClass=regular" constant="300"/>
+                            </constraint>
                             <constraint firstItem="gJw-Qw-7Rr" firstAttribute="top" secondItem="cSB-aK-nTO" secondAttribute="bottom" id="vJO-xL-yxz"/>
                             <constraint firstItem="gJw-Qw-7Rr" firstAttribute="leading" secondItem="fdX-Lz-ssY" secondAttribute="leading" id="yXv-qI-cml"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="containerView" destination="gJw-Qw-7Rr" id="yf1-uk-P18"/>
-                        <outlet property="containerViewBottomConstraint" destination="ZCs-Bg-2oS" id="RRh-aG-ib1"/>
-                        <outlet property="containerViewHeightConstraint" destination="zkE-eR-t5E" id="drB-T5-Vup"/>
                         <outlet property="mapView" destination="cSB-aK-nTO" id="bGX-Ra-PlG"/>
+                        <outlet property="mapViewBottomConstraint" destination="g4w-pa-vNv" id="geL-AR-BdZ"/>
+                        <outlet property="mapViewZeroBottomConstraint" destination="O8E-TL-DQI" id="l7c-Pl-80e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KtW-2P-rl4" sceneMemberID="firstResponder"/>

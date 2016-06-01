@@ -149,18 +149,6 @@ class ExportTilesViewController: UIViewController {
                 let tileCache = result as! AGSTileCache
                 let newTiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
                 self?.previewMapView.map = AGSMap(basemap: AGSBasemap(baseLayer: newTiledLayer))
-                newTiledLayer.loadWithCompletion({ (error: NSError?) -> Void in
-                    if let error = error {
-                        print("Error while loading tiled layer :: \(error.localizedDescription)")
-                    }
-                    else {
-                        //work around for making the tiles visible on load
-                        //TODO: Remove this once the issue is fixed
-                        var envBuilder = AGSEnvelopeBuilder(envelope: newTiledLayer.fullExtent)
-                        envBuilder = envBuilder.expandByFactor(0.85)
-                        self?.previewMapView.setViewpoint(AGSViewpoint(targetExtent: envBuilder.toGeometry()))
-                    }
-                })
             }
         }
     }

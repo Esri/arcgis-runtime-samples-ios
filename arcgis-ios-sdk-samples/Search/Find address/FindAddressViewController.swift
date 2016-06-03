@@ -86,7 +86,7 @@ class FindAddressViewController: UIViewController, AGSMapViewTouchDelegate, UISe
                         let graphic = self?.graphicForPoint(results[0].displayLocation!, attributes: results[0].attributes)
                         self?.graphicsOverlay.graphics.addObject(graphic!)
                         //zoom to the extent of the graphic to highlight the result
-                        self?.mapView.setViewpointGeometry(results[0].displayLocation!.extent, completion: nil)
+                        self?.mapView.setViewpointGeometry(results[0].extent!, completion: nil)
                     }
                     else {
                         //provide feedback in case of failure

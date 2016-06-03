@@ -67,15 +67,20 @@ class FindRouteViewController: UIViewController {
         self.stop1Geometry = AGSPoint(x: -13041171.537945, y: 3860988.271378, spatialReference: AGSSpatialReference(WKID: 3857))
         self.stop2Geometry = AGSPoint(x: -13041693.562570, y: 3856006.859684, spatialReference: AGSSpatialReference(WKID: 3857))
         
-        let startStopGraphic = AGSGraphic(geometry: self.stop1Geometry, symbol: self.stopSymbol("Origin", textColor: UIColor.blueColor()))
-        let endStopGraphic = AGSGraphic(geometry: self.stop2Geometry, symbol: self.stopSymbol("Destination", textColor: UIColor.redColor()))
+        //picture marker symbols for the graphics
+        let startImage = UIImage(named: "StopA")!
+        let startSymbol = AGSPictureMarkerSymbol(image: startImage)
+        startSymbol.offsetY = startImage.size.height/2
+        
+        let endImage = UIImage(named: "StopB")!
+        let endSymbol = AGSPictureMarkerSymbol(image: UIImage(named: "StopB")!)
+        endSymbol.offsetY = endImage.size.height/2
+        
+        //create graphics for start and end
+        let startStopGraphic = AGSGraphic(geometry: self.stop1Geometry, symbol: startSymbol)
+        let endStopGraphic = AGSGraphic(geometry: self.stop2Geometry, symbol: endSymbol)
         
         self.stopGraphicsOverlay.graphics.addObjectsFromArray([startStopGraphic, endStopGraphic])
-    }
-    
-    //method provides a text symbol for stop with specified parameters
-    func stopSymbol(stopName:String, textColor:UIColor) -> AGSTextSymbol {
-        return AGSTextSymbol(text: stopName, color: textColor, size: 20, horizontalAlignment: .Center, verticalAlignment: .Middle)
     }
     
     //method provides a line symbol for the route graphic
@@ -134,9 +139,9 @@ class FindRouteViewController: UIViewController {
         
         //set the stops
         let stop1 = AGSStop(point: self.stop1Geometry)
-        stop1.name = "Origin"
+        stop1.name = "A"
         let stop2 = AGSStop(point: self.stop2Geometry)
-        stop2.name = "Destination"
+        stop2.name = "B"
         self.routeParameters.setStops([stop1, stop2])
         
         self.routeTask.solveRouteWithParameters(self.routeParameters) { (routeResult: AGSRouteResult?, error: NSError?) -> Void in

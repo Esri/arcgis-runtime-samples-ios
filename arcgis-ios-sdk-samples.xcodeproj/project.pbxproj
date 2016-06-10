@@ -236,6 +236,14 @@
 		3EE8B9531CA08E54003AA705 /* VectorTileLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */; };
 		3EE8B9551CA08E71003AA705 /* VectorTileLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */; };
 		3EE8B9591CA0C020003AA705 /* VectorTileLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */; };
+		3EFCE1B11CF368D500E02F67 /* OpenMobileMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFCE1B01CF368D500E02F67 /* OpenMobileMapViewController.swift */; };
+		3EFCE1BA1CF369A800E02F67 /* Yellowstone.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCE1B61CF369A800E02F67 /* Yellowstone.mmpk */; };
+		3EFCE1BD1CF36BC100E02F67 /* OpenMobileMapPackage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCE1BC1CF36BC100E02F67 /* OpenMobileMapPackage.storyboard */; };
+		3EFCE1C31CF374C600E02F67 /* MapPackageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFCE1BF1CF374C600E02F67 /* MapPackageCell.swift */; };
+		3EFCE1C41CF374C600E02F67 /* MapPackagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFCE1C01CF374C600E02F67 /* MapPackagesListViewController.swift */; };
+		3EFCE1C51CF374C600E02F67 /* MobileMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFCE1C11CF374C600E02F67 /* MobileMapViewController.swift */; };
+		3EFCE1C61CF374C600E02F67 /* MobileMapSearchRoute.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCE1C21CF374C600E02F67 /* MobileMapSearchRoute.storyboard */; };
+		3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCE1C71CF38A9C00E02F67 /* SanFrancisco.mmpk */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
 /* End PBXBuildFile section */
 
@@ -491,6 +499,14 @@
 		3EE692011B03D22500C167B8 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Node.swift; path = "Content Display Logic/Model/Node.swift"; sourceTree = "<group>"; };
 		3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = VectorTileLayer.storyboard; path = "Layers/ArcGIS vector tiled layer (URL)/VectorTileLayer.storyboard"; sourceTree = "<group>"; };
 		3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VectorTileLayerViewController.swift; path = "Layers/ArcGIS vector tiled layer (URL)/VectorTileLayerViewController.swift"; sourceTree = "<group>"; };
+		3EFCE1B01CF368D500E02F67 /* OpenMobileMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenMobileMapViewController.swift; path = "Maps/Open mobile map (map package)/OpenMobileMapViewController.swift"; sourceTree = "<group>"; };
+		3EFCE1B61CF369A800E02F67 /* Yellowstone.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = Yellowstone.mmpk; sourceTree = "<group>"; };
+		3EFCE1BC1CF36BC100E02F67 /* OpenMobileMapPackage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OpenMobileMapPackage.storyboard; path = "Maps/Open mobile map (map package)/OpenMobileMapPackage.storyboard"; sourceTree = "<group>"; };
+		3EFCE1BF1CF374C600E02F67 /* MapPackageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapPackageCell.swift; path = "Maps/Mobile map (search and route)/MapPackageCell.swift"; sourceTree = "<group>"; };
+		3EFCE1C01CF374C600E02F67 /* MapPackagesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapPackagesListViewController.swift; path = "Maps/Mobile map (search and route)/MapPackagesListViewController.swift"; sourceTree = "<group>"; };
+		3EFCE1C11CF374C600E02F67 /* MobileMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MobileMapViewController.swift; path = "/Users/gaga7620/Repos/arcgis-runtime-samples-ios/arcgis-ios-sdk-samples/Maps/Mobile map (search and route)/MobileMapViewController.swift"; sourceTree = "<absolute>"; };
+		3EFCE1C21CF374C600E02F67 /* MobileMapSearchRoute.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MobileMapSearchRoute.storyboard; path = "Maps/Mobile map (search and route)/MobileMapSearchRoute.storyboard"; sourceTree = "<group>"; };
+		3EFCE1C71CF38A9C00E02F67 /* SanFrancisco.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanFrancisco.mmpk; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -652,6 +668,7 @@
 		3E4B05E51B39EE920072E514 /* Shared resources */ = {
 			isa = PBXGroup;
 			children = (
+				3EFCE1B31CF369A800E02F67 /* Mobile map packages */,
 				3EC39C351C9B1A7A003F6459 /* Extensions */,
 				3E6AE3EF1C6D15C40026E59C /* Network data */,
 				3E4BF45D1C5BD84900D85919 /* Locator */,
@@ -1002,6 +1019,8 @@
 				3ED028181B8E3A8400ACA70D /* Display device location */,
 				3ED028521B8E3A8500ACA70D /* Take screenshot */,
 				3ED028011B8E3A8400ACA70D /* Authoring a map */,
+				3EFCE1AF1CEFD5B900E02F67 /* Open mobile map (map package) */,
+				3EFCE1BE1CF36FFC00E02F67 /* Mobile map (search and route) */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
@@ -1355,6 +1374,36 @@
 			name = "ArcGIS vector tile layer (URL)";
 			sourceTree = "<group>";
 		};
+		3EFCE1AF1CEFD5B900E02F67 /* Open mobile map (map package) */ = {
+			isa = PBXGroup;
+			children = (
+				3EFCE1B01CF368D500E02F67 /* OpenMobileMapViewController.swift */,
+				3EFCE1BC1CF36BC100E02F67 /* OpenMobileMapPackage.storyboard */,
+			);
+			name = "Open mobile map (map package)";
+			sourceTree = "<group>";
+		};
+		3EFCE1B31CF369A800E02F67 /* Mobile map packages */ = {
+			isa = PBXGroup;
+			children = (
+				3EFCE1C71CF38A9C00E02F67 /* SanFrancisco.mmpk */,
+				3EFCE1B61CF369A800E02F67 /* Yellowstone.mmpk */,
+			);
+			name = "Mobile map packages";
+			path = "Shared resources/Mobile map packages";
+			sourceTree = "<group>";
+		};
+		3EFCE1BE1CF36FFC00E02F67 /* Mobile map (search and route) */ = {
+			isa = PBXGroup;
+			children = (
+				3EFCE1BF1CF374C600E02F67 /* MapPackageCell.swift */,
+				3EFCE1C01CF374C600E02F67 /* MapPackagesListViewController.swift */,
+				3EFCE1C11CF374C600E02F67 /* MobileMapViewController.swift */,
+				3EFCE1C21CF374C600E02F67 /* MobileMapSearchRoute.storyboard */,
+			);
+			name = "Mobile map (search and route)";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1457,11 +1506,13 @@
 				3ED028F41B8E3AA500ACA70D /* OnInteractionCache.storyboard in Resources */,
 				3ED028FA1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard in Resources */,
 				3ED028691B8E3A8500ACA70D /* SetViewpoint.storyboard in Resources */,
+				3EFCE1BD1CF36BC100E02F67 /* OpenMobileMapPackage.storyboard in Resources */,
 				3E4BF4461C5AED5100D85919 /* FindAddress.storyboard in Resources */,
 				3EC39C431C9B4872003F6459 /* OfflineEditing.storyboard in Resources */,
 				3ED028951B8E3A8500ACA70D /* SetMapsSpatialReference.storyboard in Resources */,
 				3E4BF47D1C5BDDCA00D85919 /* san-diego-locator.loc.xml in Resources */,
 				3E0D3AD71AFD481900FC60D6 /* Main.storyboard in Resources */,
+				3EFCE1BA1CF369A800E02F67 /* Yellowstone.mmpk in Resources */,
 				3EE8B9531CA08E54003AA705 /* VectorTileLayer.storyboard in Resources */,
 				3ED029311B8E3AB300ACA70D /* Callout.storyboard in Resources */,
 				3E4BF47F1C5BDDCA00D85919 /* san-diego-locator.lox in Resources */,
@@ -1486,9 +1537,11 @@
 				3ED0292C1B8E3AB300ACA70D /* GOIdentify.storyboard in Resources */,
 				3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */,
 				3ED029421B8E3AB300ACA70D /* polygon.gif in Resources */,
+				3EFCE1C61CF374C600E02F67 /* MobileMapSearchRoute.storyboard in Resources */,
 				3ED028911B8E3A8500ACA70D /* SetInitialMapLocation.storyboard in Resources */,
 				3ED0288D1B8E3A8500ACA70D /* SetInitialMapArea.storyboard in Resources */,
 				3EC39C341C9B106D003F6459 /* ExportTiles.storyboard in Resources */,
+				3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */,
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
 				3ED029691B8E3ACD00ACA70D /* EditAttributes.storyboard in Resources */,
 				3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */,
@@ -1525,6 +1578,7 @@
 				3E6AE3F91C73B5480026E59C /* DirectionsViewController.swift in Sources */,
 				3ED029321B8E3AB300ACA70D /* CalloutViewController.swift in Sources */,
 				3ED028841B8E3A8500ACA70D /* MapRotationViewController.swift in Sources */,
+				3EFCE1B11CF368D500E02F67 /* OpenMobileMapViewController.swift in Sources */,
 				3ED0294C1B8E3AB300ACA70D /* SketchViewController.swift in Sources */,
 				3E0830BA1BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift in Sources */,
 				3ED029711B8E3ACD00ACA70D /* EditGeometryViewController.swift in Sources */,
@@ -1560,12 +1614,14 @@
 				3E4B05F91B39EF250072E514 /* SVProgressHUD.m in Sources */,
 				3ED028921B8E3A8500ACA70D /* SetInitialMapLocationViewController.swift in Sources */,
 				3ED029661B8E3ACD00ACA70D /* EditAttachmentViewController.swift in Sources */,
+				3EFCE1C51CF374C600E02F67 /* MobileMapViewController.swift in Sources */,
 				3ED028B31B8E3A9800ACA70D /* TLUsingURLViewController.swift in Sources */,
 				3ED028EA1B8E3AA500ACA70D /* FLQueryViewController.swift in Sources */,
 				3E41DD721B9A1F4600DA11CC /* AddFeaturesViewController.swift in Sources */,
 				3ED028961B8E3A8500ACA70D /* SetMapsSRViewController.swift in Sources */,
 				3ED0288E1B8E3A8500ACA70D /* SetInitialMapAreaViewController.swift in Sources */,
 				3ED028F51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift in Sources */,
+				3EFCE1C41CF374C600E02F67 /* MapPackagesListViewController.swift in Sources */,
 				3EC39C3F1C9B47C2003F6459 /* OfflineEditingViewController.swift in Sources */,
 				3EAFD6511CD2D92500878E37 /* AppInfoViewController.swift in Sources */,
 				3ED028E21B8E3AA500ACA70D /* OverrideRendererViewController.swift in Sources */,
@@ -1585,6 +1641,7 @@
 				3EC39C1E1C9A59B9003F6459 /* DirectionsListViewController.swift in Sources */,
 				3E6AE3EE1C6D11FD0026E59C /* OfflineRoutingViewController.swift in Sources */,
 				3EC39C321C9B0DF6003F6459 /* ExportTilesViewController.swift in Sources */,
+				3EFCE1C31CF374C600E02F67 /* MapPackageCell.swift in Sources */,
 				3ED028631B8E3A8500ACA70D /* SwitchBasemapViewController.swift in Sources */,
 				3ED028591B8E3A8500ACA70D /* AuthoringOptionsViewController.swift in Sources */,
 				3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */,

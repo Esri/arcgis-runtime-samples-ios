@@ -26,6 +26,9 @@ class OpenMobileMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //add the source code button item to the right of navigation bar
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OpenMobileMapViewController"]
+        
         //initialize map package
         self.mapPackage = AGSMobileMapPackage(name: "Yellowstone")
         

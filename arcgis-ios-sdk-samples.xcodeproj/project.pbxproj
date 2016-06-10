@@ -37,6 +37,7 @@
 		3E412B3F1D0B2CC600349155 /* MapPackageCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFCE1BF1CF374C600E02F67 /* MapPackageCell.swift */; };
 		3E412B401D0B2CC600349155 /* MapPackagesListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFCE1C01CF374C600E02F67 /* MapPackagesListViewController.swift */; };
 		3E412B411D0B2CC600349155 /* MobileMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFCE1C11CF374C600E02F67 /* MobileMapViewController.swift */; };
+		3E412B431D0B2FAD00349155 /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E412B421D0B2FAD00349155 /* AppInfoViewController.swift */; };
 		3E41DD721B9A1F4600DA11CC /* AddFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */; };
 		3E41DD741B9A241600DA11CC /* AddFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E41DD731B9A241500DA11CC /* AddFeatures.storyboard */; };
 		3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E41DD761B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift */; };
@@ -364,8 +365,8 @@
 		3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArcGIS.framework; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Static/ArcGIS.framework; sourceTree = "<absolute>"; };
 		3E23A9E01AFC28F6002E2214 /* arcgis-ios-sdk-samples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "arcgis-ios-sdk-samples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E23A9E41AFC28F6002E2214 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3E23A9EE1AFC28F6002E2214 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "arcgis-ios-sdk-samples/AppDelegate.swift"; sourceTree = "<group>"; };
+		3E23A9EE1AFC28F6002E2214 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "arcgis-ios-sdk-samples/Images.xcassets"; sourceTree = "<group>"; };
 		3E23A9F11AFC28F6002E2214 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3E2A680D1B0D2A7000A318AA /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewController.swift; path = "Content Display Logic/Controllers/ListViewController.swift"; sourceTree = "<group>"; };
 		3E2A68111B14E04300A318AA /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Static/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
@@ -376,6 +377,7 @@
 		3E3B2C1E1BBCA37F00A99C5E /* ContentCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentCollectionViewController.swift; path = "Content Display Logic/Controllers/ContentCollectionViewController.swift"; sourceTree = "<group>"; };
 		3E3B2C211BBCADDB00A99C5E /* ContentTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentTableCell.swift; path = "Content Display Logic/Cells/ContentTableCell.swift"; sourceTree = "<group>"; };
 		3E3B2C231BBD9CD300A99C5E /* SearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchEngine.swift; path = "Content Display Logic/Model/SearchEngine.swift"; sourceTree = "<group>"; };
+		3E412B421D0B2FAD00349155 /* AppInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppInfoViewController.swift; path = "Content Display Logic/Controllers/AppInfoViewController.swift"; sourceTree = "<group>"; };
 		3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddFeaturesViewController.swift; path = "Edit data/Add features (feature service)/AddFeaturesViewController.swift"; sourceTree = "<group>"; };
 		3E41DD731B9A241500DA11CC /* AddFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddFeatures.storyboard; path = "Edit data/Add features (feature service)/AddFeatures.storyboard"; sourceTree = "<group>"; };
 		3E41DD761B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeleteFeaturesViewController.swift; path = "Edit data/Delete features (feature service)/DeleteFeaturesViewController.swift"; sourceTree = "<group>"; };
@@ -579,6 +581,8 @@
 			children = (
 				3E02571F1BAB5D7700ACAC18 /* Default-568h@2x.png */,
 				3E23A9E21AFC28F6002E2214 /* arcgis-ios-sdk-samples */,
+				3E23A9EE1AFC28F6002E2214 /* Images.xcassets */,
+				3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */,
 				3E23A9E11AFC28F6002E2214 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -603,6 +607,8 @@
 				3E6AE3E91C6D10DA0026E59C /* Route & Navigation */,
 				3E4B05E51B39EE920072E514 /* Shared resources */,
 				3E23AA071AFC2DE0002E2214 /* Content Display Logic */,
+				3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */,
+				3EA34D591B38C3B3003DC0E8 /* Samples-Bridging-Header.h */,
 				3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */,
 			);
 			path = "arcgis-ios-sdk-samples";
@@ -621,10 +627,6 @@
 		3E23AA071AFC2DE0002E2214 /* Content Display Logic */ = {
 			isa = PBXGroup;
 			children = (
-				3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */,
-				3E23A9EE1AFC28F6002E2214 /* Images.xcassets */,
-				3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */,
-				3EA34D591B38C3B3003DC0E8 /* Samples-Bridging-Header.h */,
 				3E676DEF1B1D0B6000D4029A /* Audio Files */,
 				3E3B2C201BBCADB300A99C5E /* Cells */,
 				3E23AA0B1AFC327F002E2214 /* Controllers */,
@@ -641,6 +643,7 @@
 		3E23AA0B1AFC327F002E2214 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3E412B421D0B2FAD00349155 /* AppInfoViewController.swift */,
 				3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */,
 				3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */,
 				3E2A680D1B0D2A7000A318AA /* ListViewController.swift */,
@@ -1081,9 +1084,9 @@
 				3ED028181B8E3A8400ACA70D /* Display device location */,
 				3ED028521B8E3A8500ACA70D /* Take screenshot */,
 				3ED028011B8E3A8400ACA70D /* Authoring a map */,
+				3E6C77141CCFC33100E89873 /* Identify layers */,
 				3EFCE1AF1CEFD5B900E02F67 /* Open mobile map (map package) */,
 				3EFCE1BE1CF36FFC00E02F67 /* Mobile map (search and route) */,
-				3E6C77141CCFC33100E89873 /* Identify layers */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
@@ -1459,9 +1462,9 @@
 		3EFCE1BE1CF36FFC00E02F67 /* Mobile map (search and route) */ = {
 			isa = PBXGroup;
 			children = (
-				3EFCE1BF1CF374C600E02F67 /* MapPackageCell.swift */,
 				3EFCE1C01CF374C600E02F67 /* MapPackagesListViewController.swift */,
 				3EFCE1C11CF374C600E02F67 /* MobileMapViewController.swift */,
+				3EFCE1BF1CF374C600E02F67 /* MapPackageCell.swift */,
 				3EFCE1C21CF374C600E02F67 /* MobileMapSearchRoute.storyboard */,
 			);
 			name = "Mobile map (search and route)";
@@ -1723,6 +1726,7 @@
 				3ECCFE3C1BD0401A00CE256D /* LayerStatusViewController.swift in Sources */,
 				3EE692021B03D22500C167B8 /* Node.swift in Sources */,
 				3ED028E51B8E3AA500ACA70D /* DefinitionExpressionViewController.swift in Sources */,
+				3E412B431D0B2FAD00349155 /* AppInfoViewController.swift in Sources */,
 				3E6AE3FB1C73B5480026E59C /* FindRouteViewController.swift in Sources */,
 				3ED0289D1B8E3A8500ACA70D /* MapViewScreenshotViewController.swift in Sources */,
 				3E5848FE1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift in Sources */,

@@ -29,6 +29,9 @@ class MapPackagesListViewController: UIViewController, UITableViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //add the source code button item to the right of navigation bar
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MapPackagesListViewController", "MobileMapViewController", "MapPackageCell"]
+        
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
         

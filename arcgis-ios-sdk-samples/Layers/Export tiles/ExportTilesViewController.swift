@@ -16,9 +16,6 @@
 import UIKit
 import ArcGIS
 
-//crashes if minScale == maxScale
-//generated tpk gets minScale as the world extent
-
 class ExportTilesViewController: UIViewController {
     
     @IBOutlet var mapView:AGSMapView!

@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "iOS_80.png",
+      "filename" : "pin_blank_green@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "iOS_160.png",
+      "filename" : "pin_blank_green@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "iOS_240.png",
+      "filename" : "pin_blank_green@3x.png",
       "scale" : "3x"
     }
   ],

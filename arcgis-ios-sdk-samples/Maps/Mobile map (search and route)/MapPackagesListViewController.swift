@@ -33,9 +33,6 @@ class MapPackagesListViewController: UIViewController, UITableViewDataSource, UI
         tableView.estimatedRowHeight = 44
         
         self.fetchMapPackages()
-        
-        AGSRequestConfiguration.globalConfiguration().debugLogRequests = true
-        AGSRequestConfiguration.globalConfiguration().debugLogResponses = true
     }
     
     override func didReceiveMemoryWarning() {

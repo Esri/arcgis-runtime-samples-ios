@@ -45,8 +45,6 @@
                 <true/>
                 <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
                 <true/>
-                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-                <false/>
             </dict>
 			<key>arcgis.com</key>
 			<dict>
@@ -54,8 +52,6 @@
 				<true/>
 				<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
-				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-				<false/>
 			</dict>
 			<key>arcgisonline.com</key>
 			<dict>
@@ -63,8 +59,6 @@
 				<true/>
 				<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
-				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-				<false/>
 			</dict>
 			<key>cloudflare.com</key>
 			<dict>
@@ -72,8 +66,6 @@
 				<true/>
 				<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
-				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-				<false/>
 			</dict>
 		</dict>
 	</dict>

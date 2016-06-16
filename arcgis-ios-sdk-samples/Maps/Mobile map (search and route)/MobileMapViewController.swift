@@ -151,7 +151,7 @@ class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
             self.locatorTaskCancellable.cancel()
         }
         
-        self.locatorTaskCancellable = self.locatorTask?.reverseGeocodeWithLocation(point, parameters: self.reverseGeocodeParameters, completion: { (results:[AGSGeocodeResult]?, error:NSError?) in
+        self.locatorTaskCancellable = self.locatorTask?.reverseGeocodeWithLocation(point, parameters: self.reverseGeocodeParameters, completion: { [weak self](results:[AGSGeocodeResult]?, error:NSError?) in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
             }
@@ -160,7 +160,7 @@ class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
                 //and show the callout
                 if let results = results where results.count > 0 {
                     graphic.attributes["Match_addr"] = results.first!.formattedAddressString
-                    self.showCalloutForGraphic(graphic, tapLocation: point, animated: false, offset: false)
+                    self?.showCalloutForGraphic(graphic, tapLocation: point, animated: false, offset: false)
                     return
                 }
                 else {
@@ -168,7 +168,7 @@ class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
                     SVProgressHUD.showErrorWithStatus("No address found", maskType: .Gradient)
                     
                     //dismiss the callout if already visible
-                    self.mapView.callout.dismiss()
+                    self?.mapView.callout.dismiss()
                 }
             }
         })
@@ -227,17 +227,17 @@ class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
         self.routeParameters.setStops(stops)
         
         //route
-        self.routeTaskCancellable = self.routeTask.solveRouteWithParameters(self.routeParameters) { (routeResult:AGSRouteResult?, error:NSError?) in
+        self.routeTaskCancellable = self.routeTask.solveRouteWithParameters(self.routeParameters) {[weak self] (routeResult:AGSRouteResult?, error:NSError?) in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
                 //remove the last marker
-                self.markerGraphicsOverlay.graphics.removeLastObject()
-                self.labelGraphicsOverlay.graphics.removeLastObject()
+                self?.markerGraphicsOverlay.graphics.removeLastObject()
+                self?.labelGraphicsOverlay.graphics.removeLastObject()
             }
             else {
                 if let route = routeResult?.routes[0] {
-                    let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self.routeSymbol())
-                    self.routeGraphicsOverlay.graphics.addObject(routeGraphic)
+                    let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self?.routeSymbol())
+                    self?.routeGraphicsOverlay.graphics.addObject(routeGraphic)
                 }
             }
         }

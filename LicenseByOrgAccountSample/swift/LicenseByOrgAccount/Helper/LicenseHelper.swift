@@ -262,7 +262,7 @@ class LicenseHelper: NSObject, AGSPortalDelegate, UIAlertViewDelegate {
                     //make a test connection to force UIWebView to accept the host
                     let rop = AGSJSONRequestOperation(URL: url)
                     AGSRequestOperation.sharedOperationQueue().addOperation(rop)
-                    //Reload the oAuth vc
+                    //Reload the OAuth vc
                     self.oauthLoginVC.reload()
                 }
             }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tz0-lf-ZRZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tz0-lf-ZRZ">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -55,7 +55,7 @@
                                                 <action selector="closeAction" destination="tz0-lf-ZRZ" eventType="touchUpInside" id="pK5-JC-Dq0"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preview" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="med-fb-GMh">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tile package" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="med-fb-GMh">
                                             <rect key="frame" x="60" y="21" width="480" height="25"/>
                                             <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -79,11 +79,11 @@
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="Pst-Pw-ena"/>
-                                            <exclude reference="u51-ZK-m8j"/>
-                                            <exclude reference="RlN-io-ZCf"/>
                                             <exclude reference="LLt-vb-58H"/>
+                                            <exclude reference="RlN-io-ZCf"/>
                                             <exclude reference="WiW-VP-zKD"/>
                                             <exclude reference="gaq-V0-Oxd"/>
+                                            <exclude reference="u51-ZK-m8j"/>
                                             <exclude reference="oML-fm-PFr"/>
                                         </mask>
                                     </variation>

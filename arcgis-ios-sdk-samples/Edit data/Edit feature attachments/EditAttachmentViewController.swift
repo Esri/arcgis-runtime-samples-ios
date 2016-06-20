@@ -53,7 +53,7 @@ class EditAttachmentViewController: UIViewController, AGSMapViewTouchDelegate, A
     
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
@@ -69,15 +69,15 @@ class EditAttachmentViewController: UIViewController, AGSMapViewTouchDelegate, A
             else if let features = identifyLayerResult?.geoElements as? [AGSArcGISFeature] where features.count > 0 {
                 let feature = features[0]
                 //show callout for the first feature
-                let title = feature.attributeValueForKey("typdamage") as! String
+                let title = feature.attributes["typdamage"] as! String
                 
-                //fetch attachment info
-                feature.fetchAttachmentInfosWithCompletion({ (attachmentInfos:[AGSAttachmentInfo]?, error:NSError?) -> Void in
+                //fetch attachment
+                feature.fetchAttachmentsWithCompletion({ (attachments:[AGSAttachment]?, error:NSError?) -> Void in
                     if let error = error {
                         print(error)
                     }
-                    else if let attachmentInfos = attachmentInfos {
-                        let detail = "Number of attachments :: \(attachmentInfos.count)"
+                    else if let attachments = attachments {
+                        let detail = "Number of attachments :: \(attachments.count)"
                         self?.mapView.callout.title = title
                         self?.mapView.callout.detail = detail
                         self?.mapView.callout.delegate = self

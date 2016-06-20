@@ -16,9 +16,6 @@
 import UIKit
 import ArcGIS
 
-//crashes if minScale == maxScale
-//generated tpk gets minScale as the world extent
-
 class ExportTilesViewController: UIViewController {
     
     @IBOutlet var mapView:AGSMapView!
@@ -31,7 +28,7 @@ class ExportTilesViewController: UIViewController {
     private var extentGraphic:AGSGraphic!
     
     private var tiledLayer:AGSArcGISTiledLayer!
-    private var job:AGSJob!
+    private var job:AGSExportTileCacheJob!
     private var exportTask:AGSExportTileCacheTask!
     
     private var downloading = false {
@@ -126,8 +123,7 @@ class ExportTilesViewController: UIViewController {
         
         //initialize the export task
         self.exportTask = AGSExportTileCacheTask(mapServiceInfo: self.tiledLayer.mapServiceInfo!)
-        
-        let params = self.exportTask.exportTileCacheParametersWith(self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale)
+        let params = self.exportTask.exportTileCacheParametersWithAreaOfInterest(self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale)
         
         //get the job
         self.job = self.exportTask.exportTileCacheJobWithParameters(params, downloadFilePath: destinationPath)
@@ -135,7 +131,6 @@ class ExportTilesViewController: UIViewController {
         self.job.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
             //show job status
             SVProgressHUD.showWithStatus(status.statusString(), maskType: .Gradient)
-            
         }) { [weak self] (result: AnyObject?, error: NSError?) -> Void in
             self?.downloading = false
             
@@ -151,18 +146,6 @@ class ExportTilesViewController: UIViewController {
                 let tileCache = result as! AGSTileCache
                 let newTiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
                 self?.previewMapView.map = AGSMap(basemap: AGSBasemap(baseLayer: newTiledLayer))
-                newTiledLayer.loadWithCompletion({ (error: NSError?) -> Void in
-                    if let error = error {
-                        print("Error while loading tiled layer :: \(error.localizedDescription)")
-                    }
-                    else {
-                        //work around for making the tiles visible on load
-                        //TODO: Remove this once the issue is fixed
-                        var envBuilder = AGSEnvelopeBuilder(envelope: newTiledLayer.fullExtent)
-                        envBuilder = envBuilder.expandByFactor(0.85)
-                        self?.previewMapView.setViewpoint(AGSViewpoint(targetExtent: envBuilder.toGeometry()))
-                    }
-                })
             }
         }
     }

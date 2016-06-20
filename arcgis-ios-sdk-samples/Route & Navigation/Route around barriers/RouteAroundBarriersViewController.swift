@@ -82,7 +82,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
     }
     
     func getDefaultParameters() {
-        self.routeTask.generateDefaultParametersWithCompletion({ [weak self] (params: AGSRouteParameters?, error: NSError?) -> Void in
+        self.routeTask.defaultRouteParametersWithCompletion({ [weak self] (params: AGSRouteParameters?, error: NSError?) -> Void in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription)
             }
@@ -131,7 +131,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
         
         self.routeTask.solveRouteWithParameters(self.routeParameters) { [weak self] (routeResult:AGSRouteResult?, error:NSError?) -> Void in
             if let error = error {
-                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                SVProgressHUD.showErrorWithStatus("\(error.localizedDescription) \(error.localizedFailureReason ?? "")")
             }
             else {
                 SVProgressHUD.dismiss()
@@ -163,7 +163,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
     
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         //normalize geometry
         let normalizedPoint = AGSGeometryEngine.normalizeCentralMeridianOfGeometry(mappoint)!
         

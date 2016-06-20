@@ -85,8 +85,10 @@ class FindAddressViewController: UIViewController, AGSMapViewTouchDelegate, UISe
                         //create a graphic for the first result and add to the graphics overlay
                         let graphic = self?.graphicForPoint(results[0].displayLocation!, attributes: results[0].attributes)
                         self?.graphicsOverlay.graphics.addObject(graphic!)
-                        //zoom to the extent of the graphic to highlight the result
-                        self?.mapView.setViewpointGeometry(results[0].extent!, completion: nil)
+                        //zoom to the extent of the result
+                        if let extent = results[0].extent {
+                            self?.mapView.setViewpointGeometry(extent, completion: nil)
+                        }
                     }
                     else {
                         //provide feedback in case of failure
@@ -103,11 +105,11 @@ class FindAddressViewController: UIViewController, AGSMapViewTouchDelegate, UISe
     //populates the title and detail of the callout with specific attributes
     //hides the accessory button
     private func showCalloutForGraphic(graphic:AGSGraphic, tapLocation:AGSPoint) {
-        let addressType = graphic.attributeValueForKey("Addr_type") as! String
-        self.mapView.callout.title = graphic.attributeValueForKey("Match_addr") as? String ?? ""
+        let addressType = graphic.attributes["Addr_type"] as! String
+        self.mapView.callout.title = graphic.attributes["Match_addr"] as? String ?? ""
         
         if addressType == "POI" {
-            self.mapView.callout.detail = graphic.attributeValueForKey("Place_addr") as? String ?? ""
+            self.mapView.callout.detail = graphic.attributes["Place_addr"] as? String ?? ""
         }
         else {
             self.mapView.callout.detail = nil
@@ -123,7 +125,7 @@ class FindAddressViewController: UIViewController, AGSMapViewTouchDelegate, UISe
     
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         //dismiss the callout
         self.mapView.callout.dismiss()
         

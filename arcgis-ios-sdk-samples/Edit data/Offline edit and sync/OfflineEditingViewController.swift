@@ -35,10 +35,8 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
     private var featureTable:AGSServiceFeatureTable!
     private var syncTask:AGSGeodatabaseSyncTask!
     private var generatedGeodatabase:AGSGeodatabase!
-    private var generateJob:AGSJob!
-    private var syncJob:AGSJob!
-    private var featureServiceInfo:AGSArcGISFeatureServiceInfo!
-    private var featureLayerInfos:[AGSArcGISFeatureLayerInfo]!
+    private var generateJob:AGSGenerateGeodatabaseJob!
+    private var syncJob:AGSSyncGeodatabaseJob!
     private var popupsVC:AGSPopupsViewController!
     private var featureLayersVC:FeatureLayersViewController!
     
@@ -60,7 +58,6 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         
         self.map = AGSMap(basemap: AGSBasemap(baseLayer: localTiledLayer))
         
-        self.addFeatureLayers()
         
         //setup extent view
         self.extentView.layer.borderColor = UIColor.redColor().CGColor
@@ -73,6 +70,10 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         
         //initialize sync task
         self.syncTask = AGSGeodatabaseSyncTask(URL: self.FEATURE_SERVICE_URL)
+        
+        //add online feature layers
+        self.addFeatureLayers(self.syncTask.featureServiceInfo)
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -82,7 +83,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
     
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         SVProgressHUD.showWithStatus("Loading", maskType: .Gradient)
         self.mapView.identifyLayersAtScreenPoint(screen, tolerance: 5) { [weak self] (results: [AGSIdentifyLayerResult]?, error: NSError?) -> Void in
 
@@ -104,34 +105,36 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
                     self?.presentViewController(self!.popupsVC, animated: true, completion: nil)
                 }
                 else {
-                    print("No feature selected")
+                    SVProgressHUD.showInfoWithStatus("No features selected", maskType: .Gradient)
                 }
             }
         }
     }
     
     //MARK: - Helper methods
-    
-    func addFeatureLayers() {
-        self.featureServiceInfo = AGSArcGISFeatureServiceInfo(URL: self.FEATURE_SERVICE_URL)
-        self.featureServiceInfo.loadWithCompletion { [weak self] (error) -> Void in
+    func addFeatureLayers(featureServiceInfo: AGSArcGISFeatureServiceInfo) {
+        
+        //Iterate through the layers in the service
+        featureServiceInfo.loadWithCompletion { [weak self] (error) -> Void in
             if let error = error {
-                print(error)
-            }
-            else {
-                if let featureLayerInfos = self?.featureServiceInfo.featureLayerInfos {
-                    self?.featureLayerInfos = featureLayerInfos
-                    for featureLayerInfo in featureLayerInfos {
-                        let featureTable = AGSServiceFeatureTable(URL: featureLayerInfo.URL!)
-                        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                        self?.map.operationalLayers.addObject(featureLayer)
-                    }
+                print("Could not load feature service \(error)")
+            } else {
+                for (index, layerInfo) in featureServiceInfo.featureLayerInfos.enumerate() {
+                    
+                    //For each layer in the serice, add a layer to the map
+                    let layerURL = self?.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))
+                    let featureTable = AGSServiceFeatureTable(URL:layerURL!)
+                    let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                    featureLayer.name = layerInfo.serviceLayerName
+                    self?.map.operationalLayers.addObject(featureLayer)
                 }
+                
+                //enable generate geodatabase bbi
+                self?.barButtonItem.enabled = true
             }
-            //enable generate geodatabase bbi
-            self?.barButtonItem.enabled = true
         }
     }
+    
     
     func frameToExtent() -> AGSEnvelope {
         let frame = self.mapView.convertRect(self.extentView.frame, fromView: self.view)
@@ -168,7 +171,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         self.mapView.map?.operationalLayers.removeAllObjects()
         
         //add layers from the service
-        self.addFeatureLayers()
+        self.addFeatureLayers(self.syncTask.featureServiceInfo)
         
         //update the flag
         self.liveMode = true
@@ -268,7 +271,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
             //update to download button
             self.barButtonItem.title = "Download"
             
-            self.featureLayersVC?.featureLayerInfos = self.featureLayerInfos
+            self.featureLayersVC?.featureLayerInfos = self.syncTask.featureServiceInfo.featureLayerInfos
         }
         else {
             //get selected layer ids
@@ -299,6 +302,8 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         let params = AGSGenerateGeodatabaseParameters()
         params.extent = extent
         params.layerOptions = layerOptions
+        params.returnAttachments = true
+        params.attachmentSyncDirection = .Bidirectional
         
         //name for the geodatabase
         let dateFormatter = NSDateFormatter()
@@ -360,7 +365,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         }
         
         var syncLayerOptions = [AGSSyncLayerOption]()
-        for layerInfo in self.featureLayerInfos {
+        for layerInfo in self.syncTask.featureServiceInfo.featureLayerInfos {
             let layerOption = AGSSyncLayerOption(layerID: layerInfo.serviceLayerID, syncDirection: .Bidirectional)
             syncLayerOptions.append(layerOption)
         }
@@ -373,11 +378,12 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
             
             SVProgressHUD.showWithStatus(status.statusString(), maskType: .Gradient)
             
-        }, completion: { (object: AnyObject?, error: NSError?) -> Void in
+        }, completion: { (results: [AGSSyncLayerResult]?, error: NSError?) -> Void in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription)
             }
             else {
+                //TODO: use the results object
                 SVProgressHUD.dismiss()
                 self.updateUI()
             }

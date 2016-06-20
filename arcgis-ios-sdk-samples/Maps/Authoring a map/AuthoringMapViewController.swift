@@ -80,7 +80,7 @@ class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, 
         
         let openAction = UIAlertAction(title: "Open in Safari", style: UIAlertActionStyle.Default, handler: { [weak self] (action:UIAlertAction!) -> Void in
             if let weakSelf = self {
-                UIApplication.sharedApplication().openURL(NSURL(string: "\(weakSelf.webmapURL)\(weakSelf.mapView.map!.item!.itemID!)")!)
+                UIApplication.sharedApplication().openURL(NSURL(string: "\(weakSelf.webmapURL)\(weakSelf.mapView.map!.item!.itemID)")!)
             }
         })
         

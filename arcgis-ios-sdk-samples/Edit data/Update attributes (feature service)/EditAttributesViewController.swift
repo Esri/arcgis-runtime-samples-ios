@@ -55,7 +55,7 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
     }
     
     func showCallout(feature:AGSFeature, tapLocation:AGSPoint?) {
-        let title = feature.attributeValueForKey("typdamage") as! String
+        let title = feature.attributes["typdamage"] as! String
         self.mapView.callout.title = title
         self.mapView.callout.delegate = self
         self.mapView.callout.showCalloutForFeature(feature, layer: self.featureLayer, tapLocation: tapLocation, animated: true)
@@ -77,7 +77,7 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
     
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
@@ -129,7 +129,7 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
                 print("Error while loading feature :: \(error.localizedDescription)")
             }
             else {
-                self?.selectedFeature.setAttributeValue(self!.types[index], forKey: "typdamage")
+                self?.selectedFeature.attributes["typdamage"] = self!.types[index]
                 self?.featureTable.updateFeature(self!.selectedFeature) { (error: NSError?) -> Void in
                     if let error = error {
                         print(error)

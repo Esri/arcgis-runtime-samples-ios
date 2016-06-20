@@ -80,7 +80,7 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
     
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         //on single tap, add stop graphic at the tapped location
         //and route
         let graphic = self.graphicForLocation(mappoint)
@@ -92,7 +92,7 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
         self.route(false)
     }
     
-    func mapView(mapView: AGSMapView, didLongPressAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func mapView(mapView: AGSMapView, didLongPressAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         //add the graphic at that point
         //keep a reference to that graphic to update the geometry if moved
         self.longPressedGraphic = self.graphicForLocation(mappoint)
@@ -103,7 +103,7 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
         self.route(true)
     }
     
-    func mapView(mapView: AGSMapView, didMoveLongPressToPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func mapView(mapView: AGSMapView, didMoveLongPressToScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
         //update the graphic
         //route
         self.longPressedGraphic.geometry = mappoint
@@ -130,7 +130,7 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
     
     private func getDefaultParameters() {
         //get the default parameters
-        self.routeTask.generateDefaultParametersWithCompletion({ [weak self] (params: AGSRouteParameters?, error: NSError?) -> Void in
+        self.routeTask.defaultRouteParametersWithCompletion({ [weak self] (params: AGSRouteParameters?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }

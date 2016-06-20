@@ -76,10 +76,9 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
     
     //MARK: - AGSMapViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
-        
+    func mapView(mapView: AGSMapView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //get the geoElements for all layers present at the tapped point
-        self.identifyLayers(screen)
+        self.identifyLayers(screenPoint)
     }
     
     //MARK: - Identify layers

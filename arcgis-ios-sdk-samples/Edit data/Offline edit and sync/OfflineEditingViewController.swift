@@ -302,6 +302,8 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         let params = AGSGenerateGeodatabaseParameters()
         params.extent = extent
         params.layerOptions = layerOptions
+        params.returnAttachments = true
+        params.attachmentSyncDirection = .Bidirectional
         
         //name for the geodatabase
         let dateFormatter = NSDateFormatter()

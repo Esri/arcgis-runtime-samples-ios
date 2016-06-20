@@ -105,7 +105,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
                     self?.presentViewController(self!.popupsVC, animated: true, completion: nil)
                 }
                 else {
-                    print("No feature selected")
+                    SVProgressHUD.showInfoWithStatus("No features selected", maskType: .Gradient)
                 }
             }
         }

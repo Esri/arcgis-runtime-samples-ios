@@ -192,6 +192,14 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
+                    <string>Local tiled layer</string>
+                    <key>storyboardName</key>
+                    <string>LocalTiledLayer</string>
+                    <key>descriptionText</key>
+                    <string>This sample shows how to load an offline copy of a tiled map service so that that basemap tiled service is available when applications are offline</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
                     <string>ArcGIS map image layer (URL)</string>
                     <key>storyboardName</key>
                     <string>MILUsingURL</string>

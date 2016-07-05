@@ -133,24 +133,18 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
     
     @IBAction func doneAction() {
         if let newGeometry = self.sketchGraphicsOverlay.geometry {
-            self.selectedFeature.loadWithCompletion({ [weak self] (error:NSError?) -> Void in
+
+            self.selectedFeature.geometry = newGeometry
+            self.featureTable.updateFeature(self.selectedFeature, completion: { [weak self] (error:NSError?) -> Void in
                 if let error = error {
-                    print("Error while loading feature :: \(error.localizedDescription)")
+                    SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                    
+                    //un hide the feature
+                    self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
                 }
                 else {
-                    self?.selectedFeature.geometry = newGeometry
-                    self?.featureTable.updateFeature(self!.selectedFeature, completion: { (error:NSError?) -> Void in
-                        if let error = error {
-                            print(error)
-                            
-                            //un hide the feature
-                            self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
-                        }
-                        else {
-                            //apply edits
-                            self?.applyEdits()
-                        }
-                    })
+                    //apply edits
+                    self?.applyEdits()
                 }
             })
         }

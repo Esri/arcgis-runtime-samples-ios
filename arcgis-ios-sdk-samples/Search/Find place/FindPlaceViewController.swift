@@ -349,29 +349,23 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     private func geocodeUsingSuggestResult(suggestResult:AGSSuggestResult, completion: () -> Void) {
-        //load locator task
-        self.locatorTask.loadWithCompletion { [weak self] (error: NSError?) -> Void in
+            
+        //create geocode params
+        let params = AGSGeocodeParameters()
+        params.outputSpatialReference = self.mapView.spatialReference
+        
+        //geocode with selected suggest result
+        self.locatorTask.geocodeWithSuggestResult(suggestResult, parameters: params) { [weak self] (result: [AGSGeocodeResult]?, error: NSError?) -> Void in
             if let error = error {
                 print(error.localizedDescription)
             }
-            
-            //create geocode params
-            let params = AGSGeocodeParameters()
-            params.outputSpatialReference = self?.mapView.spatialReference
-            
-            //geocode with selected suggest result
-            self?.locatorTask.geocodeWithSuggestResult(suggestResult, parameters: params) { (result: [AGSGeocodeResult]?, error: NSError?) -> Void in
-                if let error = error {
-                    print(error.localizedDescription)
+            else {
+                if let result = result where result.count > 0 {
+                    self?.preferredSearchLocation = result[0].displayLocation
+                    completion()
                 }
                 else {
-                    if let result = result where result.count > 0 {
-                        self?.preferredSearchLocation = result[0].displayLocation
-                        completion()
-                    }
-                    else {
-                        print("No location found for the suggest result")
-                    }
+                    print("No location found for the suggest result")
                 }
             }
         }
@@ -392,20 +386,17 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         params.outputSpatialReference = self.mapView.spatialReference
         params.resultAttributeNames.appendContentsOf(["*"])
         
-        //load the locatorTask
-        self.locatorTask.loadWithCompletion { [weak self] (error) -> Void in
             
-            //geocode using the search text and params
-            self?.locatorTask.geocodeWithSearchText(poi, parameters: params, completion: {  (results:[AGSGeocodeResult]?, error:NSError?) -> Void in
-                if let error = error {
-                    print(error.localizedDescription)
-                    self?.canDoExtentSearch = true
-                }
-                else {
-                    self?.handleGeocodeResultsForPOIs(results, areExtentBased: (extent != nil))
-                }
-            })
-        }
+        //geocode using the search text and params
+        self.locatorTask.geocodeWithSearchText(poi, parameters: params, completion: { [weak self] (results:[AGSGeocodeResult]?, error:NSError?) -> Void in
+            if let error = error {
+                print(error.localizedDescription)
+                self?.canDoExtentSearch = true
+            }
+            else {
+                self?.handleGeocodeResultsForPOIs(results, areExtentBased: (extent != nil))
+            }
+        })
     }
     
     func handleGeocodeResultsForPOIs(geocodeResults:[AGSGeocodeResult]?, areExtentBased:Bool) {

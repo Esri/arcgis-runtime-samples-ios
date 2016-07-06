@@ -15,4 +15,4 @@ The sample creates a symbol for each `AGSSimpleMarkerSymbolStyle`, namely
 - Sphere
 - Tetrahedron
 
-It then creates a `AGSGraphic` for each of these symbols and adds that graphic to the graphics overlay.
+It then creates a `AGSGraphic` for each of these symbols and adds that graphic to the graphics overlay. The graphics are placed absolutely i.e. at the height above sea level.

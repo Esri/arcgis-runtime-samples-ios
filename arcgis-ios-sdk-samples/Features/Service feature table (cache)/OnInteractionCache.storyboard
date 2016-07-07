@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qin-X4-xcF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qin-X4-xcF">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--On Interaction Cache View Controller-->
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2g-5H-Onf" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -27,7 +28,13 @@
                             <constraint firstItem="OqJ-gO-0jo" firstAttribute="top" secondItem="f2g-5H-Onf" secondAttribute="bottom" id="Iag-Nu-NpD"/>
                             <constraint firstItem="f2g-5H-Onf" firstAttribute="top" secondItem="q7D-nh-VlR" secondAttribute="top" id="Kro-H8-M4C"/>
                             <constraint firstAttribute="trailing" secondItem="f2g-5H-Onf" secondAttribute="trailing" id="k3x-GQ-WoR"/>
+                            <constraint firstItem="f2g-5H-Onf" firstAttribute="top" secondItem="CQc-Sz-gIC" secondAttribute="bottom" id="sEi-UB-4VJ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Kro-H8-M4C"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="f2g-5H-Onf" id="XA2-Pe-769"/>

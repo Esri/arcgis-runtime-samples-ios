@@ -1468,9 +1468,9 @@
 		3EEA06001D21C3E800E03774 /* 3D */ = {
 			isa = PBXGroup;
 			children = (
-				3EEA06011D21C44000E03774 /* 3D symbols */,
 				3EEA06041D21C44000E03774 /* Display a scene */,
 				3EEA06071D21C44000E03774 /* Extrude graphics */,
+				3EEA06011D21C44000E03774 /* 3D symbols */,
 				3EEA060A1D21C44000E03774 /* Surface placements */,
 			);
 			name = 3D;

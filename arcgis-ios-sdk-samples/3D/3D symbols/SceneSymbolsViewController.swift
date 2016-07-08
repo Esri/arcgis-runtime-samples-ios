@@ -79,10 +79,10 @@ class SceneSymbolsViewController: UIViewController {
         
         var i = 0
         for symbol in symbols {
-            let point = AGSPoint(x: x + 0.01*Double(i), y: y, z: z, spatialReference: AGSSpatialReference.WGS84())
+            let point = AGSPoint(x: x + 0.01 * Double(i), y: y, z: z, spatialReference: AGSSpatialReference.WGS84())
             let graphic = AGSGraphic(geometry: point, symbol: symbol)
             graphics.append(graphic)
-            i = i+1
+            i = i + 1
         }
         
         //add the graphics to the overlay
@@ -96,7 +96,7 @@ class SceneSymbolsViewController: UIViewController {
     
     //returns a CGFloat between 0 and 1
     private func randFloat() -> CGFloat {
-        return CGFloat(arc4random()%256)/256
+        return CGFloat(arc4random() % 256) / 256
     }
 
     override func didReceiveMemoryWarning() {

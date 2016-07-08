@@ -84,16 +84,16 @@ class ExtrudeGraphicsViewController: UIViewController {
         let polygon = AGSPolygonBuilder(spatialReference: AGSSpatialReference.WGS84())
         polygon.addPointWithX(point.x, y: point.y)
         polygon.addPointWithX(point.x, y: point.y+squareSize)
-        polygon.addPointWithX(point.x+squareSize, y: point.y+squareSize)
-        polygon.addPointWithX(point.x+squareSize, y: point.y)
+        polygon.addPointWithX(point.x + squareSize, y: point.y + squareSize)
+        polygon.addPointWithX(point.x + squareSize, y: point.y)
         return polygon.toGeometry()
     }
     
     //add a graphic to the graphics overlay for the given polygon
     private func addGraphicForPolygon(polygon:AGSPolygon) {
         let rand = Int(arc4random()) % self.maxHeight
-        let colorComponent = CGFloat(rand)/CGFloat(self.maxHeight)
-        let color = UIColor(red: 1-colorComponent, green: 0, blue: colorComponent, alpha: 1)
+        let colorComponent = CGFloat(rand) / CGFloat(self.maxHeight)
+        let color = UIColor(red: 1 - colorComponent, green: 0, blue: colorComponent, alpha: 1)
         let symbol = AGSSimpleFillSymbol(style: .Solid, color: color, outline: nil)
         
         let graphic = AGSGraphic(geometry: polygon, symbol: symbol)

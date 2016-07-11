@@ -123,21 +123,13 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
     func optionsViewController(optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int) {
         SVProgressHUD.showWithStatus("Updating", maskType: .Gradient)
         
-        //load feature
-        self.selectedFeature.loadWithCompletion { [weak self] (error:NSError?) -> Void in
+        self.selectedFeature.attributes["typdamage"] = self.types[index]
+        self.featureTable.updateFeature(self.selectedFeature) { [weak self] (error: NSError?) -> Void in
             if let error = error {
-                print("Error while loading feature :: \(error.localizedDescription)")
+                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
             }
             else {
-                self?.selectedFeature.attributes["typdamage"] = self!.types[index]
-                self?.featureTable.updateFeature(self!.selectedFeature) { (error: NSError?) -> Void in
-                    if let error = error {
-                        print(error)
-                    }
-                    else {
-                        self?.applyEdits()
-                    }
-                }
+                self?.applyEdits()
             }
         }
     }

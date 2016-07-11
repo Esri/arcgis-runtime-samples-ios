@@ -364,6 +364,22 @@
                     <key>descriptionText</key>
                     <string>Tap on the button in the toolbar to display legends for the layers on the map</string>
                 </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Simple renderer</string>
+                    <key>storyboardName</key>
+                    <string>SimpleRenderer</string>
+                    <key>descriptionText</key>
+                    <string>This sample demonstrates how to create a simple renderer and add it to a graphics overlay</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Unique value renderer</string>
+                    <key>storyboardName</key>
+                    <string>UniqueValueRenderer</string>
+                    <key>descriptionText</key>
+                    <string>This sample demonstrate how to use a unique value renderer to style different features in a feature layer with different symbols</string>
+                </dict>
             </array>
         </dict>
         <dict>
@@ -496,6 +512,45 @@
                     <string>OfflineRouting</string>
                     <key>descriptionText</key>
                     <string>Tap on the map to add the first stop. Add additional stops to display the route. To route &apos;on the fly&apos; tap, hold and move to show the route dynamically.</string>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
+            <string>3D</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display a scene</string>
+                    <key>storyboardName</key>
+                    <string>DisplayScene</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows you how to display a scene with elevation data</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Extrude graphics</string>
+                    <key>storyboardName</key>
+                    <string>ExtrudeGraphics</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows you how to render graphics extruded in z direction</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>3D symbols</string>
+                    <key>storyboardName</key>
+                    <string>SceneSymbols</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows how to create symbols with different 3D shapes</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Surface placements</string>
+                    <key>storyboardName</key>
+                    <string>SurfacePlacements</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows how to position graphics using different surface placements</string>
                 </dict>
             </array>
         </dict>

@@ -26,7 +26,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         super.viewDidLoad()
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 100
+        self.tableView.estimatedRowHeight = 60
         
         if containsSearchResults {
             self.tableView.tableHeaderView?.removeFromSuperview()

@@ -356,6 +356,14 @@
                     <key>descriptionText</key>
                     <string>Tap on the button in the toolbar to display legends for the layers on the map</string>
                 </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Picture marker symbols</string>
+                    <key>storyboardName</key>
+                    <string>PictureMarkerSymbols</string>
+                    <key>descriptionText</key>
+                    <string>This sample shows how to create picture marker symbols from a remote image and an image in assets</string>
+                </dict>
             </array>
         </dict>
         <dict>

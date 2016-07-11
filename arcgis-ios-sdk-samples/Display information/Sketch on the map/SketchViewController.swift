@@ -42,6 +42,7 @@ class SketchViewController: UIViewController {
         self.mapView.touchDelegate = self.sketchGraphicsOverlay
         
         self.mapView.map = self.map
+        self.mapView.magnifierEnabled = true
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SketchViewController.respondToGeomChanged), name: AGSSketchGraphicsOverlayGeometryDidChangeNotification, object: nil)
 

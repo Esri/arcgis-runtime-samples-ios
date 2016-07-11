@@ -19,6 +19,9 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
     
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var segmentedControl:UISegmentedControl!
+    @IBOutlet var distanceLabel:UILabel!
+    @IBOutlet var timeLabel:UILabel!
+    @IBOutlet var detailsViewBottomContraint:NSLayoutConstraint!
     
     var map:AGSMap!
     var routeTask:AGSRouteTask!
@@ -29,6 +32,23 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
     private var longPressedGraphic:AGSGraphic!
     private var longPressedRouteGraphic:AGSGraphic!
     private var routeTaskOperation:AGSCancellable!
+    
+    private var totalDistance:Double = 0 {
+        didSet {
+            let miles = String(format: "%.2f", totalDistance*0.000621371)
+            self.distanceLabel?.text = "(\(miles) mi)"
+        }
+    }
+    private var totalTime:Double = 0 {
+        didSet {
+            var minutes = Int(totalTime)
+            let hours = minutes/60
+            minutes = minutes%60
+            let hoursString = hours == 0 ? "" : "\(hours) hr "
+            let minutesString = minutes == 0 ? "0 min" : "\(minutes) min"
+            self.timeLabel?.text = "\(hoursString)\(minutesString)"
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -193,8 +213,13 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
         //if a route graphic for previous request (in case of long press)
         //exists then remove it
         if self.longPressedRouteGraphic != nil {
+            //update distance and time
+            self.totalTime = self.totalTime - Double(self.longPressedGraphic.attributes["routeTime"] as! NSNumber)
+            self.totalDistance = self.totalDistance - Double(self.longPressedGraphic.attributes["routeLength"] as! NSNumber)
+            
             self.routeGraphicsOverlay.graphics.removeObject(self.longPressedRouteGraphic)
             self.longPressedRouteGraphic = nil
+            
         }
         
         //if a route is returned, create a graphic for it
@@ -205,8 +230,18 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
             //to remove in case of cancel or move
             if isLongPressedResult {
                 self.longPressedRouteGraphic = routeGraphic
+                
+                //set attributes (to subtract in case the route is not used)
+                self.longPressedGraphic.attributes["routeTime"] = route.totalTime
+                self.longPressedGraphic.attributes["routeLength"] = route.totalLength
             }
             self.routeGraphicsOverlay.graphics.addObject(routeGraphic)
+            
+            //update total distance and total time
+            self.totalTime = self.totalTime + route.totalTime
+            self.totalDistance = self.totalDistance + route.totalLength
+            
+            self.toggleDetailsView(true)
         }
     }
     
@@ -222,6 +257,13 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
         //empty both graphic overlays
         self.routeGraphicsOverlay.graphics.removeAllObjects()
         self.stopGraphicsOverlay.graphics.removeAllObjects()
+        
+        //reset distance and time
+        self.totalTime = 0
+        self.totalDistance = 0
+        
+        //hide the details view
+        self.toggleDetailsView(false)
     }
     
     @IBAction func modeChanged(segmentedControl:UISegmentedControl) {
@@ -241,8 +283,23 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
             
             //clear all previous routes
             self.routeGraphicsOverlay.graphics.removeAllObjects()
+            
+            //reset distance and time
+            self.totalDistance = 0
+            self.totalTime = 0
+            
             //route
             self.route(self.params, isLongPressed: false)
+        }
+    }
+    
+    //MARK: toggle details view
+    
+    private func toggleDetailsView(on: Bool) {
+        self.detailsViewBottomContraint.constant = on ? 0 : -36
+        
+        UIView.animateWithDuration(0.3) { [weak self] in
+            self?.view.layoutIfNeeded()
         }
     }
 }

@@ -94,30 +94,27 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
         //remove all previous graphics
         self.graphicsOverlay.graphics.removeAllObjects()
         
-        //TODO: remove loadWithCompletion for locatorTask
-        self.locatorTask.loadWithCompletion { (error) -> Void in
-            //perform geocode with the input
-            self.locatorTask.geocodeWithSearchText(text, parameters: self.geocodeParameters, completion: { [weak self]  (results:[AGSGeocodeResult]?, error:NSError?) -> Void in
-                if let error = error {
-                    self?.showAlert(error.localizedDescription)
+        //perform geocode with the input
+        self.locatorTask.geocodeWithSearchText(text, parameters: self.geocodeParameters, completion: { [weak self]  (results:[AGSGeocodeResult]?, error:NSError?) -> Void in
+            if let error = error {
+                self?.showAlert(error.localizedDescription)
+            }
+            else {
+                //if a result was returned display the graphic on the map view
+                //using the first result, as it is the more relevant
+                if let results = results where results.count > 0 {
+                    let graphic = self?.graphicForPoint(results[0].displayLocation!, attributes: results[0].attributes)
+                    self?.graphicsOverlay.graphics.addObject(graphic!)
+                    
+                    //zoom to the extent of the graphic
+                    self?.mapView.setViewpointGeometry(results[0].displayLocation!.extent, completion: nil)
                 }
                 else {
-                    //if a result was returned display the graphic on the map view
-                    //using the first result, as it is the more relevant
-                    if let results = results where results.count > 0 {
-                        let graphic = self?.graphicForPoint(results[0].displayLocation!, attributes: results[0].attributes)
-                        self?.graphicsOverlay.graphics.addObject(graphic!)
-                        
-                        //zoom to the extent of the graphic
-                        self?.mapView.setViewpointGeometry(results[0].displayLocation!.extent, completion: nil)
-                    }
-                    else {
-                        //if no result found, inform the user
-                        self?.showAlert("No results found")
-                    }
+                    //if no result found, inform the user
+                    self?.showAlert("No results found")
                 }
-            })
-        }
+            }
+        })
     }
     
     private func reverseGeocode(point:AGSPoint) {
@@ -140,41 +137,38 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
         let graphic = self.graphicForPoint(normalizedPoint, attributes: [String:AnyObject]())
         self.graphicsOverlay.graphics.addObject(graphic)
         
-        //TODO: remove loadWithCompletion for locatorTask
-        self.locatorTask.loadWithCompletion { [weak self] (error:NSError?) -> Void in
-            //perform reverse geocode
-            self?.locatorTaskOperation = self!.locatorTask.reverseGeocodeWithLocation(normalizedPoint, parameters: self!.reverseGeocodeParameters) { (results: [AGSGeocodeResult]?, error: NSError?) -> Void in
+        //perform reverse geocode
+        self.locatorTaskOperation = self.locatorTask.reverseGeocodeWithLocation(normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: NSError?) -> Void in
 
-                if let error = error where error.code != NSUserCancelledError {
-                    //print error instead alerting to avoid disturbing the flow
-                    print(error.localizedDescription)
+            if let error = error where error.code != NSUserCancelledError {
+                //print error instead alerting to avoid disturbing the flow
+                print(error.localizedDescription)
+            }
+            else {
+                //if a result is found extract the required attributes
+                //assign the attributes to the graphic
+                //and show the callout
+                if let results = results where results.count > 0 {
+                    let cityString = results.first?.attributes?["City"] as? String ?? ""
+                    let streetString = results.first?.attributes?["Street"] as? String ?? ""
+                    let stateString = results.first?.attributes?["State"] as? String ?? ""
+                    graphic.attributes.addEntriesFromDictionary(["Match_addr":"\(streetString) \(cityString) \(stateString)"])
+                    self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint, animated: false, offset: self!.longPressedAndMoving)
+                    return
                 }
                 else {
-                    //if a result is found extract the required attributes
-                    //assign the attributes to the graphic
-                    //and show the callout
-                    if let results = results where results.count > 0 {
-                        let cityString = results.first?.attributes?["City"] as? String ?? ""
-                        let streetString = results.first?.attributes?["Street"] as? String ?? ""
-                        let stateString = results.first?.attributes?["State"] as? String ?? ""
-                        graphic.attributes.addEntriesFromDictionary(["Match_addr":"\(streetString) \(cityString) \(stateString)"])
-                        self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint, animated: false, offset: self!.longPressedAndMoving)
-                        return
-                    }
-                    else {
-                        //no result was found
-                        //using print in log instead of alert to
-                        //avoid breaking the flow
-                        print("No address found :: \(normalizedPoint)")
+                    //no result was found
+                    //using print in log instead of alert to
+                    //avoid breaking the flow
+                    print("No address found :: \(normalizedPoint)")
 
-                        //dismiss the callout if already visible
-                        self?.mapView.callout.dismiss()
+                    //dismiss the callout if already visible
+                    self?.mapView.callout.dismiss()
 
-                    }
                 }
-                //in case of error or no results, remove the graphics
-                self?.graphicsOverlay.graphics.removeObject(graphic)
             }
+            //in case of error or no results, remove the graphics
+            self?.graphicsOverlay.graphics.removeObject(graphic)
         }
     }
     

@@ -523,5 +523,44 @@
                 </dict>
             </array>
         </dict>
+        <dict>
+            <key>displayName</key>
+            <string>3D</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display a scene</string>
+                    <key>storyboardName</key>
+                    <string>DisplayScene</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows you how to display a scene with elevation data</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Extrude graphics</string>
+                    <key>storyboardName</key>
+                    <string>ExtrudeGraphics</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows you how to render graphics extruded in z direction</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>3D symbols</string>
+                    <key>storyboardName</key>
+                    <string>SceneSymbols</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows how to create symbols with different 3D shapes</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Surface placements</string>
+                    <key>storyboardName</key>
+                    <string>SurfacePlacements</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows how to position graphics using different surface placements</string>
+                </dict>
+            </array>
+        </dict>
     </array>
 </plist>

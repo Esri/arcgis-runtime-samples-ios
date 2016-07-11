@@ -265,6 +265,18 @@
 		3EE8B9531CA08E54003AA705 /* VectorTileLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */; };
 		3EE8B9551CA08E71003AA705 /* VectorTileLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */; };
 		3EE8B9591CA0C020003AA705 /* VectorTileLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */; };
+		3EEA060D1D21C44000E03774 /* SceneSymbols.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EEA06021D21C44000E03774 /* SceneSymbols.storyboard */; };
+		3EEA060E1D21C44000E03774 /* SceneSymbolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEA06031D21C44000E03774 /* SceneSymbolsViewController.swift */; };
+		3EEA060F1D21C44000E03774 /* DisplayScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EEA06051D21C44000E03774 /* DisplayScene.storyboard */; };
+		3EEA06101D21C44000E03774 /* DisplaySceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEA06061D21C44000E03774 /* DisplaySceneViewController.swift */; };
+		3EEA06111D21C44000E03774 /* ExtrudeGraphics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EEA06081D21C44000E03774 /* ExtrudeGraphics.storyboard */; };
+		3EEA06121D21C44000E03774 /* ExtrudeGraphicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEA06091D21C44000E03774 /* ExtrudeGraphicsViewController.swift */; };
+		3EEA06131D21C44000E03774 /* SurfacePlacements.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EEA060B1D21C44000E03774 /* SurfacePlacements.storyboard */; };
+		3EEA06141D21C44000E03774 /* SurfacePlacementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEA060C1D21C44000E03774 /* SurfacePlacementsViewController.swift */; };
+		3EEA06151D21C50E00E03774 /* SceneSymbolsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EEA06031D21C44000E03774 /* SceneSymbolsViewController.swift */; };
+		3EEA06161D21C50E00E03774 /* DisplaySceneViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EEA06061D21C44000E03774 /* DisplaySceneViewController.swift */; };
+		3EEA06171D21C50E00E03774 /* ExtrudeGraphicsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EEA06091D21C44000E03774 /* ExtrudeGraphicsViewController.swift */; };
+		3EEA06181D21C50E00E03774 /* SurfacePlacementsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EEA060C1D21C44000E03774 /* SurfacePlacementsViewController.swift */; };
 		3EFCE1B11CF368D500E02F67 /* OpenMobileMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFCE1B01CF368D500E02F67 /* OpenMobileMapViewController.swift */; };
 		3EFCE1BA1CF369A800E02F67 /* Yellowstone.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCE1B61CF369A800E02F67 /* Yellowstone.mmpk */; };
 		3EFCE1BD1CF36BC100E02F67 /* OpenMobileMapPackage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCE1BC1CF36BC100E02F67 /* OpenMobileMapPackage.storyboard */; };
@@ -285,6 +297,10 @@
 			files = (
 				3EBA25641D3419DB00AB0703 /* SimpleMarkerSymbolViewController.swift in CopyFiles */,
 				3EBA255E1D340C0300AB0703 /* PictureMarkerSymbolsViewController.swift in CopyFiles */,
+				3EEA06151D21C50E00E03774 /* SceneSymbolsViewController.swift in CopyFiles */,
+				3EEA06161D21C50E00E03774 /* DisplaySceneViewController.swift in CopyFiles */,
+				3EEA06171D21C50E00E03774 /* ExtrudeGraphicsViewController.swift in CopyFiles */,
+				3EEA06181D21C50E00E03774 /* SurfacePlacementsViewController.swift in CopyFiles */,
 				3EBA25471D300F7300AB0703 /* SimpleRendererViewController.swift in CopyFiles */,
 				3EBA25431D2F1D9700AB0703 /* UniqueValueRendererViewController.swift in CopyFiles */,
 				3E412B3E1D0B2CC600349155 /* OpenMobileMapViewController.swift in CopyFiles */,
@@ -557,6 +573,14 @@
 		3EE692011B03D22500C167B8 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Node.swift; path = "Content Display Logic/Model/Node.swift"; sourceTree = "<group>"; };
 		3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = VectorTileLayer.storyboard; path = "Layers/ArcGIS vector tiled layer (URL)/VectorTileLayer.storyboard"; sourceTree = "<group>"; };
 		3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VectorTileLayerViewController.swift; path = "Layers/ArcGIS vector tiled layer (URL)/VectorTileLayerViewController.swift"; sourceTree = "<group>"; };
+		3EEA06021D21C44000E03774 /* SceneSymbols.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SceneSymbols.storyboard; sourceTree = "<group>"; };
+		3EEA06031D21C44000E03774 /* SceneSymbolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneSymbolsViewController.swift; sourceTree = "<group>"; };
+		3EEA06051D21C44000E03774 /* DisplayScene.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayScene.storyboard; sourceTree = "<group>"; };
+		3EEA06061D21C44000E03774 /* DisplaySceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplaySceneViewController.swift; sourceTree = "<group>"; };
+		3EEA06081D21C44000E03774 /* ExtrudeGraphics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ExtrudeGraphics.storyboard; sourceTree = "<group>"; };
+		3EEA06091D21C44000E03774 /* ExtrudeGraphicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtrudeGraphicsViewController.swift; sourceTree = "<group>"; };
+		3EEA060B1D21C44000E03774 /* SurfacePlacements.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SurfacePlacements.storyboard; sourceTree = "<group>"; };
+		3EEA060C1D21C44000E03774 /* SurfacePlacementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurfacePlacementsViewController.swift; sourceTree = "<group>"; };
 		3EFCE1B01CF368D500E02F67 /* OpenMobileMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenMobileMapViewController.swift; path = "Maps/Open mobile map (map package)/OpenMobileMapViewController.swift"; sourceTree = "<group>"; };
 		3EFCE1B61CF369A800E02F67 /* Yellowstone.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = Yellowstone.mmpk; sourceTree = "<group>"; };
 		3EFCE1BC1CF36BC100E02F67 /* OpenMobileMapPackage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OpenMobileMapPackage.storyboard; path = "Maps/Open mobile map (map package)/OpenMobileMapPackage.storyboard"; sourceTree = "<group>"; };
@@ -629,6 +653,7 @@
 				3E4BF43C1C5AC66700D85919 /* Search */,
 				3ED027FC1B8E38F400ACA70D /* Edit data */,
 				3E6AE3E91C6D10DA0026E59C /* Route & Navigation */,
+				3EEA06001D21C3E800E03774 /* 3D */,
 				3E4B05E51B39EE920072E514 /* Shared resources */,
 				3E23AA071AFC2DE0002E2214 /* Content Display Logic */,
 				3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */,
@@ -1504,6 +1529,57 @@
 			name = "ArcGIS vector tile layer (URL)";
 			sourceTree = "<group>";
 		};
+		3EEA06001D21C3E800E03774 /* 3D */ = {
+			isa = PBXGroup;
+			children = (
+				3EEA06041D21C44000E03774 /* Display a scene */,
+				3EEA06071D21C44000E03774 /* Extrude graphics */,
+				3EEA06011D21C44000E03774 /* 3D symbols */,
+				3EEA060A1D21C44000E03774 /* Surface placements */,
+			);
+			name = 3D;
+			sourceTree = "<group>";
+		};
+		3EEA06011D21C44000E03774 /* 3D symbols */ = {
+			isa = PBXGroup;
+			children = (
+				3EEA06021D21C44000E03774 /* SceneSymbols.storyboard */,
+				3EEA06031D21C44000E03774 /* SceneSymbolsViewController.swift */,
+			);
+			name = "3D symbols";
+			path = "3D/3D symbols";
+			sourceTree = "<group>";
+		};
+		3EEA06041D21C44000E03774 /* Display a scene */ = {
+			isa = PBXGroup;
+			children = (
+				3EEA06051D21C44000E03774 /* DisplayScene.storyboard */,
+				3EEA06061D21C44000E03774 /* DisplaySceneViewController.swift */,
+			);
+			name = "Display a scene";
+			path = "3D/Display a scene";
+			sourceTree = "<group>";
+		};
+		3EEA06071D21C44000E03774 /* Extrude graphics */ = {
+			isa = PBXGroup;
+			children = (
+				3EEA06081D21C44000E03774 /* ExtrudeGraphics.storyboard */,
+				3EEA06091D21C44000E03774 /* ExtrudeGraphicsViewController.swift */,
+			);
+			name = "Extrude graphics";
+			path = "3D/Extrude graphics";
+			sourceTree = "<group>";
+		};
+		3EEA060A1D21C44000E03774 /* Surface placements */ = {
+			isa = PBXGroup;
+			children = (
+				3EEA060B1D21C44000E03774 /* SurfacePlacements.storyboard */,
+				3EEA060C1D21C44000E03774 /* SurfacePlacementsViewController.swift */,
+			);
+			name = "Surface placements";
+			path = "3D/Surface placements";
+			sourceTree = "<group>";
+		};
 		3EFCE1AF1CEFD5B900E02F67 /* Open mobile map (map package) */ = {
 			isa = PBXGroup;
 			children = (
@@ -1644,9 +1720,11 @@
 				3E4BF4461C5AED5100D85919 /* FindAddress.storyboard in Resources */,
 				3EC39C431C9B4872003F6459 /* OfflineEditing.storyboard in Resources */,
 				3ED028951B8E3A8500ACA70D /* SetMapsSpatialReference.storyboard in Resources */,
+				3EEA060D1D21C44000E03774 /* SceneSymbols.storyboard in Resources */,
 				3E4BF47D1C5BDDCA00D85919 /* san-diego-locator.loc.xml in Resources */,
 				3E0D3AD71AFD481900FC60D6 /* Main.storyboard in Resources */,
 				3EFCE1BA1CF369A800E02F67 /* Yellowstone.mmpk in Resources */,
+				3EEA060F1D21C44000E03774 /* DisplayScene.storyboard in Resources */,
 				3EE8B9531CA08E54003AA705 /* VectorTileLayer.storyboard in Resources */,
 				3ED029311B8E3AB300ACA70D /* Callout.storyboard in Resources */,
 				3E4BF47F1C5BDDCA00D85919 /* san-diego-locator.lox in Resources */,
@@ -1656,6 +1734,7 @@
 				3E7162351BA1F529008DE398 /* GraphicsWithSymbols.storyboard in Resources */,
 				3ED029391B8E3AB300ACA70D /* MILShowLegend.storyboard in Resources */,
 				3E4BF47E1C5BDDCA00D85919 /* san-diego-locator.locb in Resources */,
+				3EEA06111D21C44000E03774 /* ExtrudeGraphics.storyboard in Resources */,
 				3E4B05F81B39EF250072E514 /* SVProgressHUD.bundle in Resources */,
 				3E0830BC1BC31B69001AF9A7 /* CustomSearchHeaderView.xib in Resources */,
 				3ED029281B8E3AB300ACA70D /* GORenderers.storyboard in Resources */,
@@ -1668,6 +1747,7 @@
 				3ED028EE1B8E3AA500ACA70D /* FLSelection.storyboard in Resources */,
 				97DD84671B2B869300184B41 /* xcode.css in Resources */,
 				3ED0289C1B8E3A8500ACA70D /* MapViewScreenshot.storyboard in Resources */,
+				3EEA06131D21C44000E03774 /* SurfacePlacements.storyboard in Resources */,
 				3EC39C2E1C9B0A9D003F6459 /* Campus.tpk in Resources */,
 				3ED0292C1B8E3AB300ACA70D /* GOIdentify.storyboard in Resources */,
 				3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */,
@@ -1727,6 +1807,7 @@
 				3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */,
 				3E4BF4441C5AEA6500D85919 /* WorldAddressesViewController.swift in Sources */,
 				3ED028EF1B8E3AA500ACA70D /* FLSelectionViewController.swift in Sources */,
+				3EEA06101D21C44000E03774 /* DisplaySceneViewController.swift in Sources */,
 				3E8526381B90D92700690EBD /* BookmarksListViewController.swift in Sources */,
 				3ED0286A1B8E3A8500ACA70D /* SetViewpointViewController.swift in Sources */,
 				3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */,
@@ -1748,6 +1829,7 @@
 				3E3B2C241BBD9CD300A99C5E /* SearchEngine.swift in Sources */,
 				3ED028B01B8E3A9800ACA70D /* MILUsingURLViewController.swift in Sources */,
 				3ED0286D1B8E3A8500ACA70D /* DisplayLocationViewController.swift in Sources */,
+				3EEA06121D21C44000E03774 /* ExtrudeGraphicsViewController.swift in Sources */,
 				3E85263D1B90DE2C00690EBD /* DisplayMapViewController.swift in Sources */,
 				3ED029681B8E3ACD00ACA70D /* EAOptionsViewController.swift in Sources */,
 				3E4B05F91B39EF250072E514 /* SVProgressHUD.m in Sources */,
@@ -1777,6 +1859,7 @@
 				3E54D2291CC1453600BB9904 /* TLRenderModeViewController.swift in Sources */,
 				3E4BF4421C5AE98300D85919 /* FindAddressViewController.swift in Sources */,
 				3ED0293A1B8E3AB300ACA70D /* MILShowLegendViewController.swift in Sources */,
+				3EEA060E1D21C44000E03774 /* SceneSymbolsViewController.swift in Sources */,
 				3ED0292D1B8E3AB300ACA70D /* GOIdentifyViewController.swift in Sources */,
 				3E8526391B90D92700690EBD /* BookmarksViewController.swift in Sources */,
 				3EC39C1E1C9A59B9003F6459 /* DirectionsListViewController.swift in Sources */,
@@ -1785,6 +1868,7 @@
 				3EC39C321C9B0DF6003F6459 /* ExportTilesViewController.swift in Sources */,
 				3EFCE1C31CF374C600E02F67 /* MapPackageCell.swift in Sources */,
 				3ED028631B8E3A8500ACA70D /* SwitchBasemapViewController.swift in Sources */,
+				3EEA06141D21C44000E03774 /* SurfacePlacementsViewController.swift in Sources */,
 				3ED028591B8E3A8500ACA70D /* AuthoringOptionsViewController.swift in Sources */,
 				3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */,
 				3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */,

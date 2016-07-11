@@ -73,30 +73,27 @@ class FindAddressViewController: UIViewController, AGSMapViewTouchDelegate, UISe
         //dismiss the callout if already visible
         self.mapView.callout.dismiss()
         
-        //TODO: remove loadWithCompletion for locatorTask
-        self.locatorTask.loadWithCompletion { (error) -> Void in
-            //perform geocode with input text
-            self.locatorTask.geocodeWithSearchText(text, parameters: self.geocodeParameters, completion: { [weak self] (results:[AGSGeocodeResult]?, error:NSError?) -> Void in
-                if let error = error {
-                    self?.showAlert(error.localizedDescription)
+        //perform geocode with input text
+        self.locatorTask.geocodeWithSearchText(text, parameters: self.geocodeParameters, completion: { [weak self] (results:[AGSGeocodeResult]?, error:NSError?) -> Void in
+            if let error = error {
+                self?.showAlert(error.localizedDescription)
+            }
+            else {
+                if let results = results where results.count > 0 {
+                    //create a graphic for the first result and add to the graphics overlay
+                    let graphic = self?.graphicForPoint(results[0].displayLocation!, attributes: results[0].attributes)
+                    self?.graphicsOverlay.graphics.addObject(graphic!)
+                    //zoom to the extent of the result
+                    if let extent = results[0].extent {
+                        self?.mapView.setViewpointGeometry(extent, completion: nil)
+                    }
                 }
                 else {
-                    if let results = results where results.count > 0 {
-                        //create a graphic for the first result and add to the graphics overlay
-                        let graphic = self?.graphicForPoint(results[0].displayLocation!, attributes: results[0].attributes)
-                        self?.graphicsOverlay.graphics.addObject(graphic!)
-                        //zoom to the extent of the result
-                        if let extent = results[0].extent {
-                            self?.mapView.setViewpointGeometry(extent, completion: nil)
-                        }
-                    }
-                    else {
-                        //provide feedback in case of failure
-                        self?.showAlert("No results found")
-                    }
+                    //provide feedback in case of failure
+                    self?.showAlert("No results found")
                 }
-            })
-        }
+            }
+        })
     }
     
     //MARK: - Callout

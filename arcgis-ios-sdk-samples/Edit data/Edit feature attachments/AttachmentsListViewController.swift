@@ -57,20 +57,13 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func deleteAttachment(attachment:AGSAttachment) {
-        self.feature.loadWithCompletion({ [weak self] (error: NSError?) -> Void in
+        self.feature.deleteAttachment(attachment, completion: { [weak self] (error:NSError?) -> Void in
             if let error = error {
-                print("Error while loading feature :: \(error.localizedDescription)")
+                print(error)
             }
             else {
-                self?.feature.deleteAttachment(attachment, completion: { (error:NSError?) -> Void in
-                    if let error = error {
-                        print(error)
-                    }
-                    else {
-                        print("Attachment deleted")
-                        self?.applyEdits()
-                    }
-                })
+                print("Attachment deleted")
+                self?.applyEdits()
             }
         })
     }
@@ -144,19 +137,12 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     
     @IBAction func addAction() {
         let data = UIImagePNGRepresentation(UIImage(named: "LocationDisplayOffIcon")!)!
-        self.feature.loadWithCompletion { [weak self] (error: NSError?) -> Void in
+        self.feature.addAttachmentWithName("Attachment.png", contentType: "png", data: data) { [weak self] (attachment:AGSAttachment?, error:NSError?) -> Void in
             if let error = error {
-                print("Error while loading feature :: \(error.localizedDescription)")
+                print(error)
             }
             else {
-                self?.feature.addAttachmentWithName("Attachment.png", contentType: "png", data: data) { [weak self] (attachment:AGSAttachment?, error:NSError?) -> Void in
-                    if let error = error {
-                        print(error)
-                    }
-                    else {
-                        self?.applyEdits()
-                    }
-                }
+                self?.applyEdits()
             }
         }
     }

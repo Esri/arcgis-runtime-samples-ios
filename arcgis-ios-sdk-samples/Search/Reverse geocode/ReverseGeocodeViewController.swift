@@ -64,27 +64,23 @@ class ReverseGeocodeViewController: UIViewController, AGSMapViewTouchDelegate {
         
         let graphic = self.graphicForPoint(normalizedPoint)
         self.graphicsOverlay.graphics.addObject(graphic)
-        
-        //TODO: remove loadWithCompletion for locatorTask
-        self.locatorTask.loadWithCompletion { (error:NSError?) -> Void in
             
-            //reverse geocode
-            self.locatorTask.reverseGeocodeWithLocation(normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: NSError?) -> Void in
-                if let error = error {
-                    self?.showAlert(error.localizedDescription)
+        //reverse geocode
+        self.locatorTask.reverseGeocodeWithLocation(normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: NSError?) -> Void in
+            if let error = error {
+                self?.showAlert(error.localizedDescription)
+            }
+            else {
+                if let results = results where results.count > 0 {
+                    graphic.attributes.addEntriesFromDictionary(results.first!.attributes!)
+                    self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint)
+                    return
                 }
                 else {
-                    if let results = results where results.count > 0 {
-                        graphic.attributes.addEntriesFromDictionary(results.first!.attributes!)
-                        self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint)
-                        return
-                    }
-                    else {
-                        self?.showAlert("No address found")
-                    }
+                    self?.showAlert("No address found")
                 }
-                self?.graphicsOverlay.graphics.removeObject(graphic)
             }
+            self?.graphicsOverlay.graphics.removeObject(graphic)
         }
     }
     

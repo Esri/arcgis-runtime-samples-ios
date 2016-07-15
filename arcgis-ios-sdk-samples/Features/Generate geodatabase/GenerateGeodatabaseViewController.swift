@@ -95,11 +95,8 @@ class GenerateGeodatabaseViewController: UIViewController {
     @IBAction func downloadAction() {
         
         //generate default param to contain all layers in the service
-        self.syncTask.defaultGenerateGeodatabaseParametersWithCompletion { (params, error) in
-            if let params = params {
-                
-                //specify the extent within which features are needed
-                params.extent = self.frameToExtent()
+        self.syncTask.defaultGenerateGeodatabaseParametersWithExtent(self.frameToExtent()) { [weak self] (params: AGSGenerateGeodatabaseParameters?, error: NSError?) in
+            if let params = params, weakSelf = self {
                 
                 //don't include attachments to minimze the geodatabae size
                 params.returnAttachments = false
@@ -110,13 +107,14 @@ class GenerateGeodatabaseViewController: UIViewController {
                 let gdbName = "\(dateFormatter.stringFromDate(NSDate())).geodatabase"
                 
                 //request a job to generate the geodatabase
-                self.generateJob = self.syncTask.generateJobWithParameters(params, downloadFilePath: gdbName)
+                weakSelf.generateJob = weakSelf.syncTask.generateJobWithParameters(params, downloadFilePath: gdbName)
                 
                 //kick off the job
-                self.generateJob.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
+                weakSelf.generateJob.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
                     SVProgressHUD.showWithStatus(status.statusString(), maskType: SVProgressHUDMaskType.Gradient)
                 }) { [weak self] (object: AnyObject?, error: NSError?) -> Void in
                     if let error = error {
+                        print(error)
                         SVProgressHUD.showErrorWithStatus(error.localizedDescription)
                     }
                     else {

@@ -52,11 +52,13 @@ class TLRenderModeViewController: UIViewController {
     
     @IBAction func valueChanged(sender:UISegmentedControl) {
         //switch the render mode based on selection
-        if sender.selectedSegmentIndex == 0 {
-            self.tiledLayerBasemap.renderMode = .Scale
-        }
-        else {
-            self.tiledLayerBasemap.renderMode = .Aesthetics
-        }
+        self.tiledLayerBasemap.resampling = (sender.selectedSegmentIndex != 0)
+        
+//        if sender.selectedSegmentIndex == 0 {
+//            self.tiledLayerBasemap.renderMode = .Scale
+//        }
+//        else {
+//            self.tiledLayerBasemap.renderMode = .Aesthetics
+//        }
     }
 }

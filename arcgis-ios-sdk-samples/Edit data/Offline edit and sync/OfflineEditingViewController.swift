@@ -100,7 +100,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
                     }
                 }
                 if popups.count > 0 {
-                    self?.popupsVC = AGSPopupsViewController(popups: popups, usingNavigationControllerStack: false)
+                    self?.popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .AddNavigationBar)
                     self?.popupsVC.delegate = self!
                     self?.presentViewController(self!.popupsVC, animated: true, completion: nil)
                 }

@@ -10,6 +10,6 @@ To locate an address either type in or choose from the list of addresses. To fin
 
 ##How it works
 
-The sample contains an address locator dataset (*.loc and associated files) that contains address information for downtown San Francisco. Geocoding and Reverse geocoding operations use this data. The sample displays basemap tiles using a tile package (.tpk file) so that the basemap is visible even when the device is offline.
+The sample contains an address locator dataset (*.loc and associated files) that contains address information for downtown San Diego. Geocoding and Reverse geocoding operations use this data. The sample displays basemap tiles using a tile package (.tpk file) so that the basemap is visible even when the device is offline.
 
 

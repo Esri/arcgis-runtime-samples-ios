@@ -55,8 +55,14 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
         //and other for the route graphics
         self.mapView.graphicsOverlays.addObjectsFromArray([self.routeGraphicsOverlay, self.stopGraphicsOverlay])
         
-        //setup route task
-        self.setupRouteTask()
+        //get the path for the geodatabase in the bundle
+        let dbPath = NSBundle.mainBundle().pathForResource("sandiego", ofType: "geodatabase", inDirectory: "san-diego")!
+        
+        //initialize the route task using the path and the network name
+        self.routeTask = AGSRouteTask(pathToDatabase: dbPath, networkName: "Streets_ND")
+        
+        //get default route parameters
+        self.getDefaultParameters()
         
         //zoom to San Diego
         self.mapView.setViewpointCenter(AGSPoint(x: -13042254.715252, y: 3857970.236806, spatialReference: AGSSpatialReference(WKID: 3857)), scale: 2e4, completion: nil)
@@ -111,22 +117,6 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
     }
     
     //MARK: - Route logic
-    
-    private func setupRouteTask() {
-        //get the path for the geodatabase in the bundle
-        let path = NSBundle.mainBundle().pathForResource("sandiego", ofType: "geodatabase", inDirectory: "san-diego")!
-        //initialize the route task using the path and the network name
-        self.routeTask = AGSRouteTask(pathToDatabase: path, networkName: "Streets_ND")
-        //load the task and get the default parameters
-        self.routeTask.loadWithCompletion { [weak self] (error:NSError?) -> Void in
-            if let error = error {
-                print(error)
-            }
-            else {
-                self?.getDefaultParameters()
-            }
-        }
-    }
     
     private func getDefaultParameters() {
         //get the default parameters

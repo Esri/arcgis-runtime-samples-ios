@@ -56,6 +56,15 @@
                 <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
                 <false/>
             </dict>
+            <key>trimarc.org</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+                <false/>
+            </dict>
         </dict>
     </dict>
 </dict>

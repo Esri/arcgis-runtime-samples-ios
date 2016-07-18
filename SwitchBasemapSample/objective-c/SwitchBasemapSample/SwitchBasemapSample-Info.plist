@@ -59,6 +59,15 @@
                 <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
                 <false/>
             </dict>
+            <key>nationalmap.gov</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+                <false/>
+            </dict>
         </dict>
     </dict>
 </dict>

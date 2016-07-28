@@ -104,7 +104,7 @@ class ReverseGeocodeViewController: UIViewController, AGSMapViewTouchDelegate {
         self.mapView.callout.title = addressString
         self.mapView.callout.detail = "\(cityString) \(stateString)"
         self.mapView.callout.accessoryButtonHidden = true
-        self.mapView.callout.showCalloutForGraphic(graphic, overlay: self.graphicsOverlay, tapLocation: tapLocation, animated: true)
+        self.mapView.callout.showCalloutForGraphic(graphic, tapLocation: tapLocation, animated: true)
     }
     
     private func showAlert(message:String) {

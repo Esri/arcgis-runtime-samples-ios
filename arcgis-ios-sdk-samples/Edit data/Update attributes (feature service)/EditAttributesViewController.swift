@@ -58,7 +58,7 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
         let title = feature.attributes["typdamage"] as! String
         self.mapView.callout.title = title
         self.mapView.callout.delegate = self
-        self.mapView.callout.showCalloutForFeature(feature, layer: self.featureLayer, tapLocation: tapLocation, animated: true)
+        self.mapView.callout.showCalloutForFeature(feature, tapLocation: tapLocation, animated: true)
     }
     
     func applyEdits() {

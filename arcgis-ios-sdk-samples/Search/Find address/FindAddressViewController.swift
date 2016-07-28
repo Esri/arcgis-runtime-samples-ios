@@ -113,7 +113,7 @@ class FindAddressViewController: UIViewController, AGSMapViewTouchDelegate, UISe
         }
         
         self.mapView.callout.accessoryButtonHidden = true
-        self.mapView.callout.showCalloutForGraphic(graphic, overlay: self.graphicsOverlay, tapLocation: tapLocation, animated: true)
+        self.mapView.callout.showCalloutForGraphic(graphic, tapLocation: tapLocation, animated: true)
     }
     
     private func showAlert(message:String) {

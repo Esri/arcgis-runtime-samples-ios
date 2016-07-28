@@ -188,7 +188,7 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
         self.mapView.callout.accessoryButtonHidden = true
         
         if !offset {
-            self.mapView.callout.showCalloutForGraphic(graphic, overlay: self.graphicsOverlay, tapLocation: tapLocation, animated: animated)
+            self.mapView.callout.showCalloutForGraphic(graphic, tapLocation: tapLocation, animated: animated)
         }
         else {
             self.mapView.callout.showCalloutAt(tapLocation, screenOffset: self.magnifierOffset, rotateOffsetWithMap: false, animated: animated)

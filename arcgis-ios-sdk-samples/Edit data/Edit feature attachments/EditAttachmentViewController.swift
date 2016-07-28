@@ -81,7 +81,7 @@ class EditAttachmentViewController: UIViewController, AGSMapViewTouchDelegate, A
                         self?.mapView.callout.title = title
                         self?.mapView.callout.detail = detail
                         self?.mapView.callout.delegate = self
-                        self?.mapView.callout.showCalloutForFeature(feature, layer: self!.featureLayer, tapLocation: mappoint, animated: true)
+                        self?.mapView.callout.showCalloutForFeature(feature, tapLocation: mappoint, animated: true)
                         //update selected feature
                         self?.selectedFeature = feature
                     }

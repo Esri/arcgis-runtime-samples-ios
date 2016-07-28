@@ -91,7 +91,7 @@ class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
         self.mapView.callout.title = graphic.attributes["Match_addr"] as? String
         self.mapView.callout.accessoryButtonHidden = true
         
-        self.mapView.callout.showCalloutForGraphic(graphic, overlay: self.markerGraphicsOverlay, tapLocation: tapLocation, animated: animated)
+        self.mapView.callout.showCalloutForGraphic(graphic, tapLocation: tapLocation, animated: animated)
     }
     
     //MARK: - AGSMapViewTouchDelegate

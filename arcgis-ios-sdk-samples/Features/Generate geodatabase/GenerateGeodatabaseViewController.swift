@@ -43,7 +43,7 @@ class GenerateGeodatabaseViewController: UIViewController {
         
         self.syncTask = AGSGeodatabaseSyncTask(URL: self.FEATURE_SERVICE_URL)
         
-        self.addFeatureLayers(self.syncTask.featureServiceInfo)
+        self.addFeatureLayers()
 
         //setup extent view
         self.extentView.layer.borderColor = UIColor.redColor().CGColor
@@ -57,26 +57,30 @@ class GenerateGeodatabaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func addFeatureLayers(featureServiceInfo: AGSArcGISFeatureServiceInfo) {
+    func addFeatureLayers() {
         
-        //Iterate through the layers in the service
-        featureServiceInfo.loadWithCompletion { [weak self] (error) -> Void in
+        self.syncTask.loadWithCompletion { [weak self] (error) -> Void in
             if let error = error {
                 print("Could not load feature service \(error)")
+                
             } else {
-                for (index, layerInfo) in featureServiceInfo.featureLayerInfos.enumerate() {
+                guard let weakSelf = self else {
+                    return
+                }
+                
+                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo.featureLayerInfos.enumerate() {
                     
                     //For each layer in the serice, add a layer to the map
-                    let layerURL = self?.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))
-                    let featureTable = AGSServiceFeatureTable(URL:layerURL!)
+                    let layerURL = weakSelf.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))
+                    let featureTable = AGSServiceFeatureTable(URL:layerURL)
                     let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                     featureLayer.name = layerInfo.serviceLayerName
                     featureLayer.opacity = 0.65
-                    self?.map.operationalLayers.addObject(featureLayer)
+                    weakSelf.map.operationalLayers.addObject(featureLayer)
                 }
                 
                 //enable download
-                self?.downloadBBI.enabled = true
+                weakSelf.downloadBBI.enabled = true
             }
         }
     }

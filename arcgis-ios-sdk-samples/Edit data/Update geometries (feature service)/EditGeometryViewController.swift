@@ -100,7 +100,7 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
                 let title = feature.attributes["typdamage"] as! String
                 self?.mapView.callout.title = title
                 self?.mapView.callout.delegate = self
-                self?.mapView.callout.showCalloutForFeature(feature, layer: self!.featureLayer, tapLocation: mappoint, animated: true)
+                self?.mapView.callout.showCalloutForFeature(feature, tapLocation: mappoint, animated: true)
                 //update selected feature
                 self?.selectedFeature = feature
             }

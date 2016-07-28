@@ -72,7 +72,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         self.syncTask = AGSGeodatabaseSyncTask(URL: self.FEATURE_SERVICE_URL)
         
         //add online feature layers
-        self.addFeatureLayers(self.syncTask.featureServiceInfo)
+        self.addFeatureLayers()
 
     }
     
@@ -112,25 +112,29 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
     }
     
     //MARK: - Helper methods
-    func addFeatureLayers(featureServiceInfo: AGSArcGISFeatureServiceInfo) {
+    func addFeatureLayers() {
         
         //Iterate through the layers in the service
-        featureServiceInfo.loadWithCompletion { [weak self] (error) -> Void in
+        self.syncTask.loadWithCompletion { [weak self] (error) -> Void in
             if let error = error {
                 print("Could not load feature service \(error)")
             } else {
-                for (index, layerInfo) in featureServiceInfo.featureLayerInfos.enumerate() {
+                guard let weakSelf = self else {
+                    return
+                }
+                
+                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo.featureLayerInfos.enumerate() {
                     
                     //For each layer in the serice, add a layer to the map
-                    let layerURL = self?.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))
-                    let featureTable = AGSServiceFeatureTable(URL:layerURL!)
+                    let layerURL = weakSelf.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))
+                    let featureTable = AGSServiceFeatureTable(URL:layerURL)
                     let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                     featureLayer.name = layerInfo.serviceLayerName
-                    self?.map.operationalLayers.addObject(featureLayer)
+                    weakSelf.map.operationalLayers.addObject(featureLayer)
                 }
                 
                 //enable generate geodatabase bbi
-                self?.barButtonItem.enabled = true
+                weakSelf.barButtonItem.enabled = true
             }
         }
     }
@@ -171,7 +175,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         self.mapView.map?.operationalLayers.removeAllObjects()
         
         //add layers from the service
-        self.addFeatureLayers(self.syncTask.featureServiceInfo)
+        self.addFeatureLayers()
         
         //update the flag
         self.liveMode = true

@@ -168,7 +168,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
             self.mapView.callout.detail = nil
         }
         self.mapView.callout.accessoryButtonHidden = true
-        self.mapView.callout.showCalloutForGraphic(graphic, overlay: self.graphicsOverlay, tapLocation: tapLocation, animated: true)
+        self.mapView.callout.showCalloutForGraphic(graphic, tapLocation: tapLocation, animated: true)
     }
     
     //method returns a graphic object for the specified point and attributes

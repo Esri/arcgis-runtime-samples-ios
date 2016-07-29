@@ -6,7 +6,7 @@ This sample demonstrates how to show a feature layer on a map using a geodatabas
 
 ##How it works
 
-The sample creates an instance of `AGSGeodatabase` using the initializer `initWithName:`. The geodatabase with specified name is already added to the bundle. The sample then loads the geodatabase for the feature tables. It gets the table with specified and uses that to create a feature layer. The feature layer is then added to the list of operational layers on the map.
+The sample creates an instance of `AGSGeodatabase` using the initializer `initWithName` where the name refers to a geodatabase file that has been included in the application bundle. The geodatabase is loaded and, upon completion, the TrailHeads feature table is used to create a feature layer that is added to the list of operational layers of the map.
 
 
 

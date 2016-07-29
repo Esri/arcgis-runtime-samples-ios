@@ -70,33 +70,33 @@ class CreateGeometriesViewController: UIViewController {
     
     private func createMultipoint() -> AGSMultipoint {
         // create a multi point geometry
-        let multipoint = AGSMultipointBuilder(spatialReference: AGSSpatialReference.WGS84())
-        multipoint.points.addPointWithX(-121.491014, y: 38.579065) // Sacramento, CA
-        multipoint.points.addPointWithX(-122.891366, y: 47.039231) // Olympia, WA
-        multipoint.points.addPointWithX(-123.043814, y: 44.93326) // Salem, OR
-        multipoint.points.addPointWithX(-119.766999, y: 39.164885) // Carson City, NV
+        let multipointBuilder = AGSMultipointBuilder(spatialReference: AGSSpatialReference.WGS84())
+        multipointBuilder.points.addPointWithX(-121.491014, y: 38.579065) // Sacramento, CA
+        multipointBuilder.points.addPointWithX(-122.891366, y: 47.039231) // Olympia, WA
+        multipointBuilder.points.addPointWithX(-123.043814, y: 44.93326) // Salem, OR
+        multipointBuilder.points.addPointWithX(-119.766999, y: 39.164885) // Carson City, NV
         
-        return multipoint.toGeometry()
+        return multipointBuilder.toGeometry()
     }
     
     private func createPolyline() -> AGSPolyline {
         //create a polyline
-        let polyline = AGSPolylineBuilder(spatialReference: AGSSpatialReference.WGS84())
-        polyline.addPointWithX(-119.992, y: 41.989)
-        polyline.addPointWithX(-119.994, y: 38.994)
-        polyline.addPointWithX(-114.620, y: 35.0)
+        let polylineBuilder = AGSPolylineBuilder(spatialReference: AGSSpatialReference.WGS84())
+        polylineBuilder.addPointWithX(-119.992, y: 41.989)
+        polylineBuilder.addPointWithX(-119.994, y: 38.994)
+        polylineBuilder.addPointWithX(-114.620, y: 35.0)
         
-        return polyline.toGeometry()
+        return polylineBuilder.toGeometry()
     }
     
     private func createPolygon() -> AGSPolygon {
         // create a polygon
-        let polygon = AGSPolygonBuilder(spatialReference: AGSSpatialReference.WGS84())
-        polygon.addPointWithX(-109.048, y: 40.998)
-        polygon.addPointWithX(-102.047, y: 40.998)
-        polygon.addPointWithX(-102.037, y: 36.989)
-        polygon.addPointWithX(-109.048, y: 36.998)
+        let polygonBuilder = AGSPolygonBuilder(spatialReference: AGSSpatialReference.WGS84())
+        polygonBuilder.addPointWithX(-109.048, y: 40.998)
+        polygonBuilder.addPointWithX(-102.047, y: 40.998)
+        polygonBuilder.addPointWithX(-102.037, y: 36.989)
+        polygonBuilder.addPointWithX(-109.048, y: 36.998)
         
-        return polygon.toGeometry()
+        return polygonBuilder.toGeometry()
     }
 }

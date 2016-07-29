@@ -25,7 +25,7 @@ class SketchViewController: UIViewController {
     
     
     private var map:AGSMap!
-    private var sketchGraphicsOverlay:AGSSketchGraphicsOverlay!
+    private var geometrySketchOverlay:AGSGeometrySketchOverlay!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,16 +35,16 @@ class SketchViewController: UIViewController {
         
         self.map = AGSMap(basemap: AGSBasemap.lightGrayCanvasBasemap())
         
-        self.sketchGraphicsOverlay = AGSSketchGraphicsOverlay()
-        self.sketchGraphicsOverlay.geometryBuilder = AGSPolylineBuilder(spatialReference: AGSSpatialReference.webMercator())
-        self.mapView.graphicsOverlays.addObject(self.sketchGraphicsOverlay)
+        self.geometrySketchOverlay = AGSGeometrySketchOverlay()
+        self.geometrySketchOverlay.geometryBuilder = AGSPolylineBuilder(spatialReference: AGSSpatialReference.webMercator())
+        self.mapView.sketchOverlay =  self.geometrySketchOverlay
         
-        self.mapView.touchDelegate = self.sketchGraphicsOverlay
+        self.geometrySketchOverlay.enabled = true
         
         self.mapView.map = self.map
         self.mapView.magnifierEnabled = true
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SketchViewController.respondToGeomChanged), name: AGSSketchGraphicsOverlayGeometryDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SketchViewController.respondToGeomChanged), name: AGSSketchOverlaySketchDidChangeNotification, object: nil)
 
         //set initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(XMin: -10049589.670344, yMin: 3480099.843772, xMax: -10010071.251113, yMax: 3512023.489701, spatialReference: AGSSpatialReference.webMercator()))
@@ -57,9 +57,9 @@ class SketchViewController: UIViewController {
     
     func respondToGeomChanged() {
         //Enable/disable UI elements appropriately
-        self.undoBBI.enabled = self.sketchGraphicsOverlay.undoManager.canUndo
-        self.redoBBI.enabled = self.sketchGraphicsOverlay.undoManager.canRedo
-        self.clearBBI.enabled = self.sketchGraphicsOverlay.geometryBuilder != nil && !self.sketchGraphicsOverlay.geometryBuilder!.isEmpty()
+        self.undoBBI.enabled = self.geometrySketchOverlay.undoManager.canUndo
+        self.redoBBI.enabled = self.geometrySketchOverlay.undoManager.canRedo
+        self.clearBBI.enabled = self.geometrySketchOverlay.geometryBuilder != nil && !self.geometrySketchOverlay.geometryBuilder!.isEmpty()
     }
     
     //MARK: - Actions
@@ -67,33 +67,33 @@ class SketchViewController: UIViewController {
     @IBAction func geometryValueChanged(segmentedControl:UISegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0://point
-            self.sketchGraphicsOverlay.geometryBuilder = AGSPointBuilder(spatialReference: AGSSpatialReference.webMercator())
+            self.geometrySketchOverlay.geometryBuilder = AGSPointBuilder(spatialReference: AGSSpatialReference.webMercator())
             
         case 1://polyline
-            self.sketchGraphicsOverlay.geometryBuilder = AGSPolylineBuilder(spatialReference: AGSSpatialReference.webMercator())
+            self.geometrySketchOverlay.geometryBuilder = AGSPolylineBuilder(spatialReference: AGSSpatialReference.webMercator())
             
         case 2://polygon
-            self.sketchGraphicsOverlay.geometryBuilder = AGSPolygonBuilder(spatialReference: AGSSpatialReference.webMercator())
+            self.geometrySketchOverlay.geometryBuilder = AGSPolygonBuilder(spatialReference: AGSSpatialReference.webMercator())
             
         default:
             break
         }
-        self.sketchGraphicsOverlay.undoManager.removeAllActions()
+        self.geometrySketchOverlay.undoManager.removeAllActions()
     }
     
     @IBAction func undo() {
-        if self.sketchGraphicsOverlay.undoManager.canUndo { //extra check, just to be sure
-            self.sketchGraphicsOverlay.undoManager.undo()
+        if self.geometrySketchOverlay.undoManager.canUndo { //extra check, just to be sure
+            self.geometrySketchOverlay.undoManager.undo()
         }
     }
     
     @IBAction func redo() {
-        if self.sketchGraphicsOverlay.undoManager.canRedo { //extra check, just to be sure
-            self.sketchGraphicsOverlay.undoManager.redo()
+        if self.geometrySketchOverlay.undoManager.canRedo { //extra check, just to be sure
+            self.geometrySketchOverlay.undoManager.redo()
         }
     }
     
     @IBAction func clear() {
-        self.sketchGraphicsOverlay.clear()
+        self.geometrySketchOverlay.clear()
     }
 }

@@ -82,10 +82,10 @@ class PictureMarkerSymbolsViewController: UIViewController {
         //change offsets, so the symbol aligns properly to the point
         pinSymbol.offsetY = pinSymbol.image!.size.height/2
         
-        //location for camp site
+        //location for pin
         let pinPoint = AGSPoint(x: -226773, y: 6550477, spatialReference: AGSSpatialReference.webMercator())
         
-        //graphic for camp site
+        //graphic for pin
         let graphic = AGSGraphic(geometry: pinPoint, symbol: pinSymbol)
         
         //add the graphic to the overlay

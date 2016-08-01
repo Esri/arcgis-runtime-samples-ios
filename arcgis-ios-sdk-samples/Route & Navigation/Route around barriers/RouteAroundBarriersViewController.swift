@@ -61,25 +61,17 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
         //zoom to viewpoint
         self.mapView.setViewpointCenter(AGSPoint(x: -13042254.715252, y: 3857970.236806, spatialReference: AGSSpatialReference(WKID: 3857)), scale: 1e5, completion: nil)
         
-        self.setupRouteTask()
+        //initialize route task
+        self.routeTask = AGSRouteTask(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route")!)
+        
+        //get default parameters
+        self.getDefaultParameters()
         
         //hide directions list
         self.toggleRouteDetails(false)
     }
     
     //MARK: - Route logic
-    
-    func setupRouteTask() {
-        self.routeTask = AGSRouteTask(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route")!)
-        self.routeTask.loadWithCompletion { [weak self] (error:NSError?) -> Void in
-            if let error = error {
-                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
-            }
-            else {
-                self?.getDefaultParameters()
-            }
-        }
-    }
     
     func getDefaultParameters() {
         self.routeTask.defaultRouteParametersWithCompletion({ [weak self] (params: AGSRouteParameters?, error: NSError?) -> Void in

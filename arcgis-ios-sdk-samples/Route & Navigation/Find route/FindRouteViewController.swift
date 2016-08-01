@@ -54,7 +54,10 @@ class FindRouteViewController: UIViewController {
         self.mapView.setViewpointCenter(AGSPoint(x: -13041154.715252, y: 3858170.236806, spatialReference: AGSSpatialReference(WKID: 3857)), scale: 1e5, completion: nil)
         
         //initialize route task
-        self.setupRouteTask()
+        self.routeTask = AGSRouteTask(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route")!)
+        
+        //get default parameters
+        self.getDefaultParameters()
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,22 +89,9 @@ class FindRouteViewController: UIViewController {
     
     //MARK: - Route logic
     
-    //method to initialize the route task, load it
-    //and completion get the default parameters
-    func setupRouteTask() {
-        self.routeTask = AGSRouteTask(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route")!)
-        self.routeTask.loadWithCompletion { [weak self] (error:NSError?) -> Void in
-            if let error = error {
-                print(error)
-            }
-            else {
-                self?.getDefaultParameters()
-            }
-        }
-    }
-    
     //method to get the default parameters for the route task
     func getDefaultParameters() {
+        
         self.routeTask.defaultRouteParametersWithCompletion({ [weak self] (params: AGSRouteParameters?, error: NSError?) -> Void in
             if let error = error {
                 print(error)

@@ -22,6 +22,8 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
     private var headerView:CustomSearchHeaderView!
     var containsSearchResults = false
     
+    var token: dispatch_once_t = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +38,46 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             self.headerView = self.tableView.tableHeaderView! as! CustomSearchHeaderView
             self.headerView.delegate = self
             self.headerView.hideSuggestionsTable()
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //animate the table only the first time the view appears
+        dispatch_once(&self.token) { [weak self] in
+            self?.animateTable()
+        }
+    }
+    
+    func animateTable() {
+        //call reload data and wait for it to finish
+        //before accessing the visible cells
+        self.tableView.reloadData()
+        self.tableView.layoutIfNeeded()
+        
+        //will be animating only the visible cells
+        let visibleCells = self.tableView.visibleCells
+        
+        //counter for the for loop
+        var index = 0
+        
+        //loop through each visible cell
+        //and set the starting transform and then animate to identity
+        for cell in visibleCells {
+            
+            //starting position
+            cell.transform = CGAffineTransformMakeTranslation(self.tableView.bounds.width, 0)
+            
+            //last position with animation
+            UIView.animateWithDuration(0.5, delay: 0.1 * Double(index), usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: {
+                
+                cell.transform = CGAffineTransformIdentity
+                
+            }, completion: nil)
+            
+            //increment counter
+            index = index + 1
         }
     }
 

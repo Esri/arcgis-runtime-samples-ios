@@ -17,6 +17,14 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
+                    <string>Map loaded</string>
+                    <key>storyboardName</key>
+                    <string>MapLoaded</string>
+                    <key>descriptionText</key>
+                    <string>This sample shows how to tell what the map's load status is</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
                     <string>Open an existing map</string>
                     <key>storyboardName</key>
                     <string>OpenExistingMap</string>
@@ -228,6 +236,14 @@
                     <string>FeatureLayerURL</string>
                     <key>descriptionText</key>
                     <string>Show a feature layer on map using the url to the service</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Feature layer (geodatabase)</string>
+                    <key>storyboardName</key>
+                    <string>FeatureLayerGDB</string>
+                    <key>descriptionText</key>
+                    <string>Show a feature layer on map using a geodatabase</string>
                 </dict>
                 <dict>
                     <key>displayName</key>

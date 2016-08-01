@@ -494,6 +494,21 @@
         </dict>
         <dict>
             <key>displayName</key>
+            <string>Geometry</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Create geometries</string>
+                    <key>storyboardName</key>
+                    <string>CreateGeometries</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows simple ways to create different types of geometries</string>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
             <string>Route &amp; Navigation</string>
             <key>children</key>
             <array>

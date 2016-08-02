@@ -94,7 +94,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
                 }
                 
                 if popups.count > 0 {
-                    weakSelf.popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .AddNavigationBar)
+                    weakSelf.popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .NavigationBar)
                     weakSelf.popupsVC.modalPresentationStyle = .FormSheet
                     weakSelf.presentViewController(weakSelf.popupsVC, animated: true, completion: nil)
                     weakSelf.popupsVC.delegate = weakSelf
@@ -247,7 +247,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
                 //Iniitalize a popup view controller
                 let popup = AGSPopup(geoElement: weakSelf.newFeature)
                 
-                weakSelf.popupsVC = AGSPopupsViewController(popups: [popup], containerStyle: .AddNavigationBar)
+                weakSelf.popupsVC = AGSPopupsViewController(popups: [popup], containerStyle: .NavigationBar)
                 weakSelf.popupsVC.delegate = weakSelf
                 
                 //Only for iPad, set presentation style to Form sheet

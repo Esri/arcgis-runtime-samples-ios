@@ -119,7 +119,7 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
             if let error = error {
                 print("Could not load feature service \(error)")
             } else {
-                for (index, layerInfo) in featureServiceInfo.featureLayerInfos.enumerate() {
+                for (index, layerInfo) in featureServiceInfo.featureLayerInfos.enumerate().reverse() {
                     
                     //For each layer in the serice, add a layer to the map
                     let layerURL = self?.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))
@@ -234,9 +234,12 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
                 self?.liveMode = false
                 
                 self?.map.operationalLayers.removeAllObjects()
-                for featureTable in geodatabase.geodatabaseFeatureTables {
-                    let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                    self?.map.operationalLayers.addObject(featureLayer)
+                for (_, featureTable) in geodatabase.geodatabaseFeatureTables.enumerate().reverse() {
+                    //check if feature table has geometry
+                    if featureTable.hasGeometry {
+                        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                        self?.map.operationalLayers.addObject(featureLayer)
+                    }
                 }
                 
                 SVProgressHUD.showInfoWithStatus("Now showing layers from the geodatabase")

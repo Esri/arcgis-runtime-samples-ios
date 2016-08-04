@@ -141,12 +141,14 @@ class GenerateGeodatabaseViewController: UIViewController {
             }
             else {
                 self?.map.operationalLayers.removeAllObjects()
-                for (_, featureTable) in geodatabase.geodatabaseFeatureTables.enumerate().reverse() {
+                for featureTable in geodatabase.geodatabaseFeatureTables.reverse() {
                     //check if featureTable has geometry
-                    if featureTable.hasGeometry {
-                        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                        self?.map.operationalLayers.addObject(featureLayer)
-                    }
+                    featureTable.loadWithCompletion({ (error: NSError?) in
+                        if featureTable.hasGeometry {
+                            let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                            self?.map.operationalLayers.addObject(featureLayer)
+                        }
+                    })
                 }
                 
                 SVProgressHUD.showSuccessWithStatus("Now showing data from geodatabase")

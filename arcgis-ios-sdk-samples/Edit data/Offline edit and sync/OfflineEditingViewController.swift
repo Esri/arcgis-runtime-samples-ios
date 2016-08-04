@@ -234,12 +234,14 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
                 self?.liveMode = false
                 
                 self?.map.operationalLayers.removeAllObjects()
-                for (_, featureTable) in geodatabase.geodatabaseFeatureTables.enumerate().reverse() {
+                for featureTable in geodatabase.geodatabaseFeatureTables.reverse() {
                     //check if feature table has geometry
-                    if featureTable.hasGeometry {
-                        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                        self?.map.operationalLayers.addObject(featureLayer)
-                    }
+                    featureTable.loadWithCompletion({ (error: NSError?) in
+                        if featureTable.hasGeometry {
+                            let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                            self?.map.operationalLayers.addObject(featureLayer)
+                        }
+                    })
                 }
                 
                 SVProgressHUD.showInfoWithStatus("Now showing layers from the geodatabase")

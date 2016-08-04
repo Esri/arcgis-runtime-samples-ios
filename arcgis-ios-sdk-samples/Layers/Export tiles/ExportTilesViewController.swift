@@ -83,7 +83,7 @@ class ExportTilesViewController: UIViewController {
         }
         else {
             //download
-            self.downloadTiles()
+            self.initiateDownload()
         }
     }
     
@@ -98,7 +98,7 @@ class ExportTilesViewController: UIViewController {
         }
     }
     
-    private func downloadTiles() {
+    private func initiateDownload() {
         
         //get the parameters by specifying the selected area,
         //mapview's current scale as the minScale and tiled layer's max scale as maxScale
@@ -117,13 +117,22 @@ class ExportTilesViewController: UIViewController {
         //delete previous existing tpks
         self.deleteAllTpks()
         
+        //initialize the export task
+        self.exportTask = AGSExportTileCacheTask(mapServiceInfo: self.tiledLayer.mapServiceInfo!)
+        self.exportTask.exportTileCacheParametersWithAreaOfInterest(self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale) { [weak self] (params: AGSExportTileCacheParameters?, error: NSError?) in
+            if let error = error {
+                SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
+            }
+            else {
+                self?.exportTilesUsingParameters(params!)
+            }
+        }
+    }
+    
+    private func exportTilesUsingParameters(params: AGSExportTileCacheParameters) {
         //destination path for the tpk, including name
         let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
         let destinationPath = "\(path)/myTileCache.tpk"
-        
-        //initialize the export task
-        self.exportTask = AGSExportTileCacheTask(mapServiceInfo: self.tiledLayer.mapServiceInfo!)
-        let params = self.exportTask.exportTileCacheParametersWithAreaOfInterest(self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale)
         
         //get the job
         self.job = self.exportTask.exportTileCacheJobWithParameters(params, downloadFilePath: destinationPath)

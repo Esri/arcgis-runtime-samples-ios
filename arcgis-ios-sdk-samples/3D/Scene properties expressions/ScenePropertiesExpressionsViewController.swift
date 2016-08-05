@@ -19,6 +19,8 @@ import ArcGIS
 class ScenePropertiesExpressionsViewController: UIViewController {
 
     @IBOutlet var sceneView: AGSSceneView!
+    @IBOutlet var headingLabel: UILabel!
+    @IBOutlet var pitchLabel: UILabel!
     
     private var coneGraphic: AGSGraphic!
     
@@ -67,9 +69,13 @@ class ScenePropertiesExpressionsViewController: UIViewController {
     
     @IBAction func headingSliderValueChanged(slider: UISlider) {
         coneGraphic.attributes["HEADING"] = slider.value
+        //update label
+        self.headingLabel.text = "\(Int(slider.value))"
     }
     
     @IBAction func pitchSliderValueChanged(slider: UISlider) {
         coneGraphic.attributes["PITCH"] = slider.value
+        //update label
+        self.pitchLabel.text = "\(Int(slider.value))"
     }
 }

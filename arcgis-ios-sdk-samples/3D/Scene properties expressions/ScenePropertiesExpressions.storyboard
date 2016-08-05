@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G26a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8fJ-SJ-TSb">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Scene Properties Expressions View Controller-->
+        <scene sceneID="B6q-fK-GAp">
+            <objects>
+                <viewController id="8fJ-SJ-TSb" customClass="ScenePropertiesExpressionsViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PCX-xo-cWu"/>
+                        <viewControllerLayoutGuide type="bottom" id="aTF-p8-Yyh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="utC-Lb-iJ0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="osp-3X-78c" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="506"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uhr-Ta-ZHR">
+                                <rect key="frame" x="0.0" y="526" width="600" height="74"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="359" translatesAutoresizingMaskIntoConstraints="NO" id="pOK-0g-1xR">
+                                        <rect key="frame" x="84" y="5" width="510" height="33"/>
+                                        <connections>
+                                            <action selector="headingSliderValueChanged:" destination="8fJ-SJ-TSb" eventType="valueChanged" id="kv3-gD-rdd"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbe-1f-Es4">
+                                        <rect key="frame" x="8" y="10" width="70" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="JJk-Cb-xrC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-90" maxValue="90" translatesAutoresizingMaskIntoConstraints="NO" id="kKa-YD-wnd">
+                                        <rect key="frame" x="84" y="39" width="510" height="31"/>
+                                        <connections>
+                                            <action selector="pitchSliderValueChanged:" destination="8fJ-SJ-TSb" eventType="valueChanged" id="CAZ-oq-QXv"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pitch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTM-Uh-1Ju">
+                                        <rect key="frame" x="8" y="43" width="70" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="dC3-TL-7li"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="kKa-YD-wnd" secondAttribute="bottom" constant="5" id="5c9-lU-Phe"/>
+                                    <constraint firstItem="aTM-Uh-1Ju" firstAttribute="centerY" secondItem="kKa-YD-wnd" secondAttribute="centerY" id="6ax-oI-5uL"/>
+                                    <constraint firstItem="aTM-Uh-1Ju" firstAttribute="leading" secondItem="Uhr-Ta-ZHR" secondAttribute="leading" constant="8" id="Do8-HL-sJi"/>
+                                    <constraint firstItem="kKa-YD-wnd" firstAttribute="top" secondItem="pOK-0g-1xR" secondAttribute="bottom" constant="2" id="Ecd-q8-exz"/>
+                                    <constraint firstItem="kbe-1f-Es4" firstAttribute="leading" secondItem="Uhr-Ta-ZHR" secondAttribute="leading" constant="8" id="JNt-a0-CIc"/>
+                                    <constraint firstItem="kbe-1f-Es4" firstAttribute="centerY" secondItem="pOK-0g-1xR" secondAttribute="centerY" id="Yhm-0N-IvL"/>
+                                    <constraint firstAttribute="height" constant="74" id="e7j-UB-aJu"/>
+                                    <constraint firstAttribute="trailing" secondItem="kKa-YD-wnd" secondAttribute="trailing" constant="8" id="fOA-Ca-A2a"/>
+                                    <constraint firstAttribute="trailing" secondItem="pOK-0g-1xR" secondAttribute="trailing" constant="8" id="ilz-QT-wV0"/>
+                                    <constraint firstItem="pOK-0g-1xR" firstAttribute="leading" secondItem="kbe-1f-Es4" secondAttribute="trailing" constant="8" id="mKD-Ed-NPJ"/>
+                                    <constraint firstItem="kKa-YD-wnd" firstAttribute="leading" secondItem="aTM-Uh-1Ju" secondAttribute="trailing" constant="8" id="ttb-6H-p3h"/>
+                                    <constraint firstItem="aTM-Uh-1Ju" firstAttribute="centerY" secondItem="kbe-1f-Es4" secondAttribute="centerY" id="u75-Bc-Ezv"/>
+                                    <constraint firstItem="pOK-0g-1xR" firstAttribute="top" secondItem="Uhr-Ta-ZHR" secondAttribute="top" constant="5" id="ywn-hb-buy"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="u75-Bc-Ezv"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="osp-3X-78c" firstAttribute="leading" secondItem="utC-Lb-iJ0" secondAttribute="leading" id="6O6-Nw-YMQ"/>
+                            <constraint firstItem="aTF-p8-Yyh" firstAttribute="top" secondItem="Uhr-Ta-ZHR" secondAttribute="bottom" id="Aac-5c-TeR"/>
+                            <constraint firstItem="Uhr-Ta-ZHR" firstAttribute="top" secondItem="osp-3X-78c" secondAttribute="bottom" id="EFJ-86-aiM"/>
+                            <constraint firstItem="Uhr-Ta-ZHR" firstAttribute="leading" secondItem="utC-Lb-iJ0" secondAttribute="leading" id="NCF-nq-DRe"/>
+                            <constraint firstItem="osp-3X-78c" firstAttribute="top" secondItem="PCX-xo-cWu" secondAttribute="bottom" id="Sa3-1r-8Tw"/>
+                            <constraint firstAttribute="trailing" secondItem="Uhr-Ta-ZHR" secondAttribute="trailing" id="hsx-Q6-g39"/>
+                            <constraint firstAttribute="trailing" secondItem="osp-3X-78c" secondAttribute="trailing" id="xgw-Kw-pey"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="osp-3X-78c" id="n3P-tb-SYK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="POv-HA-8G0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="322" y="263"/>
+        </scene>
+    </scenes>
+</document>

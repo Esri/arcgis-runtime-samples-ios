@@ -17,6 +17,14 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
+                    <string>Map loaded</string>
+                    <key>storyboardName</key>
+                    <string>MapLoaded</string>
+                    <key>descriptionText</key>
+                    <string>This sample shows how to tell what the map's load status is</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
                     <string>Open an existing map</string>
                     <key>storyboardName</key>
                     <string>OpenExistingMap</string>
@@ -239,6 +247,14 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
+                    <string>Feature layer (geodatabase)</string>
+                    <key>storyboardName</key>
+                    <string>FeatureLayerGDB</string>
+                    <key>descriptionText</key>
+                    <string>Show a feature layer on map using a geodatabase</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
                     <string>Service feature table (cache)</string>
                     <key>storyboardName</key>
                     <string>OnInteractionCache</string>
@@ -366,6 +382,22 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
+                    <string>Simple marker symbol</string>
+                    <key>storyboardName</key>
+                    <string>SimpleMarkerSymbol</string>
+                    <key>descriptionText</key>
+                    <string>This sample shows how to create a graphic with simple marker symbol</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Picture marker symbols</string>
+                    <key>storyboardName</key>
+                    <string>PictureMarkerSymbols</string>
+                    <key>descriptionText</key>
+                    <string>This sample shows how to create picture marker symbols from a remote image and an image in assets</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
                     <string>Simple renderer</string>
                     <key>storyboardName</key>
                     <string>SimpleRenderer</string>
@@ -481,6 +513,21 @@
                     <string>OfflineEditing</string>
                     <key>descriptionText</key>
                     <string>The sample shows you how to take features offline, make changes and sync them back to the service</string>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
+            <string>Geometry</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Create geometries</string>
+                    <key>storyboardName</key>
+                    <string>CreateGeometries</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows simple ways to create different types of geometries</string>
                 </dict>
             </array>
         </dict>

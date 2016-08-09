@@ -372,6 +372,9 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     private func geocodePOIs(poi:String, location:AGSPoint?, extent:AGSGeometry?) {
+        //hide callout if already visible
+        self.mapView.callout.dismiss()
+        
         //hide extent search button
         self.canDoExtentSearch = false
         self.extentSearchButton.hidden = true

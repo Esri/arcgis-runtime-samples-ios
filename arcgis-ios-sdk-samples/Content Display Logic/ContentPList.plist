@@ -544,6 +544,14 @@
                     <key>descriptionText</key>
                     <string>The sample shows how to position graphics using different surface placements</string>
                 </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Scene properties expressions</string>
+                    <key>storyboardName</key>
+                    <string>ScenePropertiesExpressions</string>
+                    <key>descriptionText</key>
+                    <string>This sample demonstrates how to update the orientation of graphics in graphics overlay using expressions on scene properties</string>
+                </dict>
             </array>
         </dict>
     </array>

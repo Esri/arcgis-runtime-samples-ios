@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class FLSelectionViewController: UIViewController, AGSMapViewTouchDelegate {
+class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     @IBOutlet private weak var mapView:AGSMapView!
     
@@ -55,19 +55,19 @@ class FLSelectionViewController: UIViewController, AGSMapViewTouchDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
         
         let tolerance:Double = 5
         let mapTolerance = tolerance * self.mapView.unitsPerPoint
-        let envelope = AGSEnvelope(XMin: mappoint.x - mapTolerance,
-            yMin: mappoint.y - mapTolerance,
-            xMax: mappoint.x + mapTolerance,
-            yMax: mappoint.y + mapTolerance,
+        let envelope = AGSEnvelope(XMin: mapPoint.x - mapTolerance,
+            yMin: mapPoint.y - mapTolerance,
+            xMax: mapPoint.x + mapTolerance,
+            yMax: mapPoint.y + mapTolerance,
             spatialReference: self.map.spatialReference)
         
         let queryParams = AGSQueryParameters()

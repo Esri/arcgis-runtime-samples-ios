@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
+class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     @IBOutlet private var mapView:AGSMapView!
     
@@ -96,10 +96,10 @@ class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
         }
     }
   
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //add a feature at the tapped location
-        self.addFeature(mappoint)
+        self.addFeature(mapPoint)
     }
 }

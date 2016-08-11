@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, AGSPopupsViewControllerDelegate {
+class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPopupsViewControllerDelegate {
     
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var extentView: UIView!
@@ -81,11 +81,11 @@ class OfflineEditingViewController: UIViewController, AGSMapViewTouchDelegate, A
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         SVProgressHUD.showWithStatus("Loading", maskType: .Gradient)
-        self.mapView.identifyLayersAtScreenPoint(screen, tolerance: 5) { [weak self] (results: [AGSIdentifyLayerResult]?, error: NSError?) -> Void in
+        self.mapView.identifyLayersAtScreenPoint(screenPoint, tolerance: 5) { [weak self] (results: [AGSIdentifyLayerResult]?, error: NSError?) -> Void in
 
             if let error = error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription)

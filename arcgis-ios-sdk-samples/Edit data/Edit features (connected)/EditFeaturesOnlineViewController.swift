@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegate, AGSPopupsViewControllerDelegate, FeatureTemplatePickerDelegate {
+class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPopupsViewControllerDelegate, FeatureTemplatePickerDelegate {
     
     @IBOutlet private weak var mapView:AGSMapView!
     @IBOutlet private weak var sketchToolbar:UIToolbar!
@@ -73,14 +73,14 @@ class EditFeaturesOnlineViewController: UIViewController, AGSMapViewTouchDelegat
         }
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
 
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screen, tolerance: 5, maximumResults: 10) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, maximumResults: 10) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }

@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
+class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
 
     @IBOutlet var mapView:AGSMapView!
     
@@ -94,9 +94,9 @@ class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
         self.mapView.callout.showCalloutForGraphic(graphic, tapLocation: tapLocation, animated: animated)
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if self.routeTask == nil && self.locatorTask == nil {
             return
         }

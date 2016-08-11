@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, AGSCalloutDelegate, EAOptionsVCDelegate {
+class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate, EAOptionsVCDelegate {
     
     @IBOutlet private weak var mapView:AGSMapView!
     
@@ -75,9 +75,9 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
         })
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
@@ -85,13 +85,13 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
         //hide the callout
         self.mapView.callout.dismiss()
         
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screen, tolerance: 5, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }
             else if let features = identifyLayerResult?.geoElements as? [AGSArcGISFeature] where features.count > 0 {
                 //show callout for the first feature
-                self?.showCallout(features[0], tapLocation: mappoint)
+                self?.showCallout(features[0], tapLocation: mapPoint)
                 //update selected feature
                 self?.selectedFeature = features[0]
             }

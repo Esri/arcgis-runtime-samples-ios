@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, IdentifyResultsVCDelegate {
+class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate, IdentifyResultsVCDelegate {
     
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var containerView:UIView!
@@ -74,9 +74,9 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //get the geoElements for all layers present at the tapped point
         self.identifyLayers(screenPoint)
     }

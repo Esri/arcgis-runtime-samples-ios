@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class FindAddressViewController: UIViewController, AGSMapViewTouchDelegate, UISearchBarDelegate, UIPopoverPresentationControllerDelegate, WorldAddressesVCDelegate {
+class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIPopoverPresentationControllerDelegate, WorldAddressesVCDelegate {
     
     @IBOutlet private var mapView:AGSMapView!
     @IBOutlet private var button:UIButton!
@@ -120,20 +120,20 @@ class FindAddressViewController: UIViewController, AGSMapViewTouchDelegate, UISe
         UIAlertView(title: "Error", message: message, delegate: nil, cancelButtonTitle: "Ok").show()
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //dismiss the callout
         self.mapView.callout.dismiss()
         
         //identify graphics at the tapped location
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screen, tolerance: 5, maximumResults: 1) { (graphics: [AGSGraphic]?, error: NSError?) -> Void in
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, maximumResults: 1) { (graphics: [AGSGraphic]?, error: NSError?) -> Void in
             if let error = error {
                 self.showAlert(error.localizedDescription)
             }
             else if let graphics = graphics where graphics.count > 0 {
                 //show callout for the graphic
-                self.showCalloutForGraphic(graphics[0], tapLocation: mappoint)
+                self.showCalloutForGraphic(graphics[0], tapLocation: mapPoint)
             }
         }
     }

@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelegate, UIPopoverPresentationControllerDelegate, DirectionsListVCDelegate {
+class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelegate, UIPopoverPresentationControllerDelegate, DirectionsListVCDelegate {
     
     @IBOutlet var mapView:AGSMapView!
     @IBOutlet var segmentedControl:UISegmentedControl!
@@ -161,11 +161,11 @@ class RouteAroundBarriersViewController: UIViewController, AGSMapViewTouchDelega
         return AGSSimpleFillSymbol(style: .DiagonalCross, color: UIColor.redColor(), outline: nil)
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //normalize geometry
-        let normalizedPoint = AGSGeometryEngine.normalizeCentralMeridianOfGeometry(mappoint)!
+        let normalizedPoint = AGSGeometryEngine.normalizeCentralMeridianOfGeometry(mapPoint)!
         
         if segmentedControl.selectedSegmentIndex == 0 {
             //create a graphic for stop and add to the graphics overlay

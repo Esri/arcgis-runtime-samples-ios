@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, UISearchBarDelegate, UIPopoverPresentationControllerDelegate, SanDiegoAddressesVCDelegate {
+class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIPopoverPresentationControllerDelegate, SanDiegoAddressesVCDelegate {
     
     @IBOutlet private var mapView:AGSMapView!
     @IBOutlet private var button:UIButton!
@@ -199,41 +199,41 @@ class GeocodeOfflineViewController: UIViewController, AGSMapViewTouchDelegate, U
         UIAlertView(title: "Error", message: message, delegate: nil, cancelButtonTitle: "Ok").show()
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //dismiss the callout if already visible
         self.mapView.callout.dismiss()
         
         //get the graphics at the tap location
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screen, tolerance: 5, maximumResults: 1) { (graphics: [AGSGraphic]?, error: NSError?) -> Void in
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, maximumResults: 1) { (graphics: [AGSGraphic]?, error: NSError?) -> Void in
 
             if let error = error {
                 self.showAlert(error.localizedDescription)
             }
             else if let graphics = graphics where graphics.count > 0 {
                 //show the callout for the first graphic found
-                self.showCalloutForGraphic(graphics.first!, tapLocation: mappoint, animated: true, offset: false)
+                self.showCalloutForGraphic(graphics.first!, tapLocation: mapPoint, animated: true, offset: false)
             }
         }
     }
     
-    func mapView(mapView: AGSMapView, didLongPressAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didLongPressAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         self.longPressedAndMoving = true
         //on long press perform reverse geocode
-        self.reverseGeocode(mappoint)
+        self.reverseGeocode(mapPoint)
     }
     
-    func mapView(mapView: AGSMapView, didMoveLongPressToScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didMoveLongPressToScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //perform geocode for the updated location
-        self.reverseGeocode(mappoint)
+        self.reverseGeocode(mapPoint)
     }
     
-    func mapView(mapView: AGSMapView, didEndLongPressAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didEndLongPressAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         self.longPressedAndMoving = false
         //the callout right now will be at an offset
         //update the callout to show on top of the graphic
-        self.mapView.touchDelegate?.mapView?(self.mapView, didTapAtScreenPoint: screen, mapPoint: mappoint)
+        self.mapView.touchDelegate?.geoView!(self.mapView, didTapAtScreenPoint: screenPoint, mapPoint: mapPoint)
     }
     
     //MARK: - UISearchBar delegates

@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
+class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var segmentedControl:UISegmentedControl!
@@ -98,12 +98,12 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //on single tap, add stop graphic at the tapped location
         //and route
-        let graphic = self.graphicForLocation(mappoint)
+        let graphic = self.graphicForLocation(mapPoint)
         self.stopGraphicsOverlay.graphics.addObject(graphic)
         
         //clear the route graphic
@@ -112,10 +112,10 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
         self.route(false)
     }
     
-    func mapView(mapView: AGSMapView, didLongPressAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didLongPressAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //add the graphic at that point
         //keep a reference to that graphic to update the geometry if moved
-        self.longPressedGraphic = self.graphicForLocation(mappoint)
+        self.longPressedGraphic = self.graphicForLocation(mapPoint)
         self.stopGraphicsOverlay.graphics.addObject(self.longPressedGraphic)
         //clear the route graphic
         self.longPressedRouteGraphic = nil
@@ -123,10 +123,10 @@ class OfflineRoutingViewController: UIViewController, AGSMapViewTouchDelegate {
         self.route(true)
     }
     
-    func mapView(mapView: AGSMapView, didMoveLongPressToScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didMoveLongPressToScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //update the graphic
         //route
-        self.longPressedGraphic.geometry = mappoint
+        self.longPressedGraphic.geometry = mapPoint
         self.route(true)
     }
     

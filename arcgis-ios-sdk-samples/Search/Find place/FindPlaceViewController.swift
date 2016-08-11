@@ -20,7 +20,7 @@ enum SuggestionType {
     case PopulatedPlace
 }
 
-class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, AGSMapViewTouchDelegate {
+class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, AGSGeoViewTouchDelegate {
     
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var tableView:UITableView!
@@ -194,20 +194,20 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //dismiss the callout if already visible
         self.mapView.callout.dismiss()
         
         //identify graphics at the tapped location
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screen, tolerance: 5, maximumResults: 1) { (graphics: [AGSGraphic]?, error: NSError?) -> Void in
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, maximumResults: 1) { (graphics: [AGSGraphic]?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }
             else if let graphics = graphics where graphics.count > 0 {
                 //show callout for the first graphic in the array
-                self.showCalloutForGraphic(graphics[0], tapLocation: mappoint)
+                self.showCalloutForGraphic(graphics[0], tapLocation: mapPoint)
             }
         }
     }

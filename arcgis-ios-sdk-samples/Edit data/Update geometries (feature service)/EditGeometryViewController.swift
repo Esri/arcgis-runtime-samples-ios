@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGSCalloutDelegate {
+class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
     
     @IBOutlet private weak var mapView:AGSMapView!
     @IBOutlet private weak var toolbar:UIToolbar!
@@ -80,9 +80,9 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
         })
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
@@ -90,7 +90,7 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
         //hide the callout
         self.mapView.callout.dismiss()
         
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screen, tolerance: 5, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }
@@ -100,7 +100,7 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
                 let title = feature.attributes["typdamage"] as! String
                 self?.mapView.callout.title = title
                 self?.mapView.callout.delegate = self
-                self?.mapView.callout.showCalloutForFeature(feature, tapLocation: mappoint, animated: true)
+                self?.mapView.callout.showCalloutForFeature(feature, tapLocation: mapPoint, animated: true)
                 //update selected feature
                 self?.selectedFeature = feature
             }

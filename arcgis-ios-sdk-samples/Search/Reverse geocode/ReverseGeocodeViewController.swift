@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class ReverseGeocodeViewController: UIViewController, AGSMapViewTouchDelegate {
+class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     @IBOutlet weak var mapView: AGSMapView!
     private var map:AGSMap!
@@ -111,10 +111,10 @@ class ReverseGeocodeViewController: UIViewController, AGSMapViewTouchDelegate {
         UIAlertView(title: "Error", message: message, delegate: nil, cancelButtonTitle: "Ok").show()
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
-        self.reverseGeocode(mappoint)
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        self.reverseGeocode(mapPoint)
     }
 }
 

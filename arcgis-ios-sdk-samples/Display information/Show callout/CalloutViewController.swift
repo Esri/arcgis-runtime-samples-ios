@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class CalloutViewController: UIViewController, AGSMapViewTouchDelegate {
+class CalloutViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     @IBOutlet private weak var mapView:AGSMapView!
     
@@ -43,16 +43,16 @@ class CalloutViewController: UIViewController, AGSMapViewTouchDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
     //user tapped on the map
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //if the callout is not shown, show the callout with the coordinates of the tapped location
         if self.mapView.callout.hidden {
             self.mapView.callout.title = "Location"
-            self.mapView.callout.detail = String(format: "x: %.2f, y: %.2f", mappoint.x, mappoint.y)
+            self.mapView.callout.detail = String(format: "x: %.2f, y: %.2f", mapPoint.x, mapPoint.y)
             self.mapView.callout.accessoryButtonHidden = true
-            self.mapView.callout.showCalloutAt(mappoint, screenOffset: CGPointZero, rotateOffsetWithMap: false, animated: true)
+            self.mapView.callout.showCalloutAt(mapPoint, screenOffset: CGPointZero, rotateOffsetWithMap: false, animated: true)
         }
         else {  //hide the callout
             self.mapView.callout.dismiss()

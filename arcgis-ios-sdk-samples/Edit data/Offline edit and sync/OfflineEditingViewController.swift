@@ -30,7 +30,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     @IBOutlet var featureLayersContainerView:UIView!
     
     private var map:AGSMap!
-    private var geometrySketchOverlay = AGSGeometrySketchOverlay()
+    private var geometrySketchEditor = AGSGeometrySketchEditor()
     private let FEATURE_SERVICE_URL = NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
     private var featureTable:AGSServiceFeatureTable!
     private var syncTask:AGSGeodatabaseSyncTask!
@@ -66,7 +66,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
         
-        self.mapView.sketchOverlay = self.geometrySketchOverlay
+        self.mapView.sketchEditor = self.geometrySketchEditor
         
         //initialize sync task
         self.syncTask = AGSGeodatabaseSyncTask(URL: self.FEATURE_SERVICE_URL)
@@ -218,14 +218,14 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     func geometryChanged(notification:NSNotification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the done bar button item
-        if let geometry = self.geometrySketchOverlay.geometry where !geometry.empty {
+        if let geometry = self.geometrySketchEditor.geometry where !geometry.empty {
             self.doneBBI.enabled = true
         }
     }
     
-    private func disableSketchOverlay() {
-        self.geometrySketchOverlay.enabled = false
-        self.geometrySketchOverlay.clear()
+    private func disableSketchEditor() {
+        self.geometrySketchEditor.enabled = false
+        self.geometrySketchEditor.clear()
         self.sketchToolbar.hidden = true
     }
     
@@ -417,12 +417,12 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.dismissViewControllerAnimated(true, completion: nil)
         
         //Prepare the current view controller for sketch mode
-         self.geometrySketchOverlay.enabled = true //activate the sketch layer
+         self.geometrySketchEditor.enabled = true //activate the sketch layer
         self.mapView.callout.hidden = true
         
         //Assign the sketch layer the geometry that is being passed to us for
         //the active popup's graphic. This is the starting point of the sketch
-        self.geometrySketchOverlay.geometryBuilder = geometryBuilder
+        self.geometrySketchEditor.geometryBuilder = geometryBuilder
         
         //zoom to the existing feature's geometry
         self.mapView.setViewpointGeometry(geometryBuilder.extent, padding: 10, completion: nil)
@@ -438,7 +438,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         //disable the done button until any geometry changes
         self.doneBBI.enabled = false
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(OfflineEditingViewController.geometryChanged(_:)), name: AGSSketchOverlaySketchDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(OfflineEditingViewController.geometryChanged(_:)), name: AGSSketchEditorSketchDidChangeNotification, object: nil)
     }
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, didDeleteForPopup popup: AGSPopup) {
@@ -447,7 +447,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, didFinishEditingForPopup popup: AGSPopup) {
         
-        self.disableSketchOverlay()
+        self.disableSketchEditor()
         
         let feature = popup.geoElement as! AGSFeature
         // simplify the geometry, this will take care of self intersecting polygons and
@@ -481,7 +481,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, didCancelEditingForPopup popup: AGSPopup) {
         
-        self.disableSketchOverlay()
+        self.disableSketchEditor()
     }
     
     func popupsViewControllerDidFinishViewingPopups(popupsViewController: AGSPopupsViewController) {

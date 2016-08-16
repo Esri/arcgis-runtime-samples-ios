@@ -24,7 +24,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     private var map:AGSMap!
     private var featureTable:AGSServiceFeatureTable!
     private var featureLayer:AGSFeatureLayer!
-    private var geometrySketchOverlay:AGSGeometrySketchOverlay!
+    private var geometrySketchEditor:AGSGeometrySketchEditor!
     private var lastQuery:AGSCancellable!
     
     private var selectedFeature:AGSArcGISFeature!
@@ -45,8 +45,8 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         
         self.map.operationalLayers.addObject(self.featureLayer)
         
-        self.geometrySketchOverlay = AGSGeometrySketchOverlay(geometryBuilder: AGSPointBuilder(spatialReference: AGSSpatialReference.webMercator()))
-        self.mapView.sketchOverlay =  self.geometrySketchOverlay
+        self.geometrySketchEditor = AGSGeometrySketchEditor(geometryBuilder: AGSPointBuilder(spatialReference: AGSSpatialReference.webMercator()))
+        self.mapView.sketchEditor =  self.geometrySketchEditor
 
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
@@ -114,12 +114,12 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.mapView.callout.dismiss()
         
         //add the default geometry
-        self.geometrySketchOverlay.addPart()
+        self.geometrySketchEditor.addPart()
         let point = self.selectedFeature.geometry as! AGSPoint
-        self.geometrySketchOverlay.insertVertex(point, inPart: 0, atIndex: 0)
+        self.geometrySketchEditor.insertVertex(point, inPart: 0, atIndex: 0)
         
         //enable the sketch overlay to start tracking user gesture
-        self.geometrySketchOverlay.enabled = true
+        self.geometrySketchEditor.enabled = true
         
         //show the toolbar
 //        self.toolbar.hidden = false
@@ -132,7 +132,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     //MARK: - Actions
     
     @IBAction func doneAction() {
-        if let newGeometry = self.geometrySketchOverlay.geometry {
+        if let newGeometry = self.geometrySketchEditor.geometry {
 
             self.selectedFeature.geometry = newGeometry
             self.featureTable.updateFeature(self.selectedFeature, completion: { [weak self] (error:NSError?) -> Void in
@@ -156,6 +156,6 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         //assign self as the touch delegate
         self.mapView.touchDelegate = self
         //clear sketch graphics overlay
-        self.geometrySketchOverlay.clear()
+        self.geometrySketchEditor.clear()
     }
 }

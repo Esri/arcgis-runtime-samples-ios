@@ -24,7 +24,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     private var map:AGSMap!
     private var featureLayer:AGSFeatureLayer!
     private var popupsVC:AGSPopupsViewController!
-    private var geometrySketchOverlay:AGSGeometrySketchOverlay!
+    private var geometrySketchEditor:AGSGeometrySketchEditor!
     
     private var lastQuery:AGSCancellable!
     private var newFeature:AGSArcGISFeature!
@@ -35,9 +35,9 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditFeaturesOnlineViewController","FeatureTemplatePickerViewController"]
         
-        self.geometrySketchOverlay = AGSGeometrySketchOverlay()
+        self.geometrySketchEditor = AGSGeometrySketchEditor()
         
-        self.mapView.sketchOverlay = self.geometrySketchOverlay
+        self.mapView.sketchEditor = self.geometrySketchEditor
         
         self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
         //set initial viewpoint
@@ -116,12 +116,12 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.dismissViewControllerAnimated(true, completion: nil)
     
         //Prepare the current view controller for sketch mode
-        self.geometrySketchOverlay.enabled = true //activate the sketch layer
+        self.geometrySketchEditor.enabled = true //activate the sketch layer
         self.mapView.callout.hidden = true
         
         //Assign the sketch layer the geometry that is being passed to us for
         //the active popup's graphic. This is the starting point of the sketch
-        self.geometrySketchOverlay.geometryBuilder = geometryBuilder
+        self.geometrySketchEditor.geometryBuilder = geometryBuilder
         
         
         //zoom to the existing feature's geometry
@@ -136,7 +136,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //disable the done button until any geometry changes
         self.doneBBI.enabled = false
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditFeaturesOnlineViewController.geometryChanged(_:)), name: AGSSketchOverlaySketchDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditFeaturesOnlineViewController.geometryChanged(_:)), name: AGSSketchEditorSketchDidChangeNotification, object: nil)
     }
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, didDeleteForPopup popup: AGSPopup) {
@@ -147,7 +147,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, didFinishEditingForPopup popup: AGSPopup) {
         
-        self.disableSketchOverlay()
+        self.disableSketchEditor()
         
         //Tell the user edits are being saved int the background
         SVProgressHUD.showWithStatus("Saving feature details...", maskType: .Gradient)
@@ -165,7 +165,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, didCancelEditingForPopup popup: AGSPopup) {
         
-        self.disableSketchOverlay()
+        self.disableSketchEditor()
 
         //if we had begun adding a new feature, remove it from the layer because the user hit cancel.
         if self.newFeature != nil {
@@ -186,7 +186,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     func geometryChanged(notification:NSNotification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the sketchCompleteButton
-        if let geometry = self.geometrySketchOverlay.geometry where !geometry.empty {
+        if let geometry = self.geometrySketchEditor.geometry where !geometry.empty {
             self.doneBBI.enabled = true
         }
     }
@@ -198,9 +198,9 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    private func disableSketchOverlay() {
-        self.geometrySketchOverlay.enabled = false
-        self.geometrySketchOverlay.clear()
+    private func disableSketchEditor() {
+        self.geometrySketchEditor.enabled = false
+        self.geometrySketchEditor.clear()
         self.sketchToolbar.hidden = true
     }
     

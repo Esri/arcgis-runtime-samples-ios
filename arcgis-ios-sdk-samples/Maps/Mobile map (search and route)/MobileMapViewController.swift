@@ -182,15 +182,8 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
 
             self.routeTask = AGSRouteTask(dataset: self.map.transportationNetworks[0])
             
-            //load the task and get the default parameters
-            self.routeTask.loadWithCompletion { [weak self] (error:NSError?) -> Void in
-                if let error = error {
-                    SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
-                }
-                else {
-                    self?.getDefaultParameters()
-                }
-            }
+            //get default parameters
+            self.getDefaultParameters()
         }
     }
     

@@ -64,7 +64,7 @@ class GenerateGeodatabaseViewController: UIViewController {
             if let error = error {
                 print("Could not load feature service \(error)")
             } else {
-                for (index, layerInfo) in featureServiceInfo.featureLayerInfos.enumerate() {
+                for (index, layerInfo) in featureServiceInfo.featureLayerInfos.enumerate().reverse() {
                     
                     //For each layer in the serice, add a layer to the map
                     let layerURL = self?.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))
@@ -122,7 +122,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                     else {
                         SVProgressHUD.dismiss()
                         self?.generatedGeodatabase = object as! AGSGeodatabase
-                        self?.displayLayersFromGeodatabase(object as! AGSGeodatabase)
+                        self?.displayLayersFromGeodatabase()
                     }
                 }
 
@@ -133,7 +133,7 @@ class GenerateGeodatabaseViewController: UIViewController {
         }
     }
     
-    func displayLayersFromGeodatabase(geodatabase:AGSGeodatabase) {
+    func displayLayersFromGeodatabase() {
         self.generatedGeodatabase.loadWithCompletion({ [weak self] (error:NSError?) -> Void in
 
             if let error = error {
@@ -141,12 +141,20 @@ class GenerateGeodatabaseViewController: UIViewController {
             }
             else {
                 self?.map.operationalLayers.removeAllObjects()
-                for featureTable in geodatabase.geodatabaseFeatureTables {
-                    let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                    self?.map.operationalLayers.addObject(featureLayer)
-                }
                 
-                SVProgressHUD.showSuccessWithStatus("Now showing data from geodatabase")
+                loadObjects(self!.generatedGeodatabase.geodatabaseFeatureTables, { (success: Bool) in
+                    if success {
+                        for featureTable in self!.generatedGeodatabase.geodatabaseFeatureTables.reverse() {
+                            //check if featureTable has geometry
+                            if featureTable.hasGeometry {
+                                let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                                self?.map.operationalLayers.addObject(featureLayer)
+                            }
+                        }
+                        SVProgressHUD.showSuccessWithStatus("Now showing data from geodatabase")
+                    }
+                })
+                
                 self?.downloadBBI.enabled = false
                 
                 //unregister geodatabase as the sample wont be editing or syncing features

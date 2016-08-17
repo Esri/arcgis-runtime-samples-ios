@@ -33,7 +33,11 @@ class CustomContextSheet: UIView {
     var selectionButton:UIButton!
     var selectionLabel:UILabel!
     
-    var selectedIndex:Int = 0
+    var selectedIndex:Int = 0 {
+        didSet {
+            self.updateSelectionButton(selectedIndex)
+        }
+    }
     
     weak var delegate:CustomContextSheetDelegate?
     

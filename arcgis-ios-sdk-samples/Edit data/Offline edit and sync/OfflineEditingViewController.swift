@@ -123,7 +123,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
                     return
                 }
                 
-                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo.featureLayerInfos.enumerate() {
+                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo.featureLayerInfos.enumerate().reverse() {
                     
                     //For each layer in the serice, add a layer to the map
                     let layerURL = weakSelf.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))
@@ -229,7 +229,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.sketchToolbar.hidden = true
     }
     
-    func displayLayersFromGeodatabase(geodatabase:AGSGeodatabase) {
+    func displayLayersFromGeodatabase() {
         self.generatedGeodatabase.loadWithCompletion({ [weak self] (error:NSError?) -> Void in
             if let error = error {
                 print(error)
@@ -238,12 +238,19 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
                 self?.liveMode = false
                 
                 self?.map.operationalLayers.removeAllObjects()
-                for featureTable in geodatabase.geodatabaseFeatureTables {
-                    let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                    self?.map.operationalLayers.addObject(featureLayer)
-                }
                 
-                SVProgressHUD.showInfoWithStatus("Now showing layers from the geodatabase")
+                loadObjects(self!.generatedGeodatabase.geodatabaseFeatureTables, { (success: Bool) in
+                    if success {
+                        for featureTable in self!.generatedGeodatabase.geodatabaseFeatureTables.reverse() {
+                            //check if feature table has geometry
+                            if featureTable.hasGeometry {
+                                let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                                self?.map.operationalLayers.addObject(featureLayer)
+                            }
+                        }
+                        SVProgressHUD.showInfoWithStatus("Now showing layers from the geodatabase")
+                    }
+                })
             }
         })
     }
@@ -329,8 +336,8 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
                 SVProgressHUD.dismiss()
                 //save a reference to the geodatabase
                 self?.generatedGeodatabase = object as! AGSGeodatabase
-                //add te
-                self?.displayLayersFromGeodatabase(object as! AGSGeodatabase)
+                //add the layers from geodatabase
+                self?.displayLayersFromGeodatabase()
             }
         }
     }

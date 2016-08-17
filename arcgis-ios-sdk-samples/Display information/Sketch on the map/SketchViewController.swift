@@ -18,7 +18,7 @@ import ArcGIS
 class SketchViewController: UIViewController {
 
     @IBOutlet private var mapView:AGSMapView!
-    @IBOutlet private var geometrySegmentedControl:UISegmentedControl!
+    @IBOutlet private var geometryTypeSegmentedControl:UISegmentedControl!
     @IBOutlet private var sketchStyleSegmentedControl:UISegmentedControl!
     @IBOutlet private var undoBBI:UIBarButtonItem!
     @IBOutlet private var redoBBI:UIBarButtonItem!
@@ -93,18 +93,18 @@ class SketchViewController: UIViewController {
             self.mapView.sketchEditor = self.geometrySketchEditor
             
             //enable point segment
-            self.geometrySegmentedControl.setEnabled(true, forSegmentAtIndex: 0)
+            self.geometryTypeSegmentedControl.setEnabled(true, forSegmentAtIndex: 0)
         }
         else {
             //assign freehand sketch editor to map view
             self.mapView.sketchEditor = self.freehandSketchEditor
             
             //disable point segment as freehand does not support points
-            self.geometrySegmentedControl.setEnabled(false, forSegmentAtIndex: 0)
+            self.geometryTypeSegmentedControl.setEnabled(false, forSegmentAtIndex: 0)
         }
         
         //switch to polyline
-        self.geometrySegmentedControl.selectedSegmentIndex = 1
+        self.geometryTypeSegmentedControl.selectedSegmentIndex = 1
         
         //call respondToGeomChanged() to update the bar button items
         self.respondToGeomChanged()

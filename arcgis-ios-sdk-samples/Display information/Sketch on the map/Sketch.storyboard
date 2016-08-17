@@ -95,7 +95,7 @@
                     </view>
                     <connections>
                         <outlet property="clearBBI" destination="szF-EX-1S3" id="c2Q-tw-wNv"/>
-                        <outlet property="geometrySegmentedControl" destination="X7k-S7-bpe" id="Ghg-dn-zEF"/>
+                        <outlet property="geometryTypeSegmentedControl" destination="X7k-S7-bpe" id="f3u-NM-syh"/>
                         <outlet property="mapView" destination="UNW-2r-OsJ" id="uFF-uy-zRV"/>
                         <outlet property="redoBBI" destination="fQO-v5-LKM" id="Hg7-Ng-Ykd"/>
                         <outlet property="sketchStyleSegmentedControl" destination="59N-1n-t2o" id="7pH-Ge-BcE"/>

@@ -338,7 +338,7 @@
                     <key>storyboardName</key>
                     <string>Sketch</string>
                     <key>descriptionText</key>
-                    <string>You can use the SketchGraphicsOverlay for sketching on your map</string>
+                    <string>You can use the sketch editor for sketching on your map. You can now also do freehand sketching</string>
                 </dict>
                 <dict>
                     <key>displayName</key>

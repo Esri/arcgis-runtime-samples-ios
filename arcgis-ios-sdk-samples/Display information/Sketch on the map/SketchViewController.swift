@@ -17,15 +17,17 @@ import ArcGIS
 
 class SketchViewController: UIViewController {
 
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var geometrySegmentedControl:UISegmentedControl!
-    @IBOutlet private weak var undoBBI:UIBarButtonItem!
-    @IBOutlet private weak var redoBBI:UIBarButtonItem!
-    @IBOutlet private weak var clearBBI:UIBarButtonItem!
+    @IBOutlet private var mapView:AGSMapView!
+    @IBOutlet private var geometryTypeSegmentedControl:UISegmentedControl!
+    @IBOutlet private var sketchStyleSegmentedControl:UISegmentedControl!
+    @IBOutlet private var undoBBI:UIBarButtonItem!
+    @IBOutlet private var redoBBI:UIBarButtonItem!
+    @IBOutlet private var clearBBI:UIBarButtonItem!
     
     
     private var map:AGSMap!
     private var geometrySketchEditor:AGSGeometrySketchEditor!
+    private var freehandSketchEditor:AGSFreehandSketchEditor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,16 +35,30 @@ class SketchViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SketchViewController"]
         
+        //instantiate map with basemap
         self.map = AGSMap(basemap: AGSBasemap.lightGrayCanvasBasemap())
         
+        //assign map to map view
+        self.mapView.map = self.map
+        
+        //enable magnifier on map view (visible on long press)
+        self.mapView.magnifierEnabled = true
+        
+        //instantiate geometry sketch editor
         self.geometrySketchEditor = AGSGeometrySketchEditor()
         self.geometrySketchEditor.geometryBuilder = AGSPolylineBuilder(spatialReference: AGSSpatialReference.webMercator())
+        
+        //by default geometry sketch editor is selected, 
+        //so assign it to the map view
         self.mapView.sketchEditor =  self.geometrySketchEditor
         
-        self.geometrySketchEditor.enabled = true
+        //instantiate freehand sketch editor
+        self.freehandSketchEditor = AGSFreehandSketchEditor()
         
-        self.mapView.map = self.map
-        self.mapView.magnifierEnabled = true
+        //enable both sketch editors, so that we dont have to do
+        //it when user switch between them
+        self.geometrySketchEditor.enabled = true
+        self.freehandSketchEditor.enabled = true
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SketchViewController.respondToGeomChanged), name: AGSSketchEditorSketchDidChangeNotification, object: nil)
 
@@ -57,43 +73,91 @@ class SketchViewController: UIViewController {
     
     func respondToGeomChanged() {
         //Enable/disable UI elements appropriately
-        self.undoBBI.enabled = self.geometrySketchEditor.undoManager.canUndo
-        self.redoBBI.enabled = self.geometrySketchEditor.undoManager.canRedo
-        self.clearBBI.enabled = self.geometrySketchEditor.geometryBuilder != nil && !self.geometrySketchEditor.geometryBuilder!.isEmpty()
+        self.undoBBI.enabled = self.mapView.sketchEditor!.undoManager.canUndo
+        self.redoBBI.enabled = self.mapView.sketchEditor!.undoManager.canRedo
+        
+        if self.mapView.sketchEditor! == self.geometrySketchEditor {
+            self.clearBBI.enabled = self.geometrySketchEditor.geometryBuilder != nil && !self.geometrySketchEditor.geometryBuilder!.isEmpty()
+        }
+        else {
+            self.clearBBI.enabled = self.freehandSketchEditor.geometries.count > 0
+        }
     }
     
     //MARK: - Actions
     
-    @IBAction func geometryValueChanged(segmentedControl:UISegmentedControl) {
-        switch segmentedControl.selectedSegmentIndex {
-        case 0://point
-            self.geometrySketchEditor.geometryBuilder = AGSPointBuilder(spatialReference: AGSSpatialReference.webMercator())
+    @IBAction func sketchStyleChanged(segmentedControl: UISegmentedControl) {
+        
+        if segmentedControl.selectedSegmentIndex == 0 {
+            //assign geometry sketch editor to map view
+            self.mapView.sketchEditor = self.geometrySketchEditor
             
-        case 1://polyline
-            self.geometrySketchEditor.geometryBuilder = AGSPolylineBuilder(spatialReference: AGSSpatialReference.webMercator())
-            
-        case 2://polygon
-            self.geometrySketchEditor.geometryBuilder = AGSPolygonBuilder(spatialReference: AGSSpatialReference.webMercator())
-            
-        default:
-            break
+            //enable point segment
+            self.geometryTypeSegmentedControl.setEnabled(true, forSegmentAtIndex: 0)
         }
-        self.geometrySketchEditor.undoManager.removeAllActions()
+        else {
+            //assign freehand sketch editor to map view
+            self.mapView.sketchEditor = self.freehandSketchEditor
+            
+            //disable point segment as freehand does not support points
+            self.geometryTypeSegmentedControl.setEnabled(false, forSegmentAtIndex: 0)
+        }
+        
+        //switch to polyline
+        self.geometryTypeSegmentedControl.selectedSegmentIndex = 1
+        
+        //call respondToGeomChanged() to update the bar button items
+        self.respondToGeomChanged()
+    }
+    
+    @IBAction func geometryValueChanged(segmentedControl:UISegmentedControl) {
+        if self.sketchStyleSegmentedControl.selectedSegmentIndex == 0 {
+            switch segmentedControl.selectedSegmentIndex {
+            case 0://point
+                self.geometrySketchEditor.geometryBuilder = AGSPointBuilder(spatialReference: AGSSpatialReference.webMercator())
+                
+            case 1://polyline
+                self.geometrySketchEditor.geometryBuilder = AGSPolylineBuilder(spatialReference: AGSSpatialReference.webMercator())
+                
+            case 2://polygon
+                self.geometrySketchEditor.geometryBuilder = AGSPolygonBuilder(spatialReference: AGSSpatialReference.webMercator())
+                
+            default:
+                break
+            }
+            
+            //remove all actions from undo manager
+            self.mapView.sketchEditor!.undoManager.removeAllActions()
+        }
+        else {
+            switch segmentedControl.selectedSegmentIndex {
+            case 1: //polyline
+                self.freehandSketchEditor.currentGeometryType = .Polyline
+            default:    //polygon
+                self.freehandSketchEditor.currentGeometryType = .Polygon
+            }
+        }
     }
     
     @IBAction func undo() {
-        if self.geometrySketchEditor.undoManager.canUndo { //extra check, just to be sure
-            self.geometrySketchEditor.undoManager.undo()
+        if self.mapView.sketchEditor!.undoManager.canUndo { //extra check, just to be sure
+            self.mapView.sketchEditor!.undoManager.undo()
         }
     }
     
     @IBAction func redo() {
-        if self.geometrySketchEditor.undoManager.canRedo { //extra check, just to be sure
-            self.geometrySketchEditor.undoManager.redo()
+        if self.mapView.sketchEditor!.undoManager.canRedo { //extra check, just to be sure
+            self.mapView.sketchEditor!.undoManager.redo()
         }
     }
     
     @IBAction func clear() {
-        self.geometrySketchEditor.clear()
+        //TODO: remove the work around once clear() is part of super class
+        if self.mapView.sketchEditor! == self.geometrySketchEditor {
+            self.geometrySketchEditor.clear()
+        }
+        else {
+            self.freehandSketchEditor.clear()
+        }
     }
 }

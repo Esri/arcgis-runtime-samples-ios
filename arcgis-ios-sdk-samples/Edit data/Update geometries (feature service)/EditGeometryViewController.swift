@@ -157,5 +157,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.mapView.touchDelegate = self
         //clear sketch graphics overlay
         self.geometrySketchEditor.clear()
+        
+        
     }
 }

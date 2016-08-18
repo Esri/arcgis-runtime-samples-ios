@@ -105,6 +105,7 @@ class SketchViewController: UIViewController {
         
         //switch to polyline
         self.geometryTypeSegmentedControl.selectedSegmentIndex = 1
+        self.geometryTypeSegmentedControl.sendActionsForControlEvents(.ValueChanged)
         
         //call respondToGeomChanged() to update the bar button items
         self.respondToGeomChanged()

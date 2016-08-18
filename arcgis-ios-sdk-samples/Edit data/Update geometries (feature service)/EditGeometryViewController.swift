@@ -118,7 +118,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         let point = self.selectedFeature.geometry as! AGSPoint
         self.geometrySketchEditor.insertVertex(point, inPart: 0, atIndex: 0)
         
-        //enable the sketch overlay to start tracking user gesture
+        //enable the sketch editor to start tracking user gesture
         self.geometrySketchEditor.enabled = true
         
         //show the toolbar
@@ -153,9 +153,10 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
 //        self.toolbar.hidden = true
         self.toggleToolbar(false)
         
-        //assign self as the touch delegate
-        self.mapView.touchDelegate = self
-        //clear sketch graphics overlay
+        //disable sketch editor
+        self.geometrySketchEditor.enabled = false
+        
+        //clear sketch editor
         self.geometrySketchEditor.clear()
         
         

@@ -19,7 +19,7 @@ class OpenExistingMapViewController: UIViewController, UITableViewDataSource, UI
     
     private let itemURL1 = "http://www.arcgis.com/home/item.html?id=2d6fa24b357d427f9c737774e7b0f977"
     private let itemURL2 = "http://www.arcgis.com/home/item.html?id=01f052c8995e4b9e889d73c3e210ebe3"
-    private let itemURL3 = "http://www.arcgis.com/home/item.html?id=74a8f6645ab44c4f82d537f1aa0e375d"
+    private let itemURL3 = "http://www.arcgis.com/home/item.html?id=92ad152b9da94dee89b9e387dfe21acd"
     
     @IBOutlet private weak var mapView:AGSMapView!
     @IBOutlet private weak var blurView:UIVisualEffectView!

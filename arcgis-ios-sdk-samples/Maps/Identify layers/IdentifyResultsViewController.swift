@@ -180,15 +180,16 @@ class IdentifyResultsViewController: UIViewController, UICollectionViewDataSourc
                 
                 //apply a force to the cell to start the animation
                 //PS: Assuming that the last child behavior is pushBehavior
-                let forceX = weakSelf.collectionView.bounds.width/8
-                let pushBehavior = weakSelf.animator.behaviors[0].childBehaviors.last as! UIPushBehavior
+                if let pushBehavior = weakSelf.animator?.behaviors[0].childBehaviors.last as? UIPushBehavior {
                 
-                pushBehavior.active = true
-                pushBehavior.pushDirection = CGVector(dx: forceX, dy: 0)
+                    let forceX = weakSelf.collectionView.bounds.width/8
+                    pushBehavior.active = true
+                    pushBehavior.pushDirection = CGVector(dx: forceX, dy: 0)
                 
-                //assign self as the delegate for the animator
-                //so that once the animation pauses, we can clear the animator
-                weakSelf.animator.delegate = self
+                    //assign self as the delegate for the animator
+                    //so that once the animation pauses, we can clear the animator
+                    weakSelf.animator.delegate = self
+                }
             })
         }
     }

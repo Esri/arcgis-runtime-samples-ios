@@ -1,4 +1,4 @@
-#Local tiled layer
+#ArcGIS tiled layer (tile cache)
 
 This sample shows how to load an offline copy of a tiled map service so that that basemap tiled service is available when applications are offline
 

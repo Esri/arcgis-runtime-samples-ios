@@ -17,6 +17,14 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
+                    <string>Change map view background</string>
+                    <key>storyboardName</key>
+                    <string>ChangeMapViewBackground</string>
+                    <key>descriptionText</key>
+                    <string>This sample shows you how to customize map view's background grid</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
                     <string>Map loaded</string>
                     <key>storyboardName</key>
                     <string>MapLoaded</string>

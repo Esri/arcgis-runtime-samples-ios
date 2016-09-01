@@ -18,6 +18,7 @@ import ArcGIS
 class ChangeMapViewBackgroundVC: UIViewController, GridSettingsVCDelegate {
 
     @IBOutlet var mapView: AGSMapView!
+    @IBOutlet var settingsContainerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +26,19 @@ class ChangeMapViewBackgroundVC: UIViewController, GridSettingsVCDelegate {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ChangeMapViewBackgroundVC", "GridSettingsViewController"]
         
-        //initialize map with just spatial reference
-        //in order for background grid to be visible
-        let map = AGSMap(spatialReference: AGSSpatialReference.webMercator())
+        //initialize tiled layer
+        let tiledLayer = AGSArcGISTiledLayer(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer")!)
+
+        //initialize map with tiled layer as basemap
+        let map = AGSMap(basemap: AGSBasemap(baseLayer: tiledLayer))
+        
+        //set initial viewpoint
+        let center = AGSPoint(x: 3224786.498918, y: 2661231.326777, spatialReference: AGSSpatialReference(WKID: 3857))
+        map.initialViewpoint = AGSViewpoint(center: center, scale: 236663484.12225574)
         
         //assign map to the map view
         self.mapView.map = map
-    }
+}
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -46,6 +53,10 @@ class ChangeMapViewBackgroundVC: UIViewController, GridSettingsVCDelegate {
         self.mapView.backgroundGrid = grid
     }
     
+    func gridSettingsViewControllerWantsToClose(gridSettingsViewController: GridSettingsViewController) {
+        self.settingsContainerView.hidden = true
+    }
+    
     //MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -54,5 +65,11 @@ class ChangeMapViewBackgroundVC: UIViewController, GridSettingsVCDelegate {
             let controller = segue.destinationViewController as! GridSettingsViewController
             controller.delegate = self
         }
+    }
+    
+    //MARK: - Actions
+    
+    @IBAction private func changeBackgroundAction() {
+        self.settingsContainerView.hidden = false
     }
 }

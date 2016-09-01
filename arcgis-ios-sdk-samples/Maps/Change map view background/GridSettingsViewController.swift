@@ -29,6 +29,8 @@ enum AnimationDirection: String {
 protocol GridSettingsVCDelegate: class {
     
     func gridSettingsViewController(gridSettingsViewController: GridSettingsViewController, didUpdateBackgroundGrid grid: AGSBackgroundGrid)
+    
+    func gridSettingsViewControllerWantsToClose(gridSettingsViewController: GridSettingsViewController)
 }
 
 class GridSettingsViewController: UIViewController {
@@ -162,6 +164,10 @@ class GridSettingsViewController: UIViewController {
         
         //update map view
         self.updateMapView()
+    }
+    
+    @IBAction private func closeAction() {
+        self.delegate?.gridSettingsViewControllerWantsToClose(self)
     }
     
     //TODO: Remove this work around once able to change properties on grid

@@ -72,9 +72,6 @@
 		3E4BF4841C5BDF0900D85919 /* OfflineGeocodeViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4551C5BD66C00D85919 /* OfflineGeocodeViewController.swift */; };
 		3E4BF4851C5BDF0900D85919 /* SanDiegoAddressesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4571C5BD6C400D85919 /* SanDiegoAddressesViewController.swift */; };
 		3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */; };
-		3E54D2291CC1453600BB9904 /* TLRenderModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E54D2281CC1453600BB9904 /* TLRenderModeViewController.swift */; };
-		3E54D22B1CC1552B00BB9904 /* TiledLayerRenderMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E54D22A1CC1552B00BB9904 /* TiledLayerRenderMode.storyboard */; };
-		3E54D2301CC5998C00BB9904 /* TLRenderModeViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E54D2281CC1453600BB9904 /* TLRenderModeViewController.swift */; };
 		3E54D2331CC697F100BB9904 /* GraphicDrawOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E54D2321CC697F100BB9904 /* GraphicDrawOrderViewController.swift */; };
 		3E54D2351CC6985200BB9904 /* GraphicDrawOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E54D2341CC6985200BB9904 /* GraphicDrawOrder.storyboard */; };
 		3E54D2361CC69E5E00BB9904 /* GraphicDrawOrderViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E54D2321CC697F100BB9904 /* GraphicDrawOrderViewController.swift */; };
@@ -339,7 +336,6 @@
 				3E6C771E1CCFE5AD00E89873 /* GeoElementCell.swift in CopyFiles */,
 				3E6C771F1CCFE5AD00E89873 /* IdentifyResultsViewController.swift in CopyFiles */,
 				3E54D2361CC69E5E00BB9904 /* GraphicDrawOrderViewController.swift in CopyFiles */,
-				3E54D2301CC5998C00BB9904 /* TLRenderModeViewController.swift in CopyFiles */,
 				3EE8B9591CA0C020003AA705 /* VectorTileLayerViewController.swift in CopyFiles */,
 				3EC39C461C9B515D003F6459 /* ExportTilesViewController.swift in CopyFiles */,
 				3EC39C471C9B515D003F6459 /* GenerateGeodatabaseViewController.swift in CopyFiles */,
@@ -471,8 +467,6 @@
 		3E4BF47A1C5BDDCA00D85919 /* san-diego-locator.locb */ = {isa = PBXFileReference; lastKnownFileType = file; path = "san-diego-locator.locb"; sourceTree = "<group>"; };
 		3E4BF47B1C5BDDCA00D85919 /* san-diego-locator.lox */ = {isa = PBXFileReference; lastKnownFileType = file; path = "san-diego-locator.lox"; sourceTree = "<group>"; };
 		3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = streetmap_SD.tpk; path = "Shared resources/Tile packages/streetmap_SD.tpk"; sourceTree = "<group>"; };
-		3E54D2281CC1453600BB9904 /* TLRenderModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TLRenderModeViewController.swift; path = "Layers/Tiled layer render mode/TLRenderModeViewController.swift"; sourceTree = "<group>"; };
-		3E54D22A1CC1552B00BB9904 /* TiledLayerRenderMode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TiledLayerRenderMode.storyboard; path = "Layers/Tiled layer render mode/TiledLayerRenderMode.storyboard"; sourceTree = "<group>"; };
 		3E54D2321CC697F100BB9904 /* GraphicDrawOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphicDrawOrderViewController.swift; path = "Display information/Control graphic draw order/GraphicDrawOrderViewController.swift"; sourceTree = "<group>"; };
 		3E54D2341CC6985200BB9904 /* GraphicDrawOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GraphicDrawOrder.storyboard; path = "Display information/Control graphic draw order/GraphicDrawOrder.storyboard"; sourceTree = "<group>"; };
 		3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayerURLViewController.swift; path = "Features/Feature layer (feature service)/FeatureLayerURLViewController.swift"; sourceTree = "<group>"; };
@@ -609,9 +603,9 @@
 		3ED5EB721B7404D0009F9B75 /* SampleInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SampleInfoViewController.swift; path = "Content Display Logic/Controllers/SampleInfoViewController.swift"; sourceTree = "<group>"; };
 		3ED5EB741B740A58009F9B75 /* SegmentedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentedViewController.swift; path = "Content Display Logic/Controllers/SegmentedViewController.swift"; sourceTree = "<group>"; };
 		3ED5EB761B752A42009F9B75 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
-		3ED7888B1D26E23C00E5F311 /* LocalTiledLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalTiledLayerViewController.swift; path = "Layers/Local tiled layer/LocalTiledLayerViewController.swift"; sourceTree = "<group>"; };
-		3ED7888D1D26E28500E5F311 /* TilePackagesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TilePackagesListViewController.swift; path = "Layers/Local tiled layer/TilePackagesListViewController.swift"; sourceTree = "<group>"; };
-		3ED7888F1D26E2F700E5F311 /* LocalTiledLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LocalTiledLayer.storyboard; path = "Layers/Local tiled layer/LocalTiledLayer.storyboard"; sourceTree = "<group>"; };
+		3ED7888B1D26E23C00E5F311 /* LocalTiledLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalTiledLayerViewController.swift; path = "Layers/ArcGIS tiled layer (tile cache)/LocalTiledLayerViewController.swift"; sourceTree = "<group>"; };
+		3ED7888D1D26E28500E5F311 /* TilePackagesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TilePackagesListViewController.swift; path = "Layers/ArcGIS tiled layer (tile cache)/TilePackagesListViewController.swift"; sourceTree = "<group>"; };
+		3ED7888F1D26E2F700E5F311 /* LocalTiledLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LocalTiledLayer.storyboard; path = "Layers/ArcGIS tiled layer (tile cache)/LocalTiledLayer.storyboard"; sourceTree = "<group>"; };
 		3EE692011B03D22500C167B8 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Node.swift; path = "Content Display Logic/Model/Node.swift"; sourceTree = "<group>"; };
 		3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = VectorTileLayer.storyboard; path = "Layers/ArcGIS vector tiled layer (URL)/VectorTileLayer.storyboard"; sourceTree = "<group>"; };
 		3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VectorTileLayerViewController.swift; path = "Layers/ArcGIS vector tiled layer (URL)/VectorTileLayerViewController.swift"; sourceTree = "<group>"; };
@@ -930,15 +924,6 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		3E54D2271CC13B6A00BB9904 /* Tiled layer render mode */ = {
-			isa = PBXGroup;
-			children = (
-				3E54D2281CC1453600BB9904 /* TLRenderModeViewController.swift */,
-				3E54D22A1CC1552B00BB9904 /* TiledLayerRenderMode.storyboard */,
-			);
-			name = "Tiled layer render mode";
-			sourceTree = "<group>";
-		};
 		3E54D2311CC697A000BB9904 /* Control graphic draw order */ = {
 			isa = PBXGroup;
 			children = (
@@ -1255,9 +1240,8 @@
 			isa = PBXGroup;
 			children = (
 				3ED028A41B8E3A9800ACA70D /* ArcGIS tiled layer (URL) */,
-				3E54D2271CC13B6A00BB9904 /* Tiled layer render mode */,
+				3ED7888A1D26E1E600E5F311 /* ArcGIS tiled layer (tile cache) */,
 				3EC39C301C9B0DAE003F6459 /* Export tiles */,
-				3ED7888A1D26E1E600E5F311 /* Local tiled layer */,
 				3ED0289F1B8E3A9800ACA70D /* ArcGIS map image layer (URL) */,
 				3ED028A71B8E3A9800ACA70D /* Change sublayer visibility */,
 				3EE8B9511CA08E16003AA705 /* ArcGIS vector tile layer (URL) */,
@@ -1624,14 +1608,14 @@
 			path = "Edit data/Update geometries (feature service)";
 			sourceTree = "<group>";
 		};
-		3ED7888A1D26E1E600E5F311 /* Local tiled layer */ = {
+		3ED7888A1D26E1E600E5F311 /* ArcGIS tiled layer (tile cache) */ = {
 			isa = PBXGroup;
 			children = (
 				3ED7888B1D26E23C00E5F311 /* LocalTiledLayerViewController.swift */,
 				3ED7888D1D26E28500E5F311 /* TilePackagesListViewController.swift */,
 				3ED7888F1D26E2F700E5F311 /* LocalTiledLayer.storyboard */,
 			);
-			name = "Local tiled layer";
+			name = "ArcGIS tiled layer (tile cache)";
 			sourceTree = "<group>";
 		};
 		3EE692001B03D1FC00C167B8 /* Model */ = {
@@ -1814,7 +1798,6 @@
 				3ED029411B8E3AB300ACA70D /* point.gif in Resources */,
 				3E4BF45A1C5BD77300D85919 /* OfflineGeocode.storyboard in Resources */,
 				3ED029401B8E3AB300ACA70D /* line.gif in Resources */,
-				3E54D22B1CC1552B00BB9904 /* TiledLayerRenderMode.storyboard in Resources */,
 				3E6AE3EC1C6D11BA0026E59C /* OfflineRouting.storyboard in Resources */,
 				3E23A9EF1AFC28F6002E2214 /* Images.xcassets in Resources */,
 				3EBA25611D34178200AB0703 /* SimpleMarkerSymbol.storyboard in Resources */,
@@ -1992,7 +1975,6 @@
 				3E54D2331CC697F100BB9904 /* GraphicDrawOrderViewController.swift in Sources */,
 				3ED028891B8E3A8500ACA70D /* OpenExistingMapViewController.swift in Sources */,
 				3ED028FB1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift in Sources */,
-				3E54D2291CC1453600BB9904 /* TLRenderModeViewController.swift in Sources */,
 				3E4BF4421C5AE98300D85919 /* FindAddressViewController.swift in Sources */,
 				3ED0293A1B8E3AB300ACA70D /* MILShowLegendViewController.swift in Sources */,
 				3EEA060E1D21C44000E03774 /* SceneSymbolsViewController.swift in Sources */,

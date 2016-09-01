@@ -190,14 +190,14 @@
                     <key>descriptionText</key>
                     <string>You can create a tiled layer using the url to the service</string>
                 </dict>
-<!--                <dict>-->
-<!--                    <key>displayName</key>-->
-<!--                    <string>Tiled layer render mode</string>-->
-<!--                    <key>storyboardName</key>-->
-<!--                    <string>TiledLayerRenderMode</string>-->
-<!--                    <key>descriptionText</key>-->
-<!--                    <string>You can switch between the SCALE and AESTHETIC rendering mode for tiled layers</string>-->
-<!--                </dict>-->
+                <dict>
+                    <key>displayName</key>
+                    <string>ArcGIS tiled layer (tile cache)</string>
+                    <key>storyboardName</key>
+                    <string>LocalTiledLayer</string>
+                    <key>descriptionText</key>
+                    <string>This sample shows how to load an offline copy of a tiled map service so that that basemap tiled service is available when applications are offline</string>
+                </dict>
                 <dict>
                     <key>displayName</key>
                     <string>Export tiles</string>
@@ -205,14 +205,6 @@
                     <string>ExportTiles</string>
                     <key>descriptionText</key>
                     <string>You can create a tpk from a map service</string>
-                </dict>
-                <dict>
-                    <key>displayName</key>
-                    <string>Local tiled layer</string>
-                    <key>storyboardName</key>
-                    <string>LocalTiledLayer</string>
-                    <key>descriptionText</key>
-                    <string>This sample shows how to load an offline copy of a tiled map service so that that basemap tiled service is available when applications are offline</string>
                 </dict>
                 <dict>
                     <key>displayName</key>

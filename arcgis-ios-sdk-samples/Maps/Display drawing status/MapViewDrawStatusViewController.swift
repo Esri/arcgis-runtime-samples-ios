@@ -42,13 +42,18 @@ class MapViewDrawStatusViewController: UIViewController {
         //assign the map to mapView
         self.mapView.map = self.map
         
-        self.mapView.drawStatusChangedHandler = { [weak self] (drawStatus:AGSDrawStatus) in
-            if drawStatus == AGSDrawStatus.InProgress {
-                self?.activityIndicatorView.hidden = false
-            }
-            else {
-                self?.activityIndicatorView.hidden = true
-            }
+        //add observer for drawStatus on mapView
+        //so we can show/hide an indicator when the status change 
+        self.mapView.addObserver(self, forKeyPath: "drawStatus", options: .New, context: nil)
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        
+        if self.mapView.drawStatus == AGSDrawStatus.InProgress {
+            self.activityIndicatorView.hidden = false
+        }
+        else {
+            self.activityIndicatorView.hidden = true
         }
     }
     

@@ -118,7 +118,7 @@ class ExportTilesViewController: UIViewController {
         self.deleteAllTpks()
         
         //initialize the export task
-        self.exportTask = AGSExportTileCacheTask(mapServiceInfo: self.tiledLayer.mapServiceInfo!)
+        self.exportTask = AGSExportTileCacheTask(URL: self.tiledLayer.URL!)
         self.exportTask.exportTileCacheParametersWithAreaOfInterest(self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale) { [weak self] (params: AGSExportTileCacheParameters?, error: NSError?) in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)

@@ -114,6 +114,10 @@
 		3E8D54FB1D53E3F000E628D9 /* ScenePropertiesExpressions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8D54F91D53E3F000E628D9 /* ScenePropertiesExpressions.storyboard */; };
 		3E8D54FC1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8D54FA1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift */; };
 		3E8D54FD1D53FCD500E628D9 /* ScenePropertiesExpressionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8D54FA1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift */; };
+		3EAF09451D7108DC00F8538F /* ChangeMapViewBackgroundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAF09441D7108DC00F8538F /* ChangeMapViewBackgroundVC.swift */; };
+		3EAF09471D71093D00F8538F /* GridSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAF09461D71093D00F8538F /* GridSettingsViewController.swift */; };
+		3EAF09491D710AAF00F8538F /* ChangeMapViewBackground.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EAF09481D710AAF00F8538F /* ChangeMapViewBackground.storyboard */; };
+		3EAF094A1D710BAB00F8538F /* ChangeMapViewBackgroundVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EAF09441D7108DC00F8538F /* ChangeMapViewBackgroundVC.swift */; };
 		3EBA25401D2F104100AB0703 /* UniqueValueRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EBA253F1D2F104100AB0703 /* UniqueValueRenderer.storyboard */; };
 		3EBA25421D2F106600AB0703 /* UniqueValueRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBA25411D2F106600AB0703 /* UniqueValueRendererViewController.swift */; };
 		3EBA25431D2F1D9700AB0703 /* UniqueValueRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EBA25411D2F106600AB0703 /* UniqueValueRendererViewController.swift */; };
@@ -309,6 +313,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3EAF094A1D710BAB00F8538F /* ChangeMapViewBackgroundVC.swift in CopyFiles */,
 				3E8D54FD1D53FCD500E628D9 /* ScenePropertiesExpressionsViewController.swift in CopyFiles */,
 				3ED788921D26F3E000E5F311 /* TilePackagesListViewController.swift in CopyFiles */,
 				3ED788911D26F3C100E5F311 /* LocalTiledLayerViewController.swift in CopyFiles */,
@@ -492,6 +497,9 @@
 		3E8D54F91D53E3F000E628D9 /* ScenePropertiesExpressions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScenePropertiesExpressions.storyboard; sourceTree = "<group>"; };
 		3E8D54FA1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenePropertiesExpressionsViewController.swift; sourceTree = "<group>"; };
 		3EA34D591B38C3B3003DC0E8 /* Samples-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Samples-Bridging-Header.h"; path = "Content Display Logic/Samples-Bridging-Header.h"; sourceTree = "<group>"; };
+		3EAF09441D7108DC00F8538F /* ChangeMapViewBackgroundVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeMapViewBackgroundVC.swift; path = "Maps/Change map view background/ChangeMapViewBackgroundVC.swift"; sourceTree = "<group>"; };
+		3EAF09461D71093D00F8538F /* GridSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridSettingsViewController.swift; path = "Maps/Change map view background/GridSettingsViewController.swift"; sourceTree = "<group>"; };
+		3EAF09481D710AAF00F8538F /* ChangeMapViewBackground.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ChangeMapViewBackground.storyboard; path = "Maps/Change map view background/ChangeMapViewBackground.storyboard"; sourceTree = "<group>"; };
 		3EBA253F1D2F104100AB0703 /* UniqueValueRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = UniqueValueRenderer.storyboard; path = "Display information/Unique value renderer/UniqueValueRenderer.storyboard"; sourceTree = "<group>"; };
 		3EBA25411D2F106600AB0703 /* UniqueValueRendererViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniqueValueRendererViewController.swift; path = "Display information/Unique value renderer/UniqueValueRendererViewController.swift"; sourceTree = "<group>"; };
 		3EBA25451D300C1D00AB0703 /* SimpleRendererViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimpleRendererViewController.swift; path = "Display information/Simple renderer/SimpleRendererViewController.swift"; sourceTree = "<group>"; };
@@ -1059,6 +1067,16 @@
 			path = "3D/Scene properties expressions";
 			sourceTree = "<group>";
 		};
+		3EAF09431D71086E00F8538F /* Change map view background */ = {
+			isa = PBXGroup;
+			children = (
+				3EAF09441D7108DC00F8538F /* ChangeMapViewBackgroundVC.swift */,
+				3EAF09461D71093D00F8538F /* GridSettingsViewController.swift */,
+				3EAF09481D710AAF00F8538F /* ChangeMapViewBackground.storyboard */,
+			);
+			name = "Change map view background";
+			sourceTree = "<group>";
+		};
 		3EBA253E1D2F101100AB0703 /* Unique value renderer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1235,6 +1253,7 @@
 			isa = PBXGroup;
 			children = (
 				3E85263B1B90DD3500690EBD /* Display a map */,
+				3EAF09431D71086E00F8538F /* Change map view background */,
 				3E8A258B1D36B97A00D14F08 /* Map loaded */,
 				3ED028381B8E3A8500ACA70D /* Open an existing map */,
 				3ED0280B1B8E3A8400ACA70D /* Change basemap */,
@@ -1837,6 +1856,7 @@
 				3E41DD791B9F609500DA11CC /* DeleteFeatures.storyboard in Resources */,
 				3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */,
 				3ED028EE1B8E3AA500ACA70D /* FLSelection.storyboard in Resources */,
+				3EAF09491D710AAF00F8538F /* ChangeMapViewBackground.storyboard in Resources */,
 				97DD84671B2B869300184B41 /* xcode.css in Resources */,
 				3ED0289C1B8E3A8500ACA70D /* MapViewScreenshot.storyboard in Resources */,
 				3EEA06131D21C44000E03774 /* SurfacePlacements.storyboard in Resources */,
@@ -1932,6 +1952,7 @@
 				3ED029681B8E3ACD00ACA70D /* EAOptionsViewController.swift in Sources */,
 				3E4B05F91B39EF250072E514 /* SVProgressHUD.m in Sources */,
 				3EBA25631D3417B000AB0703 /* SimpleMarkerSymbolViewController.swift in Sources */,
+				3EAF09471D71093D00F8538F /* GridSettingsViewController.swift in Sources */,
 				3ED028921B8E3A8500ACA70D /* SetInitialMapLocationViewController.swift in Sources */,
 				3ED029661B8E3ACD00ACA70D /* EditAttachmentViewController.swift in Sources */,
 				3EFCE1C51CF374C600E02F67 /* MobileMapViewController.swift in Sources */,
@@ -1967,6 +1988,7 @@
 				3EFCE1C31CF374C600E02F67 /* MapPackageCell.swift in Sources */,
 				3ED028631B8E3A8500ACA70D /* SwitchBasemapViewController.swift in Sources */,
 				3EEA06141D21C44000E03774 /* SurfacePlacementsViewController.swift in Sources */,
+				3EAF09451D7108DC00F8538F /* ChangeMapViewBackgroundVC.swift in Sources */,
 				3ED028591B8E3A8500ACA70D /* AuthoringOptionsViewController.swift in Sources */,
 				3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */,
 				3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */,

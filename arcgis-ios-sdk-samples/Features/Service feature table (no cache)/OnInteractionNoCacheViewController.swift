@@ -21,7 +21,7 @@ class OnInteractionNoCacheViewController: UIViewController {
     
     private var map:AGSMap!
     
-    private let FEATURE_SERVICE_URL = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0"
+    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -32,7 +32,7 @@ class SublayerVisibilityViewController: UIViewController, UIPopoverPresentationC
         self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
         
         //initialize the map image layer using a url
-        self.mapImageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
+        self.mapImageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
         
         //add the image layer to the map
         self.map.operationalLayers.addObject(self.mapImageLayer)

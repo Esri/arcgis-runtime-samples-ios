@@ -25,7 +25,7 @@ class EditAttachmentViewController: UIViewController, AGSGeoViewTouchDelegate, A
     private var lastQuery:AGSCancellable!
     
     private var selectedFeature:AGSArcGISFeature!
-    private let FEATURE_SERVICE_URL = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
+    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()

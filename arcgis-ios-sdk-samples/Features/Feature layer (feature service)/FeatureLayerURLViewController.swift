@@ -35,7 +35,7 @@ class FeatureLayerURLViewController: UIViewController {
         self.mapView.map = map
         
         //initialize service feature table using url
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Energy/Geology/FeatureServer/9")!)
+        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Energy/Geology/FeatureServer/9")!)
 
         //create a feature layer
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)

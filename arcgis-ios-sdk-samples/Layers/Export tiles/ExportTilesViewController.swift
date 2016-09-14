@@ -43,7 +43,7 @@ class ExportTilesViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ExportTilesViewController"]
         
-        self.tiledLayer = AGSArcGISTiledLayer(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer")!)
+        self.tiledLayer = AGSArcGISTiledLayer(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer")!)
         let map = AGSMap(basemap: AGSBasemap(baseLayer: self.tiledLayer))
         
         self.mapView.map = map

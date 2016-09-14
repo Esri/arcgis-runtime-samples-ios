@@ -38,7 +38,7 @@ extension UIImage {
 
 class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, SaveAsVCDelegate {
     
-    let webmapURL = "http://www.arcgis.com/home/webmap/viewer.html?webmap="
+    let webmapURL = "https://www.arcgis.com/home/webmap/viewer.html?webmap="
     
     @IBOutlet private weak var mapView:AGSMapView!
     @IBOutlet private weak var authoringOptionsBlurView:UIVisualEffectView!
@@ -116,7 +116,7 @@ class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, 
     }
     
     @IBAction func saveAsAction(sender: AnyObject) {
-        self.portal = AGSPortal(URL: NSURL(string: "http://www.arcgis.com")!, loginRequired: true)
+        self.portal = AGSPortal(URL: NSURL(string: "https://www.arcgis.com")!, loginRequired: true)
         self.portal.loadWithCompletion { (error) -> Void in
             if let error = error {
                 print(error)

@@ -37,7 +37,7 @@ class ManualCacheViewController: UIViewController {
         self.mapView.map = self.map
         
         //create feature table using a url
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0")!)
+        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0")!)
         //set the feature request mode to Manual Cache
         featureTable.featureRequestMode = AGSFeatureRequestMode.ManualCache
         //create feature layer using this feature table

@@ -23,7 +23,7 @@ class GenerateGeodatabaseViewController: UIViewController {
     @IBOutlet var extentView:UIView!
     
     private var map:AGSMap!
-    private let FEATURE_SERVICE_URL = NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
+    private let FEATURE_SERVICE_URL = NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
     private var syncTask:AGSGeodatabaseSyncTask!
     private var generateJob:AGSGenerateGeodatabaseJob!
     private var generatedGeodatabase:AGSGeodatabase!

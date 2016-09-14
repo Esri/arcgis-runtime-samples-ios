@@ -24,7 +24,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
     private var reverseGeocodeParameters:AGSReverseGeocodeParameters!
     private var graphicsOverlay = AGSGraphicsOverlay()
     
-    private let locatorURL = "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+    private let locatorURL = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
     
     override func viewDidLoad() {
         super.viewDidLoad()

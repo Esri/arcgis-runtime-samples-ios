@@ -144,7 +144,7 @@ class GenerateGeodatabaseViewController: UIViewController {
             else {
                 self?.map.operationalLayers.removeAllObjects()
                 
-                loadObjects(self!.generatedGeodatabase.geodatabaseFeatureTables, { (success: Bool) in
+                AGSLoadObjects(self!.generatedGeodatabase.geodatabaseFeatureTables, { (success: Bool) in
                     if success {
                         for featureTable in self!.generatedGeodatabase.geodatabaseFeatureTables.reverse() {
                             //check if featureTable has geometry

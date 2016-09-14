@@ -157,9 +157,40 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }
         else {
             self.serviceModeToolbar.hidden = true
-            let count = self.numberOfEditsInGeodatabase(self.generatedGeodatabase)
-            self.syncBBI?.enabled = count > 0
-            self.instructionsLabel?.text = "Data from geodatabase : \(count) edits"
+            self.updateLabelWithEdits()
+        }
+    }
+    
+    func updateLabelWithEdits() {
+        let dispatchGroup = dispatch_group_create()
+        var totalCount = 0
+        
+        for featureTable in self.generatedGeodatabase.geodatabaseFeatureTables {
+            if featureTable.loadStatus == .Loaded {
+                
+                dispatch_group_enter(dispatchGroup)
+                featureTable.addedFeaturesCountWithCompletion({ (count: Int, error: NSError?) in
+                    totalCount = totalCount + count
+                    dispatch_group_leave(dispatchGroup)
+                })
+                
+                dispatch_group_enter(dispatchGroup)
+                featureTable.updatedFeaturesCountWithCompletion({ (count: Int, error: NSError?) in
+                    totalCount = totalCount + count
+                    dispatch_group_leave(dispatchGroup)
+                })
+                
+                dispatch_group_enter(dispatchGroup)
+                featureTable.deletedFeaturesCountWithCompletion({ (count: Int, error: NSError?) in
+                    totalCount = totalCount + count
+                    dispatch_group_leave(dispatchGroup)
+                })
+            }
+        }
+        
+        dispatch_group_notify(dispatchGroup, dispatch_get_main_queue()) { [weak self] in
+            self?.syncBBI?.enabled = totalCount > 0
+            self?.instructionsLabel?.text = "Data from geodatabase : \(totalCount) edits"
         }
     }
     
@@ -205,16 +236,6 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }
     }
     
-    func numberOfEditsInGeodatabase(geodatabase:AGSGeodatabase) -> Int64 {
-        var total:Int64 = 0
-        for featureTable in geodatabase.geodatabaseFeatureTables {
-            if featureTable.loadStatus == .Loaded {
-                total += featureTable.addedFeatureCount() + featureTable.deletedFeatureCount() + featureTable.updatedFeatureCount()
-            }
-        }
-        return total
-    }
-    
     func geometryChanged(notification:NSNotification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the done bar button item
@@ -239,7 +260,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
                 
                 self?.map.operationalLayers.removeAllObjects()
                 
-                loadObjects(self!.generatedGeodatabase.geodatabaseFeatureTables, { (success: Bool) in
+                AGSLoadObjects(self!.generatedGeodatabase.geodatabaseFeatureTables, { (success: Bool) in
                     if success {
                         for featureTable in self!.generatedGeodatabase.geodatabaseFeatureTables.reverse() {
                             //check if feature table has geometry
@@ -343,8 +364,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     }
     
     @IBAction func switchToServiceMode(sender:AnyObject) {
-        let count = self.numberOfEditsInGeodatabase(self.generatedGeodatabase)
-        if count > 0 {
+        if self.generatedGeodatabase.hasLocalEdits() {
             let yesAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { [weak self] (action:UIAlertAction) -> Void in
                 self?.syncAction({ () -> Void in
                     self?.switchToServiceMode()

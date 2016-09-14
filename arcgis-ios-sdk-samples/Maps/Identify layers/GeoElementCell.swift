@@ -42,11 +42,11 @@ class GeoElementCell: UICollectionViewCell, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("AttributesCell")!
         //set the key name as the text label
-        cell.textLabel?.text = Array(self.geoElement.attributes.keys)[indexPath.row]
+        cell.textLabel?.text = Array(self.geoElement.attributes.allKeys)[indexPath.row] as? String
         
         //set the value as the detail text
         //check for strings
-        let value = Array(self.geoElement.attributes.values)[indexPath.row]
+        let value = Array(self.geoElement.attributes.allValues)[indexPath.row]
         if value is String {
             cell.detailTextLabel?.text = value as? String
         }

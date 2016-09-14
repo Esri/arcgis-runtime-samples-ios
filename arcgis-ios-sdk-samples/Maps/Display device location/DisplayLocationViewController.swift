@@ -93,6 +93,9 @@ class DisplayLocationViewController: UIViewController, CustomContextSheetDelegat
         self.mapView.locationDisplay.startWithCompletion { (error:NSError?) -> Void in
             if let error = error {
                 UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "Ok").show()
+                
+                //update context sheet to Stop
+                self.sheet.selectedIndex = 0
             }
         }
     }

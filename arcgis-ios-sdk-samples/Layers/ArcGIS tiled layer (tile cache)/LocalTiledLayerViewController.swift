@@ -57,7 +57,7 @@ class LocalTiledLayerViewController: UIViewController, TilePackagesListVCDelegat
     func tilePackagesListViewController(tilePackagesListViewController: TilePackagesListViewController, didSelectTPKWithPath path: String) {
         
         //create a new map with selected tile package as the basemap
-        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(path: path))
+        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(fileURL: NSURL(fileURLWithPath: path)))
         let map = AGSMap(basemap: AGSBasemap(baseLayer: localTiledLayer))
         self.mapView.map = map
         

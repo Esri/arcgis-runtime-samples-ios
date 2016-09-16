@@ -35,7 +35,7 @@ class GenerateGeodatabaseViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GenerateGeodatabaseViewController"]
         
         let path = NSBundle.mainBundle().pathForResource("SanFrancisco", ofType: "tpk")!
-        let tileCache = AGSTileCache(path: path)
+        let tileCache = AGSTileCache(fileURL: NSURL(fileURLWithPath: path))
         let localTiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
         
         

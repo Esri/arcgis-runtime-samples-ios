@@ -59,7 +59,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         //using a tpk to create a local tiled layer
         //which will be visible in case of no network connection
         let path = NSBundle.mainBundle().pathForResource("streetmap_SD", ofType: "tpk")!
-        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(path: path))
+        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(fileURL: NSURL(fileURLWithPath: path)))
         
         //initialize the map using the local tiled layer as baselayer
         self.map = AGSMap(basemap: AGSBasemap(baseLayer: localTiledLayer))
@@ -79,7 +79,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         let dbPath = NSBundle.mainBundle().pathForResource("sandiego", ofType: "geodatabase", inDirectory: "san-diego")!
         
         //initialize the route task using the path and the network name
-        self.routeTask = AGSRouteTask(pathToDatabase: dbPath, networkName: "Streets_ND")
+        self.routeTask = AGSRouteTask(fileURLToDatabase: NSURL(fileURLWithPath: dbPath), networkName: "Streets_ND")
         
         //get default route parameters
         self.getDefaultParameters()

@@ -37,7 +37,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         
         //create a local tiled layer using tile package
         let path = NSBundle.mainBundle().pathForResource("streetmap_SD", ofType: "tpk")!
-        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(path: path))
+        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(fileURL: NSURL(fileURLWithPath: path)))
         
         //instantiate map and add the local tiled layer
         let map = AGSMap()

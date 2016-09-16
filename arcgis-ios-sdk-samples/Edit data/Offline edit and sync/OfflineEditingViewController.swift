@@ -54,7 +54,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         
         //use the san francisco tpk as the basemap
         let tpkPath = NSBundle.mainBundle().pathForResource("SanFrancisco", ofType: "tpk")!
-        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(path: tpkPath))
+        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(fileURL: NSURL(fileURLWithPath: tpkPath)))
         
         self.map = AGSMap(basemap: AGSBasemap(baseLayer: localTiledLayer))
         

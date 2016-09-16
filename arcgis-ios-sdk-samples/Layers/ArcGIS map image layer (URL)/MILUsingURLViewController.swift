@@ -28,7 +28,7 @@ class MILUsingURLViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MILUsingURLViewController"]
         
         //create a map image layer using a url
-        let mapImageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "http://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!)
+        let mapImageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!)
         //initialize the map
         self.map = AGSMap()
         //add the image layer to the map

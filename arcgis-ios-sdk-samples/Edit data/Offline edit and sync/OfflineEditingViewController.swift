@@ -31,7 +31,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     private var map:AGSMap!
     private var geometrySketchEditor = AGSGeometrySketchEditor()
-    private let FEATURE_SERVICE_URL = NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
+    private let FEATURE_SERVICE_URL = NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
     private var featureTable:AGSServiceFeatureTable!
     private var syncTask:AGSGeodatabaseSyncTask!
     private var generatedGeodatabase:AGSGeodatabase!

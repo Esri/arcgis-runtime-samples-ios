@@ -27,7 +27,7 @@ class ChangeMapViewBackgroundVC: UIViewController, GridSettingsVCDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ChangeMapViewBackgroundVC", "GridSettingsViewController"]
         
         //initialize tiled layer
-        let tiledLayer = AGSArcGISTiledLayer(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer")!)
+        let tiledLayer = AGSArcGISTiledLayer(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer")!)
 
         //initialize map with tiled layer as basemap
         let map = AGSMap(basemap: AGSBasemap(baseLayer: tiledLayer))

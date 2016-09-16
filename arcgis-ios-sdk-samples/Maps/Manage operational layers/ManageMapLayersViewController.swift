@@ -27,10 +27,10 @@ class ManageMapLayersViewController: UIViewController, MMLLayersViewControllerDe
                 
         self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
         
-        let imageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "http://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!)
+        let imageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!)
         self.map.operationalLayers.addObject(imageLayer)
         
-        let tiledLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "http://sampleserver5.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
+        let tiledLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
         self.map.operationalLayers.addObject(tiledLayer)
 
         self.deletedLayers = [AGSLayer]()

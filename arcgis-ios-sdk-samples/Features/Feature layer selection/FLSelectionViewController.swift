@@ -24,7 +24,7 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
     private var featureLayer:AGSFeatureLayer!
     private var lastQuery:AGSCancellable!
     private var selectedFeatures:[AGSFeature]!
-    private let FEATURE_SERVICE_URL = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
+    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()

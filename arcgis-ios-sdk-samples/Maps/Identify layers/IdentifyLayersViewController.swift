@@ -41,12 +41,12 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate, I
         //create an instance of a map
         self.map = AGSMap()
         
-        self.mapImageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
+        self.mapImageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
         
         self.map.operationalLayers.addObject(self.mapImageLayer)
         
         //feature table
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
+        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         //feature layer
         self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
         

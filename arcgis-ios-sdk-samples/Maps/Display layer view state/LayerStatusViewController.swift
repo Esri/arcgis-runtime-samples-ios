@@ -36,19 +36,19 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         self.map = AGSMap()
         
         //create tiled layer using a url
-        let tiledLayer = AGSArcGISTiledLayer(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer")!)
+        let tiledLayer = AGSArcGISTiledLayer(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer")!)
         //add the layer to the map
         self.map.operationalLayers.addObject(tiledLayer)
 
         //create an map image layer using a url
-        let imageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
+        let imageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
         imageLayer.minScale = 40000000
         imageLayer.maxScale = 2000000
         //add it to the map
         self.map.operationalLayers.addObject(imageLayer)
         
         //create feature layer using a url
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0")!)
+        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0")!)
         let featurelayer = AGSFeatureLayer(featureTable: featureTable)
         //add it to the map
         self.map.operationalLayers.addObject(featurelayer)

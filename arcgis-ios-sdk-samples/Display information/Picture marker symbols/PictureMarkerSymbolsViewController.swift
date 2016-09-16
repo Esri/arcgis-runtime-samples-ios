@@ -54,7 +54,7 @@ class PictureMarkerSymbolsViewController: UIViewController {
 
     
     private func addPictureMarkerSymbolFromURL() {
-        let url = NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0/images/e82f744ebb069bb35b234b3fea46deae")!
+        let url = NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0/images/e82f744ebb069bb35b234b3fea46deae")!
         
         let campsiteSymbol = AGSPictureMarkerSymbol(URL: url)
         

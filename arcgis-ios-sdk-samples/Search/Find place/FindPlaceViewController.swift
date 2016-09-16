@@ -91,7 +91,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.mapView.graphicsOverlays.addObject(self.graphicsOverlay)
         
         //initialize locator task
-        self.locatorTask = AGSLocatorTask(URL: NSURL(string: "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer")!)
+        self.locatorTask = AGSLocatorTask(URL: NSURL(string: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer")!)
         
         //hide suggest result table view by default
         self.animateTableView(false)

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oSL-y7-4lj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oSL-y7-4lj">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Authoring Map View Controller-->
+        <!--Create Save Map View Controller-->
         <scene sceneID="cPL-g9-VDL">
             <objects>
-                <viewController id="oSL-y7-4lj" customClass="AuthoringMapViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="oSL-y7-4lj" customClass="CreateSaveMapViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ccd-pS-1OH"/>
                         <viewControllerLayoutGuide type="bottom" id="vSI-r9-h8A"/>
@@ -40,7 +40,7 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KBt-X3-X8f" userLabel="Authoring Options Blur View">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KBt-X3-X8f" userLabel="Create Options Blur View">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="roD-KB-Hz1">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
@@ -70,7 +70,7 @@
                                                 </mask>
                                             </variation>
                                             <connections>
-                                                <segue destination="jve-jS-MPk" kind="embed" identifier="AuthoringOptionsEmbedSegue" id="Hff-eS-Yti"/>
+                                                <segue destination="jve-jS-MPk" kind="embed" identifier="CreateOptionsEmbedSegue" id="Hff-eS-Yti"/>
                                             </connections>
                                         </containerView>
                                     </subviews>
@@ -167,8 +167,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="qbD-Lf-1fZ"/>
                                 <exclude reference="Y43-r5-Dof"/>
+                                <exclude reference="qbD-Lf-1fZ"/>
                                 <exclude reference="Axc-K8-MdF"/>
                                 <exclude reference="1Yi-0T-j7c"/>
                                 <exclude reference="jVg-7T-PBx"/>
@@ -182,7 +182,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="authoringOptionsBlurView" destination="KBt-X3-X8f" id="erR-hA-NFa"/>
+                        <outlet property="createOptionsBlurView" destination="KBt-X3-X8f" id="r6G-kL-BPe"/>
                         <outlet property="mapView" destination="ULb-Bf-8qz" id="xZ0-Ip-0MS"/>
                         <outlet property="saveAsBlurView" destination="ov1-ls-mLv" id="4D4-XW-lGB"/>
                         <outlet property="savingToolbar" destination="KTS-fi-WLf" id="hif-pS-iyI"/>
@@ -192,10 +192,10 @@
             </objects>
             <point key="canvasLocation" x="368" y="405"/>
         </scene>
-        <!--Authoring Options View Controller-->
+        <!--Create Options View Controller-->
         <scene sceneID="jZU-7l-7Je">
             <objects>
-                <viewController id="jve-jS-MPk" customClass="AuthoringOptionsViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jve-jS-MPk" customClass="CreateOptionsViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bJP-fQ-ufh"/>
                         <viewControllerLayoutGuide type="bottom" id="ziH-TJ-Hon"/>
@@ -208,7 +208,7 @@
                                 <rect key="frame" x="0.0" y="5" width="300" height="301"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AuthoringBasemapCell" textLabel="lyA-lb-I5h" style="IBUITableViewCellStyleDefault" id="zkH-2n-fgi">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CreateBasemapCell" textLabel="lyA-lb-I5h" style="IBUITableViewCellStyleDefault" id="zkH-2n-fgi">
                                         <rect key="frame" x="0.0" y="22" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zkH-2n-fgi" id="ufn-f1-CGq">
@@ -227,7 +227,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AuthoringLayerCell" textLabel="z2h-sb-8ya" style="IBUITableViewCellStyleDefault" id="laf-lj-4oB">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CreateLayerCell" textLabel="z2h-sb-8ya" style="IBUITableViewCellStyleDefault" id="laf-lj-4oB">
                                         <rect key="frame" x="0.0" y="66" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="laf-lj-4oB" id="sNw-aH-gjK">

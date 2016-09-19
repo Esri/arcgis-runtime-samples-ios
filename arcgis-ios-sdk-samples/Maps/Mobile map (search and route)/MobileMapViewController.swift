@@ -109,12 +109,12 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         //if yes, then show callout with geocoding
         //else add a graphic and route if more than one graphic
         
-        self.mapView.identifyGraphicsOverlay(self.markerGraphicsOverlay, screenPoint: screenPoint, tolerance: 5) { [weak self] (graphics:[AGSGraphic]?, error:NSError?) in
+        self.mapView.identifyGraphicsOverlay(self.markerGraphicsOverlay, screenPoint: screenPoint, tolerance: 5, identifyReturns: .GeoElementsOnly) { [weak self] (result:AGSIdentifyGraphicsOverlayResult?, error:NSError?) in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
             }
             else {
-                if graphics!.count == 0 {
+                if result!.graphics.count == 0 {
                     //add a graphic
                     let graphic = self!.graphicForPoint(mapPoint)
                     self?.markerGraphicsOverlay.graphics.addObject(graphic)
@@ -133,7 +133,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
                 }
                 else {
                     //reverse geocode
-                    self?.reverseGeocode(mapPoint, graphic: graphics![0])
+                    self?.reverseGeocode(mapPoint, graphic: result!.graphics[0])
                 }
             }
         }

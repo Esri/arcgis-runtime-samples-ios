@@ -78,13 +78,13 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         //use `identifyGraphicsOverlaysAtScreenCoordinate:tolerance:maximumGraphics:completion:` method provided on map view
         let tolerance:Double = 5
         
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: tolerance, maximumResults: 10) { (graphics:[AGSGraphic]?, error:NSError?) -> Void in
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: tolerance, identifyReturns: .GeoElementsOnly, maximumResults: 10) { (result: AGSIdentifyGraphicsOverlayResult?, error:NSError?) -> Void in
             if let error = error {
                 print("error while identifying :: \(error.localizedDescription)")
             }
             else {
                 //if a graphics is found then show an alert
-                if graphics?.count > 0 {
+                if result?.graphics.count > 0 {
                     UIAlertView(title: "Alert", message: "Tapped on graphic", delegate: nil, cancelButtonTitle: "Ok").show()
                 }
             }

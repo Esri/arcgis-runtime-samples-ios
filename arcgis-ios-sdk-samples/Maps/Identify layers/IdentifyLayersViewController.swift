@@ -87,7 +87,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate, I
         //show progress hud
         SVProgressHUD.showWithStatus("Identifying", maskType: .Gradient)
         
-        self.mapView.identifyLayersAtScreenPoint(screen, tolerance: 22, maximumResultsPerLayer: 10) { (results: [AGSIdentifyLayerResult]?, error: NSError?) in
+        self.mapView.identifyLayersAtScreenPoint(screen, tolerance: 22, identifyReturns: .GeoElementsOnly, maximumResultsPerLayer: 10) { (results: [AGSIdentifyLayerResult]?, error: NSError?) in
             
             //dismiss progress hud
             SVProgressHUD.dismiss()

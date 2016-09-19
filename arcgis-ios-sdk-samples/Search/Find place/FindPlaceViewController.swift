@@ -201,11 +201,11 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.mapView.callout.dismiss()
         
         //identify graphics at the tapped location
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, maximumResults: 1) { (graphics: [AGSGraphic]?, error: NSError?) -> Void in
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, identifyReturns: .GeoElementsOnly, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }
-            else if let graphics = graphics where graphics.count > 0 {
+            else if let graphics = result?.graphics where graphics.count > 0 {
                 //show callout for the first graphic in the array
                 self.showCalloutForGraphic(graphics[0], tapLocation: mapPoint)
             }

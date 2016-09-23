@@ -31,10 +31,18 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["IdentifyLayersViewController"]
         
         //create an instance of a map
-        self.map = AGSMap()
+        self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
         
+        //map image layer
         self.mapImageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
         
+        //hide Continent and World layers
+        self.mapImageLayer.loadWithCompletion { [weak self] (error: NSError?) in
+            if error == nil {
+                self?.mapImageLayer.subLayerContents[1].visible = false
+                self?.mapImageLayer.subLayerContents[2].visible = false
+            }
+        }
         self.map.operationalLayers.addObject(self.mapImageLayer)
         
         //feature table

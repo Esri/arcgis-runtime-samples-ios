@@ -230,6 +230,14 @@
                     <key>descriptionText</key>
                     <string>You can now add vector tile layers</string>
                 </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>ArcGIS vector tiled layer (custom style)</string>
+                    <key>storyboardName</key>
+                    <string>VectorTileCustomStyle</string>
+                    <key>descriptionText</key>
+                    <string>You can define different styles for same vector tiled layer using custom stylesheets</string>
+                </dict>
             </array>
         </dict>
         <dict>

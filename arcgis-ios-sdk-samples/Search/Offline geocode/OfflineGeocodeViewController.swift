@@ -37,7 +37,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         
         //create a local tiled layer using tile package
         let path = NSBundle.mainBundle().pathForResource("streetmap_SD", ofType: "tpk")!
-        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(path: path))
+        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(fileURL: NSURL(fileURLWithPath: path)))
         
         //instantiate map and add the local tiled layer
         let map = AGSMap()
@@ -206,12 +206,12 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.mapView.callout.dismiss()
         
         //get the graphics at the tap location
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, maximumResults: 1) { (graphics: [AGSGraphic]?, error: NSError?) -> Void in
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, identifyReturns: .GeoElementsOnly, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult?, error: NSError?) -> Void in
 
             if let error = error {
                 self.showAlert(error.localizedDescription)
             }
-            else if let graphics = graphics where graphics.count > 0 {
+            else if let graphics = result?.graphics where graphics.count > 0 {
                 //show the callout for the first graphic found
                 self.showCalloutForGraphic(graphics.first!, tapLocation: mapPoint, animated: true, offset: false)
             }

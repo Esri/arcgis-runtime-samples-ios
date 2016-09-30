@@ -24,7 +24,6 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     private var map:AGSMap!
     private var featureLayer:AGSFeatureLayer!
     private var popupsVC:AGSPopupsViewController!
-    private var geometrySketchEditor:AGSGeometrySketchEditor!
     
     private var lastQuery:AGSCancellable!
     
@@ -33,10 +32,6 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditFeaturesOnlineViewController","FeatureTemplatePickerViewController"]
-        
-        self.geometrySketchEditor = AGSGeometrySketchEditor()
-        
-        self.mapView.sketchEditor = self.geometrySketchEditor
         
         self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
         //set initial viewpoint
@@ -106,27 +101,28 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     
     //MARK: -  AGSPopupsContainerDelegate methods
     
-    func popupsViewController(popupsViewController: AGSPopupsViewController, wantsNewGeometryBuilderForPopup popup: AGSPopup) -> AGSGeometryBuilder {
-        //Return an empty mutable geometry of the type that our feature layer uses
-        return AGSGeometryBuilder(geometryType: (popup.geoElement as! AGSFeature).geometry!.geometryType, spatialReference: self.map.spatialReference)
+    func popupsViewController(popupsViewController: AGSPopupsViewController, sketchEditorForPopup popup: AGSPopup) -> AGSSketchEditor {
+        
+        return AGSSketchEditor(geometry: popup.geoElement.geometry!)
     }
     
-    func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryWithBuilder geometryBuilder: AGSGeometryBuilder, forPopup popup: AGSPopup) {
+    func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryWithSketchEditor sketchEditor: AGSSketchEditor, forPopup popup: AGSPopup) {
         
         //Dismiss the popup view controller
         self.dismissViewControllerAnimated(true, completion: nil)
     
-        //Prepare the current view controller for sketch mode
-        self.geometrySketchEditor.enabled = true //activate the sketch layer
-        self.mapView.callout.hidden = true
-        
         //Assign the sketch layer the geometry that is being passed to us for
         //the active popup's graphic. This is the starting point of the sketch
-        self.geometrySketchEditor.geometryBuilder = geometryBuilder
+        self.mapView.sketchEditor = sketchEditor
+        sketchEditor.enabled = true //activate the sketch layer
         
+        //Prepare the current view controller for sketch mode
+        self.mapView.callout.hidden = true
         
         //zoom to the existing feature's geometry
-        self.mapView.setViewpointGeometry(geometryBuilder.extent, padding: 10, completion: nil)
+        if let geometry = sketchEditor.geometry {
+            self.mapView.setViewpointGeometry(geometry.extent, padding: 10, completion: nil)
+        }
         
         //hide the back button
         self.navigationItem.hidesBackButton = true
@@ -137,7 +133,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //disable the done button until any geometry changes
         self.doneBBI.enabled = false
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditFeaturesOnlineViewController.geometryChanged(_:)), name: AGSSketchEditorSketchDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditFeaturesOnlineViewController.sketchChanged(_:)), name: AGSSketchEditorSketchDidChangeNotification, object: nil)
     }
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, didDeleteForPopup popup: AGSPopup) {
@@ -174,10 +170,10 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.popupsVC = nil
     }
     
-    func geometryChanged(notification:NSNotification) {
+    func sketchChanged(notification:NSNotification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the sketchCompleteButton
-        if let geometry = self.geometrySketchEditor.geometry where !geometry.empty {
+        if let geometry = self.mapView.sketchEditor?.geometry where !geometry.empty {
             self.doneBBI.enabled = true
         }
     }
@@ -190,8 +186,8 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     }
     
     private func disableSketchEditor() {
-        self.geometrySketchEditor.enabled = false
-        self.geometrySketchEditor.clear()
+        self.mapView.sketchEditor?.enabled = false
+        self.mapView.sketchEditor?.clearGeometry()
         self.sketchToolbar.hidden = true
     }
     

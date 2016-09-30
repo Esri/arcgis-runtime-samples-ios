@@ -30,7 +30,6 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     @IBOutlet var featureLayersContainerView:UIView!
     
     private var map:AGSMap!
-    private var geometrySketchEditor = AGSGeometrySketchEditor()
     private let FEATURE_SERVICE_URL = NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
     private var featureTable:AGSServiceFeatureTable!
     private var syncTask:AGSGeodatabaseSyncTask!
@@ -66,8 +65,6 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
         
-        self.mapView.sketchEditor = self.geometrySketchEditor
-        
         //initialize sync task
         self.syncTask = AGSGeodatabaseSyncTask(URL: self.FEATURE_SERVICE_URL)
         
@@ -85,7 +82,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         SVProgressHUD.showWithStatus("Loading", maskType: .Gradient)
-        self.mapView.identifyLayersAtScreenPoint(screenPoint, tolerance: 5, identifyReturns: .GeoElementsOnly) { [weak self] (results: [AGSIdentifyLayerResult]?, error: NSError?) -> Void in
+        self.mapView.identifyLayersAtScreenPoint(screenPoint, tolerance: 5, identifyReturns: .GeoElementsOnly, maximumResultsPerLayer: 10) { [weak self] (results: [AGSIdentifyLayerResult]?, error: NSError?) -> Void in
 
             if let error = error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription)
@@ -236,17 +233,17 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }
     }
     
-    func geometryChanged(notification:NSNotification) {
+    func sketchChanged(notification:NSNotification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the done bar button item
-        if let geometry = self.geometrySketchEditor.geometry where !geometry.empty {
+        if let geometry = self.mapView.sketchEditor?.geometry where !geometry.empty {
             self.doneBBI.enabled = true
         }
     }
     
     private func disableSketchEditor() {
-        self.geometrySketchEditor.enabled = false
-        self.geometrySketchEditor.clear()
+        self.mapView.sketchEditor?.enabled = false
+        self.mapView.sketchEditor?.clearGeometry()
         self.sketchToolbar.hidden = true
     }
     
@@ -439,20 +436,27 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         return AGSGeometryBuilder(geometryType: popup.geoElement.geometry!.geometryType, spatialReference: self.map.spatialReference)
     }
     
-    func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryWithBuilder geometryBuilder: AGSGeometryBuilder, forPopup popup: AGSPopup) {
+    func popupsViewController(popupsViewController: AGSPopupsViewController, sketchEditorForPopup popup: AGSPopup) -> AGSSketchEditor {
+        return AGSSketchEditor(geometry: popup.geoElement.geometry!)
+    }
+    
+    func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryWithSketchEditor sketchEditor: AGSSketchEditor, forPopup popup: AGSPopup) {
+    
         //Dismiss the popup view controller
         self.dismissViewControllerAnimated(true, completion: nil)
         
-        //Prepare the current view controller for sketch mode
-         self.geometrySketchEditor.enabled = true //activate the sketch layer
-        self.mapView.callout.hidden = true
-        
         //Assign the sketch layer the geometry that is being passed to us for
         //the active popup's graphic. This is the starting point of the sketch
-        self.geometrySketchEditor.geometryBuilder = geometryBuilder
+        self.mapView.sketchEditor = sketchEditor
+        
+        //Prepare the current view controller for sketch mode
+        self.mapView.sketchEditor?.enabled = true //activate the sketch layer
+        self.mapView.callout.hidden = true
         
         //zoom to the existing feature's geometry
-        self.mapView.setViewpointGeometry(geometryBuilder.extent, padding: 10, completion: nil)
+        if let geometry = sketchEditor.geometry {
+            self.mapView.setViewpointGeometry(geometry.extent, padding: 10, completion: nil)
+        }
         
         //TODO: Hide the feature
         
@@ -465,7 +469,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         //disable the done button until any geometry changes
         self.doneBBI.enabled = false
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(OfflineEditingViewController.geometryChanged(_:)), name: AGSSketchEditorSketchDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(OfflineEditingViewController.sketchChanged(_:)), name: AGSSketchEditorSketchDidChangeNotification, object: nil)
     }
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, didDeleteForPopup popup: AGSPopup) {

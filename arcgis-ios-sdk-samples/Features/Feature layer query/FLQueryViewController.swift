@@ -72,7 +72,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
                 //update selected features array
                 self?.selectedFeatures.removeAll(keepCapacity: false)
             }
-            else if let features = result?.allObjects {
+            else if let features = result?.featureEnumerator().allObjects {
                 if features.count > 0 {
                     self?.featureLayer.selectFeatures(features)
                     //zoom to the selected feature

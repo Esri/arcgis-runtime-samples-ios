@@ -24,7 +24,6 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     private var map:AGSMap!
     private var featureTable:AGSServiceFeatureTable!
     private var featureLayer:AGSFeatureLayer!
-    private var geometrySketchEditor:AGSGeometrySketchEditor!
     private var lastQuery:AGSCancellable!
     
     private var selectedFeature:AGSArcGISFeature!
@@ -44,9 +43,6 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         self.map.operationalLayers.addObject(self.featureLayer)
-        
-        self.geometrySketchEditor = AGSGeometrySketchEditor(geometryBuilder: AGSPointBuilder(spatialReference: AGSSpatialReference.webMercator()))
-        self.mapView.sketchEditor =  self.geometrySketchEditor
 
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
@@ -114,15 +110,15 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.mapView.callout.dismiss()
         
         //add the default geometry
-        self.geometrySketchEditor.addPart()
         let point = self.selectedFeature.geometry as! AGSPoint
-        self.geometrySketchEditor.insertVertex(point, inPart: 0, atIndex: 0)
+        
+        //instantiate sketch editor with selected feature's geometry
+        self.mapView.sketchEditor = AGSSketchEditor(geometry: point)
         
         //enable the sketch editor to start tracking user gesture
-        self.geometrySketchEditor.enabled = true
+        self.mapView.sketchEditor?.enabled = true
         
         //show the toolbar
-//        self.toolbar.hidden = false
         self.toggleToolbar(true)
         
         //hide the feature for time being
@@ -132,7 +128,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     //MARK: - Actions
     
     @IBAction func doneAction() {
-        if let newGeometry = self.geometrySketchEditor.geometry {
+        if let newGeometry = self.mapView.sketchEditor?.geometry {
 
             self.selectedFeature.geometry = newGeometry
             self.featureTable.updateFeature(self.selectedFeature, completion: { [weak self] (error:NSError?) -> Void in
@@ -150,15 +146,12 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         }
         
         //hide toolbar
-//        self.toolbar.hidden = true
         self.toggleToolbar(false)
         
         //disable sketch editor
-        self.geometrySketchEditor.enabled = false
+        self.mapView.sketchEditor?.enabled = false
         
         //clear sketch editor
-        self.geometrySketchEditor.clear()
-        
-        
+        self.mapView.sketchEditor?.clearGeometry()
     }
 }

@@ -78,7 +78,7 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
                 print(error)
             }
             if let result = queryResult {
-                print("\(result.allObjects.count) feature(s) selected")
+                print("\(result.featureEnumerator().allObjects.count) feature(s) selected")
             }
         }
     }

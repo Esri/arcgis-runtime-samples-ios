@@ -238,6 +238,14 @@
                     <key>descriptionText</key>
                     <string>You can define different styles for same vector tiled layer using custom stylesheets</string>
                 </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Hillshade renderer</string>
+                    <key>storyboardName</key>
+                    <string>HillshadeRenderer</string>
+                    <key>descriptionText</key>
+                    <string>You can apply hill shade renderer to a raster</string>
+                </dict>
             </array>
         </dict>
         <dict>

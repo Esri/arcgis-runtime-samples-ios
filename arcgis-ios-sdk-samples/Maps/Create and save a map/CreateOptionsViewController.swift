@@ -15,11 +15,11 @@
 import UIKit
 import ArcGIS
 
-protocol AuthoringOptionsVCDelegate:class {
-    func authoringOptionsViewController(authoringOptionsViewController:AuthoringOptionsViewController, didSelectBasemap basemap:AGSBasemap, layers:[AGSLayer]?)
+protocol CreateOptionsVCDelegate:class {
+    func createOptionsViewController(createOptionsViewController:CreateOptionsViewController, didSelectBasemap basemap:AGSBasemap, layers:[AGSLayer]?)
 }
 
-class AuthoringOptionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet private weak var tableView:UITableView!
     
@@ -33,7 +33,7 @@ class AuthoringOptionsViewController: UIViewController, UITableViewDataSource, U
     private var selectedLayersIndex = [Int]()
     
     
-    weak var delegate:AuthoringOptionsVCDelegate?
+    weak var delegate:CreateOptionsVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +77,7 @@ class AuthoringOptionsViewController: UIViewController, UITableViewDataSource, U
         var cell:UITableViewCell
         
         if indexPath.section == 0 {
-            cell = tableView.dequeueReusableCellWithIdentifier("AuthoringBasemapCell")!
+            cell = tableView.dequeueReusableCellWithIdentifier("CreateBasemapCell")!
             let basemap = self.basemaps[indexPath.row]
             cell.textLabel?.text = basemap.name
             
@@ -90,7 +90,7 @@ class AuthoringOptionsViewController: UIViewController, UITableViewDataSource, U
             }
         }
         else {
-            cell = tableView.dequeueReusableCellWithIdentifier("AuthoringLayerCell")!
+            cell = tableView.dequeueReusableCellWithIdentifier("CreateLayerCell")!
             let layer = self.layers[indexPath.row]
             cell.textLabel?.text = layer.name
             //accessory view
@@ -155,7 +155,7 @@ class AuthoringOptionsViewController: UIViewController, UITableViewDataSource, U
             layers.append(layer)
         }
         
-        self.delegate?.authoringOptionsViewController(self, didSelectBasemap: basemap, layers: layers.count > 0 ? layers : nil)
+        self.delegate?.createOptionsViewController(self, didSelectBasemap: basemap, layers: layers.count > 0 ? layers : nil)
     }
 
 }

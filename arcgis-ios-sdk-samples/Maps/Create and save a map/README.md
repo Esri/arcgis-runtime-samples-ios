@@ -1,6 +1,6 @@
-#Authoring a map
+#Create and save a map
 
-This sample demonstrates how to author a map and save it to your portal
+This sample demonstrates how to create a map and save it to your portal
 
 ##How to use the sample
 

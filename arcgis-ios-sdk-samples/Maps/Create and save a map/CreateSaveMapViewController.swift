@@ -36,16 +36,16 @@ extension UIImage {
 
 
 
-class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, SaveAsVCDelegate {
+class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, SaveAsVCDelegate {
     
     let webmapURL = "https://www.arcgis.com/home/webmap/viewer.html?webmap="
     
     @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var authoringOptionsBlurView:UIVisualEffectView!
+    @IBOutlet private weak var createOptionsBlurView:UIVisualEffectView!
     @IBOutlet private weak var saveAsBlurView:UIVisualEffectView!
     @IBOutlet private weak var savingToolbar:UIToolbar!
     
-    private var authoringOptionsVC:AuthoringOptionsViewController!
+    private var createOptionsVC:CreateOptionsViewController!
     private var saveAsVC:SaveAsViewController!
     
     private var portal:AGSPortal!
@@ -63,7 +63,7 @@ class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, 
         self.mapView.map = map
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["AuthoringMapViewController", "AuthoringOptionsViewController", "SaveAsViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["CreateSaveMapViewController", "CreateOptionsViewController", "SaveAsViewController"]
     }
     
     override func didReceiveMemoryWarning() {
@@ -90,14 +90,14 @@ class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, 
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    //MARK: - hide/show authoring screen
+    //MARK: - hide/show create screen
     
-    private func toggleAuthoringView() {
-        self.authoringOptionsBlurView.hidden = !self.authoringOptionsBlurView.hidden
+    private func toggleCreateView() {
+        self.createOptionsBlurView.hidden = !self.createOptionsBlurView.hidden
         
         //reset selection
-        if !self.authoringOptionsBlurView.hidden {
-            self.authoringOptionsVC.resetTableView()
+        if !self.createOptionsBlurView.hidden {
+            self.createOptionsVC.resetTableView()
         }
     }
     
@@ -112,7 +112,7 @@ class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, 
     //MARK: - Actions
     
     @IBAction private func newAction() {
-        self.toggleAuthoringView()
+        self.toggleCreateView()
     }
     
     @IBAction func saveAsAction(sender: AnyObject) {
@@ -137,9 +137,9 @@ class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, 
     //MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "AuthoringOptionsEmbedSegue" {
-            self.authoringOptionsVC = segue.destinationViewController as! AuthoringOptionsViewController
-            self.authoringOptionsVC.delegate = self
+        if segue.identifier == "CreateOptionsEmbedSegue" {
+            self.createOptionsVC = segue.destinationViewController as! CreateOptionsViewController
+            self.createOptionsVC.delegate = self
         }
         else if segue.identifier == "SaveAsEmbedSegue" {
             self.saveAsVC = segue.destinationViewController as! SaveAsViewController
@@ -147,9 +147,10 @@ class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, 
         }
     }
     
-    //MARK: - AuthoringOptionsVCDelegate
+    //MARK: - CreateOptionsVCDelegate
     
-    func authoringOptionsViewController(authoringOptionsViewController: AuthoringOptionsViewController, didSelectBasemap basemap: AGSBasemap, layers: [AGSLayer]?) {
+    func createOptionsViewController(createOptionsViewController: CreateOptionsViewController, didSelectBasemap basemap: AGSBasemap, layers: [AGSLayer]?) {
+        
         //create a map with the selected basemap
         let map = AGSMap(basemap: basemap)
         
@@ -160,8 +161,8 @@ class AuthoringMapViewController: UIViewController, AuthoringOptionsVCDelegate, 
         //assign the new map to the map view
         self.mapView.map = map
         
-        //hide the authoring view
-        self.toggleAuthoringView()
+        //hide the create view
+        self.toggleCreateView()
     }
     
     //MARK: - SaveAsVCDelegate

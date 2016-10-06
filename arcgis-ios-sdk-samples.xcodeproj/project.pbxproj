@@ -156,9 +156,9 @@
 		3EC39C491C9B515D003F6459 /* FeatureLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */; };
 		3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ECCFE381BD0401A00CE256D /* LayerStatus.storyboard */; };
 		3ECCFE3C1BD0401A00CE256D /* LayerStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */; };
-		3ED028571B8E3A8500ACA70D /* AuthoringMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028021B8E3A8400ACA70D /* AuthoringMap.storyboard */; };
-		3ED028581B8E3A8500ACA70D /* AuthoringMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028031B8E3A8400ACA70D /* AuthoringMapViewController.swift */; };
-		3ED028591B8E3A8500ACA70D /* AuthoringOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028041B8E3A8400ACA70D /* AuthoringOptionsViewController.swift */; };
+		3ED028571B8E3A8500ACA70D /* CreateSaveMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028021B8E3A8400ACA70D /* CreateSaveMap.storyboard */; };
+		3ED028581B8E3A8500ACA70D /* CreateSaveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028031B8E3A8400ACA70D /* CreateSaveMapViewController.swift */; };
+		3ED028591B8E3A8500ACA70D /* CreateOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028041B8E3A8400ACA70D /* CreateOptionsViewController.swift */; };
 		3ED0285F1B8E3A8500ACA70D /* SaveAsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0280A1B8E3A8400ACA70D /* SaveAsViewController.swift */; };
 		3ED028621B8E3A8500ACA70D /* SwitchBasemap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED0280E1B8E3A8400ACA70D /* SwitchBasemap.storyboard */; };
 		3ED028631B8E3A8500ACA70D /* SwitchBasemapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0280F1B8E3A8400ACA70D /* SwitchBasemapViewController.swift */; };
@@ -245,8 +245,8 @@
 		3ED029851B8E571700ACA70D /* CustomContextSheet.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028191B8E3A8400ACA70D /* CustomContextSheet.swift */; };
 		3ED029861B8E571700ACA70D /* DisplayLocationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED0281B1B8E3A8400ACA70D /* DisplayLocationViewController.swift */; };
 		3ED029871B8E571700ACA70D /* MapViewScreenshotViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028551B8E3A8500ACA70D /* MapViewScreenshotViewController.swift */; };
-		3ED029881B8E571700ACA70D /* AuthoringMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028031B8E3A8400ACA70D /* AuthoringMapViewController.swift */; };
-		3ED029891B8E571700ACA70D /* AuthoringOptionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028041B8E3A8400ACA70D /* AuthoringOptionsViewController.swift */; };
+		3ED029881B8E571700ACA70D /* CreateSaveMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028031B8E3A8400ACA70D /* CreateSaveMapViewController.swift */; };
+		3ED029891B8E571700ACA70D /* CreateOptionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028041B8E3A8400ACA70D /* CreateOptionsViewController.swift */; };
 		3ED0298A1B8E571700ACA70D /* SaveAsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED0280A1B8E3A8400ACA70D /* SaveAsViewController.swift */; };
 		3ED0298B1B8E571700ACA70D /* TLUsingURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028A61B8E3A9800ACA70D /* TLUsingURLViewController.swift */; };
 		3ED0298C1B8E571700ACA70D /* MILUsingURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028A21B8E3A9800ACA70D /* MILUsingURLViewController.swift */; };
@@ -378,8 +378,8 @@
 				3ED029851B8E571700ACA70D /* CustomContextSheet.swift in CopyFiles */,
 				3ED029861B8E571700ACA70D /* DisplayLocationViewController.swift in CopyFiles */,
 				3ED029871B8E571700ACA70D /* MapViewScreenshotViewController.swift in CopyFiles */,
-				3ED029881B8E571700ACA70D /* AuthoringMapViewController.swift in CopyFiles */,
-				3ED029891B8E571700ACA70D /* AuthoringOptionsViewController.swift in CopyFiles */,
+				3ED029881B8E571700ACA70D /* CreateSaveMapViewController.swift in CopyFiles */,
+				3ED029891B8E571700ACA70D /* CreateOptionsViewController.swift in CopyFiles */,
 				3ED0298A1B8E571700ACA70D /* SaveAsViewController.swift in CopyFiles */,
 				3ED0298B1B8E571700ACA70D /* TLUsingURLViewController.swift in CopyFiles */,
 				3ED0298C1B8E571700ACA70D /* MILUsingURLViewController.swift in CopyFiles */,
@@ -527,10 +527,10 @@
 		3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OfflineEditing.storyboard; path = "Edit data/Offline edit and sync/OfflineEditing.storyboard"; sourceTree = "<group>"; };
 		3ECCFE381BD0401A00CE256D /* LayerStatus.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LayerStatus.storyboard; sourceTree = "<group>"; };
 		3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerStatusViewController.swift; sourceTree = "<group>"; };
-		3ED028021B8E3A8400ACA70D /* AuthoringMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AuthoringMap.storyboard; sourceTree = "<group>"; };
-		3ED028031B8E3A8400ACA70D /* AuthoringMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthoringMapViewController.swift; sourceTree = "<group>"; };
-		3ED028041B8E3A8400ACA70D /* AuthoringOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthoringOptionsViewController.swift; sourceTree = "<group>"; };
-		3ED0280A1B8E3A8400ACA70D /* SaveAsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveAsViewController.swift; sourceTree = "<group>"; };
+		3ED028021B8E3A8400ACA70D /* CreateSaveMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CreateSaveMap.storyboard; path = "../Create and save a map/CreateSaveMap.storyboard"; sourceTree = "<group>"; };
+		3ED028031B8E3A8400ACA70D /* CreateSaveMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateSaveMapViewController.swift; path = "../Create and save a map/CreateSaveMapViewController.swift"; sourceTree = "<group>"; };
+		3ED028041B8E3A8400ACA70D /* CreateOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateOptionsViewController.swift; path = "../Create and save a map/CreateOptionsViewController.swift"; sourceTree = "<group>"; };
+		3ED0280A1B8E3A8400ACA70D /* SaveAsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SaveAsViewController.swift; path = "../Create and save a map/SaveAsViewController.swift"; sourceTree = "<group>"; };
 		3ED0280E1B8E3A8400ACA70D /* SwitchBasemap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SwitchBasemap.storyboard; sourceTree = "<group>"; };
 		3ED0280F1B8E3A8400ACA70D /* SwitchBasemapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchBasemapViewController.swift; sourceTree = "<group>"; };
 		3ED028111B8E3A8400ACA70D /* GriffithParkJson.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GriffithParkJson.txt; sourceTree = "<group>"; };
@@ -1280,7 +1280,7 @@
 				3ED0284D1B8E3A8500ACA70D /* Show magnifier */,
 				3ED028181B8E3A8400ACA70D /* Display device location */,
 				3ED028521B8E3A8500ACA70D /* Take screenshot */,
-				3ED028011B8E3A8400ACA70D /* Authoring a map */,
+				3ED028011B8E3A8400ACA70D /* Create and save a map */,
 				3E6C77141CCFC33100E89873 /* Identify layers */,
 				3EFCE1AF1CEFD5B900E02F67 /* Open mobile map (map package) */,
 				3EFCE1BE1CF36FFC00E02F67 /* Mobile map (search and route) */,
@@ -1288,15 +1288,15 @@
 			name = Maps;
 			sourceTree = "<group>";
 		};
-		3ED028011B8E3A8400ACA70D /* Authoring a map */ = {
+		3ED028011B8E3A8400ACA70D /* Create and save a map */ = {
 			isa = PBXGroup;
 			children = (
-				3ED028021B8E3A8400ACA70D /* AuthoringMap.storyboard */,
-				3ED028031B8E3A8400ACA70D /* AuthoringMapViewController.swift */,
-				3ED028041B8E3A8400ACA70D /* AuthoringOptionsViewController.swift */,
+				3ED028021B8E3A8400ACA70D /* CreateSaveMap.storyboard */,
+				3ED028031B8E3A8400ACA70D /* CreateSaveMapViewController.swift */,
+				3ED028041B8E3A8400ACA70D /* CreateOptionsViewController.swift */,
 				3ED0280A1B8E3A8400ACA70D /* SaveAsViewController.swift */,
 			);
-			name = "Authoring a map";
+			name = "Create and save a map";
 			path = "Maps/Authoring a map";
 			sourceTree = "<group>";
 		};
@@ -1805,7 +1805,7 @@
 				3ED028B81B8E3A9800ACA70D /* SublayerVisibility.storyboard in Resources */,
 				3ED028781B8E3A8500ACA70D /* ManageMapLayers.storyboard in Resources */,
 				3ED0294B1B8E3AB300ACA70D /* Sketch.storyboard in Resources */,
-				3ED028571B8E3A8500ACA70D /* AuthoringMap.storyboard in Resources */,
+				3ED028571B8E3A8500ACA70D /* CreateSaveMap.storyboard in Resources */,
 				3ED029411B8E3AB300ACA70D /* point.gif in Resources */,
 				3E4BF45A1C5BD77300D85919 /* OfflineGeocode.storyboard in Resources */,
 				3ED029401B8E3AB300ACA70D /* line.gif in Resources */,
@@ -1948,7 +1948,7 @@
 				3E71621F1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift in Sources */,
 				3EC39C3C1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift in Sources */,
 				3E2A68181B153CDE00A318AA /* SourceCodeBarButtonItem.swift in Sources */,
-				3ED028581B8E3A8500ACA70D /* AuthoringMapViewController.swift in Sources */,
+				3ED028581B8E3A8500ACA70D /* CreateSaveMapViewController.swift in Sources */,
 				3E8A25841D36B6E300D14F08 /* FeatureLayerGDBViewController.swift in Sources */,
 				3E4B05FD1B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				3ED029641B8E3ACD00ACA70D /* AttachmentsListViewController.swift in Sources */,
@@ -2002,7 +2002,7 @@
 				3ED028631B8E3A8500ACA70D /* SwitchBasemapViewController.swift in Sources */,
 				3EEA06141D21C44000E03774 /* SurfacePlacementsViewController.swift in Sources */,
 				3EAF09451D7108DC00F8538F /* ChangeMapViewBackgroundVC.swift in Sources */,
-				3ED028591B8E3A8500ACA70D /* AuthoringOptionsViewController.swift in Sources */,
+				3ED028591B8E3A8500ACA70D /* CreateOptionsViewController.swift in Sources */,
 				3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */,
 				3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */,
 				3EBA25421D2F106600AB0703 /* UniqueValueRendererViewController.swift in Sources */,

@@ -145,9 +145,9 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
-                    <string>Authoring a map</string>
+                    <string>Create and save a map</string>
                     <key>storyboardName</key>
-                    <string>AuthoringMap</string>
+                    <string>CreateSaveMap</string>
                     <key>descriptionText</key>
                     <string>With the new APIs you get to author a map on you mobile device. You can create a map by adding a basemap and one or more operational layers and save it to your portal</string>
                 </dict>

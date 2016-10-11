@@ -20,7 +20,7 @@ class FeatureLayersViewController: UIViewController, UITableViewDataSource, UITa
 
     @IBOutlet var tableView:UITableView!
     
-    var featureLayerInfos:[AGSArcGISFeatureLayerInfo]! {
+    var featureLayerInfos:[AGSIDInfo]! {
         didSet {
             self.tableView?.reloadData()
         }
@@ -48,10 +48,10 @@ class FeatureLayersViewController: UIViewController, UITableViewDataSource, UITa
         let cell = tableView.dequeueReusableCellWithIdentifier("FeatureLayerCell")!
         
         let layerInfo = self.featureLayerInfos[indexPath.row]
-        cell.textLabel?.text = layerInfo.serviceLayerName
+        cell.textLabel?.text = layerInfo.name
         
         //accessory view
-        if self.selectedLayerIds.contains(layerInfo.serviceLayerID) {
+        if self.selectedLayerIds.contains(layerInfo.ID) {
             cell.accessoryType = .Checkmark
         }
         else {
@@ -67,11 +67,11 @@ class FeatureLayersViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let layerInfo = self.featureLayerInfos[indexPath.row]
         
-        if let index = self.selectedLayerIds.indexOf(layerInfo.serviceLayerID) {
+        if let index = self.selectedLayerIds.indexOf(layerInfo.ID) {
             self.selectedLayerIds.removeAtIndex(index)
         }
         else {
-            self.selectedLayerIds.append(layerInfo.serviceLayerID)
+            self.selectedLayerIds.append(layerInfo.ID)
         }
         
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)

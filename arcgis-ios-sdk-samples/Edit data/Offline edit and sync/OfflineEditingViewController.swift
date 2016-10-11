@@ -82,7 +82,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         SVProgressHUD.showWithStatus("Loading", maskType: .Gradient)
-        self.mapView.identifyLayersAtScreenPoint(screenPoint, tolerance: 5, identifyReturns: .GeoElementsOnly, maximumResultsPerLayer: 10) { [weak self] (results: [AGSIdentifyLayerResult]?, error: NSError?) -> Void in
+        self.mapView.identifyLayersAtScreenPoint(screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResultsPerLayer: 10) { [weak self] (results: [AGSIdentifyLayerResult]?, error: NSError?) -> Void in
 
             if let error = error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription)
@@ -119,14 +119,14 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
                 guard let weakSelf = self else {
                     return
                 }
-                
-                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo.featureLayerInfos.enumerate().reverse() {
+                print(weakSelf.syncTask.featureServiceInfo.layerInfos)
+                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo.layerInfos.enumerate().reverse() {
                     
                     //For each layer in the serice, add a layer to the map
                     let layerURL = weakSelf.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))
                     let featureTable = AGSServiceFeatureTable(URL:layerURL)
                     let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                    featureLayer.name = layerInfo.serviceLayerName
+                    featureLayer.name = layerInfo.name
                     weakSelf.map.operationalLayers.addObject(featureLayer)
                 }
                 
@@ -242,7 +242,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     }
     
     private func disableSketchEditor() {
-        self.mapView.sketchEditor?.enabled = false
+        self.mapView.sketchEditor?.stop()
         self.mapView.sketchEditor?.clearGeometry()
         self.sketchToolbar.hidden = true
     }
@@ -300,7 +300,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
             //update to download button
             self.barButtonItem.title = "Download"
             
-            self.featureLayersVC?.featureLayerInfos = self.syncTask.featureServiceInfo.featureLayerInfos
+            self.featureLayersVC?.featureLayerInfos = self.syncTask.featureServiceInfo.layerInfos
         }
         else {
             //get selected layer ids
@@ -393,8 +393,8 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }
         
         var syncLayerOptions = [AGSSyncLayerOption]()
-        for layerInfo in self.syncTask.featureServiceInfo.featureLayerInfos {
-            let layerOption = AGSSyncLayerOption(layerID: layerInfo.serviceLayerID, syncDirection: .Bidirectional)
+        for layerInfo in self.syncTask.featureServiceInfo.layerInfos {
+            let layerOption = AGSSyncLayerOption(layerID: layerInfo.ID, syncDirection: .Bidirectional)
             syncLayerOptions.append(layerOption)
         }
         
@@ -430,17 +430,12 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     }
     
     //MARK: - AGSPopupsViewControllerDelegate
-    
-    func popupsViewController(popupsViewController: AGSPopupsViewController, wantsNewGeometryBuilderForPopup popup: AGSPopup) -> AGSGeometryBuilder {
-        //Return an empty mutable geometry of the type that our feature layer uses
-        return AGSGeometryBuilder(geometryType: popup.geoElement.geometry!.geometryType, spatialReference: self.map.spatialReference)
-    }
-    
+
     func popupsViewController(popupsViewController: AGSPopupsViewController, sketchEditorForPopup popup: AGSPopup) -> AGSSketchEditor {
-        return AGSSketchEditor(geometry: popup.geoElement.geometry!)
+        return AGSSketchEditor()
     }
     
-    func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryWithSketchEditor sketchEditor: AGSSketchEditor, forPopup popup: AGSPopup) {
+    func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryWithSketchEditor sketchEditor: AGSSketchEditor?, forPopup popup: AGSPopup) {
     
         //Dismiss the popup view controller
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -450,11 +445,11 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.mapView.sketchEditor = sketchEditor
         
         //Prepare the current view controller for sketch mode
-        self.mapView.sketchEditor?.enabled = true //activate the sketch layer
         self.mapView.callout.hidden = true
         
         //zoom to the existing feature's geometry
-        if let geometry = sketchEditor.geometry {
+        if let geometry = popup.geoElement.geometry {
+            self.mapView.sketchEditor?.startWithGeometry(geometry)
             self.mapView.setViewpointGeometry(geometry.extent, padding: 10, completion: nil)
         }
         

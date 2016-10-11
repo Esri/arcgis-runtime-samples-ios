@@ -68,13 +68,13 @@ class GenerateGeodatabaseViewController: UIViewController {
                     return
                 }
                 
-                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo.featureLayerInfos.enumerate().reverse() {
+                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo.layerInfos.enumerate().reverse() {
                     
                     //For each layer in the serice, add a layer to the map
                     let layerURL = weakSelf.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))
                     let featureTable = AGSServiceFeatureTable(URL:layerURL)
                     let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                    featureLayer.name = layerInfo.serviceLayerName
+                    featureLayer.name = layerInfo.name
                     featureLayer.opacity = 0.65
                     weakSelf.map.operationalLayers.addObject(featureLayer)
                 }

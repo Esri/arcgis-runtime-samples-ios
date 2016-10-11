@@ -22,7 +22,7 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
     private var map:AGSMap!
     private var featureTable:AGSServiceFeatureTable!
     private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancellable!
+    private var lastQuery:AGSCancelable!
     private var selectedFeatures:[AGSFeature]!
     private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     

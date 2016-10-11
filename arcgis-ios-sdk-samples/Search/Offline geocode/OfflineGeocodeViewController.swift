@@ -25,7 +25,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
     private var geocodeParameters:AGSGeocodeParameters!
     private var reverseGeocodeParameters:AGSReverseGeocodeParameters!
     private var graphicsOverlay:AGSGraphicsOverlay!
-    private var locatorTaskOperation:AGSCancellable!
+    private var locatorTaskOperation:AGSCancelable!
     private var magnifierOffset:CGPoint!
     private var longPressedAndMoving = false
     
@@ -206,7 +206,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.mapView.callout.dismiss()
         
         //get the graphics at the tap location
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, identifyReturns: .GeoElementsOnly, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult?, error: NSError?) -> Void in
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult?, error: NSError?) -> Void in
 
             if let error = error {
                 self.showAlert(error.localizedDescription)

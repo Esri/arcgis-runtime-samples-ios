@@ -32,8 +32,8 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     private var reverseGeocodeParameters:AGSReverseGeocodeParameters!
     
-    private var locatorTaskCancellable:AGSCancellable!
-    private var routeTaskCancellable:AGSCancellable!
+    private var locatorTaskCancelable:AGSCancelable!
+    private var routeTaskCancelable:AGSCancelable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,7 +109,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         //if yes, then show callout with geocoding
         //else add a graphic and route if more than one graphic
         
-        self.mapView.identifyGraphicsOverlay(self.markerGraphicsOverlay, screenPoint: screenPoint, tolerance: 5, identifyReturns: .GeoElementsOnly) { [weak self] (result:AGSIdentifyGraphicsOverlayResult?, error:NSError?) in
+        self.mapView.identifyGraphicsOverlay(self.markerGraphicsOverlay, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false) { [weak self] (result:AGSIdentifyGraphicsOverlayResult?, error:NSError?) in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
             }
@@ -147,11 +147,11 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         }
         
         //cancel previous request if any
-        if self.locatorTaskCancellable != nil {
-            self.locatorTaskCancellable.cancel()
+        if self.locatorTaskCancelable != nil {
+            self.locatorTaskCancelable.cancel()
         }
         
-        self.locatorTaskCancellable = self.locatorTask?.reverseGeocodeWithLocation(point, parameters: self.reverseGeocodeParameters, completion: { [weak self](results:[AGSGeocodeResult]?, error:NSError?) in
+        self.locatorTaskCancelable = self.locatorTask?.reverseGeocodeWithLocation(point, parameters: self.reverseGeocodeParameters, completion: { [weak self](results:[AGSGeocodeResult]?, error:NSError?) in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
             }
@@ -205,8 +205,8 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         }
         
         //cancel previous request if any
-        if self.routeTaskCancellable != nil {
-            self.routeTaskCancellable.cancel()
+        if self.routeTaskCancelable != nil {
+            self.routeTaskCancelable.cancel()
         }
         
         //create stops for last and second last graphic
@@ -220,7 +220,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.routeParameters.setStops(stops)
         
         //route
-        self.routeTaskCancellable = self.routeTask.solveRouteWithParameters(self.routeParameters) {[weak self] (routeResult:AGSRouteResult?, error:NSError?) in
+        self.routeTaskCancelable = self.routeTask.solveRouteWithParameters(self.routeParameters) {[weak self] (routeResult:AGSRouteResult?, error:NSError?) in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
                 //remove the last marker

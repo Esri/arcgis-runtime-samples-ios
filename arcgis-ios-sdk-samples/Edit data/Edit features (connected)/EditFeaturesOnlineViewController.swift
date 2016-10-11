@@ -25,7 +25,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     private var featureLayer:AGSFeatureLayer!
     private var popupsVC:AGSPopupsViewController!
     
-    private var lastQuery:AGSCancellable!
+    private var lastQuery:AGSCancelable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +76,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
             lastQuery.cancel()
         }
 
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, identifyReturns: .GeoElementsOnly, maximumResults: 10) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 10) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }
@@ -103,10 +103,10 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, sketchEditorForPopup popup: AGSPopup) -> AGSSketchEditor {
         
-        return AGSSketchEditor(geometry: popup.geoElement.geometry!)
+        return AGSSketchEditor()
     }
     
-    func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryWithSketchEditor sketchEditor: AGSSketchEditor, forPopup popup: AGSPopup) {
+    func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryWithSketchEditor sketchEditor: AGSSketchEditor?, forPopup popup: AGSPopup) {
         
         //Dismiss the popup view controller
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -114,13 +114,14 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //Assign the sketch layer the geometry that is being passed to us for
         //the active popup's graphic. This is the starting point of the sketch
         self.mapView.sketchEditor = sketchEditor
-        sketchEditor.enabled = true //activate the sketch layer
         
         //Prepare the current view controller for sketch mode
         self.mapView.callout.hidden = true
         
+        //start sketch editing and
         //zoom to the existing feature's geometry
-        if let geometry = sketchEditor.geometry {
+        if let geometry = popup.geoElement.geometry {
+            self.mapView.sketchEditor?.startWithGeometry(geometry)
             self.mapView.setViewpointGeometry(geometry.extent, padding: 10, completion: nil)
         }
         
@@ -186,7 +187,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     }
     
     private func disableSketchEditor() {
-        self.mapView.sketchEditor?.enabled = false
+        self.mapView.sketchEditor?.stop()
         self.mapView.sketchEditor?.clearGeometry()
         self.sketchToolbar.hidden = true
     }

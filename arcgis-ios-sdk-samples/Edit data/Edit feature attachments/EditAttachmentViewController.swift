@@ -22,7 +22,7 @@ class EditAttachmentViewController: UIViewController, AGSGeoViewTouchDelegate, A
     private var map:AGSMap!
     private var featureTable:AGSServiceFeatureTable!
     private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancellable!
+    private var lastQuery:AGSCancelable!
     
     private var selectedFeature:AGSArcGISFeature!
     private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
@@ -62,7 +62,7 @@ class EditAttachmentViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.mapView.callout.dismiss()
         
         
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, identifyReturns: .GeoElementsOnly, maximumResults: 1, completion: { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 1, completion: { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }

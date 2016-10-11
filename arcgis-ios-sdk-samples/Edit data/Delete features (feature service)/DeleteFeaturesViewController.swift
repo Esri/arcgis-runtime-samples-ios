@@ -21,7 +21,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     private var featureTable:AGSServiceFeatureTable!
     private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancellable!
+    private var lastQuery:AGSCancelable!
     private var selectedFeature:AGSFeature!
     
     override func viewDidLoad() {
@@ -96,7 +96,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         //hide the callout
         self.mapView.callout.dismiss()
         
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, identifyReturns: .GeoElementsOnly, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
             }

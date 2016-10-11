@@ -21,7 +21,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     private var featureTable:AGSServiceFeatureTable!
     private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancellable!
+    private var lastQuery:AGSCancelable!
     
     override func viewDidLoad() {
         super.viewDidLoad()

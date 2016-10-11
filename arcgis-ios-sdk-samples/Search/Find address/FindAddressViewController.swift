@@ -127,7 +127,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         self.mapView.callout.dismiss()
         
         //identify graphics at the tapped location
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, identifyReturns: .GeoElementsOnly, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult?, error: NSError?) -> Void in
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult?, error: NSError?) -> Void in
             if let error = error {
                 self.showAlert(error.localizedDescription)
             }

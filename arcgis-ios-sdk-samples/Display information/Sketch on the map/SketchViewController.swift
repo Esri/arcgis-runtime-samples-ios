@@ -35,10 +35,10 @@ class SketchViewController: UIViewController {
         
         self.map = AGSMap(basemap: AGSBasemap.lightGrayCanvasBasemap())
         
-        self.sketchEditor = AGSSketchEditor(geometryType: .Polyline, spatialReference: AGSSpatialReference.webMercator())
+        self.sketchEditor = AGSSketchEditor()
         self.mapView.sketchEditor =  self.sketchEditor
         
-        self.sketchEditor.enabled = true
+        self.sketchEditor.startWithGeometryType(.Polyline)
         
         self.mapView.map = self.map
         self.mapView.magnifierEnabled = true
@@ -66,18 +66,17 @@ class SketchViewController: UIViewController {
     @IBAction func geometryValueChanged(segmentedControl:UISegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0://point
-            self.sketchEditor = AGSSketchEditor(geometryType: .Point, spatialReference: AGSSpatialReference.webMercator())
+            self.sketchEditor.startWithGeometryType(.Point)
             
         case 1://polyline
-            self.sketchEditor = AGSSketchEditor(geometryType: .Polyline, spatialReference: AGSSpatialReference.webMercator())
+            self.sketchEditor.startWithGeometryType(.Polyline)
             
         case 2://polygon
-            self.sketchEditor = AGSSketchEditor(geometryType: .Polygon, spatialReference: AGSSpatialReference.webMercator())
+            self.sketchEditor.startWithGeometryType(.Polygon)
         default:
             break
         }
         self.mapView.sketchEditor = self.sketchEditor
-        self.sketchEditor.enabled = true
     }
     
     @IBAction func undo() {

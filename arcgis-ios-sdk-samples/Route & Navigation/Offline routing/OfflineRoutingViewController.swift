@@ -31,7 +31,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     private var routeGraphicsOverlay = AGSGraphicsOverlay()
     private var longPressedGraphic:AGSGraphic!
     private var longPressedRouteGraphic:AGSGraphic!
-    private var routeTaskOperation:AGSCancellable!
+    private var routeTaskOperation:AGSCancelable!
     
     private var totalDistance:Double = 0 {
         didSet {

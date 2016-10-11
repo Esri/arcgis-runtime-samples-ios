@@ -28,7 +28,6 @@
 		3E39F6D21B9790A9000DEC6C /* EditFeaturesOnline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E39F6CF1B9790A9000DEC6C /* EditFeaturesOnline.storyboard */; };
 		3E39F6D31B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39F6D01B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift */; };
 		3E39F6D41B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */; };
-		3E39F6D51B979135000DEC6C /* EditFeaturesOnlineViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E39F6D01B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift */; };
 		3E39F6D61B979135000DEC6C /* FeatureTemplatePickerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */; };
 		3E3B2C1F1BBCA37F00A99C5E /* ContentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B2C1E1BBCA37F00A99C5E /* ContentCollectionViewController.swift */; };
 		3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B2C211BBCADDB00A99C5E /* ContentTableCell.swift */; };
@@ -152,7 +151,6 @@
 		3EC39C431C9B4872003F6459 /* OfflineEditing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */; };
 		3EC39C461C9B515D003F6459 /* ExportTilesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C311C9B0DF6003F6459 /* ExportTilesViewController.swift */; };
 		3EC39C471C9B515D003F6459 /* GenerateGeodatabaseViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C3B1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift */; };
-		3EC39C481C9B515D003F6459 /* OfflineEditingViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */; };
 		3EC39C491C9B515D003F6459 /* FeatureLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */; };
 		3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ECCFE381BD0401A00CE256D /* LayerStatus.storyboard */; };
 		3ECCFE3C1BD0401A00CE256D /* LayerStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */; };
@@ -261,13 +259,11 @@
 		3ED029951B8E571700ACA70D /* OverrideRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028BE1B8E3AA500ACA70D /* OverrideRendererViewController.swift */; };
 		3ED029961B8E571700ACA70D /* GORenderersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028FF1B8E3AB300ACA70D /* GORenderersViewController.swift */; };
 		3ED029971B8E571700ACA70D /* GOIdentifyViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029041B8E3AB300ACA70D /* GOIdentifyViewController.swift */; };
-		3ED029981B8E571700ACA70D /* SketchViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029271B8E3AB300ACA70D /* SketchViewController.swift */; };
 		3ED029991B8E571700ACA70D /* CalloutViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED0290A1B8E3AB300ACA70D /* CalloutViewController.swift */; };
 		3ED0299A1B8E571700ACA70D /* MILLegendTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029111B8E3AB300ACA70D /* MILLegendTableViewController.swift */; };
 		3ED0299B1B8E571700ACA70D /* MILShowLegendViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029131B8E3AB300ACA70D /* MILShowLegendViewController.swift */; };
 		3ED0299C1B8E571700ACA70D /* EAOptionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029531B8E3ACD00ACA70D /* EAOptionsViewController.swift */; };
 		3ED0299D1B8E571700ACA70D /* EditAttributesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029551B8E3ACD00ACA70D /* EditAttributesViewController.swift */; };
-		3ED0299E1B8E571700ACA70D /* EditGeometryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED0295D1B8E3ACD00ACA70D /* EditGeometryViewController.swift */; };
 		3ED0299F1B8E571700ACA70D /* AttachmentsListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED0294E1B8E3ACD00ACA70D /* AttachmentsListViewController.swift */; };
 		3ED029A01B8E571700ACA70D /* EditAttachmentViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029501B8E3ACD00ACA70D /* EditAttachmentViewController.swift */; };
 		3ED5D36F1C75985C0091D621 /* FindRouteViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */; };
@@ -340,7 +336,6 @@
 				3EE8B9591CA0C020003AA705 /* VectorTileLayerViewController.swift in CopyFiles */,
 				3EC39C461C9B515D003F6459 /* ExportTilesViewController.swift in CopyFiles */,
 				3EC39C471C9B515D003F6459 /* GenerateGeodatabaseViewController.swift in CopyFiles */,
-				3EC39C481C9B515D003F6459 /* OfflineEditingViewController.swift in CopyFiles */,
 				3EC39C491C9B515D003F6459 /* FeatureLayersViewController.swift in CopyFiles */,
 				3EC39C221C9A643E003F6459 /* RouteAroundBarriersViewController.swift in CopyFiles */,
 				3EC39C231C9A643E003F6459 /* DirectionsListViewController.swift in CopyFiles */,
@@ -358,7 +353,6 @@
 				3E7162361BA21932008DE398 /* GraphicsWithSymbolsViewController.swift in CopyFiles */,
 				3E41DD7A1B9F836600DA11CC /* AddFeaturesViewController.swift in CopyFiles */,
 				3E41DD7B1B9F836600DA11CC /* DeleteFeaturesViewController.swift in CopyFiles */,
-				3E39F6D51B979135000DEC6C /* EditFeaturesOnlineViewController.swift in CopyFiles */,
 				3E39F6D61B979135000DEC6C /* FeatureTemplatePickerViewController.swift in CopyFiles */,
 				3E5849011B91256300AB3CE9 /* BookmarksListViewController.swift in CopyFiles */,
 				3E5849021B91256300AB3CE9 /* BookmarksViewController.swift in CopyFiles */,
@@ -394,13 +388,11 @@
 				3ED029951B8E571700ACA70D /* OverrideRendererViewController.swift in CopyFiles */,
 				3ED029961B8E571700ACA70D /* GORenderersViewController.swift in CopyFiles */,
 				3ED029971B8E571700ACA70D /* GOIdentifyViewController.swift in CopyFiles */,
-				3ED029981B8E571700ACA70D /* SketchViewController.swift in CopyFiles */,
 				3ED029991B8E571700ACA70D /* CalloutViewController.swift in CopyFiles */,
 				3ED0299A1B8E571700ACA70D /* MILLegendTableViewController.swift in CopyFiles */,
 				3ED0299B1B8E571700ACA70D /* MILShowLegendViewController.swift in CopyFiles */,
 				3ED0299C1B8E571700ACA70D /* EAOptionsViewController.swift in CopyFiles */,
 				3ED0299D1B8E571700ACA70D /* EditAttributesViewController.swift in CopyFiles */,
-				3ED0299E1B8E571700ACA70D /* EditGeometryViewController.swift in CopyFiles */,
 				3ED0299F1B8E571700ACA70D /* AttachmentsListViewController.swift in CopyFiles */,
 				3ED029A01B8E571700ACA70D /* EditAttachmentViewController.swift in CopyFiles */,
 			);

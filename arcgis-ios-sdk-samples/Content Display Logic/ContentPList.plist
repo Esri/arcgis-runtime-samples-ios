@@ -572,6 +572,21 @@
         </dict>
         <dict>
             <key>displayName</key>
+            <string>Cloud &amp; Portal</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>List users in group</string>
+                    <key>storyboardName</key>
+                    <string>ListUsersInGroup</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows how to get information on the users in a group</string>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
             <string>3D</string>
             <key>children</key>
             <array>

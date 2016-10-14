@@ -572,6 +572,29 @@
         </dict>
         <dict>
             <key>displayName</key>
+            <string>Cloud &amp; Portal</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>List AGOL basemaps</string>
+                    <key>storyboardName</key>
+                    <string>ListAGOLBasemaps</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows how to fetch basemaps from ArcGIS online without login and highlights the default basemap</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Org basemap picker</string>
+                    <key>storyboardName</key>
+                    <string>OrgBasemapPicker</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows how to fetch basemaps from an organization portal with or without login.</string>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
             <string>3D</string>
             <key>children</key>
             <array>

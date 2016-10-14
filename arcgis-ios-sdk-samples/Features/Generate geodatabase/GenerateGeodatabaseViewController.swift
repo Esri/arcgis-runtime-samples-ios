@@ -68,7 +68,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                     return
                 }
                 
-                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo.layerInfos.enumerate().reverse() {
+                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo!.layerInfos.enumerate().reverse() {
                     
                     //For each layer in the serice, add a layer to the map
                     let layerURL = weakSelf.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))

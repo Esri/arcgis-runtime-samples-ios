@@ -119,8 +119,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
                 guard let weakSelf = self else {
                     return
                 }
-                print(weakSelf.syncTask.featureServiceInfo.layerInfos)
-                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo.layerInfos.enumerate().reverse() {
+                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo!.layerInfos.enumerate().reverse() {
                     
                     //For each layer in the serice, add a layer to the map
                     let layerURL = weakSelf.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))
@@ -300,7 +299,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
             //update to download button
             self.barButtonItem.title = "Download"
             
-            self.featureLayersVC?.featureLayerInfos = self.syncTask.featureServiceInfo.layerInfos
+            self.featureLayersVC?.featureLayerInfos = self.syncTask.featureServiceInfo!.layerInfos
         }
         else {
             //get selected layer ids
@@ -393,7 +392,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }
         
         var syncLayerOptions = [AGSSyncLayerOption]()
-        for layerInfo in self.syncTask.featureServiceInfo.layerInfos {
+        for layerInfo in self.syncTask.featureServiceInfo!.layerInfos {
             let layerOption = AGSSyncLayerOption(layerID: layerInfo.ID, syncDirection: .Bidirectional)
             syncLayerOptions.append(layerOption)
         }

@@ -14,7 +14,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "ContentCollectionCell"
+private let reuseIdentifier = "CategoryCell"
 
 class ContentCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, CustomSearchHeaderViewDelegate {
 
@@ -124,14 +124,21 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CategoryCell
+        
+        let node = self.nodesArray[indexPath.item]
         
         //mask to bounds
         cell.layer.masksToBounds = false
         
-        //set label
-        let label = cell.viewWithTag(11) as! UILabel
-        label.text = self.nodesArray[indexPath.item].displayName
+        //name
+        cell.nameLabel.text = node.displayName.uppercaseString
+        
+        //icon
+        let image = UIImage(named: "\(node.displayName)_icon")
+        cell.iconImageView.image = image
+        
+        //background image
         
         //cell shadow
         cell.layer.shadowColor = UIColor.lightGrayColor().CGColor

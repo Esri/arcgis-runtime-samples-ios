@@ -8,6 +8,7 @@ Tap on the `Edit renderer` button in the toolbar to change the settings for the 
 
 ![](image1.png)
 ![](image2.png)
+![](image3.png)
 
 
 ##How it works

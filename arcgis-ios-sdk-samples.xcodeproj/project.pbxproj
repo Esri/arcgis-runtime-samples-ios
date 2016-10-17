@@ -114,6 +114,45 @@
 		3E8D54FB1D53E3F000E628D9 /* ScenePropertiesExpressions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8D54F91D53E3F000E628D9 /* ScenePropertiesExpressions.storyboard */; };
 		3E8D54FC1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8D54FA1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift */; };
 		3E8D54FD1D53FCD500E628D9 /* ScenePropertiesExpressionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8D54FA1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift */; };
+		3EABC78F1DB1772000C161C6 /* RGBRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7891DB1772000C161C6 /* RGBRenderer.storyboard */; };
+		3EABC7901DB1772000C161C6 /* RGBRenderer3InputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC78A1DB1772000C161C6 /* RGBRenderer3InputCell.swift */; };
+		3EABC7911DB1772000C161C6 /* RGBRendererInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC78B1DB1772000C161C6 /* RGBRendererInputCell.swift */; };
+		3EABC7921DB1772000C161C6 /* RGBRendererSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC78C1DB1772000C161C6 /* RGBRendererSettingsVC.swift */; };
+		3EABC7931DB1772000C161C6 /* RGBRendererTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC78D1DB1772000C161C6 /* RGBRendererTypeCell.swift */; };
+		3EABC7941DB1772000C161C6 /* RGBRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC78E1DB1772000C161C6 /* RGBRendererViewController.swift */; };
+		3EABC7A01DB1793000C161C6 /* StretchRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC79B1DB1793000C161C6 /* StretchRenderer.storyboard */; };
+		3EABC7A11DB1793000C161C6 /* StretchRendererInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC79C1DB1793000C161C6 /* StretchRendererInputCell.swift */; };
+		3EABC7A21DB1793000C161C6 /* StretchRendererSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC79D1DB1793000C161C6 /* StretchRendererSettingsVC.swift */; };
+		3EABC7A31DB1793000C161C6 /* StretchRendererTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC79E1DB1793000C161C6 /* StretchRendererTypeCell.swift */; };
+		3EABC7A41DB1793000C161C6 /* StretchRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC79F1DB1793000C161C6 /* StretchRendererViewController.swift */; };
+		3EABC7A81DB179BC00C161C6 /* HorizontalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC7A61DB179BC00C161C6 /* HorizontalPicker.swift */; };
+		3EABC7A91DB179BC00C161C6 /* HorizontalPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7A71DB179BC00C161C6 /* HorizontalPicker.xib */; };
+		3EABC7AE1DB17B2C00C161C6 /* Shasta.tfw in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AA1DB17B2C00C161C6 /* Shasta.tfw */; };
+		3EABC7AF1DB17B2C00C161C6 /* Shasta.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AB1DB17B2C00C161C6 /* Shasta.tif */; };
+		3EABC7B01DB17B2C00C161C6 /* Shasta.tif.aux.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AC1DB17B2C00C161C6 /* Shasta.tif.aux.xml */; };
+		3EABC7B11DB17B2C00C161C6 /* Shasta.tif.ovr in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AD1DB17B2C00C161C6 /* Shasta.tif.ovr */; };
+		3EABC7B41DB181DD00C161C6 /* ShastaBW.tfw in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7B21DB181DD00C161C6 /* ShastaBW.tfw */; };
+		3EABC7B51DB181DD00C161C6 /* ShastaBW.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7B31DB181DD00C161C6 /* ShastaBW.tif */; };
+		3EABC7B81DB183E600C161C6 /* ShastaBW.tif.aux.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7B61DB183E600C161C6 /* ShastaBW.tif.aux.xml */; };
+		3EABC7B91DB183E600C161C6 /* ShastaBW.tif.ovr in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7B71DB183E600C161C6 /* ShastaBW.tif.ovr */; };
+		3EABC7C11DB191BC00C161C6 /* Shasta_Elevation.tfw in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7BD1DB191BC00C161C6 /* Shasta_Elevation.tfw */; };
+		3EABC7C21DB191BC00C161C6 /* Shasta_Elevation.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7BE1DB191BC00C161C6 /* Shasta_Elevation.tif */; };
+		3EABC7C31DB191BC00C161C6 /* Shasta_Elevation.tif.aux.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7BF1DB191BC00C161C6 /* Shasta_Elevation.tif.aux.xml */; };
+		3EABC7C41DB191BC00C161C6 /* Shasta_Elevation.tif.ovr in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7C01DB191BC00C161C6 /* Shasta_Elevation.tif.ovr */; };
+		3EABC7C91DB1947500C161C6 /* BlendRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7C61DB1947500C161C6 /* BlendRenderer.storyboard */; };
+		3EABC7CA1DB1947500C161C6 /* BlendRendererSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC7C71DB1947500C161C6 /* BlendRendererSettingsVC.swift */; };
+		3EABC7CB1DB1947500C161C6 /* BlendRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC7C81DB1947500C161C6 /* BlendRendererViewController.swift */; };
+		3EABC7CC1DB197BF00C161C6 /* BlendRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC7C81DB1947500C161C6 /* BlendRendererViewController.swift */; };
+		3EABC7CD1DB197BF00C161C6 /* BlendRendererSettingsVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC7C71DB1947500C161C6 /* BlendRendererSettingsVC.swift */; };
+		3EABC7CE1DB197BF00C161C6 /* RGBRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC78E1DB1772000C161C6 /* RGBRendererViewController.swift */; };
+		3EABC7CF1DB197BF00C161C6 /* RGBRendererSettingsVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC78C1DB1772000C161C6 /* RGBRendererSettingsVC.swift */; };
+		3EABC7D01DB197BF00C161C6 /* RGBRendererTypeCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC78D1DB1772000C161C6 /* RGBRendererTypeCell.swift */; };
+		3EABC7D11DB197BF00C161C6 /* RGBRenderer3InputCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC78A1DB1772000C161C6 /* RGBRenderer3InputCell.swift */; };
+		3EABC7D21DB197BF00C161C6 /* RGBRendererInputCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC78B1DB1772000C161C6 /* RGBRendererInputCell.swift */; };
+		3EABC7D31DB197BF00C161C6 /* StretchRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC79F1DB1793000C161C6 /* StretchRendererViewController.swift */; };
+		3EABC7D41DB197BF00C161C6 /* StretchRendererSettingsVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC79D1DB1793000C161C6 /* StretchRendererSettingsVC.swift */; };
+		3EABC7D51DB197BF00C161C6 /* StretchRendererTypeCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC79E1DB1793000C161C6 /* StretchRendererTypeCell.swift */; };
+		3EABC7D61DB197BF00C161C6 /* StretchRendererInputCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC79C1DB1793000C161C6 /* StretchRendererInputCell.swift */; };
 		3EAF09451D7108DC00F8538F /* ChangeMapViewBackgroundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAF09441D7108DC00F8538F /* ChangeMapViewBackgroundVC.swift */; };
 		3EAF09471D71093D00F8538F /* GridSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAF09461D71093D00F8538F /* GridSettingsViewController.swift */; };
 		3EAF09491D710AAF00F8538F /* ChangeMapViewBackground.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EAF09481D710AAF00F8538F /* ChangeMapViewBackground.storyboard */; };
@@ -310,6 +349,17 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3EABC7CC1DB197BF00C161C6 /* BlendRendererViewController.swift in CopyFiles */,
+				3EABC7CD1DB197BF00C161C6 /* BlendRendererSettingsVC.swift in CopyFiles */,
+				3EABC7CE1DB197BF00C161C6 /* RGBRendererViewController.swift in CopyFiles */,
+				3EABC7CF1DB197BF00C161C6 /* RGBRendererSettingsVC.swift in CopyFiles */,
+				3EABC7D01DB197BF00C161C6 /* RGBRendererTypeCell.swift in CopyFiles */,
+				3EABC7D11DB197BF00C161C6 /* RGBRenderer3InputCell.swift in CopyFiles */,
+				3EABC7D21DB197BF00C161C6 /* RGBRendererInputCell.swift in CopyFiles */,
+				3EABC7D31DB197BF00C161C6 /* StretchRendererViewController.swift in CopyFiles */,
+				3EABC7D41DB197BF00C161C6 /* StretchRendererSettingsVC.swift in CopyFiles */,
+				3EABC7D51DB197BF00C161C6 /* StretchRendererTypeCell.swift in CopyFiles */,
+				3EABC7D61DB197BF00C161C6 /* StretchRendererInputCell.swift in CopyFiles */,
 				3E81C1BE1D8A19E400470AA4 /* VectorTileCustomStyleVC.swift in CopyFiles */,
 				3E81C1BF1D8A19E400470AA4 /* VectorStylesViewController.swift in CopyFiles */,
 				3EAF094A1D710BAB00F8538F /* ChangeMapViewBackgroundVC.swift in CopyFiles */,
@@ -491,6 +541,34 @@
 		3E8D54F91D53E3F000E628D9 /* ScenePropertiesExpressions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScenePropertiesExpressions.storyboard; sourceTree = "<group>"; };
 		3E8D54FA1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenePropertiesExpressionsViewController.swift; sourceTree = "<group>"; };
 		3EA34D591B38C3B3003DC0E8 /* Samples-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Samples-Bridging-Header.h"; path = "Content Display Logic/Samples-Bridging-Header.h"; sourceTree = "<group>"; };
+		3EABC7891DB1772000C161C6 /* RGBRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RGBRenderer.storyboard; sourceTree = "<group>"; };
+		3EABC78A1DB1772000C161C6 /* RGBRenderer3InputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBRenderer3InputCell.swift; sourceTree = "<group>"; };
+		3EABC78B1DB1772000C161C6 /* RGBRendererInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBRendererInputCell.swift; sourceTree = "<group>"; };
+		3EABC78C1DB1772000C161C6 /* RGBRendererSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBRendererSettingsVC.swift; sourceTree = "<group>"; };
+		3EABC78D1DB1772000C161C6 /* RGBRendererTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBRendererTypeCell.swift; sourceTree = "<group>"; };
+		3EABC78E1DB1772000C161C6 /* RGBRendererViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBRendererViewController.swift; sourceTree = "<group>"; };
+		3EABC79B1DB1793000C161C6 /* StretchRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StretchRenderer.storyboard; sourceTree = "<group>"; };
+		3EABC79C1DB1793000C161C6 /* StretchRendererInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchRendererInputCell.swift; sourceTree = "<group>"; };
+		3EABC79D1DB1793000C161C6 /* StretchRendererSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchRendererSettingsVC.swift; sourceTree = "<group>"; };
+		3EABC79E1DB1793000C161C6 /* StretchRendererTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchRendererTypeCell.swift; sourceTree = "<group>"; };
+		3EABC79F1DB1793000C161C6 /* StretchRendererViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchRendererViewController.swift; sourceTree = "<group>"; };
+		3EABC7A61DB179BC00C161C6 /* HorizontalPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalPicker.swift; sourceTree = "<group>"; };
+		3EABC7A71DB179BC00C161C6 /* HorizontalPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorizontalPicker.xib; sourceTree = "<group>"; };
+		3EABC7AA1DB17B2C00C161C6 /* Shasta.tfw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Shasta.tfw; sourceTree = "<group>"; };
+		3EABC7AB1DB17B2C00C161C6 /* Shasta.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Shasta.tif; sourceTree = "<group>"; };
+		3EABC7AC1DB17B2C00C161C6 /* Shasta.tif.aux.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Shasta.tif.aux.xml; sourceTree = "<group>"; };
+		3EABC7AD1DB17B2C00C161C6 /* Shasta.tif.ovr */ = {isa = PBXFileReference; lastKnownFileType = file; path = Shasta.tif.ovr; sourceTree = "<group>"; };
+		3EABC7B21DB181DD00C161C6 /* ShastaBW.tfw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShastaBW.tfw; sourceTree = "<group>"; };
+		3EABC7B31DB181DD00C161C6 /* ShastaBW.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ShastaBW.tif; sourceTree = "<group>"; };
+		3EABC7B61DB183E600C161C6 /* ShastaBW.tif.aux.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ShastaBW.tif.aux.xml; sourceTree = "<group>"; };
+		3EABC7B71DB183E600C161C6 /* ShastaBW.tif.ovr */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShastaBW.tif.ovr; sourceTree = "<group>"; };
+		3EABC7BD1DB191BC00C161C6 /* Shasta_Elevation.tfw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Shasta_Elevation.tfw; sourceTree = "<group>"; };
+		3EABC7BE1DB191BC00C161C6 /* Shasta_Elevation.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Shasta_Elevation.tif; sourceTree = "<group>"; };
+		3EABC7BF1DB191BC00C161C6 /* Shasta_Elevation.tif.aux.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Shasta_Elevation.tif.aux.xml; sourceTree = "<group>"; };
+		3EABC7C01DB191BC00C161C6 /* Shasta_Elevation.tif.ovr */ = {isa = PBXFileReference; lastKnownFileType = file; path = Shasta_Elevation.tif.ovr; sourceTree = "<group>"; };
+		3EABC7C61DB1947500C161C6 /* BlendRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BlendRenderer.storyboard; path = "Layers/Blend renderer/BlendRenderer.storyboard"; sourceTree = "<group>"; };
+		3EABC7C71DB1947500C161C6 /* BlendRendererSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlendRendererSettingsVC.swift; path = "Layers/Blend renderer/BlendRendererSettingsVC.swift"; sourceTree = "<group>"; };
+		3EABC7C81DB1947500C161C6 /* BlendRendererViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlendRendererViewController.swift; path = "Layers/Blend renderer/BlendRendererViewController.swift"; sourceTree = "<group>"; };
 		3EAF09441D7108DC00F8538F /* ChangeMapViewBackgroundVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeMapViewBackgroundVC.swift; path = "Maps/Change map view background/ChangeMapViewBackgroundVC.swift"; sourceTree = "<group>"; };
 		3EAF09461D71093D00F8538F /* GridSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridSettingsViewController.swift; path = "Maps/Change map view background/GridSettingsViewController.swift"; sourceTree = "<group>"; };
 		3EAF09481D710AAF00F8538F /* ChangeMapViewBackground.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ChangeMapViewBackground.storyboard; path = "Maps/Change map view background/ChangeMapViewBackground.storyboard"; sourceTree = "<group>"; };
@@ -789,6 +867,7 @@
 				3E4BF45D1C5BD84900D85919 /* Locator */,
 				3E4BF45B1C5BD7A900D85919 /* Tile packages */,
 				3E4B05E61B39EF250072E514 /* Libraries */,
+				3EABC7951DB1787600C161C6 /* Rasters */,
 			);
 			name = "Shared resources";
 			sourceTree = "<group>";
@@ -796,6 +875,7 @@
 		3E4B05E61B39EF250072E514 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				3EABC7A51DB179BC00C161C6 /* HorizontalPicker */,
 				3E4B05E71B39EF250072E514 /* SVProgressHUD */,
 				3E4B05EE1B39EF250072E514 /* TPKeyboardAvoiding */,
 			);
@@ -1069,6 +1149,96 @@
 			path = "3D/Scene properties expressions";
 			sourceTree = "<group>";
 		};
+		3EABC7881DB1772000C161C6 /* RGB renderer */ = {
+			isa = PBXGroup;
+			children = (
+				3EABC78E1DB1772000C161C6 /* RGBRendererViewController.swift */,
+				3EABC78C1DB1772000C161C6 /* RGBRendererSettingsVC.swift */,
+				3EABC7891DB1772000C161C6 /* RGBRenderer.storyboard */,
+				3EABC78D1DB1772000C161C6 /* RGBRendererTypeCell.swift */,
+				3EABC78A1DB1772000C161C6 /* RGBRenderer3InputCell.swift */,
+				3EABC78B1DB1772000C161C6 /* RGBRendererInputCell.swift */,
+			);
+			name = "RGB renderer";
+			path = "Layers/RGB renderer";
+			sourceTree = "<group>";
+		};
+		3EABC7951DB1787600C161C6 /* Rasters */ = {
+			isa = PBXGroup;
+			children = (
+				3EABC7BC1DB1919E00C161C6 /* Shasta_Elevation */,
+				3EABC7BB1DB1918600C161C6 /* Shasta */,
+				3EABC7BA1DB1917700C161C6 /* ShastaBW */,
+			);
+			name = Rasters;
+			path = "Shared resources/Rasters";
+			sourceTree = "<group>";
+		};
+		3EABC79A1DB1793000C161C6 /* Stretch renderer */ = {
+			isa = PBXGroup;
+			children = (
+				3EABC79F1DB1793000C161C6 /* StretchRendererViewController.swift */,
+				3EABC79D1DB1793000C161C6 /* StretchRendererSettingsVC.swift */,
+				3EABC79E1DB1793000C161C6 /* StretchRendererTypeCell.swift */,
+				3EABC79B1DB1793000C161C6 /* StretchRenderer.storyboard */,
+				3EABC79C1DB1793000C161C6 /* StretchRendererInputCell.swift */,
+			);
+			name = "Stretch renderer";
+			path = "Layers/Stretch renderer";
+			sourceTree = "<group>";
+		};
+		3EABC7A51DB179BC00C161C6 /* HorizontalPicker */ = {
+			isa = PBXGroup;
+			children = (
+				3EABC7A61DB179BC00C161C6 /* HorizontalPicker.swift */,
+				3EABC7A71DB179BC00C161C6 /* HorizontalPicker.xib */,
+			);
+			path = HorizontalPicker;
+			sourceTree = "<group>";
+		};
+		3EABC7BA1DB1917700C161C6 /* ShastaBW */ = {
+			isa = PBXGroup;
+			children = (
+				3EABC7B21DB181DD00C161C6 /* ShastaBW.tfw */,
+				3EABC7B31DB181DD00C161C6 /* ShastaBW.tif */,
+				3EABC7B61DB183E600C161C6 /* ShastaBW.tif.aux.xml */,
+				3EABC7B71DB183E600C161C6 /* ShastaBW.tif.ovr */,
+			);
+			name = ShastaBW;
+			sourceTree = "<group>";
+		};
+		3EABC7BB1DB1918600C161C6 /* Shasta */ = {
+			isa = PBXGroup;
+			children = (
+				3EABC7AA1DB17B2C00C161C6 /* Shasta.tfw */,
+				3EABC7AB1DB17B2C00C161C6 /* Shasta.tif */,
+				3EABC7AC1DB17B2C00C161C6 /* Shasta.tif.aux.xml */,
+				3EABC7AD1DB17B2C00C161C6 /* Shasta.tif.ovr */,
+			);
+			name = Shasta;
+			sourceTree = "<group>";
+		};
+		3EABC7BC1DB1919E00C161C6 /* Shasta_Elevation */ = {
+			isa = PBXGroup;
+			children = (
+				3EABC7BD1DB191BC00C161C6 /* Shasta_Elevation.tfw */,
+				3EABC7BE1DB191BC00C161C6 /* Shasta_Elevation.tif */,
+				3EABC7BF1DB191BC00C161C6 /* Shasta_Elevation.tif.aux.xml */,
+				3EABC7C01DB191BC00C161C6 /* Shasta_Elevation.tif.ovr */,
+			);
+			name = Shasta_Elevation;
+			sourceTree = "<group>";
+		};
+		3EABC7C51DB1941000C161C6 /* Blend renderer */ = {
+			isa = PBXGroup;
+			children = (
+				3EABC7C81DB1947500C161C6 /* BlendRendererViewController.swift */,
+				3EABC7C71DB1947500C161C6 /* BlendRendererSettingsVC.swift */,
+				3EABC7C61DB1947500C161C6 /* BlendRenderer.storyboard */,
+			);
+			name = "Blend renderer";
+			sourceTree = "<group>";
+		};
 		3EAF09431D71086E00F8538F /* Change map view background */ = {
 			isa = PBXGroup;
 			children = (
@@ -1248,6 +1418,9 @@
 				3ED028A71B8E3A9800ACA70D /* Change sublayer visibility */,
 				3EE8B9511CA08E16003AA705 /* ArcGIS vector tile layer (URL) */,
 				3E81C1B71D8A0C7400470AA4 /* ArcGIS vector tiled layer (custom style) */,
+				3EABC7C51DB1941000C161C6 /* Blend renderer */,
+				3EABC7881DB1772000C161C6 /* RGB renderer */,
+				3EABC79A1DB1793000C161C6 /* Stretch renderer */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -1800,6 +1973,7 @@
 				3ED028571B8E3A8500ACA70D /* CreateSaveMap.storyboard in Resources */,
 				3ED029411B8E3AB300ACA70D /* point.gif in Resources */,
 				3E4BF45A1C5BD77300D85919 /* OfflineGeocode.storyboard in Resources */,
+				3EABC7C31DB191BC00C161C6 /* Shasta_Elevation.tif.aux.xml in Resources */,
 				3ED029401B8E3AB300ACA70D /* line.gif in Resources */,
 				3E6AE3EC1C6D11BA0026E59C /* OfflineRouting.storyboard in Resources */,
 				3E23A9EF1AFC28F6002E2214 /* Images.xcassets in Resources */,
@@ -1809,11 +1983,14 @@
 				3ED028F71B8E3AA500ACA70D /* ManualCache.storyboard in Resources */,
 				3ED028641B8E3A8500ACA70D /* GriffithParkJson.txt in Resources */,
 				3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */,
+				3EABC7B91DB183E600C161C6 /* ShastaBW.tif.ovr in Resources */,
 				3E6AE3F11C6D1B2E0026E59C /* san-diego in Resources */,
 				3E4BF44E1C5AF0AD00D85919 /* FindPlace.storyboard in Resources */,
+				3EABC7B11DB17B2C00C161C6 /* Shasta.tif.ovr in Resources */,
 				3E6AE3FA1C73B5480026E59C /* FindRoute.storyboard in Resources */,
 				3E0830BE1BC33681001AF9A7 /* SuggestionTableViewCell.xib in Resources */,
 				3E41DD741B9A241600DA11CC /* AddFeatures.storyboard in Resources */,
+				3EABC7C41DB191BC00C161C6 /* Shasta_Elevation.tif.ovr in Resources */,
 				3E4BF47C1C5BDDCA00D85919 /* san-diego-locator.loc in Resources */,
 				3E2A68121B14E04300A318AA /* ArcGIS.bundle in Resources */,
 				3E0257201BAB5D7700ACAC18 /* Default-568h@2x.png in Resources */,
@@ -1821,7 +1998,9 @@
 				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
 				3ED028AF1B8E3A9800ACA70D /* MILUsingURL.storyboard in Resources */,
 				3E8A258A1D36B89400D14F08 /* LA_Trails.geodatabase in Resources */,
+				3EABC7C11DB191BC00C161C6 /* Shasta_Elevation.tfw in Resources */,
 				3E676DF11B1D0B6000D4029A /* Camera Shutter.caf in Resources */,
+				3EABC7B81DB183E600C161C6 /* ShastaBW.tif.aux.xml in Resources */,
 				3ED029651B8E3ACD00ACA70D /* EditAttachment.storyboard in Resources */,
 				3EBA255D1D34025700AB0703 /* PictureMarkerSymbols.storyboard in Resources */,
 				3ED028F41B8E3AA500ACA70D /* OnInteractionCache.storyboard in Resources */,
@@ -1835,6 +2014,7 @@
 				3EEA060D1D21C44000E03774 /* SceneSymbols.storyboard in Resources */,
 				3E4BF47D1C5BDDCA00D85919 /* san-diego-locator.loc.xml in Resources */,
 				3E0D3AD71AFD481900FC60D6 /* Main.storyboard in Resources */,
+				3EABC7B41DB181DD00C161C6 /* ShastaBW.tfw in Resources */,
 				3EFCE1BA1CF369A800E02F67 /* Yellowstone.mmpk in Resources */,
 				3EEA060F1D21C44000E03774 /* DisplayScene.storyboard in Resources */,
 				3EE8B9531CA08E54003AA705 /* VectorTileLayer.storyboard in Resources */,
@@ -1848,8 +2028,11 @@
 				3ED029391B8E3AB300ACA70D /* MILShowLegend.storyboard in Resources */,
 				3E4BF47E1C5BDDCA00D85919 /* san-diego-locator.locb in Resources */,
 				3EEA06111D21C44000E03774 /* ExtrudeGraphics.storyboard in Resources */,
+				3EABC7B01DB17B2C00C161C6 /* Shasta.tif.aux.xml in Resources */,
 				3E4B05F81B39EF250072E514 /* SVProgressHUD.bundle in Resources */,
 				3E0830BC1BC31B69001AF9A7 /* CustomSearchHeaderView.xib in Resources */,
+				3EABC7C21DB191BC00C161C6 /* Shasta_Elevation.tif in Resources */,
+				3EABC78F1DB1772000C161C6 /* RGBRenderer.storyboard in Resources */,
 				3ED029281B8E3AB300ACA70D /* GORenderers.storyboard in Resources */,
 				3ED788901D26E2F700E5F311 /* LocalTiledLayer.storyboard in Resources */,
 				3EBA25401D2F104100AB0703 /* UniqueValueRenderer.storyboard in Resources */,
@@ -1860,6 +2043,7 @@
 				3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */,
 				3ED028EE1B8E3AA500ACA70D /* FLSelection.storyboard in Resources */,
 				3EAF09491D710AAF00F8538F /* ChangeMapViewBackground.storyboard in Resources */,
+				3EABC7AF1DB17B2C00C161C6 /* Shasta.tif in Resources */,
 				3E81C1BD1D8A189D00470AA4 /* VectorTileCustomStyle.storyboard in Resources */,
 				97DD84671B2B869300184B41 /* xcode.css in Resources */,
 				3ED0289C1B8E3A8500ACA70D /* MapViewScreenshot.storyboard in Resources */,
@@ -1868,12 +2052,17 @@
 				3EBA25761D34510F00AB0703 /* CreateGeometries.storyboard in Resources */,
 				3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */,
 				3ED029421B8E3AB300ACA70D /* polygon.gif in Resources */,
+				3EABC7A01DB1793000C161C6 /* StretchRenderer.storyboard in Resources */,
 				3EFCE1C61CF374C600E02F67 /* MobileMapSearchRoute.storyboard in Resources */,
 				3E54D2351CC6985200BB9904 /* GraphicDrawOrder.storyboard in Resources */,
 				3ED028911B8E3A8500ACA70D /* SetInitialMapLocation.storyboard in Resources */,
 				3E8A25831D36B6E300D14F08 /* FeatureLayerGDB.storyboard in Resources */,
+				3EABC7A91DB179BC00C161C6 /* HorizontalPicker.xib in Resources */,
 				3ED0288D1B8E3A8500ACA70D /* SetInitialMapArea.storyboard in Resources */,
 				3EC39C341C9B106D003F6459 /* ExportTiles.storyboard in Resources */,
+				3EABC7AE1DB17B2C00C161C6 /* Shasta.tfw in Resources */,
+				3EABC7B51DB181DD00C161C6 /* ShastaBW.tif in Resources */,
+				3EABC7C91DB1947500C161C6 /* BlendRenderer.storyboard in Resources */,
 				3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */,
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
 				3E6C771C1CCFC53B00E89873 /* IdentifyLayers.storyboard in Resources */,
@@ -1906,6 +2095,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EABC7921DB1772000C161C6 /* RGBRendererSettingsVC.swift in Sources */,
 				3E39F6D41B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift in Sources */,
 				3EC39C411C9B4857003F6459 /* FeatureLayersViewController.swift in Sources */,
 				3ED7888E1D26E28500E5F311 /* TilePackagesListViewController.swift in Sources */,
@@ -1922,6 +2112,7 @@
 				3ED028791B8E3A8500ACA70D /* ManageMapLayersViewController.swift in Sources */,
 				3E4B05FA1B39EF250072E514 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				3E4BF44C1C5AF04300D85919 /* FindPlaceViewController.swift in Sources */,
+				3EABC7A21DB1793000C161C6 /* StretchRendererSettingsVC.swift in Sources */,
 				3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */,
 				3E4BF4441C5AEA6500D85919 /* WorldAddressesViewController.swift in Sources */,
 				3ED028EF1B8E3AA500ACA70D /* FLSelectionViewController.swift in Sources */,
@@ -1929,6 +2120,7 @@
 				3E8526381B90D92700690EBD /* BookmarksListViewController.swift in Sources */,
 				3ED0286A1B8E3A8500ACA70D /* SetViewpointViewController.swift in Sources */,
 				3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */,
+				3EABC7911DB1772000C161C6 /* RGBRendererInputCell.swift in Sources */,
 				3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */,
 				3ED0289A1B8E3A8500ACA70D /* ShowMagnifierViewController.swift in Sources */,
 				3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */,
@@ -1939,15 +2131,18 @@
 				3ED028B71B8E3A9800ACA70D /* SublayersTableViewController.swift in Sources */,
 				3E71621F1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift in Sources */,
 				3EC39C3C1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift in Sources */,
+				3EABC7A31DB1793000C161C6 /* StretchRendererTypeCell.swift in Sources */,
 				3E2A68181B153CDE00A318AA /* SourceCodeBarButtonItem.swift in Sources */,
 				3ED028581B8E3A8500ACA70D /* CreateSaveMapViewController.swift in Sources */,
 				3E8A25841D36B6E300D14F08 /* FeatureLayerGDBViewController.swift in Sources */,
 				3E4B05FD1B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				3ED029641B8E3ACD00ACA70D /* AttachmentsListViewController.swift in Sources */,
 				3ED0285F1B8E3A8500ACA70D /* SaveAsViewController.swift in Sources */,
+				3EABC7CA1DB1947500C161C6 /* BlendRendererSettingsVC.swift in Sources */,
 				3E3B2C241BBD9CD300A99C5E /* SearchEngine.swift in Sources */,
 				3ED028B01B8E3A9800ACA70D /* MILUsingURLViewController.swift in Sources */,
 				3EBA25741D3450F600AB0703 /* CreateGeometriesViewController.swift in Sources */,
+				3EABC7A41DB1793000C161C6 /* StretchRendererViewController.swift in Sources */,
 				3ED0286D1B8E3A8500ACA70D /* DisplayLocationViewController.swift in Sources */,
 				3E8A25921D36B97A00D14F08 /* MapLoadedViewController.swift in Sources */,
 				3EEA06121D21C44000E03774 /* ExtrudeGraphicsViewController.swift in Sources */,
@@ -1966,6 +2161,8 @@
 				3ED028961B8E3A8500ACA70D /* SetMapsSRViewController.swift in Sources */,
 				3ED0288E1B8E3A8500ACA70D /* SetInitialMapAreaViewController.swift in Sources */,
 				3E81C1B91D8A0EF700470AA4 /* VectorTileCustomStyleVC.swift in Sources */,
+				3EABC7931DB1772000C161C6 /* RGBRendererTypeCell.swift in Sources */,
+				3EABC7CB1DB1947500C161C6 /* BlendRendererViewController.swift in Sources */,
 				3ED028F51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift in Sources */,
 				3EFCE1C41CF374C600E02F67 /* MapPackagesListViewController.swift in Sources */,
 				3EC39C3F1C9B47C2003F6459 /* OfflineEditingViewController.swift in Sources */,
@@ -1973,6 +2170,7 @@
 				3E4BF4561C5BD66C00D85919 /* OfflineGeocodeViewController.swift in Sources */,
 				3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */,
 				3E4B05FC1B39EF250072E514 /* TPKeyboardAvoidingTableView.m in Sources */,
+				3EABC7A81DB179BC00C161C6 /* HorizontalPicker.swift in Sources */,
 				3ED028F81B8E3AA500ACA70D /* ManualCacheViewController.swift in Sources */,
 				3ED029291B8E3AB300ACA70D /* GORenderersViewController.swift in Sources */,
 				3ED0286B1B8E3A8500ACA70D /* CustomContextSheet.swift in Sources */,
@@ -1990,6 +2188,7 @@
 				3E6AE3EE1C6D11FD0026E59C /* OfflineRoutingViewController.swift in Sources */,
 				3EBA25461D300C1D00AB0703 /* SimpleRendererViewController.swift in Sources */,
 				3EC39C321C9B0DF6003F6459 /* ExportTilesViewController.swift in Sources */,
+				3EABC7941DB1772000C161C6 /* RGBRendererViewController.swift in Sources */,
 				3EFCE1C31CF374C600E02F67 /* MapPackageCell.swift in Sources */,
 				3ED028631B8E3A8500ACA70D /* SwitchBasemapViewController.swift in Sources */,
 				3EEA06141D21C44000E03774 /* SurfacePlacementsViewController.swift in Sources */,
@@ -1999,7 +2198,9 @@
 				3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */,
 				3EBA25421D2F106600AB0703 /* UniqueValueRendererViewController.swift in Sources */,
 				3ED0296A1B8E3ACD00ACA70D /* EditAttributesViewController.swift in Sources */,
+				3EABC7A11DB1793000C161C6 /* StretchRendererInputCell.swift in Sources */,
 				3E6C77161CCFC4B200E89873 /* IdentifyLayersViewController.swift in Sources */,
+				3EABC7901DB1772000C161C6 /* RGBRenderer3InputCell.swift in Sources */,
 				3E4B05F71B39EF250072E514 /* SVIndefiniteAnimatedView.m in Sources */,
 				3ED028741B8E3A8500ACA70D /* MapViewDrawStatusViewController.swift in Sources */,
 				3E4BF4581C5BD6C400D85919 /* SanDiegoAddressesViewController.swift in Sources */,

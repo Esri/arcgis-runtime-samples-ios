@@ -56,9 +56,9 @@ class SimpleRendererViewController: UIViewController {
         let plumeGeyserPoint = AGSPoint(x: -110.829381, y: 44.462735, spatialReference: AGSSpatialReference.WGS84())
         
         //create graphics
-        let oldFaithfulGraphic = AGSGraphic(geometry: oldFaithfulPoint)
-        let cascadeGeyserGraphic = AGSGraphic(geometry: cascadeGeyserPoint)
-        let plumeGeyserGraphic = AGSGraphic(geometry: plumeGeyserPoint)
+        let oldFaithfulGraphic = AGSGraphic(geometry: oldFaithfulPoint, symbol: nil, attributes: nil)
+        let cascadeGeyserGraphic = AGSGraphic(geometry: cascadeGeyserPoint, symbol: nil, attributes: nil)
+        let plumeGeyserGraphic = AGSGraphic(geometry: plumeGeyserPoint, symbol: nil, attributes: nil)
         
         //add the graphics to the graphics overlay
         self.graphicsOverlay.graphics.addObjectsFromArray([oldFaithfulGraphic, cascadeGeyserGraphic, plumeGeyserGraphic])

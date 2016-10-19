@@ -76,7 +76,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     
     private func graphicForPoint(point:AGSPoint) -> AGSGraphic {
-        let graphic = AGSGraphic(geometry: point, symbol: self.symbolForStop())
+        let graphic = AGSGraphic(geometry: point, symbol: self.symbolForStop(), attributes: nil)
         return graphic
     }
     
@@ -109,19 +109,19 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         //if yes, then show callout with geocoding
         //else add a graphic and route if more than one graphic
         
-        self.mapView.identifyGraphicsOverlay(self.markerGraphicsOverlay, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false) { [weak self] (result:AGSIdentifyGraphicsOverlayResult?, error:NSError?) in
-            if let error = error {
+        self.mapView.identifyGraphicsOverlay(self.markerGraphicsOverlay, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false) { [weak self] (result:AGSIdentifyGraphicsOverlayResult) in
+            if let error = result.error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
             }
             else {
-                if result!.graphics.count == 0 {
+                if result.graphics.count == 0 {
                     //add a graphic
                     let graphic = self!.graphicForPoint(mapPoint)
                     self?.markerGraphicsOverlay.graphics.addObject(graphic)
                     
                     if self?.routeTask != nil {
                         //label graphic until the composite symbol not available
-                        let labelGraphic = AGSGraphic(geometry: mapPoint, symbol: self?.labelSymbolForStop("\(self!.labelGraphicsOverlay.graphics.count+1)"))
+                        let labelGraphic = AGSGraphic(geometry: mapPoint, symbol: self?.labelSymbolForStop("\(self!.labelGraphicsOverlay.graphics.count+1)"), attributes: nil)
                         self!.labelGraphicsOverlay.graphics.addObject(labelGraphic)
                     }
                     
@@ -133,7 +133,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
                 }
                 else {
                     //reverse geocode
-                    self?.reverseGeocode(mapPoint, graphic: result!.graphics[0])
+                    self?.reverseGeocode(mapPoint, graphic: result.graphics[0])
                 }
             }
         }
@@ -229,7 +229,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
             }
             else {
                 if let route = routeResult?.routes[0] {
-                    let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self?.routeSymbol())
+                    let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self?.routeSymbol(), attributes: nil)
                     self?.routeGraphicsOverlay.graphics.addObject(routeGraphic)
                 }
             }

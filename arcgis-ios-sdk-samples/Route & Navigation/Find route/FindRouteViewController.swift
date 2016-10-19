@@ -70,8 +70,8 @@ class FindRouteViewController: UIViewController {
         self.stop1Geometry = AGSPoint(x: -13041171.537945, y: 3860988.271378, spatialReference: AGSSpatialReference(WKID: 3857))
         self.stop2Geometry = AGSPoint(x: -13041693.562570, y: 3856006.859684, spatialReference: AGSSpatialReference(WKID: 3857))
         
-        let startStopGraphic = AGSGraphic(geometry: self.stop1Geometry, symbol: self.stopSymbol("Origin", textColor: UIColor.blueColor()))
-        let endStopGraphic = AGSGraphic(geometry: self.stop2Geometry, symbol: self.stopSymbol("Destination", textColor: UIColor.redColor()))
+        let startStopGraphic = AGSGraphic(geometry: self.stop1Geometry, symbol: self.stopSymbol("Origin", textColor: UIColor.blueColor()), attributes: nil)
+        let endStopGraphic = AGSGraphic(geometry: self.stop2Geometry, symbol: self.stopSymbol("Destination", textColor: UIColor.redColor()), attributes: nil)
         
         self.stopGraphicsOverlay.graphics.addObjectsFromArray([startStopGraphic, endStopGraphic])
     }
@@ -138,7 +138,7 @@ class FindRouteViewController: UIViewController {
                 //also save a reference to the route object
                 //in order to access directions
                 self.generatedRoute = routeResult!.routes[0]
-                let routeGraphic = AGSGraphic(geometry: self.generatedRoute.routeGeometry, symbol: self.routeSymbol())
+                let routeGraphic = AGSGraphic(geometry: self.generatedRoute.routeGeometry, symbol: self.routeSymbol(), attributes: nil)
                 self.routeGraphicsOverlay.graphics.addObject(routeGraphic)
             }
         }

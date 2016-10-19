@@ -56,8 +56,6 @@ class DisplayLocationViewController: UIViewController, CustomContextSheetDelegat
                 self?.sheet.selectedIndex = 3
             case .CompassNavigation:
                 self?.sheet.selectedIndex = 4
-            default:
-                break
             }
         }
     }

@@ -42,7 +42,7 @@ class SetViewpointViewController: UIViewController {
         if let griffithParkGeometry = self.geometryFromTextFile("GriffithParkJson") {
             self.griffithParkGeometry = griffithParkGeometry as! AGSPolygon
             let griffithParkSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.Solid, color: UIColor(red: 0, green: 0.5, blue: 0, alpha: 0.7), outline: nil)
-            let griffithParkGraphic = AGSGraphic(geometry: griffithParkGeometry, symbol: griffithParkSymbol)
+            let griffithParkGraphic = AGSGraphic(geometry: griffithParkGeometry, symbol: griffithParkSymbol, attributes: nil)
             graphicsOverlay.graphics.addObject(griffithParkGraphic)
         }
         

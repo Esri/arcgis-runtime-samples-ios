@@ -74,25 +74,25 @@ class GraphicDrawOrderViewController: UIViewController {
         //blue marker
         var geometry = AGSPoint(x: x, y: y, spatialReference: AGSSpatialReference.webMercator())
         var symbol = AGSPictureMarkerSymbol(image: UIImage(named: "BlueMarker")!)
-        var graphic = AGSGraphic(geometry: geometry, symbol: symbol)
+        var graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
         self.graphics.append(graphic)
         
         //red marker
         geometry = AGSPoint(x: x+delta, y: y, spatialReference: AGSSpatialReference.webMercator())
         symbol = AGSPictureMarkerSymbol(image: UIImage(named: "RedMarker2")!)
-        graphic = AGSGraphic(geometry: geometry, symbol: symbol)
+        graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
         self.graphics.append(graphic)
         
         //green marker
         geometry = AGSPoint(x: x, y: y+delta, spatialReference: AGSSpatialReference.webMercator())
         symbol = AGSPictureMarkerSymbol(image: UIImage(named: "GreenMarker")!)
-        graphic = AGSGraphic(geometry: geometry, symbol: symbol)
+        graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
         self.graphics.append(graphic)
         
         //Violet marker
         geometry = AGSPoint(x: x+delta, y: y+delta, spatialReference: AGSSpatialReference.webMercator())
         symbol = AGSPictureMarkerSymbol(image: UIImage(named: "VioletMarker")!)
-        graphic = AGSGraphic(geometry: geometry, symbol: symbol)
+        graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
         self.graphics.append(graphic)
         
         //add the graphics to the overlay

@@ -76,12 +76,13 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
             lastQuery.cancel()
         }
 
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 10) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
-            if let error = error {
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 10) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
+            if let error = identifyLayerResult.error {
                 print(error)
             }
-            else if let geoElements = identifyLayerResult?.geoElements, let weakSelf = self {
+            else if let weakSelf = self {
                 var popups = [AGSPopup]()
+                let geoElements = identifyLayerResult.geoElements
                 
                 for geoElement in geoElements {
 
@@ -134,7 +135,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //disable the done button until any geometry changes
         self.doneBBI.enabled = false
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditFeaturesOnlineViewController.sketchChanged(_:)), name: AGSSketchEditorSketchDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditFeaturesOnlineViewController.sketchChanged(_:)), name: AGSSketchEditorGeometryDidChangeNotification, object: nil)
     }
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, didDeleteForPopup popup: AGSPopup) {

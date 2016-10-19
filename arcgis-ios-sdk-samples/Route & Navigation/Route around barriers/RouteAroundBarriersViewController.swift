@@ -128,7 +128,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             else {
                 SVProgressHUD.dismiss()
                 let route = routeResult!.routes[0]
-                let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self!.routeSymbol())
+                let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self!.routeSymbol(), attributes: nil)
                 self?.routeGraphicsOverlay.graphics.addObject(routeGraphic)
                 self?.generatedRoute = route
             }
@@ -163,7 +163,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             //create a graphic for stop and add to the graphics overlay
             let graphicsCount = self.stopGraphicsOverlay.graphics.count
             let symbol = self.stopSymbol(graphicsCount+1)
-            let graphic = AGSGraphic(geometry: normalizedPoint, symbol: symbol)
+            let graphic = AGSGraphic(geometry: normalizedPoint, symbol: symbol, attributes: nil)
             self.stopGraphicsOverlay.graphics.addObject(graphic)
             
             //enable route button
@@ -174,7 +174,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         else {
             let bufferedGeometry = AGSGeometryEngine.bufferGeometry(normalizedPoint, byDistance: 500)
             let symbol = self.barrierSymbol()
-            let graphic = AGSGraphic(geometry: bufferedGeometry, symbol: symbol)
+            let graphic = AGSGraphic(geometry: bufferedGeometry, symbol: symbol, attributes: nil)
             self.barrierGraphicsOverlay.graphics.addObject(graphic)
         }
     }
@@ -245,7 +245,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         self.directionsGraphicsOverlay.graphics.removeAllObjects()
         
         //show the maneuver geometry on the map view
-        let directionGraphic = AGSGraphic(geometry: directionManeuver.geometry!, symbol: self.directionSymbol())
+        let directionGraphic = AGSGraphic(geometry: directionManeuver.geometry!, symbol: self.directionSymbol(), attributes: nil)
         self.directionsGraphicsOverlay.graphics.addObject(directionGraphic)
         
         //zoom to the direction

@@ -42,10 +42,10 @@ class CreateGeometriesViewController: UIViewController {
         let fillSymbol = AGSSimpleFillSymbol(style: .Cross, color: UIColor.blueColor(), outline: nil)
         
         //add a graphic of point, multipoint, polyline and polygon
-        self.graphicsOverlay.graphics.addObject(AGSGraphic(geometry: self.createPoint(), symbol: markerSymbol))
-        self.graphicsOverlay.graphics.addObject(AGSGraphic(geometry: self.createMultipoint(), symbol: markerSymbol))
-        self.graphicsOverlay.graphics.addObject(AGSGraphic(geometry: self.createPolyline(), symbol: lineSymbol))
-        self.graphicsOverlay.graphics.addObject(AGSGraphic(geometry: self.createPolygon(), symbol: fillSymbol))
+        self.graphicsOverlay.graphics.addObject(AGSGraphic(geometry: self.createPoint(), symbol: markerSymbol, attributes: nil))
+        self.graphicsOverlay.graphics.addObject(AGSGraphic(geometry: self.createMultipoint(), symbol: markerSymbol, attributes: nil))
+        self.graphicsOverlay.graphics.addObject(AGSGraphic(geometry: self.createPolyline(), symbol: lineSymbol, attributes: nil))
+        self.graphicsOverlay.graphics.addObject(AGSGraphic(geometry: self.createPolygon(), symbol: fillSymbol, attributes: nil))
         
         //use the envelope to set the viewpoint of the map view
         self.mapView.setViewpointGeometry(self.createEnvelope(), padding: 100, completion: nil)

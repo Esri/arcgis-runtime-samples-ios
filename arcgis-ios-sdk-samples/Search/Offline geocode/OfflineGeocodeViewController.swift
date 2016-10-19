@@ -178,7 +178,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
         symbol.leaderOffsetY = markerImage.size.height/2
         symbol.offsetY = markerImage.size.height/2
-        let graphic = AGSGraphic(geometry: point, attributes: attributes, symbol: symbol)
+        let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: attributes)
         return graphic
     }
     
@@ -206,14 +206,14 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.mapView.callout.dismiss()
         
         //get the graphics at the tap location
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult?, error: NSError?) -> Void in
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult) -> Void in
 
-            if let error = error {
+            if let error = result.error {
                 self.showAlert(error.localizedDescription)
             }
-            else if let graphics = result?.graphics where graphics.count > 0 {
+            else if result.graphics.count > 0 {
                 //show the callout for the first graphic found
-                self.showCalloutForGraphic(graphics.first!, tapLocation: mapPoint, animated: true, offset: false)
+                self.showCalloutForGraphic(result.graphics.first!, tapLocation: mapPoint, animated: true, offset: false)
             }
         }
     }

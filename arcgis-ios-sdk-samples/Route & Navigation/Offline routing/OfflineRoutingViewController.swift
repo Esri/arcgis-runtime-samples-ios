@@ -95,7 +95,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     //also assigns the stop number
     private func graphicForLocation(point:AGSPoint) -> AGSGraphic {
         let symbol = AGSTextSymbol(text: "\(self.stopGraphicsOverlay.graphics.count)", color: UIColor.redColor(), size: 20, horizontalAlignment: AGSHorizontalAlignment.Center, verticalAlignment: AGSVerticalAlignment.Middle)
-        let graphic = AGSGraphic(geometry: point, symbol: symbol)
+        let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: nil)
         return graphic
     }
     
@@ -215,7 +215,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         //if a route is returned, create a graphic for it
         //and add to the route graphics overlay
         if let route = routes?[0] {
-            let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self.routeSymbol())
+            let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self.routeSymbol(), attributes: nil)
             //keep reference to the graphic in case of long press
             //to remove in case of cancel or move
             if isLongPressedResult {

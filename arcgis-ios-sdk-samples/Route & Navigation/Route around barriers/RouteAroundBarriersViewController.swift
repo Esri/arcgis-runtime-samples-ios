@@ -145,8 +145,17 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         return symbol
     }
     
-    func stopSymbol(stopNumber:Int) -> AGSTextSymbol {
-        return AGSTextSymbol(text: "\(stopNumber)", color: UIColor.redColor(), size: 20, horizontalAlignment: .Center, verticalAlignment: .Middle)
+    private func symbolForStopGraphic(index: Int) -> AGSSymbol {
+        let markerImage = UIImage(named: "BlueMarker")!
+        let markerSymbol = AGSPictureMarkerSymbol(image: markerImage)
+        markerSymbol.offsetY = markerImage.size.height/2
+        
+        let textSymbol = AGSTextSymbol(text: "\(index)", color: UIColor.whiteColor(), size: 20, horizontalAlignment: AGSHorizontalAlignment.Center, verticalAlignment: AGSVerticalAlignment.Middle)
+        textSymbol.offsetY = markerSymbol.offsetY
+        
+        let compositeSymbol = AGSCompositeSymbol(symbols: [markerSymbol, textSymbol])
+        
+        return compositeSymbol
     }
     
     func barrierSymbol() -> AGSSimpleFillSymbol {
@@ -162,7 +171,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         if segmentedControl.selectedSegmentIndex == 0 {
             //create a graphic for stop and add to the graphics overlay
             let graphicsCount = self.stopGraphicsOverlay.graphics.count
-            let symbol = self.stopSymbol(graphicsCount+1)
+            let symbol = self.symbolForStopGraphic(graphicsCount+1)
             let graphic = AGSGraphic(geometry: normalizedPoint, symbol: symbol, attributes: nil)
             self.stopGraphicsOverlay.graphics.addObject(graphic)
             

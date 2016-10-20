@@ -102,18 +102,13 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     
     //MARK: -  AGSPopupsContainerDelegate methods
     
-    func popupsViewController(popupsViewController: AGSPopupsViewController, sketchEditorForPopup popup: AGSPopup) -> AGSSketchEditor {
-        
-        return AGSSketchEditor()
-    }
-    
-    func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryWithSketchEditor sketchEditor: AGSSketchEditor?, forPopup popup: AGSPopup) {
+    func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryForPopup popup: AGSPopup) -> AGSSketchEditor? {
         
         //Dismiss the popup view controller
         self.dismissViewControllerAnimated(true, completion: nil)
     
-        //Assign the sketch layer the geometry that is being passed to us for
-        //the active popup's graphic. This is the starting point of the sketch
+        //Create a sketch editor and assign to map view
+        let sketchEditor = AGSSketchEditor()
         self.mapView.sketchEditor = sketchEditor
         
         //Prepare the current view controller for sketch mode
@@ -136,6 +131,8 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.doneBBI.enabled = false
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditFeaturesOnlineViewController.sketchChanged(_:)), name: AGSSketchEditorGeometryDidChangeNotification, object: nil)
+        
+        return sketchEditor
     }
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, didDeleteForPopup popup: AGSPopup) {

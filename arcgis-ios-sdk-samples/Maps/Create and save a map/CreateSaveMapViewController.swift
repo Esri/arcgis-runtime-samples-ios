@@ -179,7 +179,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
                 //also to cut on the size
                 let croppedImage:UIImage? = image?.croppedImage(CGSize(width: 200, height: 200))
                 
-                weakSelf.mapView.map?.saveAs(title, portal: weakSelf.portal!, tags: tags, folder: nil, itemDescription: itemDescription!, thumbnail: croppedImage, completion: { [weak self] (error) -> Void in
+                weakSelf.mapView.map?.saveAs(title, portal: weakSelf.portal!, tags: tags, folder: nil, itemDescription: itemDescription!, thumbnail: croppedImage, forceSaveToSupportedVersion: true, completion: { [weak self] (error) -> Void in
                     
                     //dismiss progress hud
                     SVProgressHUD.dismiss()

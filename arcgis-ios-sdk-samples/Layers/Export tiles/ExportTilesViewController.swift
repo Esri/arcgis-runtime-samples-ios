@@ -135,7 +135,7 @@ class ExportTilesViewController: UIViewController {
         let destinationPath = "\(path)/myTileCache.tpk"
         
         //get the job
-        self.job = self.exportTask.exportTileCacheJobWithParameters(params, downloadFilePath: destinationPath)
+        self.job = self.exportTask.exportTileCacheJobWithParameters(params, downloadFileURL: NSURL(string: destinationPath)!)
         //run the job
         self.job.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
             //show job status

@@ -41,7 +41,7 @@ class SketchViewController: UIViewController {
         self.sketchEditor.startWithGeometryType(.Polyline)
         
         self.mapView.map = self.map
-        self.mapView.magnifierEnabled = true
+        self.mapView.interactionOptions.magnifierEnabled = true
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SketchViewController.respondToGeomChanged), name: AGSSketchEditorGeometryDidChangeNotification, object: nil)
         

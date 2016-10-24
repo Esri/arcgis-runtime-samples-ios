@@ -337,8 +337,11 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
+        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+        let fullPath = "\(path)/\(dateFormatter.stringFromDate(NSDate())).geodatabase"
+            
         //create a generate job from the sync task
-        self.generateJob = self.syncTask.generateJobWithParameters(params, downloadFilePath: dateFormatter.stringFromDate(NSDate()))
+        self.generateJob = self.syncTask.generateJobWithParameters(params, downloadFileURL: NSURL(string: fullPath)!)
         
         //start the job
         self.generateJob.startWithStatusHandler({ (status: AGSJobStatus) -> Void in

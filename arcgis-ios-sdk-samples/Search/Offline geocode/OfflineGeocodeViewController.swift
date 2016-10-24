@@ -76,7 +76,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.mapView.setViewpointCenter(AGSPoint(x: -13042254.715252, y: 3857970.236806, spatialReference: AGSSpatialReference(WKID: 3857)), scale: 2e4, completion: nil)
         
         //enable magnifier for better experience while using tap n hold to add a location
-        self.mapView.magnifierEnabled = true
+        self.mapView.interactionOptions.magnifierEnabled = true
         
         //the total amount by which we will need to offset the callout along y-axis
         //to show it correctly centered on the pushpin's head in the magnifier
@@ -160,7 +160,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
                     //no result was found
                     //using print in log instead of alert to
                     //avoid breaking the flow
-                    print("No address found :: \(normalizedPoint)")
+                    print("No address found")
 
                     //dismiss the callout if already visible
                     self?.mapView.callout.dismiss()

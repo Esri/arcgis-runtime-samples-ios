@@ -337,8 +337,11 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
+        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+        let fullPath = "\(path)/\(dateFormatter.stringFromDate(NSDate())).geodatabase"
+            
         //create a generate job from the sync task
-        self.generateJob = self.syncTask.generateJobWithParameters(params, downloadFilePath: dateFormatter.stringFromDate(NSDate()))
+        self.generateJob = self.syncTask.generateJobWithParameters(params, downloadFileURL: NSURL(string: fullPath)!)
         
         //start the job
         self.generateJob.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
@@ -430,17 +433,13 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     //MARK: - AGSPopupsViewControllerDelegate
 
-    func popupsViewController(popupsViewController: AGSPopupsViewController, sketchEditorForPopup popup: AGSPopup) -> AGSSketchEditor {
-        return AGSSketchEditor()
-    }
-    
-    func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryWithSketchEditor sketchEditor: AGSSketchEditor?, forPopup popup: AGSPopup) {
-    
+    func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryForPopup popup: AGSPopup) -> AGSSketchEditor? {
+        
         //Dismiss the popup view controller
         self.dismissViewControllerAnimated(true, completion: nil)
         
-        //Assign the sketch layer the geometry that is being passed to us for
-        //the active popup's graphic. This is the starting point of the sketch
+        //Create sketch editor and assign to map view
+        let sketchEditor = AGSSketchEditor()
         self.mapView.sketchEditor = sketchEditor
         
         //Prepare the current view controller for sketch mode
@@ -463,7 +462,9 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         //disable the done button until any geometry changes
         self.doneBBI.enabled = false
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(OfflineEditingViewController.sketchChanged(_:)), name: AGSSketchEditorSketchDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(OfflineEditingViewController.sketchChanged(_:)), name: AGSSketchEditorGeometryDidChangeNotification, object: nil)
+        
+        return sketchEditor
     }
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, didDeleteForPopup popup: AGSPopup) {

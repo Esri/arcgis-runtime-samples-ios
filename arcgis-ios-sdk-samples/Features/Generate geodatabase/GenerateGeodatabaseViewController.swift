@@ -108,10 +108,12 @@ class GenerateGeodatabaseViewController: UIViewController {
                 //create a unique name for the geodatabase based on current timestamp
                 let dateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-                let gdbName = "\(dateFormatter.stringFromDate(NSDate())).geodatabase"
+                
+                let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+                let fullPath = "\(path)/\(dateFormatter.stringFromDate(NSDate())).geodatabase"
                 
                 //request a job to generate the geodatabase
-                weakSelf.generateJob = weakSelf.syncTask.generateJobWithParameters(params, downloadFilePath: gdbName)
+                weakSelf.generateJob = weakSelf.syncTask.generateJobWithParameters(params, downloadFileURL: NSURL(string: fullPath)!)
                 
                 //kick off the job
                 weakSelf.generateJob.startWithStatusHandler({ (status: AGSJobStatus) -> Void in

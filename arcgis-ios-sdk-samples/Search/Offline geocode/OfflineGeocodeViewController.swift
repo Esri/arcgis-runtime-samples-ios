@@ -76,7 +76,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.mapView.setViewpointCenter(AGSPoint(x: -13042254.715252, y: 3857970.236806, spatialReference: AGSSpatialReference(WKID: 3857)), scale: 2e4, completion: nil)
         
         //enable magnifier for better experience while using tap n hold to add a location
-        self.mapView.magnifierEnabled = true
+        self.mapView.interactionOptions.magnifierEnabled = true
         
         //the total amount by which we will need to offset the callout along y-axis
         //to show it correctly centered on the pushpin's head in the magnifier
@@ -160,7 +160,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
                     //no result was found
                     //using print in log instead of alert to
                     //avoid breaking the flow
-                    print("No address found :: \(normalizedPoint)")
+                    print("No address found")
 
                     //dismiss the callout if already visible
                     self?.mapView.callout.dismiss()
@@ -178,7 +178,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
         symbol.leaderOffsetY = markerImage.size.height/2
         symbol.offsetY = markerImage.size.height/2
-        let graphic = AGSGraphic(geometry: point, attributes: attributes, symbol: symbol)
+        let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: attributes)
         return graphic
     }
     
@@ -206,14 +206,14 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.mapView.callout.dismiss()
         
         //get the graphics at the tap location
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult?, error: NSError?) -> Void in
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult) -> Void in
 
-            if let error = error {
+            if let error = result.error {
                 self.showAlert(error.localizedDescription)
             }
-            else if let graphics = result?.graphics where graphics.count > 0 {
+            else if result.graphics.count > 0 {
                 //show the callout for the first graphic found
-                self.showCalloutForGraphic(graphics.first!, tapLocation: mapPoint, animated: true, offset: false)
+                self.showCalloutForGraphic(result.graphics.first!, tapLocation: mapPoint, animated: true, offset: false)
             }
         }
     }

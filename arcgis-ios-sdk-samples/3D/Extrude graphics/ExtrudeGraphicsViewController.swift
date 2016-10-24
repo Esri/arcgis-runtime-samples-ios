@@ -96,7 +96,7 @@ class ExtrudeGraphicsViewController: UIViewController {
         let color = UIColor(red: 1 - colorComponent, green: 0, blue: colorComponent, alpha: 1)
         let symbol = AGSSimpleFillSymbol(style: .Solid, color: color, outline: nil)
         
-        let graphic = AGSGraphic(geometry: polygon, symbol: symbol)
+        let graphic = AGSGraphic(geometry: polygon, symbol: symbol, attributes: nil)
         graphic.attributes.setValue(rand, forKey: "height")
         self.graphicsOverlay.graphics.addObject(graphic)
     }

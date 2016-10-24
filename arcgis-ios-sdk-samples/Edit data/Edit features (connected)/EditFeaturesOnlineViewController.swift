@@ -76,12 +76,13 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
             lastQuery.cancel()
         }
 
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 10) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
-            if let error = error {
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 10) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
+            if let error = identifyLayerResult.error {
                 print(error)
             }
-            else if let geoElements = identifyLayerResult?.geoElements, let weakSelf = self {
+            else if let weakSelf = self {
                 var popups = [AGSPopup]()
+                let geoElements = identifyLayerResult.geoElements
                 
                 for geoElement in geoElements {
 
@@ -101,18 +102,13 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     
     //MARK: -  AGSPopupsContainerDelegate methods
     
-    func popupsViewController(popupsViewController: AGSPopupsViewController, sketchEditorForPopup popup: AGSPopup) -> AGSSketchEditor {
-        
-        return AGSSketchEditor()
-    }
-    
-    func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryWithSketchEditor sketchEditor: AGSSketchEditor?, forPopup popup: AGSPopup) {
+    func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryForPopup popup: AGSPopup) -> AGSSketchEditor? {
         
         //Dismiss the popup view controller
         self.dismissViewControllerAnimated(true, completion: nil)
     
-        //Assign the sketch layer the geometry that is being passed to us for
-        //the active popup's graphic. This is the starting point of the sketch
+        //Create a sketch editor and assign to map view
+        let sketchEditor = AGSSketchEditor()
         self.mapView.sketchEditor = sketchEditor
         
         //Prepare the current view controller for sketch mode
@@ -134,7 +130,9 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //disable the done button until any geometry changes
         self.doneBBI.enabled = false
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditFeaturesOnlineViewController.sketchChanged(_:)), name: AGSSketchEditorSketchDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditFeaturesOnlineViewController.sketchChanged(_:)), name: AGSSketchEditorGeometryDidChangeNotification, object: nil)
+        
+        return sketchEditor
     }
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, didDeleteForPopup popup: AGSPopup) {

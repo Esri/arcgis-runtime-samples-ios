@@ -31,7 +31,7 @@ class ShowMagnifierViewController: UIViewController {
         self.mapView.map = self.map
         
         //enable magnifier
-        self.mapView.magnifierEnabled = true
+        self.mapView.interactionOptions.magnifierEnabled = true
         
         //zoom to custom viewpoint
         let viewpoint = AGSViewpoint(center: AGSPoint(x: -110.8258 , y: 32.1545089, spatialReference: AGSSpatialReference.WGS84()), scale: 2e4)

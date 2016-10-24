@@ -88,15 +88,28 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.setViewpointCenter(AGSPoint(x: -13042254.715252, y: 3857970.236806, spatialReference: AGSSpatialReference(WKID: 3857)), scale: 2e4, completion: nil)
         
         //enable magnifier for better experience while using tap n hold to add a stop
-        self.mapView.magnifierEnabled = true
+        self.mapView.interactionOptions.magnifierEnabled = true
     }
     
     //method returns a graphic for the specified location
     //also assigns the stop number
     private func graphicForLocation(point:AGSPoint) -> AGSGraphic {
-        let symbol = AGSTextSymbol(text: "\(self.stopGraphicsOverlay.graphics.count)", color: UIColor.redColor(), size: 20, horizontalAlignment: AGSHorizontalAlignment.Center, verticalAlignment: AGSVerticalAlignment.Middle)
-        let graphic = AGSGraphic(geometry: point, symbol: symbol)
+        let symbol = self.symbolForStopGraphic(self.stopGraphicsOverlay.graphics.count + 1)
+        let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: nil)
         return graphic
+    }
+    
+    private func symbolForStopGraphic(index: Int) -> AGSSymbol {
+        let markerImage = UIImage(named: "BlueMarker")!
+        let markerSymbol = AGSPictureMarkerSymbol(image: markerImage)
+        markerSymbol.offsetY = markerImage.size.height/2
+        
+        let textSymbol = AGSTextSymbol(text: "\(index)", color: UIColor.whiteColor(), size: 20, horizontalAlignment: AGSHorizontalAlignment.Center, verticalAlignment: AGSVerticalAlignment.Middle)
+        textSymbol.offsetY = markerSymbol.offsetY
+        
+        let compositeSymbol = AGSCompositeSymbol(symbols: [markerSymbol, textSymbol])
+        
+        return compositeSymbol
     }
     
     override func didReceiveMemoryWarning() {
@@ -189,7 +202,8 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         //solve for route
         self.routeTaskOperation = self.routeTask.solveRouteWithParameters(params) { [weak self] (routeResult:AGSRouteResult?, error:NSError?) -> Void in
-            if let error = error {
+            if let error = error where error.code != 3072 {
+                //3072 is `User canceled error`
                 print(error)
             }
             else {
@@ -215,7 +229,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         //if a route is returned, create a graphic for it
         //and add to the route graphics overlay
         if let route = routes?[0] {
-            let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self.routeSymbol())
+            let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self.routeSymbol(), attributes: nil)
             //keep reference to the graphic in case of long press
             //to remove in case of cancel or move
             if isLongPressedResult {

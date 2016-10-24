@@ -47,8 +47,10 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         //feature table
         let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
+    
         //feature layer
         self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        
         
         //add feature layer add to the operational layers
         self.map.operationalLayers.addObject(self.featureLayer)

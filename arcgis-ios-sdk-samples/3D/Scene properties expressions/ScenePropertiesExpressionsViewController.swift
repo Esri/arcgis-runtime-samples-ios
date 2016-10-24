@@ -58,7 +58,7 @@ class ScenePropertiesExpressionsViewController: UIViewController {
         coneSymbol.pitch = 90  //correct symbol's default pitch
         let conePoint = AGSPoint(x: 83.9, y: 28.404, z: 5000, spatialReference: AGSSpatialReference.WGS84())
         let coneAttributes = ["HEADING": 0, "PITCH": 0]
-        self.coneGraphic = AGSGraphic(geometry: conePoint, attributes: coneAttributes, symbol: coneSymbol)
+        self.coneGraphic = AGSGraphic(geometry: conePoint, symbol: coneSymbol, attributes: coneAttributes)
         graphicsOverlay.graphics.addObject(self.coneGraphic)
     }
 

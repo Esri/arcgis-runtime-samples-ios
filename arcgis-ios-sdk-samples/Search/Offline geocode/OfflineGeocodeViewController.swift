@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIPopoverPresentationControllerDelegate, SanDiegoAddressesVCDelegate {
+class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIAdaptivePresentationControllerDelegate, SanDiegoAddressesVCDelegate {
     
     @IBOutlet private var mapView:AGSMapView!
     @IBOutlet private var button:UIButton!
@@ -265,7 +265,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "AddressesListSegue" {
             let controller = segue.destinationViewController as! SanDiegoAddressesViewController
-            controller.popoverPresentationController?.delegate = self
+            controller.presentationController?.delegate = self
             controller.popoverPresentationController?.sourceView = self.view
             controller.popoverPresentationController?.sourceRect = self.searchBar.frame
             controller.preferredContentSize = CGSize(width: 300, height: 200)
@@ -273,9 +273,10 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         }
     }
     
-    //MARK: - UIPopoverPresentationControllerDelegate
+    //MARK: - UIAdaptivePresentationControllerDelegate
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        
         return UIModalPresentationStyle.None
     }
     

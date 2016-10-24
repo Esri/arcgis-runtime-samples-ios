@@ -19,16 +19,45 @@ class ContentTableCell: UITableViewCell {
     @IBOutlet var titleLabel:UILabel!
     @IBOutlet var detailLabel:UILabel!
     @IBOutlet var infoButton:UIButton!
+    @IBOutlet var parentView:UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        parentView.layer.borderColor = UIColor(white: 0.85, alpha: 1).CGColor
+        parentView.layer.borderWidth = 1
     }
 
+    override func setHighlighted(highlighted: Bool, animated: Bool) {
+        
+        if highlighted {
+            self.parentView.backgroundColor = UIColor.secondaryBlue()
+            self.titleLabel.textColor = UIColor.whiteColor()
+            self.detailLabel.textColor = UIColor.whiteColor()
+            self.infoButton.tintColor = UIColor.whiteColor()
+        }
+        else {
+            self.parentView.backgroundColor = UIColor.whiteColor()
+            self.titleLabel.textColor = UIColor.primaryTextColor()
+            self.detailLabel.textColor = UIColor.secondaryTextColor()
+            self.infoButton.tintColor = UIColor.secondaryBlue()
+        }
+    }
+    
     override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        if selected {
+            self.parentView.backgroundColor = UIColor.secondaryBlue()
+            self.titleLabel.textColor = UIColor.whiteColor()
+            self.detailLabel.textColor = UIColor.whiteColor()
+            self.infoButton.tintColor = UIColor.whiteColor()
+        }
+        else {
+            self.parentView.backgroundColor = UIColor.whiteColor()
+            self.titleLabel.textColor = UIColor.primaryTextColor()
+            self.detailLabel.textColor = UIColor.secondaryTextColor()
+            self.infoButton.tintColor = UIColor.secondaryBlue()
+        }
     }
-
 }

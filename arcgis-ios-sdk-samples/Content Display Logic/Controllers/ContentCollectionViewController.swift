@@ -139,11 +139,12 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         cell.iconImageView.image = image
         
         //background image
+        let bgImage = UIImage(named: "\(node.displayName)_bg")
+        cell.backgroundImageView.image = bgImage
         
         //cell shadow
-        cell.layer.shadowColor = UIColor.lightGrayColor().CGColor
-        cell.layer.shadowOffset = CGSize(width: 1, height: 1)
-        cell.layer.shadowOpacity = 0.5
+        cell.layer.cornerRadius = 5
+        cell.layer.masksToBounds = true
         
         return cell
     }

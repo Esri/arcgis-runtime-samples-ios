@@ -106,5 +106,13 @@ extension UIColor {
     class func backgroundGray() -> UIColor {
         return UIColor(red: 0.973, green: 0.973, blue: 0.973, alpha: 1)
     }
+    
+    class func primaryTextColor() -> UIColor {
+        return UIColor(red: 0.196, green: 0.196, blue: 0.196, alpha: 1)
+    }
+    
+    class func secondaryTextColor() -> UIColor {
+        return UIColor(red: 0.349, green: 0.349, blue: 0.349, alpha: 1)
+    }
 }
 

@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class MILShowLegendViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+class MILShowLegendViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
     
     @IBOutlet private weak var mapView:AGSMapView!
     @IBOutlet private weak var legendBBI:UIBarButtonItem!
@@ -71,15 +71,15 @@ class MILShowLegendViewController: UIViewController, UIPopoverPresentationContro
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "LegendTableSegue" {
             let controller = segue.destinationViewController as! MILLegendTableViewController
-            controller.popoverPresentationController?.delegate = self
+            controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             controller.operationalLayers = self.map.operationalLayers
         }
     }
     
-    //MARK: - UIPopoverPresentationControllerDelegate
+    //MARK: - UIAdaptivePresentationControllerDelegate
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.None
     }
 }

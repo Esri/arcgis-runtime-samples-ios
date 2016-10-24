@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIPopoverPresentationControllerDelegate {
+class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIAdaptivePresentationControllerDelegate {
     
     @IBOutlet private weak var mapView:AGSMapView!
     
@@ -128,7 +128,7 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIPopoverP
             //store a weak reference in order to update the table view when adding new bookmark
             self.bookmarksListVC = controller
             //popover presentation logic
-            controller.popoverPresentationController?.delegate = self
+            controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             //assign the bookmarks to be shown
             controller.bookmarks = self.map.bookmarks as AnyObject as! [AGSBookmark]
@@ -139,9 +139,9 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIPopoverP
         }
     }
     
-    //MARK: - UIPopoverPresentationControllerDelegate
+    //MARK: - UIAdaptivePresentationControllerDelegate
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         //for popover or non modal presentation
         return UIModalPresentationStyle.None
     }

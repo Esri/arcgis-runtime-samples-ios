@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIPopoverPresentationControllerDelegate, WorldAddressesVCDelegate {
+class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIAdaptivePresentationControllerDelegate, WorldAddressesVCDelegate {
     
     @IBOutlet private var mapView:AGSMapView!
     @IBOutlet private var button:UIButton!
@@ -175,7 +175,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "AddressesListSegue" {
             let controller = segue.destinationViewController as! WorldAddressesViewController
-            controller.popoverPresentationController?.delegate = self
+            controller.presentationController?.delegate = self
             controller.popoverPresentationController?.sourceView = self.view
             controller.popoverPresentationController?.sourceRect = self.searchBar.frame
             controller.preferredContentSize = CGSize(width: 300, height: 200)
@@ -183,9 +183,10 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         }
     }
     
-    //MARK: - UIPopoverPresentationControllerDelegate
+    //MARK: - UIAdaptivePresentationControllerDelegate
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+    
         return UIModalPresentationStyle.None
     }
     

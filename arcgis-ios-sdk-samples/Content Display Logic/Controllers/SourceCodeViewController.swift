@@ -14,7 +14,7 @@
 
 import UIKit
 
-class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIPopoverPresentationControllerDelegate {
+class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptivePresentationControllerDelegate {
     
     @IBOutlet private weak var webView:UIWebView!
     @IBOutlet private weak var toolbarTitleButton:UIBarButtonItem!
@@ -110,7 +110,7 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIPopoverPr
         if segue.identifier == "FilenamesPopoverSegue" {
             let controller = segue.destinationViewController as! ListViewController
             controller.list = self.filenames
-            controller.popoverPresentationController?.delegate = self
+            controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             
             controller.setSelectAction({ [weak self] (index:Int) -> Void in
@@ -124,9 +124,10 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIPopoverPr
         }
     }
     
-    //MARK: - UIPopoverPresentationControllerDelegate
+    //MARK: - UIAdaptivePresentationControllerDelegate
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        
         return UIModalPresentationStyle.None
     }
 }

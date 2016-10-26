@@ -71,8 +71,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     // MARK: - Appearance modification
     
     func modifyAppearance() {
-        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : UIFont(name: "Avenir-Heavy", size: 18)!]
-
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        UINavigationBar.appearance().barTintColor = UIColor.primaryBlue()
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        
+        UIToolbar.appearance().barTintColor = UIColor.backgroundGray()
+        UIToolbar.appearance().tintColor = UIColor.primaryBlue()
     }
 
     // MARK: - Split view
@@ -87,6 +91,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             }
         }
         return true
+    }
+}
+
+extension UIColor {
+    class func primaryBlue() -> UIColor {
+        return UIColor(red: 0, green: 0.475, blue: 0.757, alpha: 1)
+    }
+    
+    class func secondaryBlue() -> UIColor {
+        return UIColor(red: 0, green: 0.368, blue: 0.584, alpha: 1)
+    }
+    
+    class func backgroundGray() -> UIColor {
+        return UIColor(red: 0.973, green: 0.973, blue: 0.973, alpha: 1)
+    }
+    
+    class func primaryTextColor() -> UIColor {
+        return UIColor(red: 0.196, green: 0.196, blue: 0.196, alpha: 1)
+    }
+    
+    class func secondaryTextColor() -> UIColor {
+        return UIColor(red: 0.349, green: 0.349, blue: 0.349, alpha: 1)
     }
 }
 

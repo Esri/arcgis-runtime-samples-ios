@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelegate, UIPopoverPresentationControllerDelegate, DirectionsListVCDelegate {
+class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelegate, UIAdaptivePresentationControllerDelegate, DirectionsListVCDelegate {
     
     @IBOutlet var mapView:AGSMapView!
     @IBOutlet var segmentedControl:UISegmentedControl!
@@ -225,7 +225,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "RouteSettingsSegue" {
             let controller = segue.destinationViewController as! RouteParametersViewController
-            controller.popoverPresentationController?.delegate = self
+            controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 125)
             controller.routeParameters = self.routeParameters
         }
@@ -235,9 +235,10 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         }
     }
     
-    //MARk: - UIPopoverPresentationControllerDelegate
+    //MARk: - UIAdaptivePresentationControllerDelegate
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+    
         return .None
     }
     

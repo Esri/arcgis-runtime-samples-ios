@@ -134,6 +134,9 @@
 		3EBA25741D3450F600AB0703 /* CreateGeometriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBA25731D3450F600AB0703 /* CreateGeometriesViewController.swift */; };
 		3EBA25761D34510F00AB0703 /* CreateGeometries.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EBA25751D34510F00AB0703 /* CreateGeometries.storyboard */; };
 		3EBA25771D34672100AB0703 /* CreateGeometriesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EBA25731D3450F600AB0703 /* CreateGeometriesViewController.swift */; };
+		3EBAAD6B1DADB3CE00E8D038 /* GridSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EAF09461D71093D00F8538F /* GridSettingsViewController.swift */; };
+		3EBAAD6C1DADB3CE00E8D038 /* ListUsersInGroupVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ECB81971DADA81300686FEA /* ListUsersInGroupVC.swift */; };
+		3EBAAD6D1DADB3CE00E8D038 /* UserTableViewCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ECB81991DADA86D00686FEA /* UserTableViewCell.swift */; };
 		3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */; };
 		3EC39C1E1C9A59B9003F6459 /* DirectionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */; };
 		3EC39C1F1C9A59B9003F6459 /* RouteParametersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */; };
@@ -153,6 +156,9 @@
 		3EC39C461C9B515D003F6459 /* ExportTilesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C311C9B0DF6003F6459 /* ExportTilesViewController.swift */; };
 		3EC39C471C9B515D003F6459 /* GenerateGeodatabaseViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C3B1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift */; };
 		3EC39C491C9B515D003F6459 /* FeatureLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */; };
+		3ECB81981DADA81300686FEA /* ListUsersInGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECB81971DADA81300686FEA /* ListUsersInGroupVC.swift */; };
+		3ECB819A1DADA86D00686FEA /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECB81991DADA86D00686FEA /* UserTableViewCell.swift */; };
+		3ECB819C1DADA89600686FEA /* ListUsersInGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ECB819B1DADA89600686FEA /* ListUsersInGroup.storyboard */; };
 		3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ECCFE381BD0401A00CE256D /* LayerStatus.storyboard */; };
 		3ECCFE3C1BD0401A00CE256D /* LayerStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */; };
 		3ED028571B8E3A8500ACA70D /* CreateSaveMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028021B8E3A8400ACA70D /* CreateSaveMap.storyboard */; };
@@ -311,6 +317,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3EBAAD6B1DADB3CE00E8D038 /* GridSettingsViewController.swift in CopyFiles */,
+				3EBAAD6C1DADB3CE00E8D038 /* ListUsersInGroupVC.swift in CopyFiles */,
+				3EBAAD6D1DADB3CE00E8D038 /* UserTableViewCell.swift in CopyFiles */,
 				3E81C1BE1D8A19E400470AA4 /* VectorTileCustomStyleVC.swift in CopyFiles */,
 				3E81C1BF1D8A19E400470AA4 /* VectorStylesViewController.swift in CopyFiles */,
 				3EAF094A1D710BAB00F8538F /* ChangeMapViewBackgroundVC.swift in CopyFiles */,
@@ -519,6 +528,9 @@
 		3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineEditingViewController.swift; path = "Edit data/Offline edit and sync/OfflineEditingViewController.swift"; sourceTree = "<group>"; };
 		3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayersViewController.swift; path = "Edit data/Offline edit and sync/FeatureLayersViewController.swift"; sourceTree = "<group>"; };
 		3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OfflineEditing.storyboard; path = "Edit data/Offline edit and sync/OfflineEditing.storyboard"; sourceTree = "<group>"; };
+		3ECB81971DADA81300686FEA /* ListUsersInGroupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListUsersInGroupVC.swift; path = "Cloud & Portal/List users in group/ListUsersInGroupVC.swift"; sourceTree = "<group>"; };
+		3ECB81991DADA86D00686FEA /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTableViewCell.swift; path = "Cloud & Portal/List users in group/UserTableViewCell.swift"; sourceTree = "<group>"; };
+		3ECB819B1DADA89600686FEA /* ListUsersInGroup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ListUsersInGroup.storyboard; path = "Cloud & Portal/List users in group/ListUsersInGroup.storyboard"; sourceTree = "<group>"; };
 		3ECCFE381BD0401A00CE256D /* LayerStatus.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LayerStatus.storyboard; sourceTree = "<group>"; };
 		3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerStatusViewController.swift; sourceTree = "<group>"; };
 		3ED028021B8E3A8400ACA70D /* CreateSaveMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CreateSaveMap.storyboard; path = "../Create and save a map/CreateSaveMap.storyboard"; sourceTree = "<group>"; };
@@ -686,6 +698,7 @@
 				3ED027FC1B8E38F400ACA70D /* Edit data */,
 				3EBA25711D34509500AB0703 /* Geometry */,
 				3E6AE3E91C6D10DA0026E59C /* Route & Navigation */,
+				3ECB81951DADA75900686FEA /* Cloud & Portal */,
 				3EEA06001D21C3E800E03774 /* 3D */,
 				3E4B05E51B39EE920072E514 /* Shared resources */,
 				3E23AA071AFC2DE0002E2214 /* Content Display Logic */,
@@ -1180,6 +1193,24 @@
 				3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */,
 			);
 			name = "Offline edit and sync";
+			sourceTree = "<group>";
+		};
+		3ECB81951DADA75900686FEA /* Cloud & Portal */ = {
+			isa = PBXGroup;
+			children = (
+				3ECB81961DADA76D00686FEA /* List users in group */,
+			);
+			name = "Cloud & Portal";
+			sourceTree = "<group>";
+		};
+		3ECB81961DADA76D00686FEA /* List users in group */ = {
+			isa = PBXGroup;
+			children = (
+				3ECB81971DADA81300686FEA /* ListUsersInGroupVC.swift */,
+				3ECB81991DADA86D00686FEA /* UserTableViewCell.swift */,
+				3ECB819B1DADA89600686FEA /* ListUsersInGroup.storyboard */,
+			);
+			name = "List users in group";
 			sourceTree = "<group>";
 		};
 		3ECCFE371BD0401A00CE256D /* Display layer view state */ = {
@@ -1842,6 +1873,7 @@
 				3EEA060F1D21C44000E03774 /* DisplayScene.storyboard in Resources */,
 				3EE8B9531CA08E54003AA705 /* VectorTileLayer.storyboard in Resources */,
 				3ED029311B8E3AB300ACA70D /* Callout.storyboard in Resources */,
+				3ECB819C1DADA89600686FEA /* ListUsersInGroup.storyboard in Resources */,
 				3E4BF47F1C5BDDCA00D85919 /* san-diego-locator.lox in Resources */,
 				3ED029701B8E3ACD00ACA70D /* EditGeometry.storyboard in Resources */,
 				3E5849001B9123E900AB3CE9 /* FeatureLayerURL.storyboard in Resources */,
@@ -1970,6 +2002,7 @@
 				3ED028961B8E3A8500ACA70D /* SetMapsSRViewController.swift in Sources */,
 				3ED0288E1B8E3A8500ACA70D /* SetInitialMapAreaViewController.swift in Sources */,
 				3E81C1B91D8A0EF700470AA4 /* VectorTileCustomStyleVC.swift in Sources */,
+				3ECB81981DADA81300686FEA /* ListUsersInGroupVC.swift in Sources */,
 				3ED028F51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift in Sources */,
 				3EFCE1C41CF374C600E02F67 /* MapPackagesListViewController.swift in Sources */,
 				3EC39C3F1C9B47C2003F6459 /* OfflineEditingViewController.swift in Sources */,
@@ -2009,6 +2042,7 @@
 				3E4BF4581C5BD6C400D85919 /* SanDiegoAddressesViewController.swift in Sources */,
 				3ECCFE3C1BD0401A00CE256D /* LayerStatusViewController.swift in Sources */,
 				3EE692021B03D22500C167B8 /* Node.swift in Sources */,
+				3ECB819A1DADA86D00686FEA /* UserTableViewCell.swift in Sources */,
 				3ED028E51B8E3AA500ACA70D /* DefinitionExpressionViewController.swift in Sources */,
 				3E412B431D0B2FAD00349155 /* AppInfoViewController.swift in Sources */,
 				3E6AE3FB1C73B5480026E59C /* FindRouteViewController.swift in Sources */,

@@ -20,7 +20,7 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIAdaptive
     @IBOutlet private weak var mapView:AGSMapView!
     
     private var map:AGSMap!
-    private var alert:UIAlertView!
+    private var alertController:UIAlertController!
     
     private weak var bookmarksListVC:BookmarksListViewController!
     
@@ -88,10 +88,31 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIAdaptive
     //MARK: - Actions
     
     @IBAction private func addAction() {
-        //show an alert view with textfield to get the name for the bookmark
-        self.alert = UIAlertView(title: "", message: "Provide the bookmark name", delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "Done")
-        self.alert.alertViewStyle = UIAlertViewStyle.PlainTextInput
-        self.alert.show()
+        //show an alert controller with textfield to get the name for the bookmark
+        self.alertController = UIAlertController(title: "Provide the bookmark name", message: nil, preferredStyle: .Alert)
+        self.alertController.addTextFieldWithConfigurationHandler { (textField: UITextField) in
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let doneAction = UIAlertAction(title: "Done", style: .Default) { [weak self] (action: UIAlertAction) in
+            guard let weakSelf = self else {
+                return
+            }
+            //if the textfield is not empty then add a bookmark
+            //else dont do anything
+            let textField = weakSelf.alertController.textFields![0]
+            if !textField.text!.isEmpty {
+                weakSelf.addBookmark(textField.text!)
+            }
+        }
+        
+        //add actions to alert controller
+        self.alertController.addAction(cancelAction)
+        self.alertController.addAction(doneAction)
+        
+        //present alert controller
+        self.presentViewController(self.alertController, animated: true, completion: nil)
     }
     
     private func addBookmark(name:String) {
@@ -103,20 +124,6 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIAdaptive
         self.map.bookmarks.addObject(bookmark)
         //refresh the table view if it exists
         self.bookmarksListVC?.tableView.reloadData()
-    }
-    
-    //MARK: - UIAlertView delegates
-    
-    func alertView(alertView: UIAlertView, willDismissWithButtonIndex buttonIndex: Int) {
-        //if the user taps the done button
-        //check if the textfield has some text
-        //use the text as the bookmark name
-        //otherwise do nothing
-        if buttonIndex == 1 {
-            if let text = alertView.textFieldAtIndex(0)?.text {
-                self.addBookmark(text)
-            }
-        }
     }
     
     //MARK: - Navigation

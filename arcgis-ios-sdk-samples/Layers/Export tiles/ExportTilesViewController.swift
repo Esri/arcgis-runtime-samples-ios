@@ -107,7 +107,7 @@ class ExportTilesViewController: UIViewController {
         
         //TODO: Remove this code once design has been udpated
         if minScale == maxScale {
-            UIAlertView(title: "Error", message: "Min scale and max scale cannot be the same", delegate: nil, cancelButtonTitle: "Ok").show()
+            SVProgressHUD.showErrorWithStatus("Min scale and max scale cannot be the same", maskType: .Gradient)
             return
         }
         

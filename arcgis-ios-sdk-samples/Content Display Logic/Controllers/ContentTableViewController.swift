@@ -214,7 +214,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             }
         }
         
-        UIAlertView(title: "Error", message: "No match found", delegate: nil, cancelButtonTitle: "Ok").show()
+        SVProgressHUD.showErrorWithStatus("No match found", maskType: .Gradient)
         
     }
 }

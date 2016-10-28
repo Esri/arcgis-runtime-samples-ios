@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     private var readmeDirectoriesURLs:[NSURL]!
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        if url.absoluteString.rangeOfString("auth", options: [], range: nil, locale: nil) != nil {
+        if url.absoluteString!.rangeOfString("auth", options: [], range: nil, locale: nil) != nil {
             AGSApplicationDelegate.sharedApplicationDelegate().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
         }
         return true

@@ -72,7 +72,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                     
                     //For each layer in the serice, add a layer to the map
                     let layerURL = weakSelf.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))
-                    let featureTable = AGSServiceFeatureTable(URL:layerURL)
+                    let featureTable = AGSServiceFeatureTable(URL:layerURL!)
                     let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                     featureLayer.name = layerInfo.name
                     featureLayer.opacity = 0.65

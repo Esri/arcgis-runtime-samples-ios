@@ -26,7 +26,7 @@ extension UIImage {
         let rect = CGRect(x: originX*scale, y: originY*scale, width: size.width*scale, height: size.height*scale)
         
         //crop image
-        let croppedCGImage = CGImageCreateWithImageInRect(self.CGImage, rect)!
+        let croppedCGImage = CGImageCreateWithImageInRect(self.CGImage!, rect)!
         let croppedImage = UIImage(CGImage: croppedCGImage, scale: scale, orientation: UIImageOrientation.Up)
         
         return croppedImage
@@ -184,7 +184,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
                     //dismiss progress hud
                     SVProgressHUD.dismiss()
                     if let error = error {
-                        UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "Ok").show()
+                        SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
                     }
                     else {
                         self?.showSuccess()

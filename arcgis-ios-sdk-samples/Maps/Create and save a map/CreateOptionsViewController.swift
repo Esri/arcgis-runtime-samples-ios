@@ -141,7 +141,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBAction private func doneAction() {
         if self.selectedBasemapIndex == nil {
-            UIAlertView(title: "Error", message: "Please select at least a basemap", delegate: nil, cancelButtonTitle: "Ok").show()
+            SVProgressHUD.showErrorWithStatus("Please select at least a basemap", maskType: .Gradient)
             return
         }
 

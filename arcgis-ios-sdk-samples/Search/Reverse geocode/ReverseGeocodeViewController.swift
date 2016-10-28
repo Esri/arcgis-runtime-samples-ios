@@ -108,7 +108,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     
     private func showAlert(message:String) {
-        UIAlertView(title: "Error", message: message, delegate: nil, cancelButtonTitle: "Ok").show()
+        SVProgressHUD.showErrorWithStatus(message, maskType: .Gradient)
     }
     
     //MARK: - AGSGeoViewTouchDelegate

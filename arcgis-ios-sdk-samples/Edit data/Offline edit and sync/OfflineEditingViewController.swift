@@ -123,7 +123,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
                     
                     //For each layer in the serice, add a layer to the map
                     let layerURL = weakSelf.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))
-                    let featureTable = AGSServiceFeatureTable(URL:layerURL)
+                    let featureTable = AGSServiceFeatureTable(URL:layerURL!)
                     let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                     featureLayer.name = layerInfo.name
                     weakSelf.map.operationalLayers.addObject(featureLayer)
@@ -306,7 +306,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
             let selectedLayerIds = self.featureLayersVC.selectedLayerIds
             
             if selectedLayerIds.count == 0 {
-                UIAlertView(title: "Error", message: "Please select at least one layer", delegate: nil, cancelButtonTitle: "Ok").show()
+                SVProgressHUD.showErrorWithStatus("Please select at least one layer", maskType: .Gradient)
                 return
             }
             
@@ -390,7 +390,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     func syncAction(completion: (() -> Void)?) {
         if !self.generatedGeodatabase.hasLocalEdits() {
-            UIAlertView(title: "Info", message: "No local edits", delegate: nil, cancelButtonTitle: "Ok").show()
+            SVProgressHUD.showInfoWithStatus("No local edits", maskType: .Gradient)
             return
         }
         

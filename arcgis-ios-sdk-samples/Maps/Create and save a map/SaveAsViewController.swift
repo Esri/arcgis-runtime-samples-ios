@@ -55,9 +55,9 @@ class SaveAsViewController: UIViewController {
     
     @IBAction private func saveAction() {
         //Validations
-        guard let title = self.titleTextField.text, tags = self.tagsTextField.text else {
+        guard let title = self.titleTextField.text, let tags = self.tagsTextField.text else {
             //show error message
-            UIAlertView(title: "Error", message: "Title and tags are required fields", delegate: nil, cancelButtonTitle: "Ok").show()
+            SVProgressHUD.showErrorWithStatus("Title and tags are required fields", maskType: .Gradient)
             return
         }
         

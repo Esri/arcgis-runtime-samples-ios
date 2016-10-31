@@ -44,6 +44,7 @@
 		3E41DD791B9F609500DA11CC /* DeleteFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E41DD781B9F609500DA11CC /* DeleteFeatures.storyboard */; };
 		3E41DD7A1B9F836600DA11CC /* AddFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */; };
 		3E41DD7B1B9F836600DA11CC /* DeleteFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E41DD761B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift */; };
+		3E4A64B01D8B37DA00CF930C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E4A64AF1D8B37DA00CF930C /* Settings.bundle */; };
 		3E4B05F71B39EF250072E514 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B05E91B39EF250072E514 /* SVIndefiniteAnimatedView.m */; };
 		3E4B05F81B39EF250072E514 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E4B05EB1B39EF250072E514 /* SVProgressHUD.bundle */; };
 		3E4B05F91B39EF250072E514 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B05ED1B39EF250072E514 /* SVProgressHUD.m */; };
@@ -134,6 +135,7 @@
 		3EBA25741D3450F600AB0703 /* CreateGeometriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBA25731D3450F600AB0703 /* CreateGeometriesViewController.swift */; };
 		3EBA25761D34510F00AB0703 /* CreateGeometries.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EBA25751D34510F00AB0703 /* CreateGeometries.storyboard */; };
 		3EBA25771D34672100AB0703 /* CreateGeometriesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EBA25731D3450F600AB0703 /* CreateGeometriesViewController.swift */; };
+		3EC398BF1D8B45AD0084612D /* DemoTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC398BE1D8B45AD0084612D /* DemoTouchView.swift */; };
 		3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */; };
 		3EC39C1E1C9A59B9003F6459 /* DirectionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */; };
 		3EC39C1F1C9A59B9003F6459 /* RouteParametersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */; };
@@ -433,6 +435,7 @@
 		3E41DD731B9A241500DA11CC /* AddFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddFeatures.storyboard; path = "Edit data/Add features (feature service)/AddFeatures.storyboard"; sourceTree = "<group>"; };
 		3E41DD761B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeleteFeaturesViewController.swift; path = "Edit data/Delete features (feature service)/DeleteFeaturesViewController.swift"; sourceTree = "<group>"; };
 		3E41DD781B9F609500DA11CC /* DeleteFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DeleteFeatures.storyboard; path = "Edit data/Delete features (feature service)/DeleteFeatures.storyboard"; sourceTree = "<group>"; };
+		3E4A64AF1D8B37DA00CF930C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = "Content Display Logic/Settings.bundle"; sourceTree = "<group>"; };
 		3E4B05E81B39EF250072E514 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		3E4B05E91B39EF250072E514 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		3E4B05EA1B39EF250072E514 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
@@ -506,6 +509,7 @@
 		3EBA25621D3417B000AB0703 /* SimpleMarkerSymbolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimpleMarkerSymbolViewController.swift; path = "Display information/Simple marker symbol/SimpleMarkerSymbolViewController.swift"; sourceTree = "<group>"; };
 		3EBA25731D3450F600AB0703 /* CreateGeometriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateGeometriesViewController.swift; path = "Geometry/Create geometries/CreateGeometriesViewController.swift"; sourceTree = "<group>"; };
 		3EBA25751D34510F00AB0703 /* CreateGeometries.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CreateGeometries.storyboard; path = "Geometry/Create geometries/CreateGeometries.storyboard"; sourceTree = "<group>"; };
+		3EC398BE1D8B45AD0084612D /* DemoTouchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTouchView.swift; sourceTree = "<group>"; };
 		3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteAroundBarriersViewController.swift; path = "Route & Navigation/Route around barriers/RouteAroundBarriersViewController.swift"; sourceTree = "<group>"; };
 		3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectionsListViewController.swift; path = "Route & Navigation/Route around barriers/DirectionsListViewController.swift"; sourceTree = "<group>"; };
 		3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteParametersViewController.swift; path = "Route & Navigation/Route around barriers/RouteParametersViewController.swift"; sourceTree = "<group>"; };
@@ -702,6 +706,7 @@
 				3E2A68111B14E04300A318AA /* ArcGIS.bundle */,
 				3E23A9E41AFC28F6002E2214 /* Info.plist */,
 				3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */,
+				3E4A64AF1D8B37DA00CF930C /* Settings.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -801,6 +806,7 @@
 			children = (
 				3E4B05E71B39EF250072E514 /* SVProgressHUD */,
 				3E4B05EE1B39EF250072E514 /* TPKeyboardAvoiding */,
+				3EC398BD1D8B45AD0084612D /* DemoTouchView */,
 			);
 			name = Libraries;
 			path = "Shared resources/Libraries";
@@ -1133,6 +1139,14 @@
 				3EBA25751D34510F00AB0703 /* CreateGeometries.storyboard */,
 			);
 			name = "Create geometries";
+			sourceTree = "<group>";
+		};
+		3EC398BD1D8B45AD0084612D /* DemoTouchView */ = {
+			isa = PBXGroup;
+			children = (
+				3EC398BE1D8B45AD0084612D /* DemoTouchView.swift */,
+			);
+			path = DemoTouchView;
 			sourceTree = "<group>";
 		};
 		3EC39C191C9A5770003F6459 /* Route around barriers */ = {
@@ -1863,6 +1877,7 @@
 				3ED028621B8E3A8500ACA70D /* SwitchBasemap.storyboard in Resources */,
 				3E41DD791B9F609500DA11CC /* DeleteFeatures.storyboard in Resources */,
 				3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */,
+				3E4A64B01D8B37DA00CF930C /* Settings.bundle in Resources */,
 				3ED028EE1B8E3AA500ACA70D /* FLSelection.storyboard in Resources */,
 				3EAF09491D710AAF00F8538F /* ChangeMapViewBackground.storyboard in Resources */,
 				3E81C1BD1D8A189D00470AA4 /* VectorTileCustomStyle.storyboard in Resources */,
@@ -1957,6 +1972,7 @@
 				3ED0286D1B8E3A8500ACA70D /* DisplayLocationViewController.swift in Sources */,
 				3E8A25921D36B97A00D14F08 /* MapLoadedViewController.swift in Sources */,
 				3EEA06121D21C44000E03774 /* ExtrudeGraphicsViewController.swift in Sources */,
+				3EC398BF1D8B45AD0084612D /* DemoTouchView.swift in Sources */,
 				3E85263D1B90DE2C00690EBD /* DisplayMapViewController.swift in Sources */,
 				3ED029681B8E3ACD00ACA70D /* EAOptionsViewController.swift in Sources */,
 				3E4B05F91B39EF250072E514 /* SVProgressHUD.m in Sources */,

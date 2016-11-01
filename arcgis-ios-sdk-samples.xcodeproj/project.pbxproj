@@ -1774,6 +1774,7 @@
 					3E23A9DF1AFC28F6002E2214 = {
 						CreatedOnToolsVersion = 6.2;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};

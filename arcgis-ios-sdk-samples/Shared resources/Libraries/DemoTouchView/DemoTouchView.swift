@@ -162,7 +162,7 @@ extension UIApplication {
     }
 }
 
-private class PingLayer: CAShapeLayer {
+private class PingLayer: CAShapeLayer, CAAnimationDelegate {
     
     var pingColor: UIColor! {
         didSet {
@@ -257,7 +257,7 @@ private class PingLayer: CAShapeLayer {
     
     // MARK: CALayer delegate
     
-    private override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+    @objc private func animationDidStop(anim: CAAnimation, finished flag: Bool) {        
         pathAnimation.delegate = nil
         
         self.removeAllAnimations()

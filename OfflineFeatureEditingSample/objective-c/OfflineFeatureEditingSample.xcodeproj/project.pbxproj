@@ -36,7 +36,7 @@
 		3E92AFB8190B1211002F5A9D /* Storyboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPad.storyboard; path = OfflineFeatureEditing/Storyboard_iPad.storyboard; sourceTree = "<group>"; };
 		3EE6601B1AB3792700D02DCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = OfflineFeatureEditingSample/Images.xcassets; sourceTree = "<group>"; };
 		4B1920D31746ECC900E724BE /* OfflineFeatureEditingSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfflineFeatureEditingSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B1921161746F5D000E724BE /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
+		4B1921161746F5D000E724BE /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = /Users/mark1113/Library/SDKs/ArcGIS/iOS/Frameworks/Static/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		97110203180A17240085B216 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		97110204180A17240085B216 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		97110207180A17240085B216 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -387,7 +387,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = "~/Library/SDKs/ArcGIS/iOS";
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/Frameworks/Static";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OfflineFeatureEditing/OfflineFeatureEditingSample-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/OfflineFeatureEditing/OfflineFeatureEditingSample-Info.plist";
@@ -412,7 +412,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = "~/Library/SDKs/ArcGIS/iOS";
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/Frameworks/Static";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OfflineFeatureEditing/OfflineFeatureEditingSample-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/OfflineFeatureEditing/OfflineFeatureEditingSample-Info.plist";

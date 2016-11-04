@@ -34,7 +34,7 @@
     //
     // this will allow the AGSGDBSyncTask to monitor status of background download and invoke its own
     // completion block when the download is done.
-    [[AGSURLSessionManager sharedManager] setBackgroundURLSessionCompletionHandler:completionHandler forIdentifier:identifier];
+    [[AGSApplicationDelegate sharedApplicationDelegate] application:[UIApplication sharedApplication] handleEventsForBackgroundURLSession:identifier completionHandler:completionHandler];
 }
 
 + (void) postLocalNotificationIfAppNotActive:(NSString*)message{

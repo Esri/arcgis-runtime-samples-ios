@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HorizontalPicker" customModule="MapViewDemo_Swift" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="a6f-Sa-zdL" id="naF-HN-wxS"/>
+                <outlet property="nextButton" destination="c2Y-Fr-Wij" id="CMu-Hd-gEF"/>
+                <outlet property="prevButton" destination="be0-EL-SiB" id="0Dv-WW-EUb"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="241" height="73"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="a6f-Sa-zdL">
+                    <rect key="frame" x="29" y="0.0" width="183" height="73"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="006-QC-Gm8">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Ses-sE-Aa5"/>
+                        <outlet property="delegate" destination="-1" id="azm-U1-3B3"/>
+                    </connections>
+                </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="be0-EL-SiB">
+                    <rect key="frame" x="2" y="24" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="TwX-cm-7Gi"/>
+                        <constraint firstAttribute="width" constant="25" id="jz8-aB-GRS"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="BackIcon"/>
+                    <connections>
+                        <action selector="prevButtonAction" destination="-1" eventType="touchUpInside" id="dfm-T0-TYs"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2Y-Fr-Wij">
+                    <rect key="frame" x="214" y="24" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="Jr5-E0-h25"/>
+                        <constraint firstAttribute="width" constant="25" id="p1O-8u-SFZ"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="ForwardIcon"/>
+                    <connections>
+                        <action selector="nextButtonAction" destination="-1" eventType="touchUpInside" id="HDi-p9-05U"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="be0-EL-SiB" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="0wt-6e-tSn"/>
+                <constraint firstItem="c2Y-Fr-Wij" firstAttribute="leading" secondItem="a6f-Sa-zdL" secondAttribute="trailing" constant="2" id="Aaz-oq-Wso"/>
+                <constraint firstItem="a6f-Sa-zdL" firstAttribute="leading" secondItem="be0-EL-SiB" secondAttribute="trailing" constant="2" id="Ffo-a6-bTf"/>
+                <constraint firstItem="a6f-Sa-zdL" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="JEu-8Z-gWK"/>
+                <constraint firstItem="c2Y-Fr-Wij" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="VdJ-hQ-OWp"/>
+                <constraint firstItem="a6f-Sa-zdL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Why-mc-DVF"/>
+                <constraint firstAttribute="trailing" secondItem="c2Y-Fr-Wij" secondAttribute="trailing" constant="2" id="oZc-ub-fb3"/>
+                <constraint firstItem="be0-EL-SiB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="xzt-ow-jHd"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="306.5" y="158.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="BackIcon" width="30" height="30"/>
+        <image name="ForwardIcon" width="30" height="30"/>
+    </resources>
+</document>

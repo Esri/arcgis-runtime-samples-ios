@@ -238,6 +238,30 @@
                     <key>descriptionText</key>
                     <string>You can define different styles for same vector tiled layer using custom stylesheets</string>
                 </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Blend renderer</string>
+                    <key>storyboardName</key>
+                    <string>BlendRenderer</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows you how to use blend renderer with raster layer</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>RGB renderer</string>
+                    <key>storyboardName</key>
+                    <string>RGBRenderer</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows you how to use rgb renderer with raster layer</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Stretch renderer</string>
+                    <key>storyboardName</key>
+                    <string>StretchRenderer</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows you how to use stretch renderer with raster layer</string>
+                </dict>
             </array>
         </dict>
         <dict>

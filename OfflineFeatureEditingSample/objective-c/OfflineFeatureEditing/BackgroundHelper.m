@@ -16,17 +16,19 @@
 @implementation BackgroundHelper
 
 + (void) checkJobStatusInBackground:(void (^)(UIBackgroundFetchResult))completionHandler{
-    if ([[[AGSTask activeResumeIDs] allKeys] count]) {
-        //
-        // this allow AGSExportTileCacheTask to trigger status checks for any active jobs. If a job is done
-        // and a download is available, a download will be kicked off
-        [AGSTask checkStatusForAllResumableTaskJobsWithCompletion:completionHandler];
-    }
-    else {
-        //
-        // we should call this right away so the OS sees us as a good citizen.
-        completionHandler(UIBackgroundFetchResultNoData);
-    }
+//    if ([[[AGSTask activeResumeIDs] allKeys] count]) {
+//        //
+//        // this allow AGSExportTileCacheTask to trigger status checks for any active jobs. If a job is done
+//        // and a download is available, a download will be kicked off
+//        [AGSTask checkStatusForAllResumableTaskJobsWithCompletion:completionHandler];
+//    }
+//    else {
+//        //
+//        // we should call this right away so the OS sees us as a good citizen.
+//        completionHandler(UIBackgroundFetchResultNoData);
+//    }
+
+    completionHandler(UIBackgroundFetchResultNoData);
 
 }
 

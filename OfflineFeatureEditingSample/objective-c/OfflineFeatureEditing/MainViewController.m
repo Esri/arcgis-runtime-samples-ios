@@ -31,16 +31,16 @@
 
 @property (nonatomic, strong) AGSGeodatabase *geodatabase;
 @property (nonatomic, strong) AGSGeodatabaseSyncTask *gdbTask;
+@property (nonatomic, strong) AGSMapView* mapView;
 @property (nonatomic, strong) AGSGenerateGeodatabaseJob *generateGDBJob;
 @property (nonatomic, strong) AGSSyncGeodatabaseJob *syncJob;
-@property (nonatomic, strong) AGSMapView* mapView;
 @property (nonatomic, strong) AGSMap* map;
 
 @property (nonatomic, strong) AGSArcGISTiledLayer *localTiledLayer;
 
 @property (nonatomic, strong) NSString *replicaJobId;
 @property (nonatomic, strong) AGSPopupsViewController *popupsVC;
-@property (nonatomic, strong) AGSGraphicsOverlay *sgl;
+@property (nonatomic, strong) AGSSketchEditor *sketchEditor;
 
 @property (nonatomic, strong) JSBadgeView* badge;
 @property (nonatomic, strong) LoadingView* loadingView;
@@ -173,7 +173,7 @@
 
 //These methods are now called from the layerViewStateChangedHandler.
 -(void)layerDidLoad:(AGSLayer *)layer{
-    if(self.mapView.mapScale > layer.minScale) {
+    if(self.mapView.mapScale > layer.minScale && layer.minScale > 0) {
         AGSViewpoint *currentVP = [self.mapView currentViewpointWithType:AGSViewpointTypeCenterAndScale];
         AGSViewpoint *vp = [AGSViewpoint viewpointWithCenter:(AGSPoint *)currentVP.targetGeometry scale:layer.minScale];
         [self.mapView setViewpoint:vp];
@@ -252,7 +252,7 @@
     [self hidePopupsVC];
     
     //Create the view controller for the popups
-    self.popupsVC = [[AGSPopupsViewController alloc]initWithPopups:popups containerStyle:AGSPopupsViewControllerContainerStyleCustom];
+    self.popupsVC = [[AGSPopupsViewController alloc]initWithPopups:popups containerStyle:AGSPopupsViewControllerContainerStyleNavigationBar];
     self.popupsVC.delegate = self;
     self.popupsVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
@@ -418,29 +418,34 @@
     __weak __typeof(self) weakSelf = self;
     [self.gdbTask loadWithCompletion:^(NSError *error) {
         
-        //Remove all local layers from map
-        [self.map.operationalLayers removeAllObjects];
-        
-        //Add live feature layers
-        for (AGSIDInfo* info in weakSelf.gdbTask.featureServiceInfo.layerInfos) {
-            [SVProgressHUD showProgress:-1 status:@"Loading \n live data"];
-            NSURL* url = [weakSelf.gdbTask.URL URLByAppendingPathComponent:[NSString stringWithFormat:@"%lu",(unsigned long)info.ID]];
-            
-            AGSServiceFeatureTable *ft = [[AGSServiceFeatureTable alloc] initWithURL:url];
-            ft.credential = weakSelf.gdbTask.credential;
-            
-            AGSFeatureLayer *fl = ft.featureLayer;
-            fl.name = info.name;
-            [weakSelf.map.operationalLayers addObject:fl];
-            [weakSelf logStatus:[NSString stringWithFormat:@"loading: %@", [ft.URL absoluteString]]];
+        if (error) {
+            [weakSelf logStatus:[NSString stringWithFormat:@"error loading geodatabase sync task: %@", error]];
+            [SVProgressHUD showErrorWithStatus:@"Couldn't load geodatabase sync task"];
         }
-        [weakSelf logStatus:@"now in live mode"];
-        [weakSelf updateStatus];
+        else {
+            self.goingLive = NO;
+            self.viewingLocal = NO;
+
+            //Remove all local layers from map
+            [self.map.operationalLayers removeAllObjects];
+            
+            //Add live feature layers
+            for (AGSIDInfo* info in weakSelf.gdbTask.featureServiceInfo.layerInfos) {
+                [SVProgressHUD showProgress:-1 status:@"Loading \n live data"];
+                NSURL* url = [weakSelf.gdbTask.URL URLByAppendingPathComponent:[NSString stringWithFormat:@"%lu",(unsigned long)info.ID]];
+                
+                AGSServiceFeatureTable *ft = [[AGSServiceFeatureTable alloc] initWithURL:url];
+                ft.credential = weakSelf.gdbTask.credential;
+                
+                AGSFeatureLayer *fl = [AGSFeatureLayer featureLayerWithFeatureTable:ft];
+                fl.name = info.name;
+                [weakSelf.map.operationalLayers addObject:fl];
+                [weakSelf logStatus:[NSString stringWithFormat:@"loading: %@", [ft.URL absoluteString]]];
+            }
+            [weakSelf logStatus:@"now in live mode"];
+            [weakSelf updateStatus];
+        }
     }];
-    
-    self.goingLive = NO;
-    self.viewingLocal = NO;
-    
 }
 -(void)switchToLocalData{
     
@@ -449,91 +454,101 @@
     //Clear out the template picker so that we create it again when needed using templates in the local data
     self.featureTemplatePickerVC = nil;
 
+    AGSGenerateGeodatabaseParameters *params = [AGSGenerateGeodatabaseParameters generateGeodatabaseParameters];
+    
+    //NOTE: You should typically set this to a smaller envelope covering an area of interest
+    //Setting to visible area extent here because sample data covers limited area in San Francisco
+    params.extent = self.mapView.visibleArea.extent;
+    params.outSpatialReference = self.mapView.spatialReference;
+    NSMutableArray *layerOptions = [NSMutableArray array];
+    for (AGSIDInfo *layerInfo in self.gdbTask.featureServiceInfo.layerInfos) {
+        [layerOptions addObject:[AGSGenerateLayerOption generateLayerOptionWithLayerID:layerInfo.ID]];
+    }
+    params.layerOptions = layerOptions;
+    params.returnAttachments = YES;
+    params.syncModel = AGSSyncDirectionBidirectional;
+    
+    self.newlyDownloaded = NO;
+    [SVProgressHUD showWithStatus:@"Preparing to \n download"];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSString *filename = [NSString stringWithFormat:@"%@.geodatabase", [NSDate date]];
+    NSURL *fileURL = [NSURL fileURLWithPath:[path stringByAppendingPathComponent:filename] isDirectory:NO];
+    self.generateGDBJob = [self.gdbTask generateJobWithParameters:params downloadFileURL:fileURL];
+    
+    //start generating the geodatabase
     __weak __typeof(self) weakSelf = self;
-
-    //NOTE: You should typically set the extent to a smaller envelope covering an area of interest
-    //Setting to visibleArea here because sample data covers limited area in San Francisco
-    [self.gdbTask defaultGenerateGeodatabaseParametersWithExtent:self.mapView.visibleArea.extent completion:^(AGSGenerateGeodatabaseParameters *params, NSError *error) {
-        params.outSpatialReference = weakSelf.mapView.spatialReference;
-
-        weakSelf.newlyDownloaded = NO;
-        [SVProgressHUD showWithStatus:@"Preparing to \n download"];
-
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *path = [paths objectAtIndex:0];
-        NSString *filename = [NSString stringWithFormat:@"%@.geodatabase", [NSDate date]];
-        NSURL *fileURL = [NSURL fileURLWithPath:[path stringByAppendingPathComponent:filename] isDirectory:NO];
-        weakSelf.generateGDBJob = [weakSelf.gdbTask generateJobWithParameters:params downloadFileURL:fileURL];
-        
-        //start generating the geodatabase
-        [weakSelf.generateGDBJob startWithStatusHandler:^(AGSJobStatus status) {
-            /*
-             //If we are fetching result, display download progress
-             if(status == AGSResumableTaskJobStatusFetchingResult){
-             self.newlyDownloaded = YES;
-             NSNumber* totalBytesDownloaded = userInfo[@"AGSDownloadProgressTotalBytesDownloaded"];
-             NSNumber* totalBytesExpected = userInfo[@"AGSDownloadProgressTotalBytesExpected"];
-             if(totalBytesDownloaded!=nil && totalBytesExpected!=nil){
-             double dPercentage = (double)([totalBytesDownloaded doubleValue]/[totalBytesExpected doubleValue]);
-             [SVProgressHUD showProgress:dPercentage status:@"Downloading \n features"];
-             }
-             }else{
-*/
-            [SVProgressHUD showWithStatus:[weakSelf jobStatusAsString:status]];
-        } completion:^(AGSGeodatabase *result, NSError * error) {
-            if (error){
-                //handle the error
-                weakSelf.goingLocal = NO;
-                weakSelf.viewingLocal = NO;
-                [weakSelf logStatus:[NSString stringWithFormat:@"error taking feature layers offline: %@", error]];
-                [SVProgressHUD showErrorWithStatus:@"Couldn't download features"];
-            }
-            else{
-                //take app into offline mode
-                weakSelf.goingLocal = NO;
-                weakSelf.viewingLocal = YES;
-                [weakSelf logStatus:@"now viewing local data"];
-                [BackgroundHelper postLocalNotificationIfAppNotActive:@"Features downloaded."];
-                
-                //remove the live feature layers
-                [weakSelf.map.operationalLayers removeAllObjects];
-                
-                //add layers from local geodatabase
-                weakSelf.geodatabase = result;
-                for (AGSFeatureTable* fTable in result.geodatabaseFeatureTables) {
-                    if ([fTable hasGeometry]) {
-                        [weakSelf.map.operationalLayers addObject:[AGSFeatureLayer featureLayerWithFeatureTable:fTable]];
-                    }
-                }
-                
-                if (weakSelf.newlyDownloaded) {
-                    [SVProgressHUD showSuccessWithStatus:@"Finished \n downloading"];
-                }else{
-                    [SVProgressHUD dismiss];
-                    [weakSelf showEditsInGeodatabaseAsBadge:result];
-                    UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Found local data" message:@" It may contain edits or may be out of date. Do you want synchronize it with the service?" delegate:nil cancelButtonTitle:@"Later" otherButtonTitles:@"Yes", nil];
-                    [av showWithCompletion:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                        switch (buttonIndex) {
-                            case 0: //do nothing
-                                break;
-                            case 1: //Yes, sync
-                                [self syncAction:nil];
-                                break;
-                            default:
-                                break;
+    [self.generateGDBJob startWithStatusHandler:^(AGSJobStatus status) {
+        //If we are fetching result, display download progress
+        if(status == AGSJobStatusStarted){
+            self.newlyDownloaded = YES;
+            //                NSNumber* totalBytesDownloaded = userInfo[@"AGSDownloadProgressTotalBytesDownloaded"];
+            //                NSNumber* totalBytesExpected = userInfo[@"AGSDownloadProgressTotalBytesExpected"];
+            //                if(totalBytesDownloaded!=nil && totalBytesExpected!=nil){
+            //                    double dPercentage = (double)([totalBytesDownloaded doubleValue]/[totalBytesExpected doubleValue]);
+            //                    [SVProgressHUD showProgress:dPercentage status:@"Downloading \n features"];
+            //                }
+            //            }else{
+        }
+        [SVProgressHUD showWithStatus:[weakSelf jobStatusAsString:status]];
+    } completion:^(AGSGeodatabase *result, NSError * error) {
+        if (error){
+            //handle the error
+            weakSelf.goingLocal = NO;
+            weakSelf.viewingLocal = NO;
+            [weakSelf logStatus:[NSString stringWithFormat:@"error taking feature layers offline: %@", error]];
+            [SVProgressHUD showErrorWithStatus:@"Couldn't download features"];
+        }
+        else{
+            //take app into offline mode
+            weakSelf.goingLocal = NO;
+            weakSelf.viewingLocal = YES;
+            [weakSelf logStatus:@"now viewing local data"];
+            [BackgroundHelper postLocalNotificationIfAppNotActive:@"Features downloaded."];
+            
+            //remove the live feature layers
+            [weakSelf.map.operationalLayers removeAllObjects];
+            
+            //add layers from local geodatabase
+            weakSelf.geodatabase = result;
+            [weakSelf.geodatabase loadWithCompletion:^(NSError * _Nullable error) {
+                AGSLoadObjects(weakSelf.geodatabase.geodatabaseFeatureTables, ^(BOOL finishedWithNoErrors) {
+                    for (AGSFeatureTable* fTable in weakSelf.geodatabase.geodatabaseFeatureTables) {
+                        if (fTable.hasGeometry) {
+                            [weakSelf.map.operationalLayers addObject:[AGSFeatureLayer featureLayerWithFeatureTable:fTable]];
                         }
-                    }];
+                    }
                     
-                }
-            }
-            [weakSelf updateStatus];
-        }];
+                    if (weakSelf.newlyDownloaded) {
+                        [SVProgressHUD showSuccessWithStatus:@"Finished \n downloading"];
+                    }else{
+                        [SVProgressHUD dismiss];
+                        [weakSelf showEditsInGeodatabaseAsBadge:result];
+                        UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Found local data" message:@" It may contain edits or may be out of date. Do you want synchronize it with the service?" delegate:nil cancelButtonTitle:@"Later" otherButtonTitles:@"Yes", nil];
+                        [av showWithCompletion:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                            switch (buttonIndex) {
+                                case 0: //do nothing
+                                    break;
+                                case 1: //Yes, sync
+                                    [self syncAction:nil];
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }];
+                        
+                    }
+                });
+            }];
+        }
+        [weakSelf updateStatus];
     }];
 }
 
 #pragma mark - FeatureTemplatePickerViewControllerDelegate methods
 
-- (void)featureTemplatePickerViewController:(FeatureTemplatePickerViewController *)featureTemplatePickerViewController didSelectFeatureTemplate:(AGSFeatureTemplate *)template forLayer:(AGSGeodatabaseFeatureTable *)table{
+- (void)featureTemplatePickerViewController:(FeatureTemplatePickerViewController *)featureTemplatePickerViewController didSelectFeatureTemplate:(AGSFeatureTemplate *)template forLayer:(AGSArcGISFeatureTable *)table{
     
     //if iPad
     if ([self isIPad]) {
@@ -581,15 +596,14 @@
 
 -(AGSSketchEditor *)popupsViewController:(AGSPopupsViewController *)popupsViewController readyToEditGeometryForPopup:(AGSPopup *)popup {
     
-    AGSSketchEditor *sketchEditor = [AGSSketchEditor sketchEditor];
-    self.mapView.sketchEditor = sketchEditor;
-    
-    if (popup.geoElement.geometry) {
-        [sketchEditor startWithGeometry:popup.geoElement.geometry];
-        [self.mapView setViewpointGeometry:popup.geoElement.geometry.extent completion:nil];
+    if (!self.sketchEditor) {
+        self.sketchEditor = [AGSSketchEditor sketchEditor];
     }
     
-//    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditFeaturesOnlineViewController.sketchChanged(_:)), name: AGSSketchEditorGeometryDidChangeNotification, object: nil)
+    if (popup.geoElement.geometry) {
+        [self.sketchEditor startWithGeometry:popup.geoElement.geometry];
+        [self.mapView setViewpointGeometry:popup.geoElement.geometry.extent completion:nil];
+    }
     
     // if we are on iPhone, hide the popupsVC and show editing UI
     if (![self isIPad]) {
@@ -597,7 +611,9 @@
         [self toggleGeometryEditUI];
     }
 
-    return sketchEditor;
+    self.mapView.sketchEditor = self.sketchEditor;
+
+    return self.sketchEditor;
 }
 
 -(void)popupsViewControllerDidFinishViewingPopups:(AGSPopupsViewController *)popupsViewController {
@@ -612,22 +628,6 @@
 }
 
 -(void)popupsViewController:(AGSPopupsViewController *)popupsViewController didFinishEditingForPopup:(AGSPopup *)popup {
-
-    /*
-     self.disableSketchEditor()
-     
-     //Tell the user edits are being saved int the background
-     SVProgressHUD.showWithStatus("Saving feature details...", maskType: .Gradient)
-     
-     let feature = popup.geoElement as! AGSFeature
-     // simplify the geometry, this will take care of self intersecting polygons and
-     feature.geometry = AGSGeometryEngine.simplifyGeometry(feature.geometry!)
-     //normalize the geometry, this will take care of geometries that extend beyone the dateline
-     //(ifwraparound was enabled on the map)
-     feature.geometry = AGSGeometryEngine.normalizeCentralMeridianOfGeometry(feature.geometry!)
-     
-     self.applyEdits()
-*/
     
     // Disable sketch layer
     [self disableSketchEditor];
@@ -670,28 +670,31 @@
     
 }
 
--(void) popupsContainer:(id<AGSPopupsContainer>)popupsContainer didDeleteForPopup:(AGSPopup *)popup {
+-(void)popupsViewController:(AGSPopupsViewController *)popupsViewController didDeleteForPopup:(AGSPopup *)popup {
     // popup vc has already committed edits to the local geodatabase at this point
     
     //if we are in local data mode, show edits as badge over the sync button
     //and wait for the user to explicitly sync changes back up to the service
     if(self.viewingLocal) {
-        [self showEditsInGeodatabaseAsBadge:popup.gdbFeatureTable.geodatabase];
+        [self showEditsInGeodatabaseAsBadge:self.geodatabase];
         [self logStatus:@"feature deleted in local geodatabase"];
         [self hidePopupsVC];
     }else{
         //we are in live data mode, apply edits to the service immediately
         self.loadingView = [LoadingView loadingViewInView:self.popupsVC.view withText:@"Applying edit to server..."];
-        AGSGDBFeatureServiceTable* fst = (AGSGDBFeatureServiceTable*) popup.gdbFeature.table;
-        [fst applyFeatureEditsWithCompletion:^(NSArray *featureEditErrors, NSError *error) {
+        AGSFeature *feature = (AGSFeature *)popup.geoElement;
+        AGSServiceFeatureTable *fst = (AGSServiceFeatureTable *)feature.featureTable;
+        [fst applyEditsWithCompletion:^(NSArray<AGSFeatureEditResult *> * result, NSError *error) {
             [self.loadingView removeView];
             if(error){
                 UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Could not apply edit to server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [av show];
                 [self logStatus:[NSString stringWithFormat:@"Error while applying edit : %@",[error localizedDescription]]];
             }else{
-                for (AGSGDBFeatureEditError* featureEditError in featureEditErrors) {
-                    [self logStatus:[NSString stringWithFormat:@"Deleting feature(OBJECTID = %lld) rejected by server because : %@",featureEditError.objectID, [featureEditError localizedDescription]]];
+                for (AGSFeatureEditResult* featureEditResult in result) {
+                    if (featureEditResult.completedWithErrors) {
+                        [self logStatus:[NSString stringWithFormat:@"Deleting feature(OBJECTID = %lld) rejected by server because : %@",featureEditResult.objectID, [featureEditResult.error localizedDescription]]];
+                    }
                 }
 
                 [self logStatus:@"feature deleted in server"];
@@ -710,28 +713,28 @@
 #pragma mark - Convenience methods
 
 - (void)numberOfEditsInGeodatabase:(AGSGeodatabase*)gdb completion:(void (^)(NSNumber *count))completion {
-    NSInteger total = 0;
+    __block NSInteger total = 0;
     
     dispatch_group_t group = dispatch_group_create();
     
     for (AGSArcGISFeatureTable* ftable in gdb.geodatabaseFeatureTables) {
-        if (ftable.loadStatus = AGSLoadStatusLoaded) {
-            dispatch_group_enter(group)
+        if (ftable.loadStatus == AGSLoadStatusLoaded) {
+            dispatch_group_enter(group);
             [ftable addedFeaturesCountWithCompletion:^(NSInteger count, NSError *error) {
                 total += count;
-                dispatch_group_leave(group)
+                dispatch_group_leave(group);
             }];
             
-            dispatch_group_enter(group)
+            dispatch_group_enter(group);
             [ftable updatedFeaturesCountWithCompletion:^(NSInteger count, NSError *error) {
                 total += count;
-                dispatch_group_leave(group)
+                dispatch_group_leave(group);
             }];
             
-            dispatch_group_enter(group)
+            dispatch_group_enter(group);
             [ftable deletedFeaturesCountWithCompletion:^(NSInteger count, NSError *error) {
                 total += count;
-                dispatch_group_leave(group)
+                dispatch_group_leave(group);
             }];
         }
     }
@@ -813,7 +816,7 @@
 }
 
 -(NSString*)jobStatusAsString:(AGSJobStatus)status {
-    NSString jobStatusString;
+    NSString *jobStatusString;
     if (status == AGSJobStatusNotStarted) {
         jobStatusString = @"Not Started...";
     }
@@ -827,7 +830,7 @@
         jobStatusString = @"Succeeded...";
     }
     else if (status == AGSJobStatusFailed) {
-        jobStatusString = @@"Failed...";
+        jobStatusString = @"Failed...";
     }
     
     return jobStatusString;
@@ -835,6 +838,10 @@
 
 - (void) showEditsInGeodatabaseAsBadge:(AGSGeodatabase*)geodatabase{
     [self.badge removeFromSuperview];
+    [self numberOfEditsInGeodatabase:geodatabase completion:^(NSNumber *count) {
+        NSLog(@"number of edits = %@", count);
+    }];
+
     if ([geodatabase hasLocalEdits]) {
         self.badge = [[JSBadgeView alloc]initWithParentView:self.badgeView alignment:JSBadgeViewAlignmentCenterRight];
         
@@ -850,8 +857,7 @@
 }
 
 -(void)disableSketchEditor {
-    [self.mapView.sketchEditor stop];
-    [self.mapView.sketchEditor clearGeometry];
+    self.mapView.sketchEditor = nil;
 }
 
 #pragma mark Sketch toolbar UI
@@ -862,12 +868,11 @@
 
 - (IBAction)cancelEditingGeometry:(id)sender {
     [self doneEditingGeometry:nil];
+    [self.sketchEditor clearGeometry];
 }
 
 - (IBAction)doneEditingGeometry:(id)sender {
-    [self.mapView removeMapLayer:self.sgl];
-    self.sgl = nil;
-    self.mapView.touchDelegate = self;
+    [self disableSketchEditor];
     [self toggleGeometryEditUI];
     [self presentViewController:self.popupsVC animated:YES completion:nil];
 }

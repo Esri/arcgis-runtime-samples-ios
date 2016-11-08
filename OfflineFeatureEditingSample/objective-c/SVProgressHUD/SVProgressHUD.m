@@ -157,9 +157,11 @@ CGFloat SVProgressHUDRingThickness = 6;
 #pragma mark - Dismiss Methods
 
 + (void)popActivity {
-    [self sharedView].activityCount--;
-    if([self sharedView].activityCount == 0)
-        [[self sharedView] dismiss];
+    if ([self sharedView].activityCount > 0) {
+        [self sharedView].activityCount--;
+        if([self sharedView].activityCount == 0)
+            [[self sharedView] dismiss];
+    }
 }
 
 + (void)dismiss {

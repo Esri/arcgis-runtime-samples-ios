@@ -26,30 +26,33 @@
 }
 
 - (void) addTemplatesForLayersInMap:(AGSMapView*)mapView {
-    for (AGSLayer* layer in mapView.mapLayers) {
+    for (AGSLayer* layer in mapView.map.operationalLayers) {
         if([layer isKindOfClass:[AGSFeatureLayer class]]){
-            [self addTemplatesFromSource:(id<AGSGDBFeatureSourceInfo>)layer renderer:((AGSFeatureLayer*)layer).renderer];
-        }else if ([layer isKindOfClass:[AGSFeatureTableLayer class]]){
-            [self addTemplatesFromSource:(AGSGDBFeatureTable*)((AGSFeatureTableLayer*)layer).table renderer:((AGSFeatureTableLayer*)layer).renderer ];
+            if ([((AGSFeatureLayer *)layer).featureTable isKindOfClass:[AGSArcGISFeatureTable class]]) {
+                AGSArcGISFeatureTable *fTable = (AGSArcGISFeatureTable *)((AGSFeatureLayer *)layer).featureTable;
+                [self addTemplatesFromSource:fTable renderer:((AGSFeatureLayer*)layer).renderer];
+            }
         }
     }
 }
 
-- (void) addTemplatesFromSource:(id<AGSGDBFeatureSourceInfo>)source renderer:(AGSRenderer *)renderer {
+- (void) addTemplatesFromSource:(AGSArcGISFeatureTable *)featureTable renderer:(AGSRenderer *)renderer {
 
     //Instantiate the array to hold all templates from this layer
     if(!self.infos)
         self.infos = [[NSMutableArray alloc] init];
     
-    if(source.types!=nil && source.types.count){
+    AGSArcGISFeatureLayerInfo *layerInfo = featureTable.layerInfo;
+    if(layerInfo.featureTypes!=nil && layerInfo.featureTypes.count){
         //For each type
-        for (AGSFeatureType* type in source.types) {
+        for (AGSFeatureType* type in layerInfo.featureTypes) {
             //For each template in type
             for (AGSFeatureTemplate* template in type.templates) {
                 
                 FeatureTemplatePickerInfo* info =
                 [[FeatureTemplatePickerInfo alloc] init];
-                info.source = source;
+                info.featureTable = featureTable;
+                info.layerInfo = layerInfo;
                 info.renderer = renderer;
                 info.featureTemplate = template;
                 info.featureType = type;
@@ -61,13 +64,14 @@
         }
     }
     //If layer contains only templates (no feature types)
-    else if (source.templates!=nil) {
+    else if (layerInfo.featureTypes!=nil) {
         //For each template
-        for (AGSFeatureTemplate* template in source.templates) {
+        for (AGSFeatureTemplate* template in layerInfo.featureTypes) {
            
             FeatureTemplatePickerInfo* info = 
             [[FeatureTemplatePickerInfo alloc] init];
-            info.source = source;
+            info.featureTable = featureTable;
+            info.layerInfo = layerInfo;
             info.renderer = renderer;
             info.featureTemplate = template;
             info.featureType = nil;
@@ -122,7 +126,17 @@
     FeatureTemplatePickerInfo* info = [self.infos objectAtIndex:indexPath.row];
 	cell.textLabel.font = [UIFont systemFontOfSize:12.0];
 	cell.textLabel.text = info.featureTemplate.name;
-    cell.imageView.image =[ info.renderer swatchForFeatureWithAttributes:info.featureTemplate.prototypeAttributes geometryType:info.source.geometryType size:CGSizeMake(20, 20)];
+    if (info.swatch) {
+        cell.imageView.image = info.swatch;
+    } else {
+        //create dummy feature and symbol to get the swatch from
+        AGSFeature *feature = [info.featureTable createFeatureWithTemplate:info.featureTemplate];
+        AGSSymbol *symbol = [info.renderer symbolForFeature:feature];
+        [symbol createSwatchWithCompletion:^(UIImage *swatch, NSError *error) {
+            info.swatch = swatch;
+            [tableView reloadData];
+        }];
+    }
 	
     return cell;
 }
@@ -135,7 +149,7 @@
     if ([self.delegate respondsToSelector:@selector(featureTemplatePickerViewController:didSelectFeatureTemplate:forLayer:)]){
               
         FeatureTemplatePickerInfo* info = [self.infos objectAtIndex:indexPath.row];
-        [self.delegate featureTemplatePickerViewController:self didSelectFeatureTemplate:info.featureTemplate forLayer:info.source];
+        [self.delegate featureTemplatePickerViewController:self didSelectFeatureTemplate:info.featureTemplate forLayer:info.featureTable];
     }    
     
     //Unselect the cell

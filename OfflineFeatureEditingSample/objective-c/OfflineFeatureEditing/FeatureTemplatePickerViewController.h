@@ -23,7 +23,7 @@
 
 -(void)featureTemplatePickerViewControllerWasDismissed: (FeatureTemplatePickerViewController*) featureTemplatePickerViewController;
 
--(void)featureTemplatePickerViewController:(FeatureTemplatePickerViewController *)featureTemplatePickerViewController didSelectFeatureTemplate:(AGSFeatureTemplate *)template forLayer:(AGSGeodatabaseFeatureTable *)table;
+-(void)featureTemplatePickerViewController:(FeatureTemplatePickerViewController *)featureTemplatePickerViewController didSelectFeatureTemplate:(AGSFeatureTemplate *)template forLayer:(AGSArcGISFeatureTable *)table;
 
 @end
 
@@ -38,7 +38,7 @@
 
 - (IBAction) dismiss;
 - (void) addTemplatesForLayersInMap:(AGSMapView*)mapView;
-- (void) addTemplatesFromSource:(id<AGSGDBFeatureSourceInfo>)source renderer:(AGSRenderer*)renderer;
+- (void) addTemplatesFromSource:(AGSArcGISFeatureTable *)featureTable renderer:(AGSRenderer*)renderer;
 
 @end
 
@@ -47,9 +47,11 @@
 @interface FeatureTemplatePickerInfo : NSObject 
 
 @property (nonatomic, strong) AGSFeatureType* featureType;
+@property (nonatomic, strong) AGSArcGISFeatureTable* featureTable;
 @property (nonatomic, strong) AGSFeatureTemplate* featureTemplate;
-@property (nonatomic, strong) id<AGSGDBFeatureSourceInfo> source;
+@property (nonatomic, strong) AGSArcGISFeatureLayerInfo * layerInfo;
 @property (nonatomic, strong) AGSRenderer* renderer;
+@property (nonatomic, strong) AGSImage *swatch;
 
 @end
 

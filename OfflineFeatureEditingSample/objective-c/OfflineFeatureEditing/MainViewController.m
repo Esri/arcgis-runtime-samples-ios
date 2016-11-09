@@ -22,7 +22,7 @@
 #define kTilePackageName @"SanFrancisco"
 #define kFeatureServiceURL @"https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer"
 
-@interface MainViewController () <AGSGeoViewTouchDelegate, AGSPopupsViewControllerDelegate, /*AGSMapViewLayerDelegate, */AGSCalloutDelegate, FeatureTemplatePickerDelegate>
+@interface MainViewController () <AGSGeoViewTouchDelegate, AGSPopupsViewControllerDelegate, AGSCalloutDelegate, FeatureTemplatePickerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UIView *badgeView;
@@ -76,17 +76,6 @@
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.mapContainer addSubview:self.mapView];
     self.mapView.touchDelegate = self;
-    self.mapView.callout.delegate = self;
-
-    //create the basemap layer from a tile package
-    AGSTileCache *tileCache = [AGSTileCache tileCacheWithName:kTilePackageName];
-    self.localTiledLayer = [AGSArcGISTiledLayer ArcGISTiledLayerWithTileCache:tileCache];
-    AGSBasemap *basemap = [AGSBasemap basemapWithBaseLayer:self.localTiledLayer];
-
-    //create the map with the basemap and set it on the map view
-    self.map = [AGSMap mapWithBasemap:basemap];
-    self.mapView.map = self.map;
-    
     __weak __typeof(self) weakSelf = self;
     self.mapView.layerViewStateChangedHandler = ^(AGSLayer *layer, AGSLayerViewState *layerViewState){
         if (layerViewState.status == AGSLayerViewStatusActive) {
@@ -96,6 +85,17 @@
             [weakSelf layer:layer didFailToLoadWithError:layerViewState.error];
         }
     };
+    self.mapView.callout.delegate = self;
+
+    //Add the basemap layer from a tile package
+    AGSTileCache *tileCache = [AGSTileCache tileCacheWithName:kTilePackageName];
+    self.localTiledLayer = [AGSArcGISTiledLayer ArcGISTiledLayerWithTileCache:tileCache];
+    AGSBasemap *basemap = [AGSBasemap basemapWithBaseLayer:self.localTiledLayer];
+
+    //create the map with the basemap and set it on the map view
+    self.map = [AGSMap mapWithBasemap:basemap];
+    self.mapView.map = self.map;
+    
 
     //load the map
     [self.map loadWithCompletion:^(NSError * _Nullable error) {
@@ -323,13 +323,13 @@
 - (IBAction)syncAction:(id)sender {
     
     if (self.syncJob.status == AGSJobStatusStarted){
-        // if already syncing
+        // if already syncing just return
         return;
     }
     
     if (!self.geodatabase.hasLocalEdits) {
         //we have no local edits, show status and return
-        [SVProgressHUD showWithStatus:@"No local edits"];
+        [SVProgressHUD showErrorWithStatus:@"No local edits"];
         return;
     }
     
@@ -524,7 +524,7 @@
                         [SVProgressHUD showSuccessWithStatus:@"Finished \n downloading"];
                     }else{
                         [SVProgressHUD dismiss];
-                        [weakSelf showEditsInGeodatabaseAsBadge:result];
+                        [weakSelf showEditsInGeodatabaseAsBadge:weakSelf.geodatabase];
                         UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Found local data" message:@" It may contain edits or may be out of date. Do you want synchronize it with the service?" delegate:nil cancelButtonTitle:@"Later" otherButtonTitles:@"Yes", nil];
                         [av showWithCompletion:^(UIAlertView *alertView, NSInteger buttonIndex) {
                             switch (buttonIndex) {
@@ -594,8 +594,7 @@
 
 #pragma mark AGSPopupsViewControllerDelegate methods
 
--(AGSSketchEditor *)popupsViewController:(AGSPopupsViewController *)popupsViewController readyToEditGeometryForPopup:(AGSPopup *)popup {
-    
+-(AGSSketchEditor *)popupsViewController:(AGSPopupsViewController *)popupsViewController sketchEditorForPopup:(AGSPopup *)popup {
     if (!self.sketchEditor) {
         self.sketchEditor = [AGSSketchEditor sketchEditor];
     }
@@ -604,16 +603,28 @@
         [self.sketchEditor startWithGeometry:popup.geoElement.geometry];
         [self.mapView setViewpointGeometry:popup.geoElement.geometry.extent completion:nil];
     }
+    else if ([popup.geoElement isKindOfClass:[AGSFeature class]] &&
+             [((AGSFeature *)popup.geoElement).featureTable isKindOfClass:[AGSArcGISFeatureTable class]]) {
+        AGSArcGISFeatureTable *fTable = (AGSArcGISFeatureTable *)((AGSFeature *)popup.geoElement).featureTable;
+        [self.sketchEditor startWithGeometryType:fTable.geometryType];
+    }
+    else {
+        [self.sketchEditor startWithGeometryType:AGSGeometryTypePolygon];
+    }
+
+    self.mapView.sketchEditor = self.sketchEditor;
+    
+    return self.sketchEditor;
+}
+
+-(void)popupsViewController:(AGSPopupsViewController *)popupsViewController readyToEditGeometryWithSketchEditor:(AGSSketchEditor *)sketchEditor forPopup:(AGSPopup *)popup {
     
     // if we are on iPhone, hide the popupsVC and show editing UI
     if (![self isIPad]) {
         [self.popupsVC dismissViewControllerAnimated:YES completion:nil];
+        self.mapView.sketchEditor = self.sketchEditor;
         [self toggleGeometryEditUI];
     }
-
-    self.mapView.sketchEditor = self.sketchEditor;
-
-    return self.sketchEditor;
 }
 
 -(void)popupsViewControllerDidFinishViewingPopups:(AGSPopupsViewController *)popupsViewController {

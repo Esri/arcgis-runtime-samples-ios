@@ -58,7 +58,7 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         polygonGeometry.addPointWithX(20e5, y: -20e5)
         polygonGeometry.addPointWithX(-20e5, y: -20e5)
         let polygonSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.Solid, color: UIColor.yellowColor(), outline: nil)
-        let polygonGraphic = AGSGraphic(geometry: polygonGeometry.toGeometry())
+        let polygonGraphic = AGSGraphic(geometry: polygonGeometry.toGeometry(), symbol: nil, attributes: nil)
         
         //initialize the graphics overlay
         self.graphicsOverlay = AGSGraphicsOverlay()
@@ -78,14 +78,14 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         //use `identifyGraphicsOverlaysAtScreenCoordinate:tolerance:maximumGraphics:completion:` method provided on map view
         let tolerance:Double = 5
         
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: tolerance, identifyReturns: .GeoElementsOnly, maximumResults: 10) { (result: AGSIdentifyGraphicsOverlayResult?, error:NSError?) -> Void in
-            if let error = error {
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: tolerance, returnPopupsOnly: false, maximumResults: 10) { (result: AGSIdentifyGraphicsOverlayResult) -> Void in
+            if let error = result.error {
                 print("error while identifying :: \(error.localizedDescription)")
             }
             else {
                 //if a graphics is found then show an alert
-                if result?.graphics.count > 0 {
-                    UIAlertView(title: "Alert", message: "Tapped on graphic", delegate: nil, cancelButtonTitle: "Ok").show()
+                if result.graphics.count > 0 {
+                    SVProgressHUD.showErrorWithStatus("Tapped on graphic", maskType: .Gradient)
                 }
             }
         }

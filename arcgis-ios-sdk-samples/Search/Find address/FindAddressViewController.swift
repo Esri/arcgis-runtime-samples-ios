@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIPopoverPresentationControllerDelegate, WorldAddressesVCDelegate {
+class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIAdaptivePresentationControllerDelegate, WorldAddressesVCDelegate {
     
     @IBOutlet private var mapView:AGSMapView!
     @IBOutlet private var button:UIButton!
@@ -62,7 +62,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
         symbol.leaderOffsetY = markerImage.size.height/2
         symbol.offsetY = markerImage.size.height/2
-        let graphic = AGSGraphic(geometry: point, attributes: attributes, symbol: symbol)
+        let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: attributes)
         return graphic
     }
     
@@ -117,7 +117,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
     }
     
     private func showAlert(message:String) {
-        UIAlertView(title: "Error", message: message, delegate: nil, cancelButtonTitle: "Ok").show()
+        SVProgressHUD.showErrorWithStatus(message, maskType: .Gradient)
     }
     
     //MARK: - AGSGeoViewTouchDelegate
@@ -127,13 +127,13 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         self.mapView.callout.dismiss()
         
         //identify graphics at the tapped location
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, identifyReturns: .GeoElementsOnly, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult?, error: NSError?) -> Void in
-            if let error = error {
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult) -> Void in
+            if let error = result.error {
                 self.showAlert(error.localizedDescription)
             }
-            else if let graphics = result?.graphics where graphics.count > 0 {
+            else if result.graphics.count > 0 {
                 //show callout for the graphic
-                self.showCalloutForGraphic(graphics[0], tapLocation: mapPoint)
+                self.showCalloutForGraphic(result.graphics[0], tapLocation: mapPoint)
             }
         }
     }
@@ -175,7 +175,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "AddressesListSegue" {
             let controller = segue.destinationViewController as! WorldAddressesViewController
-            controller.popoverPresentationController?.delegate = self
+            controller.presentationController?.delegate = self
             controller.popoverPresentationController?.sourceView = self.view
             controller.popoverPresentationController?.sourceRect = self.searchBar.frame
             controller.preferredContentSize = CGSize(width: 300, height: 200)
@@ -183,9 +183,10 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         }
     }
     
-    //MARK: - UIPopoverPresentationControllerDelegate
+    //MARK: - UIAdaptivePresentationControllerDelegate
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+    
         return UIModalPresentationStyle.None
     }
     

@@ -57,7 +57,7 @@ class SimpleMarkerSymbolViewController: UIViewController {
         let point = AGSPoint(x: -226773, y: 6550477, spatialReference: AGSSpatialReference.webMercator())
         
         //graphic for point using simple marker symbol
-        let graphic = AGSGraphic(geometry: point, symbol: symbol)
+        let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: nil)
         
         //add the graphic to the graphics overlay
         self.graphicsOverlay.graphics.addObject(graphic)

@@ -79,7 +79,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
                     self?.mapView.setViewpointGeometry(features[0].geometry!, padding: 200, completion: nil)
                 }
                 else {
-                    UIAlertView(title: "Error", message: "No state by that name", delegate: nil, cancelButtonTitle: "Ok").show()
+                    SVProgressHUD.showErrorWithStatus("No state by that name", maskType: .Gradient)
                 }
                 //update selected features array
                 self?.selectedFeatures = features 

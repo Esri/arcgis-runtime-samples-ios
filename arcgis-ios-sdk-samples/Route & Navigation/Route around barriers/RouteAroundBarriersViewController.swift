@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelegate, UIPopoverPresentationControllerDelegate, DirectionsListVCDelegate {
+class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelegate, UIAdaptivePresentationControllerDelegate, DirectionsListVCDelegate {
     
     @IBOutlet var mapView:AGSMapView!
     @IBOutlet var segmentedControl:UISegmentedControl!
@@ -128,7 +128,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             else {
                 SVProgressHUD.dismiss()
                 let route = routeResult!.routes[0]
-                let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self!.routeSymbol())
+                let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self!.routeSymbol(), attributes: nil)
                 self?.routeGraphicsOverlay.graphics.addObject(routeGraphic)
                 self?.generatedRoute = route
             }
@@ -145,8 +145,17 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         return symbol
     }
     
-    func stopSymbol(stopNumber:Int) -> AGSTextSymbol {
-        return AGSTextSymbol(text: "\(stopNumber)", color: UIColor.redColor(), size: 20, horizontalAlignment: .Center, verticalAlignment: .Middle)
+    private func symbolForStopGraphic(index: Int) -> AGSSymbol {
+        let markerImage = UIImage(named: "BlueMarker")!
+        let markerSymbol = AGSPictureMarkerSymbol(image: markerImage)
+        markerSymbol.offsetY = markerImage.size.height/2
+        
+        let textSymbol = AGSTextSymbol(text: "\(index)", color: UIColor.whiteColor(), size: 20, horizontalAlignment: AGSHorizontalAlignment.Center, verticalAlignment: AGSVerticalAlignment.Middle)
+        textSymbol.offsetY = markerSymbol.offsetY
+        
+        let compositeSymbol = AGSCompositeSymbol(symbols: [markerSymbol, textSymbol])
+        
+        return compositeSymbol
     }
     
     func barrierSymbol() -> AGSSimpleFillSymbol {
@@ -162,8 +171,8 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         if segmentedControl.selectedSegmentIndex == 0 {
             //create a graphic for stop and add to the graphics overlay
             let graphicsCount = self.stopGraphicsOverlay.graphics.count
-            let symbol = self.stopSymbol(graphicsCount+1)
-            let graphic = AGSGraphic(geometry: normalizedPoint, symbol: symbol)
+            let symbol = self.symbolForStopGraphic(graphicsCount+1)
+            let graphic = AGSGraphic(geometry: normalizedPoint, symbol: symbol, attributes: nil)
             self.stopGraphicsOverlay.graphics.addObject(graphic)
             
             //enable route button
@@ -174,7 +183,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         else {
             let bufferedGeometry = AGSGeometryEngine.bufferGeometry(normalizedPoint, byDistance: 500)
             let symbol = self.barrierSymbol()
-            let graphic = AGSGraphic(geometry: bufferedGeometry, symbol: symbol)
+            let graphic = AGSGraphic(geometry: bufferedGeometry, symbol: symbol, attributes: nil)
             self.barrierGraphicsOverlay.graphics.addObject(graphic)
         }
     }
@@ -216,7 +225,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "RouteSettingsSegue" {
             let controller = segue.destinationViewController as! RouteParametersViewController
-            controller.popoverPresentationController?.delegate = self
+            controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 125)
             controller.routeParameters = self.routeParameters
         }
@@ -226,9 +235,10 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         }
     }
     
-    //MARk: - UIPopoverPresentationControllerDelegate
+    //MARk: - UIAdaptivePresentationControllerDelegate
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+    
         return .None
     }
     
@@ -245,7 +255,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         self.directionsGraphicsOverlay.graphics.removeAllObjects()
         
         //show the maneuver geometry on the map view
-        let directionGraphic = AGSGraphic(geometry: directionManeuver.geometry!, symbol: self.directionSymbol())
+        let directionGraphic = AGSGraphic(geometry: directionManeuver.geometry!, symbol: self.directionSymbol(), attributes: nil)
         self.directionsGraphicsOverlay.graphics.addObject(directionGraphic)
         
         //zoom to the direction

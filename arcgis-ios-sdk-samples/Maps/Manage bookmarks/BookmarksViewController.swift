@@ -15,12 +15,12 @@
 import UIKit
 import ArcGIS
 
-class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIPopoverPresentationControllerDelegate {
+class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIAdaptivePresentationControllerDelegate {
     
     @IBOutlet private weak var mapView:AGSMapView!
     
     private var map:AGSMap!
-    private var alert:UIAlertView!
+    private var alertController:UIAlertController!
     
     private weak var bookmarksListVC:BookmarksListViewController!
     
@@ -88,10 +88,31 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIPopoverP
     //MARK: - Actions
     
     @IBAction private func addAction() {
-        //show an alert view with textfield to get the name for the bookmark
-        self.alert = UIAlertView(title: "", message: "Provide the bookmark name", delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "Done")
-        self.alert.alertViewStyle = UIAlertViewStyle.PlainTextInput
-        self.alert.show()
+        //show an alert controller with textfield to get the name for the bookmark
+        self.alertController = UIAlertController(title: "Provide the bookmark name", message: nil, preferredStyle: .Alert)
+        self.alertController.addTextFieldWithConfigurationHandler { (textField: UITextField) in
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let doneAction = UIAlertAction(title: "Done", style: .Default) { [weak self] (action: UIAlertAction) in
+            guard let weakSelf = self else {
+                return
+            }
+            //if the textfield is not empty then add a bookmark
+            //else dont do anything
+            let textField = weakSelf.alertController.textFields![0]
+            if !textField.text!.isEmpty {
+                weakSelf.addBookmark(textField.text!)
+            }
+        }
+        
+        //add actions to alert controller
+        self.alertController.addAction(cancelAction)
+        self.alertController.addAction(doneAction)
+        
+        //present alert controller
+        self.presentViewController(self.alertController, animated: true, completion: nil)
     }
     
     private func addBookmark(name:String) {
@@ -105,20 +126,6 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIPopoverP
         self.bookmarksListVC?.tableView.reloadData()
     }
     
-    //MARK: - UIAlertView delegates
-    
-    func alertView(alertView: UIAlertView, willDismissWithButtonIndex buttonIndex: Int) {
-        //if the user taps the done button
-        //check if the textfield has some text
-        //use the text as the bookmark name
-        //otherwise do nothing
-        if buttonIndex == 1 {
-            if let text = alertView.textFieldAtIndex(0)?.text {
-                self.addBookmark(text)
-            }
-        }
-    }
-    
     //MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -128,7 +135,7 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIPopoverP
             //store a weak reference in order to update the table view when adding new bookmark
             self.bookmarksListVC = controller
             //popover presentation logic
-            controller.popoverPresentationController?.delegate = self
+            controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             //assign the bookmarks to be shown
             controller.bookmarks = self.map.bookmarks as AnyObject as! [AGSBookmark]
@@ -139,9 +146,9 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIPopoverP
         }
     }
     
-    //MARK: - UIPopoverPresentationControllerDelegate
+    //MARK: - UIAdaptivePresentationControllerDelegate
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         //for popover or non modal presentation
         return UIModalPresentationStyle.None
     }

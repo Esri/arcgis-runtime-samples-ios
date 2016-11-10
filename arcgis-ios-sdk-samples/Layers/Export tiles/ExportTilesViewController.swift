@@ -107,7 +107,7 @@ class ExportTilesViewController: UIViewController {
         
         //TODO: Remove this code once design has been udpated
         if minScale == maxScale {
-            UIAlertView(title: "Error", message: "Min scale and max scale cannot be the same", delegate: nil, cancelButtonTitle: "Ok").show()
+            SVProgressHUD.showErrorWithStatus("Min scale and max scale cannot be the same", maskType: .Gradient)
             return
         }
         
@@ -135,7 +135,7 @@ class ExportTilesViewController: UIViewController {
         let destinationPath = "\(path)/myTileCache.tpk"
         
         //get the job
-        self.job = self.exportTask.exportTileCacheJobWithParameters(params, downloadFilePath: destinationPath)
+        self.job = self.exportTask.exportTileCacheJobWithParameters(params, downloadFileURL: NSURL(string: destinationPath)!)
         //run the job
         self.job.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
             //show job status

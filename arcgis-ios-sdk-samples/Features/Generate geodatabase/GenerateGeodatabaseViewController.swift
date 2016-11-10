@@ -68,13 +68,13 @@ class GenerateGeodatabaseViewController: UIViewController {
                     return
                 }
                 
-                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo.featureLayerInfos.enumerate().reverse() {
+                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo!.layerInfos.enumerate().reverse() {
                     
                     //For each layer in the serice, add a layer to the map
                     let layerURL = weakSelf.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))
-                    let featureTable = AGSServiceFeatureTable(URL:layerURL)
+                    let featureTable = AGSServiceFeatureTable(URL:layerURL!)
                     let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                    featureLayer.name = layerInfo.serviceLayerName
+                    featureLayer.name = layerInfo.name
                     featureLayer.opacity = 0.65
                     weakSelf.map.operationalLayers.addObject(featureLayer)
                 }
@@ -108,10 +108,12 @@ class GenerateGeodatabaseViewController: UIViewController {
                 //create a unique name for the geodatabase based on current timestamp
                 let dateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-                let gdbName = "\(dateFormatter.stringFromDate(NSDate())).geodatabase"
+                
+                let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+                let fullPath = "\(path)/\(dateFormatter.stringFromDate(NSDate())).geodatabase"
                 
                 //request a job to generate the geodatabase
-                weakSelf.generateJob = weakSelf.syncTask.generateJobWithParameters(params, downloadFilePath: gdbName)
+                weakSelf.generateJob = weakSelf.syncTask.generateJobWithParameters(params, downloadFileURL: NSURL(string: fullPath)!)
                 
                 //kick off the job
                 weakSelf.generateJob.startWithStatusHandler({ (status: AGSJobStatus) -> Void in

@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     private var readmeDirectoriesURLs:[NSURL]!
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        if url.absoluteString.rangeOfString("auth", options: [], range: nil, locale: nil) != nil {
+        if url.absoluteString!.rangeOfString("auth", options: [], range: nil, locale: nil) != nil {
             AGSApplicationDelegate.sharedApplicationDelegate().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
         }
         return true
@@ -43,6 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         self.modifyAppearance()
         
+        //enable/disable touches based on settings
+        self.setTouchPref()
+        
         return true
     }
 
@@ -58,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        self.setTouchPref()
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
@@ -68,11 +72,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    //MARK: - Touch settings
+    
+    func setTouchPref() {
+        //enable/disable touches based on settings
+        let bool = NSUserDefaults.standardUserDefaults().boolForKey("showTouch")
+        if bool {
+            DemoTouchManager.showTouches()
+            DemoTouchManager.touchBorderColor = UIColor.lightGrayColor()
+            DemoTouchManager.touchFillColor = UIColor(white: 231/255.0, alpha: 1)
+        }
+        else {
+            DemoTouchManager.hideTouches()
+        }
+    }
+    
+    
     // MARK: - Appearance modification
     
     func modifyAppearance() {
-        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : UIFont(name: "Avenir-Heavy", size: 18)!]
-
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        UINavigationBar.appearance().barTintColor = UIColor.primaryBlue()
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        
+        UIToolbar.appearance().barTintColor = UIColor.backgroundGray()
+        UIToolbar.appearance().tintColor = UIColor.primaryBlue()
     }
 
     // MARK: - Split view
@@ -87,6 +111,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             }
         }
         return true
+    }
+}
+
+extension UIColor {
+    class func primaryBlue() -> UIColor {
+        return UIColor(red: 0, green: 0.475, blue: 0.757, alpha: 1)
+    }
+    
+    class func secondaryBlue() -> UIColor {
+        return UIColor(red: 0, green: 0.368, blue: 0.584, alpha: 1)
+    }
+    
+    class func backgroundGray() -> UIColor {
+        return UIColor(red: 0.973, green: 0.973, blue: 0.973, alpha: 1)
+    }
+    
+    class func primaryTextColor() -> UIColor {
+        return UIColor(red: 0.196, green: 0.196, blue: 0.196, alpha: 1)
+    }
+    
+    class func secondaryTextColor() -> UIColor {
+        return UIColor(red: 0.349, green: 0.349, blue: 0.349, alpha: 1)
     }
 }
 

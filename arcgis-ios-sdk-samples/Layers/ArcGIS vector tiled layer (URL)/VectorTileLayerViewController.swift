@@ -39,9 +39,6 @@ class VectorTileLayerViewController: UIViewController {
         
         //assign the map to the map view
         self.mapView.map = map
-        
-        //enable rotation
-        self.mapView.allowInteractiveRotation = true
 
         //center on Miami, Fl
         self.mapView.setViewpointCenter(AGSPoint(x: -80.18, y: 25.778135, spatialReference: AGSSpatialReference.WGS84()), scale: 150000, completion: nil)

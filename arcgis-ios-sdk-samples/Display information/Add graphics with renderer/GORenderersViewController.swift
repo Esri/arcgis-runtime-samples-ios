@@ -46,7 +46,7 @@ class GORenderersViewController: UIViewController {
         //point graphic
         let pointGeometry = AGSPoint(x: 40e5, y: 40e5, spatialReference: AGSSpatialReference.webMercator())
         let pointSymbol = AGSSimpleMarkerSymbol(style: AGSSimpleMarkerSymbolStyle.Diamond, color: UIColor.redColor(), size: 10)
-        let pointGraphic = AGSGraphic(geometry: pointGeometry)
+        let pointGraphic = AGSGraphic(geometry: pointGeometry, symbol: nil, attributes: nil)
         
         //create graphics overlay for point
         let pointGraphicOverlay = AGSGraphicsOverlay()
@@ -66,7 +66,7 @@ class GORenderersViewController: UIViewController {
         lineGeometry.addPointWithX(-10e5, y: 40e5)
         lineGeometry.addPointWithX(20e5, y: 50e5)
         let lineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.Solid, color: UIColor.blueColor(), width: 5)
-        let lineGraphic = AGSGraphic(geometry: lineGeometry.toGeometry())
+        let lineGraphic = AGSGraphic(geometry: lineGeometry.toGeometry(), symbol: nil, attributes: nil)
         
         // create graphics overlay for polyline
         let lineGraphicOverlay = AGSGraphicsOverlay()
@@ -88,7 +88,7 @@ class GORenderersViewController: UIViewController {
         polygonGeometry.addPointWithX(20e5, y: -20e5)
         polygonGeometry.addPointWithX(-20e5, y: -20e5)
         let polygonSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.Solid, color: UIColor.yellowColor(), outline: nil)
-        let polygonGraphic = AGSGraphic(geometry: polygonGeometry.toGeometry())
+        let polygonGraphic = AGSGraphic(geometry: polygonGeometry.toGeometry(), symbol: nil, attributes: nil)
         
         //create graphics overlay for polygon
         let polygonGraphicOverlay = AGSGraphicsOverlay()

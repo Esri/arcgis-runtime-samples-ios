@@ -22,7 +22,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     private var map:AGSMap!
     private var featureTable:AGSServiceFeatureTable!
     private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancellable!
+    private var lastQuery:AGSCancelable!
     
     private var types = ["Destroyed", "Major", "Minor", "Affected", "Inaccessible"]
     private var selectedFeature:AGSArcGISFeature!
@@ -85,11 +85,11 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         //hide the callout
         self.mapView.callout.dismiss()
         
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, identifyReturns: .GeoElementsOnly, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
-            if let error = error {
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
+            if let error = identifyLayerResult.error {
                 print(error)
             }
-            else if let features = identifyLayerResult?.geoElements as? [AGSArcGISFeature] where features.count > 0 {
+            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature] where features.count > 0 {
                 //show callout for the first feature
                 self?.showCallout(features[0], tapLocation: mapPoint)
                 //update selected feature

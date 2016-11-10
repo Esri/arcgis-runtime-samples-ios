@@ -37,7 +37,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     
     private var locatorTask:AGSLocatorTask!
     private var suggestResults:[AGSSuggestResult]!
-    private var suggestRequestOperation:AGSCancellable!
+    private var suggestRequestOperation:AGSCancelable!
     private var selectedSuggestResult:AGSSuggestResult!
     private var preferredSearchLocation:AGSPoint!
     private var selectedTextField:UITextField!
@@ -177,7 +177,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
         symbol.leaderOffsetY = markerImage.size.height/2
         symbol.offsetY = markerImage.size.height/2
-        let graphic = AGSGraphic(geometry: point, attributes: attributes, symbol: symbol)
+        let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: attributes)
         return graphic
     }
     
@@ -201,13 +201,13 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.mapView.callout.dismiss()
         
         //identify graphics at the tapped location
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, identifyReturns: .GeoElementsOnly, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult?, error: NSError?) -> Void in
-            if let error = error {
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult) -> Void in
+            if let error = result.error {
                 print(error)
             }
-            else if let graphics = result?.graphics where graphics.count > 0 {
+            else if result.graphics.count > 0 {
                 //show callout for the first graphic in the array
-                self.showCalloutForGraphic(graphics[0], tapLocation: mapPoint)
+                self.showCalloutForGraphic(result.graphics[0], tapLocation: mapPoint)
             }
         }
     }

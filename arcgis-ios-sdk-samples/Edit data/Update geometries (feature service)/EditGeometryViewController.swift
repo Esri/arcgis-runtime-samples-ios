@@ -24,7 +24,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     private var map:AGSMap!
     private var featureTable:AGSServiceFeatureTable!
     private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancellable!
+    private var lastQuery:AGSCancelable!
     
     private var selectedFeature:AGSArcGISFeature!
     private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
@@ -86,11 +86,11 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         //hide the callout
         self.mapView.callout.dismiss()
         
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, identifyReturns: .GeoElementsOnly, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
-            if let error = error {
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
+            if let error = identifyLayerResult.error {
                 print(error)
             }
-            else if let features = identifyLayerResult?.geoElements as? [AGSArcGISFeature] where features.count > 0 {
+            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature] where features.count > 0 {
                 let feature = features[0]
                 //show callout for the first feature
                 let title = feature.attributes["typdamage"] as! String
@@ -113,10 +113,10 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         let point = self.selectedFeature.geometry as! AGSPoint
         
         //instantiate sketch editor with selected feature's geometry
-        self.mapView.sketchEditor = AGSSketchEditor(geometry: point)
+        self.mapView.sketchEditor = AGSSketchEditor()
         
         //enable the sketch editor to start tracking user gesture
-        self.mapView.sketchEditor?.enabled = true
+        self.mapView.sketchEditor?.startWithGeometry(point)
         
         //show the toolbar
         self.toggleToolbar(true)
@@ -149,7 +149,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.toggleToolbar(false)
         
         //disable sketch editor
-        self.mapView.sketchEditor?.enabled = false
+        self.mapView.sketchEditor?.stop()
         
         //clear sketch editor
         self.mapView.sketchEditor?.clearGeometry()

@@ -56,8 +56,6 @@ class DisplayLocationViewController: UIViewController, CustomContextSheetDelegat
                 self?.sheet.selectedIndex = 3
             case .CompassNavigation:
                 self?.sheet.selectedIndex = 4
-            default:
-                break
             }
         }
     }
@@ -92,7 +90,7 @@ class DisplayLocationViewController: UIViewController, CustomContextSheetDelegat
         self.mapView.locationDisplay.autoPanMode = autoPanMode
         self.mapView.locationDisplay.startWithCompletion { (error:NSError?) -> Void in
             if let error = error {
-                UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "Ok").show()
+                SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
                 
                 //update context sheet to Stop
                 self.sheet.selectedIndex = 0

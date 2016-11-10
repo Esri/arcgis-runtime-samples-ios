@@ -122,10 +122,6 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
 
         cell.backgroundColor = UIColor.clearColor()
         
-        cell.layer.shadowColor = UIColor.lightGrayColor().CGColor
-        cell.layer.shadowOffset = CGSize(width: 1, height: 1)
-        cell.layer.shadowOpacity = 0.5
-        
         return cell
     }
     
@@ -218,7 +214,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             }
         }
         
-        UIAlertView(title: "Error", message: "No match found", delegate: nil, cancelButtonTitle: "Ok").show()
+        SVProgressHUD.showErrorWithStatus("No match found", maskType: .Gradient)
         
     }
 }

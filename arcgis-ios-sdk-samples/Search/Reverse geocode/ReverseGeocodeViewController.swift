@@ -90,7 +90,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
         symbol.leaderOffsetY = markerImage.size.height/2
         symbol.offsetY = markerImage.size.height/2
-        let graphic = AGSGraphic(geometry: point, attributes: [String:AnyObject](), symbol: symbol)
+        let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: [String:AnyObject]())
         return graphic
     }
     
@@ -108,7 +108,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     
     private func showAlert(message:String) {
-        UIAlertView(title: "Error", message: message, delegate: nil, cancelButtonTitle: "Ok").show()
+        SVProgressHUD.showErrorWithStatus(message, maskType: .Gradient)
     }
     
     //MARK: - AGSGeoViewTouchDelegate

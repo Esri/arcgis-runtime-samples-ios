@@ -62,9 +62,9 @@ class SurfacePlacementsViewController: UIViewController {
         //create point for graphic location
         let point = AGSPoint(x: -4.04, y: 53.06, z: 1000, spatialReference: AGSSpatialReference.WGS84())
         
-        self.drapedGraphicsOverlay.graphics.addObjectsFromArray([AGSGraphic(geometry: point, symbol: self.pointSymbol()), AGSGraphic(geometry: point, symbol: self.textSymbol("Draped"))])
-        self.relativeGraphicsOverlay.graphics.addObjectsFromArray([AGSGraphic(geometry: point, symbol: self.pointSymbol()), AGSGraphic(geometry: point, symbol: self.textSymbol("Relative"))])
-        self.absoluteGraphicsOverlay.graphics.addObjectsFromArray([AGSGraphic(geometry: point, symbol: self.pointSymbol()), AGSGraphic(geometry: point, symbol: self.textSymbol("Absolute"))])
+        self.drapedGraphicsOverlay.graphics.addObjectsFromArray([AGSGraphic(geometry: point, symbol: self.pointSymbol(), attributes: nil), AGSGraphic(geometry: point, symbol: self.textSymbol("Draped"), attributes: nil)])
+        self.relativeGraphicsOverlay.graphics.addObjectsFromArray([AGSGraphic(geometry: point, symbol: self.pointSymbol(), attributes: nil), AGSGraphic(geometry: point, symbol: self.textSymbol("Relative"), attributes: nil)])
+        self.absoluteGraphicsOverlay.graphics.addObjectsFromArray([AGSGraphic(geometry: point, symbol: self.pointSymbol(), attributes: nil), AGSGraphic(geometry: point, symbol: self.textSymbol("Absolute"), attributes: nil)])
     }
     
     private func pointSymbol() -> AGSSimpleMarkerSceneSymbol {

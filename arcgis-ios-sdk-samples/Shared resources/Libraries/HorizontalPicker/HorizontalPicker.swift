@@ -8,6 +8,12 @@
 
 import UIKit
 
+@objc
+protocol HorizontalPickerDelegate: class {
+    
+    optional func horizontalPicker(horizontalPicker:HorizontalPicker, didUpdateSelectedIndex index: Int)
+}
+
 @IBDesignable
 class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
@@ -17,7 +23,14 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     
     private var nibView:UIView!
     
-    var selectedIndex: Int = 0
+    weak var delegate: HorizontalPickerDelegate?
+    
+    var selectedIndex: Int = 0 {
+        didSet {
+            self.delegate?.horizontalPicker?(self, didUpdateSelectedIndex: selectedIndex)
+        }
+    }
+    
     var options: [String]! {
         didSet {
             self.collectionView?.reloadData()

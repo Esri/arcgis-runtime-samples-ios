@@ -47,8 +47,10 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         //feature table
         let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
+    
         //feature layer
         self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        
         
         //add feature layer add to the operational layers
         self.map.operationalLayers.addObject(self.featureLayer)
@@ -81,7 +83,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         //show progress hud
         SVProgressHUD.showWithStatus("Identifying", maskType: .Gradient)
         
-        self.mapView.identifyLayersAtScreenPoint(screen, tolerance: 22, identifyReturns: .GeoElementsOnly, maximumResultsPerLayer: 10) { (results: [AGSIdentifyLayerResult]?, error: NSError?) in
+        self.mapView.identifyLayersAtScreenPoint(screen, tolerance: 22, returnPopupsOnly: false, maximumResultsPerLayer: 10) { (results: [AGSIdentifyLayerResult]?, error: NSError?) in
             
             //dismiss progress hud
             SVProgressHUD.dismiss()

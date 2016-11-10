@@ -433,13 +433,16 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     //MARK: - AGSPopupsViewControllerDelegate
 
-    func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryForPopup popup: AGSPopup) -> AGSSketchEditor? {
+    func popupsViewController(popupsViewController: AGSPopupsViewController, sketchEditorForPopup popup: AGSPopup) -> AGSSketchEditor? {
+        return AGSSketchEditor()
+    }
+    
+    func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryWithSketchEditor sketchEditor: AGSSketchEditor?, forPopup popup: AGSPopup) {
         
         //Dismiss the popup view controller
         self.dismissViewControllerAnimated(true, completion: nil)
         
-        //Create sketch editor and assign to map view
-        let sketchEditor = AGSSketchEditor()
+        //assign sketch editor to map view
         self.mapView.sketchEditor = sketchEditor
         
         //Prepare the current view controller for sketch mode
@@ -463,8 +466,6 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.doneBBI.enabled = false
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(OfflineEditingViewController.sketchChanged(_:)), name: AGSSketchEditorGeometryDidChangeNotification, object: nil)
-        
-        return sketchEditor
     }
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, didDeleteForPopup popup: AGSPopup) {

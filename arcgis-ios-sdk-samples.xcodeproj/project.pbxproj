@@ -19,6 +19,14 @@
 		3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */; };
 		3E0D3AD71AFD481900FC60D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD61AFD481900FC60D6 /* Main.storyboard */; };
 		3E0D3AE21AFD4BD000FC60D6 /* ArcGIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */; };
+		3E1E5EE51D9F08ED00F4913C /* HillshadeRendererVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E5EE41D9F08ED00F4913C /* HillshadeRendererVC.swift */; };
+		3E1E5EE71D9F095A00F4913C /* HillshadeSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E5EE61D9F095A00F4913C /* HillshadeSettingsVC.swift */; };
+		3E1E5EEA1D9F0ACC00F4913C /* HorizontalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E5EE91D9F0ACC00F4913C /* HorizontalPicker.swift */; };
+		3E1E5EED1D9F0B5600F4913C /* srtm.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3E1E5EEC1D9F0B5600F4913C /* srtm.tiff */; };
+		3E1E5EEF1D9F0BAB00F4913C /* HillshadeRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E1E5EEE1D9F0BAB00F4913C /* HillshadeRenderer.storyboard */; };
+		3E1E5EF11D9F0D0C00F4913C /* HorizontalPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E1E5EF01D9F0D0C00F4913C /* HorizontalPicker.xib */; };
+		3E1E5EF21D9F0E6F00F4913C /* HillshadeRendererVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E1E5EE41D9F08ED00F4913C /* HillshadeRendererVC.swift */; };
+		3E1E5EF31D9F0E6F00F4913C /* HillshadeSettingsVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E1E5EE61D9F095A00F4913C /* HillshadeSettingsVC.swift */; };
 		3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */; };
 		3E23A9EF1AFC28F6002E2214 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E23A9EE1AFC28F6002E2214 /* Images.xcassets */; };
 		3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */; };
@@ -127,8 +135,6 @@
 		3EABC7A21DB1793000C161C6 /* StretchRendererSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC79D1DB1793000C161C6 /* StretchRendererSettingsVC.swift */; };
 		3EABC7A31DB1793000C161C6 /* StretchRendererTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC79E1DB1793000C161C6 /* StretchRendererTypeCell.swift */; };
 		3EABC7A41DB1793000C161C6 /* StretchRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC79F1DB1793000C161C6 /* StretchRendererViewController.swift */; };
-		3EABC7A81DB179BC00C161C6 /* HorizontalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC7A61DB179BC00C161C6 /* HorizontalPicker.swift */; };
-		3EABC7A91DB179BC00C161C6 /* HorizontalPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7A71DB179BC00C161C6 /* HorizontalPicker.xib */; };
 		3EABC7AE1DB17B2C00C161C6 /* Shasta.tfw in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AA1DB17B2C00C161C6 /* Shasta.tfw */; };
 		3EABC7AF1DB17B2C00C161C6 /* Shasta.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AB1DB17B2C00C161C6 /* Shasta.tif */; };
 		3EABC7B01DB17B2C00C161C6 /* Shasta.tif.aux.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AC1DB17B2C00C161C6 /* Shasta.tif.aux.xml */; };
@@ -352,6 +358,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3E1E5EF21D9F0E6F00F4913C /* HillshadeRendererVC.swift in CopyFiles */,
+				3E1E5EF31D9F0E6F00F4913C /* HillshadeSettingsVC.swift in CopyFiles */,
 				3EABC7CC1DB197BF00C161C6 /* BlendRendererViewController.swift in CopyFiles */,
 				3EABC7CD1DB197BF00C161C6 /* BlendRendererSettingsVC.swift in CopyFiles */,
 				3EABC7CE1DB197BF00C161C6 /* RGBRendererViewController.swift in CopyFiles */,
@@ -466,6 +474,12 @@
 		3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentTableViewController.swift; path = "Content Display Logic/Controllers/ContentTableViewController.swift"; sourceTree = "<group>"; };
 		3E0D3AD61AFD481900FC60D6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "Content Display Logic/Storyboard/Main.storyboard"; sourceTree = "<group>"; };
 		3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArcGIS.framework; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Static/ArcGIS.framework; sourceTree = "<absolute>"; };
+		3E1E5EE41D9F08ED00F4913C /* HillshadeRendererVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HillshadeRendererVC.swift; path = "Layers/Hillshade renderer/HillshadeRendererVC.swift"; sourceTree = "<group>"; };
+		3E1E5EE61D9F095A00F4913C /* HillshadeSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HillshadeSettingsVC.swift; path = "Layers/Hillshade renderer/HillshadeSettingsVC.swift"; sourceTree = "<group>"; };
+		3E1E5EE91D9F0ACC00F4913C /* HorizontalPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HorizontalPicker.swift; path = HorizontalPicker/HorizontalPicker.swift; sourceTree = "<group>"; };
+		3E1E5EEC1D9F0B5600F4913C /* srtm.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = srtm.tiff; sourceTree = "<group>"; };
+		3E1E5EEE1D9F0BAB00F4913C /* HillshadeRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = HillshadeRenderer.storyboard; path = "Layers/Hillshade renderer/HillshadeRenderer.storyboard"; sourceTree = "<group>"; };
+		3E1E5EF01D9F0D0C00F4913C /* HorizontalPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HorizontalPicker.xib; path = "../../../../../iOS Beta 2 Samples/iOS samples/MapViewDemo-Swift/HorizontalPicker.xib"; sourceTree = "<group>"; };
 		3E23A9E01AFC28F6002E2214 /* arcgis-ios-sdk-samples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "arcgis-ios-sdk-samples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E23A9E41AFC28F6002E2214 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "arcgis-ios-sdk-samples/AppDelegate.swift"; sourceTree = "<group>"; };
@@ -557,8 +571,6 @@
 		3EABC79D1DB1793000C161C6 /* StretchRendererSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchRendererSettingsVC.swift; sourceTree = "<group>"; };
 		3EABC79E1DB1793000C161C6 /* StretchRendererTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchRendererTypeCell.swift; sourceTree = "<group>"; };
 		3EABC79F1DB1793000C161C6 /* StretchRendererViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchRendererViewController.swift; sourceTree = "<group>"; };
-		3EABC7A61DB179BC00C161C6 /* HorizontalPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalPicker.swift; sourceTree = "<group>"; };
-		3EABC7A71DB179BC00C161C6 /* HorizontalPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorizontalPicker.xib; sourceTree = "<group>"; };
 		3EABC7AA1DB17B2C00C161C6 /* Shasta.tfw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Shasta.tfw; sourceTree = "<group>"; };
 		3EABC7AB1DB17B2C00C161C6 /* Shasta.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Shasta.tif; sourceTree = "<group>"; };
 		3EABC7AC1DB17B2C00C161C6 /* Shasta.tif.aux.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Shasta.tif.aux.xml; sourceTree = "<group>"; };
@@ -684,6 +696,7 @@
 		3ED7888B1D26E23C00E5F311 /* LocalTiledLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalTiledLayerViewController.swift; path = "Layers/ArcGIS tiled layer (tile cache)/LocalTiledLayerViewController.swift"; sourceTree = "<group>"; };
 		3ED7888D1D26E28500E5F311 /* TilePackagesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TilePackagesListViewController.swift; path = "Layers/ArcGIS tiled layer (tile cache)/TilePackagesListViewController.swift"; sourceTree = "<group>"; };
 		3ED7888F1D26E2F700E5F311 /* LocalTiledLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LocalTiledLayer.storyboard; path = "Layers/ArcGIS tiled layer (tile cache)/LocalTiledLayer.storyboard"; sourceTree = "<group>"; };
+		3EE385511DD4FDE600B13E3C /* srtm.tiff.ovr */ = {isa = PBXFileReference; lastKnownFileType = file; path = srtm.tiff.ovr; sourceTree = "<group>"; };
 		3EE692011B03D22500C167B8 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Node.swift; path = "Content Display Logic/Model/Node.swift"; sourceTree = "<group>"; };
 		3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = VectorTileLayer.storyboard; path = "Layers/ArcGIS vector tiled layer (URL)/VectorTileLayer.storyboard"; sourceTree = "<group>"; };
 		3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VectorTileLayerViewController.swift; path = "Layers/ArcGIS vector tiled layer (URL)/VectorTileLayerViewController.swift"; sourceTree = "<group>"; };
@@ -736,6 +749,25 @@
 				3E0D3AD61AFD481900FC60D6 /* Main.storyboard */,
 			);
 			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		3E1E5EE31D9F085E00F4913C /* Hillshade renderer */ = {
+			isa = PBXGroup;
+			children = (
+				3E1E5EE41D9F08ED00F4913C /* HillshadeRendererVC.swift */,
+				3E1E5EE61D9F095A00F4913C /* HillshadeSettingsVC.swift */,
+				3E1E5EEE1D9F0BAB00F4913C /* HillshadeRenderer.storyboard */,
+			);
+			name = "Hillshade renderer";
+			sourceTree = "<group>";
+		};
+		3E1E5EE81D9F0A4E00F4913C /* HorizontalPicker */ = {
+			isa = PBXGroup;
+			children = (
+				3E1E5EE91D9F0ACC00F4913C /* HorizontalPicker.swift */,
+				3E1E5EF01D9F0D0C00F4913C /* HorizontalPicker.xib */,
+			);
+			name = HorizontalPicker;
 			sourceTree = "<group>";
 		};
 		3E23A9D71AFC28F6002E2214 = {
@@ -883,7 +915,7 @@
 		3E4B05E61B39EF250072E514 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				3EABC7A51DB179BC00C161C6 /* HorizontalPicker */,
+				3E1E5EE81D9F0A4E00F4913C /* HorizontalPicker */,
 				3E4B05E71B39EF250072E514 /* SVProgressHUD */,
 				3E4B05EE1B39EF250072E514 /* TPKeyboardAvoiding */,
 				3EC398BD1D8B45AD0084612D /* DemoTouchView */,
@@ -1175,6 +1207,8 @@
 		3EABC7951DB1787600C161C6 /* Rasters */ = {
 			isa = PBXGroup;
 			children = (
+				3E1E5EEC1D9F0B5600F4913C /* srtm.tiff */,
+				3EE385511DD4FDE600B13E3C /* srtm.tiff.ovr */,
 				3EABC7BC1DB1919E00C161C6 /* Shasta_Elevation */,
 				3EABC7BB1DB1918600C161C6 /* Shasta */,
 				3EABC7BA1DB1917700C161C6 /* ShastaBW */,
@@ -1194,15 +1228,6 @@
 			);
 			name = "Stretch renderer";
 			path = "Layers/Stretch renderer";
-			sourceTree = "<group>";
-		};
-		3EABC7A51DB179BC00C161C6 /* HorizontalPicker */ = {
-			isa = PBXGroup;
-			children = (
-				3EABC7A61DB179BC00C161C6 /* HorizontalPicker.swift */,
-				3EABC7A71DB179BC00C161C6 /* HorizontalPicker.xib */,
-			);
-			path = HorizontalPicker;
 			sourceTree = "<group>";
 		};
 		3EABC7BA1DB1917700C161C6 /* ShastaBW */ = {
@@ -1428,6 +1453,7 @@
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				3E1E5EE31D9F085E00F4913C /* Hillshade renderer */,
 				3ED028A41B8E3A9800ACA70D /* ArcGIS tiled layer (URL) */,
 				3ED7888A1D26E1E600E5F311 /* ArcGIS tiled layer (tile cache) */,
 				3EC39C301C9B0DAE003F6459 /* Export tiles */,
@@ -1989,6 +2015,7 @@
 				3ED028B81B8E3A9800ACA70D /* SublayerVisibility.storyboard in Resources */,
 				3ED028781B8E3A8500ACA70D /* ManageMapLayers.storyboard in Resources */,
 				3ED0294B1B8E3AB300ACA70D /* Sketch.storyboard in Resources */,
+				3E1E5EEF1D9F0BAB00F4913C /* HillshadeRenderer.storyboard in Resources */,
 				3ED028571B8E3A8500ACA70D /* CreateSaveMap.storyboard in Resources */,
 				3ED029411B8E3AB300ACA70D /* point.gif in Resources */,
 				3E4BF45A1C5BD77300D85919 /* OfflineGeocode.storyboard in Resources */,
@@ -2036,6 +2063,7 @@
 				3EABC7B41DB181DD00C161C6 /* ShastaBW.tfw in Resources */,
 				3EFCE1BA1CF369A800E02F67 /* Yellowstone.mmpk in Resources */,
 				3EEA060F1D21C44000E03774 /* DisplayScene.storyboard in Resources */,
+				3E1E5EED1D9F0B5600F4913C /* srtm.tiff in Resources */,
 				3EE8B9531CA08E54003AA705 /* VectorTileLayer.storyboard in Resources */,
 				3ED029311B8E3AB300ACA70D /* Callout.storyboard in Resources */,
 				3E4BF47F1C5BDDCA00D85919 /* san-diego-locator.lox in Resources */,
@@ -2077,9 +2105,9 @@
 				3E54D2351CC6985200BB9904 /* GraphicDrawOrder.storyboard in Resources */,
 				3ED028911B8E3A8500ACA70D /* SetInitialMapLocation.storyboard in Resources */,
 				3E8A25831D36B6E300D14F08 /* FeatureLayerGDB.storyboard in Resources */,
-				3EABC7A91DB179BC00C161C6 /* HorizontalPicker.xib in Resources */,
 				3ED0288D1B8E3A8500ACA70D /* SetInitialMapArea.storyboard in Resources */,
 				3EC39C341C9B106D003F6459 /* ExportTiles.storyboard in Resources */,
+				3E1E5EF11D9F0D0C00F4913C /* HorizontalPicker.xib in Resources */,
 				3EABC7AE1DB17B2C00C161C6 /* Shasta.tfw in Resources */,
 				3EABC7B51DB181DD00C161C6 /* ShastaBW.tif in Resources */,
 				3EABC7C91DB1947500C161C6 /* BlendRenderer.storyboard in Resources */,
@@ -2192,8 +2220,8 @@
 				3E4BF4561C5BD66C00D85919 /* OfflineGeocodeViewController.swift in Sources */,
 				3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */,
 				3E4B05FC1B39EF250072E514 /* TPKeyboardAvoidingTableView.m in Sources */,
-				3EABC7A81DB179BC00C161C6 /* HorizontalPicker.swift in Sources */,
 				3ED028F81B8E3AA500ACA70D /* ManualCacheViewController.swift in Sources */,
+				3E1E5EE51D9F08ED00F4913C /* HillshadeRendererVC.swift in Sources */,
 				3ED029291B8E3AB300ACA70D /* GORenderersViewController.swift in Sources */,
 				3ED0286B1B8E3A8500ACA70D /* CustomContextSheet.swift in Sources */,
 				3ED0287A1B8E3A8500ACA70D /* MMLLayersViewController.swift in Sources */,
@@ -2218,6 +2246,7 @@
 				3ED028591B8E3A8500ACA70D /* CreateOptionsViewController.swift in Sources */,
 				3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */,
 				3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */,
+				3E1E5EE71D9F095A00F4913C /* HillshadeSettingsVC.swift in Sources */,
 				3EBA25421D2F106600AB0703 /* UniqueValueRendererViewController.swift in Sources */,
 				3ED0296A1B8E3ACD00ACA70D /* EditAttributesViewController.swift in Sources */,
 				3EABC7A11DB1793000C161C6 /* StretchRendererInputCell.swift in Sources */,
@@ -2234,6 +2263,7 @@
 				3ED0289D1B8E3A8500ACA70D /* MapViewScreenshotViewController.swift in Sources */,
 				3E5848FE1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift in Sources */,
 				3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */,
+				3E1E5EEA1D9F0ACC00F4913C /* HorizontalPicker.swift in Sources */,
 				3EE8B9551CA08E71003AA705 /* VectorTileLayerViewController.swift in Sources */,
 				3E39F6D31B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift in Sources */,
 				3EC39C371C9B1ADA003F6459 /* AGSExtensions.swift in Sources */,

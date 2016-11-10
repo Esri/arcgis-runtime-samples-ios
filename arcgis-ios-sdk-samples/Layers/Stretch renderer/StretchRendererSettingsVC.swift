@@ -125,7 +125,7 @@ class StretchRendererSettingsVC: UIViewController, UITableViewDataSource, Stretc
             if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as? StretchRendererInputCell {
                 factor = Double(cell.textField.text!) ?? 1
             }
-            stretchParameters = AGSStdDevStretchParameters(factor: factor)
+            stretchParameters = AGSStandardDeviationStretchParameters(factor: factor)
         }
         
         self.delegate?.stretchRendererSettingsVC(self, didSelectStretchParameters: stretchParameters)

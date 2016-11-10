@@ -107,7 +107,7 @@ class RGBRendererSettingsVC: UIViewController, UITableViewDataSource, RGBRendere
             if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as? RGBRendererInputCell {
                 factor = Double(cell.textField.text!) ?? 1
             }
-            stretchParameters = AGSStdDevStretchParameters(factor: factor)
+            stretchParameters = AGSStandardDeviationStretchParameters(factor: factor)
         }
         
         self.delegate?.rgbRendererSettingsVC(self, didSelectStretchParameters: stretchParameters)

@@ -54,6 +54,10 @@ class StretchRendererSettingsVC: UIViewController, UITableViewDataSource, Stretc
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        tapGestureRecognizer.numberOfTouchesRequired = 1
+        self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     override func didReceiveMemoryWarning() {
@@ -127,8 +131,14 @@ class StretchRendererSettingsVC: UIViewController, UITableViewDataSource, Stretc
             }
             stretchParameters = AGSStandardDeviationStretchParameters(factor: factor)
         }
+        //hide keyboard
+        self.hideKeyboard()
         
         self.delegate?.stretchRendererSettingsVC(self, didSelectStretchParameters: stretchParameters)
+    }
+    
+    func hideKeyboard() {
+        self.view.endEditing(true)
     }
     
     //MARK: - StretchRendererTypeCellDelegate

@@ -604,7 +604,7 @@
         </dict>
         <dict>
             <key>displayName</key>
-            <string>3D</string>
+            <string>Scenes</string>
             <key>children</key>
             <array>
                 <dict>
@@ -625,7 +625,7 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
-                    <string>3D symbols</string>
+                    <string>Scene symbols</string>
                     <key>storyboardName</key>
                     <string>SceneSymbols</string>
                     <key>descriptionText</key>

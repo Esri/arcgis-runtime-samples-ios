@@ -29,12 +29,12 @@ class DisplaySceneViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplaySceneViewController"]
         
         //initialize scene with topographic basemap
-        let scene = AGSScene(basemap: AGSBasemap.topographicBasemap())
+        let scene = AGSScene(basemap: AGSBasemap.imageryBasemap())
         //assign scene to the scene view
         self.sceneView.scene = scene
         
         //set the viewpoint camera
-        let camera = AGSCamera(latitude: 28.4, longitude: 83, altitude: 20000, heading: 10, pitch: 70, roll: 300)
+        let camera = AGSCamera(latitude: 45.74, longitude: 6.88, altitude: 4500, heading: 10, pitch: 70, roll: 0)
         self.sceneView.setViewpointCamera(camera)
         
         // add base surface for elevation data

@@ -49,8 +49,10 @@ class ExtrudeGraphicsViewController: UIViewController {
         
         //simple renderer with extrusion property
         let renderer = AGSSimpleRenderer()
+        let lineSymbol = AGSSimpleLineSymbol(style: .Solid, color: UIColor.whiteColor(), width: 1)
+        renderer.symbol = AGSSimpleFillSymbol(style: .Solid, color: UIColor.primaryBlue(), outline: lineSymbol)
         renderer.sceneProperties?.extrusionMode = .BaseHeight
-        renderer.sceneProperties?.extrusionExpression = "height"
+        renderer.sceneProperties?.extrusionExpression = "[height]"
         self.graphicsOverlay.renderer = renderer
         
         // add base surface for elevation data
@@ -92,11 +94,8 @@ class ExtrudeGraphicsViewController: UIViewController {
     //add a graphic to the graphics overlay for the given polygon
     private func addGraphicForPolygon(polygon:AGSPolygon) {
         let rand = Int(arc4random()) % self.maxHeight
-        let colorComponent = CGFloat(rand) / CGFloat(self.maxHeight)
-        let color = UIColor(red: 1 - colorComponent, green: 0, blue: colorComponent, alpha: 1)
-        let symbol = AGSSimpleFillSymbol(style: .Solid, color: color, outline: nil)
         
-        let graphic = AGSGraphic(geometry: polygon, symbol: symbol, attributes: nil)
+        let graphic = AGSGraphic(geometry: polygon, symbol: nil, attributes: nil)
         graphic.attributes.setValue(rand, forKey: "height")
         self.graphicsOverlay.graphics.addObject(graphic)
     }

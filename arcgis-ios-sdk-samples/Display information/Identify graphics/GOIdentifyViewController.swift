@@ -85,7 +85,7 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
             else {
                 //if a graphics is found then show an alert
                 if result.graphics.count > 0 {
-                    SVProgressHUD.showErrorWithStatus("Tapped on graphic", maskType: .Gradient)
+                    SVProgressHUD.showInfoWithStatus("Tapped on graphic", maskType: .Gradient)
                 }
             }
         }

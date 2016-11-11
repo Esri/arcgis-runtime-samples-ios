@@ -34,7 +34,7 @@ class SceneSymbolsViewController: UIViewController {
         self.sceneView.scene = scene
         
         //set the camera
-        let camera = AGSCamera(latitude: 28.97, longitude: 44.933, altitude: 2082, heading: 60, pitch: 75, roll: 0)
+        let camera = AGSCamera(latitude: 48.973, longitude: 4.92, altitude: 2082, heading: 60, pitch: 75, roll: 0)
         self.sceneView.setViewpointCamera(camera)
         
         // add base surface for elevation data
@@ -53,8 +53,8 @@ class SceneSymbolsViewController: UIViewController {
     
     private func addGraphics() {
         //coordinates for the first symbol
-        let x = 44.975
-        let y = 29.0
+        let x = 4.975
+        let y = 49.0
         let z = 500.0
         
         //create symbols for all the available 3D symbols

@@ -479,7 +479,7 @@
 		3E1E5EE91D9F0ACC00F4913C /* HorizontalPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HorizontalPicker.swift; path = HorizontalPicker/HorizontalPicker.swift; sourceTree = "<group>"; };
 		3E1E5EEC1D9F0B5600F4913C /* srtm.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = srtm.tiff; sourceTree = "<group>"; };
 		3E1E5EEE1D9F0BAB00F4913C /* HillshadeRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = HillshadeRenderer.storyboard; path = "Layers/Hillshade renderer/HillshadeRenderer.storyboard"; sourceTree = "<group>"; };
-		3E1E5EF01D9F0D0C00F4913C /* HorizontalPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HorizontalPicker.xib; path = "../../../../../iOS Beta 2 Samples/iOS samples/MapViewDemo-Swift/HorizontalPicker.xib"; sourceTree = "<group>"; };
+		3E1E5EF01D9F0D0C00F4913C /* HorizontalPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HorizontalPicker.xib; path = HorizontalPicker/HorizontalPicker.xib; sourceTree = "<group>"; };
 		3E23A9E01AFC28F6002E2214 /* arcgis-ios-sdk-samples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "arcgis-ios-sdk-samples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E23A9E41AFC28F6002E2214 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "arcgis-ios-sdk-samples/AppDelegate.swift"; sourceTree = "<group>"; };
@@ -800,7 +800,7 @@
 				3ED027FC1B8E38F400ACA70D /* Edit data */,
 				3EBA25711D34509500AB0703 /* Geometry */,
 				3E6AE3E91C6D10DA0026E59C /* Route & Navigation */,
-				3EEA06001D21C3E800E03774 /* 3D */,
+				3EEA06001D21C3E800E03774 /* Scenes */,
 				3E4B05E51B39EE920072E514 /* Shared resources */,
 				3E23AA071AFC2DE0002E2214 /* Content Display Logic */,
 				3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */,
@@ -1187,7 +1187,7 @@
 				3E8D54FA1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift */,
 			);
 			name = "Scene properties expressions";
-			path = "3D/Scene properties expressions";
+			path = "Scenes/Scene properties expressions";
 			sourceTree = "<group>";
 		};
 		3EABC7881DB1772000C161C6 /* RGB renderer */ = {
@@ -1453,7 +1453,6 @@
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				3E1E5EE31D9F085E00F4913C /* Hillshade renderer */,
 				3ED028A41B8E3A9800ACA70D /* ArcGIS tiled layer (URL) */,
 				3ED7888A1D26E1E600E5F311 /* ArcGIS tiled layer (tile cache) */,
 				3EC39C301C9B0DAE003F6459 /* Export tiles */,
@@ -1461,6 +1460,7 @@
 				3ED028A71B8E3A9800ACA70D /* Change sublayer visibility */,
 				3EE8B9511CA08E16003AA705 /* ArcGIS vector tile layer (URL) */,
 				3E81C1B71D8A0C7400470AA4 /* ArcGIS vector tiled layer (custom style) */,
+				3E1E5EE31D9F085E00F4913C /* Hillshade renderer */,
 				3EABC7C51DB1941000C161C6 /* Blend renderer */,
 				3EABC7881DB1772000C161C6 /* RGB renderer */,
 				3EABC79A1DB1793000C161C6 /* Stretch renderer */,
@@ -1855,26 +1855,26 @@
 			name = "ArcGIS vector tile layer (URL)";
 			sourceTree = "<group>";
 		};
-		3EEA06001D21C3E800E03774 /* 3D */ = {
+		3EEA06001D21C3E800E03774 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				3EEA06041D21C44000E03774 /* Display a scene */,
 				3EEA06071D21C44000E03774 /* Extrude graphics */,
-				3EEA06011D21C44000E03774 /* 3D symbols */,
+				3EEA06011D21C44000E03774 /* Scene symbols */,
 				3EEA060A1D21C44000E03774 /* Surface placements */,
 				3E8D54F81D53E3F000E628D9 /* Scene properties expressions */,
 			);
-			name = 3D;
+			name = Scenes;
 			sourceTree = "<group>";
 		};
-		3EEA06011D21C44000E03774 /* 3D symbols */ = {
+		3EEA06011D21C44000E03774 /* Scene symbols */ = {
 			isa = PBXGroup;
 			children = (
 				3EEA06021D21C44000E03774 /* SceneSymbols.storyboard */,
 				3EEA06031D21C44000E03774 /* SceneSymbolsViewController.swift */,
 			);
-			name = "3D symbols";
-			path = "3D/3D symbols";
+			name = "Scene symbols";
+			path = "Scenes/Scene symbols";
 			sourceTree = "<group>";
 		};
 		3EEA06041D21C44000E03774 /* Display a scene */ = {
@@ -1884,7 +1884,7 @@
 				3EEA06061D21C44000E03774 /* DisplaySceneViewController.swift */,
 			);
 			name = "Display a scene";
-			path = "3D/Display a scene";
+			path = "Scenes/Display a scene";
 			sourceTree = "<group>";
 		};
 		3EEA06071D21C44000E03774 /* Extrude graphics */ = {
@@ -1894,7 +1894,7 @@
 				3EEA06091D21C44000E03774 /* ExtrudeGraphicsViewController.swift */,
 			);
 			name = "Extrude graphics";
-			path = "3D/Extrude graphics";
+			path = "Scenes/Extrude graphics";
 			sourceTree = "<group>";
 		};
 		3EEA060A1D21C44000E03774 /* Surface placements */ = {
@@ -1904,7 +1904,7 @@
 				3EEA060C1D21C44000E03774 /* SurfacePlacementsViewController.swift */,
 			);
 			name = "Surface placements";
-			path = "3D/Surface placements";
+			path = "Scenes/Surface placements";
 			sourceTree = "<group>";
 		};
 		3EFCE1AF1CEFD5B900E02F67 /* Open mobile map (map package) */ = {
@@ -1972,8 +1972,9 @@
 				TargetAttributes = {
 					3E23A9DF1AFC28F6002E2214 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 75Z67E6SV2;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -2379,7 +2380,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 75Z67E6SV2;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2398,6 +2399,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "arcgis-ios-sdk-samples/Content Display Logic/Samples-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 			};
@@ -2409,7 +2411,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 75Z67E6SV2;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

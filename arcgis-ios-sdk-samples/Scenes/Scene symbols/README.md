@@ -1,4 +1,4 @@
-#3D symbols
+#Scene symbols
 
 This sample demonstrates how to create 3D symbols with different shapes.
 

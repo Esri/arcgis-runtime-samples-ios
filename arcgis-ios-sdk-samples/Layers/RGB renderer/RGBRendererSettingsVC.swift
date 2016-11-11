@@ -33,6 +33,10 @@ class RGBRendererSettingsVC: UIViewController, UITableViewDataSource, RGBRendere
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        tapGestureRecognizer.numberOfTouchesRequired = 1
+        self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     //MARK: - UITableViewDataSource
@@ -109,8 +113,14 @@ class RGBRendererSettingsVC: UIViewController, UITableViewDataSource, RGBRendere
             }
             stretchParameters = AGSStandardDeviationStretchParameters(factor: factor)
         }
+        //hide keyboard
+        self.hideKeyboard()
         
         self.delegate?.rgbRendererSettingsVC(self, didSelectStretchParameters: stretchParameters)
+    }
+    
+    func hideKeyboard() {
+        self.view.endEditing(true)
     }
     
     //MARK: - RGBRendererTypeCellDelegate

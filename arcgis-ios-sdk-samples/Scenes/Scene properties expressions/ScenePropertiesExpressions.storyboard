@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G26a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8fJ-SJ-TSb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8fJ-SJ-TSb">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Scene Properties Expressions View Controller-->
@@ -14,18 +14,15 @@
                         <viewControllerLayoutGuide type="bottom" id="aTF-p8-Yyh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="utC-Lb-iJ0">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="osp-3X-78c" customClass="AGSSceneView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="506"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uhr-Ta-ZHR">
-                                <rect key="frame" x="0.0" y="526" width="600" height="74"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbe-1f-Es4">
-                                        <rect key="frame" x="8" y="10" width="70" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="JJk-Cb-xrC"/>
                                         </constraints>
@@ -34,13 +31,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="359" translatesAutoresizingMaskIntoConstraints="NO" id="pOK-0g-1xR">
-                                        <rect key="frame" x="84" y="5" width="466" height="33"/>
                                         <connections>
                                             <action selector="headingSliderValueChanged:" destination="8fJ-SJ-TSb" eventType="valueChanged" id="kv3-gD-rdd"/>
                                         </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xz1-QG-bju">
-                                        <rect key="frame" x="556" y="9" width="36" height="23.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="ARj-NE-1xL"/>
                                         </constraints>
@@ -49,7 +44,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pitch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTM-Uh-1Ju">
-                                        <rect key="frame" x="8" y="43" width="70" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="dC3-TL-7li"/>
                                         </constraints>
@@ -58,13 +52,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-90" maxValue="90" translatesAutoresizingMaskIntoConstraints="NO" id="kKa-YD-wnd">
-                                        <rect key="frame" x="84" y="39" width="466" height="31"/>
                                         <connections>
                                             <action selector="pitchSliderValueChanged:" destination="8fJ-SJ-TSb" eventType="valueChanged" id="CAZ-oq-QXv"/>
                                         </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQt-U9-H3F">
-                                        <rect key="frame" x="556" y="42" width="36" height="23.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="L6E-L1-HYh"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="36" id="ghe-eC-12d"/>
@@ -74,7 +66,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="tQt-U9-H3F" secondAttribute="trailing" constant="8" id="4kK-x1-qwq"/>
                                     <constraint firstAttribute="bottom" secondItem="kKa-YD-wnd" secondAttribute="bottom" constant="5" id="5c9-lU-Phe"/>
@@ -101,7 +93,7 @@
                                 </variation>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="osp-3X-78c" firstAttribute="leading" secondItem="utC-Lb-iJ0" secondAttribute="leading" id="6O6-Nw-YMQ"/>
                             <constraint firstItem="aTF-p8-Yyh" firstAttribute="top" secondItem="Uhr-Ta-ZHR" secondAttribute="bottom" id="Aac-5c-TeR"/>

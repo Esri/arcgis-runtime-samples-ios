@@ -20,7 +20,7 @@
 @synthesize webmap = _webmap;
 @synthesize popupVC = _popupVC;
 @synthesize featureTemplatePickerViewController = _featureTemplatePickerViewController;
-@synthesize sketchLayer = _sketchLayer;
+@synthesize sketchEditor = _sketchEditor;
 @synthesize bannerView = _bannerView;
 @synthesize alertView = _alertView;
 @synthesize loadingView = _loadingView;
@@ -39,7 +39,7 @@
 -(void)presentFeatureTemplatePicker{
     //Only for iPad, set presentation style to Form sheet 
     //We don't want it to cover the entire screen
-    if([[AGSDevice currentDevice] isIPad])
+    if([self isIPad])
         self.featureTemplatePickerViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     
     //Animate vertically on both iPhone & iPad
@@ -54,7 +54,6 @@
     [self presentViewController:self.popupVC animated:YES completion:nil];
     self.mapView.touchDelegate = self;
     self.bannerView.hidden = YES;
-    self.mapView.allowCallout = YES;
 
 }
 
@@ -77,76 +76,74 @@
 
 
     //Set up the map view
-	self.mapView.layerDelegate = self;
 	self.mapView.touchDelegate = self;
     self.mapView.callout.delegate = self;
-    self.mapView.showMagnifierOnTapAndHold = YES;
+    self.mapView.interactionOptions.magnifierEnabled = YES;
 	
-    self.webmap = [AGSWebMap webMapWithItemId:@"b31153c71c6c429a8b24c1751a50d3ad" credential:nil];
+    AGSPortal *portal = [AGSPortal ArcGISOnlineWithLoginRequired:NO];
+    AGSPortalItem *item = [AGSPortalItem portalItemWithPortal:portal itemID:@"b31153c71c6c429a8b24c1751a50d3ad"];
+    self.webmap = [AGSMap mapWithItem:item];
     //designate a delegate to be notified as web map is opened
-    self.webmap.delegate = self;
-    [self.webmap openIntoMapView:self.mapView];
-	
+    self.mapView.map = self.webmap;
+    
+    __weak __typeof(self) weakSelf = self;
+    self.mapView.layerViewStateChangedHandler = ^(AGSLayer *layer, AGSLayerViewState *layerViewState){
+        if (layerViewState.status == AGSLayerViewStatusActive) {
+            [weakSelf layerDidLoad:layer];
+        }
+        else if (layerViewState.status == AGSLayerViewStatusError) {
+            [weakSelf layer:layer didFailToLoadWithError:layerViewState.error];
+        }
+    };
+    
+    [self.webmap loadWithCompletion:^(NSError * _Nullable error) {
+        [self mapDidLoad];
+    }];
+    
     [super viewDidLoad];
 }
 
 
-#pragma mark - AGSWebMapDelegate methods
+#pragma mark - layer/map handler methods
 
-
-- (void) webMap:(AGSWebMap *) 	webMap
-   didLoadLayer:(AGSLayer *) 	layer  {
+-(void)layerDidLoad:(AGSLayer *)layer{
     
     //The last feature layer we encounter we will use for editing features
     //If the web map contains more than one feature layer, the sample may need to be modified to handle that
     if([layer isKindOfClass:[AGSFeatureLayer class]]){
         AGSFeatureLayer* featureLayer = (AGSFeatureLayer*)layer;
-        
-        //set the feature layer as its calloutDelegate 
-        //this will then automatically set the callout's title to a value
-        //from the display field of the feature service
-        featureLayer.calloutDelegate = featureLayer;
-        
-        //Get all the fields
-        featureLayer.outFields = [NSArray arrayWithObject:@"*"];
 
         //This view controller should be notified when features are edited
-        featureLayer.editingDelegate = self;
+//        featureLayer.editingDelegate = self;
+        
+        featureLayer.popupDefinition = [AGSPopupDefinition popupDefinitionWithPopupSource:featureLayer];
         
         //Add templates from this layer to the Feature Template Picker
         [self.featureTemplatePickerViewController addTemplatesFromLayer:featureLayer];
     }
 }
 
-- (void)didOpenWebMap:(AGSWebMap *) webMap intoMapView:(AGSMapView *) mapView {
+- (void)mapDidLoad {
     //Once all the layers in the web map are loaded
     //we will add a dormant sketch layer on top. We will activate the sketch layer when the time is right.
-    self.sketchLayer = [[AGSSketchGraphicsLayer alloc] init];
-    [self.mapView addMapLayer:self.sketchLayer withName:@"Sketch Layer"];
+    self.sketchEditor = [AGSSketchEditor sketchEditor];
     //register self for receiving notifications from the sketch layer
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToGeomChanged:) name:AGSSketchGraphicsLayerGeometryDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToGeomChanged:) name:AGSSketchEditorGeometryDidChangeNotification object:nil];
 }
 
-- (void) webMap:(AGSWebMap *) 	webMap
-didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
-      baseLayer:(BOOL) 	baseLayer
-      federated:(BOOL) 	federated
-      withError:(NSError *) 	error  {
-    NSLog(@"Failed to load layer : %@", layerInfo.title);
+-(void)layer:(AGSLayer *)layer didFailToLoadWithError:(NSError *)error{
+    NSLog(@"Failed to load layer : %@", layer.name);
     NSLog(@"Sample may not work as expected");
-
-    //continue anyway
-    [self.webmap continueOpenAndSkipCurrentLayer];
 }
 
 
 
 #pragma mark -
-#pragma mark AGSSketchGraphicsLayer notifications
+#pragma mark AGSSketchEditorGeometryDidChangeNotification notifications
 - (void)respondToGeomChanged: (NSNotification*) notification {
     //Check if the sketch geometry is valid to decide whether to enable
     //the sketchCompleteButton
-    if([self.sketchLayer.geometry isValid] && ![self.sketchLayer.geometry isEmpty])
+    if(self.sketchEditor.sketchValid && ![self.sketchEditor.geometry isEmpty])
         self.sketchCompleteButton.enabled   = YES;
 
 }
@@ -159,13 +156,13 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
 }
 
 
--(void)featureTemplatePickerViewController:(FeatureTemplatePickerViewController*) featureTemplatePickerViewController didSelectFeatureTemplate:(AGSFeatureTemplate*)template forFeatureLayer:(AGSFeatureLayer*)featureLayer{
+- (void)featureTemplatePickerViewController:(FeatureTemplatePickerViewController *)featureTemplatePickerViewController didSelectFeatureTemplate:(AGSFeatureTemplate *)template forTable:(AGSArcGISFeatureTable *)table{
     
     //set the active feature layer to the one we are going to edit
-    self.activeFeatureLayer = featureLayer;
+//    self.activeFeatureLayer = featureLayer;
     
     //create a new feature based on the template
-    _newFeature = [self.activeFeatureLayer featureWithTemplate:template];
+    _newFeature = [table createFeatureWithTemplate:template];
     
     //Add the new feature to the feature layer's graphic collection
     //This is important because then the popup view controller will be able to 
@@ -174,22 +171,24 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
     //Also note, if the user cancels before saving the new feature to the server, 
     //we will manually need to remove this
     //feature from the feature layer (see implementation for popupsContainer:didCancelEditingGraphicForPopup: below)
-    [self.activeFeatureLayer addGraphic:_newFeature];
+//    [self.activeFeatureLayer addGraphic:_newFeature];
+    
+    AGSPopup *popup = [AGSPopup popupWithGeoElement:_newFeature popupDefinition:table.featureLayer.popupDefinition];
     
     //Iniitalize a popup view controller
-    self.popupVC = [[AGSPopupsContainerViewController alloc] initWithWebMap:self.webmap forFeature:_newFeature usingNavigationControllerStack:NO];
+    self.popupVC = [AGSPopupsViewController popupsViewControllerWithPopups:@[popup] containerStyle:AGSPopupsViewControllerContainerStyleNavigationBar];
     self.popupVC.delegate = self;
     
     //Only for iPad, set presentation style to Form sheet 
     //We don't want it to cover the entire screen
-    if([[AGSDevice currentDevice] isIPad])
+    if([self isIPad])
         self.popupVC.modalPresentationStyle = UIModalPresentationFormSheet;
     
     //Animate by flipping horizontally
     self.popupVC.modalTransitionStyle =  UIModalTransitionStyleFlipHorizontal;
     
     //First, dismiss the Feature Template Picker
-       [self dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
     
     //Next, Present the popup view controller
     [self presentViewController:self.popupVC animated:YES completion:^{
@@ -202,16 +201,18 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
 
 #pragma mark - AGSCalloutDelegate methods
 
-- (void) didClickAccessoryButtonForCallout:		(AGSCallout *) 	callout {
+- (void)didTapAccessoryButtonForCallout:(AGSCallout *)callout {
     
-    AGSGraphic* graphic = (AGSGraphic*)callout.representedObject;
-    self.activeFeatureLayer = (AGSFeatureLayer*) graphic.layer;
+    AGSFeature* feature = (AGSFeature*)callout.representedObject;
+//    self.activeFeatureLayer = (AGSFeatureLayer*) graphic.layer;
     //Show popup for the graphic because the user tapped on the callout accessory button
-    self.popupVC = [[AGSPopupsContainerViewController alloc] initWithWebMap:self.webmap forFeature:graphic usingNavigationControllerStack:NO];
+    AGSPopup *popup = [AGSPopup popupWithGeoElement:feature popupDefinition:feature.featureTable.featureLayer.popupDefinition];
+
+    self.popupVC = [AGSPopupsViewController popupsViewControllerWithPopups:@[popup] containerStyle:AGSPopupsViewControllerContainerStyleNavigationBar];
     self.popupVC.delegate = self;
     self.popupVC.modalTransitionStyle =  UIModalTransitionStyleFlipHorizontal;
     //If iPad, use a modal presentation style
-    if([[AGSDevice currentDevice] isIPad])
+    if([self isIPad])
         self.popupVC.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:self.popupVC animated:YES completion:nil];
 
@@ -265,7 +266,11 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
 	self.navigationItem.rightBarButtonItem = self.sketchCompleteButton;
     self.sketchCompleteButton.enabled = NO;
 }
-
+     
+     -(BOOL)popupsViewController:(AGSPopupsViewController *)popupsViewController wantsToDeleteForPopup:(AGSPopup *)popup {
+         return YES;
+     }
+     
 - (void)popupsContainer:(id<AGSPopupsContainer>) popupsContainer wantsToDeleteForPopup:(AGSPopup *) popup {
     //Call method on feature layer to delete the feature
     NSNumber* number = [NSNumber numberWithInteger: [self.activeFeatureLayer objectIdForFeature:popup.graphic]];
@@ -463,5 +468,8 @@ didFailToLoadLayer:(AGSWebMapLayerInfo *) 	layerInfo
     
 }
 
+-(BOOL)isIPad {
+    return ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad);
+}
 
 @end

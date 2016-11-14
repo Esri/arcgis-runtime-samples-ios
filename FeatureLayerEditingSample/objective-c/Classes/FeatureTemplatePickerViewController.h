@@ -23,7 +23,7 @@
 
 -(void)featureTemplatePickerViewControllerWasDismissed: (FeatureTemplatePickerViewController*) featureTemplatePickerViewController;
 
--(void)featureTemplatePickerViewController:(FeatureTemplatePickerViewController*) featureTemplatePickerViewController didSelectFeatureTemplate:(AGSFeatureTemplate*)template forFeatureLayer:(AGSFeatureLayer*)featureLayer;
+-(void)featureTemplatePickerViewController:(FeatureTemplatePickerViewController *)featureTemplatePickerViewController didSelectFeatureTemplate:(AGSFeatureTemplate *)template forTable:(AGSArcGISFeatureTable *)table;
 
 @end
 
@@ -57,6 +57,9 @@
 @property (nonatomic, weak) AGSFeatureType* featureType;
 @property (nonatomic, weak) AGSFeatureTemplate* featureTemplate;
 @property (nonatomic, weak) AGSFeatureLayer* featureLayer;
+@property (nonatomic, strong) AGSImage *swatch;
+@property (nonatomic, strong) AGSArcGISFeatureTable* featureTable;
+@property (nonatomic, strong) AGSRenderer* renderer;
 
 @end
 

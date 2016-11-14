@@ -33,14 +33,16 @@
         }];
     }
     else {
+        //
         // we should call this right away so the OS sees us as a good citizen.
         completionHandler(UIBackgroundFetchResultNoData);
     }
+
 }
 
 + (void) downloadJobResultInBackgroundWithURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler{
     //
-    // this will allow the AGSGDBSyncTask to monitor status of background download and invoke its own
+    // this will allow the AGSApplicationDelegate to monitor status of background download and invoke the AGSGDBSyncTask
     // completion block when the download is done.
     [[AGSApplicationDelegate sharedApplicationDelegate] application:[UIApplication sharedApplication] handleEventsForBackgroundURLSession:identifier completionHandler:completionHandler];
 }

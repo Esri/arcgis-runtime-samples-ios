@@ -52,7 +52,6 @@
                 FeatureTemplatePickerInfo* info =
                 [[FeatureTemplatePickerInfo alloc] init];
                 info.featureTable = featureTable;
-                info.layerInfo = layerInfo;
                 info.renderer = renderer;
                 info.featureTemplate = template;
                 info.featureType = type;
@@ -71,7 +70,6 @@
             FeatureTemplatePickerInfo* info = 
             [[FeatureTemplatePickerInfo alloc] init];
             info.featureTable = featureTable;
-            info.layerInfo = layerInfo;
             info.renderer = renderer;
             info.featureTemplate = template;
             info.featureType = nil;

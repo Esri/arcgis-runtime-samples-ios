@@ -18,6 +18,7 @@
 #import "UIAlertView+NSCookbook.h"
 #import "LoadingView.h"
 #import "BackgroundHelper.h"
+#import "AppDelegate.h"
 
 #define kTilePackageName @"SanFrancisco"
 #define kFeatureServiceURL @"https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer"
@@ -91,12 +92,12 @@
     AGSTileCache *tileCache = [AGSTileCache tileCacheWithName:kTilePackageName];
     self.localTiledLayer = [AGSArcGISTiledLayer ArcGISTiledLayerWithTileCache:tileCache];
     AGSBasemap *basemap = [AGSBasemap basemapWithBaseLayer:self.localTiledLayer];
-
+    
     //create the map with the basemap and set it on the map view
     self.map = [AGSMap mapWithBasemap:basemap];
     self.mapView.map = self.map;
-    
 
+    
     //load the map
     [self.map loadWithCompletion:^(NSError * _Nullable error) {
         [weakSelf mapViewDidLoad:self.mapView];
@@ -349,9 +350,15 @@
     
     __weak __typeof(self) weakSelf = self;
     self.syncJob = [self.gdbTask syncJobWithParameters:param geodatabase:self.geodatabase];
+
+    //set current job so BackgroundHelper can function
+    ((AppDelegate *)[UIApplication sharedApplication].delegate).currentJob = self.syncJob;
     [self.syncJob startWithStatusHandler:^(AGSJobStatus status) {
         [weakSelf logStatus:[NSString stringWithFormat:@"sync status: %@", [weakSelf jobStatusAsString:status]]];
     } completion:^(NSArray<AGSSyncLayerResult *> *result, NSError *error) {
+        //clear current job
+        ((AppDelegate *)[UIApplication sharedApplication].delegate).currentJob = nil;
+
         if (error){
             [self logStatus:[NSString stringWithFormat:@"error sync'ing: %@", error.localizedDescription]];
             [SVProgressHUD showErrorWithStatus:@"Error encountered"];
@@ -466,7 +473,6 @@
     }
     params.layerOptions = layerOptions;
     params.returnAttachments = YES;
-    params.syncModel = AGSSyncDirectionBidirectional;
     
     self.newlyDownloaded = NO;
     [SVProgressHUD showWithStatus:@"Preparing to \n download"];
@@ -479,6 +485,8 @@
     
     //start generating the geodatabase
     __weak __typeof(self) weakSelf = self;
+    //set current job so BackgroundHelper can function
+    ((AppDelegate *)[UIApplication sharedApplication].delegate).currentJob = self.generateGDBJob;
     [self.generateGDBJob startWithStatusHandler:^(AGSJobStatus status) {
         //If we are fetching result, display download progress
         if(status == AGSJobStatusStarted){
@@ -493,6 +501,9 @@
         }
         [SVProgressHUD showWithStatus:[weakSelf jobStatusAsString:status]];
     } completion:^(AGSGeodatabase *result, NSError * error) {
+        //clear current job
+        ((AppDelegate *)[UIApplication sharedApplication].delegate).currentJob = nil;
+
         if (error){
             //handle the error
             weakSelf.goingLocal = NO;
@@ -548,7 +559,7 @@
 
 #pragma mark - FeatureTemplatePickerViewControllerDelegate methods
 
-- (void)featureTemplatePickerViewController:(FeatureTemplatePickerViewController *)featureTemplatePickerViewController didSelectFeatureTemplate:(AGSFeatureTemplate *)template forLayer:(AGSArcGISFeatureTable *)table{
+- (void)featureTemplatePickerViewController:(FeatureTemplatePickerViewController *)featureTemplatePickerViewController didSelectFeatureTemplate:(AGSFeatureTemplate *)template forTable:(AGSArcGISFeatureTable *)table{
     
     //if iPad
     if ([self isIPad]) {

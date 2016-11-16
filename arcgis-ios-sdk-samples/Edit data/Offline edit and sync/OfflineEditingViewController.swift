@@ -30,6 +30,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     @IBOutlet var featureLayersContainerView:UIView!
     
     private var map:AGSMap!
+    private var sketchEditor:AGSSketchEditor!
     private let FEATURE_SERVICE_URL = NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
     private var featureTable:AGSServiceFeatureTable!
     private var syncTask:AGSGeodatabaseSyncTask!
@@ -64,6 +65,10 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
+        
+        //initialize sketch editor and assign to map view
+        self.sketchEditor = AGSSketchEditor()
+        self.mapView.sketchEditor = self.sketchEditor
         
         //initialize sync task
         self.syncTask = AGSGeodatabaseSyncTask(URL: self.FEATURE_SERVICE_URL)
@@ -434,7 +439,18 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     //MARK: - AGSPopupsViewControllerDelegate
 
     func popupsViewController(popupsViewController: AGSPopupsViewController, sketchEditorForPopup popup: AGSPopup) -> AGSSketchEditor? {
-        return AGSSketchEditor()
+        
+        
+        if let geometry = popup.geoElement.geometry {
+            
+            //start sketch editor
+            self.mapView.sketchEditor?.startWithGeometry(geometry)
+            
+            //zoom to the existing feature's geometry
+            self.mapView.setViewpointGeometry(geometry.extent, padding: 10, completion: nil)
+        }
+        
+        return self.sketchEditor
     }
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryWithSketchEditor sketchEditor: AGSSketchEditor?, forPopup popup: AGSPopup) {
@@ -442,17 +458,8 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         //Dismiss the popup view controller
         self.dismissViewControllerAnimated(true, completion: nil)
         
-        //assign sketch editor to map view
-        self.mapView.sketchEditor = sketchEditor
-        
         //Prepare the current view controller for sketch mode
         self.mapView.callout.hidden = true
-        
-        //zoom to the existing feature's geometry
-        if let geometry = popup.geoElement.geometry {
-            self.mapView.sketchEditor?.startWithGeometry(geometry)
-            self.mapView.setViewpointGeometry(geometry.extent, padding: 10, completion: nil)
-        }
         
         //TODO: Hide the feature
         
@@ -466,10 +473,6 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.doneBBI.enabled = false
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(OfflineEditingViewController.sketchChanged(_:)), name: AGSSketchEditorGeometryDidChangeNotification, object: nil)
-    }
-    
-    func popupsViewController(popupsViewController: AGSPopupsViewController, didDeleteForPopup popup: AGSPopup) {
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, didFinishEditingForPopup popup: AGSPopup) {

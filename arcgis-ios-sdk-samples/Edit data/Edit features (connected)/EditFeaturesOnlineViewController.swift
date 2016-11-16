@@ -22,6 +22,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     @IBOutlet private weak var doneBBI:UIBarButtonItem!
     
     private var map:AGSMap!
+    private var sketchEditor:AGSSketchEditor!
     private var featureLayer:AGSFeatureLayer!
     private var popupsVC:AGSPopupsViewController!
     
@@ -43,7 +44,9 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
         self.map.operationalLayers.addObject(featureLayer)
         
-        
+        //initialize sketch editor and assign to map view
+        self.sketchEditor = AGSSketchEditor()
+        self.mapView.sketchEditor = self.sketchEditor
                 
         //hide the sketchToolbar initially
         self.sketchToolbar.hidden = true
@@ -59,7 +62,12 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     }
     
     func applyEdits() {
+        
+        //show progress hud
+        SVProgressHUD.showWithStatus("Applying edits", maskType: .Gradient)
+        
         (self.featureLayer.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion { (result:[AGSFeatureEditResult]?, error:NSError?) -> Void in
+            
             if let error = error {
                 SVProgressHUD.showErrorWithStatus("Error while applying edits :: \(error.localizedDescription)")
             }
@@ -103,70 +111,71 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     //MARK: -  AGSPopupsViewControllerDelegate methods
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, sketchEditorForPopup popup: AGSPopup) -> AGSSketchEditor? {
-        return AGSSketchEditor()
+        
+        if let geometry = popup.geoElement.geometry {
+            
+            //start sketch editing
+            self.mapView.sketchEditor?.startWithGeometry(geometry)
+            
+            //zoom to the existing feature's geometry
+            self.mapView.setViewpointGeometry(geometry.extent, padding: 10, completion: nil)
+        }
+        
+        return self.sketchEditor
     }
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryWithSketchEditor sketchEditor: AGSSketchEditor?, forPopup popup: AGSPopup) {
     
         //Dismiss the popup view controller
         self.dismissViewControllerAnimated(true, completion: nil)
-    
-        //assign sketchEditor to map view
-        self.mapView.sketchEditor = sketchEditor
         
         //Prepare the current view controller for sketch mode
         self.mapView.callout.hidden = true
         
-        //start sketch editing and
-        //zoom to the existing feature's geometry
-        if let geometry = popup.geoElement.geometry {
-            self.mapView.sketchEditor?.startWithGeometry(geometry)
-            self.mapView.setViewpointGeometry(geometry.extent, padding: 10, completion: nil)
-        }
-        
         //hide the back button
         self.navigationItem.hidesBackButton = true
+        
         //disable the code button
         self.navigationItem.rightBarButtonItem?.enabled = false
+        
         //unhide the sketchToolbar
         self.sketchToolbar.hidden = false
+        
         //disable the done button until any geometry changes
         self.doneBBI.enabled = false
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditFeaturesOnlineViewController.sketchChanged(_:)), name: AGSSketchEditorGeometryDidChangeNotification, object: nil)
     }
     
-    func popupsViewController(popupsViewController: AGSPopupsViewController, didDeleteForPopup popup: AGSPopup) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func popupsViewController(popupsViewController: AGSPopupsViewController, didCancelEditingForPopup popup: AGSPopup) {
         
-        self.applyEdits()
+        //stop sketch editor
+        self.disableSketchEditor()
     }
     
     func popupsViewController(popupsViewController: AGSPopupsViewController, didFinishEditingForPopup popup: AGSPopup) {
         
+        //stop sketch editor
         self.disableSketchEditor()
         
-        //Tell the user edits are being saved int the background
-        SVProgressHUD.showWithStatus("Saving feature details...", maskType: .Gradient)
-        
         let feature = popup.geoElement as! AGSFeature
+        
         // simplify the geometry, this will take care of self intersecting polygons and
         feature.geometry = AGSGeometryEngine.simplifyGeometry(feature.geometry!)
+        
         //normalize the geometry, this will take care of geometries that extend beyone the dateline
         //(ifwraparound was enabled on the map)
         feature.geometry = AGSGeometryEngine.normalizeCentralMeridianOfGeometry(feature.geometry!)
-
+        
+        //apply edits
         self.applyEdits()
     }
     
-    func popupsViewController(popupsViewController: AGSPopupsViewController, didCancelEditingForPopup popup: AGSPopup) {
-        
-        self.disableSketchEditor()
-    }
-    
     func popupsViewControllerDidFinishViewingPopups(popupsViewController: AGSPopupsViewController) {
+        
         //dismiss the popups view controller
         self.dismissViewControllerAnimated(true, completion:nil)
+        
         self.popupsVC = nil
     }
     
@@ -179,15 +188,22 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     }
     
     @IBAction func sketchDoneAction() {
+        //enable or unhide navigation bar button
         self.navigationItem.hidesBackButton = false
         self.navigationItem.rightBarButtonItem?.enabled = true
+        
+        //present the popups view controller again
         self.presentViewController(self.popupsVC, animated:true, completion:nil)
+        
+        //remove self as observer for notifications
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     private func disableSketchEditor() {
+        //stop sketch editor
         self.mapView.sketchEditor?.stop()
-        self.mapView.sketchEditor?.clearGeometry()
+        
+        //hide sketch toolbar
         self.sketchToolbar.hidden = true
     }
     

@@ -25,22 +25,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // Tell the AGSAuthenticationManager to automatically sync credentials from the singleton
+    // in-memory credentialCache to the keychain
+    [[AGSAuthenticationManager sharedAuthenticationManager].credentialCache enableAutoSyncToKeychainWithIdentifier:@"com.esri.OAuthLoginSample" accessGroup:nil acrossDevices:NO];
+    
     return YES;
-}
-
-- (void) saveCredentialToKeychain:(AGSCredential*)credential{
-    AGSKeychainItemWrapper* wrapper = [[AGSKeychainItemWrapper alloc]initWithIdentifier:@"com.esri.OAuthLoginSample" accessGroup:nil];
-    [wrapper setKeychainObject:credential];
-}
-
-- (void) removeCredentialFromKeychain{
-    AGSKeychainItemWrapper* wrapper = [[AGSKeychainItemWrapper alloc]initWithIdentifier:@"com.esri.OAuthLoginSample" accessGroup:nil];
-    [wrapper reset];
-}
-
-- (AGSCredential*) fetchCredentialFromKeychain{
-    AGSKeychainItemWrapper* wrapper = [[AGSKeychainItemWrapper alloc]initWithIdentifier:@"com.esri.OAuthLoginSample" accessGroup:nil];
-    return (AGSCredential*)[wrapper keychainObject];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

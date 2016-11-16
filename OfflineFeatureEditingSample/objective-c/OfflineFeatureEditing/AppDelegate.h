@@ -21,6 +21,8 @@
 
 @property (strong, nonatomic) MainViewController *viewController;
 
+@property (nonatomic, weak) AGSJob *currentJob;
+
 -(void)logAppStatus:(NSString*)status;
 
 @end

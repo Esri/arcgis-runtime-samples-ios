@@ -18,6 +18,7 @@
 #import "UIAlertView+NSCookbook.h"
 #import "LoadingView.h"
 #import "BackgroundHelper.h"
+#import "AppDelegate.h"
 
 #define kTilePackageName @"SanFrancisco"
 #define kFeatureServiceURL @"https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer"
@@ -76,6 +77,8 @@
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.mapContainer addSubview:self.mapView];
     self.mapView.touchDelegate = self;
+    //Set up layerViewStateChangedHandler, the replacement for AGSLayerDelegate, using
+    //the original layerDidLoad and didFailtoLoad methods.
     __weak __typeof(self) weakSelf = self;
     self.mapView.layerViewStateChangedHandler = ^(AGSLayer *layer, AGSLayerViewState *layerViewState){
         if (layerViewState.status == AGSLayerViewStatusActive) {
@@ -91,13 +94,14 @@
     AGSTileCache *tileCache = [AGSTileCache tileCacheWithName:kTilePackageName];
     self.localTiledLayer = [AGSArcGISTiledLayer ArcGISTiledLayerWithTileCache:tileCache];
     AGSBasemap *basemap = [AGSBasemap basemapWithBaseLayer:self.localTiledLayer];
-
+    
     //create the map with the basemap and set it on the map view
     self.map = [AGSMap mapWithBasemap:basemap];
     self.mapView.map = self.map;
-    
 
-    //load the map
+    
+    //load the map, calling loadWithCompletion; the completion handler replaces, in part,
+    //the AGSMapViewDelegate.  Call the original mapViewDidLoad methods when the map loads.
     [self.map loadWithCompletion:^(NSError * _Nullable error) {
         [weakSelf mapViewDidLoad:self.mapView];
     }];
@@ -203,6 +207,7 @@
 #pragma mark - AGSMapViewTouchDelegate methods
 -(void)geoView:(AGSGeoView *)geoView didTapAtScreenPoint:(CGPoint)screenPoint mapPoint:(AGSPoint *)mapPoint {
     
+    //Show popups for features that were tapped on
     __weak __typeof(self) weakSelf = self;
     [self.mapView identifyLayersAtScreenPoint:screenPoint tolerance:10 returnPopupsOnly:NO completion:^(NSArray<AGSIdentifyLayerResult *> * _Nullable identifyResults, NSError * _Nullable error) {
         NSMutableArray *features = [NSMutableArray array];
@@ -349,9 +354,15 @@
     
     __weak __typeof(self) weakSelf = self;
     self.syncJob = [self.gdbTask syncJobWithParameters:param geodatabase:self.geodatabase];
+
+    //set current job so BackgroundHelper can function
+    ((AppDelegate *)[UIApplication sharedApplication].delegate).currentJob = self.syncJob;
     [self.syncJob startWithStatusHandler:^(AGSJobStatus status) {
         [weakSelf logStatus:[NSString stringWithFormat:@"sync status: %@", [weakSelf jobStatusAsString:status]]];
     } completion:^(NSArray<AGSSyncLayerResult *> *result, NSError *error) {
+        //clear current job
+        ((AppDelegate *)[UIApplication sharedApplication].delegate).currentJob = nil;
+
         if (error){
             [self logStatus:[NSString stringWithFormat:@"error sync'ing: %@", error.localizedDescription]];
             [SVProgressHUD showErrorWithStatus:@"Error encountered"];
@@ -417,15 +428,14 @@
 
     __weak __typeof(self) weakSelf = self;
     [self.gdbTask loadWithCompletion:^(NSError *error) {
-        
+        self.goingLive = NO;
+        self.viewingLocal = NO;
+
         if (error) {
             [weakSelf logStatus:[NSString stringWithFormat:@"error loading geodatabase sync task: %@", error]];
             [SVProgressHUD showErrorWithStatus:@"Couldn't load geodatabase sync task"];
         }
         else {
-            self.goingLive = NO;
-            self.viewingLocal = NO;
-
             //Remove all local layers from map
             [self.map.operationalLayers removeAllObjects];
             
@@ -445,7 +455,9 @@
             [weakSelf logStatus:@"now in live mode"];
             [weakSelf updateStatus];
         }
+        
     }];
+    
 }
 -(void)switchToLocalData{
     
@@ -466,7 +478,6 @@
     }
     params.layerOptions = layerOptions;
     params.returnAttachments = YES;
-    params.syncModel = AGSSyncDirectionBidirectional;
     
     self.newlyDownloaded = NO;
     [SVProgressHUD showWithStatus:@"Preparing to \n download"];
@@ -479,20 +490,24 @@
     
     //start generating the geodatabase
     __weak __typeof(self) weakSelf = self;
+    //set current job so BackgroundHelper can function
+    ((AppDelegate *)[UIApplication sharedApplication].delegate).currentJob = self.generateGDBJob;
     [self.generateGDBJob startWithStatusHandler:^(AGSJobStatus status) {
         //If we are fetching result, display download progress
         if(status == AGSJobStatusStarted){
             self.newlyDownloaded = YES;
-            //                NSNumber* totalBytesDownloaded = userInfo[@"AGSDownloadProgressTotalBytesDownloaded"];
-            //                NSNumber* totalBytesExpected = userInfo[@"AGSDownloadProgressTotalBytesExpected"];
-            //                if(totalBytesDownloaded!=nil && totalBytesExpected!=nil){
-            //                    double dPercentage = (double)([totalBytesDownloaded doubleValue]/[totalBytesExpected doubleValue]);
-            //                    [SVProgressHUD showProgress:dPercentage status:@"Downloading \n features"];
-            //                }
-            //            }else{
+        }
+        else{
+            //don't want to log status for "AGSJobStatusStarted" state because
+            //status block gets called many times a second when downloading.
+            //we only log status for other states here
+            [self logStatus:[NSString stringWithFormat:@"Status: %@", [weakSelf jobStatusAsString:status]]];
         }
         [SVProgressHUD showWithStatus:[weakSelf jobStatusAsString:status]];
     } completion:^(AGSGeodatabase *result, NSError * error) {
+        //clear current job
+        ((AppDelegate *)[UIApplication sharedApplication].delegate).currentJob = nil;
+
         if (error){
             //handle the error
             weakSelf.goingLocal = NO;
@@ -543,12 +558,16 @@
             }];
         }
         [weakSelf updateStatus];
+        
+        
     }];
+    
+    
 }
 
 #pragma mark - FeatureTemplatePickerViewControllerDelegate methods
 
-- (void)featureTemplatePickerViewController:(FeatureTemplatePickerViewController *)featureTemplatePickerViewController didSelectFeatureTemplate:(AGSFeatureTemplate *)template forLayer:(AGSArcGISFeatureTable *)table{
+- (void)featureTemplatePickerViewController:(FeatureTemplatePickerViewController *)featureTemplatePickerViewController didSelectFeatureTemplate:(AGSFeatureTemplate *)template forTable:(AGSArcGISFeatureTable *)table{
     
     //if iPad
     if ([self isIPad]) {
@@ -670,6 +689,7 @@
                             NSLog(@"Edit to attachment(OBJECTID = %lld) rejected by server because : %@",editResult.objectID, [editResult.error localizedDescription]);
                         }
                     }
+                    //attachments are handled in `applyEditsWithCompetion`, so no need to handle them separately.
                 }
                 
                 //Dismiss the popups VC. All edits have been applied.

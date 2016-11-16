@@ -52,7 +52,6 @@
                 FeatureTemplatePickerInfo* info =
                 [[FeatureTemplatePickerInfo alloc] init];
                 info.featureTable = featureTable;
-                info.layerInfo = layerInfo;
                 info.renderer = renderer;
                 info.featureTemplate = template;
                 info.featureType = type;
@@ -71,7 +70,6 @@
             FeatureTemplatePickerInfo* info = 
             [[FeatureTemplatePickerInfo alloc] init];
             info.featureTable = featureTable;
-            info.layerInfo = layerInfo;
             info.renderer = renderer;
             info.featureTemplate = template;
             info.featureType = nil;
@@ -146,10 +144,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //Notify the delegate that the user picked a feature template
-    if ([self.delegate respondsToSelector:@selector(featureTemplatePickerViewController:didSelectFeatureTemplate:forLayer:)]){
+    if ([self.delegate respondsToSelector:@selector(featureTemplatePickerViewController:didSelectFeatureTemplate:forTable:)]){
               
         FeatureTemplatePickerInfo* info = [self.infos objectAtIndex:indexPath.row];
-        [self.delegate featureTemplatePickerViewController:self didSelectFeatureTemplate:info.featureTemplate forLayer:info.featureTable];
+        [self.delegate featureTemplatePickerViewController:self didSelectFeatureTemplate:info.featureTemplate forTable:info.featureTable];
     }    
     
     //Unselect the cell

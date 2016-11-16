@@ -15,14 +15,14 @@
 #import "FeatureTemplatePickerViewController.h"
 #import "LoadingView.h"
 
-@interface FeatureLayerEditingSampleViewController : UIViewController<AGSAttachmentManagerDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate, AGSMapViewTouchDelegate,AGSPopupsContainerDelegate, AGSFeatureLayerEditingDelegate, AGSWebMapDelegate, FeatureTemplatePickerDelegate, UIAlertViewDelegate> {
+@interface FeatureLayerEditingSampleViewController : UIViewController<AGSCalloutDelegate, AGSGeoViewTouchDelegate, AGSPopupsViewControllerDelegate, FeatureTemplatePickerDelegate, UIAlertViewDelegate> {
     
 	AGSMapView *_mapView;
-    AGSWebMap* _webmap;
+    AGSMap* _webmap;
 	AGSFeatureLayer *_featureLayer;
-    AGSPopupsContainerViewController* _popupVC;
-    AGSGraphic* _newFeature;
-    AGSSketchGraphicsLayer* _sketchLayer;
+    AGSPopupsViewController* _popupVC;
+    AGSFeature* _newFeature;
+    AGSSketchEditor* _sketchEditor;
 
     UIView* _bannerView;
     UIAlertView* _alertView;
@@ -35,10 +35,10 @@
 }
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
-@property (nonatomic, strong) AGSWebMap* webmap;
+@property (nonatomic, strong) AGSMap* webmap;
 @property (nonatomic, strong) AGSFeatureLayer *activeFeatureLayer;
-@property (nonatomic, strong) AGSPopupsContainerViewController* popupVC;
-@property (nonatomic, strong) AGSSketchGraphicsLayer* sketchLayer;
+@property (nonatomic, strong) AGSPopupsViewController* popupVC;
+@property (nonatomic, strong) AGSSketchEditor* sketchEditor;
 
 @property (nonatomic, strong) FeatureTemplatePickerViewController* featureTemplatePickerViewController;
 

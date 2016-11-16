@@ -50,6 +50,7 @@
                 info.featureLayer = layer;
                 info.featureTemplate = template;
                 info.featureType = nil;
+                info.featureTable = fTable;
                 
                 //Add to array
                 [self.infos addObject:info];
@@ -66,6 +67,7 @@
                     info.featureLayer = layer;
                     info.featureTemplate = template;
                     info.featureType = type;
+                    info.featureTable = fTable;
                     
                     //Add to  array
                     [self.infos addObject:info];
@@ -139,10 +141,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //Notify the delegate that the user picked a feature template
-    if ([self.delegate respondsToSelector:@selector(featureTemplatePickerViewController:didSelectFeatureTemplate:forFeatureLayer:)]){
+    if ([self.delegate respondsToSelector:@selector(featureTemplatePickerViewController:didSelectFeatureTemplate:forTable:)]){
               
         FeatureTemplatePickerInfo* info = [self.infos objectAtIndex:indexPath.row];
-        [self.delegate featureTemplatePickerViewController:self didSelectFeatureTemplate:info.featureTemplate forFeatureLayer:info.featureLayer];
+        [self.delegate featureTemplatePickerViewController:self didSelectFeatureTemplate:info.featureTemplate forTable:info.featureTable];
     }    
     
     //Unselect the cell

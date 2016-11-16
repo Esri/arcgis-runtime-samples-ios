@@ -81,7 +81,8 @@
     self.mapView.interactionOptions.magnifierEnabled = YES;
 	
     AGSPortal *portal = [AGSPortal ArcGISOnlineWithLoginRequired:NO];
-    AGSPortalItem *item = [AGSPortalItem portalItemWithPortal:portal itemID:@"b31153c71c6c429a8b24c1751a50d3ad"];
+    AGSPortalItem *item = [AGSPortalItem portalItemWithPortal:portal itemID:@"429007258c004382a4569f893722ac18"];
+//    AGSPortalItem *item = [AGSPortalItem portalItemWithPortal:portal itemID:@"b31153c71c6c429a8b24c1751a50d3ad"];
     self.webmap = [AGSMap mapWithItem:item];
     //designate a delegate to be notified as web map is opened
     self.mapView.map = self.webmap;
@@ -103,6 +104,44 @@
     [super viewDidLoad];
 }
 
+#pragma mark - geoView touch delegate methods
+
+-(void)geoView:(AGSGeoView *)geoView didTapAtScreenPoint:(CGPoint)screenPoint mapPoint:(AGSPoint *)mapPoint {
+    //Show popups for features that were tapped on
+    if (self.mapView.callout.hidden) {
+        __weak __typeof(self) weakSelf = self;
+        [self.mapView identifyLayersAtScreenPoint:screenPoint
+                                        tolerance:10
+                                 returnPopupsOnly:YES
+                           maximumResultsPerLayer:1
+                                       completion:^(NSArray<AGSIdentifyLayerResult *> * _Nullable identifyResults, NSError * _Nullable error) {
+            NSMutableArray *features = [NSMutableArray array];
+            for (AGSIdentifyLayerResult *result in identifyResults) {
+                [features addObjectsFromArray:result.geoElements];
+            }
+            if (features.count > 0) {
+                weakSelf.mapView.callout.title = [((id<AGSGeoElement>)features[0]).attributes objectForKey:@"req_type"];
+                weakSelf.mapView.callout.detail = [((id<AGSGeoElement>)features[0]).attributes objectForKey:@"address"];
+                [weakSelf.mapView.callout showCalloutForFeature:features[0] tapLocation:mapPoint animated:YES];
+            }
+        }];
+    }
+    else {  //hide the callout
+        [self.mapView.callout dismiss];
+    }
+//    
+//    
+//    //if the callout is not shown, show the callout with the coordinates of the tapped location
+//    if (self.mapView.callout.hidden) {
+//        self.mapView.callout.title = @"Location";
+//        self.mapView.callout.detail = [NSString stringWithFormat: @"x: %.2f, y: %.2f", mapPoint.x, mapPoint.y];
+//        self.mapView.callout.accessoryButtonHidden = NO;
+//        [self.mapView.callout showCalloutAt:mapPoint screenOffset:CGPointZero rotateOffsetWithMap:NO animated:YES];
+//    }
+//    else {  //hide the callout
+//        [self.mapView.callout dismiss];
+//    }
+}
 
 #pragma mark - layer/map handler methods
 
@@ -111,15 +150,10 @@
     //The last feature layer we encounter we will use for editing features
     //If the web map contains more than one feature layer, the sample may need to be modified to handle that
     if([layer isKindOfClass:[AGSFeatureLayer class]]){
-        AGSFeatureLayer* featureLayer = (AGSFeatureLayer*)layer;
-
-        //This view controller should be notified when features are edited
-//        featureLayer.editingDelegate = self;
-        
-        featureLayer.popupDefinition = [AGSPopupDefinition popupDefinitionWithPopupSource:featureLayer];
+        self.activeFeatureLayer = (AGSFeatureLayer*)layer;
         
         //Add templates from this layer to the Feature Template Picker
-        [self.featureTemplatePickerViewController addTemplatesFromLayer:featureLayer];
+        [self.featureTemplatePickerViewController addTemplatesFromLayer:self.activeFeatureLayer];
     }
 }
 
@@ -204,10 +238,18 @@
 - (void)didTapAccessoryButtonForCallout:(AGSCallout *)callout {
     
     AGSFeature* feature = (AGSFeature*)callout.representedObject;
-//    self.activeFeatureLayer = (AGSFeatureLayer*) graphic.layer;
     //Show popup for the graphic because the user tapped on the callout accessory button
-    AGSPopup *popup = [AGSPopup popupWithGeoElement:feature popupDefinition:feature.featureTable.featureLayer.popupDefinition];
-
+    AGSPopupDefinition *pud = feature.featureTable.featureLayer.popupDefinition;
+    for (AGSPopupField *field in pud.fields) {
+        NSLog(@"field name = %@; isVisible = %@", field.fieldName, field.isVisible ? @"YES" : @"NO");
+    }
+    for (AGSPopupField *field in self.activeFeatureLayer.popupDefinition.fields) {
+        NSLog(@"self.activeFeatureLayer field name = %@; isVisible = %@", field.fieldName, field.isVisible ? @"YES" : @"NO");
+    }
+//    AGSPopup *popup = [AGSPopup popupWithGeoElement:feature popupDefinition:self.activeFeatureLayer.popupDefinition];
+    
+    AGSPopup *popup = [AGSPopup popupWithGeoElement:feature];
+    
     self.popupVC = [AGSPopupsViewController popupsViewControllerWithPopups:@[popup] containerStyle:AGSPopupsViewControllerContainerStyleNavigationBar];
     self.popupVC.delegate = self;
     self.popupVC.modalTransitionStyle =  UIModalTransitionStyleFlipHorizontal;
@@ -220,111 +262,125 @@
 
 
 
-#pragma mark -  AGSPopupsContainerDelegate methods
+#pragma mark -  AGSPopupsViewControllerDelegate methods
 
-- (AGSGeometry *)popupsContainer:(id) popupsContainer wantsNewMutableGeometryForPopup:(AGSPopup *) popup {
-    //Return an empty mutable geometry of the type that our feature layer uses
-    return AGSMutableGeometryFromType( ((AGSFeatureLayer*)popup.graphic.layer).geometryType, self.mapView.spatialReference);
+-(AGSSketchEditor *)popupsViewController:(AGSPopupsViewController *)popupsViewController sketchEditorForPopup:(AGSPopup *)popup {
+    if (!self.sketchEditor) {
+        self.sketchEditor = [AGSSketchEditor sketchEditor];
+    }
+    
+    if (popup.geoElement.geometry) {
+        [self.sketchEditor startWithGeometry:popup.geoElement.geometry];
+        [self.mapView setViewpointGeometry:popup.geoElement.geometry.extent completion:nil];
+    }
+    else if ([popup.geoElement isKindOfClass:[AGSFeature class]] &&
+             [((AGSFeature *)popup.geoElement).featureTable isKindOfClass:[AGSArcGISFeatureTable class]]) {
+        AGSArcGISFeatureTable *fTable = (AGSArcGISFeatureTable *)((AGSFeature *)popup.geoElement).featureTable;
+        [self.sketchEditor startWithGeometryType:fTable.geometryType];
+    }
+    else {
+        [self.sketchEditor startWithGeometryType:AGSGeometryTypePolygon];
+    }
+    
+    self.mapView.sketchEditor = self.sketchEditor;
+    
+    return self.sketchEditor;
 }
 
-- (void)popupsContainer:(id) popupsContainer readyToEditGeometry:(AGSGeometry *) geometry forPopup:(AGSPopup *) popup{
-    //Dismiss the popup view controller
+-(void)popupsViewController:(AGSPopupsViewController *)popupsViewController readyToEditGeometryWithSketchEditor:(AGSSketchEditor *)sketchEditor forPopup:(AGSPopup *)popup {
+    
     [self dismissViewControllerAnimated:YES completion:nil];
-    
-    //Prepare the current view controller for sketch mode
+    self.mapView.sketchEditor = self.sketchEditor; //activate the sketch layer
     self.bannerView.hidden = NO;
-    self.mapView.touchDelegate = self.sketchLayer; //activate the sketch layer
     self.mapView.callout.hidden = YES;
-
-    //Dont show callout when the sketch layer is active.
-    //The user is sketching and even if he taps on a feature,
-    //we don't want to display the callout and interfere with the sketching workflow
-    self.mapView.allowCallout = NO;
-    
-    //Assign the sketch layer the geometry that is being passed to us for 
-    //the active popup's graphic. This is the starting point of the sketch
-    self.sketchLayer.geometry = geometry;
-    
     
     //zoom to the existing feature's geometry
-    AGSEnvelope* env = nil;
-    AGSGeometryType geoType = AGSGeometryTypeForGeometry(self.sketchLayer.geometry);
-    if(geoType == AGSGeometryTypePolygon){
-        env = ((AGSPolygon*)self.sketchLayer.geometry).envelope;
-    }else if(geoType == AGSGeometryTypePolyline){
-        env = ((AGSPolyline*)self.sketchLayer.geometry).envelope ;
-    }
+    AGSEnvelope* env = popup.geoElement.geometry.extent;
+    AGSEnvelopeBuilder *builder = [env toBuilder];
+    [builder expandByFactor:1.4];
+    env = [builder toGeometry];
     
-    if(env!=nil){
-        AGSMutableEnvelope* mutableEnv  = [env mutableCopy];
-        [mutableEnv expandByFactor:1.4];
-        [self.mapView zoomToEnvelope:mutableEnv animated:YES];
-    }
-    
-    //replace the button in the navigation bar to allow a user to 
-    //indicate that the sketch is done
-	self.navigationItem.rightBarButtonItem = self.sketchCompleteButton;
+    [self.mapView setViewpointGeometry:env completion:nil];
+
+    self.navigationItem.rightBarButtonItem = self.sketchCompleteButton;
     self.sketchCompleteButton.enabled = NO;
 }
-     
-     -(BOOL)popupsViewController:(AGSPopupsViewController *)popupsViewController wantsToDeleteForPopup:(AGSPopup *)popup {
-         return YES;
-     }
-     
-- (void)popupsContainer:(id<AGSPopupsContainer>) popupsContainer wantsToDeleteForPopup:(AGSPopup *) popup {
-    //Call method on feature layer to delete the feature
-    NSNumber* number = [NSNumber numberWithInteger: [self.activeFeatureLayer objectIdForFeature:popup.graphic]];
-    NSArray* oids = [NSArray arrayWithObject: number ];
-    [self.activeFeatureLayer deleteFeaturesWithObjectIds:oids ];
-    self.loadingView = [LoadingView loadingViewInView:self.popupVC.view withText:@"Deleting feature..."];
 
+-(BOOL)popupsViewController:(AGSPopupsViewController *)popupsViewController wantsToDeleteForPopup:(AGSPopup *)popup {
+    return YES;
 }
 
--(void)popupsContainer:(id<AGSPopupsContainer>)popupsContainer didFinishEditingForPopup:(AGSPopup*)popup{
-	// simplify the geometry, this will take care of self intersecting polygons and 
-	popup.graphic.geometry = [[AGSGeometryEngine defaultGeometryEngine]simplifyGeometry:popup.graphic.geometry];
+-(void)popupsViewController:(AGSPopupsViewController *)popupsViewController didDeleteForPopup:(AGSPopup *)popup {
+    AGSFeature *feature = (AGSFeature *)popup.geoElement;
+    AGSServiceFeatureTable *fst = (AGSServiceFeatureTable *)feature.featureTable;
+    [fst applyEditsWithCompletion:^(NSArray<AGSFeatureEditResult *> * result, NSError *error) {
+        [self.loadingView removeView];
+        if(error){
+            UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Could not apply edit to server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [av show];
+            NSLog(@"%@", [NSString stringWithFormat:@"Error while applying edit : %@",[error localizedDescription]]);
+        }else{
+            for (AGSFeatureEditResult* featureEditResult in result) {
+                if (featureEditResult.completedWithErrors) {
+                    NSLog(@"%@", [NSString stringWithFormat:@"Deleting feature(OBJECTID = %lld) rejected by server because : %@",featureEditResult.objectID, [featureEditResult.error localizedDescription]]);
+                }
+            }
+            
+            NSLog(@"feature deleted in server");
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }];
+    self.loadingView = [LoadingView loadingViewInView:self.popupVC.view withText:@"Deleting feature..."];
+}
+
+-(void)popupsViewController:(AGSPopupsViewController *)popupsViewController didFinishEditingForPopup:(AGSPopup *)popup {
+	// simplify the geometry, this will take care of self intersecting polygons and
+	popup.geoElement.geometry = [AGSGeometryEngine simplifyGeometry:popup.geoElement.geometry];
     //normalize the geometry, this will take care of geometries that extend beyone the dateline 
     //(ifwraparound was enabled on the map)
-	popup.graphic.geometry = [[AGSGeometryEngine defaultGeometryEngine]normalizeCentralMeridianOfGeometry:popup.graphic.geometry];
+	popup.geoElement.geometry = [AGSGeometryEngine normalizeCentralMeridianOfGeometry:popup.geoElement.geometry];
 	
+    AGSFeature *feature = (AGSFeature *)popup.geoElement;
+    AGSServiceFeatureTable *fst = (AGSServiceFeatureTable *)feature.featureTable;
+    [fst applyEditsWithCompletion:^(NSArray<AGSFeatureEditResult *> * result, NSError *error) {
+        [self.loadingView removeView];
+        if(error){
+            UIAlertView* av = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Could not apply edit to server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [av show];
+            NSLog(@"Error while applying edit : %@",[error localizedDescription]);
+        }else{
+            for (AGSFeatureEditResult* featureEditResult in result) {
+                if (featureEditResult.completedWithErrors) {
+                    NSLog(@"Edit to feature(objectID = %lld) rejected by server because : %@",featureEditResult.objectID, [featureEditResult.error localizedDescription]);
+                    for (AGSEditResult *editResult in featureEditResult.attachmentResults) {
+                        NSLog(@"Edit to attachment(OBJECTID = %lld) rejected by server because : %@",editResult.objectID, [editResult.error localizedDescription]);
+                    }
+                }
+            }
+            
+            //Dismiss the popups VC. All edits have been applied.
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        
+    }];
     
-	long long oid = [self.activeFeatureLayer objectIdForFeature:popup.graphic];
-	
-	if (oid > 0){
-		//feature has a valid objectid, this means it exists on the server
-        //and we simply update the exisiting feature
-		[self.activeFeatureLayer updateFeatures:[NSArray arrayWithObject:popup.graphic]];
-	} else {
-		//objectid does not exist, this means we need to add it as a new feature
-		[self.activeFeatureLayer addFeatures:[NSArray arrayWithObject:popup.graphic]];
-	}
-    
-    //Tell the user edits are being saved int the background
+    //Tell the user edits are being saved in the background
     self.loadingView = [LoadingView loadingViewInView:self.popupVC.view withText:@"Saving feature details..."];
 
-    //we will wait to post attachments till when the updates succeed
+    //attachments were handled in `applyEditsWithCompetion`, above, so no need to handle them separately.
 }
 
-- (void)popupsContainerDidFinishViewingPopups:(id) popupsContainer {
+-(void)popupsViewControllerDidFinishViewingPopups:(AGSPopupsViewController *)popupsViewController {
     //dismiss the popups view controller
     [self dismissViewControllerAnimated:YES completion:nil];
     self.popupVC = nil;
 }
 
-- (void)popupsContainer:(id) popupsContainer didCancelEditingForPopup:(AGSPopup *) popup {
+-(void)popupsViewController:(AGSPopupsViewController *)popupsViewController didCancelEditingForPopup:(AGSPopup *)popup {
     //dismiss the popups view controller
     [self dismissViewControllerAnimated:YES completion:nil];
-
-    //if we had begun adding a new feature, remove it from the layer because the user hit cancel.
-    if(_newFeature!=nil){
-        [self.activeFeatureLayer removeGraphic:_newFeature];
-        _newFeature = nil;
-    }
     
     //reset any sketch related changes we made to our main view controller
-    [self.sketchLayer clear];
-    self.mapView.touchDelegate = self;
-    self.mapView.callout.delegate = self;
     self.bannerView.hidden = YES;
     self.popupVC = nil;
 }
@@ -341,110 +397,18 @@
 
 #pragma mark - AGSFeatureLayerEditingDelegate methods
 
--(void)featureLayer:(AGSFeatureLayer *)featureLayer operation:(NSOperation *)op didFeatureEditsWithResults:(AGSFeatureLayerEditResults *)editResults{
-    
-    //Remove the activity indicator
-    [self.loadingView removeView];
-    
-    //We will assume we have to update the attachments unless
-    //1) We were adding a feature and it failed
-    //2) We were updating a feature and it failed
-    //3) We were deleting a feature
-    BOOL _updateAttachments = YES;
-    
-    if([editResults.addResults count]>0){
-        //we were adding a new feature
-        AGSEditResult* result = (AGSEditResult*)[editResults.addResults objectAtIndex:0];
-        if(!result.success){
-            //Add operation failed. We will not update attachments
-            _updateAttachments = NO;
-            //Inform user
-            [self warnUserOfErrorWithMessage:@"Could not add feature. Please try again"];
-        }
-        
-    }else if([editResults.updateResults count]>0){
-        //we were updating a feature
-        AGSEditResult* result = (AGSEditResult*)[editResults.updateResults objectAtIndex:0];
-        if(!result.success){
-            //Update operation failed. We will not update attachments
-            _updateAttachments = NO;
-            //Inform user
-            [self warnUserOfErrorWithMessage:@"Could not update feature. Please try again"];
-        }
-    }else if([editResults.deleteResults count]>0){
-        //we were deleting a feature
-        _updateAttachments = NO;
-        AGSEditResult* result = (AGSEditResult*)[editResults.deleteResults objectAtIndex:0];
-        if(!result.success){
-            //Delete operation failed. Inform user
-            [self warnUserOfErrorWithMessage:@"Could not delete feature. Please try again"];
-        }else{
-            //Delete operation succeeded
-            //Dismiss the popup view controller and hide the callout which may have been shown for
-            //the deleted feature.
-            self.mapView.callout.hidden = YES;
-            [self dismissViewControllerAnimated:YES completion:nil];
-            self.popupVC = nil;
-        }
-
-    }
-    
-    //if edits pertaining to the feature were successful...
-    if (_updateAttachments){
-        
-        [self.sketchLayer clear];
-
-        //...we post edits to the attachments 
-		AGSAttachmentManager *attMgr = [featureLayer attachmentManagerForFeature:self.popupVC.currentPopup.graphic];
-		attMgr.delegate = self;
-        
-        if([attMgr hasLocalEdits]){
-			[attMgr postLocalEditsToServer];
-            self.loadingView = [LoadingView loadingViewInView:self.popupVC.view withText:@"Saving feature attachments..."];
-        }
-        
-        
-        
-        
-	}
-
-    
-}
-
--(void)featureLayer:(AGSFeatureLayer *)featureLayer operation:(NSOperation *)op didFailFeatureEditsWithError:(NSError *)error{
-    NSLog(@"Could not commit edits because: %@", [error localizedDescription]);
-
-    [self.loadingView removeView];
-    [self warnUserOfErrorWithMessage:@"Could not save edits. Please try again"];
-}
+//These methods and delegate have been removed; the same functionality now resides in the
+//AGSServiceFeatureTable:applyEditsWithCompletion: method which gets called from the
+//AGSPopupsViewControllerDelegate delgate method: popupsViewController:didFinishEditingForPopup:
 
 
 
 #pragma mark -
 #pragma mark AGSAttachmentManagerDelegate
 
--(void)attachmentManager:(AGSAttachmentManager *)attachmentManager didPostLocalEditsToServer:(NSArray *)attachmentsPosted{
-    
-    [self.loadingView removeView];
-    
-    //loop through all attachments looking for failures
-    BOOL _anyFailure = NO;
-    for (AGSAttachment* attachment in attachmentsPosted) {
-        if(attachment.networkError!=nil || attachment.editResultError!=nil){
-            _anyFailure = YES;
-            NSString* reason = nil;
-            if(attachment.networkError!=nil)
-                reason = [attachment.networkError localizedDescription];
-            else if(attachment.editResultError !=nil)
-                reason = attachment.editResultError.errorDescription;
-            NSLog(@"Attachment '%@' could not be synced with server because %@",attachment.attachmentInfo.name,reason);
-        }
-    }
-    
-    if(_anyFailure){
-        [self warnUserOfErrorWithMessage:@"Some attachment edits could not be synced with the server. Please try again"];
-    }
-}
+//This methods and delegate have been removed; the same functionality now resides in the
+//AGSServiceFeatureTable:applyEditsWithCompletion: method which gets called from the
+//AGSPopupsViewControllerDelegate delgate method: popupsViewController:didFinishEditingForPopup:
 
 
 

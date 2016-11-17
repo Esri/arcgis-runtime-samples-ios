@@ -203,7 +203,7 @@
                                    weakSelf.activeGraphic.geometry = nil;
                                    
                                    //Disable tools until we finish modifying a graphic
-                                   [self setEnabledForGeometrySketchTools:NO];
+                                   [weakSelf setEnabledForGeometrySketchTools:NO];
                                    
                                    //select appropriate sketch tool
                                    switch (geom.geometryType) {
@@ -223,6 +223,8 @@
 }
 
 -(AGSSymbol*)symbolForGeometryType:(AGSGeometryType)geometryType{
+    
+    // give back an appropriate symbol for the geometry type of graphic we are displaying
     
     switch (geometryType) {
         case AGSGeometryTypePoint:

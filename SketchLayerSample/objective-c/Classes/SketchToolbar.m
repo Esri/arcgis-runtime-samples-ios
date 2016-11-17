@@ -33,7 +33,7 @@
 		self.mapView = mapView;
         self.sketchEditor = mapView.sketchEditor;
 		self.graphicsOverlay = graphicsOverlay;
-
+        
 		//Get references to the UI elements in the toolbar
 		//Each UI element was assigned a "tag" in the nib file to make it easy to find them
 		self.sketchTools = (UISegmentedControl* )[toolbar viewWithTag:55];
@@ -111,16 +111,22 @@
 		
 	}else {
 		//Add a new graphic to the graphics layer
-		AGSGraphic* graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:nil attributes:nil];
+		AGSGraphic* graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:[self symbolForGeometryType:sketchGeometry.geometryType] attributes:nil];
 		[self.graphicsOverlay.graphics addObject:graphic];
         
         //enable the select tool if there is atleast one graphic to select
         [self.sketchTools setEnabled:(self.graphicsOverlay.graphics.count>0) forSegmentAtIndex:3];
-
+        if (self.graphicsOverlay.graphics.count>0){
+            self.sketchTools.selectedSegmentIndex = 3;
+            [self.sketchTools setEnabled:YES forSegmentAtIndex:3];
+        }
+        else{
+            [self.sketchTools setEnabled:NO forSegmentAtIndex:3];
+        }
 	}
 	
-	[self.sketchEditor clearGeometry];
-	[self.sketchEditor.undoManager removeAllActions];
+    // stop sketch editor now
+    [self.sketchEditor stop];
 }
 
 - (IBAction) toolSelected {
@@ -151,38 +157,68 @@
 	
 }
 
-- (void)mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features{
-	//find which graphic to modify
-	NSEnumerator *enumerator = [features objectEnumerator];
-	NSArray* graphicArray = (NSArray*) [enumerator nextObject];
-	if(graphicArray!=nil && [graphicArray count]>0){
-		//Get the graphic's geometry to the sketch layer so that it can be modified
-		self.activeGraphic = (AGSGraphic*)[graphicArray objectAtIndex:0];
-		AGSGeometry* geom = self.activeGraphic.geometry;
-        
-        //clear out the graphic's geometry so that it is not displayed under the sketch
-        self.activeGraphic.geometry = nil;
-        
-        //Feed the graphic's geometry to the sketch layer so that user can modify it
-        [self.sketchEditor startWithGeometry:geom];
-		
-        //Disable other tools until we finish modifying a graphic
-        [self.sketchTools setEnabled:NO forSegmentAtIndex:0];
-        [self.sketchTools setEnabled:NO forSegmentAtIndex:1];
-        [self.sketchTools setEnabled:NO forSegmentAtIndex:2];
-        [self.sketchTools setEnabled:NO forSegmentAtIndex:3];
-        
-        
-		//Activate the appropriate sketch tool
-		if([geom isKindOfClass:[AGSPoint class]]){
-			[self.sketchTools setSelectedSegmentIndex:0];
-		}else if ([geom isKindOfClass:[AGSPolyline class]]) {
-			[self.sketchTools setSelectedSegmentIndex:1];
-		}else if ([geom isKindOfClass:[AGSPolygon class]]) {
-			[self.sketchTools setSelectedSegmentIndex:2];
-		}
-	}
+- (void)geoView:(AGSGeoView *)geoView didTapAtScreenPoint:(CGPoint)screenPoint mapPoint:(AGSPoint *)mapPoint{
+#warning Ryan:
+//	//find which graphic to modify
+//	NSEnumerator *enumerator = [features objectEnumerator];
+//	NSArray* graphicArray = (NSArray*) [enumerator nextObject];
+//	if(graphicArray!=nil && [graphicArray count]>0){
+//		//Get the graphic's geometry to the sketch layer so that it can be modified
+//		self.activeGraphic = (AGSGraphic*)[graphicArray objectAtIndex:0];
+//		AGSGeometry* geom = self.activeGraphic.geometry;
+//        
+//        //clear out the graphic's geometry so that it is not displayed under the sketch
+//        self.activeGraphic.geometry = nil;
+//        
+//        //Feed the graphic's geometry to the sketch layer so that user can modify it
+//        [self.sketchEditor startWithGeometry:geom];
+//		
+//        //Disable other tools until we finish modifying a graphic
+//        [self.sketchTools setEnabled:NO forSegmentAtIndex:0];
+//        [self.sketchTools setEnabled:NO forSegmentAtIndex:1];
+//        [self.sketchTools setEnabled:NO forSegmentAtIndex:2];
+//        [self.sketchTools setEnabled:NO forSegmentAtIndex:3];
+//        
+//        
+//		//Activate the appropriate sketch tool
+//		if([geom isKindOfClass:[AGSPoint class]]){
+//			[self.sketchTools setSelectedSegmentIndex:0];
+//		}else if ([geom isKindOfClass:[AGSPolyline class]]) {
+//			[self.sketchTools setSelectedSegmentIndex:1];
+//		}else if ([geom isKindOfClass:[AGSPolygon class]]) {
+//			[self.sketchTools setSelectedSegmentIndex:2];
+//		}
+//	}
 }
 
+-(AGSSymbol*)symbolForGeometryType:(AGSGeometryType)geometryType{
+    
+    switch (geometryType) {
+        case AGSGeometryTypePoint:
+        case AGSGeometryTypeMultipoint:
+        {
+            AGSSimpleMarkerSymbol* markerSymbol = [[AGSSimpleMarkerSymbol alloc] init];
+            markerSymbol.style = AGSSimpleMarkerSymbolStyleSquare;
+            markerSymbol.color = [UIColor greenColor];
+            markerSymbol.size = 12;
+            return markerSymbol;
+        }
+            
+        case AGSGeometryTypePolyline:
+        case AGSGeometryTypePolygon:{
+            AGSSimpleLineSymbol* lineSymbol = [[AGSSimpleLineSymbol alloc] init];
+            lineSymbol.color= [UIColor grayColor];
+            lineSymbol.width = 4;
+            
+            AGSSimpleFillSymbol* fillSymbol = [[AGSSimpleFillSymbol alloc] init];
+            fillSymbol.color = [UIColor colorWithRed:1.0 green:1.0 blue:0 alpha:0.5];
+            fillSymbol.outline = lineSymbol;
+            return fillSymbol;
+        }
+            
+        default:
+            return nil;
+    }
+}
 
 @end

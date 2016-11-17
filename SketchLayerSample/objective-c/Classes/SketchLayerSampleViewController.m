@@ -29,24 +29,7 @@
 	
 	//Add Graphics Overlay to the mapView to hold all sketches (points, polylines, and polygons)
     AGSGraphicsOverlay *graphicsOverlay = [AGSGraphicsOverlay graphicsOverlay];
-
-	//A composite symbol for the graphics layer's renderer to symbolize the sketches
-    NSMutableArray *syms = [NSMutableArray array];
-	AGSSimpleMarkerSymbol* markerSymbol = [[AGSSimpleMarkerSymbol alloc] init];
-	markerSymbol.style = AGSSimpleMarkerSymbolStyleSquare;
-	markerSymbol.color = [UIColor greenColor];
-	[syms addObject:markerSymbol];
-	AGSSimpleLineSymbol* lineSymbol = [[AGSSimpleLineSymbol alloc] init];
-	lineSymbol.color= [UIColor grayColor];
-	lineSymbol.width = 4;
-	[syms addObject:lineSymbol];
-	AGSSimpleFillSymbol* fillSymbol = [[AGSSimpleFillSymbol alloc] init];
-	fillSymbol.color = [UIColor colorWithRed:1.0 green:1.0 blue:0 alpha:0.5] ;
-	[syms addObject:fillSymbol];
-    
-    AGSCompositeSymbol* composite = [AGSCompositeSymbol compositeSymbolWithSymbols:syms];
-	AGSSimpleRenderer* renderer = [AGSSimpleRenderer simpleRendererWithSymbol:composite];
-	graphicsOverlay.renderer = renderer;
+    [self.mapView.graphicsOverlays addObject:graphicsOverlay];
 
 	// Assign sketch editor to mapView
     self.mapView.sketchEditor = [AGSSketchEditor sketchEditor];
@@ -56,6 +39,8 @@
 	self.sketchToolbar = [[SketchToolbar alloc] initWithToolbar:self.toolbar
 														mapView:self.mapView 
 												  graphicsOverlay:graphicsOverlay];
+    
+#warning Ryan:
 //	//Manhanttan, New York
 //	AGSSpatialReference *sr = [AGSSpatialReference spatialReferenceWithWKID:102100];
 //	AGSEnvelope *env = [AGSEnvelope envelopeWithXmin:-8235886.761869 

@@ -31,6 +31,7 @@
 		
 		//hold references to the mapView, graphicsLayer, and sketchLayer
 		self.mapView = mapView;
+        self.mapView.touchDelegate = self;
         self.sketchEditor = mapView.sketchEditor;
 		self.graphicsOverlay = graphicsOverlay;
         
@@ -114,7 +115,7 @@
 		AGSGraphic* graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:[self symbolForGeometryType:sketchGeometry.geometryType] attributes:nil];
 		[self.graphicsOverlay.graphics addObject:graphic];
         
-        //enable the select tool if there is atleast one graphic to select
+        //enable and select the select tool if there is atleast one graphic to select
         [self.sketchTools setEnabled:(self.graphicsOverlay.graphics.count>0) forSegmentAtIndex:3];
         if (self.graphicsOverlay.graphics.count>0){
             self.sketchTools.selectedSegmentIndex = 3;
@@ -158,37 +159,46 @@
 }
 
 - (void)geoView:(AGSGeoView *)geoView didTapAtScreenPoint:(CGPoint)screenPoint mapPoint:(AGSPoint *)mapPoint{
-#warning Ryan:
-//	//find which graphic to modify
-//	NSEnumerator *enumerator = [features objectEnumerator];
-//	NSArray* graphicArray = (NSArray*) [enumerator nextObject];
-//	if(graphicArray!=nil && [graphicArray count]>0){
-//		//Get the graphic's geometry to the sketch layer so that it can be modified
-//		self.activeGraphic = (AGSGraphic*)[graphicArray objectAtIndex:0];
-//		AGSGeometry* geom = self.activeGraphic.geometry;
-//        
-//        //clear out the graphic's geometry so that it is not displayed under the sketch
-//        self.activeGraphic.geometry = nil;
-//        
-//        //Feed the graphic's geometry to the sketch layer so that user can modify it
-//        [self.sketchEditor startWithGeometry:geom];
-//		
-//        //Disable other tools until we finish modifying a graphic
-//        [self.sketchTools setEnabled:NO forSegmentAtIndex:0];
-//        [self.sketchTools setEnabled:NO forSegmentAtIndex:1];
-//        [self.sketchTools setEnabled:NO forSegmentAtIndex:2];
-//        [self.sketchTools setEnabled:NO forSegmentAtIndex:3];
-//        
-//        
-//		//Activate the appropriate sketch tool
-//		if([geom isKindOfClass:[AGSPoint class]]){
-//			[self.sketchTools setSelectedSegmentIndex:0];
-//		}else if ([geom isKindOfClass:[AGSPolyline class]]) {
-//			[self.sketchTools setSelectedSegmentIndex:1];
-//		}else if ([geom isKindOfClass:[AGSPolygon class]]) {
-//			[self.sketchTools setSelectedSegmentIndex:2];
-//		}
-//	}
+    
+    __weak __typeof(self) weakSelf = self;
+    
+    [self.mapView identifyGraphicsOverlay:self.graphicsOverlay
+                              screenPoint:screenPoint
+                                tolerance:12
+                         returnPopupsOnly:NO
+                           maximumResults:1
+                               completion:^(AGSIdentifyGraphicsOverlayResult * _Nonnull identifyResult) {
+        
+                                   weakSelf.activeGraphic = identifyResult.graphics.firstObject;
+                                   if (!weakSelf.activeGraphic){
+                                       return;
+                                   }
+                                   
+                                   AGSGeometry *geom = weakSelf.activeGraphic.geometry;
+                                   
+                                   //Feed the graphic's geometry to the sketch layer so that user can modify it
+                                   [weakSelf.sketchEditor startWithGeometry:geom];
+                                   
+                                   //clear out the graphic's geometry so that it is not displayed under the sketch
+                                   weakSelf.activeGraphic.geometry = nil;
+                                   
+                                   //Disable other tools until we finish modifying a graphic
+                                   [weakSelf.sketchTools setEnabled:NO forSegmentAtIndex:0];
+                                   [weakSelf.sketchTools setEnabled:NO forSegmentAtIndex:1];
+                                   [weakSelf.sketchTools setEnabled:NO forSegmentAtIndex:2];
+                                   [weakSelf.sketchTools setEnabled:NO forSegmentAtIndex:3];
+                                   
+                                   switch (geom.geometryType) {
+                                       case AGSGeometryTypePoint:
+                                           [weakSelf.sketchTools setSelectedSegmentIndex:0];
+                                       case AGSGeometryTypePolyline:
+                                           [weakSelf.sketchTools setSelectedSegmentIndex:1];
+                                       case AGSGeometryTypePolygon:
+                                           [weakSelf.sketchTools setSelectedSegmentIndex:2];
+                                       default: ;
+                                   }
+                                   
+                               }];
 }
 
 -(AGSSymbol*)symbolForGeometryType:(AGSGeometryType)geometryType{
@@ -204,7 +214,13 @@
             return markerSymbol;
         }
             
-        case AGSGeometryTypePolyline:
+        case AGSGeometryTypePolyline:{
+            AGSSimpleLineSymbol* lineSymbol = [[AGSSimpleLineSymbol alloc] init];
+            lineSymbol.color= [UIColor grayColor];
+            lineSymbol.width = 4;
+            return lineSymbol;
+        }
+            
         case AGSGeometryTypePolygon:{
             AGSSimpleLineSymbol* lineSymbol = [[AGSSimpleLineSymbol alloc] init];
             lineSymbol.color= [UIColor grayColor];

@@ -56,10 +56,8 @@
 {
     [super viewDidLoad];
     
-    //initialize the satellite imagery layer
-    AGSOpenStreetMapLayer *satelliteImageryLayer = [AGSTiledMapServiceLayer tiledMapServiceLayerWithURL:[NSURL URLWithString:@"http://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer"]];
-    //add the bing map layer to the hybrid map view
-    [self.hybridView addMapLayer:satelliteImageryLayer withName:@"Satellite "];
+    //set satellite imagery plus labels map on the map view
+    self.hybridView.map = [AGSMap mapWithBasemap:[AGSBasemap imageryWithLabelsBasemap]];
 }
 
 - (void)viewDidUnload
@@ -78,22 +76,22 @@
 -(void)showHybridMapAtGraphic:(AGSGraphic*)graphic
 {
 	//Zoom in to the building footprint
-    //Resolution 0.597 = Level 18 of the tiled map service
-    [self.hybridView zoomToResolution:0.597 withCenterPoint:graphic.geometry.envelope.center animated:YES];
+    //Scale 2256.994353 = Level 18 of the tiled map service
+    [self.hybridView setViewpointCenter:graphic.geometry.extent.center scale:2256.994353 completion:nil];
 }
 
 #pragma mark - Action Methods
 
 - (IBAction)zoomIn:(id)sender
 {
-    //zooms in to the next scale 
-	[self.hybridView zoomIn:YES];
+    //zooms in to the next scale
+    [self.hybridView setViewpointScale:(self.hybridView.mapScale / 2.0) completion:nil];
 }
 
 - (IBAction)zoomOut:(id)sender
 {
-    //zooms out to the next scale 
-	[self.hybridView zoomOut:YES];
+    //zooms out to the next scale
+    [self.hybridView setViewpointScale:(self.hybridView.mapScale * 2.0) completion:nil];
 }
 
 

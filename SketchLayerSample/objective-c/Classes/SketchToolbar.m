@@ -106,7 +106,6 @@
 		[self.sketchTools setEnabled:YES forSegmentAtIndex:0];
 		[self.sketchTools setEnabled:YES forSegmentAtIndex:1];
 		[self.sketchTools setEnabled:YES forSegmentAtIndex:2];
-        [self.sketchTools setEnabled:YES forSegmentAtIndex:3];
 		
 	}else {
 		//Add a new graphic to the graphics layer

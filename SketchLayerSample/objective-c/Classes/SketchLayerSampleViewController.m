@@ -26,13 +26,14 @@
 	
 	//Create Map with Tiled basemap layer and set it on the mapView
     //Initial viewpoint for Manhanttan, New York
-    self.mapView.map = [AGSMap mapWithBasemapType:AGSBasemapTypeTopographic latitude:40.768452 longitude:-73.980796 levelOfDetail:16];
+    self.mapView.map = [AGSMap mapWithBasemapType:AGSBasemapTypeTopographic
+                                         latitude:40.768452 longitude:-73.980796 levelOfDetail:16];
 	
 	//Add Graphics Overlay to the mapView to hold all sketches (points, polylines, and polygons)
     AGSGraphicsOverlay *graphicsOverlay = [AGSGraphicsOverlay graphicsOverlay];
     [self.mapView.graphicsOverlays addObject:graphicsOverlay];
 
-	// Assign sketch editor to mapView
+	//Assign sketch editor to mapView
     self.mapView.sketchEditor = [AGSSketchEditor sketchEditor];
 	
 	//Helper class to manage the UI toolbar, Sketch Layer, and Graphics Layer
@@ -48,7 +49,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-	// Release any cached data, images, etc that aren't in use.
 }
 
 - (void)viewDidUnload {

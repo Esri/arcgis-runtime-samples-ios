@@ -10,9 +10,7 @@
 // See the use restrictions at http://help.arcgis.com/en/sdk/10.0/usageRestrictions.htm
 //
 
-
 #import "SketchToolbar.h"
-
 
 @implementation SketchToolbar
 
@@ -162,6 +160,8 @@
     
     __weak __typeof(self) weakSelf = self;
     
+    // need to hit test the graphics layer to see if a saved graphics was tapped
+    
     [self.mapView identifyGraphicsOverlay:self.graphicsOverlay
                               screenPoint:screenPoint
                                 tolerance:12
@@ -169,6 +169,7 @@
                            maximumResults:1
                                completion:^(AGSIdentifyGraphicsOverlayResult * _Nonnull identifyResult) {
         
+                                   // set activeGraphic
                                    weakSelf.activeGraphic = identifyResult.graphics.firstObject;
                                    if (!weakSelf.activeGraphic){
                                        return;
@@ -238,3 +239,5 @@
 }
 
 @end
+
+

@@ -25,7 +25,8 @@
     [super viewDidLoad];
 	
 	//Create Map with Tiled basemap layer and set it on the mapView
-    self.mapView.map = [AGSMap mapWithBasemapType:AGSBasemapTypeTopographic latitude:0 longitude:0 levelOfDetail:0];
+    //Initial viewpoint for Manhanttan, New York
+    self.mapView.map = [AGSMap mapWithBasemapType:AGSBasemapTypeTopographic latitude:40.768452 longitude:-73.980796 levelOfDetail:16];
 	
 	//Add Graphics Overlay to the mapView to hold all sketches (points, polylines, and polygons)
     AGSGraphicsOverlay *graphicsOverlay = [AGSGraphicsOverlay graphicsOverlay];
@@ -39,25 +40,11 @@
 	self.sketchToolbar = [[SketchToolbar alloc] initWithToolbar:self.toolbar
 														mapView:self.mapView 
 												  graphicsOverlay:graphicsOverlay];
-    
-#warning Ryan:
-//	//Manhanttan, New York
-//	AGSSpatialReference *sr = [AGSSpatialReference spatialReferenceWithWKID:102100];
-//	AGSEnvelope *env = [AGSEnvelope envelopeWithXmin:-8235886.761869 
-//												ymin:4977698.714786 
-//												xmax:-8235122.391586
-//												ymax:4978797.497068 
-//									spatialReference:sr];
-//	[self.mapView zoomToEnvelope:env animated:YES];
-	
 }
-
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -69,7 +56,5 @@
     self.sketchToolbar = nil;
     self.toolbar = nil;
 }
-
-
 
 @end

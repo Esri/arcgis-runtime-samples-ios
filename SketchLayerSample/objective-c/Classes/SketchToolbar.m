@@ -112,18 +112,18 @@
 		//Add a new graphic to the graphics layer
 		AGSGraphic* graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:[self symbolForGeometryType:sketchGeometry.geometryType] attributes:nil];
 		[self.graphicsOverlay.graphics addObject:graphic];
-        
-        //enable and select the select tool if there is atleast one graphic to select
-        [self.sketchTools setEnabled:(self.graphicsOverlay.graphics.count>0) forSegmentAtIndex:3];
-        if (self.graphicsOverlay.graphics.count>0){
-            self.sketchTools.selectedSegmentIndex = 3;
-            [self.sketchTools setEnabled:YES forSegmentAtIndex:3];
-        }
-        else{
-            [self.sketchTools setEnabled:NO forSegmentAtIndex:3];
-        }
 	}
-	
+    
+    //enable and select the select tool if there is atleast one graphic to select
+    [self.sketchTools setEnabled:(self.graphicsOverlay.graphics.count>0) forSegmentAtIndex:3];
+    if (self.graphicsOverlay.graphics.count>0){
+        self.sketchTools.selectedSegmentIndex = 3;
+        [self.sketchTools setEnabled:YES forSegmentAtIndex:3];
+    }
+    else{
+        [self.sketchTools setEnabled:NO forSegmentAtIndex:3];
+    }
+ 
     // stop sketch editor now
     [self.sketchEditor stop];
 }
@@ -189,6 +189,7 @@
                                    [weakSelf.sketchTools setEnabled:NO forSegmentAtIndex:2];
                                    [weakSelf.sketchTools setEnabled:NO forSegmentAtIndex:3];
                                    
+                                   //select appropriate sketch tool
                                    switch (geom.geometryType) {
                                        case AGSGeometryTypePoint:
                                            [weakSelf.sketchTools setSelectedSegmentIndex:0];

@@ -21,5 +21,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (nonatomic, strong, readonly) NSURL *portalURL;
+
 @end
 

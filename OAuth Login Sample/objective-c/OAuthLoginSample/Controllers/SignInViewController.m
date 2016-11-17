@@ -19,14 +19,10 @@
 #import "AppDelegate.h"
 #import "ProfileViewController.h"
 
-#define kPortalUrl @"https://www.arcgis.com"
-#define kClientID @"pqN3y96tSb1j8ZAY"
-
-@interface SignInViewController () <AGSPortalDelegate>
+@interface SignInViewController ()
 
 @property (nonatomic, weak) IBOutlet UIButton *signInButton;
 
-@property (nonatomic, strong) AGSOAuthLoginViewController *oauthLoginVC;
 @property (nonatomic, strong) NSError *error;
 @property (nonatomic, strong) AGSPortal *portal;
 
@@ -37,29 +33,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSURLConnection ags_trustedHosts] addObject:@"www.arcgis.com"];
-    
-    //Check to see if we previously saved the user's credentails in the keychain
-    //and if so, use it to sign in to the portal
-    AGSCredential *credential = [((AppDelegate*)[[UIApplication sharedApplication] delegate]) fetchCredentialFromKeychain];
-    if (credential) {
-        //Connect to the portal
-        self.portal = [[AGSPortal alloc] initWithURL:[[NSURL alloc] initWithString:kPortalUrl] credential:credential];
-        self.portal.delegate = self;
-    }
-}
-
--(void)viewWillAppear:(BOOL)animated {
-    AGSCredential* credential = [(AppDelegate*)[UIApplication sharedApplication].delegate fetchCredentialFromKeychain];
-    if (credential) {
-        
-        [self.signInButton setTitle:@"Signing in..." forState:UIControlStateNormal];
-        self.signInButton.enabled = NO;
-    }
-    else {
-        [self.signInButton setTitle:@"Sign In" forState:UIControlStateNormal];
-        self.signInButton.enabled = YES;
-    }
+    // try to sign in first time view is loaded
+    [self signIn:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,104 +43,44 @@
 }
 
 - (IBAction)signIn:(id)sender {
-    self.oauthLoginVC = [[AGSOAuthLoginViewController alloc] initWithPortalURL:[NSURL URLWithString:kPortalUrl] clientID:kClientID];
-    //request a permanent refresh token so user doesn't have to login in
-    self.oauthLoginVC.refreshTokenExpirationInterval = -1;
     
-    UINavigationController* nvc = [[UINavigationController alloc]initWithRootViewController:self.oauthLoginVC];
-    self.oauthLoginVC.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelLogin)];
+    [self.signInButton setTitle:@"Signing in..." forState:UIControlStateNormal];
+    self.signInButton.enabled = NO;
     
-    [self presentViewController:nvc animated:YES completion:nil];
+    // Loading the portal will trigger an authentication challenge and if the credentials
+    // are in the keychain they will automatically be used.
+    //
+    // Note - we need to use `retryLoadWithCompletion` so that it will retry loading
+    // if it previously failed to load.
     
-    __weak SignInViewController *safeSelf = self;
-    self.oauthLoginVC.completion = ^(AGSCredential *credential, NSError *error){
-        if(error){
-            if(error.code == NSUserCancelledError){ //if user cancelled login
-                
-                [safeSelf cancelLogin];
-                
-            }else if (error.code == NSURLErrorServerCertificateUntrusted){ //if self-signed certificate error
-                
-                //keep a reference to the error so that the uialertview deleate can accesss it
-                safeSelf.error = error;
-                UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"Error" message:[[error localizedDescription] stringByAppendingString:[error localizedRecoverySuggestion]] delegate:safeSelf cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
-                [av show];
-                
-            } else { //all other errors
-                
-                UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [av show];
-            }
+    __weak __typeof(self) weakSelf = self;
+    
+    NSURL *portalURL = ((AppDelegate*)[UIApplication sharedApplication].delegate).portalURL;
+    
+    self.portal = [AGSPortal portalWithURL:portalURL loginRequired:YES];
+    [self.portal retryLoadWithCompletion:^(NSError * _Nullable error) {
+        
+        if (error){
+            // error loading portal - display error
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Could not connect to portal"
+                                                            message:error.localizedDescription
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            
+            [alert show];
         }
         else{
-            //Connect to the portal using the credential provided by the user.
-            safeSelf.portal = [[AGSPortal alloc]initWithURL:[NSURL URLWithString: kPortalUrl] credential:credential];
-            safeSelf.portal.delegate = safeSelf;
-            
-            //disable cancel button on the navigation bar
-            safeSelf.oauthLoginVC.navigationItem.rightBarButtonItem.enabled = NO;
+            // loaded portal successfully - show the profile view controller
+            [weakSelf performSegueWithIdentifier:@"SegueProfileVC" sender:self];
         }
-    };
+        
+        // reset button state whether or not there was an error
+        [weakSelf.signInButton setTitle:@"Sign In" forState:UIControlStateNormal];
+        weakSelf.signInButton.enabled = YES;
+    }];
 }
 
-- (void) cancelLogin{
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
-
-#pragma mark - UIAlertViewDelegate
-
-- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    //This alert view is asking the user if he/she wants to trust the self signed certificate
-    if(buttonIndex==0){ //No, don't trust
-        [self cancelLogin];
-    }else { //Yes, trust
-        NSURL* url = [self.error userInfo][NSURLErrorFailingURLErrorKey];
-        //add to trusted hosts
-        [[NSURLConnection ags_trustedHosts]addObject:[url host]];
-        //make a test connection to force UIWebView to accept the host
-        AGSJSONRequestOperation* rop = [[AGSJSONRequestOperation alloc]initWithURL:url];
-        [[AGSRequestOperation sharedOperationQueue] addOperation:rop];
-        //Reload the OAuth vc
-        [self.oauthLoginVC reload];
-    }
-    
-}
-
-#pragma mark - AGSPortalDelegate methods
-
-- (void)portalDidLoad:(AGSPortal *)portal {
-    
-    //Now that we were able to connect to the portal using the credential,
-    //store the credential securely in the keychain so that we can use it later
-    //when the app is restarted.
-    [(AppDelegate*)[UIApplication sharedApplication].delegate saveCredentialToKeychain:portal.credential];
-    
-    //If we presented any other view controller, dismiss it
-    if(self.presentedViewController)
-        [self dismissViewControllerAnimated:YES completion:nil];
-    
-    //show the profile view controller
-    [self performSegueWithIdentifier:@"SegueProfileVC" sender:self];
-}
-
-- (void)portal:(AGSPortal *)portal didFailToLoadWithError:(NSError *)error {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                    message:@"Could not connect to portal"
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    
-    [alert show];
-    NSLog(@"%@",[error localizedDescription]);
-    if([[error localizedDescription] containsString:@"expired"]){
-        //The oAuth refresh token probably expired, user needs to sign in again.
-        //This will probably never happen in this sample because we set the refreshTokenExpirationInterval to -1 (never expires)
-        [self.signInButton setTitle:@"Sign In" forState:UIControlStateNormal];
-        self.signInButton.enabled = YES;
-    }
-}
 
 #pragma mark: - Navigation
 

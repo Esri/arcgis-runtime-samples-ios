@@ -14,6 +14,9 @@
  limitations under the License.
  */
 
+#define kPortalUrl @"https://www.arcgis.com"
+#define kClientID @"pqN3y96tSb1j8ZAY"
+
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
@@ -26,8 +29,21 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    // set our portalURL property
+    _portalURL = [NSURL URLWithString:kPortalUrl];
+    
+    // First thing we need to do is set our OAuth config for the portalURL we want to log in to
+    //
+    AGSOAuthConfiguration *OAuthConfig = [AGSOAuthConfiguration OAuthConfigurationWithPortalURL:_portalURL clientID:kClientID redirectURL:nil];
+    OAuthConfig.refreshTokenExpirationInterval = -1; // request a permanent refresh token so user doesn't have to login in
+    
+    // add our config to the authentication manager's OAuth configurations
+    [[AGSAuthenticationManager sharedAuthenticationManager].OAuthConfigurations addObject:OAuthConfig];
+    
+    
     // Tell the AGSAuthenticationManager to automatically sync credentials from the singleton
     // in-memory credentialCache to the keychain
+    //
     [[AGSAuthenticationManager sharedAuthenticationManager].credentialCache enableAutoSyncToKeychainWithIdentifier:@"com.esri.OAuthLoginSample" accessGroup:nil acrossDevices:NO];
     
     return YES;

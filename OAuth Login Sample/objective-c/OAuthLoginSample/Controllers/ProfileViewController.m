@@ -133,7 +133,10 @@
 
 -(IBAction)signOutAction {
     
-    // clear the credentials
+    // Remove all the credentials from the cache.
+    // Since we enabled auto-sync to the keychain the credentials will be automatically removed from the
+    // keychain as well.
+    [[AGSAuthenticationManager sharedAuthenticationManager].credentialCache removeAllCredentials];
     
     [self.navigationController popViewControllerAnimated:YES];
 }

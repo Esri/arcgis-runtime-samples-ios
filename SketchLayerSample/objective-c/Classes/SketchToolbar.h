@@ -26,6 +26,7 @@
 @property (nonatomic,strong) UIButton* clearTool;
 
 @property (nonatomic,strong) AGSGraphic* activeGraphic;
+@property (nonatomic,strong) AGSGeometry* activeGraphicOriginalGeometry;
 
 - (id)initWithToolbar:(UIToolbar*)toolbar
               mapView:(AGSMapView*) mapView

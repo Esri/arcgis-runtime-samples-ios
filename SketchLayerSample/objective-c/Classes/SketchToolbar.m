@@ -47,9 +47,6 @@
             }
         }
         
-        //disable the select tool if no graphics available
-        [self.sketchTools setEnabled:(graphicsOverlay.graphics.count>0) forSegmentAtIndex:3];
-        
 		self.undoTool = (UIButton*) [toolbar viewWithTag:56];
 		self.redoTool = (UIButton*) [toolbar viewWithTag:57];
 		self.saveTool = (UIButton*) [toolbar viewWithTag:58];
@@ -93,38 +90,45 @@
 	[self.sketchEditor clearGeometry];
 }
 - (IBAction) save {
-	//Get the sketch geometry
-	AGSGeometry* sketchGeometry = self.sketchEditor.geometry;
-
-	//If this is not a new sketch (i.e we are modifying an existing graphic)
-	if(self.activeGraphic!=nil){
-		//Modify the existing graphic giving it the new geometry
-		self.activeGraphic.geometry = sketchGeometry;
-		self.activeGraphic = nil;
-		
-		//Re-enable the sketch tools
-		[self.sketchTools setEnabled:YES forSegmentAtIndex:0];
-		[self.sketchTools setEnabled:YES forSegmentAtIndex:1];
-		[self.sketchTools setEnabled:YES forSegmentAtIndex:2];
-		
-	}else {
+    
+	if(self.activeGraphic != nil){
+        //If this is not a new sketch (i.e we are modifying an existing graphic)
+        //then clear the active graphic
+        self.activeGraphic.geometry = self.sketchEditor.geometry;
+        self.activeGraphic = nil;
+        self.activeGraphicOriginalGeometry = nil;
+    }
+    else{
 		//Add a new graphic to the graphics layer
-		AGSGraphic* graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:[self symbolForGeometryType:sketchGeometry.geometryType] attributes:nil];
+        AGSGeometry *sketchGeometry = self.sketchEditor.geometry;
+        AGSGraphic* graphic = [AGSGraphic graphicWithGeometry:sketchGeometry
+                                                       symbol:[self symbolForGeometryType:sketchGeometry.geometryType]
+                                                   attributes:nil];
 		[self.graphicsOverlay.graphics addObject:graphic];
 	}
     
-    //enable and select the select tool if there is atleast one graphic to select
-    [self.sketchTools setEnabled:(self.graphicsOverlay.graphics.count>0) forSegmentAtIndex:3];
-    if (self.graphicsOverlay.graphics.count>0){
-        self.sketchTools.selectedSegmentIndex = 3;
-        [self.sketchTools setEnabled:YES forSegmentAtIndex:3];
-    }
-    else{
-        [self.sketchTools setEnabled:NO forSegmentAtIndex:3];
-    }
+    self.sketchTools.selectedSegmentIndex = 3;
  
     // stop sketch editor now
     [self.sketchEditor stop];
+    
+    // re-enable geom sketch tools
+    [self setEnabledForGeometrySketchTools:YES];
+}
+
+-(void)setEnabledForGeometrySketchTools:(BOOL)enabled{
+    [self.sketchTools setEnabled:enabled forSegmentAtIndex:0];
+    [self.sketchTools setEnabled:enabled forSegmentAtIndex:1];
+    [self.sketchTools setEnabled:enabled forSegmentAtIndex:2];
+}
+
+-(void)diableGeometrySketchToolsExceptForToolAtIndex:(NSInteger)skipIndex{
+    for (NSInteger i = 0; i<3; i++){
+        if (i == skipIndex){
+            continue;
+        }
+        [self.sketchTools setEnabled:NO forSegmentAtIndex:i];
+    }
 }
 
 - (IBAction) toolSelected {
@@ -132,22 +136,36 @@
 		case 0://point tool
 			//sketch layer should begin tracking touch events to sketch a point
             [self.sketchEditor startWithGeometryType:AGSGeometryTypePoint];
+            //Disable tools until they cancel sketching or save
+            [self diableGeometrySketchToolsExceptForToolAtIndex:self.sketchTools.selectedSegmentIndex];
 			break;
 		
 		case 1://polyline tool
 			//sketch layer should begin tracking touch events to sketch a polyline
             [self.sketchEditor startWithGeometryType:AGSGeometryTypePolyline];
+            //Disable tools until they cancel sketching or save
+            [self diableGeometrySketchToolsExceptForToolAtIndex:self.sketchTools.selectedSegmentIndex];
 			break;
 		
 		case 2://polygon tool
 			//sketch layer should begin tracking touch events to sketch a polygon
             [self.sketchEditor startWithGeometryType:AGSGeometryTypePolygon];
+            //Disable tools until they cancel sketching or save
+            [self diableGeometrySketchToolsExceptForToolAtIndex:self.sketchTools.selectedSegmentIndex];
 			break;
 		
-		case 3: //select tool
-			//We will track touch events to find which graphic to modify
+        case 3: //select tool
+            // if we were modifying a graphic's geometry then we cancel that
+            // so go back to original geometry
+            if (self.activeGraphic){
+                self.activeGraphic.geometry = self.activeGraphicOriginalGeometry;
+                self.activeGraphic = nil;
+                self.activeGraphicOriginalGeometry = nil;
+            }
+            //We will track touch events to find which graphic to modify
             [self.sketchEditor stop];
-
+            // re-enable geometry sketch tools
+            [self setEnabledForGeometrySketchTools:YES];
 			break;
 		default:
 			break;
@@ -170,6 +188,8 @@
         
                                    // set activeGraphic
                                    weakSelf.activeGraphic = identifyResult.graphics.firstObject;
+                                   weakSelf.activeGraphicOriginalGeometry = identifyResult.graphics.firstObject.geometry;
+                                   
                                    if (!weakSelf.activeGraphic){
                                        return;
                                    }
@@ -182,20 +202,20 @@
                                    //clear out the graphic's geometry so that it is not displayed under the sketch
                                    weakSelf.activeGraphic.geometry = nil;
                                    
-                                   //Disable other tools until we finish modifying a graphic
-                                   [weakSelf.sketchTools setEnabled:NO forSegmentAtIndex:0];
-                                   [weakSelf.sketchTools setEnabled:NO forSegmentAtIndex:1];
-                                   [weakSelf.sketchTools setEnabled:NO forSegmentAtIndex:2];
-                                   [weakSelf.sketchTools setEnabled:NO forSegmentAtIndex:3];
+                                   //Disable tools until we finish modifying a graphic
+                                   [self setEnabledForGeometrySketchTools:NO];
                                    
                                    //select appropriate sketch tool
                                    switch (geom.geometryType) {
                                        case AGSGeometryTypePoint:
                                            [weakSelf.sketchTools setSelectedSegmentIndex:0];
+                                           [weakSelf diableGeometrySketchToolsExceptForToolAtIndex:0];
                                        case AGSGeometryTypePolyline:
                                            [weakSelf.sketchTools setSelectedSegmentIndex:1];
+                                           [weakSelf diableGeometrySketchToolsExceptForToolAtIndex:1];
                                        case AGSGeometryTypePolygon:
                                            [weakSelf.sketchTools setSelectedSegmentIndex:2];
+                                           [weakSelf diableGeometrySketchToolsExceptForToolAtIndex:2];
                                        default: ;
                                    }
                                    

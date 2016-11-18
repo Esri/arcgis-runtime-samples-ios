@@ -7,7 +7,6 @@ This sample demonstrates how to identify graphics in a graphics overlay
 When you tap on a graphic on the map, you should see an alert
 
 ![](image1.png)
-![](image2.png)
 
 ##How it works
 

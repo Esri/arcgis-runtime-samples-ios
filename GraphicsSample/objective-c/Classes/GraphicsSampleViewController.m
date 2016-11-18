@@ -11,7 +11,6 @@
 //
 
 #import "GraphicsSampleViewController.h"
-#import "CountyInfoTemplate.h"
 #import "FeatureDetailsViewController.h"
 
 #define kFeatureDetailControllerIdentifier @"FeatureDetailViewController"
@@ -28,57 +27,81 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.mapView.layerDelegate = self;
+    //Set map view's callout delegate (delegate method is implemented when callout's accessory button is tapped. This method is used to display more information about the graphic)
     self.mapView.callout.delegate = self;
     
-	//create an instance of a tiled map service layer
-	//Add it to the map view
+    //Set map view's touch delegate (delegate method is implemented when user taps on map. This method is used to identify graphics at tap point and get results)
+    self.mapView.touchDelegate = self;
+    
+    
+	//create an instance of a tiled layer
     NSURL *serviceUrl = [NSURL URLWithString:@"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"];
-    AGSTiledMapServiceLayer *tiledMapServiceLayer = [AGSTiledMapServiceLayer tiledMapServiceLayerWithURL:serviceUrl];
-    [self.mapView addMapLayer:tiledMapServiceLayer withName:@"World Street Map"];
+    AGSArcGISTiledLayer *tiledMapServiceLayer = [[AGSArcGISTiledLayer alloc] initWithURL:serviceUrl];
+    
+    // create an instance of basemap with tiled layer
+    AGSBasemap *basemap = [AGSBasemap basemapWithBaseLayer:tiledMapServiceLayer];
+    
+    //set map's basemap
+    self.map = [[AGSMap alloc] initWithBasemap:basemap];
+    
+    //load the map
+    [self.map loadWithCompletion:^(NSError * _Nullable error) {
+       
+        if (error) {
+            //Check if loading returned an error
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+        else {
+            
+            //Assign map to map view
+            self.mapView.map = self.map;
+            
+            //Call the helper method to query County and City layers
+            [self queryLayers];
+        }
+    }];
+    
     
     //COUNTY
-	//add county graphics layer (data is loaded in mapViewDidLoad method)
-    self.countyGraphicsLayer = [AGSGraphicsLayer graphicsLayer];
-    [self.mapView addMapLayer:self.countyGraphicsLayer withName:@"States Graphics Layer"];
-
-    //callouts are only availabl efor counties layer in this sample
-    //create an instance of the callout template
-    self.countyInfoTemplate = [[CountyInfoTemplate alloc] init];
-    self.countyGraphicsLayer.calloutDelegate = self.countyInfoTemplate;
+	//add county graphics layer
+    self.countyGraphicsLayer = [AGSGraphicsOverlay graphicsOverlay];
+    [self.mapView.graphicsOverlays addObject:self.countyGraphicsLayer];
 
     //CITY
-    self.cityGraphicsLayer = [AGSGraphicsLayer graphicsLayer];
+    self.cityGraphicsLayer = [AGSGraphicsOverlay graphicsOverlay];
     
 	//renderer for cities
 	AGSUniqueValueRenderer *cityRenderer = [[AGSUniqueValueRenderer alloc] init];
-	cityRenderer.defaultSymbol = [AGSSimpleMarkerSymbol simpleMarkerSymbol];
-	cityRenderer.fields = [NSArray arrayWithObject:@"TYPE"];
+    cityRenderer.defaultSymbol = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithStyle:AGSSimpleMarkerSymbolStyleCircle color:[UIColor blackColor] size:10.0];
+	cityRenderer.fieldNames = [NSArray arrayWithObject:@"TYPE"];
 	
     //census designated place, city, town
 	//create marker symbols for census, cities and towns and apply to renderer
-    AGSSimpleMarkerSymbol *censusMarkeySymbol = [AGSSimpleMarkerSymbol simpleMarkerSymbol];
-    censusMarkeySymbol.color = [UIColor yellowColor];
-	
-    AGSSimpleMarkerSymbol *cityMarkerSymbol = [AGSSimpleMarkerSymbol simpleMarkerSymbol];
-    cityMarkerSymbol.style = AGSSimpleMarkerSymbolStyleDiamond;
-    cityMarkerSymbol.outline.color = [UIColor blueColor];
-
-    AGSSimpleMarkerSymbol *townMarkerSymbol = [AGSSimpleMarkerSymbol simpleMarkerSymbol];
-    townMarkerSymbol.style = AGSSimpleMarkerSymbolStyleCross;
-    townMarkerSymbol.outline.width = 3.0;
-
+    AGSSimpleMarkerSymbol *censusMarkeySymbol = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithStyle:AGSSimpleMarkerSymbolStyleCircle color:[UIColor yellowColor] size:12.0];
+    censusMarkeySymbol.outline = [AGSSimpleLineSymbol simpleLineSymbolWithStyle:AGSSimpleLineSymbolStyleSolid color:[UIColor blueColor] width:1.0];
+    
+    AGSSimpleMarkerSymbol *cityMarkerSymbol = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithStyle:AGSSimpleMarkerSymbolStyleDiamond color:[UIColor colorWithRed:255 green:0 blue:0 alpha:1.0] size:12.0];
+    cityMarkerSymbol.outline = [AGSSimpleLineSymbol simpleLineSymbolWithStyle:AGSSimpleLineSymbolStyleSolid color:[UIColor blueColor] width:1.0];
+    
+    
+    AGSSimpleMarkerSymbol *townMarkerSymbol = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithStyle:AGSSimpleMarkerSymbolStyleCross color:[UIColor blackColor] size:16.0];
+    
     cityRenderer.uniqueValues = [NSArray arrayWithObjects:
-                                 [AGSUniqueValue uniqueValueWithValue:@"census designated place" symbol:censusMarkeySymbol],
-                                 [AGSUniqueValue uniqueValueWithValue:@"city" symbol:cityMarkerSymbol],
-                                 [AGSUniqueValue uniqueValueWithValue:@"town" symbol:townMarkerSymbol],
+                                 [AGSUniqueValue uniqueValueWithDescription:@"Unique Value for census designated place" label:@"Census" symbol:censusMarkeySymbol values:[NSArray arrayWithObject:@"census designated place"]],
+                                 [AGSUniqueValue uniqueValueWithDescription:@"Unique Value for city" label:@"City" symbol:cityMarkerSymbol values:[NSArray arrayWithObject:@"city"]],
+                                 [AGSUniqueValue uniqueValueWithDescription:@"Unique Value for town" label:@"Town" symbol:townMarkerSymbol values:[NSArray arrayWithObject:@"town"]],
                                  nil];
     
 	//apply city renderer
     self.cityGraphicsLayer.renderer = cityRenderer;
     
-	//add cities graphics layer (data is loaded in mapViewDidLoad method)
-    [self.mapView addMapLayer:self.cityGraphicsLayer withName:@"City Graphics Layer"];
+	//add cities graphics layer
+    [self.mapView.graphicsOverlays addObject:self.cityGraphicsLayer];
 
     self.cityGraphicsLayer.visible = FALSE;
     self.countyGraphicsLayer.visible = TRUE;
@@ -86,14 +109,15 @@
 	
     //Zoom To Envelope
 	//create extent to be used as default
-	AGSEnvelope *envelope = [AGSEnvelope envelopeWithXmin:-124.83145667
-                                                     ymin:30.49849464
-                                                     xmax:-113.91375495
-                                                     ymax:44.69150688
+    AGSEnvelope *envelope = [AGSEnvelope envelopeWithXMin:-124.83145667
+                                                     yMin:30.49849464
+                                                     xMax:-113.91375495
+                                                     yMax:44.69150688
                                          spatialReference:[AGSSpatialReference spatialReferenceWithWKID:4326]];
     
-	//call method to set extent, pass in envelope
-	[self.mapView zoomToEnvelope:envelope animated:YES];
+	//Create a view point and set it on map view so map zooms to that extent
+    AGSViewpoint *viewpoint = [AGSViewpoint viewpointWithTargetExtent:envelope];
+    [self.mapView setViewpoint:viewpoint completion:nil];
 }
 
 
@@ -107,10 +131,7 @@
 - (void)viewDidUnload {
     self.mapView = nil;
     self.countyGraphicsLayer = nil;
-    self.countyQueryTask = nil;
-    self.countyInfoTemplate = nil;
     self.cityGraphicsLayer = nil;
-    self.cityQueryTask = nil;
 }
 
 - (IBAction)toggleGraphicsLayer:(id)sender {
@@ -130,41 +151,137 @@
 }
 
 
-#pragma mark - AGSMapViewLayerDelegate
+#pragma mark - Helper method to query
 
-//called when the map view is loaded (after the view is loaded) 
-- (void)mapViewDidLoad:(AGSMapView *)mapView {
+- (void)queryLayers {
 	
     self.mapView.callout.width = 235.0f;
     
 	//set up query task for counties and perform query returning all atrributes
-    self.countyQueryTask = [AGSQueryTask queryTaskWithURL:[NSURL URLWithString:@"http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StateCityHighway_USA/MapServer/2"]];
-    self.countyQueryTask.delegate = self;
-    
-    AGSQuery *countyQuery = [AGSQuery query];
+    self.countyTable = [[AGSServiceFeatureTable alloc] initWithURL:[NSURL URLWithString:@"http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StateCityHighway_USA/MapServer/2"]];
+
+    //Create query parameters for counties
+    AGSQueryParameters *countyQuery = [AGSQueryParameters queryParameters];
     countyQuery.whereClause = @"STATE_NAME = 'California'";
-    countyQuery.outFields = [NSArray arrayWithObject:@"*"];
 	countyQuery.returnGeometry = YES;
     countyQuery.outSpatialReference = self.mapView.spatialReference;
-    [self.countyQueryTask executeWithQuery:countyQuery];
+    
+    [self.countyTable queryFeaturesWithParameters:countyQuery fields:AGSQueryFeatureFieldsLoadAll completion:^(AGSFeatureQueryResult * _Nullable result, NSError * _Nullable error) {
+        
+        if (error) {
+            //Check if query returned an error
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
+        }
+        else {
+            
+            //create extent
+            AGSEnvelope *envelope = [AGSEnvelope envelopeWithXMin:-124.83145667
+                                                             yMin:30.49849464
+                                                             xMax:-113.91375495
+                                                             yMax:44.69150688
+                                                 spatialReference:[AGSSpatialReference spatialReferenceWithWKID:4326]];
+
+            //Create a view point and set it on map view so map zooms to that extent
+            AGSViewpoint *viewpoint = [AGSViewpoint viewpointWithTargetExtent:envelope];
+            [self.mapView setViewpoint:viewpoint completion:nil];
+            
+            
+            AGSSimpleFillSymbol *fillSymbol = [AGSSimpleFillSymbol simpleFillSymbolWithStyle:AGSSimpleFillSymbolStyleSolid color:[[UIColor blackColor] colorWithAlphaComponent:0.25] outline:[AGSSimpleLineSymbol simpleLineSymbolWithStyle:AGSSimpleLineSymbolStyleSolid color:[UIColor darkGrayColor] width:1.0]];
+            
+            
+            //Get features from result, create graphics out of them and add graphics to county graphics overlay
+            NSArray *features = [result featureEnumerator].allObjects;
+            
+            for (AGSArcGISFeature *feature in features) {
+
+                AGSGraphic *graphic =[AGSGraphic graphicWithGeometry:feature.geometry symbol:fillSymbol attributes:feature.attributes];
+                [self.countyGraphicsLayer.graphics addObject:graphic];
+            }
+        }
+        
+    }];
 
 	//set up query task for cities and perform query returning all atrributes
-    self.cityQueryTask = [AGSQueryTask queryTaskWithURL:[NSURL URLWithString:@"http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StatesCitiesRivers_USA/MapServer/0"]];
-    self.cityQueryTask.delegate = self;
+    self.cityTable = [[AGSServiceFeatureTable alloc] initWithURL:[NSURL URLWithString:@"http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StatesCitiesRivers_USA/MapServer/0"]];
     
-    AGSQuery *cityQuery = [AGSQuery query];
+    AGSQueryParameters *cityQuery = [AGSQueryParameters queryParameters];
     cityQuery.whereClause = @"STATE_NAME = 'California'";
-    cityQuery.outFields = [NSArray arrayWithObject:@"*"];
 	cityQuery.returnGeometry = YES;
     cityQuery.outSpatialReference = self.mapView.spatialReference;
-    [self.cityQueryTask executeWithQuery:cityQuery];
+    
+    [self.cityTable queryFeaturesWithParameters:cityQuery fields:AGSQueryFeatureFieldsLoadAll completion:^(AGSFeatureQueryResult * _Nullable result, NSError * _Nullable error) {
+        
+        
+        if (error) {
+            //Check if query returned an error
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
+        }
+        else {
+            
+            //create extent
+            AGSEnvelope *envelope = [AGSEnvelope envelopeWithXMin:-124.83145667
+                                                             yMin:30.49849464
+                                                             xMax:-113.91375495
+                                                             yMax:44.69150688
+                                                 spatialReference:[AGSSpatialReference spatialReferenceWithWKID:4326]];
+            
+            //Create a view point and set it on map view so map zooms to that extent
+            AGSViewpoint *viewpoint = [AGSViewpoint viewpointWithTargetExtent:envelope];
+            [self.mapView setViewpoint:viewpoint completion:nil];
+        
+       
+            //Get features from result, create graphics out of them and add graphics to city graphics overlay
+            NSArray *features = [result featureEnumerator].allObjects;
+           
+            for (AGSArcGISFeature *feature in features) {
+                
+                AGSGraphic *graphic =[AGSGraphic graphicWithGeometry:feature.geometry symbol:nil attributes:feature.attributes];
+                [self.cityGraphicsLayer.graphics addObject:graphic];
+            }
+        }
+        
+    }];
 }
 
+#pragma mark - AGSGeoViewTouchDelegate
+
+//Gets called when user taps on map
+- (void)geoView:(AGSGeoView *)geoView didTapAtScreenPoint:(CGPoint)screenPoint mapPoint:(AGSPoint *)mapPoint {
+    
+    //callouts are only available for counties layer in this sample. Hence only that is identified. Identify returns graphics at the tap location
+    [self.mapView identifyGraphicsOverlay:self.countyGraphicsLayer screenPoint:screenPoint tolerance:5.0 returnPopupsOnly:false completion:^(AGSIdentifyGraphicsOverlayResult * _Nonnull identifyResult) {
+        
+        if (identifyResult.graphics.count > 0) {
+            
+            AGSGraphic *graphic = identifyResult.graphics[0];
+            
+            //Set callout's properties
+            self.mapView.callout.title =  [[graphic attributes]valueForKey:@"NAME"];
+            self.mapView.callout.detail = [NSString stringWithFormat:@"'90: %@, '99: %@", [[graphic attributes] valueForKey:@"POP1990"], [[graphic attributes]valueForKey:@"POP1999"]];
+            
+            //Show callout for this graphic
+            [self.mapView.callout showCalloutForGraphic:graphic tapLocation:mapPoint animated:YES];
+        }
+    }];
+}
 
 #pragma mark - AGSCalloutDelegate
 
-//when a user clicks the detail disclosure button on the call out
-- (void) didClickAccessoryButtonForCallout:		(AGSCallout *) 	callout	{
+//Gets called when a user clicks the detail disclosure button on the call out
+- (
+   void) didTapAccessoryButtonForCallout:(AGSCallout *)callout {
     //instantiate an object of the FeatureDetailsViewController
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
     FeatureDetailsViewController *featureDetailsViewController = [storyboard instantiateViewControllerWithIdentifier:kFeatureDetailControllerIdentifier];
@@ -174,64 +291,11 @@
     featureDetailsViewController.displayFieldName = @"NAME";
     
     //in case of an iPad present as a form sheet
-    if ([[AGSDevice currentDevice] isIPad]) {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         [featureDetailsViewController setModalPresentationStyle:UIModalPresentationFormSheet];
     }
     
     [self.navigationController presentViewController:featureDetailsViewController animated:YES completion:nil];
 }
-
-
-
-#pragma mark- AGSQueryTaskDelegate
-
-//when query is executed ....
-- (void)queryTask:(AGSQueryTask *)queryTask operation:(NSOperation *)op didExecuteWithFeatureSetResult:(AGSFeatureSet *)featureSet {
-    
-	//create extent to be used as default
-	AGSEnvelope *envelope = [AGSEnvelope envelopeWithXmin:-124.83145667
-                                                     ymin:30.49849464
-                                                     xmax:-113.91375495
-                                                     ymax:44.69150688
-                                         spatialReference:[AGSSpatialReference spatialReferenceWithWKID:4326]];
-    
-	//call method to set extent, pass in envelope
-	[self.mapView zoomToEnvelope:envelope animated:YES];
-	
-	//determine if it's a query on counties or cities then assign to applicable layer
-	if (YES == [featureSet.displayFieldName isEqualToString:@"CITY_NAME"]) {
-        for (AGSGraphic *graphic in featureSet.features) {
-            [self.cityGraphicsLayer addGraphic:graphic];
-        }
-
-        self.cityQueryTask = nil;
-    }
-    else {
-        AGSSimpleFillSymbol *fillSymbol = [AGSSimpleFillSymbol simpleFillSymbol];
-        fillSymbol.color = [[UIColor blackColor] colorWithAlphaComponent:0.25];
-        fillSymbol.outline.color = [UIColor darkGrayColor];
-        
-
-        
-		//display counties on graphics layer and specify callout template
-        for (AGSGraphic *graphic in featureSet.features) {
-            graphic.symbol = fillSymbol;
-            [self.countyGraphicsLayer addGraphic:graphic];
-        }
-
-        self.countyQueryTask = nil;
-    }
-}
-
-//if there's an error with the query task give info to user
-- (void)queryTask:(AGSQueryTask *)queryTask operation:(NSOperation *)op didFailWithError:(NSError *)error {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                    message:[error localizedDescription]
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-}
-
 
 @end

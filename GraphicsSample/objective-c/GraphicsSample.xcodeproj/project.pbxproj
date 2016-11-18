@@ -15,7 +15,6 @@
 		AF55318F125BB3030070ED0C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AF55318D125BB3030070ED0C /* icon.png */; };
 		AF553190125BB3030070ED0C /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF55318E125BB3030070ED0C /* icon@2x.png */; };
 		C56B3FB414C64445003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B3FB314C64445003A46EB /* ArcGIS.bundle */; };
-		DCFFC80710D2118C00FFD006 /* CountyInfoTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFFC80610D2118C00FFD006 /* CountyInfoTemplate.m */; };
 		DCFFC82210D214A300FFD006 /* FeatureDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFFC82110D214A300FFD006 /* FeatureDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -32,9 +31,7 @@
 		97B8C3BC1678026A003B6E1B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AF55318D125BB3030070ED0C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		AF55318E125BB3030070ED0C /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
-		C56B3FB314C64445003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
-		DCFFC80510D2118C00FFD006 /* CountyInfoTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountyInfoTemplate.h; sourceTree = "<group>"; };
-		DCFFC80610D2118C00FFD006 /* CountyInfoTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountyInfoTemplate.m; sourceTree = "<group>"; };
+		C56B3FB314C64445003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Static/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		DCFFC82010D214A300FFD006 /* FeatureDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeatureDetailsViewController.h; sourceTree = "<group>"; };
 		DCFFC82110D214A300FFD006 /* FeatureDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeatureDetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,8 +53,6 @@
 				3E715CEE18E37FD7004FB946 /* Controllers */,
 				1D3623240D0F684500981E51 /* GraphicsSampleAppDelegate.h */,
 				1D3623250D0F684500981E51 /* GraphicsSampleAppDelegate.m */,
-				DCFFC80510D2118C00FFD006 /* CountyInfoTemplate.h */,
-				DCFFC80610D2118C00FFD006 /* CountyInfoTemplate.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -192,7 +187,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* GraphicsSampleAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* GraphicsSampleViewController.m in Sources */,
-				DCFFC80710D2118C00FFD006 /* CountyInfoTemplate.m in Sources */,
 				DCFFC82210D214A300FFD006 /* FeatureDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,13 +200,13 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/Frameworks/Static/**";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GraphicsSample_Prefix.pch;
 				INFOPLIST_FILE = "GraphicsSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -234,11 +228,11 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/Frameworks/Static/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GraphicsSample_Prefix.pch;
 				INFOPLIST_FILE = "GraphicsSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",

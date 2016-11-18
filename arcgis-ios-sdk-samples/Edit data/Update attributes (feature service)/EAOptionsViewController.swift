@@ -18,16 +18,12 @@ protocol EAOptionsVCDelegate:class {
     func optionsViewController(optionsViewController:EAOptionsViewController, didSelectOptionAtIndex index:Int)
 }
 
-class EAOptionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class EAOptionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIBarPositioningDelegate {
     
     @IBOutlet private weak var tableView:UITableView!
     
     var options:[String]!
     weak var delegate:EAOptionsVCDelegate!
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,5 +65,11 @@ class EAOptionsViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBAction func cancelAction() {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    //MARK: - UIBarPositioningDelegate
+    
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+        return .TopAttached
     }
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G26a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="k6Z-i5-0Bt">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Map Loaded View Controller-->
+        <scene sceneID="QN7-W0-BY1">
+            <objects>
+                <viewController id="k6Z-i5-0Bt" customClass="MapLoadedViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jq7-wc-B2w"/>
+                        <viewControllerLayoutGuide type="bottom" id="74H-a6-7vc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QrP-Aa-W1y">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKD-Tt-6SP" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucs-S5-IDS">
+                                <rect key="frame" x="0.0" y="20" width="600" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.59964669585987262" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="UTw-C7-Zd8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="74H-a6-7vc" firstAttribute="top" secondItem="oKD-Tt-6SP" secondAttribute="bottom" id="Ao8-xM-E2X"/>
+                            <constraint firstAttribute="trailing" secondItem="oKD-Tt-6SP" secondAttribute="trailing" id="CIJ-DG-3uL"/>
+                            <constraint firstItem="oKD-Tt-6SP" firstAttribute="leading" secondItem="QrP-Aa-W1y" secondAttribute="leading" id="K9d-Uu-TH6"/>
+                            <constraint firstAttribute="trailing" secondItem="ucs-S5-IDS" secondAttribute="trailing" id="ZA7-nn-WJ7"/>
+                            <constraint firstItem="oKD-Tt-6SP" firstAttribute="top" secondItem="Jq7-wc-B2w" secondAttribute="bottom" id="hsD-RZ-uLA"/>
+                            <constraint firstItem="ucs-S5-IDS" firstAttribute="top" secondItem="Jq7-wc-B2w" secondAttribute="bottom" id="k8d-lW-Pir"/>
+                            <constraint firstItem="ucs-S5-IDS" firstAttribute="leading" secondItem="QrP-Aa-W1y" secondAttribute="leading" id="mOE-V3-FJz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bannerLabel" destination="ucs-S5-IDS" id="kMd-5m-vQW"/>
+                        <outlet property="mapView" destination="oKD-Tt-6SP" id="oZs-xB-0Nd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sXT-44-GKc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="320" y="396"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tKD-PH-2Uz">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Extrude Graphics View Controller-->
+        <scene sceneID="daS-zz-rsK">
+            <objects>
+                <viewController id="tKD-PH-2Uz" customClass="ExtrudeGraphicsViewController" customModule="SceneViewDemo_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cBj-wb-EZn"/>
+                        <viewControllerLayoutGuide type="bottom" id="i3l-h2-R95"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OJJ-x3-eul">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nk2-9v-TGA" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Nk2-9v-TGA" firstAttribute="leading" secondItem="OJJ-x3-eul" secondAttribute="leading" id="8xS-d0-toy"/>
+                            <constraint firstItem="Nk2-9v-TGA" firstAttribute="top" secondItem="OJJ-x3-eul" secondAttribute="top" id="CNn-lg-SEf"/>
+                            <constraint firstAttribute="trailing" secondItem="Nk2-9v-TGA" secondAttribute="trailing" id="bTE-B4-KPD"/>
+                            <constraint firstItem="i3l-h2-R95" firstAttribute="top" secondItem="Nk2-9v-TGA" secondAttribute="bottom" id="ofh-gx-MVY"/>
+                            <constraint firstItem="Nk2-9v-TGA" firstAttribute="top" secondItem="cBj-wb-EZn" secondAttribute="bottom" id="qPB-k4-WBS"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="qPB-k4-WBS"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="Nk2-9v-TGA" id="w7n-FA-FCY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rff-7I-RMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="330" y="409"/>
+        </scene>
+    </scenes>
+</document>

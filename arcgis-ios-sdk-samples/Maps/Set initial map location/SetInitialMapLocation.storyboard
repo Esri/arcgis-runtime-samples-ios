@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5J0-w3-JeL">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Set Initial Map Location View Controller-->
+        <scene sceneID="dpn-gl-q4V">
+            <objects>
+                <viewController id="5J0-w3-JeL" customClass="SetInitialMapLocationViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8ob-Vw-5w7"/>
+                        <viewControllerLayoutGuide type="bottom" id="0au-Om-cTI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pes-NT-TN2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4G-KI-BgT" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="l4G-KI-BgT" firstAttribute="leading" secondItem="pes-NT-TN2" secondAttribute="leading" id="D0p-y7-Xd2"/>
+                            <constraint firstItem="l4G-KI-BgT" firstAttribute="top" secondItem="pes-NT-TN2" secondAttribute="top" id="Uo1-bf-qAU"/>
+                            <constraint firstItem="l4G-KI-BgT" firstAttribute="top" secondItem="8ob-Vw-5w7" secondAttribute="bottom" id="qQi-Oq-In3"/>
+                            <constraint firstItem="0au-Om-cTI" firstAttribute="top" secondItem="l4G-KI-BgT" secondAttribute="bottom" id="rQg-BG-Buq"/>
+                            <constraint firstAttribute="trailing" secondItem="l4G-KI-BgT" secondAttribute="trailing" id="xDl-G5-mAA"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Uo1-bf-qAU"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="l4G-KI-BgT" id="np1-SN-S8B"/>
+                        <outlet property="view" destination="pes-NT-TN2" id="xdj-Mo-MLp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sGa-q0-Y7M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="551" y="459"/>
+        </scene>
+    </scenes>
+</document>

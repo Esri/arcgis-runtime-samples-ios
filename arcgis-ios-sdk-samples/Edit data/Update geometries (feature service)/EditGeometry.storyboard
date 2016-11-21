@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GSk-lW-Mjg">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Edit Geometry View Controller-->
+        <scene sceneID="8sc-hz-yRK">
+            <objects>
+                <viewController id="GSk-lW-Mjg" customClass="EditGeometryViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9HX-ok-uCF"/>
+                        <viewControllerLayoutGuide type="bottom" id="hdG-0i-5pm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wIC-Qr-QYb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8E0-Q1-C3I" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJv-2z-hgI">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="Nee-S1-CYT"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="RJ4-zg-y84"/>
+                                    <barButtonItem systemItem="done" id="vU6-1Z-ntn">
+                                        <connections>
+                                            <action selector="doneAction" destination="GSk-lW-Mjg" id="y1r-tA-WUY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8E0-Q1-C3I" firstAttribute="top" secondItem="9HX-ok-uCF" secondAttribute="bottom" id="0V7-kv-fYg"/>
+                            <constraint firstItem="hdG-0i-5pm" firstAttribute="top" secondItem="8E0-Q1-C3I" secondAttribute="bottom" id="SDW-0Y-e02"/>
+                            <constraint firstItem="8E0-Q1-C3I" firstAttribute="leading" secondItem="wIC-Qr-QYb" secondAttribute="leading" id="Z76-FY-fQl"/>
+                            <constraint firstItem="YJv-2z-hgI" firstAttribute="top" secondItem="8E0-Q1-C3I" secondAttribute="bottom" id="gMJ-NI-nlb"/>
+                            <constraint firstAttribute="trailing" secondItem="8E0-Q1-C3I" secondAttribute="trailing" id="gRf-Or-rMc"/>
+                            <constraint firstItem="hdG-0i-5pm" firstAttribute="top" secondItem="YJv-2z-hgI" secondAttribute="bottom" id="n4h-qi-X3x"/>
+                            <constraint firstItem="8E0-Q1-C3I" firstAttribute="top" secondItem="wIC-Qr-QYb" secondAttribute="top" id="nRL-dC-mdY"/>
+                            <constraint firstItem="YJv-2z-hgI" firstAttribute="leading" secondItem="wIC-Qr-QYb" secondAttribute="leading" id="oD7-C2-3aF"/>
+                            <constraint firstAttribute="trailing" secondItem="YJv-2z-hgI" secondAttribute="trailing" id="tLF-nu-CsL"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="nRL-dC-mdY"/>
+                                <exclude reference="SDW-0Y-e02"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="8E0-Q1-C3I" id="JMq-CE-9Yo"/>
+                        <outlet property="toolbar" destination="YJv-2z-hgI" id="mxe-fV-G9h"/>
+                        <outlet property="toolbarBottomConstraint" destination="n4h-qi-X3x" id="pGo-u4-PGV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dNO-8s-AjQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="377" y="286"/>
+        </scene>
+    </scenes>
+</document>

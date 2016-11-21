@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kfk-Po-1HV">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Add Features View Controller-->
+        <scene sceneID="C3Z-m9-Iir">
+            <objects>
+                <viewController id="kfk-Po-1HV" customClass="AddFeaturesViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="thE-J6-fLR"/>
+                        <viewControllerLayoutGuide type="bottom" id="MEg-Dt-fDo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4A8-jc-AVa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ef2-5L-bqX" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MEg-Dt-fDo" firstAttribute="top" secondItem="Ef2-5L-bqX" secondAttribute="bottom" id="AfI-RU-ubh"/>
+                            <constraint firstItem="Ef2-5L-bqX" firstAttribute="top" secondItem="4A8-jc-AVa" secondAttribute="top" id="ZzU-Xe-GGQ"/>
+                            <constraint firstItem="Ef2-5L-bqX" firstAttribute="top" secondItem="thE-J6-fLR" secondAttribute="bottom" id="hyK-0a-yQa"/>
+                            <constraint firstItem="Ef2-5L-bqX" firstAttribute="leading" secondItem="4A8-jc-AVa" secondAttribute="leading" id="jVN-KU-wdq"/>
+                            <constraint firstAttribute="trailing" secondItem="Ef2-5L-bqX" secondAttribute="trailing" id="n1x-sg-rkN"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ZzU-Xe-GGQ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Ef2-5L-bqX" id="ZUT-LS-bek"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h4x-jj-p9j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="553" y="483"/>
+        </scene>
+    </scenes>
+</document>

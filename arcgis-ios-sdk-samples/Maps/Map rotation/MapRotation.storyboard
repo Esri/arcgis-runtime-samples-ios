@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gEk-4Q-v8l">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Map Rotation View Controller-->
+        <scene sceneID="52a-87-UCz">
+            <objects>
+                <viewController id="gEk-4Q-v8l" customClass="MapRotationViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Syu-p7-w4I"/>
+                        <viewControllerLayoutGuide type="bottom" id="0dI-pD-8fa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ahk-qW-u2b">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mc4-3J-OCW" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzw-6w-roX">
+                                <rect key="frame" x="552" y="32" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="elc-cS-Lgs"/>
+                                    <constraint firstAttribute="height" constant="36" id="szI-7l-JHp"/>
+                                </constraints>
+                                <state key="normal" image="CompassIcon">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="compassAction" destination="gEk-4Q-v8l" eventType="touchUpInside" id="LTT-8o-4UX"/>
+                                </connections>
+                            </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Trr-ws-YeO">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Lub-OJ-TeS"/>
+                                    <barButtonItem style="plain" id="9fn-eF-LLE">
+                                        <view key="customView" contentMode="scaleToFill" id="WNn-uG-hre">
+                                            <rect key="frame" x="150" y="5.5" width="300" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0º" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFW-Hx-0Dp">
+                                                    <rect key="frame" x="250" y="6" width="40" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="uXE-Vr-Ila"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="360" translatesAutoresizingMaskIntoConstraints="NO" id="guU-46-91p">
+                                                    <rect key="frame" x="6" y="0.0" width="238" height="31"/>
+                                                    <connections>
+                                                        <action selector="sliderValueChanged:" destination="gEk-4Q-v8l" eventType="valueChanged" id="sCg-wd-vJu"/>
+                                                    </connections>
+                                                </slider>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="dFW-Hx-0Dp" secondAttribute="centerY" id="29V-Ll-Ajq"/>
+                                                <constraint firstAttribute="centerY" secondItem="guU-46-91p" secondAttribute="centerY" constant="1.5" id="5QO-4I-ant"/>
+                                                <constraint firstItem="guU-46-91p" firstAttribute="leading" secondItem="WNn-uG-hre" secondAttribute="leading" constant="8" id="BS1-iV-cOa"/>
+                                                <constraint firstItem="dFW-Hx-0Dp" firstAttribute="leading" secondItem="guU-46-91p" secondAttribute="trailing" constant="8" id="P5P-Jw-INP"/>
+                                                <constraint firstAttribute="trailing" secondItem="dFW-Hx-0Dp" secondAttribute="trailing" constant="10" id="mKY-30-gv2"/>
+                                            </constraints>
+                                        </view>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kOr-n3-oZ7"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Trr-ws-YeO" secondAttribute="trailing" id="24d-KO-OY4"/>
+                            <constraint firstItem="0dI-pD-8fa" firstAttribute="top" secondItem="Trr-ws-YeO" secondAttribute="bottom" id="592-Oq-HYM"/>
+                            <constraint firstItem="qzw-6w-roX" firstAttribute="top" secondItem="Syu-p7-w4I" secondAttribute="bottom" constant="12" id="ERP-J2-6Ec"/>
+                            <constraint firstItem="Trr-ws-YeO" firstAttribute="leading" secondItem="ahk-qW-u2b" secondAttribute="leading" id="PzF-LA-FZU"/>
+                            <constraint firstItem="Trr-ws-YeO" firstAttribute="top" secondItem="mc4-3J-OCW" secondAttribute="bottom" id="UQ3-fy-Kbf"/>
+                            <constraint firstItem="mc4-3J-OCW" firstAttribute="leading" secondItem="ahk-qW-u2b" secondAttribute="leading" id="faL-hv-eky"/>
+                            <constraint firstItem="mc4-3J-OCW" firstAttribute="top" secondItem="ahk-qW-u2b" secondAttribute="top" id="fvc-XH-Y1p"/>
+                            <constraint firstAttribute="trailing" secondItem="qzw-6w-roX" secondAttribute="trailing" constant="12" id="g3X-Af-oAu"/>
+                            <constraint firstItem="mc4-3J-OCW" firstAttribute="top" secondItem="Syu-p7-w4I" secondAttribute="bottom" id="rgD-KS-7jO"/>
+                            <constraint firstItem="0dI-pD-8fa" firstAttribute="top" secondItem="mc4-3J-OCW" secondAttribute="bottom" id="u08-Bg-yxu"/>
+                            <constraint firstAttribute="trailing" secondItem="mc4-3J-OCW" secondAttribute="trailing" id="zA3-Dd-HBw"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fvc-XH-Y1p"/>
+                                <exclude reference="u08-Bg-yxu"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="compassButton" destination="qzw-6w-roX" id="vxw-k0-xkV"/>
+                        <outlet property="mapView" destination="mc4-3J-OCW" id="sam-Zu-e7V"/>
+                        <outlet property="rotationLabel" destination="dFW-Hx-0Dp" id="xPA-7s-BVM"/>
+                        <outlet property="slider" destination="guU-46-91p" id="VPB-Rd-YcT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jDl-i6-zVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="507" y="475"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="CompassIcon" width="36" height="36"/>
+    </resources>
+</document>

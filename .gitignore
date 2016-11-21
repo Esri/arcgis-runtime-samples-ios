@@ -1,6 +1,12 @@
-# Xcode
-.DS_Store
-*/build/*
+ Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+
+## Build generated
+build/
+DerivedData/
+
+## Various settings
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -9,14 +15,9 @@
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-xcuserdata
-profile
-*.moved-aside
-DerivedData
-.idea/
-*.hmap
+xcuserdata/
 
+## Other
+*.moved-aside
 *.xccheckout
-*.xcworkspacedata
-All Samples.xcworkspace/xcshareddata/All Samples.xcscmblueprint
-arcgis-ios-sdk-samples.xcodeproj/project.xcworkspace/xcshareddata/arcgis-ios-sdk-samples.xcscmblueprint
+*.xcscmblueprint

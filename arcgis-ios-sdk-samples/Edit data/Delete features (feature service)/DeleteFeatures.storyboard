@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cR7-fm-BGZ">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Delete Features View Controller-->
+        <scene sceneID="FNq-mi-V4O">
+            <objects>
+                <viewController id="cR7-fm-BGZ" customClass="DeleteFeaturesViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CrE-KU-Vfg"/>
+                        <viewControllerLayoutGuide type="bottom" id="GQl-SF-RYa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wDe-HO-ujz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dyM-T5-XGp" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dyM-T5-XGp" firstAttribute="leading" secondItem="wDe-HO-ujz" secondAttribute="leading" id="4fc-Ch-zlm"/>
+                            <constraint firstItem="GQl-SF-RYa" firstAttribute="top" secondItem="dyM-T5-XGp" secondAttribute="bottom" id="I2Q-Qu-ZAN"/>
+                            <constraint firstItem="dyM-T5-XGp" firstAttribute="top" secondItem="wDe-HO-ujz" secondAttribute="top" id="Mf8-cf-v32"/>
+                            <constraint firstAttribute="trailing" secondItem="dyM-T5-XGp" secondAttribute="trailing" id="X5Z-Hh-96f"/>
+                            <constraint firstItem="dyM-T5-XGp" firstAttribute="top" secondItem="CrE-KU-Vfg" secondAttribute="bottom" id="y2y-nb-qf2"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Mf8-cf-v32"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="dyM-T5-XGp" id="qwO-yi-1fD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dQ5-Wt-Vp8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="569" y="485"/>
+        </scene>
+    </scenes>
+</document>

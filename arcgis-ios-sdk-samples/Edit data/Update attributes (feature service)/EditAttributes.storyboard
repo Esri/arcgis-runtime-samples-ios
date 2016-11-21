@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4jB-Wx-0bj">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Edit Attributes View Controller-->
+        <scene sceneID="BpV-oW-UQx">
+            <objects>
+                <viewController id="4jB-Wx-0bj" customClass="EditAttributesViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qOy-tG-4Sw"/>
+                        <viewControllerLayoutGuide type="bottom" id="9AX-Uw-udt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kFf-uD-lO1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzg-2n-LkU" customClass="AGSMapView">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9AX-Uw-udt" firstAttribute="top" secondItem="uzg-2n-LkU" secondAttribute="bottom" id="0kk-Ww-qgs"/>
+                            <constraint firstItem="uzg-2n-LkU" firstAttribute="leading" secondItem="kFf-uD-lO1" secondAttribute="leading" id="2qK-XM-D9p"/>
+                            <constraint firstItem="uzg-2n-LkU" firstAttribute="top" secondItem="kFf-uD-lO1" secondAttribute="top" id="7s2-PY-go3"/>
+                            <constraint firstAttribute="trailing" secondItem="uzg-2n-LkU" secondAttribute="trailing" id="X3B-Gu-IVb"/>
+                            <constraint firstItem="uzg-2n-LkU" firstAttribute="top" secondItem="qOy-tG-4Sw" secondAttribute="bottom" id="uxc-LX-2n9"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7s2-PY-go3"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="uzg-2n-LkU" id="ZdN-x1-Y7b"/>
+                        <segue destination="J6E-XC-43c" kind="presentation" identifier="OptionsSegue" modalPresentationStyle="formSheet" id="fAZ-Vj-ADO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tDI-lR-qwx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="306" y="434"/>
+        </scene>
+        <!--Options View Controller-->
+        <scene sceneID="xfb-QY-ks4">
+            <objects>
+                <viewController id="J6E-XC-43c" customClass="EAOptionsViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JD2-6P-h5C"/>
+                        <viewControllerLayoutGuide type="bottom" id="dxs-SI-iWk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IeL-vL-NqC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Y6b-fZ-TDx">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EAOptionsCell" id="ltd-qf-aNW">
+                                        <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ltd-qf-aNW" id="v6w-Eh-0aC">
+                                            <frame key="frameInset" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="J6E-XC-43c" id="xMS-Fv-sk0"/>
+                                    <outlet property="delegate" destination="J6E-XC-43c" id="EyH-gR-KYD"/>
+                                </connections>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ciP-GV-Hz3">
+                                <items>
+                                    <navigationItem title="Select new damage type" id="BI7-Jv-qUJ">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="wkb-gu-hjX">
+                                            <connections>
+                                                <action selector="cancelAction" destination="J6E-XC-43c" id="974-1C-gwz"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="J6E-XC-43c" id="Wbw-X0-C47"/>
+                                </connections>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Y6b-fZ-TDx" secondAttribute="trailing" id="8JR-99-2OF"/>
+                            <constraint firstItem="Y6b-fZ-TDx" firstAttribute="leading" secondItem="IeL-vL-NqC" secondAttribute="leading" id="BYc-er-Eko"/>
+                            <constraint firstItem="Y6b-fZ-TDx" firstAttribute="top" secondItem="ciP-GV-Hz3" secondAttribute="bottom" id="V38-tW-lXB"/>
+                            <constraint firstItem="ciP-GV-Hz3" firstAttribute="leading" secondItem="IeL-vL-NqC" secondAttribute="leading" id="Xoa-mC-s0b"/>
+                            <constraint firstAttribute="trailing" secondItem="ciP-GV-Hz3" secondAttribute="trailing" id="feG-J4-by0"/>
+                            <constraint firstItem="ciP-GV-Hz3" firstAttribute="top" secondItem="JD2-6P-h5C" secondAttribute="bottom" id="kFH-9i-ATq"/>
+                            <constraint firstAttribute="bottom" secondItem="Y6b-fZ-TDx" secondAttribute="bottom" id="lDS-mN-Ugi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Y6b-fZ-TDx" id="Lv4-V0-Sbq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="az2-5o-8Ti" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1050" y="434"/>
+        </scene>
+    </scenes>
+</document>

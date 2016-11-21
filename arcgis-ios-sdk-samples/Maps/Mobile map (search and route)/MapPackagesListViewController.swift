@@ -51,7 +51,7 @@ class MapPackagesListViewController: UIViewController, UITableViewDataSource, UI
         self.mapPackagesInBundle = [AGSMobileMapPackage]()
         
         for path in bundleMMPKPaths {
-            let mapPackage = AGSMobileMapPackage(path: path)
+            let mapPackage = AGSMobileMapPackage(fileURL: NSURL(fileURLWithPath: path))
             self.mapPackagesInBundle.append(mapPackage)
         }
         
@@ -72,7 +72,7 @@ class MapPackagesListViewController: UIViewController, UITableViewDataSource, UI
         self.mapPackagesInDocumentsDir = [AGSMobileMapPackage]()
         
         for path in documentMMPKPaths {
-            let mapPackage = AGSMobileMapPackage(path: path)
+            let mapPackage = AGSMobileMapPackage(fileURL: NSURL(fileURLWithPath: path))
             self.mapPackagesInDocumentsDir.append(mapPackage)
         }
         

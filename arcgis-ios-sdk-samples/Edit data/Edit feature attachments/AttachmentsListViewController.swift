@@ -15,16 +15,12 @@
 import UIKit
 import ArcGIS
 
-class AttachmentsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AttachmentsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIBarPositioningDelegate {
     
     @IBOutlet private weak var tableView:UITableView!
     
     var feature:AGSArcGISFeature!
     private var attachments:[AGSAttachment]!
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,5 +141,11 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
                 self?.applyEdits()
             }
         }
+    }
+    
+    //MARK: - UIBarPositioningDelegate
+    
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+        return .TopAttached
     }
 }

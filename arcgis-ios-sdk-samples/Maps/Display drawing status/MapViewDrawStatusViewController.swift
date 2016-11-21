@@ -35,20 +35,25 @@ class MapViewDrawStatusViewController: UIViewController {
         self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(XMin: -13639984, yMin: 4537387, xMax: -13606734, yMax: 4558866, spatialReference: AGSSpatialReference.webMercator()))
         
         //add a feature layer
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
+        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         self.map.operationalLayers.addObject(featureLayer)
         
         //assign the map to mapView
         self.mapView.map = self.map
         
-        self.mapView.drawStatusChangedHandler = { [weak self] (drawStatus:AGSDrawStatus) in
-            if drawStatus == AGSDrawStatus.InProgress {
-                self?.activityIndicatorView.hidden = false
-            }
-            else {
-                self?.activityIndicatorView.hidden = true
-            }
+        //add observer for drawStatus on mapView
+        //so we can show/hide an indicator when the status change 
+        self.mapView.addObserver(self, forKeyPath: "drawStatus", options: .New, context: nil)
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        
+        if self.mapView.drawStatus == AGSDrawStatus.InProgress {
+            self.activityIndicatorView.hidden = false
+        }
+        else {
+            self.activityIndicatorView.hidden = true
         }
     }
     

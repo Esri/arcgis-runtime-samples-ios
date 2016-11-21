@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pS3-la-wY4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pS3-la-wY4">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Edit Features Online View Controller-->
@@ -14,15 +14,13 @@
                         <viewControllerLayoutGuide type="bottom" id="LSK-0j-37f"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QKn-Go-ihh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NzB-bg-pvw" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brw-un-veL" userLabel="New feature toolbar">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="4gf-SW-UEN"/>
                                 </constraints>
@@ -37,7 +35,6 @@
                                 </items>
                             </toolbar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XdC-IV-Urg" userLabel="Sketch toolbar">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="rCS-8S-QOr"/>
                                     <barButtonItem enabled="NO" systemItem="done" id="3ul-lM-Dhw">
@@ -48,7 +45,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="brw-un-veL" firstAttribute="width" secondItem="XdC-IV-Urg" secondAttribute="width" id="AQw-mc-Mju"/>
                             <constraint firstItem="NzB-bg-pvw" firstAttribute="leading" secondItem="QKn-Go-ihh" secondAttribute="leading" id="G78-UE-3Jd"/>
@@ -88,14 +85,10 @@
                         <viewControllerLayoutGuide type="bottom" id="6xA-VM-ylS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wcr-DI-afZ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jIV-jv-8bf">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="ANc-QX-RZz"/>
-                                </constraints>
                                 <items>
                                     <navigationItem title="Templates" id="hTX-K3-9rr">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="IFg-sk-gEx">
@@ -105,17 +98,19 @@
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
+                                <connections>
+                                    <outlet property="delegate" destination="E5N-S0-TC2" id="XRY-GP-uFu"/>
+                                </connections>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lhb-q7-O1w">
-                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="E5N-S0-TC2" id="9mC-mY-fxW"/>
                                     <outlet property="delegate" destination="E5N-S0-TC2" id="lQl-Ih-9OS"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="jIV-jv-8bf" secondAttribute="trailing" id="Aho-SY-EpJ"/>
                             <constraint firstItem="lhb-q7-O1w" firstAttribute="leading" secondItem="wcr-DI-afZ" secondAttribute="leading" id="NMK-1I-A9S"/>

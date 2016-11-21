@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGSCalloutDelegate {
+class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
     
     @IBOutlet private weak var mapView:AGSMapView!
     @IBOutlet private weak var toolbar:UIToolbar!
@@ -24,11 +24,10 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
     private var map:AGSMap!
     private var featureTable:AGSServiceFeatureTable!
     private var featureLayer:AGSFeatureLayer!
-    private var sketchGraphicsOverlay:AGSSketchGraphicsOverlay!
-    private var lastQuery:AGSCancellable!
+    private var lastQuery:AGSCancelable!
     
     private var selectedFeature:AGSArcGISFeature!
-    private let FEATURE_SERVICE_URL = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
+    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,10 +43,7 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         self.map.operationalLayers.addObject(self.featureLayer)
-        
-        self.sketchGraphicsOverlay = AGSSketchGraphicsOverlay(geometryBuilder: AGSPointBuilder(spatialReference: AGSSpatialReference.webMercator()))
-        self.mapView.graphicsOverlays.addObject(self.sketchGraphicsOverlay)
-        
+
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
         
@@ -80,9 +76,9 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
         })
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
@@ -90,17 +86,17 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
         //hide the callout
         self.mapView.callout.dismiss()
         
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screen, tolerance: 5, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
-            if let error = error {
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
+            if let error = identifyLayerResult.error {
                 print(error)
             }
-            else if let features = identifyLayerResult?.geoElements as? [AGSArcGISFeature] where features.count > 0 {
+            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature] where features.count > 0 {
                 let feature = features[0]
                 //show callout for the first feature
                 let title = feature.attributes["typdamage"] as! String
                 self?.mapView.callout.title = title
                 self?.mapView.callout.delegate = self
-                self?.mapView.callout.showCalloutForFeature(feature, layer: self!.featureLayer, tapLocation: mappoint, animated: true)
+                self?.mapView.callout.showCalloutForFeature(feature, tapLocation: mapPoint, animated: true)
                 //update selected feature
                 self?.selectedFeature = feature
             }
@@ -114,15 +110,15 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
         self.mapView.callout.dismiss()
         
         //add the default geometry
-        self.sketchGraphicsOverlay.addPart()
         let point = self.selectedFeature.geometry as! AGSPoint
-        self.sketchGraphicsOverlay.insertVertex(point, inPart: 0, atIndex: 0)
         
-        //assign sketch graphics overlay as the touch delegate
-        self.mapView.touchDelegate = self.sketchGraphicsOverlay
+        //instantiate sketch editor with selected feature's geometry
+        self.mapView.sketchEditor = AGSSketchEditor()
+        
+        //enable the sketch editor to start tracking user gesture
+        self.mapView.sketchEditor?.startWithGeometry(point)
         
         //show the toolbar
-//        self.toolbar.hidden = false
         self.toggleToolbar(true)
         
         //hide the feature for time being
@@ -132,7 +128,7 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
     //MARK: - Actions
     
     @IBAction func doneAction() {
-        if let newGeometry = self.sketchGraphicsOverlay.geometry {
+        if let newGeometry = self.mapView.sketchEditor?.geometry {
 
             self.selectedFeature.geometry = newGeometry
             self.featureTable.updateFeature(self.selectedFeature, completion: { [weak self] (error:NSError?) -> Void in
@@ -150,12 +146,12 @@ class EditGeometryViewController: UIViewController, AGSMapViewTouchDelegate, AGS
         }
         
         //hide toolbar
-//        self.toolbar.hidden = true
         self.toggleToolbar(false)
         
-        //assign self as the touch delegate
-        self.mapView.touchDelegate = self
-        //clear sketch graphics overlay
-        self.sketchGraphicsOverlay.clear()
+        //disable sketch editor
+        self.mapView.sketchEditor?.stop()
+        
+        //clear sketch editor
+        self.mapView.sketchEditor?.clearGeometry()
     }
 }

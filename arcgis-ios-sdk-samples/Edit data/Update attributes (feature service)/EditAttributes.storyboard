@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4jB-Wx-0bj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4jB-Wx-0bj">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Edit Attributes View Controller-->
@@ -14,15 +14,14 @@
                         <viewControllerLayoutGuide type="bottom" id="9AX-Uw-udt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kFf-uD-lO1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzg-2n-LkU" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9AX-Uw-udt" firstAttribute="top" secondItem="uzg-2n-LkU" secondAttribute="bottom" id="0kk-Ww-qgs"/>
                             <constraint firstItem="uzg-2n-LkU" firstAttribute="leading" secondItem="kFf-uD-lO1" secondAttribute="leading" id="2qK-XM-D9p"/>
@@ -54,18 +53,17 @@
                         <viewControllerLayoutGuide type="bottom" id="dxs-SI-iWk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IeL-vL-NqC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Y6b-fZ-TDx">
-                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EAOptionsCell" id="ltd-qf-aNW">
-                                        <rect key="frame" x="0.0" y="22" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ltd-qf-aNW" id="v6w-Eh-0aC">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -76,10 +74,6 @@
                                 </connections>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ciP-GV-Hz3">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="9e8-1c-3i1"/>
-                                </constraints>
                                 <items>
                                     <navigationItem title="Select new damage type" id="BI7-Jv-qUJ">
                                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="wkb-gu-hjX">
@@ -89,16 +83,19 @@
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
+                                <connections>
+                                    <outlet property="delegate" destination="J6E-XC-43c" id="Wbw-X0-C47"/>
+                                </connections>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Y6b-fZ-TDx" secondAttribute="trailing" id="8JR-99-2OF"/>
                             <constraint firstItem="Y6b-fZ-TDx" firstAttribute="leading" secondItem="IeL-vL-NqC" secondAttribute="leading" id="BYc-er-Eko"/>
-                            <constraint firstItem="ciP-GV-Hz3" firstAttribute="top" secondItem="JD2-6P-h5C" secondAttribute="bottom" id="G5V-ma-eNe"/>
                             <constraint firstItem="Y6b-fZ-TDx" firstAttribute="top" secondItem="ciP-GV-Hz3" secondAttribute="bottom" id="V38-tW-lXB"/>
                             <constraint firstItem="ciP-GV-Hz3" firstAttribute="leading" secondItem="IeL-vL-NqC" secondAttribute="leading" id="Xoa-mC-s0b"/>
                             <constraint firstAttribute="trailing" secondItem="ciP-GV-Hz3" secondAttribute="trailing" id="feG-J4-by0"/>
+                            <constraint firstItem="ciP-GV-Hz3" firstAttribute="top" secondItem="JD2-6P-h5C" secondAttribute="bottom" id="kFH-9i-ATq"/>
                             <constraint firstAttribute="bottom" secondItem="Y6b-fZ-TDx" secondAttribute="bottom" id="lDS-mN-Ugi"/>
                         </constraints>
                     </view>

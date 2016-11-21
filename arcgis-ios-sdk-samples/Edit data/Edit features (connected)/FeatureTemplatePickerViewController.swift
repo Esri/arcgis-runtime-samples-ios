@@ -26,15 +26,11 @@ protocol FeatureTemplatePickerDelegate:class {
     func featureTemplatePickerViewController(controller:FeatureTemplatePickerViewController, didSelectFeatureTemplate template:AGSFeatureTemplate, forFeatureLayer featureLayer:AGSFeatureLayer)
 }
 
-class FeatureTemplatePickerViewController: UIViewController {
+class FeatureTemplatePickerViewController: UIViewController, UIBarPositioningDelegate {
     
     var infos = [FeatureTemplateInfo]()
     @IBOutlet weak var featureTemplateTableView: UITableView!
     weak var delegate:FeatureTemplatePickerDelegate?
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,4 +121,9 @@ class FeatureTemplatePickerViewController: UIViewController {
         tableView.cellForRowAtIndexPath(indexPath)?.selected = false
     }
     
+    //MARK: - UIBarPositioningDelegate
+    
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+        return .TopAttached
+    }
 }

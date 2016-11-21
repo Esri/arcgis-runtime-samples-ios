@@ -17,6 +17,14 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
+                    <string>Change map view background</string>
+                    <key>storyboardName</key>
+                    <string>ChangeMapViewBackground</string>
+                    <key>descriptionText</key>
+                    <string>This sample shows you how to customize map view's background grid</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
                     <string>Map loaded</string>
                     <key>storyboardName</key>
                     <string>MapLoaded</string>
@@ -137,9 +145,9 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
-                    <string>Authoring a map</string>
+                    <string>Create and save a map</string>
                     <key>storyboardName</key>
-                    <string>AuthoringMap</string>
+                    <string>CreateSaveMap</string>
                     <key>descriptionText</key>
                     <string>With the new APIs you get to author a map on you mobile device. You can create a map by adding a basemap and one or more operational layers and save it to your portal</string>
                 </dict>
@@ -184,11 +192,11 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
-                    <string>Tiled layer render mode</string>
+                    <string>ArcGIS tiled layer (tile cache)</string>
                     <key>storyboardName</key>
-                    <string>TiledLayerRenderMode</string>
+                    <string>LocalTiledLayer</string>
                     <key>descriptionText</key>
-                    <string>You can switch between the SCALE and AESTHETIC rendering mode for tiled layers</string>
+                    <string>This sample shows how to load an offline copy of a tiled map service so that that basemap tiled service is available when applications are offline</string>
                 </dict>
                 <dict>
                     <key>displayName</key>
@@ -197,14 +205,6 @@
                     <string>ExportTiles</string>
                     <key>descriptionText</key>
                     <string>You can create a tpk from a map service</string>
-                </dict>
-                <dict>
-                    <key>displayName</key>
-                    <string>Local tiled layer</string>
-                    <key>storyboardName</key>
-                    <string>LocalTiledLayer</string>
-                    <key>descriptionText</key>
-                    <string>This sample shows how to load an offline copy of a tiled map service so that that basemap tiled service is available when applications are offline</string>
                 </dict>
                 <dict>
                     <key>displayName</key>
@@ -229,6 +229,46 @@
                     <string>VectorTileLayer</string>
                     <key>descriptionText</key>
                     <string>You can now add vector tile layers</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>ArcGIS vector tiled layer (custom style)</string>
+                    <key>storyboardName</key>
+                    <string>VectorTileCustomStyle</string>
+                    <key>descriptionText</key>
+                    <string>You can define different styles for same vector tiled layer using custom stylesheets</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Hillshade renderer</string>
+                    <key>storyboardName</key>
+                    <string>HillshadeRenderer</string>
+                    <key>descriptionText</key>
+                    <string>You can apply hill shade renderer to a raster</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Blend renderer</string>
+                    <key>storyboardName</key>
+                    <string>BlendRenderer</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows you how to use blend renderer with raster layer</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>RGB renderer</string>
+                    <key>storyboardName</key>
+                    <string>RGBRenderer</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows you how to use rgb renderer with raster layer</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Stretch renderer</string>
+                    <key>storyboardName</key>
+                    <string>StretchRenderer</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows you how to use stretch renderer with raster layer</string>
                 </dict>
             </array>
         </dict>
@@ -362,7 +402,7 @@
                     <key>storyboardName</key>
                     <string>Sketch</string>
                     <key>descriptionText</key>
-                    <string>You can use the SketchGraphicsOverlay for sketching on your map</string>
+                    <string>You can use the sketch editor for sketching on your map</string>
                 </dict>
                 <dict>
                     <key>displayName</key>
@@ -564,7 +604,7 @@
         </dict>
         <dict>
             <key>displayName</key>
-            <string>3D</string>
+            <string>Scenes</string>
             <key>children</key>
             <array>
                 <dict>
@@ -585,7 +625,7 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
-                    <string>3D symbols</string>
+                    <string>Scene symbols</string>
                     <key>storyboardName</key>
                     <string>SceneSymbols</string>
                     <key>descriptionText</key>
@@ -598,6 +638,14 @@
                     <string>SurfacePlacements</string>
                     <key>descriptionText</key>
                     <string>The sample shows how to position graphics using different surface placements</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Scene properties expressions</string>
+                    <key>storyboardName</key>
+                    <string>ScenePropertiesExpressions</string>
+                    <key>descriptionText</key>
+                    <string>This sample demonstrates how to update the orientation of graphics in graphics overlay using expressions on scene properties</string>
                 </dict>
             </array>
         </dict>

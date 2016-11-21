@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class GOIdentifyViewController: UIViewController, AGSMapViewTouchDelegate {
+class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     @IBOutlet private weak var mapView:AGSMapView!
     
@@ -58,7 +58,7 @@ class GOIdentifyViewController: UIViewController, AGSMapViewTouchDelegate {
         polygonGeometry.addPointWithX(20e5, y: -20e5)
         polygonGeometry.addPointWithX(-20e5, y: -20e5)
         let polygonSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.Solid, color: UIColor.yellowColor(), outline: nil)
-        let polygonGraphic = AGSGraphic(geometry: polygonGeometry.toGeometry())
+        let polygonGraphic = AGSGraphic(geometry: polygonGeometry.toGeometry(), symbol: nil, attributes: nil)
         
         //initialize the graphics overlay
         self.graphicsOverlay = AGSGraphicsOverlay()
@@ -70,22 +70,22 @@ class GOIdentifyViewController: UIViewController, AGSMapViewTouchDelegate {
         self.mapView.graphicsOverlays.addObject(self.graphicsOverlay)
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //use the following method to identify graphics in a specific graphics overlay
         //otherwise if you need to identify on all the graphics overlay present in the map view
         //use `identifyGraphicsOverlaysAtScreenCoordinate:tolerance:maximumGraphics:completion:` method provided on map view
         let tolerance:Double = 5
         
-        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screen, tolerance: tolerance, maximumResults: 10) { (graphics:[AGSGraphic]?, error:NSError?) -> Void in
-            if let error = error {
+        self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: tolerance, returnPopupsOnly: false, maximumResults: 10) { (result: AGSIdentifyGraphicsOverlayResult) -> Void in
+            if let error = result.error {
                 print("error while identifying :: \(error.localizedDescription)")
             }
             else {
                 //if a graphics is found then show an alert
-                if graphics?.count > 0 {
-                    UIAlertView(title: "Alert", message: "Tapped on graphic", delegate: nil, cancelButtonTitle: "Ok").show()
+                if result.graphics.count > 0 {
+                    SVProgressHUD.showInfoWithStatus("Tapped on graphic", maskType: .Gradient)
                 }
             }
         }

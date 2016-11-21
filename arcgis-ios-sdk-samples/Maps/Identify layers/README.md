@@ -7,7 +7,6 @@ This sample demonstrates how to identify features on a map. These features could
 Tap on map to get features at that location. The features are returned from different layers in the map.
 
 ![](image1.png)
-![](image2.png)
 
 ##How it works
 

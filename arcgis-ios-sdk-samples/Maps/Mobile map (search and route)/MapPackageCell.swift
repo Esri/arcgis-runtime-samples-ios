@@ -95,6 +95,12 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         let routeImageView = cell.viewWithTag(13) as! UIImageView
         routeImageView.hidden = (map.transportationNetworks.count == 0)
         
+        //thumbnail
+        let imageView = cell.viewWithTag(14) as! UIImageView
+        imageView.image = map.item?.thumbnail?.image
+        imageView.layer.borderColor = UIColor.grayColor().CGColor
+        imageView.layer.borderWidth = 1
+        
         return cell
     }
     

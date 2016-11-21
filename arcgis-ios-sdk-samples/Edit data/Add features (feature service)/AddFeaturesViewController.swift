@@ -15,13 +15,13 @@
 import UIKit
 import ArcGIS
 
-class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
+class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     @IBOutlet private var mapView:AGSMapView!
     
     private var featureTable:AGSServiceFeatureTable!
     private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancellable!
+    private var lastQuery:AGSCancelable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
         self.mapView.touchDelegate = self
         
         //instantiate service feature table using the url to the service
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
+        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         //create a feature layer using the service feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
@@ -96,10 +96,10 @@ class AddFeaturesViewController: UIViewController, AGSMapViewTouchDelegate {
         }
     }
   
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //add a feature at the tapped location
-        self.addFeature(mappoint)
+        self.addFeature(mapPoint)
     }
 }

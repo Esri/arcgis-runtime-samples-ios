@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class SublayerVisibilityViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+class SublayerVisibilityViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
     
     @IBOutlet private weak var mapView:AGSMapView!
     
@@ -32,7 +32,7 @@ class SublayerVisibilityViewController: UIViewController, UIPopoverPresentationC
         self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
         
         //initialize the map image layer using a url
-        self.mapImageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
+        self.mapImageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
         
         //add the image layer to the map
         self.map.operationalLayers.addObject(self.mapImageLayer)
@@ -59,14 +59,14 @@ class SublayerVisibilityViewController: UIViewController, UIPopoverPresentationC
             controller.sublayers = self.mapImageLayer.mapImageSublayers
             
             //popover presentation logic
-            controller.popoverPresentationController?.delegate = self
+            controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
         }
     }
     
-    //MARK: - UIPopoverPresentationControllerDelegate
+    //MARK: - UIAdaptivePresentationControllerDelegate
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         //for popover or non modal presentation
         return UIModalPresentationStyle.None
     }

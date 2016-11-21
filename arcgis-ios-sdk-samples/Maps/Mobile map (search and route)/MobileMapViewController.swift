@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
+class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
 
     @IBOutlet var mapView:AGSMapView!
     
@@ -24,7 +24,6 @@ class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
     var locatorTask:AGSLocatorTask?
     
     private var markerGraphicsOverlay = AGSGraphicsOverlay()
-    private var labelGraphicsOverlay = AGSGraphicsOverlay()
     private var routeGraphicsOverlay = AGSGraphicsOverlay()
     
     private var routeTask:AGSRouteTask!
@@ -32,8 +31,8 @@ class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
     
     private var reverseGeocodeParameters:AGSReverseGeocodeParameters!
     
-    private var locatorTaskCancellable:AGSCancellable!
-    private var routeTaskCancellable:AGSCancellable!
+    private var locatorTaskCancelable:AGSCancelable!
+    private var routeTaskCancelable:AGSCancelable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +49,7 @@ class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
         self.mapView.touchDelegate = self
         
         //add graphic overlays
-        self.mapView.graphicsOverlays.addObjectsFromArray([self.routeGraphicsOverlay, self.markerGraphicsOverlay, self.labelGraphicsOverlay])
+        self.mapView.graphicsOverlays.addObjectsFromArray([self.routeGraphicsOverlay, self.markerGraphicsOverlay])
         
         //route task
         self.setupRouteTask()
@@ -60,13 +59,23 @@ class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    private func symbolForStop() -> AGSPictureMarkerSymbol {
+    
+    private func symbolForStopGraphic(withIndex: Bool, index: Int?) -> AGSSymbol {
+        
         let markerImage = UIImage(named: "BlueMarker")!
-        let symbol = AGSPictureMarkerSymbol(image: markerImage)
-        symbol.leaderOffsetY = markerImage.size.height/2
-        symbol.offsetY = markerImage.size.height/2
-        return symbol
+        let markerSymbol = AGSPictureMarkerSymbol(image: markerImage)
+        markerSymbol.offsetY = markerImage.size.height/2
+        markerSymbol.leaderOffsetY = markerSymbol.offsetY
+        
+        if withIndex && index != nil {
+            let textSymbol = AGSTextSymbol(text: "\(index!)", color: UIColor.whiteColor(), size: 20, horizontalAlignment: AGSHorizontalAlignment.Center, verticalAlignment: AGSVerticalAlignment.Middle)
+            textSymbol.offsetY = markerSymbol.offsetY
+            
+            let compositeSymbol = AGSCompositeSymbol(symbols: [markerSymbol, textSymbol])
+            return compositeSymbol
+        }
+        
+        return markerSymbol
     }
     
     private func labelSymbolForStop(text:String) -> AGSTextSymbol {
@@ -75,8 +84,9 @@ class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
         return symbol
     }
     
-    private func graphicForPoint(point:AGSPoint) -> AGSGraphic {
-        let graphic = AGSGraphic(geometry: point, symbol: self.symbolForStop())
+    private func graphicForPoint(point:AGSPoint, withIndex: Bool, index: Int?) -> AGSGraphic {
+        let symbol = self.symbolForStopGraphic(withIndex, index: index)
+        let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: nil)
         return graphic
     }
     
@@ -91,12 +101,12 @@ class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
         self.mapView.callout.title = graphic.attributes["Match_addr"] as? String
         self.mapView.callout.accessoryButtonHidden = true
         
-        self.mapView.callout.showCalloutForGraphic(graphic, overlay: self.markerGraphicsOverlay, tapLocation: tapLocation, animated: animated)
+        self.mapView.callout.showCalloutForGraphic(graphic, tapLocation: tapLocation, animated: animated)
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if self.routeTask == nil && self.locatorTask == nil {
             return
         }
@@ -109,21 +119,24 @@ class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
         //if yes, then show callout with geocoding
         //else add a graphic and route if more than one graphic
         
-        self.mapView.identifyGraphicsOverlay(self.markerGraphicsOverlay, screenPoint: screenPoint, tolerance: 5) { [weak self] (graphics:[AGSGraphic]?, error:NSError?) in
-            if let error = error {
+        self.mapView.identifyGraphicsOverlay(self.markerGraphicsOverlay, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false) { [weak self] (result:AGSIdentifyGraphicsOverlayResult) in
+            if let error = result.error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
             }
             else {
-                if graphics!.count == 0 {
+                if result.graphics.count == 0 {
                     //add a graphic
-                    let graphic = self!.graphicForPoint(mapPoint)
-                    self?.markerGraphicsOverlay.graphics.addObject(graphic)
+                    var graphic: AGSGraphic
                     
                     if self?.routeTask != nil {
-                        //label graphic until the composite symbol not available
-                        let labelGraphic = AGSGraphic(geometry: mapPoint, symbol: self?.labelSymbolForStop("\(self!.labelGraphicsOverlay.graphics.count+1)"))
-                        self!.labelGraphicsOverlay.graphics.addObject(labelGraphic)
+                        let index = self!.markerGraphicsOverlay.graphics.count + 1
+                        graphic = self!.graphicForPoint(mapPoint, withIndex: true, index: index)
                     }
+                    else {
+                        graphic = self!.graphicForPoint(mapPoint, withIndex: false, index: nil)
+                    }
+                    
+                    self?.markerGraphicsOverlay.graphics.addObject(graphic)
                     
                     //reverse geocode
                     self?.reverseGeocode(mapPoint, graphic: graphic)
@@ -133,7 +146,7 @@ class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
                 }
                 else {
                     //reverse geocode
-                    self?.reverseGeocode(mapPoint, graphic: graphics![0])
+                    self?.reverseGeocode(mapPoint, graphic: result.graphics[0])
                 }
             }
         }
@@ -147,11 +160,11 @@ class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
         }
         
         //cancel previous request if any
-        if self.locatorTaskCancellable != nil {
-            self.locatorTaskCancellable.cancel()
+        if self.locatorTaskCancelable != nil {
+            self.locatorTaskCancelable.cancel()
         }
         
-        self.locatorTaskCancellable = self.locatorTask?.reverseGeocodeWithLocation(point, parameters: self.reverseGeocodeParameters, completion: { [weak self](results:[AGSGeocodeResult]?, error:NSError?) in
+        self.locatorTaskCancelable = self.locatorTask?.reverseGeocodeWithLocation(point, parameters: self.reverseGeocodeParameters, completion: { [weak self](results:[AGSGeocodeResult]?, error:NSError?) in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
             }
@@ -205,8 +218,8 @@ class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
         }
         
         //cancel previous request if any
-        if self.routeTaskCancellable != nil {
-            self.routeTaskCancellable.cancel()
+        if self.routeTaskCancelable != nil {
+            self.routeTaskCancelable.cancel()
         }
         
         //create stops for last and second last graphic
@@ -220,16 +233,15 @@ class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
         self.routeParameters.setStops(stops)
         
         //route
-        self.routeTaskCancellable = self.routeTask.solveRouteWithParameters(self.routeParameters) {[weak self] (routeResult:AGSRouteResult?, error:NSError?) in
+        self.routeTaskCancelable = self.routeTask.solveRouteWithParameters(self.routeParameters) {[weak self] (routeResult:AGSRouteResult?, error:NSError?) in
             if let error = error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
                 //remove the last marker
                 self?.markerGraphicsOverlay.graphics.removeLastObject()
-                self?.labelGraphicsOverlay.graphics.removeLastObject()
             }
             else {
                 if let route = routeResult?.routes[0] {
-                    let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self?.routeSymbol())
+                    let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self?.routeSymbol(), attributes: nil)
                     self?.routeGraphicsOverlay.graphics.addObject(routeGraphic)
                 }
             }
@@ -252,8 +264,6 @@ class MobileMapViewController: UIViewController, AGSMapViewTouchDelegate {
         self.markerGraphicsOverlay.graphics.removeAllObjects()
         //remove route graphics
         self.routeGraphicsOverlay.graphics.removeAllObjects()
-        //remove label graphics
-        self.labelGraphicsOverlay.graphics.removeAllObjects()
         //dismiss callout
         self.mapView.callout.dismiss()
     }

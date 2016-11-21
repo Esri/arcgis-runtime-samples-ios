@@ -28,10 +28,6 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
     
     weak var delegate:MMLLayersViewControllerDelegate?
     
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

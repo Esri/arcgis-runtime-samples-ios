@@ -15,13 +15,13 @@
 import UIKit
 import ArcGIS
 
-class DeleteFeaturesViewController: UIViewController, AGSMapViewTouchDelegate, AGSCalloutDelegate {
+class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
     
     @IBOutlet private var mapView:AGSMapView!
     
     private var featureTable:AGSServiceFeatureTable!
     private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancellable!
+    private var lastQuery:AGSCancelable!
     private var selectedFeature:AGSFeature!
     
     override func viewDidLoad() {
@@ -41,7 +41,7 @@ class DeleteFeaturesViewController: UIViewController, AGSMapViewTouchDelegate, A
         self.mapView.touchDelegate = self
         
         //instantiate service feature table using the url to the service
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
+        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         //create a feature layer using the service feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
@@ -59,7 +59,7 @@ class DeleteFeaturesViewController: UIViewController, AGSMapViewTouchDelegate, A
         self.mapView.callout.title = title
         self.mapView.callout.delegate = self
         self.mapView.callout.accessoryButtonImage = UIImage(named: "Discard")
-        self.mapView.callout.showCalloutForFeature(feature, layer: self.featureLayer, tapLocation: tapLocation, animated: true)
+        self.mapView.callout.showCalloutForFeature(feature, tapLocation: tapLocation, animated: true)
     }
     
     func deleteFeature(feature:AGSFeature) {
@@ -86,9 +86,9 @@ class DeleteFeaturesViewController: UIViewController, AGSMapViewTouchDelegate, A
         }
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
@@ -96,13 +96,13 @@ class DeleteFeaturesViewController: UIViewController, AGSMapViewTouchDelegate, A
         //hide the callout
         self.mapView.callout.dismiss()
         
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screen, tolerance: 5, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
-            if let error = error {
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
+            if let error = identifyLayerResult.error {
                 print(error)
             }
-            else if let features = identifyLayerResult?.geoElements as? [AGSFeature] where features.count > 0 {
+            else if let features = identifyLayerResult.geoElements as? [AGSFeature] where features.count > 0 {
                 //show callout for the first feature
-                self?.showCallout(features[0], tapLocation: mappoint)
+                self?.showCallout(features[0], tapLocation: mapPoint)
                 //update selected feature
                 self?.selectedFeature = features[0]
             }

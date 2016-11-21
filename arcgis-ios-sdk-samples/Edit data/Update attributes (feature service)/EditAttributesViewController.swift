@@ -15,20 +15,20 @@
 import UIKit
 import ArcGIS
 
-class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, AGSCalloutDelegate, EAOptionsVCDelegate {
+class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate, EAOptionsVCDelegate {
     
     @IBOutlet private weak var mapView:AGSMapView!
     
     private var map:AGSMap!
     private var featureTable:AGSServiceFeatureTable!
     private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancellable!
+    private var lastQuery:AGSCancelable!
     
     private var types = ["Destroyed", "Major", "Minor", "Affected", "Inaccessible"]
     private var selectedFeature:AGSArcGISFeature!
     private let optionsSegueName = "OptionsSegue"
     
-    private let FEATURE_SERVICE_URL = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
+    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +58,7 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
         let title = feature.attributes["typdamage"] as! String
         self.mapView.callout.title = title
         self.mapView.callout.delegate = self
-        self.mapView.callout.showCalloutForFeature(feature, layer: self.featureLayer, tapLocation: tapLocation, animated: true)
+        self.mapView.callout.showCalloutForFeature(feature, tapLocation: tapLocation, animated: true)
     }
     
     func applyEdits() {
@@ -75,9 +75,9 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
         })
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
@@ -85,13 +85,13 @@ class EditAttributesViewController: UIViewController, AGSMapViewTouchDelegate, A
         //hide the callout
         self.mapView.callout.dismiss()
         
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screen, tolerance: 5, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult?, error: NSError?) -> Void in
-            if let error = error {
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
+            if let error = identifyLayerResult.error {
                 print(error)
             }
-            else if let features = identifyLayerResult?.geoElements as? [AGSArcGISFeature] where features.count > 0 {
+            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature] where features.count > 0 {
                 //show callout for the first feature
-                self?.showCallout(features[0], tapLocation: mappoint)
+                self?.showCallout(features[0], tapLocation: mapPoint)
                 //update selected feature
                 self?.selectedFeature = features[0]
             }

@@ -37,7 +37,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         self.mapView.map = self.map
         
         //create feature table using a url
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer/2")!)
+        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer/2")!)
         //create feature layer using this feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
@@ -72,14 +72,14 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
                 //update selected features array
                 self?.selectedFeatures.removeAll(keepCapacity: false)
             }
-            else if let features = result?.allObjects {
+            else if let features = result?.featureEnumerator().allObjects {
                 if features.count > 0 {
                     self?.featureLayer.selectFeatures(features)
                     //zoom to the selected feature
                     self?.mapView.setViewpointGeometry(features[0].geometry!, padding: 200, completion: nil)
                 }
                 else {
-                    UIAlertView(title: "Error", message: "No state by that name", delegate: nil, cancelButtonTitle: "Ok").show()
+                    SVProgressHUD.showErrorWithStatus("No state by that name", maskType: .Gradient)
                 }
                 //update selected features array
                 self?.selectedFeatures = features 

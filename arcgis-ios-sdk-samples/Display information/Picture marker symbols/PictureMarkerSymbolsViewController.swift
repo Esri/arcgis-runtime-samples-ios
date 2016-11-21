@@ -54,7 +54,7 @@ class PictureMarkerSymbolsViewController: UIViewController {
 
     
     private func addPictureMarkerSymbolFromURL() {
-        let url = NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0/images/e82f744ebb069bb35b234b3fea46deae")!
+        let url = NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0/images/e82f744ebb069bb35b234b3fea46deae")!
         
         let campsiteSymbol = AGSPictureMarkerSymbol(URL: url)
         
@@ -66,7 +66,7 @@ class PictureMarkerSymbolsViewController: UIViewController {
         let campsitePoint = AGSPoint(x: -223560, y: 6552021, spatialReference: AGSSpatialReference.webMercator())
         
         //graphic for camp site
-        let graphic = AGSGraphic(geometry: campsitePoint, symbol: campsiteSymbol)
+        let graphic = AGSGraphic(geometry: campsitePoint, symbol: campsiteSymbol, attributes: nil)
         
         //add the graphic to the overlay
         self.graphicsOverlay.graphics.addObject(graphic)
@@ -86,7 +86,7 @@ class PictureMarkerSymbolsViewController: UIViewController {
         let pinPoint = AGSPoint(x: -226773, y: 6550477, spatialReference: AGSSpatialReference.webMercator())
         
         //graphic for pin
-        let graphic = AGSGraphic(geometry: pinPoint, symbol: pinSymbol)
+        let graphic = AGSGraphic(geometry: pinPoint, symbol: pinSymbol, attributes: nil)
         
         //add the graphic to the overlay
         self.graphicsOverlay.graphics.addObject(graphic)

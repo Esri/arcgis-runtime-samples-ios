@@ -15,16 +15,16 @@
 import UIKit
 import ArcGIS
 
-class FLSelectionViewController: UIViewController, AGSMapViewTouchDelegate {
+class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     @IBOutlet private weak var mapView:AGSMapView!
     
     private var map:AGSMap!
     private var featureTable:AGSServiceFeatureTable!
     private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancellable!
+    private var lastQuery:AGSCancelable!
     private var selectedFeatures:[AGSFeature]!
-    private let FEATURE_SERVICE_URL = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
+    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,19 +55,19 @@ class FLSelectionViewController: UIViewController, AGSMapViewTouchDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
         
         let tolerance:Double = 5
         let mapTolerance = tolerance * self.mapView.unitsPerPoint
-        let envelope = AGSEnvelope(XMin: mappoint.x - mapTolerance,
-            yMin: mappoint.y - mapTolerance,
-            xMax: mappoint.x + mapTolerance,
-            yMax: mappoint.y + mapTolerance,
+        let envelope = AGSEnvelope(XMin: mapPoint.x - mapTolerance,
+            yMin: mapPoint.y - mapTolerance,
+            xMax: mapPoint.x + mapTolerance,
+            yMax: mapPoint.y + mapTolerance,
             spatialReference: self.map.spatialReference)
         
         let queryParams = AGSQueryParameters()
@@ -78,7 +78,7 @@ class FLSelectionViewController: UIViewController, AGSMapViewTouchDelegate {
                 print(error)
             }
             if let result = queryResult {
-                print("\(result.allObjects.count) feature(s) selected")
+                print("\(result.featureEnumerator().allObjects.count) feature(s) selected")
             }
         }
     }

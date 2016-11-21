@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class ReverseGeocodeViewController: UIViewController, AGSMapViewTouchDelegate {
+class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     @IBOutlet weak var mapView: AGSMapView!
     private var map:AGSMap!
@@ -24,7 +24,7 @@ class ReverseGeocodeViewController: UIViewController, AGSMapViewTouchDelegate {
     private var reverseGeocodeParameters:AGSReverseGeocodeParameters!
     private var graphicsOverlay = AGSGraphicsOverlay()
     
-    private let locatorURL = "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+    private let locatorURL = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +90,7 @@ class ReverseGeocodeViewController: UIViewController, AGSMapViewTouchDelegate {
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
         symbol.leaderOffsetY = markerImage.size.height/2
         symbol.offsetY = markerImage.size.height/2
-        let graphic = AGSGraphic(geometry: point, attributes: [String:AnyObject](), symbol: symbol)
+        let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: [String:AnyObject]())
         return graphic
     }
     
@@ -104,17 +104,17 @@ class ReverseGeocodeViewController: UIViewController, AGSMapViewTouchDelegate {
         self.mapView.callout.title = addressString
         self.mapView.callout.detail = "\(cityString) \(stateString)"
         self.mapView.callout.accessoryButtonHidden = true
-        self.mapView.callout.showCalloutForGraphic(graphic, overlay: self.graphicsOverlay, tapLocation: tapLocation, animated: true)
+        self.mapView.callout.showCalloutForGraphic(graphic, tapLocation: tapLocation, animated: true)
     }
     
     private func showAlert(message:String) {
-        UIAlertView(title: "Error", message: message, delegate: nil, cancelButtonTitle: "Ok").show()
+        SVProgressHUD.showErrorWithStatus(message, maskType: .Gradient)
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screen: CGPoint, mapPoint mappoint: AGSPoint) {
-        self.reverseGeocode(mappoint)
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        self.reverseGeocode(mapPoint)
     }
 }
 

@@ -23,7 +23,7 @@ class GenerateGeodatabaseViewController: UIViewController {
     @IBOutlet var extentView:UIView!
     
     private var map:AGSMap!
-    private let FEATURE_SERVICE_URL = NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
+    private let FEATURE_SERVICE_URL = NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
     private var syncTask:AGSGeodatabaseSyncTask!
     private var generateJob:AGSGenerateGeodatabaseJob!
     private var generatedGeodatabase:AGSGeodatabase!
@@ -35,7 +35,7 @@ class GenerateGeodatabaseViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GenerateGeodatabaseViewController"]
         
         let path = NSBundle.mainBundle().pathForResource("SanFrancisco", ofType: "tpk")!
-        let tileCache = AGSTileCache(path: path)
+        let tileCache = AGSTileCache(fileURL: NSURL(fileURLWithPath: path))
         let localTiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
         
         
@@ -43,7 +43,7 @@ class GenerateGeodatabaseViewController: UIViewController {
         
         self.syncTask = AGSGeodatabaseSyncTask(URL: self.FEATURE_SERVICE_URL)
         
-        self.addFeatureLayers(self.syncTask.featureServiceInfo)
+        self.addFeatureLayers()
 
         //setup extent view
         self.extentView.layer.borderColor = UIColor.redColor().CGColor
@@ -57,26 +57,30 @@ class GenerateGeodatabaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func addFeatureLayers(featureServiceInfo: AGSArcGISFeatureServiceInfo) {
+    func addFeatureLayers() {
         
-        //Iterate through the layers in the service
-        featureServiceInfo.loadWithCompletion { [weak self] (error) -> Void in
+        self.syncTask.loadWithCompletion { [weak self] (error) -> Void in
             if let error = error {
                 print("Could not load feature service \(error)")
+                
             } else {
-                for (index, layerInfo) in featureServiceInfo.featureLayerInfos.enumerate().reverse() {
+                guard let weakSelf = self else {
+                    return
+                }
+                
+                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo!.layerInfos.enumerate().reverse() {
                     
                     //For each layer in the serice, add a layer to the map
-                    let layerURL = self?.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))
+                    let layerURL = weakSelf.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))
                     let featureTable = AGSServiceFeatureTable(URL:layerURL!)
                     let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                    featureLayer.name = layerInfo.serviceLayerName
+                    featureLayer.name = layerInfo.name
                     featureLayer.opacity = 0.65
-                    self?.map.operationalLayers.addObject(featureLayer)
+                    weakSelf.map.operationalLayers.addObject(featureLayer)
                 }
                 
                 //enable download
-                self?.downloadBBI.enabled = true
+                weakSelf.downloadBBI.enabled = true
             }
         }
     }
@@ -95,11 +99,8 @@ class GenerateGeodatabaseViewController: UIViewController {
     @IBAction func downloadAction() {
         
         //generate default param to contain all layers in the service
-        self.syncTask.defaultGenerateGeodatabaseParametersWithCompletion { (params, error) in
-            if let params = params {
-                
-                //specify the extent within which features are needed
-                params.extent = self.frameToExtent()
+        self.syncTask.defaultGenerateGeodatabaseParametersWithExtent(self.frameToExtent()) { [weak self] (params: AGSGenerateGeodatabaseParameters?, error: NSError?) in
+            if let params = params, weakSelf = self {
                 
                 //don't include attachments to minimze the geodatabae size
                 params.returnAttachments = false
@@ -107,16 +108,19 @@ class GenerateGeodatabaseViewController: UIViewController {
                 //create a unique name for the geodatabase based on current timestamp
                 let dateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-                let gdbName = "\(dateFormatter.stringFromDate(NSDate())).geodatabase"
+                
+                let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+                let fullPath = "\(path)/\(dateFormatter.stringFromDate(NSDate())).geodatabase"
                 
                 //request a job to generate the geodatabase
-                self.generateJob = self.syncTask.generateJobWithParameters(params, downloadFilePath: gdbName)
+                weakSelf.generateJob = weakSelf.syncTask.generateJobWithParameters(params, downloadFileURL: NSURL(string: fullPath)!)
                 
                 //kick off the job
-                self.generateJob.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
+                weakSelf.generateJob.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
                     SVProgressHUD.showWithStatus(status.statusString(), maskType: SVProgressHUDMaskType.Gradient)
                 }) { [weak self] (object: AnyObject?, error: NSError?) -> Void in
                     if let error = error {
+                        print(error)
                         SVProgressHUD.showErrorWithStatus(error.localizedDescription)
                     }
                     else {
@@ -142,7 +146,7 @@ class GenerateGeodatabaseViewController: UIViewController {
             else {
                 self?.map.operationalLayers.removeAllObjects()
                 
-                loadObjects(self!.generatedGeodatabase.geodatabaseFeatureTables, { (success: Bool) in
+                AGSLoadObjects(self!.generatedGeodatabase.geodatabaseFeatureTables, { (success: Bool) in
                     if success {
                         for featureTable in self!.generatedGeodatabase.geodatabaseFeatureTables.reverse() {
                             //check if featureTable has geometry

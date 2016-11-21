@@ -43,7 +43,7 @@ class ExportTilesViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ExportTilesViewController"]
         
-        self.tiledLayer = AGSArcGISTiledLayer(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer")!)
+        self.tiledLayer = AGSArcGISTiledLayer(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer")!)
         let map = AGSMap(basemap: AGSBasemap(baseLayer: self.tiledLayer))
         
         self.mapView.map = map
@@ -83,7 +83,7 @@ class ExportTilesViewController: UIViewController {
         }
         else {
             //download
-            self.downloadTiles()
+            self.initiateDownload()
         }
     }
     
@@ -98,7 +98,7 @@ class ExportTilesViewController: UIViewController {
         }
     }
     
-    private func downloadTiles() {
+    private func initiateDownload() {
         
         //get the parameters by specifying the selected area,
         //mapview's current scale as the minScale and tiled layer's max scale as maxScale
@@ -107,7 +107,7 @@ class ExportTilesViewController: UIViewController {
         
         //TODO: Remove this code once design has been udpated
         if minScale == maxScale {
-            UIAlertView(title: "Error", message: "Min scale and max scale cannot be the same", delegate: nil, cancelButtonTitle: "Ok").show()
+            SVProgressHUD.showErrorWithStatus("Min scale and max scale cannot be the same", maskType: .Gradient)
             return
         }
         
@@ -117,16 +117,25 @@ class ExportTilesViewController: UIViewController {
         //delete previous existing tpks
         self.deleteAllTpks()
         
+        //initialize the export task
+        self.exportTask = AGSExportTileCacheTask(URL: self.tiledLayer.URL!)
+        self.exportTask.exportTileCacheParametersWithAreaOfInterest(self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale) { [weak self] (params: AGSExportTileCacheParameters?, error: NSError?) in
+            if let error = error {
+                SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
+            }
+            else {
+                self?.exportTilesUsingParameters(params!)
+            }
+        }
+    }
+    
+    private func exportTilesUsingParameters(params: AGSExportTileCacheParameters) {
         //destination path for the tpk, including name
         let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
         let destinationPath = "\(path)/myTileCache.tpk"
         
-        //initialize the export task
-        self.exportTask = AGSExportTileCacheTask(mapServiceInfo: self.tiledLayer.mapServiceInfo!)
-        let params = self.exportTask.exportTileCacheParametersWithAreaOfInterest(self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale)
-        
         //get the job
-        self.job = self.exportTask.exportTileCacheJobWithParameters(params, downloadFilePath: destinationPath)
+        self.job = self.exportTask.exportTileCacheJobWithParameters(params, downloadFileURL: NSURL(string: destinationPath)!)
         //run the job
         self.job.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
             //show job status

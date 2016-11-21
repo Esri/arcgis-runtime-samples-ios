@@ -15,40 +15,42 @@
 import UIKit
 import ArcGIS
 
-class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, IdentifyResultsVCDelegate {
+class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     @IBOutlet var mapView: AGSMapView!
-    @IBOutlet var containerView:UIView!
-    @IBOutlet var mapViewBottomConstraint:NSLayoutConstraint!
-    @IBOutlet var mapViewZeroBottomConstraint:NSLayoutConstraint!
     
     private var map:AGSMap!
     
     private var featureLayer:AGSFeatureLayer!
     private var mapImageLayer:AGSArcGISMapImageLayer!
     
-    private var selectedGeoElements:[AGSGeoElement]!
-    
-    private var identifyResultsVC:IdentifyResultsViewController!
-    private var graphicsOverlay = AGSGraphicsOverlay()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["IdentifyLayersViewController", "IdentifyResultsViewController", "GeoElementCell"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["IdentifyLayersViewController"]
         
         //create an instance of a map
-        self.map = AGSMap()
+        self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
         
-        self.mapImageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
+        //map image layer
+        self.mapImageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
         
+        //hide Continent and World layers
+        self.mapImageLayer.loadWithCompletion { [weak self] (error: NSError?) in
+            if error == nil {
+                self?.mapImageLayer.subLayerContents[1].visible = false
+                self?.mapImageLayer.subLayerContents[2].visible = false
+            }
+        }
         self.map.operationalLayers.addObject(self.mapImageLayer)
         
         //feature table
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
+        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
+    
         //feature layer
         self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        
         
         //add feature layer add to the operational layers
         self.map.operationalLayers.addObject(self.featureLayer)
@@ -61,12 +63,6 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
         
         //add self as the touch delegate for the map view
         self.mapView.touchDelegate = self
-        
-        //add graphics overlay, used for highlighting identified elements
-        self.mapView.graphicsOverlays.addObject(self.graphicsOverlay)
-        
-        //hide the results view controller initially
-        self.toggleContainerView(false, animated: false)
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,9 +70,9 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: - AGSMapViewTouchDelegate
+    //MARK: - AGSGeoViewTouchDelegate
     
-    func mapView(mapView: AGSMapView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //get the geoElements for all layers present at the tapped point
         self.identifyLayers(screenPoint)
     }
@@ -87,7 +83,7 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
         //show progress hud
         SVProgressHUD.showWithStatus("Identifying", maskType: .Gradient)
         
-        self.mapView.identifyLayersAtScreenPoint(screen, tolerance: 22, maximumResultsPerLayer: 10) { (results: [AGSIdentifyLayerResult]?, error: NSError?) in
+        self.mapView.identifyLayersAtScreenPoint(screen, tolerance: 22, returnPopupsOnly: false, maximumResultsPerLayer: 10) { (results: [AGSIdentifyLayerResult]?, error: NSError?) in
             
             //dismiss progress hud
             SVProgressHUD.dismiss()
@@ -96,153 +92,77 @@ class IdentifyLayersViewController: UIViewController, AGSMapViewTouchDelegate, I
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
             }
             else {
-                //get all the geoElements from the results
-                self.selectedGeoElements = self.geoElementsFromResults(results!)
-                //keep a reference to the geoElements to be used later
-                self.identifyResultsVC.geoElements = self.selectedGeoElements
-                
-                if self.selectedGeoElements.count > 0 {
-                    
-                    //select the first geo element on the map view
-                    self.selectGeoElement(self.selectedGeoElements[0], completion: {
-                        
-                        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
-                        dispatch_after(delayTime, dispatch_get_main_queue(), { [weak self] in
-                            //show the container view populated with the geo elements
-                            self?.toggleContainerView(true, animated: true)
-                        })
-                    })
-                }
-                else {
-                    SVProgressHUD.showInfoWithStatus("No element found", maskType: .Gradient)
-                    //hide the container view
-                    self.toggleContainerView(false, animated: true)
-                    //clear any graphics in the graphics overlay
-                    self.graphicsOverlay.graphics.removeAllObjects()
-                }
+                self.handleIdentifyResults(results!)
             }
         }
     }
     
     //MARK: - Helper methods
     
-    private func selectGeoElement(geoElement:AGSGeoElement, completion: (Void -> Void)? ) {
-        //clear graphics overlay to remove any previous highlighted geometry
-        self.graphicsOverlay.graphics.removeAllObjects()
+    private func handleIdentifyResults(results: [AGSIdentifyLayerResult]) {
         
-        //create symbol based on the type of geometry
-        var symbol:AGSSymbol
-        if geoElement.geometry is AGSPoint {
-            symbol = AGSSimpleMarkerSymbol(style: .Circle, color: UIColor.cyanColor().colorWithAlphaComponent(0.8), size: 15)
+        var messageString = ""
+        var totalCount = 0
+        for identifyLayerResult in results {
+            let count = self.geoElementsCountFromResult(identifyLayerResult)
+            let layerName = identifyLayerResult.layerContent.name
+            messageString.appendContentsOf("\(layerName) :: \(count)")
+            
+            //add new line character if not the final element in array
+            if identifyLayerResult != results.last! {
+                messageString.appendContentsOf(" \n ")
+            }
+            
+            //update total count
+            totalCount += count
         }
-        else if geoElement is AGSPolyline {
-            symbol = AGSSimpleLineSymbol(style: .Dash, color: UIColor.cyanColor().colorWithAlphaComponent(0.8), width: 5)
+        
+        //if any elements were found show the results
+        //else notify user that no elements were found
+        if totalCount > 0 {
+            self.showAlertController("Number of elements found", message: messageString)
         }
         else {
-            symbol = AGSSimpleFillSymbol(style: .Cross, color: UIColor.cyanColor().colorWithAlphaComponent(0.8), outline: nil)
-        }
-        let graphic = AGSGraphic(geometry: geoElement.geometry!, symbol: symbol)
-        
-        //add graphic to the overlay
-        graphicsOverlay.graphics.addObject(graphic)
-        
-        //zoom to the added graphic
-        self.mapView.setViewpointGeometry(geoElement.geometry!.extent, padding: 50) { (finished) in
-            completion?()
+            SVProgressHUD.showErrorWithStatus("No element found")
         }
     }
     
-    private func geoElementsFromResults(results:[AGSIdentifyLayerResult]) -> [AGSGeoElement] {
-        //create temp variable to allow additions to array
-        var tempResults = results
+    private func geoElementsCountFromResult(result: AGSIdentifyLayerResult) -> Int {
+        //create temp array
+        var tempResults = [result]
         
         //using Depth First Search approach to handle recursion
-        var geoElements = [AGSGeoElement]()
         var count = 0
+        var index = 0
         
-        while count < tempResults.count {
+        while index < tempResults.count {
             //get the result object from the array
-            let identifyResult = tempResults[count]
+            let identifyResult = tempResults[index]
             
-            for element in identifyResult.geoElements {
-                element.layerName = identifyResult.layerContent.name
-            }
-            
-            //add the geoElements from the result
-            geoElements.appendContentsOf(identifyResult.geoElements)
+            //update count with geoElements from the result
+            count += identifyResult.geoElements.count
             
             //check if the result has any sublayer results
             //if yes then add those result objects in the tempResults
             //array after the current result
             if identifyResult.sublayerResults.count > 0 {
-                tempResults.insertContentsOf(identifyResult.sublayerResults, at: count+1)
+                tempResults.insertContentsOf(identifyResult.sublayerResults, at: index + 1)
             }
             
             //update the count and repeat
-            count += 1
+            index += 1
         }
         
-        return geoElements
+        return count
     }
     
-    //MARK: - Navigation
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "IdentifyResultsEmbedSegue" {
-            self.identifyResultsVC = segue.destinationViewController as! IdentifyResultsViewController
-            self.identifyResultsVC.delegate = self
-        }
-    }
-    
-    //MARK: - Show/Hide container view
-    
-    private func toggleContainerView(on:Bool, animated:Bool) {
-        self.mapViewBottomConstraint.active = on
-        self.mapViewZeroBottomConstraint.active = !on
+    //helper method to show results to the user
+    private func showAlertController(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         
-        if !animated {
-            self.view.layoutIfNeeded()
-        }
-        else {
-            UIView.animateWithDuration(0.3, animations: { [weak self] in
-                self?.view.layoutIfNeeded()
-            }) { (finished: Bool) in
-                
-            }
-        }
-    }
-    
-    //MARK: - IdentifyResultsVCDelegate
-    
-    func identifyResultsViewController(identifyResultsViewController: IdentifyResultsViewController, didSelectGeoElementAtIndex index: Int) {
-        //select the geoElement on the map view
-        self.selectGeoElement(self.selectedGeoElements[index], completion: nil)
-    }
-    
-    func identifyResultsViewControllerWantsToClose(identifyResultsViewController: IdentifyResultsViewController) {
-        //toggle the container view off
-        self.toggleContainerView(false, animated: true)
-        //clear any graphics in the graphics overlay
-        self.graphicsOverlay.graphics.removeAllObjects()
-    }
-}
-
-
-
-//MARK: - Extension
-var layerNameHandle:UInt8 = 0
-
-//extending AGSGeoElement to include a layerName property
-//to be used in the collection view
-extension AGSGeoElement {
-    
-    var layerName:String {
-        get {
-            return objc_getAssociatedObject(self, &layerNameHandle) as? String ?? ""
-        }
-        set {
-            objc_setAssociatedObject(self, &layerNameHandle, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
+        let okAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }
 

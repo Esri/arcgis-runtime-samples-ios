@@ -16,9 +16,6 @@
 
 #warning These need to be changed for each application
 
-//This is the OAuth client ID/License client Id
-#define kClientID @"17VawA9qKb4w14Ch"
-
 //This is the key that will be used to store information in the keychain
 #define kKeyChainKey @"com.esri.LicenseOrgAccountSample"
 

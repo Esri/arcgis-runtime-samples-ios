@@ -23,13 +23,6 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     
-    //set client id.
-    //this gives us Basic license level capabilites
-    NSError *error = nil;
-    BOOL valid = [AGSRuntimeEnvironment setClientID:kClientID error:&error];
-    if (!valid) {
-        NSLog(@"setClientID failed: %@", error.localizedDescription);
-    }
 }
 
 @end

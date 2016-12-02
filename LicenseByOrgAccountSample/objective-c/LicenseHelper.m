@@ -87,7 +87,6 @@ static LicenseHelper* _sharedLicenseHelper = nil;
         _sharedLicenseHelper = [[super alloc] init];
         _sharedLicenseHelper.keychainItem = [[AGSKeychainItem alloc]
                                              initWithIdentifier:kKeyChainKey accessGroup:nil acrossDevices: NO];
-        [[[AGSAuthenticationManager sharedAuthenticationManager] credentialCache] enableAutoSyncToKeychainWithIdentifier:kKeyChainKey accessGroup:nil acrossDevices:NO];
     });
     
     return _sharedLicenseHelper;

@@ -16,6 +16,7 @@
 
 #import "ViewController.h"
 #import "LicenseHelper.h"
+#import "AppDelegate.h"
 
 @interface ViewController()
 
@@ -60,8 +61,10 @@
         }];
     }
     else {
+        NSURL *portalURL = ((AppDelegate*)[UIApplication sharedApplication].delegate).portalURL;
+      
         //Use the helper to allow the user to sign in and license the app
-        [[LicenseHelper sharedLicenseHelper] standardLicenseFromPortal:[NSURL URLWithString:kPortalUrl]
+        [[LicenseHelper sharedLicenseHelper] standardLicenseFromPortal:portalURL
               completion:^(AGSLicenseResult *licenseResult, BOOL usedSavedLicenseInfo, AGSPortal *portal, AGSCredential *credential, NSError *error) {
                 
                 if(licenseResult.licenseStatus==AGSLicenseStatusValid){

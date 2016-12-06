@@ -14,11 +14,19 @@
 
 import UIKit
 
+class CustomFlowLayout:UICollectionViewFlowLayout {
+    
+    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+        return true
+    }
+}
+
 private let reuseIdentifier = "CategoryCell"
 
-class ContentCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, CustomSearchHeaderViewDelegate {
+class ContentCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, CustomSearchHeaderViewDelegate {
 
     @IBOutlet private var collectionView:UICollectionView!
+    @IBOutlet private var collectionViewFlowLayout:UICollectionViewFlowLayout!
     
     private var headerView:CustomSearchHeaderView!
     
@@ -27,7 +35,7 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //hide suggestions
         self.hideSuggestions()
         
@@ -44,6 +52,7 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         let path = NSBundle.mainBundle().pathForResource("ContentPList", ofType: "plist")
         let content = NSArray(contentsOfFile: path!)
         self.nodesArray = self.populateNodesArray(content! as [AnyObject])
+        
         self.collectionView?.reloadData()
     }
     
@@ -72,6 +81,7 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         }
         return node
     }
+    
     
     //MARK: - Suggestions related
     
@@ -158,14 +168,6 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         return self.headerView
     }
     
-    //size for item
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        if self.transitionSize != nil {
-            return self.transitionSize
-        }
-        return self.itemSizeForCollectionViewSize(collectionView.frame.size)
-    }
-    
     //MARK: - UICollectionViewDelegate
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -179,19 +181,25 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         self.navigationController?.showViewController(controller, sender: self)
     }
     
+    //MARK: - UICollectionViewDelegateFlowLayout
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        let size = self.itemSizeForCollectionViewSize(self.collectionView.bounds.size)
+        
+        return size
+    }
+    
     //MARK: - Transition
     
     //get the size of the new view to be transitioned to
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+
+        coordinator.animateAlongsideTransition({ [weak self] (_: UIViewControllerTransitionCoordinatorContext) in
+            self?.collectionView.collectionViewLayout.invalidateLayout()
+        }, completion: nil)
         
-        let newFlowLayout = UICollectionViewFlowLayout()
-        newFlowLayout.itemSize = self.itemSizeForCollectionViewSize(size)
-        newFlowLayout.sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 10, right: 10)
-        newFlowLayout.headerReferenceSize = CGSize(width: size.width, height: (self.headerView.isShowingSuggestions ? self.headerView.expandedViewHeight : self.headerView.shrinkedViewHeight))
-        
-        self.transitionSize = newFlowLayout.itemSize
-        self.collectionView?.setCollectionViewLayout(newFlowLayout, animated: false)
-        self.transitionSize = nil
     }
     
     //item width based on the width of the collection view

@@ -35,11 +35,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Override point for customization after application launch.
         let splitViewController = self.window!.rootViewController as! UISplitViewController
         splitViewController.presentsWithGesture = false
-        splitViewController.preferredDisplayMode = UISplitViewControllerDisplayMode.PrimaryHidden
+        splitViewController.preferredDisplayMode = UISplitViewControllerDisplayMode.AllVisible
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
         navigationController.topViewController!.navigationItem.leftItemsSupplementBackButton = true
         splitViewController.delegate = self
+        
+        //min max width for master
+        splitViewController.minimumPrimaryColumnWidth = 320
+        splitViewController.maximumPrimaryColumnWidth = 320
         
         self.modifyAppearance()
         
@@ -102,15 +106,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     // MARK: - Split view
 
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
-        if let secondaryAsNavController = secondaryViewController as? UINavigationController {
-            if let topAsDetailController = secondaryAsNavController.topViewController  {
-//                if topAsDetailController.detailItem == nil {
-//                    // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
-//                    return true
-//                }
+        if secondaryViewController.restorationIdentifier == "DetailNavigationController" {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    func splitViewController(splitViewController: UISplitViewController, separateSecondaryViewControllerFromPrimaryViewController primaryViewController: UIViewController) -> UIViewController? {
+        if let navigationController = primaryViewController as? UINavigationController {
+            if navigationController.topViewController! is ContentCollectionViewController || navigationController.topViewController is ContentTableViewController {
+                
+                let controller = splitViewController.storyboard!.instantiateViewControllerWithIdentifier("DetailNavigationController") as! UINavigationController
+                controller.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
+                controller.topViewController!.navigationItem.leftItemsSupplementBackButton = true
+                return controller
             }
         }
-        return true
+        return nil
     }
 }
 

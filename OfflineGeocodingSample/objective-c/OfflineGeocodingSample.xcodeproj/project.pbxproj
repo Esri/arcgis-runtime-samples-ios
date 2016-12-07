@@ -20,6 +20,7 @@
 		97825AB417F65D830044D1FD /* SanFranciscoLocator.locb in Resources */ = {isa = PBXBuildFile; fileRef = 97825AAF17F65D830044D1FD /* SanFranciscoLocator.locb */; };
 		97825AB517F65D830044D1FD /* SanFranciscoLocator.lox in Resources */ = {isa = PBXBuildFile; fileRef = 97825AB017F65D830044D1FD /* SanFranciscoLocator.lox */; };
 		97825AB617F65D830044D1FD /* SanFrancisco.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 97825AB117F65D830044D1FD /* SanFrancisco.tpk */; };
+		97928B811DE5134C00D5081E /* BluePushpin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97928B801DE5134C00D5081E /* BluePushpin@2x.png */; };
 		AF5531B2125BB3330070ED0C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5531B0125BB3330070ED0C /* icon.png */; };
 		AF5531B3125BB3330070ED0C /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5531B1125BB3330070ED0C /* icon@2x.png */; };
 		C56B3F9D14C63EDA003A46EB /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C56B3F9C14C63EDA003A46EB /* ArcGIS.bundle */; };
@@ -46,9 +47,10 @@
 		97825AAF17F65D830044D1FD /* SanFranciscoLocator.locb */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFranciscoLocator.locb; path = "../../Data/address locator/SanFrancisco/SanFranciscoLocator.locb"; sourceTree = "<group>"; };
 		97825AB017F65D830044D1FD /* SanFranciscoLocator.lox */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFranciscoLocator.lox; path = "../../Data/address locator/SanFrancisco/SanFranciscoLocator.lox"; sourceTree = "<group>"; };
 		97825AB117F65D830044D1FD /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "../../Data/tile package/SanFrancisco.tpk"; sourceTree = "<group>"; };
+		97928B801DE5134C00D5081E /* BluePushpin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BluePushpin@2x.png"; sourceTree = "<group>"; };
 		AF5531B0125BB3330070ED0C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		AF5531B1125BB3330070ED0C /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
-		C56B3F9C14C63EDA003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
+		C56B3F9C14C63EDA003A46EB /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Static/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				97928B801DE5134C00D5081E /* BluePushpin@2x.png */,
 				3E4324D918F36D7400504DFD /* Data */,
 				3E4324D818F36D6000504DFD /* Images */,
 				97825AB117F65D830044D1FD /* SanFrancisco.tpk */,
@@ -182,7 +185,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0810;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "OfflineGeocodingSample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -218,6 +221,7 @@
 				C56B3F9D14C63EDA003A46EB /* ArcGIS.bundle in Resources */,
 				975E754E167A9620005FB57B /* Default-568h@2x.png in Resources */,
 				97825AB517F65D830044D1FD /* SanFranciscoLocator.lox in Resources */,
+				97928B811DE5134C00D5081E /* BluePushpin@2x.png in Resources */,
 				97825AB217F65D830044D1FD /* SanFranciscoLocator.loc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,13 +251,13 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/Frameworks/Static";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = OfflineGeocodingSample_Prefix.pch;
 				INFOPLIST_FILE = "OfflineGeocodingSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -262,6 +266,7 @@
 					"-l",
 					"c++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = OfflineGeocodingSample;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -278,11 +283,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/Frameworks/Static";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = OfflineGeocodingSample_Prefix.pch;
 				INFOPLIST_FILE = "OfflineGeocodingSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -291,6 +296,7 @@
 					"-l",
 					"c++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = OfflineGeocodingSample;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -303,15 +309,22 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -319,7 +332,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -329,16 +342,22 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sreejith Parthasarathy (N3WX842HCK)";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -346,7 +365,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E89AACA5-4D0F-4BD5-87F9-80588D33ADA4";
 				SDKROOT = iphoneos;

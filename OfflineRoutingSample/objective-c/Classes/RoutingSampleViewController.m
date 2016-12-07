@@ -16,15 +16,14 @@
 
 @interface RoutingSampleViewController ()
 
-@property (nonatomic, strong) AGSGraphicsLayer				*graphicsLayerStops;
-@property (nonatomic, strong) AGSGraphicsLayer              *graphicsLayerRoute;
+@property (nonatomic, strong) AGSGraphicsOverlay				*graphicsOverlayStops;
+@property (nonatomic, strong) AGSGraphicsOverlay              *graphicsOverlayRoute;
 @property (nonatomic, strong) AGSRouteTask					*routeTask;
-@property (nonatomic, strong) AGSRouteTaskParameters		*routeTaskParams;
-@property (nonatomic, strong) AGSDirectionGraphic			*currentDirectionGraphic;
-@property (nonatomic, strong) AGSRouteResult				*routeResult;
+@property (nonatomic, strong) AGSRouteParameters		*routeTaskParams;
+@property (nonatomic, strong) AGSGraphic			*currentDirectionGraphic;
+@property (nonatomic, strong) AGSRoute				*route;
 @property (nonatomic, strong) AGSGraphic* lastStop;
 @property (nonatomic, assign) BOOL isExecuting;
-@property (nonatomic, strong) AGSGraphic* routeGraphic;
 @property (nonatomic, assign) int numStops;
 @property (nonatomic, assign) int directionIndex;
 @property (nonatomic, assign) BOOL reorderStops;
@@ -48,46 +47,45 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.mapView.showMagnifierOnTapAndHold = YES;
-    self.mapView.allowMagnifierToPanMap = NO;
-    self.mapView.layerDelegate = self;
+    self.mapView.interactionOptions.magnifierEnabled = YES;
+    self.mapView.interactionOptions.allowMagnifierToPan = YES;
 
     
     
-    // Load a tiled map service
-    [self.mapView addMapLayer:[AGSLocalTiledLayer localTiledLayerWithName:@"SanFrancisco.tpk"] ];
+    // Load a tiled package
+    AGSArcGISTiledLayer* tiledLayer = [AGSArcGISTiledLayer ArcGISTiledLayerWithTileCache:[AGSTileCache tileCacheWithName:@"SanFrancisco"]];
+    AGSBasemap* basemap = [AGSBasemap basemapWithBaseLayer:tiledLayer];
+    self.mapView.map = [AGSMap mapWithBasemap:basemap];
 	
 	// Setup the route task
-    NSError* error = nil;
-    self.routeTask = [AGSRouteTask routeTaskWithDatabaseName:@"RuntimeSanFrancisco" network:@"Streets_ND" error:&error];
-    // assign delegate to this view controller
-	self.routeTask.delegate = self;
+    self.routeTask = [AGSRouteTask routeTaskWithDatabaseName:@"RuntimeSanFrancisco" networkName:@"Streets_ND"];
 	
+    __weak __typeof(self) weakSelf = self;
 	// kick off asynchronous method to retrieve default parameters
 	// for the route task
-	[self.routeTask retrieveDefaultRouteTaskParameters];
+    [self.routeTask defaultRouteParametersWithCompletion:^(AGSRouteParameters * _Nullable routeParams, NSError * _Nullable error) {
+        if (routeParams!=nil){
+            [weakSelf processRouteParameters:routeParams];
+        }else if (error!=nil){
+            [weakSelf processRouteParametersError:error];
+        }
+    }];
 
 
 		
     // add graphics layer for displaying the route
     AGSCompositeSymbol *cs = [AGSCompositeSymbol compositeSymbol];
-	AGSSimpleLineSymbol *sls1 = [AGSSimpleLineSymbol simpleLineSymbol];
-	sls1.color = [UIColor yellowColor];
-	sls1.style = AGSSimpleLineSymbolStyleSolid;
-	sls1.width = 8;
-	[cs addSymbol:sls1];
-	AGSSimpleLineSymbol *sls2 = [AGSSimpleLineSymbol simpleLineSymbol];
-	sls2.color = [UIColor blueColor];
-	sls2.style = AGSSimpleLineSymbolStyleSolid;
-	sls2.width = 4;
-	[cs addSymbol:sls2];
-	self.graphicsLayerRoute = [AGSGraphicsLayer graphicsLayer];
-    self.graphicsLayerRoute.renderer = [AGSSimpleRenderer simpleRendererWithSymbol:cs];
-    [self.mapView addMapLayer:self.graphicsLayerRoute withName:@"Route"];
+    AGSSimpleLineSymbol *sls1 = [AGSSimpleLineSymbol simpleLineSymbolWithStyle:AGSSimpleLineSymbolStyleSolid color:[UIColor yellowColor] width:8];
+    AGSSimpleLineSymbol *sls2 = [AGSSimpleLineSymbol simpleLineSymbolWithStyle:AGSSimpleLineSymbolStyleSolid color:[UIColor blueColor] width:4];
+    cs.symbols = @[sls1,sls2];
+	self.graphicsOverlayRoute = [AGSGraphicsOverlay graphicsOverlay];
+    self.graphicsOverlayRoute.renderer = [AGSSimpleRenderer simpleRendererWithSymbol:cs];
+    
+    [self.mapView.graphicsOverlays addObject:self.graphicsOverlayRoute];
     
 	// add graphics layer for displaying the stops
-	self.graphicsLayerStops = [AGSGraphicsLayer graphicsLayer];
-	[self.mapView addMapLayer:self.graphicsLayerStops withName:@"Stops"];
+	self.graphicsOverlayStops = [AGSGraphicsOverlay graphicsOverlay];
+	[self.mapView.graphicsOverlays addObject:self.graphicsOverlayStops];
 	
 	// initialize stop counter
 	self.numStops = 0;
@@ -102,44 +100,31 @@
 }
 #pragma mark - AGSMapViewTouchDelegate
 
--(void) mapView:(AGSMapView *)mapView didTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features {
-    self.lastStop = [self addStop:mappoint];
-    if(self.graphicsLayerStops.graphics.count>1){
+- (void)geoView:(AGSGeoView *)geoView didLongPressAtScreenPoint:(CGPoint)screenPoint mapPoint:(AGSPoint *)mapPoint
+{
+    self.lastStop = [self addStop:mapPoint];
+    if(self.graphicsOverlayStops.graphics.count>1){
         self.isExecuting = YES;
         [self solveRoute];
     }
 }
 
--(void) mapView:(AGSMapView *)mapView didMoveTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features {
+- (void)geoView:(AGSGeoView *)geoView didMoveLongPressToScreenPoint:(CGPoint)screenPoint mapPoint:(AGSPoint *)mapPoint {
     if(self.isExecuting)
         return;
-    self.lastStop.geometry = mappoint;
-    if(self.graphicsLayerStops.graphics.count<2)
+    self.lastStop.geometry = mapPoint;
+    if(self.graphicsOverlayStops.graphics.count<2)
         return;
     self.isExecuting = YES;
     [self solveRoute];
 }
 
--(void)mapView:(AGSMapView *)mapView didEndTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features{
-    if(self.graphicsLayerStops.graphics.count<2){
+- (void)geoView:(AGSGeoView *)geoView didEndLongPressAtScreenPoint:(CGPoint)screenPoint mapPoint:(AGSPoint *)mapPoint {
+    if(self.graphicsOverlayStops.graphics.count<2){
         self.reorderBtn.enabled = NO;
     }else{
         self.reorderBtn.enabled = YES;
     }
-}
-
-#pragma mark - AGSMapViewLayerDelegate 
--(void)mapViewDidLoad:(AGSMapView *)mapView{
-    
-	
-    AGSPoint* museumOfMA = [AGSPoint pointFromDecimalDegreesString:@"37.785 , -122.400" withSpatialReference:[AGSSpatialReference wgs84SpatialReference]];
-    [self addStop:(AGSPoint*)[[AGSGeometryEngine defaultGeometryEngine]projectGeometry:museumOfMA toSpatialReference:self.mapView.spatialReference]];
-    
-    if(self.routeTaskParams){
-        self.routeTaskParams.outSpatialReference = self.mapView.spatialReference;
-    }
-    
-    [self.mapView zoomIn:NO];
 }
 
 
@@ -150,85 +135,82 @@
 //
 // we got the default parameters from the service
 //
-- (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didRetrieveDefaultRouteTaskParameters:(AGSRouteTaskParameters *)routeParams {
-	self.routeTaskParams = routeParams;
-    
-    
-	self.routeTaskParams.returnRouteGraphics = YES;
-    
-	// this returns turn-by-turn directions
-	self.routeTaskParams.returnDirections = YES;
-	
+- (void) processRouteParameters:(AGSRouteParameters*)routeParams {
+    self.routeTaskParams = routeParams;
 
-	self.routeTaskParams.findBestSequence = NO;
+    
+    self.routeTaskParams.returnRoutes = YES;
+    
+    // this returns turn-by-turn directions
+    self.routeTaskParams.returnDirections = YES;
     
     
-    self.routeTaskParams.impedanceAttributeName = @"Minutes";
+    self.routeTaskParams.findBestSequence = NO;
+    
+    
+    self.routeTaskParams.travelMode.impedanceAttributeName = @"Minutes";
     self.routeTaskParams.accumulateAttributeNames = @[@"Meters", @"Minutes"];
-	
-	// since we used "findBestSequence" we need to
-	// get the newly reordered stops
-	self.routeTaskParams.returnStopGraphics = NO;
-	
-	// ensure the graphics are returned in our map's spatial reference
-	self.routeTaskParams.outSpatialReference = self.mapView.spatialReference;
-	
-	// let's ignore invalid locations
-	self.routeTaskParams.ignoreInvalidLocations = YES;
+    
+    // since we used "findBestSequence" we need to
+    // get the newly reordered stops
+    self.routeTaskParams.returnStops = NO;
+    
+    // ensure the graphics are returned in our map's spatial reference
+    self.routeTaskParams.outputSpatialReference = self.mapView.spatialReference;
+    
 }
-
 
 //
 // an error was encountered while getting defaults
 //
-- (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didFailToRetrieveDefaultRouteTaskParametersWithError:(NSError *)error {
-	
-	// Create an alert to let the user know the retrieval failed
-	UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" 
-												 message:@"Failed to retrieve default route parameters" 
-												delegate:nil
-									   cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-	[av show];
+- (void) processRouteParametersError:(NSError*)error {
+    
+    // Create an alert to let the user know the retrieval failed
+    // Click Retry to attempt to retrieve the defaults again
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to retrieve default route parameters" preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
+
+
 
 
 //
 // route was solved
 //
-- (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didSolveWithResult:(AGSRouteTaskResult *)routeTaskResult {
+- (void) processRouteResult:(AGSRouteResult*)routeResult {
 	
     // update our banner with status
     [self updateDirectionsLabel:@"Routing completed"];
 	
 	// we know that we are only dealing with 1 route...
-	self.routeResult = [routeTaskResult.routeResults lastObject];
+    self.route = routeResult.routes[0];
         
-    NSString* resultSummary = [NSString stringWithFormat:@"%.0f mins, %.1f miles",self.routeResult.totalMinutes, self.routeResult.totalMiles];
+    NSString* resultSummary = [NSString stringWithFormat:@"%.0f mins, %.1f miles",self.route.totalTime, self.route.totalLength*0.000621371];
     [self updateDirectionsLabel:resultSummary];
         
         // add the route graphic to the graphic's layer
-        [self.graphicsLayerRoute removeAllGraphics];
-		[self.graphicsLayerRoute addGraphic:self.routeResult.routeGraphic];
+        [self.graphicsOverlayRoute.graphics removeAllObjects];
+		[self.graphicsOverlayRoute.graphics addObject:[AGSGraphic graphicWithGeometry:self.route.routeGeometry symbol:nil attributes:nil]];
         
 
 		// enable the next button so the user can traverse directions
 		self.nextBtn.enabled = YES;
         
-        if(self.routeResult.stopGraphics){
-            [self.graphicsLayerStops removeAllGraphics];
+        if(self.route.stops!=nil && self.route.stops.count>0){
+            [self.graphicsOverlayStops.graphics removeAllObjects];
             
-            for (AGSStopGraphic* reorderedStop in self.routeResult.stopGraphics) {
-                BOOL exists;
-                NSInteger sequence = [reorderedStop attributeAsIntForKey:@"Sequence" exists:&exists];
+            for (AGSStop* reorderedStop in self.route.stops) {
                 
                 // create a composite symbol using the sequence number
-                reorderedStop.symbol = [self stopSymbolWithNumber:sequence];
+                AGSSymbol* symbol = [self stopSymbolWithNumber:reorderedStop.sequence];
             
-                          // add the graphic
-                		[self.graphicsLayerStops addGraphic:reorderedStop];
+                // add the graphic
+                [self.graphicsOverlayStops.graphics addObject:[AGSGraphic graphicWithGeometry:reorderedStop.geometry symbol:symbol attributes:nil]];
             }
             self.routeTaskParams.findBestSequence = NO;
-            self.routeTaskParams.returnStopGraphics = NO;
+            self.routeTaskParams.returnStops = NO;
         }
         self.isExecuting = NO;
 }
@@ -236,18 +218,15 @@
 //
 // solve failed
 // 
-- (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didFailSolveWithError:(NSError *)error {
-	[self updateDirectionsLabel:@"Routing failed"];
+- (void) processRouteError:(NSError*)error {
+    [self updateDirectionsLabel:@"Routing failed"];
 	
 	// the solve route failed...
 	// let the user know
 
-          UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Solve Route Failed"
-                                                     message:[NSString stringWithFormat:@"Error: %@", error]
-                                                    delegate:nil
-                                           cancelButtonTitle:@"Ok"
-                                           otherButtonTitles:nil];
-        [av show];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Solve Route Failed" message:[NSString stringWithFormat:@"Error: %@", error.localizedFailureReason] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 
@@ -261,27 +240,18 @@
 	AGSCompositeSymbol *cs = [AGSCompositeSymbol compositeSymbol];
 	
     // create outline
-	AGSSimpleLineSymbol *sls = [AGSSimpleLineSymbol simpleLineSymbol];
-	sls.color = [UIColor blackColor];
-	sls.width = 2;
-	sls.style = AGSSimpleLineSymbolStyleSolid;
+	AGSSimpleLineSymbol *sls = [AGSSimpleLineSymbol simpleLineSymbolWithStyle:AGSSimpleLineSymbolStyleSolid color:[UIColor blackColor] width:2];
 	
     // create main circle
-	AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbol];
-	sms.color = [UIColor greenColor];
+	AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithStyle:AGSSimpleMarkerSymbolStyleCircle color:[UIColor greenColor] size:20];
 	sms.outline = sls;
-	sms.size = CGSizeMake(20, 20);
-	sms.style = AGSSimpleMarkerSymbolStyleCircle;
-	[cs addSymbol:sms];
-	
+
+    
 //    // add number as a text symbol
-	AGSTextSymbol *ts = [[AGSTextSymbol alloc] initWithText:[NSString stringWithFormat:@"%ld", (long)stopNumber]
-															   color:[UIColor blackColor]] ;
-	ts.vAlignment = AGSTextSymbolVAlignmentMiddle;
-	ts.hAlignment = AGSTextSymbolHAlignmentCenter;
-	ts.fontSize	= 16;
-	[cs addSymbol:ts];
-	
+    AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:[NSString stringWithFormat:@"%ld", (long)stopNumber] color:[UIColor blackColor] size:16 horizontalAlignment:AGSHorizontalAlignmentCenter verticalAlignment:AGSVerticalAlignmentMiddle];
+    
+
+    cs.symbols = @[sms,ts];
 	return cs;
 }
 
@@ -294,18 +264,11 @@
 - (AGSCompositeSymbol*)currentDirectionSymbol {
 	AGSCompositeSymbol *cs = [AGSCompositeSymbol compositeSymbol];
 	
-	AGSSimpleLineSymbol *sls1 = [AGSSimpleLineSymbol simpleLineSymbol];
-	sls1.color = [UIColor whiteColor];
-	sls1.style = AGSSimpleLineSymbolStyleSolid;
-	sls1.width = 8;
-	[cs addSymbol:sls1];
+	AGSSimpleLineSymbol *sls1 = [AGSSimpleLineSymbol simpleLineSymbolWithStyle:AGSSimpleLineSymbolStyleSolid color:[UIColor whiteColor] width:8];
 	
-	AGSSimpleLineSymbol *sls2 = [AGSSimpleLineSymbol simpleLineSymbol];
-	sls2.color = [UIColor redColor];
-	sls2.style = AGSSimpleLineSymbolStyleDash;
-	sls2.width = 4;
-	[cs addSymbol:sls2];
-	
+	AGSSimpleLineSymbol *sls2 = [AGSSimpleLineSymbol simpleLineSymbolWithStyle:AGSSimpleLineSymbolStyleSolid color:[UIColor redColor] width:4];
+
+    cs.symbols = @[sls1,sls2];
 	return cs;	
 }
 
@@ -327,17 +290,15 @@
 	
 	//grab the geometry, then clear the sketch
 	//Prepare symbol and attributes for the Stop/Barrier
-	NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
 	AGSSymbol *symbol;
             self.numStops++;
             symbol = [self stopSymbolWithNumber:self.numStops];
-			AGSStopGraphic *stopGraphic = [AGSStopGraphic graphicWithGeometry:geometry
+			AGSGraphic *stopGraphic = [AGSGraphic graphicWithGeometry:geometry
 																	   symbol:symbol
-																   attributes:attributes];
-			stopGraphic.sequence = self.numStops;
+																   attributes:nil];
 			//You can set additional properties on the stop here
 			//refer to the conceptual helf for Routing task
-			[self.graphicsLayerStops addGraphic:stopGraphic];
+			[self.graphicsOverlayStops.graphics addObject:stopGraphic];
     return stopGraphic;
 	
 }
@@ -351,13 +312,9 @@
 	
 	NSMutableArray *stops = [NSMutableArray array];
     
-	// get the stop, barriers for the route task
-	for (AGSGraphic *g in self.graphicsLayerStops.graphics) {
-        // if it's a stop graphic, add the object to stops
-		if ([g isKindOfClass:[AGSStopGraphic class]]) {
-			[stops addObject:g];
-            
-		}
+	// get the stop
+	for (AGSGraphic *g in self.graphicsOverlayStops.graphics) {
+			[stops addObject:[AGSStop stopWithPoint:(AGSPoint*)g.geometry]];
         
 	}
 	
@@ -365,9 +322,17 @@
 	if (stops.count > 0) {
         // update our banner
         [self updateDirectionsLabel:@"Routing..."];
-		[self.routeTaskParams setStopsWithFeatures:stops];
+		[self.routeTaskParams setStops:stops];
+
+        __weak __typeof(self) weakSelf = self;
         // execute the route task
-        [self.routeTask solveWithParameters:self.routeTaskParams];
+        [self.routeTask solveRouteWithParameters:self.routeTaskParams completion:^(AGSRouteResult * _Nullable routeResult, NSError * _Nullable error) {
+            if(routeResult!=nil){
+                [weakSelf processRouteResult:routeResult];
+            }else{
+                [weakSelf processRouteError:error];
+            }
+        }];
 	}
 	
 	
@@ -381,8 +346,8 @@
 	self.numStops = 0;
     
 	// remove all graphics
-	[self.graphicsLayerStops removeAllGraphics];
-    [self.graphicsLayerRoute removeAllGraphics];
+	[self.graphicsOverlayStops.graphics removeAllObjects];
+    [self.graphicsOverlayRoute.graphics removeAllObjects];
 	[self resetDirections];
     [self updateDirectionsLabel:@"Tap & hold on the map to add stops"];
     self.reorderBtn.enabled = NO;
@@ -394,7 +359,7 @@
 	self.directionIndex = 0;
 	self.nextBtn.enabled = NO;
 	self.prevBtn.enabled = NO;
-    [self.graphicsLayerRoute removeGraphic:self.currentDirectionGraphic];
+    [self.graphicsOverlayRoute.graphics removeObject:self.currentDirectionGraphic];
 }
 
 #pragma mark Action methods
@@ -406,10 +371,10 @@
 - (IBAction)routePreferenceChanged:(UISegmentedControl *)sender {
     switch (sender.selectedSegmentIndex) {
         case 0:
-            self.routeTaskParams.impedanceAttributeName = @"Minutes";
+            self.routeTaskParams.travelMode.impedanceAttributeName = @"Minutes";
             break;
         case 1:
-            self.routeTaskParams.impedanceAttributeName = @"Meters";
+            self.routeTaskParams.travelMode.impedanceAttributeName = @"Meters";
         default:
             break;
     }
@@ -421,7 +386,7 @@
 	self.routeTaskParams.preserveFirstStop = NO;
 	self.routeTaskParams.preserveLastStop = NO;
 
-    self.routeTaskParams.returnStopGraphics = YES;
+    self.routeTaskParams.returnStops = YES;
     [self solveRoute];
     
 }
@@ -432,23 +397,22 @@
 	self.directionIndex++;
 	
     // remove current direction graphic, so we can display next one
-	if ([self.graphicsLayerRoute.graphics containsObject:self.currentDirectionGraphic]) {
-		[self.graphicsLayerRoute removeGraphic:self.currentDirectionGraphic];
+	if ([self.graphicsOverlayRoute.graphics containsObject:self.currentDirectionGraphic]) {
+		[self.graphicsOverlayRoute.graphics removeObject:self.currentDirectionGraphic];
 	}
 	
     // get current direction and add it to the graphics layer
-	AGSDirectionSet *directions = self.routeResult.directions;
-	self.currentDirectionGraphic = [directions.graphics objectAtIndex:self.directionIndex];
-	self.currentDirectionGraphic.symbol = [self currentDirectionSymbol];
-	[self.graphicsLayerRoute addGraphic:self.currentDirectionGraphic];
+	NSArray<AGSDirectionManeuver*> *directions = self.route.directionManeuvers;
+	self.currentDirectionGraphic = [AGSGraphic graphicWithGeometry:directions[self.directionIndex].geometry symbol:[self currentDirectionSymbol] attributes:nil];
+	[self.graphicsOverlayRoute.graphics addObject:self.currentDirectionGraphic];
 	
     // update banner
-	[self updateDirectionsLabel:self.currentDirectionGraphic.text];
+	[self updateDirectionsLabel:directions[self.directionIndex].directionText];
 	
-     [self.mapView zoomToGeometry:self.currentDirectionGraphic.geometry withPadding:20 animated:YES];
+    [self.mapView setViewpointGeometry:self.currentDirectionGraphic.geometry padding:20 completion:nil];
 	
     // determine if we need to disable a next/prev button
-	if (self.directionIndex >= self.routeResult.directions.graphics.count - 1) {
+	if (self.directionIndex >= self.route.directionManeuvers.count - 1) {
 		self.nextBtn.enabled = NO;
 	}
 	if (self.directionIndex > 0) {
@@ -461,26 +425,26 @@
 	self.directionIndex--;
 	
     // remove current direction
-	if ([self.graphicsLayerRoute.graphics containsObject:self.currentDirectionGraphic]) {
-		[self.graphicsLayerRoute removeGraphic:self.currentDirectionGraphic];
+	if ([self.graphicsOverlayRoute.graphics containsObject:self.currentDirectionGraphic]) {
+		[self.graphicsOverlayRoute.graphics removeObject:self.currentDirectionGraphic];
 	}
     
 	// get next direction
-	AGSDirectionSet *directions = self.routeResult.directions;
-	self.currentDirectionGraphic = [directions.graphics objectAtIndex:self.directionIndex];
-	self.currentDirectionGraphic.symbol = [self currentDirectionSymbol];
-	[self.graphicsLayerRoute addGraphic:self.currentDirectionGraphic];
-	
-    // update banner text
-	[self updateDirectionsLabel:self.currentDirectionGraphic.text];
-	
-    [self.mapView zoomToGeometry:self.currentDirectionGraphic.geometry withPadding:20 animated:YES];
-
+    // get current direction and add it to the graphics layer
+    NSArray<AGSDirectionManeuver*> *directions = self.route.directionManeuvers;
+    self.currentDirectionGraphic = [AGSGraphic graphicWithGeometry:directions[self.directionIndex].geometry symbol:[self currentDirectionSymbol] attributes:nil];
+    [self.graphicsOverlayRoute.graphics addObject:self.currentDirectionGraphic];
+    
+    // update banner
+    [self updateDirectionsLabel:directions[self.directionIndex].directionText];
+    
+    [self.mapView setViewpointGeometry:self.currentDirectionGraphic.geometry padding:20 completion:nil];
+    
     // determine if we need to disable next/prev button
 	if (self.directionIndex <= 0) {
 		self.prevBtn.enabled = NO;
 	}
-	if (self.directionIndex < self.routeResult.directions.graphics.count - 1) {
+	if (self.directionIndex < self.route.directionManeuvers.count - 1) {
 		self.nextBtn.enabled = YES;
 	}
 }

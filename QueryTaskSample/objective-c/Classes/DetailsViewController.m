@@ -15,8 +15,6 @@
 
 @interface DetailsViewController ()
 
-@property (nonatomic, strong) NSArray *aliases;
-
 @end
 
 @implementation DetailsViewController
@@ -39,18 +37,10 @@
 	// e.g. self.myOutlet = nil;
 }
 
-
-//get the field aliases
-- (void)setFieldAliases:(NSDictionary *)fieldAliases {
-	_fieldAliases = fieldAliases;
-	
-	self.aliases = [self.fieldAliases allKeys];
-}
-
 //load the table wiht feature attributes
-- (void)setFeature:(AGSGraphic *)feature {
+- (void)setFeature:(AGSFeature *)feature {
 	_feature = feature;
-	self.title = [feature attributeAsStringForKey:self.displayFieldName];
+	self.title = feature.attributes[self.displayFieldName];
 	
 	[super.tableView reloadData];
 }
@@ -70,7 +60,7 @@
 		return 0;
 	}
 	
-    return [self.aliases count];
+    return [self.fields count];
 }
 
 
@@ -87,9 +77,9 @@
     }
     
 	//extract the attribute and its value and display both in the cell
-    NSString *key = [self.aliases objectAtIndex:indexPath.row];
-	cell.textLabel.text = [self.fieldAliases valueForKey:key];
-	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [self.feature attributeAsStringForKey:key]];
+    AGSField *field = [self.fields objectAtIndex:indexPath.row];
+	cell.textLabel.text = field.alias;
+	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.feature.attributes[field.name]];
 	
     return cell;
 }
@@ -105,7 +95,7 @@
 
 - (void)dealloc {
     self.feature = nil;
-    self.fieldAliases = nil;
+    self.fields = nil;
 	
 }
 

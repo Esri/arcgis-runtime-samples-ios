@@ -14,6 +14,6 @@
 #import <ArcGIS/ArcGIS.h>
 
 
-@interface CustomCalloutSampleViewController : UIViewController<AGSCalloutDelegate>
+@interface CustomCalloutSampleViewController : UIViewController<AGSGeoViewTouchDelegate,AGSCalloutDelegate>
 
 @end

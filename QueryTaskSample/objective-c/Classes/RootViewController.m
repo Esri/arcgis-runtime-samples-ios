@@ -17,9 +17,9 @@
 
 @interface RootViewController ()
 
-@property (nonatomic, strong) AGSQueryTask *queryTask;
-@property (nonatomic, strong) AGSQuery *query;
-@property (nonatomic, strong) AGSFeatureSet *featureSet;
+@property (nonatomic, strong) AGSServiceFeatureTable *featureTable;
+@property (nonatomic, strong) AGSQueryParameters *query;
+@property (nonatomic, strong) AGSFeatureQueryResult *featureQueryResult;
 @property (nonatomic, strong) DetailsViewController *detailsViewController;
 
 @end
@@ -43,13 +43,11 @@
 	self.searchBar.placeholder = kSearchBarPlaceholder;
 	NSString *countiesLayerURL = kMapServiceLayerURL;
 	
-	//set up query task against layer, specify the delegate
-	self.queryTask = [AGSQueryTask queryTaskWithURL:[NSURL URLWithString:countiesLayerURL]];
-	self.queryTask.delegate = self;
+	//set up feature table against layer
+	self.featureTable = [AGSServiceFeatureTable serviceFeatureTableWithURL:[NSURL URLWithString:countiesLayerURL]];
 	
-	//return all fields in query 
-	self.query = [AGSQuery query];
-	self.query.outFields = [NSArray arrayWithObjects:@"*", nil];
+	//set query params
+	self.query = [AGSQueryParameters queryParameters];
 }
 
 
@@ -75,11 +73,11 @@
 
 //the section in the table is as large as the number of fetaures returned from the query
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (nil == self.featureSet) {
+    if (nil == self.featureQueryResult) {
 		return 0;
 	}
 	
-	return [self.featureSet.features count];
+	return [self.featureQueryResult.featureEnumerator.allObjects count];
 }
 
 //called by table view when it needs to draw one of its rows
@@ -97,8 +95,8 @@
     //get selected feature and extract the name attribute
 	//display name in cell
 	//add detail disclosure button. This will allow user to see all the attributes in a different view
-	AGSGraphic *feature = [self.featureSet.features objectAtIndex:indexPath.row];
-	cell.textLabel.text = [feature attributeAsStringForKey:@"NAME"]; //The display field name for the service we are using
+	AGSFeature *feature = [self.featureQueryResult.featureEnumerator.allObjects objectAtIndex:indexPath.row];
+	cell.textLabel.text = feature.attributes[@"NAME"]; //The display field name for the service we are using
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
     return cell;
@@ -112,12 +110,12 @@
 	if (nil == self.detailsViewController) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
 		self.detailsViewController = [storyboard instantiateViewControllerWithIdentifier:@"DetailsViewController"];
-		self.detailsViewController.fieldAliases = self.featureSet.fieldAliases;
-		self.detailsViewController.displayFieldName = self.featureSet.displayFieldName;
+		self.detailsViewController.fields = self.featureQueryResult.fields;
+		self.detailsViewController.displayFieldName = @"NAME";
 	}
 	
 	//the details view controller needs to know about the selected feature to get its value
-	self.detailsViewController.feature = [self.featureSet.features objectAtIndex:indexPath.row];
+	self.detailsViewController.feature = [self.featureQueryResult.featureEnumerator.allObjects objectAtIndex:indexPath.row];
 	
 	//display the feature attributes
 	[self.navigationController pushViewController:self.detailsViewController animated:YES];
@@ -132,8 +130,16 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
 	
 	//display busy indicator, get search string and execute query
-	self.query.text = searchBar.text;
-	[self.queryTask executeWithQuery:self.query];
+    __weak __typeof(self) weakSelf = self;
+    self.query.whereClause = [NSString stringWithFormat:@"NAME = '%@'",searchBar.text];
+	[self.featureTable queryFeaturesWithParameters:self.query fields:AGSQueryFeatureFieldsLoadAll completion:^(AGSFeatureQueryResult * _Nullable result, NSError * _Nullable error) {
+        if (error) {
+            [weakSelf queryFailedWithError:error];
+        }
+        else {
+            [weakSelf queryFinishedWithResult:result];
+        }
+    }];
 	
 	[searchBar resignFirstResponder];
 }
@@ -147,14 +153,14 @@
 #pragma mark AGSQueryTaskDelegate
 
 //results are returned
-- (void)queryTask:(AGSQueryTask *)queryTask operation:(NSOperation *)op didExecuteWithFeatureSetResult:(AGSFeatureSet *)featureSet {
+- (void)queryFinishedWithResult:(AGSFeatureQueryResult*)featureQueryResult {
 	//get feature, and load in to table
-	self.featureSet = featureSet;
+	self.featureQueryResult = featureQueryResult;
 	[super.tableView reloadData];
 }
 
 //if there's an error with the query display it to the user
-- (void)queryTask:(AGSQueryTask *)queryTask operation:(NSOperation *)op didFailWithError:(NSError *)error {
+- (void)queryFailedWithError:(NSError *)error {
 	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
 														message:[error localizedDescription]
 													   delegate:nil

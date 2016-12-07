@@ -10,9 +10,7 @@
 // See the use restrictions at http://help.arcgis.com/en/sdk/10.0/usageRestrictions.htm
 //
 
-
 #import "SketchToolbar.h"
-
 
 @implementation SketchToolbar
 
@@ -22,16 +20,19 @@
     return YES;
 }
 
-- (id)initWithToolbar:(UIToolbar*)toolbar sketchLayer:(AGSSketchGraphicsLayer*)sketchLayer mapView:(AGSMapView*) mapView graphicsLayer:(AGSGraphicsLayer*)graphicsLayer{
+- (id)initWithToolbar:(UIToolbar*)toolbar
+              mapView:(AGSMapView*) mapView
+      graphicsOverlay:(AGSGraphicsOverlay*)graphicsOverlay{
 	
     self = [super init];
     if (self) {
 		
 		//hold references to the mapView, graphicsLayer, and sketchLayer
-		self.sketchLayer = sketchLayer;
 		self.mapView = mapView;
-		self.graphicsLayer = graphicsLayer;
-
+        self.mapView.touchDelegate = self;
+        self.sketchEditor = mapView.sketchEditor;
+		self.graphicsOverlay = graphicsOverlay;
+        
 		//Get references to the UI elements in the toolbar
 		//Each UI element was assigned a "tag" in the nib file to make it easy to find them
 		self.sketchTools = (UISegmentedControl* )[toolbar viewWithTag:55];
@@ -45,9 +46,6 @@
                 [self.sketchTools setImage:newImage forSegmentAtIndex:i];
             }
         }
-        
-        //disable the select tool if no graphics available
-        [self.sketchTools setEnabled:(graphicsLayer.graphicsCount>0) forSegmentAtIndex:3];
         
 		self.undoTool = (UIButton*) [toolbar viewWithTag:56];
 		self.redoTool = (UIButton*) [toolbar viewWithTag:57];
@@ -63,7 +61,7 @@
 		
 		//Register for "Geometry Changed" notifications 
 		//We want to enable/disable UI elements when sketch geometry is modified
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToGeomChanged:) name:AGSSketchGraphicsLayerGeometryDidChangeNotification object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToGeomChanged:) name:AGSSketchEditorGeometryDidChangeNotification object:nil];
 
         //call this so we can properly initialize the state of undo,redo,clear, and save
         [self respondToGeomChanged:nil];
@@ -73,83 +71,101 @@
 
 - (void)respondToGeomChanged: (NSNotification*) notification {
 	//Enable/disable UI elements appropriately
-	self.undoTool.enabled = [self.sketchLayer.undoManager canUndo];
-	self.redoTool.enabled = [self.sketchLayer.undoManager canRedo];
-	self.clearTool.enabled = ![self.sketchLayer.geometry isEmpty] && self.sketchLayer.geometry!=nil;
-	self.saveTool.enabled = [self.sketchLayer.geometry isValid];
+	self.undoTool.enabled = [self.sketchEditor.undoManager canUndo];
+	self.redoTool.enabled = [self.sketchEditor.undoManager canRedo];
+	self.clearTool.enabled = ![self.sketchEditor.geometry isEmpty] && self.sketchEditor.geometry!=nil;
+	self.saveTool.enabled = [self.sketchEditor isSketchValid];
 }
 - (IBAction) undo {
-	if([self.sketchLayer.undoManager canUndo]) //extra check, just to be sure
-		[self.sketchLayer.undoManager undo];
+    if([self.sketchEditor.undoManager canUndo]){ //extra check, just to be sure
+		[self.sketchEditor.undoManager undo];
+    }
 }
 - (IBAction) redo {
-	if([self.sketchLayer.undoManager canRedo]) //extra check, just to be sure
-		[self.sketchLayer.undoManager redo];
+    if([self.sketchEditor.undoManager canRedo]){ //extra check, just to be sure
+		[self.sketchEditor.undoManager redo];
+    }
 }
 - (IBAction) clear {
-	[self.sketchLayer clear];
+	[self.sketchEditor clearGeometry];
 }
 - (IBAction) save {
-	//Get the sketch geometry
-	AGSGeometry* sketchGeometry = [self.sketchLayer.geometry copy];
-
-	//If this is not a new sketch (i.e we are modifying an existing graphic)
-	if(self.activeGraphic!=nil){
-		//Modify the existing graphic giving it the new geometry
-		self.activeGraphic.geometry = sketchGeometry;
-		self.activeGraphic = nil;
-		
-		//Re-enable the sketch tools
-		[self.sketchTools setEnabled:YES forSegmentAtIndex:0];
-		[self.sketchTools setEnabled:YES forSegmentAtIndex:1];
-		[self.sketchTools setEnabled:YES forSegmentAtIndex:2];
-        [self.sketchTools setEnabled:YES forSegmentAtIndex:3];
-		
-	}else {
+    
+	if(self.activeGraphic != nil){
+        //If this is not a new sketch (i.e we are modifying an existing graphic)
+        //then clear the active graphic
+        self.activeGraphic.geometry = self.sketchEditor.geometry;
+        self.activeGraphic = nil;
+        self.activeGraphicOriginalGeometry = nil;
+    }
+    else{
 		//Add a new graphic to the graphics layer
-		AGSGraphic* graphic = [AGSGraphic graphicWithGeometry:sketchGeometry symbol:nil attributes:nil ];
-		[self.graphicsLayer addGraphic:graphic];
-        
-        //enable the select tool if there is atleast one graphic to select
-        [self.sketchTools setEnabled:(self.graphicsLayer.graphicsCount>0) forSegmentAtIndex:3];
-
+        AGSGeometry *sketchGeometry = self.sketchEditor.geometry;
+        AGSGraphic* graphic = [AGSGraphic graphicWithGeometry:sketchGeometry
+                                                       symbol:[self symbolForGeometryType:sketchGeometry.geometryType]
+                                                   attributes:nil];
+		[self.graphicsOverlay.graphics addObject:graphic];
 	}
-	
-	[self.sketchLayer clear];
-	[self.sketchLayer.undoManager removeAllActions];
+    
+    self.sketchTools.selectedSegmentIndex = 3;
+ 
+    // stop sketch editor now
+    [self.sketchEditor stop];
+    
+    // re-enable geom sketch tools
+    [self setEnabledForGeometrySketchTools:YES];
+}
+
+-(void)setEnabledForGeometrySketchTools:(BOOL)enabled{
+    [self.sketchTools setEnabled:enabled forSegmentAtIndex:0];
+    [self.sketchTools setEnabled:enabled forSegmentAtIndex:1];
+    [self.sketchTools setEnabled:enabled forSegmentAtIndex:2];
+}
+
+-(void)diableGeometrySketchToolsExceptForToolAtIndex:(NSInteger)skipIndex{
+    for (NSInteger i = 0; i<3; i++){
+        if (i == skipIndex){
+            continue;
+        }
+        [self.sketchTools setEnabled:NO forSegmentAtIndex:i];
+    }
 }
 
 - (IBAction) toolSelected {
 	switch (self.sketchTools.selectedSegmentIndex) {
 		case 0://point tool
 			//sketch layer should begin tracking touch events to sketch a point
-			self.mapView.touchDelegate = self.sketchLayer;  
-			self.sketchLayer.geometry = [[AGSMutablePoint alloc] initWithX:NAN y:NAN spatialReference:self.mapView.spatialReference];
-            [[self.sketchLayer undoManager]removeAllActions];
+            [self.sketchEditor startWithGeometryType:AGSGeometryTypePoint];
+            //Disable tools until they cancel sketching or save
+            [self diableGeometrySketchToolsExceptForToolAtIndex:self.sketchTools.selectedSegmentIndex];
 			break;
 		
 		case 1://polyline tool
 			//sketch layer should begin tracking touch events to sketch a polyline
-			self.mapView.touchDelegate = self.sketchLayer; 
-			self.sketchLayer.geometry = [[AGSMutablePolyline alloc] initWithSpatialReference:self.mapView.spatialReference];
-            [[self.sketchLayer undoManager]removeAllActions];
+            [self.sketchEditor startWithGeometryType:AGSGeometryTypePolyline];
+            //Disable tools until they cancel sketching or save
+            [self diableGeometrySketchToolsExceptForToolAtIndex:self.sketchTools.selectedSegmentIndex];
 			break;
 		
 		case 2://polygon tool
 			//sketch layer should begin tracking touch events to sketch a polygon
-			self.mapView.touchDelegate = self.sketchLayer; 
-			self.sketchLayer.geometry = [[AGSMutablePolygon alloc] initWithSpatialReference:self.mapView.spatialReference];
-            [[self.sketchLayer undoManager]removeAllActions];
+            [self.sketchEditor startWithGeometryType:AGSGeometryTypePolygon];
+            //Disable tools until they cancel sketching or save
+            [self diableGeometrySketchToolsExceptForToolAtIndex:self.sketchTools.selectedSegmentIndex];
 			break;
 		
-		case 3: //select tool
-			//nothing to sketch
-			self.sketchLayer.geometry = nil; 
-			
-			//We will track touch events to find which graphic to modify
-			self.mapView.touchDelegate = self; 
-			
-
+        case 3: //select tool
+            // if we were modifying a graphic's geometry then we cancel that
+            // so go back to original geometry
+            if (self.activeGraphic){
+                self.activeGraphic.geometry = self.activeGraphicOriginalGeometry;
+                self.activeGraphic = nil;
+                self.activeGraphicOriginalGeometry = nil;
+            }
+            //We will track touch events to find which graphic to modify
+            [self.sketchEditor stop];
+            // re-enable geometry sketch tools
+            [self setEnabledForGeometrySketchTools:YES];
 			break;
 		default:
 			break;
@@ -157,42 +173,93 @@
 	
 }
 
-- (void)mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features{
-	//find which graphic to modify
-	NSEnumerator *enumerator = [features objectEnumerator];
-	NSArray* graphicArray = (NSArray*) [enumerator nextObject];
-	if(graphicArray!=nil && [graphicArray count]>0){
-		//Get the graphic's geometry to the sketch layer so that it can be modified
-		self.activeGraphic = (AGSGraphic*)[graphicArray objectAtIndex:0];
-		AGSGeometry* geom = [self.activeGraphic.geometry mutableCopy];
+- (void)geoView:(AGSGeoView *)geoView didTapAtScreenPoint:(CGPoint)screenPoint mapPoint:(AGSPoint *)mapPoint{
+    
+    __weak __typeof(self) weakSelf = self;
+    
+    // need to hit test the graphics layer to see if a saved graphics was tapped
+    
+    [self.mapView identifyGraphicsOverlay:self.graphicsOverlay
+                              screenPoint:screenPoint
+                                tolerance:12
+                         returnPopupsOnly:NO
+                           maximumResults:1
+                               completion:^(AGSIdentifyGraphicsOverlayResult * _Nonnull identifyResult) {
         
-        //clear out the graphic's geometry so that it is not displayed under the sketch
-        self.activeGraphic.geometry = nil;
-        
-        //Feed the graphic's geometry to the sketch layer so that user can modify it
-		self.sketchLayer.geometry = geom;
-        [[self.sketchLayer undoManager]removeAllActions];
-
-		//sketch layer should begin tracking touch events to modify the sketch
-		self.mapView.touchDelegate = self.sketchLayer;
-		
-        //Disable other tools until we finish modifying a graphic
-        [self.sketchTools setEnabled:NO forSegmentAtIndex:0];
-        [self.sketchTools setEnabled:NO forSegmentAtIndex:1];
-        [self.sketchTools setEnabled:NO forSegmentAtIndex:2];
-        [self.sketchTools setEnabled:NO forSegmentAtIndex:3];
-        
-        
-		//Activate the appropriate sketch tool
-		if([geom isKindOfClass:[AGSPoint class]]){
-			[self.sketchTools setSelectedSegmentIndex:0];
-		}else if ([geom isKindOfClass:[AGSPolyline class]]) {
-			[self.sketchTools setSelectedSegmentIndex:1];
-		}else if ([geom isKindOfClass:[AGSPolygon class]]) {
-			[self.sketchTools setSelectedSegmentIndex:2];
-		}
-	}
+                                   // set activeGraphic
+                                   weakSelf.activeGraphic = identifyResult.graphics.firstObject;
+                                   weakSelf.activeGraphicOriginalGeometry = identifyResult.graphics.firstObject.geometry;
+                                   
+                                   if (!weakSelf.activeGraphic){
+                                       return;
+                                   }
+                                   
+                                   AGSGeometry *geom = weakSelf.activeGraphic.geometry;
+                                   
+                                   //Feed the graphic's geometry to the sketch layer so that user can modify it
+                                   [weakSelf.sketchEditor startWithGeometry:geom];
+                                   
+                                   //clear out the graphic's geometry so that it is not displayed under the sketch
+                                   weakSelf.activeGraphic.geometry = nil;
+                                   
+                                   //Disable tools until we finish modifying a graphic
+                                   [weakSelf setEnabledForGeometrySketchTools:NO];
+                                   
+                                   //select appropriate sketch tool
+                                   switch (geom.geometryType) {
+                                       case AGSGeometryTypePoint:
+                                           [weakSelf.sketchTools setSelectedSegmentIndex:0];
+                                           [weakSelf diableGeometrySketchToolsExceptForToolAtIndex:0];
+                                       case AGSGeometryTypePolyline:
+                                           [weakSelf.sketchTools setSelectedSegmentIndex:1];
+                                           [weakSelf diableGeometrySketchToolsExceptForToolAtIndex:1];
+                                       case AGSGeometryTypePolygon:
+                                           [weakSelf.sketchTools setSelectedSegmentIndex:2];
+                                           [weakSelf diableGeometrySketchToolsExceptForToolAtIndex:2];
+                                       default: ;
+                                   }
+                                   
+                               }];
 }
 
+-(AGSSymbol*)symbolForGeometryType:(AGSGeometryType)geometryType{
+    
+    // give back an appropriate symbol for the geometry type of graphic we are displaying
+    
+    switch (geometryType) {
+        case AGSGeometryTypePoint:
+        case AGSGeometryTypeMultipoint:
+        {
+            AGSSimpleMarkerSymbol* markerSymbol = [[AGSSimpleMarkerSymbol alloc] init];
+            markerSymbol.style = AGSSimpleMarkerSymbolStyleSquare;
+            markerSymbol.color = [UIColor greenColor];
+            markerSymbol.size = 12;
+            return markerSymbol;
+        }
+            
+        case AGSGeometryTypePolyline:{
+            AGSSimpleLineSymbol* lineSymbol = [[AGSSimpleLineSymbol alloc] init];
+            lineSymbol.color= [UIColor grayColor];
+            lineSymbol.width = 4;
+            return lineSymbol;
+        }
+            
+        case AGSGeometryTypePolygon:{
+            AGSSimpleLineSymbol* lineSymbol = [[AGSSimpleLineSymbol alloc] init];
+            lineSymbol.color= [UIColor grayColor];
+            lineSymbol.width = 4;
+            
+            AGSSimpleFillSymbol* fillSymbol = [[AGSSimpleFillSymbol alloc] init];
+            fillSymbol.color = [UIColor colorWithRed:1.0 green:1.0 blue:0 alpha:0.5];
+            fillSymbol.outline = lineSymbol;
+            return fillSymbol;
+        }
+            
+        default:
+            return nil;
+    }
+}
 
 @end
+
+

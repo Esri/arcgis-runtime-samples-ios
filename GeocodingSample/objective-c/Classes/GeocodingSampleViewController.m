@@ -38,48 +38,80 @@ static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/servic
     
 	//create an instance of a tiled map service layer
 	//Add it to the map view
-    NSURL *serviceUrl = [NSURL URLWithString:kMapServiceURL];
-    AGSTiledMapServiceLayer *tiledMapServiceLayer = [AGSTiledMapServiceLayer tiledMapServiceLayerWithURL:serviceUrl];
-    [self.mapView addMapLayer:tiledMapServiceLayer withName:@"World Street Map"];
+    self.mapView.map = [[AGSMap alloc]initWithBasemapType:AGSBasemapTypeStreets latitude:0 longitude:0 levelOfDetail:0];
     
     //create the graphics layer that the geocoding result
     //will be stored in and add it to the map
-    self.graphicsLayer = [AGSGraphicsLayer graphicsLayer];
-    [self.mapView addMapLayer:self.graphicsLayer withName:@"Graphics Layer"];
+    self.graphicsOverlay = [AGSGraphicsOverlay graphicsOverlay];
+    [self.mapView.graphicsOverlays addObject:self.graphicsOverlay];
+
+    self.mapView.touchDelegate = self;
+    self.mapView.callout.delegate = self;
+
+    // set the width of the callout
+    self.mapView.callout.width = 250;
     
-    //set the text and detail text based on 'Name' and 'Descr' fields in the results
-    //create the callout template, used when the user displays the callout
-    self.calloutTemplate = [[AGSCalloutTemplate alloc]init];
-    self.calloutTemplate.titleTemplate = @"${Match_addr}";
-    self.calloutTemplate.detailTemplate = @"${Place_addr}";
-    self.graphicsLayer.calloutDelegate = self.calloutTemplate;
 }
+
+
+- (void)geoView:(AGSGeoView *)geoView didTapAtScreenPoint:(CGPoint)screenPoint mapPoint:(AGSPoint *)mapPoint
+{
+        __weak __typeof(self) weakSelf = self;
+
+        [self.mapView identifyGraphicsOverlay:self.graphicsOverlay screenPoint:screenPoint tolerance:22 returnPopupsOnly:NO completion:^(AGSIdentifyGraphicsOverlayResult * _Nonnull identifyResult) {
+           
+            if(identifyResult.graphics.count>0){
+                
+                //set the text and detail text based on 'Name' and 'Descr' fields in the results
+
+                AGSGraphic* tappedGraphic = identifyResult.graphics[0];
+                weakSelf.mapView.callout.title = tappedGraphic.attributes[@"Match_addr"];
+                weakSelf.mapView.callout.detail = tappedGraphic.attributes[@"Place_addr"];
+                
+                [weakSelf.mapView.callout showCalloutForGraphic:tappedGraphic tapLocation:nil animated:YES];
+                
+            }else{
+                weakSelf.mapView.callout.title = @"";
+                weakSelf.mapView.callout.detail = @"";
+                [weakSelf.mapView.callout dismiss];
+            }
+            
+        }];
+}
+
 
 - (void)startGeocoding
 {
     
     //clear out previous results
-    [self.graphicsLayer removeAllGraphics];
+    [self.graphicsOverlay.graphics removeAllObjects];
     
-    //create the AGSLocator with the geo locator URL
-    //and set the delegate to self, so we get AGSLocatorDelegate notifications
-    self.locator = [AGSLocator locatorWithURL:[NSURL URLWithString:kGeoLocatorURL]];
-    self.locator.delegate = self;
+    //create the AGSLocatorTask with the geo locator URL
+    self.locator = [AGSLocatorTask locatorTaskWithURL:[NSURL URLWithString:kGeoLocatorURL]];
     
     //Note that the "*" for out fields is supported for geocode services of
     //ArcGIS Server 10 and above
-    //NSArray *outFields = [NSArray arrayWithObject:@"*"];
-    AGSLocatorFindParameters *parameters = [[AGSLocatorFindParameters alloc] init];
-    parameters.text =self.searchBar.text;
-    parameters.outSpatialReference = self.mapView.spatialReference;
-    parameters.outFields = @[@"*"];
-    [self.locator findWithParameters:parameters];
+    AGSGeocodeParameters *parameters = [[AGSGeocodeParameters alloc] init];
+    parameters.outputSpatialReference = self.mapView.spatialReference;
+    parameters.resultAttributeNames = @[@"*"];
+    
+    __weak __typeof(self) weakSelf = self;
+    
+    [self.locator geocodeWithSearchText:self.searchBar.text parameters:parameters completion:^(NSArray<AGSGeocodeResult *> * _Nullable geocodeResults, NSError * _Nullable error) {
+        
+        if(geocodeResults!=nil){
+            [weakSelf processResults:geocodeResults];
+        }else if (error!=nil){
+            [weakSelf processError:error];
+        }
+        
+    }];
 }
 
 #pragma mark -
 #pragma mark AGSCalloutDelegate
 
-- (void) didClickAccessoryButtonForCallout:(AGSCallout *) 	callout
+- (void)didTapAccessoryButtonForCallout:(AGSCallout *)callout
 {
 
     AGSGraphic* graphic = (AGSGraphic*) callout.representedObject;
@@ -88,7 +120,7 @@ static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/servic
     ResultsViewController *resultsVC = [storyboard instantiateViewControllerWithIdentifier:kResultsViewController];
 
     //set our attributes/results into the results VC
-    resultsVC.results = [graphic allAttributes];
+    resultsVC.results = graphic.attributes;
     
     //display the results vc modally
     [self presentViewController:resultsVC animated:YES completion:nil];
@@ -98,57 +130,51 @@ static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/servic
 #pragma mark -
 #pragma mark AGSLocatorDelegate
 
-//- (void)locator:(AGSLocator *)locator operation:(NSOperation *)op didFindLocationsForAddress:(NSArray *)candidates
-- (void)locator:(AGSLocator*)locator operation:(NSOperation*)op didFind:(NSArray*)results
+-(void) processResults:(NSArray<AGSGeocodeResult *>*)results
 {
     //check and see if we didn't get any results
-	if (results == nil || [results count] == 0)
+	if ([results count] == 0)
 	{
         //show alert if we didn't get results
-         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Results"
-                                                         message:@"No Results Found By Locator"
-                                                        delegate:nil
-                                               cancelButtonTitle:@"OK"
-                                               otherButtonTitles:nil];
-        
-        [alert show];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Results" message:@"No Results found by Locator" preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
 	}
 	else
 	{
         //loop through all candidates/results and add to graphics layer
 		for (int i=0; i<[results count]; i++)
 		{            
-			//AGSAddressCandidate *addressCandidate = (AGSAddressCandidate *)candidates[i];
-            AGSLocatorFindResult *addressCandidate = (AGSLocatorFindResult *)results[i];
-           // if ( addressCandidate.score == 100 ) {
+            AGSGeocodeResult *addressCandidate = (AGSGeocodeResult *)results[i];
 
             //get the location from the candidate
-            AGSPoint *pt = (AGSPoint*)addressCandidate.graphic.geometry;
+            
+            AGSPoint *pt = addressCandidate.displayLocation;
             
 			//create a marker symbol to use in our graphic
-            AGSPictureMarkerSymbol *marker = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"BluePushpin.png"];
-            marker.offset = CGPointMake(9,16);
-            marker.leaderPoint = CGPointMake(-9, 11);
+            AGSPictureMarkerSymbol *marker = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImage:[UIImage imageNamed:@"BluePushpin.png"]];
+            marker.offsetX=9 ;
+            marker.offsetY=16 ;
+            marker.leaderOffsetX = -9;
+            marker.leaderOffsetY = 11;
             
-            [addressCandidate.graphic setSymbol:marker];
+            AGSGraphic* graphic = [AGSGraphic graphicWithGeometry:pt symbol:marker attributes:addressCandidate.attributes];
             
             
             //add the graphic to the graphics layer
-			[self.graphicsLayer addGraphic:addressCandidate.graphic];
-			            
+            [self.graphicsOverlay.graphics addObject:graphic];
+            
                 if ([results count] == 1)
                 {
                     //we have one result, center at that point
-                    [self.mapView centerAtPoint:pt animated:NO];
+                    [self.mapView setViewpointCenter:pt completion:nil];
                     
-                    // set the width of the callout
-                    self.mapView.callout.width = 250;
                     
                     //show the callout
-                    [self.mapView.callout showCalloutAtPoint:(AGSPoint*)addressCandidate.graphic.geometry forFeature:addressCandidate.graphic layer:addressCandidate.graphic.layer animated:YES];
+                    self.mapView.callout.title = graphic.attributes[@"Match_addr"];
+                    self.mapView.callout.detail = graphic.attributes[@"Place_addr"];
+                    [self.mapView.callout showCalloutForGraphic:graphic tapLocation:nil animated:YES];
                 }
-           // }
-			
 			  
 		}
         
@@ -156,22 +182,20 @@ static NSString *kGeoLocatorURL = @"http://geocode.arcgis.com/arcgis/rest/servic
         NSUInteger nCount = [results count];
         if (nCount > 1)
         {  
-			[self.mapView zoomToEnvelope:self.graphicsLayer.fullEnvelope animated:YES];
+			[self.mapView setViewpointGeometry:self.graphicsOverlay.extent padding:25 completion:nil];
         }
 	}
     
 }
 
-- (void)locator:(AGSLocator *)locator operation:(NSOperation *)op didFailLocationsForAddress:(NSError *)error
+- (void) processError:(NSError*)error
 {
     //The location operation failed, display the error
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Locator Failed"
-                                                    message:[NSString stringWithFormat:@"Error: %@", error.description]
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"                                          
-                                          otherButtonTitles:nil];
-
-    [alert show];
+    //show alert if we didn't get results
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Locator Failed" message:[NSString stringWithFormat:@"Error: %@", error.description] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
+    
 }
 
 #pragma mark _

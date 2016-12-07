@@ -13,36 +13,13 @@
 #import <Foundation/Foundation.h>
 #import <ArcGIS/ArcGIS.h>
 
-@protocol PortalBasemapHelperDelegate;
-
-@interface PortalBasemapHelper : NSObject <AGSPortalDelegate, AGSPortalItemDelegate>
-
-@property (nonatomic, weak) id <PortalBasemapHelperDelegate> delegate;
+@interface PortalBasemapHelper : NSObject
 
 //instantiates a portal object and requests for basemaps
-- (void)fetchWebmapsFromPortal:(NSURL*)portalURL withCredential:(AGSCredential*)credential;
+- (void)fetchBasemapsFromPortal:(NSURL*)portalURL withCredential:(AGSCredential*)credential completion:(void (^)(NSArray<AGSBasemap *> *basemaps, NSError *error))completion;
 
-//checks if there are more basemaps that can be fetched
-- (BOOL)hasMoreResults;
-
-//gets the next set of results
-- (void)fetchNextResults;
 
 @end
 
-@protocol PortalBasemapHelperDelegate <NSObject>
-
-//called if there was some error while getting the basemaps
-- (void)portalBasemapHelper:(PortalBasemapHelper*)portalBasemapHelper didFailToLoadBasemapItemsWithError:(NSError*)error;
-
-//called when the basemaps get loaded successfully
-- (void)portalBasemapHelper:(PortalBasemapHelper*)portalBasemapHelper didFinishLoadingBasemapItems:(NSArray*)itemsArray;
-
-//as soon as we get the portal items for the basemap
-//we initiate the download of thumbnail on those items
-//and keep a combined count on the failures and success
-//when the count reaches the number of items this delegate
-//is fired to let the controller know about the conclusion
-- (void)portalBasemapHelperDidFinishFetchingThumbnails:(PortalBasemapHelper*)portalBasemapHelper;
-
-@end
+//The PortalBasemapHelperDelegate protocol has been removed; the same functionality is now
+// accomplished using completion blocks.

@@ -19,7 +19,7 @@
 #import "JVFloatLabeledTextView.h"
 #import "AppDelegate.h"
 
-@interface ProfileViewController () <AGSPortalUserDelegate>
+@interface ProfileViewController ()
 
 @property (nonatomic, weak) IBOutlet UIImageView *thumbnailView;
 
@@ -63,17 +63,22 @@
 }
 
 -(void)populateData {
-    //if thumbnail already loaded then simply assign it
-    //else initiate the fetch
-    if (self.portal.user.thumbnail != nil) {
-        self.thumbnailView.image = self.portal.user.thumbnail;
-    }
-    else {
-        self.portal.user.delegate = self;
-        if (self.portal.user.thumbnailFileName != nil && self.portal.user.thumbnailFileName.length) {
-            [self.portal.user fetchThumbnail];
+    
+    //
+    // Fetch and display thumbnail
+    //
+    
+    // avoid retain cycle
+    __weak AGSLoadableImage *loadableImage = self.portal.user.thumbnail;
+    // This will return right away if it is already loaded
+    [self.portal.user.thumbnail loadWithCompletion:^(NSError * _Nullable error) {
+        if (error){
+            NSLog(@"Error while loading user thumbnail :: %@", error.localizedDescription);
         }
-    }
+        else{
+            self.thumbnailView.image = loadableImage.image;
+        }
+    }];
     
     //show the corresponding values in the textfields
     self.fullNameTextField.text = self.portal.user.fullName ?: @"NA";
@@ -109,7 +114,7 @@
 //get a description for the role enum
 -(NSString*)roleDescriptionForRole:(AGSPortalUserRole)role {
     NSString *roleDescription;
-    if (role == AGSPortalUserRoleNone) {
+    if (role == AGSPortalUserRoleUnknown) {
         roleDescription = @"The user does not belong to an organization";
     }
     else if (role == AGSPortalUserRoleUser) {
@@ -124,20 +129,15 @@
     return roleDescription;
 }
 
-//MARK: - AGSPortalUserDelegate methods
-
--(void)portalUser:(AGSPortalUser *)portalUser operation:(NSOperation *)op didFetchThumbnail:(UIImage *)thumbnail {
-    self.thumbnailView.image = thumbnail;
-}
-
--(void)portalUser:(AGSPortalUser *)portalUser operation:(NSOperation *)op didFailToFetchThumbnailWithError:(NSError *)error {
-    NSLog(@"Error while loading user thumbnail :: %@", error.localizedDescription);
-}
-
 //MARK: - Actions
 
 -(IBAction)signOutAction {
-    [((AppDelegate*)[[UIApplication sharedApplication] delegate]) removeCredentialFromKeychain];
+    
+    // Remove all the credentials from the cache.
+    // Since we enabled auto-sync to the keychain the credentials will be automatically removed from the
+    // keychain as well.
+    [[AGSAuthenticationManager sharedAuthenticationManager].credentialCache removeAllCredentials];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end

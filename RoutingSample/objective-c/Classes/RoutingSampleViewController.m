@@ -13,7 +13,7 @@
 #import "RoutingSampleViewController.h"
 
 #define kTiledMapServiceUrl		@"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
-#define kRouteTaskUrl			@"http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Network/USA/NAServer/Route"
+#define kRouteTaskUrl			@"http://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route"
 
 @implementation RoutingSampleViewController
 
@@ -28,55 +28,53 @@
     [super viewDidLoad];
 
 	// Load a tiled map service
-	NSURL *mapUrl = [NSURL URLWithString:kTiledMapServiceUrl];
-	AGSTiledMapServiceLayer *tiledLyr = [AGSTiledMapServiceLayer tiledMapServiceLayerWithURL:mapUrl];
-    [self.mapView addMapLayer:tiledLyr withName:@"Tiled Layer"];
+    self.mapView.map = [AGSMap mapWithBasemapType:AGSBasemapTypeStreets latitude:0 longitude:0 levelOfDetail:0 ];
 	
-	// zoom to some location (this is San Francisco)
-	AGSSpatialReference *sr = [AGSSpatialReference spatialReferenceWithWKID:102100];
-	AGSEnvelope *env = [AGSEnvelope envelopeWithXmin:-13626513.829723023 
-												ymin:4549088.827634182 
-												xmax:-13626131.64458163 
-												ymax:4549638.218774935 
-									spatialReference:sr];
-	[self.mapView zoomToEnvelope:env animated:YES];
+	// zoom to some location (this is San Diego)
+    [self.mapView setViewpointCenter:[AGSPoint pointWithX:-117.1618 y:32.7065 spatialReference:[AGSSpatialReference WGS84]] scale:20000 completion:nil];
 	
 	// Setup the route task
 	NSURL *routeTaskUrl = [NSURL URLWithString:kRouteTaskUrl];
 	self.routeTask = [AGSRouteTask routeTaskWithURL:routeTaskUrl];
     
-    // assign delegate to this view controller
-	self.routeTask.delegate = self;
-	
+    __weak __typeof(self) weakSelf = self;
+
 	// kick off asynchronous method to retrieve default parameters
 	// for the route task
-	[self.routeTask retrieveDefaultRouteTaskParameters];
+	[self.routeTask defaultRouteParametersWithCompletion:^(AGSRouteParameters * _Nullable routeParams, NSError * _Nullable error) {
+        if (routeParams!=nil){
+            [weakSelf processRouteParameters:routeParams];
+        }else if (error!=nil){
+            [weakSelf processRouteParametersError:error];
+        }
+    }];
 
 	// add sketch layer to the map
-	AGSMutablePoint *mp = [[AGSMutablePoint alloc] initWithSpatialReference:[AGSSpatialReference webMercatorSpatialReference]];
-	self.sketchLayer = [[AGSSketchGraphicsLayer alloc] initWithGeometry:mp];
-	[self.mapView addMapLayer:self.sketchLayer withName:@"sketchLayer"];
+    self.mapView.sketchEditor = [AGSSketchEditor sketchEditor];
 	
 	//Register for "Geometry Changed" notifications 
 	//We want to enable/disable UI elements when sketch geometry is modified
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToGeomChanged:) name:AGSSketchGraphicsLayerGeometryDidChangeNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToGeomChanged:) name:AGSSketchEditorGeometryDidChangeNotification object:nil];
 	
 	
-	// set the mapView's touchDelegate to the sketchLayer so we get points symbolized when sketching
-	self.mapView.touchDelegate = self.sketchLayer;
+	//Start the sketch editor
+    [self.mapView.sketchEditor startWithCreationMode:AGSSketchCreationModePoint];
     
 		
 	// add graphics layer
-	self.graphicsLayer = [AGSGraphicsLayer graphicsLayer];
-	[self.mapView addMapLayer:self.graphicsLayer withName:@"Route results"];
+	self.stopGraphicsOverlay = [AGSGraphicsOverlay graphicsOverlay];
+    [self.mapView.graphicsOverlays addObject:self.stopGraphicsOverlay];
+
+    self.barrierGraphicsOverlay = [AGSGraphicsOverlay graphicsOverlay];
+    [self.mapView.graphicsOverlays addObject:self.barrierGraphicsOverlay];
     
-    // set the callout delegate so we can display callouts
-    self.graphicsLayer.calloutDelegate = self;
-	
+    self.routeGraphicsOverlay = [AGSGraphicsOverlay graphicsOverlay];
+    [self.mapView.graphicsOverlays addObject:self.routeGraphicsOverlay];
+    
 	// create a custom callout view using a button with an image
 	// this is to remove stops after we add them to the map
 	UIButton *removeStopBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-	removeStopBtn.frame = CGRectMake(0, 0, 24, 24);
+	removeStopBtn.frame = CGRectMake(0, 0, 48, 24);
 	[removeStopBtn setImage:[UIImage imageNamed:@"remove24.png"] forState:UIControlStateNormal];
 	[removeStopBtn addTarget:self 
 					  action:@selector(removeStopClicked) 
@@ -92,6 +90,8 @@
 	// update our banner
 	[self updateDirectionsLabel:@"Tap on the map to add stops & barriers"];
 	self.directionsBannerView.hidden = NO;
+    
+    self.mapView.touchDelegate = self;
 }
 
 
@@ -121,41 +121,55 @@
 //
 // we got the default parameters from the service
 //
-- (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didRetrieveDefaultRouteTaskParameters:(AGSRouteTaskParameters *)routeParams {
+- (void) processRouteParameters:(AGSRouteParameters*)routeParams {
 	self.routeTaskParams = routeParams;
 }
 
 //
 // an error was encountered while getting defaults
 //
-- (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didFailToRetrieveDefaultRouteTaskParametersWithError:(NSError *)error {
-	
+- (void) processRouteParametersError:(NSError*)error {
+	 
 	// Create an alert to let the user know the retrieval failed
 	// Click Retry to attempt to retrieve the defaults again
-	UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" 
-												 message:@"Failed to retrieve default route parameters" 
-												delegate:self 
-									   cancelButtonTitle:@"Ok" otherButtonTitles:@"Retry",nil];
-	[av show];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to retrieve default route parameters" preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+
+    __weak __typeof(self) weakSelf = self;
+
+    // If the user clicks 'Retry' then we should attempt to retrieve the defaults again
+    [alert addAction:[UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [weakSelf.routeTask defaultRouteParametersWithCompletion:^(AGSRouteParameters * _Nullable routeParams, NSError * _Nullable error) {
+            if (routeParams!=nil){
+                [weakSelf processRouteParameters:routeParams];
+            }else if (error!=nil){
+                [weakSelf processRouteParametersError:error];
+            }
+        }];
+        
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 
 //
 // route was solved
 //
-- (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didSolveWithResult:(AGSRouteTaskResult *)routeTaskResult {
-	
+- (void) processRouteResult:(AGSRouteResult*)routeTaskResult {
+
     // update our banner with status
     [self updateDirectionsLabel:@"Routing completed"];
 	
 	// we know that we are only dealing with 1 route...
-	self.routeResult = [routeTaskResult.routeResults lastObject];
+    self.routeResult = routeTaskResult.routes[0];
 	if (self.routeResult) {
-		// symbolize the returned route graphic
-		self.routeResult.routeGraphic.symbol = [self routeSymbol];
+		
+        // symbolize the returned route graphic
+        AGSGraphic* routeGrapic = [AGSGraphic graphicWithGeometry:self.routeResult.routeGeometry symbol:[self routeSymbol] attributes:nil];
         
         // add the route graphic to the graphic's layer
-		[self.graphicsLayer addGraphic:self.routeResult.routeGraphic];
+		[self.routeGraphicsOverlay.graphics addObject:routeGrapic];
 		
 		// enable the next button so the user can traverse directions
 		self.nextBtn.enabled = YES;
@@ -163,27 +177,15 @@
         // remove the stop graphics from the graphics layer
         // careful not to attempt to mutate the graphics array while
         // it is being enumerated
-		NSMutableArray *graphics = [self.graphicsLayer.graphics mutableCopy];
-		for (AGSGraphic *g in graphics) {
-			if ([g isKindOfClass:[AGSStopGraphic class]]) {
-				[self.graphicsLayer removeGraphic:g];
-			}
-		}
+        [self.stopGraphicsOverlay.graphics removeAllObjects];
 		
         // add the returned stops...it's possible these came back in a different order
         // because we specified findBestSequence
-		for (AGSStopGraphic *sg in self.routeResult.stopGraphics) {
-            
-            // get the sequence from the attribetus
-            BOOL exists;
-			NSInteger sequence = [sg attributeAsIntForKey:@"Sequence" exists:&exists];
-            
-            // create a composite symbol using the sequence number
-			sg.symbol = [self stopSymbolWithNumber:sequence];
-            
-            // add the graphic
-			[self.graphicsLayer addGraphic:sg];
-		}
+        for (AGSStop *stop in self.routeResult.stops) {
+            AGSSymbol* symbol = [self stopSymbolWithNumber:stop.sequence];
+            AGSGraphic* g = [AGSGraphic graphicWithGeometry:stop.geometry symbol:symbol attributes:nil];
+            [self.stopGraphicsOverlay.graphics addObject:g];
+        }
         
 	}
 }
@@ -191,43 +193,24 @@
 //
 // solve failed
 // 
-- (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didFailSolveWithError:(NSError *)error {
-	[self updateDirectionsLabel:@"Routing failed"];
+- (void) processRouteError:(NSError*)error {
+    [self updateDirectionsLabel:@"Routing failed"];
 	
 	// the solve route failed...
 	// let the user know
-	UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Solve Route Failed" 
-												 message:[NSString stringWithFormat:@"Error: %@", error.localizedFailureReason]
-												delegate:nil 
-									   cancelButtonTitle:@"Ok" 
-									   otherButtonTitles:nil];
-	[av show];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Solve Route Failed" message:[NSString stringWithFormat:@"Error: %@", error.localizedFailureReason] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
-#pragma mark UIAlertViewDelegate
 
-//
-// If the user clicks 'Retry' then we should attempt to retrieve the defaults again
-//
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	
-	// see which button was clicked, Ok or Retry
-	// Ok		index 0
-	// Retry	index 1
-	switch (buttonIndex) {
-		case 1:  // Retry
-			[self.routeTask retrieveDefaultRouteTaskParameters];
-		default:
-			break;
-	}
-}
 
 #pragma mark Misc
 
 - (void)respondToGeomChanged: (NSNotification*) notification {
 	//Enable/disable UI elements appropriately
-	self.addBtn.enabled = [self.sketchLayer.geometry isValid];
-	self.clearSketchBtn.enabled = ![self.sketchLayer.geometry isEmpty];
+	self.addBtn.enabled = self.mapView.sketchEditor.isSketchValid;
+	self.clearSketchBtn.enabled = ![self.mapView.sketchEditor.geometry isEmpty];
 }
 
 //
@@ -237,28 +220,18 @@
 	AGSCompositeSymbol *cs = [AGSCompositeSymbol compositeSymbol];
 	
     // create outline
-	AGSSimpleLineSymbol *sls = [AGSSimpleLineSymbol simpleLineSymbol];
-	sls.color = [UIColor blackColor];
-	sls.width = 2;
-	sls.style = AGSSimpleLineSymbolStyleSolid;
+	AGSSimpleLineSymbol *sls = [AGSSimpleLineSymbol simpleLineSymbolWithStyle:AGSSimpleLineSymbolStyleSolid color:[UIColor blackColor] width:2];
 	
     // create main circle
-	AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbol];
-	sms.color = [UIColor greenColor];
-	sms.outline = sls;
-	sms.size = CGSizeMake(20, 20);
+	AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithStyle:AGSSimpleMarkerSymbolStyleCircle color:[UIColor greenColor] size:20];
 	sms.style = AGSSimpleMarkerSymbolStyleCircle;
-	[cs addSymbol:sms];
-	
-//    // add number as a text symbol
-//	AGSTextSymbol *ts = [[[AGSTextSymbol alloc] initWithTextTemplate:[NSString stringWithFormat:@"%d", stopNumber] 
-//															   color:[UIColor blackColor]] autorelease];
-//	ts.vAlignment = AGSTextSymbolVAlignmentMiddle;
-//	ts.hAlignment = AGSTextSymbolHAlignmentCenter;
-//	ts.fontSize	= 16;
-//	ts.fontWeight = AGSTextSymbolFontWeightBold;
-//	[cs.symbols addObject:ts];
-	
+
+    
+    // add number as a text symbol
+    AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:[NSString stringWithFormat:@"%d",(int)stopNumber] color:[UIColor blackColor] size:9 horizontalAlignment:AGSHorizontalAlignmentCenter verticalAlignment:AGSVerticalAlignmentMiddle];
+
+    cs.symbols = @[sls, sms, ts];
+    
 	return cs;
 }
 
@@ -268,16 +241,10 @@
 - (AGSCompositeSymbol*)barrierSymbol {
 	AGSCompositeSymbol *cs = [AGSCompositeSymbol compositeSymbol];
 	
-	AGSSimpleLineSymbol *sls = [AGSSimpleLineSymbol simpleLineSymbol];
-	sls.color = [UIColor redColor];
-	sls.style = AGSSimpleLineSymbolStyleSolid;
-	sls.width = 2;
-	
-	AGSSimpleFillSymbol *sfs = [AGSSimpleFillSymbol simpleFillSymbol];
-	sfs.outline = sls;
-	sfs.style = AGSSimpleFillSymbolStyleSolid;
-	sfs.color = [[UIColor redColor] colorWithAlphaComponent:0.45];
-	[cs addSymbol:sfs];
+	AGSSimpleLineSymbol *sls = [AGSSimpleLineSymbol simpleLineSymbolWithStyle:AGSSimpleLineSymbolStyleSolid color:[UIColor redColor] width:2];
+	AGSSimpleFillSymbol *sfs = [AGSSimpleFillSymbol simpleFillSymbolWithStyle:AGSSimpleFillSymbolStyleSolid color:[[UIColor redColor] colorWithAlphaComponent:0.45] outline:sls];
+    
+    cs.symbols = @[sfs];
 	
 //	AGSTextSymbol *ts = [[[AGSTextSymbol alloc] initWithTextTemplate:@"${barrierNumber}" 
 //															   color:[UIColor blackColor]] autorelease];
@@ -296,18 +263,10 @@
 - (AGSCompositeSymbol*)routeSymbol {
 	AGSCompositeSymbol *cs = [AGSCompositeSymbol compositeSymbol];
 	
-	AGSSimpleLineSymbol *sls1 = [AGSSimpleLineSymbol simpleLineSymbol];
-	sls1.color = [UIColor yellowColor];
-	sls1.style = AGSSimpleLineSymbolStyleSolid;
-	sls1.width = 8;
-	[cs addSymbol:sls1];
-	
-	AGSSimpleLineSymbol *sls2 = [AGSSimpleLineSymbol simpleLineSymbol];
-	sls2.color = [UIColor blueColor];
-	sls2.style = AGSSimpleLineSymbolStyleSolid;
-	sls2.width = 4;
-	[cs addSymbol:sls2];
-	
+    AGSSimpleLineSymbol *sls1 = [AGSSimpleLineSymbol simpleLineSymbolWithStyle:AGSSimpleLineSymbolStyleSolid color:[UIColor yellowColor] width:8];
+    AGSSimpleLineSymbol *sls2 = [AGSSimpleLineSymbol simpleLineSymbolWithStyle:AGSSimpleLineSymbolStyleSolid color:[UIColor blueColor] width:4];
+    cs.symbols = @[sls1,sls2];
+    
 	return cs;
 }
 
@@ -317,19 +276,11 @@
 - (AGSCompositeSymbol*)currentDirectionSymbol {
 	AGSCompositeSymbol *cs = [AGSCompositeSymbol compositeSymbol];
 	
-	AGSSimpleLineSymbol *sls1 = [AGSSimpleLineSymbol simpleLineSymbol];
-	sls1.color = [UIColor whiteColor];
-	sls1.style = AGSSimpleLineSymbolStyleSolid;
-	sls1.width = 8;
-	[cs addSymbol:sls1];
-	
-	AGSSimpleLineSymbol *sls2 = [AGSSimpleLineSymbol simpleLineSymbol];
-	sls2.color = [UIColor redColor];
-	sls2.style = AGSSimpleLineSymbolStyleDash;
-	sls2.width = 4;
-	[cs addSymbol:sls2];
-	
-	return cs;	
+    AGSSimpleLineSymbol *sls1 = [AGSSimpleLineSymbol simpleLineSymbolWithStyle:AGSSimpleLineSymbolStyleSolid color:[UIColor whiteColor] width:8];
+    AGSSimpleLineSymbol *sls2 = [AGSSimpleLineSymbol simpleLineSymbolWithStyle:AGSSimpleLineSymbolStyleDash color:[UIColor redColor] width:4];
+    cs.symbols = @[sls1,sls2];
+
+	return cs;
 }
 
 //
@@ -351,10 +302,12 @@
 	self.numBarriers = 0;
 	
 	// reset direction index
-	self.directionIndex = 0;
+	self.directionIndex = -1;
 		
 	// remove all graphics
-	[self.graphicsLayer removeAllGraphics];
+	[self.stopGraphicsOverlay.graphics removeAllObjects];
+    [self.barrierGraphicsOverlay.graphics removeAllObjects];
+    [self.routeGraphicsOverlay.graphics removeAllObjects];
 	
 	// reset sketchModeSegCtrl to point
 	self.sketchModeSegCtrl.selectedSegmentIndex = 0;
@@ -367,43 +320,41 @@
     
 	//
     // if the sketch layer was removed/nil'd out, re-add it
-	if (!self.sketchLayer) {
-		AGSGeometry *geometry;
-		if (self.sketchModeSegCtrl.selectedSegmentIndex == 0) {
-			geometry = [[AGSMutablePoint alloc] initWithSpatialReference:self.mapView.spatialReference];
-		}
-		else {
-			geometry = [[AGSMutablePolygon alloc] initWithSpatialReference:self.mapView.spatialReference];
-		}
-		self.sketchLayer = [[AGSSketchGraphicsLayer alloc] initWithGeometry:geometry];
-		[self.mapView insertMapLayer:self.sketchLayer withName:@"sketchLayer" atIndex:1];
-		self.mapView.touchDelegate = self.sketchLayer;
+	if (!self.mapView.sketchEditor) {
+        self.mapView.sketchEditor = [AGSSketchEditor sketchEditor];
 	}
 	else {
 		// clear the sketch layer and reset it to a point
-		[self.sketchLayer clear];
+		[self.mapView.sketchEditor clearGeometry];
 	}	
-	
+
+    if (self.sketchModeSegCtrl.selectedSegmentIndex == 0) {
+        [self.mapView.sketchEditor startWithCreationMode:AGSSketchCreationModePoint];
+    }
+    else {
+        [self.mapView.sketchEditor startWithCreationMode:AGSSketchCreationModePolygon];
+    }
+    
     // disable the next/prev direction buttons
 	self.nextBtn.enabled = NO;
 	self.prevBtn.enabled = NO;
 }
 
 - (void)removeStopClicked {
-	if ([self.selectedGraphic isKindOfClass:[AGSStopGraphic class]]) {
+    if ([self.stopGraphicsOverlay.graphics containsObject:self.mapView.callout.representedObject]) {
 		// we have a stop
 		self.numStops--;
-	}
+        [self.stopGraphicsOverlay.graphics removeObject:self.mapView.callout.representedObject];
+    }
 	else {
 		//barrier
 		self.numBarriers--;
-	}
+        [self.barrierGraphicsOverlay.graphics removeObject:self.mapView.callout.representedObject];
+    }
 	
-	[self.graphicsLayer removeGraphic:self.selectedGraphic];
-	self.selectedGraphic = nil;
     
     // hide the callout
-	self.mapView.callout.hidden = YES;
+    [self.mapView.callout dismiss];
 }
 
 //
@@ -421,39 +372,34 @@
 - (IBAction)addStopOrBarrier:(id)sender {
 	
 	//grab the geometry, then clear the sketch
-	AGSGeometry *geometry = [self.sketchLayer.geometry copy];	
-	[self.sketchLayer clear];
+    AGSGeometry *geometry = self.mapView.sketchEditor.geometry;
+	[self.mapView.sketchEditor clearGeometry];
 	
 	//Prepare symbol and attributes for the Stop/Barrier
 	NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
 	AGSSymbol *symbol;
 	
-	switch (AGSGeometryTypeForGeometry(geometry)) {
+	switch (geometry.geometryType) {
 		//Stop
 		case AGSGeometryTypePoint:{
             self.numStops++;
             [attributes setValue:[NSNumber numberWithInt:self.numStops] forKey:@"stopNumber"];
             symbol = [self stopSymbolWithNumber:self.numStops];
-			AGSStopGraphic *stopGraphic = [AGSStopGraphic graphicWithGeometry:geometry 
+			AGSGraphic *stopGraphic = [AGSGraphic graphicWithGeometry:geometry
 																	   symbol:symbol 
 																   attributes:attributes ];
-			stopGraphic.sequence = self.numStops;
-			//You can set additional properties on the stop here
-			//refer to the conceptual helf for Routing task
-			[self.graphicsLayer addGraphic:stopGraphic];
+			[self.stopGraphicsOverlay.graphics addObject:stopGraphic];
 			break;
 		//Barrier
 		}
         case AGSGeometryTypePolygon:{
 			self.numBarriers++;
 			[attributes setValue:[NSNumber numberWithInt:self.numBarriers] forKey:@"barrierNumber"];
-			//you can set additional properties on the barrier here
-			//refer to the conceptual helf for Routing task
 			symbol = [self barrierSymbol];
 			AGSGraphic *g = [AGSGraphic graphicWithGeometry:geometry 
 													 symbol:symbol
 												 attributes:attributes];
-			[self.graphicsLayer addGraphic:g];
+			[self.barrierGraphicsOverlay.graphics addObject:g];
 			break;
         }
         default:
@@ -468,23 +414,21 @@
 //
 - (IBAction)stopsBarriersValChanged:(id)sender {
 	
-	if (!self.sketchLayer) {
+	if (!self.mapView.sketchEditor) {
 		return;
 	}
 	
+    [self.mapView.sketchEditor clearGeometry];
+    
 	UISegmentedControl *segCtrl = (UISegmentedControl*)sender;
 	
 	switch (segCtrl.selectedSegmentIndex) {
 		case 0:
-			NSLog(@"stops selected");
-			[self.sketchLayer clear];
-			self.sketchLayer.geometry = [[AGSMutablePoint alloc] initWithSpatialReference:self.mapView.spatialReference];
+            [self.mapView.sketchEditor startWithCreationMode:AGSSketchCreationModePoint];
 			break;
 		case 1:
-			NSLog(@"barriers selected");
-			[self.sketchLayer clear];
-			self.sketchLayer.geometry = [[AGSMutablePolygon alloc] initWithSpatialReference:self.mapView.spatialReference];
-			break;
+            [self.mapView.sketchEditor startWithCreationMode:AGSSketchCreationModePolygon];
+            break;
 		default:
 			break;
 	}
@@ -499,11 +443,9 @@
 	[self updateDirectionsLabel:@"Routing..."];
 	
     // if we have a sketch layer on the map, remove it
-	if ([self.mapView.mapLayers containsObject:self.sketchLayer]) {
-		[self.mapView removeMapLayerWithName:self.sketchLayer.name];
-		self.mapView.touchDelegate = nil;
-		self.sketchLayer = nil;
-		
+	if (self.mapView.sketchEditor.isStarted) {
+        [self.mapView.sketchEditor stop];
+        
 		//also disable the sketch control so that user cannot sketch
 		self.sketchModeSegCtrl.selectedSegmentIndex = -1;
 		for (int i =0; i<self.sketchModeSegCtrl.numberOfSegments; i++) {
@@ -517,35 +459,32 @@
 	NSMutableArray *polygonBarriers = [NSMutableArray array];
 
 	// get the stop, barriers for the route task
-	for (AGSGraphic *g in self.graphicsLayer.graphics) {
-        // if it's a stop graphic, add the object to stops
-		if ([g isKindOfClass:[AGSStopGraphic class]]) {
-			[stops addObject:g];
-		}
-        
-        // if "barrierNumber" exists in the attributes, we know it is a barrier
-        // so add the object to our barriers
-		else if ([g attributeAsStringForKey:@"barrierNumber"]) {
-			[polygonBarriers addObject:g];
-		}
+	for (AGSGraphic *g in self.stopGraphicsOverlay.graphics) {
+        AGSStop* stop = [AGSStop stopWithPoint:(AGSPoint*)g.geometry];
+        [stops addObject:stop];
 	}
 	
-	// set the stop and polygon barriers on the parameters object
+	// set the stop on the parameters object
 	if (stops.count > 0) {
-		[self.routeTaskParams setStopsWithFeatures:stops];
+		[self.routeTaskParams setStops:stops];
 	}
 	
-	if (polygonBarriers.count > 0) {
-		[self.routeTaskParams setPolygonBarriersWithFeatures:polygonBarriers];
-	}
 	
-	// this generalizes the route graphics that are returned
-	self.routeTaskParams.outputGeometryPrecision = 5.0;
-	self.routeTaskParams.outputGeometryPrecisionUnits = AGSUnitsMeters;
+    // get the stop, barriers for the route task
+    for (AGSGraphic *g in self.barrierGraphicsOverlay.graphics) {
+        // if it's a stop graphic, add the object to stops
+        AGSPolygonBarrier* barrier = [AGSPolygonBarrier barrierWithPolygon:(AGSPolygon*)g.geometry];
+        [polygonBarriers addObject:barrier];
+    }
     
-    // return the graphic representing the entire route, generalized by the previous 
-    // 2 properties: outputGeometryPrecision and outputGeometryPrecisionUnits
-	self.routeTaskParams.returnRouteGraphics = YES;
+    // set the barriers on the parameters object
+    if (polygonBarriers.count > 0) {
+		[self.routeTaskParams setPolygonBarriers:polygonBarriers];
+	}
+	
+    
+    // return the graphic representing the entire route
+    self.routeTaskParams.returnRoutes = YES;
 
 	// this returns turn-by-turn directions
 	self.routeTaskParams.returnDirections = YES;
@@ -558,27 +497,28 @@
 	
 	// since we used "findBestSequence" we need to 
 	// get the newly reordered stops
-	self.routeTaskParams.returnStopGraphics = YES;
+	self.routeTaskParams.returnStops = YES;
 	
 	// ensure the graphics are returned in our map's spatial reference
-	self.routeTaskParams.outSpatialReference = self.mapView.spatialReference;
+	self.routeTaskParams.outputSpatialReference = self.mapView.spatialReference;
 	
-	// let's ignore invalid locations
-	self.routeTaskParams.ignoreInvalidLocations = YES;
-	
-	// you can also set additional properties here that should
-	// be considered during analysis.
-	// See the conceptual help for Routing task.
-	
+    __weak __typeof(self) weakSelf = self;
+		
 	// execute the route task
-	[self.routeTask solveWithParameters:self.routeTaskParams];
+    [self.routeTask solveRouteWithParameters:self.routeTaskParams completion:^(AGSRouteResult * _Nullable routeResult, NSError * _Nullable error) {
+        if(routeResult!=nil){
+            [weakSelf processRouteResult:routeResult];
+        }else{
+            [weakSelf processRouteError:error];
+        }
+    }];
 }
 
 //
 // clear the sketch layer
 //
 - (IBAction)clearSketchLayer:(id)sender {
-	[self.sketchLayer clear];
+	[self.mapView.sketchEditor clearGeometry];
 }
 
 
@@ -589,26 +529,23 @@
 	self.directionIndex++;
 	
     // remove current direction graphic, so we can display next one
-	if ([self.graphicsLayer.graphics containsObject:self.currentDirectionGraphic]) {
-		[self.graphicsLayer removeGraphic:self.currentDirectionGraphic];
+	if ([self.routeGraphicsOverlay.graphics containsObject:self.currentDirectionGraphic]) {
+		[self.routeGraphicsOverlay.graphics removeObject:self.currentDirectionGraphic];
 	}
 	
     // get current direction and add it to the graphics layer
-	AGSDirectionSet *directions = self.routeResult.directions;
-	self.currentDirectionGraphic = [directions.graphics objectAtIndex:self.directionIndex];
-	self.currentDirectionGraphic.symbol = [self currentDirectionSymbol];
-	[self.graphicsLayer addGraphic:self.currentDirectionGraphic];
+	self.currentDirctionManeuver = self.routeResult.directionManeuvers[self.directionIndex];
+    self.currentDirectionGraphic = [AGSGraphic graphicWithGeometry:self.currentDirctionManeuver.geometry symbol:[self currentDirectionSymbol] attributes:nil];
+	[self.routeGraphicsOverlay.graphics addObject:self.currentDirectionGraphic];
 	
     // update banner
-	[self updateDirectionsLabel:self.currentDirectionGraphic.text];
+	[self updateDirectionsLabel:self.currentDirctionManeuver.directionText];
 	
     // zoom to envelope of the current direction (expanded by factor of 1.3)
-	AGSMutableEnvelope *env = [self.currentDirectionGraphic.geometry.envelope mutableCopy];
-	[env expandByFactor:1.3];
-	[self.mapView zoomToEnvelope:env animated:YES];
+    [self.mapView setViewpointGeometry:self.currentDirctionManeuver.geometry padding:30 completion:nil];
 	
     // determine if we need to disable a next/prev button
-	if (self.directionIndex >= self.routeResult.directions.graphics.count - 1) {
+	if (self.directionIndex >= self.routeResult.directionManeuvers.count - 1) {
 		self.nextBtn.enabled = NO;
 	}
 	if (self.directionIndex > 0) {
@@ -621,49 +558,66 @@
 	self.directionIndex--;
 	
     // remove current direction
-	if ([self.graphicsLayer.graphics containsObject:self.currentDirectionGraphic]) {
-		[self.graphicsLayer removeGraphic:self.currentDirectionGraphic];
+	if ([self.routeGraphicsOverlay.graphics containsObject:self.currentDirectionGraphic]) {
+		[self.routeGraphicsOverlay.graphics removeObject:self.currentDirectionGraphic];
 	}
     
 	// get next direction
-	AGSDirectionSet *directions = self.routeResult.directions;
-	self.currentDirectionGraphic = [directions.graphics objectAtIndex:self.directionIndex];
-	self.currentDirectionGraphic.symbol = [self currentDirectionSymbol];
-	[self.graphicsLayer addGraphic:self.currentDirectionGraphic];
-	
+    self.currentDirctionManeuver = self.routeResult.directionManeuvers[self.directionIndex];
+    self.currentDirectionGraphic = [AGSGraphic graphicWithGeometry:self.currentDirctionManeuver.geometry symbol:[self currentDirectionSymbol] attributes:nil];
+    [self.routeGraphicsOverlay.graphics addObject:self.currentDirectionGraphic];
+    
     // update banner text
-	[self updateDirectionsLabel:self.currentDirectionGraphic.text];
-	
+    [self updateDirectionsLabel:self.currentDirctionManeuver.directionText];
+    
     // zoom to env factored by 1.3
-	AGSMutableEnvelope *env = [self.currentDirectionGraphic.geometry.envelope mutableCopy];
-	[env expandByFactor:1.3];
-	[self.mapView zoomToEnvelope:env animated:YES];
-
+    [self.mapView setViewpointGeometry:self.currentDirctionManeuver.geometry padding:30 completion:nil];
+    
     // determine if we need to disable next/prev button
 	if (self.directionIndex <= 0) {
 		self.prevBtn.enabled = NO;
 	}
-	if (self.directionIndex < self.routeResult.directions.graphics.count - 1) {
+	if (self.directionIndex < self.routeResult.directionManeuvers.count - 1) {
 		self.nextBtn.enabled = YES;
 	}
 }
 
-#pragma mark AGSLayerCalloutDelegate
+#pragma mark AGSGeoViewTouchDelegate
 
-- (BOOL) callout:(AGSCallout *)callout willShowForFeature:(id<AGSFeature>)feature layer:(AGSLayer<AGSHitTestable> *)layer mapPoint:(AGSPoint *)mapPoint{
-    AGSGraphic* graphic = (AGSGraphic*)feature;
+-(void)geoView:(AGSGeoView *)geoView didTouchDownAtScreenPoint:(CGPoint)screenPoint mapPoint:(AGSPoint *)mapPoint completion:(void (^)(BOOL))completion {
     
-	NSString *stopNum = [graphic attributeAsStringForKey:@"stopNumber"];
-	NSString *barrierNum = [graphic attributeAsStringForKey: @"barrierNumber"];
-    
-	if (stopNum || barrierNum) {
-		self.selectedGraphic = graphic;
-		self.mapView.callout.customView = self.stopCalloutView;
-		[self.sketchLayer clear];
-		return YES;
-	}else{
-        return NO;
-    }
- }
+    __weak __typeof(self) weakSelf = self;
+
+    [self.mapView identifyGraphicsOverlay:self.stopGraphicsOverlay screenPoint:screenPoint tolerance:22 returnPopupsOnly:NO completion:^(AGSIdentifyGraphicsOverlayResult * _Nonnull identifyResult) {
+        
+        if (identifyResult!=nil && identifyResult.graphics.count>0) {
+            completion(YES);
+            [weakSelf showCalloutForGraphic:identifyResult.graphics[0] tapLocation:mapPoint];
+            
+        }else {
+            
+            [weakSelf.mapView identifyGraphicsOverlay:self.barrierGraphicsOverlay screenPoint:screenPoint tolerance:22 returnPopupsOnly:NO completion:^(AGSIdentifyGraphicsOverlayResult * _Nonnull identifyResult) {
+                
+                if (identifyResult!=nil && identifyResult.graphics.count>0) {
+                    completion(YES);
+                    [weakSelf showCalloutForGraphic:identifyResult.graphics[0] tapLocation:mapPoint];
+                }else{
+                    completion(NO);
+                    [weakSelf.mapView.callout dismiss];
+                }
+                
+            }];
+            
+        }
+        
+    }];
+}
+
+
+- (void) showCalloutForGraphic:(AGSGraphic*)graphic tapLocation:(AGSPoint*)mapPoint{
+    self.mapView.callout.customView = self.stopCalloutView;
+    [self.mapView.callout showCalloutForGraphic:graphic tapLocation:mapPoint animated:YES];
+    [self.mapView.sketchEditor clearGeometry];
+}
 
 @end

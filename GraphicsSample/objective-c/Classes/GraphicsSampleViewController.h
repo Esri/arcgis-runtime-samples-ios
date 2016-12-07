@@ -13,19 +13,15 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 
-@class CountyInfoTemplate;
+//Implement call out and geo view touch delegates 
+@interface GraphicsSampleViewController : UIViewController <AGSCalloutDelegate,AGSGeoViewTouchDelegate>
 
-//map view and query task delegates to get at behavior for map and query task
-@interface GraphicsSampleViewController : UIViewController <AGSMapViewLayerDelegate, AGSQueryTaskDelegate, AGSCalloutDelegate> 
-
+@property (nonatomic, strong) AGSMap *map;
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
-
-@property (nonatomic, strong) AGSGraphicsLayer *countyGraphicsLayer;
-@property (nonatomic, strong) AGSQueryTask *countyQueryTask;
-@property (nonatomic, strong) CountyInfoTemplate *countyInfoTemplate;
-
-@property (nonatomic, strong) AGSGraphicsLayer *cityGraphicsLayer;
-@property (nonatomic, strong) AGSQueryTask *cityQueryTask;
+@property (nonatomic, strong) AGSGraphicsOverlay *countyGraphicsLayer;
+@property (nonatomic, strong) AGSGraphicsOverlay *cityGraphicsLayer;
+@property (nonatomic, strong) AGSServiceFeatureTable *countyTable;
+@property (nonatomic, strong) AGSServiceFeatureTable *cityTable;
 
 - (IBAction)toggleGraphicsLayer:(id)sender;
 

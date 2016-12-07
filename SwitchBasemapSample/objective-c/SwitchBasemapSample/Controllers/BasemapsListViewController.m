@@ -16,14 +16,11 @@
 
 @interface BasemapsListViewController ()
 
-@property (nonatomic, strong) NSArray *portalItems;
+@property (nonatomic, strong) NSArray *basemaps;
 @property (nonatomic, strong) PortalBasemapHelper *portalBasemapHelper;
 @property (nonatomic, weak) IBOutlet UIButton *loadButton;
 @property (nonatomic, weak) IBOutlet UIView *footerView;
 @property (nonatomic, strong) AGSCredential *credential;
-@property (nonatomic, assign) BOOL thumbnailLoaded;
-@property (nonatomic, strong) AGSWebMap *selectedWebMap;
-@property (nonatomic, strong) NSMutableDictionary *basemapDictionary;
 
 @end
 
@@ -68,18 +65,12 @@ static id sharedInstance = nil;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    //initialize the basedictionary if nil
-    if (!self.basemapDictionary) {
-        self.basemapDictionary = [NSMutableDictionary dictionary];
-    }
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     //viewDidLoad called everytime you trigger the segue
     //so in order to avoid reloading data everytime add a condition
-    if (!self.portalItems) {
-        self.thumbnailLoaded = NO;
+    if (!self.basemaps) {
         [self loadBasemaps];
     }
 }
@@ -97,24 +88,22 @@ static id sharedInstance = nil;
     //instantiate the portalBasemapHelper if nil
     if (!self.portalBasemapHelper) {
         self.portalBasemapHelper = [[PortalBasemapHelper alloc] init];
-        [self.portalBasemapHelper setDelegate:self];
     }
     //prepare for the connection to portal
     NSURL *portalUrl = [NSURL URLWithString:kPortalUrl];
     //if required create a credential
     //self.credential = [[AGSCredential alloc] initWithUser:kUserName password:kPassword];
     self.credential = nil;
-    [self.portalBasemapHelper fetchWebmapsFromPortal:portalUrl withCredential:self.credential];
-}
-
-//hide footer in case no more results
-- (void)hideFooter {
-    [self.footerView setHidden:YES];
-}
-
-//show footer if there are more results
-- (void)showFooter {
-    [self.footerView setHidden:NO];
+    __weak __typeof(self) weakSelf = self;
+    [self.portalBasemapHelper fetchBasemapsFromPortal:portalUrl withCredential:self.credential completion:^(NSArray<AGSBasemap *> *basemaps, NSError *error) {
+        [SVProgressHUD dismiss];
+        if (error) {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil] show];
+        } else {
+            weakSelf.basemaps = basemaps;
+        }
+        [weakSelf.tableView reloadData];
+    }];
 }
 
 #pragma mark - Table view data source
@@ -128,7 +117,7 @@ static id sharedInstance = nil;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.portalItems.count;
+    return self.basemaps.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -140,17 +129,25 @@ static id sharedInstance = nil;
         cell = [[UITableViewCell alloc] init];
     }
     
-    AGSPortalItem *item = [self.portalItems objectAtIndex:indexPath.item];
+    AGSBasemap *basemap = [self.basemaps objectAtIndex:indexPath.item];
+    cell.tag = indexPath.row + 1000;  // add 1000 to prevent conflicts with other tag operations
     
-    if (self.thumbnailLoaded) {
-        UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
-        [imageView setImage:item.thumbnail];
+    UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
+    [imageView setImage:basemap.item.thumbnail.image];
+    if (!basemap.item.thumbnail.image) {
+        //if we don't have an image yet, load it
+        [basemap.item.thumbnail loadWithCompletion:^(NSError * _Nullable error) {
+            //make sure this is loaded and we're still on the correct cell
+            if (!error && cell.tag == indexPath.row + 1000) {
+                [imageView setImage:basemap.item.thumbnail.image];
+            }
+        }];
     }
     
     UILabel *label = (UILabel*)[cell viewWithTag:2];
-    [label setText:item.title];
+    [label setText:basemap.item.title];
     UILabel *descriptionLabel = (UILabel*)[cell viewWithTag:3];
-    [descriptionLabel setText:item.snippet];
+    [descriptionLabel setText:basemap.item.snippet];
     
     //disable highlighting of selected cell
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -160,70 +157,14 @@ static id sharedInstance = nil;
 #pragma mark - Table view delegate methods
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    AGSPortalItem *item = (AGSPortalItem*)[self.portalItems objectAtIndex:indexPath.item];
-    AGSWebMapBaseMap *basemap = [self cachedBasemapForItemId:item.itemId];
-    if (basemap) {
-        [self.delegate basemapPickerController:self didSelectBasemap:basemap];
-    }
-    else {
-        self.selectedWebMap = [[AGSWebMap alloc] initWithPortalItem:item];
-        [self.selectedWebMap setDelegate:self];
-    }
-}
-
-#pragma mark - PortalBasemapHelperDelegate methods
-
--(void)portalBasemapHelper:(PortalBasemapHelper *)portalBasemapHelper didFailToLoadBasemapItemsWithError:(NSError *)error {
-    [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil] show];
-    [SVProgressHUD dismiss];
-}
-
--(void)portalBasemapHelper:(PortalBasemapHelper *)portalBasemapHelper didFinishLoadingBasemapItems:(NSArray *)itemsArray {
-    //populate the portalItems array and reload data
-    self.portalItems = itemsArray;
-    [self.tableView reloadData];
-    
-    //check if there are more results and hide/show the footer view accordingly
-    if ([portalBasemapHelper hasMoreResults]) {
-        [self showFooter];
-    }
-    else {
-        [self hideFooter];
-    }
-    
-    [SVProgressHUD dismiss];
-}
-
--(void)portalBasemapHelperDidFinishFetchingThumbnails:(PortalBasemapHelper *)portalBasemapHelper {
-    self.thumbnailLoaded = YES;
-    //once all the thumbnails are downloaded, reload data
-    [self.tableView reloadData];
-}
-
-#pragma mark - WebMap delegate methods
-
--(void)webMapDidLoad:(AGSWebMap *)webMap {
-    //cache the base map
-    [self.basemapDictionary setValue:webMap.baseMap forKeyPath:webMap.portalItem.itemId];
-    [self.delegate basemapPickerController:self didSelectBasemap:self.selectedWebMap.baseMap];
+    AGSBasemap *basemap  = (AGSBasemap*)[self.basemaps objectAtIndex:indexPath.item];
+    [self.delegate basemapPickerController:self didSelectBasemap:basemap];
 }
 
 #pragma mark - actions
 
 -(IBAction)cancel:(id)sender {
     [self.delegate basemapPickerControllerDidCancel:self];
-}
-
-//load more results
--(IBAction)loadMoreResults:(id)sender {
-    [self.portalBasemapHelper fetchNextResults];
-}
-
-#pragma mark - local/cached basemap methods
-
--(AGSWebMapBaseMap*)cachedBasemapForItemId:(NSString*)itemId {
-    AGSWebMapBaseMap *basemap = [self.basemapDictionary objectForKey:itemId];
-    return basemap;
 }
 
 @end

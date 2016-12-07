@@ -23,13 +23,29 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     
-    //set client id.
-    //this gives us Basic license level capabilites
-    NSError *error = nil;
-    BOOL valid = [AGSRuntimeEnvironment setClientID:kClientID error:&error];
-    if (!valid) {
-        NSLog(@"setClientID failed: %@", error.localizedDescription);
-    }
+    // set our portalURL property
+    _portalURL = [NSURL URLWithString:kPortalUrl];
+    
+    // First thing we need to do is set our OAuth config for the portalURL we want to log in to
+    // We provide a redirectURL so that we can use Safari to do the authentication
+    // The URL is added to the application configuration in the Info.plist file and also registered with the portal under its Registration Settings.
+    AGSOAuthConfiguration *OAuthConfig = [AGSOAuthConfiguration OAuthConfigurationWithPortalURL:_portalURL clientID:kClientID redirectURL:@"license-org-account://"];
+    OAuthConfig.refreshTokenExpirationInterval = -1; // request a permanent refresh token so user doesn't have to login in
+    
+    // add our config to the authentication manager's OAuth configurations
+    [[AGSAuthenticationManager sharedAuthenticationManager].OAuthConfigurations addObject:OAuthConfig];
+    
+    
+    // Tell the AGSAuthenticationManager to automatically sync credentials from the singleton
+    // in-memory credentialCache to the keychain
+    //
+    [[AGSAuthenticationManager sharedAuthenticationManager].credentialCache enableAutoSyncToKeychainWithIdentifier:kKeyChainKey accessGroup:nil acrossDevices:NO];
+
+}
+
+//This method is called when the user signs in successfully using Safari because the redirect URL we provided in the oAuth Configuration is invoked.
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [[AGSApplicationDelegate sharedApplicationDelegate] application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
 }
 
 @end

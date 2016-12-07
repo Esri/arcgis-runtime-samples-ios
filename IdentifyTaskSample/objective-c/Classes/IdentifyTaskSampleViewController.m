@@ -38,56 +38,44 @@
     self.mapView.callout.delegate = self;
 	
 	// create a dynamic map service layer
-	AGSDynamicMapServiceLayer *dynamicLayer = [[AGSDynamicMapServiceLayer alloc] initWithURL:[NSURL URLWithString:kDynamicMapServiceURL]];
-	
+    self.mapImageLayer = [[AGSArcGISMapImageLayer alloc] initWithURL:[NSURL URLWithString:kDynamicMapServiceURL]];
+
 	// set the visible layers on the layer
-	dynamicLayer.visibleLayers = [NSArray arrayWithObjects:[NSNumber numberWithInt:5], nil];
-	
+    __weak __typeof(self) weakSelf = self;
+    [self.mapImageLayer loadWithCompletion:^(NSError * _Nullable error) {
+        for (AGSArcGISMapImageSublayer *subLayer in weakSelf.mapImageLayer.mapImageSublayers) {
+            if (subLayer.sublayerID != 5) {
+                subLayer.visible = NO;
+            }
+        }
+    }];
+    
 	// add the layer to the map
-	[self.mapView addMapLayer:dynamicLayer withName:@"Dynamic Layer"];
-	
-	// since we alloc-init the layer, we must release it
-	
-	// create and add the graphics layer to the map
-	self.graphicsLayer = [AGSGraphicsLayer graphicsLayer];
-	[self.mapView addMapLayer:self.graphicsLayer withName:@"Graphics Layer"];
-	
-	//create identify task
-	self.identifyTask = [AGSIdentifyTask identifyTaskWithURL:[NSURL URLWithString:kDynamicMapServiceURL]];
-	self.identifyTask.delegate = self;
-	
-	//create identify parameters
-	self.identifyParams = [[AGSIdentifyParameters alloc] init];
+    self.mapView.map = [AGSMap mapWithBasemap:[AGSBasemap basemapWithBaseLayer:self.mapImageLayer]];
+		
+	// create and add the graphics overlay to the map
+	self.graphicsOverlay = [AGSGraphicsOverlay graphicsOverlay];
+	[self.mapView.graphicsOverlays addObject:self.graphicsOverlay];
 	
     [super viewDidLoad];
 }
 
-#pragma mark - AGSMapViewTouchDelegate methods
+#pragma mark - AGSGeoViewTouchDelegate methods
 
-- (void)mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features{
-
+- (void)geoView:(AGSGeoView *)geoView didTapAtScreenPoint:(CGPoint)screenPoint mapPoint:(AGSPoint *)mapPoint {
 
     //store for later use
-    self.mappoint = mappoint;
+    self.mapPoint = mapPoint;
     
-	//the layer we want is layer ‘5’ (from the map service doc)
-	self.identifyParams.layerIds = [NSArray arrayWithObjects:[NSNumber numberWithInt:5], nil];
-	self.identifyParams.tolerance = 3;
-	self.identifyParams.geometry = self.mappoint;
-	self.identifyParams.size = self.mapView.bounds.size;
-	self.identifyParams.mapEnvelope = self.mapView.visibleArea.envelope;
-	self.identifyParams.returnGeometry = YES;
-	self.identifyParams.layerOption = AGSIdentifyParametersLayerOptionAll;
-	self.identifyParams.spatialReference = self.mapView.spatialReference;
-
-	//execute the task
-	[self.identifyTask executeWithParameters:self.identifyParams];
-	
+    __weak __typeof(self) weakSelf = self;
+    [self.mapView identifyLayer:self.mapImageLayer screenPoint:screenPoint tolerance:22 returnPopupsOnly:NO completion:^(AGSIdentifyLayerResult * _Nonnull identifyResult) {
+        [weakSelf identifyFinishedWithResult:identifyResult];
+    }];
 }
+
 #pragma mark - AGSCalloutDelegate methods
 //show the attributes if accessory button is clicked
-- (void) didClickAccessoryButtonForCallout:(AGSCallout *)callout	{
-    
+- (void)didTapAccessoryButtonForCallout:(AGSCallout *)callout {
     //save the selected graphic, to later assign to the results view controller
     self.selectedGraphic = (AGSGraphic*) callout.representedObject;
     
@@ -97,46 +85,37 @@
 
 #pragma mark - AGSIdentifyTaskDelegate methods
 //results are returned
-- (void)identifyTask:(AGSIdentifyTask *)identifyTask operation:(NSOperation *)op didExecuteWithIdentifyResults:(NSArray *)results {
+- (void)identifyFinishedWithResult:(AGSIdentifyLayerResult *)result {
     
     //clear previous results
-    [self.graphicsLayer removeAllGraphics];
+    [self.graphicsOverlay.graphics removeAllObjects];
     
-    if ([results count] > 0) {
+    if ([result.sublayerResults count] > 0) {
         
         //add new results
-        AGSSymbol* symbol = [AGSSimpleFillSymbol simpleFillSymbol];
-        symbol.color = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.5];
+        AGSSymbol *symbol = [AGSSimpleFillSymbol simpleFillSymbolWithStyle:AGSSimpleFillSymbolStyleSolid color:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.5] outline:nil];
         
         // for each result, set the symbol and add it to the graphics layer
-        for (AGSIdentifyResult* result in results) {
-            result.feature.symbol = symbol;
-            [self.graphicsLayer addGraphic:result.feature];
+        for (id<AGSGeoElement> geoElement in result.sublayerResults[0].geoElements) {
+            AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:geoElement.geometry symbol:symbol attributes:geoElement.attributes];
+            [self.graphicsOverlay.graphics addObject:graphic];
         }
         
         //set the callout content for the first result
         //get the state name
-        NSString *stateName = [((AGSIdentifyResult*)[results objectAtIndex:0]).feature  attributeAsStringForKey:@"STATE_NAME"];
+        AGSGraphic *graphic = self.graphicsOverlay.graphics[0];
+        NSString *stateName = graphic.attributes[@"STATE_NAME"];
         self.mapView.callout.title = stateName;
         self.mapView.callout.detail = @"Click for more detail..";
         
         //show callout
-        [self.mapView.callout showCalloutAtPoint:self.mappoint forFeature:((AGSIdentifyResult*)[results objectAtIndex:0]).feature layer:((AGSIdentifyResult*)[results objectAtIndex:0]).feature.layer animated:YES];
+        [self.mapView.callout showCalloutForGraphic:graphic tapLocation:self.mapPoint animated:YES];
+    }
+    else {
+        [self.mapView.callout dismiss];
     }
     
 
-}
-
-
-//if there's an error with the query display it to the user
-- (void)identifyTask:(AGSIdentifyTask *)identifyTask operation:(NSOperation *)op didFailWithError:(NSError *)error {
-	
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-													message:[error localizedDescription]
-												   delegate:nil
-										  cancelButtonTitle:@"OK"
-										  otherButtonTitles:nil];
-	[alert show];
 }
 
 #pragma mark 
@@ -166,7 +145,7 @@
     if ([segue.identifier isEqualToString:kResultsSegueIdentifier]) {
         ResultsViewController *controller = [segue destinationViewController];
         //set our attributes/results into the results VC
-        controller.results = [self.selectedGraphic allAttributes];
+        controller.results = self.selectedGraphic.attributes;
     }
 }
 

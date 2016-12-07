@@ -14,7 +14,7 @@
 #import <ArcGIS/ArcGIS.h>
 
 
-@interface GeocodingSampleViewController : UIViewController <UISearchBarDelegate, AGSLocatorDelegate, AGSCalloutDelegate, AGSMapViewTouchDelegate, AGSLayerCalloutDelegate>
+@interface GeocodingSampleViewController : UIViewController <UISearchBarDelegate,  AGSCalloutDelegate, AGSGeoViewTouchDelegate >
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
 @property (nonatomic, strong) IBOutlet UISearchBar *searchBar;

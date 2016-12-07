@@ -19,12 +19,13 @@
 
 #import "LicenseHelperConstants.h"
 
+NSString* AGSLicenseLevelAsString(AGSLicenseLevel licenseLevel);
 
 /** @brief A helper class designed for use when an application wants to alow users to
  sign into a portal and then take the application offline and use functinality for
  which a Standard license is required.
  */
-@interface LicenseHelper : NSObject <AGSPortalDelegate>
+@interface LicenseHelper : NSObject
 
 /** The Portal the user logged in to.  If portal is nil, the user is not signed in.
  */
@@ -69,8 +70,7 @@
  @param completion The code block to be called when the licensing process is finished.
  */
 -(void)standardLicenseFromPortal:(NSURL *)portalURL
-            parentViewController:(AGSViewController *)parentVC
-                      completion:(void (^)(AGSLicenseResult licenseResult,
+                      completion:(void (^)(AGSLicenseResult *licenseResult,
                                            BOOL usedSavedLicenseInfo,
                                            AGSPortal *portal,
                                            AGSCredential *credential,
@@ -78,7 +78,7 @@
 
 /** Unlicenses the application.
  */
--(void)resetSavedInformation;
+-(void)resetSavedInformationWithCompletion:(nullable void(^)(NSError * __nullable error))completion;
 
 /** Indicates whether there is saved license/credential information.
  */

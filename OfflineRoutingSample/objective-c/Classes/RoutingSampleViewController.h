@@ -13,7 +13,7 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface RoutingSampleViewController : UIViewController<AGSMapViewLayerDelegate, AGSMapViewTouchDelegate, AGSRouteTaskDelegate>
+@interface RoutingSampleViewController : UIViewController< AGSGeoViewTouchDelegate>
 
 @property (nonatomic, strong) IBOutlet AGSMapView			*mapView;
 @property (nonatomic, strong) IBOutlet UIView				*directionsBannerView;

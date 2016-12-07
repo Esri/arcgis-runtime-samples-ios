@@ -15,13 +15,12 @@
 #import <ArcGIS/ArcGIS.h>
 #import "ResultsViewController.h"
 
-@interface IdentifyTaskSampleViewController : UIViewController <AGSMapViewTouchDelegate, AGSCalloutDelegate, AGSIdentifyTaskDelegate>
+@interface IdentifyTaskSampleViewController : UIViewController <AGSGeoViewTouchDelegate, AGSCalloutDelegate>
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
-@property (nonatomic, strong) AGSGraphicsLayer *graphicsLayer;
-@property (nonatomic, strong) AGSIdentifyTask *identifyTask;
-@property (nonatomic, strong) AGSIdentifyParameters *identifyParams;
-@property (nonatomic, strong) AGSPoint* mappoint;
+@property (nonatomic, strong) AGSArcGISMapImageLayer *mapImageLayer;
+@property (nonatomic, strong) AGSGraphicsOverlay *graphicsOverlay;
+@property (nonatomic, strong) AGSPoint* mapPoint;
 
 @end
 

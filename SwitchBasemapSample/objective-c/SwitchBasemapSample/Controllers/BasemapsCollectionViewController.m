@@ -17,14 +17,11 @@
 
 @interface BasemapsCollectionViewController ()
 
-@property (nonatomic, strong) NSArray *portalItems;
+@property (nonatomic, strong) NSArray *basemaps;
 @property (nonatomic, strong) AGSPortal *portal;
 @property (nonatomic, strong) PortalBasemapHelper *portalBasemapHelper;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) AGSCredential *credential;
-@property (nonatomic, assign) BOOL thumbnailLoaded;
-@property (nonatomic, strong) AGSWebMap *selectedWebMap;
-@property (nonatomic, strong) NSMutableDictionary *basemapDictionary;
 
 @end
 
@@ -70,18 +67,12 @@ static id sharedInstance = nil;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    //initialize the basedictionary if nil
-    if (!self.basemapDictionary) {
-        self.basemapDictionary = [NSMutableDictionary dictionary];
-    }
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     //viewDidLoad called everytime you trigger the segue
     //so in order to avoid reloading data everytime add a condition
-    if (!self.portalItems) {
-        self.thumbnailLoaded = NO;
+    if (!self.basemaps) {
         [self loadBasemaps];
     }
 }
@@ -99,7 +90,6 @@ static id sharedInstance = nil;
     //instantiate the portalBasemapHelper if nil
     if (!self.portalBasemapHelper) {
         self.portalBasemapHelper = [[PortalBasemapHelper alloc] init];
-        [self.portalBasemapHelper setDelegate:self];
     }
     
     //prepare for connection to the portal
@@ -107,7 +97,18 @@ static id sharedInstance = nil;
     //if required create a credential
     //self.credential = [[AGSCredential alloc] initWithUser:kUserName password:kPassword];
     self.credential = nil;
-    [self.portalBasemapHelper fetchWebmapsFromPortal:portalUrl withCredential:self.credential];
+    __weak __typeof(self) weakSelf = self;
+    [self.portalBasemapHelper fetchBasemapsFromPortal:portalUrl withCredential:self.credential completion:^(NSArray<AGSBasemap *> *basemaps, NSError *error) {
+        [SVProgressHUD dismiss];
+        if (error) {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil] show];
+        }
+        else {
+            //populate the basemaps array and reload data
+            weakSelf.basemaps = basemaps;
+            [weakSelf.collectionView reloadData];
+        }
+    }];
 }
 
 #pragma mark - dataSource methods
@@ -118,67 +119,55 @@ static id sharedInstance = nil;
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     //an extra item cell in case there are more results
-    if ([self.portalBasemapHelper hasMoreResults]) {
-        return self.portalItems.count+1;
-    }
-    return self.portalItems.count;
+    return self.basemaps.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    //item cell for the next results
-    if ([self.portalBasemapHelper hasMoreResults] && indexPath.item == self.portalItems.count) {
-        NSString *reusableString = @"LoadCell";
-        
-        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reusableString forIndexPath:indexPath];
-        
-        return cell;
-    }
     //item cell for the regular data
-    else {
-        NSString *reusableString = @"Cell";
-        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reusableString forIndexPath:indexPath];
-        
-        AGSPortalItem *item = [self.portalItems objectAtIndex:indexPath.item];
-        
-        if (self.thumbnailLoaded) {
-            UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
-            [imageView setImage:item.thumbnail];
-        }
-        
-        UILabel *label = (UILabel*)[cell viewWithTag:2];
-        [label setText:item.title];
-        
-        //add shadow to the cell
-        [cell.layer setShadowOpacity:1];
-        [cell.layer setShadowColor:[UIColor lightGrayColor].CGColor];
-        [cell.layer setShadowRadius:2];
-        [cell.layer setShadowOffset:CGSizeMake(2, 2)];
-        [cell setClipsToBounds:NO];
-        
-        return cell;
+    NSString *reusableString = @"Cell";
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reusableString forIndexPath:indexPath];
+    
+    AGSBasemap *basemap = [self.basemaps objectAtIndex:indexPath.item];
+    cell.tag = indexPath.row + 1000;  // add 1000 to prevent conflicts with other tag operations
+    
+    UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
+    [imageView setImage:basemap.item.thumbnail.image];
+    if (!basemap.item.thumbnail.image) {
+        //if we don't have an image yet, load it
+        [basemap.item.thumbnail loadWithCompletion:^(NSError * _Nullable error) {
+            //make sure this is loaded and we're still on the correct row
+            if (!error && cell.tag == indexPath.row + 1000) {
+                [imageView setImage:basemap.item.thumbnail.image];
+            }
+        }];
     }
+    
+    UILabel *label = (UILabel*)[cell viewWithTag:2];
+    [label setText:basemap.item.title];
+    
+    //add shadow to the cell
+    [cell.layer setShadowOpacity:1];
+    [cell.layer setShadowColor:[UIColor lightGrayColor].CGColor];
+    [cell.layer setShadowRadius:2];
+    [cell.layer setShadowOffset:CGSizeMake(2, 2)];
+    [cell setClipsToBounds:NO];
+    
+    return cell;
 }
 
 #pragma mark - delegate methods
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (!([self.portalBasemapHelper hasMoreResults] && indexPath.item == self.portalItems.count)) {
-        AGSPortalItem *item = (AGSPortalItem*)[self.portalItems objectAtIndex:indexPath.item];
-        AGSWebMapBaseMap *basemap = [self cachedBasemapForItemId:item.itemId];
-        if (basemap) {
-            [self.delegate basemapPickerController:self didSelectBasemap:basemap];
-        }
-        else {
-            self.selectedWebMap = [[AGSWebMap alloc] initWithPortalItem:item];
-            [self.selectedWebMap setDelegate:self];
-        }
+    AGSBasemap *basemap = (AGSBasemap*)[self.basemaps objectAtIndex:indexPath.item];
+    if (basemap) {
+        [self.delegate basemapPickerController:self didSelectBasemap:basemap];
     }
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     //for iPad showing 3 item cells each row
-    if ([[AGSDevice currentDevice] isIPad]) {
+    if ([self isIPad]) {
         double width = (self.collectionView.frame.size.width - 40)/3.0;
         return CGSizeMake(width, width);
     }
@@ -196,43 +185,10 @@ static id sharedInstance = nil;
     }
 }
 
-#pragma mark - Web map delegate methods
-
--(void)webMapDidLoad:(AGSWebMap *)webMap {
-    //cache the base map
-    [self.basemapDictionary setValue:webMap.baseMap forKeyPath:webMap.portalItem.itemId];
-    [self.delegate basemapPickerController:self didSelectBasemap:self.selectedWebMap.baseMap];
-}
-
 #pragma mark - actions
 
 -(IBAction)cancel:(id)sender {
     [self.delegate basemapPickerControllerDidCancel:self];
-}
-
-//load the next set of results
--(IBAction)loadMoreResults:(id)sender {
-    [self.portalBasemapHelper fetchNextResults];
-}
-
-#pragma mark - PortalBasemapHelperDelegate methods
-
--(void)portalBasemapHelper:(PortalBasemapHelper *)portalBasemapHelper didFailToLoadBasemapItemsWithError:(NSError *)error {
-    [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil] show];
-    [SVProgressHUD dismiss];
-}
-
-- (void)portalBasemapHelper:(PortalBasemapHelper *)portalBasemapHelper didFinishLoadingBasemapItems:(NSArray *)itemsArray {
-    //populate the portalitems array and reload data
-    self.portalItems = itemsArray;
-    [self.collectionView reloadData];
-    [SVProgressHUD dismiss];
-}
-
--(void)portalBasemapHelperDidFinishFetchingThumbnails:(PortalBasemapHelper *)portalBasemapHelper {
-    self.thumbnailLoaded = YES;
-    //once all the images are downloaded, reload the view
-    [self.collectionView reloadData];
 }
 
 //reload the data to adjust the layout based on orientation
@@ -240,11 +196,10 @@ static id sharedInstance = nil;
     [self.collectionView reloadData];
 }
 
-#pragma mark - local/cached basemap methods
+#pragma mark - internal
 
--(AGSWebMapBaseMap*)cachedBasemapForItemId:(NSString*)itemId {
-    AGSWebMapBaseMap *basemap = [self.basemapDictionary objectForKey:itemId];
-    return basemap;
+-(BOOL)isIPad {
+    return ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad);
 }
 
 @end

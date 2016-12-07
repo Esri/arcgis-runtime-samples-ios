@@ -12,29 +12,38 @@
 
 #import "BackgroundHelper.h"
 #import <ArcGIS/ArcGIS.h>
+#import "AppDelegate.h"
 
 @implementation BackgroundHelper
 
 + (void) checkJobStatusInBackground:(void (^)(UIBackgroundFetchResult))completionHandler{
-    if ([[[AGSTask activeResumeIDs] allKeys] count]) {
-        //
-        // this allow AGSExportTileCacheTask to trigger status checks for any active jobs. If a job is done
-        // and a download is available, a download will be kicked off
-        [AGSTask checkStatusForAllResumableTaskJobsWithCompletion:completionHandler];
+    
+    AGSJob *job = ((AppDelegate *)[UIApplication sharedApplication].delegate).currentJob;
+    if (job) {
+        [job checkStatusWithCompletion:^(NSError * _Nullable error) {
+            if (error) {
+                completionHandler(UIBackgroundFetchResultFailed);
+            }
+            else if (job.status == AGSJobStatusFailed || job.status == AGSJobStatusSucceeded) {
+                completionHandler(UIBackgroundFetchResultNewData);
+            }
+            else {
+                completionHandler(UIBackgroundFetchResultNoData);
+            }
+        }];
     }
     else {
         //
         // we should call this right away so the OS sees us as a good citizen.
         completionHandler(UIBackgroundFetchResultNoData);
     }
-
 }
 
 + (void) downloadJobResultInBackgroundWithURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler{
     //
-    // this will allow the AGSGDBSyncTask to monitor status of background download and invoke its own
+    // this will allow the AGSApplicationDelegate to monitor status of background download and invoke the AGSExportTileCacheTask
     // completion block when the download is done.
-    [[AGSURLSessionManager sharedManager] setBackgroundURLSessionCompletionHandler:completionHandler forIdentifier:identifier];
+    [[AGSApplicationDelegate sharedApplicationDelegate] application:[UIApplication sharedApplication] handleEventsForBackgroundURLSession:identifier completionHandler:completionHandler];
 }
 
 + (void) postLocalNotificationIfAppNotActive:(NSString*)message{

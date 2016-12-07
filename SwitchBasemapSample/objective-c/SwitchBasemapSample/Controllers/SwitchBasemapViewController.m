@@ -18,7 +18,7 @@
 @interface SwitchBasemapViewController ()
 
 @property (strong, nonatomic) IBOutlet AGSMapView *mapView;
-@property (strong, nonatomic) AGSWebMap *webMap;
+@property (strong, nonatomic) AGSMap *webMap;
 @property (strong, nonatomic) AGSPortal *portal;
 
 @end
@@ -48,33 +48,35 @@
 
 //method to initialize and load the web map
 -(void)addWebMapWithItemId:(NSString*)itemId {
-    self.webMap = [AGSWebMap webMapWithItemId:itemId credential:nil];
-    [self.webMap setDelegate:self];
+    AGSPortal *portal = [AGSPortal ArcGISOnlineWithLoginRequired:NO];
+    self.webMap = [AGSMap mapWithItem:[AGSPortalItem portalItemWithPortal:portal itemID:itemId]];
+    self.mapView.map = self.webMap;
+
+    __weak __typeof(self) weakSelf = self;
+    [self.webMap loadWithCompletion:^(NSError * _Nullable error) {
+        if (error) {
+            [weakSelf webMap:self.webMap didFailToLoadWithError:error];
+        }
+    }];
 }
 
 //once the user selects a different basemap on the list or collection
 //switch the basemap
--(void)switchBasemapWithBasemap:(AGSWebMapBaseMap*)selectedBasemap {
-    [self.webMap switchBaseMapOnMapView:selectedBasemap];
+-(void)switchBasemapWithBasemap:(AGSBasemap*)selectedBasemap {
+    self.webMap.basemap = selectedBasemap;
 }
 
-#pragma mark - AGSWebMapDelegate methods
+//The AGSWebMapDelegate is no longer needed, now that we're using completion blocks
 
 //failed to load the web map
--(void)webMap:(AGSWebMap *)webMap didFailToLoadWithError:(NSError *)error {
+-(void)webMap:(AGSMap *)webMap didFailToLoadWithError:(NSError *)error {
     [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil] show];
-}
-
-//able to load the web map
--(void)webMapDidLoad:(AGSWebMap *)webMap {
-    //show the web map
-    [webMap openIntoMapView:self.mapView];
 }
 
 #pragma mark - BasemapPickerDelegate methods
 
 //user selected a new base map from the collection
--(void)basemapPickerController:(UIViewController *)controller didSelectBasemap:(AGSWebMapBaseMap *)basemap {
+-(void)basemapPickerController:(UIViewController *)controller didSelectBasemap:(AGSBasemap *)basemap {
     [self switchBasemapWithBasemap:basemap];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -92,7 +94,7 @@
         BasemapsCollectionViewController *controller = [segue destinationViewController];
         controller.delegate = self;
         
-        if ([[AGSDevice currentDevice] isIPad]) {
+        if ([self isIPad]) {
             [controller setModalPresentationStyle:UIModalPresentationFormSheet];
         }
     }
@@ -100,10 +102,16 @@
         BasemapsListViewController *controller = [segue destinationViewController];
         controller.delegate = self;
         
-        if ([[AGSDevice currentDevice] isIPad]) {
+        if ([self isIPad]) {
             [controller setModalPresentationStyle:UIModalPresentationFormSheet];
         }
     }
+}
+
+#pragma mark - internal
+
+-(BOOL)isIPad {
+    return ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad);
 }
 
 @end

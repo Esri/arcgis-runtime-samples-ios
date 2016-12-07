@@ -18,6 +18,7 @@
 		3EA7F94E1AC605710055DB73 /* JVFloatLabeledTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7F9491AC605710055DB73 /* JVFloatLabeledTextField.m */; };
 		3EA7F94F1AC605710055DB73 /* JVFloatLabeledTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7F94B1AC605710055DB73 /* JVFloatLabeledTextView.m */; };
 		3EA7F9501AC605710055DB73 /* NSString+TextDirectionality.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7F94D1AC605710055DB73 /* NSString+TextDirectionality.m */; };
+		88C5C2A01DDD233E000B3EC1 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88C5C29F1DDD233E000B3EC1 /* Entitlements.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,13 +34,15 @@
 		3EA7F9351AC5F6390055DB73 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignInViewController.m; path = Controllers/SignInViewController.m; sourceTree = "<group>"; };
 		3EA7F9371AC5FA430055DB73 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Controllers/ProfileViewController.h; sourceTree = "<group>"; };
 		3EA7F9381AC5FA430055DB73 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Controllers/ProfileViewController.m; sourceTree = "<group>"; };
-		3EA7F9451AC601200055DB73 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
+		3EA7F9451AC601200055DB73 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = "~/Library/SDKs/ArcGIS/iOS/Frameworks/Static/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle"; sourceTree = "<absolute>"; };
 		3EA7F9481AC605710055DB73 /* JVFloatLabeledTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFloatLabeledTextField.h; sourceTree = "<group>"; };
 		3EA7F9491AC605710055DB73 /* JVFloatLabeledTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFloatLabeledTextField.m; sourceTree = "<group>"; };
 		3EA7F94A1AC605710055DB73 /* JVFloatLabeledTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFloatLabeledTextView.h; sourceTree = "<group>"; };
 		3EA7F94B1AC605710055DB73 /* JVFloatLabeledTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFloatLabeledTextView.m; sourceTree = "<group>"; };
 		3EA7F94C1AC605710055DB73 /* NSString+TextDirectionality.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TextDirectionality.h"; sourceTree = "<group>"; };
 		3EA7F94D1AC605710055DB73 /* NSString+TextDirectionality.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TextDirectionality.m"; sourceTree = "<group>"; };
+		88C5C29F1DDD233E000B3EC1 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		88C5C2A11DDD24A7000B3EC1 /* OAuthLoginSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OAuthLoginSample.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,7 @@
 		3EA7F90C1AC5F2840055DB73 /* OAuthLoginSample */ = {
 			isa = PBXGroup;
 			children = (
+				88C5C2A11DDD24A7000B3EC1 /* OAuthLoginSample.entitlements */,
 				3EA7F93A1AC5FB0B0055DB73 /* Libraries */,
 				3EA7F9331AC5F6090055DB73 /* Controllers */,
 				3EA7F9111AC5F2840055DB73 /* AppDelegate.h */,
@@ -90,6 +94,7 @@
 				3EA7F9451AC601200055DB73 /* ArcGIS.bundle */,
 				3EA7F90E1AC5F2840055DB73 /* Info.plist */,
 				3EA7F90F1AC5F2840055DB73 /* main.m */,
+				88C5C29F1DDD233E000B3EC1 /* Entitlements.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -158,6 +163,11 @@
 				TargetAttributes = {
 					3EA7F9091AC5F2840055DB73 = {
 						CreatedOnToolsVersion = 6.2;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -187,6 +197,7 @@
 				3EA7F9191AC5F2840055DB73 /* Main.storyboard in Resources */,
 				3EA7F91E1AC5F2840055DB73 /* LaunchScreen.xib in Resources */,
 				3EA7F9461AC601200055DB73 /* ArcGIS.bundle in Resources */,
+				88C5C2A01DDD233E000B3EC1 /* Entitlements.plist in Resources */,
 				3EA7F91B1AC5F2840055DB73 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,9 +324,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = $HOME/Library/SDKs/ArcGIS/iOS;
+				CODE_SIGN_ENTITLEMENTS = OAuthLoginSample/OAuthLoginSample.entitlements;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Static;
 				INFOPLIST_FILE = OAuthLoginSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -333,9 +346,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = $HOME/Library/SDKs/ArcGIS/iOS;
+				CODE_SIGN_ENTITLEMENTS = OAuthLoginSample/OAuthLoginSample.entitlements;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Static;
 				INFOPLIST_FILE = OAuthLoginSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -367,6 +382,7 @@
 				3EA7F92F1AC5F2840055DB73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

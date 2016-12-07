@@ -24,65 +24,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	//Show magnifier to help with sketching
-	self.mapView.showMagnifierOnTapAndHold = YES;
+	//Create Map with Tiled basemap layer and set it on the mapView
+    //Initial viewpoint for Manhanttan, New York
+    self.mapView.map = [AGSMap mapWithBasemapType:AGSBasemapTypeTopographic
+                                         latitude:40.768452 longitude:-73.980796 levelOfDetail:16];
 	
-	//Tiled basemap layer 
-	NSURL *mapUrl = [NSURL URLWithString:@"http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"];
-	AGSTiledMapServiceLayer *tiledLyr = [AGSTiledMapServiceLayer tiledMapServiceLayerWithURL:mapUrl];
-	[self.mapView addMapLayer:tiledLyr withName:@"Tiled Layer"];
-	
-	//Graphics layer to hold all sketches (points, polylines, and polygons)
-	AGSGraphicsLayer* graphicsLayer = [AGSGraphicsLayer graphicsLayer];
-	[self.mapView addMapLayer:graphicsLayer withName:@"Graphics Layer"];
+	//Add Graphics Overlay to the mapView to hold all sketches (points, polylines, and polygons)
+    AGSGraphicsOverlay *graphicsOverlay = [AGSGraphicsOverlay graphicsOverlay];
+    [self.mapView.graphicsOverlays addObject:graphicsOverlay];
 
-	//A composite symbol for the graphics layer's renderer to symbolize the sketches
-	AGSCompositeSymbol* composite = [AGSCompositeSymbol compositeSymbol];
-	AGSSimpleMarkerSymbol* markerSymbol = [[AGSSimpleMarkerSymbol alloc] init];
-	markerSymbol.style = AGSSimpleMarkerSymbolStyleSquare;
-	markerSymbol.color = [UIColor greenColor];
-	[composite addSymbol:markerSymbol];
-	AGSSimpleLineSymbol* lineSymbol = [[AGSSimpleLineSymbol alloc] init];
-	lineSymbol.color= [UIColor grayColor];
-	lineSymbol.width = 4;
-	[composite addSymbol:lineSymbol];
-	AGSSimpleFillSymbol* fillSymbol = [[AGSSimpleFillSymbol alloc] init];
-	fillSymbol.color = [UIColor colorWithRed:1.0 green:1.0 blue:0 alpha:0.5] ;
-	[composite addSymbol:fillSymbol];
-	AGSSimpleRenderer* renderer = [AGSSimpleRenderer simpleRendererWithSymbol:composite];
-	graphicsLayer.renderer = renderer;
-
-	//Sketch layer	
-	AGSSketchGraphicsLayer* sketchLayer = [[AGSSketchGraphicsLayer alloc] initWithGeometry:nil];
-	[self.mapView addMapLayer:sketchLayer withName:@"Sketch layer"]; 
+	//Assign sketch editor to mapView
+    self.mapView.sketchEditor = [AGSSketchEditor sketchEditor];
 	
 	//Helper class to manage the UI toolbar, Sketch Layer, and Graphics Layer
 	//Basically, where the magic happens
-	self.sketchToolbar = [[SketchToolbar alloc] initWithToolbar:self.toolbar 
-													sketchLayer:sketchLayer 
+	self.sketchToolbar = [[SketchToolbar alloc] initWithToolbar:self.toolbar
 														mapView:self.mapView 
-												  graphicsLayer:graphicsLayer];
-	//Manhanttan, New York
-	AGSSpatialReference *sr = [AGSSpatialReference spatialReferenceWithWKID:102100];
-	AGSEnvelope *env = [AGSEnvelope envelopeWithXmin:-8235886.761869 
-												ymin:4977698.714786 
-												xmax:-8235122.391586
-												ymax:4978797.497068 
-									spatialReference:sr];
-	[self.mapView zoomToEnvelope:env animated:YES];
-	
+												  graphicsOverlay:graphicsOverlay];
 }
-
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-	// Release any cached data, images, etc that aren't in use.
 }
 
 - (void)viewDidUnload {
@@ -90,7 +56,5 @@
     self.sketchToolbar = nil;
     self.toolbar = nil;
 }
-
-
 
 @end

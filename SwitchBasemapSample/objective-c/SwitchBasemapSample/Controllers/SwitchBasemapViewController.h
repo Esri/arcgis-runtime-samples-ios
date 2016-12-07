@@ -14,6 +14,6 @@
 #import <ArcGIS/ArcGIS.h>
 #import "BasemapPickerDelegate.h"
 
-@interface SwitchBasemapViewController : UIViewController <AGSWebMapDelegate, BasemapPickerDelegate>
+@interface SwitchBasemapViewController : UIViewController <BasemapPickerDelegate>
 
 @end

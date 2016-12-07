@@ -14,7 +14,7 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface PopupSampleViewController : UIViewController <AGSWebMapDelegate, AGSCalloutDelegate, AGSMapViewTouchDelegate, UIAlertViewDelegate, AGSPopupsContainerDelegate>
+@interface PopupSampleViewController : UIViewController <AGSCalloutDelegate, AGSGeoViewTouchDelegate, UIAlertViewDelegate, AGSPopupsViewControllerDelegate>
 
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;

@@ -17,10 +17,10 @@
 
 @interface PopupSampleViewController() 
 
-@property (nonatomic, strong) AGSWebMap *webMap;
+@property (nonatomic, strong) AGSPortalItem *portalItem;
 @property (nonatomic, strong) NSString *webMapId;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
-@property (nonatomic, strong) AGSPopupsContainerViewController *popupVC;
+@property (nonatomic, strong) AGSPopupsViewController *popupVC;
 
 
 @end
@@ -39,7 +39,7 @@
 // Release any retained subviews of the main view.
 - (void)viewDidUnload
 {
-    self.webMap = nil;
+    self.portalItem = nil;
     self.mapView = nil;
     self.webMapId = nil;
     self.popupVC = nil;
@@ -54,15 +54,24 @@
     
       
     self.webMapId = @"9ade9e5c9a2042178ec3128d6d922bbf";
-    // Create a webmap and open it into the map
-    self.webMap = [AGSWebMap webMapWithItemId:self.webMapId credential:nil];
-    self.webMap.delegate = self;
-    [self.webMap openIntoMapView:self.mapView];
+    // create a map with portal item
+    AGSPortal *portal = [AGSPortal ArcGISOnlineWithLoginRequired:NO];
+    self.portalItem = [AGSPortalItem portalItemWithPortal:portal itemID:self.webMapId];
+    [self.portalItem loadWithCompletion:^(NSError * _Nullable error) {
+        if (error) {
+            // If the portal item failed to load report an error
+            NSLog(@"Error while loading webMap: %@",[error localizedDescription]);
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                         message:@"Failed to load the portal item"
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+        }
+    }];
     
+    self.mapView.map = [AGSMap mapWithItem:self.portalItem];
     self.mapView.callout.delegate = self;
     self.mapView.touchDelegate = self;
-    
-    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -77,94 +86,47 @@
 
 #pragma mark - AGSMapViewTouchDelegate methods
 
-- (void)mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features{
-
-
-    AGSGeometryEngine *geometryEngine = [AGSGeometryEngine defaultGeometryEngine];
-    AGSPolygon *buffer = [geometryEngine bufferGeometry:mappoint byDistance:(10 *mapView.resolution)];
-    BOOL willFetch = [self.webMap fetchPopupsForExtent:buffer.envelope];
-    if(!willFetch){
-        NSLog(@"Sorry, try again");
-    }else{
-        self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        self.mapView.callout.customView = self.activityIndicator;
-        [self.activityIndicator startAnimating];
-        [self.mapView.callout showCalloutAt:mappoint screenOffset:CGPointZero animated:YES];
-    }
+- (void)geoView:(AGSGeoView *)geoView didTapAtScreenPoint:(CGPoint)screenPoint mapPoint:(AGSPoint *)mapPoint {
+    __weak __typeof(self) weakSelf = self;
+    [self.mapView identifyLayersAtScreenPoint:screenPoint tolerance:5 returnPopupsOnly:YES maximumResultsPerLayer:10 completion:^(NSArray<AGSIdentifyLayerResult *> * _Nullable identifyResults, NSError * _Nullable error) {
+        if (!error) {
+            NSMutableArray *popups = [NSMutableArray array];
+            for (AGSIdentifyLayerResult *result in identifyResults) {
+                [popups addObjectsFromArray:result.popups];
+            }
+            [weakSelf showPopups:popups];
+        }
+    }];
+    
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.mapView.callout.customView = self.activityIndicator;
+    [self.activityIndicator startAnimating];
+    [self.mapView.callout showCalloutAt:mapPoint screenOffset:CGPointZero rotateOffsetWithMap:YES animated:YES];
     self.popupVC = nil;
-
 }
 
 #pragma mark - AGSCallout methods
 
-- (void) didClickAccessoryButtonForCallout:(AGSCallout *) 	callout {
+- (void)didTapAccessoryButtonForCallout:(AGSCallout *)callout {
     [self presentViewController:self.popupVC animated:YES completion:nil];
 }
 
-#pragma mark - AGSWebMapDelegate methods
-- (void) didOpenWebMap:(AGSWebMap *)webMap intoMapView:(AGSMapView *)mapView {
-    if(![webMap hasPopupsDefined]){
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@""
-                                                     message:@"This webmap does not have any popups"
-                                                    delegate:self
-                                           cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];
-    }
-}
+#pragma mark - Handle Identify Result
 
-- (void) webMap:(AGSWebMap *)webMap didFailToLoadWithError:(NSError *)error {
-    
-    // If the web map failed to load report an error
-    NSLog(@"Error while loading webMap: %@",[error localizedDescription]);
-    
-    
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                 message:@"Failed to load the webmap"
-                                                delegate:self
-                                       cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [av show];
-}
-
-
-
-
--(void)didFailToLoadLayer:(NSString*)layerTitle url:(NSURL*)url baseLayer:(BOOL)baseLayer withError:(NSError*)error{
-    
-    NSLog(@"Error while loading layer: %@",[error localizedDescription]);
-    
-    // If we have an error loading the layer report an error
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                 message:[NSString stringWithFormat:@"The layer %@ cannot be displayed",layerTitle]
-                                                delegate:self
-                                       cancelButtonTitle:@"OK"
-                                       otherButtonTitles:nil];
-    
-    [av show];
-    
-    
-    
-    // skip loading this layer
-    [self.webMap continueOpenAndSkipCurrentLayer];
-    
-}
-
-- (void)webMap:(AGSWebMap *)webMap
-didFetchPopups:(NSArray *)popups
-     forExtent:(AGSEnvelope *)extent{
+- (void)showPopups:(NSArray *)popups {
     // If we've found one or more popups
     if (popups.count > 0) {
         
         if(!self.popupVC){
             //Create a popupsContainer view controller with the popups
-            self.popupVC = [[AGSPopupsContainerViewController alloc] initWithPopups:popups usingNavigationControllerStack:false];
-            self.popupVC.style = AGSPopupsContainerStyleBlack;
+            self.popupVC = [AGSPopupsViewController popupsViewControllerWithPopups:popups];
             self.popupVC.delegate = self;
         }else{
             [self.popupVC showAdditionalPopups:popups];
         }
         
         // For iPad, display popup view controller in the callout
-        if ([[AGSDevice currentDevice] isIPad]) {
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
 
             self.mapView.callout.customView = self.popupVC.view;
             
@@ -177,7 +139,7 @@ didFetchPopups:(NSArray *)popups
             // popupsContainer view controller while we wait for the query results
             self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
             UIBarButtonItem *blankButton = [[UIBarButtonItem alloc] initWithCustomView:(UIView*)self.activityIndicator];
-            self.popupVC.actionButton = blankButton;
+            self.popupVC.customActionButton = blankButton;
             [self.activityIndicator startAnimating];
         }
         else {
@@ -187,40 +149,33 @@ didFetchPopups:(NSArray *)popups
             self.mapView.callout.detail = @"loading more...";
             self.mapView.callout.customView = nil;
         }
-        
     }
-}
-
-- (void) webMap:(AGSWebMap *)webMap didFinishFetchingPopupsForExtent:(AGSEnvelope *)extent{
-    if(self.popupVC){
-        if ([[AGSDevice currentDevice] isIPad]){
-            [self.activityIndicator stopAnimating];
-            self.popupVC.actionButton = self.popupVC.defaultActionButton;
+    else {
+        if(self.popupVC){
+            if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+                [self.activityIndicator stopAnimating];
+                self.popupVC.customActionButton = self.popupVC.actionButton;
+            }
+            else {
+                self.mapView.callout.detail = @"";
+            }
         }
         else {
+            [self.activityIndicator stopAnimating];
+            self.mapView.callout.customView = nil;
+            self.mapView.callout.accessoryButtonHidden = YES;
+            self.mapView.callout.title = @"No Results";
             self.mapView.callout.detail = @"";
+            
         }
-        
-    }else{
-        [self.activityIndicator stopAnimating];
-        self.mapView.callout.customView = nil;
-        self.mapView.callout.accessoryButtonHidden = YES;
-        self.mapView.callout.title = @"No Results";
-        self.mapView.callout.detail = @"";
-
     }
 }
 
-
-
 #pragma mark - AGSPopupsContainerDelegate methods
-- (void)popupsContainerDidFinishViewingPopups:(id<AGSPopupsContainer>)popupsContainer {
-    
-    //cancel any outstanding requests
-    [self.webMap cancelFetchPopups];
+- (void)popupsViewControllerDidFinishViewingPopups:(AGSPopupsViewController *)popupsViewController {
     
     // If we are on iPad dismiss the callout
-    if ([[AGSDevice currentDevice] isIPad])
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
         self.mapView.callout.hidden = YES;
     else
         //dismiss the modal viewcontroller for iPhone
@@ -231,10 +186,7 @@ didFetchPopups:(NSArray *)popups
 
 #pragma mark - AGSPopupsContainerDelegate edit methods
 
--(void)popupsContainer:(id<AGSPopupsContainer>)popupsContainer
-   readyToEditGeometry:(AGSGeometry*)geometry
-              forPopup:(AGSPopup*)popup {
-    
+- (void)popupsViewController:(AGSPopupsViewController *)popupsViewController readyToEditGeometryWithSketchEditor:(AGSSketchEditor *)sketchEditor forPopup:(AGSPopup *)popup {
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Not Implemented"
                                                  message:@"This sample only demonstrates how to display popups. It does not implement editing or deleting features. Please refer to the Feature Layer Editing Sample instead."
                                                 delegate:self
@@ -242,12 +194,9 @@ didFetchPopups:(NSArray *)popups
                                        otherButtonTitles:nil];
     
     [av show];
-    
-    
 }
 
-- (void) popupsContainer:(id<AGSPopupsContainer>)popupsContainer
-didFinishEditingForPopup:(AGSPopup *)popup {
+- (void)popupsViewController:(AGSPopupsViewController *)popupsViewController didFinishEditingForPopup:(AGSPopup *)popup {
     
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Not Implemented"
                                                  message:@"This sample only demonstrates how to display popups. It does not implement editing or deleting features. Please refer to the Feature Layer Editing Sample instead."
@@ -258,9 +207,8 @@ didFinishEditingForPopup:(AGSPopup *)popup {
     [av show];
 }
 
-- (void) popupsContainer:(id< AGSPopupsContainer >)popupsContainer
-wantsToDeleteForPopup:(AGSPopup *) popup {
-    
+- (void)popupsViewController:(AGSPopupsViewController *)popupsViewController didStartEditingForPopup:(AGSPopup *)popup {
+
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Not Implemented"
                                                  message:@"This sample only demonstrates how to display popups. It does not allow you to edit or delete features. Please refer to the Feature Layer Editing Sample instead."
                                                 delegate:self
@@ -268,7 +216,6 @@ wantsToDeleteForPopup:(AGSPopup *) popup {
                                        otherButtonTitles:nil];
     
     [av show];
-
 }
 
 

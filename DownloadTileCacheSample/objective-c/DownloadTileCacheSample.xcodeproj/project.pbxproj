@@ -18,7 +18,6 @@
 		88F72A3A17F0E63700C7BE67 /* BlackImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 88F72A3917F0E63700C7BE67 /* BlackImage.jpeg */; };
 		9708654918C011DE000BCECE /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9708654618C011DE000BCECE /* SVProgressHUD.bundle */; };
 		9708654A18C011DE000BCECE /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9708654818C011DE000BCECE /* SVProgressHUD.m */; };
-		9708654E18C01F36000BCECE /* MessageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9708654D18C01F36000BCECE /* MessageHelper.m */; };
 		97C0BB0D18BFEB620027B90C /* BackgroundHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 97C0BB0C18BFEB620027B90C /* BackgroundHelper.m */; };
 /* End PBXBuildFile section */
 
@@ -40,8 +39,6 @@
 		9708654618C011DE000BCECE /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		9708654718C011DE000BCECE /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		9708654818C011DE000BCECE /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
-		9708654C18C01F36000BCECE /* MessageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageHelper.h; sourceTree = "<group>"; };
-		9708654D18C01F36000BCECE /* MessageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageHelper.m; sourceTree = "<group>"; };
 		97C0BB0B18BFEB620027B90C /* BackgroundHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundHelper.h; sourceTree = "<group>"; };
 		97C0BB0C18BFEB620027B90C /* BackgroundHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,8 +95,6 @@
 				88F72A1517F0B61B00C7BE67 /* ViewController.m */,
 				97C0BB0B18BFEB620027B90C /* BackgroundHelper.h */,
 				97C0BB0C18BFEB620027B90C /* BackgroundHelper.m */,
-				9708654C18C01F36000BCECE /* MessageHelper.h */,
-				9708654D18C01F36000BCECE /* MessageHelper.m */,
 			);
 			path = DownloadTileCacheSample;
 			sourceTree = "<group>";
@@ -163,7 +158,7 @@
 				ORGANIZATIONNAME = Esri;
 				TargetAttributes = {
 					885197501625F8E400EEF3F9 = {
-						DevelopmentTeam = P8HGHS7JQ8;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -212,7 +207,6 @@
 			files = (
 				88F72A1E17F0B61B00C7BE67 /* ViewController.m in Sources */,
 				88F72A1C17F0B61B00C7BE67 /* main.m in Sources */,
-				9708654E18C01F36000BCECE /* MessageHelper.m in Sources */,
 				88F72A1617F0B61B00C7BE67 /* AppDelegate.m in Sources */,
 				97C0BB0D18BFEB620027B90C /* BackgroundHelper.m in Sources */,
 				9708654A18C011DE000BCECE /* SVProgressHUD.m in Sources */,
@@ -301,12 +295,16 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/**";
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(HOME)/Library/SDKs/ArcGIS/iOS/Frameworks/Static",
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "$(SRCROOT)/DownloadTileCacheSample/DownloadTileCacheSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -330,13 +328,17 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: ESRI Enterprise";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ESRI Enterprise";
-				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/**";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(HOME)/Library/SDKs/ArcGIS/iOS/Frameworks/Static",
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "$(SRCROOT)/DownloadTileCacheSample/DownloadTileCacheSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",

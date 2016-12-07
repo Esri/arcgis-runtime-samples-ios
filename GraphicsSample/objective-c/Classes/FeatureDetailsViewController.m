@@ -42,7 +42,7 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.title = [self.feature attributeAsStringForKey:self.displayFieldName];
+    self.title = [[self.feature attributes]valueForKey:self.displayFieldName];
     [self.detailsTable reloadData];
 }
 
@@ -53,7 +53,7 @@
     _feature = f;
     
     
-    NSDictionary *theDict = [self.feature allAttributes];
+    NSDictionary *theDict = [self.feature attributes];
     NSArray *allKeys = [theDict allKeys];
     self.keys = allKeys;
     self.aliases = (NSMutableArray*)self.keys;
@@ -101,7 +101,7 @@
     
     NSString *key = [self.keys objectAtIndex:row];
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [self.feature attributeAsStringForKey:key]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [[self.feature attributes] valueForKey:key]];
 
     return cell;
 }

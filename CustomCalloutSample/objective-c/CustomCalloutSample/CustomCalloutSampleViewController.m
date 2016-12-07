@@ -14,12 +14,10 @@
 #import "CustomWebViewController.h"
 #import "CustomHybridViewController.h"
 
-//base map url for the sample
-#define kBaseMap @"http://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer"
 #define kCustomHybridViewControllerIdentifier @"CustomHybridViewController"
 #define kCustomWebViewControllerIdentifier @"CustomWebViewController"
 
-//this enum is used to determin the type of graphic created 
+//this enum is used to determine the type of graphic created
 typedef enum {
     EmbeddedMapView = 0,    
     EmbeddedWebView,
@@ -31,7 +29,7 @@ typedef enum {
 @interface CustomCalloutSampleViewController()
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
-@property (nonatomic, strong) AGSGraphicsLayer *graphicsLayer;
+@property (nonatomic, strong) AGSGraphicsOverlay *graphicsOverlay;
 
 //this is the view controller that handles the loading and operations of the Bing Aerial view in a callout. 
 @property (nonatomic, strong) CustomHybridViewController *hybridViewController;
@@ -64,27 +62,28 @@ typedef enum {
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    //Add the basemap. 
-	NSURL *mapUrl = [NSURL URLWithString:kBaseMap];
-	AGSTiledMapServiceLayer *tiledLyr = [AGSTiledMapServiceLayer tiledMapServiceLayerWithURL:mapUrl];
-	[self.mapView addMapLayer:tiledLyr withName:@"Tiled Layer"];
+    //Add the basemap.
+    self.mapView.map = [AGSMap mapWithBasemap:[AGSBasemap lightGrayCanvasVector]];
 	
     //Zooming to an initial envelope with the specified spatial reference of the map.
 	AGSSpatialReference *sr = [AGSSpatialReference spatialReferenceWithWKID:102100];
-	AGSEnvelope *env = [AGSEnvelope envelopeWithXmin:-9555813.309582941 ymin:4606200.425377472 xmax:-9543583.38505733 ymax:4623780.94188304 spatialReference:sr];
-	[self.mapView zoomToEnvelope:env animated:YES];
+	AGSEnvelope *env = [AGSEnvelope envelopeWithXMin:-9555813.309582941 yMin:4606200.425377472 xMax:-9543583.38505733 yMax:4623780.94188304 spatialReference:sr];
+    [self.mapView setViewpointGeometry:env completion:nil];
     
-    //set the callout delegate so we can display callouts
+    // set the touch delegate of the mapView so that we know when a tap happens
+    self.mapView.touchDelegate = self;
+    
+    //set the callout delegate so we know when the accessory button is tapped
     self.mapView.callout.delegate = self;
     
-    //add  graphics layer for the graphics
-    self.graphicsLayer = [AGSGraphicsLayer graphicsLayer];
+    //add graphics layer for the graphics
+    self.graphicsOverlay = [AGSGraphicsOverlay graphicsOverlay];
     
     //add the sample graphics
     [self createSampleGraphics];
     
     //add the graphics layer to the map
-    [self.mapView addMapLayer:self.graphicsLayer withName:@"SampleGraphics"];
+    [self.mapView.graphicsOverlays addObject:self.graphicsOverlay];
     
     //reference to the storyboard
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
@@ -118,14 +117,34 @@ typedef enum {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark AGSCalloutDelegate
+#pragma mark AGSGeoViewTouchDelegate
 
-- (BOOL) callout:(AGSCallout *)callout willShowForFeature:(id<AGSFeature>)feature layer:(AGSLayer<AGSHitTestable> *)layer mapPoint:(AGSPoint *)mapPoint{
+-(void)geoView:(AGSGeoView *)geoView didTapAtScreenPoint:(CGPoint)screenPoint mapPoint:(AGSPoint *)mapPoint{
     
-    AGSGraphic* graphic = (AGSGraphic*)feature;
+    __weak __typeof(self) weakSelf = self;
+    
+    // We have to identify which graphic was tapped so we can show a callout.
+    // Callouts do not automatically show as they did in 10.2.x
+    
+    [self.mapView identifyGraphicsOverlay:self.graphicsOverlay screenPoint:screenPoint tolerance:12 returnPopupsOnly:NO maximumResults:1 completion:^(AGSIdentifyGraphicsOverlayResult * _Nonnull identifyResult) {
+       
+        AGSGraphic *graphic = identifyResult.graphics.firstObject;
+        if (graphic){
+            // show callout for identified graphic
+            [weakSelf showCalloutForGraphic:graphic tapLocation:mapPoint];
+        }
+        else{
+            // nothing tapped - dismiss callout
+            [weakSelf.mapView.callout dismiss];
+        }
+    }];
+    
+}
+
+-(void)showCalloutForGraphic:(AGSGraphic*)graphic tapLocation:(AGSPoint*)tapLocation{
     
     //extract the type of graphics to check.
-    NSNumber *typeNumber = (NSNumber*)[graphic attributeForKey:@"type"];
+    NSNumber *typeNumber = (NSNumber*)[graphic.attributes valueForKey:@"type"];
     GraphicType graphicType = typeNumber.intValue;
     
     switch (graphicType) {
@@ -139,7 +158,8 @@ typedef enum {
             //assign the hybrid map view to the callout view of the main map view
             self.mapView.callout.customView = self.hybridViewController.view;
             
-            return YES;
+            [self.mapView.callout showCalloutForGraphic:graphic tapLocation:tapLocation animated:YES];
+            
             break;
         }
             //graphic's callout is an embedded map view
@@ -147,7 +167,7 @@ typedef enum {
             NSLog(@"%@", @"Tapped on Camera");
             
             //get the url for the image feed from the camera
-            NSString *imageURL = [graphic attributeAsStringForKey:@"url"];
+            NSString *imageURL = [graphic.attributes valueForKey:@"url"];
             
             //create the url object
             NSURL *imageURLObject = [NSURL URLWithString:imageURL];
@@ -158,7 +178,8 @@ typedef enum {
             //assign the camera view as the custom view of the callout for this graphic.
             self.mapView.callout.customView = self.cameraViewController.view;
             
-            return YES;
+            [self.mapView.callout showCalloutForGraphic:graphic tapLocation:tapLocation animated:YES];
+            
             break;
         }
             //graphic's callout is a view with title, detail, custom accessory button and an image.
@@ -169,8 +190,8 @@ typedef enum {
             self.mapView.callout.customView = nil;
             
             //get the attribute values for the graphic
-            self.mapView.callout.title = [graphic attributeAsStringForKey:@"name"];
-            self.mapView.callout.detail = [graphic attributeAsStringForKey:@"address"];
+            self.mapView.callout.title = [graphic.attributes valueForKey:@"name"];
+            self.mapView.callout.detail = [graphic.attributes valueForKey:@"address"];
             
             //sets the left image of the callout.
             self.mapView.callout.image = [UIImage imageNamed:@"McDonalds.png"];
@@ -180,7 +201,8 @@ typedef enum {
             self.mapView.callout.accessoryButtonImage = [UIImage imageNamed:@"Phone.png"];
             self.mapView.callout.accessoryButtonHidden = NO;
             
-            return YES;
+            [self.mapView.callout showCalloutForGraphic:graphic tapLocation:tapLocation animated:YES];
+            
             break;
         }
             //graphic's callout is a simple view with just the title and detail
@@ -191,29 +213,34 @@ typedef enum {
             self.mapView.callout.customView = nil;
             
             //get the attribute values for the graphic
-            self.mapView.callout.title = [graphic attributeAsStringForKey:@"name"];
-            self.mapView.callout.detail = [graphic attributeAsStringForKey:@"address"];
+            self.mapView.callout.title = [graphic.attributes valueForKey:@"name"];
+            self.mapView.callout.detail = [graphic.attributes valueForKey:@"address"];
             
             //hide the accessory view and also the left image view.
             self.mapView.callout.accessoryButtonHidden = YES;
             self.mapView.callout.image = nil;
             
-            return YES;
+            [self.mapView.callout showCalloutForGraphic:graphic tapLocation:tapLocation animated:YES];
+            
             break;
         }
         default:
             break;
     }
-    
-    
-    return NO;
 }
 
+#pragma mark AGSCalloutDelegate
 
-- (void) didClickAccessoryButtonForCallout:(AGSCallout *)callout{
-    AGSGraphic* graphic = (AGSGraphic*)callout.representedFeature;
+- (void)didTapAccessoryButtonForCallout:(AGSCallout *)callout{
+    
+    if (![callout.representedObject isKindOfClass:[AGSGraphic class]]){
+        // we are expecting a graphic in this sample
+        return;
+    }
+    
+    AGSGraphic* graphic = (AGSGraphic*)callout.representedObject;
     //extract the type of graphics to check.
-    NSNumber *typeNumber = (NSNumber*)[graphic attributeAsStringForKey:@"type"];
+    NSNumber *typeNumber = (NSNumber*)[graphic.attributes valueForKey:@"type"];
     GraphicType graphicType = typeNumber.intValue;
     
     switch (graphicType) {
@@ -222,7 +249,7 @@ typedef enum {
             NSLog(@"%@", @"Tapped accessory button on McDonalds callout");
             
             //get the phone number and create the proper string.
-            NSString *phoneNumber = [@"tel://" stringByAppendingString:[graphic attributeAsStringForKey:@"phone"]];
+            NSString *phoneNumber = [@"tel://" stringByAppendingString:[graphic.attributes valueForKey:@"phone"]];
             
             //call the number.
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
@@ -246,21 +273,21 @@ typedef enum {
     AGSPictureMarkerSymbol *graphicSymbol;
     
     //Graphic for demonstrating Bing's aerial view
-    graphicPoint = [AGSPoint pointWithX:-9546541.78950715 y:4615710.12174574 spatialReference:self.mapView.spatialReference];    
-    graphicAttributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:@(EmbeddedMapView), @"type", nil];    
-    graphicSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"Building.png"];  
+    graphicPoint = [AGSPoint pointWithX:-9546541.78950715 y:4615710.12174574 spatialReference:[AGSSpatialReference webMercator]];
+    graphicAttributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:@(EmbeddedMapView), @"type", nil];
+    graphicSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImage:[UIImage imageNamed:@"Building.png"]];
     graphic = [AGSGraphic graphicWithGeometry:graphicPoint symbol:graphicSymbol attributes:graphicAttributes ];    
-    [self.graphicsLayer addGraphic:graphic];
+    [self.graphicsOverlay.graphics addObject:graphic];
     
     //Graphic for demonstrating embedded Web view (traffic camera feed)
-    graphicPoint = [AGSPoint pointWithX:-9552294.6205 y:4618447.7069 spatialReference:self.mapView.spatialReference];    
+    graphicPoint = [AGSPoint pointWithX:-9552294.6205 y:4618447.7069 spatialReference:[AGSSpatialReference webMercator]];
     graphicAttributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:@(EmbeddedWebView), @"type", @"http://www.trimarc.org/images/snapshots/CCTV060.jpg", @"url", nil];    
-    graphicSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"TrafficCamera.png"];  
+    graphicSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImage:[UIImage imageNamed:@"TrafficCamera.png"]];
     graphic = [AGSGraphic graphicWithGeometry:graphicPoint symbol:graphicSymbol attributes:graphicAttributes ];    
-    [self.graphicsLayer addGraphic:graphic];
+    [self.graphicsOverlay.graphics addObject:graphic];
     
     //Graphic for demonstrating custom callout with buttons
-    graphicPoint = [AGSPoint pointWithX:-9550988.22392791 y:4614761.34217867 spatialReference:self.mapView.spatialReference];    
+    graphicPoint = [AGSPoint pointWithX:-9550988.22392791 y:4614761.34217867 spatialReference:[AGSSpatialReference webMercator]];
     graphicAttributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                          @(CustomInfoView), @"type", 
                          @"MacDonald's", @"name", 
@@ -268,20 +295,20 @@ typedef enum {
                          @"5027787110", @"phone", 
                          @"www.mcdonalds.com", @"url",
                          nil];    
-    graphicSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"McDonalds.png"];  
+    graphicSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImage:[UIImage imageNamed:@"McDonalds.png"]];
     graphic = [AGSGraphic graphicWithGeometry:graphicPoint symbol:graphicSymbol attributes:graphicAttributes ];    
-    [self.graphicsLayer addGraphic:graphic];
+    [self.graphicsOverlay.graphics addObject:graphic];
     
     //Graphic for demonstrating simple callout
-    graphicPoint = [AGSPoint pointWithX:-9547261.91529309 y:4615891.15535562 spatialReference:self.mapView.spatialReference];    
+    graphicPoint = [AGSPoint pointWithX:-9547261.91529309 y:4615891.15535562 spatialReference:[AGSSpatialReference webMercator]];
     graphicAttributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                          @(SimpleView), @"type", 
                          @"Frazier Museum", @"name", 
                          @"829 West Main Street, Louisville, KY 40202", @"address",
                          nil];    
-    graphicSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"Museum.png"];  
+    graphicSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImage:[UIImage imageNamed:@"Museum.png"]];
     graphic = [AGSGraphic graphicWithGeometry:graphicPoint symbol:graphicSymbol attributes:graphicAttributes ];    
-    [self.graphicsLayer addGraphic:graphic];   
+    [self.graphicsOverlay.graphics addObject:graphic];
     
 }       
 

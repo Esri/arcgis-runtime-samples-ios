@@ -13,13 +13,12 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface GeocodingSampleViewController : UIViewController <UISearchBarDelegate, AGSLocatorDelegate, AGSCalloutDelegate> 
+@interface GeocodingSampleViewController : UIViewController <UISearchBarDelegate, AGSCalloutDelegate, AGSGeoViewTouchDelegate>
 
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
 @property (nonatomic, strong) IBOutlet UISearchBar *searchBar;
-@property (nonatomic, strong) AGSGraphicsLayer *graphicsLayer;
-@property (nonatomic, strong) AGSLocator *locator;
-@property (nonatomic, strong) AGSCalloutTemplate *calloutTemplate;
+@property (nonatomic, strong) AGSGraphicsOverlay *graphicsOverlay;
+@property (nonatomic, strong) AGSLocatorTask *locator;
 
 //This is the method that starts the geocoding operation
 - (void)startGeocoding;

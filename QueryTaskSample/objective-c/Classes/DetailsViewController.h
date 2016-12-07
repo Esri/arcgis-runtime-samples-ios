@@ -16,9 +16,9 @@
 
 @interface DetailsViewController : UITableViewController 
 
-@property (nonatomic, strong) NSDictionary *fieldAliases;
+@property (nonatomic, strong) NSArray *fields;
 @property (nonatomic, copy) NSString *displayFieldName;
 
-@property (nonatomic, weak) AGSGraphic *feature;
+@property (nonatomic, strong) AGSFeature *feature;
 
 @end

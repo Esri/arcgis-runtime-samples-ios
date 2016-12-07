@@ -16,6 +16,7 @@
 
 #import "ViewController.h"
 #import "LicenseHelper.h"
+#import "AppDelegate.h"
 
 @interface ViewController()
 
@@ -49,38 +50,41 @@
 
 - (IBAction)signInAction:(id)sender {
     
+    __weak __typeof(self) weakSelf = self;
     if (self.signedIn) {
         //User wants to sign out, reset saved information
-        [[LicenseHelper sharedLicenseHelper] resetSavedInformation];
-        [self updateLogWithString:@"The application has been signed out and all saved license and credential information has been deleted."];
-        self.networkImageView.image = nil;
-        self.portalConnectionLabel.text = @"";
-        [self updateStatusWithCredential:nil];
+        [[LicenseHelper sharedLicenseHelper] resetSavedInformationWithCompletion:^(NSError * _Nullable error) {
+            [weakSelf updateLogWithString:@"The application has been signed out and all saved license and credential information has been deleted."];
+            weakSelf.networkImageView.image = nil;
+            weakSelf.portalConnectionLabel.text = @"";
+            [weakSelf updateStatusWithCredential:nil];
+        }];
     }
     else {
+        NSURL *portalURL = ((AppDelegate*)[UIApplication sharedApplication].delegate).portalURL;
+      
         //Use the helper to allow the user to sign in and license the app
-        [[LicenseHelper sharedLicenseHelper] standardLicenseFromPortal:[NSURL URLWithString:kPortalUrl]
-                parentViewController:self
-              completion:^(AGSLicenseResult licenseResult, BOOL usedSavedLicenseInfo, AGSPortal *portal, AGSCredential *credential, NSError *error) {
+        [[LicenseHelper sharedLicenseHelper] standardLicenseFromPortal:portalURL
+              completion:^(AGSLicenseResult *licenseResult, BOOL usedSavedLicenseInfo, AGSPortal *portal, AGSCredential *credential, NSError *error) {
                 
-                if(licenseResult==AGSLicenseResultValid){
+                if(licenseResult.licenseStatus==AGSLicenseStatusValid){
                   if (usedSavedLicenseInfo) {
-                    [self updateLogWithString:@"The application was licensed at Standard level using the saved license info in the keychain"];
+                    [weakSelf updateLogWithString:@"The application was licensed using the saved license info in the keychain"];
                   }else {
-                    [self updateLogWithString:@"The application was licensed at Standard level by logging into the portal."];
+                    [weakSelf updateLogWithString:@"The application was licensed by logging into the portal."];
                   }
                 }else{
-                  [self updateLogWithString:[NSString stringWithFormat:@"Couldn't initialize a Standard level license.\n  license status: %@\n  reason: %@",AGSLicenseResultAsString(licenseResult), error.localizedDescription]];
+                  [weakSelf updateLogWithString:[NSString stringWithFormat:@"Couldn't initialize license.\n  license status: %ld\n  reason: %@", (long)licenseResult.licenseStatus, error.localizedDescription]];
                 }
                 if(portal){
-                  self.networkImageView.image = [UIImage imageNamed:@"blue-network"];
-                  self.portalConnectionLabel.text = @"Connected to portal";
+                  weakSelf.networkImageView.image = [UIImage imageNamed:@"blue-network"];
+                  weakSelf.portalConnectionLabel.text = @"Connected to portal";
                 }else{
-                  self.networkImageView.image = [UIImage imageNamed:@"gray-network"];
-                  self.portalConnectionLabel.text = @"Could not connect to portal";
+                  weakSelf.networkImageView.image = [UIImage imageNamed:@"gray-network"];
+                  weakSelf.portalConnectionLabel.text = @"Could not connect to portal";
                 }
               
-                [self updateStatusWithCredential:credential];
+                [weakSelf updateStatusWithCredential:credential];
         }];
         
         [self updateLogWithString:@"Signing in..."];
@@ -95,11 +99,11 @@
 }
 
 -(void)updateStatusWithCredential:(AGSCredential*)credential {
-    AGSLicense *license = [AGSRuntimeEnvironment license];
-    self.licenseLevelLabel.text = AGSLicenseLevelAsString(license.licenseLevel);
+    AGSLicense *license = [AGSArcGISRuntimeEnvironment license];
+    self.licenseLevelLabel.text = [NSString stringWithFormat:@"Level: %@",AGSLicenseLevelAsString(license.licenseLevel)];
 
     NSString *expiryString;
-    if (license.licenseLevel == AGSLicenseLevelDeveloper || license.licenseLevel == AGSLicenseLevelBasic) {
+    if (license.licenseLevel == AGSLicenseLevelDeveloper) {
         expiryString = @"None";
     }
     else {

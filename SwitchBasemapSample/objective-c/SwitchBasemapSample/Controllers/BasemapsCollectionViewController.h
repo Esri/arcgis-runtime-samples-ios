@@ -15,7 +15,7 @@
 #import "PortalBasemapHelper.h"
 #import "BasemapPickerDelegate.h"
 
-@interface BasemapsCollectionViewController : UIViewController <AGSPortalDelegate, PortalBasemapHelperDelegate, AGSWebMapDelegate>
+@interface BasemapsCollectionViewController : UIViewController
 
 @property (weak, nonatomic) id <BasemapPickerDelegate> delegate;
 

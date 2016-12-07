@@ -21,9 +21,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-- (void) saveCredentialToKeychain:(AGSCredential*)credential;
-- (void) removeCredentialFromKeychain;
-- (AGSCredential*) fetchCredentialFromKeychain;
+@property (nonatomic, strong, readonly) NSURL *portalURL;
 
 @end
 

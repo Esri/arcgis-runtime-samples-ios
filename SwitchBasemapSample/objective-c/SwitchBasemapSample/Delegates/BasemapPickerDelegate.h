@@ -11,7 +11,7 @@
 @protocol BasemapPickerDelegate <NSObject>
 
 //notifies that the user selected a basemap from either a list or collection
--(void)basemapPickerController:(UIViewController*)controller didSelectBasemap:(AGSWebMapBaseMap*)basemap;
+-(void)basemapPickerController:(UIViewController*)controller didSelectBasemap:(AGSBasemap*)basemap;
 
 //notifies that the user canceled or closed the list or collection without
 //making any selection

@@ -22,16 +22,58 @@
 #define kCredentialKey @"credential"
 #define kLicenseKey @"license"
 
-@interface LicenseHelper () <AGSPortalDelegate>
+static NSArray *kAGSLicenseStatusStrings;
 
-@property (nonatomic, strong) AGSOAuthLoginViewController* oauthLoginVC;
-@property (nonatomic, strong) AGSViewController* parentVC;
+NSArray *AGSLicenseStatusStrings() {
+    if (!kAGSLicenseStatusStrings) {
+        kAGSLicenseStatusStrings = @[@"invalid",
+                                     @"expired",
+                                     @"login required",
+                                     @"valid"];
+    }
+    
+    return kAGSLicenseStatusStrings;
+}
+
+AGSLicenseStatus AGSLicenseStatusFromString(NSString *licenseStatusString) {
+    return (AGSLicenseStatus)[AGSLicenseStatusStrings() indexOfObject:licenseStatusString];
+}
+
+NSString* AGSLicenseStatusAsString(AGSLicenseStatus licenseStatus) {
+    return [AGSLicenseStatusStrings() objectAtIndex:licenseStatus];
+}
+
+#pragma mark - License Level
+
+static NSArray *kAGSLicenseLevelStrings;
+
+NSArray *AGSLicenseLevelStrings() {
+    if (!kAGSLicenseLevelStrings) {
+        kAGSLicenseLevelStrings = @[@"Developer",
+                                    @"Lite",
+                                    @"Basic",
+                                    @"Standard",
+                                    @"Advanced"];
+    }
+    return kAGSLicenseLevelStrings;
+}
+
+AGSLicenseLevel AGSLicenseLevelFromString(NSString *licenseLevelString) {
+    return (AGSLicenseLevel)[AGSLicenseLevelStrings() indexOfObject:licenseLevelString];
+}
+
+NSString* AGSLicenseLevelAsString(AGSLicenseLevel licenseLevel) {
+    return [AGSLicenseLevelStrings() objectAtIndex:licenseLevel];
+}
+
+@interface LicenseHelper ()
+
 @property (nonatomic, strong) NSURL* portalURL;
 @property (nonatomic, strong) NSError* error;
 @property (nonatomic, strong, readwrite) AGSPortal* portal;
-@property (nonatomic, strong) void(^completionBlock)(AGSLicenseResult licenseResult, BOOL usedSavedLicenseInfo, AGSPortal *portal, AGSCredential *credentail, NSError *error);
+@property (nonatomic, strong) void(^completionBlock)(AGSLicenseResult *licenseResult, BOOL usedSavedLicenseInfo, AGSPortal *portal, AGSCredential *credentail, NSError *error);
 @property (nonatomic, strong, readwrite) AGSCredential* credential;
-@property (nonatomic, strong) AGSKeychainItemWrapper* keychainWrapper;
+@property (nonatomic, strong) AGSKeychainItem* keychainItem;
 
 @end
 
@@ -43,8 +85,8 @@ static LicenseHelper* _sharedLicenseHelper = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedLicenseHelper = [[super alloc] init];
-        _sharedLicenseHelper.keychainWrapper = [[AGSKeychainItemWrapper alloc]
-                                                initWithIdentifier:kKeyChainKey accessGroup:nil];
+        _sharedLicenseHelper.keychainItem = [[AGSKeychainItem alloc]
+                                             initWithIdentifier:kKeyChainKey accessGroup:nil acrossDevices: NO];
     });
     
     return _sharedLicenseHelper;
@@ -58,8 +100,7 @@ static LicenseHelper* _sharedLicenseHelper = nil;
 }
 
 -(void)standardLicenseFromPortal:(NSURL *)portalURL
-            parentViewController:(UIViewController *)parentVC
-                      completion:(void (^)(AGSLicenseResult licenseResult,
+                      completion:(void (^)(AGSLicenseResult *licenseResult,
                                            BOOL usedSavedLicenseInfo,
                                            AGSPortal *portal,
                                            AGSCredential *credential,
@@ -67,167 +108,103 @@ static LicenseHelper* _sharedLicenseHelper = nil;
 {
     
     self.completionBlock = completion;
-    self.parentVC = parentVC;
     self.portalURL = portalURL;
+
+    __weak __typeof(self) weakSelf = self;
     
-    //check if we have credential
-        //yes - load portal with credential
-        //refresh license info
-    
-        //no - ask user to authenticate
-        //
-    
-    //Determine if we have credential in the keychain
-    NSDictionary *keyChainDict = (NSDictionary *)[self.keychainWrapper keychainObject];
-    self.credential = (AGSCredential *)keyChainDict[kCredentialKey];
-    
-    if (self.credential) {
-        // Use credentials to load portal.  The completion block will by called by
-        // either portalDidLoad: or portal:didFailToLoadWithError:
-        self.portal = [[AGSPortal alloc]initWithURL:self.portalURL credential:self.credential];
-        self.portal.delegate = self;
-    }
-    else {
-        // Need user to log in
-        [self login];
-    }
+    self.portal = [AGSPortal portalWithURL:self.portalURL loginRequired:YES];
+    [self.portal loadWithCompletion:^(NSError * _Nullable error) {
+        if (error != nil) {
+            [weakSelf portalFailedToLoadWithError:error];
+            
+        }
+        else {
+            [weakSelf portalLoaded];
+        }
+    }];
 }
 
--(void)resetSavedInformation {
+-(void)resetSavedInformationWithCompletion:(void (^)(NSError * _Nullable))completion {
     //reset the portal
     self.portal = nil;
     self.credential = nil;
+    [[[AGSAuthenticationManager sharedAuthenticationManager] credentialCache] removeAllCredentials];
     
     //remove stored license info, which will force a login next time the app starts
-    [self.keychainWrapper setKeychainObject:nil];
+    [self.keychainItem removeObjectFromKeychainWithCompletion:completion];
 }
 
 -(BOOL)savedInformationExists {
-    return ([self.keychainWrapper keychainObject] != nil);
+    return ([self.keychainItem readObjectFromKeychain] != nil);
 }
 
 -(AGSLicenseLevel)licenseLevel {
-    return [[AGSRuntimeEnvironment license] licenseLevel];
+    return [[AGSArcGISRuntimeEnvironment license] licenseLevel];
 }
 
 -(NSDate *)expiryDate {
-    return [[AGSRuntimeEnvironment license] expiry];
+    return [[AGSArcGISRuntimeEnvironment license] expiry];
 }
 
-#pragma mark - AGSPortalDelegate
+#pragma mark - Portal block methods
 
--(void)portalDidLoad:(AGSPortal *)portal {
-    
+-(void)portalLoaded {
     // Update our reference to the credential
     // The credential associated with the portal has information about the user etc
     self.credential = self.portal.credential;
     
     //portal loaded Ok, get license info
     NSError *error = nil;
-    AGSLicenseResult result;
-    AGSLicenseInfo *licenseInfo = [[AGSLicenseInfo alloc] initWithPortalInfo:portal.portalInfo];
-
-
-    result = [[AGSRuntimeEnvironment license] setLicenseInfo:licenseInfo];
+    AGSLicenseResult *result;
+    AGSLicenseInfo *licenseInfo = self.portal.portalInfo.licenseInfo;
     
-    if (result == AGSLicenseResultExpired) {
+    
+    result = [AGSArcGISRuntimeEnvironment setLicenseInfo:licenseInfo error:&error];
+    
+    if (error != nil) {
+        
+    }
+    else if (result.licenseStatus == AGSLicenseStatusExpired) {
         error = [self errorWithDescription:@"License has expired"];
     }
-    else if (result == AGSLicenseResultInvalid) {
+    else if (result == AGSLicenseStatusInvalid) {
         error = [self errorWithDescription:@"License is invalid"];
     }
-    else if (result == AGSLicenseResultValid) {
-        //store license info json and credential in a new dictionary
-        //we know we don't already have stored keychain data because of the first check above
-        NSDictionary *keyChainDict = @{ kLicenseKey : [licenseInfo encodeToJSON],
-                                    kCredentialKey : self.credential,
-                                    };
-
-        //store the new dictionary in the keychain
-        [self.keychainWrapper setKeychainObject:keyChainDict];
+    else if (result.licenseStatus == AGSLicenseStatusValid) {
+        //store the license info json in the keychain
+        [self.keychainItem writeObjectToKeychain:[licenseInfo toJSON:nil] completion:^(NSError * _Nullable error) {
+            if (error) NSLog(@"Keychain Error: %@", error);
+        }];
     }
     
     //we're done, call the completion handler
-    [self callCompletionHandler:result usedSavedLicenseInfo:NO portal:portal credential:portal.credential error:error];
+    [self callCompletionHandler:result
+               usedSavedLicenseInfo:NO
+                             portal:self.portal
+                         credential:self.portal.credential
+                              error:error];
 }
 
--(void)portal:(AGSPortal *)portal didFailToLoadWithError:(NSError *)error {
+-(void)portalFailedToLoadWithError:(NSError*)error {
     BOOL usingSavedLicenseInfo = YES;
-    
-    //Determine if we have info in the keychain
-    NSDictionary *keyChainDict = (NSDictionary *)[self.keychainWrapper keychainObject];
+    AGSLicenseResult *result = nil;
     
     //get the saved license info
-    NSDictionary *licenseInfoJSON = keyChainDict[kLicenseKey];
-    //if (licenseInfoJSON) {
+    id licenseInfoJSON = [self.keychainItem readObjectFromKeychain];
+    if (licenseInfoJSON) {
         //Create license info and set it into the license, then check the result
-        AGSLicenseInfo *licenseInfo = [[AGSLicenseInfo alloc] initWithJSON:licenseInfoJSON];
-        AGSLicenseResult result = [[AGSRuntimeEnvironment license] setLicenseInfo:licenseInfo];
-        if (result != AGSLicenseResultValid) {
-            //There's a problem with the saved license (maybe it expired)
-            //[self.keychainWrapper reset];
+        AGSLicenseInfo *licenseInfo = [AGSLicenseInfo fromJSON:licenseInfoJSON error:nil];
+        result = [AGSArcGISRuntimeEnvironment setLicenseInfo:licenseInfo error:nil];
+        if (result.licenseStatus != AGSLicenseStatusValid) {
+            //There's a problem with the saved license (maybe it's expired)
+            [self.keychainItem removeObjectFromKeychainWithCompletion:nil];
         }
-    //}
+    }
     
     [self callCompletionHandler:result usedSavedLicenseInfo:usingSavedLicenseInfo portal:nil credential:self.credential error:error];
 }
 
 #pragma mark - internal
-
--(void)cancelLogin {
-    [self.parentVC dismissViewControllerAnimated:YES completion:^{
-        [self callCompletionHandler:AGSLicenseResultLoginRequired usedSavedLicenseInfo:NO portal:self.portal credential:self.credential error:[self userCancelledError]];
-    }];
-}
-
--(BOOL)autoLicense {
-    
-    BOOL success = NO;
-    
-   
-    
-    return success;
-}
-
--(void)login {
-    self.oauthLoginVC = [[AGSOAuthLoginViewController alloc] initWithPortalURL:self.portalURL clientID:kClientID];
-    self.oauthLoginVC.cancelButtonHidden = NO;
-    
-    UINavigationController* nvc = [[UINavigationController alloc]initWithRootViewController:self.oauthLoginVC];
-    nvc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    self.oauthLoginVC.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelLogin)];
-    [self.parentVC presentViewController:nvc animated:YES completion:nil];
-    
-    __weak LicenseHelper *safeSelf = self;
-    self.oauthLoginVC.completion = ^(AGSCredential *credential, NSError *error) {
-        if (error) {
-            if (error.code == NSUserCancelledError) {
-                [safeSelf cancelLogin];
-            } else if (error.code == NSURLErrorServerCertificateUntrusted){
-                //keep a reference to the error so that the uialertview deleate can accesss it
-                safeSelf.error = error;
-
-                UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"Error" message:[[error localizedDescription] stringByAppendingString:[error localizedRecoverySuggestion]] delegate:safeSelf cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
-                av.tag = kUntrustedHostAlertViewTag;
-                [av show];
-            }
-            else {
-                UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                av.tag = kErrorAlertViewTag;
-                [av show];
-            }
-        } else {
-            //update the portal explorer with the credential provided by the user.
-            AGSPortal* portal = [[AGSPortal alloc]initWithURL:safeSelf.portalURL credential:credential];
-            portal.delegate = safeSelf;
-            safeSelf.portal = portal;
-            safeSelf.credential = credential;
-            
-            [safeSelf.parentVC dismissViewControllerAnimated:YES completion:nil];
-            //The execution will continue in the AGSPortalDelegate methods
-        }
-    };
-}
 
 -(NSError *)errorWithDescription:(NSString *)description {
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
@@ -238,39 +215,14 @@ static LicenseHelper* _sharedLicenseHelper = nil;
                            userInfo:[NSDictionary dictionaryWithDictionary:userInfo]];
 }
 
--(NSError *)userCancelledError {
-    return [self errorWithDescription:@"User cancelled portal login"];
-}
-
--(void)callCompletionHandler:(AGSLicenseResult)licenseResult usedSavedLicenseInfo:(BOOL)usedSavedLicenseInfo portal:(AGSPortal *)portal credential:(AGSCredential*)credential error:(NSError *)error {
+-(void)callCompletionHandler:(AGSLicenseResult*)licenseResult
+               usedSavedLicenseInfo:(BOOL)usedSavedLicenseInfo
+                             portal:(AGSPortal *)portal
+                         credential:(AGSCredential*)credential
+                              error:(NSError *)error {
     if (self.completionBlock) {
         self.completionBlock(licenseResult, usedSavedLicenseInfo, portal, credential, error);
         self.completionBlock = nil;
-    }
-}
-
-#pragma mark - UIAlertViewDelegate
-
-- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    if (alertView.tag == kErrorAlertViewTag) {
-        //error, retry until user cancels
-        [self.oauthLoginVC reload];
-    }
-    else if (alertView.tag == kUntrustedHostAlertViewTag) {
-        //host is untrusted
-        if (buttonIndex == 0) {
-            //user doesn't want to trust host
-            [self cancelLogin];
-        } else {
-            NSURL* url = [self.error userInfo][NSURLErrorFailingURLErrorKey];
-            //add to trusted hosts
-            [[NSURLConnection ags_trustedHosts]addObject:[url host]];
-            //make a test connection to force UIWebView to accept the host
-            AGSJSONRequestOperation* rop = [[AGSJSONRequestOperation alloc]initWithURL:url];
-            [[AGSRequestOperation sharedOperationQueue] addOperation:rop];
-            [self.oauthLoginVC reload];
-        }
     }
 }
 

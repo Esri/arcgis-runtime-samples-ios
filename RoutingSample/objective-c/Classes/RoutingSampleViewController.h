@@ -13,7 +13,7 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface RoutingSampleViewController : UIViewController< AGSLayerCalloutDelegate, AGSMapViewTouchDelegate, AGSRouteTaskDelegate, UIAlertViewDelegate>
+@interface RoutingSampleViewController : UIViewController< AGSGeoViewTouchDelegate>
 
 @property (nonatomic, strong) IBOutlet AGSMapView			*mapView;
 @property (nonatomic, strong) IBOutlet UISegmentedControl	*sketchModeSegCtrl;
@@ -24,15 +24,18 @@
 @property (nonatomic, strong) IBOutlet UIBarButtonItem		*addBtn;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem		*clearSketchBtn;
 
-@property (nonatomic, strong) AGSGraphicsLayer				*graphicsLayer;
-@property (nonatomic, strong) AGSSketchGraphicsLayer		*sketchLayer;
+@property (nonatomic, strong) AGSGraphicsOverlay            *stopGraphicsOverlay;
+@property (nonatomic, strong) AGSGraphicsOverlay            *barrierGraphicsOverlay;
+@property (nonatomic, strong) AGSGraphicsOverlay            *routeGraphicsOverlay;
+
 @property (nonatomic, strong) AGSRouteTask					*routeTask;
-@property (nonatomic, strong) AGSRouteTaskParameters		*routeTaskParams;
-@property (nonatomic, strong) AGSStopGraphic				*currentStopGraphic;
+@property (nonatomic, strong) AGSRouteParameters            *routeTaskParams;
+@property (nonatomic, strong) AGSStop                       *currentStopGraphic;
 @property (nonatomic, strong) AGSGraphic					*selectedGraphic;
-@property (nonatomic, strong) AGSDirectionGraphic			*currentDirectionGraphic;
+@property (nonatomic, strong) AGSGraphic                    *currentDirectionGraphic;
+@property (nonatomic, strong) AGSDirectionManeuver          *currentDirctionManeuver;
 @property (nonatomic, strong) UIView						*stopCalloutView;
-@property (nonatomic, strong) AGSRouteResult				*routeResult;
+@property (nonatomic, strong) AGSRoute                      *routeResult;
 
 @property (nonatomic, assign) int                             numStops;
 @property (nonatomic, assign) int                             numBarriers;
@@ -55,7 +58,6 @@
 - (void)reset;
 - (void)removeStopClicked;
 - (void)updateDirectionsLabel:(NSString*)newLabel;
-
 
 
 

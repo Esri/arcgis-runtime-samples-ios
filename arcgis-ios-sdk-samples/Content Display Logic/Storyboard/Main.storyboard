@@ -11,6 +11,7 @@
             <objects>
                 <navigationController title="Samples" id="yRd-en-sGR" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="GpO-dt-EG2">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -303,8 +304,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="VLe-6X-w7k"/>
                                                     <exclude reference="p1r-po-bAs"/>
+                                                    <exclude reference="VLe-6X-w7k"/>
                                                 </mask>
                                             </variation>
                                         </view>
@@ -543,8 +544,9 @@
         <!--Navigation Controller-->
         <scene sceneID="m7x-3m-94M">
             <objects>
-                <navigationController id="6mK-5c-4sN" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="DetailNavigationController" id="6mK-5c-4sN" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="V9q-Qo-B83">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -574,11 +576,11 @@
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZUl-1v-KYM" id="4hb-ou-79v">
-                                            <frame key="frameInset" width="320" height="43.5"/>
+                                            <frame key="frameInset" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hPX-p8-mBC">
-                                                    <frame key="frameInset" minX="15" width="290" height="43.5"/>
+                                                    <frame key="frameInset" minX="15" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -649,6 +651,6 @@
         <image name="InfoIcon" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XFi-4R-2mc"/>
+        <segue reference="Cnq-oa-z7G"/>
     </inferredMetricsTieBreakers>
 </document>

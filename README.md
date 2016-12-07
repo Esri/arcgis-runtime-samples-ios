@@ -1,19 +1,41 @@
+
+>###Note: This branch contains only a few v10.2.5 Objective-C samples that have been ported to use the latest version of the ArcGIS Runtime SDK (v100.0). These include -
+>* [Custom Callout Sample](CustomCalloutSample/objective-c)
+>* [Download Tile Cache Sample] (DownloadTileCacheSample/objective-c)
+>* [Feature Layer Editing Sample](FeatureLayerEditingSample/objective-c)
+>* [Geocoding Sample](GeocodingSample/objective-c)
+>* [Graphics Sample](GraphicsSample/objective-c)
+>* [Identify Task Sample](IdentifyTaskSample/objective-c)
+>* [License By Org Account Sample](LicenseByOrgAccountSample/objective-c)
+>* [OAuth Login Sample](OAuth Login Sample/objective-c)
+>* [Offline Feature Editing Sample](OfflineFeatureEditingSample/objective-c)
+>* [Offline Geocoding Sample](OfflineGeocodingSample/objective-c)
+>* [Offline Routing Sample](OfflineRoutingSample/objective-c)
+>* [Popup Sample](PopupSample/objective-c)
+>* [Query Task Sample](QueryTaskSample/objective-c)
+>* [Routing Sample](RoutingSample/objective-c)
+>* [Sketch Layer Sample](SketchLayerSample/objective-c)
+>* [Switch Basemap Sample](SwitchBasemapSample/objective-c)
+>
+>To see the code changes that were needed to port these samples to the latest version of the SDK, you can view this [diff](https://github.com/Esri/arcgis-runtime-samples-ios/compare/v10.2.5...10.2.5-to-quartz?diff=split&name=10.2.5-to-quartz) which also serves a good reference to help you migrate your own code to the latest SDK.
+> 
+
+---
+
 arcgis-runtime-samples-ios
 ==========================
+
+
 This repository contains sample code demonstrating the capabilities of [ArcGIS Runtime SDK for iOS](http://developers.arcgis.com/en/ios/). Each sample is an entire project that can be opened in XCode and instantly run on a simulator or a device.
+
 
 The ```master``` branch of this repository contains samples configured for the latest available version of [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/en/ios/). For samples configured for older versions of the SDK,  look under the ```Releases``` tab for a specific version.
 
 ## Requirements
-[ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/en/ios/) (Requires ArcGIS for Developers account; free to sign up)
+* [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/en/ios/) (Requires ArcGIS for Developers account; free to sign up)
+* XCode 8 (or higher)
+* iOS 10 SDK (or higher)
 
-For Objective-C :
-* XCode 5 (or higher)
-* iOS 7 SDK (or higher)
-
-For Swift : 
-* XCode 6.3 (or higher)
-* iOS 8 SDK (or higher)
 
 ## Instructions
 

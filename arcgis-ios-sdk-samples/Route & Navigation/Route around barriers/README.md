@@ -11,7 +11,7 @@ Select `Stops` from the switch in the toolbar. Tap on the map to add any number 
 
 ##How it works
 
-The sample uses the `generateDefaultParametersWithCompletion:` method on `AGSRouteTask` to get the default parameters from the service. Sets the stops and barriers in those parameters and the `returnDirections` to true. Then uses the `solveRouteWithParameters:completion:` method to solve for the route. Once the route is in, the sample displays the list of directions using the `directionManeuvers` property on the `AGSRoute` returned in the `AGSRouteResult`.
+The sample uses the `defaultParametersWithCompletion:` method on `AGSRouteTask` to get the default parameters from the service. Sets the stops and barriers in those parameters and the `returnDirections` to true. Then uses the `solveRouteWithParameters:completion:` method to solve for the route. Once the route is in, the sample displays the list of directions using the `directionManeuvers` property on the `AGSRoute` returned in the `AGSRouteResult`.
 
 
 

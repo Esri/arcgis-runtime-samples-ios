@@ -11,7 +11,7 @@ Tapping on the `Sublayers` button in the bottom toolbar displays the list of sub
 
 ##How it works
 
-The `mapImageSublayers` property on `AGSArcGISMapImageLayer` is used to get the list of `AGSArcGISMapImageSublayer`. Each of these sublayer has a property called `isVisible`, which is used to toggle visibility.
+The `mapImageSublayers` property on `AGSArcGISMapImageLayer` is used to get the list of `AGSArcGISMapImageSublayer`. Each of these sublayer has a property called `visible`, which is used to toggle visibility.
 
 
 

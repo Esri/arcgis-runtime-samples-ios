@@ -76,7 +76,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
                 if features.count > 0 {
                     self?.featureLayer.selectFeatures(features)
                     //zoom to the selected feature
-                    self?.mapView.setViewpointGeometry(features[0].geometry!, padding: 200, completion: nil)
+                    self?.mapView.setViewpointGeometry(features[0].geometry!, padding: 80, completion: nil)
                 }
                 else {
                     SVProgressHUD.showErrorWithStatus("No state by that name", maskType: .Gradient)

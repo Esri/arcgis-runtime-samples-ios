@@ -119,7 +119,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         //if yes, then show callout with geocoding
         //else add a graphic and route if more than one graphic
         
-        self.mapView.identifyGraphicsOverlay(self.markerGraphicsOverlay, screenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false) { [weak self] (result:AGSIdentifyGraphicsOverlayResult) in
+        self.mapView.identifyGraphicsOverlay(self.markerGraphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result:AGSIdentifyGraphicsOverlayResult) in
             if let error = result.error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
             }

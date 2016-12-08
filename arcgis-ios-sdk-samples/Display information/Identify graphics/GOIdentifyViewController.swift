@@ -76,7 +76,7 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         //use the following method to identify graphics in a specific graphics overlay
         //otherwise if you need to identify on all the graphics overlay present in the map view
         //use `identifyGraphicsOverlaysAtScreenCoordinate:tolerance:maximumGraphics:completion:` method provided on map view
-        let tolerance:Double = 5
+        let tolerance:Double = 12
         
         self.mapView.identifyGraphicsOverlay(self.graphicsOverlay, screenPoint: screenPoint, tolerance: tolerance, returnPopupsOnly: false, maximumResults: 10) { (result: AGSIdentifyGraphicsOverlayResult) -> Void in
             if let error = result.error {

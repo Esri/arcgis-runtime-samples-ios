@@ -64,6 +64,12 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["CreateSaveMapViewController", "CreateOptionsViewController", "SaveAsViewController"]
+        
+        //add tap gesture recognizer to hide keyboard
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        tapGestureRecognizer.numberOfTouchesRequired = 1
+        self.saveAsBlurView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     override func didReceiveMemoryWarning() {
@@ -132,6 +138,10 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     @IBAction private func cancelAction() {
         self.view.endEditing(true)
         self.toggleSaveAsView()
+    }
+    
+    func hideKeyboard() {
+        self.view.endEditing(true)
     }
     
     //MARK: - Navigation

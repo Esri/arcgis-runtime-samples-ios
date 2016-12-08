@@ -46,7 +46,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="a6E-Hi-XhU"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -60,7 +60,7 @@
                                 <constraints>
                                     <constraint firstItem="sgZ-Nk-kH7" firstAttribute="top" secondItem="rjI-Fj-tXd" secondAttribute="bottom" constant="8" id="6bI-up-J1K"/>
                                     <constraint firstAttribute="trailing" secondItem="r26-1c-eoY" secondAttribute="trailing" constant="8" id="9Ye-0W-1af"/>
-                                    <constraint firstAttribute="width" constant="300" id="EXI-2x-LTH"/>
+                                    <constraint firstAttribute="width" constant="310" id="EXI-2x-LTH"/>
                                     <constraint firstItem="r26-1c-eoY" firstAttribute="top" secondItem="sgZ-Nk-kH7" secondAttribute="bottom" constant="10" id="I8f-Hh-O4l"/>
                                     <constraint firstItem="sgZ-Nk-kH7" firstAttribute="centerX" secondItem="rjI-Fj-tXd" secondAttribute="centerX" id="PIG-1t-aiQ"/>
                                     <constraint firstItem="rjI-Fj-tXd" firstAttribute="top" secondItem="54t-nf-ZK2" secondAttribute="top" constant="8" id="WS3-de-wEx"/>
@@ -108,7 +108,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eGI-Gb-9L2">
                                 <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A3N-uU-QQm">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A3N-uU-QQm" customClass="CustomFlowLayout" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
                                     <size key="itemSize" width="144" height="140"/>
                                     <size key="headerReferenceSize" width="50" height="200"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -200,11 +200,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="eGI-Gb-9L2" id="3cg-Eo-MDy"/>
+                        <outlet property="collectionViewFlowLayout" destination="A3N-uU-QQm" id="xNW-mG-tbX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3tF-iC-11L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="658" y="-630"/>
+            <point key="canvasLocation" x="657" y="-630"/>
         </scene>
         <!--Samples-->
         <scene sceneID="Fdn-Ui-174">
@@ -339,7 +340,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JtS-Oj-N1m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1325" y="-630"/>
+            <point key="canvasLocation" x="1326" y="-630"/>
         </scene>
         <!--Detail-->
         <scene sceneID="ShK-Ke-yfl">
@@ -410,7 +411,7 @@
                     <navigationItem key="navigationItem" id="Xla-oL-Hlb">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="2NF-7S-DQ2">
-                            <rect key="frame" x="150" y="7" width="300" height="30"/>
+                            <rect key="frame" x="37.5" y="7" width="300" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Info"/>
@@ -544,7 +545,7 @@
         <!--Navigation Controller-->
         <scene sceneID="m7x-3m-94M">
             <objects>
-                <navigationController restorationIdentifier="DetailNavigationController" id="6mK-5c-4sN" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="DetailNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6mK-5c-4sN" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="V9q-Qo-B83">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -566,21 +567,21 @@
                         <viewControllerLayoutGuide type="bottom" id="Kph-Yh-Rxu"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="RNS-J5-nzr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ili-x5-NDX">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListCell" textLabel="hPX-p8-mBC" style="IBUITableViewCellStyleDefault" id="ZUl-1v-KYM">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZUl-1v-KYM" id="4hb-ou-79v">
-                                            <frame key="frameInset" width="320" height="43"/>
+                                            <frame key="frameInset" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hPX-p8-mBC">
-                                                    <frame key="frameInset" minX="15" width="290" height="43"/>
+                                                    <frame key="frameInset" minX="15" width="570" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -628,29 +629,12 @@
             </objects>
             <point key="canvasLocation" x="1320" y="-1398"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="NUg-6c-kFX">
-            <objects>
-                <viewController id="snD-FF-hAC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dN4-C4-cs4"/>
-                        <viewControllerLayoutGuide type="bottom" id="0rZ-ao-nha"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="N88-SZ-h0l">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8LO-1j-dcH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="AppIcon2" width="80" height="80"/>
         <image name="InfoIcon" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cnq-oa-z7G"/>
+        <segue reference="XFi-4R-2mc"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -40,6 +40,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer/2")!)
         //create feature layer using this feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
+        self.featureLayer.selectionWidth = 5
         
         //set a new renderer
         let lineSymbol = AGSSimpleLineSymbol(style: .Solid, color: UIColor.blackColor(), width: 1)

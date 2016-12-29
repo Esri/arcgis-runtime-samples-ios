@@ -20,6 +20,8 @@ class ChangeMapViewBackgroundVC: UIViewController, GridSettingsVCDelegate {
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var settingsContainerView: UIView!
     
+    private var gridSettingsViewController:GridSettingsViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,14 +64,18 @@ class ChangeMapViewBackgroundVC: UIViewController, GridSettingsVCDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "EmbedSegue" {
-            let controller = segue.destinationViewController as! GridSettingsViewController
-            controller.delegate = self
+            self.gridSettingsViewController = segue.destinationViewController as! GridSettingsViewController
+            self.gridSettingsViewController.delegate = self
         }
     }
     
     //MARK: - Actions
     
     @IBAction private func changeBackgroundAction() {
+        //default color
+        self.gridSettingsViewController.colorButton.backgroundColor = self.mapView.backgroundGrid?.color
+        self.gridSettingsViewController.lineColorButton.backgroundColor = self.mapView.backgroundGrid?.gridLineColor
+        
         self.settingsContainerView.hidden = false
     }
 }

@@ -54,7 +54,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         super.viewDidLoad()
         
         //Auth Manager settings
-        let config = AGSOAuthConfiguration(portalURL: nil, clientID: "RsFgCI1clPQ7TVwD", redirectURL: "iOSSamples://auth")
+        let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
         AGSAuthenticationManager.sharedAuthenticationManager().OAuthConfigurations.addObject(config)
         AGSAuthenticationManager.sharedAuthenticationManager().credentialCache.removeAllCredentials()
         

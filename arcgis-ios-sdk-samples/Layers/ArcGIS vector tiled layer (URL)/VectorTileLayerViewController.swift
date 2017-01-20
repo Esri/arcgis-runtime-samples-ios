@@ -21,10 +21,10 @@ class VectorTileLayerViewController: UIViewController {
 
     @IBOutlet var mapView:AGSMapView!
     
-    private var navigationURLString = "https://www.arcgis.com/home/item.html?id=00cd8e843bae49b3a040423e5d65416b"
-    private var streetsURLString = "https://www.arcgis.com/home/item.html?id=3b8814f6ddbd485cae67e8018992246e"
-    private var nightURLString = "https://www.arcgis.com/home/item.html?id=f96366254a564adda1dc468b447ed956"
-    private var darkGrayURLString = "https://www.arcgis.com/home/item.html?id=3e3099d7302f4d99bc6f916dcc07ed59"
+    private var navigationURLString = "https://www.arcgis.com/home/item.html?id=e19e9330bf08490ca8353d76b5e2e658"
+    private var streetsURLString = "https://www.arcgis.com/home/item.html?id=a60a37a27cc140ddad15f919cd5a69f2"
+    private var nightURLString = "https://www.arcgis.com/home/item.html?id=92c551c9f07b4147846aae273e822714"
+    private var darkGrayURLString = "https://www.arcgis.com/home/item.html?id=5ad3948260a147a993ef4865e3fad476"
     
     override func viewDidLoad() {
         super.viewDidLoad()

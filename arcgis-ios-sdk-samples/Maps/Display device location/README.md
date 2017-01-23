@@ -8,9 +8,9 @@ The sample comes with a button on the bottom, says `Stop` by default. When you t
 
 * Stop: Stops the location display
 * On: Starts location display with auto pan mode set to `Off`
-* Re-center: : Starts location display with auto pan mode set to `Default`
+* Re-center: : Starts location display with auto pan mode set to `Recenter`
 * Navigation: : Starts location display with auto pan mode set to `Navigation`
-* Compass: : Starts location display with auto pan mode set to `Compass Navigation`
+* Compass: : Starts location display with auto pan mode set to `CompassNavigation`
 
 ![](image1.png)
 ![](image2.png)

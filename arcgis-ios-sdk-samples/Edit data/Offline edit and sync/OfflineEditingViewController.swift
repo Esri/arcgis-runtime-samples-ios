@@ -87,7 +87,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         SVProgressHUD.showWithStatus("Loading", maskType: .Gradient)
-        self.mapView.identifyLayersAtScreenPoint(screenPoint, tolerance: 5, returnPopupsOnly: false, maximumResultsPerLayer: 10) { [weak self] (results: [AGSIdentifyLayerResult]?, error: NSError?) -> Void in
+        self.mapView.identifyLayersAtScreenPoint(screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { [weak self] (results: [AGSIdentifyLayerResult]?, error: NSError?) -> Void in
 
             if let error = error {
                 SVProgressHUD.showErrorWithStatus(error.localizedDescription)

@@ -73,4 +73,7 @@ class MapLoadedViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    deinit {
+        self.map.removeObserver(self, forKeyPath: "loadStatus")
+    }
 }

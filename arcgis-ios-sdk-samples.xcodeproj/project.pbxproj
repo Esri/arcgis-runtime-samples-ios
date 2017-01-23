@@ -1512,7 +1512,7 @@
 				3ED0280A1B8E3A8400ACA70D /* SaveAsViewController.swift */,
 			);
 			name = "Create and save a map";
-			path = "Maps/Authoring a map";
+			path = "Maps/Create and save a map";
 			sourceTree = "<group>";
 		};
 		3ED0280B1B8E3A8400ACA70D /* Change basemap */ = {

@@ -11,7 +11,7 @@ The sample opens with a web map displayed by default. You can tap on the `Maps` 
 
 ##How it works
 
-The sample already has a set of URLs of three different web maps. Every time a selection is made, it creates a new instance of `AGSMap` using the `(instancetype) - initWithURL:` initializer and assigns it to the map view.
+The sample already has a set of URLs of three different web maps. Every time a selection is made, it creates a new instance of `AGSMap` using the `initWithURL:` initializer and assigns it to the map view.
 
 
 

@@ -40,6 +40,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer/2")!)
         //create feature layer using this feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
+        self.featureLayer.selectionWidth = 5
         
         //set a new renderer
         let lineSymbol = AGSSimpleLineSymbol(style: .Solid, color: UIColor.blackColor(), width: 1)
@@ -76,7 +77,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
                 if features.count > 0 {
                     self?.featureLayer.selectFeatures(features)
                     //zoom to the selected feature
-                    self?.mapView.setViewpointGeometry(features[0].geometry!, padding: 200, completion: nil)
+                    self?.mapView.setViewpointGeometry(features[0].geometry!, padding: 80, completion: nil)
                 }
                 else {
                     SVProgressHUD.showErrorWithStatus("No state by that name", maskType: .Gradient)

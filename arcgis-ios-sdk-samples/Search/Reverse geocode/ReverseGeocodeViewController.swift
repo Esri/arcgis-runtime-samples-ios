@@ -23,6 +23,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
     private var locatorTask:AGSLocatorTask!
     private var reverseGeocodeParameters:AGSReverseGeocodeParameters!
     private var graphicsOverlay = AGSGraphicsOverlay()
+    private var cancelable:AGSCancelable!
     
     private let locatorURL = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
     
@@ -53,6 +54,11 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     
     private func reverseGeocode(point:AGSPoint) {
+        //cancel previous request
+        if self.cancelable != nil {
+            self.cancelable.cancel()
+        }
+        
         //hide the callout
         self.mapView.callout.dismiss()
         
@@ -66,9 +72,11 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.graphicsOverlay.graphics.addObject(graphic)
             
         //reverse geocode
-        self.locatorTask.reverseGeocodeWithLocation(normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: NSError?) -> Void in
+        self.cancelable = self.locatorTask.reverseGeocodeWithLocation(normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: NSError?) -> Void in
             if let error = error {
-                self?.showAlert(error.localizedDescription)
+                if error.code != 3072 { //user canceled error
+                    self?.showAlert(error.localizedDescription)
+                }
             }
             else {
                 if let results = results where results.count > 0 {

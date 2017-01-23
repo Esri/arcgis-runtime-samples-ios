@@ -11,7 +11,7 @@ Pan and zoom into the desired area, making sure the area is within the red block
 
 ##How it works
 
-The sample uses the `exportTileCacheParametersWith:minScale:maxScale:` method on `AGSExportTileCacheTask` class to generate `AGSExportTileCacheParameters` parameters by providing the area of interest and the min max scale for the tpk. It then uses these parameters in the `exportTileCacheJobWithParameters:downloadFilePath:` method to generate an `AGSJob`. The job on successful completion gives an `AGSTileCache` object which is used to create an `AGSArcGISTiledLayer` and shown in a map as preview.
+The sample uses the `exportTileCacheParametersWithAreaOfInterest:minScale:maxScale:completion:` method on `AGSExportTileCacheTask` class to generate `AGSExportTileCacheParameters` parameters by providing the area of interest and the min max scale for the tpk. It then uses these parameters in the `exportTileCacheJobWithParameters:downloadFilePath:` method to generate an `AGSJob`. The job on successful completion gives an `AGSTileCache` object which is used to create an `AGSArcGISTiledLayer` and shown in a map as preview.
 
 
 

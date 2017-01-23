@@ -62,4 +62,7 @@ class MapViewDrawStatusViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    deinit {
+        self.mapView.removeObserver(self, forKeyPath: "drawStatus")
+    }
 }

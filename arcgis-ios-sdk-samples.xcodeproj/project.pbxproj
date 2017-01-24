@@ -14,6 +14,14 @@
 		3E0830BA1BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0830B91BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift */; };
 		3E0830BC1BC31B69001AF9A7 /* CustomSearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0830BB1BC31B69001AF9A7 /* CustomSearchHeaderView.xib */; };
 		3E0830BE1BC33681001AF9A7 /* SuggestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0830BD1BC33681001AF9A7 /* SuggestionTableViewCell.xib */; };
+		3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0B58471E36BCCD00951767 /* AnalyzeHotspots.storyboard */; };
+		3E0B584E1E36BCCD00951767 /* HotspotSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B58481E36BCCD00951767 /* HotspotSettingsViewController.swift */; };
+		3E0B584F1E36BCCD00951767 /* AnalyzeHotspotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B58491E36BCCD00951767 /* AnalyzeHotspotsViewController.swift */; };
+		3E0B58501E36BCCD00951767 /* AnalyzeViewshed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0B584B1E36BCCD00951767 /* AnalyzeViewshed.storyboard */; };
+		3E0B58511E36BCCD00951767 /* AnalyzeViewshedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B584C1E36BCCD00951767 /* AnalyzeViewshedViewController.swift */; };
+		3E0B58521E36D54800951767 /* AnalyzeHotspotsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B58491E36BCCD00951767 /* AnalyzeHotspotsViewController.swift */; };
+		3E0B58531E36D54800951767 /* HotspotSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B58481E36BCCD00951767 /* HotspotSettingsViewController.swift */; };
+		3E0B58541E36D54800951767 /* AnalyzeViewshedViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B584C1E36BCCD00951767 /* AnalyzeViewshedViewController.swift */; };
 		3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */; };
 		3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */; };
 		3E0D3AD71AFD481900FC60D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD61AFD481900FC60D6 /* Main.storyboard */; };
@@ -362,6 +370,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3E0B58521E36D54800951767 /* AnalyzeHotspotsViewController.swift in CopyFiles */,
+				3E0B58531E36D54800951767 /* HotspotSettingsViewController.swift in CopyFiles */,
+				3E0B58541E36D54800951767 /* AnalyzeViewshedViewController.swift in CopyFiles */,
 				3EE179991DE37199005E0759 /* GridSettingsViewController.swift in CopyFiles */,
 				3EE1799A1DE37199005E0759 /* SketchViewController.swift in CopyFiles */,
 				3EE1799B1DE37199005E0759 /* EditGeometryViewController.swift in CopyFiles */,
@@ -478,6 +489,11 @@
 		3E0830B91BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomSearchHeaderView.swift; path = "Content Display Logic/Views/CustomSearchHeaderView.swift"; sourceTree = "<group>"; };
 		3E0830BB1BC31B69001AF9A7 /* CustomSearchHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomSearchHeaderView.xib; path = "Content Display Logic/Views/CustomSearchHeaderView.xib"; sourceTree = "<group>"; };
 		3E0830BD1BC33681001AF9A7 /* SuggestionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SuggestionTableViewCell.xib; path = "Content Display Logic/Cells/SuggestionTableViewCell.xib"; sourceTree = "<group>"; };
+		3E0B58471E36BCCD00951767 /* AnalyzeHotspots.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnalyzeHotspots.storyboard; sourceTree = "<group>"; };
+		3E0B58481E36BCCD00951767 /* HotspotSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotspotSettingsViewController.swift; sourceTree = "<group>"; };
+		3E0B58491E36BCCD00951767 /* AnalyzeHotspotsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyzeHotspotsViewController.swift; sourceTree = "<group>"; };
+		3E0B584B1E36BCCD00951767 /* AnalyzeViewshed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnalyzeViewshed.storyboard; sourceTree = "<group>"; };
+		3E0B584C1E36BCCD00951767 /* AnalyzeViewshedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyzeViewshedViewController.swift; sourceTree = "<group>"; };
 		3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ContentPList.plist; path = "Content Display Logic/ContentPList.plist"; sourceTree = "<group>"; };
 		3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentTableViewController.swift; path = "Content Display Logic/Controllers/ContentTableViewController.swift"; sourceTree = "<group>"; };
 		3E0D3AD61AFD481900FC60D6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "Content Display Logic/Storyboard/Main.storyboard"; sourceTree = "<group>"; };
@@ -751,6 +767,34 @@
 			path = "Content Display Logic/Js";
 			sourceTree = "<group>";
 		};
+		3E0B58451E36BCCD00951767 /* Analysis */ = {
+			isa = PBXGroup;
+			children = (
+				3E0B58461E36BCCD00951767 /* Analyze hotspots */,
+				3E0B584A1E36BCCD00951767 /* Analyze viewshed */,
+			);
+			path = Analysis;
+			sourceTree = "<group>";
+		};
+		3E0B58461E36BCCD00951767 /* Analyze hotspots */ = {
+			isa = PBXGroup;
+			children = (
+				3E0B58471E36BCCD00951767 /* AnalyzeHotspots.storyboard */,
+				3E0B58491E36BCCD00951767 /* AnalyzeHotspotsViewController.swift */,
+				3E0B58481E36BCCD00951767 /* HotspotSettingsViewController.swift */,
+			);
+			path = "Analyze hotspots";
+			sourceTree = "<group>";
+		};
+		3E0B584A1E36BCCD00951767 /* Analyze viewshed */ = {
+			isa = PBXGroup;
+			children = (
+				3E0B584B1E36BCCD00951767 /* AnalyzeViewshed.storyboard */,
+				3E0B584C1E36BCCD00951767 /* AnalyzeViewshedViewController.swift */,
+			);
+			path = "Analyze viewshed";
+			sourceTree = "<group>";
+		};
 		3E0D3AD51AFD47BF00FC60D6 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -807,6 +851,7 @@
 				3ED027FC1B8E38F400ACA70D /* Edit data */,
 				3EBA25711D34509500AB0703 /* Geometry */,
 				3E6AE3E91C6D10DA0026E59C /* Route & Navigation */,
+				3E0B58451E36BCCD00951767 /* Analysis */,
 				3EEA06001D21C3E800E03774 /* Scenes */,
 				3E4B05E51B39EE920072E514 /* Shared resources */,
 				3E23AA071AFC2DE0002E2214 /* Content Display Logic */,
@@ -2024,6 +2069,7 @@
 				3ED0294B1B8E3AB300ACA70D /* Sketch.storyboard in Resources */,
 				3E1E5EEF1D9F0BAB00F4913C /* HillshadeRenderer.storyboard in Resources */,
 				3ED028571B8E3A8500ACA70D /* CreateSaveMap.storyboard in Resources */,
+				3E0B58501E36BCCD00951767 /* AnalyzeViewshed.storyboard in Resources */,
 				3ED029411B8E3AB300ACA70D /* point.gif in Resources */,
 				3E4BF45A1C5BD77300D85919 /* OfflineGeocode.storyboard in Resources */,
 				3EABC7C31DB191BC00C161C6 /* Shasta_Elevation.tif.aux.xml in Resources */,
@@ -2119,6 +2165,7 @@
 				3EABC7C91DB1947500C161C6 /* BlendRenderer.storyboard in Resources */,
 				3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */,
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
+				3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */,
 				3E6C771C1CCFC53B00E89873 /* IdentifyLayers.storyboard in Resources */,
 				3ED029691B8E3ACD00ACA70D /* EditAttributes.storyboard in Resources */,
 				3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */,
@@ -2175,6 +2222,7 @@
 				3E8526381B90D92700690EBD /* BookmarksListViewController.swift in Sources */,
 				3ED0286A1B8E3A8500ACA70D /* SetViewpointViewController.swift in Sources */,
 				3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */,
+				3E0B584F1E36BCCD00951767 /* AnalyzeHotspotsViewController.swift in Sources */,
 				3EABC7911DB1772000C161C6 /* RGBRendererInputCell.swift in Sources */,
 				3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */,
 				3ED0289A1B8E3A8500ACA70D /* ShowMagnifierViewController.swift in Sources */,
@@ -2219,11 +2267,13 @@
 				3E81C1B91D8A0EF700470AA4 /* VectorTileCustomStyleVC.swift in Sources */,
 				3EABC7931DB1772000C161C6 /* RGBRendererTypeCell.swift in Sources */,
 				3EABC7CB1DB1947500C161C6 /* BlendRendererViewController.swift in Sources */,
+				3E0B58511E36BCCD00951767 /* AnalyzeViewshedViewController.swift in Sources */,
 				3ED028F51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift in Sources */,
 				3EFCE1C41CF374C600E02F67 /* MapPackagesListViewController.swift in Sources */,
 				3EC39C3F1C9B47C2003F6459 /* OfflineEditingViewController.swift in Sources */,
 				3ED028E21B8E3AA500ACA70D /* OverrideRendererViewController.swift in Sources */,
 				3E4BF4561C5BD66C00D85919 /* OfflineGeocodeViewController.swift in Sources */,
+				3E0B584E1E36BCCD00951767 /* HotspotSettingsViewController.swift in Sources */,
 				3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */,
 				3E4B05FC1B39EF250072E514 /* TPKeyboardAvoidingTableView.m in Sources */,
 				3ED028F81B8E3AA500ACA70D /* ManualCacheViewController.swift in Sources */,

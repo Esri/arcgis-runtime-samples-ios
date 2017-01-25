@@ -585,6 +585,14 @@
                     <key>descriptionText</key>
                     <string>The sample shows simple ways to create different types of geometries</string>
                 </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Spatial operations</string>
+                    <key>storyboardName</key>
+                    <string>SpatialOperations</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows how to perform geometry operations between overlapping polygons</string>
+                </dict>
             </array>
         </dict>
         <dict>

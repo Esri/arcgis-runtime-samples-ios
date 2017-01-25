@@ -14,6 +14,11 @@
 		3E0830BA1BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0830B91BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift */; };
 		3E0830BC1BC31B69001AF9A7 /* CustomSearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0830BB1BC31B69001AF9A7 /* CustomSearchHeaderView.xib */; };
 		3E0830BE1BC33681001AF9A7 /* SuggestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0830BD1BC33681001AF9A7 /* SuggestionTableViewCell.xib */; };
+		3E0B58591E36D8D300951767 /* OperationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B58561E36D8D300951767 /* OperationsListViewController.swift */; };
+		3E0B585A1E36D8D300951767 /* SpatialOperations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0B58571E36D8D300951767 /* SpatialOperations.storyboard */; };
+		3E0B585B1E36D8D300951767 /* SpatialOperationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B58581E36D8D300951767 /* SpatialOperationsViewController.swift */; };
+		3E0B585C1E36D93800951767 /* SpatialOperationsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B58581E36D8D300951767 /* SpatialOperationsViewController.swift */; };
+		3E0B585D1E36D93800951767 /* OperationsListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B58561E36D8D300951767 /* OperationsListViewController.swift */; };
 		3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0B58471E36BCCD00951767 /* AnalyzeHotspots.storyboard */; };
 		3E0B584E1E36BCCD00951767 /* HotspotSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B58481E36BCCD00951767 /* HotspotSettingsViewController.swift */; };
 		3E0B584F1E36BCCD00951767 /* AnalyzeHotspotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B58491E36BCCD00951767 /* AnalyzeHotspotsViewController.swift */; };
@@ -376,6 +381,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3E0B585C1E36D93800951767 /* SpatialOperationsViewController.swift in CopyFiles */,
+				3E0B585D1E36D93800951767 /* OperationsListViewController.swift in CopyFiles */,
 				3E0B58521E36D54800951767 /* AnalyzeHotspotsViewController.swift in CopyFiles */,
 				3E0B58531E36D54800951767 /* HotspotSettingsViewController.swift in CopyFiles */,
 				3E0B58541E36D54800951767 /* AnalyzeViewshedViewController.swift in CopyFiles */,
@@ -497,6 +504,9 @@
 		3E0830B91BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomSearchHeaderView.swift; path = "Content Display Logic/Views/CustomSearchHeaderView.swift"; sourceTree = "<group>"; };
 		3E0830BB1BC31B69001AF9A7 /* CustomSearchHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomSearchHeaderView.xib; path = "Content Display Logic/Views/CustomSearchHeaderView.xib"; sourceTree = "<group>"; };
 		3E0830BD1BC33681001AF9A7 /* SuggestionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SuggestionTableViewCell.xib; path = "Content Display Logic/Cells/SuggestionTableViewCell.xib"; sourceTree = "<group>"; };
+		3E0B58561E36D8D300951767 /* OperationsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationsListViewController.swift; sourceTree = "<group>"; };
+		3E0B58571E36D8D300951767 /* SpatialOperations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpatialOperations.storyboard; sourceTree = "<group>"; };
+		3E0B58581E36D8D300951767 /* SpatialOperationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpatialOperationsViewController.swift; sourceTree = "<group>"; };
 		3E0B58471E36BCCD00951767 /* AnalyzeHotspots.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnalyzeHotspots.storyboard; sourceTree = "<group>"; };
 		3E0B58481E36BCCD00951767 /* HotspotSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotspotSettingsViewController.swift; sourceTree = "<group>"; };
 		3E0B58491E36BCCD00951767 /* AnalyzeHotspotsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyzeHotspotsViewController.swift; sourceTree = "<group>"; };
@@ -779,6 +789,15 @@
 			path = "Content Display Logic/Js";
 			sourceTree = "<group>";
 		};
+		3E0B58551E36D8D300951767 /* Spatial operations */ = {
+			isa = PBXGroup;
+			children = (
+				3E0B58571E36D8D300951767 /* SpatialOperations.storyboard */,
+				3E0B58581E36D8D300951767 /* SpatialOperationsViewController.swift */,
+				3E0B58561E36D8D300951767 /* OperationsListViewController.swift */,
+			);
+			name = "Spatial operations";
+			path = "Geometry/Spatial operations";
 		3E0B58451E36BCCD00951767 /* Analysis */ = {
 			isa = PBXGroup;
 			children = (
@@ -1387,6 +1406,7 @@
 			isa = PBXGroup;
 			children = (
 				3EBA25721D3450B800AB0703 /* Create geometries */,
+				3E0B58551E36D8D300951767 /* Spatial operations */,
 			);
 			name = Geometry;
 			sourceTree = "<group>";
@@ -2197,6 +2217,7 @@
 				3EC39C341C9B106D003F6459 /* ExportTiles.storyboard in Resources */,
 				3E1E5EF11D9F0D0C00F4913C /* HorizontalPicker.xib in Resources */,
 				3EABC7AE1DB17B2C00C161C6 /* Shasta.tfw in Resources */,
+				3E0B585A1E36D8D300951767 /* SpatialOperations.storyboard in Resources */,
 				3EABC7B51DB181DD00C161C6 /* ShastaBW.tif in Resources */,
 				3EABC7C91DB1947500C161C6 /* BlendRenderer.storyboard in Resources */,
 				3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */,
@@ -2317,6 +2338,7 @@
 				3E1E5EE51D9F08ED00F4913C /* HillshadeRendererVC.swift in Sources */,
 				3ED029291B8E3AB300ACA70D /* GORenderersViewController.swift in Sources */,
 				3ED0286B1B8E3A8500ACA70D /* CustomContextSheet.swift in Sources */,
+				3E0B585B1E36D8D300951767 /* SpatialOperationsViewController.swift in Sources */,
 				3ED0287A1B8E3A8500ACA70D /* MMLLayersViewController.swift in Sources */,
 				3E54D2331CC697F100BB9904 /* GraphicDrawOrderViewController.swift in Sources */,
 				3ED028891B8E3A8500ACA70D /* OpenExistingMapViewController.swift in Sources */,
@@ -2330,6 +2352,7 @@
 				3EC39C1E1C9A59B9003F6459 /* DirectionsListViewController.swift in Sources */,
 				3E8D54FC1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift in Sources */,
 				3E6AE3EE1C6D11FD0026E59C /* OfflineRoutingViewController.swift in Sources */,
+				3E0B58591E36D8D300951767 /* OperationsListViewController.swift in Sources */,
 				3EBA25461D300C1D00AB0703 /* SimpleRendererViewController.swift in Sources */,
 				3EC39C321C9B0DF6003F6459 /* ExportTilesViewController.swift in Sources */,
 				3EABC7941DB1772000C161C6 /* RGBRendererViewController.swift in Sources */,

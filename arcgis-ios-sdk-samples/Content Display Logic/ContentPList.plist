@@ -620,6 +620,29 @@
         </dict>
         <dict>
             <key>displayName</key>
+            <string>Analysis</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Analyze hotspots</string>
+                    <key>storyboardName</key>
+                    <string>AnalyzeHotspots</string>
+                    <key>descriptionText</key>
+                    <string>This sample demonstrates how to execute a geoprocessing task to calculate a hotspot analysis based on the frequency of 911 calls.</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Analyze viewshed</string>
+                    <key>storyboardName</key>
+                    <string>AnalyzeViewshed</string>
+                    <key>descriptionText</key>
+                    <string>This sample demonstrates how to calculate a viewshed using a geoprocessing service.</string>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
             <string>Scenes</string>
             <key>children</key>
             <array>

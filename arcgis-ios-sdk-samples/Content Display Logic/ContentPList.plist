@@ -357,6 +357,22 @@
                     <key>descriptionText</key>
                     <string>The sample shows you how to take features offline</string>
                 </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Feature collection layer</string>
+                    <key>storyboardName</key>
+                    <string>FeatureCollectionLayer</string>
+                    <key>descriptionText</key>
+                    <string>Show a feature collection layer using a URL to the service</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Feature collection layer (query)</string>
+                    <key>storyboardName</key>
+                    <string>FeatureCollectionLayerQuery</string>
+                    <key>descriptionText</key>
+                    <string>Use a feature collection layer to show query results from a service feature table</string>
+                </dict>
             </array>
         </dict>
         <dict>
@@ -607,6 +623,29 @@
                     <string>OfflineRouting</string>
                     <key>descriptionText</key>
                     <string>Tap on the map to add the first stop. Add additional stops to display the route. To route &apos;on the fly&apos; tap, hold and move to show the route dynamically.</string>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
+            <string>Analysis</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Analyze hotspots</string>
+                    <key>storyboardName</key>
+                    <string>AnalyzeHotspots</string>
+                    <key>descriptionText</key>
+                    <string>This sample demonstrates how to execute a geoprocessing task to calculate a hotspot analysis based on the frequency of 911 calls.</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Analyze viewshed</string>
+                    <key>storyboardName</key>
+                    <string>AnalyzeViewshed</string>
+                    <key>descriptionText</key>
+                    <string>This sample demonstrates how to calculate a viewshed using a geoprocessing service.</string>
                 </dict>
             </array>
         </dict>

@@ -798,6 +798,8 @@
 			);
 			name = "Spatial operations";
 			path = "Geometry/Spatial operations";
+            sourceTree = "<group>";
+        };
 		3E0B58451E36BCCD00951767 /* Analysis */ = {
 			isa = PBXGroup;
 			children = (

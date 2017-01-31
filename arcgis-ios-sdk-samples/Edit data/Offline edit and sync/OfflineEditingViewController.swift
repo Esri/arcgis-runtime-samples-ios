@@ -29,18 +29,18 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     @IBOutlet var instructionsLabel:UILabel!
     @IBOutlet var featureLayersContainerView:UIView!
     
-    private var map:AGSMap!
-    private var sketchEditor:AGSSketchEditor!
-    private let FEATURE_SERVICE_URL = NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
-    private var featureTable:AGSServiceFeatureTable!
-    private var syncTask:AGSGeodatabaseSyncTask!
-    private var generatedGeodatabase:AGSGeodatabase!
-    private var generateJob:AGSGenerateGeodatabaseJob!
-    private var syncJob:AGSSyncGeodatabaseJob!
-    private var popupsVC:AGSPopupsViewController!
-    private var featureLayersVC:FeatureLayersViewController!
+    fileprivate var map:AGSMap!
+    fileprivate var sketchEditor:AGSSketchEditor!
+    fileprivate let FEATURE_SERVICE_URL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
+    fileprivate var featureTable:AGSServiceFeatureTable!
+    fileprivate var syncTask:AGSGeodatabaseSyncTask!
+    fileprivate var generatedGeodatabase:AGSGeodatabase!
+    fileprivate var generateJob:AGSGenerateGeodatabaseJob!
+    fileprivate var syncJob:AGSSyncGeodatabaseJob!
+    fileprivate var popupsVC:AGSPopupsViewController!
+    fileprivate var featureLayersVC:FeatureLayersViewController!
     
-    private var liveMode = true {
+    fileprivate var liveMode = true {
         didSet {
             self.updateUI()
         }
@@ -53,14 +53,14 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OfflineEditingViewController", "FeatureLayersViewController"]
         
         //use the san francisco tpk as the basemap
-        let tpkPath = NSBundle.mainBundle().pathForResource("SanFrancisco", ofType: "tpk")!
-        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(fileURL: NSURL(fileURLWithPath: tpkPath)))
+        let tpkPath = Bundle.main.path(forResource: "SanFrancisco", ofType: "tpk")!
+        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(fileURL: URL(fileURLWithPath: tpkPath)))
         
         self.map = AGSMap(basemap: AGSBasemap(baseLayer: localTiledLayer))
         
         
         //setup extent view
-        self.extentView.layer.borderColor = UIColor.redColor().CGColor
+        self.extentView.layer.borderColor = UIColor.red.cgColor
         self.extentView.layer.borderWidth = 3
         
         self.mapView.map = self.map
@@ -71,7 +71,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.mapView.sketchEditor = self.sketchEditor
         
         //initialize sync task
-        self.syncTask = AGSGeodatabaseSyncTask(URL: self.FEATURE_SERVICE_URL)
+        self.syncTask = AGSGeodatabaseSyncTask(url: self.FEATURE_SERVICE_URL)
         
         //add online feature layers
         self.addFeatureLayers()
@@ -85,12 +85,12 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     //MARK: - AGSGeoViewTouchDelegate
     
-    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        SVProgressHUD.showWithStatus("Loading", maskType: .Gradient)
-        self.mapView.identifyLayersAtScreenPoint(screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { [weak self] (results: [AGSIdentifyLayerResult]?, error: NSError?) -> Void in
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        SVProgressHUD.show(withStatus: "Loading", maskType: .gradient)
+        self.mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) -> Void in
 
             if let error = error {
-                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 SVProgressHUD.dismiss()
@@ -102,12 +102,12 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
                     }
                 }
                 if popups.count > 0 {
-                    self?.popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .NavigationBar)
+                    self?.popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
                     self?.popupsVC.delegate = self!
-                    self?.presentViewController(self!.popupsVC, animated: true, completion: nil)
+                    self?.present(self!.popupsVC, animated: true, completion: nil)
                 }
                 else {
-                    SVProgressHUD.showInfoWithStatus("No features selected", maskType: .Gradient)
+                    SVProgressHUD.showInfo(withStatus: "No features selected", maskType: .gradient)
                 }
             }
         }
@@ -117,87 +117,87 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     func addFeatureLayers() {
         
         //Iterate through the layers in the service
-        self.syncTask.loadWithCompletion { [weak self] (error) -> Void in
+        self.syncTask.load { [weak self] (error) -> Void in
             if let error = error {
                 print("Could not load feature service \(error)")
             } else {
                 guard let weakSelf = self else {
                     return
                 }
-                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo!.layerInfos.enumerate().reverse() {
+                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo!.layerInfos.enumerated().reversed() {
                     
                     //For each layer in the serice, add a layer to the map
-                    let layerURL = weakSelf.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))
-                    let featureTable = AGSServiceFeatureTable(URL:layerURL!)
+                    let layerURL = weakSelf.FEATURE_SERVICE_URL.appendingPathComponent(String(index))
+                    let featureTable = AGSServiceFeatureTable(url:layerURL)
                     let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                     featureLayer.name = layerInfo.name
-                    weakSelf.map.operationalLayers.addObject(featureLayer)
+                    weakSelf.map.operationalLayers.add(featureLayer)
                 }
                 
                 //enable generate geodatabase bbi
-                weakSelf.barButtonItem.enabled = true
+                weakSelf.barButtonItem.isEnabled = true
             }
         }
     }
     
     
     func frameToExtent() -> AGSEnvelope {
-        let frame = self.mapView.convertRect(self.extentView.frame, fromView: self.view)
+        let frame = self.mapView.convert(self.extentView.frame, from: self.view)
         
-        let minPoint = self.mapView.screenToLocation(frame.origin)
-        let maxPoint = self.mapView.screenToLocation(CGPoint(x: frame.origin.x+frame.width, y: frame.origin.y+frame.height))
+        let minPoint = self.mapView.screen(toLocation: frame.origin)
+        let maxPoint = self.mapView.screen(toLocation: CGPoint(x: frame.origin.x+frame.width, y: frame.origin.y+frame.height))
         let extent = AGSEnvelope(min: minPoint, max: maxPoint)
         return extent
     }
     
     func updateUI() {
         if self.liveMode {
-            self.serviceModeToolbar.hidden = false
-            self.instructionsLabel.hidden = true
+            self.serviceModeToolbar.isHidden = false
+            self.instructionsLabel.isHidden = true
             self.barButtonItem.title = "Generate geodatabase"
         }
         else {
-            self.serviceModeToolbar.hidden = true
+            self.serviceModeToolbar.isHidden = true
             self.updateLabelWithEdits()
         }
     }
     
     func updateLabelWithEdits() {
-        let dispatchGroup = dispatch_group_create()
+        let dispatchGroup = DispatchGroup()
         var totalCount = 0
         
         for featureTable in self.generatedGeodatabase.geodatabaseFeatureTables {
-            if featureTable.loadStatus == .Loaded {
+            if featureTable.loadStatus == .loaded {
                 
-                dispatch_group_enter(dispatchGroup)
-                featureTable.addedFeaturesCountWithCompletion({ (count: Int, error: NSError?) in
+                dispatchGroup.enter()
+                featureTable.addedFeaturesCount(completion: { (count: Int, error: Error?) in
                     totalCount = totalCount + count
-                    dispatch_group_leave(dispatchGroup)
+                    dispatchGroup.leave()
                 })
                 
-                dispatch_group_enter(dispatchGroup)
-                featureTable.updatedFeaturesCountWithCompletion({ (count: Int, error: NSError?) in
+                dispatchGroup.enter()
+                featureTable.updatedFeaturesCount(completion: { (count: Int, error: Error?) in
                     totalCount = totalCount + count
-                    dispatch_group_leave(dispatchGroup)
+                    dispatchGroup.leave()
                 })
                 
-                dispatch_group_enter(dispatchGroup)
-                featureTable.deletedFeaturesCountWithCompletion({ (count: Int, error: NSError?) in
+                dispatchGroup.enter()
+                featureTable.deletedFeaturesCount(completion: { (count: Int, error: Error?) in
                     totalCount = totalCount + count
-                    dispatch_group_leave(dispatchGroup)
+                    dispatchGroup.leave()
                 })
             }
         }
         
-        dispatch_group_notify(dispatchGroup, dispatch_get_main_queue()) { [weak self] in
-            self?.syncBBI?.enabled = totalCount > 0
+        dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
+            self?.syncBBI?.isEnabled = totalCount > 0
             self?.instructionsLabel?.text = "Data from geodatabase : \(totalCount) edits"
         }
     }
     
     func switchToServiceMode() {
         //unregister geodatabase
-        self.syncTask.unregisterGeodatabase(self.generatedGeodatabase) { (error: NSError?) -> Void in
+        self.syncTask.unregisterGeodatabase(self.generatedGeodatabase) { (error: Error?) -> Void in
             if let error = error {
                 print("Error while unregistering geodatabase :: \(error.localizedDescription)")
             }
@@ -218,15 +218,15 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.deleteAllGeodatabases()
     }
     
-    private func deleteAllGeodatabases() {
+    fileprivate func deleteAllGeodatabases() {
         //Remove all files with .geodatabase, .geodatabase-shm and .geodatabase-wal file extensions
-        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         do {
-            let files = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(path)
+            let files = try FileManager.default.contentsOfDirectory(atPath: path)
             for file in files {
                 let remove = file.hasSuffix(".geodatabase") || file.hasSuffix(".geodatabase-shm") || file.hasSuffix(".geodatabase-wal")
                 if remove {
-                    try NSFileManager.defaultManager().removeItemAtPath((path as NSString).stringByAppendingPathComponent(file))
+                    try FileManager.default.removeItem(atPath: (path as NSString).appendingPathComponent(file))
                     print("deleting file: \(file)")
                 }
             }
@@ -237,22 +237,22 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }
     }
     
-    func sketchChanged(notification:NSNotification) {
+    func sketchChanged(_ notification:Notification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the done bar button item
-        if let geometry = self.mapView.sketchEditor?.geometry where !geometry.empty {
-            self.doneBBI.enabled = true
+        if let geometry = self.mapView.sketchEditor?.geometry , !geometry.isEmpty {
+            self.doneBBI.isEnabled = true
         }
     }
     
-    private func disableSketchEditor() {
+    fileprivate func disableSketchEditor() {
         self.mapView.sketchEditor?.stop()
         self.mapView.sketchEditor?.clearGeometry()
-        self.sketchToolbar.hidden = true
+        self.sketchToolbar.isHidden = true
     }
     
     func displayLayersFromGeodatabase() {
-        self.generatedGeodatabase.loadWithCompletion({ [weak self] (error:NSError?) -> Void in
+        self.generatedGeodatabase.load(completion: { [weak self] (error:Error?) -> Void in
             if let error = error {
                 print(error)
             }
@@ -263,14 +263,14 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
                 
                 AGSLoadObjects(self!.generatedGeodatabase.geodatabaseFeatureTables, { (success: Bool) in
                     if success {
-                        for featureTable in self!.generatedGeodatabase.geodatabaseFeatureTables.reverse() {
+                        for featureTable in self!.generatedGeodatabase.geodatabaseFeatureTables.reversed() {
                             //check if feature table has geometry
                             if featureTable.hasGeometry {
                                 let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                                self?.map.operationalLayers.addObject(featureLayer)
+                                self?.map.operationalLayers.add(featureLayer)
                             }
                         }
-                        SVProgressHUD.showInfoWithStatus("Now showing layers from the geodatabase")
+                        SVProgressHUD.showInfo(withStatus: "Now showing layers from the geodatabase")
                     }
                 })
             }
@@ -282,24 +282,24 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     @IBAction func generateGeodatabaseAction() {
         if self.barButtonItem.title! == "Generate geodatabase" {
             //show the instructions label and update the text
-            self.instructionsLabel.hidden = false
+            self.instructionsLabel.isHidden = false
             self.instructionsLabel.text = "Choose an extent by keeping the desired area within the shown block"
             
             //show the extent view
-            self.extentView.hidden = false
+            self.extentView.isHidden = false
             
             //update to done button
             self.barButtonItem.title = "Done"
         }
         else if self.barButtonItem.title! == "Done" {
             //hide extent view
-            self.extentView.hidden = true
+            self.extentView.isHidden = true
             
             //update the instructions label
             self.instructionsLabel.text = "Select the feature layers to be included"
             
             //show options to pick layers
-            self.featureLayersContainerView.hidden = false
+            self.featureLayersContainerView.isHidden = false
             
             //update to download button
             self.barButtonItem.title = "Download"
@@ -311,19 +311,19 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
             let selectedLayerIds = self.featureLayersVC.selectedLayerIds
             
             if selectedLayerIds.count == 0 {
-                SVProgressHUD.showErrorWithStatus("Please select at least one layer", maskType: .Gradient)
+                SVProgressHUD.showError(withStatus: "Please select at least one layer", maskType: .gradient)
                 return
             }
             
             //hide featureLayersVC
-            self.featureLayersContainerView.hidden = true
+            self.featureLayersContainerView.isHidden = true
             
             //generate a geodatabase
             self.generateGeodatabase(selectedLayerIds, extent: self.frameToExtent())
         }
     }
     
-    func generateGeodatabase(layerIDs:[Int], extent:AGSEnvelope) {
+    func generateGeodatabase(_ layerIDs:[Int], extent:AGSEnvelope) {
         //create AGSGenerateLayerOption objects with selected layerIds
         var layerOptions = [AGSGenerateLayerOption]()
         for layerID in layerIDs {
@@ -336,26 +336,26 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         params.extent = extent
         params.layerOptions = layerOptions
         params.returnAttachments = true
-        params.attachmentSyncDirection = .Bidirectional
+        params.attachmentSyncDirection = .bidirectional
         
         //name for the geodatabase
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
-        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-        let fullPath = "\(path)/\(dateFormatter.stringFromDate(NSDate())).geodatabase"
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let fullPath = "\(path)/\(dateFormatter.string(from: Date())).geodatabase"
             
         //create a generate job from the sync task
-        self.generateJob = self.syncTask.generateJobWithParameters(params, downloadFileURL: NSURL(string: fullPath)!)
+        self.generateJob = self.syncTask.generateJob(with: params, downloadFileURL: URL(string: fullPath)!)
         
         //start the job
-        self.generateJob.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
-            SVProgressHUD.showWithStatus(status.statusString(), maskType: .Gradient)
+        self.generateJob.start(statusHandler: { (status: AGSJobStatus) -> Void in
+            SVProgressHUD.show(withStatus: status.statusString(), maskType: .gradient)
             
-        }) { [weak self] (object: AnyObject?, error: NSError?) -> Void in
+        }) { [weak self] (object: AnyObject?, error: Error?) -> Void in
             
             if let error = error {
-                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 SVProgressHUD.dismiss()
@@ -367,21 +367,21 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }
     }
     
-    @IBAction func switchToServiceMode(sender:AnyObject) {
+    @IBAction func switchToServiceMode(_ sender:AnyObject) {
         if self.generatedGeodatabase.hasLocalEdits() {
-            let yesAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { [weak self] (action:UIAlertAction) -> Void in
+            let yesAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { [weak self] (action:UIAlertAction) -> Void in
                 self?.syncAction({ () -> Void in
                     self?.switchToServiceMode()
                 })
             })
-            let noAction = UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel, handler: { [weak self] (action: UIAlertAction) -> Void in
+            let noAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: { [weak self] (action: UIAlertAction) -> Void in
                 self?.switchToServiceMode()
             })
             
-            let alert = UIAlertController(title: nil, message: "Would you like to sync the changes before switching?", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: nil, message: "Would you like to sync the changes before switching?", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(noAction)
             alert.addAction(yesAction)
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
         else {
             self.switchToServiceMode()
@@ -393,29 +393,29 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.syncAction(nil)
     }
     
-    func syncAction(completion: (() -> Void)?) {
+    func syncAction(_ completion: (() -> Void)?) {
         if !self.generatedGeodatabase.hasLocalEdits() {
-            SVProgressHUD.showInfoWithStatus("No local edits", maskType: .Gradient)
+            SVProgressHUD.showInfo(withStatus: "No local edits", maskType: .gradient)
             return
         }
         
         var syncLayerOptions = [AGSSyncLayerOption]()
         for layerInfo in self.syncTask.featureServiceInfo!.layerInfos {
-            let layerOption = AGSSyncLayerOption(layerID: layerInfo.ID, syncDirection: .Bidirectional)
+            let layerOption = AGSSyncLayerOption(layerID: layerInfo.id, syncDirection: .bidirectional)
             syncLayerOptions.append(layerOption)
         }
         
         let params = AGSSyncGeodatabaseParameters()
         params.layerOptions = syncLayerOptions
         
-        self.syncJob = self.syncTask.syncJobWithParameters(params, geodatabase: self.generatedGeodatabase)
-        self.syncJob.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
+        self.syncJob = self.syncTask.syncJob(with: params, geodatabase: self.generatedGeodatabase)
+        self.syncJob.start(statusHandler: { (status: AGSJobStatus) -> Void in
             
-            SVProgressHUD.showWithStatus(status.statusString(), maskType: .Gradient)
+            SVProgressHUD.show(withStatus: status.statusString(), maskType: .gradient)
             
-        }, completion: { (results: [AGSSyncLayerResult]?, error: NSError?) -> Void in
+        }, completion: { (results: [AGSSyncLayerResult]?, error: Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 //TODO: use the results object
@@ -431,20 +431,20 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     @IBAction func sketchDoneAction() {
         self.navigationItem.hidesBackButton = false
-        self.navigationItem.rightBarButtonItem?.enabled = true
-        self.presentViewController(self.popupsVC, animated:true, completion:nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
+        self.present(self.popupsVC, animated:true, completion:nil)
+        NotificationCenter.default.removeObserver(self)
     }
     
     //MARK: - AGSPopupsViewControllerDelegate
 
-    func popupsViewController(popupsViewController: AGSPopupsViewController, sketchEditorForPopup popup: AGSPopup) -> AGSSketchEditor? {
+    func popupsViewController(_ popupsViewController: AGSPopupsViewController, sketchEditorFor popup: AGSPopup) -> AGSSketchEditor? {
         
         
         if let geometry = popup.geoElement.geometry {
             
             //start sketch editor
-            self.mapView.sketchEditor?.startWithGeometry(geometry)
+            self.mapView.sketchEditor?.start(with: geometry)
             
             //zoom to the existing feature's geometry
             self.mapView.setViewpointGeometry(geometry.extent, padding: 10, completion: nil)
@@ -453,29 +453,29 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         return self.sketchEditor
     }
     
-    func popupsViewController(popupsViewController: AGSPopupsViewController, readyToEditGeometryWithSketchEditor sketchEditor: AGSSketchEditor?, forPopup popup: AGSPopup) {
+    func popupsViewController(_ popupsViewController: AGSPopupsViewController, readyToEditGeometryWith sketchEditor: AGSSketchEditor?, for popup: AGSPopup) {
         
         //Dismiss the popup view controller
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         
         //Prepare the current view controller for sketch mode
-        self.mapView.callout.hidden = true
+        self.mapView.callout.isHidden = true
         
         //TODO: Hide the feature
         
         //hide the back button
         self.navigationItem.hidesBackButton = true
         //disable the code button
-        self.navigationItem.rightBarButtonItem?.enabled = false
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
         //unhide the sketchToolbar
-        self.sketchToolbar.hidden = false
+        self.sketchToolbar.isHidden = false
         //disable the done button until any geometry changes
-        self.doneBBI.enabled = false
+        self.doneBBI.isEnabled = false
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(OfflineEditingViewController.sketchChanged(_:)), name: AGSSketchEditorGeometryDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(OfflineEditingViewController.sketchChanged(_:)), name: NSNotification.Name.AGSSketchEditorGeometryDidChange, object: nil)
     }
     
-    func popupsViewController(popupsViewController: AGSPopupsViewController, didFinishEditingForPopup popup: AGSPopup) {
+    func popupsViewController(_ popupsViewController: AGSPopupsViewController, didFinishEditingFor popup: AGSPopup) {
         
         self.disableSketchEditor()
         
@@ -484,22 +484,22 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         feature.geometry = AGSGeometryEngine.simplifyGeometry(feature.geometry!)
         //normalize the geometry, this will take care of geometries that extend beyone the dateline
         //(ifwraparound was enabled on the map)
-        feature.geometry = AGSGeometryEngine.normalizeCentralMeridianOfGeometry(feature.geometry!)
+        feature.geometry = AGSGeometryEngine.normalizeCentralMeridian(of: feature.geometry!)
         
         
         //sync changes if in service mode
         if self.liveMode {
             
             //Tell the user edits are being saved int the background
-            SVProgressHUD.showWithStatus("Saving feature details...", maskType: .Gradient)
+            SVProgressHUD.show(withStatus: "Saving feature details...", maskType: .gradient)
             
-            (feature.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion { (featureEditResult: [AGSFeatureEditResult]?, error: NSError?) -> Void in
+            (feature.featureTable as! AGSServiceFeatureTable).applyEdits { (featureEditResult: [AGSFeatureEditResult]?, error: Error?) -> Void in
                 
                 if let error = error {
-                    SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                    SVProgressHUD.showError(withStatus: error.localizedDescription)
                 }
                 else {
-                    SVProgressHUD.showSuccessWithStatus("Edits applied successfully")
+                    SVProgressHUD.showSuccess(withStatus: "Edits applied successfully")
                 }
             }
         }
@@ -509,22 +509,22 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }
     }
     
-    func popupsViewController(popupsViewController: AGSPopupsViewController, didCancelEditingForPopup popup: AGSPopup) {
+    func popupsViewController(_ popupsViewController: AGSPopupsViewController, didCancelEditingFor popup: AGSPopup) {
         
         self.disableSketchEditor()
     }
     
-    func popupsViewControllerDidFinishViewingPopups(popupsViewController: AGSPopupsViewController) {
+    func popupsViewControllerDidFinishViewingPopups(_ popupsViewController: AGSPopupsViewController) {
         //dismiss the popups view controller
-        self.dismissViewControllerAnimated(true, completion:nil)
+        self.dismiss(animated: true, completion:nil)
         self.popupsVC = nil
     }
     
     //MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FeatureLayersVCSegue" {
-            self.featureLayersVC = segue.destinationViewController as! FeatureLayersViewController
+            self.featureLayersVC = segue.destination as! FeatureLayersViewController
         }
     }
 }

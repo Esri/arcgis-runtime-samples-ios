@@ -18,7 +18,7 @@ import ArcGIS
 
 protocol RGBRendererSettingsVCDelegate:class {
     
-    func rgbRendererSettingsVC(rgbRendererSettingsVC: RGBRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters)
+    func rgbRendererSettingsVC(_ rgbRendererSettingsVC: RGBRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters)
 }
 
 class RGBRendererSettingsVC: UIViewController, UITableViewDataSource, RGBRendererTypeCellDelegate {
@@ -26,7 +26,7 @@ class RGBRendererSettingsVC: UIViewController, UITableViewDataSource, RGBRendere
     @IBOutlet var tableView: UITableView!
     @IBOutlet var tableViewHeightConstraint: NSLayoutConstraint!
     
-    private var stretchType:StretchType = .MinMax
+    fileprivate var stretchType:StretchType = .MinMax
     
     weak var delegate: RGBRendererSettingsVCDelegate?
     
@@ -41,7 +41,7 @@ class RGBRendererSettingsVC: UIViewController, UITableViewDataSource, RGBRendere
     
     //MARK: - UITableViewDataSource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return the rows based on the stretch type selected
         switch self.stretchType {
         case .MinMax, .PercentClip:
@@ -51,26 +51,26 @@ class RGBRendererSettingsVC: UIViewController, UITableViewDataSource, RGBRendere
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         //first row cell is always Row0
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("Row0") as! RGBRendererTypeCell
+        if (indexPath as NSIndexPath).row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Row0") as! RGBRendererTypeCell
             cell.delegate = self
             return cell
         }
         //load the rest of the cells based on the stretch type selected
         else {
             if self.stretchType == .MinMax {
-                let cell = tableView.dequeueReusableCellWithIdentifier("MinMaxRow\(indexPath.row)") as! RGBRenderer3InputCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "MinMaxRow\((indexPath as NSIndexPath).row)") as! RGBRenderer3InputCell
                 return cell
             }
             else if self.stretchType == .PercentClip {
-                let cell = tableView.dequeueReusableCellWithIdentifier("PercentClipRow\(indexPath.row)") as! RGBRendererInputCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PercentClipRow\((indexPath as NSIndexPath).row)") as! RGBRendererInputCell
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCellWithIdentifier("StandardDeviationRow1") as! RGBRendererInputCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "StandardDeviationRow1") as! RGBRendererInputCell
                 return cell
             }
         }
@@ -84,31 +84,31 @@ class RGBRendererSettingsVC: UIViewController, UITableViewDataSource, RGBRendere
         //get the values from textFields in rows based on the selected stretch type
         if self.stretchType == .MinMax {
             var minValue1 = 0, minValue2 = 0, minValue3 = 0, maxValue1 = 255, maxValue2 = 255, maxValue3 = 255
-            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as? RGBRenderer3InputCell {
+            if let cell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? RGBRenderer3InputCell {
                 minValue1 = Int(cell.textField1.text!) ?? 0
                 minValue2 = Int(cell.textField2.text!) ?? 0
                 minValue3 = Int(cell.textField3.text!) ?? 0
             }
-            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0)) as? RGBRenderer3InputCell {
+            if let cell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? RGBRenderer3InputCell {
                 maxValue1 = Int(cell.textField1.text!) ?? 255
                 maxValue2 = Int(cell.textField2.text!) ?? 255
                 maxValue3 = Int(cell.textField3.text!) ?? 255
             }
-            stretchParameters = AGSMinMaxStretchParameters(minValues: [minValue1, minValue2, minValue3], maxValues: [maxValue1, maxValue2, maxValue3])
+            stretchParameters = AGSMinMaxStretchParameters(minValues: [NSNumber(value: minValue1), NSNumber(value: minValue2), NSNumber(value: minValue3)], maxValues: [NSNumber(value: maxValue1), NSNumber(value: maxValue2), NSNumber(value: maxValue3)])
         }
         else if self.stretchType == .PercentClip {
             var min = 0.0, max = 0.0
-            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as? RGBRendererInputCell {
+            if let cell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? RGBRendererInputCell {
                 min = Double(cell.textField.text!) ?? 0
             }
-            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0)) as? RGBRendererInputCell {
+            if let cell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? RGBRendererInputCell {
                 max = Double(cell.textField.text!) ?? 0
             }
             stretchParameters = AGSPercentClipStretchParameters(min: min, max: max)
         }
         else {
             var factor = 1.0
-            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as? RGBRendererInputCell {
+            if let cell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? RGBRendererInputCell {
                 factor = Double(cell.textField.text!) ?? 1
             }
             stretchParameters = AGSStandardDeviationStretchParameters(factor: factor)
@@ -126,12 +126,12 @@ class RGBRendererSettingsVC: UIViewController, UITableViewDataSource, RGBRendere
     //MARK: - RGBRendererTypeCellDelegate
     
     //update view based on the stretch type
-    func rgbRendererTypeCell(rgbRendererTypeCell: RGBRendererTypeCell, didUpdateType type: StretchType) {
+    func rgbRendererTypeCell(_ rgbRendererTypeCell: RGBRendererTypeCell, didUpdateType type: StretchType) {
         self.stretchType = type
         self.tableView.reloadData()
         
-        let rows = self.tableView.numberOfRowsInSection(0)
-        UIView.animateWithDuration(0.3, animations: { [weak self] in
+        let rows = self.tableView.numberOfRows(inSection: 0)
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
             self?.tableViewHeightConstraint.constant = CGFloat(rows * 44)
             self?.view.layoutIfNeeded()
             self?.view.superview?.superview?.layoutIfNeeded()

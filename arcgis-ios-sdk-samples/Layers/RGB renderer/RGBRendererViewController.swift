@@ -22,8 +22,8 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate
     @IBOutlet var containerView: UIView!
     @IBOutlet var visualEffectView: UIVisualEffectView!
     
-    private var raster: AGSRaster!
-    private var rasterLayer: AGSRasterLayer!
+    fileprivate var raster: AGSRaster!
+    fileprivate var rasterLayer: AGSRasterLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,7 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate
     
     //MARK: - RGBRendererSettingsVCDelegate
     
-    func rgbRendererSettingsVC(rgbRendererSettingsVC: RGBRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters) {
+    func rgbRendererSettingsVC(_ rgbRendererSettingsVC: RGBRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters) {
         
         self.toggleSettingsView(false)
         
@@ -59,9 +59,9 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate
     
     //MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RGBRendererSettingsVCSegue" {
-            let controller = segue.destinationViewController as! RGBRendererSettingsVC
+            let controller = segue.destination as! RGBRendererSettingsVC
             controller.delegate = self
             controller.view.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -75,7 +75,7 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate
     
     //MARK: - Show/hide settings view
     
-    private func toggleSettingsView(on: Bool) {
-        self.visualEffectView.hidden = !on
+    fileprivate func toggleSettingsView(_ on: Bool) {
+        self.visualEffectView.isHidden = !on
     }
 }

@@ -16,15 +16,15 @@ import UIKit
 
 class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptivePresentationControllerDelegate {
     
-    @IBOutlet private weak var webView:UIWebView!
-    @IBOutlet private weak var toolbarTitleButton:UIBarButtonItem!
+    @IBOutlet fileprivate weak var webView:UIWebView!
+    @IBOutlet fileprivate weak var toolbarTitleButton:UIBarButtonItem!
     
-    private var listViewController:ListViewController!
-    private var selectedFilenameIndex = 0
+    fileprivate var listViewController:ListViewController!
+    fileprivate var selectedFilenameIndex = 0
     var filenames:[String]!
     
-    private var isListViewContainerVisible = false
-    private var isListViewContainerAnimating = false
+    fileprivate var isListViewContainerVisible = false
+    fileprivate var isListViewContainerAnimating = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,29 +41,29 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
         // Dispose of any resources that can be recreated.
     }
     
-    func loadHTMLPage(filename:String) {
+    func loadHTMLPage(_ filename:String) {
         if let content = self.contentOfFile(filename) {
             self.setupToolbarTitle(filename, arrowPointingDown: true)
             let htmlString = self.htmlStringForContent(content)
-            self.webView.loadHTMLString(htmlString, baseURL: NSURL(fileURLWithPath: NSBundle.mainBundle().bundlePath))
+            self.webView.loadHTMLString(htmlString, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
         }
     }
     
-    func contentOfFile(name:String) -> String? {
+    func contentOfFile(_ name:String) -> String? {
         //find the path of the file
-        if let path = NSBundle.mainBundle().pathForResource(name, ofType: ".swift") {
+        if let path = Bundle.main.path(forResource: name, ofType: ".swift") {
             //read the content of the file
-            if let content = try? String(contentsOfFile: path, encoding: NSUTF8StringEncoding) {
+            if let content = try? String(contentsOfFile: path, encoding: String.Encoding.utf8) {
                 return content
             }
         }
         return nil
     }
     
-    func htmlStringForContent(content:String) -> String {
-        let cssPath = NSBundle.mainBundle().pathForResource("xcode", ofType: "css") ?? ""
-        let jsPath = NSBundle.mainBundle().pathForResource("highlight.pack", ofType: "js") ?? ""
-        let scale  = UIDevice.currentDevice().userInterfaceIdiom == .Phone ? "0.5" : "1.0"
+    func htmlStringForContent(_ content:String) -> String {
+        let cssPath = Bundle.main.path(forResource: "xcode", ofType: "css") ?? ""
+        let jsPath = Bundle.main.path(forResource: "highlight.pack", ofType: "js") ?? ""
+        let scale  = UIDevice.current.userInterfaceIdiom == .phone ? "0.5" : "1.0"
         let stringForHTML = "<html> <head>" +
             "<meta name='viewport' content='width=device-width, initial-scale='\(scale)'/> " +
             "<link rel=\"stylesheet\" href=\"\(cssPath)\">" +
@@ -76,21 +76,21 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
         return stringForHTML
     }
     
-    func setupToolbarTitle(filename:String, arrowPointingDown:Bool) {
+    func setupToolbarTitle(_ filename:String, arrowPointingDown:Bool) {
 
         var titleString = filename
         if self.filenames.count > 1 {
             titleString = String(format: "%@ %@", (arrowPointingDown ? "▶︎" : " \u{25B4}"), filename)
         }
         else {
-            self.toolbarTitleButton.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.blackColor()], forState: UIControlState.Normal)
+            self.toolbarTitleButton.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.black], for: UIControlState())
         }
         self.toolbarTitleButton.title = titleString
     }
     
     //MARK: - web view delegate
     
-    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         return true
     }
     
@@ -99,16 +99,16 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
     
     //MARK: - Navigation
     
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if self.filenames.count > 1 {
             return true
         }
         return false
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FilenamesPopoverSegue" {
-            let controller = segue.destinationViewController as! ListViewController
+            let controller = segue.destination as! ListViewController
             controller.list = self.filenames
             controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
@@ -118,7 +118,7 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
                     weakSelf.selectedFilenameIndex = index
                     let filename = weakSelf.filenames[index]
                     weakSelf.loadHTMLPage(filename)
-                    weakSelf.dismissViewControllerAnimated(true, completion: nil)
+                    weakSelf.dismiss(animated: true, completion: nil)
                 }
             })
         }
@@ -126,8 +126,8 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
     
     //MARK: - UIAdaptivePresentationControllerDelegate
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         
-        return UIModalPresentationStyle.None
+        return UIModalPresentationStyle.none
     }
 }

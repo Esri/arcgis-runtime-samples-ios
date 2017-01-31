@@ -21,9 +21,9 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var visualEffectView: UIVisualEffectView!
     
-    private var map:AGSMap!
+    fileprivate var map:AGSMap!
     
-    private var rasterLayer: AGSRasterLayer!
+    fileprivate var rasterLayer: AGSRasterLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,7 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
         // Dispose of any resources that can be recreated.
     }
     
-    private func generateBlendRenderer(altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) -> AGSBlendRenderer {
+    fileprivate func generateBlendRenderer(_ altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) -> AGSBlendRenderer {
         
         //create the raster to be used as elevation raster
         let raster = AGSRaster(name: "Shasta_Elevation", extension: "tif")
@@ -65,7 +65,7 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
 
     //MARK: - BlendRendererSettingsVCDelegate
     
-    func blendRendererSettingsVC(blendRendererSettingsVC: BlendRendererSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) {
+    func blendRendererSettingsVC(_ blendRendererSettingsVC: BlendRendererSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) {
         
         //get the blend render for the specified settings
         let blendRenderer = self.generateBlendRenderer(altitude, azimuth: azimuth, slopeType: slopeType, colorRampType: colorRampType)
@@ -73,7 +73,7 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
         //if the colorRamp type is None, then use the Shasta.tif for blending.
         //else use the elevation raster with color ramp
         var baseRaster:AGSRaster
-        if colorRampType == .None {
+        if colorRampType == .none {
             baseRaster = AGSRaster(name: "Shasta", extension: "tif")
         }
         else {
@@ -95,19 +95,19 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
     //MARK: - Actions
     
     func hideVisualEffectView() {
-        self.visualEffectView.hidden = true
+        self.visualEffectView.isHidden = true
     }
     
     @IBAction func editRendererAction() {
         //show visual effect view
-        self.visualEffectView.hidden = false
+        self.visualEffectView.isHidden = false
     }
     
     //MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SettingsEmbedSegue" {
-            let controller = segue.destinationViewController as! BlendRendererSettingsVC
+            let controller = segue.destination as! BlendRendererSettingsVC
             controller.delegate = self
         }
     }

@@ -17,11 +17,11 @@ import ArcGIS
 
 class OnInteractionNoCacheViewController: UIViewController {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet fileprivate weak var mapView:AGSMapView!
     
-    private var map:AGSMap!
+    fileprivate var map:AGSMap!
     
-    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0"
+    fileprivate let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,22 +30,22 @@ class OnInteractionNoCacheViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OnInteractionNoCacheViewController"]
         
         //initialize map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
+        self.map = AGSMap(basemap: AGSBasemap.topographic())
         
         //initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(XMin: -1.30758164047166E7,
+        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -1.30758164047166E7,
             yMin: 4014771.46954516,
             xMax: -1.30730056797177E7,
             yMax: 4016869.78617381,
             spatialReference: AGSSpatialReference.webMercator()))
         
         //feature layer
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL)!)
+        let featureTable = AGSServiceFeatureTable(url: URL(string: FEATURE_SERVICE_URL)!)
         //set the request mode
-        featureTable.featureRequestMode = AGSFeatureRequestMode.OnInteractionNoCache
+        featureTable.featureRequestMode = AGSFeatureRequestMode.onInteractionNoCache
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         //add the feature layer to the map
-        self.map.operationalLayers.addObject(featureLayer)
+        self.map.operationalLayers.add(featureLayer)
         
         self.mapView.map = self.map
     }

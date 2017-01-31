@@ -17,23 +17,23 @@ import ArcGIS
 
 class OpenExistingMapViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    private let itemURL1 = "https://www.arcgis.com/home/item.html?id=2d6fa24b357d427f9c737774e7b0f977"
-    private let itemURL2 = "https://www.arcgis.com/home/item.html?id=01f052c8995e4b9e889d73c3e210ebe3"
-    private let itemURL3 = "https://www.arcgis.com/home/item.html?id=92ad152b9da94dee89b9e387dfe21acd"
+    fileprivate let itemURL1 = "https://www.arcgis.com/home/item.html?id=2d6fa24b357d427f9c737774e7b0f977"
+    fileprivate let itemURL2 = "https://www.arcgis.com/home/item.html?id=01f052c8995e4b9e889d73c3e210ebe3"
+    fileprivate let itemURL3 = "https://www.arcgis.com/home/item.html?id=92ad152b9da94dee89b9e387dfe21acd"
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var blurView:UIVisualEffectView!
-    @IBOutlet private weak var tableParentView:UIView!
-    @IBOutlet private weak var tableView:UITableView!
+    @IBOutlet fileprivate weak var mapView:AGSMapView!
+    @IBOutlet fileprivate weak var blurView:UIVisualEffectView!
+    @IBOutlet fileprivate weak var tableParentView:UIView!
+    @IBOutlet fileprivate weak var tableView:UITableView!
     
-    private var map:AGSMap!
-    private var titles = ["Housing with Mortgages", "USA Tapestry Segmentation", "Geology of United States"]
-    private var imageNames = ["OpenExistingMapThumbnail1", "OpenExistingMapThumbnail2", "OpenExistingMapThumbnail3"]
+    fileprivate var map:AGSMap!
+    fileprivate var titles = ["Housing with Mortgages", "USA Tapestry Segmentation", "Geology of United States"]
+    fileprivate var imageNames = ["OpenExistingMapThumbnail1", "OpenExistingMapThumbnail2", "OpenExistingMapThumbnail3"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.map = AGSMap(URL: NSURL(string: itemURL1)!)
+        self.map = AGSMap(url: URL(string: itemURL1)!)
         
         self.mapView.map = self.map
                 
@@ -56,38 +56,38 @@ class OpenExistingMapViewController: UIViewController, UITableViewDataSource, UI
     
     //MARK: - Actions
     
-    @IBAction private func mapsAction() {
+    @IBAction fileprivate func mapsAction() {
         //toggle table view
-        self.blurView.hidden = !self.blurView.hidden
+        self.blurView.isHidden = !self.blurView.isHidden
     }
     
     //MARK: - TableView data source
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
     
     //MARK: - TableView delegates
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ExistingMapCell")!
-        cell.backgroundColor = UIColor.clearColor()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExistingMapCell")!
+        cell.backgroundColor = UIColor.clear
         
-        cell.textLabel?.text = self.titles[indexPath.row]
-        cell.imageView?.image = UIImage(named: self.imageNames[indexPath.row])!
-        cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFill
+        cell.textLabel?.text = self.titles[(indexPath as NSIndexPath).row]
+        cell.imageView?.image = UIImage(named: self.imageNames[(indexPath as NSIndexPath).row])!
+        cell.imageView?.contentMode = UIViewContentMode.scaleAspectFill
         cell.imageView?.clipsToBounds = true
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var selectedPortalItemURL:String
-        switch indexPath.row {
+        switch (indexPath as NSIndexPath).row {
         case 1:
             selectedPortalItemURL = self.itemURL2
         case 2:
@@ -95,14 +95,14 @@ class OpenExistingMapViewController: UIViewController, UITableViewDataSource, UI
         default:
             selectedPortalItemURL = self.itemURL1
         }
-        self.map = AGSMap(URL: NSURL(string: selectedPortalItemURL)!)
+        self.map = AGSMap(url: URL(string: selectedPortalItemURL)!)
         self.mapView.map = self.map
         
         //toggle table view
-        self.blurView.hidden = !self.blurView.hidden
+        self.blurView.isHidden = !self.blurView.isHidden
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 85
     }
 }

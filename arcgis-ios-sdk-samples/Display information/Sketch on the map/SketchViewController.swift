@@ -17,15 +17,15 @@ import ArcGIS
 
 class SketchViewController: UIViewController {
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var geometrySegmentedControl:UISegmentedControl!
-    @IBOutlet private weak var undoBBI:UIBarButtonItem!
-    @IBOutlet private weak var redoBBI:UIBarButtonItem!
-    @IBOutlet private weak var clearBBI:UIBarButtonItem!
+    @IBOutlet fileprivate weak var mapView:AGSMapView!
+    @IBOutlet fileprivate weak var geometrySegmentedControl:UISegmentedControl!
+    @IBOutlet fileprivate weak var undoBBI:UIBarButtonItem!
+    @IBOutlet fileprivate weak var redoBBI:UIBarButtonItem!
+    @IBOutlet fileprivate weak var clearBBI:UIBarButtonItem!
     
     
-    private var map:AGSMap!
-    private var sketchEditor:AGSSketchEditor!
+    fileprivate var map:AGSMap!
+    fileprivate var sketchEditor:AGSSketchEditor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,20 +33,20 @@ class SketchViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SketchViewController"]
         
-        self.map = AGSMap(basemap: AGSBasemap.lightGrayCanvasBasemap())
+        self.map = AGSMap(basemap: AGSBasemap.lightGrayCanvas())
         
         self.sketchEditor = AGSSketchEditor()
         self.mapView.sketchEditor =  self.sketchEditor
         
-        self.sketchEditor.startWithGeometryType(.Polyline)
+        self.sketchEditor.start(with: nil, creationMode: .polyline)
         
         self.mapView.map = self.map
-        self.mapView.interactionOptions.magnifierEnabled = true
+        self.mapView.interactionOptions.isMagnifierEnabled = true
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SketchViewController.respondToGeomChanged), name: AGSSketchEditorGeometryDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SketchViewController.respondToGeomChanged), name: NSNotification.Name.AGSSketchEditorGeometryDidChange, object: nil)
         
         //set initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(XMin: -10049589.670344, yMin: 3480099.843772, xMax: -10010071.251113, yMax: 3512023.489701, spatialReference: AGSSpatialReference.webMercator()))
+        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -10049589.670344, yMin: 3480099.843772, xMax: -10010071.251113, yMax: 3512023.489701, spatialReference: AGSSpatialReference.webMercator()))
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,23 +56,23 @@ class SketchViewController: UIViewController {
     
     func respondToGeomChanged() {
         //Enable/disable UI elements appropriately
-        self.undoBBI.enabled = self.sketchEditor.undoManager.canUndo
-        self.redoBBI.enabled = self.sketchEditor.undoManager.canRedo
-        self.clearBBI.enabled = self.sketchEditor.geometry != nil && !self.sketchEditor.geometry!.empty
+        self.undoBBI.isEnabled = self.sketchEditor.undoManager.canUndo
+        self.redoBBI.isEnabled = self.sketchEditor.undoManager.canRedo
+        self.clearBBI.isEnabled = self.sketchEditor.geometry != nil && !self.sketchEditor.geometry!.isEmpty
     }
     
     //MARK: - Actions
     
-    @IBAction func geometryValueChanged(segmentedControl:UISegmentedControl) {
+    @IBAction func geometryValueChanged(_ segmentedControl:UISegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0://point
-            self.sketchEditor.startWithGeometryType(.Point)
+            self.sketchEditor.start(with: nil, creationMode: .point)
             
         case 1://polyline
-            self.sketchEditor.startWithGeometryType(.Polyline)
+            self.sketchEditor.start(with: nil, creationMode: .polyline)
             
         case 2://polygon
-            self.sketchEditor.startWithGeometryType(.Polygon)
+            self.sketchEditor.start(with: nil, creationMode: .polygon)
         default:
             break
         }

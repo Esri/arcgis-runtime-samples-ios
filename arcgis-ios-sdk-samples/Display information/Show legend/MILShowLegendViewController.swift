@@ -17,12 +17,12 @@ import ArcGIS
 
 class MILShowLegendViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var legendBBI:UIBarButtonItem!
+    @IBOutlet fileprivate weak var mapView:AGSMapView!
+    @IBOutlet fileprivate weak var legendBBI:UIBarButtonItem!
     
-    private var map:AGSMap!
-    private var mapImageLayer:AGSArcGISMapImageLayer!
-    private var popover:UIPopoverPresentationController!
+    fileprivate var map:AGSMap!
+    fileprivate var mapImageLayer:AGSArcGISMapImageLayer!
+    fileprivate var popover:UIPopoverPresentationController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,27 +31,27 @@ class MILShowLegendViewController: UIViewController, UIAdaptivePresentationContr
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MILShowLegendViewController", "MILLegendTableViewController"]
         
         //initialize the map
-        self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
+        self.map = AGSMap(basemap: AGSBasemap.topographic())
         
         //create tiled layer
-        let tiledLayer = AGSArcGISTiledLayer(URL: NSURL(string: "https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/Soil_Survey_Map/MapServer")!)
-        self.map.operationalLayers.addObject(tiledLayer)
+        let tiledLayer = AGSArcGISTiledLayer(url: URL(string: "https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/Soil_Survey_Map/MapServer")!)
+        self.map.operationalLayers.add(tiledLayer)
         
         //create a map image layer using a url
-        self.mapImageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
+        self.mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
         //add the image layer to the map
-        self.map.operationalLayers.addObject(self.mapImageLayer)
+        self.map.operationalLayers.add(self.mapImageLayer)
         
         //create feature table using a url
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0")!)
+        let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0")!)
         //create feature layer using this feature table
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         //add feature layer to the map
-        self.map.operationalLayers.addObject(featureLayer)
+        self.map.operationalLayers.add(featureLayer)
         
-        self.map.loadWithCompletion { [weak self] (error:NSError?) -> Void in
+        self.map.load { [weak self] (error:Error?) -> Void in
             if error == nil {
-                self?.legendBBI.enabled = true
+                self?.legendBBI.isEnabled = true
             }
         }
         
@@ -68,9 +68,9 @@ class MILShowLegendViewController: UIViewController, UIAdaptivePresentationContr
     
     //MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LegendTableSegue" {
-            let controller = segue.destinationViewController as! MILLegendTableViewController
+            let controller = segue.destination as! MILLegendTableViewController
             controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             controller.operationalLayers = self.map.operationalLayers
@@ -79,7 +79,7 @@ class MILShowLegendViewController: UIViewController, UIAdaptivePresentationContr
     
     //MARK: - UIAdaptivePresentationControllerDelegate
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
 }

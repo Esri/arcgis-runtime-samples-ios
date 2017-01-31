@@ -22,11 +22,11 @@ class GenerateGeodatabaseViewController: UIViewController {
     @IBOutlet var downloadBBI:UIBarButtonItem!
     @IBOutlet var extentView:UIView!
     
-    private var map:AGSMap!
-    private let FEATURE_SERVICE_URL = NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
-    private var syncTask:AGSGeodatabaseSyncTask!
-    private var generateJob:AGSGenerateGeodatabaseJob!
-    private var generatedGeodatabase:AGSGeodatabase!
+    fileprivate var map:AGSMap!
+    fileprivate let FEATURE_SERVICE_URL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
+    fileprivate var syncTask:AGSGeodatabaseSyncTask!
+    fileprivate var generateJob:AGSGenerateGeodatabaseJob!
+    fileprivate var generatedGeodatabase:AGSGeodatabase!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,19 +34,19 @@ class GenerateGeodatabaseViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GenerateGeodatabaseViewController"]
         
-        let path = NSBundle.mainBundle().pathForResource("SanFrancisco", ofType: "tpk")!
-        let tileCache = AGSTileCache(fileURL: NSURL(fileURLWithPath: path))
+        let path = Bundle.main.path(forResource: "SanFrancisco", ofType: "tpk")!
+        let tileCache = AGSTileCache(fileURL: URL(fileURLWithPath: path))
         let localTiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
         
         
         self.map = AGSMap(basemap: AGSBasemap(baseLayer: localTiledLayer))
         
-        self.syncTask = AGSGeodatabaseSyncTask(URL: self.FEATURE_SERVICE_URL)
+        self.syncTask = AGSGeodatabaseSyncTask(url: self.FEATURE_SERVICE_URL)
         
         self.addFeatureLayers()
 
         //setup extent view
-        self.extentView.layer.borderColor = UIColor.redColor().CGColor
+        self.extentView.layer.borderColor = UIColor.red.cgColor
         self.extentView.layer.borderWidth = 3
         
         self.mapView.map = self.map
@@ -59,7 +59,7 @@ class GenerateGeodatabaseViewController: UIViewController {
     
     func addFeatureLayers() {
         
-        self.syncTask.loadWithCompletion { [weak self] (error) -> Void in
+        self.syncTask.load { [weak self] (error) -> Void in
             if let error = error {
                 print("Could not load feature service \(error)")
                 
@@ -68,28 +68,28 @@ class GenerateGeodatabaseViewController: UIViewController {
                     return
                 }
                 
-                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo!.layerInfos.enumerate().reverse() {
+                for (index, layerInfo) in weakSelf.syncTask.featureServiceInfo!.layerInfos.enumerated().reversed() {
                     
                     //For each layer in the serice, add a layer to the map
-                    let layerURL = weakSelf.FEATURE_SERVICE_URL.URLByAppendingPathComponent(String(index))
-                    let featureTable = AGSServiceFeatureTable(URL:layerURL!)
+                    let layerURL = weakSelf.FEATURE_SERVICE_URL.appendingPathComponent(String(index))
+                    let featureTable = AGSServiceFeatureTable(url:layerURL)
                     let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                     featureLayer.name = layerInfo.name
                     featureLayer.opacity = 0.65
-                    weakSelf.map.operationalLayers.addObject(featureLayer)
+                    weakSelf.map.operationalLayers.add(featureLayer)
                 }
                 
                 //enable download
-                weakSelf.downloadBBI.enabled = true
+                weakSelf.downloadBBI.isEnabled = true
             }
         }
     }
     
     func frameToExtent() -> AGSEnvelope {
-        let frame = self.mapView.convertRect(self.extentView.frame, fromView: self.view)
+        let frame = self.mapView.convert(self.extentView.frame, from: self.view)
         
-        let minPoint = self.mapView.screenToLocation(frame.origin)
-        let maxPoint = self.mapView.screenToLocation(CGPoint(x: frame.origin.x+frame.width, y: frame.origin.y+frame.height))
+        let minPoint = self.mapView.screen(toLocation: frame.origin)
+        let maxPoint = self.mapView.screen(toLocation: CGPoint(x: frame.origin.x+frame.width, y: frame.origin.y+frame.height))
         let extent = AGSEnvelope(min: minPoint, max: maxPoint)
         return extent
     }
@@ -99,29 +99,29 @@ class GenerateGeodatabaseViewController: UIViewController {
     @IBAction func downloadAction() {
         
         //generate default param to contain all layers in the service
-        self.syncTask.defaultGenerateGeodatabaseParametersWithExtent(self.frameToExtent()) { [weak self] (params: AGSGenerateGeodatabaseParameters?, error: NSError?) in
-            if let params = params, weakSelf = self {
+        self.syncTask.defaultGenerateGeodatabaseParameters(withExtent: self.frameToExtent()) { [weak self] (params: AGSGenerateGeodatabaseParameters?, error: Error?) in
+            if let params = params, let weakSelf = self {
                 
                 //don't include attachments to minimze the geodatabae size
                 params.returnAttachments = false
                 
                 //create a unique name for the geodatabase based on current timestamp
-                let dateFormatter = NSDateFormatter()
+                let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                 
-                let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-                let fullPath = "\(path)/\(dateFormatter.stringFromDate(NSDate())).geodatabase"
+                let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+                let fullPath = "\(path)/\(dateFormatter.string(from: Date())).geodatabase"
                 
                 //request a job to generate the geodatabase
-                weakSelf.generateJob = weakSelf.syncTask.generateJobWithParameters(params, downloadFileURL: NSURL(string: fullPath)!)
+                weakSelf.generateJob = weakSelf.syncTask.generateJob(with: params, downloadFileURL: URL(string: fullPath)!)
                 
                 //kick off the job
-                weakSelf.generateJob.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
-                    SVProgressHUD.showWithStatus(status.statusString(), maskType: SVProgressHUDMaskType.Gradient)
-                }) { [weak self] (object: AnyObject?, error: NSError?) -> Void in
+                weakSelf.generateJob.start(statusHandler: { (status: AGSJobStatus) -> Void in
+                    SVProgressHUD.show(withStatus: status.statusString(), maskType: SVProgressHUDMaskType.gradient)
+                }) { [weak self] (object: AnyObject?, error: Error?) -> Void in
                     if let error = error {
                         print(error)
-                        SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                        SVProgressHUD.showError(withStatus: error.localizedDescription)
                     }
                     else {
                         SVProgressHUD.dismiss()
@@ -138,47 +138,47 @@ class GenerateGeodatabaseViewController: UIViewController {
     }
     
     func displayLayersFromGeodatabase() {
-        self.generatedGeodatabase.loadWithCompletion({ [weak self] (error:NSError?) -> Void in
+        self.generatedGeodatabase.load(completion: { [weak self] (error:Error?) -> Void in
 
             if let error = error {
-                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 self?.map.operationalLayers.removeAllObjects()
                 
                 AGSLoadObjects(self!.generatedGeodatabase.geodatabaseFeatureTables, { (success: Bool) in
                     if success {
-                        for featureTable in self!.generatedGeodatabase.geodatabaseFeatureTables.reverse() {
+                        for featureTable in self!.generatedGeodatabase.geodatabaseFeatureTables.reversed() {
                             //check if featureTable has geometry
                             if featureTable.hasGeometry {
                                 let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                                self?.map.operationalLayers.addObject(featureLayer)
+                                self?.map.operationalLayers.add(featureLayer)
                             }
                         }
-                        SVProgressHUD.showSuccessWithStatus("Now showing data from geodatabase")
+                        SVProgressHUD.showSuccess(withStatus: "Now showing data from geodatabase")
                     }
                 })
                 
-                self?.downloadBBI.enabled = false
+                self?.downloadBBI.isEnabled = false
                 
                 //unregister geodatabase as the sample wont be editing or syncing features
                 self?.unregisterGeodatabase()
                 
                 //hide the extent view
-                self?.extentView.hidden = true
+                self?.extentView.isHidden = true
             }
         })
     }
     
     func unregisterGeodatabase() {
         if self.generatedGeodatabase != nil {
-            self.syncTask.unregisterGeodatabase(self.generatedGeodatabase) { (error: NSError?) -> Void in
+            self.syncTask.unregisterGeodatabase(self.generatedGeodatabase) { (error: Error?) -> Void in
 
                 if let error = error {
-                    SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                    SVProgressHUD.showError(withStatus: error.localizedDescription)
                 }
                 else {
-                    SVProgressHUD.showInfoWithStatus("Geodatabase unregistered since we wont be editing it in this sample")
+                    SVProgressHUD.showInfo(withStatus: "Geodatabase unregistered since we wont be editing it in this sample")
                 }
             }
         }

@@ -17,10 +17,10 @@ import ArcGIS
 
 class AttachmentsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIBarPositioningDelegate {
     
-    @IBOutlet private weak var tableView:UITableView!
+    @IBOutlet fileprivate weak var tableView:UITableView!
     
     var feature:AGSArcGISFeature!
-    private var attachments:[AGSAttachment]!
+    fileprivate var attachments:[AGSAttachment]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func applyEdits() {
-        (self.feature.featureTable as! AGSServiceFeatureTable).applyEditsWithCompletion({ [weak self] (result, error) -> Void in
+        (self.feature.featureTable as! AGSServiceFeatureTable).applyEdits(completion: { [weak self] (result, error) -> Void in
             if let error = error {
                 print(error)
             }
@@ -41,7 +41,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func loadAttachments() {
-        self.feature.fetchAttachmentsWithCompletion { [weak self] (attachments:[AGSAttachment]?, error:NSError?) in
+        self.feature.fetchAttachments { [weak self] (attachments:[AGSAttachment]?, error:Error?) in
             if let error = error {
                 print(error)
             }
@@ -52,8 +52,8 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
-    func deleteAttachment(attachment:AGSAttachment) {
-        self.feature.deleteAttachment(attachment, completion: { [weak self] (error:NSError?) -> Void in
+    func deleteAttachment(_ attachment:AGSAttachment) {
+        self.feature.delete(attachment, completion: { [weak self] (error:Error?) -> Void in
             if let error = error {
                 print(error)
             }
@@ -71,25 +71,25 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     
     //MARK: - Table view data source
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.attachments?.count ?? 0
     }
     
     //MARK: - Table view delegate
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("AttachmentCell")!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AttachmentCell")!
         
-        let attachment = self.attachments[indexPath.row]
+        let attachment = self.attachments[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = attachment.name
         
         cell.imageView?.image = UIImage(named: "ArcGIS.bundle/CloudDownload")
-        cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-        cell.imageView?.autoresizingMask = .None
+        cell.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+        cell.imageView?.autoresizingMask = UIViewAutoresizing()
         cell.imageView?.clipsToBounds = true
         if attachment.hasFetchedData {
             self.setImage(indexPath)
@@ -98,26 +98,26 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.setImage(indexPath)
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-            let attachment = self.attachments[indexPath.row]
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            let attachment = self.attachments[(indexPath as NSIndexPath).row]
             self.deleteAttachment(attachment)
         }
     }
     
-    func setImage(indexPath:NSIndexPath) {
-        let attachment = self.attachments[indexPath.row]
-        attachment.fetchDataWithCompletion { [weak self] (data:NSData?, error:NSError?) -> Void in
+    func setImage(_ indexPath:IndexPath) {
+        let attachment = self.attachments[(indexPath as NSIndexPath).row]
+        attachment.fetchData { [weak self] (data:Data?, error:Error?) -> Void in
             if let error = error {
                 print(error)
             }
-            else if let weakSelf = self, data = data {
+            else if let weakSelf = self, let data = data {
                 let image = UIImage(data: data)
-                let cell = weakSelf.tableView.cellForRowAtIndexPath(indexPath)!
+                let cell = weakSelf.tableView.cellForRow(at: indexPath)!
                 if weakSelf.tableView.visibleCells.contains(cell) {
                     cell.imageView?.image = image
                 }
@@ -128,12 +128,12 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     //MARK: - Actions
     
     @IBAction func cancelAction() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func addAction() {
         let data = UIImagePNGRepresentation(UIImage(named: "LocationDisplayOffIcon")!)!
-        self.feature.addAttachmentWithName("Attachment.png", contentType: "png", data: data) { [weak self] (attachment:AGSAttachment?, error:NSError?) -> Void in
+        self.feature.addAttachment(withName: "Attachment.png", contentType: "png", data: data) { [weak self] (attachment:AGSAttachment?, error:Error?) -> Void in
             if let error = error {
                 print(error)
             }
@@ -145,7 +145,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     
     //MARK: - UIBarPositioningDelegate
     
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return .TopAttached
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
 }

@@ -16,12 +16,12 @@ import UIKit
 
 class SegmentedViewController: UIViewController {
     
-    @IBOutlet private weak var segmentedControl:UISegmentedControl!
-    @IBOutlet private weak var infoContainerView:UIView!
-    @IBOutlet private weak var codeContainerView:UIView!
+    @IBOutlet fileprivate weak var segmentedControl:UISegmentedControl!
+    @IBOutlet fileprivate weak var infoContainerView:UIView!
+    @IBOutlet fileprivate weak var codeContainerView:UIView!
     
-    private var sourceCodeVC:SourceCodeViewController!
-    private var sampleInfoVC:SampleInfoViewController!
+    fileprivate var sourceCodeVC:SourceCodeViewController!
+    fileprivate var sampleInfoVC:SampleInfoViewController!
     
     var filenames:[String]!
     var folderName:String!
@@ -38,21 +38,21 @@ class SegmentedViewController: UIViewController {
     
     //MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SourceCodeSegue" {
-            let controller = segue.destinationViewController as! SourceCodeViewController
+            let controller = segue.destination as! SourceCodeViewController
             controller.filenames = self.filenames
         }
         else if segue.identifier == "SampleInfoSegue" {
-            let controller = segue.destinationViewController as! SampleInfoViewController
+            let controller = segue.destination as! SampleInfoViewController
             controller.folderName = self.folderName
         }
     }
     
     //MARK: - Actions
     
-    @IBAction func valueChanged(sender: UISegmentedControl) {
-        self.infoContainerView.hidden = (sender.selectedSegmentIndex == 1)
+    @IBAction func valueChanged(_ sender: UISegmentedControl) {
+        self.infoContainerView.isHidden = (sender.selectedSegmentIndex == 1)
     }
     
 }

@@ -22,8 +22,8 @@ class StretchRendererViewController: UIViewController, StretchRendererSettingsVC
     @IBOutlet var containerView: UIView!
     @IBOutlet var visualEffectView: UIVisualEffectView!
     
-    private var raster: AGSRaster!
-    private var rasterLayer: AGSRasterLayer!
+    fileprivate var raster: AGSRaster!
+    fileprivate var rasterLayer: AGSRasterLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,19 +49,19 @@ class StretchRendererViewController: UIViewController, StretchRendererSettingsVC
     
     //MARK: - StretchRendererSettingsVCDelegate
     
-    func stretchRendererSettingsVC(stretchRendererSettingsVC: StretchRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters) {
+    func stretchRendererSettingsVC(_ stretchRendererSettingsVC: StretchRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters) {
         
         self.toggleSettingsView(false)
         
-        let renderer = AGSStretchRenderer(stretchParameters: parameters, gammas: [], estimateStatistics: true, colorRamp: AGSColorRamp(type: .None, size: 1))
+        let renderer = AGSStretchRenderer(stretchParameters: parameters, gammas: [], estimateStatistics: true, colorRamp: AGSColorRamp(type: .none, size: 1))
         self.rasterLayer.renderer = renderer
     }
     
     //MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "StretchRendererSettingsVCSegue" {
-            let controller = segue.destinationViewController as! StretchRendererSettingsVC
+            let controller = segue.destination as! StretchRendererSettingsVC
             controller.delegate = self
             controller.view.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -75,7 +75,7 @@ class StretchRendererViewController: UIViewController, StretchRendererSettingsVC
     
     //MARK: - Show/hide settings view
     
-    private func toggleSettingsView(on: Bool) {
-        self.visualEffectView.hidden = !on
+    fileprivate func toggleSettingsView(_ on: Bool) {
+        self.visualEffectView.isHidden = !on
     }
 }

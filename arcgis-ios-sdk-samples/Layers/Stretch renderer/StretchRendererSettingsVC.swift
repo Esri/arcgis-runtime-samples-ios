@@ -39,7 +39,7 @@ enum StretchType: String {
 
 protocol StretchRendererSettingsVCDelegate:class {
     
-    func stretchRendererSettingsVC(stretchRendererSettingsVC: StretchRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters)
+    func stretchRendererSettingsVC(_ stretchRendererSettingsVC: StretchRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters)
 }
 
 class StretchRendererSettingsVC: UIViewController, UITableViewDataSource, StretchRendererTypeCellDelegate {
@@ -47,7 +47,7 @@ class StretchRendererSettingsVC: UIViewController, UITableViewDataSource, Stretc
     @IBOutlet var tableView: UITableView!
     @IBOutlet var tableViewHeightConstraint: NSLayoutConstraint!
     
-    private var stretchType:StretchType = .MinMax
+    fileprivate var stretchType:StretchType = .MinMax
     
     weak var delegate: StretchRendererSettingsVCDelegate?
     
@@ -67,7 +67,7 @@ class StretchRendererSettingsVC: UIViewController, UITableViewDataSource, Stretc
     
     //MARK: - UITableViewDataSource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch self.stretchType {
         case .MinMax, .PercentClip:
             return 3
@@ -76,24 +76,24 @@ class StretchRendererSettingsVC: UIViewController, UITableViewDataSource, Stretc
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("Row0") as! StretchRendererTypeCell
+        if (indexPath as NSIndexPath).row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Row0") as! StretchRendererTypeCell
             cell.delegate = self
             return cell
         }
         else {
             if self.stretchType == .MinMax {
-                let cell = tableView.dequeueReusableCellWithIdentifier("MinMaxRow\(indexPath.row)") as! StretchRendererInputCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "MinMaxRow\((indexPath as NSIndexPath).row)") as! StretchRendererInputCell
                 return cell
             }
             else if self.stretchType == .PercentClip {
-                let cell = tableView.dequeueReusableCellWithIdentifier("PercentClipRow\(indexPath.row)") as! StretchRendererInputCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PercentClipRow\((indexPath as NSIndexPath).row)") as! StretchRendererInputCell
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCellWithIdentifier("StandardDeviationRow1") as! StretchRendererInputCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "StandardDeviationRow1") as! StretchRendererInputCell
                 return cell
             }
         }
@@ -106,27 +106,27 @@ class StretchRendererSettingsVC: UIViewController, UITableViewDataSource, Stretc
         
         if self.stretchType == .MinMax {
             var minValue = 0, maxValue = 255
-            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as? StretchRendererInputCell {
+            if let cell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? StretchRendererInputCell {
                 minValue = Int(cell.textField.text!) ?? 0
             }
-            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0)) as? StretchRendererInputCell {
+            if let cell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? StretchRendererInputCell {
                 maxValue = Int(cell.textField.text!) ?? 255
             }
-            stretchParameters = AGSMinMaxStretchParameters(minValues: [minValue], maxValues: [maxValue])
+            stretchParameters = AGSMinMaxStretchParameters(minValues: [NSNumber(value: minValue)], maxValues: [NSNumber(value: maxValue)])
         }
         else if self.stretchType == .PercentClip {
             var min = 0.0, max = 0.0
-            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as? StretchRendererInputCell {
+            if let cell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? StretchRendererInputCell {
                 min = Double(cell.textField.text!) ?? 0
             }
-            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0)) as? StretchRendererInputCell {
+            if let cell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? StretchRendererInputCell {
                 max = Double(cell.textField.text!) ?? 0
             }
             stretchParameters = AGSPercentClipStretchParameters(min: min, max: max)
         }
         else {
             var factor = 1.0
-            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as? StretchRendererInputCell {
+            if let cell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? StretchRendererInputCell {
                 factor = Double(cell.textField.text!) ?? 1
             }
             stretchParameters = AGSStandardDeviationStretchParameters(factor: factor)
@@ -143,12 +143,12 @@ class StretchRendererSettingsVC: UIViewController, UITableViewDataSource, Stretc
     
     //MARK: - StretchRendererTypeCellDelegate
     
-    func stretchRendererTypeCell(stretchRendererTypeCell: StretchRendererTypeCell, didUpdateType type: StretchType) {
+    func stretchRendererTypeCell(_ stretchRendererTypeCell: StretchRendererTypeCell, didUpdateType type: StretchType) {
         self.stretchType = type
         self.tableView.reloadData()
         
-        let rows = self.tableView.numberOfRowsInSection(0)
-        UIView.animateWithDuration(0.3, animations: { [weak self] in
+        let rows = self.tableView.numberOfRows(inSection: 0)
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
             self?.tableViewHeightConstraint.constant = CGFloat(rows * 44)
             self?.view.layoutIfNeeded()
             self?.view.superview?.superview?.layoutIfNeeded()

@@ -17,12 +17,12 @@ import ArcGIS
 
 class LayerStatusViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var tableView:UITableView!
+    @IBOutlet fileprivate weak var mapView:AGSMapView!
+    @IBOutlet fileprivate weak var tableView:UITableView!
     
-    private var map:AGSMap!
+    fileprivate var map:AGSMap!
     
-    private var viewStatusArray = [String]()
+    fileprivate var viewStatusArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,28 +30,28 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.map = AGSMap()
         
         //create tiled layer using a url
-        let tiledLayer = AGSArcGISTiledLayer(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer")!)
+        let tiledLayer = AGSArcGISTiledLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer")!)
         //add the layer to the map
-        self.map.operationalLayers.addObject(tiledLayer)
+        self.map.operationalLayers.add(tiledLayer)
 
         //create an map image layer using a url
-        let imageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
+        let imageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
         imageLayer.minScale = 40000000
         imageLayer.maxScale = 2000000
         //add it to the map
-        self.map.operationalLayers.addObject(imageLayer)
+        self.map.operationalLayers.add(imageLayer)
         
         //create feature layer using a url
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0")!)
+        let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0")!)
         let featurelayer = AGSFeatureLayer(featureTable: featureTable)
         //add it to the map
-        self.map.operationalLayers.addObject(featurelayer)
+        self.map.operationalLayers.add(featurelayer)
         
         //initialize the view status array to `Unknown`
         self.populateViewStatusArray()
@@ -60,7 +60,7 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         //assign map to the map view
         self.mapView.map = self.map
         //zoom to custom viewpoint
-        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -11e6, y: 45e5, spatialReference: AGSSpatialReference(WKID: 3857)), scale: 5e7))
+        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -11e6, y: 45e5, spatialReference: AGSSpatialReference(wkid: 3857)), scale: 5e7))
         
         //layer status logic
         //assign a closure for layerViewStateChangedHandler, in order to receive layer view status changes
@@ -68,7 +68,7 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
             if let weakSelf = self {
                 //find the index of layer in operational layers list
                 //and update its status
-                let index = weakSelf.map.operationalLayers.indexOfObject(layer)
+                let index = weakSelf.map.operationalLayers.index(of: layer)
                 if index != NSNotFound {
                     weakSelf.viewStatusArray[index] = weakSelf.viewStatusString(state.status)
                     
@@ -95,17 +95,17 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     //return string for current status name
-    func viewStatusString(status: AGSLayerViewStatus) -> String {
+    func viewStatusString(_ status: AGSLayerViewStatus) -> String {
         switch status {
-        case AGSLayerViewStatus.Active:
+        case AGSLayerViewStatus.active:
             return "Active"
-        case AGSLayerViewStatus.NotVisible:
+        case AGSLayerViewStatus.notVisible:
             return "Not Visible"
-        case AGSLayerViewStatus.OutOfScale:
+        case AGSLayerViewStatus.outOfScale:
             return "Out of Scale"
-        case AGSLayerViewStatus.Loading:
+        case AGSLayerViewStatus.loading:
             return "Loading"
-        case AGSLayerViewStatus.Error:
+        case AGSLayerViewStatus.error:
             return "Error"
         default:
             return "Unknown"
@@ -114,31 +114,31 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
     
     //MARK: - Table view data source
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.map?.operationalLayers.count ?? 0
     }
     
     //MARK: - Table view delegates
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("LayerStatusCell")!
-        cell.backgroundColor = UIColor.clearColor()
-        let layer = self.map.operationalLayers[indexPath.row] as! AGSLayer
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LayerStatusCell")!
+        cell.backgroundColor = UIColor.clear
+        let layer = self.map.operationalLayers[(indexPath as NSIndexPath).row] as! AGSLayer
         
         //if the layer is loaded then show the name
         //else use a template
-        if layer.loadStatus == .Loaded {
+        if layer.loadStatus == .loaded {
             cell.textLabel?.text = layer.name
         }
         else {
-            cell.textLabel?.text = "Layer \(indexPath.row)"
+            cell.textLabel?.text = "Layer \((indexPath as NSIndexPath).row)"
         }
         
-        cell.detailTextLabel?.text = self.viewStatusArray[indexPath.row]
+        cell.detailTextLabel?.text = self.viewStatusArray[(indexPath as NSIndexPath).row]
         
         return cell
     }

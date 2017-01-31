@@ -19,10 +19,10 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     @IBOutlet var mapView: AGSMapView!
     
-    private var map:AGSMap!
+    fileprivate var map:AGSMap!
     
-    private var featureLayer:AGSFeatureLayer!
-    private var mapImageLayer:AGSArcGISMapImageLayer!
+    fileprivate var featureLayer:AGSFeatureLayer!
+    fileprivate var mapImageLayer:AGSArcGISMapImageLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,32 +31,32 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["IdentifyLayersViewController"]
         
         //create an instance of a map
-        self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
+        self.map = AGSMap(basemap: AGSBasemap.topographic())
         
         //map image layer
-        self.mapImageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
+        self.mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
         
         //hide Continent and World layers
-        self.mapImageLayer.loadWithCompletion { [weak self] (error: NSError?) in
+        self.mapImageLayer.load { [weak self] (error: Error?) in
             if error == nil {
-                self?.mapImageLayer.subLayerContents[1].visible = false
-                self?.mapImageLayer.subLayerContents[2].visible = false
+                self?.mapImageLayer.subLayerContents[1].isVisible = false
+                self?.mapImageLayer.subLayerContents[2].isVisible = false
             }
         }
-        self.map.operationalLayers.addObject(self.mapImageLayer)
+        self.map.operationalLayers.add(self.mapImageLayer)
         
         //feature table
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
+        let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
     
         //feature layer
         self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
         
         
         //add feature layer add to the operational layers
-        self.map.operationalLayers.addObject(self.featureLayer)
+        self.map.operationalLayers.add(self.featureLayer)
         
         //set initial viewpoint to a specific region
-        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -10977012.785807, y: 4514257.550369, spatialReference: AGSSpatialReference(WKID: 3857)), scale: 68015210)
+        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -10977012.785807, y: 4514257.550369, spatialReference: AGSSpatialReference(wkid: 3857)), scale: 68015210)
         
         //assign map to the map view
         self.mapView.map = self.map
@@ -72,24 +72,24 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     //MARK: - AGSGeoViewTouchDelegate
     
-    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //get the geoElements for all layers present at the tapped point
         self.identifyLayers(screenPoint)
     }
     
     //MARK: - Identify layers
     
-    private func identifyLayers(screen: CGPoint) {
+    fileprivate func identifyLayers(_ screen: CGPoint) {
         //show progress hud
-        SVProgressHUD.showWithStatus("Identifying", maskType: .Gradient)
+        SVProgressHUD.show(withStatus: "Identifying", maskType: .gradient)
         
-        self.mapView.identifyLayersAtScreenPoint(screen, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { (results: [AGSIdentifyLayerResult]?, error: NSError?) in
+        self.mapView.identifyLayers(atScreenPoint: screen, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
             
             //dismiss progress hud
             SVProgressHUD.dismiss()
             
             if let error = error {
-                SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
             }
             else {
                 self.handleIdentifyResults(results!)
@@ -99,18 +99,18 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     //MARK: - Helper methods
     
-    private func handleIdentifyResults(results: [AGSIdentifyLayerResult]) {
+    fileprivate func handleIdentifyResults(_ results: [AGSIdentifyLayerResult]) {
         
         var messageString = ""
         var totalCount = 0
         for identifyLayerResult in results {
             let count = self.geoElementsCountFromResult(identifyLayerResult)
             let layerName = identifyLayerResult.layerContent.name
-            messageString.appendContentsOf("\(layerName) :: \(count)")
+            messageString.append("\(layerName) :: \(count)")
             
             //add new line character if not the final element in array
             if identifyLayerResult != results.last! {
-                messageString.appendContentsOf(" \n ")
+                messageString.append(" \n ")
             }
             
             //update total count
@@ -123,11 +123,11 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
             self.showAlertController("Number of elements found", message: messageString)
         }
         else {
-            SVProgressHUD.showErrorWithStatus("No element found")
+            SVProgressHUD.showError(withStatus: "No element found")
         }
     }
     
-    private func geoElementsCountFromResult(result: AGSIdentifyLayerResult) -> Int {
+    fileprivate func geoElementsCountFromResult(_ result: AGSIdentifyLayerResult) -> Int {
         //create temp array
         var tempResults = [result]
         
@@ -146,7 +146,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
             //if yes then add those result objects in the tempResults
             //array after the current result
             if identifyResult.sublayerResults.count > 0 {
-                tempResults.insertContentsOf(identifyResult.sublayerResults, at: index + 1)
+                tempResults.insert(contentsOf: identifyResult.sublayerResults, at: index + 1)
             }
             
             //update the count and repeat
@@ -157,12 +157,12 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     
     //helper method to show results to the user
-    private func showAlertController(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+    fileprivate func showAlertController(_ title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alertController.addAction(okAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

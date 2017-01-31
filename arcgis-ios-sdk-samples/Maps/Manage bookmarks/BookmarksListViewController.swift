@@ -23,7 +23,7 @@ class BookmarksListViewController: UIViewController, UITableViewDataSource, UITa
     var bookmarks:[AGSBookmark]!
     
     //private property to store selection action for table cell
-    private var selectAction:((AGSViewpoint) -> Void)!
+    fileprivate var selectAction:((AGSViewpoint) -> Void)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,35 +36,35 @@ class BookmarksListViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     //executed for tableview row selection
-    func setSelectAction(action : ((AGSViewpoint) -> Void)) {
+    func setSelectAction(_ action : @escaping ((AGSViewpoint) -> Void)) {
         self.selectAction = action
     }
     
     //MARK: - TableView data source
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.bookmarks?.count ?? 0
     }
     
     //MARK: - TableView delegates
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BookmarkCell")!
-        cell.backgroundColor = UIColor.clearColor()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BookmarkCell")!
+        cell.backgroundColor = UIColor.clear
         //get the respective bookmark
-        let bookmark = self.bookmarks[indexPath.row]
+        let bookmark = self.bookmarks[(indexPath as NSIndexPath).row]
         //assign the bookmark's name as the title for the cell
         cell.textLabel?.text = bookmark.name
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let bookmark = self.bookmarks[indexPath.row]
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let bookmark = self.bookmarks[(indexPath as NSIndexPath).row]
         //execute the closure if it exists
         if self.selectAction != nil {
             self.selectAction(bookmark.viewpoint!)

@@ -17,14 +17,14 @@ import ArcGIS
 
 class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet fileprivate weak var mapView:AGSMapView!
     
-    private var map:AGSMap!
-    private var featureTable:AGSServiceFeatureTable!
-    private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancelable!
-    private var selectedFeatures:[AGSFeature]!
-    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
+    fileprivate var map:AGSMap!
+    fileprivate var featureTable:AGSServiceFeatureTable!
+    fileprivate var featureLayer:AGSFeatureLayer!
+    fileprivate var lastQuery:AGSCancelable!
+    fileprivate var selectedFeatures:[AGSFeature]!
+    fileprivate let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,21 +33,21 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FLSelectionViewController"]
         
         //initialize map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.streetsBasemap())
+        self.map = AGSMap(basemap: AGSBasemap.streets())
         //initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(XMin: -1131596.019761, yMin: 3893114.069099, xMax: 3926705.982140, yMax: 7977912.461790, spatialReference: AGSSpatialReference.webMercator()))
+        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -1131596.019761, yMin: 3893114.069099, xMax: 3926705.982140, yMax: 7977912.461790, spatialReference: AGSSpatialReference.webMercator()))
         //assign map to the map view
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
         
         //create feature table using a url
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL)!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: FEATURE_SERVICE_URL)!)
         //create feature layer using this feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
-        self.featureLayer.selectionColor = UIColor.cyanColor()
+        self.featureLayer.selectionColor = UIColor.cyan
         self.featureLayer.selectionWidth = 3
         //add feature layer to the map
-        self.map.operationalLayers.addObject(self.featureLayer)
+        self.map.operationalLayers.add(self.featureLayer)
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,14 +57,14 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     //MARK: - AGSGeoViewTouchDelegate
     
-    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
         
         let tolerance:Double = 12
         let mapTolerance = tolerance * self.mapView.unitsPerPoint
-        let envelope = AGSEnvelope(XMin: mapPoint.x - mapTolerance,
+        let envelope = AGSEnvelope(xMin: mapPoint.x - mapTolerance,
             yMin: mapPoint.y - mapTolerance,
             xMax: mapPoint.x + mapTolerance,
             yMax: mapPoint.y + mapTolerance,
@@ -73,7 +73,7 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
         let queryParams = AGSQueryParameters()
         queryParams.geometry = envelope
         
-        self.featureLayer.selectFeaturesWithQuery(queryParams, mode: AGSSelectionMode.New) { (queryResult:AGSFeatureQueryResult?, error:NSError?) -> Void in
+        self.featureLayer.selectFeatures(withQuery: queryParams, mode: AGSSelectionMode.new) { (queryResult:AGSFeatureQueryResult?, error:Error?) -> Void in
             if let error = error {
                 print(error)
             }

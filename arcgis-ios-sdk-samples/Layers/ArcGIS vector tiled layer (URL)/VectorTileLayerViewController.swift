@@ -21,10 +21,10 @@ class VectorTileLayerViewController: UIViewController {
 
     @IBOutlet var mapView:AGSMapView!
     
-    private var navigationURLString = "https://www.arcgis.com/home/item.html?id=e19e9330bf08490ca8353d76b5e2e658"
-    private var streetsURLString = "https://www.arcgis.com/home/item.html?id=a60a37a27cc140ddad15f919cd5a69f2"
-    private var nightURLString = "https://www.arcgis.com/home/item.html?id=92c551c9f07b4147846aae273e822714"
-    private var darkGrayURLString = "https://www.arcgis.com/home/item.html?id=5ad3948260a147a993ef4865e3fad476"
+    fileprivate var navigationURLString = "https://www.arcgis.com/home/item.html?id=e19e9330bf08490ca8353d76b5e2e658"
+    fileprivate var streetsURLString = "https://www.arcgis.com/home/item.html?id=a60a37a27cc140ddad15f919cd5a69f2"
+    fileprivate var nightURLString = "https://www.arcgis.com/home/item.html?id=92c551c9f07b4147846aae273e822714"
+    fileprivate var darkGrayURLString = "https://www.arcgis.com/home/item.html?id=5ad3948260a147a993ef4865e3fad476"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class VectorTileLayerViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["VectorTileLayerViewController"]
         
         //create a vector tiled layer
-        let vectorTileLayer = AGSArcGISVectorTiledLayer(URL: NSURL(string: navigationURLString)!)
+        let vectorTileLayer = AGSArcGISVectorTiledLayer(url: URL(string: navigationURLString)!)
         //create a map and set the vector tiled layer as the basemap
         let map = AGSMap(basemap: AGSBasemap(baseLayer: vectorTileLayer))
         
@@ -41,7 +41,7 @@ class VectorTileLayerViewController: UIViewController {
         self.mapView.map = map
 
         //center on Miami, Fl
-        self.mapView.setViewpointCenter(AGSPoint(x: -80.18, y: 25.778135, spatialReference: AGSSpatialReference.WGS84()), scale: 150000, completion: nil)
+        self.mapView.setViewpointCenter(AGSPoint(x: -80.18, y: 25.778135, spatialReference: AGSSpatialReference.wgs84()), scale: 150000, completion: nil)
 
     }
 
@@ -50,7 +50,7 @@ class VectorTileLayerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func segmentedControlChanged(sender:UISegmentedControl) {
+    @IBAction func segmentedControlChanged(_ sender:UISegmentedControl) {
         var urlString:String
         switch sender.selectedSegmentIndex {
         case 0:
@@ -64,7 +64,7 @@ class VectorTileLayerViewController: UIViewController {
         }
         
         //create the new vector tiled layer using the url
-        let vectorTileLayer = AGSArcGISVectorTiledLayer(URL: NSURL(string: urlString)!)
+        let vectorTileLayer = AGSArcGISVectorTiledLayer(url: URL(string: urlString)!)
         //change the basemap to the new layer
         self.mapView.map?.basemap = AGSBasemap(baseLayer: vectorTileLayer)
     }

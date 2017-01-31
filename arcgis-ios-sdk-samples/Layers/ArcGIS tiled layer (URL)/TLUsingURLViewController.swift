@@ -17,19 +17,19 @@ import ArcGIS
 
 class TLUsingURLViewController: UIViewController {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet fileprivate weak var mapView:AGSMapView!
     
-    private var map:AGSMap!
+    fileprivate var map:AGSMap!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //create a tiledLayer using url to a map server
-        let tiledLayer = AGSArcGISTiledLayer(URL: NSURL(string: "https://services.arcgisonline.com/arcgis/rest/services/NatGeo_World_Map/MapServer")!)
+        let tiledLayer = AGSArcGISTiledLayer(url: URL(string: "https://services.arcgisonline.com/arcgis/rest/services/NatGeo_World_Map/MapServer")!)
         
         //initialize the map and add the tiled layer as an operational layer
         self.map = AGSMap()
-        self.map.operationalLayers.addObject(tiledLayer)
+        self.map.operationalLayers.add(tiledLayer)
         
         //assign the map to the map view
         self.mapView.map = self.map

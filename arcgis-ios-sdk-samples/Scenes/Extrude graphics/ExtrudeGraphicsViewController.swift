@@ -21,11 +21,11 @@ class ExtrudeGraphicsViewController: UIViewController {
 
     @IBOutlet var sceneView:AGSSceneView!
     
-    private var graphicsOverlay: AGSGraphicsOverlay!
+    fileprivate var graphicsOverlay: AGSGraphicsOverlay!
     
-    private let squareSize:Double = 0.01
-    private let spacing:Double = 0.01
-    private let maxHeight = 10000
+    fileprivate let squareSize:Double = 0.01
+    fileprivate let spacing:Double = 0.01
+    fileprivate let maxHeight = 10000
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class ExtrudeGraphicsViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ExtrudeGraphicsViewController"]
         
         //initialize scene with topographic basemap
-        let scene = AGSScene(basemap: AGSBasemap.topographicBasemap())
+        let scene = AGSScene(basemap: AGSBasemap.topographic())
         //assign scene to the scene view
         self.sceneView.scene = scene
         
@@ -44,20 +44,20 @@ class ExtrudeGraphicsViewController: UIViewController {
         
         //add graphics overlay
         self.graphicsOverlay = AGSGraphicsOverlay()
-        self.graphicsOverlay.sceneProperties?.surfacePlacement = .Draped
-        self.sceneView.graphicsOverlays.addObject(self.graphicsOverlay)
+        self.graphicsOverlay.sceneProperties?.surfacePlacement = .draped
+        self.sceneView.graphicsOverlays.add(self.graphicsOverlay)
         
         //simple renderer with extrusion property
         let renderer = AGSSimpleRenderer()
-        let lineSymbol = AGSSimpleLineSymbol(style: .Solid, color: UIColor.whiteColor(), width: 1)
-        renderer.symbol = AGSSimpleFillSymbol(style: .Solid, color: UIColor.primaryBlue(), outline: lineSymbol)
-        renderer.sceneProperties?.extrusionMode = .BaseHeight
+        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.white, width: 1)
+        renderer.symbol = AGSSimpleFillSymbol(style: .solid, color: UIColor.primaryBlue(), outline: lineSymbol)
+        renderer.sceneProperties?.extrusionMode = .baseHeight
         renderer.sceneProperties?.extrusionExpression = "[height]"
         self.graphicsOverlay.renderer = renderer
         
         // add base surface for elevation data
         let surface = AGSSurface()
-        let elevationSource = AGSArcGISTiledElevationSource(URL: NSURL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!)
+        let elevationSource = AGSArcGISTiledElevationSource(url: URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!)
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
         
@@ -66,7 +66,7 @@ class ExtrudeGraphicsViewController: UIViewController {
     }
     
     
-    private func addGraphics() {
+    fileprivate func addGraphics() {
         //starting point
         let x = self.sceneView.currentViewpointCamera().location.x - 0.01
         let y = self.sceneView.currentViewpointCamera().location.y + 0.25
@@ -82,22 +82,22 @@ class ExtrudeGraphicsViewController: UIViewController {
     
     //the function returns a polygon starting at the given point
     //with size equal to squareSize
-    private func polygonForStartingPoint(point:AGSPoint) -> AGSPolygon {
-        let polygon = AGSPolygonBuilder(spatialReference: AGSSpatialReference.WGS84())
-        polygon.addPointWithX(point.x, y: point.y)
-        polygon.addPointWithX(point.x, y: point.y+squareSize)
-        polygon.addPointWithX(point.x + squareSize, y: point.y + squareSize)
-        polygon.addPointWithX(point.x + squareSize, y: point.y)
+    fileprivate func polygonForStartingPoint(_ point:AGSPoint) -> AGSPolygon {
+        let polygon = AGSPolygonBuilder(spatialReference: AGSSpatialReference.wgs84())
+        polygon.addPointWith(x: point.x, y: point.y)
+        polygon.addPointWith(x: point.x, y: point.y+squareSize)
+        polygon.addPointWith(x: point.x + squareSize, y: point.y + squareSize)
+        polygon.addPointWith(x: point.x + squareSize, y: point.y)
         return polygon.toGeometry()
     }
     
     //add a graphic to the graphics overlay for the given polygon
-    private func addGraphicForPolygon(polygon:AGSPolygon) {
+    fileprivate func addGraphicForPolygon(_ polygon:AGSPolygon) {
         let rand = Int(arc4random()) % self.maxHeight
         
         let graphic = AGSGraphic(geometry: polygon, symbol: nil, attributes: nil)
         graphic.attributes.setValue(rand, forKey: "height")
-        self.graphicsOverlay.graphics.addObject(graphic)
+        self.graphicsOverlay.graphics.add(graphic)
     }
 
     override func didReceiveMemoryWarning() {

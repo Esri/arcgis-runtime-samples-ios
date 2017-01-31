@@ -17,7 +17,7 @@ import UIKit
 
 protocol RGBRendererTypeCellDelegate: class {
     
-    func rgbRendererTypeCell(rgbRendererTypeCell: RGBRendererTypeCell, didUpdateType type: StretchType)
+    func rgbRendererTypeCell(_ rgbRendererTypeCell: RGBRendererTypeCell, didUpdateType type: StretchType)
 }
 
 class RGBRendererTypeCell: UITableViewCell, HorizontalPickerDelegate {
@@ -35,7 +35,7 @@ class RGBRendererTypeCell: UITableViewCell, HorizontalPickerDelegate {
     
     //MARK: - HorizontalPickerDelegate
     
-    func horizontalPicker(horizontalPicker: HorizontalPicker, didUpdateSelectedIndex index: Int) {
+    func horizontalPicker(_ horizontalPicker: HorizontalPicker, didUpdateSelectedIndex index: Int) {
         self.delegate?.rgbRendererTypeCell(self, didUpdateType: StretchType(id: index)!)
     }
 

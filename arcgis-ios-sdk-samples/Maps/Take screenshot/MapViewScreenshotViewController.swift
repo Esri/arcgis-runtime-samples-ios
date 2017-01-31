@@ -17,9 +17,9 @@ import ArcGIS
 
 class MapViewScreenshotViewController: UIViewController {
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var overlayParentView:UIView!
-    @IBOutlet private weak var overlayImageView:UIImageView!
+    @IBOutlet fileprivate weak var mapView:AGSMapView!
+    @IBOutlet fileprivate weak var overlayParentView:UIView!
+    @IBOutlet fileprivate weak var overlayImageView:UIImageView!
     
     var map:AGSMap!
     
@@ -34,7 +34,7 @@ class MapViewScreenshotViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MapViewScreenshotViewController"]
         
         //instantiate map with imagegry basemap
-        self.map = AGSMap(basemap: AGSBasemap.imageryBasemap())
+        self.map = AGSMap(basemap: AGSBasemap.imagery())
         
         //assign the map to the map view
         self.mapView.map = self.map
@@ -44,7 +44,7 @@ class MapViewScreenshotViewController: UIViewController {
         self.overlayParentView.addGestureRecognizer(self.tapGestureRecognizer)
         
         //add border to the overlay image view
-        self.overlayImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        self.overlayImageView.layer.borderColor = UIColor.white.cgColor
         self.overlayImageView.layer.borderWidth = 2
     }
     
@@ -57,23 +57,23 @@ class MapViewScreenshotViewController: UIViewController {
     
     //hide the screenshot overlay view
     func hideOverlayParentView() {
-        self.overlayParentView.hidden = true
+        self.overlayParentView.isHidden = true
     }
     
     //show the screenshot overlay view
-    private func showOverlayParentView() {
-        self.overlayParentView.hidden = false
+    fileprivate func showOverlayParentView() {
+        self.overlayParentView.isHidden = false
     }
     
     //called when the user taps on the screenshot button
-    @IBAction private func screenshotAction(sender: AnyObject) {
+    @IBAction fileprivate func screenshotAction(_ sender: AnyObject) {
         //hide the screenshot view if currently visible
         self.hideOverlayParentView()
         
         //the method on map view we can use to get the screenshot image
-        self.mapView.exportImageWithCompletion { [weak self] (image:UIImage?, error:NSError?) -> Void in
+        self.mapView.exportImage { [weak self] (image:UIImage?, error:Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
             }
             if let image = image {
                 //on completion imitate flash
@@ -83,12 +83,12 @@ class MapViewScreenshotViewController: UIViewController {
     }
     
     //imitate the white flash screen when the user taps on the screenshot button
-    private func imitateFlash(image:UIImage) {
+    fileprivate func imitateFlash(_ image:UIImage) {
         let flashView = UIView(frame: self.mapView.bounds)
-        flashView.backgroundColor = UIColor.whiteColor()
+        flashView.backgroundColor = UIColor.white
         self.mapView.addSubview(flashView)
         //animate the white flash view on and off to show the flash effect
-        UIView.animateWithDuration(0.3, animations: { () -> Void in
+        UIView.animate(withDuration: 0.3, animations: { () -> Void in
             flashView.alpha = 0
             }, completion: { [weak self] (finished) -> Void in
                 //On completion play the shutter sound
@@ -103,9 +103,9 @@ class MapViewScreenshotViewController: UIViewController {
     //to play the shutter sound once the screenshot is taken
     func playShutterSound() {
         if self.shutterSound == 0 {
-            if let filepath = NSBundle.mainBundle().pathForResource("Camera Shutter", ofType: "caf") {
-                let url = NSURL(fileURLWithPath: filepath)
-                AudioServicesCreateSystemSoundID(url, &self.shutterSound)
+            if let filepath = Bundle.main.path(forResource: "Camera Shutter", ofType: "caf") {
+                let url = URL(fileURLWithPath: filepath)
+                AudioServicesCreateSystemSoundID(url as CFURL, &self.shutterSound)
             }
         }
         

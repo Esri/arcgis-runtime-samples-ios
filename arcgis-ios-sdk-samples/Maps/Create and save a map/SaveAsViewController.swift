@@ -15,15 +15,15 @@
 import UIKit
 
 protocol SaveAsVCDelegate:class {
-    func saveAsViewController(saveAsViewController:SaveAsViewController, didInitiateSaveWithTitle title:String, tags:[String], itemDescription:String?)
-    func saveAsViewControllerDidCancel(saveAsViewController:SaveAsViewController)
+    func saveAsViewController(_ saveAsViewController:SaveAsViewController, didInitiateSaveWithTitle title:String, tags:[String], itemDescription:String?)
+    func saveAsViewControllerDidCancel(_ saveAsViewController:SaveAsViewController)
 }
 
 class SaveAsViewController: UIViewController {
     
     @IBOutlet  weak var titleTextField:UITextField!
-    @IBOutlet private weak var tagsTextField:UITextField!
-    @IBOutlet private weak var descriptionTextView:UITextView!
+    @IBOutlet fileprivate weak var tagsTextField:UITextField!
+    @IBOutlet fileprivate weak var descriptionTextView:UITextView!
     
     weak var delegate:SaveAsVCDelegate?
     
@@ -32,7 +32,7 @@ class SaveAsViewController: UIViewController {
         
         //stylize description textView
         self.descriptionTextView.layer.cornerRadius = 5
-        self.descriptionTextView.layer.borderColor = UIColor(white: 193.0/255.0, alpha: 1.0).CGColor
+        self.descriptionTextView.layer.borderColor = UIColor(white: 193.0/255.0, alpha: 1.0).cgColor
         self.descriptionTextView.layer.borderWidth = 0.5
     }
     
@@ -49,23 +49,23 @@ class SaveAsViewController: UIViewController {
     
     //MARK: - Actions
     
-    @IBAction private func cancelAction() {
+    @IBAction fileprivate func cancelAction() {
         self.delegate?.saveAsViewControllerDidCancel(self)
     }
     
-    @IBAction private func saveAction() {
+    @IBAction fileprivate func saveAction() {
         //Validations
         guard let title = self.titleTextField.text, let tags = self.tagsTextField.text else {
             //show error message
-            SVProgressHUD.showErrorWithStatus("Title and tags are required fields", maskType: .Gradient)
+            SVProgressHUD.showError(withStatus: "Title and tags are required fields", maskType: .gradient)
             return
         }
         
         var itemDescription: String?
-        var tagsArray = tags.componentsSeparatedByString(",")
+        var tagsArray = tags.components(separatedBy: ",")
 
         tagsArray = tagsArray.map ({
-            $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            $0.trimmingCharacters(in: CharacterSet.whitespaces)
         })
         
         if !self.descriptionTextView.text.isEmpty {

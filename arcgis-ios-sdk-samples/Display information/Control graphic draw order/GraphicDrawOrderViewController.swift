@@ -23,10 +23,10 @@ class GraphicDrawOrderViewController: UIViewController {
     
     var map:AGSMap!
     
-    private var graphicsOverlay = AGSGraphicsOverlay()
-    private var graphics:[AGSGraphic]!
+    fileprivate var graphicsOverlay = AGSGraphicsOverlay()
+    fileprivate var graphics:[AGSGraphic]!
     
-    private var drawIndex:Int = 0
+    fileprivate var drawIndex:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +35,12 @@ class GraphicDrawOrderViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GraphicDrawOrderViewController"]
         
         //create an instance of a map with ESRI topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.streetsBasemap())
+        self.map = AGSMap(basemap: AGSBasemap.streets())
         //assign map to the map view
         self.mapView.map = self.map
         
         //add the graphics overlay to the map view
-        self.mapView.graphicsOverlays.addObject(self.graphicsOverlay)
+        self.mapView.graphicsOverlays.add(self.graphicsOverlay)
         
         //add the graphics to the overlay
         self.addGraphics()
@@ -61,7 +61,7 @@ class GraphicDrawOrderViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    private func addGraphics() {
+    fileprivate func addGraphics() {
         //starting x and y
         let x:Double = -13149000
         let y:Double = 4e6
@@ -96,12 +96,12 @@ class GraphicDrawOrderViewController: UIViewController {
         self.graphics.append(graphic)
         
         //add the graphics to the overlay
-        self.graphicsOverlay.graphics.addObjectsFromArray(self.graphics)
+        self.graphicsOverlay.graphics.addObjects(from: self.graphics)
     }
     
     //MARK: - Actions
     
-    @IBAction func buttonAction(sender:UIButton) {
+    @IBAction func buttonAction(_ sender:UIButton) {
         //increment draw index by 1 and assign as the zIndex for the respective graphic
         self.drawIndex += 1
         

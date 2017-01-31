@@ -17,9 +17,9 @@ import ArcGIS
 
 class MILUsingURLViewController: UIViewController {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet fileprivate weak var mapView:AGSMapView!
     
-    private var map:AGSMap!
+    fileprivate var map:AGSMap!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +28,11 @@ class MILUsingURLViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MILUsingURLViewController"]
         
         //create a map image layer using a url
-        let mapImageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!)
+        let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!)
         //initialize the map
         self.map = AGSMap()
         //add the image layer to the map
-        self.map.operationalLayers.addObject(mapImageLayer)
+        self.map.operationalLayers.add(mapImageLayer)
         
         self.mapView.map = self.map
     }

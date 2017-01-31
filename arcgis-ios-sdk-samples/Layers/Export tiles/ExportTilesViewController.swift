@@ -24,14 +24,14 @@ class ExportTilesViewController: UIViewController {
     @IBOutlet var previewMapView:AGSMapView!
     @IBOutlet var barButtonItem:UIBarButtonItem!
     
-    private var graphicsOverlay = AGSGraphicsOverlay()
-    private var extentGraphic:AGSGraphic!
+    fileprivate var graphicsOverlay = AGSGraphicsOverlay()
+    fileprivate var extentGraphic:AGSGraphic!
     
-    private var tiledLayer:AGSArcGISTiledLayer!
-    private var job:AGSExportTileCacheJob!
-    private var exportTask:AGSExportTileCacheTask!
+    fileprivate var tiledLayer:AGSArcGISTiledLayer!
+    fileprivate var job:AGSExportTileCacheJob!
+    fileprivate var exportTask:AGSExportTileCacheTask!
     
-    private var downloading = false {
+    fileprivate var downloading = false {
         didSet {
             self.barButtonItem?.title = self.downloading ? "Cancel" : "Export tiles"
         }
@@ -43,17 +43,17 @@ class ExportTilesViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ExportTilesViewController"]
         
-        self.tiledLayer = AGSArcGISTiledLayer(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer")!)
+        self.tiledLayer = AGSArcGISTiledLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer")!)
         let map = AGSMap(basemap: AGSBasemap(baseLayer: self.tiledLayer))
         
         self.mapView.map = map
         
         //add the graphics overlay to the map view
-        self.mapView.graphicsOverlays.addObject(self.graphicsOverlay)
+        self.mapView.graphicsOverlays.add(self.graphicsOverlay)
         
         self.setupExtentView()
         
-        self.previewMapView.layer.borderColor = UIColor.whiteColor().CGColor
+        self.previewMapView.layer.borderColor = UIColor.white.cgColor
         self.previewMapView.layer.borderWidth = 8
     }
     
@@ -63,15 +63,15 @@ class ExportTilesViewController: UIViewController {
     }
     
     func setupExtentView() {
-        self.extentView.layer.borderColor = UIColor.redColor().CGColor
+        self.extentView.layer.borderColor = UIColor.red.cgColor
         self.extentView.layer.borderWidth = 2
     }
     
     func frameToExtent() -> AGSEnvelope {
-        let frame = self.mapView.convertRect(self.extentView.frame, fromView: self.view)
+        let frame = self.mapView.convert(self.extentView.frame, from: self.view)
         
-        let minPoint = self.mapView.screenToLocation(frame.origin)
-        let maxPoint = self.mapView.screenToLocation(CGPoint(x: frame.origin.x+frame.width, y: frame.origin.y+frame.height))
+        let minPoint = self.mapView.screen(toLocation: frame.origin)
+        let maxPoint = self.mapView.screen(toLocation: CGPoint(x: frame.origin.x+frame.width, y: frame.origin.y+frame.height))
         let extent = AGSEnvelope(min: minPoint, max: maxPoint)
         return extent
     }
@@ -87,18 +87,18 @@ class ExportTilesViewController: UIViewController {
         }
     }
     
-    private func cancelDownload() {
+    fileprivate func cancelDownload() {
         if self.job != nil {
             SVProgressHUD.dismiss()
             //TODO: Cancel the job when the API is available
             //self.job.cancel
             self.job = nil
             self.downloading = false
-            self.visualEffectView.hidden = true
+            self.visualEffectView.isHidden = true
         }
     }
     
-    private func initiateDownload() {
+    fileprivate func initiateDownload() {
         
         //get the parameters by specifying the selected area,
         //mapview's current scale as the minScale and tiled layer's max scale as maxScale
@@ -107,7 +107,7 @@ class ExportTilesViewController: UIViewController {
         
         //TODO: Remove this code once design has been udpated
         if minScale == maxScale {
-            SVProgressHUD.showErrorWithStatus("Min scale and max scale cannot be the same", maskType: .Gradient)
+            SVProgressHUD.showError(withStatus: "Min scale and max scale cannot be the same", maskType: .gradient)
             return
         }
         
@@ -118,10 +118,10 @@ class ExportTilesViewController: UIViewController {
         self.deleteAllTpks()
         
         //initialize the export task
-        self.exportTask = AGSExportTileCacheTask(URL: self.tiledLayer.URL!)
-        self.exportTask.exportTileCacheParametersWithAreaOfInterest(self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale) { [weak self] (params: AGSExportTileCacheParameters?, error: NSError?) in
+        self.exportTask = AGSExportTileCacheTask(url: self.tiledLayer.url!)
+        self.exportTask.exportTileCacheParameters(withAreaOfInterest: self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale) { [weak self] (params: AGSExportTileCacheParameters?, error: Error?) in
             if let error = error {
-                SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
             }
             else {
                 self?.exportTilesUsingParameters(params!)
@@ -129,28 +129,28 @@ class ExportTilesViewController: UIViewController {
         }
     }
     
-    private func exportTilesUsingParameters(params: AGSExportTileCacheParameters) {
+    fileprivate func exportTilesUsingParameters(_ params: AGSExportTileCacheParameters) {
         //destination path for the tpk, including name
-        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let destinationPath = "\(path)/myTileCache.tpk"
         
         //get the job
-        self.job = self.exportTask.exportTileCacheJobWithParameters(params, downloadFileURL: NSURL(string: destinationPath)!)
+        self.job = self.exportTask.exportTileCacheJob(with: params, downloadFileURL: URL(string: destinationPath)!)
         //run the job
-        self.job.startWithStatusHandler({ (status: AGSJobStatus) -> Void in
+        self.job.start(statusHandler: { (status: AGSJobStatus) -> Void in
             //show job status
-            SVProgressHUD.showWithStatus(status.statusString(), maskType: .Gradient)
-        }) { [weak self] (result: AnyObject?, error: NSError?) -> Void in
+            SVProgressHUD.show(withStatus: status.statusString(), maskType: .gradient)
+        }) { [weak self] (result: AnyObject?, error: Error?) -> Void in
             self?.downloading = false
             
             if let error = error {
-                SVProgressHUD.showErrorWithStatus(error.localizedFailureReason, maskType: .Gradient)
+                SVProgressHUD.showError(withStatus: (error as NSError).localizedFailureReason, maskType: .gradient)
             }
             else {
                 
                 //hide progress view
                 SVProgressHUD.dismiss()
-                self?.visualEffectView.hidden = false
+                self?.visualEffectView.isHidden = false
                 
                 let tileCache = result as! AGSTileCache
                 let newTiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
@@ -160,20 +160,20 @@ class ExportTilesViewController: UIViewController {
     }
     
     @IBAction func closeAction() {
-        self.visualEffectView.hidden = true
+        self.visualEffectView.isHidden = true
         
         //release the map in order to free the tiled layer
         self.previewMapView.map = nil
     }
     
-    private func deleteAllTpks() {
+    fileprivate func deleteAllTpks() {
         
-        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         do {
-            let files = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(path)
+            let files = try FileManager.default.contentsOfDirectory(atPath: path)
             for file in files {
                 if file.hasSuffix(".tpk") {
-                    try NSFileManager.defaultManager().removeItemAtPath((path as NSString).stringByAppendingPathComponent(file))
+                    try FileManager.default.removeItem(atPath: (path as NSString).appendingPathComponent(file))
                 }
             }
             print("deleted all local data")

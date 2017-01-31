@@ -44,9 +44,9 @@ class LocalTiledLayerViewController: UIViewController, TilePackagesListVCDelegat
     
     //MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TilePackagesListSegue" {
-            let controller = segue.destinationViewController as! TilePackagesListViewController
+            let controller = segue.destination as! TilePackagesListViewController
             controller.delegate = self
         }
     }
@@ -54,14 +54,14 @@ class LocalTiledLayerViewController: UIViewController, TilePackagesListVCDelegat
     //MARK: - TilePackagesListVCDelegate
     
     //called when a selection is made in the tile packages list
-    func tilePackagesListViewController(tilePackagesListViewController: TilePackagesListViewController, didSelectTPKWithPath path: String) {
+    func tilePackagesListViewController(_ tilePackagesListViewController: TilePackagesListViewController, didSelectTPKWithPath path: String) {
         
         //create a new map with selected tile package as the basemap
-        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(fileURL: NSURL(fileURLWithPath: path)))
+        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(fileURL: URL(fileURLWithPath: path)))
         let map = AGSMap(basemap: AGSBasemap(baseLayer: localTiledLayer))
         self.mapView.map = map
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
 }

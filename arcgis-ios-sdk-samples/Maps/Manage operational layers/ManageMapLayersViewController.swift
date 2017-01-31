@@ -20,18 +20,18 @@ class ManageMapLayersViewController: UIViewController, MMLLayersViewControllerDe
     @IBOutlet weak var mapView:AGSMapView!
     var map:AGSMap!
     
-    private var deletedLayers:[AGSLayer]!
+    fileprivate var deletedLayers:[AGSLayer]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
+        self.map = AGSMap(basemap: AGSBasemap.topographic())
         
-        let imageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!)
-        self.map.operationalLayers.addObject(imageLayer)
+        let imageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!)
+        self.map.operationalLayers.add(imageLayer)
         
-        let tiledLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
-        self.map.operationalLayers.addObject(tiledLayer)
+        let tiledLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
+        self.map.operationalLayers.add(tiledLayer)
 
         self.deletedLayers = [AGSLayer]()
         
@@ -39,7 +39,7 @@ class ManageMapLayersViewController: UIViewController, MMLLayersViewControllerDe
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ManageMapLayersViewController", "MMLLayersViewController"]
         
         self.mapView.map = map
-        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -133e5, y: 45e5, spatialReference: AGSSpatialReference(WKID: 3857)), scale: 2e7))
+        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -133e5, y: 45e5, spatialReference: AGSSpatialReference(wkid: 3857)), scale: 2e7))
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,10 +49,10 @@ class ManageMapLayersViewController: UIViewController, MMLLayersViewControllerDe
     
     //MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LayersSegue" {
             
-            let navigationController = segue.destinationViewController as! UINavigationController
+            let navigationController = segue.destination as! UINavigationController
             let controller = navigationController.viewControllers[0] as! MMLLayersViewController
             controller.layers = self.map.operationalLayers
             controller.deletedLayers = self.deletedLayers
@@ -63,8 +63,8 @@ class ManageMapLayersViewController: UIViewController, MMLLayersViewControllerDe
     
     //MARK: - MMLLayersViewControllerDelegate
     
-    func layersViewControllerWantsToClose(layersViewController: MMLLayersViewController, withDeletedLayers layers: [AGSLayer]) {
+    func layersViewControllerWantsToClose(_ layersViewController: MMLLayersViewController, withDeletedLayers layers: [AGSLayer]) {
         self.deletedLayers = layers
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }

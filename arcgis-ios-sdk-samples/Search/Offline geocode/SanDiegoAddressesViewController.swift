@@ -15,7 +15,7 @@
 import UIKit
 
 protocol SanDiegoAddressesVCDelegate:class {
-    func sanDiegoAddressesViewController(sanDiegoAddressesViewController: SanDiegoAddressesViewController, didSelectAddress address:String)
+    func sanDiegoAddressesViewController(_ sanDiegoAddressesViewController: SanDiegoAddressesViewController, didSelectAddress address:String)
 }
 
 class SanDiegoAddressesViewController: UITableViewController {
@@ -23,7 +23,7 @@ class SanDiegoAddressesViewController: UITableViewController {
     weak var delegate:SanDiegoAddressesVCDelegate?
     
     //prepopulated list of addresses
-    private var addresses = ["910 N Harbor Dr, San Diego, CA 92101",
+    fileprivate var addresses = ["910 N Harbor Dr, San Diego, CA 92101",
         "2920 Zoo Dr, San Diego, CA 92101",
         "111 W Harbor Dr, San Diego, CA 92101",
         "868 4th Ave, San Diego, CA 92101",
@@ -41,26 +41,26 @@ class SanDiegoAddressesViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.addresses.count
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("AddressCell")!
-        cell.textLabel?.text = self.addresses[indexPath.row]
-        cell.backgroundColor = UIColor.clearColor()
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell")!
+        cell.textLabel?.text = self.addresses[(indexPath as NSIndexPath).row]
+        cell.backgroundColor = UIColor.clear
         return cell
     }
     
     // MARK: - Table view delegate
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let address = self.addresses[indexPath.row]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let address = self.addresses[(indexPath as NSIndexPath).row]
         self.delegate?.sanDiegoAddressesViewController(self, didSelectAddress: address)
     }
     

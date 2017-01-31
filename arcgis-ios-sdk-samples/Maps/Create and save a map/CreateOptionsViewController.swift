@@ -16,21 +16,21 @@ import UIKit
 import ArcGIS
 
 protocol CreateOptionsVCDelegate:class {
-    func createOptionsViewController(createOptionsViewController:CreateOptionsViewController, didSelectBasemap basemap:AGSBasemap, layers:[AGSLayer]?)
+    func createOptionsViewController(_ createOptionsViewController:CreateOptionsViewController, didSelectBasemap basemap:AGSBasemap, layers:[AGSLayer]?)
 }
 
 class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet private weak var tableView:UITableView!
+    @IBOutlet fileprivate weak var tableView:UITableView!
     
-    private var basemaps = [AGSBasemap.streetsBasemap(), AGSBasemap.imageryBasemap(), AGSBasemap.topographicBasemap(), AGSBasemap.oceansBasemap()]
-    private var layers = [AGSLayer]()
+    fileprivate var basemaps = [AGSBasemap.streets(), AGSBasemap.imagery(), AGSBasemap.topographic(), AGSBasemap.oceans()]
+    fileprivate var layers = [AGSLayer]()
     
-    private var layerURLs = ["https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer",
+    fileprivate var layerURLs = ["https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer",
         "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Census/MapServer"]
     
-    private var selectedBasemapIndex:Int!
-    private var selectedLayersIndex = [Int]()
+    fileprivate var selectedBasemapIndex:Int!
+    fileprivate var selectedLayersIndex = [Int]()
     
     
     weak var delegate:CreateOptionsVCDelegate?
@@ -40,7 +40,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
 
         //populate layers array
         for urlString in self.layerURLs {
-            let layer = AGSArcGISMapImageLayer(URL: NSURL(string: urlString)!)
+            let layer = AGSArcGISMapImageLayer(url: URL(string: urlString)!)
             self.layers.append(layer)
         }
         
@@ -63,85 +63,85 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
 
     //MARK: - table view data source
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? self.basemaps.count : self.layers.count
     }
     
     //MARK: - table view delegates
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell
         
-        if indexPath.section == 0 {
-            cell = tableView.dequeueReusableCellWithIdentifier("CreateBasemapCell")!
-            let basemap = self.basemaps[indexPath.row]
+        if (indexPath as NSIndexPath).section == 0 {
+            cell = tableView.dequeueReusableCell(withIdentifier: "CreateBasemapCell")!
+            let basemap = self.basemaps[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = basemap.name
             
             //accesory view
-            if let index = self.selectedBasemapIndex where index == indexPath.row {
-                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            if let index = self.selectedBasemapIndex , index == (indexPath as NSIndexPath).row {
+                cell.accessoryType = UITableViewCellAccessoryType.checkmark
             }
             else {
-                cell.accessoryType = UITableViewCellAccessoryType.None
+                cell.accessoryType = UITableViewCellAccessoryType.none
             }
         }
         else {
-            cell = tableView.dequeueReusableCellWithIdentifier("CreateLayerCell")!
-            let layer = self.layers[indexPath.row]
+            cell = tableView.dequeueReusableCell(withIdentifier: "CreateLayerCell")!
+            let layer = self.layers[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = layer.name
             //accessory view
-            if self.selectedLayersIndex.contains(indexPath.row) {
-                cell.accessoryType = .Checkmark
+            if self.selectedLayersIndex.contains((indexPath as NSIndexPath).row) {
+                cell.accessoryType = .checkmark
             }
             else {
-                cell.accessoryType = .None
+                cell.accessoryType = .none
             }
         }
         
-        cell.backgroundColor = UIColor.clearColor()
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.backgroundColor = UIColor.clear
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var indexPathArray = [NSIndexPath]()
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var indexPathArray = [IndexPath]()
         
-        if indexPath.section == 0 {
+        if (indexPath as NSIndexPath).section == 0 {
             if let previousSelectionIndex = self.selectedBasemapIndex {
                 //create a NSIndexPath for the previously selected index
-                let previousSelectionIndexPath = NSIndexPath(forRow: previousSelectionIndex, inSection: 0)
+                let previousSelectionIndexPath = IndexPath(row: previousSelectionIndex, section: 0)
                 indexPathArray.append(previousSelectionIndexPath)
             }
-            self.selectedBasemapIndex = indexPath.row
+            self.selectedBasemapIndex = (indexPath as NSIndexPath).row
         }
         else {
             //check if already selected
-            if self.selectedLayersIndex.contains(indexPath.row) {
+            if self.selectedLayersIndex.contains((indexPath as NSIndexPath).row) {
                 //remove the selection
-                self.selectedLayersIndex.removeAtIndex(self.selectedLayersIndex.indexOf(indexPath.row)!)
+                self.selectedLayersIndex.remove(at: self.selectedLayersIndex.index(of: (indexPath as NSIndexPath).row)!)
             }
             else {
-                self.selectedLayersIndex.append(indexPath.row)
+                self.selectedLayersIndex.append((indexPath as NSIndexPath).row)
             }
         }
         indexPathArray.append(indexPath)
         //reload selected cells instead of the whole table view
-        tableView.reloadRowsAtIndexPaths(indexPathArray, withRowAnimation: UITableViewRowAnimation.None)
+        tableView.reloadRows(at: indexPathArray, with: UITableViewRowAnimation.none)
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return section == 0 ? "Choose a basemap" : "Add operational layers"
     }
 
     //MARK: - Actions
     
-    @IBAction private func doneAction() {
+    @IBAction fileprivate func doneAction() {
         if self.selectedBasemapIndex == nil {
-            SVProgressHUD.showErrorWithStatus("Please select at least a basemap", maskType: .Gradient)
+            SVProgressHUD.showError(withStatus: "Please select at least a basemap", maskType: .gradient)
             return
         }
 

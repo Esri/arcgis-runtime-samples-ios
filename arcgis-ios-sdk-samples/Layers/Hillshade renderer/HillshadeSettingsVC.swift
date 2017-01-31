@@ -17,7 +17,7 @@ import ArcGIS
 
 protocol HillshadeSettingsDelegate: class {
     
-    func hillshadeSettingsVC(hillshadeSettingsVC: HillshadeSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType)
+    func hillshadeSettingsVC(_ hillshadeSettingsVC: HillshadeSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType)
 }
 
 class HillshadeSettingsVC: UIViewController {
@@ -45,23 +45,23 @@ class HillshadeSettingsVC: UIViewController {
     func selectedSlope() -> AGSSlopeType {
         switch self.horizontalPicker.selectedIndex {
         case 0:
-            return AGSSlopeType.None
+            return AGSSlopeType.none
         case 1:
-            return AGSSlopeType.Degree
+            return AGSSlopeType.degree
         case 2:
-            return AGSSlopeType.PercentRise
+            return AGSSlopeType.percentRise
         default:
-            return AGSSlopeType.Scaled
+            return AGSSlopeType.scaled
         }
     }
     
     //MARK: - Actions
     
-    @IBAction func azimuthSliderValueChanged(slider: UISlider) {
+    @IBAction func azimuthSliderValueChanged(_ slider: UISlider) {
         self.azimuthLabel.text = "\(Int(slider.value))"
     }
     
-    @IBAction func altitudeSliderValueChanged(slider: UISlider) {
+    @IBAction func altitudeSliderValueChanged(_ slider: UISlider) {
         self.altitudeLabel.text = "\(Int(slider.value))"
     }
     

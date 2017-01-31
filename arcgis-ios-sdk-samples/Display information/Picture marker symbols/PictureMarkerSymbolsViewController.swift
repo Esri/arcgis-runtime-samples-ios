@@ -19,7 +19,7 @@ class PictureMarkerSymbolsViewController: UIViewController {
 
     @IBOutlet var mapView:AGSMapView!
     
-    private var graphicsOverlay = AGSGraphicsOverlay()
+    fileprivate var graphicsOverlay = AGSGraphicsOverlay()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class PictureMarkerSymbolsViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["PictureMarkerSymbolsViewController"]
         
         //initialize map with basemap
-        let map = AGSMap(basemap: AGSBasemap.topographicBasemap())
+        let map = AGSMap(basemap: AGSBasemap.topographic())
         
         //initial envelope
         let center = AGSPoint(x: -225166.5, y: 6551249, spatialReference: AGSSpatialReference.webMercator())
@@ -38,7 +38,7 @@ class PictureMarkerSymbolsViewController: UIViewController {
         self.mapView.map = map
         
         //add the graphics overlay to the map view
-        self.mapView.graphicsOverlays.addObject(self.graphicsOverlay)
+        self.mapView.graphicsOverlays.add(self.graphicsOverlay)
         
         //add picture marker symbol using a remote image
         self.addPictureMarkerSymbolFromURL()
@@ -53,10 +53,10 @@ class PictureMarkerSymbolsViewController: UIViewController {
     }
 
     
-    private func addPictureMarkerSymbolFromURL() {
-        let url = NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0/images/e82f744ebb069bb35b234b3fea46deae")!
+    fileprivate func addPictureMarkerSymbolFromURL() {
+        let url = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0/images/e82f744ebb069bb35b234b3fea46deae")!
         
-        let campsiteSymbol = AGSPictureMarkerSymbol(URL: url)
+        let campsiteSymbol = AGSPictureMarkerSymbol(url: url)
         
         //optionally set the size (if not set, the size in pixels of the image will be used)
         campsiteSymbol.width = 24
@@ -69,10 +69,10 @@ class PictureMarkerSymbolsViewController: UIViewController {
         let graphic = AGSGraphic(geometry: campsitePoint, symbol: campsiteSymbol, attributes: nil)
         
         //add the graphic to the overlay
-        self.graphicsOverlay.graphics.addObject(graphic)
+        self.graphicsOverlay.graphics.add(graphic)
     }
     
-    private func addPictureMarkerSymbolFromImage() {
+    fileprivate func addPictureMarkerSymbolFromImage() {
         //image name
         let imageName = "PinBlueStar"
         
@@ -89,6 +89,6 @@ class PictureMarkerSymbolsViewController: UIViewController {
         let graphic = AGSGraphic(geometry: pinPoint, symbol: pinSymbol, attributes: nil)
         
         //add the graphic to the overlay
-        self.graphicsOverlay.graphics.addObject(graphic)
+        self.graphicsOverlay.graphics.add(graphic)
     }
 }

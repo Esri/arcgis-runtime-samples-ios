@@ -16,13 +16,13 @@ import UIKit
 
 class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet private weak var tableView:UITableView!
+    @IBOutlet fileprivate weak var tableView:UITableView!
     
     var list:[String]! 
     
-    private var selectAction:((Int) -> Void)!
+    fileprivate var selectAction:((Int) -> Void)!
     
-    func setSelectAction(action: (Int) -> Void) {
+    func setSelectAction(_ action: @escaping (Int) -> Void) {
         self.selectAction = action
     }
     
@@ -40,27 +40,27 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     //MARK: tableview data source
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list?.count ?? 0
     }
     
     //MARK: tableview delegate
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ListCell")!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell")!
         
-        cell.textLabel?.text = self.list[indexPath.row]
-        cell.backgroundColor = UIColor.clearColor()
+        cell.textLabel?.text = self.list[(indexPath as NSIndexPath).row]
+        cell.backgroundColor = UIColor.clear
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.selectAction != nil {
-            self.selectAction(indexPath.row)
+            self.selectAction((indexPath as NSIndexPath).row)
         }
     }
 }

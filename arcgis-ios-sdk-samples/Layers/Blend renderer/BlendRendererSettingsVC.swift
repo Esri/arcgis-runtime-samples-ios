@@ -18,7 +18,7 @@ import ArcGIS
 
 protocol BlendRendererSettingsVCDelegate: class {
     
-    func blendRendererSettingsVC(blendRendererSettingsVC: BlendRendererSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType)
+    func blendRendererSettingsVC(_ blendRendererSettingsVC: BlendRendererSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType)
 }
 
 class BlendRendererSettingsVC: UIViewController {
@@ -43,36 +43,36 @@ class BlendRendererSettingsVC: UIViewController {
     func selectedSlope() -> AGSSlopeType {
         switch self.slopeTypePicker.selectedIndex {
         case 0:
-            return .None
+            return .none
         case 1:
-            return .Degree
+            return .degree
         case 2:
-            return .PercentRise
+            return .percentRise
         default:
-            return .Scaled
+            return .scaled
         }
     }
     
     func selectedColorRamp() -> AGSPresetColorRampType {
         switch self.colorRampPicker.selectedIndex {
         case 0:
-            return .None
+            return .none
         case 1:
-            return .Elevation
+            return .elevation
         case 2:
-            return .DEMLight
+            return .demLight
         default:
-            return .DEMScreen
+            return .demScreen
         }
     }
     
     //MARK: - Actions
     
-    @IBAction func azimuthSliderValueChanged(slider: UISlider) {
+    @IBAction func azimuthSliderValueChanged(_ slider: UISlider) {
         self.azimuthLabel.text = "\(Int(slider.value))"
     }
     
-    @IBAction func altitudeSliderValueChanged(slider: UISlider) {
+    @IBAction func altitudeSliderValueChanged(_ slider: UISlider) {
         self.altitudeLabel.text = "\(Int(slider.value))"
     }
     

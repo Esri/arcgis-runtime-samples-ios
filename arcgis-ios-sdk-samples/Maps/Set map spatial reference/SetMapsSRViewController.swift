@@ -17,9 +17,9 @@ import ArcGIS
 
 class SetMapsSRViewController: UIViewController {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet fileprivate weak var mapView:AGSMapView!
     
-    private var map:AGSMap!
+    fileprivate var map:AGSMap!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +28,13 @@ class SetMapsSRViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SetMapsSRViewController"]
         
         //initialize the map, spatial reference as world bonne (54024) or goode (54052)
-        self.map = AGSMap(spatialReference: AGSSpatialReference(WKID: 54024)!)
+        self.map = AGSMap(spatialReference: AGSSpatialReference(wkid: 54024)!)
         
         
         //Adding a map image layer which can reproject itself to the map's spatial reference
         //Note: Some layer such as tiled layer cannot reproject and will fail to draw if their spatial 
         //reference is not the same as the map's spatial reference
-        self.map.operationalLayers.addObject(AGSArcGISMapImageLayer(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!))
+        self.map.operationalLayers.add(AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!))
         
         //assing the map to the map view
         self.mapView.map = self.map

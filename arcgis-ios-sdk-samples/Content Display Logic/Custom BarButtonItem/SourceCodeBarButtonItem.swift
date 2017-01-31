@@ -32,11 +32,11 @@ class SourceCodeBarButtonItem: UIBarButtonItem {
     }
     
     func showSegmentedVC() {
-        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let controller = storyboard.instantiateViewControllerWithIdentifier("SegmentedViewController") as! SegmentedViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let controller = storyboard.instantiateViewController(withIdentifier: "SegmentedViewController") as! SegmentedViewController
         controller.filenames = filenames
         controller.folderName = self.folderName
-        self.navController?.showViewController(controller, sender: self)
+        self.navController?.show(controller, sender: self)
     }
     
     

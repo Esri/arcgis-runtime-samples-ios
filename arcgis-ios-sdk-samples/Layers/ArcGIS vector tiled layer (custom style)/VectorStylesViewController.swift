@@ -18,7 +18,7 @@ import UIKit
 
 protocol VectorStylesVCDelegate: class {
     
-    func vectorStylesViewController(vectorStylesViewController: VectorStylesViewController, didSelectItemWithID itemID:String)
+    func vectorStylesViewController(_ vectorStylesViewController: VectorStylesViewController, didSelectItemWithID itemID:String)
 }
 
 class VectorStylesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -41,22 +41,22 @@ class VectorStylesViewController: UIViewController, UITableViewDataSource, UITab
     
     //MARK: - UITableViewDataSource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let identifier = "Cell\(indexPath.row)"
-        let cell = tableView.dequeueReusableCellWithIdentifier(identifier)!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let identifier = "Cell\((indexPath as NSIndexPath).row)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier)!
         
-        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundColor = UIColor.clear
         return cell
     }
     
     //MARK: - UITableViewDelegate
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let itemID = self.itemIDs[indexPath.row]
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let itemID = self.itemIDs[(indexPath as NSIndexPath).row]
         self.delegate?.vectorStylesViewController(self, didSelectItemWithID: itemID)
     }
 }

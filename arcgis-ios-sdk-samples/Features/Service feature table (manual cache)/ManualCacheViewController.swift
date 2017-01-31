@@ -17,9 +17,9 @@ import ArcGIS
 
 class ManualCacheViewController: UIViewController {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet fileprivate weak var mapView:AGSMapView!
     
-    private var map:AGSMap!
+    fileprivate var map:AGSMap!
     var featureTable:AGSServiceFeatureTable!
     
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ class ManualCacheViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ManualCacheViewController"]
         
         //initialize map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
+        self.map = AGSMap(basemap: AGSBasemap.topographic())
         //initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13630484, y: 4545415, spatialReference: AGSSpatialReference.webMercator()), scale: 500000)
         
@@ -37,13 +37,13 @@ class ManualCacheViewController: UIViewController {
         self.mapView.map = self.map
         
         //create feature table using a url
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0")!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0")!)
         //set the feature request mode to Manual Cache
-        featureTable.featureRequestMode = AGSFeatureRequestMode.ManualCache
+        featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
         //create feature layer using this feature table
         let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         //add feature layer to the map
-        self.map.operationalLayers.addObject(featureLayer)
+        self.map.operationalLayers.add(featureLayer)
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,14 +53,14 @@ class ManualCacheViewController: UIViewController {
     
     //MARK: - Actions
     
-    @IBAction func populateAction(sender: AnyObject) {
+    @IBAction func populateAction(_ sender: AnyObject) {
         //set query parameters
         let params = AGSQueryParameters()
         //for specific request type
         params.whereClause = "req_Type = 'Tree Maintenance or Damage'"
         
         //populate features based on query
-        self.featureTable.populateFromServiceWithParameters(params, clearCache: true, outFields: ["*"]) { (result:AGSFeatureQueryResult?, error:NSError?) -> Void in
+        self.featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { (result:AGSFeatureQueryResult?, error:Error?) -> Void in
             //check for error
             if let error = error {
                 print("populateFromServiceWithParameters error :: \(error.localizedDescription)")

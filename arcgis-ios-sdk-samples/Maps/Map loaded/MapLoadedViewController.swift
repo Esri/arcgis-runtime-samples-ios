@@ -20,7 +20,7 @@ class MapLoadedViewController: UIViewController {
     @IBOutlet var mapView:AGSMapView!
     @IBOutlet var bannerLabel:UILabel!
     
-    private var map:AGSMap!
+    fileprivate var map:AGSMap!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,19 +29,19 @@ class MapLoadedViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MapLoadedViewController"]
         
         //initialize map with basemap
-        self.map = AGSMap(basemap: AGSBasemap.imageryWithLabelsBasemap())
+        self.map = AGSMap(basemap: AGSBasemap.imageryWithLabels())
         
         //assign map to map view
         self.mapView.map = self.map
         
         //register as an observer for loadStatus property on map
-        self.map.addObserver(self, forKeyPath: "loadStatus", options: .New, context: nil)
+        self.map.addObserver(self, forKeyPath: "loadStatus", options: .new, context: nil)
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
         //update the banner label on main thread
-        dispatch_async(dispatch_get_main_queue()) { [weak self] in
+        DispatchQueue.main.async { [weak self] in
             
             if let weakSelf = self {
                 //get the string for load status
@@ -53,15 +53,15 @@ class MapLoadedViewController: UIViewController {
         }
     }
     
-    private func loadStatusString(status: AGSLoadStatus) -> String {
+    fileprivate func loadStatusString(_ status: AGSLoadStatus) -> String {
         switch status {
-        case .FailedToLoad:
+        case .failedToLoad:
             return "Failed_To_Load"
-        case .Loaded:
+        case .loaded:
             return "Loaded"
-        case .Loading:
+        case .loading:
             return "Loading"
-        case .NotLoaded:
+        case .notLoaded:
             return "Not_Loaded"
         default:
             return "Unknown"

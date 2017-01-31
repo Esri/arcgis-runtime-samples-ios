@@ -17,7 +17,7 @@ import ArcGIS
 
 class FeatureLayerURLViewController: UIViewController {
 
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet fileprivate weak var mapView:AGSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class FeatureLayerURLViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureLayerURLViewController"]
         
         //initialize map with basemap
-        let map = AGSMap(basemap: AGSBasemap.terrainWithLabelsBasemap())
+        let map = AGSMap(basemap: AGSBasemap.terrainWithLabels())
         
         //initial viewpoint
         map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13176752, y: 4090404, spatialReference: AGSSpatialReference.webMercator()), scale: 300000)
@@ -35,13 +35,13 @@ class FeatureLayerURLViewController: UIViewController {
         self.mapView.map = map
         
         //initialize service feature table using url
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Energy/Geology/FeatureServer/9")!)
+        let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Energy/Geology/FeatureServer/9")!)
 
         //create a feature layer
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         
         //add the feature layer to the operational layers
-        map.operationalLayers.addObject(featureLayer)
+        map.operationalLayers.add(featureLayer)
     }
 
     override func didReceiveMemoryWarning() {

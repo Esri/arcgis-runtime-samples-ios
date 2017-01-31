@@ -17,8 +17,8 @@ import UIKit
 import ArcGIS
 
 protocol DirectionsListVCDelegate:class {
-    func directionsListViewController(directionsListViewController:DirectionsListViewController, didSelectDirectionManuever directionManeuver:AGSDirectionManeuver)
-    func directionsListViewControllerDidDeleteRoute(directionsListViewController:DirectionsListViewController)
+    func directionsListViewController(_ directionsListViewController:DirectionsListViewController, didSelectDirectionManuever directionManeuver:AGSDirectionManeuver)
+    func directionsListViewControllerDidDeleteRoute(_ directionsListViewController:DirectionsListViewController)
 }
 
 class DirectionsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -63,22 +63,22 @@ class DirectionsListViewController: UIViewController, UITableViewDataSource, UIT
 
     //MARK: - UITableViewDataSource
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.route?.directionManeuvers.count ?? 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("DirectionCell")!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DirectionCell")!
         
-        cell.textLabel?.text = self.route.directionManeuvers[indexPath.row].directionText
+        cell.textLabel?.text = self.route.directionManeuvers[(indexPath as NSIndexPath).row].directionText
         
         return cell
     }
     
     //MARK: - UITableViewDelegate
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let directionManeuver = self.route.directionManeuvers[indexPath.row]
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let directionManeuver = self.route.directionManeuvers[(indexPath as NSIndexPath).row]
         self.delegate?.directionsListViewController(self, didSelectDirectionManuever: directionManeuver)
     }
     

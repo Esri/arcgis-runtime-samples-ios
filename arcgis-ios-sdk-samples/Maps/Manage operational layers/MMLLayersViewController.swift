@@ -16,12 +16,12 @@ import UIKit
 import ArcGIS
 
 protocol MMLLayersViewControllerDelegate:class {
-    func layersViewControllerWantsToClose(layersViewController:MMLLayersViewController, withDeletedLayers layers:[AGSLayer])
+    func layersViewControllerWantsToClose(_ layersViewController:MMLLayersViewController, withDeletedLayers layers:[AGSLayer])
 }
 
 class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet private weak var tableView:UITableView!
+    @IBOutlet fileprivate weak var tableView:UITableView!
     
     var layers:NSMutableArray!
     var deletedLayers:[AGSLayer]!
@@ -31,7 +31,7 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.editing = true
+        self.tableView.isEditing = true
         self.tableView.allowsSelectionDuringEditing = true
     }
     
@@ -40,81 +40,81 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
-    func dataSourceIndexForIndexPath(dataSource:NSMutableArray, indexpath:NSIndexPath) -> Int {
-        return dataSource.count - indexpath.row - 1
+    func dataSourceIndexForIndexPath(_ dataSource:NSMutableArray, indexpath:IndexPath) -> Int {
+        return dataSource.count - (indexpath as NSIndexPath).row - 1
     }
     
     //MARK: - table view data source
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? (self.layers?.count ?? 0) : (self.deletedLayers?.count ?? 0)
     }
     
     //MARK: - table view delegate
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return section == 0 ? "Added layers" : "Removed layers"
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell
         
-        if indexPath.section == 0 {
-            cell = tableView.dequeueReusableCellWithIdentifier("MMLLayersCell")!
+        if (indexPath as NSIndexPath).section == 0 {
+            cell = tableView.dequeueReusableCell(withIdentifier: "MMLLayersCell")!
             //layers in reverse order
             let index = self.dataSourceIndexForIndexPath(self.layers, indexpath: indexPath)
-            cell.textLabel?.text = self.layers[index].name
+            cell.textLabel?.text = (self.layers[index] as AnyObject).name
         }
         else {
-            cell = tableView.dequeueReusableCellWithIdentifier("MMLDeletedLayersCell")!
-            let layer = self.deletedLayers[indexPath.row]
+            cell = tableView.dequeueReusableCell(withIdentifier: "MMLDeletedLayersCell")!
+            let layer = self.deletedLayers[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = layer.name
-            let plusButton = UIButton(type: UIButtonType.ContactAdd)
-            plusButton.enabled = false
+            let plusButton = UIButton(type: UIButtonType.contactAdd)
+            plusButton.isEnabled = false
             cell.accessoryView = plusButton
             
         }
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 1 {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath as NSIndexPath).section == 1 {
             //put back
             tableView.beginUpdates()
-            let layer = self.deletedLayers[indexPath.row]
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-            self.deletedLayers.removeAtIndex(indexPath.row)
+            let layer = self.deletedLayers[(indexPath as NSIndexPath).row]
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+            self.deletedLayers.remove(at: (indexPath as NSIndexPath).row)
             
-            self.layers.addObject(layer)
-            let newIndexPath = NSIndexPath(forRow: 0, inSection: 0)
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            self.layers.add(layer)
+            let newIndexPath = IndexPath(row: 0, section: 0)
+            tableView.insertRows(at: [newIndexPath], with: UITableViewRowAnimation.fade)
             tableView.endUpdates()
         }
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return indexPath.section == 0
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return (indexPath as NSIndexPath).section == 0
     }
     
     //update the order of layers in the array
-    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         //layers in reverse order
         let sourceIndex = self.dataSourceIndexForIndexPath(self.layers, indexpath: sourceIndexPath)
         let destinationIndex = self.dataSourceIndexForIndexPath(self.layers, indexpath: destinationIndexPath)
         
         let layer = self.layers[sourceIndex] as! AGSLayer
         
-        self.layers.removeObjectAtIndex(sourceIndex)
-        self.layers.insertObject(layer, atIndex:destinationIndex)
+        self.layers.removeObject(at: sourceIndex)
+        self.layers.insert(layer, at:destinationIndex)
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         //check if the editing style is Delete
-        if editingStyle == .Delete {
+        if editingStyle == .delete {
             //layers in reverse order
             let index = self.dataSourceIndexForIndexPath(self.layers, indexpath: indexPath)
             
@@ -123,14 +123,14 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
             
             tableView.beginUpdates()
             //remove the layer from the data source array
-            self.layers.removeObjectAtIndex(index)
+            self.layers.removeObject(at: index)
             //delete the row
-            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation:.Automatic)
+            self.tableView.deleteRows(at: [indexPath], with:.automatic)
             //insert the row in the deleteLayers array
             self.deletedLayers.append(layer)
             //insert the new row
-            let newIndexPath = NSIndexPath(forRow: self.deletedLayers.count-1, inSection: 1)
-            self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            let newIndexPath = IndexPath(row: self.deletedLayers.count-1, section: 1)
+            self.tableView.insertRows(at: [newIndexPath], with: UITableViewRowAnimation.automatic)
             //end update
             self.tableView.endUpdates()
         }
@@ -139,8 +139,8 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
-        if sourceIndexPath.section != proposedDestinationIndexPath.section {
+    func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        if (sourceIndexPath as NSIndexPath).section != (proposedDestinationIndexPath as NSIndexPath).section {
             return sourceIndexPath
         }
         else {

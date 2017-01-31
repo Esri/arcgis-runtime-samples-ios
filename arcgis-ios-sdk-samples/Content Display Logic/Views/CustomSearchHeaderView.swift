@@ -15,9 +15,9 @@
 import UIKit
 
 protocol CustomSearchHeaderViewDelegate:class {
-    func customSearchHeaderViewWillShowSuggestions(customSearchHeaderView:CustomSearchHeaderView)
-    func customSearchHeaderViewWillHideSuggestions(customSearchHeaderView:CustomSearchHeaderView)
-    func customSearchHeaderView(customSearchHeaderView:CustomSearchHeaderView, didFindSamples sampleNames:[String]?)
+    func customSearchHeaderViewWillShowSuggestions(_ customSearchHeaderView:CustomSearchHeaderView)
+    func customSearchHeaderViewWillHideSuggestions(_ customSearchHeaderView:CustomSearchHeaderView)
+    func customSearchHeaderView(_ customSearchHeaderView:CustomSearchHeaderView, didFindSamples sampleNames:[String]?)
 }
 
 class CustomSearchHeaderView: UICollectionReusableView, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
@@ -25,7 +25,7 @@ class CustomSearchHeaderView: UICollectionReusableView, UITableViewDataSource, U
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var suggestionsTableView:UITableView!
     
-    private let cellIdentifier = "SuggestionCell"
+    fileprivate let cellIdentifier = "SuggestionCell"
     
     weak var delegate:CustomSearchHeaderViewDelegate?
     
@@ -54,44 +54,44 @@ class CustomSearchHeaderView: UICollectionReusableView, UITableViewDataSource, U
     
     func setup() {
         //set background color to clear color
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         
         self.nibView = self.loadViewFromNib()
         
         self.nibView.frame = self.bounds
-        nibView.autoresizingMask = [UIViewAutoresizing.FlexibleHeight, .FlexibleWidth]
+        nibView.autoresizingMask = [UIViewAutoresizing.flexibleHeight, .flexibleWidth]
         
         
         
-        if let searchTextField = self.searchBar.valueForKey("searchField") as? UITextField {
-            let placeholderAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont.systemFontOfSize(UIFont.systemFontSize())]
+        if let searchTextField = self.searchBar.value(forKey: "searchField") as? UITextField {
+            let placeholderAttributes = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont.systemFont(ofSize: UIFont.systemFontSize)]
             let attributedPlaceholder = NSAttributedString(string: "Search", attributes: placeholderAttributes)
             searchTextField.attributedPlaceholder = attributedPlaceholder
-            searchTextField.textColor = UIColor.whiteColor()
-            searchTextField.borderStyle = .None
+            searchTextField.textColor = UIColor.white
+            searchTextField.borderStyle = .none
             searchTextField.layer.cornerRadius = 8
             searchTextField.backgroundColor = UIColor.secondaryBlue()
             
             let imageV = searchTextField.leftView as! UIImageView
-            imageV.image = imageV.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-            imageV.tintColor = UIColor.whiteColor()
+            imageV.image = imageV.image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            imageV.tintColor = UIColor.white
         }
         
         self.addSubview(self.nibView)
     }
     
     func loadViewFromNib() -> UIView {
-        let bundle = NSBundle(forClass: self.dynamicType)
+        let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "CustomSearchHeaderView", bundle: bundle)
-        let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         
         return view
     }
     
     override func awakeFromNib() {
         //register table cell
-        let nib = UINib(nibName: "SuggestionTableViewCell", bundle: NSBundle(forClass: self.dynamicType))
-        self.suggestionsTableView.registerNib(nib, forCellReuseIdentifier: cellIdentifier)
+        let nib = UINib(nibName: "SuggestionTableViewCell", bundle: Bundle(for: type(of: self)))
+        self.suggestionsTableView.register(nib, forCellReuseIdentifier: cellIdentifier)
     }
     
     func showSuggestionsTable() {
@@ -104,7 +104,7 @@ class CustomSearchHeaderView: UICollectionReusableView, UITableViewDataSource, U
         self.delegate?.customSearchHeaderViewWillHideSuggestions(self)
     }
     
-    func searchForString(string:String) {
+    func searchForString(_ string:String) {
         //hide suggestions
         self.hideSuggestionsTable()
         //hide keyboard
@@ -116,40 +116,40 @@ class CustomSearchHeaderView: UICollectionReusableView, UITableViewDataSource, U
     
     // MARK: - Table view data source
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.suggestions?.count ?? 0
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath as IndexPath)
         
         cell.textLabel?.text = suggestions[indexPath.row]
-        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundColor = UIColor.clear
         
         return cell
     }
     
     //MARK: - Table view delegate
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.searchBar.text = self.suggestions[indexPath.row]
         self.searchForString(self.searchBar.text!)
     }
     
     //MARK: - UISearchBarDelegate
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchForString(self.searchBar.text!)
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if let suggestions = SearchEngine.sharedInstance().suggestionsForString(searchText) where suggestions.count > 0 {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if let suggestions = SearchEngine.sharedInstance().suggestionsForString(searchText) , suggestions.count > 0 {
             self.suggestions = suggestions
             //call delegate
             self.showSuggestionsTable()
@@ -159,17 +159,17 @@ class CustomSearchHeaderView: UICollectionReusableView, UITableViewDataSource, U
         }
     }
     
-    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         searchBar.setShowsCancelButton(true, animated: true)
         return true
     }
     
-    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         searchBar.setShowsCancelButton(false, animated: true)
         return true
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         self.hideSuggestionsTable()
     }

@@ -37,30 +37,30 @@ class RouteParametersViewController: UIViewController {
     
     func setupUI() {
         if self.routeParameters != nil {
-            self.findBestSequenceSwitch.on = self.routeParameters.findBestSequence
-            self.preservceFirstStopSwitch.on = self.routeParameters.preserveFirstStop
-            self.preservceLastStopSwitch.on = self.routeParameters.preserveLastStop
+            self.findBestSequenceSwitch.isOn = self.routeParameters.findBestSequence
+            self.preservceFirstStopSwitch.isOn = self.routeParameters.preserveFirstStop
+            self.preservceLastStopSwitch.isOn = self.routeParameters.preserveLastStop
             self.enableSubSwitches(self.routeParameters.findBestSequence)
         }
     }
     
-    func enableSubSwitches(enable:Bool) {
-        self.preservceLastStopSwitch.enabled = enable
-        self.preservceFirstStopSwitch.enabled = enable
+    func enableSubSwitches(_ enable:Bool) {
+        self.preservceLastStopSwitch.isEnabled = enable
+        self.preservceFirstStopSwitch.isEnabled = enable
     }
 
     //MARK: - Actions
     
-    @IBAction func switchValueChanged(sender:UISwitch) {
+    @IBAction func switchValueChanged(_ sender:UISwitch) {
         if sender == self.findBestSequenceSwitch {
-            self.routeParameters.findBestSequence = sender.on
-            self.enableSubSwitches(sender.on)
+            self.routeParameters.findBestSequence = sender.isOn
+            self.enableSubSwitches(sender.isOn)
         }
         else if sender == self.preservceFirstStopSwitch {
-            self.routeParameters.preserveFirstStop = self.preservceFirstStopSwitch.on
+            self.routeParameters.preserveFirstStop = self.preservceFirstStopSwitch.isOn
         }
         else {
-            self.routeParameters.preserveLastStop = self.preservceLastStopSwitch.on
+            self.routeParameters.preserveLastStop = self.preservceLastStopSwitch.isOn
         }
     }
 }

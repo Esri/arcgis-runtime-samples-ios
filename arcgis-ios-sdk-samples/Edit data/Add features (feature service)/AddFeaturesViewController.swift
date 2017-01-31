@@ -17,11 +17,11 @@ import ArcGIS
 
 class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     
-    @IBOutlet private var mapView:AGSMapView!
+    @IBOutlet fileprivate var mapView:AGSMapView!
     
-    private var featureTable:AGSServiceFeatureTable!
-    private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancelable!
+    fileprivate var featureTable:AGSServiceFeatureTable!
+    fileprivate var featureLayer:AGSFeatureLayer!
+    fileprivate var lastQuery:AGSCancelable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["AddFeaturesViewController"]
         
         //instantiate map with a basemap
-        let map = AGSMap(basemap: AGSBasemap.streetsBasemap())
+        let map = AGSMap(basemap: AGSBasemap.streets())
         //set initial viewpoint
         map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: AGSSpatialReference.webMercator()), scale: 2e6)
         
@@ -40,12 +40,12 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.touchDelegate = self
         
         //instantiate service feature table using the url to the service
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         //create a feature layer using the service feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         //add the feature layer to the operational layers on map
-        map.operationalLayers.addObject(featureLayer)
+        map.operationalLayers.add(featureLayer)
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,24 +53,24 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func addFeature(mappoint:AGSPoint) {
+    func addFeature(_ mappoint:AGSPoint) {
         //show the progress hud
-        SVProgressHUD.showWithStatus("Adding..", maskType: SVProgressHUDMaskType.Gradient)
+        SVProgressHUD.show(withStatus: "Adding..", maskType: SVProgressHUDMaskType.gradient)
         //disable interaction with map view
-        self.mapView.userInteractionEnabled = false
+        self.mapView.isUserInteractionEnabled = false
         
         //normalize geometry
-        let normalizedGeometry = AGSGeometryEngine.normalizeCentralMeridianOfGeometry(mappoint)!
+        let normalizedGeometry = AGSGeometryEngine.normalizeCentralMeridian(of: mappoint)!
         
         //attributes for the new feature
         let featureAttributes = ["typdamage" : "Minor", "primcause" : "Earthquake"]
         //create a new feature
-        let feature = self.featureTable.createFeatureWithAttributes(featureAttributes, geometry: normalizedGeometry)
+        let feature = self.featureTable.createFeature(attributes: featureAttributes, geometry: normalizedGeometry)
         
         //add the feature to the feature table
-        self.featureTable.addFeature(feature) { [weak self] (error: NSError?) -> Void in
+        self.featureTable.add(feature) { [weak self] (error: Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showErrorWithStatus("Error while adding feature :: \(error.localizedDescription)")
+                SVProgressHUD.showError(withStatus: "Error while adding feature :: \(error.localizedDescription)")
                 print("Error while adding feature :: \(error)")
             }
             else {
@@ -78,18 +78,18 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
                 self?.applyEdits()
             }
             //enable interaction with map view
-            self?.mapView.userInteractionEnabled = true
+            self?.mapView.isUserInteractionEnabled = true
         }
     }
     
     func applyEdits() {
-        self.featureTable.applyEditsWithCompletion { (featureEditResults: [AGSFeatureEditResult]?, error: NSError?) -> Void in
+        self.featureTable.applyEdits { (featureEditResults: [AGSFeatureEditResult]?, error: Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showErrorWithStatus("Error while applying edits :: \(error.localizedDescription)")
+                SVProgressHUD.showError(withStatus: "Error while applying edits :: \(error.localizedDescription)")
             }
             else {
-                if let featureEditResults = featureEditResults where featureEditResults.count > 0 && featureEditResults[0].completedWithErrors == false {
-                    SVProgressHUD.showSuccessWithStatus("Edits applied successfully")
+                if let featureEditResults = featureEditResults , featureEditResults.count > 0 && featureEditResults[0].completedWithErrors == false {
+                    SVProgressHUD.showSuccess(withStatus: "Edits applied successfully")
                 }
                 SVProgressHUD.dismiss()
             }
@@ -98,7 +98,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
   
     //MARK: - AGSGeoViewTouchDelegate
     
-    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //add a feature at the tapped location
         self.addFeature(mapPoint)
     }

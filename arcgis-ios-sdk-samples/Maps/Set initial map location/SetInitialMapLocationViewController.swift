@@ -27,7 +27,7 @@ class SetInitialMapLocationViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SetInitialMapLocationViewController"]
         
         //initialize map with `imagery with labels` basemap and an initial location
-        self.map = AGSMap(basemapType: .ImageryWithLabels, latitude: -33.867886, longitude: -63.985, levelOfDetail: 16)
+        self.map = AGSMap(basemapType: .imageryWithLabels, latitude: -33.867886, longitude: -63.985, levelOfDetail: 16)
         
         //assign the map to the map view
         self.mapView.map = self.map

@@ -20,7 +20,7 @@ class ChangeMapViewBackgroundVC: UIViewController, GridSettingsVCDelegate {
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var settingsContainerView: UIView!
     
-    private var gridSettingsViewController:GridSettingsViewController!
+    fileprivate var gridSettingsViewController:GridSettingsViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +29,13 @@ class ChangeMapViewBackgroundVC: UIViewController, GridSettingsVCDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ChangeMapViewBackgroundVC", "GridSettingsViewController"]
         
         //initialize tiled layer
-        let tiledLayer = AGSArcGISTiledLayer(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer")!)
+        let tiledLayer = AGSArcGISTiledLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer")!)
 
         //initialize map with tiled layer as basemap
         let map = AGSMap(basemap: AGSBasemap(baseLayer: tiledLayer))
         
         //set initial viewpoint
-        let center = AGSPoint(x: 3224786.498918, y: 2661231.326777, spatialReference: AGSSpatialReference(WKID: 3857))
+        let center = AGSPoint(x: 3224786.498918, y: 2661231.326777, spatialReference: AGSSpatialReference(wkid: 3857))
         map.initialViewpoint = AGSViewpoint(center: center, scale: 236663484.12225574)
         
         //assign map to the map view
@@ -49,33 +49,33 @@ class ChangeMapViewBackgroundVC: UIViewController, GridSettingsVCDelegate {
     
     //MARK: - GridSettingsVCDelegate
     
-    func gridSettingsViewController(gridSettingsViewController: GridSettingsViewController, didUpdateBackgroundGrid grid: AGSBackgroundGrid) {
+    func gridSettingsViewController(_ gridSettingsViewController: GridSettingsViewController, didUpdateBackgroundGrid grid: AGSBackgroundGrid) {
         
         //update background grid on the map view
         self.mapView.backgroundGrid = grid
     }
     
-    func gridSettingsViewControllerWantsToClose(gridSettingsViewController: GridSettingsViewController) {
-        self.settingsContainerView.hidden = true
+    func gridSettingsViewControllerWantsToClose(_ gridSettingsViewController: GridSettingsViewController) {
+        self.settingsContainerView.isHidden = true
     }
     
     //MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "EmbedSegue" {
-            self.gridSettingsViewController = segue.destinationViewController as! GridSettingsViewController
+            self.gridSettingsViewController = segue.destination as! GridSettingsViewController
             self.gridSettingsViewController.delegate = self
         }
     }
     
     //MARK: - Actions
     
-    @IBAction private func changeBackgroundAction() {
+    @IBAction fileprivate func changeBackgroundAction() {
         //default color
         self.gridSettingsViewController.colorButton.backgroundColor = self.mapView.backgroundGrid?.color
         self.gridSettingsViewController.lineColorButton.backgroundColor = self.mapView.backgroundGrid?.gridLineColor
         
-        self.settingsContainerView.hidden = false
+        self.settingsContainerView.isHidden = false
     }
 }

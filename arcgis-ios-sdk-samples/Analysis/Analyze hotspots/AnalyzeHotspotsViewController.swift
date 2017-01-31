@@ -21,9 +21,9 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
     @IBOutlet var containerView: UIView!
     
     
-    private var geoprocessingTask: AGSGeoprocessingTask!
-    private var geoprocessingJob: AGSGeoprocessingJob!
-    private var graphicsOverlay = AGSGraphicsOverlay()
+    fileprivate var geoprocessingTask: AGSGeoprocessingTask!
+    fileprivate var geoprocessingJob: AGSGeoprocessingJob!
+    fileprivate var graphicsOverlay = AGSGraphicsOverlay()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +32,10 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["AnalyzeHotspotsViewController", "HotspotSettingsViewController"]
 
         //initialize map with basemap
-        let map = AGSMap(basemap: AGSBasemap.topographicBasemap())
+        let map = AGSMap(basemap: AGSBasemap.topographic())
         
         //center for initial viewpoint
-        let center = AGSPoint(x: -13671170.647485, y: 5693633.356735, spatialReference: AGSSpatialReference(WKID: 3857))
+        let center = AGSPoint(x: -13671170.647485, y: 5693633.356735, spatialReference: AGSSpatialReference(wkid: 3857))
         
         //set initial viewpoint
         map.initialViewpoint = AGSViewpoint(center: center, scale: 57779)
@@ -44,7 +44,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         self.mapView.map = map
         
         //initilaize geoprocessing task with the url of the service
-        self.geoprocessingTask = AGSGeoprocessingTask(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/911CallsHotspot/GPServer/911%20Calls%20Hotspot")!)
+        self.geoprocessingTask = AGSGeoprocessingTask(url: URL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/911CallsHotspot/GPServer/911%20Calls%20Hotspot")!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,14 +52,14 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    private func analyzeHotspots(fromDate: String, toDate: String) {
+    fileprivate func analyzeHotspots(_ fromDate: String, toDate: String) {
         //cancel previous job request
         if self.geoprocessingJob != nil {
             self.geoprocessingJob.cancel()
         }
         
         //parameters
-        let params = AGSGeoprocessingParameters(executionType: .AsynchronousSubmit)
+        let params = AGSGeoprocessingParameters(executionType: .asynchronousSubmit)
         params.processSpatialReference = self.mapView.map?.spatialReference
         params.outputSpatialReference = self.mapView.map?.spatialReference
         
@@ -68,17 +68,17 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         params.inputs["Query"] = AGSGeoprocessingString(value: queryString)
         
         //job
-        self.geoprocessingJob = self.geoprocessingTask.geoprocessingJobWithParameters(params)
+        self.geoprocessingJob = self.geoprocessingTask.geoprocessingJob(with: params)
         
         //start job
-        self.geoprocessingJob.startWithStatusHandler({ (status: AGSJobStatus) in
+        self.geoprocessingJob.start(statusHandler: { (status: AGSJobStatus) in
             //show progress hud with job status
-            SVProgressHUD.showWithStatus(status.statusString(), maskType: .Gradient)
+            SVProgressHUD.show(withStatus: status.statusString(), maskType: .gradient)
             
-        }) { [weak self] (result: AGSGeoprocessingResult?, error: NSError?) in
+        }) { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
             if let error = error {
                 //show error
-                SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
             }
             else {
                 //dismiss progress hud
@@ -89,10 +89,10 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
                 self?.mapView.map?.operationalLayers.removeAllObjects()
                 
                 //add the new layer to the map
-                self?.mapView.map?.operationalLayers.addObject(result!.mapImageLayer!)
+                self?.mapView.map?.operationalLayers.add(result!.mapImageLayer!)
                 
                 //set map view's viewpoint to the new layer's full extent
-                (self?.mapView.map?.operationalLayers.firstObject as! AGSLayer).loadWithCompletion({ (error: NSError?) in
+                (self?.mapView.map?.operationalLayers.firstObject as! AGSLayer).load(completion: { (error: Error?) in
                     if error == nil {
                         
                         //set viewpoint as the extent of the mapImageLayer
@@ -107,7 +107,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
     
     //MARK: - HotspotSettingsVCDelegate
     
-    func hotspotSettingsViewController(hotspotSettingsViewController: HotspotSettingsViewController, didSelectDates fromDate: String, toDate: String) {
+    func hotspotSettingsViewController(_ hotspotSettingsViewController: HotspotSettingsViewController, didSelectDates fromDate: String, toDate: String) {
         
         self.analyzeHotspots(fromDate, toDate: toDate)
         self.toggleSettingsView(false)
@@ -115,17 +115,17 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
     
     //MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SettingsSegue" {
-            let controller = segue.destinationViewController as! HotspotSettingsViewController
+            let controller = segue.destination as! HotspotSettingsViewController
             controller.delegate = self
         }
     }
     
     //MARK: - Toggle settings view
     
-    private func toggleSettingsView(on: Bool) {
-        self.containerView.hidden = !on
+    fileprivate func toggleSettingsView(_ on: Bool) {
+        self.containerView.isHidden = !on
     }
     
     //MARK: - Actions

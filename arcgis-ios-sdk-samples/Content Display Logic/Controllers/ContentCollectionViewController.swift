@@ -16,7 +16,7 @@ import UIKit
 
 class CustomFlowLayout:UICollectionViewFlowLayout {
     
-    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
 }
@@ -25,13 +25,13 @@ private let reuseIdentifier = "CategoryCell"
 
 class ContentCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, CustomSearchHeaderViewDelegate {
 
-    @IBOutlet private var collectionView:UICollectionView!
-    @IBOutlet private var collectionViewFlowLayout:UICollectionViewFlowLayout!
+    @IBOutlet fileprivate var collectionView:UICollectionView!
+    @IBOutlet fileprivate var collectionViewFlowLayout:UICollectionViewFlowLayout!
     
-    private var headerView:CustomSearchHeaderView!
+    fileprivate var headerView:CustomSearchHeaderView!
     
     var nodesArray:[Node]!
-    private var transitionSize:CGSize!
+    fileprivate var transitionSize:CGSize!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,14 +49,14 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     
     func populateTree() {
         
-        let path = NSBundle.mainBundle().pathForResource("ContentPList", ofType: "plist")
+        let path = Bundle.main.path(forResource: "ContentPList", ofType: "plist")
         let content = NSArray(contentsOfFile: path!)
         self.nodesArray = self.populateNodesArray(content! as [AnyObject])
         
         self.collectionView?.reloadData()
     }
     
-    func populateNodesArray(array:[AnyObject]) -> [Node] {
+    func populateNodesArray(_ array:[AnyObject]) -> [Node] {
         var nodesArray = [Node]()
         for object in array {
             let node = self.populateNode(object as! [String:AnyObject])
@@ -65,7 +65,7 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         return nodesArray
     }
     
-    func populateNode(dict:[String:AnyObject]) -> Node {
+    func populateNode(_ dict:[String:AnyObject]) -> Node {
         let node = Node()
         if let displayName = dict["displayName"] as? String {
             node.displayName = displayName
@@ -112,37 +112,38 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     
     //MARK: - samples lookup by name
     
-    func nodesByDisplayNames(names:[String]) -> [Node] {
+    func nodesByDisplayNames(_ names:[String]) -> [Node] {
         var nodes = [Node]()
         for node in self.nodesArray {
             let children = node.children
-            let matchingNodes = children.filter({ return names.contains($0.displayName) })
-            nodes.appendContentsOf(matchingNodes)
+            if let matchingNodes = children?.filter({ return names.contains($0.displayName) }) {
+                nodes.append(contentsOf: matchingNodes)
+            }
         }
         return nodes
     }
 
     // MARK: UICollectionViewDataSource
 
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
 
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.nodesArray?.count ?? 0
     }
 
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CategoryCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
         
-        let node = self.nodesArray[indexPath.item]
+        let node = self.nodesArray[(indexPath as NSIndexPath).item]
         
         //mask to bounds
         cell.layer.masksToBounds = false
         
         //name
-        cell.nameLabel.text = node.displayName.uppercaseString
+        cell.nameLabel.text = node.displayName.uppercased()
         
         //icon
         let image = UIImage(named: "\(node.displayName)_icon")
@@ -160,9 +161,9 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     }
 
     //supplementary view as search bar
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if self.headerView == nil {
-            self.headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "CollectionHeaderView", forIndexPath: indexPath) as! CustomSearchHeaderView
+            self.headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionHeaderView", for: indexPath) as! CustomSearchHeaderView
             self.headerView.delegate = self
         }
         return self.headerView
@@ -170,20 +171,20 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     
     //MARK: - UICollectionViewDelegate
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //hide keyboard if visible
         self.view.endEditing(true)
         
-        let node = self.nodesArray[indexPath.item]
-        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("ContentTableViewController") as! ContentTableViewController
+        let node = self.nodesArray[(indexPath as NSIndexPath).item]
+        let controller = self.storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
         controller.nodesArray = node.children
         controller.title = node.displayName
-        self.navigationController?.showViewController(controller, sender: self)
+        self.navigationController?.show(controller, sender: self)
     }
     
     //MARK: - UICollectionViewDelegateFlowLayout
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let size = self.itemSizeForCollectionViewSize(self.collectionView.bounds.size)
         
@@ -193,17 +194,17 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     //MARK: - Transition
     
     //get the size of the new view to be transitioned to
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
 
-        coordinator.animateAlongsideTransition({ [weak self] (_: UIViewControllerTransitionCoordinatorContext) in
+        coordinator.animate(alongsideTransition: { [weak self] (_: UIViewControllerTransitionCoordinatorContext) in
             self?.collectionView.collectionViewLayout.invalidateLayout()
         }, completion: nil)
         
     }
     
     //item width based on the width of the collection view
-    func itemSizeForCollectionViewSize(size:CGSize) -> CGSize {
+    func itemSizeForCollectionViewSize(_ size:CGSize) -> CGSize {
         //first try for 3 items in a row
         var width = (size.width - 4*10)/3
         if width < 150 {    //if too small then go for 2 in a row
@@ -214,28 +215,28 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
 
     //MARK: - CustomSearchHeaderViewDelegate
     
-    func customSearchHeaderView(customSearchHeaderView: CustomSearchHeaderView, didFindSamples sampleNames: [String]?) {
+    func customSearchHeaderView(_ customSearchHeaderView: CustomSearchHeaderView, didFindSamples sampleNames: [String]?) {
         if let sampleNames = sampleNames {
             let resultNodes = self.nodesByDisplayNames(sampleNames)
             if resultNodes.count > 0 {
                 //show the results
-                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("ContentTableViewController") as! ContentTableViewController
+                let controller = self.storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
                 controller.nodesArray = resultNodes
                 controller.title = "Search results"
                 controller.containsSearchResults = true
-                self.navigationController?.showViewController(controller, sender: self)
+                self.navigationController?.show(controller, sender: self)
                 return
             }
         }
         
-        SVProgressHUD.showErrorWithStatus("No match found", maskType: .Gradient)
+        SVProgressHUD.showError(withStatus: "No match found", maskType: .gradient)
     }
     
-    func customSearchHeaderViewWillHideSuggestions(customSearchHeaderView: CustomSearchHeaderView) {
+    func customSearchHeaderViewWillHideSuggestions(_ customSearchHeaderView: CustomSearchHeaderView) {
         self.hideSuggestions()
     }
     
-    func customSearchHeaderViewWillShowSuggestions(customSearchHeaderView: CustomSearchHeaderView) {
+    func customSearchHeaderViewWillShowSuggestions(_ customSearchHeaderView: CustomSearchHeaderView) {
         self.showSuggestions()
     }
 }

@@ -17,10 +17,10 @@ import ArcGIS
 
 class MapViewDrawStatusViewController: UIViewController {
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var activityIndicatorView:UIView!
+    @IBOutlet fileprivate weak var mapView:AGSMapView!
+    @IBOutlet fileprivate weak var activityIndicatorView:UIView!
     
-    private var map:AGSMap!
+    fileprivate var map:AGSMap!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,31 +29,31 @@ class MapViewDrawStatusViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MapViewDrawStatusViewController"]
         
         //instantiate the map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
+        self.map = AGSMap(basemap: AGSBasemap.topographic())
         
         //initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(XMin: -13639984, yMin: 4537387, xMax: -13606734, yMax: 4558866, spatialReference: AGSSpatialReference.webMercator()))
+        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -13639984, yMin: 4537387, xMax: -13606734, yMax: 4558866, spatialReference: AGSSpatialReference.webMercator()))
         
         //add a feature layer
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
+        let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-        self.map.operationalLayers.addObject(featureLayer)
+        self.map.operationalLayers.add(featureLayer)
         
         //assign the map to mapView
         self.mapView.map = self.map
         
         //add observer for drawStatus on mapView
         //so we can show/hide an indicator when the status change 
-        self.mapView.addObserver(self, forKeyPath: "drawStatus", options: .New, context: nil)
+        self.mapView.addObserver(self, forKeyPath: "drawStatus", options: .new, context: nil)
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
-        if self.mapView.drawStatus == AGSDrawStatus.InProgress {
-            self.activityIndicatorView.hidden = false
+        if self.mapView.drawStatus == AGSDrawStatus.inProgress {
+            self.activityIndicatorView.isHidden = false
         }
         else {
-            self.activityIndicatorView.hidden = true
+            self.activityIndicatorView.isHidden = true
         }
     }
     

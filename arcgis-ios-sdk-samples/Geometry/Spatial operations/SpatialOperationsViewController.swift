@@ -19,9 +19,9 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
 
     @IBOutlet var mapView: AGSMapView!
     
-    fileprivate var graphicsOverlay = AGSGraphicsOverlay()
-    fileprivate var polygon1, polygon2: AGSPolygonBuilder!
-    fileprivate var resultGraphic: AGSGraphic!
+    private var graphicsOverlay = AGSGraphicsOverlay()
+    private var polygon1, polygon2: AGSPolygonBuilder!
+    private var resultGraphic: AGSGraphic!
     
     let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.black, width: 1)
     
@@ -55,7 +55,7 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         // Dispose of any resources that can be recreated.
     }
 
-    fileprivate func addPolygons() {
+    private func addPolygons() {
         
         //polygon 1
         self.polygon1 = AGSPolygonBuilder(spatialReference: AGSSpatialReference.webMercator())
@@ -102,7 +102,7 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         self.graphicsOverlay.graphics.addObjects(from: [polygon1Graphic, polygon2Graphic])
     }
     
-    fileprivate func performOperation(_ index: Int) {
+    private func performOperation(_ index: Int) {
         var resultGeometry: AGSGeometry
         
         switch index {

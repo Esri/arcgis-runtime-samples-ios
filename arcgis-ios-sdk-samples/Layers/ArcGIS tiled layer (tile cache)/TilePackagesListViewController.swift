@@ -25,8 +25,8 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
     
     weak var delegate:TilePackagesListVCDelegate?
     
-    fileprivate var bundleTPKPaths:[String]!
-    fileprivate var documentTPKPaths:[String]!
+    private var bundleTPKPaths:[String]!
+    private var documentTPKPaths:[String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()

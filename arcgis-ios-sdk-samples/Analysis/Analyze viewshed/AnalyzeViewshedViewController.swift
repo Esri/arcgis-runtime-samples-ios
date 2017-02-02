@@ -21,11 +21,11 @@ class AnalyzeViewshedViewController: UIViewController, AGSGeoViewTouchDelegate {
 
     @IBOutlet var mapView:AGSMapView!
     
-    fileprivate var geoprocessingTask: AGSGeoprocessingTask!
-    fileprivate var geoprocessingJob: AGSGeoprocessingJob!
+    private var geoprocessingTask: AGSGeoprocessingTask!
+    private var geoprocessingJob: AGSGeoprocessingJob!
     
-    fileprivate var inputGraphicsOverlay = AGSGraphicsOverlay()
-    fileprivate var resultGraphicsOverlay = AGSGraphicsOverlay()
+    private var inputGraphicsOverlay = AGSGraphicsOverlay()
+    private var resultGraphicsOverlay = AGSGraphicsOverlay()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +59,7 @@ class AnalyzeViewshedViewController: UIViewController, AGSGeoViewTouchDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    fileprivate func addGraphicForPoint(_ point: AGSPoint) {
+    private func addGraphicForPoint(_ point: AGSPoint) {
         //remove existing graphics
         self.inputGraphicsOverlay.graphics.removeAllObjects()
         
@@ -70,7 +70,7 @@ class AnalyzeViewshedViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.inputGraphicsOverlay.graphics.add(graphic)
     }
     
-    fileprivate func calculateViewshed(_ point: AGSPoint) {
+    private func calculateViewshed(_ point: AGSPoint) {
         
         //remove previous graphics
         self.resultGraphicsOverlay.graphics.removeAllObjects()
@@ -110,7 +110,7 @@ class AnalyzeViewshedViewController: UIViewController, AGSGeoViewTouchDelegate {
         }
     }
     
-    fileprivate func performGeoprocessing(_ featureCollectionTable: AGSFeatureCollectionTable) {
+    private func performGeoprocessing(_ featureCollectionTable: AGSFeatureCollectionTable) {
         
         //geoprocessing parameters
         let params = AGSGeoprocessingParameters(executionType: .synchronousExecute)

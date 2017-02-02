@@ -17,16 +17,16 @@ import ArcGIS
 
 class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPopupsViewControllerDelegate, FeatureTemplatePickerDelegate {
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
-    @IBOutlet fileprivate weak var sketchToolbar:UIToolbar!
-    @IBOutlet fileprivate weak var doneBBI:UIBarButtonItem!
+    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var sketchToolbar:UIToolbar!
+    @IBOutlet private weak var doneBBI:UIBarButtonItem!
     
-    fileprivate var map:AGSMap!
-    fileprivate var sketchEditor:AGSSketchEditor!
-    fileprivate var featureLayer:AGSFeatureLayer!
-    fileprivate var popupsVC:AGSPopupsViewController!
+    private var map:AGSMap!
+    private var sketchEditor:AGSSketchEditor!
+    private var featureLayer:AGSFeatureLayer!
+    private var popupsVC:AGSPopupsViewController!
     
-    fileprivate var lastQuery:AGSCancelable!
+    private var lastQuery:AGSCancelable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +57,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         // Dispose of any resources that can be recreated.
     }
     
-    fileprivate func dismissFeatureTemplatePickerVC() {
+    private func dismissFeatureTemplatePickerVC() {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -199,7 +199,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         NotificationCenter.default.removeObserver(self)
     }
     
-    fileprivate func disableSketchEditor() {
+    private func disableSketchEditor() {
         //stop sketch editor
         self.mapView.sketchEditor?.stop()
         

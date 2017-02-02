@@ -27,19 +27,19 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     var routeTask:AGSRouteTask!
     var params:AGSRouteParameters!
     
-    fileprivate var stopGraphicsOverlay = AGSGraphicsOverlay()
-    fileprivate var routeGraphicsOverlay = AGSGraphicsOverlay()
-    fileprivate var longPressedGraphic:AGSGraphic!
-    fileprivate var longPressedRouteGraphic:AGSGraphic!
-    fileprivate var routeTaskOperation:AGSCancelable!
+    private var stopGraphicsOverlay = AGSGraphicsOverlay()
+    private var routeGraphicsOverlay = AGSGraphicsOverlay()
+    private var longPressedGraphic:AGSGraphic!
+    private var longPressedRouteGraphic:AGSGraphic!
+    private var routeTaskOperation:AGSCancelable!
     
-    fileprivate var totalDistance:Double = 0 {
+    private var totalDistance:Double = 0 {
         didSet {
             let miles = String(format: "%.2f", totalDistance*0.000621371)
             self.distanceLabel?.text = "(\(miles) mi)"
         }
     }
-    fileprivate var totalTime:Double = 0 {
+    private var totalTime:Double = 0 {
         didSet {
             var minutes = Int(totalTime)
             let hours = minutes/60
@@ -93,13 +93,13 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     //method returns a graphic for the specified location
     //also assigns the stop number
-    fileprivate func graphicForLocation(_ point:AGSPoint) -> AGSGraphic {
+    private func graphicForLocation(_ point:AGSPoint) -> AGSGraphic {
         let symbol = self.symbolForStopGraphic(self.stopGraphicsOverlay.graphics.count + 1)
         let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: nil)
         return graphic
     }
     
-    fileprivate func symbolForStopGraphic(_ index: Int) -> AGSSymbol {
+    private func symbolForStopGraphic(_ index: Int) -> AGSSymbol {
         let markerImage = UIImage(named: "BlueMarker")!
         let markerSymbol = AGSPictureMarkerSymbol(image: markerImage)
         markerSymbol.offsetY = markerImage.size.height/2
@@ -151,7 +151,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     //MARK: - Route logic
     
-    fileprivate func getDefaultParameters() {
+    private func getDefaultParameters() {
         //get the default parameters
         self.routeTask.defaultRouteParameters(completion: { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
             if let error = error {
@@ -299,7 +299,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     //MARK: toggle details view
     
-    fileprivate func toggleDetailsView(_ on: Bool) {
+    private func toggleDetailsView(_ on: Bool) {
         self.detailsViewBottomContraint.constant = on ? 0 : -36
         
         UIView.animate(withDuration: 0.3, animations: { [weak self] in

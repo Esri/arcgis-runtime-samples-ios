@@ -23,10 +23,10 @@ class GraphicDrawOrderViewController: UIViewController {
     
     var map:AGSMap!
     
-    fileprivate var graphicsOverlay = AGSGraphicsOverlay()
-    fileprivate var graphics:[AGSGraphic]!
+    private var graphicsOverlay = AGSGraphicsOverlay()
+    private var graphics:[AGSGraphic]!
     
-    fileprivate var drawIndex:Int = 0
+    private var drawIndex:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +61,7 @@ class GraphicDrawOrderViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    fileprivate func addGraphics() {
+    private func addGraphics() {
         //starting x and y
         let x:Double = -13149000
         let y:Double = 4e6

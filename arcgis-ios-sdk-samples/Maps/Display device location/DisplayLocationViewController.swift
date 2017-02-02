@@ -17,11 +17,11 @@ import ArcGIS
 
 class DisplayLocationViewController: UIViewController, CustomContextSheetDelegate {
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView:AGSMapView!
     
-    fileprivate var map:AGSMap!
+    private var map:AGSMap!
     
-    fileprivate var sheet:CustomContextSheet!
+    private var sheet:CustomContextSheet!
     
     override func viewDidLoad() {
         super.viewDidLoad()

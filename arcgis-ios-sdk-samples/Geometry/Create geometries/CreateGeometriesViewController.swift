@@ -19,7 +19,7 @@ class CreateGeometriesViewController: UIViewController {
 
     @IBOutlet var mapView:AGSMapView!
     
-    fileprivate var graphicsOverlay = AGSGraphicsOverlay()
+    private var graphicsOverlay = AGSGraphicsOverlay()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,19 +56,19 @@ class CreateGeometriesViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    fileprivate func createEnvelope() -> AGSEnvelope {
+    private func createEnvelope() -> AGSEnvelope {
         //create an envelope using minimum and maximum x,y coordinates and a spatial reference
         let envelope = AGSEnvelope(xMin: -123.0, yMin: 33.5, xMax: -101.0, yMax: 48.0, spatialReference: AGSSpatialReference.wgs84())
         return envelope
     }
     
-    fileprivate func createPoint() -> AGSPoint {
+    private func createPoint() -> AGSPoint {
         // create a point using x,y coordinates and a spatial reference
         let point = AGSPoint(x: 34.056295, y: -117.195800, spatialReference: AGSSpatialReference.wgs84())
         return point
     }
     
-    fileprivate func createMultipoint() -> AGSMultipoint {
+    private func createMultipoint() -> AGSMultipoint {
         // create a multi point geometry
         let multipointBuilder = AGSMultipointBuilder(spatialReference: AGSSpatialReference.wgs84())
         multipointBuilder.points.addPointWith(x: -121.491014, y: 38.579065) // Sacramento, CA
@@ -79,7 +79,7 @@ class CreateGeometriesViewController: UIViewController {
         return multipointBuilder.toGeometry()
     }
     
-    fileprivate func createPolyline() -> AGSPolyline {
+    private func createPolyline() -> AGSPolyline {
         //create a polyline
         let polylineBuilder = AGSPolylineBuilder(spatialReference: AGSSpatialReference.wgs84())
         polylineBuilder.addPointWith(x: -119.992, y: 41.989)
@@ -89,7 +89,7 @@ class CreateGeometriesViewController: UIViewController {
         return polylineBuilder.toGeometry()
     }
     
-    fileprivate func createPolygon() -> AGSPolygon {
+    private func createPolygon() -> AGSPolygon {
         // create a polygon
         let polygonBuilder = AGSPolygonBuilder(spatialReference: AGSSpatialReference.wgs84())
         polygonBuilder.addPointWith(x: -109.048, y: 40.998)

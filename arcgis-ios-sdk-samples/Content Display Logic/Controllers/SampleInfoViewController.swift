@@ -17,7 +17,7 @@ import ArcGIS
 
 class SampleInfoViewController: UIViewController {
     
-    @IBOutlet fileprivate weak var webView:UIWebView!
+    @IBOutlet private weak var webView:UIWebView!
     
     var folderName:String!
     

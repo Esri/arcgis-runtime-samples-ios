@@ -21,9 +21,9 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         }()
 
     var nodesArray:[Node]!
-    fileprivate var expandedRowIndex:Int = -1
+    private var expandedRowIndex:Int = -1
     
-    fileprivate var headerView:CustomSearchHeaderView!
+    private var headerView:CustomSearchHeaderView!
     var containsSearchResults = false
     
     var token: Int = 0

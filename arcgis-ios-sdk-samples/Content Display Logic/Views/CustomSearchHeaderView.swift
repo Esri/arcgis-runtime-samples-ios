@@ -25,7 +25,7 @@ class CustomSearchHeaderView: UICollectionReusableView, UITableViewDataSource, U
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var suggestionsTableView:UITableView!
     
-    fileprivate let cellIdentifier = "SuggestionCell"
+    private let cellIdentifier = "SuggestionCell"
     
     weak var delegate:CustomSearchHeaderViewDelegate?
     

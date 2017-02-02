@@ -21,7 +21,7 @@ class OpenMobileMapViewController: UIViewController {
 
     @IBOutlet var mapView:AGSMapView!
     
-    fileprivate var mapPackage:AGSMobileMapPackage!
+    private var mapPackage:AGSMobileMapPackage!
     
     override func viewDidLoad() {
         super.viewDidLoad()

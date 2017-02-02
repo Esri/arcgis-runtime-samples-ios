@@ -21,9 +21,9 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
     @IBOutlet var containerView: UIView!
     
     
-    fileprivate var geoprocessingTask: AGSGeoprocessingTask!
-    fileprivate var geoprocessingJob: AGSGeoprocessingJob!
-    fileprivate var graphicsOverlay = AGSGraphicsOverlay()
+    private var geoprocessingTask: AGSGeoprocessingTask!
+    private var geoprocessingJob: AGSGeoprocessingJob!
+    private var graphicsOverlay = AGSGraphicsOverlay()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +52,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    fileprivate func analyzeHotspots(_ fromDate: String, toDate: String) {
+    private func analyzeHotspots(_ fromDate: String, toDate: String) {
         //cancel previous job request
         if self.geoprocessingJob != nil {
             self.geoprocessingJob.cancel()
@@ -124,7 +124,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
     
     //MARK: - Toggle settings view
     
-    fileprivate func toggleSettingsView(_ on: Bool) {
+    private func toggleSettingsView(_ on: Bool) {
         self.containerView.isHidden = !on
     }
     

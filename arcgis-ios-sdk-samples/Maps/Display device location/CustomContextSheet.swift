@@ -22,9 +22,9 @@ protocol CustomContextSheetDelegate:class {
 
 class CustomContextSheet: UIView {
 
-    fileprivate let animationDuration:CFTimeInterval = 0.3
-    fileprivate let buttonSize:CGFloat = 44
-    fileprivate let buttonDisplacement:CGFloat = 50
+    private let animationDuration:CFTimeInterval = 0.3
+    private let buttonSize:CGFloat = 44
+    private let buttonDisplacement:CGFloat = 50
     
     var titles:[String]!
     var images:[String]!
@@ -41,15 +41,15 @@ class CustomContextSheet: UIView {
     
     weak var delegate:CustomContextSheetDelegate?
     
-    fileprivate var buttonsCollection = [UIButton]()
-    fileprivate var labelsCollection = [UILabel]()
-    fileprivate var centerXConstraints = [NSLayoutConstraint]()
-    fileprivate var centerYConstraints = [NSLayoutConstraint]()
+    private var buttonsCollection = [UIButton]()
+    private var labelsCollection = [UILabel]()
+    private var centerXConstraints = [NSLayoutConstraint]()
+    private var centerYConstraints = [NSLayoutConstraint]()
     
-    fileprivate var isButtonPressed = false
-    fileprivate var isAnimating = false
+    private var isButtonPressed = false
+    private var isAnimating = false
     
-    fileprivate var maskLayer:CAShapeLayer!
+    private var maskLayer:CAShapeLayer!
     
     
     
@@ -78,7 +78,7 @@ class CustomContextSheet: UIView {
         return CGSize(width: self.buttonSize, height: self.buttonSize)
     }
     
-    fileprivate func setup() {
+    private func setup() {
         self.buttonsCollection.removeAll(keepingCapacity: false)
         self.labelsCollection.removeAll(keepingCapacity: false)
         self.centerXConstraints.removeAll(keepingCapacity: false)
@@ -183,7 +183,7 @@ class CustomContextSheet: UIView {
     
     //MARK: - Presentation logic
     
-    fileprivate func showButtons() {
+    private func showButtons() {
         if !self.isAnimating && !self.isButtonPressed {
             self.isAnimating = true
             
@@ -225,7 +225,7 @@ class CustomContextSheet: UIView {
         }
     }
     
-    fileprivate func hideButtons() {
+    private func hideButtons() {
         if !self.isAnimating && self.isButtonPressed {
             self.isAnimating = true
             
@@ -289,7 +289,7 @@ class CustomContextSheet: UIView {
         }
     }
     
-    fileprivate func setupMaskLayer() {
+    private func setupMaskLayer() {
         let screenFrame = UIScreen.main.bounds
         let x:CGFloat = max(frame.midX, screenFrame.size.width - frame.midX);
         let y:CGFloat = max(frame.midY, screenFrame.size.height - frame.midY);
@@ -305,7 +305,7 @@ class CustomContextSheet: UIView {
         self.layer.insertSublayer(self.maskLayer, at: 0)
     }
     
-    fileprivate func maskLayerAnimation(_ fill:Bool) -> CABasicAnimation {
+    private func maskLayerAnimation(_ fill:Bool) -> CABasicAnimation {
         
         let animation = CABasicAnimation(keyPath: "transform")
         animation.duration = self.animationDuration

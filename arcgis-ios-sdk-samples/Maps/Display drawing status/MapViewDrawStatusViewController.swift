@@ -17,10 +17,10 @@ import ArcGIS
 
 class MapViewDrawStatusViewController: UIViewController {
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
-    @IBOutlet fileprivate weak var activityIndicatorView:UIView!
+    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var activityIndicatorView:UIView!
     
-    fileprivate var map:AGSMap!
+    private var map:AGSMap!
     
     override func viewDidLoad() {
         super.viewDidLoad()

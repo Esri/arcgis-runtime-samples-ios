@@ -16,11 +16,11 @@ import UIKit
 
 class SearchEngine: NSObject {
 
-    static fileprivate let singleton = SearchEngine()
+    static private let singleton = SearchEngine()
     
-    fileprivate var indexArray:[String]!
-    fileprivate var wordsDictionary:[String: [String]]!
-    fileprivate var isLoading = false
+    private var indexArray:[String]!
+    private var wordsDictionary:[String: [String]]!
+    private var isLoading = false
     
     override init() {
         super.init()
@@ -32,7 +32,7 @@ class SearchEngine: NSObject {
         return singleton
     }
     
-    fileprivate func commonInit() {
+    private func commonInit() {
         if !self.isLoading {
             self.isLoading = true
             DispatchQueue.global(qos: .background).async { [weak self] () -> Void in
@@ -48,7 +48,7 @@ class SearchEngine: NSObject {
         }
     }
     
-    fileprivate func findReadmeDirectoriesURLs() -> [URL] {
+    private func findReadmeDirectoriesURLs() -> [URL] {
         
         var readmeDirectoriesURLs = [URL]()
         
@@ -81,7 +81,7 @@ class SearchEngine: NSObject {
     }
     
     
-    fileprivate func indexAllReadmes(_ readmeDirectoriesURLs:[URL]) {
+    private func indexAllReadmes(_ readmeDirectoriesURLs:[URL]) {
         self.indexArray = [String]()
         self.wordsDictionary = [String: [String]]()
         
@@ -130,7 +130,7 @@ class SearchEngine: NSObject {
         }
     }
     
-    fileprivate func contentOfReadmeFile(_ directoryPath:String) -> String? {
+    private func contentOfReadmeFile(_ directoryPath:String) -> String? {
         //find the path of the file
         let path = "\(directoryPath)/README.md"
         //read the content of the file

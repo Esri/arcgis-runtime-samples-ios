@@ -17,11 +17,11 @@ protocol HorizontalPickerDelegate: class {
 @IBDesignable
 class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
-    @IBOutlet fileprivate var collectionView: UICollectionView!
-    @IBOutlet fileprivate var prevButton: UIButton!
-    @IBOutlet fileprivate var nextButton: UIButton!
+    @IBOutlet private var collectionView: UICollectionView!
+    @IBOutlet private var prevButton: UIButton!
+    @IBOutlet private var nextButton: UIButton!
     
-    fileprivate var nibView:UIView!
+    private var nibView:UIView!
     
     weak var delegate: HorizontalPickerDelegate?
     
@@ -51,7 +51,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
         self.commonInit()
     }
     
-    fileprivate func commonInit() {
+    private func commonInit() {
         
         self.backgroundColor = UIColor.clear
         
@@ -68,7 +68,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
         self.setButtonsColor()
     }
     
-    fileprivate func loadViewFromNib() -> UIView {
+    private func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "HorizontalPicker", bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
@@ -76,7 +76,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
         return view
     }
     
-    fileprivate func setButtonsColor() {
+    private func setButtonsColor() {
         let prevImage = self.prevButton.imageView?.image?.withRenderingMode(.alwaysTemplate)
         self.prevButton.imageView?.tintColor = self.buttonsColor
         self.prevButton.setImage(prevImage, for: UIControlState())
@@ -86,7 +86,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
         self.nextButton.setImage(nextImage, for: UIControlState())
     }
     
-    fileprivate func updateButtonsState() {
+    private func updateButtonsState() {
         let nextFlag = self.selectedIndex < self.options.count - 1
         self.nextButton.isEnabled = nextFlag
         self.nextButton.imageView?.tintColor = nextFlag ? self.buttonsColor : UIColor.gray
@@ -144,7 +144,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     
     //MARK: - Actions
     
-    @IBAction fileprivate func nextButtonAction() {
+    @IBAction private func nextButtonAction() {
         if self.selectedIndex < self.options.count - 1 {
             //update selected index
             self.selectedIndex = self.selectedIndex + 1
@@ -157,7 +157,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
         }
     }
     
-    @IBAction fileprivate func prevButtonAction() {
+    @IBAction private func prevButtonAction() {
         if self.selectedIndex > 0 {
             //update selected index
             self.selectedIndex = self.selectedIndex - 1

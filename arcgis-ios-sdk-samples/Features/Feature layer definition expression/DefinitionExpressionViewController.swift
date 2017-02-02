@@ -17,10 +17,10 @@ import ArcGIS
 
 class DefinitionExpressionViewController: UIViewController {
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView:AGSMapView!
     
-    fileprivate var map:AGSMap!
-    fileprivate var featureLayer:AGSFeatureLayer!
+    private var map:AGSMap!
+    private var featureLayer:AGSFeatureLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()

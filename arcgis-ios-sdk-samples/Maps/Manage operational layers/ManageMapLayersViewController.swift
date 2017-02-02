@@ -20,7 +20,7 @@ class ManageMapLayersViewController: UIViewController, MMLLayersViewControllerDe
     @IBOutlet weak var mapView:AGSMapView!
     var map:AGSMap!
     
-    fileprivate var deletedLayers:[AGSLayer]!
+    private var deletedLayers:[AGSLayer]!
     
     override func viewDidLoad() {
         super.viewDidLoad()

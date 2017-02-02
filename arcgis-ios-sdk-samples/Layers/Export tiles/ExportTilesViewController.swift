@@ -24,14 +24,14 @@ class ExportTilesViewController: UIViewController {
     @IBOutlet var previewMapView:AGSMapView!
     @IBOutlet var barButtonItem:UIBarButtonItem!
     
-    fileprivate var graphicsOverlay = AGSGraphicsOverlay()
-    fileprivate var extentGraphic:AGSGraphic!
+    private var graphicsOverlay = AGSGraphicsOverlay()
+    private var extentGraphic:AGSGraphic!
     
-    fileprivate var tiledLayer:AGSArcGISTiledLayer!
-    fileprivate var job:AGSExportTileCacheJob!
-    fileprivate var exportTask:AGSExportTileCacheTask!
+    private var tiledLayer:AGSArcGISTiledLayer!
+    private var job:AGSExportTileCacheJob!
+    private var exportTask:AGSExportTileCacheTask!
     
-    fileprivate var downloading = false {
+    private var downloading = false {
         didSet {
             self.barButtonItem?.title = self.downloading ? "Cancel" : "Export tiles"
         }
@@ -87,7 +87,7 @@ class ExportTilesViewController: UIViewController {
         }
     }
     
-    fileprivate func cancelDownload() {
+    private func cancelDownload() {
         if self.job != nil {
             SVProgressHUD.dismiss()
             //TODO: Cancel the job when the API is available
@@ -98,7 +98,7 @@ class ExportTilesViewController: UIViewController {
         }
     }
     
-    fileprivate func initiateDownload() {
+    private func initiateDownload() {
         
         //get the parameters by specifying the selected area,
         //mapview's current scale as the minScale and tiled layer's max scale as maxScale
@@ -129,7 +129,7 @@ class ExportTilesViewController: UIViewController {
         }
     }
     
-    fileprivate func exportTilesUsingParameters(_ params: AGSExportTileCacheParameters) {
+    private func exportTilesUsingParameters(_ params: AGSExportTileCacheParameters) {
         //destination path for the tpk, including name
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let destinationPath = "\(path)/myTileCache.tpk"
@@ -166,7 +166,7 @@ class ExportTilesViewController: UIViewController {
         self.previewMapView.map = nil
     }
     
-    fileprivate func deleteAllTpks() {
+    private func deleteAllTpks() {
         
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         do {

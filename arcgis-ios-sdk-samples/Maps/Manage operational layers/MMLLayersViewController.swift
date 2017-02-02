@@ -21,7 +21,7 @@ protocol MMLLayersViewControllerDelegate:class {
 
 class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet fileprivate weak var tableView:UITableView!
+    @IBOutlet private weak var tableView:UITableView!
     
     var layers:NSMutableArray!
     var deletedLayers:[AGSLayer]!

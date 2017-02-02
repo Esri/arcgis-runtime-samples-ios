@@ -17,18 +17,18 @@ import ArcGIS
 
 class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate, EAOptionsVCDelegate {
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView:AGSMapView!
     
-    fileprivate var map:AGSMap!
-    fileprivate var featureTable:AGSServiceFeatureTable!
-    fileprivate var featureLayer:AGSFeatureLayer!
-    fileprivate var lastQuery:AGSCancelable!
+    private var map:AGSMap!
+    private var featureTable:AGSServiceFeatureTable!
+    private var featureLayer:AGSFeatureLayer!
+    private var lastQuery:AGSCancelable!
     
-    fileprivate var types = ["Destroyed", "Major", "Minor", "Affected", "Inaccessible"]
-    fileprivate var selectedFeature:AGSArcGISFeature!
-    fileprivate let optionsSegueName = "OptionsSegue"
+    private var types = ["Destroyed", "Major", "Minor", "Affected", "Inaccessible"]
+    private var selectedFeature:AGSArcGISFeature!
+    private let optionsSegueName = "OptionsSegue"
     
-    fileprivate let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
+    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -19,10 +19,10 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     @IBOutlet var mapView: AGSMapView!
     
-    fileprivate var map:AGSMap!
+    private var map:AGSMap!
     
-    fileprivate var featureLayer:AGSFeatureLayer!
-    fileprivate var mapImageLayer:AGSArcGISMapImageLayer!
+    private var featureLayer:AGSFeatureLayer!
+    private var mapImageLayer:AGSArcGISMapImageLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +79,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     //MARK: - Identify layers
     
-    fileprivate func identifyLayers(_ screen: CGPoint) {
+    private func identifyLayers(_ screen: CGPoint) {
         //show progress hud
         SVProgressHUD.show(withStatus: "Identifying", maskType: .gradient)
         
@@ -99,7 +99,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     //MARK: - Helper methods
     
-    fileprivate func handleIdentifyResults(_ results: [AGSIdentifyLayerResult]) {
+    private func handleIdentifyResults(_ results: [AGSIdentifyLayerResult]) {
         
         var messageString = ""
         var totalCount = 0
@@ -127,7 +127,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         }
     }
     
-    fileprivate func geoElementsCountFromResult(_ result: AGSIdentifyLayerResult) -> Int {
+    private func geoElementsCountFromResult(_ result: AGSIdentifyLayerResult) -> Int {
         //create temp array
         var tempResults = [result]
         
@@ -157,7 +157,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     
     //helper method to show results to the user
-    fileprivate func showAlertController(_ title: String, message: String) {
+    private func showAlertController(_ title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)

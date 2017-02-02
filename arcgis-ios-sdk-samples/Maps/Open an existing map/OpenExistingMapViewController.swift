@@ -17,18 +17,18 @@ import ArcGIS
 
 class OpenExistingMapViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    fileprivate let itemURL1 = "https://www.arcgis.com/home/item.html?id=2d6fa24b357d427f9c737774e7b0f977"
-    fileprivate let itemURL2 = "https://www.arcgis.com/home/item.html?id=01f052c8995e4b9e889d73c3e210ebe3"
-    fileprivate let itemURL3 = "https://www.arcgis.com/home/item.html?id=92ad152b9da94dee89b9e387dfe21acd"
+    private let itemURL1 = "https://www.arcgis.com/home/item.html?id=2d6fa24b357d427f9c737774e7b0f977"
+    private let itemURL2 = "https://www.arcgis.com/home/item.html?id=01f052c8995e4b9e889d73c3e210ebe3"
+    private let itemURL3 = "https://www.arcgis.com/home/item.html?id=92ad152b9da94dee89b9e387dfe21acd"
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
-    @IBOutlet fileprivate weak var blurView:UIVisualEffectView!
-    @IBOutlet fileprivate weak var tableParentView:UIView!
-    @IBOutlet fileprivate weak var tableView:UITableView!
+    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var blurView:UIVisualEffectView!
+    @IBOutlet private weak var tableParentView:UIView!
+    @IBOutlet private weak var tableView:UITableView!
     
-    fileprivate var map:AGSMap!
-    fileprivate var titles = ["Housing with Mortgages", "USA Tapestry Segmentation", "Geology of United States"]
-    fileprivate var imageNames = ["OpenExistingMapThumbnail1", "OpenExistingMapThumbnail2", "OpenExistingMapThumbnail3"]
+    private var map:AGSMap!
+    private var titles = ["Housing with Mortgages", "USA Tapestry Segmentation", "Geology of United States"]
+    private var imageNames = ["OpenExistingMapThumbnail1", "OpenExistingMapThumbnail2", "OpenExistingMapThumbnail3"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +56,7 @@ class OpenExistingMapViewController: UIViewController, UITableViewDataSource, UI
     
     //MARK: - Actions
     
-    @IBAction fileprivate func mapsAction() {
+    @IBAction private func mapsAction() {
         //toggle table view
         self.blurView.isHidden = !self.blurView.isHidden
     }

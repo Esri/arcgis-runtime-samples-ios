@@ -17,17 +17,17 @@ import ArcGIS
 
 class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
-    @IBOutlet fileprivate weak var toolbar:UIToolbar!
-    @IBOutlet fileprivate var toolbarBottomConstraint:NSLayoutConstraint!
+    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var toolbar:UIToolbar!
+    @IBOutlet private var toolbarBottomConstraint:NSLayoutConstraint!
     
-    fileprivate var map:AGSMap!
-    fileprivate var featureTable:AGSServiceFeatureTable!
-    fileprivate var featureLayer:AGSFeatureLayer!
-    fileprivate var lastQuery:AGSCancelable!
+    private var map:AGSMap!
+    private var featureTable:AGSServiceFeatureTable!
+    private var featureLayer:AGSFeatureLayer!
+    private var lastQuery:AGSCancelable!
     
-    fileprivate var selectedFeature:AGSArcGISFeature!
-    fileprivate let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
+    private var selectedFeature:AGSArcGISFeature!
+    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()

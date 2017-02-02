@@ -19,7 +19,7 @@ class PictureMarkerSymbolsViewController: UIViewController {
 
     @IBOutlet var mapView:AGSMapView!
     
-    fileprivate var graphicsOverlay = AGSGraphicsOverlay()
+    private var graphicsOverlay = AGSGraphicsOverlay()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ class PictureMarkerSymbolsViewController: UIViewController {
     }
 
     
-    fileprivate func addPictureMarkerSymbolFromURL() {
+    private func addPictureMarkerSymbolFromURL() {
         let url = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0/images/e82f744ebb069bb35b234b3fea46deae")!
         
         let campsiteSymbol = AGSPictureMarkerSymbol(url: url)
@@ -72,7 +72,7 @@ class PictureMarkerSymbolsViewController: UIViewController {
         self.graphicsOverlay.graphics.add(graphic)
     }
     
-    fileprivate func addPictureMarkerSymbolFromImage() {
+    private func addPictureMarkerSymbolFromImage() {
         //image name
         let imageName = "PinBlueStar"
         

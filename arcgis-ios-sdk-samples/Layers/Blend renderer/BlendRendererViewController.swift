@@ -21,9 +21,9 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var visualEffectView: UIVisualEffectView!
     
-    fileprivate var map:AGSMap!
+    private var map:AGSMap!
     
-    fileprivate var rasterLayer: AGSRasterLayer!
+    private var rasterLayer: AGSRasterLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,7 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
         // Dispose of any resources that can be recreated.
     }
     
-    fileprivate func generateBlendRenderer(_ altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) -> AGSBlendRenderer {
+    private func generateBlendRenderer(_ altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) -> AGSBlendRenderer {
         
         //create the raster to be used as elevation raster
         let raster = AGSRaster(name: "Shasta_Elevation", extension: "tif")

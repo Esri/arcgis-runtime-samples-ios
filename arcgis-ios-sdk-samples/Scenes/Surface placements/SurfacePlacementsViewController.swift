@@ -21,9 +21,9 @@ class SurfacePlacementsViewController: UIViewController {
 
     @IBOutlet var sceneView:AGSSceneView!
     
-    fileprivate var drapedGraphicsOverlay = AGSGraphicsOverlay()
-    fileprivate var relativeGraphicsOverlay = AGSGraphicsOverlay()
-    fileprivate var absoluteGraphicsOverlay = AGSGraphicsOverlay()
+    private var drapedGraphicsOverlay = AGSGraphicsOverlay()
+    private var relativeGraphicsOverlay = AGSGraphicsOverlay()
+    private var absoluteGraphicsOverlay = AGSGraphicsOverlay()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +57,7 @@ class SurfacePlacementsViewController: UIViewController {
     }
     
     
-    fileprivate func addGraphics() {
+    private func addGraphics() {
         
         //create point for graphic location
         let point = AGSPoint(x: -4.04, y: 53.06, z: 1000, spatialReference: AGSSpatialReference.wgs84())
@@ -67,11 +67,11 @@ class SurfacePlacementsViewController: UIViewController {
         self.absoluteGraphicsOverlay.graphics.addObjects(from: [AGSGraphic(geometry: point, symbol: self.pointSymbol(), attributes: nil), AGSGraphic(geometry: point, symbol: self.textSymbol("Absolute"), attributes: nil)])
     }
     
-    fileprivate func pointSymbol() -> AGSSimpleMarkerSceneSymbol {
+    private func pointSymbol() -> AGSSimpleMarkerSceneSymbol {
         return AGSSimpleMarkerSceneSymbol(style: .sphere, color: UIColor.red, height: 50, width: 50, depth: 50, anchorPosition: .center)
     }
     
-    fileprivate func textSymbol(_ text: String) -> AGSTextSymbol {
+    private func textSymbol(_ text: String) -> AGSTextSymbol {
         return AGSTextSymbol(text: text, color: UIColor.blue, size: 20, horizontalAlignment: .left, verticalAlignment: .middle)
     }
 

@@ -29,18 +29,18 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     @IBOutlet var instructionsLabel:UILabel!
     @IBOutlet var featureLayersContainerView:UIView!
     
-    fileprivate var map:AGSMap!
-    fileprivate var sketchEditor:AGSSketchEditor!
-    fileprivate let FEATURE_SERVICE_URL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
-    fileprivate var featureTable:AGSServiceFeatureTable!
-    fileprivate var syncTask:AGSGeodatabaseSyncTask!
-    fileprivate var generatedGeodatabase:AGSGeodatabase!
-    fileprivate var generateJob:AGSGenerateGeodatabaseJob!
-    fileprivate var syncJob:AGSSyncGeodatabaseJob!
-    fileprivate var popupsVC:AGSPopupsViewController!
-    fileprivate var featureLayersVC:FeatureLayersViewController!
+    private var map:AGSMap!
+    private var sketchEditor:AGSSketchEditor!
+    private let FEATURE_SERVICE_URL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
+    private var featureTable:AGSServiceFeatureTable!
+    private var syncTask:AGSGeodatabaseSyncTask!
+    private var generatedGeodatabase:AGSGeodatabase!
+    private var generateJob:AGSGenerateGeodatabaseJob!
+    private var syncJob:AGSSyncGeodatabaseJob!
+    private var popupsVC:AGSPopupsViewController!
+    private var featureLayersVC:FeatureLayersViewController!
     
-    fileprivate var liveMode = true {
+    private var liveMode = true {
         didSet {
             self.updateUI()
         }
@@ -218,7 +218,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.deleteAllGeodatabases()
     }
     
-    fileprivate func deleteAllGeodatabases() {
+    private func deleteAllGeodatabases() {
         //Remove all files with .geodatabase, .geodatabase-shm and .geodatabase-wal file extensions
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         do {
@@ -245,7 +245,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }
     }
     
-    fileprivate func disableSketchEditor() {
+    private func disableSketchEditor() {
         self.mapView.sketchEditor?.stop()
         self.mapView.sketchEditor?.clearGeometry()
         self.sketchToolbar.isHidden = true

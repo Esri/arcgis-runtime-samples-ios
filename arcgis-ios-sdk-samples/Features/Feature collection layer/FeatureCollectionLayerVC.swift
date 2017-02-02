@@ -44,7 +44,7 @@ class FeatureCollectionLayerVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    fileprivate func addFeatureCollectionLayer() {
+    private func addFeatureCollectionLayer() {
         //feature collection table for point, polyline and polygon
         let pointsCollectionTable = self.pointsCollectionTable()
         let linesCollectionTable = self.linesCollectionTable()
@@ -60,7 +60,7 @@ class FeatureCollectionLayerVC: UIViewController {
         self.mapView.map?.operationalLayers.add(featureCollectionLayer)
     }
     
-    fileprivate func pointsCollectionTable() -> AGSFeatureCollectionTable {
+    private func pointsCollectionTable() -> AGSFeatureCollectionTable {
         
         //create schema for points feature collection table
         var fields = [AGSField]()
@@ -87,7 +87,7 @@ class FeatureCollectionLayerVC: UIViewController {
         return pointsCollectionTable
     }
     
-    fileprivate func linesCollectionTable() -> AGSFeatureCollectionTable {
+    private func linesCollectionTable() -> AGSFeatureCollectionTable {
         
         //create schema for points feature collection table
         var fields = [AGSField]()
@@ -117,7 +117,7 @@ class FeatureCollectionLayerVC: UIViewController {
         return linesCollectionTable
     }
     
-    fileprivate func polygonsCollectionTable() -> AGSFeatureCollectionTable {
+    private func polygonsCollectionTable() -> AGSFeatureCollectionTable {
         
         //create schema for points feature collection table
         var fields = [AGSField]()

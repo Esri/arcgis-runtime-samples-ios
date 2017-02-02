@@ -23,7 +23,7 @@ class SanDiegoAddressesViewController: UITableViewController {
     weak var delegate:SanDiegoAddressesVCDelegate?
     
     //prepopulated list of addresses
-    fileprivate var addresses = ["910 N Harbor Dr, San Diego, CA 92101",
+    private var addresses = ["910 N Harbor Dr, San Diego, CA 92101",
         "2920 Zoo Dr, San Diego, CA 92101",
         "111 W Harbor Dr, San Diego, CA 92101",
         "868 4th Ave, San Diego, CA 92101",

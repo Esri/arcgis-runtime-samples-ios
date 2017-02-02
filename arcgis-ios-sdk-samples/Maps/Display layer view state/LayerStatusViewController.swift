@@ -17,12 +17,12 @@ import ArcGIS
 
 class LayerStatusViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
-    @IBOutlet fileprivate weak var tableView:UITableView!
+    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var tableView:UITableView!
     
-    fileprivate var map:AGSMap!
+    private var map:AGSMap!
     
-    fileprivate var viewStatusArray = [String]()
+    private var viewStatusArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

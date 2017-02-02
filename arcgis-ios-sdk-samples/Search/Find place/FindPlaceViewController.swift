@@ -30,21 +30,21 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet var extentSearchButton:UIButton!
     @IBOutlet var overlayView:UIView!
     
-    fileprivate var textFieldLocationButton:UIButton!
+    private var textFieldLocationButton:UIButton!
     
-    fileprivate var map:AGSMap!
-    fileprivate var graphicsOverlay:AGSGraphicsOverlay!
+    private var map:AGSMap!
+    private var graphicsOverlay:AGSGraphicsOverlay!
     
-    fileprivate var locatorTask:AGSLocatorTask!
-    fileprivate var suggestResults:[AGSSuggestResult]!
-    fileprivate var suggestRequestOperation:AGSCancelable!
-    fileprivate var selectedSuggestResult:AGSSuggestResult!
-    fileprivate var preferredSearchLocation:AGSPoint!
-    fileprivate var selectedTextField:UITextField!
+    private var locatorTask:AGSLocatorTask!
+    private var suggestResults:[AGSSuggestResult]!
+    private var suggestRequestOperation:AGSCancelable!
+    private var selectedSuggestResult:AGSSuggestResult!
+    private var preferredSearchLocation:AGSPoint!
+    private var selectedTextField:UITextField!
     
-    fileprivate var isTableViewVisible = true
-    fileprivate var isTableViewAnimating = false
-    fileprivate var canDoExtentSearch = false {
+    private var isTableViewVisible = true
+    private var isTableViewAnimating = false
+    private var canDoExtentSearch = false {
         didSet {
             if !canDoExtentSearch {
                 self.extentSearchButton.isHidden = true
@@ -52,9 +52,9 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    fileprivate var currentLocationText = "Current Location"
-    fileprivate var isUsingCurrentLocation = false
-    fileprivate let tableViewHeight:CGFloat = 120
+    private var currentLocationText = "Current Location"
+    private var isUsingCurrentLocation = false
+    private let tableViewHeight:CGFloat = 120
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,7 +113,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     //method to show search icon and pin icon for the textfields
-    fileprivate func setupTextFieldLeftViews() {
+    private func setupTextFieldLeftViews() {
         var leftView = self.textFieldViewWithImage("SearchIcon")
         self.poiTextField.leftView = leftView
         self.poiTextField.leftViewMode = UITextFieldViewMode.always
@@ -125,7 +125,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     
     //method returns a UIView with an imageView as the subview
     //with an image instantiated using the name provided
-    fileprivate func textFieldViewWithImage(_ imageName:String) -> UIView {
+    private func textFieldViewWithImage(_ imageName:String) -> UIView {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 25, height: 30))
         let imageView = UIImageView(image: UIImage(named: imageName))
         imageView.frame = CGRect(x: 5, y: 5, width: 20, height: 20)
@@ -134,7 +134,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     //method to toggle the suggestions table view on and off
-    fileprivate func animateTableView(_ expand:Bool) {
+    private func animateTableView(_ expand:Bool) {
         if (expand != self.isTableViewVisible) && !self.isTableViewAnimating {
             self.isTableViewAnimating = true
             self.tableViewHeightConstraint.constant = expand ? self.tableViewHeight : 0
@@ -150,14 +150,14 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     //method to clear prefered location information
     //hide the suggestions table view, empty previously selected
     //suggest result and previously fetch search location
-    fileprivate func clearPreferredLocationInfo() {
+    private func clearPreferredLocationInfo() {
         self.animateTableView(false)
         self.selectedSuggestResult = nil
         self.preferredSearchLocation = nil
     }
     
     //method to show callout for a graphic
-    fileprivate func showCalloutForGraphic(_ graphic:AGSGraphic, tapLocation:AGSPoint) {
+    private func showCalloutForGraphic(_ graphic:AGSGraphic, tapLocation:AGSPoint) {
         let addressType = graphic.attributes["Addr_type"] as! String
         self.mapView.callout.title = graphic.attributes["Match_addr"] as? String ?? ""
         
@@ -172,7 +172,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     //method returns a graphic object for the specified point and attributes
-    fileprivate func graphicForPoint(_ point: AGSPoint, attributes:[String:AnyObject]?) -> AGSGraphic {
+    private func graphicForPoint(_ point: AGSPoint, attributes:[String:AnyObject]?) -> AGSGraphic {
         let markerImage = UIImage(named: "RedMarker")!
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
         symbol.leaderOffsetY = markerImage.size.height/2
@@ -321,7 +321,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     
     //MARK: - Suggestions logic
     
-    fileprivate func fetchSuggestions(_ string:String, suggestionType:SuggestionType, textField:UITextField) {
+    private func fetchSuggestions(_ string:String, suggestionType:SuggestionType, textField:UITextField) {
         //cancel previous requests
         if self.suggestRequestOperation != nil {
             self.suggestRequestOperation.cancel()
@@ -348,7 +348,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    fileprivate func geocodeUsingSuggestResult(_ suggestResult:AGSSuggestResult, completion: @escaping () -> Void) {
+    private func geocodeUsingSuggestResult(_ suggestResult:AGSSuggestResult, completion: @escaping () -> Void) {
             
         //create geocode params
         let params = AGSGeocodeParameters()
@@ -371,7 +371,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    fileprivate func geocodePOIs(_ poi:String, location:AGSPoint?, extent:AGSGeometry?) {
+    private func geocodePOIs(_ poi:String, location:AGSPoint?, extent:AGSGeometry?) {
         //hide callout if already visible
         self.mapView.callout.dismiss()
         
@@ -433,7 +433,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     
     //MARK: - Actions
     
-    fileprivate func search() {
+    private func search() {
         //validation
         guard let poi = self.poiTextField.text , !poi.isEmpty else {
             print("Point of interest required")
@@ -473,14 +473,14 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    @IBAction fileprivate func searchInArea() {
+    @IBAction private func searchInArea() {
         self.clearPreferredLocationInfo()
         self.geocodePOIs(self.poiTextField.text!, location: nil, extent: self.mapView.visibleArea!.extent)
     }
     
     //MARK: - Gesture recognizers
     
-    @IBAction fileprivate func hideKeyboard() {
+    @IBAction private func hideKeyboard() {
         self.view.endEditing(true)
     }
     

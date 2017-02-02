@@ -24,10 +24,10 @@ class HotspotSettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var fromTextField: UITextField!
     @IBOutlet var toTextField: UITextField!
     
-    fileprivate var datePicker: UIDatePicker!
-    fileprivate var dateFormatter: DateFormatter!
+    private var datePicker: UIDatePicker!
+    private var dateFormatter: DateFormatter!
     
-    fileprivate var selectedTextField: UITextField!
+    private var selectedTextField: UITextField!
     
     weak var delegate: HotspotSettingsVCDelegate?
     

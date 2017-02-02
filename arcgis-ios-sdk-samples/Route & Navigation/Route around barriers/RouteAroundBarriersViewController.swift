@@ -25,15 +25,15 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
     @IBOutlet var directionsListBBI:UIBarButtonItem!
     @IBOutlet var directionsBottomConstraint:NSLayoutConstraint!
     
-    fileprivate var stopGraphicsOverlay = AGSGraphicsOverlay()
-    fileprivate var barrierGraphicsOverlay = AGSGraphicsOverlay()
-    fileprivate var routeGraphicsOverlay = AGSGraphicsOverlay()
-    fileprivate var directionsGraphicsOverlay = AGSGraphicsOverlay()
+    private var stopGraphicsOverlay = AGSGraphicsOverlay()
+    private var barrierGraphicsOverlay = AGSGraphicsOverlay()
+    private var routeGraphicsOverlay = AGSGraphicsOverlay()
+    private var directionsGraphicsOverlay = AGSGraphicsOverlay()
     
-    fileprivate var routeTask:AGSRouteTask!
-    fileprivate var routeParameters:AGSRouteParameters!
-    fileprivate var isDirectionsListVisible = false
-    fileprivate var directionsListViewController:DirectionsListViewController!
+    private var routeTask:AGSRouteTask!
+    private var routeParameters:AGSRouteParameters!
+    private var isDirectionsListVisible = false
+    private var directionsListViewController:DirectionsListViewController!
     
     var generatedRoute:AGSRoute! {
         didSet {
@@ -145,7 +145,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         return symbol
     }
     
-    fileprivate func symbolForStopGraphic(_ index: Int) -> AGSSymbol {
+    private func symbolForStopGraphic(_ index: Int) -> AGSSymbol {
         let markerImage = UIImage(named: "BlueMarker")!
         let markerSymbol = AGSPictureMarkerSymbol(image: markerImage)
         markerSymbol.offsetY = markerImage.size.height/2

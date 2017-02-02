@@ -47,7 +47,7 @@ class StretchRendererSettingsVC: UIViewController, UITableViewDataSource, Stretc
     @IBOutlet var tableView: UITableView!
     @IBOutlet var tableViewHeightConstraint: NSLayoutConstraint!
     
-    fileprivate var stretchType:StretchType = .MinMax
+    private var stretchType:StretchType = .MinMax
     
     weak var delegate: StretchRendererSettingsVCDelegate?
     

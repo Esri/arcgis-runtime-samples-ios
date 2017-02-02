@@ -25,13 +25,13 @@ private let reuseIdentifier = "CategoryCell"
 
 class ContentCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, CustomSearchHeaderViewDelegate {
 
-    @IBOutlet fileprivate var collectionView:UICollectionView!
-    @IBOutlet fileprivate var collectionViewFlowLayout:UICollectionViewFlowLayout!
+    @IBOutlet private var collectionView:UICollectionView!
+    @IBOutlet private var collectionViewFlowLayout:UICollectionViewFlowLayout!
     
-    fileprivate var headerView:CustomSearchHeaderView!
+    private var headerView:CustomSearchHeaderView!
     
     var nodesArray:[Node]!
-    fileprivate var transitionSize:CGSize!
+    private var transitionSize:CGSize!
     
     override func viewDidLoad() {
         super.viewDidLoad()

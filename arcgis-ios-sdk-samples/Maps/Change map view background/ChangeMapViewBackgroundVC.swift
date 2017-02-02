@@ -20,7 +20,7 @@ class ChangeMapViewBackgroundVC: UIViewController, GridSettingsVCDelegate {
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var settingsContainerView: UIView!
     
-    fileprivate var gridSettingsViewController:GridSettingsViewController!
+    private var gridSettingsViewController:GridSettingsViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +71,7 @@ class ChangeMapViewBackgroundVC: UIViewController, GridSettingsVCDelegate {
     
     //MARK: - Actions
     
-    @IBAction fileprivate func changeBackgroundAction() {
+    @IBAction private func changeBackgroundAction() {
         //default color
         self.gridSettingsViewController.colorButton.backgroundColor = self.mapView.backgroundGrid?.color
         self.gridSettingsViewController.lineColorButton.backgroundColor = self.mapView.backgroundGrid?.gridLineColor

@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     var window: UIWindow?
     
-    fileprivate var indexArray:[String]!
-    fileprivate var wordsDictionary:[String: [String]]!
-    fileprivate var readmeDirectoriesURLs:[URL]!
+    private var indexArray:[String]!
+    private var wordsDictionary:[String: [String]]!
+    private var readmeDirectoriesURLs:[URL]!
 
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         if url.absoluteString.range(of: "auth", options: [], range: nil, locale: nil) != nil {

@@ -17,10 +17,10 @@ import ArcGIS
 
 class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView:AGSMapView!
     
-    fileprivate var map:AGSMap!
-    fileprivate var graphicsOverlay:AGSGraphicsOverlay!
+    private var map:AGSMap!
+    private var graphicsOverlay:AGSGraphicsOverlay!
     
     override func viewDidLoad() {
         super.viewDidLoad()

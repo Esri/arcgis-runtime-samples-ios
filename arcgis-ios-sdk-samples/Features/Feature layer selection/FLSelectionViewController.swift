@@ -17,14 +17,14 @@ import ArcGIS
 
 class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView:AGSMapView!
     
-    fileprivate var map:AGSMap!
-    fileprivate var featureTable:AGSServiceFeatureTable!
-    fileprivate var featureLayer:AGSFeatureLayer!
-    fileprivate var lastQuery:AGSCancelable!
-    fileprivate var selectedFeatures:[AGSFeature]!
-    fileprivate let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
+    private var map:AGSMap!
+    private var featureTable:AGSServiceFeatureTable!
+    private var featureLayer:AGSFeatureLayer!
+    private var lastQuery:AGSCancelable!
+    private var selectedFeatures:[AGSFeature]!
+    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()

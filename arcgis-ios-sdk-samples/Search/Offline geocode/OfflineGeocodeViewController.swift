@@ -17,17 +17,17 @@ import ArcGIS
 
 class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIAdaptivePresentationControllerDelegate, SanDiegoAddressesVCDelegate {
     
-    @IBOutlet fileprivate var mapView:AGSMapView!
-    @IBOutlet fileprivate var button:UIButton!
-    @IBOutlet fileprivate var searchBar:UISearchBar!
+    @IBOutlet private var mapView:AGSMapView!
+    @IBOutlet private var button:UIButton!
+    @IBOutlet private var searchBar:UISearchBar!
     
-    fileprivate var locatorTask:AGSLocatorTask!
-    fileprivate var geocodeParameters:AGSGeocodeParameters!
-    fileprivate var reverseGeocodeParameters:AGSReverseGeocodeParameters!
-    fileprivate var graphicsOverlay:AGSGraphicsOverlay!
-    fileprivate var locatorTaskOperation:AGSCancelable!
-    fileprivate var magnifierOffset:CGPoint!
-    fileprivate var longPressedAndMoving = false
+    private var locatorTask:AGSLocatorTask!
+    private var geocodeParameters:AGSGeocodeParameters!
+    private var reverseGeocodeParameters:AGSReverseGeocodeParameters!
+    private var graphicsOverlay:AGSGraphicsOverlay!
+    private var locatorTaskOperation:AGSCancelable!
+    private var magnifierOffset:CGPoint!
+    private var longPressedAndMoving = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +84,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.magnifierOffset = CGPoint(x: 0, y: -img.size.height)
     }
     
-    fileprivate func geocodeSearchText(_ text:String) {
+    private func geocodeSearchText(_ text:String) {
         //hide keyboard
         self.hideKeyboard()
         
@@ -117,7 +117,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         })
     }
     
-    fileprivate func reverseGeocode(_ point:AGSPoint) {
+    private func reverseGeocode(_ point:AGSPoint) {
         //clear the search bar text to give feedback that the graphic
         //is based on the tap and not search
         self.searchBar.text = ""
@@ -173,7 +173,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
     }
     
     //method returns a graphic object for the point and attributes provided
-    fileprivate func graphicForPoint(_ point: AGSPoint, attributes: [String: AnyObject]?) -> AGSGraphic {
+    private func graphicForPoint(_ point: AGSPoint, attributes: [String: AnyObject]?) -> AGSGraphic {
         let markerImage = UIImage(named: "RedMarker")!
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
         symbol.leaderOffsetY = markerImage.size.height/2
@@ -183,7 +183,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
     }
     
     //method to show the callout for the provided graphic, with tap location details
-    fileprivate func showCalloutForGraphic(_ graphic:AGSGraphic, tapLocation:AGSPoint, animated:Bool, offset:Bool) {
+    private func showCalloutForGraphic(_ graphic:AGSGraphic, tapLocation:AGSPoint, animated:Bool, offset:Bool) {
         self.mapView.callout.title = graphic.attributes["Match_addr"] as? String
         self.mapView.callout.isAccessoryButtonHidden = true
         
@@ -195,7 +195,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         }
     }
     
-    fileprivate func showAlert(_ message:String) {
+    private func showAlert(_ message:String) {
         SVProgressHUD.showError(withStatus: message, maskType: .gradient)
     }
     

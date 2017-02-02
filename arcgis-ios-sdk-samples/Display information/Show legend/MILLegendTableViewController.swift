@@ -19,7 +19,7 @@ class MILLegendTableViewController: UITableViewController {
 
     var operationalLayers:NSMutableArray!
     var legendInfosDict = [String:[AGSLegendInfo]]()
-    fileprivate var orderArray:[AGSLayerContent]!
+    private var orderArray:[AGSLayerContent]!
     
     override func viewDidLoad() {
         super.viewDidLoad()

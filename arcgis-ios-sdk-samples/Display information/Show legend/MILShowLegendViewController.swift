@@ -17,12 +17,12 @@ import ArcGIS
 
 class MILShowLegendViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
-    @IBOutlet fileprivate weak var legendBBI:UIBarButtonItem!
+    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var legendBBI:UIBarButtonItem!
     
-    fileprivate var map:AGSMap!
-    fileprivate var mapImageLayer:AGSArcGISMapImageLayer!
-    fileprivate var popover:UIPopoverPresentationController!
+    private var map:AGSMap!
+    private var mapImageLayer:AGSArcGISMapImageLayer!
+    private var popover:UIPopoverPresentationController!
     
     override func viewDidLoad() {
         super.viewDidLoad()

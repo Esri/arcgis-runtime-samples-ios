@@ -22,11 +22,11 @@ class GenerateGeodatabaseViewController: UIViewController {
     @IBOutlet var downloadBBI:UIBarButtonItem!
     @IBOutlet var extentView:UIView!
     
-    fileprivate var map:AGSMap!
-    fileprivate let FEATURE_SERVICE_URL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
-    fileprivate var syncTask:AGSGeodatabaseSyncTask!
-    fileprivate var generateJob:AGSGenerateGeodatabaseJob!
-    fileprivate var generatedGeodatabase:AGSGeodatabase!
+    private var map:AGSMap!
+    private let FEATURE_SERVICE_URL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
+    private var syncTask:AGSGeodatabaseSyncTask!
+    private var generateJob:AGSGenerateGeodatabaseJob!
+    private var generatedGeodatabase:AGSGeodatabase!
     
     override func viewDidLoad() {
         super.viewDidLoad()

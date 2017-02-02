@@ -16,12 +16,12 @@ import UIKit
 
 class SegmentedViewController: UIViewController {
     
-    @IBOutlet fileprivate weak var segmentedControl:UISegmentedControl!
-    @IBOutlet fileprivate weak var infoContainerView:UIView!
-    @IBOutlet fileprivate weak var codeContainerView:UIView!
+    @IBOutlet private weak var segmentedControl:UISegmentedControl!
+    @IBOutlet private weak var infoContainerView:UIView!
+    @IBOutlet private weak var codeContainerView:UIView!
     
-    fileprivate var sourceCodeVC:SourceCodeViewController!
-    fileprivate var sampleInfoVC:SampleInfoViewController!
+    private var sourceCodeVC:SourceCodeViewController!
+    private var sampleInfoVC:SampleInfoViewController!
     
     var filenames:[String]!
     var folderName:String!

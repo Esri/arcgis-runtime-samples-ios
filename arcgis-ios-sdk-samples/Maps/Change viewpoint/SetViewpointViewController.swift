@@ -17,13 +17,13 @@ import ArcGIS
 
 class SetViewpointViewController: UIViewController {
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
-    @IBOutlet fileprivate weak var segmentedControl:UISegmentedControl!
+    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var segmentedControl:UISegmentedControl!
     
-    fileprivate var map:AGSMap!
+    private var map:AGSMap!
     
-    fileprivate var griffithParkGeometry:AGSPolygon!
-    fileprivate var londonCoordinate:AGSPoint!
+    private var griffithParkGeometry:AGSPolygon!
+    private var londonCoordinate:AGSPoint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +73,7 @@ class SetViewpointViewController: UIViewController {
 
     //MARK: - Actions
     
-    @IBAction fileprivate func valueChanged(_ control:UISegmentedControl) {
+    @IBAction private func valueChanged(_ control:UISegmentedControl) {
         switch control.selectedSegmentIndex {
         case 0:
             self.mapView.setViewpointGeometry(self.griffithParkGeometry, padding: 50, completion: nil)

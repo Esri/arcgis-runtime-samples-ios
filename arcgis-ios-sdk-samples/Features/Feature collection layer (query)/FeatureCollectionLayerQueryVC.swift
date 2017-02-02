@@ -20,7 +20,7 @@ class FeatureCollectionLayerQueryVC: UIViewController {
 
     @IBOutlet var mapView:AGSMapView!
     
-    fileprivate var featureTable:AGSServiceFeatureTable!
+    private var featureTable:AGSServiceFeatureTable!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -47,7 +47,7 @@ class SimpleRendererViewController: UIViewController {
     }
     
 
-    fileprivate func addGraphics() {
+    private func addGraphics() {
         
         //Create points to add graphics to the map to allow a renderer to style them
         //These are in WGS84 coordinates (Long, Lat)
@@ -73,7 +73,7 @@ class SimpleRendererViewController: UIViewController {
         self.mapView.setViewpointGeometry(envelope, padding: 100, completion: nil)
     }
     
-    fileprivate func addSimpleRenderer() {
+    private func addSimpleRenderer() {
         //create a simple renderer with red cross symbol
         let simpleRenderer = AGSSimpleRenderer(symbol: AGSSimpleMarkerSymbol(style: .cross, color: UIColor.red, size: 12))
         

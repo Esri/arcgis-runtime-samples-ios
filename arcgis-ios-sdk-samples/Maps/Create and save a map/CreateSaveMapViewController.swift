@@ -40,15 +40,15 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     
     let webmapURL = "https://www.arcgis.com/home/webmap/viewer.html?webmap="
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
-    @IBOutlet fileprivate weak var createOptionsBlurView:UIVisualEffectView!
-    @IBOutlet fileprivate weak var saveAsBlurView:UIVisualEffectView!
-    @IBOutlet fileprivate weak var savingToolbar:UIToolbar!
+    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var createOptionsBlurView:UIVisualEffectView!
+    @IBOutlet private weak var saveAsBlurView:UIVisualEffectView!
+    @IBOutlet private weak var savingToolbar:UIToolbar!
     
-    fileprivate var createOptionsVC:CreateOptionsViewController!
-    fileprivate var saveAsVC:SaveAsViewController!
+    private var createOptionsVC:CreateOptionsViewController!
+    private var saveAsVC:SaveAsViewController!
     
-    fileprivate var portal:AGSPortal!
+    private var portal:AGSPortal!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +77,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         // Dispose of any resources that can be recreated.
     }
     
-    fileprivate func showSuccess() {
+    private func showSuccess() {
         let alertController = UIAlertController(title: "Saved successfully", message: nil, preferredStyle: UIAlertControllerStyle.alert)
         
         let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { [weak self] (action:UIAlertAction!) -> Void in
@@ -98,7 +98,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     
     //MARK: - hide/show create screen
     
-    fileprivate func toggleCreateView() {
+    private func toggleCreateView() {
         self.createOptionsBlurView.isHidden = !self.createOptionsBlurView.isHidden
         
         //reset selection
@@ -109,7 +109,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     
     //MARK: - hide/show input screen
     
-    fileprivate func toggleSaveAsView() {
+    private func toggleSaveAsView() {
         self.saveAsBlurView.isHidden = !self.saveAsBlurView.isHidden
         
         self.view.endEditing(true)
@@ -117,7 +117,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     
     //MARK: - Actions
     
-    @IBAction fileprivate func newAction() {
+    @IBAction private func newAction() {
         self.toggleCreateView()
     }
     
@@ -135,7 +135,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     }
     
     
-    @IBAction fileprivate func cancelAction() {
+    @IBAction private func cancelAction() {
         self.view.endEditing(true)
         self.toggleSaveAsView()
     }

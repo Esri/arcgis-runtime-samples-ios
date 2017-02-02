@@ -22,8 +22,8 @@ class StretchRendererViewController: UIViewController, StretchRendererSettingsVC
     @IBOutlet var containerView: UIView!
     @IBOutlet var visualEffectView: UIVisualEffectView!
     
-    fileprivate var raster: AGSRaster!
-    fileprivate var rasterLayer: AGSRasterLayer!
+    private var raster: AGSRaster!
+    private var rasterLayer: AGSRasterLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +75,7 @@ class StretchRendererViewController: UIViewController, StretchRendererSettingsVC
     
     //MARK: - Show/hide settings view
     
-    fileprivate func toggleSettingsView(_ on: Bool) {
+    private func toggleSettingsView(_ on: Bool) {
         self.visualEffectView.isHidden = !on
     }
 }

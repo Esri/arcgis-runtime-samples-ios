@@ -19,7 +19,7 @@ class SimpleMarkerSymbolViewController: UIViewController {
 
     @IBOutlet var mapView:AGSMapView!
     
-    fileprivate var graphicsOverlay = AGSGraphicsOverlay()
+    private var graphicsOverlay = AGSGraphicsOverlay()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,7 @@ class SimpleMarkerSymbolViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    fileprivate func addSimpleMarkerSymbol() {
+    private func addSimpleMarkerSymbol() {
         //create a simple marker symbol
         let symbol = AGSSimpleMarkerSymbol(style: .circle, color: UIColor.red, size: 12)
         

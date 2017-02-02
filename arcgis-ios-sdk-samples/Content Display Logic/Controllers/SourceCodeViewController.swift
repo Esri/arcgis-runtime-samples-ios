@@ -16,15 +16,15 @@ import UIKit
 
 class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptivePresentationControllerDelegate {
     
-    @IBOutlet fileprivate weak var webView:UIWebView!
-    @IBOutlet fileprivate weak var toolbarTitleButton:UIBarButtonItem!
+    @IBOutlet private weak var webView:UIWebView!
+    @IBOutlet private weak var toolbarTitleButton:UIBarButtonItem!
     
-    fileprivate var listViewController:ListViewController!
-    fileprivate var selectedFilenameIndex = 0
+    private var listViewController:ListViewController!
+    private var selectedFilenameIndex = 0
     var filenames:[String]!
     
-    fileprivate var isListViewContainerVisible = false
-    fileprivate var isListViewContainerAnimating = false
+    private var isListViewContainerVisible = false
+    private var isListViewContainerAnimating = false
     
     override func viewDidLoad() {
         super.viewDidLoad()

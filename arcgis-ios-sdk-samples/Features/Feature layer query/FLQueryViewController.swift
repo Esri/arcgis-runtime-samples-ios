@@ -17,13 +17,13 @@ import ArcGIS
 
 class FLQueryViewController: UIViewController, UISearchBarDelegate {
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView:AGSMapView!
     
-    fileprivate var map:AGSMap!
-    fileprivate var featureTable:AGSServiceFeatureTable!
-    fileprivate var featureLayer:AGSFeatureLayer!
+    private var map:AGSMap!
+    private var featureTable:AGSServiceFeatureTable!
+    private var featureLayer:AGSFeatureLayer!
     
-    fileprivate var selectedFeatures = [AGSFeature]()
+    private var selectedFeatures = [AGSFeature]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

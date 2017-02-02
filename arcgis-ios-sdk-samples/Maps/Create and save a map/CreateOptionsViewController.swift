@@ -21,16 +21,16 @@ protocol CreateOptionsVCDelegate:class {
 
 class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet fileprivate weak var tableView:UITableView!
+    @IBOutlet private weak var tableView:UITableView!
     
-    fileprivate var basemaps = [AGSBasemap.streets(), AGSBasemap.imagery(), AGSBasemap.topographic(), AGSBasemap.oceans()]
-    fileprivate var layers = [AGSLayer]()
+    private var basemaps = [AGSBasemap.streets(), AGSBasemap.imagery(), AGSBasemap.topographic(), AGSBasemap.oceans()]
+    private var layers = [AGSLayer]()
     
-    fileprivate var layerURLs = ["https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer",
+    private var layerURLs = ["https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer",
         "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Census/MapServer"]
     
-    fileprivate var selectedBasemapIndex:Int!
-    fileprivate var selectedLayersIndex = [Int]()
+    private var selectedBasemapIndex:Int!
+    private var selectedLayersIndex = [Int]()
     
     
     weak var delegate:CreateOptionsVCDelegate?
@@ -139,7 +139,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
 
     //MARK: - Actions
     
-    @IBAction fileprivate func doneAction() {
+    @IBAction private func doneAction() {
         if self.selectedBasemapIndex == nil {
             SVProgressHUD.showError(withStatus: "Please select at least a basemap", maskType: .gradient)
             return

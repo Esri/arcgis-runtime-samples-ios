@@ -17,15 +17,15 @@ import ArcGIS
 
 class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIAdaptivePresentationControllerDelegate, WorldAddressesVCDelegate {
     
-    @IBOutlet fileprivate var mapView:AGSMapView!
-    @IBOutlet fileprivate var button:UIButton!
-    @IBOutlet fileprivate var searchBar:UISearchBar!
+    @IBOutlet private var mapView:AGSMapView!
+    @IBOutlet private var button:UIButton!
+    @IBOutlet private var searchBar:UISearchBar!
     
-    fileprivate var locatorTask:AGSLocatorTask!
-    fileprivate var geocodeParameters:AGSGeocodeParameters!
-    fileprivate var graphicsOverlay:AGSGraphicsOverlay!
+    private var locatorTask:AGSLocatorTask!
+    private var geocodeParameters:AGSGeocodeParameters!
+    private var graphicsOverlay:AGSGraphicsOverlay!
     
-    fileprivate let locatorURL = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+    private let locatorURL = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +57,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
     
     //method that returns a graphic object for the specified point and attributes
     //also sets the leader offset and offset
-    fileprivate func graphicForPoint(_ point: AGSPoint, attributes: [String: AnyObject]?) -> AGSGraphic {
+    private func graphicForPoint(_ point: AGSPoint, attributes: [String: AnyObject]?) -> AGSGraphic {
         let markerImage = UIImage(named: "RedMarker")!
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
         symbol.leaderOffsetY = markerImage.size.height/2
@@ -66,7 +66,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         return graphic
     }
     
-    fileprivate func geocodeSearchText(_ text:String) {
+    private func geocodeSearchText(_ text:String) {
         //clear already existing graphics
         self.graphicsOverlay.graphics.removeAllObjects()
         
@@ -101,7 +101,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
     //method shows the callout for the specified graphic,
     //populates the title and detail of the callout with specific attributes
     //hides the accessory button
-    fileprivate func showCalloutForGraphic(_ graphic:AGSGraphic, tapLocation:AGSPoint) {
+    private func showCalloutForGraphic(_ graphic:AGSGraphic, tapLocation:AGSPoint) {
         let addressType = graphic.attributes["Addr_type"] as! String
         self.mapView.callout.title = graphic.attributes["Match_addr"] as? String ?? ""
         
@@ -116,7 +116,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         self.mapView.callout.show(for: graphic, tapLocation: tapLocation, animated: true)
     }
     
-    fileprivate func showAlert(_ message:String) {
+    private func showAlert(_ message:String) {
         SVProgressHUD.showError(withStatus: message, maskType: .gradient)
     }
     

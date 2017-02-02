@@ -17,9 +17,9 @@ import ArcGIS
 
 class TLUsingURLViewController: UIViewController {
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView:AGSMapView!
     
-    fileprivate var map:AGSMap!
+    private var map:AGSMap!
     
     override func viewDidLoad() {
         super.viewDidLoad()

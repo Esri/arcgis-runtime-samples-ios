@@ -17,11 +17,11 @@ import ArcGIS
 
 class OnInteractionNoCacheViewController: UIViewController {
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView:AGSMapView!
     
-    fileprivate var map:AGSMap!
+    private var map:AGSMap!
     
-    fileprivate let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0"
+    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()

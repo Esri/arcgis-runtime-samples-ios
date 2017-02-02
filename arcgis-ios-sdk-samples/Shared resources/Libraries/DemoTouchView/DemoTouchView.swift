@@ -34,11 +34,11 @@ private struct DemoTouchToken {
 //
 extension UIApplication {
     
-    fileprivate class var isShowingTouches: Bool {
+    private class var isShowingTouches: Bool {
         return (DemoTouchToken.showToken != 0)
     }
     
-    fileprivate class func showAllTouches() {
+    private class func showAllTouches() {
         
         if UIApplication.isShowingTouches {
             return
@@ -70,7 +70,7 @@ extension UIApplication {
         }
     }
     
-    fileprivate class func hideAllTouches() {
+    private class func hideAllTouches() {
         
         if !UIApplication.isShowingTouches {
             return
@@ -190,11 +190,11 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         }
     }
     
-    fileprivate let toRadius: CGFloat!
-    fileprivate let fromRadius: CGFloat!
-    fileprivate let center: CGPoint!
+    private let toRadius: CGFloat!
+    private let fromRadius: CGFloat!
+    private let center: CGPoint!
     
-    fileprivate lazy var fromPath: CGPath! = {
+    private lazy var fromPath: CGPath! = {
         
         var fromPath = UIBezierPath()
         fromPath.addArc(withCenter: self.center, radius: self.fromRadius, startAngle: CGFloat(0), endAngle: CGFloat(2.0*M_PI), clockwise: true)
@@ -202,7 +202,7 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         return fromPath.cgPath
         }()
     
-    fileprivate lazy var toPath: CGPath! = {
+    private lazy var toPath: CGPath! = {
         
         var toPath = UIBezierPath()
         toPath.addArc(withCenter: self.center, radius: self.toRadius, startAngle: CGFloat(0), endAngle: CGFloat(2*M_PI), clockwise: true)
@@ -210,7 +210,7 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         return toPath.cgPath
         }()
     
-    fileprivate lazy var pathAnimation: CABasicAnimation = {
+    private lazy var pathAnimation: CABasicAnimation = {
         var anim = CABasicAnimation(keyPath: "path")
         anim.duration = 1.0
         anim.fromValue = self.fromPath
@@ -221,7 +221,7 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         return anim
         }()
     
-    fileprivate lazy var opacityAnimation: CABasicAnimation = {
+    private lazy var opacityAnimation: CABasicAnimation = {
         var anim2 = CABasicAnimation(keyPath: "opacity")
         anim2.duration = self.pingDuration
         anim2.fromValue = 1.0
@@ -257,7 +257,7 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
     
     // MARK: CALayer delegate
     
-    @objc fileprivate func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {        
+    @objc private func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {        
         pathAnimation.delegate = nil
         
         self.removeAllAnimations()
@@ -442,7 +442,7 @@ private class DemoTouchesView: UIView {
         }
     }
     
-    fileprivate func addTouch(_ touch: UITouch) {
+    private func addTouch(_ touch: UITouch) {
         let pt = touch.location(in: self)
         let newTV = touchViewForPoint(pt)
         
@@ -450,14 +450,14 @@ private class DemoTouchesView: UIView {
         touchViewMap[touch] = newTV
     }
     
-    fileprivate func moveTouch(_ touch: UITouch) {
+    private func moveTouch(_ touch: UITouch) {
         if let tv = touchViewMap[touch] {
             let pt = touch.location(in: self)
             tv.center = pt
         }
     }
     
-    fileprivate func removeTouch(_ touch: UITouch, cancelled: Bool = false) {
+    private func removeTouch(_ touch: UITouch, cancelled: Bool = false) {
         if let tv = touchViewMap[touch] {
 
             let animations: (()->Void) = {
@@ -483,7 +483,7 @@ private class DemoTouchesView: UIView {
     
     // This method is for future use if we want to show tap and hold
     //
-    fileprivate func intensifyTouchView(_ touch: UITouch) {
+    private func intensifyTouchView(_ touch: UITouch) {
         
         if let tv = touchViewMap[touch] {
             
@@ -493,11 +493,11 @@ private class DemoTouchesView: UIView {
         }
     }
     
-    fileprivate func showPingForTouch(_ touch: UITouch) {
+    private func showPingForTouch(_ touch: UITouch) {
         showPingForTouches([touch])
     }
     
-    fileprivate func showPingForTouches(_ touches: [UITouch]) {
+    private func showPingForTouches(_ touches: [UITouch]) {
         
         for touch in touches {
             let pingLyr = pingLayerForTouch(touch)
@@ -505,22 +505,22 @@ private class DemoTouchesView: UIView {
         }
     }
     
-    fileprivate override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    private override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
         updateTouches(touches)
     }
     
-    fileprivate override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    private override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         updateTouches(touches)
     }
     
-    fileprivate override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    private override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         updateTouches(touches)
     }
     
-    fileprivate override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
+    private override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
         
         updateTouches(touches)
     }

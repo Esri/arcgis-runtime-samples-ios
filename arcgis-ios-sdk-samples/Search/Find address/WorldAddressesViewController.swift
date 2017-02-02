@@ -23,7 +23,7 @@ class WorldAddressesViewController: UITableViewController {
         
         weak var delegate:WorldAddressesVCDelegate?
         
-        fileprivate var addresses = ["277 N Avenida Caballeros, Palm Springs, CA", "380 New York St, Redlands, CA 92373", "Београд", "Москва", "北京"]
+        private var addresses = ["277 N Avenida Caballeros, Palm Springs, CA", "380 New York St, Redlands, CA 92373", "Београд", "Москва", "北京"]
         
         override func viewDidLoad() {
             super.viewDidLoad()

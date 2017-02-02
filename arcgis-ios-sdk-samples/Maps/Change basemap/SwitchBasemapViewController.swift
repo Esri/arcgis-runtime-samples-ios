@@ -17,8 +17,8 @@ import ArcGIS
 
 class SwitchBasemapViewController: UIViewController {
 
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
-    @IBOutlet fileprivate weak var segmentedControl:UISegmentedControl!
+    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var segmentedControl:UISegmentedControl!
     
     var map:AGSMap!
     

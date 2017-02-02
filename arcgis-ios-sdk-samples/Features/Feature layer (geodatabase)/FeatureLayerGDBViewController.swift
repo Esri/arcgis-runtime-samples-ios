@@ -19,7 +19,7 @@ class FeatureLayerGDBViewController: UIViewController {
 
     @IBOutlet var mapView:AGSMapView!
     
-    fileprivate var geodatabase:AGSGeodatabase!
+    private var geodatabase:AGSGeodatabase!
     
     override func viewDidLoad() {
         super.viewDidLoad()

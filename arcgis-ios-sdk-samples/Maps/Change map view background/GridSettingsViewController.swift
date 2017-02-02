@@ -53,7 +53,7 @@ class GridSettingsViewController: UIViewController {
     @IBOutlet var saturationLabel: UILabel!
     @IBOutlet var brightnessLabel: UILabel!
     
-    fileprivate var selectedColorButton: UIButton!
+    private var selectedColorButton: UIButton!
     
     weak var delegate: GridSettingsVCDelegate?
     
@@ -70,7 +70,7 @@ class GridSettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    fileprivate func stylizeUI() {
+    private func stylizeUI() {
         let buttonColor = UIColor(red: 0, green: 122.0/255.0, blue: 1, alpha: 1)
         
         //corner radius and border for color buttons and view
@@ -93,7 +93,7 @@ class GridSettingsViewController: UIViewController {
     
     //MARK: - Actions
     
-    @IBAction fileprivate func colorButtonsAction(_ sender: UIButton) {
+    @IBAction private func colorButtonsAction(_ sender: UIButton) {
         //keep a reference to selected button to later update the color
         self.selectedColorButton = sender.tag == 0 ? self.colorButton : self.lineColorButton
         
@@ -120,7 +120,7 @@ class GridSettingsViewController: UIViewController {
         self.toggleColorPicker(.On, animated: true, animationDirection: .Forward)
     }
     
-    @IBAction fileprivate func lineWidthSliderChanged(_ sender: UISlider) {
+    @IBAction private func lineWidthSliderChanged(_ sender: UISlider) {
         //update label
         self.lineWidthLabel.text = "\(Int(sender.value))"
         
@@ -128,7 +128,7 @@ class GridSettingsViewController: UIViewController {
         self.updateMapView()
     }
     
-    @IBAction fileprivate func gridSizeSliderChanged(_ sender: UISlider) {
+    @IBAction private func gridSizeSliderChanged(_ sender: UISlider) {
         //update label
         self.gridSizeLabel.text = "\(Int(sender.value))"
         
@@ -136,7 +136,7 @@ class GridSettingsViewController: UIViewController {
         self.updateMapView()
     }
     
-    @IBAction fileprivate func HSBSlidersChanged(_ slider: UISlider) {
+    @IBAction private func HSBSlidersChanged(_ slider: UISlider) {
         switch slider.tag {
         case 0:
             self.hueLabel.text = "\(Int(slider.value))"
@@ -155,7 +155,7 @@ class GridSettingsViewController: UIViewController {
         self.colorView.backgroundColor = newColor
     }
     
-    @IBAction fileprivate func doneAction() {
+    @IBAction private func doneAction() {
         //assign color to the button
         self.selectedColorButton.backgroundColor = self.colorView.backgroundColor
         
@@ -166,12 +166,12 @@ class GridSettingsViewController: UIViewController {
         self.updateMapView()
     }
     
-    @IBAction fileprivate func closeAction() {
+    @IBAction private func closeAction() {
         self.delegate?.gridSettingsViewControllerWantsToClose(self)
     }
     
     //TODO: Remove this work around once able to change properties on grid
-    fileprivate func updateMapView() {
+    private func updateMapView() {
         
         let backgroundGrid = AGSBackgroundGrid(color: self.colorButton.backgroundColor!, gridLineColor: self.lineColorButton.backgroundColor!, gridLineWidth: Double(self.lineWidthSlider.value), gridSize: Double(self.gridSizeSlider.value))
         
@@ -181,7 +181,7 @@ class GridSettingsViewController: UIViewController {
     
     //MARK: - Color picker show/hide
     
-    fileprivate func toggleColorPicker(_ toggle: ColorPickerToggle, animated: Bool, animationDirection: AnimationDirection) {
+    private func toggleColorPicker(_ toggle: ColorPickerToggle, animated: Bool, animationDirection: AnimationDirection) {
         
         //update the layout constraint to bring the required view on screen
         self.settingsTopContraint.constant = toggle == .On ? -190 : 5

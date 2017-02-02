@@ -18,14 +18,14 @@ import ArcGIS
 class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     @IBOutlet weak var mapView: AGSMapView!
-    fileprivate var map:AGSMap!
+    private var map:AGSMap!
     
-    fileprivate var locatorTask:AGSLocatorTask!
-    fileprivate var reverseGeocodeParameters:AGSReverseGeocodeParameters!
-    fileprivate var graphicsOverlay = AGSGraphicsOverlay()
-    fileprivate var cancelable:AGSCancelable!
+    private var locatorTask:AGSLocatorTask!
+    private var reverseGeocodeParameters:AGSReverseGeocodeParameters!
+    private var graphicsOverlay = AGSGraphicsOverlay()
+    private var cancelable:AGSCancelable!
     
-    fileprivate let locatorURL = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+    private let locatorURL = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.reverseGeocodeParameters.maxResults = 1
     }
     
-    fileprivate func reverseGeocode(_ point:AGSPoint) {
+    private func reverseGeocode(_ point:AGSPoint) {
         //cancel previous request
         if self.cancelable != nil {
             self.cancelable.cancel()
@@ -93,7 +93,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     
     //method returns a graphic object for the specified point and attributes
-    fileprivate func graphicForPoint(_ point: AGSPoint) -> AGSGraphic {
+    private func graphicForPoint(_ point: AGSPoint) -> AGSGraphic {
         let markerImage = UIImage(named: "RedMarker")!
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
         symbol.leaderOffsetY = markerImage.size.height/2
@@ -105,7 +105,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
     //method to show callout for the graphic
     //it gets the attributes from the graphic and populates the title
     //and detail for the callout
-    fileprivate func showCalloutForGraphic(_ graphic:AGSGraphic, tapLocation:AGSPoint) {
+    private func showCalloutForGraphic(_ graphic:AGSGraphic, tapLocation:AGSPoint) {
         let cityString = graphic.attributes["City"] as? String ?? ""
         let addressString = graphic.attributes["Address"] as? String ?? ""
         let stateString = graphic.attributes["State"] as? String ?? ""
@@ -115,7 +115,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.callout.show(for: graphic, tapLocation: tapLocation, animated: true)
     }
     
-    fileprivate func showAlert(_ message:String) {
+    private func showAlert(_ message:String) {
         SVProgressHUD.showError(withStatus: message, maskType: .gradient)
     }
     

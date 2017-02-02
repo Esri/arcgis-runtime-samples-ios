@@ -53,7 +53,7 @@ class VectorTileCustomStyleVC: UIViewController, VectorStylesVCDelegate, UIGestu
         // Dispose of any resources that can be recreated.
     }
     
-    fileprivate func showSelectedItem(_ itemID: String) {
+    private func showSelectedItem(_ itemID: String) {
         let vectorTiledLayer = AGSArcGISVectorTiledLayer(url: URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!)
         self.mapView.map?.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
     }

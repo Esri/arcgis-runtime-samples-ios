@@ -20,11 +20,11 @@ class MapPackagesListViewController: UIViewController, UITableViewDataSource, UI
     
     @IBOutlet var tableView:UITableView!
     
-    fileprivate var mapPackagesInBundle:[AGSMobileMapPackage]!
-    fileprivate var mapPackagesInDocumentsDir:[AGSMobileMapPackage]!
+    private var mapPackagesInBundle:[AGSMobileMapPackage]!
+    private var mapPackagesInDocumentsDir:[AGSMobileMapPackage]!
     
-    fileprivate var selectedRowIndexPath:IndexPath!
-    fileprivate var selectedMap:AGSMap!
+    private var selectedRowIndexPath:IndexPath!
+    private var selectedMap:AGSMap!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -17,12 +17,12 @@ import ArcGIS
 
 class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIAdaptivePresentationControllerDelegate {
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView:AGSMapView!
     
-    fileprivate var map:AGSMap!
-    fileprivate var alertController:UIAlertController!
+    private var map:AGSMap!
+    private var alertController:UIAlertController!
     
-    fileprivate weak var bookmarksListVC:BookmarksListViewController!
+    private weak var bookmarksListVC:BookmarksListViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,7 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIAdaptive
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["BookmarksViewController","BookmarksListViewController"]
     }
     
-    fileprivate func addDefaultBookmarks() {
+    private func addDefaultBookmarks() {
         //create a few bookmarks and add them to the map
         var viewpoint:AGSViewpoint, bookmark:AGSBookmark
         
@@ -87,7 +87,7 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIAdaptive
     
     //MARK: - Actions
     
-    @IBAction fileprivate func addAction() {
+    @IBAction private func addAction() {
         //show an alert controller with textfield to get the name for the bookmark
         self.alertController = UIAlertController(title: "Provide the bookmark name", message: nil, preferredStyle: .alert)
         self.alertController.addTextField { (textField: UITextField) in
@@ -115,7 +115,7 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIAdaptive
         self.present(self.alertController, animated: true, completion: nil)
     }
     
-    fileprivate func addBookmark(_ name:String) {
+    private func addBookmark(_ name:String) {
         //instantiate a bookmark and set the properties
         let bookmark = AGSBookmark()
         bookmark.name = name

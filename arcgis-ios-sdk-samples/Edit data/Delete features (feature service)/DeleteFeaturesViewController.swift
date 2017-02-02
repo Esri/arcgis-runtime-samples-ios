@@ -17,12 +17,12 @@ import ArcGIS
 
 class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
     
-    @IBOutlet fileprivate var mapView:AGSMapView!
+    @IBOutlet private var mapView:AGSMapView!
     
-    fileprivate var featureTable:AGSServiceFeatureTable!
-    fileprivate var featureLayer:AGSFeatureLayer!
-    fileprivate var lastQuery:AGSCancelable!
-    fileprivate var selectedFeature:AGSFeature!
+    private var featureTable:AGSServiceFeatureTable!
+    private var featureLayer:AGSFeatureLayer!
+    private var lastQuery:AGSCancelable!
+    private var selectedFeature:AGSFeature!
     
     override func viewDidLoad() {
         super.viewDidLoad()

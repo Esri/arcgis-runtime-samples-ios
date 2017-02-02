@@ -22,8 +22,8 @@ protocol SaveAsVCDelegate:class {
 class SaveAsViewController: UIViewController {
     
     @IBOutlet  weak var titleTextField:UITextField!
-    @IBOutlet fileprivate weak var tagsTextField:UITextField!
-    @IBOutlet fileprivate weak var descriptionTextView:UITextView!
+    @IBOutlet private weak var tagsTextField:UITextField!
+    @IBOutlet private weak var descriptionTextView:UITextView!
     
     weak var delegate:SaveAsVCDelegate?
     
@@ -49,11 +49,11 @@ class SaveAsViewController: UIViewController {
     
     //MARK: - Actions
     
-    @IBAction fileprivate func cancelAction() {
+    @IBAction private func cancelAction() {
         self.delegate?.saveAsViewControllerDidCancel(self)
     }
     
-    @IBAction fileprivate func saveAction() {
+    @IBAction private func saveAction() {
         //Validations
         guard let title = self.titleTextField.text, let tags = self.tagsTextField.text else {
             //show error message

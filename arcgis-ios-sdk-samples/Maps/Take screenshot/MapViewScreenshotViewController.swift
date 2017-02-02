@@ -17,9 +17,9 @@ import ArcGIS
 
 class MapViewScreenshotViewController: UIViewController {
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
-    @IBOutlet fileprivate weak var overlayParentView:UIView!
-    @IBOutlet fileprivate weak var overlayImageView:UIImageView!
+    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var overlayParentView:UIView!
+    @IBOutlet private weak var overlayImageView:UIImageView!
     
     var map:AGSMap!
     
@@ -61,12 +61,12 @@ class MapViewScreenshotViewController: UIViewController {
     }
     
     //show the screenshot overlay view
-    fileprivate func showOverlayParentView() {
+    private func showOverlayParentView() {
         self.overlayParentView.isHidden = false
     }
     
     //called when the user taps on the screenshot button
-    @IBAction fileprivate func screenshotAction(_ sender: AnyObject) {
+    @IBAction private func screenshotAction(_ sender: AnyObject) {
         //hide the screenshot view if currently visible
         self.hideOverlayParentView()
         
@@ -83,7 +83,7 @@ class MapViewScreenshotViewController: UIViewController {
     }
     
     //imitate the white flash screen when the user taps on the screenshot button
-    fileprivate func imitateFlash(_ image:UIImage) {
+    private func imitateFlash(_ image:UIImage) {
         let flashView = UIView(frame: self.mapView.bounds)
         flashView.backgroundColor = UIColor.white
         self.mapView.addSubview(flashView)

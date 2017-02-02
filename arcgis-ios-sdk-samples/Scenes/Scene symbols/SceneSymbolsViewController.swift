@@ -21,7 +21,7 @@ class SceneSymbolsViewController: UIViewController {
 
     @IBOutlet var sceneView:AGSSceneView!
     
-    fileprivate var graphicsOverlay = AGSGraphicsOverlay()
+    private var graphicsOverlay = AGSGraphicsOverlay()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ class SceneSymbolsViewController: UIViewController {
         self.addGraphics()
     }
     
-    fileprivate func addGraphics() {
+    private func addGraphics() {
         //coordinates for the first symbol
         let x = 4.975
         let y = 49.0
@@ -90,12 +90,12 @@ class SceneSymbolsViewController: UIViewController {
     }
     
     //returns a random color
-    fileprivate func randColor() -> UIColor {
+    private func randColor() -> UIColor {
         return UIColor(red: self.randFloat(), green: self.randFloat(), blue: self.randFloat(), alpha: 1.0)
     }
     
     //returns a CGFloat between 0 and 1
-    fileprivate func randFloat() -> CGFloat {
+    private func randFloat() -> CGFloat {
         return CGFloat(arc4random() % 256) / 256
     }
 

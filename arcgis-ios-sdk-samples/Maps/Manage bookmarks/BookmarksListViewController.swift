@@ -23,7 +23,7 @@ class BookmarksListViewController: UIViewController, UITableViewDataSource, UITa
     var bookmarks:[AGSBookmark]!
     
     //private property to store selection action for table cell
-    fileprivate var selectAction:((AGSViewpoint) -> Void)!
+    private var selectAction:((AGSViewpoint) -> Void)!
     
     override func viewDidLoad() {
         super.viewDidLoad()

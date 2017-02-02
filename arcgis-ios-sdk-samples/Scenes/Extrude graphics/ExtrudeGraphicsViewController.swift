@@ -21,11 +21,11 @@ class ExtrudeGraphicsViewController: UIViewController {
 
     @IBOutlet var sceneView:AGSSceneView!
     
-    fileprivate var graphicsOverlay: AGSGraphicsOverlay!
+    private var graphicsOverlay: AGSGraphicsOverlay!
     
-    fileprivate let squareSize:Double = 0.01
-    fileprivate let spacing:Double = 0.01
-    fileprivate let maxHeight = 10000
+    private let squareSize:Double = 0.01
+    private let spacing:Double = 0.01
+    private let maxHeight = 10000
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +66,7 @@ class ExtrudeGraphicsViewController: UIViewController {
     }
     
     
-    fileprivate func addGraphics() {
+    private func addGraphics() {
         //starting point
         let x = self.sceneView.currentViewpointCamera().location.x - 0.01
         let y = self.sceneView.currentViewpointCamera().location.y + 0.25
@@ -82,7 +82,7 @@ class ExtrudeGraphicsViewController: UIViewController {
     
     //the function returns a polygon starting at the given point
     //with size equal to squareSize
-    fileprivate func polygonForStartingPoint(_ point:AGSPoint) -> AGSPolygon {
+    private func polygonForStartingPoint(_ point:AGSPoint) -> AGSPolygon {
         let polygon = AGSPolygonBuilder(spatialReference: AGSSpatialReference.wgs84())
         polygon.addPointWith(x: point.x, y: point.y)
         polygon.addPointWith(x: point.x, y: point.y+squareSize)
@@ -92,7 +92,7 @@ class ExtrudeGraphicsViewController: UIViewController {
     }
     
     //add a graphic to the graphics overlay for the given polygon
-    fileprivate func addGraphicForPolygon(_ polygon:AGSPolygon) {
+    private func addGraphicForPolygon(_ polygon:AGSPolygon) {
         let rand = Int(arc4random()) % self.maxHeight
         
         let graphic = AGSGraphic(geometry: polygon, symbol: nil, attributes: nil)

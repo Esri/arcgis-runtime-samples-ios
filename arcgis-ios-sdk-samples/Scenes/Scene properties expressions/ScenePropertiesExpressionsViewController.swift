@@ -22,7 +22,7 @@ class ScenePropertiesExpressionsViewController: UIViewController {
     @IBOutlet var headingLabel: UILabel!
     @IBOutlet var pitchLabel: UILabel!
     
-    fileprivate var coneGraphic: AGSGraphic!
+    private var coneGraphic: AGSGraphic!
     
     override func viewDidLoad() {
         super.viewDidLoad()

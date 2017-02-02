@@ -17,10 +17,10 @@ import ArcGIS
 
 class OverrideRendererViewController: UIViewController {
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView:AGSMapView!
     
-    fileprivate var map:AGSMap!
-    fileprivate var featureLayer:AGSFeatureLayer!
+    private var map:AGSMap!
+    private var featureLayer:AGSFeatureLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,7 @@ class OverrideRendererViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction fileprivate func overrideRenderer() {
+    @IBAction private func overrideRenderer() {
         //create a symbol to be used in the renderer
         let symbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.solid, color: UIColor.blue, width: 2)
         //create a new renderer using the symbol just created
@@ -59,7 +59,7 @@ class OverrideRendererViewController: UIViewController {
         self.featureLayer.renderer = renderer
     }
     
-    @IBAction fileprivate func resetRenderer() {
+    @IBAction private func resetRenderer() {
         //reset the renderer to default
         self.featureLayer.resetRenderer()
     }

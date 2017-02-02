@@ -17,15 +17,15 @@ import ArcGIS
 
 class SketchViewController: UIViewController {
     
-    @IBOutlet fileprivate weak var mapView:AGSMapView!
-    @IBOutlet fileprivate weak var geometrySegmentedControl:UISegmentedControl!
-    @IBOutlet fileprivate weak var undoBBI:UIBarButtonItem!
-    @IBOutlet fileprivate weak var redoBBI:UIBarButtonItem!
-    @IBOutlet fileprivate weak var clearBBI:UIBarButtonItem!
+    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var geometrySegmentedControl:UISegmentedControl!
+    @IBOutlet private weak var undoBBI:UIBarButtonItem!
+    @IBOutlet private weak var redoBBI:UIBarButtonItem!
+    @IBOutlet private weak var clearBBI:UIBarButtonItem!
     
     
-    fileprivate var map:AGSMap!
-    fileprivate var sketchEditor:AGSSketchEditor!
+    private var map:AGSMap!
+    private var sketchEditor:AGSSketchEditor!
     
     override func viewDidLoad() {
         super.viewDidLoad()

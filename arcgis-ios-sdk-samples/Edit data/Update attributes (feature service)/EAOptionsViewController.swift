@@ -20,7 +20,7 @@ protocol EAOptionsVCDelegate:class {
 
 class EAOptionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIBarPositioningDelegate {
     
-    @IBOutlet fileprivate weak var tableView:UITableView!
+    @IBOutlet private weak var tableView:UITableView!
     
     var options:[String]!
     weak var delegate:EAOptionsVCDelegate!

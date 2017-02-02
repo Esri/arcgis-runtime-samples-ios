@@ -17,11 +17,11 @@ import ArcGIS
 
 class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     
-    @IBOutlet fileprivate var mapView:AGSMapView!
+    @IBOutlet private var mapView:AGSMapView!
     
-    fileprivate var featureTable:AGSServiceFeatureTable!
-    fileprivate var featureLayer:AGSFeatureLayer!
-    fileprivate var lastQuery:AGSCancelable!
+    private var featureTable:AGSServiceFeatureTable!
+    private var featureLayer:AGSFeatureLayer!
+    private var lastQuery:AGSCancelable!
     
     override func viewDidLoad() {
         super.viewDidLoad()

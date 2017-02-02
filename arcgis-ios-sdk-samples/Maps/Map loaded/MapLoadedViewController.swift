@@ -20,7 +20,7 @@ class MapLoadedViewController: UIViewController {
     @IBOutlet var mapView:AGSMapView!
     @IBOutlet var bannerLabel:UILabel!
     
-    fileprivate var map:AGSMap!
+    private var map:AGSMap!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ class MapLoadedViewController: UIViewController {
         }
     }
     
-    fileprivate func loadStatusString(_ status: AGSLoadStatus) -> String {
+    private func loadStatusString(_ status: AGSLoadStatus) -> String {
         switch status {
         case .failedToLoad:
             return "Failed_To_Load"

@@ -17,10 +17,10 @@ import ArcGIS
 
 class AttachmentsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIBarPositioningDelegate {
     
-    @IBOutlet fileprivate weak var tableView:UITableView!
+    @IBOutlet private weak var tableView:UITableView!
     
     var feature:AGSArcGISFeature!
-    fileprivate var attachments:[AGSAttachment]!
+    private var attachments:[AGSAttachment]!
     
     override func viewDidLoad() {
         super.viewDidLoad()

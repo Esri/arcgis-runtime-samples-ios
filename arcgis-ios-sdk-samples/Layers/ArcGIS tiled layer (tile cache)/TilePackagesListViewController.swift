@@ -48,12 +48,12 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
         let subpaths = FileManager.default.subpaths(atPath: path[0])
         
         let predicate = NSPredicate(format: "SELF MATCHES %@", ".*tpk$")
-        let tpks = subpaths?.filter({ (objc) -> Bool in
+        let tpks = subpaths?.filter { (objc) -> Bool in
             return predicate.evaluate(with: objc)
-        })
-        self.documentTPKPaths = tpks?.map({ (name:String) -> String in
+        }
+        self.documentTPKPaths = tpks?.map { (name:String) -> String in
             return "\(path[0])/\(name)"
-        })
+        }
     }
     
     //MARK : - UITableViewDataSource
@@ -75,10 +75,10 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
         let cell = tableView.dequeueReusableCell(withIdentifier: "TilePackageCell")!
         
         if (indexPath as NSIndexPath).section == 0 {
-            cell.textLabel?.text = self.extractName(self.bundleTPKPaths[(indexPath as NSIndexPath).row])
+            cell.textLabel?.text = self.extractName(fromPath: self.bundleTPKPaths[(indexPath as NSIndexPath).row])
         }
         else {
-            cell.textLabel?.text = self.extractName(self.documentTPKPaths[(indexPath as NSIndexPath).row])
+            cell.textLabel?.text = self.extractName(fromPath: self.documentTPKPaths[(indexPath as NSIndexPath).row])
         }
         
         return cell
@@ -101,7 +101,7 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
         self.delegate?.tilePackagesListViewController(self, didSelectTPKWithPath: path)
     }
     
-    func extractName(_ path:String) -> String {
+    func extractName(fromPath path:String) -> String {
         var index = path.range(of: "/", options: .backwards, range: nil, locale: nil)?.lowerBound
         index = path.index(after: index!)
         let name = path.substring(from: index!)

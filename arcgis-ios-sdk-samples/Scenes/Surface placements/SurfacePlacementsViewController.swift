@@ -62,16 +62,16 @@ class SurfacePlacementsViewController: UIViewController {
         //create point for graphic location
         let point = AGSPoint(x: -4.04, y: 53.06, z: 1000, spatialReference: AGSSpatialReference.wgs84())
         
-        self.drapedGraphicsOverlay.graphics.addObjects(from: [AGSGraphic(geometry: point, symbol: self.pointSymbol(), attributes: nil), AGSGraphic(geometry: point, symbol: self.textSymbol("Draped"), attributes: nil)])
-        self.relativeGraphicsOverlay.graphics.addObjects(from: [AGSGraphic(geometry: point, symbol: self.pointSymbol(), attributes: nil), AGSGraphic(geometry: point, symbol: self.textSymbol("Relative"), attributes: nil)])
-        self.absoluteGraphicsOverlay.graphics.addObjects(from: [AGSGraphic(geometry: point, symbol: self.pointSymbol(), attributes: nil), AGSGraphic(geometry: point, symbol: self.textSymbol("Absolute"), attributes: nil)])
+        self.drapedGraphicsOverlay.graphics.addObjects(from: [AGSGraphic(geometry: point, symbol: self.pointSymbol(), attributes: nil), AGSGraphic(geometry: point, symbol: self.textSymbol(withText: "Draped"), attributes: nil)])
+        self.relativeGraphicsOverlay.graphics.addObjects(from: [AGSGraphic(geometry: point, symbol: self.pointSymbol(), attributes: nil), AGSGraphic(geometry: point, symbol: self.textSymbol(withText: "Relative"), attributes: nil)])
+        self.absoluteGraphicsOverlay.graphics.addObjects(from: [AGSGraphic(geometry: point, symbol: self.pointSymbol(), attributes: nil), AGSGraphic(geometry: point, symbol: self.textSymbol(withText: "Absolute"), attributes: nil)])
     }
     
     private func pointSymbol() -> AGSSimpleMarkerSceneSymbol {
         return AGSSimpleMarkerSceneSymbol(style: .sphere, color: UIColor.red, height: 50, width: 50, depth: 50, anchorPosition: .center)
     }
     
-    private func textSymbol(_ text: String) -> AGSTextSymbol {
+    private func textSymbol(withText text: String) -> AGSTextSymbol {
         return AGSTextSymbol(text: text, color: UIColor.blue, size: 20, horizontalAlignment: .left, verticalAlignment: .middle)
     }
 

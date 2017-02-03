@@ -60,14 +60,14 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    private func symbolForStopGraphic(_ withIndex: Bool, index: Int?) -> AGSSymbol {
+    private func symbolForStopGraphic(isIndexRequired: Bool, index: Int?) -> AGSSymbol {
         
         let markerImage = UIImage(named: "BlueMarker")!
         let markerSymbol = AGSPictureMarkerSymbol(image: markerImage)
         markerSymbol.offsetY = markerImage.size.height/2
         markerSymbol.leaderOffsetY = markerSymbol.offsetY
         
-        if withIndex && index != nil {
+        if isIndexRequired && index != nil {
             let textSymbol = AGSTextSymbol(text: "\(index!)", color: UIColor.white, size: 20, horizontalAlignment: AGSHorizontalAlignment.center, verticalAlignment: AGSVerticalAlignment.middle)
             textSymbol.offsetY = markerSymbol.offsetY
             
@@ -78,14 +78,8 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         return markerSymbol
     }
     
-    private func labelSymbolForStop(_ text:String) -> AGSTextSymbol {
-        let symbol = AGSTextSymbol(text: text, color: UIColor.white, size: 15, horizontalAlignment: .center, verticalAlignment: .middle)
-        symbol.offsetY = 22
-        return symbol
-    }
-    
-    private func graphicForPoint(_ point:AGSPoint, withIndex: Bool, index: Int?) -> AGSGraphic {
-        let symbol = self.symbolForStopGraphic(withIndex, index: index)
+    private func graphicForPoint(_ point:AGSPoint, isIndexRequired: Bool, index: Int?) -> AGSGraphic {
+        let symbol = self.symbolForStopGraphic(isIndexRequired: isIndexRequired, index: index)
         let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: nil)
         return graphic
     }
@@ -130,23 +124,23 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
                     
                     if self?.routeTask != nil {
                         let index = self!.markerGraphicsOverlay.graphics.count + 1
-                        graphic = self!.graphicForPoint(mapPoint, withIndex: true, index: index)
+                        graphic = self!.graphicForPoint(mapPoint, isIndexRequired: true, index: index)
                     }
                     else {
-                        graphic = self!.graphicForPoint(mapPoint, withIndex: false, index: nil)
+                        graphic = self!.graphicForPoint(mapPoint, isIndexRequired: false, index: nil)
                     }
                     
                     self?.markerGraphicsOverlay.graphics.add(graphic)
                     
                     //reverse geocode
-                    self?.reverseGeocode(mapPoint, graphic: graphic)
+                    self?.reverseGeocode(point: mapPoint, withGraphic: graphic)
                     
                     //find route
                     self?.route()
                 }
                 else {
                     //reverse geocode
-                    self?.reverseGeocode(mapPoint, graphic: result.graphics[0])
+                    self?.reverseGeocode(point: mapPoint, withGraphic: result.graphics[0])
                 }
             }
         }
@@ -154,7 +148,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     //MARK: - Locator
     
-    private func reverseGeocode(_ point:AGSPoint, graphic:AGSGraphic) {
+    private func reverseGeocode(point:AGSPoint, withGraphic graphic:AGSGraphic) {
         if self.locatorTask == nil {
             return
         }

@@ -54,7 +54,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         // Dispose of any resources that can be recreated.
     }
     
-    func showCallout(_ feature:AGSFeature, tapLocation:AGSPoint) {
+    func showCallout(for feature:AGSFeature,at tapLocation:AGSPoint) {
         let title = feature.attributes["typdamage"] as! String
         self.mapView.callout.title = title
         self.mapView.callout.delegate = self
@@ -102,7 +102,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
             }
             else if let features = identifyLayerResult.geoElements as? [AGSFeature] , features.count > 0 {
                 //show callout for the first feature
-                self?.showCallout(features[0], tapLocation: mapPoint)
+                self?.showCallout(for: features[0], at: mapPoint)
                 //update selected feature
                 self?.selectedFeature = features[0]
             }

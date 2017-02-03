@@ -32,7 +32,7 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
         self.webView.delegate = self
         
         if self.filenames != nil && self.filenames.count > 0 {
-            self.loadHTMLPage(self.filenames[0])
+            self.loadHTMLPage(filename: self.filenames[0])
         }
     }
     
@@ -41,7 +41,7 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
         // Dispose of any resources that can be recreated.
     }
     
-    func loadHTMLPage(_ filename:String) {
+    func loadHTMLPage(filename:String) {
         if let content = self.contentOfFile(filename) {
             self.setupToolbarTitle(filename, arrowPointingDown: true)
             let htmlString = self.htmlStringForContent(content)
@@ -117,7 +117,7 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
                 if let weakSelf = self {
                     weakSelf.selectedFilenameIndex = index
                     let filename = weakSelf.filenames[index]
-                    weakSelf.loadHTMLPage(filename)
+                    weakSelf.loadHTMLPage(filename: filename)
                     weakSelf.dismiss(animated: true, completion: nil)
                 }
             })

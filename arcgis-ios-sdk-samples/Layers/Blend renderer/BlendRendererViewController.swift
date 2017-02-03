@@ -49,7 +49,7 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
         // Dispose of any resources that can be recreated.
     }
     
-    private func generateBlendRenderer(_ altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) -> AGSBlendRenderer {
+    private func generateBlendRenderer(altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) -> AGSBlendRenderer {
         
         //create the raster to be used as elevation raster
         let raster = AGSRaster(name: "Shasta_Elevation", extension: "tif")
@@ -68,7 +68,7 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
     func blendRendererSettingsVC(_ blendRendererSettingsVC: BlendRendererSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) {
         
         //get the blend render for the specified settings
-        let blendRenderer = self.generateBlendRenderer(altitude, azimuth: azimuth, slopeType: slopeType, colorRampType: colorRampType)
+        let blendRenderer = self.generateBlendRenderer(altitude: altitude, azimuth: azimuth, slopeType: slopeType, colorRampType: colorRampType)
         
         //if the colorRamp type is None, then use the Shasta.tif for blending.
         //else use the elevation raster with color ramp

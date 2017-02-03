@@ -103,7 +103,7 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIAdaptive
             //else dont do anything
             let textField = weakSelf.alertController.textFields![0]
             if !textField.text!.isEmpty {
-                weakSelf.addBookmark(textField.text!)
+                weakSelf.addBookmark(withName: textField.text!)
             }
         }
         
@@ -115,7 +115,7 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIAdaptive
         self.present(self.alertController, animated: true, completion: nil)
     }
     
-    private func addBookmark(_ name:String) {
+    private func addBookmark(withName name:String) {
         //instantiate a bookmark and set the properties
         let bookmark = AGSBookmark()
         bookmark.name = name
@@ -140,9 +140,9 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIAdaptive
             //assign the bookmarks to be shown
             controller.bookmarks = self.map.bookmarks as AnyObject as! [AGSBookmark]
             //set the closure to be executed when the user selects a bookmark
-            controller.setSelectAction({ [weak self] (viewpoint:AGSViewpoint) -> Void in
+            controller.setSelectAction { [weak self] (viewpoint:AGSViewpoint) -> Void in
                 self?.mapView.setViewpoint(viewpoint)
-            })
+            }
         }
     }
     

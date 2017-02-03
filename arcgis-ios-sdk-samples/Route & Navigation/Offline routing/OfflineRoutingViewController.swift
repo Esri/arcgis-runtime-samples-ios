@@ -94,12 +94,12 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     //method returns a graphic for the specified location
     //also assigns the stop number
     private func graphicForLocation(_ point:AGSPoint) -> AGSGraphic {
-        let symbol = self.symbolForStopGraphic(self.stopGraphicsOverlay.graphics.count + 1)
+        let symbol = self.symbolForStopGraphic(withIndex: self.stopGraphicsOverlay.graphics.count + 1)
         let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: nil)
         return graphic
     }
     
-    private func symbolForStopGraphic(_ index: Int) -> AGSSymbol {
+    private func symbolForStopGraphic(withIndex index: Int) -> AGSSymbol {
         let markerImage = UIImage(named: "BlueMarker")!
         let markerSymbol = AGSPictureMarkerSymbol(image: markerImage)
         markerSymbol.offsetY = markerImage.size.height/2
@@ -128,7 +128,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         //clear the route graphic
         self.longPressedRouteGraphic = nil
         
-        self.route(false)
+        self.route(isLongPressed: false)
     }
     
     func geoView(_ geoView: AGSGeoView, didLongPressAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
@@ -139,31 +139,31 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         //clear the route graphic
         self.longPressedRouteGraphic = nil
         //route
-        self.route(true)
+        self.route(isLongPressed: true)
     }
     
     func geoView(_ geoView: AGSGeoView, didMoveLongPressToScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //update the graphic
         //route
         self.longPressedGraphic.geometry = mapPoint
-        self.route(true)
+        self.route(isLongPressed: true)
     }
     
     //MARK: - Route logic
     
     private func getDefaultParameters() {
         //get the default parameters
-        self.routeTask.defaultRouteParameters(completion: { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
+        self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
             if let error = error {
                 print(error)
             }
             else {
                 self?.params = params
             }
-        })
+        }
     }
     
-    func route(_ isLongPressed:Bool) {
+    func route(isLongPressed:Bool) {
         //if either default parameters failed to generate or
         //the number of stops is less than two, return
         if self.params == nil {
@@ -195,10 +195,10 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         //set the new travel mode
         self.params.travelMode = self.routeTask.routeTaskInfo().travelModes[self.segmentedControl.selectedSegmentIndex]
         
-        self.route(self.params, isLongPressed: isLongPressed)
+        self.route(with: self.params, isLongPressed: isLongPressed)
     }
     
-    func route(_ params:AGSRouteParameters, isLongPressed:Bool) {
+    func route(with params:AGSRouteParameters, isLongPressed:Bool) {
         
         //solve for route
         self.routeTaskOperation = self.routeTask.solveRoute(with: params) { [weak self] (routeResult:AGSRouteResult?, error:Error?) -> Void in
@@ -245,7 +245,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
             self.totalTime = self.totalTime + route.totalTime
             self.totalDistance = self.totalDistance + route.totalLength
             
-            self.toggleDetailsView(true)
+            self.toggleDetailsView(on: true)
         }
     }
     
@@ -267,7 +267,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.totalDistance = 0
         
         //hide the details view
-        self.toggleDetailsView(false)
+        self.toggleDetailsView(on: false)
     }
     
     @IBAction func modeChanged(_ segmentedControl:UISegmentedControl) {
@@ -293,17 +293,17 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
             self.totalTime = 0
             
             //route
-            self.route(self.params, isLongPressed: false)
+            self.route(with: self.params, isLongPressed: false)
         }
     }
     
     //MARK: toggle details view
     
-    private func toggleDetailsView(_ on: Bool) {
+    private func toggleDetailsView(on: Bool) {
         self.detailsViewBottomContraint.constant = on ? 0 : -36
         
-        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+        UIView.animate(withDuration: 0.3) { [weak self] in
             self?.view.layoutIfNeeded()
-        }) 
+        }
     }
 }

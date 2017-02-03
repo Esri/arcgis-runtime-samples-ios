@@ -94,7 +94,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.locatorTask = AGSLocatorTask(url: URL(string: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer")!)
         
         //hide suggest result table view by default
-        self.animateTableView(false)
+        self.animateTableView(expand: false)
         
         //hide the overlay view by default
         self.overlayView.isHidden = true
@@ -134,16 +134,16 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     //method to toggle the suggestions table view on and off
-    private func animateTableView(_ expand:Bool) {
+    private func animateTableView(expand:Bool) {
         if (expand != self.isTableViewVisible) && !self.isTableViewAnimating {
             self.isTableViewAnimating = true
             self.tableViewHeightConstraint.constant = expand ? self.tableViewHeight : 0
             UIView.animate(withDuration: 0.1, animations: { [weak self] () -> Void in
                 self?.view.layoutIfNeeded()
-                }, completion: { [weak self] (finished) -> Void in
-                    self?.isTableViewAnimating = false
-                    self?.isTableViewVisible = expand
-                })
+            }, completion: { [weak self] (finished) -> Void in
+                self?.isTableViewAnimating = false
+                self?.isTableViewVisible = expand
+            })
         }
     }
     
@@ -151,7 +151,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     //hide the suggestions table view, empty previously selected
     //suggest result and previously fetch search location
     private func clearPreferredLocationInfo() {
-        self.animateTableView(false)
+        self.animateTableView(expand: false)
         self.selectedSuggestResult = nil
         self.preferredSearchLocation = nil
     }
@@ -188,9 +188,9 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
             for graphic in graphics {
                 multipoint.points.add(graphic.geometry as! AGSPoint)
             }
-            self.mapView.setViewpoint(AGSViewpoint(targetExtent: multipoint.extent), completion: { [weak self] (finished:Bool) -> Void in
+            self.mapView.setViewpoint(AGSViewpoint(targetExtent: multipoint.extent)) { [weak self] (finished:Bool) -> Void in
                 self?.canDoExtentSearch = true
-            })
+            }
         }
     }
     
@@ -228,7 +228,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
                 rows = count
             }
         }
-        self.animateTableView(rows > 0)
+        self.animateTableView(expand: rows > 0)
         return rows
     }
     
@@ -269,7 +269,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
             let suggestResult = self.suggestResults[(indexPath as NSIndexPath).row]
             self.selectedTextField.text = suggestResult.label
         }
-        self.animateTableView(false)
+        self.animateTableView(expand: false)
     }
     
     //MARK: - UITextFieldDelegate
@@ -292,7 +292,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
             }
             else {
                 self.canDoExtentSearch = false
-                self.animateTableView(false)
+                self.animateTableView(expand: false)
             }
         }
         return true
@@ -304,7 +304,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         }
         else {
             self.canDoExtentSearch = false
-            self.animateTableView(false)
+            self.animateTableView(expand: false)
         }
         return true
     }
@@ -316,7 +316,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        self.animateTableView(false)
+        self.animateTableView(expand: false)
     }
     
     //MARK: - Suggestions logic
@@ -391,7 +391,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         
             
         //geocode using the search text and params
-        self.locatorTask.geocode(withSearchText: poi, parameters: params, completion: { [weak self] (results:[AGSGeocodeResult]?, error:Error?) -> Void in
+        self.locatorTask.geocode(withSearchText: poi, parameters: params) { [weak self] (results:[AGSGeocodeResult]?, error:Error?) -> Void in
             if let error = error {
                 print(error.localizedDescription)
                 self?.canDoExtentSearch = true
@@ -399,7 +399,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
             else {
                 self?.handleGeocodeResultsForPOIs(results, areExtentBased: (extent != nil))
             }
-        })
+        }
     }
     
     func handleGeocodeResultsForPOIs(_ geocodeResults:[AGSGeocodeResult]?, areExtentBased:Bool) {
@@ -446,7 +446,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         }
         
         //hide the table view
-        self.animateTableView(false)
+        self.animateTableView(expand: false)
         
         //check if a suggestion is present
         if self.selectedSuggestResult != nil {

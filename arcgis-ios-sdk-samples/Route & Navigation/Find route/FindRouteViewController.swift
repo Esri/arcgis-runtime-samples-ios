@@ -70,15 +70,15 @@ class FindRouteViewController: UIViewController {
         self.stop1Geometry = AGSPoint(x: -13041171.537945, y: 3860988.271378, spatialReference: AGSSpatialReference(wkid: 3857))
         self.stop2Geometry = AGSPoint(x: -13041693.562570, y: 3856006.859684, spatialReference: AGSSpatialReference(wkid: 3857))
         
-        let startStopGraphic = AGSGraphic(geometry: self.stop1Geometry, symbol: self.stopSymbol("Origin", textColor: UIColor.blue), attributes: nil)
-        let endStopGraphic = AGSGraphic(geometry: self.stop2Geometry, symbol: self.stopSymbol("Destination", textColor: UIColor.red), attributes: nil)
+        let startStopGraphic = AGSGraphic(geometry: self.stop1Geometry, symbol: self.stopSymbol(withName: "Origin", textColor: UIColor.blue), attributes: nil)
+        let endStopGraphic = AGSGraphic(geometry: self.stop2Geometry, symbol: self.stopSymbol(withName: "Destination", textColor: UIColor.red), attributes: nil)
         
         self.stopGraphicsOverlay.graphics.addObjects(from: [startStopGraphic, endStopGraphic])
     }
     
     //method provides a text symbol for stop with specified parameters
-    func stopSymbol(_ stopName:String, textColor:UIColor) -> AGSTextSymbol {
-        return AGSTextSymbol(text: stopName, color: textColor, size: 20, horizontalAlignment: .center, verticalAlignment: .middle)
+    func stopSymbol(withName name:String, textColor:UIColor) -> AGSTextSymbol {
+        return AGSTextSymbol(text: name, color: textColor, size: 20, horizontalAlignment: .center, verticalAlignment: .middle)
     }
     
     //method provides a line symbol for the route graphic
@@ -92,7 +92,7 @@ class FindRouteViewController: UIViewController {
     //method to get the default parameters for the route task
     func getDefaultParameters() {
         
-        self.routeTask.defaultRouteParameters(completion: { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
+        self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
             if let error = error {
                 print(error)
             }
@@ -104,7 +104,7 @@ class FindRouteViewController: UIViewController {
                 //enable bar button item
                 self?.routeBBI.isEnabled = true
             }
-        })
+        }
     }
     
     @IBAction func route() {

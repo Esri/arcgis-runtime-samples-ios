@@ -45,7 +45,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
     }
     
     func loadMapPackage() {
-        self.mapPackage.load(completion: { [weak self] (error:Error?) in
+        self.mapPackage.load { [weak self] (error:Error?) in
             if let error = error {
                 //error
                 SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
@@ -56,7 +56,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
                 
                 self?.collectionView.reloadData()
             }
-        })
+        }
     }
     
     func expandCell() {

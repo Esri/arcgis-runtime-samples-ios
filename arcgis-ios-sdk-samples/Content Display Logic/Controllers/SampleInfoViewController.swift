@@ -25,11 +25,11 @@ class SampleInfoViewController: UIViewController {
         super.viewDidLoad()
         
         if self.folderName != nil {
-            self.fetchFileContent(self.folderName)
+            self.fetchFileContent(for: self.folderName)
         }
     }
     
-    func fetchFileContent(_ folderName:String) {
+    func fetchFileContent(for folderName:String) {
 
         if let path = Bundle.main.path(forResource: "README", ofType: "md", inDirectory: folderName) {
             //read the content of the file

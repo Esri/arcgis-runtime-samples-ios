@@ -25,16 +25,16 @@ class MILLegendTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.orderArray = [AGSLayerContent]()
-        self.populateLegends(self.operationalLayers as AnyObject as! [AGSLayerContent])
+        self.populateLegends(with: self.operationalLayers as AnyObject as! [AGSLayerContent])
     }
     
-    func populateLegends(_ layers:[AGSLayerContent]) {
+    func populateLegends(with layers:[AGSLayerContent]) {
 
         for i in 0...layers.count-1 {
             let layer = layers[i]
 
             if layer.subLayerContents.count > 0 {
-                self.populateLegends(layer.subLayerContents)
+                self.populateLegends(with: layer.subLayerContents)
             }
             else {
                 //else if no sublayers fetch legend info
@@ -46,7 +46,7 @@ class MILLegendTableViewController: UITableViewController {
                     }
                     else {
                         if let legendInfos = legendInfos {
-                            self?.legendInfosDict[self!.hashString(layer)] = legendInfos
+                            self?.legendInfosDict[self!.hashString(for: layer)] = legendInfos
                             self?.tableView.reloadData()
                         }
                     }
@@ -70,7 +70,7 @@ class MILLegendTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         let layer = self.orderArray[section]
-        let legendInfos = self.legendInfosDict[self.hashString(layer)]
+        let legendInfos = self.legendInfosDict[self.hashString(for: layer)]
         return legendInfos?.count ?? 0
     }
     
@@ -83,7 +83,7 @@ class MILLegendTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MILLegendCell", for: indexPath) 
 
         let layer = self.orderArray[(indexPath as NSIndexPath).section]
-        let legendInfos = self.legendInfosDict[self.hashString(layer)]!
+        let legendInfos = self.legendInfosDict[self.hashString(for: layer)]!
         let legendInfo = legendInfos[(indexPath as NSIndexPath).row]
 
         cell.textLabel?.text = legendInfo.name
@@ -113,7 +113,7 @@ class MILLegendTableViewController: UITableViewController {
 
     //MARK: - Helper functions
     
-    func hashString (_ obj: AnyObject) -> String {
+    func hashString (for obj: AnyObject) -> String {
         return String(UInt(bitPattern: ObjectIdentifier(obj)))
     }
 

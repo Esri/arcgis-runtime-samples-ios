@@ -42,7 +42,7 @@ class SearchEngine: NSObject {
                 //get the directory URLs that contain readme files
                 let readmeDirectoriesURLs = weakSelf.findReadmeDirectoriesURLs()
                 //index the content of all the readme files
-                weakSelf.indexAllReadmes(readmeDirectoriesURLs)
+                weakSelf.indexAllReadmes(readmeDirectoriesURLs: readmeDirectoriesURLs)
                 self?.isLoading = false
             }
         }
@@ -81,7 +81,7 @@ class SearchEngine: NSObject {
     }
     
     
-    private func indexAllReadmes(_ readmeDirectoriesURLs:[URL]) {
+    private func indexAllReadmes(readmeDirectoriesURLs:[URL]) {
         self.indexArray = [String]()
         self.wordsDictionary = [String: [String]]()
         
@@ -90,7 +90,7 @@ class SearchEngine: NSObject {
         
         for directoryURL in readmeDirectoriesURLs {
             autoreleasepool {
-                if let contentString = self.contentOfReadmeFile(directoryURL.path) {
+                if let contentString = self.contentOfReadmeFile(directoryPath: directoryURL.path) {
                     
                     //sample display name
                     let sampleDisplayName = directoryURL.path.components(separatedBy: "/").last!
@@ -130,7 +130,7 @@ class SearchEngine: NSObject {
         }
     }
     
-    private func contentOfReadmeFile(_ directoryPath:String) -> String? {
+    private func contentOfReadmeFile(directoryPath:String) -> String? {
         //find the path of the file
         let path = "\(directoryPath)/README.md"
         //read the content of the file

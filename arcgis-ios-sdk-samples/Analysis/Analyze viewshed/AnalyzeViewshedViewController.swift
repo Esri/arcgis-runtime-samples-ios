@@ -70,7 +70,7 @@ class AnalyzeViewshedViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.inputGraphicsOverlay.graphics.add(graphic)
     }
     
-    private func calculateViewshed(_ point: AGSPoint) {
+    private func calculateViewshed(at point: AGSPoint) {
         
         //remove previous graphics
         self.resultGraphicsOverlay.graphics.removeAllObjects()
@@ -160,6 +160,6 @@ class AnalyzeViewshedViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.addGraphicForPoint(mapPoint)
         
         //calculate viewshed
-        self.calculateViewshed(mapPoint)
+        self.calculateViewshed(at: mapPoint)
     }
 }

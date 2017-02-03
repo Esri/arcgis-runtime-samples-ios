@@ -92,7 +92,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
                 self?.mapView.map?.operationalLayers.add(result!.mapImageLayer!)
                 
                 //set map view's viewpoint to the new layer's full extent
-                (self?.mapView.map?.operationalLayers.firstObject as! AGSLayer).load(completion: { (error: Error?) in
+                (self?.mapView.map?.operationalLayers.firstObject as! AGSLayer).load { (error: Error?) in
                     if error == nil {
                         
                         //set viewpoint as the extent of the mapImageLayer
@@ -100,7 +100,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
                             self?.mapView.setViewpointGeometry(extent, completion: nil)
                         }
                     }
-                })
+                }
             }
         }
     }
@@ -110,7 +110,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
     func hotspotSettingsViewController(_ hotspotSettingsViewController: HotspotSettingsViewController, didSelectDates fromDate: String, toDate: String) {
         
         self.analyzeHotspots(fromDate, toDate: toDate)
-        self.toggleSettingsView(false)
+        self.toggleSettingsView(on: false)
     }
     
     //MARK: - Navigation
@@ -124,13 +124,13 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
     
     //MARK: - Toggle settings view
     
-    private func toggleSettingsView(_ on: Bool) {
+    private func toggleSettingsView(on: Bool) {
         self.containerView.isHidden = !on
     }
     
     //MARK: - Actions
     
     @IBAction func changeDatesAction() {
-        self.toggleSettingsView(true)
+        self.toggleSettingsView(on: true)
     }
 }

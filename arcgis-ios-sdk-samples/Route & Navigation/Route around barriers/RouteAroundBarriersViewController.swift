@@ -74,7 +74,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
     //MARK: - Route logic
     
     func getDefaultParameters() {
-        self.routeTask.defaultRouteParameters(completion: { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
+        self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
             if let error = error {
                 SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
@@ -83,7 +83,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
                 //enable bar button item
                 self?.routeParametersBBI.isEnabled = true
             }
-        })
+        }
     }
     
     @IBAction func route() {
@@ -145,7 +145,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         return symbol
     }
     
-    private func symbolForStopGraphic(_ index: Int) -> AGSSymbol {
+    private func symbolForStopGraphic(withIndex index: Int) -> AGSSymbol {
         let markerImage = UIImage(named: "BlueMarker")!
         let markerSymbol = AGSPictureMarkerSymbol(image: markerImage)
         markerSymbol.offsetY = markerImage.size.height/2
@@ -171,7 +171,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         if segmentedControl.selectedSegmentIndex == 0 {
             //create a graphic for stop and add to the graphics overlay
             let graphicsCount = self.stopGraphicsOverlay.graphics.count
-            let symbol = self.symbolForStopGraphic(graphicsCount+1)
+            let symbol = self.symbolForStopGraphic(withIndex: graphicsCount+1)
             let graphic = AGSGraphic(geometry: normalizedPoint, symbol: symbol, attributes: nil)
             self.stopGraphicsOverlay.graphics.add(graphic)
             

@@ -117,7 +117,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         })
     }
     
-    private func reverseGeocode(_ point:AGSPoint) {
+    private func reverseGeocode(point:AGSPoint) {
         //clear the search bar text to give feedback that the graphic
         //is based on the tap and not search
         self.searchBar.text = ""
@@ -221,12 +221,12 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
     func geoView(_ geoView: AGSGeoView, didLongPressAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         self.longPressedAndMoving = true
         //on long press perform reverse geocode
-        self.reverseGeocode(mapPoint)
+        self.reverseGeocode(point: mapPoint)
     }
     
     func geoView(_ geoView: AGSGeoView, didMoveLongPressToScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //perform geocode for the updated location
-        self.reverseGeocode(mapPoint)
+        self.reverseGeocode(point: mapPoint)
     }
     
     func geoView(_ geoView: AGSGeoView, didEndLongPressAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {

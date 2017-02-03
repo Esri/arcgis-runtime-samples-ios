@@ -29,7 +29,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func applyEdits() {
-        (self.feature.featureTable as! AGSServiceFeatureTable).applyEdits(completion: { [weak self] (result, error) -> Void in
+        (self.feature.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (result, error) -> Void in
             if let error = error {
                 print(error)
             }
@@ -37,7 +37,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
                 print("Apply edits finished successfully")
                 self?.loadAttachments()
             }
-        })
+        }
     }
     
     func loadAttachments() {
@@ -53,7 +53,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func deleteAttachment(_ attachment:AGSAttachment) {
-        self.feature.delete(attachment, completion: { [weak self] (error:Error?) -> Void in
+        self.feature.delete(attachment) { [weak self] (error:Error?) -> Void in
             if let error = error {
                 print(error)
             }
@@ -61,7 +61,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
                 print("Attachment deleted")
                 self?.applyEdits()
             }
-        })
+        }
     }
     
     override func didReceiveMemoryWarning() {

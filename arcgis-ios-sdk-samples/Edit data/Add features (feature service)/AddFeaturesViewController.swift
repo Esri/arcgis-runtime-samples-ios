@@ -53,7 +53,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func addFeature(_ mappoint:AGSPoint) {
+    func addFeature(at mappoint:AGSPoint) {
         //show the progress hud
         SVProgressHUD.show(withStatus: "Adding..", maskType: SVProgressHUDMaskType.gradient)
         //disable interaction with map view
@@ -100,6 +100,6 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //add a feature at the tapped location
-        self.addFeature(mapPoint)
+        self.addFeature(at: mapPoint)
     }
 }

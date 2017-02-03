@@ -131,14 +131,15 @@ class GenerateGeodatabaseViewController: UIViewController {
                 }
 
                 
-            }else{
+            }
+            else{
                 print("Could not generate default parameters : \(error!)")
             }
         }
     }
     
     func displayLayersFromGeodatabase() {
-        self.generatedGeodatabase.load(completion: { [weak self] (error:Error?) -> Void in
+        self.generatedGeodatabase.load { [weak self] (error:Error?) -> Void in
 
             if let error = error {
                 SVProgressHUD.showError(withStatus: error.localizedDescription)
@@ -146,7 +147,7 @@ class GenerateGeodatabaseViewController: UIViewController {
             else {
                 self?.map.operationalLayers.removeAllObjects()
                 
-                AGSLoadObjects(self!.generatedGeodatabase.geodatabaseFeatureTables, { (success: Bool) in
+                AGSLoadObjects(self!.generatedGeodatabase.geodatabaseFeatureTables) { (success: Bool) in
                     if success {
                         for featureTable in self!.generatedGeodatabase.geodatabaseFeatureTables.reversed() {
                             //check if featureTable has geometry
@@ -157,7 +158,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                         }
                         SVProgressHUD.showSuccess(withStatus: "Now showing data from geodatabase")
                     }
-                })
+                }
                 
                 self?.downloadBBI.isEnabled = false
                 
@@ -167,7 +168,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                 //hide the extent view
                 self?.extentView.isHidden = true
             }
-        })
+        }
     }
     
     func unregisterGeodatabase() {

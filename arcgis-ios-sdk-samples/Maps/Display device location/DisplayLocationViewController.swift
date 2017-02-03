@@ -74,19 +74,19 @@ class DisplayLocationViewController: UIViewController, CustomContextSheetDelegat
         case 0:
             self.mapView.locationDisplay.stop()
         case 1:
-            self.startLocationDisplay(AGSLocationDisplayAutoPanMode.off)
+            self.startLocationDisplay(with: AGSLocationDisplayAutoPanMode.off)
         case 2:
-            self.startLocationDisplay(AGSLocationDisplayAutoPanMode.recenter)
+            self.startLocationDisplay(with: AGSLocationDisplayAutoPanMode.recenter)
         case 3:
-            self.startLocationDisplay(AGSLocationDisplayAutoPanMode.navigation)
+            self.startLocationDisplay(with: AGSLocationDisplayAutoPanMode.navigation)
         default:
-            self.startLocationDisplay(AGSLocationDisplayAutoPanMode.compassNavigation)
+            self.startLocationDisplay(with: AGSLocationDisplayAutoPanMode.compassNavigation)
         }
     }
     
     //to start location display, the first time
     //dont forget to add the location request field in the info.plist file
-    func startLocationDisplay(_ autoPanMode:AGSLocationDisplayAutoPanMode) {
+    func startLocationDisplay(with autoPanMode:AGSLocationDisplayAutoPanMode) {
         self.mapView.locationDisplay.autoPanMode = autoPanMode
         self.mapView.locationDisplay.start { (error:Error?) -> Void in
             if let error = error {

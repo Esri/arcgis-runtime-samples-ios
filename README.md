@@ -1,6 +1,6 @@
 arcgis-runtime-samples-ios
 ==========================
-This repository contains sample code demonstrating the capabilities of [ArcGIS Runtime SDK for iOS](http://developers.arcgis.com/en/ios/). Each sample is an entire project that can be opened in XCode and instantly run on a simulator or a device.
+This repository contains Swift sample code demonstrating the capabilities of [ArcGIS Runtime SDK for iOS](http://developers.arcgis.com/en/ios/). The project that can be opened in XCode and instantly run on a simulator or a device.
 
 The ```master``` branch of this repository contains samples configured for the latest available version of [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/en/ios/). For samples configured for older versions of the SDK,  look under the ```Releases``` tab for a specific version.
 
@@ -12,12 +12,12 @@ The ```master``` branch of this repository contains samples configured for the l
 * Display Information - Displaying graphics, popups and callouts
 * Search - Finding an address
 * Geometry - Displaying geometries
-* Route & Navigation - Find a route around barriers
+* Route & Directions - Find a route around barriers and get turn-by-turn directions
 * Scenes - Display scenes, 3D symbols, and scene layers
 
 ## Requirements
 * [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/en/ios/) (Requires ArcGIS for Developers account; free to sign up)
-XCode 8 (or higher)
+* XCode 8 (or higher)
 * iOS 10 SDK (or higher)
 
 1. Fork and then clone the repo. Don't know how? [Get started here.](http://htmlpreview.github.com/?https://github.com/Esri/esri.github.com/blob/master/help/esri-getting-to-know-github.html)

@@ -15,7 +15,7 @@
 import UIKit
 
 protocol EAOptionsVCDelegate:class {
-    func optionsViewController(optionsViewController:EAOptionsViewController, didSelectOptionAtIndex index:Int)
+    func optionsViewController(_ optionsViewController:EAOptionsViewController, didSelectOptionAtIndex index:Int)
 }
 
 class EAOptionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIBarPositioningDelegate {
@@ -38,38 +38,38 @@ class EAOptionsViewController: UIViewController, UITableViewDataSource, UITableV
     
     //MARK:- Table view data source
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.options?.count ?? 0
     }
     
     //MARK: - Table view delegate
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("EAOptionsCell")!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EAOptionsCell")!
         
-        cell.textLabel?.text = self.options[indexPath.row]
+        cell.textLabel?.text = self.options[(indexPath as NSIndexPath).row]
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.delegate.optionsViewController(self, didSelectOptionAtIndex: indexPath.row)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.delegate.optionsViewController(self, didSelectOptionAtIndex: (indexPath as NSIndexPath).row)
         self.cancelAction()
     }
     
     //MARK: - Actions
     
     @IBAction func cancelAction() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     //MARK: - UIBarPositioningDelegate
     
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return .TopAttached
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
 }

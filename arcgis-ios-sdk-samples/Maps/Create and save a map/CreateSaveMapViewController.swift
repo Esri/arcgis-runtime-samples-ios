@@ -17,17 +17,17 @@ import ArcGIS
 
 extension UIImage {
     
-    func croppedImage(size:CGSize) -> UIImage {
+    func croppedImage(_ size:CGSize) -> UIImage {
         //calculate rect based on input size
         let originX = (self.size.width - size.width)/2
         let originY = (self.size.height - size.height)/2
         
-        let scale = UIScreen.mainScreen().scale
+        let scale = UIScreen.main.scale
         let rect = CGRect(x: originX*scale, y: originY*scale, width: size.width*scale, height: size.height*scale)
         
         //crop image
-        let croppedCGImage = CGImageCreateWithImageInRect(self.CGImage!, rect)!
-        let croppedImage = UIImage(CGImage: croppedCGImage, scale: scale, orientation: UIImageOrientation.Up)
+        let croppedCGImage = self.cgImage!.cropping(to: rect)!
+        let croppedImage = UIImage(cgImage: croppedCGImage, scale: scale, orientation: UIImageOrientation.up)
         
         return croppedImage
     }
@@ -55,10 +55,10 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         
         //Auth Manager settings
         let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
-        AGSAuthenticationManager.sharedAuthenticationManager().OAuthConfigurations.addObject(config)
-        AGSAuthenticationManager.sharedAuthenticationManager().credentialCache.removeAllCredentials()
+        AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
+        AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
         
-        let map = AGSMap(basemap: AGSBasemap.imageryBasemap())
+        let map = AGSMap(basemap: AGSBasemap.imagery())
         
         self.mapView.map = map
         
@@ -78,31 +78,31 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     }
     
     private func showSuccess() {
-        let alertController = UIAlertController(title: "Saved successfully", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        let alertController = UIAlertController(title: "Saved successfully", message: nil, preferredStyle: UIAlertControllerStyle.alert)
         
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: { [weak self] (action:UIAlertAction!) -> Void in
-            self?.dismissViewControllerAnimated(true, completion: nil)
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { [weak self] (action:UIAlertAction!) -> Void in
+            self?.dismiss(animated: true, completion: nil)
             })
         
-        let openAction = UIAlertAction(title: "Open in Safari", style: UIAlertActionStyle.Default, handler: { [weak self] (action:UIAlertAction!) -> Void in
+        let openAction = UIAlertAction(title: "Open in Safari", style: UIAlertActionStyle.default, handler: { [weak self] (action:UIAlertAction!) -> Void in
             if let weakSelf = self {
-                UIApplication.sharedApplication().openURL(NSURL(string: "\(weakSelf.webmapURL)\(weakSelf.mapView.map!.item!.itemID)")!)
+                UIApplication.shared.openURL(URL(string: "\(weakSelf.webmapURL)\(weakSelf.mapView.map!.item!.itemID)")!)
             }
         })
         
         alertController.addAction(okAction)
         alertController.addAction(openAction)
         
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     //MARK: - hide/show create screen
     
     private func toggleCreateView() {
-        self.createOptionsBlurView.hidden = !self.createOptionsBlurView.hidden
+        self.createOptionsBlurView.isHidden = !self.createOptionsBlurView.isHidden
         
         //reset selection
-        if !self.createOptionsBlurView.hidden {
+        if !self.createOptionsBlurView.isHidden {
             self.createOptionsVC.resetTableView()
         }
     }
@@ -110,7 +110,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     //MARK: - hide/show input screen
     
     private func toggleSaveAsView() {
-        self.saveAsBlurView.hidden = !self.saveAsBlurView.hidden
+        self.saveAsBlurView.isHidden = !self.saveAsBlurView.isHidden
         
         self.view.endEditing(true)
     }
@@ -121,9 +121,9 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         self.toggleCreateView()
     }
     
-    @IBAction func saveAsAction(sender: AnyObject) {
-        self.portal = AGSPortal(URL: NSURL(string: "https://www.arcgis.com")!, loginRequired: true)
-        self.portal.loadWithCompletion { (error) -> Void in
+    @IBAction func saveAsAction(_ sender: AnyObject) {
+        self.portal = AGSPortal(url: URL(string: "https://www.arcgis.com")!, loginRequired: true)
+        self.portal.load { (error) -> Void in
             if let error = error {
                 print(error)
             }
@@ -146,27 +146,27 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     
     //MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CreateOptionsEmbedSegue" {
-            self.createOptionsVC = segue.destinationViewController as! CreateOptionsViewController
+            self.createOptionsVC = segue.destination as! CreateOptionsViewController
             self.createOptionsVC.delegate = self
         }
         else if segue.identifier == "SaveAsEmbedSegue" {
-            self.saveAsVC = segue.destinationViewController as! SaveAsViewController
+            self.saveAsVC = segue.destination as! SaveAsViewController
             self.saveAsVC.delegate = self
         }
     }
     
     //MARK: - CreateOptionsVCDelegate
     
-    func createOptionsViewController(createOptionsViewController: CreateOptionsViewController, didSelectBasemap basemap: AGSBasemap, layers: [AGSLayer]?) {
+    func createOptionsViewController(_ createOptionsViewController: CreateOptionsViewController, didSelectBasemap basemap: AGSBasemap, layers: [AGSLayer]?) {
         
         //create a map with the selected basemap
         let map = AGSMap(basemap: basemap)
         
         //add the selected operational layers
         if let layers = layers {
-            map.operationalLayers.addObjectsFromArray(layers)
+            map.operationalLayers.addObjects(from: layers)
         }
         //assign the new map to the map view
         self.mapView.map = map
@@ -177,24 +177,24 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     
     //MARK: - SaveAsVCDelegate
     
-    func saveAsViewController(saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String?) {
-        SVProgressHUD.showWithStatus("Saving", maskType: .Gradient)
+    func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String?) {
+        SVProgressHUD.show(withStatus: "Saving", maskType: .gradient)
         //set the initial viewpoint from map view
-        self.mapView.map?.initialViewpoint = self.mapView.currentViewpointWithType(AGSViewpointType.CenterAndScale)
+        self.mapView.map?.initialViewpoint = self.mapView.currentViewpoint(with: AGSViewpointType.centerAndScale)
         
-        self.mapView.exportImageWithCompletion { [weak self] (image:UIImage?, error:NSError?) -> Void in
+        self.mapView.exportImage { [weak self] (image:UIImage?, error:Error?) -> Void in
             
             if let weakSelf = self {
                 //crop the image from the center
                 //also to cut on the size
                 let croppedImage:UIImage? = image?.croppedImage(CGSize(width: 200, height: 200))
                 
-                weakSelf.mapView.map?.saveAs(title, portal: weakSelf.portal!, tags: tags, folder: nil, itemDescription: itemDescription!, thumbnail: croppedImage, forceSaveToSupportedVersion: true, completion: { [weak self] (error) -> Void in
+                weakSelf.mapView.map?.save(as: title, portal: weakSelf.portal!, tags: tags, folder: nil, itemDescription: itemDescription!, thumbnail: croppedImage, forceSaveToSupportedVersion: true, completion: { [weak self] (error) -> Void in
                     
                     //dismiss progress hud
                     SVProgressHUD.dismiss()
                     if let error = error {
-                        SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
+                        SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
                     }
                     else {
                         self?.showSuccess()
@@ -208,7 +208,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         self.toggleSaveAsView()
     }
     
-    func saveAsViewControllerDidCancel(saveAsViewController: SaveAsViewController) {
+    func saveAsViewControllerDidCancel(_ saveAsViewController: SaveAsViewController) {
         self.toggleSaveAsView()
     }
 }

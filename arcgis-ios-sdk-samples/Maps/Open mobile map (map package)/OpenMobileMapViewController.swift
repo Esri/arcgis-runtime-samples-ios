@@ -33,9 +33,9 @@ class OpenMobileMapViewController: UIViewController {
         self.mapPackage = AGSMobileMapPackage(name: "Yellowstone")
         
         //load map package
-        self.mapPackage.loadWithCompletion { [weak self] (error: NSError?) in
+        self.mapPackage.load { [weak self] (error: Error?) in
             if let error = error {
-                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 if let weakSelf = self {
@@ -44,7 +44,7 @@ class OpenMobileMapViewController: UIViewController {
                         weakSelf.mapView.map = weakSelf.mapPackage.maps[0]
                     }
                     else {
-                        SVProgressHUD.showErrorWithStatus("No mobile maps found in the map package")
+                        SVProgressHUD.showError(withStatus: "No mobile maps found in the map package")
                     }
                 }
             }

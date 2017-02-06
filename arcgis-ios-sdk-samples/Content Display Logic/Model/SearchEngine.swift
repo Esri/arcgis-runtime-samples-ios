@@ -35,42 +35,42 @@ class SearchEngine: NSObject {
     private func commonInit() {
         if !self.isLoading {
             self.isLoading = true
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) { [weak self] () -> Void in
+            DispatchQueue.global(qos: .background).async { [weak self] () -> Void in
                 guard let weakSelf = self else {
                     return
                 }
                 //get the directory URLs that contain readme files
                 let readmeDirectoriesURLs = weakSelf.findReadmeDirectoriesURLs()
                 //index the content of all the readme files
-                weakSelf.indexAllReadmes(readmeDirectoriesURLs)
+                weakSelf.indexAllReadmes(readmeDirectoriesURLs: readmeDirectoriesURLs)
                 self?.isLoading = false
             }
         }
     }
     
-    private func findReadmeDirectoriesURLs() -> [NSURL] {
+    private func findReadmeDirectoriesURLs() -> [URL] {
         
-        var readmeDirectoriesURLs = [NSURL]()
+        var readmeDirectoriesURLs = [URL]()
         
-        let fileManager = NSFileManager.defaultManager()
-        let bundleURL = NSBundle.mainBundle().bundleURL
+        let fileManager = FileManager.default
+        let bundleURL = Bundle.main.bundleURL
         
         //get all the directories from the bundle
-        let directoryEnumerator = fileManager.enumeratorAtURL(bundleURL, includingPropertiesForKeys: [NSURLNameKey, NSURLIsDirectoryKey], options: NSDirectoryEnumerationOptions.SkipsHiddenFiles, errorHandler: nil)
+        let directoryEnumerator = fileManager.enumerator(at: bundleURL, includingPropertiesForKeys: [URLResourceKey.nameKey, URLResourceKey.isDirectoryKey], options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles, errorHandler: nil)
         
         //check if the returned url is of a directory
         if let directoryEnumerator = directoryEnumerator {
-            while let fileURL = directoryEnumerator.nextObject() as? NSURL {
+            while let fileURL = directoryEnumerator.nextObject() as? URL {
                 var isDirectory:AnyObject?
                 do {
-                    try fileURL.getResourceValue(&isDirectory, forKey: NSURLIsDirectoryKey)
+                    try (fileURL as NSURL).getResourceValue(&isDirectory, forKey: URLResourceKey.isDirectoryKey)
                 } catch {
                     print("throws")
                 }
                 //check if the directory contains a readme file
-                if let isDirectory = isDirectory as? NSNumber where isDirectory.boolValue == true  {
-                    let readmePath = "\(fileURL.path!)/README.md"
-                    if fileManager.fileExistsAtPath(readmePath) {
+                if let isDirectory = isDirectory as? NSNumber , isDirectory.boolValue == true  {
+                    let readmePath = "\(fileURL.path)/README.md"
+                    if fileManager.fileExists(atPath: readmePath) {
                         readmeDirectoriesURLs.append(fileURL)
                     }
                 }
@@ -81,7 +81,7 @@ class SearchEngine: NSObject {
     }
     
     
-    private func indexAllReadmes(readmeDirectoriesURLs:[NSURL]) {
+    private func indexAllReadmes(readmeDirectoriesURLs:[URL]) {
         self.indexArray = [String]()
         self.wordsDictionary = [String: [String]]()
         
@@ -90,17 +90,17 @@ class SearchEngine: NSObject {
         
         for directoryURL in readmeDirectoriesURLs {
             autoreleasepool {
-                if let contentString = self.contentOfReadmeFile(directoryURL.path!) {
+                if let contentString = self.contentOfReadmeFile(directoryPath: directoryURL.path) {
                     
                     //sample display name
-                    let sampleDisplayName = directoryURL.path!.componentsSeparatedByString("/").last!
+                    let sampleDisplayName = directoryURL.path.components(separatedBy: "/").last!
                     
                     tagger.string = contentString
                     let range = NSMakeRange(0, contentString.characters.count)
-                    tagger.enumerateTagsInRange(range, scheme: NSLinguisticTagSchemeLexicalClass, options: [NSLinguisticTaggerOptions.OmitWhitespace, NSLinguisticTaggerOptions.OmitPunctuation], usingBlock: { (tag:String, tokenRange:NSRange, sentenceRange:NSRange, _) -> Void in
+                    tagger.enumerateTags(in: range, scheme: NSLinguisticTagSchemeLexicalClass, options: [NSLinguisticTagger.Options.omitWhitespace, NSLinguisticTagger.Options.omitPunctuation], using: { (tag:String, tokenRange:NSRange, sentenceRange:NSRange, _) -> Void in
 
                         if tag == NSLinguisticTagNoun || tag == NSLinguisticTagVerb || tag == NSLinguisticTagAdjective || tag == NSLinguisticTagOtherWord {
-                            let word = (contentString as NSString).substringWithRange(tokenRange) as String
+                            let word = (contentString as NSString).substring(with: tokenRange) as String
                             
                             //trivial comparisons
                             if word != "`." && word != "```" && word != "`" {
@@ -134,7 +134,7 @@ class SearchEngine: NSObject {
         //find the path of the file
         let path = "\(directoryPath)/README.md"
         //read the content of the file
-        if let content = try? String(contentsOfFile: path, encoding: NSUTF8StringEncoding) {
+        if let content = try? String(contentsOfFile: path, encoding: String.Encoding.utf8) {
             return content
         }
         return nil
@@ -142,7 +142,7 @@ class SearchEngine: NSObject {
     
     //MARK: - Public methods
     
-    func searchForString(string:String) -> [String]? {
+    func searchForString(_ string:String) -> [String]? {
         
         //if the resources where released because of memory warnings
         if self.indexArray == nil {
@@ -151,7 +151,7 @@ class SearchEngine: NSObject {
         }
         
         //check if the string exists in the index array
-        let words = self.indexArray.filter({ $0.uppercaseString == string.uppercaseString })
+        let words = self.indexArray.filter({ $0.uppercased() == string.uppercased() })
         if words.count > 0 {
             if let sampleDisplayNames = self.wordsDictionary[words[0]] {
                 return sampleDisplayNames
@@ -161,14 +161,14 @@ class SearchEngine: NSObject {
         return nil
     }
     
-    func suggestionsForString(string:String) -> [String]? {
+    func suggestionsForString(_ string:String) -> [String]? {
         //if the resources where released because of memory warnings
         if self.indexArray == nil {
             self.commonInit()
             return nil
         }
         
-        let suggestions = self.indexArray.filter( { $0.uppercaseString.rangeOfString(string.uppercaseString) != nil } )
+        let suggestions = self.indexArray.filter( { $0.uppercased().range(of: string.uppercased()) != nil } )
         return suggestions
     }
 }

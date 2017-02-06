@@ -29,14 +29,14 @@ class UniqueValueRendererViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["UniqueValueRendererViewController"]
 
         //instantiate map with basemap
-        let map = AGSMap(basemap: AGSBasemap.topographicBasemap())
+        let map = AGSMap(basemap: AGSBasemap.topographic())
         
         //create feature layer
-        let featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3")!)
+        let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3")!)
         self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
         
         //add the layer to the map as operational layer
-        map.operationalLayers.addObject(self.featureLayer)
+        map.operationalLayers.add(self.featureLayer)
         
         //assign map to the map view
         self.mapView.map = map
@@ -63,10 +63,10 @@ class UniqueValueRendererViewController: UIViewController {
         renderer.fieldNames = ["STATE_ABBR"]
         
         //create symbols to be used in the renderer
-        let defaultSymbol = AGSSimpleFillSymbol(style: .Null, color: UIColor.clearColor(), outline: AGSSimpleLineSymbol(style: .Solid, color: UIColor.grayColor(), width: 2))
-        let californiaSymbol = AGSSimpleFillSymbol(style: .Solid, color: UIColor.redColor(), outline: AGSSimpleLineSymbol(style: .Solid, color: UIColor.redColor(), width: 2))
-        let arizonaSymbol = AGSSimpleFillSymbol(style: .Solid, color: UIColor.greenColor(), outline: AGSSimpleLineSymbol(style: .Solid, color: UIColor.greenColor(), width: 2))
-        let nevadaSymbol = AGSSimpleFillSymbol(style: .Solid, color: UIColor.blueColor(), outline: AGSSimpleLineSymbol(style: .Solid, color: UIColor.blueColor(), width: 2))
+        let defaultSymbol = AGSSimpleFillSymbol(style: .null, color: UIColor.clear, outline: AGSSimpleLineSymbol(style: .solid, color: UIColor.gray, width: 2))
+        let californiaSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor.red, outline: AGSSimpleLineSymbol(style: .solid, color: UIColor.red, width: 2))
+        let arizonaSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor.green, outline: AGSSimpleLineSymbol(style: .solid, color: UIColor.green, width: 2))
+        let nevadaSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor.blue, outline: AGSSimpleLineSymbol(style: .solid, color: UIColor.blue, width: 2))
         
         //set the default symbol
         renderer.defaultSymbol = defaultSymbol
@@ -78,7 +78,7 @@ class UniqueValueRendererViewController: UIViewController {
         let nevadaValue = AGSUniqueValue(description: "State of Nevada", label: "Nevada", symbol: nevadaSymbol, values: ["NV"])
         
         //add the values to the renderer
-        renderer.uniqueValues.appendContentsOf([californiaValue, arizonaValue, nevadaValue])
+        renderer.uniqueValues.append(contentsOf: [californiaValue, arizonaValue, nevadaValue])
         
         //assign the renderer to the feature layer
         self.featureLayer.renderer = renderer

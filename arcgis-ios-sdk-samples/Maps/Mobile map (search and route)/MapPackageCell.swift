@@ -18,7 +18,7 @@ import ArcGIS
 
 protocol MapPackageCellDelegate:class {
     
-    func mapPackageCell(mapPackageCell:MapPackageCell, didSelectMap map:AGSMap)
+    func mapPackageCell(_ mapPackageCell:MapPackageCell, didSelectMap map:AGSMap)
 }
 
 
@@ -45,10 +45,10 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
     }
     
     func loadMapPackage() {
-        self.mapPackage.loadWithCompletion({ [weak self] (error:NSError?) in
+        self.mapPackage.load { [weak self] (error:Error?) in
             if let error = error {
                 //error
-                SVProgressHUD.showErrorWithStatus(error.localizedDescription, maskType: .Gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
             }
             else {
                 //update title label
@@ -56,7 +56,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
                 
                 self?.collectionView.reloadData()
             }
-        })
+        }
     }
     
     func expandCell() {
@@ -71,34 +71,34 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
 
     //MARK: - UICollectionViewDataSource
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.mapPackage?.maps.count ?? 0
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MobileMapCell", forIndexPath: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MobileMapCell", for: indexPath)
         
         //label
         let label = cell.viewWithTag(11) as! UILabel
-        label.text = "Map \(indexPath.item+1)"
+        label.text = "Map \((indexPath as NSIndexPath).item+1)"
         
         //border
-        cell.layer.borderColor = UIColor.blackColor().CGColor
+        cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 1
         
         //search image view
         let searchImageView = cell.viewWithTag(12) as! UIImageView
-        searchImageView.hidden = (self.mapPackage.locatorTask == nil)
+        searchImageView.isHidden = (self.mapPackage.locatorTask == nil)
         
-        let map = self.mapPackage.maps[indexPath.item]
+        let map = self.mapPackage.maps[(indexPath as NSIndexPath).item]
         //route image view
         let routeImageView = cell.viewWithTag(13) as! UIImageView
-        routeImageView.hidden = (map.transportationNetworks.count == 0)
+        routeImageView.isHidden = (map.transportationNetworks.count == 0)
         
         //thumbnail
         let imageView = cell.viewWithTag(14) as! UIImageView
         imageView.image = map.item?.thumbnail?.image
-        imageView.layer.borderColor = UIColor.grayColor().CGColor
+        imageView.layer.borderColor = UIColor.gray.cgColor
         imageView.layer.borderWidth = 1
         
         return cell
@@ -106,7 +106,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
     
     //MARK: - UICollectionViewDelegate
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        self.delegate?.mapPackageCell(self, didSelectMap: self.mapPackage.maps[indexPath.item])
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.delegate?.mapPackageCell(self, didSelectMap: self.mapPackage.maps[(indexPath as NSIndexPath).item])
     }
 }

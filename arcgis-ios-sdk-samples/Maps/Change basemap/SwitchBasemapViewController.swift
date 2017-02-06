@@ -26,12 +26,12 @@ class SwitchBasemapViewController: UIViewController {
         super.viewDidLoad()
 
         //change width of the segmented control based on the device
-        if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad {
-            self.segmentedControl.frame = CGRectInset(self.segmentedControl.frame, -50, 0)
+        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
+            self.segmentedControl.frame = self.segmentedControl.frame.insetBy(dx: -50, dy: 0)
         }
         
         //initialize the map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
+        self.map = AGSMap(basemap: AGSBasemap.topographic())
         
         //assign the map to the map view
         self.mapView.map = map
@@ -45,16 +45,16 @@ class SwitchBasemapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func segmentValueChanged(sender: UISegmentedControl) {
+    @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            self.map.basemap = AGSBasemap.topographicBasemap()
+            self.map.basemap = AGSBasemap.topographic()
         case 1:
-            self.map.basemap = AGSBasemap.streetsBasemap()
+            self.map.basemap = AGSBasemap.streets()
         case 2:
-            self.map.basemap = AGSBasemap.imageryBasemap()
+            self.map.basemap = AGSBasemap.imagery()
         default:
-            self.map.basemap = AGSBasemap.oceansBasemap()
+            self.map.basemap = AGSBasemap.oceans()
         }
     }
 

@@ -17,7 +17,7 @@
 import UIKit
 
 protocol CustomContextSheetDelegate:class {
-    func customContextSheet(customContextSheet:CustomContextSheet, didSelectItemAtIndex index:Int)
+    func customContextSheet(_ customContextSheet:CustomContextSheet, didSelectItemAtIndex index:Int)
 }
 
 class CustomContextSheet: UIView {
@@ -55,7 +55,7 @@ class CustomContextSheet: UIView {
     
     init(images:[String], highlightImages:[String]?, titles:[String]?) {
         //frame based on the constraints applied
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         self.images = images
         self.highlightImages = highlightImages
         self.titles = titles
@@ -74,15 +74,15 @@ class CustomContextSheet: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func intrinsicContentSize() -> CGSize {
+    override var intrinsicContentSize : CGSize {
         return CGSize(width: self.buttonSize, height: self.buttonSize)
     }
     
     private func setup() {
-        self.buttonsCollection.removeAll(keepCapacity: false)
-        self.labelsCollection.removeAll(keepCapacity: false)
-        self.centerXConstraints.removeAll(keepCapacity: false)
-        self.centerYConstraints.removeAll(keepCapacity: false)
+        self.buttonsCollection.removeAll(keepingCapacity: false)
+        self.labelsCollection.removeAll(keepingCapacity: false)
+        self.centerXConstraints.removeAll(keepingCapacity: false)
+        self.centerYConstraints.removeAll(keepingCapacity: false)
         
         //selection button
         self.selectionButton = self.button(self.images[self.selectedIndex], highlightImage: nil, action: #selector(CustomContextSheet.toggleButtons))
@@ -97,7 +97,7 @@ class CustomContextSheet: UIView {
             self.selectionLabel = self.label(self.titles[self.selectedIndex])
             self.selectionLabel.alpha = 1
 //            self.selectionLabel.backgroundColor = UIColor.redColor()
-            self.insertSubview(self.selectionLabel, atIndex: 0)
+            self.insertSubview(self.selectionLabel, at: 0)
             
             //constraints
             self.addConstraints(self.labelConstraints(self.selectionButton, itemB: self.selectionLabel))
@@ -108,8 +108,8 @@ class CustomContextSheet: UIView {
         for i in 0...self.images.count-1 {
             
             let button = self.button(self.images[i], highlightImage: self.highlightImages?[i] ?? nil, action: #selector(CustomContextSheet.valueChanged(_:)))
-            button.hidden = true
-            self.insertSubview(button, atIndex: 0)
+            button.isHidden = true
+            self.insertSubview(button, at: 0)
             self.buttonsCollection.append(button)
             
             //centerXY constraints
@@ -121,7 +121,7 @@ class CustomContextSheet: UIView {
             if self.titles != nil {
                 //labels
                 let label = self.label(self.titles[i])
-                self.insertSubview(label, atIndex: 0)
+                self.insertSubview(label, at: 0)
                 self.labelsCollection.append(label)
                 
                 //constraints
@@ -130,23 +130,23 @@ class CustomContextSheet: UIView {
         }
     }
     
-    func button(image:String, highlightImage:String?, action:Selector) -> UIButton {
-        let button = UIButton(frame: CGRectZero)
+    func button(_ image:String, highlightImage:String?, action:Selector) -> UIButton {
+        let button = UIButton(frame: CGRect.zero)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.center = self.center
-        button.setImage(UIImage(named: image), forState: UIControlState.Normal)
+        button.setImage(UIImage(named: image), for: UIControlState())
         if highlightImage != nil {
-            button.setImage(UIImage(named: highlightImage!), forState: UIControlState.Highlighted)
+            button.setImage(UIImage(named: highlightImage!), for: UIControlState.highlighted)
         }
         button.layer.cornerRadius = self.buttonSize/2
         button.layer.masksToBounds = true
-        button.addTarget(self, action: action, forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action: action, for: UIControlEvents.touchUpInside)
         return button
     }
     
-    func centerAlignConstraints(item:UIButton, retain:Bool) -> [NSLayoutConstraint] {
-        let centerXConstraint = NSLayoutConstraint(item: item, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0)
-        let centerYConstraint = NSLayoutConstraint(item: item, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0)
+    func centerAlignConstraints(_ item:UIButton, retain:Bool) -> [NSLayoutConstraint] {
+        let centerXConstraint = NSLayoutConstraint(item: item, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerX, multiplier: 1.0, constant: 0)
+        let centerYConstraint = NSLayoutConstraint(item: item, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0)
         if retain {
             self.centerXConstraints.append(centerXConstraint)
             self.centerYConstraints.append(centerYConstraint)
@@ -154,30 +154,30 @@ class CustomContextSheet: UIView {
         return [centerXConstraint, centerYConstraint]
     }
     
-    func sizeConstraints(item:UIButton, size:CGFloat) -> [NSLayoutConstraint] {
-        let heightConstraint = NSLayoutConstraint(item: item, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: size)
-        let widthConstraint = NSLayoutConstraint(item: item, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: size)
+    func sizeConstraints(_ item:UIButton, size:CGFloat) -> [NSLayoutConstraint] {
+        let heightConstraint = NSLayoutConstraint(item: item, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: size)
+        let widthConstraint = NSLayoutConstraint(item: item, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: size)
         return [heightConstraint, widthConstraint]
     }
     
-    func label(title:String) -> UILabel {
-        let label = UILabel(frame: CGRectZero)
+    func label(_ title:String) -> UILabel {
+        let label = UILabel(frame: CGRect.zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = UIColor.clearColor()
+        label.backgroundColor = UIColor.clear
         label.attributedText = self.attributedText(title)
         label.alpha = 0
         label.sizeToFit()
         return label
     }
     
-    func labelConstraints(itemA:UIButton, itemB:UILabel) -> [NSLayoutConstraint] {
-        let horizontalSpacingConstraint = NSLayoutConstraint(item: itemA, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: itemB, attribute: NSLayoutAttribute.Trailing, multiplier: 1.0, constant: 10)
-        let centerYConstraint = NSLayoutConstraint(item: itemA, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: itemB, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0)
+    func labelConstraints(_ itemA:UIButton, itemB:UILabel) -> [NSLayoutConstraint] {
+        let horizontalSpacingConstraint = NSLayoutConstraint(item: itemA, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: itemB, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 10)
+        let centerYConstraint = NSLayoutConstraint(item: itemA, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: itemB, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0)
         return [horizontalSpacingConstraint, centerYConstraint]
     }
     
-    func attributedText(title:String) -> NSAttributedString {
-        let attributes = [NSStrokeWidthAttributeName: -3, NSStrokeColorAttributeName: UIColor.grayColor(), NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont.boldSystemFontOfSize(18)]
+    func attributedText(_ title:String) -> NSAttributedString {
+        let attributes = [NSStrokeWidthAttributeName: -3, NSStrokeColorAttributeName: UIColor.gray, NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18)] as [String : Any]
         return NSAttributedString(string: title, attributes: attributes)
     }
     
@@ -188,26 +188,26 @@ class CustomContextSheet: UIView {
             self.isAnimating = true
             
             //update the selection button to X
-            self.selectionButton.setImage(UIImage(named: "LocationDisplayClose"), forState: UIControlState.Normal)
+            self.selectionButton.setImage(UIImage(named: "LocationDisplayClose"), for: UIControlState())
             //hide the selection label
             self.selectionLabel.attributedText = self.attributedText("Close")
             self.selectionLabel.sizeToFit()
             
             
             let animation = self.maskLayerAnimation(true)
-            self.maskLayer.addAnimation(animation, forKey: animation.keyPath)
+            self.maskLayer.add(animation, forKey: animation.keyPath)
             
             for button in self.buttonsCollection {
-                button.hidden = false
+                button.isHidden = false
             }
             
             let constraints = self.centerYConstraints
             
-            UIView.animateKeyframesWithDuration(self.animationDuration, delay: 0, options: UIViewKeyframeAnimationOptions.CalculationModeLinear, animations: { [weak self] () -> Void in
+            UIView.animateKeyframes(withDuration: self.animationDuration, delay: 0, options: UIViewKeyframeAnimationOptions(), animations: { [weak self] () -> Void in
                 if let weakSelf = self {
                     let count = constraints.count
                     for i in 0...count-1 {
-                        UIView.addKeyframeWithRelativeStartTime(Double(i)/Double(count), relativeDuration: 1/Double(count), animations: { () -> Void in
+                        UIView.addKeyframe(withRelativeStartTime: Double(i)/Double(count), relativeDuration: 1/Double(count), animations: { () -> Void in
                             for j in i...count-1 {
                                 let layout = constraints[j]
                                 layout.constant -= weakSelf.buttonDisplacement
@@ -230,15 +230,15 @@ class CustomContextSheet: UIView {
             self.isAnimating = true
             
             let animation = self.maskLayerAnimation(false)
-            self.maskLayer.addAnimation(animation, forKey: animation.keyPath)
+            self.maskLayer.add(animation, forKey: animation.keyPath)
             
             let constraints = self.centerYConstraints
             
-            UIView.animateKeyframesWithDuration(self.animationDuration, delay: 0, options: UIViewKeyframeAnimationOptions.CalculationModeLinear, animations: { [weak self] () -> Void in
+            UIView.animateKeyframes(withDuration: self.animationDuration, delay: 0, options: UIViewKeyframeAnimationOptions(), animations: { [weak self] () -> Void in
                 if let weakSelf = self {
                     let count = constraints.count
                     for i in 0...count-1 {
-                        UIView.addKeyframeWithRelativeStartTime(Double(i)/Double(count), relativeDuration: 1/Double(count), animations: { () -> Void in
+                        UIView.addKeyframe(withRelativeStartTime: Double(i)/Double(count), relativeDuration: 1/Double(count), animations: { () -> Void in
                             for j in (count - 1 - i)...count-1 {
                                 let layout = constraints[j]
                                 layout.constant += weakSelf.buttonDisplacement
@@ -253,7 +253,7 @@ class CustomContextSheet: UIView {
                 self?.isAnimating = false
                 self?.isButtonPressed = false
                 for button in self!.buttonsCollection {
-                    button.hidden = true
+                    button.isHidden = true
                 }
                 self?.updateSelectionButton(self!.selectedIndex)
             })
@@ -269,9 +269,9 @@ class CustomContextSheet: UIView {
         }
     }
     
-    func valueChanged(sender:UIButton) {
+    func valueChanged(_ sender:UIButton) {
         //get index of sender
-        if let index = self.buttonsCollection.indexOf(sender) {
+        if let index = self.buttonsCollection.index(of: sender) {
             self.selectedIndex = index
 //            self.updateSelectionButton(index)
             //inform delegate
@@ -280,8 +280,8 @@ class CustomContextSheet: UIView {
         }
     }
     
-    func updateSelectionButton(index:Int) {
-        self.selectionButton.setImage(UIImage(named: self.images[index]), forState: .Normal)
+    func updateSelectionButton(_ index:Int) {
+        self.selectionButton.setImage(UIImage(named: self.images[index]), for: UIControlState())
         if self.titles != nil {
             self.selectionLabel.attributedText = self.attributedText(self.titles[index])
             self.selectionLabel.sizeToFit()
@@ -290,7 +290,7 @@ class CustomContextSheet: UIView {
     }
     
     private func setupMaskLayer() {
-        let screenFrame = UIScreen.mainScreen().bounds
+        let screenFrame = UIScreen.main.bounds
         let x:CGFloat = max(frame.midX, screenFrame.size.width - frame.midX);
         let y:CGFloat = max(frame.midY, screenFrame.size.height - frame.midY);
         
@@ -298,26 +298,26 @@ class CustomContextSheet: UIView {
         self.maskLayer = CAShapeLayer()
         self.maskLayer.frame = CGRect(x: bounds.midX-radius, y: bounds.midY-radius, width: radius*2, height: radius*2)
 
-        let path = CGPathCreateWithEllipseInRect(self.maskLayer.bounds, nil)
+        let path = CGPath(ellipseIn: self.maskLayer.bounds, transform: nil)
         self.maskLayer.path = path
         self.maskLayer.transform = CATransform3DMakeScale(0.0001, 0.0001, 0.0001)
-        self.maskLayer.fillColor = UIColor(white: 0, alpha: 0.7).CGColor
-        self.layer.insertSublayer(self.maskLayer, atIndex: 0)
+        self.maskLayer.fillColor = UIColor(white: 0, alpha: 0.7).cgColor
+        self.layer.insertSublayer(self.maskLayer, at: 0)
     }
     
-    private func maskLayerAnimation(fill:Bool) -> CABasicAnimation {
+    private func maskLayerAnimation(_ fill:Bool) -> CABasicAnimation {
         
         let animation = CABasicAnimation(keyPath: "transform")
         animation.duration = self.animationDuration
         if fill {
-            animation.fromValue = NSValue(CATransform3D: CATransform3DMakeScale(0.0001, 0.0001, 0.0001))
-            animation.toValue = NSValue(CATransform3D: CATransform3DMakeScale(1, 1, 1))
+            animation.fromValue = NSValue(caTransform3D: CATransform3DMakeScale(0.0001, 0.0001, 0.0001))
+            animation.toValue = NSValue(caTransform3D: CATransform3DMakeScale(1, 1, 1))
         }
         else {
-            animation.fromValue = NSValue(CATransform3D: CATransform3DMakeScale(1, 1, 1))
-            animation.toValue = NSValue(CATransform3D: CATransform3DMakeScale(0.0001, 0.0001, 0.0001))
+            animation.fromValue = NSValue(caTransform3D: CATransform3DMakeScale(1, 1, 1))
+            animation.toValue = NSValue(caTransform3D: CATransform3DMakeScale(0.0001, 0.0001, 0.0001))
         }
-        animation.removedOnCompletion = false
+        animation.isRemovedOnCompletion = false
         animation.fillMode = kCAFillModeForwards
         
         return animation
@@ -325,11 +325,11 @@ class CustomContextSheet: UIView {
     
     //MARK: - 
     
-    override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         if self.isButtonPressed {
             return true
         }
-        return super.pointInside(point, withEvent: event)
+        return super.point(inside: point, with: event)
     }
     
     override func layoutSubviews() {

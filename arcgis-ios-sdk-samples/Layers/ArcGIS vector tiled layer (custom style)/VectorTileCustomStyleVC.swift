@@ -28,13 +28,13 @@ class VectorTileCustomStyleVC: UIViewController, VectorStylesVCDelegate, UIGestu
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["VectorTileCustomStyleVC", "VectorStylesViewController"]
         
         //default vector tiled layer
-        let vectorTiledLayer = AGSArcGISVectorTiledLayer(URL: NSURL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=1349bfa0ed08485d8a92c442a3850b06")!)
+        let vectorTiledLayer = AGSArcGISVectorTiledLayer(url: URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=1349bfa0ed08485d8a92c442a3850b06")!)
         
         //initialize map with vector tiled layer as the basemap
         let map = AGSMap(basemap: AGSBasemap(baseLayer: vectorTiledLayer))
         
         //initial viewpoint
-        let centerPoint = AGSPoint(x: 1990591.559979, y: 794036.007991, spatialReference: AGSSpatialReference(WKID: 3857))
+        let centerPoint = AGSPoint(x: 1990591.559979, y: 794036.007991, spatialReference: AGSSpatialReference(wkid: 3857))
         map.initialViewpoint = AGSViewpoint(center: centerPoint, scale: 88659253.829259947)
         
         //assign map to map view
@@ -53,35 +53,35 @@ class VectorTileCustomStyleVC: UIViewController, VectorStylesVCDelegate, UIGestu
         // Dispose of any resources that can be recreated.
     }
     
-    private func showSelectedItem(itemID: String) {
-        let vectorTiledLayer = AGSArcGISVectorTiledLayer(URL: NSURL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!)
+    private func showSelectedItem(_ itemID: String) {
+        let vectorTiledLayer = AGSArcGISVectorTiledLayer(url: URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!)
         self.mapView.map?.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
     }
     
     //MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EmbedSegue" {
-            let controller = segue.destinationViewController as! VectorStylesViewController
+            let controller = segue.destination as! VectorStylesViewController
             controller.delegate = self
         }
     }
     
     //MARK: - VectorStylesVCDelegate
     
-    func vectorStylesViewController(vectorStylesViewController: VectorStylesViewController, didSelectItemWithID itemID: String) {
+    func vectorStylesViewController(_ vectorStylesViewController: VectorStylesViewController, didSelectItemWithID itemID: String) {
         //show newly selected vector layer
         self.showSelectedItem(itemID)
         
         //hide visual effect view
-        self.visualEffectView.hidden = true
+        self.visualEffectView.isHidden = true
     }
     
     //MARK: - UIGestureRecognizerDelegate
     
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         //should receive touch only if tapped outside container view
-        if let view = touch.view where view.isDescendantOfView(self.visualEffectView.contentView.subviews[0]) {
+        if let view = touch.view , view.isDescendant(of: self.visualEffectView.contentView.subviews[0]) {
             return false
         }
         return true
@@ -90,10 +90,10 @@ class VectorTileCustomStyleVC: UIViewController, VectorStylesVCDelegate, UIGestu
     //MARK: - Actions
     
     @IBAction func changeStyleAction() {
-        self.visualEffectView.hidden = false
+        self.visualEffectView.isHidden = false
     }
     
     func hideVisualEffectView() {
-        self.visualEffectView.hidden = true
+        self.visualEffectView.isHidden = true
     }
 }

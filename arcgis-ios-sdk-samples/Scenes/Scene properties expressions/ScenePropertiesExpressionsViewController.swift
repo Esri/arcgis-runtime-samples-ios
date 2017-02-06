@@ -31,21 +31,21 @@ class ScenePropertiesExpressionsViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ScenePropertiesExpressionsViewController"]
         
         //initialize scene with topographic basemap
-        let scene = AGSScene(basemap: AGSBasemap.streetsBasemap())
+        let scene = AGSScene(basemap: AGSBasemap.streets())
         //assign scene to the scene view
         self.sceneView.scene = scene
         
         //set the viewpoint camera
-        let point = AGSPoint(x: 83.9, y: 28.4, z: 5200, spatialReference: AGSSpatialReference.WGS84())
-        let camera = AGSCamera(lookAtPoint: point, distance: 1000, heading: 0, pitch: 50, roll: 0)
+        let point = AGSPoint(x: 83.9, y: 28.4, z: 5200, spatialReference: AGSSpatialReference.wgs84())
+        let camera = AGSCamera(lookAt: point, distance: 1000, heading: 0, pitch: 50, roll: 0)
         self.sceneView.setViewpointCamera(camera)
         
         //create a graphics overlay
         let graphicsOverlay = AGSGraphicsOverlay()
-        graphicsOverlay.sceneProperties?.surfacePlacement = .Relative
+        graphicsOverlay.sceneProperties?.surfacePlacement = .relative
         
         //add it to the scene view
-        self.sceneView.graphicsOverlays.addObject(graphicsOverlay)
+        self.sceneView.graphicsOverlays.add(graphicsOverlay)
         
         //add renderer using rotation expressions
         let renderer = AGSSimpleRenderer()
@@ -54,12 +54,12 @@ class ScenePropertiesExpressionsViewController: UIViewController {
         graphicsOverlay.renderer = renderer
         
         //create a red cone graphic
-        let coneSymbol = AGSSimpleMarkerSceneSymbol(style: .Cone, color: UIColor.redColor(), height: 200, width: 100, depth: 100, anchorPosition: .Center)
+        let coneSymbol = AGSSimpleMarkerSceneSymbol(style: .cone, color: UIColor.red, height: 200, width: 100, depth: 100, anchorPosition: .center)
         coneSymbol.pitch = -90  //correct symbol's default pitch
-        let conePoint = AGSPoint(x: 83.9, y: 28.404, z: 5000, spatialReference: AGSSpatialReference.WGS84())
+        let conePoint = AGSPoint(x: 83.9, y: 28.404, z: 5000, spatialReference: AGSSpatialReference.wgs84())
         let coneAttributes = ["HEADING": 0, "PITCH": 0]
         self.coneGraphic = AGSGraphic(geometry: conePoint, symbol: coneSymbol, attributes: coneAttributes)
-        graphicsOverlay.graphics.addObject(self.coneGraphic)
+        graphicsOverlay.graphics.add(self.coneGraphic)
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,13 +67,13 @@ class ScenePropertiesExpressionsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func headingSliderValueChanged(slider: UISlider) {
+    @IBAction func headingSliderValueChanged(_ slider: UISlider) {
         coneGraphic.attributes["HEADING"] = slider.value
         //update label
         self.headingLabel.text = "\(Int(slider.value))"
     }
     
-    @IBAction func pitchSliderValueChanged(slider: UISlider) {
+    @IBAction func pitchSliderValueChanged(_ slider: UISlider) {
         coneGraphic.attributes["PITCH"] = slider.value
         //update label
         self.pitchLabel.text = "\(Int(slider.value))"

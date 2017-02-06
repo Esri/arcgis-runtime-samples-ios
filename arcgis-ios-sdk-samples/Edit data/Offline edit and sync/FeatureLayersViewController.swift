@@ -40,40 +40,40 @@ class FeatureLayersViewController: UIViewController, UITableViewDataSource, UITa
     
     //MARK: - UITableViewDataSource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.featureLayerInfos?.count ?? 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("FeatureLayerCell")!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FeatureLayerCell")!
         
-        let layerInfo = self.featureLayerInfos[indexPath.row]
+        let layerInfo = self.featureLayerInfos[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = layerInfo.name
         
         //accessory view
-        if self.selectedLayerIds.contains(layerInfo.ID) {
-            cell.accessoryType = .Checkmark
+        if self.selectedLayerIds.contains(layerInfo.id) {
+            cell.accessoryType = .checkmark
         }
         else {
-            cell.accessoryType = .None
+            cell.accessoryType = .none
         }
         
-        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundColor = UIColor.clear
         return cell
     }
     
     //MARK: - UITableViewDelegate
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let layerInfo = self.featureLayerInfos[indexPath.row]
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let layerInfo = self.featureLayerInfos[(indexPath as NSIndexPath).row]
         
-        if let index = self.selectedLayerIds.indexOf(layerInfo.ID) {
-            self.selectedLayerIds.removeAtIndex(index)
+        if let index = self.selectedLayerIds.index(of: layerInfo.id) {
+            self.selectedLayerIds.remove(at: index)
         }
         else {
-            self.selectedLayerIds.append(layerInfo.ID)
+            self.selectedLayerIds.append(layerInfo.id)
         }
         
-        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+        tableView.reloadRows(at: [indexPath], with: .none)
     }
 }

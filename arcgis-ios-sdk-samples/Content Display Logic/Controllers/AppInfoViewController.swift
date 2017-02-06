@@ -23,9 +23,9 @@ class AppInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let appName = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleName") as? String
-        let versionNumber = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
-        let buildNumber = NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as String) as? String
+        let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
+        let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+        let buildNumber = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String
         
         self.appNameLabel.text = appName
         self.appVersionLabel.text = "Built with ArcGIS Runtime SDK for iOS \(versionNumber!) (\(buildNumber!))"
@@ -41,7 +41,7 @@ class AppInfoViewController: UIViewController {
     //MARK: - Actions
     
     @IBAction func closeAction() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

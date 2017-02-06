@@ -31,7 +31,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DeleteFeaturesViewController"]
         
         //instantiate map with a basemap
-        let map = AGSMap(basemap: AGSBasemap.streetsBasemap())
+        let map = AGSMap(basemap: AGSBasemap.streets())
         //set initial viewpoint
         map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: AGSSpatialReference.webMercator()), scale: 2e6)
         
@@ -41,12 +41,12 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.mapView.touchDelegate = self
         
         //instantiate service feature table using the url to the service
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         //create a feature layer using the service feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         //add the feature layer to the operational layers on map
-        map.operationalLayers.addObject(featureLayer)
+        map.operationalLayers.add(featureLayer)
     }
     
     override func didReceiveMemoryWarning() {
@@ -54,16 +54,16 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         // Dispose of any resources that can be recreated.
     }
     
-    func showCallout(feature:AGSFeature, tapLocation:AGSPoint) {
+    func showCallout(for feature:AGSFeature,at tapLocation:AGSPoint) {
         let title = feature.attributes["typdamage"] as! String
         self.mapView.callout.title = title
         self.mapView.callout.delegate = self
         self.mapView.callout.accessoryButtonImage = UIImage(named: "Discard")
-        self.mapView.callout.showCalloutForFeature(feature, tapLocation: tapLocation, animated: true)
+        self.mapView.callout.show(for: feature, tapLocation: tapLocation, animated: true)
     }
     
-    func deleteFeature(feature:AGSFeature) {
-        self.featureTable.deleteFeature(feature) { [weak self] (error: NSError?) -> Void in
+    func deleteFeature(_ feature:AGSFeature) {
+        self.featureTable.delete(feature) { [weak self] (error: Error?) -> Void in
             if let error = error {
                 print("Error while deleting feature : \(error.localizedDescription)")
             }
@@ -74,13 +74,13 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     }
     
     func applyEdits() {
-        self.featureTable.applyEditsWithCompletion { (featureEditResults: [AGSFeatureEditResult]?, error: NSError?) -> Void in
+        self.featureTable.applyEdits { (featureEditResults: [AGSFeatureEditResult]?, error: Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showErrorWithStatus("Error while applying edits :: \(error.localizedDescription)")
+                SVProgressHUD.showError(withStatus: "Error while applying edits :: \(error.localizedDescription)")
             }
             else {
-                if let featureEditResults = featureEditResults where featureEditResults.count > 0 && featureEditResults[0].completedWithErrors == false {
-                    SVProgressHUD.showSuccessWithStatus("Edits applied successfully")
+                if let featureEditResults = featureEditResults , featureEditResults.count > 0 && featureEditResults[0].completedWithErrors == false {
+                    SVProgressHUD.showSuccess(withStatus: "Edits applied successfully")
                 }
             }
         }
@@ -88,7 +88,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     //MARK: - AGSGeoViewTouchDelegate
     
-    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
@@ -100,9 +100,9 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
             if let error = identifyLayerResult.error {
                 print(error)
             }
-            else if let features = identifyLayerResult.geoElements as? [AGSFeature] where features.count > 0 {
+            else if let features = identifyLayerResult.geoElements as? [AGSFeature] , features.count > 0 {
                 //show callout for the first feature
-                self?.showCallout(features[0], tapLocation: mapPoint)
+                self?.showCallout(for: features[0], at: mapPoint)
                 //update selected feature
                 self?.selectedFeature = features[0]
             }
@@ -111,23 +111,23 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     //MARK: - AGSCalloutDelegate
     
-    func didTapAccessoryButtonForCallout(callout: AGSCallout) {
+    func didTapAccessoryButton(for callout: AGSCallout) {
         //hide the callout
         self.mapView.callout.dismiss()
         
         //confirmation
-        let alertController = UIAlertController(title: "Are you sure you want to delete the feature", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        let alertController = UIAlertController(title: "Are you sure you want to delete the feature", message: nil, preferredStyle: UIAlertControllerStyle.alert)
         //action for Yes
-        let alertAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default) { [weak self] (action:UIAlertAction!) -> Void in
+        let alertAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { [weak self] (action:UIAlertAction!) -> Void in
             self?.deleteFeature(self!.selectedFeature)
         }
         alertController.addAction(alertAction)
         
         //action for cancel
-        let cancelAlertAction = UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel, handler: nil)
+        let cancelAlertAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: nil)
         alertController.addAction(cancelAlertAction)
         
         //present alert controller
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
 }

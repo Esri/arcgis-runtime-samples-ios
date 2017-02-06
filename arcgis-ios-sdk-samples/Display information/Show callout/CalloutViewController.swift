@@ -28,7 +28,7 @@ class CalloutViewController: UIViewController, AGSGeoViewTouchDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["CalloutViewController"]
         
         //initialize map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
+        self.map = AGSMap(basemap: AGSBasemap.topographic())
         //assign map to the map view
         self.mapView.map = self.map
         //register as the map view's touch delegate
@@ -46,13 +46,13 @@ class CalloutViewController: UIViewController, AGSGeoViewTouchDelegate {
     //MARK: - AGSGeoViewTouchDelegate
     
     //user tapped on the map
-    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //if the callout is not shown, show the callout with the coordinates of the tapped location
-        if self.mapView.callout.hidden {
+        if self.mapView.callout.isHidden {
             self.mapView.callout.title = "Location"
             self.mapView.callout.detail = String(format: "x: %.2f, y: %.2f", mapPoint.x, mapPoint.y)
-            self.mapView.callout.accessoryButtonHidden = true
-            self.mapView.callout.showCalloutAt(mapPoint, screenOffset: CGPointZero, rotateOffsetWithMap: false, animated: true)
+            self.mapView.callout.isAccessoryButtonHidden = true
+            self.mapView.callout.show(at: mapPoint, screenOffset: CGPoint.zero, rotateOffsetWithMap: false, animated: true)
         }
         else {  //hide the callout
             self.mapView.callout.dismiss()

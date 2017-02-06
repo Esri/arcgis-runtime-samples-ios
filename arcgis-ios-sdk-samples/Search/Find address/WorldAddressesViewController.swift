@@ -16,7 +16,7 @@ import UIKit
 
 
 protocol WorldAddressesVCDelegate:class {
-    func worldAddressesViewController(worldAddressesViewController: WorldAddressesViewController, didSelectAddress address:String)
+    func worldAddressesViewController(_ worldAddressesViewController: WorldAddressesViewController, didSelectAddress address:String)
 }
     
 class WorldAddressesViewController: UITableViewController {
@@ -37,26 +37,26 @@ class WorldAddressesViewController: UITableViewController {
         
         // MARK: - Table view data source
         
-        override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        override func numberOfSections(in tableView: UITableView) -> Int {
             return 1
         }
         
-        override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return self.addresses.count
         }
         
         
-        override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCellWithIdentifier("AddressCell")!
-            cell.textLabel?.text = self.addresses[indexPath.row]
+        override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell")!
+            cell.textLabel?.text = self.addresses[(indexPath as NSIndexPath).row]
             
             return cell
         }
         
         // MARK: - Table view delegate
         
-        override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-            let address = self.addresses[indexPath.row]
+        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let address = self.addresses[(indexPath as NSIndexPath).row]
             self.delegate?.worldAddressesViewController(self, didSelectAddress: address)
         }
         

@@ -30,14 +30,14 @@ class DirectionsViewController: UIViewController, UITableViewDataSource, UITable
     
     //MARK: - UITableViewDataSource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.directionManeuvers?.count ?? 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("DirectionsCell")!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DirectionsCell")!
         
-        cell.textLabel?.text = self.directionManeuvers[indexPath.row].directionText
+        cell.textLabel?.text = self.directionManeuvers[(indexPath as NSIndexPath).row].directionText
         
         return cell
     }

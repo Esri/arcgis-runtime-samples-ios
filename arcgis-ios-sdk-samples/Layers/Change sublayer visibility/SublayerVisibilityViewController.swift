@@ -29,13 +29,13 @@ class SublayerVisibilityViewController: UIViewController, UIAdaptivePresentation
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SublayerVisibilityViewController","SublayersTableViewController"]
         
         //initialize map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.topographicBasemap())
+        self.map = AGSMap(basemap: AGSBasemap.topographic())
         
         //initialize the map image layer using a url
-        self.mapImageLayer = AGSArcGISMapImageLayer(URL: NSURL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
+        self.mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
         
         //add the image layer to the map
-        self.map.operationalLayers.addObject(self.mapImageLayer)
+        self.map.operationalLayers.add(self.mapImageLayer)
         
         //assign the map to the map view
         self.mapView.map = self.map
@@ -52,10 +52,10 @@ class SublayerVisibilityViewController: UIViewController, UIAdaptivePresentation
     
     //MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SublayersPopover" {
             //get the destination view controller as BookmarksListViewController
-            let controller = segue.destinationViewController as! SublayersTableViewController
+            let controller = segue.destination as! SublayersTableViewController
             controller.sublayers = self.mapImageLayer.mapImageSublayers
             
             //popover presentation logic
@@ -66,8 +66,8 @@ class SublayerVisibilityViewController: UIViewController, UIAdaptivePresentation
     
     //MARK: - UIAdaptivePresentationControllerDelegate
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         //for popover or non modal presentation
-        return UIModalPresentationStyle.None
+        return UIModalPresentationStyle.none
     }
 }

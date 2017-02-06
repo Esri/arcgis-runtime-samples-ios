@@ -29,13 +29,13 @@ class FeatureCollectionLayerQueryVC: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureCollectionLayerQueryVC"]
         
         //initialize map with basemap
-        let map = AGSMap(basemap: AGSBasemap.oceansBasemap())
+        let map = AGSMap(basemap: AGSBasemap.oceans())
         
         //assign map to the map view
         self.mapView.map = map
         
         //initialize service feature table to be queried
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Wildfire/FeatureServer/0")!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Wildfire/FeatureServer/0")!)
         
         //create query parameters
         let queryParams = AGSQueryParameters()
@@ -44,14 +44,14 @@ class FeatureCollectionLayerQueryVC: UIViewController {
         queryParams.whereClause = "1=1"
         
         //show progress hud
-        SVProgressHUD.showWithStatus("Querying", maskType: .Gradient)
+        SVProgressHUD.show(withStatus: "Querying", maskType: .gradient)
         
         //query feature from the table
-        self.featureTable.queryFeaturesWithParameters(queryParams) { [weak self] (queryResult: AGSFeatureQueryResult?, error: NSError?) in
+        self.featureTable.queryFeatures(with: queryParams) { [weak self] (queryResult: AGSFeatureQueryResult?, error: Error?) in
             
             if let error = error {
                 //show error
-                SVProgressHUD.showWithStatus(error.localizedDescription, maskType: .Gradient)
+                SVProgressHUD.show(withStatus: error.localizedDescription, maskType: .gradient)
             }
             else {
                 //hide progress hud
@@ -67,7 +67,7 @@ class FeatureCollectionLayerQueryVC: UIViewController {
                 let featureCollectionLayer = AGSFeatureCollectionLayer(featureCollection: featureCollection)
                 
                 //add the layer to the operational layers array
-                self?.mapView.map?.operationalLayers.addObject(featureCollectionLayer)
+                self?.mapView.map?.operationalLayers.add(featureCollectionLayer)
             }
         }
     }

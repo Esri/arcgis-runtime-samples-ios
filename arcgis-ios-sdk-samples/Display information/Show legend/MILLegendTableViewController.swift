@@ -25,28 +25,28 @@ class MILLegendTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.orderArray = [AGSLayerContent]()
-        self.populateLegends(self.operationalLayers as AnyObject as! [AGSLayerContent])
+        self.populateLegends(with: self.operationalLayers as AnyObject as! [AGSLayerContent])
     }
     
-    func populateLegends(layers:[AGSLayerContent]) {
+    func populateLegends(with layers:[AGSLayerContent]) {
 
         for i in 0...layers.count-1 {
             let layer = layers[i]
 
             if layer.subLayerContents.count > 0 {
-                self.populateLegends(layer.subLayerContents)
+                self.populateLegends(with: layer.subLayerContents)
             }
             else {
                 //else if no sublayers fetch legend info
                 self.orderArray.append(layer)
-                layer.fetchLegendInfosWithCompletion({ [weak self] (legendInfos:[AGSLegendInfo]?, error:NSError?) -> Void in
+                layer.fetchLegendInfos(completion: { [weak self] (legendInfos:[AGSLegendInfo]?, error:Error?) -> Void in
 
                     if let error = error {
                         print(error)
                     }
                     else {
                         if let legendInfos = legendInfos {
-                            self?.legendInfosDict[self!.hashString(layer)] = legendInfos
+                            self?.legendInfosDict[self!.hashString(for: layer)] = legendInfos
                             self?.tableView.reloadData()
                         }
                     }
@@ -62,62 +62,62 @@ class MILLegendTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // Return the number of sections.
         return self.orderArray?.count ?? 0
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         let layer = self.orderArray[section]
-        let legendInfos = self.legendInfosDict[self.hashString(layer)]
+        let legendInfos = self.legendInfosDict[self.hashString(for: layer)]
         return legendInfos?.count ?? 0
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let layerContent = self.orderArray[section]
         return self.nameForLayerContent(layerContent)
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MILLegendCell", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MILLegendCell", for: indexPath) 
 
-        let layer = self.orderArray[indexPath.section]
-        let legendInfos = self.legendInfosDict[self.hashString(layer)]!
-        let legendInfo = legendInfos[indexPath.row]
+        let layer = self.orderArray[(indexPath as NSIndexPath).section]
+        let legendInfos = self.legendInfosDict[self.hashString(for: layer)]!
+        let legendInfo = legendInfos[(indexPath as NSIndexPath).row]
 
         cell.textLabel?.text = legendInfo.name
-        legendInfo.symbol?.createSwatchWithCompletion({ (image: UIImage?, error: NSError?) -> Void in
-            if let updateCell = tableView.cellForRowAtIndexPath(indexPath) {
+        legendInfo.symbol?.createSwatch(completion: { (image: UIImage?, error: Error?) -> Void in
+            if let updateCell = tableView.cellForRow(at: indexPath) {
                 updateCell.imageView?.image = image
                 updateCell.setNeedsLayout()
             }
         })
         
-        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundColor = UIColor.clear
         
         return cell
     }
     
-    func geometryTypeForSymbol(symbol:AGSSymbol) -> AGSGeometryType {
+    func geometryTypeForSymbol(_ symbol:AGSSymbol) -> AGSGeometryType {
         if symbol is AGSFillSymbol {
-            return AGSGeometryType.Polygon
+            return AGSGeometryType.polygon
         }
         else if symbol is AGSLineSymbol {
-            return .Polyline
+            return .polyline
         }
         else {
-            return .Point
+            return .point
         }
     }
 
     //MARK: - Helper functions
     
-    func hashString (obj: AnyObject) -> String {
-        return String(ObjectIdentifier(obj).uintValue)
+    func hashString (for obj: AnyObject) -> String {
+        return String(UInt(bitPattern: ObjectIdentifier(obj)))
     }
 
-    func nameForLayerContent(layerContent:AGSLayerContent) -> String {
+    func nameForLayerContent(_ layerContent:AGSLayerContent) -> String {
         if let layer = layerContent as? AGSLayer {
             return layer.name
         }

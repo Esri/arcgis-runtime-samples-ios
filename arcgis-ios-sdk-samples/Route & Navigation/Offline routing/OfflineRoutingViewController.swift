@@ -58,8 +58,8 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         //using a tpk to create a local tiled layer
         //which will be visible in case of no network connection
-        let path = NSBundle.mainBundle().pathForResource("streetmap_SD", ofType: "tpk")!
-        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(fileURL: NSURL(fileURLWithPath: path)))
+        let path = Bundle.main.path(forResource: "streetmap_SD", ofType: "tpk")!
+        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(fileURL: URL(fileURLWithPath: path)))
         
         //initialize the map using the local tiled layer as baselayer
         self.map = AGSMap(basemap: AGSBasemap(baseLayer: localTiledLayer))
@@ -73,38 +73,38 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         //add graphics overlay, one for the stop graphics
         //and other for the route graphics
-        self.mapView.graphicsOverlays.addObjectsFromArray([self.routeGraphicsOverlay, self.stopGraphicsOverlay])
+        self.mapView.graphicsOverlays.addObjects(from: [self.routeGraphicsOverlay, self.stopGraphicsOverlay])
         
         //get the path for the geodatabase in the bundle
-        let dbPath = NSBundle.mainBundle().pathForResource("sandiego", ofType: "geodatabase", inDirectory: "san-diego")!
+        let dbPath = Bundle.main.path(forResource: "sandiego", ofType: "geodatabase", inDirectory: "san-diego")!
         
         //initialize the route task using the path and the network name
-        self.routeTask = AGSRouteTask(fileURLToDatabase: NSURL(fileURLWithPath: dbPath), networkName: "Streets_ND")
+        self.routeTask = AGSRouteTask(fileURLToDatabase: URL(fileURLWithPath: dbPath), networkName: "Streets_ND")
         
         //get default route parameters
         self.getDefaultParameters()
         
         //zoom to San Diego
-        self.mapView.setViewpointCenter(AGSPoint(x: -13042254.715252, y: 3857970.236806, spatialReference: AGSSpatialReference(WKID: 3857)), scale: 2e4, completion: nil)
+        self.mapView.setViewpointCenter(AGSPoint(x: -13042254.715252, y: 3857970.236806, spatialReference: AGSSpatialReference(wkid: 3857)), scale: 2e4, completion: nil)
         
         //enable magnifier for better experience while using tap n hold to add a stop
-        self.mapView.interactionOptions.magnifierEnabled = true
+        self.mapView.interactionOptions.isMagnifierEnabled = true
     }
     
     //method returns a graphic for the specified location
     //also assigns the stop number
-    private func graphicForLocation(point:AGSPoint) -> AGSGraphic {
-        let symbol = self.symbolForStopGraphic(self.stopGraphicsOverlay.graphics.count + 1)
+    private func graphicForLocation(_ point:AGSPoint) -> AGSGraphic {
+        let symbol = self.symbolForStopGraphic(withIndex: self.stopGraphicsOverlay.graphics.count + 1)
         let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: nil)
         return graphic
     }
     
-    private func symbolForStopGraphic(index: Int) -> AGSSymbol {
+    private func symbolForStopGraphic(withIndex index: Int) -> AGSSymbol {
         let markerImage = UIImage(named: "BlueMarker")!
         let markerSymbol = AGSPictureMarkerSymbol(image: markerImage)
         markerSymbol.offsetY = markerImage.size.height/2
         
-        let textSymbol = AGSTextSymbol(text: "\(index)", color: UIColor.whiteColor(), size: 20, horizontalAlignment: AGSHorizontalAlignment.Center, verticalAlignment: AGSVerticalAlignment.Middle)
+        let textSymbol = AGSTextSymbol(text: "\(index)", color: UIColor.white, size: 20, horizontalAlignment: AGSHorizontalAlignment.center, verticalAlignment: AGSVerticalAlignment.middle)
         textSymbol.offsetY = markerSymbol.offsetY
         
         let compositeSymbol = AGSCompositeSymbol(symbols: [markerSymbol, textSymbol])
@@ -119,48 +119,48 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     //MARK: - AGSGeoViewTouchDelegate
     
-    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //on single tap, add stop graphic at the tapped location
         //and route
         let graphic = self.graphicForLocation(mapPoint)
-        self.stopGraphicsOverlay.graphics.addObject(graphic)
+        self.stopGraphicsOverlay.graphics.add(graphic)
         
         //clear the route graphic
         self.longPressedRouteGraphic = nil
         
-        self.route(false)
+        self.route(isLongPressed: false)
     }
     
-    func geoView(geoView: AGSGeoView, didLongPressAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+    func geoView(_ geoView: AGSGeoView, didLongPressAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //add the graphic at that point
         //keep a reference to that graphic to update the geometry if moved
         self.longPressedGraphic = self.graphicForLocation(mapPoint)
-        self.stopGraphicsOverlay.graphics.addObject(self.longPressedGraphic)
+        self.stopGraphicsOverlay.graphics.add(self.longPressedGraphic)
         //clear the route graphic
         self.longPressedRouteGraphic = nil
         //route
-        self.route(true)
+        self.route(isLongPressed: true)
     }
     
-    func geoView(geoView: AGSGeoView, didMoveLongPressToScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+    func geoView(_ geoView: AGSGeoView, didMoveLongPressToScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //update the graphic
         //route
         self.longPressedGraphic.geometry = mapPoint
-        self.route(true)
+        self.route(isLongPressed: true)
     }
     
     //MARK: - Route logic
     
     private func getDefaultParameters() {
         //get the default parameters
-        self.routeTask.defaultRouteParametersWithCompletion({ [weak self] (params: AGSRouteParameters?, error: NSError?) -> Void in
+        self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
             if let error = error {
                 print(error)
             }
             else {
                 self?.params = params
             }
-        })
+        }
     }
     
     func route(isLongPressed:Bool) {
@@ -195,14 +195,14 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         //set the new travel mode
         self.params.travelMode = self.routeTask.routeTaskInfo().travelModes[self.segmentedControl.selectedSegmentIndex]
         
-        self.route(self.params, isLongPressed: isLongPressed)
+        self.route(with: self.params, isLongPressed: isLongPressed)
     }
     
-    func route(params:AGSRouteParameters, isLongPressed:Bool) {
+    func route(with params:AGSRouteParameters, isLongPressed:Bool) {
         
         //solve for route
-        self.routeTaskOperation = self.routeTask.solveRouteWithParameters(params) { [weak self] (routeResult:AGSRouteResult?, error:NSError?) -> Void in
-            if let error = error where error.code != 3072 {
+        self.routeTaskOperation = self.routeTask.solveRoute(with: params) { [weak self] (routeResult:AGSRouteResult?, error:Error?) -> Void in
+            if let error = error as? NSError , error.code != 3072 {
                 //3072 is `User canceled error`
                 print(error)
             }
@@ -213,7 +213,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         }
     }
     
-    func displayRoutesOnMap(routes:[AGSRoute]?, isLongPressedResult:Bool) {
+    func displayRoutesOnMap(_ routes:[AGSRoute]?, isLongPressedResult:Bool) {
         //if a route graphic for previous request (in case of long press)
         //exists then remove it
         if self.longPressedRouteGraphic != nil {
@@ -221,7 +221,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
             self.totalTime = self.totalTime - Double(self.longPressedGraphic.attributes["routeTime"] as! NSNumber)
             self.totalDistance = self.totalDistance - Double(self.longPressedGraphic.attributes["routeLength"] as! NSNumber)
             
-            self.routeGraphicsOverlay.graphics.removeObject(self.longPressedRouteGraphic)
+            self.routeGraphicsOverlay.graphics.remove(self.longPressedRouteGraphic)
             self.longPressedRouteGraphic = nil
             
         }
@@ -239,19 +239,19 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
                 self.longPressedGraphic.attributes["routeTime"] = route.totalTime
                 self.longPressedGraphic.attributes["routeLength"] = route.totalLength
             }
-            self.routeGraphicsOverlay.graphics.addObject(routeGraphic)
+            self.routeGraphicsOverlay.graphics.add(routeGraphic)
             
             //update total distance and total time
             self.totalTime = self.totalTime + route.totalTime
             self.totalDistance = self.totalDistance + route.totalLength
             
-            self.toggleDetailsView(true)
+            self.toggleDetailsView(on: true)
         }
     }
     
     //method returns the symbol for the route graphic
     func routeSymbol() -> AGSSimpleLineSymbol {
-        let symbol = AGSSimpleLineSymbol(style: .Solid, color: UIColor.yellowColor(), width: 5)
+        let symbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.yellow, width: 5)
         return symbol
     }
     
@@ -267,10 +267,10 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.totalDistance = 0
         
         //hide the details view
-        self.toggleDetailsView(false)
+        self.toggleDetailsView(on: false)
     }
     
-    @IBAction func modeChanged(segmentedControl:UISegmentedControl) {
+    @IBAction func modeChanged(_ segmentedControl:UISegmentedControl) {
         //re route for already added stops
         if self.stopGraphicsOverlay.graphics.count > 1 {
             var stops = [AGSStop]()
@@ -293,7 +293,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
             self.totalTime = 0
             
             //route
-            self.route(self.params, isLongPressed: false)
+            self.route(with: self.params, isLongPressed: false)
         }
     }
     
@@ -302,7 +302,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     private func toggleDetailsView(on: Bool) {
         self.detailsViewBottomContraint.constant = on ? 0 : -36
         
-        UIView.animateWithDuration(0.3) { [weak self] in
+        UIView.animate(withDuration: 0.3) { [weak self] in
             self?.view.layoutIfNeeded()
         }
     }

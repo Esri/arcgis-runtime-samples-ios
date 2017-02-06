@@ -36,14 +36,14 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditAttributesViewController", "EAOptionsViewController"]
         
-        self.map = AGSMap(basemap: AGSBasemap.oceansBasemap())
+        self.map = AGSMap(basemap: AGSBasemap.oceans())
         //set initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: AGSSpatialReference.webMercator()), scale: 2e6)
         
-        self.featureTable = AGSServiceFeatureTable(URL: NSURL(string: FEATURE_SERVICE_URL)!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: FEATURE_SERVICE_URL)!)
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
-        self.map.operationalLayers.addObject(self.featureLayer)
+        self.map.operationalLayers.add(self.featureLayer)
         
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
@@ -54,22 +54,22 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         // Dispose of any resources that can be recreated.
     }
     
-    func showCallout(feature:AGSFeature, tapLocation:AGSPoint?) {
+    func showCallout(_ feature:AGSFeature, tapLocation:AGSPoint?) {
         let title = feature.attributes["typdamage"] as! String
         self.mapView.callout.title = title
         self.mapView.callout.delegate = self
-        self.mapView.callout.showCalloutForFeature(feature, tapLocation: tapLocation, animated: true)
+        self.mapView.callout.show(for: feature, tapLocation: tapLocation, animated: true)
     }
     
     func applyEdits() {
-        SVProgressHUD.showWithStatus("Applying edits", maskType: .Gradient)
+        SVProgressHUD.show(withStatus: "Applying edits", maskType: .gradient)
         
-        self.featureTable.applyEditsWithCompletion({ [weak self] (result:[AGSFeatureEditResult]?, error:NSError?) -> Void in
+        self.featureTable.applyEdits(completion: { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
-                SVProgressHUD.showSuccessWithStatus("Edits applied successfully")
+                SVProgressHUD.showSuccess(withStatus: "Edits applied successfully")
                 self?.showCallout(self!.selectedFeature, tapLocation: nil)
             }
         })
@@ -77,7 +77,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     //MARK: - AGSGeoViewTouchDelegate
     
-    func geoView(geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let lastQuery = self.lastQuery{
             lastQuery.cancel()
         }
@@ -89,7 +89,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
             if let error = identifyLayerResult.error {
                 print(error)
             }
-            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature] where features.count > 0 {
+            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature] , features.count > 0 {
                 //show callout for the first feature
                 self?.showCallout(features[0], tapLocation: mapPoint)
                 //update selected feature
@@ -101,18 +101,18 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     //MARK: - AGSCalloutDelegate
     
-    func didTapAccessoryButtonForCallout(callout: AGSCallout) {
+    func didTapAccessoryButton(for callout: AGSCallout) {
         //hide the callout
         self.mapView.callout.dismiss()
         //show editing options
-        self.performSegueWithIdentifier(self.optionsSegueName, sender: self)
+        self.performSegue(withIdentifier: self.optionsSegueName, sender: self)
     }
     
     //MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == self.optionsSegueName {
-            let controller = segue.destinationViewController as! EAOptionsViewController
+            let controller = segue.destination as! EAOptionsViewController
             controller.options = self.types
             controller.delegate = self
         }
@@ -120,13 +120,13 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     //MARK: - EAOptionsVCDelegate
     
-    func optionsViewController(optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int) {
-        SVProgressHUD.showWithStatus("Updating", maskType: .Gradient)
+    func optionsViewController(_ optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int) {
+        SVProgressHUD.show(withStatus: "Updating", maskType: .gradient)
         
         self.selectedFeature.attributes["typdamage"] = self.types[index]
-        self.featureTable.updateFeature(self.selectedFeature) { [weak self] (error: NSError?) -> Void in
+        self.featureTable.update(self.selectedFeature) { [weak self] (error: Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 self?.applyEdits()

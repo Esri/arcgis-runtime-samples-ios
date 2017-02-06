@@ -19,15 +19,15 @@ import ArcGIS
 extension AGSJobStatus {
     func statusString() -> String {
         switch self {
-        case .Started:
+        case .started:
             return "Started"
-        case .Paused:
+        case .paused:
             return "Paused"
-        case .NotStarted:
+        case .notStarted:
             return "Not started"
-        case .Succeeded:
+        case .succeeded:
             return "Succeeded"
-        case .Failed:
+        case .failed:
             return "Failed"
         }
     }

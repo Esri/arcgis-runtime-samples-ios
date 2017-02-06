@@ -28,9 +28,9 @@ enum AnimationDirection: String {
 
 protocol GridSettingsVCDelegate: class {
     
-    func gridSettingsViewController(gridSettingsViewController: GridSettingsViewController, didUpdateBackgroundGrid grid: AGSBackgroundGrid)
+    func gridSettingsViewController(_ gridSettingsViewController: GridSettingsViewController, didUpdateBackgroundGrid grid: AGSBackgroundGrid)
     
-    func gridSettingsViewControllerWantsToClose(gridSettingsViewController: GridSettingsViewController)
+    func gridSettingsViewControllerWantsToClose(_ gridSettingsViewController: GridSettingsViewController)
 }
 
 class GridSettingsViewController: UIViewController {
@@ -75,15 +75,15 @@ class GridSettingsViewController: UIViewController {
         
         //corner radius and border for color buttons and view
         self.colorButton.layer.cornerRadius = 5
-        self.colorButton.layer.borderColor = buttonColor.CGColor
+        self.colorButton.layer.borderColor = buttonColor.cgColor
         self.colorButton.layer.borderWidth = 1
         
         self.lineColorButton.layer.cornerRadius = 5
-        self.lineColorButton.layer.borderColor = buttonColor.CGColor
+        self.lineColorButton.layer.borderColor = buttonColor.cgColor
         self.lineColorButton.layer.borderWidth = 1
         
         self.colorView.layer.cornerRadius = 5
-        self.colorView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.colorView.layer.borderColor = UIColor.lightGray.cgColor
         self.colorView.layer.borderWidth = 1
         
         //corner radius for parent views
@@ -93,7 +93,7 @@ class GridSettingsViewController: UIViewController {
     
     //MARK: - Actions
     
-    @IBAction private func colorButtonsAction(sender: UIButton) {
+    @IBAction private func colorButtonsAction(_ sender: UIButton) {
         //keep a reference to selected button to later update the color
         self.selectedColorButton = sender.tag == 0 ? self.colorButton : self.lineColorButton
         
@@ -120,7 +120,7 @@ class GridSettingsViewController: UIViewController {
         self.toggleColorPicker(.On, animated: true, animationDirection: .Forward)
     }
     
-    @IBAction private func lineWidthSliderChanged(sender: UISlider) {
+    @IBAction private func lineWidthSliderChanged(_ sender: UISlider) {
         //update label
         self.lineWidthLabel.text = "\(Int(sender.value))"
         
@@ -128,7 +128,7 @@ class GridSettingsViewController: UIViewController {
         self.updateMapView()
     }
     
-    @IBAction private func gridSizeSliderChanged(sender: UISlider) {
+    @IBAction private func gridSizeSliderChanged(_ sender: UISlider) {
         //update label
         self.gridSizeLabel.text = "\(Int(sender.value))"
         
@@ -136,7 +136,7 @@ class GridSettingsViewController: UIViewController {
         self.updateMapView()
     }
     
-    @IBAction private func HSBSlidersChanged(slider: UISlider) {
+    @IBAction private func HSBSlidersChanged(_ slider: UISlider) {
         switch slider.tag {
         case 0:
             self.hueLabel.text = "\(Int(slider.value))"
@@ -181,7 +181,7 @@ class GridSettingsViewController: UIViewController {
     
     //MARK: - Color picker show/hide
     
-    private func toggleColorPicker(toggle: ColorPickerToggle, animated: Bool, animationDirection: AnimationDirection) {
+    private func toggleColorPicker(_ toggle: ColorPickerToggle, animated: Bool, animationDirection: AnimationDirection) {
         
         //update the layout constraint to bring the required view on screen
         self.settingsTopContraint.constant = toggle == .On ? -190 : 5
@@ -191,8 +191,8 @@ class GridSettingsViewController: UIViewController {
         }
         else {
             //frames for starting and finishing animation
-            let buttonFrame = CGRectOffset(self.selectedColorButton.frame, 5, 5)
-            let colorViewFrame = CGRectOffset(self.colorView.frame, 5, 5)
+            let buttonFrame = self.selectedColorButton.frame.offsetBy(dx: 5, dy: 5)
+            let colorViewFrame = self.colorView.frame.offsetBy(dx: 5, dy: 5)
             
             //create a temporary view for animation
             let animatingView = UIView(frame: animationDirection == .Forward ? buttonFrame : colorViewFrame)
@@ -201,11 +201,11 @@ class GridSettingsViewController: UIViewController {
             self.view.addSubview(animatingView)
             
             //hide the button and the view during animation
-            self.selectedColorButton.hidden = true
-            self.colorView.hidden = true
+            self.selectedColorButton.isHidden = true
+            self.colorView.isHidden = true
             
             //animate the frames over time
-            UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseOut, animations: { [weak self] in
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
                 
                 animatingView.frame = animationDirection == .Forward ? colorViewFrame : buttonFrame
                 self?.view.layoutIfNeeded()
@@ -213,8 +213,8 @@ class GridSettingsViewController: UIViewController {
                 }, completion: { [weak self] (finished) in
                     
                     //On completion unhide the original views
-                    self?.selectedColorButton.hidden = false
-                    self?.colorView.hidden = false
+                    self?.selectedColorButton.isHidden = false
+                    self?.colorView.isHidden = false
                     
                     //remove the animating view from the view hierarchy
                     animatingView.removeFromSuperview()

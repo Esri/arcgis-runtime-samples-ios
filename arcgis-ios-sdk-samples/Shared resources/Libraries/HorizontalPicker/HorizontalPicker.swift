@@ -11,7 +11,7 @@ import UIKit
 @objc
 protocol HorizontalPickerDelegate: class {
     
-    optional func horizontalPicker(horizontalPicker:HorizontalPicker, didUpdateSelectedIndex index: Int)
+    @objc optional func horizontalPicker(_ horizontalPicker:HorizontalPicker, didUpdateSelectedIndex index: Int)
 }
 
 @IBDesignable
@@ -53,71 +53,71 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     
     private func commonInit() {
         
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         
         self.nibView = self.loadViewFromNib()
         
         self.nibView.frame = self.bounds
-        nibView.autoresizingMask = [UIViewAutoresizing.FlexibleHeight, .FlexibleWidth]
+        nibView.autoresizingMask = [UIViewAutoresizing.flexibleHeight, .flexibleWidth]
         
         self.addSubview(self.nibView)
         
         //collection view
-        self.collectionView.registerClass(HorizontalPickerCell.self, forCellWithReuseIdentifier: "HorizontalPickerCell")
+        self.collectionView.register(HorizontalPickerCell.self, forCellWithReuseIdentifier: "HorizontalPickerCell")
         
         self.setButtonsColor()
     }
     
     private func loadViewFromNib() -> UIView {
-        let bundle = NSBundle(forClass: self.dynamicType)
+        let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "HorizontalPicker", bundle: bundle)
-        let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         
         return view
     }
     
     private func setButtonsColor() {
-        let prevImage = self.prevButton.imageView?.image?.imageWithRenderingMode(.AlwaysTemplate)
+        let prevImage = self.prevButton.imageView?.image?.withRenderingMode(.alwaysTemplate)
         self.prevButton.imageView?.tintColor = self.buttonsColor
-        self.prevButton.setImage(prevImage, forState: .Normal)
+        self.prevButton.setImage(prevImage, for: UIControlState())
         
-        let nextImage = self.nextButton.imageView?.image?.imageWithRenderingMode(.AlwaysTemplate)
+        let nextImage = self.nextButton.imageView?.image?.withRenderingMode(.alwaysTemplate)
         self.nextButton.imageView?.tintColor = self.buttonsColor
-        self.nextButton.setImage(nextImage, forState: .Normal)
+        self.nextButton.setImage(nextImage, for: UIControlState())
     }
     
     private func updateButtonsState() {
         let nextFlag = self.selectedIndex < self.options.count - 1
-        self.nextButton.enabled = nextFlag
-        self.nextButton.imageView?.tintColor = nextFlag ? self.buttonsColor : UIColor.grayColor()
+        self.nextButton.isEnabled = nextFlag
+        self.nextButton.imageView?.tintColor = nextFlag ? self.buttonsColor : UIColor.gray
         
         let prevFlag = self.selectedIndex > 0
-        self.prevButton.enabled = prevFlag
-        self.prevButton.imageView?.tintColor = prevFlag ? self.buttonsColor : UIColor.grayColor()
+        self.prevButton.isEnabled = prevFlag
+        self.prevButton.imageView?.tintColor = prevFlag ? self.buttonsColor : UIColor.gray
     }
     
     //MARK: - UICollectionViewDataSource
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.options?.count ?? 0
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("HorizontalPickerCell", forIndexPath: indexPath) as! HorizontalPickerCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalPickerCell", for: indexPath) as! HorizontalPickerCell
         
-        cell.titleLabel.text = self.options[indexPath.item]
+        cell.titleLabel.text = self.options[(indexPath as NSIndexPath).item]
         
         return cell
     }
     
     //MARK: - UICollectionViewDelegateFlowLayout
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return collectionView.bounds.size
     }
@@ -135,7 +135,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     
     //MARK: - Scrolling
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.selectedIndex = Int(self.collectionView.contentOffset.x / self.collectionView.bounds.width)
         
         //update state of buttons
@@ -149,8 +149,8 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
             //update selected index
             self.selectedIndex = self.selectedIndex + 1
             
-            let indexPath = NSIndexPath(forItem: self.selectedIndex, inSection: 0)
-            self.collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .Left, animated: true)
+            let indexPath = IndexPath(item: self.selectedIndex, section: 0)
+            self.collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
             
             //update state of buttons
             self.updateButtonsState()
@@ -162,8 +162,8 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
             //update selected index
             self.selectedIndex = self.selectedIndex - 1
             
-            let indexPath = NSIndexPath(forItem: self.selectedIndex, inSection: 0)
-            self.collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .Left, animated: true)
+            let indexPath = IndexPath(item: self.selectedIndex, section: 0)
+            self.collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
             
             //update state of buttons
             self.updateButtonsState()
@@ -193,8 +193,8 @@ class HorizontalPickerCell: UICollectionViewCell {
         //initialize and add title label
         self.titleLabel = UILabel(frame: self.contentView.bounds)
         self.titleLabel.font = UIFont(name: "Avenir-Book", size: 17)
-        self.titleLabel.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
-        self.titleLabel.textAlignment = .Center
+        self.titleLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        self.titleLabel.textAlignment = .center
         
         self.contentView.addSubview(self.titleLabel)
     }

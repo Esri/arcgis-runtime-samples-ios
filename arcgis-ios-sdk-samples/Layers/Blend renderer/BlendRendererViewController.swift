@@ -65,15 +65,15 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
 
     //MARK: - BlendRendererSettingsVCDelegate
     
-    func blendRendererSettingsVC(blendRendererSettingsVC: BlendRendererSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) {
+    func blendRendererSettingsVC(_ blendRendererSettingsVC: BlendRendererSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) {
         
         //get the blend render for the specified settings
-        let blendRenderer = self.generateBlendRenderer(altitude, azimuth: azimuth, slopeType: slopeType, colorRampType: colorRampType)
+        let blendRenderer = self.generateBlendRenderer(altitude: altitude, azimuth: azimuth, slopeType: slopeType, colorRampType: colorRampType)
         
         //if the colorRamp type is None, then use the Shasta.tif for blending.
         //else use the elevation raster with color ramp
         var baseRaster:AGSRaster
-        if colorRampType == .None {
+        if colorRampType == .none {
             baseRaster = AGSRaster(name: "Shasta", extension: "tif")
         }
         else {
@@ -95,19 +95,19 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
     //MARK: - Actions
     
     func hideVisualEffectView() {
-        self.visualEffectView.hidden = true
+        self.visualEffectView.isHidden = true
     }
     
     @IBAction func editRendererAction() {
         //show visual effect view
-        self.visualEffectView.hidden = false
+        self.visualEffectView.isHidden = false
     }
     
     //MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SettingsEmbedSegue" {
-            let controller = segue.destinationViewController as! BlendRendererSettingsVC
+            let controller = segue.destination as! BlendRendererSettingsVC
             controller.delegate = self
         }
     }

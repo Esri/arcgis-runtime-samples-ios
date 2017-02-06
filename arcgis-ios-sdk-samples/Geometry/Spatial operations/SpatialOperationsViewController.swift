@@ -23,7 +23,7 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
     private var polygon1, polygon2: AGSPolygonBuilder!
     private var resultGraphic: AGSGraphic!
     
-    let lineSymbol = AGSSimpleLineSymbol(style: .Solid, color: UIColor.blackColor(), width: 1)
+    let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.black, width: 1)
     
     let operations = ["None", "Union", "Difference", "Symmetric Difference", "Intersection"]
     
@@ -34,13 +34,13 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SpatialOperationsViewController", "OperationsListViewController"]
 
         //initialize map with basemap
-        let map = AGSMap(basemap: AGSBasemap.topographicBasemap())
+        let map = AGSMap(basemap: AGSBasemap.topographic())
         
         //assign map to map view
         self.mapView.map = map
         
         //add graphics overlay to map view
-        self.mapView.graphicsOverlays.addObject(self.graphicsOverlay)
+        self.mapView.graphicsOverlays.add(self.graphicsOverlay)
         
         //initial viewpoint
         let center = AGSPoint(x: -13453, y: 6710127, spatialReference: AGSSpatialReference.webMercator())
@@ -59,14 +59,14 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         
         //polygon 1
         self.polygon1 = AGSPolygonBuilder(spatialReference: AGSSpatialReference.webMercator())
-        polygon1.addPointWithX(-13960, y: 6709400)
-        polygon1.addPointWithX(-14660, y: 6710000)
-        polygon1.addPointWithX(-13760, y: 6710730)
-        polygon1.addPointWithX(-13300, y: 6710500)
-        polygon1.addPointWithX(-13160, y: 6710100)
+        polygon1.addPointWith(x: -13960, y: 6709400)
+        polygon1.addPointWith(x: -14660, y: 6710000)
+        polygon1.addPointWith(x: -13760, y: 6710730)
+        polygon1.addPointWith(x: -13300, y: 6710500)
+        polygon1.addPointWith(x: -13160, y: 6710100)
         
         //symbol
-        let fillSymbol1 = AGSSimpleFillSymbol(style: .Solid, color: UIColor.blueColor(), outline: lineSymbol)
+        let fillSymbol1 = AGSSimpleFillSymbol(style: .solid, color: UIColor.blue, outline: lineSymbol)
         
         //graphic
         let polygon1Graphic = AGSGraphic(geometry: polygon1.toGeometry(), symbol: fillSymbol1, attributes: nil)
@@ -74,59 +74,59 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         // create green polygon
         // outer ring
         let outerRing = AGSMutablePart(spatialReference: AGSSpatialReference.webMercator())
-        outerRing.addPointWithX(-13060, y: 6711030)
-        outerRing.addPointWithX(-12160, y: 6710730)
-        outerRing.addPointWithX(-13160, y: 6709700)
-        outerRing.addPointWithX(-14560, y: 6710730)
-        outerRing.addPointWithX(-13060, y: 6711030)
+        outerRing.addPointWith(x: -13060, y: 6711030)
+        outerRing.addPointWith(x: -12160, y: 6710730)
+        outerRing.addPointWith(x: -13160, y: 6709700)
+        outerRing.addPointWith(x: -14560, y: 6710730)
+        outerRing.addPointWith(x: -13060, y: 6711030)
         
         // inner ring
         let innerRing = AGSMutablePart(spatialReference: AGSSpatialReference.webMercator())
-        innerRing.addPointWithX(-13060, y: 6710910)
-        innerRing.addPointWithX(-14160, y: 6710630)
-        innerRing.addPointWithX(-13160, y: 6709900)
-        innerRing.addPointWithX(-12450, y: 6710660)
-        innerRing.addPointWithX(-13060, y: 6710910)
+        innerRing.addPointWith(x: -13060, y: 6710910)
+        innerRing.addPointWith(x: -14160, y: 6710630)
+        innerRing.addPointWith(x: -13160, y: 6709900)
+        innerRing.addPointWith(x: -12450, y: 6710660)
+        innerRing.addPointWith(x: -13060, y: 6710910)
         
         self.polygon2 = AGSPolygonBuilder(spatialReference: AGSSpatialReference.webMercator())
-        polygon2.parts.addPart(outerRing)
-        polygon2.parts.addPart(innerRing)
+        polygon2.parts.add(outerRing)
+        polygon2.parts.add(innerRing)
         
         //symbol
-        let fillSymbol2 = AGSSimpleFillSymbol(style: .Solid, color: UIColor.greenColor(), outline: lineSymbol)
+        let fillSymbol2 = AGSSimpleFillSymbol(style: .solid, color: UIColor.green, outline: lineSymbol)
         
         //graphic
         let polygon2Graphic = AGSGraphic(geometry: polygon2.toGeometry(), symbol: fillSymbol2, attributes: nil)
         
         //add graphics to graphics overlay
-        self.graphicsOverlay.graphics.addObjectsFromArray([polygon1Graphic, polygon2Graphic])
+        self.graphicsOverlay.graphics.addObjects(from: [polygon1Graphic, polygon2Graphic])
     }
     
-    private func performOperation(index: Int) {
+    private func performOperation(_ index: Int) {
         var resultGeometry: AGSGeometry
         
         switch index {
             
         case 1: //Union
-            resultGeometry = AGSGeometryEngine.unionOfGeometry1(self.polygon1.toGeometry(), geometry2: self.polygon2.toGeometry())!
+            resultGeometry = AGSGeometryEngine.union(ofGeometry1: self.polygon1.toGeometry(), geometry2: self.polygon2.toGeometry())!
             
         case 2: //Difference
-            resultGeometry = AGSGeometryEngine.differenceOfGeometry1(self.polygon2.toGeometry(), geometry2: self.polygon1.toGeometry())!
+            resultGeometry = AGSGeometryEngine.difference(ofGeometry1: self.polygon2.toGeometry(), geometry2: self.polygon1.toGeometry())!
             
         case 3: //Symmetric difference
-            resultGeometry = AGSGeometryEngine.symmetricDifferenceOfGeometry1(self.polygon2.toGeometry(), geometry2: self.polygon1.toGeometry())!
+            resultGeometry = AGSGeometryEngine.symmetricDifference(ofGeometry1: self.polygon2.toGeometry(), geometry2: self.polygon1.toGeometry())!
             
         default: //Intersection
-            resultGeometry = AGSGeometryEngine.intersectionOfGeometry1(self.polygon1.toGeometry(), geometry2: self.polygon2.toGeometry())!
+            resultGeometry = AGSGeometryEngine.intersection(ofGeometry1: self.polygon1.toGeometry(), geometry2: self.polygon2.toGeometry())!
         }
         
         //using red fill symbol for result with black border
-        let symbol = AGSSimpleFillSymbol(style: .Solid, color: UIColor.redColor(), outline: lineSymbol)
+        let symbol = AGSSimpleFillSymbol(style: .solid, color: UIColor.red, outline: lineSymbol)
         
         //create result graphic if not present
         if self.resultGraphic == nil {
             self.resultGraphic = AGSGraphic(geometry: resultGeometry, symbol: symbol, attributes: nil)
-            self.graphicsOverlay.graphics.addObject(self.resultGraphic)
+            self.graphicsOverlay.graphics.add(self.resultGraphic)
         }
             //update the geometry if already present
         else {
@@ -136,9 +136,9 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
     
     //MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "OperationsListSegue" {
-            let controller = segue.destinationViewController as! OperationsListViewController
+            let controller = segue.destination as! OperationsListViewController
             controller.delegate = self
             controller.operations = self.operations
             controller.presentationController?.delegate = self
@@ -148,11 +148,11 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
     
     //MARK: - OperationsListVCDelegate
     
-    func operationsListViewController(operationsListViewController: OperationsListViewController, didSelectOperation index: Int) {
+    func operationsListViewController(_ operationsListViewController: OperationsListViewController, didSelectOperation index: Int) {
         
         if index == 0 {
             if self.resultGraphic != nil {
-                self.graphicsOverlay.graphics.removeObject(self.resultGraphic)
+                self.graphicsOverlay.graphics.remove(self.resultGraphic)
                 self.resultGraphic = nil
             }
         }
@@ -163,8 +163,8 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
     
     //MARK: - UIAdaptivePresentationControllerDelegate
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         
-        return UIModalPresentationStyle.None
+        return UIModalPresentationStyle.none
     }
 }

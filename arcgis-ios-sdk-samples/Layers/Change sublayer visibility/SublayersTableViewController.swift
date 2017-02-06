@@ -32,35 +32,35 @@ class SublayersTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.sublayers?.count ?? 0
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SublayerCell")!
-        cell.backgroundColor = UIColor.clearColor()
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SublayerCell")!
+        cell.backgroundColor = UIColor.clear
         
-        let sublayer = self.sublayers[indexPath.row] as! AGSArcGISMapImageSublayer
+        let sublayer = self.sublayers[(indexPath as NSIndexPath).row] as! AGSArcGISMapImageSublayer
         cell.textLabel?.text = sublayer.name
         
         //accessory switch
-        let visibilitySwitch = UISwitch(frame: CGRectZero)
-        visibilitySwitch.tag = indexPath.row
-        visibilitySwitch.on = sublayer.visible
-        visibilitySwitch.addTarget(self, action: #selector(SublayersTableViewController.switchChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        let visibilitySwitch = UISwitch(frame: CGRect.zero)
+        visibilitySwitch.tag = (indexPath as NSIndexPath).row
+        visibilitySwitch.isOn = sublayer.isVisible
+        visibilitySwitch.addTarget(self, action: #selector(SublayersTableViewController.switchChanged(_:)), for: UIControlEvents.valueChanged)
         cell.accessoryView = visibilitySwitch
         return cell
     }
     
-    func switchChanged(sender:UISwitch) {
+    func switchChanged(_ sender:UISwitch) {
         let index = sender.tag
         //change the visiblity
         let sublayer = self.sublayers[index] as! AGSArcGISMapImageSublayer
-        sublayer.visible = sender.on
+        sublayer.isVisible = sender.isOn
     }
 }

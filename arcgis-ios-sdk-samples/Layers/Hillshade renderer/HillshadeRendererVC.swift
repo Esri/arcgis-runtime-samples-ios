@@ -38,7 +38,7 @@ class HillshadeRendererVC: UIViewController, HillshadeSettingsDelegate {
         self.mapView.map = self.map
         
         //initial renderer
-        let renderer = AGSHillshadeRenderer(altitude: 45, azimuth: 315, zFactor: 0.000016, slopeType: .None, pixelSizeFactor: 1, pixelSizePower: 1, outputBitDepth: 8)
+        let renderer = AGSHillshadeRenderer(altitude: 45, azimuth: 315, zFactor: 0.000016, slopeType: .none, pixelSizeFactor: 1, pixelSizePower: 1, outputBitDepth: 8)
         rasterLayer.renderer = renderer
     }
     
@@ -49,9 +49,9 @@ class HillshadeRendererVC: UIViewController, HillshadeSettingsDelegate {
     
     //MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SettingsEmbedSegue" {
-            let controller = segue.destinationViewController as! HillshadeSettingsVC
+            let controller = segue.destination as! HillshadeSettingsVC
             controller.delegate = self
         }
     }
@@ -59,17 +59,17 @@ class HillshadeRendererVC: UIViewController, HillshadeSettingsDelegate {
     //MARK: - Actions
     
     func hideVisualEffectView() {
-        self.visualEffectView.hidden = true
+        self.visualEffectView.isHidden = true
     }
     
     @IBAction func editRendererAction() {
         //show visual effect view
-        self.visualEffectView.hidden = false
+        self.visualEffectView.isHidden = false
     }
     
     //MARK: - HillshadeSettingsDelegate
     
-    func hillshadeSettingsVC(hillshadeSettingsVC: HillshadeSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType) {
+    func hillshadeSettingsVC(_ hillshadeSettingsVC: HillshadeSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType) {
         
         //hide settings view
         self.hideVisualEffectView()

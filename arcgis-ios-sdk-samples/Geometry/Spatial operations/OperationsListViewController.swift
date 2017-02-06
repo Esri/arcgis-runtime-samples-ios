@@ -16,7 +16,7 @@ import UIKit
 
 protocol OperationsListVCDelegate: class {
     
-    func operationsListViewController(operationsListViewController: OperationsListViewController, didSelectOperation index: Int)
+    func operationsListViewController(_ operationsListViewController: OperationsListViewController, didSelectOperation index: Int)
 }
 
 class OperationsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -29,22 +29,22 @@ class OperationsListViewController: UIViewController, UITableViewDataSource, UIT
     
     //MARK: - UITableViewDataSource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.operations.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("OperationCell")!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OperationCell")!
         
-        cell.textLabel?.text = self.operations[indexPath.row]
-        cell.backgroundColor = UIColor.clearColor()
+        cell.textLabel?.text = self.operations[(indexPath as NSIndexPath).row]
+        cell.backgroundColor = UIColor.clear
         
         return cell
     }
     
     //MARK: - UITableViewDelegate
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.delegate?.operationsListViewController(self, didSelectOperation: indexPath.row)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.delegate?.operationsListViewController(self, didSelectOperation: (indexPath as NSIndexPath).row)
     }
 }

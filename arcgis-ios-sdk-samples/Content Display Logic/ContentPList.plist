@@ -660,7 +660,7 @@
                     <key>storyboardName</key>
                     <string>GroupUsers</string>
                     <key>descriptionText</key>
-                    <string>The sample demonstrates how to show users in a group</string>
+                    <string>The sample demonstrates how to show the users in a group</string>
                 </dict>
             </array>
         </dict>

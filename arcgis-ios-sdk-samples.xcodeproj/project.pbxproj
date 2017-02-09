@@ -576,12 +576,12 @@
 		3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayerURLViewController.swift; path = "Features/Feature layer (feature service)/FeatureLayerURLViewController.swift"; sourceTree = "<group>"; };
 		3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FeatureLayerURL.storyboard; path = "Features/Feature layer (feature service)/FeatureLayerURL.storyboard"; sourceTree = "<group>"; };
 		3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Camera Shutter.caf"; sourceTree = "<group>"; };
-		3E6AE3EB1C6D11BA0026E59C /* OfflineRouting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OfflineRouting.storyboard; path = "Route & Navigation/Offline routing/OfflineRouting.storyboard"; sourceTree = "<group>"; };
-		3E6AE3ED1C6D11FD0026E59C /* OfflineRoutingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineRoutingViewController.swift; path = "Route & Navigation/Offline routing/OfflineRoutingViewController.swift"; sourceTree = "<group>"; };
+		3E6AE3EB1C6D11BA0026E59C /* OfflineRouting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OfflineRouting.storyboard; path = "Offline routing/OfflineRouting.storyboard"; sourceTree = "<group>"; };
+		3E6AE3ED1C6D11FD0026E59C /* OfflineRoutingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineRoutingViewController.swift; path = "Offline routing/OfflineRoutingViewController.swift"; sourceTree = "<group>"; };
 		3E6AE3F01C6D1B2E0026E59C /* san-diego */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "san-diego"; path = "Shared resources/Network data/san-diego"; sourceTree = "<group>"; };
-		3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectionsViewController.swift; path = "Route & Navigation/Find route/DirectionsViewController.swift"; sourceTree = "<group>"; };
-		3E6AE3F71C73B5480026E59C /* FindRoute.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FindRoute.storyboard; path = "Route & Navigation/Find route/FindRoute.storyboard"; sourceTree = "<group>"; };
-		3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindRouteViewController.swift; path = "Route & Navigation/Find route/FindRouteViewController.swift"; sourceTree = "<group>"; };
+		3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsViewController.swift; sourceTree = "<group>"; };
+		3E6AE3F71C73B5480026E59C /* FindRoute.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FindRoute.storyboard; sourceTree = "<group>"; };
+		3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindRouteViewController.swift; sourceTree = "<group>"; };
 		3E6C77151CCFC4B200E89873 /* IdentifyLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IdentifyLayersViewController.swift; path = "Maps/Identify layers/IdentifyLayersViewController.swift"; sourceTree = "<group>"; };
 		3E6C771B1CCFC53B00E89873 /* IdentifyLayers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = IdentifyLayers.storyboard; path = "Maps/Identify layers/IdentifyLayers.storyboard"; sourceTree = "<group>"; };
 		3E71621E1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphicsWithSymbolsViewController.swift; path = "Display information/Add graphics with symbols/GraphicsWithSymbolsViewController.swift"; sourceTree = "<group>"; };
@@ -642,10 +642,10 @@
 		3EBA25731D3450F600AB0703 /* CreateGeometriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateGeometriesViewController.swift; path = "Geometry/Create geometries/CreateGeometriesViewController.swift"; sourceTree = "<group>"; };
 		3EBA25751D34510F00AB0703 /* CreateGeometries.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CreateGeometries.storyboard; path = "Geometry/Create geometries/CreateGeometries.storyboard"; sourceTree = "<group>"; };
 		3EC398BE1D8B45AD0084612D /* DemoTouchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTouchView.swift; sourceTree = "<group>"; };
-		3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteAroundBarriersViewController.swift; path = "Route & Navigation/Route around barriers/RouteAroundBarriersViewController.swift"; sourceTree = "<group>"; };
-		3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectionsListViewController.swift; path = "Route & Navigation/Route around barriers/DirectionsListViewController.swift"; sourceTree = "<group>"; };
-		3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteParametersViewController.swift; path = "Route & Navigation/Route around barriers/RouteParametersViewController.swift"; sourceTree = "<group>"; };
-		3EC39C201C9A59D5003F6459 /* RouteAroundBarriers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = RouteAroundBarriers.storyboard; path = "Route & Navigation/Route around barriers/RouteAroundBarriers.storyboard"; sourceTree = "<group>"; };
+		3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteAroundBarriersViewController.swift; path = "Route around barriers/RouteAroundBarriersViewController.swift"; sourceTree = "<group>"; };
+		3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectionsListViewController.swift; path = "Route around barriers/DirectionsListViewController.swift"; sourceTree = "<group>"; };
+		3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteParametersViewController.swift; path = "Route around barriers/RouteParametersViewController.swift"; sourceTree = "<group>"; };
+		3EC39C201C9A59D5003F6459 /* RouteAroundBarriers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = RouteAroundBarriers.storyboard; path = "Route around barriers/RouteAroundBarriers.storyboard"; sourceTree = "<group>"; };
 		3EC39C2D1C9B0A9D003F6459 /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "Shared resources/Tile packages/SanFrancisco.tpk"; sourceTree = "<group>"; };
 		3EC39C311C9B0DF6003F6459 /* ExportTilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExportTilesViewController.swift; path = "Layers/Export tiles/ExportTilesViewController.swift"; sourceTree = "<group>"; };
 		3EC39C331C9B106D003F6459 /* ExportTiles.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ExportTiles.storyboard; path = "Layers/Export tiles/ExportTiles.storyboard"; sourceTree = "<group>"; };
@@ -883,7 +883,7 @@
 				3E4BF43C1C5AC66700D85919 /* Search */,
 				3ED027FC1B8E38F400ACA70D /* Edit data */,
 				3EBA25711D34509500AB0703 /* Geometry */,
-				3E6AE3E91C6D10DA0026E59C /* Route & Navigation */,
+				3E6AE3E91C6D10DA0026E59C /* Route & Directions */,
 				3E0B58451E36BCCD00951767 /* Analysis */,
 				3EEA06001D21C3E800E03774 /* Scenes */,
 				3E4B05E51B39EE920072E514 /* Shared resources */,
@@ -1151,14 +1151,14 @@
 			path = "Content Display Logic/Audio Files";
 			sourceTree = "<group>";
 		};
-		3E6AE3E91C6D10DA0026E59C /* Route & Navigation */ = {
+		3E6AE3E91C6D10DA0026E59C /* Route & Directions */ = {
 			isa = PBXGroup;
 			children = (
 				3E6AE3F31C6D1C920026E59C /* Find route */,
 				3EC39C191C9A5770003F6459 /* Route around barriers */,
 				3E6AE3EA1C6D10F70026E59C /* Offline routing */,
 			);
-			name = "Route & Navigation";
+			path = "Route & Directions";
 			sourceTree = "<group>";
 		};
 		3E6AE3EA1C6D10F70026E59C /* Offline routing */ = {
@@ -1185,7 +1185,7 @@
 				3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */,
 				3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */,
 			);
-			name = "Find route";
+			path = "Find route";
 			sourceTree = "<group>";
 		};
 		3E6C77141CCFC33100E89873 /* Identify layers */ = {

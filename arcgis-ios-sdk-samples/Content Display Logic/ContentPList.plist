@@ -651,6 +651,21 @@
         </dict>
         <dict>
             <key>displayName</key>
+            <string>Cloud &amp; Portal</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>List portal group users</string>
+                    <key>storyboardName</key>
+                    <string>GroupUsers</string>
+                    <key>descriptionText</key>
+                    <string>The sample demonstrates how to show the users in a group</string>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
             <string>Scenes</string>
             <key>children</key>
             <array>

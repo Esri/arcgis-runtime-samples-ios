@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2Ni-By-QRM">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Group Users View Controller-->
+        <scene sceneID="S2j-DT-Dz3">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="2Ni-By-QRM" customClass="GroupUsersViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HAf-by-tYQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="PYl-8S-2hD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O48-Uo-SBW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="96" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Vb-EL-eVe">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupUserCell" rowHeight="104" id="0VL-Oy-rmi" customClass="GroupUserCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="104"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0VL-Oy-rmi" id="7pf-ON-FjH">
+                                            <frame key="frameInset" width="375" height="103"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MUL-Ct-rII">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="9Sq-ww-9LJ"/>
+                                                        <constraint firstAttribute="width" constant="80" id="hGr-ub-IJL"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sGo-sN-M0g">
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zga-7F-SnW">
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="Nxj-dm-5pK"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NU8-n5-hlv">
+                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="NU8-n5-hlv" firstAttribute="top" secondItem="Zga-7F-SnW" secondAttribute="bottom" constant="2" id="Syf-yB-iNB"/>
+                                                        <constraint firstItem="NU8-n5-hlv" firstAttribute="leading" secondItem="sGo-sN-M0g" secondAttribute="leading" id="V4B-xh-6G0"/>
+                                                        <constraint firstAttribute="trailing" secondItem="NU8-n5-hlv" secondAttribute="trailing" id="WFX-Pd-nLD"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Zga-7F-SnW" secondAttribute="trailing" id="WJq-gC-1fE"/>
+                                                        <constraint firstItem="Zga-7F-SnW" firstAttribute="top" secondItem="sGo-sN-M0g" secondAttribute="top" id="mfw-QQ-Rz7"/>
+                                                        <constraint firstAttribute="bottom" secondItem="NU8-n5-hlv" secondAttribute="bottom" id="rQs-dm-Zlv"/>
+                                                        <constraint firstItem="Zga-7F-SnW" firstAttribute="leading" secondItem="sGo-sN-M0g" secondAttribute="leading" id="wst-dP-zyN"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="sGo-sN-M0g" secondAttribute="trailing" constant="8" id="0km-sp-wtR"/>
+                                                <constraint firstItem="sGo-sN-M0g" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7pf-ON-FjH" secondAttribute="top" constant="8" id="4Kc-yr-qCz"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="MUL-Ct-rII" secondAttribute="bottom" constant="8" id="Bbt-1g-OSO"/>
+                                                <constraint firstItem="MUL-Ct-rII" firstAttribute="leading" secondItem="7pf-ON-FjH" secondAttribute="leading" constant="8" id="Hhc-p3-4on"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="sGo-sN-M0g" secondAttribute="bottom" constant="8" id="JGX-wL-bDs"/>
+                                                <constraint firstItem="sGo-sN-M0g" firstAttribute="top" secondItem="7pf-ON-FjH" secondAttribute="top" constant="8" id="RPk-4n-ska"/>
+                                                <constraint firstItem="MUL-Ct-rII" firstAttribute="top" secondItem="7pf-ON-FjH" secondAttribute="top" constant="8" id="RrK-YH-ALK"/>
+                                                <constraint firstItem="sGo-sN-M0g" firstAttribute="leading" secondItem="MUL-Ct-rII" secondAttribute="trailing" constant="8" id="ZIm-KW-EoT"/>
+                                                <constraint firstAttribute="bottom" secondItem="sGo-sN-M0g" secondAttribute="bottom" constant="8" id="Zaw-nT-Ngj"/>
+                                                <constraint firstItem="sGo-sN-M0g" firstAttribute="centerY" secondItem="7pf-ON-FjH" secondAttribute="centerY" id="o23-Mx-afY"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="RPk-4n-ska"/>
+                                                    <exclude reference="Zaw-nT-Ngj"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="NU8-n5-hlv" id="jct-2h-7oe"/>
+                                            <outlet property="thumbnailImageView" destination="MUL-Ct-rII" id="lW4-e8-uWY"/>
+                                            <outlet property="titleLabel" destination="Zga-7F-SnW" id="Lqe-lN-EzX"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="2Ni-By-QRM" id="v8i-Bs-N0y"/>
+                                    <outlet property="delegate" destination="2Ni-By-QRM" id="7by-2x-Tz0"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="3Vb-EL-eVe" firstAttribute="top" secondItem="HAf-by-tYQ" secondAttribute="bottom" id="Ccd-jT-Nco"/>
+                            <constraint firstItem="3Vb-EL-eVe" firstAttribute="leading" secondItem="O48-Uo-SBW" secondAttribute="leading" id="Jwd-x0-RKC"/>
+                            <constraint firstAttribute="trailing" secondItem="3Vb-EL-eVe" secondAttribute="trailing" id="ogH-CE-r3U"/>
+                            <constraint firstItem="PYl-8S-2hD" firstAttribute="top" secondItem="3Vb-EL-eVe" secondAttribute="bottom" id="xLG-V3-0jG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="3Vb-EL-eVe" id="93a-3t-Xon"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h9m-wv-28j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="333.60000000000002" y="344.97751124437787"/>
+        </scene>
+    </scenes>
+</document>

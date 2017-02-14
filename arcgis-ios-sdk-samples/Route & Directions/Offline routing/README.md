@@ -14,7 +14,7 @@ You tap on the map to add a stop. As you add individual stops the sample solves 
 
 ##How it works
 
-The sample uses the `defaultParametersWithCompletion:` method on `AGSRouteTask` to get the default parameters from the service. In this sample the stop locations are set in the parameters. These are then used by the `solveRouteWithParameters:completion:` method to solve the route.
+The sample uses the `defaultRouteParameters:completion:` method on `AGSRouteTask` to get the default parameters from the service. In this sample the stop locations are set in the parameters. These are then used by the `solveRoute:withParams:completion:` method to solve the route.
 
 
 

@@ -13,5 +13,5 @@ Features in the map represent properties. Tapping on a property displays the cal
 
 ##How it works
 
-The sample uses the `attributeValueForKey:` method on `AGSFeature` to get the current damage type for a selected property and displays it in the callout. On selection of a new damage type, the app sets the new value using the `setAttributeValue:forKey:` method. And in order to apply the changes to the service it uses `applyEditsWithCompletion:` on the `AGSServiceFeatureTable` for the feature.
+The sample uses the `attributeValueForKey:` method on `AGSFeature` to get the current damage type for a selected property and displays it in the callout. On selection of a new damage type, the app sets the new value using the `setAttributeValue:forKey:` method. And in order to apply the changes to the service it uses `applyEdits:Completion:` on the `AGSServiceFeatureTable` for the feature.
 

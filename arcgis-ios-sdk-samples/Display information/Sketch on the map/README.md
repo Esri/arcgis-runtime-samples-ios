@@ -11,7 +11,7 @@ The sample has a toolbar of sketch tools at the bottom. You can choose the type 
 
 ##How it works
 
-To set the type of geometry, you need to use `startWithGeometryType` method on `AGSSketchEditor`, passing in the geometry type you want. The sketch graphics overlay has a undo manager of type `NSUndoManager` that provides the undo and redo methods. To clear everything there is a `clearGeometry()` method on the sketch graphics overlay.
+To set the type of geometry, you need to use `start:withGeometryType:creationMode:` method on `AGSSketchEditor`, passing in the geometry type you want. The sketch graphics overlay has a undo manager of type `NSUndoManager` that provides the undo and redo methods. To clear everything there is a `clearGeometry()` method on the sketch graphics overlay.
 
 
 

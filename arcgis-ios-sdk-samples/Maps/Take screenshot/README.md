@@ -10,7 +10,7 @@ The sample has a `Screenshot` button in the bottom toolbar you can tap to take s
 
 ##How it works
 
-`AGSMapView` has a method called `exportImage:completion:` that provides an image depicting the current map display.
+`AGSMapView` has a method called `exportImage(completion:)` that provides an image depicting the current map display.
 
 
 

@@ -12,7 +12,7 @@ Tap on the `Edit renderer` button in the toolbar to change the settings for the 
 
 ##How it works
 
-The sample uses `AGSRGBRenderer` class to generate rgb renderers. The settings provided by the user are put in the initializer `initWithStretchParameters:bandIndexes:gammas:estimateStatistics:` to get a new renderer and the renderer is then set on the raster.
+The sample uses `AGSRGBRenderer` class to generate rgb renderers. The settings provided by the user are put in the initializer `init(stretchParameters:bandIndexes:gammas:estimateStatistics:)` to get a new renderer and the renderer is then set on the raster.
 
 
 

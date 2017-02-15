@@ -16,7 +16,7 @@ The sample displays the list of operational layers in the map. Each row in this 
 
 ##How it works
 
-`AGSMapView` has a block called `layerViewStateChangedHandler` that get executed every time a layer's view status changes. The block contains two attributes, namely, `layer` and `layerViewState`. The former being the `AGSLayer` whose state got changed and the latter is an `AGSLayerViewState` object defining the new state.
+`AGSMapView` has a block called `layerViewStateChangedHandler` that get executed every time a layer's view status changes. The block contains two attributes, namely, `layer` and `state`. The former being the `AGSLayer` whose state got changed and the latter is an `AGSLayerViewState` object defining the new state.
 
 
 

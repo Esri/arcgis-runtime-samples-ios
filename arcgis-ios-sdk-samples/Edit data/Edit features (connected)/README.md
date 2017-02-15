@@ -16,7 +16,7 @@ Tap on the `Add new feature` in the bottom toolbar to initiate adding a feature.
 
 ##How it works
 
-The sample uses the `AGSPopupsViewController` to display the container view controller and `AGSPopup` objects to populate the container. The map view controller conforms to the `AGSPopupsViewControllerDelegate` for events like interaction or editing or deletion. For feature templates or feature types it uses the `featureTemplates` and `featureTypes` property on the `AGSServiceFeatureTable` associated with the feature layer. To create a feature from selected template it uses the `createFeature:withTemplate:`, `add:feature:completion:`, `applyEdits:completion:` methods, again on the service feature table.
+The sample uses the `AGSPopupsViewController` to display the container view controller and `AGSPopup` objects to populate the container. The map view controller conforms to the `AGSPopupsViewControllerDelegate` for events like interaction or editing or deletion. For feature templates or feature types it uses the `featureTemplates` and `featureTypes` property on the `AGSServiceFeatureTable` associated with the feature layer. To create a feature from selected template it uses the `createFeature(with:)`, `add(_:completion:)`, `applyEdits(completion:)` methods, again on the service feature table.
 
 
 

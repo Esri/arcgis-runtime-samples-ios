@@ -13,7 +13,7 @@ On opening the sample you get to choose the layers for your map. You can choose 
 
 ##How it works
 
-The sample uses a pre-populated list of layers and basemaps. When you tap on `Done`, the selected basemap is used to create an `AGSMap` object using `initWithBasemap:` initializer. The authentication is handled by `AGSAuthenticationManager`. And to save the map the sample uses `save:as:portal:tags:folder:itemDescription:thumbnail:forceSaveToSupportedVersion:completion:` method on `AGSMap`.
+The sample uses a pre-populated list of layers and basemaps. When you tap on `Done`, the selected basemap is used to create an `AGSMap` object using `init(basemap:)` initializer. The authentication is handled by `AGSAuthenticationManager`. And to save the map the sample uses `save(as:portal:tags:folder:itemDescription:thumbnail:forceSaveToSupportedVersion:completion:)` method on `AGSMap`.
 
 
 

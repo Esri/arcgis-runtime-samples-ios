@@ -10,7 +10,7 @@ Pan and zoom to the area you want to download features for. Make sure the area i
 
 ##How it works
 
-The sample uses the `generateJobWithParameters:downloadPath:` method on  `AGSGeodatabaseSyncTask` to create an `AGSJob`. The `startWithStatusHandler:completion:` method on the job, starts the generation process, provides status updates and the geodatabase on successful completion. The sample also uses the `unregisterGeodatabase:completion:` method on sync task to unregister the geodatabase.
+The sample uses the `generateJob(with:downloadFileURL:)` method on  `AGSGeodatabaseSyncTask` to create an `AGSJob`. The `start(statusHandler:completion:)` method on the job, starts the generation process, provides status updates and the geodatabase on successful completion. The sample also uses the `unregisterGeodatabase(_:completion:)` method on sync task to unregister the geodatabase.
 
 
 

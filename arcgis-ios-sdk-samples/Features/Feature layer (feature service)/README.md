@@ -6,7 +6,7 @@ This sample demonstrates how to show a feature layer on a map using the URL to t
 
 ##How it works
 
-The sample creates an instance of `AGSServiceFeatureTable` using the initializer `initWithURL:`. Then creates a `AGSFeatureLayer` object using the initializer `initWithFeatureTable:`
+The sample creates an instance of `AGSServiceFeatureTable` using the initializer `init(url:)`. Then creates a `AGSFeatureLayer` object using the initializer `init(featureTable:)`
 
 
 

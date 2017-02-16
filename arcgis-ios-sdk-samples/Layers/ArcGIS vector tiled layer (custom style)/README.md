@@ -7,7 +7,7 @@ This sample demonstrates to use custom styled vector tiled layers
 
 ##How it works
 
-`AGSArcGISVectorTiledLayer` provides an initializer called `initWithURL:` that takes a URL
+`AGSArcGISVectorTiledLayer` provides an initializer called `init(url:)` that takes a URL
 
 
 

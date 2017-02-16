@@ -11,9 +11,9 @@ The map in the sample comes pre-populated with a set of bookmarks. You can tap o
 
 ##How it works
 
-The `AGSMap` has a property called `bookmarks` which is a list of `AGSBookmarks`. Each of these bookmarks have a `name`, `timeExtent` and `viewpoint`. We use the `bookmarks` list as the data source for the UITableView which popups when you tap on the `Bookmarks` button. For each cell inside that table we use the `bookmark.name` property as the titile. And on selection we use the `bookmark.viewpoint` property to update the visible area.
+The `AGSMap` has a property called `bookmarks` which is a list of `AGSBookmark`. Each of these bookmarks have a `name` and `viewpoint`. We use the `bookmarks` list as the data source for the UITableView which popups when you tap on the `Bookmarks` button. For each cell inside that table we use the `bookmark.name` property as the title. And on selection we use the `bookmark.viewpoint` property to update the visible area.
 
-For the creation workflow, we create a new `AGSBookmark` object using `mapView.currentViewpointWithType` as the `bookmark.viewpoint` and the name you provide as the `bookmark.name`. And then finally, we add the new bookmark to the list of bookmarks using `map.bookmarks.addObject(bookmark)`
+For the creation workflow, we create a new `AGSBookmark` object using `mapView.currentViewpoint(with:)` as the `bookmark.viewpoint` and the name you provide as the `bookmark.name`. And then finally, we add the new bookmark to the list of bookmarks using `map.bookmarks.add(bookmark)`
 
 
 

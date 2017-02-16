@@ -12,7 +12,7 @@ Tap on the `Edit renderer` button in the toolbar to change the settings for the 
 
 ##How it works
 
-The sample uses `AGSStretchRenderer` class to generate stretch renderers. The settings provided by the user are put in the initializer `initWithStretchParameters:gammas:estimateStatistics:colorRamp:` to get a new renderer and the renderer is then set on the raster.
+The sample uses `AGSStretchRenderer` class to generate stretch renderers. The settings provided by the user are put in the initializer `init(stretchParameters:gammas:estimateStatistics:colorRamp:)` to get a new renderer and the renderer is then set on the raster.
 
 
 

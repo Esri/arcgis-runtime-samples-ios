@@ -6,7 +6,7 @@ This sample demonstrates how to create a map image layer from a URL
 
 ##How it works
 
-`AGSArcGISMapImageLayer` provides an initializer called `initWithURL:` that takes a URL
+`AGSArcGISMapImageLayer` provides an initializer called `init(url:)` that takes a URL
 
 
 

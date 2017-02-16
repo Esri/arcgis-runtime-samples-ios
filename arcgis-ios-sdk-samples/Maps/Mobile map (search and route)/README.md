@@ -11,7 +11,7 @@ The sample looks for map packages in the app bundle as well as the documents dir
 
 ##How it works
 
-The sample uses `initWithName:` initializer on `AGSMobileMapPackage` to instantiate a map package object using the name of the package that you select. It uses the `locatorTask` property on `AGSMobileMapPackage` to check if the package supports geocoding. It uses the `transportationNetworks` property on each mobile map to see if routing is supported. The logic for routing and geocoding is similar to the one used in the individual routing and geocoding samples.
+The sample uses `init(name:)` initializer on `AGSMobileMapPackage` to instantiate a map package object using the name of the package that you select. It uses the `locatorTask` property on `AGSMobileMapPackage` to check if the package supports geocoding. It uses the `transportationNetworks` property on each mobile map to see if routing is supported. The logic for routing and geocoding is similar to the one used in the individual routing and geocoding samples.
 
 
 

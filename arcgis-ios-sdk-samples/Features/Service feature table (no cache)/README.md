@@ -6,4 +6,4 @@ This sample demonstrates how to use a feature service in on interaction no cache
 
 ##How it works
 
-By setting the `featureRequestMode` to `AGSFeatureRequestModeOnInteractionNoCache` on an `AGSServiceFeatureTable`.
+By setting the `featureRequestMode` to `AGSFeatureRequestMode.onInteractionNoCache` on an `AGSServiceFeatureTable`.

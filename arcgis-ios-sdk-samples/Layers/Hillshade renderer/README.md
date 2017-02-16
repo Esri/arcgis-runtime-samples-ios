@@ -11,7 +11,7 @@ Tap on the `Edit renderer` button in the toolbar to change the settings for the 
 
 ##How it works
 
-The sample uses `AGSHillshadeRenderer` class to generate hillshade renderers. The settings provided by the user are put in the initializer `initWithAltitude:azimuth:zFactor:slopeType:pixelSizeFactor:pixelSizePower:outputBitDepth:` to get a new renderer and the renderer is then set on the raster. 
+The sample uses `AGSHillshadeRenderer` class to generate hillshade renderers. The settings provided by the user are put in the initializer `init(altitude:azimuth:zFactor:slopeType:pixelSizeFactor:pixelSizePower:outputBitDepth:)` to get a new renderer and the renderer is then set on the raster. 
 
 
 

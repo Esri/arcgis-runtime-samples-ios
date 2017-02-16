@@ -11,7 +11,7 @@ To select a date range for analysis, tap on `Analyze` in the bottom toolbar. Pic
 
 ##How it works
 
-An `AGSGeoprocessingTask` is created by setting the URL to the REST endpoint of a geoprocessing service. `AGSGeoprocessingParameters` are created and the execution type is set to `AsynchronousSubmit`. Once the date ranges are selected, a query string is created with the to and from dates. A key/value parameter input is created, where the key is the string `Query` and the value is an `AGSGeoprocessingString` that contains the query string. These parameter inputs are then added to the `AGSGeoprocessingParameters`. An `AGSGeoprocessingJob` is obtained by calling the `createJob()` method of the `AGSGeoprocessingTask`. The job is started, and once it is complete, the `AGSArcGISMapImageLayer` is obtained from the result, and added to the `AGSMap`.
+An `AGSGeoprocessingTask` is created by setting the URL to the REST endpoint of a geoprocessing service. `AGSGeoprocessingParameters` are created and the execution type is set to `AsynchronousSubmit`. Once the date ranges are selected, a query string is created with the to and from dates. A key/value parameter input is created, where the key is the string `Query` and the value is an `AGSGeoprocessingString` that contains the query string. These parameter inputs are then added to the `AGSGeoprocessingParameters`. An `AGSGeoprocessingJob` is obtained by calling the `geoprocessingJob(with:)` method of the `AGSGeoprocessingTask`. The job is started, and once it is complete, the `AGSArcGISMapImageLayer` is obtained from the result, and added to the `AGSMap`.
 
 
 

@@ -11,7 +11,7 @@ Tap on a point on the map, a graphic will be added at that point and a callout w
 
 ##How it works
 
-The sample uses the `reverseGeocodeWithLocation:parameters:completion:` method on `AGSLocatorTask` to find an address for a point. To show the callout the sample uses the `showCalloutForGraphic:tapLocation:animated:` method on `AGSMapView`.
+The sample uses the `reverseGeocode(withLocation:parameters:completion:)` method on `AGSLocatorTask` to find an address for a point. To show the callout the sample uses the `show(for:tapLocation:animated:)` method on `AGSCallout`.
 
 
 

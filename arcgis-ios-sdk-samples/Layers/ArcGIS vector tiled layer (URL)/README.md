@@ -6,7 +6,7 @@ This sample demonstrates how to create a vector tile layer from a URL
 
 ##How it works
 
-`AGSArcGISVectorTiledLayer` provides an initializer called `initWithURL:` that takes a URL
+`AGSArcGISVectorTiledLayer` provides an initializer called `init(url:)` that takes a URL
 
 
 

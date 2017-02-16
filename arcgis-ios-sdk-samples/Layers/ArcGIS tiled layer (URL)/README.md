@@ -6,7 +6,7 @@ This sample demonstrates how to create a tiled layer from a URL
 
 ##How it works
 
-`AGSArcGISTiledLayer` provides an initializer called `initWithURL:` that takes a URL
+`AGSArcGISTiledLayer` provides an initializer called `init(url:)` that takes a URL
 
 
 

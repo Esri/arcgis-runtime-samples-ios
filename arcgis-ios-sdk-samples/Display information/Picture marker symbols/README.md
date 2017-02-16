@@ -6,7 +6,7 @@ This sample demonstrates how to create picture marker symbols using a remote ima
 
 ##How it works
 
-For creating a picture marker symbol using remote image, the sample uses the `initWithURL:` initializer on `AGSPictureMarkerSymbol`, passing the URL for the image as the argument. For creating a picture marker symbol using an image in assets, it uses the `initWithImage:` initializer. For which it creates a `UIImage` using the name of the image and passes that as an argument to the initializer.
+For creating a picture marker symbol using remote image, the sample uses the `init(url:)` initializer on `AGSPictureMarkerSymbol`, passing the URL for the image as the argument. For creating a picture marker symbol using an image in assets, it uses the `init(image:)` initializer. For which it creates a `UIImage` using the name of the image and passes that as an argument to the initializer.
 
 
 

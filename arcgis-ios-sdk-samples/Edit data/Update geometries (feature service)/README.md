@@ -14,7 +14,7 @@ Tapping on a feature on the map displays the callout. Tapping on the info button
 
 ##How it works
 
-When you tap on the info button in the callout, the app gets the geometry for the selected feature using the `geometry` property on `AGSFeature`. It hides the feature from the feature layer and add the geometry to a sketch layer (with red marker symbol). The sketch layer allows you to select a new geometry. When you tap `Done`, assigns the new geometry to the `geometry` property on the feature. And in order to apply edits to the service, calls `applyEditsWithCompletion:` on the service feature table.
+When you tap on the info button in the callout, the app gets the geometry for the selected feature using the `geometry` property on `AGSFeature`. It hides the feature from the feature layer and add the geometry to a sketch layer (with red marker symbol). The sketch layer allows you to select a new geometry. When you tap `Done`, assigns the new geometry to the `geometry` property on the feature. And in order to apply edits to the service, calls `applyEdits(completion:)` on the service feature table.
 
 
 

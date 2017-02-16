@@ -12,7 +12,7 @@ At start the sample is showing features from the service. When you tap on the `G
 
 ##How it works
 
-The sample uses the `generateJobWithParameters:downloadPath:` method on  `AGSGeodatabaseSyncTask` to create an `AGSJob`. The `startWithStatusHandler:completion:` method on the job, starts the generation process, provides status updates and the geodatabase on successful completion. The sample also uses the `AGSPopupsViewController` to display the view controller and `AGSPopup` objects to populate the controller. The map view controller conforms to the `AGSPopupsViewControllerDelegate` for events like interaction or editing or deletion. 
+The sample uses the `generateJob(with:downloadFileURL:)` method on  `AGSGeodatabaseSyncTask` to create an `AGSJob`. The `start(statusHandler:completion:)` method on the job, starts the generation process, provides status updates and the geodatabase on successful completion. The sample also uses the `AGSPopupsViewController` to display the view controller and `AGSPopup` objects to populate the controller. The map view controller conforms to the `AGSPopupsViewControllerDelegate` for events like interaction or editing or deletion. 
 
 
 

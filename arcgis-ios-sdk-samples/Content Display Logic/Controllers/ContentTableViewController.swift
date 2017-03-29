@@ -146,16 +146,16 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             
             //conditionally begin accessing to know if we need to show download progress view or not
             self.bundleResourceRequest.conditionallyBeginAccessingResources { [weak self] (isResourceAvailable: Bool) in
-                
-                //if resource is already available then simply show the sample
-                if isResourceAvailable {
-                    DispatchQueue.main.sync {
+                DispatchQueue.main.sync {
+                    
+                    //if resource is already available then simply show the sample
+                    if isResourceAvailable {
                         self?.showSample(indexPath: indexPath, node: node)
                     }
-                }
-                //else download the resource
-                else {
-                    self?.downloadResource(for: node, at: indexPath)
+                    //else download the resource
+                    else {
+                        self?.downloadResource(for: node, at: indexPath)
+                    }
                 }
             }
         }

@@ -20,5 +20,6 @@ class Node: NSObject {
     var descriptionText:String = ""
     var storyboardName:String!  //if nil, then use content table VC
     var children:[Node]!  //if nil, then root node
+    var dependency = [String]()
 //    var readmeURLString:String!
 }

@@ -166,6 +166,10 @@
                     <string>OpenMobileMapPackage</string>
                     <key>descriptionText</key>
                     <string>This sample shows how to open a mobile map from a mobile map package</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>MobileMapPackages</string>
+                    </array>
                 </dict>
                 <dict>
                     <key>displayName</key>
@@ -174,6 +178,10 @@
                     <string>MobileMapSearchRoute</string>
                     <key>descriptionText</key>
                     <string>This sample shows how to search and route using data in a map package</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>MobileMapPackages</string>
+                    </array>
                 </dict>
             </array>
         </dict>
@@ -197,6 +205,11 @@
                     <string>LocalTiledLayer</string>
                     <key>descriptionText</key>
                     <string>This sample shows how to load an offline copy of a tiled map service so that that basemap tiled service is available when applications are offline</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>SanFranciscoTilePackage</string>
+                        <string>SanDiegoTilePackage</string>
+                    </array>
                 </dict>
                 <dict>
                     <key>displayName</key>
@@ -245,6 +258,10 @@
                     <string>HillshadeRenderer</string>
                     <key>descriptionText</key>
                     <string>You can apply hill shade renderer to a raster</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>SRTMRaster</string>
+                    </array>
                 </dict>
                 <dict>
                     <key>displayName</key>
@@ -253,6 +270,11 @@
                     <string>BlendRenderer</string>
                     <key>descriptionText</key>
                     <string>The sample shows you how to use blend renderer with raster layer</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>ShastaElevationRaster</string>
+                        <string>ShastaRaster</string>
+                    </array>
                 </dict>
                 <dict>
                     <key>displayName</key>
@@ -261,6 +283,10 @@
                     <string>RGBRenderer</string>
                     <key>descriptionText</key>
                     <string>The sample shows you how to use rgb renderer with raster layer</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>ShastaRaster</string>
+                    </array>
                 </dict>
                 <dict>
                     <key>displayName</key>
@@ -269,6 +295,10 @@
                     <string>StretchRenderer</string>
                     <key>descriptionText</key>
                     <string>The sample shows you how to use stretch renderer with raster layer</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>ShastaBWRaster</string>
+                    </array>
                 </dict>
             </array>
         </dict>
@@ -292,6 +322,10 @@
                     <string>FeatureLayerGDB</string>
                     <key>descriptionText</key>
                     <string>Show a feature layer on map using a geodatabase</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>LATrailsGeodatabase</string>
+                    </array>
                 </dict>
                 <dict>
                     <key>displayName</key>
@@ -356,6 +390,10 @@
                     <string>GenerateGeodatabase</string>
                     <key>descriptionText</key>
                     <string>The sample shows you how to take features offline</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>SanFranciscoTilePackage</string>
+                    </array>
                 </dict>
                 <dict>
                     <key>displayName</key>
@@ -506,6 +544,11 @@
                     <string>OfflineGeocode</string>
                     <key>descriptionText</key>
                     <string>Type in or select a prepopulated address to show its location on the map. Or tap and hold to get address for a point on the map. Tap, hold and move to get instant results from the locator file</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>SanDiegoLocator</string>
+                        <string>SanDiegoTilePackage</string>
+                    </array>
                 </dict>
             </array>
         </dict>
@@ -561,6 +604,10 @@
                     <string>EditFeaturesOnline</string>
                     <key>descriptionText</key>
                     <string>This sample shows you how to add or edit features in an online feature layer using popups. The new popups provide inline editing for fast editing experience</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>SanDiegoTilePackage</string>
+                    </array>
                 </dict>
                 <dict>
                     <key>displayName</key>
@@ -569,6 +616,10 @@
                     <string>OfflineEditing</string>
                     <key>descriptionText</key>
                     <string>The sample shows you how to take features offline, make changes and sync them back to the service</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>SanFranciscoTilePackage</string>
+                    </array>
                 </dict>
             </array>
         </dict>
@@ -623,6 +674,11 @@
                     <string>OfflineRouting</string>
                     <key>descriptionText</key>
                     <string>Tap on the map to add the first stop. Add additional stops to display the route. To route &apos;on the fly&apos; tap, hold and move to show the route dynamically.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>SanDiegoNetworkData</string>
+                        <string>SanDiegoTilePackage</string>
+                    </array>
                 </dict>
             </array>
         </dict>

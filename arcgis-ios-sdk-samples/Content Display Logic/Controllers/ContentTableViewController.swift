@@ -14,7 +14,7 @@
 
 import UIKit
 
-class ContentTableViewController: UITableViewController, CustomSearchHeaderViewDelegate {
+class ContentTableViewController: UITableViewController, CustomSearchHeaderViewDelegate, DownloadProgressViewDelegate {
 
     private lazy var __once: () = { [weak self] in
             self?.animateTable()
@@ -25,7 +25,9 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
     
     private var headerView:CustomSearchHeaderView!
     var containsSearchResults = false
-    
+    private var bundleResourceRequest:NSBundleResourceRequest!
+    private var downloadProgressView:DownloadProgressView!
+
     var token: Int = 0
     
     override func viewDidLoad() {
@@ -43,6 +45,10 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             self.headerView.delegate = self
             self.headerView.hideSuggestionsTable()
         }
+        
+        //initialize download progress view
+        self.downloadProgressView = DownloadProgressView()
+        self.downloadProgressView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -133,6 +139,77 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         
         let node = self.nodesArray[(indexPath as NSIndexPath).row]
         
+        //download on demand resources
+        if node.dependency.count > 0 {
+            
+            self.bundleResourceRequest = NSBundleResourceRequest(tags: Set(node.dependency))
+            
+            //conditionally begin accessing to know if we need to show download progress view or not
+            self.bundleResourceRequest.conditionallyBeginAccessingResources { [weak self] (isResourceAvailable: Bool) in
+                
+                //if resource is already available then simply show the sample
+                if isResourceAvailable {
+                    DispatchQueue.main.sync {
+                        self?.showSample(indexPath: indexPath, node: node)
+                    }
+                }
+                //else download the resource
+                else {
+                    self?.downloadResource(for: node, at: indexPath)
+                }
+            }
+        }
+        else {
+            //clear bundleResourceRequest
+            self.bundleResourceRequest?.endAccessingResources()
+            
+            //show view controller
+            self.showSample(indexPath: indexPath, node: node)
+        }
+    }
+    
+    func downloadResource(for node:Node, at indexPath:IndexPath) {
+        
+        //show download progress view
+        self.downloadProgressView.show(withStatus: "Downloading remote resource", progress: 0)
+        
+        //add an observer to update the progress in download progress view
+        self.bundleResourceRequest.progress.addObserver(self, forKeyPath: "fractionCompleted", options: .new, context: nil)
+        
+        //begin
+        self.bundleResourceRequest.beginAccessingResources { [weak self] (error: Error?) in
+            
+            //in main thread
+            DispatchQueue.main.sync {
+                
+                //dismiss download progress view
+                self?.downloadProgressView.dismiss()
+                
+                if let error = error {
+                    SVProgressHUD.showError(withStatus: "Failed to download raster resource :: \(error.localizedDescription)", maskType: .gradient)
+                }
+                else {
+                    
+                    if let weakSelf = self, !weakSelf.bundleResourceRequest.progress.isCancelled {
+                        
+                        //show view controller
+                        self?.showSample(indexPath: indexPath, node: node)
+                    }
+                }
+            }
+        }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "fractionCompleted" {
+            DispatchQueue.main.async { [weak self] in
+                self?.downloadProgressView?.updateProgress(progress: CGFloat(self!.bundleResourceRequest.progress.fractionCompleted), animated: true)
+            }
+        }
+    }
+    
+    func showSample(indexPath: IndexPath, node: Node) {
+        
         //expand the selected cell
         self.updateExpandedRow(indexPath, collapseIfSelected: false)
         
@@ -218,5 +295,13 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         
         SVProgressHUD.showError(withStatus: "No match found", maskType: .gradient)
         
+    }
+    
+    //MARK: - DownloadProgressViewDelegate
+    
+    func downloadProgressViewDidCancel(downloadProgressView: DownloadProgressView) {
+        self.bundleResourceRequest?.progress.removeObserver(self, forKeyPath: "fractionCompleted")
+        self.bundleResourceRequest.progress.cancel()
+        self.bundleResourceRequest?.endAccessingResources()
     }
 }

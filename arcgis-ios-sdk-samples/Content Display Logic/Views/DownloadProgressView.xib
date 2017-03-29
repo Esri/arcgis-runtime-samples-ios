@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E163f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DownloadProgressView" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="FvF-Nq-g4W" id="mce-5S-DgX"/>
+                <outlet property="progressLabel" destination="4ko-G4-tpJ" id="M0Q-7g-hgv"/>
+                <outlet property="statusLabel" destination="Zjh-ix-0i1" id="Tfc-lW-ysS"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="3Mj-KC-mCm">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FvF-Nq-g4W">
+                    <rect key="frame" x="67" y="246.5" width="240" height="173"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ko-G4-tpJ">
+                            <rect key="frame" x="98" y="40" width="44" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="44" id="I5d-LV-CmH"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading remote resources" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zjh-ix-0i1">
+                            <rect key="frame" x="8" y="101" width="224" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOX-4U-fqJ">
+                            <rect key="frame" x="91.5" y="132" width="57" height="33"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <state key="normal" title="Cancel"/>
+                            <connections>
+                                <action selector="cancelAction" destination="-1" eventType="touchUpInside" id="0Uh-4A-vKB"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Zjh-ix-0i1" firstAttribute="leading" secondItem="FvF-Nq-g4W" secondAttribute="leading" constant="8" id="6pn-t6-i04"/>
+                        <constraint firstItem="Zjh-ix-0i1" firstAttribute="top" secondItem="4ko-G4-tpJ" secondAttribute="bottom" constant="40" id="ImI-x3-AYC"/>
+                        <constraint firstAttribute="trailing" secondItem="Zjh-ix-0i1" secondAttribute="trailing" constant="8" id="Lpx-E6-YmC"/>
+                        <constraint firstItem="4ko-G4-tpJ" firstAttribute="centerX" secondItem="FvF-Nq-g4W" secondAttribute="centerX" id="RKB-G4-jYp"/>
+                        <constraint firstItem="4ko-G4-tpJ" firstAttribute="top" secondItem="FvF-Nq-g4W" secondAttribute="top" constant="40" id="RlD-PU-mm0"/>
+                        <constraint firstItem="Zjh-ix-0i1" firstAttribute="centerX" secondItem="FvF-Nq-g4W" secondAttribute="centerX" id="Wuz-iL-ZRS"/>
+                        <constraint firstAttribute="bottom" secondItem="eOX-4U-fqJ" secondAttribute="bottom" constant="8" id="cfO-hu-v40"/>
+                        <constraint firstItem="eOX-4U-fqJ" firstAttribute="top" secondItem="Zjh-ix-0i1" secondAttribute="bottom" constant="10" id="fHn-n9-ee2"/>
+                        <constraint firstItem="eOX-4U-fqJ" firstAttribute="centerX" secondItem="FvF-Nq-g4W" secondAttribute="centerX" id="vpE-vO-1xU"/>
+                        <constraint firstAttribute="width" constant="240" id="wEv-DA-zaK"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="FvF-Nq-g4W" firstAttribute="centerX" secondItem="3Mj-KC-mCm" secondAttribute="centerX" id="4Wd-OW-EMy"/>
+                <constraint firstItem="FvF-Nq-g4W" firstAttribute="centerY" secondItem="3Mj-KC-mCm" secondAttribute="centerY" id="Oa4-3O-OPK"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

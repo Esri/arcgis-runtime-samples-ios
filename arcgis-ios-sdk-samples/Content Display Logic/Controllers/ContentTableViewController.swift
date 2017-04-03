@@ -171,7 +171,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
     func downloadResource(for node:Node, at indexPath:IndexPath) {
         
         //show download progress view
-        self.downloadProgressView.show(withStatus: "Downloading remote resource", progress: 0)
+        self.downloadProgressView.show(withStatus: "Just a moment while we download data for this sample...", progress: 0)
         
         //add an observer to update the progress in download progress view
         self.bundleResourceRequest.progress.addObserver(self, forKeyPath: "fractionCompleted", options: .new, context: nil)

@@ -168,7 +168,7 @@
                     <string>This sample shows how to open a mobile map from a mobile map package</string>
                     <key>dependency</key>
                     <array>
-                        <string>MobileMapPackages</string>
+                        <string>YellowstoneMMPK</string>
                     </array>
                 </dict>
                 <dict>
@@ -180,7 +180,8 @@
                     <string>This sample shows how to search and route using data in a map package</string>
                     <key>dependency</key>
                     <array>
-                        <string>MobileMapPackages</string>
+                        <string>YellowstoneMMPK</string>
+                        <string>SanFranciscoMMPK</string>
                     </array>
                 </dict>
             </array>

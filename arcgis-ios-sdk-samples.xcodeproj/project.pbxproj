@@ -1226,8 +1226,7 @@
 				3E6BF1CD1E92F7E90060DAC2 /* BasemapsCollectionViewController.swift */,
 				3E6BF1C91E92F7E90060DAC2 /* BasemapCell.swift */,
 			);
-			name = "Show organization basemaps";
-			path = "Show org basemaps";
+			path = "Show organization basemaps";
 			sourceTree = "<group>";
 		};
 		3E6C77141CCFC33100E89873 /* Identify layers */ = {

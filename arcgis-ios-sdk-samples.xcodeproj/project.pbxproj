@@ -34,7 +34,7 @@
 		3E1E5EE51D9F08ED00F4913C /* HillshadeRendererVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E5EE41D9F08ED00F4913C /* HillshadeRendererVC.swift */; };
 		3E1E5EE71D9F095A00F4913C /* HillshadeSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E5EE61D9F095A00F4913C /* HillshadeSettingsVC.swift */; };
 		3E1E5EEA1D9F0ACC00F4913C /* HorizontalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E5EE91D9F0ACC00F4913C /* HorizontalPicker.swift */; };
-		3E1E5EED1D9F0B5600F4913C /* srtm.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3E1E5EEC1D9F0B5600F4913C /* srtm.tiff */; };
+		3E1E5EED1D9F0B5600F4913C /* srtm.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3E1E5EEC1D9F0B5600F4913C /* srtm.tiff */; settings = {ASSET_TAGS = (SRTMRaster, ); }; };
 		3E1E5EEF1D9F0BAB00F4913C /* HillshadeRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E1E5EEE1D9F0BAB00F4913C /* HillshadeRenderer.storyboard */; };
 		3E1E5EF11D9F0D0C00F4913C /* HorizontalPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E1E5EF01D9F0D0C00F4913C /* HorizontalPicker.xib */; };
 		3E1E5EF21D9F0E6F00F4913C /* HillshadeRendererVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E1E5EE41D9F08ED00F4913C /* HillshadeRendererVC.swift */; };
@@ -46,6 +46,7 @@
 		3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A680D1B0D2A7000A318AA /* ListViewController.swift */; };
 		3E2A68121B14E04300A318AA /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E2A68111B14E04300A318AA /* ArcGIS.bundle */; };
 		3E2A68181B153CDE00A318AA /* SourceCodeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A68171B153CDE00A318AA /* SourceCodeBarButtonItem.swift */; };
+		3E3425BD1E7B4CB10024270B /* srtm.tiff.ovr in Resources */ = {isa = PBXBuildFile; fileRef = 3EE385511DD4FDE600B13E3C /* srtm.tiff.ovr */; settings = {ASSET_TAGS = (SRTMRaster, ); }; };
 		3E39F6D21B9790A9000DEC6C /* EditFeaturesOnline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E39F6CF1B9790A9000DEC6C /* EditFeaturesOnline.storyboard */; };
 		3E39F6D31B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39F6D01B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift */; };
 		3E39F6D41B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */; };
@@ -82,17 +83,17 @@
 		3E4BF4561C5BD66C00D85919 /* OfflineGeocodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF4551C5BD66C00D85919 /* OfflineGeocodeViewController.swift */; };
 		3E4BF4581C5BD6C400D85919 /* SanDiegoAddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF4571C5BD6C400D85919 /* SanDiegoAddressesViewController.swift */; };
 		3E4BF45A1C5BD77300D85919 /* OfflineGeocode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF4591C5BD77300D85919 /* OfflineGeocode.storyboard */; };
-		3E4BF47C1C5BDDCA00D85919 /* san-diego-locator.loc in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF4781C5BDDCA00D85919 /* san-diego-locator.loc */; };
-		3E4BF47D1C5BDDCA00D85919 /* san-diego-locator.loc.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF4791C5BDDCA00D85919 /* san-diego-locator.loc.xml */; };
-		3E4BF47E1C5BDDCA00D85919 /* san-diego-locator.locb in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF47A1C5BDDCA00D85919 /* san-diego-locator.locb */; };
-		3E4BF47F1C5BDDCA00D85919 /* san-diego-locator.lox in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF47B1C5BDDCA00D85919 /* san-diego-locator.lox */; };
+		3E4BF47C1C5BDDCA00D85919 /* san-diego-locator.loc in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF4781C5BDDCA00D85919 /* san-diego-locator.loc */; settings = {ASSET_TAGS = (SanDiegoLocator, ); }; };
+		3E4BF47D1C5BDDCA00D85919 /* san-diego-locator.loc.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF4791C5BDDCA00D85919 /* san-diego-locator.loc.xml */; settings = {ASSET_TAGS = (SanDiegoLocator, ); }; };
+		3E4BF47E1C5BDDCA00D85919 /* san-diego-locator.locb in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF47A1C5BDDCA00D85919 /* san-diego-locator.locb */; settings = {ASSET_TAGS = (SanDiegoLocator, ); }; };
+		3E4BF47F1C5BDDCA00D85919 /* san-diego-locator.lox in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF47B1C5BDDCA00D85919 /* san-diego-locator.lox */; settings = {ASSET_TAGS = (SanDiegoLocator, ); }; };
 		3E4BF4801C5BDF0900D85919 /* FindAddressViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4411C5AE98300D85919 /* FindAddressViewController.swift */; };
 		3E4BF4811C5BDF0900D85919 /* WorldAddressesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4431C5AEA6500D85919 /* WorldAddressesViewController.swift */; };
 		3E4BF4821C5BDF0900D85919 /* ReverseGeocodeViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4491C5AEF8800D85919 /* ReverseGeocodeViewController.swift */; };
 		3E4BF4831C5BDF0900D85919 /* FindPlaceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF44B1C5AF04300D85919 /* FindPlaceViewController.swift */; };
 		3E4BF4841C5BDF0900D85919 /* OfflineGeocodeViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4551C5BD66C00D85919 /* OfflineGeocodeViewController.swift */; };
 		3E4BF4851C5BDF0900D85919 /* SanDiegoAddressesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4571C5BD6C400D85919 /* SanDiegoAddressesViewController.swift */; };
-		3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */; };
+		3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */; settings = {ASSET_TAGS = (SanDiegoTilePackage, ); }; };
 		3E54D2331CC697F100BB9904 /* GraphicDrawOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E54D2321CC697F100BB9904 /* GraphicDrawOrderViewController.swift */; };
 		3E54D2351CC6985200BB9904 /* GraphicDrawOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E54D2341CC6985200BB9904 /* GraphicDrawOrder.storyboard */; };
 		3E54D2361CC69E5E00BB9904 /* GraphicDrawOrderViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E54D2321CC697F100BB9904 /* GraphicDrawOrderViewController.swift */; };
@@ -104,7 +105,7 @@
 		3E676DF11B1D0B6000D4029A /* Camera Shutter.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */; };
 		3E6AE3EC1C6D11BA0026E59C /* OfflineRouting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6AE3EB1C6D11BA0026E59C /* OfflineRouting.storyboard */; };
 		3E6AE3EE1C6D11FD0026E59C /* OfflineRoutingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AE3ED1C6D11FD0026E59C /* OfflineRoutingViewController.swift */; };
-		3E6AE3F11C6D1B2E0026E59C /* san-diego in Resources */ = {isa = PBXBuildFile; fileRef = 3E6AE3F01C6D1B2E0026E59C /* san-diego */; };
+		3E6AE3F11C6D1B2E0026E59C /* san-diego in Resources */ = {isa = PBXBuildFile; fileRef = 3E6AE3F01C6D1B2E0026E59C /* san-diego */; settings = {ASSET_TAGS = (SanDiegoNetworkData, ); }; };
 		3E6AE3F21C6D1C490026E59C /* OfflineRoutingViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6AE3ED1C6D11FD0026E59C /* OfflineRoutingViewController.swift */; };
 		3E6AE3F91C73B5480026E59C /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */; };
 		3E6AE3FA1C73B5480026E59C /* FindRoute.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6AE3F71C73B5480026E59C /* FindRoute.storyboard */; };
@@ -129,7 +130,7 @@
 		3E8A25831D36B6E300D14F08 /* FeatureLayerGDB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8A257F1D36B6E300D14F08 /* FeatureLayerGDB.storyboard */; };
 		3E8A25841D36B6E300D14F08 /* FeatureLayerGDBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A25801D36B6E300D14F08 /* FeatureLayerGDBViewController.swift */; };
 		3E8A25871D36B74400D14F08 /* FeatureLayerGDBViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A25801D36B6E300D14F08 /* FeatureLayerGDBViewController.swift */; };
-		3E8A258A1D36B89400D14F08 /* LA_Trails.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = 3E8A25891D36B89400D14F08 /* LA_Trails.geodatabase */; };
+		3E8A258A1D36B89400D14F08 /* LA_Trails.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = 3E8A25891D36B89400D14F08 /* LA_Trails.geodatabase */; settings = {ASSET_TAGS = (LATrailsGeodatabase, ); }; };
 		3E8A25911D36B97A00D14F08 /* MapLoaded.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8A258D1D36B97A00D14F08 /* MapLoaded.storyboard */; };
 		3E8A25921D36B97A00D14F08 /* MapLoadedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A258E1D36B97A00D14F08 /* MapLoadedViewController.swift */; };
 		3E8A25941D36BA0500D14F08 /* MapLoadedViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A258E1D36B97A00D14F08 /* MapLoadedViewController.swift */; };
@@ -147,18 +148,18 @@
 		3EABC7A21DB1793000C161C6 /* StretchRendererSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC79D1DB1793000C161C6 /* StretchRendererSettingsVC.swift */; };
 		3EABC7A31DB1793000C161C6 /* StretchRendererTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC79E1DB1793000C161C6 /* StretchRendererTypeCell.swift */; };
 		3EABC7A41DB1793000C161C6 /* StretchRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC79F1DB1793000C161C6 /* StretchRendererViewController.swift */; };
-		3EABC7AE1DB17B2C00C161C6 /* Shasta.tfw in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AA1DB17B2C00C161C6 /* Shasta.tfw */; };
-		3EABC7AF1DB17B2C00C161C6 /* Shasta.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AB1DB17B2C00C161C6 /* Shasta.tif */; };
-		3EABC7B01DB17B2C00C161C6 /* Shasta.tif.aux.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AC1DB17B2C00C161C6 /* Shasta.tif.aux.xml */; };
-		3EABC7B11DB17B2C00C161C6 /* Shasta.tif.ovr in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AD1DB17B2C00C161C6 /* Shasta.tif.ovr */; };
-		3EABC7B41DB181DD00C161C6 /* ShastaBW.tfw in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7B21DB181DD00C161C6 /* ShastaBW.tfw */; };
-		3EABC7B51DB181DD00C161C6 /* ShastaBW.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7B31DB181DD00C161C6 /* ShastaBW.tif */; };
-		3EABC7B81DB183E600C161C6 /* ShastaBW.tif.aux.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7B61DB183E600C161C6 /* ShastaBW.tif.aux.xml */; };
-		3EABC7B91DB183E600C161C6 /* ShastaBW.tif.ovr in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7B71DB183E600C161C6 /* ShastaBW.tif.ovr */; };
-		3EABC7C11DB191BC00C161C6 /* Shasta_Elevation.tfw in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7BD1DB191BC00C161C6 /* Shasta_Elevation.tfw */; };
-		3EABC7C21DB191BC00C161C6 /* Shasta_Elevation.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7BE1DB191BC00C161C6 /* Shasta_Elevation.tif */; };
-		3EABC7C31DB191BC00C161C6 /* Shasta_Elevation.tif.aux.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7BF1DB191BC00C161C6 /* Shasta_Elevation.tif.aux.xml */; };
-		3EABC7C41DB191BC00C161C6 /* Shasta_Elevation.tif.ovr in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7C01DB191BC00C161C6 /* Shasta_Elevation.tif.ovr */; };
+		3EABC7AE1DB17B2C00C161C6 /* Shasta.tfw in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AA1DB17B2C00C161C6 /* Shasta.tfw */; settings = {ASSET_TAGS = (ShastaRaster, ); }; };
+		3EABC7AF1DB17B2C00C161C6 /* Shasta.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AB1DB17B2C00C161C6 /* Shasta.tif */; settings = {ASSET_TAGS = (ShastaRaster, ); }; };
+		3EABC7B01DB17B2C00C161C6 /* Shasta.tif.aux.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AC1DB17B2C00C161C6 /* Shasta.tif.aux.xml */; settings = {ASSET_TAGS = (ShastaRaster, ); }; };
+		3EABC7B11DB17B2C00C161C6 /* Shasta.tif.ovr in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AD1DB17B2C00C161C6 /* Shasta.tif.ovr */; settings = {ASSET_TAGS = (ShastaRaster, ); }; };
+		3EABC7B41DB181DD00C161C6 /* ShastaBW.tfw in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7B21DB181DD00C161C6 /* ShastaBW.tfw */; settings = {ASSET_TAGS = (ShastaBWRaster, ); }; };
+		3EABC7B51DB181DD00C161C6 /* ShastaBW.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7B31DB181DD00C161C6 /* ShastaBW.tif */; settings = {ASSET_TAGS = (ShastaBWRaster, ); }; };
+		3EABC7B81DB183E600C161C6 /* ShastaBW.tif.aux.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7B61DB183E600C161C6 /* ShastaBW.tif.aux.xml */; settings = {ASSET_TAGS = (ShastaBWRaster, ); }; };
+		3EABC7B91DB183E600C161C6 /* ShastaBW.tif.ovr in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7B71DB183E600C161C6 /* ShastaBW.tif.ovr */; settings = {ASSET_TAGS = (ShastaBWRaster, ); }; };
+		3EABC7C11DB191BC00C161C6 /* Shasta_Elevation.tfw in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7BD1DB191BC00C161C6 /* Shasta_Elevation.tfw */; settings = {ASSET_TAGS = (ShastaElevationRaster, ); }; };
+		3EABC7C21DB191BC00C161C6 /* Shasta_Elevation.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7BE1DB191BC00C161C6 /* Shasta_Elevation.tif */; settings = {ASSET_TAGS = (ShastaElevationRaster, ); }; };
+		3EABC7C31DB191BC00C161C6 /* Shasta_Elevation.tif.aux.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7BF1DB191BC00C161C6 /* Shasta_Elevation.tif.aux.xml */; settings = {ASSET_TAGS = (ShastaElevationRaster, ); }; };
+		3EABC7C41DB191BC00C161C6 /* Shasta_Elevation.tif.ovr in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7C01DB191BC00C161C6 /* Shasta_Elevation.tif.ovr */; settings = {ASSET_TAGS = (ShastaElevationRaster, ); }; };
 		3EABC7C91DB1947500C161C6 /* BlendRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7C61DB1947500C161C6 /* BlendRenderer.storyboard */; };
 		3EABC7CA1DB1947500C161C6 /* BlendRendererSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC7C71DB1947500C161C6 /* BlendRendererSettingsVC.swift */; };
 		3EABC7CB1DB1947500C161C6 /* BlendRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC7C81DB1947500C161C6 /* BlendRendererViewController.swift */; };
@@ -200,7 +201,7 @@
 		3EC39C221C9A643E003F6459 /* RouteAroundBarriersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */; };
 		3EC39C231C9A643E003F6459 /* DirectionsListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */; };
 		3EC39C241C9A643E003F6459 /* RouteParametersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */; };
-		3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C2D1C9B0A9D003F6459 /* SanFrancisco.tpk */; };
+		3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C2D1C9B0A9D003F6459 /* SanFrancisco.tpk */; settings = {ASSET_TAGS = (SanFranciscoTilePackage, ); }; };
 		3EC39C321C9B0DF6003F6459 /* ExportTilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C311C9B0DF6003F6459 /* ExportTilesViewController.swift */; };
 		3EC39C341C9B106D003F6459 /* ExportTiles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C331C9B106D003F6459 /* ExportTiles.storyboard */; };
 		3EC39C371C9B1ADA003F6459 /* AGSExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C361C9B1ADA003F6459 /* AGSExtensions.swift */; };
@@ -214,6 +215,8 @@
 		3EC39C491C9B515D003F6459 /* FeatureLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */; };
 		3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ECCFE381BD0401A00CE256D /* LayerStatus.storyboard */; };
 		3ECCFE3C1BD0401A00CE256D /* LayerStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */; };
+		3ECDD9B01E8470E100E645AB /* DownloadProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECDD9AE1E8470E100E645AB /* DownloadProgressView.swift */; };
+		3ECDD9B11E8470E100E645AB /* DownloadProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ECDD9AF1E8470E100E645AB /* DownloadProgressView.xib */; };
 		3ED028571B8E3A8500ACA70D /* CreateSaveMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028021B8E3A8400ACA70D /* CreateSaveMap.storyboard */; };
 		3ED028581B8E3A8500ACA70D /* CreateSaveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028031B8E3A8400ACA70D /* CreateSaveMapViewController.swift */; };
 		3ED028591B8E3A8500ACA70D /* CreateOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028041B8E3A8400ACA70D /* CreateOptionsViewController.swift */; };
@@ -363,13 +366,13 @@
 		3EEE1D731E493655003263FC /* GroupUserCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EEE1D691E4935FC003263FC /* GroupUserCell.swift */; };
 		3EEE1D741E493655003263FC /* GroupUsersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EEE1D6B1E4935FC003263FC /* GroupUsersViewController.swift */; };
 		3EFCE1B11CF368D500E02F67 /* OpenMobileMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFCE1B01CF368D500E02F67 /* OpenMobileMapViewController.swift */; };
-		3EFCE1BA1CF369A800E02F67 /* Yellowstone.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCE1B61CF369A800E02F67 /* Yellowstone.mmpk */; };
+		3EFCE1BA1CF369A800E02F67 /* Yellowstone.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCE1B61CF369A800E02F67 /* Yellowstone.mmpk */; settings = {ASSET_TAGS = (YellowstoneMMPK, ); }; };
 		3EFCE1BD1CF36BC100E02F67 /* OpenMobileMapPackage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCE1BC1CF36BC100E02F67 /* OpenMobileMapPackage.storyboard */; };
 		3EFCE1C31CF374C600E02F67 /* MapPackageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFCE1BF1CF374C600E02F67 /* MapPackageCell.swift */; };
 		3EFCE1C41CF374C600E02F67 /* MapPackagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFCE1C01CF374C600E02F67 /* MapPackagesListViewController.swift */; };
 		3EFCE1C51CF374C600E02F67 /* MobileMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFCE1C11CF374C600E02F67 /* MobileMapViewController.swift */; };
 		3EFCE1C61CF374C600E02F67 /* MobileMapSearchRoute.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCE1C21CF374C600E02F67 /* MobileMapSearchRoute.storyboard */; };
-		3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCE1C71CF38A9C00E02F67 /* SanFrancisco.mmpk */; };
+		3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCE1C71CF38A9C00E02F67 /* SanFrancisco.mmpk */; settings = {ASSET_TAGS = (SanFranciscoMMPK, ); }; };
 		3EFDE0F51E36ABB700CBCD92 /* FeatureCollectionLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EFDE0F01E36ABB700CBCD92 /* FeatureCollectionLayer.storyboard */; };
 		3EFDE0F61E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift */; };
 		3EFDE0F71E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */; };
@@ -664,6 +667,8 @@
 		3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OfflineEditing.storyboard; path = "Edit data/Offline edit and sync/OfflineEditing.storyboard"; sourceTree = "<group>"; };
 		3ECCFE381BD0401A00CE256D /* LayerStatus.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LayerStatus.storyboard; sourceTree = "<group>"; };
 		3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerStatusViewController.swift; sourceTree = "<group>"; };
+		3ECDD9AE1E8470E100E645AB /* DownloadProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadProgressView.swift; path = "Content Display Logic/Views/DownloadProgressView.swift"; sourceTree = "<group>"; };
+		3ECDD9AF1E8470E100E645AB /* DownloadProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DownloadProgressView.xib; path = "Content Display Logic/Views/DownloadProgressView.xib"; sourceTree = "<group>"; };
 		3ED028021B8E3A8400ACA70D /* CreateSaveMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CreateSaveMap.storyboard; path = "../Create and save a map/CreateSaveMap.storyboard"; sourceTree = "<group>"; };
 		3ED028031B8E3A8400ACA70D /* CreateSaveMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateSaveMapViewController.swift; path = "../Create and save a map/CreateSaveMapViewController.swift"; sourceTree = "<group>"; };
 		3ED028041B8E3A8400ACA70D /* CreateOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateOptionsViewController.swift; path = "../Create and save a map/CreateOptionsViewController.swift"; sourceTree = "<group>"; };
@@ -1131,6 +1136,8 @@
 			children = (
 				3E0830B91BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift */,
 				3E0830BB1BC31B69001AF9A7 /* CustomSearchHeaderView.xib */,
+				3ECDD9AE1E8470E100E645AB /* DownloadProgressView.swift */,
+				3ECDD9AF1E8470E100E645AB /* DownloadProgressView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2102,6 +2109,21 @@
 		3E23A9D81AFC28F6002E2214 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					LATrailsGeodatabase,
+					MobileMapPackages,
+					SRTMRaster,
+					SanDiegoLocator,
+					SanDiegoNetworkData,
+					SanDiegoTilePackage,
+					SanFranciscoMMPK,
+					SanFranciscoTilePackage,
+					ShastaBWRaster,
+					ShastaElevationRaster,
+					ShastaRaster,
+					TilePackages,
+					YellowstoneMMPK,
+				);
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0800;
@@ -2109,8 +2131,9 @@
 				TargetAttributes = {
 					3E23A9DF1AFC28F6002E2214 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 75Z67E6SV2;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -2182,6 +2205,7 @@
 				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
 				3ED028AF1B8E3A9800ACA70D /* MILUsingURL.storyboard in Resources */,
 				3E8A258A1D36B89400D14F08 /* LA_Trails.geodatabase in Resources */,
+				3ECDD9B11E8470E100E645AB /* DownloadProgressView.xib in Resources */,
 				3EABC7C11DB191BC00C161C6 /* Shasta_Elevation.tfw in Resources */,
 				3E676DF11B1D0B6000D4029A /* Camera Shutter.caf in Resources */,
 				3EABC7B81DB183E600C161C6 /* ShastaBW.tif.aux.xml in Resources */,
@@ -2220,6 +2244,7 @@
 				3EABC7C21DB191BC00C161C6 /* Shasta_Elevation.tif in Resources */,
 				3EABC78F1DB1772000C161C6 /* RGBRenderer.storyboard in Resources */,
 				3ED029281B8E3AB300ACA70D /* GORenderers.storyboard in Resources */,
+				3E3425BD1E7B4CB10024270B /* srtm.tiff.ovr in Resources */,
 				3ED788901D26E2F700E5F311 /* LocalTiledLayer.storyboard in Resources */,
 				3EBA25401D2F104100AB0703 /* UniqueValueRenderer.storyboard in Resources */,
 				3E39F6D21B9790A9000DEC6C /* EditFeaturesOnline.storyboard in Resources */,
@@ -2402,6 +2427,7 @@
 				3ED0296A1B8E3ACD00ACA70D /* EditAttributesViewController.swift in Sources */,
 				3EABC7A11DB1793000C161C6 /* StretchRendererInputCell.swift in Sources */,
 				3E6C77161CCFC4B200E89873 /* IdentifyLayersViewController.swift in Sources */,
+				3ECDD9B01E8470E100E645AB /* DownloadProgressView.swift in Sources */,
 				3EABC7901DB1772000C161C6 /* RGBRenderer3InputCell.swift in Sources */,
 				3E4B05F71B39EF250072E514 /* SVIndefiniteAnimatedView.m in Sources */,
 				3ED028741B8E3A8500ACA70D /* MapViewDrawStatusViewController.swift in Sources */,
@@ -2530,7 +2556,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 75Z67E6SV2;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2559,9 +2585,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSET_PACK_MANIFEST_URL_PREFIX = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 75Z67E6SV2;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

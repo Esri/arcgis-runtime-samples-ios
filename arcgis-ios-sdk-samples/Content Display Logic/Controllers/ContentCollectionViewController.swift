@@ -79,6 +79,9 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         if let children = dict["children"] as? [AnyObject] {
             node.children = self.populateNodesArray(children)
         }
+        if let dependency = dict["dependency"] as? [String] {
+            node.dependency.append(contentsOf: dependency)
+        }
         return node
     }
     

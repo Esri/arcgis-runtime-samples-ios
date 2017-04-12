@@ -279,9 +279,6 @@
 		3ED029381B8E3AB300ACA70D /* MILLegendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED029111B8E3AB300ACA70D /* MILLegendTableViewController.swift */; };
 		3ED029391B8E3AB300ACA70D /* MILShowLegend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED029121B8E3AB300ACA70D /* MILShowLegend.storyboard */; };
 		3ED0293A1B8E3AB300ACA70D /* MILShowLegendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED029131B8E3AB300ACA70D /* MILShowLegendViewController.swift */; };
-		3ED029401B8E3AB300ACA70D /* line.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3ED0291B1B8E3AB300ACA70D /* line.gif */; };
-		3ED029411B8E3AB300ACA70D /* point.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3ED0291C1B8E3AB300ACA70D /* point.gif */; };
-		3ED029421B8E3AB300ACA70D /* polygon.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3ED0291D1B8E3AB300ACA70D /* polygon.gif */; };
 		3ED0294B1B8E3AB300ACA70D /* Sketch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED029261B8E3AB300ACA70D /* Sketch.storyboard */; };
 		3ED0294C1B8E3AB300ACA70D /* SketchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED029271B8E3AB300ACA70D /* SketchViewController.swift */; };
 		3ED029641B8E3ACD00ACA70D /* AttachmentsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0294E1B8E3ACD00ACA70D /* AttachmentsListViewController.swift */; };
@@ -731,9 +728,6 @@
 		3ED029111B8E3AB300ACA70D /* MILLegendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MILLegendTableViewController.swift; sourceTree = "<group>"; };
 		3ED029121B8E3AB300ACA70D /* MILShowLegend.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MILShowLegend.storyboard; sourceTree = "<group>"; };
 		3ED029131B8E3AB300ACA70D /* MILShowLegendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MILShowLegendViewController.swift; sourceTree = "<group>"; };
-		3ED0291B1B8E3AB300ACA70D /* line.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = line.gif; sourceTree = "<group>"; };
-		3ED0291C1B8E3AB300ACA70D /* point.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = point.gif; sourceTree = "<group>"; };
-		3ED0291D1B8E3AB300ACA70D /* polygon.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = polygon.gif; sourceTree = "<group>"; };
 		3ED029261B8E3AB300ACA70D /* Sketch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sketch.storyboard; sourceTree = "<group>"; };
 		3ED029271B8E3AB300ACA70D /* SketchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SketchViewController.swift; sourceTree = "<group>"; };
 		3ED0294E1B8E3ACD00ACA70D /* AttachmentsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentsListViewController.swift; sourceTree = "<group>"; };
@@ -1883,22 +1877,11 @@
 		3ED029151B8E3AB300ACA70D /* Sketch on the map */ = {
 			isa = PBXGroup;
 			children = (
-				3ED029181B8E3AB300ACA70D /* Images */,
 				3ED029261B8E3AB300ACA70D /* Sketch.storyboard */,
 				3ED029271B8E3AB300ACA70D /* SketchViewController.swift */,
 			);
 			name = "Sketch on the map";
 			path = "Display information/Sketch on the map";
-			sourceTree = "<group>";
-		};
-		3ED029181B8E3AB300ACA70D /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				3ED0291B1B8E3AB300ACA70D /* line.gif */,
-				3ED0291C1B8E3AB300ACA70D /* point.gif */,
-				3ED0291D1B8E3AB300ACA70D /* polygon.gif */,
-			);
-			path = Images;
 			sourceTree = "<group>";
 		};
 		3ED0294D1B8E3ACD00ACA70D /* Edit feature attachments */ = {
@@ -2178,10 +2161,8 @@
 				3E1E5EEF1D9F0BAB00F4913C /* HillshadeRenderer.storyboard in Resources */,
 				3ED028571B8E3A8500ACA70D /* CreateSaveMap.storyboard in Resources */,
 				3E0B58501E36BCCD00951767 /* AnalyzeViewshed.storyboard in Resources */,
-				3ED029411B8E3AB300ACA70D /* point.gif in Resources */,
 				3E4BF45A1C5BD77300D85919 /* OfflineGeocode.storyboard in Resources */,
 				3EABC7C31DB191BC00C161C6 /* Shasta_Elevation.tif.aux.xml in Resources */,
-				3ED029401B8E3AB300ACA70D /* line.gif in Resources */,
 				3E6AE3EC1C6D11BA0026E59C /* OfflineRouting.storyboard in Resources */,
 				3E23A9EF1AFC28F6002E2214 /* Images.xcassets in Resources */,
 				3EBA25611D34178200AB0703 /* SimpleMarkerSymbol.storyboard in Resources */,
@@ -2264,7 +2245,6 @@
 				3ED0292C1B8E3AB300ACA70D /* GOIdentify.storyboard in Resources */,
 				3EBA25761D34510F00AB0703 /* CreateGeometries.storyboard in Resources */,
 				3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */,
-				3ED029421B8E3AB300ACA70D /* polygon.gif in Resources */,
 				3EABC7A01DB1793000C161C6 /* StretchRenderer.storyboard in Resources */,
 				3EFCE1C61CF374C600E02F67 /* MobileMapSearchRoute.storyboard in Resources */,
 				3E54D2351CC6985200BB9904 /* GraphicDrawOrder.storyboard in Resources */,

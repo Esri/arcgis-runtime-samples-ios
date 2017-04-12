@@ -49,12 +49,8 @@ class SketchViewController: UIViewController {
         self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -10049589.670344, yMin: 3480099.843772, xMax: -10010071.251113, yMax: 3512023.489701, spatialReference: AGSSpatialReference.webMercator()))
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func respondToGeomChanged() {
+        
         //Enable/disable UI elements appropriately
         self.undoBBI.isEnabled = self.sketchEditor.undoManager.canUndo
         self.redoBBI.isEnabled = self.sketchEditor.undoManager.canRedo
@@ -64,18 +60,28 @@ class SketchViewController: UIViewController {
     //MARK: - Actions
     
     @IBAction func geometryValueChanged(_ segmentedControl:UISegmentedControl) {
+        
         switch segmentedControl.selectedSegmentIndex {
+        
         case 0://point
             self.sketchEditor.start(with: nil, creationMode: .point)
             
         case 1://polyline
             self.sketchEditor.start(with: nil, creationMode: .polyline)
             
-        case 2://polygon
+        case 2://freehand polyline
+            self.sketchEditor.start(with: nil, creationMode: .freehandPolyline)
+            
+        case 3://polygon
             self.sketchEditor.start(with: nil, creationMode: .polygon)
+            
+        case 4://freehand polygon
+            self.sketchEditor.start(with: nil, creationMode: .freehandPolygon)
+            
         default:
             break
         }
+        
         self.mapView.sketchEditor = self.sketchEditor
     }
     
@@ -93,5 +99,10 @@ class SketchViewController: UIViewController {
     
     @IBAction func clear() {
         self.sketchEditor.clearGeometry()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }

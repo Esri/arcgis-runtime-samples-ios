@@ -34,6 +34,9 @@ class BasemapsCollectionViewController: UIViewController, UICollectionViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //content size for modal presentation on ipad
+        self.preferredContentSize = CGSize(width: 500, height: 400)
+        
         //fetch basemaps from the portal using helper class
         self.basemapHelper.fetchBasemaps(from: self.portal) { [weak self] (error: Error?) in
             self?.collectionView.reloadData()
@@ -68,30 +71,7 @@ class BasemapsCollectionViewController: UIViewController, UICollectionViewDataSo
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BasemapCell", for: indexPath) as! BasemapCell
             
             //portal item at index
-            let portalItem = self.basemapHelper.basemaps[indexPath.item]
-            
-            //set portal item's title as the cell's label
-            cell.label.text = portalItem.title
-            
-            //portal item's thumbnail as the image on cell
-            if let image = portalItem.thumbnail?.image {
-                cell.imageView.image = image
-            }
-            else {
-                cell.imageView.image = nil
-                
-                //if the thumbnail is not already downloaded
-                portalItem.thumbnail?.load(completion: { (error: Error?) in
-                    if let error = error {
-                        print(error)
-                    }
-                    else {
-                        if let cell = collectionView.cellForItem(at: indexPath) as? BasemapCell {
-                            cell.imageView.image = portalItem.thumbnail?.image
-                        }
-                    }
-                })
-            }
+            cell.portalItem = self.basemapHelper.basemaps[indexPath.item]
             
             //styling
             cell.layer.borderColor = UIColor.gray.cgColor

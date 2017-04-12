@@ -13,9 +13,36 @@
 // limitations under the License.
 
 import UIKit
+import ArcGIS
 
 class BasemapCell: UICollectionViewCell {
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var label: UILabel!
+    
+    var portalItem:AGSPortalItem! {
+        didSet {
+            
+            //set portal item's title as the cell's label
+            self.label.text = portalItem.title
+            
+            //portal item's thumbnail as the image on cell
+            if let image = portalItem.thumbnail?.image {
+                self.imageView.image = image
+            }
+            else {
+                self.imageView.image = nil
+                
+                //if the thumbnail is not already downloaded
+                portalItem.thumbnail?.load { [weak self] (error: Error?) in
+                    if let error = error {
+                        print(error)
+                    }
+                    else {
+                        self?.imageView.image = self?.portalItem.thumbnail?.image
+                    }
+                }
+            }
+        }
+    }
 }

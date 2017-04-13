@@ -34,7 +34,7 @@ class ShowOrgBasemapsVC: UIViewController, BasemapsCollectionVCDelegate, AGSAuth
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ShowOrgBasemapsVC", "BasemapHelper", "BasemapsCollectionViewController", "BasemapCell"]
         
         //oAuth setup
-        let config = AGSOAuthConfiguration(portalURL: URL(string: self.portalURLString), clientID: "RsFgCI1clPQ7TVwD", redirectURL: "iOSSamples://auth")
+        let config = AGSOAuthConfiguration(portalURL: URL(string: self.portalURLString), clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
         AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
         AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
         

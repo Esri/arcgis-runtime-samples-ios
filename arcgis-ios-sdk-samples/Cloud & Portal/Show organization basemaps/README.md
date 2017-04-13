@@ -1,4 +1,4 @@
-#List portal group users
+#Show organization basemaps
 
 This sample demonstrates how to load a portal and then use the organization's predefined basemaps query to get all basemaps.
 

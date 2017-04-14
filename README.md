@@ -58,5 +58,4 @@ limitations under the License.
 
 A copy of the license is available in the repository's [license.txt]( https://raw.github.com/Esri/arcgis-runtime-samples-ios/master/license.txt) file.
 
-[](Esri Tags: ArcGIS Runtime iOS SDK Samples)
-[](Esri Language: Objective-C, Swift)
+

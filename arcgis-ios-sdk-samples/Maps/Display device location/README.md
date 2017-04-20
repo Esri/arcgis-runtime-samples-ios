@@ -1,8 +1,8 @@
-#Display device location
+# Display device location
 
 This sample demonstrates how you can enable location services and switch between different types of auto pan modes.
 
-##How to use the sample
+## How to use the sample
 
 The sample comes with a button on the bottom, says `Stop` by default. When you tap on it, you are shown a list of options
 
@@ -16,7 +16,7 @@ The sample comes with a button on the bottom, says `Stop` by default. When you t
 ![](image2.png)
 ![](image3.png)
 
-##How it works
+## How it works
 
 Each `AGSMapView` has its own instance of `AGSLocationDisplay`, stored as `locationDisplay`. The `dataSource` on `AGSLocationDisplay` is responsible for providing periodic location updates. The default dataSource uses the platform's location service (CLLocationManager). To start displaying location, you need to call `start(completion:)`. To stop displaying location, you need to call `stop()`. Use the `autoPanMode` property to change the how the map behaves when location updates are received.
 

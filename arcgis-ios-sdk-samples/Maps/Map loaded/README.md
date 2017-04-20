@@ -1,4 +1,4 @@
-#Map loaded
+# Map loaded
 
 This sample shows you the map's load status. The LoadStatus is considered loaded when any of the following are true:
 
@@ -8,7 +8,7 @@ This sample shows you the map's load status. The LoadStatus is considered loaded
 
 ![](image1.png)
 
-##How it works
+## How it works
 
 The sample uses Key-Value Observing on the `AGSMap`’s `loadStatus` property to determine when the status has changed.
 

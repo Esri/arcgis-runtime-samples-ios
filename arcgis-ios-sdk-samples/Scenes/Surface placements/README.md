@@ -1,10 +1,10 @@
-#Surface placements
+# Surface placements
 
 This sample demonstrates how to position graphics using different surface placements
 
 ![](image1.png)
 
-##How it works
+## How it works
 
 The sample creates three graphic overlays. For each graphic overlay it set the `sceneProperties.surfacePlacement` property to one of the following:
 

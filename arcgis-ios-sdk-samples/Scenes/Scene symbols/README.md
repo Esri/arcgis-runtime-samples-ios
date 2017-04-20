@@ -1,10 +1,10 @@
-#Scene symbols
+# Scene symbols
 
 This sample demonstrates how to create 3D symbols with different shapes.
 
 ![](image1.png)
 
-##How it works
+## How it works
 
 The sample creates a symbol for each `AGSSimpleMarkerSymbolStyle`, namely
 

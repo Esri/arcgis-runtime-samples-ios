@@ -110,6 +110,15 @@
 		3E6AE3F91C73B5480026E59C /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */; };
 		3E6AE3FA1C73B5480026E59C /* FindRoute.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6AE3F71C73B5480026E59C /* FindRoute.storyboard */; };
 		3E6AE3FB1C73B5480026E59C /* FindRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */; };
+		3E6BF1CE1E92F7E90060DAC2 /* BasemapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6BF1C91E92F7E90060DAC2 /* BasemapCell.swift */; };
+		3E6BF1CF1E92F7E90060DAC2 /* BasemapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6BF1CA1E92F7E90060DAC2 /* BasemapHelper.swift */; };
+		3E6BF1D01E92F7E90060DAC2 /* ShowOrgBasemaps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6BF1CB1E92F7E90060DAC2 /* ShowOrgBasemaps.storyboard */; };
+		3E6BF1D11E92F7E90060DAC2 /* ShowOrgBasemapsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6BF1CC1E92F7E90060DAC2 /* ShowOrgBasemapsVC.swift */; };
+		3E6BF1D21E92F7E90060DAC2 /* BasemapsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6BF1CD1E92F7E90060DAC2 /* BasemapsCollectionViewController.swift */; };
+		3E6BF1D31E9311C20060DAC2 /* ShowOrgBasemapsVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6BF1CC1E92F7E90060DAC2 /* ShowOrgBasemapsVC.swift */; };
+		3E6BF1D41E9311C20060DAC2 /* BasemapHelper.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6BF1CA1E92F7E90060DAC2 /* BasemapHelper.swift */; };
+		3E6BF1D51E9311C20060DAC2 /* BasemapsCollectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6BF1CD1E92F7E90060DAC2 /* BasemapsCollectionViewController.swift */; };
+		3E6BF1D61E9311C20060DAC2 /* BasemapCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6BF1C91E92F7E90060DAC2 /* BasemapCell.swift */; };
 		3E6C77161CCFC4B200E89873 /* IdentifyLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6C77151CCFC4B200E89873 /* IdentifyLayersViewController.swift */; };
 		3E6C771C1CCFC53B00E89873 /* IdentifyLayers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6C771B1CCFC53B00E89873 /* IdentifyLayers.storyboard */; };
 		3E6C771D1CCFE5AD00E89873 /* IdentifyLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6C77151CCFC4B200E89873 /* IdentifyLayersViewController.swift */; };
@@ -386,6 +395,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3E6BF1D31E9311C20060DAC2 /* ShowOrgBasemapsVC.swift in CopyFiles */,
+				3E6BF1D41E9311C20060DAC2 /* BasemapHelper.swift in CopyFiles */,
+				3E6BF1D51E9311C20060DAC2 /* BasemapsCollectionViewController.swift in CopyFiles */,
+				3E6BF1D61E9311C20060DAC2 /* BasemapCell.swift in CopyFiles */,
 				3EEE1D731E493655003263FC /* GroupUserCell.swift in CopyFiles */,
 				3EEE1D741E493655003263FC /* GroupUsersViewController.swift in CopyFiles */,
 				3E0B585C1E36D93800951767 /* SpatialOperationsViewController.swift in CopyFiles */,
@@ -589,6 +602,11 @@
 		3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsViewController.swift; sourceTree = "<group>"; };
 		3E6AE3F71C73B5480026E59C /* FindRoute.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FindRoute.storyboard; sourceTree = "<group>"; };
 		3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindRouteViewController.swift; sourceTree = "<group>"; };
+		3E6BF1C91E92F7E90060DAC2 /* BasemapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasemapCell.swift; path = "../Show organization basemaps/BasemapCell.swift"; sourceTree = "<group>"; };
+		3E6BF1CA1E92F7E90060DAC2 /* BasemapHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasemapHelper.swift; path = "../Show organization basemaps/BasemapHelper.swift"; sourceTree = "<group>"; };
+		3E6BF1CB1E92F7E90060DAC2 /* ShowOrgBasemaps.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ShowOrgBasemaps.storyboard; path = "../Show organization basemaps/ShowOrgBasemaps.storyboard"; sourceTree = "<group>"; };
+		3E6BF1CC1E92F7E90060DAC2 /* ShowOrgBasemapsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowOrgBasemapsVC.swift; path = "../Show organization basemaps/ShowOrgBasemapsVC.swift"; sourceTree = "<group>"; };
+		3E6BF1CD1E92F7E90060DAC2 /* BasemapsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasemapsCollectionViewController.swift; path = "../Show organization basemaps/BasemapsCollectionViewController.swift"; sourceTree = "<group>"; };
 		3E6C77151CCFC4B200E89873 /* IdentifyLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IdentifyLayersViewController.swift; path = "Maps/Identify layers/IdentifyLayersViewController.swift"; sourceTree = "<group>"; };
 		3E6C771B1CCFC53B00E89873 /* IdentifyLayers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = IdentifyLayers.storyboard; path = "Maps/Identify layers/IdentifyLayers.storyboard"; sourceTree = "<group>"; };
 		3E71621E1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphicsWithSymbolsViewController.swift; path = "Display information/Add graphics with symbols/GraphicsWithSymbolsViewController.swift"; sourceTree = "<group>"; };
@@ -1198,6 +1216,18 @@
 				3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */,
 			);
 			path = "Find route";
+			sourceTree = "<group>";
+		};
+		3E6BF1C81E92F7E90060DAC2 /* Show organization basemaps */ = {
+			isa = PBXGroup;
+			children = (
+				3E6BF1CB1E92F7E90060DAC2 /* ShowOrgBasemaps.storyboard */,
+				3E6BF1CC1E92F7E90060DAC2 /* ShowOrgBasemapsVC.swift */,
+				3E6BF1CA1E92F7E90060DAC2 /* BasemapHelper.swift */,
+				3E6BF1CD1E92F7E90060DAC2 /* BasemapsCollectionViewController.swift */,
+				3E6BF1C91E92F7E90060DAC2 /* BasemapCell.swift */,
+			);
+			path = "Show organization basemaps";
 			sourceTree = "<group>";
 		};
 		3E6C77141CCFC33100E89873 /* Identify layers */ = {
@@ -1999,6 +2029,7 @@
 		3EEE1D671E4935FC003263FC /* Cloud & Portal */ = {
 			isa = PBXGroup;
 			children = (
+				3E6BF1C81E92F7E90060DAC2 /* Show organization basemaps */,
 				3EEE1D681E4935FC003263FC /* List portal group users */,
 			);
 			path = "Cloud & Portal";
@@ -2229,6 +2260,7 @@
 				3ED788901D26E2F700E5F311 /* LocalTiledLayer.storyboard in Resources */,
 				3EBA25401D2F104100AB0703 /* UniqueValueRenderer.storyboard in Resources */,
 				3E39F6D21B9790A9000DEC6C /* EditFeaturesOnline.storyboard in Resources */,
+				3E6BF1D01E92F7E90060DAC2 /* ShowOrgBasemaps.storyboard in Resources */,
 				3E4BF4481C5AEF3D00D85919 /* ReverseGeocode.storyboard in Resources */,
 				3ED028621B8E3A8500ACA70D /* SwitchBasemap.storyboard in Resources */,
 				3E41DD791B9F609500DA11CC /* DeleteFeatures.storyboard in Resources */,
@@ -2376,6 +2408,7 @@
 				3E1E5EE51D9F08ED00F4913C /* HillshadeRendererVC.swift in Sources */,
 				3ED029291B8E3AB300ACA70D /* GORenderersViewController.swift in Sources */,
 				3ED0286B1B8E3A8500ACA70D /* CustomContextSheet.swift in Sources */,
+				3E6BF1D21E92F7E90060DAC2 /* BasemapsCollectionViewController.swift in Sources */,
 				3E0B585B1E36D8D300951767 /* SpatialOperationsViewController.swift in Sources */,
 				3ED0287A1B8E3A8500ACA70D /* MMLLayersViewController.swift in Sources */,
 				3E54D2331CC697F100BB9904 /* GraphicDrawOrderViewController.swift in Sources */,
@@ -2388,6 +2421,7 @@
 				3ED0292D1B8E3AB300ACA70D /* GOIdentifyViewController.swift in Sources */,
 				3E8526391B90D92700690EBD /* BookmarksViewController.swift in Sources */,
 				3EC39C1E1C9A59B9003F6459 /* DirectionsListViewController.swift in Sources */,
+				3E6BF1D11E92F7E90060DAC2 /* ShowOrgBasemapsVC.swift in Sources */,
 				3E8D54FC1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift in Sources */,
 				3E6AE3EE1C6D11FD0026E59C /* OfflineRoutingViewController.swift in Sources */,
 				3E0B58591E36D8D300951767 /* OperationsListViewController.swift in Sources */,
@@ -2399,6 +2433,7 @@
 				3EEA06141D21C44000E03774 /* SurfacePlacementsViewController.swift in Sources */,
 				3EAF09451D7108DC00F8538F /* ChangeMapViewBackgroundVC.swift in Sources */,
 				3EEE1D701E4935FC003263FC /* GroupUsersViewController.swift in Sources */,
+				3E6BF1CE1E92F7E90060DAC2 /* BasemapCell.swift in Sources */,
 				3ED028591B8E3A8500ACA70D /* CreateOptionsViewController.swift in Sources */,
 				3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */,
 				3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */,
@@ -2423,6 +2458,7 @@
 				3E1E5EEA1D9F0ACC00F4913C /* HorizontalPicker.swift in Sources */,
 				3EE8B9551CA08E71003AA705 /* VectorTileLayerViewController.swift in Sources */,
 				3E39F6D31B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift in Sources */,
+				3E6BF1CF1E92F7E90060DAC2 /* BasemapHelper.swift in Sources */,
 				3EC39C371C9B1ADA003F6459 /* AGSExtensions.swift in Sources */,
 				3E3B2C1F1BBCA37F00A99C5E /* ContentCollectionViewController.swift in Sources */,
 				3ED5EB751B740A58009F9B75 /* SegmentedViewController.swift in Sources */,

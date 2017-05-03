@@ -357,6 +357,11 @@
 		3EEA06161D21C50E00E03774 /* DisplaySceneViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EEA06061D21C44000E03774 /* DisplaySceneViewController.swift */; };
 		3EEA06171D21C50E00E03774 /* ExtrudeGraphicsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EEA06091D21C44000E03774 /* ExtrudeGraphicsViewController.swift */; };
 		3EEA06181D21C50E00E03774 /* SurfacePlacementsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EEA060C1D21C44000E03774 /* SurfacePlacementsViewController.swift */; };
+		3EEB2B971EB9695F00B52513 /* ListRelatedFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EEB2B941EB9695F00B52513 /* ListRelatedFeatures.storyboard */; };
+		3EEB2B981EB9695F00B52513 /* ListRelatedFeaturesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEB2B951EB9695F00B52513 /* ListRelatedFeaturesVC.swift */; };
+		3EEB2B991EB9695F00B52513 /* RelatedFeaturesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEB2B961EB9695F00B52513 /* RelatedFeaturesListVC.swift */; };
+		3EEB2B9A1EBA808100B52513 /* ListRelatedFeaturesVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EEB2B951EB9695F00B52513 /* ListRelatedFeaturesVC.swift */; };
+		3EEB2B9B1EBA808100B52513 /* RelatedFeaturesListVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EEB2B961EB9695F00B52513 /* RelatedFeaturesListVC.swift */; };
 		3EEE1D6E1E4935FC003263FC /* GroupUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE1D691E4935FC003263FC /* GroupUserCell.swift */; };
 		3EEE1D6F1E4935FC003263FC /* GroupUsers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EEE1D6A1E4935FC003263FC /* GroupUsers.storyboard */; };
 		3EEE1D701E4935FC003263FC /* GroupUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE1D6B1E4935FC003263FC /* GroupUsersViewController.swift */; };
@@ -386,6 +391,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3EEB2B9A1EBA808100B52513 /* ListRelatedFeaturesVC.swift in CopyFiles */,
+				3EEB2B9B1EBA808100B52513 /* RelatedFeaturesListVC.swift in CopyFiles */,
 				3EEE1D731E493655003263FC /* GroupUserCell.swift in CopyFiles */,
 				3EEE1D741E493655003263FC /* GroupUsersViewController.swift in CopyFiles */,
 				3E0B585C1E36D93800951767 /* SpatialOperationsViewController.swift in CopyFiles */,
@@ -756,6 +763,9 @@
 		3EEA06091D21C44000E03774 /* ExtrudeGraphicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtrudeGraphicsViewController.swift; sourceTree = "<group>"; };
 		3EEA060B1D21C44000E03774 /* SurfacePlacements.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SurfacePlacements.storyboard; sourceTree = "<group>"; };
 		3EEA060C1D21C44000E03774 /* SurfacePlacementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurfacePlacementsViewController.swift; sourceTree = "<group>"; };
+		3EEB2B941EB9695F00B52513 /* ListRelatedFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListRelatedFeatures.storyboard; sourceTree = "<group>"; };
+		3EEB2B951EB9695F00B52513 /* ListRelatedFeaturesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListRelatedFeaturesVC.swift; sourceTree = "<group>"; };
+		3EEB2B961EB9695F00B52513 /* RelatedFeaturesListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedFeaturesListVC.swift; sourceTree = "<group>"; };
 		3EEE1D691E4935FC003263FC /* GroupUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupUserCell.swift; sourceTree = "<group>"; };
 		3EEE1D6A1E4935FC003263FC /* GroupUsers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GroupUsers.storyboard; sourceTree = "<group>"; };
 		3EEE1D6B1E4935FC003263FC /* GroupUsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupUsersViewController.swift; sourceTree = "<group>"; };
@@ -1546,6 +1556,7 @@
 				3EC39C381C9B2136003F6459 /* Generate geodatabase */,
 				3EFDE0EF1E36ABB700CBCD92 /* Feature collection layer */,
 				3EFDE0F21E36ABB700CBCD92 /* Feature collection layer (query) */,
+				3EEB2B931EB9695F00B52513 /* List related features */,
 			);
 			name = Features;
 			sourceTree = "<group>";
@@ -1996,6 +2007,17 @@
 			path = "Scenes/Surface placements";
 			sourceTree = "<group>";
 		};
+		3EEB2B931EB9695F00B52513 /* List related features */ = {
+			isa = PBXGroup;
+			children = (
+				3EEB2B941EB9695F00B52513 /* ListRelatedFeatures.storyboard */,
+				3EEB2B951EB9695F00B52513 /* ListRelatedFeaturesVC.swift */,
+				3EEB2B961EB9695F00B52513 /* RelatedFeaturesListVC.swift */,
+			);
+			name = "List related features";
+			path = "Features/List related features";
+			sourceTree = "<group>";
+		};
 		3EEE1D671E4935FC003263FC /* Cloud & Portal */ = {
 			isa = PBXGroup;
 			children = (
@@ -2184,6 +2206,7 @@
 				3E2A68121B14E04300A318AA /* ArcGIS.bundle in Resources */,
 				3ED5EB771B752A42009F9B75 /* style.css in Resources */,
 				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
+				3EEB2B971EB9695F00B52513 /* ListRelatedFeatures.storyboard in Resources */,
 				3ED028AF1B8E3A9800ACA70D /* MILUsingURL.storyboard in Resources */,
 				3E8A258A1D36B89400D14F08 /* LA_Trails.geodatabase in Resources */,
 				3ECDD9B11E8470E100E645AB /* DownloadProgressView.xib in Resources */,
@@ -2327,6 +2350,7 @@
 				3EC39C1F1C9A59B9003F6459 /* RouteParametersViewController.swift in Sources */,
 				3ED5EB731B7404D0009F9B75 /* SampleInfoViewController.swift in Sources */,
 				3ED028B71B8E3A9800ACA70D /* SublayersTableViewController.swift in Sources */,
+				3EEB2B991EB9695F00B52513 /* RelatedFeaturesListVC.swift in Sources */,
 				3E71621F1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift in Sources */,
 				3EC39C3C1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift in Sources */,
 				3EABC7A31DB1793000C161C6 /* StretchRendererTypeCell.swift in Sources */,
@@ -2407,6 +2431,7 @@
 				3ED0296A1B8E3ACD00ACA70D /* EditAttributesViewController.swift in Sources */,
 				3EABC7A11DB1793000C161C6 /* StretchRendererInputCell.swift in Sources */,
 				3E6C77161CCFC4B200E89873 /* IdentifyLayersViewController.swift in Sources */,
+				3EEB2B981EB9695F00B52513 /* ListRelatedFeaturesVC.swift in Sources */,
 				3ECDD9B01E8470E100E645AB /* DownloadProgressView.swift in Sources */,
 				3EABC7901DB1772000C161C6 /* RGBRenderer3InputCell.swift in Sources */,
 				3E4B05F71B39EF250072E514 /* SVIndefiniteAnimatedView.m in Sources */,

@@ -19,10 +19,10 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
 
     @IBOutlet var mapView:AGSMapView!
     
-    var parksFeatureLayer:AGSFeatureLayer!
-    var parksFeatureTable:AGSServiceFeatureTable!
-    var preservesFeatureTable:AGSServiceFeatureTable!
-    var speciesFeatureTable:AGSServiceFeatureTable!
+    private var parksFeatureLayer:AGSFeatureLayer!
+    private var parksFeatureTable:AGSServiceFeatureTable!
+    private var preservesFeatureTable:AGSServiceFeatureTable!
+    private var speciesFeatureTable:AGSServiceFeatureTable!
     private var selectedPark:AGSArcGISFeature!
     private var screenPoint:CGPoint!
     

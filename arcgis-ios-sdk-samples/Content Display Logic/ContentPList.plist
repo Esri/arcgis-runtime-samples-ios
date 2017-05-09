@@ -412,6 +412,14 @@
                     <key>descriptionText</key>
                     <string>Use a feature collection layer to show query results from a service feature table</string>
                 </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Update related feature's attribute</string>
+                    <key>storyboardName</key>
+                    <string>UpdateRelatedFeatureAttribute</string>
+                    <key>descriptionText</key>
+                    <string>Tap on a park (in green) to see its related preserves. Information on annual visitors to that preserve will be shown in callout. Tap on the edit button to change visitors and notice the symbol update.</string>
+                </dict>
             </array>
         </dict>
         <dict>

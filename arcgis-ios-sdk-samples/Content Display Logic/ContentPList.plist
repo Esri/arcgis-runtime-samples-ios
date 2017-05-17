@@ -760,6 +760,14 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
+                    <string>Scene layer (URL)</string>
+                    <key>storyboardName</key>
+                    <string>SceneLayerURL</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows how to use a scene layer in a scene</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
                     <string>Scene properties expressions</string>
                     <key>storyboardName</key>
                     <string>ScenePropertiesExpressions</string>

@@ -681,6 +681,14 @@
                         <string>SanDiegoTilePackage</string>
                     </array>
                 </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Find service area interactive</string>
+                    <key>storyboardName</key>
+                    <string>FindServiceAreaInteractive</string>
+                    <key>descriptionText</key>
+                    <string>This samples shows how to find service areas around a point</string>
+                </dict>
             </array>
         </dict>
         <dict>

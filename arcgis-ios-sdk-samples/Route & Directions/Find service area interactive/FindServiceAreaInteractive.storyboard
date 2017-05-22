@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uF5-61-Oq4">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Find Service Area InteractiveVC-->
+        <scene sceneID="cZw-DO-F4R">
+            <objects>
+                <viewController id="uF5-61-Oq4" customClass="FindServiceAreaInteractiveVC" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="N6j-v5-Tv7"/>
+                        <viewControllerLayoutGuide type="bottom" id="901-8s-Rlg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hcg-KY-lJP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ScH-Y2-uZg">
+                                <items>
+                                    <barButtonItem style="plain" id="Kxl-Gy-DEg">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="oEe-fu-LvD">
+                                            <rect key="frame" x="16" y="7" width="138" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Facilities"/>
+                                                <segment title="Barriers"/>
+                                            </segments>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="WKU-VB-6N6"/>
+                                    <barButtonItem enabled="NO" title="Service Area" id="Ory-cQ-QIx">
+                                        <connections>
+                                            <action selector="serviceArea" destination="uF5-61-Oq4" id="XYo-HY-4v6"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="24V-bP-7mQ"/>
+                                    <barButtonItem systemItem="trash" id="sEW-QE-65r">
+                                        <connections>
+                                            <action selector="clearAction" destination="uF5-61-Oq4" id="f2e-Iu-9e9"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSP-7z-qfE" customClass="AGSMapView">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="WSP-7z-qfE" secondAttribute="trailing" id="9vr-BX-4DC"/>
+                            <constraint firstItem="ScH-Y2-uZg" firstAttribute="leading" secondItem="hcg-KY-lJP" secondAttribute="leading" id="CUL-JW-i9h"/>
+                            <constraint firstItem="WSP-7z-qfE" firstAttribute="top" secondItem="N6j-v5-Tv7" secondAttribute="bottom" id="DQZ-ct-0Jd"/>
+                            <constraint firstItem="901-8s-Rlg" firstAttribute="top" secondItem="ScH-Y2-uZg" secondAttribute="bottom" id="b8s-8P-97w"/>
+                            <constraint firstItem="ScH-Y2-uZg" firstAttribute="top" secondItem="WSP-7z-qfE" secondAttribute="bottom" id="eXf-9t-Bta"/>
+                            <constraint firstItem="WSP-7z-qfE" firstAttribute="leading" secondItem="hcg-KY-lJP" secondAttribute="leading" id="pw7-bJ-IoT"/>
+                            <constraint firstAttribute="trailing" secondItem="ScH-Y2-uZg" secondAttribute="trailing" id="xKk-FZ-VeS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="WSP-7z-qfE" id="ulV-cd-J6t"/>
+                        <outlet property="segmentedControl" destination="oEe-fu-LvD" id="Fya-wj-bQR"/>
+                        <outlet property="serviceAreaBBI" destination="Ory-cQ-QIx" id="CAT-tx-3KL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="prU-aF-Yb2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="197.59999999999999" y="113.79310344827587"/>
+        </scene>
+    </scenes>
+</document>

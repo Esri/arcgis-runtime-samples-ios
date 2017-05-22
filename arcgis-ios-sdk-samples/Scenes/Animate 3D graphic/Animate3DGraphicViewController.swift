@@ -58,6 +58,9 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
         self.mapView.map = map
         self.mapView.interactionOptions.isEnabled = false
         
+        //hide attribution text for map view
+        self.mapView.isAttributionTextVisible = false
+        
         //initalize scene with imagery basemap
         let scene = AGSScene(basemap: AGSBasemap.imagery())
         

@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate {
+class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, ServiceAreaSettingsVCDelegate, UIAdaptivePresentationControllerDelegate {
 
     @IBOutlet private var mapView:AGSMapView!
     @IBOutlet private var segmentedControl:UISegmentedControl!
@@ -29,13 +29,14 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate {
     private var serviceAreaTask:AGSServiceAreaTask!
     private var serviceAreaParameters:AGSServiceAreaParameters!
     
-    private var barriersPolylineBuilder = AGSPolylineBuilder(spatialReference: AGSSpatialReference.webMercator())
+    var firstTimeBreak:Int = 3
+    var secondTimeBreak:Int = 8
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindServiceAreaInteractiveVC"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindServiceAreaInteractiveVC", "ServiceAreaSettingsVC"]
         
         //initialize map with basemap
         let map = AGSMap(basemap: AGSBasemap.streets())
@@ -69,17 +70,10 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate {
         self.facilitiesGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: facilitySymbol)
         
         //barrier symbol
-        let barrierSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.secondaryBlue(), width: 3)
+        let barrierSymbol = AGSSimpleFillSymbol(style: .diagonalCross, color: UIColor.red, outline: nil)
         
         //set symbol on barrier graphics overlay using renderer
         self.barriersGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: barrierSymbol)
-        
-        //Barrier graphic for polyline barrier
-        //will update the geometry on user interaction
-        self.barrierGraphic = AGSGraphic(geometry: self.barriersPolylineBuilder.toGeometry(), symbol: nil, attributes: nil)
-        
-        //add barrier graphic to overlay
-        self.barriersGraphicsOverlay.graphics.add(self.barrierGraphic)
         
         //add graphicOverlays to the map. One for facilities, barriers and service areas
         self.mapView.graphicsOverlays.addObjects(from: [self.serviceAreaGraphicsOverlay, self.barriersGraphicsOverlay, self.facilitiesGraphicsOverlay])
@@ -103,6 +97,25 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate {
         }
     }
     
+    private func serviceAreaSymbol(for index:Int) -> AGSSymbol {
+        
+        //fill symbol for service area
+        var fillSymbol:AGSSimpleFillSymbol
+        
+        if index == 0 {
+            let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor(red: 0.4, green: 0.4, blue: 0, alpha: 0.5), width: 2)
+            fillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor(red: 0.8, green: 0.8, blue: 0, alpha: 0.5), outline: lineSymbol)
+        }
+        else {
+            let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor(red: 0, green: 0.4, blue: 0, alpha: 0.5), width: 2)
+            fillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor(red: 0, green: 0.8, blue: 0, alpha: 0.5), outline: lineSymbol)
+        }
+        
+        return fillSymbol
+    }
+    
+    //MARK: - Actions
+    
     @IBAction private func serviceArea() {
         
         //remove previously added service areas
@@ -116,9 +129,8 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate {
             return
         }
         
-        //clear previously added facilities and barriers from parameters
-        self.serviceAreaParameters.clearFacilities()
-        self.serviceAreaParameters.clearPolylineBarriers()
+        //show progress hud
+        SVProgressHUD.show(withStatus: "Loading", maskType: .gradient)
         
         //add facilities
         var facilities = [AGSServiceAreaFacility]()
@@ -132,18 +144,31 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate {
         }
         self.serviceAreaParameters.setFacilities(facilities)
         
+        
         //add barriers
-        if let polyline = self.barrierGraphic.geometry as? AGSPolyline, polyline.parts[0].pointCount > 1 {
+        var barriers = [AGSPolygonBarrier]()
+        
+        //for each graphic in barrier graphicsOverlay add a barrier to the parameters
+        for graphic in self.barriersGraphicsOverlay.graphics as AnyObject as! [AGSGraphic] {
             
-            let polylineBarrier = AGSPolylineBarrier(polyline: polyline)
-            self.serviceAreaParameters.setPolylineBarriers([polylineBarrier])
+            let polygon = graphic.geometry as! AGSPolygon
+            let barrier = AGSPolygonBarrier(polygon: polygon)
+            barriers.append(barrier)
         }
+        self.serviceAreaParameters.setPolygonBarriers(barriers)
+        
+        //set time breaks
+        self.serviceAreaParameters.defaultImpedanceCutoffs = [NSNumber(value: self.firstTimeBreak), NSNumber(value: self.secondTimeBreak)]
         
         //solve for service area
         self.serviceAreaTask.solveServiceArea(with: self.serviceAreaParameters) { [weak self] (result: AGSServiceAreaResult?, error: Error?) in
             
+            guard let weakSelf = self else {
+                return
+            }
+            
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: "Error solving service area:: \(error?.localizedDescription)", maskType: .gradient)
+                SVProgressHUD.showError(withStatus: "Error solving service area:: \(error!.localizedDescription)", maskType: .gradient)
                 return
             }
             
@@ -151,16 +176,16 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate {
             SVProgressHUD.dismiss()
             
             //for each facility
-            for i in 0...facilities.count {
+            for i in 0..<facilities.count {
                 
                 //add resulting polygons as graphics to the overlay
                 if let polygons = result?.resultPolygons(atFacilityIndex: i) {
-                    for polygon in polygons {
+                    for j in 0..<polygons.count {
                         
-                        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor(red: 0, green: 0.4, blue: 0, alpha: 0.5), width: 2)
-                        let fillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor(red: 0, green: 0.8, blue: 0, alpha: 0.5), outline: lineSymbol)
+                        let polygon = polygons[j]
+                        let fillSymbol = weakSelf.serviceAreaSymbol(for: j)
                         let graphic = AGSGraphic(geometry: polygon.geometry, symbol: fillSymbol, attributes: nil)
-                        self?.serviceAreaGraphicsOverlay.graphics.add(graphic)
+                        weakSelf.serviceAreaGraphicsOverlay.graphics.add(graphic)
                     }
                 }
             }
@@ -172,12 +197,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate {
         //remove all existing graphics in service area and facilities graphics overlays
         self.serviceAreaGraphicsOverlay.graphics.removeAllObjects()
         self.facilitiesGraphicsOverlay.graphics.removeAllObjects()
-        
-        //for barriers, re-initialize the polyline builder
-        self.barriersPolylineBuilder = AGSPolylineBuilder(spatialReference: AGSSpatialReference.webMercator())
-        
-        //and assign as geometry to the graphic
-        self.barrierGraphic.geometry = self.barriersPolylineBuilder.toGeometry()
+        self.barriersGraphicsOverlay.graphics.removeAllObjects()
     }
     
     //MARK: - AGSGeoViewTouchDelegate
@@ -193,12 +213,42 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate {
         else {
             
             //barriers selected
-            //add point to barrier builder
-            self.barriersPolylineBuilder.addPointWith(x: mapPoint.x, y: mapPoint.y)
-            
-            //update the geometry of the barrier graphic
-            self.barrierGraphic.geometry = self.barriersPolylineBuilder.toGeometry()
+            let bufferedGeometry = AGSGeometryEngine.bufferGeometry(mapPoint, byDistance: 500)
+            let graphic = AGSGraphic(geometry: bufferedGeometry, symbol: nil, attributes: nil)
+            self.barriersGraphicsOverlay.graphics.add(graphic)
         }
+    }
+    
+    //MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ServiceAreaSettingsSegue" {
+            
+            let controller = segue.destination as! ServiceAreaSettingsVC
+            controller.presentationController?.delegate = self
+            controller.preferredContentSize = CGSize(width: 300, height: 200)
+            controller.delegate = self
+            controller.firstTimeBreak = self.firstTimeBreak
+            controller.secondTimeBreak = self.secondTimeBreak
+        }
+    }
+    
+    //MARK: - ServiceAreaSettingsVCDelegate
+    
+    func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsVC, didUpdateFirstTimeBreak timeBreak: Int) {
+        
+        self.firstTimeBreak = timeBreak
+    }
+    
+    func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsVC, didUpdateSecondTimeBreak timeBreak: Int) {
+        
+        self.secondTimeBreak = timeBreak
+    }
+    
+    //MARK: - UIAdaptivePresentationControllerDelegate
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
     }
 
     override func didReceiveMemoryWarning() {

@@ -29,6 +29,14 @@
                                             </segments>
                                         </segmentedControl>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="iGG-ok-VlG"/>
+                                    <barButtonItem image="Settings" id="bPg-cm-8G8">
+                                        <connections>
+                                            <segue destination="t9g-Ff-NPa" kind="popoverPresentation" identifier="ServiceAreaSettingsSegue" popoverAnchorBarButtonItem="bPg-cm-8G8" id="zkH-ft-urY">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="WKU-VB-6N6"/>
                                     <barButtonItem enabled="NO" title="Service Area" id="Ory-cQ-QIx">
                                         <connections>
@@ -68,5 +76,87 @@
             </objects>
             <point key="canvasLocation" x="197.59999999999999" y="113.79310344827587"/>
         </scene>
+        <!--Service Area SettingsVC-->
+        <scene sceneID="pCu-Dt-2Tl">
+            <objects>
+                <viewController id="t9g-Ff-NPa" customClass="ServiceAreaSettingsVC" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9Cn-is-C63"/>
+                        <viewControllerLayoutGuide type="bottom" id="9kY-x9-kG0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uzu-od-HFD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2T-cI-s7u">
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="PNE-4V-aHy">
+                                <connections>
+                                    <action selector="sliderValueChangedWithSender:" destination="t9g-Ff-NPa" eventType="valueChanged" id="pqZ-XN-ynG"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First time break (minutes)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIz-jS-rfu">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZu-FW-Wln">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="8" minValue="6" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Qvu-ox-z0V">
+                                <connections>
+                                    <action selector="sliderValueChangedWithSender:" destination="t9g-Ff-NPa" eventType="valueChanged" id="ktx-hM-Db9"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Second time break (minutes)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJs-Jr-B44">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkP-AP-Mt7">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FJs-Jr-B44" firstAttribute="top" secondItem="PNE-4V-aHy" secondAttribute="bottom" constant="20" id="3xU-r7-aq7"/>
+                            <constraint firstItem="FJs-Jr-B44" firstAttribute="centerY" secondItem="qkP-AP-Mt7" secondAttribute="centerY" id="KDP-Bu-hFH"/>
+                            <constraint firstAttribute="trailing" secondItem="qkP-AP-Mt7" secondAttribute="trailing" constant="10" id="O1g-hf-ykB"/>
+                            <constraint firstItem="Qvu-ox-z0V" firstAttribute="leading" secondItem="uzu-od-HFD" secondAttribute="leading" constant="10" id="O2T-Da-HeK"/>
+                            <constraint firstItem="Qvu-ox-z0V" firstAttribute="top" secondItem="FJs-Jr-B44" secondAttribute="bottom" constant="2" id="PdO-SE-izK"/>
+                            <constraint firstItem="q2T-cI-s7u" firstAttribute="top" secondItem="9Cn-is-C63" secondAttribute="bottom" constant="10" id="SBt-e1-bMt"/>
+                            <constraint firstItem="PNE-4V-aHy" firstAttribute="top" secondItem="IIz-jS-rfu" secondAttribute="bottom" constant="2" id="ZY8-Kl-zgT"/>
+                            <constraint firstAttribute="trailing" secondItem="Qvu-ox-z0V" secondAttribute="trailing" constant="10" id="ahx-F3-2ql"/>
+                            <constraint firstItem="IIz-jS-rfu" firstAttribute="leading" secondItem="uzu-od-HFD" secondAttribute="leading" constant="10" id="bBg-4c-SQA"/>
+                            <constraint firstItem="FJs-Jr-B44" firstAttribute="leading" secondItem="uzu-od-HFD" secondAttribute="leading" constant="10" id="hCr-4A-k0N"/>
+                            <constraint firstItem="q2T-cI-s7u" firstAttribute="centerX" secondItem="uzu-od-HFD" secondAttribute="centerX" id="mTd-cW-WCM"/>
+                            <constraint firstAttribute="trailing" secondItem="eZu-FW-Wln" secondAttribute="trailing" constant="10" id="nav-qf-DLJ"/>
+                            <constraint firstItem="IIz-jS-rfu" firstAttribute="centerY" secondItem="eZu-FW-Wln" secondAttribute="centerY" id="ntJ-pc-uZM"/>
+                            <constraint firstItem="PNE-4V-aHy" firstAttribute="leading" secondItem="uzu-od-HFD" secondAttribute="leading" constant="10" id="qVf-3j-qIo"/>
+                            <constraint firstItem="IIz-jS-rfu" firstAttribute="top" secondItem="q2T-cI-s7u" secondAttribute="bottom" constant="20" id="uZY-rS-HtV"/>
+                            <constraint firstAttribute="trailing" secondItem="PNE-4V-aHy" secondAttribute="trailing" constant="10" id="xfZ-r8-u18"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="firstTimeBreakLabel" destination="eZu-FW-Wln" id="PEa-km-j9p"/>
+                        <outlet property="firstTimeBreakSlider" destination="PNE-4V-aHy" id="1BB-tg-DZi"/>
+                        <outlet property="secondTimeBreakLabel" destination="qkP-AP-Mt7" id="jaY-tE-6fn"/>
+                        <outlet property="secondTimeBreakSlider" destination="Qvu-ox-z0V" id="4tq-kh-A17"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jeg-vU-LSH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="990" y="114"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Settings" width="30" height="30"/>
+    </resources>
 </document>

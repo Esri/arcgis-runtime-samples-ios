@@ -689,6 +689,14 @@
                         <string>SanDiegoTilePackage</string>
                     </array>
                 </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Find service area interactive</string>
+                    <key>storyboardName</key>
+                    <string>FindServiceAreaInteractive</string>
+                    <key>descriptionText</key>
+                    <string>This samples shows how to find service areas around a point</string>
+                </dict>
             </array>
         </dict>
         <dict>
@@ -765,6 +773,14 @@
                     <string>SurfacePlacements</string>
                     <key>descriptionText</key>
                     <string>The sample shows how to position graphics using different surface placements</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Scene layer (URL)</string>
+                    <key>storyboardName</key>
+                    <string>SceneLayerURL</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows how to use a scene layer in a scene</string>
                 </dict>
                 <dict>
                     <key>displayName</key>

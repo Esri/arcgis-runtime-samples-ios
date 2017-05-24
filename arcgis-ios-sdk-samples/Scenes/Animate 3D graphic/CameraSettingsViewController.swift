@@ -35,7 +35,13 @@ class CameraSettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //apply initial values to controls
         self.setInitialValues()
+        
+        //add observers to update the sliders
+        self.orbitGeoElementCameraController?.addObserver(self, forKeyPath: "cameraDistance", options: .new, context: nil)
+        self.orbitGeoElementCameraController?.addObserver(self, forKeyPath: "cameraHeadingOffset", options: .new, context: nil)
+        self.orbitGeoElementCameraController?.addObserver(self, forKeyPath: "cameraPitchOffset", options: .new, context: nil)
     }
     
     private func setInitialValues() {
@@ -56,6 +62,35 @@ class CameraSettingsViewController: UIViewController {
         self.autoHeadingEnabledSwitch.isOn = cameraController.isAutoHeadingEnabled
         self.autoPitchEnabledSwitch.isOn = cameraController.isAutoPitchEnabled
         self.autoRollEnabledSwitch.isOn = cameraController.isAutoRollEnabled
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        DispatchQueue.main.async { [weak self] in
+            
+            guard let weakSelf = self, let cameraController = self?.orbitGeoElementCameraController else {
+                return
+            }
+            
+            if keyPath == "cameraDistance" {
+                weakSelf.distanceSlider.value = Float(cameraController.cameraDistance)
+                
+                //update label
+                weakSelf.distanceLabel.text = "\(Int(weakSelf.distanceSlider.value))"
+            }
+            else if keyPath == "cameraHeadingOffset" {
+                weakSelf.headingOffsetSlider.value = Float(cameraController.cameraHeadingOffset)
+                
+                //update label
+                weakSelf.headingOffsetLabel.text = "\(Int(weakSelf.headingOffsetSlider.value))º"
+            }
+            else if keyPath == "cameraPitchOffset" {
+                weakSelf.pitchOffsetSlider.value = Float(cameraController.cameraPitchOffset)
+                
+                //update label
+                weakSelf.pitchOffsetLabel.text = "\(Int(weakSelf.pitchOffsetSlider.value))º"
+            }
+        }
     }
     
     //MARK: - Actions
@@ -105,9 +140,21 @@ class CameraSettingsViewController: UIViewController {
         self.orbitGeoElementCameraController?.isAutoRollEnabled = sender.isOn
     }
     
+    @IBAction private func closeAction() {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    deinit {
+        
+        //remove observers
+        self.orbitGeoElementCameraController?.removeObserver(self, forKeyPath: "cameraDistance")
+        self.orbitGeoElementCameraController?.removeObserver(self, forKeyPath: "cameraHeadingOffset")
+        self.orbitGeoElementCameraController?.removeObserver(self, forKeyPath: "cameraPitchOffset")
+    }
 }

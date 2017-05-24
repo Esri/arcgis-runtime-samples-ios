@@ -22,4 +22,10 @@ class PlaneStatsViewController: UIViewController {
     @IBOutlet var pitchLabel:UILabel!
     @IBOutlet var rollLabel:UILabel!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //preferred content size
+        self.preferredContentSize = CGSize(width: 220, height: 200)
+    }
 }

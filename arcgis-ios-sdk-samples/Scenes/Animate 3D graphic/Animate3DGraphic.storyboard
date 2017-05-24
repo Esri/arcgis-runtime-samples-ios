@@ -53,25 +53,25 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="na2-Ie-DZC"/>
-                                    <barButtonItem title="Camera" id="gEP-JA-7Az">
+                                    <barButtonItem title="Play" id="tzB-9x-94D">
                                         <connections>
-                                            <segue destination="IEg-ux-ylz" kind="popoverPresentation" identifier="AnimationSettingsSegue" popoverAnchorBarButtonItem="gEP-JA-7Az" id="wvZ-Tc-Ath">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
+                                            <action selector="playActionWithSender:" destination="rVW-vg-RjZ" id="Rn9-ov-dxW"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="83L-iJ-Ufz"/>
                                     <barButtonItem title="Stats" id="mpb-rJ-Efo">
                                         <connections>
-                                            <segue destination="rxe-U1-XGl" kind="popoverPresentation" identifier="PlanePropertiesSegue" popoverAnchorBarButtonItem="mpb-rJ-Efo" id="Muu-Gl-Qjh">
+                                            <segue destination="rxe-U1-XGl" kind="popoverPresentation" identifier="PlaneStatsSegue" popoverAnchorBarButtonItem="mpb-rJ-Efo" id="Muu-Gl-Qjh">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="nRH-co-Fn1"/>
-                                    <barButtonItem title="Play" id="tzB-9x-94D">
+                                    <barButtonItem title="Camera" id="gEP-JA-7Az">
                                         <connections>
-                                            <action selector="playActionWithSender:" destination="rVW-vg-RjZ" id="Rn9-ov-dxW"/>
+                                            <segue destination="IEg-ux-ylz" kind="popoverPresentation" identifier="CameraSettingsSegue" popoverAnchorBarButtonItem="gEP-JA-7Az" id="wvZ-Tc-Ath">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -121,7 +121,13 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufl-Dx-Sva">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ND-pd-vbX">
+                                                <state key="normal" title="Close"/>
+                                                <connections>
+                                                    <action selector="closeAction" destination="IEg-ux-ylz" eventType="touchUpInside" id="jWw-x5-vl8"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera Distance (meters)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufl-Dx-Sva">
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -147,7 +153,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="359" translatesAutoresizingMaskIntoConstraints="NO" id="8MA-XD-aHQ">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-180" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="8MA-XD-aHQ">
                                                 <color key="tintColor" red="0.0" green="0.36862745099999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="headingOffsetValueChangedWithSender:" destination="IEg-ux-ylz" eventType="valueChanged" id="awd-wi-uBY"/>
@@ -231,7 +237,9 @@
                                             <constraint firstItem="Jeg-Jq-7ah" firstAttribute="leading" secondItem="BuN-YW-ttQ" secondAttribute="leading" constant="12" id="gAk-6k-bQz"/>
                                             <constraint firstItem="NfO-Na-bSH" firstAttribute="centerY" secondItem="33K-gu-nQy" secondAttribute="centerY" id="h19-cK-1yz"/>
                                             <constraint firstItem="TVV-CV-EGn" firstAttribute="top" secondItem="BuN-YW-ttQ" secondAttribute="top" constant="8" id="hMx-g9-J1q"/>
+                                            <constraint firstItem="1ND-pd-vbX" firstAttribute="centerY" secondItem="TVV-CV-EGn" secondAttribute="centerY" id="hdX-sl-eI4"/>
                                             <constraint firstItem="GPQ-dm-Z3U" firstAttribute="top" secondItem="ufl-Dx-Sva" secondAttribute="bottom" id="kiY-qM-6oN"/>
+                                            <constraint firstAttribute="trailing" secondItem="1ND-pd-vbX" secondAttribute="trailing" constant="12" id="l4T-08-p43"/>
                                             <constraint firstAttribute="trailing" secondItem="6Yo-ax-Jsu" secondAttribute="trailing" constant="12" id="nXV-Fl-kSa"/>
                                             <constraint firstItem="jtS-IH-MRK" firstAttribute="centerY" secondItem="TZl-Gz-lbD" secondAttribute="centerY" id="ocJ-UH-jPo"/>
                                             <constraint firstAttribute="trailing" secondItem="jL2-So-4hw" secondAttribute="trailing" constant="12" id="of5-au-akR"/>
@@ -374,7 +382,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Altitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AA-is-Kxg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Altitude (meters)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AA-is-Kxg">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

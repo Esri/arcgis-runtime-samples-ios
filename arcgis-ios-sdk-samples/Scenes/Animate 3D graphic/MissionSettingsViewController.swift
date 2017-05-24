@@ -42,6 +42,9 @@ class MissionSettingsViewController: UIViewController, HorizontalPickerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //preferred content size
+        self.preferredContentSize = CGSize(width: 300, height: 200)
+        
         self.horizontalPicker.options = self.missionFileNames
         self.horizontalPicker.selectedIndex = self.selectedMissionIndex
         self.horizontalPicker.delegate = self

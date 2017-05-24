@@ -54,9 +54,12 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["Animate3DGraphicViewController", "MissionSettingsViewController", "CameraSettingsViewController", "PlaneStatsViewController"]
         
         //map
-        let map = AGSMap(basemap: AGSBasemap.imageryWithLabels())
+        let map = AGSMap(basemap: AGSBasemap.streets())
         self.mapView.map = map
         self.mapView.interactionOptions.isEnabled = false
+        
+        self.mapView.layer.borderColor = UIColor.white.cgColor
+        self.mapView.layer.borderWidth = 2
         
         //hide attribution text for map view
         self.mapView.isAttributionTextVisible = false
@@ -210,7 +213,6 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
         RunLoop.main.add(self.animationTimer, forMode: RunLoopMode.commonModes)
     }
     
-    
     func animate() {
         
         //validations
@@ -258,12 +260,9 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
         self.planeStatsViewController?.pitchLabel?.text = "\(Int(frame.pitch))º"
         self.planeStatsViewController?.rollLabel?.text = "\(Int(frame.roll))º"
         
-        
         //increment current frame index
         self.currentFrameIndex += 1
     }
-    
-    
     
     //MARK: - Actions
     
@@ -308,31 +307,51 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
         self.isAnimating = !self.isAnimating
     }
     
-    
     //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         self.dismiss(animated: false, completion: nil)
         
-        if segue.identifier == "AnimationSettingsSegue" {
+        if segue.identifier == "CameraSettingsSegue" {
+            
+            //camera settings view controller
             let controller = segue.destination as! CameraSettingsViewController
-            controller.presentationController?.delegate = self
             controller.orbitGeoElementCameraController = self.orbitGeoElementCameraController
-            controller.preferredContentSize = CGSize(width: 300, height: 250)
+            
+            //pop over settings
+            controller.presentationController?.delegate = self
+            controller.popoverPresentationController?.passthroughViews = [self.sceneView]
+            
+            //preferred content size
+            if self.traitCollection.horizontalSizeClass == .regular && self.traitCollection.verticalSizeClass == .regular {
+                controller.preferredContentSize = CGSize(width: 300, height: 380)
+            }
+            else {
+                controller.preferredContentSize = CGSize(width: 300, height: 250)
+            }
         }
-        else if segue.identifier == "PlanePropertiesSegue" {
+        else if segue.identifier == "PlaneStatsSegue" {
+            
+            //plane stats view controller
             self.planeStatsViewController = segue.destination as? PlaneStatsViewController
+            
+            //pop over settings
             self.planeStatsViewController?.presentationController?.delegate = self
-            self.planeStatsViewController?.presentationController?.delegate = self
-            self.planeStatsViewController?.preferredContentSize = CGSize(width: 200, height: 200)
+            self.planeStatsViewController?.preferredContentSize = CGSize(width: 220, height: 200)
         }
         else if segue.identifier == "MissionSettingsSegue" {
+            
+            //mission settings view controller
             self.missionSettingsViewController = segue.destination as? MissionSettingsViewController
+            
+            //initial values
             self.missionSettingsViewController?.missionFileNames = self.missionFileNames
             self.missionSettingsViewController?.selectedMissionIndex = self.selectedMissionIndex
             self.missionSettingsViewController?.animationSpeed = self.animationSpeed
             self.missionSettingsViewController?.progress = Float(self.currentFrameIndex) / Float(self.frames.count)
+            
+            //pop over settings
             self.missionSettingsViewController?.presentationController?.delegate = self
             self.missionSettingsViewController?.preferredContentSize = CGSize(width: 300, height: 200)
             self.missionSettingsViewController?.delegate = self

@@ -39,7 +39,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindServiceAreaInteractiveVC", "ServiceAreaSettingsVC"]
         
         //initialize map with basemap
-        let map = AGSMap(basemap: AGSBasemap.streets())
+        let map = AGSMap(basemap: AGSBasemap.terrainWithLabels())
         
         //center for initial viewpoint
         let center = AGSPoint(x: -13041154, y: 3858170, spatialReference: AGSSpatialReference.webMercator())
@@ -103,12 +103,12 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         var fillSymbol:AGSSimpleFillSymbol
         
         if index == 0 {
-            let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor(red: 0.4, green: 0.4, blue: 0, alpha: 0.5), width: 2)
-            fillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor(red: 0.8, green: 0.8, blue: 0, alpha: 0.5), outline: lineSymbol)
+            let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor(red: 0.4, green: 0.4, blue: 0, alpha: 0.3), width: 2)
+            fillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor(red: 0.8, green: 0.8, blue: 0, alpha: 0.3), outline: lineSymbol)
         }
         else {
-            let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor(red: 0, green: 0.4, blue: 0, alpha: 0.5), width: 2)
-            fillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor(red: 0, green: 0.8, blue: 0, alpha: 0.5), outline: lineSymbol)
+            let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor(red: 0, green: 0.4, blue: 0, alpha: 0.3), width: 2)
+            fillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor(red: 0, green: 0.8, blue: 0, alpha: 0.3), outline: lineSymbol)
         }
         
         return fillSymbol
@@ -160,6 +160,8 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         //set time breaks
         self.serviceAreaParameters.defaultImpedanceCutoffs = [NSNumber(value: self.firstTimeBreak), NSNumber(value: self.secondTimeBreak)]
         
+        self.serviceAreaParameters.geometryAtOverlap = .dissolve
+        
         //solve for service area
         self.serviceAreaTask.solveServiceArea(with: self.serviceAreaParameters) { [weak self] (result: AGSServiceAreaResult?, error: Error?) in
             
@@ -175,18 +177,17 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
             //dismiss progress hud
             SVProgressHUD.dismiss()
             
-            //for each facility
-            for i in 0..<facilities.count {
-                
-                //add resulting polygons as graphics to the overlay
-                if let polygons = result?.resultPolygons(atFacilityIndex: i) {
-                    for j in 0..<polygons.count {
-                        
-                        let polygon = polygons[j]
-                        let fillSymbol = weakSelf.serviceAreaSymbol(for: j)
-                        let graphic = AGSGraphic(geometry: polygon.geometry, symbol: fillSymbol, attributes: nil)
-                        weakSelf.serviceAreaGraphicsOverlay.graphics.add(graphic)
-                    }
+            //add resulting polygons as graphics to the overlay
+            //since we are using `geometryAtOVerlap` as `dissolve` and the cutoff values
+            //are the same across facilities, we only need to draw the resultPolygons at
+            //facility index 0. It will contain either merged or multipart polygons
+            if let polygons = result?.resultPolygons(atFacilityIndex: 0) {
+                for j in 0..<polygons.count {
+                    
+                    let polygon = polygons[j]
+                    let fillSymbol = weakSelf.serviceAreaSymbol(for: j)
+                    let graphic = AGSGraphic(geometry: polygon.geometry, symbol: fillSymbol, attributes: nil)
+                    weakSelf.serviceAreaGraphicsOverlay.graphics.add(graphic)
                 }
             }
         }

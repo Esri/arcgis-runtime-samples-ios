@@ -1,4 +1,4 @@
-// Copyright 2016 Esri.
+// Copyright 2017 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,14 +18,37 @@ import ArcGIS
 class RelatedFeaturesListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet var tableView:UITableView!
+    @IBOutlet var label:UILabel!
     
     //results required for display
     var results:[AGSRelatedFeatureQueryResult]!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let result = results?[0] {
+            self.label.text = result.feature?.attributes["UNIT_NAME"] as? String ?? "Origin Feature"
+        }
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44
+    }
     
     //MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.results?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        let result = self.results[section]
+        if let tableName = result.relatedTable?.tableName {
+            return "\(tableName)"
+        }
+        else {
+            return "Related table \(section + 1)"
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,10 +71,8 @@ class RelatedFeaturesListVC: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        let result = self.results[section]
-        return result.relatedTable?.tableName ?? "Related table \(section + 1)"
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.white
     }
 
     override func didReceiveMemoryWarning() {

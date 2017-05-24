@@ -1,4 +1,4 @@
-// Copyright 2016 Esri.
+// Copyright 2017 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ListRelatedFeaturesVC", "RelatedFeaturesListVC"]
         
         //initialize map with a basemap
-        let map = AGSMap(basemap: AGSBasemap.topographic())
+        let map = AGSMap(basemap: AGSBasemap.nationalGeographic())
         
         //initial viewpoint
         let point = AGSPoint(x: -16507762.575543, y: 9058828.127243, spatialReference: AGSSpatialReference(wkid: 3857))
@@ -51,6 +51,10 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         
         //feature layer for parks
         self.parksFeatureLayer = AGSFeatureLayer(featureTable: self.parksFeatureTable)
+        
+        //change selection width for feature layer
+        self.parksFeatureLayer.selectionWidth = 4
+        self.parksFeatureLayer.selectionColor = UIColor.yellow
         
         //add parks feature layer to the map
         map.operationalLayers.add(self.parksFeatureLayer)
@@ -73,6 +77,11 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
     //MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        
+        //unselect previously selected park
+        if let previousSelection = self.selectedPark {
+            self.parksFeatureLayer.unselectFeature(previousSelection)
+        }
         
         //show progress hud
         SVProgressHUD.show(withStatus: "Identifying feature", maskType: .gradient)
@@ -98,6 +107,9 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
                     
                     //store as selected park to use for querying
                     self?.selectedPark = feature
+                    
+                    //select feature on layer
+                    self?.parksFeatureLayer.select(feature)
                     
                     //store the screen point for the tapped location to show popover at that location
                     self?.screenPoint = screenPoint
@@ -145,24 +157,27 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
     //show related features in a table view as popover
     private func showRelatedFeatures() {
         
-        //instantiate the view controller from storyboard
-        let controller = self.storyboard!.instantiateViewController(withIdentifier: "RelatedFeaturesListVC") as! RelatedFeaturesListVC
-        
-        //set results from related features query
-        controller.results = self.results
-        
-        //set presentation style to popover, for inline display
-        controller.modalPresentationStyle = .popover
-        
-        //other settings for popover
-        controller.popoverPresentationController?.permittedArrowDirections = [.up, .down]
-        controller.popoverPresentationController?.sourceView = self.mapView
-        controller.popoverPresentationController?.sourceRect = CGRect(origin: self.screenPoint, size: CGSize.zero)
-        controller.popoverPresentationController?.delegate = self
-        
-        //present the controller
-        self.present(controller, animated: true, completion: nil)
+        //perform popover segue
+        self.performSegue(withIdentifier: "RelatedFeaturesSegue", sender: self)
     }
+    
+    //MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "RelatedFeaturesSegue" {
+            
+            let controller = segue.destination as! RelatedFeaturesListVC
+            
+            //set results from related features query
+            controller.results = self.results
+
+            //other settings for popover
+            controller.popoverPresentationController?.sourceView = self.mapView
+            controller.popoverPresentationController?.sourceRect = CGRect(origin: self.screenPoint, size: CGSize.zero)
+            controller.popoverPresentationController?.delegate = self
+        }
+     }
     
     //MARK: - UIPopoverPresentationControllerDelegate
     

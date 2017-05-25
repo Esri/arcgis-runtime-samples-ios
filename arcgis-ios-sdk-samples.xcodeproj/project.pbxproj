@@ -106,6 +106,9 @@
 		3E5849011B91256300AB3CE9 /* BookmarksListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8526341B90D92700690EBD /* BookmarksListViewController.swift */; };
 		3E5849021B91256300AB3CE9 /* BookmarksViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8526351B90D92700690EBD /* BookmarksViewController.swift */; };
 		3E5849031B91256300AB3CE9 /* FeatureLayerURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */; };
+		3E62940B1EAFAF4100084105 /* WebTiledLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6294091EAFAF4100084105 /* WebTiledLayer.storyboard */; };
+		3E62940C1EAFAF4100084105 /* WebTiledLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62940A1EAFAF4100084105 /* WebTiledLayerViewController.swift */; };
+		3E62940D1EAFB69300084105 /* WebTiledLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E62940A1EAFAF4100084105 /* WebTiledLayerViewController.swift */; };
 		3E676DF11B1D0B6000D4029A /* Camera Shutter.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */; };
 		3E6AE3EC1C6D11BA0026E59C /* OfflineRouting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6AE3EB1C6D11BA0026E59C /* OfflineRouting.storyboard */; };
 		3E6AE3EE1C6D11FD0026E59C /* OfflineRoutingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AE3ED1C6D11FD0026E59C /* OfflineRoutingViewController.swift */; };
@@ -423,6 +426,7 @@
 				3ED75D081ED4E5A0009B1F75 /* ServiceAreaSettingsVC.swift in CopyFiles */,
 				3ED75D051ED39FA7009B1F75 /* FindServiceAreaInteractiveVC.swift in CopyFiles */,
 				3E8A05BD1ECD08CD0032231C /* SceneLayerURLViewController.swift in CopyFiles */,
+				3E62940D1EAFB69300084105 /* WebTiledLayerViewController.swift in CopyFiles */,
 				3EEE1D731E493655003263FC /* GroupUserCell.swift in CopyFiles */,
 				3EEE1D741E493655003263FC /* GroupUsersViewController.swift in CopyFiles */,
 				3E0B585C1E36D93800951767 /* SpatialOperationsViewController.swift in CopyFiles */,
@@ -623,6 +627,8 @@
 		3E54D2341CC6985200BB9904 /* GraphicDrawOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GraphicDrawOrder.storyboard; path = "Display information/Control graphic draw order/GraphicDrawOrder.storyboard"; sourceTree = "<group>"; };
 		3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayerURLViewController.swift; path = "Features/Feature layer (feature service)/FeatureLayerURLViewController.swift"; sourceTree = "<group>"; };
 		3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FeatureLayerURL.storyboard; path = "Features/Feature layer (feature service)/FeatureLayerURL.storyboard"; sourceTree = "<group>"; };
+		3E6294091EAFAF4100084105 /* WebTiledLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebTiledLayer.storyboard; sourceTree = "<group>"; };
+		3E62940A1EAFAF4100084105 /* WebTiledLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebTiledLayerViewController.swift; sourceTree = "<group>"; };
 		3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Camera Shutter.caf"; sourceTree = "<group>"; };
 		3E6AE3EB1C6D11BA0026E59C /* OfflineRouting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OfflineRouting.storyboard; path = "Offline routing/OfflineRouting.storyboard"; sourceTree = "<group>"; };
 		3E6AE3ED1C6D11FD0026E59C /* OfflineRoutingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineRoutingViewController.swift; path = "Offline routing/OfflineRoutingViewController.swift"; sourceTree = "<group>"; };
@@ -1224,6 +1230,16 @@
 			name = "Feature layer (feature service)";
 			sourceTree = "<group>";
 		};
+		3E6294081EAFAF4100084105 /* Web tiled layer */ = {
+			isa = PBXGroup;
+			children = (
+				3E6294091EAFAF4100084105 /* WebTiledLayer.storyboard */,
+				3E62940A1EAFAF4100084105 /* WebTiledLayerViewController.swift */,
+			);
+			name = "Web tiled layer";
+			path = "Layers/Web tiled layer";
+			sourceTree = "<group>";
+		};
 		3E676DEF1B1D0B6000D4029A /* Audio Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1672,6 +1688,7 @@
 				3ED028A71B8E3A9800ACA70D /* Change sublayer visibility */,
 				3EE8B9511CA08E16003AA705 /* ArcGIS vector tile layer (URL) */,
 				3E81C1B71D8A0C7400470AA4 /* ArcGIS vector tiled layer (custom style) */,
+				3E6294081EAFAF4100084105 /* Web tiled layer */,
 				3E1E5EE31D9F085E00F4913C /* Hillshade renderer */,
 				3EABC7C51DB1941000C161C6 /* Blend renderer */,
 				3EABC7881DB1772000C161C6 /* RGB renderer */,
@@ -2386,6 +2403,7 @@
 				3EABC7AF1DB17B2C00C161C6 /* Shasta.tif in Resources */,
 				3EFDE0F71E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard in Resources */,
 				3E81C1BD1D8A189D00470AA4 /* VectorTileCustomStyle.storyboard in Resources */,
+				3E62940B1EAFAF4100084105 /* WebTiledLayer.storyboard in Resources */,
 				97DD84671B2B869300184B41 /* xcode.css in Resources */,
 				3ED0289C1B8E3A8500ACA70D /* MapViewScreenshot.storyboard in Resources */,
 				3EEA06131D21C44000E03774 /* SurfacePlacements.storyboard in Resources */,
@@ -2576,6 +2594,7 @@
 				3ED0289D1B8E3A8500ACA70D /* MapViewScreenshotViewController.swift in Sources */,
 				3E5848FE1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift in Sources */,
 				3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */,
+				3E62940C1EAFAF4100084105 /* WebTiledLayerViewController.swift in Sources */,
 				3E1E5EEA1D9F0ACC00F4913C /* HorizontalPicker.swift in Sources */,
 				3EE8B9551CA08E71003AA705 /* VectorTileLayerViewController.swift in Sources */,
 				3E39F6D31B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift in Sources */,

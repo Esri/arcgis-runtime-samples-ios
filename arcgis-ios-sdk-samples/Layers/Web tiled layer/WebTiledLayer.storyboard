@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16E163f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kue-Ye-IRU">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Web Tiled Layer View Controller-->
+        <scene sceneID="rd2-43-4id">
+            <objects>
+                <viewController id="kue-Ye-IRU" customClass="WebTiledLayerViewController" customModule="MapViewDemo_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kNe-lK-vTq"/>
+                        <viewControllerLayoutGuide type="bottom" id="uRt-RI-PC2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aiA-w4-skW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8FU-be-Eed" customClass="AGSMapView">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8FU-be-Eed" firstAttribute="leading" secondItem="aiA-w4-skW" secondAttribute="leading" id="PLo-pg-wBA"/>
+                            <constraint firstItem="8FU-be-Eed" firstAttribute="top" secondItem="kNe-lK-vTq" secondAttribute="bottom" id="QEp-c1-efz"/>
+                            <constraint firstItem="uRt-RI-PC2" firstAttribute="top" secondItem="8FU-be-Eed" secondAttribute="bottom" id="ipB-PG-dnX"/>
+                            <constraint firstAttribute="trailing" secondItem="8FU-be-Eed" secondAttribute="trailing" id="mR6-AR-iw4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="8FU-be-Eed" id="BFJ-8z-zqH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7fJ-1u-Mps" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="153" y="144"/>
+        </scene>
+    </scenes>
+</document>

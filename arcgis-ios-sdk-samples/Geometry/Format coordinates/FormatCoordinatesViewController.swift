@@ -107,6 +107,9 @@ class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate
             self.coordinateStringsFromPoint(point!)
         }
         
+        //hide keyboard
+        textField.resignFirstResponder()
+        
         return true
     }
     

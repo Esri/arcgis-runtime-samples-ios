@@ -390,6 +390,9 @@
 		3EEE1D701E4935FC003263FC /* GroupUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE1D6B1E4935FC003263FC /* GroupUsersViewController.swift */; };
 		3EEE1D731E493655003263FC /* GroupUserCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EEE1D691E4935FC003263FC /* GroupUserCell.swift */; };
 		3EEE1D741E493655003263FC /* GroupUsersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EEE1D6B1E4935FC003263FC /* GroupUsersViewController.swift */; };
+		3EF024E81ECBC10600166EC5 /* FormatCoordinates.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EF024E61ECBC10600166EC5 /* FormatCoordinates.storyboard */; };
+		3EF024E91ECBC10600166EC5 /* FormatCoordinatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF024E71ECBC10600166EC5 /* FormatCoordinatesViewController.swift */; };
+		3EF024EA1ECBC21300166EC5 /* FormatCoordinatesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EF024E71ECBC10600166EC5 /* FormatCoordinatesViewController.swift */; };
 		3EFCE1B11CF368D500E02F67 /* OpenMobileMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFCE1B01CF368D500E02F67 /* OpenMobileMapViewController.swift */; };
 		3EFCE1BA1CF369A800E02F67 /* Yellowstone.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCE1B61CF369A800E02F67 /* Yellowstone.mmpk */; settings = {ASSET_TAGS = (YellowstoneMMPK, ); }; };
 		3EFCE1BD1CF36BC100E02F67 /* OpenMobileMapPackage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCE1BC1CF36BC100E02F67 /* OpenMobileMapPackage.storyboard */; };
@@ -414,6 +417,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3EF024EA1ECBC21300166EC5 /* FormatCoordinatesViewController.swift in CopyFiles */,
 				3E8A05DF1ECE6BC20032231C /* Animate3DGraphicViewController.swift in CopyFiles */,
 				3E8A05E01ECE6BC20032231C /* CameraSettingsViewController.swift in CopyFiles */,
 				3E8A05E11ECE6BC20032231C /* MissionSettingsViewController.swift in CopyFiles */,
@@ -815,6 +819,8 @@
 		3EEE1D691E4935FC003263FC /* GroupUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupUserCell.swift; sourceTree = "<group>"; };
 		3EEE1D6A1E4935FC003263FC /* GroupUsers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GroupUsers.storyboard; sourceTree = "<group>"; };
 		3EEE1D6B1E4935FC003263FC /* GroupUsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupUsersViewController.swift; sourceTree = "<group>"; };
+		3EF024E61ECBC10600166EC5 /* FormatCoordinates.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FormatCoordinates.storyboard; sourceTree = "<group>"; };
+		3EF024E71ECBC10600166EC5 /* FormatCoordinatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatCoordinatesViewController.swift; sourceTree = "<group>"; };
 		3EFCE1B01CF368D500E02F67 /* OpenMobileMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenMobileMapViewController.swift; path = "Maps/Open mobile map (map package)/OpenMobileMapViewController.swift"; sourceTree = "<group>"; };
 		3EFCE1B61CF369A800E02F67 /* Yellowstone.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = Yellowstone.mmpk; sourceTree = "<group>"; };
 		3EFCE1BC1CF36BC100E02F67 /* OpenMobileMapPackage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OpenMobileMapPackage.storyboard; path = "Maps/Open mobile map (map package)/OpenMobileMapPackage.storyboard"; sourceTree = "<group>"; };
@@ -1532,6 +1538,7 @@
 			children = (
 				3EBA25721D3450B800AB0703 /* Create geometries */,
 				3E0B58551E36D8D300951767 /* Spatial operations */,
+				3EF024E51ECBC10600166EC5 /* Format coordinates */,
 			);
 			name = Geometry;
 			sourceTree = "<group>";
@@ -2149,6 +2156,16 @@
 			path = "List portal group users";
 			sourceTree = "<group>";
 		};
+		3EF024E51ECBC10600166EC5 /* Format coordinates */ = {
+			isa = PBXGroup;
+			children = (
+				3EF024E61ECBC10600166EC5 /* FormatCoordinates.storyboard */,
+				3EF024E71ECBC10600166EC5 /* FormatCoordinatesViewController.swift */,
+			);
+			name = "Format coordinates";
+			path = "Geometry/Format coordinates";
+			sourceTree = "<group>";
+		};
 		3EFCE1AF1CEFD5B900E02F67 /* Open mobile map (map package) */ = {
 			isa = PBXGroup;
 			children = (
@@ -2333,6 +2350,7 @@
 				3EABC7B81DB183E600C161C6 /* ShastaBW.tif.aux.xml in Resources */,
 				3ED029651B8E3ACD00ACA70D /* EditAttachment.storyboard in Resources */,
 				3EBA255D1D34025700AB0703 /* PictureMarkerSymbols.storyboard in Resources */,
+				3EF024E81ECBC10600166EC5 /* FormatCoordinates.storyboard in Resources */,
 				3E1183DD1ECF5A1000180152 /* GrandCanyon.csv in Resources */,
 				3ED028F41B8E3AA500ACA70D /* OnInteractionCache.storyboard in Resources */,
 				3E8A05DD1ECE69840032231C /* Bristol.dae in Resources */,
@@ -2500,6 +2518,7 @@
 				3E8A25921D36B97A00D14F08 /* MapLoadedViewController.swift in Sources */,
 				3EEA06121D21C44000E03774 /* ExtrudeGraphicsViewController.swift in Sources */,
 				3EC398BF1D8B45AD0084612D /* DemoTouchView.swift in Sources */,
+				3EF024E91ECBC10600166EC5 /* FormatCoordinatesViewController.swift in Sources */,
 				3E85263D1B90DE2C00690EBD /* DisplayMapViewController.swift in Sources */,
 				3ED029681B8E3ACD00ACA70D /* EAOptionsViewController.swift in Sources */,
 				3E4B05F91B39EF250072E514 /* SVProgressHUD.m in Sources */,

@@ -131,6 +131,9 @@
 		3E85263D1B90DE2C00690EBD /* DisplayMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E85263C1B90DE2C00690EBD /* DisplayMapViewController.swift */; };
 		3E85263F1B90E06F00690EBD /* DisplayMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E85263E1B90E06F00690EBD /* DisplayMap.storyboard */; };
 		3E8526401B90E19C00690EBD /* DisplayMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E85263C1B90DE2C00690EBD /* DisplayMapViewController.swift */; };
+		3E8A05BA1ECD07DD0032231C /* SceneLayerURL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8A05B91ECD07DD0032231C /* SceneLayerURL.storyboard */; };
+		3E8A05BC1ECD08240032231C /* SceneLayerURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */; };
+		3E8A05BD1ECD08CD0032231C /* SceneLayerURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */; };
 		3E8A05CB1ECE68E80032231C /* Animate3DGraphic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8A05C61ECE68E80032231C /* Animate3DGraphic.storyboard */; };
 		3E8A05CC1ECE68E80032231C /* Animate3DGraphicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A05C71ECE68E80032231C /* Animate3DGraphicViewController.swift */; };
 		3E8A05CD1ECE68E80032231C /* CameraSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A05C81ECE68E80032231C /* CameraSettingsViewController.swift */; };
@@ -142,9 +145,6 @@
 		3E8A05E01ECE6BC20032231C /* CameraSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A05C81ECE68E80032231C /* CameraSettingsViewController.swift */; };
 		3E8A05E11ECE6BC20032231C /* MissionSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A05C91ECE68E80032231C /* MissionSettingsViewController.swift */; };
 		3E8A05E21ECE6BC20032231C /* PlaneStatsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A05CA1ECE68E80032231C /* PlaneStatsViewController.swift */; };
-		3E8A05BA1ECD07DD0032231C /* SceneLayerURL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8A05B91ECD07DD0032231C /* SceneLayerURL.storyboard */; };
-		3E8A05BC1ECD08240032231C /* SceneLayerURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */; };
-		3E8A05BD1ECD08CD0032231C /* SceneLayerURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */; };
 		3E8A25831D36B6E300D14F08 /* FeatureLayerGDB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8A257F1D36B6E300D14F08 /* FeatureLayerGDB.storyboard */; };
 		3E8A25841D36B6E300D14F08 /* FeatureLayerGDBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A25801D36B6E300D14F08 /* FeatureLayerGDBViewController.swift */; };
 		3E8A25871D36B74400D14F08 /* FeatureLayerGDBViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A25801D36B6E300D14F08 /* FeatureLayerGDBViewController.swift */; };
@@ -155,6 +155,9 @@
 		3E8D54FB1D53E3F000E628D9 /* ScenePropertiesExpressions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8D54F91D53E3F000E628D9 /* ScenePropertiesExpressions.storyboard */; };
 		3E8D54FC1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8D54FA1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift */; };
 		3E8D54FD1D53FCD500E628D9 /* ScenePropertiesExpressionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8D54FA1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift */; };
+		3EA15C751ED89EAE00B1F816 /* ChangeSublayerRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EA15C731ED89EAE00B1F816 /* ChangeSublayerRenderer.storyboard */; };
+		3EA15C761ED89EAE00B1F816 /* ChangeSublayerRendererVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA15C741ED89EAE00B1F816 /* ChangeSublayerRendererVC.swift */; };
+		3EA15C771ED8A52300B1F816 /* ChangeSublayerRendererVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EA15C741ED89EAE00B1F816 /* ChangeSublayerRendererVC.swift */; };
 		3EABC78F1DB1772000C161C6 /* RGBRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7891DB1772000C161C6 /* RGBRenderer.storyboard */; };
 		3EABC7901DB1772000C161C6 /* RGBRenderer3InputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC78A1DB1772000C161C6 /* RGBRenderer3InputCell.swift */; };
 		3EABC7911DB1772000C161C6 /* RGBRendererInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC78B1DB1772000C161C6 /* RGBRendererInputCell.swift */; };
@@ -414,6 +417,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3EA15C771ED8A52300B1F816 /* ChangeSublayerRendererVC.swift in CopyFiles */,
 				3E8A05DF1ECE6BC20032231C /* Animate3DGraphicViewController.swift in CopyFiles */,
 				3E8A05E01ECE6BC20032231C /* CameraSettingsViewController.swift in CopyFiles */,
 				3E8A05E11ECE6BC20032231C /* MissionSettingsViewController.swift in CopyFiles */,
@@ -642,6 +646,8 @@
 		3E8526351B90D92700690EBD /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarksViewController.swift; path = "Maps/Manage bookmarks/BookmarksViewController.swift"; sourceTree = "<group>"; };
 		3E85263C1B90DE2C00690EBD /* DisplayMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisplayMapViewController.swift; path = "arcgis-ios-sdk-samples/Maps/Display a map/DisplayMapViewController.swift"; sourceTree = SOURCE_ROOT; };
 		3E85263E1B90E06F00690EBD /* DisplayMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DisplayMap.storyboard; path = "arcgis-ios-sdk-samples/Maps/Display a map/DisplayMap.storyboard"; sourceTree = SOURCE_ROOT; };
+		3E8A05B91ECD07DD0032231C /* SceneLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SceneLayerURL.storyboard; path = "Scenes/Scene layer (URL)/SceneLayerURL.storyboard"; sourceTree = "<group>"; };
+		3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneLayerURLViewController.swift; path = "Scenes/Scene layer (URL)/SceneLayerURLViewController.swift"; sourceTree = "<group>"; };
 		3E8A05C61ECE68E80032231C /* Animate3DGraphic.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Animate3DGraphic.storyboard; sourceTree = "<group>"; };
 		3E8A05C71ECE68E80032231C /* Animate3DGraphicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animate3DGraphicViewController.swift; sourceTree = "<group>"; };
 		3E8A05C81ECE68E80032231C /* CameraSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraSettingsViewController.swift; sourceTree = "<group>"; };
@@ -649,8 +655,6 @@
 		3E8A05CA1ECE68E80032231C /* PlaneStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaneStatsViewController.swift; sourceTree = "<group>"; };
 		3E8A05DB1ECE69840032231C /* Bristol.dae */ = {isa = PBXFileReference; explicitFileType = compiled; fileEncoding = 4; path = Bristol.dae; sourceTree = "<group>"; };
 		3E8A05DC1ECE69840032231C /* Bristol.png */ = {isa = PBXFileReference; explicitFileType = compiled; path = Bristol.png; sourceTree = "<group>"; };
-		3E8A05B91ECD07DD0032231C /* SceneLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SceneLayerURL.storyboard; path = "Scenes/Scene layer (URL)/SceneLayerURL.storyboard"; sourceTree = "<group>"; };
-		3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneLayerURLViewController.swift; path = "Scenes/Scene layer (URL)/SceneLayerURLViewController.swift"; sourceTree = "<group>"; };
 		3E8A257F1D36B6E300D14F08 /* FeatureLayerGDB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerGDB.storyboard; sourceTree = "<group>"; };
 		3E8A25801D36B6E300D14F08 /* FeatureLayerGDBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerGDBViewController.swift; sourceTree = "<group>"; };
 		3E8A25891D36B89400D14F08 /* LA_Trails.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = LA_Trails.geodatabase; sourceTree = "<group>"; };
@@ -658,6 +662,8 @@
 		3E8A258E1D36B97A00D14F08 /* MapLoadedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLoadedViewController.swift; sourceTree = "<group>"; };
 		3E8D54F91D53E3F000E628D9 /* ScenePropertiesExpressions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScenePropertiesExpressions.storyboard; sourceTree = "<group>"; };
 		3E8D54FA1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenePropertiesExpressionsViewController.swift; sourceTree = "<group>"; };
+		3EA15C731ED89EAE00B1F816 /* ChangeSublayerRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChangeSublayerRenderer.storyboard; sourceTree = "<group>"; };
+		3EA15C741ED89EAE00B1F816 /* ChangeSublayerRendererVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeSublayerRendererVC.swift; sourceTree = "<group>"; };
 		3EA34D591B38C3B3003DC0E8 /* Samples-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Samples-Bridging-Header.h"; path = "Content Display Logic/Samples-Bridging-Header.h"; sourceTree = "<group>"; };
 		3EABC7891DB1772000C161C6 /* RGBRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RGBRenderer.storyboard; sourceTree = "<group>"; };
 		3EABC78A1DB1772000C161C6 /* RGBRenderer3InputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBRenderer3InputCell.swift; sourceTree = "<group>"; };
@@ -1319,6 +1325,15 @@
 			path = "Maps/Open an existing map";
 			sourceTree = "<group>";
 		};
+		3E8A05B81ECD07B00032231C /* Scene layer (URL) */ = {
+			isa = PBXGroup;
+			children = (
+				3E8A05B91ECD07DD0032231C /* SceneLayerURL.storyboard */,
+				3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */,
+			);
+			name = "Scene layer (URL)";
+			sourceTree = "<group>";
+		};
 		3E8A05C51ECE68E80032231C /* Animate 3D graphic */ = {
 			isa = PBXGroup;
 			children = (
@@ -1348,15 +1363,6 @@
 				3E8A05DC1ECE69840032231C /* Bristol.png */,
 			);
 			path = Bristol;
-            sourceTree = "<group>";
-        };
-		3E8A05B81ECD07B00032231C /* Scene layer (URL) */ = {
-			isa = PBXGroup;
-			children = (
-				3E8A05B91ECD07DD0032231C /* SceneLayerURL.storyboard */,
-				3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */,
-			);
-			name = "Scene layer (URL)";
 			sourceTree = "<group>";
 		};
 		3E8A257E1D36B6E300D14F08 /* Feature layer (geodatabase) */ = {
@@ -1396,6 +1402,16 @@
 			);
 			name = "Scene properties expressions";
 			path = "Scenes/Scene properties expressions";
+			sourceTree = "<group>";
+		};
+		3EA15C721ED89EAE00B1F816 /* Change sublayer renderer */ = {
+			isa = PBXGroup;
+			children = (
+				3EA15C731ED89EAE00B1F816 /* ChangeSublayerRenderer.storyboard */,
+				3EA15C741ED89EAE00B1F816 /* ChangeSublayerRendererVC.swift */,
+			);
+			name = "Change sublayer renderer";
+			path = "Layers/Change sublayer renderer";
 			sourceTree = "<group>";
 		};
 		3EABC7881DB1772000C161C6 /* RGB renderer */ = {
@@ -1669,6 +1685,7 @@
 				3ED7888A1D26E1E600E5F311 /* ArcGIS tiled layer (tile cache) */,
 				3EC39C301C9B0DAE003F6459 /* Export tiles */,
 				3ED0289F1B8E3A9800ACA70D /* ArcGIS map image layer (URL) */,
+				3EA15C721ED89EAE00B1F816 /* Change sublayer renderer */,
 				3ED028A71B8E3A9800ACA70D /* Change sublayer visibility */,
 				3EE8B9511CA08E16003AA705 /* ArcGIS vector tile layer (URL) */,
 				3E81C1B71D8A0C7400470AA4 /* ArcGIS vector tiled layer (custom style) */,
@@ -2285,6 +2302,7 @@
 				3E85263F1B90E06F00690EBD /* DisplayMap.storyboard in Resources */,
 				3ED028991B8E3A8500ACA70D /* ShowMagnifier.storyboard in Resources */,
 				3ED028E11B8E3AA500ACA70D /* OverrideRenderer.storyboard in Resources */,
+				3EA15C751ED89EAE00B1F816 /* ChangeSublayerRenderer.storyboard in Resources */,
 				3ED028731B8E3A8500ACA70D /* MapViewDrawStatus.storyboard in Resources */,
 				3ED028881B8E3A8500ACA70D /* OpenExistingMap.storyboard in Resources */,
 				3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */,
@@ -2540,6 +2558,7 @@
 				3E4BF4421C5AE98300D85919 /* FindAddressViewController.swift in Sources */,
 				3ED0293A1B8E3AB300ACA70D /* MILShowLegendViewController.swift in Sources */,
 				3EEA060E1D21C44000E03774 /* SceneSymbolsViewController.swift in Sources */,
+				3EA15C761ED89EAE00B1F816 /* ChangeSublayerRendererVC.swift in Sources */,
 				3ED0292D1B8E3AB300ACA70D /* GOIdentifyViewController.swift in Sources */,
 				3E8526391B90D92700690EBD /* BookmarksViewController.swift in Sources */,
 				3EC39C1E1C9A59B9003F6459 /* DirectionsListViewController.swift in Sources */,

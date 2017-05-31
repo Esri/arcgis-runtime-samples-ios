@@ -27,8 +27,40 @@ class WebTiledLayerViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["WebTiledLayerViewController"]
 
+        //add web tiled layer at index 0 at start
+        self.applyWebTiledLayer(at: 0)
+    }
+    
+    private func applyWebTiledLayer(at index:Int) {
+        
+        //web tiled layer
+        let webTiledLayer = self.webTiledLayer(for: index)
+        
+        //initialize basemap with web tiled layer
+        let basemap = AGSBasemap(baseLayer: webTiledLayer)
+        
+        //initialize map with the basemap
+        let map = AGSMap(basemap: basemap)
+        
+        self.mapView.map = map
+    }
+    
+    private func webTiledLayer(for index:Int) -> AGSWebTiledLayer {
+        
         //url template for web tiled layer
-        let urlTemplate = "http://{subDomain}.tile.stamen.com/terrain/{level}/{col}/{row}.png"
+        var urlTemplate:String
+        
+        switch index {
+        case 0:
+            //toner
+            urlTemplate = "http://{subDomain}.tile.stamen.com/toner/{level}/{col}/{row}.png"
+        case 1:
+            //terrain
+            urlTemplate = "http://{subDomain}.tile.stamen.com/terrain/{level}/{col}/{row}.png"
+        default:
+            //water color
+            urlTemplate = "http://{subDomain}.tile.stamen.com/watercolor/{level}/{col}/{row}.png"
+        }
         
         //sub domains
         let subDomains = ["a", "b", "c", "d"]
@@ -45,20 +77,13 @@ class WebTiledLayerViewController: UIViewController {
         //assign attribution
         webTiledLayer.attribution = attribution
         
-        //initialize basemap with web tiled layer
-        let basemap = AGSBasemap(baseLayer: webTiledLayer)
+        return webTiledLayer
+    }
+    
+    @IBAction private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         
-        //initialize map with the basemap
-        let map = AGSMap(basemap: basemap)
-        
-        //initial viewpoint
-        let centerPoint = AGSPoint(x: -13167861.0, y: 4382202.0, spatialReference: AGSSpatialReference.webMercator())
-        
-        //set initial viewpoint
-        map.initialViewpoint = AGSViewpoint(center: centerPoint, scale: 50000)
-        
-        //assign map to the map view
-        self.mapView.map = map
+        //update web tiled layer
+        self.applyWebTiledLayer(at: sender.selectedSegmentIndex)
     }
     
     override func didReceiveMemoryWarning() {

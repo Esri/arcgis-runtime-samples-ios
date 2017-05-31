@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16E163f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kue-Ye-IRU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kue-Ye-IRU">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,7 +8,7 @@
         <!--Web Tiled Layer View Controller-->
         <scene sceneID="rd2-43-4id">
             <objects>
-                <viewController id="kue-Ye-IRU" customClass="WebTiledLayerViewController" customModule="MapViewDemo_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kue-Ye-IRU" customClass="WebTiledLayerViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kNe-lK-vTq"/>
                         <viewControllerLayoutGuide type="bottom" id="uRt-RI-PC2"/>
@@ -21,13 +20,36 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8FU-be-Eed" customClass="AGSMapView">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UvY-aG-MQK">
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="YcR-Wy-EeO"/>
+                                    <barButtonItem style="plain" id="xMh-02-U6n">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="uDW-Y9-s4i">
+                                            <rect key="frame" x="37" y="7" width="300" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Toner"/>
+                                                <segment title="Terrain"/>
+                                                <segment title="WaterColor"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="segmentedControlValueChanged:" destination="kue-Ye-IRU" eventType="valueChanged" id="IOW-my-U2b"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="zO7-gx-6nS"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="UvY-aG-MQK" firstAttribute="leading" secondItem="aiA-w4-skW" secondAttribute="leading" id="MfC-uF-lGZ"/>
                             <constraint firstItem="8FU-be-Eed" firstAttribute="leading" secondItem="aiA-w4-skW" secondAttribute="leading" id="PLo-pg-wBA"/>
                             <constraint firstItem="8FU-be-Eed" firstAttribute="top" secondItem="kNe-lK-vTq" secondAttribute="bottom" id="QEp-c1-efz"/>
-                            <constraint firstItem="uRt-RI-PC2" firstAttribute="top" secondItem="8FU-be-Eed" secondAttribute="bottom" id="ipB-PG-dnX"/>
+                            <constraint firstItem="uRt-RI-PC2" firstAttribute="top" secondItem="UvY-aG-MQK" secondAttribute="bottom" id="cIe-M5-dAi"/>
+                            <constraint firstAttribute="trailing" secondItem="UvY-aG-MQK" secondAttribute="trailing" id="dJa-AQ-JVh"/>
                             <constraint firstAttribute="trailing" secondItem="8FU-be-Eed" secondAttribute="trailing" id="mR6-AR-iw4"/>
+                            <constraint firstItem="UvY-aG-MQK" firstAttribute="top" secondItem="8FU-be-Eed" secondAttribute="bottom" id="mXp-ow-B6H"/>
                         </constraints>
                     </view>
                     <connections>
@@ -36,7 +58,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fJ-1u-Mps" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="153" y="144"/>
+            <point key="canvasLocation" x="152.80000000000001" y="143.47826086956522"/>
         </scene>
     </scenes>
 </document>

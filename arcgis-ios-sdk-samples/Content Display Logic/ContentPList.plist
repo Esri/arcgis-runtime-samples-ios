@@ -661,6 +661,14 @@
                     <key>descriptionText</key>
                     <string>The sample shows how to perform geometry operations between overlapping polygons</string>
                 </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Format coordinates</string>
+                    <key>storyboardName</key>
+                    <string>FormatCoordinates</string>
+                    <key>descriptionText</key>
+                    <string>This sample demonstrates how to convert a map location Point to a number of different coordinate notations. Tap on the map or edit the values in textfields</string>
+                </dict>
             </array>
         </dict>
         <dict>

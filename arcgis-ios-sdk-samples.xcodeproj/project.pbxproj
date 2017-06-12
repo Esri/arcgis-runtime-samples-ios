@@ -131,6 +131,9 @@
 		3E85263D1B90DE2C00690EBD /* DisplayMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E85263C1B90DE2C00690EBD /* DisplayMapViewController.swift */; };
 		3E85263F1B90E06F00690EBD /* DisplayMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E85263E1B90E06F00690EBD /* DisplayMap.storyboard */; };
 		3E8526401B90E19C00690EBD /* DisplayMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E85263C1B90DE2C00690EBD /* DisplayMapViewController.swift */; };
+		3E8A05BA1ECD07DD0032231C /* SceneLayerURL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8A05B91ECD07DD0032231C /* SceneLayerURL.storyboard */; };
+		3E8A05BC1ECD08240032231C /* SceneLayerURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */; };
+		3E8A05BD1ECD08CD0032231C /* SceneLayerURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */; };
 		3E8A05CB1ECE68E80032231C /* Animate3DGraphic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8A05C61ECE68E80032231C /* Animate3DGraphic.storyboard */; };
 		3E8A05CC1ECE68E80032231C /* Animate3DGraphicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A05C71ECE68E80032231C /* Animate3DGraphicViewController.swift */; };
 		3E8A05CD1ECE68E80032231C /* CameraSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A05C81ECE68E80032231C /* CameraSettingsViewController.swift */; };
@@ -142,9 +145,6 @@
 		3E8A05E01ECE6BC20032231C /* CameraSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A05C81ECE68E80032231C /* CameraSettingsViewController.swift */; };
 		3E8A05E11ECE6BC20032231C /* MissionSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A05C91ECE68E80032231C /* MissionSettingsViewController.swift */; };
 		3E8A05E21ECE6BC20032231C /* PlaneStatsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A05CA1ECE68E80032231C /* PlaneStatsViewController.swift */; };
-		3E8A05BA1ECD07DD0032231C /* SceneLayerURL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8A05B91ECD07DD0032231C /* SceneLayerURL.storyboard */; };
-		3E8A05BC1ECD08240032231C /* SceneLayerURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */; };
-		3E8A05BD1ECD08CD0032231C /* SceneLayerURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */; };
 		3E8A25831D36B6E300D14F08 /* FeatureLayerGDB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8A257F1D36B6E300D14F08 /* FeatureLayerGDB.storyboard */; };
 		3E8A25841D36B6E300D14F08 /* FeatureLayerGDBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A25801D36B6E300D14F08 /* FeatureLayerGDBViewController.swift */; };
 		3E8A25871D36B74400D14F08 /* FeatureLayerGDBViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A25801D36B6E300D14F08 /* FeatureLayerGDBViewController.swift */; };
@@ -408,6 +408,9 @@
 		3EFDE0F91E36AE3100CBCD92 /* FeatureCollectionLayerVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift */; };
 		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
+		E4A0BD8B1EE9E5D300CDE436 /* DistanceCompositeSymbolViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */; };
+		E4C4A4481EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */; };
+		E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -417,6 +420,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				E4A0BD8B1EE9E5D300CDE436 /* DistanceCompositeSymbolViewController.swift in CopyFiles */,
 				3EF024EA1ECBC21300166EC5 /* FormatCoordinatesViewController.swift in CopyFiles */,
 				3E8A05DF1ECE6BC20032231C /* Animate3DGraphicViewController.swift in CopyFiles */,
 				3E8A05E01ECE6BC20032231C /* CameraSettingsViewController.swift in CopyFiles */,
@@ -646,6 +650,8 @@
 		3E8526351B90D92700690EBD /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarksViewController.swift; path = "Maps/Manage bookmarks/BookmarksViewController.swift"; sourceTree = "<group>"; };
 		3E85263C1B90DE2C00690EBD /* DisplayMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisplayMapViewController.swift; path = "arcgis-ios-sdk-samples/Maps/Display a map/DisplayMapViewController.swift"; sourceTree = SOURCE_ROOT; };
 		3E85263E1B90E06F00690EBD /* DisplayMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DisplayMap.storyboard; path = "arcgis-ios-sdk-samples/Maps/Display a map/DisplayMap.storyboard"; sourceTree = SOURCE_ROOT; };
+		3E8A05B91ECD07DD0032231C /* SceneLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SceneLayerURL.storyboard; path = "Scenes/Scene layer (URL)/SceneLayerURL.storyboard"; sourceTree = "<group>"; };
+		3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneLayerURLViewController.swift; path = "Scenes/Scene layer (URL)/SceneLayerURLViewController.swift"; sourceTree = "<group>"; };
 		3E8A05C61ECE68E80032231C /* Animate3DGraphic.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Animate3DGraphic.storyboard; sourceTree = "<group>"; };
 		3E8A05C71ECE68E80032231C /* Animate3DGraphicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animate3DGraphicViewController.swift; sourceTree = "<group>"; };
 		3E8A05C81ECE68E80032231C /* CameraSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraSettingsViewController.swift; sourceTree = "<group>"; };
@@ -653,8 +659,6 @@
 		3E8A05CA1ECE68E80032231C /* PlaneStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaneStatsViewController.swift; sourceTree = "<group>"; };
 		3E8A05DB1ECE69840032231C /* Bristol.dae */ = {isa = PBXFileReference; explicitFileType = compiled; fileEncoding = 4; path = Bristol.dae; sourceTree = "<group>"; };
 		3E8A05DC1ECE69840032231C /* Bristol.png */ = {isa = PBXFileReference; explicitFileType = compiled; path = Bristol.png; sourceTree = "<group>"; };
-		3E8A05B91ECD07DD0032231C /* SceneLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SceneLayerURL.storyboard; path = "Scenes/Scene layer (URL)/SceneLayerURL.storyboard"; sourceTree = "<group>"; };
-		3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneLayerURLViewController.swift; path = "Scenes/Scene layer (URL)/SceneLayerURLViewController.swift"; sourceTree = "<group>"; };
 		3E8A257F1D36B6E300D14F08 /* FeatureLayerGDB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerGDB.storyboard; sourceTree = "<group>"; };
 		3E8A25801D36B6E300D14F08 /* FeatureLayerGDBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerGDBViewController.swift; sourceTree = "<group>"; };
 		3E8A25891D36B89400D14F08 /* LA_Trails.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = LA_Trails.geodatabase; sourceTree = "<group>"; };
@@ -834,6 +838,8 @@
 		3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerQuery.storyboard; sourceTree = "<group>"; };
 		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryVC.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
+		E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DistanceCompositeSymbol.storyboard; path = "Scenes/Distance Composite Symbol/DistanceCompositeSymbol.storyboard"; sourceTree = "<group>"; };
+		E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DistanceCompositeSymbolViewController.swift; path = "Scenes/Distance Composite Symbol/DistanceCompositeSymbolViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1325,6 +1331,15 @@
 			path = "Maps/Open an existing map";
 			sourceTree = "<group>";
 		};
+		3E8A05B81ECD07B00032231C /* Scene layer (URL) */ = {
+			isa = PBXGroup;
+			children = (
+				3E8A05B91ECD07DD0032231C /* SceneLayerURL.storyboard */,
+				3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */,
+			);
+			name = "Scene layer (URL)";
+			sourceTree = "<group>";
+		};
 		3E8A05C51ECE68E80032231C /* Animate 3D graphic */ = {
 			isa = PBXGroup;
 			children = (
@@ -1354,15 +1369,6 @@
 				3E8A05DC1ECE69840032231C /* Bristol.png */,
 			);
 			path = Bristol;
-            sourceTree = "<group>";
-        };
-		3E8A05B81ECD07B00032231C /* Scene layer (URL) */ = {
-			isa = PBXGroup;
-			children = (
-				3E8A05B91ECD07DD0032231C /* SceneLayerURL.storyboard */,
-				3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */,
-			);
-			name = "Scene layer (URL)";
 			sourceTree = "<group>";
 		};
 		3E8A257E1D36B6E300D14F08 /* Feature layer (geodatabase) */ = {
@@ -2076,6 +2082,7 @@
 		3EEA06001D21C3E800E03774 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				E4C4A4491EE9DD8C0073B6C0 /* Distance Composite Symbol */,
 				3E8A05B81ECD07B00032231C /* Scene layer (URL) */,
 				3EEA06041D21C44000E03774 /* Display a scene */,
 				3EEA06071D21C44000E03774 /* Extrude graphics */,
@@ -2216,6 +2223,15 @@
 			path = "Features/Feature collection layer (query)";
 			sourceTree = "<group>";
 		};
+		E4C4A4491EE9DD8C0073B6C0 /* Distance Composite Symbol */ = {
+			isa = PBXGroup;
+			children = (
+				E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */,
+				E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */,
+			);
+			name = "Distance Composite Symbol";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2350,6 +2366,7 @@
 				3EABC7B81DB183E600C161C6 /* ShastaBW.tif.aux.xml in Resources */,
 				3ED029651B8E3ACD00ACA70D /* EditAttachment.storyboard in Resources */,
 				3EBA255D1D34025700AB0703 /* PictureMarkerSymbols.storyboard in Resources */,
+				E4C4A4481EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard in Resources */,
 				3EF024E81ECBC10600166EC5 /* FormatCoordinates.storyboard in Resources */,
 				3E1183DD1ECF5A1000180152 /* GrandCanyon.csv in Resources */,
 				3ED028F41B8E3AA500ACA70D /* OnInteractionCache.storyboard in Resources */,
@@ -2484,6 +2501,7 @@
 				3EEA06101D21C44000E03774 /* DisplaySceneViewController.swift in Sources */,
 				3E8526381B90D92700690EBD /* BookmarksListViewController.swift in Sources */,
 				3E8A05CE1ECE68E80032231C /* MissionSettingsViewController.swift in Sources */,
+				E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */,
 				3ED0286A1B8E3A8500ACA70D /* SetViewpointViewController.swift in Sources */,
 				3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */,
 				3E0B584F1E36BCCD00951767 /* AnalyzeHotspotsViewController.swift in Sources */,

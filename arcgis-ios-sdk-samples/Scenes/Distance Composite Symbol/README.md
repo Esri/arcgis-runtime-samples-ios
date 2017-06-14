@@ -5,7 +5,7 @@ Demonstrates how to create a graphic using a distance composite scene symbol. Di
 # How to use the sample
 
 The symbol of graphic will change while zooming in or out.
-![](image1.png)
+![](DistanceCompositeSymbol.gif)
 
 ## How it works
 

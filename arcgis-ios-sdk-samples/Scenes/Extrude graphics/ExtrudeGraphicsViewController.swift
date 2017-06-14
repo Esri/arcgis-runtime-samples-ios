@@ -60,11 +60,14 @@ class ExtrudeGraphicsViewController: UIViewController {
         let elevationSource = AGSArcGISTiledElevationSource(url: URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!)
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         //add the graphics
         self.addGraphics()
     }
-    
     
     private func addGraphics() {
         //starting point

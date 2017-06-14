@@ -5,12 +5,10 @@ Demonstrates how to create a graphic using a distance composite scene symbol. Di
 # How to use the sample
 
 The symbol of graphic will change while zooming in or out.
-<<TODO>>
 ![](image1.png)
 
 ## How it works
 
-<<TODO>>
 <ol>
   <li>Create an <code>AGSGraphicsOverlay</code> and add it to the <code>AGSSceneView</code>.</li>
   <li>Create symbols for each <code>AGSRange</code> the composite symbol.</li>

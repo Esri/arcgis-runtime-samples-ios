@@ -266,6 +266,14 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
+                    <string>Web tiled layer</string>
+                    <key>storyboardName</key>
+                    <string>WebTiledLayer</string>
+                    <key>descriptionText</key>
+                    <string>This sample demonstrates how to display map tiles from an online resource</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
                     <string>Hillshade renderer</string>
                     <key>storyboardName</key>
                     <string>HillshadeRenderer</string>

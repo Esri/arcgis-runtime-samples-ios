@@ -20,14 +20,14 @@ import ArcGIS
 class RasterLayerVC: UIViewController {
     
     @IBOutlet private weak var mapView: AGSMapView!
-
+    
     private var map:AGSMap!
     
     private var rasterLayer: AGSRasterLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RasterLayerVC"]
         
         let raster = AGSRaster(name: "Shasta", extension: "tif")
@@ -42,15 +42,13 @@ class RasterLayerVC: UIViewController {
         
         self.mapView.map?.operationalLayers.add(rasterLayer!)
         
-        self.rasterLayer.addObserver(self, forKeyPath: "loadStatus", options: .new, context: nil)
-        
-    }
-
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if self.rasterLayer.loadStatus == AGSLoadStatus.loaded {
-            self.mapView.setViewpoint(AGSViewpoint(center: (self.rasterLayer.fullExtent?.center)!, scale: 80000))
+        self.rasterLayer.load { (error) in
+            if error == nil {
+                self.mapView.setViewpoint(AGSViewpoint(center: (self.rasterLayer.fullExtent?.center)!, scale: 80000))
+            }
         }
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

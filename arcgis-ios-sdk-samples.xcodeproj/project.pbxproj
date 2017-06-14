@@ -2082,7 +2082,6 @@
 		3EEA06001D21C3E800E03774 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				E4C4A4491EE9DD8C0073B6C0 /* Distance Composite Symbol */,
 				3E8A05B81ECD07B00032231C /* Scene layer (URL) */,
 				3EEA06041D21C44000E03774 /* Display a scene */,
 				3EEA06071D21C44000E03774 /* Extrude graphics */,
@@ -2090,6 +2089,7 @@
 				3EEA060A1D21C44000E03774 /* Surface placements */,
 				3E8D54F81D53E3F000E628D9 /* Scene properties expressions */,
 				3E8A05C51ECE68E80032231C /* Animate 3D graphic */,
+				E4C4A4491EE9DD8C0073B6C0 /* Distance composite symbol */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -2223,13 +2223,13 @@
 			path = "Features/Feature collection layer (query)";
 			sourceTree = "<group>";
 		};
-		E4C4A4491EE9DD8C0073B6C0 /* Distance Composite Symbol */ = {
+		E4C4A4491EE9DD8C0073B6C0 /* Distance composite symbol */ = {
 			isa = PBXGroup;
 			children = (
 				E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */,
 				E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */,
 			);
-			name = "Distance Composite Symbol";
+			name = "Distance composite symbol";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

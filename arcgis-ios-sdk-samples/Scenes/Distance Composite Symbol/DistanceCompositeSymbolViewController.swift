@@ -45,10 +45,10 @@ class DistanceCompositeSymbolViewController: UIViewController {
         // set up the different symbols
         let circleSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 10.0)
         
-        let coneSymbol = AGSSimpleMarkerSceneSymbol.cone(with: .red, diameter: 10, height: 10)
+        let coneSymbol = AGSSimpleMarkerSceneSymbol.cone(with: .red, diameter: 200, height: 600)
         coneSymbol.pitch = -90.0
         
-        let modelSymbol = AGSModelSceneSymbol(name: "Bristol", extension: "dae", scale: 1.0)
+        let modelSymbol = AGSModelSceneSymbol(name: "Bristol", extension: "dae", scale: 100.0)
         modelSymbol.load(completion: { [weak self] (error) in
             if let error = error {
                 print(error)
@@ -57,9 +57,9 @@ class DistanceCompositeSymbolViewController: UIViewController {
             
             // set up the distance composite symbol
             let compositeSymbol = AGSDistanceCompositeSceneSymbol()
-            compositeSymbol.ranges.append(AGSDistanceSymbolRange(symbol: modelSymbol, minDistance: 0, maxDistance: 100))
-            compositeSymbol.ranges.append(AGSDistanceSymbolRange(symbol: coneSymbol, minDistance: 100, maxDistance: 1000))
-            compositeSymbol.ranges.append(AGSDistanceSymbolRange(symbol: circleSymbol, minDistance: 1000, maxDistance: 0))
+            compositeSymbol.ranges.append(AGSDistanceSymbolRange(symbol: modelSymbol, minDistance: 0, maxDistance: 10000))
+            compositeSymbol.ranges.append(AGSDistanceSymbolRange(symbol: coneSymbol, minDistance: 10001, maxDistance: 30000))
+            compositeSymbol.ranges.append(AGSDistanceSymbolRange(symbol: circleSymbol, minDistance: 30001, maxDistance: 0))
             
             // create graphic
             let aircraftPosition = AGSPoint(x: -2.708471, y: 56.096575, z: 5000, spatialReference: AGSSpatialReference.wgs84())
@@ -69,7 +69,7 @@ class DistanceCompositeSymbolViewController: UIViewController {
             graphicsOverlay.graphics.add(aircraftGraphic)
             
             // add a camera and initial camera position
-            let camera = AGSCamera(lookAt: aircraftPosition, distance: 20.0, heading: 0.0, pitch: 70.0, roll: 0.0)
+            let camera = AGSCamera(lookAt: aircraftPosition, distance: 2000.0, heading: 0.0, pitch: 70.0, roll: 0.0)
             self?.sceneView.setViewpointCamera(camera)
         })
     }

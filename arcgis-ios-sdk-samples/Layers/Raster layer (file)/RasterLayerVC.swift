@@ -55,9 +55,4 @@ class RasterLayerVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    deinit {
-        self.rasterLayer.removeObserver(self, forKeyPath: "loadStatus")
-    }
-    
 }

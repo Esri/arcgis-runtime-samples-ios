@@ -412,6 +412,14 @@
                     <key>descriptionText</key>
                     <string>Use a feature collection layer to show query results from a service feature table</string>
                 </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>List related features</string>
+                    <key>storyboardName</key>
+                    <string>ListRelatedFeatures</string>
+                    <key>descriptionText</key>
+                    <string>This sample shows how to query related features for a given feature. Tap on a feature on the map to see its related features</string>
+                </dict>
             </array>
         </dict>
         <dict>
@@ -645,6 +653,14 @@
                     <key>descriptionText</key>
                     <string>The sample shows how to perform geometry operations between overlapping polygons</string>
                 </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Format coordinates</string>
+                    <key>storyboardName</key>
+                    <string>FormatCoordinates</string>
+                    <key>descriptionText</key>
+                    <string>This sample demonstrates how to convert a map location Point to a number of different coordinate notations. Tap on the map or edit the values in textfields</string>
+                </dict>
             </array>
         </dict>
         <dict>
@@ -680,6 +696,14 @@
                         <string>SanDiegoNetworkData</string>
                         <string>SanDiegoTilePackage</string>
                     </array>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Find service area interactive</string>
+                    <key>storyboardName</key>
+                    <string>FindServiceAreaInteractive</string>
+                    <key>descriptionText</key>
+                    <string>This samples shows how to find service areas around a point</string>
                 </dict>
             </array>
         </dict>
@@ -760,11 +784,45 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
+                    <string>Scene layer (URL)</string>
+                    <key>storyboardName</key>
+                    <string>SceneLayerURL</string>
+                    <key>descriptionText</key>
+                    <string>The sample shows how to use a scene layer in a scene</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
                     <string>Scene properties expressions</string>
                     <key>storyboardName</key>
                     <string>ScenePropertiesExpressions</string>
                     <key>descriptionText</key>
                     <string>This sample demonstrates how to update the orientation of graphics in graphics overlay using expressions on scene properties</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Animate 3D graphic</string>
+                    <key>storyboardName</key>
+                    <string>Animate3DGraphic</string>
+                    <key>descriptionText</key>
+                    <string>This sample demonstrates how to animate a graphic’s position and rotation and have the camera follow it</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>MissionFiles</string>
+                        <string>Bristol3DModel</string>
+                    </array>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Distance Composite Symbol</string>
+                    <key>storyboardName</key>
+                    <string>DistanceCompositeSymbol</string>
+                    <key>descriptionText</key>
+                    <string>Demonstrates how to create a graphic using a distance composite scene symbol. Distance composite scene symbols can render different symbols depending on the distance between the camera and the graphic.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>MissionFiles</string>
+                        <string>Bristol3DModel</string>
+                    </array>
                 </dict>
             </array>
         </dict>

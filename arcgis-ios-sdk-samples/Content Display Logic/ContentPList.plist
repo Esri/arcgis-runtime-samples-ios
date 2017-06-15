@@ -819,6 +819,18 @@
                         <string>Bristol3DModel</string>
                     </array>
                 </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Distance composite symbol</string>
+                    <key>storyboardName</key>
+                    <string>DistanceCompositeSymbol</string>
+                    <key>descriptionText</key>
+                    <string>Demonstrates how to create a graphic using a distance composite scene symbol. Distance composite scene symbols can render different symbols depending on the distance between the camera and the graphic.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>Bristol3DModel</string>
+                    </array>
+                </dict>
             </array>
         </dict>
     </array>

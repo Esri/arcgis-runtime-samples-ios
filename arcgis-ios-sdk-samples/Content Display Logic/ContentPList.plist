@@ -254,6 +254,18 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
+                    <string>Raster layer (file)</string>
+                    <key>storyboardName</key>
+                    <string>RasterLayer</string>
+                    <key>descriptionText</key>
+                    <string>You can create a raster layer from a file</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>ShastaRaster</string>
+                    </array>
+                </dict>
+                <dict>
+                    <key>displayName</key>
                     <string>Web tiled layer</string>
                     <key>storyboardName</key>
                     <string>WebTiledLayer</string>

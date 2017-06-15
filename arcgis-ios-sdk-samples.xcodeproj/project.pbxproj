@@ -1710,6 +1710,7 @@
 				3ED028A71B8E3A9800ACA70D /* Change sublayer visibility */,
 				3EE8B9511CA08E16003AA705 /* ArcGIS vector tile layer (URL) */,
 				3E81C1B71D8A0C7400470AA4 /* ArcGIS vector tiled layer (custom style) */,
+				166E8F951EE4DF6C00C57C46 /* Raster layer (file) */,
 				3E6294081EAFAF4100084105 /* Web tiled layer */,
 				166E8F951EE4DF6C00C57C46 /* Raster layer (file) */,
 				3E1E5EE31D9F085E00F4913C /* Hillshade renderer */,

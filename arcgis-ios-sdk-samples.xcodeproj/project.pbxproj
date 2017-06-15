@@ -838,8 +838,8 @@
 		3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerQuery.storyboard; sourceTree = "<group>"; };
 		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryVC.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
-		E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DistanceCompositeSymbol.storyboard; path = "Scenes/Distance Composite Symbol/DistanceCompositeSymbol.storyboard"; sourceTree = "<group>"; };
-		E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DistanceCompositeSymbolViewController.swift; path = "Scenes/Distance Composite Symbol/DistanceCompositeSymbolViewController.swift"; sourceTree = "<group>"; };
+		E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DistanceCompositeSymbol.storyboard; sourceTree = "<group>"; };
+		E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceCompositeSymbolViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2230,6 +2230,7 @@
 				E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */,
 			);
 			name = "Distance composite symbol";
+			path = "Scenes/Distance composite symbol";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

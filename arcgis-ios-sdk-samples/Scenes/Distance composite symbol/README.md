@@ -1,4 +1,4 @@
-# Distance Composite Symbol
+# Distance composite symbol
 
 Demonstrates how to create a graphic using a distance composite scene symbol. Distance composite scene symbols can render different symbols depending on the distance between the camera and the graphic.
 
@@ -19,20 +19,3 @@ The symbol of graphic will change while zooming in or out.
   <li>Create a <code>AGSGraphic</code> with the symbol: <code>AGSGraphic(geometry:symbol:attributes:)</code></li>
   <li>Add the graphic to the graphics overlay.</li>
 </ol>
-
-<h2>Features</h2>
-
-<ul>
-  <li>AGSScene</li>
-  <li>AGSTiledElevationSource</li>
-  <li>AGSCamera</li>
-  <li>AGSDistanceCompositeSceneSymbol</li>
-  <li>AGSDistanceCompositeSceneSymbol.Range</li>
-  <li>AGSGraphic</li>
-  <li>AGSGraphicsOverlay</li>
-  <li>AGSModelSceneSymbol</li>
-  <li>AGSRange</li>
-  <li>AGSRangeCollection</li>
-  <li>AGSSceneView</li>
-  <li>AGSSimpleMarkerSceneSymbol</li>
-</ul>

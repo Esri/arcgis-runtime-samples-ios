@@ -411,6 +411,15 @@
 		3EFDE0F91E36AE3100CBCD92 /* FeatureCollectionLayerVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift */; };
 		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
+		E45991A01EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E459919B1EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard */; };
+		E45991A11EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */; };
+		E45991A21EF3021D0089E9FD /* WebMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E459919D1EF3021D0089E9FD /* WebMapCell.swift */; };
+		E45991A31EF3021D0089E9FD /* WebMapsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E459919E1EF3021D0089E9FD /* WebMapsCollectionViewController.swift */; };
+		E45991A41EF3021D0089E9FD /* WebMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E459919F1EF3021D0089E9FD /* WebMapViewController.swift */; };
+		E45991A51EF31DE40089E9FD /* SearchForWebmapByKeywordViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */; };
+		E45991A61EF31DE40089E9FD /* WebMapCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E459919D1EF3021D0089E9FD /* WebMapCell.swift */; };
+		E45991A71EF31DE40089E9FD /* WebMapsCollectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E459919E1EF3021D0089E9FD /* WebMapsCollectionViewController.swift */; };
+		E45991A81EF31DE40089E9FD /* WebMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E459919F1EF3021D0089E9FD /* WebMapViewController.swift */; };
 		E4A0BD8B1EE9E5D300CDE436 /* DistanceCompositeSymbolViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */; };
 		E4C4A4481EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */; };
 		E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */; };
@@ -423,6 +432,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				E45991A51EF31DE40089E9FD /* SearchForWebmapByKeywordViewController.swift in CopyFiles */,
+				E45991A61EF31DE40089E9FD /* WebMapCell.swift in CopyFiles */,
+				E45991A71EF31DE40089E9FD /* WebMapsCollectionViewController.swift in CopyFiles */,
+				E45991A81EF31DE40089E9FD /* WebMapViewController.swift in CopyFiles */,
 				E4A0BD8B1EE9E5D300CDE436 /* DistanceCompositeSymbolViewController.swift in CopyFiles */,
 				3EF024EA1ECBC21300166EC5 /* FormatCoordinatesViewController.swift in CopyFiles */,
 				3E8A05DF1ECE6BC20032231C /* Animate3DGraphicViewController.swift in CopyFiles */,
@@ -844,6 +857,11 @@
 		3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerQuery.storyboard; sourceTree = "<group>"; };
 		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryVC.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
+		E459919B1EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchForWebmapByKeyword.storyboard; sourceTree = "<group>"; };
+		E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchForWebmapByKeywordViewController.swift; sourceTree = "<group>"; };
+		E459919D1EF3021D0089E9FD /* WebMapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebMapCell.swift; sourceTree = "<group>"; };
+		E459919E1EF3021D0089E9FD /* WebMapsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebMapsCollectionViewController.swift; sourceTree = "<group>"; };
+		E459919F1EF3021D0089E9FD /* WebMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebMapViewController.swift; sourceTree = "<group>"; };
 		E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DistanceCompositeSymbol.storyboard; sourceTree = "<group>"; };
 		E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceCompositeSymbolViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2165,6 +2183,7 @@
 		3EEE1D671E4935FC003263FC /* Cloud & Portal */ = {
 			isa = PBXGroup;
 			children = (
+				E459919A1EF3021D0089E9FD /* Search for webmap by keyword */,
 				3EEE1D681E4935FC003263FC /* List portal group users */,
 			);
 			path = "Cloud & Portal";
@@ -2238,6 +2257,18 @@
 			);
 			name = "Feature collection layer (query)";
 			path = "Features/Feature collection layer (query)";
+			sourceTree = "<group>";
+		};
+		E459919A1EF3021D0089E9FD /* Search for webmap by keyword */ = {
+			isa = PBXGroup;
+			children = (
+				E459919B1EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard */,
+				E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */,
+				E459919D1EF3021D0089E9FD /* WebMapCell.swift */,
+				E459919E1EF3021D0089E9FD /* WebMapsCollectionViewController.swift */,
+				E459919F1EF3021D0089E9FD /* WebMapViewController.swift */,
+			);
+			path = "Search for webmap by keyword";
 			sourceTree = "<group>";
 		};
 		E4C4A4491EE9DD8C0073B6C0 /* Distance composite symbol */ = {
@@ -2448,6 +2479,7 @@
 				3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */,
 				3EABC7A01DB1793000C161C6 /* StretchRenderer.storyboard in Resources */,
 				3E1183E01ECF5A1000180152 /* Snowdon.csv in Resources */,
+				E45991A01EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard in Resources */,
 				3EFCE1C61CF374C600E02F67 /* MobileMapSearchRoute.storyboard in Resources */,
 				3E54D2351CC6985200BB9904 /* GraphicDrawOrder.storyboard in Resources */,
 				3ED028911B8E3A8500ACA70D /* SetInitialMapLocation.storyboard in Resources */,
@@ -2526,6 +2558,7 @@
 				3E0B584F1E36BCCD00951767 /* AnalyzeHotspotsViewController.swift in Sources */,
 				3EABC7911DB1772000C161C6 /* RGBRendererInputCell.swift in Sources */,
 				3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */,
+				E45991A31EF3021D0089E9FD /* WebMapsCollectionViewController.swift in Sources */,
 				3ED0289A1B8E3A8500ACA70D /* ShowMagnifierViewController.swift in Sources */,
 				3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */,
 				3E4B05FB1B39EF250072E514 /* TPKeyboardAvoidingScrollView.m in Sources */,
@@ -2539,6 +2572,7 @@
 				3EC39C3C1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift in Sources */,
 				3EABC7A31DB1793000C161C6 /* StretchRendererTypeCell.swift in Sources */,
 				3E2A68181B153CDE00A318AA /* SourceCodeBarButtonItem.swift in Sources */,
+				E45991A11EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift in Sources */,
 				3ED028581B8E3A8500ACA70D /* CreateSaveMapViewController.swift in Sources */,
 				3E8A25841D36B6E300D14F08 /* FeatureLayerGDBViewController.swift in Sources */,
 				3E4B05FD1B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
@@ -2587,6 +2621,7 @@
 				3E1E5EE51D9F08ED00F4913C /* HillshadeRendererVC.swift in Sources */,
 				3ED029291B8E3AB300ACA70D /* GORenderersViewController.swift in Sources */,
 				3ED0286B1B8E3A8500ACA70D /* CustomContextSheet.swift in Sources */,
+				E45991A41EF3021D0089E9FD /* WebMapViewController.swift in Sources */,
 				3E0B585B1E36D8D300951767 /* SpatialOperationsViewController.swift in Sources */,
 				3ED0287A1B8E3A8500ACA70D /* MMLLayersViewController.swift in Sources */,
 				3E54D2331CC697F100BB9904 /* GraphicDrawOrderViewController.swift in Sources */,
@@ -2607,6 +2642,7 @@
 				3EABC7941DB1772000C161C6 /* RGBRendererViewController.swift in Sources */,
 				3EFCE1C31CF374C600E02F67 /* MapPackageCell.swift in Sources */,
 				3ED028631B8E3A8500ACA70D /* SwitchBasemapViewController.swift in Sources */,
+				E45991A21EF3021D0089E9FD /* WebMapCell.swift in Sources */,
 				3EEA06141D21C44000E03774 /* SurfacePlacementsViewController.swift in Sources */,
 				3EAF09451D7108DC00F8538F /* ChangeMapViewBackgroundVC.swift in Sources */,
 				3EEE1D701E4935FC003263FC /* GroupUsersViewController.swift in Sources */,

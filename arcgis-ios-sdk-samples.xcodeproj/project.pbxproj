@@ -377,6 +377,8 @@
 		3EFDE0F91E36AE3100CBCD92 /* FeatureCollectionLayerVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift */; };
 		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
+		FD7DD8E51EF2A7950072ABE6 /* CustomCallout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD7DD8E41EF2A7950072ABE6 /* CustomCallout.storyboard */; };
+		FD7DD8E71EF2A7B10072ABE6 /* CustomCalloutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7DD8E61EF2A7B10072ABE6 /* CustomCalloutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -772,6 +774,8 @@
 		3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerQuery.storyboard; sourceTree = "<group>"; };
 		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryVC.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
+		FD7DD8E41EF2A7950072ABE6 /* CustomCallout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomCallout.storyboard; sourceTree = "<group>"; };
+		FD7DD8E61EF2A7B10072ABE6 /* CustomCalloutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1516,6 +1520,7 @@
 		3ED027FD1B8E392500ACA70D /* Display information */ = {
 			isa = PBXGroup;
 			children = (
+				FD7DD8E31EF2A72A0072ABE6 /* Show custom callout */,
 				3ED028FD1B8E3AB300ACA70D /* Add graphics with renderer */,
 				3E71621D1BA0D7C2008DE398 /* Add graphics with symbols */,
 				3ED029021B8E3AB300ACA70D /* Identify graphics */,
@@ -2064,6 +2069,15 @@
 			path = "Features/Feature collection layer (query)";
 			sourceTree = "<group>";
 		};
+		FD7DD8E31EF2A72A0072ABE6 /* Show custom callout */ = {
+			isa = PBXGroup;
+			children = (
+				FD7DD8E41EF2A7950072ABE6 /* CustomCallout.storyboard */,
+				FD7DD8E61EF2A7B10072ABE6 /* CustomCalloutViewController.swift */,
+			);
+			name = "Show custom callout";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2149,6 +2163,7 @@
 				3ED028E11B8E3AA500ACA70D /* OverrideRenderer.storyboard in Resources */,
 				3ED028731B8E3A8500ACA70D /* MapViewDrawStatus.storyboard in Resources */,
 				3ED028881B8E3A8500ACA70D /* OpenExistingMap.storyboard in Resources */,
+				FD7DD8E51EF2A7950072ABE6 /* CustomCallout.storyboard in Resources */,
 				3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */,
 				3ED028651B8E3A8500ACA70D /* HighwayJson.txt in Resources */,
 				3EC39C3A1C9B23DF003F6459 /* GenerateGeodatabase.storyboard in Resources */,
@@ -2356,6 +2371,7 @@
 				3EFCE1C51CF374C600E02F67 /* MobileMapViewController.swift in Sources */,
 				3ED028B31B8E3A9800ACA70D /* TLUsingURLViewController.swift in Sources */,
 				3ED028EA1B8E3AA500ACA70D /* FLQueryViewController.swift in Sources */,
+				FD7DD8E71EF2A7B10072ABE6 /* CustomCalloutViewController.swift in Sources */,
 				3E41DD721B9A1F4600DA11CC /* AddFeaturesViewController.swift in Sources */,
 				3ED028961B8E3A8500ACA70D /* SetMapsSRViewController.swift in Sources */,
 				3ED0288E1B8E3A8500ACA70D /* SetInitialMapAreaViewController.swift in Sources */,

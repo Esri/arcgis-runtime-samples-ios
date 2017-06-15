@@ -184,6 +184,14 @@
                         <string>SanFranciscoMMPK</string>
                     </array>
                 </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Generate offline map</string>
+                    <key>storyboardName</key>
+                    <string>GenerateOfflineMap</string>
+                    <key>descriptionText</key>
+                    <string>This sample demonstrates how to generate an offline map for web map in ArcGIS Portal. The sample requires login to take AGOL Basemap offline.</string>
+                </dict>
             </array>
         </dict>
         <dict>

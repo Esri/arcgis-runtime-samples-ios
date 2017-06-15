@@ -106,6 +106,9 @@
 		3E5849011B91256300AB3CE9 /* BookmarksListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8526341B90D92700690EBD /* BookmarksListViewController.swift */; };
 		3E5849021B91256300AB3CE9 /* BookmarksViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8526351B90D92700690EBD /* BookmarksViewController.swift */; };
 		3E5849031B91256300AB3CE9 /* FeatureLayerURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */; };
+		3E5E09371EF2E8E200FF3454 /* GenerateOfflineMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5E09351EF2E8E200FF3454 /* GenerateOfflineMap.storyboard */; };
+		3E5E09381EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5E09361EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift */; };
+		3E5E09391EF2F5ED00FF3454 /* GenerateOfflineMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5E09361EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift */; };
 		3E676DF11B1D0B6000D4029A /* Camera Shutter.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */; };
 		3E6AE3EC1C6D11BA0026E59C /* OfflineRouting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6AE3EB1C6D11BA0026E59C /* OfflineRouting.storyboard */; };
 		3E6AE3EE1C6D11FD0026E59C /* OfflineRoutingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AE3ED1C6D11FD0026E59C /* OfflineRoutingViewController.swift */; };
@@ -131,6 +134,9 @@
 		3E85263D1B90DE2C00690EBD /* DisplayMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E85263C1B90DE2C00690EBD /* DisplayMapViewController.swift */; };
 		3E85263F1B90E06F00690EBD /* DisplayMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E85263E1B90E06F00690EBD /* DisplayMap.storyboard */; };
 		3E8526401B90E19C00690EBD /* DisplayMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E85263C1B90DE2C00690EBD /* DisplayMapViewController.swift */; };
+		3E8A05BA1ECD07DD0032231C /* SceneLayerURL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8A05B91ECD07DD0032231C /* SceneLayerURL.storyboard */; };
+		3E8A05BC1ECD08240032231C /* SceneLayerURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */; };
+		3E8A05BD1ECD08CD0032231C /* SceneLayerURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */; };
 		3E8A05CB1ECE68E80032231C /* Animate3DGraphic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8A05C61ECE68E80032231C /* Animate3DGraphic.storyboard */; };
 		3E8A05CC1ECE68E80032231C /* Animate3DGraphicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A05C71ECE68E80032231C /* Animate3DGraphicViewController.swift */; };
 		3E8A05CD1ECE68E80032231C /* CameraSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A05C81ECE68E80032231C /* CameraSettingsViewController.swift */; };
@@ -142,9 +148,6 @@
 		3E8A05E01ECE6BC20032231C /* CameraSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A05C81ECE68E80032231C /* CameraSettingsViewController.swift */; };
 		3E8A05E11ECE6BC20032231C /* MissionSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A05C91ECE68E80032231C /* MissionSettingsViewController.swift */; };
 		3E8A05E21ECE6BC20032231C /* PlaneStatsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A05CA1ECE68E80032231C /* PlaneStatsViewController.swift */; };
-		3E8A05BA1ECD07DD0032231C /* SceneLayerURL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8A05B91ECD07DD0032231C /* SceneLayerURL.storyboard */; };
-		3E8A05BC1ECD08240032231C /* SceneLayerURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */; };
-		3E8A05BD1ECD08CD0032231C /* SceneLayerURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */; };
 		3E8A25831D36B6E300D14F08 /* FeatureLayerGDB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8A257F1D36B6E300D14F08 /* FeatureLayerGDB.storyboard */; };
 		3E8A25841D36B6E300D14F08 /* FeatureLayerGDBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A25801D36B6E300D14F08 /* FeatureLayerGDBViewController.swift */; };
 		3E8A25871D36B74400D14F08 /* FeatureLayerGDBViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8A25801D36B6E300D14F08 /* FeatureLayerGDBViewController.swift */; };
@@ -417,6 +420,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3E5E09391EF2F5ED00FF3454 /* GenerateOfflineMapViewController.swift in CopyFiles */,
 				3EF024EA1ECBC21300166EC5 /* FormatCoordinatesViewController.swift in CopyFiles */,
 				3E8A05DF1ECE6BC20032231C /* Animate3DGraphicViewController.swift in CopyFiles */,
 				3E8A05E01ECE6BC20032231C /* CameraSettingsViewController.swift in CopyFiles */,
@@ -627,6 +631,8 @@
 		3E54D2341CC6985200BB9904 /* GraphicDrawOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GraphicDrawOrder.storyboard; path = "Display information/Control graphic draw order/GraphicDrawOrder.storyboard"; sourceTree = "<group>"; };
 		3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayerURLViewController.swift; path = "Features/Feature layer (feature service)/FeatureLayerURLViewController.swift"; sourceTree = "<group>"; };
 		3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FeatureLayerURL.storyboard; path = "Features/Feature layer (feature service)/FeatureLayerURL.storyboard"; sourceTree = "<group>"; };
+		3E5E09351EF2E8E200FF3454 /* GenerateOfflineMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GenerateOfflineMap.storyboard; sourceTree = "<group>"; };
+		3E5E09361EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateOfflineMapViewController.swift; sourceTree = "<group>"; };
 		3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Camera Shutter.caf"; sourceTree = "<group>"; };
 		3E6AE3EB1C6D11BA0026E59C /* OfflineRouting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OfflineRouting.storyboard; path = "Offline routing/OfflineRouting.storyboard"; sourceTree = "<group>"; };
 		3E6AE3ED1C6D11FD0026E59C /* OfflineRoutingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineRoutingViewController.swift; path = "Offline routing/OfflineRoutingViewController.swift"; sourceTree = "<group>"; };
@@ -646,6 +652,8 @@
 		3E8526351B90D92700690EBD /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarksViewController.swift; path = "Maps/Manage bookmarks/BookmarksViewController.swift"; sourceTree = "<group>"; };
 		3E85263C1B90DE2C00690EBD /* DisplayMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisplayMapViewController.swift; path = "arcgis-ios-sdk-samples/Maps/Display a map/DisplayMapViewController.swift"; sourceTree = SOURCE_ROOT; };
 		3E85263E1B90E06F00690EBD /* DisplayMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DisplayMap.storyboard; path = "arcgis-ios-sdk-samples/Maps/Display a map/DisplayMap.storyboard"; sourceTree = SOURCE_ROOT; };
+		3E8A05B91ECD07DD0032231C /* SceneLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SceneLayerURL.storyboard; path = "Scenes/Scene layer (URL)/SceneLayerURL.storyboard"; sourceTree = "<group>"; };
+		3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneLayerURLViewController.swift; path = "Scenes/Scene layer (URL)/SceneLayerURLViewController.swift"; sourceTree = "<group>"; };
 		3E8A05C61ECE68E80032231C /* Animate3DGraphic.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Animate3DGraphic.storyboard; sourceTree = "<group>"; };
 		3E8A05C71ECE68E80032231C /* Animate3DGraphicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animate3DGraphicViewController.swift; sourceTree = "<group>"; };
 		3E8A05C81ECE68E80032231C /* CameraSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraSettingsViewController.swift; sourceTree = "<group>"; };
@@ -653,8 +661,6 @@
 		3E8A05CA1ECE68E80032231C /* PlaneStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaneStatsViewController.swift; sourceTree = "<group>"; };
 		3E8A05DB1ECE69840032231C /* Bristol.dae */ = {isa = PBXFileReference; explicitFileType = compiled; fileEncoding = 4; path = Bristol.dae; sourceTree = "<group>"; };
 		3E8A05DC1ECE69840032231C /* Bristol.png */ = {isa = PBXFileReference; explicitFileType = compiled; path = Bristol.png; sourceTree = "<group>"; };
-		3E8A05B91ECD07DD0032231C /* SceneLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SceneLayerURL.storyboard; path = "Scenes/Scene layer (URL)/SceneLayerURL.storyboard"; sourceTree = "<group>"; };
-		3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneLayerURLViewController.swift; path = "Scenes/Scene layer (URL)/SceneLayerURLViewController.swift"; sourceTree = "<group>"; };
 		3E8A257F1D36B6E300D14F08 /* FeatureLayerGDB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerGDB.storyboard; sourceTree = "<group>"; };
 		3E8A25801D36B6E300D14F08 /* FeatureLayerGDBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerGDBViewController.swift; sourceTree = "<group>"; };
 		3E8A25891D36B89400D14F08 /* LA_Trails.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = LA_Trails.geodatabase; sourceTree = "<group>"; };
@@ -1230,6 +1236,16 @@
 			name = "Feature layer (feature service)";
 			sourceTree = "<group>";
 		};
+		3E5E09341EF2E8E200FF3454 /* Generate offline map */ = {
+			isa = PBXGroup;
+			children = (
+				3E5E09351EF2E8E200FF3454 /* GenerateOfflineMap.storyboard */,
+				3E5E09361EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift */,
+			);
+			name = "Generate offline map";
+			path = "Maps/Generate offline map";
+			sourceTree = "<group>";
+		};
 		3E676DEF1B1D0B6000D4029A /* Audio Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1325,6 +1341,15 @@
 			path = "Maps/Open an existing map";
 			sourceTree = "<group>";
 		};
+		3E8A05B81ECD07B00032231C /* Scene layer (URL) */ = {
+			isa = PBXGroup;
+			children = (
+				3E8A05B91ECD07DD0032231C /* SceneLayerURL.storyboard */,
+				3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */,
+			);
+			name = "Scene layer (URL)";
+			sourceTree = "<group>";
+		};
 		3E8A05C51ECE68E80032231C /* Animate 3D graphic */ = {
 			isa = PBXGroup;
 			children = (
@@ -1354,15 +1379,6 @@
 				3E8A05DC1ECE69840032231C /* Bristol.png */,
 			);
 			path = Bristol;
-            sourceTree = "<group>";
-        };
-		3E8A05B81ECD07B00032231C /* Scene layer (URL) */ = {
-			isa = PBXGroup;
-			children = (
-				3E8A05B91ECD07DD0032231C /* SceneLayerURL.storyboard */,
-				3E8A05BB1ECD08240032231C /* SceneLayerURLViewController.swift */,
-			);
-			name = "Scene layer (URL)";
 			sourceTree = "<group>";
 		};
 		3E8A257E1D36B6E300D14F08 /* Feature layer (geodatabase) */ = {
@@ -1711,6 +1727,7 @@
 				3E6C77141CCFC33100E89873 /* Identify layers */,
 				3EFCE1AF1CEFD5B900E02F67 /* Open mobile map (map package) */,
 				3EFCE1BE1CF36FFC00E02F67 /* Mobile map (search and route) */,
+				3E5E09341EF2E8E200FF3454 /* Generate offline map */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
@@ -2408,6 +2425,7 @@
 				3ED0289C1B8E3A8500ACA70D /* MapViewScreenshot.storyboard in Resources */,
 				3EEA06131D21C44000E03774 /* SurfacePlacements.storyboard in Resources */,
 				3ED0292C1B8E3AB300ACA70D /* GOIdentify.storyboard in Resources */,
+				3E5E09371EF2E8E200FF3454 /* GenerateOfflineMap.storyboard in Resources */,
 				3EBA25761D34510F00AB0703 /* CreateGeometries.storyboard in Resources */,
 				3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */,
 				3EABC7A01DB1793000C161C6 /* StretchRenderer.storyboard in Resources */,
@@ -2518,6 +2536,7 @@
 				3E8A25921D36B97A00D14F08 /* MapLoadedViewController.swift in Sources */,
 				3EEA06121D21C44000E03774 /* ExtrudeGraphicsViewController.swift in Sources */,
 				3EC398BF1D8B45AD0084612D /* DemoTouchView.swift in Sources */,
+				3E5E09381EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift in Sources */,
 				3EF024E91ECBC10600166EC5 /* FormatCoordinatesViewController.swift in Sources */,
 				3E85263D1B90DE2C00690EBD /* DisplayMapViewController.swift in Sources */,
 				3ED029681B8E3ACD00ACA70D /* EAOptionsViewController.swift in Sources */,

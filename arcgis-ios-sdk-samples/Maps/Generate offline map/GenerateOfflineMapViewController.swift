@@ -43,19 +43,27 @@ class GenerateOfflineMapViewController: UIViewController {
         AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
         AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
         
+        //portal for the web map
         let portal = AGSPortal.arcGISOnline(withLoginRequired: true)
+        
+        //portal item for web map
         self.portalItem = AGSPortalItem(portal: portal, itemID: "acc027394bc84c2fb04d1ed317aac674")
+        
+        //map from portal item
         let map = AGSMap(item: self.portalItem)
         
+        //assign map to the map view
         self.mapView.map = map
         
+        //disable the bar button item until the map loads
         self.mapView.map?.load(completion: { [weak self] (error) in
             
             if error == nil {
                 self?.barButtonItem.isEnabled = true
             }
-            })
+        })
         
+        //instantiate offline map task
         self.offlineMapTask = AGSOfflineMapTask(portalItem: self.portalItem)
         
         //setup extent view
@@ -65,16 +73,30 @@ class GenerateOfflineMapViewController: UIViewController {
     
     private func defaultParameters() {
         
-        self.offlineMapTask.defaultGenerateOfflineMapParameters(withAreaOfInterest: self.frameToExtent()) { (parameters: AGSGenerateOfflineMapParameters?, error: Error?) in
+        //show progress hud
+        SVProgressHUD.show(withStatus: "Getting default parameters", maskType: .gradient)
+        
+        //default parameters for offline map task
+        self.offlineMapTask.defaultGenerateOfflineMapParameters(withAreaOfInterest: self.frameToExtent()) { [weak self] (parameters: AGSGenerateOfflineMapParameters?, error: Error?) in
             
-            if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
-            }
-            else {
+            guard error == nil else {
                 
-                self.parameters = parameters!
-                self.takeMapOffline()
+                SVProgressHUD.showError(withStatus: error!.localizedDescription, maskType: .gradient)
+                return
             }
+            
+            //dismiss progress hud
+            SVProgressHUD.dismiss()
+            
+            guard let parameters = parameters else {
+                return
+            }
+            
+            //will need the parameters for creating the job later
+            self?.parameters = parameters
+            
+            //take map offline
+            self?.takeMapOffline()
         }
     }
     
@@ -92,11 +114,11 @@ class GenerateOfflineMapViewController: UIViewController {
         //add observer for progress
         self.generateOfflineMapJob.progress.addObserver(self, forKeyPath: "fractionCompleted", options: .new, context: nil)
         
+        //unhide the progress parent view
         self.progressParentView.isHidden = false
         
-        self.generateOfflineMapJob.start(statusHandler: { (status: AGSJobStatus) in
-            
-        }) { [weak self] (result:AGSGenerateOfflineMapResult?, error:Error?) in
+        //start the job
+        self.generateOfflineMapJob.start(statusHandler: nil) { [weak self] (result:AGSGenerateOfflineMapResult?, error:Error?) in
             
             guard let weakSelf = self else {
                 return
@@ -106,8 +128,6 @@ class GenerateOfflineMapViewController: UIViewController {
                 SVProgressHUD.showError(withStatus: error!.localizedDescription, maskType: .gradient)
                 return
             }
-            
-            SVProgressHUD.dismiss()
             
             //disable cancel button
             weakSelf.cancelButton.isEnabled = false
@@ -128,9 +148,13 @@ class GenerateOfflineMapViewController: UIViewController {
             }
             
             if keyPath == "fractionCompleted" {
+                
                 let progress = weakSelf.generateOfflineMapJob.progress
                 
+                //update progress label
                 self?.progressLabel.text = progress.localizedDescription
+                
+                //update progress view
                 self?.progressView.progress = Float(progress.fractionCompleted)
             }
         }

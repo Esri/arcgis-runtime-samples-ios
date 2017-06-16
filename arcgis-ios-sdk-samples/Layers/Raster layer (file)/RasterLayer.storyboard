@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Raster LayerVC-->
+        <!--Raster Layer View Controller-->
         <scene sceneID="aCz-QA-Vs3">
             <objects>
-                <viewController id="lb4-7r-8Ym" customClass="RasterLayerVC" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lb4-7r-8Ym" customClass="RasterLayerViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cTB-9s-WQ3"/>
                         <viewControllerLayoutGuide type="bottom" id="fwf-2q-htI"/>

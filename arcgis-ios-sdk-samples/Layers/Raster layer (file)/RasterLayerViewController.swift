@@ -17,7 +17,7 @@
 import UIKit
 import ArcGIS
 
-class RasterLayerVC: UIViewController {
+class RasterLayerViewController: UIViewController {
     
     @IBOutlet private weak var mapView: AGSMapView!
 
@@ -29,7 +29,7 @@ class RasterLayerVC: UIViewController {
         super.viewDidLoad()
 
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RasterLayerVC"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RasterLayerViewController"]
         
         //create raster
         let raster = AGSRaster(name: "Shasta", extension: "tif")

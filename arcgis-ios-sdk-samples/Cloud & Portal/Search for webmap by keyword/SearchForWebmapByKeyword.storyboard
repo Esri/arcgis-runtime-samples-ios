@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BJI-ZN-tOu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lb4-oH-gZ5">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -65,7 +65,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DJi-9N-dTm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1016.8" y="106.59670164917542"/>
+            <point key="canvasLocation" x="396" y="0.0"/>
         </scene>
         <!--Web Map View Controller-->
         <scene sceneID="t96-Zm-W8c">
@@ -98,12 +98,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cbd-bC-WHz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1872.8" y="106.59670164917542"/>
+            <point key="canvasLocation" x="1258" y="0.0"/>
         </scene>
-        <!--Web Maps CollectionVC-->
+        <!--Web Maps Collection View Controller-->
         <scene sceneID="A4X-9w-i80">
             <objects>
-                <viewController id="wmB-24-7Xa" customClass="WebMapsCollectionVC" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wmB-24-7Xa" customClass="WebMapsCollectionViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Bog-Zc-MSW"/>
                         <viewControllerLayoutGuide type="bottom" id="Oao-AK-tFd"/>
@@ -113,7 +113,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yyJ-6p-rPs">
-                                <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tES-YT-R93">
                                     <size key="itemSize" width="290" height="126"/>
@@ -123,7 +123,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="MuW-tl-tOP" customClass="WebMapCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="10" width="290" height="126"/>
+                                        <rect key="frame" x="43" y="10" width="290" height="126"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="290" height="126"/>
@@ -136,7 +136,7 @@
                                                             <rect key="frame" x="1" y="1" width="288" height="91"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="hZY-oB-qNa">
-                                                                    <rect key="frame" x="10" y="9.5" width="105" height="72"/>
+                                                                    <rect key="frame" x="10" y="10" width="105" height="72"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="72" id="Fov-Y3-aTn"/>
                                                                         <constraint firstAttribute="width" constant="105" id="i84-ua-t6X"/>
@@ -163,18 +163,18 @@
                                                             <rect key="frame" x="1" y="92" width="288" height="33"/>
                                                             <subviews>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mar 55, 2555" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vI-Hc-OmS">
-                                                                    <rect key="frame" x="10" y="7.5" width="77.5" height="18"/>
+                                                                    <rect key="frame" x="10" y="8" width="78" height="18"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuB-rf-3ZQ">
-                                                                    <rect key="frame" x="95.5" y="4" width="4" height="25"/>
+                                                                    <rect key="frame" x="96" y="4" width="4" height="25"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Owner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhZ-nT-2hr">
-                                                                    <rect key="frame" x="107.5" y="7.5" width="172.5" height="18"/>
+                                                                    <rect key="frame" x="108" y="8" width="172" height="18"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
                                                                     <color key="textColor" red="0.43529411759999997" green="0.70196078429999997" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -238,25 +238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VKk-s2-97E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="78" y="815"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Y1j-ZG-6ds">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BJI-ZN-tOu" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OjR-Jj-NDf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="lb4-oH-gZ5" kind="relationship" relationship="rootViewController" id="ESW-VS-D9K"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bAm-EJ-con" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="77.599999999999994" y="106.59670164917542"/>
+            <point key="canvasLocation" x="396" y="730"/>
         </scene>
     </scenes>
     <resources>

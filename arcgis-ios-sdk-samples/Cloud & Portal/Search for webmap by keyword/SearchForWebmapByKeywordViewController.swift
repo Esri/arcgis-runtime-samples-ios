@@ -30,6 +30,7 @@ class SearchForWebmapByKeywordViewController: UIViewController, WebMapsCollectio
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // create the portal
         self.portal = AGSPortal(url: URL(string: "https://arcgis.com")!, loginRequired: false)
         
         NotificationCenter.default.addObserver(self, selector: #selector(unhideButton), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
@@ -46,14 +47,19 @@ class SearchForWebmapByKeywordViewController: UIViewController, WebMapsCollectio
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         
+        // webmaps authored prior to July 2nd, 2014 are not supported - so search only from that date to the current time
         let date1 = dateFormatter.date(from: "July 2, 2014")!
         let dateString = "uploaded:[000000\(Int(date1.timeIntervalSince1970)) TO 000000\(Int(Date().timeIntervalSince1970))]"
+        
+        // create query parameters looking for items of type .webMap and
+        // with our keyword and date string
         let queryParams = AGSPortalQueryParameters(forItemsOf: .webMap, withSearch: "\(keyword) AND \(dateString)")
         self.portal.findItems(with: queryParams) { [weak self] (resultSet: AGSPortalQueryResultSet?, error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
             }
             else {
+                //if our results are an array of portal items, set it on our web maps collection ViewController
                 if let portalItems = resultSet?.results as? [AGSPortalItem] {
                     self?.webMapsCollectionVC.portalItems = portalItems
                 }
@@ -65,6 +71,7 @@ class SearchForWebmapByKeywordViewController: UIViewController, WebMapsCollectio
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text, !text.isEmpty {
+            //we have text, search for web maps
             self.searchForWebMap(text)
         }
         
@@ -94,8 +101,10 @@ class SearchForWebmapByKeywordViewController: UIViewController, WebMapsCollectio
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "WebMapsCollectionSegue" {
-            self.webMapsCollectionVC = segue.destination as! WebMapsCollectionViewController
-            self.webMapsCollectionVC.delegate = self
+            if let webMapsCollectionVC = segue.destination as? WebMapsCollectionViewController {
+                self.webMapsCollectionVC = webMapsCollectionVC
+                self.webMapsCollectionVC.delegate = self
+            }
         }
         else if segue.identifier == "WebMapVCSegue" {
             let controller = segue.destination as! WebMapViewController
@@ -106,7 +115,7 @@ class SearchForWebmapByKeywordViewController: UIViewController, WebMapsCollectio
     //MARK: - WebMapsCollectionVCDelegate
     
     func webMapsCollectionVC(_ webMapsCollectionVC: WebMapsCollectionViewController, didSelectWebMap webMap: AGSPortalItem) {
-        //
+        // save selected web map
         self.selectedWebMap = webMap
         //show web map
         self.performSegue(withIdentifier: "WebMapVCSegue", sender: self)

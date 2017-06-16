@@ -428,6 +428,14 @@
 				<key>descriptionText</key>
 				<string>This sample shows how to query related features for a given feature. Tap on a feature on the map to see its related features</string>
 			</dict>
+            <dict>
+                <key>displayName</key>
+                <string>Add delete related features</string>
+                <key>storyboardName</key>
+                <string>AddDeleteRelatedFeatures</string>
+                <key>descriptionText</key>
+                <string>This sample shows how to add or delete related features to an origin feature</string>
+            </dict>
 		</array>
 	</dict>
 	<dict>

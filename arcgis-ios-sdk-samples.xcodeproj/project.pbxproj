@@ -109,6 +109,11 @@
 		3E5849011B91256300AB3CE9 /* BookmarksListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8526341B90D92700690EBD /* BookmarksListViewController.swift */; };
 		3E5849021B91256300AB3CE9 /* BookmarksViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8526351B90D92700690EBD /* BookmarksViewController.swift */; };
 		3E5849031B91256300AB3CE9 /* FeatureLayerURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */; };
+		3E5E093E1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5E093B1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard */; };
+		3E5E093F1EF4567A00FF3454 /* AddDeleteRelatedFeaturesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5E093C1EF4567A00FF3454 /* AddDeleteRelatedFeaturesVC.swift */; };
+		3E5E09401EF4567A00FF3454 /* RelatedFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5E093D1EF4567A00FF3454 /* RelatedFeaturesViewController.swift */; };
+		3E5E09411EF470DB00FF3454 /* AddDeleteRelatedFeaturesVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5E093C1EF4567A00FF3454 /* AddDeleteRelatedFeaturesVC.swift */; };
+		3E5E09421EF470DB00FF3454 /* RelatedFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5E093D1EF4567A00FF3454 /* RelatedFeaturesViewController.swift */; };
 		3E62940B1EAFAF4100084105 /* WebTiledLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6294091EAFAF4100084105 /* WebTiledLayer.storyboard */; };
 		3E62940C1EAFAF4100084105 /* WebTiledLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62940A1EAFAF4100084105 /* WebTiledLayerViewController.swift */; };
 		3E62940D1EAFB69300084105 /* WebTiledLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E62940A1EAFAF4100084105 /* WebTiledLayerViewController.swift */; };
@@ -426,6 +431,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3E5E09411EF470DB00FF3454 /* AddDeleteRelatedFeaturesVC.swift in CopyFiles */,
+				3E5E09421EF470DB00FF3454 /* RelatedFeaturesViewController.swift in CopyFiles */,
 				104659AA1EF34F5200EFCB50 /* TerrainExaggerationViewController.swift in CopyFiles */,
 				E4A0BD8B1EE9E5D300CDE436 /* DistanceCompositeSymbolViewController.swift in CopyFiles */,
 				3EF024EA1ECBC21300166EC5 /* FormatCoordinatesViewController.swift in CopyFiles */,
@@ -641,6 +648,9 @@
 		3E54D2341CC6985200BB9904 /* GraphicDrawOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GraphicDrawOrder.storyboard; path = "Display information/Control graphic draw order/GraphicDrawOrder.storyboard"; sourceTree = "<group>"; };
 		3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayerURLViewController.swift; path = "Features/Feature layer (feature service)/FeatureLayerURLViewController.swift"; sourceTree = "<group>"; };
 		3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FeatureLayerURL.storyboard; path = "Features/Feature layer (feature service)/FeatureLayerURL.storyboard"; sourceTree = "<group>"; };
+		3E5E093B1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddDeleteRelatedFeatures.storyboard; sourceTree = "<group>"; };
+		3E5E093C1EF4567A00FF3454 /* AddDeleteRelatedFeaturesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeleteRelatedFeaturesVC.swift; sourceTree = "<group>"; };
+		3E5E093D1EF4567A00FF3454 /* RelatedFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedFeaturesViewController.swift; sourceTree = "<group>"; };
 		3E6294091EAFAF4100084105 /* WebTiledLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebTiledLayer.storyboard; sourceTree = "<group>"; };
 		3E62940A1EAFAF4100084105 /* WebTiledLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebTiledLayerViewController.swift; sourceTree = "<group>"; };
 		3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Camera Shutter.caf"; sourceTree = "<group>"; };
@@ -1257,6 +1267,17 @@
 			name = "Feature layer (feature service)";
 			sourceTree = "<group>";
 		};
+		3E5E093A1EF4567A00FF3454 /* Add delete related features */ = {
+			isa = PBXGroup;
+			children = (
+				3E5E093B1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard */,
+				3E5E093C1EF4567A00FF3454 /* AddDeleteRelatedFeaturesVC.swift */,
+				3E5E093D1EF4567A00FF3454 /* RelatedFeaturesViewController.swift */,
+			);
+			name = "Add delete related features";
+			path = "Features/Add delete related features";
+			sourceTree = "<group>";
+		};
 		3E6294081EAFAF4100084105 /* Web tiled layer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1702,6 +1723,7 @@
 				3EFDE0EF1E36ABB700CBCD92 /* Feature collection layer */,
 				3EFDE0F21E36ABB700CBCD92 /* Feature collection layer (query) */,
 				3EEB2B931EB9695F00B52513 /* List related features */,
+				3E5E093A1EF4567A00FF3454 /* Add delete related features */,
 			);
 			name = Features;
 			sourceTree = "<group>";
@@ -2378,6 +2400,7 @@
 				3ED028641B8E3A8500ACA70D /* GriffithParkJson.txt in Resources */,
 				3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */,
 				3EABC7B91DB183E600C161C6 /* ShastaBW.tif.ovr in Resources */,
+				3E5E093E1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard in Resources */,
 				3EEE1D6F1E4935FC003263FC /* GroupUsers.storyboard in Resources */,
 				3E6AE3F11C6D1B2E0026E59C /* san-diego in Resources */,
 				3E4BF44E1C5AF0AD00D85919 /* FindPlace.storyboard in Resources */,
@@ -2534,6 +2557,7 @@
 				3ED75D041ED39EDF009B1F75 /* FindServiceAreaInteractiveVC.swift in Sources */,
 				3E4BF4441C5AEA6500D85919 /* WorldAddressesViewController.swift in Sources */,
 				3ED028EF1B8E3AA500ACA70D /* FLSelectionViewController.swift in Sources */,
+				3E5E09401EF4567A00FF3454 /* RelatedFeaturesViewController.swift in Sources */,
 				3EEA06101D21C44000E03774 /* DisplaySceneViewController.swift in Sources */,
 				3E8526381B90D92700690EBD /* BookmarksListViewController.swift in Sources */,
 				3E8A05CE1ECE68E80032231C /* MissionSettingsViewController.swift in Sources */,
@@ -2657,6 +2681,7 @@
 				3E8A05CD1ECE68E80032231C /* CameraSettingsViewController.swift in Sources */,
 				3EC39C371C9B1ADA003F6459 /* AGSExtensions.swift in Sources */,
 				3E3B2C1F1BBCA37F00A99C5E /* ContentCollectionViewController.swift in Sources */,
+				3E5E093F1EF4567A00FF3454 /* AddDeleteRelatedFeaturesVC.swift in Sources */,
 				3ED5EB751B740A58009F9B75 /* SegmentedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		104659AA1EF34F5200EFCB50 /* TerrainExaggerationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */; };
 		10961CA61EF2FFD4008A7CEC /* TerrainExaggeration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10961CA41EF2FFD4008A7CEC /* TerrainExaggeration.storyboard */; };
 		10961CA71EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */; };
-		10961CA81EF30029008A7CEC /* TerrainExaggerationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */; };
 		3E0225371DB569240049F7F8 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0225361DB569240049F7F8 /* CategoryCell.swift */; };
 		3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */; };
 		3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */ = {isa = PBXBuildFile; fileRef = 3E03F0981B056F9C0078EB36 /* highlight.pack.js */; };
@@ -426,8 +426,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				104659AA1EF34F5200EFCB50 /* TerrainExaggerationViewController.swift in CopyFiles */,
 				E4A0BD8B1EE9E5D300CDE436 /* DistanceCompositeSymbolViewController.swift in CopyFiles */,
-				10961CA81EF30029008A7CEC /* TerrainExaggerationViewController.swift in CopyFiles */,
 				3EF024EA1ECBC21300166EC5 /* FormatCoordinatesViewController.swift in CopyFiles */,
 				3E8A05DF1ECE6BC20032231C /* Animate3DGraphicViewController.swift in CopyFiles */,
 				3E8A05E01ECE6BC20032231C /* CameraSettingsViewController.swift in CopyFiles */,
@@ -557,8 +557,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		10961CA41EF2FFD4008A7CEC /* TerrainExaggeration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TerrainExaggeration.storyboard; path = "Scenes/Terrain Exaggeration/TerrainExaggeration.storyboard"; sourceTree = "<group>"; };
-		10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TerrainExaggerationViewController.swift; path = "Scenes/Terrain Exaggeration/TerrainExaggerationViewController.swift"; sourceTree = "<group>"; };
+		10961CA41EF2FFD4008A7CEC /* TerrainExaggeration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TerrainExaggeration.storyboard; path = "Scenes/Terrain exaggeration/TerrainExaggeration.storyboard"; sourceTree = "<group>"; };
+		10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TerrainExaggerationViewController.swift; path = "Scenes/Terrain exaggeration/TerrainExaggerationViewController.swift"; sourceTree = "<group>"; };
 		3E0225361DB569240049F7F8 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryCell.swift; path = "Content Display Logic/Cells/CategoryCell.swift"; sourceTree = "<group>"; };
 		3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SourceCodeViewController.swift; path = "Content Display Logic/Controllers/SourceCodeViewController.swift"; sourceTree = "<group>"; };
 		3E03F0981B056F9C0078EB36 /* highlight.pack.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.pack.js; sourceTree = "<group>"; };
@@ -866,13 +866,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		10961CA31EF2FFA3008A7CEC /* Terrain Exaggeration */ = {
+		10961CA31EF2FFA3008A7CEC /* Terrain exaggeration */ = {
 			isa = PBXGroup;
 			children = (
 				10961CA41EF2FFD4008A7CEC /* TerrainExaggeration.storyboard */,
 				10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */,
 			);
-			name = "Terrain Exaggeration";
+			name = "Terrain exaggeration";
 			sourceTree = "<group>";
 		};
 		3E03F0971B056F9C0078EB36 /* Js */ = {
@@ -1400,8 +1400,8 @@
 				3E8A05DC1ECE69840032231C /* Bristol.png */,
 			);
 			path = Bristol;
-            sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
 		3E8A257E1D36B6E300D14F08 /* Feature layer (geodatabase) */ = {
 			isa = PBXGroup;
 			children = (
@@ -2114,7 +2114,7 @@
 		3EEA06001D21C3E800E03774 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				10961CA31EF2FFA3008A7CEC /* Terrain Exaggeration */,
+				10961CA31EF2FFA3008A7CEC /* Terrain exaggeration */,
 				3E8A05B81ECD07B00032231C /* Scene layer (URL) */,
 				3EEA06041D21C44000E03774 /* Display a scene */,
 				3EEA06071D21C44000E03774 /* Extrude graphics */,

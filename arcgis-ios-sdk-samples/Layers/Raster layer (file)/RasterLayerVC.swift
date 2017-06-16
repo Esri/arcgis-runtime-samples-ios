@@ -28,8 +28,10 @@ class RasterLayerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RasterLayerVC"]
         
+        //create raster
         let raster = AGSRaster(name: "Shasta", extension: "tif")
         
         //create raster layer using raster
@@ -38,15 +40,18 @@ class RasterLayerVC: UIViewController {
         //initialize map with raster layer as the basemap
         self.map = AGSMap(basemap: AGSBasemap.imagery())
         
+        //assign map to the map view
         self.mapView.map = map
         
+        //add the raster layer to the operational layers of the map
         self.mapView.map?.operationalLayers.add(rasterLayer!)
         
+        //set map view's viewpoint to the raster layer's full extent
         self.rasterLayer.load { (error) in
             if error == nil {
                 self.mapView.setViewpoint(AGSViewpoint(center: (self.rasterLayer.fullExtent?.center)!, scale: 80000))
             }
-        }        
+        }
     }
     
     override func didReceiveMemoryWarning() {

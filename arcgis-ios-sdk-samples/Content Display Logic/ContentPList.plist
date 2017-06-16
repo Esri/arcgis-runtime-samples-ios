@@ -254,18 +254,6 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
-                    <string>Raster layer (file)</string>
-                    <key>storyboardName</key>
-                    <string>RasterLayer</string>
-                    <key>descriptionText</key>
-                    <string>You can create a raster layer from a file</string>
-                    <key>dependency</key>
-                    <array>
-                        <string>ShastaRaster</string>
-                    </array>
-                </dict>
-                <dict>
-                    <key>displayName</key>
                     <string>Web tiled layer</string>
                     <key>storyboardName</key>
                     <string>WebTiledLayer</string>
@@ -840,6 +828,18 @@
                     <key>dependency</key>
                     <array>
                         <string>MissionFiles</string>
+                        <string>Bristol3DModel</string>
+                    </array>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Distance composite symbol</string>
+                    <key>storyboardName</key>
+                    <string>DistanceCompositeSymbol</string>
+                    <key>descriptionText</key>
+                    <string>Demonstrates how to create a graphic using a distance composite scene symbol. Distance composite scene symbols can render different symbols depending on the distance between the camera and the graphic.</string>
+                    <key>dependency</key>
+                    <array>
                         <string>Bristol3DModel</string>
                     </array>
                 </dict>

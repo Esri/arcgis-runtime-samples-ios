@@ -2114,7 +2114,6 @@
 		3EEA06001D21C3E800E03774 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				10961CA31EF2FFA3008A7CEC /* Terrain exaggeration */,
 				3E8A05B81ECD07B00032231C /* Scene layer (URL) */,
 				3EEA06041D21C44000E03774 /* Display a scene */,
 				3EEA06071D21C44000E03774 /* Extrude graphics */,
@@ -2123,6 +2122,7 @@
 				3E8D54F81D53E3F000E628D9 /* Scene properties expressions */,
 				3E8A05C51ECE68E80032231C /* Animate 3D graphic */,
 				E4C4A4491EE9DD8C0073B6C0 /* Distance composite symbol */,
+				10961CA31EF2FFA3008A7CEC /* Terrain exaggeration */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";

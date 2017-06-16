@@ -34,7 +34,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RAb-nm-N47">
-                                                    <rect key="frame" x="6" y="1" width="137" height="31"/>
+                                                    <rect key="frame" x="6" y="1" width="246" height="31"/>
                                                     <connections>
                                                         <action selector="sliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="iws-0m-F8G"/>
                                                     </connections>
@@ -45,20 +45,12 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exaggeration:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWU-g6-jNd">
-                                                    <rect key="frame" x="149" y="6" width="106" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="iWU-g6-jNd" secondAttribute="trailing" constant="45" id="JhU-cu-r3F"/>
+                                                <constraint firstItem="RAb-nm-N47" firstAttribute="centerY" secondItem="3bl-ag-Db5" secondAttribute="centerY" id="3n4-Jg-Ui9"/>
+                                                <constraint firstAttribute="trailing" secondItem="RAb-nm-N47" secondAttribute="trailing" constant="50" id="JYw-zR-iJa"/>
                                                 <constraint firstItem="RAb-nm-N47" firstAttribute="leading" secondItem="3bl-ag-Db5" secondAttribute="leading" constant="8" id="Y8F-g0-7JZ"/>
-                                                <constraint firstItem="5vB-Iw-oNt" firstAttribute="leading" secondItem="iWU-g6-jNd" secondAttribute="trailing" constant="2" id="ZPH-OU-WaL"/>
-                                                <constraint firstItem="RAb-nm-N47" firstAttribute="centerY" secondItem="iWU-g6-jNd" secondAttribute="centerY" id="fBc-iF-klT" userLabel="Horizontal Slider.centerY = centerY"/>
-                                                <constraint firstItem="iWU-g6-jNd" firstAttribute="centerY" secondItem="3bl-ag-Db5" secondAttribute="centerY" id="gcF-bR-BUD"/>
-                                                <constraint firstItem="iWU-g6-jNd" firstAttribute="leading" secondItem="RAb-nm-N47" secondAttribute="trailing" constant="8" id="gq4-GV-sTm"/>
+                                                <constraint firstItem="5vB-Iw-oNt" firstAttribute="leading" secondItem="RAb-nm-N47" secondAttribute="trailing" constant="7" id="ZeO-nZ-jRP"/>
                                                 <constraint firstItem="5vB-Iw-oNt" firstAttribute="centerY" secondItem="3bl-ag-Db5" secondAttribute="centerY" id="hYz-wz-G9T"/>
                                                 <constraint firstItem="RAb-nm-N47" firstAttribute="leading" secondItem="3bl-ag-Db5" secondAttribute="leading" constant="8" id="pzU-DK-bpF"/>
                                             </constraints>

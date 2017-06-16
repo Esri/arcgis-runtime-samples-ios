@@ -20,7 +20,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var exaggerationValue: UILabel!
     @IBOutlet weak var exaggerationSlider: UISlider!
     @IBOutlet weak var sceneView: AGSSceneView!
+    
+    //initialize scene with streets basemap
     let scene = AGSScene(basemapType: .streets)
+    
+    //initialize surface
     let surface = AGSSurface()
     
     override func viewDidLoad() {
@@ -29,16 +33,20 @@ class ViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["TerrainExaggerationViewController"]
         
+        //initialize surface and add it to scene
         let elevation = AGSArcGISTiledElevationSource(url: URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!)
         surface.elevationSources.append(elevation)
         scene.baseSurface = surface
         
+        //assign scene to scene view
         self.sceneView.scene = scene
         
+        //set up initial camera location
         let initialLocation = AGSPoint(x: -119.94891542688772, y: 46.75792111605992, spatialReference: sceneView.spatialReference)
         let camera = AGSCamera(lookAt: initialLocation, distance: 15000.0, heading: 40.0, pitch: 60.0, roll: 0.0)
         sceneView.setViewpointCamera(camera)
         
+        //set up initial slider values
         exaggerationSlider.minimumValue = 1
         exaggerationSlider.maximumValue = 10
         exaggerationSlider.isContinuous = true
@@ -51,7 +59,10 @@ class ViewController: UIViewController {
     }
 
     @IBAction func sliderValueChanged(_ sender: UISlider) {
+        //assign slider value to elevation exaggeration
         surface.elevationExaggeration = sender.value
+        
+        //display current exaggeration value
         exaggerationValue.text = String(format: "%.1fx", sender.value)
     }
 

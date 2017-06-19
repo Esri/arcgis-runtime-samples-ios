@@ -2,7 +2,7 @@
 
 <p>Shows how to search for webmaps within a portal using a keyword.</p>
 
-<p><img src="image1.png"/></p>
+![](image1.png")
 
 <h2>How to use the sample</h2>
 

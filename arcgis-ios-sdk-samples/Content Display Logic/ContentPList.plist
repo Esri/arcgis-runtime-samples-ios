@@ -236,14 +236,14 @@
 				<key>descriptionText</key>
 				<string>You can show or hide individual sublayers in a map image layer</string>
 			</dict>
-            <dict>
-                <key>displayName</key>
-                <string>Manage sublayers</string>
-                <key>storyboardName</key>
-                <string>ManageSublayers</string>
-                <key>descriptionText</key>
-                <string>This sample shows to add or remove map image sublayers and how to re-arrange existing sublayers in a map image layer</string>
-            </dict>
+			<dict>
+				<key>displayName</key>
+				<string>Manage sublayers</string>
+				<key>storyboardName</key>
+				<string>ManageSublayers</string>
+				<key>descriptionText</key>
+				<string>This sample shows to add or remove map image sublayers and how to re-arrange existing sublayers in a map image layer</string>
+			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>ArcGIS vector tiled layer (URL)</string>
@@ -268,18 +268,18 @@
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to display map tiles from an online resource</string>
 			</dict>
-            <dict>
-                <key>displayName</key>
-                <string>Raster layer (file)</string>
-                <key>storyboardName</key>
-                <string>RasterLayer</string>
-                <key>descriptionText</key>
-                <string>You can create a raster layer from a file</string>
-                <key>dependency</key>
-                <array>
-                    <string>ShastaRaster</string>
-                </array>
-            </dict>
+			<dict>
+				<key>displayName</key>
+				<string>Raster layer (file)</string>
+				<key>storyboardName</key>
+				<string>RasterLayer</string>
+				<key>descriptionText</key>
+				<string>You can create a raster layer from a file</string>
+				<key>dependency</key>
+				<array>
+					<string>ShastaRaster</string>
+				</array>
+			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>Hillshade renderer</string>
@@ -543,6 +543,14 @@
 				<key>descriptionText</key>
 				<string>This sample demonstrate how to use a unique value renderer to style different features in a feature layer with different symbols</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Display Grid</string>
+				<key>storyboardName</key>
+				<string>DisplayGrid</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrate how to use a unique value renderer to style different features in a feature layer with different symbols</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -771,14 +779,14 @@
 				<key>descriptionText</key>
 				<string>The sample demonstrates how to show the users in a group</string>
 			</dict>
-            <dict>
-                <key>displayName</key>
-                <string>Search for webmap by keyword</string>
-                <key>storyboardName</key>
-                <string>SearchForWebmapByKeyword</string>
-                <key>descriptionText</key>
-                <string>Shows how to search for webmaps within a portal using a keyword.</string>
-            </dict>
+			<dict>
+				<key>displayName</key>
+				<string>Search for webmap by keyword</string>
+				<key>storyboardName</key>
+				<string>SearchForWebmapByKeyword</string>
+				<key>descriptionText</key>
+				<string>Shows how to search for webmaps within a portal using a keyword.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

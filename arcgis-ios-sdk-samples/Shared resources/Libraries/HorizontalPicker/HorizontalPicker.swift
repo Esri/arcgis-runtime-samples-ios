@@ -24,10 +24,20 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     private var nibView:UIView!
     private var onlyOnce = true
     
+    
     weak var delegate: HorizontalPickerDelegate?
     
     var selectedIndex: Int = 0 {
         didSet {
+            //
+            // Scroll to selected item
+            let indexPath = IndexPath(item: self.selectedIndex, section: 0)
+            self.collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+            
+            // Update state of buttons
+            self.updateButtonsState()
+            
+            // Fire delegate
             self.delegate?.horizontalPicker?(self, didUpdateSelectedIndex: selectedIndex)
         }
     }
@@ -40,20 +50,45 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     }
     var buttonsColor = UIColor.secondaryBlue()
     
+    var isEnabled: Bool {
+        didSet {
+            if isEnabled {
+                for case let cell as HorizontalPickerCell in self.collectionView.visibleCells {
+                    cell.titleLabel.isEnabled = true
+                }
+                self.collectionView.isUserInteractionEnabled = true
+                self.nextButton.isEnabled = true
+                self.prevButton.isEnabled = true
+                self.updateButtonsState()
+            }
+            else {
+                for case let cell as HorizontalPickerCell in self.collectionView.visibleCells {
+                    cell.titleLabel.isEnabled = false
+                }
+                self.collectionView.isUserInteractionEnabled = false
+                self.nextButton.isEnabled = false
+                self.prevButton.isEnabled = false
+                self.nextButton.imageView?.tintColor = UIColor.gray
+                self.prevButton.imageView?.tintColor = UIColor.gray
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
+        self.isEnabled = true
         super.init(frame: frame)
         
         self.commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
+        self.isEnabled = true
         super.init(coder: aDecoder)
         
         self.commonInit()
     }
     
     private func commonInit() {
-        
         self.backgroundColor = UIColor.clear
         
         self.nibView = self.loadViewFromNib()
@@ -110,7 +145,6 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalPickerCell", for: indexPath) as! HorizontalPickerCell
-        
         cell.titleLabel.text = self.options[(indexPath as NSIndexPath).item]
         
         return cell
@@ -153,7 +187,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.selectedIndex = Int(self.collectionView.contentOffset.x / self.collectionView.bounds.width)
         
-        //update state of buttons
+        // Update state of buttons
         self.updateButtonsState()
     }
     
@@ -161,27 +195,17 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     
     @IBAction private func nextButtonAction() {
         if self.selectedIndex < self.options.count - 1 {
-            //update selected index
+            //
+            // Update selected index
             self.selectedIndex = self.selectedIndex + 1
-            
-            let indexPath = IndexPath(item: self.selectedIndex, section: 0)
-            self.collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
-            
-            //update state of buttons
-            self.updateButtonsState()
         }
     }
     
     @IBAction private func prevButtonAction() {
         if self.selectedIndex > 0 {
-            //update selected index
+            //
+            // Update selected index
             self.selectedIndex = self.selectedIndex - 1
-            
-            let indexPath = IndexPath(item: self.selectedIndex, section: 0)
-            self.collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
-            
-            //update state of buttons
-            self.updateButtonsState()
         }
     }
 }

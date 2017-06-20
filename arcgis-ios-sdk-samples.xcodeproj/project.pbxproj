@@ -112,6 +112,11 @@
 		3E5849011B91256300AB3CE9 /* BookmarksListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8526341B90D92700690EBD /* BookmarksListViewController.swift */; };
 		3E5849021B91256300AB3CE9 /* BookmarksViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8526351B90D92700690EBD /* BookmarksViewController.swift */; };
 		3E5849031B91256300AB3CE9 /* FeatureLayerURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */; };
+		3E5E094D1EF850BA00FF3454 /* ManageSublayers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5E094A1EF850BA00FF3454 /* ManageSublayers.storyboard */; };
+		3E5E094E1EF850BA00FF3454 /* ManageSublayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5E094B1EF850BA00FF3454 /* ManageSublayersViewController.swift */; };
+		3E5E094F1EF850BA00FF3454 /* MapImageSublayersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5E094C1EF850BA00FF3454 /* MapImageSublayersVC.swift */; };
+		3E5E09501EF8528600FF3454 /* ManageSublayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5E094B1EF850BA00FF3454 /* ManageSublayersViewController.swift */; };
+		3E5E09511EF8528600FF3454 /* MapImageSublayersVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5E094C1EF850BA00FF3454 /* MapImageSublayersVC.swift */; };
 		3E62940B1EAFAF4100084105 /* WebTiledLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6294091EAFAF4100084105 /* WebTiledLayer.storyboard */; };
 		3E62940C1EAFAF4100084105 /* WebTiledLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62940A1EAFAF4100084105 /* WebTiledLayerViewController.swift */; };
 		3E62940D1EAFB69300084105 /* WebTiledLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E62940A1EAFAF4100084105 /* WebTiledLayerViewController.swift */; };
@@ -438,6 +443,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3E5E09501EF8528600FF3454 /* ManageSublayersViewController.swift in CopyFiles */,
+				3E5E09511EF8528600FF3454 /* MapImageSublayersVC.swift in CopyFiles */,
 				E45991A51EF31DE40089E9FD /* SearchForWebmapByKeywordViewController.swift in CopyFiles */,
 				E45991A61EF31DE40089E9FD /* WebMapCell.swift in CopyFiles */,
 				E45991A71EF31DE40089E9FD /* WebMapsCollectionViewController.swift in CopyFiles */,
@@ -660,6 +667,9 @@
 		3E54D2341CC6985200BB9904 /* GraphicDrawOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GraphicDrawOrder.storyboard; path = "Display information/Control graphic draw order/GraphicDrawOrder.storyboard"; sourceTree = "<group>"; };
 		3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayerURLViewController.swift; path = "Features/Feature layer (feature service)/FeatureLayerURLViewController.swift"; sourceTree = "<group>"; };
 		3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FeatureLayerURL.storyboard; path = "Features/Feature layer (feature service)/FeatureLayerURL.storyboard"; sourceTree = "<group>"; };
+		3E5E094A1EF850BA00FF3454 /* ManageSublayers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ManageSublayers.storyboard; sourceTree = "<group>"; };
+		3E5E094B1EF850BA00FF3454 /* ManageSublayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageSublayersViewController.swift; sourceTree = "<group>"; };
+		3E5E094C1EF850BA00FF3454 /* MapImageSublayersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapImageSublayersVC.swift; sourceTree = "<group>"; };
 		3E6294091EAFAF4100084105 /* WebTiledLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebTiledLayer.storyboard; sourceTree = "<group>"; };
 		3E62940A1EAFAF4100084105 /* WebTiledLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebTiledLayerViewController.swift; sourceTree = "<group>"; };
 		3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Camera Shutter.caf"; sourceTree = "<group>"; };
@@ -1290,6 +1300,17 @@
 			name = "Feature layer (feature service)";
 			sourceTree = "<group>";
 		};
+		3E5E09491EF850BA00FF3454 /* Manage sublayers */ = {
+			isa = PBXGroup;
+			children = (
+				3E5E094A1EF850BA00FF3454 /* ManageSublayers.storyboard */,
+				3E5E094B1EF850BA00FF3454 /* ManageSublayersViewController.swift */,
+				3E5E094C1EF850BA00FF3454 /* MapImageSublayersVC.swift */,
+			);
+			name = "Manage sublayers";
+			path = "Layers/Manage sublayers";
+			sourceTree = "<group>";
+		};
 		3E6294081EAFAF4100084105 /* Web tiled layer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1747,6 +1768,7 @@
 				3EC39C301C9B0DAE003F6459 /* Export tiles */,
 				3ED0289F1B8E3A9800ACA70D /* ArcGIS map image layer (URL) */,
 				3ED028A71B8E3A9800ACA70D /* Change sublayer visibility */,
+				3E5E09491EF850BA00FF3454 /* Manage sublayers */,
 				3EE8B9511CA08E16003AA705 /* ArcGIS vector tile layer (URL) */,
 				3E81C1B71D8A0C7400470AA4 /* ArcGIS vector tiled layer (custom style) */,
 				3E6294081EAFAF4100084105 /* Web tiled layer */,
@@ -2421,6 +2443,7 @@
 				3EBA25611D34178200AB0703 /* SimpleMarkerSymbol.storyboard in Resources */,
 				3ED0286C1B8E3A8500ACA70D /* DisplayLocation.storyboard in Resources */,
 				3E03F09B1B05714A0078EB36 /* default.css in Resources */,
+				3E5E094D1EF850BA00FF3454 /* ManageSublayers.storyboard in Resources */,
 				3ED028F71B8E3AA500ACA70D /* ManualCache.storyboard in Resources */,
 				3ED028641B8E3A8500ACA70D /* GriffithParkJson.txt in Resources */,
 				3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */,
@@ -2601,6 +2624,7 @@
 				3ED5EB731B7404D0009F9B75 /* SampleInfoViewController.swift in Sources */,
 				3ED028B71B8E3A9800ACA70D /* SublayersTableViewController.swift in Sources */,
 				3EEB2B991EB9695F00B52513 /* RelatedFeaturesListVC.swift in Sources */,
+				3E5E094E1EF850BA00FF3454 /* ManageSublayersViewController.swift in Sources */,
 				3E71621F1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift in Sources */,
 				3E8A05CC1ECE68E80032231C /* Animate3DGraphicViewController.swift in Sources */,
 				3EC39C3C1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift in Sources */,
@@ -2684,6 +2708,7 @@
 				3ED028591B8E3A8500ACA70D /* CreateOptionsViewController.swift in Sources */,
 				3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */,
 				3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */,
+				3E5E094F1EF850BA00FF3454 /* MapImageSublayersVC.swift in Sources */,
 				10961CA71EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift in Sources */,
 				3E1E5EE71D9F095A00F4913C /* HillshadeSettingsVC.swift in Sources */,
 				3EBA25421D2F106600AB0703 /* UniqueValueRendererViewController.swift in Sources */,

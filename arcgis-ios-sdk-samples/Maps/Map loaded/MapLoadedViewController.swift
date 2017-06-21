@@ -44,12 +44,12 @@ class MapLoadedViewController: UIViewController {
         DispatchQueue.main.async { [weak self] in
             
             //get the string for load status
-            if let weakSelf = self, let loadStatus = weakSelf.map?.loadStatus {
+            if let strongSelf = self, let loadStatus = strongSelf.map?.loadStatus {
                 
-                let loadStatusString = weakSelf.loadStatusString(loadStatus)
+                let loadStatusString = strongSelf.loadStatusString(loadStatus)
                 
                 //set it on the banner label
-                weakSelf.bannerLabel.text = "Load status : \(loadStatusString)"
+                strongSelf.bannerLabel.text = "Load status : \(loadStatusString)"
             }
         }
     }

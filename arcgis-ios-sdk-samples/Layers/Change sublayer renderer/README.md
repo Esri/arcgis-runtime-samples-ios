@@ -4,7 +4,7 @@ This sample demonstrates how you to change renderer of a sublayer in map image l
 
 ## How the app works
 
-Tap on `Apply renderer` button to apply a class breaks renderer based on population for each county.
+Tap on `Apply renderer` button to apply a class breaks renderer based on population for each county. Tap on the `Reset` button to reset to original renderer.
 
 ![](image1.png)
 

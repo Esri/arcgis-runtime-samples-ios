@@ -18,9 +18,12 @@ import ArcGIS
 class ChangeSublayerRendererVC: UIViewController {
 
     @IBOutlet private var mapView:AGSMapView!
+    @IBOutlet private var resetBarButtonItem:UIBarButtonItem!
+    @IBOutlet private var applyRendererBarButtonItem:UIBarButtonItem!
     
     //map image layer
     private var mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
+    private var originalRenderer:AGSRenderer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +45,29 @@ class ChangeSublayerRendererVC: UIViewController {
         
         //set map on the map view
         self.mapView.map = map
+        
+        //load map image layer to access sublayers
+        self.mapImageLayer.load { [weak self] (error: Error?) in
+            
+            guard let weakSelf = self else {
+                return
+            }
+            
+            //get the counties sublayer
+            if let sublayer = weakSelf.mapImageLayer.mapImageSublayers[2] as? AGSArcGISMapImageSublayer {
+                
+                //load the sublayer to get the original renderer
+                sublayer.load(completion: { (error) in
+                    if error == nil {
+                        weakSelf.originalRenderer = sublayer.renderer
+                        
+                        //enable bar button items
+                        self?.applyRendererBarButtonItem.isEnabled = true
+                        self?.resetBarButtonItem.isEnabled = true
+                    }
+                })
+            }
+        }
     }
     
     //returns a class break renderer
@@ -72,22 +98,24 @@ class ChangeSublayerRendererVC: UIViewController {
         return classBreakRenderer
     }
     
-    @IBAction private func setRenderer() {
+    //MARK: - Actions
+    
+    @IBAction private func applyRenderer() {
         
-        //make sure the map image layer is loaded before accessing the sublayers
-        self.mapImageLayer.load { [weak self] (error: Error?) in
-            
-            guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription, maskType: .gradient)
-                return
-            }
-            
-            //get the counties sublayer
-            if let sublayer = self!.mapImageLayer.mapImageSublayers[2] as? AGSArcGISMapImageSublayer {
+        //get the counties sublayer
+        if let sublayer = self.mapImageLayer.mapImageSublayers[2] as? AGSArcGISMapImageSublayer {
+         
+            //set the class breaks renderer on the counties sublayer
+            sublayer.renderer = self.classBreakRenderer()
+        }
+    }
+    
+    @IBAction private func reset() {
+        
+        if let renderer = self.originalRenderer, let sublayer = self.mapImageLayer.mapImageSublayers[2] as? AGSArcGISMapImageSublayer  {
                 
-                //set the class breaks renderer on the counties sublayer
-                sublayer.renderer = self!.classBreakRenderer()
-            }
+            //set the class breaks renderer on the counties sublayer
+            sublayer.renderer = renderer
         }
     }
     

@@ -20,7 +20,7 @@ class MapViewDrawStatusViewController: UIViewController {
     @IBOutlet private weak var mapView:AGSMapView!
     @IBOutlet private weak var activityIndicatorView:UIView!
     
-    private var map:AGSMap!
+    private var map:AGSMap?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +32,12 @@ class MapViewDrawStatusViewController: UIViewController {
         self.map = AGSMap(basemap: AGSBasemap.topographic())
         
         //initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -13639984, yMin: 4537387, xMax: -13606734, yMax: 4558866, spatialReference: AGSSpatialReference.webMercator()))
+        self.map?.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -13639984, yMin: 4537387, xMax: -13606734, yMax: 4558866, spatialReference: AGSSpatialReference.webMercator()))
         
         //add a feature layer
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-        self.map.operationalLayers.add(featureLayer)
+        self.map?.operationalLayers.add(featureLayer)
         
         //assign the map to mapView
         self.mapView.map = self.map
@@ -63,6 +63,6 @@ class MapViewDrawStatusViewController: UIViewController {
     }
     
     deinit {
-        self.mapView.removeObserver(self, forKeyPath: "drawStatus")
+        self.mapView?.removeObserver(self, forKeyPath: "drawStatus")
     }
 }

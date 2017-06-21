@@ -1,11 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KYn-o9-nTS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hy0-vj-ssc">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Offline Map Info View Controller-->
+        <scene sceneID="iOZ-rW-hxQ">
+            <objects>
+                <viewController id="Hy0-vj-ssc" customClass="OfflineMapInfoViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="slR-a7-7bu"/>
+                        <viewControllerLayoutGuide type="bottom" id="zUe-r6-f2h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Hd-Hz-qLB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This sample requires login to allow basemap to be taken offline. Do you wish to continue?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXg-hB-GVV">
+                                <rect key="frame" x="38" y="303" width="300" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="hre-UW-dTz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NmK-mc-8ne">
+                                <rect key="frame" x="173" y="372" width="30" height="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <color key="tintColor" red="0.0" green="0.36862745099999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Yes"/>
+                                <connections>
+                                    <segue destination="KYn-o9-nTS" kind="show" id="y9t-Mv-sWo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="NmK-mc-8ne" firstAttribute="top" secondItem="zXg-hB-GVV" secondAttribute="bottom" constant="8" id="7hs-0R-gjz"/>
+                            <constraint firstItem="zXg-hB-GVV" firstAttribute="centerX" secondItem="5Hd-Hz-qLB" secondAttribute="centerX" id="GuX-ig-m0p"/>
+                            <constraint firstItem="zXg-hB-GVV" firstAttribute="centerY" secondItem="5Hd-Hz-qLB" secondAttribute="centerY" id="SSC-Fe-kFF"/>
+                            <constraint firstItem="NmK-mc-8ne" firstAttribute="centerX" secondItem="zXg-hB-GVV" secondAttribute="centerX" id="vTd-xQ-n6i"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ygq-nu-rAm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-660" y="152"/>
+        </scene>
         <!--Generate Offline Map View Controller-->
         <scene sceneID="1Bi-cv-FVq">
             <objects>
@@ -19,12 +66,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJW-kM-2jV" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTc-3V-1Wg">
+                                <rect key="frame" x="37.5" y="80" width="300" height="483"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tt7-kv-ee8">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="lxq-bv-R2k"/>
                                     <barButtonItem enabled="NO" title="Generate offline map" id="gZK-mh-IhJ">
@@ -36,16 +86,20 @@
                                 </items>
                             </toolbar>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dkd-2o-c7w">
+                                <rect key="frame" x="0.0" y="579.5" width="375" height="43.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxl-cF-qjA">
+                                        <rect key="frame" x="8" y="8" width="303" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GNP-kU-lcZ">
+                                        <rect key="frame" x="8" y="33.5" width="303" height="2"/>
                                         <color key="tintColor" red="0.0" green="0.36862745099999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </progressView>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5K-5f-qbx">
+                                        <rect key="frame" x="319" y="7" width="48" height="30"/>
                                         <color key="tintColor" red="0.0" green="0.36862745099999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Cancel"/>
                                         <connections>
@@ -85,6 +139,7 @@
                             <constraint firstItem="tt7-kv-ee8" firstAttribute="top" secondItem="dkd-2o-c7w" secondAttribute="bottom" id="sKo-jo-WBf"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="6g8-DY-AqK"/>
                     <connections>
                         <outlet property="barButtonItem" destination="gZK-mh-IhJ" id="DiH-bA-dgg"/>
                         <outlet property="cancelButton" destination="T5K-5f-qbx" id="MGZ-Wg-lmB"/>

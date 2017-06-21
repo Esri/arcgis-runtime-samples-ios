@@ -17,7 +17,7 @@
 import UIKit
 import ArcGIS
 
-class GenerateOfflineMapViewController: UIViewController {
+class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManagerDelegate {
 
     @IBOutlet var mapView:AGSMapView!
     @IBOutlet var extentView:UIView!
@@ -34,14 +34,12 @@ class GenerateOfflineMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GenerateOfflineMapViewController"]
 
         //Auth Manager settings
         let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
         AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
         AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
+        
         
         //portal for the web map
         let portal = AGSPortal.arcGISOnline(withLoginRequired: true)
@@ -58,7 +56,16 @@ class GenerateOfflineMapViewController: UIViewController {
         //disable the bar button item until the map loads
         self.mapView.map?.load(completion: { [weak self] (error) in
             
+            if let error = error {
+                if (error as NSError).code == NSUserCancelledError { //if not cancelled
+                    self?.navigationController?.popViewController(animated: true)
+                }
+                else {
+                    SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                }
+            }
             if error == nil {
+                self?.title = self?.mapView.map?.item?.title
                 self?.barButtonItem.isEnabled = true
             }
         })
@@ -120,7 +127,7 @@ class GenerateOfflineMapViewController: UIViewController {
         //start the job
         self.generateOfflineMapJob.start(statusHandler: nil) { [weak self] (result:AGSGenerateOfflineMapResult?, error:Error?) in
             
-            guard let weakSelf = self else {
+            guard let strongSelf = self else {
                 return
             }
             
@@ -130,12 +137,12 @@ class GenerateOfflineMapViewController: UIViewController {
             }
             
             //disable cancel button
-            weakSelf.cancelButton.isEnabled = false
+            strongSelf.cancelButton.isEnabled = false
             
-            weakSelf.mapView.map = result?.offlineMap
+            strongSelf.mapView.map = result?.offlineMap
             
             //remove KVO observer
-            weakSelf.generateOfflineMapJob.progress.removeObserver(weakSelf, forKeyPath: "fractionCompleted", context: nil)
+            strongSelf.generateOfflineMapJob.progress.removeObserver(strongSelf, forKeyPath: "fractionCompleted", context: nil)
         }
     }
     
@@ -143,13 +150,13 @@ class GenerateOfflineMapViewController: UIViewController {
         
         DispatchQueue.main.async { [weak self] in
             
-            guard let weakSelf = self else {
+            guard let strongSelf = self else {
                 return
             }
             
             if keyPath == "fractionCompleted" {
                 
-                let progress = weakSelf.generateOfflineMapJob.progress
+                let progress = strongSelf.generateOfflineMapJob.progress
                 
                 //update progress label
                 self?.progressLabel.text = progress.localizedDescription

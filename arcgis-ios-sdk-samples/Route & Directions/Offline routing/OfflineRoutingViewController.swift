@@ -35,15 +35,15 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     private var totalDistance:Double = 0 {
         didSet {
-            let miles = String(format: "%.2f", totalDistance*0.000621371)
+            let miles = String(format: "%.2f", totalDistance * 0.000621371)
             self.distanceLabel?.text = "(\(miles) mi)"
         }
     }
     private var totalTime:Double = 0 {
         didSet {
             var minutes = Int(totalTime)
-            let hours = minutes/60
-            minutes = minutes%60
+            let hours = minutes / 60
+            minutes = minutes % 60
             let hoursString = hours == 0 ? "" : "\(hours) hr "
             let minutesString = minutes == 0 ? "0 min" : "\(minutes) min"
             self.timeLabel?.text = "\(hoursString)\(minutesString)"
@@ -179,10 +179,20 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.routeTaskOperation?.cancel()
         self.routeTaskOperation = nil
         
-        //create stops using the last two graphics in the overlay
+        //get the geometries for the last two graphics in the overlay
         let count = self.stopGraphicsOverlay.graphics.count
-        let geometry1 = (self.stopGraphicsOverlay.graphics[count-2] as! AGSGraphic).geometry as! AGSPoint
-        let geometry2 = (self.stopGraphicsOverlay.graphics[count-1] as! AGSGraphic).geometry as! AGSPoint
+        
+        guard let geometry1 = (self.stopGraphicsOverlay.graphics[count-2] as? AGSGraphic)?.geometry as? AGSPoint else {
+            print("Graphic's geometry is invalid")
+            return
+        }
+        
+        guard let geometry2 = (self.stopGraphicsOverlay.graphics[count-1] as? AGSGraphic)?.geometry as? AGSPoint else {
+            print("Graphic's geometry is invalid")
+            return
+        }
+        
+        //create stops using the last two graphics in the overlay
         let stop1 = AGSStop(point: (geometry1))
         let stop2 = AGSStop(point: (geometry2))
         let stops = [stop1, stop2]
@@ -202,8 +212,8 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         //solve for route
         self.routeTaskOperation = self.routeTask.solveRoute(with: params) { [weak self] (routeResult:AGSRouteResult?, error:Error?) -> Void in
-            if let error = error as? NSError , error.code != 3072 {
-                //3072 is `User canceled error`
+            
+            if let error = error as NSError?, error.code != NSUserCancelledError {
                 print(error)
             }
             else {

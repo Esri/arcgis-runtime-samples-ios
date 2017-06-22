@@ -101,6 +101,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         UIToolbar.appearance().barTintColor = UIColor.backgroundGray()
         UIToolbar.appearance().tintColor = UIColor.primaryBlue()
+        
+        UISwitch.appearance().onTintColor = UIColor.primaryBlue()
+        UISlider.appearance().tintColor = UIColor.primaryBlue()
     }
 
     // MARK: - Split view

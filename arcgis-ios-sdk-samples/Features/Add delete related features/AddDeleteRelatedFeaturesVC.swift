@@ -52,10 +52,12 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
         //add feature layer to the map
         map.operationalLayers.add(self.parksFeatureLayer)
         
-        //species feature table
+        //species feature table (destination feature table)
+        //related to the parks feature layer in a 1..M relationship
         self.speciesFeatureTable = AGSServiceFeatureTable(url: URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/ArcGIS/rest/services/AlaskaNationalParksSpecies_Add_Delete/FeatureServer/1")!)
         
         //add table to the map
+        //for the related query to work, the related table should be present in the map
         map.tables.addObjects(from: [speciesFeatureTable])
         
         //assign map to map view

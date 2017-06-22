@@ -20,6 +20,7 @@ import ArcGIS
 class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet private var tableView:UITableView!
+    @IBOutlet private var featureLabel:UILabel!
     
     var originFeature:AGSArcGISFeature!
     var originFeatureTable:AGSServiceFeatureTable!
@@ -32,15 +33,36 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
 
         //query for related features and populate the table
         self.queryRelatedFeatures()
+        
+        //Displaying information on selected park using the field UNIT_NAME, name of the park
+        self.featureLabel.text = self.originFeature.attributes["UNIT_NAME"] as? String ?? "Origin Feature"
     }
     
     private func queryRelatedFeatures() {
         
+        //get relationship info
+        //feature table's layer info has an array of relationshipInfos, one for each relationship
+        //in this case there is only one describing the 1..M relationship between parks and species
+        guard let relationshipInfo = self.originFeatureTable.layerInfo?.relationshipInfos[0] else {
+            
+            SVProgressHUD.showError(withStatus: "Relationship info not found", maskType: .gradient)
+            return
+        }
+        
         //show progress hud
         SVProgressHUD.show(withStatus: "Querying related features", maskType: .gradient)
         
-        //query related features for orgin feature
-        self.originFeatureTable.queryRelatedFeatures(for: self.originFeature) { [weak self] (results, error) in
+        //keep for later use
+        self.relationshipInfo = relationshipInfo
+        
+        //initialize related query parameters with relationshipInfo
+        let parameters = AGSRelatedQueryParameters(relationshipInfo: relationshipInfo)
+        
+        //order results by OBJECTID field
+        parameters.orderByFields = [AGSOrderBy(fieldName: "OBJECTID", sortOrder: .descending)]
+        
+        //query for species related to the selected park
+        self.originFeatureTable.queryRelatedFeatures(for: self.originFeature, parameters: parameters) { [weak self] (results:[AGSRelatedFeatureQueryResult]?, error:Error?) in
             
             guard error == nil else {
                 SVProgressHUD.showError(withStatus: error!.localizedDescription, maskType: .gradient)
@@ -52,10 +74,10 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
             
             if let results = results, results.count > 0 {
                 
+                //save the related features to display in the table view
                 self?.relatedFeatures = results[0].featureEnumerator().allObjects
-                self?.relationshipInfo = results[0].relationshipInfo
                 
-                //reload table
+                //reload table view to reflect changes
                 self?.tableView.reloadData()
             }
         }
@@ -83,8 +105,8 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
                 return
             }
             
-            //query related features to update the table
-            self?.queryRelatedFeatures()
+            //apply edits
+            self?.applyEdits()
         }
     }
     
@@ -104,7 +126,28 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
                 return
             }
             
-            //query related features to update the table
+            //apply edits
+            self?.applyEdits()
+        }
+    }
+    
+    private func applyEdits() {
+        
+        //show progress hud
+        SVProgressHUD.show(withStatus: "Applying edits", maskType: .gradient)
+        
+        //get the related table using the relationshipInfo
+        let relatedTable = self.originFeatureTable.relatedTables(with: self.relationshipInfo)![0] as! AGSServiceFeatureTable
+        
+        relatedTable.applyEdits { [weak self] (results:[AGSFeatureEditResult]?, error:Error?) in
+            
+            guard error == nil else {
+                //show error
+                SVProgressHUD.showError(withStatus: error?.localizedDescription, maskType: .gradient)
+                return
+            }
+            
+            //query to update features
             self?.queryRelatedFeatures()
         }
     }
@@ -148,26 +191,8 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
     
     @IBAction private func doneAction() {
 
-        //get the related table using the relationshipInfo
-        let relatedTable = self.originFeatureTable.relatedTables(with: self.relationshipInfo)![0] as! AGSServiceFeatureTable
-        
-        //show progress hud
-        SVProgressHUD.show(withStatus: "Applying edits", maskType: .gradient)
-        
-        //apply edits
-        relatedTable.applyEdits { [weak self] (featureEditResults, error) in
-            
-            //dismiss view controller
-            self?.dismiss(animated: true, completion: nil)
-            
-            guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription, maskType: .gradient)
-                return
-            }
-            
-            //dismiss progress hud
-            SVProgressHUD.dismiss()
-        }
+        //dismiss view controller
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

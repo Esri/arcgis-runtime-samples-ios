@@ -40,9 +40,9 @@ class DisplayLocationViewController: UIViewController, CustomContextSheetDelegat
         self.view.addSubview(self.sheet)
         
         //add constraints
-        let trailingConstraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: sheet, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 20)
-        let bottomConstraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: sheet, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 20)
-        self.view.addConstraints([trailingConstraint, bottomConstraint])
+        let constraints = [sheet.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+                           sheet.bottomAnchor.constraint(equalTo: self.mapView.attributionTopAnchor, constant: -20)]
+        NSLayoutConstraint.activate(constraints)
         
         //if the user pans the map in Navigation mode, the autoPanMode will automatically change to Off mode
         //in order to reflect those changes on the context sheet listen to the autoPanModeChangedHandler

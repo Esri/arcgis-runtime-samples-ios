@@ -77,11 +77,11 @@ class DownloadProgressView: UIView {
         
         self.containerView.layer.cornerRadius = 14
         
-        self.bezierPath = UIBezierPath(arcCenter: CGPoint(x: self.radius, y: self.radius), radius: self.radius, startAngle: CGFloat(-M_PI)/2, endAngle: CGFloat(M_PI) * 1.5, clockwise: true)
+        self.bezierPath = UIBezierPath(arcCenter: CGPoint(x: self.radius, y: self.radius), radius: self.radius, startAngle: CGFloat.pi / 2, endAngle: CGFloat.pi * 1.5, clockwise: true)
         
         self.transparentShapeLayer = CAShapeLayer()
         self.transparentShapeLayer.frame = CGRect(x: 0, y: 0, width: 2 * self.radius, height: 2 * self.radius)
-        self.transparentShapeLayer.path = UIBezierPath(arcCenter: CGPoint(x: self.radius, y: self.radius), radius: self.radius, startAngle: CGFloat(-M_PI)/2, endAngle: CGFloat(M_PI) * 1.5, clockwise: true).cgPath
+        self.transparentShapeLayer.path = UIBezierPath(arcCenter: CGPoint(x: self.radius, y: self.radius), radius: self.radius, startAngle: CGFloat.pi / 2, endAngle: CGFloat.pi * 1.5, clockwise: true).cgPath
         self.transparentShapeLayer.fillColor = UIColor.clear.cgColor
         self.transparentShapeLayer.strokeColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
         self.transparentShapeLayer.lineWidth = 3

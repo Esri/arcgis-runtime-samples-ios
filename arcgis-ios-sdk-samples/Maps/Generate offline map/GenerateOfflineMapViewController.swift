@@ -34,12 +34,19 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //add the source code button item to the right of navigation bar
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GenerateOfflineMapViewController"]
 
         //Auth Manager settings
         let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
         AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
         AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
         
+        self.showAlert()
+    }
+    
+    private func addMap() {
         
         //portal for the web map
         let portal = AGSPortal.arcGISOnline(withLoginRequired: true)
@@ -54,21 +61,18 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         self.mapView.map = map
         
         //disable the bar button item until the map loads
-        self.mapView.map?.load(completion: { [weak self] (error) in
+        self.mapView.map?.load { [weak self] (error) in
             
-            if let error = error {
-                if (error as NSError).code == NSUserCancelledError { //if not cancelled
-                    self?.navigationController?.popViewController(animated: true)
-                }
-                else {
-                    SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
-                }
+            guard error == nil else {
+                
+                //show error
+                SVProgressHUD.showError(withStatus: error!.localizedDescription, maskType: .gradient)
+                return
             }
-            if error == nil {
-                self?.title = self?.mapView.map?.item?.title
-                self?.barButtonItem.isEnabled = true
-            }
-        })
+            
+            self?.title = self?.mapView.map?.item?.title
+            self?.barButtonItem.isEnabled = true
+        }
         
         //instantiate offline map task
         self.offlineMapTask = AGSOfflineMapTask(portalItem: self.portalItem)
@@ -172,6 +176,8 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         }
     }
     
+    //MARK: - Actions
+    
     @IBAction func action() {
         self.defaultParameters()
         
@@ -196,6 +202,23 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         
         //unhide the extent view
         self.extentView.isHidden = false
+    }
+    
+    //MARK: - Helper methods
+    
+    private func showAlert() {
+        
+        let alertController = UIAlertController(title: nil, message: "This sample requires you to login in order to take the map's basemap offline. Would like to continue?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { [weak self] (action) in
+            self?.addMap()
+        }
+        
+        let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        
+        alertController.addAction(noAction)
+        alertController.addAction(yesAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func frameToExtent() -> AGSEnvelope {

@@ -63,12 +63,12 @@ class ManualCacheViewController: UIViewController {
         self.featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { (result:AGSFeatureQueryResult?, error:Error?) -> Void in
             //check for error
             if let error = error {
-                print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
+                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
             }
             else {
                 //the resulting features should be displayed on the map
                 //you can print the count of features
-                print(result?.featureEnumerator().allObjects.count)
+                print(result?.featureEnumerator().allObjects.count ?? 0)
             }
         }
     }

@@ -197,7 +197,7 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
     fileprivate lazy var fromPath: CGPath! = {
         
         var fromPath = UIBezierPath()
-        fromPath.addArc(withCenter: self.center, radius: self.fromRadius, startAngle: CGFloat(0), endAngle: CGFloat(2.0*M_PI), clockwise: true)
+        fromPath.addArc(withCenter: self.center, radius: self.fromRadius, startAngle: CGFloat(0), endAngle: 2.0 * CGFloat.pi, clockwise: true)
         fromPath.close()
         return fromPath.cgPath
         }()
@@ -205,7 +205,7 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
     fileprivate lazy var toPath: CGPath! = {
         
         var toPath = UIBezierPath()
-        toPath.addArc(withCenter: self.center, radius: self.toRadius, startAngle: CGFloat(0), endAngle: CGFloat(2*M_PI), clockwise: true)
+        toPath.addArc(withCenter: self.center, radius: self.toRadius, startAngle: CGFloat(0), endAngle: 2 * CGFloat.pi, clockwise: true)
         toPath.close()
         return toPath.cgPath
         }()

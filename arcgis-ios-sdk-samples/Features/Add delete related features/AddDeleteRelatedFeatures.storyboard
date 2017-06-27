@@ -49,7 +49,7 @@
             </objects>
             <point key="canvasLocation" x="458.39999999999998" y="361.16941529235385"/>
         </scene>
-        <!--Related features: Species-->
+        <!--Related Features View Controller-->
         <scene sceneID="TJp-ui-x3z">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="SdH-cj-VDX" customClass="RelatedFeaturesViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
@@ -128,7 +128,7 @@
                             <constraint firstItem="c92-vl-Smg" firstAttribute="leading" secondItem="N8g-Fo-RHa" secondAttribute="leading" constant="10" id="w1J-pR-Cqt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Related features: Species" id="N7r-KT-HUx">
+                    <navigationItem key="navigationItem" id="N7r-KT-HUx">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="LB7-Kp-hbr">
                             <connections>
                                 <action selector="doneAction" destination="SdH-cj-VDX" id="WJN-kz-hlp"/>

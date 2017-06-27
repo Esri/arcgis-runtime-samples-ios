@@ -85,7 +85,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         self.serviceAreaTask.defaultServiceAreaParameters { [weak self] (parameters: AGSServiceAreaParameters?, error: Error?) in
             
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: "Error getting default parameters:: \(error?.localizedDescription)", maskType: .gradient)
+                SVProgressHUD.showError(withStatus: "Error getting default parameters:: \(error!.localizedDescription)", maskType: .gradient)
                 return
             }
             

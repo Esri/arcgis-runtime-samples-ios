@@ -24,9 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     private var wordsDictionary:[String: [String]]!
     private var readmeDirectoriesURLs:[URL]!
 
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         if url.absoluteString.range(of: "auth", options: [], range: nil, locale: nil) != nil {
-            AGSApplicationDelegate.shared().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+            AGSApplicationDelegate.shared().application(app, open: url, options: options)
         }
         return true
     }
@@ -101,6 +101,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         UIToolbar.appearance().barTintColor = UIColor.backgroundGray()
         UIToolbar.appearance().tintColor = UIColor.primaryBlue()
+        
+        UISwitch.appearance().onTintColor = UIColor.primaryBlue()
+        UISlider.appearance().tintColor = UIColor.primaryBlue()
     }
 
     // MARK: - Split view

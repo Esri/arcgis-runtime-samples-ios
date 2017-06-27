@@ -20,7 +20,7 @@ class MapLoadedViewController: UIViewController {
     @IBOutlet var mapView:AGSMapView!
     @IBOutlet var bannerLabel:UILabel!
     
-    private var map:AGSMap!
+    private var map:AGSMap?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class MapLoadedViewController: UIViewController {
         self.mapView.map = self.map
         
         //register as an observer for loadStatus property on map
-        self.map.addObserver(self, forKeyPath: "loadStatus", options: .new, context: nil)
+        self.map?.addObserver(self, forKeyPath: "loadStatus", options: .new, context: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -43,12 +43,13 @@ class MapLoadedViewController: UIViewController {
         //update the banner label on main thread
         DispatchQueue.main.async { [weak self] in
             
-            if let weakSelf = self {
-                //get the string for load status
-                let loadStatusString = weakSelf.loadStatusString(weakSelf.map.loadStatus)
+            //get the string for load status
+            if let strongSelf = self, let loadStatus = strongSelf.map?.loadStatus {
+                
+                let loadStatusString = strongSelf.loadStatusString(loadStatus)
                 
                 //set it on the banner label
-                weakSelf.bannerLabel.text = "Load status : \(loadStatusString)"
+                strongSelf.bannerLabel.text = "Load status : \(loadStatusString)"
             }
         }
     }
@@ -74,6 +75,6 @@ class MapLoadedViewController: UIViewController {
     }
 
     deinit {
-        self.map.removeObserver(self, forKeyPath: "loadStatus")
+        self.map?.removeObserver(self, forKeyPath: "loadStatus")
     }
 }

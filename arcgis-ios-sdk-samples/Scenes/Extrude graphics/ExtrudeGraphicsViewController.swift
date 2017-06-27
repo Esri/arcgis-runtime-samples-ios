@@ -23,6 +23,7 @@ class ExtrudeGraphicsViewController: UIViewController {
     
     private var graphicsOverlay: AGSGraphicsOverlay!
     
+    private let cameraStartingPoint = AGSPoint(x: 83, y: 28.4, z: 20000, spatialReference: AGSSpatialReference.wgs84())
     private let squareSize:Double = 0.01
     private let spacing:Double = 0.01
     private let maxHeight = 10000
@@ -39,7 +40,7 @@ class ExtrudeGraphicsViewController: UIViewController {
         self.sceneView.scene = scene
         
         //set the viewpoint camera
-        let camera = AGSCamera(latitude: 28.4, longitude: 83, altitude: 20000, heading: 10, pitch: 70, roll: 300)
+        let camera = AGSCamera(location: self.cameraStartingPoint, heading: 10, pitch: 70, roll: 300)
         self.sceneView.setViewpointCamera(camera)
         
         //add graphics overlay
@@ -60,10 +61,6 @@ class ExtrudeGraphicsViewController: UIViewController {
         let elevationSource = AGSArcGISTiledElevationSource(url: URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!)
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
         //add the graphics
         self.addGraphics()
@@ -71,8 +68,8 @@ class ExtrudeGraphicsViewController: UIViewController {
     
     private func addGraphics() {
         //starting point
-        let x = self.sceneView.currentViewpointCamera().location.x - 0.01
-        let y = self.sceneView.currentViewpointCamera().location.y + 0.25
+        let x = self.cameraStartingPoint.x - 0.01
+        let y = self.cameraStartingPoint.y + 0.25
         
         //creating a grid of polygon graphics
         for i in 0...6 {
@@ -96,7 +93,8 @@ class ExtrudeGraphicsViewController: UIViewController {
     
     //add a graphic to the graphics overlay for the given polygon
     private func addGraphicForPolygon(_ polygon:AGSPolygon) {
-        let rand = Int(arc4random()) % self.maxHeight
+        
+        let rand = arc4random_uniform(UInt32(self.maxHeight))
         
         let graphic = AGSGraphic(geometry: polygon, symbol: nil, attributes: nil)
         graphic.attributes.setValue(rand, forKey: "height")

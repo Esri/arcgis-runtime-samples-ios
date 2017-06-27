@@ -53,10 +53,9 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
     }
     
     private func analyzeHotspots(_ fromDate: String, toDate: String) {
+        
         //cancel previous job request
-        if self.geoprocessingJob != nil {
-            self.geoprocessingJob.cancel()
-        }
+        self.geoprocessingJob?.progress.cancel()
         
         //parameters
         let params = AGSGeoprocessingParameters(executionType: .asynchronousSubmit)

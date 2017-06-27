@@ -131,18 +131,23 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
                 return
             }
             
-            guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription, maskType: .gradient)
-                return
-            }
-            
-            //disable cancel button
-            strongSelf.cancelButton.isEnabled = false
-            
-            strongSelf.mapView.map = result?.offlineMap
-            
             //remove KVO observer
-            strongSelf.generateOfflineMapJob.progress.removeObserver(strongSelf, forKeyPath: "fractionCompleted", context: nil)
+            strongSelf.generateOfflineMapJob.progress.removeObserver(strongSelf, forKeyPath: "fractionCompleted")
+            
+            if let error = error {
+                
+                //if not user cancelled
+                if (error as NSError).code != NSUserCancelledError {
+                    SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                }
+            } else {
+    
+                //disable cancel button
+                strongSelf.cancelButton.isEnabled = false
+                
+                //assign offline map to map view
+                strongSelf.mapView.map = result?.offlineMap
+            }
         }
     }
     
@@ -202,8 +207,9 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         return extent
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    deinit {
+        
+        //remove observer
+        self.generateOfflineMapJob?.progress.removeObserver(self, forKeyPath: "fractionCompleted")
     }
 }

@@ -31,6 +31,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
     private var parameters:AGSGenerateOfflineMapParameters!
     private var offlineMapTask:AGSOfflineMapTask!
     private var generateOfflineMapJob:AGSGenerateOfflineMapJob!
+    private var shouldShowAlert = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,16 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
         AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
         
-        self.showAlert()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if self.shouldShowAlert {
+            
+            self.shouldShowAlert = false
+            self.showAlert()
+        }
     }
     
     private func addMap() {
@@ -232,7 +242,16 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
 
     deinit {
         
-        //remove observer
-        self.generateOfflineMapJob?.progress.removeObserver(self, forKeyPath: "fractionCompleted")
+        guard let progress = self.generateOfflineMapJob?.progress else {
+            return
+        }
+        
+        let isCompleted = (progress.totalUnitCount == progress.completedUnitCount)
+        let isCancelled = progress.isCancelled
+        
+        if !isCancelled && !isCompleted {
+            //remove observer
+            self.generateOfflineMapJob?.progress.removeObserver(self, forKeyPath: "fractionCompleted")
+        }
     }
 }

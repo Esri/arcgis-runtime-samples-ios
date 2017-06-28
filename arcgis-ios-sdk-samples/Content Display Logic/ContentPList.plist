@@ -21,7 +21,7 @@
                     <key>storyboardName</key>
                     <string>ChangeMapViewBackground</string>
                     <key>descriptionText</key>
-                    <string>This sample shows you how to customize map view's background grid</string>
+                    <string>This sample shows you how to customize map view&apos;s background grid</string>
                 </dict>
                 <dict>
                     <key>displayName</key>
@@ -29,7 +29,7 @@
                     <key>storyboardName</key>
                     <string>MapLoaded</string>
                     <key>descriptionText</key>
-                    <string>This sample shows how to tell what the map's load status is</string>
+                    <string>This sample shows how to tell what the map&apos;s load status is</string>
                 </dict>
                 <dict>
                     <key>displayName</key>
@@ -238,11 +238,27 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
+                    <string>Change sublayer renderer</string>
+                    <key>storyboardName</key>
+                    <string>ChangeSublayerRenderer</string>
+                    <key>descriptionText</key>
+                    <string>You can change the renderer of a sublayer in a map image layer</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
                     <string>Change sublayer visibility</string>
                     <key>storyboardName</key>
                     <string>SublayerVisibility</string>
                     <key>descriptionText</key>
                     <string>You can show or hide individual sublayers in a map image layer</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Manage sublayers</string>
+                    <key>storyboardName</key>
+                    <string>ManageSublayers</string>
+                    <key>descriptionText</key>
+                    <string>This sample shows to add or remove map image sublayers and how to re-arrange existing sublayers in a map image layer</string>
                 </dict>
                 <dict>
                     <key>displayName</key>
@@ -259,6 +275,26 @@
                     <string>VectorTileCustomStyle</string>
                     <key>descriptionText</key>
                     <string>You can define different styles for same vector tiled layer using custom stylesheets</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Web tiled layer</string>
+                    <key>storyboardName</key>
+                    <string>WebTiledLayer</string>
+                    <key>descriptionText</key>
+                    <string>This sample demonstrates how to display map tiles from an online resource</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Raster layer (file)</string>
+                    <key>storyboardName</key>
+                    <string>RasterLayer</string>
+                    <key>descriptionText</key>
+                    <string>You can create a raster layer from a file</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>ShastaRaster</string>
+                    </array>
                 </dict>
                 <dict>
                     <key>displayName</key>
@@ -427,6 +463,14 @@
                     <string>ListRelatedFeatures</string>
                     <key>descriptionText</key>
                     <string>This sample shows how to query related features for a given feature. Tap on a feature on the map to see its related features</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Add delete related features</string>
+                    <key>storyboardName</key>
+                    <string>AddDeleteRelatedFeatures</string>
+                    <key>descriptionText</key>
+                    <string>This sample shows how to add or delete related features to an origin feature</string>
                 </dict>
             </array>
         </dict>
@@ -751,6 +795,14 @@
                     <key>descriptionText</key>
                     <string>The sample demonstrates how to show the users in a group</string>
                 </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Search for webmap by keyword</string>
+                    <key>storyboardName</key>
+                    <string>SearchForWebmapByKeyword</string>
+                    <key>descriptionText</key>
+                    <string>Shows how to search for webmaps within a portal using a keyword.</string>
+                </dict>
             </array>
         </dict>
         <dict>
@@ -818,6 +870,26 @@
                         <string>MissionFiles</string>
                         <string>Bristol3DModel</string>
                     </array>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Distance composite symbol</string>
+                    <key>storyboardName</key>
+                    <string>DistanceCompositeSymbol</string>
+                    <key>descriptionText</key>
+                    <string>Demonstrates how to create a graphic using a distance composite scene symbol. Distance composite scene symbols can render different symbols depending on the distance between the camera and the graphic.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>Bristol3DModel</string>
+                    </array>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Terrain exaggeration</string>
+                    <key>storyboardName</key>
+                    <string>TerrainExaggeration</string>
+                    <key>descriptionText</key>
+                    <string>This sample demonstrates how to use terrain exaggeration on a surface in a scene</string>
                 </dict>
             </array>
         </dict>

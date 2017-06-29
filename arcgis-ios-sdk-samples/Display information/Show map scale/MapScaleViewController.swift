@@ -48,12 +48,14 @@ class MapScaleViewController: UIViewController {
     
     //User pinched on the map
     func mapPinchedByTouch(_ sender: UIPinchGestureRecognizer){
+        
         // scaleView.alpha default value set 0 in storyboard or viewDidLoad
         scaleView.alpha = 1
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         let formatted: String? = formatter.string(from: NSNumber(value: Int(self.mapView.mapScale)))
         scaleLabel.text = "1 / \(formatted ?? "")"
+        
         //UIView Animation
         UIView.beginAnimations(nil, context: nil)
         UIView.setAnimationDuration(0.8)

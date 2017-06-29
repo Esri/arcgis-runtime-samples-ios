@@ -377,6 +377,9 @@
 		3EFDE0F91E36AE3100CBCD92 /* FeatureCollectionLayerVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift */; };
 		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
+		D43D7C6B1F05007E00983561 /* MapScale.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D43D7C6A1F05007E00983561 /* MapScale.storyboard */; };
+		D43D7C6D1F051E5600983561 /* MapScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43D7C6C1F051E5600983561 /* MapScaleViewController.swift */; };
+		D43D7C6E1F051F9500983561 /* MapScaleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D43D7C6C1F051E5600983561 /* MapScaleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -386,6 +389,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				D43D7C6E1F051F9500983561 /* MapScaleViewController.swift in CopyFiles */,
 				3EEE1D731E493655003263FC /* GroupUserCell.swift in CopyFiles */,
 				3EEE1D741E493655003263FC /* GroupUsersViewController.swift in CopyFiles */,
 				3E0B585C1E36D93800951767 /* SpatialOperationsViewController.swift in CopyFiles */,
@@ -772,6 +776,8 @@
 		3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerQuery.storyboard; sourceTree = "<group>"; };
 		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryVC.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
+		D43D7C6A1F05007E00983561 /* MapScale.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MapScale.storyboard; path = "Display information/Show map scale/MapScale.storyboard"; sourceTree = "<group>"; };
+		D43D7C6C1F051E5600983561 /* MapScaleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapScaleViewController.swift; path = "Display information/Show map scale/MapScaleViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1523,6 +1529,7 @@
 				3ED029151B8E3AB300ACA70D /* Sketch on the map */,
 				3ED029081B8E3AB300ACA70D /* Show callout */,
 				3ED0290D1B8E3AB300ACA70D /* Show legend */,
+				D43D7C651F04E87400983561 /* Show map scale */,
 				3EBA255F1D34173600AB0703 /* Simple marker symbol */,
 				3EBA25591D33FEE500AB0703 /* Picture marker symbols */,
 				3EBA25441D300A5A00AB0703 /* Simple renderer */,
@@ -2064,6 +2071,15 @@
 			path = "Features/Feature collection layer (query)";
 			sourceTree = "<group>";
 		};
+		D43D7C651F04E87400983561 /* Show map scale */ = {
+			isa = PBXGroup;
+			children = (
+				D43D7C6C1F051E5600983561 /* MapScaleViewController.swift */,
+				D43D7C6A1F05007E00983561 /* MapScale.storyboard */,
+			);
+			name = "Show map scale";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2114,7 +2130,6 @@
 				TargetAttributes = {
 					3E23A9DF1AFC28F6002E2214 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 75Z67E6SV2;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
@@ -2159,6 +2174,7 @@
 				3ED028781B8E3A8500ACA70D /* ManageMapLayers.storyboard in Resources */,
 				3ED0294B1B8E3AB300ACA70D /* Sketch.storyboard in Resources */,
 				3E1E5EEF1D9F0BAB00F4913C /* HillshadeRenderer.storyboard in Resources */,
+				D43D7C6B1F05007E00983561 /* MapScale.storyboard in Resources */,
 				3ED028571B8E3A8500ACA70D /* CreateSaveMap.storyboard in Resources */,
 				3E0B58501E36BCCD00951767 /* AnalyzeViewshed.storyboard in Resources */,
 				3E4BF45A1C5BD77300D85919 /* OfflineGeocode.storyboard in Resources */,
@@ -2387,6 +2403,7 @@
 				3EEA060E1D21C44000E03774 /* SceneSymbolsViewController.swift in Sources */,
 				3ED0292D1B8E3AB300ACA70D /* GOIdentifyViewController.swift in Sources */,
 				3E8526391B90D92700690EBD /* BookmarksViewController.swift in Sources */,
+				D43D7C6D1F051E5600983561 /* MapScaleViewController.swift in Sources */,
 				3EC39C1E1C9A59B9003F6459 /* DirectionsListViewController.swift in Sources */,
 				3E8D54FC1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift in Sources */,
 				3E6AE3EE1C6D11FD0026E59C /* OfflineRoutingViewController.swift in Sources */,
@@ -2536,7 +2553,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 75Z67E6SV2;
+				DEVELOPMENT_TEAM = "";
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2569,7 +2586,7 @@
 				ASSET_PACK_MANIFEST_URL_PREFIX = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 75Z67E6SV2;
+				DEVELOPMENT_TEAM = "";
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (

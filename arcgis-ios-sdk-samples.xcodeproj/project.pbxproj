@@ -117,6 +117,9 @@
 		3E5849011B91256300AB3CE9 /* BookmarksListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8526341B90D92700690EBD /* BookmarksListViewController.swift */; };
 		3E5849021B91256300AB3CE9 /* BookmarksViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8526351B90D92700690EBD /* BookmarksViewController.swift */; };
 		3E5849031B91256300AB3CE9 /* FeatureLayerURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */; };
+		3E5E09371EF2E8E200FF3454 /* GenerateOfflineMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5E09351EF2E8E200FF3454 /* GenerateOfflineMap.storyboard */; };
+		3E5E09381EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5E09361EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift */; };
+		3E5E09391EF2F5ED00FF3454 /* GenerateOfflineMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5E09361EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift */; };
 		3E5E093E1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5E093B1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard */; };
 		3E5E093F1EF4567A00FF3454 /* AddDeleteRelatedFeaturesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5E093C1EF4567A00FF3454 /* AddDeleteRelatedFeaturesVC.swift */; };
 		3E5E09401EF4567A00FF3454 /* RelatedFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5E093D1EF4567A00FF3454 /* RelatedFeaturesViewController.swift */; };
@@ -456,6 +459,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3E5E09391EF2F5ED00FF3454 /* GenerateOfflineMapViewController.swift in CopyFiles */,
 				3E5E09411EF470DB00FF3454 /* AddDeleteRelatedFeaturesVC.swift in CopyFiles */,
 				3E5E09421EF470DB00FF3454 /* RelatedFeaturesViewController.swift in CopyFiles */,
 				3EA15C771ED8A52300B1F816 /* ChangeSublayerRendererVC.swift in CopyFiles */,
@@ -688,6 +692,8 @@
 		3E54D2341CC6985200BB9904 /* GraphicDrawOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GraphicDrawOrder.storyboard; path = "Display information/Control graphic draw order/GraphicDrawOrder.storyboard"; sourceTree = "<group>"; };
 		3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayerURLViewController.swift; path = "Features/Feature layer (feature service)/FeatureLayerURLViewController.swift"; sourceTree = "<group>"; };
 		3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FeatureLayerURL.storyboard; path = "Features/Feature layer (feature service)/FeatureLayerURL.storyboard"; sourceTree = "<group>"; };
+		3E5E09351EF2E8E200FF3454 /* GenerateOfflineMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GenerateOfflineMap.storyboard; sourceTree = "<group>"; };
+		3E5E09361EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateOfflineMapViewController.swift; sourceTree = "<group>"; };
 		3E5E093B1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddDeleteRelatedFeatures.storyboard; sourceTree = "<group>"; };
 		3E5E093C1EF4567A00FF3454 /* AddDeleteRelatedFeaturesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeleteRelatedFeaturesVC.swift; sourceTree = "<group>"; };
 		3E5E093D1EF4567A00FF3454 /* RelatedFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedFeaturesViewController.swift; sourceTree = "<group>"; };
@@ -1339,6 +1345,16 @@
 			name = "Feature layer (feature service)";
 			sourceTree = "<group>";
 		};
+		3E5E09341EF2E8E200FF3454 /* Generate offline map */ = {
+			isa = PBXGroup;
+			children = (
+				3E5E09351EF2E8E200FF3454 /* GenerateOfflineMap.storyboard */,
+				3E5E09361EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift */,
+			);
+			name = "Generate offline map";
+			path = "Maps/Generate offline map";
+            sourceTree = "<group>";
+        };
 		3E5E093A1EF4567A00FF3454 /* Add delete related features */ = {
 			isa = PBXGroup;
 			children = (
@@ -1868,6 +1884,7 @@
 				3E6C77141CCFC33100E89873 /* Identify layers */,
 				3EFCE1AF1CEFD5B900E02F67 /* Open mobile map (map package) */,
 				3EFCE1BE1CF36FFC00E02F67 /* Mobile map (search and route) */,
+				3E5E09341EF2E8E200FF3454 /* Generate offline map */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
@@ -2599,6 +2616,7 @@
 				3ED0289C1B8E3A8500ACA70D /* MapViewScreenshot.storyboard in Resources */,
 				3EEA06131D21C44000E03774 /* SurfacePlacements.storyboard in Resources */,
 				3ED0292C1B8E3AB300ACA70D /* GOIdentify.storyboard in Resources */,
+				3E5E09371EF2E8E200FF3454 /* GenerateOfflineMap.storyboard in Resources */,
 				3EBA25761D34510F00AB0703 /* CreateGeometries.storyboard in Resources */,
 				3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */,
 				3EABC7A01DB1793000C161C6 /* StretchRenderer.storyboard in Resources */,
@@ -2717,6 +2735,7 @@
 				3E8A25921D36B97A00D14F08 /* MapLoadedViewController.swift in Sources */,
 				3EEA06121D21C44000E03774 /* ExtrudeGraphicsViewController.swift in Sources */,
 				3EC398BF1D8B45AD0084612D /* DemoTouchView.swift in Sources */,
+				3E5E09381EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift in Sources */,
 				3EF024E91ECBC10600166EC5 /* FormatCoordinatesViewController.swift in Sources */,
 				3E85263D1B90DE2C00690EBD /* DisplayMapViewController.swift in Sources */,
 				3ED029681B8E3ACD00ACA70D /* EAOptionsViewController.swift in Sources */,

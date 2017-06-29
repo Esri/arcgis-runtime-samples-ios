@@ -41,8 +41,6 @@ class DisplayGridViewController: UIViewController, UIAdaptivePresentationControl
         
         // Add lat long grid
         self.mapView.grid = AGSLatitudeLongitudeGrid()
-        //self.mapView.grid = AGSUTMGrid()
-        print("\(self.mapView.grid?.labelPosition.rawValue)")
 
         self.mapView.viewpointChangedHandler = {
             print("\(self.mapView.visibleArea?.extent.center)")

@@ -25,19 +25,15 @@ protocol HorizontalColorPickerDelegate: class {
 class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet private var collectionView: UICollectionView!
-    @IBOutlet private var colorView: UIView!
     
     private var nibView:UIView!
     private var onlyOnce = true
     private var colors : [UIColor] = HorizontalColorPicker.someColors()
-
+    private var selectedIndexPath : IndexPath?
+    private var itemSize = CGSize(width: 12, height: 25)
+    
     weak var delegate: HorizontalColorPickerDelegate?
-
-    var selectedColor : UIColor? {
-        didSet {
-            self.colorView.backgroundColor = selectedColor
-        }
-    }
+    var selectedColor : UIColor?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,12 +58,11 @@ class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionVie
         self.nibView.layer.borderWidth = 1
         
         self.collectionView.layer.cornerRadius = 5
-        self.colorView.layer.cornerRadius = 5
         
         // Collection view
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 5, height: 25)
+        layout.itemSize = self.itemSize
         layout.minimumInteritemSpacing = 1
         layout.minimumLineSpacing = 1
         self.collectionView.collectionViewLayout = layout
@@ -97,12 +92,25 @@ class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionVie
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath == self.selectedIndexPath {
+            return CGSize(width: self.itemSize.width * 3, height: self.itemSize.height)
+        }
+        else {
+            return self.itemSize
+        }
+    }
+    
     //MARK: - UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //
-        // Set selected color
+        // Set selected color and indexPath
         self.selectedColor = colors[indexPath.row]
+        self.selectedIndexPath = indexPath
+        
+        // Update selection
+        self.collectionView.performBatchUpdates(nil, completion: nil)
         
         // Fire delegate
         self.delegate?.horizontalColorPicker?(self, didUpdateSelectedColor: self.selectedColor!)
@@ -110,6 +118,7 @@ class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         self.selectedColor = nil
+        self.selectedIndexPath = nil
     }
     
     //MARK: - Layout subviews
@@ -129,14 +138,21 @@ class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionVie
         let hStart = CGFloat(0.0)
         let hStepVal = (1.0 - hStart) / CGFloat(hSteps)
         
-        let bSteps = 10
-        let bStart = CGFloat(0.25)
-        let bStepVal = (1.0 - bStart) / CGFloat(bSteps)
-        
         let sSteps = 1
         let sStart = CGFloat(0.5)
         let sStepVal = (1.0 - sStart) / CGFloat(sSteps)
         
+        let bSteps = 10
+        let bStart = CGFloat(0.25)
+        let bStepVal = (1.0 - bStart) / CGFloat(bSteps)
+        
+        // Add white to black colors
+        for b in 0 ..< bSteps{
+            let bVal = 1.0 - (0.1 * CGFloat(b))
+            colors.append(UIColor(hue: 0, saturation: 0, brightness: bVal, alpha: 1.0))
+        }
+        
+        // Add colors: red, pink, purple, blue, green, orange
         for h in 0 ..< hSteps{
             
             // Color order: red, pink, purple, blue, green, orange
@@ -151,6 +167,7 @@ class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionVie
                 }
             }
         }
+        
         return colors
     }
 }
@@ -181,12 +198,10 @@ class HorizontalColorPickerCell: UICollectionViewCell {
     override var isSelected: Bool{
         didSet{
             if isSelected{
-                self.colorView.frame = contentView.bounds.insetBy(dx: 1, dy: 1)
                 layer.borderColor = UIColor.white.cgColor
-                layer.borderWidth = 1
+                layer.borderWidth = 2
             }
             else{
-                self.colorView.frame = contentView.bounds
                 layer.borderColor = nil
                 layer.borderWidth = 0.0
             }

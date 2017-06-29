@@ -75,40 +75,40 @@
                                 <rect key="frame" x="0.0" y="25" width="375" height="637"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QHJ-U7-mUY">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="351"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="354"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9O-Tl-NJQ">
-                                                <rect key="frame" x="129" y="8" width="117" height="24"/>
+                                                <rect key="frame" x="129" y="15" width="117" height="24"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYs-Ce-Z8k">
-                                                <rect key="frame" x="324" y="5" width="39" height="30"/>
+                                                <rect key="frame" x="324" y="12" width="39" height="30"/>
                                                 <state key="normal" title="Close"/>
                                                 <connections>
                                                     <action selector="closeAction" destination="CLz-RC-N1t" eventType="touchUpInside" id="K1C-Db-TCC"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVM-Lb-Mbl">
-                                                <rect key="frame" x="12" y="44" width="75" height="21"/>
+                                                <rect key="frame" x="12" y="51" width="75" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lnm-2j-9Oy">
-                                                <rect key="frame" x="314" y="77" width="51" height="31"/>
+                                                <rect key="frame" x="314" y="84" width="51" height="31"/>
                                                 <color key="onTintColor" red="0.0" green="0.36862745099999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="gridVisibilityAction" destination="CLz-RC-N1t" eventType="valueChanged" id="zgb-MR-sQp"/>
                                                 </connections>
                                             </switch>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rk7-rj-q76" customClass="HorizontalPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                                <rect key="frame" x="129" y="39" width="238" height="30"/>
+                                                <rect key="frame" x="129" y="46" width="238" height="30"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid Visible" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPS-Ac-vPE">
-                                                <rect key="frame" x="12" y="82" width="95" height="21"/>
+                                                <rect key="frame" x="12" y="89" width="95" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="95" id="o9s-sF-Qj0"/>
                                                 </constraints>
@@ -117,66 +117,66 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvU-qR-abp">
-                                                <rect key="frame" x="12" y="118" width="78" height="21"/>
+                                                <rect key="frame" x="12" y="125" width="78" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Visible" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzX-aJ-BFq">
-                                                <rect key="frame" x="12" y="154" width="97" height="21"/>
+                                                <rect key="frame" x="12" y="161" width="97" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjf-4n-Ndg">
-                                                <rect key="frame" x="12" y="228" width="107" height="21"/>
+                                                <rect key="frame" x="12" y="235" width="107" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M5i-c9-4Ia">
-                                                <rect key="frame" x="314" y="149" width="51" height="31"/>
+                                                <rect key="frame" x="314" y="156" width="51" height="31"/>
                                                 <color key="onTintColor" red="0.0" green="0.36862745099999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="labelVisibilityAction" destination="CLz-RC-N1t" eventType="valueChanged" id="N9e-Iq-KdD"/>
                                                 </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Format" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q25-kk-MeQ">
-                                                <rect key="frame" x="12" y="268" width="101" height="21"/>
+                                                <rect key="frame" x="12" y="275" width="101" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1I-1L-GCt" customClass="HorizontalPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                                <rect key="frame" x="129" y="301" width="234" height="30"/>
+                                                <rect key="frame" x="129" y="308" width="234" height="30"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kh-A5-PpU" customClass="HorizontalPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                                <rect key="frame" x="129" y="263" width="234" height="30"/>
+                                                <rect key="frame" x="129" y="270" width="234" height="30"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64W-oh-GdS" customClass="HorizontalPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                                <rect key="frame" x="129" y="223" width="234" height="30"/>
+                                                <rect key="frame" x="129" y="230" width="234" height="30"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Rg-Ne-YvZ">
-                                                <rect key="frame" x="12" y="306" width="78" height="21"/>
+                                                <rect key="frame" x="12" y="313" width="78" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pbe-fz-3U4" customClass="HorizontalColorPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                                <rect key="frame" x="129" y="113" width="234" height="30"/>
+                                                <rect key="frame" x="129" y="120" width="234" height="30"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e78-z0-zbj">
-                                                <rect key="frame" x="12" y="190" width="87" height="21"/>
+                                                <rect key="frame" x="12" y="197" width="87" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xf7-Ya-KYT" customClass="HorizontalColorPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                                <rect key="frame" x="129" y="185" width="234" height="30"/>
+                                                <rect key="frame" x="129" y="192" width="234" height="30"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                         </subviews>
@@ -193,10 +193,10 @@
                                             <constraint firstItem="q25-kk-MeQ" firstAttribute="centerY" secondItem="8kh-A5-PpU" secondAttribute="centerY" id="EHk-FD-D2u"/>
                                             <constraint firstItem="e78-z0-zbj" firstAttribute="leading" secondItem="pjf-4n-Ndg" secondAttribute="leading" id="Fax-fP-fwQ"/>
                                             <constraint firstItem="xf7-Ya-KYT" firstAttribute="trailing" secondItem="M5i-c9-4Ia" secondAttribute="trailing" id="Fno-HA-aQj"/>
-                                            <constraint firstItem="Y9O-Tl-NJQ" firstAttribute="top" secondItem="QHJ-U7-mUY" secondAttribute="top" constant="8" id="GUw-Yx-GdE"/>
+                                            <constraint firstItem="Y9O-Tl-NJQ" firstAttribute="top" secondItem="QHJ-U7-mUY" secondAttribute="top" constant="15" id="GUw-Yx-GdE"/>
                                             <constraint firstItem="lnm-2j-9Oy" firstAttribute="top" secondItem="rk7-rj-q76" secondAttribute="bottom" constant="8" symbolic="YES" id="GYb-k7-vAM"/>
                                             <constraint firstItem="64W-oh-GdS" firstAttribute="trailing" secondItem="rk7-rj-q76" secondAttribute="trailing" constant="-4" id="HQW-uT-rLx"/>
-                                            <constraint firstAttribute="height" constant="351" id="HZe-rb-hjA"/>
+                                            <constraint firstAttribute="height" constant="354" id="HZe-rb-hjA"/>
                                             <constraint firstItem="64W-oh-GdS" firstAttribute="top" secondItem="xf7-Ya-KYT" secondAttribute="bottom" constant="8" symbolic="YES" id="Ixv-u8-Dbi"/>
                                             <constraint firstItem="8kh-A5-PpU" firstAttribute="top" secondItem="64W-oh-GdS" secondAttribute="bottom" constant="10" id="K7m-cu-8jp"/>
                                             <constraint firstItem="bPS-Ac-vPE" firstAttribute="centerY" secondItem="lnm-2j-9Oy" secondAttribute="centerY" id="MGv-g8-6FR"/>
@@ -205,7 +205,7 @@
                                             <constraint firstItem="e78-z0-zbj" firstAttribute="leading" secondItem="yzX-aJ-BFq" secondAttribute="leading" id="OpG-dA-yjP"/>
                                             <constraint firstItem="bPS-Ac-vPE" firstAttribute="leading" secondItem="QHJ-U7-mUY" secondAttribute="leading" constant="12" id="Tmp-bj-QPa"/>
                                             <constraint firstItem="rk7-rj-q76" firstAttribute="top" secondItem="OYs-Ce-Z8k" secondAttribute="bottom" constant="4" id="Twl-Tm-97b"/>
-                                            <constraint firstAttribute="bottom" secondItem="E1I-1L-GCt" secondAttribute="bottom" constant="20" id="WRk-AB-aLM"/>
+                                            <constraint firstAttribute="bottom" secondItem="E1I-1L-GCt" secondAttribute="bottom" constant="16" id="WRk-AB-aLM"/>
                                             <constraint firstAttribute="trailing" secondItem="lnm-2j-9Oy" secondAttribute="trailing" constant="12" id="ZEr-hI-doN"/>
                                             <constraint firstItem="nvU-qR-abp" firstAttribute="centerY" secondItem="Pbe-fz-3U4" secondAttribute="centerY" id="aIO-1b-uln"/>
                                             <constraint firstItem="xf7-Ya-KYT" firstAttribute="top" secondItem="M5i-c9-4Ia" secondAttribute="bottom" constant="5" id="aQ3-le-Wbv"/>
@@ -236,7 +236,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="QHJ-U7-mUY" secondAttribute="trailing" id="Oss-lr-rZg"/>
-                                    <constraint firstAttribute="bottom" secondItem="QHJ-U7-mUY" secondAttribute="bottom" id="lKF-8e-sG9"/>
+                                    <constraint firstAttribute="bottom" secondItem="QHJ-U7-mUY" secondAttribute="bottom" constant="1" id="lKF-8e-sG9"/>
                                     <constraint firstItem="QHJ-U7-mUY" firstAttribute="top" secondItem="jDO-3a-Ae1" secondAttribute="top" id="nIm-lk-kfF"/>
                                     <constraint firstItem="QHJ-U7-mUY" firstAttribute="leading" secondItem="jDO-3a-Ae1" secondAttribute="leading" id="nke-j6-km2"/>
                                 </constraints>

@@ -18,6 +18,8 @@ import ArcGIS
 
 class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDelegate, HorizontalColorPickerDelegate {
     
+    // MARK: - Variables
+    
     var mapView: AGSMapView!
     var gridTypes = ["LatLong", "MGRS", "UTM", "USNG"]
     var labelPositions = ["Geographic", "Bottom Left", "Bottom Right", "Top Left", "Top Right", "Center", "All Sides"]
@@ -33,6 +35,8 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
     @IBOutlet var labelFormatPicker: HorizontalPicker!
     @IBOutlet var labelUnitPicker: HorizontalPicker!
     @IBOutlet var labelPositionPicker: HorizontalPicker!
+    
+    // MARK: - View Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,14 +56,6 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
         //
         // Setup UI Controls
         self.setupUI()
-        
-        // Set picker delegates
-        self.gridTypePicker.delegate = self
-        self.labelPositionPicker.delegate = self
-        self.labelUnitPicker.delegate = self
-        self.labelFormatPicker.delegate = self
-        self.gridColorPicker.delegate = self
-        self.labelColorPicker.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -71,17 +67,10 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
         //
         // Set current grid type
         if self.mapView.grid != nil {
+            //
+            // Set the grid type
             self.gridTypePicker.selectedIndex = self.gridTypes.index(of: self.currentGridType())!
-        }
-        
-        // Setup other controls
-        self.setupOtherUIControls()
-    }
-    
-    private func setupOtherUIControls() {
-        //
-        // Set values for controls
-        if self.mapView.grid != nil {
+            
             self.gridVisibilitySwitch.isOn = (self.mapView.grid?.isVisible)!
             self.labelVisibilitySwitch.isOn = (self.mapView.grid?.labelVisibility)!
             self.labelPositionPicker.selectedIndex = (self.mapView.grid?.labelPosition.rawValue)!
@@ -105,13 +94,15 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
                 self.labelUnitPicker.selectedIndex = (self.mapView?.grid as! AGSUSNGGrid).labelUnit.rawValue
                 self.labelFormatPicker.isEnabled = false
             }
-            
-            let gridLineSymbol = self.mapView.grid?.lineSymbol(forLevel: 0) as! AGSLineSymbol
-            self.gridColorPicker.selectedColor = gridLineSymbol.color
-            
-            let labelTextSymbol = self.mapView.grid?.textSymbol(forLevel: 0) as! AGSTextSymbol
-            self.labelColorPicker.selectedColor = labelTextSymbol.color
         }
+        
+        // Set picker delegates
+        self.gridTypePicker.delegate = self
+        self.labelPositionPicker.delegate = self
+        self.labelUnitPicker.delegate = self
+        self.labelFormatPicker.delegate = self
+        self.gridColorPicker.delegate = self
+        self.labelColorPicker.delegate = self
     }
     
     //MARK: - Actions
@@ -156,22 +147,42 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
         let gridType = self.gridTypePicker.options[self.gridTypePicker.selectedIndex]
         if (gridType == "LatLong") {
             grid = AGSLatitudeLongitudeGrid()
+            self.labelFormatPicker.isEnabled = true
+            self.labelUnitPicker.isEnabled = false
         }
         else if (gridType == "MGRS") {
             grid = AGSMGRSGrid()
+            self.labelUnitPicker.isEnabled = true
+            self.labelFormatPicker.isEnabled = false
         }
         else if (gridType == "UTM") {
             grid = AGSUTMGrid()
+            self.labelUnitPicker.isEnabled = false
+            self.labelFormatPicker.isEnabled = false
         }
         else if (gridType == "USNG") {
             grid = AGSUSNGGrid()
+            self.labelUnitPicker.isEnabled = true
+            self.labelFormatPicker.isEnabled = false
         }
         
         // Set selected grid
         self.mapView?.grid = grid
         
-        // Setup other controls
-        self.setupOtherUIControls()
+        // Apply settings to selected grid
+        self.gridVisibilityAction()
+        self.labelVisibilityAction()
+        self.changeLabelPosition()
+        self.changeLabelFormat()
+        self.changeLabelUnit()
+        
+        if let selectedColor = self.gridColorPicker.selectedColor {
+            self.changeGrid(color: selectedColor)
+        }
+        
+        if let selectedColor = self.labelColorPicker.selectedColor {
+            self.changeLabel(color: selectedColor)
+        }
     }
     
     // Change the grid color
@@ -196,7 +207,7 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
                 textSymbol.horizontalAlignment = .left
                 textSymbol.verticalAlignment = .bottom
                 textSymbol.haloColor = UIColor.white
-                textSymbol.haloWidth = CGFloat(gridLevel+1)
+                textSymbol.haloWidth = CGFloat(gridLevel+2)
                 self.mapView?.grid?.setTextSymbol(textSymbol, forLevel: gridLevel)
             }
         }

@@ -1,38 +1,43 @@
 //
-//  HorizontalColorPicker.swift
-//  MapViewDemo-Swift
+// Copyright 2017 Esri.
 //
-//  Created by Gagandeep Singh on 8/19/16.
-//  Copyright © 2016 Esri. All rights reserved.
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 //
 
 import UIKit
 
 @objc
 protocol HorizontalColorPickerDelegate: class {
-    @objc optional func horizontalColorPicker(_ horizontalColorPicker:HorizontalColorPicker, didUpdateSelectedIndex index: Int)
+    @objc optional func horizontalColorPicker(_ horizontalColorPicker:HorizontalColorPicker, didUpdateSelectedColor color: UIColor)
 }
 
 @IBDesignable
 class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet private var collectionView: UICollectionView!
+    @IBOutlet private var colorView: UIView!
     
     private var nibView:UIView!
     private var onlyOnce = true
     private var colors : [UIColor] = HorizontalColorPicker.someColors()
 
     weak var delegate: HorizontalColorPickerDelegate?
-    
-    var selectedColor : UIColor?
-    var selectedIndex: Int = 0 {
+
+    var selectedColor : UIColor? {
         didSet {
-            //
-            // Fire delegate
-            self.delegate?.horizontalColorPicker?(self, didUpdateSelectedIndex: selectedIndex)
+            self.colorView.backgroundColor = selectedColor
         }
     }
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,10 +57,17 @@ class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionVie
         nibView.autoresizingMask = [UIViewAutoresizing.flexibleHeight, .flexibleWidth]
         self.addSubview(self.nibView)
         
-        //collection view
+        self.nibView.layer.cornerRadius = 5
+        self.nibView.layer.borderColor = UIColor.lightGray.cgColor
+        self.nibView.layer.borderWidth = 1
+        
+        self.collectionView.layer.cornerRadius = 5
+        self.colorView.layer.cornerRadius = 5
+        
+        // Collection view
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 25, height: 25)
+        layout.itemSize = CGSize(width: 5, height: 25)
         layout.minimumInteritemSpacing = 1
         layout.minimumLineSpacing = 1
         self.collectionView.collectionViewLayout = layout
@@ -85,22 +97,15 @@ class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionVie
         return cell
     }
     
-    //scroll to an item at start up
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
-        if self.onlyOnce {
-            self.onlyOnce = false
-            
-            self.collectionView.layoutIfNeeded()
-            let indexPath = IndexPath(item: self.selectedIndex, section: 0)
-            self.collectionView?.scrollToItem(at: indexPath, at: .right, animated: false)
-        }
-    }
-    
     //MARK: - UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //
+        // Set selected color
         self.selectedColor = colors[indexPath.row]
+        
+        // Fire delegate
+        self.delegate?.horizontalColorPicker?(self, didUpdateSelectedColor: self.selectedColor!)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -176,9 +181,9 @@ class HorizontalColorPickerCell: UICollectionViewCell {
     override var isSelected: Bool{
         didSet{
             if isSelected{
-                self.colorView.frame = contentView.bounds.insetBy(dx: 3, dy: 3)
-                layer.borderColor = UIColor.darkGray.cgColor
-                layer.borderWidth = 1.0
+                self.colorView.frame = contentView.bounds.insetBy(dx: 1, dy: 1)
+                layer.borderColor = UIColor.white.cgColor
+                layer.borderWidth = 1
             }
             else{
                 self.colorView.frame = contentView.bounds

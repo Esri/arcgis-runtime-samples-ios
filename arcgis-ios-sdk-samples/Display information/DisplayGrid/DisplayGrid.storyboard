@@ -252,8 +252,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="gridColorPicker" destination="Pbe-fz-3U4" id="OOi-aZ-CHl"/>
                         <outlet property="gridTypePicker" destination="rk7-rj-q76" id="YoU-LS-plV"/>
                         <outlet property="gridVisibilitySwitch" destination="lnm-2j-9Oy" id="Yhi-jz-fYF"/>
+                        <outlet property="labelColorPicker" destination="xf7-Ya-KYT" id="C3X-Y5-fz5"/>
                         <outlet property="labelFormatPicker" destination="8kh-A5-PpU" id="gcv-nJ-fwe"/>
                         <outlet property="labelPositionPicker" destination="64W-oh-GdS" id="r0Y-Qx-8wn"/>
                         <outlet property="labelUnitPicker" destination="E1I-1L-GCt" id="yFT-cr-O5C"/>

@@ -16,16 +16,6 @@
 import UIKit
 import ArcGIS
 
-enum GridColorPickerToggle: String {
-    case On = "On"
-    case Off = "Off"
-}
-
-enum GridAnimationDirection: String {
-    case Forward = "Forward"
-    case Backward = "Backward"
-}
-
 class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDelegate, HorizontalColorPickerDelegate {
     
     var mapView: AGSMapView!
@@ -68,6 +58,8 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
         self.labelPositionPicker.delegate = self
         self.labelUnitPicker.delegate = self
         self.labelFormatPicker.delegate = self
+        self.gridColorPicker.delegate = self
+        self.labelColorPicker.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -114,8 +106,11 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
                 self.labelFormatPicker.isEnabled = false
             }
             
-            //self.changeGridColor()
-            //self.changeLabelColor()
+            let gridLineSymbol = self.mapView.grid?.lineSymbol(forLevel: 0) as! AGSLineSymbol
+            self.gridColorPicker.selectedColor = gridLineSymbol.color
+            
+            let labelTextSymbol = self.mapView.grid?.textSymbol(forLevel: 0) as! AGSTextSymbol
+            self.labelColorPicker.selectedColor = labelTextSymbol.color
         }
     }
     
@@ -180,23 +175,23 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
     }
     
     // Change the grid color
-    private func changeGridColor() {
+    private func changeGrid(color: UIColor) {
         if (self.mapView?.grid != nil) {
             let gridLevels = self.mapView?.grid?.levelCount
             for gridLevel in 0..<gridLevels! {
-                let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: self.gridColorPicker.selectedColor!, width: CGFloat(gridLevel+2))
+                let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: color, width: CGFloat(gridLevel+2))
                 self.mapView?.grid?.setLineSymbol(lineSymbol, forLevel: gridLevel)
             }
         }
     }
     
     // Change the grid label color
-    private func changeLabelColor() {
+    private func changeLabel(color: UIColor) {
         if (self.mapView?.grid != nil) {
             let gridLevels = self.mapView?.grid?.levelCount
             for gridLevel in 0..<gridLevels! {
                 let textSymbol = AGSTextSymbol()
-                textSymbol.color = self.labelColorPicker.selectedColor!
+                textSymbol.color = color
                 textSymbol.size = 14
                 textSymbol.horizontalAlignment = .left
                 textSymbol.verticalAlignment = .bottom
@@ -246,7 +241,14 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
         }
     }
     
-//    func horizontalColorPicker(_ horizontalColorPicker: HorizontalColorPicker, didUpdateSelectedIndex index: Int) {
-//        <#code#>
-//    }
+    // MARK: Horizontal Color Picker Delegate
+
+    func horizontalColorPicker(_ horizontalColorPicker: HorizontalColorPicker, didUpdateSelectedColor selectedColor: UIColor) {
+        if horizontalColorPicker == self.gridColorPicker {
+            self.changeGrid(color: selectedColor)
+        }
+        else if horizontalColorPicker == self.labelColorPicker {
+            self.changeLabel(color: selectedColor)
+        }
+    }
 }

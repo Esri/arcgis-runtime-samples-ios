@@ -29,23 +29,35 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func applyEdits() {
+        
+        //show progress hud
+        SVProgressHUD.show(withStatus: "Applying edits", maskType: .gradient)
+        
         (self.feature.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (result, error) -> Void in
+            
             if let error = error {
-                print(error)
+                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
             }
             else {
-                print("Apply edits finished successfully")
+                SVProgressHUD.showInfo(withStatus: "Apply edits finished successfully", maskType: .gradient)
                 self?.loadAttachments()
             }
         }
     }
     
     func loadAttachments() {
+        
+        //show progress hud
+        SVProgressHUD.show(withStatus: "Loading attachments", maskType: .gradient)
+        
         self.feature.fetchAttachments { [weak self] (attachments:[AGSAttachment]?, error:Error?) in
             if let error = error {
-                print(error)
+                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
             }
             else {
+                //dismiss progress hud
+                SVProgressHUD.dismiss()
+                
                 self?.attachments = attachments
                 self?.tableView.reloadData()
             }
@@ -132,10 +144,15 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     @IBAction func addAction() {
+        
+        //show progress hud
+        SVProgressHUD.show(withStatus: "Adding attachment", maskType: .gradient)
+        
         let data = UIImagePNGRepresentation(UIImage(named: "LocationDisplayOffIcon")!)!
         self.feature.addAttachment(withName: "Attachment.png", contentType: "png", data: data) { [weak self] (attachment:AGSAttachment?, error:Error?) -> Void in
+            
             if let error = error {
-                print(error)
+                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
             }
             else {
                 self?.applyEdits()

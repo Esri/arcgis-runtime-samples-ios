@@ -140,7 +140,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         //perform reverse geocode
         self.locatorTaskOperation = self.locatorTask.reverseGeocode(withLocation: normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) -> Void in
 
-            if let error = error as? NSError , error.code != NSUserCancelledError {
+            if let error = error as NSError? , error.code != NSUserCancelledError {
                 //print error instead alerting to avoid disturbing the flow
                 print(error.localizedDescription)
             }

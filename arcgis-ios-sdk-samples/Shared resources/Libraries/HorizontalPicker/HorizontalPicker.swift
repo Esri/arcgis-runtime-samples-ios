@@ -1,9 +1,17 @@
 //
-//  HorizontalPicker.swift
-//  MapViewDemo-Swift
+// Copyright 2016 Esri.
 //
-//  Created by Gagandeep Singh on 8/19/16.
-//  Copyright © 2016 Esri. All rights reserved.
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 //
 
 import UIKit
@@ -22,6 +30,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     @IBOutlet private var nextButton: UIButton!
     
     private var nibView:UIView!
+    private var onlyOnce = true
     
     weak var delegate: HorizontalPickerDelegate?
     
@@ -37,7 +46,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
             self.updateButtonsState()
         }
     }
-    var buttonsColor = UIColor(red: 0, green: 122/255.0, blue: 1, alpha: 1)
+    var buttonsColor = UIColor.secondaryBlue()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -113,6 +122,20 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
         cell.titleLabel.text = self.options[(indexPath as NSIndexPath).item]
         
         return cell
+    }
+    
+    //scroll to an item at start up
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if self.onlyOnce {
+            self.onlyOnce = false
+            
+            self.collectionView.layoutIfNeeded()
+            let indexPath = IndexPath(item: selectedIndex, section: 0)
+            self.collectionView?.scrollToItem(at: indexPath, at: .right, animated: false)
+            
+            self.updateButtonsState()
+        }
     }
     
     //MARK: - UICollectionViewDelegateFlowLayout

@@ -433,12 +433,6 @@
 		3EFDE0F91E36AE3100CBCD92 /* FeatureCollectionLayerVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift */; };
 		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
-		FD30A0EB1EF33EE600350E6C /* CustomCallout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD30A0E91EF33EE600350E6C /* CustomCallout.storyboard */; };
-		FD30A0EC1EF33EE600350E6C /* CustomCalloutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30A0EA1EF33EE600350E6C /* CustomCalloutViewController.swift */; };
-		FD94B0181F04E32E00443C0F /* ArcGIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD94B0171F04E32E00443C0F /* ArcGIS.framework */; };
-		FD94B01A1F04E4ED00443C0F /* CustomCalloutPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD94B0191F04E4ED00443C0F /* CustomCalloutPopUpViewController.swift */; };
-		FD94B01B1F05229B00443C0F /* CustomCalloutViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD30A0EA1EF33EE600350E6C /* CustomCalloutViewController.swift */; };
-		FD94B01C1F05229B00443C0F /* CustomCalloutPopUpViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD94B0191F04E4ED00443C0F /* CustomCalloutPopUpViewController.swift */; };
 		E45991A01EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E459919B1EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard */; };
 		E45991A11EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */; };
 		E45991A21EF3021D0089E9FD /* WebMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E459919D1EF3021D0089E9FD /* WebMapCell.swift */; };
@@ -451,7 +445,10 @@
 		E4A0BD8B1EE9E5D300CDE436 /* DistanceCompositeSymbolViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */; };
 		E4C4A4481EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */; };
 		E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */; };
->>>>>>> upstream/master
+		FD5D43F61F06475B00B9213E /* CustomCallout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD5D43F31F06475B00B9213E /* CustomCallout.storyboard */; };
+		FD5D43F71F06475B00B9213E /* CustomCalloutPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5D43F41F06475B00B9213E /* CustomCalloutPopUpViewController.swift */; };
+		FD5D43F81F06475B00B9213E /* CustomCalloutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5D43F51F06475B00B9213E /* CustomCalloutViewController.swift */; };
+		FD94B0181F04E32E00443C0F /* ArcGIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD94B0171F04E32E00443C0F /* ArcGIS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -461,8 +458,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				FD94B01B1F05229B00443C0F /* CustomCalloutViewController.swift in CopyFiles */,
-				FD94B01C1F05229B00443C0F /* CustomCalloutPopUpViewController.swift in CopyFiles */,
 				3E5E09391EF2F5ED00FF3454 /* GenerateOfflineMapViewController.swift in CopyFiles */,
 				3E5E09411EF470DB00FF3454 /* AddDeleteRelatedFeaturesVC.swift in CopyFiles */,
 				3E5E09421EF470DB00FF3454 /* RelatedFeaturesViewController.swift in CopyFiles */,
@@ -627,7 +622,6 @@
 		3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ContentPList.plist; path = "Content Display Logic/ContentPList.plist"; sourceTree = "<group>"; };
 		3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentTableViewController.swift; path = "Content Display Logic/Controllers/ContentTableViewController.swift"; sourceTree = "<group>"; };
 		3E0D3AD61AFD481900FC60D6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "Content Display Logic/Storyboard/Main.storyboard"; sourceTree = "<group>"; };
-		3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArcGIS.framework; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Static/ArcGIS.framework; sourceTree = "<absolute>"; };
 		3E1183D91ECF5A1000180152 /* GrandCanyon.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GrandCanyon.csv; sourceTree = "<group>"; };
 		3E1183DA1ECF5A1000180152 /* Hawaii.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Hawaii.csv; sourceTree = "<group>"; };
 		3E1183DB1ECF5A1000180152 /* Pyrenees.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Pyrenees.csv; sourceTree = "<group>"; };
@@ -910,10 +904,6 @@
 		3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerQuery.storyboard; sourceTree = "<group>"; };
 		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryVC.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
-		FD30A0E91EF33EE600350E6C /* CustomCallout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CustomCallout.storyboard; path = "Display information/Show custom callout/CustomCallout.storyboard"; sourceTree = "<group>"; };
-		FD30A0EA1EF33EE600350E6C /* CustomCalloutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomCalloutViewController.swift; path = "Display information/Show custom callout/CustomCalloutViewController.swift"; sourceTree = "<group>"; };
-		FD94B0171F04E32E00443C0F /* ArcGIS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ArcGIS.framework; sourceTree = "<group>"; };
-		FD94B0191F04E4ED00443C0F /* CustomCalloutPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomCalloutPopUpViewController.swift; path = "Display information/Show custom callout/CustomCalloutPopUpViewController.swift"; sourceTree = "<group>"; };
 		E459919B1EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchForWebmapByKeyword.storyboard; sourceTree = "<group>"; };
 		E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchForWebmapByKeywordViewController.swift; sourceTree = "<group>"; };
 		E459919D1EF3021D0089E9FD /* WebMapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebMapCell.swift; sourceTree = "<group>"; };
@@ -921,6 +911,10 @@
 		E459919F1EF3021D0089E9FD /* WebMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebMapViewController.swift; sourceTree = "<group>"; };
 		E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DistanceCompositeSymbol.storyboard; sourceTree = "<group>"; };
 		E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceCompositeSymbolViewController.swift; sourceTree = "<group>"; };
+		FD5D43F31F06475B00B9213E /* CustomCallout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomCallout.storyboard; sourceTree = "<group>"; };
+		FD5D43F41F06475B00B9213E /* CustomCalloutPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutPopUpViewController.swift; sourceTree = "<group>"; };
+		FD5D43F51F06475B00B9213E /* CustomCalloutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutViewController.swift; sourceTree = "<group>"; };
+		FD94B0171F04E32E00443C0F /* ArcGIS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ArcGIS.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1343,8 +1337,8 @@
 			);
 			name = "Generate offline map";
 			path = "Maps/Generate offline map";
-            sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
 		3E5E093A1EF4567A00FF3454 /* Add delete related features */ = {
 			isa = PBXGroup;
 			children = (
@@ -1354,8 +1348,8 @@
 			);
 			name = "Add delete related features";
 			path = "Features/Add delete related features";
-            sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
 		3E5E09491EF850BA00FF3454 /* Manage sublayers */ = {
 			isa = PBXGroup;
 			children = (
@@ -2383,14 +2377,6 @@
 			path = "Features/Feature collection layer (query)";
 			sourceTree = "<group>";
 		};
-		FD7DD8E31EF2A72A0072ABE6 /* Show custom callout */ = {
-			isa = PBXGroup;
-			children = (
-				FD30A0E91EF33EE600350E6C /* CustomCallout.storyboard */,
-				FD30A0EA1EF33EE600350E6C /* CustomCalloutViewController.swift */,
-				FD94B0191F04E4ED00443C0F /* CustomCalloutPopUpViewController.swift */,
-			);
-			name = "Show custom callout";
 		E459919A1EF3021D0089E9FD /* Search for webmap by keyword */ = {
 			isa = PBXGroup;
 			children = (
@@ -2411,6 +2397,17 @@
 			);
 			name = "Distance composite symbol";
 			path = "Scenes/Distance composite symbol";
+			sourceTree = "<group>";
+		};
+		FD7DD8E31EF2A72A0072ABE6 /* Show custom callout */ = {
+			isa = PBXGroup;
+			children = (
+				FD5D43F31F06475B00B9213E /* CustomCallout.storyboard */,
+				FD5D43F41F06475B00B9213E /* CustomCalloutPopUpViewController.swift */,
+				FD5D43F51F06475B00B9213E /* CustomCalloutViewController.swift */,
+			);
+			name = "Show custom callout";
+			path = "Display information/Show custom callout";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2502,7 +2499,6 @@
 				3EA15C751ED89EAE00B1F816 /* ChangeSublayerRenderer.storyboard in Resources */,
 				3ED028731B8E3A8500ACA70D /* MapViewDrawStatus.storyboard in Resources */,
 				3ED028881B8E3A8500ACA70D /* OpenExistingMap.storyboard in Resources */,
-				FD30A0EB1EF33EE600350E6C /* CustomCallout.storyboard in Resources */,
 				3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */,
 				3ED028651B8E3A8500ACA70D /* HighwayJson.txt in Resources */,
 				3EC39C3A1C9B23DF003F6459 /* GenerateGeodatabase.storyboard in Resources */,
@@ -2510,6 +2506,7 @@
 				3ED028E41B8E3AA500ACA70D /* DefinitionExpression.storyboard in Resources */,
 				3EBA254A1D300FB500AB0703 /* SimpleRenderer.storyboard in Resources */,
 				3ED028B81B8E3A9800ACA70D /* SublayerVisibility.storyboard in Resources */,
+				FD5D43F61F06475B00B9213E /* CustomCallout.storyboard in Resources */,
 				3E8A05BA1ECD07DD0032231C /* SceneLayerURL.storyboard in Resources */,
 				3ED028781B8E3A8500ACA70D /* ManageMapLayers.storyboard in Resources */,
 				3ED0294B1B8E3AB300ACA70D /* Sketch.storyboard in Resources */,
@@ -2665,6 +2662,7 @@
 			files = (
 				3EABC7921DB1772000C161C6 /* RGBRendererSettingsVC.swift in Sources */,
 				3E39F6D41B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift in Sources */,
+				FD5D43F81F06475B00B9213E /* CustomCalloutViewController.swift in Sources */,
 				3EC39C411C9B4857003F6459 /* FeatureLayersViewController.swift in Sources */,
 				3E0225371DB569240049F7F8 /* CategoryCell.swift in Sources */,
 				3ED7888E1D26E28500E5F311 /* TilePackagesListViewController.swift in Sources */,
@@ -2673,6 +2671,7 @@
 				3E6AE3F91C73B5480026E59C /* DirectionsViewController.swift in Sources */,
 				3ED029321B8E3AB300ACA70D /* CalloutViewController.swift in Sources */,
 				3ED028841B8E3A8500ACA70D /* MapRotationViewController.swift in Sources */,
+				FD5D43F71F06475B00B9213E /* CustomCalloutPopUpViewController.swift in Sources */,
 				3EFCE1B11CF368D500E02F67 /* OpenMobileMapViewController.swift in Sources */,
 				3ED0294C1B8E3AB300ACA70D /* SketchViewController.swift in Sources */,
 				3E0830BA1BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift in Sources */,
@@ -2703,7 +2702,6 @@
 				3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */,
 				3E4B05FB1B39EF250072E514 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				3ED028B91B8E3A9800ACA70D /* SublayerVisibilityViewController.swift in Sources */,
-				FD94B01A1F04E4ED00443C0F /* CustomCalloutPopUpViewController.swift in Sources */,
 				3EC39C1F1C9A59B9003F6459 /* RouteParametersViewController.swift in Sources */,
 				3ED5EB731B7404D0009F9B75 /* SampleInfoViewController.swift in Sources */,
 				3ED028B71B8E3A9800ACA70D /* SublayersTableViewController.swift in Sources */,
@@ -2745,7 +2743,6 @@
 				3EFCE1C51CF374C600E02F67 /* MobileMapViewController.swift in Sources */,
 				3ED028B31B8E3A9800ACA70D /* TLUsingURLViewController.swift in Sources */,
 				3ED028EA1B8E3AA500ACA70D /* FLQueryViewController.swift in Sources */,
-				FD30A0EC1EF33EE600350E6C /* CustomCalloutViewController.swift in Sources */,
 				3E41DD721B9A1F4600DA11CC /* AddFeaturesViewController.swift in Sources */,
 				3ED028961B8E3A8500ACA70D /* SetMapsSRViewController.swift in Sources */,
 				3ED0288E1B8E3A8500ACA70D /* SetInitialMapAreaViewController.swift in Sources */,

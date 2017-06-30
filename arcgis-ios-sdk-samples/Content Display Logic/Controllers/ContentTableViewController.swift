@@ -182,18 +182,25 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             //in main thread
             DispatchQueue.main.sync {
                 
+                guard let strongSelf = self else {
+                    return
+                }
+                
+                //remove observer
+                strongSelf.bundleResourceRequest?.progress.removeObserver(strongSelf, forKeyPath: "fractionCompleted")
+                
                 //dismiss download progress view
-                self?.downloadProgressView.dismiss()
+                strongSelf.downloadProgressView.dismiss()
                 
                 if let error = error {
                     SVProgressHUD.showError(withStatus: "Failed to download raster resource :: \(error.localizedDescription)", maskType: .gradient)
                 }
                 else {
                     
-                    if let weakSelf = self, !weakSelf.bundleResourceRequest.progress.isCancelled {
+                    if !strongSelf.bundleResourceRequest.progress.isCancelled {
                         
                         //show view controller
-                        self?.showSample(indexPath: indexPath, node: node)
+                        strongSelf.showSample(indexPath: indexPath, node: node)
                     }
                 }
             }
@@ -300,7 +307,6 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
     //MARK: - DownloadProgressViewDelegate
     
     func downloadProgressViewDidCancel(downloadProgressView: DownloadProgressView) {
-        self.bundleResourceRequest?.progress.removeObserver(self, forKeyPath: "fractionCompleted")
         self.bundleResourceRequest.progress.cancel()
         self.bundleResourceRequest?.endAccessingResources()
     }

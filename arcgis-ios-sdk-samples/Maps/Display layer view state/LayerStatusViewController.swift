@@ -17,8 +17,9 @@ import ArcGIS
 
 class LayerStatusViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var tableView:UITableView!
+    @IBOutlet private var mapView:AGSMapView!
+    @IBOutlet private var tableView:UITableView!
+    @IBOutlet private var visualEffectView:UIVisualEffectView!
     
     private var map:AGSMap!
     
@@ -27,7 +28,11 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //constraint visual effect view to the map view's attribution label
+        let constraint = self.visualEffectView.bottomAnchor.constraint(equalTo: self.mapView.attributionTopAnchor, constant: -10)
         
+        //activate constraint
+        constraint.isActive = true
     }
     
     override func viewDidAppear(_ animated: Bool) {

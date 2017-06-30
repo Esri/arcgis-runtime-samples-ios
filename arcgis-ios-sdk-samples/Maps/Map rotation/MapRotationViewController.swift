@@ -40,7 +40,7 @@ class MapRotationViewController: UIViewController {
         self.mapView.viewpointChangedHandler = { [weak self] () in
             self?.slider.value = Float(self!.mapView.rotation)
             self?.rotationLabel.text = "\(Int(self!.slider.value))\u{00B0}"
-            self?.compassButton.transform = CGAffineTransform(rotationAngle: CGFloat(-self!.mapView.rotation * M_PI/180))
+            self?.compassButton.transform = CGAffineTransform(rotationAngle: CGFloat(-self!.mapView.rotation * Double.pi / 180))
         }
 
         //initial viewpoint

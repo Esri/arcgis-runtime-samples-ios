@@ -30,7 +30,6 @@
 		3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */; };
 		3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */; };
 		3E0D3AD71AFD481900FC60D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD61AFD481900FC60D6 /* Main.storyboard */; };
-		3E0D3AE21AFD4BD000FC60D6 /* ArcGIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */; };
 		3E1E5EE51D9F08ED00F4913C /* HillshadeRendererVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E5EE41D9F08ED00F4913C /* HillshadeRendererVC.swift */; };
 		3E1E5EE71D9F095A00F4913C /* HillshadeSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E5EE61D9F095A00F4913C /* HillshadeSettingsVC.swift */; };
 		3E1E5EEA1D9F0ACC00F4913C /* HorizontalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E5EE91D9F0ACC00F4913C /* HorizontalPicker.swift */; };
@@ -377,8 +376,12 @@
 		3EFDE0F91E36AE3100CBCD92 /* FeatureCollectionLayerVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift */; };
 		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
-		FD7DD8E51EF2A7950072ABE6 /* CustomCallout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD7DD8E41EF2A7950072ABE6 /* CustomCallout.storyboard */; };
-		FD7DD8E71EF2A7B10072ABE6 /* CustomCalloutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7DD8E61EF2A7B10072ABE6 /* CustomCalloutViewController.swift */; };
+		FD30A0EB1EF33EE600350E6C /* CustomCallout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD30A0E91EF33EE600350E6C /* CustomCallout.storyboard */; };
+		FD30A0EC1EF33EE600350E6C /* CustomCalloutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30A0EA1EF33EE600350E6C /* CustomCalloutViewController.swift */; };
+		FD94B0181F04E32E00443C0F /* ArcGIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD94B0171F04E32E00443C0F /* ArcGIS.framework */; };
+		FD94B01A1F04E4ED00443C0F /* CustomCalloutPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD94B0191F04E4ED00443C0F /* CustomCalloutPopUpViewController.swift */; };
+		FD94B01B1F05229B00443C0F /* CustomCalloutViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD30A0EA1EF33EE600350E6C /* CustomCalloutViewController.swift */; };
+		FD94B01C1F05229B00443C0F /* CustomCalloutPopUpViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD94B0191F04E4ED00443C0F /* CustomCalloutPopUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -388,6 +391,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				FD94B01B1F05229B00443C0F /* CustomCalloutViewController.swift in CopyFiles */,
+				FD94B01C1F05229B00443C0F /* CustomCalloutPopUpViewController.swift in CopyFiles */,
 				3EEE1D731E493655003263FC /* GroupUserCell.swift in CopyFiles */,
 				3EEE1D741E493655003263FC /* GroupUsersViewController.swift in CopyFiles */,
 				3E0B585C1E36D93800951767 /* SpatialOperationsViewController.swift in CopyFiles */,
@@ -524,7 +529,6 @@
 		3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ContentPList.plist; path = "Content Display Logic/ContentPList.plist"; sourceTree = "<group>"; };
 		3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentTableViewController.swift; path = "Content Display Logic/Controllers/ContentTableViewController.swift"; sourceTree = "<group>"; };
 		3E0D3AD61AFD481900FC60D6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "Content Display Logic/Storyboard/Main.storyboard"; sourceTree = "<group>"; };
-		3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArcGIS.framework; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Static/ArcGIS.framework; sourceTree = "<absolute>"; };
 		3E1E5EE41D9F08ED00F4913C /* HillshadeRendererVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HillshadeRendererVC.swift; path = "Layers/Hillshade renderer/HillshadeRendererVC.swift"; sourceTree = "<group>"; };
 		3E1E5EE61D9F095A00F4913C /* HillshadeSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HillshadeSettingsVC.swift; path = "Layers/Hillshade renderer/HillshadeSettingsVC.swift"; sourceTree = "<group>"; };
 		3E1E5EE91D9F0ACC00F4913C /* HorizontalPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HorizontalPicker.swift; path = HorizontalPicker/HorizontalPicker.swift; sourceTree = "<group>"; };
@@ -774,8 +778,10 @@
 		3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerQuery.storyboard; sourceTree = "<group>"; };
 		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryVC.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
-		FD7DD8E41EF2A7950072ABE6 /* CustomCallout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomCallout.storyboard; sourceTree = "<group>"; };
-		FD7DD8E61EF2A7B10072ABE6 /* CustomCalloutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutViewController.swift; sourceTree = "<group>"; };
+		FD30A0E91EF33EE600350E6C /* CustomCallout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CustomCallout.storyboard; path = "Display information/Show custom callout/CustomCallout.storyboard"; sourceTree = "<group>"; };
+		FD30A0EA1EF33EE600350E6C /* CustomCalloutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomCalloutViewController.swift; path = "Display information/Show custom callout/CustomCalloutViewController.swift"; sourceTree = "<group>"; };
+		FD94B0171F04E32E00443C0F /* ArcGIS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ArcGIS.framework; sourceTree = "<group>"; };
+		FD94B0191F04E4ED00443C0F /* CustomCalloutPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomCalloutPopUpViewController.swift; path = "Display information/Show custom callout/CustomCalloutPopUpViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -783,7 +789,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E0D3AE21AFD4BD000FC60D6 /* ArcGIS.framework in Frameworks */,
+				FD94B0181F04E32E00443C0F /* ArcGIS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -873,6 +879,7 @@
 			children = (
 				3E23A9E21AFC28F6002E2214 /* arcgis-ios-sdk-samples */,
 				3E23A9EE1AFC28F6002E2214 /* Images.xcassets */,
+				FD94B0171F04E32E00443C0F /* ArcGIS.framework */,
 				3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */,
 				3E23A9E11AFC28F6002E2214 /* Products */,
 			);
@@ -904,7 +911,6 @@
 				3E23AA071AFC2DE0002E2214 /* Content Display Logic */,
 				3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */,
 				3EA34D591B38C3B3003DC0E8 /* Samples-Bridging-Header.h */,
-				3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */,
 			);
 			path = "arcgis-ios-sdk-samples";
 			sourceTree = "<group>";
@@ -1520,13 +1526,13 @@
 		3ED027FD1B8E392500ACA70D /* Display information */ = {
 			isa = PBXGroup;
 			children = (
-				FD7DD8E31EF2A72A0072ABE6 /* Show custom callout */,
 				3ED028FD1B8E3AB300ACA70D /* Add graphics with renderer */,
 				3E71621D1BA0D7C2008DE398 /* Add graphics with symbols */,
 				3ED029021B8E3AB300ACA70D /* Identify graphics */,
 				3E54D2311CC697A000BB9904 /* Control graphic draw order */,
 				3ED029151B8E3AB300ACA70D /* Sketch on the map */,
 				3ED029081B8E3AB300ACA70D /* Show callout */,
+				FD7DD8E31EF2A72A0072ABE6 /* Show custom callout */,
 				3ED0290D1B8E3AB300ACA70D /* Show legend */,
 				3EBA255F1D34173600AB0703 /* Simple marker symbol */,
 				3EBA25591D33FEE500AB0703 /* Picture marker symbols */,
@@ -2072,8 +2078,9 @@
 		FD7DD8E31EF2A72A0072ABE6 /* Show custom callout */ = {
 			isa = PBXGroup;
 			children = (
-				FD7DD8E41EF2A7950072ABE6 /* CustomCallout.storyboard */,
-				FD7DD8E61EF2A7B10072ABE6 /* CustomCalloutViewController.swift */,
+				FD30A0E91EF33EE600350E6C /* CustomCallout.storyboard */,
+				FD30A0EA1EF33EE600350E6C /* CustomCalloutViewController.swift */,
+				FD94B0191F04E4ED00443C0F /* CustomCalloutPopUpViewController.swift */,
 			);
 			name = "Show custom callout";
 			sourceTree = "<group>";
@@ -2128,7 +2135,7 @@
 				TargetAttributes = {
 					3E23A9DF1AFC28F6002E2214 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 75Z67E6SV2;
+						DevelopmentTeam = 9MMLCT2W4W;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
@@ -2163,7 +2170,7 @@
 				3ED028E11B8E3AA500ACA70D /* OverrideRenderer.storyboard in Resources */,
 				3ED028731B8E3A8500ACA70D /* MapViewDrawStatus.storyboard in Resources */,
 				3ED028881B8E3A8500ACA70D /* OpenExistingMap.storyboard in Resources */,
-				FD7DD8E51EF2A7950072ABE6 /* CustomCallout.storyboard in Resources */,
+				FD30A0EB1EF33EE600350E6C /* CustomCallout.storyboard in Resources */,
 				3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */,
 				3ED028651B8E3A8500ACA70D /* HighwayJson.txt in Resources */,
 				3EC39C3A1C9B23DF003F6459 /* GenerateGeodatabase.storyboard in Resources */,
@@ -2339,6 +2346,7 @@
 				3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */,
 				3E4B05FB1B39EF250072E514 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				3ED028B91B8E3A9800ACA70D /* SublayerVisibilityViewController.swift in Sources */,
+				FD94B01A1F04E4ED00443C0F /* CustomCalloutPopUpViewController.swift in Sources */,
 				3EC39C1F1C9A59B9003F6459 /* RouteParametersViewController.swift in Sources */,
 				3ED5EB731B7404D0009F9B75 /* SampleInfoViewController.swift in Sources */,
 				3ED028B71B8E3A9800ACA70D /* SublayersTableViewController.swift in Sources */,
@@ -2371,7 +2379,7 @@
 				3EFCE1C51CF374C600E02F67 /* MobileMapViewController.swift in Sources */,
 				3ED028B31B8E3A9800ACA70D /* TLUsingURLViewController.swift in Sources */,
 				3ED028EA1B8E3AA500ACA70D /* FLQueryViewController.swift in Sources */,
-				FD7DD8E71EF2A7B10072ABE6 /* CustomCalloutViewController.swift in Sources */,
+				FD30A0EC1EF33EE600350E6C /* CustomCalloutViewController.swift in Sources */,
 				3E41DD721B9A1F4600DA11CC /* AddFeaturesViewController.swift in Sources */,
 				3ED028961B8E3A8500ACA70D /* SetMapsSRViewController.swift in Sources */,
 				3ED0288E1B8E3A8500ACA70D /* SetInitialMapAreaViewController.swift in Sources */,
@@ -2552,12 +2560,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 75Z67E6SV2;
+				DEVELOPMENT_TEAM = 9MMLCT2W4W;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/SDKs/ArcGIS/iOS/Frameworks/Static",
+					"$(PROJECT_DIR)/arcgis-ios-sdk-samples",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "arcgis-ios-sdk-samples/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -2585,12 +2595,14 @@
 				ASSET_PACK_MANIFEST_URL_PREFIX = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 75Z67E6SV2;
+				DEVELOPMENT_TEAM = 9MMLCT2W4W;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/SDKs/ArcGIS/iOS/Frameworks/Static",
+					"$(PROJECT_DIR)/arcgis-ios-sdk-samples",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "arcgis-ios-sdk-samples/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

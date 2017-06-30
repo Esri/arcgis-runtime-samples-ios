@@ -32,7 +32,6 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     private var nibView:UIView!
     private var onlyOnce = true
     
-    
     weak var delegate: HorizontalPickerDelegate?
     
     var selectedIndex: Int = 0 {
@@ -151,23 +150,19 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalPickerCell", for: indexPath) as! HorizontalPickerCell
         cell.titleLabel.text = self.options[(indexPath as NSIndexPath).item]
-        
         return cell
     }
     
     //scroll to an item at start up
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
         if self.onlyOnce {
             self.onlyOnce = false
             
             self.collectionView.layoutIfNeeded()
             let indexPath = IndexPath(item: selectedIndex, section: 0)
             self.collectionView?.scrollToItem(at: indexPath, at: .right, animated: false)
-            
             self.updateButtonsState()
         }
     }
@@ -175,7 +170,6 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     //MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         return collectionView.bounds.size
     }
     
@@ -186,7 +180,6 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         self.collectionView.collectionViewLayout.invalidateLayout()
     }
     

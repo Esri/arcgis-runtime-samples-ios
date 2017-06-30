@@ -77,12 +77,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QHJ-U7-mUY">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="354"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9O-Tl-NJQ">
-                                                <rect key="frame" x="129" y="15" width="117" height="24"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYs-Ce-Z8k">
                                                 <rect key="frame" x="324" y="12" width="39" height="30"/>
                                                 <state key="normal" title="Close"/>
@@ -91,87 +85,87 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVM-Lb-Mbl">
-                                                <rect key="frame" x="12" y="87" width="75" height="21"/>
+                                                <rect key="frame" x="12" y="95" width="75" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lnm-2j-9Oy">
-                                                <rect key="frame" x="314" y="43" width="51" height="31"/>
+                                                <rect key="frame" x="314" y="51" width="51" height="31"/>
                                                 <color key="onTintColor" red="0.0" green="0.36862745099999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="gridVisibilityAction" destination="CLz-RC-N1t" eventType="valueChanged" id="zgb-MR-sQp"/>
                                                 </connections>
                                             </switch>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rk7-rj-q76" customClass="HorizontalPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                                <rect key="frame" x="129" y="82" width="238" height="30"/>
+                                                <rect key="frame" x="129" y="90" width="238" height="30"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvU-qR-abp">
-                                                <rect key="frame" x="12" y="125" width="78" height="21"/>
+                                                <rect key="frame" x="12" y="133" width="78" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Visible" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzX-aJ-BFq">
-                                                <rect key="frame" x="12" y="161" width="97" height="21"/>
+                                                <rect key="frame" x="12" y="169" width="97" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjf-4n-Ndg">
-                                                <rect key="frame" x="12" y="235" width="107" height="21"/>
+                                                <rect key="frame" x="12" y="243" width="107" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M5i-c9-4Ia">
-                                                <rect key="frame" x="314" y="156" width="51" height="31"/>
+                                                <rect key="frame" x="314" y="164" width="51" height="31"/>
                                                 <color key="onTintColor" red="0.0" green="0.36862745099999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="labelVisibilityAction" destination="CLz-RC-N1t" eventType="valueChanged" id="N9e-Iq-KdD"/>
                                                 </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Format" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q25-kk-MeQ">
-                                                <rect key="frame" x="12" y="275" width="101" height="21"/>
+                                                <rect key="frame" x="12" y="283" width="101" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1I-1L-GCt" customClass="HorizontalPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                                <rect key="frame" x="129" y="308" width="234" height="30"/>
+                                                <rect key="frame" x="129" y="316" width="234" height="30"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kh-A5-PpU" customClass="HorizontalPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                                <rect key="frame" x="129" y="270" width="234" height="30"/>
+                                                <rect key="frame" x="129" y="278" width="234" height="30"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64W-oh-GdS" customClass="HorizontalPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                                <rect key="frame" x="129" y="230" width="234" height="30"/>
+                                                <rect key="frame" x="129" y="238" width="234" height="30"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Rg-Ne-YvZ">
-                                                <rect key="frame" x="12" y="313" width="78" height="21"/>
+                                                <rect key="frame" x="12" y="321" width="78" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pbe-fz-3U4" customClass="HorizontalColorPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                                <rect key="frame" x="129" y="120" width="234" height="30"/>
+                                                <rect key="frame" x="129" y="128" width="234" height="30"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e78-z0-zbj">
-                                                <rect key="frame" x="12" y="197" width="87" height="21"/>
+                                                <rect key="frame" x="12" y="205" width="87" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xf7-Ya-KYT" customClass="HorizontalColorPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                                <rect key="frame" x="129" y="192" width="234" height="30"/>
+                                                <rect key="frame" x="129" y="200" width="234" height="30"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid Visible" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPS-Ac-vPE">
-                                                <rect key="frame" x="12" y="48" width="95" height="21"/>
+                                                <rect key="frame" x="12" y="56" width="95" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="95" id="o9s-sF-Qj0"/>
                                                 </constraints>
@@ -179,10 +173,16 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9O-Tl-NJQ">
+                                                <rect key="frame" x="129" y="15" width="117" height="24"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="ZVM-Lb-Mbl" firstAttribute="top" secondItem="Y9O-Tl-NJQ" secondAttribute="bottom" constant="48" id="2dY-0B-qes"/>
+                                            <constraint firstItem="ZVM-Lb-Mbl" firstAttribute="top" secondItem="Y9O-Tl-NJQ" secondAttribute="bottom" constant="56" id="2dY-0B-qes"/>
                                             <constraint firstAttribute="trailing" secondItem="M5i-c9-4Ia" secondAttribute="trailing" constant="12" id="47H-CZ-Nr4"/>
                                             <constraint firstItem="yzX-aJ-BFq" firstAttribute="centerY" secondItem="M5i-c9-4Ia" secondAttribute="centerY" id="5Ux-xw-lT7"/>
                                             <constraint firstItem="3Rg-Ne-YvZ" firstAttribute="centerY" secondItem="E1I-1L-GCt" secondAttribute="centerY" id="C9Y-Y9-g39"/>
@@ -204,8 +204,8 @@
                                             <constraint firstItem="pjf-4n-Ndg" firstAttribute="centerY" secondItem="64W-oh-GdS" secondAttribute="centerY" id="N2q-uX-Xb5"/>
                                             <constraint firstItem="e78-z0-zbj" firstAttribute="leading" secondItem="yzX-aJ-BFq" secondAttribute="leading" id="OpG-dA-yjP"/>
                                             <constraint firstItem="bPS-Ac-vPE" firstAttribute="leading" secondItem="QHJ-U7-mUY" secondAttribute="leading" constant="12" id="Tmp-bj-QPa"/>
-                                            <constraint firstItem="rk7-rj-q76" firstAttribute="top" secondItem="OYs-Ce-Z8k" secondAttribute="bottom" constant="40" id="Twl-Tm-97b"/>
-                                            <constraint firstAttribute="bottom" secondItem="E1I-1L-GCt" secondAttribute="bottom" constant="16" id="WRk-AB-aLM"/>
+                                            <constraint firstItem="rk7-rj-q76" firstAttribute="top" secondItem="OYs-Ce-Z8k" secondAttribute="bottom" constant="48" id="Twl-Tm-97b"/>
+                                            <constraint firstAttribute="bottom" secondItem="E1I-1L-GCt" secondAttribute="bottom" constant="8" id="WRk-AB-aLM"/>
                                             <constraint firstAttribute="trailing" secondItem="lnm-2j-9Oy" secondAttribute="trailing" constant="12" id="ZEr-hI-doN"/>
                                             <constraint firstItem="nvU-qR-abp" firstAttribute="centerY" secondItem="Pbe-fz-3U4" secondAttribute="centerY" id="aIO-1b-uln"/>
                                             <constraint firstItem="xf7-Ya-KYT" firstAttribute="top" secondItem="M5i-c9-4Ia" secondAttribute="bottom" constant="5" id="aQ3-le-Wbv"/>

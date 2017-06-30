@@ -190,7 +190,7 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
         if (self.mapView?.grid != nil) {
             let gridLevels = self.mapView?.grid?.levelCount
             for gridLevel in 0..<gridLevels! {
-                let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: color, width: CGFloat(gridLevel+2))
+                let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: color, width: CGFloat(gridLevel+1))
                 self.mapView?.grid?.setLineSymbol(lineSymbol, forLevel: gridLevel)
             }
         }
@@ -207,7 +207,7 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
                 textSymbol.horizontalAlignment = .left
                 textSymbol.verticalAlignment = .bottom
                 textSymbol.haloColor = UIColor.white
-                textSymbol.haloWidth = CGFloat(gridLevel+2)
+                textSymbol.haloWidth = CGFloat(gridLevel+1)
                 self.mapView?.grid?.setTextSymbol(textSymbol, forLevel: gridLevel)
             }
         }

@@ -573,7 +573,7 @@
 				<key>storyboardName</key>
 				<string>DisplayGrid</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to display grids such as MGRS, Lat/Lon, USNG, and UTM on a map. In addition, this sample demonstrates how to configure the look and feel of the grid.</string>
+				<string>This sample demonstrates how to display and work with coordinate system grids such as LatitudeLongitude, MGRS, UTM and USNG on a map view</string>
 			</dict>
 		</array>
 	</dict>

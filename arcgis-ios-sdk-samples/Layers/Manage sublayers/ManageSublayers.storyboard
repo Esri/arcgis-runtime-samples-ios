@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ag4-mC-hla">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Manage Sublayers View Controller-->
+        <scene sceneID="chH-Sy-Wgx">
+            <objects>
+                <viewController id="ag4-mC-hla" customClass="ManageSublayersViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qjg-Oe-QRG"/>
+                        <viewControllerLayoutGuide type="bottom" id="0l6-E0-bsq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FIL-M6-Mkv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sW7-dN-rfh" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3RS-NZ-wu3">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="J9K-Vc-wO5"/>
+                                    <barButtonItem title="Sublayers" id="CmR-Ri-JIK">
+                                        <connections>
+                                            <segue destination="cg1-iZ-LA9" kind="presentation" identifier="MapImageSublayersSegue" modalPresentationStyle="formSheet" id="MXS-1S-AVQ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="lp2-zd-J6k"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3RS-NZ-wu3" firstAttribute="top" secondItem="sW7-dN-rfh" secondAttribute="bottom" id="4lh-3c-Mqz"/>
+                            <constraint firstAttribute="trailing" secondItem="sW7-dN-rfh" secondAttribute="trailing" id="Dfk-ny-JWm"/>
+                            <constraint firstItem="3RS-NZ-wu3" firstAttribute="leading" secondItem="FIL-M6-Mkv" secondAttribute="leading" id="PeD-A0-cyf"/>
+                            <constraint firstItem="sW7-dN-rfh" firstAttribute="top" secondItem="Qjg-Oe-QRG" secondAttribute="bottom" id="UXw-OW-M1l"/>
+                            <constraint firstItem="0l6-E0-bsq" firstAttribute="top" secondItem="3RS-NZ-wu3" secondAttribute="bottom" id="axo-JR-wZy"/>
+                            <constraint firstAttribute="trailing" secondItem="3RS-NZ-wu3" secondAttribute="trailing" id="hiy-qb-5re"/>
+                            <constraint firstItem="sW7-dN-rfh" firstAttribute="leading" secondItem="FIL-M6-Mkv" secondAttribute="leading" id="iTG-t6-MZW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Zg6-3x-z3C"/>
+                    <connections>
+                        <outlet property="mapView" destination="sW7-dN-rfh" id="sea-Dk-vD9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PXF-eL-DwT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1039.2" y="160.56971514242881"/>
+        </scene>
+        <!--Sublayers-->
+        <scene sceneID="CRF-ji-nlo">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="JeC-e0-SwS" customClass="MapImageSublayersVC" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NfR-RI-Jvz"/>
+                        <viewControllerLayoutGuide type="bottom" id="4rY-ap-t1X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ank-tO-olW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sRv-jc-101">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MapImageSublayerCell" id="tRt-wA-mP0">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tRt-wA-mP0" id="rzu-yR-jQz">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="JeC-e0-SwS" id="3Ix-gy-d6x"/>
+                                    <outlet property="delegate" destination="JeC-e0-SwS" id="pp6-m0-EUd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="sRv-jc-101" firstAttribute="leading" secondItem="ank-tO-olW" secondAttribute="leading" id="Bsk-d2-xeU"/>
+                            <constraint firstItem="4rY-ap-t1X" firstAttribute="top" secondItem="sRv-jc-101" secondAttribute="bottom" id="uZi-Y6-lEX"/>
+                            <constraint firstAttribute="trailing" secondItem="sRv-jc-101" secondAttribute="trailing" id="ya4-sn-wwl"/>
+                            <constraint firstItem="sRv-jc-101" firstAttribute="top" secondItem="NfR-RI-Jvz" secondAttribute="bottom" id="zbt-hl-fJW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sublayers" id="3rf-Y3-URg">
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="qHl-xW-Goh">
+                            <connections>
+                                <action selector="doneAction" destination="JeC-e0-SwS" id="lHR-S8-BLX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="sRv-jc-101" id="J8q-xE-ElL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v1C-kc-qEN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2912.8000000000002" y="160.56971514242881"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Hai-YO-Xlr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cg1-iZ-LA9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Spm-dV-8a1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JeC-e0-SwS" kind="relationship" relationship="rootViewController" id="4VV-7r-d8W"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DsS-C0-KWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1973.5999999999999" y="160.56971514242881"/>
+        </scene>
+    </scenes>
+</document>

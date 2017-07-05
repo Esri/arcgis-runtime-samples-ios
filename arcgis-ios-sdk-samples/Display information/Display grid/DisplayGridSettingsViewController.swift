@@ -149,7 +149,7 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
     private func changeGrid() {
         //
         //
-        var grid = AGSGrid()
+        var grid: AGSGrid?
         
         let gridType = gridTypePicker.options[gridTypePicker.selectedIndex]
         if (gridType == "LatLong") {

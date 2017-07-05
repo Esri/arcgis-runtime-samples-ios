@@ -52,7 +52,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mapView" destination="zWe-tM-jX8" id="JOc-Sj-fEX"/>
+                        <outlet property="mapView" destination="zWe-tM-jX8" id="r6Y-he-q6Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8p-yk-ukQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

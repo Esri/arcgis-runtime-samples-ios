@@ -569,7 +569,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Display Grid</string>
+				<string>Display grid</string>
 				<key>storyboardName</key>
 				<string>DisplayGrid</string>
 				<key>descriptionText</key>

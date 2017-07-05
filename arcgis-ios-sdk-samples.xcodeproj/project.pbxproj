@@ -954,15 +954,15 @@
 			name = "Raster layer (file)";
 			sourceTree = "<group>";
 		};
-		21E9CDE71EF9C5EA00BD4D7D /* DisplayGrid */ = {
+		21E9CDE71EF9C5EA00BD4D7D /* Display grid */ = {
 			isa = PBXGroup;
 			children = (
 				21E9CDE81EF9C5EA00BD4D7D /* DisplayGrid.storyboard */,
 				21E9CDE91EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift */,
 				21E9CDEA1EF9C5EA00BD4D7D /* DisplayGridViewController.swift */,
 			);
-			name = DisplayGrid;
-			path = "Display information/DisplayGrid";
+			name = "Display grid";
+			path = "Display information/Display grid";
 			sourceTree = "<group>";
 		};
 		3E03F0971B056F9C0078EB36 /* Js */ = {
@@ -1816,7 +1816,7 @@
 				3EBA25591D33FEE500AB0703 /* Picture marker symbols */,
 				3EBA25441D300A5A00AB0703 /* Simple renderer */,
 				3EBA253E1D2F101100AB0703 /* Unique value renderer */,
-				21E9CDE71EF9C5EA00BD4D7D /* DisplayGrid */,
+				21E9CDE71EF9C5EA00BD4D7D /* Display grid */,
 			);
 			name = "Display information";
 			sourceTree = "<group>";

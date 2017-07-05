@@ -27,7 +27,6 @@ class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionVie
     @IBOutlet private var collectionView: UICollectionView!
     
     private var nibView:UIView!
-    private var onlyOnce = true
     private var colors : [UIColor] = HorizontalColorPicker.someColors()
     private var selectedIndexPath : IndexPath?
     private var itemSize = CGSize(width: 12, height: 25)
@@ -37,36 +36,35 @@ class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionVie
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.commonInit()
+        commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.commonInit()
+        commonInit()
     }
     
     private func commonInit() {
-        self.backgroundColor = UIColor.clear
-        
-        self.nibView = self.loadViewFromNib()
-        self.nibView.frame = self.bounds
+        backgroundColor = UIColor.clear
+        nibView = loadViewFromNib()
+        nibView.frame = bounds
         nibView.autoresizingMask = [UIViewAutoresizing.flexibleHeight, .flexibleWidth]
-        self.addSubview(self.nibView)
+        addSubview(nibView)
         
-        self.nibView.layer.cornerRadius = 5
-        self.nibView.layer.borderColor = UIColor.lightGray.cgColor
-        self.nibView.layer.borderWidth = 1
+        nibView.layer.cornerRadius = 5
+        nibView.layer.borderColor = UIColor.lightGray.cgColor
+        nibView.layer.borderWidth = 1
         
-        self.collectionView.layer.cornerRadius = 5
+        collectionView.layer.cornerRadius = 5
         
         // Collection view
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = self.itemSize
+        layout.itemSize = itemSize
         layout.minimumInteritemSpacing = 1
         layout.minimumLineSpacing = 1
-        self.collectionView.collectionViewLayout = layout
-        self.collectionView.register(HorizontalColorPickerCell.self, forCellWithReuseIdentifier: "HorizontalColorPickerCell")
+        collectionView.collectionViewLayout = layout
+        collectionView.register(HorizontalColorPickerCell.self, forCellWithReuseIdentifier: "HorizontalColorPickerCell")
     }
     
     private func loadViewFromNib() -> UIView {
@@ -83,7 +81,7 @@ class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.colors.count
+        return colors.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -93,11 +91,11 @@ class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath == self.selectedIndexPath {
-            return CGSize(width: self.itemSize.width * 3, height: self.itemSize.height)
+        if indexPath == selectedIndexPath {
+            return CGSize(width: itemSize.width * 3, height: itemSize.height)
         }
         else {
-            return self.itemSize
+            return itemSize
         }
     }
     
@@ -106,26 +104,28 @@ class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //
         // Set selected color and indexPath
-        self.selectedColor = colors[indexPath.row]
-        self.selectedIndexPath = indexPath
+        selectedColor = colors[indexPath.row]
+        selectedIndexPath = indexPath
         
         // Update selection
-        self.collectionView.performBatchUpdates(nil, completion: nil)
+        collectionView.performBatchUpdates(nil, completion: nil)
         
         // Fire delegate
-        self.delegate?.horizontalColorPicker?(self, didUpdateSelectedColor: self.selectedColor!)
+        if let selectedColor = selectedColor {
+            delegate?.horizontalColorPicker?(self, didUpdateSelectedColor: selectedColor)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        self.selectedColor = nil
-        self.selectedIndexPath = nil
+        selectedColor = nil
+        selectedIndexPath = nil
     }
     
     //MARK: - Layout subviews
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.collectionView.collectionViewLayout.invalidateLayout()
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     //MARK: - Helper Function
@@ -179,20 +179,20 @@ class HorizontalColorPickerCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.commonInit()
+        commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.commonInit()
+        commonInit()
     }
     
     func commonInit() {
         //
         // Initialize and add color view
-        self.colorView = UIView(frame: self.contentView.bounds)
-        self.colorView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        self.contentView.addSubview(self.colorView)
+        colorView = UIView(frame: contentView.bounds)
+        colorView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        contentView.addSubview(colorView)
     }
     
     override var isSelected: Bool{
@@ -210,7 +210,7 @@ class HorizontalColorPickerCell: UICollectionViewCell {
     
     var color : UIColor?{
         didSet{
-            self.colorView.backgroundColor = color
+            colorView.backgroundColor = color
         }
     }
 }

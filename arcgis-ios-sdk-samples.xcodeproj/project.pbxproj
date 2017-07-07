@@ -433,6 +433,7 @@
 		3EFDE0F91E36AE3100CBCD92 /* FeatureCollectionLayerVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift */; };
 		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
+		D42019B71F0A343A00CD5248 /* MapScaleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42019B61F0A343A00CD5248 /* MapScaleListViewController.swift */; };
 		D4C777731F06720D0039D05F /* MapScale.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C777711F06720D0039D05F /* MapScale.storyboard */; };
 		D4C777741F06720D0039D05F /* MapScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C777721F06720D0039D05F /* MapScaleViewController.swift */; };
 		D4C777751F0673CA0039D05F /* MapScaleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D4C777721F06720D0039D05F /* MapScaleViewController.swift */; };
@@ -905,6 +906,7 @@
 		3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerQuery.storyboard; sourceTree = "<group>"; };
 		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryVC.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
+		D42019B61F0A343A00CD5248 /* MapScaleListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapScaleListViewController.swift; sourceTree = "<group>"; };
 		D4C777711F06720D0039D05F /* MapScale.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapScale.storyboard; sourceTree = "<group>"; };
 		D4C777721F06720D0039D05F /* MapScaleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapScaleViewController.swift; sourceTree = "<group>"; };
 		E459919B1EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchForWebmapByKeyword.storyboard; sourceTree = "<group>"; };
@@ -2381,6 +2383,7 @@
 			children = (
 				D4C777711F06720D0039D05F /* MapScale.storyboard */,
 				D4C777721F06720D0039D05F /* MapScaleViewController.swift */,
+				D42019B61F0A343A00CD5248 /* MapScaleListViewController.swift */,
 			);
 			name = "Show map scale";
 			path = "Display information/Show map scale";
@@ -2678,6 +2681,7 @@
 				3E4BF44C1C5AF04300D85919 /* FindPlaceViewController.swift in Sources */,
 				3E8A05CF1ECE68E80032231C /* PlaneStatsViewController.swift in Sources */,
 				3EFDE0F81E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift in Sources */,
+				D42019B71F0A343A00CD5248 /* MapScaleListViewController.swift in Sources */,
 				3EABC7A21DB1793000C161C6 /* StretchRendererSettingsVC.swift in Sources */,
 				3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */,
 				3ED75D041ED39EDF009B1F75 /* FindServiceAreaInteractiveVC.swift in Sources */,

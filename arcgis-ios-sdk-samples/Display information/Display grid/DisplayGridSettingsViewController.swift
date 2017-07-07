@@ -196,7 +196,7 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
     private func changeGrid(color: UIColor) {
         if let grid = mapView?.grid {
             let gridLevels = grid.levelCount
-            for gridLevel in 0..<gridLevels {
+            for gridLevel in 0...gridLevels-1 {
                 let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: color, width: CGFloat(gridLevel+1))
                 grid.setLineSymbol(lineSymbol, forLevel: gridLevel)
             }
@@ -207,7 +207,7 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
     private func changeLabel(color: UIColor) {
         if let grid = mapView?.grid {
             let gridLevels = grid.levelCount
-            for gridLevel in 0..<gridLevels {
+            for gridLevel in 0...gridLevels-1 {
                 let textSymbol = AGSTextSymbol()
                 textSymbol.color = color
                 textSymbol.size = 14

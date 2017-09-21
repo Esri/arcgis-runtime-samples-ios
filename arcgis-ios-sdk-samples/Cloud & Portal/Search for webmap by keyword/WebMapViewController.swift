@@ -49,6 +49,6 @@ class WebMapViewController: UIViewController, AGSAuthenticationManagerDelegate {
     func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
         SVProgressHUD.showError(withStatus: "Web map access denied", maskType: .gradient)
         challenge.cancel()
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
 }

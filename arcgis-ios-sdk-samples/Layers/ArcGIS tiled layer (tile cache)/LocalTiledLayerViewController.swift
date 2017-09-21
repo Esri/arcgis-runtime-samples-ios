@@ -61,7 +61,7 @@ class LocalTiledLayerViewController: UIViewController, TilePackagesListVCDelegat
         let map = AGSMap(basemap: AGSBasemap(baseLayer: localTiledLayer))
         self.mapView.map = map
         
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
 }

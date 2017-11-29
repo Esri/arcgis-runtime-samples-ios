@@ -433,6 +433,9 @@
 		3EFDE0F91E36AE3100CBCD92 /* FeatureCollectionLayerVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift */; };
 		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
+		BA345AE71FCE8AAC006ECE0C /* WMTSLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA345AE51FCE8AAC006ECE0C /* WMTSLayerViewController.swift */; };
+		BA345AE81FCE8AAC006ECE0C /* WMTSLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA345AE61FCE8AAC006ECE0C /* WMTSLayer.storyboard */; };
+		BA345AE91FCE8B56006ECE0C /* WMTSLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA345AE51FCE8AAC006ECE0C /* WMTSLayerViewController.swift */; };
 		E45991A01EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E459919B1EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard */; };
 		E45991A11EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */; };
 		E45991A21EF3021D0089E9FD /* WebMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E459919D1EF3021D0089E9FD /* WebMapCell.swift */; };
@@ -454,6 +457,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				BA345AE91FCE8B56006ECE0C /* WMTSLayerViewController.swift in CopyFiles */,
 				3E5E09391EF2F5ED00FF3454 /* GenerateOfflineMapViewController.swift in CopyFiles */,
 				3E5E09411EF470DB00FF3454 /* AddDeleteRelatedFeaturesVC.swift in CopyFiles */,
 				3E5E09421EF470DB00FF3454 /* RelatedFeaturesViewController.swift in CopyFiles */,
@@ -901,6 +905,8 @@
 		3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerQuery.storyboard; sourceTree = "<group>"; };
 		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryVC.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
+		BA345AE51FCE8AAC006ECE0C /* WMTSLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WMTSLayerViewController.swift; sourceTree = "<group>"; };
+		BA345AE61FCE8AAC006ECE0C /* WMTSLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WMTSLayer.storyboard; sourceTree = "<group>"; };
 		E459919B1EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchForWebmapByKeyword.storyboard; sourceTree = "<group>"; };
 		E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchForWebmapByKeywordViewController.swift; sourceTree = "<group>"; };
 		E459919D1EF3021D0089E9FD /* WebMapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebMapCell.swift; sourceTree = "<group>"; };
@@ -1330,8 +1336,8 @@
 			);
 			name = "Generate offline map";
 			path = "Maps/Generate offline map";
-            sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
 		3E5E093A1EF4567A00FF3454 /* Add delete related features */ = {
 			isa = PBXGroup;
 			children = (
@@ -1341,8 +1347,8 @@
 			);
 			name = "Add delete related features";
 			path = "Features/Add delete related features";
-            sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
 		3E5E09491EF850BA00FF3454 /* Manage sublayers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1832,6 +1838,7 @@
 				3EABC7C51DB1941000C161C6 /* Blend renderer */,
 				3EABC7881DB1772000C161C6 /* RGB renderer */,
 				3EABC79A1DB1793000C161C6 /* Stretch renderer */,
+				BA345AE41FCE8AAC006ECE0C /* WMTS layer */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -2369,6 +2376,16 @@
 			path = "Features/Feature collection layer (query)";
 			sourceTree = "<group>";
 		};
+		BA345AE41FCE8AAC006ECE0C /* WMTS layer */ = {
+			isa = PBXGroup;
+			children = (
+				BA345AE51FCE8AAC006ECE0C /* WMTSLayerViewController.swift */,
+				BA345AE61FCE8AAC006ECE0C /* WMTSLayer.storyboard */,
+			);
+			name = "WMTS layer";
+			path = "Layers/WMTS layer";
+			sourceTree = "<group>";
+		};
 		E459919A1EF3021D0089E9FD /* Search for webmap by keyword */ = {
 			isa = PBXGroup;
 			children = (
@@ -2528,6 +2545,7 @@
 				3EABC7B81DB183E600C161C6 /* ShastaBW.tif.aux.xml in Resources */,
 				3ED029651B8E3ACD00ACA70D /* EditAttachment.storyboard in Resources */,
 				3EBA255D1D34025700AB0703 /* PictureMarkerSymbols.storyboard in Resources */,
+				BA345AE81FCE8AAC006ECE0C /* WMTSLayer.storyboard in Resources */,
 				E4C4A4481EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard in Resources */,
 				3EF024E81ECBC10600166EC5 /* FormatCoordinates.storyboard in Resources */,
 				3E1183DD1ECF5A1000180152 /* GrandCanyon.csv in Resources */,
@@ -2693,6 +2711,7 @@
 				E45991A11EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift in Sources */,
 				3ED028581B8E3A8500ACA70D /* CreateSaveMapViewController.swift in Sources */,
 				3E8A25841D36B6E300D14F08 /* FeatureLayerGDBViewController.swift in Sources */,
+				BA345AE71FCE8AAC006ECE0C /* WMTSLayerViewController.swift in Sources */,
 				3E4B05FD1B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				3ED029641B8E3ACD00ACA70D /* AttachmentsListViewController.swift in Sources */,
 				3ED0285F1B8E3A8500ACA70D /* SaveAsViewController.swift in Sources */,

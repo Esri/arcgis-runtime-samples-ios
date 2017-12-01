@@ -458,6 +458,8 @@
 			dstSubfolderSpec = 7;
 			files = (
 				127E11D91FD0C457002CBD12 /* WMTSLayerViewController.swift in CopyFiles */,
+				21C9968C1F05BB4D00A062F7 /* DisplayGridSettingsViewController.swift in CopyFiles */,
+				21C9968D1F05BB4D00A062F7 /* DisplayGridViewController.swift in CopyFiles */,
 				3E5E09391EF2F5ED00FF3454 /* GenerateOfflineMapViewController.swift in CopyFiles */,
 				3E5E09411EF470DB00FF3454 /* AddDeleteRelatedFeaturesVC.swift in CopyFiles */,
 				3E5E09421EF470DB00FF3454 /* RelatedFeaturesViewController.swift in CopyFiles */,

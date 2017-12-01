@@ -104,14 +104,15 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         cell.imageView?.autoresizingMask = UIViewAutoresizing()
         cell.imageView?.clipsToBounds = true
         if attachment.hasFetchedData {
-            self.setImage(indexPath)
+            self.setImageForCell(cell, at: indexPath)
         }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.setImage(indexPath)
+         let cell = tableView.cellForRow(at: indexPath)!
+         self.setImageForCell(cell, at: indexPath)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -121,18 +122,15 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
-    func setImage(_ indexPath:IndexPath) {
+    func setImageForCell(_ cell:UITableViewCell, at indexPath:IndexPath) {
         let attachment = self.attachments[(indexPath as NSIndexPath).row]
-        attachment.fetchData { [weak self] (data:Data?, error:Error?) -> Void in
+        attachment.fetchData { (data:Data?, error:Error?) -> Void in
             if let error = error {
                 print(error)
             }
-            else if let weakSelf = self, let data = data {
+            else if let data = data {
                 let image = UIImage(data: data)
-                let cell = weakSelf.tableView.cellForRow(at: indexPath)!
-                if weakSelf.tableView.visibleCells.contains(cell) {
-                    cell.imageView?.image = image
-                }
+                cell.imageView?.image = image
             }
         }
     }

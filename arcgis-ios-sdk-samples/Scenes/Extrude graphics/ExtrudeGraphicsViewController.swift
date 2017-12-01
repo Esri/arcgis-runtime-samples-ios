@@ -40,7 +40,7 @@ class ExtrudeGraphicsViewController: UIViewController {
         self.sceneView.scene = scene
         
         //set the viewpoint camera
-        let camera = AGSCamera(location: self.cameraStartingPoint, heading: 10, pitch: 70, roll: 300)
+        let camera = AGSCamera(location: self.cameraStartingPoint, heading: 10, pitch: 70, roll: 0)
         self.sceneView.setViewpointCamera(camera)
         
         //add graphics overlay

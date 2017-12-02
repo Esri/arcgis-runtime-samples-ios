@@ -345,6 +345,14 @@
                         <string>ShastaBWRaster</string>
                     </array>
                 </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>WMS layer (URL)</string>
+                    <key>storyboardName</key>
+                    <string>WMSLayerUsingURL</string>
+                    <key>descriptionText</key>
+                    <string>Create a WMS layer using the service url and the layer names that are available in the service</string>
+                </dict>
             </array>
         </dict>
         <dict>

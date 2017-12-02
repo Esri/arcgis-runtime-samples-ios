@@ -353,6 +353,13 @@
                     <key>descriptionText</key>
                     <string>This sample demonstrates how to display a WMTS layer as a basemap layer</string>
                 </dict>
+                <dict>
+                    <string>WMS layer (URL)</string>
+                    <key>storyboardName</key>
+                    <string>WMSLayerUsingURL</string>
+                    <key>descriptionText</key>
+                    <string>Create a WMS layer using the service url and the layer names that are available in the service</string>
+                </dict>
             </array>
         </dict>
         <dict>

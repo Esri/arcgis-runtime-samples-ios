@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <array>
+<array>
         <dict>
             <key>displayName</key>
             <string>Maps</string>
@@ -534,6 +534,14 @@
                     <string>MILShowLegend</string>
                     <key>descriptionText</key>
                     <string>Tap on the button in the toolbar to display legends for the layers on the map</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Show map scale</string>
+                    <key>storyboardName</key>
+                    <string>MapScale</string>
+                    <key>descriptionText</key>
+                    <string>This sample shows how to add a map scale information</string>
                 </dict>
                 <dict>
                     <key>displayName</key>

@@ -433,6 +433,10 @@
 		3EFDE0F91E36AE3100CBCD92 /* FeatureCollectionLayerVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift */; };
 		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
+		D42019B71F0A343A00CD5248 /* MapScaleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42019B61F0A343A00CD5248 /* MapScaleListViewController.swift */; };
+		D4C777731F06720D0039D05F /* MapScale.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C777711F06720D0039D05F /* MapScale.storyboard */; };
+		D4C777741F06720D0039D05F /* MapScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C777721F06720D0039D05F /* MapScaleViewController.swift */; };
+		D4C777751F0673CA0039D05F /* MapScaleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D4C777721F06720D0039D05F /* MapScaleViewController.swift */; };
 		E45991A01EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E459919B1EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard */; };
 		E45991A11EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */; };
 		E45991A21EF3021D0089E9FD /* WebMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E459919D1EF3021D0089E9FD /* WebMapCell.swift */; };
@@ -454,6 +458,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				D4C777751F0673CA0039D05F /* MapScaleViewController.swift in CopyFiles */,
 				3E5E09391EF2F5ED00FF3454 /* GenerateOfflineMapViewController.swift in CopyFiles */,
 				3E5E09411EF470DB00FF3454 /* AddDeleteRelatedFeaturesVC.swift in CopyFiles */,
 				3E5E09421EF470DB00FF3454 /* RelatedFeaturesViewController.swift in CopyFiles */,
@@ -901,6 +906,9 @@
 		3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerQuery.storyboard; sourceTree = "<group>"; };
 		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryVC.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
+		D42019B61F0A343A00CD5248 /* MapScaleListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapScaleListViewController.swift; sourceTree = "<group>"; };
+		D4C777711F06720D0039D05F /* MapScale.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapScale.storyboard; sourceTree = "<group>"; };
+		D4C777721F06720D0039D05F /* MapScaleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapScaleViewController.swift; sourceTree = "<group>"; };
 		E459919B1EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchForWebmapByKeyword.storyboard; sourceTree = "<group>"; };
 		E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchForWebmapByKeywordViewController.swift; sourceTree = "<group>"; };
 		E459919D1EF3021D0089E9FD /* WebMapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebMapCell.swift; sourceTree = "<group>"; };
@@ -1330,8 +1338,8 @@
 			);
 			name = "Generate offline map";
 			path = "Maps/Generate offline map";
-            sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
 		3E5E093A1EF4567A00FF3454 /* Add delete related features */ = {
 			isa = PBXGroup;
 			children = (
@@ -1341,8 +1349,8 @@
 			);
 			name = "Add delete related features";
 			path = "Features/Add delete related features";
-            sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
 		3E5E09491EF850BA00FF3454 /* Manage sublayers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1785,6 +1793,7 @@
 				3ED029151B8E3AB300ACA70D /* Sketch on the map */,
 				3ED029081B8E3AB300ACA70D /* Show callout */,
 				3ED0290D1B8E3AB300ACA70D /* Show legend */,
+				D43D7C651F04E87400983561 /* Show map scale */,
 				3EBA255F1D34173600AB0703 /* Simple marker symbol */,
 				3EBA25591D33FEE500AB0703 /* Picture marker symbols */,
 				3EBA25441D300A5A00AB0703 /* Simple renderer */,
@@ -2369,6 +2378,17 @@
 			path = "Features/Feature collection layer (query)";
 			sourceTree = "<group>";
 		};
+		D43D7C651F04E87400983561 /* Show map scale */ = {
+			isa = PBXGroup;
+			children = (
+				D4C777711F06720D0039D05F /* MapScale.storyboard */,
+				D4C777721F06720D0039D05F /* MapScaleViewController.swift */,
+				D42019B61F0A343A00CD5248 /* MapScaleListViewController.swift */,
+			);
+			name = "Show map scale";
+			path = "Display information/Show map scale";
+			sourceTree = "<group>";
+		};
 		E459919A1EF3021D0089E9FD /* Search for webmap by keyword */ = {
 			isa = PBXGroup;
 			children = (
@@ -2444,7 +2464,7 @@
 				TargetAttributes = {
 					3E23A9DF1AFC28F6002E2214 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 75Z67E6SV2;
+						DevelopmentTeam = 7DGX7U8LX4;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
@@ -2611,6 +2631,7 @@
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
 				3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */,
 				3E6C771C1CCFC53B00E89873 /* IdentifyLayers.storyboard in Resources */,
+				D4C777731F06720D0039D05F /* MapScale.storyboard in Resources */,
 				3ED029691B8E3ACD00ACA70D /* EditAttributes.storyboard in Resources */,
 				3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */,
 				3ED028831B8E3A8500ACA70D /* MapRotation.storyboard in Resources */,
@@ -2660,6 +2681,7 @@
 				3E4BF44C1C5AF04300D85919 /* FindPlaceViewController.swift in Sources */,
 				3E8A05CF1ECE68E80032231C /* PlaneStatsViewController.swift in Sources */,
 				3EFDE0F81E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift in Sources */,
+				D42019B71F0A343A00CD5248 /* MapScaleListViewController.swift in Sources */,
 				3EABC7A21DB1793000C161C6 /* StretchRendererSettingsVC.swift in Sources */,
 				3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */,
 				3ED75D041ED39EDF009B1F75 /* FindServiceAreaInteractiveVC.swift in Sources */,
@@ -2690,6 +2712,7 @@
 				3EC39C3C1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift in Sources */,
 				3EABC7A31DB1793000C161C6 /* StretchRendererTypeCell.swift in Sources */,
 				3E2A68181B153CDE00A318AA /* SourceCodeBarButtonItem.swift in Sources */,
+				D4C777741F06720D0039D05F /* MapScaleViewController.swift in Sources */,
 				E45991A11EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift in Sources */,
 				3ED028581B8E3A8500ACA70D /* CreateSaveMapViewController.swift in Sources */,
 				3E8A25841D36B6E300D14F08 /* FeatureLayerGDBViewController.swift in Sources */,
@@ -2910,7 +2933,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 75Z67E6SV2;
+				DEVELOPMENT_TEAM = 7DGX7U8LX4;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2943,7 +2966,7 @@
 				ASSET_PACK_MANIFEST_URL_PREFIX = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 75Z67E6SV2;
+				DEVELOPMENT_TEAM = 7DGX7U8LX4;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (

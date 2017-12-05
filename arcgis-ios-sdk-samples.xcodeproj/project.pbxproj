@@ -446,6 +446,10 @@
 		3EFDE0F91E36AE3100CBCD92 /* FeatureCollectionLayerVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift */; };
 		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
+		D9ED2DA51FD758910043BFE1 /* FeatureLayerGPKG.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9ED2DA31FD758910043BFE1 /* FeatureLayerGPKG.storyboard */; };
+		D9ED2DA61FD758910043BFE1 /* FeatureLayerGPKGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ED2DA41FD758910043BFE1 /* FeatureLayerGPKGViewController.swift */; };
+		D9ED2DA91FD759190043BFE1 /* AuroraCO.gpkg in Resources */ = {isa = PBXBuildFile; fileRef = D9ED2DA81FD759190043BFE1 /* AuroraCO.gpkg */; settings = {ASSET_TAGS = (AuroraCOGeopackage, ); }; };
+		D9ED2DAA1FD75A3D0043BFE1 /* FeatureLayerGPKGViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9ED2DA41FD758910043BFE1 /* FeatureLayerGPKGViewController.swift */; };
 		E45991A01EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E459919B1EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard */; };
 		E45991A11EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */; };
 		E45991A21EF3021D0089E9FD /* WebMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E459919D1EF3021D0089E9FD /* WebMapCell.swift */; };
@@ -467,6 +471,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				D9ED2DAA1FD75A3D0043BFE1 /* FeatureLayerGPKGViewController.swift in CopyFiles */,
 				1259FB941FD297560037105E /* WMSLayerUsingURLViewController.swift in CopyFiles */,
 				127E11D91FD0C457002CBD12 /* WMTSLayerViewController.swift in CopyFiles */,
 				21C9968C1F05BB4D00A062F7 /* DisplayGridSettingsViewController.swift in CopyFiles */,
@@ -927,6 +932,9 @@
 		3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerQuery.storyboard; sourceTree = "<group>"; };
 		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryVC.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
+		D9ED2DA31FD758910043BFE1 /* FeatureLayerGPKG.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerGPKG.storyboard; sourceTree = "<group>"; };
+		D9ED2DA41FD758910043BFE1 /* FeatureLayerGPKGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerGPKGViewController.swift; sourceTree = "<group>"; };
+		D9ED2DA81FD759190043BFE1 /* AuroraCO.gpkg */ = {isa = PBXFileReference; lastKnownFileType = file; path = AuroraCO.gpkg; sourceTree = "<group>"; };
 		E459919B1EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchForWebmapByKeyword.storyboard; sourceTree = "<group>"; };
 		E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchForWebmapByKeywordViewController.swift; sourceTree = "<group>"; };
 		E459919D1EF3021D0089E9FD /* WebMapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebMapCell.swift; sourceTree = "<group>"; };
@@ -1222,6 +1230,7 @@
 			children = (
 				3E8A05D91ECE69840032231C /* 3D models */,
 				3E8A25881D36B89400D14F08 /* Geodatabases */,
+				D9ED2DA71FD758F20043BFE1 /* Geopackages */,
 				3EFCE1B31CF369A800E02F67 /* Mobile map packages */,
 				3EC39C351C9B1A7A003F6459 /* Extensions */,
 				3E6AE3EF1C6D15C40026E59C /* Network data */,
@@ -1858,6 +1867,7 @@
 			children = (
 				3E5848FC1B91222200AB3CE9 /* Feature layer (feature service) */,
 				3E8A257E1D36B6E300D14F08 /* Feature layer (geodatabase) */,
+				D9ED2DA21FD758010043BFE1 /* Feature layer (geopackage) */,
 				3ED028D31B8E3AA500ACA70D /* Service feature table (cache) */,
 				3ED028DB1B8E3AA500ACA70D /* Service feature table (no cache) */,
 				3ED028D71B8E3AA500ACA70D /* Service feature table (manual cache) */,
@@ -2431,6 +2441,25 @@
 			path = "Features/Feature collection layer (query)";
 			sourceTree = "<group>";
 		};
+		D9ED2DA21FD758010043BFE1 /* Feature layer (geopackage) */ = {
+			isa = PBXGroup;
+			children = (
+				D9ED2DA31FD758910043BFE1 /* FeatureLayerGPKG.storyboard */,
+				D9ED2DA41FD758910043BFE1 /* FeatureLayerGPKGViewController.swift */,
+			);
+			name = "Feature layer (geopackage)";
+			path = "Features/Feature layer (geopackage)";
+			sourceTree = "<group>";
+		};
+		D9ED2DA71FD758F20043BFE1 /* Geopackages */ = {
+			isa = PBXGroup;
+			children = (
+				D9ED2DA81FD759190043BFE1 /* AuroraCO.gpkg */,
+			);
+			name = Geopackages;
+			path = "Shared resources/Geopackages";
+			sourceTree = "<group>";
+		};
 		E459919A1EF3021D0089E9FD /* Search for webmap by keyword */ = {
 			isa = PBXGroup;
 			children = (
@@ -2482,6 +2511,7 @@
 			isa = PBXProject;
 			attributes = {
 				KnownAssetTags = (
+					AuroraCOGeopackage,
 					Bristol,
 					Bristol3DModel,
 					LATrailsGeodatabase,
@@ -2655,6 +2685,7 @@
 				3ED0289C1B8E3A8500ACA70D /* MapViewScreenshot.storyboard in Resources */,
 				3EEA06131D21C44000E03774 /* SurfacePlacements.storyboard in Resources */,
 				3ED0292C1B8E3AB300ACA70D /* GOIdentify.storyboard in Resources */,
+				D9ED2DA51FD758910043BFE1 /* FeatureLayerGPKG.storyboard in Resources */,
 				3E5E09371EF2E8E200FF3454 /* GenerateOfflineMap.storyboard in Resources */,
 				3EBA25761D34510F00AB0703 /* CreateGeometries.storyboard in Resources */,
 				3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */,
@@ -2677,6 +2708,7 @@
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
 				3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */,
 				3E6C771C1CCFC53B00E89873 /* IdentifyLayers.storyboard in Resources */,
+				D9ED2DA91FD759190043BFE1 /* AuroraCO.gpkg in Resources */,
 				3ED029691B8E3ACD00ACA70D /* EditAttributes.storyboard in Resources */,
 				3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */,
 				3ED028831B8E3A8500ACA70D /* MapRotation.storyboard in Resources */,
@@ -2764,6 +2796,7 @@
 				3E4B05FD1B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				3ED029641B8E3ACD00ACA70D /* AttachmentsListViewController.swift in Sources */,
 				3ED0285F1B8E3A8500ACA70D /* SaveAsViewController.swift in Sources */,
+				D9ED2DA61FD758910043BFE1 /* FeatureLayerGPKGViewController.swift in Sources */,
 				3E8A05BC1ECD08240032231C /* SceneLayerURLViewController.swift in Sources */,
 				3EABC7CA1DB1947500C161C6 /* BlendRendererSettingsVC.swift in Sources */,
 				3E3B2C241BBD9CD300A99C5E /* SearchEngine.swift in Sources */,

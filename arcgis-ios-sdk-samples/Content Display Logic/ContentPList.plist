@@ -390,6 +390,18 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
+                    <string>Feature layer (geopackage)</string>
+                    <key>storyboardName</key>
+                    <string>FeatureLayerGPKG</string>
+                    <key>descriptionText</key>
+                    <string>Show a feature layer on a map using a geopackage</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>AuroraCOGeopackage</string>
+                    </array>
+                </dict>
+                <dict>
+                    <key>displayName</key>
                     <string>Service feature table (cache)</string>
                     <key>storyboardName</key>
                     <string>OnInteractionCache</string>

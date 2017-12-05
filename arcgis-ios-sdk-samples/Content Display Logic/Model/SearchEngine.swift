@@ -96,7 +96,7 @@ class SearchEngine: NSObject {
                     let sampleDisplayName = directoryURL.path.components(separatedBy: "/").last!
                     
                     tagger.string = contentString
-                    let range = NSMakeRange(0, contentString.characters.count)
+                    let range = NSMakeRange(0, contentString.count)
                     tagger.enumerateTags(in: range, scheme: NSLinguisticTagSchemeLexicalClass, options: [NSLinguisticTagger.Options.omitWhitespace, NSLinguisticTagger.Options.omitPunctuation], using: { (tag:String, tokenRange:NSRange, sentenceRange:NSRange, _) -> Void in
 
                         if tag == NSLinguisticTagNoun || tag == NSLinguisticTagVerb || tag == NSLinguisticTagAdjective || tag == NSLinguisticTagOtherWord {

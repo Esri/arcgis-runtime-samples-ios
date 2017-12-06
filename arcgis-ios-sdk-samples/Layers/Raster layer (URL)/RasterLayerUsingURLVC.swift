@@ -21,7 +21,6 @@ class RasterLayerUsingURLVC : UIViewController {
     
     @IBOutlet weak var mapView: AGSMapView!
     
-    
     private var map:AGSMap!
     
     private var rasterLayer: AGSRasterLayer!
@@ -30,7 +29,7 @@ class RasterLayerUsingURLVC : UIViewController {
         super.viewDidLoad()
         
         //create an image service raster from an online raster service
-        let imageServiceRaster = AGSImageServiceRaster(url: URL(string:"http://sampleserver6.arcgisonline.com/arcgis/rest/services/NLCDLandCover2001/ImageServer")!)
+        let imageServiceRaster = AGSImageServiceRaster(url: URL(string:"https://sampleserver6.arcgisonline.com/arcgis/rest/services/NLCDLandCover2001/ImageServer")!)
         
         // create a raster layer
         self.rasterLayer = AGSRasterLayer(raster: imageServiceRaster)

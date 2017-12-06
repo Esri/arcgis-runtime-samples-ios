@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09B7FDD11FD86F1200B4DFC1 /* RasterLayerUsingURL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 096A55DF1FD8677800D2E91B /* RasterLayerUsingURL.storyboard */; };
-		09B7FDD31FD86FD200B4DFC1 /* RasterLayerUsingURLVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7FDD21FD86FD200B4DFC1 /* RasterLayerUsingURLVC.swift */; };
-		09B7FDD41FD86FF700B4DFC1 /* RasterLayerUsingURLVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09B7FDD21FD86FD200B4DFC1 /* RasterLayerUsingURLVC.swift */; };
+		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
+		09587FF91FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */; };
+		09587FFA1FD8BB0900FCF9A5 /* RasterLayerUsingServiceVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
 		104659AA1EF34F5200EFCB50 /* TerrainExaggerationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */; };
 		10961CA61EF2FFD4008A7CEC /* TerrainExaggeration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10961CA41EF2FFD4008A7CEC /* TerrainExaggeration.storyboard */; };
 		10961CA71EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */; };
@@ -474,7 +474,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				09B7FDD41FD86FF700B4DFC1 /* RasterLayerUsingURLVC.swift in CopyFiles */,
+				09587FFA1FD8BB0900FCF9A5 /* RasterLayerUsingServiceVC.swift in CopyFiles */,
 				D9ED2DAA1FD75A3D0043BFE1 /* FeatureLayerGPKGViewController.swift in CopyFiles */,
 				1259FB941FD297560037105E /* WMSLayerUsingURLViewController.swift in CopyFiles */,
 				127E11D91FD0C457002CBD12 /* WMTSLayerViewController.swift in CopyFiles */,
@@ -622,8 +622,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		096A55DF1FD8677800D2E91B /* RasterLayerUsingURL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RasterLayerUsingURL.storyboard; sourceTree = "<group>"; };
-		09B7FDD21FD86FD200B4DFC1 /* RasterLayerUsingURLVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingURLVC.swift; sourceTree = "<group>"; };
+		09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingServiceVC.swift; sourceTree = "<group>"; };
+		09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RasterLayerUsingService.storyboard; sourceTree = "<group>"; };
 		10961CA41EF2FFD4008A7CEC /* TerrainExaggeration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TerrainExaggeration.storyboard; path = "Scenes/Terrain exaggeration/TerrainExaggeration.storyboard"; sourceTree = "<group>"; };
 		10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TerrainExaggerationViewController.swift; path = "Scenes/Terrain exaggeration/TerrainExaggerationViewController.swift"; sourceTree = "<group>"; };
 		1259FB901FD295C90037105E /* WMSLayerUsingURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WMSLayerUsingURL.storyboard; sourceTree = "<group>"; };
@@ -962,14 +962,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		096A55DC1FD8677800D2E91B /* Raster layer (URL) */ = {
+		096A55DC1FD8677800D2E91B /* Raster layer (service) */ = {
 			isa = PBXGroup;
 			children = (
-				09B7FDD21FD86FD200B4DFC1 /* RasterLayerUsingURLVC.swift */,
-				096A55DF1FD8677800D2E91B /* RasterLayerUsingURL.storyboard */,
+				09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */,
+				09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */,
 			);
-			name = "Raster layer (URL)";
-			path = "Layers/Raster layer (URL)";
+			name = "Raster layer (service)";
+			path = "Layers/Raster layer (service)";
 			sourceTree = "<group>";
 		};
 		10961CA31EF2FFA3008A7CEC /* Terrain exaggeration */ = {
@@ -1914,7 +1914,7 @@
 				3E81C1B71D8A0C7400470AA4 /* ArcGIS vector tiled layer (custom style) */,
 				3E6294081EAFAF4100084105 /* Web tiled layer */,
 				166E8F951EE4DF6C00C57C46 /* Raster layer (file) */,
-				096A55DC1FD8677800D2E91B /* Raster layer (URL) */,
+				096A55DC1FD8677800D2E91B /* Raster layer (service) */,
 				3E1E5EE31D9F085E00F4913C /* Hillshade renderer */,
 				3EABC7C51DB1941000C161C6 /* Blend renderer */,
 				3EABC7881DB1772000C161C6 /* RGB renderer */,
@@ -2589,8 +2589,8 @@
 				3EA15C751ED89EAE00B1F816 /* ChangeSublayerRenderer.storyboard in Resources */,
 				3ED028731B8E3A8500ACA70D /* MapViewDrawStatus.storyboard in Resources */,
 				3ED028881B8E3A8500ACA70D /* OpenExistingMap.storyboard in Resources */,
+				09587FF91FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard in Resources */,
 				3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */,
-				09B7FDD11FD86F1200B4DFC1 /* RasterLayerUsingURL.storyboard in Resources */,
 				3ED028651B8E3A8500ACA70D /* HighwayJson.txt in Resources */,
 				3EC39C3A1C9B23DF003F6459 /* GenerateGeodatabase.storyboard in Resources */,
 				3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */,
@@ -2762,7 +2762,6 @@
 				3E0225371DB569240049F7F8 /* CategoryCell.swift in Sources */,
 				3ED7888E1D26E28500E5F311 /* TilePackagesListViewController.swift in Sources */,
 				3ED029381B8E3AB300ACA70D /* MILLegendTableViewController.swift in Sources */,
-				09B7FDD31FD86FD200B4DFC1 /* RasterLayerUsingURLVC.swift in Sources */,
 				3ED7888C1D26E23C00E5F311 /* LocalTiledLayerViewController.swift in Sources */,
 				3E6AE3F91C73B5480026E59C /* DirectionsViewController.swift in Sources */,
 				3ED029321B8E3AB300ACA70D /* CalloutViewController.swift in Sources */,
@@ -2892,6 +2891,7 @@
 				3ED028591B8E3A8500ACA70D /* CreateOptionsViewController.swift in Sources */,
 				3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */,
 				21E9CDED1EF9C5EA00BD4D7D /* DisplayGridViewController.swift in Sources */,
+				09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */,
 				3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */,
 				3E5E094F1EF850BA00FF3454 /* MapImageSublayersVC.swift in Sources */,
 				10961CA71EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift in Sources */,

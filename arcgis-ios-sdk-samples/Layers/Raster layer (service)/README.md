@@ -1,4 +1,4 @@
-# Raster layer (URL)
+# Raster layer (service)
 
 This sample demonstrates how to create and use a raster layer from an ArcGIS Image service.
 

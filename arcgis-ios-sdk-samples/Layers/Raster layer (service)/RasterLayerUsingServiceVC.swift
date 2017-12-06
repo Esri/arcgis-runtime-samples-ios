@@ -17,7 +17,7 @@
 import UIKit
 import ArcGIS
 
-class RasterLayerUsingURLVC : UIViewController {
+class RasterLayerUsingServiceVC : UIViewController {
     
     @IBOutlet weak var mapView: AGSMapView!
     
@@ -52,12 +52,12 @@ class RasterLayerUsingURLVC : UIViewController {
             }
             
             if let center = self?.rasterLayer.fullExtent?.center {
-                self?.mapView.setViewpoint(AGSViewpoint(center: center, scale: 40000000))
+                self?.mapView.setViewpoint(AGSViewpoint(center: center, scale: 50000000))
             }
         }
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RasterLayerUsingURLVC"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RasterLayerUsingServiceVC"]
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,5 +65,6 @@ class RasterLayerUsingURLVC : UIViewController {
         // Dispose of any resources that can be recreated.
     }
 }
+
 
 

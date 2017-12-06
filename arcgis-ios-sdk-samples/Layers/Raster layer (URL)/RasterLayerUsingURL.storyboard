@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1Jh-RW-Kp0">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Raster Layer Using URLVC-->
+        <scene sceneID="vd0-9v-ixe">
+            <objects>
+                <viewController id="1Jh-RW-Kp0" customClass="RasterLayerUsingURLVC" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OGh-jR-PkP"/>
+                        <viewControllerLayoutGuide type="bottom" id="qkp-X8-ov1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2qd-H9-kU1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rhR-s1-3mw" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rhR-s1-3mw" firstAttribute="bottom" secondItem="qkp-X8-ov1" secondAttribute="top" id="8vy-bG-EEk"/>
+                            <constraint firstItem="rhR-s1-3mw" firstAttribute="top" secondItem="2qd-H9-kU1" secondAttribute="top" id="ZKD-NZ-DOQ"/>
+                            <constraint firstItem="rhR-s1-3mw" firstAttribute="trailing" secondItem="2qd-H9-kU1" secondAttribute="trailing" id="cIe-eE-78z"/>
+                            <constraint firstItem="rhR-s1-3mw" firstAttribute="leading" secondItem="2qd-H9-kU1" secondAttribute="leading" id="suS-TR-0cG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="rhR-s1-3mw" id="CpF-xq-YvF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YnO-6D-DIE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1231" y="-119"/>
+        </scene>
+    </scenes>
+</document>

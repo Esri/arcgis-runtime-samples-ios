@@ -298,6 +298,18 @@
                 </dict>
                 <dict>
                     <key>displayName</key>
+                    <string>Raster layer (geopackage)</string>
+                    <key>storyboardName</key>
+                    <string>RasterLayerGPKG</string>
+                    <key>descriptionText</key>
+                    <string>Show a raster layer on a map using a geopackage</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>AuroraCOGeopackage</string>
+                    </array>
+                </dict>
+                <dict>
+                    <key>displayName</key>
                     <string>Hillshade renderer</string>
                     <key>storyboardName</key>
                     <string>HillshadeRenderer</string>

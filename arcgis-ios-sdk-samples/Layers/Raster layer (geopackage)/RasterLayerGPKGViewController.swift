@@ -27,7 +27,7 @@ class RasterLayerGPKGViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RasterLayerGPKGViewController"]
         
         // Instantiate a map using a basemap, location, and zoom level.
-        let map = AGSMap(basemapType: .lightGrayCanvasVector, latitude: 39.7294, longitude: -104.8319, levelOfDetail: 10)
+        let map = AGSMap(basemapType: .lightGrayCanvasVector, latitude: 39.7294, longitude: -104.8319, levelOfDetail: 11)
         
         // Create a geopackage from a named bundle resource.
         geoPackage = AGSGeoPackage(name: "AuroraCO")

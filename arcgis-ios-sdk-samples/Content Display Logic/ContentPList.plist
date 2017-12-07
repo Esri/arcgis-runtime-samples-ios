@@ -296,18 +296,18 @@
 					<string>ShastaRaster</string>
 				</array>
 			</dict>
-            <dict>
-                <key>displayName</key>
-                <string>Raster layer (geopackage)</string>
-                <key>storyboardName</key>
-                <string>RasterLayerGPKG</string>
-                <key>descriptionText</key>
-                <string>Show a raster layer on a map using a geopackage</string>
-                <key>dependency</key>
-                <array>
-                    <string>AuroraCOGeopackage</string>
-                </array>
-            </dict>
+			<dict>
+				<key>displayName</key>
+				<string>Raster layer (geopackage)</string>
+				<key>storyboardName</key>
+				<string>RasterLayerGPKG</string>
+				<key>descriptionText</key>
+				<string>Show a raster layer on a map using a geopackage</string>
+				<key>dependency</key>
+				<array>
+					<string>AuroraCOGeopackage</string>
+				</array>
+			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>Raster layer (service)</string>
@@ -519,6 +519,14 @@
 				<string>AddDeleteRelatedFeatures</string>
 				<key>descriptionText</key>
 				<string>This sample shows how to add or delete related features to an origin feature</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Time based query</string>
+				<key>storyboardName</key>
+				<string>TimeBasedQuery</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to apply a time-based parameter to a feature layer query</string>
 			</dict>
 		</array>
 	</dict>

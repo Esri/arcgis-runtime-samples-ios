@@ -286,6 +286,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Raster function (service)</string>
+				<key>storyboardName</key>
+				<string>RasterFunctionService</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to create an image service raster and apply a Hillshade raster function to it.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Raster layer (file)</string>
 				<key>storyboardName</key>
 				<string>RasterLayer</string>

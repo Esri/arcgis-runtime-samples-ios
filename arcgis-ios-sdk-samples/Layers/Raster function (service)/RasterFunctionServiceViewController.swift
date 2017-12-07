@@ -34,7 +34,7 @@ class RasterFunctionServiceViewController: UIViewController {
         mapView.map = map
         
         // Initialize image service raster and apply raster function when it's loaded
-        imageServiceRaster = AGSImageServiceRaster(url: URL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/NLCDLandCover2001/ImageServer")!)
+        imageServiceRaster = AGSImageServiceRaster(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NLCDLandCover2001/ImageServer")!)
         imageServiceRaster?.load { [weak self] (error) in
             guard error == nil else {
                 SVProgressHUD.show(withStatus: error!.localizedDescription, maskType: .gradient)

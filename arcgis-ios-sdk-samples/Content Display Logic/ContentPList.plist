@@ -850,7 +850,7 @@
 				<key>storyboardName</key>
 				<string>StatisticalQuery</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to query a table to get aggregated statistics back for a specific field.</string>
+				<string>This sample demonstrates how to query a feature table to get aggregated statistics back for a specific field.</string>
 			</dict>
 		</array>
 	</dict>

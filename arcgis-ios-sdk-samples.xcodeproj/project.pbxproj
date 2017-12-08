@@ -457,29 +457,13 @@
 		D90407961FD8651600BFE07B /* RasterLayerGPKGViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */; };
 		D97B7E3C1FD9BE2B00E1239D /* FeatureLayerShapefileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97B7E3A1FD9BE2B00E1239D /* FeatureLayerShapefileViewController.swift */; };
 		D97B7E3D1FD9BE2B00E1239D /* FeatureLayerShapefile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E3B1FD9BE2B00E1239D /* FeatureLayerShapefile.storyboard */; };
-		D97B7E571FD9BFE700E1239D /* Public_Art.dbf in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E3F1FD9BFE600E1239D /* Public_Art.dbf */; settings = {ASSET_TAGS = (Public_ArtShapefile, ); }; };
-		D97B7E581FD9BFE700E1239D /* Public_Art.prj in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E401FD9BFE600E1239D /* Public_Art.prj */; settings = {ASSET_TAGS = (Public_ArtShapefile, ); }; };
 		D97B7E591FD9BFE700E1239D /* Subdivisions.shx in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E411FD9BFE600E1239D /* Subdivisions.shx */; settings = {ASSET_TAGS = (SubdivisionsShapefile, ); }; };
-		D97B7E5A1FD9BFE700E1239D /* Public_Art.sbx in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E421FD9BFE600E1239D /* Public_Art.sbx */; settings = {ASSET_TAGS = (Public_ArtShapefile, ); }; };
-		D97B7E5B1FD9BFE700E1239D /* Public_Art.shp in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E431FD9BFE600E1239D /* Public_Art.shp */; settings = {ASSET_TAGS = (Public_ArtShapefile, ); }; };
 		D97B7E5C1FD9BFE700E1239D /* Subdivisions.prj in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E441FD9BFE600E1239D /* Subdivisions.prj */; settings = {ASSET_TAGS = (SubdivisionsShapefile, ); }; };
-		D97B7E5D1FD9BFE700E1239D /* TrailBikeNetwork.dbf in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E451FD9BFE600E1239D /* TrailBikeNetwork.dbf */; settings = {ASSET_TAGS = (TrailBikeNetworkShapefile, ); }; };
-		D97B7E5E1FD9BFE700E1239D /* TrailBikeNetwork.shp in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E461FD9BFE600E1239D /* TrailBikeNetwork.shp */; settings = {ASSET_TAGS = (TrailBikeNetworkShapefile, ); }; };
 		D97B7E5F1FD9BFE700E1239D /* Subdivisions.cpg in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E471FD9BFE600E1239D /* Subdivisions.cpg */; settings = {ASSET_TAGS = (SubdivisionsShapefile, ); }; };
-		D97B7E601FD9BFE700E1239D /* TrailBikeNetwork.cpg in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E481FD9BFE600E1239D /* TrailBikeNetwork.cpg */; settings = {ASSET_TAGS = (TrailBikeNetworkShapefile, ); }; };
-		D97B7E611FD9BFE700E1239D /* Public_Art.shp.xml in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E491FD9BFE600E1239D /* Public_Art.shp.xml */; settings = {ASSET_TAGS = (Public_ArtShapefile, ); }; };
 		D97B7E621FD9BFE700E1239D /* Subdivisions.sbn in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E4A1FD9BFE600E1239D /* Subdivisions.sbn */; settings = {ASSET_TAGS = (SubdivisionsShapefile, ); }; };
-		D97B7E631FD9BFE700E1239D /* TrailBikeNetwork.prj in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E4B1FD9BFE600E1239D /* TrailBikeNetwork.prj */; settings = {ASSET_TAGS = (TrailBikeNetworkShapefile, ); }; };
-		D97B7E641FD9BFE700E1239D /* TrailBikeNetwork.sbn in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E4C1FD9BFE600E1239D /* TrailBikeNetwork.sbn */; settings = {ASSET_TAGS = (TrailBikeNetworkShapefile, ); }; };
-		D97B7E651FD9BFE700E1239D /* TrailBikeNetwork.sbx in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E4D1FD9BFE600E1239D /* TrailBikeNetwork.sbx */; settings = {ASSET_TAGS = (TrailBikeNetworkShapefile, ); }; };
-		D97B7E661FD9BFE700E1239D /* TrailBikeNetwork.shx in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E4E1FD9BFE700E1239D /* TrailBikeNetwork.shx */; settings = {ASSET_TAGS = (TrailBikeNetworkShapefile, ); }; };
 		D97B7E671FD9BFE700E1239D /* Subdivisions.dbf in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E4F1FD9BFE700E1239D /* Subdivisions.dbf */; settings = {ASSET_TAGS = (SubdivisionsShapefile, ); }; };
 		D97B7E681FD9BFE700E1239D /* Subdivisions.shp in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E501FD9BFE700E1239D /* Subdivisions.shp */; settings = {ASSET_TAGS = (SubdivisionsShapefile, ); }; };
 		D97B7E691FD9BFE700E1239D /* Subdivisions.shp.xml in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E511FD9BFE700E1239D /* Subdivisions.shp.xml */; settings = {ASSET_TAGS = (SubdivisionsShapefile, ); }; };
-		D97B7E6A1FD9BFE700E1239D /* TrailBikeNetwork.shp.xml in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E521FD9BFE700E1239D /* TrailBikeNetwork.shp.xml */; settings = {ASSET_TAGS = (TrailBikeNetworkShapefile, ); }; };
-		D97B7E6B1FD9BFE700E1239D /* Public_Art.sbn in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E531FD9BFE700E1239D /* Public_Art.sbn */; settings = {ASSET_TAGS = (Public_ArtShapefile, ); }; };
-		D97B7E6C1FD9BFE700E1239D /* Public_Art.cpg in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E541FD9BFE700E1239D /* Public_Art.cpg */; settings = {ASSET_TAGS = (Public_ArtShapefile, ); }; };
-		D97B7E6D1FD9BFE700E1239D /* Public_Art.shx in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E551FD9BFE700E1239D /* Public_Art.shx */; settings = {ASSET_TAGS = (Public_ArtShapefile, ); }; };
 		D97B7E6E1FD9BFE700E1239D /* Subdivisions.sbx in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E561FD9BFE700E1239D /* Subdivisions.sbx */; settings = {ASSET_TAGS = (SubdivisionsShapefile, ); }; };
 		D97B7E6F1FDA0FC200E1239D /* FeatureLayerShapefileViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D97B7E3A1FD9BE2B00E1239D /* FeatureLayerShapefileViewController.swift */; };
 		D9ED2DA51FD758910043BFE1 /* FeatureLayerGPKG.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9ED2DA31FD758910043BFE1 /* FeatureLayerGPKG.storyboard */; };
@@ -980,29 +964,13 @@
 		D90407931FD8608A00BFE07B /* RasterLayerGPKG.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RasterLayerGPKG.storyboard; sourceTree = "<group>"; };
 		D97B7E3A1FD9BE2B00E1239D /* FeatureLayerShapefileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerShapefileViewController.swift; sourceTree = "<group>"; };
 		D97B7E3B1FD9BE2B00E1239D /* FeatureLayerShapefile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerShapefile.storyboard; sourceTree = "<group>"; };
-		D97B7E3F1FD9BFE600E1239D /* Public_Art.dbf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Public_Art.dbf; sourceTree = "<group>"; };
-		D97B7E401FD9BFE600E1239D /* Public_Art.prj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Public_Art.prj; sourceTree = "<group>"; };
 		D97B7E411FD9BFE600E1239D /* Subdivisions.shx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Subdivisions.shx; sourceTree = "<group>"; };
-		D97B7E421FD9BFE600E1239D /* Public_Art.sbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Public_Art.sbx; sourceTree = "<group>"; };
-		D97B7E431FD9BFE600E1239D /* Public_Art.shp */ = {isa = PBXFileReference; lastKnownFileType = file; path = Public_Art.shp; sourceTree = "<group>"; };
 		D97B7E441FD9BFE600E1239D /* Subdivisions.prj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Subdivisions.prj; sourceTree = "<group>"; };
-		D97B7E451FD9BFE600E1239D /* TrailBikeNetwork.dbf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TrailBikeNetwork.dbf; sourceTree = "<group>"; };
-		D97B7E461FD9BFE600E1239D /* TrailBikeNetwork.shp */ = {isa = PBXFileReference; lastKnownFileType = file; path = TrailBikeNetwork.shp; sourceTree = "<group>"; };
 		D97B7E471FD9BFE600E1239D /* Subdivisions.cpg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Subdivisions.cpg; sourceTree = "<group>"; };
-		D97B7E481FD9BFE600E1239D /* TrailBikeNetwork.cpg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TrailBikeNetwork.cpg; sourceTree = "<group>"; };
-		D97B7E491FD9BFE600E1239D /* Public_Art.shp.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Public_Art.shp.xml; sourceTree = "<group>"; };
 		D97B7E4A1FD9BFE600E1239D /* Subdivisions.sbn */ = {isa = PBXFileReference; lastKnownFileType = file; path = Subdivisions.sbn; sourceTree = "<group>"; };
-		D97B7E4B1FD9BFE600E1239D /* TrailBikeNetwork.prj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TrailBikeNetwork.prj; sourceTree = "<group>"; };
-		D97B7E4C1FD9BFE600E1239D /* TrailBikeNetwork.sbn */ = {isa = PBXFileReference; lastKnownFileType = file; path = TrailBikeNetwork.sbn; sourceTree = "<group>"; };
-		D97B7E4D1FD9BFE600E1239D /* TrailBikeNetwork.sbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = TrailBikeNetwork.sbx; sourceTree = "<group>"; };
-		D97B7E4E1FD9BFE700E1239D /* TrailBikeNetwork.shx */ = {isa = PBXFileReference; lastKnownFileType = file; path = TrailBikeNetwork.shx; sourceTree = "<group>"; };
 		D97B7E4F1FD9BFE700E1239D /* Subdivisions.dbf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Subdivisions.dbf; sourceTree = "<group>"; };
 		D97B7E501FD9BFE700E1239D /* Subdivisions.shp */ = {isa = PBXFileReference; lastKnownFileType = file; path = Subdivisions.shp; sourceTree = "<group>"; };
 		D97B7E511FD9BFE700E1239D /* Subdivisions.shp.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Subdivisions.shp.xml; sourceTree = "<group>"; };
-		D97B7E521FD9BFE700E1239D /* TrailBikeNetwork.shp.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TrailBikeNetwork.shp.xml; sourceTree = "<group>"; };
-		D97B7E531FD9BFE700E1239D /* Public_Art.sbn */ = {isa = PBXFileReference; lastKnownFileType = file; path = Public_Art.sbn; sourceTree = "<group>"; };
-		D97B7E541FD9BFE700E1239D /* Public_Art.cpg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Public_Art.cpg; sourceTree = "<group>"; };
-		D97B7E551FD9BFE700E1239D /* Public_Art.shx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Public_Art.shx; sourceTree = "<group>"; };
 		D97B7E561FD9BFE700E1239D /* Subdivisions.sbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Subdivisions.sbx; sourceTree = "<group>"; };
 		D9ED2DA31FD758910043BFE1 /* FeatureLayerGPKG.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerGPKG.storyboard; sourceTree = "<group>"; };
 		D9ED2DA41FD758910043BFE1 /* FeatureLayerGPKGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerGPKGViewController.swift; sourceTree = "<group>"; };
@@ -2561,14 +2529,6 @@
 		D97B7E3E1FD9BF1E00E1239D /* Shapefiles */ = {
 			isa = PBXGroup;
 			children = (
-				D97B7E541FD9BFE700E1239D /* Public_Art.cpg */,
-				D97B7E3F1FD9BFE600E1239D /* Public_Art.dbf */,
-				D97B7E401FD9BFE600E1239D /* Public_Art.prj */,
-				D97B7E531FD9BFE700E1239D /* Public_Art.sbn */,
-				D97B7E421FD9BFE600E1239D /* Public_Art.sbx */,
-				D97B7E431FD9BFE600E1239D /* Public_Art.shp */,
-				D97B7E491FD9BFE600E1239D /* Public_Art.shp.xml */,
-				D97B7E551FD9BFE700E1239D /* Public_Art.shx */,
 				D97B7E471FD9BFE600E1239D /* Subdivisions.cpg */,
 				D97B7E4F1FD9BFE700E1239D /* Subdivisions.dbf */,
 				D97B7E441FD9BFE600E1239D /* Subdivisions.prj */,
@@ -2577,14 +2537,6 @@
 				D97B7E501FD9BFE700E1239D /* Subdivisions.shp */,
 				D97B7E511FD9BFE700E1239D /* Subdivisions.shp.xml */,
 				D97B7E411FD9BFE600E1239D /* Subdivisions.shx */,
-				D97B7E481FD9BFE600E1239D /* TrailBikeNetwork.cpg */,
-				D97B7E451FD9BFE600E1239D /* TrailBikeNetwork.dbf */,
-				D97B7E4B1FD9BFE600E1239D /* TrailBikeNetwork.prj */,
-				D97B7E4C1FD9BFE600E1239D /* TrailBikeNetwork.sbn */,
-				D97B7E4D1FD9BFE600E1239D /* TrailBikeNetwork.sbx */,
-				D97B7E461FD9BFE600E1239D /* TrailBikeNetwork.shp */,
-				D97B7E521FD9BFE700E1239D /* TrailBikeNetwork.shp.xml */,
-				D97B7E4E1FD9BFE700E1239D /* TrailBikeNetwork.shx */,
 			);
 			name = Shapefiles;
 			path = "Shared resources/Shapefiles";
@@ -2723,16 +2675,13 @@
 				3ED028E11B8E3AA500ACA70D /* OverrideRenderer.storyboard in Resources */,
 				3EA15C751ED89EAE00B1F816 /* ChangeSublayerRenderer.storyboard in Resources */,
 				3ED028731B8E3A8500ACA70D /* MapViewDrawStatus.storyboard in Resources */,
-				D97B7E6C1FD9BFE700E1239D /* Public_Art.cpg in Resources */,
 				3ED028881B8E3A8500ACA70D /* OpenExistingMap.storyboard in Resources */,
 				09587FF91FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard in Resources */,
 				3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */,
 				3ED028651B8E3A8500ACA70D /* HighwayJson.txt in Resources */,
 				3EC39C3A1C9B23DF003F6459 /* GenerateGeodatabase.storyboard in Resources */,
-				D97B7E631FD9BFE700E1239D /* TrailBikeNetwork.prj in Resources */,
 				3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */,
 				3ED028E41B8E3AA500ACA70D /* DefinitionExpression.storyboard in Resources */,
-				D97B7E581FD9BFE700E1239D /* Public_Art.prj in Resources */,
 				3EBA254A1D300FB500AB0703 /* SimpleRenderer.storyboard in Resources */,
 				D97B7E5F1FD9BFE700E1239D /* Subdivisions.cpg in Resources */,
 				3ED028B81B8E3A9800ACA70D /* SublayerVisibility.storyboard in Resources */,
@@ -2756,7 +2705,6 @@
 				3ED028F71B8E3AA500ACA70D /* ManualCache.storyboard in Resources */,
 				3ED028641B8E3A8500ACA70D /* GriffithParkJson.txt in Resources */,
 				3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */,
-				D97B7E6D1FD9BFE700E1239D /* Public_Art.shx in Resources */,
 				3EABC7B91DB183E600C161C6 /* ShastaBW.tif.ovr in Resources */,
 				3E5E093E1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard in Resources */,
 				3EEE1D6F1E4935FC003263FC /* GroupUsers.storyboard in Resources */,
@@ -2770,28 +2718,22 @@
 				3E4BF47C1C5BDDCA00D85919 /* san-diego-locator.loc in Resources */,
 				3E8A05CB1ECE68E80032231C /* Animate3DGraphic.storyboard in Resources */,
 				3E2A68121B14E04300A318AA /* ArcGIS.bundle in Resources */,
-				D97B7E6B1FD9BFE700E1239D /* Public_Art.sbn in Resources */,
 				3ED5EB771B752A42009F9B75 /* style.css in Resources */,
 				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
 				3EEB2B971EB9695F00B52513 /* ListRelatedFeatures.storyboard in Resources */,
 				3ED028AF1B8E3A9800ACA70D /* MILUsingURL.storyboard in Resources */,
 				3E8A258A1D36B89400D14F08 /* LA_Trails.geodatabase in Resources */,
 				3ECDD9B11E8470E100E645AB /* DownloadProgressView.xib in Resources */,
-				D97B7E5A1FD9BFE700E1239D /* Public_Art.sbx in Resources */,
 				3EABC7C11DB191BC00C161C6 /* Shasta_Elevation.tfw in Resources */,
 				3E676DF11B1D0B6000D4029A /* Camera Shutter.caf in Resources */,
 				3EABC7B81DB183E600C161C6 /* ShastaBW.tif.aux.xml in Resources */,
-				D97B7E5E1FD9BFE700E1239D /* TrailBikeNetwork.shp in Resources */,
 				3ED029651B8E3ACD00ACA70D /* EditAttachment.storyboard in Resources */,
 				3EBA255D1D34025700AB0703 /* PictureMarkerSymbols.storyboard in Resources */,
 				127E11D71FD0C3F8002CBD12 /* WMTSLayer.storyboard in Resources */,
-				D97B7E5D1FD9BFE700E1239D /* TrailBikeNetwork.dbf in Resources */,
 				E4C4A4481EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard in Resources */,
 				3EF024E81ECBC10600166EC5 /* FormatCoordinates.storyboard in Resources */,
-				D97B7E6A1FD9BFE700E1239D /* TrailBikeNetwork.shp.xml in Resources */,
 				3E1183DD1ECF5A1000180152 /* GrandCanyon.csv in Resources */,
 				3ED028F41B8E3AA500ACA70D /* OnInteractionCache.storyboard in Resources */,
-				D97B7E651FD9BFE700E1239D /* TrailBikeNetwork.sbx in Resources */,
 				3E8A05DD1ECE69840032231C /* Bristol.dae in Resources */,
 				3E8D54FB1D53E3F000E628D9 /* ScenePropertiesExpressions.storyboard in Resources */,
 				3ED028FA1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard in Resources */,
@@ -2814,14 +2756,10 @@
 				3EFDE0F51E36ABB700CBCD92 /* FeatureCollectionLayer.storyboard in Resources */,
 				3E1E5EED1D9F0B5600F4913C /* srtm.tiff in Resources */,
 				3EE8B9531CA08E54003AA705 /* VectorTileLayer.storyboard in Resources */,
-				D97B7E611FD9BFE700E1239D /* Public_Art.shp.xml in Resources */,
-				D97B7E5B1FD9BFE700E1239D /* Public_Art.shp in Resources */,
 				3ED029311B8E3AB300ACA70D /* Callout.storyboard in Resources */,
 				3E4BF47F1C5BDDCA00D85919 /* san-diego-locator.lox in Resources */,
 				3ED029701B8E3ACD00ACA70D /* EditGeometry.storyboard in Resources */,
-				D97B7E661FD9BFE700E1239D /* TrailBikeNetwork.shx in Resources */,
 				3E5849001B9123E900AB3CE9 /* FeatureLayerURL.storyboard in Resources */,
-				D97B7E601FD9BFE700E1239D /* TrailBikeNetwork.cpg in Resources */,
 				3E8A25911D36B97A00D14F08 /* MapLoaded.storyboard in Resources */,
 				3ED028E91B8E3AA500ACA70D /* FLQuery.storyboard in Resources */,
 				3E7162351BA1F529008DE398 /* GraphicsWithSymbols.storyboard in Resources */,
@@ -2847,7 +2785,6 @@
 				3ED028621B8E3A8500ACA70D /* SwitchBasemap.storyboard in Resources */,
 				3E41DD791B9F609500DA11CC /* DeleteFeatures.storyboard in Resources */,
 				3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */,
-				D97B7E641FD9BFE700E1239D /* TrailBikeNetwork.sbn in Resources */,
 				D97B7E591FD9BFE700E1239D /* Subdivisions.shx in Resources */,
 				D97B7E691FD9BFE700E1239D /* Subdivisions.shp.xml in Resources */,
 				3E4A64B01D8B37DA00CF930C /* Settings.bundle in Resources */,
@@ -2882,7 +2819,6 @@
 				3E0B585A1E36D8D300951767 /* SpatialOperations.storyboard in Resources */,
 				3EABC7B51DB181DD00C161C6 /* ShastaBW.tif in Resources */,
 				3EABC7C91DB1947500C161C6 /* BlendRenderer.storyboard in Resources */,
-				D97B7E571FD9BFE700E1239D /* Public_Art.dbf in Resources */,
 				3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */,
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
 				3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */,

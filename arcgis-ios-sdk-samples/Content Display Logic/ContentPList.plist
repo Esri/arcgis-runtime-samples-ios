@@ -304,18 +304,18 @@
 					<string>ShastaRaster</string>
 				</array>
 			</dict>
-            <dict>
-                <key>displayName</key>
-                <string>Raster layer (geopackage)</string>
-                <key>storyboardName</key>
-                <string>RasterLayerGPKG</string>
-                <key>descriptionText</key>
-                <string>Show a raster layer on a map using a geopackage</string>
-                <key>dependency</key>
-                <array>
-                    <string>AuroraCOGeopackage</string>
-                </array>
-            </dict>
+			<dict>
+				<key>displayName</key>
+				<string>Raster layer (geopackage)</string>
+				<key>storyboardName</key>
+				<string>RasterLayerGPKG</string>
+				<key>descriptionText</key>
+				<string>Show a raster layer on a map using a geopackage</string>
+				<key>dependency</key>
+				<array>
+					<string>AuroraCOGeopackage</string>
+				</array>
+			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>Raster layer (service)</string>
@@ -855,6 +855,14 @@
 				<string>AnalyzeViewshed</string>
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to calculate a viewshed using a geoprocessing service.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Statistical query</string>
+				<key>storyboardName</key>
+				<string>StatisticalQuery</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to query a feature table to get aggregated statistics back for a specific field.</string>
 			</dict>
 		</array>
 	</dict>

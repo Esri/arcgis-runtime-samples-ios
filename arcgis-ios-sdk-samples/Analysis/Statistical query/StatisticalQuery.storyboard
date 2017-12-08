@@ -61,6 +61,9 @@
                                             <state key="normal" title="Get Statistics">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
+                                            <connections>
+                                                <action selector="getStatisticsAction:" destination="DKT-K8-rR8" eventType="touchUpInside" id="EWY-Dg-U5T"/>
+                                            </connections>
                                         </button>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TA9-eB-bGy">
                                             <rect key="frame" x="237" y="53" width="51" height="31"/>

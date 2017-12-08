@@ -46,5 +46,73 @@ class StatisticalQueryViewController: UIViewController {
         let featureLayer = AGSFeatureLayer(featureTable: serviceFeatureTable!)
         map?.operationalLayers.add(featureLayer)
     }
+    
+    // MARK: Actions
+    
+    @IBAction private func getStatisticsAction(_ sender: Any) {
+        //
+        // Add the statistic definitions
+        var statisticDefinitions = [AGSStatisticDefinition]()
+        statisticDefinitions.append(AGSStatisticDefinition(onFieldName: "POP", statisticType: .average, outputAlias: nil))
+        statisticDefinitions.append(AGSStatisticDefinition(onFieldName: "POP", statisticType: .minimum, outputAlias: nil))
+        statisticDefinitions.append(AGSStatisticDefinition(onFieldName: "POP", statisticType: .maximum, outputAlias: nil))
+        statisticDefinitions.append(AGSStatisticDefinition(onFieldName: "POP", statisticType: .sum, outputAlias: nil))
+        statisticDefinitions.append(AGSStatisticDefinition(onFieldName: "POP", statisticType: .standardDeviation, outputAlias: nil))
+        statisticDefinitions.append(AGSStatisticDefinition(onFieldName: "POP", statisticType: .variance, outputAlias: nil))
+        statisticDefinitions.append(AGSStatisticDefinition(onFieldName: "POP", statisticType: .count, outputAlias: nil))
+        
+        // Create the parameters with statistic definitions
+        let statisticsQueryParameters = AGSStatisticsQueryParameters(statisticDefinitions: statisticDefinitions)
+        
+        // If only using features in the current extent, set up the spatial filter for the statistics query parameters
+        if (onlyInCurrentExtentSwitch.isOn) {
+            //
+            // Set the statistics query parameters geometry with the envelope
+            statisticsQueryParameters.geometry = mapView.visibleArea?.extent
+            
+            // Set the spatial relationship to Intersects (which is the default)
+            statisticsQueryParameters.spatialRelationship = .intersects
+        }
+        
+        // If only evaluating the largest cities (over 5 million in population), set up an attribute filter
+        if (onlyBigCitiesSwitch.isOn) {
+            statisticsQueryParameters.whereClause = "POP_RANK = 1"
+        }
+        
+        // Execute the statistical query with parameters
+        serviceFeatureTable?.queryStatistics(with: statisticsQueryParameters, completion: { [weak self] (statisticsQueryResult, error) in
+            //
+            // If there an error, display it
+            guard error == nil else {
+                SVProgressHUD.show(withStatus: error!.localizedDescription, maskType: .gradient)
+                return
+            }
+            
+            // Get the result
+            if let statisticRecordEnumerator = statisticsQueryResult?.statisticRecordEnumerator() {
+                //
+                // Let's build result message
+                var resultMessage = " \n"
+                while statisticRecordEnumerator.hasNextObject() {
+                    let statisticRecord = statisticRecordEnumerator.nextObject()
+                    for (key, value) in (statisticRecord?.statistics)!  {
+                        resultMessage += "\(key): \(value) \n"
+                    }
+                }
+                
+                // Show result
+                self?.showResult(message: resultMessage)
+            }
+        })
+    }
+    
+    // MARK: Helper Methods
+    
+    private func showResult(message: String) {
+        let alertController = UIAlertController(title: "Statistical Query Results", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 

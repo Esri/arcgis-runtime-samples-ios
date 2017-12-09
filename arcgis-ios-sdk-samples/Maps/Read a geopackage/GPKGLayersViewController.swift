@@ -133,6 +133,13 @@ class GPKGLayersViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        if indexPath.section == 0 {
+            return "Remove from map"
+        }
+        return nil
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         // If not deleting a row, ignore the edit.
         guard editingStyle == .delete else {

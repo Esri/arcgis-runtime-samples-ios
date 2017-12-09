@@ -48,8 +48,8 @@ class ReadGeopackageViewController: UIViewController {
             }) ?? []
 
             // Keep an array of all the feature layers and raster layers in this geopackage.
-            self?.allLayers.append(contentsOf: featureLayers)
             self?.allLayers.append(contentsOf: rasterLayers)
+            self?.allLayers.append(contentsOf: featureLayers)
         }
         
         //add the source code button item to the right of navigation bar

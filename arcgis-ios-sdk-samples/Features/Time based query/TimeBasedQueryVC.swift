@@ -40,23 +40,14 @@ class TimeBasedQueryVC: UIViewController {
         //define the request mode
         self.featureTable.featureRequestMode = .manualCache
         
-        //load the feature table
-        self.featureTable.load { [weak self] (error) in
-
-            guard error == nil else {
-                SVProgressHUD.show(withStatus: error!.localizedDescription, maskType: .gradient)
-                return
-            }
-            
-            //create feature layer using the feature table
-            let layer = AGSFeatureLayer(featureTable: (self?.featureTable)!)
-            
-            //add feature layer to map's operational layers
-            self?.map.operationalLayers.add(layer)
-            
-            //populate features based on a time-based query
-            self?.populateFeaturesWithQuery()
-        }
+        //create feature layer using the feature table
+        let layer = AGSFeatureLayer(featureTable: self.featureTable)
+        
+        //add feature layer to map's operational layers
+        self.map.operationalLayers.add(layer)
+        
+        //populate features based on a time-based query
+        self.populateFeaturesWithQuery()
         
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["TimeBasedQueryVC"]
@@ -88,7 +79,7 @@ class TimeBasedQueryVC: UIViewController {
             else {
                 //the resulting features should be displayed on the map
                 //you can print the count of features
-                print(result?.featureEnumerator().allObjects.count ?? 0)
+                print("Hurriance features during the time interval: \(result?.featureEnumerator().allObjects.count ?? 0)")
             }
         }
     }

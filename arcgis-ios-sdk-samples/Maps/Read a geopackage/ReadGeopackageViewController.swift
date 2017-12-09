@@ -73,8 +73,4 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
         return .none
     }
     
-    @IBAction func showReadGeopackageMapView(segue: UIStoryboardSegue) {
-        // An unwind segue placehold for the Layer
-    }
-    
 }

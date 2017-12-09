@@ -119,11 +119,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Geopackage Layers" id="o7Y-Oo-Q0F">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="gxa-RV-5pj">
-                            <connections>
-                                <segue destination="O9O-ki-f9e" kind="unwind" unwindAction="showReadGeopackageMapViewWithSegue:" id="Tjk-Rp-gLE"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="gxa-RV-5pj"/>
                     </navigationItem>
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -133,7 +129,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohQ-v1-BMz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="O9O-ki-f9e" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="401" y="-188"/>
         </scene>

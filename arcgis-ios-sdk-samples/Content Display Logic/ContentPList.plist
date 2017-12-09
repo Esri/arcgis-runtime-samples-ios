@@ -540,6 +540,14 @@
 				<key>descriptionText</key>
 				<string>This sample shows how to add or delete related features to an origin feature</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Time based query</string>
+				<key>storyboardName</key>
+				<string>TimeBasedQuery</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to apply a time-based parameter to a feature layer query</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

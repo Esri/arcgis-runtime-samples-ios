@@ -286,6 +286,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Raster function (service)</string>
+				<key>storyboardName</key>
+				<string>RasterFunctionService</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to create an image service raster and apply a Hillshade raster function to it.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Raster layer (file)</string>
 				<key>storyboardName</key>
 				<string>RasterLayer</string>
@@ -420,6 +428,18 @@
 					<string>AuroraCOGeopackage</string>
 				</array>
 			</dict>
+            <dict>
+                <key>displayName</key>
+                <string>Feature layer (shapefile)</string>
+                <key>storyboardName</key>
+                <string>FeatureLayerShapefile</string>
+                <key>descriptionText</key>
+                <string>Show a feature layer on a map using a shapefile</string>
+                <key>dependency</key>
+                <array>
+                    <string>SubdivisionsShapefile</string>
+                </array>
+            </dict>
 			<dict>
 				<key>displayName</key>
 				<string>Service feature table (cache)</string>
@@ -843,6 +863,14 @@
 				<string>AnalyzeViewshed</string>
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to calculate a viewshed using a geoprocessing service.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Statistical query</string>
+				<key>storyboardName</key>
+				<string>StatisticalQuery</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to query a feature table to get aggregated statistics back for a specific field.</string>
 			</dict>
 		</array>
 	</dict>

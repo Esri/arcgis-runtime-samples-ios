@@ -19,7 +19,7 @@ import ArcGIS
 
 class TimeBasedQueryVC: UIViewController {
     
-    @IBOutlet weak var mapView: AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
     private var map:AGSMap!
     

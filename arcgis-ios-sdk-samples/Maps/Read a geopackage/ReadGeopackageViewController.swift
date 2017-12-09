@@ -14,7 +14,7 @@
 
 import ArcGIS
 
-class ReadGeopackageViewController: UIViewController {
+class ReadGeopackageViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var mapView:AGSMapView!
     
@@ -60,12 +60,17 @@ class ReadGeopackageViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LayersSegue",
-            let navigationController = segue.destination as? UINavigationController,
-            let controller = navigationController.viewControllers.first as? GPKGLayersViewController {
+            let gpkgLayersVC = segue.destination as? GPKGLayersViewController {
             // Provide the map and all layers to the layer controller UI.
-            controller.map = mapView.map
-            controller.allLayers = allLayers
+            gpkgLayersVC.map = mapView.map
+            gpkgLayersVC.allLayers = allLayers
+
+            gpkgLayersVC.popoverPresentationController?.delegate = self
         }
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
     
     @IBAction func showReadGeopackageMapView(segue: UIStoryboardSegue) {

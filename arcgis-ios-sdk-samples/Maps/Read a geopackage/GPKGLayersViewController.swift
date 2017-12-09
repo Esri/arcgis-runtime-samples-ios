@@ -22,7 +22,8 @@ class GPKGLayersViewController: UIViewController, UITableViewDataSource, UITable
     var allLayers:[AGSLayer] = [] {
         didSet {
             var rasterCount = 1
-            for layer in allLayers where layer is AGSRasterLayer {
+            for layer in allLayers where layer is AGSRasterLayer &&
+                                         layer.name.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty {
                 // Give raster layers a name
                 layer.name = "Raster Layer \(rasterCount)"
                 rasterCount += 1

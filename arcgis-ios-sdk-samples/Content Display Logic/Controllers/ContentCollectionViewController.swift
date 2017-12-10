@@ -30,61 +30,29 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     
     private var headerView:CustomSearchHeaderView!
     
-    var nodesArray:[Node]!
+    var categories = [Category]()
     private var transitionSize:CGSize!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        do {
+            let url = Bundle.main.url(forResource: "ContentPList", withExtension: "plist")!
+            let data = try Data(contentsOf: url)
+            categories = try PropertyListDecoder().decode([Category].self, from: data)
+        } catch {
+            fatalError("Error decoding categories: \(error)")
+        }
+        
         //hide suggestions
         self.hideSuggestions()
         
-        self.populateTree()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func populateTree() {
-        
-        let path = Bundle.main.path(forResource: "ContentPList", ofType: "plist")
-        let content = NSArray(contentsOfFile: path!)
-        self.nodesArray = self.populateNodesArray(content! as [AnyObject])
-        
-        self.collectionView?.reloadData()
-    }
-    
-    func populateNodesArray(_ array:[AnyObject]) -> [Node] {
-        var nodesArray = [Node]()
-        for object in array {
-            let node = self.populateNode(object as! [String:AnyObject])
-            nodesArray.append(node)
-        }
-        return nodesArray
-    }
-    
-    func populateNode(_ dict:[String:AnyObject]) -> Node {
-        let node = Node()
-        if let displayName = dict["displayName"] as? String {
-            node.displayName = displayName
-        }
-        if let descriptionText = dict["descriptionText"] as? String {
-            node.descriptionText = descriptionText
-        }
-        if let storyboardName = dict["storyboardName"] as? String {
-            node.storyboardName = storyboardName
-        }
-        if let children = dict["children"] as? [AnyObject] {
-            node.children = self.populateNodesArray(children)
-        }
-        if let dependency = dict["dependency"] as? [String] {
-            node.dependency.append(contentsOf: dependency)
-        }
-        return node
-    }
-    
     
     //MARK: - Suggestions related
     
@@ -115,15 +83,8 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     
     //MARK: - samples lookup by name
     
-    func nodesByDisplayNames(_ names:[String]) -> [Node] {
-        var nodes = [Node]()
-        for node in self.nodesArray {
-            let children = node.children
-            if let matchingNodes = children?.filter({ return names.contains($0.displayName) }) {
-                nodes.append(contentsOf: matchingNodes)
-            }
-        }
-        return nodes
+    func samplesByNames<C: Collection>(_ names: C) -> [Category.Sample] where C.Element == String {
+        return categories.flatMap({ $0.samples }).filter({ names.contains($0.name) })
     }
 
     // MARK: UICollectionViewDataSource
@@ -134,26 +95,26 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.nodesArray?.count ?? 0
+        return categories.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
         
-        let node = self.nodesArray[(indexPath as NSIndexPath).item]
+        let category = categories[indexPath.item]
         
         //mask to bounds
         cell.layer.masksToBounds = false
         
         //name
-        cell.nameLabel.text = node.displayName.uppercased()
+        cell.nameLabel.text = category.name.uppercased()
         
         //icon
-        let image = UIImage(named: "\(node.displayName)_icon")
+        let image = UIImage(named: "\(category.name)_icon")
         cell.iconImageView.image = image
         
         //background image
-        let bgImage = UIImage(named: "\(node.displayName)_bg")
+        let bgImage = UIImage(named: "\(category.name)_bg")
         cell.backgroundImageView.image = bgImage
         
         //cell shadow
@@ -178,10 +139,10 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         //hide keyboard if visible
         self.view.endEditing(true)
         
-        let node = self.nodesArray[(indexPath as NSIndexPath).item]
+        let category = categories[indexPath.item]
         let controller = self.storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
-        controller.nodesArray = node.children
-        controller.title = node.displayName
+        controller.samples = category.samples
+        controller.title = category.name
         self.navigationController?.show(controller, sender: self)
     }
     
@@ -220,11 +181,11 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     
     func customSearchHeaderView(_ customSearchHeaderView: CustomSearchHeaderView, didFindSamples sampleNames: [String]?) {
         if let sampleNames = sampleNames {
-            let resultNodes = self.nodesByDisplayNames(sampleNames)
-            if resultNodes.count > 0 {
+            let samples = samplesByNames(sampleNames)
+            if !samples.isEmpty {
                 //show the results
                 let controller = self.storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
-                controller.nodesArray = resultNodes
+                controller.samples = samples
                 controller.title = "Search results"
                 controller.containsSearchResults = true
                 self.navigationController?.show(controller, sender: self)

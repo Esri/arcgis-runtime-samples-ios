@@ -20,7 +20,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             self?.animateTable()
         }()
 
-    var nodesArray:[Node]!
+    var samples = [Category.Sample]()
     private var expandedRowIndex:Int = -1
     
     private var headerView:CustomSearchHeaderView!
@@ -94,11 +94,8 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         // Dispose of any resources that can be recreated.
     }
     
-    func nodesByDisplayNames(_ names:[String]) -> [Node] {
-        var nodes = [Node]()
-        let matchingNodes = self.nodesArray.filter({ return names.contains($0.displayName) })
-        nodes.append(contentsOf: matchingNodes)
-        return nodes
+    func samplesByNames<C: Collection>(_ names: C) -> [Category.Sample] where C.Element == String {
+        return samples.filter { names.contains($0.name) }
     }
 
     // MARK: - Table view data source
@@ -108,18 +105,18 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.nodesArray?.count ?? 0
+        return samples.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "ContentTableCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as! ContentTableCell
 
-        let node = self.nodesArray[(indexPath as NSIndexPath).row]
-        cell.titleLabel.text = node.displayName
+        let sample = samples[indexPath.row]
+        cell.titleLabel.text = sample.name
         
         if self.expandedRowIndex == (indexPath as NSIndexPath).row {
-            cell.detailLabel.text = node.descriptionText
+            cell.detailLabel.text = sample.description
         }
         else {
             cell.detailLabel.text = nil
@@ -137,12 +134,12 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         //hide keyboard if visible
         self.view.endEditing(true)
         
-        let node = self.nodesArray[(indexPath as NSIndexPath).row]
+        let sample = samples[indexPath.row]
         
         //download on demand resources
-        if node.dependency.count > 0 {
-            
-            self.bundleResourceRequest = NSBundleResourceRequest(tags: Set(node.dependency))
+        if !sample.dependencies.isEmpty {
+        
+            self.bundleResourceRequest = NSBundleResourceRequest(tags: Set(sample.dependencies))
             
             //conditionally begin accessing to know if we need to show download progress view or not
             self.bundleResourceRequest.conditionallyBeginAccessingResources { [weak self] (isResourceAvailable: Bool) in
@@ -150,11 +147,11 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
                     
                     //if resource is already available then simply show the sample
                     if isResourceAvailable {
-                        self?.showSample(indexPath: indexPath, node: node)
+                        self?.showSample(indexPath: indexPath, node: sample)
                     }
                     //else download the resource
                     else {
-                        self?.downloadResource(for: node, at: indexPath)
+                        self?.downloadResource(for: sample, at: indexPath)
                     }
                 }
             }
@@ -164,11 +161,11 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             self.bundleResourceRequest?.endAccessingResources()
             
             //show view controller
-            self.showSample(indexPath: indexPath, node: node)
+            self.showSample(indexPath: indexPath, node: sample)
         }
     }
     
-    func downloadResource(for node:Node, at indexPath:IndexPath) {
+    func downloadResource(for node: Category.Sample, at indexPath:IndexPath) {
         
         //show download progress view
         self.downloadProgressView.show(withStatus: "Just a moment while we download data for this sample...", progress: 0)
@@ -215,14 +212,14 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         }
     }
     
-    func showSample(indexPath: IndexPath, node: Node) {
+    func showSample(indexPath: IndexPath, node: Category.Sample) {
         
         //expand the selected cell
         self.updateExpandedRow(indexPath, collapseIfSelected: false)
         
-        let storyboard = UIStoryboard(name: node.storyboardName, bundle: Bundle.main)
+        let storyboard = UIStoryboard(name: node.storyboardName, bundle: .main)
         let controller = storyboard.instantiateInitialViewController()!
-        controller.title = node.displayName
+        controller.title = node.name
         let navController = UINavigationController(rootViewController: controller)
         
         self.splitViewController?.showDetailViewController(navController, sender: self)
@@ -236,7 +233,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         //create the info button and
         //assign the readme url
         let infoBBI = SourceCodeBarButtonItem()
-        infoBBI.folderName = node.displayName
+        infoBBI.folderName = node.name
         infoBBI.navController = navController
         controller.navigationItem.rightBarButtonItem = infoBBI
     }
@@ -288,11 +285,11 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
     
     func customSearchHeaderView(_ customSearchHeaderView: CustomSearchHeaderView, didFindSamples sampleNames: [String]?) {
         if let sampleNames = sampleNames {
-            let resultNodes = self.nodesByDisplayNames(sampleNames)
-            if resultNodes.count > 0 {
+            let samples = samplesByNames(sampleNames)
+            if !samples.isEmpty {
                 //show the results
                 let controller = self.storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
-                controller.nodesArray = resultNodes
+                controller.samples = samples
                 controller.title = "Search results"
                 controller.containsSearchResults = true
                 self.navigationController?.show(controller, sender: self)

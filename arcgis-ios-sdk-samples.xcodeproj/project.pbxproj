@@ -461,6 +461,13 @@
 		D90407941FD8608A00BFE07B /* RasterLayerGPKGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */; };
 		D90407951FD8608A00BFE07B /* RasterLayerGPKG.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90407931FD8608A00BFE07B /* RasterLayerGPKG.storyboard */; };
 		D90407961FD8651600BFE07B /* RasterLayerGPKGViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */; };
+		D9316A611FDB4F060075AD92 /* GPKGLayerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9316A5D1FDB4F060075AD92 /* GPKGLayerTableCell.swift */; };
+		D9316A621FDB4F060075AD92 /* GPKGLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9316A5E1FDB4F060075AD92 /* GPKGLayersViewController.swift */; };
+		D9316A631FDB4F060075AD92 /* ReadGeopackage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9316A5F1FDB4F060075AD92 /* ReadGeopackage.storyboard */; };
+		D9316A641FDB4F060075AD92 /* ReadGeopackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9316A601FDB4F060075AD92 /* ReadGeopackageViewController.swift */; };
+		D9316A651FDB4F850075AD92 /* ReadGeopackageViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9316A601FDB4F060075AD92 /* ReadGeopackageViewController.swift */; };
+		D9316A661FDB4F850075AD92 /* GPKGLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9316A5E1FDB4F060075AD92 /* GPKGLayersViewController.swift */; };
+		D9316A671FDB4F850075AD92 /* GPKGLayerTableCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9316A5D1FDB4F060075AD92 /* GPKGLayerTableCell.swift */; };
 		D97B7E3C1FD9BE2B00E1239D /* FeatureLayerShapefileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97B7E3A1FD9BE2B00E1239D /* FeatureLayerShapefileViewController.swift */; };
 		D97B7E3D1FD9BE2B00E1239D /* FeatureLayerShapefile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E3B1FD9BE2B00E1239D /* FeatureLayerShapefile.storyboard */; };
 		D97B7E591FD9BFE700E1239D /* Subdivisions.shx in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E411FD9BFE600E1239D /* Subdivisions.shx */; settings = {ASSET_TAGS = (SubdivisionsShapefile, ); }; };
@@ -497,6 +504,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				D9316A651FDB4F850075AD92 /* ReadGeopackageViewController.swift in CopyFiles */,
+				D9316A661FDB4F850075AD92 /* GPKGLayersViewController.swift in CopyFiles */,
+				D9316A671FDB4F850075AD92 /* GPKGLayerTableCell.swift in CopyFiles */,
 				09607F831FDB617F00FA43B6 /* TimeBasedQueryVC.swift in CopyFiles */,
 				D97B7E6F1FDA0FC200E1239D /* FeatureLayerShapefileViewController.swift in CopyFiles */,
 				2182C9841FDA0272003E3A0F /* StatisticalQueryViewController.swift in CopyFiles */,
@@ -974,6 +984,10 @@
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
 		D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterLayerGPKGViewController.swift; sourceTree = "<group>"; };
 		D90407931FD8608A00BFE07B /* RasterLayerGPKG.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RasterLayerGPKG.storyboard; sourceTree = "<group>"; };
+		D9316A5D1FDB4F060075AD92 /* GPKGLayerTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPKGLayerTableCell.swift; sourceTree = "<group>"; };
+		D9316A5E1FDB4F060075AD92 /* GPKGLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPKGLayersViewController.swift; sourceTree = "<group>"; };
+		D9316A5F1FDB4F060075AD92 /* ReadGeopackage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReadGeopackage.storyboard; sourceTree = "<group>"; };
+		D9316A601FDB4F060075AD92 /* ReadGeopackageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadGeopackageViewController.swift; sourceTree = "<group>"; };
 		D97B7E3A1FD9BE2B00E1239D /* FeatureLayerShapefileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerShapefileViewController.swift; sourceTree = "<group>"; };
 		D97B7E3B1FD9BE2B00E1239D /* FeatureLayerShapefile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerShapefile.storyboard; sourceTree = "<group>"; };
 		D97B7E411FD9BFE600E1239D /* Subdivisions.shx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Subdivisions.shx; sourceTree = "<group>"; };
@@ -2032,6 +2046,7 @@
 				3EFCE1AF1CEFD5B900E02F67 /* Open mobile map (map package) */,
 				3EFCE1BE1CF36FFC00E02F67 /* Mobile map (search and route) */,
 				3E5E09341EF2E8E200FF3454 /* Generate offline map */,
+				D9316A5C1FDB4ED90075AD92 /* Read a geopackage */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
@@ -2550,6 +2565,18 @@
 			path = "Layers/Raster layer (geopackage)";
 			sourceTree = "<group>";
 		};
+		D9316A5C1FDB4ED90075AD92 /* Read a geopackage */ = {
+			isa = PBXGroup;
+			children = (
+				D9316A5F1FDB4F060075AD92 /* ReadGeopackage.storyboard */,
+				D9316A601FDB4F060075AD92 /* ReadGeopackageViewController.swift */,
+				D9316A5E1FDB4F060075AD92 /* GPKGLayersViewController.swift */,
+				D9316A5D1FDB4F060075AD92 /* GPKGLayerTableCell.swift */,
+			);
+			name = "Read a geopackage";
+			path = "Maps/Read a geopackage";
+			sourceTree = "<group>";
+		};
 		D97B7E391FD9BE0500E1239D /* Feature layer (shapefile) */ = {
 			isa = PBXGroup;
 			children = (
@@ -2754,6 +2781,7 @@
 				3ED5EB771B752A42009F9B75 /* style.css in Resources */,
 				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
 				3EEB2B971EB9695F00B52513 /* ListRelatedFeatures.storyboard in Resources */,
+				D9316A631FDB4F060075AD92 /* ReadGeopackage.storyboard in Resources */,
 				3ED028AF1B8E3A9800ACA70D /* MILUsingURL.storyboard in Resources */,
 				3E8A258A1D36B89400D14F08 /* LA_Trails.geodatabase in Resources */,
 				3ECDD9B11E8470E100E645AB /* DownloadProgressView.xib in Resources */,
@@ -2968,6 +2996,7 @@
 				3EBA25631D3417B000AB0703 /* SimpleMarkerSymbolViewController.swift in Sources */,
 				3E81C1BB1D8A17B600470AA4 /* VectorStylesViewController.swift in Sources */,
 				3EAF09471D71093D00F8538F /* GridSettingsViewController.swift in Sources */,
+				D9316A641FDB4F060075AD92 /* ReadGeopackageViewController.swift in Sources */,
 				3ED028921B8E3A8500ACA70D /* SetInitialMapLocationViewController.swift in Sources */,
 				3ED029661B8E3ACD00ACA70D /* EditAttachmentViewController.swift in Sources */,
 				3EFCE1C51CF374C600E02F67 /* MobileMapViewController.swift in Sources */,
@@ -3015,6 +3044,7 @@
 				3EBA25461D300C1D00AB0703 /* SimpleRendererViewController.swift in Sources */,
 				3EC39C321C9B0DF6003F6459 /* ExportTilesViewController.swift in Sources */,
 				3EABC7941DB1772000C161C6 /* RGBRendererViewController.swift in Sources */,
+				D9316A611FDB4F060075AD92 /* GPKGLayerTableCell.swift in Sources */,
 				3EFCE1C31CF374C600E02F67 /* MapPackageCell.swift in Sources */,
 				3ED028631B8E3A8500ACA70D /* SwitchBasemapViewController.swift in Sources */,
 				21E9CDF01EF9C64C00BD4D7D /* HorizontalColorPicker.swift in Sources */,
@@ -3045,6 +3075,7 @@
 				3ECCFE3C1BD0401A00CE256D /* LayerStatusViewController.swift in Sources */,
 				3EE692021B03D22500C167B8 /* Node.swift in Sources */,
 				3ED028E51B8E3AA500ACA70D /* DefinitionExpressionViewController.swift in Sources */,
+				D9316A621FDB4F060075AD92 /* GPKGLayersViewController.swift in Sources */,
 				3E412B431D0B2FAD00349155 /* AppInfoViewController.swift in Sources */,
 				3E6AE3FB1C73B5480026E59C /* FindRouteViewController.swift in Sources */,
 				3ED0289D1B8E3A8500ACA70D /* MapViewScreenshotViewController.swift in Sources */,

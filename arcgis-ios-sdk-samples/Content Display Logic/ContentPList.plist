@@ -192,18 +192,18 @@
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to generate an offline map for web map in ArcGIS Portal. The sample requires login to take AGOL Basemap offline.</string>
 			</dict>
-            <dict>
-                <key>displayName</key>
-                <string>Read a geopackage</string>
-                <key>storyboardName</key>
-                <string>ReadGeopackage</string>
-                <key>descriptionText</key>
-                <string>This sample shows how to add layers to a map from a geopackage.</string>
-                <key>dependency</key>
-                <array>
-                    <string>AuroraCOGeopackage</string>
-                </array>
-            </dict>
+			<dict>
+				<key>displayName</key>
+				<string>Read a geopackage</string>
+				<key>storyboardName</key>
+				<string>ReadGeopackage</string>
+				<key>descriptionText</key>
+				<string>This sample shows how to add layers to a map from a geopackage.</string>
+				<key>dependency</key>
+				<array>
+					<string>AuroraCOGeopackage</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -440,18 +440,18 @@
 					<string>AuroraCOGeopackage</string>
 				</array>
 			</dict>
-            <dict>
-                <key>displayName</key>
-                <string>Feature layer (shapefile)</string>
-                <key>storyboardName</key>
-                <string>FeatureLayerShapefile</string>
-                <key>descriptionText</key>
-                <string>Show a feature layer on a map using a shapefile</string>
-                <key>dependency</key>
-                <array>
-                    <string>SubdivisionsShapefile</string>
-                </array>
-            </dict>
+			<dict>
+				<key>displayName</key>
+				<string>Feature layer (shapefile)</string>
+				<key>storyboardName</key>
+				<string>FeatureLayerShapefile</string>
+				<key>descriptionText</key>
+				<string>Show a feature layer on a map using a shapefile</string>
+				<key>dependency</key>
+				<array>
+					<string>SubdivisionsShapefile</string>
+				</array>
+			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>Service feature table (cache)</string>
@@ -994,6 +994,14 @@
 				<string>TerrainExaggeration</string>
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to use terrain exaggeration on a surface in a scene</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Feature layer extrusion</string>
+				<key>storyboardName</key>
+				<string>FeatureLayerExtrusion</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to apply extrusion to a renderer on a feature layer</string>
 			</dict>
 		</array>
 	</dict>

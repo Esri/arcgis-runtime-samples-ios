@@ -60,7 +60,7 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
         //add the line of sight to the analysis overlay
         analysisOverlay.analyses.add(self.lineOfSight)
         
-        //set the viewpoint camera
+        //set the viewpoint specified by the camera position
         let camera = AGSCamera(location: AGSPoint(x: -73.10861935949697, y: -49.25758493899104, z: 3050, spatialReference: AGSSpatialReference.wgs84()), heading: 106, pitch: 73, roll: 0)
         sceneView.setViewpointCamera(camera)
         

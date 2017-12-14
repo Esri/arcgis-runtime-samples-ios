@@ -33,11 +33,16 @@
 		2196CAFB1FD869D200512693 /* RasterFunctionServiceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2196CAF71FD868EA00512693 /* RasterFunctionServiceViewController.swift */; };
 		21C9968C1F05BB4D00A062F7 /* DisplayGridSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21E9CDE91EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift */; };
 		21C9968D1F05BB4D00A062F7 /* DisplayGridViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21E9CDEA1EF9C5EA00BD4D7D /* DisplayGridViewController.swift */; };
+		21D919941FE1F368006EA79A /* ExpandableTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21D919911FE1F368006EA79A /* ExpandableTableViewController.storyboard */; };
+		21D919951FE1F368006EA79A /* ExpandableTableViewImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21D919921FE1F368006EA79A /* ExpandableTableViewImages.xcassets */; };
+		21D919961FE1F368006EA79A /* ExpandableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D919931FE1F368006EA79A /* ExpandableTableViewController.swift */; };
+		21E914411FDEFBF800C7D6DC /* StatisticalQueryGroupAndSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E914401FDEFBF800C7D6DC /* StatisticalQueryGroupAndSortViewController.swift */; };
 		21E9CDEB1EF9C5EA00BD4D7D /* DisplayGrid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21E9CDE81EF9C5EA00BD4D7D /* DisplayGrid.storyboard */; };
 		21E9CDEC1EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E9CDE91EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift */; };
 		21E9CDED1EF9C5EA00BD4D7D /* DisplayGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E9CDEA1EF9C5EA00BD4D7D /* DisplayGridViewController.swift */; };
 		21E9CDF01EF9C64C00BD4D7D /* HorizontalColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E9CDEE1EF9C64C00BD4D7D /* HorizontalColorPicker.swift */; };
 		21E9CDF11EF9C64C00BD4D7D /* HorizontalColorPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21E9CDEF1EF9C64C00BD4D7D /* HorizontalColorPicker.xib */; };
+		21EBBBFD1FE07B0500567F14 /* StatisticalQueryGroupAndSort.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21EBBBFC1FE07B0500567F14 /* StatisticalQueryGroupAndSort.storyboard */; };
 		3E0225371DB569240049F7F8 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0225361DB569240049F7F8 /* CategoryCell.swift */; };
 		3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */; };
 		3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */ = {isa = PBXBuildFile; fileRef = 3E03F0981B056F9C0078EB36 /* highlight.pack.js */; };
@@ -676,11 +681,16 @@
 		2182C9811FDA01A0003E3A0F /* StatisticalQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticalQueryViewController.swift; sourceTree = "<group>"; };
 		2196CAF71FD868EA00512693 /* RasterFunctionServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterFunctionServiceViewController.swift; sourceTree = "<group>"; };
 		2196CAF81FD868EA00512693 /* RasterFunctionService.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RasterFunctionService.storyboard; sourceTree = "<group>"; };
+		21D919911FE1F368006EA79A /* ExpandableTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ExpandableTableViewController.storyboard; sourceTree = "<group>"; };
+		21D919921FE1F368006EA79A /* ExpandableTableViewImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ExpandableTableViewImages.xcassets; sourceTree = "<group>"; };
+		21D919931FE1F368006EA79A /* ExpandableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandableTableViewController.swift; sourceTree = "<group>"; };
+		21E914401FDEFBF800C7D6DC /* StatisticalQueryGroupAndSortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticalQueryGroupAndSortViewController.swift; sourceTree = "<group>"; };
 		21E9CDE81EF9C5EA00BD4D7D /* DisplayGrid.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayGrid.storyboard; sourceTree = "<group>"; };
 		21E9CDE91EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayGridSettingsViewController.swift; sourceTree = "<group>"; };
 		21E9CDEA1EF9C5EA00BD4D7D /* DisplayGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayGridViewController.swift; sourceTree = "<group>"; };
 		21E9CDEE1EF9C64C00BD4D7D /* HorizontalColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HorizontalColorPicker.swift; path = HorizontalPicker/HorizontalColorPicker.swift; sourceTree = "<group>"; };
 		21E9CDEF1EF9C64C00BD4D7D /* HorizontalColorPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HorizontalColorPicker.xib; path = HorizontalPicker/HorizontalColorPicker.xib; sourceTree = "<group>"; };
+		21EBBBFC1FE07B0500567F14 /* StatisticalQueryGroupAndSort.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StatisticalQueryGroupAndSort.storyboard; sourceTree = "<group>"; };
 		3E0225361DB569240049F7F8 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryCell.swift; path = "Content Display Logic/Cells/CategoryCell.swift"; sourceTree = "<group>"; };
 		3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SourceCodeViewController.swift; path = "Content Display Logic/Controllers/SourceCodeViewController.swift"; sourceTree = "<group>"; };
 		3E03F0981B056F9C0078EB36 /* highlight.pack.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.pack.js; sourceTree = "<group>"; };
@@ -1100,6 +1110,25 @@
 			path = "Layers/Raster function (service)";
 			sourceTree = "<group>";
 		};
+		21D919901FE1F368006EA79A /* ExpandableTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				21D919931FE1F368006EA79A /* ExpandableTableViewController.swift */,
+				21D919911FE1F368006EA79A /* ExpandableTableViewController.storyboard */,
+				21D919921FE1F368006EA79A /* ExpandableTableViewImages.xcassets */,
+			);
+			path = ExpandableTableViewController;
+			sourceTree = "<group>";
+		};
+		21E9143D1FDEFB6000C7D6DC /* Statistical query (group and sort) */ = {
+			isa = PBXGroup;
+			children = (
+				21E914401FDEFBF800C7D6DC /* StatisticalQueryGroupAndSortViewController.swift */,
+				21EBBBFC1FE07B0500567F14 /* StatisticalQueryGroupAndSort.storyboard */,
+			);
+			path = "Statistical query (group and sort)";
+			sourceTree = "<group>";
+		};
 		21E9CDE71EF9C5EA00BD4D7D /* Display grid */ = {
 			isa = PBXGroup;
 			children = (
@@ -1129,6 +1158,7 @@
 				3E0B58461E36BCCD00951767 /* Analyze hotspots */,
 				3E0B584A1E36BCCD00951767 /* Analyze viewshed */,
 				2182C97F1FDA01A0003E3A0F /* Statistical query */,
+				21E9143D1FDEFB6000C7D6DC /* Statistical query (group and sort) */,
 			);
 			path = Analysis;
 			sourceTree = "<group>";
@@ -1354,6 +1384,7 @@
 		3E4B05E61B39EF250072E514 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				21D919901FE1F368006EA79A /* ExpandableTableViewController */,
 				3E1E5EE81D9F0A4E00F4913C /* HorizontalPicker */,
 				3E4B05E71B39EF250072E514 /* SVProgressHUD */,
 				3E4B05EE1B39EF250072E514 /* TPKeyboardAvoiding */,
@@ -2763,6 +2794,7 @@
 				3E03F09B1B05714A0078EB36 /* default.css in Resources */,
 				3E5E094D1EF850BA00FF3454 /* ManageSublayers.storyboard in Resources */,
 				3ED028F71B8E3AA500ACA70D /* ManualCache.storyboard in Resources */,
+				21EBBBFD1FE07B0500567F14 /* StatisticalQueryGroupAndSort.storyboard in Resources */,
 				3ED028641B8E3A8500ACA70D /* GriffithParkJson.txt in Resources */,
 				3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */,
 				3EABC7B91DB183E600C161C6 /* ShastaBW.tif.ovr in Resources */,
@@ -2844,6 +2876,7 @@
 				3E8A05DE1ECE69840032231C /* Bristol.png in Resources */,
 				21E9CDEB1EF9C5EA00BD4D7D /* DisplayGrid.storyboard in Resources */,
 				3ED028621B8E3A8500ACA70D /* SwitchBasemap.storyboard in Resources */,
+				21D919941FE1F368006EA79A /* ExpandableTableViewController.storyboard in Resources */,
 				3E41DD791B9F609500DA11CC /* DeleteFeatures.storyboard in Resources */,
 				3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */,
 				D97B7E591FD9BFE700E1239D /* Subdivisions.shx in Resources */,
@@ -2877,6 +2910,7 @@
 				3EC39C341C9B106D003F6459 /* ExportTiles.storyboard in Resources */,
 				3E1E5EF11D9F0D0C00F4913C /* HorizontalPicker.xib in Resources */,
 				3EABC7AE1DB17B2C00C161C6 /* Shasta.tfw in Resources */,
+				21D919951FE1F368006EA79A /* ExpandableTableViewImages.xcassets in Resources */,
 				1259FB921FD295C90037105E /* WMSLayerUsingURL.storyboard in Resources */,
 				3E0B585A1E36D8D300951767 /* SpatialOperations.storyboard in Resources */,
 				3EABC7B51DB181DD00C161C6 /* ShastaBW.tif in Resources */,
@@ -3056,6 +3090,7 @@
 				3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */,
 				21E9CDED1EF9C5EA00BD4D7D /* DisplayGridViewController.swift in Sources */,
 				09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */,
+				21E914411FDEFBF800C7D6DC /* StatisticalQueryGroupAndSortViewController.swift in Sources */,
 				3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */,
 				3E5E094F1EF850BA00FF3454 /* MapImageSublayersVC.swift in Sources */,
 				10961CA71EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift in Sources */,
@@ -3089,6 +3124,7 @@
 				3EC39C371C9B1ADA003F6459 /* AGSExtensions.swift in Sources */,
 				3E3B2C1F1BBCA37F00A99C5E /* ContentCollectionViewController.swift in Sources */,
 				3E5E093F1EF4567A00FF3454 /* AddDeleteRelatedFeaturesVC.swift in Sources */,
+				21D919961FE1F368006EA79A /* ExpandableTableViewController.swift in Sources */,
 				3ED5EB751B740A58009F9B75 /* SegmentedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

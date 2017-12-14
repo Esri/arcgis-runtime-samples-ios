@@ -884,6 +884,14 @@
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to query a feature table to get aggregated statistics back for a specific field.</string>
 			</dict>
+            <dict>
+                <key>displayName</key>
+                <string>Line of sight (location)</string>
+                <key>storyboardName</key>
+                <string>LineOfSightLocation</string>
+                <key>descriptionText</key>
+                <string>Shows how to interactively place a line of sight between two locations.</string>
+            </dict>
 		</array>
 	</dict>
 	<dict>

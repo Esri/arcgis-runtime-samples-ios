@@ -52,7 +52,7 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
         let analysisOverlay = AGSAnalysisOverlay()
         
         //add the analysis overlay to the scene view
-        sceneView.analysisOverlays.add(analysisOverlay)
+        self.sceneView.analysisOverlays.add(analysisOverlay)
         
         //initialize a line of sight analysis with arbitrary points (observer and target will be defined by the user)
         self.lineOfSight = AGSLocationLineOfSight(observerLocation: AGSPoint(x: 0.0 , y: 0.0, z: 0.0, spatialReference: AGSSpatialReference.wgs84()), targetLocation: AGSPoint(x: 0.0 , y: 0.0, z: 0.0, spatialReference: AGSSpatialReference.wgs84()))
@@ -62,10 +62,10 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
         
         //set the viewpoint specified by the camera position
         let camera = AGSCamera(location: AGSPoint(x: -73.10861935949697, y: -49.25758493899104, z: 3050, spatialReference: AGSSpatialReference.wgs84()), heading: 106, pitch: 73, roll: 0)
-        sceneView.setViewpointCamera(camera)
+        self.sceneView.setViewpointCamera(camera)
         
         //set touch delegate on scene view as self
-        sceneView.touchDelegate = self
+        self.sceneView.touchDelegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,7 +78,7 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //set the observer location once-only
-        if observerLocation == nil {
+        if self.observerLocation == nil {
             self.observerLocation = mapPoint
             
             //define the observer location
@@ -91,7 +91,7 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
     
     func geoView(_ geoView: AGSGeoView, didLongPressAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //check if user has set the observer location
-        guard observerLocation != nil else {
+        guard self.observerLocation != nil else {
             return
         }
         

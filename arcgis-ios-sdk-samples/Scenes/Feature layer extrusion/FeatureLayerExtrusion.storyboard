@@ -26,10 +26,18 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="s5q-aU-wBn"/>
-                                    <barButtonItem title="Population Density" id="K2p-NP-zFe">
-                                        <connections>
-                                            <action selector="extrusionAction:" destination="BYZ-38-t0r" id="xW8-yL-Q5W"/>
-                                        </connections>
+                                    <barButtonItem style="plain" id="Lqa-aw-H3q">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="CeK-eV-keP">
+                                            <rect key="frame" x="59" y="7" width="257" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Total Population"/>
+                                                <segment title="Population Density"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="extrusionAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="Zgo-fd-w7r"/>
+                                            </connections>
+                                        </segmentedControl>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="CV6-jI-1k7"/>
                                 </items>
@@ -48,7 +56,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="extrusionButton" destination="K2p-NP-zFe" id="xWq-KI-Aie"/>
                         <outlet property="sceneView" destination="0GJ-W3-QUT" id="qsq-Tg-Jut"/>
                     </connections>
                 </viewController>

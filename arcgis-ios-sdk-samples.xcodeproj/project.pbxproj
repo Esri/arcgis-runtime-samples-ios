@@ -14,6 +14,9 @@
 		09607F831FDB617F00FA43B6 /* TimeBasedQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */; };
 		09607F851FDB61DC00FA43B6 /* TimeBasedQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09607F841FDB61DC00FA43B6 /* TimeBasedQuery.storyboard */; };
 		104659AA1EF34F5200EFCB50 /* TerrainExaggerationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */; };
+		10859BAB1FE0AAE400F6E552 /* FeatureLayerExtrusion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10859BA71FE0AAE400F6E552 /* FeatureLayerExtrusion.storyboard */; };
+		10859BAC1FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10859BA81FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift */; };
+		10859BAF1FE0AC8100F6E552 /* FeatureLayerExtrusionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10859BA81FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift */; };
 		10961CA61EF2FFD4008A7CEC /* TerrainExaggeration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10961CA41EF2FFD4008A7CEC /* TerrainExaggeration.storyboard */; };
 		10961CA71EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */; };
 		1259FB921FD295C90037105E /* WMSLayerUsingURL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1259FB901FD295C90037105E /* WMSLayerUsingURL.storyboard */; };
@@ -510,6 +513,7 @@
 			dstSubfolderSpec = 7;
 			files = (
 				E4B2E26C1FE3321500E610FF /* ViewshedGeoElementViewController.swift in CopyFiles */,
+				10859BAF1FE0AC8100F6E552 /* FeatureLayerExtrusionViewController.swift in CopyFiles */,
 				D9316A651FDB4F850075AD92 /* ReadGeopackageViewController.swift in CopyFiles */,
 				D9316A661FDB4F850075AD92 /* GPKGLayersViewController.swift in CopyFiles */,
 				D9316A671FDB4F850075AD92 /* GPKGLayerTableCell.swift in CopyFiles */,
@@ -670,6 +674,8 @@
 		09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RasterLayerUsingService.storyboard; sourceTree = "<group>"; };
 		09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeBasedQueryVC.swift; sourceTree = "<group>"; };
 		09607F841FDB61DC00FA43B6 /* TimeBasedQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeBasedQuery.storyboard; sourceTree = "<group>"; };
+		10859BA71FE0AAE400F6E552 /* FeatureLayerExtrusion.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerExtrusion.storyboard; sourceTree = "<group>"; };
+		10859BA81FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerExtrusionViewController.swift; sourceTree = "<group>"; };
 		10961CA41EF2FFD4008A7CEC /* TerrainExaggeration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TerrainExaggeration.storyboard; path = "Scenes/Terrain exaggeration/TerrainExaggeration.storyboard"; sourceTree = "<group>"; };
 		10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TerrainExaggerationViewController.swift; path = "Scenes/Terrain exaggeration/TerrainExaggerationViewController.swift"; sourceTree = "<group>"; };
 		1259FB901FD295C90037105E /* WMSLayerUsingURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WMSLayerUsingURL.storyboard; sourceTree = "<group>"; };
@@ -1050,6 +1056,16 @@
 			);
 			name = "Raster layer (service)";
 			path = "Layers/Raster layer (service)";
+			sourceTree = "<group>";
+		};
+		10859BA61FE0AAE400F6E552 /* Feature layer extrusion */ = {
+			isa = PBXGroup;
+			children = (
+				10859BA71FE0AAE400F6E552 /* FeatureLayerExtrusion.storyboard */,
+				10859BA81FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift */,
+			);
+			name = "Feature layer extrusion";
+			path = "Scenes/Feature layer extrusion";
 			sourceTree = "<group>";
 		};
 		10961CA31EF2FFA3008A7CEC /* Terrain exaggeration */ = {
@@ -2424,6 +2440,7 @@
 		3EEA06001D21C3E800E03774 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				10859BA61FE0AAE400F6E552 /* Feature layer extrusion */,
 				3E8A05B81ECD07B00032231C /* Scene layer (URL) */,
 				3EEA06041D21C44000E03774 /* Display a scene */,
 				3EEA06071D21C44000E03774 /* Extrude graphics */,
@@ -2804,6 +2821,7 @@
 				3E6AE3FA1C73B5480026E59C /* FindRoute.storyboard in Resources */,
 				3E0830BE1BC33681001AF9A7 /* SuggestionTableViewCell.xib in Resources */,
 				3E41DD741B9A241600DA11CC /* AddFeatures.storyboard in Resources */,
+				10859BAB1FE0AAE400F6E552 /* FeatureLayerExtrusion.storyboard in Resources */,
 				3EABC7C41DB191BC00C161C6 /* Shasta_Elevation.tif.ovr in Resources */,
 				3E4BF47C1C5BDDCA00D85919 /* san-diego-locator.loc in Resources */,
 				3E8A05CB1ECE68E80032231C /* Animate3DGraphic.storyboard in Resources */,
@@ -2978,6 +2996,7 @@
 				3E5E09401EF4567A00FF3454 /* RelatedFeaturesViewController.swift in Sources */,
 				D97B7E3C1FD9BE2B00E1239D /* FeatureLayerShapefileViewController.swift in Sources */,
 				3EEA06101D21C44000E03774 /* DisplaySceneViewController.swift in Sources */,
+				10859BAC1FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift in Sources */,
 				3E8526381B90D92700690EBD /* BookmarksListViewController.swift in Sources */,
 				3E8A05CE1ECE68E80032231C /* MissionSettingsViewController.swift in Sources */,
 				E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */,

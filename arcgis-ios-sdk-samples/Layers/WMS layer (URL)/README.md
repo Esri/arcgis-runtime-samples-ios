@@ -1,6 +1,6 @@
 # WMS layer (URL)
 
-This sample demonstrates how to create a WMS layer using the service URL and the layer names that are available in the service. 
+This sample demonstrates how to open a WMS layer from a URL and display it in a map.
 
 ![](image1.png)
 

@@ -43,18 +43,18 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
         //assign the scene to the scene view
         self.sceneView.scene = scene
         
-        //set the line width (default 1.0), visible color (default: green), obstructed colors (default: red). These are static properties that apply to all line of sight analyses in the scene view
-        AGSLineOfSight.setLineWidth(2.0)
-        AGSLineOfSight.setVisibleColor(.cyan)
-        AGSLineOfSight.setObstructedColor(.magenta)
-        
-        //initialize a line of sight analysis with arbitrary points (observer and target will be defined by the user)
+        //initialize the line of sight analysis with arbitrary points (observer and target will be defined by the user)
         self.lineOfSight = AGSLocationLineOfSight(observerLocation: AGSPoint(x: 0.0 , y: 0.0, z: 0.0, spatialReference: AGSSpatialReference.wgs84()), targetLocation: AGSPoint(x: 0.0 , y: 0.0, z: 0.0, spatialReference: AGSSpatialReference.wgs84()))
         
         //create an analysis overlay for the line of sight and add it to the scene view
         let analysisOverlay = AGSAnalysisOverlay()
         analysisOverlay.analyses.add(self.lineOfSight)
         self.sceneView.analysisOverlays.add(analysisOverlay)
+        
+        //set the line width (default 1.0), visible color (default: green), obstructed colors (default: red). These are static properties that apply to all line of sight analyses in the scene view
+        AGSLineOfSight.setLineWidth(2.0)
+        AGSLineOfSight.setVisibleColor(.cyan)
+        AGSLineOfSight.setObstructedColor(.magenta)
         
         //set the viewpoint specified by the camera position
         let camera = AGSCamera(location: AGSPoint(x: -73.10861935949697, y: -49.25758493899104, z: 3050, spatialReference: AGSSpatialReference.wgs84()), heading: 106, pitch: 73, roll: 0)

@@ -43,7 +43,7 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
         //assign the scene to the scene view
         self.sceneView.scene = scene
         
-        //initialize the line of sight analysis with arbitrary points (observer and target will be defined by the user)
+        //initialize the line of sight with arbitrary points (observer and target will be defined by the user)
         self.lineOfSight = AGSLocationLineOfSight(observerLocation: AGSPoint(x: 0.0 , y: 0.0, z: 0.0, spatialReference: AGSSpatialReference.wgs84()), targetLocation: AGSPoint(x: 0.0 , y: 0.0, z: 0.0, spatialReference: AGSSpatialReference.wgs84()))
         
         //create an analysis overlay for the line of sight and add it to the scene view

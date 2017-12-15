@@ -147,14 +147,18 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
                     }
                     self?.expandableTableViewController.sectionHeaderTitles.append(groups.joined(separator: ", "))
                     
-                    var statistics = [String]()
+                    var statistics = [(String, String)]()
                     for (key, value) in (statisticRecord?.statistics)!  {
                         print("\(key): \(value)")
-                        statistics.append("\(key):\(value)")
+                        statistics.append((key, String(describing: value)))
                     }
                     self?.expandableTableViewController.sectionItems.append(statistics)
                 }
 
+                // Only for iPad, set presentation style to Form sheet
+                // We don't want it to cover the entire screen
+                self?.expandableTableViewController.modalPresentationStyle = .formSheet
+                
                 // Show result
                 self?.present((self?.expandableTableViewController)!, animated: true, completion: nil)
             }
@@ -332,18 +336,5 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         
         // Reload order by fields section
         tableView.reloadSections(IndexSet(integer: 2), with: .automatic)
-    }
-    
-    // MARK: Helper Methods
-    
-    private func showResult() {
-//        let storyboard = UIStoryboard(name: "ExpandableTableViewController", bundle: nil)
-//        expandableTableViewController = storyboard.instantiateViewController(withIdentifier: "ExpandableTableViewController") as! ExpandableTableViewController
-//        expandableTableViewController.sectionNames = [ "iPhone", "iPad", "Apple Watch" ];
-//        expandableTableViewController.sectionItems = [ ["iPhone 5", "iPhone 5s", "iPhone 6", "iPhone 6 Plus", "iPhone 7", "iPhone 7 Plus"],
-//                                                       ["iPad Mini", "iPad Air 2", "iPad Pro", "iPad Pro 9.7"],
-//                                                       ["Apple Watch", "Apple Watch 2", "Apple Watch 2 (Nike)"]
-//        ];
-//        self.present(expandableTableViewController, animated: true, completion: nil)
     }
 }

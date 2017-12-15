@@ -1,10 +1,17 @@
 //
-//  ExpandableTableViewController.swift
-//  ExpandableTableView
+// Copyright 2017 Esri.
 //
-//  Created by Nimesh Jarecha on 12/13/17.
-//  Copyright © 2017 Nimesh Jarecha. All rights reserved.
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 import Foundation
 import UIKit
@@ -13,19 +20,23 @@ class ExpandableTableViewController: UIViewController, UITableViewDelegate, UITa
     
     public var tableTitle: String?
     public var sectionHeaderTitles = [String]()
-    public var sectionItems = [[String]]()
+    public var sectionItems = [[(String, String)]]()
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet internal var tableNavigationItem: UINavigationItem!
     private var expandedSectionHeaderNumber = -1
-    private var expandedSectionHeader: UITableViewHeaderFooterView!
     private let kHeaderSectionTag = 7000;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set the footer view
+        tableView.tableFooterView = UIView()
+        
         // Set title
         tableNavigationItem.title = tableTitle
+        
+        print("SectionHeaderTitles count: \(sectionHeaderTitles.count)")
     }
     
     // MARK: - Table View Data Source Methods
@@ -75,18 +86,28 @@ class ExpandableTableViewController: UIViewController, UITableViewDelegate, UITa
         let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         header.contentView.backgroundColor = UIColor.white
         header.textLabel?.textColor = UIColor.primaryTextColor()
-        
-        if let viewWithTag = view.viewWithTag(kHeaderSectionTag + section) {
-            viewWithTag.removeFromSuperview()
+        header.tag = section
+
+        // Remove image view
+        for subview in view.subviews {
+            if subview is UIImageView {
+                subview.removeFromSuperview()
+            }
         }
+
+        // Add image view
         let headerFrame = view.frame.size
         let imageView = UIImageView(frame: CGRect(x: headerFrame.width - 32, y: 13, width: 18, height: 18));
-        imageView.image = UIImage(named: "Collapsed")
+        if expandedSectionHeaderNumber == section {
+            imageView.image = UIImage(named: "Expanded")
+        }
+        else {
+            imageView.image = UIImage(named: "Collapsed")
+        }
         imageView.tag = kHeaderSectionTag + section
         header.addSubview(imageView)
         
         // Make headers touchable
-        header.tag = section
         let headerTapGesture = UITapGestureRecognizer()
         headerTapGesture.addTarget(self, action: #selector(sectionHeaderWasTouched(_:)))
         header.addGestureRecognizer(headerTapGesture)
@@ -100,7 +121,9 @@ class ExpandableTableViewController: UIViewController, UITableViewDelegate, UITa
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as UITableViewCell
         let sectionData = sectionItems[indexPath.section]
         cell.textLabel?.textColor = UIColor.black
-        cell.textLabel?.text = sectionData[indexPath.row]
+        let (text, detail) = sectionData[indexPath.row]
+        cell.textLabel?.text = text
+        cell.detailTextLabel?.text = detail
         return cell
     }
     
@@ -172,6 +195,12 @@ class ExpandableTableViewController: UIViewController, UITableViewDelegate, UITa
             tableView!.insertRows(at: indexesPath, with: UITableViewRowAnimation.fade)
             tableView!.endUpdates()
         }
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction private func doneAction() {
+        dismiss(animated: true, completion: nil)
     }
     
 }

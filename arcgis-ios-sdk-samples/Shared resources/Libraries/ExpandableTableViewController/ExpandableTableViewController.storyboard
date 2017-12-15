@@ -21,7 +21,13 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0v-pm-ShR">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="XBj-VW-Jxt"/>
+                                    <navigationItem title="Title" id="XBj-VW-Jxt">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="fxa-f5-USF">
+                                            <connections>
+                                                <action selector="doneAction" destination="72h-8g-j7q" id="gGd-gZ-o73"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CNv-hh-qjr">

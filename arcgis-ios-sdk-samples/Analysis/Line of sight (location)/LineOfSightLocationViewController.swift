@@ -18,10 +18,17 @@ import ArcGIS
 class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     @IBOutlet weak var sceneView: AGSSceneView!
-    @IBOutlet weak var instructionLabel: UILabel!
+    @IBOutlet weak var observerInstructionLabel: UILabel!
+    @IBOutlet weak var targetInstructionLabel: UILabel!
     
     private var lineOfSight: AGSLocationLineOfSight!
-    private var observerLocation: AGSPoint?
+    
+    private var observerSet:Bool = false {
+        didSet {
+            observerInstructionLabel.isHidden = observerSet
+            targetInstructionLabel.isHidden = !observerSet
+        }
+    }
     
     private let ELEVATION_SERVICE_URL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
     
@@ -43,6 +50,14 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
         //assign the scene to the scene view
         self.sceneView.scene = scene
         
+        //set the viewpoint specified by the camera position
+        let camera = AGSCamera(location: AGSPoint(x: -73.10861935949697, y: -49.25758493899104, z: 3050, spatialReference: AGSSpatialReference.wgs84()), heading: 106, pitch: 73, roll: 0)
+        self.sceneView.setViewpointCamera(camera)
+        
+        //set touch delegate on scene view as self
+        self.sceneView.touchDelegate = self
+
+        
         //initialize the line of sight with arbitrary points (observer and target will be defined by the user)
         self.lineOfSight = AGSLocationLineOfSight(observerLocation: AGSPoint(x: 0.0 , y: 0.0, z: 0.0, spatialReference: AGSSpatialReference.wgs84()), targetLocation: AGSPoint(x: 0.0 , y: 0.0, z: 0.0, spatialReference: AGSSpatialReference.wgs84()))
         
@@ -55,39 +70,36 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
         AGSLineOfSight.setLineWidth(2.0)
         AGSLineOfSight.setVisibleColor(.cyan)
         AGSLineOfSight.setObstructedColor(.magenta)
-        
-        //set the viewpoint specified by the camera position
-        let camera = AGSCamera(location: AGSPoint(x: -73.10861935949697, y: -49.25758493899104, z: 3050, spatialReference: AGSSpatialReference.wgs84()), heading: 106, pitch: 73, roll: 0)
-        self.sceneView.setViewpointCamera(camera)
-        
-        //set touch delegate on scene view as self
-        self.sceneView.touchDelegate = self
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
     
     //MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        //set the observer location once-only
-        if self.observerLocation == nil {
-            self.observerLocation = mapPoint
-            
-            //define the observer location
-            self.lineOfSight.observerLocation = self.observerLocation!
-            
-            //update the instruction label
-            self.instructionLabel.text = "Press and hold on the map to update target location"
+        guard !observerSet else {
+            return
         }
+        
+        //define the observer location
+        self.lineOfSight.observerLocation = mapPoint
+
+        observerSet = true
     }
     
     func geoView(_ geoView: AGSGeoView, didLongPressAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //check if user has set the observer location
-        guard self.observerLocation != nil else {
+        guard observerSet else {
+            return
+        }
+        
+        //update the target location
+        self.lineOfSight.targetLocation = mapPoint
+    }
+    
+    func geoView(_ geoView: AGSGeoView, didMoveLongPressToScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        //check if user has set the observer location
+        guard observerSet else {
             return
         }
         

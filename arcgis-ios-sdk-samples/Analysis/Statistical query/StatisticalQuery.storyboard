@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="DKT-K8-rR8">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Statistical Query View Controller-->
+        <scene sceneID="9fZ-Qr-hgc">
+            <objects>
+                <viewController id="DKT-K8-rR8" customClass="StatisticalQueryViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KkP-vz-Bdt"/>
+                        <viewControllerLayoutGuide type="bottom" id="1sz-tn-ujd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="E66-ip-T79">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MMu-eo-dCE" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zsC-4Y-Zj7">
+                                <rect key="frame" x="10" y="432" width="300" height="136"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="6k4-pi-srd">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="136"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only cities in current extent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZwN-CW-cHD">
+                                            <rect key="frame" x="15" y="20" width="221" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="221" id="YPi-Nv-Mki"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vbu-gq-lFX">
+                                            <rect key="frame" x="237" y="15" width="51" height="31"/>
+                                            <color key="onTintColor" red="0.0" green="0.44331008195877075" blue="0.64703482389450073" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </switch>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only cities greater than 5M" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kge-gG-dGK">
+                                            <rect key="frame" x="15" y="58" width="221" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="221" id="lXh-cX-yOh"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DuN-wd-ao7">
+                                            <rect key="frame" x="87" y="92" width="120" height="30"/>
+                                            <color key="backgroundColor" red="0.0" green="0.44331008199999999" blue="0.6470348239" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" title="Get Statistics">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="getStatisticsAction:" destination="DKT-K8-rR8" eventType="touchUpInside" id="EWY-Dg-U5T"/>
+                                            </connections>
+                                        </button>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TA9-eB-bGy">
+                                            <rect key="frame" x="237" y="53" width="51" height="31"/>
+                                            <color key="onTintColor" red="0.0" green="0.36862745099999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        </switch>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Vbu-gq-lFX" firstAttribute="trailing" secondItem="6k4-pi-srd" secondAttribute="trailingMargin" constant="-6" id="3Pe-l0-ELs"/>
+                                        <constraint firstItem="ZwN-CW-cHD" firstAttribute="centerY" secondItem="Vbu-gq-lFX" secondAttribute="centerY" id="6T7-8z-1dz"/>
+                                        <constraint firstItem="Vbu-gq-lFX" firstAttribute="leading" secondItem="TA9-eB-bGy" secondAttribute="leading" id="93A-rd-nfG"/>
+                                        <constraint firstItem="Kge-gG-dGK" firstAttribute="centerY" secondItem="TA9-eB-bGy" secondAttribute="centerY" id="HwB-Gx-mDn"/>
+                                        <constraint firstItem="TA9-eB-bGy" firstAttribute="top" secondItem="Vbu-gq-lFX" secondAttribute="bottom" constant="7" id="N7h-kk-LL3"/>
+                                        <constraint firstItem="DuN-wd-ao7" firstAttribute="leading" secondItem="6k4-pi-srd" secondAttribute="leading" constant="87" id="NEi-CL-b2k"/>
+                                        <constraint firstItem="DuN-wd-ao7" firstAttribute="top" secondItem="Kge-gG-dGK" secondAttribute="bottom" constant="13" id="NlG-Qp-tGR"/>
+                                        <constraint firstItem="ZwN-CW-cHD" firstAttribute="top" secondItem="6k4-pi-srd" secondAttribute="topMargin" constant="12" id="YgM-0h-Tll"/>
+                                        <constraint firstItem="DuN-wd-ao7" firstAttribute="centerX" secondItem="6k4-pi-srd" secondAttribute="centerX" constant="-3" id="akX-qU-KRq"/>
+                                        <constraint firstItem="ZwN-CW-cHD" firstAttribute="leading" secondItem="6k4-pi-srd" secondAttribute="leadingMargin" constant="7" id="g4C-fV-f7R"/>
+                                        <constraint firstItem="ZwN-CW-cHD" firstAttribute="leading" secondItem="Kge-gG-dGK" secondAttribute="leading" id="zE1-ou-5Sb"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="AjM-qf-Msq"/>
+                                    <constraint firstAttribute="height" constant="136" id="OfJ-Jx-pgW"/>
+                                </constraints>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="MMu-eo-dCE" firstAttribute="top" secondItem="KkP-vz-Bdt" secondAttribute="bottom" id="6cI-Km-Fvp"/>
+                            <constraint firstItem="MMu-eo-dCE" firstAttribute="leading" secondItem="E66-ip-T79" secondAttribute="leading" id="7ur-Kc-sZw"/>
+                            <constraint firstItem="1sz-tn-ujd" firstAttribute="top" secondItem="MMu-eo-dCE" secondAttribute="bottom" id="AR4-hZ-Tjw"/>
+                            <constraint firstItem="1sz-tn-ujd" firstAttribute="top" secondItem="zsC-4Y-Zj7" secondAttribute="bottom" priority="1" id="EAT-eL-uVX"/>
+                            <constraint firstAttribute="centerX" secondItem="zsC-4Y-Zj7" secondAttribute="centerX" id="P61-BD-TG1"/>
+                            <constraint firstItem="MMu-eo-dCE" firstAttribute="top" secondItem="E66-ip-T79" secondAttribute="top" id="QER-5R-vLJ"/>
+                            <constraint firstAttribute="trailing" secondItem="MMu-eo-dCE" secondAttribute="trailing" id="hov-df-ope"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="QER-5R-vLJ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="getStatisticsButton" destination="DuN-wd-ao7" id="HnI-pO-ebv"/>
+                        <outlet property="mapView" destination="MMu-eo-dCE" id="mFj-mZ-uMd"/>
+                        <outlet property="onlyBigCitiesSwitch" destination="TA9-eB-bGy" id="Gnf-Vy-fZH"/>
+                        <outlet property="onlyInCurrentExtentSwitch" destination="Vbu-gq-lFX" id="EOv-jx-4Lm"/>
+                        <outlet property="visualEffectView" destination="zsC-4Y-Zj7" id="b8q-ZC-v9e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a9m-Nj-4sr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="558.75" y="448.94366197183098"/>
+        </scene>
+    </scenes>
+</document>

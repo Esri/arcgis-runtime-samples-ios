@@ -35,7 +35,7 @@ class SceneLayerURLViewController: UIViewController {
         
         //set the viewpoint camera
         let point = AGSPoint(x: -4.49779155626782, y: 48.38282454039932, z: 62.013264927081764, spatialReference: AGSSpatialReference(wkid: 4326))
-        let camera = AGSCamera(location: point, heading: 41.64729875588979, pitch: 71.2017391571523, roll: 2.194677223e-314)
+        let camera = AGSCamera(location: point, heading: 41.64729875588979, pitch: 71.2017391571523, roll: 0)
         self.sceneView.setViewpointCamera(camera)
         
         // add base surface for elevation data

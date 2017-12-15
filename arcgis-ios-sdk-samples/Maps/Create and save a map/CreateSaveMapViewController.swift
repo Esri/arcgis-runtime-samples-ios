@@ -86,7 +86,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         
         let openAction = UIAlertAction(title: "Open in Safari", style: UIAlertActionStyle.default, handler: { [weak self] (action:UIAlertAction!) -> Void in
             if let weakSelf = self {
-                UIApplication.shared.openURL(URL(string: "\(weakSelf.webmapURL)\(weakSelf.mapView.map!.item!.itemID)")!)
+                UIApplication.shared.open(URL(string: "\(weakSelf.webmapURL)\(weakSelf.mapView.map!.item!.itemID)")!, options: [:])
             }
         })
         

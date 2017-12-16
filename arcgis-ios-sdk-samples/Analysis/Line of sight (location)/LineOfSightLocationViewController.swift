@@ -48,23 +48,22 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
         scene.baseSurface?.elevationSources.append(elevationSrc)
         
         //assign the scene to the scene view
-        self.sceneView.scene = scene
+        sceneView.scene = scene
         
         //set the viewpoint specified by the camera position
-        let camera = AGSCamera(location: AGSPoint(x: -73.10861935949697, y: -49.25758493899104, z: 3050, spatialReference: AGSSpatialReference.wgs84()), heading: 106, pitch: 73, roll: 0)
-        self.sceneView.setViewpointCamera(camera)
+        let camera = AGSCamera(location: AGSPoint(x: -73.0815, y: -49.3272, z: 4059, spatialReference: AGSSpatialReference.wgs84()), heading: 11, pitch: 62, roll: 0)
+        sceneView.setViewpointCamera(camera)
         
         //set touch delegate on scene view as self
-        self.sceneView.touchDelegate = self
+        sceneView.touchDelegate = self
 
-        
         //initialize the line of sight with arbitrary points (observer and target will be defined by the user)
-        self.lineOfSight = AGSLocationLineOfSight(observerLocation: AGSPoint(x: 0.0 , y: 0.0, z: 0.0, spatialReference: AGSSpatialReference.wgs84()), targetLocation: AGSPoint(x: 0.0 , y: 0.0, z: 0.0, spatialReference: AGSSpatialReference.wgs84()))
+        lineOfSight = AGSLocationLineOfSight(observerLocation: AGSPoint(x: 0.0 , y: 0.0, z: 0.0, spatialReference: AGSSpatialReference.wgs84()), targetLocation: AGSPoint(x: 0.0 , y: 0.0, z: 0.0, spatialReference: AGSSpatialReference.wgs84()))
         
         //create an analysis overlay for the line of sight and add it to the scene view
         let analysisOverlay = AGSAnalysisOverlay()
-        analysisOverlay.analyses.add(self.lineOfSight)
-        self.sceneView.analysisOverlays.add(analysisOverlay)
+        analysisOverlay.analyses.add(lineOfSight)
+        sceneView.analysisOverlays.add(analysisOverlay)
         
         //set the line width (default 1.0), visible color (default: green), obstructed colors (default: red). These are static properties that apply to all line of sight analyses in the scene view
         AGSLineOfSight.setLineWidth(2.0)
@@ -82,7 +81,7 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
         }
         
         //define the observer location
-        self.lineOfSight.observerLocation = mapPoint
+        lineOfSight.observerLocation = mapPoint
 
         observerSet = true
     }
@@ -94,7 +93,7 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
         }
         
         //update the target location
-        self.lineOfSight.targetLocation = mapPoint
+        lineOfSight.targetLocation = mapPoint
     }
     
     func geoView(_ geoView: AGSGeoView, didMoveLongPressToScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
@@ -104,7 +103,7 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
         }
         
         //update the target location
-        self.lineOfSight.targetLocation = mapPoint
+        lineOfSight.targetLocation = mapPoint
     }
     
 }

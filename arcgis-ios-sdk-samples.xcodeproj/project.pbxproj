@@ -496,8 +496,8 @@
 		E45991A71EF31DE40089E9FD /* WebMapsCollectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E459919E1EF3021D0089E9FD /* WebMapsCollectionViewController.swift */; };
 		E45991A81EF31DE40089E9FD /* WebMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E459919F1EF3021D0089E9FD /* WebMapViewController.swift */; };
 		E4A0BD8B1EE9E5D300CDE436 /* DistanceCompositeSymbolViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */; };
-		E4B2E2651FE31E5200E610FF /* bradle.3ds in Resources */ = {isa = PBXBuildFile; fileRef = E4B2E2631FE31E5100E610FF /* bradle.3ds */; };
-		E4B2E2661FE31E5200E610FF /* tank1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4B2E2641FE31E5100E610FF /* tank1.jpg */; };
+		E4B2E2651FE31E5200E610FF /* bradle.3ds in Resources */ = {isa = PBXBuildFile; fileRef = E4B2E2631FE31E5100E610FF /* bradle.3ds */; settings = {ASSET_TAGS = (Bradley3DModel, ); }; };
+		E4B2E2661FE31E5200E610FF /* tank1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4B2E2641FE31E5100E610FF /* tank1.jpg */; settings = {ASSET_TAGS = (Bradley3DModel, ); }; };
 		E4B2E2691FE31ED500E610FF /* ViewshedGeoElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B2E2681FE31ED500E610FF /* ViewshedGeoElementViewController.swift */; };
 		E4B2E26B1FE31EEA00E610FF /* ViewshedGeoElement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4B2E26A1FE31EEA00E610FF /* ViewshedGeoElement.storyboard */; };
 		E4B2E26C1FE3321500E610FF /* ViewshedGeoElementViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E4B2E2681FE31ED500E610FF /* ViewshedGeoElementViewController.swift */; };
@@ -2721,6 +2721,7 @@
 			attributes = {
 				KnownAssetTags = (
 					AuroraCOGeopackage,
+					Bradley3DModel,
 					Bristol,
 					Bristol3DModel,
 					LATrailsGeodatabase,

@@ -90,11 +90,6 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
         sceneView.scene = scene
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         // set the new waypoint
         waypoint = mapPoint;
@@ -125,11 +120,11 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
                                                        azimuthUnit: AGSAngularUnit.degrees(),
                                                        curveType: .geodesic)
         
-        if let newLocation = locations?[0] {
+        if let newLocation = locations?.first {
             tank.geometry = newLocation
         }
         
-        if let heading: Double = tank.attributes["HEADING"] as? Double {
+        if let heading = tank.attributes["HEADING"] as? Double {
             tank.attributes["HEADING"] = heading + ((distance.azimuth1 - heading) / 10)
         }
         

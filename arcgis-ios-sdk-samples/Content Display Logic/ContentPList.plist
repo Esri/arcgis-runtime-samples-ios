@@ -884,6 +884,14 @@
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to query a feature table to get aggregated statistics back for a specific field.</string>
 			</dict>
+            <dict>
+                <key>displayName</key>
+                <string>Viewshed (camera)</string>
+                <key>storyboardName</key>
+                <string>ViewshedCamera</string>
+                <key>descriptionText</key>
+                <string>Shows how to create a location viewshed from a camera.</string>
+            </dict>
 		</array>
 	</dict>
 	<dict>

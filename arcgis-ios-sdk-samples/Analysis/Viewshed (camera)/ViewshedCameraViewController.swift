@@ -21,8 +21,8 @@ class ViewshedCameraViewController: UIViewController {
     
     private var viewshed: AGSLocationViewshed!
     
-    private let ELEVATION_SERVICE_URL = URL(string: "http://scene.arcgis.com/arcgis/rest/services/BREST_DTM_1M/ImageServer")!
-    private let SCENE_LAYER_URL = URL(string: "http://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0")!
+    private let ELEVATION_SERVICE_URL = URL(string: "https://scene.arcgis.com/arcgis/rest/services/BREST_DTM_1M/ImageServer")!
+    private let SCENE_LAYER_URL = URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0")!
     
     override func viewDidLoad() {
         super.viewDidLoad()

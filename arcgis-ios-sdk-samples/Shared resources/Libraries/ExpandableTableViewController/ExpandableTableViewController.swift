@@ -16,14 +16,12 @@
 import Foundation
 import UIKit
 
-class ExpandableTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ExpandableTableViewController: UITableViewController {
     
     public var tableTitle: String?
     public var sectionHeaderTitles = [String]()
     public var sectionItems = [[(String, String)]]()
-    
-    @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet internal var tableNavigationItem: UINavigationItem!
+
     private var expandedSectionHeaderNumber = -1
     private let kHeaderSectionTag = 7000;
     
@@ -34,14 +32,12 @@ class ExpandableTableViewController: UIViewController, UITableViewDelegate, UITa
         tableView.tableFooterView = UIView()
         
         // Set title
-        tableNavigationItem.title = tableTitle
-        
-        print("SectionHeaderTitles count: \(sectionHeaderTitles.count)")
+        navigationItem.title = tableTitle
     }
     
     // MARK: - Table View Data Source Methods
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         if sectionHeaderTitles.count > 0 {
             tableView.backgroundView = nil
             return sectionHeaderTitles.count
@@ -57,7 +53,7 @@ class ExpandableTableViewController: UIViewController, UITableViewDelegate, UITa
         return 0
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (expandedSectionHeaderNumber == section) {
             return sectionItems[section].count;
         } else {
@@ -65,22 +61,22 @@ class ExpandableTableViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if (sectionHeaderTitles.count != 0) {
             return sectionHeaderTitles[section]
         }
         return ""
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44.0;
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat{
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat{
         return 0;
     }
     
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         //
         // Recast view as a UITableViewHeaderFooterView
         let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
@@ -117,8 +113,8 @@ class ExpandableTableViewController: UIViewController, UITableViewDelegate, UITa
         header.layer.borderWidth = 0.5
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as UITableViewCell
         let sectionData = sectionItems[indexPath.section]
         cell.textLabel?.textColor = UIColor.black
         let (text, detail) = sectionData[indexPath.row]
@@ -129,7 +125,7 @@ class ExpandableTableViewController: UIViewController, UITableViewDelegate, UITa
     
     // MARK: - Table View Delegate Methods
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -196,11 +192,4 @@ class ExpandableTableViewController: UIViewController, UITableViewDelegate, UITa
             tableView!.endUpdates()
         }
     }
-    
-    // MARK: - Actions
-    
-    @IBAction private func doneAction() {
-        dismiss(animated: true, completion: nil)
-    }
-    
 }

@@ -219,7 +219,9 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         else {
             if selectedOrderByFields.count > 0 {
                 let orderByField = selectedOrderByFields[indexPath.row]
-                cell.textLabel?.text = orderByField.fieldName
+                let sortOrderString = stringFor(sortOrder: orderByField.sortOrder)
+                let text = "\(orderByField.fieldName) (\(sortOrderString))"
+                cell.textLabel?.text = text
             }
         }
         return cell
@@ -393,5 +395,14 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         return UIModalPresentationStyle.none
     }
     
-
+    // MARK: - Helper Methods
+    
+    private func stringFor(sortOrder: AGSSortOrder) -> String {
+        switch sortOrder {
+        case .ascending:
+            return "Ascending"
+        case .descending:
+            return "Descending"
+        }
+    }
 }

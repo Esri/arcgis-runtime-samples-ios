@@ -63,16 +63,37 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupByFieldsCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OrderByFieldsCell")!
+        
+        // Set text
         let orderByField = orderByFields[indexPath.row]
-        cell.textLabel?.text = orderByField.fieldName
+        let sortOrderString = stringFor(sortOrder: orderByField.sortOrder)
+        let text = "\(orderByField.fieldName) (\(sortOrderString))"
+        cell.textLabel?.text = text
+        
+        // Set image
+        cell.imageView?.image = imageFor(sortOrder: orderByField.sortOrder)
+        
+        // Make image tappable
+        cell.imageView?.isUserInteractionEnabled = true;
+        cell.imageView?.tag = indexPath.row;
+        let imageViewTapGesture = UITapGestureRecognizer()
+        imageViewTapGesture.addTarget(self, action: #selector(imageViewWasTouched(_:)))
+        cell.imageView?.addGestureRecognizer(imageViewTapGesture)
+        
+        // Set accessory type
         if selectedOrderByFields.contains(orderByField) {
             cell.accessoryType = .checkmark
         }
         else {
             cell.accessoryType = .none
         }
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
     // MARK: - TableView delegates
@@ -115,5 +136,51 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
         
         // Dismiss view controller
         dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Gesture Recognizer
+    
+    @objc func imageViewWasTouched(_ sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let indexPath = IndexPath(row: imageView.tag, section: 0)
+        let cell = tableView.cellForRow(at: indexPath)
+        let orderByField = orderByFields[imageView.tag]
+        if orderByField.sortOrder == .ascending {
+            orderByField.sortOrder = .descending
+            cell?.imageView?.image = imageFor(sortOrder: orderByField.sortOrder)
+            let sortOrderString = stringFor(sortOrder: orderByField.sortOrder)
+            let text = "\(orderByField.fieldName) (\(sortOrderString))"
+            cell?.textLabel?.text = text
+        }
+        else {
+            orderByField.sortOrder = .ascending
+            cell?.imageView?.image = imageFor(sortOrder: orderByField.sortOrder)
+            let sortOrderString = stringFor(sortOrder: orderByField.sortOrder)
+            let text = "\(orderByField.fieldName) (\(sortOrderString))"
+            cell?.textLabel?.text = text
+        }
+        
+        // Reload row
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+    
+    // MARK: - Helper Methods
+    
+    private func stringFor(sortOrder: AGSSortOrder) -> String {
+        switch sortOrder {
+        case .ascending:
+            return "Ascending"
+        case .descending:
+            return "Descending"
+        }
+    }
+    
+    private func imageFor(sortOrder: AGSSortOrder) -> UIImage {
+        switch sortOrder {
+        case .ascending:
+            return UIImage(named: "Ascending")!
+        case .descending:
+            return UIImage(named: "Descending")!
+        }
     }
 }

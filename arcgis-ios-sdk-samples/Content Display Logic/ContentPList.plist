@@ -884,6 +884,18 @@
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to query a feature table to get aggregated statistics back for a specific field.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Viewshed (GeoElement)</string>
+				<key>storyboardName</key>
+				<string>ViewshedGeoElement</string>
+				<key>descriptionText</key>
+				<string>Demonstrates how to construct a viewshed so that it updates automatically relative to a moving GeoElement.</string>
+                <key>dependency</key>
+                <array>
+                    <string>Bradley3DModel</string>
+                </array>
+            </dict>
 		</array>
 	</dict>
 	<dict>

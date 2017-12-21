@@ -51,11 +51,12 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
             return orderByFields.count
         } else {
             let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height))
-            messageLabel.text = "Please select group by fields first."
+            messageLabel.text = "Only selected Group By Fields are valid for Order By Fields so please select Group By Fields first."
             messageLabel.numberOfLines = 0;
             messageLabel.textAlignment = .center;
             messageLabel.font = UIFont(name: "HelveticaNeue", size: 20.0)!
             messageLabel.sizeToFit()
+            tableView.backgroundView?.backgroundColor = UIColor.white
             tableView.backgroundView = messageLabel;
         }
         return orderByFields.count

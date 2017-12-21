@@ -48,6 +48,7 @@ class ExpandableTableViewController: UITableViewController {
             messageLabel.textAlignment = .center;
             messageLabel.font = UIFont(name: "HelveticaNeue", size: 20.0)!
             messageLabel.sizeToFit()
+            tableView.backgroundView?.backgroundColor = UIColor.white
             tableView.backgroundView = messageLabel;
         }
         return 0

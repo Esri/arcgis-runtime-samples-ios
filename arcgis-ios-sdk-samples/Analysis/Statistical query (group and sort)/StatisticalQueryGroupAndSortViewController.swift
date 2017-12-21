@@ -143,6 +143,76 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         })
     }
     
+    @IBAction func resetAction(_ sender: Any) {
+        //
+        // Reset all collections and reload table
+        statisticDefinitions.removeAll()
+        selectedGroupByFieldNames.removeAll()
+        selectedOrderByFields.removeAll()
+        tableView.reloadData()
+    }
+    
+    @objc private func headerButtonAction(_ sender: UIButton) {
+        //
+        // Check button by tag
+        if sender.tag == 0 {
+            //
+            // Init view controller and set properties
+            let storyboard = UIStoryboard(name: "StatisticalQueryGroupAndSort", bundle: nil)
+            addStatisticDefinitionsViewController = storyboard.instantiateViewController(withIdentifier: "AddStatisticDefinitionsViewController") as! AddStatisticDefinitionsViewController
+            addStatisticDefinitionsViewController.delegate = self
+            addStatisticDefinitionsViewController.fieldNames = fieldNames
+            addStatisticDefinitionsViewController.statisticDefinitions = statisticDefinitions
+            
+            // Popover presentation logic
+            addStatisticDefinitionsViewController.modalPresentationStyle = .popover
+            addStatisticDefinitionsViewController.preferredContentSize = CGSize(width: 350, height: 300)
+            addStatisticDefinitionsViewController.presentationController?.delegate = self
+            addStatisticDefinitionsViewController.popoverPresentationController?.sourceView = sender
+            addStatisticDefinitionsViewController.popoverPresentationController?.sourceRect = sender.bounds
+            
+            // Present view controller
+            self.present(addStatisticDefinitionsViewController, animated: true, completion: nil)
+        }
+        else if sender.tag == 1 {
+            //
+            // Init view controller and set properties
+            let storyboard = UIStoryboard(name: "StatisticalQueryGroupAndSort", bundle: nil)
+            groupByFieldsViewController = storyboard.instantiateViewController(withIdentifier: "GroupByFieldsViewController") as! GroupByFieldsViewController
+            groupByFieldsViewController.delegate = self
+            groupByFieldsViewController.fieldNames = fieldNames
+            groupByFieldsViewController.selectedFieldNames = selectedGroupByFieldNames
+            
+            // Popover presentation logic
+            groupByFieldsViewController.modalPresentationStyle = .popover
+            groupByFieldsViewController.preferredContentSize = CGSize(width: 350, height: 300)
+            groupByFieldsViewController.presentationController?.delegate = self
+            groupByFieldsViewController.popoverPresentationController?.sourceView = sender
+            groupByFieldsViewController.popoverPresentationController?.sourceRect = sender.bounds
+            
+            // Present view controller
+            self.present(groupByFieldsViewController, animated: true, completion: nil)
+        }
+        else if sender.tag == 2 {
+            //
+            // Init view controller and set properties
+            let storyboard = UIStoryboard(name: "StatisticalQueryGroupAndSort", bundle: nil)
+            orderByFieldsViewController = storyboard.instantiateViewController(withIdentifier: "OrderByFieldsViewController") as! OrderByFieldsViewController
+            orderByFieldsViewController.delegate = self
+            orderByFieldsViewController.orderByFields = orderByFields
+            orderByFieldsViewController.selectedOrderByFields = selectedOrderByFields
+            
+            // Popover presentation logic
+            orderByFieldsViewController.modalPresentationStyle = .popover
+            orderByFieldsViewController.preferredContentSize = CGSize(width: 350, height: 300)
+            orderByFieldsViewController.presentationController?.delegate = self
+            orderByFieldsViewController.popoverPresentationController?.sourceView = sender
+            orderByFieldsViewController.popoverPresentationController?.sourceRect = sender.bounds
+            
+            // Present view controller
+            self.present(orderByFieldsViewController, animated: true, completion: nil)
+        }
+    }
     
     // MARK: - Table View Data Source
     
@@ -162,6 +232,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         //
         // Create the view
         let returnedView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 44))
+        returnedView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         returnedView.backgroundColor = UIColor.primaryBlue()
         returnedView.layer.borderColor = UIColor.white.cgColor
         returnedView.layer.borderWidth = 1
@@ -179,6 +250,9 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         headerButton.tag = section
         headerButton.addTarget(self, action:  #selector(headerButtonAction(_:)), for: .touchUpInside)
         returnedView.addSubview(headerButton)
+        headerButton.translatesAutoresizingMaskIntoConstraints = false
+        returnedView.addConstraint(NSLayoutConstraint(item: headerButton, attribute: .centerY, relatedBy: .equal, toItem: returnedView, attribute: .centerY, multiplier: 1, constant: 0))
+        returnedView.addConstraint(NSLayoutConstraint(item: headerButton, attribute: .trailing, relatedBy: .equal, toItem: returnedView, attribute: .trailing, multiplier: 1, constant: -10))
 
         return returnedView
     }
@@ -278,70 +352,6 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             
             // Reload table
             tableView.reloadData()
-        }
-    }
-    
-    // MARK: - Actions
-    
-    @objc private func headerButtonAction(_ sender: UIButton) {
-        //
-        // Check button by tag
-        if sender.tag == 0 {
-            //
-            // Init view controller and set properties
-            let storyboard = UIStoryboard(name: "StatisticalQueryGroupAndSort", bundle: nil)
-            addStatisticDefinitionsViewController = storyboard.instantiateViewController(withIdentifier: "AddStatisticDefinitionsViewController") as! AddStatisticDefinitionsViewController
-            addStatisticDefinitionsViewController.delegate = self
-            addStatisticDefinitionsViewController.fieldNames = fieldNames
-            addStatisticDefinitionsViewController.statisticDefinitions = statisticDefinitions
-            
-            // Popover presentation logic
-            addStatisticDefinitionsViewController.modalPresentationStyle = .popover
-            addStatisticDefinitionsViewController.preferredContentSize = CGSize(width: 350, height: 300)
-            addStatisticDefinitionsViewController.presentationController?.delegate = self
-            addStatisticDefinitionsViewController.popoverPresentationController?.sourceView = sender
-            addStatisticDefinitionsViewController.popoverPresentationController?.sourceRect = sender.bounds
-            
-            // Present view controller
-            self.present(addStatisticDefinitionsViewController, animated: true, completion: nil)
-        }
-        else if sender.tag == 1 {
-            //
-            // Init view controller and set properties
-            let storyboard = UIStoryboard(name: "StatisticalQueryGroupAndSort", bundle: nil)
-            groupByFieldsViewController = storyboard.instantiateViewController(withIdentifier: "GroupByFieldsViewController") as! GroupByFieldsViewController
-            groupByFieldsViewController.delegate = self
-            groupByFieldsViewController.fieldNames = fieldNames
-            groupByFieldsViewController.selectedFieldNames = selectedGroupByFieldNames
-            
-            // Popover presentation logic
-            groupByFieldsViewController.modalPresentationStyle = .popover
-            groupByFieldsViewController.preferredContentSize = CGSize(width: 350, height: 300)
-            groupByFieldsViewController.presentationController?.delegate = self
-            groupByFieldsViewController.popoverPresentationController?.sourceView = sender
-            groupByFieldsViewController.popoverPresentationController?.sourceRect = sender.bounds
-            
-            // Present view controller
-            self.present(groupByFieldsViewController, animated: true, completion: nil)
-        }
-        else if sender.tag == 2 {
-            //
-            // Init view controller and set properties
-            let storyboard = UIStoryboard(name: "StatisticalQueryGroupAndSort", bundle: nil)
-            orderByFieldsViewController = storyboard.instantiateViewController(withIdentifier: "OrderByFieldsViewController") as! OrderByFieldsViewController
-            orderByFieldsViewController.delegate = self
-            orderByFieldsViewController.orderByFields = orderByFields
-            orderByFieldsViewController.selectedOrderByFields = selectedOrderByFields
-            
-            // Popover presentation logic
-            orderByFieldsViewController.modalPresentationStyle = .popover
-            orderByFieldsViewController.preferredContentSize = CGSize(width: 350, height: 300)
-            orderByFieldsViewController.presentationController?.delegate = self
-            orderByFieldsViewController.popoverPresentationController?.sourceView = sender
-            orderByFieldsViewController.popoverPresentationController?.sourceRect = sender.bounds
-            
-            // Present view controller
-            self.present(orderByFieldsViewController, animated: true, completion: nil)
         }
     }
     

@@ -25,6 +25,10 @@
 		166E8F9D1EE62E0E00C57C46 /* RasterLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166E8F9B1EE62E0E00C57C46 /* RasterLayer.storyboard */; };
 		166E8F9E1EE62E0E00C57C46 /* RasterLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E8F9C1EE62E0E00C57C46 /* RasterLayerViewController.swift */; };
 		166E8F9F1EE62E2400C57C46 /* RasterLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 166E8F9C1EE62E0E00C57C46 /* RasterLayerViewController.swift */; };
+		216278891FEB3733009A2854 /* StatisticalQueryGroupAndSortViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21E914401FDEFBF800C7D6DC /* StatisticalQueryGroupAndSortViewController.swift */; };
+		2162788A1FEB3733009A2854 /* OrderByFieldsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 218409DC1FE89D830098BC40 /* OrderByFieldsViewController.swift */; };
+		2162788B1FEB3733009A2854 /* GroupByFieldsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 218409DA1FE87E220098BC40 /* GroupByFieldsViewController.swift */; };
+		2162788C1FEB3733009A2854 /* AddStatisticDefinitionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 218409DE1FE9A1E00098BC40 /* AddStatisticDefinitionsViewController.swift */; };
 		2182C9821FDA01A0003E3A0F /* StatisticalQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2182C9801FDA01A0003E3A0F /* StatisticalQuery.storyboard */; };
 		2182C9831FDA01A0003E3A0F /* StatisticalQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182C9811FDA01A0003E3A0F /* StatisticalQueryViewController.swift */; };
 		2182C9841FDA0272003E3A0F /* StatisticalQueryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2182C9811FDA01A0003E3A0F /* StatisticalQueryViewController.swift */; };
@@ -512,6 +516,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				216278891FEB3733009A2854 /* StatisticalQueryGroupAndSortViewController.swift in CopyFiles */,
+				2162788A1FEB3733009A2854 /* OrderByFieldsViewController.swift in CopyFiles */,
+				2162788B1FEB3733009A2854 /* GroupByFieldsViewController.swift in CopyFiles */,
+				2162788C1FEB3733009A2854 /* AddStatisticDefinitionsViewController.swift in CopyFiles */,
 				D9316A651FDB4F850075AD92 /* ReadGeopackageViewController.swift in CopyFiles */,
 				D9316A661FDB4F850075AD92 /* GPKGLayersViewController.swift in CopyFiles */,
 				D9316A671FDB4F850075AD92 /* GPKGLayerTableCell.swift in CopyFiles */,

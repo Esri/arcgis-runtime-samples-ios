@@ -94,7 +94,7 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
         // set the new waypoint
         waypoint = mapPoint;
         
-        // start a new timer
+        // start a timer to animate towards the waypoint
         timer = Timer.scheduledTimer(timeInterval: 0.1,
                                      target:self as Any,
                                      selector: #selector(animate),
@@ -106,18 +106,18 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
         guard let waypoint = waypoint,
             let location = tank.geometry as? AGSPoint else { return }
         
-        guard let distance = AGSGeometryEngine.geodeticDistanceBetweenPoint1(location,
-                                                                       point2: waypoint,
-                                                                       distanceUnit: AGSLinearUnit.meters(),
-                                                                       azimuthUnit: AGSAngularUnit.degrees(),
-                                                                       curveType: .geodesic) else { return }
+        guard let distanceResult = AGSGeometryEngine.geodeticDistanceBetweenPoint1(location,
+                                                                                   point2: waypoint,
+                                                                                   distanceUnit: AGSLinearUnit.meters(),
+                                                                                   azimuthUnit: AGSAngularUnit.degrees(),
+                                                                                   curveType: .geodesic) else { return }
 
         // move toward waypoint a short distance
         let locations = AGSGeometryEngine.geodeticMove([location],
                                                        distance: 1.0,
                                                        distanceUnit: AGSLinearUnit.meters(),
-                                                       azimuth: distance.azimuth1,
-                                                       azimuthUnit: AGSAngularUnit.degrees(),
+                                                       azimuth: distanceResult.azimuth1,
+                                                       azimuthUnit: distanceResult.azimuthUnit ?? AGSAngularUnit.degrees(),
                                                        curveType: .geodesic)
         
         if let newLocation = locations?.first {
@@ -125,10 +125,11 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
         }
         
         if let heading = tank.attributes["HEADING"] as? Double {
-            tank.attributes["HEADING"] = heading + ((distance.azimuth1 - heading) / 10)
+            tank.attributes["HEADING"] = heading + ((distanceResult.azimuth1 - heading) / 10)
         }
         
-        if distance.distance <= 5 {
+        // stop the animation when we're within 5 meters of the waypoint
+        if distanceResult.distance <= 5 {
             self.waypoint = nil
             timer?.invalidate()
         }

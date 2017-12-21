@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="asZ-BO-edQ">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,19 +16,33 @@
             <objects>
                 <viewController id="asZ-BO-edQ" customClass="ViewshedGeoElementViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OmS-KM-jTp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0U-33-i0S" customClass="AGSSceneView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the map to move the tank and update the viewshed" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aQ-aB-Yda">
+                                        <rect key="frame" x="0.0" y="52" width="375" height="20.333333333333329"/>
+                                        <color key="backgroundColor" white="0.75" alpha="0.5" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1aQ-aB-Yda" secondAttribute="trailing" id="LJw-90-On6"/>
+                                    <constraint firstItem="1aQ-aB-Yda" firstAttribute="leading" secondItem="Z0U-33-i0S" secondAttribute="leading" id="fxy-lp-pN1"/>
+                                    <constraint firstItem="1aQ-aB-Yda" firstAttribute="top" secondItem="Z0U-33-i0S" secondAttribute="topMargin" id="lQ6-kl-Wcr"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zHk-5t-F8j" firstAttribute="trailing" secondItem="Z0U-33-i0S" secondAttribute="trailing" id="Ese-qa-9Fx"/>
+                            <constraint firstAttribute="trailing" secondItem="Z0U-33-i0S" secondAttribute="trailing" id="Ese-qa-9Fx"/>
                             <constraint firstItem="Z0U-33-i0S" firstAttribute="top" secondItem="OmS-KM-jTp" secondAttribute="top" id="ofT-e7-fu0"/>
-                            <constraint firstItem="Z0U-33-i0S" firstAttribute="leading" secondItem="zHk-5t-F8j" secondAttribute="leading" id="sGF-jw-jKg"/>
+                            <constraint firstItem="Z0U-33-i0S" firstAttribute="leading" secondItem="OmS-KM-jTp" secondAttribute="leading" id="sGF-jw-jKg"/>
                             <constraint firstAttribute="bottom" secondItem="Z0U-33-i0S" secondAttribute="bottom" id="smM-X7-5Ow"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zHk-5t-F8j"/>

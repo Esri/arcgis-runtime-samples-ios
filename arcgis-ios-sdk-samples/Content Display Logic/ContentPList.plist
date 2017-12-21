@@ -391,7 +391,7 @@
 				<key>storyboardName</key>
 				<string>WMTSLayer</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to display a WMTS layer as a basemap layer</string>
+				<string>Display a WMTS layer as a basemap layer</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -399,7 +399,7 @@
 				<key>storyboardName</key>
 				<string>WMSLayerUsingURL</string>
 				<key>descriptionText</key>
-				<string>Creates a WMS layer using the service URL and the layer names that are available in the service.</string>
+				<string>Open a WMS layer from a URL and display it in a map</string>
 			</dict>
 		</array>
 	</dict>
@@ -1002,6 +1002,14 @@
 				<string>TerrainExaggeration</string>
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to use terrain exaggeration on a surface in a scene</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Feature layer extrusion</string>
+				<key>storyboardName</key>
+				<string>FeatureLayerExtrusion</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to apply extrusion to a renderer on a feature layer</string>
 			</dict>
 		</array>
 	</dict>

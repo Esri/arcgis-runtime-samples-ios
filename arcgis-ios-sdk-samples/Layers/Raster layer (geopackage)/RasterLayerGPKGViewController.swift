@@ -42,6 +42,8 @@ class RasterLayerGPKGViewController: UIViewController {
             // Add the first raster from the geopackage to the map.
             if let raster = self?.geoPackage?.geoPackageRasters.first {
                 let rasterLayer = AGSRasterLayer(raster: raster)
+                //make it semi-transparent so it doesn't obscure the contents under it
+                rasterLayer.opacity = 0.55
                 map.operationalLayers.add(rasterLayer)
             }
         }

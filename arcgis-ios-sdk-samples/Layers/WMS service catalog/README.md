@@ -10,8 +10,8 @@ The sample starts with a map that contains a Dark Gray Canvas basemap. It also p
 
 ## How it works
 
-`AGSWMSService` provides an initializer called `init(url:)` that takes a URL to the WMS service. Once the WMS service loads using the `load(completion:)` method, obtain the `AGSWMSServiceInfo` from the loaded WMS service and an array of `AGSWMSLayerInfo` from the `AGSWMSServiceInfo`.  
+`AGSWMSService` is initialized using the `init(url:)` method that takes a URL to the WMS service. It then loads the WMS service using the `load(completion:)` method and obtains the `AGSWMSServiceInfo` from the loaded WMS service and an array of `AGSWMSLayerInfo` from the `AGSWMSServiceInfo`.  
 
-`AGSWMSLayer` is initialized using `init(layerInfos:)` method that takes an array of `AGSWMSLayerInfo`. This sample creates WMS layers from the layer infos of the top-most layers in the WMS service.
+`AGSWMSLayer` provides an initializer called `init(layerInfos:)` method that takes an array of `AGSWMSLayerInfo`. This sample creates WMS layers from the layer infos of the top-most layers in the WMS service.
 
 `AGSMap` has a property called `operationalLayers` which is a list of `AGSLayer`. The WMS layer is added to map's operational layers using the `add()` method and removed from map's operational layers using the `remove()` method.

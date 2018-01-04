@@ -19,6 +19,9 @@
 		10859BAF1FE0AC8100F6E552 /* FeatureLayerExtrusionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10859BA81FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift */; };
 		10961CA61EF2FFD4008A7CEC /* TerrainExaggeration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10961CA41EF2FFD4008A7CEC /* TerrainExaggeration.storyboard */; };
 		10961CA71EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */; };
+		125403B71FFDA42C00265C69 /* WMSCatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125403B51FFDA42C00265C69 /* WMSCatalogViewController.swift */; };
+		125403B81FFDA42C00265C69 /* WMSCatalog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 125403B61FFDA42C00265C69 /* WMSCatalog.storyboard */; };
+		125403B91FFDA89F00265C69 /* WMSCatalogViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 125403B51FFDA42C00265C69 /* WMSCatalogViewController.swift */; };
 		1259FB921FD295C90037105E /* WMSLayerUsingURL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1259FB901FD295C90037105E /* WMSLayerUsingURL.storyboard */; };
 		1259FB931FD295C90037105E /* WMSLayerUsingURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1259FB911FD295C90037105E /* WMSLayerUsingURLViewController.swift */; };
 		1259FB941FD297560037105E /* WMSLayerUsingURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1259FB911FD295C90037105E /* WMSLayerUsingURLViewController.swift */; };
@@ -512,6 +515,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				125403B91FFDA89F00265C69 /* WMSCatalogViewController.swift in CopyFiles */,
 				E4B2E26C1FE3321500E610FF /* ViewshedGeoElementViewController.swift in CopyFiles */,
 				10859BAF1FE0AC8100F6E552 /* FeatureLayerExtrusionViewController.swift in CopyFiles */,
 				D9316A651FDB4F850075AD92 /* ReadGeopackageViewController.swift in CopyFiles */,
@@ -678,6 +682,8 @@
 		10859BA81FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerExtrusionViewController.swift; sourceTree = "<group>"; };
 		10961CA41EF2FFD4008A7CEC /* TerrainExaggeration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TerrainExaggeration.storyboard; path = "Scenes/Terrain exaggeration/TerrainExaggeration.storyboard"; sourceTree = "<group>"; };
 		10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TerrainExaggerationViewController.swift; path = "Scenes/Terrain exaggeration/TerrainExaggerationViewController.swift"; sourceTree = "<group>"; };
+		125403B51FFDA42C00265C69 /* WMSCatalogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WMSCatalogViewController.swift; sourceTree = "<group>"; };
+		125403B61FFDA42C00265C69 /* WMSCatalog.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WMSCatalog.storyboard; sourceTree = "<group>"; };
 		1259FB901FD295C90037105E /* WMSLayerUsingURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WMSLayerUsingURL.storyboard; sourceTree = "<group>"; };
 		1259FB911FD295C90037105E /* WMSLayerUsingURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WMSLayerUsingURLViewController.swift; sourceTree = "<group>"; };
 		127E11D51FD0C3F8002CBD12 /* WMTSLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WMTSLayer.storyboard; sourceTree = "<group>"; };
@@ -1075,6 +1081,16 @@
 				10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */,
 			);
 			name = "Terrain exaggeration";
+			sourceTree = "<group>";
+		};
+		125403B41FFDA42C00265C69 /* WMS service catalog */ = {
+			isa = PBXGroup;
+			children = (
+				125403B51FFDA42C00265C69 /* WMSCatalogViewController.swift */,
+				125403B61FFDA42C00265C69 /* WMSCatalog.storyboard */,
+			);
+			name = "WMS service catalog";
+			path = "Layers/WMS service catalog";
 			sourceTree = "<group>";
 		};
 		1259FB8F1FD295C90037105E /* WMS layer (URL) */ = {
@@ -2045,6 +2061,7 @@
 				3EABC79A1DB1793000C161C6 /* Stretch renderer */,
 				127E11D41FD0C3F8002CBD12 /* WMTS layer */,
 				1259FB8F1FD295C90037105E /* WMS layer (URL) */,
+				125403B41FFDA42C00265C69 /* WMS service catalog */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -2896,6 +2913,7 @@
 				21E9CDEB1EF9C5EA00BD4D7D /* DisplayGrid.storyboard in Resources */,
 				3ED028621B8E3A8500ACA70D /* SwitchBasemap.storyboard in Resources */,
 				3E41DD791B9F609500DA11CC /* DeleteFeatures.storyboard in Resources */,
+				125403B81FFDA42C00265C69 /* WMSCatalog.storyboard in Resources */,
 				3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */,
 				D97B7E591FD9BFE700E1239D /* Subdivisions.shx in Resources */,
 				D97B7E691FD9BFE700E1239D /* Subdivisions.shp.xml in Resources */,
@@ -3109,6 +3127,7 @@
 				3ED028591B8E3A8500ACA70D /* CreateOptionsViewController.swift in Sources */,
 				3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */,
 				21E9CDED1EF9C5EA00BD4D7D /* DisplayGridViewController.swift in Sources */,
+				125403B71FFDA42C00265C69 /* WMSCatalogViewController.swift in Sources */,
 				09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */,
 				3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */,
 				3E5E094F1EF850BA00FF3454 /* MapImageSublayersVC.swift in Sources */,

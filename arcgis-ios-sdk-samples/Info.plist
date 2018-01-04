@@ -81,6 +81,13 @@
                 <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
                 <true/>
             </dict>
+            <key>idpgis.ncep.noaa.gov</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <false/>
+                <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>

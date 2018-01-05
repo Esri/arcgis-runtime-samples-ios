@@ -34,11 +34,11 @@ class ViewshedCameraViewController: UIViewController {
         let scene = AGSScene(basemap: AGSBasemap.imagery())
         
         // assign the scene to the scene view
-        self.sceneView.scene = scene
+        sceneView.scene = scene
         
         // initialize the camera and set the viewpoint specified by the camera position
         let camera = AGSCamera(location: AGSPoint(x: -4.49492, y: 48.3808, z: 48.2511, spatialReference: AGSSpatialReference.wgs84()), heading: 344.488, pitch: 74.1212, roll: 0)
-        self.sceneView.setViewpointCamera(camera)
+        sceneView.setViewpointCamera(camera)
         
         // initialize the elevation source with the elevation service URL
         let elevationSrc = AGSArcGISTiledElevationSource(url: ELEVATION_SERVICE_URL)

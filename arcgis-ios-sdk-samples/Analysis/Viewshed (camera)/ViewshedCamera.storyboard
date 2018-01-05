@@ -32,9 +32,9 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="GTP-IH-0lw"/>
-                                    <barButtonItem systemItem="camera" id="9RJ-Pz-VFo">
+                                    <barButtonItem title="Update from camera" id="9RJ-Pz-VFo">
                                         <connections>
-                                            <action selector="updateFromCamera:" destination="zQN-FK-eXU" id="Gui-Yg-ovJ"/>
+                                            <action selector="updateViewshed:" destination="zQN-FK-eXU" id="ebq-fK-LH9"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="NfA-C1-oGY"/>

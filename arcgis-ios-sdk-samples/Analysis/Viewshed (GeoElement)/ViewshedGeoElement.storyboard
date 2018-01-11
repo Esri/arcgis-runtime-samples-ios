@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="asZ-BO-edQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="asZ-BO-edQ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,26 +20,37 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0U-33-i0S" customClass="AGSSceneView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the map to move the tank and update the viewshed" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aQ-aB-Yda">
-                                        <rect key="frame" x="0.0" y="44" width="375" height="20.333333333333329"/>
-                                        <color key="backgroundColor" white="0.75" alpha="0.5" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="1aQ-aB-Yda" secondAttribute="trailing" id="LJw-90-On6"/>
-                                    <constraint firstItem="1aQ-aB-Yda" firstAttribute="leading" secondItem="Z0U-33-i0S" secondAttribute="leading" id="fxy-lp-pN1"/>
-                                </constraints>
                             </view>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vum-T5-1gI">
+                                <rect key="frame" x="0.0" y="44" width="375" height="57"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9Bn-Wh-RMp">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="57"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the map to move the tank and update the viewshed" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aQ-aB-Yda">
+                                            <rect key="frame" x="8" y="8" width="359" height="40.666666666666664"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="1aQ-aB-Yda" firstAttribute="leading" secondItem="9Bn-Wh-RMp" secondAttribute="leading" constant="8" id="7BF-k1-fLz"/>
+                                        <constraint firstAttribute="trailing" secondItem="1aQ-aB-Yda" secondAttribute="trailing" constant="8" id="7W1-Av-EHK"/>
+                                        <constraint firstAttribute="bottom" secondItem="1aQ-aB-Yda" secondAttribute="bottom" constant="8" id="A8t-pi-NbT"/>
+                                        <constraint firstItem="1aQ-aB-Yda" firstAttribute="top" secondItem="9Bn-Wh-RMp" secondAttribute="top" constant="8" id="eLI-dV-rCp"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Vum-T5-1gI" firstAttribute="leading" secondItem="OmS-KM-jTp" secondAttribute="leading" id="AOX-P0-Gf3"/>
                             <constraint firstAttribute="trailing" secondItem="Z0U-33-i0S" secondAttribute="trailing" id="Ese-qa-9Fx"/>
-                            <constraint firstItem="1aQ-aB-Yda" firstAttribute="top" secondItem="zHk-5t-F8j" secondAttribute="top" id="GZx-th-OYh"/>
+                            <constraint firstAttribute="trailing" secondItem="Vum-T5-1gI" secondAttribute="trailing" id="brA-x3-hWH"/>
+                            <constraint firstItem="Vum-T5-1gI" firstAttribute="top" secondItem="zHk-5t-F8j" secondAttribute="top" id="mwR-5P-2Qu"/>
                             <constraint firstItem="Z0U-33-i0S" firstAttribute="top" secondItem="OmS-KM-jTp" secondAttribute="top" id="ofT-e7-fu0"/>
                             <constraint firstItem="Z0U-33-i0S" firstAttribute="leading" secondItem="OmS-KM-jTp" secondAttribute="leading" id="sGF-jw-jKg"/>
                             <constraint firstAttribute="bottom" secondItem="Z0U-33-i0S" secondAttribute="bottom" id="smM-X7-5Ow"/>
@@ -52,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xp2-pr-zMu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-252" y="95.802098950524751"/>
+            <point key="canvasLocation" x="-252" y="95.320197044334975"/>
         </scene>
     </scenes>
 </document>

@@ -890,7 +890,7 @@
                 <key>storyboardName</key>
                 <string>LineOfSightLocation</string>
                 <key>descriptionText</key>
-                <string>Shows how to interactively place a line of sight between two locations.</string>
+                <string>Place a line of sight between two locations.</string>
             </dict>
 		</array>
 	</dict>

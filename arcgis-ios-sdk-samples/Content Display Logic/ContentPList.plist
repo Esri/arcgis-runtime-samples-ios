@@ -896,6 +896,14 @@
                     <string>Bradley3DModel</string>
                 </array>
             </dict>
+            <dict>
+                <key>displayName</key>
+                <string>Viewshed (location)</string>
+                <key>storyboardName</key>
+                <string>ViewshedLocation</string>
+                <key>descriptionText</key>
+                <string>Demonstrates how to interactively edit a viewshed analysis in a scene and see updates on-the-fly.</string>
+            </dict>
 		</array>
 	</dict>
 	<dict>

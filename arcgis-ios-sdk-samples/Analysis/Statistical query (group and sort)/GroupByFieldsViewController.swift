@@ -89,15 +89,6 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
                 // Remove field from the group by fields
                 let index = selectedFieldNames.index(of: fieldNames[indexPath.row])
                 selectedFieldNames.remove(at: index!)
-                
-//                let fieldName = fieldNames[indexPath.row]
-//                for i in 0 ..< selectedFieldNames.count {
-//                    let selectedFieldName = selectedFieldNames[i]
-//                    if selectedFieldName == fieldName {
-//                        selectedFieldNames.remove(at: i)
-//                        break
-//                    }
-//                }
             }
         }
     }

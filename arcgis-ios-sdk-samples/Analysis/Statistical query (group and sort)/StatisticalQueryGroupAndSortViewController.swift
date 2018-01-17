@@ -119,8 +119,9 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
                     let statisticRecord = statisticRecordEnumerator.nextObject()
                     
                     var groups = [String]()
-                    for (key, value) in (statisticRecord?.group)!  {
-                        groups.append("\(key):\(value)")
+                    for fieldName in (self?.selectedGroupByFieldNames)! {
+                        let value = statisticRecord?.group[fieldName] as! String
+                        groups.append("\(value)")
                     }
                     self?.expandableTableViewController.sectionHeaderTitles.append(groups.joined(separator: ", "))
                     
@@ -320,16 +321,14 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
                     selectedGroupByFieldNames.remove(at: indexPath.row)
                     
                     // Remove field from the order by fields
-                    for i in (0..<orderByFields.count).reversed() {
-                        let orderByField = orderByFields[i]
+                    for (i,orderByField) in orderByFields.enumerated().reversed() {
                         if orderByField.fieldName == selectedGroupByFieldName {
                             orderByFields.remove(at: i)
                         }
                     }
                     
                     // Remove field from the selected order by fields
-                    for i in (0..<selectedOrderByFields.count).reversed() {
-                        let selectedOrderByField = selectedOrderByFields[i]
+                    for (i,selectedOrderByField) in selectedOrderByFields.enumerated().reversed() {
                         if selectedOrderByField.fieldName == selectedGroupByFieldName {
                             selectedOrderByFields.remove(at: i)
                         }
@@ -376,8 +375,15 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             orderByFields.append(orderBy)
         }
         
-        // Reload order by fields section
-        tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
+        // Remove selected order by field if it's not part of the new order by fields
+        for (i,orderByField) in selectedOrderByFields.enumerated().reversed() {
+            if !orderByFields.contains(where: { $0.fieldName == orderByField.fieldName }) {
+                selectedOrderByFields.remove(at: i)
+            }
+        }
+        
+        // Reload sections
+        tableView.reloadSections(IndexSet([1,2]), with: .automatic)
     }
     
     // MARK: - Order By Fields View Controller Delegate

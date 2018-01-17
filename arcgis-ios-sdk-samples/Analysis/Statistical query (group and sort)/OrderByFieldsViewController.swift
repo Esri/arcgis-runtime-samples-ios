@@ -83,7 +83,7 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
         cell.imageView?.addGestureRecognizer(imageViewTapGesture)
         
         // Set accessory type
-        if selectedOrderByFields.contains(orderByField) {
+        if selectedOrderByFields.contains(where: { $0.fieldName == orderByField.fieldName }) {
             cell.accessoryType = .checkmark
         }
         else {

@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, GroupByFieldsViewControllerDelegate, OrderByFieldsViewControllerDelegate, AddStatisticDefinitionsViewControllerDelegate, UIAdaptivePresentationControllerDelegate {
+class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, GroupByFieldsViewControllerDelegate, OrderByFieldsViewControllerDelegate, AddStatisticDefinitionsViewControllerDelegate, UIAdaptivePresentationControllerDelegate, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var getStatisticsButton: UIBarButtonItem!
@@ -130,12 +130,6 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
                     }
                     self?.expandableTableViewController.sectionItems.append(statistics)
                 }
-
-                // Only for iPad, set presentation style to Form sheet
-                // We don't want it to cover the entire screen
-                if UIDevice.current.userInterfaceIdiom == .pad {
-                    self?.expandableTableViewController.modalPresentationStyle = .formSheet
-                }
                 
                 // Show result
                 self?.navigationController?.show((self?.expandableTableViewController)!, sender: self)
@@ -208,7 +202,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             orderByFieldsViewController.presentationController?.delegate = self
             orderByFieldsViewController.popoverPresentationController?.sourceView = sender
             orderByFieldsViewController.popoverPresentationController?.sourceRect = sender.bounds
-            
+
             // Present view controller
             self.present(orderByFieldsViewController, animated: true, completion: nil)
         }
@@ -397,12 +391,18 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         tableView.reloadSections(IndexSet(integer: 2), with: .automatic)
     }
     
-    //MARK: - UIAdaptivePresentationControllerDelegate
+    // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         //
         // For popover or non modal presentation
         return UIModalPresentationStyle.none
+    }
+    
+    // MARK: - UIPopoverPresentationControllerDelegate
+    
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        return false
     }
     
     // MARK: - Helper Methods

@@ -104,6 +104,11 @@ class ExpandableTableViewController: UITableViewController {
         imageView.tag = kHeaderSectionTag + section
         header.addSubview(imageView)
         
+        // Add constraints for image view
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        header.addConstraint(NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal, toItem: header, attribute: .centerY, multiplier: 1, constant: 0))
+        header.addConstraint(NSLayoutConstraint(item: imageView, attribute: .trailing, relatedBy: .equal, toItem: header, attribute: .trailing, multiplier: 1, constant: -16))
+        
         // Make headers touchable
         let headerTapGesture = UITapGestureRecognizer()
         headerTapGesture.addTarget(self, action: #selector(sectionHeaderWasTouched(_:)))

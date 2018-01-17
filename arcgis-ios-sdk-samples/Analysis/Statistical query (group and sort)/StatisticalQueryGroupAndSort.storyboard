@@ -91,7 +91,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="se7-AR-FaE"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="LA5-7t-9Hf"/>
-                                    <barButtonItem image="Reset" id="iew-yJ-Qk2">
+                                    <barButtonItem title="Reset" id="iew-yJ-Qk2">
                                         <connections>
                                             <action selector="resetAction:" destination="nxZ-z6-SCJ" id="pOO-bc-RdJ"/>
                                         </connections>
@@ -445,7 +445,4 @@
             <point key="canvasLocation" x="376.80000000000001" y="-0.44977511244377816"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Reset" width="22" height="22"/>
-    </resources>
 </document>

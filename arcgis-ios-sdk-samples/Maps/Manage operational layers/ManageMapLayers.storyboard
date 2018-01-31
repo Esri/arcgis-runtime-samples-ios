@@ -53,8 +53,8 @@
                         <viewLayoutGuide key="safeArea" id="4Sf-hS-8jA"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="nTP-Da-lbR"/>
                                 <exclude reference="0zZ-C7-DhL"/>
+                                <exclude reference="nTP-Da-lbR"/>
                             </mask>
                         </variation>
                     </view>
@@ -104,9 +104,9 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="l9u-Fn-8ss" firstAttribute="top" secondItem="Rft-BM-iyU" secondAttribute="top" id="Q9e-XH-asd"/>
-                            <constraint firstItem="Mhd-hj-EKz" firstAttribute="trailing" secondItem="l9u-Fn-8ss" secondAttribute="trailing" id="Rwq-CK-WtK"/>
+                            <constraint firstItem="l9u-Fn-8ss" firstAttribute="trailing" secondItem="Rft-BM-iyU" secondAttribute="trailing" id="Rwq-CK-WtK"/>
                             <constraint firstAttribute="bottom" secondItem="l9u-Fn-8ss" secondAttribute="bottom" id="f6z-2e-zSk"/>
-                            <constraint firstItem="l9u-Fn-8ss" firstAttribute="leading" secondItem="Mhd-hj-EKz" secondAttribute="leading" id="nsN-Az-2Xl"/>
+                            <constraint firstItem="l9u-Fn-8ss" firstAttribute="leading" secondItem="Rft-BM-iyU" secondAttribute="leading" id="nsN-Az-2Xl"/>
                             <constraint firstItem="l9u-Fn-8ss" firstAttribute="top" secondItem="Mhd-hj-EKz" secondAttribute="top" id="z07-Sd-byo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mhd-hj-EKz"/>

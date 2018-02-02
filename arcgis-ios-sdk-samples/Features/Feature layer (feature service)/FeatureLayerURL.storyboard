@@ -1,35 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2On-YK-Ssm">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2On-YK-Ssm">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Feature Layer URL View Controller-->
         <scene sceneID="9Nf-TA-uQN">
             <objects>
                 <viewController id="2On-YK-Ssm" customClass="FeatureLayerURLViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gBf-hJ-Rek"/>
-                        <viewControllerLayoutGuide type="bottom" id="NRO-5F-HmI"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qrc-i5-u8V">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bib-4j-jdc" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="NRO-5F-HmI" firstAttribute="top" secondItem="bib-4j-jdc" secondAttribute="bottom" id="8cs-Nv-qpi"/>
+                            <constraint firstAttribute="bottom" secondItem="bib-4j-jdc" secondAttribute="bottom" id="8cs-Nv-qpi"/>
                             <constraint firstItem="bib-4j-jdc" firstAttribute="top" secondItem="qrc-i5-u8V" secondAttribute="top" id="d8s-Qd-6JM"/>
                             <constraint firstAttribute="trailing" secondItem="bib-4j-jdc" secondAttribute="trailing" id="iio-aI-R7U"/>
-                            <constraint firstItem="bib-4j-jdc" firstAttribute="top" secondItem="gBf-hJ-Rek" secondAttribute="bottom" id="llK-2V-IXC"/>
+                            <constraint firstItem="bib-4j-jdc" firstAttribute="top" secondItem="KMM-qa-IA7" secondAttribute="top" id="llK-2V-IXC"/>
                             <constraint firstItem="bib-4j-jdc" firstAttribute="leading" secondItem="qrc-i5-u8V" secondAttribute="leading" id="zYG-Ar-FeU"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="KMM-qa-IA7"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="d8s-Qd-6JM"/>

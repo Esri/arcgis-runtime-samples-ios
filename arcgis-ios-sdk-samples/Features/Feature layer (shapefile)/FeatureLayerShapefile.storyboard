@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FXM-eG-xpM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FXM-eG-xpM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,6 +24,9 @@
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F5L-O6-jEF">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="JfA-Jy-jiL"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="o6E-qk-CHN"/>
                                     <barButtonItem title="Set Shapefile Symbol" id="ANT-9L-LdZ">
@@ -37,13 +40,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="F5L-O6-jEF" firstAttribute="top" secondItem="EJN-iK-ua0" secondAttribute="bottom" id="5lj-M1-D85"/>
+                            <constraint firstItem="EJN-iK-ua0" firstAttribute="bottom" secondItem="6QO-qc-8uf" secondAttribute="bottom" constant="-44" id="5lj-M1-D85"/>
                             <constraint firstItem="EJN-iK-ua0" firstAttribute="top" secondItem="6QO-qc-8uf" secondAttribute="top" id="Htf-Ag-Gpx"/>
-                            <constraint firstItem="F5L-O6-jEF" firstAttribute="leading" secondItem="6QO-qc-8uf" secondAttribute="leading" id="P5a-S6-S3B"/>
-                            <constraint firstItem="EJN-iK-ua0" firstAttribute="trailing" secondItem="6QO-qc-8uf" secondAttribute="trailing" id="aFu-IZ-IuS"/>
-                            <constraint firstItem="F5L-O6-jEF" firstAttribute="trailing" secondItem="6QO-qc-8uf" secondAttribute="trailing" id="jpV-7D-mbt"/>
+                            <constraint firstItem="F5L-O6-jEF" firstAttribute="leading" secondItem="mgO-Tb-CUI" secondAttribute="leading" id="P5a-S6-S3B"/>
+                            <constraint firstItem="EJN-iK-ua0" firstAttribute="trailing" secondItem="mgO-Tb-CUI" secondAttribute="trailing" id="aFu-IZ-IuS"/>
+                            <constraint firstItem="F5L-O6-jEF" firstAttribute="trailing" secondItem="mgO-Tb-CUI" secondAttribute="trailing" id="jpV-7D-mbt"/>
                             <constraint firstItem="F5L-O6-jEF" firstAttribute="bottom" secondItem="6QO-qc-8uf" secondAttribute="bottom" id="pTI-Cp-PMu"/>
-                            <constraint firstItem="EJN-iK-ua0" firstAttribute="leading" secondItem="6QO-qc-8uf" secondAttribute="leading" id="xeC-a0-NZi"/>
+                            <constraint firstItem="EJN-iK-ua0" firstAttribute="leading" secondItem="mgO-Tb-CUI" secondAttribute="leading" id="xeC-a0-NZi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6QO-qc-8uf"/>
                     </view>

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="126-LZ-Pp8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="126-LZ-Pp8">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,10 +14,6 @@
         <scene sceneID="fTo-5Y-pJR">
             <objects>
                 <viewController id="126-LZ-Pp8" customClass="WMTSLayerViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dgS-ZM-GOZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="orV-1k-b7U"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ft7-qz-h1n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,10 +27,11 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="DPu-eW-MjN" secondAttribute="trailing" id="3Oe-dW-3uY"/>
                             <constraint firstItem="DPu-eW-MjN" firstAttribute="top" secondItem="ft7-qz-h1n" secondAttribute="top" id="F9K-rF-bfK"/>
-                            <constraint firstItem="orV-1k-b7U" firstAttribute="top" secondItem="DPu-eW-MjN" secondAttribute="bottom" id="NOx-a0-Bb5"/>
+                            <constraint firstAttribute="bottom" secondItem="DPu-eW-MjN" secondAttribute="bottom" id="NOx-a0-Bb5"/>
                             <constraint firstItem="DPu-eW-MjN" firstAttribute="leading" secondItem="ft7-qz-h1n" secondAttribute="leading" id="QDU-Xi-yps"/>
-                            <constraint firstItem="DPu-eW-MjN" firstAttribute="top" secondItem="dgS-ZM-GOZ" secondAttribute="bottom" id="ual-h1-jaa"/>
+                            <constraint firstItem="DPu-eW-MjN" firstAttribute="top" secondItem="MKs-te-Hh7" secondAttribute="top" id="ual-h1-jaa"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="MKs-te-Hh7"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="F9K-rF-bfK"/>

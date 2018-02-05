@@ -1,35 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PIk-JH-uY3">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PIk-JH-uY3">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Selection View Controller-->
         <scene sceneID="9Cx-Fs-l9y">
             <objects>
                 <viewController id="PIk-JH-uY3" customClass="FLSelectionViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Be7-O3-Mzv"/>
-                        <viewControllerLayoutGuide type="bottom" id="9cA-bs-XbG"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pct-Is-DQi">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jek-wa-W5c" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Jek-wa-W5c" secondAttribute="trailing" id="GpA-Ez-euQ"/>
-                            <constraint firstItem="9cA-bs-XbG" firstAttribute="top" secondItem="Jek-wa-W5c" secondAttribute="bottom" id="VQ4-XP-L4k"/>
-                            <constraint firstItem="Jek-wa-W5c" firstAttribute="top" secondItem="Be7-O3-Mzv" secondAttribute="bottom" id="gJe-xf-qCR"/>
+                            <constraint firstAttribute="bottom" secondItem="Jek-wa-W5c" secondAttribute="bottom" id="VQ4-XP-L4k"/>
+                            <constraint firstItem="Jek-wa-W5c" firstAttribute="top" secondItem="Zuc-h4-Txi" secondAttribute="top" id="gJe-xf-qCR"/>
                             <constraint firstItem="Jek-wa-W5c" firstAttribute="leading" secondItem="pct-Is-DQi" secondAttribute="leading" id="kOD-ZL-TiH"/>
                             <constraint firstItem="Jek-wa-W5c" firstAttribute="top" secondItem="pct-Is-DQi" secondAttribute="top" id="oNR-8U-fFY"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Zuc-h4-Txi"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="oNR-8U-fFY"/>

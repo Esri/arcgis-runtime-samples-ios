@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bNz-jN-mz3">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bNz-jN-mz3">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -9,26 +14,24 @@
         <scene sceneID="Z0X-Fc-J0p">
             <objects>
                 <viewController id="bNz-jN-mz3" customClass="EditAttachmentViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0vp-0K-THA"/>
-                        <viewControllerLayoutGuide type="bottom" id="KCc-P0-KOx"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QXn-Rn-DAX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thH-Sp-cnK" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="thH-Sp-cnK" firstAttribute="leading" secondItem="QXn-Rn-DAX" secondAttribute="leading" id="5E9-75-Qqh"/>
-                            <constraint firstItem="thH-Sp-cnK" firstAttribute="top" secondItem="0vp-0K-THA" secondAttribute="bottom" id="Onv-fX-hTz"/>
+                            <constraint firstItem="thH-Sp-cnK" firstAttribute="top" secondItem="fGG-20-8va" secondAttribute="top" id="Onv-fX-hTz"/>
                             <constraint firstItem="thH-Sp-cnK" firstAttribute="top" secondItem="QXn-Rn-DAX" secondAttribute="top" id="OrD-4V-dGU"/>
                             <constraint firstAttribute="trailing" secondItem="thH-Sp-cnK" secondAttribute="trailing" id="SUP-sa-f7b"/>
-                            <constraint firstItem="KCc-P0-KOx" firstAttribute="top" secondItem="thH-Sp-cnK" secondAttribute="bottom" id="bWC-A9-kye"/>
+                            <constraint firstAttribute="bottom" secondItem="thH-Sp-cnK" secondAttribute="bottom" id="bWC-A9-kye"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="fGG-20-8va"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="OrD-4V-dGU"/>
@@ -48,15 +51,12 @@
         <scene sceneID="P8L-5p-azg">
             <objects>
                 <viewController id="B1C-wE-HUh" customClass="AttachmentsListViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="onh-UO-R4t"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ztc-kC-kYk"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7mZ-O0-DFh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gG-Rc-fH3">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Attachments" id="SFa-mJ-ejx">
                                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="RX8-CC-Uxd">
@@ -76,17 +76,18 @@
                                 </connections>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="quJ-jM-YDd">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AttachmentCell" textLabel="45i-SF-VUy" style="IBUITableViewCellStyleDefault" id="TsV-ON-90k">
                                         <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TsV-ON-90k" id="aJx-Ml-MDw">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="45i-SF-VUy">
-                                                    <frame key="frameInset" minX="15" width="345" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -104,14 +105,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="7gG-Rc-fH3" firstAttribute="top" secondItem="onh-UO-R4t" secondAttribute="bottom" id="8KA-1d-hko"/>
+                            <constraint firstItem="7gG-Rc-fH3" firstAttribute="top" secondItem="joZ-wc-WHf" secondAttribute="top" id="8KA-1d-hko"/>
                             <constraint firstItem="quJ-jM-YDd" firstAttribute="top" secondItem="7gG-Rc-fH3" secondAttribute="bottom" id="INV-dq-8eb"/>
                             <constraint firstItem="7gG-Rc-fH3" firstAttribute="leading" secondItem="7mZ-O0-DFh" secondAttribute="leading" id="Utp-oW-LMU"/>
                             <constraint firstItem="quJ-jM-YDd" firstAttribute="leading" secondItem="7mZ-O0-DFh" secondAttribute="leading" id="X5K-3I-7G3"/>
                             <constraint firstAttribute="trailing" secondItem="7gG-Rc-fH3" secondAttribute="trailing" id="drf-cB-92q"/>
-                            <constraint firstItem="Ztc-kC-kYk" firstAttribute="top" secondItem="quJ-jM-YDd" secondAttribute="bottom" id="nHK-JL-Fj2"/>
+                            <constraint firstAttribute="bottom" secondItem="quJ-jM-YDd" secondAttribute="bottom" id="nHK-JL-Fj2"/>
                             <constraint firstAttribute="trailing" secondItem="quJ-jM-YDd" secondAttribute="trailing" id="vM3-hg-889"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="joZ-wc-WHf"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="quJ-jM-YDd" id="LND-yd-kEm"/>

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,10 +14,6 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,17 +28,17 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="xPD-f5-k1U"/>
                                     <barButtonItem width="300" style="plain" id="07V-iL-mk1">
                                         <view key="customView" contentMode="scaleToFill" id="3bl-ag-Db5">
-                                            <rect key="frame" x="37.5" y="5.5" width="300" height="33"/>
+                                            <rect key="frame" x="187.5" y="22" width="0.0" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RAb-nm-N47">
-                                                    <rect key="frame" x="6" y="1.5" width="246" height="31"/>
+                                                    <rect key="frame" x="6" y="-15" width="4" height="31"/>
                                                     <connections>
                                                         <action selector="sliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="iws-0m-F8G"/>
                                                     </connections>
                                                 </slider>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vB-Iw-oNt">
-                                                    <rect key="frame" x="257" y="6" width="30" height="21"/>
+                                                    <rect key="frame" x="15" y="6" width="30" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -64,14 +61,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="PDg-Fc-adQ" firstAttribute="top" secondItem="Jj4-Au-zx0" secondAttribute="bottom" id="Apk-wp-KDv"/>
+                            <constraint firstItem="Jj4-Au-zx0" firstAttribute="bottom" secondItem="NpU-Mq-4Hs" secondAttribute="bottom" constant="-44" id="Apk-wp-KDv"/>
                             <constraint firstAttribute="trailing" secondItem="PDg-Fc-adQ" secondAttribute="trailing" id="MY1-Jj-qBw"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PDg-Fc-adQ" secondAttribute="bottom" id="Y6b-rI-SKz"/>
+                            <constraint firstItem="NpU-Mq-4Hs" firstAttribute="bottom" secondItem="PDg-Fc-adQ" secondAttribute="bottom" id="Y6b-rI-SKz"/>
                             <constraint firstItem="PDg-Fc-adQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="acn-Et-izS"/>
                             <constraint firstItem="Jj4-Au-zx0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="l4e-ga-ZRd"/>
                             <constraint firstAttribute="trailing" secondItem="Jj4-Au-zx0" secondAttribute="trailing" id="qTC-qC-pxz"/>
-                            <constraint firstItem="Jj4-Au-zx0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="uWS-99-35c"/>
+                            <constraint firstItem="Jj4-Au-zx0" firstAttribute="top" secondItem="NpU-Mq-4Hs" secondAttribute="top" id="uWS-99-35c"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="NpU-Mq-4Hs"/>
                     </view>
                     <connections>
                         <outlet property="exaggerationSlider" destination="RAb-nm-N47" id="Y8I-y6-2lm"/>

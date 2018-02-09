@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lb4-oH-gZ5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lb4-oH-gZ5">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Heavy</string>
+            <string>Avenir-Roman</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Search For Webmap By Keyword View Controller-->
         <scene sceneID="5Bc-Br-Lpk">
             <objects>
                 <viewController id="lb4-oH-gZ5" customClass="SearchForWebmapByKeywordViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7vc-pm-hwe"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ehc-7y-Ry3"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wUs-7m-DS7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="PsJ-gz-0LP">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
                                 <color key="barTintColor" red="0.0" green="0.47450980390000003" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -29,13 +33,13 @@
                                 </connections>
                             </searchBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XrA-fd-LLL">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
                                 <connections>
                                     <segue destination="wmB-24-7Xa" kind="embed" identifier="WebMapsCollectionSegue" id="qCi-Dv-e8y"/>
                                 </connections>
                             </containerView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8Y-lX-ZOz">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
                                 <connections>
                                     <action selector="buttonAction" destination="lb4-oH-gZ5" eventType="touchUpInside" id="2sX-bt-xzs"/>
                                 </connections>
@@ -43,18 +47,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PsJ-gz-0LP" firstAttribute="top" secondItem="7vc-pm-hwe" secondAttribute="bottom" id="973-yC-52i"/>
+                            <constraint firstItem="PsJ-gz-0LP" firstAttribute="top" secondItem="gFI-KA-yqJ" secondAttribute="top" id="973-yC-52i"/>
                             <constraint firstItem="PsJ-gz-0LP" firstAttribute="leading" secondItem="wUs-7m-DS7" secondAttribute="leading" id="Bf3-cg-0Ls"/>
-                            <constraint firstAttribute="trailing" secondItem="XrA-fd-LLL" secondAttribute="trailing" id="G4j-5R-i1e"/>
-                            <constraint firstItem="Ehc-7y-Ry3" firstAttribute="top" secondItem="XrA-fd-LLL" secondAttribute="bottom" id="H4P-W9-L0g"/>
-                            <constraint firstAttribute="trailing" secondItem="g8Y-lX-ZOz" secondAttribute="trailing" id="It2-Qb-WvU"/>
-                            <constraint firstItem="Ehc-7y-Ry3" firstAttribute="top" secondItem="g8Y-lX-ZOz" secondAttribute="bottom" id="Sw0-31-Nu6"/>
-                            <constraint firstItem="g8Y-lX-ZOz" firstAttribute="leading" secondItem="wUs-7m-DS7" secondAttribute="leading" id="Vgy-c4-fvr"/>
+                            <constraint firstItem="gFI-KA-yqJ" firstAttribute="trailing" secondItem="XrA-fd-LLL" secondAttribute="trailing" id="G4j-5R-i1e"/>
+                            <constraint firstAttribute="bottom" secondItem="XrA-fd-LLL" secondAttribute="bottom" id="H4P-W9-L0g"/>
+                            <constraint firstItem="gFI-KA-yqJ" firstAttribute="trailing" secondItem="g8Y-lX-ZOz" secondAttribute="trailing" id="It2-Qb-WvU"/>
+                            <constraint firstItem="gFI-KA-yqJ" firstAttribute="bottom" secondItem="g8Y-lX-ZOz" secondAttribute="bottom" id="Sw0-31-Nu6"/>
+                            <constraint firstItem="g8Y-lX-ZOz" firstAttribute="leading" secondItem="gFI-KA-yqJ" secondAttribute="leading" id="Vgy-c4-fvr"/>
                             <constraint firstItem="XrA-fd-LLL" firstAttribute="top" secondItem="PsJ-gz-0LP" secondAttribute="bottom" id="dFN-lU-774"/>
                             <constraint firstItem="g8Y-lX-ZOz" firstAttribute="top" secondItem="PsJ-gz-0LP" secondAttribute="bottom" id="fqN-b4-68g"/>
                             <constraint firstAttribute="trailing" secondItem="PsJ-gz-0LP" secondAttribute="trailing" id="rpi-SS-txa"/>
-                            <constraint firstItem="XrA-fd-LLL" firstAttribute="leading" secondItem="wUs-7m-DS7" secondAttribute="leading" id="xJl-F7-iaV"/>
+                            <constraint firstItem="XrA-fd-LLL" firstAttribute="leading" secondItem="gFI-KA-yqJ" secondAttribute="leading" id="xJl-F7-iaV"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="gFI-KA-yqJ"/>
                     </view>
                     <navigationItem key="navigationItem" id="2um-02-AhL"/>
                     <connections>
@@ -71,10 +76,6 @@
         <scene sceneID="t96-Zm-W8c">
             <objects>
                 <viewController id="xmI-If-VFc" customClass="WebMapViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="L7n-fA-skw"/>
-                        <viewControllerLayoutGuide type="bottom" id="zGS-kR-FjJ"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KkQ-lu-fjM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,11 +87,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zGS-kR-FjJ" firstAttribute="top" secondItem="oEp-oB-dAg" secondAttribute="bottom" id="4UV-Qy-Zzk"/>
+                            <constraint firstAttribute="bottom" secondItem="oEp-oB-dAg" secondAttribute="bottom" id="4UV-Qy-Zzk"/>
                             <constraint firstAttribute="trailing" secondItem="oEp-oB-dAg" secondAttribute="trailing" id="Ci9-0o-8Xn"/>
-                            <constraint firstItem="oEp-oB-dAg" firstAttribute="top" secondItem="L7n-fA-skw" secondAttribute="bottom" id="cbv-mw-rLz"/>
+                            <constraint firstItem="oEp-oB-dAg" firstAttribute="top" secondItem="Uzv-xA-ZJR" secondAttribute="top" id="cbv-mw-rLz"/>
                             <constraint firstItem="oEp-oB-dAg" firstAttribute="leading" secondItem="KkQ-lu-fjM" secondAttribute="leading" id="ksl-Ar-fjd"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Uzv-xA-ZJR"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="oEp-oB-dAg" id="Uef-EK-LlP"/>
@@ -104,16 +106,12 @@
         <scene sceneID="A4X-9w-i80">
             <objects>
                 <viewController id="wmB-24-7Xa" customClass="WebMapsCollectionViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Bog-Zc-MSW"/>
-                        <viewControllerLayoutGuide type="bottom" id="Oao-AK-tFd"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="n0O-fm-ZHH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yyJ-6p-rPs">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="571"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tES-YT-R93">
                                     <size key="itemSize" width="290" height="126"/>
@@ -228,11 +226,12 @@
                             </collectionView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="yyJ-6p-rPs" firstAttribute="leading" secondItem="n0O-fm-ZHH" secondAttribute="leading" id="0Qh-d4-aUZ"/>
-                            <constraint firstItem="yyJ-6p-rPs" firstAttribute="top" secondItem="n0O-fm-ZHH" secondAttribute="top" id="85k-kT-JyX"/>
-                            <constraint firstItem="Oao-AK-tFd" firstAttribute="top" secondItem="yyJ-6p-rPs" secondAttribute="bottom" id="NKf-hz-IWH"/>
-                            <constraint firstAttribute="trailing" secondItem="yyJ-6p-rPs" secondAttribute="trailing" id="o1p-Vq-d7x"/>
+                            <constraint firstItem="yyJ-6p-rPs" firstAttribute="leading" secondItem="zZF-d0-e0S" secondAttribute="leading" id="0Qh-d4-aUZ"/>
+                            <constraint firstItem="yyJ-6p-rPs" firstAttribute="top" secondItem="zZF-d0-e0S" secondAttribute="top" id="85k-kT-JyX"/>
+                            <constraint firstAttribute="bottom" secondItem="yyJ-6p-rPs" secondAttribute="bottom" id="NKf-hz-IWH"/>
+                            <constraint firstItem="zZF-d0-e0S" firstAttribute="trailing" secondItem="yyJ-6p-rPs" secondAttribute="trailing" id="o1p-Vq-d7x"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="zZF-d0-e0S"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="yyJ-6p-rPs" id="sNz-8h-KN3"/>

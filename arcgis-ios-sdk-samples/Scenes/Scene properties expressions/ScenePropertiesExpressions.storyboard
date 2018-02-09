@@ -1,28 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8fJ-SJ-TSb">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8fJ-SJ-TSb">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Scene Properties Expressions View Controller-->
         <scene sceneID="B6q-fK-GAp">
             <objects>
                 <viewController id="8fJ-SJ-TSb" customClass="ScenePropertiesExpressionsViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="PCX-xo-cWu"/>
-                        <viewControllerLayoutGuide type="bottom" id="aTF-p8-Yyh"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="utC-Lb-iJ0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="osp-3X-78c" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="573"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uhr-Ta-ZHR">
+                                <rect key="frame" x="0.0" y="593" width="375" height="74"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbe-1f-Es4">
+                                        <rect key="frame" x="8" y="11.5" width="70" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="JJk-Cb-xrC"/>
                                         </constraints>
@@ -31,11 +40,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="359" translatesAutoresizingMaskIntoConstraints="NO" id="pOK-0g-1xR">
+                                        <rect key="frame" x="84" y="5" width="241" height="33"/>
                                         <connections>
                                             <action selector="headingSliderValueChanged:" destination="8fJ-SJ-TSb" eventType="valueChanged" id="kv3-gD-rdd"/>
                                         </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xz1-QG-bju">
+                                        <rect key="frame" x="331" y="10" width="36" height="23.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="ARj-NE-1xL"/>
                                         </constraints>
@@ -44,6 +55,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pitch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTM-Uh-1Ju">
+                                        <rect key="frame" x="8" y="44.5" width="70" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="dC3-TL-7li"/>
                                         </constraints>
@@ -52,11 +64,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-90" maxValue="90" translatesAutoresizingMaskIntoConstraints="NO" id="kKa-YD-wnd">
+                                        <rect key="frame" x="84" y="39" width="241" height="31"/>
                                         <connections>
                                             <action selector="pitchSliderValueChanged:" destination="8fJ-SJ-TSb" eventType="valueChanged" id="CAZ-oq-QXv"/>
                                         </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQt-U9-H3F">
+                                        <rect key="frame" x="331" y="43" width="36" height="23.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="L6E-L1-HYh"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="36" id="ghe-eC-12d"/>
@@ -96,13 +110,14 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="osp-3X-78c" firstAttribute="leading" secondItem="utC-Lb-iJ0" secondAttribute="leading" id="6O6-Nw-YMQ"/>
-                            <constraint firstItem="aTF-p8-Yyh" firstAttribute="top" secondItem="Uhr-Ta-ZHR" secondAttribute="bottom" id="Aac-5c-TeR"/>
+                            <constraint firstItem="A9H-bV-Daq" firstAttribute="bottom" secondItem="Uhr-Ta-ZHR" secondAttribute="bottom" id="Aac-5c-TeR"/>
                             <constraint firstItem="Uhr-Ta-ZHR" firstAttribute="top" secondItem="osp-3X-78c" secondAttribute="bottom" id="EFJ-86-aiM"/>
                             <constraint firstItem="Uhr-Ta-ZHR" firstAttribute="leading" secondItem="utC-Lb-iJ0" secondAttribute="leading" id="NCF-nq-DRe"/>
-                            <constraint firstItem="osp-3X-78c" firstAttribute="top" secondItem="PCX-xo-cWu" secondAttribute="bottom" id="Sa3-1r-8Tw"/>
+                            <constraint firstItem="osp-3X-78c" firstAttribute="top" secondItem="A9H-bV-Daq" secondAttribute="top" id="Sa3-1r-8Tw"/>
                             <constraint firstAttribute="trailing" secondItem="Uhr-Ta-ZHR" secondAttribute="trailing" id="hsx-Q6-g39"/>
                             <constraint firstAttribute="trailing" secondItem="osp-3X-78c" secondAttribute="trailing" id="xgw-Kw-pey"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="A9H-bV-Daq"/>
                     </view>
                     <connections>
                         <outlet property="headingLabel" destination="Xz1-QG-bju" id="HFM-aV-2Xc"/>

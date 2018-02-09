@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UGh-Qq-4Dj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UGh-Qq-4Dj">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -9,25 +14,23 @@
         <scene sceneID="Ztd-z1-qKz">
             <objects>
                 <viewController id="UGh-Qq-4Dj" customClass="SceneLayerURLViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="oKr-NY-G6S"/>
-                        <viewControllerLayoutGuide type="bottom" id="tbx-ws-lsm"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="REb-0V-PwH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yJX-yn-Qko" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="yJX-yn-Qko" secondAttribute="trailing" id="F6F-vT-tOY"/>
-                            <constraint firstItem="yJX-yn-Qko" firstAttribute="top" secondItem="oKr-NY-G6S" secondAttribute="bottom" id="Xh5-wo-q4c"/>
-                            <constraint firstItem="tbx-ws-lsm" firstAttribute="top" secondItem="yJX-yn-Qko" secondAttribute="bottom" id="dcV-XA-i1X"/>
+                            <constraint firstItem="yJX-yn-Qko" firstAttribute="top" secondItem="IhN-Cr-PLT" secondAttribute="top" id="Xh5-wo-q4c"/>
+                            <constraint firstAttribute="bottom" secondItem="yJX-yn-Qko" secondAttribute="bottom" id="dcV-XA-i1X"/>
                             <constraint firstItem="yJX-yn-Qko" firstAttribute="leading" secondItem="REb-0V-PwH" secondAttribute="leading" id="pxv-uX-0Cv"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="IhN-Cr-PLT"/>
                     </view>
                     <connections>
                         <outlet property="sceneView" destination="yJX-yn-Qko" id="q0P-a3-d8f"/>

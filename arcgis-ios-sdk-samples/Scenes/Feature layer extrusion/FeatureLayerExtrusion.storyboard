@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0GJ-W3-QUT" customClass="AGSSceneView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8V-73-JIP">
@@ -28,7 +28,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="s5q-aU-wBn"/>
                                     <barButtonItem style="plain" id="Lqa-aw-H3q">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="CeK-eV-keP">
-                                            <rect key="frame" x="59" y="7" width="257" height="30"/>
+                                            <rect key="frame" x="59" y="7.5" width="257" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Total Population"/>
@@ -51,7 +51,7 @@
                             <constraint firstItem="y8V-73-JIP" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="f6W-Sy-qnX"/>
                             <constraint firstItem="0GJ-W3-QUT" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="nN1-ye-Nwk"/>
                             <constraint firstItem="y8V-73-JIP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xej-A7-E93"/>
-                            <constraint firstItem="0GJ-W3-QUT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="yqK-E8-EUW"/>
+                            <constraint firstItem="0GJ-W3-QUT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="yqK-E8-EUW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

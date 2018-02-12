@@ -17,7 +17,7 @@ import UIKit
 import ArcGIS
 
 protocol AddStatisticDefinitionsViewControllerDelegate: class {
-    func addStatisticDefinitionsViewController(_ addStatisticDefinitionsViewController: AddStatisticDefinitionsViewController, statisticDefinitions: [AGSStatisticDefinition])
+    func addStatisticDefinitions(_ statisticDefinitions: [AGSStatisticDefinition])
 }
 
 class AddStatisticDefinitionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -46,9 +46,6 @@ class AddStatisticDefinitionsViewController: UIViewController, UITableViewDataSo
         // Add picker options
         fieldNamePicker.options = fieldNames
         statisticTypePicker.options =  statisticTypes
-        
-        // Register table cell
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "StatisticDefinitionCell")
     }
     
     //MARK: - TableView data source
@@ -62,7 +59,7 @@ class AddStatisticDefinitionsViewController: UIViewController, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "StatisticDefinitionCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StatisticDefinitionCell", for: indexPath)
         if statisticDefinitions.count > 0 {
             let statisticDefinition = statisticDefinitions[indexPath.row]
             let statisticTypeString = statisticTypes[statisticDefinition.statisticType.rawValue]
@@ -89,7 +86,7 @@ class AddStatisticDefinitionsViewController: UIViewController, UITableViewDataSo
     @IBAction private func doneAction() {
         //
         // Fire delegate
-        delegate?.addStatisticDefinitionsViewController(self, statisticDefinitions: statisticDefinitions)
+        delegate?.addStatisticDefinitions(statisticDefinitions)
         
         // Dismiss view controller
         dismiss(animated: true, completion: nil)

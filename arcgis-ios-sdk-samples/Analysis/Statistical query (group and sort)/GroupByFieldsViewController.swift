@@ -17,7 +17,7 @@ import UIKit
 import ArcGIS
 
 protocol GroupByFieldsViewControllerDelegate: class {
-    func groupByFieldsViewController(_ groupByFieldsViewController: GroupByFieldsViewController, selectedsFieldNames: [String])
+    func setGrouping(with fieldNames: [String])
 }
 
 class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -50,7 +50,7 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupByFieldsCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupByFieldsCell", for: indexPath)
         let fieldName = fieldNames[indexPath.row]
         cell.textLabel?.text = fieldName
         if selectedFieldNames.contains(fieldName) {
@@ -98,7 +98,7 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     @IBAction private func doneAction() {
         //
         // Fire delegate
-        delegate?.groupByFieldsViewController(self, selectedsFieldNames: selectedFieldNames)
+        delegate?.setGrouping(with: selectedFieldNames)
         
         // Dismiss view controller
         dismiss(animated: true, completion: nil)

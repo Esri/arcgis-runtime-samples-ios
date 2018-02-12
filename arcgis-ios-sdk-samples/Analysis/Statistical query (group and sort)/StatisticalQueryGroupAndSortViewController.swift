@@ -58,7 +58,9 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
 
             // Get field names
             for field in (self?.serviceFeatureTable.fields)! {
-                self?.fieldNames.append(field.name)
+                if field.type != .OID && field.type != .globalID {
+                    self?.fieldNames.append(field.name)
+                }
             }
         })
         
@@ -72,9 +74,6 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         tableView.layer.cornerRadius = 10
         tableView.layer.borderWidth = 1
         tableView.layer.borderColor = UIColor.lightGray.cgColor
-        
-        // Register table cell
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
     }
     
     // MARK: - Actions
@@ -267,7 +266,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //
         // Build the cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell")! as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath)
         cell.textLabel?.text = ""
         cell.accessoryType = .none
         
@@ -350,7 +349,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     
     // MARK: - Add Statistic Definition View Controller Delegate
     
-    func addStatisticDefinitionsViewController(_ addStatisticDefinitionsViewController: AddStatisticDefinitionsViewController, statisticDefinitions: [AGSStatisticDefinition]) {
+    func addStatisticDefinitions(_ statisticDefinitions: [AGSStatisticDefinition]) {
         //
         // Set the statistic definitions
         self.statisticDefinitions = statisticDefinitions
@@ -361,10 +360,10 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
 
     // MARK: - Group By Fields View Controller Delegate
     
-    func groupByFieldsViewController(_ groupByFieldsViewController: GroupByFieldsViewController, selectedsFieldNames: [String]) {
+    func setGrouping(with fieldNames: [String]) {
         //
         // Set the selected group by fields
-        selectedGroupByFieldNames = selectedsFieldNames
+        selectedGroupByFieldNames = fieldNames
         
         // Remove all order by fields
         orderByFields.removeAll()
@@ -388,10 +387,10 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     
     // MARK: - Order By Fields View Controller Delegate
 
-    func orderByFieldsViewController(_ orderByFieldsViewController: OrderByFieldsViewController, selectedOrderByFields: [AGSOrderBy]) {
+    func setOrdering(with orderByFields: [AGSOrderBy]) {
         //
         // Set the selected group by fields
-        self.selectedOrderByFields = selectedOrderByFields
+        selectedOrderByFields = orderByFields
         
         // Reload order by fields section
         tableView.reloadSections(IndexSet(integer: 2), with: .automatic)

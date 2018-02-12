@@ -17,7 +17,7 @@ import UIKit
 import ArcGIS
 
 protocol OrderByFieldsViewControllerDelegate: class {
-    func orderByFieldsViewController(_ orderByFieldsViewController: OrderByFieldsViewController, selectedOrderByFields: [AGSOrderBy])
+    func setOrdering(with orderByFields: [AGSOrderBy])
 }
 
 class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -64,7 +64,7 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "OrderByFieldsCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OrderByFieldsCell", for: indexPath)
         
         // Set text
         let orderByField = orderByFields[indexPath.row]
@@ -133,7 +133,7 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     @IBAction private func doneAction() {
         //
         // Fire delegate
-        delegate?.orderByFieldsViewController(self, selectedOrderByFields: selectedOrderByFields)
+        delegate?.setOrdering(with: selectedOrderByFields)
         
         // Dismiss view controller
         dismiss(animated: true, completion: nil)

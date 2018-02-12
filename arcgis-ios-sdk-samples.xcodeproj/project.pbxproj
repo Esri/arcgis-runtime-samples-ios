@@ -1163,11 +1163,11 @@
 		21E9143D1FDEFB6000C7D6DC /* Statistical query (group and sort) */ = {
 			isa = PBXGroup;
 			children = (
-				21E914401FDEFBF800C7D6DC /* StatisticalQueryGroupAndSortViewController.swift */,
-				218409DC1FE89D830098BC40 /* OrderByFieldsViewController.swift */,
-				218409DA1FE87E220098BC40 /* GroupByFieldsViewController.swift */,
-				218409DE1FE9A1E00098BC40 /* AddStatisticDefinitionsViewController.swift */,
 				21EBBBFC1FE07B0500567F14 /* StatisticalQueryGroupAndSort.storyboard */,
+				21E914401FDEFBF800C7D6DC /* StatisticalQueryGroupAndSortViewController.swift */,
+				218409DE1FE9A1E00098BC40 /* AddStatisticDefinitionsViewController.swift */,
+				218409DA1FE87E220098BC40 /* GroupByFieldsViewController.swift */,
+				218409DC1FE89D830098BC40 /* OrderByFieldsViewController.swift */,
 			);
 			path = "Statistical query (group and sort)";
 			sourceTree = "<group>";

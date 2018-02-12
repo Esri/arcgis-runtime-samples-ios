@@ -9,7 +9,7 @@ This sample demonstrates how to query a feature table to get statistics for one 
 - (Optional) Choose one or more fields to order results by. Only those fields selected for grouping are valid choices for ordering results.
 - Execute the query. Results will be displayed in a hierarchical view that is grouped and sorted according to the chosen fields.
 
-![](image1.png)
+![](image1.png) ![](image2.png)
 
 ## How it works
 

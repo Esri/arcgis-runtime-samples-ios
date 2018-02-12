@@ -83,13 +83,13 @@ class AddStatisticDefinitionsViewController: UIViewController, UITableViewDataSo
             let fieldName = fieldNamePicker.options[fieldNamePicker.selectedIndex]
             let statisticDefinition = AGSStatisticDefinition(onFieldName: fieldName, statisticType: statisticType, outputAlias: nil)
             statisticDefinitions.append(statisticDefinition)
+
+            // Reload table
+            tableView.reloadData()
         }
         else {
-            print("Select the valid field name and statistic type to add statistic definition.")
+            print("Unable to determine AGSStatisticType from raw value \(statisticTypePicker.selectedIndex).")
         }
-        
-        // Reload table
-        tableView.reloadData()
     }
     
     @IBAction private func doneAction() {

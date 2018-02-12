@@ -46,6 +46,11 @@ class AddStatisticDefinitionsViewController: UIViewController, UITableViewDataSo
         // Add picker options
         fieldNamePicker.options = fieldNames
         statisticTypePicker.options =  statisticTypes
+        
+        // Set fieldNamePicker's selected field
+        if fieldNamePicker.options.contains("POP2007"), let index = fieldNamePicker.options.index(of: "POP2007") {
+            fieldNamePicker.selectedIndex = index
+        }
     }
     
     //MARK: - TableView data source

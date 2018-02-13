@@ -900,6 +900,14 @@
                 <key>descriptionText</key>
                 <string>Shows how to create a location viewshed from a camera.</string>
             </dict>
+            <dict>
+                <key>displayName</key>
+                <string>Viewshed (location)</string>
+                <key>storyboardName</key>
+                <string>ViewshedLocation</string>
+                <key>descriptionText</key>
+                <string>Demonstrates how to interactively edit a viewshed analysis in a scene and see updates on-the-fly.</string>
+            </dict>
 			<dict>
 				<key>displayName</key>
 				<string>Viewshed (GeoElement)</string>
@@ -907,11 +915,11 @@
 				<string>ViewshedGeoElement</string>
 				<key>descriptionText</key>
 				<string>Demonstrates how to construct a viewshed so that it updates automatically relative to a moving GeoElement.</string>
-				<key>dependency</key>
-				<array>
-					<string>Bradley3DModel</string>
-				</array>
-			</dict>
+                <key>dependency</key>
+                <array>
+                    <string>Bradley3DModel</string>
+                </array>
+            </dict>
 		</array>
 	</dict>
 	<dict>

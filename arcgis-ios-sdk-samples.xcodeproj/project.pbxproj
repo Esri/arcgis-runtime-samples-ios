@@ -22,6 +22,11 @@
 		1259FB921FD295C90037105E /* WMSLayerUsingURL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1259FB901FD295C90037105E /* WMSLayerUsingURL.storyboard */; };
 		1259FB931FD295C90037105E /* WMSLayerUsingURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1259FB911FD295C90037105E /* WMSLayerUsingURLViewController.swift */; };
 		1259FB941FD297560037105E /* WMSLayerUsingURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1259FB911FD295C90037105E /* WMSLayerUsingURLViewController.swift */; };
+		127D29F6200EC5FC00DD6CDC /* ViewshedSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127D29F3200EC5FC00DD6CDC /* ViewshedSettingsVC.swift */; };
+		127D29F7200EC5FC00DD6CDC /* ViewshedLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127D29F4200EC5FC00DD6CDC /* ViewshedLocationViewController.swift */; };
+		127D29F8200EC5FC00DD6CDC /* ViewshedLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 127D29F5200EC5FC00DD6CDC /* ViewshedLocation.storyboard */; };
+		127D29F9200EC67000DD6CDC /* ViewshedSettingsVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 127D29F3200EC5FC00DD6CDC /* ViewshedSettingsVC.swift */; };
+		127D29FA200EC69100DD6CDC /* ViewshedLocationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 127D29F4200EC5FC00DD6CDC /* ViewshedLocationViewController.swift */; };
 		127E11D71FD0C3F8002CBD12 /* WMTSLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 127E11D51FD0C3F8002CBD12 /* WMTSLayer.storyboard */; };
 		127E11D81FD0C3F8002CBD12 /* WMTSLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127E11D61FD0C3F8002CBD12 /* WMTSLayerViewController.swift */; };
 		127E11D91FD0C457002CBD12 /* WMTSLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 127E11D61FD0C3F8002CBD12 /* WMTSLayerViewController.swift */; };
@@ -527,6 +532,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				127D29FA200EC69100DD6CDC /* ViewshedLocationViewController.swift in CopyFiles */,
+				127D29F9200EC67000DD6CDC /* ViewshedSettingsVC.swift in CopyFiles */,
 				12BF9E471FE9D84E00B1E6C4 /* ViewshedCameraViewController.swift in CopyFiles */,
 				216278891FEB3733009A2854 /* StatisticalQueryGroupAndSortViewController.swift in CopyFiles */,
 				2162788A1FEB3733009A2854 /* OrderByFieldsViewController.swift in CopyFiles */,
@@ -700,6 +707,9 @@
 		10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TerrainExaggerationViewController.swift; path = "Scenes/Terrain exaggeration/TerrainExaggerationViewController.swift"; sourceTree = "<group>"; };
 		1259FB901FD295C90037105E /* WMSLayerUsingURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WMSLayerUsingURL.storyboard; sourceTree = "<group>"; };
 		1259FB911FD295C90037105E /* WMSLayerUsingURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WMSLayerUsingURLViewController.swift; sourceTree = "<group>"; };
+		127D29F3200EC5FC00DD6CDC /* ViewshedSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewshedSettingsVC.swift; sourceTree = "<group>"; };
+		127D29F4200EC5FC00DD6CDC /* ViewshedLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewshedLocationViewController.swift; sourceTree = "<group>"; };
+		127D29F5200EC5FC00DD6CDC /* ViewshedLocation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewshedLocation.storyboard; sourceTree = "<group>"; };
 		127E11D51FD0C3F8002CBD12 /* WMTSLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WMTSLayer.storyboard; sourceTree = "<group>"; };
 		127E11D61FD0C3F8002CBD12 /* WMTSLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WMTSLayerViewController.swift; sourceTree = "<group>"; };
 		12BF9E431FE9D77000B1E6C4 /* ViewshedCamera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewshedCamera.storyboard; sourceTree = "<group>"; };
@@ -1117,6 +1127,16 @@
 			path = "Layers/WMS layer (URL)";
 			sourceTree = "<group>";
 		};
+		127D29F2200EC5FC00DD6CDC /* Viewshed (location) */ = {
+			isa = PBXGroup;
+			children = (
+				127D29F3200EC5FC00DD6CDC /* ViewshedSettingsVC.swift */,
+				127D29F4200EC5FC00DD6CDC /* ViewshedLocationViewController.swift */,
+				127D29F5200EC5FC00DD6CDC /* ViewshedLocation.storyboard */,
+			);
+			path = "Viewshed (location)";
+			sourceTree = "<group>";
+		};
 		127E11D41FD0C3F8002CBD12 /* WMTS layer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1218,6 +1238,7 @@
 				2182C97F1FDA01A0003E3A0F /* Statistical query */,
 				21E9143D1FDEFB6000C7D6DC /* Statistical query (group and sort) */,
 				12BF9E421FE9D77000B1E6C4 /* Viewshed (camera) */,
+				127D29F2200EC5FC00DD6CDC /* Viewshed (location) */,
 				E4B2E2671FE31E7400E610FF /* Viewshed (GeoElement) */,
 			);
 			path = Analysis;
@@ -3003,6 +3024,7 @@
 				3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */,
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
 				3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */,
+				127D29F8200EC5FC00DD6CDC /* ViewshedLocation.storyboard in Resources */,
 				3E6C771C1CCFC53B00E89873 /* IdentifyLayers.storyboard in Resources */,
 				D9ED2DA91FD759190043BFE1 /* AuroraCO.gpkg in Resources */,
 				E4B2E26B1FE31EEA00E610FF /* ViewshedGeoElement.storyboard in Resources */,
@@ -3067,6 +3089,7 @@
 				3EEA06101D21C44000E03774 /* DisplaySceneViewController.swift in Sources */,
 				10859BAC1FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift in Sources */,
 				3E8526381B90D92700690EBD /* BookmarksListViewController.swift in Sources */,
+				127D29F7200EC5FC00DD6CDC /* ViewshedLocationViewController.swift in Sources */,
 				3E8A05CE1ECE68E80032231C /* MissionSettingsViewController.swift in Sources */,
 				E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */,
 				3ED0286A1B8E3A8500ACA70D /* SetViewpointViewController.swift in Sources */,
@@ -3131,6 +3154,7 @@
 				3ED0288E1B8E3A8500ACA70D /* SetInitialMapAreaViewController.swift in Sources */,
 				2182C9831FDA01A0003E3A0F /* StatisticalQueryViewController.swift in Sources */,
 				3E81C1B91D8A0EF700470AA4 /* VectorTileCustomStyleVC.swift in Sources */,
+				127D29F6200EC5FC00DD6CDC /* ViewshedSettingsVC.swift in Sources */,
 				3EABC7931DB1772000C161C6 /* RGBRendererTypeCell.swift in Sources */,
 				3EABC7CB1DB1947500C161C6 /* BlendRendererViewController.swift in Sources */,
 				3E0B58511E36BCCD00951767 /* AnalyzeViewshedViewController.swift in Sources */,

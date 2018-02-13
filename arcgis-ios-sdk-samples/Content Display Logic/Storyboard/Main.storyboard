@@ -463,7 +463,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UBF-3I-2fp">
-                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="788"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                         </subviews>
@@ -471,7 +471,7 @@
                         <constraints>
                             <constraint firstItem="UBF-3I-2fp" firstAttribute="leading" secondItem="RfT-xO-g6f" secondAttribute="leading" id="8nK-xo-tnf"/>
                             <constraint firstItem="RfT-xO-g6f" firstAttribute="trailing" secondItem="UBF-3I-2fp" secondAttribute="trailing" id="Zjf-7I-hgX"/>
-                            <constraint firstAttribute="bottom" secondItem="UBF-3I-2fp" secondAttribute="bottom" id="x05-tx-9JH"/>
+                            <constraint firstItem="UBF-3I-2fp" firstAttribute="bottom" secondItem="p2z-Do-b04" secondAttribute="bottom" constant="20" id="x05-tx-9JH"/>
                             <constraint firstItem="UBF-3I-2fp" firstAttribute="top" secondItem="RfT-xO-g6f" secondAttribute="top" id="y0p-zI-1ox"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RfT-xO-g6f"/>
@@ -532,9 +532,9 @@
                         <viewLayoutGuide key="safeArea" id="63H-yR-XyK"/>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="w5O-Q9-Md3"/>
                                 <exclude reference="T8f-6m-NY9"/>
                                 <exclude reference="asc-3T-vc7"/>
-                                <exclude reference="w5O-Q9-Md3"/>
                             </mask>
                         </variation>
                     </view>

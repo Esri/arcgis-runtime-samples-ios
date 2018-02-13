@@ -47,7 +47,7 @@ class RasterLayerUsingServiceVC : UIViewController {
         self.rasterLayer.load { [weak self] (error) in
             
             guard error == nil else {
-                SVProgressHUD.show(withStatus: error!.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error!.localizedDescription, maskType: .gradient)
                 return
             }
             

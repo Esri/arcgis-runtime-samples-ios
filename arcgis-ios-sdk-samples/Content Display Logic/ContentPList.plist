@@ -892,6 +892,14 @@
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to query a feature table to get statistics for one or more specified fields. The results can be grouped and sorted using one or more fields in the table.</string>
 			</dict>
+            <dict>
+                <key>displayName</key>
+                <string>Viewshed (camera)</string>
+                <key>storyboardName</key>
+                <string>ViewshedCamera</string>
+                <key>descriptionText</key>
+                <string>Shows how to create a location viewshed from a camera.</string>
+            </dict>
 			<dict>
 				<key>displayName</key>
 				<string>Viewshed (GeoElement)</string>

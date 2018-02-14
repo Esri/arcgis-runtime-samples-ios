@@ -24,7 +24,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="DOk-3h-gKt">
                                         <rect key="frame" x="0.0" y="8" width="375" height="18"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the map to add observer location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgh-ab-wUm">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the map to set the observer location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgh-ab-wUm">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.0" green="0.36862745099999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -56,11 +56,11 @@
                             <constraint firstItem="YLS-ms-81h" firstAttribute="bottom" secondItem="7gX-cs-H6x" secondAttribute="bottom" id="6p8-oz-atx"/>
                             <constraint firstItem="YLS-ms-81h" firstAttribute="leading" secondItem="7gX-cs-H6x" secondAttribute="leading" id="72h-w0-ibb"/>
                             <constraint firstItem="YLS-ms-81h" firstAttribute="top" secondItem="yMh-oN-h6N" secondAttribute="bottom" id="H0c-YF-ggi"/>
-                            <constraint firstAttribute="trailing" secondItem="yMh-oN-h6N" secondAttribute="trailing" id="LlD-gz-Qxg"/>
+                            <constraint firstItem="bDJ-YQ-Fba" firstAttribute="trailing" secondItem="yMh-oN-h6N" secondAttribute="trailing" id="LlD-gz-Qxg"/>
                             <constraint firstItem="bDJ-YQ-Fba" firstAttribute="top" secondItem="yMh-oN-h6N" secondAttribute="top" symbolic="YES" id="Lyf-dh-JpZ"/>
                             <constraint firstItem="DOk-3h-gKt" firstAttribute="leading" secondItem="bDJ-YQ-Fba" secondAttribute="leading" id="Pot-p2-KQq"/>
                             <constraint firstItem="DOk-3h-gKt" firstAttribute="trailing" secondItem="bDJ-YQ-Fba" secondAttribute="trailing" id="dsL-sF-9B8"/>
-                            <constraint firstItem="yMh-oN-h6N" firstAttribute="leading" secondItem="7gX-cs-H6x" secondAttribute="leading" id="uQr-PE-lfP"/>
+                            <constraint firstItem="yMh-oN-h6N" firstAttribute="leading" secondItem="bDJ-YQ-Fba" secondAttribute="leading" id="uQr-PE-lfP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bDJ-YQ-Fba"/>
                     </view>

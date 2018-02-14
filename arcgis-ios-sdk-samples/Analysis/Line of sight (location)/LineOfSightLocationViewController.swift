@@ -50,6 +50,7 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
         
         // initialize the scene with an imagery basemap
         let scene = AGSScene(basemap: AGSBasemap.imagery())
+        
         // assign the scene to the scene view
         sceneView.scene = scene
 
@@ -71,9 +72,9 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
     // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        // User tapped to place Line of Sight observer. Create Line of Sight analysis if need be.
+        // user tapped to place Line of Sight observer. Create Line of Sight analysis if need be.
         if (lineOfSight == nil) {
-            // Set initial LineOfSight analysis with tapped point.
+            // set initial LineOfSight analysis with tapped point.
             lineOfSight = AGSLocationLineOfSight(observerLocation: mapPoint, targetLocation: mapPoint)
         } else {
             // reassign the observer location

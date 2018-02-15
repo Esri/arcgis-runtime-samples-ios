@@ -920,6 +920,14 @@
                     <string>Bradley3DModel</string>
                 </array>
             </dict>
+            <dict>
+                <key>displayName</key>
+                <string>Line of sight (location)</string>
+                <key>storyboardName</key>
+                <string>LineOfSightLocation</string>
+                <key>descriptionText</key>
+                <string>Place a line of sight between two locations.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UwW-cD-Usz">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UwW-cD-Usz">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,16 +14,12 @@
         <scene sceneID="3TT-S3-UrW">
             <objects>
                 <viewController id="yPK-FC-1TF" customClass="ViewshedSettingsVC" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="yKG-MO-3Ku"/>
-                        <viewControllerLayoutGuide type="bottom" id="img-F4-QbP"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="n3X-Y8-1Y5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWr-dI-sWg">
-                                <rect key="frame" x="0.0" y="25" width="375" height="375"/>
+                                <rect key="frame" x="0.0" y="49" width="375" height="375"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cqo-Wq-crP" userLabel="Settings View">
                                         <rect key="frame" x="0.0" y="0.0" width="349" height="375"/>
@@ -395,10 +391,11 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wWr-dI-sWg" firstAttribute="leading" secondItem="n3X-Y8-1Y5" secondAttribute="leading" id="AWt-9b-KDq"/>
-                            <constraint firstItem="wWr-dI-sWg" firstAttribute="top" secondItem="yKG-MO-3Ku" secondAttribute="bottom" constant="5" id="XKE-vs-62R"/>
-                            <constraint firstAttribute="trailing" secondItem="wWr-dI-sWg" secondAttribute="trailing" id="YnM-8x-s8K"/>
+                            <constraint firstItem="wWr-dI-sWg" firstAttribute="leading" secondItem="ieG-dx-fKG" secondAttribute="leading" id="AWt-9b-KDq"/>
+                            <constraint firstItem="wWr-dI-sWg" firstAttribute="top" secondItem="ieG-dx-fKG" secondAttribute="top" constant="5" id="XKE-vs-62R"/>
+                            <constraint firstItem="ieG-dx-fKG" firstAttribute="trailing" secondItem="wWr-dI-sWg" secondAttribute="trailing" id="YnM-8x-s8K"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="ieG-dx-fKG"/>
                     </view>
                     <connections>
                         <outlet property="analysisOverlayVisibilitySwitch" destination="lK3-h8-xNx" id="3Xo-bS-Ovt"/>
@@ -428,20 +425,16 @@
         <scene sceneID="eGQ-ao-yfY">
             <objects>
                 <viewController id="UwW-cD-Usz" customClass="ViewshedLocationViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ny6-Od-bdk"/>
-                        <viewControllerLayoutGuide type="bottom" id="EBV-1q-yec"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9vW-Fa-wAI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Zg-Zd-emf" customClass="AGSSceneView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="78" width="375" height="656"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDB-Pd-BWG">
-                                <rect key="frame" x="0.0" y="20" width="375" height="34"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDB-Pd-BWG" userLabel="Instructions View">
+                                <rect key="frame" x="0.0" y="44" width="375" height="34"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="CDu-0w-REi">
                                         <rect key="frame" x="8" y="8" width="359" height="18"/>
@@ -453,7 +446,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch-and-drag to move the viewshed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9V-DF-vyd" userLabel="Update Observer On Drag Instruction Label">
-                                                <rect key="frame" x="0.0" y="-28" width="359" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="-52" width="359" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.0" green="0.36862745099999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -463,15 +456,15 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="CDu-0w-REi" firstAttribute="leading" secondItem="SDB-Pd-BWG" secondAttribute="leading" constant="8" id="2aA-AM-mMl"/>
                                     <constraint firstItem="CDu-0w-REi" firstAttribute="top" secondItem="SDB-Pd-BWG" secondAttribute="top" constant="8" id="NJh-E8-TsO"/>
                                     <constraint firstAttribute="bottom" secondItem="CDu-0w-REi" secondAttribute="bottom" constant="8" id="WaF-E9-MjM"/>
-                                    <constraint firstAttribute="trailing" secondItem="CDu-0w-REi" secondAttribute="trailing" constant="8" id="Xsm-FL-XJM"/>
                                 </constraints>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JPo-RN-c7U">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JPo-RN-c7U">
+                                <rect key="frame" x="0.0" y="734" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Z6n-Ip-AEO"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="QaW-0a-Q25"/>
                                     <barButtonItem title="Settings" image="Settings" id="gPP-Cn-hUS">
@@ -487,14 +480,20 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="8Zg-Zd-emf" firstAttribute="leading" secondItem="9vW-Fa-wAI" secondAttribute="leading" id="4hc-g2-Cv5"/>
+                            <constraint firstItem="8Zg-Zd-emf" firstAttribute="top" secondItem="SDB-Pd-BWG" secondAttribute="bottom" id="0K8-ga-Htj"/>
+                            <constraint firstItem="JPo-RN-c7U" firstAttribute="top" secondItem="8Zg-Zd-emf" secondAttribute="bottom" id="A4s-TE-UkW"/>
+                            <constraint firstItem="wjv-2C-Ivp" firstAttribute="trailing" secondItem="CDu-0w-REi" secondAttribute="trailing" constant="8" id="AKR-gu-N2b"/>
                             <constraint firstItem="SDB-Pd-BWG" firstAttribute="leading" secondItem="9vW-Fa-wAI" secondAttribute="leading" id="Jpl-hd-XAA"/>
-                            <constraint firstItem="EBV-1q-yec" firstAttribute="top" secondItem="8Zg-Zd-emf" secondAttribute="bottom" constant="44" id="KIE-kE-jyf"/>
-                            <constraint firstAttribute="trailing" secondItem="SDB-Pd-BWG" secondAttribute="trailing" id="L3c-wu-Ave"/>
-                            <constraint firstAttribute="trailing" secondItem="8Zg-Zd-emf" secondAttribute="trailing" id="Le5-6t-8yW"/>
-                            <constraint firstItem="8Zg-Zd-emf" firstAttribute="top" secondItem="Ny6-Od-bdk" secondAttribute="bottom" id="PTB-AH-4jZ"/>
-                            <constraint firstItem="SDB-Pd-BWG" firstAttribute="top" secondItem="9vW-Fa-wAI" secondAttribute="topMargin" id="f4K-wB-Od7"/>
+                            <constraint firstItem="SDB-Pd-BWG" firstAttribute="trailing" secondItem="9vW-Fa-wAI" secondAttribute="trailing" id="UUZ-ec-wug"/>
+                            <constraint firstItem="JPo-RN-c7U" firstAttribute="bottom" secondItem="wjv-2C-Ivp" secondAttribute="bottom" id="YL1-CM-T49"/>
+                            <constraint firstItem="SDB-Pd-BWG" firstAttribute="top" secondItem="wjv-2C-Ivp" secondAttribute="top" id="f4K-wB-Od7"/>
+                            <constraint firstItem="JPo-RN-c7U" firstAttribute="trailing" secondItem="9vW-Fa-wAI" secondAttribute="trailing" id="m5Q-PS-ihP"/>
+                            <constraint firstItem="8Zg-Zd-emf" firstAttribute="leading" secondItem="9vW-Fa-wAI" secondAttribute="leading" id="mPq-Rf-rE3"/>
+                            <constraint firstItem="JPo-RN-c7U" firstAttribute="leading" secondItem="9vW-Fa-wAI" secondAttribute="leading" id="ngi-4s-CVG"/>
+                            <constraint firstItem="8Zg-Zd-emf" firstAttribute="trailing" secondItem="9vW-Fa-wAI" secondAttribute="trailing" id="o7f-jZ-ffK"/>
+                            <constraint firstItem="CDu-0w-REi" firstAttribute="leading" secondItem="wjv-2C-Ivp" secondAttribute="leading" constant="8" id="rOj-la-xfv"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="wjv-2C-Ivp"/>
                     </view>
                     <connections>
                         <outlet property="sceneView" destination="8Zg-Zd-emf" id="kYL-13-kRk"/>

@@ -33,7 +33,7 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
 
             targetInstructionLabel.isHidden = false
 
-            // create an analysis overlay using a single Line of Sight and add it to the scene view.
+            // create an analysis overlay using a single Line of Sight and add it to the scene view
             let analysisOverlay = AGSAnalysisOverlay()
             analysisOverlay.analyses.add(lineOfSight)
             sceneView.analysisOverlays.add(analysisOverlay)
@@ -72,12 +72,12 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
     // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        // user tapped to place Line of Sight observer. Create Line of Sight analysis if need be.
+        // user tapped to place Line of Sight observer. Create Line of Sight analysis if need be
         if (lineOfSight == nil) {
-            // set initial LineOfSight analysis with tapped point.
+            // set initial Line of Sight analysis with tapped point
             lineOfSight = AGSLocationLineOfSight(observerLocation: mapPoint, targetLocation: mapPoint)
         } else {
-            // reassign the observer location
+            // update the observer location
             lineOfSight?.observerLocation = mapPoint
         }
     }

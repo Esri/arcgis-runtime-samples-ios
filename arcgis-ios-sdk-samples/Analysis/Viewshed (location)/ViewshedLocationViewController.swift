@@ -133,12 +133,12 @@ class ViewshedLocationViewController: UIViewController, AGSGeoViewTouchDelegate,
     
     func viewshedSettingsVC(_ viewshedSettingsVC:ViewshedSettingsVC, didUpdateObstructedAreaColor obstructedAreaColor:UIColor) {
         // sets the color with which non-visible areas of all viewsheds will be rendered (default: red color). This setting is applied to all viewshed analyses in the view.
-        AGSViewshed.setObstructedColor(obstructedAreaColor)
+        AGSViewshed.setObstructedColor(obstructedAreaColor.withAlphaComponent(0.5))
     }
     
     func viewshedSettingsVC(_ viewshedSettingsVC:ViewshedSettingsVC, didUpdateVisibleAreaColor visibleAreaColor:UIColor) {
         // sets the color with which visible areas of all viewsheds will be rendered (default: green color). This setting is applied to all viewshed analyses in the view.
-        AGSViewshed.setVisibleColor(visibleAreaColor)
+        AGSViewshed.setVisibleColor(visibleAreaColor.withAlphaComponent(0.5))
     }
     
     func viewshedSettingsVC(_ viewshedSettingsVC: ViewshedSettingsVC, didUpdateFrustumOutlineColor frustumOutlineColor: UIColor) {

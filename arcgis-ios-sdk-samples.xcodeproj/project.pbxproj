@@ -1145,9 +1145,9 @@
 		127D29F2200EC5FC00DD6CDC /* Viewshed (location) */ = {
 			isa = PBXGroup;
 			children = (
-				127D29F3200EC5FC00DD6CDC /* ViewshedSettingsVC.swift */,
-				127D29F4200EC5FC00DD6CDC /* ViewshedLocationViewController.swift */,
 				127D29F5200EC5FC00DD6CDC /* ViewshedLocation.storyboard */,
+				127D29F4200EC5FC00DD6CDC /* ViewshedLocationViewController.swift */,
+				127D29F3200EC5FC00DD6CDC /* ViewshedSettingsVC.swift */,
 			);
 			path = "Viewshed (location)";
 			sourceTree = "<group>";

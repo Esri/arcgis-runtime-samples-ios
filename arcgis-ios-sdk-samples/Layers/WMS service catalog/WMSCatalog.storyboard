@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IIZ-g5-rn0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IIZ-g5-rn0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,51 +14,69 @@
         <scene sceneID="Tpr-Zl-3jf">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="IIZ-g5-rn0" customClass="WMSCatalogViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="eQp-pa-qXD"/>
-                        <viewControllerLayoutGuide type="bottom" id="VNE-h5-ASr"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nRX-gd-Kdt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GzU-Me-xVd">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLE-Mm-bqf" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dyw-9U-sNa">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zvE-73-B0f">
+                                        <rect key="frame" x="72.5" y="0.0" width="230" height="130"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Nix-wW-Bh8">
+                                            <rect key="frame" x="0.0" y="0.0" width="230" height="130"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dyw-9U-sNa">
+                                                    <rect key="frame" x="5" y="5" width="220" height="120"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="120" id="CK5-2j-dse"/>
+                                                    </constraints>
+                                                    <prototypes>
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LayerNameCell" id="MVr-oy-ni1">
+                                                            <rect key="frame" x="0.0" y="28" width="220" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MVr-oy-ni1" id="cWR-r0-DFu">
+                                                                <rect key="frame" x="0.0" y="0.0" width="220" height="43.5"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                            </tableViewCellContentView>
+                                                        </tableViewCell>
+                                                    </prototypes>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="IIZ-g5-rn0" id="OmM-CF-uu0"/>
+                                                    </connections>
+                                                </tableView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Dyw-9U-sNa" firstAttribute="centerY" secondItem="Nix-wW-Bh8" secondAttribute="centerY" id="10c-dd-tYY"/>
+                                                <constraint firstItem="Dyw-9U-sNa" firstAttribute="leading" secondItem="Nix-wW-Bh8" secondAttribute="leading" constant="5" id="CMa-kQ-pIr"/>
+                                                <constraint firstItem="Dyw-9U-sNa" firstAttribute="top" secondItem="Nix-wW-Bh8" secondAttribute="top" constant="5" id="RYz-81-Nd1"/>
+                                                <constraint firstAttribute="trailing" secondItem="Dyw-9U-sNa" secondAttribute="trailing" constant="5" id="ad1-QL-aXB"/>
+                                                <constraint firstAttribute="bottom" secondItem="Dyw-9U-sNa" secondAttribute="bottom" constant="5" id="fdd-B0-Scg"/>
+                                            </constraints>
+                                        </view>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="CK5-2j-dse"/>
+                                            <constraint firstAttribute="height" constant="130" id="69w-dl-VOS"/>
+                                            <constraint firstAttribute="width" constant="230" id="YjY-Jr-SXU"/>
                                         </constraints>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LayerNameCell" id="MVr-oy-ni1">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MVr-oy-ni1" id="cWR-r0-DFu">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </tableViewCellContentView>
-                                            </tableViewCell>
-                                        </prototypes>
-                                        <connections>
-                                            <outlet property="dataSource" destination="IIZ-g5-rn0" id="OmM-CF-uu0"/>
-                                        </connections>
-                                    </tableView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLE-Mm-bqf" customClass="AGSMapView">
-                                        <rect key="frame" x="0.0" y="120" width="375" height="527"/>
-                                    </view>
+                                        <blurEffect style="light"/>
+                                    </visualEffectView>
                                 </subviews>
-                                <variation key="heightClass=compact" axis="horizontal"/>
-                            </stackView>
+                                <constraints>
+                                    <constraint firstItem="zvE-73-B0f" firstAttribute="centerX" secondItem="vLE-Mm-bqf" secondAttribute="centerX" id="Ego-Yi-MJH"/>
+                                    <constraint firstItem="zvE-73-B0f" firstAttribute="top" secondItem="vLE-Mm-bqf" secondAttribute="top" id="eul-F1-GwJ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="GzU-Me-xVd" firstAttribute="top" secondItem="eQp-pa-qXD" secondAttribute="bottom" id="7UR-TH-5gv"/>
-                            <constraint firstItem="GzU-Me-xVd" firstAttribute="leading" secondItem="nRX-gd-Kdt" secondAttribute="leading" id="KOG-PP-XtA"/>
-                            <constraint firstItem="VNE-h5-ASr" firstAttribute="top" secondItem="GzU-Me-xVd" secondAttribute="bottom" id="TFb-fr-jUs"/>
-                            <constraint firstAttribute="trailing" secondItem="GzU-Me-xVd" secondAttribute="trailing" id="aql-gM-wUS"/>
+                            <constraint firstItem="e7y-kZ-0hk" firstAttribute="bottom" secondItem="vLE-Mm-bqf" secondAttribute="bottom" id="0rt-Z0-eJb"/>
+                            <constraint firstItem="vLE-Mm-bqf" firstAttribute="leading" secondItem="e7y-kZ-0hk" secondAttribute="leading" id="5I2-zM-PTh"/>
+                            <constraint firstItem="vLE-Mm-bqf" firstAttribute="top" secondItem="e7y-kZ-0hk" secondAttribute="top" id="Ot8-Ia-dSP"/>
+                            <constraint firstItem="vLE-Mm-bqf" firstAttribute="trailing" secondItem="e7y-kZ-0hk" secondAttribute="trailing" id="dYS-RY-zs7"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="e7y-kZ-0hk"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="vLE-Mm-bqf" id="XqS-hA-mtR"/>

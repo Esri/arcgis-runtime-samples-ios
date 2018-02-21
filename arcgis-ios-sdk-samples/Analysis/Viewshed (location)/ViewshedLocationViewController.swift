@@ -75,7 +75,7 @@ class ViewshedLocationViewController: UIViewController, AGSGeoViewTouchDelegate,
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         
         // for popover or non modal presentation
-        return .none
+        return UIModalPresentationStyle.none
     }
     
     // MARK: - Navigation
@@ -93,10 +93,10 @@ class ViewshedLocationViewController: UIViewController, AGSGeoViewTouchDelegate,
 
             // preferred content size
             if traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular {
-                viewshedSettingsVC.preferredContentSize = CGSize(width: 340, height: 340)
+                viewshedSettingsVC.preferredContentSize = CGSize(width: 375, height: 340)
             }
             else {
-                viewshedSettingsVC.preferredContentSize = CGSize(width: 340, height: 240)
+                viewshedSettingsVC.preferredContentSize = CGSize(width: 375, height: 240)
             }
         }
     }

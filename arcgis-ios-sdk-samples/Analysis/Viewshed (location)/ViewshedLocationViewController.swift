@@ -90,7 +90,7 @@ class ViewshedLocationViewController: UIViewController, AGSGeoViewTouchDelegate,
             // pop over settings
             viewshedSettingsVC.presentationController?.delegate = self
             viewshedSettingsVC.popoverPresentationController?.passthroughViews = [sceneView]
-            
+
             // preferred content size
             if traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular {
                 viewshedSettingsVC.preferredContentSize = CGSize(width: 375, height: 340)

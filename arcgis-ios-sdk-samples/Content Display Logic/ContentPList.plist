@@ -884,6 +884,50 @@
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to query a feature table to get aggregated statistics back for a specific field.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Statistical query (group and sort)</string>
+				<key>storyboardName</key>
+				<string>StatisticalQueryGroupAndSort</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to query a feature table to get statistics for one or more specified fields. The results can be grouped and sorted using one or more fields in the table.</string>
+			</dict>
+            <dict>
+                <key>displayName</key>
+                <string>Viewshed (camera)</string>
+                <key>storyboardName</key>
+                <string>ViewshedCamera</string>
+                <key>descriptionText</key>
+                <string>Shows how to create a location viewshed from a camera.</string>
+            </dict>
+            <dict>
+                <key>displayName</key>
+                <string>Viewshed (location)</string>
+                <key>storyboardName</key>
+                <string>ViewshedLocation</string>
+                <key>descriptionText</key>
+                <string>Demonstrates how to interactively edit a viewshed analysis in a scene and see updates on-the-fly.</string>
+            </dict>
+			<dict>
+				<key>displayName</key>
+				<string>Viewshed (GeoElement)</string>
+				<key>storyboardName</key>
+				<string>ViewshedGeoElement</string>
+				<key>descriptionText</key>
+				<string>Demonstrates how to construct a viewshed so that it updates automatically relative to a moving GeoElement.</string>
+                <key>dependency</key>
+                <array>
+                    <string>Bradley3DModel</string>
+                </array>
+            </dict>
+            <dict>
+                <key>displayName</key>
+                <string>Line of sight (location)</string>
+                <key>storyboardName</key>
+                <string>LineOfSightLocation</string>
+                <key>descriptionText</key>
+                <string>Place a line of sight between two locations.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

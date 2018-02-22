@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="asZ-BO-edQ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Viewshed Geo Element View Controller-->
+        <scene sceneID="bGY-wp-GiR">
+            <objects>
+                <viewController id="asZ-BO-edQ" customClass="ViewshedGeoElementViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OmS-KM-jTp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0U-33-i0S" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="80.666666666666686" width="375" height="731.33333333333326"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM1-Ws-yO3" userLabel="Instruction View">
+                                <rect key="frame" x="0.0" y="44" width="375" height="36.666666666666657"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the map to move the tank and update the viewshed" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PF5-we-Wcu" userLabel="Instruction Label">
+                                        <rect key="frame" x="8" y="8.0000000000000018" width="359" height="20.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="PF5-we-Wcu" firstAttribute="top" secondItem="cM1-Ws-yO3" secondAttribute="top" constant="8" id="1Qa-Ms-iDL"/>
+                                    <constraint firstAttribute="bottom" secondItem="PF5-we-Wcu" secondAttribute="bottom" constant="8" id="TJj-bI-d0C"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cM1-Ws-yO3" firstAttribute="trailing" secondItem="OmS-KM-jTp" secondAttribute="trailing" id="3Jp-xK-qiA"/>
+                            <constraint firstAttribute="trailing" secondItem="Z0U-33-i0S" secondAttribute="trailing" id="Ese-qa-9Fx"/>
+                            <constraint firstItem="cM1-Ws-yO3" firstAttribute="top" secondItem="zHk-5t-F8j" secondAttribute="top" id="dlD-Rm-K4a"/>
+                            <constraint firstItem="cM1-Ws-yO3" firstAttribute="leading" secondItem="OmS-KM-jTp" secondAttribute="leading" id="gPr-j9-HFr"/>
+                            <constraint firstItem="PF5-we-Wcu" firstAttribute="leading" secondItem="zHk-5t-F8j" secondAttribute="leading" constant="8" id="hVG-a1-DJq"/>
+                            <constraint firstItem="Z0U-33-i0S" firstAttribute="leading" secondItem="OmS-KM-jTp" secondAttribute="leading" id="sGF-jw-jKg"/>
+                            <constraint firstAttribute="bottom" secondItem="Z0U-33-i0S" secondAttribute="bottom" id="smM-X7-5Ow"/>
+                            <constraint firstItem="zHk-5t-F8j" firstAttribute="trailing" secondItem="PF5-we-Wcu" secondAttribute="trailing" constant="8" id="tnr-q8-s06"/>
+                            <constraint firstItem="Z0U-33-i0S" firstAttribute="top" secondItem="cM1-Ws-yO3" secondAttribute="bottom" id="xLC-MU-DwI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zHk-5t-F8j"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="Z0U-33-i0S" id="IX8-K1-bsH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xp2-pr-zMu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-252" y="95.320197044334975"/>
+        </scene>
+    </scenes>
+</document>

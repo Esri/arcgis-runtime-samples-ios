@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Csd-Ea-ggy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Csd-Ea-ggy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,8 +28,11 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sqg-eH-RPH">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sqg-eH-RPH">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="6ah-Dy-HjX"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="pf1-SL-9qt"/>
                                     <barButtonItem title="Change style" id="YPo-a4-2i8">
@@ -66,15 +69,15 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Sqg-eH-RPH" firstAttribute="leading" secondItem="ZZc-h1-EmK" secondAttribute="leading" id="1cd-Iu-KQX"/>
+                            <constraint firstItem="Sqg-eH-RPH" firstAttribute="leading" secondItem="J2C-4W-aTK" secondAttribute="leading" id="1cd-Iu-KQX"/>
                             <constraint firstItem="J2C-4W-aTK" firstAttribute="bottom" secondItem="Sqg-eH-RPH" secondAttribute="bottom" id="If4-sd-TSV"/>
-                            <constraint firstItem="Sqg-eH-RPH" firstAttribute="trailing" secondItem="ZZc-h1-EmK" secondAttribute="trailing" id="Onq-ov-4Xm"/>
+                            <constraint firstItem="Sqg-eH-RPH" firstAttribute="trailing" secondItem="J2C-4W-aTK" secondAttribute="trailing" id="Onq-ov-4Xm"/>
                             <constraint firstItem="k3a-nA-IYu" firstAttribute="trailing" secondItem="ZZc-h1-EmK" secondAttribute="trailing" id="PaZ-yT-0mR"/>
                             <constraint firstItem="k3a-nA-IYu" firstAttribute="leading" secondItem="ZZc-h1-EmK" secondAttribute="leading" id="U5y-e9-Ld4"/>
                             <constraint firstItem="Y2R-Ql-ouT" firstAttribute="top" secondItem="J2C-4W-aTK" secondAttribute="top" id="eUX-rL-IxK"/>
-                            <constraint firstItem="k3a-nA-IYu" firstAttribute="bottom" secondItem="J2C-4W-aTK" secondAttribute="bottom" constant="-44" id="fNJ-h0-UIV"/>
+                            <constraint firstItem="k3a-nA-IYu" firstAttribute="bottom" secondItem="Sqg-eH-RPH" secondAttribute="top" id="fNJ-h0-UIV"/>
                             <constraint firstItem="k3a-nA-IYu" firstAttribute="top" secondItem="J2C-4W-aTK" secondAttribute="top" id="feA-7n-AT0"/>
                             <constraint firstItem="Y2R-Ql-ouT" firstAttribute="leading" secondItem="ZZc-h1-EmK" secondAttribute="leading" id="gWd-cw-cT7"/>
                             <constraint firstItem="Y2R-Ql-ouT" firstAttribute="bottom" secondItem="ZZc-h1-EmK" secondAttribute="bottom" id="mBl-KM-cLh"/>
@@ -111,7 +114,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GB6-Me-RR4">
-                                                    <rect key="frame" x="8" y="7" width="40" height="40"/>
+                                                    <rect key="frame" x="15" y="7" width="40" height="40"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DqA-sG-bEY">
                                                             <rect key="frame" x="0.0" y="0.0" width="20" height="40"/>
@@ -144,7 +147,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIJ-tz-aZS">
-                                                    <rect key="frame" x="56" y="15" width="206" height="24"/>
+                                                    <rect key="frame" x="63" y="15" width="199" height="24"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -167,7 +170,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="60e-gI-Cpd">
-                                                    <rect key="frame" x="8" y="7" width="40" height="40"/>
+                                                    <rect key="frame" x="15" y="7" width="40" height="40"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Dx-26-Jhf">
                                                             <rect key="frame" x="0.0" y="0.0" width="20" height="40"/>
@@ -200,7 +203,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Style 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiX-Jw-gtr">
-                                                    <rect key="frame" x="56" y="15" width="206" height="24"/>
+                                                    <rect key="frame" x="63" y="15" width="199" height="24"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -223,7 +226,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6YW-zd-8Uz">
-                                                    <rect key="frame" x="8" y="7" width="40" height="40"/>
+                                                    <rect key="frame" x="15" y="7" width="40" height="40"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LaA-gq-nXh">
                                                             <rect key="frame" x="0.0" y="0.0" width="20" height="40"/>
@@ -256,7 +259,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Style 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OT-tk-dh3">
-                                                    <rect key="frame" x="56" y="15" width="206" height="24"/>
+                                                    <rect key="frame" x="63" y="15" width="199" height="24"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>

@@ -24,9 +24,8 @@
                             </view>
                             <toolbar clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Jc-cA-M8B">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="8N1-D2-heZ"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="8N1-D2-heZ"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="JHI-PU-SBo"/>
@@ -41,7 +40,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="2Jc-cA-M8B" firstAttribute="leading" secondItem="5dS-bd-oN9" secondAttribute="leading" id="9nt-7h-iMk"/>
                             <constraint firstItem="2Jc-cA-M8B" firstAttribute="trailing" secondItem="5dS-bd-oN9" secondAttribute="trailing" id="H0M-yG-ypC"/>

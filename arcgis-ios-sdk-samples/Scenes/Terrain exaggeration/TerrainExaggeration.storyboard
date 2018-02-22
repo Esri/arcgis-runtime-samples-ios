@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,8 +22,11 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDg-Fc-adQ">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDg-Fc-adQ">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="ewS-rp-uEt"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="xPD-f5-k1U"/>
                                     <barButtonItem width="300" style="plain" id="07V-iL-mk1">
@@ -31,14 +34,14 @@
                                             <rect key="frame" x="187.5" y="22" width="0.0" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RAb-nm-N47">
+                                                <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RAb-nm-N47">
                                                     <rect key="frame" x="6" y="-15" width="4" height="31"/>
                                                     <connections>
                                                         <action selector="sliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="iws-0m-F8G"/>
                                                     </connections>
                                                 </slider>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vB-Iw-oNt">
-                                                    <rect key="frame" x="15" y="6" width="30" height="0.0"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1.0x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vB-Iw-oNt">
+                                                    <rect key="frame" x="15" y="6" width="30" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -59,12 +62,12 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Jj4-Au-zx0" firstAttribute="bottom" secondItem="NpU-Mq-4Hs" secondAttribute="bottom" constant="-44" id="Apk-wp-KDv"/>
-                            <constraint firstAttribute="trailing" secondItem="PDg-Fc-adQ" secondAttribute="trailing" id="MY1-Jj-qBw"/>
+                            <constraint firstItem="Jj4-Au-zx0" firstAttribute="bottom" secondItem="PDg-Fc-adQ" secondAttribute="top" id="Apk-wp-KDv"/>
+                            <constraint firstItem="PDg-Fc-adQ" firstAttribute="trailing" secondItem="NpU-Mq-4Hs" secondAttribute="trailing" id="MY1-Jj-qBw"/>
                             <constraint firstItem="NpU-Mq-4Hs" firstAttribute="bottom" secondItem="PDg-Fc-adQ" secondAttribute="bottom" id="Y6b-rI-SKz"/>
-                            <constraint firstItem="PDg-Fc-adQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="acn-Et-izS"/>
+                            <constraint firstItem="PDg-Fc-adQ" firstAttribute="leading" secondItem="NpU-Mq-4Hs" secondAttribute="leading" id="acn-Et-izS"/>
                             <constraint firstItem="Jj4-Au-zx0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="l4e-ga-ZRd"/>
                             <constraint firstAttribute="trailing" secondItem="Jj4-Au-zx0" secondAttribute="trailing" id="qTC-qC-pxz"/>
                             <constraint firstItem="Jj4-Au-zx0" firstAttribute="top" secondItem="NpU-Mq-4Hs" secondAttribute="top" id="uWS-99-35c"/>

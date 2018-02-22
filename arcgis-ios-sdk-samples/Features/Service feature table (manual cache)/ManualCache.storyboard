@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qaY-0E-3mj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qaY-0E-3mj">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,10 +22,10 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1R-eX-QZi">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1R-eX-QZi">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="uBI-Vf-cma"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="uBI-Vf-cma"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="GEB-Si-V9K"/>
@@ -38,14 +38,14 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4gS-yh-D1D" firstAttribute="bottom" secondItem="k1R-eX-QZi" secondAttribute="bottom" id="2Ef-TT-KDI"/>
-                            <constraint firstAttribute="trailing" secondItem="k1R-eX-QZi" secondAttribute="trailing" id="45j-fC-8CK"/>
+                            <constraint firstItem="k1R-eX-QZi" firstAttribute="trailing" secondItem="4gS-yh-D1D" secondAttribute="trailing" id="45j-fC-8CK"/>
                             <constraint firstItem="Rfl-e1-EjP" firstAttribute="leading" secondItem="ELe-Fw-mro" secondAttribute="leading" id="5j2-Hy-dE3"/>
-                            <constraint firstItem="Rfl-e1-EjP" firstAttribute="bottom" secondItem="4gS-yh-D1D" secondAttribute="bottom" constant="-44" id="DeK-bR-3D1"/>
+                            <constraint firstItem="Rfl-e1-EjP" firstAttribute="bottom" secondItem="k1R-eX-QZi" secondAttribute="top" id="DeK-bR-3D1"/>
                             <constraint firstItem="Rfl-e1-EjP" firstAttribute="top" secondItem="ELe-Fw-mro" secondAttribute="top" id="KyA-gs-p8n"/>
-                            <constraint firstItem="k1R-eX-QZi" firstAttribute="leading" secondItem="ELe-Fw-mro" secondAttribute="leading" id="W4r-gd-g3r"/>
+                            <constraint firstItem="k1R-eX-QZi" firstAttribute="leading" secondItem="4gS-yh-D1D" secondAttribute="leading" id="W4r-gd-g3r"/>
                             <constraint firstItem="Rfl-e1-EjP" firstAttribute="top" secondItem="4gS-yh-D1D" secondAttribute="top" id="pWS-SK-Di7"/>
                             <constraint firstAttribute="trailing" secondItem="Rfl-e1-EjP" secondAttribute="trailing" id="whE-AX-F4g"/>
                         </constraints>

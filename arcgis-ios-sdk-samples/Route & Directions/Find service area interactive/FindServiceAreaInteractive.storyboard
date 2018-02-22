@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uF5-61-Oq4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uF5-61-Oq4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,6 +20,9 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ScH-Y2-uZg">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="fnu-FH-ab3"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" id="Kxl-Gy-DEg">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="oEe-fu-LvD">
@@ -58,15 +61,15 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="WSP-7z-qfE" secondAttribute="trailing" id="9vr-BX-4DC"/>
-                            <constraint firstItem="ScH-Y2-uZg" firstAttribute="leading" secondItem="hcg-KY-lJP" secondAttribute="leading" id="CUL-JW-i9h"/>
+                            <constraint firstItem="ScH-Y2-uZg" firstAttribute="leading" secondItem="MkB-vx-el3" secondAttribute="leading" id="CUL-JW-i9h"/>
                             <constraint firstItem="WSP-7z-qfE" firstAttribute="top" secondItem="MkB-vx-el3" secondAttribute="top" id="DQZ-ct-0Jd"/>
                             <constraint firstItem="MkB-vx-el3" firstAttribute="bottom" secondItem="ScH-Y2-uZg" secondAttribute="bottom" id="b8s-8P-97w"/>
-                            <constraint firstItem="WSP-7z-qfE" firstAttribute="bottom" secondItem="MkB-vx-el3" secondAttribute="bottom" constant="-44" id="eXf-9t-Bta"/>
+                            <constraint firstItem="WSP-7z-qfE" firstAttribute="bottom" secondItem="ScH-Y2-uZg" secondAttribute="top" id="eXf-9t-Bta"/>
                             <constraint firstItem="WSP-7z-qfE" firstAttribute="leading" secondItem="hcg-KY-lJP" secondAttribute="leading" id="pw7-bJ-IoT"/>
-                            <constraint firstAttribute="trailing" secondItem="ScH-Y2-uZg" secondAttribute="trailing" id="xKk-FZ-VeS"/>
+                            <constraint firstItem="ScH-Y2-uZg" firstAttribute="trailing" secondItem="MkB-vx-el3" secondAttribute="trailing" id="xKk-FZ-VeS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MkB-vx-el3"/>
                     </view>

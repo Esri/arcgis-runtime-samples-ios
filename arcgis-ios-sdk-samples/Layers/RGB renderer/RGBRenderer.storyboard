@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g6b-IQ-NlX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g6b-IQ-NlX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,10 +19,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMP-bN-9ZB">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMP-bN-9ZB">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="MAM-fo-OTA"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="MAM-fo-OTA"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Umr-Bz-mmU"/>
@@ -64,18 +64,18 @@
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ID0-ct-2NZ" firstAttribute="bottom" secondItem="LMP-bN-9ZB" secondAttribute="bottom" id="AC1-KG-PEp"/>
                             <constraint firstItem="AKA-ls-ann" firstAttribute="top" secondItem="ID0-ct-2NZ" secondAttribute="top" id="BQl-DZ-A8x"/>
                             <constraint firstAttribute="trailing" secondItem="AKA-ls-ann" secondAttribute="trailing" id="DYk-TM-1vZ"/>
-                            <constraint firstItem="AKA-ls-ann" firstAttribute="bottom" secondItem="ID0-ct-2NZ" secondAttribute="bottom" constant="-44" id="NR0-5U-CDL"/>
+                            <constraint firstItem="AKA-ls-ann" firstAttribute="bottom" secondItem="LMP-bN-9ZB" secondAttribute="top" id="NR0-5U-CDL"/>
                             <constraint firstAttribute="bottom" secondItem="QGs-tL-WK8" secondAttribute="bottom" id="SYb-2c-nN5"/>
-                            <constraint firstItem="LMP-bN-9ZB" firstAttribute="leading" secondItem="mNj-ES-Il3" secondAttribute="leading" id="W9L-op-OPX"/>
+                            <constraint firstItem="LMP-bN-9ZB" firstAttribute="leading" secondItem="ID0-ct-2NZ" secondAttribute="leading" id="W9L-op-OPX"/>
                             <constraint firstItem="QGs-tL-WK8" firstAttribute="leading" secondItem="mNj-ES-Il3" secondAttribute="leading" id="ad1-ZD-KLV"/>
                             <constraint firstItem="AKA-ls-ann" firstAttribute="leading" secondItem="mNj-ES-Il3" secondAttribute="leading" id="b6E-dN-sQz"/>
                             <constraint firstAttribute="trailing" secondItem="QGs-tL-WK8" secondAttribute="trailing" id="dNl-ZE-0o8"/>
-                            <constraint firstAttribute="trailing" secondItem="LMP-bN-9ZB" secondAttribute="trailing" id="iUh-RR-mFN"/>
+                            <constraint firstItem="LMP-bN-9ZB" firstAttribute="trailing" secondItem="ID0-ct-2NZ" secondAttribute="trailing" id="iUh-RR-mFN"/>
                             <constraint firstItem="QGs-tL-WK8" firstAttribute="top" secondItem="ID0-ct-2NZ" secondAttribute="top" id="pFj-qL-CpF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ID0-ct-2NZ"/>
@@ -113,13 +113,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stretch type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABy-RP-LWF">
-                                                    <rect key="frame" x="8" y="11" width="95" height="21"/>
+                                                    <rect key="frame" x="15" y="11" width="95" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W2c-W6-u5P" customClass="HorizontalPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                                    <rect key="frame" x="108" y="2" width="187" height="40"/>
+                                                    <rect key="frame" x="115" y="2" width="180" height="40"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="8af-Ow-y9Q"/>
@@ -147,13 +147,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftt-Z5-Qda">
-                                                    <rect key="frame" x="8" y="11" width="73" height="21"/>
+                                                    <rect key="frame" x="15" y="11" width="73" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b6i-Uc-GAo">
-                                                    <rect key="frame" x="89" y="7" width="50" height="30"/>
+                                                    <rect key="frame" x="96" y="7" width="50" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="l0i-ay-Re6"/>
                                                     </constraints>
@@ -161,7 +161,7 @@
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2qz-t6-20s">
-                                                    <rect key="frame" x="147" y="7" width="50" height="30"/>
+                                                    <rect key="frame" x="154" y="7" width="50" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="3aP-xd-EE4"/>
                                                     </constraints>
@@ -169,7 +169,7 @@
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u6f-Ek-Gcf">
-                                                    <rect key="frame" x="205" y="7" width="50" height="30"/>
+                                                    <rect key="frame" x="212" y="7" width="50" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="sia-z5-3p8"/>
                                                     </constraints>
@@ -203,13 +203,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9o-oN-B5n">
-                                                    <rect key="frame" x="8" y="11" width="77" height="21"/>
+                                                    <rect key="frame" x="15" y="11" width="77" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="255" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VDE-uu-PZS">
-                                                    <rect key="frame" x="93" y="7" width="50" height="30"/>
+                                                    <rect key="frame" x="100" y="7" width="50" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="CXz-mB-TP1"/>
                                                     </constraints>
@@ -217,7 +217,7 @@
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="255" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e9D-pm-4Ja">
-                                                    <rect key="frame" x="151" y="7" width="50" height="30"/>
+                                                    <rect key="frame" x="158" y="7" width="50" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="oZk-e4-7gP"/>
                                                     </constraints>
@@ -225,7 +225,7 @@
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="255" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VqR-Yw-yO8">
-                                                    <rect key="frame" x="209" y="7" width="50" height="30"/>
+                                                    <rect key="frame" x="216" y="7" width="50" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="SMX-jP-c5y"/>
                                                     </constraints>

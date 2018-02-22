@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5PF-fp-a45">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5PF-fp-a45">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,10 +27,10 @@
                                 <rect key="frame" x="37.5" y="79.5" width="300" height="483"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3rU-4k-TZh">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3rU-4k-TZh">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="awD-CB-LQp"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="awD-CB-LQp"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Wpf-fH-7jV"/>
@@ -43,7 +43,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="f67-Cl-0zc" secondAttribute="trailing" id="4yK-Tv-fij"/>
                             <constraint firstItem="7l6-Xe-adx" firstAttribute="height" secondItem="f67-Cl-0zc" secondAttribute="height" multiplier="0.8" id="6Ia-xi-DxY"/>
@@ -51,11 +51,11 @@
                             <constraint firstItem="7l6-Xe-adx" firstAttribute="centerY" secondItem="f67-Cl-0zc" secondAttribute="centerY" id="F91-nx-Zof"/>
                             <constraint firstItem="f67-Cl-0zc" firstAttribute="top" secondItem="8Le-hl-k6O" secondAttribute="top" id="N2d-jW-Xc6"/>
                             <constraint firstItem="7l6-Xe-adx" firstAttribute="width" secondItem="f67-Cl-0zc" secondAttribute="width" multiplier="0.8" id="Uzg-cM-PZC"/>
-                            <constraint firstAttribute="trailing" secondItem="3rU-4k-TZh" secondAttribute="trailing" id="XTb-1L-I7a"/>
+                            <constraint firstItem="3rU-4k-TZh" firstAttribute="trailing" secondItem="8Le-hl-k6O" secondAttribute="trailing" id="XTb-1L-I7a"/>
                             <constraint firstItem="8Le-hl-k6O" firstAttribute="bottom" secondItem="f67-Cl-0zc" secondAttribute="bottom" id="awj-5G-alY"/>
                             <constraint firstItem="8Le-hl-k6O" firstAttribute="bottom" secondItem="3rU-4k-TZh" secondAttribute="bottom" id="cqy-a3-pbQ"/>
-                            <constraint firstItem="3rU-4k-TZh" firstAttribute="leading" secondItem="pDf-kq-WrX" secondAttribute="leading" id="eaS-eX-elR"/>
-                            <constraint firstItem="f67-Cl-0zc" firstAttribute="bottom" secondItem="8Le-hl-k6O" secondAttribute="bottom" constant="-44" id="j8p-3q-YOq"/>
+                            <constraint firstItem="3rU-4k-TZh" firstAttribute="leading" secondItem="8Le-hl-k6O" secondAttribute="leading" id="eaS-eX-elR"/>
+                            <constraint firstItem="f67-Cl-0zc" firstAttribute="bottom" secondItem="3rU-4k-TZh" secondAttribute="top" id="j8p-3q-YOq"/>
                             <constraint firstItem="f67-Cl-0zc" firstAttribute="leading" secondItem="pDf-kq-WrX" secondAttribute="leading" id="tH5-kF-Rd1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Le-hl-k6O"/>

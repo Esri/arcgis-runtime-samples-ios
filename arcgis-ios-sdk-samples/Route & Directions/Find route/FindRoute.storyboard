@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hxJ-u5-xSg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hxJ-u5-xSg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,10 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D7f-TJ-Fif">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D7f-TJ-Fif">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="jfy-3B-ZXa"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="jfy-3B-ZXa"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="DJx-Iu-aKn"/>
@@ -43,15 +43,15 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="APo-C9-AtT" firstAttribute="bottom" secondItem="UJo-Tq-54A" secondAttribute="bottom" constant="-44" id="6wp-nL-Enz"/>
+                            <constraint firstItem="APo-C9-AtT" firstAttribute="bottom" secondItem="D7f-TJ-Fif" secondAttribute="top" id="6wp-nL-Enz"/>
                             <constraint firstItem="UJo-Tq-54A" firstAttribute="bottom" secondItem="D7f-TJ-Fif" secondAttribute="bottom" id="N3o-sA-YES"/>
                             <constraint firstAttribute="trailing" secondItem="APo-C9-AtT" secondAttribute="trailing" id="Oe2-cn-qSi"/>
                             <constraint firstItem="APo-C9-AtT" firstAttribute="top" secondItem="UJo-Tq-54A" secondAttribute="top" id="XPQ-aw-QNl"/>
-                            <constraint firstAttribute="trailing" secondItem="D7f-TJ-Fif" secondAttribute="trailing" id="cDm-u3-gwx"/>
+                            <constraint firstItem="D7f-TJ-Fif" firstAttribute="trailing" secondItem="UJo-Tq-54A" secondAttribute="trailing" id="cDm-u3-gwx"/>
                             <constraint firstItem="APo-C9-AtT" firstAttribute="leading" secondItem="cuz-tT-dx6" secondAttribute="leading" id="rSj-od-AzH"/>
-                            <constraint firstItem="D7f-TJ-Fif" firstAttribute="leading" secondItem="cuz-tT-dx6" secondAttribute="leading" id="wCa-b0-hLK"/>
+                            <constraint firstItem="D7f-TJ-Fif" firstAttribute="leading" secondItem="UJo-Tq-54A" secondAttribute="leading" id="wCa-b0-hLK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UJo-Tq-54A"/>
                     </view>

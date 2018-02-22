@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nk8-Py-Q25">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nk8-Py-Q25">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,8 +32,11 @@
                                 <rect key="frame" x="37.5" y="80.5" width="300" height="483"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAa-aw-Yqx" userLabel="Geodatabse Toolbar">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAa-aw-Yqx" userLabel="Geodatabse Toolbar">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="Qso-n6-f2U"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem title="Switch to service" id="kGo-Yw-imd">
                                         <connections>
@@ -48,8 +51,11 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P32-Ts-mfU" userLabel="Service Toolbar">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P32-Ts-mfU" userLabel="Service Toolbar">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="ByM-P2-qPk"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="BAx-kn-2jn"/>
                                     <barButtonItem enabled="NO" title="Generate geodatabase" id="OLR-aV-vK7">
@@ -60,7 +66,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="tAZ-tx-lbm"/>
                                 </items>
                             </toolbar>
-                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TyB-0a-A6h">
+                            <toolbar hidden="YES" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TyB-0a-A6h">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="rNL-O3-Fbd"/>
@@ -86,7 +92,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gWP-x2-jdq" firstAttribute="centerY" secondItem="bv8-Lb-0y3" secondAttribute="centerY" id="0Qd-VK-d6M"/>
                             <constraint firstItem="gWP-x2-jdq" firstAttribute="height" secondItem="bv8-Lb-0y3" secondAttribute="height" id="0Tu-L5-IlZ"/>
@@ -94,12 +100,12 @@
                             <constraint firstItem="Nt3-l1-3cF" firstAttribute="top" secondItem="5NL-pv-SzQ" secondAttribute="top" id="7lV-3B-8vu"/>
                             <constraint firstItem="7wO-f3-vAW" firstAttribute="centerY" secondItem="bv8-Lb-0y3" secondAttribute="centerY" id="BCy-Ob-I6q"/>
                             <constraint firstItem="7wO-f3-vAW" firstAttribute="width" secondItem="bv8-Lb-0y3" secondAttribute="width" multiplier="0.8" id="Ogf-A5-3g8"/>
-                            <constraint firstItem="P32-Ts-mfU" firstAttribute="trailing" secondItem="OYo-b7-tB3" secondAttribute="trailing" id="RiX-Fq-uIq"/>
+                            <constraint firstItem="P32-Ts-mfU" firstAttribute="trailing" secondItem="5NL-pv-SzQ" secondAttribute="trailing" id="RiX-Fq-uIq"/>
                             <constraint firstItem="gWP-x2-jdq" firstAttribute="centerX" secondItem="bv8-Lb-0y3" secondAttribute="centerX" id="ZS7-mp-dxP"/>
                             <constraint firstItem="bv8-Lb-0y3" firstAttribute="trailing" secondItem="OYo-b7-tB3" secondAttribute="trailing" id="Zow-Im-A8A"/>
                             <constraint firstItem="gWP-x2-jdq" firstAttribute="width" secondItem="bv8-Lb-0y3" secondAttribute="width" id="Zyf-hm-wmX"/>
                             <constraint firstItem="TyB-0a-A6h" firstAttribute="centerX" secondItem="P32-Ts-mfU" secondAttribute="centerX" id="aeB-Zo-SXD"/>
-                            <constraint firstItem="P32-Ts-mfU" firstAttribute="leading" secondItem="OYo-b7-tB3" secondAttribute="leading" id="dTX-lM-LfG"/>
+                            <constraint firstItem="P32-Ts-mfU" firstAttribute="leading" secondItem="5NL-pv-SzQ" secondAttribute="leading" id="dTX-lM-LfG"/>
                             <constraint firstItem="5NL-pv-SzQ" firstAttribute="bottom" secondItem="FAa-aw-Yqx" secondAttribute="bottom" id="fDI-jG-UJ9"/>
                             <constraint firstItem="FAa-aw-Yqx" firstAttribute="leading" secondItem="OYo-b7-tB3" secondAttribute="leading" id="h7x-fU-dKY"/>
                             <constraint firstItem="TyB-0a-A6h" firstAttribute="width" secondItem="P32-Ts-mfU" secondAttribute="width" id="hvr-GW-0pu"/>

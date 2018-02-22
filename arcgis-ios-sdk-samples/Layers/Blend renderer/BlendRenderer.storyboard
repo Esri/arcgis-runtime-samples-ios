@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N7u-AK-Y75">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N7u-AK-Y75">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,10 +28,10 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FsE-cl-COY">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FsE-cl-COY">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="yfa-r0-Gsg"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="yfa-r0-Gsg"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Qfx-02-yZ1"/>
@@ -69,18 +69,18 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Np5-Md-wF5" secondAttribute="trailing" id="6LH-rI-Ec6"/>
-                            <constraint firstItem="55E-Cz-Pew" firstAttribute="bottom" secondItem="74L-H9-OmC" secondAttribute="bottom" constant="-44" id="CN8-Cz-BGH"/>
+                            <constraint firstItem="55E-Cz-Pew" firstAttribute="bottom" secondItem="FsE-cl-COY" secondAttribute="top" id="CN8-Cz-BGH"/>
                             <constraint firstItem="Np5-Md-wF5" firstAttribute="top" secondItem="74L-H9-OmC" secondAttribute="top" id="HgL-DO-OTf"/>
                             <constraint firstItem="FsE-cl-COY" firstAttribute="top" secondItem="Np5-Md-wF5" secondAttribute="bottom" id="Qls-Mi-NY3"/>
                             <constraint firstItem="55E-Cz-Pew" firstAttribute="leading" secondItem="3Ub-iF-hKv" secondAttribute="leading" id="S8r-go-wyK"/>
                             <constraint firstItem="Np5-Md-wF5" firstAttribute="leading" secondItem="3Ub-iF-hKv" secondAttribute="leading" id="a6w-Lg-byB"/>
                             <constraint firstItem="74L-H9-OmC" firstAttribute="bottom" secondItem="FsE-cl-COY" secondAttribute="bottom" id="eim-Ao-5qY"/>
-                            <constraint firstItem="FsE-cl-COY" firstAttribute="leading" secondItem="3Ub-iF-hKv" secondAttribute="leading" id="fG5-Vp-pgu"/>
+                            <constraint firstItem="FsE-cl-COY" firstAttribute="leading" secondItem="74L-H9-OmC" secondAttribute="leading" id="fG5-Vp-pgu"/>
                             <constraint firstItem="55E-Cz-Pew" firstAttribute="top" secondItem="3Ub-iF-hKv" secondAttribute="top" id="gtt-80-zIA"/>
-                            <constraint firstAttribute="trailing" secondItem="FsE-cl-COY" secondAttribute="trailing" id="hfi-Mf-O6c"/>
+                            <constraint firstItem="FsE-cl-COY" firstAttribute="trailing" secondItem="74L-H9-OmC" secondAttribute="trailing" id="hfi-Mf-O6c"/>
                             <constraint firstAttribute="trailing" secondItem="55E-Cz-Pew" secondAttribute="trailing" id="hmE-1O-4Fg"/>
                             <constraint firstAttribute="bottom" secondItem="Np5-Md-wF5" secondAttribute="bottom" id="kzf-3S-7M1"/>
                             <constraint firstItem="55E-Cz-Pew" firstAttribute="top" secondItem="74L-H9-OmC" secondAttribute="top" id="q61-y2-FM3"/>

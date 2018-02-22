@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tz0-lf-ZRZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tz0-lf-ZRZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,8 +32,11 @@
                                 <rect key="frame" x="37.5" y="80.5" width="300" height="483"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTH-Go-PIh">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTH-Go-PIh">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="JOL-1G-pXg"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="MO1-MP-yl8"/>
                                     <barButtonItem title="Export tiles" id="f1v-WL-0Sq">
@@ -97,18 +100,18 @@
                                 <blurEffect style="dark"/>
                             </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="he3-oa-bDR" firstAttribute="bottom" secondItem="TTH-Go-PIh" secondAttribute="bottom" id="1Ek-ud-M4q"/>
                             <constraint firstItem="yNi-AW-2hc" firstAttribute="bottom" secondItem="he3-oa-bDR" secondAttribute="bottom" id="2K6-RV-ra2"/>
                             <constraint firstItem="487-BM-FZS" firstAttribute="height" secondItem="Xws-VU-aFf" secondAttribute="height" id="B6q-KZ-DUX"/>
-                            <constraint firstItem="TTH-Go-PIh" firstAttribute="trailing" secondItem="kAr-D6-iog" secondAttribute="trailing" id="CfN-PU-HKN"/>
+                            <constraint firstItem="TTH-Go-PIh" firstAttribute="trailing" secondItem="he3-oa-bDR" secondAttribute="trailing" id="CfN-PU-HKN"/>
                             <constraint firstItem="Xws-VU-aFf" firstAttribute="centerY" secondItem="4Ax-yA-Gum" secondAttribute="centerY" id="DCa-VQ-AZF"/>
                             <constraint firstItem="4Ax-yA-Gum" firstAttribute="trailing" secondItem="kAr-D6-iog" secondAttribute="trailing" id="FJA-3t-mpf"/>
-                            <constraint firstItem="4Ax-yA-Gum" firstAttribute="bottom" secondItem="he3-oa-bDR" secondAttribute="bottom" constant="-44" id="Noo-at-zqS"/>
+                            <constraint firstItem="4Ax-yA-Gum" firstAttribute="bottom" secondItem="TTH-Go-PIh" secondAttribute="top" id="Noo-at-zqS"/>
                             <constraint firstItem="yNi-AW-2hc" firstAttribute="trailing" secondItem="kAr-D6-iog" secondAttribute="trailing" id="WwY-RW-uaI"/>
                             <constraint firstItem="4Ax-yA-Gum" firstAttribute="leading" secondItem="kAr-D6-iog" secondAttribute="leading" id="Wwd-Wi-Pzs"/>
-                            <constraint firstItem="TTH-Go-PIh" firstAttribute="leading" secondItem="kAr-D6-iog" secondAttribute="leading" id="ap1-6K-OLX"/>
+                            <constraint firstItem="TTH-Go-PIh" firstAttribute="leading" secondItem="he3-oa-bDR" secondAttribute="leading" id="ap1-6K-OLX"/>
                             <constraint firstItem="4Ax-yA-Gum" firstAttribute="top" secondItem="he3-oa-bDR" secondAttribute="top" id="exp-h0-dkg"/>
                             <constraint firstItem="487-BM-FZS" firstAttribute="width" secondItem="Xws-VU-aFf" secondAttribute="width" id="gYJ-sp-zpI"/>
                             <constraint firstItem="Xws-VU-aFf" firstAttribute="width" secondItem="4Ax-yA-Gum" secondAttribute="width" multiplier="0.8" id="mUl-Ht-DNU"/>

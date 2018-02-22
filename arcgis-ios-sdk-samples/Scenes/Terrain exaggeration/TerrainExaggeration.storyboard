@@ -31,17 +31,17 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="xPD-f5-k1U"/>
                                     <barButtonItem width="300" style="plain" id="07V-iL-mk1">
                                         <view key="customView" contentMode="scaleToFill" id="3bl-ag-Db5">
-                                            <rect key="frame" x="187.5" y="22" width="0.0" height="0.0"/>
+                                            <rect key="frame" x="37.5" y="5.5" width="300" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RAb-nm-N47">
-                                                    <rect key="frame" x="6" y="-15" width="4" height="31"/>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RAb-nm-N47">
+                                                    <rect key="frame" x="6" y="1.5" width="246" height="31"/>
                                                     <connections>
                                                         <action selector="sliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="iws-0m-F8G"/>
                                                     </connections>
                                                 </slider>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1.0x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vB-Iw-oNt">
-                                                    <rect key="frame" x="15" y="6" width="30" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vB-Iw-oNt">
+                                                    <rect key="frame" x="257" y="6" width="30" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

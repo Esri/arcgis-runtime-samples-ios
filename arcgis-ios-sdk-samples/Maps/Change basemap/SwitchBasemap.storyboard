@@ -22,10 +22,10 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDG-ym-VhV">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDG-ym-VhV">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="4w4-Ay-3PH"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="dAI-VW-pBO"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="nvK-RO-FbS"/>
@@ -48,13 +48,13 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="ZPF-Hk-sgi" firstAttribute="top" secondItem="Ksc-DO-eLV" secondAttribute="top" id="4eV-yZ-a9J"/>
-                            <constraint firstItem="ZPF-Hk-sgi" firstAttribute="bottom" secondItem="98t-T5-GhR" secondAttribute="bottom" constant="-44" id="Rh2-lA-Wa0"/>
-                            <constraint firstItem="qDG-ym-VhV" firstAttribute="leading" secondItem="Ksc-DO-eLV" secondAttribute="leading" id="SmW-fJ-Saz"/>
+                            <constraint firstItem="ZPF-Hk-sgi" firstAttribute="bottom" secondItem="qDG-ym-VhV" secondAttribute="top" id="Rh2-lA-Wa0"/>
+                            <constraint firstItem="qDG-ym-VhV" firstAttribute="leading" secondItem="98t-T5-GhR" secondAttribute="leading" id="SmW-fJ-Saz"/>
                             <constraint firstItem="ZPF-Hk-sgi" firstAttribute="top" secondItem="98t-T5-GhR" secondAttribute="top" id="TE8-55-aHG"/>
-                            <constraint firstItem="qDG-ym-VhV" firstAttribute="trailing" secondItem="Ksc-DO-eLV" secondAttribute="trailing" id="Tm4-xc-muW"/>
+                            <constraint firstItem="qDG-ym-VhV" firstAttribute="trailing" secondItem="98t-T5-GhR" secondAttribute="trailing" id="Tm4-xc-muW"/>
                             <constraint firstItem="98t-T5-GhR" firstAttribute="bottom" secondItem="ZPF-Hk-sgi" secondAttribute="bottom" id="VNp-0z-52M"/>
                             <constraint firstItem="ZPF-Hk-sgi" firstAttribute="trailing" secondItem="Ksc-DO-eLV" secondAttribute="trailing" id="a5P-bo-Wrh"/>
                             <constraint firstItem="ZPF-Hk-sgi" firstAttribute="leading" secondItem="Ksc-DO-eLV" secondAttribute="leading" id="aSW-WW-S7M"/>
@@ -63,8 +63,8 @@
                         <viewLayoutGuide key="safeArea" id="98t-T5-GhR"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="4eV-yZ-a9J"/>
                                 <exclude reference="VNp-0z-52M"/>
+                                <exclude reference="4eV-yZ-a9J"/>
                             </mask>
                         </variation>
                     </view>

@@ -27,10 +27,10 @@
                                 <rect key="frame" x="0.0" y="20" width="768" height="960"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyN-P3-x5p">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyN-P3-x5p">
                                 <rect key="frame" x="0.0" y="980" width="768" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="7EP-F7-41W"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="UYH-H8-pDQ"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="X9z-MH-seV"/>
@@ -118,18 +118,18 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Fkp-HE-7Dc" firstAttribute="leading" secondItem="i60-OS-f36" secondAttribute="leading" id="15a-c5-k8j"/>
-                            <constraint firstItem="Fkp-HE-7Dc" firstAttribute="bottom" secondItem="vjo-78-dWd" secondAttribute="bottom" constant="-44" id="5Hp-JE-Am7"/>
-                            <constraint firstItem="LpR-zs-icD" firstAttribute="bottom" secondItem="vjo-78-dWd" secondAttribute="bottom" constant="-44" id="6A3-tW-Rhg"/>
+                            <constraint firstItem="Fkp-HE-7Dc" firstAttribute="bottom" secondItem="hyN-P3-x5p" secondAttribute="top" id="5Hp-JE-Am7"/>
+                            <constraint firstItem="LpR-zs-icD" firstAttribute="bottom" secondItem="hyN-P3-x5p" secondAttribute="top" id="6A3-tW-Rhg"/>
                             <constraint firstItem="Fkp-HE-7Dc" firstAttribute="top" secondItem="vjo-78-dWd" secondAttribute="top" id="Kd9-N2-R1p"/>
                             <constraint firstItem="LpR-zs-icD" firstAttribute="top" secondItem="i60-OS-f36" secondAttribute="top" id="RCT-Vk-XYM"/>
                             <constraint firstItem="vjo-78-dWd" firstAttribute="bottom" secondItem="LpR-zs-icD" secondAttribute="bottom" id="TUU-BU-V3O"/>
-                            <constraint firstItem="hyN-P3-x5p" firstAttribute="leading" secondItem="i60-OS-f36" secondAttribute="leading" id="XzW-0D-ai1"/>
+                            <constraint firstItem="hyN-P3-x5p" firstAttribute="leading" secondItem="vjo-78-dWd" secondAttribute="leading" id="XzW-0D-ai1"/>
                             <constraint firstItem="LpR-zs-icD" firstAttribute="leading" secondItem="i60-OS-f36" secondAttribute="leading" id="fhx-og-DQp"/>
                             <constraint firstItem="LpR-zs-icD" firstAttribute="top" secondItem="vjo-78-dWd" secondAttribute="top" id="l0J-FA-oba"/>
-                            <constraint firstItem="hyN-P3-x5p" firstAttribute="trailing" secondItem="i60-OS-f36" secondAttribute="trailing" id="oKd-6T-1Pb"/>
+                            <constraint firstItem="hyN-P3-x5p" firstAttribute="trailing" secondItem="vjo-78-dWd" secondAttribute="trailing" id="oKd-6T-1Pb"/>
                             <constraint firstItem="vjo-78-dWd" firstAttribute="bottom" secondItem="hyN-P3-x5p" secondAttribute="bottom" id="oia-mA-meb"/>
                             <constraint firstItem="Fkp-HE-7Dc" firstAttribute="trailing" secondItem="i60-OS-f36" secondAttribute="trailing" id="qFz-nB-faJ"/>
                             <constraint firstItem="LpR-zs-icD" firstAttribute="trailing" secondItem="i60-OS-f36" secondAttribute="trailing" id="u6z-pd-b1G"/>
@@ -137,8 +137,8 @@
                         <viewLayoutGuide key="safeArea" id="vjo-78-dWd"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="RCT-Vk-XYM"/>
                                 <exclude reference="TUU-BU-V3O"/>
+                                <exclude reference="RCT-Vk-XYM"/>
                             </mask>
                         </variation>
                     </view>

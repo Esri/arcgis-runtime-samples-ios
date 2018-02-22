@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KYn-o9-nTS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KYn-o9-nTS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,10 +27,10 @@
                                 <rect key="frame" x="37.5" y="80.5" width="300" height="482"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tt7-kv-ee8">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tt7-kv-ee8">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="a3Y-zQ-THg"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="x2N-4l-LQ5"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="lxq-bv-R2k"/>
@@ -78,15 +78,15 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="I9Y-St-eL3" firstAttribute="bottom" secondItem="tt7-kv-ee8" secondAttribute="bottom" id="6OA-20-g2O"/>
-                            <constraint firstItem="wJW-kM-2jV" firstAttribute="bottom" secondItem="I9Y-St-eL3" secondAttribute="bottom" constant="-44" id="6do-0o-eJh"/>
+                            <constraint firstItem="wJW-kM-2jV" firstAttribute="bottom" secondItem="tt7-kv-ee8" secondAttribute="top" id="6do-0o-eJh"/>
                             <constraint firstItem="kTc-3V-1Wg" firstAttribute="width" secondItem="wJW-kM-2jV" secondAttribute="width" multiplier="0.8" id="FUd-ZK-ltC"/>
                             <constraint firstItem="kTc-3V-1Wg" firstAttribute="centerY" secondItem="wJW-kM-2jV" secondAttribute="centerY" id="IHQ-b8-bVX"/>
                             <constraint firstItem="kTc-3V-1Wg" firstAttribute="height" secondItem="wJW-kM-2jV" secondAttribute="height" multiplier="0.8" id="QyD-8g-jZ3"/>
-                            <constraint firstItem="tt7-kv-ee8" firstAttribute="trailing" secondItem="0je-Pd-srw" secondAttribute="trailing" id="SiU-a8-404"/>
-                            <constraint firstItem="tt7-kv-ee8" firstAttribute="leading" secondItem="0je-Pd-srw" secondAttribute="leading" id="VhE-AU-Gu2"/>
+                            <constraint firstItem="tt7-kv-ee8" firstAttribute="trailing" secondItem="I9Y-St-eL3" secondAttribute="trailing" id="SiU-a8-404"/>
+                            <constraint firstItem="tt7-kv-ee8" firstAttribute="leading" secondItem="I9Y-St-eL3" secondAttribute="leading" id="VhE-AU-Gu2"/>
                             <constraint firstItem="I9Y-St-eL3" firstAttribute="trailing" secondItem="dkd-2o-c7w" secondAttribute="trailing" id="YZw-xM-Lbe"/>
                             <constraint firstItem="kTc-3V-1Wg" firstAttribute="centerX" secondItem="wJW-kM-2jV" secondAttribute="centerX" id="ZWj-QP-fSb"/>
                             <constraint firstItem="wJW-kM-2jV" firstAttribute="leading" secondItem="0je-Pd-srw" secondAttribute="leading" id="fvH-8I-xck"/>

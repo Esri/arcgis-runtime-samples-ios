@@ -35,8 +35,11 @@
                                     <action selector="compassAction" destination="gEk-4Q-v8l" eventType="touchUpInside" id="LTT-8o-4UX"/>
                                 </connections>
                             </button>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Trr-ws-YeO">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Trr-ws-YeO">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="6jY-hC-9su"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Lub-OJ-TeS"/>
                                     <barButtonItem width="300" style="plain" id="9fn-eF-LLE">
@@ -75,13 +78,13 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="Trr-ws-YeO" firstAttribute="trailing" secondItem="ahk-qW-u2b" secondAttribute="trailing" id="24d-KO-OY4"/>
+                            <constraint firstItem="Trr-ws-YeO" firstAttribute="trailing" secondItem="dIt-Mx-Uzs" secondAttribute="trailing" id="24d-KO-OY4"/>
                             <constraint firstItem="dIt-Mx-Uzs" firstAttribute="bottom" secondItem="Trr-ws-YeO" secondAttribute="bottom" id="592-Oq-HYM"/>
                             <constraint firstItem="qzw-6w-roX" firstAttribute="top" secondItem="dIt-Mx-Uzs" secondAttribute="top" constant="12" id="ERP-J2-6Ec"/>
-                            <constraint firstItem="Trr-ws-YeO" firstAttribute="leading" secondItem="ahk-qW-u2b" secondAttribute="leading" id="PzF-LA-FZU"/>
-                            <constraint firstItem="mc4-3J-OCW" firstAttribute="bottom" secondItem="dIt-Mx-Uzs" secondAttribute="bottom" constant="-44" id="UQ3-fy-Kbf"/>
+                            <constraint firstItem="Trr-ws-YeO" firstAttribute="leading" secondItem="dIt-Mx-Uzs" secondAttribute="leading" id="PzF-LA-FZU"/>
+                            <constraint firstItem="mc4-3J-OCW" firstAttribute="bottom" secondItem="Trr-ws-YeO" secondAttribute="top" id="UQ3-fy-Kbf"/>
                             <constraint firstItem="mc4-3J-OCW" firstAttribute="leading" secondItem="ahk-qW-u2b" secondAttribute="leading" id="faL-hv-eky"/>
                             <constraint firstItem="mc4-3J-OCW" firstAttribute="top" secondItem="ahk-qW-u2b" secondAttribute="top" id="fvc-XH-Y1p"/>
                             <constraint firstItem="dIt-Mx-Uzs" firstAttribute="trailing" secondItem="qzw-6w-roX" secondAttribute="trailing" constant="12" id="g3X-Af-oAu"/>
@@ -92,8 +95,8 @@
                         <viewLayoutGuide key="safeArea" id="dIt-Mx-Uzs"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="fvc-XH-Y1p"/>
                                 <exclude reference="u08-Bg-yxu"/>
+                                <exclude reference="fvc-XH-Y1p"/>
                             </mask>
                         </variation>
                     </view>

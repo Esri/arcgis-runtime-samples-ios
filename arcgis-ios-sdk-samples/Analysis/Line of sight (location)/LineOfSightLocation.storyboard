@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="beF-yn-MU6">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Line Of Sight Location View Controller-->
+        <scene sceneID="uVV-jY-ewq">
+            <objects>
+                <viewController id="beF-yn-MU6" customClass="LineOfSightLocationViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7gX-cs-H6x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="34" translatesAutoresizingMaskIntoConstraints="NO" id="yMh-oN-h6N" userLabel="Instructions Container">
+                                <rect key="frame" x="0.0" y="44" width="375" height="34"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="DOk-3h-gKt">
+                                        <rect key="frame" x="0.0" y="8" width="375" height="18"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the map to set the observer location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgh-ab-wUm">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" red="0.0" green="0.36862745099999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap-and-hold to drag the line of sight target" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHc-7B-FsF">
+                                                <rect key="frame" x="0.0" y="-52" width="375" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" red="0.0" green="0.36862745099999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="DOk-3h-gKt" secondAttribute="bottom" constant="8" id="48f-E0-Fb3"/>
+                                    <constraint firstItem="DOk-3h-gKt" firstAttribute="top" secondItem="yMh-oN-h6N" secondAttribute="top" constant="8" id="ZTX-Hc-u47"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLS-ms-81h" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="78" width="375" height="734"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="YLS-ms-81h" secondAttribute="trailing" id="4JD-Hc-i8w"/>
+                            <constraint firstItem="YLS-ms-81h" firstAttribute="bottom" secondItem="7gX-cs-H6x" secondAttribute="bottom" id="6p8-oz-atx"/>
+                            <constraint firstItem="YLS-ms-81h" firstAttribute="leading" secondItem="7gX-cs-H6x" secondAttribute="leading" id="72h-w0-ibb"/>
+                            <constraint firstItem="YLS-ms-81h" firstAttribute="top" secondItem="yMh-oN-h6N" secondAttribute="bottom" id="H0c-YF-ggi"/>
+                            <constraint firstItem="bDJ-YQ-Fba" firstAttribute="trailing" secondItem="yMh-oN-h6N" secondAttribute="trailing" id="LlD-gz-Qxg"/>
+                            <constraint firstItem="bDJ-YQ-Fba" firstAttribute="top" secondItem="yMh-oN-h6N" secondAttribute="top" symbolic="YES" id="Lyf-dh-JpZ"/>
+                            <constraint firstItem="DOk-3h-gKt" firstAttribute="leading" secondItem="bDJ-YQ-Fba" secondAttribute="leading" id="Pot-p2-KQq"/>
+                            <constraint firstItem="DOk-3h-gKt" firstAttribute="trailing" secondItem="bDJ-YQ-Fba" secondAttribute="trailing" id="dsL-sF-9B8"/>
+                            <constraint firstItem="yMh-oN-h6N" firstAttribute="leading" secondItem="bDJ-YQ-Fba" secondAttribute="leading" id="uQr-PE-lfP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bDJ-YQ-Fba"/>
+                    </view>
+                    <connections>
+                        <outlet property="observerInstructionLabel" destination="qgh-ab-wUm" id="FNy-gu-voB"/>
+                        <outlet property="sceneView" destination="YLS-ms-81h" id="siT-TH-Arp"/>
+                        <outlet property="targetInstructionLabel" destination="jHc-7B-FsF" id="wlz-FY-Txb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xV7-CA-qW6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="799" y="10"/>
+        </scene>
+    </scenes>
+</document>

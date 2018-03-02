@@ -11,7 +11,7 @@ The ```master``` branch of this repository contains samples configured for the l
 ## Features
 * Maps - Open, create, inteact with and save maps
 * Layers - Layer types offered by the SDK
-* Features - Workign with Feature layers
+* Features - Working with Feature layers
 * Edit Data - Adding, deleting and editing features
 * Display Information - Displaying graphics, popups and callouts
 * Search - Finding an address

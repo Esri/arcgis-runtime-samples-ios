@@ -1,28 +1,29 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GSk-lW-Mjg">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GSk-lW-Mjg">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Edit Geometry View Controller-->
         <scene sceneID="8sc-hz-yRK">
             <objects>
                 <viewController id="GSk-lW-Mjg" customClass="EditGeometryViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9HX-ok-uCF"/>
-                        <viewControllerLayoutGuide type="bottom" id="hdG-0i-5pm"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wIC-Qr-QYb">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8E0-Q1-C3I" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJv-2z-hgI">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJv-2z-hgI">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="Nee-S1-CYT"/>
                                 </constraints>
@@ -36,22 +37,23 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="8E0-Q1-C3I" firstAttribute="top" secondItem="9HX-ok-uCF" secondAttribute="bottom" id="0V7-kv-fYg"/>
-                            <constraint firstItem="hdG-0i-5pm" firstAttribute="top" secondItem="8E0-Q1-C3I" secondAttribute="bottom" id="SDW-0Y-e02"/>
+                            <constraint firstItem="8E0-Q1-C3I" firstAttribute="top" secondItem="fhn-Qd-zlO" secondAttribute="top" id="0V7-kv-fYg"/>
+                            <constraint firstItem="fhn-Qd-zlO" firstAttribute="bottom" secondItem="8E0-Q1-C3I" secondAttribute="bottom" id="SDW-0Y-e02"/>
                             <constraint firstItem="8E0-Q1-C3I" firstAttribute="leading" secondItem="wIC-Qr-QYb" secondAttribute="leading" id="Z76-FY-fQl"/>
                             <constraint firstItem="YJv-2z-hgI" firstAttribute="top" secondItem="8E0-Q1-C3I" secondAttribute="bottom" id="gMJ-NI-nlb"/>
                             <constraint firstAttribute="trailing" secondItem="8E0-Q1-C3I" secondAttribute="trailing" id="gRf-Or-rMc"/>
-                            <constraint firstItem="hdG-0i-5pm" firstAttribute="top" secondItem="YJv-2z-hgI" secondAttribute="bottom" id="n4h-qi-X3x"/>
+                            <constraint firstItem="fhn-Qd-zlO" firstAttribute="bottom" secondItem="YJv-2z-hgI" secondAttribute="bottom" id="n4h-qi-X3x"/>
                             <constraint firstItem="8E0-Q1-C3I" firstAttribute="top" secondItem="wIC-Qr-QYb" secondAttribute="top" id="nRL-dC-mdY"/>
-                            <constraint firstItem="YJv-2z-hgI" firstAttribute="leading" secondItem="wIC-Qr-QYb" secondAttribute="leading" id="oD7-C2-3aF"/>
-                            <constraint firstAttribute="trailing" secondItem="YJv-2z-hgI" secondAttribute="trailing" id="tLF-nu-CsL"/>
+                            <constraint firstItem="YJv-2z-hgI" firstAttribute="leading" secondItem="fhn-Qd-zlO" secondAttribute="leading" id="oD7-C2-3aF"/>
+                            <constraint firstItem="YJv-2z-hgI" firstAttribute="trailing" secondItem="fhn-Qd-zlO" secondAttribute="trailing" id="tLF-nu-CsL"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="fhn-Qd-zlO"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="nRL-dC-mdY"/>
                                 <exclude reference="SDW-0Y-e02"/>
+                                <exclude reference="nRL-dC-mdY"/>
                             </mask>
                         </variation>
                     </view>
@@ -63,7 +65,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dNO-8s-AjQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="377" y="286"/>
+            <point key="canvasLocation" x="-17" y="50"/>
         </scene>
     </scenes>
 </document>

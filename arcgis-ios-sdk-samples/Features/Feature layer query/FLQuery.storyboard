@@ -1,28 +1,29 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xJV-vF-6O8">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xJV-vF-6O8">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Query View Controller-->
         <scene sceneID="Bk5-qW-MXB">
             <objects>
                 <viewController id="xJV-vF-6O8" customClass="FLQueryViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2iS-fM-R8e"/>
-                        <viewControllerLayoutGuide type="bottom" id="YCv-Rt-qGi"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ADA-S7-fGv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A3d-rR-h2n" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <searchBar contentMode="redraw" placeholder="Enter a state to highlight" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F1b-bI-eE5">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                            <searchBar contentMode="redraw" misplaced="YES" placeholder="Enter a state to highlight" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F1b-bI-eE5">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ixD-ge-PIb"/>
                                 </constraints>
@@ -36,17 +37,18 @@
                                 </connections>
                             </searchBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="YCv-Rt-qGi" firstAttribute="top" secondItem="A3d-rR-h2n" secondAttribute="bottom" id="3lP-Q3-X5g"/>
-                            <constraint firstItem="F1b-bI-eE5" firstAttribute="top" secondItem="2iS-fM-R8e" secondAttribute="bottom" id="4Vj-Vh-iMG"/>
+                            <constraint firstAttribute="bottom" secondItem="A3d-rR-h2n" secondAttribute="bottom" id="3lP-Q3-X5g"/>
+                            <constraint firstItem="F1b-bI-eE5" firstAttribute="top" secondItem="ESN-tu-NNX" secondAttribute="top" id="4Vj-Vh-iMG"/>
                             <constraint firstItem="F1b-bI-eE5" firstAttribute="leading" secondItem="ADA-S7-fGv" secondAttribute="leading" id="MU5-Ox-rUm"/>
                             <constraint firstItem="A3d-rR-h2n" firstAttribute="top" secondItem="ADA-S7-fGv" secondAttribute="top" id="NmU-IF-q0g"/>
-                            <constraint firstItem="A3d-rR-h2n" firstAttribute="top" secondItem="2iS-fM-R8e" secondAttribute="bottom" id="Wc0-jo-xkI"/>
+                            <constraint firstItem="A3d-rR-h2n" firstAttribute="top" secondItem="ESN-tu-NNX" secondAttribute="top" id="Wc0-jo-xkI"/>
                             <constraint firstAttribute="trailing" secondItem="A3d-rR-h2n" secondAttribute="trailing" id="fu3-mn-f2r"/>
                             <constraint firstAttribute="trailing" secondItem="F1b-bI-eE5" secondAttribute="trailing" id="hfn-El-kUQ"/>
                             <constraint firstItem="A3d-rR-h2n" firstAttribute="leading" secondItem="ADA-S7-fGv" secondAttribute="leading" id="sRm-fO-VeY"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="ESN-tu-NNX"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="NmU-IF-q0g"/>
@@ -59,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0EE-l3-lqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="542" y="426"/>
+            <point key="canvasLocation" x="541.60000000000002" y="425.93703148425789"/>
         </scene>
     </scenes>
 </document>

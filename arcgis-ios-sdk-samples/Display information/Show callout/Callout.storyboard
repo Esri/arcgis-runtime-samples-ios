@@ -1,48 +1,55 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YcZ-XH-Sb3">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YcZ-XH-Sb3">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Callout View Controller-->
         <scene sceneID="zr8-kr-0KJ">
             <objects>
                 <viewController id="YcZ-XH-Sb3" customClass="CalloutViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="zxK-Lz-wMb"/>
-                        <viewControllerLayoutGuide type="bottom" id="ZzV-Az-Vig"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vYX-RT-zR8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tr9-p4-ulU" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.64999999999999969" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the map to show a callout" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LvX-yP-v3b">
-                                <rect key="frame" x="0.0" y="20" width="600" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ka2-SR-f04"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="LvX-yP-v3b" secondAttribute="trailing" id="8rI-CX-js5"/>
-                            <constraint firstItem="Tr9-p4-ulU" firstAttribute="top" secondItem="zxK-Lz-wMb" secondAttribute="bottom" id="Fse-Hv-ZDk"/>
+                            <constraint firstItem="Tr9-p4-ulU" firstAttribute="top" secondItem="guE-wL-1bf" secondAttribute="top" id="Fse-Hv-ZDk"/>
                             <constraint firstAttribute="trailing" secondItem="Tr9-p4-ulU" secondAttribute="trailing" id="KI3-uI-4Tr"/>
-                            <constraint firstItem="ZzV-Az-Vig" firstAttribute="top" secondItem="Tr9-p4-ulU" secondAttribute="bottom" id="Qcj-wr-bVz"/>
+                            <constraint firstAttribute="bottom" secondItem="Tr9-p4-ulU" secondAttribute="bottom" id="Qcj-wr-bVz"/>
                             <constraint firstItem="Tr9-p4-ulU" firstAttribute="leading" secondItem="vYX-RT-zR8" secondAttribute="leading" id="sEk-Pm-Ekr"/>
                             <constraint firstItem="LvX-yP-v3b" firstAttribute="leading" secondItem="vYX-RT-zR8" secondAttribute="leading" id="sU5-a8-He2"/>
                             <constraint firstItem="Tr9-p4-ulU" firstAttribute="top" secondItem="vYX-RT-zR8" secondAttribute="top" id="vaB-3f-XKu"/>
-                            <constraint firstItem="LvX-yP-v3b" firstAttribute="top" secondItem="zxK-Lz-wMb" secondAttribute="bottom" id="wRZ-J8-Qll"/>
+                            <constraint firstItem="LvX-yP-v3b" firstAttribute="top" secondItem="guE-wL-1bf" secondAttribute="top" id="wRZ-J8-Qll"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="guE-wL-1bf"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="vaB-3f-XKu"/>

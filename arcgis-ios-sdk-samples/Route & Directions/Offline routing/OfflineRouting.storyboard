@@ -1,50 +1,57 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XiM-Ic-ILI">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XiM-Ic-ILI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Book</string>
+            <string>Avenir-Heavy</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Offline Routing View Controller-->
         <scene sceneID="fNR-gM-0Sw">
             <objects>
                 <viewController id="XiM-Ic-ILI" customClass="OfflineRoutingViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="EFi-Eo-XAU"/>
-                        <viewControllerLayoutGuide type="bottom" id="2De-2a-UD0"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TeH-ax-zgC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l92-Q4-Uk4" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="msR-U7-cd1">
-                                <rect key="frame" x="0.0" y="556" width="600" height="36"/>
+                                <rect key="frame" x="0.0" y="623" width="375" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfV-dz-lse">
                                         <rect key="frame" x="8" y="6" width="44.5" height="23.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(0.5 mi)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZB-D0-rcp">
                                         <rect key="frame" x="56" y="6" width="56" height="23.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5V-9s-nrk">
-                                        <rect key="frame" x="570" y="7" width="22" height="22"/>
+                                        <rect key="frame" x="345" y="7" width="22" height="22"/>
                                         <state key="normal" image="trashBlue"/>
                                         <connections>
                                             <action selector="trashAction" destination="XiM-Ic-ILI" eventType="touchUpInside" id="aow-la-aiR"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="wfV-dz-lse" firstAttribute="centerY" secondItem="msR-U7-cd1" secondAttribute="centerY" id="6SU-PC-rum"/>
                                     <constraint firstItem="NZB-D0-rcp" firstAttribute="leading" secondItem="wfV-dz-lse" secondAttribute="trailing" constant="4" id="CZS-1J-Glj"/>
@@ -56,12 +63,15 @@
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ohl-3X-6nD">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Chx-y5-d7h"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="FdY-uT-UmQ"/>
                                     <barButtonItem style="plain" id="EGO-cf-9qa">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dea-4D-qZ3">
-                                            <rect key="frame" x="239" y="7" width="121" height="30"/>
+                                            <rect key="frame" x="121" y="7.5" width="133" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Fastest"/>
@@ -76,19 +86,20 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Ohl-3X-6nD" firstAttribute="top" secondItem="msR-U7-cd1" secondAttribute="bottom" constant="-36" id="00W-hv-SbS"/>
-                            <constraint firstAttribute="trailing" secondItem="msR-U7-cd1" secondAttribute="trailing" id="75w-YH-vgj"/>
-                            <constraint firstItem="2De-2a-UD0" firstAttribute="top" secondItem="Ohl-3X-6nD" secondAttribute="bottom" id="YO4-di-1oK"/>
+                            <constraint firstItem="4Sz-d2-GIP" firstAttribute="trailing" secondItem="msR-U7-cd1" secondAttribute="trailing" id="75w-YH-vgj"/>
+                            <constraint firstItem="4Sz-d2-GIP" firstAttribute="bottom" secondItem="Ohl-3X-6nD" secondAttribute="bottom" id="YO4-di-1oK"/>
                             <constraint firstItem="msR-U7-cd1" firstAttribute="top" secondItem="l92-Q4-Uk4" secondAttribute="bottom" id="ZhB-de-5v1"/>
                             <constraint firstAttribute="trailing" secondItem="l92-Q4-Uk4" secondAttribute="trailing" id="d0L-ed-FBH"/>
-                            <constraint firstItem="msR-U7-cd1" firstAttribute="leading" secondItem="TeH-ax-zgC" secondAttribute="leading" id="dZr-dh-xFA"/>
+                            <constraint firstItem="msR-U7-cd1" firstAttribute="leading" secondItem="4Sz-d2-GIP" secondAttribute="leading" id="dZr-dh-xFA"/>
                             <constraint firstItem="l92-Q4-Uk4" firstAttribute="leading" secondItem="TeH-ax-zgC" secondAttribute="leading" id="qAg-Wf-ZrC"/>
                             <constraint firstAttribute="trailing" secondItem="Ohl-3X-6nD" secondAttribute="trailing" id="rU3-l6-PgI"/>
-                            <constraint firstItem="l92-Q4-Uk4" firstAttribute="top" secondItem="TeH-ax-zgC" secondAttribute="top" id="sGs-DR-j1e"/>
+                            <constraint firstItem="l92-Q4-Uk4" firstAttribute="top" secondItem="4Sz-d2-GIP" secondAttribute="top" constant="-20" id="sGs-DR-j1e"/>
                             <constraint firstItem="Ohl-3X-6nD" firstAttribute="leading" secondItem="TeH-ax-zgC" secondAttribute="leading" id="vnQ-BE-ey1"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="4Sz-d2-GIP"/>
                     </view>
                     <connections>
                         <outlet property="detailsViewBottomContraint" destination="00W-hv-SbS" id="ZDz-aW-d5R"/>

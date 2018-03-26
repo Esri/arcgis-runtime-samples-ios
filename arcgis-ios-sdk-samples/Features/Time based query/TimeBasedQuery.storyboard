@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="47c-a8-hUr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="47c-a8-hUr">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,10 +14,6 @@
         <scene sceneID="Q9w-2g-uMM">
             <objects>
                 <viewController id="47c-a8-hUr" customClass="TimeBasedQueryVC" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="RMo-Ui-2Sn"/>
-                        <viewControllerLayoutGuide type="bottom" id="U9j-0u-8GX"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="s6d-qz-M1g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,11 +25,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="U9j-0u-8GX" firstAttribute="top" secondItem="LxG-tc-wz1" secondAttribute="bottom" id="FdV-L4-3F6"/>
+                            <constraint firstAttribute="bottom" secondItem="LxG-tc-wz1" secondAttribute="bottom" id="FdV-L4-3F6"/>
                             <constraint firstAttribute="trailing" secondItem="LxG-tc-wz1" secondAttribute="trailing" id="ZUb-9L-ZlY"/>
                             <constraint firstItem="LxG-tc-wz1" firstAttribute="leading" secondItem="s6d-qz-M1g" secondAttribute="leading" id="ehs-Ch-iZf"/>
-                            <constraint firstItem="LxG-tc-wz1" firstAttribute="top" secondItem="s6d-qz-M1g" secondAttribute="top" id="flP-a0-p4E"/>
+                            <constraint firstItem="LxG-tc-wz1" firstAttribute="top" secondItem="A5T-8a-e6o" secondAttribute="top" constant="-20" id="flP-a0-p4E"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="A5T-8a-e6o"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="LxG-tc-wz1" id="OfR-kH-mSZ"/>

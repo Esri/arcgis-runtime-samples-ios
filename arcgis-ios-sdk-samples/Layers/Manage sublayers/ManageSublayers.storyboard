@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ag4-mC-hla">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ag4-mC-hla">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,10 +14,6 @@
         <scene sceneID="chH-Sy-Wgx">
             <objects>
                 <viewController id="ag4-mC-hla" customClass="ManageSublayersViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Qjg-Oe-QRG"/>
-                        <viewControllerLayoutGuide type="bottom" id="0l6-E0-bsq"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FIL-M6-Mkv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,8 +22,11 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3RS-NZ-wu3">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3RS-NZ-wu3">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="VhF-Qd-JLh"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="J9K-Vc-wO5"/>
                                     <barButtonItem title="Sublayers" id="CmR-Ri-JIK">
@@ -37,16 +38,17 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="3RS-NZ-wu3" firstAttribute="top" secondItem="sW7-dN-rfh" secondAttribute="bottom" id="4lh-3c-Mqz"/>
-                            <constraint firstAttribute="trailing" secondItem="sW7-dN-rfh" secondAttribute="trailing" id="Dfk-ny-JWm"/>
-                            <constraint firstItem="3RS-NZ-wu3" firstAttribute="leading" secondItem="FIL-M6-Mkv" secondAttribute="leading" id="PeD-A0-cyf"/>
-                            <constraint firstItem="sW7-dN-rfh" firstAttribute="top" secondItem="Qjg-Oe-QRG" secondAttribute="bottom" id="UXw-OW-M1l"/>
-                            <constraint firstItem="0l6-E0-bsq" firstAttribute="top" secondItem="3RS-NZ-wu3" secondAttribute="bottom" id="axo-JR-wZy"/>
-                            <constraint firstAttribute="trailing" secondItem="3RS-NZ-wu3" secondAttribute="trailing" id="hiy-qb-5re"/>
+                            <constraint firstItem="sW7-dN-rfh" firstAttribute="bottom" secondItem="3RS-NZ-wu3" secondAttribute="top" id="4lh-3c-Mqz"/>
+                            <constraint firstItem="sW7-dN-rfh" firstAttribute="trailing" secondItem="FIL-M6-Mkv" secondAttribute="trailing" id="Dfk-ny-JWm"/>
+                            <constraint firstItem="3RS-NZ-wu3" firstAttribute="leading" secondItem="qRm-9L-Fma" secondAttribute="leading" id="PeD-A0-cyf"/>
+                            <constraint firstItem="sW7-dN-rfh" firstAttribute="top" secondItem="qRm-9L-Fma" secondAttribute="top" id="UXw-OW-M1l"/>
+                            <constraint firstItem="qRm-9L-Fma" firstAttribute="bottom" secondItem="3RS-NZ-wu3" secondAttribute="bottom" id="axo-JR-wZy"/>
+                            <constraint firstItem="3RS-NZ-wu3" firstAttribute="trailing" secondItem="qRm-9L-Fma" secondAttribute="trailing" id="hiy-qb-5re"/>
                             <constraint firstItem="sW7-dN-rfh" firstAttribute="leading" secondItem="FIL-M6-Mkv" secondAttribute="leading" id="iTG-t6-MZW"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="qRm-9L-Fma"/>
                     </view>
                     <navigationItem key="navigationItem" id="Zg6-3x-z3C"/>
                     <connections>
@@ -61,10 +63,6 @@
         <scene sceneID="CRF-ji-nlo">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="JeC-e0-SwS" customClass="MapImageSublayersVC" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="NfR-RI-Jvz"/>
-                        <viewControllerLayoutGuide type="bottom" id="4rY-ap-t1X"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ank-tO-olW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -90,10 +88,11 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="sRv-jc-101" firstAttribute="leading" secondItem="ank-tO-olW" secondAttribute="leading" id="Bsk-d2-xeU"/>
-                            <constraint firstItem="4rY-ap-t1X" firstAttribute="top" secondItem="sRv-jc-101" secondAttribute="bottom" id="uZi-Y6-lEX"/>
-                            <constraint firstAttribute="trailing" secondItem="sRv-jc-101" secondAttribute="trailing" id="ya4-sn-wwl"/>
-                            <constraint firstItem="sRv-jc-101" firstAttribute="top" secondItem="NfR-RI-Jvz" secondAttribute="bottom" id="zbt-hl-fJW"/>
+                            <constraint firstItem="sRv-jc-101" firstAttribute="bottom" secondItem="ank-tO-olW" secondAttribute="bottom" id="uZi-Y6-lEX"/>
+                            <constraint firstItem="sRv-jc-101" firstAttribute="trailing" secondItem="ank-tO-olW" secondAttribute="trailing" id="ya4-sn-wwl"/>
+                            <constraint firstItem="sRv-jc-101" firstAttribute="top" secondItem="AZz-pa-rmy" secondAttribute="top" id="zbt-hl-fJW"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="AZz-pa-rmy"/>
                     </view>
                     <navigationItem key="navigationItem" title="Sublayers" id="3rf-Y3-URg">
                         <barButtonItem key="leftBarButtonItem" title="Done" id="qHl-xW-Goh">
@@ -116,7 +115,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cg1-iZ-LA9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Spm-dV-8a1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

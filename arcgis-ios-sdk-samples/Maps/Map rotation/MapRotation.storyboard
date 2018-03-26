@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gEk-4Q-v8l">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gEk-4Q-v8l">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,10 +14,6 @@
         <scene sceneID="52a-87-UCz">
             <objects>
                 <viewController id="gEk-4Q-v8l" customClass="MapRotationViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Syu-p7-w4I"/>
-                        <viewControllerLayoutGuide type="bottom" id="0dI-pD-8fa"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ahk-qW-u2b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,8 +35,11 @@
                                     <action selector="compassAction" destination="gEk-4Q-v8l" eventType="touchUpInside" id="LTT-8o-4UX"/>
                                 </connections>
                             </button>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Trr-ws-YeO">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Trr-ws-YeO">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="6jY-hC-9su"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Lub-OJ-TeS"/>
                                     <barButtonItem width="300" style="plain" id="9fn-eF-LLE">
@@ -78,24 +78,25 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Trr-ws-YeO" secondAttribute="trailing" id="24d-KO-OY4"/>
-                            <constraint firstItem="0dI-pD-8fa" firstAttribute="top" secondItem="Trr-ws-YeO" secondAttribute="bottom" id="592-Oq-HYM"/>
-                            <constraint firstItem="qzw-6w-roX" firstAttribute="top" secondItem="Syu-p7-w4I" secondAttribute="bottom" constant="12" id="ERP-J2-6Ec"/>
-                            <constraint firstItem="Trr-ws-YeO" firstAttribute="leading" secondItem="ahk-qW-u2b" secondAttribute="leading" id="PzF-LA-FZU"/>
-                            <constraint firstItem="Trr-ws-YeO" firstAttribute="top" secondItem="mc4-3J-OCW" secondAttribute="bottom" id="UQ3-fy-Kbf"/>
+                            <constraint firstItem="Trr-ws-YeO" firstAttribute="trailing" secondItem="dIt-Mx-Uzs" secondAttribute="trailing" id="24d-KO-OY4"/>
+                            <constraint firstItem="dIt-Mx-Uzs" firstAttribute="bottom" secondItem="Trr-ws-YeO" secondAttribute="bottom" id="592-Oq-HYM"/>
+                            <constraint firstItem="qzw-6w-roX" firstAttribute="top" secondItem="dIt-Mx-Uzs" secondAttribute="top" constant="12" id="ERP-J2-6Ec"/>
+                            <constraint firstItem="Trr-ws-YeO" firstAttribute="leading" secondItem="dIt-Mx-Uzs" secondAttribute="leading" id="PzF-LA-FZU"/>
+                            <constraint firstItem="mc4-3J-OCW" firstAttribute="bottom" secondItem="Trr-ws-YeO" secondAttribute="top" id="UQ3-fy-Kbf"/>
                             <constraint firstItem="mc4-3J-OCW" firstAttribute="leading" secondItem="ahk-qW-u2b" secondAttribute="leading" id="faL-hv-eky"/>
                             <constraint firstItem="mc4-3J-OCW" firstAttribute="top" secondItem="ahk-qW-u2b" secondAttribute="top" id="fvc-XH-Y1p"/>
-                            <constraint firstAttribute="trailing" secondItem="qzw-6w-roX" secondAttribute="trailing" constant="12" id="g3X-Af-oAu"/>
-                            <constraint firstItem="mc4-3J-OCW" firstAttribute="top" secondItem="Syu-p7-w4I" secondAttribute="bottom" id="rgD-KS-7jO"/>
-                            <constraint firstItem="0dI-pD-8fa" firstAttribute="top" secondItem="mc4-3J-OCW" secondAttribute="bottom" id="u08-Bg-yxu"/>
-                            <constraint firstAttribute="trailing" secondItem="mc4-3J-OCW" secondAttribute="trailing" id="zA3-Dd-HBw"/>
+                            <constraint firstItem="dIt-Mx-Uzs" firstAttribute="trailing" secondItem="qzw-6w-roX" secondAttribute="trailing" constant="12" id="g3X-Af-oAu"/>
+                            <constraint firstItem="mc4-3J-OCW" firstAttribute="top" secondItem="dIt-Mx-Uzs" secondAttribute="top" id="rgD-KS-7jO"/>
+                            <constraint firstItem="dIt-Mx-Uzs" firstAttribute="bottom" secondItem="mc4-3J-OCW" secondAttribute="bottom" id="u08-Bg-yxu"/>
+                            <constraint firstItem="mc4-3J-OCW" firstAttribute="trailing" secondItem="ahk-qW-u2b" secondAttribute="trailing" id="zA3-Dd-HBw"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="dIt-Mx-Uzs"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="fvc-XH-Y1p"/>
                                 <exclude reference="u08-Bg-yxu"/>
+                                <exclude reference="fvc-XH-Y1p"/>
                             </mask>
                         </variation>
                     </view>

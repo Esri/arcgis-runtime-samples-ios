@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pS3-la-wY4">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pS3-la-wY4">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -9,18 +14,16 @@
         <scene sceneID="s14-UL-wnU">
             <objects>
                 <viewController id="pS3-la-wY4" customClass="EditFeaturesOnlineViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="mIR-IY-kxm"/>
-                        <viewControllerLayoutGuide type="bottom" id="LSK-0j-37f"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QKn-Go-ihh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NzB-bg-pvw" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brw-un-veL" userLabel="New feature toolbar">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brw-un-veL" userLabel="New feature toolbar">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="4gf-SW-UEN"/>
                                 </constraints>
@@ -34,7 +37,8 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hca-T3-dsM"/>
                                 </items>
                             </toolbar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XdC-IV-Urg" userLabel="Sketch toolbar">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XdC-IV-Urg" userLabel="Sketch toolbar">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="rCS-8S-QOr"/>
                                     <barButtonItem enabled="NO" systemItem="done" id="3ul-lM-Dhw">
@@ -45,21 +49,22 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="brw-un-veL" firstAttribute="width" secondItem="XdC-IV-Urg" secondAttribute="width" id="AQw-mc-Mju"/>
                             <constraint firstItem="NzB-bg-pvw" firstAttribute="leading" secondItem="QKn-Go-ihh" secondAttribute="leading" id="G78-UE-3Jd"/>
-                            <constraint firstItem="NzB-bg-pvw" firstAttribute="top" secondItem="mIR-IY-kxm" secondAttribute="bottom" id="HZc-YE-7zK"/>
+                            <constraint firstItem="NzB-bg-pvw" firstAttribute="top" secondItem="wjl-Bj-tg4" secondAttribute="top" id="HZc-YE-7zK"/>
                             <constraint firstItem="NzB-bg-pvw" firstAttribute="top" secondItem="QKn-Go-ihh" secondAttribute="top" id="SbG-PK-Ysx"/>
-                            <constraint firstItem="LSK-0j-37f" firstAttribute="top" secondItem="brw-un-veL" secondAttribute="bottom" id="T0Q-pE-74P"/>
-                            <constraint firstItem="brw-un-veL" firstAttribute="leading" secondItem="QKn-Go-ihh" secondAttribute="leading" id="TPX-IW-0kg"/>
+                            <constraint firstItem="wjl-Bj-tg4" firstAttribute="bottom" secondItem="brw-un-veL" secondAttribute="bottom" id="T0Q-pE-74P"/>
+                            <constraint firstItem="brw-un-veL" firstAttribute="leading" secondItem="wjl-Bj-tg4" secondAttribute="leading" id="TPX-IW-0kg"/>
                             <constraint firstItem="brw-un-veL" firstAttribute="leading" secondItem="XdC-IV-Urg" secondAttribute="leading" id="cze-XQ-8eD"/>
-                            <constraint firstAttribute="trailing" secondItem="brw-un-veL" secondAttribute="trailing" id="ePf-ns-II3"/>
-                            <constraint firstItem="brw-un-veL" firstAttribute="top" secondItem="NzB-bg-pvw" secondAttribute="bottom" id="gjz-Rp-UVh"/>
+                            <constraint firstItem="brw-un-veL" firstAttribute="trailing" secondItem="wjl-Bj-tg4" secondAttribute="trailing" id="ePf-ns-II3"/>
+                            <constraint firstItem="NzB-bg-pvw" firstAttribute="bottom" secondItem="brw-un-veL" secondAttribute="top" id="gjz-Rp-UVh"/>
                             <constraint firstAttribute="trailing" secondItem="NzB-bg-pvw" secondAttribute="trailing" id="l4K-zS-1ge"/>
                             <constraint firstItem="brw-un-veL" firstAttribute="top" secondItem="XdC-IV-Urg" secondAttribute="top" id="nd1-ne-6Wn"/>
                             <constraint firstItem="brw-un-veL" firstAttribute="height" secondItem="XdC-IV-Urg" secondAttribute="height" id="xKU-dg-LQI"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="wjl-Bj-tg4"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="SbG-PK-Ysx"/>
@@ -80,15 +85,12 @@
         <scene sceneID="u2g-iv-dud">
             <objects>
                 <viewController id="E5N-S0-TC2" customClass="FeatureTemplatePickerViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="P8f-vB-1P2"/>
-                        <viewControllerLayoutGuide type="bottom" id="6xA-VM-ylS"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wcr-DI-afZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jIV-jv-8bf">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Templates" id="hTX-K3-9rr">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="IFg-sk-gEx">
@@ -103,6 +105,7 @@
                                 </connections>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lhb-q7-O1w">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="E5N-S0-TC2" id="9mC-mY-fxW"/>
@@ -114,12 +117,13 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="jIV-jv-8bf" secondAttribute="trailing" id="Aho-SY-EpJ"/>
                             <constraint firstItem="lhb-q7-O1w" firstAttribute="leading" secondItem="wcr-DI-afZ" secondAttribute="leading" id="NMK-1I-A9S"/>
-                            <constraint firstItem="jIV-jv-8bf" firstAttribute="top" secondItem="P8f-vB-1P2" secondAttribute="bottom" id="YhD-D0-rzj"/>
+                            <constraint firstItem="jIV-jv-8bf" firstAttribute="top" secondItem="h3F-JP-Iyw" secondAttribute="top" id="YhD-D0-rzj"/>
                             <constraint firstItem="jIV-jv-8bf" firstAttribute="leading" secondItem="wcr-DI-afZ" secondAttribute="leading" id="eul-r0-fTW"/>
                             <constraint firstAttribute="trailing" secondItem="lhb-q7-O1w" secondAttribute="trailing" id="lWA-Hv-GSB"/>
                             <constraint firstAttribute="bottom" secondItem="lhb-q7-O1w" secondAttribute="bottom" id="nPX-zR-fJA"/>
                             <constraint firstItem="lhb-q7-O1w" firstAttribute="top" secondItem="jIV-jv-8bf" secondAttribute="bottom" id="r6o-Pe-aJv"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="h3F-JP-Iyw"/>
                     </view>
                     <connections>
                         <outlet property="featureTemplateTableView" destination="lhb-q7-O1w" id="h8f-qn-G1Y"/>

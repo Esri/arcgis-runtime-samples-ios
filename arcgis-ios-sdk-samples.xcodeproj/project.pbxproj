@@ -1074,8 +1074,8 @@
 		E4B2E26A1FE31EEA00E610FF /* ViewshedGeoElement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewshedGeoElement.storyboard; sourceTree = "<group>"; };
 		E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DistanceCompositeSymbol.storyboard; sourceTree = "<group>"; };
 		E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceCompositeSymbolViewController.swift; sourceTree = "<group>"; };
-		F4E5CD7A2070449B000A6D35 /* FeatureLayerRenderingModeMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = FeatureLayerRenderingModeMap.storyboard; path = "../Features/Feature layer rendering mode (map)/FeatureLayerRenderingModeMap.storyboard"; sourceTree = "<group>"; };
-		F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeatureLayerRenderingModeMapViewController.swift; path = "../Features/Feature layer rendering mode (map)/FeatureLayerRenderingModeMapViewController.swift"; sourceTree = "<group>"; };
+		F4E5CD7A2070449B000A6D35 /* FeatureLayerRenderingModeMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = FeatureLayerRenderingModeMap.storyboard; path = "arcgis-ios-sdk-samples/Features/Feature layer rendering mode (map)/FeatureLayerRenderingModeMap.storyboard"; sourceTree = "<group>"; };
+		F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeatureLayerRenderingModeMapViewController.swift; path = "arcgis-ios-sdk-samples/Features/Feature layer rendering mode (map)/FeatureLayerRenderingModeMapViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

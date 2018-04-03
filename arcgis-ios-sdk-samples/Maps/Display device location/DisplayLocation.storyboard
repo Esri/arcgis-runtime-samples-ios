@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7bF-ka-HyJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7bF-ka-HyJ">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,10 +14,6 @@
         <scene sceneID="BZU-4v-YmB">
             <objects>
                 <viewController id="7bF-ka-HyJ" customClass="DisplayLocationViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vPY-UO-4yf"/>
-                        <viewControllerLayoutGuide type="bottom" id="UAT-FG-MKv"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="N4Q-lw-UZo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,12 +25,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Nvk-wZ-Lky" firstAttribute="top" secondItem="vPY-UO-4yf" secondAttribute="bottom" id="2FE-Ba-Tlh"/>
+                            <constraint firstItem="Nvk-wZ-Lky" firstAttribute="top" secondItem="baf-FC-TSM" secondAttribute="top" id="2FE-Ba-Tlh"/>
                             <constraint firstItem="Nvk-wZ-Lky" firstAttribute="leading" secondItem="N4Q-lw-UZo" secondAttribute="leading" id="6uN-vu-ki9"/>
                             <constraint firstItem="Nvk-wZ-Lky" firstAttribute="top" secondItem="N4Q-lw-UZo" secondAttribute="top" id="7Rd-Lq-Db4"/>
-                            <constraint firstAttribute="trailing" secondItem="Nvk-wZ-Lky" secondAttribute="trailing" id="XaB-bF-dpg"/>
-                            <constraint firstItem="UAT-FG-MKv" firstAttribute="top" secondItem="Nvk-wZ-Lky" secondAttribute="bottom" id="lNh-7e-CsV"/>
+                            <constraint firstItem="Nvk-wZ-Lky" firstAttribute="trailing" secondItem="N4Q-lw-UZo" secondAttribute="trailing" id="XaB-bF-dpg"/>
+                            <constraint firstItem="Nvk-wZ-Lky" firstAttribute="bottom" secondItem="N4Q-lw-UZo" secondAttribute="bottom" id="lNh-7e-CsV"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="baf-FC-TSM"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="7Rd-Lq-Db4"/>

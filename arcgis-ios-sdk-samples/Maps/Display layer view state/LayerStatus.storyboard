@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="DKT-K8-rR8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DKT-K8-rR8">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,10 +14,6 @@
         <scene sceneID="9fZ-Qr-hgc">
             <objects>
                 <viewController id="DKT-K8-rR8" customClass="LayerStatusViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KkP-vz-Bdt"/>
-                        <viewControllerLayoutGuide type="bottom" id="1sz-tn-ujd"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="E66-ip-T79">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,14 +80,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="MMu-eo-dCE" firstAttribute="top" secondItem="KkP-vz-Bdt" secondAttribute="bottom" id="6cI-Km-Fvp"/>
+                            <constraint firstItem="MMu-eo-dCE" firstAttribute="top" secondItem="oeV-am-D4s" secondAttribute="top" id="6cI-Km-Fvp"/>
                             <constraint firstItem="MMu-eo-dCE" firstAttribute="leading" secondItem="E66-ip-T79" secondAttribute="leading" id="7ur-Kc-sZw"/>
-                            <constraint firstItem="1sz-tn-ujd" firstAttribute="top" secondItem="MMu-eo-dCE" secondAttribute="bottom" id="AR4-hZ-Tjw"/>
-                            <constraint firstItem="1sz-tn-ujd" firstAttribute="top" secondItem="zsC-4Y-Zj7" secondAttribute="bottom" priority="1" id="EAT-eL-uVX"/>
-                            <constraint firstAttribute="centerX" secondItem="zsC-4Y-Zj7" secondAttribute="centerX" id="P61-BD-TG1"/>
+                            <constraint firstItem="MMu-eo-dCE" firstAttribute="bottom" secondItem="E66-ip-T79" secondAttribute="bottom" id="AR4-hZ-Tjw"/>
+                            <constraint firstItem="oeV-am-D4s" firstAttribute="bottom" secondItem="zsC-4Y-Zj7" secondAttribute="bottom" priority="1" id="EAT-eL-uVX"/>
+                            <constraint firstItem="oeV-am-D4s" firstAttribute="centerX" secondItem="zsC-4Y-Zj7" secondAttribute="centerX" id="P61-BD-TG1"/>
                             <constraint firstItem="MMu-eo-dCE" firstAttribute="top" secondItem="E66-ip-T79" secondAttribute="top" id="QER-5R-vLJ"/>
-                            <constraint firstAttribute="trailing" secondItem="MMu-eo-dCE" secondAttribute="trailing" id="hov-df-ope"/>
+                            <constraint firstItem="MMu-eo-dCE" firstAttribute="trailing" secondItem="E66-ip-T79" secondAttribute="trailing" id="hov-df-ope"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="oeV-am-D4s"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="QER-5R-vLJ"/>

@@ -1,28 +1,32 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qaY-0E-3mj">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qaY-0E-3mj">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Manual Cache View Controller-->
         <scene sceneID="5Cn-HS-PV5">
             <objects>
                 <viewController id="qaY-0E-3mj" customClass="ManualCacheViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="YYV-sQ-ByX"/>
-                        <viewControllerLayoutGuide type="bottom" id="jgT-pQ-D6A"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ELe-Fw-mro">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rfl-e1-EjP" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1R-eX-QZi">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1R-eX-QZi">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="uBI-Vf-cma"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="GEB-Si-V9K"/>
                                     <barButtonItem title="Populate" id="WM4-61-D93">
@@ -34,17 +38,18 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="jgT-pQ-D6A" firstAttribute="top" secondItem="k1R-eX-QZi" secondAttribute="bottom" id="2Ef-TT-KDI"/>
-                            <constraint firstAttribute="trailing" secondItem="k1R-eX-QZi" secondAttribute="trailing" id="45j-fC-8CK"/>
+                            <constraint firstItem="4gS-yh-D1D" firstAttribute="bottom" secondItem="k1R-eX-QZi" secondAttribute="bottom" id="2Ef-TT-KDI"/>
+                            <constraint firstItem="k1R-eX-QZi" firstAttribute="trailing" secondItem="4gS-yh-D1D" secondAttribute="trailing" id="45j-fC-8CK"/>
                             <constraint firstItem="Rfl-e1-EjP" firstAttribute="leading" secondItem="ELe-Fw-mro" secondAttribute="leading" id="5j2-Hy-dE3"/>
-                            <constraint firstItem="k1R-eX-QZi" firstAttribute="top" secondItem="Rfl-e1-EjP" secondAttribute="bottom" id="DeK-bR-3D1"/>
+                            <constraint firstItem="Rfl-e1-EjP" firstAttribute="bottom" secondItem="k1R-eX-QZi" secondAttribute="top" id="DeK-bR-3D1"/>
                             <constraint firstItem="Rfl-e1-EjP" firstAttribute="top" secondItem="ELe-Fw-mro" secondAttribute="top" id="KyA-gs-p8n"/>
-                            <constraint firstItem="k1R-eX-QZi" firstAttribute="leading" secondItem="ELe-Fw-mro" secondAttribute="leading" id="W4r-gd-g3r"/>
-                            <constraint firstItem="Rfl-e1-EjP" firstAttribute="top" secondItem="YYV-sQ-ByX" secondAttribute="bottom" id="pWS-SK-Di7"/>
+                            <constraint firstItem="k1R-eX-QZi" firstAttribute="leading" secondItem="4gS-yh-D1D" secondAttribute="leading" id="W4r-gd-g3r"/>
+                            <constraint firstItem="Rfl-e1-EjP" firstAttribute="top" secondItem="4gS-yh-D1D" secondAttribute="top" id="pWS-SK-Di7"/>
                             <constraint firstAttribute="trailing" secondItem="Rfl-e1-EjP" secondAttribute="trailing" id="whE-AX-F4g"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="4gS-yh-D1D"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="KyA-gs-p8n"/>

@@ -1,29 +1,32 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wXy-eD-QP8">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wXy-eD-QP8">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Spatial Operations View Controller-->
         <scene sceneID="Jzw-TF-33y">
             <objects>
-                <viewController id="wXy-eD-QP8" customClass="SpatialOperationsViewController" customModule="MapViewDemo_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="v2d-8v-i4q"/>
-                        <viewControllerLayoutGuide type="bottom" id="kAI-o0-qci"/>
-                    </layoutGuides>
+                <viewController id="wXy-eD-QP8" customClass="SpatialOperationsViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8z2-nZ-bKd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T7o-7M-cMe" customClass="AGSMapView">
-                                <frame key="frameInset" minY="20" width="600" height="536"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7o-7M-cMe" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vJH-PV-h1x">
-                                <frame key="frameInset" minY="556" width="600" height="44"/>
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJH-PV-h1x">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="a4a-Ng-QAr"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="5aQ-cI-FQi"/>
                                     <barButtonItem title="Choose operation" id="up8-yW-buV">
@@ -37,16 +40,17 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="T7o-7M-cMe" secondAttribute="trailing" id="GBz-tP-50I"/>
-                            <constraint firstItem="T7o-7M-cMe" firstAttribute="top" secondItem="v2d-8v-i4q" secondAttribute="bottom" id="HBS-Zd-hCh"/>
+                            <constraint firstItem="T7o-7M-cMe" firstAttribute="top" secondItem="hcd-vh-Nc6" secondAttribute="top" id="HBS-Zd-hCh"/>
                             <constraint firstItem="T7o-7M-cMe" firstAttribute="leading" secondItem="8z2-nZ-bKd" secondAttribute="leading" id="MEB-Rw-fcU"/>
-                            <constraint firstItem="vJH-PV-h1x" firstAttribute="top" secondItem="T7o-7M-cMe" secondAttribute="bottom" id="P6T-Ol-Z3P"/>
-                            <constraint firstAttribute="trailing" secondItem="vJH-PV-h1x" secondAttribute="trailing" id="cWl-b8-3y9"/>
-                            <constraint firstItem="vJH-PV-h1x" firstAttribute="leading" secondItem="8z2-nZ-bKd" secondAttribute="leading" id="fms-TG-JeV"/>
-                            <constraint firstItem="kAI-o0-qci" firstAttribute="top" secondItem="vJH-PV-h1x" secondAttribute="bottom" id="gK6-VT-Egl"/>
+                            <constraint firstItem="T7o-7M-cMe" firstAttribute="bottom" secondItem="vJH-PV-h1x" secondAttribute="top" id="P6T-Ol-Z3P"/>
+                            <constraint firstItem="vJH-PV-h1x" firstAttribute="trailing" secondItem="hcd-vh-Nc6" secondAttribute="trailing" id="cWl-b8-3y9"/>
+                            <constraint firstItem="vJH-PV-h1x" firstAttribute="leading" secondItem="hcd-vh-Nc6" secondAttribute="leading" id="fms-TG-JeV"/>
+                            <constraint firstItem="hcd-vh-Nc6" firstAttribute="bottom" secondItem="vJH-PV-h1x" secondAttribute="bottom" id="gK6-VT-Egl"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="hcd-vh-Nc6"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="T7o-7M-cMe" id="AHr-Kq-4ay"/>
@@ -54,32 +58,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A9Q-b5-ebG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="313" y="343"/>
+            <point key="canvasLocation" x="312.80000000000001" y="342.27886056971516"/>
         </scene>
         <!--Operations List View Controller-->
         <scene sceneID="vS8-CM-GNI">
             <objects>
-                <viewController id="ZFd-Wj-1wT" customClass="OperationsListViewController" customModule="MapViewDemo_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="hXi-A4-wAM"/>
-                        <viewControllerLayoutGuide type="bottom" id="Z5x-j6-Fra"/>
-                    </layoutGuides>
+                <viewController id="ZFd-Wj-1wT" customClass="OperationsListViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jn7-mP-HmY">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yup-rp-fmQ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="OperationCell" textLabel="4EK-ez-hL2" style="IBUITableViewCellStyleDefault" id="VkY-4M-lu3">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VkY-4M-lu3" id="EcN-oL-SQJ">
-                                            <frame key="frameInset" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4EK-ez-hL2">
-                                                    <frame key="frameInset" minX="15" width="570" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -97,11 +98,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Z5x-j6-Fra" firstAttribute="top" secondItem="Yup-rp-fmQ" secondAttribute="bottom" id="FG0-Eh-WSO"/>
+                            <constraint firstAttribute="bottom" secondItem="Yup-rp-fmQ" secondAttribute="bottom" id="FG0-Eh-WSO"/>
                             <constraint firstAttribute="trailing" secondItem="Yup-rp-fmQ" secondAttribute="trailing" id="H6h-CC-COX"/>
-                            <constraint firstItem="Yup-rp-fmQ" firstAttribute="top" secondItem="hXi-A4-wAM" secondAttribute="bottom" id="jqe-dS-YI0"/>
+                            <constraint firstItem="Yup-rp-fmQ" firstAttribute="top" secondItem="wKY-la-f5G" secondAttribute="top" id="jqe-dS-YI0"/>
                             <constraint firstItem="Yup-rp-fmQ" firstAttribute="leading" secondItem="Jn7-mP-HmY" secondAttribute="leading" id="nUh-Y4-vDk"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="wKY-la-f5G"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Yup-rp-fmQ" id="4sw-aT-uCR"/>

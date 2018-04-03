@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hy7-Lp-22j">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hy7-Lp-22j">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,10 +14,6 @@
         <scene sceneID="VI4-Et-emF">
             <objects>
                 <viewController id="hy7-Lp-22j" customClass="ChangeSublayerRendererVC" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xfB-Xk-xLm"/>
-                        <viewControllerLayoutGuide type="bottom" id="PZc-yY-VUY"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YUd-FU-0mM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,8 +22,11 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZvH-RH-htG">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZvH-RH-htG">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="OP6-UG-sVf"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem enabled="NO" title="Reset" id="tXe-di-UmY">
                                         <connections>
@@ -41,16 +42,17 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ZvH-RH-htG" firstAttribute="leading" secondItem="YUd-FU-0mM" secondAttribute="leading" id="AVD-aq-QY9"/>
-                            <constraint firstItem="ZvH-RH-htG" firstAttribute="top" secondItem="1Sm-kI-Qat" secondAttribute="bottom" id="Bkp-2d-xEi"/>
-                            <constraint firstItem="1Sm-kI-Qat" firstAttribute="top" secondItem="xfB-Xk-xLm" secondAttribute="bottom" id="D0h-cD-hRj"/>
-                            <constraint firstItem="PZc-yY-VUY" firstAttribute="top" secondItem="ZvH-RH-htG" secondAttribute="bottom" id="Jg7-Wf-m05"/>
+                            <constraint firstItem="ZvH-RH-htG" firstAttribute="leading" secondItem="c3b-rs-4mt" secondAttribute="leading" id="AVD-aq-QY9"/>
+                            <constraint firstItem="1Sm-kI-Qat" firstAttribute="bottom" secondItem="ZvH-RH-htG" secondAttribute="top" id="Bkp-2d-xEi"/>
+                            <constraint firstItem="1Sm-kI-Qat" firstAttribute="top" secondItem="c3b-rs-4mt" secondAttribute="top" id="D0h-cD-hRj"/>
+                            <constraint firstItem="c3b-rs-4mt" firstAttribute="bottom" secondItem="ZvH-RH-htG" secondAttribute="bottom" id="Jg7-Wf-m05"/>
                             <constraint firstItem="1Sm-kI-Qat" firstAttribute="leading" secondItem="YUd-FU-0mM" secondAttribute="leading" id="sBb-or-QtI"/>
-                            <constraint firstAttribute="trailing" secondItem="ZvH-RH-htG" secondAttribute="trailing" id="tZQ-bj-Rox"/>
-                            <constraint firstAttribute="trailing" secondItem="1Sm-kI-Qat" secondAttribute="trailing" id="wPy-iH-qxX"/>
+                            <constraint firstItem="ZvH-RH-htG" firstAttribute="trailing" secondItem="c3b-rs-4mt" secondAttribute="trailing" id="tZQ-bj-Rox"/>
+                            <constraint firstItem="1Sm-kI-Qat" firstAttribute="trailing" secondItem="YUd-FU-0mM" secondAttribute="trailing" id="wPy-iH-qxX"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="c3b-rs-4mt"/>
                     </view>
                     <connections>
                         <outlet property="applyRendererBarButtonItem" destination="f6S-bk-VtO" id="cSf-8h-QaB"/>
@@ -60,7 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QT0-BV-Rgp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="164"/>
+            <point key="canvasLocation" x="-169" y="161"/>
         </scene>
     </scenes>
 </document>

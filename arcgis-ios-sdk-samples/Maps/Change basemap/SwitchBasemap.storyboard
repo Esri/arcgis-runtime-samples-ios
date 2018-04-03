@@ -1,34 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="suP-hl-tFv">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="suP-hl-tFv">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Switch Basemap View Controller-->
         <scene sceneID="keC-xy-LKl">
             <objects>
-                <viewController id="suP-hl-tFv" customClass="SwitchBasemapViewController" customModule="iOS_Samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="UMe-OH-WT0"/>
-                        <viewControllerLayoutGuide type="bottom" id="QpG-xB-nFa"/>
-                    </layoutGuides>
+                <viewController id="suP-hl-tFv" customClass="SwitchBasemapViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ksc-DO-eLV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZPF-Hk-sgi" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDG-ym-VhV">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDG-ym-VhV">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="4w4-Ay-3PH"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="dAI-VW-pBO"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="nvK-RO-FbS"/>
                                     <barButtonItem style="plain" id="vCb-iO-r75">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="D16-sZ-PnD">
-                                            <rect key="frame" x="37" y="7" width="300" height="30"/>
+                                            <rect key="frame" x="37.5" y="7" width="300" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Topo"/>
@@ -45,22 +48,23 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="ZPF-Hk-sgi" firstAttribute="top" secondItem="Ksc-DO-eLV" secondAttribute="top" id="4eV-yZ-a9J"/>
-                            <constraint firstItem="qDG-ym-VhV" firstAttribute="top" secondItem="ZPF-Hk-sgi" secondAttribute="bottom" id="Rh2-lA-Wa0"/>
-                            <constraint firstItem="qDG-ym-VhV" firstAttribute="leading" secondItem="Ksc-DO-eLV" secondAttribute="leading" id="SmW-fJ-Saz"/>
-                            <constraint firstItem="ZPF-Hk-sgi" firstAttribute="top" secondItem="UMe-OH-WT0" secondAttribute="bottom" id="TE8-55-aHG"/>
-                            <constraint firstAttribute="trailing" secondItem="qDG-ym-VhV" secondAttribute="trailing" id="Tm4-xc-muW"/>
-                            <constraint firstItem="QpG-xB-nFa" firstAttribute="top" secondItem="ZPF-Hk-sgi" secondAttribute="bottom" id="VNp-0z-52M"/>
-                            <constraint firstAttribute="trailing" secondItem="ZPF-Hk-sgi" secondAttribute="trailing" id="a5P-bo-Wrh"/>
+                            <constraint firstItem="ZPF-Hk-sgi" firstAttribute="bottom" secondItem="qDG-ym-VhV" secondAttribute="top" id="Rh2-lA-Wa0"/>
+                            <constraint firstItem="qDG-ym-VhV" firstAttribute="leading" secondItem="98t-T5-GhR" secondAttribute="leading" id="SmW-fJ-Saz"/>
+                            <constraint firstItem="ZPF-Hk-sgi" firstAttribute="top" secondItem="98t-T5-GhR" secondAttribute="top" id="TE8-55-aHG"/>
+                            <constraint firstItem="qDG-ym-VhV" firstAttribute="trailing" secondItem="98t-T5-GhR" secondAttribute="trailing" id="Tm4-xc-muW"/>
+                            <constraint firstItem="98t-T5-GhR" firstAttribute="bottom" secondItem="ZPF-Hk-sgi" secondAttribute="bottom" id="VNp-0z-52M"/>
+                            <constraint firstItem="ZPF-Hk-sgi" firstAttribute="trailing" secondItem="Ksc-DO-eLV" secondAttribute="trailing" id="a5P-bo-Wrh"/>
                             <constraint firstItem="ZPF-Hk-sgi" firstAttribute="leading" secondItem="Ksc-DO-eLV" secondAttribute="leading" id="aSW-WW-S7M"/>
-                            <constraint firstItem="QpG-xB-nFa" firstAttribute="top" secondItem="qDG-ym-VhV" secondAttribute="bottom" id="vew-uD-C8U"/>
+                            <constraint firstItem="98t-T5-GhR" firstAttribute="bottom" secondItem="qDG-ym-VhV" secondAttribute="bottom" id="vew-uD-C8U"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="98t-T5-GhR"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="4eV-yZ-a9J"/>
                                 <exclude reference="VNp-0z-52M"/>
+                                <exclude reference="4eV-yZ-a9J"/>
                             </mask>
                         </variation>
                     </view>

@@ -1,36 +1,42 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="egG-se-puh">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="egG-se-puh">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Book</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Geocode-->
         <scene sceneID="eQB-lM-pqn">
             <objects>
                 <viewController id="egG-se-puh" customClass="GeocodeOfflineViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="LMW-9K-Isn"/>
-                        <viewControllerLayoutGuide type="bottom" id="MbB-fs-uDc"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TWY-DG-nYU">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gli-FI-OEW" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVG-73-umr">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="hideKeyboard" destination="egG-se-puh" eventType="touchUpInside" id="hFf-9L-VjP"/>
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" placeholder="Type in an address" showsSearchResultsButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fwy-nk-P75">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <color key="barTintColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <color key="barTintColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -40,20 +46,21 @@
                                 </connections>
                             </searchBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="tVG-73-umr" firstAttribute="height" secondItem="gli-FI-OEW" secondAttribute="height" id="3Ip-8s-vGd"/>
                             <constraint firstItem="tVG-73-umr" firstAttribute="leading" secondItem="gli-FI-OEW" secondAttribute="leading" id="7dZ-46-QcT"/>
                             <constraint firstItem="tVG-73-umr" firstAttribute="width" secondItem="gli-FI-OEW" secondAttribute="width" id="Btq-B8-ToL"/>
-                            <constraint firstItem="Fwy-nk-P75" firstAttribute="top" secondItem="LMW-9K-Isn" secondAttribute="bottom" id="DWa-Nr-8hz"/>
-                            <constraint firstAttribute="trailing" secondItem="Fwy-nk-P75" secondAttribute="trailing" id="N0P-gB-6OR"/>
-                            <constraint firstItem="gli-FI-OEW" firstAttribute="top" secondItem="LMW-9K-Isn" secondAttribute="bottom" id="Zzn-JM-Nof"/>
+                            <constraint firstItem="Fwy-nk-P75" firstAttribute="top" secondItem="Mxx-Ce-3vf" secondAttribute="top" id="DWa-Nr-8hz"/>
+                            <constraint firstItem="Mxx-Ce-3vf" firstAttribute="trailing" secondItem="Fwy-nk-P75" secondAttribute="trailing" id="N0P-gB-6OR"/>
+                            <constraint firstItem="gli-FI-OEW" firstAttribute="top" secondItem="Mxx-Ce-3vf" secondAttribute="top" id="Zzn-JM-Nof"/>
                             <constraint firstAttribute="trailing" secondItem="gli-FI-OEW" secondAttribute="trailing" id="cRs-d9-bUs"/>
-                            <constraint firstItem="MbB-fs-uDc" firstAttribute="top" secondItem="gli-FI-OEW" secondAttribute="bottom" id="iBr-1R-GRr"/>
+                            <constraint firstAttribute="bottom" secondItem="gli-FI-OEW" secondAttribute="bottom" id="iBr-1R-GRr"/>
                             <constraint firstItem="gli-FI-OEW" firstAttribute="leading" secondItem="TWY-DG-nYU" secondAttribute="leading" id="idU-CL-FXw"/>
-                            <constraint firstItem="Fwy-nk-P75" firstAttribute="leading" secondItem="TWY-DG-nYU" secondAttribute="leading" id="nTO-rG-OHF"/>
+                            <constraint firstItem="Fwy-nk-P75" firstAttribute="leading" secondItem="Mxx-Ce-3vf" secondAttribute="leading" id="nTO-rG-OHF"/>
                             <constraint firstItem="tVG-73-umr" firstAttribute="top" secondItem="gli-FI-OEW" secondAttribute="top" id="xL8-nH-JPg"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Mxx-Ce-3vf"/>
                     </view>
                     <navigationItem key="navigationItem" title="Geocode" id="ZDF-zH-NN7"/>
                     <connections>
@@ -74,28 +81,28 @@
             <objects>
                 <tableViewController id="8Zd-do-EgT" customClass="SanDiegoAddressesViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" id="CaB-7A-pfO">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddressCell" textLabel="LNI-HO-qjU" style="IBUITableViewCellStyleDefault" id="0p1-aJ-KgI">
-                                <rect key="frame" x="0.0" y="28" width="600" height="40"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0p1-aJ-KgI" id="otl-uh-tcD">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="39.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="39.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LNI-HO-qjU">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="39.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="344" height="39.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>

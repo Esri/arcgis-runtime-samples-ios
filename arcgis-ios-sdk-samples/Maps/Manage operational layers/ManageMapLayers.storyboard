@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FzM-2V-EQz">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FzM-2V-EQz">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -9,20 +14,18 @@
         <scene sceneID="Up0-T1-XQd">
             <objects>
                 <viewController id="FzM-2V-EQz" customClass="ManageMapLayersViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="THj-Tv-zK3"/>
-                        <viewControllerLayoutGuide type="bottom" id="ydg-3z-erD"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LjG-Av-qXX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7t2-g1-K1m" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqt-1N-pJU">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqt-1N-pJU">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="MJr-Ou-9lC"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="Wn9-dB-Rh1"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="0Ns-WL-avp"/>
@@ -35,22 +38,23 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="ydg-3z-erD" firstAttribute="top" secondItem="7t2-g1-K1m" secondAttribute="bottom" id="0zZ-C7-DhL"/>
+                            <constraint firstItem="4Sf-hS-8jA" firstAttribute="bottom" secondItem="7t2-g1-K1m" secondAttribute="bottom" id="0zZ-C7-DhL"/>
                             <constraint firstItem="7t2-g1-K1m" firstAttribute="leading" secondItem="LjG-Av-qXX" secondAttribute="leading" id="1MU-VI-e8K"/>
-                            <constraint firstItem="wqt-1N-pJU" firstAttribute="top" secondItem="7t2-g1-K1m" secondAttribute="bottom" id="CmM-Pg-5on"/>
-                            <constraint firstAttribute="trailing" secondItem="wqt-1N-pJU" secondAttribute="trailing" id="JCB-qU-BTb"/>
-                            <constraint firstAttribute="trailing" secondItem="7t2-g1-K1m" secondAttribute="trailing" id="VR1-1v-ga7"/>
-                            <constraint firstItem="ydg-3z-erD" firstAttribute="top" secondItem="wqt-1N-pJU" secondAttribute="bottom" id="ch1-dn-ias"/>
-                            <constraint firstItem="wqt-1N-pJU" firstAttribute="leading" secondItem="LjG-Av-qXX" secondAttribute="leading" id="ezQ-N5-OCE"/>
-                            <constraint firstItem="7t2-g1-K1m" firstAttribute="top" secondItem="THj-Tv-zK3" secondAttribute="bottom" id="ipI-8Y-GWx"/>
+                            <constraint firstItem="7t2-g1-K1m" firstAttribute="bottom" secondItem="wqt-1N-pJU" secondAttribute="top" id="CmM-Pg-5on"/>
+                            <constraint firstItem="wqt-1N-pJU" firstAttribute="trailing" secondItem="4Sf-hS-8jA" secondAttribute="trailing" id="JCB-qU-BTb"/>
+                            <constraint firstItem="7t2-g1-K1m" firstAttribute="trailing" secondItem="LjG-Av-qXX" secondAttribute="trailing" id="VR1-1v-ga7"/>
+                            <constraint firstItem="wqt-1N-pJU" firstAttribute="bottom" secondItem="4Sf-hS-8jA" secondAttribute="bottom" id="ch1-dn-ias"/>
+                            <constraint firstItem="wqt-1N-pJU" firstAttribute="leading" secondItem="4Sf-hS-8jA" secondAttribute="leading" id="ezQ-N5-OCE"/>
+                            <constraint firstItem="7t2-g1-K1m" firstAttribute="top" secondItem="4Sf-hS-8jA" secondAttribute="top" id="ipI-8Y-GWx"/>
                             <constraint firstItem="7t2-g1-K1m" firstAttribute="top" secondItem="LjG-Av-qXX" secondAttribute="top" id="nTP-Da-lbR"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="4Sf-hS-8jA"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="nTP-Da-lbR"/>
                                 <exclude reference="0zZ-C7-DhL"/>
+                                <exclude reference="nTP-Da-lbR"/>
                             </mask>
                         </variation>
                     </view>
@@ -66,30 +70,27 @@
         <scene sceneID="w3p-Zf-WgD">
             <objects>
                 <viewController id="oe0-Xg-vZM" customClass="MMLLayersViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="For-mZ-m1c"/>
-                        <viewControllerLayoutGuide type="bottom" id="NsL-f7-u0H"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Rft-BM-iyU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="l9u-Fn-8ss">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MMLLayersCell" id="K7b-hD-pnh">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K7b-hD-pnh" id="bUp-MK-9FT">
-                                            <frame key="frameInset" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MMLDeletedLayersCell" id="Bdv-0V-GEr">
-                                        <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="66" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bdv-0V-GEr" id="dUR-W3-RGG">
-                                            <frame key="frameInset" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -103,11 +104,12 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="l9u-Fn-8ss" firstAttribute="top" secondItem="Rft-BM-iyU" secondAttribute="top" id="Q9e-XH-asd"/>
-                            <constraint firstAttribute="trailing" secondItem="l9u-Fn-8ss" secondAttribute="trailing" id="Rwq-CK-WtK"/>
+                            <constraint firstItem="l9u-Fn-8ss" firstAttribute="trailing" secondItem="Rft-BM-iyU" secondAttribute="trailing" id="Rwq-CK-WtK"/>
                             <constraint firstAttribute="bottom" secondItem="l9u-Fn-8ss" secondAttribute="bottom" id="f6z-2e-zSk"/>
                             <constraint firstItem="l9u-Fn-8ss" firstAttribute="leading" secondItem="Rft-BM-iyU" secondAttribute="leading" id="nsN-Az-2Xl"/>
-                            <constraint firstItem="l9u-Fn-8ss" firstAttribute="top" secondItem="For-mZ-m1c" secondAttribute="bottom" id="z07-Sd-byo"/>
+                            <constraint firstItem="l9u-Fn-8ss" firstAttribute="top" secondItem="Mhd-hj-EKz" secondAttribute="top" id="z07-Sd-byo"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Mhd-hj-EKz"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="z07-Sd-byo"/>
@@ -135,7 +137,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cCd-0w-JMY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wbt-8M-Qud">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

@@ -1,35 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5J0-w3-JeL">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5J0-w3-JeL">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Set Initial Map Location View Controller-->
         <scene sceneID="dpn-gl-q4V">
             <objects>
                 <viewController id="5J0-w3-JeL" customClass="SetInitialMapLocationViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8ob-Vw-5w7"/>
-                        <viewControllerLayoutGuide type="bottom" id="0au-Om-cTI"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pes-NT-TN2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4G-KI-BgT" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="l4G-KI-BgT" firstAttribute="leading" secondItem="pes-NT-TN2" secondAttribute="leading" id="D0p-y7-Xd2"/>
                             <constraint firstItem="l4G-KI-BgT" firstAttribute="top" secondItem="pes-NT-TN2" secondAttribute="top" id="Uo1-bf-qAU"/>
-                            <constraint firstItem="l4G-KI-BgT" firstAttribute="top" secondItem="8ob-Vw-5w7" secondAttribute="bottom" id="qQi-Oq-In3"/>
-                            <constraint firstItem="0au-Om-cTI" firstAttribute="top" secondItem="l4G-KI-BgT" secondAttribute="bottom" id="rQg-BG-Buq"/>
-                            <constraint firstAttribute="trailing" secondItem="l4G-KI-BgT" secondAttribute="trailing" id="xDl-G5-mAA"/>
+                            <constraint firstItem="l4G-KI-BgT" firstAttribute="top" secondItem="ilW-Zc-SOm" secondAttribute="top" id="qQi-Oq-In3"/>
+                            <constraint firstItem="l4G-KI-BgT" firstAttribute="bottom" secondItem="pes-NT-TN2" secondAttribute="bottom" id="rQg-BG-Buq"/>
+                            <constraint firstItem="l4G-KI-BgT" firstAttribute="trailing" secondItem="pes-NT-TN2" secondAttribute="trailing" id="xDl-G5-mAA"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="ilW-Zc-SOm"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Uo1-bf-qAU"/>

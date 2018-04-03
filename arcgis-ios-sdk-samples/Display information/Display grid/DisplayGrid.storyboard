@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ELk-dd-Onf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ELk-dd-Onf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,10 +15,6 @@
         <scene sceneID="CG7-QX-3uh">
             <objects>
                 <viewController id="ELk-dd-Onf" customClass="DisplayGridViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="QM1-lx-6To"/>
-                        <viewControllerLayoutGuide type="bottom" id="mb9-Wl-i0a"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rVg-tI-GPv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,8 +23,11 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dhB-ni-K1K">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dhB-ni-K1K">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="iaf-D2-Pjp"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="zHB-Ga-8qi"/>
                                     <barButtonItem title="Change Grid" id="Nbd-kp-CVq">
@@ -40,16 +41,17 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="zWe-tM-jX8" secondAttribute="trailing" id="14q-3k-F0c"/>
-                            <constraint firstItem="mb9-Wl-i0a" firstAttribute="top" secondItem="dhB-ni-K1K" secondAttribute="bottom" id="3j4-Tc-MNZ"/>
-                            <constraint firstItem="zWe-tM-jX8" firstAttribute="top" secondItem="QM1-lx-6To" secondAttribute="bottom" id="LjB-XW-BmH"/>
-                            <constraint firstItem="dhB-ni-K1K" firstAttribute="top" secondItem="zWe-tM-jX8" secondAttribute="bottom" id="WNu-vZ-KOj"/>
-                            <constraint firstAttribute="trailing" secondItem="dhB-ni-K1K" secondAttribute="trailing" id="beX-Nt-wzb"/>
-                            <constraint firstItem="dhB-ni-K1K" firstAttribute="leading" secondItem="rVg-tI-GPv" secondAttribute="leading" id="eTV-Jk-yhY"/>
+                            <constraint firstItem="a6Z-9O-ei3" firstAttribute="bottom" secondItem="dhB-ni-K1K" secondAttribute="bottom" id="3j4-Tc-MNZ"/>
+                            <constraint firstItem="zWe-tM-jX8" firstAttribute="top" secondItem="a6Z-9O-ei3" secondAttribute="top" id="LjB-XW-BmH"/>
+                            <constraint firstItem="zWe-tM-jX8" firstAttribute="bottom" secondItem="dhB-ni-K1K" secondAttribute="top" id="WNu-vZ-KOj"/>
+                            <constraint firstItem="dhB-ni-K1K" firstAttribute="trailing" secondItem="a6Z-9O-ei3" secondAttribute="trailing" id="beX-Nt-wzb"/>
+                            <constraint firstItem="dhB-ni-K1K" firstAttribute="leading" secondItem="a6Z-9O-ei3" secondAttribute="leading" id="eTV-Jk-yhY"/>
                             <constraint firstItem="zWe-tM-jX8" firstAttribute="leading" secondItem="rVg-tI-GPv" secondAttribute="leading" id="mEi-q0-AzI"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="a6Z-9O-ei3"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="zWe-tM-jX8" id="r6Y-he-q6Y"/>
@@ -63,10 +65,6 @@
         <scene sceneID="5zE-GI-81H">
             <objects>
                 <viewController id="CLz-RC-N1t" customClass="DisplayGridSettingsViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ccb-TA-7AP"/>
-                        <viewControllerLayoutGuide type="bottom" id="l5A-aC-bzt"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pY2-yh-gJ9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,7 +96,7 @@
                                                 </connections>
                                             </switch>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rk7-rj-q76" customClass="HorizontalPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                                <rect key="frame" x="129" y="90" width="238" height="30"/>
+                                                <rect key="frame" x="131" y="90" width="236" height="30"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvU-qR-abp">
@@ -174,7 +172,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9O-Tl-NJQ">
-                                                <rect key="frame" x="129" y="15" width="117" height="24"/>
+                                                <rect key="frame" x="131" y="15" width="113.5" height="24"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -245,11 +243,12 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QHJ-U7-mUY" firstAttribute="width" secondItem="pY2-yh-gJ9" secondAttribute="width" id="09n-zC-tiV"/>
-                            <constraint firstItem="l5A-aC-bzt" firstAttribute="top" secondItem="jDO-3a-Ae1" secondAttribute="bottom" constant="5" id="7KK-is-VEa"/>
-                            <constraint firstAttribute="trailing" secondItem="jDO-3a-Ae1" secondAttribute="trailing" id="N5i-8g-3Pg"/>
-                            <constraint firstItem="jDO-3a-Ae1" firstAttribute="top" secondItem="Ccb-TA-7AP" secondAttribute="bottom" constant="5" id="Re7-CO-5x3"/>
-                            <constraint firstItem="jDO-3a-Ae1" firstAttribute="leading" secondItem="pY2-yh-gJ9" secondAttribute="leading" id="xrL-CC-DdZ"/>
+                            <constraint firstItem="SQz-Cy-rpn" firstAttribute="bottom" secondItem="jDO-3a-Ae1" secondAttribute="bottom" constant="5" id="7KK-is-VEa"/>
+                            <constraint firstItem="SQz-Cy-rpn" firstAttribute="trailing" secondItem="jDO-3a-Ae1" secondAttribute="trailing" id="N5i-8g-3Pg"/>
+                            <constraint firstItem="jDO-3a-Ae1" firstAttribute="top" secondItem="SQz-Cy-rpn" secondAttribute="top" constant="5" id="Re7-CO-5x3"/>
+                            <constraint firstItem="jDO-3a-Ae1" firstAttribute="leading" secondItem="SQz-Cy-rpn" secondAttribute="leading" id="xrL-CC-DdZ"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="SQz-Cy-rpn"/>
                     </view>
                     <connections>
                         <outlet property="gridColorPicker" destination="Pbe-fz-3U4" id="OOi-aZ-CHl"/>

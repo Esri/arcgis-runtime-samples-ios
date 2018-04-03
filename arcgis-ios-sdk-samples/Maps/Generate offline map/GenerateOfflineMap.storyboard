@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KYn-o9-nTS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KYn-o9-nTS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,10 +15,6 @@
         <scene sceneID="1Bi-cv-FVq">
             <objects>
                 <viewController id="KYn-o9-nTS" customClass="GenerateOfflineMapViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="J0a-dp-4Rb"/>
-                        <viewControllerLayoutGuide type="bottom" id="FBY-T4-Wub"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0je-Pd-srw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,11 +24,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTc-3V-1Wg">
-                                <rect key="frame" x="37.5" y="80" width="300" height="483"/>
+                                <rect key="frame" x="37.5" y="80.5" width="300" height="482"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tt7-kv-ee8">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tt7-kv-ee8">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="x2N-4l-LQ5"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="lxq-bv-R2k"/>
                                     <barButtonItem enabled="NO" title="Generate offline map" id="gZK-mh-IhJ">
@@ -77,23 +78,24 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="FBY-T4-Wub" firstAttribute="top" secondItem="tt7-kv-ee8" secondAttribute="bottom" id="6OA-20-g2O"/>
-                            <constraint firstItem="tt7-kv-ee8" firstAttribute="top" secondItem="wJW-kM-2jV" secondAttribute="bottom" id="6do-0o-eJh"/>
+                            <constraint firstItem="I9Y-St-eL3" firstAttribute="bottom" secondItem="tt7-kv-ee8" secondAttribute="bottom" id="6OA-20-g2O"/>
+                            <constraint firstItem="wJW-kM-2jV" firstAttribute="bottom" secondItem="tt7-kv-ee8" secondAttribute="top" id="6do-0o-eJh"/>
                             <constraint firstItem="kTc-3V-1Wg" firstAttribute="width" secondItem="wJW-kM-2jV" secondAttribute="width" multiplier="0.8" id="FUd-ZK-ltC"/>
                             <constraint firstItem="kTc-3V-1Wg" firstAttribute="centerY" secondItem="wJW-kM-2jV" secondAttribute="centerY" id="IHQ-b8-bVX"/>
                             <constraint firstItem="kTc-3V-1Wg" firstAttribute="height" secondItem="wJW-kM-2jV" secondAttribute="height" multiplier="0.8" id="QyD-8g-jZ3"/>
-                            <constraint firstAttribute="trailing" secondItem="tt7-kv-ee8" secondAttribute="trailing" id="SiU-a8-404"/>
-                            <constraint firstItem="tt7-kv-ee8" firstAttribute="leading" secondItem="0je-Pd-srw" secondAttribute="leading" id="VhE-AU-Gu2"/>
-                            <constraint firstAttribute="trailing" secondItem="dkd-2o-c7w" secondAttribute="trailing" id="YZw-xM-Lbe"/>
+                            <constraint firstItem="tt7-kv-ee8" firstAttribute="trailing" secondItem="I9Y-St-eL3" secondAttribute="trailing" id="SiU-a8-404"/>
+                            <constraint firstItem="tt7-kv-ee8" firstAttribute="leading" secondItem="I9Y-St-eL3" secondAttribute="leading" id="VhE-AU-Gu2"/>
+                            <constraint firstItem="I9Y-St-eL3" firstAttribute="trailing" secondItem="dkd-2o-c7w" secondAttribute="trailing" id="YZw-xM-Lbe"/>
                             <constraint firstItem="kTc-3V-1Wg" firstAttribute="centerX" secondItem="wJW-kM-2jV" secondAttribute="centerX" id="ZWj-QP-fSb"/>
                             <constraint firstItem="wJW-kM-2jV" firstAttribute="leading" secondItem="0je-Pd-srw" secondAttribute="leading" id="fvH-8I-xck"/>
-                            <constraint firstItem="wJW-kM-2jV" firstAttribute="top" secondItem="J0a-dp-4Rb" secondAttribute="bottom" id="hmu-ib-sQk"/>
-                            <constraint firstAttribute="trailing" secondItem="wJW-kM-2jV" secondAttribute="trailing" id="jdh-al-bSJ"/>
-                            <constraint firstItem="dkd-2o-c7w" firstAttribute="leading" secondItem="0je-Pd-srw" secondAttribute="leading" id="pvp-q5-7bN"/>
-                            <constraint firstItem="tt7-kv-ee8" firstAttribute="top" secondItem="dkd-2o-c7w" secondAttribute="bottom" id="sKo-jo-WBf"/>
+                            <constraint firstItem="wJW-kM-2jV" firstAttribute="top" secondItem="I9Y-St-eL3" secondAttribute="top" id="hmu-ib-sQk"/>
+                            <constraint firstItem="wJW-kM-2jV" firstAttribute="trailing" secondItem="0je-Pd-srw" secondAttribute="trailing" id="jdh-al-bSJ"/>
+                            <constraint firstItem="dkd-2o-c7w" firstAttribute="leading" secondItem="I9Y-St-eL3" secondAttribute="leading" id="pvp-q5-7bN"/>
+                            <constraint firstItem="dkd-2o-c7w" firstAttribute="bottom" secondItem="I9Y-St-eL3" secondAttribute="bottom" constant="-44" id="sKo-jo-WBf"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="I9Y-St-eL3"/>
                     </view>
                     <navigationItem key="navigationItem" id="6g8-DY-AqK"/>
                     <connections>

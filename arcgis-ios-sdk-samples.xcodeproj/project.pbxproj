@@ -526,7 +526,7 @@
 		E4B2E26C1FE3321500E610FF /* ViewshedGeoElementViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E4B2E2681FE31ED500E610FF /* ViewshedGeoElementViewController.swift */; };
 		E4C4A4481EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */; };
 		E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */; };
-		F4E5CD7B2070449B000A6D35 /* FeatureLayerRenderingModeMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4E5CD7A2070449B000A6D35 /* FeatureLayerRenderingModeMap.storyboard */; };
+		F4159C6B209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */; };
 		F4E5CD7D20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */; };
 		F4E5CD7E207058D8000A6D35 /* FeatureLayerRenderingModeMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */; };
 /* End PBXBuildFile section */
@@ -1074,8 +1074,8 @@
 		E4B2E26A1FE31EEA00E610FF /* ViewshedGeoElement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewshedGeoElement.storyboard; sourceTree = "<group>"; };
 		E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DistanceCompositeSymbol.storyboard; sourceTree = "<group>"; };
 		E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceCompositeSymbolViewController.swift; sourceTree = "<group>"; };
-		F4E5CD7A2070449B000A6D35 /* FeatureLayerRenderingModeMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = FeatureLayerRenderingModeMap.storyboard; path = "arcgis-ios-sdk-samples/Features/Feature layer rendering mode (map)/FeatureLayerRenderingModeMap.storyboard"; sourceTree = "<group>"; };
-		F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeatureLayerRenderingModeMapViewController.swift; path = "arcgis-ios-sdk-samples/Features/Feature layer rendering mode (map)/FeatureLayerRenderingModeMapViewController.swift"; sourceTree = "<group>"; };
+		F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerRenderingModeMap.storyboard; sourceTree = "<group>"; };
+		F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureLayerRenderingModeMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2802,10 +2802,11 @@
 		F4E5CD7720704369000A6D35 /* Feature layer rendering mode (map) */ = {
 			isa = PBXGroup;
 			children = (
-				F4E5CD7A2070449B000A6D35 /* FeatureLayerRenderingModeMap.storyboard */,
+				F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */,
 				F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */,
 			);
-			path = "Feature layer rendering mode (map)";
+			name = "Feature layer rendering mode (map)";
+			path = "Features/Feature layer rendering mode (map)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3018,6 +3019,7 @@
 				21D919941FE1F368006EA79A /* ExpandableTableViewController.storyboard in Resources */,
 				3E41DD791B9F609500DA11CC /* DeleteFeatures.storyboard in Resources */,
 				3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */,
+				F4159C6B209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard in Resources */,
 				D97B7E591FD9BFE700E1239D /* Subdivisions.shx in Resources */,
 				D97B7E691FD9BFE700E1239D /* Subdivisions.shp.xml in Resources */,
 				09607F851FDB61DC00FA43B6 /* TimeBasedQuery.storyboard in Resources */,
@@ -3063,7 +3065,6 @@
 				E4B2E26B1FE31EEA00E610FF /* ViewshedGeoElement.storyboard in Resources */,
 				3ED029691B8E3ACD00ACA70D /* EditAttributes.storyboard in Resources */,
 				3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */,
-				F4E5CD7B2070449B000A6D35 /* FeatureLayerRenderingModeMap.storyboard in Resources */,
 				3ED028831B8E3A8500ACA70D /* MapRotation.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,20 +20,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MHI-Dx-Wlm" userLabel="Dynamic Map View" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="352"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="352" id="baI-Vg-fUM"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="20" width="375" height="341"/>
                             </mapView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vR4-Yr-oi4" userLabel="Static Map View" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="357" width="375" height="310"/>
+                                <rect key="frame" x="0.0" y="361" width="375" height="306"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGP-7C-mcY">
-                                <rect key="frame" x="133" y="319" width="109" height="30"/>
-                                <state key="normal" title="Animated Zoom"/>
+                                <rect key="frame" x="123.5" y="315" width="129" height="38"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" title="Animated Zoom">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Static" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQ5-jH-GCE">
-                                <rect key="frame" x="20" y="377" width="44" height="21"/>
+                                <rect key="frame" x="20" y="381" width="44" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -54,6 +55,7 @@
                             <constraint firstItem="Y4G-d2-Z1I" firstAttribute="top" secondItem="MHI-Dx-Wlm" secondAttribute="top" constant="20" id="N2M-mf-TrB"/>
                             <constraint firstItem="aQ5-jH-GCE" firstAttribute="top" secondItem="vR4-Yr-oi4" secondAttribute="top" constant="20" id="YCX-Mb-hZl"/>
                             <constraint firstItem="Y4G-d2-Z1I" firstAttribute="leading" secondItem="rqu-X2-DNl" secondAttribute="leading" constant="20" id="eih-HO-RpH"/>
+                            <constraint firstItem="vR4-Yr-oi4" firstAttribute="top" secondItem="MHI-Dx-Wlm" secondAttribute="bottom" id="fhn-ss-WAm"/>
                             <constraint firstItem="MHI-Dx-Wlm" firstAttribute="centerX" secondItem="EGP-7C-mcY" secondAttribute="centerX" id="gJw-yx-Uvz"/>
                             <constraint firstItem="MHI-Dx-Wlm" firstAttribute="leading" secondItem="vR4-Yr-oi4" secondAttribute="leading" id="reQ-yZ-DsU"/>
                             <constraint firstItem="vR4-Yr-oi4" firstAttribute="trailing" secondItem="MHI-Dx-Wlm" secondAttribute="trailing" id="sIn-PU-ewR"/>

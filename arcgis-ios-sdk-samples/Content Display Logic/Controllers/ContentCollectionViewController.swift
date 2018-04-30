@@ -36,6 +36,8 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         //hide suggestions
         self.hideSuggestions()
         

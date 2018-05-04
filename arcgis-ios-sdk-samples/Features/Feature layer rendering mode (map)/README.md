@@ -1,6 +1,6 @@
 # Feature layer rendering mode (map)
 
-This sample demonstrates how to use load settings to set preferred rendering mode for feature layers, specifically static or dynamic rendering modes.
+This sample demonstrates how to set the rendering mode for feature layers. There are two rendering modes, static and dynamic.
 
 ## How to use the sample
 

@@ -30,7 +30,7 @@ class OpenSceneViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OpenSceneViewController"]
 
         //initialize portal with AGOL
-        self.portal = AGSPortal.arcGISOnline(withLoginRequired: false)
+        portal = AGSPortal.arcGISOnline(withLoginRequired: false)
         
         //get the portal item
         let portalItem = AGSPortalItem.init(portal: portal, itemID: "a13c3c3540144967bc933cb5e498b8e4")

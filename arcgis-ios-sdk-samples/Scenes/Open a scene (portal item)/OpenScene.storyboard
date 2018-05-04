@@ -26,7 +26,7 @@
                         <constraints>
                             <constraint firstItem="jRW-g3-mXx" firstAttribute="trailing" secondItem="ryt-GZ-85l" secondAttribute="trailing" id="BgQ-MV-9tu"/>
                             <constraint firstItem="ryt-GZ-85l" firstAttribute="top" secondItem="jRW-g3-mXx" secondAttribute="top" id="JNq-wS-0zt"/>
-                            <constraint firstItem="jRW-g3-mXx" firstAttribute="bottom" secondItem="ryt-GZ-85l" secondAttribute="bottom" id="VgJ-5E-mY1"/>
+                            <constraint firstAttribute="bottom" secondItem="ryt-GZ-85l" secondAttribute="bottom" id="VgJ-5E-mY1"/>
                             <constraint firstItem="ryt-GZ-85l" firstAttribute="leading" secondItem="jRW-g3-mXx" secondAttribute="leading" id="qyt-Hr-y87"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jRW-g3-mXx"/>

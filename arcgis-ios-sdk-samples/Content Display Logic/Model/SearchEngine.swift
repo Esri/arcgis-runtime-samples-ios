@@ -97,8 +97,12 @@ class SearchEngine: NSObject {
                     
                     tagger.string = contentString
                     let range = NSMakeRange(0, contentString.count)
-                    tagger.enumerateTags(in: range, scheme: NSLinguisticTagScheme.lexicalClass, options: [NSLinguisticTagger.Options.omitWhitespace, NSLinguisticTagger.Options.omitPunctuation], using: { (tag:String, tokenRange:NSRange, sentenceRange:NSRange, _) -> Void in
-
+                    tagger.enumerateTags(in: range, scheme: NSLinguisticTagScheme.lexicalClass, options: [NSLinguisticTagger.Options.omitWhitespace, NSLinguisticTagger.Options.omitPunctuation], using: { (tag:NSLinguisticTag?, tokenRange:NSRange, sentenceRange:NSRange, _) -> Void in
+                        
+                        guard let tag = tag else {
+                            return
+                        }
+                        
                         if tag == NSLinguisticTag.noun || tag == NSLinguisticTag.verb || tag == NSLinguisticTag.adjective || tag == NSLinguisticTag.otherWord {
                             let word = (contentString as NSString).substring(with: tokenRange) as String
                             

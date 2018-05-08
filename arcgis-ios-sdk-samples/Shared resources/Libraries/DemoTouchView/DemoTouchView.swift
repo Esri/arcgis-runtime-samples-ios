@@ -53,8 +53,9 @@ extension UIApplication {
             let originalSelector = #selector(sendEvent)
             let swizzledSelector = #selector(sf_sendEvent)
             
-            let originalMethod = class_getInstanceMethod(self, originalSelector)
-            let swizzledMethod = class_getInstanceMethod(self, swizzledSelector)
+            guard let originalMethod = class_getInstanceMethod(self, originalSelector), let swizzledMethod = class_getInstanceMethod(self, swizzledSelector) else {
+                fatalError("Cannot swizzle with nil method.")
+            }
             
             // inject method into the UIApplication class
             //
@@ -87,8 +88,9 @@ extension UIApplication {
             let originalSelector = #selector(sendEvent)
             let swizzledSelector = #selector(sf_sendEvent)
             
-            let originalMethod = class_getInstanceMethod(self, originalSelector)
-            let swizzledMethod = class_getInstanceMethod(self, swizzledSelector)
+            guard let originalMethod = class_getInstanceMethod(self, originalSelector), let swizzledMethod = class_getInstanceMethod(self, swizzledSelector) else {
+                fatalError("Cannot swizzle with nil method.")
+            }
             
             // put the default implementation back
             //

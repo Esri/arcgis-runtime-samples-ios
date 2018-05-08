@@ -56,11 +56,11 @@ class HotspotSettingsViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Actions
     
-    func datePickerValueChanged(_ sender: UIDatePicker) {
+    @objc func datePickerValueChanged(_ sender: UIDatePicker) {
         self.selectedTextField.text = self.dateFormatter.string(from: sender.date)
     }
     
-    func tapAction() {
+    @objc func tapAction() {
         self.view.endEditing(true)
     }
     

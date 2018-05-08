@@ -213,7 +213,7 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
         RunLoop.main.add(self.animationTimer, forMode: RunLoopMode.commonModes)
     }
     
-    func animate() {
+    @objc func animate() {
         
         //validations
         if self.frames == nil || self.planeModelSymbol == nil {

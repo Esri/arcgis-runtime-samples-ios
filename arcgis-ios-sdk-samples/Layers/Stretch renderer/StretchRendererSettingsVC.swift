@@ -137,7 +137,7 @@ class StretchRendererSettingsVC: UIViewController, UITableViewDataSource, Stretc
         self.delegate?.stretchRendererSettingsVC(self, didSelectStretchParameters: stretchParameters)
     }
     
-    func hideKeyboard() {
+    @objc func hideKeyboard() {
         self.view.endEditing(true)
     }
     

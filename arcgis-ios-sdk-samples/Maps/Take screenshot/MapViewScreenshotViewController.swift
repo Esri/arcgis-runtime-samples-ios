@@ -56,7 +56,7 @@ class MapViewScreenshotViewController: UIViewController {
     //MARK: - Actions
     
     //hide the screenshot overlay view
-    func hideOverlayParentView() {
+    @objc func hideOverlayParentView() {
         self.overlayParentView.isHidden = true
     }
     

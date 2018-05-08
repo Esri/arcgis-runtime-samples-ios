@@ -102,7 +102,7 @@ extension UIApplication {
     
     // MARK: - Method Swizzling
     
-    func sf_sendEvent(_ event: UIEvent) {
+    @objc func sf_sendEvent(_ event: UIEvent) {
         
         if let touches = event.allTouches {
             

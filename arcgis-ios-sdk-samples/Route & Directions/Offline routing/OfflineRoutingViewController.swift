@@ -228,8 +228,8 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         //exists then remove it
         if self.longPressedRouteGraphic != nil {
             //update distance and time
-            self.totalTime = self.totalTime - Double(self.longPressedGraphic.attributes["routeTime"] as! NSNumber)
-            self.totalDistance = self.totalDistance - Double(self.longPressedGraphic.attributes["routeLength"] as! NSNumber)
+            self.totalTime = self.totalTime - Double(truncating: self.longPressedGraphic.attributes["routeTime"] as! NSNumber)
+            self.totalDistance = self.totalDistance - Double(truncating: self.longPressedGraphic.attributes["routeLength"] as! NSNumber)
             
             self.routeGraphicsOverlay.graphics.remove(self.longPressedRouteGraphic)
             self.longPressedRouteGraphic = nil

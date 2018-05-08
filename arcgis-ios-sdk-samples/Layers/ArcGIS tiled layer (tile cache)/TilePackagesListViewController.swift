@@ -102,10 +102,12 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
     }
     
     func extractName(fromPath path:String) -> String {
-        var index = path.range(of: "/", options: .backwards, range: nil, locale: nil)?.lowerBound
-        index = path.index(after: index!)
-        let name = path.substring(from: index!)
-        return name
+        guard var index = path.range(of: "/", options: .backwards, range: nil, locale: nil)?.lowerBound else {
+            return ""
+        }
+        index = path.index(after: index)
+        let name = path[index...]
+        return String(name)
     }
 }
 

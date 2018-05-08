@@ -94,7 +94,7 @@ class FeatureTemplatePickerViewController: UIViewController, UIBarPositioningDel
     func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
         //Get a cell
         let cellIdentifier = "TemplatePickerCell"
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as UITableViewCell!
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
         
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: cellIdentifier)

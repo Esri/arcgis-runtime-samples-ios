@@ -177,7 +177,10 @@ class CustomContextSheet: UIView {
     }
     
     func attributedText(_ title:String) -> NSAttributedString {
-        let attributes = [NSAttributedStringKey.strokeWidth.rawValue: -3, NSAttributedStringKey.strokeColor: UIColor.gray, NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)] as! [NSAttributedStringKey : Any]
+        let attributes = [NSAttributedStringKey.strokeWidth: -3,
+                          NSAttributedStringKey.strokeColor: UIColor.gray,
+                          NSAttributedStringKey.foregroundColor: UIColor.white,
+                          NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)] as [NSAttributedStringKey : Any]
         return NSAttributedString(string: title, attributes: attributes)
     }
     

@@ -196,7 +196,7 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
             }
         }
         else {
-            Swift.print("Mission file not found")
+            print("Mission file not found")
         }
     }
     

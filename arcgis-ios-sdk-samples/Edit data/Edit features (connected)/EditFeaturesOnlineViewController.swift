@@ -179,7 +179,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.popupsVC = nil
     }
     
-    func sketchChanged(_ notification:Notification) {
+    @objc func sketchChanged(_ notification:Notification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the sketchCompleteButton
         if let geometry = self.mapView.sketchEditor?.geometry , !geometry.isEmpty {

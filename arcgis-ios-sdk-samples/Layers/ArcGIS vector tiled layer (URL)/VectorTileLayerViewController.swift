@@ -20,11 +20,13 @@ import ArcGIS
 class VectorTileLayerViewController: UIViewController {
 
     @IBOutlet var mapView:AGSMapView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    private var navigationURLString = "https://www.arcgis.com/home/item.html?id=e19e9330bf08490ca8353d76b5e2e658"
-    private var streetsURLString = "https://www.arcgis.com/home/item.html?id=a60a37a27cc140ddad15f919cd5a69f2"
-    private var nightURLString = "https://www.arcgis.com/home/item.html?id=92c551c9f07b4147846aae273e822714"
-    private var darkGrayURLString = "https://www.arcgis.com/home/item.html?id=5ad3948260a147a993ef4865e3fad476"
+    private var midCenturyURLString = "http://www.arcgis.com/home/item.html?id=7675d44bb1e4428aa2c30a9b68f97822"
+    private var coloredPencilURLString = "http://www.arcgis.com/home/item.html?id=4cf7e1fb9f254dcda9c8fbadb15cf0f8"
+    private var newsPaperURLString = "http://www.arcgis.com/home/item.html?id=dfb04de5f3144a80bc3f9f336228d24a"
+    private var novaURLString = "http://www.arcgis.com/home/item.html?id=75f4dfdff19e445395653121a95a85db"
+    private var nightURLString = "http://www.arcgis.com/home/item.html?id=86f556a2d1fd468181855a35e344567f"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +34,13 @@ class VectorTileLayerViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["VectorTileLayerViewController"]
         
+        //change width of the segmented control based on the device
+        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
+            self.segmentedControl.frame = self.segmentedControl.frame.insetBy(dx: -50, dy: 0)
+        }
+        
         //create a vector tiled layer
-        let vectorTileLayer = AGSArcGISVectorTiledLayer(url: URL(string: navigationURLString)!)
+        let vectorTileLayer = AGSArcGISVectorTiledLayer(url: URL(string: midCenturyURLString)!)
         //create a map and set the vector tiled layer as the basemap
         let map = AGSMap(basemap: AGSBasemap(baseLayer: vectorTileLayer))
         
@@ -54,13 +61,15 @@ class VectorTileLayerViewController: UIViewController {
         var urlString:String
         switch sender.selectedSegmentIndex {
         case 0:
-            urlString = navigationURLString
+            urlString = midCenturyURLString
         case 1:
-            urlString = streetsURLString
+            urlString = coloredPencilURLString
         case 2:
-            urlString = nightURLString
+            urlString = newsPaperURLString
+        case 3:
+            urlString = novaURLString
         default:
-            urlString = darkGrayURLString
+            urlString = nightURLString
         }
         
         //create the new vector tiled layer using the url

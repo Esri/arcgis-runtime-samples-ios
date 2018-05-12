@@ -31,13 +31,14 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="BiJ-pM-m7v"/>
                                     <barButtonItem style="plain" id="Nvh-ah-YiH">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="QWL-cT-bZH">
-                                            <rect key="frame" x="42" y="7.5" width="291" height="29"/>
+                                            <rect key="frame" x="16" y="7" width="343" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
-                                                <segment title="Navigation"/>
-                                                <segment title="Streets" width="65"/>
-                                                <segment title="Night" width="65"/>
-                                                <segment title="Dark Gray"/>
+                                                <segment title="Mid-Century"/>
+                                                <segment title="Colored Pencil"/>
+                                                <segment title="Newspaper"/>
+                                                <segment title="Nova"/>
+                                                <segment title="Night"/>
                                             </segments>
                                             <connections>
                                                 <action selector="segmentedControlChanged:" destination="FtN-l1-Ps1" eventType="valueChanged" id="eZH-Nk-Gne"/>
@@ -62,6 +63,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="vpa-mD-ZH4" id="c90-zp-qQT"/>
+                        <outlet property="segmentedControl" destination="QWL-cT-bZH" id="fAT-2x-PWM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="92P-Ys-VIE" userLabel="First Responder" sceneMemberID="firstResponder"/>

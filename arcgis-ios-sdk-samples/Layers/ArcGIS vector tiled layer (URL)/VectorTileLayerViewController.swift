@@ -39,6 +39,9 @@ class VectorTileLayerViewController: UIViewController {
             self.segmentedControl.frame = self.segmentedControl.frame.insetBy(dx: -50, dy: 0)
         }
         
+        //Change text size of the segmented control to fit the names of maps
+        segmentedControl.setTitleTextAttributes([NSAttributedStringKey.font:UIFont(name: "Helvetica",size: 10.0)!], for: .normal)
+        
         //create a vector tiled layer
         let vectorTileLayer = AGSArcGISVectorTiledLayer(url: URL(string: midCenturyURLString)!)
         //create a map and set the vector tiled layer as the basemap

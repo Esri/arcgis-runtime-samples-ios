@@ -22,11 +22,11 @@ class VectorTileLayerViewController: UIViewController {
     @IBOutlet var mapView:AGSMapView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    private var midCenturyURLString = "http://www.arcgis.com/home/item.html?id=7675d44bb1e4428aa2c30a9b68f97822"
-    private var coloredPencilURLString = "http://www.arcgis.com/home/item.html?id=4cf7e1fb9f254dcda9c8fbadb15cf0f8"
-    private var newsPaperURLString = "http://www.arcgis.com/home/item.html?id=dfb04de5f3144a80bc3f9f336228d24a"
-    private var novaURLString = "http://www.arcgis.com/home/item.html?id=75f4dfdff19e445395653121a95a85db"
-    private var nightURLString = "http://www.arcgis.com/home/item.html?id=86f556a2d1fd468181855a35e344567f"
+    private var midCenturyURLString = "https://www.arcgis.com/home/item.html?id=7675d44bb1e4428aa2c30a9b68f97822"
+    private var coloredPencilURLString = "https://www.arcgis.com/home/item.html?id=4cf7e1fb9f254dcda9c8fbadb15cf0f8"
+    private var newsPaperURLString = "https://www.arcgis.com/home/item.html?id=dfb04de5f3144a80bc3f9f336228d24a"
+    private var novaURLString = "https://www.arcgis.com/home/item.html?id=75f4dfdff19e445395653121a95a85db"
+    private var nightURLString = "https://www.arcgis.com/home/item.html?id=86f556a2d1fd468181855a35e344567f"
     
     override func viewDidLoad() {
         super.viewDidLoad()

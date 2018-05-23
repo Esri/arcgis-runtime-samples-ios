@@ -1255,9 +1255,9 @@
 			isa = PBXGroup;
 			children = (
 				3E0B58461E36BCCD00951767 /* Analyze hotspots */,
-				3E0B584A1E36BCCD00951767 /* Viewshed (geoprocessing) */,
 				2182C97F1FDA01A0003E3A0F /* Statistical query */,
 				21E9143D1FDEFB6000C7D6DC /* Statistical query (group and sort) */,
+				3E0B584A1E36BCCD00951767 /* Viewshed (geoprocessing) */,
 				12BF9E421FE9D77000B1E6C4 /* Viewshed (camera) */,
 				127D29F2200EC5FC00DD6CDC /* Viewshed (location) */,
 				E4B2E2671FE31E7400E610FF /* Viewshed (GeoElement) */,

@@ -74,11 +74,11 @@
 		3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0B58471E36BCCD00951767 /* AnalyzeHotspots.storyboard */; };
 		3E0B584E1E36BCCD00951767 /* HotspotSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B58481E36BCCD00951767 /* HotspotSettingsViewController.swift */; };
 		3E0B584F1E36BCCD00951767 /* AnalyzeHotspotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B58491E36BCCD00951767 /* AnalyzeHotspotsViewController.swift */; };
-		3E0B58501E36BCCD00951767 /* AnalyzeViewshed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0B584B1E36BCCD00951767 /* AnalyzeViewshed.storyboard */; };
-		3E0B58511E36BCCD00951767 /* AnalyzeViewshedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B584C1E36BCCD00951767 /* AnalyzeViewshedViewController.swift */; };
+		3E0B58501E36BCCD00951767 /* ViewshedGeoprocessing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0B584B1E36BCCD00951767 /* ViewshedGeoprocessing.storyboard */; };
+		3E0B58511E36BCCD00951767 /* ViewshedGeoprocessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B584C1E36BCCD00951767 /* ViewshedGeoprocessingViewController.swift */; };
 		3E0B58521E36D54800951767 /* AnalyzeHotspotsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B58491E36BCCD00951767 /* AnalyzeHotspotsViewController.swift */; };
 		3E0B58531E36D54800951767 /* HotspotSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B58481E36BCCD00951767 /* HotspotSettingsViewController.swift */; };
-		3E0B58541E36D54800951767 /* AnalyzeViewshedViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B584C1E36BCCD00951767 /* AnalyzeViewshedViewController.swift */; };
+		3E0B58541E36D54800951767 /* ViewshedGeoprocessingViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B584C1E36BCCD00951767 /* ViewshedGeoprocessingViewController.swift */; };
 		3E0B58591E36D8D300951767 /* OperationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B58561E36D8D300951767 /* OperationsListViewController.swift */; };
 		3E0B585A1E36D8D300951767 /* SpatialOperations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0B58571E36D8D300951767 /* SpatialOperations.storyboard */; };
 		3E0B585B1E36D8D300951767 /* SpatialOperationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B58581E36D8D300951767 /* SpatialOperationsViewController.swift */; };
@@ -593,7 +593,7 @@
 				3E0B585D1E36D93800951767 /* OperationsListViewController.swift in CopyFiles */,
 				3E0B58521E36D54800951767 /* AnalyzeHotspotsViewController.swift in CopyFiles */,
 				3E0B58531E36D54800951767 /* HotspotSettingsViewController.swift in CopyFiles */,
-				3E0B58541E36D54800951767 /* AnalyzeViewshedViewController.swift in CopyFiles */,
+				3E0B58541E36D54800951767 /* ViewshedGeoprocessingViewController.swift in CopyFiles */,
 				3EFDE0F91E36AE3100CBCD92 /* FeatureCollectionLayerVC.swift in CopyFiles */,
 				3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */,
 				3EE179991DE37199005E0759 /* GridSettingsViewController.swift in CopyFiles */,
@@ -753,8 +753,8 @@
 		3E0B58471E36BCCD00951767 /* AnalyzeHotspots.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnalyzeHotspots.storyboard; sourceTree = "<group>"; };
 		3E0B58481E36BCCD00951767 /* HotspotSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotspotSettingsViewController.swift; sourceTree = "<group>"; };
 		3E0B58491E36BCCD00951767 /* AnalyzeHotspotsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyzeHotspotsViewController.swift; sourceTree = "<group>"; };
-		3E0B584B1E36BCCD00951767 /* AnalyzeViewshed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnalyzeViewshed.storyboard; sourceTree = "<group>"; };
-		3E0B584C1E36BCCD00951767 /* AnalyzeViewshedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyzeViewshedViewController.swift; sourceTree = "<group>"; };
+		3E0B584B1E36BCCD00951767 /* ViewshedGeoprocessing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewshedGeoprocessing.storyboard; sourceTree = "<group>"; };
+		3E0B584C1E36BCCD00951767 /* ViewshedGeoprocessingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewshedGeoprocessingViewController.swift; sourceTree = "<group>"; };
 		3E0B58561E36D8D300951767 /* OperationsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationsListViewController.swift; sourceTree = "<group>"; };
 		3E0B58571E36D8D300951767 /* SpatialOperations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpatialOperations.storyboard; sourceTree = "<group>"; };
 		3E0B58581E36D8D300951767 /* SpatialOperationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpatialOperationsViewController.swift; sourceTree = "<group>"; };
@@ -1255,7 +1255,7 @@
 			isa = PBXGroup;
 			children = (
 				3E0B58461E36BCCD00951767 /* Analyze hotspots */,
-				3E0B584A1E36BCCD00951767 /* Analyze viewshed */,
+				3E0B584A1E36BCCD00951767 /* Viewshed (geoprocessing) */,
 				2182C97F1FDA01A0003E3A0F /* Statistical query */,
 				21E9143D1FDEFB6000C7D6DC /* Statistical query (group and sort) */,
 				12BF9E421FE9D77000B1E6C4 /* Viewshed (camera) */,
@@ -1276,13 +1276,13 @@
 			path = "Analyze hotspots";
 			sourceTree = "<group>";
 		};
-		3E0B584A1E36BCCD00951767 /* Analyze viewshed */ = {
+		3E0B584A1E36BCCD00951767 /* Viewshed (geoprocessing) */ = {
 			isa = PBXGroup;
 			children = (
-				3E0B584B1E36BCCD00951767 /* AnalyzeViewshed.storyboard */,
-				3E0B584C1E36BCCD00951767 /* AnalyzeViewshedViewController.swift */,
+				3E0B584B1E36BCCD00951767 /* ViewshedGeoprocessing.storyboard */,
+				3E0B584C1E36BCCD00951767 /* ViewshedGeoprocessingViewController.swift */,
 			);
-			path = "Analyze viewshed";
+			path = "Viewshed (geoprocessing)";
 			sourceTree = "<group>";
 		};
 		3E0B58551E36D8D300951767 /* Spatial operations */ = {
@@ -2915,7 +2915,7 @@
 				3ED0294B1B8E3AB300ACA70D /* Sketch.storyboard in Resources */,
 				3E1E5EEF1D9F0BAB00F4913C /* HillshadeRenderer.storyboard in Resources */,
 				3ED028571B8E3A8500ACA70D /* CreateSaveMap.storyboard in Resources */,
-				3E0B58501E36BCCD00951767 /* AnalyzeViewshed.storyboard in Resources */,
+				3E0B58501E36BCCD00951767 /* ViewshedGeoprocessing.storyboard in Resources */,
 				D90407951FD8608A00BFE07B /* RasterLayerGPKG.storyboard in Resources */,
 				3E4BF45A1C5BD77300D85919 /* OfflineGeocode.storyboard in Resources */,
 				3EABC7C31DB191BC00C161C6 /* Shasta_Elevation.tif.aux.xml in Resources */,
@@ -3193,7 +3193,7 @@
 				127D29F6200EC5FC00DD6CDC /* ViewshedSettingsVC.swift in Sources */,
 				3EABC7931DB1772000C161C6 /* RGBRendererTypeCell.swift in Sources */,
 				3EABC7CB1DB1947500C161C6 /* BlendRendererViewController.swift in Sources */,
-				3E0B58511E36BCCD00951767 /* AnalyzeViewshedViewController.swift in Sources */,
+				3E0B58511E36BCCD00951767 /* ViewshedGeoprocessingViewController.swift in Sources */,
 				3ED028F51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift in Sources */,
 				3EEE1D6E1E4935FC003263FC /* GroupUserCell.swift in Sources */,
 				3EFCE1C41CF374C600E02F67 /* MapPackagesListViewController.swift in Sources */,

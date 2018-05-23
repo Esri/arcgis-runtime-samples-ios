@@ -870,14 +870,6 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Analyze viewshed</string>
-				<key>storyboardName</key>
-				<string>AnalyzeViewshed</string>
-				<key>descriptionText</key>
-				<string>This sample demonstrates how to calculate a viewshed using a geoprocessing service.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
 				<string>Statistical query</string>
 				<key>storyboardName</key>
 				<string>StatisticalQuery</string>
@@ -891,6 +883,14 @@
 				<string>StatisticalQueryGroupAndSort</string>
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to query a feature table to get statistics for one or more specified fields. The results can be grouped and sorted using one or more fields in the table.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Viewshed (geoprocessing)</string>
+				<key>storyboardName</key>
+				<string>ViewshedGeoprocessing</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to calculate a viewshed using a geoprocessing service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

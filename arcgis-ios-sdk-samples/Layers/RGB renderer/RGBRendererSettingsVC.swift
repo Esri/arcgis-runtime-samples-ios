@@ -119,7 +119,7 @@ class RGBRendererSettingsVC: UIViewController, UITableViewDataSource, RGBRendere
         self.delegate?.rgbRendererSettingsVC(self, didSelectStretchParameters: stretchParameters)
     }
     
-    func hideKeyboard() {
+    @objc func hideKeyboard() {
         self.view.endEditing(true)
     }
     

@@ -140,7 +140,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         self.toggleSaveAsView()
     }
     
-    func hideKeyboard() {
+    @objc func hideKeyboard() {
         self.view.endEditing(true)
     }
     

@@ -92,7 +92,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         let relatedTable = self.originFeatureTable.relatedTables(with: self.relationshipInfo)![0] as! AGSServiceFeatureTable
         
         //new feature
-        let feature = relatedTable.createFeature(attributes: ["Scientific_name" : "New specie"], geometry: nil) as! AGSArcGISFeature
+        let feature = relatedTable.createFeature(attributes: ["Scientific_name" : "New species"], geometry: nil) as! AGSArcGISFeature
         
         //relate new feature to origin feature
         feature.relate(to: self.originFeature)

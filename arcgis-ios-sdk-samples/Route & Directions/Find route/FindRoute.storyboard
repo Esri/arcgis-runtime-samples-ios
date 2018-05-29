@@ -1,24 +1,28 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hxJ-u5-xSg">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hxJ-u5-xSg">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Find Route View Controller-->
         <scene sceneID="U6K-2G-Ysp">
             <objects>
                 <viewController id="hxJ-u5-xSg" customClass="FindRouteViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8gd-UL-myw"/>
-                        <viewControllerLayoutGuide type="bottom" id="QGg-NK-8mz"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cuz-tT-dx6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D7f-TJ-Fif">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D7f-TJ-Fif">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="jfy-3B-ZXa"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="DJx-Iu-aKn"/>
                                     <barButtonItem enabled="NO" title="Route" id="jNZ-gi-0zH">
@@ -35,20 +39,21 @@
                                 </items>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="APo-C9-AtT" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="D7f-TJ-Fif" firstAttribute="top" secondItem="APo-C9-AtT" secondAttribute="bottom" id="6wp-nL-Enz"/>
-                            <constraint firstItem="QGg-NK-8mz" firstAttribute="top" secondItem="D7f-TJ-Fif" secondAttribute="bottom" id="N3o-sA-YES"/>
+                            <constraint firstItem="APo-C9-AtT" firstAttribute="bottom" secondItem="D7f-TJ-Fif" secondAttribute="top" id="6wp-nL-Enz"/>
+                            <constraint firstItem="UJo-Tq-54A" firstAttribute="bottom" secondItem="D7f-TJ-Fif" secondAttribute="bottom" id="N3o-sA-YES"/>
                             <constraint firstAttribute="trailing" secondItem="APo-C9-AtT" secondAttribute="trailing" id="Oe2-cn-qSi"/>
-                            <constraint firstItem="APo-C9-AtT" firstAttribute="top" secondItem="8gd-UL-myw" secondAttribute="bottom" id="XPQ-aw-QNl"/>
-                            <constraint firstAttribute="trailing" secondItem="D7f-TJ-Fif" secondAttribute="trailing" id="cDm-u3-gwx"/>
+                            <constraint firstItem="APo-C9-AtT" firstAttribute="top" secondItem="UJo-Tq-54A" secondAttribute="top" id="XPQ-aw-QNl"/>
+                            <constraint firstItem="D7f-TJ-Fif" firstAttribute="trailing" secondItem="UJo-Tq-54A" secondAttribute="trailing" id="cDm-u3-gwx"/>
                             <constraint firstItem="APo-C9-AtT" firstAttribute="leading" secondItem="cuz-tT-dx6" secondAttribute="leading" id="rSj-od-AzH"/>
-                            <constraint firstItem="D7f-TJ-Fif" firstAttribute="leading" secondItem="cuz-tT-dx6" secondAttribute="leading" id="wCa-b0-hLK"/>
+                            <constraint firstItem="D7f-TJ-Fif" firstAttribute="leading" secondItem="UJo-Tq-54A" secondAttribute="leading" id="wCa-b0-hLK"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="UJo-Tq-54A"/>
                     </view>
                     <navigationItem key="navigationItem" id="c7L-nK-kvT"/>
                     <connections>
@@ -65,23 +70,19 @@
         <scene sceneID="x57-8W-Jxt">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="Qje-Qg-2FG" customClass="DirectionsViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ENA-Nd-rKL"/>
-                        <viewControllerLayoutGuide type="bottom" id="bDX-Sf-W9Q"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="j12-XH-Ari">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Drx-b2-tLb">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DirectionsCell" id="cYL-Ib-dqo">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cYL-Ib-dqo" id="TzM-s1-jKF">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -92,13 +93,14 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="bDX-Sf-W9Q" firstAttribute="top" secondItem="Drx-b2-tLb" secondAttribute="bottom" id="F4f-NC-kef"/>
+                            <constraint firstAttribute="bottom" secondItem="Drx-b2-tLb" secondAttribute="bottom" id="F4f-NC-kef"/>
                             <constraint firstItem="Drx-b2-tLb" firstAttribute="leading" secondItem="j12-XH-Ari" secondAttribute="leading" id="Vk3-9d-SUw"/>
-                            <constraint firstItem="Drx-b2-tLb" firstAttribute="top" secondItem="ENA-Nd-rKL" secondAttribute="bottom" id="bmW-3e-ZwP"/>
+                            <constraint firstItem="Drx-b2-tLb" firstAttribute="top" secondItem="ozA-6c-fBN" secondAttribute="top" id="bmW-3e-ZwP"/>
                             <constraint firstAttribute="trailing" secondItem="Drx-b2-tLb" secondAttribute="trailing" id="upR-fi-la5"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="ozA-6c-fBN"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3kH-ul-rlN" userLabel="First Responder" sceneMemberID="firstResponder"/>

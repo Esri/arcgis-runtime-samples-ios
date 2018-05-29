@@ -26,7 +26,7 @@ protocol FeatureTemplatePickerDelegate:class {
     func featureTemplatePickerViewController(_ controller:FeatureTemplatePickerViewController, didSelectFeatureTemplate template:AGSFeatureTemplate, forFeatureLayer featureLayer:AGSFeatureLayer)
 }
 
-class FeatureTemplatePickerViewController: UIViewController, UIBarPositioningDelegate {
+class FeatureTemplatePickerViewController: UIViewController, UIBarPositioningDelegate, UITableViewDelegate, UITableViewDataSource {
     
     var infos = [FeatureTemplateInfo]()
     @IBOutlet weak var featureTemplateTableView: UITableView!
@@ -79,7 +79,7 @@ class FeatureTemplatePickerViewController: UIViewController, UIBarPositioningDel
     
     //MARK: - table view data source
     
-    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
@@ -91,10 +91,10 @@ class FeatureTemplatePickerViewController: UIViewController, UIBarPositioningDel
         return nil
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Get a cell
         let cellIdentifier = "TemplatePickerCell"
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as UITableViewCell!
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
         
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: cellIdentifier)
@@ -112,7 +112,7 @@ class FeatureTemplatePickerViewController: UIViewController, UIBarPositioningDel
     
     //MARK: - table view delegate
     
-    func tableView(_ tableView: UITableView!, didSelectRowAtIndexPath indexPath: IndexPath!) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Notify the delegate that the user picked a feature template
         let info = self.infos[indexPath.row]
         self.delegate?.featureTemplatePickerViewController(self, didSelectFeatureTemplate: info.featureTemplate, forFeatureLayer: info.featureLayer)

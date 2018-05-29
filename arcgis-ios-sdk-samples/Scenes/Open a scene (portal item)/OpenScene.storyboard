@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oI0-pg-r9z">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Open Scene View Controller-->
+        <scene sceneID="qMc-Za-MJD">
+            <objects>
+                <viewController id="oI0-pg-r9z" customClass="OpenSceneViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wvg-jB-teh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ryt-GZ-85l" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jRW-g3-mXx" firstAttribute="trailing" secondItem="ryt-GZ-85l" secondAttribute="trailing" id="BgQ-MV-9tu"/>
+                            <constraint firstItem="ryt-GZ-85l" firstAttribute="top" secondItem="jRW-g3-mXx" secondAttribute="top" id="JNq-wS-0zt"/>
+                            <constraint firstAttribute="bottom" secondItem="ryt-GZ-85l" secondAttribute="bottom" id="VgJ-5E-mY1"/>
+                            <constraint firstItem="ryt-GZ-85l" firstAttribute="leading" secondItem="jRW-g3-mXx" secondAttribute="leading" id="qyt-Hr-y87"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jRW-g3-mXx"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="ryt-GZ-85l" id="SJP-OI-qba"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hLT-Ax-Q2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-76" y="62"/>
+        </scene>
+    </scenes>
+</document>

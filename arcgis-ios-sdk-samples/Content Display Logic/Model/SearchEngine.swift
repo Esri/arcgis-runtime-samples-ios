@@ -85,7 +85,7 @@ class SearchEngine: NSObject {
         self.indexArray = [String]()
         self.wordsDictionary = [String: [String]]()
         
-        let tagger = NSLinguisticTagger(tagSchemes: [NSLinguisticTagSchemeTokenType, NSLinguisticTagSchemeNameType, NSLinguisticTagSchemeLexicalClass], options: 0)
+        let tagger = NSLinguisticTagger(tagSchemes: [NSLinguisticTagScheme.tokenType, NSLinguisticTagScheme.nameType, NSLinguisticTagScheme.lexicalClass], options: 0)
         
         
         for directoryURL in readmeDirectoriesURLs {
@@ -97,9 +97,13 @@ class SearchEngine: NSObject {
                     
                     tagger.string = contentString
                     let range = NSMakeRange(0, contentString.count)
-                    tagger.enumerateTags(in: range, scheme: NSLinguisticTagSchemeLexicalClass, options: [NSLinguisticTagger.Options.omitWhitespace, NSLinguisticTagger.Options.omitPunctuation], using: { (tag:String, tokenRange:NSRange, sentenceRange:NSRange, _) -> Void in
-
-                        if tag == NSLinguisticTagNoun || tag == NSLinguisticTagVerb || tag == NSLinguisticTagAdjective || tag == NSLinguisticTagOtherWord {
+                    tagger.enumerateTags(in: range, scheme: NSLinguisticTagScheme.lexicalClass, options: [NSLinguisticTagger.Options.omitWhitespace, NSLinguisticTagger.Options.omitPunctuation], using: { (tag:NSLinguisticTag?, tokenRange:NSRange, sentenceRange:NSRange, _) -> Void in
+                        
+                        guard let tag = tag else {
+                            return
+                        }
+                        
+                        if tag == NSLinguisticTag.noun || tag == NSLinguisticTag.verb || tag == NSLinguisticTag.adjective || tag == NSLinguisticTag.otherWord {
                             let word = (contentString as NSString).substring(with: tokenRange) as String
                             
                             //trivial comparisons

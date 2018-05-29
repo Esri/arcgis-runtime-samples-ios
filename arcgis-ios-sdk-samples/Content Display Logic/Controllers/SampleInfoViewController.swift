@@ -51,6 +51,7 @@ class SampleInfoViewController: UIViewController {
         "<head> <link rel=\"stylesheet\" href=\"\(cssPath)\">" +
         "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css\">" +
         "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css\">" +
+        "<meta name=\"viewport\" content=\"initial-scale=1, width=device-width, height=device-height, viewport-fit=cover\">" +
         "</head>" +
         " <div id=\"preview\" sd-model-to-html=\"text\">" +
         "<div id=\"content\">" +

@@ -1,25 +1,29 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VF5-Hj-Cnv">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VF5-Hj-Cnv">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Stretch Renderer View Controller-->
         <scene sceneID="wnA-0W-fyN">
             <objects>
-                <viewController id="VF5-Hj-Cnv" customClass="StretchRendererViewController" customModule="MapViewDemo_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tBZ-4z-dIr"/>
-                        <viewControllerLayoutGuide type="bottom" id="rs7-YJ-01C"/>
-                    </layoutGuides>
+                <viewController id="VF5-Hj-Cnv" customClass="StretchRendererViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PND-Qg-Xfs">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="McT-1Y-bMQ">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="McT-1Y-bMQ">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="ARx-dz-G7u"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="lJZ-NH-INO"/>
                                     <barButtonItem title="Edit renderer" id="Ppe-Rb-eKC">
@@ -31,18 +35,18 @@
                                 </items>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WC1-II-BvW" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sHN-H8-Es1">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Pof-Bd-aO2">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="183" translatesAutoresizingMaskIntoConstraints="NO" id="cPJ-en-MgC">
-                                            <rect key="frame" x="150" y="198.5" width="300" height="183"/>
-                                            <color key="backgroundColor" white="1" alpha="0.69562500000000005" colorSpace="calibratedWhite"/>
+                                            <rect key="frame" x="37.5" y="232" width="300" height="183"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.69562500000000005" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="300" id="Mpu-op-wTr"/>
                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="183" id="XmW-XV-f6V"/>
@@ -60,20 +64,21 @@
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="rs7-YJ-01C" firstAttribute="top" secondItem="sHN-H8-Es1" secondAttribute="bottom" id="06f-fm-GhP"/>
-                            <constraint firstItem="sHN-H8-Es1" firstAttribute="top" secondItem="tBZ-4z-dIr" secondAttribute="bottom" id="Ckg-aw-LPh"/>
-                            <constraint firstItem="rs7-YJ-01C" firstAttribute="top" secondItem="McT-1Y-bMQ" secondAttribute="bottom" id="Ms2-zY-BFH"/>
+                            <constraint firstAttribute="bottom" secondItem="sHN-H8-Es1" secondAttribute="bottom" id="06f-fm-GhP"/>
+                            <constraint firstItem="sHN-H8-Es1" firstAttribute="top" secondItem="sXs-qf-sRG" secondAttribute="top" id="Ckg-aw-LPh"/>
+                            <constraint firstItem="sXs-qf-sRG" firstAttribute="bottom" secondItem="McT-1Y-bMQ" secondAttribute="bottom" id="Ms2-zY-BFH"/>
                             <constraint firstAttribute="trailing" secondItem="sHN-H8-Es1" secondAttribute="trailing" id="Ns0-3D-IHa"/>
-                            <constraint firstItem="McT-1Y-bMQ" firstAttribute="top" secondItem="WC1-II-BvW" secondAttribute="bottom" id="VIJ-Ox-TQ0"/>
-                            <constraint firstItem="McT-1Y-bMQ" firstAttribute="leading" secondItem="PND-Qg-Xfs" secondAttribute="leading" id="WVi-Xf-how"/>
-                            <constraint firstAttribute="trailing" secondItem="McT-1Y-bMQ" secondAttribute="trailing" id="bLk-jd-5Qb"/>
-                            <constraint firstItem="WC1-II-BvW" firstAttribute="top" secondItem="tBZ-4z-dIr" secondAttribute="bottom" id="cAj-sA-XZl"/>
+                            <constraint firstItem="WC1-II-BvW" firstAttribute="bottom" secondItem="McT-1Y-bMQ" secondAttribute="top" id="VIJ-Ox-TQ0"/>
+                            <constraint firstItem="McT-1Y-bMQ" firstAttribute="leading" secondItem="sXs-qf-sRG" secondAttribute="leading" id="WVi-Xf-how"/>
+                            <constraint firstItem="McT-1Y-bMQ" firstAttribute="trailing" secondItem="sXs-qf-sRG" secondAttribute="trailing" id="bLk-jd-5Qb"/>
+                            <constraint firstItem="WC1-II-BvW" firstAttribute="top" secondItem="sXs-qf-sRG" secondAttribute="top" id="cAj-sA-XZl"/>
                             <constraint firstItem="WC1-II-BvW" firstAttribute="leading" secondItem="PND-Qg-Xfs" secondAttribute="leading" id="cHZ-JC-mzX"/>
                             <constraint firstItem="sHN-H8-Es1" firstAttribute="leading" secondItem="PND-Qg-Xfs" secondAttribute="leading" id="dc9-Wj-ze7"/>
                             <constraint firstAttribute="trailing" secondItem="WC1-II-BvW" secondAttribute="trailing" id="slo-a8-Zn0"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="sXs-qf-sRG"/>
                     </view>
                     <connections>
                         <outlet property="containerView" destination="cPJ-en-MgC" id="Vak-nZ-WT0"/>
@@ -88,23 +93,19 @@
         <!--Stretch Renderer SettingsVC-->
         <scene sceneID="dv4-05-kb8">
             <objects>
-                <viewController id="AdG-Ib-9Pp" customClass="StretchRendererSettingsVC" customModule="MapViewDemo_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="YjZ-Rb-V2e"/>
-                        <viewControllerLayoutGuide type="bottom" id="uCS-rX-Rmc"/>
-                    </layoutGuides>
+                <viewController id="AdG-Ib-9Pp" customClass="StretchRendererSettingsVC" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bjm-K7-1TW">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="183"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LHD-ec-OBM">
                                 <rect key="frame" x="0.0" y="5" width="300" height="132"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="132" id="jsY-ho-LwM"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Row0" id="E7h-iH-cPX" customClass="StretchRendererTypeCell" customModule="MapViewDemo_Swift" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Row0" id="E7h-iH-cPX" customClass="StretchRendererTypeCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E7h-iH-cPX" id="2y8-ci-qaN">
@@ -112,14 +113,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stretch type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3f-zs-cGk">
-                                                    <rect key="frame" x="8" y="11" width="95" height="21"/>
+                                                    <rect key="frame" x="15" y="11" width="95" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDU-CU-w0b" customClass="HorizontalPicker" customModule="MapViewDemo_Swift" customModuleProvider="target">
-                                                    <rect key="frame" x="108" y="2" width="187" height="40"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDU-CU-w0b" customClass="HorizontalPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
+                                                    <rect key="frame" x="115" y="2" width="180" height="40"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="b7r-fl-Ias"/>
                                                     </constraints>
@@ -133,12 +134,12 @@
                                                 <constraint firstAttribute="trailing" secondItem="cDU-CU-w0b" secondAttribute="trailing" constant="5" id="sec-qj-AZt"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="horizontalPicker" destination="cDU-CU-w0b" id="pO1-un-bwX"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MinMaxRow1" id="xFi-ly-tIa" customClass="StretchRendererInputCell" customModule="MapViewDemo_Swift" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MinMaxRow1" id="xFi-ly-tIa" customClass="StretchRendererInputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xFi-ly-tIa" id="0iw-9W-4gF">
@@ -146,13 +147,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEu-uw-LFO">
-                                                    <rect key="frame" x="8" y="11" width="73" height="21"/>
+                                                    <rect key="frame" x="15" y="11" width="73" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XL5-ej-hJG">
-                                                    <rect key="frame" x="89" y="7" width="50" height="30"/>
+                                                    <rect key="frame" x="96" y="7" width="50" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="yKa-oc-OIs"/>
                                                     </constraints>
@@ -167,12 +168,12 @@
                                                 <constraint firstItem="XL5-ej-hJG" firstAttribute="leading" secondItem="YEu-uw-LFO" secondAttribute="trailing" constant="8" id="x3F-Dd-4RM"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="textField" destination="XL5-ej-hJG" id="EMs-sp-VR8"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MinMaxRow2" id="fJI-ML-x2n" customClass="StretchRendererInputCell" customModule="MapViewDemo_Swift" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MinMaxRow2" id="fJI-ML-x2n" customClass="StretchRendererInputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="116" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fJI-ML-x2n" id="UBZ-To-n87">
@@ -180,13 +181,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNm-PJ-X1b">
-                                                    <rect key="frame" x="8" y="11" width="77" height="21"/>
+                                                    <rect key="frame" x="15" y="11" width="77" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="255" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lnL-r0-Bht">
-                                                    <rect key="frame" x="93" y="7" width="50" height="30"/>
+                                                    <rect key="frame" x="100" y="7" width="50" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="Kbn-SZ-4jk"/>
                                                     </constraints>
@@ -201,12 +202,12 @@
                                                 <constraint firstItem="lnL-r0-Bht" firstAttribute="leading" secondItem="eNm-PJ-X1b" secondAttribute="trailing" constant="8" id="vpE-L8-jqd"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="textField" destination="lnL-r0-Bht" id="RLm-ix-Img"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PercentClipRow1" id="dk6-WW-bKw" customClass="StretchRendererInputCell" customModule="MapViewDemo_Swift" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PercentClipRow1" id="dk6-WW-bKw" customClass="StretchRendererInputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="160" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dk6-WW-bKw" id="vrR-8h-zsR">
@@ -216,7 +217,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGX-WW-jAO">
                                                     <rect key="frame" x="8" y="11" width="28" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eKZ-rd-UN0">
@@ -235,12 +236,12 @@
                                                 <constraint firstAttribute="leadingMargin" secondItem="MGX-WW-jAO" secondAttribute="leading" id="tg2-QB-Nf0"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="textField" destination="eKZ-rd-UN0" id="m4V-Zu-1tW"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PercentClipRow2" id="cd2-OH-OjQ" customClass="StretchRendererInputCell" customModule="MapViewDemo_Swift" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PercentClipRow2" id="cd2-OH-OjQ" customClass="StretchRendererInputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="204" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cd2-OH-OjQ" id="ic1-uD-bPx">
@@ -250,7 +251,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvJ-qy-TXr">
                                                     <rect key="frame" x="8" y="11" width="32" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vqJ-4x-Ttq">
@@ -269,12 +270,12 @@
                                                 <constraint firstAttribute="leadingMargin" secondItem="jvJ-qy-TXr" secondAttribute="leading" id="wDC-9n-4cT"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="textField" destination="vqJ-4x-Ttq" id="UKQ-Ku-saA"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StandardDeviationRow1" id="Tgx-VZ-Bro" customClass="StretchRendererInputCell" customModule="MapViewDemo_Swift" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StandardDeviationRow1" id="Tgx-VZ-Bro" customClass="StretchRendererInputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="248" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tgx-VZ-Bro" id="Xm2-Ap-9KJ">
@@ -284,7 +285,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Factor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEn-T2-3xh">
                                                     <rect key="frame" x="8" y="11" width="48.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qox-D5-uQT">
@@ -303,7 +304,7 @@
                                                 <constraint firstItem="qox-D5-uQT" firstAttribute="leading" secondItem="zEn-T2-3xh" secondAttribute="trailing" constant="8" id="rPI-RL-ZUE"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="textField" destination="qox-D5-uQT" id="IlS-Jp-nH5"/>
                                         </connections>
@@ -324,15 +325,16 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="LHD-ec-OBM" secondAttribute="trailing" id="8iC-RA-yER"/>
-                            <constraint firstItem="LHD-ec-OBM" firstAttribute="top" secondItem="YjZ-Rb-V2e" secondAttribute="bottom" constant="5" id="D3R-Bd-ZJA"/>
-                            <constraint firstItem="LHD-ec-OBM" firstAttribute="leading" secondItem="Bjm-K7-1TW" secondAttribute="leading" id="LTa-Wd-12Q"/>
-                            <constraint firstItem="uCS-rX-Rmc" firstAttribute="top" secondItem="YdB-Wq-M18" secondAttribute="bottom" constant="8" id="Une-S6-guP"/>
+                            <constraint firstItem="dBL-YR-jzc" firstAttribute="trailing" secondItem="LHD-ec-OBM" secondAttribute="trailing" id="8iC-RA-yER"/>
+                            <constraint firstItem="LHD-ec-OBM" firstAttribute="top" secondItem="dBL-YR-jzc" secondAttribute="top" constant="5" id="D3R-Bd-ZJA"/>
+                            <constraint firstItem="LHD-ec-OBM" firstAttribute="leading" secondItem="dBL-YR-jzc" secondAttribute="leading" id="LTa-Wd-12Q"/>
+                            <constraint firstItem="dBL-YR-jzc" firstAttribute="bottom" secondItem="YdB-Wq-M18" secondAttribute="bottom" constant="8" id="Une-S6-guP"/>
                             <constraint firstItem="YdB-Wq-M18" firstAttribute="top" secondItem="LHD-ec-OBM" secondAttribute="bottom" constant="8" id="bub-nL-zlW"/>
-                            <constraint firstItem="YdB-Wq-M18" firstAttribute="centerX" secondItem="Bjm-K7-1TW" secondAttribute="centerX" id="d3f-an-YxH"/>
+                            <constraint firstItem="YdB-Wq-M18" firstAttribute="centerX" secondItem="dBL-YR-jzc" secondAttribute="centerX" id="d3f-an-YxH"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="dBL-YR-jzc"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="LHD-ec-OBM" id="jgb-DC-ggm"/>
@@ -341,7 +343,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0m9-IL-Ppy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="903" y="421"/>
+            <point key="canvasLocation" x="1136" y="421"/>
         </scene>
     </scenes>
 </document>

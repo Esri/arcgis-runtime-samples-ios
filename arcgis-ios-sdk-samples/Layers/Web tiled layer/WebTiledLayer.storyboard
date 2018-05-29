@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kue-Ye-IRU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kue-Ye-IRU">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -9,23 +14,24 @@
         <scene sceneID="rd2-43-4id">
             <objects>
                 <viewController id="kue-Ye-IRU" customClass="WebTiledLayerViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kNe-lK-vTq"/>
-                        <viewControllerLayoutGuide type="bottom" id="uRt-RI-PC2"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aiA-w4-skW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8FU-be-Eed" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UvY-aG-MQK">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UvY-aG-MQK">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="PbF-KN-cgh"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="YcR-Wy-EeO"/>
                                     <barButtonItem style="plain" id="xMh-02-U6n">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="uDW-Y9-s4i">
-                                            <rect key="frame" x="37" y="7" width="300" height="30"/>
+                                            <rect key="frame" x="62" y="7.5" width="251" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Toner"/>
@@ -41,16 +47,17 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="UvY-aG-MQK" firstAttribute="leading" secondItem="aiA-w4-skW" secondAttribute="leading" id="MfC-uF-lGZ"/>
+                            <constraint firstItem="UvY-aG-MQK" firstAttribute="leading" secondItem="bUz-A9-fue" secondAttribute="leading" id="MfC-uF-lGZ"/>
                             <constraint firstItem="8FU-be-Eed" firstAttribute="leading" secondItem="aiA-w4-skW" secondAttribute="leading" id="PLo-pg-wBA"/>
-                            <constraint firstItem="8FU-be-Eed" firstAttribute="top" secondItem="kNe-lK-vTq" secondAttribute="bottom" id="QEp-c1-efz"/>
-                            <constraint firstItem="uRt-RI-PC2" firstAttribute="top" secondItem="UvY-aG-MQK" secondAttribute="bottom" id="cIe-M5-dAi"/>
-                            <constraint firstAttribute="trailing" secondItem="UvY-aG-MQK" secondAttribute="trailing" id="dJa-AQ-JVh"/>
-                            <constraint firstAttribute="trailing" secondItem="8FU-be-Eed" secondAttribute="trailing" id="mR6-AR-iw4"/>
-                            <constraint firstItem="UvY-aG-MQK" firstAttribute="top" secondItem="8FU-be-Eed" secondAttribute="bottom" id="mXp-ow-B6H"/>
+                            <constraint firstItem="8FU-be-Eed" firstAttribute="top" secondItem="bUz-A9-fue" secondAttribute="top" id="QEp-c1-efz"/>
+                            <constraint firstItem="bUz-A9-fue" firstAttribute="bottom" secondItem="UvY-aG-MQK" secondAttribute="bottom" id="cIe-M5-dAi"/>
+                            <constraint firstItem="UvY-aG-MQK" firstAttribute="trailing" secondItem="bUz-A9-fue" secondAttribute="trailing" id="dJa-AQ-JVh"/>
+                            <constraint firstItem="8FU-be-Eed" firstAttribute="trailing" secondItem="aiA-w4-skW" secondAttribute="trailing" id="mR6-AR-iw4"/>
+                            <constraint firstItem="8FU-be-Eed" firstAttribute="bottom" secondItem="UvY-aG-MQK" secondAttribute="top" id="mXp-ow-B6H"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="bUz-A9-fue"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="8FU-be-Eed" id="BFJ-8z-zqH"/>

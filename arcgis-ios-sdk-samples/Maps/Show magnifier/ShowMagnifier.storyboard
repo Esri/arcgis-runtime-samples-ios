@@ -1,35 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5yS-sA-QEn">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5yS-sA-QEn">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Show Magnifier View Controller-->
         <scene sceneID="p4c-Bw-R2O">
             <objects>
                 <viewController id="5yS-sA-QEn" customClass="ShowMagnifierViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="nSP-0N-Daf"/>
-                        <viewControllerLayoutGuide type="bottom" id="0ur-FV-33j"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CFh-9s-FmK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HlK-RT-NcX" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="HlK-RT-NcX" firstAttribute="leading" secondItem="CFh-9s-FmK" secondAttribute="leading" id="9aT-eg-ayC"/>
-                            <constraint firstAttribute="trailing" secondItem="HlK-RT-NcX" secondAttribute="trailing" id="G87-29-Tpc"/>
+                            <constraint firstItem="HlK-RT-NcX" firstAttribute="trailing" secondItem="CFh-9s-FmK" secondAttribute="trailing" id="G87-29-Tpc"/>
                             <constraint firstItem="HlK-RT-NcX" firstAttribute="top" secondItem="CFh-9s-FmK" secondAttribute="top" id="LdM-Dm-Sug"/>
-                            <constraint firstItem="HlK-RT-NcX" firstAttribute="top" secondItem="nSP-0N-Daf" secondAttribute="bottom" id="Ots-vf-Vhu"/>
-                            <constraint firstItem="0ur-FV-33j" firstAttribute="top" secondItem="HlK-RT-NcX" secondAttribute="bottom" id="dB5-Vk-N9m"/>
+                            <constraint firstItem="HlK-RT-NcX" firstAttribute="top" secondItem="qko-dx-IbM" secondAttribute="top" id="Ots-vf-Vhu"/>
+                            <constraint firstItem="HlK-RT-NcX" firstAttribute="bottom" secondItem="CFh-9s-FmK" secondAttribute="bottom" id="dB5-Vk-N9m"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="qko-dx-IbM"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="LdM-Dm-Sug"/>

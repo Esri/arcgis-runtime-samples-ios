@@ -878,14 +878,6 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Analyze viewshed</string>
-				<key>storyboardName</key>
-				<string>AnalyzeViewshed</string>
-				<key>descriptionText</key>
-				<string>This sample demonstrates how to calculate a viewshed using a geoprocessing service.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
 				<string>Statistical query</string>
 				<key>storyboardName</key>
 				<string>StatisticalQuery</string>
@@ -899,6 +891,14 @@
 				<string>StatisticalQueryGroupAndSort</string>
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to query a feature table to get statistics for one or more specified fields. The results can be grouped and sorted using one or more fields in the table.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Viewshed (geoprocessing)</string>
+				<key>storyboardName</key>
+				<string>ViewshedGeoprocessing</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to calculate a viewshed using a geoprocessing service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -966,6 +966,14 @@
 		<string>Scenes</string>
 		<key>children</key>
 		<array>
+			<dict>
+				<key>descriptionText</key>
+				<string>This sample shows you how to open a web scene from a portal item.</string>
+				<key>storyboardName</key>
+				<string>OpenScene</string>
+				<key>displayName</key>
+				<string>Open a scene (portal item)</string>
+			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>Display a scene</string>

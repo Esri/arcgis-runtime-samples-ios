@@ -17,7 +17,7 @@ import ArcGIS
 
 let viewshedURLString = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Elevation/ESRI_Elevation_World/GPServer/Viewshed"
 
-class AnalyzeViewshedViewController: UIViewController, AGSGeoViewTouchDelegate {
+class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDelegate {
 
     @IBOutlet var mapView:AGSMapView!
     
@@ -31,7 +31,7 @@ class AnalyzeViewshedViewController: UIViewController, AGSGeoViewTouchDelegate {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["AnalyzeViewshedViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ViewshedGeoprocessingViewController"]
 
         let map = AGSMap(basemapType: .topographic, latitude: 45.3790902612337, longitude: 6.84905317262762, levelOfDetail: 12)
         

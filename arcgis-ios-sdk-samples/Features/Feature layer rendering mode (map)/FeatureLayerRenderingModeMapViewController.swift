@@ -20,8 +20,6 @@ class FeatureLayerRenderingModeMapViewController: UIViewController {
     @IBOutlet weak var dynamicMapView: AGSMapView!
     @IBOutlet weak var staticMapView: AGSMapView!
     
-    @IBOutlet weak var zoomButton: UIButton!
-    
     var _zoomed = false
     var zoomedInViewpoint : AGSViewpoint!
     var zoomedOutViewpoint : AGSViewpoint!
@@ -67,12 +65,9 @@ class FeatureLayerRenderingModeMapViewController: UIViewController {
         //set the initial viewpoint
         self.dynamicMapView.setViewpoint(zoomedOutViewpoint)
         self.staticMapView.setViewpoint(zoomedOutViewpoint)
-        
-        //handle clicks
-        self.zoomButton.addTarget(self, action: #selector(FeatureLayerRenderingModeMapViewController.buttonClicked(_:)), for: .touchUpInside)
     }
-    
-    func buttonClicked(_ sender: AnyObject?) {
+
+    @IBAction func animateZoom(_ sender: Any) {
         if _zoomed {
             self.dynamicMapView.setViewpoint(zoomedOutViewpoint, duration: 5, completion: nil)
             self.staticMapView.setViewpoint(zoomedOutViewpoint, duration: 5, completion: nil)

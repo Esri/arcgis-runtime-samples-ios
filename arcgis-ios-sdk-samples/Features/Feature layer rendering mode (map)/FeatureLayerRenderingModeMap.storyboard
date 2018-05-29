@@ -31,6 +31,9 @@
                                 <state key="normal" title="Animated Zoom">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="animateZoom:" destination="7OF-WW-ois" eventType="touchUpInside" id="lpu-EU-12z"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Static" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQ5-jH-GCE">
                                 <rect key="frame" x="20" y="431" width="44" height="21"/>
@@ -67,7 +70,6 @@
                     <connections>
                         <outlet property="dynamicMapView" destination="MHI-Dx-Wlm" id="OlE-5d-Onv"/>
                         <outlet property="staticMapView" destination="vR4-Yr-oi4" id="lRO-Xl-Csc"/>
-                        <outlet property="zoomButton" destination="EGP-7C-mcY" id="VAn-Ef-LG1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JMI-gX-ZKf" userLabel="First Responder" sceneMemberID="firstResponder"/>

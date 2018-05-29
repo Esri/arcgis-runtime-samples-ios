@@ -49,9 +49,9 @@ class FeatureLayerRenderingModeMapViewController: UIViewController {
         
         //create feature layers from the feature tables
         let featureLayers: [AGSFeatureLayer] = [
-            AGSFeatureLayer(featureTable: pointTable),
+            AGSFeatureLayer(featureTable: polygonTable),
             AGSFeatureLayer(featureTable: polylineTable),
-            AGSFeatureLayer(featureTable: polygonTable)]
+            AGSFeatureLayer(featureTable: pointTable)]
         
         for featureLayer in featureLayers {
             //add the layer to the dynamic view

@@ -117,7 +117,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
     }
     
     private func showAlert(_ message:String) {
-        SVProgressHUD.showError(withStatus: message, maskType: .gradient)
+        SVProgressHUD.showError(withStatus: message)
     }
     
     //MARK: - AGSGeoViewTouchDelegate

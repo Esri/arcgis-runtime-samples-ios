@@ -43,7 +43,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
     private func loadPortalGroup() {
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Loading Portal Group", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Loading Portal Group")
         
         //query group based on owner and title
         let queryParams = AGSPortalQueryParameters(forGroupsWithOwner: "ArcGISRuntimeSDK", title: "Runtime Group")
@@ -53,7 +53,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
             
             if let error = error {
                 //show error
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 
@@ -64,7 +64,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
                 }
                 else {
                     //show error that no groups found
-                    SVProgressHUD.showError(withStatus: "No groups found", maskType: .gradient)
+                    SVProgressHUD.showError(withStatus: "No groups found")
                 }
             }
         }
@@ -72,14 +72,14 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
     
     private func fetchGroupUsers() {
         //show progress hud
-        SVProgressHUD.show(withStatus: "Fetching Users", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Fetching Users")
         
         //fetch users in group
         self.portalGroup.fetchUsers { [weak self] (users: [String]?, admins: [String]?, error: Error?) in
             
             if let error = error {
                 //show error
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 
@@ -97,7 +97,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
                     self?.loadAllUsers()
                 }
                 else {
-                    SVProgressHUD.showError(withStatus: "No users found", maskType: .gradient)
+                    SVProgressHUD.showError(withStatus: "No users found")
                 }
             }
         }
@@ -105,7 +105,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
     
     private func loadAllUsers() {
         //show progress hud
-        SVProgressHUD.show(withStatus: "Loading User Data", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Loading User Data")
         
         //load user data
         AGSLoadObjects(self.portalUsers) { [weak self] (success) in
@@ -117,7 +117,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
                 self?.tableView.reloadData()
             }
             else {
-                SVProgressHUD.showError(withStatus: "Error while loading users data", maskType: .gradient)
+                SVProgressHUD.showError(withStatus: "Error while loading users data")
             }
         }
     }

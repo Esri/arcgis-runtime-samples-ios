@@ -238,7 +238,7 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
             }
         }
         
-        SVProgressHUD.showError(withStatus: "No match found", maskType: .gradient)
+        SVProgressHUD.showError(withStatus: "No match found")
     }
     
     func customSearchHeaderViewWillHideSuggestions(_ customSearchHeaderView: CustomSearchHeaderView) {

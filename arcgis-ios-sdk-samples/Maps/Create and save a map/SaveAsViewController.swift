@@ -57,7 +57,7 @@ class SaveAsViewController: UIViewController {
         //Validations
         guard let title = self.titleTextField.text, let tags = self.tagsTextField.text else {
             //show error message
-            SVProgressHUD.showError(withStatus: "Title and tags are required fields", maskType: .gradient)
+            SVProgressHUD.showError(withStatus: "Title and tags are required fields")
             return
         }
         

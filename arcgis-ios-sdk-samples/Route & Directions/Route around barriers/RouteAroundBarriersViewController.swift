@@ -93,7 +93,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             return
         }
         
-        SVProgressHUD.show(withStatus: "Routing", maskType: SVProgressHUDMaskType.gradient)
+        SVProgressHUD.show(withStatus: "Routing")
         
         //clear routes
         self.routeGraphicsOverlay.graphics.removeAllObjects()

@@ -48,7 +48,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             //
             // If there an error, display it
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error!.localizedDescription)
                 return
             }
             
@@ -83,7 +83,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         // There should be at least one statistic
         // definition added to execute the query
         if statisticDefinitions.count == 0 || selectedGroupByFieldNames.count == 0 {
-            SVProgressHUD.showError(withStatus: "There sould be at least one statistic definition and one group by field to execute the query.", maskType: .gradient)
+            SVProgressHUD.showError(withStatus: "There sould be at least one statistic definition and one group by field to execute the query.")
             return
         }
         
@@ -101,7 +101,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             //
             // If there an error, display it
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error!.localizedDescription)
                 return
             }
             

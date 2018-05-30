@@ -80,7 +80,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
                     self?.mapView.setViewpointGeometry(features[0].geometry!, padding: 80, completion: nil)
                 }
                 else {
-                    SVProgressHUD.showError(withStatus: "No state by that name", maskType: .gradient)
+                    SVProgressHUD.showError(withStatus: "No state by that name")
                 }
                 //update selected features array
                 self?.selectedFeatures = features 

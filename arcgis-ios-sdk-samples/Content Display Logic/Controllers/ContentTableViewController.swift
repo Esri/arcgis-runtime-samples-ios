@@ -193,7 +193,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
                 strongSelf.downloadProgressView.dismiss()
                 
                 if let error = error {
-                    SVProgressHUD.showError(withStatus: "Failed to download raster resource :: \(error.localizedDescription)", maskType: .gradient)
+                    SVProgressHUD.showError(withStatus: "Failed to download raster resource :: \(error.localizedDescription)")
                 }
                 else {
                     
@@ -300,7 +300,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             }
         }
         
-        SVProgressHUD.showError(withStatus: "No match found", maskType: .gradient)
+        SVProgressHUD.showError(withStatus: "No match found")
         
     }
     

@@ -45,12 +45,12 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         //in this case there is only one describing the 1..M relationship between parks and species
         guard let relationshipInfo = self.originFeatureTable.layerInfo?.relationshipInfos[0] else {
             
-            SVProgressHUD.showError(withStatus: "Relationship info not found", maskType: .gradient)
+            SVProgressHUD.showError(withStatus: "Relationship info not found")
             return
         }
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Querying related features", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Querying related features")
         
         //keep for later use
         self.relationshipInfo = relationshipInfo
@@ -65,7 +65,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         self.originFeatureTable.queryRelatedFeatures(for: self.originFeature, parameters: parameters) { [weak self] (results:[AGSRelatedFeatureQueryResult]?, error:Error?) in
             
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error!.localizedDescription)
                 return
             }
             
@@ -86,7 +86,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
     private func addRelatedFeature() {
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Adding feature", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Adding feature")
         
         //get related table using relationshipInfo
         let relatedTable = self.originFeatureTable.relatedTables(with: self.relationshipInfo)![0] as! AGSServiceFeatureTable
@@ -101,7 +101,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         relatedTable.add(feature) { [weak self] (error) in
             
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error!.localizedDescription)
                 return
             }
             
@@ -113,7 +113,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
     private func deleteRelatedFeature(_ feature: AGSFeature) {
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Deleting feature", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Deleting feature")
         
         //get related table using relationshipInfo
         let relatedTable = self.originFeatureTable.relatedTables(with: self.relationshipInfo)![0] as! AGSServiceFeatureTable
@@ -122,7 +122,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         relatedTable.delete(feature) { [weak self] (error) in
             
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error!.localizedDescription)
                 return
             }
             
@@ -134,7 +134,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
     private func applyEdits() {
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Applying edits", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Applying edits")
         
         //get the related table using the relationshipInfo
         let relatedTable = self.originFeatureTable.relatedTables(with: self.relationshipInfo)![0] as! AGSServiceFeatureTable
@@ -143,7 +143,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
             
             guard error == nil else {
                 //show error
-                SVProgressHUD.showError(withStatus: error?.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error?.localizedDescription)
                 return
             }
             

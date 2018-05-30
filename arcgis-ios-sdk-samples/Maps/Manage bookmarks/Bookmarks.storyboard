@@ -1,30 +1,36 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nWp-58-3p9">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nWp-58-3p9">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Book</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Bookmarks View Controller-->
         <scene sceneID="5xd-KM-j6d">
             <objects>
                 <viewController id="nWp-58-3p9" customClass="BookmarksViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Qt4-XX-mbp"/>
-                        <viewControllerLayoutGuide type="bottom" id="ZIb-QT-wsY"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="m0p-kW-JpF">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysu-en-PON" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lL0-oG-sjC">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lL0-oG-sjC">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="fAs-dJ-HGO"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="B11-Ig-mmc"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem title="Bookmarks" id="cdX-3O-qWv">
@@ -44,22 +50,23 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="ZIb-QT-wsY" firstAttribute="top" secondItem="lL0-oG-sjC" secondAttribute="bottom" id="BAn-ps-4KP"/>
-                            <constraint firstAttribute="trailing" secondItem="ysu-en-PON" secondAttribute="trailing" id="Cby-ja-xoN"/>
-                            <constraint firstItem="lL0-oG-sjC" firstAttribute="leading" secondItem="m0p-kW-JpF" secondAttribute="leading" id="QDO-9L-GRF"/>
-                            <constraint firstAttribute="trailing" secondItem="lL0-oG-sjC" secondAttribute="trailing" id="Sbj-Uh-3qN"/>
+                            <constraint firstItem="3pJ-XN-9ck" firstAttribute="bottom" secondItem="lL0-oG-sjC" secondAttribute="bottom" id="BAn-ps-4KP"/>
+                            <constraint firstItem="ysu-en-PON" firstAttribute="trailing" secondItem="m0p-kW-JpF" secondAttribute="trailing" id="Cby-ja-xoN"/>
+                            <constraint firstItem="lL0-oG-sjC" firstAttribute="leading" secondItem="3pJ-XN-9ck" secondAttribute="leading" id="QDO-9L-GRF"/>
+                            <constraint firstItem="lL0-oG-sjC" firstAttribute="trailing" secondItem="3pJ-XN-9ck" secondAttribute="trailing" id="Sbj-Uh-3qN"/>
                             <constraint firstItem="ysu-en-PON" firstAttribute="leading" secondItem="m0p-kW-JpF" secondAttribute="leading" id="ZbX-kC-fDg"/>
-                            <constraint firstItem="ysu-en-PON" firstAttribute="top" secondItem="Qt4-XX-mbp" secondAttribute="bottom" id="der-ag-qGs"/>
+                            <constraint firstItem="ysu-en-PON" firstAttribute="top" secondItem="3pJ-XN-9ck" secondAttribute="top" id="der-ag-qGs"/>
                             <constraint firstItem="ysu-en-PON" firstAttribute="top" secondItem="m0p-kW-JpF" secondAttribute="top" id="nd3-lD-uEW"/>
-                            <constraint firstItem="ZIb-QT-wsY" firstAttribute="top" secondItem="ysu-en-PON" secondAttribute="bottom" id="sLF-yk-EmQ"/>
-                            <constraint firstItem="lL0-oG-sjC" firstAttribute="top" secondItem="ysu-en-PON" secondAttribute="bottom" id="sf9-2y-KJd"/>
+                            <constraint firstItem="3pJ-XN-9ck" firstAttribute="bottom" secondItem="ysu-en-PON" secondAttribute="bottom" id="sLF-yk-EmQ"/>
+                            <constraint firstItem="ysu-en-PON" firstAttribute="bottom" secondItem="lL0-oG-sjC" secondAttribute="top" id="sf9-2y-KJd"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="3pJ-XN-9ck"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="nd3-lD-uEW"/>
                                 <exclude reference="sLF-yk-EmQ"/>
+                                <exclude reference="nd3-lD-uEW"/>
                             </mask>
                         </variation>
                     </view>
@@ -75,37 +82,33 @@
         <scene sceneID="MjG-EN-nH8">
             <objects>
                 <viewController id="yxP-aM-4zx" customClass="BookmarksListViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="MiU-pK-XOT"/>
-                        <viewControllerLayoutGuide type="bottom" id="goE-hy-Nqz"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="on3-mW-JpP">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7zv-By-OIH">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookmarkCell" textLabel="sJn-20-bnc" style="IBUITableViewCellStyleDefault" id="AN9-js-OUd">
-                                        <rect key="frame" x="0.0" y="22" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AN9-js-OUd" id="YfH-48-ilz">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sJn-20-bnc">
-                                                    <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -114,13 +117,14 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7zv-By-OIH" firstAttribute="leading" secondItem="on3-mW-JpP" secondAttribute="leading" id="Cvi-sE-waH"/>
-                            <constraint firstAttribute="trailing" secondItem="7zv-By-OIH" secondAttribute="trailing" id="QhO-Z8-mZa"/>
-                            <constraint firstItem="goE-hy-Nqz" firstAttribute="top" secondItem="7zv-By-OIH" secondAttribute="bottom" id="fXI-yC-dnW"/>
-                            <constraint firstItem="7zv-By-OIH" firstAttribute="top" secondItem="MiU-pK-XOT" secondAttribute="bottom" id="llc-jG-GlF"/>
+                            <constraint firstItem="7zv-By-OIH" firstAttribute="trailing" secondItem="on3-mW-JpP" secondAttribute="trailing" id="QhO-Z8-mZa"/>
+                            <constraint firstItem="7zv-By-OIH" firstAttribute="bottom" secondItem="on3-mW-JpP" secondAttribute="bottom" id="fXI-yC-dnW"/>
+                            <constraint firstItem="7zv-By-OIH" firstAttribute="top" secondItem="on3-mW-JpP" secondAttribute="top" id="llc-jG-GlF"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="l14-S8-8FJ"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="7zv-By-OIH" id="dUE-yS-WzG"/>

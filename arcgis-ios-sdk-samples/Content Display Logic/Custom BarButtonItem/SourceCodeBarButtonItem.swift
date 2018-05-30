@@ -31,7 +31,7 @@ class SourceCodeBarButtonItem: UIBarButtonItem {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func showSegmentedVC() {
+    @objc func showSegmentedVC() {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let controller = storyboard.instantiateViewController(withIdentifier: "SegmentedViewController") as! SegmentedViewController
         controller.filenames = filenames

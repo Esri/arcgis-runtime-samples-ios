@@ -1,35 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qin-X4-xcF">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qin-X4-xcF">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--On Interaction Cache View Controller-->
         <scene sceneID="6mc-5r-x5y">
             <objects>
                 <viewController id="qin-X4-xcF" customClass="OnInteractionCacheViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="CQc-Sz-gIC"/>
-                        <viewControllerLayoutGuide type="bottom" id="OqJ-gO-0jo"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="q7D-nh-VlR">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2g-5H-Onf" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="f2g-5H-Onf" firstAttribute="leading" secondItem="q7D-nh-VlR" secondAttribute="leading" id="7wr-fg-Axq"/>
-                            <constraint firstItem="OqJ-gO-0jo" firstAttribute="top" secondItem="f2g-5H-Onf" secondAttribute="bottom" id="Iag-Nu-NpD"/>
+                            <constraint firstAttribute="bottom" secondItem="f2g-5H-Onf" secondAttribute="bottom" id="Iag-Nu-NpD"/>
                             <constraint firstItem="f2g-5H-Onf" firstAttribute="top" secondItem="q7D-nh-VlR" secondAttribute="top" id="Kro-H8-M4C"/>
                             <constraint firstAttribute="trailing" secondItem="f2g-5H-Onf" secondAttribute="trailing" id="k3x-GQ-WoR"/>
-                            <constraint firstItem="f2g-5H-Onf" firstAttribute="top" secondItem="CQc-Sz-gIC" secondAttribute="bottom" id="sEi-UB-4VJ"/>
+                            <constraint firstItem="f2g-5H-Onf" firstAttribute="top" secondItem="i2x-JR-165" secondAttribute="top" id="sEi-UB-4VJ"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="i2x-JR-165"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Kro-H8-M4C"/>

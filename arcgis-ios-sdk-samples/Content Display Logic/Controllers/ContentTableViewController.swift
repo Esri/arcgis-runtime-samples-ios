@@ -238,7 +238,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         controller.navigationItem.rightBarButtonItem = infoBBI
     }
     
-    func expandCell(_ sender:UIButton) {
+    @objc func expandCell(_ sender:UIButton) {
         self.updateExpandedRow(IndexPath(row: sender.tag, section: 0), collapseIfSelected: true)
     }
     

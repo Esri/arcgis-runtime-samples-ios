@@ -93,7 +93,7 @@ class SearchForWebmapByKeywordViewController: UIViewController, WebMapsCollectio
         self.searchBar.resignFirstResponder()
     }
     
-    func unhideButton() {
+    @objc func unhideButton() {
         self.button.isHidden = false
     }
     

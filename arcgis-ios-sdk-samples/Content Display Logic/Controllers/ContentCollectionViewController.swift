@@ -44,6 +44,12 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
             fatalError("Error decoding categories: \(error)")
         }
         
+        if #available(iOS 11.0, *) {
+            self.collectionView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
+        
         //hide suggestions
         self.hideSuggestions()
         

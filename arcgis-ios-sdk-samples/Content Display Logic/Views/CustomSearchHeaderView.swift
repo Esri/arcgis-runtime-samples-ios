@@ -64,7 +64,7 @@ class CustomSearchHeaderView: UICollectionReusableView, UITableViewDataSource, U
         
         
         if let searchTextField = self.searchBar.value(forKey: "searchField") as? UITextField {
-            let placeholderAttributes = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont.systemFont(ofSize: UIFont.systemFontSize)]
+            let placeholderAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont.systemFont(ofSize: UIFont.systemFontSize)]
             let attributedPlaceholder = NSAttributedString(string: "Search", attributes: placeholderAttributes)
             searchTextField.attributedPlaceholder = attributedPlaceholder
             searchTextField.textColor = UIColor.white

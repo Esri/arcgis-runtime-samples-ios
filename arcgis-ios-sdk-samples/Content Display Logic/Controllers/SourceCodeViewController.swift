@@ -83,7 +83,7 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
             titleString = String(format: "%@ %@", (arrowPointingDown ? "▶︎" : " \u{25B4}"), filename)
         }
         else {
-            self.toolbarTitleButton.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.black], for: UIControlState())
+            self.toolbarTitleButton.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : UIColor.black], for: UIControlState())
         }
         self.toolbarTitleButton.title = titleString
     }

@@ -93,7 +93,7 @@ class VectorTileCustomStyleVC: UIViewController, VectorStylesVCDelegate, UIGestu
         self.visualEffectView.isHidden = false
     }
     
-    func hideVisualEffectView() {
+    @objc func hideVisualEffectView() {
         self.visualEffectView.isHidden = true
     }
 }

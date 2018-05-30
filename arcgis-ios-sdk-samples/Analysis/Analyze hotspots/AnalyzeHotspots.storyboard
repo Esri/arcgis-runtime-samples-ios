@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iIj-US-SXq">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iIj-US-SXq">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -10,18 +14,19 @@
         <scene sceneID="V9J-Fp-Zfx">
             <objects>
                 <viewController id="iIj-US-SXq" customClass="AnalyzeHotspotsViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Qz3-ax-Nl0"/>
-                        <viewControllerLayoutGuide type="bottom" id="xqv-ZB-bEF"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EuI-TD-shm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYj-u8-YnT" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n0l-Rj-o77">
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n0l-Rj-o77">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="Rkf-mO-WLe"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="TKf-Pw-3b8"/>
                                     <barButtonItem title="Analyze" id="1IF-Ns-Kew">
@@ -33,26 +38,28 @@
                                 </items>
                             </toolbar>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fpt-a0-elj">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="udb-H1-d5c" kind="embed" identifier="SettingsSegue" id="WSs-Z1-u1s"/>
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xqv-ZB-bEF" firstAttribute="top" secondItem="Fpt-a0-elj" secondAttribute="bottom" id="5Xc-D1-vea"/>
-                            <constraint firstItem="Fpt-a0-elj" firstAttribute="top" secondItem="Qz3-ax-Nl0" secondAttribute="bottom" id="AuJ-7K-5xo"/>
+                            <constraint firstAttribute="bottom" secondItem="Fpt-a0-elj" secondAttribute="bottom" id="5Xc-D1-vea"/>
+                            <constraint firstItem="Fpt-a0-elj" firstAttribute="top" secondItem="EuI-TD-shm" secondAttribute="top" id="AuJ-7K-5xo"/>
                             <constraint firstAttribute="trailing" secondItem="Fpt-a0-elj" secondAttribute="trailing" id="FAO-BV-JrP"/>
-                            <constraint firstItem="HYj-u8-YnT" firstAttribute="top" secondItem="Qz3-ax-Nl0" secondAttribute="bottom" id="UcV-xf-XTQ"/>
-                            <constraint firstItem="n0l-Rj-o77" firstAttribute="leading" secondItem="EuI-TD-shm" secondAttribute="leadingMargin" constant="-20" id="X6a-sE-EHO"/>
-                            <constraint firstItem="xqv-ZB-bEF" firstAttribute="top" secondItem="HYj-u8-YnT" secondAttribute="bottom" id="ceX-U0-eQE"/>
+                            <constraint firstItem="HYj-u8-YnT" firstAttribute="top" secondItem="jzg-fS-Q8J" secondAttribute="top" id="UcV-xf-XTQ"/>
+                            <constraint firstItem="n0l-Rj-o77" firstAttribute="leading" secondItem="jzg-fS-Q8J" secondAttribute="leading" id="X6a-sE-EHO"/>
+                            <constraint firstItem="HYj-u8-YnT" firstAttribute="bottom" secondItem="n0l-Rj-o77" secondAttribute="top" id="ceX-U0-eQE"/>
                             <constraint firstAttribute="trailing" secondItem="HYj-u8-YnT" secondAttribute="trailing" id="chr-bg-HCN"/>
                             <constraint firstItem="HYj-u8-YnT" firstAttribute="leading" secondItem="EuI-TD-shm" secondAttribute="leading" id="h9G-Qm-gbL"/>
-                            <constraint firstItem="xqv-ZB-bEF" firstAttribute="top" secondItem="n0l-Rj-o77" secondAttribute="bottom" id="j8v-aC-Vp5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="n0l-Rj-o77" secondAttribute="trailing" constant="-20" id="wTT-q2-Ecw"/>
+                            <constraint firstItem="jzg-fS-Q8J" firstAttribute="bottom" secondItem="n0l-Rj-o77" secondAttribute="bottom" id="j8v-aC-Vp5"/>
+                            <constraint firstItem="n0l-Rj-o77" firstAttribute="trailing" secondItem="jzg-fS-Q8J" secondAttribute="trailing" id="wTT-q2-Ecw"/>
                             <constraint firstItem="Fpt-a0-elj" firstAttribute="leading" secondItem="EuI-TD-shm" secondAttribute="leading" id="z1j-OR-B98"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="jzg-fS-Q8J"/>
                     </view>
                     <connections>
                         <outlet property="containerView" destination="Fpt-a0-elj" id="uXI-zM-KbZ"/>
@@ -67,27 +74,27 @@
         <scene sceneID="brC-dG-VjS">
             <objects>
                 <viewController id="udb-H1-d5c" customClass="HotspotSettingsViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Y6a-vA-LmG"/>
-                        <viewControllerLayoutGuide type="bottom" id="KIX-vw-v5V"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zaJ-iU-Gte">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kAO-e8-3j1">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="R1o-33-AUR">
-                                    <frame key="frameInset"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0pb-v2-fJC">
+                                            <rect key="frame" x="37.5" y="240.5" width="300" height="166.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select date range for analysis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Htk-qW-kds">
+                                                    <rect key="frame" x="37" y="10" width="226" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d76-hs-ULx">
+                                                    <rect key="frame" x="57.5" y="45.5" width="234.5" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -95,22 +102,26 @@
                                                     </connections>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJM-Wg-hPa">
+                                                    <rect key="frame" x="131.5" y="128.5" width="37" height="30"/>
                                                     <state key="normal" title="Done"/>
                                                     <connections>
                                                         <action selector="analyzeAction" destination="udb-H1-d5c" eventType="touchUpInside" id="hVB-Bg-8qS"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xir-Ar-4Y6">
+                                                    <rect key="frame" x="8" y="50" width="39.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6k5-Xv-InO">
+                                                    <rect key="frame" x="8" y="88" width="39.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4AV-Vc-2an">
+                                                    <rect key="frame" x="57.5" y="83.5" width="234.5" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -155,11 +166,12 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KIX-vw-v5V" firstAttribute="top" secondItem="kAO-e8-3j1" secondAttribute="bottom" id="Bvh-Vz-xnF"/>
+                            <constraint firstAttribute="bottom" secondItem="kAO-e8-3j1" secondAttribute="bottom" id="Bvh-Vz-xnF"/>
                             <constraint firstItem="kAO-e8-3j1" firstAttribute="leading" secondItem="zaJ-iU-Gte" secondAttribute="leading" id="CHk-5J-x8o"/>
                             <constraint firstAttribute="trailing" secondItem="kAO-e8-3j1" secondAttribute="trailing" id="NCX-gs-jcH"/>
-                            <constraint firstItem="kAO-e8-3j1" firstAttribute="top" secondItem="Y6a-vA-LmG" secondAttribute="bottom" id="PM8-CM-IDL"/>
+                            <constraint firstItem="kAO-e8-3j1" firstAttribute="top" secondItem="zaJ-iU-Gte" secondAttribute="top" constant="20" id="PM8-CM-IDL"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="e8P-4P-hhW"/>
                     </view>
                     <connections>
                         <outlet property="fromTextField" destination="d76-hs-ULx" id="HLf-IJ-u5a"/>

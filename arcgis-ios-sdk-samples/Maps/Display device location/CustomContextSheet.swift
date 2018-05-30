@@ -177,7 +177,10 @@ class CustomContextSheet: UIView {
     }
     
     func attributedText(_ title:String) -> NSAttributedString {
-        let attributes = [NSStrokeWidthAttributeName: -3, NSStrokeColorAttributeName: UIColor.gray, NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18)] as [String : Any]
+        let attributes = [NSAttributedStringKey.strokeWidth: -3,
+                          NSAttributedStringKey.strokeColor: UIColor.gray,
+                          NSAttributedStringKey.foregroundColor: UIColor.white,
+                          NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)] as [NSAttributedStringKey : Any]
         return NSAttributedString(string: title, attributes: attributes)
     }
     
@@ -260,7 +263,7 @@ class CustomContextSheet: UIView {
         }
     }
     
-    func toggleButtons() {
+    @objc func toggleButtons() {
         if self.isButtonPressed {
             self.hideButtons()
         }
@@ -269,7 +272,7 @@ class CustomContextSheet: UIView {
         }
     }
     
-    func valueChanged(_ sender:UIButton) {
+    @objc func valueChanged(_ sender:UIButton) {
         //get index of sender
         if let index = self.buttonsCollection.index(of: sender) {
             self.selectedIndex = index

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="beF-yn-MU6">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Viewshed Geoprocessing View Controller-->
+        <scene sceneID="uVV-jY-ewq">
+            <objects>
+                <viewController id="beF-yn-MU6" customClass="ViewshedGeoprocessingViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7gX-cs-H6x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLS-ms-81h" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPT-2F-sjn">
+                                <rect key="frame" x="0.0" y="20" width="375" height="46"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the map to see all areas that are visible within 15 kilometres radius" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgh-ab-wUm">
+                                        <rect key="frame" x="8" y="5" width="359" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.36862745099999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="0.9186059397163121" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="qgh-ab-wUm" firstAttribute="leading" secondItem="kPT-2F-sjn" secondAttribute="leading" constant="8" id="C08-dP-VVv"/>
+                                    <constraint firstAttribute="bottom" secondItem="qgh-ab-wUm" secondAttribute="bottom" constant="5" id="HUY-6p-HyU"/>
+                                    <constraint firstItem="qgh-ab-wUm" firstAttribute="top" secondItem="kPT-2F-sjn" secondAttribute="top" constant="5" id="KSX-QM-agC"/>
+                                    <constraint firstAttribute="trailing" secondItem="qgh-ab-wUm" secondAttribute="trailing" constant="8" id="xC7-oH-NBN"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kPT-2F-sjn" firstAttribute="top" secondItem="dWq-gF-XP9" secondAttribute="top" id="KHL-gn-59o"/>
+                            <constraint firstItem="kPT-2F-sjn" firstAttribute="leading" secondItem="7gX-cs-H6x" secondAttribute="leading" id="Nih-89-rjN"/>
+                            <constraint firstAttribute="trailing" secondItem="kPT-2F-sjn" secondAttribute="trailing" id="Qdi-le-TD8"/>
+                            <constraint firstItem="YLS-ms-81h" firstAttribute="top" secondItem="dWq-gF-XP9" secondAttribute="top" id="jJ3-gO-uPe"/>
+                            <constraint firstAttribute="trailing" secondItem="YLS-ms-81h" secondAttribute="trailing" id="nvA-FI-1be"/>
+                            <constraint firstItem="YLS-ms-81h" firstAttribute="leading" secondItem="7gX-cs-H6x" secondAttribute="leading" id="un2-9E-dxd"/>
+                            <constraint firstAttribute="bottom" secondItem="YLS-ms-81h" secondAttribute="bottom" id="vU8-Mj-D8l"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dWq-gF-XP9"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="YLS-ms-81h" id="jNG-ze-yg7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xV7-CA-qW6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="799" y="10"/>
+        </scene>
+    </scenes>
+</document>

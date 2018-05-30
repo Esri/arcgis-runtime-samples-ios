@@ -1,34 +1,36 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G26a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NXx-k3-PIr">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NXx-k3-PIr">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Picture Marker Symbols View Controller-->
         <scene sceneID="lBe-be-foU">
             <objects>
                 <viewController id="NXx-k3-PIr" customClass="PictureMarkerSymbolsViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jkY-N2-rS8"/>
-                        <viewControllerLayoutGuide type="bottom" id="7M7-tO-D6J"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4zY-iZ-hSp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIz-e8-4IL" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="QIz-e8-4IL" secondAttribute="trailing" id="9xd-7A-kpf"/>
                             <constraint firstItem="QIz-e8-4IL" firstAttribute="leading" secondItem="4zY-iZ-hSp" secondAttribute="leading" id="Dnp-vH-kP1"/>
-                            <constraint firstItem="7M7-tO-D6J" firstAttribute="top" secondItem="QIz-e8-4IL" secondAttribute="bottom" id="PYI-xO-heG"/>
-                            <constraint firstItem="QIz-e8-4IL" firstAttribute="top" secondItem="jkY-N2-rS8" secondAttribute="bottom" id="sF1-65-3AQ"/>
+                            <constraint firstAttribute="bottom" secondItem="QIz-e8-4IL" secondAttribute="bottom" id="PYI-xO-heG"/>
+                            <constraint firstItem="QIz-e8-4IL" firstAttribute="top" secondItem="Qcm-9f-MfL" secondAttribute="top" id="sF1-65-3AQ"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Qcm-9f-MfL"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="QIz-e8-4IL" id="st9-Nd-Hyu"/>

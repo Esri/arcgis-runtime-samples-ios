@@ -1,35 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kwY-aI-1sv">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kwY-aI-1sv">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Set Initial Map Area View Controller-->
         <scene sceneID="dJ0-Tr-FNc">
             <objects>
                 <viewController id="kwY-aI-1sv" customClass="SetInitialMapAreaViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="phI-BB-28F"/>
-                        <viewControllerLayoutGuide type="bottom" id="ueA-a2-ROh"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0uB-uH-SmY">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Exe-jJ-k5v" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Exe-jJ-k5v" firstAttribute="top" secondItem="0uB-uH-SmY" secondAttribute="top" id="7nn-rb-MxB"/>
-                            <constraint firstItem="Exe-jJ-k5v" firstAttribute="top" secondItem="phI-BB-28F" secondAttribute="bottom" id="Anp-EX-vNx"/>
-                            <constraint firstAttribute="trailing" secondItem="Exe-jJ-k5v" secondAttribute="trailing" id="UR4-Tc-v0A"/>
-                            <constraint firstItem="ueA-a2-ROh" firstAttribute="top" secondItem="Exe-jJ-k5v" secondAttribute="bottom" id="mUA-t1-JBy"/>
+                            <constraint firstItem="Exe-jJ-k5v" firstAttribute="top" secondItem="Nwq-Ll-1dd" secondAttribute="top" id="Anp-EX-vNx"/>
+                            <constraint firstItem="Exe-jJ-k5v" firstAttribute="trailing" secondItem="0uB-uH-SmY" secondAttribute="trailing" id="UR4-Tc-v0A"/>
+                            <constraint firstItem="Exe-jJ-k5v" firstAttribute="bottom" secondItem="0uB-uH-SmY" secondAttribute="bottom" id="mUA-t1-JBy"/>
                             <constraint firstItem="Exe-jJ-k5v" firstAttribute="leading" secondItem="0uB-uH-SmY" secondAttribute="leading" id="xnJ-ub-pvG"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Nwq-Ll-1dd"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="7nn-rb-MxB"/>

@@ -1,34 +1,36 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hkj-RH-Ao0">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hkj-RH-Ao0">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Feature Collection LayerVC-->
         <scene sceneID="SIQ-L0-Vtt">
             <objects>
-                <viewController id="Hkj-RH-Ao0" customClass="FeatureCollectionLayerVC" customModule="MapViewDemo_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dZO-2W-ayM"/>
-                        <viewControllerLayoutGuide type="bottom" id="epj-h9-TrZ"/>
-                    </layoutGuides>
+                <viewController id="Hkj-RH-Ao0" customClass="FeatureCollectionLayerVC" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gca-nH-K3u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hff-bK-d1t" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hff-bK-d1t" firstAttribute="leading" secondItem="gca-nH-K3u" secondAttribute="leading" id="2NQ-rN-wBV"/>
-                            <constraint firstItem="epj-h9-TrZ" firstAttribute="top" secondItem="hff-bK-d1t" secondAttribute="bottom" id="4qM-d9-806"/>
-                            <constraint firstItem="hff-bK-d1t" firstAttribute="top" secondItem="dZO-2W-ayM" secondAttribute="bottom" id="P9m-e5-0P6"/>
+                            <constraint firstAttribute="bottom" secondItem="hff-bK-d1t" secondAttribute="bottom" id="4qM-d9-806"/>
+                            <constraint firstItem="hff-bK-d1t" firstAttribute="top" secondItem="D1Q-i0-gxo" secondAttribute="top" id="P9m-e5-0P6"/>
                             <constraint firstAttribute="trailing" secondItem="hff-bK-d1t" secondAttribute="trailing" id="nca-Gx-PNz"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="D1Q-i0-gxo"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="hff-bK-d1t" id="Kv0-pb-RNg"/>

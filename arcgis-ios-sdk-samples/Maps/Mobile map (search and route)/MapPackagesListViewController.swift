@@ -16,9 +16,7 @@
 import UIKit
 import ArcGIS
 
-class MapPackagesListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MapPackageCellDelegate {
-    
-    @IBOutlet var tableView:UITableView!
+class MapPackagesListViewController: UITableViewController, MapPackageCellDelegate {
     
     private var mapPackagesInBundle:[AGSMobileMapPackage]!
     private var mapPackagesInDocumentsDir:[AGSMobileMapPackage]!
@@ -81,11 +79,11 @@ class MapPackagesListViewController: UIViewController, UITableViewDataSource, UI
     
     //MARK : - UITableViewDataSource
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return self.mapPackagesInBundle?.count ?? 0
         }
@@ -94,7 +92,7 @@ class MapPackagesListViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MapPackageCell") as! MapPackageCell
         
         var mapPackage:AGSMobileMapPackage
@@ -113,13 +111,13 @@ class MapPackagesListViewController: UIViewController, UITableViewDataSource, UI
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return section == 0 ? "From the bundle" : "From the documents directory"
     }
     
     //MARK: - UITableViewDelegate
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //collapse previously expanded cell
         var indexPathsArray = [IndexPath]()

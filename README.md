@@ -21,7 +21,7 @@ The ```master``` branch of this repository contains samples configured for the l
 
 ## Requirements
 * [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/en/ios/) 100.2.1 (or higher). 
-* XCode 9 (or higher)
+* Xcode 9 (or higher)
 * iOS 11 SDK (or higher)
 
 1. Fork and then clone the repo. Don't know how? [Get started here.](http://htmlpreview.github.com/?https://github.com/Esri/esri.github.com/blob/master/help/esri-getting-to-know-github.html)

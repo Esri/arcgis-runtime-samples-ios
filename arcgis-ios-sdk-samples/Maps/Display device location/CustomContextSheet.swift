@@ -96,7 +96,6 @@ class CustomContextSheet: UIView {
             //selected label
             self.selectionLabel = self.label(self.titles[self.selectedIndex])
             self.selectionLabel.alpha = 1
-//            self.selectionLabel.backgroundColor = UIColor.redColor()
             self.insertSubview(self.selectionLabel, at: 0)
             
             //constraints
@@ -163,7 +162,7 @@ class CustomContextSheet: UIView {
     func label(_ title:String) -> UILabel {
         let label = UILabel(frame: CGRect.zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = UIColor.clear
+        label.backgroundColor = .clear
         label.attributedText = self.attributedText(title)
         label.alpha = 0
         label.sizeToFit()

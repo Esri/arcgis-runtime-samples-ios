@@ -52,7 +52,7 @@ class OverrideRendererViewController: UIViewController {
     
     @IBAction private func overrideRenderer() {
         //create a symbol to be used in the renderer
-        let symbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.solid, color: UIColor.blue, width: 2)
+        let symbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.solid, color: .blue, width: 2)
         //create a new renderer using the symbol just created
         let renderer = AGSSimpleRenderer(symbol: symbol)
         //assign the new renderer to the feature layer

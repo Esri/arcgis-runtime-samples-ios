@@ -37,7 +37,7 @@ class OperationsListViewController: UIViewController, UITableViewDataSource, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "OperationCell")!
         
         cell.textLabel?.text = self.operations[(indexPath as NSIndexPath).row]
-        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = .clear
         
         return cell
     }

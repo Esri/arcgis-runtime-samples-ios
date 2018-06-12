@@ -53,7 +53,7 @@ class SanDiegoAddressesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell")!
         cell.textLabel?.text = self.addresses[(indexPath as NSIndexPath).row]
-        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = .clear
         return cell
     }
     

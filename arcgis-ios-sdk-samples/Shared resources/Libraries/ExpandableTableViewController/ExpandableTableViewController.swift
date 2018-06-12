@@ -82,7 +82,7 @@ class ExpandableTableViewController: UITableViewController {
         // Recast view as a UITableViewHeaderFooterView
         let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         header.contentView.backgroundColor = .white
-        header.textLabel?.textColor = .primaryTextColor()
+        header.textLabel?.textColor = .primaryTextColor
         header.tag = section
 
         // Remove image view

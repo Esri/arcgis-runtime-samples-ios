@@ -32,32 +32,32 @@ class ContentTableCell: UITableViewCell {
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         
         if highlighted {
-            self.parentView.backgroundColor = .secondaryBlue()
+            self.parentView.backgroundColor = .secondaryBlue
             self.titleLabel.textColor = .white
             self.detailLabel.textColor = .white
             self.infoButton.tintColor = .white
         }
         else {
             self.parentView.backgroundColor = .white
-            self.titleLabel.textColor = .primaryTextColor()
-            self.detailLabel.textColor = .secondaryTextColor()
-            self.infoButton.tintColor = .secondaryBlue()
+            self.titleLabel.textColor = .primaryTextColor
+            self.detailLabel.textColor = .secondaryTextColor
+            self.infoButton.tintColor = .secondaryBlue
         }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         
         if selected {
-            self.parentView.backgroundColor = .secondaryBlue()
+            self.parentView.backgroundColor = .secondaryBlue
             self.titleLabel.textColor = .white
             self.detailLabel.textColor = .white
             self.infoButton.tintColor = .white
         }
         else {
             self.parentView.backgroundColor = .white
-            self.titleLabel.textColor = .primaryTextColor()
-            self.detailLabel.textColor = .secondaryTextColor()
-            self.infoButton.tintColor = .secondaryBlue()
+            self.titleLabel.textColor = .primaryTextColor
+            self.detailLabel.textColor = .secondaryTextColor
+            self.infoButton.tintColor = .secondaryBlue
         }
     }
 }

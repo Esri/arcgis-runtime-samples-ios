@@ -55,7 +55,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
             self.updateButtonsState()
         }
     }
-    var buttonsColor = UIColor.secondaryBlue()
+    var buttonsColor = UIColor.secondaryBlue
     
     var isEnabled: Bool {
         didSet {

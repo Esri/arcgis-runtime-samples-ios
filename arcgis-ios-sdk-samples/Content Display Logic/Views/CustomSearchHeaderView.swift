@@ -70,7 +70,7 @@ class CustomSearchHeaderView: UICollectionReusableView, UITableViewDataSource, U
             searchTextField.textColor = .white
             searchTextField.borderStyle = .none
             searchTextField.layer.cornerRadius = 8
-            searchTextField.backgroundColor = .secondaryBlue()
+            searchTextField.backgroundColor = .secondaryBlue
             
             let imageV = searchTextField.leftView as! UIImageView
             imageV.image = imageV.image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)

@@ -49,7 +49,7 @@ class VectorStylesViewController: UIViewController, UITableViewDataSource, UITab
         let identifier = "Cell\((indexPath as NSIndexPath).row)"
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier)!
         
-        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = .clear
         return cell
     }
     

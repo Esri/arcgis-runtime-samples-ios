@@ -102,7 +102,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
             }
         }
         
-        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = .clear
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell
     }

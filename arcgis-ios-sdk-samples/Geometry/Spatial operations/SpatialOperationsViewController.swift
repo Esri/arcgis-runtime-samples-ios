@@ -23,7 +23,7 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
     private var polygon1, polygon2: AGSPolygonBuilder!
     private var resultGraphic: AGSGraphic!
     
-    let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.black, width: 1)
+    let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 1)
     
     let operations = ["None", "Union", "Difference", "Symmetric Difference", "Intersection"]
     
@@ -66,7 +66,7 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         polygon1.addPointWith(x: -13160, y: 6710100)
         
         //symbol
-        let fillSymbol1 = AGSSimpleFillSymbol(style: .solid, color: UIColor.blue, outline: lineSymbol)
+        let fillSymbol1 = AGSSimpleFillSymbol(style: .solid, color: .blue, outline: lineSymbol)
         
         //graphic
         let polygon1Graphic = AGSGraphic(geometry: polygon1.toGeometry(), symbol: fillSymbol1, attributes: nil)
@@ -93,7 +93,7 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         polygon2.parts.add(innerRing)
         
         //symbol
-        let fillSymbol2 = AGSSimpleFillSymbol(style: .solid, color: UIColor.green, outline: lineSymbol)
+        let fillSymbol2 = AGSSimpleFillSymbol(style: .solid, color: .green, outline: lineSymbol)
         
         //graphic
         let polygon2Graphic = AGSGraphic(geometry: polygon2.toGeometry(), symbol: fillSymbol2, attributes: nil)
@@ -121,7 +121,7 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         }
         
         //using red fill symbol for result with black border
-        let symbol = AGSSimpleFillSymbol(style: .solid, color: UIColor.red, outline: lineSymbol)
+        let symbol = AGSSimpleFillSymbol(style: .solid, color: .red, outline: lineSymbol)
         
         //create result graphic if not present
         if self.resultGraphic == nil {

@@ -51,7 +51,7 @@ class DownloadProgressView: UIView {
     
     private func commonInit() {
         
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = .clear
         
         self.nibView = self.loadViewFromNib()
         

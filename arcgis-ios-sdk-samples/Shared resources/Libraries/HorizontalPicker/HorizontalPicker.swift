@@ -75,8 +75,8 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
                 self.collectionView.isUserInteractionEnabled = false
                 self.nextButton.isEnabled = false
                 self.prevButton.isEnabled = false
-                self.nextButton.imageView?.tintColor = UIColor.gray
-                self.prevButton.imageView?.tintColor = UIColor.gray
+                self.nextButton.imageView?.tintColor = .gray
+                self.prevButton.imageView?.tintColor = .gray
             }
         }
     }
@@ -96,7 +96,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     }
     
     private func commonInit() {
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = .clear
         
         self.nibView = self.loadViewFromNib()
         
@@ -136,7 +136,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
         
         let prevFlag = self.selectedIndex > 0
         self.prevButton.isEnabled = prevFlag
-        self.prevButton.imageView?.tintColor = prevFlag ? self.buttonsColor : UIColor.gray
+        self.prevButton.imageView?.tintColor = prevFlag ? self.buttonsColor : .gray
     }
     
     //MARK: - UICollectionViewDataSource

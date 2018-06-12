@@ -56,7 +56,7 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
             messageLabel.textAlignment = .center;
             messageLabel.font = UIFont(name: "HelveticaNeue", size: 20.0)!
             messageLabel.sizeToFit()
-            tableView.backgroundView?.backgroundColor = UIColor.white
+            tableView.backgroundView?.backgroundColor = .white
             tableView.backgroundView = messageLabel;
         }
         return orderByFields.count

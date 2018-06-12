@@ -75,7 +75,7 @@ class OpenExistingMapViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExistingMapCell")!
-        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = .clear
         
         cell.textLabel?.text = self.titles[(indexPath as NSIndexPath).row]
         cell.imageView?.image = UIImage(named: self.imageNames[(indexPath as NSIndexPath).row])!

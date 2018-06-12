@@ -131,7 +131,7 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LayerStatusCell")!
-        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = .clear
         let layer = self.map.operationalLayers[(indexPath as NSIndexPath).row] as! AGSLayer
         
         //if the layer is loaded then show the name

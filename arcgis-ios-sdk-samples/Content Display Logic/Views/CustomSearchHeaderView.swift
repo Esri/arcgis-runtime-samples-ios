@@ -54,7 +54,7 @@ class CustomSearchHeaderView: UICollectionReusableView, UITableViewDataSource, U
     
     func setup() {
         //set background color to clear color
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = .clear
         
         self.nibView = self.loadViewFromNib()
         
@@ -67,14 +67,14 @@ class CustomSearchHeaderView: UICollectionReusableView, UITableViewDataSource, U
             let placeholderAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont.systemFont(ofSize: UIFont.systemFontSize)]
             let attributedPlaceholder = NSAttributedString(string: "Search", attributes: placeholderAttributes)
             searchTextField.attributedPlaceholder = attributedPlaceholder
-            searchTextField.textColor = UIColor.white
+            searchTextField.textColor = .white
             searchTextField.borderStyle = .none
             searchTextField.layer.cornerRadius = 8
-            searchTextField.backgroundColor = UIColor.secondaryBlue()
+            searchTextField.backgroundColor = .secondaryBlue()
             
             let imageV = searchTextField.leftView as! UIImageView
             imageV.image = imageV.image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-            imageV.tintColor = UIColor.white
+            imageV.tintColor = .white
         }
         
         self.addSubview(self.nibView)
@@ -130,7 +130,7 @@ class CustomSearchHeaderView: UICollectionReusableView, UITableViewDataSource, U
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath as IndexPath)
         
         cell.textLabel?.text = suggestions[indexPath.row]
-        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = .clear
         
         return cell
     }

@@ -50,8 +50,8 @@ class ExtrudeGraphicsViewController: UIViewController {
         
         //simple renderer with extrusion property
         let renderer = AGSSimpleRenderer()
-        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.white, width: 1)
-        renderer.symbol = AGSSimpleFillSymbol(style: .solid, color: UIColor.primaryBlue(), outline: lineSymbol)
+        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .white, width: 1)
+        renderer.symbol = AGSSimpleFillSymbol(style: .solid, color: .primaryBlue(), outline: lineSymbol)
         renderer.sceneProperties?.extrusionMode = .baseHeight
         renderer.sceneProperties?.extrusionExpression = "[height]"
         self.graphicsOverlay.renderer = renderer

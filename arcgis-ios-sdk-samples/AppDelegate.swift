@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let bool = UserDefaults.standard.bool(forKey: "showTouch")
         if bool {
             DemoTouchManager.showTouches()
-            DemoTouchManager.touchBorderColor = UIColor.lightGray
+            DemoTouchManager.touchBorderColor = .lightGray
             DemoTouchManager.touchFillColor = UIColor(white: 231/255.0, alpha: 1)
         }
         else {
@@ -96,14 +96,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func modifyAppearance() {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
-        UINavigationBar.appearance().barTintColor = UIColor.primaryBlue()
-        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().barTintColor = .primaryBlue()
+        UINavigationBar.appearance().tintColor = .white
         
-        UIToolbar.appearance().barTintColor = UIColor.backgroundGray()
-        UIToolbar.appearance().tintColor = UIColor.primaryBlue()
+        UIToolbar.appearance().barTintColor = .backgroundGray()
+        UIToolbar.appearance().tintColor = .primaryBlue()
         
-        UISwitch.appearance().onTintColor = UIColor.primaryBlue()
-        UISlider.appearance().tintColor = UIColor.primaryBlue()
+        UISwitch.appearance().onTintColor = .primaryBlue()
+        UISlider.appearance().tintColor = .primaryBlue()
     }
 
     // MARK: - Split view

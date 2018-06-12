@@ -54,7 +54,7 @@ class ScenePropertiesExpressionsViewController: UIViewController {
         graphicsOverlay.renderer = renderer
         
         //create a red cone graphic
-        let coneSymbol = AGSSimpleMarkerSceneSymbol(style: .cone, color: UIColor.red, height: 200, width: 100, depth: 100, anchorPosition: .center)
+        let coneSymbol = AGSSimpleMarkerSceneSymbol(style: .cone, color: .red, height: 200, width: 100, depth: 100, anchorPosition: .center)
         coneSymbol.pitch = -90  //correct symbol's default pitch
         let conePoint = AGSPoint(x: 83.9, y: 28.404, z: 5000, spatialReference: AGSSpatialReference.wgs84())
         let coneAttributes = ["HEADING": 0, "PITCH": 0]

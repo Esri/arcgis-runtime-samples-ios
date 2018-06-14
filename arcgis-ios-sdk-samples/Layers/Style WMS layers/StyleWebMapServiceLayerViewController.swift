@@ -61,7 +61,7 @@ class StyleWebMapServiceLayerViewController: UIViewController {
         
         // The segmented control needs to be enabled here if the layer is
         // already loaded.
-        enableSegmentedControlIfPossible()
+        updateSegmentedControlEnabledState()
     }
     
     /// Called in response to the layer loading successfully.
@@ -72,7 +72,7 @@ class StyleWebMapServiceLayerViewController: UIViewController {
         styles = sublayer.sublayerInfo.styles
         // The segmented control needs to be enabled here if the view is already
         // loaded.
-        enableSegmentedControlIfPossible()
+        updateSegmentedControlEnabledState()
     }
     
     /// Called in response to the layer failing to load. Presents an alert
@@ -87,11 +87,10 @@ class StyleWebMapServiceLayerViewController: UIViewController {
         present(alertController, animated: true)
     }
     
-    /// Enables the segmented control if the view has loaded and there is more
-    /// than one style.
-    func enableSegmentedControlIfPossible() {
-        guard isViewLoaded, styles.count > 1 else { return }
-        segmentedControl.isEnabled = true
+    /// Sets the enabled state of the segmented control based on whether there
+    /// are multiple styles.
+    func updateSegmentedControlEnabledState() {
+        segmentedControl?.isEnabled = styles.count > 1
     }
     
     @IBAction func changeStyle(_ sender: UISegmentedControl) {

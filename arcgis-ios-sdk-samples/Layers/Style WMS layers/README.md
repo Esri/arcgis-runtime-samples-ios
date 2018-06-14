@@ -1,28 +1,24 @@
-# Style WMS Layer
+# Style WMS layers
 
-Shows how to change the style of a WMS layer.
+This sample demonstrates how to discover available styles and apply them to WMS sublayers.
 
-![](image1.png)
+![image](image1.png)
 
 ## How to use the sample
 
-Once the layer loads, the segmented control will be enabled. Tap it to switch between the first and second styles of the WMS layer.
+Use the buttons to switch between styles.
 
 ## How it works
 
-To style a WMS Layer:
-
-1. Create a layer using `AGSWMSLayer.init(url:layerNames:)`, specifying the URL of the service and the layer names you want.
-2. When the layer is done loading, get it's list of style strings using `(layer.sublayers.firstObject as? AGSWMSSublayer)?.sublayerInfo.styles`.
-3. Set one of the styles using `(layer.sublayers.firstObject as? AGSWMSSublayer)?.currentStyle`.
+This sample examines the WMS layer's sublayers and checks the sublayer info for a list of available styles. The `currentStyle` is then set on the WMS sublayer.
 
 ## Relevant API
 
-* `AGSWMSLayer.init(url:layerNames:)`
-* `AGSWMSLayer.load(completion:)`
+* `AGSWMSLayerInfo`
+* `AGSWMSLayer.sublayers`
 * `AGSWMSLayerInfo.styles`
 * `AGSWMSSublayer.currentStyle`
 
 ## Tags
 
-WMS, Layer, Style
+WMS, styles, imagery

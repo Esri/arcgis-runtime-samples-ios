@@ -483,6 +483,9 @@
 		3EFDE0F81E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
 		3EFDE0F91E36AE3100CBCD92 /* FeatureCollectionLayerVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift */; };
 		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
+		4CC00F7520C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */; };
+		4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */; };
+		4CEA34FE20C5EC680087F93A /* StyleWebMapServiceLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
 		D90407941FD8608A00BFE07B /* RasterLayerGPKGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */; };
 		D90407951FD8608A00BFE07B /* RasterLayerGPKG.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90407931FD8608A00BFE07B /* RasterLayerGPKG.storyboard */; };
@@ -527,11 +530,11 @@
 		E4C4A4481EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */; };
 		E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */; };
 		F4159C6B209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */; };
-		F4E5CD7D20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */; };
-		F4E5CD7E207058D8000A6D35 /* FeatureLayerRenderingModeMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */; };
 		F4159C6F20925AAE0016E53D /* OpenScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4159C6E20925AAE0016E53D /* OpenScene.storyboard */; };
 		F4159C7120925B710016E53D /* OpenSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4159C7020925B710016E53D /* OpenSceneViewController.swift */; };
 		F4159C72209262200016E53D /* OpenSceneViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4159C7020925B710016E53D /* OpenSceneViewController.swift */; };
+		F4E5CD7D20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */; };
+		F4E5CD7E207058D8000A6D35 /* FeatureLayerRenderingModeMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -555,6 +558,7 @@
 				10859BAF1FE0AC8100F6E552 /* FeatureLayerExtrusionViewController.swift in CopyFiles */,
 				D9316A651FDB4F850075AD92 /* ReadGeopackageViewController.swift in CopyFiles */,
 				D9316A661FDB4F850075AD92 /* GPKGLayersViewController.swift in CopyFiles */,
+				4CEA34FE20C5EC680087F93A /* StyleWebMapServiceLayerViewController.swift in CopyFiles */,
 				D9316A671FDB4F850075AD92 /* GPKGLayerTableCell.swift in CopyFiles */,
 				09607F831FDB617F00FA43B6 /* TimeBasedQueryVC.swift in CopyFiles */,
 				D97B7E6F1FDA0FC200E1239D /* FeatureLayerShapefileViewController.swift in CopyFiles */,
@@ -1047,6 +1051,8 @@
 		3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerVC.swift; sourceTree = "<group>"; };
 		3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerQuery.storyboard; sourceTree = "<group>"; };
 		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryVC.swift; sourceTree = "<group>"; };
+		4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleWebMapServiceLayerViewController.swift; sourceTree = "<group>"; };
+		4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StyleWebMapServiceLayer.storyboard; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
 		D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterLayerGPKGViewController.swift; sourceTree = "<group>"; };
 		D90407931FD8608A00BFE07B /* RasterLayerGPKG.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RasterLayerGPKG.storyboard; sourceTree = "<group>"; };
@@ -1079,9 +1085,9 @@
 		E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DistanceCompositeSymbol.storyboard; sourceTree = "<group>"; };
 		E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceCompositeSymbolViewController.swift; sourceTree = "<group>"; };
 		F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerRenderingModeMap.storyboard; sourceTree = "<group>"; };
-		F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureLayerRenderingModeMapViewController.swift; sourceTree = "<group>"; };
 		F4159C6E20925AAE0016E53D /* OpenScene.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpenScene.storyboard; sourceTree = "<group>"; };
 		F4159C7020925B710016E53D /* OpenSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSceneViewController.swift; sourceTree = "<group>"; };
+		F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureLayerRenderingModeMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2159,6 +2165,7 @@
 				3EABC79A1DB1793000C161C6 /* Stretch renderer */,
 				127E11D41FD0C3F8002CBD12 /* WMTS layer */,
 				1259FB8F1FD295C90037105E /* WMS layer (URL) */,
+				4CC00F7220C1FAA8004244EF /* Style WMS layers */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -2699,6 +2706,16 @@
 			path = "Features/Feature collection layer (query)";
 			sourceTree = "<group>";
 		};
+		4CC00F7220C1FAA8004244EF /* Style WMS layers */ = {
+			isa = PBXGroup;
+			children = (
+				4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */,
+				4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */,
+			);
+			name = "Style WMS layers";
+			path = "Layers/Style WMS layers";
+			sourceTree = "<group>";
+		};
 		D90407911FD8602B00BFE07B /* Raster layer (geopackage) */ = {
 			isa = PBXGroup;
 			children = (
@@ -2806,16 +2823,6 @@
 			path = "Scenes/Distance composite symbol";
 			sourceTree = "<group>";
 		};
-		F4E5CD7720704369000A6D35 /* Feature layer rendering mode (map) */ = {
-			isa = PBXGroup;
-			children = (
-				F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */,
-				F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */,
-			);
-			name = "Feature layer rendering mode (map)";
-			path = "Features/Feature layer rendering mode (map)";
-      sourceTree = "<group>";
-    };
 		F4159C6D20925A8D0016E53D /* Open a scene (portal item) */ = {
 			isa = PBXGroup;
 			children = (
@@ -2824,6 +2831,16 @@
 			);
 			name = "Open a scene (portal item)";
 			path = "Scenes/Open a scene (portal item)";
+			sourceTree = "<group>";
+		};
+		F4E5CD7720704369000A6D35 /* Feature layer rendering mode (map) */ = {
+			isa = PBXGroup;
+			children = (
+				F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */,
+				F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */,
+			);
+			name = "Feature layer rendering mode (map)";
+			path = "Features/Feature layer rendering mode (map)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3070,6 +3087,7 @@
 				3E1E5EF11D9F0D0C00F4913C /* HorizontalPicker.xib in Resources */,
 				3EABC7AE1DB17B2C00C161C6 /* Shasta.tfw in Resources */,
 				21D919951FE1F368006EA79A /* ExpandableTableViewImages.xcassets in Resources */,
+				4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */,
 				1259FB921FD295C90037105E /* WMSLayerUsingURL.storyboard in Resources */,
 				3E0B585A1E36D8D300951767 /* SpatialOperations.storyboard in Resources */,
 				3EABC7B51DB181DD00C161C6 /* ShastaBW.tif in Resources */,
@@ -3263,6 +3281,7 @@
 				21E9CDED1EF9C5EA00BD4D7D /* DisplayGridViewController.swift in Sources */,
 				09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */,
 				21E914411FDEFBF800C7D6DC /* StatisticalQueryGroupAndSortViewController.swift in Sources */,
+				4CC00F7520C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift in Sources */,
 				3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */,
 				3E5E094F1EF850BA00FF3454 /* MapImageSublayersVC.swift in Sources */,
 				10961CA71EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift in Sources */,

@@ -401,6 +401,14 @@
 				<key>descriptionText</key>
 				<string>Open a WMS layer from a URL and display it in a map</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Style WMS layers</string>
+				<key>storyboardName</key>
+				<string>StyleWebMapServiceLayer</string>
+				<key>descriptionText</key>
+				<string>Shows how to change the style of a WMS layer.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

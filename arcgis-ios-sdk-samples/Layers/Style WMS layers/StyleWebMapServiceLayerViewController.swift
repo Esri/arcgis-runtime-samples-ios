@@ -100,8 +100,4 @@ class StyleWebMapServiceLayerViewController: UIViewController {
         }
         sublayer.currentStyle = styles[sender.selectedSegmentIndex]
     }
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        fatalError("init(nibName:bundle:) has not been implemented")
-    }
 }

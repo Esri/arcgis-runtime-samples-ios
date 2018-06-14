@@ -95,9 +95,7 @@ class StyleWebMapServiceLayerViewController: UIViewController {
     }
     
     @IBAction func changeStyle(_ sender: UISegmentedControl) {
-        guard let sublayer = layer.sublayers.firstObject as? AGSWMSSublayer else {
-            preconditionFailure()
-        }
-        sublayer.currentStyle = styles[sender.selectedSegmentIndex]
+        let sublayer = layer.sublayers.firstObject as? AGSWMSSublayer
+        sublayer?.currentStyle = styles[sender.selectedSegmentIndex]
     }
 }

@@ -19,10 +19,6 @@ import ArcGIS
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
-    
-    private var indexArray:[String]!
-    private var wordsDictionary:[String: [String]]!
-    private var readmeDirectoriesURLs:[URL]!
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         if url.absoluteString.range(of: "auth", options: [], range: nil, locale: nil) != nil {

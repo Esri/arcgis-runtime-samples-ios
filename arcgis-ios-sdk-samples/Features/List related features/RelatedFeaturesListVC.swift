@@ -72,7 +72,7 @@ class RelatedFeaturesListVC: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        view.tintColor = UIColor.white
+        view.tintColor = .white
     }
 
     override func didReceiveMemoryWarning() {

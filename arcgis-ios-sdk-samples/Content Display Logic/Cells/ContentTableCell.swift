@@ -32,32 +32,32 @@ class ContentTableCell: UITableViewCell {
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         
         if highlighted {
-            self.parentView.backgroundColor = UIColor.secondaryBlue()
-            self.titleLabel.textColor = UIColor.white
-            self.detailLabel.textColor = UIColor.white
-            self.infoButton.tintColor = UIColor.white
+            self.parentView.backgroundColor = .secondaryBlue
+            self.titleLabel.textColor = .white
+            self.detailLabel.textColor = .white
+            self.infoButton.tintColor = .white
         }
         else {
-            self.parentView.backgroundColor = UIColor.white
-            self.titleLabel.textColor = UIColor.primaryTextColor()
-            self.detailLabel.textColor = UIColor.secondaryTextColor()
-            self.infoButton.tintColor = UIColor.secondaryBlue()
+            self.parentView.backgroundColor = .white
+            self.titleLabel.textColor = .primaryTextColor
+            self.detailLabel.textColor = .secondaryTextColor
+            self.infoButton.tintColor = .secondaryBlue
         }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         
         if selected {
-            self.parentView.backgroundColor = UIColor.secondaryBlue()
-            self.titleLabel.textColor = UIColor.white
-            self.detailLabel.textColor = UIColor.white
-            self.infoButton.tintColor = UIColor.white
+            self.parentView.backgroundColor = .secondaryBlue
+            self.titleLabel.textColor = .white
+            self.detailLabel.textColor = .white
+            self.infoButton.tintColor = .white
         }
         else {
-            self.parentView.backgroundColor = UIColor.white
-            self.titleLabel.textColor = UIColor.primaryTextColor()
-            self.detailLabel.textColor = UIColor.secondaryTextColor()
-            self.infoButton.tintColor = UIColor.secondaryBlue()
+            self.parentView.backgroundColor = .white
+            self.titleLabel.textColor = .primaryTextColor
+            self.detailLabel.textColor = .secondaryTextColor
+            self.infoButton.tintColor = .secondaryBlue
         }
     }
 }

@@ -213,7 +213,7 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
                 textSymbol.size = 14
                 textSymbol.horizontalAlignment = .left
                 textSymbol.verticalAlignment = .bottom
-                textSymbol.haloColor = UIColor.white
+                textSymbol.haloColor = .white
                 textSymbol.haloWidth = CGFloat(gridLevel+1)
                 grid.setTextSymbol(textSymbol, forLevel: gridLevel)
             }

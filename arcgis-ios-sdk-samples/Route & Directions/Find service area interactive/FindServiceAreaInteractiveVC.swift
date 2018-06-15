@@ -70,7 +70,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         self.facilitiesGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: facilitySymbol)
         
         //barrier symbol
-        let barrierSymbol = AGSSimpleFillSymbol(style: .diagonalCross, color: UIColor.red, outline: nil)
+        let barrierSymbol = AGSSimpleFillSymbol(style: .diagonalCross, color: .red, outline: nil)
         
         //set symbol on barrier graphics overlay using renderer
         self.barriersGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: barrierSymbol)

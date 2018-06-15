@@ -40,7 +40,7 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
         self.mapView.touchDelegate = self
         
         //renderer for graphics overlays
-        let pointSymbol = AGSSimpleMarkerSymbol(style: .circle, color: UIColor.red, size: 10)
+        let pointSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 10)
         let renderer = AGSSimpleRenderer(symbol: pointSymbol)
         self.inputGraphicsOverlay.renderer = renderer
         

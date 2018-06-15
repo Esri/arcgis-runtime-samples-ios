@@ -86,7 +86,7 @@ class MapViewScreenshotViewController: UIViewController {
     private func imitateFlashAndPreviewImage(_ image:UIImage) {
         
         let flashView = UIView(frame: self.mapView.bounds)
-        flashView.backgroundColor = UIColor.white
+        flashView.backgroundColor = .white
         self.mapView.addSubview(flashView)
         
         //animate the white flash view on and off to show the flash effect

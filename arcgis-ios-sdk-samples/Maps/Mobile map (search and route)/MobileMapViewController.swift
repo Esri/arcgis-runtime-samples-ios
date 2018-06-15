@@ -68,7 +68,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         markerSymbol.leaderOffsetY = markerSymbol.offsetY
         
         if isIndexRequired && index != nil {
-            let textSymbol = AGSTextSymbol(text: "\(index!)", color: UIColor.white, size: 20, horizontalAlignment: AGSHorizontalAlignment.center, verticalAlignment: AGSVerticalAlignment.middle)
+            let textSymbol = AGSTextSymbol(text: "\(index!)", color: .white, size: 20, horizontalAlignment: .center, verticalAlignment: .middle)
             textSymbol.offsetY = markerSymbol.offsetY
             
             let compositeSymbol = AGSCompositeSymbol(symbols: [markerSymbol, textSymbol])
@@ -86,7 +86,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     //method returns the symbol for the route graphic
     func routeSymbol() -> AGSSimpleLineSymbol {
-        let symbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.blue, width: 5)
+        let symbol = AGSSimpleLineSymbol(style: .solid, color: .blue, width: 5)
         return symbol
     }
     

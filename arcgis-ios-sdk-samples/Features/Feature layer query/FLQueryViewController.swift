@@ -43,7 +43,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         self.featureLayer.selectionWidth = 5
         
         //set a new renderer
-        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.black, width: 1)
+        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 1)
         let fillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor.yellow.withAlphaComponent(0.5), outline: lineSymbol)
         self.featureLayer.renderer = AGSSimpleRenderer(symbol: fillSymbol)
         

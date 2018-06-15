@@ -70,7 +70,7 @@ class SwitchBasemapViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "basemapsCell")!
-        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = .clear
         
         cell.textLabel?.text = self.titles[(indexPath as NSIndexPath).row]
         return cell

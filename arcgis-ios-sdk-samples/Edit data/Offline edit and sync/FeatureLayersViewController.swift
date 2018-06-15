@@ -58,7 +58,7 @@ class FeatureLayersViewController: UIViewController, UITableViewDataSource, UITa
             cell.accessoryType = .none
         }
         
-        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = .clear
         return cell
     }
     

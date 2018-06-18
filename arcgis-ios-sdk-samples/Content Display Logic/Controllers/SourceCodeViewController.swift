@@ -69,7 +69,7 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
             "<link rel=\"stylesheet\" href=\"\(cssPath)\">" +
             "<script src=\"\(jsPath)\"></script>" +
             "<script>hljs.initHighlightingOnLoad();</script> </head> <body>" +
-            "<pre><code class=\"Swift\"> \(content) </code></pre>" +
+            "<pre><code class=\"Swift\">\(content)</code></pre>" +
             "</body> </html>"
 //        println(stringForHTML)
         // style=\"white-space:initial;\"

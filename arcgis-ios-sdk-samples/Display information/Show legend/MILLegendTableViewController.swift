@@ -82,9 +82,9 @@ class MILLegendTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MILLegendCell", for: indexPath) 
 
-        let layer = self.orderArray[(indexPath as NSIndexPath).section]
+        let layer = self.orderArray[indexPath.section]
         let legendInfos = self.legendInfosDict[self.hashString(for: layer)]!
-        let legendInfo = legendInfos[(indexPath as NSIndexPath).row]
+        let legendInfo = legendInfos[indexPath.row]
 
         cell.textLabel?.text = legendInfo.name
         legendInfo.symbol?.createSwatch(completion: { (image: UIImage?, error: Error?) -> Void in
@@ -94,7 +94,7 @@ class MILLegendTableViewController: UITableViewController {
             }
         })
         
-        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = .clear
         
         return cell
     }

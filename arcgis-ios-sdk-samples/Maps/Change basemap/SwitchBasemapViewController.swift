@@ -70,14 +70,14 @@ class SwitchBasemapViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "basemapsCell")!
-        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = .clear
         
-        cell.textLabel?.text = self.titles[(indexPath as NSIndexPath).row]
+        cell.textLabel?.text = self.titles[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch (indexPath as NSIndexPath).row {
+        switch indexPath.row {
         case 0:
             self.map.basemap = AGSBasemap.streets()
         case 1:

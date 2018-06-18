@@ -227,20 +227,20 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         // Create the view
         let returnedView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 44))
         returnedView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        returnedView.backgroundColor = UIColor.primaryBlue()
+        returnedView.backgroundColor = .primaryBlue
         returnedView.layer.borderColor = UIColor.white.cgColor
         returnedView.layer.borderWidth = 1
 
         // Add label
         let label = UILabel(frame: CGRect(x: 10, y: 7, width: view.frame.size.width, height: 25))
         label.text = sectionHeaderTitles[section]
-        label.textColor = UIColor.white
+        label.textColor = .white
         returnedView.addSubview(label)
 
         // Add button
         let headerButton = UIButton(type: .contactAdd)
         headerButton.frame = CGRect(x: tableView.frame.size.width - 32, y: 11, width: 22, height: 22)
-        headerButton.tintColor = UIColor.white
+        headerButton.tintColor = .white
         headerButton.tag = section
         headerButton.addTarget(self, action:  #selector(headerButtonAction(_:)), for: .touchUpInside)
         returnedView.addSubview(headerButton)

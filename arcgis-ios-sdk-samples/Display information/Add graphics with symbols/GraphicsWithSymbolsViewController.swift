@@ -62,7 +62,7 @@ class GraphicsWithSymbolsViewController: UIViewController {
         
         
         //create a marker symbol
-        let buoyMarker = AGSSimpleMarkerSymbol(style: .circle, color: UIColor.red, size: 10)
+        let buoyMarker = AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 10)
 
         
         //create graphics

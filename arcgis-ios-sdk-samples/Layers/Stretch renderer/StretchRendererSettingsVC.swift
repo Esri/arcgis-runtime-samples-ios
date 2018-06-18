@@ -78,18 +78,18 @@ class StretchRendererSettingsVC: UIViewController, UITableViewDataSource, Stretc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if (indexPath as NSIndexPath).row == 0 {
+        if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Row0") as! StretchRendererTypeCell
             cell.delegate = self
             return cell
         }
         else {
             if self.stretchType == .MinMax {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "MinMaxRow\((indexPath as NSIndexPath).row)") as! StretchRendererInputCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "MinMaxRow\(indexPath.row)") as! StretchRendererInputCell
                 return cell
             }
             else if self.stretchType == .PercentClip {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "PercentClipRow\((indexPath as NSIndexPath).row)") as! StretchRendererInputCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PercentClipRow\(indexPath.row)") as! StretchRendererInputCell
                 return cell
             }
             else {

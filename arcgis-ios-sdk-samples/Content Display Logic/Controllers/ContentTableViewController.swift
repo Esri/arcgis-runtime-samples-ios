@@ -115,7 +115,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         let sample = samples[indexPath.row]
         cell.titleLabel.text = sample.name
         
-        if self.expandedRowIndex == (indexPath as NSIndexPath).row {
+        if self.expandedRowIndex == indexPath.row {
             cell.detailLabel.text = sample.description
         }
         else {
@@ -123,9 +123,9 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         }
         
         cell.infoButton.addTarget(self, action: #selector(ContentTableViewController.expandCell(_:)), for: UIControlEvents.touchUpInside)
-        cell.infoButton.tag = (indexPath as NSIndexPath).row
+        cell.infoButton.tag = indexPath.row
 
-        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = .clear
         
         return cell
     }
@@ -244,7 +244,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
     
     func updateExpandedRow(_ indexPath:IndexPath, collapseIfSelected:Bool) {
         //if same row selected then hide the detail view
-        if (indexPath as NSIndexPath).row == self.expandedRowIndex {
+        if indexPath.row == self.expandedRowIndex {
             if collapseIfSelected {
                 self.expandedRowIndex = -1
                 tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
@@ -256,7 +256,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         else {
             //get the two cells and update
             let previouslyExpandedIndexPath = IndexPath(row: self.expandedRowIndex, section: 0)
-            self.expandedRowIndex = (indexPath as NSIndexPath).row
+            self.expandedRowIndex = indexPath.row
             tableView.reloadRows(at: [previouslyExpandedIndexPath, indexPath], with: UITableViewRowAnimation.fade)
         }
     }

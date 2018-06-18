@@ -96,7 +96,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AttachmentCell")!
         
-        let attachment = self.attachments[(indexPath as NSIndexPath).row]
+        let attachment = self.attachments[indexPath.row]
         cell.textLabel?.text = attachment.name
         
         cell.imageView?.image = UIImage(named: "ArcGIS.bundle/CloudDownload")
@@ -117,13 +117,13 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            let attachment = self.attachments[(indexPath as NSIndexPath).row]
+            let attachment = self.attachments[indexPath.row]
             self.deleteAttachment(attachment)
         }
     }
     
     func setImageForCell(_ cell:UITableViewCell, at indexPath:IndexPath) {
-        let attachment = self.attachments[(indexPath as NSIndexPath).row]
+        let attachment = self.attachments[indexPath.row]
         attachment.fetchData { (data:Data?, error:Error?) -> Void in
             if let error = error {
                 print(error)

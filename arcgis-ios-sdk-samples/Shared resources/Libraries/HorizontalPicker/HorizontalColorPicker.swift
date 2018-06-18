@@ -45,7 +45,7 @@ class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionVie
     }
     
     private func commonInit() {
-        backgroundColor = UIColor.clear
+        backgroundColor = .clear
         nibView = loadViewFromNib()
         nibView.frame = bounds
         nibView.autoresizingMask = [UIViewAutoresizing.flexibleHeight, .flexibleWidth]

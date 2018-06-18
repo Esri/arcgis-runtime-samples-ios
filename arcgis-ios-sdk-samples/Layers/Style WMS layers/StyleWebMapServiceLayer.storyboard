@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nuF-iz-Tnw">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Style Web Map Service Layer View Controller-->
+        <scene sceneID="wKv-Bf-syy">
+            <objects>
+                <viewController id="nuF-iz-Tnw" customClass="StyleWebMapServiceLayerViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fak-jH-hTb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3O-tz-aX4" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDb-n1-rpC">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" id="P04-Pp-rQd">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Eax-z9-Fpy">
+                                            <rect key="frame" x="16" y="7.5" width="343" height="29"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Style 1"/>
+                                                <segment title="Style 2"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="changeStyle:" destination="nuF-iz-Tnw" eventType="valueChanged" id="Jmr-lL-08y"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mFo-Xi-cu8" firstAttribute="bottom" secondItem="gDb-n1-rpC" secondAttribute="bottom" id="3J3-K3-kmx"/>
+                            <constraint firstItem="M3O-tz-aX4" firstAttribute="trailing" secondItem="Fak-jH-hTb" secondAttribute="trailing" id="ApN-V0-7DB"/>
+                            <constraint firstItem="gDb-n1-rpC" firstAttribute="top" secondItem="M3O-tz-aX4" secondAttribute="bottom" id="UKa-PT-NhC"/>
+                            <constraint firstItem="M3O-tz-aX4" firstAttribute="top" secondItem="mFo-Xi-cu8" secondAttribute="top" id="Xlz-7t-BZ8"/>
+                            <constraint firstItem="M3O-tz-aX4" firstAttribute="leading" secondItem="Fak-jH-hTb" secondAttribute="leading" id="fi4-E5-RiC"/>
+                            <constraint firstItem="gDb-n1-rpC" firstAttribute="trailing" secondItem="Fak-jH-hTb" secondAttribute="trailing" id="gH4-hE-D2v"/>
+                            <constraint firstItem="gDb-n1-rpC" firstAttribute="leading" secondItem="Fak-jH-hTb" secondAttribute="leading" id="htE-xN-IhT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mFo-Xi-cu8"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="M3O-tz-aX4" id="fHB-x6-bKN"/>
+                        <outlet property="segmentedControl" destination="Eax-z9-Fpy" id="cmg-A5-H4S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k4v-oV-hz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7.2000000000000002" y="139.880059970015"/>
+        </scene>
+    </scenes>
+</document>

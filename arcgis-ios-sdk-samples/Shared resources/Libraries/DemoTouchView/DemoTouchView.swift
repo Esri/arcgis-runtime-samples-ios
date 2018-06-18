@@ -384,7 +384,7 @@ private class DemoTouchesView: UIView {
     
     static let sharedInstance: DemoTouchesView = {
         var dtv = DemoTouchesView()
-        dtv.backgroundColor = UIColor.clear
+        dtv.backgroundColor = .clear
         dtv.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         dtv.isUserInteractionEnabled = false
         return dtv

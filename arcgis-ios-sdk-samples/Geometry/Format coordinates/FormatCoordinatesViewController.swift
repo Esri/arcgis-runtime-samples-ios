@@ -71,7 +71,7 @@ class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate
         self.graphicsOverlay.graphics.removeAllObjects()
         
         //add graphic at tapped location
-        let symbol = AGSSimpleMarkerSymbol(style: .cross, color: UIColor.yellow, size: 20)
+        let symbol = AGSSimpleMarkerSymbol(style: .cross, color: .yellow, size: 20)
         let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: nil)
         self.graphicsOverlay.graphics.add(graphic)
     }

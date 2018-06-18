@@ -54,7 +54,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         
         //change selection width for feature layer
         self.parksFeatureLayer.selectionWidth = 4
-        self.parksFeatureLayer.selectionColor = UIColor.yellow
+        self.parksFeatureLayer.selectionColor = .yellow
         
         //add parks feature layer to the map
         map.operationalLayers.add(self.parksFeatureLayer)

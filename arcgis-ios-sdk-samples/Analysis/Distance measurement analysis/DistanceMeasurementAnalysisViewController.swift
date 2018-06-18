@@ -141,12 +141,6 @@ class DistanceMeasurementAnalysisViewController: UIViewController, AGSGeoViewTou
             self?.locationDistanceMeasurement.endLocation = mapLocation
         }
     }
-    
-    // MARK: UIViewController
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        fatalError("init(nibName:bundle:) has not been implemented")
-    }
 }
 
 extension Measurement where UnitType == Unit {

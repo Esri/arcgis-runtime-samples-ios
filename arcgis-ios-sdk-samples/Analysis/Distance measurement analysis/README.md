@@ -6,7 +6,7 @@ The distance measurement analysis allows you to add the same measuring experienc
 ![Image](image1.png)
 
 ## How to use the sample
-Choose a unit system for the measurement in the segmented control. Click any location in the scene to start measuring. Move the mouse to an end location, and click to complete the measure. Click a new location to clear and start a new measurement.
+Choose a unit system for the measurement in the segmented control. Long press any location in the scene to start measuring. Then drag to an end location, and lift your finger to complete the measure. Tap a new location to clear and start a new measurement.
 
 ## How it works
 To measure distances with the `AGSLocationDistanceMeasurement` analysis:

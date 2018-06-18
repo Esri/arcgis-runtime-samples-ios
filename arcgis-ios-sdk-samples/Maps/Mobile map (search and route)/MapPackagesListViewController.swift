@@ -97,11 +97,11 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
         
         var mapPackage:AGSMobileMapPackage
         
-        if (indexPath as NSIndexPath).section == 0 {
-            mapPackage = self.mapPackagesInBundle[(indexPath as NSIndexPath).row]
+        if indexPath.section == 0 {
+            mapPackage = self.mapPackagesInBundle[indexPath.row]
         }
         else {
-            mapPackage = self.mapPackagesInDocumentsDir[(indexPath as NSIndexPath).row]
+            mapPackage = self.mapPackagesInDocumentsDir[indexPath.row]
         }
         
         cell.mapPackage = mapPackage

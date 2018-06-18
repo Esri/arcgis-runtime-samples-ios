@@ -151,7 +151,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalPickerCell", for: indexPath) as! HorizontalPickerCell
-        cell.titleLabel.text = self.options[(indexPath as NSIndexPath).item]
+        cell.titleLabel.text = self.options[indexPath.item]
         return cell
     }
     

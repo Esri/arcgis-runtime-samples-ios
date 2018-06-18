@@ -70,7 +70,7 @@ class DirectionsListViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DirectionCell")!
         
-        cell.textLabel?.text = self.route.directionManeuvers[(indexPath as NSIndexPath).row].directionText
+        cell.textLabel?.text = self.route.directionManeuvers[indexPath.row].directionText
         
         return cell
     }
@@ -78,7 +78,7 @@ class DirectionsListViewController: UIViewController, UITableViewDataSource, UIT
     //MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let directionManeuver = self.route.directionManeuvers[(indexPath as NSIndexPath).row]
+        let directionManeuver = self.route.directionManeuvers[indexPath.row]
         self.delegate?.directionsListViewController(self, didSelectDirectionManuever: directionManeuver)
     }
     

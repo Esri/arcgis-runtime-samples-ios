@@ -102,7 +102,7 @@ class FeatureTemplatePickerViewController: UIViewController, UIBarPositioningDel
         cell?.selectionStyle = .blue
         
         //Set its label, image, etc for the template
-        let info = self.infos[(indexPath as NSIndexPath).row]
+        let info = self.infos[indexPath.row]
         cell?.textLabel?.font = UIFont.systemFont(ofSize: 12)
         cell?.textLabel?.text = info.featureTemplate.name
 //        cell.imageView?.image = info.featureLayer.renderer.symb .swatchForFeatureWithAttributes(info.featureTemplate.prototypeAttributes, geometryType: info.featureLayer.geometryType, size: CGSizeMake(20, 20))

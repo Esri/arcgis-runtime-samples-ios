@@ -53,14 +53,14 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell")!
         
-        cell.textLabel?.text = self.list[(indexPath as NSIndexPath).row]
+        cell.textLabel?.text = self.list[indexPath.row]
         cell.backgroundColor = .clear
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.selectAction != nil {
-            self.selectAction((indexPath as NSIndexPath).row)
+            self.selectAction(indexPath.row)
         }
     }
 }

@@ -37,7 +37,7 @@ class DirectionsViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DirectionsCell")!
         
-        cell.textLabel?.text = self.directionManeuvers[(indexPath as NSIndexPath).row].directionText
+        cell.textLabel?.text = self.directionManeuvers[indexPath.row].directionText
         
         return cell
     }

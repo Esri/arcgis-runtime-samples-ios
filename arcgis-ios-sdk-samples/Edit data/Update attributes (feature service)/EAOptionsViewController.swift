@@ -51,13 +51,13 @@ class EAOptionsViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EAOptionsCell")!
         
-        cell.textLabel?.text = self.options[(indexPath as NSIndexPath).row]
+        cell.textLabel?.text = self.options[indexPath.row]
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate.optionsViewController(self, didSelectOptionAtIndex: (indexPath as NSIndexPath).row)
+        self.delegate.optionsViewController(self, didSelectOptionAtIndex: indexPath.row)
         self.cancelAction()
     }
     

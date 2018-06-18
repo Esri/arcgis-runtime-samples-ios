@@ -74,11 +74,11 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TilePackageCell")!
         
-        if (indexPath as NSIndexPath).section == 0 {
-            cell.textLabel?.text = self.extractName(fromPath: self.bundleTPKPaths[(indexPath as NSIndexPath).row])
+        if indexPath.section == 0 {
+            cell.textLabel?.text = self.extractName(fromPath: self.bundleTPKPaths[indexPath.row])
         }
         else {
-            cell.textLabel?.text = self.extractName(fromPath: self.documentTPKPaths[(indexPath as NSIndexPath).row])
+            cell.textLabel?.text = self.extractName(fromPath: self.documentTPKPaths[indexPath.row])
         }
         
         return cell
@@ -93,10 +93,10 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var path = ""
         if (indexPath as NSIndexPath).section == 0 {
-            path = self.bundleTPKPaths[(indexPath as NSIndexPath).row]
+            path = self.bundleTPKPaths[indexPath.row]
         }
         else {
-            path = self.documentTPKPaths[(indexPath as NSIndexPath).row]
+            path = self.documentTPKPaths[indexPath.row]
         }
         self.delegate?.tilePackagesListViewController(self, didSelectTPKWithPath: path)
     }

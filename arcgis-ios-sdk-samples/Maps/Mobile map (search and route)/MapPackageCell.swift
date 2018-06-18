@@ -80,7 +80,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         
         //label
         let label = cell.viewWithTag(11) as! UILabel
-        label.text = "Map \((indexPath as NSIndexPath).item+1)"
+        label.text = "Map \(indexPath.item+1)"
         
         //border
         cell.layer.borderColor = UIColor.black.cgColor
@@ -90,7 +90,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         let searchImageView = cell.viewWithTag(12) as! UIImageView
         searchImageView.isHidden = (self.mapPackage.locatorTask == nil)
         
-        let map = self.mapPackage.maps[(indexPath as NSIndexPath).item]
+        let map = self.mapPackage.maps[indexPath.item]
         //route image view
         let routeImageView = cell.viewWithTag(13) as! UIImageView
         routeImageView.isHidden = (map.transportationNetworks.count == 0)
@@ -107,6 +107,6 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
     //MARK: - UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate?.mapPackageCell(self, didSelectMap: self.mapPackage.maps[(indexPath as NSIndexPath).item])
+        self.delegate?.mapPackageCell(self, didSelectMap: self.mapPackage.maps[indexPath.item])
     }
 }

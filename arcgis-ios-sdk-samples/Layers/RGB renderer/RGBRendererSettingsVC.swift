@@ -54,7 +54,7 @@ class RGBRendererSettingsVC: UIViewController, UITableViewDataSource, RGBRendere
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         //first row cell is always Row0
-        if (indexPath as NSIndexPath).row == 0 {
+        if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Row0") as! RGBRendererTypeCell
             cell.delegate = self
             return cell
@@ -62,11 +62,11 @@ class RGBRendererSettingsVC: UIViewController, UITableViewDataSource, RGBRendere
         //load the rest of the cells based on the stretch type selected
         else {
             if self.stretchType == .MinMax {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "MinMaxRow\((indexPath as NSIndexPath).row)") as! RGBRenderer3InputCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "MinMaxRow\(indexPath.row)") as! RGBRenderer3InputCell
                 return cell
             }
             else if self.stretchType == .PercentClip {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "PercentClipRow\((indexPath as NSIndexPath).row)") as! RGBRendererInputCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PercentClipRow\(indexPath.row)") as! RGBRendererInputCell
                 return cell
             }
             else {

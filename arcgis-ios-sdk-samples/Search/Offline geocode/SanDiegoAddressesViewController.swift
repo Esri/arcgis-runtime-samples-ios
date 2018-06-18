@@ -52,7 +52,7 @@ class SanDiegoAddressesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell")!
-        cell.textLabel?.text = self.addresses[(indexPath as NSIndexPath).row]
+        cell.textLabel?.text = self.addresses[indexPath.row]
         cell.backgroundColor = .clear
         return cell
     }
@@ -60,7 +60,7 @@ class SanDiegoAddressesViewController: UITableViewController {
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let address = self.addresses[(indexPath as NSIndexPath).row]
+        let address = self.addresses[indexPath.row]
         self.delegate?.sanDiegoAddressesViewController(self, didSelectAddress: address)
     }
     

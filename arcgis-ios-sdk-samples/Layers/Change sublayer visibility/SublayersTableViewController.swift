@@ -45,12 +45,12 @@ class SublayersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SublayerCell")!
         cell.backgroundColor = .clear
         
-        let sublayer = self.sublayers[(indexPath as NSIndexPath).row] as! AGSArcGISMapImageSublayer
+        let sublayer = self.sublayers[indexPath.row] as! AGSArcGISMapImageSublayer
         cell.textLabel?.text = sublayer.name
         
         //accessory switch
         let visibilitySwitch = UISwitch(frame: CGRect.zero)
-        visibilitySwitch.tag = (indexPath as NSIndexPath).row
+        visibilitySwitch.tag = indexPath.row
         visibilitySwitch.isOn = sublayer.isVisible
         visibilitySwitch.addTarget(self, action: #selector(SublayersTableViewController.switchChanged(_:)), for: UIControlEvents.valueChanged)
         cell.accessoryView = visibilitySwitch

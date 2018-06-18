@@ -485,8 +485,12 @@
 		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
 		4C72117020BF444C004A7DD9 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C72116E20BF444C004A7DD9 /* SVProgressAnimatedView.m */; };
 		4C72117320BF4457004A7DD9 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C72117220BF4457004A7DD9 /* SVRadialGradientLayer.m */; };
+		4C2B52D620D2C1810071EBB6 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B52D520D2C1810071EBB6 /* URL.swift */; };
+		4C2B52D720D2C3180071EBB6 /* DistanceMeasurementAnalysisViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */; };
 		4CC00F7520C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */; };
 		4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */; };
+		4CCE7BD620D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */; };
+		4CCE7BD820D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCE7BD720D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard */; };
 		4CEA34FE20C5EC680087F93A /* StyleWebMapServiceLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
 		D90407941FD8608A00BFE07B /* RasterLayerGPKGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */; };
@@ -546,6 +550,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				4C2B52D720D2C3180071EBB6 /* DistanceMeasurementAnalysisViewController.swift in CopyFiles */,
 				F4E5CD7E207058D8000A6D35 /* FeatureLayerRenderingModeMapViewController.swift in CopyFiles */,
 				F4159C72209262200016E53D /* OpenSceneViewController.swift in CopyFiles */,
 				1230046D1FE2F77F00303AC2 /* LineOfSightLocationViewController.swift in CopyFiles */,
@@ -1057,8 +1062,11 @@
 		4C72116F20BF444C004A7DD9 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
 		4C72117120BF4456004A7DD9 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		4C72117220BF4457004A7DD9 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		4C2B52D520D2C1810071EBB6 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleWebMapServiceLayerViewController.swift; sourceTree = "<group>"; };
 		4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StyleWebMapServiceLayer.storyboard; sourceTree = "<group>"; };
+		4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasurementAnalysisViewController.swift; sourceTree = "<group>"; };
+		4CCE7BD720D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DistanceMeasurementAnalysis.storyboard; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
 		D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterLayerGPKGViewController.swift; sourceTree = "<group>"; };
 		D90407931FD8608A00BFE07B /* RasterLayerGPKG.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RasterLayerGPKG.storyboard; sourceTree = "<group>"; };
@@ -1280,6 +1288,7 @@
 				127D29F2200EC5FC00DD6CDC /* Viewshed (location) */,
 				E4B2E2671FE31E7400E610FF /* Viewshed (GeoElement) */,
 				123004681FE2F70300303AC2 /* Line of sight (location) */,
+				4CCE7BD420D2BCD5001238F5 /* Distance measurement analysis */,
 			);
 			path = Analysis;
 			sourceTree = "<group>";
@@ -1389,6 +1398,7 @@
 				3EEA06001D21C3E800E03774 /* Scenes */,
 				3E4B05E51B39EE920072E514 /* Shared resources */,
 				3E23AA071AFC2DE0002E2214 /* Content Display Logic */,
+				4C2B52D320D2C11C0071EBB6 /* Extensions */,
 				3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */,
 				3EA34D591B38C3B3003DC0E8 /* Samples-Bridging-Header.h */,
 				3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */,
@@ -2716,6 +2726,22 @@
 			path = "Features/Feature collection layer (query)";
 			sourceTree = "<group>";
 		};
+		4C2B52D320D2C11C0071EBB6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4C2B52D420D2C1750071EBB6 /* Foundation */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4C2B52D420D2C1750071EBB6 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				4C2B52D520D2C1810071EBB6 /* URL.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
 		4CC00F7220C1FAA8004244EF /* Style WMS layers */ = {
 			isa = PBXGroup;
 			children = (
@@ -2724,6 +2750,15 @@
 			);
 			name = "Style WMS layers";
 			path = "Layers/Style WMS layers";
+			sourceTree = "<group>";
+		};
+		4CCE7BD420D2BCD5001238F5 /* Distance measurement analysis */ = {
+			isa = PBXGroup;
+			children = (
+				4CCE7BD720D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard */,
+				4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */,
+			);
+			path = "Distance measurement analysis";
 			sourceTree = "<group>";
 		};
 		D90407911FD8602B00BFE07B /* Raster layer (geopackage) */ = {
@@ -3103,6 +3138,7 @@
 				3EABC7B51DB181DD00C161C6 /* ShastaBW.tif in Resources */,
 				3EABC7C91DB1947500C161C6 /* BlendRenderer.storyboard in Resources */,
 				3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */,
+				4CCE7BD820D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard in Resources */,
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
 				3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */,
 				127D29F8200EC5FC00DD6CDC /* ViewshedLocation.storyboard in Resources */,
@@ -3139,6 +3175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EABC7921DB1772000C161C6 /* RGBRendererSettingsVC.swift in Sources */,
+				4CCE7BD620D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift in Sources */,
 				3E39F6D41B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift in Sources */,
 				3EC39C411C9B4857003F6459 /* FeatureLayersViewController.swift in Sources */,
 				3E0225371DB569240049F7F8 /* CategoryCell.swift in Sources */,
@@ -3162,6 +3199,7 @@
 				3EFDE0F81E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift in Sources */,
 				3EABC7A21DB1793000C161C6 /* StretchRendererSettingsVC.swift in Sources */,
 				3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */,
+				4C2B52D620D2C1810071EBB6 /* URL.swift in Sources */,
 				3ED75D041ED39EDF009B1F75 /* FindServiceAreaInteractiveVC.swift in Sources */,
 				3E4BF4441C5AEA6500D85919 /* WorldAddressesViewController.swift in Sources */,
 				3ED028EF1B8E3AA500ACA70D /* FLSelectionViewController.swift in Sources */,

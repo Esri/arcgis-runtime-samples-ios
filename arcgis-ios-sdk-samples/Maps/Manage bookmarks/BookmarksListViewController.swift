@@ -56,7 +56,7 @@ class BookmarksListViewController: UIViewController, UITableViewDataSource, UITa
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookmarkCell")!
         cell.backgroundColor = .clear
         //get the respective bookmark
-        let bookmark = self.bookmarks[(indexPath as NSIndexPath).row]
+        let bookmark = self.bookmarks[indexPath.row]
         //assign the bookmark's name as the title for the cell
         cell.textLabel?.text = bookmark.name
         
@@ -64,7 +64,7 @@ class BookmarksListViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let bookmark = self.bookmarks[(indexPath as NSIndexPath).row]
+        let bookmark = self.bookmarks[indexPath.row]
         //execute the closure if it exists
         if self.selectAction != nil {
             self.selectAction(bookmark.viewpoint!)

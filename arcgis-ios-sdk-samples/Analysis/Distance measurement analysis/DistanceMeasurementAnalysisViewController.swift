@@ -68,7 +68,8 @@ class DistanceMeasurementAnalysisViewController: UIViewController, AGSGeoViewTou
         // Configure the scene view.
         sceneView.scene = scene
         sceneView.touchDelegate = self
-        let camera = AGSCamera(lookAt: locationDistanceMeasurement.startLocation, distance: 200, heading: 0, pitch: 45, roll: 0)
+        let lookAtPoint = AGSEnvelope(min: locationDistanceMeasurement.startLocation, max: locationDistanceMeasurement.endLocation).center
+        let camera = AGSCamera(lookAt: lookAtPoint, distance: 200, heading: 0, pitch: 45, roll: 0)
         sceneView.setViewpointCamera(camera)
         
         // Create the analysis overlay with the location distance measurement

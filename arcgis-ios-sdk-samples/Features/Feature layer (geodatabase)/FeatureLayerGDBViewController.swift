@@ -52,9 +52,4 @@ class FeatureLayerGDBViewController: UIViewController {
         self.mapView.map = map
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }

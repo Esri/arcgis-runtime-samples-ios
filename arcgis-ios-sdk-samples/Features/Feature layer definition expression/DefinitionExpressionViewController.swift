@@ -46,11 +46,6 @@ class DefinitionExpressionViewController: UIViewController {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @IBAction func applyDefinitionExpression() {
         //adding definition expression to show specific features only
         self.featureLayer.definitionExpression = "req_Type = 'Tree Maintenance or Damage'"

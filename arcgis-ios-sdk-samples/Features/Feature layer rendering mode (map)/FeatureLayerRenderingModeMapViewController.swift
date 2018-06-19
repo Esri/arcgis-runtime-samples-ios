@@ -78,10 +78,4 @@ class FeatureLayerRenderingModeMapViewController: UIViewController {
         _zoomed = !_zoomed
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
 }

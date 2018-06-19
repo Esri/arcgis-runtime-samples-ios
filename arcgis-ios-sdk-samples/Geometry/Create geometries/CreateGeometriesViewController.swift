@@ -50,11 +50,6 @@ class CreateGeometriesViewController: UIViewController {
         //use the envelope to set the viewpoint of the map view
         self.mapView.setViewpointGeometry(self.createEnvelope(), padding: 100, completion: nil)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     private func createEnvelope() -> AGSEnvelope {
         //create an envelope using minimum and maximum x,y coordinates and a spatial reference

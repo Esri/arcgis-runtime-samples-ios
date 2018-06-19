@@ -85,9 +85,4 @@ class WebTiledLayerViewController: UIViewController {
         //update web tiled layer
         self.applyWebTiledLayer(at: sender.selectedSegmentIndex)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }

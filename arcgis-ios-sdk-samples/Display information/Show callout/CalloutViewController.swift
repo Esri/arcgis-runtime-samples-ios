@@ -38,11 +38,6 @@ class CalloutViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.setViewpointCenter(AGSPoint(x: -1.2e7, y: 5e6, spatialReference: AGSSpatialReference.webMercator()), scale: 4e7, completion: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - AGSGeoViewTouchDelegate
     
     //user tapped on the map

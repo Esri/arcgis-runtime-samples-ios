@@ -41,11 +41,6 @@ class DisplayGridViewController: UIViewController, UIAdaptivePresentationControl
         mapView.grid = AGSLatitudeLongitudeGrid()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {

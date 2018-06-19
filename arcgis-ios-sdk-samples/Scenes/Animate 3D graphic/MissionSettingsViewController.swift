@@ -67,9 +67,4 @@ class MissionSettingsViewController: UIViewController, HorizontalPickerDelegate 
         self.delegate?.missionSettingsViewController(self, didSelectMissionAtIndex: index)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }

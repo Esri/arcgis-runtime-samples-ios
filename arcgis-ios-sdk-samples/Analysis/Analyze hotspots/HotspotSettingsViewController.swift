@@ -48,11 +48,6 @@ class HotspotSettingsViewController: UIViewController, UITextFieldDelegate {
         tapGestureRecognizer.numberOfTouchesRequired = 1
         self.view.addGestureRecognizer(tapGestureRecognizer)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     //MARK: - Actions
     

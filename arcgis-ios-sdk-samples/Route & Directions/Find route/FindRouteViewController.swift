@@ -60,11 +60,6 @@ class FindRouteViewController: UIViewController {
         self.getDefaultParameters()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //add hard coded stops to the map view
     func addStops() {
         self.stop1Geometry = AGSPoint(x: -13041171.537945, y: 3860988.271378, spatialReference: AGSSpatialReference(wkid: 3857))

@@ -56,11 +56,6 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.toggleToolbar(false)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func toggleToolbar(_ on:Bool) {
         
         if #available(iOS 11.0, *) {

@@ -46,11 +46,6 @@ class SwitchBasemapViewController: UIViewController, UITableViewDataSource, UITa
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SwitchBasemapViewController"]
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func buttonAction(_ sender: Any) {
         self.blurView.isHidden = !self.blurView.isHidden

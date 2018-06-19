@@ -48,11 +48,6 @@ class MapViewScreenshotViewController: UIViewController {
         self.overlayImageView.layer.borderWidth = 2
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - Actions
     
     //hide the screenshot overlay view

@@ -46,11 +46,6 @@ class ManualCacheViewController: UIViewController {
         self.map.operationalLayers.add(featureLayer)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - Actions
     
     @IBAction func populateAction(_ sender: AnyObject) {

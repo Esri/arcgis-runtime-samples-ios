@@ -98,9 +98,4 @@ class SceneSymbolsViewController: UIViewController {
     private func randFloat() -> CGFloat {
         return CGFloat(arc4random() % 256) / 256
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }

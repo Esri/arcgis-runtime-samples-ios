@@ -44,11 +44,6 @@ class SimpleMarkerSymbolViewController: UIViewController {
         self.addSimpleMarkerSymbol()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     private func addSimpleMarkerSymbol() {
         //create a simple marker symbol
         let symbol = AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 12)

@@ -52,11 +52,6 @@ class GenerateGeodatabaseViewController: UIViewController {
         self.mapView.map = self.map
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func addFeatureLayers() {
         
         self.syncTask.load { [weak self] (error) -> Void in

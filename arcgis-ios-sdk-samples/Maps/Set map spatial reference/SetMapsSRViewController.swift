@@ -39,10 +39,5 @@ class SetMapsSRViewController: UIViewController {
         //assing the map to the map view
         self.mapView.map = self.map
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
 }

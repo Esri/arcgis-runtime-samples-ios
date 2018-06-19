@@ -46,11 +46,6 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         //initilaize geoprocessing task with the url of the service
         self.geoprocessingTask = AGSGeoprocessingTask(url: URL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/911CallsHotspot/GPServer/911%20Calls%20Hotspot")!)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     private func analyzeHotspots(_ fromDate: String, toDate: String) {
         

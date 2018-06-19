@@ -61,11 +61,6 @@ class ScenePropertiesExpressionsViewController: UIViewController {
         self.coneGraphic = AGSGraphic(geometry: conePoint, symbol: coneSymbol, attributes: coneAttributes)
         graphicsOverlay.graphics.add(self.coneGraphic)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func headingSliderValueChanged(_ slider: UISlider) {
         coneGraphic.attributes["HEADING"] = slider.value

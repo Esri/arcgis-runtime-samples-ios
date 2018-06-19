@@ -36,11 +36,6 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func loadHTMLPage(filename:String) {
         if let content = self.contentOfFile(filename) {
             self.setupToolbarTitle(filename, arrowPointingDown: true)

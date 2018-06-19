@@ -52,11 +52,6 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.sketchToolbar.isHidden = true
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     private func dismissFeatureTemplatePickerVC() {
         self.dismiss(animated: true, completion: nil)
     }

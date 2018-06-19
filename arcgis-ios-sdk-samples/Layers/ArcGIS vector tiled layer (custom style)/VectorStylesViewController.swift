@@ -34,11 +34,6 @@ class VectorStylesViewController: UIViewController, UITableViewDataSource, UITab
         self.view.layer.cornerRadius = 10
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

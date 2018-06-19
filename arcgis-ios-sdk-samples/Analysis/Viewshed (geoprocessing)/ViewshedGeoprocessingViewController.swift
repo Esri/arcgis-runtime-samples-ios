@@ -53,11 +53,6 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
         
         self.geoprocessingTask = AGSGeoprocessingTask(url: URL(string: viewshedURLString)!)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     private func addGraphicForPoint(_ point: AGSPoint) {
         //remove existing graphics

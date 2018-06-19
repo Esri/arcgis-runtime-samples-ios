@@ -54,11 +54,6 @@ class VectorTileLayerViewController: UIViewController {
         self.mapView.setViewpointCenter(AGSPoint(x: -80.18, y: 25.778135, spatialReference: AGSSpatialReference.wgs84()), scale: 150000, completion: nil)
 
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func segmentedControlChanged(_ sender:UISegmentedControl) {
         var urlString:String

@@ -124,9 +124,4 @@ class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate
         self.coordinateStringsFromPoint(mapPoint)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }

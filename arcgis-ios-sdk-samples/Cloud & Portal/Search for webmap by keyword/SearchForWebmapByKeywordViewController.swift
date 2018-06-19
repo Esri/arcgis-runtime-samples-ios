@@ -37,11 +37,6 @@ class SearchForWebmapByKeywordViewController: UIViewController, WebMapsCollectio
     
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SearchForWebmapByKeywordViewController", "WebMapCell", "WebMapsCollectionViewController", "WebMapViewController"]
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
  
     func searchForWebMap(_ keyword:String) {
         let dateFormatter = DateFormatter()

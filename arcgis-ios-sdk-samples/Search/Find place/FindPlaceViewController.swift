@@ -107,11 +107,6 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.setupTextFieldLeftViews()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //method to show search icon and pin icon for the textfields
     private func setupTextFieldLeftViews() {
         var leftView = self.textFieldViewWithImage("SearchIcon")

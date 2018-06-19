@@ -60,11 +60,6 @@ class StretchRendererSettingsVC: UIViewController, UITableViewDataSource, Stretc
         self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

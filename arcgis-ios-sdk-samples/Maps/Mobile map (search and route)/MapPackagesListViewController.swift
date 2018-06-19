@@ -36,11 +36,6 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
         self.fetchMapPackages()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func fetchMapPackages() {
         //load map packages from the bundle
         let bundleMMPKPaths = Bundle.main.paths(forResourcesOfType: "mmpk", inDirectory: nil)

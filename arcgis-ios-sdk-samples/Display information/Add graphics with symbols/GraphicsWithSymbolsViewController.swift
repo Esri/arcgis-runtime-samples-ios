@@ -46,11 +46,6 @@ class GraphicsWithSymbolsViewController: UIViewController {
         addText(to: graphicsOverlay)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     private func addBuoyPoints(to graphicsOverlay:AGSGraphicsOverlay) {
         
         //define the buoy locations

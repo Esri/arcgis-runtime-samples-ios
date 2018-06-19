@@ -80,11 +80,6 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIAdaptive
         self.map.bookmarks.add(bookmark)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - Actions
     
     @IBAction private func addAction() {

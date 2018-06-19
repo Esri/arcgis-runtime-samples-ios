@@ -53,11 +53,6 @@ class SetViewpointViewController: UIViewController {
 
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func geometryFromTextFile(_ filename:String) -> AGSGeometry? {
         if let filepath = Bundle.main.path(forResource: filename, ofType: "txt") {
             if let jsonString = try? String(contentsOfFile: filepath, encoding: String.Encoding.utf8) {

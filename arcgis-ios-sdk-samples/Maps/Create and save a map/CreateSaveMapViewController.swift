@@ -75,15 +75,15 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     private func showSuccess() {
         let alertController = UIAlertController(title: "Saved successfully", message: nil, preferredStyle: UIAlertControllerStyle.alert)
         
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { [weak self] (action:UIAlertAction!) -> Void in
+        let okAction = UIAlertAction(title: "Ok", style: .cancel) { [weak self] _ in
             self?.dismiss(animated: true, completion: nil)
-            })
+        }
         
-        let openAction = UIAlertAction(title: "Open in Safari", style: UIAlertActionStyle.default, handler: { [weak self] (action:UIAlertAction!) -> Void in
+        let openAction = UIAlertAction(title: "Open in Safari", style: .default) { [weak self] _ in
             if let weakSelf = self {
                 UIApplication.shared.open(URL(string: "\(weakSelf.webmapURL)\(weakSelf.mapView.map!.item!.itemID)")!, options: [:])
             }
-        })
+        }
         
         alertController.addAction(okAction)
         alertController.addAction(openAction)

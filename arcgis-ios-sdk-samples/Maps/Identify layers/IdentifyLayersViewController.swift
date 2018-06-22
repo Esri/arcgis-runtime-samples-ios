@@ -155,7 +155,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     private func showAlertController(_ title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "Ok", style: .cancel)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }

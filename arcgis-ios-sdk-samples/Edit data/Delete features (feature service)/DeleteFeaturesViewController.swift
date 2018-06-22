@@ -119,7 +119,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         alertController.addAction(alertAction)
         
         //action for cancel
-        let cancelAlertAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: nil)
+        let cancelAlertAction = UIAlertAction(title: "No", style: .cancel)
         alertController.addAction(cancelAlertAction)
         
         //present alert controller

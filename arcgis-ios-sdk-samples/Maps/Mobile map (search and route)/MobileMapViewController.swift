@@ -54,11 +54,6 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         //route task
         self.setupRouteTask()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     private func symbolForStopGraphic(isIndexRequired: Bool, index: Int?) -> AGSSymbol {
         

@@ -45,11 +45,6 @@ class OverrideRendererViewController: UIViewController {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @IBAction private func overrideRenderer() {
         //create a symbol to be used in the renderer
         let symbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.solid, color: .blue, width: 2)

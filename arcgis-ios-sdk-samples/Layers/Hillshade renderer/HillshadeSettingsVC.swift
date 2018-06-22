@@ -37,11 +37,6 @@ class HillshadeSettingsVC: UIViewController {
         self.view.layer.cornerRadius = 10
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func selectedSlope() -> AGSSlopeType {
         switch self.horizontalPicker.selectedIndex {
         case 0:

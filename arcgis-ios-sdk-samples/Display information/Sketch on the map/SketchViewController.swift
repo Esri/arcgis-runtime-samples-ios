@@ -100,9 +100,4 @@ class SketchViewController: UIViewController {
     @IBAction func clear() {
         self.sketchEditor.clearGeometry()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }

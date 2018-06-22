@@ -57,11 +57,6 @@ class ExportTilesViewController: UIViewController {
         self.previewMapView.layer.borderWidth = 8
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func setupExtentView() {
         self.extentView.layer.borderColor = UIColor.red.cgColor
         self.extentView.layer.borderWidth = 2

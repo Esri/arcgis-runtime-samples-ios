@@ -53,11 +53,6 @@ class MapRotationViewController: UIViewController {
         compassButton.transform = CGAffineTransform(rotationAngle: CGFloat(-mapView.rotation * Double.pi / 180))
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - Actions
     
     //rotate the map view based on the value of the slider

@@ -75,9 +75,4 @@ class SurfacePlacementsViewController: UIViewController {
         return AGSTextSymbol(text: text, color: .blue, size: 20, horizontalAlignment: .left, verticalAlignment: .middle)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }

@@ -65,11 +65,6 @@ class GridSettingsViewController: UIViewController {
         self.stylizeUI()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     private func stylizeUI() {
         let buttonColor = UIColor(red: 0, green: 122.0/255.0, blue: 1, alpha: 1)
         

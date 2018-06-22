@@ -49,11 +49,6 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.mapView.touchDelegate = self
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func showCallout(_ feature:AGSFeature, tapLocation:AGSPoint?) {
         let title = feature.attributes["typdamage"] as! String
         self.mapView.callout.title = title

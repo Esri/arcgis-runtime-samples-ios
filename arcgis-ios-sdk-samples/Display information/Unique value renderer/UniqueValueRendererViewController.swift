@@ -49,11 +49,6 @@ class UniqueValueRendererViewController: UIViewController {
         self.addUniqueValueRenderer()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     private func addUniqueValueRenderer() {
         //instantiate a new unique value renderer
         let renderer = AGSUniqueValueRenderer()

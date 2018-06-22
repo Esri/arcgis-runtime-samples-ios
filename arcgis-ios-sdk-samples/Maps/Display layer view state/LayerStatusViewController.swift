@@ -93,11 +93,6 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
             self.viewStatusArray.append("Unknown")
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     //return string for current status name
     func viewStatusString(_ status: AGSLayerViewStatus) -> String {

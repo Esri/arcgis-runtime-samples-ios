@@ -88,11 +88,6 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             index = index + 1
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func nodesByDisplayNames(_ names:[String]) -> [Node] {
         var nodes = [Node]()

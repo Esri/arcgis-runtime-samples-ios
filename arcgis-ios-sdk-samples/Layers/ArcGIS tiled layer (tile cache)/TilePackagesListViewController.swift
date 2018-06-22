@@ -35,11 +35,6 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
         self.fetchTilePackages()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func fetchTilePackages() {
         self.bundleTPKPaths = Bundle.main.paths(forResourcesOfType: "tpk", inDirectory: nil)
         self.tableView.reloadData()

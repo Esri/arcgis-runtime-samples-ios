@@ -81,8 +81,10 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         
         //logic to show the extent search button
         self.mapView.viewpointChangedHandler = { [weak self] () -> Void in
-            if self?.canDoExtentSearch ?? false {
-                self?.extentSearchButton.isHidden = false
+            DispatchQueue.main.async {
+                if self?.canDoExtentSearch ?? false {
+                    self?.extentSearchButton.isHidden = false
+                }
             }
         }
         
@@ -105,11 +107,6 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         
         //add the left view images for both the textfields
         self.setupTextFieldLeftViews()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //method to show search icon and pin icon for the textfields

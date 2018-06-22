@@ -50,11 +50,6 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         self.addPolygons()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     private func addPolygons() {
         
         //polygon 1

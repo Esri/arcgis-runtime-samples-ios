@@ -33,11 +33,6 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.clipsToBounds = true
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: tableview data source
     
     func numberOfSections(in tableView: UITableView) -> Int {

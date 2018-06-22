@@ -30,11 +30,6 @@ class BookmarksListViewController: UIViewController, UITableViewDataSource, UITa
     
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //executed for tableview row selection
     func setSelectAction(_ action : @escaping ((AGSViewpoint) -> Void)) {
         self.selectAction = action

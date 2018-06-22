@@ -46,12 +46,6 @@ class PictureMarkerSymbolsViewController: UIViewController {
         //add picture marker symbol using image in assets
         self.addPictureMarkerSymbolFromImage()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     
     private func addPictureMarkerSymbolFromURL() {
         let url = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0/images/e82f744ebb069bb35b234b3fea46deae")!

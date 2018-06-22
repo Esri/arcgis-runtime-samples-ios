@@ -223,7 +223,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             self?.addMap()
         }
         
-        let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        let noAction = UIAlertAction(title: "No", style: .cancel)
         
         alertController.addAction(noAction)
         alertController.addAction(yesAction)

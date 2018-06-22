@@ -89,7 +89,7 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIAdaptive
             
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         let doneAction = UIAlertAction(title: "Done", style: .default) { [weak self] (action: UIAlertAction) in
             guard let weakSelf = self else {
                 return

@@ -364,14 +364,14 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     @IBAction func switchToServiceMode(_ sender:AnyObject) {
         if self.generatedGeodatabase.hasLocalEdits() {
-            let yesAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { [weak self] (action:UIAlertAction) -> Void in
+            let yesAction = UIAlertAction(title: "Yes", style: .default) { [weak self] _ in
                 self?.syncAction({ () -> Void in
                     self?.switchToServiceMode()
                 })
-            })
-            let noAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: { [weak self] (action: UIAlertAction) -> Void in
+            }
+            let noAction = UIAlertAction(title: "No", style: .cancel) { [weak self] _ in
                 self?.switchToServiceMode()
-            })
+            }
             
             let alert = UIAlertController(title: nil, message: "Would you like to sync the changes before switching?", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(noAction)

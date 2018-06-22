@@ -110,7 +110,7 @@ class StatisticalQueryViewController: UIViewController {
     
     private func showResult(message: String) {
         let alertController = UIAlertController(title: "Statistical Query Results", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "OK", style: .cancel)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }

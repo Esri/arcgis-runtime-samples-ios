@@ -173,7 +173,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     //MARK: - SaveAsVCDelegate
     
     func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String?) {
-        SVProgressHUD.show(withStatus: "Saving", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Saving")
         //set the initial viewpoint from map view
         self.mapView.map?.initialViewpoint = self.mapView.currentViewpoint(with: AGSViewpointType.centerAndScale)
         
@@ -189,7 +189,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
                     //dismiss progress hud
                     SVProgressHUD.dismiss()
                     if let error = error {
-                        SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                        SVProgressHUD.showError(withStatus: error.localizedDescription)
                     }
                     else {
                         self?.showSuccess()

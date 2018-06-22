@@ -81,7 +81,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     //MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        SVProgressHUD.show(withStatus: "Loading", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Loading")
         self.mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) -> Void in
 
             if let error = error {
@@ -102,7 +102,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
                     self?.present(self!.popupsVC, animated: true, completion: nil)
                 }
                 else {
-                    SVProgressHUD.showInfo(withStatus: "No features selected", maskType: .gradient)
+                    SVProgressHUD.showInfo(withStatus: "No features selected")
                 }
             }
         }
@@ -306,7 +306,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
             let selectedLayerIds = self.featureLayersVC.selectedLayerIds
             
             if selectedLayerIds.count == 0 {
-                SVProgressHUD.showError(withStatus: "Please select at least one layer", maskType: .gradient)
+                SVProgressHUD.showError(withStatus: "Please select at least one layer")
                 return
             }
             
@@ -345,7 +345,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         
         //start the job
         self.generateJob.start(statusHandler: { (status: AGSJobStatus) -> Void in
-            SVProgressHUD.show(withStatus: status.statusString(), maskType: .gradient)
+            SVProgressHUD.show(withStatus: status.statusString())
             
         }) { [weak self] (object: AnyObject?, error: Error?) -> Void in
             
@@ -390,7 +390,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     func syncAction(_ completion: (() -> Void)?) {
         if !self.generatedGeodatabase.hasLocalEdits() {
-            SVProgressHUD.showInfo(withStatus: "No local edits", maskType: .gradient)
+            SVProgressHUD.showInfo(withStatus: "No local edits")
             return
         }
         
@@ -406,7 +406,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.syncJob = self.syncTask.syncJob(with: params, geodatabase: self.generatedGeodatabase)
         self.syncJob.start(statusHandler: { (status: AGSJobStatus) -> Void in
             
-            SVProgressHUD.show(withStatus: status.statusString(), maskType: .gradient)
+            SVProgressHUD.show(withStatus: status.statusString())
             
         }, completion: { (results: [AGSSyncLayerResult]?, error: Error?) -> Void in
             if let error = error {
@@ -486,7 +486,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         if self.liveMode {
             
             //Tell the user edits are being saved int the background
-            SVProgressHUD.show(withStatus: "Saving feature details...", maskType: .gradient)
+            SVProgressHUD.show(withStatus: "Saving feature details...")
             
             (feature.featureTable as! AGSServiceFeatureTable).applyEdits { (featureEditResult: [AGSFeatureEditResult]?, error: Error?) -> Void in
                 

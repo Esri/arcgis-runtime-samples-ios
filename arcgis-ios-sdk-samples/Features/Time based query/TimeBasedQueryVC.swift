@@ -74,7 +74,7 @@ class TimeBasedQueryVC: UIViewController {
             
             //check for error
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 //the resulting features should be displayed on the map

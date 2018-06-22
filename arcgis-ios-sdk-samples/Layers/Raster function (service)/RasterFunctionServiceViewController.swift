@@ -37,7 +37,7 @@ class RasterFunctionServiceViewController: UIViewController {
         imageServiceRaster = AGSImageServiceRaster(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NLCDLandCover2001/ImageServer")!)
         imageServiceRaster?.load { [weak self] (error) in
             guard error == nil else {
-                SVProgressHUD.show(withStatus: error!.localizedDescription, maskType: .gradient)
+                SVProgressHUD.show(withStatus: error!.localizedDescription)
                 return
             }
             

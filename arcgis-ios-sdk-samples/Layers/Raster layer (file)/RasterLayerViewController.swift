@@ -50,7 +50,7 @@ class RasterLayerViewController: UIViewController {
         self.rasterLayer.load { [weak self] (error) in
             
             guard error == nil else {
-                SVProgressHUD.show(withStatus: error!.localizedDescription, maskType: .gradient)
+                SVProgressHUD.show(withStatus: error!.localizedDescription)
                 return
             }
             

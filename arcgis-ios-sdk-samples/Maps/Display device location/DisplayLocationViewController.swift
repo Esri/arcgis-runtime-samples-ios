@@ -78,7 +78,7 @@ class DisplayLocationViewController: UIViewController, CustomContextSheetDelegat
         self.mapView.locationDisplay.autoPanMode = autoPanMode
         self.mapView.locationDisplay.start { (error:Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
                 
                 //update context sheet to Stop
                 self.sheet.selectedIndex = 0

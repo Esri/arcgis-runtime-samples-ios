@@ -76,7 +76,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     private func identifyLayers(_ screen: CGPoint) {
         //show progress hud
-        SVProgressHUD.show(withStatus: "Identifying", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Identifying")
         
         self.mapView.identifyLayers(atScreenPoint: screen, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
             
@@ -84,7 +84,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
             SVProgressHUD.dismiss()
             
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 self.handleIdentifyResults(results!)

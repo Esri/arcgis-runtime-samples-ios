@@ -57,7 +57,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     }
     
     func applyEdits() {
-        SVProgressHUD.show(withStatus: "Applying edits", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Applying edits")
         
         self.featureTable.applyEdits(completion: { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
             if let error = error {
@@ -116,7 +116,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     //MARK: - EAOptionsVCDelegate
     
     func optionsViewController(_ optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int) {
-        SVProgressHUD.show(withStatus: "Updating", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Updating")
         
         self.selectedFeature.attributes["typdamage"] = self.types[index]
         self.featureTable.update(self.selectedFeature) { [weak self] (error: Error?) -> Void in

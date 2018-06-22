@@ -59,7 +59,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     func applyEdits() {
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Applying edits", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Applying edits")
         
         (self.featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
             

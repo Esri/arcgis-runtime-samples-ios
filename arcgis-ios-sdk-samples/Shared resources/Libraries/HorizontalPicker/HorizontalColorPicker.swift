@@ -16,9 +16,8 @@
 
 import UIKit
 
-@objc
 protocol HorizontalColorPickerDelegate: class {
-    @objc optional func horizontalColorPicker(_ horizontalColorPicker:HorizontalColorPicker, didUpdateSelectedColor color: UIColor)
+    func horizontalColorPicker(_ horizontalColorPicker:HorizontalColorPicker, didUpdateSelectedColor color: UIColor)
 }
 
 @IBDesignable
@@ -112,7 +111,7 @@ class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionVie
         
         // Fire delegate
         if let selectedColor = selectedColor {
-            delegate?.horizontalColorPicker?(self, didUpdateSelectedColor: selectedColor)
+            delegate?.horizontalColorPicker(self, didUpdateSelectedColor: selectedColor)
         }
     }
     

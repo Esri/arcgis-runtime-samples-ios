@@ -809,16 +809,16 @@
 		3E4B05EB1B39EF250072E514 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		3E4B05EC1B39EF250072E514 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		3E4B05ED1B39EF250072E514 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
-		3E4BF4411C5AE98300D85919 /* FindAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindAddressViewController.swift; path = "Search/Find address/FindAddressViewController.swift"; sourceTree = "<group>"; };
-		3E4BF4431C5AEA6500D85919 /* WorldAddressesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorldAddressesViewController.swift; path = "Search/Find address/WorldAddressesViewController.swift"; sourceTree = "<group>"; };
-		3E4BF4451C5AED5100D85919 /* FindAddress.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FindAddress.storyboard; path = "Search/Find address/FindAddress.storyboard"; sourceTree = "<group>"; };
-		3E4BF4471C5AEF3D00D85919 /* ReverseGeocode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ReverseGeocode.storyboard; path = "Search/Reverse geocode/ReverseGeocode.storyboard"; sourceTree = "<group>"; };
-		3E4BF4491C5AEF8800D85919 /* ReverseGeocodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReverseGeocodeViewController.swift; path = "Search/Reverse geocode/ReverseGeocodeViewController.swift"; sourceTree = "<group>"; };
-		3E4BF44B1C5AF04300D85919 /* FindPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindPlaceViewController.swift; path = "Search/Find place/FindPlaceViewController.swift"; sourceTree = "<group>"; };
-		3E4BF44D1C5AF0AD00D85919 /* FindPlace.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FindPlace.storyboard; path = "Search/Find place/FindPlace.storyboard"; sourceTree = "<group>"; };
-		3E4BF4551C5BD66C00D85919 /* OfflineGeocodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineGeocodeViewController.swift; path = "Search/Offline geocode/OfflineGeocodeViewController.swift"; sourceTree = "<group>"; };
-		3E4BF4571C5BD6C400D85919 /* SanDiegoAddressesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SanDiegoAddressesViewController.swift; path = "Search/Offline geocode/SanDiegoAddressesViewController.swift"; sourceTree = "<group>"; };
-		3E4BF4591C5BD77300D85919 /* OfflineGeocode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OfflineGeocode.storyboard; path = "Search/Offline geocode/OfflineGeocode.storyboard"; sourceTree = "<group>"; };
+		3E4BF4411C5AE98300D85919 /* FindAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindAddressViewController.swift; sourceTree = "<group>"; };
+		3E4BF4431C5AEA6500D85919 /* WorldAddressesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldAddressesViewController.swift; sourceTree = "<group>"; };
+		3E4BF4451C5AED5100D85919 /* FindAddress.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FindAddress.storyboard; sourceTree = "<group>"; };
+		3E4BF4471C5AEF3D00D85919 /* ReverseGeocode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReverseGeocode.storyboard; sourceTree = "<group>"; };
+		3E4BF4491C5AEF8800D85919 /* ReverseGeocodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeViewController.swift; sourceTree = "<group>"; };
+		3E4BF44B1C5AF04300D85919 /* FindPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindPlaceViewController.swift; sourceTree = "<group>"; };
+		3E4BF44D1C5AF0AD00D85919 /* FindPlace.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FindPlace.storyboard; sourceTree = "<group>"; };
+		3E4BF4551C5BD66C00D85919 /* OfflineGeocodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineGeocodeViewController.swift; sourceTree = "<group>"; };
+		3E4BF4571C5BD6C400D85919 /* SanDiegoAddressesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SanDiegoAddressesViewController.swift; sourceTree = "<group>"; };
+		3E4BF4591C5BD77300D85919 /* OfflineGeocode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OfflineGeocode.storyboard; sourceTree = "<group>"; };
 		3E4BF4781C5BDDCA00D85919 /* san-diego-locator.loc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "san-diego-locator.loc"; sourceTree = "<group>"; };
 		3E4BF4791C5BDDCA00D85919 /* san-diego-locator.loc.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "san-diego-locator.loc.xml"; sourceTree = "<group>"; };
 		3E4BF47A1C5BDDCA00D85919 /* san-diego-locator.locb */ = {isa = PBXFileReference; lastKnownFileType = file; path = "san-diego-locator.locb"; sourceTree = "<group>"; };
@@ -1531,7 +1531,7 @@
 				3E4BF43F1C5AC6B500D85919 /* Find place */,
 				3E4BF43E1C5AC6A400D85919 /* Offline geocode */,
 			);
-			name = Search;
+			path = Search;
 			sourceTree = "<group>";
 		};
 		3E4BF43D1C5AC68A00D85919 /* Find address */ = {
@@ -1541,7 +1541,7 @@
 				3E4BF4431C5AEA6500D85919 /* WorldAddressesViewController.swift */,
 				3E4BF4451C5AED5100D85919 /* FindAddress.storyboard */,
 			);
-			name = "Find address";
+			path = "Find address";
 			sourceTree = "<group>";
 		};
 		3E4BF43E1C5AC6A400D85919 /* Offline geocode */ = {
@@ -1551,7 +1551,7 @@
 				3E4BF4571C5BD6C400D85919 /* SanDiegoAddressesViewController.swift */,
 				3E4BF4591C5BD77300D85919 /* OfflineGeocode.storyboard */,
 			);
-			name = "Offline geocode";
+			path = "Offline geocode";
 			sourceTree = "<group>";
 		};
 		3E4BF43F1C5AC6B500D85919 /* Find place */ = {
@@ -1560,7 +1560,7 @@
 				3E4BF44B1C5AF04300D85919 /* FindPlaceViewController.swift */,
 				3E4BF44D1C5AF0AD00D85919 /* FindPlace.storyboard */,
 			);
-			name = "Find place";
+			path = "Find place";
 			sourceTree = "<group>";
 		};
 		3E4BF4401C5AE8A200D85919 /* Reverse geocode */ = {
@@ -1569,7 +1569,7 @@
 				3E4BF4491C5AEF8800D85919 /* ReverseGeocodeViewController.swift */,
 				3E4BF4471C5AEF3D00D85919 /* ReverseGeocode.storyboard */,
 			);
-			name = "Reverse geocode";
+			path = "Reverse geocode";
 			sourceTree = "<group>";
 		};
 		3E4BF45B1C5BD7A900D85919 /* Tile packages */ = {

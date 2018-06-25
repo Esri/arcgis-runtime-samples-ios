@@ -838,8 +838,8 @@
 		3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = streetmap_SD.tpk; path = "Shared resources/Tile packages/streetmap_SD.tpk"; sourceTree = "<group>"; };
 		3E54D2321CC697F100BB9904 /* GraphicDrawOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphicDrawOrderViewController.swift; path = "Display information/Control graphic draw order/GraphicDrawOrderViewController.swift"; sourceTree = "<group>"; };
 		3E54D2341CC6985200BB9904 /* GraphicDrawOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GraphicDrawOrder.storyboard; path = "Display information/Control graphic draw order/GraphicDrawOrder.storyboard"; sourceTree = "<group>"; };
-		3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayerURLViewController.swift; path = "Features/Feature layer (feature service)/FeatureLayerURLViewController.swift"; sourceTree = "<group>"; };
-		3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FeatureLayerURL.storyboard; path = "Features/Feature layer (feature service)/FeatureLayerURL.storyboard"; sourceTree = "<group>"; };
+		3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerURLViewController.swift; sourceTree = "<group>"; };
+		3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerURL.storyboard; sourceTree = "<group>"; };
 		3E5E09351EF2E8E200FF3454 /* GenerateOfflineMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GenerateOfflineMap.storyboard; sourceTree = "<group>"; };
 		3E5E09361EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateOfflineMapViewController.swift; sourceTree = "<group>"; };
 		3E5E093B1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddDeleteRelatedFeatures.storyboard; sourceTree = "<group>"; };
@@ -936,8 +936,8 @@
 		3EC39C311C9B0DF6003F6459 /* ExportTilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportTilesViewController.swift; sourceTree = "<group>"; };
 		3EC39C331C9B106D003F6459 /* ExportTiles.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ExportTiles.storyboard; sourceTree = "<group>"; };
 		3EC39C361C9B1ADA003F6459 /* AGSExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AGSExtensions.swift; path = "Shared resources/Extensions/AGSExtensions.swift"; sourceTree = "<group>"; };
-		3EC39C391C9B23DF003F6459 /* GenerateGeodatabase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GenerateGeodatabase.storyboard; path = "Features/Generate geodatabase/GenerateGeodatabase.storyboard"; sourceTree = "<group>"; };
-		3EC39C3B1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenerateGeodatabaseViewController.swift; path = "Features/Generate geodatabase/GenerateGeodatabaseViewController.swift"; sourceTree = "<group>"; };
+		3EC39C391C9B23DF003F6459 /* GenerateGeodatabase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GenerateGeodatabase.storyboard; sourceTree = "<group>"; };
+		3EC39C3B1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateGeodatabaseViewController.swift; sourceTree = "<group>"; };
 		3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineEditingViewController.swift; path = "Edit data/Offline edit and sync/OfflineEditingViewController.swift"; sourceTree = "<group>"; };
 		3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayersViewController.swift; path = "Edit data/Offline edit and sync/FeatureLayersViewController.swift"; sourceTree = "<group>"; };
 		3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OfflineEditing.storyboard; path = "Edit data/Offline edit and sync/OfflineEditing.storyboard"; sourceTree = "<group>"; };
@@ -1122,8 +1122,7 @@
 				09607F841FDB61DC00FA43B6 /* TimeBasedQuery.storyboard */,
 				09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */,
 			);
-			name = "Time based query";
-			path = "Features/Time based query";
+			path = "Time based query";
 			sourceTree = "<group>";
 		};
 		096A55DC1FD8677800D2E91B /* Raster layer (service) */ = {
@@ -1657,7 +1656,7 @@
 				3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */,
 				3E5848FF1B9123E900AB3CE9 /* FeatureLayerURL.storyboard */,
 			);
-			name = "Feature layer (feature service)";
+			path = "Feature layer (feature service)";
 			sourceTree = "<group>";
 		};
 		3E5E09341EF2E8E200FF3454 /* Generate offline map */ = {
@@ -1676,8 +1675,7 @@
 				3E5E093C1EF4567A00FF3454 /* AddDeleteRelatedFeaturesVC.swift */,
 				3E5E093D1EF4567A00FF3454 /* RelatedFeaturesViewController.swift */,
 			);
-			name = "Add delete related features";
-			path = "Features/Add delete related features";
+			path = "Add delete related features";
 			sourceTree = "<group>";
 		};
 		3E5E09491EF850BA00FF3454 /* Manage sublayers */ = {
@@ -1840,8 +1838,7 @@
 				3E8A257F1D36B6E300D14F08 /* FeatureLayerGDB.storyboard */,
 				3E8A25801D36B6E300D14F08 /* FeatureLayerGDBViewController.swift */,
 			);
-			name = "Feature layer (geodatabase)";
-			path = "Features/Feature layer (geodatabase)";
+			path = "Feature layer (geodatabase)";
 			sourceTree = "<group>";
 		};
 		3E8A25881D36B89400D14F08 /* Geodatabases */ = {
@@ -2069,7 +2066,7 @@
 				3EC39C391C9B23DF003F6459 /* GenerateGeodatabase.storyboard */,
 				3EC39C3B1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift */,
 			);
-			name = "Generate geodatabase";
+			path = "Generate geodatabase";
 			sourceTree = "<group>";
 		};
 		3EC39C3D1C9B4754003F6459 /* Offline edit and sync */ = {
@@ -2146,7 +2143,7 @@
 				3E5E093A1EF4567A00FF3454 /* Add delete related features */,
 				09607F7C1FDB60EC00FA43B6 /* Time based query */,
 			);
-			name = Features;
+			path = Features;
 			sourceTree = "<group>";
 		};
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
@@ -2364,8 +2361,7 @@
 				3ED028BD1B8E3AA500ACA70D /* OverrideRenderer.storyboard */,
 				3ED028BE1B8E3AA500ACA70D /* OverrideRendererViewController.swift */,
 			);
-			name = "Change feature layer renderer";
-			path = "Features/Change feature layer renderer";
+			path = "Change feature layer renderer";
 			sourceTree = "<group>";
 		};
 		3ED028C01B8E3AA500ACA70D /* Feature layer definition expression */ = {
@@ -2374,8 +2370,7 @@
 				3ED028C11B8E3AA500ACA70D /* DefinitionExpression.storyboard */,
 				3ED028C21B8E3AA500ACA70D /* DefinitionExpressionViewController.swift */,
 			);
-			name = "Feature layer definition expression";
-			path = "Features/Feature layer definition expression";
+			path = "Feature layer definition expression";
 			sourceTree = "<group>";
 		};
 		3ED028C61B8E3AA500ACA70D /* Feature layer query */ = {
@@ -2384,8 +2379,7 @@
 				3ED028C71B8E3AA500ACA70D /* FLQuery.storyboard */,
 				3ED028C81B8E3AA500ACA70D /* FLQueryViewController.swift */,
 			);
-			name = "Feature layer query";
-			path = "Features/Feature layer query";
+			path = "Feature layer query";
 			sourceTree = "<group>";
 		};
 		3ED028CC1B8E3AA500ACA70D /* Feature layer selection */ = {
@@ -2394,8 +2388,7 @@
 				3ED028CD1B8E3AA500ACA70D /* FLSelection.storyboard */,
 				3ED028CE1B8E3AA500ACA70D /* FLSelectionViewController.swift */,
 			);
-			name = "Feature layer selection";
-			path = "Features/Feature layer selection";
+			path = "Feature layer selection";
 			sourceTree = "<group>";
 		};
 		3ED028D31B8E3AA500ACA70D /* Service feature table (cache) */ = {
@@ -2404,8 +2397,7 @@
 				3ED028D41B8E3AA500ACA70D /* OnInteractionCache.storyboard */,
 				3ED028D51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift */,
 			);
-			name = "Service feature table (cache)";
-			path = "Features/Service feature table (cache)";
+			path = "Service feature table (cache)";
 			sourceTree = "<group>";
 		};
 		3ED028D71B8E3AA500ACA70D /* Service feature table (manual cache) */ = {
@@ -2414,8 +2406,7 @@
 				3ED028D81B8E3AA500ACA70D /* ManualCache.storyboard */,
 				3ED028D91B8E3AA500ACA70D /* ManualCacheViewController.swift */,
 			);
-			name = "Service feature table (manual cache)";
-			path = "Features/Service feature table (manual cache)";
+			path = "Service feature table (manual cache)";
 			sourceTree = "<group>";
 		};
 		3ED028DB1B8E3AA500ACA70D /* Service feature table (no cache) */ = {
@@ -2424,8 +2415,7 @@
 				3ED028DC1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard */,
 				3ED028DD1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift */,
 			);
-			name = "Service feature table (no cache)";
-			path = "Features/Service feature table (no cache)";
+			path = "Service feature table (no cache)";
 			sourceTree = "<group>";
 		};
 		3ED028FD1B8E3AB300ACA70D /* Add graphics with renderer */ = {
@@ -2614,8 +2604,7 @@
 				3EEB2B951EB9695F00B52513 /* ListRelatedFeaturesVC.swift */,
 				3EEB2B961EB9695F00B52513 /* RelatedFeaturesListVC.swift */,
 			);
-			name = "List related features";
-			path = "Features/List related features";
+			path = "List related features";
 			sourceTree = "<group>";
 		};
 		3EEE1D671E4935FC003263FC /* Cloud & Portal */ = {
@@ -2683,8 +2672,7 @@
 				3EFDE0F01E36ABB700CBCD92 /* FeatureCollectionLayer.storyboard */,
 				3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift */,
 			);
-			name = "Feature collection layer";
-			path = "Features/Feature collection layer";
+			path = "Feature collection layer";
 			sourceTree = "<group>";
 		};
 		3EFDE0F21E36ABB700CBCD92 /* Feature collection layer (query) */ = {
@@ -2693,8 +2681,7 @@
 				3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */,
 				3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */,
 			);
-			name = "Feature collection layer (query)";
-			path = "Features/Feature collection layer (query)";
+			path = "Feature collection layer (query)";
 			sourceTree = "<group>";
 		};
 		4C2B52D320D2C11C0071EBB6 /* Extensions */ = {
@@ -2757,8 +2744,7 @@
 				D97B7E3B1FD9BE2B00E1239D /* FeatureLayerShapefile.storyboard */,
 				D97B7E3A1FD9BE2B00E1239D /* FeatureLayerShapefileViewController.swift */,
 			);
-			name = "Feature layer (shapefile)";
-			path = "Features/Feature layer (shapefile)";
+			path = "Feature layer (shapefile)";
 			sourceTree = "<group>";
 		};
 		D97B7E3E1FD9BF1E00E1239D /* Shapefiles */ = {
@@ -2783,8 +2769,7 @@
 				D9ED2DA31FD758910043BFE1 /* FeatureLayerGPKG.storyboard */,
 				D9ED2DA41FD758910043BFE1 /* FeatureLayerGPKGViewController.swift */,
 			);
-			name = "Feature layer (geopackage)";
-			path = "Features/Feature layer (geopackage)";
+			path = "Feature layer (geopackage)";
 			sourceTree = "<group>";
 		};
 		D9ED2DA71FD758F20043BFE1 /* Geopackages */ = {
@@ -2852,8 +2837,7 @@
 				F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */,
 				F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */,
 			);
-			name = "Feature layer rendering mode (map)";
-			path = "Features/Feature layer rendering mode (map)";
+			path = "Feature layer rendering mode (map)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -60,6 +60,7 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
     
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         //
         // Setup UI Controls
         setupUI()

@@ -130,10 +130,6 @@
 		3E4B05F71B39EF250072E514 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B05E91B39EF250072E514 /* SVIndefiniteAnimatedView.m */; };
 		3E4B05F81B39EF250072E514 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E4B05EB1B39EF250072E514 /* SVProgressHUD.bundle */; };
 		3E4B05F91B39EF250072E514 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B05ED1B39EF250072E514 /* SVProgressHUD.m */; };
-		3E4B05FA1B39EF250072E514 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B05F01B39EF250072E514 /* TPKeyboardAvoidingCollectionView.m */; };
-		3E4B05FB1B39EF250072E514 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B05F21B39EF250072E514 /* TPKeyboardAvoidingScrollView.m */; };
-		3E4B05FC1B39EF250072E514 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B05F41B39EF250072E514 /* TPKeyboardAvoidingTableView.m */; };
-		3E4B05FD1B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B05F61B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		3E4BF4421C5AE98300D85919 /* FindAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF4411C5AE98300D85919 /* FindAddressViewController.swift */; };
 		3E4BF4441C5AEA6500D85919 /* WorldAddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF4431C5AEA6500D85919 /* WorldAddressesViewController.swift */; };
 		3E4BF4461C5AED5100D85919 /* FindAddress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF4451C5AED5100D85919 /* FindAddress.storyboard */; };
@@ -813,14 +809,6 @@
 		3E4B05EB1B39EF250072E514 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		3E4B05EC1B39EF250072E514 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		3E4B05ED1B39EF250072E514 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
-		3E4B05EF1B39EF250072E514 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
-		3E4B05F01B39EF250072E514 /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
-		3E4B05F11B39EF250072E514 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
-		3E4B05F21B39EF250072E514 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
-		3E4B05F31B39EF250072E514 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
-		3E4B05F41B39EF250072E514 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
-		3E4B05F51B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
-		3E4B05F61B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
 		3E4BF4411C5AE98300D85919 /* FindAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindAddressViewController.swift; sourceTree = "<group>"; };
 		3E4BF4431C5AEA6500D85919 /* WorldAddressesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldAddressesViewController.swift; sourceTree = "<group>"; };
 		3E4BF4451C5AED5100D85919 /* FindAddress.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FindAddress.storyboard; sourceTree = "<group>"; };
@@ -1512,7 +1500,6 @@
 				21D919901FE1F368006EA79A /* ExpandableTableViewController */,
 				3E1E5EE81D9F0A4E00F4913C /* HorizontalPicker */,
 				3E4B05E71B39EF250072E514 /* SVProgressHUD */,
-				3E4B05EE1B39EF250072E514 /* TPKeyboardAvoiding */,
 				3EC398BD1D8B45AD0084612D /* DemoTouchView */,
 			);
 			name = Libraries;
@@ -1534,21 +1521,6 @@
 				4C72117220BF4457004A7DD9 /* SVRadialGradientLayer.m */,
 			);
 			path = SVProgressHUD;
-			sourceTree = "<group>";
-		};
-		3E4B05EE1B39EF250072E514 /* TPKeyboardAvoiding */ = {
-			isa = PBXGroup;
-			children = (
-				3E4B05EF1B39EF250072E514 /* TPKeyboardAvoidingCollectionView.h */,
-				3E4B05F01B39EF250072E514 /* TPKeyboardAvoidingCollectionView.m */,
-				3E4B05F11B39EF250072E514 /* TPKeyboardAvoidingScrollView.h */,
-				3E4B05F21B39EF250072E514 /* TPKeyboardAvoidingScrollView.m */,
-				3E4B05F31B39EF250072E514 /* TPKeyboardAvoidingTableView.h */,
-				3E4B05F41B39EF250072E514 /* TPKeyboardAvoidingTableView.m */,
-				3E4B05F51B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
-				3E4B05F61B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
-			);
-			path = TPKeyboardAvoiding;
 			sourceTree = "<group>";
 		};
 		3E4BF43C1C5AC66700D85919 /* Search */ = {
@@ -3139,7 +3111,6 @@
 				21E9CDEC1EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift in Sources */,
 				3ED029711B8E3ACD00ACA70D /* EditGeometryViewController.swift in Sources */,
 				3ED028791B8E3A8500ACA70D /* ManageMapLayersViewController.swift in Sources */,
-				3E4B05FA1B39EF250072E514 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				3E4BF44C1C5AF04300D85919 /* FindPlaceViewController.swift in Sources */,
 				3E8A05CF1ECE68E80032231C /* PlaneStatsViewController.swift in Sources */,
 				3EFDE0F81E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift in Sources */,
@@ -3165,7 +3136,6 @@
 				E45991A31EF3021D0089E9FD /* WebMapsCollectionViewController.swift in Sources */,
 				3ED0289A1B8E3A8500ACA70D /* ShowMagnifierViewController.swift in Sources */,
 				3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */,
-				3E4B05FB1B39EF250072E514 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				218409DB1FE87E220098BC40 /* GroupByFieldsViewController.swift in Sources */,
 				3ED028B91B8E3A9800ACA70D /* SublayerVisibilityViewController.swift in Sources */,
 				3EC39C1F1C9A59B9003F6459 /* RouteParametersViewController.swift in Sources */,
@@ -3184,7 +3154,6 @@
 				3E8A25841D36B6E300D14F08 /* FeatureLayerGDBViewController.swift in Sources */,
 				4C72117020BF444C004A7DD9 /* SVProgressAnimatedView.m in Sources */,
 				127E11D81FD0C3F8002CBD12 /* WMTSLayerViewController.swift in Sources */,
-				3E4B05FD1B39EF250072E514 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				3ED029641B8E3ACD00ACA70D /* AttachmentsListViewController.swift in Sources */,
 				3ED0285F1B8E3A8500ACA70D /* SaveAsViewController.swift in Sources */,
 				D9ED2DA61FD758910043BFE1 /* FeatureLayerGPKGViewController.swift in Sources */,
@@ -3237,7 +3206,6 @@
 				3E0B584E1E36BCCD00951767 /* HotspotSettingsViewController.swift in Sources */,
 				3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */,
 				1259FB931FD295C90037105E /* WMSLayerUsingURLViewController.swift in Sources */,
-				3E4B05FC1B39EF250072E514 /* TPKeyboardAvoidingTableView.m in Sources */,
 				3ED028F81B8E3AA500ACA70D /* ManualCacheViewController.swift in Sources */,
 				3E1E5EE51D9F08ED00F4913C /* HillshadeRendererVC.swift in Sources */,
 				3ED029291B8E3AB300ACA70D /* GORenderersViewController.swift in Sources */,

@@ -64,7 +64,7 @@ class RelatedFeaturesListVC: UIViewController, UITableViewDataSource, UITableVie
         let displayFieldName = result.relatedTable!.layerInfo!.displayFieldName
         let displayFieldValue = feature.attributes[displayFieldName]!
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RelatedFeatureCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RelatedFeatureCell", for: indexPath)
         
         cell.textLabel?.text = "\(displayFieldValue)"
         

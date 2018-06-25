@@ -55,22 +55,22 @@ class RGBRendererSettingsVC: UIViewController, UITableViewDataSource, RGBRendere
 
         //first row cell is always Row0
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Row0") as! RGBRendererTypeCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Row0", for: indexPath) as! RGBRendererTypeCell
             cell.delegate = self
             return cell
         }
         //load the rest of the cells based on the stretch type selected
         else {
             if self.stretchType == .MinMax {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "MinMaxRow\(indexPath.row)") as! RGBRenderer3InputCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "MinMaxRow\(indexPath.row)", for: indexPath)
                 return cell
             }
             else if self.stretchType == .PercentClip {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "PercentClipRow\(indexPath.row)") as! RGBRendererInputCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PercentClipRow\(indexPath.row)", for: indexPath)
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "StandardDeviationRow1") as! RGBRendererInputCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "StandardDeviationRow1", for: indexPath)
                 return cell
             }
         }

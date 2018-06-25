@@ -230,7 +230,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestCell", for: indexPath)
         let isLocationTextField = (self.selectedTextField == self.preferredSearchLocationTextField)
         
         if isLocationTextField && indexPath.row == 0 {

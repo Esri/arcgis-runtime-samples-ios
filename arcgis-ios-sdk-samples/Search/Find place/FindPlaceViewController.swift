@@ -102,8 +102,8 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.overlayView.isHidden = true
         
         //register for keyboard notification in order to toggle overlay view on and off
-        NotificationCenter.default.addObserver(self, selector: #selector(FindPlaceViewController.showOverlayView), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(FindPlaceViewController.hideOverlayView), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FindPlaceViewController.showOverlayView), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FindPlaceViewController.hideOverlayView), name: .UIKeyboardWillHide, object: nil)
         
         //add the left view images for both the textfields
         self.setupTextFieldLeftViews()

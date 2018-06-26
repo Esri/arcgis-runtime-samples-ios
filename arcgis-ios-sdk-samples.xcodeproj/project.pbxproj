@@ -913,8 +913,8 @@
 		3EBA255C1D34025700AB0703 /* PictureMarkerSymbols.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PictureMarkerSymbols.storyboard; sourceTree = "<group>"; };
 		3EBA25601D34178200AB0703 /* SimpleMarkerSymbol.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SimpleMarkerSymbol.storyboard; sourceTree = "<group>"; };
 		3EBA25621D3417B000AB0703 /* SimpleMarkerSymbolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleMarkerSymbolViewController.swift; sourceTree = "<group>"; };
-		3EBA25731D3450F600AB0703 /* CreateGeometriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateGeometriesViewController.swift; path = "Geometry/Create geometries/CreateGeometriesViewController.swift"; sourceTree = "<group>"; };
-		3EBA25751D34510F00AB0703 /* CreateGeometries.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CreateGeometries.storyboard; path = "Geometry/Create geometries/CreateGeometries.storyboard"; sourceTree = "<group>"; };
+		3EBA25731D3450F600AB0703 /* CreateGeometriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGeometriesViewController.swift; sourceTree = "<group>"; };
+		3EBA25751D34510F00AB0703 /* CreateGeometries.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateGeometries.storyboard; sourceTree = "<group>"; };
 		3EC398BE1D8B45AD0084612D /* DemoTouchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTouchView.swift; sourceTree = "<group>"; };
 		3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteAroundBarriersViewController.swift; path = "Route around barriers/RouteAroundBarriersViewController.swift"; sourceTree = "<group>"; };
 		3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectionsListViewController.swift; path = "Route around barriers/DirectionsListViewController.swift"; sourceTree = "<group>"; };
@@ -1301,8 +1301,7 @@
 				3E0B58581E36D8D300951767 /* SpatialOperationsViewController.swift */,
 				3E0B58561E36D8D300951767 /* OperationsListViewController.swift */,
 			);
-			name = "Spatial operations";
-			path = "Geometry/Spatial operations";
+			path = "Spatial operations";
 			sourceTree = "<group>";
 		};
 		3E0D3AD51AFD47BF00FC60D6 /* Storyboard */ = {
@@ -1983,7 +1982,7 @@
 				3E0B58551E36D8D300951767 /* Spatial operations */,
 				3EF024E51ECBC10600166EC5 /* Format coordinates */,
 			);
-			name = Geometry;
+			path = Geometry;
 			sourceTree = "<group>";
 		};
 		3EBA25721D3450B800AB0703 /* Create geometries */ = {
@@ -1992,7 +1991,7 @@
 				3EBA25731D3450F600AB0703 /* CreateGeometriesViewController.swift */,
 				3EBA25751D34510F00AB0703 /* CreateGeometries.storyboard */,
 			);
-			name = "Create geometries";
+			path = "Create geometries";
 			sourceTree = "<group>";
 		};
 		3EC398BD1D8B45AD0084612D /* DemoTouchView */ = {
@@ -2595,8 +2594,7 @@
 				3EF024E61ECBC10600166EC5 /* FormatCoordinates.storyboard */,
 				3EF024E71ECBC10600166EC5 /* FormatCoordinatesViewController.swift */,
 			);
-			name = "Format coordinates";
-			path = "Geometry/Format coordinates";
+			path = "Format coordinates";
 			sourceTree = "<group>";
 		};
 		3EFCE1AF1CEFD5B900E02F67 /* Open mobile map (map package) */ = {

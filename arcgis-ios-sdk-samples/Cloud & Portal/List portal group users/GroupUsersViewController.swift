@@ -130,7 +130,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupUserCell") as! GroupUserCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupUserCell", for: indexPath) as! GroupUserCell
         
         let portalUser = self.portalUsers[indexPath.row]
         cell.portalUser = portalUser

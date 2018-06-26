@@ -54,7 +54,7 @@ class MapImageSublayersVC: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MapImageSublayerCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MapImageSublayerCell", for: indexPath)
         
         if indexPath.section == 0 {
             let sublayer = self.mapImageLayer.mapImageSublayers[indexPath.row] as AnyObject as! AGSArcGISMapImageSublayer

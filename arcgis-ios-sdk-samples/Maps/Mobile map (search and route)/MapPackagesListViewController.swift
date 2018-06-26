@@ -88,7 +88,7 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MapPackageCell") as! MapPackageCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MapPackageCell", for: indexPath) as! MapPackageCell
         
         var mapPackage:AGSMobileMapPackage
         

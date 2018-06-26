@@ -120,7 +120,7 @@ class ExpandableTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath)
         let sectionData = sectionItems[indexPath.section]
         cell.textLabel?.textColor = .black
         let (text, detail) = sectionData[indexPath.row]

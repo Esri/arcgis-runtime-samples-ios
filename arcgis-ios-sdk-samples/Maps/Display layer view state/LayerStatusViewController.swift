@@ -126,7 +126,7 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
     //MARK: - Table view delegates
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LayerStatusCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LayerStatusCell", for: indexPath)
         cell.backgroundColor = .clear
         let layer = self.map.operationalLayers[indexPath.row] as! AGSLayer
         

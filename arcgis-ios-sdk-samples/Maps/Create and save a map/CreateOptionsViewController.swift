@@ -72,7 +72,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
         var cell:UITableViewCell
         
         if indexPath.section == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: "CreateBasemapCell")!
+            cell = tableView.dequeueReusableCell(withIdentifier: "CreateBasemapCell", for: indexPath)
             let basemap = self.basemaps[indexPath.row]
             cell.textLabel?.text = basemap.name
             
@@ -85,7 +85,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
             }
         }
         else {
-            cell = tableView.dequeueReusableCell(withIdentifier: "CreateLayerCell")!
+            cell = tableView.dequeueReusableCell(withIdentifier: "CreateLayerCell", for: indexPath)
             let layer = self.layers[indexPath.row]
             cell.textLabel?.text = layer.name
             //accessory view

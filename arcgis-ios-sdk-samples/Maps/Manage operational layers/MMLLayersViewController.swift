@@ -59,13 +59,13 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
         var cell:UITableViewCell
         
         if indexPath.section == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: "MMLLayersCell")!
+            cell = tableView.dequeueReusableCell(withIdentifier: "MMLLayersCell", for: indexPath)
             //layers in reverse order
             let index = self.dataSourceIndexForIndexPath(self.layers, indexpath: indexPath)
             cell.textLabel?.text = (self.layers[index] as AnyObject).name
         }
         else {
-            cell = tableView.dequeueReusableCell(withIdentifier: "MMLDeletedLayersCell")!
+            cell = tableView.dequeueReusableCell(withIdentifier: "MMLDeletedLayersCell", for: indexPath)
             let layer = self.deletedLayers[indexPath.row]
             cell.textLabel?.text = layer.name
             let plusButton = UIButton(type: UIButtonType.contactAdd)

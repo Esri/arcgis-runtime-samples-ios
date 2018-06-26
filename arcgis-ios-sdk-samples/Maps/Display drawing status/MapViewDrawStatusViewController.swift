@@ -48,7 +48,7 @@ class MapViewDrawStatusViewController: UIViewController {
         
         //add observer for drawStatus on mapView
         //so we can show/hide an indicator when the status change
-        mapView.addObserver(self, forKeyPath: #keyPath(AGSGeoView.drawStatus), options: [.initial], context: nil)
+        mapView.addObserver(self, forKeyPath: #keyPath(AGSGeoView.drawStatus), options: .initial, context: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

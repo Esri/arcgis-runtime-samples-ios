@@ -791,17 +791,17 @@
 		3E2A680D1B0D2A7000A318AA /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewController.swift; path = "Content Display Logic/Controllers/ListViewController.swift"; sourceTree = "<group>"; };
 		3E2A68111B14E04300A318AA /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Static/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
 		3E2A68171B153CDE00A318AA /* SourceCodeBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SourceCodeBarButtonItem.swift; path = "Content Display Logic/Custom BarButtonItem/SourceCodeBarButtonItem.swift"; sourceTree = "<group>"; };
-		3E39F6CF1B9790A9000DEC6C /* EditFeaturesOnline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EditFeaturesOnline.storyboard; path = "Edit data/Edit features (connected)/EditFeaturesOnline.storyboard"; sourceTree = "<group>"; };
-		3E39F6D01B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditFeaturesOnlineViewController.swift; path = "Edit data/Edit features (connected)/EditFeaturesOnlineViewController.swift"; sourceTree = "<group>"; };
-		3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureTemplatePickerViewController.swift; path = "Edit data/Edit features (connected)/FeatureTemplatePickerViewController.swift"; sourceTree = "<group>"; };
+		3E39F6CF1B9790A9000DEC6C /* EditFeaturesOnline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditFeaturesOnline.storyboard; sourceTree = "<group>"; };
+		3E39F6D01B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFeaturesOnlineViewController.swift; sourceTree = "<group>"; };
+		3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureTemplatePickerViewController.swift; sourceTree = "<group>"; };
 		3E3B2C1E1BBCA37F00A99C5E /* ContentCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentCollectionViewController.swift; path = "Content Display Logic/Controllers/ContentCollectionViewController.swift"; sourceTree = "<group>"; };
 		3E3B2C211BBCADDB00A99C5E /* ContentTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentTableCell.swift; path = "Content Display Logic/Cells/ContentTableCell.swift"; sourceTree = "<group>"; };
 		3E3B2C231BBD9CD300A99C5E /* SearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchEngine.swift; path = "Content Display Logic/Model/SearchEngine.swift"; sourceTree = "<group>"; };
 		3E412B421D0B2FAD00349155 /* AppInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppInfoViewController.swift; path = "Content Display Logic/Controllers/AppInfoViewController.swift"; sourceTree = "<group>"; };
-		3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddFeaturesViewController.swift; path = "Edit data/Add features (feature service)/AddFeaturesViewController.swift"; sourceTree = "<group>"; };
-		3E41DD731B9A241500DA11CC /* AddFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddFeatures.storyboard; path = "Edit data/Add features (feature service)/AddFeatures.storyboard"; sourceTree = "<group>"; };
-		3E41DD761B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeleteFeaturesViewController.swift; path = "Edit data/Delete features (feature service)/DeleteFeaturesViewController.swift"; sourceTree = "<group>"; };
-		3E41DD781B9F609500DA11CC /* DeleteFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DeleteFeatures.storyboard; path = "Edit data/Delete features (feature service)/DeleteFeatures.storyboard"; sourceTree = "<group>"; };
+		3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFeaturesViewController.swift; sourceTree = "<group>"; };
+		3E41DD731B9A241500DA11CC /* AddFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddFeatures.storyboard; sourceTree = "<group>"; };
+		3E41DD761B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteFeaturesViewController.swift; sourceTree = "<group>"; };
+		3E41DD781B9F609500DA11CC /* DeleteFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DeleteFeatures.storyboard; sourceTree = "<group>"; };
 		3E4A64AF1D8B37DA00CF930C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = "Content Display Logic/Settings.bundle"; sourceTree = "<group>"; };
 		3E4B05E81B39EF250072E514 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		3E4B05E91B39EF250072E514 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
@@ -926,9 +926,9 @@
 		3EC39C361C9B1ADA003F6459 /* AGSExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AGSExtensions.swift; path = "Shared resources/Extensions/AGSExtensions.swift"; sourceTree = "<group>"; };
 		3EC39C391C9B23DF003F6459 /* GenerateGeodatabase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GenerateGeodatabase.storyboard; sourceTree = "<group>"; };
 		3EC39C3B1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateGeodatabaseViewController.swift; sourceTree = "<group>"; };
-		3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineEditingViewController.swift; path = "Edit data/Offline edit and sync/OfflineEditingViewController.swift"; sourceTree = "<group>"; };
-		3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeatureLayersViewController.swift; path = "Edit data/Offline edit and sync/FeatureLayersViewController.swift"; sourceTree = "<group>"; };
-		3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OfflineEditing.storyboard; path = "Edit data/Offline edit and sync/OfflineEditing.storyboard"; sourceTree = "<group>"; };
+		3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineEditingViewController.swift; sourceTree = "<group>"; };
+		3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayersViewController.swift; sourceTree = "<group>"; };
+		3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OfflineEditing.storyboard; sourceTree = "<group>"; };
 		3ECCFE381BD0401A00CE256D /* LayerStatus.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LayerStatus.storyboard; sourceTree = "<group>"; };
 		3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerStatusViewController.swift; sourceTree = "<group>"; };
 		3ECDD9AE1E8470E100E645AB /* DownloadProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadProgressView.swift; path = "Content Display Logic/Views/DownloadProgressView.swift"; sourceTree = "<group>"; };
@@ -1445,7 +1445,7 @@
 				3E39F6D01B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift */,
 				3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */,
 			);
-			name = "Edit features (connected)";
+			path = "Edit features (connected)";
 			sourceTree = "<group>";
 		};
 		3E3B2C201BBCADB300A99C5E /* Cells */ = {
@@ -1463,7 +1463,7 @@
 				3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */,
 				3E41DD731B9A241500DA11CC /* AddFeatures.storyboard */,
 			);
-			name = "Add features (feature service)";
+			path = "Add features (feature service)";
 			sourceTree = "<group>";
 		};
 		3E41DD751B9F5AC800DA11CC /* Delete features (feature service) */ = {
@@ -1472,7 +1472,7 @@
 				3E41DD761B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift */,
 				3E41DD781B9F609500DA11CC /* DeleteFeatures.storyboard */,
 			);
-			name = "Delete features (feature service)";
+			path = "Delete features (feature service)";
 			sourceTree = "<group>";
 		};
 		3E4B05E51B39EE920072E514 /* Shared resources */ = {
@@ -2047,7 +2047,7 @@
 				3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */,
 				3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */,
 			);
-			name = "Offline edit and sync";
+			path = "Offline edit and sync";
 			sourceTree = "<group>";
 		};
 		3ECCFE371BD0401A00CE256D /* Display layer view state */ = {
@@ -2070,7 +2070,7 @@
 				3E39F6CE1B979087000DEC6C /* Edit features (connected) */,
 				3EC39C3D1C9B4754003F6459 /* Offline edit and sync */,
 			);
-			name = "Edit data";
+			path = "Edit data";
 			sourceTree = "<group>";
 		};
 		3ED027FD1B8E392500ACA70D /* Display information */ = {
@@ -2442,8 +2442,7 @@
 				3ED0294F1B8E3ACD00ACA70D /* EditAttachment.storyboard */,
 				3ED029501B8E3ACD00ACA70D /* EditAttachmentViewController.swift */,
 			);
-			name = "Edit feature attachments";
-			path = "Edit data/Edit feature attachments";
+			path = "Edit feature attachments";
 			sourceTree = "<group>";
 		};
 		3ED029521B8E3ACD00ACA70D /* Update attributes (feature service) */ = {
@@ -2453,8 +2452,7 @@
 				3ED029541B8E3ACD00ACA70D /* EditAttributes.storyboard */,
 				3ED029551B8E3ACD00ACA70D /* EditAttributesViewController.swift */,
 			);
-			name = "Update attributes (feature service)";
-			path = "Edit data/Update attributes (feature service)";
+			path = "Update attributes (feature service)";
 			sourceTree = "<group>";
 		};
 		3ED0295B1B8E3ACD00ACA70D /* Update geometries (feature service) */ = {
@@ -2463,8 +2461,7 @@
 				3ED0295C1B8E3ACD00ACA70D /* EditGeometry.storyboard */,
 				3ED0295D1B8E3ACD00ACA70D /* EditGeometryViewController.swift */,
 			);
-			name = "Update geometries (feature service)";
-			path = "Edit data/Update geometries (feature service)";
+			path = "Update geometries (feature service)";
 			sourceTree = "<group>";
 		};
 		3ED75D001ED39EDF009B1F75 /* Find service area interactive */ = {

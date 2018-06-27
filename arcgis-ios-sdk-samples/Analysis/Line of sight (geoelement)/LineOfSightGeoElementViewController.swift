@@ -187,9 +187,9 @@ class LineOfSightGeoElementViewController: UIViewController {
 fileprivate func interpolatedPoint(firstPoint: AGSPoint, secondPoint:AGSPoint, progress:Double) -> (AGSPoint, Double) {
     // Use the geometry engine to calculate the heading between point 1 and 2
     let geResult = AGSGeometryEngine.geodeticDistanceBetweenPoint1(firstPoint, point2: secondPoint,
-                                                                   distanceUnit: AGSLinearUnit.meters(),
-                                                                   azimuthUnit: AGSAngularUnit.degrees(),
-                                                                   curveType: AGSGeodeticCurveType.geodesic)
+                                                                   distanceUnit: .meters(),
+                                                                   azimuthUnit: .degrees(),
+                                                                   curveType: .geodesic)
     let heading = geResult?.azimuth1 ?? 0
 
     // calculate the point representing progress towards the next point (cartesian calculation works fine at this scale)

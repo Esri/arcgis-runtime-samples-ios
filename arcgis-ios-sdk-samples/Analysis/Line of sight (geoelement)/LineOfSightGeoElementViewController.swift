@@ -54,6 +54,11 @@ class LineOfSightGeoElementViewController: UIViewController {
     // handle onto any line of sight KVO observer
     private var losObserver:NSKeyValueObservation?
 
+    private var initialViewpointCenter:AGSPoint {
+        // If possible, find the middle of the block that the taxi will drive around, or else focus on the observer
+        return AGSGeometryEngine.unionGeometries(streetIntersectionLocations)?.extent.center ?? observerPoint
+    }
+
     required init?(coder aDecoder: NSCoder) {
         // initialize the scene with an imagery basemap
         scene = AGSScene(basemap: AGSBasemap.imageryWithLabels())
@@ -85,11 +90,7 @@ class LineOfSightGeoElementViewController: UIViewController {
         super.init(coder: aDecoder)
 
         // set the viewpoint specified by the camera position
-        scene.initialViewpoint = AGSViewpoint(center: initialCameraLocation, scale: 6000)
-    }
-
-    private var initialCameraLocation:AGSPoint {
-        return AGSGeometryEngine.convexHull(forGeometries: streetIntersectionLocations, mergeInputs: true)?.first?.extent.center ?? observerPoint
+        scene.initialViewpoint = AGSViewpoint(center: initialViewpointCenter, scale: 6000)
     }
 
     override func viewDidLoad() {

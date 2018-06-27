@@ -514,6 +514,14 @@
 		D9ED2DA61FD758910043BFE1 /* FeatureLayerGPKGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ED2DA41FD758910043BFE1 /* FeatureLayerGPKGViewController.swift */; };
 		D9ED2DA91FD759190043BFE1 /* AuroraCO.gpkg in Resources */ = {isa = PBXBuildFile; fileRef = D9ED2DA81FD759190043BFE1 /* AuroraCO.gpkg */; settings = {ASSET_TAGS = (AuroraCOGeopackage, ); }; };
 		D9ED2DAA1FD75A3D0043BFE1 /* FeatureLayerGPKGViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9ED2DA41FD758910043BFE1 /* FeatureLayerGPKGViewController.swift */; };
+		D9EE378C20E2C03100BF8AD1 /* LineOfSightGeoElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CDD48620E2BB8B00E8BA02 /* LineOfSightGeoElementViewController.swift */; };
+		D9EE378D20E2C03800BF8AD1 /* LineOfSightGeoElement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9CDD48520E2BB8B00E8BA02 /* LineOfSightGeoElement.storyboard */; };
+		D9EE379620E2CC7700BF8AD1 /* dolmus_back.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D9EE379120E2CC7600BF8AD1 /* dolmus_back.jpeg */; settings = {ASSET_TAGS = (Dolmus3DModel, ); }; };
+		D9EE379720E2CC7700BF8AD1 /* dolmus_front.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D9EE379220E2CC7600BF8AD1 /* dolmus_front.jpeg */; settings = {ASSET_TAGS = (Dolmus3DModel, ); }; };
+		D9EE379820E2CC7700BF8AD1 /* tire_tread.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D9EE379320E2CC7600BF8AD1 /* tire_tread.jpeg */; settings = {ASSET_TAGS = (Dolmus3DModel, ); }; };
+		D9EE379920E2CC7700BF8AD1 /* dolmus.3ds in Resources */ = {isa = PBXBuildFile; fileRef = D9EE379420E2CC7700BF8AD1 /* dolmus.3ds */; settings = {ASSET_TAGS = (Dolmus3DModel, ); }; };
+		D9EE379A20E2CC7700BF8AD1 /* dolmus_side.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D9EE379520E2CC7700BF8AD1 /* dolmus_side.jpeg */; settings = {ASSET_TAGS = (Dolmus3DModel, ); }; };
+		D9EE379B20E2DC5800BF8AD1 /* LineOfSightGeoElementViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9CDD48620E2BB8B00E8BA02 /* LineOfSightGeoElementViewController.swift */; };
 		E45991A01EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E459919B1EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard */; };
 		E45991A11EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */; };
 		E45991A21EF3021D0089E9FD /* WebMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E459919D1EF3021D0089E9FD /* WebMapCell.swift */; };
@@ -546,6 +554,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				D9EE379B20E2DC5800BF8AD1 /* LineOfSightGeoElementViewController.swift in CopyFiles */,
 				4C2B52D720D2C3180071EBB6 /* DistanceMeasurementAnalysisViewController.swift in CopyFiles */,
 				F4E5CD7E207058D8000A6D35 /* FeatureLayerRenderingModeMapViewController.swift in CopyFiles */,
 				F4159C72209262200016E53D /* OpenSceneViewController.swift in CopyFiles */,
@@ -1072,9 +1081,16 @@
 		D97B7E501FD9BFE700E1239D /* Subdivisions.shp */ = {isa = PBXFileReference; lastKnownFileType = file; path = Subdivisions.shp; sourceTree = "<group>"; };
 		D97B7E511FD9BFE700E1239D /* Subdivisions.shp.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Subdivisions.shp.xml; sourceTree = "<group>"; };
 		D97B7E561FD9BFE700E1239D /* Subdivisions.sbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Subdivisions.sbx; sourceTree = "<group>"; };
+		D9CDD48520E2BB8B00E8BA02 /* LineOfSightGeoElement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LineOfSightGeoElement.storyboard; sourceTree = "<group>"; };
+		D9CDD48620E2BB8B00E8BA02 /* LineOfSightGeoElementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineOfSightGeoElementViewController.swift; sourceTree = "<group>"; };
 		D9ED2DA31FD758910043BFE1 /* FeatureLayerGPKG.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerGPKG.storyboard; sourceTree = "<group>"; };
 		D9ED2DA41FD758910043BFE1 /* FeatureLayerGPKGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerGPKGViewController.swift; sourceTree = "<group>"; };
 		D9ED2DA81FD759190043BFE1 /* AuroraCO.gpkg */ = {isa = PBXFileReference; lastKnownFileType = file; path = AuroraCO.gpkg; sourceTree = "<group>"; };
+		D9EE379120E2CC7600BF8AD1 /* dolmus_back.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dolmus_back.jpeg; sourceTree = "<group>"; };
+		D9EE379220E2CC7600BF8AD1 /* dolmus_front.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dolmus_front.jpeg; sourceTree = "<group>"; };
+		D9EE379320E2CC7600BF8AD1 /* tire_tread.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tire_tread.jpeg; sourceTree = "<group>"; };
+		D9EE379420E2CC7700BF8AD1 /* dolmus.3ds */ = {isa = PBXFileReference; lastKnownFileType = file; path = dolmus.3ds; sourceTree = "<group>"; };
+		D9EE379520E2CC7700BF8AD1 /* dolmus_side.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dolmus_side.jpeg; sourceTree = "<group>"; };
 		E459919B1EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchForWebmapByKeyword.storyboard; sourceTree = "<group>"; };
 		E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchForWebmapByKeywordViewController.swift; sourceTree = "<group>"; };
 		E459919D1EF3021D0089E9FD /* WebMapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebMapCell.swift; sourceTree = "<group>"; };
@@ -1270,6 +1286,7 @@
 				127D29F2200EC5FC00DD6CDC /* Viewshed (location) */,
 				E4B2E2671FE31E7400E610FF /* Viewshed (GeoElement) */,
 				123004681FE2F70300303AC2 /* Line of sight (location) */,
+				D9CDD48420E2BB6F00E8BA02 /* Line of sight (geoelement) */,
 				4CCE7BD420D2BCD5001238F5 /* Distance measurement analysis */,
 			);
 			path = Analysis;
@@ -1787,6 +1804,7 @@
 		3E8A05D91ECE69840032231C /* 3D models */ = {
 			isa = PBXGroup;
 			children = (
+				D9EE379020E2CC3200BF8AD1 /* taxi */,
 				E4B2E2621FE31E5100E610FF /* bradley_low_3ds */,
 				3E8A05DA1ECE69840032231C /* Bristol */,
 			);
@@ -2729,6 +2747,15 @@
 			path = "Shared resources/Shapefiles";
 			sourceTree = "<group>";
 		};
+		D9CDD48420E2BB6F00E8BA02 /* Line of sight (geoelement) */ = {
+			isa = PBXGroup;
+			children = (
+				D9CDD48520E2BB8B00E8BA02 /* LineOfSightGeoElement.storyboard */,
+				D9CDD48620E2BB8B00E8BA02 /* LineOfSightGeoElementViewController.swift */,
+			);
+			path = "Line of sight (geoelement)";
+			sourceTree = "<group>";
+		};
 		D9ED2DA21FD758010043BFE1 /* Feature layer (geopackage) */ = {
 			isa = PBXGroup;
 			children = (
@@ -2745,6 +2772,18 @@
 			);
 			name = Geopackages;
 			path = "Shared resources/Geopackages";
+			sourceTree = "<group>";
+		};
+		D9EE379020E2CC3200BF8AD1 /* taxi */ = {
+			isa = PBXGroup;
+			children = (
+				D9EE379120E2CC7600BF8AD1 /* dolmus_back.jpeg */,
+				D9EE379220E2CC7600BF8AD1 /* dolmus_front.jpeg */,
+				D9EE379520E2CC7700BF8AD1 /* dolmus_side.jpeg */,
+				D9EE379420E2CC7700BF8AD1 /* dolmus.3ds */,
+				D9EE379320E2CC7600BF8AD1 /* tire_tread.jpeg */,
+			);
+			path = taxi;
 			sourceTree = "<group>";
 		};
 		E459919A1EF3021D0089E9FD /* Search for webmap by keyword */ = {
@@ -2839,6 +2878,7 @@
 					Bradley3DModel,
 					Bristol,
 					Bristol3DModel,
+					Dolmus3DModel,
 					LATrailsGeodatabase,
 					MissionFiles,
 					MobileMapPackages,
@@ -2953,6 +2993,7 @@
 				3EABC7C11DB191BC00C161C6 /* Shasta_Elevation.tfw in Resources */,
 				3E676DF11B1D0B6000D4029A /* Camera Shutter.caf in Resources */,
 				3EABC7B81DB183E600C161C6 /* ShastaBW.tif.aux.xml in Resources */,
+				D9EE378D20E2C03800BF8AD1 /* LineOfSightGeoElement.storyboard in Resources */,
 				3ED029651B8E3ACD00ACA70D /* EditAttachment.storyboard in Resources */,
 				3EBA255D1D34025700AB0703 /* PictureMarkerSymbols.storyboard in Resources */,
 				127E11D71FD0C3F8002CBD12 /* WMTSLayer.storyboard in Resources */,
@@ -2974,6 +3015,7 @@
 				3EEA060D1D21C44000E03774 /* SceneSymbols.storyboard in Resources */,
 				3E4BF47D1C5BDDCA00D85919 /* san-diego-locator.loc.xml in Resources */,
 				D97B7E5C1FD9BFE700E1239D /* Subdivisions.prj in Resources */,
+				D9EE379720E2CC7700BF8AD1 /* dolmus_front.jpeg in Resources */,
 				3E0D3AD71AFD481900FC60D6 /* Main.storyboard in Resources */,
 				3EABC7B41DB181DD00C161C6 /* ShastaBW.tfw in Resources */,
 				3EFCE1BA1CF369A800E02F67 /* Yellowstone.mmpk in Resources */,
@@ -3002,9 +3044,11 @@
 				3EABC7C21DB191BC00C161C6 /* Shasta_Elevation.tif in Resources */,
 				3E1183DF1ECF5A1000180152 /* Pyrenees.csv in Resources */,
 				3EABC78F1DB1772000C161C6 /* RGBRenderer.storyboard in Resources */,
+				D9EE379820E2CC7700BF8AD1 /* tire_tread.jpeg in Resources */,
 				3ED029281B8E3AB300ACA70D /* GORenderers.storyboard in Resources */,
 				3E3425BD1E7B4CB10024270B /* srtm.tiff.ovr in Resources */,
 				3ED788901D26E2F700E5F311 /* LocalTiledLayer.storyboard in Resources */,
+				D9EE379620E2CC7700BF8AD1 /* dolmus_back.jpeg in Resources */,
 				E4B2E2661FE31E5200E610FF /* tank1.jpg in Resources */,
 				3EBA25401D2F104100AB0703 /* UniqueValueRenderer.storyboard in Resources */,
 				12BF9E451FE9D77000B1E6C4 /* ViewshedCamera.storyboard in Resources */,
@@ -3012,6 +3056,7 @@
 				3E39F6D21B9790A9000DEC6C /* EditFeaturesOnline.storyboard in Resources */,
 				3E4BF4481C5AEF3D00D85919 /* ReverseGeocode.storyboard in Resources */,
 				3E8A05DE1ECE69840032231C /* Bristol.png in Resources */,
+				D9EE379920E2CC7700BF8AD1 /* dolmus.3ds in Resources */,
 				21E9CDEB1EF9C5EA00BD4D7D /* DisplayGrid.storyboard in Resources */,
 				3ED028621B8E3A8500ACA70D /* SwitchBasemap.storyboard in Resources */,
 				21D919941FE1F368006EA79A /* ExpandableTableViewController.storyboard in Resources */,
@@ -3053,6 +3098,7 @@
 				4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */,
 				1259FB921FD295C90037105E /* WMSLayerUsingURL.storyboard in Resources */,
 				3E0B585A1E36D8D300951767 /* SpatialOperations.storyboard in Resources */,
+				D9EE379A20E2CC7700BF8AD1 /* dolmus_side.jpeg in Resources */,
 				3EABC7B51DB181DD00C161C6 /* ShastaBW.tif in Resources */,
 				3EABC7C91DB1947500C161C6 /* BlendRenderer.storyboard in Resources */,
 				3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */,
@@ -3200,6 +3246,7 @@
 				3EEE1D6E1E4935FC003263FC /* GroupUserCell.swift in Sources */,
 				3EFCE1C41CF374C600E02F67 /* MapPackagesListViewController.swift in Sources */,
 				3EC39C3F1C9B47C2003F6459 /* OfflineEditingViewController.swift in Sources */,
+				D9EE378C20E2C03100BF8AD1 /* LineOfSightGeoElementViewController.swift in Sources */,
 				3ED028E21B8E3AA500ACA70D /* OverrideRendererViewController.swift in Sources */,
 				218409DF1FE9A1E00098BC40 /* AddStatisticDefinitionsViewController.swift in Sources */,
 				3E4BF4561C5BD66C00D85919 /* OfflineGeocodeViewController.swift in Sources */,

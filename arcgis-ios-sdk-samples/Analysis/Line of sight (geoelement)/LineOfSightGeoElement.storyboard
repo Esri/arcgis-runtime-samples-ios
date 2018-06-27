@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="beF-yn-MU6">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Line Of Sight Geo Element View Controller-->
+        <scene sceneID="uVV-jY-ewq">
+            <objects>
+                <viewController id="beF-yn-MU6" customClass="LineOfSightGeoElementViewController" customModule="arcgis_ios_sdk_samples" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7gX-cs-H6x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXq-u3-R3D" userLabel="User Interaction View">
+                                <rect key="frame" x="0.0" y="44.000000000000007" width="375" height="124.66666666666669"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="E8e-zA-JEQ" userLabel="Instructions Stack View">
+                                        <rect key="frame" x="20" y="20" width="335" height="84.666666666666671"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use the slider to change the observer's altitude" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N9G-Gc-Lhd">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="14.333333333333334"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ggm-am-Wvr">
+                                                <rect key="frame" x="0.0" y="24.333333333333329" width="335" height="20.333333333333329"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Status: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2D-VD-5ab" userLabel="Status: ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="58.333333333333336" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y47-9o-1cZ">
+                                                        <rect key="frame" x="58.333333333333343" y="0.0" width="276.66666666666663" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="381" minValue="20" maxValue="1500" translatesAutoresizingMaskIntoConstraints="NO" id="nca-Dg-BTg">
+                                                <rect key="frame" x="-2" y="54.666666666666671" width="339" height="31"/>
+                                                <connections>
+                                                    <action selector="observerHeightChanged:" destination="beF-yn-MU6" eventType="valueChanged" id="Tvd-k4-ESh"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="E8e-zA-JEQ" firstAttribute="leading" secondItem="TXq-u3-R3D" secondAttribute="leading" constant="20" symbolic="YES" id="3yP-LX-wfd"/>
+                                    <constraint firstAttribute="bottom" secondItem="E8e-zA-JEQ" secondAttribute="bottom" constant="20" symbolic="YES" id="8n7-mV-h5i"/>
+                                    <constraint firstItem="E8e-zA-JEQ" firstAttribute="top" secondItem="TXq-u3-R3D" secondAttribute="top" constant="20" symbolic="YES" id="BaX-Xe-8og"/>
+                                    <constraint firstAttribute="trailing" secondItem="E8e-zA-JEQ" secondAttribute="trailing" constant="20" symbolic="YES" id="mFS-vL-yKf"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLS-ms-81h" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="168.66666666666669" width="375" height="643.33333333333326"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="TXq-u3-R3D" firstAttribute="leading" secondItem="7gX-cs-H6x" secondAttribute="leading" id="0Jz-XF-7Tn"/>
+                            <constraint firstAttribute="trailing" secondItem="YLS-ms-81h" secondAttribute="trailing" id="4JD-Hc-i8w"/>
+                            <constraint firstItem="YLS-ms-81h" firstAttribute="bottom" secondItem="7gX-cs-H6x" secondAttribute="bottom" id="6p8-oz-atx"/>
+                            <constraint firstAttribute="trailing" secondItem="TXq-u3-R3D" secondAttribute="trailing" id="6vR-ow-ECi"/>
+                            <constraint firstItem="YLS-ms-81h" firstAttribute="leading" secondItem="7gX-cs-H6x" secondAttribute="leading" id="72h-w0-ibb"/>
+                            <constraint firstItem="TXq-u3-R3D" firstAttribute="top" secondItem="bDJ-YQ-Fba" secondAttribute="top" id="cD3-eh-Sdr"/>
+                            <constraint firstItem="YLS-ms-81h" firstAttribute="top" secondItem="TXq-u3-R3D" secondAttribute="bottom" id="l1R-cF-O0Y"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bDJ-YQ-Fba"/>
+                    </view>
+                    <connections>
+                        <outlet property="heightSlider" destination="nca-Dg-BTg" id="bjL-Zb-GN0"/>
+                        <outlet property="sceneView" destination="YLS-ms-81h" id="siT-TH-Arp"/>
+                        <outlet property="statusLabel" destination="y47-9o-1cZ" id="i1e-Db-zSH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xV7-CA-qW6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="799" y="10"/>
+        </scene>
+    </scenes>
+</document>

@@ -44,7 +44,7 @@ class LineOfSightGeoElementViewController: UIViewController {
     // locations used in the sample
     private let observerPoint = AGSPoint(x: -73.984988, y: 40.748131, z: 20, spatialReference: AGSSpatialReference.wgs84())
 
-    private let streetIntersectionLocations:[AGSPoint] = [
+    private let streetIntersectionLocations = [
         AGSPoint(x: -73.985068, y: 40.747786, spatialReference: AGSSpatialReference.wgs84()),
         AGSPoint(x: -73.983452, y: 40.747091, spatialReference: AGSSpatialReference.wgs84()),
         AGSPoint(x: -73.982961, y: 40.747762, spatialReference: AGSSpatialReference.wgs84()),
@@ -63,7 +63,7 @@ class LineOfSightGeoElementViewController: UIViewController {
         // initialize the scene with an imagery basemap
         scene = AGSScene(basemap: AGSBasemap.imageryWithLabels())
 
-        // initialize the elevation source with the service URL and add it to the base surface of the scene
+        // initialize the elevation source and add it to the base surface of the scene
         let elevationSrc = AGSArcGISTiledElevationSource(url: .worldElevationService)
         scene.baseSurface?.elevationSources.append(elevationSrc)
 
@@ -89,7 +89,7 @@ class LineOfSightGeoElementViewController: UIViewController {
 
         super.init(coder: aDecoder)
 
-        // set the viewpoint specified by the camera position
+        // set the initial viewpoint
         scene.initialViewpoint = AGSViewpoint(center: initialViewpointCenter, scale: 6000)
     }
 
@@ -124,16 +124,16 @@ class LineOfSightGeoElementViewController: UIViewController {
                 }
             }
         })
-
-        // set the line width (default 1.0). This setting is applied to all line of sight analysis in the view
-        AGSLineOfSight.setLineWidth(2.0)
-
-        heightSlider.value = Float(observerPoint.z)
     }
 
     // start and stop animation
     override func viewWillAppear(_ animated: Bool) {
         startAnimation()
+
+        // set the line width (default 1.0). This setting is applied to all line of sight analysis in the view
+        AGSLineOfSight.setLineWidth(2.0)
+
+        heightSlider.value = Float(observerPoint.z)
     }
 
     override func viewWillDisappear(_ animated: Bool) {

@@ -1202,9 +1202,8 @@
 				2182C9801FDA01A0003E3A0F /* StatisticalQuery.storyboard */,
 				2182C9811FDA01A0003E3A0F /* StatisticalQueryViewController.swift */,
 			);
-			name = "Statistical query";
-			path = "arcgis-ios-sdk-samples/Analysis/Statistical query";
-			sourceTree = SOURCE_ROOT;
+			path = "Statistical query";
+			sourceTree = "<group>";
 		};
 		2196CAF61FD868EA00512693 /* Raster function (service) */ = {
 			isa = PBXGroup;

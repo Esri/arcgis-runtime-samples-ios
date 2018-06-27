@@ -67,7 +67,7 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TilePackageCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TilePackageCell", for: indexPath)
         
         if indexPath.section == 0 {
             cell.textLabel?.text = self.extractName(fromPath: self.bundleTPKPaths[indexPath.row])

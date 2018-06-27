@@ -89,7 +89,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     //MARK: - Table view delegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AttachmentCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AttachmentCell", for: indexPath)
         
         let attachment = self.attachments[indexPath.row]
         cell.textLabel?.text = attachment.name

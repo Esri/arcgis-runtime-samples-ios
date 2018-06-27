@@ -160,7 +160,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RelatedFeatureCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RelatedFeatureCell", for: indexPath)
         
         let relatedFeature = self.relatedFeatures[indexPath.row]
         

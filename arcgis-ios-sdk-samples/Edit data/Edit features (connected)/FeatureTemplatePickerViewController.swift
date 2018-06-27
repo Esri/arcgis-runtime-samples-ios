@@ -94,20 +94,17 @@ class FeatureTemplatePickerViewController: UIViewController, UIBarPositioningDel
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Get a cell
         let cellIdentifier = "TemplatePickerCell"
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: cellIdentifier)
-        }
-        cell?.selectionStyle = .blue
+        cell.selectionStyle = .blue
         
         //Set its label, image, etc for the template
         let info = self.infos[indexPath.row]
-        cell?.textLabel?.font = UIFont.systemFont(ofSize: 12)
-        cell?.textLabel?.text = info.featureTemplate.name
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 12)
+        cell.textLabel?.text = info.featureTemplate.name
 //        cell.imageView?.image = info.featureLayer.renderer.symb .swatchForFeatureWithAttributes(info.featureTemplate.prototypeAttributes, geometryType: info.featureLayer.geometryType, size: CGSizeMake(20, 20))
         
-        return cell!
+        return cell
     }
     
     //MARK: - table view delegate

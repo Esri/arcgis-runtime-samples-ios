@@ -8,11 +8,11 @@ This sample demonstrates how to cut a geometry with a polyline using the `AGSGeo
 Press the `Cut` button, and the solid blue polygon will be cut into two polygons - a yellow and a green polygon with a diagonal pattern.
 
 ## How it works
-The `AGSGeometryEngine.cutGeometry:withCutter:` method is executed with the polygon as the first parameter and the cutting line as the second parameter. This returns a list of geometries. Each geometry is added as a new `AGSGraphic` with differing fill symbols to visualize the results.
+The `AGSGeometryEngine.cut(_:withCutter:)` method is executed with the polygon as the first parameter and the cutting line as the second parameter. This returns a list of geometries. Each geometry is added as a new `AGSGraphic` with differing fill symbols to visualize the results.
 
 ## Relevant API
  - `AGSGeometryEngine`
- - `AGSGeometryEngine.cutGeometry:withCutter:`
+ - `AGSGeometryEngine.cut(_:withCutter:)`
 
 ## Tags
 geometry, cut, split

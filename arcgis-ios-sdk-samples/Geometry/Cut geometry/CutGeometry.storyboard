@@ -24,9 +24,6 @@
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9q-kU-Rfo">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Cf2-Id-UiQ"/>
-                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="d6H-db-A2S"/>
                                     <barButtonItem title="Cut" id="OKg-tG-zkb">
@@ -40,12 +37,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="xCg-Rw-wvv" firstAttribute="leading" secondItem="TTm-gO-6LF" secondAttribute="leading" id="9Hv-gA-rNU"/>
+                            <constraint firstItem="xCg-Rw-wvv" firstAttribute="leading" secondItem="LVx-wq-HKJ" secondAttribute="leading" id="9Hv-gA-rNU"/>
                             <constraint firstItem="xCg-Rw-wvv" firstAttribute="top" secondItem="TTm-gO-6LF" secondAttribute="top" id="D7m-qp-2zl"/>
                             <constraint firstItem="d9q-kU-Rfo" firstAttribute="bottom" secondItem="TTm-gO-6LF" secondAttribute="bottom" id="KjU-hS-pAb"/>
-                            <constraint firstItem="d9q-kU-Rfo" firstAttribute="trailing" secondItem="TTm-gO-6LF" secondAttribute="trailing" id="LlH-nO-rbY"/>
-                            <constraint firstItem="d9q-kU-Rfo" firstAttribute="leading" secondItem="TTm-gO-6LF" secondAttribute="leading" id="lLH-o9-rBV"/>
-                            <constraint firstItem="xCg-Rw-wvv" firstAttribute="trailing" secondItem="TTm-gO-6LF" secondAttribute="trailing" id="oDr-HM-3YB"/>
+                            <constraint firstItem="d9q-kU-Rfo" firstAttribute="trailing" secondItem="LVx-wq-HKJ" secondAttribute="trailing" id="LlH-nO-rbY"/>
+                            <constraint firstItem="d9q-kU-Rfo" firstAttribute="leading" secondItem="LVx-wq-HKJ" secondAttribute="leading" id="lLH-o9-rBV"/>
+                            <constraint firstItem="xCg-Rw-wvv" firstAttribute="trailing" secondItem="LVx-wq-HKJ" secondAttribute="trailing" id="oDr-HM-3YB"/>
                             <constraint firstItem="d9q-kU-Rfo" firstAttribute="top" secondItem="xCg-Rw-wvv" secondAttribute="bottom" id="wgS-H4-0Hg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TTm-gO-6LF"/>

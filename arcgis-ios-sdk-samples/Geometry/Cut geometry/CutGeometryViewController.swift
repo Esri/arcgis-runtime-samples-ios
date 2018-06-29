@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Foundation
+import UIKit
 import ArcGIS
 
 class CutGeometryViewController: UIViewController {
@@ -55,7 +55,7 @@ class CutGeometryViewController: UIViewController {
             AGSPoint(x: -10111283.079633, y: 5933406.315128, spatialReference: .webMercator()),
             AGSPoint(x: -10214761.742852, y: 5888134.399970, spatialReference: .webMercator()),
             AGSPoint(x: -10254374.668616, y: 5901877.659929, spatialReference: .webMercator())
-            ]
+        ]
         
         // create a polygon from the array of points
         let polygon = AGSPolygon(points: points)
@@ -63,11 +63,8 @@ class CutGeometryViewController: UIViewController {
         // create a blue border line symbol with a stroke weight of 4 for the Lake Superior polygon
         let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .blue, width: 4)
         
-        // create a semi transparent blue
-        let fillColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.1)
-        
         // create a semi transparent blue fill symbol using the red border line symbol for the Lake Superior polygon
-        let fillSymbol = AGSSimpleFillSymbol(style: .solid, color: fillColor, outline: lineSymbol)
+        let fillSymbol = AGSSimpleFillSymbol(style: .solid, color: #colorLiteral(red: 0, green: 0, blue: 1, alpha: 0.1), outline: lineSymbol)
         
         // create a graphic using the polyline and fill symbol for the border polyline
         let graphic = AGSGraphic(geometry: polygon, symbol: fillSymbol, attributes: nil)
@@ -107,7 +104,7 @@ class CutGeometryViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["CutGeometryViewController"]
         
         // instantiate map using basemap
-        let map = AGSMap(basemap: AGSBasemap.topographic())
+        let map = AGSMap(basemap: .topographic())
         
         // assign map to the map view
         mapView.map = map

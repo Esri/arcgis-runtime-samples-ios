@@ -827,7 +827,7 @@
 			</dict>
             <dict>
                 <key>displayName</key>
-                <string>Geodesic Operations</string>
+                <string>Geodesic operations</string>
                 <key>storyboardName</key>
                 <string>GeodesicOperations</string>
                 <key>descriptionText</key>

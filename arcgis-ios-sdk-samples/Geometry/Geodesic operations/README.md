@@ -1,4 +1,4 @@
-# Geodesic Operations
+# Geodesic operations
 
 This sample demonstrates how to use `AGSGeometryEngine` to calculate a geodesic path between two points and measure its distance. Geodesic calculations take into account the curvature of the Earth, while planar calculations are based on a 2D Cartesian plane.
 

@@ -1155,13 +1155,13 @@
 			path = "Line of sight (location)";
 			sourceTree = "<group>";
 		};
-		123AC27A20E588A00026A7D6 /* Geodesic Operations */ = {
+		123AC27A20E588A00026A7D6 /* Geodesic operations */ = {
 			isa = PBXGroup;
 			children = (
 				123AC27B20E58CFA0026A7D6 /* GeodesicOperations.storyboard */,
 				123AC27C20E58CFA0026A7D6 /* GeodesicOperationsViewController.swift */,
 			);
-			path = "Geodesic Operations";
+			path = "Geodesic operations";
 			sourceTree = "<group>";
 		};
 		1259FB8F1FD295C90037105E /* WMS layer (URL) */ = {
@@ -1992,7 +1992,7 @@
 				3EBA25721D3450B800AB0703 /* Create geometries */,
 				3E0B58551E36D8D300951767 /* Spatial operations */,
 				3EF024E51ECBC10600166EC5 /* Format coordinates */,
-				123AC27A20E588A00026A7D6 /* Geodesic Operations */,
+				123AC27A20E588A00026A7D6 /* Geodesic operations */,
 			);
 			path = Geometry;
 			sourceTree = "<group>";

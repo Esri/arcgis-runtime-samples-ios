@@ -65,7 +65,7 @@ class GeodesicOperationsViewController: UIViewController, AGSGeoViewTouchDelegat
         // Add the graphics overlay to the map view.
         mapView.graphicsOverlays.add(graphicsOverlay)
         
-        // Set map view touch delegate to self.
+        // Set touch delegate on map view as self.
         mapView.touchDelegate = self
     }
     

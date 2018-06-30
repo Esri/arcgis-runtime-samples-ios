@@ -26,7 +26,7 @@ class GeodesicOperationsViewController: UIViewController, AGSGeoViewTouchDelegat
     private let measurementFormatter = MeasurementFormatter()
     private let JFKAirportLocation = AGSPoint(x: -73.7781, y: 40.6413, spatialReference: AGSSpatialReference.wgs84())
     
-    /// Add graphics to graphics overlay.
+    /// Add graphics representing origin, destination, and path to a graphics overlay.
     required init?(coder aDecoder: NSCoder) {
         // Create graphic symbols.
         let locationMarker = AGSSimpleMarkerSymbol(style: .cross, color: .blue, size: 10)
@@ -43,7 +43,7 @@ class GeodesicOperationsViewController: UIViewController, AGSGeoViewTouchDelegat
         
         super.init(coder: aDecoder)
         
-        // Add graphics to graphics overlay.
+        // Add graphics to the graphics overlay.
         graphicsOverlay.graphics.add(originGraphic)
         graphicsOverlay.graphics.add(destinationGraphic)
         graphicsOverlay.graphics.add(pathGraphic)
@@ -83,7 +83,7 @@ class GeodesicOperationsViewController: UIViewController, AGSGeoViewTouchDelegat
             return
         }
         
-        // Update geometry of destination graphic.
+        // Update geometry of the destination graphic.
         destinationGraphic.geometry = destinationLocation
         
         // Create a straight line path from origin to destination.
@@ -94,7 +94,7 @@ class GeodesicOperationsViewController: UIViewController, AGSGeoViewTouchDelegat
             return
         }
         
-        // Update geometry of path graphic.
+        // Update geometry of the path graphic.
         pathGraphic.geometry = geodeticPath
         
         // Calculate geodetic distance between origin and destination.
@@ -102,8 +102,10 @@ class GeodesicOperationsViewController: UIViewController, AGSGeoViewTouchDelegat
         
         // Display the distance in mapview's callout.
         mapView.callout.title = "Distance"
+        
         let measurement = Measurement<UnitLength>(value: distance, unit: .kilometers)
         mapView.callout.detail = measurementFormatter.string(from: measurement)
+        
         mapView.callout.isAccessoryButtonHidden = true
         mapView.callout.show(at: mapPoint, screenOffset: .zero, rotateOffsetWithMap: false, animated: true)
     }

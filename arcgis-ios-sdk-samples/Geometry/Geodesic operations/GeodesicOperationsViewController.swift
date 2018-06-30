@@ -17,13 +17,38 @@ import ArcGIS
 
 class GeodesicOperationsViewController: UIViewController, AGSGeoViewTouchDelegate {
 
-    @IBOutlet private var mapView:AGSMapView!
-
-    private var graphicsOverlay = AGSGraphicsOverlay()
-    private var originGraphic: AGSGraphic!
-    private var destinationGraphic: AGSGraphic!
-    private var pathGraphic: AGSGraphic!
-    let JFKAirportLocation = AGSPoint(x: -73.7781, y: 40.6413, spatialReference: AGSSpatialReference.wgs84())
+    @IBOutlet private var mapView: AGSMapView!
+    
+    private let destinationGraphic: AGSGraphic
+    private let pathGraphic: AGSGraphic
+    
+    private let graphicsOverlay = AGSGraphicsOverlay()
+    private let measurementFormatter = MeasurementFormatter()
+    private let JFKAirportLocation = AGSPoint(x: -73.7781, y: 40.6413, spatialReference: AGSSpatialReference.wgs84())
+    
+    /// Add graphics to graphics overlay.
+    required init?(coder aDecoder: NSCoder) {
+        // Create graphic symbols.
+        let locationMarker = AGSSimpleMarkerSymbol(style: .cross, color: .blue, size: 10)
+        let pathSymbol = AGSSimpleLineSymbol(style: .dash, color: .blue, width: 5)
+        
+        // Create an origin graphic.
+        let originGraphic = AGSGraphic(geometry: JFKAirportLocation, symbol: locationMarker, attributes: nil)
+        
+        // Create a destination graphic.
+        destinationGraphic = AGSGraphic(geometry: nil, symbol: locationMarker, attributes: nil)
+        
+        // Create a graphic to represent geodesic path between origin and destination.
+        pathGraphic = AGSGraphic(geometry: nil, symbol: pathSymbol, attributes: nil)
+        
+        super.init(coder: aDecoder)
+        
+        // Add graphics to graphics overlay.
+        graphicsOverlay.graphics.add(originGraphic)
+        graphicsOverlay.graphics.add(destinationGraphic)
+        graphicsOverlay.graphics.add(pathGraphic)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,38 +57,18 @@ class GeodesicOperationsViewController: UIViewController, AGSGeoViewTouchDelegat
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GeodesicOperationsViewController"]
         
         // Initialize map with imagery basemap.
-        let map = AGSMap(basemap: AGSBasemap.imagery())
+        let map = AGSMap(basemap: .imagery())
         
-        // Assign map to map view.
+        // Assign the map to the map view.
         mapView.map = map
         
-        // Add graphics overlay to the map view.
-        mapView.graphicsOverlays.add(self.graphicsOverlay)
+        // Add the graphics overlay to the map view.
+        mapView.graphicsOverlays.add(graphicsOverlay)
         
         // Set map view touch delegate to self.
         mapView.touchDelegate = self
-        
-        // Add origin graphic, destination graphic, and path graphic.
-        addGraphics()
     }
     
-    func addGraphics() {
-        // Create graphic symbols.
-        let locationMarker = AGSSimpleMarkerSymbol(style: .cross, color: .blue, size: 10)
-        let pathSymbol = AGSSimpleLineSymbol(style: .dash, color: .blue, width: 5)
-        
-        // Create origin graphic.
-        let originGraphic = AGSGraphic(geometry: JFKAirportLocation, symbol: locationMarker, attributes: nil)
-        graphicsOverlay.graphics.add(originGraphic)
-        
-        // Create destination graphic.
-        destinationGraphic = AGSGraphic(geometry: nil, symbol: locationMarker, attributes: nil)
-        graphicsOverlay.graphics.add(destinationGraphic)
-    
-        // Create graphic to represent geodesic path between origin and destination.
-        pathGraphic = AGSGraphic(geometry: nil, symbol: pathSymbol, attributes: nil)
-        graphicsOverlay.graphics.add(pathGraphic)
-    }
     
     // MARK: - AGSGeoViewTouchDelegate
     
@@ -97,9 +102,10 @@ class GeodesicOperationsViewController: UIViewController, AGSGeoViewTouchDelegat
         
         // Display the distance in mapview's callout.
         mapView.callout.title = "Distance"
-        mapView.callout.detail = String(format: "%.2f km", locale: Locale.current, distance)
+        let measurement = Measurement<UnitLength>(value: distance, unit: .kilometers)
+        mapView.callout.detail = measurementFormatter.string(from: measurement)
         mapView.callout.isAccessoryButtonHidden = true
-        mapView.callout.show(at: mapPoint, screenOffset: CGPoint.zero, rotateOffsetWithMap: false, animated: true)
+        mapView.callout.show(at: mapPoint, screenOffset: .zero, rotateOffsetWithMap: false, animated: true)
     }
 
 }

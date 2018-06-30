@@ -15,9 +15,9 @@ Visualizing flight paths between cities is a common example of a geodesic operat
 ## How it works
 
 1. Create an instance of `AGSPolyline` using two points.
-2. Densify the Polyline using the `densifyGeodetic(geometry:maxSegmentLength:lengthUnit:curveType:)` method on `AGSGeometryEngine`. This method will return a geodetically densified geometry.
+2. Densify the Polyline using the `geodeticDensifyGeometry(_:maxSegmentLength:lengthUnit:curveType:)` method on `AGSGeometryEngine`. This method will return a geodetically densified geometry.
 3. Set this geometry to a Graphic to display the geodesic path between two points in a Graphics Overlay.
-4. Get the geodetic distance of the path using the `lengthGeodetic(geometry:lengthUnit:curveType)` method on `AGSGeometryEngine`.
+4. Get the geodetic distance of the path using the `geodeticLength(of:lengthUnit:curveType:)` method on `AGSGeometryEngine`.
 
 ## Relevant API
 

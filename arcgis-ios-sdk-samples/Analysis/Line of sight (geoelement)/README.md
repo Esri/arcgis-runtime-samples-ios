@@ -2,11 +2,11 @@
 
 This sample demonstrates how to perform a dynamic line of sight analysis between two moving GeoElements (an observer whose height above ground can be modified interactively, and a moving taxi).
 
-## Instructions
+![](image1.png)
+
+## How to use the sample
 
 Use the slider to adjust the height of the observer.
-
-![](image1.png)
 
 ## How it works
 
@@ -14,4 +14,5 @@ An `AGSGeoElementLineOfSight` is created using the `init(observerLocation:target
 
 The line width used to render analysis results is set using the `setLineWidth()` method on the base class for the line of sight analysis called `AGSLineOfSight`. This setting is applied to all line of sight analyses in the view.
 
-The height of the observer above the ground is modified using a `UISlider` and the taxi's location is modified on a `NSTimer`. As the observer and taxi graphics are moved, the line of sight analysis automatically updates to reflect their positions.
+The height of the observer above the ground is modified using a `UISlider` and the taxi's location is modified on a `Timer`. As the observer and taxi graphics are moved, the line of sight analysis automatically updates to reflect their positions.
+

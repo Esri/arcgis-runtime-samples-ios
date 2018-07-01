@@ -15,21 +15,30 @@
 import UIKit
 import ArcGIS
 
+fileprivate let observerZMin = 20.0
+fileprivate let observerZMax = 1500.0
+fileprivate let observerZUnitString = AGSLinearUnit.meters().abbreviation
+
 class LineOfSightGeoElementViewController: UIViewController {
     
     @IBOutlet weak var sceneView: AGSSceneView!
-    @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var heightSlider: UISlider!
+
+    @IBOutlet weak var targetVisibilityLabel: UILabel!
+    @IBOutlet weak var observerZLabel: UILabel!
+
+    @IBOutlet weak var observerZSlider: UISlider!
+    @IBOutlet weak var observerZMinLabel: UILabel!
+    @IBOutlet weak var observerZMaxLabel: UILabel!
 
     // properties for setting up and manipulating the scene
-    let scene:AGSScene
-    let overlay:AGSGraphicsOverlay
-    let taxiGraphic:AGSGraphic
-    let observerGraphic:AGSGraphic
-    let lineOfSight: AGSGeoElementLineOfSight
+    private let scene:AGSScene
+    private let overlay:AGSGraphicsOverlay
+    private let taxiGraphic:AGSGraphic
+    private let observerGraphic:AGSGraphic
+    private let lineOfSight: AGSGeoElementLineOfSight
 
     // locations used in the sample
-    private let observerPoint = AGSPoint(x: -73.984988, y: 40.748131, z: 20, spatialReference: .wgs84())
+    private let observerPoint = AGSPoint(x: -73.984988, y: 40.748131, z: observerZMin, spatialReference: .wgs84())
 
     private let streetIntersectionLocations = [
         AGSPoint(x: -73.985068, y: 40.747786, spatialReference: .wgs84()),
@@ -117,24 +126,28 @@ class LineOfSightGeoElementViewController: UIViewController {
         // update the UI if the Line of Sight analysis result changes
         losObserver = lineOfSight.observe(\.targetVisibility, options: .new) { (losAnalysis, _) in
             DispatchQueue.main.async { [weak self] in
-                self?.updateForLineOfSightTargetVisibility(visibility: losAnalysis.targetVisibility)
+                self?.updateLineOfSightVisibilityLabel(visibility: losAnalysis.targetVisibility)
             }
+        }
+
+        // initialize the observer z slider
+        observerZSlider.minimumValue = Float(observerZMin)
+        observerZSlider.maximumValue = Float(observerZMax)
+
+        observerZMinLabel.text = "\(Int(observerZMin))\(observerZUnitString)"
+        observerZMaxLabel.text = "\(Int(observerZMax))\(observerZUnitString)"
+    }
+
+    // update the observer height when the slider is moved
+    @IBAction func observerHeightChanged(_ observerZSlider: UISlider) {
+        if let oldLocation = observerGraphic.geometry as? AGSPoint,
+            let newLocation = AGSGeometryEngine.geometry(bySettingZ: Double(observerZSlider.value), in: oldLocation) as? AGSPoint {
+            observerGraphic.geometry = newLocation
+            updateObserverZLabel()
         }
     }
 
-    private func updateForLineOfSightTargetVisibility(visibility:AGSLineOfSightTargetVisibility) {
-        switch visibility {
-        case .obstructed:
-            statusLabel.text = "Obstructed"
-            taxiGraphic.isSelected = false
-        case .visible:
-            statusLabel.text = "Visible"
-            taxiGraphic.isSelected = true
-        case .unknown:
-            statusLabel.text = "Unknown"
-            taxiGraphic.isSelected = false
-        }
-    }
+
 
     // start and stop animation
     override func viewWillAppear(_ animated: Bool) {
@@ -145,7 +158,9 @@ class LineOfSightGeoElementViewController: UIViewController {
         // set the line width (default 1.0). This setting is applied to all line of sight analysis in the view
         AGSLineOfSight.setLineWidth(2.0)
 
-        heightSlider.value = Float(observerPoint.z)
+        // update the ui
+        observerZSlider.value = Float(observerPoint.z)
+        updateObserverZLabel()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -154,13 +169,31 @@ class LineOfSightGeoElementViewController: UIViewController {
         animationTimer?.invalidate()
     }
 
-    // update the observer height when the slider is moved
-    @IBAction func observerHeightChanged(_ sender: UISlider) {
-        if let oldLocation = observerGraphic.geometry as? AGSPoint,
-            let newLocation = AGSGeometryEngine.geometry(bySettingZ: Double(sender.value), in: oldLocation) as? AGSPoint {
-            observerGraphic.geometry = newLocation
+
+    // current line of sight status
+    private func updateLineOfSightVisibilityLabel(visibility:AGSLineOfSightTargetVisibility) {
+        switch visibility {
+        case .obstructed:
+            targetVisibilityLabel.text = "Obstructed"
+            taxiGraphic.isSelected = false
+        case .visible:
+            targetVisibilityLabel.text = "Visible"
+            taxiGraphic.isSelected = true
+        case .unknown:
+            targetVisibilityLabel.text = "Unknown"
+            taxiGraphic.isSelected = false
         }
     }
+
+    func updateObserverZLabel() {
+        var label = "Unknown"
+        if let geom = observerGraphic.geometry as? AGSPoint {
+            label = "\(Int(geom.z))"
+        }
+        observerZLabel.text = "\(label)\(observerZUnitString)"
+    }
+
+
 
     // Track animation progress
     private var animationProgess = (frameIndex: 0, pointIndex: 0)

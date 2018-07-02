@@ -954,6 +954,18 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Line of sight (geoelement)</string>
+				<key>storyboardName</key>
+				<string>LineOfSightGeoElement</string>
+				<key>descriptionText</key>
+				<string>Line of sight between an observer and a moving GeoElement</string>
+				<key>dependency</key>
+				<array>
+					<string>Dolmus3DModel</string>
+				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Distance measurement analysis</string>
 				<key>storyboardName</key>
 				<string>DistanceMeasurementAnalysis</string>

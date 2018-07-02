@@ -93,7 +93,7 @@
                                 <constraints>
                                     <constraint firstItem="Ggm-am-Wvr" firstAttribute="width" secondItem="GMZ-99-S0M" secondAttribute="width" id="XbD-n0-eed"/>
                                 </constraints>
-                                <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="16" bottom="8" trailing="16"/>
+                                <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="XbD-n0-eed"/>

@@ -27,6 +27,6 @@ extension URL {
     // Scene Services
     
     /// The url of the scene service for buildings in Brest, France.
-    static let brestBuildingsService = URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer")!
+    static let brestBuildingsService = URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0")!
     static let newYorkBuildingsService = URL(string: "https://tiles.arcgis.com/tiles/z2tnIkrLQ2BRzr6P/arcgis/rest/services/New_York_LoD2_3D_Buildings/SceneServer/layers/0")!
 }

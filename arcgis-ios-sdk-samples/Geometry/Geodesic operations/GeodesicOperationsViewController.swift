@@ -29,7 +29,8 @@ class GeodesicOperationsViewController: UIViewController, AGSGeoViewTouchDelegat
     /// Add graphics representing origin, destination, and path to a graphics overlay.
     required init?(coder aDecoder: NSCoder) {
         // Create graphic symbols.
-        let locationMarker = AGSSimpleMarkerSymbol(style: .cross, color: .blue, size: 10)
+        let locationMarker = AGSSimpleMarkerSymbol(style: .circle, color: .blue, size: 10)
+        locationMarker.outline = AGSSimpleLineSymbol(style: .solid, color: .green, width: 5)
         let pathSymbol = AGSSimpleLineSymbol(style: .dash, color: .blue, width: 5)
         
         // Create an origin graphic.
@@ -41,12 +42,10 @@ class GeodesicOperationsViewController: UIViewController, AGSGeoViewTouchDelegat
         // Create a graphic to represent geodesic path between origin and destination.
         pathGraphic = AGSGraphic(geometry: nil, symbol: pathSymbol, attributes: nil)
         
-        super.init(coder: aDecoder)
-        
         // Add graphics to the graphics overlay.
-        graphicsOverlay.graphics.add(originGraphic)
-        graphicsOverlay.graphics.add(destinationGraphic)
-        graphicsOverlay.graphics.add(pathGraphic)
+        graphicsOverlay.graphics.addObjects(from: [originGraphic, destinationGraphic, pathGraphic])
+        
+        super.init(coder: aDecoder)
     }
     
     
@@ -56,11 +55,8 @@ class GeodesicOperationsViewController: UIViewController, AGSGeoViewTouchDelegat
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GeodesicOperationsViewController"]
         
-        // Initialize map with imagery basemap.
-        let map = AGSMap(basemap: .imagery())
-        
-        // Assign the map to the map view.
-        mapView.map = map
+        // Assign map with imagery basemap to the map view.
+        mapView.map = AGSMap(basemap: .imagery())
         
         // Add the graphics overlay to the map view.
         mapView.graphicsOverlays.add(graphicsOverlay)

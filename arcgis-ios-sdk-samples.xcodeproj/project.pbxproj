@@ -491,6 +491,9 @@
 		4CCE7BD620D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */; };
 		4CCE7BD820D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCE7BD720D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard */; };
 		4CEA34FE20C5EC680087F93A /* StyleWebMapServiceLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */; };
+		940A73F420E588C200A06C80 /* CutGeometry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940A73F320E588C200A06C80 /* CutGeometry.storyboard */; };
+		940A73F620E589AB00A06C80 /* CutGeometryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
+		940A73F720E6BF3F00A06C80 /* CutGeometryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
 		D90407941FD8608A00BFE07B /* RasterLayerGPKGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */; };
 		D90407951FD8608A00BFE07B /* RasterLayerGPKG.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90407931FD8608A00BFE07B /* RasterLayerGPKG.storyboard */; };
@@ -714,6 +717,7 @@
 				3ED0299D1B8E571700ACA70D /* EditAttributesViewController.swift in CopyFiles */,
 				3ED0299F1B8E571700ACA70D /* AttachmentsListViewController.swift in CopyFiles */,
 				3ED029A01B8E571700ACA70D /* EditAttachmentViewController.swift in CopyFiles */,
+				940A73F720E6BF3F00A06C80 /* CutGeometryViewController.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1061,6 +1065,8 @@
 		4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StyleWebMapServiceLayer.storyboard; sourceTree = "<group>"; };
 		4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasurementAnalysisViewController.swift; sourceTree = "<group>"; };
 		4CCE7BD720D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DistanceMeasurementAnalysis.storyboard; sourceTree = "<group>"; };
+		940A73F320E588C200A06C80 /* CutGeometry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CutGeometry.storyboard; sourceTree = "<group>"; };
+		940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutGeometryViewController.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
 		D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterLayerGPKGViewController.swift; sourceTree = "<group>"; };
 		D90407931FD8608A00BFE07B /* RasterLayerGPKG.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RasterLayerGPKG.storyboard; sourceTree = "<group>"; };
@@ -1993,6 +1999,7 @@
 				3E0B58551E36D8D300951767 /* Spatial operations */,
 				3EF024E51ECBC10600166EC5 /* Format coordinates */,
 				123AC27A20E588A00026A7D6 /* Geodesic operations */,
+				940A73F220E5889B00A06C80 /* Cut geometry */,
 			);
 			path = Geometry;
 			sourceTree = "<group>";
@@ -2687,6 +2694,15 @@
 			path = "Distance measurement analysis";
 			sourceTree = "<group>";
 		};
+		940A73F220E5889B00A06C80 /* Cut geometry */ = {
+			isa = PBXGroup;
+			children = (
+				940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */,
+				940A73F320E588C200A06C80 /* CutGeometry.storyboard */,
+			);
+			path = "Cut geometry";
+			sourceTree = "<group>";
+		};
 		D90407911FD8602B00BFE07B /* Raster layer (geopackage) */ = {
 			isa = PBXGroup;
 			children = (
@@ -2934,6 +2950,7 @@
 				3E5E093E1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard in Resources */,
 				3EEE1D6F1E4935FC003263FC /* GroupUsers.storyboard in Resources */,
 				123AC27D20E58CFA0026A7D6 /* GeodesicOperations.storyboard in Resources */,
+				940A73F420E588C200A06C80 /* CutGeometry.storyboard in Resources */,
 				3E6AE3F11C6D1B2E0026E59C /* san-diego in Resources */,
 				3E4BF44E1C5AF0AD00D85919 /* FindPlace.storyboard in Resources */,
 				3EABC7B11DB17B2C00C161C6 /* Shasta.tif.ovr in Resources */,
@@ -3173,6 +3190,7 @@
 				166E8F9E1EE62E0E00C57C46 /* RasterLayerViewController.swift in Sources */,
 				3E8A25921D36B97A00D14F08 /* MapLoadedViewController.swift in Sources */,
 				3EEA06121D21C44000E03774 /* ExtrudeGraphicsViewController.swift in Sources */,
+				940A73F620E589AB00A06C80 /* CutGeometryViewController.swift in Sources */,
 				3EC398BF1D8B45AD0084612D /* DemoTouchView.swift in Sources */,
 				3E5E09381EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift in Sources */,
 				3EF024E91ECBC10600166EC5 /* FormatCoordinatesViewController.swift in Sources */,

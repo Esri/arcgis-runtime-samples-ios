@@ -104,6 +104,19 @@ class LineOfSightGeoElementViewController: UIViewController {
 
         // set the initial viewpoint
         scene.initialViewpoint = AGSViewpoint(center: initialViewpointCenter, scale: 6000)
+
+        // default to a line of sight target offset of 1.5m above ground
+        lineOfSight.targetOffsetZ = 1.5
+        
+        // let's examine the 3D model symbol to see if we can determine a better height
+        taxiSymbol.load { [weak self] error in
+            guard error == nil else {
+                print("Error loading the taxi symbol: \(error!.localizedDescription)")
+                return
+            }
+            // use the model's height as the line of sight target offset above ground
+            self?.lineOfSight.targetOffsetZ = taxiSymbol.height
+        }
     }
 
     override func viewDidLoad() {

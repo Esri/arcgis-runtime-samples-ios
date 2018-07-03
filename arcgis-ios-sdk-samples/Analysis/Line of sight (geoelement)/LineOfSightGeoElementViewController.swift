@@ -107,7 +107,7 @@ class LineOfSightGeoElementViewController: UIViewController {
 
         // default to a line of sight target offset of 1.5m above ground
         lineOfSight.targetOffsetZ = 1.5
-        sour
+        
         // let's examine the 3D model symbol to see if we can determine a better height
         taxiSymbol.load { [weak self] error in
             guard error == nil else {

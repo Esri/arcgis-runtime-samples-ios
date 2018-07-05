@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="suP-hl-tFv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="suP-hl-tFv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,35 +29,93 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="nvK-RO-FbS"/>
-                                    <barButtonItem style="plain" id="vCb-iO-r75">
-                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="D16-sZ-PnD">
-                                            <rect key="frame" x="37.5" y="7" width="300" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <segments>
-                                                <segment title="Topo"/>
-                                                <segment title="Streets"/>
-                                                <segment title="Imagery"/>
-                                                <segment title="Oceans"/>
-                                            </segments>
-                                            <connections>
-                                                <action selector="segmentValueChanged:" destination="suP-hl-tFv" eventType="valueChanged" id="Gk1-HD-4kO"/>
-                                            </connections>
-                                        </segmentedControl>
+                                    <barButtonItem title="Change Basemap" id="UDA-tj-FGc">
+                                        <connections>
+                                            <action selector="buttonAction:" destination="suP-hl-tFv" id="csi-f7-hhm"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="5vm-QF-GKp"/>
                                 </items>
                             </toolbar>
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzG-Lo-MT8" userLabel="Blur view">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTm-Fi-IwY">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xT3-3r-H4s">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                            <connections>
+                                                <action selector="buttonAction:" destination="suP-hl-tFv" eventType="touchUpInside" id="yhF-c8-6wD"/>
+                                            </connections>
+                                        </button>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3A0-ZR-JZD">
+                                            <rect key="frame" x="67.5" y="211.5" width="240" height="200"/>
+                                            <subviews>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d4z-fv-pBa">
+                                                    <rect key="frame" x="5" y="5" width="230" height="190"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <prototypes>
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="basemapsCell" textLabel="wVj-Bf-1h3" style="IBUITableViewCellStyleDefault" id="JZG-Ry-ubs">
+                                                            <rect key="frame" x="0.0" y="28" width="230" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JZG-Ry-ubs" id="rNO-T7-hcf">
+                                                                <rect key="frame" x="0.0" y="0.0" width="230" height="43.5"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wVj-Bf-1h3">
+                                                                        <rect key="frame" x="15" y="0.0" width="200" height="43.5"/>
+                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            </tableViewCellContentView>
+                                                        </tableViewCell>
+                                                    </prototypes>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="suP-hl-tFv" id="W2q-pG-LCu"/>
+                                                        <outlet property="delegate" destination="suP-hl-tFv" id="9wz-Rq-bN0"/>
+                                                    </connections>
+                                                </tableView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="200" id="1E6-GZ-CFF"/>
+                                                <constraint firstAttribute="width" constant="240" id="66N-TK-U5A"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="xT3-3r-H4s" secondAttribute="bottom" id="2qY-Io-JTO"/>
+                                        <constraint firstItem="3A0-ZR-JZD" firstAttribute="centerX" secondItem="gTm-Fi-IwY" secondAttribute="centerX" id="El4-Fy-l6I"/>
+                                        <constraint firstItem="xT3-3r-H4s" firstAttribute="top" secondItem="gTm-Fi-IwY" secondAttribute="top" id="LY6-n6-dNp"/>
+                                        <constraint firstItem="xT3-3r-H4s" firstAttribute="leading" secondItem="gTm-Fi-IwY" secondAttribute="leading" id="NzK-Zd-e5w"/>
+                                        <constraint firstAttribute="trailing" secondItem="xT3-3r-H4s" secondAttribute="trailing" id="UMS-Tm-RUZ"/>
+                                        <constraint firstItem="3A0-ZR-JZD" firstAttribute="centerY" secondItem="gTm-Fi-IwY" secondAttribute="centerY" id="cJi-lg-JHN"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="ZPF-Hk-sgi" firstAttribute="top" secondItem="Ksc-DO-eLV" secondAttribute="top" id="4eV-yZ-a9J"/>
+                            <constraint firstItem="qDG-ym-VhV" firstAttribute="bottom" secondItem="98t-T5-GhR" secondAttribute="bottom" id="K6m-ef-h8j"/>
+                            <constraint firstItem="qDG-ym-VhV" firstAttribute="top" secondItem="zzG-Lo-MT8" secondAttribute="bottom" id="MRm-9L-s20"/>
+                            <constraint firstItem="zzG-Lo-MT8" firstAttribute="trailing" secondItem="ZPF-Hk-sgi" secondAttribute="trailing" id="QG1-pP-HXf"/>
                             <constraint firstItem="ZPF-Hk-sgi" firstAttribute="bottom" secondItem="qDG-ym-VhV" secondAttribute="top" id="Rh2-lA-Wa0"/>
                             <constraint firstItem="qDG-ym-VhV" firstAttribute="leading" secondItem="98t-T5-GhR" secondAttribute="leading" id="SmW-fJ-Saz"/>
                             <constraint firstItem="ZPF-Hk-sgi" firstAttribute="top" secondItem="98t-T5-GhR" secondAttribute="top" id="TE8-55-aHG"/>
                             <constraint firstItem="qDG-ym-VhV" firstAttribute="trailing" secondItem="98t-T5-GhR" secondAttribute="trailing" id="Tm4-xc-muW"/>
+                            <constraint firstItem="zzG-Lo-MT8" firstAttribute="top" secondItem="Ksc-DO-eLV" secondAttribute="top" id="Ukh-D4-Ayy"/>
                             <constraint firstItem="98t-T5-GhR" firstAttribute="bottom" secondItem="ZPF-Hk-sgi" secondAttribute="bottom" id="VNp-0z-52M"/>
                             <constraint firstItem="ZPF-Hk-sgi" firstAttribute="trailing" secondItem="Ksc-DO-eLV" secondAttribute="trailing" id="a5P-bo-Wrh"/>
                             <constraint firstItem="ZPF-Hk-sgi" firstAttribute="leading" secondItem="Ksc-DO-eLV" secondAttribute="leading" id="aSW-WW-S7M"/>
+                            <constraint firstItem="zzG-Lo-MT8" firstAttribute="leading" secondItem="ZPF-Hk-sgi" secondAttribute="leading" id="jBC-nf-yza"/>
                             <constraint firstItem="98t-T5-GhR" firstAttribute="bottom" secondItem="qDG-ym-VhV" secondAttribute="bottom" id="vew-uD-C8U"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="98t-T5-GhR"/>
@@ -69,13 +127,15 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="blurView" destination="zzG-Lo-MT8" id="GZf-hX-mER"/>
                         <outlet property="mapView" destination="ZPF-Hk-sgi" id="gN4-QI-62l"/>
-                        <outlet property="segmentedControl" destination="D16-sZ-PnD" id="vfY-QW-PlF"/>
+                        <outlet property="tableParentView" destination="3A0-ZR-JZD" id="3ha-a1-gam"/>
+                        <outlet property="tableView" destination="d4z-fv-pBa" id="NQM-10-rVj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgK-XR-tKB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="561" y="472"/>
+            <point key="canvasLocation" x="560.79999999999995" y="471.8140929535233"/>
         </scene>
     </scenes>
 </document>

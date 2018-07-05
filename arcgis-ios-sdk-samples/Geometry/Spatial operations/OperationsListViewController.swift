@@ -34,10 +34,10 @@ class OperationsListViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "OperationCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OperationCell", for: indexPath)
         
-        cell.textLabel?.text = self.operations[(indexPath as NSIndexPath).row]
-        cell.backgroundColor = UIColor.clear
+        cell.textLabel?.text = self.operations[indexPath.row]
+        cell.backgroundColor = .clear
         
         return cell
     }
@@ -45,6 +45,6 @@ class OperationsListViewController: UIViewController, UITableViewDataSource, UIT
     //MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate?.operationsListViewController(self, didSelectOperation: (indexPath as NSIndexPath).row)
+        self.delegate?.operationsListViewController(self, didSelectOperation: indexPath.row)
     }
 }

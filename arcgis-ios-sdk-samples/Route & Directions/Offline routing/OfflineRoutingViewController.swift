@@ -104,17 +104,12 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         let markerSymbol = AGSPictureMarkerSymbol(image: markerImage)
         markerSymbol.offsetY = markerImage.size.height/2
         
-        let textSymbol = AGSTextSymbol(text: "\(index)", color: UIColor.white, size: 20, horizontalAlignment: AGSHorizontalAlignment.center, verticalAlignment: AGSVerticalAlignment.middle)
+        let textSymbol = AGSTextSymbol(text: "\(index)", color: .white, size: 20, horizontalAlignment: .center, verticalAlignment: .middle)
         textSymbol.offsetY = markerSymbol.offsetY
         
         let compositeSymbol = AGSCompositeSymbol(symbols: [markerSymbol, textSymbol])
         
         return compositeSymbol
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //MARK: - AGSGeoViewTouchDelegate
@@ -228,8 +223,8 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         //exists then remove it
         if self.longPressedRouteGraphic != nil {
             //update distance and time
-            self.totalTime = self.totalTime - Double(self.longPressedGraphic.attributes["routeTime"] as! NSNumber)
-            self.totalDistance = self.totalDistance - Double(self.longPressedGraphic.attributes["routeLength"] as! NSNumber)
+            self.totalTime = self.totalTime - Double(truncating: self.longPressedGraphic.attributes["routeTime"] as! NSNumber)
+            self.totalDistance = self.totalDistance - Double(truncating: self.longPressedGraphic.attributes["routeLength"] as! NSNumber)
             
             self.routeGraphicsOverlay.graphics.remove(self.longPressedRouteGraphic)
             self.longPressedRouteGraphic = nil
@@ -261,7 +256,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     //method returns the symbol for the route graphic
     func routeSymbol() -> AGSSimpleLineSymbol {
-        let symbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.yellow, width: 5)
+        let symbol = AGSSimpleLineSymbol(style: .solid, color: .yellow, width: 5)
         return symbol
     }
     

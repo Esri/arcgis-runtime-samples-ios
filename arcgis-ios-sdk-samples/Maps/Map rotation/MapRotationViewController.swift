@@ -38,18 +38,19 @@ class MapRotationViewController: UIViewController {
         
         //update the slider value when the user rotates by pinching
         self.mapView.viewpointChangedHandler = { [weak self] () in
-            self?.slider.value = Float(self!.mapView.rotation)
-            self?.rotationLabel.text = "\(Int(self!.slider.value))\u{00B0}"
-            self?.compassButton.transform = CGAffineTransform(rotationAngle: CGFloat(-self!.mapView.rotation * Double.pi / 180))
+            DispatchQueue.main.async {
+                self?.mapViewpointDidChange()
+            }
         }
 
         //initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -13044000, yMin: 3855000, xMax: -13040000, yMax: 3858000, spatialReference: AGSSpatialReference.webMercator()))
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func mapViewpointDidChange() {
+        slider.value = Float(mapView.rotation)
+        rotationLabel.text = "\(Int(slider.value))\u{00B0}"
+        compassButton.transform = CGAffineTransform(rotationAngle: CGFloat(-mapView.rotation * Double.pi / 180))
     }
     
     //MARK: - Actions

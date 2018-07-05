@@ -52,7 +52,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         
         //register self for the keyboard show notification
         //in order to un hide the cancel button for search
-        NotificationCenter.default.addObserver(self, selector: #selector(FindAddressViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FindAddressViewController.keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
     }
     
     //method that returns a graphic object for the specified point and attributes
@@ -117,7 +117,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
     }
     
     private func showAlert(_ message:String) {
-        SVProgressHUD.showError(withStatus: message, maskType: .gradient)
+        SVProgressHUD.showError(withStatus: message)
     }
     
     //MARK: - AGSGeoViewTouchDelegate
@@ -157,7 +157,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
     }
     
     //MARK: - Actions
-    func keyboardWillShow(_ sender:AnyObject) {
+    @objc func keyboardWillShow(_ sender:AnyObject) {
         self.button.isHidden = false
     }
     

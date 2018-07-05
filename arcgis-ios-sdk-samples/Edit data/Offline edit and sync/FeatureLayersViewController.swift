@@ -32,11 +32,6 @@ class FeatureLayersViewController: UIViewController, UITableViewDataSource, UITa
 
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     //MARK: - UITableViewDataSource
     
@@ -45,9 +40,9 @@ class FeatureLayersViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FeatureLayerCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FeatureLayerCell", for: indexPath)
         
-        let layerInfo = self.featureLayerInfos[(indexPath as NSIndexPath).row]
+        let layerInfo = self.featureLayerInfos[indexPath.row]
         cell.textLabel?.text = layerInfo.name
         
         //accessory view
@@ -58,14 +53,14 @@ class FeatureLayersViewController: UIViewController, UITableViewDataSource, UITa
             cell.accessoryType = .none
         }
         
-        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = .clear
         return cell
     }
     
     //MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let layerInfo = self.featureLayerInfos[(indexPath as NSIndexPath).row]
+        let layerInfo = self.featureLayerInfos[indexPath.row]
         
         if let index = self.selectedLayerIds.index(of: layerInfo.id) {
             self.selectedLayerIds.remove(at: index)

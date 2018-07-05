@@ -60,11 +60,6 @@ class StretchRendererSettingsVC: UIViewController, UITableViewDataSource, Stretc
         self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,22 +73,22 @@ class StretchRendererSettingsVC: UIViewController, UITableViewDataSource, Stretc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if (indexPath as NSIndexPath).row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Row0") as! StretchRendererTypeCell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Row0", for: indexPath) as! StretchRendererTypeCell
             cell.delegate = self
             return cell
         }
         else {
             if self.stretchType == .MinMax {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "MinMaxRow\((indexPath as NSIndexPath).row)") as! StretchRendererInputCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "MinMaxRow\(indexPath.row)", for: indexPath)
                 return cell
             }
             else if self.stretchType == .PercentClip {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "PercentClipRow\((indexPath as NSIndexPath).row)") as! StretchRendererInputCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PercentClipRow\(indexPath.row)", for: indexPath)
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "StandardDeviationRow1") as! StretchRendererInputCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "StandardDeviationRow1", for: indexPath)
                 return cell
             }
         }
@@ -137,7 +132,7 @@ class StretchRendererSettingsVC: UIViewController, UITableViewDataSource, Stretc
         self.delegate?.stretchRendererSettingsVC(self, didSelectStretchParameters: stretchParameters)
     }
     
-    func hideKeyboard() {
+    @objc func hideKeyboard() {
         self.view.endEditing(true)
     }
     

@@ -116,7 +116,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     
     private func showAlert(_ message:String) {
-        SVProgressHUD.showError(withStatus: message, maskType: .gradient)
+        SVProgressHUD.showError(withStatus: message)
     }
     
     //MARK: - AGSGeoViewTouchDelegate

@@ -96,7 +96,6 @@ class CustomContextSheet: UIView {
             //selected label
             self.selectionLabel = self.label(self.titles[self.selectedIndex])
             self.selectionLabel.alpha = 1
-//            self.selectionLabel.backgroundColor = UIColor.redColor()
             self.insertSubview(self.selectionLabel, at: 0)
             
             //constraints
@@ -163,7 +162,7 @@ class CustomContextSheet: UIView {
     func label(_ title:String) -> UILabel {
         let label = UILabel(frame: CGRect.zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = UIColor.clear
+        label.backgroundColor = .clear
         label.attributedText = self.attributedText(title)
         label.alpha = 0
         label.sizeToFit()
@@ -177,7 +176,10 @@ class CustomContextSheet: UIView {
     }
     
     func attributedText(_ title:String) -> NSAttributedString {
-        let attributes = [NSStrokeWidthAttributeName: -3, NSStrokeColorAttributeName: UIColor.gray, NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18)] as [String : Any]
+        let attributes = [NSAttributedStringKey.strokeWidth: -3,
+                          NSAttributedStringKey.strokeColor: UIColor.gray,
+                          NSAttributedStringKey.foregroundColor: UIColor.white,
+                          NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)] as [NSAttributedStringKey : Any]
         return NSAttributedString(string: title, attributes: attributes)
     }
     
@@ -260,7 +262,7 @@ class CustomContextSheet: UIView {
         }
     }
     
-    func toggleButtons() {
+    @objc func toggleButtons() {
         if self.isButtonPressed {
             self.hideButtons()
         }
@@ -269,7 +271,7 @@ class CustomContextSheet: UIView {
         }
     }
     
-    func valueChanged(_ sender:UIButton) {
+    @objc func valueChanged(_ sender:UIButton) {
         //get index of sender
         if let index = self.buttonsCollection.index(of: sender) {
             self.selectedIndex = index

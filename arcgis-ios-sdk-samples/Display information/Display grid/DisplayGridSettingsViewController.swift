@@ -60,14 +60,10 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
     
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         //
         // Setup UI Controls
         setupUI()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     private func setupUI() {
@@ -213,7 +209,7 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
                 textSymbol.size = 14
                 textSymbol.horizontalAlignment = .left
                 textSymbol.verticalAlignment = .bottom
-                textSymbol.haloColor = UIColor.white
+                textSymbol.haloColor = .white
                 textSymbol.haloWidth = CGFloat(gridLevel+1)
                 grid.setTextSymbol(textSymbol, forLevel: gridLevel)
             }

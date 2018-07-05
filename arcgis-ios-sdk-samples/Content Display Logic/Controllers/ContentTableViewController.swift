@@ -88,11 +88,6 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             index = index + 1
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func nodesByDisplayNames(_ names:[String]) -> [Node] {
         var nodes = [Node]()
@@ -115,10 +110,10 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         let reuseIdentifier = "ContentTableCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as! ContentTableCell
 
-        let node = self.nodesArray[(indexPath as NSIndexPath).row]
+        let node = self.nodesArray[indexPath.row]
         cell.titleLabel.text = node.displayName
         
-        if self.expandedRowIndex == (indexPath as NSIndexPath).row {
+        if self.expandedRowIndex == indexPath.row {
             cell.detailLabel.text = node.descriptionText
         }
         else {
@@ -126,9 +121,9 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         }
         
         cell.infoButton.addTarget(self, action: #selector(ContentTableViewController.expandCell(_:)), for: UIControlEvents.touchUpInside)
-        cell.infoButton.tag = (indexPath as NSIndexPath).row
+        cell.infoButton.tag = indexPath.row
 
-        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = .clear
         
         return cell
     }
@@ -137,7 +132,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         //hide keyboard if visible
         self.view.endEditing(true)
         
-        let node = self.nodesArray[(indexPath as NSIndexPath).row]
+        let node = self.nodesArray[indexPath.row]
         
         //download on demand resources
         if node.dependency.count > 0 {
@@ -193,7 +188,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
                 strongSelf.downloadProgressView.dismiss()
                 
                 if let error = error {
-                    SVProgressHUD.showError(withStatus: "Failed to download raster resource :: \(error.localizedDescription)", maskType: .gradient)
+                    SVProgressHUD.showError(withStatus: "Failed to download raster resource :: \(error.localizedDescription)")
                 }
                 else {
                     
@@ -241,13 +236,13 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         controller.navigationItem.rightBarButtonItem = infoBBI
     }
     
-    func expandCell(_ sender:UIButton) {
+    @objc func expandCell(_ sender:UIButton) {
         self.updateExpandedRow(IndexPath(row: sender.tag, section: 0), collapseIfSelected: true)
     }
     
     func updateExpandedRow(_ indexPath:IndexPath, collapseIfSelected:Bool) {
         //if same row selected then hide the detail view
-        if (indexPath as NSIndexPath).row == self.expandedRowIndex {
+        if indexPath.row == self.expandedRowIndex {
             if collapseIfSelected {
                 self.expandedRowIndex = -1
                 tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
@@ -259,7 +254,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         else {
             //get the two cells and update
             let previouslyExpandedIndexPath = IndexPath(row: self.expandedRowIndex, section: 0)
-            self.expandedRowIndex = (indexPath as NSIndexPath).row
+            self.expandedRowIndex = indexPath.row
             tableView.reloadRows(at: [previouslyExpandedIndexPath, indexPath], with: UITableViewRowAnimation.fade)
         }
     }
@@ -300,7 +295,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             }
         }
         
-        SVProgressHUD.showError(withStatus: "No match found", maskType: .gradient)
+        SVProgressHUD.showError(withStatus: "No match found")
         
     }
     

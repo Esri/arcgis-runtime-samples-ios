@@ -51,7 +51,7 @@ class DistanceCompositeSymbolViewController: UIViewController {
         let modelSymbol = AGSModelSceneSymbol(name: "Bristol", extension: "dae", scale: 100.0)
         modelSymbol.load(completion: { [weak self] (error) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
                 return
             }
             
@@ -73,11 +73,5 @@ class DistanceCompositeSymbolViewController: UIViewController {
             self?.sceneView.setViewpointCamera(camera)
         })
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
 }

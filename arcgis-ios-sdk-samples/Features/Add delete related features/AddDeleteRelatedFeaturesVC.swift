@@ -72,7 +72,7 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         
         //show progress hud for identify
-        SVProgressHUD.show(withStatus: "Identifying feature", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Identifying feature")
         
         //identify features at tapped location
         self.mapView.identifyLayer(self.parksFeatureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result) in
@@ -80,7 +80,7 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
             guard result.error == nil else {
                 
                 //show error to user
-                SVProgressHUD.showError(withStatus: result.error!.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: result.error!.localizedDescription)
                 return
             }
             
@@ -109,15 +109,10 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
             let controller = navigationController.viewControllers[0] as! RelatedFeaturesViewController
             
             //share selected park
-            controller.originFeature = self.selectedPark as! AGSArcGISFeature!
+            controller.originFeature = self.selectedPark as! AGSArcGISFeature
             
             //share parks feature table as origin feature table
             controller.originFeatureTable = self.parksFeatureTable
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

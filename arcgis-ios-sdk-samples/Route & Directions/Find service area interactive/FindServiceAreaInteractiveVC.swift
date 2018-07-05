@@ -70,7 +70,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         self.facilitiesGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: facilitySymbol)
         
         //barrier symbol
-        let barrierSymbol = AGSSimpleFillSymbol(style: .diagonalCross, color: UIColor.red, outline: nil)
+        let barrierSymbol = AGSSimpleFillSymbol(style: .diagonalCross, color: .red, outline: nil)
         
         //set symbol on barrier graphics overlay using renderer
         self.barriersGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: barrierSymbol)
@@ -85,7 +85,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         self.serviceAreaTask.defaultServiceAreaParameters { [weak self] (parameters: AGSServiceAreaParameters?, error: Error?) in
             
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: "Error getting default parameters:: \(error!.localizedDescription)", maskType: .gradient)
+                SVProgressHUD.showError(withStatus: "Error getting default parameters:: \(error!.localizedDescription)")
                 return
             }
             
@@ -124,13 +124,13 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         //check if at least a single facility is added
         if self.facilitiesGraphicsOverlay.graphics.count == 0 {
             
-            SVProgressHUD.showInfo(withStatus: "At least one facility is required", maskType: .gradient)
+            SVProgressHUD.showInfo(withStatus: "At least one facility is required")
             
             return
         }
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Loading", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Loading")
         
         //add facilities
         var facilities = [AGSServiceAreaFacility]()
@@ -170,7 +170,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
             }
             
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: "Error solving service area:: \(error!.localizedDescription)", maskType: .gradient)
+                SVProgressHUD.showError(withStatus: "Error solving service area:: \(error!.localizedDescription)")
                 return
             }
             
@@ -249,11 +249,6 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }

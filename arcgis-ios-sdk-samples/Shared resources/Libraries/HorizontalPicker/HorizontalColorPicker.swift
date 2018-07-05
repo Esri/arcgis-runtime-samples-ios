@@ -16,9 +16,8 @@
 
 import UIKit
 
-@objc
 protocol HorizontalColorPickerDelegate: class {
-    @objc optional func horizontalColorPicker(_ horizontalColorPicker:HorizontalColorPicker, didUpdateSelectedColor color: UIColor)
+    func horizontalColorPicker(_ horizontalColorPicker:HorizontalColorPicker, didUpdateSelectedColor color: UIColor)
 }
 
 @IBDesignable
@@ -45,7 +44,7 @@ class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionVie
     }
     
     private func commonInit() {
-        backgroundColor = UIColor.clear
+        backgroundColor = .clear
         nibView = loadViewFromNib()
         nibView.frame = bounds
         nibView.autoresizingMask = [UIViewAutoresizing.flexibleHeight, .flexibleWidth]
@@ -112,7 +111,7 @@ class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionVie
         
         // Fire delegate
         if let selectedColor = selectedColor {
-            delegate?.horizontalColorPicker?(self, didUpdateSelectedColor: selectedColor)
+            delegate?.horizontalColorPicker(self, didUpdateSelectedColor: selectedColor)
         }
     }
     
@@ -172,45 +171,30 @@ class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionVie
     }
 }
 
-
 class HorizontalColorPickerCell: UICollectionViewCell {
-    
-    var colorView : UIView!
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
-    
+
     func commonInit() {
-        //
-        // Initialize and add color view
-        colorView = UIView(frame: contentView.bounds)
-        colorView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        contentView.addSubview(colorView)
+        backgroundView = UIView()
+        selectedBackgroundView = {
+            let view = UIView()
+            view.layer.borderColor = UIColor.white.cgColor
+            view.layer.borderWidth = 2
+            return view
+        }()
     }
-    
-    override var isSelected: Bool{
-        didSet{
-            if isSelected{
-                layer.borderColor = UIColor.white.cgColor
-                layer.borderWidth = 2
-            }
-            else{
-                layer.borderColor = nil
-                layer.borderWidth = 0.0
-            }
-        }
-    }
-    
-    var color : UIColor?{
-        didSet{
-            colorView.backgroundColor = color
+
+    var color: UIColor? {
+        didSet {
+            backgroundView?.backgroundColor = color
         }
     }
 }

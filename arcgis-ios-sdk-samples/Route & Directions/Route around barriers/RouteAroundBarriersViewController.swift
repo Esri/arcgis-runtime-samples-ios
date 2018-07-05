@@ -93,7 +93,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             return
         }
         
-        SVProgressHUD.show(withStatus: "Routing", maskType: SVProgressHUDMaskType.gradient)
+        SVProgressHUD.show(withStatus: "Routing")
         
         //clear routes
         self.routeGraphicsOverlay.graphics.removeAllObjects()
@@ -136,12 +136,12 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
     }
     
     func routeSymbol() -> AGSSimpleLineSymbol {
-        let symbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.yellow, width: 5)
+        let symbol = AGSSimpleLineSymbol(style: .solid, color: .yellow, width: 5)
         return symbol
     }
     
     func directionSymbol() -> AGSSimpleLineSymbol {
-        let symbol = AGSSimpleLineSymbol(style: .dashDot, color: UIColor.orange, width: 5)
+        let symbol = AGSSimpleLineSymbol(style: .dashDot, color: .orange, width: 5)
         return symbol
     }
     
@@ -150,7 +150,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         let markerSymbol = AGSPictureMarkerSymbol(image: markerImage)
         markerSymbol.offsetY = markerImage.size.height/2
         
-        let textSymbol = AGSTextSymbol(text: "\(index)", color: UIColor.white, size: 20, horizontalAlignment: AGSHorizontalAlignment.center, verticalAlignment: AGSVerticalAlignment.middle)
+        let textSymbol = AGSTextSymbol(text: "\(index)", color: .white, size: 20, horizontalAlignment: .center, verticalAlignment: .middle)
         textSymbol.offsetY = markerSymbol.offsetY
         
         let compositeSymbol = AGSCompositeSymbol(symbols: [markerSymbol, textSymbol])
@@ -159,7 +159,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
     }
     
     func barrierSymbol() -> AGSSimpleFillSymbol {
-        return AGSSimpleFillSymbol(style: .diagonalCross, color: UIColor.red, outline: nil)
+        return AGSSimpleFillSymbol(style: .diagonalCross, color: .red, outline: nil)
     }
     
     //MARK: - AGSGeoViewTouchDelegate

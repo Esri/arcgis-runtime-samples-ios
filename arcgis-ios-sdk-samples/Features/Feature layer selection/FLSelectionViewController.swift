@@ -44,15 +44,10 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.featureTable = AGSServiceFeatureTable(url: URL(string: FEATURE_SERVICE_URL)!)
         //create feature layer using this feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
-        self.featureLayer.selectionColor = UIColor.cyan
+        self.featureLayer.selectionColor = .cyan
         self.featureLayer.selectionWidth = 3
         //add feature layer to the map
         self.map.operationalLayers.add(self.featureLayer)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //MARK: - AGSGeoViewTouchDelegate

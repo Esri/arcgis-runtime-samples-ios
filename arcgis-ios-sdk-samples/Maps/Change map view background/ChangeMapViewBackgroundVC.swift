@@ -40,11 +40,6 @@ class ChangeMapViewBackgroundVC: UIViewController, GridSettingsVCDelegate {
         
         //assign map to the map view
         self.mapView.map = map
-}
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //MARK: - GridSettingsVCDelegate

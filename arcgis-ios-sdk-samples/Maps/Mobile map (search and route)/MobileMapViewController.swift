@@ -54,11 +54,6 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         //route task
         self.setupRouteTask()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     private func symbolForStopGraphic(isIndexRequired: Bool, index: Int?) -> AGSSymbol {
         
@@ -68,7 +63,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         markerSymbol.leaderOffsetY = markerSymbol.offsetY
         
         if isIndexRequired && index != nil {
-            let textSymbol = AGSTextSymbol(text: "\(index!)", color: UIColor.white, size: 20, horizontalAlignment: AGSHorizontalAlignment.center, verticalAlignment: AGSVerticalAlignment.middle)
+            let textSymbol = AGSTextSymbol(text: "\(index!)", color: .white, size: 20, horizontalAlignment: .center, verticalAlignment: .middle)
             textSymbol.offsetY = markerSymbol.offsetY
             
             let compositeSymbol = AGSCompositeSymbol(symbols: [markerSymbol, textSymbol])
@@ -86,7 +81,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     //method returns the symbol for the route graphic
     func routeSymbol() -> AGSSimpleLineSymbol {
-        let symbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.blue, width: 5)
+        let symbol = AGSSimpleLineSymbol(style: .solid, color: .blue, width: 5)
         return symbol
     }
     
@@ -115,7 +110,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         self.mapView.identify(self.markerGraphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result:AGSIdentifyGraphicsOverlayResult) in
             if let error = result.error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 if result.graphics.count == 0 {
@@ -160,7 +155,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         self.locatorTaskCancelable = self.locatorTask?.reverseGeocode(withLocation: point, parameters: self.reverseGeocodeParameters, completion: { [weak self](results:[AGSGeocodeResult]?, error:Error?) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 //assign the label property of result as an attributes to the graphic
@@ -172,7 +167,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
                 }
                 else {
                     //no result was found
-                    SVProgressHUD.showError(withStatus: "No address found", maskType: .gradient)
+                    SVProgressHUD.showError(withStatus: "No address found")
                     
                     //dismiss the callout if already visible
                     self?.mapView.callout.dismiss()
@@ -198,7 +193,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         //get the default parameters
         self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 self?.routeParameters = params
@@ -229,7 +224,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         //route
         self.routeTaskCancelable = self.routeTask.solveRoute(with: self.routeParameters) {[weak self] (routeResult:AGSRouteResult?, error:Error?) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
                 //remove the last marker
                 self?.markerGraphicsOverlay.graphics.removeLastObject()
             }

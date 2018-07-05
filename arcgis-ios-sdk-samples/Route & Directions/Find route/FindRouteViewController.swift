@@ -60,18 +60,13 @@ class FindRouteViewController: UIViewController {
         self.getDefaultParameters()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //add hard coded stops to the map view
     func addStops() {
         self.stop1Geometry = AGSPoint(x: -13041171.537945, y: 3860988.271378, spatialReference: AGSSpatialReference(wkid: 3857))
         self.stop2Geometry = AGSPoint(x: -13041693.562570, y: 3856006.859684, spatialReference: AGSSpatialReference(wkid: 3857))
         
-        let startStopGraphic = AGSGraphic(geometry: self.stop1Geometry, symbol: self.stopSymbol(withName: "Origin", textColor: UIColor.blue), attributes: nil)
-        let endStopGraphic = AGSGraphic(geometry: self.stop2Geometry, symbol: self.stopSymbol(withName: "Destination", textColor: UIColor.red), attributes: nil)
+        let startStopGraphic = AGSGraphic(geometry: self.stop1Geometry, symbol: self.stopSymbol(withName: "Origin", textColor: .blue), attributes: nil)
+        let endStopGraphic = AGSGraphic(geometry: self.stop2Geometry, symbol: self.stopSymbol(withName: "Destination", textColor: .red), attributes: nil)
         
         self.stopGraphicsOverlay.graphics.addObjects(from: [startStopGraphic, endStopGraphic])
     }
@@ -83,7 +78,7 @@ class FindRouteViewController: UIViewController {
     
     //method provides a line symbol for the route graphic
     func routeSymbol() -> AGSSimpleLineSymbol {
-        let symbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.yellow, width: 5)
+        let symbol = AGSSimpleLineSymbol(style: .solid, color: .yellow, width: 5)
         return symbol
     }
     

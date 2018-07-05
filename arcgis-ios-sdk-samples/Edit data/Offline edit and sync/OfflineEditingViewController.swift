@@ -78,15 +78,10 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
 
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        SVProgressHUD.show(withStatus: "Loading", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Loading")
         self.mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) -> Void in
 
             if let error = error {
@@ -107,7 +102,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
                     self?.present(self!.popupsVC, animated: true, completion: nil)
                 }
                 else {
-                    SVProgressHUD.showInfo(withStatus: "No features selected", maskType: .gradient)
+                    SVProgressHUD.showInfo(withStatus: "No features selected")
                 }
             }
         }
@@ -237,7 +232,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }
     }
     
-    func sketchChanged(_ notification:Notification) {
+    @objc func sketchChanged(_ notification:Notification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the done bar button item
         if let geometry = self.mapView.sketchEditor?.geometry , !geometry.isEmpty {
@@ -311,7 +306,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
             let selectedLayerIds = self.featureLayersVC.selectedLayerIds
             
             if selectedLayerIds.count == 0 {
-                SVProgressHUD.showError(withStatus: "Please select at least one layer", maskType: .gradient)
+                SVProgressHUD.showError(withStatus: "Please select at least one layer")
                 return
             }
             
@@ -350,7 +345,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         
         //start the job
         self.generateJob.start(statusHandler: { (status: AGSJobStatus) -> Void in
-            SVProgressHUD.show(withStatus: status.statusString(), maskType: .gradient)
+            SVProgressHUD.show(withStatus: status.statusString())
             
         }) { [weak self] (object: AnyObject?, error: Error?) -> Void in
             
@@ -369,14 +364,14 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     @IBAction func switchToServiceMode(_ sender:AnyObject) {
         if self.generatedGeodatabase.hasLocalEdits() {
-            let yesAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { [weak self] (action:UIAlertAction) -> Void in
+            let yesAction = UIAlertAction(title: "Yes", style: .default) { [weak self] _ in
                 self?.syncAction({ () -> Void in
                     self?.switchToServiceMode()
                 })
-            })
-            let noAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: { [weak self] (action: UIAlertAction) -> Void in
+            }
+            let noAction = UIAlertAction(title: "No", style: .cancel) { [weak self] _ in
                 self?.switchToServiceMode()
-            })
+            }
             
             let alert = UIAlertController(title: nil, message: "Would you like to sync the changes before switching?", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(noAction)
@@ -395,7 +390,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     func syncAction(_ completion: (() -> Void)?) {
         if !self.generatedGeodatabase.hasLocalEdits() {
-            SVProgressHUD.showInfo(withStatus: "No local edits", maskType: .gradient)
+            SVProgressHUD.showInfo(withStatus: "No local edits")
             return
         }
         
@@ -411,7 +406,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.syncJob = self.syncTask.syncJob(with: params, geodatabase: self.generatedGeodatabase)
         self.syncJob.start(statusHandler: { (status: AGSJobStatus) -> Void in
             
-            SVProgressHUD.show(withStatus: status.statusString(), maskType: .gradient)
+            SVProgressHUD.show(withStatus: status.statusString())
             
         }, completion: { (results: [AGSSyncLayerResult]?, error: Error?) -> Void in
             if let error = error {
@@ -472,7 +467,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         //disable the done button until any geometry changes
         self.doneBBI.isEnabled = false
         
-        NotificationCenter.default.addObserver(self, selector: #selector(OfflineEditingViewController.sketchChanged(_:)), name: NSNotification.Name.AGSSketchEditorGeometryDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(OfflineEditingViewController.sketchChanged(_:)), name: .AGSSketchEditorGeometryDidChange, object: nil)
     }
     
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, didFinishEditingFor popup: AGSPopup) {
@@ -491,7 +486,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         if self.liveMode {
             
             //Tell the user edits are being saved int the background
-            SVProgressHUD.show(withStatus: "Saving feature details...", maskType: .gradient)
+            SVProgressHUD.show(withStatus: "Saving feature details...")
             
             (feature.featureTable as! AGSServiceFeatureTable).applyEdits { (featureEditResult: [AGSFeatureEditResult]?, error: Error?) -> Void in
                 

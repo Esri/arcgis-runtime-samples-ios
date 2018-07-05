@@ -93,7 +93,7 @@ class GPKGLayersViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath as NSIndexPath).section == 1 {
+        if indexPath.section == 1 {
             // Selected a layer in the "Not on the map" section.
             tableView.beginUpdates()
 
@@ -116,7 +116,7 @@ class GPKGLayersViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Only rows for layers on the map (in Section 0 of the Table View) can be edited.
-        return (indexPath as NSIndexPath).section == 0
+        return indexPath.section == 0
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {

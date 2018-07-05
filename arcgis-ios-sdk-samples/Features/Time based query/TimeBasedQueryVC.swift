@@ -74,7 +74,7 @@ class TimeBasedQueryVC: UIViewController {
             
             //check for error
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 //the resulting features should be displayed on the map
@@ -82,11 +82,6 @@ class TimeBasedQueryVC: UIViewController {
                 print("Hurriance features during the time interval: \(result?.featureEnumerator().allObjects.count ?? 0)")
             }
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }

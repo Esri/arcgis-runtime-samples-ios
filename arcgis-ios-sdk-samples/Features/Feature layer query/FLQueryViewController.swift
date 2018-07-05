@@ -43,7 +43,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         self.featureLayer.selectionWidth = 5
         
         //set a new renderer
-        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.black, width: 1)
+        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 1)
         let fillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor.yellow.withAlphaComponent(0.5), outline: lineSymbol)
         self.featureLayer.renderer = AGSSimpleRenderer(symbol: fillSymbol)
         
@@ -51,11 +51,6 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         self.map.operationalLayers.add(self.featureLayer)
         //zoom to a custom viewpoint
         self.mapView.setViewpointCenter(AGSPoint(x: -11e6, y: 5e6, spatialReference: AGSSpatialReference.webMercator()), scale: 9e7, completion: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func queryForState(_ state:String) {
@@ -80,7 +75,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
                     self?.mapView.setViewpointGeometry(features[0].geometry!, padding: 80, completion: nil)
                 }
                 else {
-                    SVProgressHUD.showError(withStatus: "No state by that name", maskType: .gradient)
+                    SVProgressHUD.showError(withStatus: "No state by that name")
                 }
                 //update selected features array
                 self?.selectedFeatures = features 

@@ -41,12 +41,6 @@ class SimpleRendererViewController: UIViewController {
         self.addSimpleRenderer()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
     private func addGraphics() {
         
         //Create points to add graphics to the map to allow a renderer to style them
@@ -75,7 +69,7 @@ class SimpleRendererViewController: UIViewController {
     
     private func addSimpleRenderer() {
         //create a simple renderer with red cross symbol
-        let simpleRenderer = AGSSimpleRenderer(symbol: AGSSimpleMarkerSymbol(style: .cross, color: UIColor.red, size: 12))
+        let simpleRenderer = AGSSimpleRenderer(symbol: AGSSimpleMarkerSymbol(style: .cross, color: .red, size: 12))
         
         //assign the renderer to the graphics overlay
         self.graphicsOverlay.renderer = simpleRenderer

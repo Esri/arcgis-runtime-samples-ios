@@ -36,11 +36,6 @@ class SaveAsViewController: UIViewController {
         self.descriptionTextView.layer.borderWidth = 0.5
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func resetInputFields() {
         self.titleTextField.text = ""
         self.tagsTextField.text = ""
@@ -57,7 +52,7 @@ class SaveAsViewController: UIViewController {
         //Validations
         guard let title = self.titleTextField.text, let tags = self.tagsTextField.text else {
             //show error message
-            SVProgressHUD.showError(withStatus: "Title and tags are required fields", maskType: .gradient)
+            SVProgressHUD.showError(withStatus: "Title and tags are required fields")
             return
         }
         

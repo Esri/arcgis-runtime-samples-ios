@@ -47,7 +47,7 @@ class RasterLayerUsingServiceVC : UIViewController {
         self.rasterLayer.load { [weak self] (error) in
             
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error!.localizedDescription)
                 return
             }
             
@@ -59,12 +59,4 @@ class RasterLayerUsingServiceVC : UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RasterLayerUsingServiceVC"]
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
-
-
-

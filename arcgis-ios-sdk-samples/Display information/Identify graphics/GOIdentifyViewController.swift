@@ -45,11 +45,6 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func addGraphicsOverlay() {
         //polygon graphic
         let polygonGeometry = AGSPolygonBuilder(spatialReference: AGSSpatialReference.webMercator())
@@ -57,7 +52,7 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         polygonGeometry.addPointWith(x: 20e5, y: 20e5)
         polygonGeometry.addPointWith(x: 20e5, y: -20e5)
         polygonGeometry.addPointWith(x: -20e5, y: -20e5)
-        let polygonSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.solid, color: UIColor.yellow, outline: nil)
+        let polygonSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.solid, color: .yellow, outline: nil)
         let polygonGraphic = AGSGraphic(geometry: polygonGeometry.toGeometry(), symbol: nil, attributes: nil)
         
         //initialize the graphics overlay
@@ -85,7 +80,7 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
             else {
                 //if a graphics is found then show an alert
                 if result.graphics.count > 0 {
-                    SVProgressHUD.showInfo(withStatus: "Tapped on graphic", maskType: .gradient)
+                    SVProgressHUD.showInfo(withStatus: "Tapped on graphic")
                 }
             }
         }

@@ -38,11 +38,6 @@ class FeatureCollectionLayerVC: UIViewController {
         
         self.addFeatureCollectionLayer()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     private func addFeatureCollectionLayer() {
         //feature collection table for point, polyline and polygon
@@ -72,7 +67,7 @@ class FeatureCollectionLayerVC: UIViewController {
         let pointsCollectionTable = AGSFeatureCollectionTable(fields: fields, geometryType: .point, spatialReference: AGSSpatialReference.wgs84())
         
         //renderer
-        let symbol = AGSSimpleMarkerSymbol(style: .triangle, color: UIColor.red, size: 18)
+        let symbol = AGSSimpleMarkerSymbol(style: .triangle, color: .red, size: 18)
         pointsCollectionTable.renderer = AGSSimpleRenderer(symbol: symbol)
         
         // Create a new point feature, provide geometry and attribute values
@@ -99,7 +94,7 @@ class FeatureCollectionLayerVC: UIViewController {
         let linesCollectionTable = AGSFeatureCollectionTable(fields: fields, geometryType: .polyline, spatialReference: AGSSpatialReference.wgs84())
         
         //renderer
-        let symbol = AGSSimpleLineSymbol(style: .dash, color: UIColor.green, width: 3)
+        let symbol = AGSSimpleLineSymbol(style: .dash, color: .green, width: 3)
         linesCollectionTable.renderer = AGSSimpleRenderer(symbol: symbol)
         
         // Create a new point feature, provide geometry and attribute values
@@ -129,8 +124,8 @@ class FeatureCollectionLayerVC: UIViewController {
         let polygonsCollectionTable = AGSFeatureCollectionTable(fields: fields, geometryType: .polygon, spatialReference: AGSSpatialReference.wgs84())
         
         //renderer
-        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.blue, width: 2)
-        let fillSymbol = AGSSimpleFillSymbol(style: .diagonalCross, color: UIColor.cyan, outline: lineSymbol)
+        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .blue, width: 2)
+        let fillSymbol = AGSSimpleFillSymbol(style: .diagonalCross, color: .cyan, outline: lineSymbol)
         polygonsCollectionTable.renderer = AGSSimpleRenderer(symbol: fillSymbol)
         
         // Create a new point feature, provide geometry and attribute values

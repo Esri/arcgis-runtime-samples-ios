@@ -81,8 +81,10 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         
         //logic to show the extent search button
         self.mapView.viewpointChangedHandler = { [weak self] () -> Void in
-            if self?.canDoExtentSearch ?? false {
-                self?.extentSearchButton.isHidden = false
+            DispatchQueue.main.async {
+                if self?.canDoExtentSearch ?? false {
+                    self?.extentSearchButton.isHidden = false
+                }
             }
         }
         
@@ -100,16 +102,11 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.overlayView.isHidden = true
         
         //register for keyboard notification in order to toggle overlay view on and off
-        NotificationCenter.default.addObserver(self, selector: #selector(FindPlaceViewController.showOverlayView), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(FindPlaceViewController.hideOverlayView), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FindPlaceViewController.showOverlayView), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FindPlaceViewController.hideOverlayView), name: .UIKeyboardWillHide, object: nil)
         
         //add the left view images for both the textfields
         self.setupTextFieldLeftViews()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //method to show search icon and pin icon for the textfields
@@ -233,16 +230,16 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestCell", for: indexPath)
         let isLocationTextField = (self.selectedTextField == self.preferredSearchLocationTextField)
         
-        if isLocationTextField && (indexPath as NSIndexPath).row == 0 {
+        if isLocationTextField && indexPath.row == 0 {
             cell.textLabel?.text = self.currentLocationText
             cell.imageView?.image = UIImage(named: "CurrentLocationDisabledIcon")
             return cell
         }
         
-        let rowNumber = isLocationTextField ? (indexPath as NSIndexPath).row - 1 : (indexPath as NSIndexPath).row
+        let rowNumber = isLocationTextField ? indexPath.row - 1 : indexPath.row
         let suggestResult = self.suggestResults[rowNumber]
         
         cell.textLabel?.text = suggestResult.label
@@ -255,18 +252,18 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if self.selectedTextField == self.preferredSearchLocationTextField {
-            if (indexPath as NSIndexPath).row == 0 {
+            if indexPath.row == 0 {
                 self.preferredSearchLocationTextField.text = self.currentLocationText
             }
             else {
-                let suggestResult = self.suggestResults[(indexPath as NSIndexPath).row - 1]
+                let suggestResult = self.suggestResults[indexPath.row - 1]
                 self.selectedSuggestResult = suggestResult
                 self.preferredSearchLocation = nil
                 self.selectedTextField.text = suggestResult.label
             }
         }
         else {
-            let suggestResult = self.suggestResults[(indexPath as NSIndexPath).row]
+            let suggestResult = self.suggestResults[indexPath.row]
             self.selectedTextField.text = suggestResult.label
         }
         self.animateTableView(expand: false)
@@ -484,11 +481,11 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.view.endEditing(true)
     }
     
-    func showOverlayView() {
+    @objc func showOverlayView() {
         self.overlayView.isHidden = false
     }
     
-    func hideOverlayView() {
+    @objc func hideOverlayView() {
         self.overlayView.isHidden = true
     }
     

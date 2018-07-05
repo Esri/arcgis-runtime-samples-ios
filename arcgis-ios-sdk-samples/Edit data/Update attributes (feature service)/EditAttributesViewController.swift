@@ -49,11 +49,6 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.mapView.touchDelegate = self
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func showCallout(_ feature:AGSFeature, tapLocation:AGSPoint?) {
         let title = feature.attributes["typdamage"] as! String
         self.mapView.callout.title = title
@@ -62,7 +57,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     }
     
     func applyEdits() {
-        SVProgressHUD.show(withStatus: "Applying edits", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Applying edits")
         
         self.featureTable.applyEdits(completion: { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
             if let error = error {
@@ -121,7 +116,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     //MARK: - EAOptionsVCDelegate
     
     func optionsViewController(_ optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int) {
-        SVProgressHUD.show(withStatus: "Updating", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Updating")
         
         self.selectedFeature.attributes["typdamage"] = self.types[index]
         self.featureTable.update(self.selectedFeature) { [weak self] (error: Error?) -> Void in

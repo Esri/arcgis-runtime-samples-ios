@@ -46,11 +46,6 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         //initilaize geoprocessing task with the url of the service
         self.geoprocessingTask = AGSGeoprocessingTask(url: URL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/911CallsHotspot/GPServer/911%20Calls%20Hotspot")!)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     private func analyzeHotspots(_ fromDate: String, toDate: String) {
         
@@ -72,12 +67,12 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         //start job
         self.geoprocessingJob.start(statusHandler: { (status: AGSJobStatus) in
             //show progress hud with job status
-            SVProgressHUD.show(withStatus: status.statusString(), maskType: .gradient)
+            SVProgressHUD.show(withStatus: status.statusString())
             
         }) { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
             if let error = error {
                 //show error
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 //dismiss progress hud

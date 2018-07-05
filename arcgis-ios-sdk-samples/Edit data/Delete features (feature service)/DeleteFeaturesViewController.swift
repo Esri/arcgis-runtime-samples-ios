@@ -49,11 +49,6 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         map.operationalLayers.add(featureLayer)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func showCallout(for feature:AGSFeature,at tapLocation:AGSPoint) {
         let title = feature.attributes["typdamage"] as! String
         self.mapView.callout.title = title
@@ -124,7 +119,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         alertController.addAction(alertAction)
         
         //action for cancel
-        let cancelAlertAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: nil)
+        let cancelAlertAction = UIAlertAction(title: "No", style: .cancel)
         alertController.addAction(cancelAlertAction)
         
         //present alert controller

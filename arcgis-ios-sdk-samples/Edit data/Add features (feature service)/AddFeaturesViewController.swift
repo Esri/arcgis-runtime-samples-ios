@@ -48,14 +48,9 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         map.operationalLayers.add(featureLayer)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func addFeature(at mappoint:AGSPoint) {
         //show the progress hud
-        SVProgressHUD.show(withStatus: "Adding..", maskType: SVProgressHUDMaskType.gradient)
+        SVProgressHUD.show(withStatus: "Adding..")
         //disable interaction with map view
         self.mapView.isUserInteractionEnabled = false
         

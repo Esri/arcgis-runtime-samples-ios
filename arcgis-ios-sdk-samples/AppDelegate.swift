@@ -19,10 +19,6 @@ import ArcGIS
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
-    
-    private var indexArray:[String]!
-    private var wordsDictionary:[String: [String]]!
-    private var readmeDirectoriesURLs:[URL]!
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         if url.absoluteString.range(of: "auth", options: [], range: nil, locale: nil) != nil {
@@ -49,6 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         //enable/disable touches based on settings
         self.setTouchPref()
+        
+        SVProgressHUD.setDefaultMaskType(.gradient)
         
         return true
     }
@@ -83,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let bool = UserDefaults.standard.bool(forKey: "showTouch")
         if bool {
             DemoTouchManager.showTouches()
-            DemoTouchManager.touchBorderColor = UIColor.lightGray
+            DemoTouchManager.touchBorderColor = .lightGray
             DemoTouchManager.touchFillColor = UIColor(white: 231/255.0, alpha: 1)
         }
         else {
@@ -95,15 +93,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     // MARK: - Appearance modification
     
     func modifyAppearance() {
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        UINavigationBar.appearance().barTintColor = UIColor.primaryBlue()
-        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+        UINavigationBar.appearance().barTintColor = .primaryBlue
+        UINavigationBar.appearance().tintColor = .white
         
-        UIToolbar.appearance().barTintColor = UIColor.backgroundGray()
-        UIToolbar.appearance().tintColor = UIColor.primaryBlue()
+        UIToolbar.appearance().barTintColor = .backgroundGray
+        UIToolbar.appearance().tintColor = .primaryBlue
         
-        UISwitch.appearance().onTintColor = UIColor.primaryBlue()
-        UISlider.appearance().tintColor = UIColor.primaryBlue()
+        UISwitch.appearance().onTintColor = .primaryBlue
+        UISlider.appearance().tintColor = .primaryBlue
     }
 
     // MARK: - Split view
@@ -132,24 +130,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 }
 
 extension UIColor {
-    class func primaryBlue() -> UIColor {
-        return UIColor(red: 0, green: 0.475, blue: 0.757, alpha: 1)
-    }
-    
-    class func secondaryBlue() -> UIColor {
-        return UIColor(red: 0, green: 0.368, blue: 0.584, alpha: 1)
-    }
-    
-    class func backgroundGray() -> UIColor {
-        return UIColor(red: 0.973, green: 0.973, blue: 0.973, alpha: 1)
-    }
-    
-    class func primaryTextColor() -> UIColor {
-        return UIColor(red: 0.196, green: 0.196, blue: 0.196, alpha: 1)
-    }
-    
-    class func secondaryTextColor() -> UIColor {
-        return UIColor(red: 0.349, green: 0.349, blue: 0.349, alpha: 1)
-    }
+    class var primaryBlue: UIColor { return #colorLiteral(red: 0, green: 0.475, blue: 0.757, alpha: 1) }
+    class var secondaryBlue: UIColor { return #colorLiteral(red: 0, green: 0.368, blue: 0.584, alpha: 1) }
+    class var backgroundGray: UIColor { return #colorLiteral(red: 0.973, green: 0.973, blue: 0.973, alpha: 1) }
+    class var primaryTextColor: UIColor { return #colorLiteral(red: 0.196, green: 0.196, blue: 0.196, alpha: 1) }
+    class var secondaryTextColor: UIColor { return #colorLiteral(red: 0.349, green: 0.349, blue: 0.349, alpha: 1) }
 }
 

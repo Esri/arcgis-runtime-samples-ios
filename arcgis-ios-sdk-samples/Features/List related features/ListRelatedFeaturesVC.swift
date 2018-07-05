@@ -54,7 +54,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         
         //change selection width for feature layer
         self.parksFeatureLayer.selectionWidth = 4
-        self.parksFeatureLayer.selectionColor = UIColor.yellow
+        self.parksFeatureLayer.selectionColor = .yellow
         
         //add parks feature layer to the map
         map.operationalLayers.add(self.parksFeatureLayer)
@@ -84,7 +84,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         }
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Identifying feature", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Identifying feature")
         
         //identify features at the tapped location
         self.mapView.identifyLayer(self.parksFeatureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result: AGSIdentifyLayerResult) in
@@ -92,7 +92,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
             if let error = result.error {
                 
                 //dismiss progress hud
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 
@@ -125,7 +125,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
     private func queryRelatedFeatures() {
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Querying related features", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Querying related features")
         
         //query for related features
         self.parksFeatureTable.queryRelatedFeatures(for: self.selectedPark) { [weak self] (results:[AGSRelatedFeatureQueryResult]?, error:Error?) in
@@ -133,7 +133,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
             if let error = error {
                 
                 //display error
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 
@@ -148,7 +148,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
                     self?.showRelatedFeatures()
                 }
                 else {  //else notify user
-                    SVProgressHUD.showInfo(withStatus: "No related features found", maskType: .gradient)
+                    SVProgressHUD.showInfo(withStatus: "No related features found")
                 }
             }
         }
@@ -189,10 +189,5 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
     //to hide popover controller on rotation
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

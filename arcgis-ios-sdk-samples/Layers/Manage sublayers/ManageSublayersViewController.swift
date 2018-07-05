@@ -68,7 +68,7 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelega
         let mapImageSublayer1 = AGSArcGISMapImageSublayer(id: 4, source: tableSublayerSource1)
         
         //assign a renderer to the sublayer
-        let renderer1 = AGSSimpleRenderer(symbol: AGSSimpleLineSymbol(style: .solid, color: UIColor.blue, width: 1))
+        let renderer1 = AGSSimpleRenderer(symbol: AGSSimpleLineSymbol(style: .solid, color: .blue, width: 1))
         mapImageSublayer1.renderer = renderer1
         
         //name for the sublayer
@@ -81,7 +81,7 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelega
         let mapImageSublayer2 = AGSArcGISMapImageSublayer(id: 5, source: tableSublayerSource2)
         
         //assign a renderer to the sublayer
-        let renderer2 = AGSSimpleRenderer(symbol: AGSSimpleFillSymbol(style: .solid, color: UIColor.cyan, outline: nil))
+        let renderer2 = AGSSimpleRenderer(symbol: AGSSimpleFillSymbol(style: .solid, color: .cyan, outline: nil))
         mapImageSublayer2.renderer = renderer2
         
         //name for the sublayer
@@ -109,10 +109,5 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelega
             controller.mapImageLayer = self.mapImageLayer
             controller.removedMapImageSublayers = self.removedMapImageSublayers
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

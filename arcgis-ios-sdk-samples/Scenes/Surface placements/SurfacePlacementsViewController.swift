@@ -68,16 +68,11 @@ class SurfacePlacementsViewController: UIViewController {
     }
     
     private func pointSymbol() -> AGSSimpleMarkerSceneSymbol {
-        return AGSSimpleMarkerSceneSymbol(style: .sphere, color: UIColor.red, height: 50, width: 50, depth: 50, anchorPosition: .center)
+        return AGSSimpleMarkerSceneSymbol(style: .sphere, color: .red, height: 50, width: 50, depth: 50, anchorPosition: .center)
     }
     
     private func textSymbol(withText text: String) -> AGSTextSymbol {
-        return AGSTextSymbol(text: text, color: UIColor.blue, size: 20, horizontalAlignment: .left, verticalAlignment: .middle)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        return AGSTextSymbol(text: text, color: .blue, size: 20, horizontalAlignment: .left, verticalAlignment: .middle)
     }
 
 }

@@ -17,7 +17,7 @@ import ArcGIS
 
 let viewshedURLString = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Elevation/ESRI_Elevation_World/GPServer/Viewshed"
 
-class AnalyzeViewshedViewController: UIViewController, AGSGeoViewTouchDelegate {
+class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDelegate {
 
     @IBOutlet var mapView:AGSMapView!
     
@@ -31,7 +31,7 @@ class AnalyzeViewshedViewController: UIViewController, AGSGeoViewTouchDelegate {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["AnalyzeViewshedViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ViewshedGeoprocessingViewController"]
 
         let map = AGSMap(basemapType: .topographic, latitude: 45.3790902612337, longitude: 6.84905317262762, levelOfDetail: 12)
         
@@ -40,7 +40,7 @@ class AnalyzeViewshedViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.touchDelegate = self
         
         //renderer for graphics overlays
-        let pointSymbol = AGSSimpleMarkerSymbol(style: .circle, color: UIColor.red, size: 10)
+        let pointSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 10)
         let renderer = AGSSimpleRenderer(symbol: pointSymbol)
         self.inputGraphicsOverlay.renderer = renderer
         
@@ -52,11 +52,6 @@ class AnalyzeViewshedViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.graphicsOverlays.addObjects(from: [self.resultGraphicsOverlay, self.inputGraphicsOverlay])
         
         self.geoprocessingTask = AGSGeoprocessingTask(url: URL(string: viewshedURLString)!)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     private func addGraphicForPoint(_ point: AGSPoint) {
@@ -92,14 +87,14 @@ class AnalyzeViewshedViewController: UIViewController, AGSGeoViewTouchDelegate {
         newFeature.geometry = point
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Adding Feature", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Adding Feature")
         
         //add the new feature to the feature collection table
         featureCollectionTable.add(newFeature) { [weak self] (error: Error?) in
             
             if let error = error {
                 //show error
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 //dismiss progress hud
@@ -127,13 +122,13 @@ class AnalyzeViewshedViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.geoprocessingJob.start(statusHandler: { (status: AGSJobStatus) in
             
             //show progress hud with job status
-            SVProgressHUD.show(withStatus: status.statusString(), maskType: .gradient)
+            SVProgressHUD.show(withStatus: status.statusString())
             
         }, completion: { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
             
             if let error = error {
                 if (error as NSError).code != NSUserCancelledError { //if not cancelled
-                    SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                    SVProgressHUD.showError(withStatus: error.localizedDescription)
                 }
             }
             else {

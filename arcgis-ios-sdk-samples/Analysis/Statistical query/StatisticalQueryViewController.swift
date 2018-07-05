@@ -84,7 +84,7 @@ class StatisticalQueryViewController: UIViewController {
             //
             // If there an error, display it
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error!.localizedDescription)
                 return
             }
             
@@ -110,7 +110,7 @@ class StatisticalQueryViewController: UIViewController {
     
     private func showResult(message: String) {
         let alertController = UIAlertController(title: "Statistical Query Results", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "OK", style: .cancel)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }

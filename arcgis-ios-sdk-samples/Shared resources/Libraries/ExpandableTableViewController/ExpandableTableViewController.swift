@@ -48,7 +48,7 @@ class ExpandableTableViewController: UITableViewController {
             messageLabel.textAlignment = .center;
             messageLabel.font = UIFont(name: "HelveticaNeue", size: 20.0)!
             messageLabel.sizeToFit()
-            tableView.backgroundView?.backgroundColor = UIColor.white
+            tableView.backgroundView?.backgroundColor = .white
             tableView.backgroundView = messageLabel;
         }
         return 0
@@ -81,8 +81,8 @@ class ExpandableTableViewController: UITableViewController {
         //
         // Recast view as a UITableViewHeaderFooterView
         let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-        header.contentView.backgroundColor = UIColor.white
-        header.textLabel?.textColor = UIColor.primaryTextColor()
+        header.contentView.backgroundColor = .white
+        header.textLabel?.textColor = .primaryTextColor
         header.tag = section
 
         // Remove image view
@@ -120,9 +120,9 @@ class ExpandableTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath)
         let sectionData = sectionItems[indexPath.section]
-        cell.textLabel?.textColor = UIColor.black
+        cell.textLabel?.textColor = .black
         let (text, detail) = sectionData[indexPath.row]
         cell.textLabel?.text = text
         cell.detailTextLabel?.text = detail

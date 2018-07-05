@@ -49,11 +49,6 @@ class OpenExistingMapViewController: UIViewController, UITableViewDataSource, UI
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OpenExistingMapViewController"]
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - Actions
     
     @IBAction private func mapsAction() {
@@ -74,11 +69,11 @@ class OpenExistingMapViewController: UIViewController, UITableViewDataSource, UI
     //MARK: - TableView delegates
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExistingMapCell")!
-        cell.backgroundColor = UIColor.clear
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExistingMapCell", for: indexPath)
+        cell.backgroundColor = .clear
         
-        cell.textLabel?.text = self.titles[(indexPath as NSIndexPath).row]
-        cell.imageView?.image = UIImage(named: self.imageNames[(indexPath as NSIndexPath).row])!
+        cell.textLabel?.text = self.titles[indexPath.row]
+        cell.imageView?.image = UIImage(named: self.imageNames[indexPath.row])!
         cell.imageView?.contentMode = UIViewContentMode.scaleAspectFill
         cell.imageView?.clipsToBounds = true
         
@@ -87,7 +82,7 @@ class OpenExistingMapViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var selectedPortalItemURL:String
-        switch (indexPath as NSIndexPath).row {
+        switch indexPath.row {
         case 1:
             selectedPortalItemURL = self.itemURL2
         case 2:

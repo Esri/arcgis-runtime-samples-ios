@@ -32,11 +32,6 @@ class AppInfoViewController: UIViewController {
         
         self.preferredContentSize = CGSize(width: 350, height: 350)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     //MARK: - Actions
     

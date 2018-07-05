@@ -16,10 +16,8 @@
 
 import UIKit
 
-@objc
 protocol HorizontalPickerDelegate: class {
-    
-    @objc optional func horizontalPicker(_ horizontalPicker:HorizontalPicker, didUpdateSelectedIndex index: Int)
+    func horizontalPicker(_ horizontalPicker:HorizontalPicker, didUpdateSelectedIndex index: Int)
 }
 
 @IBDesignable
@@ -45,7 +43,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
             self.updateButtonsState()
             
             // Fire delegate
-            self.delegate?.horizontalPicker?(self, didUpdateSelectedIndex: selectedIndex)
+            self.delegate?.horizontalPicker(self, didUpdateSelectedIndex: selectedIndex)
         }
     }
     
@@ -55,7 +53,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
             self.updateButtonsState()
         }
     }
-    var buttonsColor = UIColor.secondaryBlue()
+    var buttonsColor = UIColor.secondaryBlue
     
     var isEnabled: Bool {
         didSet {
@@ -75,8 +73,8 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
                 self.collectionView.isUserInteractionEnabled = false
                 self.nextButton.isEnabled = false
                 self.prevButton.isEnabled = false
-                self.nextButton.imageView?.tintColor = UIColor.gray
-                self.prevButton.imageView?.tintColor = UIColor.gray
+                self.nextButton.imageView?.tintColor = .gray
+                self.prevButton.imageView?.tintColor = .gray
             }
         }
     }
@@ -96,7 +94,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     }
     
     private func commonInit() {
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = .clear
         
         self.nibView = self.loadViewFromNib()
         
@@ -136,7 +134,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
         
         let prevFlag = self.selectedIndex > 0
         self.prevButton.isEnabled = prevFlag
-        self.prevButton.imageView?.tintColor = prevFlag ? self.buttonsColor : UIColor.gray
+        self.prevButton.imageView?.tintColor = prevFlag ? self.buttonsColor : .gray
     }
     
     //MARK: - UICollectionViewDataSource
@@ -151,7 +149,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalPickerCell", for: indexPath) as! HorizontalPickerCell
-        cell.titleLabel.text = self.options[(indexPath as NSIndexPath).item]
+        cell.titleLabel.text = self.options[indexPath.item]
         return cell
     }
     

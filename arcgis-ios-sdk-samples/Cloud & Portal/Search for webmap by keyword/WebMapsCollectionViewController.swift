@@ -22,7 +22,7 @@ protocol WebMapsCollectionViewControllerDelegate:class {
     func webMapsCollectionVC(_ webMapsCollectionVC:WebMapsCollectionViewController, didSelectWebMap webMap:AGSPortalItem)
 }
 
-class WebMapsCollectionViewController: UIViewController {
+class WebMapsCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet var collectionView:UICollectionView!
     
@@ -37,15 +37,10 @@ class WebMapsCollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     //MARK: - Collection view data source
     
-    func numberOfSectionsInCollectionView(_ collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
@@ -53,7 +48,7 @@ class WebMapsCollectionViewController: UIViewController {
         return self.portalItems?.count ?? 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! WebMapCell
         let portalItem = self.portalItems[indexPath.row]
         
@@ -64,7 +59,7 @@ class WebMapsCollectionViewController: UIViewController {
     
     //MARK: - Collection view delegates
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let portalItem = self.portalItems[indexPath.row]
         self.delegate?.webMapsCollectionVC(self, didSelectWebMap: portalItem)

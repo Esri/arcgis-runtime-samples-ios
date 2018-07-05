@@ -37,15 +37,10 @@ class GORenderersViewController: UIViewController {
         self.mapView.map = self.map
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func addGraphicsOverlay() {
         //point graphic
         let pointGeometry = AGSPoint(x: 40e5, y: 40e5, spatialReference: AGSSpatialReference.webMercator())
-        let pointSymbol = AGSSimpleMarkerSymbol(style: AGSSimpleMarkerSymbolStyle.diamond, color: UIColor.red, size: 10)
+        let pointSymbol = AGSSimpleMarkerSymbol(style: AGSSimpleMarkerSymbolStyle.diamond, color: .red, size: 10)
         let pointGraphic = AGSGraphic(geometry: pointGeometry, symbol: nil, attributes: nil)
         
         //create graphics overlay for point
@@ -65,7 +60,7 @@ class GORenderersViewController: UIViewController {
         let lineGeometry = AGSPolylineBuilder(spatialReference: AGSSpatialReference.webMercator())
         lineGeometry.addPointWith(x: -10e5, y: 40e5)
         lineGeometry.addPointWith(x: 20e5, y: 50e5)
-        let lineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.solid, color: UIColor.blue, width: 5)
+        let lineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.solid, color: .blue, width: 5)
         let lineGraphic = AGSGraphic(geometry: lineGeometry.toGeometry(), symbol: nil, attributes: nil)
         
         // create graphics overlay for polyline
@@ -87,7 +82,7 @@ class GORenderersViewController: UIViewController {
         polygonGeometry.addPointWith(x: 20e5, y: 20e5)
         polygonGeometry.addPointWith(x: 20e5, y: -20e5)
         polygonGeometry.addPointWith(x: -20e5, y: -20e5)
-        let polygonSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.solid, color: UIColor.yellow, outline: nil)
+        let polygonSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.solid, color: .yellow, outline: nil)
         let polygonGraphic = AGSGraphic(geometry: polygonGeometry.toGeometry(), symbol: nil, attributes: nil)
         
         //create graphics overlay for polygon

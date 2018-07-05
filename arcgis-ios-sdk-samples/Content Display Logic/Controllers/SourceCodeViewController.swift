@@ -36,11 +36,6 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func loadHTMLPage(filename:String) {
         if let content = self.contentOfFile(filename) {
             self.setupToolbarTitle(filename, arrowPointingDown: true)
@@ -69,7 +64,7 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
             "<link rel=\"stylesheet\" href=\"\(cssPath)\">" +
             "<script src=\"\(jsPath)\"></script>" +
             "<script>hljs.initHighlightingOnLoad();</script> </head> <body>" +
-            "<pre><code class=\"Swift\"> \(content) </code></pre>" +
+            "<pre><code class=\"Swift\">\(content)</code></pre>" +
             "</body> </html>"
 //        println(stringForHTML)
         // style=\"white-space:initial;\"
@@ -83,7 +78,7 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
             titleString = String(format: "%@ %@", (arrowPointingDown ? "▶︎" : " \u{25B4}"), filename)
         }
         else {
-            self.toolbarTitleButton.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.black], for: UIControlState())
+            self.toolbarTitleButton.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : UIColor.black], for: UIControlState())
         }
         self.toolbarTitleButton.title = titleString
     }

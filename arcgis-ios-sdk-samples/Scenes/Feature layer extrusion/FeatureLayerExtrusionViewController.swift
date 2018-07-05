@@ -41,8 +41,8 @@ class FeatureLayerExtrusionViewController: UIViewController {
         // feature layer must be rendered dynamically for extrusion to work
         layer.renderingMode = .dynamic
         // setup the symbols used to display the features (US states) from the table
-        let lineSymbol = AGSSimpleLineSymbol(style:.solid, color:UIColor.blue, width:1.0)
-        let fillSymbol = AGSSimpleFillSymbol(style:.solid, color:UIColor.blue, outline:lineSymbol)
+        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .blue, width: 1.0)
+        let fillSymbol = AGSSimpleFillSymbol(style: .solid, color:.blue, outline: lineSymbol)
         renderer = AGSSimpleRenderer(symbol: fillSymbol)
         // need to set an extrusion type, BASE HEIGHT extrudes each point from the feature individually
         renderer?.sceneProperties?.extrusionMode = .baseHeight
@@ -72,11 +72,6 @@ class FeatureLayerExtrusionViewController: UIViewController {
         default:
             renderer?.sceneProperties?.extrusionExpression = ""
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }

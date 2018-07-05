@@ -102,7 +102,7 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
         self.mapGraphicsOverlay.renderer = renderer2D
         
         //route graphic
-        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.blue, width: 1)
+        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .blue, width: 1)
         self.routeGraphic = AGSGraphic(geometry: nil, symbol: lineSymbol, attributes: nil)
         self.mapGraphicsOverlay.graphics.add(routeGraphic)
         
@@ -119,7 +119,7 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
     }
     
     private func addPlane2D() {
-        self.triangleSymbol = AGSSimpleMarkerSymbol(style: .triangle, color: UIColor.red, size: 10)
+        self.triangleSymbol = AGSSimpleMarkerSymbol(style: .triangle, color: .red, size: 10)
         self.triangleGraphic = AGSGraphic(geometry: nil, symbol: self.triangleSymbol, attributes: nil)
         self.mapGraphicsOverlay.graphics.add(self.triangleGraphic)
     }
@@ -196,7 +196,7 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
             }
         }
         else {
-            Swift.print("Mission file not found")
+            print("Mission file not found")
         }
     }
     
@@ -213,7 +213,7 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
         RunLoop.main.add(self.animationTimer, forMode: RunLoopMode.commonModes)
     }
     
-    func animate() {
+    @objc func animate() {
         
         //validations
         if self.frames == nil || self.planeModelSymbol == nil {
@@ -383,11 +383,6 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         //for popover or non modal presentation
         return UIModalPresentationStyle.none
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 

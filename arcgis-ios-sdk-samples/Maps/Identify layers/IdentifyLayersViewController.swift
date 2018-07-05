@@ -65,11 +65,6 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.touchDelegate = self
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
@@ -81,7 +76,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     private func identifyLayers(_ screen: CGPoint) {
         //show progress hud
-        SVProgressHUD.show(withStatus: "Identifying", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Identifying")
         
         self.mapView.identifyLayers(atScreenPoint: screen, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
             
@@ -89,7 +84,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
             SVProgressHUD.dismiss()
             
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 self.handleIdentifyResults(results!)
@@ -160,7 +155,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     private func showAlertController(_ title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "Ok", style: .cancel)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }

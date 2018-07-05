@@ -35,11 +35,6 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
         self.fetchTilePackages()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func fetchTilePackages() {
         self.bundleTPKPaths = Bundle.main.paths(forResourcesOfType: "tpk", inDirectory: nil)
         self.tableView.reloadData()
@@ -72,13 +67,13 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TilePackageCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TilePackageCell", for: indexPath)
         
-        if (indexPath as NSIndexPath).section == 0 {
-            cell.textLabel?.text = self.extractName(fromPath: self.bundleTPKPaths[(indexPath as NSIndexPath).row])
+        if indexPath.section == 0 {
+            cell.textLabel?.text = self.extractName(fromPath: self.bundleTPKPaths[indexPath.row])
         }
         else {
-            cell.textLabel?.text = self.extractName(fromPath: self.documentTPKPaths[(indexPath as NSIndexPath).row])
+            cell.textLabel?.text = self.extractName(fromPath: self.documentTPKPaths[indexPath.row])
         }
         
         return cell
@@ -93,19 +88,21 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var path = ""
         if (indexPath as NSIndexPath).section == 0 {
-            path = self.bundleTPKPaths[(indexPath as NSIndexPath).row]
+            path = self.bundleTPKPaths[indexPath.row]
         }
         else {
-            path = self.documentTPKPaths[(indexPath as NSIndexPath).row]
+            path = self.documentTPKPaths[indexPath.row]
         }
         self.delegate?.tilePackagesListViewController(self, didSelectTPKWithPath: path)
     }
     
     func extractName(fromPath path:String) -> String {
-        var index = path.range(of: "/", options: .backwards, range: nil, locale: nil)?.lowerBound
-        index = path.index(after: index!)
-        let name = path.substring(from: index!)
-        return name
+        guard var index = path.range(of: "/", options: .backwards, range: nil, locale: nil)?.lowerBound else {
+            return ""
+        }
+        index = path.index(after: index)
+        let name = path[index...]
+        return String(name)
     }
 }
 

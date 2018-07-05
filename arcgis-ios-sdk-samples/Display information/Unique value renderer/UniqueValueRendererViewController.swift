@@ -49,11 +49,6 @@ class UniqueValueRendererViewController: UIViewController {
         self.addUniqueValueRenderer()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     private func addUniqueValueRenderer() {
         //instantiate a new unique value renderer
         let renderer = AGSUniqueValueRenderer()
@@ -63,10 +58,10 @@ class UniqueValueRendererViewController: UIViewController {
         renderer.fieldNames = ["STATE_ABBR"]
         
         //create symbols to be used in the renderer
-        let defaultSymbol = AGSSimpleFillSymbol(style: .null, color: UIColor.clear, outline: AGSSimpleLineSymbol(style: .solid, color: UIColor.gray, width: 2))
-        let californiaSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor.red, outline: AGSSimpleLineSymbol(style: .solid, color: UIColor.red, width: 2))
-        let arizonaSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor.green, outline: AGSSimpleLineSymbol(style: .solid, color: UIColor.green, width: 2))
-        let nevadaSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor.blue, outline: AGSSimpleLineSymbol(style: .solid, color: UIColor.blue, width: 2))
+        let defaultSymbol = AGSSimpleFillSymbol(style: .null, color: .clear, outline: AGSSimpleLineSymbol(style: .solid, color: .gray, width: 2))
+        let californiaSymbol = AGSSimpleFillSymbol(style: .solid, color: .red, outline: AGSSimpleLineSymbol(style: .solid, color: .red, width: 2))
+        let arizonaSymbol = AGSSimpleFillSymbol(style: .solid, color: .green, outline: AGSSimpleLineSymbol(style: .solid, color: .green, width: 2))
+        let nevadaSymbol = AGSSimpleFillSymbol(style: .solid, color: .blue, outline: AGSSimpleLineSymbol(style: .solid, color: .blue, width: 2))
         
         //set the default symbol
         renderer.defaultSymbol = defaultSymbol

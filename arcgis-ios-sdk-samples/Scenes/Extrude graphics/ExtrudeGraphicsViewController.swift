@@ -50,8 +50,8 @@ class ExtrudeGraphicsViewController: UIViewController {
         
         //simple renderer with extrusion property
         let renderer = AGSSimpleRenderer()
-        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.white, width: 1)
-        renderer.symbol = AGSSimpleFillSymbol(style: .solid, color: UIColor.primaryBlue(), outline: lineSymbol)
+        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .white, width: 1)
+        renderer.symbol = AGSSimpleFillSymbol(style: .solid, color: .primaryBlue, outline: lineSymbol)
         renderer.sceneProperties?.extrusionMode = .baseHeight
         renderer.sceneProperties?.extrusionExpression = "[height]"
         self.graphicsOverlay.renderer = renderer
@@ -99,11 +99,6 @@ class ExtrudeGraphicsViewController: UIViewController {
         let graphic = AGSGraphic(geometry: polygon, symbol: nil, attributes: nil)
         graphic.attributes.setValue(rand, forKey: "height")
         self.graphicsOverlay.graphics.add(graphic)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }

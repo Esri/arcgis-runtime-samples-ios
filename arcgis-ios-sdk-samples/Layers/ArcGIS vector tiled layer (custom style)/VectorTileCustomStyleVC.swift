@@ -48,11 +48,6 @@ class VectorTileCustomStyleVC: UIViewController, VectorStylesVCDelegate, UIGestu
         self.visualEffectView.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     private func showSelectedItem(_ itemID: String) {
         let vectorTiledLayer = AGSArcGISVectorTiledLayer(url: URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!)
         self.mapView.map?.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
@@ -93,7 +88,7 @@ class VectorTileCustomStyleVC: UIViewController, VectorStylesVCDelegate, UIGestu
         self.visualEffectView.isHidden = false
     }
     
-    func hideVisualEffectView() {
+    @objc func hideVisualEffectView() {
         self.visualEffectView.isHidden = true
     }
 }

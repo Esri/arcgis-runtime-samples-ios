@@ -70,14 +70,15 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         //layer status logic
         //assign a closure for layerViewStateChangedHandler, in order to receive layer view status changes
         self.mapView.layerViewStateChangedHandler = { [weak self] (layer:AGSLayer, state:AGSLayerViewState) in
-            if let weakSelf = self {
+            DispatchQueue.main.async {
+                guard let strongSelf = self else { return }
                 //find the index of layer in operational layers list
                 //and update its status
-                let index = weakSelf.map.operationalLayers.index(of: layer)
+                let index = strongSelf.map.operationalLayers.index(of: layer)
                 if index != NSNotFound {
-                    weakSelf.viewStatusArray[index] = weakSelf.viewStatusString(state.status)
+                    strongSelf.viewStatusArray[index] = strongSelf.viewStatusString(state.status)
                     
-                    self?.tableView.reloadData()
+                    strongSelf.tableView.reloadData()
                 }
             }
         }
@@ -92,11 +93,6 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         for _ in 0...self.map.operationalLayers.count-1 {
             self.viewStatusArray.append("Unknown")
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     //return string for current status name
@@ -130,9 +126,9 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
     //MARK: - Table view delegates
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LayerStatusCell")!
-        cell.backgroundColor = UIColor.clear
-        let layer = self.map.operationalLayers[(indexPath as NSIndexPath).row] as! AGSLayer
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LayerStatusCell", for: indexPath)
+        cell.backgroundColor = .clear
+        let layer = self.map.operationalLayers[indexPath.row] as! AGSLayer
         
         //if the layer is loaded then show the name
         //else use a template
@@ -140,10 +136,10 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
             cell.textLabel?.text = layer.name
         }
         else {
-            cell.textLabel?.text = "Layer \((indexPath as NSIndexPath).row)"
+            cell.textLabel?.text = "Layer \(indexPath.row)"
         }
         
-        cell.detailTextLabel?.text = self.viewStatusArray[(indexPath as NSIndexPath).row]
+        cell.detailTextLabel?.text = self.viewStatusArray[indexPath.row]
         
         return cell
     }

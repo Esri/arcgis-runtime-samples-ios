@@ -53,11 +53,6 @@ class SetViewpointViewController: UIViewController {
 
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func geometryFromTextFile(_ filename:String) -> AGSGeometry? {
         if let filepath = Bundle.main.path(forResource: filename, ofType: "txt") {
             if let jsonString = try? String(contentsOfFile: filepath, encoding: String.Encoding.utf8) {
@@ -84,7 +79,6 @@ class SetViewpointViewController: UIViewController {
             let targetScale = currentScale / 2.5 //zoom in
             let currentCenter = self.mapView.visibleArea!.extent.center
             self.mapView.setViewpoint(AGSViewpoint(center: currentCenter, scale: targetScale), duration: 5, curve: AGSAnimationCurve.easeInOutSine) { (finishedWithoutInterruption) -> Void in
-                print(finishedWithoutInterruption)
                 if(finishedWithoutInterruption){
                     self.mapView.setViewpoint(AGSViewpoint(center: currentCenter, scale: currentScale), duration: 5, curve: AGSAnimationCurve.easeInOutSine, completion:  nil);
                 }

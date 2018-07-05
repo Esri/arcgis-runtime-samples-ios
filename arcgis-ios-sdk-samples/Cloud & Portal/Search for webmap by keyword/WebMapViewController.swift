@@ -38,16 +38,11 @@ class WebMapViewController: UIViewController, AGSAuthenticationManagerDelegate {
         self.mapView.map = self.map
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     
     //MARK: - AGSAuthenticationManagerDelegate
     
     func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
-        SVProgressHUD.showError(withStatus: "Web map access denied", maskType: .gradient)
+        SVProgressHUD.showError(withStatus: "Web map access denied")
         challenge.cancel()
         _ = self.navigationController?.popViewController(animated: true)
     }

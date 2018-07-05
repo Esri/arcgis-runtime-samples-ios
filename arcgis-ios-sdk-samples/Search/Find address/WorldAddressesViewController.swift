@@ -30,11 +30,6 @@ class WorldAddressesViewController: UITableViewController {
             
         }
         
-        override func didReceiveMemoryWarning() {
-            super.didReceiveMemoryWarning()
-            // Dispose of any resources that can be recreated.
-        }
-        
         // MARK: - Table view data source
         
         override func numberOfSections(in tableView: UITableView) -> Int {
@@ -47,8 +42,8 @@ class WorldAddressesViewController: UITableViewController {
         
         
         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell")!
-            cell.textLabel?.text = self.addresses[(indexPath as NSIndexPath).row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell", for: indexPath)
+            cell.textLabel?.text = self.addresses[indexPath.row]
             
             return cell
         }
@@ -56,7 +51,7 @@ class WorldAddressesViewController: UITableViewController {
         // MARK: - Table view delegate
         
         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            let address = self.addresses[(indexPath as NSIndexPath).row]
+            let address = self.addresses[indexPath.row]
             self.delegate?.worldAddressesViewController(self, didSelectAddress: address)
         }
         

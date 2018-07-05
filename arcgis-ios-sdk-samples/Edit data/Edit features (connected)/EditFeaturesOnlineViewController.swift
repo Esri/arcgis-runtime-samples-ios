@@ -52,11 +52,6 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.sketchToolbar.isHidden = true
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     private func dismissFeatureTemplatePickerVC() {
         self.dismiss(animated: true, completion: nil)
     }
@@ -64,7 +59,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     func applyEdits() {
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Applying edits", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Applying edits")
         
         (self.featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
             
@@ -144,7 +139,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //disable the done button until any geometry changes
         self.doneBBI.isEnabled = false
         
-        NotificationCenter.default.addObserver(self, selector: #selector(EditFeaturesOnlineViewController.sketchChanged(_:)), name: NSNotification.Name.AGSSketchEditorGeometryDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(EditFeaturesOnlineViewController.sketchChanged(_:)), name: .AGSSketchEditorGeometryDidChange, object: nil)
     }
     
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, didCancelEditingFor popup: AGSPopup) {
@@ -179,7 +174,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.popupsVC = nil
     }
     
-    func sketchChanged(_ notification:Notification) {
+    @objc func sketchChanged(_ notification:Notification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the sketchCompleteButton
         if let geometry = self.mapView.sketchEditor?.geometry , !geometry.isEmpty {
@@ -210,10 +205,11 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "FeatureTemplateSegue" {
-            let controller = segue.destination as! FeatureTemplatePickerViewController
-            controller.addTemplatesFromLayer(self.featureLayer)
-            controller.delegate = self
+        if segue.identifier == "FeatureTemplateSegue",
+            let navigationController = segue.destination as? UINavigationController,
+            let featureTemplatePickerVC = navigationController.topViewController as? FeatureTemplatePickerViewController {
+            featureTemplatePickerVC.addTemplatesFromLayer(featureLayer)
+            featureTemplatePickerVC.delegate = self
         }
     }
     

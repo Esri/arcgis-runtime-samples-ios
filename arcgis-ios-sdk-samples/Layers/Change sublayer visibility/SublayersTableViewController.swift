@@ -25,11 +25,6 @@ class SublayersTableViewController: UITableViewController {
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,22 +37,22 @@ class SublayersTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SublayerCell")!
-        cell.backgroundColor = UIColor.clear
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SublayerCell", for: indexPath)
+        cell.backgroundColor = .clear
         
-        let sublayer = self.sublayers[(indexPath as NSIndexPath).row] as! AGSArcGISMapImageSublayer
+        let sublayer = self.sublayers[indexPath.row] as! AGSArcGISMapImageSublayer
         cell.textLabel?.text = sublayer.name
         
         //accessory switch
         let visibilitySwitch = UISwitch(frame: CGRect.zero)
-        visibilitySwitch.tag = (indexPath as NSIndexPath).row
+        visibilitySwitch.tag = indexPath.row
         visibilitySwitch.isOn = sublayer.isVisible
         visibilitySwitch.addTarget(self, action: #selector(SublayersTableViewController.switchChanged(_:)), for: UIControlEvents.valueChanged)
         cell.accessoryView = visibilitySwitch
         return cell
     }
     
-    func switchChanged(_ sender:UISwitch) {
+    @objc func switchChanged(_ sender:UISwitch) {
         let index = sender.tag
         //change the visiblity
         let sublayer = self.sublayers[index] as! AGSArcGISMapImageSublayer

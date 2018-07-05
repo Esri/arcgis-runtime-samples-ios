@@ -56,11 +56,6 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
         self.tableView.reloadData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     //MARK: - table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -76,13 +71,13 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell
         
-        if (indexPath as NSIndexPath).section == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: "CreateBasemapCell")!
-            let basemap = self.basemaps[(indexPath as NSIndexPath).row]
+        if indexPath.section == 0 {
+            cell = tableView.dequeueReusableCell(withIdentifier: "CreateBasemapCell", for: indexPath)
+            let basemap = self.basemaps[indexPath.row]
             cell.textLabel?.text = basemap.name
             
             //accesory view
-            if let index = self.selectedBasemapIndex , index == (indexPath as NSIndexPath).row {
+            if let index = self.selectedBasemapIndex , index == indexPath.row {
                 cell.accessoryType = UITableViewCellAccessoryType.checkmark
             }
             else {
@@ -90,11 +85,11 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
             }
         }
         else {
-            cell = tableView.dequeueReusableCell(withIdentifier: "CreateLayerCell")!
-            let layer = self.layers[(indexPath as NSIndexPath).row]
+            cell = tableView.dequeueReusableCell(withIdentifier: "CreateLayerCell", for: indexPath)
+            let layer = self.layers[indexPath.row]
             cell.textLabel?.text = layer.name
             //accessory view
-            if self.selectedLayersIndex.contains((indexPath as NSIndexPath).row) {
+            if self.selectedLayersIndex.contains(indexPath.row) {
                 cell.accessoryType = .checkmark
             }
             else {
@@ -102,7 +97,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
             }
         }
         
-        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = .clear
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell
     }
@@ -110,22 +105,22 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var indexPathArray = [IndexPath]()
         
-        if (indexPath as NSIndexPath).section == 0 {
+        if indexPath.section == 0 {
             if let previousSelectionIndex = self.selectedBasemapIndex {
-                //create a NSIndexPath for the previously selected index
+                //create a IndexPath for the previously selected index
                 let previousSelectionIndexPath = IndexPath(row: previousSelectionIndex, section: 0)
                 indexPathArray.append(previousSelectionIndexPath)
             }
-            self.selectedBasemapIndex = (indexPath as NSIndexPath).row
+            self.selectedBasemapIndex = indexPath.row
         }
         else {
             //check if already selected
-            if self.selectedLayersIndex.contains((indexPath as NSIndexPath).row) {
+            if self.selectedLayersIndex.contains(indexPath.row) {
                 //remove the selection
-                self.selectedLayersIndex.remove(at: self.selectedLayersIndex.index(of: (indexPath as NSIndexPath).row)!)
+                self.selectedLayersIndex.remove(at: self.selectedLayersIndex.index(of: indexPath.row)!)
             }
             else {
-                self.selectedLayersIndex.append((indexPath as NSIndexPath).row)
+                self.selectedLayersIndex.append(indexPath.row)
             }
         }
         indexPathArray.append(indexPath)
@@ -141,7 +136,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBAction private func doneAction() {
         if self.selectedBasemapIndex == nil {
-            SVProgressHUD.showError(withStatus: "Please select at least a basemap", maskType: .gradient)
+            SVProgressHUD.showError(withStatus: "Please select at least a basemap")
             return
         }
 

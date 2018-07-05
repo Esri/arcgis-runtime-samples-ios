@@ -35,13 +35,8 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
         self.tableView.allowsSelectionDuringEditing = true
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func dataSourceIndexForIndexPath(_ dataSource:NSMutableArray, indexpath:IndexPath) -> Int {
-        return dataSource.count - (indexpath as NSIndexPath).row - 1
+        return dataSource.count - indexpath.row - 1
     }
     
     //MARK: - table view data source
@@ -63,15 +58,15 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell
         
-        if (indexPath as NSIndexPath).section == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: "MMLLayersCell")!
+        if indexPath.section == 0 {
+            cell = tableView.dequeueReusableCell(withIdentifier: "MMLLayersCell", for: indexPath)
             //layers in reverse order
             let index = self.dataSourceIndexForIndexPath(self.layers, indexpath: indexPath)
             cell.textLabel?.text = (self.layers[index] as AnyObject).name
         }
         else {
-            cell = tableView.dequeueReusableCell(withIdentifier: "MMLDeletedLayersCell")!
-            let layer = self.deletedLayers[(indexPath as NSIndexPath).row]
+            cell = tableView.dequeueReusableCell(withIdentifier: "MMLDeletedLayersCell", for: indexPath)
+            let layer = self.deletedLayers[indexPath.row]
             cell.textLabel?.text = layer.name
             let plusButton = UIButton(type: UIButtonType.contactAdd)
             plusButton.isEnabled = false
@@ -82,12 +77,12 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath as NSIndexPath).section == 1 {
+        if indexPath.section == 1 {
             //put back
             tableView.beginUpdates()
-            let layer = self.deletedLayers[(indexPath as NSIndexPath).row]
+            let layer = self.deletedLayers[indexPath.row]
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
-            self.deletedLayers.remove(at: (indexPath as NSIndexPath).row)
+            self.deletedLayers.remove(at: indexPath.row)
             
             self.layers.add(layer)
             let newIndexPath = IndexPath(row: 0, section: 0)
@@ -97,7 +92,7 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return (indexPath as NSIndexPath).section == 0
+        return indexPath.section == 0
     }
     
     //update the order of layers in the array
@@ -140,7 +135,7 @@ class MMLLayersViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        if (sourceIndexPath as NSIndexPath).section != (proposedDestinationIndexPath as NSIndexPath).section {
+        if sourceIndexPath.section != proposedDestinationIndexPath.section {
             return sourceIndexPath
         }
         else {

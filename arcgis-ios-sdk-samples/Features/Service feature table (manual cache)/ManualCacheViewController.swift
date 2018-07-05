@@ -46,11 +46,6 @@ class ManualCacheViewController: UIViewController {
         self.map.operationalLayers.add(featureLayer)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - Actions
     
     @IBAction func populateAction(_ sender: AnyObject) {
@@ -63,12 +58,12 @@ class ManualCacheViewController: UIViewController {
         self.featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { (result:AGSFeatureQueryResult?, error:Error?) -> Void in
             //check for error
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 //the resulting features should be displayed on the map
                 //you can print the count of features
-                print(result?.featureEnumerator().allObjects.count ?? 0)
+                print("Populated \(result?.featureEnumerator().allObjects.count ?? 0) features.")
             }
         }
     }

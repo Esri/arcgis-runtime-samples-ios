@@ -47,11 +47,6 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         
         self.populateTree()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func populateTree() {
         
@@ -146,7 +141,7 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
         
-        let node = self.nodesArray[(indexPath as NSIndexPath).item]
+        let node = self.nodesArray[indexPath.item]
         
         //mask to bounds
         cell.layer.masksToBounds = false
@@ -184,7 +179,7 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         //hide keyboard if visible
         self.view.endEditing(true)
         
-        let node = self.nodesArray[(indexPath as NSIndexPath).item]
+        let node = self.nodesArray[indexPath.item]
         let controller = self.storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
         controller.nodesArray = node.children
         controller.title = node.displayName
@@ -238,7 +233,7 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
             }
         }
         
-        SVProgressHUD.showError(withStatus: "No match found", maskType: .gradient)
+        SVProgressHUD.showError(withStatus: "No match found")
     }
     
     func customSearchHeaderViewWillHideSuggestions(_ customSearchHeaderView: CustomSearchHeaderView) {

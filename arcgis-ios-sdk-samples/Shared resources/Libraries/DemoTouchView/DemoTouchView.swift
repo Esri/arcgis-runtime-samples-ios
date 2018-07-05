@@ -53,8 +53,9 @@ extension UIApplication {
             let originalSelector = #selector(sendEvent)
             let swizzledSelector = #selector(sf_sendEvent)
             
-            let originalMethod = class_getInstanceMethod(self, originalSelector)
-            let swizzledMethod = class_getInstanceMethod(self, swizzledSelector)
+            guard let originalMethod = class_getInstanceMethod(self, originalSelector), let swizzledMethod = class_getInstanceMethod(self, swizzledSelector) else {
+                fatalError("Cannot swizzle with nil method.")
+            }
             
             // inject method into the UIApplication class
             //
@@ -87,8 +88,9 @@ extension UIApplication {
             let originalSelector = #selector(sendEvent)
             let swizzledSelector = #selector(sf_sendEvent)
             
-            let originalMethod = class_getInstanceMethod(self, originalSelector)
-            let swizzledMethod = class_getInstanceMethod(self, swizzledSelector)
+            guard let originalMethod = class_getInstanceMethod(self, originalSelector), let swizzledMethod = class_getInstanceMethod(self, swizzledSelector) else {
+                fatalError("Cannot swizzle with nil method.")
+            }
             
             // put the default implementation back
             //
@@ -102,7 +104,7 @@ extension UIApplication {
     
     // MARK: - Method Swizzling
     
-    func sf_sendEvent(_ event: UIEvent) {
+    @objc func sf_sendEvent(_ event: UIEvent) {
         
         if let touches = event.allTouches {
             
@@ -382,7 +384,7 @@ private class DemoTouchesView: UIView {
     
     static let sharedInstance: DemoTouchesView = {
         var dtv = DemoTouchesView()
-        dtv.backgroundColor = UIColor.clear
+        dtv.backgroundColor = .clear
         dtv.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         dtv.isUserInteractionEnabled = false
         return dtv

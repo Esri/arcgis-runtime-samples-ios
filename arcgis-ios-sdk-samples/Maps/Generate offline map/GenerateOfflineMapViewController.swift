@@ -76,7 +76,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             guard error == nil else {
                 
                 //show error
-                SVProgressHUD.showError(withStatus: error!.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error!.localizedDescription)
                 return
             }
             
@@ -95,14 +95,14 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
     private func defaultParameters() {
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Getting default parameters", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Getting default parameters")
         
         //default parameters for offline map task
         self.offlineMapTask.defaultGenerateOfflineMapParameters(withAreaOfInterest: self.frameToExtent()) { [weak self] (parameters: AGSGenerateOfflineMapParameters?, error: Error?) in
             
             guard error == nil else {
                 
-                SVProgressHUD.showError(withStatus: error!.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error!.localizedDescription)
                 return
             }
             
@@ -152,7 +152,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
                 
                 //if not user cancelled
                 if (error as NSError).code != NSUserCancelledError {
-                    SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                    SVProgressHUD.showError(withStatus: error.localizedDescription)
                 }
             } else {
     
@@ -223,7 +223,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             self?.addMap()
         }
         
-        let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        let noAction = UIAlertAction(title: "No", style: .cancel)
         
         alertController.addAction(noAction)
         alertController.addAction(yesAction)

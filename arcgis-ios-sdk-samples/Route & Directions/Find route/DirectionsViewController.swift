@@ -22,11 +22,6 @@ class DirectionsViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     //MARK: - UITableViewDataSource
     
@@ -35,9 +30,9 @@ class DirectionsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DirectionsCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DirectionsCell", for: indexPath)
         
-        cell.textLabel?.text = self.directionManeuvers[(indexPath as NSIndexPath).row].directionText
+        cell.textLabel?.text = self.directionManeuvers[indexPath.row].directionText
         
         return cell
     }

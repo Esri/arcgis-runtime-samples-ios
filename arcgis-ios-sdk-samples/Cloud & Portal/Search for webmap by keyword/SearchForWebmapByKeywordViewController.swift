@@ -33,14 +33,9 @@ class SearchForWebmapByKeywordViewController: UIViewController, WebMapsCollectio
         // create the portal
         self.portal = AGSPortal(url: URL(string: "https://arcgis.com")!, loginRequired: false)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(unhideButton), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(unhideButton), name: .UIKeyboardDidShow, object: nil)
     
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SearchForWebmapByKeywordViewController", "WebMapCell", "WebMapsCollectionViewController", "WebMapViewController"]
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
  
     func searchForWebMap(_ keyword:String) {
@@ -93,7 +88,7 @@ class SearchForWebmapByKeywordViewController: UIViewController, WebMapsCollectio
         self.searchBar.resignFirstResponder()
     }
     
-    func unhideButton() {
+    @objc func unhideButton() {
         self.button.isHidden = false
     }
     

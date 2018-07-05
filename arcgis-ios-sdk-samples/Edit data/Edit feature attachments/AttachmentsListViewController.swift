@@ -31,15 +31,15 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     func applyEdits() {
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Applying edits", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Applying edits")
         
         (self.feature.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (result, error) -> Void in
             
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
-                SVProgressHUD.showInfo(withStatus: "Apply edits finished successfully", maskType: .gradient)
+                SVProgressHUD.showInfo(withStatus: "Apply edits finished successfully")
                 self?.loadAttachments()
             }
         }
@@ -48,11 +48,11 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     func loadAttachments() {
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Loading attachments", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Loading attachments")
         
         self.feature.fetchAttachments { [weak self] (attachments:[AGSAttachment]?, error:Error?) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 //dismiss progress hud
@@ -76,11 +76,6 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -94,9 +89,9 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     //MARK: - Table view delegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AttachmentCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AttachmentCell", for: indexPath)
         
-        let attachment = self.attachments[(indexPath as NSIndexPath).row]
+        let attachment = self.attachments[indexPath.row]
         cell.textLabel?.text = attachment.name
         
         cell.imageView?.image = UIImage(named: "ArcGIS.bundle/CloudDownload")
@@ -117,13 +112,13 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            let attachment = self.attachments[(indexPath as NSIndexPath).row]
+            let attachment = self.attachments[indexPath.row]
             self.deleteAttachment(attachment)
         }
     }
     
     func setImageForCell(_ cell:UITableViewCell, at indexPath:IndexPath) {
-        let attachment = self.attachments[(indexPath as NSIndexPath).row]
+        let attachment = self.attachments[indexPath.row]
         attachment.fetchData { (data:Data?, error:Error?) -> Void in
             if let error = error {
                 print(error)
@@ -144,13 +139,13 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     @IBAction func addAction() {
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Adding attachment", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Adding attachment")
         
         let data = UIImagePNGRepresentation(UIImage(named: "LocationDisplayOffIcon")!)!
         self.feature.addAttachment(withName: "Attachment.png", contentType: "png", data: data) { [weak self] (attachment:AGSAttachment?, error:Error?) -> Void in
             
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 self?.applyEdits()

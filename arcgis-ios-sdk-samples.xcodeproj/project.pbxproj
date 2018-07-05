@@ -505,8 +505,8 @@
 		D9316A651FDB4F850075AD92 /* ReadGeopackageViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9316A601FDB4F060075AD92 /* ReadGeopackageViewController.swift */; };
 		D9316A661FDB4F850075AD92 /* GPKGLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9316A5E1FDB4F060075AD92 /* GPKGLayersViewController.swift */; };
 		D9316A671FDB4F850075AD92 /* GPKGLayerTableCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9316A5D1FDB4F060075AD92 /* GPKGLayerTableCell.swift */; };
-		D97B7E3C1FD9BE2B00E1239D /* FeatureLayerShapefileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97B7E3A1FD9BE2B00E1239D /* FeatureLayerShapefileViewController.swift */; };
-		D97B7E3D1FD9BE2B00E1239D /* FeatureLayerShapefile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E3B1FD9BE2B00E1239D /* FeatureLayerShapefile.storyboard */; };
+		D97B7E3C1FD9BE2B00E1239D /* SymbolizeShapefileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97B7E3A1FD9BE2B00E1239D /* SymbolizeShapefileViewController.swift */; };
+		D97B7E3D1FD9BE2B00E1239D /* SymbolizeShapefile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E3B1FD9BE2B00E1239D /* SymbolizeShapefile.storyboard */; };
 		D97B7E591FD9BFE700E1239D /* Subdivisions.shx in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E411FD9BFE600E1239D /* Subdivisions.shx */; settings = {ASSET_TAGS = (SubdivisionsShapefile, ); }; };
 		D97B7E5C1FD9BFE700E1239D /* Subdivisions.prj in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E441FD9BFE600E1239D /* Subdivisions.prj */; settings = {ASSET_TAGS = (SubdivisionsShapefile, ); }; };
 		D97B7E5F1FD9BFE700E1239D /* Subdivisions.cpg in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E471FD9BFE600E1239D /* Subdivisions.cpg */; settings = {ASSET_TAGS = (SubdivisionsShapefile, ); }; };
@@ -515,7 +515,7 @@
 		D97B7E681FD9BFE700E1239D /* Subdivisions.shp in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E501FD9BFE700E1239D /* Subdivisions.shp */; settings = {ASSET_TAGS = (SubdivisionsShapefile, ); }; };
 		D97B7E691FD9BFE700E1239D /* Subdivisions.shp.xml in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E511FD9BFE700E1239D /* Subdivisions.shp.xml */; settings = {ASSET_TAGS = (SubdivisionsShapefile, ); }; };
 		D97B7E6E1FD9BFE700E1239D /* Subdivisions.sbx in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E561FD9BFE700E1239D /* Subdivisions.sbx */; settings = {ASSET_TAGS = (SubdivisionsShapefile, ); }; };
-		D97B7E6F1FDA0FC200E1239D /* FeatureLayerShapefileViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D97B7E3A1FD9BE2B00E1239D /* FeatureLayerShapefileViewController.swift */; };
+		D97B7E6F1FDA0FC200E1239D /* SymbolizeShapefileViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D97B7E3A1FD9BE2B00E1239D /* SymbolizeShapefileViewController.swift */; };
 		D9ED2DA51FD758910043BFE1 /* FeatureLayerGPKG.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9ED2DA31FD758910043BFE1 /* FeatureLayerGPKG.storyboard */; };
 		D9ED2DA61FD758910043BFE1 /* FeatureLayerGPKGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ED2DA41FD758910043BFE1 /* FeatureLayerGPKGViewController.swift */; };
 		D9ED2DA91FD759190043BFE1 /* AuroraCO.gpkg in Resources */ = {isa = PBXBuildFile; fileRef = D9ED2DA81FD759190043BFE1 /* AuroraCO.gpkg */; settings = {ASSET_TAGS = (AuroraCOGeopackage, ); }; };
@@ -580,7 +580,7 @@
 				4CEA34FE20C5EC680087F93A /* StyleWebMapServiceLayerViewController.swift in CopyFiles */,
 				D9316A671FDB4F850075AD92 /* GPKGLayerTableCell.swift in CopyFiles */,
 				09607F831FDB617F00FA43B6 /* TimeBasedQueryVC.swift in CopyFiles */,
-				D97B7E6F1FDA0FC200E1239D /* FeatureLayerShapefileViewController.swift in CopyFiles */,
+				D97B7E6F1FDA0FC200E1239D /* SymbolizeShapefileViewController.swift in CopyFiles */,
 				2182C9841FDA0272003E3A0F /* StatisticalQueryViewController.swift in CopyFiles */,
 				2196CAFB1FD869D200512693 /* RasterFunctionServiceViewController.swift in CopyFiles */,
 				D90407961FD8651600BFE07B /* RasterLayerGPKGViewController.swift in CopyFiles */,
@@ -1083,8 +1083,8 @@
 		D9316A5E1FDB4F060075AD92 /* GPKGLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPKGLayersViewController.swift; sourceTree = "<group>"; };
 		D9316A5F1FDB4F060075AD92 /* ReadGeopackage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReadGeopackage.storyboard; sourceTree = "<group>"; };
 		D9316A601FDB4F060075AD92 /* ReadGeopackageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadGeopackageViewController.swift; sourceTree = "<group>"; };
-		D97B7E3A1FD9BE2B00E1239D /* FeatureLayerShapefileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerShapefileViewController.swift; sourceTree = "<group>"; };
-		D97B7E3B1FD9BE2B00E1239D /* FeatureLayerShapefile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerShapefile.storyboard; sourceTree = "<group>"; };
+		D97B7E3A1FD9BE2B00E1239D /* SymbolizeShapefileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolizeShapefileViewController.swift; sourceTree = "<group>"; };
+		D97B7E3B1FD9BE2B00E1239D /* SymbolizeShapefile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SymbolizeShapefile.storyboard; sourceTree = "<group>"; };
 		D97B7E411FD9BFE600E1239D /* Subdivisions.shx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Subdivisions.shx; sourceTree = "<group>"; };
 		D97B7E441FD9BFE600E1239D /* Subdivisions.prj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Subdivisions.prj; sourceTree = "<group>"; };
 		D97B7E471FD9BFE600E1239D /* Subdivisions.cpg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Subdivisions.cpg; sourceTree = "<group>"; };
@@ -2129,7 +2129,6 @@
 				3E5848FC1B91222200AB3CE9 /* Feature layer (feature service) */,
 				3E8A257E1D36B6E300D14F08 /* Feature layer (geodatabase) */,
 				D9ED2DA21FD758010043BFE1 /* Feature layer (geopackage) */,
-				D97B7E391FD9BE0500E1239D /* Feature layer (shapefile) */,
 				3ED028D31B8E3AA500ACA70D /* Service feature table (cache) */,
 				3ED028DB1B8E3AA500ACA70D /* Service feature table (no cache) */,
 				3ED028D71B8E3AA500ACA70D /* Service feature table (manual cache) */,
@@ -2171,6 +2170,7 @@
 				127E11D41FD0C3F8002CBD12 /* WMTS layer */,
 				1259FB8F1FD295C90037105E /* WMS layer (URL) */,
 				4CC00F7220C1FAA8004244EF /* Style WMS layers */,
+				D97B7E391FD9BE0500E1239D /* Symbolize shapefile */,
 			);
 			path = Layers;
 			sourceTree = "<group>";
@@ -2734,13 +2734,13 @@
 			path = "Read a geopackage";
 			sourceTree = "<group>";
 		};
-		D97B7E391FD9BE0500E1239D /* Feature layer (shapefile) */ = {
+		D97B7E391FD9BE0500E1239D /* Symbolize shapefile */ = {
 			isa = PBXGroup;
 			children = (
-				D97B7E3B1FD9BE2B00E1239D /* FeatureLayerShapefile.storyboard */,
-				D97B7E3A1FD9BE2B00E1239D /* FeatureLayerShapefileViewController.swift */,
+				D97B7E3B1FD9BE2B00E1239D /* SymbolizeShapefile.storyboard */,
+				D97B7E3A1FD9BE2B00E1239D /* SymbolizeShapefileViewController.swift */,
 			);
-			path = "Feature layer (shapefile)";
+			path = "Symbolize shapefile";
 			sourceTree = "<group>";
 		};
 		D97B7E3E1FD9BF1E00E1239D /* Shapefiles */ = {
@@ -3079,7 +3079,7 @@
 				3E4A64B01D8B37DA00CF930C /* Settings.bundle in Resources */,
 				3ED028EE1B8E3AA500ACA70D /* FLSelection.storyboard in Resources */,
 				3EAF09491D710AAF00F8538F /* ChangeMapViewBackground.storyboard in Resources */,
-				D97B7E3D1FD9BE2B00E1239D /* FeatureLayerShapefile.storyboard in Resources */,
+				D97B7E3D1FD9BE2B00E1239D /* SymbolizeShapefile.storyboard in Resources */,
 				3EABC7AF1DB17B2C00C161C6 /* Shasta.tif in Resources */,
 				3EFDE0F71E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard in Resources */,
 				3E81C1BD1D8A189D00470AA4 /* VectorTileCustomStyle.storyboard in Resources */,
@@ -3177,7 +3177,7 @@
 				3E4BF4441C5AEA6500D85919 /* WorldAddressesViewController.swift in Sources */,
 				3ED028EF1B8E3AA500ACA70D /* FLSelectionViewController.swift in Sources */,
 				3E5E09401EF4567A00FF3454 /* RelatedFeaturesViewController.swift in Sources */,
-				D97B7E3C1FD9BE2B00E1239D /* FeatureLayerShapefileViewController.swift in Sources */,
+				D97B7E3C1FD9BE2B00E1239D /* SymbolizeShapefileViewController.swift in Sources */,
 				3EEA06101D21C44000E03774 /* DisplaySceneViewController.swift in Sources */,
 				10859BAC1FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift in Sources */,
 				3E8526381B90D92700690EBD /* BookmarksListViewController.swift in Sources */,

@@ -14,7 +14,7 @@
 
 import ArcGIS
 
-class FeatureLayerShapefileViewController: UIViewController {
+class SymbolizeShapefileViewController: UIViewController {
     
     @IBOutlet weak var mapView: AGSMapView!
     
@@ -45,7 +45,7 @@ class FeatureLayerShapefileViewController: UIViewController {
         featureLayer = shapefileLayer
         
         // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureLayerShapefileViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SymbolizeShapefileViewController"]
     }
     
     func zoom(mapView:AGSMapView, to featureLayer:AGSFeatureLayer) {

@@ -516,6 +516,16 @@
 		D97B7E691FD9BFE700E1239D /* Subdivisions.shp.xml in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E511FD9BFE700E1239D /* Subdivisions.shp.xml */; settings = {ASSET_TAGS = (SubdivisionsShapefile, ); }; };
 		D97B7E6E1FD9BFE700E1239D /* Subdivisions.sbx in Resources */ = {isa = PBXBuildFile; fileRef = D97B7E561FD9BFE700E1239D /* Subdivisions.sbx */; settings = {ASSET_TAGS = (SubdivisionsShapefile, ); }; };
 		D97B7E6F1FDA0FC200E1239D /* SymbolizeShapefileViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D97B7E3A1FD9BE2B00E1239D /* SymbolizeShapefileViewController.swift */; };
+		D9E2E75320EEAC58001D0AE0 /* FeatureLayerShapefile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E2E75120EEAC0A001D0AE0 /* FeatureLayerShapefile.storyboard */; };
+		D9E2E75420EEAC5C001D0AE0 /* FeatureLayerShapefileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E2E75220EEAC0D001D0AE0 /* FeatureLayerShapefileViewController.swift */; };
+		D9E2E75F20EEB8FF001D0AE0 /* Public_Art.prj in Resources */ = {isa = PBXBuildFile; fileRef = D9E2E75720EEB8FE001D0AE0 /* Public_Art.prj */; settings = {ASSET_TAGS = (PublicArtShapefile, ); }; };
+		D9E2E76020EEB8FF001D0AE0 /* Public_Art.dbf in Resources */ = {isa = PBXBuildFile; fileRef = D9E2E75820EEB8FE001D0AE0 /* Public_Art.dbf */; settings = {ASSET_TAGS = (PublicArtShapefile, ); }; };
+		D9E2E76120EEB8FF001D0AE0 /* Public_Art.cpg in Resources */ = {isa = PBXBuildFile; fileRef = D9E2E75920EEB8FE001D0AE0 /* Public_Art.cpg */; settings = {ASSET_TAGS = (PublicArtShapefile, ); }; };
+		D9E2E76220EEB8FF001D0AE0 /* Public_Art.sbx in Resources */ = {isa = PBXBuildFile; fileRef = D9E2E75A20EEB8FE001D0AE0 /* Public_Art.sbx */; settings = {ASSET_TAGS = (PublicArtShapefile, ); }; };
+		D9E2E76320EEB8FF001D0AE0 /* Public_Art.sbn in Resources */ = {isa = PBXBuildFile; fileRef = D9E2E75B20EEB8FF001D0AE0 /* Public_Art.sbn */; settings = {ASSET_TAGS = (PublicArtShapefile, ); }; };
+		D9E2E76420EEB8FF001D0AE0 /* Public_Art.shp in Resources */ = {isa = PBXBuildFile; fileRef = D9E2E75C20EEB8FF001D0AE0 /* Public_Art.shp */; settings = {ASSET_TAGS = (PublicArtShapefile, ); }; };
+		D9E2E76520EEB8FF001D0AE0 /* Public_Art.shx in Resources */ = {isa = PBXBuildFile; fileRef = D9E2E75D20EEB8FF001D0AE0 /* Public_Art.shx */; settings = {ASSET_TAGS = (PublicArtShapefile, ); }; };
+		D9E2E76620EEB8FF001D0AE0 /* Public_Art.shp.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9E2E75E20EEB8FF001D0AE0 /* Public_Art.shp.xml */; settings = {ASSET_TAGS = (PublicArtShapefile, ); }; };
 		D9ED2DA51FD758910043BFE1 /* FeatureLayerGPKG.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9ED2DA31FD758910043BFE1 /* FeatureLayerGPKG.storyboard */; };
 		D9ED2DA61FD758910043BFE1 /* FeatureLayerGPKGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ED2DA41FD758910043BFE1 /* FeatureLayerGPKGViewController.swift */; };
 		D9ED2DA91FD759190043BFE1 /* AuroraCO.gpkg in Resources */ = {isa = PBXBuildFile; fileRef = D9ED2DA81FD759190043BFE1 /* AuroraCO.gpkg */; settings = {ASSET_TAGS = (AuroraCOGeopackage, ); }; };
@@ -1095,6 +1105,16 @@
 		D97B7E561FD9BFE700E1239D /* Subdivisions.sbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Subdivisions.sbx; sourceTree = "<group>"; };
 		D9CDD48520E2BB8B00E8BA02 /* LineOfSightGeoElement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LineOfSightGeoElement.storyboard; sourceTree = "<group>"; };
 		D9CDD48620E2BB8B00E8BA02 /* LineOfSightGeoElementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineOfSightGeoElementViewController.swift; sourceTree = "<group>"; };
+		D9E2E75120EEAC0A001D0AE0 /* FeatureLayerShapefile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeatureLayerShapefile.storyboard; sourceTree = "<group>"; };
+		D9E2E75220EEAC0D001D0AE0 /* FeatureLayerShapefileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureLayerShapefileViewController.swift; sourceTree = "<group>"; };
+		D9E2E75720EEB8FE001D0AE0 /* Public_Art.prj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Public_Art.prj; sourceTree = "<group>"; };
+		D9E2E75820EEB8FE001D0AE0 /* Public_Art.dbf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Public_Art.dbf; sourceTree = "<group>"; };
+		D9E2E75920EEB8FE001D0AE0 /* Public_Art.cpg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Public_Art.cpg; sourceTree = "<group>"; };
+		D9E2E75A20EEB8FE001D0AE0 /* Public_Art.sbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Public_Art.sbx; sourceTree = "<group>"; };
+		D9E2E75B20EEB8FF001D0AE0 /* Public_Art.sbn */ = {isa = PBXFileReference; lastKnownFileType = file; path = Public_Art.sbn; sourceTree = "<group>"; };
+		D9E2E75C20EEB8FF001D0AE0 /* Public_Art.shp */ = {isa = PBXFileReference; lastKnownFileType = file; path = Public_Art.shp; sourceTree = "<group>"; };
+		D9E2E75D20EEB8FF001D0AE0 /* Public_Art.shx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Public_Art.shx; sourceTree = "<group>"; };
+		D9E2E75E20EEB8FF001D0AE0 /* Public_Art.shp.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Public_Art.shp.xml; sourceTree = "<group>"; };
 		D9ED2DA31FD758910043BFE1 /* FeatureLayerGPKG.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerGPKG.storyboard; sourceTree = "<group>"; };
 		D9ED2DA41FD758910043BFE1 /* FeatureLayerGPKGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerGPKGViewController.swift; sourceTree = "<group>"; };
 		D9ED2DA81FD759190043BFE1 /* AuroraCO.gpkg */ = {isa = PBXFileReference; lastKnownFileType = file; path = AuroraCO.gpkg; sourceTree = "<group>"; };
@@ -2129,6 +2149,7 @@
 				3E5848FC1B91222200AB3CE9 /* Feature layer (feature service) */,
 				3E8A257E1D36B6E300D14F08 /* Feature layer (geodatabase) */,
 				D9ED2DA21FD758010043BFE1 /* Feature layer (geopackage) */,
+				D9E2E75020EEAAEE001D0AE0 /* Feature layer (shapefile) */,
 				3ED028D31B8E3AA500ACA70D /* Service feature table (cache) */,
 				3ED028DB1B8E3AA500ACA70D /* Service feature table (no cache) */,
 				3ED028D71B8E3AA500ACA70D /* Service feature table (manual cache) */,
@@ -2746,14 +2767,8 @@
 		D97B7E3E1FD9BF1E00E1239D /* Shapefiles */ = {
 			isa = PBXGroup;
 			children = (
-				D97B7E471FD9BFE600E1239D /* Subdivisions.cpg */,
-				D97B7E4F1FD9BFE700E1239D /* Subdivisions.dbf */,
-				D97B7E441FD9BFE600E1239D /* Subdivisions.prj */,
-				D97B7E4A1FD9BFE600E1239D /* Subdivisions.sbn */,
-				D97B7E561FD9BFE700E1239D /* Subdivisions.sbx */,
-				D97B7E501FD9BFE700E1239D /* Subdivisions.shp */,
-				D97B7E511FD9BFE700E1239D /* Subdivisions.shp.xml */,
-				D97B7E411FD9BFE600E1239D /* Subdivisions.shx */,
+				D9E2E75620EEB8E6001D0AE0 /* Public Art */,
+				D9E2E75520EEB8D0001D0AE0 /* Subdivisions */,
 			);
 			path = Shapefiles;
 			sourceTree = "<group>";
@@ -2765,6 +2780,45 @@
 				D9CDD48620E2BB8B00E8BA02 /* LineOfSightGeoElementViewController.swift */,
 			);
 			path = "Line of sight (geoelement)";
+			sourceTree = "<group>";
+		};
+		D9E2E75020EEAAEE001D0AE0 /* Feature layer (shapefile) */ = {
+			isa = PBXGroup;
+			children = (
+				D9E2E75120EEAC0A001D0AE0 /* FeatureLayerShapefile.storyboard */,
+				D9E2E75220EEAC0D001D0AE0 /* FeatureLayerShapefileViewController.swift */,
+			);
+			path = "Feature layer (shapefile)";
+			sourceTree = "<group>";
+		};
+		D9E2E75520EEB8D0001D0AE0 /* Subdivisions */ = {
+			isa = PBXGroup;
+			children = (
+				D97B7E471FD9BFE600E1239D /* Subdivisions.cpg */,
+				D97B7E4F1FD9BFE700E1239D /* Subdivisions.dbf */,
+				D97B7E441FD9BFE600E1239D /* Subdivisions.prj */,
+				D97B7E4A1FD9BFE600E1239D /* Subdivisions.sbn */,
+				D97B7E561FD9BFE700E1239D /* Subdivisions.sbx */,
+				D97B7E501FD9BFE700E1239D /* Subdivisions.shp */,
+				D97B7E511FD9BFE700E1239D /* Subdivisions.shp.xml */,
+				D97B7E411FD9BFE600E1239D /* Subdivisions.shx */,
+			);
+			path = Subdivisions;
+			sourceTree = "<group>";
+		};
+		D9E2E75620EEB8E6001D0AE0 /* Public Art */ = {
+			isa = PBXGroup;
+			children = (
+				D9E2E75920EEB8FE001D0AE0 /* Public_Art.cpg */,
+				D9E2E75820EEB8FE001D0AE0 /* Public_Art.dbf */,
+				D9E2E75720EEB8FE001D0AE0 /* Public_Art.prj */,
+				D9E2E75B20EEB8FF001D0AE0 /* Public_Art.sbn */,
+				D9E2E75A20EEB8FE001D0AE0 /* Public_Art.sbx */,
+				D9E2E75C20EEB8FF001D0AE0 /* Public_Art.shp */,
+				D9E2E75E20EEB8FF001D0AE0 /* Public_Art.shp.xml */,
+				D9E2E75D20EEB8FF001D0AE0 /* Public_Art.shx */,
+			);
+			path = "Public Art";
 			sourceTree = "<group>";
 		};
 		D9ED2DA21FD758010043BFE1 /* Feature layer (geopackage) */ = {
@@ -2890,6 +2944,7 @@
 					LATrailsGeodatabase,
 					MissionFiles,
 					MobileMapPackages,
+					PublicArtShapefile,
 					SRTMRaster,
 					SanDiegoLocator,
 					SanDiegoNetworkData,
@@ -2952,6 +3007,8 @@
 				3EC39C3A1C9B23DF003F6459 /* GenerateGeodatabase.storyboard in Resources */,
 				3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */,
 				3ED028E41B8E3AA500ACA70D /* DefinitionExpression.storyboard in Resources */,
+				D9E2E76320EEB8FF001D0AE0 /* Public_Art.sbn in Resources */,
+				D9E2E75320EEAC58001D0AE0 /* FeatureLayerShapefile.storyboard in Resources */,
 				3EBA254A1D300FB500AB0703 /* SimpleRenderer.storyboard in Resources */,
 				D97B7E5F1FD9BFE700E1239D /* Subdivisions.cpg in Resources */,
 				3ED028B81B8E3A9800ACA70D /* SublayerVisibility.storyboard in Resources */,
@@ -2994,6 +3051,7 @@
 				3E8A05CB1ECE68E80032231C /* Animate3DGraphic.storyboard in Resources */,
 				3E2A68121B14E04300A318AA /* ArcGIS.bundle in Resources */,
 				3ED5EB771B752A42009F9B75 /* style.css in Resources */,
+				D9E2E76020EEB8FF001D0AE0 /* Public_Art.dbf in Resources */,
 				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
 				3EEB2B971EB9695F00B52513 /* ListRelatedFeatures.storyboard in Resources */,
 				D9316A631FDB4F060075AD92 /* ReadGeopackage.storyboard in Resources */,
@@ -3011,6 +3069,7 @@
 				3EF024E81ECBC10600166EC5 /* FormatCoordinates.storyboard in Resources */,
 				3E1183DD1ECF5A1000180152 /* GrandCanyon.csv in Resources */,
 				3ED028F41B8E3AA500ACA70D /* OnInteractionCache.storyboard in Resources */,
+				D9E2E76220EEB8FF001D0AE0 /* Public_Art.sbx in Resources */,
 				3E8A05DD1ECE69840032231C /* Bristol.dae in Resources */,
 				3E8D54FB1D53E3F000E628D9 /* ScenePropertiesExpressions.storyboard in Resources */,
 				3ED028FA1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard in Resources */,
@@ -3097,6 +3156,7 @@
 				2196CAFA1FD868EA00512693 /* RasterFunctionService.storyboard in Resources */,
 				E45991A01EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard in Resources */,
 				3EFCE1C61CF374C600E02F67 /* MobileMapSearchRoute.storyboard in Resources */,
+				D9E2E76620EEB8FF001D0AE0 /* Public_Art.shp.xml in Resources */,
 				3E54D2351CC6985200BB9904 /* GraphicDrawOrder.storyboard in Resources */,
 				3ED028911B8E3A8500ACA70D /* SetInitialMapLocation.storyboard in Resources */,
 				3E8A25831D36B6E300D14F08 /* FeatureLayerGDB.storyboard in Resources */,
@@ -3108,13 +3168,17 @@
 				4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */,
 				1259FB921FD295C90037105E /* WMSLayerUsingURL.storyboard in Resources */,
 				3E0B585A1E36D8D300951767 /* SpatialOperations.storyboard in Resources */,
+				D9E2E75F20EEB8FF001D0AE0 /* Public_Art.prj in Resources */,
 				D9EE379A20E2CC7700BF8AD1 /* dolmus_side.jpeg in Resources */,
 				3EABC7B51DB181DD00C161C6 /* ShastaBW.tif in Resources */,
+				D9E2E76120EEB8FF001D0AE0 /* Public_Art.cpg in Resources */,
 				3EABC7C91DB1947500C161C6 /* BlendRenderer.storyboard in Resources */,
 				3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */,
+				D9E2E76520EEB8FF001D0AE0 /* Public_Art.shx in Resources */,
 				4CCE7BD820D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard in Resources */,
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
 				3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */,
+				D9E2E76420EEB8FF001D0AE0 /* Public_Art.shp in Resources */,
 				127D29F8200EC5FC00DD6CDC /* ViewshedLocation.storyboard in Resources */,
 				3E6C771C1CCFC53B00E89873 /* IdentifyLayers.storyboard in Resources */,
 				D9ED2DA91FD759190043BFE1 /* AuroraCO.gpkg in Resources */,
@@ -3334,6 +3398,7 @@
 				123AC27E20E58CFA0026A7D6 /* GeodesicOperationsViewController.swift in Sources */,
 				3EE8B9551CA08E71003AA705 /* VectorTileLayerViewController.swift in Sources */,
 				3E39F6D31B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift in Sources */,
+				D9E2E75420EEAC5C001D0AE0 /* FeatureLayerShapefileViewController.swift in Sources */,
 				3E8A05CD1ECE68E80032231C /* CameraSettingsViewController.swift in Sources */,
 				3EC39C371C9B1ADA003F6459 /* AGSExtensions.swift in Sources */,
 				3E3B2C1F1BBCA37F00A99C5E /* ContentCollectionViewController.swift in Sources */,

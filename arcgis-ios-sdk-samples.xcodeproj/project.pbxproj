@@ -770,8 +770,8 @@
 		21E9CDE81EF9C5EA00BD4D7D /* DisplayGrid.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayGrid.storyboard; sourceTree = "<group>"; };
 		21E9CDE91EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayGridSettingsViewController.swift; sourceTree = "<group>"; };
 		21E9CDEA1EF9C5EA00BD4D7D /* DisplayGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayGridViewController.swift; sourceTree = "<group>"; };
-		21E9CDEE1EF9C64C00BD4D7D /* HorizontalColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HorizontalColorPicker.swift; path = HorizontalPicker/HorizontalColorPicker.swift; sourceTree = "<group>"; };
-		21E9CDEF1EF9C64C00BD4D7D /* HorizontalColorPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HorizontalColorPicker.xib; path = HorizontalPicker/HorizontalColorPicker.xib; sourceTree = "<group>"; };
+		21E9CDEE1EF9C64C00BD4D7D /* HorizontalColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalColorPicker.swift; sourceTree = "<group>"; };
+		21E9CDEF1EF9C64C00BD4D7D /* HorizontalColorPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorizontalColorPicker.xib; sourceTree = "<group>"; };
 		21EBBBFC1FE07B0500567F14 /* StatisticalQueryGroupAndSort.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StatisticalQueryGroupAndSort.storyboard; sourceTree = "<group>"; };
 		3E0225361DB569240049F7F8 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryCell.swift; path = "Content Display Logic/Cells/CategoryCell.swift"; sourceTree = "<group>"; };
 		3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SourceCodeViewController.swift; path = "Content Display Logic/Controllers/SourceCodeViewController.swift"; sourceTree = "<group>"; };
@@ -798,10 +798,10 @@
 		3E1183DC1ECF5A1000180152 /* Snowdon.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Snowdon.csv; sourceTree = "<group>"; };
 		3E1E5EE41D9F08ED00F4913C /* HillshadeRendererVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HillshadeRendererVC.swift; sourceTree = "<group>"; };
 		3E1E5EE61D9F095A00F4913C /* HillshadeSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HillshadeSettingsVC.swift; sourceTree = "<group>"; };
-		3E1E5EE91D9F0ACC00F4913C /* HorizontalPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HorizontalPicker.swift; path = HorizontalPicker/HorizontalPicker.swift; sourceTree = "<group>"; };
+		3E1E5EE91D9F0ACC00F4913C /* HorizontalPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalPicker.swift; sourceTree = "<group>"; };
 		3E1E5EEC1D9F0B5600F4913C /* srtm.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = srtm.tiff; sourceTree = "<group>"; };
 		3E1E5EEE1D9F0BAB00F4913C /* HillshadeRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HillshadeRenderer.storyboard; sourceTree = "<group>"; };
-		3E1E5EF01D9F0D0C00F4913C /* HorizontalPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HorizontalPicker.xib; path = HorizontalPicker/HorizontalPicker.xib; sourceTree = "<group>"; };
+		3E1E5EF01D9F0D0C00F4913C /* HorizontalPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorizontalPicker.xib; sourceTree = "<group>"; };
 		3E23A9E01AFC28F6002E2214 /* arcgis-ios-sdk-samples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "arcgis-ios-sdk-samples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E23A9E41AFC28F6002E2214 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "arcgis-ios-sdk-samples/AppDelegate.swift"; sourceTree = "<group>"; };
@@ -842,7 +842,7 @@
 		3E4BF4791C5BDDCA00D85919 /* san-diego-locator.loc.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "san-diego-locator.loc.xml"; sourceTree = "<group>"; };
 		3E4BF47A1C5BDDCA00D85919 /* san-diego-locator.locb */ = {isa = PBXFileReference; lastKnownFileType = file; path = "san-diego-locator.locb"; sourceTree = "<group>"; };
 		3E4BF47B1C5BDDCA00D85919 /* san-diego-locator.lox */ = {isa = PBXFileReference; lastKnownFileType = file; path = "san-diego-locator.lox"; sourceTree = "<group>"; };
-		3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = streetmap_SD.tpk; path = "Shared resources/Tile packages/streetmap_SD.tpk"; sourceTree = "<group>"; };
+		3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = streetmap_SD.tpk; sourceTree = "<group>"; };
 		3E54D2321CC697F100BB9904 /* GraphicDrawOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicDrawOrderViewController.swift; sourceTree = "<group>"; };
 		3E54D2341CC6985200BB9904 /* GraphicDrawOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GraphicDrawOrder.storyboard; sourceTree = "<group>"; };
 		3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerURLViewController.swift; sourceTree = "<group>"; };
@@ -860,7 +860,7 @@
 		3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Camera Shutter.caf"; sourceTree = "<group>"; };
 		3E6AE3EB1C6D11BA0026E59C /* OfflineRouting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OfflineRouting.storyboard; sourceTree = "<group>"; };
 		3E6AE3ED1C6D11FD0026E59C /* OfflineRoutingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineRoutingViewController.swift; sourceTree = "<group>"; };
-		3E6AE3F01C6D1B2E0026E59C /* san-diego */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "san-diego"; path = "Shared resources/Network data/san-diego"; sourceTree = "<group>"; };
+		3E6AE3F01C6D1B2E0026E59C /* san-diego */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "san-diego"; sourceTree = "<group>"; };
 		3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsViewController.swift; sourceTree = "<group>"; };
 		3E6AE3F71C73B5480026E59C /* FindRoute.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FindRoute.storyboard; sourceTree = "<group>"; };
 		3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindRouteViewController.swift; sourceTree = "<group>"; };
@@ -939,10 +939,10 @@
 		3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsListViewController.swift; sourceTree = "<group>"; };
 		3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteParametersViewController.swift; sourceTree = "<group>"; };
 		3EC39C201C9A59D5003F6459 /* RouteAroundBarriers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RouteAroundBarriers.storyboard; sourceTree = "<group>"; };
-		3EC39C2D1C9B0A9D003F6459 /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpk; path = "Shared resources/Tile packages/SanFrancisco.tpk"; sourceTree = "<group>"; };
+		3EC39C2D1C9B0A9D003F6459 /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanFrancisco.tpk; sourceTree = "<group>"; };
 		3EC39C311C9B0DF6003F6459 /* ExportTilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportTilesViewController.swift; sourceTree = "<group>"; };
 		3EC39C331C9B106D003F6459 /* ExportTiles.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ExportTiles.storyboard; sourceTree = "<group>"; };
-		3EC39C361C9B1ADA003F6459 /* AGSExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AGSExtensions.swift; path = "Shared resources/Extensions/AGSExtensions.swift"; sourceTree = "<group>"; };
+		3EC39C361C9B1ADA003F6459 /* AGSExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AGSExtensions.swift; sourceTree = "<group>"; };
 		3EC39C391C9B23DF003F6459 /* GenerateGeodatabase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GenerateGeodatabase.storyboard; sourceTree = "<group>"; };
 		3EC39C3B1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateGeodatabaseViewController.swift; sourceTree = "<group>"; };
 		3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineEditingViewController.swift; sourceTree = "<group>"; };
@@ -1356,8 +1356,7 @@
 				3E1183DB1ECF5A1000180152 /* Pyrenees.csv */,
 				3E1183DC1ECF5A1000180152 /* Snowdon.csv */,
 			);
-			name = "Mission files";
-			path = "Shared resources/Mission files";
+			path = "Mission files";
 			sourceTree = "<group>";
 		};
 		3E1E5EE31D9F085E00F4913C /* Hillshade renderer */ = {
@@ -1378,7 +1377,7 @@
 				3E1E5EE91D9F0ACC00F4913C /* HorizontalPicker.swift */,
 				3E1E5EF01D9F0D0C00F4913C /* HorizontalPicker.xib */,
 			);
-			name = HorizontalPicker;
+			path = HorizontalPicker;
 			sourceTree = "<group>";
 		};
 		3E23A9D71AFC28F6002E2214 = {
@@ -1526,7 +1525,7 @@
 				3EABC7951DB1787600C161C6 /* Rasters */,
 				3E1183D81ECF5A1000180152 /* Mission files */,
 			);
-			name = "Shared resources";
+			path = "Shared resources";
 			sourceTree = "<group>";
 		};
 		3E4B05E61B39EF250072E514 /* Libraries */ = {
@@ -1537,8 +1536,7 @@
 				3E4B05E71B39EF250072E514 /* SVProgressHUD */,
 				3EC398BD1D8B45AD0084612D /* DemoTouchView */,
 			);
-			name = Libraries;
-			path = "Shared resources/Libraries";
+			path = Libraries;
 			sourceTree = "<group>";
 		};
 		3E4B05E71B39EF250072E514 /* SVProgressHUD */ = {
@@ -1613,7 +1611,7 @@
 				3EC39C2D1C9B0A9D003F6459 /* SanFrancisco.tpk */,
 				3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */,
 			);
-			name = "Tile packages";
+			path = "Tile packages";
 			sourceTree = "<group>";
 		};
 		3E4BF45D1C5BD84900D85919 /* Locator */ = {
@@ -1621,8 +1619,7 @@
 			children = (
 				3E4BF4771C5BDDCA00D85919 /* san-diego */,
 			);
-			name = Locator;
-			path = "Shared resources/Locator";
+			path = Locator;
 			sourceTree = "<group>";
 		};
 		3E4BF4771C5BDDCA00D85919 /* san-diego */ = {
@@ -1737,7 +1734,7 @@
 			children = (
 				3E6AE3F01C6D1B2E0026E59C /* san-diego */,
 			);
-			name = "Network data";
+			path = "Network data";
 			sourceTree = "<group>";
 		};
 		3E6AE3F31C6D1C920026E59C /* Find route */ = {
@@ -1825,8 +1822,7 @@
 				E4B2E2621FE31E5100E610FF /* bradley_low_3ds */,
 				3E8A05DA1ECE69840032231C /* Bristol */,
 			);
-			name = "3D models";
-			path = "Shared resources/3D models";
+			path = "3D models";
 			sourceTree = "<group>";
 		};
 		3E8A05DA1ECE69840032231C /* Bristol */ = {
@@ -1852,8 +1848,7 @@
 			children = (
 				3E8A25891D36B89400D14F08 /* LA_Trails.geodatabase */,
 			);
-			name = Geodatabases;
-			path = "Shared resources/Geodatabases";
+			path = Geodatabases;
 			sourceTree = "<group>";
 		};
 		3E8A258B1D36B97A00D14F08 /* Map loaded */ = {
@@ -1905,8 +1900,7 @@
 				3EABC7BB1DB1918600C161C6 /* Shasta */,
 				3EABC7BA1DB1917700C161C6 /* ShastaBW */,
 			);
-			name = Rasters;
-			path = "Shared resources/Rasters";
+			path = Rasters;
 			sourceTree = "<group>";
 		};
 		3EABC79A1DB1793000C161C6 /* Stretch renderer */ = {
@@ -1929,7 +1923,7 @@
 				3EABC7B61DB183E600C161C6 /* ShastaBW.tif.aux.xml */,
 				3EABC7B71DB183E600C161C6 /* ShastaBW.tif.ovr */,
 			);
-			name = ShastaBW;
+			path = ShastaBW;
 			sourceTree = "<group>";
 		};
 		3EABC7BB1DB1918600C161C6 /* Shasta */ = {
@@ -1940,7 +1934,7 @@
 				3EABC7AC1DB17B2C00C161C6 /* Shasta.tif.aux.xml */,
 				3EABC7AD1DB17B2C00C161C6 /* Shasta.tif.ovr */,
 			);
-			name = Shasta;
+			path = Shasta;
 			sourceTree = "<group>";
 		};
 		3EABC7BC1DB1919E00C161C6 /* Shasta_Elevation */ = {
@@ -1951,7 +1945,7 @@
 				3EABC7BF1DB191BC00C161C6 /* Shasta_Elevation.tif.aux.xml */,
 				3EABC7C01DB191BC00C161C6 /* Shasta_Elevation.tif.ovr */,
 			);
-			name = Shasta_Elevation;
+			path = Shasta_Elevation;
 			sourceTree = "<group>";
 		};
 		3EABC7C51DB1941000C161C6 /* Blend renderer */ = {
@@ -2064,7 +2058,7 @@
 			children = (
 				3EC39C361C9B1ADA003F6459 /* AGSExtensions.swift */,
 			);
-			name = Extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		3EC39C381C9B2136003F6459 /* Generate geodatabase */ = {
@@ -2645,8 +2639,7 @@
 				3EFCE1C71CF38A9C00E02F67 /* SanFrancisco.mmpk */,
 				3EFCE1B61CF369A800E02F67 /* Yellowstone.mmpk */,
 			);
-			name = "Mobile map packages";
-			path = "Shared resources/Mobile map packages";
+			path = "Mobile map packages";
 			sourceTree = "<group>";
 		};
 		3EFCE1BE1CF36FFC00E02F67 /* Mobile map (search and route) */ = {
@@ -2762,8 +2755,7 @@
 				D97B7E511FD9BFE700E1239D /* Subdivisions.shp.xml */,
 				D97B7E411FD9BFE600E1239D /* Subdivisions.shx */,
 			);
-			name = Shapefiles;
-			path = "Shared resources/Shapefiles";
+			path = Shapefiles;
 			sourceTree = "<group>";
 		};
 		D9CDD48420E2BB6F00E8BA02 /* Line of sight (geoelement) */ = {
@@ -2789,8 +2781,7 @@
 			children = (
 				D9ED2DA81FD759190043BFE1 /* AuroraCO.gpkg */,
 			);
-			name = Geopackages;
-			path = "Shared resources/Geopackages";
+			path = Geopackages;
 			sourceTree = "<group>";
 		};
 		D9EE379020E2CC3200BF8AD1 /* taxi */ = {

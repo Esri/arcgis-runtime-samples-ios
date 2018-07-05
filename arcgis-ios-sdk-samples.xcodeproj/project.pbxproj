@@ -108,7 +108,6 @@
 		3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */; };
 		3E24E6741BFE560B00322DAC /* LayerStatusViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */; };
 		3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A680D1B0D2A7000A318AA /* ListViewController.swift */; };
-		3E2A68121B14E04300A318AA /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E2A68111B14E04300A318AA /* ArcGIS.bundle */; };
 		3E2A68181B153CDE00A318AA /* SourceCodeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A68171B153CDE00A318AA /* SourceCodeBarButtonItem.swift */; };
 		3E3425BD1E7B4CB10024270B /* srtm.tiff.ovr in Resources */ = {isa = PBXBuildFile; fileRef = 3EE385511DD4FDE600B13E3C /* srtm.tiff.ovr */; settings = {ASSET_TAGS = (SRTMRaster, ); }; };
 		3E39F6D21B9790A9000DEC6C /* EditFeaturesOnline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E39F6CF1B9790A9000DEC6C /* EditFeaturesOnline.storyboard */; };
@@ -773,13 +772,13 @@
 		21E9CDEE1EF9C64C00BD4D7D /* HorizontalColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalColorPicker.swift; sourceTree = "<group>"; };
 		21E9CDEF1EF9C64C00BD4D7D /* HorizontalColorPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorizontalColorPicker.xib; sourceTree = "<group>"; };
 		21EBBBFC1FE07B0500567F14 /* StatisticalQueryGroupAndSort.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StatisticalQueryGroupAndSort.storyboard; sourceTree = "<group>"; };
-		3E0225361DB569240049F7F8 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryCell.swift; path = "Content Display Logic/Cells/CategoryCell.swift"; sourceTree = "<group>"; };
-		3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SourceCodeViewController.swift; path = "Content Display Logic/Controllers/SourceCodeViewController.swift"; sourceTree = "<group>"; };
+		3E0225361DB569240049F7F8 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceCodeViewController.swift; sourceTree = "<group>"; };
 		3E03F0981B056F9C0078EB36 /* highlight.pack.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.pack.js; sourceTree = "<group>"; };
 		3E03F09A1B05714A0078EB36 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
-		3E0830B91BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomSearchHeaderView.swift; path = "Content Display Logic/Views/CustomSearchHeaderView.swift"; sourceTree = "<group>"; };
-		3E0830BB1BC31B69001AF9A7 /* CustomSearchHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomSearchHeaderView.xib; path = "Content Display Logic/Views/CustomSearchHeaderView.xib"; sourceTree = "<group>"; };
-		3E0830BD1BC33681001AF9A7 /* SuggestionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SuggestionTableViewCell.xib; path = "Content Display Logic/Cells/SuggestionTableViewCell.xib"; sourceTree = "<group>"; };
+		3E0830B91BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchHeaderView.swift; sourceTree = "<group>"; };
+		3E0830BB1BC31B69001AF9A7 /* CustomSearchHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomSearchHeaderView.xib; sourceTree = "<group>"; };
+		3E0830BD1BC33681001AF9A7 /* SuggestionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuggestionTableViewCell.xib; sourceTree = "<group>"; };
 		3E0B58471E36BCCD00951767 /* AnalyzeHotspots.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnalyzeHotspots.storyboard; sourceTree = "<group>"; };
 		3E0B58481E36BCCD00951767 /* HotspotSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotspotSettingsViewController.swift; sourceTree = "<group>"; };
 		3E0B58491E36BCCD00951767 /* AnalyzeHotspotsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyzeHotspotsViewController.swift; sourceTree = "<group>"; };
@@ -788,10 +787,10 @@
 		3E0B58561E36D8D300951767 /* OperationsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationsListViewController.swift; sourceTree = "<group>"; };
 		3E0B58571E36D8D300951767 /* SpatialOperations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpatialOperations.storyboard; sourceTree = "<group>"; };
 		3E0B58581E36D8D300951767 /* SpatialOperationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpatialOperationsViewController.swift; sourceTree = "<group>"; };
-		3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ContentPList.plist; path = "Content Display Logic/ContentPList.plist"; sourceTree = "<group>"; };
-		3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentTableViewController.swift; path = "Content Display Logic/Controllers/ContentTableViewController.swift"; sourceTree = "<group>"; };
-		3E0D3AD61AFD481900FC60D6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "Content Display Logic/Storyboard/Main.storyboard"; sourceTree = "<group>"; };
-		3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArcGIS.framework; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Static/ArcGIS.framework; sourceTree = "<absolute>"; };
+		3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ContentPList.plist; sourceTree = "<group>"; };
+		3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentTableViewController.swift; sourceTree = "<group>"; };
+		3E0D3AD61AFD481900FC60D6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArcGIS.framework; path = "~/Library/SDKs/ArcGIS/iOS/Frameworks/Static/ArcGIS.framework"; sourceTree = "<absolute>"; };
 		3E1183D91ECF5A1000180152 /* GrandCanyon.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GrandCanyon.csv; sourceTree = "<group>"; };
 		3E1183DA1ECF5A1000180152 /* Hawaii.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Hawaii.csv; sourceTree = "<group>"; };
 		3E1183DB1ECF5A1000180152 /* Pyrenees.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Pyrenees.csv; sourceTree = "<group>"; };
@@ -807,21 +806,20 @@
 		3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "arcgis-ios-sdk-samples/AppDelegate.swift"; sourceTree = "<group>"; };
 		3E23A9EE1AFC28F6002E2214 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "arcgis-ios-sdk-samples/Images.xcassets"; sourceTree = "<group>"; };
 		3E23A9F11AFC28F6002E2214 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		3E2A680D1B0D2A7000A318AA /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewController.swift; path = "Content Display Logic/Controllers/ListViewController.swift"; sourceTree = "<group>"; };
-		3E2A68111B14E04300A318AA /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Static/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<absolute>"; };
-		3E2A68171B153CDE00A318AA /* SourceCodeBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SourceCodeBarButtonItem.swift; path = "Content Display Logic/Custom BarButtonItem/SourceCodeBarButtonItem.swift"; sourceTree = "<group>"; };
+		3E2A680D1B0D2A7000A318AA /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		3E2A68171B153CDE00A318AA /* SourceCodeBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceCodeBarButtonItem.swift; sourceTree = "<group>"; };
 		3E39F6CF1B9790A9000DEC6C /* EditFeaturesOnline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditFeaturesOnline.storyboard; sourceTree = "<group>"; };
 		3E39F6D01B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFeaturesOnlineViewController.swift; sourceTree = "<group>"; };
 		3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureTemplatePickerViewController.swift; sourceTree = "<group>"; };
-		3E3B2C1E1BBCA37F00A99C5E /* ContentCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentCollectionViewController.swift; path = "Content Display Logic/Controllers/ContentCollectionViewController.swift"; sourceTree = "<group>"; };
-		3E3B2C211BBCADDB00A99C5E /* ContentTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentTableCell.swift; path = "Content Display Logic/Cells/ContentTableCell.swift"; sourceTree = "<group>"; };
-		3E3B2C231BBD9CD300A99C5E /* SearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchEngine.swift; path = "Content Display Logic/Model/SearchEngine.swift"; sourceTree = "<group>"; };
-		3E412B421D0B2FAD00349155 /* AppInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppInfoViewController.swift; path = "Content Display Logic/Controllers/AppInfoViewController.swift"; sourceTree = "<group>"; };
+		3E3B2C1E1BBCA37F00A99C5E /* ContentCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewController.swift; sourceTree = "<group>"; };
+		3E3B2C211BBCADDB00A99C5E /* ContentTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentTableCell.swift; sourceTree = "<group>"; };
+		3E3B2C231BBD9CD300A99C5E /* SearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEngine.swift; sourceTree = "<group>"; };
+		3E412B421D0B2FAD00349155 /* AppInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
 		3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFeaturesViewController.swift; sourceTree = "<group>"; };
 		3E41DD731B9A241500DA11CC /* AddFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddFeatures.storyboard; sourceTree = "<group>"; };
 		3E41DD761B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteFeaturesViewController.swift; sourceTree = "<group>"; };
 		3E41DD781B9F609500DA11CC /* DeleteFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DeleteFeatures.storyboard; sourceTree = "<group>"; };
-		3E4A64AF1D8B37DA00CF930C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = "Content Display Logic/Settings.bundle"; sourceTree = "<group>"; };
+		3E4A64AF1D8B37DA00CF930C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		3E4B05E81B39EF250072E514 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		3E4B05E91B39EF250072E514 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		3E4B05EA1B39EF250072E514 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
@@ -950,8 +948,8 @@
 		3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OfflineEditing.storyboard; sourceTree = "<group>"; };
 		3ECCFE381BD0401A00CE256D /* LayerStatus.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LayerStatus.storyboard; sourceTree = "<group>"; };
 		3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerStatusViewController.swift; sourceTree = "<group>"; };
-		3ECDD9AE1E8470E100E645AB /* DownloadProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadProgressView.swift; path = "Content Display Logic/Views/DownloadProgressView.swift"; sourceTree = "<group>"; };
-		3ECDD9AF1E8470E100E645AB /* DownloadProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DownloadProgressView.xib; path = "Content Display Logic/Views/DownloadProgressView.xib"; sourceTree = "<group>"; };
+		3ECDD9AE1E8470E100E645AB /* DownloadProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadProgressView.swift; sourceTree = "<group>"; };
+		3ECDD9AF1E8470E100E645AB /* DownloadProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadProgressView.xib; sourceTree = "<group>"; };
 		3ED028021B8E3A8400ACA70D /* CreateSaveMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateSaveMap.storyboard; sourceTree = "<group>"; };
 		3ED028031B8E3A8400ACA70D /* CreateSaveMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSaveMapViewController.swift; sourceTree = "<group>"; };
 		3ED028041B8E3A8400ACA70D /* CreateOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOptionsViewController.swift; sourceTree = "<group>"; };
@@ -1024,8 +1022,8 @@
 		3ED029551B8E3ACD00ACA70D /* EditAttributesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAttributesViewController.swift; sourceTree = "<group>"; };
 		3ED0295C1B8E3ACD00ACA70D /* EditGeometry.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditGeometry.storyboard; sourceTree = "<group>"; };
 		3ED0295D1B8E3ACD00ACA70D /* EditGeometryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGeometryViewController.swift; sourceTree = "<group>"; };
-		3ED5EB721B7404D0009F9B75 /* SampleInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SampleInfoViewController.swift; path = "Content Display Logic/Controllers/SampleInfoViewController.swift"; sourceTree = "<group>"; };
-		3ED5EB741B740A58009F9B75 /* SegmentedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentedViewController.swift; path = "Content Display Logic/Controllers/SegmentedViewController.swift"; sourceTree = "<group>"; };
+		3ED5EB721B7404D0009F9B75 /* SampleInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleInfoViewController.swift; sourceTree = "<group>"; };
+		3ED5EB741B740A58009F9B75 /* SegmentedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedViewController.swift; sourceTree = "<group>"; };
 		3ED5EB761B752A42009F9B75 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		3ED75D011ED39EDF009B1F75 /* FindServiceAreaInteractive.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FindServiceAreaInteractive.storyboard; sourceTree = "<group>"; };
 		3ED75D021ED39EDF009B1F75 /* FindServiceAreaInteractiveVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindServiceAreaInteractiveVC.swift; sourceTree = "<group>"; };
@@ -1034,7 +1032,7 @@
 		3ED7888D1D26E28500E5F311 /* TilePackagesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TilePackagesListViewController.swift; sourceTree = "<group>"; };
 		3ED7888F1D26E2F700E5F311 /* LocalTiledLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocalTiledLayer.storyboard; sourceTree = "<group>"; };
 		3EE385511DD4FDE600B13E3C /* srtm.tiff.ovr */ = {isa = PBXFileReference; lastKnownFileType = file; path = srtm.tiff.ovr; sourceTree = "<group>"; };
-		3EE692011B03D22500C167B8 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Node.swift; path = "Content Display Logic/Model/Node.swift"; sourceTree = "<group>"; };
+		3EE692011B03D22500C167B8 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VectorTileLayer.storyboard; sourceTree = "<group>"; };
 		3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorTileLayerViewController.swift; sourceTree = "<group>"; };
 		3EEA06021D21C44000E03774 /* SceneSymbols.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SceneSymbols.storyboard; sourceTree = "<group>"; };
@@ -1074,6 +1072,7 @@
 		4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StyleWebMapServiceLayer.storyboard; sourceTree = "<group>"; };
 		4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasurementAnalysisViewController.swift; sourceTree = "<group>"; };
 		4CCE7BD720D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DistanceMeasurementAnalysis.storyboard; sourceTree = "<group>"; };
+		4CF50A8520EE97BC00EBE4B2 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = "~/Library/SDKs/ArcGIS/iOS/Frameworks/Static/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle"; sourceTree = "<absolute>"; };
 		940A73F320E588C200A06C80 /* CutGeometry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CutGeometry.storyboard; sourceTree = "<group>"; };
 		940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutGeometryViewController.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
@@ -1290,8 +1289,7 @@
 				3E03F09A1B05714A0078EB36 /* default.css */,
 				3ED5EB761B752A42009F9B75 /* style.css */,
 			);
-			name = Js;
-			path = "Content Display Logic/Js";
+			path = Js;
 			sourceTree = "<group>";
 		};
 		3E0B58451E36BCCD00951767 /* Analysis */ = {
@@ -1345,7 +1343,7 @@
 			children = (
 				3E0D3AD61AFD481900FC60D6 /* Main.storyboard */,
 			);
-			name = Storyboard;
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		3E1183D81ECF5A1000180152 /* Mission files */ = {
@@ -1417,25 +1415,18 @@
 				4C2B52D320D2C11C0071EBB6 /* Extensions */,
 				3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */,
 				3EA34D591B38C3B3003DC0E8 /* Samples-Bridging-Header.h */,
+				4CF50A8520EE97BC00EBE4B2 /* ArcGIS.bundle */,
 				3E0D3AE11AFD4BD000FC60D6 /* ArcGIS.framework */,
+				3E23A9E41AFC28F6002E2214 /* Info.plist */,
 			);
 			path = "arcgis-ios-sdk-samples";
-			sourceTree = "<group>";
-		};
-		3E23A9E31AFC28F6002E2214 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				3E2A68111B14E04300A318AA /* ArcGIS.bundle */,
-				3E23A9E41AFC28F6002E2214 /* Info.plist */,
-				3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */,
-				3E4A64AF1D8B37DA00CF930C /* Settings.bundle */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		3E23AA071AFC2DE0002E2214 /* Content Display Logic */ = {
 			isa = PBXGroup;
 			children = (
+				3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */,
+				3E4A64AF1D8B37DA00CF930C /* Settings.bundle */,
 				3E676DEF1B1D0B6000D4029A /* Audio Files */,
 				3E3B2C201BBCADB300A99C5E /* Cells */,
 				3E23AA0B1AFC327F002E2214 /* Controllers */,
@@ -1443,10 +1434,9 @@
 				3E03F0971B056F9C0078EB36 /* Js */,
 				3EE692001B03D1FC00C167B8 /* Model */,
 				3E0D3AD51AFD47BF00FC60D6 /* Storyboard */,
-				3E23A9E31AFC28F6002E2214 /* Supporting Files */,
 				3E5163361BBEF69B00D42C4C /* Views */,
 			);
-			name = "Content Display Logic";
+			path = "Content Display Logic";
 			sourceTree = "<group>";
 		};
 		3E23AA0B1AFC327F002E2214 /* Controllers */ = {
@@ -1459,9 +1449,8 @@
 				3ED5EB721B7404D0009F9B75 /* SampleInfoViewController.swift */,
 				3ED5EB741B740A58009F9B75 /* SegmentedViewController.swift */,
 				3E3B2C1E1BBCA37F00A99C5E /* ContentCollectionViewController.swift */,
-				3E0225361DB569240049F7F8 /* CategoryCell.swift */,
 			);
-			name = Controllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		3E2A68161B153C8B00A318AA /* Custom BarButtonItem */ = {
@@ -1469,7 +1458,7 @@
 			children = (
 				3E2A68171B153CDE00A318AA /* SourceCodeBarButtonItem.swift */,
 			);
-			name = "Custom BarButtonItem";
+			path = "Custom BarButtonItem";
 			sourceTree = "<group>";
 		};
 		3E39F6CE1B979087000DEC6C /* Edit features (connected) */ = {
@@ -1487,8 +1476,9 @@
 			children = (
 				3E0830BD1BC33681001AF9A7 /* SuggestionTableViewCell.xib */,
 				3E3B2C211BBCADDB00A99C5E /* ContentTableCell.swift */,
+				3E0225361DB569240049F7F8 /* CategoryCell.swift */,
 			);
-			name = Cells;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		3E41DD6D1B9A1EA800DA11CC /* Add features (feature service) */ = {
@@ -1641,7 +1631,7 @@
 				3ECDD9AE1E8470E100E645AB /* DownloadProgressView.swift */,
 				3ECDD9AF1E8470E100E645AB /* DownloadProgressView.xib */,
 			);
-			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		3E54D2311CC697A000BB9904 /* Control graphic draw order */ = {
@@ -1705,8 +1695,7 @@
 			children = (
 				3E676DF01B1D0B6000D4029A /* Camera Shutter.caf */,
 			);
-			name = "Audio Files";
-			path = "Content Display Logic/Audio Files";
+			path = "Audio Files";
 			sourceTree = "<group>";
 		};
 		3E6AE3E91C6D10DA0026E59C /* Route & Directions */ = {
@@ -2520,7 +2509,7 @@
 				3EE692011B03D22500C167B8 /* Node.swift */,
 				3E3B2C231BBD9CD300A99C5E /* SearchEngine.swift */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		3EE8B9511CA08E16003AA705 /* ArcGIS vector tiled layer (URL) */ = {
@@ -2992,7 +2981,6 @@
 				3EABC7C41DB191BC00C161C6 /* Shasta_Elevation.tif.ovr in Resources */,
 				3E4BF47C1C5BDDCA00D85919 /* san-diego-locator.loc in Resources */,
 				3E8A05CB1ECE68E80032231C /* Animate3DGraphic.storyboard in Resources */,
-				3E2A68121B14E04300A318AA /* ArcGIS.bundle in Resources */,
 				3ED5EB771B752A42009F9B75 /* style.css in Resources */,
 				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
 				3EEB2B971EB9695F00B52513 /* ListRelatedFeatures.storyboard in Resources */,

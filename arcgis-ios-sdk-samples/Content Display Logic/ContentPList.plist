@@ -825,14 +825,14 @@
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to convert a map location Point to a number of different coordinate notations. Tap on the map or edit the values in textfields</string>
 			</dict>
-      <dict>
-        <key>displayName</key>
-        <string>Geodesic operations</string>
-        <key>storyboardName</key>
-        <string>GeodesicOperations</string>
-        <key>descriptionText</key>
-        <string>Use geometry engine to calculate a geodesic path between two points and measure its distance. </string>
-      </dict>
+			<dict>
+				<key>displayName</key>
+				<string>Geodesic operations</string>
+				<key>storyboardName</key>
+				<string>GeodesicOperations</string>
+				<key>descriptionText</key>
+				<string>Use geometry engine to calculate a geodesic path between two points and measure its distance. </string>
+			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>Cut geometry</string>
@@ -840,6 +840,14 @@
 				<string>CutGeometry</string>
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to cut a geometry with a polyline using the GeometryEngine. For example, you may want to subdivide a large parcel polygon into several smaller parcels.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Spatial relationships</string>
+				<key>storyboardName</key>
+				<string>SpatialRelationships</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to use the AGSGeometryEngine to evaluate the spatial relationships between geometries.</string>
 			</dict>
 		</array>
 	</dict>

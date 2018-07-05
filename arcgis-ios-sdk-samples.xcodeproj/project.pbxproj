@@ -55,6 +55,9 @@
 		2196CAF91FD868EA00512693 /* RasterFunctionServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196CAF71FD868EA00512693 /* RasterFunctionServiceViewController.swift */; };
 		2196CAFA1FD868EA00512693 /* RasterFunctionService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2196CAF81FD868EA00512693 /* RasterFunctionService.storyboard */; };
 		2196CAFB1FD869D200512693 /* RasterFunctionServiceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2196CAF71FD868EA00512693 /* RasterFunctionServiceViewController.swift */; };
+		21C729D920EAC7BE00F676D9 /* SpatialRelationshipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C729D820EAC7BE00F676D9 /* SpatialRelationshipsViewController.swift */; };
+		21C729DB20EAC7E300F676D9 /* SpatialRelationships.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21C729DA20EAC7E300F676D9 /* SpatialRelationships.storyboard */; };
+		21C729DD20EC3F4300F676D9 /* SpatialRelationshipsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21C729D820EAC7BE00F676D9 /* SpatialRelationshipsViewController.swift */; };
 		21C9968C1F05BB4D00A062F7 /* DisplayGridSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21E9CDE91EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift */; };
 		21C9968D1F05BB4D00A062F7 /* DisplayGridViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21E9CDEA1EF9C5EA00BD4D7D /* DisplayGridViewController.swift */; };
 		21D919941FE1F368006EA79A /* ExpandableTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21D919911FE1F368006EA79A /* ExpandableTableViewController.storyboard */; };
@@ -560,6 +563,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				21C729DD20EC3F4300F676D9 /* SpatialRelationshipsViewController.swift in CopyFiles */,
 				124FAF3620E6C6E900F96548 /* GeodesicOperationsViewController.swift in CopyFiles */,
 				D9EE379B20E2DC5800BF8AD1 /* LineOfSightGeoElementViewController.swift in CopyFiles */,
 				4C2B52D720D2C3180071EBB6 /* DistanceMeasurementAnalysisViewController.swift in CopyFiles */,
@@ -763,6 +767,8 @@
 		218409DE1FE9A1E00098BC40 /* AddStatisticDefinitionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStatisticDefinitionsViewController.swift; sourceTree = "<group>"; };
 		2196CAF71FD868EA00512693 /* RasterFunctionServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterFunctionServiceViewController.swift; sourceTree = "<group>"; };
 		2196CAF81FD868EA00512693 /* RasterFunctionService.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RasterFunctionService.storyboard; sourceTree = "<group>"; };
+		21C729D820EAC7BE00F676D9 /* SpatialRelationshipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatialRelationshipsViewController.swift; sourceTree = "<group>"; };
+		21C729DA20EAC7E300F676D9 /* SpatialRelationships.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SpatialRelationships.storyboard; sourceTree = "<group>"; };
 		21D919911FE1F368006EA79A /* ExpandableTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ExpandableTableViewController.storyboard; sourceTree = "<group>"; };
 		21D919921FE1F368006EA79A /* ExpandableTableViewImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ExpandableTableViewImages.xcassets; sourceTree = "<group>"; };
 		21D919931FE1F368006EA79A /* ExpandableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandableTableViewController.swift; sourceTree = "<group>"; };
@@ -1248,6 +1254,15 @@
 				2196CAF81FD868EA00512693 /* RasterFunctionService.storyboard */,
 			);
 			path = "Raster function (service)";
+			sourceTree = "<group>";
+		};
+		21C729D720EAC70000F676D9 /* Spatial relationships */ = {
+			isa = PBXGroup;
+			children = (
+				21C729D820EAC7BE00F676D9 /* SpatialRelationshipsViewController.swift */,
+				21C729DA20EAC7E300F676D9 /* SpatialRelationships.storyboard */,
+			);
+			path = "Spatial relationships";
 			sourceTree = "<group>";
 		};
 		21D919901FE1F368006EA79A /* ExpandableTableViewController */ = {
@@ -2018,6 +2033,7 @@
 				3EF024E51ECBC10600166EC5 /* Format coordinates */,
 				123AC27A20E588A00026A7D6 /* Geodesic operations */,
 				940A73F220E5889B00A06C80 /* Cut geometry */,
+				21C729D720EAC70000F676D9 /* Spatial relationships */,
 			);
 			path = Geometry;
 			sourceTree = "<group>";
@@ -3018,6 +3034,7 @@
 				127E11D71FD0C3F8002CBD12 /* WMTSLayer.storyboard in Resources */,
 				E4C4A4481EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard in Resources */,
 				3EF024E81ECBC10600166EC5 /* FormatCoordinates.storyboard in Resources */,
+				21C729DB20EAC7E300F676D9 /* SpatialRelationships.storyboard in Resources */,
 				3E1183DD1ECF5A1000180152 /* GrandCanyon.csv in Resources */,
 				3ED028F41B8E3AA500ACA70D /* OnInteractionCache.storyboard in Resources */,
 				3E8A05DD1ECE69840032231C /* Bristol.dae in Resources */,
@@ -3192,6 +3209,7 @@
 				3E8526381B90D92700690EBD /* BookmarksListViewController.swift in Sources */,
 				127D29F7200EC5FC00DD6CDC /* ViewshedLocationViewController.swift in Sources */,
 				3E8A05CE1ECE68E80032231C /* MissionSettingsViewController.swift in Sources */,
+				21C729D920EAC7BE00F676D9 /* SpatialRelationshipsViewController.swift in Sources */,
 				E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */,
 				3ED0286A1B8E3A8500ACA70D /* SetViewpointViewController.swift in Sources */,
 				3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */,

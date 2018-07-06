@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEh-wK-J5c" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the map to select the graphic" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jcu-ZS-x53">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the map to select the graphic" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jcu-ZS-x53">
                                 <rect key="frame" x="0.0" y="20" width="375" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59866391320000001" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -37,9 +37,9 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="eEh-wK-J5c" secondAttribute="trailing" id="072-3c-Vt2"/>
                             <constraint firstItem="Jcu-ZS-x53" firstAttribute="leading" secondItem="eEh-wK-J5c" secondAttribute="leading" id="3a8-fB-uUP"/>
-                            <constraint firstItem="eEh-wK-J5c" firstAttribute="top" secondItem="sUj-8I-cOJ" secondAttribute="top" constant="30" id="4du-cW-LhX"/>
+                            <constraint firstItem="eEh-wK-J5c" firstAttribute="top" secondItem="sUj-8I-cOJ" secondAttribute="top" id="4du-cW-LhX"/>
                             <constraint firstItem="Jcu-ZS-x53" firstAttribute="top" secondItem="sUj-8I-cOJ" secondAttribute="top" id="l0F-1f-E3P"/>
-                            <constraint firstItem="eEh-wK-J5c" firstAttribute="bottom" secondItem="sUj-8I-cOJ" secondAttribute="bottom" id="nou-MR-DwM"/>
+                            <constraint firstItem="eEh-wK-J5c" firstAttribute="bottom" secondItem="tWE-tE-PmT" secondAttribute="bottom" id="nou-MR-DwM"/>
                             <constraint firstItem="Jcu-ZS-x53" firstAttribute="trailing" secondItem="eEh-wK-J5c" secondAttribute="trailing" id="v9J-9M-lZy"/>
                             <constraint firstItem="eEh-wK-J5c" firstAttribute="leading" secondItem="tWE-tE-PmT" secondAttribute="leading" id="vZ9-dP-KIO"/>
                         </constraints>

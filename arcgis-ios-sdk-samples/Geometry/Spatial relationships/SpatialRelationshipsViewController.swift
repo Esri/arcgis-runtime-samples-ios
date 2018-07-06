@@ -21,7 +21,7 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
     @IBOutlet weak var mapView: AGSMapView!
     private let graphicsOverlay = AGSGraphicsOverlay()
 
-    var polygonGraphic: AGSGraphic = {
+    let polygonGraphic: AGSGraphic = {
         //
         // Create an array of points that represents polygon. Use the same spatial reference as the underlying base map.
         let points = [
@@ -48,7 +48,7 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
         return graphic
     }()
     
-    var polylineGraphic: AGSGraphic = {
+    let polylineGraphic: AGSGraphic = {
         //
         // Create an array of points that represents polyline. Use the same spatial reference as the underlying base map.
         let points = [
@@ -71,7 +71,7 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
         return graphic
     }()
     
-    var pointGraphic: AGSGraphic = {
+    let pointGraphic: AGSGraphic = {
         //
         // Create a point. Use the same spatial reference as the underlying base map.
         let point = AGSPoint(x: -4487263.495911, y: 3699176.480377, spatialReference: .webMercator())
@@ -146,18 +146,13 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
             let storyboard = UIStoryboard(name: "ExpandableTableViewController", bundle: nil)
             let expandableTableViewController = storyboard.instantiateViewController(withIdentifier: "ExpandableTableViewController") as! ExpandableTableViewController
             
-            // Create objects to store results
-            var pointRelationships = [String]()
-            var polylineRelationships = [String]()
-            var polygonRelationships = [String]()
-            
             // Check the geometry type and find it's
             // relationship with other geometries
             if let polylineGeometry = strongSelf.polylineGraphic.geometry, let polygonGeometry = strongSelf.polygonGraphic.geometry, selectedGeometry.geometryType == .point {
                 //
                 // Get the relationships with polyline and polygon
-                polylineRelationships = strongSelf.getSpatialRelationships(a: selectedGeometry, b: polylineGeometry)
-                polygonRelationships = strongSelf.getSpatialRelationships(a: selectedGeometry, b: polygonGeometry)
+                let polylineRelationships = strongSelf.getSpatialRelationships(geometry1: selectedGeometry, geometry2: polylineGeometry)
+                let polygonRelationships = strongSelf.getSpatialRelationships(geometry1: selectedGeometry, geometry2: polygonGeometry)
                 
                 // Add section for polyline relationships and it's items
                 expandableTableViewController.sectionHeaderTitles.append("Relationship With Polyline")
@@ -172,8 +167,8 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
             else if let pointGeometry = strongSelf.pointGraphic.geometry, let polygonGeometry = strongSelf.polygonGraphic.geometry, selectedGeometry.geometryType == .polyline {
                 //
                 // Get the relationships with point and polygon
-                pointRelationships = strongSelf.getSpatialRelationships(a: selectedGeometry, b: pointGeometry)
-                polygonRelationships = strongSelf.getSpatialRelationships(a: selectedGeometry, b: polygonGeometry)
+                let pointRelationships = strongSelf.getSpatialRelationships(geometry1: selectedGeometry, geometry2: pointGeometry)
+                let polygonRelationships = strongSelf.getSpatialRelationships(geometry1: selectedGeometry, geometry2: polygonGeometry)
                 
                 // Add section for point relationships and it's items
                 expandableTableViewController.sectionHeaderTitles.append("Relationship With Point")
@@ -188,8 +183,8 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
             else if let pointGeometry = strongSelf.pointGraphic.geometry, let polylineGeometry = strongSelf.polylineGraphic.geometry, selectedGeometry.geometryType == .polygon {
                 //
                 // Get the relationships with point and polyline
-                pointRelationships = strongSelf.getSpatialRelationships(a: selectedGeometry, b: pointGeometry)
-                polylineRelationships = strongSelf.getSpatialRelationships(a: selectedGeometry, b: polylineGeometry)
+                let pointRelationships = strongSelf.getSpatialRelationships(geometry1: selectedGeometry, geometry2: pointGeometry)
+                let polylineRelationships = strongSelf.getSpatialRelationships(geometry1: selectedGeometry, geometry2: polylineGeometry)
                 
                 // Add section for point relationships and it's items
                 expandableTableViewController.sectionHeaderTitles.append("Relationship With Point")
@@ -206,25 +201,30 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
             expandableTableViewController.modalPresentationStyle = .popover
             expandableTableViewController.presentationController?.delegate = self
             expandableTableViewController.popoverPresentationController?.sourceView = strongSelf.mapView
-            expandableTableViewController.popoverPresentationController?.sourceRect = CGRect(origin: screenPoint, size: CGSize.zero)
+            expandableTableViewController.popoverPresentationController?.sourceRect = CGRect(origin: screenPoint, size: .zero)
             expandableTableViewController.preferredContentSize = CGSize(width: 300, height: 200)
-            strongSelf.present(expandableTableViewController, animated: true, completion: nil)
+            strongSelf.present(expandableTableViewController, animated: true)
         }
     }
     
     // MARK: Helper Function
     
-    // This function checks the different relationships between
-    // two geometries and returns result as an array of strings
-    private func getSpatialRelationships(a: AGSGeometry, b: AGSGeometry) -> [String] {
+    /// This function checks the different relationships between
+    /// two geometries and returns result as an array of strings
+    ///
+    /// - Parameters:
+    ///   - geometry1: The input geometry to be compared
+    ///   - geometry2: The input geometry to be compared
+    /// - Returns: An array of strings representing relationship
+    private func getSpatialRelationships(geometry1: AGSGeometry, geometry2: AGSGeometry) -> [String] {
         var relationships = [String]()
-        if AGSGeometryEngine.geometry(a, crossesGeometry: b) { relationships.append("Crosses") }
-        if AGSGeometryEngine.geometry(a, contains: b) { relationships.append("Contains") }
-        if AGSGeometryEngine.geometry(a, disjointTo: b) { relationships.append("Disjoint") }
-        if AGSGeometryEngine.geometry(a, intersects: b) { relationships.append("Intersects") }
-        if AGSGeometryEngine.geometry(a, overlapsGeometry: b) { relationships.append("Overlaps") }
-        if AGSGeometryEngine.geometry(a, touchesGeometry: b)  { relationships.append("Touches") }
-        if AGSGeometryEngine.geometry(a, within: b) { relationships.append("Within") }
+        if AGSGeometryEngine.geometry(geometry1, crossesGeometry: geometry2) { relationships.append("Crosses") }
+        if AGSGeometryEngine.geometry(geometry1, contains: geometry2) { relationships.append("Contains") }
+        if AGSGeometryEngine.geometry(geometry1, disjointTo: geometry2) { relationships.append("Disjoint") }
+        if AGSGeometryEngine.geometry(geometry1, intersects: geometry2) { relationships.append("Intersects") }
+        if AGSGeometryEngine.geometry(geometry1, overlapsGeometry: geometry2) { relationships.append("Overlaps") }
+        if AGSGeometryEngine.geometry(geometry1, touchesGeometry: geometry2)  { relationships.append("Touches") }
+        if AGSGeometryEngine.geometry(geometry1, within: geometry2) { relationships.append("Within") }
         return relationships
     }
 

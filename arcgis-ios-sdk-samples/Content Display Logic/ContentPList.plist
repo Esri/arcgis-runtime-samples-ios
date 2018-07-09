@@ -411,7 +411,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Symbolize Shapefile</string>
+				<string>Symbolize shapefile</string>
 				<key>storyboardName</key>
 				<string>SymbolizeShapefile</string>
 				<key>descriptionText</key>

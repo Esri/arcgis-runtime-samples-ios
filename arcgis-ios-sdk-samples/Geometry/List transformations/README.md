@@ -7,7 +7,7 @@ This sample demonstrates how to use the `AGSTransformationCatalog` to get a list
 ![](image1.png)
 
 ## How to use the sample
-Optionally, begin by [adding projection engine data](#Offline data) to your device before running this sample. When you provision projection engine data to your device, more transformations are available for use.
+Optionally, begin by [adding projection engine data](#offline-data) to your device before running this sample. When you provision projection engine data to your device, more transformations are available for use.
 
 Tap on a listed transformation to reproject the point geometry (shown in red) using the selected transformation. The reprojected geometry will be shown in blue. If there are grid-based transformations for which projection engine files are not available on your device, these will be listed in an items details. The default transformation is highlighted in the list.
 
@@ -25,7 +25,7 @@ When the user taps on a transformation in the list, the selected transformation 
 * AGSGeographicTransformationStep
 * AGSGeometryEngine.project
 
-## Offline data
+## [Offline data](id:offline_data)
 This sample can be used with or without provisioning projection engine data to your device.  If you do not provision data, a limited number of transformations will be available to you.
 
 To download projection engine data to your device:

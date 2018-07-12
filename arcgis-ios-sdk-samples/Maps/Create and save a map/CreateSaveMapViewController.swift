@@ -172,7 +172,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     
     //MARK: - SaveAsVCDelegate
     
-    func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String?) {
+    func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String) {
         SVProgressHUD.show(withStatus: "Saving")
         //set the initial viewpoint from map view
         self.mapView.map?.initialViewpoint = self.mapView.currentViewpoint(with: AGSViewpointType.centerAndScale)
@@ -184,8 +184,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
                 //also to cut on the size
                 let croppedImage:UIImage? = image?.croppedImage(CGSize(width: 200, height: 200))
                 
-                weakSelf.mapView.map?.save(as: title, portal: weakSelf.portal!, tags: tags, folder: nil, itemDescription: itemDescription!, thumbnail: croppedImage, forceSaveToSupportedVersion: true, completion: { [weak self] (error) -> Void in
-                    
+                weakSelf.mapView.map?.save(as: title, portal: weakSelf.portal!, tags: tags, folder: nil, itemDescription: itemDescription, thumbnail: croppedImage, forceSaveToSupportedVersion: true) { [weak self] (error) -> Void in
                     //dismiss progress hud
                     SVProgressHUD.dismiss()
                     if let error = error {
@@ -195,7 +194,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
                         self?.showSuccess()
                     }
                     weakSelf.saveAsVC.resetInputFields()
-                })
+                }
             }
         }
         

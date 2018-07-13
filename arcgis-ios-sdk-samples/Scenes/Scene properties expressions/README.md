@@ -1,4 +1,4 @@
-# Surface placements
+# Scene properties expressions
 
 This sample demonstrates how to update the orientation of graphics in graphics overlay using expressions on scene properties.
 

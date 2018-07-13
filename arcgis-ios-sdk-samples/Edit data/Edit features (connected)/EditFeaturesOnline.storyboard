@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pS3-la-wY4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pS3-la-wY4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +31,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="vTW-06-U6f"/>
                                     <barButtonItem title="Add new feature" id="R0E-oQ-75X">
                                         <connections>
-                                            <segue destination="E5N-S0-TC2" kind="presentation" identifier="FeatureTemplateSegue" modalPresentationStyle="formSheet" id="RfA-Mo-ClN"/>
+                                            <segue destination="Vks-eF-aWr" kind="presentation" identifier="FeatureTemplateSegue" modalPresentationStyle="formSheet" id="TP7-AI-dld"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hca-T3-dsM"/>
@@ -81,57 +81,56 @@
             </objects>
             <point key="canvasLocation" x="549" y="441"/>
         </scene>
-        <!--Feature Template Picker View Controller-->
-        <scene sceneID="u2g-iv-dud">
+        <!--Templates-->
+        <scene sceneID="rGb-ep-vRX">
             <objects>
-                <viewController id="E5N-S0-TC2" customClass="FeatureTemplatePickerViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wcr-DI-afZ">
+                <tableViewController id="aDY-p6-Ulb" customClass="FeatureTemplatePickerViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bwJ-Cg-ud0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jIV-jv-8bf">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="Templates" id="hTX-K3-9rr">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="IFg-sk-gEx">
-                                            <connections>
-                                                <action selector="cancelAction" destination="E5N-S0-TC2" id="i4E-LF-KSO"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                                <connections>
-                                    <outlet property="delegate" destination="E5N-S0-TC2" id="XRY-GP-uFu"/>
-                                </connections>
-                            </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lhb-q7-O1w">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="E5N-S0-TC2" id="9mC-mY-fxW"/>
-                                    <outlet property="delegate" destination="E5N-S0-TC2" id="lQl-Ih-9OS"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="jIV-jv-8bf" secondAttribute="trailing" id="Aho-SY-EpJ"/>
-                            <constraint firstItem="lhb-q7-O1w" firstAttribute="leading" secondItem="wcr-DI-afZ" secondAttribute="leading" id="NMK-1I-A9S"/>
-                            <constraint firstItem="jIV-jv-8bf" firstAttribute="top" secondItem="h3F-JP-Iyw" secondAttribute="top" id="YhD-D0-rzj"/>
-                            <constraint firstItem="jIV-jv-8bf" firstAttribute="leading" secondItem="wcr-DI-afZ" secondAttribute="leading" id="eul-r0-fTW"/>
-                            <constraint firstAttribute="trailing" secondItem="lhb-q7-O1w" secondAttribute="trailing" id="lWA-Hv-GSB"/>
-                            <constraint firstAttribute="bottom" secondItem="lhb-q7-O1w" secondAttribute="bottom" id="nPX-zR-fJA"/>
-                            <constraint firstItem="lhb-q7-O1w" firstAttribute="top" secondItem="jIV-jv-8bf" secondAttribute="bottom" id="r6o-Pe-aJv"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="h3F-JP-Iyw"/>
-                    </view>
-                    <connections>
-                        <outlet property="featureTemplateTableView" destination="lhb-q7-O1w" id="h8f-qn-G1Y"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OtA-pz-3yx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="TemplatePickerCell" id="O1k-1I-pKn">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O1k-1I-pKn" id="fnc-9d-Tf6">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="aDY-p6-Ulb" id="BD2-5z-CRL"/>
+                            <outlet property="delegate" destination="aDY-p6-Ulb" id="Ptd-OT-tHV"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Templates" id="42t-U9-1rR">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="IFg-sk-gEx">
+                            <connections>
+                                <action selector="cancelAction" destination="aDY-p6-Ulb" id="vHG-NJ-vaw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PKk-WT-kpc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1417" y="441"/>
+            <point key="canvasLocation" x="2404" y="439"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2dq-jL-qbh">
+            <objects>
+                <navigationController id="Vks-eF-aWr" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QvE-an-DwQ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="aDY-p6-Ulb" kind="relationship" relationship="rootViewController" id="FCm-gl-OMm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wll-tN-ycC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1497" y="440"/>
         </scene>
     </scenes>
 </document>

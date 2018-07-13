@@ -205,10 +205,11 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "FeatureTemplateSegue" {
-            let controller = segue.destination as! FeatureTemplatePickerViewController
-            controller.addTemplatesFromLayer(self.featureLayer)
-            controller.delegate = self
+        if segue.identifier == "FeatureTemplateSegue",
+            let navigationController = segue.destination as? UINavigationController,
+            let featureTemplatePickerVC = navigationController.topViewController as? FeatureTemplatePickerViewController {
+            featureTemplatePickerVC.addTemplatesFromLayer(featureLayer)
+            featureTemplatePickerVC.delegate = self
         }
     }
     

@@ -46,7 +46,7 @@ class DisplayGridViewController: UIViewController, UIAdaptivePresentationControl
             fatalError()
         }
         
-        viewController.mapView = self.mapView
+        viewController.mapView = mapView
         viewController.modalPresentationStyle = .popover
         
         return viewController

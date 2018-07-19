@@ -21,7 +21,7 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var orderByMapExtent: UISwitch!
     
-    var datatumTransformations: [AGSDatumTransformation] = []
+    var datatumTransformations = [AGSDatumTransformation]()
     var defaultTransformation: AGSDatumTransformation?
     let graphicsOverlay = AGSGraphicsOverlay()
     var originalGeometry = AGSPoint(x: 538985.355, y: 177329.516, spatialReference: AGSSpatialReference(wkid: 27700))
@@ -33,29 +33,28 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ListTransformationsViewController"]
 
         // Get MapView from layout and set a map into this view
-        mapView.map = AGSMap(basemap: AGSBasemap.lightGrayCanvasVector())
+        mapView.map = AGSMap(basemap: .lightGrayCanvasVector())
         mapView.graphicsOverlays.add(graphicsOverlay)
         
         //add original graphic to overlay
         addGraphic(originalGeometry, color: .red, style: .square)
         
-        mapView.map?.load(completion: { [weak self] (error) in
+        mapView.map?.load() { [weak self] (error) in
             if error != nil {
                 print("map load error = \(String(describing: error))")
                 return
             }
-
-            guard let originalGeometry = self?.originalGeometry else { return }
-            self?.mapView.setViewpoint(AGSViewpoint(center: originalGeometry, scale: 5000), duration: 2.0, completion: nil)
-            
-            // set the url for our projection engine data;
-            self?.setPEDataURL()
-        })
+            else {
+                self?.mapDidLoad()
+            }
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func mapDidLoad() {
+        mapView.setViewpoint(AGSViewpoint(center: originalGeometry, scale: 5000), duration: 2.0, completion: nil)
+        
+        // set the url for our projection engine data;
+        setPEDataURL()
     }
     
     // add a graphic with the given geometry, color and style to the graphics overlay
@@ -79,26 +78,35 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
         }
         
         defaultTransformation = AGSTransformationCatalog.transformation(forInputSpatialReference: inputSR, outputSpatialReference: outputSR)
+
+        // unselect selected row
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndexPath, animated: true)
+        }
+        
+        // remove projected graphic from overlay
+        if let graphic = projectedGraphic() {
+            // we have the projected graphic, remove it (it's always the last one)
+            graphicsOverlay.graphics.remove(graphic)
+        }
+        
         tableView.reloadData()
     }
     
     func setPEDataURL() {
-        // find the PEDataRuntime folder from the documents directory
-        // added using iTunes
-        let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
-        let subpaths = FileManager.default.subpaths(atPath: path[0])!
-        
-        // search for PEDataRuntime matches
-        let predicate = NSPredicate(format: "SELF MATCHES %@", "PEDataRuntime")
-        let peDataRuntimePaths = subpaths.filter({ (objc) -> Bool in
-            return predicate.evaluate(with: objc)
-        })
-
-        // use first matching path as path to PE data
-        if let documentPEDataRuntime = peDataRuntimePaths.first {
-            // found "PEDataRuntime" folder, create full url
-            let peDataURL = URL(fileURLWithPath: path[0]).appendingPathComponent(documentPEDataRuntime)
-            try? AGSTransformationCatalog.setProjectionEngineDirectory(peDataURL)
+        if let projectionEngineDataURL = FileManager.default
+            .urls(for: .documentDirectory, in: .userDomainMask)
+            .first?.appendingPathComponent("PEDataRuntime") {
+            do {
+                guard try projectionEngineDataURL.checkResourceIsReachable() else { return }
+                
+                // Normally, this method would be called immediately upon application startup before any other API method calls.
+                // So usually it would be called from AppDelegate.application(_:didFinishLaunchingWithOptions:), but for the purposes
+                // of this sample, we're calling it here.
+                try AGSTransformationCatalog.setProjectionEngineDirectory(projectionEngineDataURL)
+            } catch {
+                print("Could not load projection engine data.  See the README file for instructions on adding PE data to your app.")
+            }
         }
         
         setupTransformsList()
@@ -107,42 +115,48 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
     @IBAction func oderByMapExtentValueChanged(_ sender: Any) {
         setupTransformsList()
     }
+    
+    func projectedGraphic() -> AGSGraphic? {
+        var graphic: AGSGraphic?
+        if graphicsOverlay.graphics.count > 1,
+            let graphics = graphicsOverlay.graphics as? [AGSGraphic] {
+            graphic = graphics.last
+        }
+        
+        return graphic
+    }
 
     //MARK: - TableView data source
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datatumTransformations.count
     }
-
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DatumTransformCell", for: indexPath)
-
         // get the selected transformation
         let transformation = datatumTransformations[indexPath.row]
 
-        // if we're missing the grid files, detail which ones
-        var files = ""
-        if transformation.isMissingProjectionEngineFiles {
-            files = "Missing grid files"
+        // disable selection if the transformation is missing files
+        cell.isUserInteractionEnabled = !transformation.isMissingProjectionEngineFiles
 
-            if let gt = transformation as? AGSGeographicTransformation {
-                gt.steps.forEach { (step) in
-                    if step.isMissingProjectionEngineFiles {
-                        files.append(": " + step.projectionEngineFilenames.joined(separator: ","))
-                    }
-                }
-            }
-        }
-        
         cell.textLabel?.text = transformation.name
-        cell.detailTextLabel?.text = files
-        
-        if let defaultTransform = defaultTransformation {
-            cell.isSelected = transformation.isEqual(to: defaultTransform)
-        }
-        else {
-            cell.isSelected = false
-        }
+        cell.detailTextLabel?.text = {
+            if transformation.isMissingProjectionEngineFiles,
+                // if we're missing the grid files, detail which ones
+                let geographicTransformation = transformation as? AGSGeographicTransformation {
+                let files = geographicTransformation.steps.flatMap { (step) -> [String] in
+                    step.isMissingProjectionEngineFiles ? step.projectionEngineFilenames : []
+                }
+                return "Missing grid files: \(files.joined(separator: ", "))"
+            } else {
+                return ""
+            }
+        }()
         
         return cell
     }
@@ -155,9 +169,7 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
         let selectedTransform = datatumTransformations[indexPath.row]
         if let projectedGeometry = AGSGeometryEngine.projectGeometry(originalGeometry, to: mapViewSR, datumTransformation: selectedTransform) {
             // projectGeometry succeeded
-            if graphicsOverlay.graphics.count > 1,
-                let graphics = graphicsOverlay.graphics as? [AGSGraphic],
-                let graphic = (graphics).last {
+            if let graphic = projectedGraphic() {
                 // we've already added the projected graphic
                 graphic.geometry = projectedGeometry
             }

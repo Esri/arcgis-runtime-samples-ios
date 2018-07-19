@@ -16,7 +16,7 @@ The sample sets the location of projection engine data on the device by calling 
 
 The list of `AGSDatumTransformations` is created by calling `AGSTransformationCatalog.transformationsBySuitability`, passing in the `AGSSpatialReference` of the original geometry (the input spatial reference) and that of the `AGSMap` (the output spatial reference). Depending on the state of a switch control, the current visible extent of the map is used to sort the list by suitability.
 
-When the user taps on a transformation in the list, the selected transformation is used to reproject an `AGSPoint`. The `AGSGraphic's` geometry is then updated with the new `AGSPoint`. If the selected transformation is not usable (has missing grid files) then no projected point is displayed.
+When the user taps on a transformation in the list, the selected transformation is used to reproject an `AGSPoint`. The `AGSGraphic`'s geometry is then updated with the new `AGSPoint`. If the selected transformation is not usable (has missing grid files) then no projected point is displayed.
 
 ## Relevant API
 * AGSTransformationCatalog
@@ -36,5 +36,5 @@ To download projection engine data to your device:
 4. Unzip the downloaded data on your computer.
 5. Use iTunes to copy the `PEDataRuntime` folder to your application's Documents folder.
   
-#### Tags
+## Tags
 Edit and Manage Data

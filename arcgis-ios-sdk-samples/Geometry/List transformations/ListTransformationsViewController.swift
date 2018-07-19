@@ -26,6 +26,14 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
     let graphicsOverlay = AGSGraphicsOverlay()
     var originalGeometry = AGSPoint(x: 538985.355, y: 177329.516, spatialReference: AGSSpatialReference(wkid: 27700))
     
+    var projectedGraphic: AGSGraphic? {
+        if graphicsOverlay.graphics.count > 1 {
+            return graphicsOverlay.graphics.lastObject as? AGSGraphic
+        } else {
+            return nil
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,9 +48,8 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
         addGraphic(originalGeometry, color: .red, style: .square)
         
         mapView.map?.load() { [weak self] (error) in
-            if error != nil {
-                print("map load error = \(String(describing: error))")
-                return
+            if let error = error {
+                print("map load error = \(error)")
             }
             else {
                 self?.mapDidLoad()
@@ -85,7 +92,7 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
         }
         
         // remove projected graphic from overlay
-        if let graphic = projectedGraphic() {
+        if let graphic = projectedGraphic {
             // we have the projected graphic, remove it (it's always the last one)
             graphicsOverlay.graphics.remove(graphic)
         }
@@ -114,16 +121,6 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
 
     @IBAction func oderByMapExtentValueChanged(_ sender: Any) {
         setupTransformsList()
-    }
-    
-    func projectedGraphic() -> AGSGraphic? {
-        var graphic: AGSGraphic?
-        if graphicsOverlay.graphics.count > 1,
-            let graphics = graphicsOverlay.graphics as? [AGSGraphic] {
-            graphic = graphics.last
-        }
-        
-        return graphic
     }
 
     //MARK: - TableView data source
@@ -169,7 +166,7 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
         let selectedTransform = datatumTransformations[indexPath.row]
         if let projectedGeometry = AGSGeometryEngine.projectGeometry(originalGeometry, to: mapViewSR, datumTransformation: selectedTransform) {
             // projectGeometry succeeded
-            if let graphic = projectedGraphic() {
+            if let graphic = projectedGraphic {
                 // we've already added the projected graphic
                 graphic.geometry = projectedGeometry
             }

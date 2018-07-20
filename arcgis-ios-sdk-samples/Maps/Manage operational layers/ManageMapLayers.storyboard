@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FzM-2V-EQz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FzM-2V-EQz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -66,71 +66,6 @@
             </objects>
             <point key="canvasLocation" x="-608" y="-187"/>
         </scene>
-        <!--Operational Layers-->
-        <scene sceneID="w3p-Zf-WgD">
-            <objects>
-                <viewController id="oe0-Xg-vZM" customClass="MMLLayersViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Rft-BM-iyU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="l9u-Fn-8ss">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MMLLayersCell" id="K7b-hD-pnh">
-                                        <rect key="frame" x="0.0" y="22" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K7b-hD-pnh" id="bUp-MK-9FT">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MMLDeletedLayersCell" id="Bdv-0V-GEr">
-                                        <rect key="frame" x="0.0" y="66" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bdv-0V-GEr" id="dUR-W3-RGG">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="oe0-Xg-vZM" id="rfO-zP-NKZ"/>
-                                    <outlet property="delegate" destination="oe0-Xg-vZM" id="UlI-Fl-hvY"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="l9u-Fn-8ss" firstAttribute="top" secondItem="Rft-BM-iyU" secondAttribute="top" id="Q9e-XH-asd"/>
-                            <constraint firstItem="l9u-Fn-8ss" firstAttribute="trailing" secondItem="Rft-BM-iyU" secondAttribute="trailing" id="Rwq-CK-WtK"/>
-                            <constraint firstAttribute="bottom" secondItem="l9u-Fn-8ss" secondAttribute="bottom" id="f6z-2e-zSk"/>
-                            <constraint firstItem="l9u-Fn-8ss" firstAttribute="leading" secondItem="Rft-BM-iyU" secondAttribute="leading" id="nsN-Az-2Xl"/>
-                            <constraint firstItem="l9u-Fn-8ss" firstAttribute="top" secondItem="Mhd-hj-EKz" secondAttribute="top" id="z07-Sd-byo"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Mhd-hj-EKz"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="z07-Sd-byo"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <navigationItem key="navigationItem" title="Operational Layers" id="o7Y-Oo-Q0F">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="gxa-RV-5pj">
-                            <connections>
-                                <action selector="doneAction" destination="oe0-Xg-vZM" id="WJH-ZW-Z71"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="tableView" destination="l9u-Fn-8ss" id="nfV-LO-ikb"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ohQ-v1-BMz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="977" y="-187"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="80M-c2-cJA">
             <objects>
@@ -142,12 +77,56 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="oe0-Xg-vZM" kind="relationship" relationship="rootViewController" id="z0B-I0-jfj"/>
+                        <segue destination="Q8X-4R-rQE" kind="relationship" relationship="rootViewController" id="0Vl-8T-lmC"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KNW-Wu-whi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="165" y="-187"/>
+        </scene>
+        <!--Operational Layers-->
+        <scene sceneID="lHi-54-2ft">
+            <objects>
+                <tableViewController id="Q8X-4R-rQE" customClass="MMLLayersViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4Ss-44-Xon">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="LayerCell" textLabel="ViE-pt-pLy" style="IBUITableViewCellStyleDefault" id="cPY-5u-lNR">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cPY-5u-lNR" id="c5L-bv-zRt">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ViE-pt-pLy">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Q8X-4R-rQE" id="iHt-Hh-Oa6"/>
+                            <outlet property="delegate" destination="Q8X-4R-rQE" id="CGk-cp-r31"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Operational Layers" id="mOD-w4-TEK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="LZE-Re-gw9">
+                            <connections>
+                                <action selector="doneAction" destination="Q8X-4R-rQE" id="H3f-pi-odL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vC0-E2-6EB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1071" y="-188"/>
         </scene>
     </scenes>
 </document>

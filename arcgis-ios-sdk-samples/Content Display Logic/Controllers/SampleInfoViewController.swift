@@ -55,7 +55,7 @@ class SampleInfoViewController: UIViewController {
                 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
                 <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover">
             </head>
-            </body>
+            <body>
                 <div id="preview" sd-model-to-html="text">
                     <div id="content">\(readmeContent)</div>
                 </div>

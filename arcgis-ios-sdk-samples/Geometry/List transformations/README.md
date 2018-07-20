@@ -25,7 +25,7 @@ When the user taps on a transformation in the list, the selected transformation 
 * AGSGeographicTransformationStep
 * AGSGeometryEngine.project
 
-## [Offline data](id:offline_data)
+## Offline data
 This sample can be used with or without provisioning projection engine data to your device.  If you do not provision data, a limited number of transformations will be available to you.
 
 To download projection engine data to your device:

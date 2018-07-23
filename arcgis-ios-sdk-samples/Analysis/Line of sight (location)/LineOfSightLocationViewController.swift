@@ -39,8 +39,6 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
             sceneView.analysisOverlays.add(analysisOverlay)
         }
     }
-
-    private let ELEVATION_SERVICE_URL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +53,7 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
         sceneView.scene = scene
 
         // initialize the elevation source with the service URL and add it to the base surface of the scene
-        let elevationSrc = AGSArcGISTiledElevationSource(url: ELEVATION_SERVICE_URL)
+        let elevationSrc = AGSArcGISTiledElevationSource(url: .worldElevationService)
         scene.baseSurface?.elevationSources.append(elevationSrc)
         
         // set the viewpoint specified by the camera position

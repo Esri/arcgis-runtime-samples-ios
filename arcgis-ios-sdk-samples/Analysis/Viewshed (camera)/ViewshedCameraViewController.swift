@@ -21,8 +21,6 @@ class ViewshedCameraViewController: UIViewController {
     
     private var viewshed: AGSLocationViewshed!
     
-    private let SCENE_LAYER_URL = URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0")!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,7 +44,7 @@ class ViewshedCameraViewController: UIViewController {
         scene.baseSurface?.elevationSources.append(elevationSrc)
         
         // initialize the scene layer with the scene layer URL and add it to the scene
-        let buildings = AGSArcGISSceneLayer(url: SCENE_LAYER_URL)
+        let buildings = AGSArcGISSceneLayer(url: .brestBuildingsService)
         scene.operationalLayers.add(buildings)
         
         // create a viewshed from the camera with minimum and maximum distance (in meters) from the observer (camera) at which visibility will be evaluated

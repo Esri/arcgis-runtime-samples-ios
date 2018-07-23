@@ -31,8 +31,6 @@ class ViewshedLocationViewController: UIViewController, AGSGeoViewTouchDelegate,
         }
     }
     
-    private let SCENE_LAYER_URL = URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0")!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,7 +52,7 @@ class ViewshedLocationViewController: UIViewController, AGSGeoViewTouchDelegate,
         scene.baseSurface?.elevationSources.append(elevationSrc)
         
         // initialize the scene layer with the scene layer URL and add it to the scene
-        let buildings = AGSArcGISSceneLayer(url: SCENE_LAYER_URL)
+        let buildings = AGSArcGISSceneLayer(url: .brestBuildingsService)
         scene.operationalLayers.add(buildings)
         
         // initialize a viewshed analysis object with arbitrary location (the location will be defined by the user), heading, pitch, view angles, and distance range (in meters) from which visibility is calculated from the observer location

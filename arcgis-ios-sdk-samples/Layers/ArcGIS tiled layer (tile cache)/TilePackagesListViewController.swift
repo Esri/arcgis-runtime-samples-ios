@@ -86,14 +86,13 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
     //MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var path = ""
-        if (indexPath as NSIndexPath).section == 0 {
-            path = self.bundleTPKPaths[indexPath.row]
+        let path: String
+        if indexPath.section == 0 {
+            path = bundleTPKPaths[indexPath.row]
+        } else {
+            path = documentTPKPaths[indexPath.row]
         }
-        else {
-            path = self.documentTPKPaths[indexPath.row]
-        }
-        self.delegate?.tilePackagesListViewController(self, didSelectTPKWithPath: path)
+        delegate?.tilePackagesListViewController(self, didSelectTPKWithPath: path)
     }
     
     func extractName(fromPath path:String) -> String {

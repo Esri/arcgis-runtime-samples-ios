@@ -41,7 +41,7 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
         scene.baseSurface = surface
 
         // add a scene layer
-        let buildings = AGSArcGISSceneLayer(url: URL(string:"http://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0")!)
+        let buildings = AGSArcGISSceneLayer(url: .brestBuildingsService)
         scene.operationalLayers.add(buildings)
 
         // create a graphics overlay for the tank

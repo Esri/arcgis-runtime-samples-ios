@@ -70,35 +70,50 @@ class ViewshedLocationViewController: UIViewController, AGSGeoViewTouchDelegate,
         sceneView.touchDelegate = self
     }
     
+    var settingsViewController: ViewshedSettingsVC?
+    
+    func makeSettingsViewController() -> ViewshedSettingsVC {
+        guard let viewController = storyboard?.instantiateViewController(withIdentifier: "ViewshedSettingsViewController") as? ViewshedSettingsVC else {
+            fatalError()
+        }
+        
+        viewController.delegate = self
+        viewController.modalPresentationStyle = .popover
+        
+        return viewController
+    }
+    
+    @IBAction func showSettings(_ sender: Any) {
+        let settingsViewController: ViewshedSettingsVC
+        if let viewController = self.settingsViewController {
+            settingsViewController = viewController
+        } else {
+            settingsViewController = makeSettingsViewController()
+            self.settingsViewController = settingsViewController
+        }
+        settingsViewController.preferredContentSize = {
+            let height: CGFloat
+            if traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular {
+                height = 340
+            } else {
+                height = 240
+            }
+            return CGSize(width: 375, height: height)
+        }()
+        settingsViewController.presentationController?.delegate = self
+        if let popoverPC = settingsViewController.popoverPresentationController {
+            popoverPC.barButtonItem = sender as? UIBarButtonItem
+            popoverPC.passthroughViews = [sceneView]
+        }
+        present(settingsViewController, animated: true)
+    }
+    
     // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         
         // for popover or non modal presentation
         return UIModalPresentationStyle.none
-    }
-    
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "settingsVCSegue" {
-            
-            // set viewshed settings view controller
-            let viewshedSettingsVC = segue.destination as! ViewshedSettingsVC
-            viewshedSettingsVC.delegate = self
-            
-            // pop over settings
-            viewshedSettingsVC.presentationController?.delegate = self
-            viewshedSettingsVC.popoverPresentationController?.passthroughViews = [sceneView]
-
-            // preferred content size
-            if traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular {
-                viewshedSettingsVC.preferredContentSize = CGSize(width: 375, height: 340)
-            }
-            else {
-                viewshedSettingsVC.preferredContentSize = CGSize(width: 375, height: 240)
-            }
-        }
     }
     
     // MARK: - AGSGeoViewTouchDelegate

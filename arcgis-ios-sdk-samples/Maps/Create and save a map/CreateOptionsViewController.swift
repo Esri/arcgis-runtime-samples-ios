@@ -56,11 +56,6 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
         self.tableView.reloadData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     //MARK: - table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -77,7 +72,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
         var cell:UITableViewCell
         
         if indexPath.section == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: "CreateBasemapCell")!
+            cell = tableView.dequeueReusableCell(withIdentifier: "CreateBasemapCell", for: indexPath)
             let basemap = self.basemaps[indexPath.row]
             cell.textLabel?.text = basemap.name
             
@@ -90,7 +85,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
             }
         }
         else {
-            cell = tableView.dequeueReusableCell(withIdentifier: "CreateLayerCell")!
+            cell = tableView.dequeueReusableCell(withIdentifier: "CreateLayerCell", for: indexPath)
             let layer = self.layers[indexPath.row]
             cell.textLabel?.text = layer.name
             //accessory view
@@ -141,7 +136,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBAction private func doneAction() {
         if self.selectedBasemapIndex == nil {
-            SVProgressHUD.showError(withStatus: "Please select at least a basemap", maskType: .gradient)
+            SVProgressHUD.showError(withStatus: "Please select at least a basemap")
             return
         }
 

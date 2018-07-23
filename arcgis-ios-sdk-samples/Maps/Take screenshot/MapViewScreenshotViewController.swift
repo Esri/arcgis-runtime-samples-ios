@@ -48,11 +48,6 @@ class MapViewScreenshotViewController: UIViewController {
         self.overlayImageView.layer.borderWidth = 2
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - Actions
     
     //hide the screenshot overlay view
@@ -73,7 +68,7 @@ class MapViewScreenshotViewController: UIViewController {
         //the method on map view we can use to get the screenshot image
         self.mapView.exportImage { [weak self] (image:UIImage?, error:Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             if let image = image {
                 //on completion imitate flash

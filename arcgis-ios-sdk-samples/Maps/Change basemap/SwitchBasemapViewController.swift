@@ -46,11 +46,6 @@ class SwitchBasemapViewController: UIViewController, UITableViewDataSource, UITa
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SwitchBasemapViewController"]
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func buttonAction(_ sender: Any) {
         self.blurView.isHidden = !self.blurView.isHidden
@@ -69,7 +64,7 @@ class SwitchBasemapViewController: UIViewController, UITableViewDataSource, UITa
     //MARK: - TableView delegates
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "basemapsCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "basemapsCell", for: indexPath)
         cell.backgroundColor = .clear
         
         cell.textLabel?.text = self.titles[indexPath.row]

@@ -88,11 +88,6 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             index = index + 1
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func samplesByNames<C: Collection>(_ names: C) -> [Category.Sample] where C.Element == String {
         return samples.filter { names.contains($0.name) }
@@ -190,7 +185,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
                 strongSelf.downloadProgressView.dismiss()
                 
                 if let error = error {
-                    SVProgressHUD.showError(withStatus: "Failed to download raster resource :: \(error.localizedDescription)", maskType: .gradient)
+                    SVProgressHUD.showError(withStatus: "Failed to download raster resource :: \(error.localizedDescription)")
                 }
                 else {
                     
@@ -297,7 +292,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             }
         }
         
-        SVProgressHUD.showError(withStatus: "No match found", maskType: .gradient)
+        SVProgressHUD.showError(withStatus: "No match found")
         
     }
     

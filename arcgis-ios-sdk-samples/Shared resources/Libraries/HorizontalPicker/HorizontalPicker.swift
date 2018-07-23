@@ -16,10 +16,8 @@
 
 import UIKit
 
-@objc
 protocol HorizontalPickerDelegate: class {
-    
-    @objc optional func horizontalPicker(_ horizontalPicker:HorizontalPicker, didUpdateSelectedIndex index: Int)
+    func horizontalPicker(_ horizontalPicker:HorizontalPicker, didUpdateSelectedIndex index: Int)
 }
 
 @IBDesignable
@@ -45,7 +43,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
             self.updateButtonsState()
             
             // Fire delegate
-            self.delegate?.horizontalPicker?(self, didUpdateSelectedIndex: selectedIndex)
+            self.delegate?.horizontalPicker(self, didUpdateSelectedIndex: selectedIndex)
         }
     }
     

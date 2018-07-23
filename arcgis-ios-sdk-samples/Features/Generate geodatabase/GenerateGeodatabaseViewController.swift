@@ -52,11 +52,6 @@ class GenerateGeodatabaseViewController: UIViewController {
         self.mapView.map = self.map
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func addFeatureLayers() {
         
         self.syncTask.load { [weak self] (error) -> Void in
@@ -117,7 +112,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                 
                 //kick off the job
                 weakSelf.generateJob.start(statusHandler: { (status: AGSJobStatus) -> Void in
-                    SVProgressHUD.show(withStatus: status.statusString(), maskType: SVProgressHUDMaskType.gradient)
+                    SVProgressHUD.show(withStatus: status.statusString())
                 }) { [weak self] (object: AnyObject?, error: Error?) -> Void in
                     if let error = error {
                         print(error)

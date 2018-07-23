@@ -34,11 +34,6 @@ class SanDiegoAddressesViewController: UITableViewController {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -51,7 +46,7 @@ class SanDiegoAddressesViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell", for: indexPath)
         cell.textLabel?.text = self.addresses[indexPath.row]
         cell.backgroundColor = .clear
         return cell

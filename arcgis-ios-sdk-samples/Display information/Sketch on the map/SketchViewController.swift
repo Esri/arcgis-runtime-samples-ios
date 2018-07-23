@@ -43,7 +43,7 @@ class SketchViewController: UIViewController {
         self.mapView.map = self.map
         self.mapView.interactionOptions.isMagnifierEnabled = true
         
-        NotificationCenter.default.addObserver(self, selector: #selector(SketchViewController.respondToGeomChanged), name: NSNotification.Name.AGSSketchEditorGeometryDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SketchViewController.respondToGeomChanged), name: .AGSSketchEditorGeometryDidChange, object: nil)
         
         //set initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -10049589.670344, yMin: 3480099.843772, xMax: -10010071.251113, yMax: 3512023.489701, spatialReference: AGSSpatialReference.webMercator()))
@@ -99,10 +99,5 @@ class SketchViewController: UIViewController {
     
     @IBAction func clear() {
         self.sketchEditor.clearGeometry()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

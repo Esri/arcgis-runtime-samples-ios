@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="57q-7x-wfZ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Geodesic Operations View Controller-->
+        <scene sceneID="2oJ-ab-k5R">
+            <objects>
+                <viewController id="57q-7x-wfZ" customClass="GeodesicOperationsViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZT6-wf-hy1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="89G-0k-TnW" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the map to set destination" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fp-qf-Go1">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59866391320000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="27a-E9-BKz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9fp-qf-Go1" firstAttribute="leading" secondItem="ZT6-wf-hy1" secondAttribute="leading" id="0uR-Uh-ysf"/>
+                            <constraint firstItem="89G-0k-TnW" firstAttribute="top" secondItem="ZT6-wf-hy1" secondAttribute="top" id="1Ze-pm-hIR"/>
+                            <constraint firstAttribute="bottom" secondItem="89G-0k-TnW" secondAttribute="bottom" id="26q-Kk-egZ"/>
+                            <constraint firstItem="9fp-qf-Go1" firstAttribute="top" secondItem="N6K-Wu-hSN" secondAttribute="top" id="L6h-l9-RE1"/>
+                            <constraint firstAttribute="trailing" secondItem="89G-0k-TnW" secondAttribute="trailing" id="RwU-Jz-Ehn"/>
+                            <constraint firstItem="89G-0k-TnW" firstAttribute="leading" secondItem="ZT6-wf-hy1" secondAttribute="leading" id="ZWk-zI-Jf0"/>
+                            <constraint firstItem="89G-0k-TnW" firstAttribute="top" secondItem="N6K-Wu-hSN" secondAttribute="top" id="jJk-Qg-xOH"/>
+                            <constraint firstAttribute="trailing" secondItem="9fp-qf-Go1" secondAttribute="trailing" id="oLc-bg-8hQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="N6K-Wu-hSN"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1Ze-pm-hIR"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="89G-0k-TnW" id="8QX-L8-y9t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hkY-Ko-Wpr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-185" y="38"/>
+        </scene>
+    </scenes>
+</document>

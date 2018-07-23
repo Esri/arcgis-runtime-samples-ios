@@ -81,8 +81,10 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         
         //logic to show the extent search button
         self.mapView.viewpointChangedHandler = { [weak self] () -> Void in
-            if self?.canDoExtentSearch ?? false {
-                self?.extentSearchButton.isHidden = false
+            DispatchQueue.main.async {
+                if self?.canDoExtentSearch ?? false {
+                    self?.extentSearchButton.isHidden = false
+                }
             }
         }
         
@@ -100,16 +102,11 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.overlayView.isHidden = true
         
         //register for keyboard notification in order to toggle overlay view on and off
-        NotificationCenter.default.addObserver(self, selector: #selector(FindPlaceViewController.showOverlayView), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(FindPlaceViewController.hideOverlayView), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FindPlaceViewController.showOverlayView), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FindPlaceViewController.hideOverlayView), name: .UIKeyboardWillHide, object: nil)
         
         //add the left view images for both the textfields
         self.setupTextFieldLeftViews()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //method to show search icon and pin icon for the textfields
@@ -233,7 +230,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestCell", for: indexPath)
         let isLocationTextField = (self.selectedTextField == self.preferredSearchLocationTextField)
         
         if isLocationTextField && indexPath.row == 0 {

@@ -49,11 +49,6 @@ class OpenExistingMapViewController: UIViewController, UITableViewDataSource, UI
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OpenExistingMapViewController"]
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - Actions
     
     @IBAction private func mapsAction() {
@@ -74,7 +69,7 @@ class OpenExistingMapViewController: UIViewController, UITableViewDataSource, UI
     //MARK: - TableView delegates
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExistingMapCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExistingMapCell", for: indexPath)
         cell.backgroundColor = .clear
         
         cell.textLabel?.text = self.titles[indexPath.row]

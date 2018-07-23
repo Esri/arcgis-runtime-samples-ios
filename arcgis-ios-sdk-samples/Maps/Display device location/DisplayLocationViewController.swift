@@ -47,22 +47,10 @@ class DisplayLocationViewController: UIViewController, CustomContextSheetDelegat
         //if the user pans the map in Navigation mode, the autoPanMode will automatically change to Off mode
         //in order to reflect those changes on the context sheet listen to the autoPanModeChangedHandler
         self.mapView.locationDisplay.autoPanModeChangedHandler = { [weak self] (autoPanMode:AGSLocationDisplayAutoPanMode) in
-            switch autoPanMode {
-            case .off:
-                self?.sheet.selectedIndex = 1
-            case .recenter:
-                self?.sheet.selectedIndex = 2
-            case .navigation:
-                self?.sheet.selectedIndex = 3
-            case .compassNavigation:
-                self?.sheet.selectedIndex = 4
+            DispatchQueue.main.async {
+                self?.sheet.selectedIndex = autoPanMode.rawValue + 1
             }
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     //MARK: - CustomContextSheetDelegate
@@ -90,7 +78,7 @@ class DisplayLocationViewController: UIViewController, CustomContextSheetDelegat
         self.mapView.locationDisplay.autoPanMode = autoPanMode
         self.mapView.locationDisplay.start { (error:Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
                 
                 //update context sheet to Stop
                 self.sheet.selectedIndex = 0

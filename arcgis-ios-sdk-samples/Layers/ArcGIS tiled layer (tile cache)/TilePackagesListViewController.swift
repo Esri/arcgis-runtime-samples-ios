@@ -35,11 +35,6 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
         self.fetchTilePackages()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func fetchTilePackages() {
         self.bundleTPKPaths = Bundle.main.paths(forResourcesOfType: "tpk", inDirectory: nil)
         self.tableView.reloadData()
@@ -72,7 +67,7 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TilePackageCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TilePackageCell", for: indexPath)
         
         if indexPath.section == 0 {
             cell.textLabel?.text = self.extractName(fromPath: self.bundleTPKPaths[indexPath.row])

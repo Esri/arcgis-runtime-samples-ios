@@ -72,23 +72,18 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         self.saveAsBlurView.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     private func showSuccess() {
         let alertController = UIAlertController(title: "Saved successfully", message: nil, preferredStyle: UIAlertControllerStyle.alert)
         
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { [weak self] (action:UIAlertAction!) -> Void in
+        let okAction = UIAlertAction(title: "Ok", style: .cancel) { [weak self] _ in
             self?.dismiss(animated: true, completion: nil)
-            })
+        }
         
-        let openAction = UIAlertAction(title: "Open in Safari", style: UIAlertActionStyle.default, handler: { [weak self] (action:UIAlertAction!) -> Void in
+        let openAction = UIAlertAction(title: "Open in Safari", style: .default) { [weak self] _ in
             if let weakSelf = self {
                 UIApplication.shared.open(URL(string: "\(weakSelf.webmapURL)\(weakSelf.mapView.map!.item!.itemID)")!, options: [:])
             }
-        })
+        }
         
         alertController.addAction(okAction)
         alertController.addAction(openAction)
@@ -177,8 +172,8 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     
     //MARK: - SaveAsVCDelegate
     
-    func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String?) {
-        SVProgressHUD.show(withStatus: "Saving", maskType: .gradient)
+    func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String) {
+        SVProgressHUD.show(withStatus: "Saving")
         //set the initial viewpoint from map view
         self.mapView.map?.initialViewpoint = self.mapView.currentViewpoint(with: AGSViewpointType.centerAndScale)
         
@@ -189,18 +184,17 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
                 //also to cut on the size
                 let croppedImage:UIImage? = image?.croppedImage(CGSize(width: 200, height: 200))
                 
-                weakSelf.mapView.map?.save(as: title, portal: weakSelf.portal!, tags: tags, folder: nil, itemDescription: itemDescription!, thumbnail: croppedImage, forceSaveToSupportedVersion: true, completion: { [weak self] (error) -> Void in
-                    
+                weakSelf.mapView.map?.save(as: title, portal: weakSelf.portal!, tags: tags, folder: nil, itemDescription: itemDescription, thumbnail: croppedImage, forceSaveToSupportedVersion: true) { [weak self] (error) -> Void in
                     //dismiss progress hud
                     SVProgressHUD.dismiss()
                     if let error = error {
-                        SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                        SVProgressHUD.showError(withStatus: error.localizedDescription)
                     }
                     else {
                         self?.showSuccess()
                     }
                     weakSelf.saveAsVC.resetInputFields()
-                })
+                }
             }
         }
         

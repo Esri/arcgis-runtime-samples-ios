@@ -73,11 +73,6 @@ class FeatureLayerExtrusionViewController: UIViewController {
             renderer?.sceneProperties?.extrusionExpression = ""
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 }
 

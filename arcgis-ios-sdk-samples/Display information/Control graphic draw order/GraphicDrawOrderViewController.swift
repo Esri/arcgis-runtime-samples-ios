@@ -56,11 +56,6 @@ class GraphicDrawOrderViewController: UIViewController {
         self.map.maxScale = mapScale
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     private func addGraphics() {
         //starting x and y
         let x:Double = -13149000

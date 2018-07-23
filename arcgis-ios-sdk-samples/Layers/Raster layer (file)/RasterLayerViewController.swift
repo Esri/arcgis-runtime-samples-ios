@@ -50,7 +50,7 @@ class RasterLayerViewController: UIViewController {
         self.rasterLayer.load { [weak self] (error) in
             
             guard error == nil else {
-                SVProgressHUD.show(withStatus: error!.localizedDescription, maskType: .gradient)
+                SVProgressHUD.show(withStatus: error!.localizedDescription)
                 return
             }
             
@@ -58,10 +58,5 @@ class RasterLayerViewController: UIViewController {
                 self?.mapView.setViewpoint(AGSViewpoint(center: center, scale: 80000))
             }
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

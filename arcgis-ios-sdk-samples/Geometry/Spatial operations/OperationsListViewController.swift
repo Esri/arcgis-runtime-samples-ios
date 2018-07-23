@@ -34,7 +34,7 @@ class OperationsListViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "OperationCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OperationCell", for: indexPath)
         
         cell.textLabel?.text = self.operations[indexPath.row]
         cell.backgroundColor = .clear

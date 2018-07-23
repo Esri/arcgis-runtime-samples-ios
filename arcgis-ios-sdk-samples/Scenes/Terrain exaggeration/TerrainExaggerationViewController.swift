@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class ViewController: UIViewController {
+class TerrainExaggerationViewController: UIViewController {
 
     @IBOutlet weak var exaggerationValue: UILabel!
     @IBOutlet weak var exaggerationSlider: UISlider!
@@ -51,11 +51,6 @@ class ViewController: UIViewController {
         exaggerationSlider.maximumValue = 10
         exaggerationSlider.isContinuous = true
         exaggerationSlider.value = 1
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func sliderValueChanged(_ sender: UISlider) {

@@ -53,11 +53,6 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         self.mapView.setViewpointCenter(AGSPoint(x: -11e6, y: 5e6, spatialReference: AGSSpatialReference.webMercator()), scale: 9e7, completion: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func queryForState(_ state:String) {
         //un select if any features already selected
         if self.selectedFeatures.count > 0 {
@@ -80,7 +75,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
                     self?.mapView.setViewpointGeometry(features[0].geometry!, padding: 80, completion: nil)
                 }
                 else {
-                    SVProgressHUD.showError(withStatus: "No state by that name", maskType: .gradient)
+                    SVProgressHUD.showError(withStatus: "No state by that name")
                 }
                 //update selected features array
                 self?.selectedFeatures = features 

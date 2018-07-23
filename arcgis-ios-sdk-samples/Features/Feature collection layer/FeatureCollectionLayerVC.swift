@@ -38,11 +38,6 @@ class FeatureCollectionLayerVC: UIViewController {
         
         self.addFeatureCollectionLayer()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     private func addFeatureCollectionLayer() {
         //feature collection table for point, polyline and polygon

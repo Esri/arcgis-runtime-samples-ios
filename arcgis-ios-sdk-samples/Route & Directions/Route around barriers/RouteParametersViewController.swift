@@ -29,11 +29,6 @@ class RouteParametersViewController: UIViewController {
 
         self.setupUI()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func setupUI() {
         if self.routeParameters != nil {

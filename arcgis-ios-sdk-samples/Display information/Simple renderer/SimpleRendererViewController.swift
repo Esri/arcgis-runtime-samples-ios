@@ -41,12 +41,6 @@ class SimpleRendererViewController: UIViewController {
         self.addSimpleRenderer()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
     private func addGraphics() {
         
         //Create points to add graphics to the map to allow a renderer to style them

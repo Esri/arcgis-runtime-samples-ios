@@ -34,11 +34,6 @@ class VectorStylesViewController: UIViewController, UITableViewDataSource, UITab
         self.view.layer.cornerRadius = 10
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,7 +42,7 @@ class VectorStylesViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = "Cell\(indexPath.row)"
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier)!
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         
         cell.backgroundColor = .clear
         return cell

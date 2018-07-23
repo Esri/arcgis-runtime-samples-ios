@@ -64,7 +64,7 @@ class RelatedFeaturesListVC: UIViewController, UITableViewDataSource, UITableVie
         let displayFieldName = result.relatedTable!.layerInfo!.displayFieldName
         let displayFieldValue = feature.attributes[displayFieldName]!
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RelatedFeatureCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RelatedFeatureCell", for: indexPath)
         
         cell.textLabel?.text = "\(displayFieldValue)"
         
@@ -73,11 +73,6 @@ class RelatedFeaturesListVC: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = .white
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }

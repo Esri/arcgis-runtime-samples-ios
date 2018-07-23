@@ -30,11 +30,6 @@ class BookmarksListViewController: UIViewController, UITableViewDataSource, UITa
     
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //executed for tableview row selection
     func setSelectAction(_ action : @escaping ((AGSViewpoint) -> Void)) {
         self.selectAction = action
@@ -53,7 +48,7 @@ class BookmarksListViewController: UIViewController, UITableViewDataSource, UITa
     //MARK: - TableView delegates
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BookmarkCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BookmarkCell", for: indexPath)
         cell.backgroundColor = .clear
         //get the respective bookmark
         let bookmark = self.bookmarks[indexPath.row]

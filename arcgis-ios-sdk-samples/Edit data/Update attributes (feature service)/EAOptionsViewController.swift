@@ -31,11 +31,6 @@ class EAOptionsViewController: UIViewController, UITableViewDataSource, UITableV
         // Do any additional setup after loading the view.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK:- Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -49,7 +44,7 @@ class EAOptionsViewController: UIViewController, UITableViewDataSource, UITableV
     //MARK: - Table view delegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EAOptionsCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EAOptionsCell", for: indexPath)
         
         cell.textLabel?.text = self.options[indexPath.row]
         

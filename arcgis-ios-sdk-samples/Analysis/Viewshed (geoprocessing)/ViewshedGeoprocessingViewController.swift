@@ -53,11 +53,6 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
         
         self.geoprocessingTask = AGSGeoprocessingTask(url: URL(string: viewshedURLString)!)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     private func addGraphicForPoint(_ point: AGSPoint) {
         //remove existing graphics
@@ -92,14 +87,14 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
         newFeature.geometry = point
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Adding Feature", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Adding Feature")
         
         //add the new feature to the feature collection table
         featureCollectionTable.add(newFeature) { [weak self] (error: Error?) in
             
             if let error = error {
                 //show error
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 //dismiss progress hud
@@ -127,13 +122,13 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
         self.geoprocessingJob.start(statusHandler: { (status: AGSJobStatus) in
             
             //show progress hud with job status
-            SVProgressHUD.show(withStatus: status.statusString(), maskType: .gradient)
+            SVProgressHUD.show(withStatus: status.statusString())
             
         }, completion: { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
             
             if let error = error {
                 if (error as NSError).code != NSUserCancelledError { //if not cancelled
-                    SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                    SVProgressHUD.showError(withStatus: error.localizedDescription)
                 }
             }
             else {

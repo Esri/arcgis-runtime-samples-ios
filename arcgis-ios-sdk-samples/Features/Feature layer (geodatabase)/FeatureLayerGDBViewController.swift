@@ -39,7 +39,7 @@ class FeatureLayerGDBViewController: UIViewController {
         //load the geodatabase for feature tables
         self.geodatabase.load { [weak self] (error: Error?) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             else {
                 let featureTable = self!.geodatabase.geodatabaseFeatureTable(withName: "Trailheads")!
@@ -50,11 +50,6 @@ class FeatureLayerGDBViewController: UIViewController {
         
         //assign map to the map view
         self.mapView.map = map
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }

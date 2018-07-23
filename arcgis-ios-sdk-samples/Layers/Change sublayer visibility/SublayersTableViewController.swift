@@ -25,11 +25,6 @@ class SublayersTableViewController: UITableViewController {
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,7 +37,7 @@ class SublayersTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SublayerCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SublayerCell", for: indexPath)
         cell.backgroundColor = .clear
         
         let sublayer = self.sublayers[indexPath.row] as! AGSArcGISMapImageSublayer

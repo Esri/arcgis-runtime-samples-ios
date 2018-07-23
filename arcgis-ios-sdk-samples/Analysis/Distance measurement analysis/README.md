@@ -10,6 +10,7 @@ Choose a unit system for the measurement in the segmented control. Long press an
 
 ## How it works
 To measure distances with the `AGSLocationDistanceMeasurement` analysis:
+
 1. Create an `AGSAnalysisOverlay` and add it to your scene view's analysis overlay collection: `sceneView.analysisOverlays.add(analysisOverlay)`.
 2. Create a `AGSLocationDistanceMeasurement`, specifying the `startLocation` and `endLocation`. These can be the same point to start with. Add the analysis to the analysis overlay: `analysisOverlay.analyses.add(locationDistanceMeasurement)`. The measuring line will be drawn for you between the two points.
 3. The `measurementChangedHandler` callback will fire if the distances change. You can get the new values for the `directDistance`, `horizontalDistance`, and `verticalDistance` from the parameters provided by the callback. The distance objects contain both the scalar value and unit of measurement.

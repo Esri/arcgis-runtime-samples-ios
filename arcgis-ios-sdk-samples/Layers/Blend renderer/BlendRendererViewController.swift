@@ -44,11 +44,6 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
         self.mapView.map = self.map
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     private func generateBlendRenderer(altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) -> AGSBlendRenderer {
         
         //create the raster to be used as elevation raster

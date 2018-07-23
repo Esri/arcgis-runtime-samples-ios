@@ -48,11 +48,6 @@ class HotspotSettingsViewController: UIViewController, UITextFieldDelegate {
         tapGestureRecognizer.numberOfTouchesRequired = 1
         self.view.addGestureRecognizer(tapGestureRecognizer)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     //MARK: - Actions
     
@@ -71,7 +66,7 @@ class HotspotSettingsViewController: UIViewController, UITextFieldDelegate {
             self.delegate?.hotspotSettingsViewController(self, didSelectDates: self.fromTextField.text!, toDate: self.toTextField.text!)
         }
         else {
-            SVProgressHUD.showError(withStatus: "Both dates are required", maskType: .gradient)
+            SVProgressHUD.showError(withStatus: "Both dates are required")
         }
     }
     

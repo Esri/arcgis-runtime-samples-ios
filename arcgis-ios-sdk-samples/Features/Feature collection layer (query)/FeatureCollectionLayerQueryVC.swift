@@ -44,14 +44,14 @@ class FeatureCollectionLayerQueryVC: UIViewController {
         queryParams.whereClause = "1=1"
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Querying", maskType: .gradient)
+        SVProgressHUD.show(withStatus: "Querying")
         
         //query feature from the table
         self.featureTable.queryFeatures(with: queryParams) { [weak self] (queryResult: AGSFeatureQueryResult?, error: Error?) in
             
             if let error = error {
                 //show error
-                SVProgressHUD.show(withStatus: error.localizedDescription, maskType: .gradient)
+                SVProgressHUD.show(withStatus: error.localizedDescription)
             }
             else {
                 //hide progress hud
@@ -70,11 +70,6 @@ class FeatureCollectionLayerQueryVC: UIViewController {
                 self?.mapView.map?.operationalLayers.add(featureCollectionLayer)
             }
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }

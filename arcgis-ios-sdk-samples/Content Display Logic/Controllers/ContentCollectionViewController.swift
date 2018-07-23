@@ -54,11 +54,6 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         self.hideSuggestions()
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     //MARK: - Suggestions related
     
@@ -199,7 +194,7 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
             }
         }
         
-        SVProgressHUD.showError(withStatus: "No match found", maskType: .gradient)
+        SVProgressHUD.showError(withStatus: "No match found")
     }
     
     func customSearchHeaderViewWillHideSuggestions(_ customSearchHeaderView: CustomSearchHeaderView) {

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KbO-TU-eue">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Spatial Relationships View Controller-->
+        <scene sceneID="JCF-Qc-UmF">
+            <objects>
+                <viewController id="KbO-TU-eue" customClass="SpatialRelationshipsViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tWE-tE-PmT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEh-wK-J5c" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the map to select the graphic" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jcu-ZS-x53">
+                                <rect key="frame" x="0.0" y="20" width="375" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59866391320000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="RvN-If-0Pr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="eEh-wK-J5c" secondAttribute="trailing" id="072-3c-Vt2"/>
+                            <constraint firstItem="Jcu-ZS-x53" firstAttribute="leading" secondItem="eEh-wK-J5c" secondAttribute="leading" id="3a8-fB-uUP"/>
+                            <constraint firstItem="eEh-wK-J5c" firstAttribute="top" secondItem="sUj-8I-cOJ" secondAttribute="top" id="4du-cW-LhX"/>
+                            <constraint firstItem="Jcu-ZS-x53" firstAttribute="top" secondItem="sUj-8I-cOJ" secondAttribute="top" id="l0F-1f-E3P"/>
+                            <constraint firstItem="eEh-wK-J5c" firstAttribute="bottom" secondItem="tWE-tE-PmT" secondAttribute="bottom" id="nou-MR-DwM"/>
+                            <constraint firstItem="Jcu-ZS-x53" firstAttribute="trailing" secondItem="eEh-wK-J5c" secondAttribute="trailing" id="v9J-9M-lZy"/>
+                            <constraint firstItem="eEh-wK-J5c" firstAttribute="leading" secondItem="tWE-tE-PmT" secondAttribute="leading" id="vZ9-dP-KIO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sUj-8I-cOJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="eEh-wK-J5c" id="Ljx-TH-cvY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VKe-Qx-2S1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="29.600000000000001" y="-48.125937031484263"/>
+        </scene>
+    </scenes>
+</document>

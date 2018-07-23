@@ -861,6 +861,14 @@
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to cut a geometry with a polyline using the GeometryEngine. For example, you may want to subdivide a large parcel polygon into several smaller parcels.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Spatial relationships</string>
+				<key>storyboardName</key>
+				<string>SpatialRelationships</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to use the AGSGeometryEngine to evaluate the spatial relationships between geometries.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1126,6 +1134,14 @@
 				<string>FeatureLayerExtrusion</string>
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to apply extrusion to a renderer on a feature layer</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Scene layer selection</string>
+				<key>storyboardName</key>
+				<string>SceneLayerSelection</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to identify geoelements in a scene layer.</string>
 			</dict>
 		</array>
 	</dict>

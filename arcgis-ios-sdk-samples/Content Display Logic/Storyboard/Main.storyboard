@@ -404,7 +404,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MfE-3m-v2G" userLabel="Info Container View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
                                 <connections>
                                     <segue destination="NMd-B8-rJ5" kind="embed" identifier="SampleInfoSegue" id="c6m-uQ-Kz4"/>
                                 </connections>
@@ -412,7 +412,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="MfE-3m-v2G" firstAttribute="top" secondItem="rXs-h5-bEr" secondAttribute="top" id="CwL-cC-IdS"/>
+                            <constraint firstItem="MfE-3m-v2G" firstAttribute="top" secondItem="Asf-ux-BYr" secondAttribute="top" id="CwL-cC-IdS"/>
                             <constraint firstItem="z5R-Ku-rtU" firstAttribute="trailing" secondItem="rXs-h5-bEr" secondAttribute="trailing" id="Io8-c8-jLg"/>
                             <constraint firstItem="MfE-3m-v2G" firstAttribute="bottom" secondItem="rXs-h5-bEr" secondAttribute="bottom" id="NK3-OW-3OG"/>
                             <constraint firstItem="MfE-3m-v2G" firstAttribute="trailing" secondItem="rXs-h5-bEr" secondAttribute="trailing" id="W1c-PG-j3x"/>
@@ -453,26 +453,11 @@
             <objects>
                 <viewController id="NMd-B8-rJ5" customClass="SampleInfoViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p2z-Do-b04">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UBF-3I-2fp">
-                                <rect key="frame" x="0.0" y="44" width="375" height="788"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="UBF-3I-2fp" firstAttribute="leading" secondItem="RfT-xO-g6f" secondAttribute="leading" id="8nK-xo-tnf"/>
-                            <constraint firstItem="RfT-xO-g6f" firstAttribute="trailing" secondItem="UBF-3I-2fp" secondAttribute="trailing" id="Zjf-7I-hgX"/>
-                            <constraint firstItem="UBF-3I-2fp" firstAttribute="bottom" secondItem="p2z-Do-b04" secondAttribute="bottom" constant="20" id="x05-tx-9JH"/>
-                            <constraint firstItem="UBF-3I-2fp" firstAttribute="top" secondItem="RfT-xO-g6f" secondAttribute="top" id="y0p-zI-1ox"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="RfT-xO-g6f"/>
                     </view>
-                    <connections>
-                        <outlet property="webView" destination="UBF-3I-2fp" id="asG-pz-dyI"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BNK-Yk-cxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

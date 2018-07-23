@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class TerrainExaggerationViewController: UIViewController {
+class ViewController: UIViewController {
 
     @IBOutlet weak var exaggerationValue: UILabel!
     @IBOutlet weak var exaggerationSlider: UISlider!

@@ -59,19 +59,15 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
         let cssPath = Bundle.main.path(forResource: "xcode", ofType: "css") ?? ""
         let jsPath = Bundle.main.path(forResource: "highlight.pack", ofType: "js") ?? ""
         let scale  = UIDevice.current.userInterfaceIdiom == .phone ? "0.5" : "1.0"
-        let stringForHTML = """
-            <html>
-            <head>
-                <meta name='viewport' content='width=device-width, initial-scale='\(scale)'/>
-                <link rel="stylesheet" href="\(cssPath)">
-                <script src="\(jsPath)"></script>
-                <script>hljs.initHighlightingOnLoad();</script>
-            </head>
-            <body>
-                <pre><code class="Swift">\(content)</code></pre>
-            </body>
-            </html>
-            """
+        let stringForHTML = "<html> <head>" +
+            "<meta name='viewport' content='width=device-width, initial-scale='\(scale)'/> " +
+            "<link rel=\"stylesheet\" href=\"\(cssPath)\">" +
+            "<script src=\"\(jsPath)\"></script>" +
+            "<script>hljs.initHighlightingOnLoad();</script> </head> <body>" +
+            "<pre><code class=\"Swift\">\(content)</code></pre>" +
+            "</body> </html>"
+//        println(stringForHTML)
+        // style=\"white-space:initial;\"
         return stringForHTML
     }
     

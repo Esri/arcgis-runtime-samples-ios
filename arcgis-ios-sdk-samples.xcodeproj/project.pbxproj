@@ -493,7 +493,6 @@
 		940A73F420E588C200A06C80 /* CutGeometry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940A73F320E588C200A06C80 /* CutGeometry.storyboard */; };
 		940A73F620E589AB00A06C80 /* CutGeometryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
 		940A73F720E6BF3F00A06C80 /* CutGeometryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
-		971F5A1720FFC3DC00BD0E36 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4CF50A8520EE97BC00EBE4B2 /* ArcGIS.bundle */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
 		D90407941FD8608A00BFE07B /* RasterLayerGPKGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */; };
 		D90407951FD8608A00BFE07B /* RasterLayerGPKG.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90407931FD8608A00BFE07B /* RasterLayerGPKG.storyboard */; };
@@ -3139,7 +3138,6 @@
 				21D919941FE1F368006EA79A /* ExpandableTableViewController.storyboard in Resources */,
 				3E41DD791B9F609500DA11CC /* DeleteFeatures.storyboard in Resources */,
 				3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */,
-				971F5A1720FFC3DC00BD0E36 /* ArcGIS.bundle in Resources */,
 				F4159C6B209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard in Resources */,
 				D97B7E591FD9BFE700E1239D /* Subdivisions.shx in Resources */,
 				D97B7E691FD9BFE700E1239D /* Subdivisions.shp.xml in Resources */,

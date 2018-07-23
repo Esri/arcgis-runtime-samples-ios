@@ -31,7 +31,6 @@ class ViewshedLocationViewController: UIViewController, AGSGeoViewTouchDelegate,
         }
     }
     
-    private let ELEVATION_SERVICE_URL = URL(string: "https://scene.arcgis.com/arcgis/rest/services/BREST_DTM_1M/ImageServer")!
     private let SCENE_LAYER_URL = URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0")!
     
     override func viewDidLoad() {
@@ -51,7 +50,7 @@ class ViewshedLocationViewController: UIViewController, AGSGeoViewTouchDelegate,
         sceneView.setViewpointCamera(camera)
         
         // initialize the elevation source with the service URL and add it to the base surface of the scene
-        let elevationSrc = AGSArcGISTiledElevationSource(url: ELEVATION_SERVICE_URL)
+        let elevationSrc = AGSArcGISTiledElevationSource(url: .brestElevationService)
         scene.baseSurface?.elevationSources.append(elevationSrc)
         
         // initialize the scene layer with the scene layer URL and add it to the scene

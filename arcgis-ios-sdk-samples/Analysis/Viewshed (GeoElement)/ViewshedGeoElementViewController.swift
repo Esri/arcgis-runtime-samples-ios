@@ -36,7 +36,7 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
         
         // add base surface for elevation data
         let surface = AGSSurface()
-        let elevationSource = AGSArcGISTiledElevationSource(url: URL(string: "http://scene.arcgis.com/arcgis/rest/services/BREST_DTM_1M/ImageServer")!)
+        let elevationSource = AGSArcGISTiledElevationSource(url: .brestElevationService)
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
 

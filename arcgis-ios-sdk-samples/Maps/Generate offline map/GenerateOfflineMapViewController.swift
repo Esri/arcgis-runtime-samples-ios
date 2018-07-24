@@ -133,7 +133,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         self.generateOfflineMapJob = self.offlineMapTask.generateOfflineMapJob(with: self.parameters, downloadDirectory: URL(string: fullPath)!)
         
         //add observer for progress
-        self.generateOfflineMapJob.progress.addObserver(self, forKeyPath: "fractionCompleted", options: .new, context: nil)
+        self.generateOfflineMapJob.progress.addObserver(self, forKeyPath: #keyPath(Progress.fractionCompleted), options: .new, context: nil)
         
         //unhide the progress parent view
         self.progressParentView.isHidden = false
@@ -146,7 +146,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             }
             
             //remove KVO observer
-            strongSelf.generateOfflineMapJob.progress.removeObserver(strongSelf, forKeyPath: "fractionCompleted")
+            strongSelf.generateOfflineMapJob.progress.removeObserver(strongSelf, forKeyPath: #keyPath(Progress.fractionCompleted))
             
             if let error = error {
                 
@@ -251,7 +251,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         
         if !isCancelled && !isCompleted {
             //remove observer
-            self.generateOfflineMapJob?.progress.removeObserver(self, forKeyPath: "fractionCompleted")
+            self.generateOfflineMapJob?.progress.removeObserver(self, forKeyPath: #keyPath(Progress.fractionCompleted))
         }
     }
 }

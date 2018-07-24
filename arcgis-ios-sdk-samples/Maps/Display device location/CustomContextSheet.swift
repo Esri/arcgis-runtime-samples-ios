@@ -309,7 +309,7 @@ class CustomContextSheet: UIView {
     
     private func maskLayerAnimation(_ fill:Bool) -> CABasicAnimation {
         
-        let animation = CABasicAnimation(keyPath: "transform")
+        let animation = CABasicAnimation(keyPath: #keyPath(CALayer.transform))
         animation.duration = self.animationDuration
         if fill {
             animation.fromValue = NSValue(caTransform3D: CATransform3DMakeScale(0.0001, 0.0001, 0.0001))

@@ -213,7 +213,7 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         }()
     
     fileprivate lazy var pathAnimation: CABasicAnimation = {
-        var anim = CABasicAnimation(keyPath: "path")
+        var anim = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.path))
         anim.duration = 1.0
         anim.fromValue = self.fromPath
         anim.toValue = self.toPath
@@ -224,7 +224,7 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         }()
     
     fileprivate lazy var opacityAnimation: CABasicAnimation = {
-        var anim2 = CABasicAnimation(keyPath: "opacity")
+        var anim2 = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.opacity))
         anim2.duration = self.pingDuration
         anim2.fromValue = 1.0
         anim2.toValue = 0.0

@@ -544,6 +544,8 @@
 		D9EE379920E2CC7700BF8AD1 /* dolmus.3ds in Resources */ = {isa = PBXBuildFile; fileRef = D9EE379420E2CC7700BF8AD1 /* dolmus.3ds */; settings = {ASSET_TAGS = (Dolmus3DModel, ); }; };
 		D9EE379A20E2CC7700BF8AD1 /* dolmus_side.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D9EE379520E2CC7700BF8AD1 /* dolmus_side.jpeg */; settings = {ASSET_TAGS = (Dolmus3DModel, ); }; };
 		D9EE379B20E2DC5800BF8AD1 /* LineOfSightGeoElementViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9CDD48620E2BB8B00E8BA02 /* LineOfSightGeoElementViewController.swift */; };
+		E4477CBE20EC0CCD004E14F9 /* ListTransformationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4477CBD20EC0CCD004E14F9 /* ListTransformationsViewController.swift */; };
+		E4477CC020EC0CE0004E14F9 /* ListTransformations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4477CBF20EC0CE0004E14F9 /* ListTransformations.storyboard */; };
 		D9F479C120F3E56F00044479 /* FeatureLayerShapefileViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9E2E75220EEAC0D001D0AE0 /* FeatureLayerShapefileViewController.swift */; };
 		E45991A01EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E459919B1EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard */; };
 		E45991A11EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */; };
@@ -554,6 +556,7 @@
 		E45991A61EF31DE40089E9FD /* WebMapCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E459919D1EF3021D0089E9FD /* WebMapCell.swift */; };
 		E45991A71EF31DE40089E9FD /* WebMapsCollectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E459919E1EF3021D0089E9FD /* WebMapsCollectionViewController.swift */; };
 		E45991A81EF31DE40089E9FD /* WebMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E459919F1EF3021D0089E9FD /* WebMapViewController.swift */; };
+		E476AB0120F69FCA00BCE59F /* ListTransformationsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E4477CBD20EC0CCD004E14F9 /* ListTransformationsViewController.swift */; };
 		E4A0BD8B1EE9E5D300CDE436 /* DistanceCompositeSymbolViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */; };
 		E4B2E2651FE31E5200E610FF /* bradle.3ds in Resources */ = {isa = PBXBuildFile; fileRef = E4B2E2631FE31E5100E610FF /* bradle.3ds */; settings = {ASSET_TAGS = (Bradley3DModel, ); }; };
 		E4B2E2661FE31E5200E610FF /* tank1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4B2E2641FE31E5100E610FF /* tank1.jpg */; settings = {ASSET_TAGS = (Bradley3DModel, ); }; };
@@ -577,6 +580,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				E476AB0120F69FCA00BCE59F /* ListTransformationsViewController.swift in CopyFiles */,
 				215E23D72102473E001DE092 /* SpatialRelationshipsViewController.swift in CopyFiles */,
 				D9F479C120F3E56F00044479 /* FeatureLayerShapefileViewController.swift in CopyFiles */,
 				124FAF3620E6C6E900F96548 /* GeodesicOperationsViewController.swift in CopyFiles */,
@@ -1137,6 +1141,8 @@
 		D9EE379320E2CC7600BF8AD1 /* tire_tread.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tire_tread.jpeg; sourceTree = "<group>"; };
 		D9EE379420E2CC7700BF8AD1 /* dolmus.3ds */ = {isa = PBXFileReference; lastKnownFileType = file; path = dolmus.3ds; sourceTree = "<group>"; };
 		D9EE379520E2CC7700BF8AD1 /* dolmus_side.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dolmus_side.jpeg; sourceTree = "<group>"; };
+		E4477CBD20EC0CCD004E14F9 /* ListTransformationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTransformationsViewController.swift; sourceTree = "<group>"; };
+		E4477CBF20EC0CE0004E14F9 /* ListTransformations.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListTransformations.storyboard; sourceTree = "<group>"; };
 		E459919B1EF3021D0089E9FD /* SearchForWebmapByKeyword.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchForWebmapByKeyword.storyboard; sourceTree = "<group>"; };
 		E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchForWebmapByKeywordViewController.swift; sourceTree = "<group>"; };
 		E459919D1EF3021D0089E9FD /* WebMapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebMapCell.swift; sourceTree = "<group>"; };
@@ -2044,6 +2050,7 @@
 				3E0B58551E36D8D300951767 /* Spatial operations */,
 				3EF024E51ECBC10600166EC5 /* Format coordinates */,
 				123AC27A20E588A00026A7D6 /* Geodesic operations */,
+				E4477CBC20EC0CAE004E14F9 /* List transformations */,
 				940A73F220E5889B00A06C80 /* Cut geometry */,
 				215E23CE21024715001DE092 /* Spatial relationships */,
 			);
@@ -2874,6 +2881,15 @@
 			path = taxi;
 			sourceTree = "<group>";
 		};
+		E4477CBC20EC0CAE004E14F9 /* List transformations */ = {
+			isa = PBXGroup;
+			children = (
+				E4477CBD20EC0CCD004E14F9 /* ListTransformationsViewController.swift */,
+				E4477CBF20EC0CE0004E14F9 /* ListTransformations.storyboard */,
+			);
+			path = "List transformations";
+			sourceTree = "<group>";
+		};
 		E459919A1EF3021D0089E9FD /* Search for webmap by keyword */ = {
 			isa = PBXGroup;
 			children = (
@@ -3140,6 +3156,7 @@
 				3EABC78F1DB1772000C161C6 /* RGBRenderer.storyboard in Resources */,
 				D9EE379820E2CC7700BF8AD1 /* tire_tread.jpeg in Resources */,
 				3ED029281B8E3AB300ACA70D /* GORenderers.storyboard in Resources */,
+				E4477CC020EC0CE0004E14F9 /* ListTransformations.storyboard in Resources */,
 				3E3425BD1E7B4CB10024270B /* srtm.tiff.ovr in Resources */,
 				3ED788901D26E2F700E5F311 /* LocalTiledLayer.storyboard in Resources */,
 				D9EE379620E2CC7700BF8AD1 /* dolmus_back.jpeg in Resources */,
@@ -3415,6 +3432,7 @@
 				3ECCFE3C1BD0401A00CE256D /* LayerStatusViewController.swift in Sources */,
 				3EE692021B03D22500C167B8 /* Node.swift in Sources */,
 				3ED028E51B8E3AA500ACA70D /* DefinitionExpressionViewController.swift in Sources */,
+				E4477CBE20EC0CCD004E14F9 /* ListTransformationsViewController.swift in Sources */,
 				D9316A621FDB4F060075AD92 /* GPKGLayersViewController.swift in Sources */,
 				3E412B431D0B2FAD00349155 /* AppInfoViewController.swift in Sources */,
 				3E6AE3FB1C73B5480026E59C /* FindRouteViewController.swift in Sources */,

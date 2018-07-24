@@ -772,7 +772,7 @@
 				<key>storyboardName</key>
 				<string>EditGeometry</string>
 				<key>descriptionText</key>
-				<string>Tap on a feature to display a callout. To change the geomemtry of the selected feature tap on the info button. Tap on the new location on the map and tap Done to save</string>
+				<string>Tap on a feature to display a callout. To change the geometry of the selected feature tap on the info button. Tap on the new location on the map and tap Done to save</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -836,6 +836,14 @@
 				<string>FormatCoordinates</string>
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to convert a map location Point to a number of different coordinate notations. Tap on the map or edit the values in textfields</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>List transformations</string>
+				<key>storyboardName</key>
+				<string>ListTransformations</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to use the transformation catalog to get a list of available datum transformations that can be used to project a geometry between two different spatial references, and how to use one of the transformations to perform the geometry engine's "project" operation.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

@@ -21,7 +21,7 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var orderByMapExtent: UISwitch!
     
-    var datatumTransformations = [AGSDatumTransformation]()
+    var datumTransformations = [AGSDatumTransformation]()
     var defaultTransformation: AGSDatumTransformation?
     let graphicsOverlay = AGSGraphicsOverlay()
     var originalGeometry = AGSPoint(x: 538985.355, y: 177329.516, spatialReference: AGSSpatialReference(wkid: 27700))
@@ -78,10 +78,10 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
         
         // if orderByMapExtent is on, use the map extent when retrieving the transformations
         if orderByMapExtent.isOn {
-            datatumTransformations = AGSTransformationCatalog.transformationsBySuitability(withInputSpatialReference: inputSR, outputSpatialReference: outputSR, areaOfInterest: mapView.visibleArea?.extent)
+            datumTransformations = AGSTransformationCatalog.transformationsBySuitability(withInputSpatialReference: inputSR, outputSpatialReference: outputSR, areaOfInterest: mapView.visibleArea?.extent)
         }
         else {
-            datatumTransformations = AGSTransformationCatalog.transformationsBySuitability(withInputSpatialReference: inputSR, outputSpatialReference: outputSR)
+            datumTransformations = AGSTransformationCatalog.transformationsBySuitability(withInputSpatialReference: inputSR, outputSpatialReference: outputSR)
         }
         
         defaultTransformation = AGSTransformationCatalog.transformation(forInputSpatialReference: inputSR, outputSpatialReference: outputSR)
@@ -126,7 +126,7 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
     //MARK: - TableView data source
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return datatumTransformations.count
+        return datumTransformations.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -136,7 +136,7 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DatumTransformCell", for: indexPath)
         // get the selected transformation
-        let transformation = datatumTransformations[indexPath.row]
+        let transformation = datumTransformations[indexPath.row]
 
         // disable selection if the transformation is missing files
         cell.isUserInteractionEnabled = !transformation.isMissingProjectionEngineFiles
@@ -163,7 +163,7 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let mapViewSR = mapView.spatialReference else { return }
 
-        let selectedTransform = datatumTransformations[indexPath.row]
+        let selectedTransform = datumTransformations[indexPath.row]
         if let projectedGeometry = AGSGeometryEngine.projectGeometry(originalGeometry, to: mapViewSR, datumTransformation: selectedTransform) {
             // projectGeometry succeeded
             if let graphic = projectedGraphic {

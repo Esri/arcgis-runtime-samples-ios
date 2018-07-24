@@ -296,7 +296,7 @@ class CustomContextSheet: UIView {
         let x:CGFloat = max(frame.midX, screenFrame.size.width - frame.midX);
         let y:CGFloat = max(frame.midY, screenFrame.size.height - frame.midY);
         
-        let radius = sqrt(x*x + y*y)
+        let radius = (x * x + y * y).squareRoot()
         self.maskLayer = CAShapeLayer()
         self.maskLayer.frame = CGRect(x: bounds.midX-radius, y: bounds.midY-radius, width: radius*2, height: radius*2)
 

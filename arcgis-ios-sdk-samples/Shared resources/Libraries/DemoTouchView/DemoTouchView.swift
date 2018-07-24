@@ -342,9 +342,9 @@ private class TouchView: UIView {
     // so that two finger single taps can be recognized.
     //
     var moved: Bool {
-        let xDist = (center.x - originalCenter.x);
-        let yDist = (center.y - originalCenter.y);
-        let distance = sqrt((xDist * xDist) + (yDist * yDist));
+        let xDist = center.x - originalCenter.x
+        let yDist = center.y - originalCenter.y
+        let distance = (xDist * xDist + yDist * yDist).squareRoot()
         return distance > moveTolerance
     }
     

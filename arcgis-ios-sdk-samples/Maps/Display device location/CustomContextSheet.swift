@@ -175,11 +175,13 @@ class CustomContextSheet: UIView {
         return [horizontalSpacingConstraint, centerYConstraint]
     }
     
-    func attributedText(_ title:String) -> NSAttributedString {
-        let attributes = [NSAttributedStringKey.strokeWidth: -3,
-                          NSAttributedStringKey.strokeColor: UIColor.gray,
-                          NSAttributedStringKey.foregroundColor: UIColor.white,
-                          NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)] as [NSAttributedStringKey : Any]
+    func attributedText(_ title: String) -> NSAttributedString {
+        let attributes: [NSAttributedStringKey: Any] = [
+            .strokeWidth: -3,
+            .strokeColor: UIColor.gray,
+            .foregroundColor: UIColor.white,
+            .font: UIFont.boldSystemFont(ofSize: 18)
+        ]
         return NSAttributedString(string: title, attributes: attributes)
     }
     

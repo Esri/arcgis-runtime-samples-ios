@@ -188,7 +188,12 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
                 strongSelf.downloadProgressView.dismiss()
                 
                 if let error = error {
-                    SVProgressHUD.showError(withStatus: "Failed to download raster resource :: \(error.localizedDescription)")
+                    if let indexPath = strongSelf.tableView.indexPathForSelectedRow {
+                        strongSelf.tableView.deselectRow(at: indexPath, animated: true)
+                    }
+                    if (error as NSError).code != NSUserCancelledError {
+                        SVProgressHUD.showError(withStatus: "Failed to download raster resource :: \(error.localizedDescription)")
+                    }
                 }
                 else {
                     

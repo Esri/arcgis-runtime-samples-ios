@@ -21,6 +21,8 @@ class MapViewDrawStatusViewController: UIViewController {
     @IBOutlet private weak var activityIndicatorView:UIView!
     
     private var map:AGSMap?
+    /// The observation of the map view's draw status.
+    private var drawStatusObservation: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,22 +47,15 @@ class MapViewDrawStatusViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //add observer for drawStatus on mapView
-        //so we can show/hide an indicator when the status change
-        mapView.addObserver(self, forKeyPath: #keyPath(AGSGeoView.drawStatus), options: .initial, context: nil)
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        DispatchQueue.main.async { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.activityIndicatorView.isHidden = strongSelf.mapView.drawStatus == .completed
+        drawStatusObservation = mapView.observe(\.drawStatus, options: .initial) { [weak self] (mapView, _) in
+            DispatchQueue.main.async {
+                self?.activityIndicatorView.isHidden = mapView.drawStatus == .completed
+            }
         }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
-        mapView.removeObserver(self, forKeyPath: #keyPath(AGSGeoView.drawStatus))
+        drawStatusObservation = nil
     }
 }

@@ -17,7 +17,6 @@ import ArcGIS
 
 fileprivate let observerZMin = 20.0
 fileprivate let observerZMax = 1500.0
-fileprivate let observerZUnitString = AGSLinearUnit.meters().abbreviation
 
 class LineOfSightGeoElementViewController: UIViewController {
     
@@ -31,10 +30,10 @@ class LineOfSightGeoElementViewController: UIViewController {
     @IBOutlet weak var observerZMaxLabel: UILabel!
 
     // properties for setting up and manipulating the scene
-    private let scene:AGSScene
-    private let overlay:AGSGraphicsOverlay
-    private let taxiGraphic:AGSGraphic
-    private let observerGraphic:AGSGraphic
+    private let scene: AGSScene
+    private let overlay: AGSGraphicsOverlay
+    private let taxiGraphic: AGSGraphic
+    private let observerGraphic: AGSGraphic
     private let lineOfSight: AGSGeoElementLineOfSight
 
     // locations used in the sample
@@ -50,7 +49,7 @@ class LineOfSightGeoElementViewController: UIViewController {
     // handle onto any line of sight KVO observer
     private var losObserver:NSKeyValueObservation?
 
-    private var initialViewpointCenter:AGSPoint {
+    private var initialViewpointCenter: AGSPoint {
         // If possible, find the middle of the block that the taxi will drive around, or else focus on the observer
         return AGSGeometryEngine.unionGeometries(streetIntersectionLocations)?.extent.center ?? observerPoint
     }
@@ -61,7 +60,7 @@ class LineOfSightGeoElementViewController: UIViewController {
         // ====================================
 
         // initialize the scene with an imagery basemap
-        scene = AGSScene(basemap: AGSBasemap.imageryWithLabels())
+        scene = AGSScene(basemap: .imageryWithLabels())
 
         // initialize the elevation source and add it to the base surface of the scene
         let elevationSrc = AGSArcGISTiledElevationSource(url: .worldElevationService)
@@ -137,8 +136,8 @@ class LineOfSightGeoElementViewController: UIViewController {
         sceneView.analysisOverlays.add(analysisOverlay)
 
         // update the UI if the Line of Sight analysis result changes
-        losObserver = lineOfSight.observe(\.targetVisibility, options: .new) { (losAnalysis, _) in
-            DispatchQueue.main.async { [weak self] in
+        losObserver = lineOfSight.observe(\.targetVisibility, options: .new) { [weak self] (losAnalysis, _) in
+            DispatchQueue.main.async {
                 self?.updateLineOfSightVisibilityLabel(visibility: losAnalysis.targetVisibility)
             }
         }
@@ -147,8 +146,8 @@ class LineOfSightGeoElementViewController: UIViewController {
         observerZSlider.minimumValue = Float(observerZMin)
         observerZSlider.maximumValue = Float(observerZMax)
 
-        observerZMinLabel.text = "\(Int(observerZMin))\(observerZUnitString)"
-        observerZMaxLabel.text = "\(Int(observerZMax))\(observerZUnitString)"
+        observerZMinLabel.text = getFormattedString(z: observerZMin)
+        observerZMaxLabel.text = getFormattedString(z: observerZMax)
     }
 
     // update the observer height when the slider is moved
@@ -158,6 +157,11 @@ class LineOfSightGeoElementViewController: UIViewController {
             observerGraphic.geometry = newLocation
             updateObserverZLabel()
         }
+    }
+
+    // Clean up when done with the sample
+    deinit {
+        losObserver?.invalidate()
     }
 
 
@@ -182,9 +186,10 @@ class LineOfSightGeoElementViewController: UIViewController {
         animationTimer?.invalidate()
     }
 
+    
 
     // current line of sight status
-    private func updateLineOfSightVisibilityLabel(visibility:AGSLineOfSightTargetVisibility) {
+    private func updateLineOfSightVisibilityLabel(visibility: AGSLineOfSightTargetVisibility) {
         switch visibility {
         case .obstructed:
             targetVisibilityLabel.text = "Obstructed"
@@ -198,12 +203,13 @@ class LineOfSightGeoElementViewController: UIViewController {
         }
     }
 
-    func updateObserverZLabel() {
-        var label = "Unknown"
-        if let geom = observerGraphic.geometry as? AGSPoint {
-            label = "\(Int(geom.z))"
-        }
-        observerZLabel.text = "\(label)\(observerZUnitString)"
+    private func updateObserverZLabel() {
+        observerZLabel.text = {
+            guard let observerLocation = observerGraphic.geometry as? AGSPoint, observerLocation.hasZ else {
+                return "Unknown"
+            }
+            return getFormattedString(z: observerLocation.z)
+        }()
     }
 
 
@@ -244,6 +250,21 @@ class LineOfSightGeoElementViewController: UIViewController {
         // Update the taxi graphic's potision and heading
         taxiGraphic.geometry = animationPoint
         (taxiGraphic.symbol as? AGSModelSceneSymbol)?.heading = heading
+    }
+
+    
+    
+    // Formatting z values for locale
+    private let zValuesFormatter: MeasurementFormatter = {
+        let formatter = MeasurementFormatter()
+        formatter.numberFormatter.maximumFractionDigits = 0
+        formatter.numberFormatter.roundingMode = .down
+        formatter.unitOptions = .providedUnit
+        return formatter
+    }()
+    
+    private func getFormattedString(z value:Double) -> String {
+        return zValuesFormatter.string(from: Measurement<UnitLength>(value: value, unit: .meters))
     }
 }
 

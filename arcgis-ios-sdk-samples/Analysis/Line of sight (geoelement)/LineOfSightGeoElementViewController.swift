@@ -136,8 +136,8 @@ class LineOfSightGeoElementViewController: UIViewController {
         sceneView.analysisOverlays.add(analysisOverlay)
 
         // update the UI if the Line of Sight analysis result changes
-        losObserver = lineOfSight.observe(\.targetVisibility, options: .new) { (losAnalysis, _) in
-            DispatchQueue.main.async { [weak self] in
+        losObserver = lineOfSight.observe(\.targetVisibility, options: .new) { [weak self] (losAnalysis, _) in
+            DispatchQueue.main.async {
                 self?.updateLineOfSightVisibilityLabel(visibility: losAnalysis.targetVisibility)
             }
         }

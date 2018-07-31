@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rtM-Ml-JFc">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Query Map Image Sublayer View Controller-->
+        <scene sceneID="A23-Wi-nqR">
+            <objects>
+                <viewController id="rtM-Ml-JFc" customClass="QueryMapImageSublayerViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1s2-zU-GzG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRd-ve-5Cj" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCv-05-Nj0">
+                                <rect key="frame" x="8" y="28" width="359" height="46"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cgR-8z-ZuK">
+                                    <rect key="frame" x="0.0" y="0.0" width="359" height="46"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Population 2000 &gt;" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jkh-zh-w1R">
+                                            <rect key="frame" x="8" y="8" width="293" height="30"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="rtM-Ml-JFc" id="xVF-g1-7SJ"/>
+                                            </connections>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Co-ma-VW1">
+                                            <rect key="frame" x="309" y="7" width="42" height="30"/>
+                                            <state key="normal" title="Query"/>
+                                            <connections>
+                                                <action selector="query:" destination="rtM-Ml-JFc" eventType="touchUpInside" id="T1j-k2-zy8"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Jkh-zh-w1R" secondAttribute="bottom" id="LKR-lZ-U0K"/>
+                                        <constraint firstItem="Jkh-zh-w1R" firstAttribute="top" secondItem="cgR-8z-ZuK" secondAttribute="top" constant="8" id="YN3-CA-wLR"/>
+                                        <constraint firstItem="Jkh-zh-w1R" firstAttribute="leading" secondItem="cgR-8z-ZuK" secondAttribute="leading" constant="8" id="bfk-XV-0wb"/>
+                                        <constraint firstAttribute="trailing" secondItem="9Co-ma-VW1" secondAttribute="trailing" constant="8" id="mD0-5h-N5A"/>
+                                        <constraint firstItem="9Co-ma-VW1" firstAttribute="leading" secondItem="Jkh-zh-w1R" secondAttribute="trailing" constant="8" symbolic="YES" id="qdO-qC-e0w"/>
+                                        <constraint firstItem="9Co-ma-VW1" firstAttribute="baseline" secondItem="Jkh-zh-w1R" secondAttribute="baseline" id="uj5-IP-LdB"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="yRN-Zc-fjK"/>
+                                </constraints>
+                                <blurEffect style="prominent"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="yRN-Zc-fjK"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="yRN-Zc-fjK"/>
+                                    </mask>
+                                </variation>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PCv-05-Nj0" firstAttribute="centerX" secondItem="tHl-D3-0ES" secondAttribute="centerX" id="3an-hL-K9F"/>
+                            <constraint firstItem="GRd-ve-5Cj" firstAttribute="bottom" secondItem="1s2-zU-GzG" secondAttribute="bottom" id="3pI-o2-Oga"/>
+                            <constraint firstItem="tHl-D3-0ES" firstAttribute="trailing" secondItem="PCv-05-Nj0" secondAttribute="trailing" constant="8" id="Boc-3M-kvn"/>
+                            <constraint firstItem="PCv-05-Nj0" firstAttribute="leading" secondItem="tHl-D3-0ES" secondAttribute="leading" constant="8" id="LaZ-N8-i4u"/>
+                            <constraint firstItem="GRd-ve-5Cj" firstAttribute="trailing" secondItem="1s2-zU-GzG" secondAttribute="trailing" id="cVu-Lz-OlW"/>
+                            <constraint firstItem="PCv-05-Nj0" firstAttribute="top" secondItem="tHl-D3-0ES" secondAttribute="top" constant="8" id="cYX-9l-fNW"/>
+                            <constraint firstItem="GRd-ve-5Cj" firstAttribute="top" secondItem="tHl-D3-0ES" secondAttribute="top" id="r9e-Bm-jui"/>
+                            <constraint firstItem="GRd-ve-5Cj" firstAttribute="leading" secondItem="1s2-zU-GzG" secondAttribute="leading" id="zUs-me-eAF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tHl-D3-0ES"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="3an-hL-K9F"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="Boc-3M-kvn"/>
+                                <include reference="3an-hL-K9F"/>
+                                <exclude reference="LaZ-N8-i4u"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="GRd-ve-5Cj" id="5L7-Td-GNw"/>
+                        <outlet property="populationTextField" destination="Jkh-zh-w1R" id="L9i-NY-SMq"/>
+                        <outlet property="queryButton" destination="9Co-ma-VW1" id="zbE-M9-70O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s7f-Gi-Rlw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-143.19999999999999" y="136.28185907046478"/>
+        </scene>
+    </scenes>
+</document>

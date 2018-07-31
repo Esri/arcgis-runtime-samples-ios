@@ -411,6 +411,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Query a map image sublayer</string>
+				<key>storyboardName</key>
+				<string>QueryMapImageSublayer</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to execute an attribute and spatial query on the sublayers of an ArcGIS map image layer.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Symbolize shapefile</string>
 				<key>storyboardName</key>
 				<string>SymbolizeShapefile</string>
@@ -772,7 +780,7 @@
 				<key>storyboardName</key>
 				<string>EditGeometry</string>
 				<key>descriptionText</key>
-				<string>Tap on a feature to display a callout. To change the geomemtry of the selected feature tap on the info button. Tap on the new location on the map and tap Done to save</string>
+				<string>Tap on a feature to display a callout. To change the geometry of the selected feature tap on the info button. Tap on the new location on the map and tap Done to save</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -839,6 +847,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>List transformations</string>
+				<key>storyboardName</key>
+				<string>ListTransformations</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to use the transformation catalog to get a list of available datum transformations that can be used to project a geometry between two different spatial references, and how to use one of the transformations to perform the geometry engine's "project" operation.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Geodesic operations</string>
 				<key>storyboardName</key>
 				<string>GeodesicOperations</string>
@@ -852,6 +868,14 @@
 				<string>CutGeometry</string>
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to cut a geometry with a polyline using the GeometryEngine. For example, you may want to subdivide a large parcel polygon into several smaller parcels.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Spatial relationships</string>
+				<key>storyboardName</key>
+				<string>SpatialRelationships</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to use the AGSGeometryEngine to evaluate the spatial relationships between geometries.</string>
 			</dict>
 		</array>
 	</dict>
@@ -1118,6 +1142,14 @@
 				<string>FeatureLayerExtrusion</string>
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to apply extrusion to a renderer on a feature layer</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Scene layer selection</string>
+				<key>storyboardName</key>
+				<string>SceneLayerSelection</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to identify geoelements in a scene layer.</string>
 			</dict>
 		</array>
 	</dict>

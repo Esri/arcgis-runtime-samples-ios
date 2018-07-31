@@ -169,7 +169,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         self.downloadProgressView.show(withStatus: "Just a moment while we download data for this sample...", progress: 0)
         
         //add an observer to update the progress in download progress view
-        self.bundleResourceRequest.progress.addObserver(self, forKeyPath: "fractionCompleted", options: .new, context: nil)
+        self.bundleResourceRequest.progress.addObserver(self, forKeyPath: #keyPath(Progress.fractionCompleted), options: .new, context: nil)
         
         //begin
         self.bundleResourceRequest.beginAccessingResources { [weak self] (error: Error?) in
@@ -182,7 +182,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
                 }
                 
                 //remove observer
-                strongSelf.bundleResourceRequest?.progress.removeObserver(strongSelf, forKeyPath: "fractionCompleted")
+                strongSelf.bundleResourceRequest?.progress.removeObserver(strongSelf, forKeyPath: #keyPath(Progress.fractionCompleted))
                 
                 //dismiss download progress view
                 strongSelf.downloadProgressView.dismiss()

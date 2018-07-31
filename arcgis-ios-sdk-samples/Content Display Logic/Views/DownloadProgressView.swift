@@ -146,7 +146,7 @@ class DownloadProgressView: UIView {
         
         if animated {
             //create animation
-            let animation = CABasicAnimation(keyPath: "strokeEnd")
+            let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.strokeEnd))
             animation.duration = 0.2
             animation.fromValue = self.shapeLayer.strokeEnd
             animation.toValue = self.progress

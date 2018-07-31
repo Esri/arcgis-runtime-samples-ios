@@ -39,9 +39,9 @@ class CameraSettingsViewController: UIViewController {
         self.setInitialValues()
         
         //add observers to update the sliders
-        self.orbitGeoElementCameraController?.addObserver(self, forKeyPath: "cameraDistance", options: .new, context: nil)
-        self.orbitGeoElementCameraController?.addObserver(self, forKeyPath: "cameraHeadingOffset", options: .new, context: nil)
-        self.orbitGeoElementCameraController?.addObserver(self, forKeyPath: "cameraPitchOffset", options: .new, context: nil)
+        self.orbitGeoElementCameraController?.addObserver(self, forKeyPath: #keyPath(AGSOrbitGeoElementCameraController.cameraDistance), options: .new, context: nil)
+        self.orbitGeoElementCameraController?.addObserver(self, forKeyPath: #keyPath(AGSOrbitGeoElementCameraController.cameraHeadingOffset), options: .new, context: nil)
+        self.orbitGeoElementCameraController?.addObserver(self, forKeyPath: #keyPath(AGSOrbitGeoElementCameraController.cameraPitchOffset), options: .new, context: nil)
     }
     
     private func setInitialValues() {
@@ -72,23 +72,24 @@ class CameraSettingsViewController: UIViewController {
                 return
             }
             
-            if keyPath == "cameraDistance" {
+            switch keyPath {
+            case #keyPath(AGSOrbitGeoElementCameraController.cameraDistance):
                 weakSelf.distanceSlider.value = Float(cameraController.cameraDistance)
                 
                 //update label
                 weakSelf.distanceLabel.text = "\(Int(weakSelf.distanceSlider.value))"
-            }
-            else if keyPath == "cameraHeadingOffset" {
+            case #keyPath(AGSOrbitGeoElementCameraController.cameraHeadingOffset):
                 weakSelf.headingOffsetSlider.value = Float(cameraController.cameraHeadingOffset)
                 
                 //update label
                 weakSelf.headingOffsetLabel.text = "\(Int(weakSelf.headingOffsetSlider.value))º"
-            }
-            else if keyPath == "cameraPitchOffset" {
+            case #keyPath(AGSOrbitGeoElementCameraController.cameraPitchOffset):
                 weakSelf.pitchOffsetSlider.value = Float(cameraController.cameraPitchOffset)
                 
                 //update label
                 weakSelf.pitchOffsetLabel.text = "\(Int(weakSelf.pitchOffsetSlider.value))º"
+            default:
+                break
             }
         }
     }
@@ -148,8 +149,8 @@ class CameraSettingsViewController: UIViewController {
     deinit {
         
         //remove observers
-        self.orbitGeoElementCameraController?.removeObserver(self, forKeyPath: "cameraDistance")
-        self.orbitGeoElementCameraController?.removeObserver(self, forKeyPath: "cameraHeadingOffset")
-        self.orbitGeoElementCameraController?.removeObserver(self, forKeyPath: "cameraPitchOffset")
+        self.orbitGeoElementCameraController?.removeObserver(self, forKeyPath: #keyPath(AGSOrbitGeoElementCameraController.cameraDistance))
+        self.orbitGeoElementCameraController?.removeObserver(self, forKeyPath: #keyPath(AGSOrbitGeoElementCameraController.cameraHeadingOffset))
+        self.orbitGeoElementCameraController?.removeObserver(self, forKeyPath: #keyPath(AGSOrbitGeoElementCameraController.cameraPitchOffset))
     }
 }

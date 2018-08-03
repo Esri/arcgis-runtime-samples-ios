@@ -154,13 +154,24 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
                 if (error as NSError).code != NSUserCancelledError {
                     SVProgressHUD.showError(withStatus: error.localizedDescription)
                 }
-            } else {
-    
+            } else if let result = result {
+                if let layerErrors = result.layerErrors as? [AGSLayer: Error], !layerErrors.isEmpty {
+                    let errorMessages = layerErrors.map { "\($0.key.name): \($0.value.localizedDescription)" }
+                    let okayAction = UIAlertAction(title: "OK", style: .default)
+                    let alertController = UIAlertController(
+                        title: "Offline Map Generated with Errors",
+                        message: "The following error(s) occurred while generating the offline map:\n\n\(errorMessages.joined(separator: "\n"))",
+                        preferredStyle: .alert
+                    )
+                    alertController.addAction(okayAction)
+                    alertController.preferredAction = okayAction
+                    strongSelf.present(alertController, animated: true)
+                }
                 //disable cancel button
                 strongSelf.cancelButton.isEnabled = false
                 
                 //assign offline map to map view
-                strongSelf.mapView.map = result?.offlineMap
+                strongSelf.mapView.map = result.offlineMap
             }
         }
     }

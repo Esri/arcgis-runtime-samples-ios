@@ -40,12 +40,12 @@ class SceneLayerURLViewController: UIViewController {
         
         // add base surface for elevation data
         let surface = AGSSurface()
-        let elevationSource = AGSArcGISTiledElevationSource(url: URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!)
+        let elevationSource = AGSArcGISTiledElevationSource(url: .worldElevationService)
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
         
         //scene layer
-        let sceneLayer = AGSArcGISSceneLayer(url: URL(string: "http://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0")!)
+        let sceneLayer = AGSArcGISSceneLayer(url: .brestBuildingsService)
         self.sceneView.scene?.operationalLayers.add(sceneLayer)
     }
 

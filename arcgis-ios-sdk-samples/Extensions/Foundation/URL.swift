@@ -24,6 +24,11 @@ extension URL {
     /// The url of the image service for elevation in Brest, France.
     static let brestElevationService = URL(string: "https://scene.arcgis.com/arcgis/rest/services/BREST_DTM_1M/ImageServer")!
     
+    // Map Services
+    
+    /// The url of a map service containing sample data of the United States.
+    static let unitedStatesMapService = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer")!
+    
     // Scene Services
     
     /// The url of the scene service for buildings in Brest, France.

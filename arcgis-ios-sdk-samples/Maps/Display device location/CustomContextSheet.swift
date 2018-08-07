@@ -175,11 +175,13 @@ class CustomContextSheet: UIView {
         return [horizontalSpacingConstraint, centerYConstraint]
     }
     
-    func attributedText(_ title:String) -> NSAttributedString {
-        let attributes = [NSAttributedStringKey.strokeWidth: -3,
-                          NSAttributedStringKey.strokeColor: UIColor.gray,
-                          NSAttributedStringKey.foregroundColor: UIColor.white,
-                          NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)] as [NSAttributedStringKey : Any]
+    func attributedText(_ title: String) -> NSAttributedString {
+        let attributes: [NSAttributedStringKey: Any] = [
+            .strokeWidth: -3,
+            .strokeColor: UIColor.gray,
+            .foregroundColor: UIColor.white,
+            .font: UIFont.boldSystemFont(ofSize: 18)
+        ]
         return NSAttributedString(string: title, attributes: attributes)
     }
     
@@ -296,7 +298,7 @@ class CustomContextSheet: UIView {
         let x:CGFloat = max(frame.midX, screenFrame.size.width - frame.midX);
         let y:CGFloat = max(frame.midY, screenFrame.size.height - frame.midY);
         
-        let radius = sqrt(x*x + y*y)
+        let radius = (x * x + y * y).squareRoot()
         self.maskLayer = CAShapeLayer()
         self.maskLayer.frame = CGRect(x: bounds.midX-radius, y: bounds.midY-radius, width: radius*2, height: radius*2)
 
@@ -309,7 +311,7 @@ class CustomContextSheet: UIView {
     
     private func maskLayerAnimation(_ fill:Bool) -> CABasicAnimation {
         
-        let animation = CABasicAnimation(keyPath: "transform")
+        let animation = CABasicAnimation(keyPath: #keyPath(CALayer.transform))
         animation.duration = self.animationDuration
         if fill {
             animation.fromValue = NSValue(caTransform3D: CATransform3DMakeScale(0.0001, 0.0001, 0.0001))

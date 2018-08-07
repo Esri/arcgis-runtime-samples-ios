@@ -13,16 +13,24 @@
 // limitations under the License.
 
 import UIKit
-import ArcGIS
+import WebKit
 
 class SampleInfoViewController: UIViewController {
-    
-    @IBOutlet private weak var webView:UIWebView!
+    /// The web view that displays the readme.
+    @IBOutlet private weak var webView: WKWebView!
     
     var folderName:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // We must construct the web view in code as long as we support iOS 10.
+        // Prior to iOS 11, there was a bug in WKWebView.init(coder:) that
+        // caused a crash.
+        let webView = WKWebView(frame: view.bounds)
+        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(webView)
+        self.webView = webView
         
         if self.folderName != nil {
             self.fetchFileContent(for: self.folderName)
@@ -46,25 +54,28 @@ class SampleInfoViewController: UIViewController {
     
     func displayHTML(_ readmeContent:String) {
         let cssPath = Bundle.main.path(forResource: "style", ofType: "css") ?? ""
-        let string = "<!doctype html>" +
-        "<html>" +
-        "<head> <link rel=\"stylesheet\" href=\"\(cssPath)\">" +
-        "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css\">" +
-        "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css\">" +
-        "<meta name=\"viewport\" content=\"initial-scale=1, width=device-width, height=device-height, viewport-fit=cover\">" +
-        "</head>" +
-        " <div id=\"preview\" sd-model-to-html=\"text\">" +
-        "<div id=\"content\">" +
-        "\(readmeContent)" +
-        "</div></div>" +
-        "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/showdown/1.1.0/showdown.js\"></script>" +
-        "<script>" +
-        "var conv = new showdown.Converter();" +
-        "var txt = document.getElementById('content').innerHTML;" +
-        "document.getElementById('content').innerHTML = conv.makeHtml(txt);" +
-        "</script>" +
-        "</body>" +
-        "</html>"
+        let string = """
+            <!doctype html>
+            <html>
+            <head>
+                <link rel="stylesheet" href="\(cssPath)">
+                <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css">
+                <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+                <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height">
+            </head>
+            <body>
+                <div id="preview" sd-model-to-html="text">
+                    <div id="content">\(readmeContent)</div>
+                </div>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.1.0/showdown.js"></script>
+                <script>
+                    var conv = new showdown.Converter();
+                    var txt = document.getElementById('content').innerHTML;
+                    document.getElementById('content').innerHTML = conv.makeHtml(txt);
+                </script>
+            </body>
+            </html>
+            """
 
         self.webView.loadHTMLString(string, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
     }

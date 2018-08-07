@@ -1,4 +1,5 @@
-// Copyright 2016 Esri.
+//
+// Copyright © 2018 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,21 +12,28 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
-struct Category: Equatable {
+struct Sample: Equatable {
     var name: String
-    var samples: [Sample]
+    var description: String
+    var storyboardName: String
+    var dependencies: [String]
 }
 
-extension Category: Decodable {
+extension Sample: Decodable {
     enum CodingKeys: String, CodingKey {
         case name = "displayName"
-        case samples = "children"
+        case description = "descriptionText"
+        case storyboardName = "storyboardName"
+        case dependencies = "dependency"
     }
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         name = try values.decode(String.self, forKey: .name)
-        samples = try values.decode([Sample].self, forKey: .samples)
+        description = try values.decode(String.self, forKey: .description)
+        storyboardName = try values.decode(String.self, forKey: .storyboardName)
+        dependencies = try values.decodeIfPresent([String].self, forKey: .dependencies) ?? []
     }
 }

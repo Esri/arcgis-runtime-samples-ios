@@ -84,7 +84,7 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     
     //MARK: - samples lookup by name
     
-    func samplesByNames<C: Collection>(_ names: C) -> [Category.Sample] where C.Element == String {
+    func samplesByNames<C: Collection>(_ names: C) -> [Sample] where C.Element == String {
         return categories.flatMap({ $0.samples }).filter({ names.contains($0.name) })
     }
 

@@ -20,7 +20,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             self?.animateTable()
         }()
 
-    var samples = [Category.Sample]()
+    var samples = [Sample]()
     private var expandedRowIndex:Int = -1
     
     private var headerView:CustomSearchHeaderView!
@@ -89,7 +89,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         }
     }
     
-    func samplesByNames<C: Collection>(_ names: C) -> [Category.Sample] where C.Element == String {
+    func samplesByNames<C: Collection>(_ names: C) -> [Sample] where C.Element == String {
         return samples.filter { names.contains($0.name) }
     }
 
@@ -160,7 +160,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         }
     }
     
-    func downloadResource(for node: Category.Sample, at indexPath:IndexPath) {
+    func downloadResource(for node: Sample, at indexPath:IndexPath) {
         
         //show download progress view
         self.downloadProgressView.show(withStatus: "Just a moment while we download data for this sample...", progress: 0)
@@ -207,7 +207,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         }
     }
     
-    func showSample(indexPath: IndexPath, node: Category.Sample) {
+    func showSample(indexPath: IndexPath, node: Sample) {
         
         //expand the selected cell
         self.updateExpandedRow(indexPath, collapseIfSelected: false)

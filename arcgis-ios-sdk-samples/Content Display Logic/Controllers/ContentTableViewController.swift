@@ -142,7 +142,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
                     
                     //if resource is already available then simply show the sample
                     if isResourceAvailable {
-                        self?.showSample(indexPath: indexPath, node: sample)
+                        self?.showSample(indexPath: indexPath, sample: sample)
                     }
                     //else download the resource
                     else {
@@ -156,11 +156,11 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             self.bundleResourceRequest?.endAccessingResources()
             
             //show view controller
-            self.showSample(indexPath: indexPath, node: sample)
+            self.showSample(indexPath: indexPath, sample: sample)
         }
     }
     
-    func downloadResource(for node: Sample, at indexPath:IndexPath) {
+    func downloadResource(for sample: Sample, at indexPath:IndexPath) {
         
         //show download progress view
         self.downloadProgressView.show(withStatus: "Just a moment while we download data for this sample...", progress: 0)
@@ -197,7 +197,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
                     if !strongSelf.bundleResourceRequest.progress.isCancelled {
                         
                         //show view controller
-                        strongSelf.showSample(indexPath: indexPath, node: node)
+                        strongSelf.showSample(indexPath: indexPath, sample: sample)
                     }
                 }
             }
@@ -212,14 +212,14 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         }
     }
     
-    func showSample(indexPath: IndexPath, node: Sample) {
+    func showSample(indexPath: IndexPath, sample: Sample) {
         
         //expand the selected cell
         self.updateExpandedRow(indexPath, collapseIfSelected: false)
         
-        let storyboard = UIStoryboard(name: node.storyboardName, bundle: .main)
+        let storyboard = UIStoryboard(name: sample.storyboardName, bundle: .main)
         let controller = storyboard.instantiateInitialViewController()!
-        controller.title = node.name
+        controller.title = sample.name
         let navController = UINavigationController(rootViewController: controller)
         
         self.splitViewController?.showDetailViewController(navController, sender: self)
@@ -233,7 +233,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         //create the info button and
         //assign the readme url
         let infoBBI = SourceCodeBarButtonItem()
-        infoBBI.folderName = node.name
+        infoBBI.folderName = sample.name
         infoBBI.navController = navController
         controller.navigationItem.rightBarButtonItem = infoBBI
     }

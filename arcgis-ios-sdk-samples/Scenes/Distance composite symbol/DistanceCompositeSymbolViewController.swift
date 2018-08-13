@@ -68,10 +68,12 @@ class DistanceCompositeSymbolViewController: UIViewController {
             // add graphic to graphics overlay
             graphicsOverlay.graphics.add(aircraftGraphic)
             
-            // add a camera and initial camera position
-            let camera = AGSCamera(lookAt: aircraftPosition, distance: 2000.0, heading: 0.0, pitch: 70.0, roll: 0.0)
-            self?.sceneView.setViewpointCamera(camera)
+            // add an orbit camera controller to lock the camera to the graphic
+            let cameraController = AGSOrbitGeoElementCameraController(targetGeoElement: aircraftGraphic, distance: 4000)
+            cameraController.cameraPitchOffset = 80
+            cameraController.cameraHeadingOffset = -30
+            self?.sceneView.cameraController = cameraController
         })
     }
-    
+
 }

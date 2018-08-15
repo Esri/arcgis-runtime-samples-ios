@@ -230,7 +230,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             controller.routeParameters = self.routeParameters
         }
         else if segue.identifier == "DirectionsListSegue" {
-            self.directionsListViewController = segue.destination as! DirectionsListViewController
+            self.directionsListViewController = segue.destination as? DirectionsListViewController
             self.directionsListViewController.delegate = self
         }
     }

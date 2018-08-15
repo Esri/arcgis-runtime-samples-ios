@@ -59,7 +59,7 @@ class ChangeMapViewBackgroundVC: UIViewController, GridSettingsVCDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "EmbedSegue" {
-            self.gridSettingsViewController = segue.destination as! GridSettingsViewController
+            self.gridSettingsViewController = segue.destination as? GridSettingsViewController
             self.gridSettingsViewController.delegate = self
         }
     }

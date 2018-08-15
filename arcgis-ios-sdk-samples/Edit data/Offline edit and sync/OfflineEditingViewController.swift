@@ -355,7 +355,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
             else {
                 SVProgressHUD.dismiss()
                 //save a reference to the geodatabase
-                self?.generatedGeodatabase = object as! AGSGeodatabase
+                self?.generatedGeodatabase = object as? AGSGeodatabase
                 //add the layers from geodatabase
                 self?.displayLayersFromGeodatabase()
             }
@@ -519,7 +519,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FeatureLayersVCSegue" {
-            self.featureLayersVC = segue.destination as! FeatureLayersViewController
+            self.featureLayersVC = segue.destination as? FeatureLayersViewController
         }
     }
 }

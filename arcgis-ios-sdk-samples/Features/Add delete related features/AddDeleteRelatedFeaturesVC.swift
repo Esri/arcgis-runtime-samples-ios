@@ -109,7 +109,7 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
             let controller = navigationController.viewControllers[0] as! RelatedFeaturesViewController
             
             //share selected park
-            controller.originFeature = self.selectedPark as! AGSArcGISFeature
+            controller.originFeature = self.selectedPark as? AGSArcGISFeature
             
             //share parks feature table as origin feature table
             controller.originFeatureTable = self.parksFeatureTable

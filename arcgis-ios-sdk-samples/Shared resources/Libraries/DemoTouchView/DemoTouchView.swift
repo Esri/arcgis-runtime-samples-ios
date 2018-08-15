@@ -320,15 +320,15 @@ open class DemoTouchManager {
     
     // MARK: Methods
     
-    open static func isShowingTouches() -> Bool {
+    public static func isShowingTouches() -> Bool {
         return UIApplication.isShowingTouches
     }
     
-    open static func showTouches() {
+    public static func showTouches() {
         UIApplication.showAllTouches()
     }
     
-    open static func hideTouches() {
+    public static func hideTouches() {
         UIApplication.hideAllTouches()
     }
 }

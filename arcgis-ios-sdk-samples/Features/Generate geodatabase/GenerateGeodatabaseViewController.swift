@@ -120,7 +120,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                     }
                     else {
                         SVProgressHUD.dismiss()
-                        self?.generatedGeodatabase = object as! AGSGeodatabase
+                        self?.generatedGeodatabase = object as? AGSGeodatabase
                         self?.displayLayersFromGeodatabase()
                     }
                 }

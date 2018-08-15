@@ -41,7 +41,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             self.tableView.tableHeaderView = nil
         }
         else {
-            self.headerView = self.tableView.tableHeaderView! as! CustomSearchHeaderView
+            self.headerView = self.tableView.tableHeaderView! as? CustomSearchHeaderView
             self.headerView.delegate = self
             self.headerView.hideSuggestionsTable()
         }

@@ -54,6 +54,9 @@ class FeatureLayerExtrusionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Adds the source code button item to the right of navigation bar.
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureLayerExtrusionViewController"]
+        
         sceneView.scene = scene
         
         // Set the scene view's viewpoint.

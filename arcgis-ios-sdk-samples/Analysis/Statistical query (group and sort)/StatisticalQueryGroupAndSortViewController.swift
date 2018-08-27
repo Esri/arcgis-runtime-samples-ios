@@ -110,7 +110,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
                 //
                 // Setup result view controller
                 let storyboard = UIStoryboard(name: "ExpandableTableViewController", bundle: nil)
-                self?.expandableTableViewController = storyboard.instantiateViewController(withIdentifier: "ExpandableTableViewController") as! ExpandableTableViewController
+                self?.expandableTableViewController = storyboard.instantiateViewController(withIdentifier: "ExpandableTableViewController") as? ExpandableTableViewController
                 self?.expandableTableViewController.tableTitle = "Statistical Query Results"
                 
                 // Let's build result message
@@ -153,7 +153,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             //
             // Init view controller and set properties
             let storyboard = UIStoryboard(name: "StatisticalQueryGroupAndSort", bundle: nil)
-            addStatisticDefinitionsViewController = storyboard.instantiateViewController(withIdentifier: "AddStatisticDefinitionsViewController") as! AddStatisticDefinitionsViewController
+            addStatisticDefinitionsViewController = storyboard.instantiateViewController(withIdentifier: "AddStatisticDefinitionsViewController") as? AddStatisticDefinitionsViewController
             addStatisticDefinitionsViewController.delegate = self
             addStatisticDefinitionsViewController.fieldNames = fieldNames
             addStatisticDefinitionsViewController.statisticDefinitions = statisticDefinitions
@@ -172,7 +172,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             //
             // Init view controller and set properties
             let storyboard = UIStoryboard(name: "StatisticalQueryGroupAndSort", bundle: nil)
-            groupByFieldsViewController = storyboard.instantiateViewController(withIdentifier: "GroupByFieldsViewController") as! GroupByFieldsViewController
+            groupByFieldsViewController = storyboard.instantiateViewController(withIdentifier: "GroupByFieldsViewController") as? GroupByFieldsViewController
             groupByFieldsViewController.delegate = self
             groupByFieldsViewController.fieldNames = fieldNames
             groupByFieldsViewController.selectedFieldNames = selectedGroupByFieldNames
@@ -191,7 +191,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             //
             // Init view controller and set properties
             let storyboard = UIStoryboard(name: "StatisticalQueryGroupAndSort", bundle: nil)
-            orderByFieldsViewController = storyboard.instantiateViewController(withIdentifier: "OrderByFieldsViewController") as! OrderByFieldsViewController
+            orderByFieldsViewController = storyboard.instantiateViewController(withIdentifier: "OrderByFieldsViewController") as? OrderByFieldsViewController
             orderByFieldsViewController.delegate = self
             orderByFieldsViewController.orderByFields = orderByFields
             orderByFieldsViewController.selectedOrderByFields = selectedOrderByFields

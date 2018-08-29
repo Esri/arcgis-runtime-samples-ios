@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-protocol OrderByFieldsViewControllerDelegate: class {
+protocol OrderByFieldsViewControllerDelegate: AnyObject {
     func setOrdering(with orderByFields: [AGSOrderBy])
 }
 

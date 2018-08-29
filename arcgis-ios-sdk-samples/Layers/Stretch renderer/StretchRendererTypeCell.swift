@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol StretchRendererTypeCellDelegate: class {
+protocol StretchRendererTypeCellDelegate: AnyObject {
     
     func stretchRendererTypeCell(_ stretchRendererTypeCell: StretchRendererTypeCell, didUpdateType type: StretchType)
 }

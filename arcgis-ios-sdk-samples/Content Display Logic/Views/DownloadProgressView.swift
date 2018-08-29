@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc protocol DownloadProgressViewDelegate: AnyObject {
+@objc protocol DownloadProgressViewDelegate:class {
     
     @objc optional func downloadProgressViewDidCancel(downloadProgressView:DownloadProgressView)
 }

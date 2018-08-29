@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol MissionSettingsVCDelegate: AnyObject {
+protocol MissionSettingsVCDelegate:class {
     
     func missionSettingsViewController(_ missionSettingsViewController:MissionSettingsViewController, didSelectMissionAtIndex index:Int)
     

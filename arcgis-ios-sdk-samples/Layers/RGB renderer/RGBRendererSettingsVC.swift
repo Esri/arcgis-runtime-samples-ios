@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-protocol RGBRendererSettingsVCDelegate: AnyObject {
+protocol RGBRendererSettingsVCDelegate:class {
     
     func rgbRendererSettingsVC(_ rgbRendererSettingsVC: RGBRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters)
 }

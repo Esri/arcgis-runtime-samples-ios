@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-protocol AddStatisticDefinitionsViewControllerDelegate: AnyObject {
+protocol AddStatisticDefinitionsViewControllerDelegate: class {
     func addStatisticDefinitions(_ statisticDefinitions: [AGSStatisticDefinition])
 }
 

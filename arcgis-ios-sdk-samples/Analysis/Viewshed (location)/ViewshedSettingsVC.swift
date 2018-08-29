@@ -14,7 +14,7 @@
 
 import UIKit
 
-protocol ViewshedSettingsVCDelegate: AnyObject {
+protocol ViewshedSettingsVCDelegate:class {
     
     func viewshedSettingsVC(_ viewshedSettingsVC:ViewshedSettingsVC, didUpdateAnalysisOverlayVisibility analysisOverlayVisibility:Bool)
     func viewshedSettingsVC(_ viewshedSettingsVC:ViewshedSettingsVC, didUpdateFrustumOutlineVisibility frustumOutlineVisibility:Bool)

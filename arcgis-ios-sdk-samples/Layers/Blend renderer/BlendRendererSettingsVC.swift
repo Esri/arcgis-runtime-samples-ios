@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-protocol BlendRendererSettingsVCDelegate: AnyObject {
+protocol BlendRendererSettingsVCDelegate: class {
     
     func blendRendererSettingsVC(_ blendRendererSettingsVC: BlendRendererSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType)
 }

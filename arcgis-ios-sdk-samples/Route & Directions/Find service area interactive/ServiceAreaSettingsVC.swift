@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol ServiceAreaSettingsVCDelegate: AnyObject {
+protocol ServiceAreaSettingsVCDelegate:class {
     
     func serviceAreaSettingsVC(_ serviceAreaSettingsVC:ServiceAreaSettingsVC, didUpdateFirstTimeBreak timeBreak:Int)
     

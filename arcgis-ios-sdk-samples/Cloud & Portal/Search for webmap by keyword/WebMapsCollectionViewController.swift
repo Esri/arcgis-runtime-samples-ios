@@ -17,7 +17,7 @@
 import UIKit
 import ArcGIS
 
-protocol WebMapsCollectionViewControllerDelegate: AnyObject {
+protocol WebMapsCollectionViewControllerDelegate:class {
     
     func webMapsCollectionVC(_ webMapsCollectionVC:WebMapsCollectionViewController, didSelectWebMap webMap:AGSPortalItem)
 }

@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-protocol GroupByFieldsViewControllerDelegate: AnyObject {
+protocol GroupByFieldsViewControllerDelegate: class {
     func setGrouping(with fieldNames: [String])
 }
 

@@ -16,7 +16,7 @@
 
 import UIKit
 
-protocol HorizontalPickerDelegate: AnyObject {
+protocol HorizontalPickerDelegate: class {
     func horizontalPicker(_ horizontalPicker:HorizontalPicker, didUpdateSelectedIndex index: Int)
 }
 

@@ -14,7 +14,7 @@
 
 import UIKit
 
-protocol SanDiegoAddressesVCDelegate: AnyObject {
+protocol SanDiegoAddressesVCDelegate:class {
     func sanDiegoAddressesViewController(_ sanDiegoAddressesViewController: SanDiegoAddressesViewController, didSelectAddress address:String)
 }
 

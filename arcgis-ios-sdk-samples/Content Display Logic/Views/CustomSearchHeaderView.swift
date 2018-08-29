@@ -14,7 +14,7 @@
 
 import UIKit
 
-protocol CustomSearchHeaderViewDelegate: AnyObject {
+protocol CustomSearchHeaderViewDelegate:class {
     func customSearchHeaderViewWillShowSuggestions(_ customSearchHeaderView:CustomSearchHeaderView)
     func customSearchHeaderViewWillHideSuggestions(_ customSearchHeaderView:CustomSearchHeaderView)
     func customSearchHeaderView(_ customSearchHeaderView:CustomSearchHeaderView, didFindSamples sampleNames:[String]?)

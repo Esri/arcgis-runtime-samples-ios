@@ -14,7 +14,7 @@
 
 import UIKit
 
-protocol EAOptionsVCDelegate: AnyObject {
+protocol EAOptionsVCDelegate:class {
     func optionsViewController(_ optionsViewController:EAOptionsViewController, didSelectOptionAtIndex index:Int)
 }
 

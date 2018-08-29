@@ -16,7 +16,7 @@
 
 import UIKit
 
-protocol VectorStylesVCDelegate: class {
+protocol VectorStylesVCDelegate: AnyObject {
     
     func vectorStylesViewController(_ vectorStylesViewController: VectorStylesViewController, didSelectItemWithID itemID:String)
 }

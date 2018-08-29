@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol TilePackagesListVCDelegate:class {
+protocol TilePackagesListVCDelegate: AnyObject {
     func tilePackagesListViewController(_ tilePackagesListViewController:TilePackagesListViewController, didSelectTPKWithPath path:String)
 }
 

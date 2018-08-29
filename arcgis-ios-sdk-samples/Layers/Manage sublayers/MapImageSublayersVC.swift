@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-protocol MapImageSublayersVCDelegate:class {
+protocol MapImageSublayersVCDelegate: AnyObject {
     
     func mapImageSublayersVC(mapImageSublayersVC: MapImageSublayersVC, didCloseWith removedMapImageSublayers:[AGSArcGISMapImageSublayer])
 }

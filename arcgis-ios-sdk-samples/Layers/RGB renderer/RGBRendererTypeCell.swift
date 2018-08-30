@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol RGBRendererTypeCellDelegate: class {
+protocol RGBRendererTypeCellDelegate: AnyObject {
     
     func rgbRendererTypeCell(_ rgbRendererTypeCell: RGBRendererTypeCell, didUpdateType type: StretchType)
 }

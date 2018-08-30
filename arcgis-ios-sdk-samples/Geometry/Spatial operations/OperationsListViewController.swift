@@ -14,7 +14,7 @@
 
 import UIKit
 
-protocol OperationsListVCDelegate: class {
+protocol OperationsListVCDelegate: AnyObject {
     
     func operationsListViewController(_ operationsListViewController: OperationsListViewController, didSelectOperation index: Int)
 }

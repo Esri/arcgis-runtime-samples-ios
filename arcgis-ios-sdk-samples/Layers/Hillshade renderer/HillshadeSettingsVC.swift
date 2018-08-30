@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-protocol HillshadeSettingsDelegate: class {
+protocol HillshadeSettingsDelegate: AnyObject {
     
     func hillshadeSettingsVC(_ hillshadeSettingsVC: HillshadeSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType)
 }

@@ -14,7 +14,7 @@
 
 import UIKit
 
-protocol SaveAsVCDelegate:class {
+protocol SaveAsVCDelegate: AnyObject {
     func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String)
     func saveAsViewControllerDidCancel(_ saveAsViewController:SaveAsViewController)
 }

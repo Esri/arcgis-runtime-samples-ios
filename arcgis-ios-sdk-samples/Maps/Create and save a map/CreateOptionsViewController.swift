@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-protocol CreateOptionsVCDelegate:class {
+protocol CreateOptionsVCDelegate: AnyObject {
     func createOptionsViewController(_ createOptionsViewController:CreateOptionsViewController, didSelectBasemap basemap:AGSBasemap, layers:[AGSLayer]?)
 }
 

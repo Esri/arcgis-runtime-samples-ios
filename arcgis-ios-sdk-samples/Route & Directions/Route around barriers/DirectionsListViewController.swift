@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-protocol DirectionsListVCDelegate:class {
+protocol DirectionsListVCDelegate: AnyObject {
     func directionsListViewController(_ directionsListViewController:DirectionsListViewController, didSelectDirectionManuever directionManeuver:AGSDirectionManeuver)
     func directionsListViewControllerDidDeleteRoute(_ directionsListViewController:DirectionsListViewController)
 }

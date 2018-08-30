@@ -30,7 +30,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GroupUsersViewController", "GroupUserCell"]
 
         //automatic cell sizing for table view
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 104
         
         //initialize portal with AGOL

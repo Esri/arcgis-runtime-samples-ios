@@ -89,7 +89,7 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
             titleString = String(format: "%@ %@", (arrowPointingDown ? "▶︎" : " \u{25B4}"), filename)
         }
         else {
-            self.toolbarTitleButton.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : UIColor.black], for: UIControlState())
+            self.toolbarTitleButton.setTitleTextAttributes([.foregroundColor : UIColor.black], for: .normal)
         }
         self.toolbarTitleButton.title = titleString
     }

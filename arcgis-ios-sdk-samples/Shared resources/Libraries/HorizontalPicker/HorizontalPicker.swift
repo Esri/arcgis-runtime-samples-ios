@@ -99,7 +99,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
         self.nibView = self.loadViewFromNib()
         
         self.nibView.frame = self.bounds
-        nibView.autoresizingMask = [UIViewAutoresizing.flexibleHeight, .flexibleWidth]
+        nibView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         self.addSubview(self.nibView)
         
@@ -120,11 +120,11 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     private func setButtonsColor() {
         let prevImage = self.prevButton.imageView?.image?.withRenderingMode(.alwaysTemplate)
         self.prevButton.imageView?.tintColor = self.buttonsColor
-        self.prevButton.setImage(prevImage, for: UIControlState())
+        self.prevButton.setImage(prevImage, for: .normal)
         
         let nextImage = self.nextButton.imageView?.image?.withRenderingMode(.alwaysTemplate)
         self.nextButton.imageView?.tintColor = self.buttonsColor
-        self.nextButton.setImage(nextImage, for: UIControlState())
+        self.nextButton.setImage(nextImage, for: .normal)
     }
     
     private func updateButtonsState() {

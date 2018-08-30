@@ -43,7 +43,7 @@ class OpenExistingMapViewController: UIViewController, UITableViewDataSource, UI
         
         //self sizing cells
         self.tableView.estimatedRowHeight = 50
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OpenExistingMapViewController"]
@@ -74,7 +74,7 @@ class OpenExistingMapViewController: UIViewController, UITableViewDataSource, UI
         
         cell.textLabel?.text = self.titles[indexPath.row]
         cell.imageView?.image = UIImage(named: self.imageNames[indexPath.row])!
-        cell.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+        cell.imageView?.contentMode = .scaleAspectFill
         cell.imageView?.clipsToBounds = true
         
         return cell

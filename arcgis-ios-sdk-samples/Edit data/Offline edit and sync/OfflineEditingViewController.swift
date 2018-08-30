@@ -373,7 +373,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
                 self?.switchToServiceMode()
             }
             
-            let alert = UIAlertController(title: nil, message: "Would you like to sync the changes before switching?", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: nil, message: "Would you like to sync the changes before switching?", preferredStyle: .alert)
             alert.addAction(noAction)
             alert.addAction(yesAction)
             self.present(alert, animated: true, completion: nil)

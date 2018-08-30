@@ -47,7 +47,7 @@ class HorizontalColorPicker: UIView, UICollectionViewDataSource, UICollectionVie
         backgroundColor = .clear
         nibView = loadViewFromNib()
         nibView.frame = bounds
-        nibView.autoresizingMask = [UIViewAutoresizing.flexibleHeight, .flexibleWidth]
+        nibView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addSubview(nibView)
         
         nibView.layer.cornerRadius = 5

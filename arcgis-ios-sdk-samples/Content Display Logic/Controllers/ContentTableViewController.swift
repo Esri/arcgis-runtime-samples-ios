@@ -33,7 +33,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 60
         
         if containsSearchResults {
@@ -78,7 +78,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             cell.transform = CGAffineTransform(translationX: self.tableView.bounds.width, y: 0)
             
             //last position with animation
-            UIView.animate(withDuration: 0.5, delay: 0.1 * Double(index), usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: UIViewAnimationOptions.curveLinear, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0.1 * Double(index), usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: .curveLinear, animations: {
                 
                 cell.transform = CGAffineTransform.identity
                 
@@ -120,7 +120,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             cell.detailLabel.text = nil
         }
         
-        cell.infoButton.addTarget(self, action: #selector(ContentTableViewController.expandCell(_:)), for: UIControlEvents.touchUpInside)
+        cell.infoButton.addTarget(self, action: #selector(ContentTableViewController.expandCell(_:)), for: .touchUpInside)
         cell.infoButton.tag = indexPath.row
 
         cell.backgroundColor = .clear
@@ -250,7 +250,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         if indexPath.row == self.expandedRowIndex {
             if collapseIfSelected {
                 self.expandedRowIndex = -1
-                tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                tableView.reloadRows(at: [indexPath], with: .fade)
             }
             else {
                 return
@@ -260,7 +260,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             //get the two cells and update
             let previouslyExpandedIndexPath = IndexPath(row: self.expandedRowIndex, section: 0)
             self.expandedRowIndex = indexPath.row
-            tableView.reloadRows(at: [previouslyExpandedIndexPath, indexPath], with: UITableViewRowAnimation.fade)
+            tableView.reloadRows(at: [previouslyExpandedIndexPath, indexPath], with: .fade)
         }
     }
     
@@ -270,7 +270,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         var headerViewFrame = self.headerView.frame
         headerViewFrame.size.height = customSearchHeaderView.expandedViewHeight
         
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions(), animations: { () -> Void in
+        UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: { () -> Void in
             self.headerView.frame = headerViewFrame
             self.tableView.tableHeaderView = self.headerView
         }, completion: nil)
@@ -280,7 +280,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         var headerViewFrame = self.headerView.frame
         headerViewFrame.size.height = customSearchHeaderView.shrinkedViewHeight
 
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions(), animations: { () -> Void in
+        UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: { () -> Void in
             self.headerView.frame = headerViewFrame
             self.tableView.tableHeaderView = self.headerView
         }, completion: nil)

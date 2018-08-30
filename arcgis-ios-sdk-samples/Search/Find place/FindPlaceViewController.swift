@@ -102,8 +102,8 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.overlayView.isHidden = true
         
         //register for keyboard notification in order to toggle overlay view on and off
-        NotificationCenter.default.addObserver(self, selector: #selector(FindPlaceViewController.showOverlayView), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(FindPlaceViewController.hideOverlayView), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FindPlaceViewController.showOverlayView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FindPlaceViewController.hideOverlayView), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         //add the left view images for both the textfields
         self.setupTextFieldLeftViews()
@@ -113,11 +113,11 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     private func setupTextFieldLeftViews() {
         var leftView = self.textFieldViewWithImage("SearchIcon")
         self.poiTextField.leftView = leftView
-        self.poiTextField.leftViewMode = UITextFieldViewMode.always
+        self.poiTextField.leftViewMode = .always
         
         leftView = self.textFieldViewWithImage("PinIcon")
         self.preferredSearchLocationTextField.leftView = leftView
-        self.preferredSearchLocationTextField.leftViewMode = UITextFieldViewMode.always
+        self.preferredSearchLocationTextField.leftViewMode = .always
     }
     
     //method returns a UIView with an imageView as the subview

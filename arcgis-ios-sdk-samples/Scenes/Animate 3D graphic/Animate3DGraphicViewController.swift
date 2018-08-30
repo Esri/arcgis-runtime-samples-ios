@@ -210,7 +210,7 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
         
         //new timer
         self.animationTimer = Timer(timeInterval: duration, target: self, selector: #selector(animate), userInfo: nil, repeats: true)
-        RunLoop.main.add(self.animationTimer, forMode: RunLoopMode.commonModes)
+        RunLoop.main.add(self.animationTimer, forMode: .common)
     }
     
     @objc func animate() {

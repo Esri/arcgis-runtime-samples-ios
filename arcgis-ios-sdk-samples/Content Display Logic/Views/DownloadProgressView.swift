@@ -56,7 +56,7 @@ class DownloadProgressView: UIView {
         self.nibView = self.loadViewFromNib()
         
         self.nibView.frame = self.bounds
-        nibView.autoresizingMask = [UIViewAutoresizing.flexibleHeight, .flexibleWidth]
+        nibView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         self.addSubview(self.nibView)
         

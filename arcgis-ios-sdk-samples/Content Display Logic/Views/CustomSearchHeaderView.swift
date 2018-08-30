@@ -59,12 +59,10 @@ class CustomSearchHeaderView: UICollectionReusableView, UITableViewDataSource, U
         self.nibView = self.loadViewFromNib()
         
         self.nibView.frame = self.bounds
-        nibView.autoresizingMask = [UIViewAutoresizing.flexibleHeight, .flexibleWidth]
-        
-        
+        nibView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         if let searchTextField = self.searchBar.value(forKey: "searchField") as? UITextField {
-            let placeholderAttributes: [NSAttributedStringKey: Any] = [
+            let placeholderAttributes: [NSAttributedString.Key: Any] = [
                 .foregroundColor: UIColor.white,
                 .font: UIFont.systemFont(ofSize: UIFont.systemFontSize)
             ]
@@ -76,7 +74,7 @@ class CustomSearchHeaderView: UICollectionReusableView, UITableViewDataSource, U
             searchTextField.backgroundColor = .secondaryBlue
             
             let imageV = searchTextField.leftView as! UIImageView
-            imageV.image = imageV.image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            imageV.image = imageV.image?.withRenderingMode(.alwaysTemplate)
             imageV.tintColor = .white
         }
         

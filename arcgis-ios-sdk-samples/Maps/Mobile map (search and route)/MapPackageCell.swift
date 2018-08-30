@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-protocol MapPackageCellDelegate:class {
+protocol MapPackageCellDelegate: AnyObject {
     
     func mapPackageCell(_ mapPackageCell:MapPackageCell, didSelectMap map:AGSMap)
 }

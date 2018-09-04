@@ -30,7 +30,7 @@ class OnInteractionCacheViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OnInteractionCacheViewController"]
         
         //initialize map with light gray canvas basemap
-        self.map = AGSMap(basemap: AGSBasemap.lightGrayCanvas())
+        self.map = AGSMap(basemap: .lightGrayCanvas())
         
         //initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -1.30758164047166E7,

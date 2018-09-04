@@ -35,7 +35,7 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["AddDeleteRelatedFeaturesVC", "RelatedFeaturesViewController"]
 
         //initialize map with basemap
-        let map = AGSMap(basemap: AGSBasemap.streets())
+        let map = AGSMap(basemap: .streets())
         
         //initial viewpoint
         let point = AGSPoint(x: -16507762.575543, y: 9058828.127243, spatialReference: AGSSpatialReference(wkid: 3857))

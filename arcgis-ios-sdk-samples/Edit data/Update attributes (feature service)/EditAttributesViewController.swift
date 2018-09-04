@@ -36,7 +36,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditAttributesViewController", "EAOptionsViewController"]
         
-        self.map = AGSMap(basemap: AGSBasemap.oceans())
+        self.map = AGSMap(basemap: .oceans())
         //set initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: AGSSpatialReference.webMercator()), scale: 2e6)
         

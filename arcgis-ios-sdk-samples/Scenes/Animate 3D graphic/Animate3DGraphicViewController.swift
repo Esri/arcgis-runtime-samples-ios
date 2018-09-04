@@ -54,7 +54,7 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["Animate3DGraphicViewController", "MissionSettingsViewController", "CameraSettingsViewController", "PlaneStatsViewController"]
         
         //map
-        let map = AGSMap(basemap: AGSBasemap.streets())
+        let map = AGSMap(basemap: .streets())
         self.mapView.map = map
         self.mapView.interactionOptions.isEnabled = false
         
@@ -65,7 +65,7 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
         self.mapView.isAttributionTextVisible = false
         
         //initalize scene with imagery basemap
-        let scene = AGSScene(basemap: AGSBasemap.imagery())
+        let scene = AGSScene(basemap: .imagery())
         
         //assign scene to scene view
         self.sceneView.scene = scene

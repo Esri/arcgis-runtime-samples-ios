@@ -31,7 +31,7 @@ class ScenePropertiesExpressionsViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ScenePropertiesExpressionsViewController"]
         
         //initialize scene with topographic basemap
-        let scene = AGSScene(basemap: AGSBasemap.streets())
+        let scene = AGSScene(basemap: .streets())
         //assign scene to the scene view
         self.sceneView.scene = scene
         

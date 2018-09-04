@@ -35,7 +35,7 @@ class RasterLayerUsingServiceVC : UIViewController {
         self.rasterLayer = AGSRasterLayer(raster: imageServiceRaster)
         
         //initialize a map with dark canvas vector basemap
-        self.map = AGSMap(basemap: AGSBasemap.darkGrayCanvasVector())
+        self.map = AGSMap(basemap: .darkGrayCanvasVector())
         
         //add raster layer as an operational layer to the map
         self.map.operationalLayers.add(self.rasterLayer)

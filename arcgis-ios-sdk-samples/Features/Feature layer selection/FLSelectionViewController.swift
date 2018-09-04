@@ -33,7 +33,7 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FLSelectionViewController"]
         
         //initialize map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.streets())
+        self.map = AGSMap(basemap: .streets())
         //initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -1131596.019761, yMin: 3893114.069099, xMax: 3926705.982140, yMax: 7977912.461790, spatialReference: AGSSpatialReference.webMercator()))
         //assign map to the map view

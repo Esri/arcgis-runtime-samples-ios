@@ -27,7 +27,7 @@ class FeatureCollectionLayerVC: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureCollectionLayerVC"]
         
         //initialize map with basemap
-        let map = AGSMap(basemap: AGSBasemap.oceans())
+        let map = AGSMap(basemap: .oceans())
         
         //initial viewpoint
         let point = AGSPoint(x: -79.497238, y: 8.849289, spatialReference: AGSSpatialReference.wgs84())

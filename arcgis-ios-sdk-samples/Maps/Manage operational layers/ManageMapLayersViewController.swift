@@ -25,7 +25,7 @@ class ManageMapLayersViewController: UIViewController, MMLLayersViewControllerDe
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        self.map = AGSMap(basemap: AGSBasemap.topographic())
+        self.map = AGSMap(basemap: .topographic())
         
         let imageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!)
         self.map.operationalLayers.add(imageLayer)

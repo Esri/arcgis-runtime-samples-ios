@@ -32,7 +32,7 @@ class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FormatCoordinatesViewController"]
         
         //initializer map with basemap
-        let map = AGSMap(basemap: AGSBasemap.imagery())
+        let map = AGSMap(basemap: .imagery())
         
         //assign map to map view
         self.mapView.map = map

@@ -16,10 +16,6 @@ import UIKit
 
 class ContentTableViewController: UITableViewController, CustomSearchHeaderViewDelegate, DownloadProgressViewDelegate {
 
-    private lazy var __once: () = { [weak self] in
-            self?.animateTable()
-        }()
-
     var nodesArray:[Node]!
     private var expandedRowIndex:Int = -1
     
@@ -50,45 +46,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         self.downloadProgressView = DownloadProgressView()
         self.downloadProgressView.delegate = self
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //animate the table only the first time the view appears
-        _ = self.__once
-    }
-    
-    func animateTable() {
-        //call reload data and wait for it to finish
-        //before accessing the visible cells
-        self.tableView.reloadData()
-        self.tableView.layoutIfNeeded()
-        
-        //will be animating only the visible cells
-        let visibleCells = self.tableView.visibleCells
-        
-        //counter for the for loop
-        var index = 0
-        
-        //loop through each visible cell
-        //and set the starting transform and then animate to identity
-        for cell in visibleCells {
-            
-            //starting position
-            cell.transform = CGAffineTransform(translationX: self.tableView.bounds.width, y: 0)
-            
-            //last position with animation
-            UIView.animate(withDuration: 0.5, delay: 0.1 * Double(index), usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: UIViewAnimationOptions.curveLinear, animations: {
-                
-                cell.transform = CGAffineTransform.identity
-                
-            }, completion: nil)
-            
-            //increment counter
-            index = index + 1
-        }
-    }
-    
+ 
     func nodesByDisplayNames(_ names:[String]) -> [Node] {
         var nodes = [Node]()
         let matchingNodes = self.nodesArray.filter({ return names.contains($0.displayName) })

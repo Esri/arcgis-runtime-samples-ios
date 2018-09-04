@@ -30,19 +30,12 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     
     private var headerView:CustomSearchHeaderView!
     
+    /// The categories to display in the collection view.
     var categories = [Category]()
     private var transitionSize:CGSize!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        do {
-            let url = Bundle.main.url(forResource: "ContentPList", withExtension: "plist")!
-            let data = try Data(contentsOf: url)
-            categories = try PropertyListDecoder().decode([Category].self, from: data)
-        } catch {
-            fatalError("Error decoding categories: \(error)")
-        }
         
         if #available(iOS 11.0, *) {
             self.collectionView.contentInsetAdjustmentBehavior = .never

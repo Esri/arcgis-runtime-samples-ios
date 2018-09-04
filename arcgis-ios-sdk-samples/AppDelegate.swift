@@ -41,6 +41,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         splitViewController.minimumPrimaryColumnWidth = 320
         splitViewController.maximumPrimaryColumnWidth = 320
         
+        // Decode and populate Categories.
+        let contentCollectionViewController = (splitViewController.viewControllers.first as! UINavigationController).viewControllers.first as! ContentCollectionViewController
+        do {
+            let url = Bundle.main.url(forResource: "ContentPList", withExtension: "plist")!
+            let data = try Data(contentsOf: url)
+            contentCollectionViewController.categories = try PropertyListDecoder().decode([Category].self, from: data)
+        } catch {
+            fatalError("Error decoding categories: \(error)")
+        }
+        
         self.modifyAppearance()
         
         //enable/disable touches based on settings

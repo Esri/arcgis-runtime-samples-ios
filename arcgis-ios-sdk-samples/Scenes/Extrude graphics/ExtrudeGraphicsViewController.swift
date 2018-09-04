@@ -35,7 +35,7 @@ class ExtrudeGraphicsViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ExtrudeGraphicsViewController"]
         
         //initialize scene with topographic basemap
-        let scene = AGSScene(basemap: AGSBasemap.topographic())
+        let scene = AGSScene(basemap: .topographic())
         //assign scene to the scene view
         self.sceneView.scene = scene
         

@@ -34,7 +34,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ReverseGeocodeViewController"]
         
         //create an instance of a map with ESRI topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.topographic())
+        self.map = AGSMap(basemap: .topographic())
         
         self.mapView.map = self.map
         self.mapView.touchDelegate = self

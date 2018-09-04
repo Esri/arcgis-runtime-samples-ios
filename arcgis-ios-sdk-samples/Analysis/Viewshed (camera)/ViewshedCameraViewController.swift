@@ -28,7 +28,7 @@ class ViewshedCameraViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ViewshedCameraViewController"]
         
         // initialize the scene with an imagery basemap
-        let scene = AGSScene(basemap: AGSBasemap.imagery())
+        let scene = AGSScene(basemap: .imagery())
         
         // assign the scene to the scene view
         sceneView.scene = scene

@@ -35,7 +35,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ListRelatedFeaturesVC", "RelatedFeaturesListVC"]
         
         //initialize map with a basemap
-        let map = AGSMap(basemap: AGSBasemap.nationalGeographic())
+        let map = AGSMap(basemap: .nationalGeographic())
         
         //initial viewpoint
         let point = AGSPoint(x: -16507762.575543, y: 9058828.127243, spatialReference: AGSSpatialReference(wkid: 3857))

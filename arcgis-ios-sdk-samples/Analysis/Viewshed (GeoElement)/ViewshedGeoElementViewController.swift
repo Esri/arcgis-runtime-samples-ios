@@ -32,7 +32,7 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
         sceneView.touchDelegate = self
         
         // create the scene
-        let scene = AGSScene(basemap: AGSBasemap.imagery())
+        let scene = AGSScene(basemap: .imagery())
         
         // add base surface for elevation data
         let surface = AGSSurface()

@@ -58,7 +58,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
         AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
         
-        let map = AGSMap(basemap: AGSBasemap.imagery())
+        let map = AGSMap(basemap: .imagery())
         
         self.mapView.map = map
         

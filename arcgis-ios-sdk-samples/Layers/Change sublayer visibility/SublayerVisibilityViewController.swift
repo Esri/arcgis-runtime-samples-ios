@@ -29,7 +29,7 @@ class SublayerVisibilityViewController: UIViewController, UIAdaptivePresentation
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SublayerVisibilityViewController","SublayersTableViewController"]
         
         //initialize map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.topographic())
+        self.map = AGSMap(basemap: .topographic())
         
         //initialize the map image layer using a url
         self.mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)

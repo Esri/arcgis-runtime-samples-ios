@@ -31,7 +31,7 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelega
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ManageSublayersViewController","MapImageSublayersVC"]
         
         //instantiate map with basemap
-        let map = AGSMap(basemap: AGSBasemap.streets())
+        let map = AGSMap(basemap: .streets())
         
         //initialize map image layer
         self.mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer")!)

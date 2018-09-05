@@ -21,7 +21,6 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         }()
 
     var nodesArray:[Node]!
-    private var expandedRowIndex:Int = -1
     
     private var headerView:CustomSearchHeaderView!
     var containsSearchResults = false
@@ -108,23 +107,18 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "ContentTableCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as! ContentTableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)!
 
         let node = self.nodesArray[indexPath.row]
-        cell.titleLabel.text = node.displayName
         
-        if self.expandedRowIndex == indexPath.row {
-            cell.detailLabel.text = node.descriptionText
-        }
-        else {
-            cell.detailLabel.text = nil
-        }
+        //populate the sample name
+        cell.textLabel?.text = node.displayName
         
-        cell.infoButton.addTarget(self, action: #selector(ContentTableViewController.expandCell(_:)), for: UIControlEvents.touchUpInside)
-        cell.infoButton.tag = indexPath.row
+        //populate the detail label with the description and the attributes from the storyboard
+        let attributes = cell.detailTextLabel?.attributedText?.attributes(at: 0, effectiveRange: nil)
+        let attributedDescription = NSAttributedString(string: node.descriptionText, attributes: attributes)
+        cell.detailTextLabel?.attributedText = attributedDescription
 
-        cell.backgroundColor = .clear
-        
         return cell
     }
     
@@ -217,9 +211,6 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
     
     func showSample(indexPath: IndexPath, node: Node) {
         
-        //expand the selected cell
-        self.updateExpandedRow(indexPath, collapseIfSelected: false)
-        
         let storyboard = UIStoryboard(name: node.storyboardName, bundle: Bundle.main)
         let controller = storyboard.instantiateInitialViewController()!
         controller.title = node.displayName
@@ -239,29 +230,6 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         infoBBI.folderName = node.displayName
         infoBBI.navController = navController
         controller.navigationItem.rightBarButtonItem = infoBBI
-    }
-    
-    @objc func expandCell(_ sender:UIButton) {
-        self.updateExpandedRow(IndexPath(row: sender.tag, section: 0), collapseIfSelected: true)
-    }
-    
-    func updateExpandedRow(_ indexPath:IndexPath, collapseIfSelected:Bool) {
-        //if same row selected then hide the detail view
-        if indexPath.row == self.expandedRowIndex {
-            if collapseIfSelected {
-                self.expandedRowIndex = -1
-                tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
-            }
-            else {
-                return
-            }
-        }
-        else {
-            //get the two cells and update
-            let previouslyExpandedIndexPath = IndexPath(row: self.expandedRowIndex, section: 0)
-            self.expandedRowIndex = indexPath.row
-            tableView.reloadRows(at: [previouslyExpandedIndexPath, indexPath], with: UITableViewRowAnimation.fade)
-        }
     }
     
     //MARK: - CustomSearchHeaderViewDelegate

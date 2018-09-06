@@ -77,8 +77,16 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     
     //MARK: - samples lookup by name
     
+    /// Returns the samples in all categories whose names are members of the
+    /// given names collection.
+    ///
+    /// - Parameter names: A collection of strings for which to test names
+    /// against.
+    /// - Returns: An array of samples whose names are members of `names1.
     func samplesByNames<C: Collection>(_ names: C) -> [Sample] where C.Element == String {
-        return categories.flatMap({ $0.samples }).filter({ names.contains($0.name) })
+        return categories
+            .flatMap { $0.samples }
+            .filter { names.contains($0.name) }
     }
 
     // MARK: UICollectionViewDataSource
@@ -86,7 +94,6 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categories.count

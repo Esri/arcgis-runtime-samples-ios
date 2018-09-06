@@ -15,12 +15,11 @@
 import UIKit
 import ArcGIS
 
-class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIAdaptivePresentationControllerDelegate {
+class BookmarksViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
     
     @IBOutlet private weak var mapView:AGSMapView!
     
     private var map:AGSMap!
-    private var alertController:UIAlertController!
     
     private weak var bookmarksListVC:BookmarksListViewController!
     
@@ -28,7 +27,7 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIAdaptive
         super.viewDidLoad()
         
         //initialize map using imagery with labels basemap
-        self.map = AGSMap(basemap: AGSBasemap.imageryWithLabels())
+        self.map = AGSMap(basemap: .imageryWithLabels())
         
         //assign map to the mapView
         self.mapView.map = self.map
@@ -83,31 +82,31 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIAdaptive
     //MARK: - Actions
     
     @IBAction private func addAction() {
-        //show an alert controller with textfield to get the name for the bookmark
-        self.alertController = UIAlertController(title: "Provide the bookmark name", message: nil, preferredStyle: .alert)
-        self.alertController.addTextField { (textField: UITextField) in
-            
-        }
+        // Show an alert controller with textfield to get the name for the bookmark.
+        let alertController = UIAlertController(title: "Provide the bookmark name", message: nil, preferredStyle: .alert)
+        alertController.addTextField()
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        let doneAction = UIAlertAction(title: "Done", style: .default) { [weak self] (action: UIAlertAction) in
-            guard let weakSelf = self else {
-                return
-            }
-            //if the textfield is not empty then add a bookmark
-            //else dont do anything
-            let textField = weakSelf.alertController.textFields![0]
-            if !textField.text!.isEmpty {
-                weakSelf.addBookmark(withName: textField.text!)
-            }
+        let doneAction = UIAlertAction(title: "Done", style: .default) { [weak self, textField = alertController.textFields?.first] (_) in
+            // If the text field is empty, do nothing.
+            guard let text = textField?.text, !text.isEmpty else { return }
+            // Add the bookmark since the text isn't empty.
+            self?.addBookmark(withName: text)
         }
         
-        //add actions to alert controller
-        self.alertController.addAction(cancelAction)
-        self.alertController.addAction(doneAction)
+        // Add actions to alert controller.
+        alertController.addAction(cancelAction)
+        alertController.addAction(doneAction)
+        alertController.preferredAction = doneAction
         
-        //present alert controller
-        self.present(self.alertController, animated: true, completion: nil)
+        // Present alert controller.
+        if presentedViewController != nil {
+            dismiss(animated: false) {
+                self.present(alertController, animated: true)
+            }
+        } else {
+            present(alertController, animated: true)
+        }
     }
     
     private func addBookmark(withName name:String) {
@@ -133,7 +132,7 @@ class BookmarksViewController: UIViewController, UIAlertViewDelegate, UIAdaptive
             controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             //assign the bookmarks to be shown
-            controller.bookmarks = self.map.bookmarks as AnyObject as! [AGSBookmark]
+            controller.bookmarks = self.map.bookmarks as? [AGSBookmark]
             //set the closure to be executed when the user selects a bookmark
             controller.setSelectAction { [weak self] (viewpoint:AGSViewpoint) -> Void in
                 self?.mapView.setViewpoint(viewpoint)

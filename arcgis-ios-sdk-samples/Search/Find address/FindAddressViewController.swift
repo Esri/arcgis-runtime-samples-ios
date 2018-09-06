@@ -34,7 +34,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindAddressViewController", "WorldAddressesViewController"]
         
         //instantiate a map with an imagery with labels basemap
-        let map = AGSMap(basemap: AGSBasemap.imageryWithLabels())
+        let map = AGSMap(basemap: .imageryWithLabels())
         self.mapView.map = map
         self.mapView.touchDelegate = self
         

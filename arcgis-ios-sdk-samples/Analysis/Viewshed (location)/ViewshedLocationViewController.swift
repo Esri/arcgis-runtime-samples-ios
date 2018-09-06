@@ -38,7 +38,7 @@ class ViewshedLocationViewController: UIViewController, AGSGeoViewTouchDelegate,
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ViewshedLocationViewController", "ViewshedSettingsVC"]
         
         // initialize the scene with an imagery basemap
-        let scene = AGSScene(basemap: AGSBasemap.imagery())
+        let scene = AGSScene(basemap: .imagery())
         
         // assign the scene to the scene view
         sceneView.scene = scene

@@ -148,32 +148,44 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             //remove KVO observer
             strongSelf.generateOfflineMapJob.progress.removeObserver(strongSelf, forKeyPath: #keyPath(Progress.fractionCompleted))
             
-            if let error = error {
-                
+            if let error = error {    
                 //if not user cancelled
                 if (error as NSError).code != NSUserCancelledError {
                     SVProgressHUD.showError(withStatus: error.localizedDescription)
                 }
             } else if let result = result {
-                if let layerErrors = result.layerErrors as? [AGSLayer: Error], !layerErrors.isEmpty {
-                    let errorMessages = layerErrors.map { "\($0.key.name): \($0.value.localizedDescription)" }
-                    let okayAction = UIAlertAction(title: "OK", style: .default)
-                    let alertController = UIAlertController(
-                        title: "Offline Map Generated with Errors",
-                        message: "The following error(s) occurred while generating the offline map:\n\n\(errorMessages.joined(separator: "\n"))",
-                        preferredStyle: .alert
-                    )
-                    alertController.addAction(okayAction)
-                    alertController.preferredAction = okayAction
-                    strongSelf.present(alertController, animated: true)
-                }
-                //disable cancel button
-                strongSelf.cancelButton.isEnabled = false
-                
-                //assign offline map to map view
-                strongSelf.mapView.map = result.offlineMap
+                strongSelf.offlineMapGenerationDidSucceed(with: result)
             }
         }
+    }
+    
+    /// Called when the generate offline map job finishes successfully.
+    ///
+    /// - Parameter result: The result of the generate offline map job.
+    func offlineMapGenerationDidSucceed(with result: AGSGenerateOfflineMapResult) {
+        // Show any layer or table errors to the user.
+        if let layerErrors = result.layerErrors as? [AGSLayer: Error],
+            let tableErrors = result.tableErrors as? [AGSFeatureTable: Error],
+            !(layerErrors.isEmpty && tableErrors.isEmpty) {
+            
+            let errorMessages = layerErrors.map { "\($0.key.name): \($0.value.localizedDescription)" } +
+                tableErrors.map { "\($0.key.displayName): \($0.value.localizedDescription)" }
+            let okayAction = UIAlertAction(title: "OK", style: .default)
+            let alertController = UIAlertController(
+                title: "Offline Map Generated with Errors",
+                message: "The following error(s) occurred while generating the offline map:\n\n\(errorMessages.joined(separator: "\n"))",
+                preferredStyle: .alert
+            )
+            alertController.addAction(okayAction)
+            alertController.preferredAction = okayAction
+            present(alertController, animated: true)
+        }
+        
+        //disable cancel button
+        cancelButton.isEnabled = false
+        
+        //assign offline map to map view
+        mapView.map = result.offlineMap
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

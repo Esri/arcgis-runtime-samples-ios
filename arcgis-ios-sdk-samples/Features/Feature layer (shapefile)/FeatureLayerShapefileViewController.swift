@@ -23,7 +23,7 @@ class FeatureLayerShapefileViewController: UIViewController {
 
     required init?(coder aDecoder: NSCoder) {
         // Instantiate a map using a basemap.
-        map = AGSMap(basemap: AGSBasemap.streetsVector())
+        map = AGSMap(basemap: .streetsVector())
 
         // Create a shapefile feature table from a named bundle resource.
         let shapefileTable = AGSShapefileFeatureTable(name: "Public_Art")

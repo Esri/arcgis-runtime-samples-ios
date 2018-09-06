@@ -121,7 +121,7 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     //supplementary view as search bar
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if self.headerView == nil {
-            self.headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionHeaderView", for: indexPath) as! CustomSearchHeaderView
+            self.headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionHeaderView", for: indexPath) as? CustomSearchHeaderView
             self.headerView.delegate = self
         }
         return self.headerView

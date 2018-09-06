@@ -26,7 +26,7 @@ enum AnimationDirection: String {
     case Backward = "Backward"
 }
 
-protocol GridSettingsVCDelegate: class {
+protocol GridSettingsVCDelegate: AnyObject {
     
     func gridSettingsViewController(_ gridSettingsViewController: GridSettingsViewController, didUpdateBackgroundGrid grid: AGSBackgroundGrid)
     

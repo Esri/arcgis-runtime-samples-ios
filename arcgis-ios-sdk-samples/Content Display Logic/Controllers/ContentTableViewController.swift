@@ -15,11 +15,6 @@
 import UIKit
 
 class ContentTableViewController: UITableViewController, CustomSearchHeaderViewDelegate, DownloadProgressViewDelegate {
-
-    private lazy var __once: () = { [weak self] in
-            self?.animateTable()
-        }()
-
     var samples = [Sample]()
     private var expandedRowIndex:Int = -1
     
@@ -41,7 +36,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             self.tableView.tableHeaderView = nil
         }
         else {
-            self.headerView = self.tableView.tableHeaderView! as! CustomSearchHeaderView
+            self.headerView = self.tableView.tableHeaderView! as? CustomSearchHeaderView
             self.headerView.delegate = self
             self.headerView.hideSuggestionsTable()
         }
@@ -49,44 +44,6 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         //initialize download progress view
         self.downloadProgressView = DownloadProgressView()
         self.downloadProgressView.delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //animate the table only the first time the view appears
-        _ = self.__once
-    }
-    
-    func animateTable() {
-        //call reload data and wait for it to finish
-        //before accessing the visible cells
-        self.tableView.reloadData()
-        self.tableView.layoutIfNeeded()
-        
-        //will be animating only the visible cells
-        let visibleCells = self.tableView.visibleCells
-        
-        //counter for the for loop
-        var index = 0
-        
-        //loop through each visible cell
-        //and set the starting transform and then animate to identity
-        for cell in visibleCells {
-            
-            //starting position
-            cell.transform = CGAffineTransform(translationX: self.tableView.bounds.width, y: 0)
-            
-            //last position with animation
-            UIView.animate(withDuration: 0.5, delay: 0.1 * Double(index), usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: UIViewAnimationOptions.curveLinear, animations: {
-                
-                cell.transform = CGAffineTransform.identity
-                
-            }, completion: nil)
-            
-            //increment counter
-            index = index + 1
-        }
     }
     
     func samplesByNames<C: Collection>(_ names: C) -> [Sample] where C.Element == String {

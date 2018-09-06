@@ -26,6 +26,10 @@ extension URL {
     
     // Map Services
     
+    /// The url of a map service containing sample census data of the United States.
+    static let censusMapService = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!
+    /// The url of the States layer of the Census Map Service.
+    static let censusMapServiceStatesLayer = censusMapService.appendingPathComponent("3")
     /// The url of a map service containing sample data of the United States.
     static let unitedStatesMapService = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer")!
     

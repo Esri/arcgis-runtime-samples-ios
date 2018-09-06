@@ -29,7 +29,7 @@ class TimeBasedQueryVC: UIViewController {
         super.viewDidLoad()
         
         //initialize map with oceans basemap
-        self.map = AGSMap(basemap: AGSBasemap.oceans())
+        self.map = AGSMap(basemap: .oceans())
         
         //assign map to the map view
         self.mapView.map = self.map

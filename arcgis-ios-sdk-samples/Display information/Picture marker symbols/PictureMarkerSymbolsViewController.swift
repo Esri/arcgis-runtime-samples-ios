@@ -28,7 +28,7 @@ class PictureMarkerSymbolsViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["PictureMarkerSymbolsViewController"]
         
         //initialize map with basemap
-        let map = AGSMap(basemap: AGSBasemap.topographic())
+        let map = AGSMap(basemap: .topographic())
         
         //initial envelope
         let center = AGSPoint(x: -225166.5, y: 6551249, spatialReference: AGSSpatialReference.webMercator())

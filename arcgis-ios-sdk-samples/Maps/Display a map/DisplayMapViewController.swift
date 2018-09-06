@@ -23,7 +23,7 @@ class DisplayMapViewController: UIViewController {
         super.viewDidLoad()
         
         //initialize map with a basemap
-        let map = AGSMap(basemap: AGSBasemap.imagery())
+        let map = AGSMap(basemap: .imagery())
         
         //assign the map to the map view
         self.mapView.map = map

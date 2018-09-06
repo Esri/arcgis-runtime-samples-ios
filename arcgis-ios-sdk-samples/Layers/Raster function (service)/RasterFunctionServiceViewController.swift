@@ -30,7 +30,7 @@ class RasterFunctionServiceViewController: UIViewController {
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RasterFunctionServiceViewController"]
         
         // Initialize map and set it on map view
-        map = AGSMap(basemap: AGSBasemap.darkGrayCanvasVector())
+        map = AGSMap(basemap: .darkGrayCanvasVector())
         mapView.map = map
         
         // Initialize image service raster and apply raster function when it's loaded

@@ -58,7 +58,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
         AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
         
-        let map = AGSMap(basemap: AGSBasemap.imagery())
+        let map = AGSMap(basemap: .imagery())
         
         self.mapView.map = map
         
@@ -143,11 +143,11 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CreateOptionsEmbedSegue" {
-            self.createOptionsVC = segue.destination as! CreateOptionsViewController
+            self.createOptionsVC = segue.destination as? CreateOptionsViewController
             self.createOptionsVC.delegate = self
         }
         else if segue.identifier == "SaveAsEmbedSegue" {
-            self.saveAsVC = segue.destination as! SaveAsViewController
+            self.saveAsVC = segue.destination as? SaveAsViewController
             self.saveAsVC.delegate = self
         }
     }

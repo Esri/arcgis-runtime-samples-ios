@@ -50,7 +50,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RouteAroundBarriersViewController", "DirectionsListViewController", "RouteParametersViewController"]
         
-        let map = AGSMap(basemap: AGSBasemap.topographic())
+        let map = AGSMap(basemap: .topographic())
         
         self.mapView.map = map
         self.mapView.touchDelegate = self
@@ -230,7 +230,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             controller.routeParameters = self.routeParameters
         }
         else if segue.identifier == "DirectionsListSegue" {
-            self.directionsListViewController = segue.destination as! DirectionsListViewController
+            self.directionsListViewController = segue.destination as? DirectionsListViewController
             self.directionsListViewController.delegate = self
         }
     }

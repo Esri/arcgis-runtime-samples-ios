@@ -97,12 +97,12 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
         
         // Instantiate map using basemap and set on mapView
         mapView.map = AGSMap(basemap: .topographic())
+        
+        // Set selection color
+        mapView.selectionProperties.color = .yellow
 
         // Add polygon, polyline and point graphics to graphics overlay
         graphicsOverlay.graphics.addObjects(from: [polygonGraphic, polylineGraphic, pointGraphic])
-        
-        // Set selection color of graphics overlay
-        graphicsOverlay.selectionColor = .yellow
         
         // Add graphics overlay to mapView
         mapView.graphicsOverlays.add(graphicsOverlay)

@@ -14,12 +14,65 @@
 
 import UIKit
 
+class NodeManager {
+    
+    static let shared = NodeManager()
+    
+    let nodesArray:[Node]
+    
+    private init(){
+        let path = Bundle.main.path(forResource: "ContentPList", ofType: "plist")
+        let content = NSArray(contentsOfFile: path!)
+        nodesArray = NodeManager.populateNodesArray(content! as [AnyObject])
+    }
+    
+    static func populateNodesArray(_ array:[AnyObject]) -> [Node] {
+        var nodesArray = [Node]()
+        for object in array {
+            let dict = object as! [String:AnyObject]
+            let node = Node(dict: dict)
+            nodesArray.append(node)
+        }
+        return nodesArray
+    }
+    
+    func nodesByDisplayNames(_ names:[String]) -> [Node] {
+        var nodes = [Node]()
+        for node in nodesArray {
+            let children = node.children
+            if let matchingNodes = children?.filter({ return names.contains($0.displayName) }) {
+                nodes.append(contentsOf: matchingNodes)
+            }
+        }
+        return nodes
+    }
+    
+}
+
 class Node: NSObject {
    
     var displayName:String = ""
     var descriptionText:String = ""
-    var storyboardName:String!  //if nil, then use content table VC
-    var children:[Node]!  //if nil, then root node
+    var storyboardName:String?
+    var children:[Node]? //if nil, then root node
     var dependency = [String]()
-//    var readmeURLString:String!
+    
+    init(dict:[String:AnyObject]){
+        if let displayName = dict["displayName"] as? String {
+            self.displayName = displayName
+        }
+        if let descriptionText = dict["descriptionText"] as? String {
+            self.descriptionText = descriptionText
+        }
+        if let storyboardName = dict["storyboardName"] as? String {
+            self.storyboardName = storyboardName
+        }
+        if let children = dict["children"] as? [AnyObject] {
+            self.children = NodeManager.populateNodesArray(children)
+        }
+        if let dependency = dict["dependency"] as? [String] {
+            self.dependency.append(contentsOf: dependency)
+        }
+    }
+
 }

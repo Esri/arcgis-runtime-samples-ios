@@ -14,12 +14,11 @@
 
 import UIKit
 
-class ContentTableViewController: UITableViewController, CustomSearchHeaderViewDelegate, DownloadProgressViewDelegate {
+class ContentTableViewController: UITableViewController {
 
     var nodesArray:[Node]!
     private var expandedRowIndex:Int = -1
     
-    private var headerView:CustomSearchHeaderView!
     var containsSearchResults = false
     private var bundleResourceRequest:NSBundleResourceRequest!
     private var downloadProgressView:DownloadProgressView!
@@ -29,29 +28,9 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 60
-        
-        if containsSearchResults {
-            self.tableView.tableHeaderView?.removeFromSuperview()
-            self.tableView.tableHeaderView = nil
-        }
-        else {
-            self.headerView = self.tableView.tableHeaderView! as? CustomSearchHeaderView
-            self.headerView.delegate = self
-            self.headerView.hideSuggestionsTable()
-        }
-        
         //initialize download progress view
-        self.downloadProgressView = DownloadProgressView()
-        self.downloadProgressView.delegate = self
-    }
- 
-    func nodesByDisplayNames(_ names:[String]) -> [Node] {
-        var nodes = [Node]()
-        let matchingNodes = self.nodesArray.filter({ return names.contains($0.displayName) })
-        nodes.append(contentsOf: matchingNodes)
-        return nodes
+        downloadProgressView = DownloadProgressView()
+        downloadProgressView.delegate = self
     }
 
     // MARK: - Table view data source
@@ -178,25 +157,39 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         //expand the selected cell
         self.updateExpandedRow(indexPath, collapseIfSelected: false)
         
-        let storyboard = UIStoryboard(name: node.storyboardName, bundle: Bundle.main)
-        let controller = storyboard.instantiateInitialViewController()!
-        controller.title = node.displayName
-        let navController = UINavigationController(rootViewController: controller)
-        
-        self.splitViewController?.showDetailViewController(navController, sender: self)
-        
-        //add the button on the left on the detail view controller
-        if let splitViewController = self.view.window?.rootViewController as? UISplitViewController {
-            controller.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
-            controller.navigationItem.leftItemsSupplementBackButton = true
+        guard let storyboardName = node.storyboardName else{
+            return
         }
         
-        //create the info button and
-        //assign the readme url
+        let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
+        let controller = storyboard.instantiateInitialViewController()!
+        controller.title = node.displayName
+        
+        var presentingController:UIViewController? = self
+        if containsSearchResults {
+            //must use the controller presenting the results or else splitViewController will be nil
+            presentingController = presentingViewController
+        }
+        
+        guard let splitViewController = presentingController?.splitViewController else {
+            return
+        }
+            
+        let navController = UINavigationController(rootViewController: controller)
+        
+        //add the button on the left on the detail view controller
+        controller.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+        controller.navigationItem.leftItemsSupplementBackButton = true
+        
+        //present the sample view controller
+        splitViewController.showDetailViewController(navController, sender: true)
+        
+        //create and setup the info button
         let infoBBI = SourceCodeBarButtonItem()
         infoBBI.folderName = node.displayName
         infoBBI.navController = navController
         controller.navigationItem.rightBarButtonItem = infoBBI
+
     }
     
     @objc func expandCell(_ sender:UIButton) {
@@ -221,51 +214,30 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             tableView.reloadRows(at: [previouslyExpandedIndexPath, indexPath], with: UITableViewRowAnimation.fade)
         }
     }
-    
-    //MARK: - CustomSearchHeaderViewDelegate
-    
-    func customSearchHeaderViewWillShowSuggestions(_ customSearchHeaderView: CustomSearchHeaderView) {
-        var headerViewFrame = self.headerView.frame
-        headerViewFrame.size.height = customSearchHeaderView.expandedViewHeight
-        
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions(), animations: { () -> Void in
-            self.headerView.frame = headerViewFrame
-            self.tableView.tableHeaderView = self.headerView
-        }, completion: nil)
-    }
-    
-    func customSearchHeaderViewWillHideSuggestions(_ customSearchHeaderView: CustomSearchHeaderView) {
-        var headerViewFrame = self.headerView.frame
-        headerViewFrame.size.height = customSearchHeaderView.shrinkedViewHeight
 
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions(), animations: { () -> Void in
-            self.headerView.frame = headerViewFrame
-            self.tableView.tableHeaderView = self.headerView
-        }, completion: nil)
-    }
-    
-    func customSearchHeaderView(_ customSearchHeaderView: CustomSearchHeaderView, didFindSamples sampleNames: [String]?) {
-        if let sampleNames = sampleNames {
-            let resultNodes = self.nodesByDisplayNames(sampleNames)
-            if resultNodes.count > 0 {
-                //show the results
-                let controller = self.storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
-                controller.nodesArray = resultNodes
-                controller.title = "Search results"
-                controller.containsSearchResults = true
-                self.navigationController?.show(controller, sender: self)
-                return
-            }
-        }
-        
-        SVProgressHUD.showError(withStatus: "No match found")
-        
-    }
-    
-    //MARK: - DownloadProgressViewDelegate
-    
+}
+
+//MARK: - DownloadProgressViewDelegate
+extension ContentTableViewController: DownloadProgressViewDelegate {
+
     func downloadProgressViewDidCancel(downloadProgressView: DownloadProgressView) {
         self.bundleResourceRequest.progress.cancel()
         self.bundleResourceRequest?.endAccessingResources()
     }
+
+}
+
+extension ContentTableViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let string = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+            let sampleNames = SearchEngine.sharedInstance().searchForString(string){
+            nodesArray = NodeManager.shared.nodesByDisplayNames(sampleNames)
+        }
+        else{
+            nodesArray = []
+        }
+        tableView.reloadData()
+    }
+    
 }

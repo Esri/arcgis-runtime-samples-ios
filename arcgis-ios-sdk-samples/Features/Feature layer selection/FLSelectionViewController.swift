@@ -40,15 +40,15 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
         
-        //set the selection color
-        mapView.selectionProperties.color = .cyan
-        
         //create feature table using a url
         self.featureTable = AGSServiceFeatureTable(url: URL(string: FEATURE_SERVICE_URL)!)
         //create feature layer using this feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         //add feature layer to the map
         self.map.operationalLayers.add(self.featureLayer)
+        
+        //set the selection color
+        mapView.selectionProperties.color = .cyan
     }
     
     //MARK: - AGSGeoViewTouchDelegate

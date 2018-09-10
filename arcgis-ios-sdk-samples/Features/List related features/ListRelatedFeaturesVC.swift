@@ -46,9 +46,6 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         //we will need to be notified when the user taps with the map
         self.mapView.touchDelegate = self
         
-        //set selection color
-        mapView.selectionProperties.color = .yellow
-        
         //create feature table for the parks layer, the origin layer in the relationship
         self.parksFeatureTable = AGSServiceFeatureTable(url: URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/AlaskaNationalParksPreservesSpecies_List/FeatureServer/1")!)
         
@@ -71,6 +68,9 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         
         //assign map to the map view
         self.mapView.map = map
+        
+        //set selection color
+        mapView.selectionProperties.color = .yellow
     }
     
     //MARK: - AGSGeoViewTouchDelegate

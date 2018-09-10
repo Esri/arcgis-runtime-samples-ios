@@ -165,14 +165,4 @@ class SearchEngine: NSObject {
         return nil
     }
     
-    func suggestionsForString(_ string:String) -> [String]? {
-        //if the resources where released because of memory warnings
-        if self.indexArray == nil {
-            self.commonInit()
-            return nil
-        }
-        
-        let suggestions = self.indexArray.filter( { $0.uppercased().range(of: string.uppercased()) != nil } )
-        return suggestions
-    }
 }

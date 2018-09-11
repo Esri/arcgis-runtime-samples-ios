@@ -1,4 +1,4 @@
-# Open a map from a URL
+# Open map (URL)
 
 This sample demonstrates how to open a web map from a URL on your iOS device.
 

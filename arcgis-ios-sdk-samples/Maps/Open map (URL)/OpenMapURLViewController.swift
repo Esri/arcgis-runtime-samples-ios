@@ -45,9 +45,9 @@ class OpenMapURLViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        map = AGSMap(url: mapModels.first!.url)
+        let defaultMapIndex = 0
         
-        mapView.map = map
+        show(mapAtURL: mapModels[defaultMapIndex])
                 
         //UI setup
         //add rounded corners for table's parent view
@@ -57,8 +57,15 @@ class OpenMapURLViewController: UIViewController, UITableViewDataSource, UITable
         tableView.estimatedRowHeight = 50
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        tableView.selectRow(at: IndexPath(row: defaultMapIndex, section: 0), animated: false, scrollPosition: .none)
+        
         //add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OpenMapURLViewController"]
+    }
+    
+    func show(mapAtURL:MapAtURL){
+        map = AGSMap(url: mapAtURL.url)
+        mapView.map = map
     }
     
     //MARK: - Actions
@@ -96,11 +103,7 @@ class OpenMapURLViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row > 0 && indexPath.row < mapModels.count{
-            let selectedPortalItemURL = mapModels[indexPath.row].url
-            map = AGSMap(url: selectedPortalItemURL)
-            mapView.map = map
-        }
+        show(mapAtURL:mapModels[indexPath.row])
 
         //toggle table view
         blurView.isHidden = true

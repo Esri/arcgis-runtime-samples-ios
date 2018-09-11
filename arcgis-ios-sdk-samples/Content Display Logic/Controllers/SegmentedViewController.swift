@@ -23,8 +23,8 @@ class SegmentedViewController: UIViewController {
     private var sourceCodeVC:SourceCodeViewController!
     private var sampleInfoVC:SampleInfoViewController!
     
-    var filenames:[String]!
-    var folderName:String!
+    var filenames: [String]?
+    var readmeURL: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +36,11 @@ class SegmentedViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SourceCodeSegue" {
             let controller = segue.destination as! SourceCodeViewController
-            controller.filenames = self.filenames
+            controller.filenames = filenames
         }
         else if segue.identifier == "SampleInfoSegue" {
             let controller = segue.destination as! SampleInfoViewController
-            controller.folderName = self.folderName
+            controller.readmeURL = readmeURL
         }
     }
     

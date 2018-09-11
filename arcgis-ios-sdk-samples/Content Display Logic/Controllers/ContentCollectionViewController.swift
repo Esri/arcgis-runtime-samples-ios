@@ -97,13 +97,13 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return NodeManager.shared.nodesArray.count
+        return NodeManager.shared.categoryNodes.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
         
-        let node = NodeManager.shared.nodesArray[indexPath.item]
+        let node = NodeManager.shared.categoryNodes[indexPath.item]
         
         //mask to bounds
         cell.layer.masksToBounds = false
@@ -132,7 +132,7 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         //hide keyboard if visible
         self.view.endEditing(true)
         
-        let node = NodeManager.shared.nodesArray[indexPath.item]
+        let node = NodeManager.shared.categoryNodes[indexPath.item]
         let controller = self.storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
         controller.nodesArray = node.children
         controller.title = node.displayName

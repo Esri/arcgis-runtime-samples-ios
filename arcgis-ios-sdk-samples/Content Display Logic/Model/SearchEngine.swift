@@ -14,155 +14,171 @@
 
 import UIKit
 
-class SearchEngine: NSObject {
+class SearchEngine {
 
-    static private let singleton = SearchEngine()
+    static let shared = SearchEngine()
     
-    private var indexArray:[String]!
-    private var wordsDictionary:[String: [String]]!
-    private var isLoading = false
+    private var displayNamesByReadmeWords:[String: [String]] = [:]
+    private var isLoadingReadmeIndex = false
     
-    override init() {
-        super.init()
-        
-        self.commonInit()
-    }
-    
-    static func sharedInstance() -> SearchEngine {
-        return singleton
-    }
-    
-    private func commonInit() {
-        if !self.isLoading {
-            self.isLoading = true
+    private init() {
+        if !isLoadingReadmeIndex {
+            isLoadingReadmeIndex = true
             DispatchQueue.global(qos: .background).async { [weak self] () -> Void in
-                guard let weakSelf = self else {
+                guard let strongSelf = self else {
                     return
                 }
-                //get the directory URLs that contain readme files
-                let readmeDirectoriesURLs = weakSelf.findReadmeDirectoriesURLs()
-                //index the content of all the readme files
-                weakSelf.indexAllReadmes(readmeDirectoriesURLs: readmeDirectoriesURLs)
-                self?.isLoading = false
+
+                //index the content of all sample names, descriptions, and readme files
+                strongSelf.indexSampleReadmes()
+                strongSelf.isLoadingReadmeIndex = false
             }
         }
     }
-    
-    private func findReadmeDirectoriesURLs() -> [URL] {
+
+    private func indexSampleReadmes() {
+        displayNamesByReadmeWords = [:]
         
-        var readmeDirectoriesURLs = [URL]()
+        let tagger = NSLinguisticTagger(tagSchemes: [.tokenType, .nameType, .lexicalClass], options: 0)
         
-        let fileManager = FileManager.default
-        let bundleURL = Bundle.main.bundleURL
-        
-        //get all the directories from the bundle
-        let directoryEnumerator = fileManager.enumerator(at: bundleURL, includingPropertiesForKeys: [URLResourceKey.nameKey, URLResourceKey.isDirectoryKey], options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles, errorHandler: nil)
-        
-        //check if the returned url is of a directory
-        if let directoryEnumerator = directoryEnumerator {
-            while let fileURL = directoryEnumerator.nextObject() as? URL {
-                var isDirectory:AnyObject?
-                do {
-                    try (fileURL as NSURL).getResourceValue(&isDirectory, forKey: URLResourceKey.isDirectoryKey)
-                } catch {
-                    print("throws")
+        func addToIndex(string:String,sampleDisplayName:String){
+            
+            tagger.string = string
+            let range = NSMakeRange(0, string.count)
+            tagger.enumerateTags(in: range,
+                                 scheme: NSLinguisticTagScheme.lexicalClass,
+                                 options: [.omitWhitespace, .omitPunctuation],
+                                 using: { (tag:NSLinguisticTag?, tokenRange:NSRange, sentenceRange:NSRange, _) -> Void in
+                
+                guard let tag = tag else {
+                    return
                 }
-                //check if the directory contains a readme file
-                if let isDirectory = isDirectory as? NSNumber , isDirectory.boolValue == true  {
-                    let readmePath = "\(fileURL.path)/README.md"
-                    if fileManager.fileExists(atPath: readmePath) {
-                        readmeDirectoriesURLs.append(fileURL)
-                    }
-                }
-            }
-        }
-        
-        return readmeDirectoriesURLs
-    }
-    
-    
-    private func indexAllReadmes(readmeDirectoriesURLs:[URL]) {
-        self.indexArray = [String]()
-        self.wordsDictionary = [String: [String]]()
-        
-        let tagger = NSLinguisticTagger(tagSchemes: [NSLinguisticTagScheme.tokenType, NSLinguisticTagScheme.nameType, NSLinguisticTagScheme.lexicalClass], options: 0)
-        
-        
-        for directoryURL in readmeDirectoriesURLs {
-            autoreleasepool {
-                if let contentString = self.contentOfReadmeFile(directoryPath: directoryURL.path) {
+               
+                if  [NSLinguisticTag.noun,.verb,.adjective,.otherWord].contains(tag) {
+                    let word = ((string as NSString).substring(with: tokenRange) as String).lowercased()
                     
-                    //sample display name
-                    let sampleDisplayName = directoryURL.path.components(separatedBy: "/").last!
-                    
-                    tagger.string = contentString
-                    let range = NSMakeRange(0, contentString.count)
-                    tagger.enumerateTags(in: range, scheme: NSLinguisticTagScheme.lexicalClass, options: [NSLinguisticTagger.Options.omitWhitespace, NSLinguisticTagger.Options.omitPunctuation], using: { (tag:NSLinguisticTag?, tokenRange:NSRange, sentenceRange:NSRange, _) -> Void in
-                        
-                        guard let tag = tag else {
-                            return
-                        }
-                        
-                        if tag == NSLinguisticTag.noun || tag == NSLinguisticTag.verb || tag == NSLinguisticTag.adjective || tag == NSLinguisticTag.otherWord {
-                            let word = (contentString as NSString).substring(with: tokenRange) as String
-                            
-                            //trivial comparisons
-                            if word != "`." && word != "```" && word != "`" {
-                                var samples = self.wordsDictionary[word]
-                                //if word already exists in the dictionary
-                                if samples != nil {
-                                    //add the sample display name to the list if not already present
-                                    if !(samples!.contains(sampleDisplayName)) {
-                                        samples!.append(sampleDisplayName)
-                                        self.wordsDictionary[word] = samples
-                                    }
-                                }
-                                else {
-                                    samples = [sampleDisplayName]
-                                    self.wordsDictionary[word] = samples
-                                }
-                                
-                                //add to the index
-                                if !self.indexArray.contains(word) {
-                                    self.indexArray.append(word)
-                                }
+                    //trivial comparisons
+                    if word != "`." && word != "```" && word != "`" {
+                        //if word already exists in the dictionary
+                        if var samples = displayNamesByReadmeWords[word] {
+                            //add the sample display name to the list if not already present
+                            if !samples.contains(sampleDisplayName) {
+                                samples.append(sampleDisplayName)
+                                displayNamesByReadmeWords[word] = samples
                             }
                         }
-                    })
+                        else {
+                            displayNamesByReadmeWords[word] = [sampleDisplayName]
+                        }
+                    }
+                }
+            })
+        }
+        
+        // index all nodes
+        for node in NodeManager.shared.sampleNodes{
+            autoreleasepool {
+                if let readmeURL = node.readmeURL,
+                    let readmeContent = try? String(contentsOf: readmeURL, encoding: .utf8) {
+                    addToIndex(string:readmeContent, sampleDisplayName:node.displayName)
                 }
             }
         }
     }
     
-    private func contentOfReadmeFile(directoryPath:String) -> String? {
-        //find the path of the file
-        let path = "\(directoryPath)/README.md"
-        //read the content of the file
-        if let content = try? String(contentsOfFile: path, encoding: String.Encoding.utf8) {
-            return content
+    private func samplesWithReadmes(matching query:String) -> [Node] {
+        
+        // skip readmes if not yet loaded
+        guard !isLoadingReadmeIndex else{
+            return []
         }
-        return nil
+        
+        // the normalized term to find
+        let lowercasedQuery = query.lowercased()
+        
+        // search readmes, limited to matching a single word
+        let displayNamesForReadmeMatches = displayNamesByReadmeWords.keys.flatMap { (readmeWord) -> [String] in
+            if readmeWord.contains(lowercasedQuery){
+                return displayNamesByReadmeWords[readmeWord] ?? []
+            }
+            return []
+        }
+        return NodeManager.shared.sampleNodesForDisplayNames(displayNamesForReadmeMatches)
+    }
+    
+    private func samplesWithMetadata(matching query:String) -> [Node] {
+        
+        // the normalized term to find
+        let lowercasedQuery = query.lowercased()
+        
+        // all samples that match the term in their name or description
+        var matchingNodes = NodeManager.shared.sampleNodes.filter { (node) -> Bool in
+            return node.displayName.lowercased().contains(lowercasedQuery) ||
+                node.descriptionText.lowercased().contains(lowercasedQuery)
+        }
+        // sort matches by relevance
+        matchingNodes.sort { (node1, node2) -> Bool in
+            // for convenience, store normalized names for re-use
+            let node1Name = node1.displayName.lowercased()
+            let node2Name = node2.displayName.lowercased()
+            if let node1Index = node1Name.range(of: lowercasedQuery)?.lowerBound{
+                if let node2Index = node2Name.range(of: lowercasedQuery)?.lowerBound{
+                    // matches are both in the titles
+                    if node1Index != node2Index{
+                        // sort by index
+                        return node1Index < node2Index
+                    }
+                    // indexes are the same, sort alphabetically
+                    return node1Name < node2Name
+                }
+                else{
+                    // only node1 has a title match, sort that first
+                    return true
+                }
+            }
+            else if node2Name.contains(lowercasedQuery){
+                // only node2 has a title match, sort that first
+                return false
+            }
+            else{
+                // matches are both in the descriptions
+                
+                // for convenience, store normalized descriptions for re-use
+                let node1Desc = node1.descriptionText.lowercased()
+                let node2Desc = node2.descriptionText.lowercased()
+                let node1Index = node1Desc.range(of: lowercasedQuery)!.lowerBound
+                let node2Index = node2Desc.range(of: lowercasedQuery)!.lowerBound
+                if node1Index != node2Index{
+                    // sort by index
+                    return node1Index < node2Index
+                }
+                // indexes are the same, sort alphabetically
+                return node1Desc < node2Desc
+            }
+        }
+        return matchingNodes
     }
     
     //MARK: - Public methods
     
-    func searchForString(_ string:String) -> [String]? {
+    func sortedSamples(matching query:String) -> [Node] {
         
-        //if the resources where released because of memory warnings
-        if self.indexArray == nil {
-            self.commonInit()
-            return nil
-        }
+        // get nodes with titles or descriptions matching the query
+        var matchingNodes = samplesWithMetadata(matching: query)
+       
+        // get nodes with readmes matching the query
+        var nodesForReadmeMatches = Set(samplesWithReadmes(matching: query))
         
-        //check if the string exists in the index array
-        let words = self.indexArray.filter({ $0.uppercased() == string.uppercased() })
-        if words.count > 0 {
-            if let sampleDisplayNames = self.wordsDictionary[words[0]] {
-                return sampleDisplayNames
-            }
-        }
+        // don't show duplicate results
+        nodesForReadmeMatches.subtract(matchingNodes)
         
-        return nil
+        // simply sort alphabetically
+        let sortedNodesForReadmeMatches = nodesForReadmeMatches.sorted{ $0.displayName < $1.displayName }
+        
+        // readme matches are less likely to be releavant so append to the end of the name/description results
+        matchingNodes.append(contentsOf: sortedNodesForReadmeMatches)
+        
+        return matchingNodes
     }
-    
+
 }

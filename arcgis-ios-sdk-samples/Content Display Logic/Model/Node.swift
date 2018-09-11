@@ -18,33 +18,32 @@ class NodeManager {
     
     static let shared = NodeManager()
     
-    let nodesArray:[Node]
+    let categoryNodes:[Node]
+    var sampleNodes:[Node]{
+        return categoryNodes.flatMap { (categoryNode) -> [Node] in
+            return categoryNode.children ?? []
+        }
+    }
     
     private init(){
         let path = Bundle.main.path(forResource: "ContentPList", ofType: "plist")
-        let content = NSArray(contentsOfFile: path!)
-        nodesArray = NodeManager.populateNodesArray(content! as [AnyObject])
+        let contentArray = NSArray(contentsOfFile: path!)
+        categoryNodes = NodeManager.nodes(from: contentArray as! [[String:AnyObject]])
     }
     
-    static func populateNodesArray(_ array:[AnyObject]) -> [Node] {
-        var nodesArray = [Node]()
-        for object in array {
-            let dict = object as! [String:AnyObject]
-            let node = Node(dict: dict)
-            nodesArray.append(node)
+    static func nodes(from array:[[String:AnyObject]]) -> [Node] {
+        return array.map { (dict) -> Node in
+            return Node(dict: dict)
         }
-        return nodesArray
     }
     
-    func nodesByDisplayNames(_ names:[String]) -> [Node] {
-        var nodes = [Node]()
-        for node in nodesArray {
-            let children = node.children
-            if let matchingNodes = children?.filter({ return names.contains($0.displayName) }) {
-                nodes.append(contentsOf: matchingNodes)
-            }
+    func sampleNodesForDisplayNames(_ names:[String]) -> [Node] {
+        // preserve order
+        return names.compactMap { (name) -> Node? in
+            return sampleNodes.first(where: { (node) -> Bool in
+                node.displayName == name
+            })
         }
-        return nodes
     }
     
 }
@@ -56,10 +55,12 @@ class Node: NSObject {
     var storyboardName:String?
     var children:[Node]? //if nil, then root node
     var dependency = [String]()
+    var readmeURL:URL?
     
     init(dict:[String:AnyObject]){
         if let displayName = dict["displayName"] as? String {
             self.displayName = displayName
+            readmeURL = Bundle.main.url(forResource: "README", withExtension: "md", subdirectory: displayName)
         }
         if let descriptionText = dict["descriptionText"] as? String {
             self.descriptionText = descriptionText
@@ -67,8 +68,8 @@ class Node: NSObject {
         if let storyboardName = dict["storyboardName"] as? String {
             self.storyboardName = storyboardName
         }
-        if let children = dict["children"] as? [AnyObject] {
-            self.children = NodeManager.populateNodesArray(children)
+        if let children = dict["children"] as? [[String:AnyObject]] {
+            self.children = NodeManager.nodes(from: children)
         }
         if let dependency = dict["dependency"] as? [String] {
             self.dependency.append(contentsOf: dependency)

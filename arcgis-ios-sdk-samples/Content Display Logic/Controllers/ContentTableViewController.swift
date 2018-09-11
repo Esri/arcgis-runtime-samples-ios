@@ -186,7 +186,7 @@ class ContentTableViewController: UITableViewController {
         
         //create and setup the info button
         let infoBBI = SourceCodeBarButtonItem()
-        infoBBI.folderName = node.displayName
+        infoBBI.readmeURL = node.readmeURL
         infoBBI.navController = navController
         controller.navigationItem.rightBarButtonItem = infoBBI
 
@@ -230,9 +230,9 @@ extension ContentTableViewController: DownloadProgressViewDelegate {
 extension ContentTableViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        if let string = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-            let sampleNames = SearchEngine.sharedInstance().searchForString(string){
-            nodesArray = NodeManager.shared.nodesByDisplayNames(sampleNames)
+        if let query = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+            !query.isEmpty{
+            nodesArray = SearchEngine.shared.sortedSamples(matching: query)
         }
         else{
             nodesArray = []

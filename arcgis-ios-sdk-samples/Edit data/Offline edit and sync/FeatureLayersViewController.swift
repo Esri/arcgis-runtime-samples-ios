@@ -17,26 +17,28 @@ import UIKit
 import ArcGIS
 
 class FeatureLayersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    @IBOutlet var tableView:UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
-    var featureLayerInfos:[AGSIDInfo]! {
+    /// The layer infos to display in the table view.
+    var featureLayerInfos = [AGSIDInfo]() {
         didSet {
-            self.tableView?.reloadData()
+            guard isViewLoaded else { return }
+            tableView.reloadData()
         }
     }
-    var selectedLayerIds = [Int]()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        
+    /// The layer infos selected in the table view.
+    var selectedLayerInfos: [AGSIDInfo] {
+        if let indexPaths = tableView.indexPathsForSelectedRows {
+            return indexPaths.map { featureLayerInfos[$0.row] }
+        } else {
+            return []
+        }
     }
     
     //MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.featureLayerInfos?.count ?? 0
+        return featureLayerInfos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,31 +46,23 @@ class FeatureLayersViewController: UIViewController, UITableViewDataSource, UITa
         
         let layerInfo = self.featureLayerInfos[indexPath.row]
         cell.textLabel?.text = layerInfo.name
-        
-        //accessory view
-        if self.selectedLayerIds.contains(layerInfo.id) {
+        if let indexPaths = tableView.indexPathsForSelectedRows, indexPaths.contains(indexPath) {
             cell.accessoryType = .checkmark
-        }
-        else {
+        } else {
             cell.accessoryType = .none
         }
-        
         cell.backgroundColor = .clear
+        
         return cell
     }
     
     //MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let layerInfo = self.featureLayerInfos[indexPath.row]
-        
-        if let index = self.selectedLayerIds.index(of: layerInfo.id) {
-            self.selectedLayerIds.remove(at: index)
-        }
-        else {
-            self.selectedLayerIds.append(layerInfo.id)
-        }
-        
-        tableView.reloadRows(at: [indexPath], with: .none)
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
 }

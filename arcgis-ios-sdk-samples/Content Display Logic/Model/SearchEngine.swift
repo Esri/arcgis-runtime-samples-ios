@@ -21,6 +21,10 @@ class SearchEngine {
     private var displayNamesByReadmeWords:[String: [String]] = [:]
     private var isLoadingReadmeIndex = false
     
+    private var samples:[Sample]{
+        return SampleManager.shared.samples
+    }
+    
     private init() {
         if !isLoadingReadmeIndex {
             isLoadingReadmeIndex = true
@@ -76,17 +80,17 @@ class SearchEngine {
         }
         
         // index all nodes
-        for node in NodeManager.shared.sampleNodes{
+        for sample in samples{
             autoreleasepool {
-                if let readmeURL = node.readmeURL,
+                if let readmeURL = sample.readmeURL,
                     let readmeContent = try? String(contentsOf: readmeURL, encoding: .utf8) {
-                    addToIndex(string:readmeContent, sampleDisplayName:node.displayName)
+                    addToIndex(string:readmeContent, sampleDisplayName:sample.name)
                 }
             }
         }
     }
     
-    private func samplesWithReadmes(matching query:String) -> [Node] {
+    private func samplesWithReadmes(matching query:String) -> [Sample] {
         
         // skip readmes if not yet loaded
         guard !isLoadingReadmeIndex else{
@@ -103,40 +107,40 @@ class SearchEngine {
             }
             return []
         }
-        return NodeManager.shared.sampleNodesForDisplayNames(displayNamesForReadmeMatches)
+        return samplesForDisplayNames(displayNamesForReadmeMatches)
     }
     
-    private func samplesWithMetadata(matching query:String) -> [Node] {
+    private func samplesWithMetadata(matching query:String) -> [Sample] {
         
         // the normalized term to find
         let lowercasedQuery = query.lowercased()
         
         // all samples that match the term in their name or description
-        var matchingNodes = NodeManager.shared.sampleNodes.filter { (node) -> Bool in
-            return node.displayName.lowercased().contains(lowercasedQuery) ||
-                node.descriptionText.lowercased().contains(lowercasedQuery)
+        var matchingSamples = samples.filter { (sample) -> Bool in
+            return sample.name.lowercased().contains(lowercasedQuery) ||
+                sample.description.lowercased().contains(lowercasedQuery)
         }
         // sort matches by relevance
-        matchingNodes.sort { (node1, node2) -> Bool in
+        matchingSamples.sort { (sample1, sample2) -> Bool in
             // for convenience, store normalized names for re-use
-            let node1Name = node1.displayName.lowercased()
-            let node2Name = node2.displayName.lowercased()
-            if let node1Index = node1Name.range(of: lowercasedQuery)?.lowerBound{
-                if let node2Index = node2Name.range(of: lowercasedQuery)?.lowerBound{
+            let sample1Name = sample1.name.lowercased()
+            let sample2Name = sample2.name.lowercased()
+            if let sample1Index = sample1Name.range(of: lowercasedQuery)?.lowerBound{
+                if let sample2Index = sample2Name.range(of: lowercasedQuery)?.lowerBound{
                     // matches are both in the titles
-                    if node1Index != node2Index{
+                    if sample1Index != sample2Index{
                         // sort by index
-                        return node1Index < node2Index
+                        return sample1Index < sample2Index
                     }
                     // indexes are the same, sort alphabetically
-                    return node1Name < node2Name
+                    return sample1Name < sample2Name
                 }
                 else{
                     // only node1 has a title match, sort that first
                     return true
                 }
             }
-            else if node2Name.contains(lowercasedQuery){
+            else if sample2Name.contains(lowercasedQuery){
                 // only node2 has a title match, sort that first
                 return false
             }
@@ -144,24 +148,33 @@ class SearchEngine {
                 // matches are both in the descriptions
                 
                 // for convenience, store normalized descriptions for re-use
-                let node1Desc = node1.descriptionText.lowercased()
-                let node2Desc = node2.descriptionText.lowercased()
-                let node1Index = node1Desc.range(of: lowercasedQuery)!.lowerBound
-                let node2Index = node2Desc.range(of: lowercasedQuery)!.lowerBound
-                if node1Index != node2Index{
+                let sample1Desc = sample1.description.lowercased()
+                let sample2Desc = sample2.description.lowercased()
+                let sample1Index = sample1Desc.range(of: lowercasedQuery)!.lowerBound
+                let sample2Index = sample2Desc.range(of: lowercasedQuery)!.lowerBound
+                if sample1Index != sample2Index{
                     // sort by index
-                    return node1Index < node2Index
+                    return sample1Index < sample2Index
                 }
                 // indexes are the same, sort alphabetically
-                return node1Desc < node2Desc
+                return sample1Desc < sample2Desc
             }
         }
-        return matchingNodes
+        return matchingSamples
+    }
+    
+    private func samplesForDisplayNames(_ names:[String]) -> [Sample] {
+        // preserve order
+        return names.compactMap { (name) -> Sample? in
+            return samples.first(where: { (sample) -> Bool in
+                sample.name == name
+            })
+        }
     }
     
     //MARK: - Public methods
     
-    func sortedSamples(matching query:String) -> [Node] {
+    func sortedSamples(matching query:String) -> [Sample] {
         
         // get nodes with titles or descriptions matching the query
         var matchingNodes = samplesWithMetadata(matching: query)
@@ -173,7 +186,7 @@ class SearchEngine {
         nodesForReadmeMatches.subtract(matchingNodes)
         
         // simply sort alphabetically
-        let sortedNodesForReadmeMatches = nodesForReadmeMatches.sorted{ $0.displayName < $1.displayName }
+        let sortedNodesForReadmeMatches = nodesForReadmeMatches.sorted{ $0.name < $1.name }
         
         // readme matches are less likely to be releavant so append to the end of the name/description results
         matchingNodes.append(contentsOf: sortedNodesForReadmeMatches)

@@ -28,6 +28,11 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     @IBOutlet private var collectionView:UICollectionView!
     @IBOutlet private var collectionViewFlowLayout:UICollectionViewFlowLayout!
     
+    /// The categories to display in the collection view.
+    var categories:[Category]{
+        return SampleManager.shared.categories
+    }
+
     private var transitionSize:CGSize!
     
     var searchController:UISearchController?
@@ -49,7 +54,7 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         // create the view controller for displaying the search results
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let searchResultsController = storyboard.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
-        searchResultsController.nodesArray = []
+        searchResultsController.samples = []
         searchResultsController.containsSearchResults = true
         searchResultsController.title = "Search"
         
@@ -88,6 +93,7 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
             // embed the search bar in the title area of the navigation bar
             navigationItem.titleView = searchController.searchBar
         }
+        
     }
 
     // MARK: UICollectionViewDataSource
@@ -97,26 +103,26 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return NodeManager.shared.categoryNodes.count
+        return categories.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
         
-        let node = NodeManager.shared.categoryNodes[indexPath.item]
+        let category = categories[indexPath.item]
         
         //mask to bounds
         cell.layer.masksToBounds = false
         
         //name
-        cell.nameLabel.text = node.displayName.uppercased()
+        cell.nameLabel.text = category.name.uppercased()
         
         //icon
-        let image = UIImage(named: "\(node.displayName)_icon")
+        let image = UIImage(named: "\(category.name)_icon")
         cell.iconImageView.image = image
         
         //background image
-        let bgImage = UIImage(named: "\(node.displayName)_bg")
+        let bgImage = UIImage(named: "\(category.name)_bg")
         cell.backgroundImageView.image = bgImage
         
         //cell shadow
@@ -132,11 +138,11 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         //hide keyboard if visible
         self.view.endEditing(true)
         
-        let node = NodeManager.shared.categoryNodes[indexPath.item]
+        let category = categories[indexPath.item]
         let controller = self.storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
-        controller.nodesArray = node.children
-        controller.title = node.displayName
-        navigationController?.pushViewController(controller, animated: true)
+        controller.samples = category.samples
+        controller.title = category.name
+        self.navigationController?.show(controller, sender: self)
     }
     
     //MARK: - UICollectionViewDelegateFlowLayout

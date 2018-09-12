@@ -15,8 +15,8 @@
 import UIKit
 
 class ContentTableViewController: UITableViewController {
-
-    var nodesArray:[Node]!
+    
+    var samples = [Sample]()
     private var expandedRowIndex:Int = -1
     
     var containsSearchResults = false
@@ -40,18 +40,18 @@ class ContentTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.nodesArray?.count ?? 0
+        return samples.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "ContentTableCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as! ContentTableCell
 
-        let node = self.nodesArray[indexPath.row]
-        cell.titleLabel.text = node.displayName
+        let sample = samples[indexPath.row]
+        cell.titleLabel.text = sample.name
         
         if self.expandedRowIndex == indexPath.row {
-            cell.detailLabel.text = node.descriptionText
+            cell.detailLabel.text = sample.description
         }
         else {
             cell.detailLabel.text = nil
@@ -69,12 +69,12 @@ class ContentTableViewController: UITableViewController {
         //hide keyboard if visible
         self.view.endEditing(true)
         
-        let node = self.nodesArray[indexPath.row]
+        let sample = samples[indexPath.row]
         
         //download on demand resources
-        if node.dependency.count > 0 {
-            
-            self.bundleResourceRequest = NSBundleResourceRequest(tags: Set(node.dependency))
+        if !sample.dependencies.isEmpty {
+        
+            self.bundleResourceRequest = NSBundleResourceRequest(tags: Set(sample.dependencies))
             
             //conditionally begin accessing to know if we need to show download progress view or not
             self.bundleResourceRequest.conditionallyBeginAccessingResources { [weak self] (isResourceAvailable: Bool) in
@@ -82,11 +82,11 @@ class ContentTableViewController: UITableViewController {
                     
                     //if resource is already available then simply show the sample
                     if isResourceAvailable {
-                        self?.showSample(indexPath: indexPath, node: node)
+                        self?.showSample(indexPath: indexPath, sample: sample)
                     }
                     //else download the resource
                     else {
-                        self?.downloadResource(for: node, at: indexPath)
+                        self?.downloadResource(for: sample, at: indexPath)
                     }
                 }
             }
@@ -96,11 +96,11 @@ class ContentTableViewController: UITableViewController {
             self.bundleResourceRequest?.endAccessingResources()
             
             //show view controller
-            self.showSample(indexPath: indexPath, node: node)
+            self.showSample(indexPath: indexPath, sample: sample)
         }
     }
     
-    func downloadResource(for node:Node, at indexPath:IndexPath) {
+    func downloadResource(for sample: Sample, at indexPath:IndexPath) {
         
         //show download progress view
         self.downloadProgressView.show(withStatus: "Just a moment while we download data for this sample...", progress: 0)
@@ -137,7 +137,7 @@ class ContentTableViewController: UITableViewController {
                     if !strongSelf.bundleResourceRequest.progress.isCancelled {
                         
                         //show view controller
-                        strongSelf.showSample(indexPath: indexPath, node: node)
+                        strongSelf.showSample(indexPath: indexPath, sample: sample)
                     }
                 }
             }
@@ -152,18 +152,14 @@ class ContentTableViewController: UITableViewController {
         }
     }
     
-    func showSample(indexPath: IndexPath, node: Node) {
+    func showSample(indexPath: IndexPath, sample: Sample) {
         
         //expand the selected cell
         self.updateExpandedRow(indexPath, collapseIfSelected: false)
         
-        guard let storyboardName = node.storyboardName else{
-            return
-        }
-        
-        let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
+        let storyboard = UIStoryboard(name: sample.storyboardName, bundle: .main)
         let controller = storyboard.instantiateInitialViewController()!
-        controller.title = node.displayName
+        controller.title = sample.name
         
         var presentingController:UIViewController? = self
         if containsSearchResults {
@@ -186,7 +182,7 @@ class ContentTableViewController: UITableViewController {
         
         //create and setup the info button
         let infoBBI = SourceCodeBarButtonItem()
-        infoBBI.readmeURL = node.readmeURL
+        infoBBI.readmeURL = sample.readmeURL
         infoBBI.navController = navController
         controller.navigationItem.rightBarButtonItem = infoBBI
 
@@ -232,10 +228,10 @@ extension ContentTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let query = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),
             !query.isEmpty{
-            nodesArray = SearchEngine.shared.sortedSamples(matching: query)
+            samples = SearchEngine.shared.sortedSamples(matching: query)
         }
         else{
-            nodesArray = []
+            samples = []
         }
         tableView.reloadData()
     }

@@ -46,7 +46,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
         
         //self sizing cells
         self.tableView.estimatedRowHeight = 44
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         
     }
     
@@ -78,10 +78,10 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
             
             //accesory view
             if let index = self.selectedBasemapIndex , index == indexPath.row {
-                cell.accessoryType = UITableViewCellAccessoryType.checkmark
+                cell.accessoryType = .checkmark
             }
             else {
-                cell.accessoryType = UITableViewCellAccessoryType.none
+                cell.accessoryType = .none
             }
         }
         else {
@@ -98,7 +98,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
         }
         
         cell.backgroundColor = .clear
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -125,7 +125,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
         }
         indexPathArray.append(indexPath)
         //reload selected cells instead of the whole table view
-        tableView.reloadRows(at: indexPathArray, with: UITableViewRowAnimation.none)
+        tableView.reloadRows(at: indexPathArray, with: .none)
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

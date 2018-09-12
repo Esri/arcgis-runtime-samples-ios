@@ -41,7 +41,7 @@ class SwitchBasemapViewController: UIViewController, UITableViewDataSource, UITa
         
         //self sizing cells
         self.tableView.estimatedRowHeight = 50
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SwitchBasemapViewController"]

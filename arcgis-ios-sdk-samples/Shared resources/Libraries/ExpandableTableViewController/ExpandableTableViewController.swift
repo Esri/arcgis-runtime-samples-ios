@@ -172,7 +172,7 @@ class ExpandableTableViewController: UITableViewController {
                 indexesPath.append(index)
             }
             tableView!.beginUpdates()
-            tableView!.deleteRows(at: indexesPath, with: UITableViewRowAnimation.fade)
+            tableView!.deleteRows(at: indexesPath, with: .fade)
             tableView!.endUpdates()
         }
     }
@@ -194,7 +194,7 @@ class ExpandableTableViewController: UITableViewController {
             }
             expandedSectionHeaderNumber = section
             tableView!.beginUpdates()
-            tableView!.insertRows(at: indexesPath, with: UITableViewRowAnimation.fade)
+            tableView!.insertRows(at: indexesPath, with: UITableView.RowAnimation.fade)
             tableView!.endUpdates()
         }
     }

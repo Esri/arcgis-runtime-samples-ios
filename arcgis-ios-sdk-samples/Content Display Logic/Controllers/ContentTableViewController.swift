@@ -57,7 +57,7 @@ class ContentTableViewController: UITableViewController {
             cell.detailLabel.text = nil
         }
         
-        cell.infoButton.addTarget(self, action: #selector(ContentTableViewController.expandCell(_:)), for: UIControlEvents.touchUpInside)
+        cell.infoButton.addTarget(self, action: #selector(ContentTableViewController.expandCell(_:)), for: .touchUpInside)
         cell.infoButton.tag = indexPath.row
 
         cell.backgroundColor = .clear
@@ -197,7 +197,7 @@ class ContentTableViewController: UITableViewController {
         if indexPath.row == self.expandedRowIndex {
             if collapseIfSelected {
                 self.expandedRowIndex = -1
-                tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                tableView.reloadRows(at: [indexPath], with: .fade)
             }
             else {
                 return
@@ -207,7 +207,7 @@ class ContentTableViewController: UITableViewController {
             //get the two cells and update
             let previouslyExpandedIndexPath = IndexPath(row: self.expandedRowIndex, section: 0)
             self.expandedRowIndex = indexPath.row
-            tableView.reloadRows(at: [previouslyExpandedIndexPath, indexPath], with: UITableViewRowAnimation.fade)
+            tableView.reloadRows(at: [previouslyExpandedIndexPath, indexPath], with: .fade)
         }
     }
 

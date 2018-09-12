@@ -30,7 +30,7 @@ class RelatedFeaturesListVC: UIViewController, UITableViewDataSource, UITableVie
             self.label.text = result.feature?.attributes["UNIT_NAME"] as? String ?? "Origin Feature"
         }
         
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 44
     }
     

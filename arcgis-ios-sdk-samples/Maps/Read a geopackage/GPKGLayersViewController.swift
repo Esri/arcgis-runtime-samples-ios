@@ -85,7 +85,7 @@ class GPKGLayersViewController: UIViewController, UITableViewDataSource, UITable
             if let layerCell = cell as? GPKGLayerTableCell {
                 layerCell.agsLayer = layersNotInMap[indexPath.row]
             }
-            let plusButton = UIButton(type: UIButtonType.contactAdd)
+            let plusButton = UIButton(type: .contactAdd)
             plusButton.isEnabled = false
             cell.accessoryView = plusButton
         }
@@ -103,11 +103,11 @@ class GPKGLayersViewController: UIViewController, UITableViewDataSource, UITable
                 map?.operationalLayers.add(layer)
 
                 // Remove the row representing the layer before it was added to the map.
-                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                tableView.deleteRows(at: [indexPath], with: .fade)
                 
                 // Add a row representing the layer now it's at the top of the map's layers.
                 let newIndexPath = IndexPath(row: 0, section: 0)
-                tableView.insertRows(at: [newIndexPath], with: UITableViewRowAnimation.fade)
+                tableView.insertRows(at: [newIndexPath], with: .fade)
             }
             
             tableView.endUpdates()
@@ -141,7 +141,7 @@ class GPKGLayersViewController: UIViewController, UITableViewDataSource, UITable
         return nil
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // If not deleting a row, ignore the edit.
         guard editingStyle == .delete else {
             print("Editing style other than delete")
@@ -165,7 +165,7 @@ class GPKGLayersViewController: UIViewController, UITableViewDataSource, UITable
         // Insert the removed row back in the section for layers not in the map.
         if let index = layersNotInMap.index(of: layer) {
             let newIndexPath = IndexPath(row: index, section: 1)
-            self.tableView.insertRows(at: [newIndexPath], with: UITableViewRowAnimation.automatic)
+            self.tableView.insertRows(at: [newIndexPath], with: .automatic)
         }
         
         self.tableView.endUpdates()

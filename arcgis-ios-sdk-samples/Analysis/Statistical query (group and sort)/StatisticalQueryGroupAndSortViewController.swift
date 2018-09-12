@@ -299,7 +299,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if tableView == tableView {
             if (editingStyle == .delete && indexPath.section == 0) {
                 if statisticDefinitions.count > 0 {

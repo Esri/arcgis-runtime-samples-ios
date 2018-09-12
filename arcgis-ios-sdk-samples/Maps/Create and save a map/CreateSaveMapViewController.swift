@@ -27,7 +27,7 @@ extension UIImage {
         
         //crop image
         let croppedCGImage = self.cgImage!.cropping(to: rect)!
-        let croppedImage = UIImage(cgImage: croppedCGImage, scale: scale, orientation: UIImageOrientation.up)
+        let croppedImage = UIImage(cgImage: croppedCGImage, scale: scale, orientation: .up)
         
         return croppedImage
     }
@@ -73,7 +73,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     }
     
     private func showSuccess() {
-        let alertController = UIAlertController(title: "Saved successfully", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Saved successfully", message: nil, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Ok", style: .cancel) { [weak self] _ in
             self?.dismiss(animated: true, completion: nil)

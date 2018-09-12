@@ -55,7 +55,7 @@ class OpenMapURLViewController: UIViewController, UITableViewDataSource, UITable
         
         //self sizing cells
         tableView.estimatedRowHeight = 50
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         
         tableView.selectRow(at: IndexPath(row: defaultMapIndex, section: 0), animated: false, scrollPosition: .none)
         
@@ -95,7 +95,7 @@ class OpenMapURLViewController: UIViewController, UITableViewDataSource, UITable
         
         cell.textLabel?.text = mapModel.title
         cell.imageView?.image = mapModel.image
-        cell.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+        cell.imageView?.contentMode = .scaleAspectFill
         cell.imageView?.clipsToBounds = true
         
         return cell

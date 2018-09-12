@@ -47,7 +47,7 @@ class SublayersTableViewController: UITableViewController {
         let visibilitySwitch = UISwitch(frame: CGRect.zero)
         visibilitySwitch.tag = indexPath.row
         visibilitySwitch.isOn = sublayer.isVisible
-        visibilitySwitch.addTarget(self, action: #selector(SublayersTableViewController.switchChanged(_:)), for: UIControlEvents.valueChanged)
+        visibilitySwitch.addTarget(self, action: #selector(SublayersTableViewController.switchChanged(_:)), for: .valueChanged)
         cell.accessoryView = visibilitySwitch
         return cell
     }

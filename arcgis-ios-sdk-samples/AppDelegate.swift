@@ -45,18 +45,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         }
     }
 
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if url.absoluteString.range(of: "auth", options: [], range: nil, locale: nil) != nil {
             AGSApplicationDelegate.shared().application(app, open: url, options: options)
         }
         return true
     }
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // Override point for customization after application launch.
         let splitViewController = self.window!.rootViewController as! UISplitViewController
         splitViewController.presentsWithGesture = false
-        splitViewController.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
+        splitViewController.preferredDisplayMode = .allVisible
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         navigationController.topViewController!.navigationItem.leftItemsSupplementBackButton = true

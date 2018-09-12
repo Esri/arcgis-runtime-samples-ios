@@ -37,7 +37,7 @@ enum StretchType: String {
     }
 }
 
-protocol StretchRendererSettingsVCDelegate:class {
+protocol StretchRendererSettingsVCDelegate: AnyObject {
     
     func stretchRendererSettingsVC(_ stretchRendererSettingsVC: StretchRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters)
 }

@@ -165,11 +165,11 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
     func offlineMapGenerationDidSucceed(with result: AGSGenerateOfflineMapResult) {
         // Show any layer or table errors to the user.
         if let layerErrors = result.layerErrors as? [AGSLayer: Error],
-            let tableLayers = result.tableErrors as? [AGSFeatureTable: Error],
-            !(layerErrors.isEmpty && tableLayers.isEmpty) {
+            let tableErrors = result.tableErrors as? [AGSFeatureTable: Error],
+            !(layerErrors.isEmpty && tableErrors.isEmpty) {
             
             let errorMessages = layerErrors.map { "\($0.key.name): \($0.value.localizedDescription)" } +
-                tableLayers.map { "\($0.key.displayName): \($0.value.localizedDescription)" }
+                tableErrors.map { "\($0.key.displayName): \($0.value.localizedDescription)" }
             let okayAction = UIAlertAction(title: "OK", style: .default)
             let alertController = UIAlertController(
                 title: "Offline Map Generated with Errors",

@@ -32,7 +32,7 @@ class ChangeSublayerRendererVC: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ChangeSublayerRendererVC"]
         
         //initialize map with basemap
-        let map = AGSMap(basemap: AGSBasemap.streets())
+        let map = AGSMap(basemap: .streets())
         
         //add map image layer to the map
         map.operationalLayers.add(self.mapImageLayer)

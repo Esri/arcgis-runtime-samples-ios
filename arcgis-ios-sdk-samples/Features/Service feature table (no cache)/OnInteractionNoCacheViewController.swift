@@ -30,7 +30,7 @@ class OnInteractionNoCacheViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OnInteractionNoCacheViewController"]
         
         //initialize map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.topographic())
+        self.map = AGSMap(basemap: .topographic())
         
         //initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -1.30758164047166E7,

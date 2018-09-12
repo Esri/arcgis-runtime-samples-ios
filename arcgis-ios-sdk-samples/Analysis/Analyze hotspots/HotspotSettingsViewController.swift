@@ -14,7 +14,7 @@
 
 import UIKit
 
-protocol HotspotSettingsVCDelegate: class {
+protocol HotspotSettingsVCDelegate: AnyObject {
     
     func hotspotSettingsViewController(_ hotspotSettingsViewController: HotspotSettingsViewController, didSelectDates fromDate: String, toDate: String)
 }

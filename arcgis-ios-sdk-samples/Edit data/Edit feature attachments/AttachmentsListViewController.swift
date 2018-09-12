@@ -94,8 +94,8 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         let attachment = self.attachments[indexPath.row]
         cell.textLabel?.text = attachment.name
         
-        cell.imageView?.image = UIImage(named: "ArcGIS.bundle/CloudDownload")
-        cell.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
+        cell.imageView?.image = UIImage(named: "CloudDownload", in: AGSBundle(), compatibleWith: nil)
+        cell.imageView?.contentMode = .scaleAspectFit
         cell.imageView?.autoresizingMask = []
         cell.imageView?.clipsToBounds = true
         if attachment.hasFetchedData {

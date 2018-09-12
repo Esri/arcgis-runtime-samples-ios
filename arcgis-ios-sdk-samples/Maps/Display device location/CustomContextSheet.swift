@@ -16,7 +16,7 @@
 
 import UIKit
 
-protocol CustomContextSheetDelegate:class {
+protocol CustomContextSheetDelegate: AnyObject {
     func customContextSheet(_ customContextSheet:CustomContextSheet, didSelectItemAtIndex index:Int)
 }
 

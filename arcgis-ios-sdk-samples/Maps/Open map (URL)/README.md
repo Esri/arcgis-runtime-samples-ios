@@ -1,6 +1,6 @@
-# Open an existing map
+# Open map (URL)
 
-This sample demonstrates how to open an existing web map on your iOS device.
+This sample demonstrates how to open a web map from a URL on your iOS device.
 
 ## How to use the sample
 

@@ -25,7 +25,7 @@ class ShowMagnifierViewController: UIViewController {
         super.viewDidLoad()
         
         //instantiate map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.imagery())
+        self.map = AGSMap(basemap: .imagery())
         
         //asssign map to the map view
         self.mapView.map = self.map

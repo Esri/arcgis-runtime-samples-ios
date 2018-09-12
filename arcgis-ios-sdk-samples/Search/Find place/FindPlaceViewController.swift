@@ -63,7 +63,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindPlaceViewController"]
         
         //create an instance of a map with ESRI topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.topographic())
+        self.map = AGSMap(basemap: .topographic())
         
         //assign the map to the map view
         self.mapView.map = self.map

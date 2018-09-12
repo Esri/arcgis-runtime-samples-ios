@@ -27,7 +27,7 @@ class BookmarksViewController: UIViewController, UIAdaptivePresentationControlle
         super.viewDidLoad()
         
         //initialize map using imagery with labels basemap
-        self.map = AGSMap(basemap: AGSBasemap.imageryWithLabels())
+        self.map = AGSMap(basemap: .imageryWithLabels())
         
         //assign map to the mapView
         self.mapView.map = self.map

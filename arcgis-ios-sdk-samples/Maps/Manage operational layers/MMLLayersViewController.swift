@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-protocol MMLLayersViewControllerDelegate: class {
+protocol MMLLayersViewControllerDelegate: AnyObject {
     func layersViewControllerWantsToClose(_ layersViewController: MMLLayersViewController, withDeletedLayers layers: [AGSLayer])
 }
 

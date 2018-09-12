@@ -32,7 +32,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FLQueryViewController"]
         
         //initialize map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.topographic())
+        self.map = AGSMap(basemap: .topographic())
         //assign map to the map view
         self.mapView.map = self.map
         
@@ -40,7 +40,6 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         self.featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer/2")!)
         //create feature layer using this feature table
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
-        self.featureLayer.selectionWidth = 5
         
         //set a new renderer
         let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 1)

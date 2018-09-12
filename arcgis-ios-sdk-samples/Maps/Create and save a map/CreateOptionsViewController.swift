@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-protocol CreateOptionsVCDelegate:class {
+protocol CreateOptionsVCDelegate: AnyObject {
     func createOptionsViewController(_ createOptionsViewController:CreateOptionsViewController, didSelectBasemap basemap:AGSBasemap, layers:[AGSLayer]?)
 }
 
@@ -23,7 +23,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
 
     @IBOutlet private weak var tableView:UITableView!
     
-    private var basemaps = [AGSBasemap.streets(), AGSBasemap.imagery(), AGSBasemap.topographic(), AGSBasemap.oceans()]
+    private var basemaps: [AGSBasemap] = [.streets(), .imagery(), .topographic(), .oceans()]
     private var layers = [AGSLayer]()
     
     private var layerURLs = ["https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer",

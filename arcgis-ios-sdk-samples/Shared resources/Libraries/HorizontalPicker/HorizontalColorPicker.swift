@@ -16,7 +16,7 @@
 
 import UIKit
 
-protocol HorizontalColorPickerDelegate: class {
+protocol HorizontalColorPickerDelegate: AnyObject {
     func horizontalColorPicker(_ horizontalColorPicker:HorizontalColorPicker, didUpdateSelectedColor color: UIColor)
 }
 

@@ -29,7 +29,7 @@ class FeatureCollectionLayerQueryVC: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureCollectionLayerQueryVC"]
         
         //initialize map with basemap
-        let map = AGSMap(basemap: AGSBasemap.oceans())
+        let map = AGSMap(basemap: .oceans())
         
         //assign map to the map view
         self.mapView.map = map

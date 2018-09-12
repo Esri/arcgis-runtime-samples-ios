@@ -52,10 +52,6 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         //feature layer for parks
         self.parksFeatureLayer = AGSFeatureLayer(featureTable: self.parksFeatureTable)
         
-        //change selection width for feature layer
-        self.parksFeatureLayer.selectionWidth = 4
-        self.parksFeatureLayer.selectionColor = .yellow
-        
         //add parks feature layer to the map
         map.operationalLayers.add(self.parksFeatureLayer)
         
@@ -72,6 +68,9 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         
         //assign map to the map view
         self.mapView.map = map
+        
+        //set selection color
+        mapView.selectionProperties.color = .yellow
     }
     
     //MARK: - AGSGeoViewTouchDelegate

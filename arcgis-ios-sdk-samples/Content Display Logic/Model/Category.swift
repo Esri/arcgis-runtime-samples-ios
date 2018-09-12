@@ -12,14 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
+struct Category: Equatable {
+    var name: String
+    var samples: [Sample]
+}
 
-class Node: NSObject {
-   
-    var displayName:String = ""
-    var descriptionText:String = ""
-    var storyboardName:String!  //if nil, then use content table VC
-    var children:[Node]!  //if nil, then root node
-    var dependency = [String]()
-//    var readmeURLString:String!
+extension Category: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case name = "displayName"
+        case samples = "children"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        name = try values.decode(String.self, forKey: .name)
+        samples = try values.decode([Sample].self, forKey: .samples)
+    }
 }

@@ -303,9 +303,9 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }
         else {
             //get selected layer ids
-            let selectedLayerIds = self.featureLayersVC.selectedLayerIds
+            let selectedLayerIds = featureLayersVC.selectedLayerInfos.map { $0.id }
             
-            if selectedLayerIds.count == 0 {
+            if selectedLayerIds.isEmpty {
                 SVProgressHUD.showError(withStatus: "Please select at least one layer")
                 return
             }
@@ -373,7 +373,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
                 self?.switchToServiceMode()
             }
             
-            let alert = UIAlertController(title: nil, message: "Would you like to sync the changes before switching?", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: nil, message: "Would you like to sync the changes before switching?", preferredStyle: .alert)
             alert.addAction(noAction)
             alert.addAction(yesAction)
             self.present(alert, animated: true, completion: nil)

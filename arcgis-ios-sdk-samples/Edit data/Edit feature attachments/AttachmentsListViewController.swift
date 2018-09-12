@@ -95,8 +95,8 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         cell.textLabel?.text = attachment.name
         
         cell.imageView?.image = UIImage(named: "CloudDownload", in: AGSBundle(), compatibleWith: nil)
-        cell.imageView?.contentMode = UIViewContentMode.scaleAspectFit
-        cell.imageView?.autoresizingMask = UIViewAutoresizing()
+        cell.imageView?.contentMode = .scaleAspectFit
+        cell.imageView?.autoresizingMask = []
         cell.imageView?.clipsToBounds = true
         if attachment.hasFetchedData {
             self.setImageForCell(cell, at: indexPath)
@@ -110,8 +110,8 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
          self.setImageForCell(cell, at: indexPath)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
             let attachment = self.attachments[indexPath.row]
             self.deleteAttachment(attachment)
         }
@@ -141,7 +141,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         //show progress hud
         SVProgressHUD.show(withStatus: "Adding attachment")
         
-        let data = UIImagePNGRepresentation(UIImage(named: "LocationDisplayOffIcon")!)!
+        let data = UIImage(named: "LocationDisplayOffIcon")!.pngData()!
         self.feature.addAttachment(withName: "Attachment.png", contentType: "png", data: data) { [weak self] (attachment:AGSAttachment?, error:Error?) -> Void in
             
             if let error = error {

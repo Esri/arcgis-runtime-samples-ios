@@ -52,7 +52,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         if shouldShowAlert {
             
             shouldShowAlert = false
-            showAlert()
+            showLoginQueryAlert()
         }
     }
     
@@ -74,15 +74,15 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         //disable the bar button item until the map loads
         mapView.map?.load { [weak self] (error) in
             
+            guard let strongSelf = self else{
+                return
+            }
+            
             if let error = error{
                 if (error as NSError).code != NSUserCancelledError{
                     //show error
                     SVProgressHUD.showError(withStatus: error.localizedDescription)
                 }
-                return
-            }
-            
-            guard let strongSelf = self else{
                 return
             }
             
@@ -169,7 +169,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
-        if keyPath == "fractionCompleted" {
+        if keyPath == #keyPath(Progress.fractionCompleted) {
             
             DispatchQueue.main.async { [weak self] in
                 
@@ -189,13 +189,27 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
     
     //MARK: - Actions
     
-    @IBAction func action() {
+    @IBAction func generateOfflineMapAction() {
+        
+        //disable bar button item
+        barButtonItem.isEnabled = false
+        
+        //hide the extent view
+        extentView.isHidden = true
         
         //show progress hud
         SVProgressHUD.show(withStatus: "Getting default parameters")
         
+        //get the area outlined by the extent view
+        let areaOfInterest = extentViewFrameToEnvelope()
+        
         //default parameters for offline map task
-        offlineMapTask?.defaultGenerateOfflineMapParameters(withAreaOfInterest: frameToExtent()) { [weak self] (parameters: AGSGenerateOfflineMapParameters?, error: Error?) in
+        offlineMapTask?.defaultGenerateOfflineMapParameters(withAreaOfInterest: areaOfInterest) { [weak self] (parameters: AGSGenerateOfflineMapParameters?, error: Error?) in
+            
+            guard let parameters = parameters,
+                let strongSelf = self else {
+                return
+            }
             
             if let error = error {
                 SVProgressHUD.showError(withStatus: error.localizedDescription)
@@ -204,23 +218,13 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             //dismiss progress hud
             SVProgressHUD.dismiss()
             
-            guard let parameters = parameters,
-                let strongSelf = self else {
-                return
-            }
-            
             //will need the parameters for creating the job later
             strongSelf.parameters = parameters
             
             //take map offline
             strongSelf.takeMapOffline()
         }
-        
-        //disable bar button item
-        barButtonItem.isEnabled = false
-        
-        //hide the extent view
-        extentView.isHidden = true
+
     }
     
     @IBAction func cancelAction() {
@@ -241,14 +245,14 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
     
     //MARK: - Helper methods
     
-    private func showAlert() {
+    private func showLoginQueryAlert() {
         
         let alertController = UIAlertController(title: nil, message: "This sample requires you to login in order to take the map's basemap offline. Would you like to continue?", preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "Yes", style: .default) { [weak self] (action) in
+        let yesAction = UIAlertAction(title: "OK", style: .default) { [weak self] (action) in
             self?.addMap()
         }
         
-        let noAction = UIAlertAction(title: "No", style: .cancel)
+        let noAction = UIAlertAction(title: "Cancel", style: .cancel)
         
         alertController.addAction(noAction)
         alertController.addAction(yesAction)
@@ -256,22 +260,29 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         present(alertController, animated: true, completion: nil)
     }
     
-    private func frameToExtent() -> AGSEnvelope {
+    private func extentViewFrameToEnvelope() -> AGSEnvelope {
+        
         let frame = mapView.convert(extentView.frame, from: view)
         
+        //the lower-left corner
         let minPoint = mapView.screen(toLocation: frame.origin)
-        let maxPoint = mapView.screen(toLocation: CGPoint(x: frame.origin.x+frame.width, y: frame.origin.y+frame.height))
-        let extent = AGSEnvelope(min: minPoint, max: maxPoint)
-        return extent
+        
+        //the upper-right corner
+        let maxPoint = mapView.screen(toLocation: CGPoint(x: frame.maxX, y: frame.maxY))
+        
+        //return the envenlope covering the entire extent frame
+        return AGSEnvelope(min: minPoint, max: maxPoint)
     }
     
     private func getNewOfflineGeodatabaseURL()->URL{
+
+        //get a suitable directory to place files
+        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
         //create a unique name for the geodatabase based on current timestamp
         let formattedDate = ISO8601DateFormatter().string(from: Date())
-        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let fullPath = "\(path)/\(formattedDate).geodatabase"
-        let fullPathURL = URL(string: fullPath)!
-        return fullPathURL
+        
+        return documentDirectoryURL.appendingPathComponent("\(formattedDate).geodatabase")
     }
 
     deinit {

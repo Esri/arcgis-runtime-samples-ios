@@ -303,9 +303,9 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }
         else {
             //get selected layer ids
-            let selectedLayerIds = self.featureLayersVC.selectedLayerIds
+            let selectedLayerIds = featureLayersVC.selectedLayerInfos.map { $0.id }
             
-            if selectedLayerIds.count == 0 {
+            if selectedLayerIds.isEmpty {
                 SVProgressHUD.showError(withStatus: "Please select at least one layer")
                 return
             }

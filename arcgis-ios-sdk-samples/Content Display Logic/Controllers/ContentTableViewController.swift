@@ -22,15 +22,66 @@ class ContentTableViewController: UITableViewController {
     var containsSearchResults = false
     private var bundleResourceRequest:NSBundleResourceRequest!
     private var downloadProgressView:DownloadProgressView!
-
-    var token: Int = 0
+    
+    var searchEngine: SearchEngine?
+    
+    // strong reference needed for iOS 10
+    var filterSearchController:UISearchController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchEngine = SearchEngine(samples: samples)
+        
         //initialize download progress view
         downloadProgressView = DownloadProgressView()
         downloadProgressView.delegate = self
+        
+        if !containsSearchResults{
+            addFilterSearchController()
+        }
+    }
+    
+    private func addFilterSearchController(){
+        
+        // ensure that the search results are interactable
+        definesPresentationContext = true
+        
+        // create the search controller
+        let searchController = UISearchController(searchResultsController:nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        // send search query updates to the results controller
+        searchController.searchResultsUpdater = self
+        // retain a strong reference for iOS 10
+        self.filterSearchController = searchController
+        
+        let searchBar = searchController.searchBar
+        searchBar.placeholder = "Filter"
+        searchBar.autocapitalizationType = .none
+        // set the color of "Cancel" text
+        searchBar.tintColor = .white
+        
+        if #available(iOS 11.0, *) {
+            // embed the search bar under the title in the navigation bar
+            navigationItem.searchController = searchController
+            
+            // find the text field to customize its appearance
+            if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+                // set the color of the insertion cursor
+                textfield.tintColor = UIColor.darkText
+                if let backgroundview = textfield.subviews.first {
+                    backgroundview.backgroundColor = UIColor.white
+                    backgroundview.layer.cornerRadius = 12
+                    backgroundview.clipsToBounds = true
+                }
+            }
+            
+        } else {
+            // embed the search bar in the title area of the navigation bar
+            navigationItem.titleView = searchController.searchBar
+        }
+        
     }
 
     // MARK: - Table view data source
@@ -226,12 +277,13 @@ extension ContentTableViewController: DownloadProgressViewDelegate {
 extension ContentTableViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        if let query = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+        if searchController.isActive,
+            let query = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),
             !query.isEmpty{
-            samples = SearchEngine.shared.sortedSamples(matching: query)
+            samples = searchEngine!.sortedSamples(matching: query)
         }
         else{
-            samples = []
+            samples = searchEngine!.samples
         }
         tableView.reloadData()
     }

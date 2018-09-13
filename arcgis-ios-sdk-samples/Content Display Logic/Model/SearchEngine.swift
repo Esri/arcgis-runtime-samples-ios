@@ -15,28 +15,24 @@
 import UIKit
 
 class SearchEngine {
-
-    static let shared = SearchEngine()
     
     private var displayNamesByReadmeWords:[String: [String]] = [:]
     private var isLoadingReadmeIndex = false
     
-    private var samples:[Sample]{
-        return SampleManager.shared.samples
-    }
+    let samples:[Sample]
     
-    private init() {
-        if !isLoadingReadmeIndex {
-            isLoadingReadmeIndex = true
-            DispatchQueue.global(qos: .background).async { [weak self] () -> Void in
-                guard let strongSelf = self else {
-                    return
-                }
-
-                //index the content of all sample names, descriptions, and readme files
-                strongSelf.indexSampleReadmes()
-                strongSelf.isLoadingReadmeIndex = false
+    init(samples:[Sample]) {
+        self.samples = samples
+        
+        isLoadingReadmeIndex = true
+        DispatchQueue.global(qos: .background).async { [weak self] () -> Void in
+            guard let strongSelf = self else {
+                return
             }
+
+            //index the content of all sample names, descriptions, and readme files
+            strongSelf.indexSampleReadmes()
+            strongSelf.isLoadingReadmeIndex = false
         }
     }
 

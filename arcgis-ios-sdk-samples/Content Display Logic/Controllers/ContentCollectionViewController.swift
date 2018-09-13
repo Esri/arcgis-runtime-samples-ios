@@ -29,12 +29,11 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
     @IBOutlet private var collectionViewFlowLayout:UICollectionViewFlowLayout!
     
     /// The categories to display in the collection view.
-    var categories:[Category]{
-        return SampleManager.shared.categories
-    }
+    var categories:[Category] = []
 
     private var transitionSize:CGSize!
     
+    // strong reference needed for iOS 10
     var searchController:UISearchController?
     
     override func viewDidLoad() {
@@ -48,31 +47,39 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         
         addSearchController()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // ensure that the search results appear beneath the navigation bar
+        definesPresentationContext = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // required in iOS 10 for the filter field to be interactable in the samples table
+        definesPresentationContext = false
+    }
     
     private func addSearchController(){
         
         // create the view controller for displaying the search results
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let searchResultsController = storyboard.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
-        searchResultsController.samples = []
+        // search all samples in the app
+        searchResultsController.samples = categories.flatMap { $0.samples }
         searchResultsController.containsSearchResults = true
-        searchResultsController.title = "Search"
         
         // create the search controller
         let searchController = UISearchController(searchResultsController:searchResultsController)
-        searchController.dimsBackgroundDuringPresentation = true
+        searchController.obscuresBackgroundDuringPresentation = true
         searchController.hidesNavigationBarDuringPresentation = false
         // send search query updates to the results controller
         searchController.searchResultsUpdater = searchResultsController
+        // retain a strong reference for iOS 10
         self.searchController = searchController
         
         let searchBar = searchController.searchBar
         searchBar.autocapitalizationType = .none
         // set the color of "Cancel" text
         searchBar.tintColor = .white
-        
-        // ensure that the search results appear beneath the navigation bar
-        definesPresentationContext = true
         
         if #available(iOS 11.0, *) {
             // embed the search bar under the title in the navigation bar

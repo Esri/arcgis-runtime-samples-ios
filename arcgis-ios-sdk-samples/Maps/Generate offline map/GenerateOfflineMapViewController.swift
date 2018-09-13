@@ -74,7 +74,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         //disable the bar button item until the map loads
         mapView.map?.load { [weak self] (error) in
             
-            guard let strongSelf = self else{
+            guard let self = self else{
                 return
             }
             
@@ -86,8 +86,8 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
                 return
             }
             
-            strongSelf.title = strongSelf.mapView.map?.item?.title
-            strongSelf.barButtonItem.isEnabled = true
+            self.title = self.mapView.map?.item?.title
+            self.barButtonItem.isEnabled = true
         }
         
         //instantiate offline map task
@@ -119,12 +119,12 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         //start the job
         generateOfflineMapJob.start(statusHandler: nil) { [weak self] (result:AGSGenerateOfflineMapResult?, error:Error?) in
             
-            guard let strongSelf = self else {
+            guard let self = self else {
                 return
             }
             
             //remove KVO observer
-            strongSelf.generateOfflineMapJob?.progress.removeObserver(strongSelf, forKeyPath: #keyPath(Progress.fractionCompleted))
+            self.generateOfflineMapJob?.progress.removeObserver(self, forKeyPath: #keyPath(Progress.fractionCompleted))
             
             if let error = error {    
                 //do not display error if user simply cancelled the request
@@ -133,7 +133,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
                 }
             }
             else if let result = result {
-                strongSelf.offlineMapGenerationDidSucceed(with: result)
+                self.offlineMapGenerationDidSucceed(with: result)
             }
         }
     }
@@ -173,16 +173,16 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             
             DispatchQueue.main.async { [weak self] in
                 
-                guard let strongSelf = self,
-                    let progress = strongSelf.generateOfflineMapJob?.progress else {
+                guard let self = self,
+                    let progress = self.generateOfflineMapJob?.progress else {
                     return
                 }
                 
                 //update progress label
-                strongSelf.progressLabel.text = progress.localizedDescription
+                self.progressLabel.text = progress.localizedDescription
                 
                 //update progress view
-                strongSelf.progressView.progress = Float(progress.fractionCompleted)
+                self.progressView.progress = Float(progress.fractionCompleted)
             }
         }
     }
@@ -207,7 +207,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         offlineMapTask?.defaultGenerateOfflineMapParameters(withAreaOfInterest: areaOfInterest) { [weak self] (parameters: AGSGenerateOfflineMapParameters?, error: Error?) in
             
             guard let parameters = parameters,
-                let strongSelf = self else {
+                let self = self else {
                 return
             }
             
@@ -219,10 +219,10 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             SVProgressHUD.dismiss()
             
             //will need the parameters for creating the job later
-            strongSelf.parameters = parameters
+            self.parameters = parameters
             
             //take map offline
-            strongSelf.takeMapOffline()
+            self.takeMapOffline()
         }
 
     }
@@ -248,15 +248,15 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
     private func showLoginQueryAlert() {
         
         let alertController = UIAlertController(title: nil, message: "This sample requires you to login in order to take the map's basemap offline. Would you like to continue?", preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "OK", style: .default) { [weak self] (action) in
+        let loginAction = UIAlertAction(title: "Login", style: .default) { [weak self] (action) in
             self?.addMap()
         }
         
-        let noAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
-        alertController.addAction(noAction)
-        alertController.addAction(yesAction)
-        
+        alertController.addAction(cancelAction)
+        alertController.addAction(loginAction)
+        alertController.preferredAction = loginAction
         present(alertController, animated: true, completion: nil)
     }
     
@@ -287,17 +287,16 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
 
     deinit {
         
-        guard let generateOfflineMapJob = generateOfflineMapJob else {
+        guard let progress = generateOfflineMapJob?.progress else {
             return
         }
-        let progress = generateOfflineMapJob.progress
         
         let isCompleted = (progress.totalUnitCount == progress.completedUnitCount)
         let isCancelled = progress.isCancelled
         
         if !isCancelled && !isCompleted {
             //remove observer
-            generateOfflineMapJob.progress.removeObserver(self, forKeyPath: #keyPath(Progress.fractionCompleted))
+            progress.removeObserver(self, forKeyPath: #keyPath(Progress.fractionCompleted))
         }
     }
 }

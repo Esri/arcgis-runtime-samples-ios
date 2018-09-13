@@ -16,11 +16,8 @@ import UIKit
 
 class ContentTableViewController: UITableViewController, CustomSearchHeaderViewDelegate, DownloadProgressViewDelegate {
 
-    private lazy var __once: () = { [weak self] in
-            self?.animateTable()
-        }()
-
-    var nodesArray:[Node]!
+    var samples = [Sample]()
+    private var expandedRowIndex:Int = -1
     
     private var headerView:CustomSearchHeaderView!
     var containsSearchResults = false
@@ -32,7 +29,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 60
         
         if containsSearchResults {
@@ -50,49 +47,8 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         self.downloadProgressView.delegate = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //animate the table only the first time the view appears
-        _ = self.__once
-    }
-    
-    func animateTable() {
-        //call reload data and wait for it to finish
-        //before accessing the visible cells
-        self.tableView.reloadData()
-        self.tableView.layoutIfNeeded()
-        
-        //will be animating only the visible cells
-        let visibleCells = self.tableView.visibleCells
-        
-        //counter for the for loop
-        var index = 0
-        
-        //loop through each visible cell
-        //and set the starting transform and then animate to identity
-        for cell in visibleCells {
-            
-            //starting position
-            cell.transform = CGAffineTransform(translationX: self.tableView.bounds.width, y: 0)
-            
-            //last position with animation
-            UIView.animate(withDuration: 0.5, delay: 0.1 * Double(index), usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: UIViewAnimationOptions.curveLinear, animations: {
-                
-                cell.transform = CGAffineTransform.identity
-                
-            }, completion: nil)
-            
-            //increment counter
-            index = index + 1
-        }
-    }
-    
-    func nodesByDisplayNames(_ names:[String]) -> [Node] {
-        var nodes = [Node]()
-        let matchingNodes = self.nodesArray.filter({ return names.contains($0.displayName) })
-        nodes.append(contentsOf: matchingNodes)
-        return nodes
+    func samplesByNames<C: Collection>(_ names: C) -> [Sample] where C.Element == String {
+        return samples.filter { names.contains($0.name) }
     }
 
     // MARK: - Table view data source
@@ -102,21 +58,21 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.nodesArray?.count ?? 0
+        return samples.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "ContentTableCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)!
 
-        let node = self.nodesArray[indexPath.row]
+        let sample = samples[indexPath.row]
         
         //populate the sample name
-        cell.textLabel?.text = node.displayName
+        cell.textLabel?.text = sample.name
         
         //populate the detail label with the description and the attributes from the storyboard
         let attributes = cell.detailTextLabel?.attributedText?.attributes(at: 0, effectiveRange: nil)
-        let attributedDescription = NSAttributedString(string: node.descriptionText, attributes: attributes)
+        let attributedDescription = NSAttributedString(string: sample.description, attributes: attributes)
         cell.detailTextLabel?.attributedText = attributedDescription
 
         return cell
@@ -126,12 +82,12 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         //hide keyboard if visible
         self.view.endEditing(true)
         
-        let node = self.nodesArray[indexPath.row]
+        let sample = samples[indexPath.row]
         
         //download on demand resources
-        if node.dependency.count > 0 {
-            
-            self.bundleResourceRequest = NSBundleResourceRequest(tags: Set(node.dependency))
+        if !sample.dependencies.isEmpty {
+        
+            self.bundleResourceRequest = NSBundleResourceRequest(tags: Set(sample.dependencies))
             
             //conditionally begin accessing to know if we need to show download progress view or not
             self.bundleResourceRequest.conditionallyBeginAccessingResources { [weak self] (isResourceAvailable: Bool) in
@@ -139,11 +95,11 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
                     
                     //if resource is already available then simply show the sample
                     if isResourceAvailable {
-                        self?.showSample(indexPath: indexPath, node: node)
+                        self?.showSample(indexPath: indexPath, sample: sample)
                     }
                     //else download the resource
                     else {
-                        self?.downloadResource(for: node, at: indexPath)
+                        self?.downloadResource(for: sample, at: indexPath)
                     }
                 }
             }
@@ -153,11 +109,11 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
             self.bundleResourceRequest?.endAccessingResources()
             
             //show view controller
-            self.showSample(indexPath: indexPath, node: node)
+            self.showSample(indexPath: indexPath, sample: sample)
         }
     }
     
-    func downloadResource(for node:Node, at indexPath:IndexPath) {
+    func downloadResource(for sample: Sample, at indexPath:IndexPath) {
         
         //show download progress view
         self.downloadProgressView.show(withStatus: "Just a moment while we download data for this sample...", progress: 0)
@@ -194,7 +150,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
                     if !strongSelf.bundleResourceRequest.progress.isCancelled {
                         
                         //show view controller
-                        strongSelf.showSample(indexPath: indexPath, node: node)
+                        strongSelf.showSample(indexPath: indexPath, sample: sample)
                     }
                 }
             }
@@ -209,11 +165,13 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         }
     }
     
-    func showSample(indexPath: IndexPath, node: Node) {
+    func showSample(indexPath: IndexPath, sample: Sample) {
         
-        let storyboard = UIStoryboard(name: node.storyboardName, bundle: Bundle.main)
+
+        let storyboard = UIStoryboard(name: sample.storyboardName, bundle: Bundle.main)
+
         let controller = storyboard.instantiateInitialViewController()!
-        controller.title = node.displayName
+        controller.title = sample.name
         let navController = UINavigationController(rootViewController: controller)
         
         self.splitViewController?.showDetailViewController(navController, sender: self)
@@ -227,7 +185,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         //create the info button and
         //assign the readme url
         let infoBBI = SourceCodeBarButtonItem()
-        infoBBI.folderName = node.displayName
+        infoBBI.folderName = sample.name
         infoBBI.navController = navController
         controller.navigationItem.rightBarButtonItem = infoBBI
     }
@@ -238,7 +196,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         var headerViewFrame = self.headerView.frame
         headerViewFrame.size.height = customSearchHeaderView.expandedViewHeight
         
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions(), animations: { () -> Void in
+        UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: { () -> Void in
             self.headerView.frame = headerViewFrame
             self.tableView.tableHeaderView = self.headerView
         }, completion: nil)
@@ -248,7 +206,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         var headerViewFrame = self.headerView.frame
         headerViewFrame.size.height = customSearchHeaderView.shrinkedViewHeight
 
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions(), animations: { () -> Void in
+        UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: { () -> Void in
             self.headerView.frame = headerViewFrame
             self.tableView.tableHeaderView = self.headerView
         }, completion: nil)
@@ -256,11 +214,11 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
     
     func customSearchHeaderView(_ customSearchHeaderView: CustomSearchHeaderView, didFindSamples sampleNames: [String]?) {
         if let sampleNames = sampleNames {
-            let resultNodes = self.nodesByDisplayNames(sampleNames)
-            if resultNodes.count > 0 {
+            let samples = samplesByNames(sampleNames)
+            if !samples.isEmpty {
                 //show the results
                 let controller = self.storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
-                controller.nodesArray = resultNodes
+                controller.samples = samples
                 controller.title = "Search results"
                 controller.containsSearchResults = true
                 self.navigationController?.show(controller, sender: self)

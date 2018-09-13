@@ -33,11 +33,11 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Open an existing map</string>
+				<string>Open map (URL)</string>
 				<key>storyboardName</key>
-				<string>OpenExistingMap</string>
+				<string>OpenMapURL</string>
 				<key>descriptionText</key>
-				<string>This sample shows you how to open an existing map using its url</string>
+				<string>This sample shows you how to open a map using its url</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

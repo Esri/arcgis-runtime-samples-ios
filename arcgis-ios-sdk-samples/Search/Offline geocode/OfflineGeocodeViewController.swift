@@ -70,7 +70,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         //add self as the observer for the keyboard show notification
         //will display a button every time keyboard is display so the user
         //can tap and cancel search and hide the keyboard
-        NotificationCenter.default.addObserver(self, selector: #selector(GeocodeOfflineViewController.keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GeocodeOfflineViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         //zoom to San Diego
         self.mapView.setViewpointCenter(AGSPoint(x: -13042254.715252, y: 3857970.236806, spatialReference: AGSSpatialReference(wkid: 3857)), scale: 2e4, completion: nil)
@@ -80,7 +80,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         
         //the total amount by which we will need to offset the callout along y-axis
         //to show it correctly centered on the pushpin's head in the magnifier
-        let img = UIImage(named: "ArcGIS.bundle/Magnifier.png")!
+        let img = UIImage(named: "Magnifier", in: AGSBundle(), compatibleWith: nil)!
         self.magnifierOffset = CGPoint(x: 0, y: -img.size.height)
     }
     

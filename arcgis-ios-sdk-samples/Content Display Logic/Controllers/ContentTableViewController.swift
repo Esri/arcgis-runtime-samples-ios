@@ -16,22 +16,33 @@ import UIKit
 
 class ContentTableViewController: UITableViewController {
     
-    var samples = [Sample]()
+    /// The samples to display in the table. Searching adjusts this value
+    var displayedSamples = [Sample](){
+        didSet{
+            tableView?.reloadData()
+        }
+    }
+    
+    /// All samples that could be displayed in the table
+    var allSamples = [Sample](){
+        didSet{
+            displayedSamples = allSamples
+            searchEngine = SampleSearchEngine(samples: allSamples)
+        }
+    }
     private var expandedRowIndex:Int = -1
     
     var containsSearchResults = false
     private var bundleResourceRequest:NSBundleResourceRequest!
     private var downloadProgressView:DownloadProgressView!
     
-    var searchEngine: SearchEngine?
+    var searchEngine: SampleSearchEngine?
     
     // strong reference needed for iOS 10
     var filterSearchController:UISearchController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        searchEngine = SearchEngine(samples: samples)
         
         //initialize download progress view
         downloadProgressView = DownloadProgressView()
@@ -91,14 +102,14 @@ class ContentTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return samples.count
+        return displayedSamples.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "ContentTableCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as! ContentTableCell
 
-        let sample = samples[indexPath.row]
+        let sample = displayedSamples[indexPath.row]
         cell.titleLabel.text = sample.name
         
         if self.expandedRowIndex == indexPath.row {
@@ -120,7 +131,7 @@ class ContentTableViewController: UITableViewController {
         //hide keyboard if visible
         self.view.endEditing(true)
         
-        let sample = samples[indexPath.row]
+        let sample = displayedSamples[indexPath.row]
         
         //download on demand resources
         if !sample.dependencies.isEmpty {
@@ -212,24 +223,17 @@ class ContentTableViewController: UITableViewController {
         let controller = storyboard.instantiateInitialViewController()!
         controller.title = sample.name
         
-        var presentingController:UIViewController? = self
-        if containsSearchResults {
-            //must use the controller presenting the results or else splitViewController will be nil
-            presentingController = presentingViewController
-        }
-        
-        guard let splitViewController = presentingController?.splitViewController else {
-            return
-        }
+        //must use the presenting controller when opening from search results or else splitViewController will be nil
+        let presentingController: UIViewController? = containsSearchResults ? presentingViewController : self
             
         let navController = UINavigationController(rootViewController: controller)
         
         //add the button on the left on the detail view controller
-        controller.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+        controller.navigationItem.leftBarButtonItem = presentingController?.splitViewController?.displayModeButtonItem
         controller.navigationItem.leftItemsSupplementBackButton = true
         
         //present the sample view controller
-        splitViewController.showDetailViewController(navController, sender: true)
+        presentingController?.showDetailViewController(navController, sender: self)
         
         //create and setup the info button
         let infoBBI = SourceCodeBarButtonItem()
@@ -277,15 +281,18 @@ extension ContentTableViewController: DownloadProgressViewDelegate {
 extension ContentTableViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
+        guard let searchEngine = searchEngine else {
+            return
+        }
+        
         if searchController.isActive,
             let query = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),
             !query.isEmpty{
-            samples = searchEngine!.sortedSamples(matching: query)
+            displayedSamples = searchEngine.sortedSamples(matching: query)
         }
         else{
-            samples = searchEngine!.samples
+            displayedSamples = allSamples
         }
-        tableView.reloadData()
     }
     
 }

@@ -14,12 +14,12 @@
 
 import UIKit
 
-class SearchEngine {
+class SampleSearchEngine {
     
     private var displayNamesByReadmeWords:[String: [String]] = [:]
     private var isLoadingReadmeIndex = false
     
-    let samples:[Sample]
+    private let samples:[Sample]
     
     init(samples:[Sample]) {
         self.samples = samples

@@ -64,7 +64,7 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let searchResultsController = storyboard.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
         // search all samples in the app
-        searchResultsController.samples = categories.flatMap { $0.samples }
+        searchResultsController.allSamples = categories.flatMap { $0.samples }
         searchResultsController.containsSearchResults = true
         
         // create the search controller
@@ -147,7 +147,7 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         
         let category = categories[indexPath.item]
         let controller = self.storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
-        controller.samples = category.samples
+        controller.allSamples = category.samples
         controller.title = category.name
         self.navigationController?.show(controller, sender: self)
     }

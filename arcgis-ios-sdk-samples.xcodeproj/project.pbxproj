@@ -116,7 +116,7 @@
 		3E39F6D61B979135000DEC6C /* FeatureTemplatePickerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */; };
 		3E3B2C1F1BBCA37F00A99C5E /* ContentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B2C1E1BBCA37F00A99C5E /* ContentCollectionViewController.swift */; };
 		3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B2C211BBCADDB00A99C5E /* ContentTableCell.swift */; };
-		3E3B2C241BBD9CD300A99C5E /* SearchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B2C231BBD9CD300A99C5E /* SearchEngine.swift */; };
+		3E3B2C241BBD9CD300A99C5E /* SampleSearchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B2C231BBD9CD300A99C5E /* SampleSearchEngine.swift */; };
 		3E412B3E1D0B2CC600349155 /* OpenMobileMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFCE1B01CF368D500E02F67 /* OpenMobileMapViewController.swift */; };
 		3E412B3F1D0B2CC600349155 /* MapPackageCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFCE1BF1CF374C600E02F67 /* MapPackageCell.swift */; };
 		3E412B401D0B2CC600349155 /* MapPackagesListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFCE1C01CF374C600E02F67 /* MapPackagesListViewController.swift */; };
@@ -862,7 +862,7 @@
 		3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureTemplatePickerViewController.swift; sourceTree = "<group>"; };
 		3E3B2C1E1BBCA37F00A99C5E /* ContentCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewController.swift; sourceTree = "<group>"; };
 		3E3B2C211BBCADDB00A99C5E /* ContentTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentTableCell.swift; sourceTree = "<group>"; };
-		3E3B2C231BBD9CD300A99C5E /* SearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEngine.swift; sourceTree = "<group>"; };
+		3E3B2C231BBD9CD300A99C5E /* SampleSearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSearchEngine.swift; sourceTree = "<group>"; };
 		3E412B421D0B2FAD00349155 /* AppInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
 		3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFeaturesViewController.swift; sourceTree = "<group>"; };
 		3E41DD731B9A241500DA11CC /* AddFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddFeatures.storyboard; sourceTree = "<group>"; };
@@ -2596,7 +2596,7 @@
 			children = (
 				3EE692011B03D22500C167B8 /* Category.swift */,
 				4C41B2ED211A617700EEA81E /* Sample.swift */,
-				3E3B2C231BBD9CD300A99C5E /* SearchEngine.swift */,
+				3E3B2C231BBD9CD300A99C5E /* SampleSearchEngine.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3419,7 +3419,7 @@
 				3E8A05BC1ECD08240032231C /* SceneLayerURLViewController.swift in Sources */,
 				3EABC7CA1DB1947500C161C6 /* BlendRendererSettingsVC.swift in Sources */,
 				F4E5CD7D20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift in Sources */,
-				3E3B2C241BBD9CD300A99C5E /* SearchEngine.swift in Sources */,
+				3E3B2C241BBD9CD300A99C5E /* SampleSearchEngine.swift in Sources */,
 				3ED028B01B8E3A9800ACA70D /* MILUsingURLViewController.swift in Sources */,
 				3EBA25741D3450F600AB0703 /* CreateGeometriesViewController.swift in Sources */,
 				3EABC7A41DB1793000C161C6 /* StretchRendererViewController.swift in Sources */,

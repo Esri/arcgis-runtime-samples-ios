@@ -74,8 +74,6 @@
 		3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */; };
 		3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */ = {isa = PBXBuildFile; fileRef = 3E03F0981B056F9C0078EB36 /* highlight.pack.js */; };
 		3E03F09B1B05714A0078EB36 /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 3E03F09A1B05714A0078EB36 /* default.css */; };
-		3E0830BA1BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0830B91BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift */; };
-		3E0830BC1BC31B69001AF9A7 /* CustomSearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0830BB1BC31B69001AF9A7 /* CustomSearchHeaderView.xib */; };
 		3E0830BE1BC33681001AF9A7 /* SuggestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0830BD1BC33681001AF9A7 /* SuggestionTableViewCell.xib */; };
 		3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0B58471E36BCCD00951767 /* AnalyzeHotspots.storyboard */; };
 		3E0B584E1E36BCCD00951767 /* HotspotSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B58481E36BCCD00951767 /* HotspotSettingsViewController.swift */; };
@@ -118,7 +116,7 @@
 		3E39F6D61B979135000DEC6C /* FeatureTemplatePickerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */; };
 		3E3B2C1F1BBCA37F00A99C5E /* ContentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B2C1E1BBCA37F00A99C5E /* ContentCollectionViewController.swift */; };
 		3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B2C211BBCADDB00A99C5E /* ContentTableCell.swift */; };
-		3E3B2C241BBD9CD300A99C5E /* SearchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B2C231BBD9CD300A99C5E /* SearchEngine.swift */; };
+		3E3B2C241BBD9CD300A99C5E /* SampleSearchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B2C231BBD9CD300A99C5E /* SampleSearchEngine.swift */; };
 		3E412B3E1D0B2CC600349155 /* OpenMobileMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFCE1B01CF368D500E02F67 /* OpenMobileMapViewController.swift */; };
 		3E412B3F1D0B2CC600349155 /* MapPackageCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFCE1BF1CF374C600E02F67 /* MapPackageCell.swift */; };
 		3E412B401D0B2CC600349155 /* MapPackagesListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFCE1C01CF374C600E02F67 /* MapPackagesListViewController.swift */; };
@@ -440,7 +438,7 @@
 		3EE1799B1DE37199005E0759 /* EditGeometryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED0295D1B8E3ACD00ACA70D /* EditGeometryViewController.swift */; };
 		3EE1799C1DE37199005E0759 /* EditFeaturesOnlineViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E39F6D01B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift */; };
 		3EE1799D1DE37199005E0759 /* OfflineEditingViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */; };
-		3EE692021B03D22500C167B8 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE692011B03D22500C167B8 /* Node.swift */; };
+		3EE692021B03D22500C167B8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE692011B03D22500C167B8 /* Category.swift */; };
 		3EE8B9531CA08E54003AA705 /* VectorTileLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */; };
 		3EE8B9551CA08E71003AA705 /* VectorTileLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */; };
 		3EE8B9591CA0C020003AA705 /* VectorTileLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */; };
@@ -485,6 +483,7 @@
 		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
 		4C2B52D620D2C1810071EBB6 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B52D520D2C1810071EBB6 /* URL.swift */; };
 		4C2B52D720D2C3180071EBB6 /* DistanceMeasurementAnalysisViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */; };
+		4C41B2EE211A617700EEA81E /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C41B2ED211A617700EEA81E /* Sample.swift */; };
 		4C66AAF72107C4F400EE6346 /* QueryMapImageSublayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */; };
 		4C66AAF92107C50B00EE6346 /* QueryMapImageSublayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */; };
 		4C66AAFA2107CCE300EE6346 /* QueryMapImageSublayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */; };
@@ -498,6 +497,8 @@
 		4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */; };
 		4CCE7BD620D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */; };
 		4CCE7BD820D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCE7BD720D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard */; };
+		4CD2B55F2142EB2600767D87 /* SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B55E2142EB2600767D87 /* SampleTests.swift */; };
+		4CD2B5612142F09700767D87 /* CategoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B5602142F09700767D87 /* CategoryTests.swift */; };
 		4CEA34FE20C5EC680087F93A /* StyleWebMapServiceLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */; };
 		940A73F420E588C200A06C80 /* CutGeometry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940A73F320E588C200A06C80 /* CutGeometry.storyboard */; };
 		940A73F620E589AB00A06C80 /* CutGeometryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
@@ -574,6 +575,16 @@
 		F4E5CD7D20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */; };
 		F4E5CD7E207058D8000A6D35 /* FeatureLayerRenderingModeMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4CD2B5592142EAF900767D87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3E23A9D81AFC28F6002E2214 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3E23A9DF1AFC28F6002E2214;
+			remoteInfo = "arcgis-ios-sdk-samples";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		3E03F0951B056DC40078EB36 /* CopyFiles */ = {
@@ -817,8 +828,6 @@
 		3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceCodeViewController.swift; sourceTree = "<group>"; };
 		3E03F0981B056F9C0078EB36 /* highlight.pack.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.pack.js; sourceTree = "<group>"; };
 		3E03F09A1B05714A0078EB36 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
-		3E0830B91BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchHeaderView.swift; sourceTree = "<group>"; };
-		3E0830BB1BC31B69001AF9A7 /* CustomSearchHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomSearchHeaderView.xib; sourceTree = "<group>"; };
 		3E0830BD1BC33681001AF9A7 /* SuggestionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuggestionTableViewCell.xib; sourceTree = "<group>"; };
 		3E0B58471E36BCCD00951767 /* AnalyzeHotspots.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnalyzeHotspots.storyboard; sourceTree = "<group>"; };
 		3E0B58481E36BCCD00951767 /* HotspotSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotspotSettingsViewController.swift; sourceTree = "<group>"; };
@@ -853,7 +862,7 @@
 		3E39F6D11B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureTemplatePickerViewController.swift; sourceTree = "<group>"; };
 		3E3B2C1E1BBCA37F00A99C5E /* ContentCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewController.swift; sourceTree = "<group>"; };
 		3E3B2C211BBCADDB00A99C5E /* ContentTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentTableCell.swift; sourceTree = "<group>"; };
-		3E3B2C231BBD9CD300A99C5E /* SearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEngine.swift; sourceTree = "<group>"; };
+		3E3B2C231BBD9CD300A99C5E /* SampleSearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSearchEngine.swift; sourceTree = "<group>"; };
 		3E412B421D0B2FAD00349155 /* AppInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
 		3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFeaturesViewController.swift; sourceTree = "<group>"; };
 		3E41DD731B9A241500DA11CC /* AddFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddFeatures.storyboard; sourceTree = "<group>"; };
@@ -1072,7 +1081,7 @@
 		3ED7888D1D26E28500E5F311 /* TilePackagesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TilePackagesListViewController.swift; sourceTree = "<group>"; };
 		3ED7888F1D26E2F700E5F311 /* LocalTiledLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocalTiledLayer.storyboard; sourceTree = "<group>"; };
 		3EE385511DD4FDE600B13E3C /* srtm.tiff.ovr */ = {isa = PBXFileReference; lastKnownFileType = file; path = srtm.tiff.ovr; sourceTree = "<group>"; };
-		3EE692011B03D22500C167B8 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		3EE692011B03D22500C167B8 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VectorTileLayer.storyboard; sourceTree = "<group>"; };
 		3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorTileLayerViewController.swift; sourceTree = "<group>"; };
 		3EEA06021D21C44000E03774 /* SceneSymbols.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SceneSymbols.storyboard; sourceTree = "<group>"; };
@@ -1104,6 +1113,7 @@
 		3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerQuery.storyboard; sourceTree = "<group>"; };
 		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryVC.swift; sourceTree = "<group>"; };
 		4C2B52D520D2C1810071EBB6 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		4C41B2ED211A617700EEA81E /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
 		4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QueryMapImageSublayer.storyboard; sourceTree = "<group>"; };
 		4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryMapImageSublayerViewController.swift; sourceTree = "<group>"; };
 		4C72116E20BF444C004A7DD9 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
@@ -1117,6 +1127,10 @@
 		4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StyleWebMapServiceLayer.storyboard; sourceTree = "<group>"; };
 		4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasurementAnalysisViewController.swift; sourceTree = "<group>"; };
 		4CCE7BD720D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DistanceMeasurementAnalysis.storyboard; sourceTree = "<group>"; };
+		4CD2B5542142EAF900767D87 /* arcgis-ios-sdk-samplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "arcgis-ios-sdk-samplesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CD2B5582142EAF900767D87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CD2B55E2142EB2600767D87 /* SampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTests.swift; sourceTree = "<group>"; };
+		4CD2B5602142F09700767D87 /* CategoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTests.swift; sourceTree = "<group>"; };
 		940A73F320E588C200A06C80 /* CutGeometry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CutGeometry.storyboard; sourceTree = "<group>"; };
 		940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutGeometryViewController.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
@@ -1177,6 +1191,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		3E23A9DD1AFC28F6002E2214 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CD2B5512142EAF900767D87 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1448,6 +1469,7 @@
 				3E23A9E21AFC28F6002E2214 /* arcgis-ios-sdk-samples */,
 				3E23A9EE1AFC28F6002E2214 /* Images.xcassets */,
 				3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */,
+				4CD2B5552142EAF900767D87 /* arcgis-ios-sdk-samplesTests */,
 				4C73C83321112AFF00B0F9C7 /* Frameworks */,
 				3E23A9E11AFC28F6002E2214 /* Products */,
 			);
@@ -1457,6 +1479,7 @@
 			isa = PBXGroup;
 			children = (
 				3E23A9E01AFC28F6002E2214 /* arcgis-ios-sdk-samples.app */,
+				4CD2B5542142EAF900767D87 /* arcgis-ios-sdk-samplesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1689,8 +1712,6 @@
 		3E5163361BBEF69B00D42C4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3E0830B91BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift */,
-				3E0830BB1BC31B69001AF9A7 /* CustomSearchHeaderView.xib */,
 				3ECDD9AE1E8470E100E645AB /* DownloadProgressView.swift */,
 				3ECDD9AF1E8470E100E645AB /* DownloadProgressView.xib */,
 			);
@@ -2573,8 +2594,9 @@
 		3EE692001B03D1FC00C167B8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3EE692011B03D22500C167B8 /* Node.swift */,
-				3E3B2C231BBD9CD300A99C5E /* SearchEngine.swift */,
+				3EE692011B03D22500C167B8 /* Category.swift */,
+				4C41B2ED211A617700EEA81E /* Sample.swift */,
+				3E3B2C231BBD9CD300A99C5E /* SampleSearchEngine.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2786,6 +2808,16 @@
 				4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */,
 			);
 			path = "Distance measurement analysis";
+			sourceTree = "<group>";
+		};
+		4CD2B5552142EAF900767D87 /* arcgis-ios-sdk-samplesTests */ = {
+			isa = PBXGroup;
+			children = (
+				4CD2B5582142EAF900767D87 /* Info.plist */,
+				4CD2B5602142F09700767D87 /* CategoryTests.swift */,
+				4CD2B55E2142EB2600767D87 /* SampleTests.swift */,
+			);
+			path = "arcgis-ios-sdk-samplesTests";
 			sourceTree = "<group>";
 		};
 		940A73F220E5889B00A06C80 /* Cut geometry */ = {
@@ -3001,6 +3033,24 @@
 			productReference = 3E23A9E01AFC28F6002E2214 /* arcgis-ios-sdk-samples.app */;
 			productType = "com.apple.product-type.application";
 		};
+		4CD2B5532142EAF900767D87 /* arcgis-ios-sdk-samplesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CD2B55D2142EAF900767D87 /* Build configuration list for PBXNativeTarget "arcgis-ios-sdk-samplesTests" */;
+			buildPhases = (
+				4CD2B5502142EAF900767D87 /* Sources */,
+				4CD2B5512142EAF900767D87 /* Frameworks */,
+				4CD2B5522142EAF900767D87 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4CD2B55A2142EAF900767D87 /* PBXTargetDependency */,
+			);
+			name = "arcgis-ios-sdk-samplesTests";
+			productName = "arcgis-ios-sdk-samplesTests";
+			productReference = 4CD2B5542142EAF900767D87 /* arcgis-ios-sdk-samplesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -3031,14 +3081,20 @@
 					YellowstoneMMPK,
 				);
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Esri;
 				TargetAttributes = {
 					3E23A9DF1AFC28F6002E2214 = {
 						CreatedOnToolsVersion = 6.2;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
+					};
+					4CD2B5532142EAF900767D87 = {
+						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 3E23A9DF1AFC28F6002E2214;
 					};
 				};
 			};
@@ -3056,6 +3112,7 @@
 			projectRoot = "";
 			targets = (
 				3E23A9DF1AFC28F6002E2214 /* arcgis-ios-sdk-samples */,
+				4CD2B5532142EAF900767D87 /* arcgis-ios-sdk-samplesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -3182,7 +3239,6 @@
 				F4159C6F20925AAE0016E53D /* OpenScene.storyboard in Resources */,
 				3E4B05F81B39EF250072E514 /* SVProgressHUD.bundle in Resources */,
 				3ED75D031ED39EDF009B1F75 /* FindServiceAreaInteractive.storyboard in Resources */,
-				3E0830BC1BC31B69001AF9A7 /* CustomSearchHeaderView.xib in Resources */,
 				3EABC7C21DB191BC00C161C6 /* Shasta_Elevation.tif in Resources */,
 				3E1183DF1ECF5A1000180152 /* Pyrenees.csv in Resources */,
 				3EABC78F1DB1772000C161C6 /* RGBRenderer.storyboard in Resources */,
@@ -3264,6 +3320,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4CD2B5522142EAF900767D87 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -3301,7 +3364,6 @@
 				3ED028841B8E3A8500ACA70D /* MapRotationViewController.swift in Sources */,
 				3EFCE1B11CF368D500E02F67 /* OpenMobileMapViewController.swift in Sources */,
 				3ED0294C1B8E3AB300ACA70D /* SketchViewController.swift in Sources */,
-				3E0830BA1BBF4BB0001AF9A7 /* CustomSearchHeaderView.swift in Sources */,
 				3EBA255B1D33FF1400AB0703 /* PictureMarkerSymbolsViewController.swift in Sources */,
 				21E9CDEC1EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift in Sources */,
 				3ED029711B8E3ACD00ACA70D /* EditGeometryViewController.swift in Sources */,
@@ -3330,6 +3392,7 @@
 				3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */,
 				E45991A31EF3021D0089E9FD /* WebMapsCollectionViewController.swift in Sources */,
 				3ED0289A1B8E3A8500ACA70D /* ShowMagnifierViewController.swift in Sources */,
+				4C41B2EE211A617700EEA81E /* Sample.swift in Sources */,
 				3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */,
 				218409DB1FE87E220098BC40 /* GroupByFieldsViewController.swift in Sources */,
 				3ED028B91B8E3A9800ACA70D /* SublayerVisibilityViewController.swift in Sources */,
@@ -3356,7 +3419,7 @@
 				3E8A05BC1ECD08240032231C /* SceneLayerURLViewController.swift in Sources */,
 				3EABC7CA1DB1947500C161C6 /* BlendRendererSettingsVC.swift in Sources */,
 				F4E5CD7D20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift in Sources */,
-				3E3B2C241BBD9CD300A99C5E /* SearchEngine.swift in Sources */,
+				3E3B2C241BBD9CD300A99C5E /* SampleSearchEngine.swift in Sources */,
 				3ED028B01B8E3A9800ACA70D /* MILUsingURLViewController.swift in Sources */,
 				3EBA25741D3450F600AB0703 /* CreateGeometriesViewController.swift in Sources */,
 				3EABC7A41DB1793000C161C6 /* StretchRendererViewController.swift in Sources */,
@@ -3463,7 +3526,7 @@
 				D90407941FD8608A00BFE07B /* RasterLayerGPKGViewController.swift in Sources */,
 				3E4BF4581C5BD6C400D85919 /* SanDiegoAddressesViewController.swift in Sources */,
 				3ECCFE3C1BD0401A00CE256D /* LayerStatusViewController.swift in Sources */,
-				3EE692021B03D22500C167B8 /* Node.swift in Sources */,
+				3EE692021B03D22500C167B8 /* Category.swift in Sources */,
 				3ED028E51B8E3AA500ACA70D /* DefinitionExpressionViewController.swift in Sources */,
 				E4477CBE20EC0CCD004E14F9 /* ListTransformationsViewController.swift in Sources */,
 				D9316A621FDB4F060075AD92 /* GPKGLayersViewController.swift in Sources */,
@@ -3487,7 +3550,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4CD2B5502142EAF900767D87 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD2B55F2142EB2600767D87 /* SampleTests.swift in Sources */,
+				4CD2B5612142F09700767D87 /* CategoryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4CD2B55A2142EAF900767D87 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3E23A9DF1AFC28F6002E2214 /* arcgis-ios-sdk-samples */;
+			targetProxy = 4CD2B5592142EAF900767D87 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */ = {
@@ -3628,8 +3708,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "arcgis-ios-sdk-samples/Content Display Logic/Samples-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -3658,8 +3737,58 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "arcgis-ios-sdk-samples/Content Display Logic/Samples-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		4CD2B55B2142EAF900767D87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "arcgis-ios-sdk-samplesTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samplesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/arcgis-ios-sdk-samples.app/arcgis-ios-sdk-samples";
+			};
+			name = Debug;
+		};
+		4CD2B55C2142EAF900767D87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "arcgis-ios-sdk-samplesTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samplesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/arcgis-ios-sdk-samples.app/arcgis-ios-sdk-samples";
 			};
 			name = Release;
 		};
@@ -3680,6 +3809,15 @@
 			buildConfigurations = (
 				3E23AA021AFC28F6002E2214 /* Debug */,
 				3E23AA031AFC28F6002E2214 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CD2B55D2142EAF900767D87 /* Build configuration list for PBXNativeTarget "arcgis-ios-sdk-samplesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CD2B55B2142EAF900767D87 /* Debug */,
+				4CD2B55C2142EAF900767D87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

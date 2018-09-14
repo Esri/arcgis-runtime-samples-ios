@@ -33,7 +33,7 @@ class SearchForWebmapByKeywordViewController: UIViewController, WebMapsCollectio
         // create the portal
         self.portal = AGSPortal(url: URL(string: "https://arcgis.com")!, loginRequired: false)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(unhideButton), name: .UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(unhideButton), name: UIResponder.keyboardDidShowNotification, object: nil)
     
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SearchForWebmapByKeywordViewController", "WebMapCell", "WebMapsCollectionViewController", "WebMapViewController"]
     }

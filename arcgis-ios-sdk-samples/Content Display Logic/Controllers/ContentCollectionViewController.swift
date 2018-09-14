@@ -23,108 +23,84 @@ class CustomFlowLayout:UICollectionViewFlowLayout {
 
 private let reuseIdentifier = "CategoryCell"
 
-class ContentCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, CustomSearchHeaderViewDelegate {
+class ContentCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet private var collectionView:UICollectionView!
     @IBOutlet private var collectionViewFlowLayout:UICollectionViewFlowLayout!
     
-    private var headerView:CustomSearchHeaderView!
-    
-    var nodesArray:[Node]!
+    /// The categories to display in the collection view.
+    var categories:[Category] = []
+
     private var transitionSize:CGSize!
+    
+    // strong reference needed for iOS 10
+    var searchController:UISearchController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if #available(iOS 11.0, *) {
-            self.collectionView.contentInsetAdjustmentBehavior = .never
+            collectionView.contentInsetAdjustmentBehavior = .never
         } else {
-            self.automaticallyAdjustsScrollViewInsets = false
+            automaticallyAdjustsScrollViewInsets = false
         }
         
-        //hide suggestions
-        self.hideSuggestions()
+        addSearchController()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // ensure that the search results appear beneath the navigation bar
+        definesPresentationContext = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // required in iOS 10 for the filter field to be interactable in the samples table
+        definesPresentationContext = false
+    }
+    
+    private func addSearchController(){
         
-        self.populateTree()
-    }
-    
-    func populateTree() {
+        // create the view controller for displaying the search results
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let searchResultsController = storyboard.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
+        // search all samples in the app
+        searchResultsController.allSamples = categories.flatMap { $0.samples }
+        searchResultsController.containsSearchResults = true
         
-        let path = Bundle.main.path(forResource: "ContentPList", ofType: "plist")
-        let content = NSArray(contentsOfFile: path!)
-        self.nodesArray = self.populateNodesArray(content! as [AnyObject])
+        // create the search controller
+        let searchController = UISearchController(searchResultsController:searchResultsController)
+        searchController.obscuresBackgroundDuringPresentation = true
+        searchController.hidesNavigationBarDuringPresentation = false
+        // send search query updates to the results controller
+        searchController.searchResultsUpdater = searchResultsController
+        // retain a strong reference for iOS 10
+        self.searchController = searchController
         
-        self.collectionView?.reloadData()
-    }
-    
-    func populateNodesArray(_ array:[AnyObject]) -> [Node] {
-        var nodesArray = [Node]()
-        for object in array {
-            let node = self.populateNode(object as! [String:AnyObject])
-            nodesArray.append(node)
-        }
-        return nodesArray
-    }
-    
-    func populateNode(_ dict:[String:AnyObject]) -> Node {
-        let node = Node()
-        if let displayName = dict["displayName"] as? String {
-            node.displayName = displayName
-        }
-        if let descriptionText = dict["descriptionText"] as? String {
-            node.descriptionText = descriptionText
-        }
-        if let storyboardName = dict["storyboardName"] as? String {
-            node.storyboardName = storyboardName
-        }
-        if let children = dict["children"] as? [AnyObject] {
-            node.children = self.populateNodesArray(children)
-        }
-        if let dependency = dict["dependency"] as? [String] {
-            node.dependency.append(contentsOf: dependency)
-        }
-        return node
-    }
-    
-    
-    //MARK: - Suggestions related
-    
-    func showSuggestions() {
-//        if !self.isSuggestionsTableVisible() {
-            self.collectionView.performBatchUpdates({ [weak self] () -> Void in
-                (self?.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).headerReferenceSize = CGSize(width: self!.collectionView.bounds.width, height: self!.headerView.expandedViewHeight)
-            }, completion: nil)
+        let searchBar = searchController.searchBar
+        searchBar.autocapitalizationType = .none
+        // set the color of "Cancel" text
+        searchBar.tintColor = .white
+        
+        if #available(iOS 11.0, *) {
+            // embed the search bar under the title in the navigation bar
+            navigationItem.searchController = searchController
             
-            //show suggestions
-//        }
-    }
-    
-    func hideSuggestions() {
-//        if self.isSuggestionsTableVisible() {
-            self.collectionView.performBatchUpdates({ [weak self] () -> Void in
-                (self?.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).headerReferenceSize = CGSize(width: self!.collectionView.bounds.width, height: self!.headerView.shrinkedViewHeight)
-            }, completion: nil)
-            
-            //hide suggestions
-//        }
-    }
-
-    //TODO: implement this
-//    func isSuggestionsTableVisible() -> Bool {
-//        return (self.headerView?.suggestionsTableHeightConstraint?.constant == 0 ? false : true) ?? false
-//    }
-    
-    //MARK: - samples lookup by name
-    
-    func nodesByDisplayNames(_ names:[String]) -> [Node] {
-        var nodes = [Node]()
-        for node in self.nodesArray {
-            let children = node.children
-            if let matchingNodes = children?.filter({ return names.contains($0.displayName) }) {
-                nodes.append(contentsOf: matchingNodes)
+            // find the text field to customize its appearance
+            if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+                // set the color of the insertion cursor
+                textfield.tintColor = UIColor.darkText
+                if let backgroundview = textfield.subviews.first {
+                    backgroundview.backgroundColor = UIColor.white
+                    backgroundview.layer.cornerRadius = 12
+                    backgroundview.clipsToBounds = true
+                }
             }
+            
+        } else {
+            // embed the search bar in the title area of the navigation bar
+            navigationItem.titleView = searchController.searchBar
         }
-        return nodes
+        
     }
 
     // MARK: UICollectionViewDataSource
@@ -133,28 +109,27 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         return 1
     }
 
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.nodesArray?.count ?? 0
+        return categories.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
         
-        let node = self.nodesArray[indexPath.item]
+        let category = categories[indexPath.item]
         
         //mask to bounds
         cell.layer.masksToBounds = false
         
         //name
-        cell.nameLabel.text = node.displayName.uppercased()
+        cell.nameLabel.text = category.name.uppercased()
         
         //icon
-        let image = UIImage(named: "\(node.displayName)_icon")
+        let image = UIImage(named: "\(category.name)_icon")
         cell.iconImageView.image = image
         
         //background image
-        let bgImage = UIImage(named: "\(node.displayName)_bg")
+        let bgImage = UIImage(named: "\(category.name)_bg")
         cell.backgroundImageView.image = bgImage
         
         //cell shadow
@@ -163,15 +138,6 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         
         return cell
     }
-
-    //supplementary view as search bar
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if self.headerView == nil {
-            self.headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionHeaderView", for: indexPath) as? CustomSearchHeaderView
-            self.headerView.delegate = self
-        }
-        return self.headerView
-    }
     
     //MARK: - UICollectionViewDelegate
     
@@ -179,10 +145,10 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         //hide keyboard if visible
         self.view.endEditing(true)
         
-        let node = self.nodesArray[indexPath.item]
+        let category = categories[indexPath.item]
         let controller = self.storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
-        controller.nodesArray = node.children
-        controller.title = node.displayName
+        controller.allSamples = category.samples
+        controller.title = category.name
         self.navigationController?.show(controller, sender: self)
     }
     
@@ -216,31 +182,5 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         }
         return CGSize(width: width, height: width)
     }
-
-    //MARK: - CustomSearchHeaderViewDelegate
     
-    func customSearchHeaderView(_ customSearchHeaderView: CustomSearchHeaderView, didFindSamples sampleNames: [String]?) {
-        if let sampleNames = sampleNames {
-            let resultNodes = self.nodesByDisplayNames(sampleNames)
-            if resultNodes.count > 0 {
-                //show the results
-                let controller = self.storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
-                controller.nodesArray = resultNodes
-                controller.title = "Search results"
-                controller.containsSearchResults = true
-                self.navigationController?.show(controller, sender: self)
-                return
-            }
-        }
-        
-        SVProgressHUD.showError(withStatus: "No match found")
-    }
-    
-    func customSearchHeaderViewWillHideSuggestions(_ customSearchHeaderView: CustomSearchHeaderView) {
-        self.hideSuggestions()
-    }
-    
-    func customSearchHeaderViewWillShowSuggestions(_ customSearchHeaderView: CustomSearchHeaderView) {
-        self.showSuggestions()
-    }
 }

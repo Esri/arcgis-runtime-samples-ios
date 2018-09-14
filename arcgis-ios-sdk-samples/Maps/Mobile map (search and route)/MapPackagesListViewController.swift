@@ -30,7 +30,7 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MapPackagesListViewController", "MobileMapViewController", "MapPackageCell"]
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         
         self.fetchMapPackages()
@@ -132,7 +132,7 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
             self.selectedRowIndexPath = indexPath
         }
         
-        tableView.reloadRows(at: indexPathsArray, with: UITableViewRowAnimation.automatic)
+        tableView.reloadRows(at: indexPathsArray, with: .automatic)
     }
     
     //MARK: - MapPackageCellDelegate

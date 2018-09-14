@@ -219,7 +219,7 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         anim.toValue = self.toPath
         anim.isRemovedOnCompletion = true
         anim.delegate = self
-        anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        anim.timingFunction = CAMediaTimingFunction(name: .easeOut)
         return anim
         }()
     
@@ -229,7 +229,7 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         anim2.fromValue = 1.0
         anim2.toValue = 0.0
         anim2.isRemovedOnCompletion = true
-        anim2.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        anim2.timingFunction = CAMediaTimingFunction(name: .easeOut)
         return anim2
         }()
     
@@ -420,7 +420,7 @@ private class DemoTouchesView: UIView {
 
                 // Ensure our DemoTouch view is always at the front of it's window
                 //
-                DemoTouchesView.sharedInstance.window!.bringSubview(toFront: DemoTouchesView.sharedInstance)
+                DemoTouchesView.sharedInstance.window!.bringSubviewToFront(DemoTouchesView.sharedInstance)
             }
         }
         

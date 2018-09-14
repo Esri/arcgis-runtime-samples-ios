@@ -19,7 +19,7 @@ class SampleInfoViewController: UIViewController {
     /// The web view that displays the readme.
     @IBOutlet private weak var webView: WKWebView!
     
-    var folderName:String!
+    var readmeURL: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,27 +32,27 @@ class SampleInfoViewController: UIViewController {
         view.addSubview(webView)
         self.webView = webView
         
-        if self.folderName != nil {
-            self.fetchFileContent(for: self.folderName)
+        if let readmeURL = readmeURL,
+            let html = markdownTextFromFile(at: readmeURL) {
+            displayHTML(html)
         }
     }
     
-    func fetchFileContent(for folderName:String) {
+    func markdownTextFromFile(at url: URL) -> String? {
 
-        if let path = Bundle.main.path(forResource: "README", ofType: "md", inDirectory: folderName) {
-            //read the content of the file
-            if let content = try? String(contentsOfFile: path, encoding: String.Encoding.utf8) {
-                //remove the images
-                let pattern = "!\\[.*\\]\\(.*\\)"
-                if let regex = try? NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options.caseInsensitive) {
-                    let newContent = regex.stringByReplacingMatches(in: content, options: NSRegularExpression.MatchingOptions(), range: NSMakeRange(0, content.count), withTemplate: "")
-                    self.displayHTML(newContent)
-                }
+        //read the content of the file
+        if let content = try? String(contentsOf: url, encoding: .utf8) {
+            //remove the images
+            let pattern = "!\\[.*\\]\\(.*\\)"
+            if let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive) {
+                let range = NSMakeRange(0, content.count)
+                return regex.stringByReplacingMatches(in: content, range: range, withTemplate: "")
             }
         }
+        return nil
     }
     
-    func displayHTML(_ readmeContent:String) {
+    func displayHTML(_ readmeContent: String) {
         let cssPath = Bundle.main.path(forResource: "style", ofType: "css") ?? ""
         let string = """
             <!doctype html>
@@ -77,7 +77,7 @@ class SampleInfoViewController: UIViewController {
             </html>
             """
 
-        self.webView.loadHTMLString(string, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
+        webView.loadHTMLString(string, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
     }
     
 }

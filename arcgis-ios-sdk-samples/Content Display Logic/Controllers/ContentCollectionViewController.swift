@@ -23,70 +23,84 @@ class CustomFlowLayout:UICollectionViewFlowLayout {
 
 private let reuseIdentifier = "CategoryCell"
 
-class ContentCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, CustomSearchHeaderViewDelegate {
+class ContentCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet private var collectionView:UICollectionView!
     @IBOutlet private var collectionViewFlowLayout:UICollectionViewFlowLayout!
     
-    private var headerView:CustomSearchHeaderView!
-    
     /// The categories to display in the collection view.
-    var categories = [Category]()
+    var categories:[Category] = []
+
     private var transitionSize:CGSize!
+    
+    // strong reference needed for iOS 10
+    var searchController:UISearchController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if #available(iOS 11.0, *) {
-            self.collectionView.contentInsetAdjustmentBehavior = .never
+            collectionView.contentInsetAdjustmentBehavior = .never
         } else {
-            self.automaticallyAdjustsScrollViewInsets = false
+            automaticallyAdjustsScrollViewInsets = false
         }
         
-        //hide suggestions
-        self.hideSuggestions()
+        addSearchController()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // ensure that the search results appear beneath the navigation bar
+        definesPresentationContext = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // required in iOS 10 for the filter field to be interactable in the samples table
+        definesPresentationContext = false
+    }
+    
+    private func addSearchController(){
         
-    }
-    
-    //MARK: - Suggestions related
-    
-    func showSuggestions() {
-//        if !self.isSuggestionsTableVisible() {
-            self.collectionView.performBatchUpdates({ [weak self] () -> Void in
-                (self?.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).headerReferenceSize = CGSize(width: self!.collectionView.bounds.width, height: self!.headerView.expandedViewHeight)
-            }, completion: nil)
+        // create the view controller for displaying the search results
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let searchResultsController = storyboard.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
+        // search all samples in the app
+        searchResultsController.allSamples = categories.flatMap { $0.samples }
+        searchResultsController.containsSearchResults = true
+        
+        // create the search controller
+        let searchController = UISearchController(searchResultsController:searchResultsController)
+        searchController.obscuresBackgroundDuringPresentation = true
+        searchController.hidesNavigationBarDuringPresentation = false
+        // send search query updates to the results controller
+        searchController.searchResultsUpdater = searchResultsController
+        // retain a strong reference for iOS 10
+        self.searchController = searchController
+        
+        let searchBar = searchController.searchBar
+        searchBar.autocapitalizationType = .none
+        // set the color of "Cancel" text
+        searchBar.tintColor = .white
+        
+        if #available(iOS 11.0, *) {
+            // embed the search bar under the title in the navigation bar
+            navigationItem.searchController = searchController
             
-            //show suggestions
-//        }
-    }
-    
-    func hideSuggestions() {
-//        if self.isSuggestionsTableVisible() {
-            self.collectionView.performBatchUpdates({ [weak self] () -> Void in
-                (self?.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).headerReferenceSize = CGSize(width: self!.collectionView.bounds.width, height: self!.headerView.shrinkedViewHeight)
-            }, completion: nil)
+            // find the text field to customize its appearance
+            if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+                // set the color of the insertion cursor
+                textfield.tintColor = UIColor.darkText
+                if let backgroundview = textfield.subviews.first {
+                    backgroundview.backgroundColor = UIColor.white
+                    backgroundview.layer.cornerRadius = 12
+                    backgroundview.clipsToBounds = true
+                }
+            }
             
-            //hide suggestions
-//        }
-    }
-
-    //TODO: implement this
-//    func isSuggestionsTableVisible() -> Bool {
-//        return (self.headerView?.suggestionsTableHeightConstraint?.constant == 0 ? false : true) ?? false
-//    }
-    
-    //MARK: - samples lookup by name
-    
-    /// Returns the samples in all categories whose names are members of the
-    /// given names collection.
-    ///
-    /// - Parameter names: A collection of strings for which to test names
-    /// against.
-    /// - Returns: An array of samples whose names are members of `names1.
-    func samplesByNames<C: Collection>(_ names: C) -> [Sample] where C.Element == String {
-        return categories
-            .flatMap { $0.samples }
-            .filter { names.contains($0.name) }
+        } else {
+            // embed the search bar in the title area of the navigation bar
+            navigationItem.titleView = searchController.searchBar
+        }
+        
     }
 
     // MARK: UICollectionViewDataSource
@@ -124,15 +138,6 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         
         return cell
     }
-
-    //supplementary view as search bar
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if self.headerView == nil {
-            self.headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionHeaderView", for: indexPath) as? CustomSearchHeaderView
-            self.headerView.delegate = self
-        }
-        return self.headerView
-    }
     
     //MARK: - UICollectionViewDelegate
     
@@ -142,7 +147,7 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         
         let category = categories[indexPath.item]
         let controller = self.storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
-        controller.samples = category.samples
+        controller.allSamples = category.samples
         controller.title = category.name
         self.navigationController?.show(controller, sender: self)
     }
@@ -177,31 +182,5 @@ class ContentCollectionViewController: UIViewController, UICollectionViewDataSou
         }
         return CGSize(width: width, height: width)
     }
-
-    //MARK: - CustomSearchHeaderViewDelegate
     
-    func customSearchHeaderView(_ customSearchHeaderView: CustomSearchHeaderView, didFindSamples sampleNames: [String]?) {
-        if let sampleNames = sampleNames {
-            let samples = samplesByNames(sampleNames)
-            if !samples.isEmpty {
-                //show the results
-                let controller = self.storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
-                controller.samples = samples
-                controller.title = "Search results"
-                controller.containsSearchResults = true
-                self.navigationController?.show(controller, sender: self)
-                return
-            }
-        }
-        
-        SVProgressHUD.showError(withStatus: "No match found")
-    }
-    
-    func customSearchHeaderViewWillHideSuggestions(_ customSearchHeaderView: CustomSearchHeaderView) {
-        self.hideSuggestions()
-    }
-    
-    func customSearchHeaderViewWillShowSuggestions(_ customSearchHeaderView: CustomSearchHeaderView) {
-        self.showSuggestions()
-    }
 }

@@ -26,25 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     var categoryBrowserViewController: ContentCollectionViewController {
         return (splitViewController.viewControllers.first as! UINavigationController).viewControllers.first as! ContentCollectionViewController
     }
-    
-    /// The URL of the content plist file inside the bundle.
-    var contentPlistURL: URL {
-        return Bundle.main.url(forResource: "ContentPList", withExtension: "plist")!
-    }
-    
-    /// Decodes an array of categories from the plist at the given URL.
-    ///
-    /// - Parameter url: The url of a plist that defines categories.
-    /// - Returns: An array of categories.
-    func decodeCategories(at url: URL) -> [Category] {
-        do {
-            let data = try Data(contentsOf: url)
-            return try PropertyListDecoder().decode([Category].self, from: data)
-        } catch {
-            fatalError("Error decoding categories at \(url): \(error)")
-        }
-    }
-
+ 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if url.absoluteString.range(of: "auth", options: [], range: nil, locale: nil) != nil {
             AGSApplicationDelegate.shared().application(app, open: url, options: options)
@@ -155,6 +137,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         }
         return nil
     }
+    
+    // MARK: - Sample import
+    
+    /// The URL of the content plist file inside the bundle.
+    private var contentPlistURL: URL {
+        return Bundle.main.url(forResource: "ContentPList", withExtension: "plist")!
+    }
+    
+    /// Decodes an array of categories from the plist at the given URL.
+    ///
+    /// - Parameter url: The url of a plist that defines categories.
+    /// - Returns: An array of categories.
+    private func decodeCategories(at url: URL) -> [Category] {
+        do {
+            let data = try Data(contentsOf: url)
+            return try PropertyListDecoder().decode([Category].self, from: data)
+        } catch {
+            fatalError("Error decoding categories at \(url): \(error)")
+        }
+    }
+    
 }
 
 extension UIColor {

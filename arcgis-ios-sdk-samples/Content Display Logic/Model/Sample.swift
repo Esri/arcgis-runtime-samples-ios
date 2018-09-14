@@ -14,11 +14,13 @@
 // limitations under the License.
 //
 
-struct Sample: Equatable {
+struct Sample: Hashable {
+    
     var name: String
     var description: String
     var storyboardName: String
     var dependencies: [String]
+    
 }
 
 extension Sample: Decodable {
@@ -35,5 +37,11 @@ extension Sample: Decodable {
         description = try values.decode(String.self, forKey: .description)
         storyboardName = try values.decode(String.self, forKey: .storyboardName)
         dependencies = try values.decodeIfPresent([String].self, forKey: .dependencies) ?? []
+    }
+}
+
+extension Sample {
+    var readmeURL:URL?{
+        return Bundle.main.url(forResource: "README", withExtension: "md", subdirectory: name)
     }
 }

@@ -78,11 +78,11 @@ class ContentTableViewController: UITableViewController {
             navigationItem.searchController = searchController
             
             // find the text field to customize its appearance
-            if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+            if let textField = searchBar.value(forKey: "searchField") as? UITextField {
                 // set the color of the insertion cursor
-                textfield.tintColor = UIColor.darkText
-                if let backgroundview = textfield.subviews.first {
-                    backgroundview.backgroundColor = UIColor.white
+                textField.tintColor = .darkText
+                if let backgroundview = textField.subviews.first {
+                    backgroundview.backgroundColor = .white
                     backgroundview.layer.cornerRadius = 12
                     backgroundview.clipsToBounds = true
                 }
@@ -90,7 +90,7 @@ class ContentTableViewController: UITableViewController {
             
         } else {
             // embed the search bar in the title area of the navigation bar
-            navigationItem.titleView = searchController.searchBar
+            navigationItem.titleView = searchBar
         }
         
     }

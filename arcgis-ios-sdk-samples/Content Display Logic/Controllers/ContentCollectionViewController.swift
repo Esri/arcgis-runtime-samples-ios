@@ -29,18 +29,28 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
     // strong reference needed for iOS 10
     var searchController:UISearchController?
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // ensure that the search results appear beneath the navigation bar
-        definesPresentationContext = true
-    }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // required in iOS 10 for the filter field to be interactable in the samples table
-        definesPresentationContext = false
+        guard #available(iOS 11.0, *) else {
+            // required in iOS 10 for the filter field to be interactable in the samples table
+            definesPresentationContext = false
+            return
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard #available(iOS 11.0, *) else {
+            // reset the call in viewWillDisappear
+            definesPresentationContext = true
+            return
+        }
     }
     
     private func addSearchController(){
+        
+        // ensure that the search results appear beneath the navigation bar
+        definesPresentationContext = true
         
         // create the view controller for displaying the search results
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -121,56 +131,34 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //hide keyboard if visible
-        self.view.endEditing(true)
+        view.endEditing(true)
         
         let category = categories[indexPath.item]
         let controller = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
         controller.allSamples = category.samples
         controller.title = category.name
-        navigationController?.show(controller, sender: self)
+        show(controller, sender: self)
     }
     
     //MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var collectionViewSize = collectionView.bounds.size
+        let collectionViewSize: CGSize
         if #available(iOS 11.0, *) {
             //account for the safe area when determining the item size
-            collectionViewSize.height -= collectionView.safeAreaInsets.bottom + collectionView.safeAreaInsets.top
-            collectionViewSize.width -= collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right
+            collectionViewSize = collectionView.bounds.inset(by: collectionView.safeAreaInsets).size
+        } else {
+            collectionViewSize = collectionView.bounds.size
         }
-        return itemSizeForCollectionViewSize(collectionViewSize)
-    }
-    
-    //MARK: - Transition
-    
-    //get the size of the new view to be transitioned to
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-
-        coordinator.animate(alongsideTransition: { [weak self] (_: UIViewControllerTransitionCoordinatorContext) in
-            self?.collectionView.collectionViewLayout.invalidateLayout()
-        }, completion: nil)
         
-    }
-    
-    //item width based on the width of the collection view
-    func itemSizeForCollectionViewSize(_ size:CGSize) -> CGSize {
         let spacing: CGFloat = 10
         //first try for 3 items in a row
-        var width = (size.width - 4*spacing)/3
+        var width = (collectionViewSize.width - 4*spacing)/3
         if width < 150 {
             //if too small then go for 2 in a row
-            width = (size.width - 3*spacing)/2
+            width = (collectionViewSize.width - 3*spacing)/2
         }
         return CGSize(width: width, height: width)
     }
     
-}
-
-class CustomFlowLayout:UICollectionViewFlowLayout {
-    
-    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        return true
-    }
 }

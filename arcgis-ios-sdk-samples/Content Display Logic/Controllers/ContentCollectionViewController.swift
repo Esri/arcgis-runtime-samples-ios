@@ -31,19 +31,21 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        guard #available(iOS 11.0, *) else {
+        if #available(iOS 11.0, *) {
+            // no need to change definesPresentationContext here after iOS 10
+        } else {
             // required in iOS 10 for the filter field to be interactable in the samples table
             definesPresentationContext = false
-            return
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard #available(iOS 11.0, *) else {
-            // reset the call in viewWillDisappear
+        if #available(iOS 11.0, *) {
+            // no change to reset
+        } else {
+            // reset the change made in viewWillDisappear
             definesPresentationContext = true
-            return
         }
     }
     

@@ -14,41 +14,87 @@
 
 import UIKit
 
-class ContentTableViewController: UITableViewController, CustomSearchHeaderViewDelegate, DownloadProgressViewDelegate {
+class ContentTableViewController: UITableViewController {
+    
+    /// The samples to display in the table. Searching adjusts this value
+    var displayedSamples = [Sample](){
+        didSet{
+            guard isViewLoaded else { return }
+            tableView.reloadData()
+        }
+    }
+    
+    /// All samples that could be displayed in the table
+    var allSamples = [Sample](){
+        didSet{
+            displayedSamples = allSamples
+            searchEngine = SampleSearchEngine(samples: allSamples)
+        }
+    }
 
-    var samples = [Sample]()
     private var expandedRowIndex:Int = -1
     
-    private var headerView:CustomSearchHeaderView!
     var containsSearchResults = false
     private var bundleResourceRequest:NSBundleResourceRequest!
     private var downloadProgressView:DownloadProgressView!
-
-    var token: Int = 0
+    
+    var searchEngine: SampleSearchEngine?
+    
+    // strong reference needed for iOS 10
+    var filterSearchController:UISearchController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.estimatedRowHeight = 60
-        
-        if containsSearchResults {
-            self.tableView.tableHeaderView?.removeFromSuperview()
-            self.tableView.tableHeaderView = nil
-        }
-        else {
-            self.headerView = self.tableView.tableHeaderView! as? CustomSearchHeaderView
-            self.headerView.delegate = self
-            self.headerView.hideSuggestionsTable()
-        }
-        
         //initialize download progress view
-        self.downloadProgressView = DownloadProgressView()
-        self.downloadProgressView.delegate = self
+        downloadProgressView = DownloadProgressView()
+        downloadProgressView.delegate = self
+        
+        if !containsSearchResults{
+            addFilterSearchController()
+        }
     }
     
-    func samplesByNames<C: Collection>(_ names: C) -> [Sample] where C.Element == String {
-        return samples.filter { names.contains($0.name) }
+    private func addFilterSearchController(){
+        
+        // ensure that the search results are interactable
+        definesPresentationContext = true
+        
+        // create the search controller
+        let searchController = UISearchController(searchResultsController:nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        // send search query updates to the results controller
+        searchController.searchResultsUpdater = self
+        // retain a strong reference for iOS 10
+        self.filterSearchController = searchController
+        
+        let searchBar = searchController.searchBar
+        searchBar.placeholder = "Filter"
+        searchBar.autocapitalizationType = .none
+        // set the color of "Cancel" text
+        searchBar.tintColor = .white
+        
+        if #available(iOS 11.0, *) {
+            // embed the search bar under the title in the navigation bar
+            navigationItem.searchController = searchController
+            
+            // find the text field to customize its appearance
+            if let textField = searchBar.value(forKey: "searchField") as? UITextField {
+                // set the color of the insertion cursor
+                textField.tintColor = .darkText
+                if let backgroundview = textField.subviews.first {
+                    backgroundview.backgroundColor = .white
+                    backgroundview.layer.cornerRadius = 12
+                    backgroundview.clipsToBounds = true
+                }
+            }
+            
+        } else {
+            // embed the search bar in the title area of the navigation bar
+            navigationItem.titleView = searchBar
+        }
+        
     }
 
     // MARK: - Table view data source
@@ -58,14 +104,14 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return samples.count
+        return displayedSamples.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "ContentTableCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)!
 
-        let sample = samples[indexPath.row]
+        let sample = displayedSamples[indexPath.row]
         
         //populate the sample name
         cell.textLabel?.text = sample.name
@@ -82,7 +128,7 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
         //hide keyboard if visible
         self.view.endEditing(true)
         
-        let sample = samples[indexPath.row]
+        let sample = displayedSamples[indexPath.row]
         
         //download on demand resources
         if !sample.dependencies.isEmpty {
@@ -172,68 +218,54 @@ class ContentTableViewController: UITableViewController, CustomSearchHeaderViewD
 
         let controller = storyboard.instantiateInitialViewController()!
         controller.title = sample.name
+        
+        //must use the presenting controller when opening from search results or else splitViewController will be nil
+        let presentingController: UIViewController? = containsSearchResults ? presentingViewController : self
+            
         let navController = UINavigationController(rootViewController: controller)
         
-        self.splitViewController?.showDetailViewController(navController, sender: self)
-        
         //add the button on the left on the detail view controller
-        if let splitViewController = self.view.window?.rootViewController as? UISplitViewController {
-            controller.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
-            controller.navigationItem.leftItemsSupplementBackButton = true
-        }
+        controller.navigationItem.leftBarButtonItem = presentingController?.splitViewController?.displayModeButtonItem
+        controller.navigationItem.leftItemsSupplementBackButton = true
         
-        //create the info button and
-        //assign the readme url
+        //present the sample view controller
+        presentingController?.showDetailViewController(navController, sender: self)
+        
+        //create and setup the info button
         let infoBBI = SourceCodeBarButtonItem()
-        infoBBI.folderName = sample.name
+        infoBBI.readmeURL = sample.readmeURL
         infoBBI.navController = navController
         controller.navigationItem.rightBarButtonItem = infoBBI
-    }
-    
-    //MARK: - CustomSearchHeaderViewDelegate
-    
-    func customSearchHeaderViewWillShowSuggestions(_ customSearchHeaderView: CustomSearchHeaderView) {
-        var headerViewFrame = self.headerView.frame
-        headerViewFrame.size.height = customSearchHeaderView.expandedViewHeight
-        
-        UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: { () -> Void in
-            self.headerView.frame = headerViewFrame
-            self.tableView.tableHeaderView = self.headerView
-        }, completion: nil)
-    }
-    
-    func customSearchHeaderViewWillHideSuggestions(_ customSearchHeaderView: CustomSearchHeaderView) {
-        var headerViewFrame = self.headerView.frame
-        headerViewFrame.size.height = customSearchHeaderView.shrinkedViewHeight
 
-        UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: { () -> Void in
-            self.headerView.frame = headerViewFrame
-            self.tableView.tableHeaderView = self.headerView
-        }, completion: nil)
     }
-    
-    func customSearchHeaderView(_ customSearchHeaderView: CustomSearchHeaderView, didFindSamples sampleNames: [String]?) {
-        if let sampleNames = sampleNames {
-            let samples = samplesByNames(sampleNames)
-            if !samples.isEmpty {
-                //show the results
-                let controller = self.storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
-                controller.samples = samples
-                controller.title = "Search results"
-                controller.containsSearchResults = true
-                self.navigationController?.show(controller, sender: self)
-                return
-            }
-        }
-        
-        SVProgressHUD.showError(withStatus: "No match found")
-        
-    }
-    
-    //MARK: - DownloadProgressViewDelegate
-    
+
+}
+
+//MARK: - DownloadProgressViewDelegate
+extension ContentTableViewController: DownloadProgressViewDelegate {
+
     func downloadProgressViewDidCancel(downloadProgressView: DownloadProgressView) {
         self.bundleResourceRequest.progress.cancel()
         self.bundleResourceRequest?.endAccessingResources()
     }
+
+}
+
+extension ContentTableViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchEngine = searchEngine else {
+            return
+        }
+        
+        if searchController.isActive,
+            let query = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+            !query.isEmpty{
+            displayedSamples = searchEngine.sortedSamples(matching: query)
+        }
+        else{
+            displayedSamples = allSamples
+        }
+    }
+    
 }

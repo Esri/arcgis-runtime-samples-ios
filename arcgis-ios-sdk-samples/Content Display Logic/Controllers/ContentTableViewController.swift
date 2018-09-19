@@ -19,7 +19,8 @@ class ContentTableViewController: UITableViewController {
     /// The samples to display in the table. Searching adjusts this value
     var displayedSamples = [Sample](){
         didSet{
-            tableView?.reloadData()
+            guard isViewLoaded else { return }
+            tableView.reloadData()
         }
     }
     

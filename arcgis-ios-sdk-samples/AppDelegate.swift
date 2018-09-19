@@ -103,6 +103,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     // MARK: - Appearance modification
     
     func modifyAppearance() {
+        if #available(iOS 11.0, *) {
+            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        }
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().barTintColor = .primaryBlue
         UINavigationBar.appearance().tintColor = .white

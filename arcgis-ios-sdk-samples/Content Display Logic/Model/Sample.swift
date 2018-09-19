@@ -14,6 +14,8 @@
 // limitations under the License.
 //
 
+import Foundation
+
 struct Sample: Hashable {
     
     var name: String

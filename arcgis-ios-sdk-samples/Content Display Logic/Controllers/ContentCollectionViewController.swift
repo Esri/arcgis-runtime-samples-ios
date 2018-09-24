@@ -29,6 +29,13 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
     // strong reference needed for iOS 10
     var searchController:UISearchController?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if #available(iOS 11.0, *) {
+            collectionView.contentInsetAdjustmentBehavior = .always
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if #available(iOS 11.0, *) {

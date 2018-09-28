@@ -17,146 +17,78 @@
 import UIKit
 import ArcGIS
 
-// wrapper classes used to pass the model objects around by reference
-private class DoubleObject {
-    var double: Double
-    init(_ double: Double){
-        self.double = double
-    }
-}
-private class BoolObject {
-    var bool: Bool
-    init(_ bool: Bool){
-        self.bool = bool
-    }
-}
-
 class OfflineMapParameterOverridesViewController: UITableViewController {
     
-    // private var localParameters = LocalParameters()
     var parameterOverrides: AGSGenerateOfflineMapParameterOverrides?
     var map: AGSMap?
     
-    //MARK: - model values
+    //MARK: - Outlets
 
     /// The min scale level for the output. Note that lower values are zoomed further out,
     /// i.e. 0 has the least detail, but one tile covers the entire Earth.
-    private var basemapMinScaleLevel = DoubleObject(0)
+    @IBOutlet weak var minScaleLevelSlider: UISlider!
     
     /// The max scale level for the output. Note that higher values are zoomed further in,
     /// i.e. 23 has the most detail, but each tile covers a tiny area.
-    private var basemapMaxScaleLevel = DoubleObject(23)
+    @IBOutlet weak var maxScaleLevelSlider: UISlider!
     
     /// The extra padding added to the extent rect to fetch a larger area, in meters.
-    private var basemapExtentBuffer = DoubleObject(0)
+    @IBOutlet weak var basemapExtentBufferSlider: UISlider!
     
-    /// A flag indicating if the system valves layer should be included in the download.
-    private var includeSystemValves = BoolObject(true)
-    /// A flag indicating if the service connections layer should be included in the download.
-    private var includeServiceConnections = BoolObject(true)
+    /// Switch indicating if the system valves layer should be included in the download.
+    @IBOutlet weak var includeSystemValvesSwitch: UISwitch!
+    ///Switch indicating if the service connections layer should be included in the download.
+    @IBOutlet weak var includeServiceConnectionsSwitch: UISwitch!
     
     /// The minimum flow rate by which to filter features in the Hydrants layer, in gallons per minute.
-    private var minHydrantFlowRate = DoubleObject(0)
+    @IBOutlet weak var minHydrantFlowRateSlider: UISlider!
     
-    /// A flag indicating if the pipe layers should be restricted to the extent frame.
-    private var cropWaterPipesToExtent = BoolObject(true)
+    ///Switch indicating if the pipe layers should be restricted to the extent frame.
+    @IBOutlet weak var cropWaterPipesToExtentSwitch: UISwitch!
     
-    //MARK: - table model
+    //MARK: - Actions
     
-    /// An enum to organize the table view sections.
-    private enum Section: Int, CaseIterable {
-        case basemap, includeLayers, filterFeature, cropLayer
+    @IBAction func sliderChangeAction(_ sender: UISlider) {
+        if sender == minScaleLevelSlider {
+            // Disallow a min value greater than the maximum
+            if sender.value > maxScaleLevelSlider.value {
+                sender.value = maxScaleLevelSlider.value
+            }
+        }
+        else if sender == maxScaleLevelSlider {
+            // Disallow a max value less than the minimum
+            if sender.value < minScaleLevelSlider.value {
+                sender.value = minScaleLevelSlider.value
+            }
+        }
+        // Update this slider's text field to display the new value
+        updateTextField(for: sender)
+    }
+    
+    //MARK: - Text field updating
+    
+    private func updateTextField(for slider: UISlider){
+        let numberFormatter = NumberFormatter()
+        if let text = numberFormatter.string(from: slider.value as NSNumber),
+            let superview = slider.superview,
+            let field = superview.subviews.first(where: { $0 is UITextField }) as? UITextField{
+            field.text = text
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        var numberOfRows: Int{
-            switch self {
-            case .basemap: return 3
-            case .includeLayers: return 2
-            case .filterFeature: return 1
-            case .cropLayer: return 1
-            }
-        }
-        
-        var label: String{
-            switch self {
-            case .basemap: return "Adjust The Basemap"
-            case .includeLayers: return "Include Layers"
-            case .filterFeature: return "Filter Feature Layer"
-            case .cropLayer: return "Crop Layer To Extent"
-            }
+        // Update each text field to display its slider's default value
+        for slider in [minScaleLevelSlider,
+                       maxScaleLevelSlider,
+                       basemapExtentBufferSlider,
+                       minHydrantFlowRateSlider] {
+            updateTextField(for: slider!)
         }
     }
     
-    //MARK: - UITableViewDataSource
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return Section.allCases.count
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Section(rawValue: section)!.numberOfRows
-    }
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Section(rawValue: section)!.label
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // load the cell based on the section and row
-        switch Section(rawValue: indexPath.section)! {
-        case .basemap:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "OfflineMapParamaterSliderCell") as! OfflineMapParamaterSliderCell
-            switch indexPath.row{
-            case 0:
-                cell.label?.text = "Min Scale Level"
-                cell.setRange(min: 0, max: 23)
-                cell.doubleObject = basemapMinScaleLevel
-                 // do not allow a min greater than the max
-                cell.maxConstraint = basemapMaxScaleLevel
-            case 1:
-                cell.label?.text = "Max Scale Level"
-                cell.setRange(min: 0, max: 23)
-                cell.doubleObject = basemapMaxScaleLevel
-                // do not allow a max less than the min
-                cell.minConstraint = basemapMinScaleLevel
-            default:
-                cell.label?.text = "Extent Buffer Distance"
-                cell.setRange(min: 0, max: 500)
-                cell.doubleObject = basemapExtentBuffer
-            }
-            return cell
-        case .includeLayers:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "OfflineMapParamaterSwitchCell") as! OfflineMapParamaterSwitchCell
-            switch indexPath.row{
-            case 0:
-                cell.label?.text = "System Valves"
-                cell.boolObject = includeSystemValves
-            default:
-                cell.label?.text = "Service Connections"
-                cell.boolObject = includeServiceConnections
-            }
-            return cell
-        case .filterFeature:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "OfflineMapParamaterSliderCell") as! OfflineMapParamaterSliderCell
-            cell.label.text = "Min Hydrant Flow Rate"
-            cell.setRange(min: 0, max: 1500)
-            cell.doubleObject = minHydrantFlowRate
-            return cell
-        case .cropLayer:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "OfflineMapParamaterSwitchCell") as! OfflineMapParamaterSwitchCell
-            cell.label.text = "Water Pipes"
-            cell.boolObject = cropWaterPipesToExtent
-            return cell
-        }
-    }
-    
-    //MARK: - UITabelViewDelegate
-    
-    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        // disallow cell highlighting and therefore selection
-        return false
-    }
-    
-    //MARK: - cancelling
+    //MARK: - Cancelling
     
     /// The completion handler to run if the user clicks cancel
     var cancelHandler: ((OfflineMapParameterOverridesViewController)->())?
@@ -168,7 +100,7 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
         navigationController?.dismiss(animated: true)
     }
     
-    //MARK: - completion
+    //MARK: - Completion
     
     /// The completion handler to run once the user is done setting the parameters.
     var startJobHandler: ((OfflineMapParameterOverridesViewController)->())?
@@ -197,9 +129,9 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     private func restrictBasemapScaleLevelRange() {
         
         /// The user-set min scale value
-        let minScale = Int(basemapMinScaleLevel.double)
+        let minScale = Int(minScaleLevelSlider.value)
         /// The user-set max scale value
-        let maxScale = Int(basemapMaxScaleLevel.double)
+        let maxScale = Int(maxScaleLevelSlider.value)
         
         guard let tileCacheParameters = getExportTileCacheParametersForBasemapLayer(),
             // Ensure that the lower bound of the range is not greater than the upper bound
@@ -222,7 +154,7 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
         }
         
         /// The user-set distance value
-        let basemapExtentBufferDistance = basemapExtentBuffer.double
+        let basemapExtentBufferDistance = Double(basemapExtentBufferSlider.value)
         
         // Assuming the distance is positive, expand the downloaded area by the given amount
         let bufferedArea = AGSGeometryEngine.bufferGeometry(areaOfInterest, byDistance: basemapExtentBufferDistance)
@@ -235,7 +167,7 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     private func addHydrantFilter(){
         
         /// The user-set min flow rate value
-        let minFlowRate = minHydrantFlowRate.double
+        let minFlowRate = minHydrantFlowRateSlider.value
         
         for option in getGenerateGeodatabaseParametersLayerOptions(forLayerNamed: "Hydrant") {
             // Set the SQL where clause for this layer's options, filtering features based on the FLOW field values
@@ -255,10 +187,10 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
         }
         
         // If the switch is off
-        if !includeSystemValves.bool {
+        if !includeSystemValvesSwitch.isOn {
             excludeLayerFromDownload(named: "System Valve")
         }
-        if !includeServiceConnections.bool {
+        if !includeServiceConnectionsSwitch.isOn {
             excludeLayerFromDownload(named: "Service Connection")
         }
         
@@ -266,7 +198,7 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     
     private func evaluatePipeLayersExtentCropping(){
         // If the switch is off
-        if !cropWaterPipesToExtent.bool {
+        if !cropWaterPipesToExtentSwitch.isOn {
             // Two layers contain pipes, so loop through both
             for pipeLayerName in ["Main", "Lateral"]{
                 for option in getGenerateGeodatabaseParametersLayerOptions(forLayerNamed: pipeLayerName) {
@@ -327,82 +259,5 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
             }
         }
         return []
-    }
-}
-
-// UITableViewCell subclasses
-
-class OfflineMapParamaterSliderCell: UITableViewCell{
-    
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var slider: UISlider!
-    
-    private var numberFormatter = NumberFormatter()
-    
-    fileprivate var doubleObject: DoubleObject!{
-        didSet{
-            updateUIForObject()
-        }
-    }
-    
-    // other double values that constrain this cell's double
-    fileprivate var minConstraint: DoubleObject?
-    fileprivate var maxConstraint: DoubleObject?
-    
-    private func validateAndSetDouble(_ double: Double){
-        var double = double
-        if let minConstraint = minConstraint,
-            double < minConstraint.double {
-            double = minConstraint.double
-        }
-        if let maxConstraint = maxConstraint,
-            double > maxConstraint.double {
-            double = maxConstraint.double
-        }
-        doubleObject.double = double
-    }
-    
-    func updateUIForObject(){
-        if let double = doubleObject?.double{
-            slider.value = Float(double)
-            textField.text = numberFormatter.string(from: double as NSNumber)
-        }
-    }
-    
-    func setRange(min:Double,max:Double){
-        slider.minimumValue = Float(min)
-        slider.maximumValue = Float(max)
-        numberFormatter.minimum = min as NSNumber
-        numberFormatter.maximum = max as NSNumber
-    }
-    
-    @IBAction func sliderAction(_ sender: UISlider) {
-        validateAndSetDouble(Double(sender.value))
-        updateUIForObject()
-    }
-    
-    @IBAction func valueFieldAction(_ sender: UITextField) {
-        if let string = sender.text,
-            let number = numberFormatter.number(from: string) {
-            validateAndSetDouble(number.doubleValue)
-        }
-        updateUIForObject()
-    }
-}
-
-class OfflineMapParamaterSwitchCell: UITableViewCell{
-    
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var `switch`: UISwitch!
-    
-    fileprivate var boolObject: BoolObject!{
-        didSet{
-            self.switch.isOn = boolObject.bool
-        }
-    }
-    
-    @IBAction func switchAction(_ sender: UISwitch) {
-        boolObject.bool = sender.isOn
     }
 }

@@ -429,6 +429,14 @@
 					<string>SubdivisionsShapefile</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Identify KML features</string>
+				<key>storyboardName</key>
+				<string>IdentifyKMLFeatures</string>
+				<key>descriptionText</key>
+				<string>Show a balloon popup with formatted content for tapped KML features. KML supports defining HTML for popups.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

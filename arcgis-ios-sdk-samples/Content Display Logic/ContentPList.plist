@@ -437,6 +437,14 @@
 				<key>descriptionText</key>
 				<string>Show a balloon popup with formatted content for tapped KML features. KML supports defining HTML for popups.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Display KML network links</string>
+				<key>storyboardName</key>
+				<string>DisplayKMLNetworkLinks</string>
+				<key>descriptionText</key>
+				<string>Display a KML file that loads content from a network resource.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

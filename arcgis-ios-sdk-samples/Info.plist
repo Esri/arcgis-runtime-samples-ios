@@ -39,6 +39,20 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>buienradar.nl</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+			<key>vlieghinder.nl</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>arcgis.com</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
@@ -75,13 +89,6 @@
 				<true/>
 			</dict>
 			<key>geoint.lmic.state.mn.us</key>
-			<dict>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-				<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-			<key>tile.stamen.com</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>

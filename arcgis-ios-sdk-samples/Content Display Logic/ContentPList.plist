@@ -437,6 +437,14 @@
 					<string>SubdivisionsShapefile</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Display KML network links</string>
+				<key>storyboardName</key>
+				<string>DisplayKMLNetworkLinks</string>
+				<key>descriptionText</key>
+				<string>Display a KML file that loads content from a network resource.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

@@ -48,28 +48,30 @@ class WebTiledLayerViewController: UIViewController {
     private func webTiledLayer(for index:Int) -> AGSWebTiledLayer {
         
         //url template for web tiled layer
-        var urlTemplate:String
+        let urlTemplate: String
         
         switch index {
         case 0:
             //toner
-            urlTemplate = "http://{subDomain}.tile.stamen.com/toner/{level}/{col}/{row}.png"
+            urlTemplate = "https://stamen-tiles-{subDomain}.a.ssl.fastly.net/toner/{level}/{col}/{row}.png"
         case 1:
             //terrain
-            urlTemplate = "http://{subDomain}.tile.stamen.com/terrain/{level}/{col}/{row}.png"
+            urlTemplate = "https://stamen-tiles-{subDomain}.a.ssl.fastly.net/terrain/{level}/{col}/{row}.jpg"
         default:
             //water color
-            urlTemplate = "http://{subDomain}.tile.stamen.com/watercolor/{level}/{col}/{row}.png"
+            urlTemplate = "https://stamen-tiles-{subDomain}.a.ssl.fastly.net/watercolor/{level}/{col}/{row}.jpg"
         }
         
         //sub domains
         let subDomains = ["a", "b", "c", "d"]
         
         //attribution
-        let attribution = "Map tiles by <a href=\"http://stamen.com/\">Stamen Design</a>, "
-            + "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>. "
-            + "Data by <a href=\"http://openstreetmap.org/\">OpenStreetMap</a>, "
-            + "under <a href=\"http://creativecommons.org/licenses/by-sa/3.0\">CC BY SA</a>."
+        let attribution = """
+            Map tiles by <a href="http://stamen.com/">Stamen Design</a>, \
+            under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. \
+            Data by <a href="http://openstreetmap.org/">OpenStreetMap</a>, \
+            under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.
+            """
         
         //initialize web tiled layer
         let webTiledLayer = AGSWebTiledLayer(urlTemplate: urlTemplate, subDomains: subDomains)

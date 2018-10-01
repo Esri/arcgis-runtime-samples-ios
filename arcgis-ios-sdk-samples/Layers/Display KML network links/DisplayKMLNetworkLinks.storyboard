@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lIr-n2-Lqu">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--DisplayKML Network Links View Controller-->
+        <scene sceneID="BhE-do-wJj">
+            <objects>
+                <viewController id="lIr-n2-Lqu" customClass="DisplayKMLNetworkLinksViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Mi-J9-K9g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mdA-Me-Rpc">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q3F-3f-v07" customClass="AGSSceneView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="519"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Messages" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NI2-S9-K1T">
+                                        <rect key="frame" x="0.0" y="519" width="375" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="5MB-jd-Az3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="dgt-RO-Loz" firstAttribute="bottom" secondItem="mdA-Me-Rpc" secondAttribute="bottom" id="chT-eB-WT7"/>
+                            <constraint firstItem="mdA-Me-Rpc" firstAttribute="trailing" secondItem="dgt-RO-Loz" secondAttribute="trailing" id="eRk-Cq-akE"/>
+                            <constraint firstItem="mdA-Me-Rpc" firstAttribute="top" secondItem="dgt-RO-Loz" secondAttribute="top" id="eec-Lm-ShD"/>
+                            <constraint firstItem="mdA-Me-Rpc" firstAttribute="leading" secondItem="dgt-RO-Loz" secondAttribute="leading" id="zYC-2Y-oWB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dgt-RO-Loz"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="Q3F-3f-v07" id="nDc-90-AX7"/>
+                        <outlet property="textView" destination="NI2-S9-K1T" id="Gry-EI-oYw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OTA-cA-k3s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="244" y="442.12893553223392"/>
+        </scene>
+    </scenes>
+</document>

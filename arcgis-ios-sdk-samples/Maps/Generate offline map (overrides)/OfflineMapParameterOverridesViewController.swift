@@ -67,8 +67,9 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     
     //MARK: - Text field updating
     
+    private let numberFormatter = NumberFormatter()
+    
     private func updateTextField(for slider: UISlider){
-        let numberFormatter = NumberFormatter()
         if let text = numberFormatter.string(from: slider.value as NSNumber),
             let superview = slider.superview,
             let field = superview.subviews.first(where: { $0 is UITextField }) as? UITextField{
@@ -91,27 +92,23 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     //MARK: - Cancelling
     
     /// The completion handler to run if the user clicks cancel
-    var cancelHandler: ((OfflineMapParameterOverridesViewController)->())?
+    var cancelHandler: ((OfflineMapParameterOverridesViewController) -> Void)?
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         // Run the handler
         cancelHandler?(self)
-        // close the view
-        navigationController?.dismiss(animated: true)
     }
     
     //MARK: - Completion
     
     /// The completion handler to run once the user is done setting the parameters.
-    var startJobHandler: ((OfflineMapParameterOverridesViewController)->())?
+    var startJobHandler: ((OfflineMapParameterOverridesViewController) -> Void)?
     
     @IBAction func startAction(_ sender: UIBarButtonItem) {
         // Update the parameters based on the user's input
         setParameterOverridesFromUI()
         // Run the handler callback now that the parameters have been updated
         startJobHandler?(self)
-        // close the view
-        navigationController?.dismiss(animated: true)
     }
     
     /// Updates the `AGSGenerateOfflineMapParameterOverrides` object with the user-set values.
@@ -182,7 +179,7 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
                 let serviceLayerID = serviceLayerID(for: layer),
                 let parameters = getGenerateGeodatabaseParameters(forLayer: layer){
                 // Remove the options for this layer from the parameters
-                parameters.layerOptions.removeAll { return $0.layerID == serviceLayerID }
+                parameters.layerOptions.removeAll { $0.layerID == serviceLayerID }
             }
         }
         

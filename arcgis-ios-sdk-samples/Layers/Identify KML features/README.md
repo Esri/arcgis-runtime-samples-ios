@@ -14,7 +14,7 @@ Note: the KML layer used in this sample contains a screen overlay. The screen ov
 
 1. The identify process starts when the user taps the map. 
 2. Any existing callout is dismissed using `AGSCallout.dismiss()`
-3. `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:completion:)` is called with a reference to the KML layer, the tapped position, and a 15px tolerance.
+3. `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:completion:)` is called with a reference to the KML layer, the tapped position, and a tolerance of `15` points.
 4. There are several types of KML features. This sample will only identify features of type `AGSKMLPlacemark`
 5. The `balloonContent` of the first returned KML placemark is then shown in a webview in a callout.
 

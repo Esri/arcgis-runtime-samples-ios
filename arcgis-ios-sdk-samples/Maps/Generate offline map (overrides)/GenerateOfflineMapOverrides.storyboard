@@ -141,23 +141,23 @@
                                                         <action selector="sliderChangeAction:" destination="324-87-VxW" eventType="valueChanged" id="fel-IF-keS"/>
                                                     </connections>
                                                 </slider>
-                                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dQZ-Fa-xUC">
-                                                    <rect key="frame" x="135" y="16.5" width="224" height="21"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbM-Ab-ndS">
+                                                    <rect key="frame" x="141" y="17" width="218" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
-                                                </textField>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="hJV-NB-7t7" secondAttribute="bottom" id="4cL-MI-08c"/>
+                                                <constraint firstItem="cbM-Ab-ndS" firstAttribute="leading" secondItem="eOd-Gg-WOZ" secondAttribute="trailing" constant="6" id="D2B-0S-ghO"/>
+                                                <constraint firstItem="cbM-Ab-ndS" firstAttribute="trailing" secondItem="hJV-NB-7t7" secondAttribute="trailing" id="QMK-dA-NLV"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="hJV-NB-7t7" secondAttribute="trailing" id="RNO-BE-hdH"/>
                                                 <constraint firstItem="eOd-Gg-WOZ" firstAttribute="top" secondItem="ubR-3U-ExN" secondAttribute="topMargin" constant="6" id="RrW-Zo-j0s"/>
-                                                <constraint firstItem="dQZ-Fa-xUC" firstAttribute="leading" secondItem="eOd-Gg-WOZ" secondAttribute="trailing" id="Sxn-GY-Pen"/>
                                                 <constraint firstItem="hJV-NB-7t7" firstAttribute="leading" secondItem="ubR-3U-ExN" secondAttribute="leadingMargin" id="W5d-jq-JCz"/>
+                                                <constraint firstItem="cbM-Ab-ndS" firstAttribute="firstBaseline" secondItem="eOd-Gg-WOZ" secondAttribute="firstBaseline" id="Zht-XA-dPX"/>
                                                 <constraint firstItem="eOd-Gg-WOZ" firstAttribute="leading" secondItem="ubR-3U-ExN" secondAttribute="leadingMargin" id="aNn-Q0-87I"/>
                                                 <constraint firstItem="hJV-NB-7t7" firstAttribute="top" secondItem="eOd-Gg-WOZ" secondAttribute="bottom" id="cEw-qR-bTV"/>
-                                                <constraint firstItem="dQZ-Fa-xUC" firstAttribute="trailing" secondItem="hJV-NB-7t7" secondAttribute="trailing" id="srG-HS-xuG"/>
-                                                <constraint firstItem="dQZ-Fa-xUC" firstAttribute="firstBaseline" secondItem="eOd-Gg-WOZ" secondAttribute="firstBaseline" id="uu4-cs-Lxe"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -180,20 +180,20 @@
                                                         <action selector="sliderChangeAction:" destination="324-87-VxW" eventType="valueChanged" id="7Kw-mD-fad"/>
                                                     </connections>
                                                 </slider>
-                                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OG5-dP-lZM">
-                                                    <rect key="frame" x="139" y="16.5" width="220" height="21"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4v-Ne-1Cm">
+                                                    <rect key="frame" x="145" y="17" width="214" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
-                                                </textField>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="fbh-Nj-JZa" secondAttribute="trailing" id="5ib-5F-uMN"/>
-                                                <constraint firstItem="OG5-dP-lZM" firstAttribute="firstBaseline" secondItem="EZR-MI-3af" secondAttribute="firstBaseline" id="LCC-kM-2KY"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="fbh-Nj-JZa" secondAttribute="bottom" id="MkI-3U-NW9"/>
+                                                <constraint firstItem="s4v-Ne-1Cm" firstAttribute="trailing" secondItem="fbh-Nj-JZa" secondAttribute="trailing" id="U4O-Ce-d41"/>
                                                 <constraint firstItem="EZR-MI-3af" firstAttribute="leading" secondItem="vYZ-38-JZ2" secondAttribute="leadingMargin" id="WMv-o2-drN"/>
-                                                <constraint firstItem="OG5-dP-lZM" firstAttribute="trailing" secondItem="fbh-Nj-JZa" secondAttribute="trailing" id="eBn-2C-GaU"/>
-                                                <constraint firstItem="OG5-dP-lZM" firstAttribute="leading" secondItem="EZR-MI-3af" secondAttribute="trailing" id="hhY-gg-sTy"/>
+                                                <constraint firstItem="s4v-Ne-1Cm" firstAttribute="firstBaseline" secondItem="EZR-MI-3af" secondAttribute="firstBaseline" id="Wfy-cF-Ege"/>
+                                                <constraint firstItem="s4v-Ne-1Cm" firstAttribute="leading" secondItem="EZR-MI-3af" secondAttribute="trailing" constant="6" id="giL-HO-Ztz"/>
                                                 <constraint firstItem="fbh-Nj-JZa" firstAttribute="top" secondItem="EZR-MI-3af" secondAttribute="bottom" id="t4k-ke-5rT"/>
                                                 <constraint firstItem="EZR-MI-3af" firstAttribute="top" secondItem="vYZ-38-JZ2" secondAttribute="topMargin" constant="6" id="tU9-Ng-bjc"/>
                                                 <constraint firstItem="fbh-Nj-JZa" firstAttribute="leading" secondItem="vYZ-38-JZ2" secondAttribute="leadingMargin" id="zSF-aK-4ac"/>
@@ -219,22 +219,22 @@
                                                         <action selector="sliderChangeAction:" destination="324-87-VxW" eventType="valueChanged" id="htV-uN-oIL"/>
                                                     </connections>
                                                 </slider>
-                                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MAR-Gu-dRP">
-                                                    <rect key="frame" x="188" y="16.5" width="171" height="21"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmb-wo-Jle">
+                                                    <rect key="frame" x="194" y="17" width="165" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
-                                                </textField>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="at7-7K-Tci" firstAttribute="top" secondItem="uNs-05-tCs" secondAttribute="topMargin" constant="6" id="05o-fM-vgs"/>
-                                                <constraint firstItem="MAR-Gu-dRP" firstAttribute="leading" secondItem="at7-7K-Tci" secondAttribute="trailing" id="1JA-hS-dMs"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="6zN-oi-AQj" secondAttribute="trailing" id="7ou-5S-bJL"/>
-                                                <constraint firstItem="MAR-Gu-dRP" firstAttribute="firstBaseline" secondItem="at7-7K-Tci" secondAttribute="firstBaseline" id="8Vc-aR-1z8"/>
                                                 <constraint firstItem="6zN-oi-AQj" firstAttribute="leading" secondItem="uNs-05-tCs" secondAttribute="leadingMargin" id="DAv-EC-bd7"/>
                                                 <constraint firstItem="at7-7K-Tci" firstAttribute="leading" secondItem="uNs-05-tCs" secondAttribute="leadingMargin" id="NgZ-lZ-hrn"/>
+                                                <constraint firstItem="mmb-wo-Jle" firstAttribute="leading" secondItem="at7-7K-Tci" secondAttribute="trailing" constant="6" id="Nu1-6N-j7E"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="6zN-oi-AQj" secondAttribute="bottom" id="Pez-Yq-yky"/>
-                                                <constraint firstItem="MAR-Gu-dRP" firstAttribute="trailing" secondItem="6zN-oi-AQj" secondAttribute="trailing" id="m1d-Kn-Xca"/>
+                                                <constraint firstItem="mmb-wo-Jle" firstAttribute="trailing" secondItem="6zN-oi-AQj" secondAttribute="trailing" id="a7u-7W-FsW"/>
+                                                <constraint firstItem="mmb-wo-Jle" firstAttribute="firstBaseline" secondItem="at7-7K-Tci" secondAttribute="firstBaseline" id="ofL-Aw-ma3"/>
                                                 <constraint firstItem="6zN-oi-AQj" firstAttribute="top" secondItem="at7-7K-Tci" secondAttribute="bottom" id="oga-ap-prz"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -318,20 +318,20 @@
                                                         <action selector="sliderChangeAction:" destination="324-87-VxW" eventType="valueChanged" id="rFI-qk-O7O"/>
                                                     </connections>
                                                 </slider>
-                                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EtZ-29-SPH">
-                                                    <rect key="frame" x="189" y="16.5" width="170" height="21"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3T-Pt-rxa">
+                                                    <rect key="frame" x="195" y="17" width="164" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
-                                                </textField>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="EtZ-29-SPH" firstAttribute="trailing" secondItem="jIK-R5-qIG" secondAttribute="trailing" id="4Bh-sp-sML"/>
-                                                <constraint firstItem="EtZ-29-SPH" firstAttribute="leading" secondItem="TLX-WY-76z" secondAttribute="trailing" id="Drr-uY-i8l"/>
                                                 <constraint firstItem="TLX-WY-76z" firstAttribute="leading" secondItem="rmS-ui-CVw" secondAttribute="leadingMargin" id="N2z-DH-DNP"/>
+                                                <constraint firstItem="S3T-Pt-rxa" firstAttribute="firstBaseline" secondItem="TLX-WY-76z" secondAttribute="firstBaseline" id="U6H-F4-MXA"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="jIK-R5-qIG" secondAttribute="trailing" id="WjB-pX-7pQ"/>
                                                 <constraint firstItem="TLX-WY-76z" firstAttribute="top" secondItem="rmS-ui-CVw" secondAttribute="topMargin" constant="6" id="bvJ-V8-xfm"/>
-                                                <constraint firstItem="EtZ-29-SPH" firstAttribute="firstBaseline" secondItem="TLX-WY-76z" secondAttribute="firstBaseline" id="mSp-Cn-CMh"/>
+                                                <constraint firstItem="S3T-Pt-rxa" firstAttribute="trailing" secondItem="jIK-R5-qIG" secondAttribute="trailing" id="gb6-lq-Vpy"/>
+                                                <constraint firstItem="S3T-Pt-rxa" firstAttribute="leading" secondItem="TLX-WY-76z" secondAttribute="trailing" constant="6" id="kkc-W5-C6N"/>
                                                 <constraint firstItem="jIK-R5-qIG" firstAttribute="top" secondItem="TLX-WY-76z" secondAttribute="bottom" id="qkE-JY-bUC"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="jIK-R5-qIG" secondAttribute="bottom" id="uUo-eH-ExD"/>
                                                 <constraint firstItem="jIK-R5-qIG" firstAttribute="leading" secondItem="rmS-ui-CVw" secondAttribute="leadingMargin" id="ukW-KP-aVK"/>
@@ -391,10 +391,14 @@
                     <connections>
                         <outlet property="basemapExtentBufferSlider" destination="6zN-oi-AQj" id="vpK-x2-Jou"/>
                         <outlet property="cropWaterPipesToExtentSwitch" destination="DrT-FN-fss" id="2wb-PR-KVp"/>
+                        <outlet property="extentBufferLabel" destination="mmb-wo-Jle" id="yve-9T-TFt"/>
                         <outlet property="includeServiceConnectionsSwitch" destination="ITJ-qN-jq0" id="zqZ-LA-HwG"/>
                         <outlet property="includeSystemValvesSwitch" destination="xA8-gg-qeF" id="77L-bm-XlN"/>
+                        <outlet property="maxScaleLevelLabel" destination="s4v-Ne-1Cm" id="C30-2t-E6Z"/>
                         <outlet property="maxScaleLevelSlider" destination="fbh-Nj-JZa" id="Rd3-1r-fja"/>
+                        <outlet property="minHydrantFlowRateLabel" destination="S3T-Pt-rxa" id="ak7-Ff-DDj"/>
                         <outlet property="minHydrantFlowRateSlider" destination="jIK-R5-qIG" id="4BX-wN-lkZ"/>
+                        <outlet property="minScaleLevelLabel" destination="cbM-Ab-ndS" id="G0s-Nn-7YW"/>
                         <outlet property="minScaleLevelSlider" destination="hJV-NB-7t7" id="SOX-eX-eGt"/>
                     </connections>
                 </tableViewController>

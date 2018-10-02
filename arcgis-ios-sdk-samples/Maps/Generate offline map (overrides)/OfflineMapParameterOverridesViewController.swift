@@ -46,6 +46,11 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     ///Switch indicating if the pipe layers should be restricted to the extent frame.
     @IBOutlet weak var cropWaterPipesToExtentSwitch: UISwitch!
     
+    @IBOutlet weak var minScaleLevelLabel: UILabel!
+    @IBOutlet weak var maxScaleLevelLabel: UILabel!
+    @IBOutlet weak var extentBufferLabel: UILabel!
+    @IBOutlet weak var minHydrantFlowRateLabel: UILabel!
+    
     //MARK: - Actions
     
     @IBAction func sliderChangeAction(_ sender: UISlider) {
@@ -70,10 +75,19 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     private let numberFormatter = NumberFormatter()
     
     private func updateTextField(for slider: UISlider){
-        if let text = numberFormatter.string(from: slider.value as NSNumber),
-            let superview = slider.superview,
-            let field = superview.subviews.first(where: { $0 is UITextField }) as? UITextField{
-            field.text = text
+        if let text = numberFormatter.string(from: slider.value as NSNumber) {
+            if slider == minScaleLevelSlider {
+                minScaleLevelLabel.text = text
+            }
+            else if slider == maxScaleLevelSlider {
+                maxScaleLevelLabel.text = text
+            }
+            else if slider == basemapExtentBufferSlider {
+                extentBufferLabel.text = text
+            }
+            else if slider == minHydrantFlowRateSlider {
+                minHydrantFlowRateLabel.text = text
+            }
         }
     }
     

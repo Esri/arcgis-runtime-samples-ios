@@ -431,6 +431,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Display KML</string>
+				<key>storyboardName</key>
+				<string>DisplayKML</string>
+				<key>descriptionText</key>
+				<string>Show a KML file from a URL, local file, or portal item</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Display KML network links</string>
 				<key>storyboardName</key>
 				<string>DisplayKMLNetworkLinks</string>
@@ -859,7 +867,7 @@
 				<key>storyboardName</key>
 				<string>ListTransformations</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to use the transformation catalog to get a list of available datum transformations that can be used to project a geometry between two different spatial references, and how to use one of the transformations to perform the geometry engine's "project" operation.</string>
+				<string>This sample demonstrates how to use the transformation catalog to get a list of available datum transformations that can be used to project a geometry between two different spatial references, and how to use one of the transformations to perform the geometry engine&apos;s &quot;project&quot; operation.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

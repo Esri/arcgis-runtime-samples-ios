@@ -481,6 +481,10 @@
 		3EFDE0F81E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
 		3EFDE0F91E36AE3100CBCD92 /* FeatureCollectionLayerVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift */; };
 		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
+		4C0F27B12152CA2400496666 /* IdentifyKMLFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0F27B02152CA2400496666 /* IdentifyKMLFeatures.storyboard */; };
+		4C0F27B32152CA3500496666 /* IdentifyKMLFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F27B22152CA3500496666 /* IdentifyKMLFeaturesViewController.swift */; };
+		4C0F27B42152CB1200496666 /* IdentifyKMLFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C0F27B22152CA3500496666 /* IdentifyKMLFeaturesViewController.swift */; };
+		4C0F27B721540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F27B621540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift */; };
 		4C2B52D620D2C1810071EBB6 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B52D520D2C1810071EBB6 /* URL.swift */; };
 		4C2B52D720D2C3180071EBB6 /* DistanceMeasurementAnalysisViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */; };
 		4C41B2EE211A617700EEA81E /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C41B2ED211A617700EEA81E /* Sample.swift */; };
@@ -769,6 +773,7 @@
 				3ED029A01B8E571700ACA70D /* EditAttachmentViewController.swift in CopyFiles */,
 				940A73F720E6BF3F00A06C80 /* CutGeometryViewController.swift in CopyFiles */,
 				4C85044C20F4252500E37F43 /* SceneLayerSelectionViewController.swift in CopyFiles */,
+				4C0F27B42152CB1200496666 /* IdentifyKMLFeaturesViewController.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1116,6 +1121,9 @@
 		3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerVC.swift; sourceTree = "<group>"; };
 		3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerQuery.storyboard; sourceTree = "<group>"; };
 		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryVC.swift; sourceTree = "<group>"; };
+		4C0F27B02152CA2400496666 /* IdentifyKMLFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IdentifyKMLFeatures.storyboard; sourceTree = "<group>"; };
+		4C0F27B22152CA3500496666 /* IdentifyKMLFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyKMLFeaturesViewController.swift; sourceTree = "<group>"; };
+		4C0F27B621540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyKMLFeaturesViewControllerTests.swift; sourceTree = "<group>"; };
 		4C2B52D520D2C1810071EBB6 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		4C41B2ED211A617700EEA81E /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
 		4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QueryMapImageSublayer.storyboard; sourceTree = "<group>"; };
@@ -2254,6 +2262,7 @@
 				4CC00F7220C1FAA8004244EF /* Style WMS layers */,
 				4C66AAF52107C4BB00EE6346 /* Query a map image sublayer */,
 				D97B7E391FD9BE0500E1239D /* Symbolize shapefile */,
+				4C0F27AF2152C9CE00496666 /* Identify KML features */,
 				C7D0EED7215EA56E00ECDD2C /* Display KML network links */,
 			);
 			path = Layers;
@@ -2757,6 +2766,23 @@
 			path = "Feature collection layer (query)";
 			sourceTree = "<group>";
 		};
+		4C0F27AF2152C9CE00496666 /* Identify KML features */ = {
+			isa = PBXGroup;
+			children = (
+				4C0F27B02152CA2400496666 /* IdentifyKMLFeatures.storyboard */,
+				4C0F27B22152CA3500496666 /* IdentifyKMLFeaturesViewController.swift */,
+			);
+			path = "Identify KML features";
+			sourceTree = "<group>";
+		};
+		4C0F27B521540B5F00496666 /* Sample Tests */ = {
+			isa = PBXGroup;
+			children = (
+				4C0F27B621540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift */,
+			);
+			path = "Sample Tests";
+			sourceTree = "<group>";
+		};
 		4C2B52D320D2C11C0071EBB6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -2823,6 +2849,7 @@
 				4CD2B5582142EAF900767D87 /* Info.plist */,
 				4CD2B5602142F09700767D87 /* CategoryTests.swift */,
 				4CD2B55E2142EB2600767D87 /* SampleTests.swift */,
+				4C0F27B521540B5F00496666 /* Sample Tests */,
 			);
 			path = "arcgis-ios-sdk-samplesTests";
 			sourceTree = "<group>";
@@ -3331,6 +3358,7 @@
 				3E6C771C1CCFC53B00E89873 /* IdentifyLayers.storyboard in Resources */,
 				D9ED2DA91FD759190043BFE1 /* AuroraCO.gpkg in Resources */,
 				E4B2E26B1FE31EEA00E610FF /* ViewshedGeoElement.storyboard in Resources */,
+				4C0F27B12152CA2400496666 /* IdentifyKMLFeatures.storyboard in Resources */,
 				3ED029691B8E3ACD00ACA70D /* EditAttributes.storyboard in Resources */,
 				3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */,
 				3ED028831B8E3A8500ACA70D /* MapRotation.storyboard in Resources */,
@@ -3375,6 +3403,7 @@
 				E4B2E2691FE31ED500E610FF /* ViewshedGeoElementViewController.swift in Sources */,
 				3ED7888E1D26E28500E5F311 /* TilePackagesListViewController.swift in Sources */,
 				3ED029381B8E3AB300ACA70D /* MILLegendTableViewController.swift in Sources */,
+				4C0F27B32152CA3500496666 /* IdentifyKMLFeaturesViewController.swift in Sources */,
 				3ED7888C1D26E23C00E5F311 /* LocalTiledLayerViewController.swift in Sources */,
 				3E6AE3F91C73B5480026E59C /* DirectionsViewController.swift in Sources */,
 				3ED029321B8E3AB300ACA70D /* CalloutViewController.swift in Sources */,
@@ -3573,6 +3602,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CD2B55F2142EB2600767D87 /* SampleTests.swift in Sources */,
+				4C0F27B721540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift in Sources */,
 				4CD2B5612142F09700767D87 /* CategoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3772,6 +3802,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = "$(USER_LIBRARY_DIR)/SDKs/ArcGIS/iOS/Frameworks/Dynamic";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "arcgis-ios-sdk-samplesTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
@@ -3798,6 +3829,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(USER_LIBRARY_DIR)/SDKs/ArcGIS/iOS/Frameworks/Dynamic";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "arcgis-ios-sdk-samplesTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;

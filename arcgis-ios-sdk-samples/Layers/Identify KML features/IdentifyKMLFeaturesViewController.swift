@@ -24,8 +24,8 @@ class IdentifyKMLFeaturesViewController: UIViewController {
     /// A KML layer with forecast data.
     let forecastLayer: AGSKMLLayer = {
         let url = URL(string: "https://www.wpc.ncep.noaa.gov/kml/noaa_chart/WPC_Day1_SigWx.kml")!
-        let dataSet = AGSKMLDataset(url: url)
-        return AGSKMLLayer(kmlDataset: dataSet)
+        let dataset = AGSKMLDataset(url: url)
+        return AGSKMLLayer(kmlDataset: dataset)
     }()
     
     /// The map view managed by the view controller.

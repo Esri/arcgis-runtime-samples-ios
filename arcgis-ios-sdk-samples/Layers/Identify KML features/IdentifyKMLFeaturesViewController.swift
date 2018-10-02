@@ -16,7 +16,6 @@
 
 import UIKit
 import ArcGIS
-import WebKit
 
 /// A view controller that manages the interface of the Identify KML Features
 /// sample.
@@ -47,11 +46,19 @@ class IdentifyKMLFeaturesViewController: UIViewController {
     }
     
     func showCallout(for placemark: AGSKMLPlacemark, at point: AGSPoint) {
-        let webView = WKWebView(frame: CGRect(origin: .zero, size: CGSize(width: 320, height: 100)))
-        webView.backgroundColor = placemark.balloonBackgroundColor
-        webView.loadHTMLString(placemark.balloonContent, baseURL: nil)
-        mapView.callout.customView = webView
-        mapView.callout.show(at: point, screenOffset: .zero, rotateOffsetWithMap: false, animated: true)
+        guard let data = placemark.balloonContent.data(using: .utf8) else { return }
+        do {
+            let attributedText = try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+            let textView = UITextView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 50)))
+            textView.isUserInteractionEnabled = false
+            textView.attributedText = attributedText
+            textView.backgroundColor = placemark.balloonBackgroundColor
+            textView.sizeToFit()
+            mapView.callout.customView = textView
+            mapView.callout.show(at: point, screenOffset: .zero, rotateOffsetWithMap: false, animated: true)
+        } catch {
+            print("Error converting balloon content to attributed string: \(error)")
+        }
     }
 }
 

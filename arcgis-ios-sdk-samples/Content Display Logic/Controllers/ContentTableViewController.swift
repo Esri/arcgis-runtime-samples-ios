@@ -35,15 +35,18 @@ class ContentTableViewController: UITableViewController {
     }
     private var expandedRowIndex: Int = -1
     
-    private var bundleResourceRequest: NSBundleResourceRequest!
-    private var downloadProgressView: DownloadProgressView!
+    private var bundleResourceRequest: NSBundleResourceRequest?
+    private var downloadProgressView: DownloadProgressView?
+    
+    private var downloadProgressObservation: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //initialize download progress view
-        downloadProgressView = DownloadProgressView()
+        let downloadProgressView = DownloadProgressView()
         downloadProgressView.delegate = self
+        self.downloadProgressView = downloadProgressView
     }
     
     // MARK: - Search
@@ -68,8 +71,8 @@ class ContentTableViewController: UITableViewController {
         
         if !containsSearchResults,
             !hasSearchController {
-            // wait a little to avoid a crash
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.1) { [weak self] () in
+            // dispatch asynchronously to avoid a crash
+            DispatchQueue.main.async { [weak self] () in
                 // add search controller after view appears to avoid a visual bug during the transition
                 self?.addFilterSearchController()
             }
@@ -152,18 +155,19 @@ class ContentTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //hide keyboard if visible
-        self.view.endEditing(true)
+        view.endEditing(true)
         
         let sample = displayedSamples[indexPath.row]
         
         //download on demand resources
         if !sample.dependencies.isEmpty {
         
-            self.bundleResourceRequest = NSBundleResourceRequest(tags: Set(sample.dependencies))
+            let bundleResourceRequest = NSBundleResourceRequest(tags: Set(sample.dependencies))
+            self.bundleResourceRequest = bundleResourceRequest
             
             //conditionally begin accessing to know if we need to show download progress view or not
-            self.bundleResourceRequest.conditionallyBeginAccessingResources { [weak self] (isResourceAvailable: Bool) in
-                DispatchQueue.main.sync {
+            bundleResourceRequest.conditionallyBeginAccessingResources { [weak self] (isResourceAvailable: Bool) in
+                DispatchQueue.main.async {
                     
                     //if resource is already available then simply show the sample
                     if isResourceAvailable {
@@ -178,40 +182,55 @@ class ContentTableViewController: UITableViewController {
         }
         else {
             //clear bundleResourceRequest
-            self.bundleResourceRequest?.endAccessingResources()
+            bundleResourceRequest?.endAccessingResources()
             
             //show view controller
-            self.showSample(indexPath: indexPath, sample: sample)
+            showSample(indexPath: indexPath, sample: sample)
         }
     }
     
     func downloadResource(for sample: Sample, at indexPath:IndexPath) {
         
+        guard let bundleResourceRequest = bundleResourceRequest else {
+            return
+        }
+        
         //show download progress view
-        self.downloadProgressView.show(withStatus: "Just a moment while we download data for this sample...", progress: 0)
+        downloadProgressView?.show(withStatus: "Just a moment while we download data for this sample...", progress: 0)
         
         //add an observer to update the progress in download progress view
-        self.bundleResourceRequest.progress.addObserver(self, forKeyPath: #keyPath(Progress.fractionCompleted), options: .new, context: nil)
+        downloadProgressObservation = bundleResourceRequest.progress.observe(\.fractionCompleted, changeHandler: {[weak self] (progress, change) in
+            
+            guard let self = self else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                if let progressFraction = self.bundleResourceRequest?.progress.fractionCompleted {
+                    self.downloadProgressView?.updateProgress(progress: CGFloat(progressFraction), animated: true)
+                }
+            }
+        })
         
         //begin
-        self.bundleResourceRequest.beginAccessingResources { [weak self] (error: Error?) in
+        bundleResourceRequest.beginAccessingResources { [weak self] (error: Error?) in
+            
+            guard let self = self else {
+                return
+            }
             
             //in main thread
-            DispatchQueue.main.sync {
+            DispatchQueue.main.async {
                 
-                guard let strongSelf = self else {
-                    return
-                }
-                
-                //remove observer
-                strongSelf.bundleResourceRequest?.progress.removeObserver(strongSelf, forKeyPath: #keyPath(Progress.fractionCompleted))
+                //remove observation
+                self.downloadProgressObservation = nil
                 
                 //dismiss download progress view
-                strongSelf.downloadProgressView.dismiss()
+                self.downloadProgressView?.dismiss()
                 
                 if let error = error {
-                    if let indexPath = strongSelf.tableView.indexPathForSelectedRow {
-                        strongSelf.tableView.deselectRow(at: indexPath, animated: true)
+                    if let indexPath = self.tableView.indexPathForSelectedRow {
+                        self.tableView.deselectRow(at: indexPath, animated: true)
                     }
                     if (error as NSError).code != NSUserCancelledError {
                         SVProgressHUD.showError(withStatus: "Failed to download raster resource :: \(error.localizedDescription)")
@@ -219,28 +238,20 @@ class ContentTableViewController: UITableViewController {
                 }
                 else {
                     
-                    if !strongSelf.bundleResourceRequest.progress.isCancelled {
+                    if self.bundleResourceRequest?.progress.isCancelled == false {
                         
                         //show view controller
-                        strongSelf.showSample(indexPath: indexPath, sample: sample)
+                        self.showSample(indexPath: indexPath, sample: sample)
                     }
                 }
             }
         }
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "fractionCompleted" {
-            DispatchQueue.main.async { [weak self] in
-                self?.downloadProgressView?.updateProgress(progress: CGFloat(self!.bundleResourceRequest.progress.fractionCompleted), animated: true)
-            }
-        }
-    }
-    
-    func showSample(indexPath: IndexPath, sample: Sample) {
+    private func showSample(indexPath: IndexPath, sample: Sample) {
         
         //expand the selected cell
-        self.updateExpandedRow(indexPath, collapseIfSelected: false)
+        updateExpandedRow(indexPath, collapseIfSelected: false)
         
         let storyboard = UIStoryboard(name: sample.storyboardName, bundle: .main)
         let controller = storyboard.instantiateInitialViewController()!
@@ -271,14 +282,14 @@ class ContentTableViewController: UITableViewController {
     }
     
     @objc func expandCell(_ sender:UIButton) {
-        self.updateExpandedRow(IndexPath(row: sender.tag, section: 0), collapseIfSelected: true)
+        updateExpandedRow(IndexPath(row: sender.tag, section: 0), collapseIfSelected: true)
     }
     
-    func updateExpandedRow(_ indexPath:IndexPath, collapseIfSelected:Bool) {
+    private func updateExpandedRow(_ indexPath:IndexPath, collapseIfSelected:Bool) {
         //if same row selected then hide the detail view
-        if indexPath.row == self.expandedRowIndex {
+        if indexPath.row == expandedRowIndex {
             if collapseIfSelected {
-                self.expandedRowIndex = -1
+                expandedRowIndex = -1
                 tableView.reloadRows(at: [indexPath], with: .fade)
             }
             else {
@@ -287,8 +298,8 @@ class ContentTableViewController: UITableViewController {
         }
         else {
             //get the two cells and update
-            let previouslyExpandedIndexPath = IndexPath(row: self.expandedRowIndex, section: 0)
-            self.expandedRowIndex = indexPath.row
+            let previouslyExpandedIndexPath = IndexPath(row: expandedRowIndex, section: 0)
+            expandedRowIndex = indexPath.row
             tableView.reloadRows(at: [previouslyExpandedIndexPath, indexPath], with: .fade)
         }
     }
@@ -299,8 +310,11 @@ class ContentTableViewController: UITableViewController {
 extension ContentTableViewController: DownloadProgressViewDelegate {
 
     func downloadProgressViewDidCancel(downloadProgressView: DownloadProgressView) {
-        self.bundleResourceRequest.progress.cancel()
-        self.bundleResourceRequest?.endAccessingResources()
+        guard let bundleResourceRequest = bundleResourceRequest else {
+            return
+        }
+        bundleResourceRequest.progress.cancel()
+        bundleResourceRequest.endAccessingResources()
     }
 
 }

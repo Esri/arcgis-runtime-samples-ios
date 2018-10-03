@@ -106,7 +106,7 @@ class DisplayKMLViewController: UIViewController {
                 let error = error {
                 // Display the error if one occurred
                 let alertController = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
+                alertController.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alertController, animated: true, completion: nil)
             }
         }
@@ -143,7 +143,7 @@ class DisplayKMLViewController: UIViewController {
 
 extension DisplayKMLViewController: UIPopoverPresentationControllerDelegate {
     
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // prevent the popover from displaying fullscreen in narrow contexts
         return .none
     }

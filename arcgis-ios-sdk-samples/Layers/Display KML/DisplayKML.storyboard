@@ -60,10 +60,10 @@
             </objects>
             <point key="canvasLocation" x="288.80000000000001" y="166.8665667166417"/>
         </scene>
-        <!--Table View Controller-->
+        <!--DisplayKML Data Sources Table View Controller-->
         <scene sceneID="qhA-A7-ZPw">
             <objects>
-                <tableViewController id="sX4-3V-EFU" sceneMemberID="viewController">
+                <tableViewController id="sX4-3V-EFU" customClass="DisplayKMLDataSourcesTableViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KhV-cI-eej">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,7 +71,7 @@
                         <sections>
                             <tableViewSection id="pcs-di-mw4">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="sgn-bc-2SB" style="IBUITableViewCellStyleDefault" id="qtB-kB-gXb">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="sgn-bc-2SB" style="IBUITableViewCellStyleDefault" id="qtB-kB-gXb">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qtB-kB-gXb" id="8Hq-DD-YIl">
@@ -88,7 +88,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="ycN-rD-dlf" style="IBUITableViewCellStyleDefault" id="JVB-uF-YAH">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="ycN-rD-dlf" style="IBUITableViewCellStyleDefault" id="JVB-uF-YAH">
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JVB-uF-YAH" id="49K-5W-5Go">
@@ -105,7 +105,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="kxb-cs-zPM" style="IBUITableViewCellStyleDefault" id="3g5-2O-vJT">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="kxb-cs-zPM" style="IBUITableViewCellStyleDefault" id="3g5-2O-vJT">
                                         <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3g5-2O-vJT" id="biS-jJ-x9f">
@@ -127,6 +127,7 @@
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="sX4-3V-EFU" id="xCX-kz-gjb"/>
+                            <outlet property="delegate" destination="sX4-3V-EFU" id="Mfe-ON-OD7"/>
                         </connections>
                     </tableView>
                 </tableViewController>

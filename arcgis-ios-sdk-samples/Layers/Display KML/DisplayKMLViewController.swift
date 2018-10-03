@@ -14,14 +14,14 @@
 
 import ArcGIS
 
+/// A model for our three data sources.
+private enum KMLDataSource: Int {
+    case url, localFile, portalItem
+}
+
 class DisplayKMLViewController: UIViewController {
     
     @IBOutlet weak var mapView: AGSMapView!
-    
-    /// A model for our three data sources.
-    enum KMLDataSource: Int {
-        case url, localFile, portalItem
-    }
     
     /// The source currently loaded in the map.
     private var displayedSource: KMLDataSource = .url{
@@ -61,21 +61,20 @@ class DisplayKMLViewController: UIViewController {
         super.prepare(for: segue, sender: sender)
         
         // if we're opening the table of data sources
-        if let sourceTableViewController = segue.destination as? UITableViewController {
+        if let sourceTableViewController = segue.destination as? DisplayKMLDataSourcesTableViewController {
             
             // set the popover height
             sourceTableViewController.preferredContentSize.height = 135
             
-            // set the delgates
-            sourceTableViewController.tableView.delegate = self
+            // set the popover delgate
             sourceTableViewController.popoverPresentationController?.delegate = self
             
-            // ensure that the cells are loaded before getting a cell
-            sourceTableViewController.tableView.reloadData()
-            // get the cell for the shown source and add a checkmark
-            let initiallyCheckedIndexPath = IndexPath(row: displayedSource.rawValue, section: 0)
-            if let cell = sourceTableViewController.tableView.cellForRow(at: initiallyCheckedIndexPath){
-                cell.accessoryType = .checkmark
+            // setup the view controller
+            sourceTableViewController.initialSelectedIndex = displayedSource.rawValue
+            sourceTableViewController.selectionHandler = { [weak self] (dataSource) in
+                // close the popover
+                self?.presentedViewController?.dismiss(animated: true)
+                self?.displayedSource = dataSource
             }
         }
     }
@@ -138,15 +137,29 @@ class DisplayKMLViewController: UIViewController {
     
 }
 
-extension DisplayKMLViewController: UITableViewDelegate {
+extension DisplayKMLViewController: UIPopoverPresentationControllerDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        // find the currently checked cell and remove the checkmark
-        let previouslyCheckedIndexPath = IndexPath(row: displayedSource.rawValue, section: 0)
-        if let previouslyCheckedCell = tableView.cellForRow(at: previouslyCheckedIndexPath) {
-            previouslyCheckedCell.accessoryType = .none
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        // prevent the popover from displaying fullscreen in narrow contexts
+        return .none
+    }
+}
+
+class DisplayKMLDataSourcesTableViewController: UITableViewController {
+    
+    fileprivate var initialSelectedIndex = 0
+    fileprivate var selectionHandler: ((KMLDataSource)->Void)?
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        if indexPath.row == initialSelectedIndex{
+            cell.accessoryType = .checkmark
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         }
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // get the newly selected cell
         let selectedCell = tableView.cellForRow(at: indexPath)!
@@ -154,19 +167,14 @@ extension DisplayKMLViewController: UITableViewDelegate {
         // add a checkmark to the selected cell
         selectedCell.accessoryType = .checkmark
         
-        // close the popover
-        presentedViewController?.dismiss(animated: true)
-        
         // change the displayed KML source based on the selected cell
-        displayedSource = KMLDataSource(rawValue: indexPath.row)!
+        let displayedSource = KMLDataSource(rawValue: indexPath.row)!
+        selectionHandler?(displayedSource)
     }
     
-}
-
-extension DisplayKMLViewController: UIPopoverPresentationControllerDelegate {
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        // prevent the popover from displaying fullscreen in narrow contexts
-        return .none
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        // remove the checkmark
+        tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
+    
 }

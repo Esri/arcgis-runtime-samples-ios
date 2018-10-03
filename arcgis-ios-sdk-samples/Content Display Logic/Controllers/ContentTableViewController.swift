@@ -28,19 +28,15 @@ class ContentTableViewController: UITableViewController {
     var allSamples = [Sample](){
         didSet{
             displayedSamples = allSamples
-            searchEngine = SampleSearchEngine(samples: allSamples)
+            if !containsSearchResults{
+                searchEngine = SampleSearchEngine(samples: allSamples)
+            }
         }
     }
-    private var expandedRowIndex:Int = -1
+    private var expandedRowIndex: Int = -1
     
-    var containsSearchResults = false
-    private var bundleResourceRequest:NSBundleResourceRequest!
-    private var downloadProgressView:DownloadProgressView!
-    
-    var searchEngine: SampleSearchEngine?
-    
-    // strong reference needed for iOS 10
-    var filterSearchController:UISearchController?
+    private var bundleResourceRequest: NSBundleResourceRequest!
+    private var downloadProgressView: DownloadProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,9 +44,35 @@ class ContentTableViewController: UITableViewController {
         //initialize download progress view
         downloadProgressView = DownloadProgressView()
         downloadProgressView.delegate = self
+    }
+    
+    // MARK: - Search
+    
+    var containsSearchResults = false
+    private var searchEngine: SampleSearchEngine?
+    
+    // strong reference needed for iOS 10
+    private var filterSearchController: UISearchController?
+    
+    private var hasSearchController: Bool{
+        if #available(iOS 11.0, *) {
+            return navigationItem.searchController != nil
+        }
+        else {
+            return navigationItem.titleView is UISearchBar
+        }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        if !containsSearchResults{
-            addFilterSearchController()
+        if !containsSearchResults,
+            !hasSearchController {
+            // wait a little to avoid a crash
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.1) { [weak self] () in
+                // add search controller after view appears to avoid a visual bug during the transition
+                self?.addFilterSearchController()
+            }
         }
     }
     

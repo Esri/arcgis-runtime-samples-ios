@@ -19,22 +19,26 @@ class DisplayKMLViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView!
     
     /// A model for our three data sources.
-    enum KMLDataSource: String, CaseIterable {
+    enum KMLDataSource: Int {
         case url, localFile, portalItem
     }
     
-    // the source currently loaded in the map
+    /// The source currently loaded in the map.
     private var displayedSource: KMLDataSource = .url{
         didSet{
-            // load the map contents based on the specified source
-            switch displayedSource{
-            case .url:
-                changeSourceToURL()
-            case .localFile:
-                changeSourceToLocalFile()
-            case .portalItem:
-                changeSourceToPortalItem()
-            }
+            updateMapForDisplayedSource()
+        }
+    }
+    
+    /// Loads the map contents based on the specified source.
+    private func updateMapForDisplayedSource(){
+        switch displayedSource{
+        case .url:
+            changeSourceToURL()
+        case .localFile:
+            changeSourceToLocalFile()
+        case .portalItem:
+            changeSourceToPortalItem()
         }
     }
     
@@ -46,8 +50,8 @@ class DisplayKMLViewController: UIViewController {
         // Display the map in the map view
         mapView.map = map
         
-        // Set the initial KML source
-        displayedSource = .url
+        // Show the initial KML source
+        updateMapForDisplayedSource()
         
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayKMLViewController"]
@@ -62,18 +66,17 @@ class DisplayKMLViewController: UIViewController {
             // set the popover height
             sourceTableViewController.preferredContentSize.height = 135
             
-            // show the selected source in the table with a checkmark
-            for i in 0..<sourceTableViewController.tableView.numberOfRows(inSection: 0){
-                if let cell = sourceTableViewController.tableView.cellForRow(at: IndexPath(row: i, section: 0)),
-                    displayedSource == KMLDataSource(rawValue: cell.reuseIdentifier!) {
-                    cell.accessoryType = .checkmark
-                    break
-                }
-            }
-            
             // set the delgates
             sourceTableViewController.tableView.delegate = self
             sourceTableViewController.popoverPresentationController?.delegate = self
+            
+            // ensure that the cells are loaded before getting a cell
+            sourceTableViewController.tableView.reloadData()
+            // get the cell for the shown source and add a checkmark
+            let initiallyCheckedIndexPath = IndexPath(row: displayedSource.rawValue, section: 0)
+            if let cell = sourceTableViewController.tableView.cellForRow(at: initiallyCheckedIndexPath){
+                cell.accessoryType = .checkmark
+            }
         }
     }
     
@@ -138,17 +141,16 @@ class DisplayKMLViewController: UIViewController {
 extension DisplayKMLViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // get the selected cell
+        
+        // find the currently checked cell and remove the checkmark
+        let previouslyCheckedIndexPath = IndexPath(row: displayedSource.rawValue, section: 0)
+        if let previouslyCheckedCell = tableView.cellForRow(at: previouslyCheckedIndexPath) {
+            previouslyCheckedCell.accessoryType = .none
+        }
+        
+        // get the newly selected cell
         let selectedCell = tableView.cellForRow(at: indexPath)!
         
-        // remove the existing checkmark
-        for i in 0..<tableView.numberOfRows(inSection: 0){
-            if let cell = tableView.cellForRow(at: IndexPath(row: i, section: 0)),
-                cell.accessoryType == .checkmark{
-                cell.accessoryType = .none
-                break
-            }
-        }
         // add a checkmark to the selected cell
         selectedCell.accessoryType = .checkmark
         
@@ -156,8 +158,9 @@ extension DisplayKMLViewController: UITableViewDelegate {
         presentedViewController?.dismiss(animated: true)
         
         // change the displayed KML source based on the selected cell
-        displayedSource = KMLDataSource(rawValue: selectedCell.reuseIdentifier!)!
+        displayedSource = KMLDataSource(rawValue: indexPath.row)!
     }
+    
 }
 
 extension DisplayKMLViewController: UIPopoverPresentationControllerDelegate {

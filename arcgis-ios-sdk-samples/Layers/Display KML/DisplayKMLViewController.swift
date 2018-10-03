@@ -24,14 +24,14 @@ class DisplayKMLViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView!
     
     /// The source currently loaded in the map.
-    private var displayedSource: KMLDataSource = .url{
+    private var displayedSource: KMLDataSource = .url {
         didSet{
             updateMapForDisplayedSource()
         }
     }
     
     /// Loads the map contents based on the specified source.
-    private func updateMapForDisplayedSource(){
+    private func updateMapForDisplayedSource() {
         switch displayedSource{
         case .url:
             changeSourceToURL()
@@ -85,7 +85,7 @@ class DisplayKMLViewController: UIViewController {
     
     //MARK: - KML Loading
     
-    private func display(kmlLayer: AGSKMLLayer){
+    private func display(kmlLayer: AGSKMLLayer) {
         
         // Clear the existing layers from the map
         mapView.map?.operationalLayers.removeAllObjects()
@@ -166,13 +166,15 @@ class DisplayKMLDataSourcesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // get the newly selected cell
-        let selectedCell = tableView.cellForRow(at: indexPath)!
+        guard let selectedCell = tableView.cellForRow(at: indexPath),
+            let displayedSource = KMLDataSource(rawValue: indexPath.row) else {
+            return
+        }
         
         // add a checkmark to the selected cell
         selectedCell.accessoryType = .checkmark
         
         // change the displayed KML source based on the selected cell
-        let displayedSource = KMLDataSource(rawValue: indexPath.row)!
         selectionHandler?(displayedSource)
     }
     

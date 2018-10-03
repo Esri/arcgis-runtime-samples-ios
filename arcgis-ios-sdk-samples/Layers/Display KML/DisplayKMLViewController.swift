@@ -72,9 +72,13 @@ class DisplayKMLViewController: UIViewController {
             // setup the view controller
             sourceTableViewController.initialSelectedIndex = displayedSource.rawValue
             sourceTableViewController.selectionHandler = { [weak self] (dataSource) in
+                guard let self = self else{
+                    return
+                }
                 // close the popover
-                self?.presentedViewController?.dismiss(animated: true)
-                self?.displayedSource = dataSource
+                self.presentedViewController?.dismiss(animated: true)
+                // set the displayed source based on the selection
+                self.displayedSource = dataSource
             }
         }
     }

@@ -55,11 +55,10 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         definesPresentationContext = true
         
         // create the view controller for displaying the search results
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let searchResultsController = storyboard.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
-        // search all samples in the app
-        searchResultsController.allSamples = categories.flatMap { $0.samples }
-        searchResultsController.containsSearchResults = true
+        let searchResultsController = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
+        let allSamples = categories.flatMap { $0.samples }
+        searchResultsController.allSamples = allSamples
+        searchResultsController.searchEngine = SampleSearchEngine(samples: allSamples)
         
         // create the search controller
         let searchController = UISearchController(searchResultsController:searchResultsController)

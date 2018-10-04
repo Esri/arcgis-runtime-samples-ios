@@ -28,11 +28,11 @@ class ContentTableViewController: UITableViewController {
     var allSamples = [Sample](){
         didSet{
             displayedSamples = allSamples
-            if !containsSearchResults{
-                searchEngine = SampleSearchEngine(samples: allSamples)
-            }
         }
     }
+
+    var searchEngine: SampleSearchEngine?
+    
     private var expandedRowIndex: Int = -1
     
     private var bundleResourceRequest: NSBundleResourceRequest?
@@ -47,78 +47,6 @@ class ContentTableViewController: UITableViewController {
         let downloadProgressView = DownloadProgressView()
         downloadProgressView.delegate = self
         self.downloadProgressView = downloadProgressView
-    }
-    
-    // MARK: - Search
-    
-    var containsSearchResults = false
-    private var searchEngine: SampleSearchEngine?
-    
-    // strong reference needed for iOS 10
-    private var filterSearchController: UISearchController?
-    
-    private var hasSearchController: Bool{
-        if #available(iOS 11.0, *) {
-            return navigationItem.searchController != nil
-        }
-        else {
-            return navigationItem.titleView is UISearchBar
-        }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if !containsSearchResults,
-            !hasSearchController {
-            // dispatch asynchronously to avoid a crash
-            DispatchQueue.main.async { [weak self] () in
-                // add search controller after view appears to avoid a visual bug during the transition
-                self?.addFilterSearchController()
-            }
-        }
-    }
-    
-    private func addFilterSearchController(){
-        
-        // ensure that the search results are interactable
-        definesPresentationContext = true
-        
-        // create the search controller
-        let searchController = UISearchController(searchResultsController:nil)
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = false
-        // send search query updates to the results controller
-        searchController.searchResultsUpdater = self
-        // retain a strong reference for iOS 10
-        self.filterSearchController = searchController
-        
-        let searchBar = searchController.searchBar
-        searchBar.placeholder = "Filter"
-        searchBar.autocapitalizationType = .none
-        // set the color of "Cancel" text
-        searchBar.tintColor = .white
-        
-        if #available(iOS 11.0, *) {
-            // embed the search bar under the title in the navigation bar
-            navigationItem.searchController = searchController
-            
-            // find the text field to customize its appearance
-            if let textField = searchBar.value(forKey: "searchField") as? UITextField {
-                // set the color of the insertion cursor
-                textField.tintColor = .darkText
-                if let backgroundview = textField.subviews.first {
-                    backgroundview.backgroundColor = .white
-                    backgroundview.layer.cornerRadius = 12
-                    backgroundview.clipsToBounds = true
-                }
-            }
-            
-        } else {
-            // embed the search bar in the title area of the navigation bar
-            navigationItem.titleView = searchBar
-        }
-        
     }
 
     // MARK: - Table view data source
@@ -258,7 +186,7 @@ class ContentTableViewController: UITableViewController {
         controller.title = sample.name
         
         //must use the presenting controller when opening from search results or else splitViewController will be nil
-        let presentingController: UIViewController? = containsSearchResults ? presentingViewController : self
+        let presentingController: UIViewController? = searchEngine != nil ? presentingViewController : self
             
         let navController = UINavigationController(rootViewController: controller)
         if #available(iOS 11.0, *) {

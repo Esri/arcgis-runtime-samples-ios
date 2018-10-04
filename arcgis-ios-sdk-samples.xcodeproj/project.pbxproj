@@ -508,6 +508,9 @@
 		940A73F620E589AB00A06C80 /* CutGeometryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
 		940A73F720E6BF3F00A06C80 /* CutGeometryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
+		C793B5E92166BB71000A7A10 /* OpenStreetMapLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C793B5E72166BB71000A7A10 /* OpenStreetMapLayerViewController.swift */; };
+		C793B5EA2166BB71000A7A10 /* OpenStreetMapLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C793B5E82166BB71000A7A10 /* OpenStreetMapLayer.storyboard */; };
+		C793B5EB2166BC90000A7A10 /* OpenStreetMapLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C793B5E72166BB71000A7A10 /* OpenStreetMapLayerViewController.swift */; };
 		C7D0EEDA215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D0EED8215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift */; };
 		C7D0EEDB215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7D0EED9215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard */; };
 		C7D0EEDC215EA8A700ECDD2C /* DisplayKMLNetworkLinksViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7D0EED8215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift */; };
@@ -600,6 +603,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				C793B5EB2166BC90000A7A10 /* OpenStreetMapLayerViewController.swift in CopyFiles */,
 				C7D0EEDC215EA8A700ECDD2C /* DisplayKMLNetworkLinksViewController.swift in CopyFiles */,
 				E476AB0120F69FCA00BCE59F /* ListTransformationsViewController.swift in CopyFiles */,
 				4C66AAFA2107CCE300EE6346 /* QueryMapImageSublayerViewController.swift in CopyFiles */,
@@ -1146,6 +1150,8 @@
 		940A73F320E588C200A06C80 /* CutGeometry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CutGeometry.storyboard; sourceTree = "<group>"; };
 		940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutGeometryViewController.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
+		C793B5E72166BB71000A7A10 /* OpenStreetMapLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenStreetMapLayerViewController.swift; sourceTree = "<group>"; };
+		C793B5E82166BB71000A7A10 /* OpenStreetMapLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OpenStreetMapLayer.storyboard; sourceTree = "<group>"; };
 		C7D0EED8215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayKMLNetworkLinksViewController.swift; sourceTree = "<group>"; };
 		C7D0EED9215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayKMLNetworkLinks.storyboard; sourceTree = "<group>"; };
 		D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterLayerGPKGViewController.swift; sourceTree = "<group>"; };
@@ -2264,6 +2270,7 @@
 				D97B7E391FD9BE0500E1239D /* Symbolize shapefile */,
 				4C0F27AF2152C9CE00496666 /* Identify KML features */,
 				C7D0EED7215EA56E00ECDD2C /* Display KML network links */,
+				C793B5E62166BB06000A7A10 /* OpenStreetMap layer */,
 			);
 			path = Layers;
 			sourceTree = "<group>";
@@ -2863,6 +2870,15 @@
 			path = "Cut geometry";
 			sourceTree = "<group>";
 		};
+		C793B5E62166BB06000A7A10 /* OpenStreetMap layer */ = {
+			isa = PBXGroup;
+			children = (
+				C793B5E82166BB71000A7A10 /* OpenStreetMapLayer.storyboard */,
+				C793B5E72166BB71000A7A10 /* OpenStreetMapLayerViewController.swift */,
+			);
+			path = "OpenStreetMap layer";
+			sourceTree = "<group>";
+		};
 		C7D0EED7215EA56E00ECDD2C /* Display KML network links */ = {
 			isa = PBXGroup;
 			children = (
@@ -3333,6 +3349,7 @@
 				D9E2E76620EEB8FF001D0AE0 /* Public_Art.shp.xml in Resources */,
 				3E54D2351CC6985200BB9904 /* GraphicDrawOrder.storyboard in Resources */,
 				3ED028911B8E3A8500ACA70D /* SetInitialMapLocation.storyboard in Resources */,
+				C793B5EA2166BB71000A7A10 /* OpenStreetMapLayer.storyboard in Resources */,
 				3E8A25831D36B6E300D14F08 /* FeatureLayerGDB.storyboard in Resources */,
 				3ED0288D1B8E3A8500ACA70D /* SetInitialMapArea.storyboard in Resources */,
 				3EC39C341C9B106D003F6459 /* ExportTiles.storyboard in Resources */,
@@ -3463,6 +3480,7 @@
 				3ED0285F1B8E3A8500ACA70D /* SaveAsViewController.swift in Sources */,
 				D9ED2DA61FD758910043BFE1 /* FeatureLayerGPKGViewController.swift in Sources */,
 				218409DD1FE89D840098BC40 /* OrderByFieldsViewController.swift in Sources */,
+				C793B5E92166BB71000A7A10 /* OpenStreetMapLayerViewController.swift in Sources */,
 				3E8A05BC1ECD08240032231C /* SceneLayerURLViewController.swift in Sources */,
 				3EABC7CA1DB1947500C161C6 /* BlendRendererSettingsVC.swift in Sources */,
 				F4E5CD7D20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift in Sources */,

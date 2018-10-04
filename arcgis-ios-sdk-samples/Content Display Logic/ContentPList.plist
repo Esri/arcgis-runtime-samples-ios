@@ -445,6 +445,14 @@
 				<key>descriptionText</key>
 				<string>Display a KML file that loads content from a network resource.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>OpenStreetMap layer</string>
+				<key>storyboardName</key>
+				<string>OpenStreetMapLayer</string>
+				<key>descriptionText</key>
+				<string>Display a map with an OpenStreetMap basemap.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

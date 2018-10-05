@@ -6,20 +6,21 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--ListKML Contents View Controller-->
         <scene sceneID="3FX-LX-1AF">
             <objects>
-                <tableViewController storyboardIdentifier="ListKMLContentsViewController" id="wtI-Yn-peV" customClass="ListKMLContentsViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="pe4-jm-ayb">
+                <tableViewController id="wtI-Yn-peV" customClass="ListKMLContentsViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pe4-jm-ayb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NodeCell" textLabel="T4B-8N-5xO" detailTextLabel="Fg6-po-V69" rowHeight="67" style="IBUITableViewCellStyleSubtitle" id="0g0-Nt-UQg">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="67"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="15" reuseIdentifier="NodeCell" textLabel="T4B-8N-5xO" detailTextLabel="Fg6-po-V69" rowHeight="67" style="IBUITableViewCellStyleSubtitle" id="0g0-Nt-UQg">
+                                <rect key="frame" x="0.0" y="28" width="375" height="67"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0g0-Nt-UQg" id="qeD-NH-Ztr">
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="66.5"/>
@@ -42,42 +43,6 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListKMLContentsSceneCell" rowHeight="375" id="SkX-8s-Sj5" customClass="ListKMLContentsSceneCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="122.5" width="375" height="375"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SkX-8s-Sj5" id="aqN-H5-Nix">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="374.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This node has no extent." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4R-fo-taw">
-                                            <rect key="frame" x="83.5" y="11" width="208.5" height="23"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9qE-cI-fmy" customClass="AGSSceneView">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="375" placeholder="YES" id="fwd-mH-fn7"/>
-                                                <constraint firstAttribute="height" secondItem="9qE-cI-fmy" secondAttribute="width" id="lEu-qv-Yx9"/>
-                                            </constraints>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="J4R-fo-taw" firstAttribute="top" secondItem="aqN-H5-Nix" secondAttribute="topMargin" placeholder="YES" id="2VB-UG-xwM"/>
-                                        <constraint firstItem="J4R-fo-taw" firstAttribute="centerY" secondItem="aqN-H5-Nix" secondAttribute="centerY" id="6vd-bI-Uys"/>
-                                        <constraint firstAttribute="bottom" secondItem="9qE-cI-fmy" secondAttribute="bottom" id="7gS-nI-1wT"/>
-                                        <constraint firstItem="J4R-fo-taw" firstAttribute="centerX" secondItem="aqN-H5-Nix" secondAttribute="centerX" id="PLv-zv-c5X"/>
-                                        <constraint firstItem="9qE-cI-fmy" firstAttribute="top" secondItem="aqN-H5-Nix" secondAttribute="top" id="V7a-nU-LKH"/>
-                                        <constraint firstAttribute="trailing" secondItem="9qE-cI-fmy" secondAttribute="trailing" id="ZV4-41-XqN"/>
-                                        <constraint firstItem="9qE-cI-fmy" firstAttribute="leading" secondItem="aqN-H5-Nix" secondAttribute="leading" id="zt0-ig-Z6K"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="sceneView" destination="9qE-cI-fmy" id="EIi-Xn-jHG"/>
-                                </connections>
-                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="wtI-Yn-peV" id="HUA-DG-7AG"/>
@@ -88,6 +53,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qj-S1-3NA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="173.59999999999999" y="428.63568215892059"/>
+        </scene>
+        <!--ListKML Contents Scene View Controller-->
+        <scene sceneID="q0N-YS-N1m">
+            <objects>
+                <viewController storyboardIdentifier="ListKMLContentsSceneViewController" id="5tT-3W-19j" customClass="ListKMLContentsSceneViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v8D-7R-gRf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This node has no extent." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Jx-DO-V0F">
+                                <rect key="frame" x="81.5" y="321.5" width="212" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ef2-8I-1mf" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ef2-8I-1mf" firstAttribute="trailing" secondItem="ERt-Fc-cMp" secondAttribute="trailing" id="EPD-ag-ZHr"/>
+                            <constraint firstItem="Ef2-8I-1mf" firstAttribute="bottom" secondItem="ERt-Fc-cMp" secondAttribute="bottom" id="N34-bV-9Zd"/>
+                            <constraint firstItem="Ef2-8I-1mf" firstAttribute="top" secondItem="ERt-Fc-cMp" secondAttribute="top" id="UsY-NV-xf7"/>
+                            <constraint firstItem="6Jx-DO-V0F" firstAttribute="centerY" secondItem="v8D-7R-gRf" secondAttribute="centerY" id="d7N-8w-pdz"/>
+                            <constraint firstItem="6Jx-DO-V0F" firstAttribute="centerX" secondItem="v8D-7R-gRf" secondAttribute="centerX" id="mEc-5V-vM3"/>
+                            <constraint firstItem="Ef2-8I-1mf" firstAttribute="leading" secondItem="ERt-Fc-cMp" secondAttribute="leading" id="xK9-Ve-SOP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ERt-Fc-cMp"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="Ef2-8I-1mf" id="t14-1r-rmx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wbx-yf-HF1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="882.39999999999998" y="428.63568215892059"/>
         </scene>
     </scenes>
 </document>

@@ -515,6 +515,8 @@
 		C7D0EEDA215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D0EED8215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift */; };
 		C7D0EEDB215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7D0EED9215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard */; };
 		C7D0EEDC215EA8A700ECDD2C /* DisplayKMLNetworkLinksViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7D0EED8215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift */; };
+		C7D22F8C2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D22F8B2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift */; };
+		C7D22F8D2167F01500C39D5C /* ListKMLContentsSceneViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7D22F8B2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift */; };
 		D90407941FD8608A00BFE07B /* RasterLayerGPKGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */; };
 		D90407951FD8608A00BFE07B /* RasterLayerGPKG.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90407931FD8608A00BFE07B /* RasterLayerGPKG.storyboard */; };
 		D90407961FD8651600BFE07B /* RasterLayerGPKGViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */; };
@@ -604,6 +606,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				C7D22F8D2167F01500C39D5C /* ListKMLContentsSceneViewController.swift in CopyFiles */,
 				C793B5E321668587000A7A10 /* ListKMLContentsViewController.swift in CopyFiles */,
 				C7D0EEDC215EA8A700ECDD2C /* DisplayKMLNetworkLinksViewController.swift in CopyFiles */,
 				E476AB0120F69FCA00BCE59F /* ListTransformationsViewController.swift in CopyFiles */,
@@ -1156,6 +1159,7 @@
 		C793B5E121667580000A7A10 /* esri_test_data.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; path = esri_test_data.kmz; sourceTree = "<group>"; };
 		C7D0EED8215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayKMLNetworkLinksViewController.swift; sourceTree = "<group>"; };
 		C7D0EED9215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayKMLNetworkLinks.storyboard; sourceTree = "<group>"; };
+		C7D22F8B2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListKMLContentsSceneViewController.swift; sourceTree = "<group>"; };
 		D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterLayerGPKGViewController.swift; sourceTree = "<group>"; };
 		D90407931FD8608A00BFE07B /* RasterLayerGPKG.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RasterLayerGPKG.storyboard; sourceTree = "<group>"; };
 		D9316A5D1FDB4F060075AD92 /* GPKGLayerTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPKGLayerTableCell.swift; sourceTree = "<group>"; };
@@ -2878,6 +2882,7 @@
 			children = (
 				C793B5DC21667194000A7A10 /* ListKMLContents.storyboard */,
 				C793B5DD21667194000A7A10 /* ListKMLContentsViewController.swift */,
+				C7D22F8B2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift */,
 			);
 			path = "List KML contents";
 			sourceTree = "<group>";
@@ -3547,6 +3552,7 @@
 				4C66AAF92107C50B00EE6346 /* QueryMapImageSublayerViewController.swift in Sources */,
 				3ED028F81B8E3AA500ACA70D /* ManualCacheViewController.swift in Sources */,
 				3E1E5EE51D9F08ED00F4913C /* HillshadeRendererVC.swift in Sources */,
+				C7D22F8C2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift in Sources */,
 				3ED029291B8E3AB300ACA70D /* GORenderersViewController.swift in Sources */,
 				3ED0286B1B8E3A8500ACA70D /* CustomContextSheet.swift in Sources */,
 				E45991A41EF3021D0089E9FD /* WebMapViewController.swift in Sources */,

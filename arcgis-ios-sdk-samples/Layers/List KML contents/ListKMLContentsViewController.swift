@@ -26,10 +26,6 @@ class ListKMLContentsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard self.kmlDataset == nil else {
-            return
-        }
-        
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ListKMLContentsViewController", "ListKMLContentsSceneViewController"]
         
@@ -46,7 +42,7 @@ class ListKMLContentsViewController: UITableViewController {
             
             guard error == nil else{
                 // display the error as an alert
-                let alertController = UIAlertController(title: error?.localizedDescription, message: nil, preferredStyle: .alert)
+                let alertController = UIAlertController(title: nil, message: error?.localizedDescription, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alertController, animated: true, completion: nil)
                 return
@@ -86,7 +82,7 @@ class ListKMLContentsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // get and setup a cell to display the node info
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NodeCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NodeCell", for: indexPath)
         let flattenedNodeInfo = flattenedNodes[indexPath.row]
         let node = flattenedNodeInfo.node
         cell.textLabel?.text = node.name
@@ -99,9 +95,6 @@ class ListKMLContentsViewController: UITableViewController {
     //MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard indexPath.section == 0 else{
-            return
-        }
         let node = flattenedNodes[indexPath.row].node
         // create and show a view controller showing the scene and the extent of this node
         let viewController = storyboard?.instantiateViewController(withIdentifier: "ListKMLContentsSceneViewController") as! ListKMLContentsSceneViewController

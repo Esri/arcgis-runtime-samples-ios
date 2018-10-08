@@ -19,8 +19,8 @@ class ListKMLContentsSceneViewController: UIViewController {
     
     @IBOutlet weak var sceneView: AGSSceneView!
     
-    weak var kmlDataset: AGSKMLDataset?
-    weak var node: AGSKMLNode? {
+    var kmlDataset: AGSKMLDataset?
+    var node: AGSKMLNode? {
         didSet {
             title = node?.name
         }

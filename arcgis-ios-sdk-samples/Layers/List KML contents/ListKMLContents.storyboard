@@ -75,12 +75,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Ef2-8I-1mf" firstAttribute="trailing" secondItem="ERt-Fc-cMp" secondAttribute="trailing" id="EPD-ag-ZHr"/>
-                            <constraint firstItem="Ef2-8I-1mf" firstAttribute="bottom" secondItem="ERt-Fc-cMp" secondAttribute="bottom" id="N34-bV-9Zd"/>
+                            <constraint firstItem="Ef2-8I-1mf" firstAttribute="trailing" secondItem="v8D-7R-gRf" secondAttribute="trailing" id="30u-7W-woN"/>
+                            <constraint firstItem="Ef2-8I-1mf" firstAttribute="bottom" secondItem="v8D-7R-gRf" secondAttribute="bottom" id="6Pz-Kq-R2I"/>
+                            <constraint firstItem="Ef2-8I-1mf" firstAttribute="leading" secondItem="v8D-7R-gRf" secondAttribute="leading" id="Moq-yL-Jf7"/>
                             <constraint firstItem="Ef2-8I-1mf" firstAttribute="top" secondItem="ERt-Fc-cMp" secondAttribute="top" id="UsY-NV-xf7"/>
                             <constraint firstItem="6Jx-DO-V0F" firstAttribute="centerY" secondItem="v8D-7R-gRf" secondAttribute="centerY" id="d7N-8w-pdz"/>
                             <constraint firstItem="6Jx-DO-V0F" firstAttribute="centerX" secondItem="v8D-7R-gRf" secondAttribute="centerX" id="mEc-5V-vM3"/>
-                            <constraint firstItem="Ef2-8I-1mf" firstAttribute="leading" secondItem="ERt-Fc-cMp" secondAttribute="leading" id="xK9-Ve-SOP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ERt-Fc-cMp"/>
                     </view>

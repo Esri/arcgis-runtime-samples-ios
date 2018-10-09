@@ -30,7 +30,9 @@ class SceneSymbolsViewController: UIViewController {
         
         // Add base surface for elevation data.
         let surface = AGSSurface()
-        let elevationSource = AGSArcGISTiledElevationSource(url: .worldElevationService)
+        /// The url of the Terrain 3D ArcGIS REST Service.
+        let worldElevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
+        let elevationSource = AGSArcGISTiledElevationSource(url: worldElevationServiceURL)
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
         

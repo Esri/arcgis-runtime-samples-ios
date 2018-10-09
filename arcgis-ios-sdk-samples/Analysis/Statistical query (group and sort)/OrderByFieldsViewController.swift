@@ -21,7 +21,7 @@ protocol OrderByFieldsViewControllerDelegate: AnyObject {
 }
 
 class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    //
+
     // Outlets
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var tableNavigationItem: UINavigationItem!
@@ -100,15 +100,12 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - TableView delegates
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
         // Deselect row
         tableView.deselectRow(at: indexPath, animated: false)
         
-        //
         // Get the cell
         if let cell = tableView.cellForRow(at: indexPath) {
             if cell.accessoryType == .none {
-                //
                 // Set the accessory type to checkmark
                 cell.accessoryType = .checkmark
                 
@@ -117,7 +114,6 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
                 selectedOrderByFields.append(orderByField)
             }
             else {
-                //
                 // Set the accessory type to none
                 cell.accessoryType = .none
                 
@@ -131,7 +127,6 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - Actions
     
     @IBAction private func doneAction() {
-        //
         // Fire delegate
         delegate?.setOrdering(with: selectedOrderByFields)
         

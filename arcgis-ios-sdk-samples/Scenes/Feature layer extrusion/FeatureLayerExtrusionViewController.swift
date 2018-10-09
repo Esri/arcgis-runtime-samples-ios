@@ -26,8 +26,10 @@ class FeatureLayerExtrusionViewController: UIViewController {
     required init?(coder: NSCoder) {
         scene = AGSScene(basemapType: .topographic)
         
+        /// The url of the States layer of the Census Map Service.
+        let censusMapServiceStatesLayerURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3")!
         // Create service feature table from US census feature service.
-        let table = AGSServiceFeatureTable(url: .censusMapServiceStatesLayer)
+        let table = AGSServiceFeatureTable(url: censusMapServiceStatesLayerURL)
         // Create feature layer from service feature table.
         let layer = AGSFeatureLayer(featureTable: table)
         // Feature layer must be rendered dynamically for extrusion to work.

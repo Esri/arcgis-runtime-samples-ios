@@ -54,7 +54,7 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
             messageLabel.text = "Only selected Group By Fields are valid for Order By Fields so please select Group By Fields first."
             messageLabel.numberOfLines = 0;
             messageLabel.textAlignment = .center;
-            messageLabel.font = UIFont(name: "HelveticaNeue", size: 20.0)!
+            messageLabel.font = UIFont.systemFont(ofSize: 20)
             messageLabel.sizeToFit()
             tableView.backgroundView?.backgroundColor = .white
             tableView.backgroundView = messageLabel;

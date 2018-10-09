@@ -36,12 +36,16 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
         
         // add base surface for elevation data
         let surface = AGSSurface()
-        let elevationSource = AGSArcGISTiledElevationSource(url: .brestElevationService)
+        /// The url of the image service for elevation in Brest, France.
+        let brestElevationServiceURL = URL(string: "https://scene.arcgis.com/arcgis/rest/services/BREST_DTM_1M/ImageServer")!
+        let elevationSource = AGSArcGISTiledElevationSource(url: brestElevationServiceURL)
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
 
+        /// The url of the scene service for buildings in Brest, France.
+        let brestBuildingsServiceURL = URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0")!
         // add a scene layer
-        let buildings = AGSArcGISSceneLayer(url: .brestBuildingsService)
+        let buildings = AGSArcGISSceneLayer(url: brestBuildingsServiceURL)
         scene.operationalLayers.add(buildings)
 
         // create a graphics overlay for the tank

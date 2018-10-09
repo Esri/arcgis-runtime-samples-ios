@@ -507,6 +507,10 @@
 		940A73F620E589AB00A06C80 /* CutGeometryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
 		940A73F720E6BF3F00A06C80 /* CutGeometryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
+		C76817072163DB7C00EC82F4 /* DisplayKML.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C76817052163DB7C00EC82F4 /* DisplayKML.storyboard */; };
+		C76817082163DB7C00EC82F4 /* DisplayKMLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76817062163DB7C00EC82F4 /* DisplayKMLViewController.swift */; };
+		C76817092163DD8300EC82F4 /* DisplayKMLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C76817062163DB7C00EC82F4 /* DisplayKMLViewController.swift */; };
+		C768170C2163E31700EC82F4 /* US_State_Capitals.kml in Resources */ = {isa = PBXBuildFile; fileRef = C768170B2163E31700EC82F4 /* US_State_Capitals.kml */; };
 		C793B5E92166BB71000A7A10 /* OpenStreetMapLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C793B5E72166BB71000A7A10 /* OpenStreetMapLayerViewController.swift */; };
 		C793B5EA2166BB71000A7A10 /* OpenStreetMapLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C793B5E82166BB71000A7A10 /* OpenStreetMapLayer.storyboard */; };
 		C793B5EB2166BC90000A7A10 /* OpenStreetMapLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C793B5E72166BB71000A7A10 /* OpenStreetMapLayerViewController.swift */; };
@@ -602,6 +606,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				C76817092163DD8300EC82F4 /* DisplayKMLViewController.swift in CopyFiles */,
 				C793B5EB2166BC90000A7A10 /* OpenStreetMapLayerViewController.swift in CopyFiles */,
 				C7D0EEDC215EA8A700ECDD2C /* DisplayKMLNetworkLinksViewController.swift in CopyFiles */,
 				E476AB0120F69FCA00BCE59F /* ListTransformationsViewController.swift in CopyFiles */,
@@ -1148,6 +1153,9 @@
 		940A73F320E588C200A06C80 /* CutGeometry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CutGeometry.storyboard; sourceTree = "<group>"; };
 		940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutGeometryViewController.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
+		C76817052163DB7C00EC82F4 /* DisplayKML.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayKML.storyboard; sourceTree = "<group>"; };
+		C76817062163DB7C00EC82F4 /* DisplayKMLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayKMLViewController.swift; sourceTree = "<group>"; };
+		C768170B2163E31700EC82F4 /* US_State_Capitals.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = US_State_Capitals.kml; sourceTree = "<group>"; };
 		C793B5E72166BB71000A7A10 /* OpenStreetMapLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenStreetMapLayerViewController.swift; sourceTree = "<group>"; };
 		C793B5E82166BB71000A7A10 /* OpenStreetMapLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OpenStreetMapLayer.storyboard; sourceTree = "<group>"; };
 		C7D0EED8215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayKMLNetworkLinksViewController.swift; sourceTree = "<group>"; };
@@ -1616,6 +1624,7 @@
 				D97B7E3E1FD9BF1E00E1239D /* Shapefiles */,
 				3E4B05E61B39EF250072E514 /* Libraries */,
 				3EABC7951DB1787600C161C6 /* Rasters */,
+				C768170A2163E30200EC82F4 /* KML */,
 				3E1183D81ECF5A1000180152 /* Mission files */,
 			);
 			path = "Shared resources";
@@ -2265,6 +2274,7 @@
 				4CC00F7220C1FAA8004244EF /* Style WMS layers */,
 				4C66AAF52107C4BB00EE6346 /* Query a map image sublayer */,
 				D97B7E391FD9BE0500E1239D /* Symbolize shapefile */,
+				C76817042163DA8D00EC82F4 /* Display KML */,
 				4C0F27AF2152C9CE00496666 /* Identify KML features */,
 				C7D0EED7215EA56E00ECDD2C /* Display KML network links */,
 				C793B5E62166BB06000A7A10 /* OpenStreetMap layer */,
@@ -2851,6 +2861,23 @@
 			path = "Cut geometry";
 			sourceTree = "<group>";
 		};
+		C76817042163DA8D00EC82F4 /* Display KML */ = {
+			isa = PBXGroup;
+			children = (
+				C76817052163DB7C00EC82F4 /* DisplayKML.storyboard */,
+				C76817062163DB7C00EC82F4 /* DisplayKMLViewController.swift */,
+			);
+			path = "Display KML";
+			sourceTree = "<group>";
+		};
+		C768170A2163E30200EC82F4 /* KML */ = {
+			isa = PBXGroup;
+			children = (
+				C768170B2163E31700EC82F4 /* US_State_Capitals.kml */,
+			);
+			path = KML;
+      sourceTree = "<group>";
+		};
 		C793B5E62166BB06000A7A10 /* OpenStreetMap layer */ = {
 			isa = PBXGroup;
 			children = (
@@ -3309,6 +3336,7 @@
 				3E4A64B01D8B37DA00CF930C /* Settings.bundle in Resources */,
 				3ED028EE1B8E3AA500ACA70D /* FLSelection.storyboard in Resources */,
 				3EAF09491D710AAF00F8538F /* ChangeMapViewBackground.storyboard in Resources */,
+				C76817072163DB7C00EC82F4 /* DisplayKML.storyboard in Resources */,
 				D97B7E3D1FD9BE2B00E1239D /* SymbolizeShapefile.storyboard in Resources */,
 				3EABC7AF1DB17B2C00C161C6 /* Shasta.tif in Resources */,
 				3EFDE0F71E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard in Resources */,
@@ -3316,6 +3344,7 @@
 				3E62940B1EAFAF4100084105 /* WebTiledLayer.storyboard in Resources */,
 				97DD84671B2B869300184B41 /* xcode.css in Resources */,
 				3ED0289C1B8E3A8500ACA70D /* MapViewScreenshot.storyboard in Resources */,
+				C768170C2163E31700EC82F4 /* US_State_Capitals.kml in Resources */,
 				3EEA06131D21C44000E03774 /* SurfacePlacements.storyboard in Resources */,
 				3ED0292C1B8E3AB300ACA70D /* GOIdentify.storyboard in Resources */,
 				D9ED2DA51FD758910043BFE1 /* FeatureLayerGPKG.storyboard in Resources */,
@@ -3544,6 +3573,7 @@
 				3ED028631B8E3A8500ACA70D /* SwitchBasemapViewController.swift in Sources */,
 				21E9CDF01EF9C64C00BD4D7D /* HorizontalColorPicker.swift in Sources */,
 				E45991A21EF3021D0089E9FD /* WebMapCell.swift in Sources */,
+				C76817082163DB7C00EC82F4 /* DisplayKMLViewController.swift in Sources */,
 				3EEA06141D21C44000E03774 /* SurfacePlacementsViewController.swift in Sources */,
 				F4159C7120925B710016E53D /* OpenSceneViewController.swift in Sources */,
 				3EAF09451D7108DC00F8538F /* ChangeMapViewBackgroundVC.swift in Sources */,

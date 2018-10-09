@@ -230,7 +230,7 @@ class HorizontalPickerCell: UICollectionViewCell {
         
         //initialize and add title label
         self.titleLabel = UILabel(frame: self.contentView.bounds)
-        self.titleLabel.font = UIFont(name: "Avenir-Book", size: 17)
+        self.titleLabel.font = UIFont.systemFont(ofSize: 17)
         self.titleLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         self.titleLabel.textAlignment = .center
         

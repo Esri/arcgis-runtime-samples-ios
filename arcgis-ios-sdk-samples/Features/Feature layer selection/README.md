@@ -8,7 +8,6 @@ Tap on a feature on the map to select it
 
 ![](image1.png)
 ![](image2.png)
-![](image3.png)
 
 ## How it works
 

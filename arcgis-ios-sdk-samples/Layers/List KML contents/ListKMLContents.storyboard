@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -68,22 +67,19 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ef2-8I-1mf" customClass="AGSSceneView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ef2-8I-1mf" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Ef2-8I-1mf" firstAttribute="trailing" secondItem="v8D-7R-gRf" secondAttribute="trailing" id="30u-7W-woN"/>
-                            <constraint firstItem="Ef2-8I-1mf" firstAttribute="bottom" secondItem="v8D-7R-gRf" secondAttribute="bottom" id="6Pz-Kq-R2I"/>
-                            <constraint firstItem="Ef2-8I-1mf" firstAttribute="leading" secondItem="v8D-7R-gRf" secondAttribute="leading" id="Moq-yL-Jf7"/>
-                            <constraint firstItem="Ef2-8I-1mf" firstAttribute="top" secondItem="ERt-Fc-cMp" secondAttribute="top" id="UsY-NV-xf7"/>
                             <constraint firstItem="6Jx-DO-V0F" firstAttribute="centerY" secondItem="v8D-7R-gRf" secondAttribute="centerY" id="d7N-8w-pdz"/>
                             <constraint firstItem="6Jx-DO-V0F" firstAttribute="centerX" secondItem="v8D-7R-gRf" secondAttribute="centerX" id="mEc-5V-vM3"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="ERt-Fc-cMp"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
                         <outlet property="sceneView" destination="Ef2-8I-1mf" id="t14-1r-rmx"/>
                     </connections>

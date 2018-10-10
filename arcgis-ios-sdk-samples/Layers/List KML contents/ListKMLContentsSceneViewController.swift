@@ -17,7 +17,7 @@ import ArcGIS
 
 class ListKMLContentsSceneViewController: UIViewController {
     
-    @IBOutlet weak var sceneView: AGSSceneView! {
+    @IBOutlet weak var sceneView: AGSSceneView? {
         didSet {
             sceneView?.scene = scene
         }
@@ -82,18 +82,23 @@ class ListKMLContentsSceneViewController: UIViewController {
             
             // run UI updates on the main thread
             DispatchQueue.main.async {
+                
+                guard let sceneView = self.sceneView else {
+                    return
+                }
+                
                 if let nodeViewpoint = nodeViewpoint,
                     !nodeViewpoint.targetGeometry.isEmpty {
                     
                     // reveal the view in case it was previously hidden
-                    self.sceneView.isHidden = false
+                    sceneView.isHidden = false
                     
                     // set the viewpoint for the node
-                    self.sceneView.setViewpoint(nodeViewpoint)
+                    sceneView.setViewpoint(nodeViewpoint)
                 }
                 else {
                     // this node has no viewpoint so hide the scene view, showing the info text
-                    self.sceneView.isHidden = true
+                    sceneView.isHidden = true
                 }
             }
         }

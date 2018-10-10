@@ -23,6 +23,9 @@ class ListKMLContentsViewController: UITableViewController {
     /// Used as the model for the table view.
     private var flattenedNodes: [(node: AGSKMLNode, level: Int)] = []
     
+    /// A reusable view controller for displaying the scene in a scene view.
+    private var sceneViewController: ListKMLContentsSceneViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,16 +54,24 @@ class ListKMLContentsViewController: UITableViewController {
             self.flattenedNodes = []
             func addNodes(_ nodes: [AGSKMLNode], level: Int){
                 for node in nodes{
+                    // some nodes are hidden by default, so set all to visible
                     node.isVisible = true
                     self.flattenedNodes.append((node, level))
                     addNodes(self.childNodes(of: node), level: level+1)
                 }
             }
+            // recurse through the nodes and add them all to a flat array to use as a data source
             addNodes(kmlDataset.rootNodes, level: 0)
             
             // populate the outline view now that the data is loaded
             self.tableView.reloadData()
         }
+        
+        
+        // create the view controller to display the scene throught the sample
+        let sceneViewController = storyboard!.instantiateViewController(withIdentifier: "ListKMLContentsSceneViewController") as! ListKMLContentsSceneViewController
+        sceneViewController.kmlDataset = kmlDataset
+        self.sceneViewController = sceneViewController
     }
     
     /// Returns all the child nodes of this node.
@@ -95,12 +106,19 @@ class ListKMLContentsViewController: UITableViewController {
     //MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let node = flattenedNodes[indexPath.row].node
-        // create and show a view controller showing the scene and the extent of this node
-        let viewController = storyboard?.instantiateViewController(withIdentifier: "ListKMLContentsSceneViewController") as! ListKMLContentsSceneViewController
-        viewController.kmlDataset = kmlDataset
-        viewController.node = node
-        show(viewController, sender: self)
+        
+        // get the reusable view controller displaying the scene
+        if let sceneViewController = sceneViewController,
+            // if the view controller is not already presented
+             sceneViewController.presentingViewController == nil{
+           
+            /// The node for the selected row.
+            let selectedNode = flattenedNodes[indexPath.row].node
+            // tell the view controller to show the selected node
+            sceneViewController.node = selectedNode
+            // present the view controller
+            show(sceneViewController, sender: self)
+        }
     }
     
 }

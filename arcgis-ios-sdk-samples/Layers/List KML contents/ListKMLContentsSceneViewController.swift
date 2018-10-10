@@ -17,21 +17,13 @@ import ArcGIS
 
 class ListKMLContentsSceneViewController: UIViewController {
     
-    @IBOutlet weak var sceneView: AGSSceneView!
-    
-    var kmlDataset: AGSKMLDataset?
-    var node: AGSKMLNode? {
+    @IBOutlet weak var sceneView: AGSSceneView! {
         didSet {
-            title = node?.name
+            sceneView?.scene = scene
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        guard let kmlDataset = kmlDataset else {
-            return
-        }
+    private let scene: AGSScene = {
         
         // initialize scene with labeled imagery
         let scene = AGSScene(basemapType: .imageryWithLabels)
@@ -41,26 +33,54 @@ class ListKMLContentsSceneViewController: UIViewController {
         let elevationSource = AGSArcGISTiledElevationSource(url: elevationSourceURL)
         scene.baseSurface?.elevationSources.append(elevationSource)
         
-        // assign the scene to the view
-        sceneView.scene = scene
-        
-        // create a layer to display the dataset
-        let kmlLayer = AGSKMLLayer(kmlDataset: kmlDataset)
-        
-        // add the kml layer to the map
-        scene.operationalLayers.add(kmlLayer)
-        
-        setSceneViewpoint()
+        return scene
+    }()
+    
+    var kmlDataset: AGSKMLDataset? {
+        didSet {
+            
+            // clear any existing layers
+            scene.operationalLayers.removeAllObjects()
+            
+            guard let kmlDataset = kmlDataset else {
+                return
+            }
+            
+            // create a layer to display the dataset
+            let kmlLayer = AGSKMLLayer(kmlDataset: kmlDataset)
+            // add the kml layer to the scene
+            scene.operationalLayers.add(kmlLayer)
+        }
+    }
+    var node: AGSKMLNode? {
+        didSet {
+            title = node?.name
+            
+            if let node = node {
+                
+                // set the viewpoint based on the new node
+                setSceneViewpoint(for: node)
+            }
+        }
     }
     
     //MARK: - Viewpoint
     
-    private func setSceneViewpoint(){
-        guard let node = node else {
-            return
+    /// Sets the viewpoint of the scene based on the node, or hides the node
+    /// if a viewpoint cannot be determined.
+    private func setSceneViewpoint(for node:AGSKMLNode){
+        
+        if !isViewLoaded {
+            // load the view before setting a viewpoint
+            loadView()
         }
+        
         if let nodeViewpoint = viewpoint(for: node),
             !nodeViewpoint.targetGeometry.isEmpty {
+            
+            // reveal the view in case it was previously hidden
+            sceneView.isHidden = false
+            
             // set the viewpoint for the node
             sceneView.setViewpoint(nodeViewpoint)
         }
@@ -72,7 +92,7 @@ class ListKMLContentsSceneViewController: UIViewController {
     
     /// Returns the elevation of the scene's surface corresponding to the point's x/y.
     private func sceneSurfaceElevation(for point: AGSPoint) -> Double? {
-        guard let surface = sceneView.scene?.baseSurface else {
+        guard let surface = scene.baseSurface else {
             return nil
         }
         

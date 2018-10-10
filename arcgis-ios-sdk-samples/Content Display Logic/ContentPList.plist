@@ -439,11 +439,35 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Display KML</string>
+				<key>storyboardName</key>
+				<string>DisplayKML</string>
+				<key>descriptionText</key>
+				<string>Show a KML file from a URL, local file, or portal item.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Identify KML features</string>
+				<key>storyboardName</key>
+				<string>IdentifyKMLFeatures</string>
+				<key>descriptionText</key>
+				<string>Show a balloon popup with formatted content for tapped KML features. KML supports defining HTML for popups.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Display KML network links</string>
 				<key>storyboardName</key>
 				<string>DisplayKMLNetworkLinks</string>
 				<key>descriptionText</key>
 				<string>Display a KML file that loads content from a network resource.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>OpenStreetMap layer</string>
+				<key>storyboardName</key>
+				<string>OpenStreetMapLayer</string>
+				<key>descriptionText</key>
+				<string>Display a map with an OpenStreetMap basemap.</string>
 			</dict>
 		</array>
 	</dict>
@@ -867,7 +891,7 @@
 				<key>storyboardName</key>
 				<string>ListTransformations</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to use the transformation catalog to get a list of available datum transformations that can be used to project a geometry between two different spatial references, and how to use one of the transformations to perform the geometry engine's "project" operation.</string>
+				<string>This sample demonstrates how to use the transformation catalog to get a list of available datum transformations that can be used to project a geometry between two different spatial references, and how to use one of the transformations to perform the geometry engine&apos;s &quot;project&quot; operation.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

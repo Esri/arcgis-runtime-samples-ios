@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cgt-Vu-gHQ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Touch Delegate-->
+        <scene sceneID="NfN-yx-4c0">
+            <objects>
+                <viewController id="cgt-Vu-gHQ" customClass="IdentifyKMLFeaturesViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kmM-dj-TaI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jqp-Pl-HaC" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="touchDelegate" destination="cgt-Vu-gHQ" id="bxO-4X-7xs"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Jqp-Pl-HaC" secondAttribute="bottom" id="RvK-Lf-khR"/>
+                            <constraint firstItem="Jqp-Pl-HaC" firstAttribute="leading" secondItem="kmM-dj-TaI" secondAttribute="leading" id="bK8-fH-eUZ"/>
+                            <constraint firstAttribute="trailing" secondItem="Jqp-Pl-HaC" secondAttribute="trailing" id="nEX-Ta-ZW2"/>
+                            <constraint firstItem="Jqp-Pl-HaC" firstAttribute="top" secondItem="a86-nq-tIp" secondAttribute="top" id="vY9-R9-vkf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="a86-nq-tIp"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Jqp-Pl-HaC" id="eQ4-ZL-fog"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BPs-Ut-Bq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="114" y="139"/>
+        </scene>
+    </scenes>
+</document>

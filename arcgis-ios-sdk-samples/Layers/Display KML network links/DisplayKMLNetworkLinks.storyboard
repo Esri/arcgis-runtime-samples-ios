@@ -31,7 +31,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="5MB-jd-Az3"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>

@@ -194,6 +194,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Generate offline map (overrides)</string>
+				<key>storyboardName</key>
+				<string>GenerateOfflineMapOverrides</string>
+				<key>descriptionText</key>
+				<string>Override the default parameters when taking a map from ArcGIS Portal offline.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Read a geopackage</string>
 				<key>storyboardName</key>
 				<string>ReadGeopackage</string>

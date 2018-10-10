@@ -507,14 +507,14 @@
 		940A73F620E589AB00A06C80 /* CutGeometryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
 		940A73F720E6BF3F00A06C80 /* CutGeometryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
-		C793B5DE21667194000A7A10 /* ListKMLContents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C793B5DC21667194000A7A10 /* ListKMLContents.storyboard */; };
-		C793B5DF21667194000A7A10 /* ListKMLContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C793B5DD21667194000A7A10 /* ListKMLContentsViewController.swift */; };
-		C793B5E221667B15000A7A10 /* esri_test_data.kmz in Resources */ = {isa = PBXBuildFile; fileRef = C793B5E121667580000A7A10 /* esri_test_data.kmz */; };
-		C793B5E321668587000A7A10 /* ListKMLContentsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C793B5DD21667194000A7A10 /* ListKMLContentsViewController.swift */; };
 		C76817072163DB7C00EC82F4 /* DisplayKML.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C76817052163DB7C00EC82F4 /* DisplayKML.storyboard */; };
 		C76817082163DB7C00EC82F4 /* DisplayKMLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76817062163DB7C00EC82F4 /* DisplayKMLViewController.swift */; };
 		C76817092163DD8300EC82F4 /* DisplayKMLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C76817062163DB7C00EC82F4 /* DisplayKMLViewController.swift */; };
 		C768170C2163E31700EC82F4 /* US_State_Capitals.kml in Resources */ = {isa = PBXBuildFile; fileRef = C768170B2163E31700EC82F4 /* US_State_Capitals.kml */; };
+		C793B5DE21667194000A7A10 /* ListKMLContents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C793B5DC21667194000A7A10 /* ListKMLContents.storyboard */; };
+		C793B5DF21667194000A7A10 /* ListKMLContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C793B5DD21667194000A7A10 /* ListKMLContentsViewController.swift */; };
+		C793B5E221667B15000A7A10 /* esri_test_data.kmz in Resources */ = {isa = PBXBuildFile; fileRef = C793B5E121667580000A7A10 /* esri_test_data.kmz */; };
+		C793B5E321668587000A7A10 /* ListKMLContentsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C793B5DD21667194000A7A10 /* ListKMLContentsViewController.swift */; };
 		C793B5E92166BB71000A7A10 /* OpenStreetMapLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C793B5E72166BB71000A7A10 /* OpenStreetMapLayerViewController.swift */; };
 		C793B5EA2166BB71000A7A10 /* OpenStreetMapLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C793B5E82166BB71000A7A10 /* OpenStreetMapLayer.storyboard */; };
 		C793B5EB2166BC90000A7A10 /* OpenStreetMapLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C793B5E72166BB71000A7A10 /* OpenStreetMapLayerViewController.swift */; };
@@ -1161,12 +1161,12 @@
 		940A73F320E588C200A06C80 /* CutGeometry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CutGeometry.storyboard; sourceTree = "<group>"; };
 		940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutGeometryViewController.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
-		C793B5DC21667194000A7A10 /* ListKMLContents.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListKMLContents.storyboard; sourceTree = "<group>"; };
-		C793B5DD21667194000A7A10 /* ListKMLContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListKMLContentsViewController.swift; sourceTree = "<group>"; };
-		C793B5E121667580000A7A10 /* esri_test_data.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; path = esri_test_data.kmz; sourceTree = "<group>"; };
 		C76817052163DB7C00EC82F4 /* DisplayKML.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayKML.storyboard; sourceTree = "<group>"; };
 		C76817062163DB7C00EC82F4 /* DisplayKMLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayKMLViewController.swift; sourceTree = "<group>"; };
 		C768170B2163E31700EC82F4 /* US_State_Capitals.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = US_State_Capitals.kml; sourceTree = "<group>"; };
+		C793B5DC21667194000A7A10 /* ListKMLContents.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListKMLContents.storyboard; sourceTree = "<group>"; };
+		C793B5DD21667194000A7A10 /* ListKMLContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListKMLContentsViewController.swift; sourceTree = "<group>"; };
+		C793B5E121667580000A7A10 /* esri_test_data.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; path = esri_test_data.kmz; sourceTree = "<group>"; };
 		C793B5E72166BB71000A7A10 /* OpenStreetMapLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenStreetMapLayerViewController.swift; sourceTree = "<group>"; };
 		C793B5E82166BB71000A7A10 /* OpenStreetMapLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OpenStreetMapLayer.storyboard; sourceTree = "<group>"; };
 		C7D0EED8215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayKMLNetworkLinksViewController.swift; sourceTree = "<group>"; };
@@ -2874,6 +2874,15 @@
 			path = "Cut geometry";
 			sourceTree = "<group>";
 		};
+		C76817042163DA8D00EC82F4 /* Display KML */ = {
+			isa = PBXGroup;
+			children = (
+				C76817052163DB7C00EC82F4 /* DisplayKML.storyboard */,
+				C76817062163DB7C00EC82F4 /* DisplayKMLViewController.swift */,
+			);
+			path = "Display KML";
+			sourceTree = "<group>";
+		};
 		C793B5DB21666EB3000A7A10 /* List KML contents */ = {
 			isa = PBXGroup;
 			children = (
@@ -2887,19 +2896,10 @@
 		C793B5E02166756A000A7A10 /* KML */ = {
 			isa = PBXGroup;
 			children = (
-			  C768170B2163E31700EC82F4 /* US_State_Capitals.kml */,
+				C768170B2163E31700EC82F4 /* US_State_Capitals.kml */,
 				C793B5E121667580000A7A10 /* esri_test_data.kmz */,
 			);
 			path = KML;
-			sourceTree = "<group>";
-    };
-		C76817042163DA8D00EC82F4 /* Display KML */ = {
-			isa = PBXGroup;
-			children = (
-				C76817052163DB7C00EC82F4 /* DisplayKML.storyboard */,
-				C76817062163DB7C00EC82F4 /* DisplayKMLViewController.swift */,
-			);
-			path = "Display KML";
 			sourceTree = "<group>";
 		};
 		C793B5E62166BB06000A7A10 /* OpenStreetMap layer */ = {

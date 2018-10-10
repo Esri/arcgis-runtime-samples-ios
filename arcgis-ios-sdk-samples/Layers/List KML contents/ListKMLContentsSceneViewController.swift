@@ -38,13 +38,13 @@ class ListKMLContentsSceneViewController: UIViewController {
     
     var kmlDataset: AGSKMLDataset? {
         didSet {
+            guard kmlDataset != oldValue,
+                let kmlDataset = kmlDataset else {
+                    return
+            }
             
             // clear any existing layers
             scene.operationalLayers.removeAllObjects()
-            
-            guard let kmlDataset = kmlDataset else {
-                return
-            }
             
             // create a layer to display the dataset
             let kmlLayer = AGSKMLLayer(kmlDataset: kmlDataset)
@@ -54,13 +54,15 @@ class ListKMLContentsSceneViewController: UIViewController {
     }
     var node: AGSKMLNode? {
         didSet {
-            title = node?.name
-            
-            if let node = node {
-                
-                // set the viewpoint based on the new node
-                setSceneViewpoint(for: node)
+            guard kmlDataset != oldValue,
+                let node = node else{
+                return
             }
+            // set the title so the name will appear in the navigation bar
+            title = node.name
+                
+            // set the viewpoint based on the new node
+            setSceneViewpoint(for: node)
         }
     }
     
@@ -70,23 +72,30 @@ class ListKMLContentsSceneViewController: UIViewController {
     /// if a viewpoint cannot be determined.
     private func setSceneViewpoint(for node:AGSKMLNode){
         
-        if !isViewLoaded {
-            // load the view before setting a viewpoint
-            loadView()
-        }
+        // load the view before setting a viewpoint
+        loadViewIfNeeded()
         
-        if let nodeViewpoint = viewpoint(for: node),
-            !nodeViewpoint.targetGeometry.isEmpty {
+        DispatchQueue.global(qos: .userInitiated).async {
             
-            // reveal the view in case it was previously hidden
-            sceneView.isHidden = false
+            // get the viewpoint asynchronously so not to block the main thread
+            let nodeViewpoint = self.viewpoint(for: node)
             
-            // set the viewpoint for the node
-            sceneView.setViewpoint(nodeViewpoint)
-        }
-        else {
-            // this node has no viewpoint so hide the scene view, showing the info text
-            sceneView.isHidden = true
+            // run UI updates on the main thread
+            DispatchQueue.main.async {
+                if let nodeViewpoint = nodeViewpoint,
+                    !nodeViewpoint.targetGeometry.isEmpty {
+                    
+                    // reveal the view in case it was previously hidden
+                    self.sceneView.isHidden = false
+                    
+                    // set the viewpoint for the node
+                    self.sceneView.setViewpoint(nodeViewpoint)
+                }
+                else {
+                    // this node has no viewpoint so hide the scene view, showing the info text
+                    self.sceneView.isHidden = true
+                }
+            }
         }
     }
     
@@ -170,7 +179,7 @@ class ListKMLContentsSceneViewController: UIViewController {
             }
             else {
                 // expand the extent to give some margins when framing the node
-                let bufferRadius = [extent.width, extent.height].max()! / 20
+                let bufferRadius = max(extent.width, extent.height) / 20
                 let bufferedExtent = AGSEnvelope(xMin: extent.xMin - bufferRadius,
                                                  yMin: extent.yMin - bufferRadius,
                                                  zMin: extent.zMin - bufferRadius + elevation,

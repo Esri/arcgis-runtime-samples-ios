@@ -52,8 +52,10 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
         // assign the scene to the scene view
         sceneView.scene = scene
 
+        /// The url of the Terrain 3D ArcGIS REST Service.
+        let worldElevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
         // initialize the elevation source with the service URL and add it to the base surface of the scene
-        let elevationSrc = AGSArcGISTiledElevationSource(url: .worldElevationService)
+        let elevationSrc = AGSArcGISTiledElevationSource(url: worldElevationServiceURL)
         scene.baseSurface?.elevationSources.append(elevationSrc)
         
         // set the viewpoint specified by the camera position

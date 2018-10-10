@@ -70,8 +70,10 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
         //assign scene to scene view
         self.sceneView.scene = scene
         
+        /// The url of the Terrain 3D ArcGIS REST Service.
+        let worldElevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
         //elevation source
-        let elevationSource = AGSArcGISTiledElevationSource(url: .worldElevationService)
+        let elevationSource = AGSArcGISTiledElevationSource(url: worldElevationServiceURL)
         
         //surface
         let surface = AGSSurface()

@@ -29,6 +29,7 @@ class SampleInfoViewController: UIViewController {
         // caused a crash.
         let webView = WKWebView(frame: view.bounds)
         webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        webView.navigationDelegate = self
         view.addSubview(webView)
         self.webView = webView
         
@@ -80,4 +81,18 @@ class SampleInfoViewController: UIViewController {
         webView.loadHTMLString(string, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
     }
     
+}
+
+extension SampleInfoViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        switch navigationAction.navigationType {
+        case .linkActivated:
+            if let url = navigationAction.request.url, UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+            decisionHandler(.cancel)
+        default:
+            decisionHandler(.allow)
+        }
+    }
 }

@@ -17,33 +17,48 @@
 import UIKit
 import ArcGIS
 
-class WebMapViewController: UIViewController, AGSAuthenticationManagerDelegate {
+class WebMapViewController: UIViewController {
 
     @IBOutlet var mapView:AGSMapView!
     
-    var portalItem:AGSPortalItem!
-    var map:AGSMap!
+    var portalItem:AGSPortalItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //initialize map with selected portal item
-        self.map = AGSMap(item: portalItem)
         
+        guard let portalItem = portalItem else {
+            return
+        }
+        
+        // register to be notified about authentication challenges
         AGSAuthenticationManager.shared().delegate = self
-        
-        self.title = self.map.item?.title
-        
-        //assign map to the map view
-        self.mapView.map = self.map
-    }
 
-    
-    //MARK: - AGSAuthenticationManagerDelegate
+        // initialize a map with the portal item
+        let map = AGSMap(item: portalItem)
+        // assign the map to the map view
+        mapView.map = map
+        
+        title = portalItem.title
+    }
+}
+
+extension WebMapViewController: AGSAuthenticationManagerDelegate {
     
     func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
-        SVProgressHUD.showError(withStatus: "Web map access denied")
+        
+        // if a challenge is received, then the portal item is not fully public and cannot be displayed
+        
+        // stop attempts at map loading
+        mapView.map = nil
+        
+        // don't present this challenge
         challenge.cancel()
-        _ = self.navigationController?.popViewController(animated: true)
+        
+        // close this view controller
+        navigationController?.popViewController(animated: true)
+        
+        // notify the user
+        SVProgressHUD.showError(withStatus: "Web map access denied")
     }
+    
 }

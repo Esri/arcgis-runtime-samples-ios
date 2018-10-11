@@ -2897,7 +2897,7 @@
 				C768170B2163E31700EC82F4 /* US_State_Capitals.kml */,
 			);
 			path = KML;
-      sourceTree = "<group>";
+			sourceTree = "<group>";
 		};
 		C793B5E62166BB06000A7A10 /* OpenStreetMap layer */ = {
 			isa = PBXGroup;

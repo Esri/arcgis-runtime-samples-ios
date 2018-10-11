@@ -65,10 +65,12 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.graphicsOverlays.add(self.graphicsOverlay)
     }
     
-    private func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func presentAlert(title: String? = nil, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
     }
     
     //MARK: - AGSGeoViewTouchDelegate
@@ -86,7 +88,7 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
             else {
                 //if a graphics is found then show an alert
                 if result.graphics.count > 0 {
-                    self?.showAlert(message: "Tapped on graphic")
+                    self?.presentAlert(message: "Tapped on graphic")
                 }
             }
         }

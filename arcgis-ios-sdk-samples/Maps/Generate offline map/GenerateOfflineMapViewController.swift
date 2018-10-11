@@ -81,7 +81,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             if let error = error{
                 if (error as NSError).code != NSUserCancelledError{
                     //show error
-                    self.showAlert(error: error)
+                    self.presentAlert(error: error)
                 }
                 return
             }
@@ -129,7 +129,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             if let error = error {    
                 //do not display error if user simply cancelled the request
                 if (error as NSError).code != NSUserCancelledError {
-                    self.showAlert(error: error)
+                    self.presentAlert(error: error)
                 }
             }
             else if let result = result {
@@ -212,7 +212,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             }
             
             if let error = error {
-                self.showAlert(error: error)
+                self.presentAlert(error: error)
                 return
             }
             //dismiss progress hud
@@ -285,10 +285,12 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         return documentDirectoryURL.appendingPathComponent("\(formattedDate).geodatabase")
     }
     
-    private func showAlert(error: Error) {
-        let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func presentAlert(error: Error) {
+        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
     }
 
     deinit {

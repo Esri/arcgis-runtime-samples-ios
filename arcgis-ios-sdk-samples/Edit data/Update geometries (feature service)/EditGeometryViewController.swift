@@ -74,24 +74,26 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     func applyEdits() {
         self.featureTable.applyEdits(completion: { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
             if let error = error {
-                self?.showAlert(error: error)
+                self?.presentAlert(error: error)
             }
             else {
-                self?.showAlert(message: "Saved successfully!")
+                self?.presentAlert(message: "Saved successfully!")
             }
             //un hide the feature
             self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
         })
     }
     
-    private func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func presentAlert(title: String? = nil, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
     }
     
-    private func showAlert(error: Error) {
-        showAlert(message: error.localizedDescription)
+    private func presentAlert(error: Error) {
+        presentAlert(title: "Error", message: error.localizedDescription)
     }
     
     //MARK: - AGSGeoViewTouchDelegate
@@ -151,7 +153,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
             self.selectedFeature.geometry = newGeometry
             self.featureTable.update(self.selectedFeature, completion: { [weak self] (error:Error?) -> Void in
                 if let error = error {
-                    self?.showAlert(error: error)
+                    self?.presentAlert(error: error)
                     
                     //un hide the feature
                     self?.featureLayer.setFeature(self!.selectedFeature, visible: true)

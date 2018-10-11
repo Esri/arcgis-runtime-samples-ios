@@ -161,7 +161,7 @@ class ContentTableViewController: UITableViewController {
                         self.tableView.deselectRow(at: indexPath, animated: true)
                     }
                     if (error as NSError).code != NSUserCancelledError {
-                        self.showAlert(message: "Failed to download raster resource :: \(error.localizedDescription)")
+                        self.presentAlert(message: "Failed to download raster resource :: \(error.localizedDescription)")
                     }
                 }
                 else {
@@ -232,10 +232,12 @@ class ContentTableViewController: UITableViewController {
         }
     }
     
-    private func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func presentAlert(title: String? = nil, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
     }
 
 }

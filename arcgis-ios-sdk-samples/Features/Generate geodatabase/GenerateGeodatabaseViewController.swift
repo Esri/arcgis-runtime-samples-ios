@@ -116,7 +116,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                 }) { [weak self] (object: AnyObject?, error: Error?) -> Void in
                     if let error = error {
                         print(error)
-                        self?.showAlert(error: error)
+                        self?.presentAlert(error: error)
                     }
                     else {
                         SVProgressHUD.dismiss()
@@ -137,7 +137,7 @@ class GenerateGeodatabaseViewController: UIViewController {
         self.generatedGeodatabase.load { [weak self] (error:Error?) -> Void in
 
             if let error = error {
-                self?.showAlert(error: error)
+                self?.presentAlert(error: error)
             }
             else {
                 self?.map.operationalLayers.removeAllObjects()
@@ -151,7 +151,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                                 self?.map.operationalLayers.add(featureLayer)
                             }
                         }
-                        self?.showAlert(message: "Now showing data from geodatabase")
+                        self?.presentAlert(message: "Now showing data from geodatabase")
                     }
                 }
                 
@@ -171,23 +171,25 @@ class GenerateGeodatabaseViewController: UIViewController {
             syncTask.unregisterGeodatabase(generatedGeodatabase) {[weak self] (error: Error?) -> Void in
 
                 if let error = error {
-                    self?.showAlert(error: error)
+                    self?.presentAlert(error: error)
                 }
                 else {
-                    self?.showAlert(message: "Geodatabase unregistered since we wont be editing it in this sample")
+                    self?.presentAlert(message: "Geodatabase unregistered since we wont be editing it in this sample")
                 }
             }
         }
     }
     
-    private func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func presentAlert(title: String? = nil, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
     }
     
-    private func showAlert(error: Error) {
-        showAlert(message: error.localizedDescription)
+    private func presentAlert(error: Error) {
+        presentAlert(title: "Error", message: error.localizedDescription)
     }
 
 }

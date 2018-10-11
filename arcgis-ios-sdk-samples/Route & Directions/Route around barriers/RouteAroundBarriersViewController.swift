@@ -71,14 +71,16 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         self.toggleRouteDetails(false)
     }
     
-    private func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func presentAlert(title: String? = nil, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
     }
     
-    private func showAlert(error: Error) {
-        showAlert(message: error.localizedDescription)
+    private func presentAlert(error: Error) {
+        presentAlert(title: "Error", message: error.localizedDescription)
     }
     
     //MARK: - Route logic
@@ -86,7 +88,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
     func getDefaultParameters() {
         self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
             if let error = error {
-                self?.showAlert(error: error)
+                self?.presentAlert(error: error)
             }
             else {
                 self?.routeParameters = params
@@ -99,7 +101,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
     @IBAction func route() {
         //add check
         if self.routeParameters == nil || self.stopGraphicsOverlay.graphics.count < 2 {
-            showAlert(message: "Either parameters not loaded or not sufficient stops")
+            presentAlert(message: "Either parameters not loaded or not sufficient stops")
             return
         }
         
@@ -133,7 +135,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         
         self.routeTask.solveRoute(with: self.routeParameters) { [weak self] (routeResult:AGSRouteResult?, error:Error?) -> Void in
             if let error = error {
-                self?.showAlert(message: "\(error.localizedDescription) \((error as NSError).localizedFailureReason ?? "")")
+                self?.presentAlert(message: "\(error.localizedDescription) \((error as NSError).localizedFailureReason ?? "")")
             }
             else {
                 SVProgressHUD.dismiss()

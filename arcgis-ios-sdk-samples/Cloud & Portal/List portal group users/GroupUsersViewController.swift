@@ -53,7 +53,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
             
             if let error = error {
                 //show error
-                self?.showAlert(error: error)
+                self?.presentAlert(error: error)
             }
             else {
                 
@@ -64,7 +64,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
                 }
                 else {
                     //show error that no groups found
-                    self?.showAlert(message: "No groups found")
+                    self?.presentAlert(message: "No groups found")
                 }
             }
         }
@@ -79,7 +79,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
             
             if let error = error {
                 //show error
-                self?.showAlert(error: error)
+                self?.presentAlert(error: error)
             }
             else {
                 
@@ -97,7 +97,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
                     self?.loadAllUsers()
                 }
                 else {
-                    self?.showAlert(message: "No users found")
+                    self?.presentAlert(message: "No users found")
                 }
             }
         }
@@ -117,19 +117,21 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
                 self?.tableView.reloadData()
             }
             else {
-                self?.showAlert(message: "Error while loading users data")
+                self?.presentAlert(message: "Error while loading users data")
             }
         }
     }
     
-    private func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func presentAlert(title: String? = nil, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
     }
     
-    private func showAlert(error: Error) {
-        showAlert(message: error.localizedDescription)
+    private func presentAlert(error: Error) {
+        presentAlert(title: "Error", message: error.localizedDescription)
     }
 
     //MARK: - UITableViewDataSource

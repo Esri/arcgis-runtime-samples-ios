@@ -85,7 +85,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         self.serviceAreaTask.defaultServiceAreaParameters { [weak self] (parameters: AGSServiceAreaParameters?, error: Error?) in
             
             guard error == nil else {
-                self?.showAlert(message: "Error getting default parameters:: \(error!.localizedDescription)")
+                self?.presentAlert(message: "Error getting default parameters:: \(error!.localizedDescription)")
                 return
             }
             
@@ -114,10 +114,12 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         return fillSymbol
     }
     
-    private func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func presentAlert(title: String? = nil, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
     }
     
     //MARK: - Actions
@@ -130,7 +132,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         //check if at least a single facility is added
         if self.facilitiesGraphicsOverlay.graphics.count == 0 {
             
-            showAlert(message: "At least one facility is required")
+            presentAlert(message: "At least one facility is required")
             
             return
         }
@@ -176,7 +178,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
             }
             
             guard error == nil else {
-                self?.showAlert(message: "Error solving service area:: \(error!.localizedDescription)")
+                self?.presentAlert(message: "Error solving service area:: \(error!.localizedDescription)")
                 return
             }
             

@@ -91,7 +91,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
             if let error = result.error {
                 
                 //dismiss progress hud
-                self?.showAlert(error: error)
+                self?.presentAlert(error: error)
             }
             else {
                 
@@ -132,7 +132,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
             if let error = error {
                 
                 //display error
-                self?.showAlert(error: error)
+                self?.presentAlert(error: error)
             }
             else {
                 
@@ -147,7 +147,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
                     self?.showRelatedFeatures()
                 }
                 else {  //else notify user
-                    self?.showAlert(message: "No related features found")
+                    self?.presentAlert(message: "No related features found")
                 }
             }
         }
@@ -160,14 +160,16 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         self.performSegue(withIdentifier: "RelatedFeaturesSegue", sender: self)
     }
     
-    private func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func presentAlert(title: String? = nil, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
     }
     
-    private func showAlert(error: Error) {
-        showAlert(message: error.localizedDescription)
+    private func presentAlert(error: Error) {
+        presentAlert(title: "Error", message: error.localizedDescription)
     }
     
     //MARK: - Navigation

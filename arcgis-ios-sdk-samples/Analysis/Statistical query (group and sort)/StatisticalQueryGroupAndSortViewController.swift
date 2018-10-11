@@ -52,7 +52,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             
             // If there an error, display it
             guard error == nil else {
-                self.showAlert(error: error!)
+                self.presentAlert(error: error!)
                 return
             }
             
@@ -79,14 +79,16 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         tableView.layer.borderColor = UIColor.lightGray.cgColor
     }
     
-    private func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func presentAlert(title: String? = nil, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
     }
     
-    private func showAlert(error: Error) {
-        showAlert(message: error.localizedDescription)
+    private func presentAlert(error: Error) {
+        presentAlert(title: "Error", message: error.localizedDescription)
     }
     
     // MARK: - Actions
@@ -95,7 +97,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         // There should be at least one statistic
         // definition added to execute the query
         if statisticDefinitions.count == 0 || selectedGroupByFieldNames.count == 0 {
-            showAlert(message: "There sould be at least one statistic definition and one group by field to execute the query.")
+            presentAlert(message: "There sould be at least one statistic definition and one group by field to execute the query.")
             return
         }
         
@@ -117,7 +119,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             
             // If there an error, display it
             guard error == nil else {
-                self.showAlert(error: error!)
+                self.presentAlert(error: error!)
                 return
             }
             

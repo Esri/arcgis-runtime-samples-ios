@@ -39,7 +39,7 @@ class WMTSLayerViewController: UIViewController {
         //load the WMTS service to access the service information
         self.wmtsService.load {[weak self] (error) in
             if let error = error {
-                self?.showAlert(message: "Failed to load WMTS layer: \(error.localizedDescription)")
+                self?.presentAlert(message: "Failed to load WMTS layer: \(error.localizedDescription)")
             } else {
                 //get the service information or metadata about the WMTS service
                 if let weakSelf = self, let wmtsServiceInfo = weakSelf.wmtsService.serviceInfo {
@@ -60,10 +60,12 @@ class WMTSLayerViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["WMTSLayerViewController"]
     }
     
-    private func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func presentAlert(title: String? = nil, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
     }
     
 }

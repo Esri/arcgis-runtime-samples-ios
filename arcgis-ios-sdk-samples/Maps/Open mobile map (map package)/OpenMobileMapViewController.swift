@@ -35,7 +35,7 @@ class OpenMobileMapViewController: UIViewController {
         //load map package
         self.mapPackage.load { [weak self] (error: Error?) in
             if let error = error {
-                self?.showAlert(error: error)
+                self?.presentAlert(error: error)
             }
             else {
                 if let weakSelf = self {
@@ -44,21 +44,23 @@ class OpenMobileMapViewController: UIViewController {
                         weakSelf.mapView.map = weakSelf.mapPackage.maps[0]
                     }
                     else {
-                        weakSelf.showAlert(message: "No mobile maps found in the map package")
+                        weakSelf.presentAlert(message: "No mobile maps found in the map package")
                     }
                 }
             }
         }
     }
     
-    private func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func presentAlert(title: String? = nil, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
     }
     
-    private func showAlert(error: Error) {
-        showAlert(message: error.localizedDescription)
+    private func presentAlert(error: Error) {
+        presentAlert(title: "Error", message: error.localizedDescription)
     }
     
 }

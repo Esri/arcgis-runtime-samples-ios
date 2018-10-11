@@ -35,7 +35,7 @@ class FeatureLayerGPKGViewController: UIViewController {
         // Load the geopackage.
         geoPackage?.load { [weak self] error in
             guard error == nil else {
-                self?.showAlert(message: "Error opening Geopackage: \(error!.localizedDescription)")
+                self?.presentAlert(message: "Error opening Geopackage: \(error!.localizedDescription)")
                 return
             }
             
@@ -50,10 +50,12 @@ class FeatureLayerGPKGViewController: UIViewController {
         mapView.map = map
     }
     
-    private func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func presentAlert(title: String? = nil, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
     }
     
 }

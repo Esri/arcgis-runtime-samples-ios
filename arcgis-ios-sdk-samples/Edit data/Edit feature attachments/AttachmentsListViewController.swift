@@ -36,10 +36,10 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         (self.feature.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (result, error) -> Void in
             
             if let error = error {
-                self?.showAlert(error: error)
+                self?.presentAlert(error: error)
             }
             else {
-                self?.showAlert(message: "Apply edits finished successfully")
+                self?.presentAlert(message: "Apply edits finished successfully")
                 self?.loadAttachments()
             }
         }
@@ -52,7 +52,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         
         self.feature.fetchAttachments { [weak self] (attachments:[AGSAttachment]?, error:Error?) in
             if let error = error {
-                self?.showAlert(error: error)
+                self?.presentAlert(error: error)
             }
             else {
                 //dismiss progress hud
@@ -76,14 +76,16 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
-    private func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func presentAlert(title: String? = nil, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
     }
     
-    private func showAlert(error: Error) {
-        showAlert(message: error.localizedDescription)
+    private func presentAlert(error: Error) {
+        presentAlert(title: "Error", message: error.localizedDescription)
     }
     
     //MARK: - Table view data source
@@ -155,7 +157,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         self.feature.addAttachment(withName: "Attachment.png", contentType: "png", data: data) { [weak self] (attachment:AGSAttachment?, error:Error?) -> Void in
             
             if let error = error {
-                self?.showAlert(error: error)
+                self?.presentAlert(error: error)
             }
             else {
                 self?.applyEdits()

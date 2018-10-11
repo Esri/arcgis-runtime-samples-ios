@@ -75,7 +75,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.cancelable = self.locatorTask.reverseGeocode(withLocation: normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) -> Void in
             if let error = error as NSError? {
                 if error.code != NSUserCancelledError { //user canceled error
-                    self?.showAlert(error: error)
+                    self?.presentAlert(error: error)
                 }
             }
             else {
@@ -85,7 +85,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
                     return
                 }
                 else {
-                    self?.showAlert(message: "No address found")
+                    self?.presentAlert(message: "No address found")
                 }
             }
             self?.graphicsOverlay.graphics.remove(graphic)
@@ -115,14 +115,16 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.callout.show(for: graphic, tapLocation: tapLocation, animated: true)
     }
     
-    private func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func presentAlert(title: String? = nil, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
     }
     
-    private func showAlert(error: Error) {
-        showAlert(message: error.localizedDescription)
+    private func presentAlert(error: Error) {
+        presentAlert(title: "Error", message: error.localizedDescription)
     }
 
     //MARK: - AGSGeoViewTouchDelegate

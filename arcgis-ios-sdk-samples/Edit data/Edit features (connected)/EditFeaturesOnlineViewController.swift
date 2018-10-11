@@ -64,18 +64,20 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         (self.featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
             
             if let error = error {
-                self?.showAlert(message: "Error while applying edits :: \(error.localizedDescription)")
+                self?.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
             }
             else {
-                self?.showAlert(message: "Edits applied successfully!")
+                self?.presentAlert(message: "Edits applied successfully!")
             }
         }
     }
     
-    private func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func presentAlert(title: String? = nil, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
     }
     
     //MARK: - AGSGeoViewTouchDelegate

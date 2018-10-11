@@ -85,7 +85,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) -> Void in
 
             if let error = error {
-                self?.showAlert(error: error)
+                self?.presentAlert(error: error)
             }
             else {
                 SVProgressHUD.dismiss()
@@ -102,7 +102,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
                     self?.present(self!.popupsVC, animated: true, completion: nil)
                 }
                 else {
-                    self?.showAlert(message: "No features selected")
+                    self?.presentAlert(message: "No features selected")
                 }
             }
         }
@@ -265,21 +265,23 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
                                 self?.map.operationalLayers.add(featureLayer)
                             }
                         }
-                        self?.showAlert(message: "Now showing layers from the geodatabase")
+                        self?.presentAlert(message: "Now showing layers from the geodatabase")
                     }
                 })
             }
         })
     }
     
-    private func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func presentAlert(title: String? = nil, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
     }
     
-    private func showAlert(error: Error) {
-        showAlert(message: error.localizedDescription)
+    private func presentAlert(error: Error) {
+        presentAlert(title: "Error", message: error.localizedDescription)
     }
     
     //MARK: - Actions
@@ -316,7 +318,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
             let selectedLayerIds = featureLayersVC.selectedLayerInfos.map { $0.id }
             
             if selectedLayerIds.isEmpty {
-                showAlert(message: "Please select at least one layer")
+                presentAlert(message: "Please select at least one layer")
                 return
             }
             
@@ -360,7 +362,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }) { [weak self] (object: AnyObject?, error: Error?) -> Void in
             
             if let error = error {
-                self?.showAlert(error: error)
+                self?.presentAlert(error: error)
             }
             else {
                 SVProgressHUD.dismiss()
@@ -400,7 +402,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     func syncAction(_ completion: (() -> Void)?) {
         if !self.generatedGeodatabase.hasLocalEdits() {
-            showAlert(message: "No local edits")
+            presentAlert(message: "No local edits")
             return
         }
         
@@ -420,7 +422,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
             
         }, completion: { (results: [AGSSyncLayerResult]?, error: Error?) -> Void in
             if let error = error {
-                self.showAlert(error: error)
+                self.presentAlert(error: error)
             }
             else {
                 //TODO: use the results object
@@ -501,10 +503,10 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
             (feature.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (featureEditResult: [AGSFeatureEditResult]?, error: Error?) -> Void in
                 
                 if let error = error {
-                    self?.showAlert(error: error)
+                    self?.presentAlert(error: error)
                 }
                 else {
-                    self?.showAlert(message: "Edits applied successfully")
+                    self?.presentAlert(message: "Edits applied successfully")
                 }
             }
         }

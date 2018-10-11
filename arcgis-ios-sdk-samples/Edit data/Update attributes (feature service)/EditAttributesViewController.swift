@@ -61,23 +61,25 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         
         self.featureTable.applyEdits(completion: { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
             if let error = error {
-                self?.showAlert(error: error)
+                self?.presentAlert(error: error)
             }
             else {
-                self?.showAlert(message: "Edits applied successfully")
+                self?.presentAlert(message: "Edits applied successfully")
                 self?.showCallout(self!.selectedFeature, tapLocation: nil)
             }
         })
     }
     
-    private func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func presentAlert(title: String? = nil, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
     }
     
-    private func showAlert(error: Error) {
-        showAlert(message: error.localizedDescription)
+    private func presentAlert(error: Error) {
+        presentAlert(title: "Error", message: error.localizedDescription)
     }
     
     //MARK: - AGSGeoViewTouchDelegate
@@ -131,7 +133,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.selectedFeature.attributes["typdamage"] = self.types[index]
         self.featureTable.update(self.selectedFeature) { [weak self] (error: Error?) -> Void in
             if let error = error {
-                self?.showAlert(error: error)
+                self?.presentAlert(error: error)
             }
             else {
                 self?.applyEdits()

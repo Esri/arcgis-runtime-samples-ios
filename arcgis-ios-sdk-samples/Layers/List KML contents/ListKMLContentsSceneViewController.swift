@@ -66,22 +66,24 @@ class ListKMLContentsSceneViewController: UIViewController {
         }
     }
     
+    /// A queue for calculating the node viewpoint in the background.
+    private let dispatchQueue = DispatchQueue(label: "node viewpoint getter", qos: .userInitiated, attributes: .concurrent, autoreleaseFrequency: .workItem, target: nil)
+    
     //MARK: - Viewpoint
     
     /// Sets the viewpoint of the scene based on the node, or hides the node
     /// if a viewpoint cannot be determined.
     private func setSceneViewpoint(for node:AGSKMLNode){
         
-        // load the view before setting a viewpoint
-        loadViewIfNeeded()
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            
+        dispatchQueue.async {
             // get the viewpoint asynchronously so not to block the main thread
             let nodeViewpoint = self.viewpoint(for: node)
             
             // run UI updates on the main thread
             DispatchQueue.main.async {
+                
+                // load the view before setting a viewpoint
+                self.loadViewIfNeeded()
                 
                 guard let sceneView = self.sceneView else {
                     return

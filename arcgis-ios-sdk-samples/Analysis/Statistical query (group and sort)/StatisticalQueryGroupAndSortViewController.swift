@@ -52,7 +52,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             
             // If there an error, display it
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription)
+                self.showAlert(error: error!)
                 return
             }
             
@@ -79,13 +79,23 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         tableView.layer.borderColor = UIColor.lightGray.cgColor
     }
     
+    private func showAlert(title: String? = nil, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+    private func showAlert(error: Error) {
+        showAlert(message: error.localizedDescription)
+    }
+    
     // MARK: - Actions
     
     @IBAction private func getStatisticsAction(_ sender: Any) {
         // There should be at least one statistic
         // definition added to execute the query
         if statisticDefinitions.count == 0 || selectedGroupByFieldNames.count == 0 {
-            SVProgressHUD.showError(withStatus: "There sould be at least one statistic definition and one group by field to execute the query.")
+            showAlert(message: "There sould be at least one statistic definition and one group by field to execute the query.")
             return
         }
         
@@ -107,7 +117,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             
             // If there an error, display it
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription)
+                self.showAlert(error: error!)
                 return
             }
             

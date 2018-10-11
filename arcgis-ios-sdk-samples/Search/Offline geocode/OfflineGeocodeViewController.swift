@@ -97,7 +97,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         //perform geocode with the input
         self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters, completion: { [weak self]  (results:[AGSGeocodeResult]?, error:Error?) -> Void in
             if let error = error {
-                self?.showAlert(error.localizedDescription)
+                self?.showAlert(error: error)
             }
             else {
                 //if a result was returned display the graphic on the map view
@@ -111,7 +111,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
                 }
                 else {
                     //if no result found, inform the user
-                    self?.showAlert("No results found")
+                    self?.showAlert(message: "No results found")
                 }
             }
         })
@@ -195,8 +195,14 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         }
     }
     
-    private func showAlert(_ message:String) {
-        SVProgressHUD.showError(withStatus: message)
+    private func showAlert(title: String? = nil, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+    private func showAlert(error: Error) {
+        showAlert(message: error.localizedDescription)
     }
     
     //MARK: - AGSGeoViewTouchDelegate
@@ -209,7 +215,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.mapView.identify(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult) -> Void in
 
             if let error = result.error {
-                self.showAlert(error.localizedDescription)
+                self.showAlert(error: error)
             }
             else if result.graphics.count > 0 {
                 //show the callout for the first graphic found

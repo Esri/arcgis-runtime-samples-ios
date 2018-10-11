@@ -130,7 +130,7 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
             
             // Make sure there is no error
             guard result.error == nil else {
-                SVProgressHUD.showError(withStatus: result.error?.localizedDescription)
+                strongSelf.showAlert(error: result.error!)
                 return
             }
             
@@ -226,6 +226,12 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
         if AGSGeometryEngine.geometry(geometry1, touchesGeometry: geometry2)  { relationships.append("Touches") }
         if AGSGeometryEngine.geometry(geometry1, within: geometry2) { relationships.append("Within") }
         return relationships
+    }
+    
+    private func showAlert(error: Error) {
+        let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 
     // MARK: UIPopoverPresentationControllerDelegate

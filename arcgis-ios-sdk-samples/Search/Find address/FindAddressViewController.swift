@@ -76,7 +76,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         //perform geocode with input text
         self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters, completion: { [weak self] (results:[AGSGeocodeResult]?, error:Error?) -> Void in
             if let error = error {
-                self?.showAlert(error.localizedDescription)
+                self?.showAlert(error: error)
             }
             else {
                 if let results = results , results.count > 0 {
@@ -90,7 +90,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
                 }
                 else {
                     //provide feedback in case of failure
-                    self?.showAlert("No results found")
+                    self?.showAlert(message: "No results found")
                 }
             }
         })
@@ -116,8 +116,14 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         self.mapView.callout.show(for: graphic, tapLocation: tapLocation, animated: true)
     }
     
-    private func showAlert(_ message:String) {
-        SVProgressHUD.showError(withStatus: message)
+    private func showAlert(title: String? = nil, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+    private func showAlert(error: Error) {
+        showAlert(message: error.localizedDescription)
     }
     
     //MARK: - AGSGeoViewTouchDelegate
@@ -129,7 +135,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         //identify graphics at the tapped location
         self.mapView.identify(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult) -> Void in
             if let error = result.error {
-                self.showAlert(error.localizedDescription)
+                self.showAlert(error: error)
             }
             else if result.graphics.count > 0 {
                 //show callout for the graphic

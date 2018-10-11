@@ -91,7 +91,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
             if let error = result.error {
                 
                 //dismiss progress hud
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.showAlert(error: error)
             }
             else {
                 
@@ -132,7 +132,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
             if let error = error {
                 
                 //display error
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.showAlert(error: error)
             }
             else {
                 
@@ -147,7 +147,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
                     self?.showRelatedFeatures()
                 }
                 else {  //else notify user
-                    SVProgressHUD.showInfo(withStatus: "No related features found")
+                    self?.showAlert(message: "No related features found")
                 }
             }
         }
@@ -158,6 +158,16 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         
         //perform popover segue
         self.performSegue(withIdentifier: "RelatedFeaturesSegue", sender: self)
+    }
+    
+    private func showAlert(title: String? = nil, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+    private func showAlert(error: Error) {
+        showAlert(message: error.localizedDescription)
     }
     
     //MARK: - Navigation

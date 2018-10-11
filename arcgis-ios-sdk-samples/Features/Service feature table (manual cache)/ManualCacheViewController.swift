@@ -55,10 +55,10 @@ class ManualCacheViewController: UIViewController {
         params.whereClause = "req_Type = 'Tree Maintenance or Damage'"
         
         //populate features based on query
-        self.featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { (result:AGSFeatureQueryResult?, error:Error?) -> Void in
+        self.featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) {[weak self] (result:AGSFeatureQueryResult?, error:Error?) -> Void in
             //check for error
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.showAlert(error: error)
             }
             else {
                 //the resulting features should be displayed on the map
@@ -66,5 +66,11 @@ class ManualCacheViewController: UIViewController {
                 print("Populated \(result?.featureEnumerator().allObjects.count ?? 0) features.")
             }
         }
+    }
+    
+    private func showAlert(error: Error) {
+        let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 }

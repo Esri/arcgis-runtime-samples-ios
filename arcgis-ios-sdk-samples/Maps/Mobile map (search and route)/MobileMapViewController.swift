@@ -93,6 +93,16 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.callout.show(for: graphic, tapLocation: tapLocation, animated: animated)
     }
     
+    private func showAlert(title: String? = nil, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+    private func showAlert(error: Error) {
+        showAlert(message: error.localizedDescription)
+    }
+    
     //MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
@@ -110,7 +120,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         self.mapView.identify(self.markerGraphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result:AGSIdentifyGraphicsOverlayResult) in
             if let error = result.error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.showAlert(error: error)
             }
             else {
                 if result.graphics.count == 0 {
@@ -155,7 +165,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         self.locatorTaskCancelable = self.locatorTask?.reverseGeocode(withLocation: point, parameters: self.reverseGeocodeParameters, completion: { [weak self](results:[AGSGeocodeResult]?, error:Error?) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.showAlert(error: error)
             }
             else {
                 //assign the label property of result as an attributes to the graphic
@@ -167,7 +177,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
                 }
                 else {
                     //no result was found
-                    SVProgressHUD.showError(withStatus: "No address found")
+                    self?.showAlert(message: "No address found")
                     
                     //dismiss the callout if already visible
                     self?.mapView.callout.dismiss()
@@ -193,7 +203,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         //get the default parameters
         self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.showAlert(error: error)
             }
             else {
                 self?.routeParameters = params
@@ -224,7 +234,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         //route
         self.routeTaskCancelable = self.routeTask.solveRoute(with: self.routeParameters) {[weak self] (routeResult:AGSRouteResult?, error:Error?) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.showAlert(error: error)
                 //remove the last marker
                 self?.markerGraphicsOverlay.graphics.removeLastObject()
             }

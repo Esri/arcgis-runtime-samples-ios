@@ -53,7 +53,7 @@ class DistanceCompositeSymbolViewController: UIViewController {
         let modelSymbol = AGSModelSceneSymbol(name: "Bristol", extension: "dae", scale: 100.0)
         modelSymbol.load(completion: { [weak self] (error) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.showAlert(error: error)
                 return
             }
             
@@ -76,6 +76,12 @@ class DistanceCompositeSymbolViewController: UIViewController {
             cameraController.cameraHeadingOffset = -30
             self?.sceneView.cameraController = cameraController
         })
+    }
+    
+    private func showAlert(error: Error) {
+        let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 
 }

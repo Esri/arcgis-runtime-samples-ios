@@ -116,7 +116,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                 }) { [weak self] (object: AnyObject?, error: Error?) -> Void in
                     if let error = error {
                         print(error)
-                        SVProgressHUD.showError(withStatus: error.localizedDescription)
+                        self?.showAlert(error: error)
                     }
                     else {
                         SVProgressHUD.dismiss()
@@ -137,7 +137,7 @@ class GenerateGeodatabaseViewController: UIViewController {
         self.generatedGeodatabase.load { [weak self] (error:Error?) -> Void in
 
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.showAlert(error: error)
             }
             else {
                 self?.map.operationalLayers.removeAllObjects()
@@ -151,7 +151,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                                 self?.map.operationalLayers.add(featureLayer)
                             }
                         }
-                        SVProgressHUD.showSuccess(withStatus: "Now showing data from geodatabase")
+                        self?.showAlert(message: "Now showing data from geodatabase")
                     }
                 }
                 
@@ -167,17 +167,27 @@ class GenerateGeodatabaseViewController: UIViewController {
     }
     
     func unregisterGeodatabase() {
-        if self.generatedGeodatabase != nil {
-            self.syncTask.unregisterGeodatabase(self.generatedGeodatabase) { (error: Error?) -> Void in
+        if generatedGeodatabase != nil {
+            syncTask.unregisterGeodatabase(generatedGeodatabase) {[weak self] (error: Error?) -> Void in
 
                 if let error = error {
-                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+                    self?.showAlert(error: error)
                 }
                 else {
-                    SVProgressHUD.showInfo(withStatus: "Geodatabase unregistered since we wont be editing it in this sample")
+                    self?.showAlert(message: "Geodatabase unregistered since we wont be editing it in this sample")
                 }
             }
         }
+    }
+    
+    private func showAlert(title: String? = nil, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+    private func showAlert(error: Error) {
+        showAlert(message: error.localizedDescription)
     }
 
 }

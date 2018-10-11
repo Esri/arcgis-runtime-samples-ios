@@ -84,7 +84,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
             SVProgressHUD.dismiss()
             
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self.showAlert(error: error)
             }
             else {
                 self.handleIdentifyResults(results!)
@@ -115,10 +115,10 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         //if any elements were found show the results
         //else notify user that no elements were found
         if totalCount > 0 {
-            self.showAlertController("Number of elements found", message: messageString)
+            showAlert(title: "Number of elements found", message: messageString)
         }
         else {
-            SVProgressHUD.showError(withStatus: "No element found")
+            showAlert(message: "No element found")
         }
     }
     
@@ -151,13 +151,14 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         return count
     }
     
-    //helper method to show results to the user
-    private func showAlertController(_ title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "Ok", style: .cancel)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
+    private func showAlert(title: String? = nil, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+    private func showAlert(error: Error) {
+        showAlert(message: error.localizedDescription)
     }
 }
 

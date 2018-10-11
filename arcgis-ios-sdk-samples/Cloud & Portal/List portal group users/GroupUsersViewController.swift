@@ -53,7 +53,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
             
             if let error = error {
                 //show error
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.showAlert(error: error)
             }
             else {
                 
@@ -64,7 +64,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
                 }
                 else {
                     //show error that no groups found
-                    SVProgressHUD.showError(withStatus: "No groups found")
+                    self?.showAlert(message: "No groups found")
                 }
             }
         }
@@ -79,7 +79,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
             
             if let error = error {
                 //show error
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.showAlert(error: error)
             }
             else {
                 
@@ -97,7 +97,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
                     self?.loadAllUsers()
                 }
                 else {
-                    SVProgressHUD.showError(withStatus: "No users found")
+                    self?.showAlert(message: "No users found")
                 }
             }
         }
@@ -117,9 +117,19 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
                 self?.tableView.reloadData()
             }
             else {
-                SVProgressHUD.showError(withStatus: "Error while loading users data")
+                self?.showAlert(message: "Error while loading users data")
             }
         }
+    }
+    
+    private func showAlert(title: String? = nil, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+    private func showAlert(error: Error) {
+        showAlert(message: error.localizedDescription)
     }
 
     //MARK: - UITableViewDataSource

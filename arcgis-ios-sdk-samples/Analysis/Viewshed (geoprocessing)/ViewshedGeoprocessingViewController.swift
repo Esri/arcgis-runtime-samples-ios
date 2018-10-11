@@ -94,7 +94,7 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
             
             if let error = error {
                 //show error
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.showAlert(error: error)
             }
             else {
                 //dismiss progress hud
@@ -128,7 +128,7 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
             
             if let error = error {
                 if (error as NSError).code != NSUserCancelledError { //if not cancelled
-                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+                    self?.showAlert(error: error)
                 }
             }
             else {
@@ -146,6 +146,12 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
                 }
             }
         })
+    }
+    
+    private func showAlert(error: Error) {
+        let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 
     //MARK: - AGSGeoViewTouchDelegate

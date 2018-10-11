@@ -89,7 +89,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
                 // don't show an error if the user cancelled from the login screen
                 if (error as NSError).code != NSUserCancelledError{
                     //show error
-                    self.showError(error)
+                    self.showAlert(error: error)
                 }
                 return
             }
@@ -152,7 +152,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
             if let error = error {    
                 //do not display error if user simply cancelled the request
                 if (error as NSError).code != NSUserCancelledError {
-                    self.showError(error)
+                    self.showAlert(error: error)
                 }
             }
             else if let result = result {
@@ -258,7 +258,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
             }
             
             if let error = error {
-                self.showError(error)
+                self.showAlert(error: error)
                 return
             }
             
@@ -277,7 +277,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
                 }
                 
                 if let error = error {
-                    self.showError(error)
+                    self.showAlert(error: error)
                     return
                 }
                 
@@ -304,10 +304,9 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
     
     //MARK: - Helper methods
     
-    private func showError(_ error:Error){
-        let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(action)
+    private func showAlert(error: Error) {
+        let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
     

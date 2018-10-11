@@ -81,7 +81,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             if let error = error{
                 if (error as NSError).code != NSUserCancelledError{
                     //show error
-                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+                    self.showAlert(error: error)
                 }
                 return
             }
@@ -129,7 +129,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             if let error = error {    
                 //do not display error if user simply cancelled the request
                 if (error as NSError).code != NSUserCancelledError {
-                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+                    self.showAlert(error: error)
                 }
             }
             else if let result = result {
@@ -212,7 +212,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             }
             
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self.showAlert(error: error)
                 return
             }
             //dismiss progress hud
@@ -283,6 +283,12 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         let formattedDate = ISO8601DateFormatter().string(from: Date())
         
         return documentDirectoryURL.appendingPathComponent("\(formattedDate).geodatabase")
+    }
+    
+    private func showAlert(error: Error) {
+        let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 
     deinit {

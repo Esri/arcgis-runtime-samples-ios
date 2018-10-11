@@ -136,7 +136,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBAction private func doneAction() {
         if self.selectedBasemapIndex == nil {
-            SVProgressHUD.showError(withStatus: "Please select at least a basemap")
+            showAlert(message: "Please select at least a basemap")
             return
         }
 
@@ -151,6 +151,12 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
         }
         
         self.delegate?.createOptionsViewController(self, didSelectBasemap: basemap, layers: layers.count > 0 ? layers : nil)
+    }
+    
+    private func showAlert(message: String){
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 
 }

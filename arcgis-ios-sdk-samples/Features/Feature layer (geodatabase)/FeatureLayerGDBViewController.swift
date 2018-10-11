@@ -39,7 +39,7 @@ class FeatureLayerGDBViewController: UIViewController {
         //load the geodatabase for feature tables
         self.geodatabase.load { [weak self] (error: Error?) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.showAlert(error: error)
             }
             else {
                 let featureTable = self!.geodatabase.geodatabaseFeatureTable(withName: "Trailheads")!
@@ -50,6 +50,12 @@ class FeatureLayerGDBViewController: UIViewController {
         
         //assign map to the map view
         self.mapView.map = map
+    }
+    
+    private func showAlert(error: Error) {
+        let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 
 }

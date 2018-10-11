@@ -161,7 +161,7 @@ class ContentTableViewController: UITableViewController {
                         self.tableView.deselectRow(at: indexPath, animated: true)
                     }
                     if (error as NSError).code != NSUserCancelledError {
-                        SVProgressHUD.showError(withStatus: "Failed to download raster resource :: \(error.localizedDescription)")
+                        self.showAlert(message: "Failed to download raster resource :: \(error.localizedDescription)")
                     }
                 }
                 else {
@@ -230,6 +230,12 @@ class ContentTableViewController: UITableViewController {
             expandedRowIndex = indexPath.row
             tableView.reloadRows(at: [previouslyExpandedIndexPath, indexPath], with: .fade)
         }
+    }
+    
+    private func showAlert(title: String? = nil, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 
 }

@@ -68,7 +68,7 @@ class MapViewScreenshotViewController: UIViewController {
         //the method on map view we can use to get the screenshot image
         self.mapView.exportImage { [weak self] (image:UIImage?, error:Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.showAlert(error: error)
             }
             if let image = image {
                 //on completion imitate flash
@@ -111,5 +111,11 @@ class MapViewScreenshotViewController: UIViewController {
     
     deinit {
         AudioServicesDisposeSystemSoundID(self.shutterSound)
+    }
+    
+    private func showAlert(error: Error) {
+        let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 }

@@ -85,7 +85,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         self.serviceAreaTask.defaultServiceAreaParameters { [weak self] (parameters: AGSServiceAreaParameters?, error: Error?) in
             
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: "Error getting default parameters:: \(error!.localizedDescription)")
+                self?.showAlert(message: "Error getting default parameters:: \(error!.localizedDescription)")
                 return
             }
             
@@ -114,6 +114,12 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         return fillSymbol
     }
     
+    private func showAlert(title: String? = nil, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
     //MARK: - Actions
     
     @IBAction private func serviceArea() {
@@ -124,7 +130,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         //check if at least a single facility is added
         if self.facilitiesGraphicsOverlay.graphics.count == 0 {
             
-            SVProgressHUD.showInfo(withStatus: "At least one facility is required")
+            showAlert(message: "At least one facility is required")
             
             return
         }
@@ -170,7 +176,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
             }
             
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: "Error solving service area:: \(error!.localizedDescription)")
+                self?.showAlert(message: "Error solving service area:: \(error!.localizedDescription)")
                 return
             }
             

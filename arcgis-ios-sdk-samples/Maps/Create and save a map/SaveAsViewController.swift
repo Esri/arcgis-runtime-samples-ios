@@ -52,7 +52,7 @@ class SaveAsViewController: UIViewController {
         //Validations
         guard let title = self.titleTextField.text, let tagsText = self.tagsTextField.text else {
             //show error message
-            SVProgressHUD.showError(withStatus: "Title and tags are required fields")
+            showAlert(message: "Title and tags are required fields")
             return
         }
         
@@ -61,5 +61,11 @@ class SaveAsViewController: UIViewController {
             .map { $0.trimmingCharacters(in: .whitespaces) }
         let itemDescription = descriptionTextView.text ?? ""
         self.delegate?.saveAsViewController(self, didInitiateSaveWithTitle: title, tags: tags, itemDescription: itemDescription)
+    }
+    
+    private func showAlert(title: String? = nil, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 }

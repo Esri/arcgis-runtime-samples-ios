@@ -33,7 +33,7 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
         // Load the geopackage.
         geoPackage?.load { [weak self] error in
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: "Error opening Geopackage: \(error!.localizedDescription)")
+                self?.showAlert(message: "Error opening Geopackage: \(error!.localizedDescription)")
                 return
             }
 
@@ -57,6 +57,12 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
         
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ReadGeopackageViewController", "GPKGLayersViewController","GPKGLayerTableCell"]
+    }
+    
+    private func showAlert(title: String? = nil, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
     
     //MARK: - Segue to and from the Layer Control viewcontroller.

@@ -75,7 +75,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.cancelable = self.locatorTask.reverseGeocode(withLocation: normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) -> Void in
             if let error = error as NSError? {
                 if error.code != NSUserCancelledError { //user canceled error
-                    self?.showAlert(error.localizedDescription)
+                    self?.showAlert(error: error)
                 }
             }
             else {
@@ -85,7 +85,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
                     return
                 }
                 else {
-                    self?.showAlert("No address found")
+                    self?.showAlert(message: "No address found")
                 }
             }
             self?.graphicsOverlay.graphics.remove(graphic)
@@ -115,10 +115,16 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.callout.show(for: graphic, tapLocation: tapLocation, animated: true)
     }
     
-    private func showAlert(_ message:String) {
-        SVProgressHUD.showError(withStatus: message)
+    private func showAlert(title: String? = nil, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
     
+    private func showAlert(error: Error) {
+        showAlert(message: error.localizedDescription)
+    }
+
     //MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {

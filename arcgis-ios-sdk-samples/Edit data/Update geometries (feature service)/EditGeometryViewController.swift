@@ -74,14 +74,24 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     func applyEdits() {
         self.featureTable.applyEdits(completion: { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.showAlert(error: error)
             }
             else {
-                SVProgressHUD.showSuccess(withStatus: "Saved successfully!")
+                self?.showAlert(message: "Saved successfully!")
             }
             //un hide the feature
             self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
         })
+    }
+    
+    private func showAlert(title: String? = nil, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+    private func showAlert(error: Error) {
+        showAlert(message: error.localizedDescription)
     }
     
     //MARK: - AGSGeoViewTouchDelegate
@@ -141,7 +151,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
             self.selectedFeature.geometry = newGeometry
             self.featureTable.update(self.selectedFeature, completion: { [weak self] (error:Error?) -> Void in
                 if let error = error {
-                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+                    self?.showAlert(error: error)
                     
                     //un hide the feature
                     self?.featureLayer.setFeature(self!.selectedFeature, visible: true)

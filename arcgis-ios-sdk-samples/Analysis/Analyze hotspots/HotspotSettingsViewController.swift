@@ -49,6 +49,12 @@ class HotspotSettingsViewController: UIViewController, UITextFieldDelegate {
         self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    private func showAlert(title: String? = nil, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
     //MARK: - Actions
     
     @objc func datePickerValueChanged(_ sender: UIDatePicker) {
@@ -66,7 +72,7 @@ class HotspotSettingsViewController: UIViewController, UITextFieldDelegate {
             self.delegate?.hotspotSettingsViewController(self, didSelectDates: self.fromTextField.text!, toDate: self.toTextField.text!)
         }
         else {
-            SVProgressHUD.showError(withStatus: "Both dates are required")
+            showAlert(message: "Both dates are required")
         }
     }
     

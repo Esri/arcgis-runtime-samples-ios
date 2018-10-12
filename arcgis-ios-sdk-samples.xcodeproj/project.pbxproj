@@ -1396,8 +1396,8 @@
 			isa = PBXGroup;
 			children = (
 				21E9CDE81EF9C5EA00BD4D7D /* DisplayGrid.storyboard */,
-				21E9CDE91EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift */,
 				21E9CDEA1EF9C5EA00BD4D7D /* DisplayGridViewController.swift */,
+				21E9CDE91EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift */,
 			);
 			path = "Display grid";
 			sourceTree = "<group>";
@@ -2897,7 +2897,7 @@
 				C768170B2163E31700EC82F4 /* US_State_Capitals.kml */,
 			);
 			path = KML;
-      sourceTree = "<group>";
+			sourceTree = "<group>";
 		};
 		C793B5E62166BB06000A7A10 /* OpenStreetMap layer */ = {
 			isa = PBXGroup;

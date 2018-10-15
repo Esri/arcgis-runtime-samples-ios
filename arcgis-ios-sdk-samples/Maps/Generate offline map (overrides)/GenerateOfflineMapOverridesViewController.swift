@@ -172,15 +172,8 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
             
             let errorMessages = layerErrors.map { "\($0.key.name): \($0.value.localizedDescription)" } +
                 tableErrors.map { "\($0.key.displayName): \($0.value.localizedDescription)" }
-            let okayAction = UIAlertAction(title: "OK", style: .default)
-            let alertController = UIAlertController(
-                title: "Offline Map Generated with Errors",
-                message: "The following error(s) occurred while generating the offline map:\n\n\(errorMessages.joined(separator: "\n"))",
-                preferredStyle: .alert
-            )
-            alertController.addAction(okayAction)
-            alertController.preferredAction = okayAction
-            present(alertController, animated: true)
+            presentAlert(title:"Offline Map Generated with Errors",
+                         message: "The following error(s) occurred while generating the offline map:\n\n\(errorMessages.joined(separator: "\n"))")
         }
         
         //disable cancel button
@@ -303,14 +296,6 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
     }
     
     //MARK: - Helper methods
-    
-    private func presentAlert(error: Error) {
-        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        alertController.addAction(okAction)
-        alertController.preferredAction = okAction
-        present(alertController, animated: true)
-    }
     
     private func showLoginQueryAlert() {
         

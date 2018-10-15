@@ -152,11 +152,5 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
         
         self.delegate?.createOptionsViewController(self, didSelectBasemap: basemap, layers: layers.count > 0 ? layers : nil)
     }
-    
-    private func presentAlert(message: String){
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
-    }
 
 }

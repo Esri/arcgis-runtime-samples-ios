@@ -121,18 +121,6 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
             }
         }
     }
-    
-    private func presentAlert(title: String? = nil, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        alertController.addAction(okAction)
-        alertController.preferredAction = okAction
-        present(alertController, animated: true)
-    }
-    
-    private func presentAlert(error: Error) {
-        presentAlert(title: "Error", message: error.localizedDescription)
-    }
 
     //MARK: - UITableViewDataSource
     

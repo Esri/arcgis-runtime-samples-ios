@@ -101,26 +101,10 @@ class StatisticalQueryViewController: UIViewController {
                 }
                 
                 // Show result
-                self?.showResult(message: resultMessage)
+                self?.presentAlert(title: "Statistical Query Results", message: resultMessage)
             }
         })
     }
     
-    // MARK: Helper Methods
-    
-    private func showResult(message: String) {
-        let alertController = UIAlertController(title: "Statistical Query Results", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .cancel)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    private func presentAlert(error: Error) {
-        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        alertController.addAction(okAction)
-        alertController.preferredAction = okAction
-        present(alertController, animated: true)
-    }
 }
 

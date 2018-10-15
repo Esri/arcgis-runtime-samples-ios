@@ -231,14 +231,6 @@ class ContentTableViewController: UITableViewController {
             tableView.reloadRows(at: [previouslyExpandedIndexPath, indexPath], with: .fade)
         }
     }
-    
-    private func presentAlert(title: String? = nil, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        alertController.addAction(okAction)
-        alertController.preferredAction = okAction
-        present(alertController, animated: true)
-    }
 
 }
 

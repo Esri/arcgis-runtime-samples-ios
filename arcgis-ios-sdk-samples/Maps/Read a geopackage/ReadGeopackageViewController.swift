@@ -59,14 +59,6 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ReadGeopackageViewController", "GPKGLayersViewController","GPKGLayerTableCell"]
     }
     
-    private func presentAlert(title: String? = nil, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        alertController.addAction(okAction)
-        alertController.preferredAction = okAction
-        present(alertController, animated: true)
-    }
-    
     //MARK: - Segue to and from the Layer Control viewcontroller.
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

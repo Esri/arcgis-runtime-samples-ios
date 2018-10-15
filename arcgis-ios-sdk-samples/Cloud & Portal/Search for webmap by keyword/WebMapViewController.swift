@@ -37,12 +37,11 @@ class WebMapViewController: UIViewController, AGSAuthenticationManagerDelegate {
         //assign map to the map view
         self.mapView.map = self.map
     }
-
     
     //MARK: - AGSAuthenticationManagerDelegate
     
     func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
-        SVProgressHUD.showError(withStatus: "Web map access denied")
+        presentAlert(message: "Web map access denied")
         challenge.cancel()
         _ = self.navigationController?.popViewController(animated: true)
     }

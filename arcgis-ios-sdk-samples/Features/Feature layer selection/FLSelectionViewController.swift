@@ -85,9 +85,7 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
         activeSelectionQuery = featureLayer.selectFeatures(withQuery: queryParams, mode: .new) { [weak self] (queryResult: AGSFeatureQueryResult?, error: Error?) -> Void in
             
             if let error = error {
-                let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default))
-                self?.present(alertController, animated: true, completion: nil)
+                self?.presentAlert(error: error)
             }
             if let result = queryResult {
                 print("\(result.featureEnumerator().allObjects.count) feature(s) selected")

@@ -89,7 +89,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
                 // don't show an error if the user cancelled from the login screen
                 if (error as NSError).code != NSUserCancelledError{
                     //show error
-                    self.showError(error)
+                    self.presentAlert(error: error)
                 }
                 return
             }
@@ -152,7 +152,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
             if let error = error {    
                 //do not display error if user simply cancelled the request
                 if (error as NSError).code != NSUserCancelledError {
-                    self.showError(error)
+                    self.presentAlert(error: error)
                 }
             }
             else if let result = result {
@@ -172,15 +172,8 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
             
             let errorMessages = layerErrors.map { "\($0.key.name): \($0.value.localizedDescription)" } +
                 tableErrors.map { "\($0.key.displayName): \($0.value.localizedDescription)" }
-            let okayAction = UIAlertAction(title: "OK", style: .default)
-            let alertController = UIAlertController(
-                title: "Offline Map Generated with Errors",
-                message: "The following error(s) occurred while generating the offline map:\n\n\(errorMessages.joined(separator: "\n"))",
-                preferredStyle: .alert
-            )
-            alertController.addAction(okayAction)
-            alertController.preferredAction = okayAction
-            present(alertController, animated: true)
+            presentAlert(title:"Offline Map Generated with Errors",
+                         message: "The following error(s) occurred while generating the offline map:\n\n\(errorMessages.joined(separator: "\n"))")
         }
         
         //disable cancel button
@@ -258,7 +251,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
             }
             
             if let error = error {
-                self.showError(error)
+                self.presentAlert(error: error)
                 return
             }
             
@@ -277,7 +270,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
                 }
                 
                 if let error = error {
-                    self.showError(error)
+                    self.presentAlert(error: error)
                     return
                 }
                 
@@ -303,13 +296,6 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
     }
     
     //MARK: - Helper methods
-    
-    private func showError(_ error:Error){
-        let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(action)
-        present(alert, animated: true)
-    }
     
     private func showLoginQueryAlert() {
         

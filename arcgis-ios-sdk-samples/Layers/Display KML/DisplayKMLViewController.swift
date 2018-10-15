@@ -102,12 +102,8 @@ class DisplayKMLViewController: UIViewController {
             // Close the progress indicator
             SVProgressHUD.dismiss()
 
-            if let self = self,
-                let error = error {
-                // Display the error if one occurred
-                let alertController = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(alertController, animated: true, completion: nil)
+            if let error = error {
+                self?.presentAlert(error: error)
             }
         }
         

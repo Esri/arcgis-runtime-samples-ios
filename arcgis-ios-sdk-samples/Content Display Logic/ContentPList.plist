@@ -447,6 +447,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>List KML contents</string>
+				<key>storyboardName</key>
+				<string>ListKMLContents</string>
+				<key>descriptionText</key>
+				<string>List the contents of a KML file.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Identify KML features</string>
 				<key>storyboardName</key>
 				<string>IdentifyKMLFeatures</string>

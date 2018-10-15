@@ -84,9 +84,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
             
             if let error = error {
                 // display the error as an alert
-                let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(alert, animated: true, completion: nil)
+                self.presentAlert(error: error)
             }
             else if let features = result?.featureEnumerator().allObjects {
                 if features.count > 0 {

@@ -109,12 +109,6 @@ class HillshadeSettingsVC: UITableViewController {
         hillshadeParametersChanged()
     }
     
-    //MARK: - UITableViewDelegate
-    
-    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-    
 }
 
 extension HillshadeSettingsVC: HorizontalPickerDelegate {

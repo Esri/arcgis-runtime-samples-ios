@@ -1410,8 +1410,8 @@
 			isa = PBXGroup;
 			children = (
 				21E9CDE81EF9C5EA00BD4D7D /* DisplayGrid.storyboard */,
-				21E9CDE91EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift */,
 				21E9CDEA1EF9C5EA00BD4D7D /* DisplayGridViewController.swift */,
+				21E9CDE91EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift */,
 			);
 			path = "Display grid";
 			sourceTree = "<group>";

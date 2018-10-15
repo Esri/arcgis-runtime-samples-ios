@@ -23,7 +23,7 @@ enum GridType: Int {
     case USNG = 3
 }
 
-class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDelegate, HorizontalColorPickerDelegate {
+class DisplayGridSettingsViewController: UITableViewController, HorizontalPickerDelegate, HorizontalColorPickerDelegate {
     
     // MARK: - Variables
     
@@ -33,7 +33,6 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
     var labelUnits = ["Kilometers Meters", "Meters"]
     var labelFormats = ["Decimal Degrees", "Degrees Minutes Seconds"]
     
-    @IBOutlet weak var settingsView: UIView!
     @IBOutlet weak var gridTypePicker: HorizontalPicker!
     @IBOutlet weak var gridColorPicker: HorizontalColorPicker!
     @IBOutlet weak var gridVisibilitySwitch: UISwitch!
@@ -47,9 +46,6 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Corner radius for parent view
-        settingsView.layer.cornerRadius = 10
         
         // Set picker options
         gridTypePicker.options = gridTypes
@@ -109,10 +105,6 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
     }
     
     //MARK: - Actions
-    
-    @IBAction private func closeAction() {
-        dismiss(animated: true, completion: nil)
-    }
     
     @IBAction private func gridVisibilityAction() {
         mapView?.grid?.isVisible = gridVisibilitySwitch.isOn
@@ -265,4 +257,5 @@ class DisplayGridSettingsViewController: UIViewController, HorizontalPickerDeleg
             changeLabel(color: selectedColor)
         }
     }
+    
 }

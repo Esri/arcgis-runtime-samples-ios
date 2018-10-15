@@ -32,7 +32,7 @@ protocol ViewshedSettingsVCDelegate: AnyObject {
     
 }
 
-class ViewshedSettingsVC: UIViewController, HorizontalColorPickerDelegate {
+class ViewshedSettingsVC: UITableViewController, HorizontalColorPickerDelegate {
     
     @IBOutlet weak var headingSlider: UISlider!
     @IBOutlet weak var headingLabel: UILabel!
@@ -71,10 +71,6 @@ class ViewshedSettingsVC: UIViewController, HorizontalColorPickerDelegate {
     }
     
     // MARK: - Actions
-    
-    @IBAction func closeAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
     
     @IBAction func analysisOverlayVisibilityAction(_ sender: Any) {
         delegate?.viewshedSettingsVC(self, didUpdateAnalysisOverlayVisibility: analysisOverlayVisibilitySwitch.isOn)

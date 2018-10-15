@@ -516,12 +516,18 @@
 		C76817082163DB7C00EC82F4 /* DisplayKMLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76817062163DB7C00EC82F4 /* DisplayKMLViewController.swift */; };
 		C76817092163DD8300EC82F4 /* DisplayKMLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C76817062163DB7C00EC82F4 /* DisplayKMLViewController.swift */; };
 		C768170C2163E31700EC82F4 /* US_State_Capitals.kml in Resources */ = {isa = PBXBuildFile; fileRef = C768170B2163E31700EC82F4 /* US_State_Capitals.kml */; };
+		C793B5DE21667194000A7A10 /* ListKMLContents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C793B5DC21667194000A7A10 /* ListKMLContents.storyboard */; };
+		C793B5DF21667194000A7A10 /* ListKMLContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C793B5DD21667194000A7A10 /* ListKMLContentsViewController.swift */; };
+		C793B5E221667B15000A7A10 /* esri_test_data.kmz in Resources */ = {isa = PBXBuildFile; fileRef = C793B5E121667580000A7A10 /* esri_test_data.kmz */; };
+		C793B5E321668587000A7A10 /* ListKMLContentsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C793B5DD21667194000A7A10 /* ListKMLContentsViewController.swift */; };
 		C793B5E92166BB71000A7A10 /* OpenStreetMapLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C793B5E72166BB71000A7A10 /* OpenStreetMapLayerViewController.swift */; };
 		C793B5EA2166BB71000A7A10 /* OpenStreetMapLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C793B5E82166BB71000A7A10 /* OpenStreetMapLayer.storyboard */; };
 		C793B5EB2166BC90000A7A10 /* OpenStreetMapLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C793B5E72166BB71000A7A10 /* OpenStreetMapLayerViewController.swift */; };
 		C7D0EEDA215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D0EED8215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift */; };
 		C7D0EEDB215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7D0EED9215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard */; };
 		C7D0EEDC215EA8A700ECDD2C /* DisplayKMLNetworkLinksViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7D0EED8215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift */; };
+		C7D22F8C2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D22F8B2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift */; };
+		C7D22F8D2167F01500C39D5C /* ListKMLContentsSceneViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7D22F8B2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift */; };
 		D90407941FD8608A00BFE07B /* RasterLayerGPKGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */; };
 		D90407951FD8608A00BFE07B /* RasterLayerGPKG.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90407931FD8608A00BFE07B /* RasterLayerGPKG.storyboard */; };
 		D90407961FD8651600BFE07B /* RasterLayerGPKGViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */; };
@@ -609,6 +615,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				C7D22F8D2167F01500C39D5C /* ListKMLContentsSceneViewController.swift in CopyFiles */,
+				C793B5E321668587000A7A10 /* ListKMLContentsViewController.swift in CopyFiles */,
 				C7094788215D68C400BA0969 /* OfflineMapParameterOverridesViewController.swift in CopyFiles */,
 				C7094787215D68C200BA0969 /* GenerateOfflineMapOverridesViewController.swift in CopyFiles */,
 				C76817092163DD8300EC82F4 /* DisplayKMLViewController.swift in CopyFiles */,
@@ -1163,10 +1171,14 @@
 		C76817052163DB7C00EC82F4 /* DisplayKML.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayKML.storyboard; sourceTree = "<group>"; };
 		C76817062163DB7C00EC82F4 /* DisplayKMLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayKMLViewController.swift; sourceTree = "<group>"; };
 		C768170B2163E31700EC82F4 /* US_State_Capitals.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = US_State_Capitals.kml; sourceTree = "<group>"; };
+		C793B5DC21667194000A7A10 /* ListKMLContents.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListKMLContents.storyboard; sourceTree = "<group>"; };
+		C793B5DD21667194000A7A10 /* ListKMLContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListKMLContentsViewController.swift; sourceTree = "<group>"; };
+		C793B5E121667580000A7A10 /* esri_test_data.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; path = esri_test_data.kmz; sourceTree = "<group>"; };
 		C793B5E72166BB71000A7A10 /* OpenStreetMapLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenStreetMapLayerViewController.swift; sourceTree = "<group>"; };
 		C793B5E82166BB71000A7A10 /* OpenStreetMapLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OpenStreetMapLayer.storyboard; sourceTree = "<group>"; };
 		C7D0EED8215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayKMLNetworkLinksViewController.swift; sourceTree = "<group>"; };
 		C7D0EED9215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayKMLNetworkLinks.storyboard; sourceTree = "<group>"; };
+		C7D22F8B2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListKMLContentsSceneViewController.swift; sourceTree = "<group>"; };
 		D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterLayerGPKGViewController.swift; sourceTree = "<group>"; };
 		D90407931FD8608A00BFE07B /* RasterLayerGPKG.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RasterLayerGPKG.storyboard; sourceTree = "<group>"; };
 		D9316A5D1FDB4F060075AD92 /* GPKGLayerTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPKGLayerTableCell.swift; sourceTree = "<group>"; };
@@ -1630,7 +1642,7 @@
 				D97B7E3E1FD9BF1E00E1239D /* Shapefiles */,
 				3E4B05E61B39EF250072E514 /* Libraries */,
 				3EABC7951DB1787600C161C6 /* Rasters */,
-				C768170A2163E30200EC82F4 /* KML */,
+				C793B5E02166756A000A7A10 /* KML */,
 				3E1183D81ECF5A1000180152 /* Mission files */,
 			);
 			path = "Shared resources";
@@ -2280,6 +2292,7 @@
 				4CC00F7220C1FAA8004244EF /* Style WMS layers */,
 				4C66AAF52107C4BB00EE6346 /* Query a map image sublayer */,
 				D97B7E391FD9BE0500E1239D /* Symbolize shapefile */,
+				C793B5DB21666EB3000A7A10 /* List KML contents */,
 				C76817042163DA8D00EC82F4 /* Display KML */,
 				4C0F27AF2152C9CE00496666 /* Identify KML features */,
 				C7D0EED7215EA56E00ECDD2C /* Display KML network links */,
@@ -2887,13 +2900,24 @@
 			path = "Display KML";
 			sourceTree = "<group>";
 		};
-		C768170A2163E30200EC82F4 /* KML */ = {
+		C793B5DB21666EB3000A7A10 /* List KML contents */ = {
+			isa = PBXGroup;
+			children = (
+				C793B5DC21667194000A7A10 /* ListKMLContents.storyboard */,
+				C793B5DD21667194000A7A10 /* ListKMLContentsViewController.swift */,
+				C7D22F8B2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift */,
+			);
+			path = "List KML contents";
+			sourceTree = "<group>";
+		};
+		C793B5E02166756A000A7A10 /* KML */ = {
 			isa = PBXGroup;
 			children = (
 				C768170B2163E31700EC82F4 /* US_State_Capitals.kml */,
+				C793B5E121667580000A7A10 /* esri_test_data.kmz */,
 			);
 			path = KML;
-      sourceTree = "<group>";
+			sourceTree = "<group>";
 		};
 		C793B5E62166BB06000A7A10 /* OpenStreetMap layer */ = {
 			isa = PBXGroup;
@@ -3217,6 +3241,7 @@
 				3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */,
 				3ED028651B8E3A8500ACA70D /* HighwayJson.txt in Resources */,
 				3EC39C3A1C9B23DF003F6459 /* GenerateGeodatabase.storyboard in Resources */,
+				C793B5E221667B15000A7A10 /* esri_test_data.kmz in Resources */,
 				3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */,
 				3ED028E41B8E3AA500ACA70D /* DefinitionExpression.storyboard in Resources */,
 				D9E2E76320EEB8FF001D0AE0 /* Public_Art.sbn in Resources */,
@@ -3367,6 +3392,7 @@
 				D9ED2DA51FD758910043BFE1 /* FeatureLayerGPKG.storyboard in Resources */,
 				3E5E09371EF2E8E200FF3454 /* GenerateOfflineMap.storyboard in Resources */,
 				3EBA25761D34510F00AB0703 /* CreateGeometries.storyboard in Resources */,
+				C793B5DE21667194000A7A10 /* ListKMLContents.storyboard in Resources */,
 				3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */,
 				3EABC7A01DB1793000C161C6 /* StretchRenderer.storyboard in Resources */,
 				3E1183E01ECF5A1000180152 /* Snowdon.csv in Resources */,
@@ -3538,6 +3564,7 @@
 				3ED028B31B8E3A9800ACA70D /* TLUsingURLViewController.swift in Sources */,
 				1230046C1FE2F70300303AC2 /* LineOfSightLocationViewController.swift in Sources */,
 				3ED028EA1B8E3AA500ACA70D /* FLQueryViewController.swift in Sources */,
+				C793B5DF21667194000A7A10 /* ListKMLContentsViewController.swift in Sources */,
 				3E41DD721B9A1F4600DA11CC /* AddFeaturesViewController.swift in Sources */,
 				3ED028961B8E3A8500ACA70D /* SetMapsSRViewController.swift in Sources */,
 				3ED0288E1B8E3A8500ACA70D /* SetInitialMapAreaViewController.swift in Sources */,
@@ -3561,6 +3588,7 @@
 				4C66AAF92107C50B00EE6346 /* QueryMapImageSublayerViewController.swift in Sources */,
 				3ED028F81B8E3AA500ACA70D /* ManualCacheViewController.swift in Sources */,
 				3E1E5EE51D9F08ED00F4913C /* HillshadeRendererVC.swift in Sources */,
+				C7D22F8C2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift in Sources */,
 				3ED029291B8E3AB300ACA70D /* GORenderersViewController.swift in Sources */,
 				3ED0286B1B8E3A8500ACA70D /* CustomContextSheet.swift in Sources */,
 				E45991A41EF3021D0089E9FD /* WebMapViewController.swift in Sources */,

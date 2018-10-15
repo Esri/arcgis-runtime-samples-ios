@@ -1495,9 +1495,9 @@
 		3E1E5EE31D9F085E00F4913C /* Hillshade renderer */ = {
 			isa = PBXGroup;
 			children = (
+				3E1E5EEE1D9F0BAB00F4913C /* HillshadeRenderer.storyboard */,
 				3E1E5EE41D9F08ED00F4913C /* HillshadeRendererVC.swift */,
 				3E1E5EE61D9F095A00F4913C /* HillshadeSettingsVC.swift */,
-				3E1E5EEE1D9F0BAB00F4913C /* HillshadeRenderer.storyboard */,
 			);
 			path = "Hillshade renderer";
 			sourceTree = "<group>";

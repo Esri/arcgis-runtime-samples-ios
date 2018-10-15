@@ -68,7 +68,7 @@ class MapViewScreenshotViewController: UIViewController {
         //the method on map view we can use to get the screenshot image
         self.mapView.exportImage { [weak self] (image:UIImage?, error:Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             if let image = image {
                 //on completion imitate flash

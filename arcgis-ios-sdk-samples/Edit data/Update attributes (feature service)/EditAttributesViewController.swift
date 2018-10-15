@@ -61,10 +61,10 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         
         self.featureTable.applyEdits(completion: { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
-                SVProgressHUD.showSuccess(withStatus: "Edits applied successfully")
+                self?.presentAlert(message: "Edits applied successfully")
                 self?.showCallout(self!.selectedFeature, tapLocation: nil)
             }
         })
@@ -121,7 +121,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.selectedFeature.attributes["typdamage"] = self.types[index]
         self.featureTable.update(self.selectedFeature) { [weak self] (error: Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 self?.applyEdits()

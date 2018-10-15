@@ -39,7 +39,7 @@ class WMTSLayerViewController: UIViewController {
         //load the WMTS service to access the service information
         self.wmtsService.load {[weak self] (error) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: "Failed to load WMTS layer: \(error.localizedDescription)")
+                self?.presentAlert(message: "Failed to load WMTS layer: \(error.localizedDescription)")
             } else {
                 //get the service information or metadata about the WMTS service
                 if let weakSelf = self, let wmtsServiceInfo = weakSelf.wmtsService.serviceInfo {

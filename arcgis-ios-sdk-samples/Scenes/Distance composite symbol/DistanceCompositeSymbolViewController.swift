@@ -53,7 +53,7 @@ class DistanceCompositeSymbolViewController: UIViewController {
         let modelSymbol = AGSModelSceneSymbol(name: "Bristol", extension: "dae", scale: 100.0)
         modelSymbol.load(completion: { [weak self] (error) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
                 return
             }
             

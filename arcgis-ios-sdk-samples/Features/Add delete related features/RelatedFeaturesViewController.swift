@@ -45,7 +45,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         //in this case there is only one describing the 1..M relationship between parks and species
         guard let relationshipInfo = self.originFeatureTable.layerInfo?.relationshipInfos[0] else {
             
-            SVProgressHUD.showError(withStatus: "Relationship info not found")
+            presentAlert(message: "Relationship info not found")
             return
         }
         
@@ -65,7 +65,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         self.originFeatureTable.queryRelatedFeatures(for: self.originFeature, parameters: parameters) { [weak self] (results:[AGSRelatedFeatureQueryResult]?, error:Error?) in
             
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription)
+                self?.presentAlert(error: error!)
                 return
             }
             
@@ -101,7 +101,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         relatedTable.add(feature) { [weak self] (error) in
             
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription)
+                self?.presentAlert(error: error!)
                 return
             }
             
@@ -122,7 +122,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         relatedTable.delete(feature) { [weak self] (error) in
             
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription)
+                self?.presentAlert(error: error!)
                 return
             }
             
@@ -143,7 +143,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
             
             guard error == nil else {
                 //show error
-                SVProgressHUD.showError(withStatus: error?.localizedDescription)
+                self?.presentAlert(error: error!)
                 return
             }
             

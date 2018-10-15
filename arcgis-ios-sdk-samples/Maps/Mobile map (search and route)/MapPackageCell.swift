@@ -47,8 +47,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
     func loadMapPackage() {
         self.mapPackage.load { [weak self] (error:Error?) in
             if let error = error {
-                //error
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                print(error.localizedDescription)
             }
             else {
                 //update title label

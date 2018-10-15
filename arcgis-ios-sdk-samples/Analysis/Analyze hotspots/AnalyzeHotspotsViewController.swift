@@ -72,7 +72,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         }) { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
             if let error = error {
                 //show error
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 //dismiss progress hud

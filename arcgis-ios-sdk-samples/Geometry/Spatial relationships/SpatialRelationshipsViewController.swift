@@ -130,7 +130,7 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
             
             // Make sure there is no error
             guard result.error == nil else {
-                SVProgressHUD.showError(withStatus: result.error?.localizedDescription)
+                strongSelf.presentAlert(error: result.error!)
                 return
             }
             
@@ -227,7 +227,7 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
         if AGSGeometryEngine.geometry(geometry1, within: geometry2) { relationships.append("Within") }
         return relationships
     }
-
+    
     // MARK: UIPopoverPresentationControllerDelegate
 
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {

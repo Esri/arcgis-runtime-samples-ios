@@ -209,7 +209,7 @@ extension SearchForWebmapByKeywordViewController: AGSAuthenticationManagerDelega
         }
         
         // notify the user
-        SVProgressHUD.showError(withStatus: "Web map access denied")
+        presentAlert(message: "Web map access denied")
     }
     
 }

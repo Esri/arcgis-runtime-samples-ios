@@ -91,7 +91,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
             if let error = result.error {
                 
                 //dismiss progress hud
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 
@@ -132,7 +132,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
             if let error = error {
                 
                 //display error
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 
@@ -147,7 +147,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
                     self?.showRelatedFeatures()
                 }
                 else {  //else notify user
-                    SVProgressHUD.showInfo(withStatus: "No related features found")
+                    self?.presentAlert(message: "No related features found")
                 }
             }
         }

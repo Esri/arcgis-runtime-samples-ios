@@ -84,7 +84,7 @@ class StatisticalQueryViewController: UIViewController {
             //
             // If there an error, display it
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription)
+                self?.presentAlert(error: error!)
                 return
             }
             
@@ -101,18 +101,10 @@ class StatisticalQueryViewController: UIViewController {
                 }
                 
                 // Show result
-                self?.showResult(message: resultMessage)
+                self?.presentAlert(title: "Statistical Query Results", message: resultMessage)
             }
         })
     }
     
-    // MARK: Helper Methods
-    
-    private func showResult(message: String) {
-        let alertController = UIAlertController(title: "Statistical Query Results", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .cancel)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
 }
 

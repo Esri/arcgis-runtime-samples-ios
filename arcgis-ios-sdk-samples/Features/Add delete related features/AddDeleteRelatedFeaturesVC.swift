@@ -80,7 +80,7 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
             guard result.error == nil else {
                 
                 //show error to user
-                SVProgressHUD.showError(withStatus: result.error!.localizedDescription)
+                self?.presentAlert(error: result.error!)
                 return
             }
             

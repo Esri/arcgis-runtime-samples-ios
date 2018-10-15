@@ -61,13 +61,13 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //show progress hud
         SVProgressHUD.show(withStatus: "Applying edits")
         
-        (self.featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
+        (self.featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
             
             if let error = error {
-                SVProgressHUD.showError(withStatus: "Error while applying edits :: \(error.localizedDescription)")
+                self?.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
             }
             else {
-                SVProgressHUD.showSuccess(withStatus: "Edits applied successfully!")
+                self?.presentAlert(message: "Edits applied successfully!")
             }
         }
     }

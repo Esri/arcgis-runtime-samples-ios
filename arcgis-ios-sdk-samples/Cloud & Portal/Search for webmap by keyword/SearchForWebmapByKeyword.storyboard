@@ -43,7 +43,7 @@
         <!--Search For Webmap By Keyword View Controller-->
         <scene sceneID="kGm-tu-zhh">
             <objects>
-                <collectionViewController id="hUd-t2-E2H" customClass="SearchForWebmapByKeywordViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController definesPresentationContext="YES" id="hUd-t2-E2H" customClass="SearchForWebmapByKeywordViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" dataMode="prototypes" id="NVk-2a-N8c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -151,6 +151,7 @@
                                     <outlet property="thumbnail" destination="UV2-wS-xjC" id="Bo7-ar-0T9"/>
                                     <outlet property="timerLabel" destination="Baa-Uq-PN3" id="9e0-wc-33M"/>
                                     <outlet property="titleLabel" destination="xTo-xP-ScB" id="WGm-Ux-pqz"/>
+                                    <segue destination="xmI-If-VFc" kind="show" id="cKZ-CS-Z9L"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -159,9 +160,6 @@
                             <outlet property="delegate" destination="hUd-t2-E2H" id="peb-NS-Jeh"/>
                         </connections>
                     </collectionView>
-                    <connections>
-                        <segue destination="xmI-If-VFc" kind="show" identifier="WebMapVCSegue" id="ulZ-4i-svw"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDN-ao-oWC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -29,9 +29,6 @@ class WebMapViewController: UIViewController {
         guard let portalItem = portalItem else {
             return
         }
-        
-        // register to be notified about authentication challenges
-        AGSAuthenticationManager.shared().delegate = self
 
         // initialize a map with the portal item
         let map = AGSMap(item: portalItem)
@@ -40,25 +37,4 @@ class WebMapViewController: UIViewController {
         
         title = portalItem.title
     }
-}
-
-extension WebMapViewController: AGSAuthenticationManagerDelegate {
-    
-    func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
-        
-        // if a challenge is received, then the portal item is not fully public and cannot be displayed
-        
-        // stop attempts at map loading
-        mapView.map = nil
-        
-        // don't present this challenge
-        challenge.cancel()
-        
-        // close this view controller
-        navigationController?.popViewController(animated: true)
-        
-        // notify the user
-        SVProgressHUD.showError(withStatus: "Web map access denied")
-    }
-    
 }

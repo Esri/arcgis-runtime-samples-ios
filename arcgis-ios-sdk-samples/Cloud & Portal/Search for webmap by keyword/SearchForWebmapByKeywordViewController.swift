@@ -25,7 +25,6 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
             collectionView.reloadData()
         }
     }
-    private var selectedPortalItem: AGSPortalItem?
     
     private var lastQueryCancelable: AGSCancelable?
     
@@ -34,6 +33,9 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // register to be notified about authentication challenges
+        AGSAuthenticationManager.shared().delegate = self
 
         // create the portal
         portal = AGSPortal(url: URL(string: "https://arcgis.com")!, loginRequired: false)
@@ -48,9 +50,6 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
     }
     
     private func addSearchController() {
-        
-        // ensure that the search results appear beneath the navigation bar
-        definesPresentationContext = true
         
         // create the search controller
         let searchController = UISearchController(searchResultsController: nil)
@@ -87,14 +86,18 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         }
         
     }
+    
+    
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter
+    }()
  
     private func startWebMapSearch(query: String) {
         
         // if the last search hasn't returned yet, cancel it
         lastQueryCancelable?.cancel()
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
         
         // webmaps authored prior to July 2nd, 2014 are not supported - so search only from that date to the current time
         let date1 = dateFormatter.date(from: "July 2, 2014")!
@@ -124,9 +127,9 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
     //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "WebMapVCSegue" {
-            let controller = segue.destination as! WebMapViewController
-            controller.portalItem = selectedPortalItem
+        if let controller = segue.destination as? WebMapViewController,
+            let selectedIndex = collectionView.indexPathsForSelectedItems?.first?.row {
+            controller.portalItem = resultPortalItems[selectedIndex]
         }
     }
     
@@ -157,12 +160,12 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         }
         else {
             cell.thumbnail.image = UIImage(named: "Placeholder")
-            portalItem.thumbnail?.load(completion: { (error: Error?) -> Void in
+            portalItem.thumbnail?.load(completion: {[weak self] (error: Error?) -> Void in
                 if let error = error {
                     print("Error downloading thumbnail :: \(error.localizedDescription)")
                 }
                 else {
-                    collectionView.reloadItems(at: [indexPath])
+                    self?.collectionView.reloadItems(at: [indexPath])
                 }
             })
         }
@@ -170,14 +173,6 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         return cell
     }
     
-    //MARK: - UICollectionViewDelegate
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        selectedPortalItem = resultPortalItems[indexPath.row]
-        //show web map
-        performSegue(withIdentifier: "WebMapVCSegue", sender: self)
-    }
 }
 
 extension SearchForWebmapByKeywordViewController: UISearchResultsUpdating {
@@ -191,6 +186,30 @@ extension SearchForWebmapByKeywordViewController: UISearchResultsUpdating {
             lastQueryCancelable?.cancel()
             resultPortalItems = []
         }
+    }
+    
+}
+
+
+extension SearchForWebmapByKeywordViewController: AGSAuthenticationManagerDelegate {
+    
+    func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
+        
+        // if a challenge is received, then the portal item is not fully public and cannot be displayed
+        
+        // don't present this challenge
+        challenge.cancel()
+        
+        if let mapController = navigationController?.topViewController as? WebMapViewController {
+            // stop attempts at map loading
+            mapController.mapView.map = nil
+            
+            // close the view controller
+            navigationController?.popViewController(animated: true)
+        }
+        
+        // notify the user
+        SVProgressHUD.showError(withStatus: "Web map access denied")
     }
     
 }

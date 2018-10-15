@@ -35,7 +35,7 @@ class OpenMobileMapViewController: UIViewController {
         //load map package
         self.mapPackage.load { [weak self] (error: Error?) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 if let weakSelf = self {
@@ -44,11 +44,11 @@ class OpenMobileMapViewController: UIViewController {
                         weakSelf.mapView.map = weakSelf.mapPackage.maps[0]
                     }
                     else {
-                        SVProgressHUD.showError(withStatus: "No mobile maps found in the map package")
+                        weakSelf.presentAlert(message: "No mobile maps found in the map package")
                     }
                 }
             }
         }
     }
-    
+
 }

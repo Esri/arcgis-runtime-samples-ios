@@ -36,9 +36,9 @@ class WMSLayerUsingURLViewController: UIViewController {
         let wmsLayer = AGSWMSLayer(url: wmsServiceURL, layerNames: wmsServiceLayerNames)
         
         //load the WMS layer
-        wmsLayer.load { (error) in
+        wmsLayer.load {[weak self] (error) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: "\(error.localizedDescription)")
+                self?.presentAlert(error: error)
             } else if wmsLayer.loadStatus == .loaded {
                 //add the WMS layer to the map
                 map.operationalLayers.add(wmsLayer)

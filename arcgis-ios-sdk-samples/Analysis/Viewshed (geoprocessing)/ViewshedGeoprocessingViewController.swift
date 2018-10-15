@@ -94,7 +94,7 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
             
             if let error = error {
                 //show error
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 //dismiss progress hud
@@ -128,7 +128,7 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
             
             if let error = error {
                 if (error as NSError).code != NSUserCancelledError { //if not cancelled
-                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+                    self?.presentAlert(error: error)
                 }
             }
             else {

@@ -39,7 +39,7 @@ class FeatureLayerGDBViewController: UIViewController {
         //load the geodatabase for feature tables
         self.geodatabase.load { [weak self] (error: Error?) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 let featureTable = self!.geodatabase.geodatabaseFeatureTable(withName: "Trailheads")!

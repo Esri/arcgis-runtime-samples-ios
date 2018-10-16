@@ -21,63 +21,124 @@ protocol BlendRendererSettingsVCDelegate: AnyObject {
     func blendRendererSettingsVC(_ blendRendererSettingsVC: BlendRendererSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType)
 }
 
-class BlendRendererSettingsVC: UIViewController {
+class BlendRendererSettingsVC: UITableViewController {
 
-    @IBOutlet var altitudeSlider:UISlider!
-    @IBOutlet var altitudeLabel:UILabel!
-    @IBOutlet var azimuthSlider:UISlider!
-    @IBOutlet var azimuthLabel:UILabel!
-    @IBOutlet var slopeTypePicker:HorizontalPicker!
-    @IBOutlet var colorRampPicker:HorizontalPicker!
+    @IBOutlet var altitudeSlider: UISlider!
+    @IBOutlet var altitudeLabel: UILabel!
+    @IBOutlet var azimuthSlider: UISlider!
+    @IBOutlet var azimuthLabel: UILabel!
+    @IBOutlet var slopeTypePicker: HorizontalPicker!
+    @IBOutlet var colorRampPicker: HorizontalPicker!
     
-    weak var delegate:BlendRendererSettingsVCDelegate?
+    var azimuth: Double = 0 {
+        didSet {
+            azimuthSlider.value = Float(azimuth)
+            azimuthLabel.text = "\(Int(azimuth))"
+        }
+    }
+    
+    var altitude: Double = 0 {
+        didSet {
+            altitudeSlider.value = Float(altitude)
+            altitudeLabel.text = "\(Int(altitude))"
+        }
+    }
+
+    var slopeType: AGSSlopeType = .none {
+        didSet {
+            guard slopeType != oldValue else {
+                return
+            }
+            switch slopeType {
+            case .none:
+                slopeTypePicker.selectedIndex = 0
+            case .degree:
+                slopeTypePicker.selectedIndex = 1
+            case .percentRise:
+                slopeTypePicker.selectedIndex = 2
+            case .scaled:
+                slopeTypePicker.selectedIndex = 3
+            }
+        }
+    }
+    
+    var colorRampType: AGSPresetColorRampType = .none {
+        didSet {
+            guard colorRampType != oldValue else {
+                return
+            }
+            switch colorRampType {
+            case .none:
+                colorRampPicker.selectedIndex = 0
+            case .elevation:
+                colorRampPicker.selectedIndex = 1
+            case .demLight:
+                colorRampPicker.selectedIndex = 2
+            case .demScreen:
+                colorRampPicker.selectedIndex = 3
+            }
+        }
+    }
+    
+    weak var delegate: BlendRendererSettingsVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.slopeTypePicker.options = ["None", "Degree", "Percent Rise", "Scaled"]
-        self.colorRampPicker.options = ["None", "Elevation", "DEMLight", "DEMScreen"]
-        self.view.layer.cornerRadius = 10
-    }
-
-    func selectedSlope() -> AGSSlopeType {
-        switch self.slopeTypePicker.selectedIndex {
-        case 0:
-            return .none
-        case 1:
-            return .degree
-        case 2:
-            return .percentRise
-        default:
-            return .scaled
-        }
-    }
-    
-    func selectedColorRamp() -> AGSPresetColorRampType {
-        switch self.colorRampPicker.selectedIndex {
-        case 0:
-            return .none
-        case 1:
-            return .elevation
-        case 2:
-            return .demLight
-        default:
-            return .demScreen
-        }
+        slopeTypePicker.delegate = self
+        colorRampPicker.delegate = self
+        slopeTypePicker.options = ["None", "Degree", "Percent Rise", "Scaled"]
+        colorRampPicker.options = ["None", "Elevation", "DEMLight", "DEMScreen"]
     }
     
     //MARK: - Actions
     
     @IBAction func azimuthSliderValueChanged(_ slider: UISlider) {
-        self.azimuthLabel.text = "\(Int(slider.value))"
+        azimuth = Double(slider.value)
+        rendererAction()
     }
     
     @IBAction func altitudeSliderValueChanged(_ slider: UISlider) {
-        self.altitudeLabel.text = "\(Int(slider.value))"
+        altitude = Double(slider.value)
+        rendererAction()
     }
     
-    @IBAction func rendererAction() {
-        
-        self.delegate?.blendRendererSettingsVC(self, selectedAltitude: Double(self.altitudeSlider.value), azimuth: Double(self.azimuthSlider.value), slopeType: self.selectedSlope(), colorRampType: self.selectedColorRamp())
+    private func rendererAction() {
+        delegate?.blendRendererSettingsVC(self, selectedAltitude: altitude, azimuth: azimuth, slopeType: slopeType, colorRampType: colorRampType)
     }
+}
+
+extension BlendRendererSettingsVC: HorizontalPickerDelegate {
+    
+    func horizontalPicker(_ horizontalPicker: HorizontalPicker, didUpdateSelectedIndex index: Int) {
+        if horizontalPicker == slopeTypePicker {
+            slopeType = {
+                switch horizontalPicker.selectedIndex {
+                case 0:
+                    return .none
+                case 1:
+                    return .degree
+                case 2:
+                    return .percentRise
+                default:
+                    return .scaled
+                }
+            }()
+        }
+        else if horizontalPicker == colorRampPicker {
+            colorRampType = {
+                switch horizontalPicker.selectedIndex {
+                case 0:
+                    return .none
+                case 1:
+                    return .elevation
+                case 2:
+                    return .demLight
+                default:
+                    return .demScreen
+                }
+            }()
+        }
+        rendererAction()
+    }
+    
 }

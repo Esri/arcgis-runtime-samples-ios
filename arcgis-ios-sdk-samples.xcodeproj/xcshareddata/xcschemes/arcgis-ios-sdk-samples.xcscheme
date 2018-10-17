@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3E23A9DF1AFC28F6002E2214"
-               BuildableName = "arcgis-ios-sdk-samples.app"
-               BlueprintName = "arcgis-ios-sdk-samples"
+               BuildableName = "ArcGIS Runtime SDK Samples.app"
+               BlueprintName = "ArcGIS Runtime SDK Samples"
                ReferencedContainer = "container:arcgis-ios-sdk-samples.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,8 +44,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3E23A9DF1AFC28F6002E2214"
-            BuildableName = "arcgis-ios-sdk-samples.app"
-            BlueprintName = "arcgis-ios-sdk-samples"
+            BuildableName = "ArcGIS Runtime SDK Samples.app"
+            BlueprintName = "ArcGIS Runtime SDK Samples"
             ReferencedContainer = "container:arcgis-ios-sdk-samples.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -67,8 +67,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3E23A9DF1AFC28F6002E2214"
-            BuildableName = "arcgis-ios-sdk-samples.app"
-            BlueprintName = "arcgis-ios-sdk-samples"
+            BuildableName = "ArcGIS Runtime SDK Samples.app"
+            BlueprintName = "ArcGIS Runtime SDK Samples"
             ReferencedContainer = "container:arcgis-ios-sdk-samples.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -86,8 +86,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3E23A9DF1AFC28F6002E2214"
-            BuildableName = "arcgis-ios-sdk-samples.app"
-            BlueprintName = "arcgis-ios-sdk-samples"
+            BuildableName = "ArcGIS Runtime SDK Samples.app"
+            BlueprintName = "ArcGIS Runtime SDK Samples"
             ReferencedContainer = "container:arcgis-ios-sdk-samples.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

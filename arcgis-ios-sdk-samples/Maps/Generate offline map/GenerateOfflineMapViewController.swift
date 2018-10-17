@@ -105,7 +105,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             return
         }
         
-        let downloadDirectory = getNewOfflineGeodatabaseURL()
+        let downloadDirectory = getNewOfflineMapDirectoryURL()
         
         let generateOfflineMapJob = offlineMapTask.generateOfflineMapJob(with: parameters, downloadDirectory: downloadDirectory)
         self.generateOfflineMapJob = generateOfflineMapJob
@@ -268,15 +268,15 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         return AGSEnvelope(min: minPoint, max: maxPoint)
     }
     
-    private func getNewOfflineGeodatabaseURL()->URL{
+    private func getNewOfflineMapDirectoryURL()->URL{
 
         //get a suitable directory to place files
         let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
-        //create a unique name for the geodatabase based on current timestamp
+        //create a unique name based on current timestamp
         let formattedDate = ISO8601DateFormatter().string(from: Date())
         
-        return documentDirectoryURL.appendingPathComponent("\(formattedDate).geodatabase")
+        return documentDirectoryURL.appendingPathComponent("\(formattedDate)")
     }
 
     deinit {

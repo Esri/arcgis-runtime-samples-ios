@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class SublayerVisibilityViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
+class SublayerVisibilityViewController: UIViewController {
     
     @IBOutlet private weak var mapView:AGSMapView!
     
@@ -51,18 +51,16 @@ class SublayerVisibilityViewController: UIViewController, UIAdaptivePresentation
         if segue.identifier == "SublayersPopover" {
             //get the destination view controller as BookmarksListViewController
             let controller = segue.destination as! SublayersTableViewController
-            controller.sublayers = self.mapImageLayer.mapImageSublayers
-            
-            //popover presentation logic
+            if let sublayers = mapImageLayer.mapImageSublayers as? [AGSArcGISMapImageSublayer] {
+                controller.sublayers = sublayers
+            }
             controller.presentationController?.delegate = self
-            controller.preferredContentSize = CGSize(width: 300, height: 200)
         }
     }
-    
-    //MARK: - UIAdaptivePresentationControllerDelegate
-    
+}
+
+extension SublayerVisibilityViewController: UIAdaptivePresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        //for popover or non modal presentation
-        return UIModalPresentationStyle.none
+        return .none
     }
 }

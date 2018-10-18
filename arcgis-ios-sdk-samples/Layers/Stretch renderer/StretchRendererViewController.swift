@@ -19,63 +19,60 @@ import ArcGIS
 class StretchRendererViewController: UIViewController, StretchRendererSettingsVCDelegate {
     
     @IBOutlet var mapView: AGSMapView!
-    @IBOutlet var containerView: UIView!
-    @IBOutlet var visualEffectView: UIVisualEffectView!
     
-    private var raster: AGSRaster!
-    private var rasterLayer: AGSRasterLayer!
+    private weak var rasterLayer: AGSRasterLayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["StretchRendererViewController", "StretchRendererSettingsVC", "StretchRendererTypeCell", "StretchRendererInputCell"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["StretchRendererViewController", "StretchRendererSettingsVC", "StretchRendererInputCell"]
         
         //create raster
-        self.raster = AGSRaster(name: "ShastaBW", extension: "tif")
+        let raster = AGSRaster(name: "ShastaBW", extension: "tif")
         
         //create raster layer using the raster
-        self.rasterLayer = AGSRasterLayer(raster: self.raster)
+        let rasterLayer = AGSRasterLayer(raster: raster)
+        self.rasterLayer = rasterLayer
         
         //initialize a map with raster layer as the basemap
-        let map = AGSMap(basemap: AGSBasemap(baseLayer: self.rasterLayer))
-        
+        let map = AGSMap(basemap: AGSBasemap(baseLayer: rasterLayer))
         //assign map to the map view
-        self.mapView.map = map
-        
-        //styling
-        self.containerView.layer.cornerRadius = 5
+        mapView.map = map
     }
     
     //MARK: - StretchRendererSettingsVCDelegate
     
     func stretchRendererSettingsVC(_ stretchRendererSettingsVC: StretchRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters) {
-        
-        self.toggleSettingsView(false)
-        
         let renderer = AGSStretchRenderer(stretchParameters: parameters, gammas: [], estimateStatistics: true, colorRamp: AGSColorRamp(type: .none, size: 1))
-        self.rasterLayer.renderer = renderer
+        rasterLayer?.renderer = renderer
     }
     
     //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "StretchRendererSettingsVCSegue" {
-            let controller = segue.destination as! StretchRendererSettingsVC
+        if let controller = segue.destination as? StretchRendererSettingsVC {
             controller.delegate = self
-            controller.view.translatesAutoresizingMaskIntoConstraints = false
+            controller.preferredContentSize = {
+                let height: CGFloat
+                if traitCollection.horizontalSizeClass == .regular,
+                    traitCollection.verticalSizeClass == .regular {
+                    height = 200
+                } else {
+                    height = 150
+                }
+                return CGSize(width: 375, height: height)
+            }()
+            controller.presentationController?.delegate = self
         }
     }
-    
-    //MARK: - Actions
-    
-    @IBAction func editRendererAction() {
-        self.toggleSettingsView(true)
-    }
-    
-    //MARK: - Show/hide settings view
-    
-    private func toggleSettingsView(_ on: Bool) {
-        self.visualEffectView.isHidden = !on
-    }
 }
+
+extension StretchRendererViewController: UIAdaptivePresentationControllerDelegate {
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+}
+

@@ -4,7 +4,7 @@ This sample demonstrates how to use stretch renderer on a raster layer.
 
 ## How to use the sample
 
-Tap on the `Edit renderer` button in the toolbar to change the settings for the stretch renderer. The sample allows you to change the stretch type and the parameters for each type. You can tap on the Render button to update the raster.
+Tap the `Edit Renderer` button in the toolbar to open the settings for the stretch renderer. As you change the stretch type, the min, and the max, the raster layer will update accordingly.
 
 ![](image1.png)
 ![](image2.png)

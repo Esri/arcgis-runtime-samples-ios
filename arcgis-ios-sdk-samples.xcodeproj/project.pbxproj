@@ -237,7 +237,6 @@
 		3EABC7A01DB1793000C161C6 /* StretchRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC79B1DB1793000C161C6 /* StretchRenderer.storyboard */; };
 		3EABC7A11DB1793000C161C6 /* StretchRendererInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC79C1DB1793000C161C6 /* StretchRendererInputCell.swift */; };
 		3EABC7A21DB1793000C161C6 /* StretchRendererSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC79D1DB1793000C161C6 /* StretchRendererSettingsVC.swift */; };
-		3EABC7A31DB1793000C161C6 /* StretchRendererTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC79E1DB1793000C161C6 /* StretchRendererTypeCell.swift */; };
 		3EABC7A41DB1793000C161C6 /* StretchRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC79F1DB1793000C161C6 /* StretchRendererViewController.swift */; };
 		3EABC7AE1DB17B2C00C161C6 /* Shasta.tfw in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AA1DB17B2C00C161C6 /* Shasta.tfw */; settings = {ASSET_TAGS = (ShastaRaster, ); }; };
 		3EABC7AF1DB17B2C00C161C6 /* Shasta.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AB1DB17B2C00C161C6 /* Shasta.tif */; settings = {ASSET_TAGS = (ShastaRaster, ); }; };
@@ -262,7 +261,6 @@
 		3EABC7D21DB197BF00C161C6 /* RGBRendererInputCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC78B1DB1772000C161C6 /* RGBRendererInputCell.swift */; };
 		3EABC7D31DB197BF00C161C6 /* StretchRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC79F1DB1793000C161C6 /* StretchRendererViewController.swift */; };
 		3EABC7D41DB197BF00C161C6 /* StretchRendererSettingsVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC79D1DB1793000C161C6 /* StretchRendererSettingsVC.swift */; };
-		3EABC7D51DB197BF00C161C6 /* StretchRendererTypeCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC79E1DB1793000C161C6 /* StretchRendererTypeCell.swift */; };
 		3EABC7D61DB197BF00C161C6 /* StretchRendererInputCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC79C1DB1793000C161C6 /* StretchRendererInputCell.swift */; };
 		3EAF09451D7108DC00F8538F /* ChangeMapViewBackgroundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAF09441D7108DC00F8538F /* ChangeMapViewBackgroundVC.swift */; };
 		3EAF09471D71093D00F8538F /* GridSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAF09461D71093D00F8538F /* GridSettingsViewController.swift */; };
@@ -702,7 +700,6 @@
 				3EABC7D21DB197BF00C161C6 /* RGBRendererInputCell.swift in CopyFiles */,
 				3EABC7D31DB197BF00C161C6 /* StretchRendererViewController.swift in CopyFiles */,
 				3EABC7D41DB197BF00C161C6 /* StretchRendererSettingsVC.swift in CopyFiles */,
-				3EABC7D51DB197BF00C161C6 /* StretchRendererTypeCell.swift in CopyFiles */,
 				3EABC7D61DB197BF00C161C6 /* StretchRendererInputCell.swift in CopyFiles */,
 				3E81C1BE1D8A19E400470AA4 /* VectorTileCustomStyleVC.swift in CopyFiles */,
 				3E81C1BF1D8A19E400470AA4 /* VectorStylesViewController.swift in CopyFiles */,
@@ -977,7 +974,6 @@
 		3EABC79B1DB1793000C161C6 /* StretchRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StretchRenderer.storyboard; sourceTree = "<group>"; };
 		3EABC79C1DB1793000C161C6 /* StretchRendererInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchRendererInputCell.swift; sourceTree = "<group>"; };
 		3EABC79D1DB1793000C161C6 /* StretchRendererSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchRendererSettingsVC.swift; sourceTree = "<group>"; };
-		3EABC79E1DB1793000C161C6 /* StretchRendererTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchRendererTypeCell.swift; sourceTree = "<group>"; };
 		3EABC79F1DB1793000C161C6 /* StretchRendererViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchRendererViewController.swift; sourceTree = "<group>"; };
 		3EABC7AA1DB17B2C00C161C6 /* Shasta.tfw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Shasta.tfw; sourceTree = "<group>"; };
 		3EABC7AB1DB17B2C00C161C6 /* Shasta.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Shasta.tif; sourceTree = "<group>"; };
@@ -2021,10 +2017,9 @@
 		3EABC79A1DB1793000C161C6 /* Stretch renderer */ = {
 			isa = PBXGroup;
 			children = (
+				3EABC79B1DB1793000C161C6 /* StretchRenderer.storyboard */,
 				3EABC79F1DB1793000C161C6 /* StretchRendererViewController.swift */,
 				3EABC79D1DB1793000C161C6 /* StretchRendererSettingsVC.swift */,
-				3EABC79E1DB1793000C161C6 /* StretchRendererTypeCell.swift */,
-				3EABC79B1DB1793000C161C6 /* StretchRenderer.storyboard */,
 				3EABC79C1DB1793000C161C6 /* StretchRendererInputCell.swift */,
 			);
 			path = "Stretch renderer";
@@ -3536,7 +3531,6 @@
 				3E71621F1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift in Sources */,
 				3E8A05CC1ECE68E80032231C /* Animate3DGraphicViewController.swift in Sources */,
 				3EC39C3C1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift in Sources */,
-				3EABC7A31DB1793000C161C6 /* StretchRendererTypeCell.swift in Sources */,
 				3E2A68181B153CDE00A318AA /* SourceCodeBarButtonItem.swift in Sources */,
 				E45991A11EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift in Sources */,
 				3ED028581B8E3A8500ACA70D /* CreateSaveMapViewController.swift in Sources */,

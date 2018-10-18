@@ -23,21 +23,14 @@ protocol RGBRendererSettingsVCDelegate: AnyObject {
 
 class RGBRendererSettingsVC: UITableViewController {
     
-    private enum StretchType: String, CaseIterable {
-        case minMax = "MinMax"
-        case percentClip = "PercentClip"
-        case standardDeviation = "StdDeviation"
+    enum StretchType: Int, CaseIterable {
+        case minMax, percentClip, standardDeviation
         
-        init?(id: Int) {
-            switch id {
-            case 0:
-                self = .minMax
-            case 1:
-                self = .percentClip
-            case 2:
-                self = .standardDeviation
-            default:
-                return nil
+        var label: String {
+            switch self {
+            case .minMax: return "MinMax"
+            case .percentClip: return "PercentClip"
+            case .standardDeviation: return "StdDeviation"
             }
         }
     }
@@ -64,8 +57,8 @@ class RGBRendererSettingsVC: UITableViewController {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Row0", for: indexPath)
             let picker = cell.accessoryView as! HorizontalPicker
-            picker.options = RGBRendererSettingsVC.StretchType.allCases.map({ (type) -> String in
-                return type.rawValue
+            picker.options = StretchType.allCases.map({ (type) -> String in
+                return type.label
             })
             picker.delegate = self
             return cell
@@ -133,7 +126,7 @@ class RGBRendererSettingsVC: UITableViewController {
 
 extension RGBRendererSettingsVC: HorizontalPickerDelegate {
     func horizontalPicker(_ horizontalPicker: HorizontalPicker, didUpdateSelectedIndex index: Int) {
-        stretchType = StretchType(id: horizontalPicker.selectedIndex)!
+        stretchType = StretchType(rawValue: horizontalPicker.selectedIndex)!
         tableView.reloadData()
         renderAction()
     }

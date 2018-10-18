@@ -17,32 +17,24 @@
 import UIKit
 import ArcGIS
 
-class WebMapViewController: UIViewController, AGSAuthenticationManagerDelegate {
+class WebMapViewController: UIViewController {
 
     @IBOutlet var mapView:AGSMapView!
     
-    var portalItem:AGSPortalItem!
-    var map:AGSMap!
+    var portalItem:AGSPortalItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let portalItem = portalItem else {
+            return
+        }
 
-        //initialize map with selected portal item
-        self.map = AGSMap(item: portalItem)
+        // initialize a map with the portal item
+        let map = AGSMap(item: portalItem)
+        // assign the map to the map view
+        mapView.map = map
         
-        AGSAuthenticationManager.shared().delegate = self
-        
-        self.title = self.map.item?.title
-        
-        //assign map to the map view
-        self.mapView.map = self.map
-    }
-    
-    //MARK: - AGSAuthenticationManagerDelegate
-    
-    func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
-        presentAlert(message: "Web map access denied")
-        challenge.cancel()
-        _ = self.navigationController?.popViewController(animated: true)
+        title = portalItem.title
     }
 }

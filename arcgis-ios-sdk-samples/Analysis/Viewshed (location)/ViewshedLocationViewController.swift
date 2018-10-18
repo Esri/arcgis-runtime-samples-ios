@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class ViewshedLocationViewController: UIViewController, AGSGeoViewTouchDelegate, UIAdaptivePresentationControllerDelegate, ViewshedSettingsVCDelegate {
+class ViewshedLocationViewController: UIViewController {
 
     @IBOutlet weak var sceneView: AGSSceneView!
     @IBOutlet weak var setObserverOnTapInstruction: UILabel!
@@ -109,15 +109,18 @@ class ViewshedLocationViewController: UIViewController, AGSGeoViewTouchDelegate,
         present(settingsViewController, animated: true)
     }
     
-    // MARK: - UIAdaptivePresentationControllerDelegate
-    
+}
+
+extension ViewshedLocationViewController: UIAdaptivePresentationControllerDelegate {
+
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         
         // for popover or non modal presentation
         return UIModalPresentationStyle.none
     }
-    
-    // MARK: - AGSGeoViewTouchDelegate
+}
+
+extension ViewshedLocationViewController: AGSGeoViewTouchDelegate {
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         canMoveViewshed = true
@@ -135,9 +138,9 @@ class ViewshedLocationViewController: UIViewController, AGSGeoViewTouchDelegate,
         // update the observer location from which the viewshed is calculated
         viewshed.location = mapPoint
     }
-    
-    
-    // MARK: - ViewshedSettingsVCDelegate
+}
+
+extension ViewshedLocationViewController: ViewshedSettingsVCDelegate {
     
     func viewshedSettingsVC(_ viewshedSettingsVC:ViewshedSettingsVC, didUpdateFrustumOutlineVisibility frustumOutlineVisibility:Bool) {
         viewshed.isFrustumOutlineVisible = frustumOutlineVisibility

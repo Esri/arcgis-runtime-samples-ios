@@ -23,25 +23,33 @@ protocol BlendRendererSettingsVCDelegate: AnyObject {
 
 class BlendRendererSettingsVC: UITableViewController {
 
-    @IBOutlet var altitudeSlider: UISlider!
-    @IBOutlet var altitudeLabel: UILabel!
-    @IBOutlet var azimuthSlider: UISlider!
-    @IBOutlet var azimuthLabel: UILabel!
-    @IBOutlet var slopeTypePicker: HorizontalPicker!
-    @IBOutlet var colorRampPicker: HorizontalPicker!
+    @IBOutlet var altitudeSlider: UISlider?
+    @IBOutlet var altitudeLabel: UILabel?
+    @IBOutlet var azimuthSlider: UISlider?
+    @IBOutlet var azimuthLabel: UILabel?
+    @IBOutlet var slopeTypePicker: HorizontalPicker?
+    @IBOutlet var colorRampPicker: HorizontalPicker?
+    
+    let numberFormatter = NumberFormatter()
     
     var azimuth: Double = 0 {
         didSet {
-            azimuthSlider.value = Float(azimuth)
-            azimuthLabel.text = "\(Int(azimuth))"
+           updateAzimuthControls()
         }
+    }
+    private func updateAzimuthControls() {
+        azimuthSlider?.value = Float(azimuth)
+        azimuthLabel?.text = numberFormatter.string(from: azimuth as NSNumber)
     }
     
     var altitude: Double = 0 {
         didSet {
-            altitudeSlider.value = Float(altitude)
-            altitudeLabel.text = "\(Int(altitude))"
+            updateAltitudeControls()
         }
+    }
+    private func updateAltitudeControls() {
+        altitudeSlider?.value = Float(altitude)
+        altitudeLabel?.text = numberFormatter.string(from: altitude as NSNumber)
     }
 
     var slopeType: AGSSlopeType = .none {
@@ -49,16 +57,19 @@ class BlendRendererSettingsVC: UITableViewController {
             guard slopeType != oldValue else {
                 return
             }
-            switch slopeType {
-            case .none:
-                slopeTypePicker.selectedIndex = 0
-            case .degree:
-                slopeTypePicker.selectedIndex = 1
-            case .percentRise:
-                slopeTypePicker.selectedIndex = 2
-            case .scaled:
-                slopeTypePicker.selectedIndex = 3
-            }
+            updateSlopeTypeControls()
+        }
+    }
+    private func updateSlopeTypeControls() {
+        switch slopeType {
+        case .none:
+            slopeTypePicker?.selectedIndex = 0
+        case .degree:
+            slopeTypePicker?.selectedIndex = 1
+        case .percentRise:
+            slopeTypePicker?.selectedIndex = 2
+        case .scaled:
+            slopeTypePicker?.selectedIndex = 3
         }
     }
     
@@ -67,16 +78,19 @@ class BlendRendererSettingsVC: UITableViewController {
             guard colorRampType != oldValue else {
                 return
             }
-            switch colorRampType {
-            case .none:
-                colorRampPicker.selectedIndex = 0
-            case .elevation:
-                colorRampPicker.selectedIndex = 1
-            case .demLight:
-                colorRampPicker.selectedIndex = 2
-            case .demScreen:
-                colorRampPicker.selectedIndex = 3
-            }
+            updateColorRampControls()
+        }
+    }
+    private func updateColorRampControls() {
+        switch colorRampType {
+        case .none:
+            colorRampPicker?.selectedIndex = 0
+        case .elevation:
+            colorRampPicker?.selectedIndex = 1
+        case .demLight:
+            colorRampPicker?.selectedIndex = 2
+        case .demScreen:
+            colorRampPicker?.selectedIndex = 3
         }
     }
     
@@ -84,10 +98,15 @@ class BlendRendererSettingsVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        slopeTypePicker.delegate = self
-        colorRampPicker.delegate = self
-        slopeTypePicker.options = ["None", "Degree", "Percent Rise", "Scaled"]
-        colorRampPicker.options = ["None", "Elevation", "DEMLight", "DEMScreen"]
+        slopeTypePicker?.delegate = self
+        colorRampPicker?.delegate = self
+        slopeTypePicker?.options = ["None", "Degree", "Percent Rise", "Scaled"]
+        colorRampPicker?.options = ["None", "Elevation", "DEMLight", "DEMScreen"]
+        
+        updateAltitudeControls()
+        updateAzimuthControls()
+        updateSlopeTypeControls()
+        updateColorRampControls()
     }
     
     //MARK: - Actions

@@ -112,7 +112,6 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
                 return CGSize(width: 375, height: height)
             }()
             controller.presentationController?.delegate = self
-            controller.loadViewIfNeeded()
             controller.delegate = self
             controller.altitude = renderer.altitude
             controller.azimuth = renderer.azimuth

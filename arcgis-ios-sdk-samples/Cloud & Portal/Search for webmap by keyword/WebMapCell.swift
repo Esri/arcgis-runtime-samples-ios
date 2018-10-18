@@ -23,36 +23,5 @@ class WebMapCell: UICollectionViewCell {
     @IBOutlet weak var thumbnail:UIImageView!
     @IBOutlet weak var timerLabel:UILabel!
     @IBOutlet weak var ownerLabel:UILabel!
-    
-    var portalItem:AGSPortalItem! {
-        didSet {
-            
-            if portalItem != nil {
-                self.titleLabel.text = portalItem.title
-                self.ownerLabel.text = portalItem.owner
-                
-                //imageview border
-                self.thumbnail.layer.borderColor = UIColor.darkGray.cgColor
-                self.thumbnail.layer.borderWidth = 1
-                
-                //time label
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateStyle = .medium
-                self.timerLabel.text = dateFormatter.string(from: portalItem.modified!)
-                
-                self.thumbnail.image = UIImage(named: "Placeholder")
-                
-                portalItem.thumbnail?.load(completion: { [weak self] (error: Error?) -> Void in
-                    if let error = error {
-                        print("Error downloading thumbnail :: \(error.localizedDescription)")
-                    }
-                    else {
-                        if let image = self?.portalItem.thumbnail?.image {
-                            self?.thumbnail.image = image
-                        }
-                    }
-                })
-            }
-        }
-    }
+
 }

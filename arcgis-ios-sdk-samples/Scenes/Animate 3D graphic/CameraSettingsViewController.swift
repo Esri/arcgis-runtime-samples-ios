@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class CameraSettingsViewController: UIViewController {
+class CameraSettingsViewController: UITableViewController {
 
     weak var orbitGeoElementCameraController:AGSOrbitGeoElementCameraController?
     
@@ -139,11 +139,6 @@ class CameraSettingsViewController: UIViewController {
         
         //update property
         self.orbitGeoElementCameraController?.isAutoRollEnabled = sender.isOn
-    }
-    
-    @IBAction private func closeAction() {
-        
-        self.dismiss(animated: true, completion: nil)
     }
     
     deinit {

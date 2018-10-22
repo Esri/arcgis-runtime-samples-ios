@@ -2061,9 +2061,9 @@
 		3EABC7C51DB1941000C161C6 /* Blend renderer */ = {
 			isa = PBXGroup;
 			children = (
+				3EABC7C61DB1947500C161C6 /* BlendRenderer.storyboard */,
 				3EABC7C81DB1947500C161C6 /* BlendRendererViewController.swift */,
 				3EABC7C71DB1947500C161C6 /* BlendRendererSettingsVC.swift */,
-				3EABC7C61DB1947500C161C6 /* BlendRenderer.storyboard */,
 			);
 			path = "Blend renderer";
 			sourceTree = "<group>";

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VF5-Hj-Cnv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VF5-Hj-Cnv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,9 +25,12 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="lJZ-NH-INO"/>
-                                    <barButtonItem title="Edit renderer" id="Ppe-Rb-eKC">
+                                    <barButtonItem title="Edit Renderer" id="Ppe-Rb-eKC">
                                         <connections>
                                             <action selector="editRendererAction" destination="VF5-Hj-Cnv" id="UCa-8A-0nL"/>
+                                            <segue destination="7Xb-KM-0Pa" kind="popoverPresentation" popoverAnchorBarButtonItem="Ppe-Rb-eKC" id="NAD-th-4UL">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="8DP-eP-zdt"/>
@@ -38,52 +40,21 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sHN-H8-Es1">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Pof-Bd-aO2">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="183" translatesAutoresizingMaskIntoConstraints="NO" id="cPJ-en-MgC">
-                                            <rect key="frame" x="37.5" y="232" width="300" height="183"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.69562500000000005" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="300" id="Mpu-op-wTr"/>
-                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="183" id="XmW-XV-f6V"/>
-                                            </constraints>
-                                            <connections>
-                                                <segue destination="AdG-Ib-9Pp" kind="embed" identifier="StretchRendererSettingsVCSegue" id="X5d-ED-mHM"/>
-                                            </connections>
-                                        </containerView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="cPJ-en-MgC" firstAttribute="centerY" secondItem="Pof-Bd-aO2" secondAttribute="centerY" id="JSn-eA-oAh"/>
-                                        <constraint firstItem="cPJ-en-MgC" firstAttribute="centerX" secondItem="Pof-Bd-aO2" secondAttribute="centerX" id="aKm-Ma-fdP"/>
-                                    </constraints>
-                                </view>
-                                <blurEffect style="extraLight"/>
-                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="sHN-H8-Es1" secondAttribute="bottom" id="06f-fm-GhP"/>
-                            <constraint firstItem="sHN-H8-Es1" firstAttribute="top" secondItem="sXs-qf-sRG" secondAttribute="top" id="Ckg-aw-LPh"/>
                             <constraint firstItem="sXs-qf-sRG" firstAttribute="bottom" secondItem="McT-1Y-bMQ" secondAttribute="bottom" id="Ms2-zY-BFH"/>
-                            <constraint firstAttribute="trailing" secondItem="sHN-H8-Es1" secondAttribute="trailing" id="Ns0-3D-IHa"/>
                             <constraint firstItem="WC1-II-BvW" firstAttribute="bottom" secondItem="McT-1Y-bMQ" secondAttribute="top" id="VIJ-Ox-TQ0"/>
                             <constraint firstItem="McT-1Y-bMQ" firstAttribute="leading" secondItem="sXs-qf-sRG" secondAttribute="leading" id="WVi-Xf-how"/>
                             <constraint firstItem="McT-1Y-bMQ" firstAttribute="trailing" secondItem="sXs-qf-sRG" secondAttribute="trailing" id="bLk-jd-5Qb"/>
                             <constraint firstItem="WC1-II-BvW" firstAttribute="top" secondItem="sXs-qf-sRG" secondAttribute="top" id="cAj-sA-XZl"/>
                             <constraint firstItem="WC1-II-BvW" firstAttribute="leading" secondItem="PND-Qg-Xfs" secondAttribute="leading" id="cHZ-JC-mzX"/>
-                            <constraint firstItem="sHN-H8-Es1" firstAttribute="leading" secondItem="PND-Qg-Xfs" secondAttribute="leading" id="dc9-Wj-ze7"/>
                             <constraint firstAttribute="trailing" secondItem="WC1-II-BvW" secondAttribute="trailing" id="slo-a8-Zn0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sXs-qf-sRG"/>
                     </view>
                     <connections>
-                        <outlet property="containerView" destination="cPJ-en-MgC" id="Vak-nZ-WT0"/>
                         <outlet property="mapView" destination="WC1-II-BvW" id="rk4-3Y-HJZ"/>
-                        <outlet property="visualEffectView" destination="sHN-H8-Es1" id="j5j-34-G96"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lc4-AM-1RQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -91,259 +62,231 @@
             <point key="canvasLocation" x="339" y="421"/>
         </scene>
         <!--Stretch Renderer SettingsVC-->
-        <scene sceneID="dv4-05-kb8">
+        <scene sceneID="Ovi-lM-FY0">
             <objects>
-                <viewController id="AdG-Ib-9Pp" customClass="StretchRendererSettingsVC" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Bjm-K7-1TW">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="183"/>
+                <tableViewController id="7Xb-KM-0Pa" customClass="StretchRendererSettingsVC" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9LI-4i-5nc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LHD-ec-OBM">
-                                <rect key="frame" x="0.0" y="5" width="300" height="132"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Row0" textLabel="gia-M3-gsR" style="IBUITableViewCellStyleDefault" id="E7h-iH-cPX">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E7h-iH-cPX" id="2y8-ci-qaN">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Stretch Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="gia-M3-gsR">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="132" id="jsY-ho-LwM"/>
-                                </constraints>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Row0" id="E7h-iH-cPX" customClass="StretchRendererTypeCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="300" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E7h-iH-cPX" id="2y8-ci-qaN">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stretch type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3f-zs-cGk">
-                                                    <rect key="frame" x="15" y="11" width="95" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDU-CU-w0b" customClass="HorizontalPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                                    <rect key="frame" x="115" y="2" width="180" height="40"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="b7r-fl-Ias"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="e3f-zs-cGk" firstAttribute="centerY" secondItem="2y8-ci-qaN" secondAttribute="centerY" id="7Ux-KG-dum"/>
-                                                <constraint firstItem="cDU-CU-w0b" firstAttribute="centerY" secondItem="2y8-ci-qaN" secondAttribute="centerY" id="86G-1h-j2Z"/>
-                                                <constraint firstItem="cDU-CU-w0b" firstAttribute="leading" secondItem="e3f-zs-cGk" secondAttribute="trailing" constant="5" id="H8v-LP-Xm5"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="e3f-zs-cGk" secondAttribute="leading" id="Y8x-zO-nwu"/>
-                                                <constraint firstAttribute="trailing" secondItem="cDU-CU-w0b" secondAttribute="trailing" constant="5" id="sec-qj-AZt"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <outlet property="horizontalPicker" destination="cDU-CU-w0b" id="pO1-un-bwX"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MinMaxRow1" id="xFi-ly-tIa" customClass="StretchRendererInputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="300" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xFi-ly-tIa" id="0iw-9W-4gF">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEu-uw-LFO">
-                                                    <rect key="frame" x="15" y="11" width="73" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XL5-ej-hJG">
-                                                    <rect key="frame" x="96" y="7" width="50" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="yKa-oc-OIs"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="YEu-uw-LFO" firstAttribute="centerY" secondItem="0iw-9W-4gF" secondAttribute="centerY" id="7S4-uh-ovJ"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="YEu-uw-LFO" secondAttribute="leading" id="Gid-u3-U9v"/>
-                                                <constraint firstItem="XL5-ej-hJG" firstAttribute="centerY" secondItem="0iw-9W-4gF" secondAttribute="centerY" id="HML-sj-kDK"/>
-                                                <constraint firstItem="XL5-ej-hJG" firstAttribute="leading" secondItem="YEu-uw-LFO" secondAttribute="trailing" constant="8" id="x3F-Dd-4RM"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <outlet property="textField" destination="XL5-ej-hJG" id="EMs-sp-VR8"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MinMaxRow2" id="fJI-ML-x2n" customClass="StretchRendererInputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="116" width="300" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fJI-ML-x2n" id="UBZ-To-n87">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNm-PJ-X1b">
-                                                    <rect key="frame" x="15" y="11" width="77" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="255" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lnL-r0-Bht">
-                                                    <rect key="frame" x="100" y="7" width="50" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="Kbn-SZ-4jk"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="leadingMargin" secondItem="eNm-PJ-X1b" secondAttribute="leading" id="B8Z-7x-vGn"/>
-                                                <constraint firstItem="eNm-PJ-X1b" firstAttribute="centerY" secondItem="UBZ-To-n87" secondAttribute="centerY" id="HHP-A0-oGp"/>
-                                                <constraint firstItem="lnL-r0-Bht" firstAttribute="centerY" secondItem="UBZ-To-n87" secondAttribute="centerY" id="Iba-EX-GIq"/>
-                                                <constraint firstItem="lnL-r0-Bht" firstAttribute="leading" secondItem="eNm-PJ-X1b" secondAttribute="trailing" constant="8" id="vpE-L8-jqd"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <outlet property="textField" destination="lnL-r0-Bht" id="RLm-ix-Img"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PercentClipRow1" id="dk6-WW-bKw" customClass="StretchRendererInputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="160" width="300" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dk6-WW-bKw" id="vrR-8h-zsR">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGX-WW-jAO">
-                                                    <rect key="frame" x="8" y="11" width="28" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eKZ-rd-UN0">
-                                                    <rect key="frame" x="44" y="7" width="50" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="AzO-yI-Ooa"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="MGX-WW-jAO" firstAttribute="centerY" secondItem="vrR-8h-zsR" secondAttribute="centerY" id="9gi-Zj-TtD"/>
-                                                <constraint firstItem="eKZ-rd-UN0" firstAttribute="leading" secondItem="MGX-WW-jAO" secondAttribute="trailing" constant="8" id="PUI-Jg-Q4e"/>
-                                                <constraint firstItem="eKZ-rd-UN0" firstAttribute="centerY" secondItem="vrR-8h-zsR" secondAttribute="centerY" id="d7u-W0-nIm"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="MGX-WW-jAO" secondAttribute="leading" id="tg2-QB-Nf0"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <outlet property="textField" destination="eKZ-rd-UN0" id="m4V-Zu-1tW"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PercentClipRow2" id="cd2-OH-OjQ" customClass="StretchRendererInputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="204" width="300" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cd2-OH-OjQ" id="ic1-uD-bPx">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvJ-qy-TXr">
-                                                    <rect key="frame" x="8" y="11" width="32" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vqJ-4x-Ttq">
-                                                    <rect key="frame" x="48" y="7" width="50" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="hAU-EM-D8g"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="vqJ-4x-Ttq" firstAttribute="centerY" secondItem="ic1-uD-bPx" secondAttribute="centerY" id="3q7-YD-ely"/>
-                                                <constraint firstItem="vqJ-4x-Ttq" firstAttribute="leading" secondItem="jvJ-qy-TXr" secondAttribute="trailing" constant="8" id="JdT-au-4ul"/>
-                                                <constraint firstItem="jvJ-qy-TXr" firstAttribute="centerY" secondItem="ic1-uD-bPx" secondAttribute="centerY" id="dEM-oQ-uLR"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="jvJ-qy-TXr" secondAttribute="leading" id="wDC-9n-4cT"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <outlet property="textField" destination="vqJ-4x-Ttq" id="UKQ-Ku-saA"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StandardDeviationRow1" id="Tgx-VZ-Bro" customClass="StretchRendererInputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="248" width="300" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tgx-VZ-Bro" id="Xm2-Ap-9KJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Factor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEn-T2-3xh">
-                                                    <rect key="frame" x="8" y="11" width="48.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qox-D5-uQT">
-                                                    <rect key="frame" x="64" y="7" width="50" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="v2k-jD-mSV"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="zEn-T2-3xh" firstAttribute="centerY" secondItem="Xm2-Ap-9KJ" secondAttribute="centerY" id="KLB-gQ-3H1"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="zEn-T2-3xh" secondAttribute="leading" id="NSe-Oc-F7A"/>
-                                                <constraint firstItem="qox-D5-uQT" firstAttribute="centerY" secondItem="Xm2-Ap-9KJ" secondAttribute="centerY" id="QhL-k1-p7M"/>
-                                                <constraint firstItem="qox-D5-uQT" firstAttribute="leading" secondItem="zEn-T2-3xh" secondAttribute="trailing" constant="8" id="rPI-RL-ZUE"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <outlet property="textField" destination="qox-D5-uQT" id="IlS-Jp-nH5"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="AdG-Ib-9Pp" id="7Nb-ft-89R"/>
+                                    <outlet property="accessoryView" destination="cDU-CU-w0b" id="O97-Mg-Wbu"/>
                                 </connections>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdB-Wq-M18">
-                                <rect key="frame" x="126" y="145" width="49" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="qmK-eS-B7b"/>
-                                </constraints>
-                                <state key="normal" title="Render"/>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MinMaxRow1" id="xFi-ly-tIa" customClass="StretchRendererInputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xFi-ly-tIa" id="0iw-9W-4gF">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEu-uw-LFO">
+                                            <rect key="frame" x="16" y="11.5" width="74.5" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XL5-ej-hJG">
+                                            <rect key="frame" x="98.5" y="11.5" width="260.5" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            <connections>
+                                                <action selector="textFieldAction:" destination="7Xb-KM-0Pa" eventType="editingDidEnd" id="0K9-3B-Ggp"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="YEu-uw-LFO" firstAttribute="centerY" secondItem="0iw-9W-4gF" secondAttribute="centerY" id="7S4-uh-ovJ"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="YEu-uw-LFO" secondAttribute="leading" id="Gid-u3-U9v"/>
+                                        <constraint firstItem="XL5-ej-hJG" firstAttribute="centerY" secondItem="0iw-9W-4gF" secondAttribute="centerY" id="HML-sj-kDK"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="XL5-ej-hJG" secondAttribute="trailing" id="oRL-iN-mlm"/>
+                                        <constraint firstItem="XL5-ej-hJG" firstAttribute="leading" secondItem="YEu-uw-LFO" secondAttribute="trailing" constant="8" id="x3F-Dd-4RM"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <action selector="renderAction" destination="AdG-Ib-9Pp" eventType="touchUpInside" id="QB0-QD-KDY"/>
+                                    <outlet property="textField" destination="XL5-ej-hJG" id="EMs-sp-VR8"/>
                                 </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="dBL-YR-jzc" firstAttribute="trailing" secondItem="LHD-ec-OBM" secondAttribute="trailing" id="8iC-RA-yER"/>
-                            <constraint firstItem="LHD-ec-OBM" firstAttribute="top" secondItem="dBL-YR-jzc" secondAttribute="top" constant="5" id="D3R-Bd-ZJA"/>
-                            <constraint firstItem="LHD-ec-OBM" firstAttribute="leading" secondItem="dBL-YR-jzc" secondAttribute="leading" id="LTa-Wd-12Q"/>
-                            <constraint firstItem="dBL-YR-jzc" firstAttribute="bottom" secondItem="YdB-Wq-M18" secondAttribute="bottom" constant="8" id="Une-S6-guP"/>
-                            <constraint firstItem="YdB-Wq-M18" firstAttribute="top" secondItem="LHD-ec-OBM" secondAttribute="bottom" constant="8" id="bub-nL-zlW"/>
-                            <constraint firstItem="YdB-Wq-M18" firstAttribute="centerX" secondItem="dBL-YR-jzc" secondAttribute="centerX" id="d3f-an-YxH"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="dBL-YR-jzc"/>
-                    </view>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MinMaxRow2" id="fJI-ML-x2n" customClass="StretchRendererInputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fJI-ML-x2n" id="UBZ-To-n87">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNm-PJ-X1b">
+                                            <rect key="frame" x="16" y="11.5" width="285" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="255" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lnL-r0-Bht">
+                                            <rect key="frame" x="309" y="11.5" width="50" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="Kbn-SZ-4jk"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            <connections>
+                                                <action selector="textFieldAction:" destination="7Xb-KM-0Pa" eventType="editingDidEnd" id="DWC-qR-0jP"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="leadingMargin" secondItem="eNm-PJ-X1b" secondAttribute="leading" id="B8Z-7x-vGn"/>
+                                        <constraint firstItem="eNm-PJ-X1b" firstAttribute="centerY" secondItem="UBZ-To-n87" secondAttribute="centerY" id="HHP-A0-oGp"/>
+                                        <constraint firstItem="lnL-r0-Bht" firstAttribute="centerY" secondItem="UBZ-To-n87" secondAttribute="centerY" id="Iba-EX-GIq"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="lnL-r0-Bht" secondAttribute="trailing" id="JFT-bq-EuC"/>
+                                        <constraint firstItem="lnL-r0-Bht" firstAttribute="leading" secondItem="eNm-PJ-X1b" secondAttribute="trailing" constant="8" id="vpE-L8-jqd"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="textField" destination="lnL-r0-Bht" id="RLm-ix-Img"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PercentClipRow1" id="dk6-WW-bKw" customClass="StretchRendererInputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="160" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dk6-WW-bKw" id="vrR-8h-zsR">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGX-WW-jAO">
+                                            <rect key="frame" x="16" y="11.5" width="28" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eKZ-rd-UN0">
+                                            <rect key="frame" x="52" y="11.5" width="307" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            <connections>
+                                                <action selector="textFieldAction:" destination="7Xb-KM-0Pa" eventType="editingDidEnd" id="VA5-0I-Si9"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="MGX-WW-jAO" firstAttribute="centerY" secondItem="vrR-8h-zsR" secondAttribute="centerY" id="9gi-Zj-TtD"/>
+                                        <constraint firstItem="eKZ-rd-UN0" firstAttribute="leading" secondItem="MGX-WW-jAO" secondAttribute="trailing" constant="8" id="PUI-Jg-Q4e"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="eKZ-rd-UN0" secondAttribute="trailing" id="Tp8-CO-NXy"/>
+                                        <constraint firstItem="eKZ-rd-UN0" firstAttribute="centerY" secondItem="vrR-8h-zsR" secondAttribute="centerY" id="d7u-W0-nIm"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="MGX-WW-jAO" secondAttribute="leading" id="tg2-QB-Nf0"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="textField" destination="eKZ-rd-UN0" id="m4V-Zu-1tW"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PercentClipRow2" id="cd2-OH-OjQ" customClass="StretchRendererInputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="204" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cd2-OH-OjQ" id="ic1-uD-bPx">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvJ-qy-TXr">
+                                            <rect key="frame" x="16" y="11.5" width="32" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vqJ-4x-Ttq">
+                                            <rect key="frame" x="56" y="11.5" width="303" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            <connections>
+                                                <action selector="textFieldAction:" destination="7Xb-KM-0Pa" eventType="editingDidEnd" id="ntG-Ck-gwr"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="vqJ-4x-Ttq" firstAttribute="centerY" secondItem="ic1-uD-bPx" secondAttribute="centerY" id="3q7-YD-ely"/>
+                                        <constraint firstItem="vqJ-4x-Ttq" firstAttribute="leading" secondItem="jvJ-qy-TXr" secondAttribute="trailing" constant="8" id="JdT-au-4ul"/>
+                                        <constraint firstItem="jvJ-qy-TXr" firstAttribute="centerY" secondItem="ic1-uD-bPx" secondAttribute="centerY" id="dEM-oQ-uLR"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="vqJ-4x-Ttq" secondAttribute="trailing" id="ssY-fh-STG"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="jvJ-qy-TXr" secondAttribute="leading" id="wDC-9n-4cT"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="textField" destination="vqJ-4x-Ttq" id="UKQ-Ku-saA"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StandardDeviationRow1" id="Tgx-VZ-Bro" customClass="StretchRendererInputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="248" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tgx-VZ-Bro" id="Xm2-Ap-9KJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Factor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEn-T2-3xh">
+                                            <rect key="frame" x="16" y="11.5" width="48.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qox-D5-uQT">
+                                            <rect key="frame" x="72.5" y="11.5" width="286.5" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            <connections>
+                                                <action selector="textFieldAction:" destination="7Xb-KM-0Pa" eventType="editingDidEnd" id="Zbu-1k-Mmy"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="qox-D5-uQT" secondAttribute="trailing" id="9KP-lf-N64"/>
+                                        <constraint firstItem="zEn-T2-3xh" firstAttribute="centerY" secondItem="Xm2-Ap-9KJ" secondAttribute="centerY" id="KLB-gQ-3H1"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="zEn-T2-3xh" secondAttribute="leading" id="NSe-Oc-F7A"/>
+                                        <constraint firstItem="qox-D5-uQT" firstAttribute="centerY" secondItem="Xm2-Ap-9KJ" secondAttribute="centerY" id="QhL-k1-p7M"/>
+                                        <constraint firstItem="qox-D5-uQT" firstAttribute="leading" secondItem="zEn-T2-3xh" secondAttribute="trailing" constant="8" id="rPI-RL-ZUE"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="textField" destination="qox-D5-uQT" id="IlS-Jp-nH5"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="7Xb-KM-0Pa" id="FVc-Hf-DR1"/>
+                            <outlet property="delegate" destination="7Xb-KM-0Pa" id="8iG-yl-lRo"/>
+                        </connections>
+                    </tableView>
                     <connections>
-                        <outlet property="tableView" destination="LHD-ec-OBM" id="jgb-DC-ggm"/>
-                        <outlet property="tableViewHeightConstraint" destination="jsY-ho-LwM" id="GvV-V0-xOh"/>
+                        <outlet property="stretchTypePicker" destination="cDU-CU-w0b" id="mLz-QQ-OMv"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0m9-IL-Ppy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bw5-wi-TBd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDU-CU-w0b" customClass="HorizontalPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="169" height="40"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <viewLayoutGuide key="safeArea" id="rEe-dt-DDu"/>
+                </view>
             </objects>
-            <point key="canvasLocation" x="1136" y="421"/>
+            <point key="canvasLocation" x="1074" y="421"/>
         </scene>
     </scenes>
 </document>

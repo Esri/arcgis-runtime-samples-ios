@@ -15,7 +15,7 @@
 import UIKit
 
 
-protocol WorldAddressesVCDelegate:class {
+protocol WorldAddressesVCDelegate: AnyObject {
     func worldAddressesViewController(_ worldAddressesViewController: WorldAddressesViewController, didSelectAddress address:String)
 }
     

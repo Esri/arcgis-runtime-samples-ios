@@ -54,7 +54,7 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["Animate3DGraphicViewController", "MissionSettingsViewController", "CameraSettingsViewController", "PlaneStatsViewController"]
         
         //map
-        let map = AGSMap(basemap: AGSBasemap.streets())
+        let map = AGSMap(basemap: .streets())
         self.mapView.map = map
         self.mapView.interactionOptions.isEnabled = false
         
@@ -65,13 +65,15 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
         self.mapView.isAttributionTextVisible = false
         
         //initalize scene with imagery basemap
-        let scene = AGSScene(basemap: AGSBasemap.imagery())
+        let scene = AGSScene(basemap: .imagery())
         
         //assign scene to scene view
         self.sceneView.scene = scene
         
+        /// The url of the Terrain 3D ArcGIS REST Service.
+        let worldElevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
         //elevation source
-        let elevationSource = AGSArcGISTiledElevationSource(url: URL(string: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!)
+        let elevationSource = AGSArcGISTiledElevationSource(url: worldElevationServiceURL)
         
         //surface
         let surface = AGSSurface()
@@ -210,7 +212,7 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
         
         //new timer
         self.animationTimer = Timer(timeInterval: duration, target: self, selector: #selector(animate), userInfo: nil, repeats: true)
-        RunLoop.main.add(self.animationTimer, forMode: RunLoopMode.commonModes)
+        RunLoop.main.add(self.animationTimer, forMode: .common)
     }
     
     @objc func animate() {

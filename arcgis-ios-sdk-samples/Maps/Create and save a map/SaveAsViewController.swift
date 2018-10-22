@@ -14,7 +14,7 @@
 
 import UIKit
 
-protocol SaveAsVCDelegate:class {
+protocol SaveAsVCDelegate: AnyObject {
     func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String)
     func saveAsViewControllerDidCancel(_ saveAsViewController:SaveAsViewController)
 }
@@ -52,7 +52,7 @@ class SaveAsViewController: UIViewController {
         //Validations
         guard let title = self.titleTextField.text, let tagsText = self.tagsTextField.text else {
             //show error message
-            SVProgressHUD.showError(withStatus: "Title and tags are required fields")
+            presentAlert(message: "Title and tags are required fields")
             return
         }
         
@@ -62,4 +62,5 @@ class SaveAsViewController: UIViewController {
         let itemDescription = descriptionTextView.text ?? ""
         self.delegate?.saveAsViewController(self, didInitiateSaveWithTitle: title, tags: tags, itemDescription: itemDescription)
     }
+
 }

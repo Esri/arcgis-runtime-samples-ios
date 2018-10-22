@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc protocol DownloadProgressViewDelegate:class {
+@objc protocol DownloadProgressViewDelegate: AnyObject {
     
     @objc optional func downloadProgressViewDidCancel(downloadProgressView:DownloadProgressView)
 }
@@ -56,7 +56,7 @@ class DownloadProgressView: UIView {
         self.nibView = self.loadViewFromNib()
         
         self.nibView.frame = self.bounds
-        nibView.autoresizingMask = [UIViewAutoresizing.flexibleHeight, .flexibleWidth]
+        nibView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         self.addSubview(self.nibView)
         
@@ -146,7 +146,7 @@ class DownloadProgressView: UIView {
         
         if animated {
             //create animation
-            let animation = CABasicAnimation(keyPath: "strokeEnd")
+            let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.strokeEnd))
             animation.duration = 0.2
             animation.fromValue = self.shapeLayer.strokeEnd
             animation.toValue = self.progress

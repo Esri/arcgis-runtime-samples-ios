@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-protocol FeatureTemplatePickerDelegate:class {
+protocol FeatureTemplatePickerDelegate: AnyObject {
     func featureTemplatePickerViewControllerWantsToDismiss(_ controller:FeatureTemplatePickerViewController)
     func featureTemplatePickerViewController(_ controller:FeatureTemplatePickerViewController, didSelectFeatureTemplate template:AGSFeatureTemplate, forFeatureLayer featureLayer:AGSFeatureLayer)
 }

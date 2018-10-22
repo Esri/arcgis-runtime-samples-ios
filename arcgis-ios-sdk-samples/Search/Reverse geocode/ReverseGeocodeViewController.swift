@@ -34,7 +34,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ReverseGeocodeViewController"]
         
         //create an instance of a map with ESRI topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.topographic())
+        self.map = AGSMap(basemap: .topographic())
         
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
@@ -75,7 +75,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.cancelable = self.locatorTask.reverseGeocode(withLocation: normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) -> Void in
             if let error = error as NSError? {
                 if error.code != NSUserCancelledError { //user canceled error
-                    self?.showAlert(error.localizedDescription)
+                    self?.presentAlert(error: error)
                 }
             }
             else {
@@ -85,7 +85,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
                     return
                 }
                 else {
-                    self?.showAlert("No address found")
+                    self?.presentAlert(message: "No address found")
                 }
             }
             self?.graphicsOverlay.graphics.remove(graphic)
@@ -114,11 +114,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.callout.isAccessoryButtonHidden = true
         self.mapView.callout.show(for: graphic, tapLocation: tapLocation, animated: true)
     }
-    
-    private func showAlert(_ message:String) {
-        SVProgressHUD.showError(withStatus: message)
-    }
-    
+
     //MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {

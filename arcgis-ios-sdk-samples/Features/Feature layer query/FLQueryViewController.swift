@@ -19,9 +19,8 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet private weak var mapView:AGSMapView!
     
-    private var map:AGSMap!
-    private var featureTable:AGSServiceFeatureTable!
-    private var featureLayer:AGSFeatureLayer!
+    private var featureTable:AGSServiceFeatureTable?
+    private var featureLayer:AGSFeatureLayer?
     
     private var selectedFeatures = [AGSFeature]()
     
@@ -29,65 +28,90 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FLQueryViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FLQueryViewController"]
         
-        //initialize map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.topographic())
-        //assign map to the map view
-        self.mapView.map = self.map
+        // initialize map with topographic basemap
+        let map = AGSMap(basemap: .topographic())
+        // assign map to the map view
+        mapView.map = map
         
-        //create feature table using a url
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer/2")!)
-        //create feature layer using this feature table
-        self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
-        self.featureLayer.selectionWidth = 5
+        /// The url of a map service layer containing sample census data of United States counties.
+        let statesFeatureTableURL = URL(string: "https://services.arcgis.com/jIL9msH9OI208GCb/arcgis/rest/services/USA_Daytime_Population_2016/FeatureServer/0")!
+        // create feature table using a url
+        let featureTable = AGSServiceFeatureTable(url: statesFeatureTableURL)
+        self.featureTable = featureTable
         
-        //set a new renderer
+        // create feature layer using this feature table
+        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        self.featureLayer = featureLayer
+        // show the layer at all scales
+        featureLayer.minScale = 0
+        featureLayer.maxScale = 0
+        
+        // set a new renderer
         let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 1)
         let fillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor.yellow.withAlphaComponent(0.5), outline: lineSymbol)
-        self.featureLayer.renderer = AGSSimpleRenderer(symbol: fillSymbol)
+        featureLayer.renderer = AGSSimpleRenderer(symbol: fillSymbol)
         
-        //add feature layer to the map
-        self.map.operationalLayers.add(self.featureLayer)
-        //zoom to a custom viewpoint
-        self.mapView.setViewpointCenter(AGSPoint(x: -11e6, y: 5e6, spatialReference: AGSSpatialReference.webMercator()), scale: 9e7, completion: nil)
+        // add feature layer to the map
+        map.operationalLayers.add(featureLayer)
+        
+        // center the layer
+        mapView.setViewpointCenter(AGSPoint(x: -11e6, y: 5e6, spatialReference: .webMercator()), scale: 9e7)
     }
     
-    func queryForState(_ state:String) {
-        //un select if any features already selected
-        if self.selectedFeatures.count > 0 {
-            self.featureLayer.unselectFeatures(self.selectedFeatures)
+    func selectFeaturesForSearchTerm(_ searchTerm:String) {
+        
+        guard let featureLayer = featureLayer,
+            let featureTable = featureTable else {
+                return
+        }
+        
+        // deselect all selected features
+        if selectedFeatures.count > 0 {
+            featureLayer.unselectFeatures(selectedFeatures)
+            selectedFeatures.removeAll()
         }
         
         let queryParams = AGSQueryParameters()
-        queryParams.whereClause = "upper(STATE_NAME) LIKE '%\(state.uppercased())%'"
-
-        self.featureTable.queryFeatures(with: queryParams, completion: { [weak self] (result:AGSFeatureQueryResult?, error:Error?) -> Void in
+        queryParams.whereClause = "upper(STATE_NAME) LIKE '%\(searchTerm.uppercased())%'"
+        
+        featureTable.queryFeatures(with: queryParams) { [weak self] (result:AGSFeatureQueryResult?, error:Error?) in
+            
+            guard let self = self else {
+                return
+            }
+            
             if let error = error {
-                print(error.localizedDescription)
-                //update selected features array
-                self?.selectedFeatures.removeAll(keepingCapacity: false)
+                // display the error as an alert
+                self.presentAlert(error: error)
             }
             else if let features = result?.featureEnumerator().allObjects {
                 if features.count > 0 {
-                    self?.featureLayer.select(features)
-                    //zoom to the selected feature
-                    self?.mapView.setViewpointGeometry(features[0].geometry!, padding: 80, completion: nil)
+                    // display the selection
+                    featureLayer.select(features)
+                    
+                    // zoom to the selected feature
+                    self.mapView.setViewpointGeometry(features[0].geometry!, padding: 25)
+                    
+                } else {
+                    if let fullExtent = featureLayer.fullExtent {
+                        // no matches, zoom to show everything in the layer
+                        self.mapView.setViewpointGeometry(fullExtent, padding: 50)
+                    }
                 }
-                else {
-                    SVProgressHUD.showError(withStatus: "No state by that name")
-                }
-                //update selected features array
-                self?.selectedFeatures = features 
+                
+                // update selected features array
+                self.selectedFeatures = features
             }
-        })
+        }
     }
     
     //MARK: - Search bar delegate
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text {
-            self.queryForState(text)
+            selectFeaturesForSearchTerm(text)
         }
         searchBar.resignFirstResponder()
     }

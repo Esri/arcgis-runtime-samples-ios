@@ -19,62 +19,78 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     @IBOutlet private weak var mapView:AGSMapView!
     
-    private var map:AGSMap!
-    private var featureTable:AGSServiceFeatureTable!
-    private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancelable!
-    private var selectedFeatures:[AGSFeature]!
-    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
-    
+    private var featureLayer:AGSFeatureLayer?
+    // the query is retained internally by the SDK so use a weak reference
+    private weak var activeSelectionQuery:AGSCancelable?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FLSelectionViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FLSelectionViewController"]
         
         //initialize map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.streets())
+        let map = AGSMap(basemap: .streets())
         //initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -1131596.019761, yMin: 3893114.069099, xMax: 3926705.982140, yMax: 7977912.461790, spatialReference: AGSSpatialReference.webMercator()))
+        map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -180, yMin: -90, xMax: 180, yMax: 90, spatialReference: AGSSpatialReference.wgs84()))
+        
         //assign map to the map view
-        self.mapView.map = self.map
-        self.mapView.touchDelegate = self
+        mapView.map = map
+        mapView.touchDelegate = self
+        
+        let featureServiceURL = URL(string: "https://services1.arcgis.com/4yjifSiIG17X0gW4/arcgis/rest/services/GDP_per_capita_1960_2016/FeatureServer/0")!
         
         //create feature table using a url
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: FEATURE_SERVICE_URL)!)
+        let featureTable = AGSServiceFeatureTable(url: featureServiceURL)
+        
         //create feature layer using this feature table
-        self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
-        self.featureLayer.selectionColor = .cyan
-        self.featureLayer.selectionWidth = 3
+        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        self.featureLayer = featureLayer
+        
         //add feature layer to the map
-        self.map.operationalLayers.add(self.featureLayer)
+        map.operationalLayers.add(featureLayer)
+        
+        mapView.selectionProperties.color = .cyan
     }
     
     //MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        if let lastQuery = self.lastQuery{
-            lastQuery.cancel()
+        
+        //cancel the active query if it hasn't been completed yet
+        if let activeSelectionQuery = activeSelectionQuery{
+            activeSelectionQuery.cancel()
         }
         
-        let tolerance:Double = 12
-        let mapTolerance = tolerance * self.mapView.unitsPerPoint
-        let envelope = AGSEnvelope(xMin: mapPoint.x - mapTolerance,
-            yMin: mapPoint.y - mapTolerance,
-            xMax: mapPoint.x + mapTolerance,
-            yMax: mapPoint.y + mapTolerance,
-            spatialReference: self.map.spatialReference)
+        guard let map = mapView.map,
+            let featureLayer = featureLayer else{
+                return
+        }
         
+        //tolerance level
+        let toleranceInPoints: Double = 12
+        //use tolerance to compute the envelope for query
+        let toleranceInMapUnits = toleranceInPoints * mapView.unitsPerPoint
+        let envelope = AGSEnvelope(xMin: mapPoint.x - toleranceInMapUnits,
+                                   yMin: mapPoint.y - toleranceInMapUnits,
+                                   xMax: mapPoint.x + toleranceInMapUnits,
+                                   yMax: mapPoint.y + toleranceInMapUnits,
+                                   spatialReference: map.spatialReference)
+        
+        //create query parameters object
         let queryParams = AGSQueryParameters()
         queryParams.geometry = envelope
         
-        self.featureLayer.selectFeatures(withQuery: queryParams, mode: AGSSelectionMode.new) { (queryResult:AGSFeatureQueryResult?, error:Error?) -> Void in
+        //run the selection query
+        activeSelectionQuery = featureLayer.selectFeatures(withQuery: queryParams, mode: .new) { [weak self] (queryResult: AGSFeatureQueryResult?, error: Error?) -> Void in
+            
             if let error = error {
-                print(error)
+                self?.presentAlert(error: error)
             }
             if let result = queryResult {
                 print("\(result.featureEnumerator().allObjects.count) feature(s) selected")
             }
         }
     }
+    
 }

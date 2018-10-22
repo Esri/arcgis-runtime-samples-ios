@@ -21,7 +21,8 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var getStatisticsButton: UIBarButtonItem!
     @IBOutlet private weak var tableView: UITableView!
-    private var serviceFeatureTable: AGSServiceFeatureTable!
+    
+    private var serviceFeatureTable: AGSServiceFeatureTable?
     private var fieldNames = [String]()
     private var selectedGroupByFieldNames = [String]()
     private var orderByFields = [AGSOrderBy]()
@@ -29,10 +30,6 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     private var statisticDefinitions = [AGSStatisticDefinition]()
     private var sectionHeaderTitles = ["1. Add Statistic Definitions", "2. Select Group By Fields", "3. Select Order By Fields"]
     private var statisticTypes = ["Average", "Count", "Maximum", "Minimum", "StandardDeviation", "Sum", "Variance"]
-    private weak var expandableTableViewController: ExpandableTableViewController!
-    private weak var groupByFieldsViewController: GroupByFieldsViewController!
-    private weak var orderByFieldsViewController: OrderByFieldsViewController!
-    private weak var addStatisticDefinitionsViewController: AddStatisticDefinitionsViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,26 +37,33 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         // Add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["StatisticalQueryGroupAndSortViewController", "AddStatisticDefinitionsViewController", "GroupByFieldsViewController", "OrderByFieldsViewController"]
         
+        let serviceURL = URL(string: "https://services.arcgis.com/jIL9msH9OI208GCb/arcgis/rest/services/Counties_Obesity_Inactivity_Diabetes_2013/FeatureServer/0")!
+        
         // Initialize feature table
-        serviceFeatureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3")!)
+        let serviceFeatureTable = AGSServiceFeatureTable(url: serviceURL)
+        self.serviceFeatureTable = serviceFeatureTable
         
         // Load feature table
         serviceFeatureTable.load(completion: { [weak self] (error) in
-            //
+            
+            guard let self = self else {
+                return
+            }
+            
             // If there an error, display it
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription)
+                self.presentAlert(error: error!)
                 return
             }
             
             // Set title
-            let tableName = self?.serviceFeatureTable.tableName
-            self?.titleLabel.text = "Statistics: \(tableName ?? "")"
+            let tableName = serviceFeatureTable.tableName
+            self.titleLabel.text = "Statistics: \(tableName)"
 
             // Get field names
-            for field in (self?.serviceFeatureTable.fields)! {
+            for field in serviceFeatureTable.fields {
                 if field.type != .OID && field.type != .globalID {
-                    self?.fieldNames.append(field.name)
+                    self.fieldNames.append(field.name)
                 }
             }
         })
@@ -69,7 +73,6 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     }
     
     private func setupUI() {
-        //
         // Set corner radius and border for tables
         tableView.layer.cornerRadius = 10
         tableView.layer.borderWidth = 1
@@ -79,11 +82,10 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     // MARK: - Actions
     
     @IBAction private func getStatisticsAction(_ sender: Any) {
-        //
         // There should be at least one statistic
         // definition added to execute the query
         if statisticDefinitions.count == 0 || selectedGroupByFieldNames.count == 0 {
-            SVProgressHUD.showError(withStatus: "There sould be at least one statistic definition and one group by field to execute the query.")
+            presentAlert(message: "There sould be at least one statistic definition and one group by field to execute the query.")
             return
         }
         
@@ -98,47 +100,46 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         
         // Execute the statistical query with parameters
         serviceFeatureTable?.queryStatistics(with: statisticsQueryParameters, completion: { [weak self] (statisticsQueryResult, error) in
-            //
+            
+            guard let self = self else {
+                return
+            }
+            
             // If there an error, display it
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription)
+                self.presentAlert(error: error!)
                 return
             }
             
             // Get the result
             if let statisticRecordEnumerator = statisticsQueryResult?.statisticRecordEnumerator() {
-                //
                 // Setup result view controller
                 let storyboard = UIStoryboard(name: "ExpandableTableViewController", bundle: nil)
-                self?.expandableTableViewController = storyboard.instantiateViewController(withIdentifier: "ExpandableTableViewController") as! ExpandableTableViewController
-                self?.expandableTableViewController.tableTitle = "Statistical Query Results"
+                let expandableTableViewController = storyboard.instantiateViewController(withIdentifier: "ExpandableTableViewController") as! ExpandableTableViewController
+                expandableTableViewController.tableTitle = "Statistical Query Results"
                 
                 // Let's build result message
-                while statisticRecordEnumerator.hasNextObject() {
-                    let statisticRecord = statisticRecordEnumerator.nextObject()
+                while let statisticRecord = statisticRecordEnumerator.nextObject() {
                     
-                    var groups = [String]()
-                    for fieldName in (self?.selectedGroupByFieldNames)! {
-                        let value = statisticRecord?.group[fieldName] as! String
-                        groups.append("\(value)")
-                    }
-                    self?.expandableTableViewController.sectionHeaderTitles.append(groups.joined(separator: ", "))
+                    let groups = self.selectedGroupByFieldNames.compactMap({ (fieldName) -> String? in
+                        return statisticRecord.group[fieldName] as? String
+                    })
+                    expandableTableViewController.sectionHeaderTitles.append(groups.joined(separator: ", "))
                     
                     var statistics = [(String, String)]()
-                    for (key, value) in (statisticRecord?.statistics)!  {
+                    for (key, value) in statisticRecord.statistics  {
                         statistics.append((key, String(describing: value)))
                     }
-                    self?.expandableTableViewController.sectionItems.append(statistics)
+                    expandableTableViewController.sectionItems.append(statistics)
                 }
                 
                 // Show result
-                self?.navigationController?.show((self?.expandableTableViewController)!, sender: self)
+                self.navigationController?.show(expandableTableViewController, sender: self)
             }
         })
     }
     
     @IBAction func resetAction(_ sender: Any) {
-        //
         // Reset all collections and reload table
         statisticDefinitions.removeAll()
         selectedGroupByFieldNames.removeAll()
@@ -147,64 +148,43 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     }
     
     @objc private func headerButtonAction(_ sender: UIButton) {
-        //
+        
+        func setupAndPresent(viewController: UIViewController) {
+            
+            // Popover presentation logic
+            viewController.modalPresentationStyle = .popover
+            viewController.preferredContentSize = CGSize(width: 350, height: 300)
+            viewController.presentationController?.delegate = self
+            viewController.popoverPresentationController?.sourceView = sender
+            viewController.popoverPresentationController?.sourceRect = sender.bounds
+            
+            // Present view controller
+            present(viewController, animated: true, completion: nil)
+        }
+
         // Check button by tag
-        if sender.tag == 0 {
-            //
+        switch sender.tag {
+        case 0:
             // Init view controller and set properties
-            let storyboard = UIStoryboard(name: "StatisticalQueryGroupAndSort", bundle: nil)
-            addStatisticDefinitionsViewController = storyboard.instantiateViewController(withIdentifier: "AddStatisticDefinitionsViewController") as! AddStatisticDefinitionsViewController
+            let addStatisticDefinitionsViewController = storyboard!.instantiateViewController(withIdentifier: "AddStatisticDefinitionsViewController") as! AddStatisticDefinitionsViewController
             addStatisticDefinitionsViewController.delegate = self
             addStatisticDefinitionsViewController.fieldNames = fieldNames
             addStatisticDefinitionsViewController.statisticDefinitions = statisticDefinitions
-            
-            // Popover presentation logic
-            addStatisticDefinitionsViewController.modalPresentationStyle = .popover
-            addStatisticDefinitionsViewController.preferredContentSize = CGSize(width: 350, height: 300)
-            addStatisticDefinitionsViewController.presentationController?.delegate = self
-            addStatisticDefinitionsViewController.popoverPresentationController?.sourceView = sender
-            addStatisticDefinitionsViewController.popoverPresentationController?.sourceRect = sender.bounds
-            
-            // Present view controller
-            self.present(addStatisticDefinitionsViewController, animated: true, completion: nil)
-        }
-        else if sender.tag == 1 {
-            //
+            setupAndPresent(viewController: addStatisticDefinitionsViewController)
+        case 1:
             // Init view controller and set properties
-            let storyboard = UIStoryboard(name: "StatisticalQueryGroupAndSort", bundle: nil)
-            groupByFieldsViewController = storyboard.instantiateViewController(withIdentifier: "GroupByFieldsViewController") as! GroupByFieldsViewController
+            let groupByFieldsViewController = storyboard!.instantiateViewController(withIdentifier: "GroupByFieldsViewController") as! GroupByFieldsViewController
             groupByFieldsViewController.delegate = self
             groupByFieldsViewController.fieldNames = fieldNames
             groupByFieldsViewController.selectedFieldNames = selectedGroupByFieldNames
-            
-            // Popover presentation logic
-            groupByFieldsViewController.modalPresentationStyle = .popover
-            groupByFieldsViewController.preferredContentSize = CGSize(width: 350, height: 300)
-            groupByFieldsViewController.presentationController?.delegate = self
-            groupByFieldsViewController.popoverPresentationController?.sourceView = sender
-            groupByFieldsViewController.popoverPresentationController?.sourceRect = sender.bounds
-            
-            // Present view controller
-            self.present(groupByFieldsViewController, animated: true, completion: nil)
-        }
-        else if sender.tag == 2 {
-            //
+            setupAndPresent(viewController: groupByFieldsViewController)
+        default:
             // Init view controller and set properties
-            let storyboard = UIStoryboard(name: "StatisticalQueryGroupAndSort", bundle: nil)
-            orderByFieldsViewController = storyboard.instantiateViewController(withIdentifier: "OrderByFieldsViewController") as! OrderByFieldsViewController
+            let orderByFieldsViewController = storyboard!.instantiateViewController(withIdentifier: "OrderByFieldsViewController") as! OrderByFieldsViewController
             orderByFieldsViewController.delegate = self
             orderByFieldsViewController.orderByFields = orderByFields
             orderByFieldsViewController.selectedOrderByFields = selectedOrderByFields
-            
-            // Popover presentation logic
-            orderByFieldsViewController.modalPresentationStyle = .popover
-            orderByFieldsViewController.preferredContentSize = CGSize(width: 350, height: 300)
-            orderByFieldsViewController.presentationController?.delegate = self
-            orderByFieldsViewController.popoverPresentationController?.sourceView = sender
-            orderByFieldsViewController.popoverPresentationController?.sourceRect = sender.bounds
-
-            // Present view controller
-            self.present(orderByFieldsViewController, animated: true, completion: nil)
+            setupAndPresent(viewController: orderByFieldsViewController)
         }
     }
     
@@ -223,7 +203,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        //
+        
         // Create the view
         let returnedView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 44))
         returnedView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
@@ -252,39 +232,36 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        switch section {
+        case 0:
             return statisticDefinitions.count
-        }
-        else if section == 1 {
+        case 1:
             return selectedGroupByFieldNames.count
-        }
-        else {
+        default:
             return selectedOrderByFields.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //
         // Build the cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath)
         cell.textLabel?.text = ""
         cell.accessoryType = .none
         
-        if indexPath.section == 0 {
+        switch indexPath.section{
+        case 0:
             if statisticDefinitions.count > 0 {
                 let statisticDefinition = statisticDefinitions[indexPath.row]
                 let statisticTypeString = statisticTypes[statisticDefinition.statisticType.rawValue]
                 let text = "\(statisticDefinition.onFieldName) (\(statisticTypeString))"
                 cell.textLabel?.text = text
             }
-        }
-        else if indexPath.section == 1 {
+        case 1:
             if selectedGroupByFieldNames.count > 0 {
                 let fieldName = selectedGroupByFieldNames[indexPath.row]
                 cell.textLabel?.text = fieldName
             }
-        }
-        else {
+        default:
             if selectedOrderByFields.count > 0 {
                 let orderByField = selectedOrderByFields[indexPath.row]
                 let sortOrderString = stringFor(sortOrder: orderByField.sortOrder)
@@ -299,58 +276,54 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if tableView == tableView {
-            if (editingStyle == .delete && indexPath.section == 0) {
-                if statisticDefinitions.count > 0 {
-                    //
-                    // Remove statistic definition
-                    statisticDefinitions.remove(at: indexPath.row)
-                }
-            }
-            else if (editingStyle == .delete && indexPath.section == 1) {
-                //
-                // Remove from selected group by field names
-                if selectedGroupByFieldNames.count > 0 {
-                    //
-                    // Get the field name so we can remove order by fields
-                    let selectedGroupByFieldName = selectedGroupByFieldNames[indexPath.row]
-                    
-                    // Remove selected group by field
-                    selectedGroupByFieldNames.remove(at: indexPath.row)
-                    
-                    // Remove field from the order by fields
-                    for (i,orderByField) in orderByFields.enumerated().reversed() {
-                        if orderByField.fieldName == selectedGroupByFieldName {
-                            orderByFields.remove(at: i)
-                        }
-                    }
-                    
-                    // Remove field from the selected order by fields
-                    for (i,selectedOrderByField) in selectedOrderByFields.enumerated().reversed() {
-                        if selectedOrderByField.fieldName == selectedGroupByFieldName {
-                            selectedOrderByFields.remove(at: i)
-                        }
-                    }
-                }
-            }
-            if (editingStyle == .delete && indexPath.section == 2) {
-                if selectedOrderByFields.count > 0 {
-                    //
-                    // Remove selected order by field
-                    selectedOrderByFields.remove(at: indexPath.row)
-                }
-            }
-            
-            // Reload table
-            tableView.reloadData()
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else {
+            return
         }
+        switch indexPath.section {
+        case 0:
+            if statisticDefinitions.count > 0 {
+                // Remove statistic definition
+                statisticDefinitions.remove(at: indexPath.row)
+            }
+        case 1:
+            // Remove from selected group by field names
+            if selectedGroupByFieldNames.count > 0 {
+                //
+                // Get the field name so we can remove order by fields
+                let selectedGroupByFieldName = selectedGroupByFieldNames[indexPath.row]
+                
+                // Remove selected group by field
+                selectedGroupByFieldNames.remove(at: indexPath.row)
+                
+                // Remove field from the order by fields
+                for (i,orderByField) in orderByFields.enumerated().reversed() {
+                    if orderByField.fieldName == selectedGroupByFieldName {
+                        orderByFields.remove(at: i)
+                    }
+                }
+                
+                // Remove field from the selected order by fields
+                for (i,selectedOrderByField) in selectedOrderByFields.enumerated().reversed() {
+                    if selectedOrderByField.fieldName == selectedGroupByFieldName {
+                        selectedOrderByFields.remove(at: i)
+                    }
+                }
+            }
+        default:
+            if selectedOrderByFields.count > 0 {
+                // Remove selected order by field
+                selectedOrderByFields.remove(at: indexPath.row)
+            }
+        }
+        
+        // Reload table
+        tableView.reloadData()
     }
     
     // MARK: - Add Statistic Definition View Controller Delegate
     
     func addStatisticDefinitions(_ statisticDefinitions: [AGSStatisticDefinition]) {
-        //
         // Set the statistic definitions
         self.statisticDefinitions = statisticDefinitions
         
@@ -361,7 +334,6 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     // MARK: - Group By Fields View Controller Delegate
     
     func setGrouping(with fieldNames: [String]) {
-        //
         // Set the selected group by fields
         selectedGroupByFieldNames = fieldNames
         
@@ -388,7 +360,6 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     // MARK: - Order By Fields View Controller Delegate
 
     func setOrdering(with orderByFields: [AGSOrderBy]) {
-        //
         // Set the selected group by fields
         selectedOrderByFields = orderByFields
         
@@ -399,7 +370,6 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        //
         // For popover or non modal presentation
         return UIModalPresentationStyle.none
     }

@@ -14,7 +14,7 @@
 
 import UIKit
 
-protocol HotspotSettingsVCDelegate: class {
+protocol HotspotSettingsVCDelegate: AnyObject {
     
     func hotspotSettingsViewController(_ hotspotSettingsViewController: HotspotSettingsViewController, didSelectDates fromDate: String, toDate: String)
 }
@@ -66,7 +66,7 @@ class HotspotSettingsViewController: UIViewController, UITextFieldDelegate {
             self.delegate?.hotspotSettingsViewController(self, didSelectDates: self.fromTextField.text!, toDate: self.toTextField.text!)
         }
         else {
-            SVProgressHUD.showError(withStatus: "Both dates are required")
+            presentAlert(message: "Both dates are required")
         }
     }
     

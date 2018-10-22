@@ -18,84 +18,70 @@ import UIKit
 import ArcGIS
 
 class SceneSymbolsViewController: UIViewController {
-
-    @IBOutlet var sceneView:AGSSceneView!
-    
-    private var graphicsOverlay = AGSGraphicsOverlay()
+    @IBOutlet var sceneView: AGSSceneView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SceneSymbolsViewController"]
+        // Add the source code button item to the right of navigation bar.
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SceneSymbolsViewController"]
         
-        let scene = AGSScene(basemap: AGSBasemap.topographic())
+        let scene = AGSScene(basemap: .topographic())
         
-        self.sceneView.scene = scene
-        
-        //set the camera
-        let camera = AGSCamera(latitude: 48.973, longitude: 4.92, altitude: 2082, heading: 60, pitch: 75, roll: 0)
-        self.sceneView.setViewpointCamera(camera)
-        
-        // add base surface for elevation data
+        // Add base surface for elevation data.
         let surface = AGSSurface()
-        let elevationSource = AGSArcGISTiledElevationSource(url: URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!)
+        /// The url of the Terrain 3D ArcGIS REST Service.
+        let worldElevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
+        let elevationSource = AGSArcGISTiledElevationSource(url: worldElevationServiceURL)
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
         
-        //add graphics overlay to the scene view
-        self.graphicsOverlay.sceneProperties?.surfacePlacement = .absolute
-        self.sceneView.graphicsOverlays.add(graphicsOverlay)
+        sceneView.scene = scene
         
-        //add graphics
-        self.addGraphics()
+        // Add graphics overlay to the scene view.
+        let graphicsOverlay = AGSGraphicsOverlay()
+        graphicsOverlay.graphics.addObjects(from: makeGraphics())
+        graphicsOverlay.sceneProperties?.surfacePlacement = .absolute
+        sceneView.graphicsOverlays.add(graphicsOverlay)
+        
+        // Set the camera.
+        let camera = AGSCamera(latitude: 48.973, longitude: 4.92, altitude: 2082, heading: 60, pitch: 75, roll: 0)
+        sceneView.setViewpointCamera(camera)
     }
     
-    private func addGraphics() {
-        //coordinates for the first symbol
+    private func makeGraphics() -> [AGSGraphic] {
+        // Coordinates for the first symbol.
         let x = 4.975
         let y = 49.0
         let z = 500.0
         
-        //create symbols for all the available 3D symbols
-        var symbols = [AGSSimpleMarkerSceneSymbol]()
+        // Create symbols for all the available 3D symbols.
         
-        let coneSymbol = AGSSimpleMarkerSceneSymbol(style: .cone, color: self.randColor(), height: 200, width: 200, depth: 200, anchorPosition: .center)
+        let coneSymbol = AGSSimpleMarkerSceneSymbol(style: .cone, color: .random(), height: 200, width: 200, depth: 200, anchorPosition: .center)
+        let cubeSymbol = AGSSimpleMarkerSceneSymbol(style: .cube, color: .random(), height: 200, width: 200, depth: 200, anchorPosition: .center)
+        let cylinderSymbol = AGSSimpleMarkerSceneSymbol(style: .cylinder, color: .random(), height: 200, width: 200, depth: 200, anchorPosition: .center)
+        let diamondSymbol = AGSSimpleMarkerSceneSymbol(style: .diamond, color: .random(), height: 200, width: 200, depth: 200, anchorPosition: .center)
+        let sphereSymbol = AGSSimpleMarkerSceneSymbol(style: .sphere, color: .random(), height: 200, width: 200, depth: 200, anchorPosition: .center)
+        let tetrahedronSymbol = AGSSimpleMarkerSceneSymbol(style: .tetrahedron, color: .random(), height: 200, width: 200, depth: 200, anchorPosition: .center)
         
-        let cubeSymbol = AGSSimpleMarkerSceneSymbol(style: .cube, color: self.randColor(), height: 200, width: 200, depth: 200, anchorPosition: .center)
-        
-        let cylinderSymbol = AGSSimpleMarkerSceneSymbol(style: .cylinder, color: self.randColor(), height: 200, width: 200, depth: 200, anchorPosition: .center)
-        
-        let diamondSymbol = AGSSimpleMarkerSceneSymbol(style: .diamond, color: self.randColor(), height: 200, width: 200, depth: 200, anchorPosition: .center)
-        
-        let sphereSymbol = AGSSimpleMarkerSceneSymbol(style: .sphere, color: self.randColor(), height: 200, width: 200, depth: 200, anchorPosition: .center)
-        
-        let tetrahedronSymbol = AGSSimpleMarkerSceneSymbol(style: .tetrahedron, color: self.randColor(), height: 200, width: 200, depth: 200, anchorPosition: .center)
-        
-        symbols.append(contentsOf: [coneSymbol, cubeSymbol, cylinderSymbol, diamondSymbol, sphereSymbol, tetrahedronSymbol])
-        
-        //create graphics for each symbol
-        var graphics = [AGSGraphic]()
-        
-        var i = 0
-        for symbol in symbols {
-            let point = AGSPoint(x: x + 0.01 * Double(i), y: y, z: z, spatialReference: AGSSpatialReference.wgs84())
-            let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: nil)
-            graphics.append(graphic)
-            i = i + 1
+        // Create graphics for each symbol.
+        let symbols = [coneSymbol, cubeSymbol, cylinderSymbol, diamondSymbol, sphereSymbol, tetrahedronSymbol]
+        let graphics = symbols.enumerated().map { (i, symbol) -> AGSGraphic in
+            let point = AGSPoint(x: x + 0.01 * Double(i), y: y, z: z, spatialReference: .wgs84())
+            return AGSGraphic(geometry: point, symbol: symbol)
         }
         
-        //add the graphics to the overlay
-        self.graphicsOverlay.graphics.addObjects(from: graphics)
+        return graphics
     }
-    
-    //returns a random color
-    private func randColor() -> UIColor {
-        return UIColor(red: self.randFloat(), green: self.randFloat(), blue: self.randFloat(), alpha: 1.0)
-    }
-    
-    //returns a CGFloat between 0 and 1
-    private func randFloat() -> CGFloat {
-        return CGFloat(arc4random() % 256) / 256
+}
+
+private extension UIColor {
+    /// Creates a random color whose red, green, and blue values are in the
+    /// range `0...1` and whose alpha value is `1`.
+    ///
+    /// - Returns: A new `UIColor` object.
+    static func random() -> UIColor {
+        let range: ClosedRange<CGFloat> = 0...1
+        return UIColor(red: .random(in: range), green: .random(in: range), blue: .random(in: range), alpha: 1)
     }
 }

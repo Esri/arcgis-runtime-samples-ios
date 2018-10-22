@@ -102,7 +102,7 @@ class ExportTilesViewController: UIViewController {
         
         //TODO: Remove this code once design has been udpated
         if minScale == maxScale {
-            SVProgressHUD.showError(withStatus: "Min scale and max scale cannot be the same")
+            presentAlert(message: "Min scale and max scale cannot be the same")
             return
         }
         
@@ -116,7 +116,7 @@ class ExportTilesViewController: UIViewController {
         self.exportTask = AGSExportTileCacheTask(url: self.tiledLayer.url!)
         self.exportTask.exportTileCacheParameters(withAreaOfInterest: self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale) { [weak self] (params: AGSExportTileCacheParameters?, error: Error?) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 self?.exportTilesUsingParameters(params!)
@@ -139,7 +139,7 @@ class ExportTilesViewController: UIViewController {
             self?.downloading = false
             
             if let error = error {
-                SVProgressHUD.showError(withStatus: (error as NSError).localizedFailureReason)
+                self?.presentAlert(error: error)
             }
             else {
                 
@@ -177,4 +177,5 @@ class ExportTilesViewController: UIViewController {
             print(error)
         }
     }
+
 }

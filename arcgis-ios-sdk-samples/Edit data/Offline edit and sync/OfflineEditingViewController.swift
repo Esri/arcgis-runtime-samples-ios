@@ -85,7 +85,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) -> Void in
 
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 SVProgressHUD.dismiss()
@@ -102,7 +102,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
                     self?.present(self!.popupsVC, animated: true, completion: nil)
                 }
                 else {
-                    SVProgressHUD.showInfo(withStatus: "No features selected")
+                    self?.presentAlert(message: "No features selected")
                 }
             }
         }
@@ -265,7 +265,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
                                 self?.map.operationalLayers.add(featureLayer)
                             }
                         }
-                        SVProgressHUD.showInfo(withStatus: "Now showing layers from the geodatabase")
+                        self?.presentAlert(message: "Now showing layers from the geodatabase")
                     }
                 })
             }
@@ -303,10 +303,10 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }
         else {
             //get selected layer ids
-            let selectedLayerIds = self.featureLayersVC.selectedLayerIds
+            let selectedLayerIds = featureLayersVC.selectedLayerInfos.map { $0.id }
             
-            if selectedLayerIds.count == 0 {
-                SVProgressHUD.showError(withStatus: "Please select at least one layer")
+            if selectedLayerIds.isEmpty {
+                presentAlert(message: "Please select at least one layer")
                 return
             }
             
@@ -350,12 +350,12 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }) { [weak self] (object: AnyObject?, error: Error?) -> Void in
             
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 SVProgressHUD.dismiss()
                 //save a reference to the geodatabase
-                self?.generatedGeodatabase = object as! AGSGeodatabase
+                self?.generatedGeodatabase = object as? AGSGeodatabase
                 //add the layers from geodatabase
                 self?.displayLayersFromGeodatabase()
             }
@@ -373,7 +373,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
                 self?.switchToServiceMode()
             }
             
-            let alert = UIAlertController(title: nil, message: "Would you like to sync the changes before switching?", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: nil, message: "Would you like to sync the changes before switching?", preferredStyle: .alert)
             alert.addAction(noAction)
             alert.addAction(yesAction)
             self.present(alert, animated: true, completion: nil)
@@ -390,7 +390,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     func syncAction(_ completion: (() -> Void)?) {
         if !self.generatedGeodatabase.hasLocalEdits() {
-            SVProgressHUD.showInfo(withStatus: "No local edits")
+            presentAlert(message: "No local edits")
             return
         }
         
@@ -410,7 +410,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
             
         }, completion: { (results: [AGSSyncLayerResult]?, error: Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self.presentAlert(error: error)
             }
             else {
                 //TODO: use the results object
@@ -488,13 +488,13 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
             //Tell the user edits are being saved int the background
             SVProgressHUD.show(withStatus: "Saving feature details...")
             
-            (feature.featureTable as! AGSServiceFeatureTable).applyEdits { (featureEditResult: [AGSFeatureEditResult]?, error: Error?) -> Void in
+            (feature.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (featureEditResult: [AGSFeatureEditResult]?, error: Error?) -> Void in
                 
                 if let error = error {
-                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+                    self?.presentAlert(error: error)
                 }
                 else {
-                    SVProgressHUD.showSuccess(withStatus: "Edits applied successfully")
+                    self?.presentAlert(message: "Edits applied successfully")
                 }
             }
         }
@@ -519,7 +519,7 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FeatureLayersVCSegue" {
-            self.featureLayersVC = segue.destination as! FeatureLayersViewController
+            self.featureLayersVC = segue.destination as? FeatureLayersViewController
         }
     }
 }

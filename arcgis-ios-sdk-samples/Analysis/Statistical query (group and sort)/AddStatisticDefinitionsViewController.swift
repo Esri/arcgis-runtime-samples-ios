@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-protocol AddStatisticDefinitionsViewControllerDelegate: class {
+protocol AddStatisticDefinitionsViewControllerDelegate: AnyObject {
     func addStatisticDefinitions(_ statisticDefinitions: [AGSStatisticDefinition])
 }
 
@@ -42,15 +42,10 @@ class AddStatisticDefinitionsViewController: UIViewController, UITableViewDataSo
     }
     
     private func setupUI() {
-        //
         // Add picker options
         fieldNamePicker.options = fieldNames
         statisticTypePicker.options =  statisticTypes
         
-        // Set fieldNamePicker's selected field
-        if fieldNamePicker.options.contains("POP2007"), let index = fieldNamePicker.options.index(of: "POP2007") {
-            fieldNamePicker.selectedIndex = index
-        }
     }
     
     //MARK: - TableView data source
@@ -77,7 +72,6 @@ class AddStatisticDefinitionsViewController: UIViewController, UITableViewDataSo
     // MARK: - Actions
     
     @IBAction func addStatisticDefinitionAction(_ sender: Any) {
-        //
         // Add statistic definition
         if let statisticType = AGSStatisticType(rawValue: statisticTypePicker.selectedIndex) {
             let fieldName = fieldNamePicker.options[fieldNamePicker.selectedIndex]
@@ -93,7 +87,6 @@ class AddStatisticDefinitionsViewController: UIViewController, UITableViewDataSo
     }
     
     @IBAction private func doneAction() {
-        //
         // Fire delegate
         delegate?.addStatisticDefinitions(statisticDefinitions)
         

@@ -28,7 +28,7 @@ class FeatureLayerGDBViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureLayerGDBViewController"]
         
         //instantiate map with basemap
-        let map = AGSMap(basemap: AGSBasemap.imageryWithLabels())
+        let map = AGSMap(basemap: .imageryWithLabels())
         
         //set initial viewpoint
         map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13214155, y: 4040194, spatialReference: AGSSpatialReference(wkid: 3857)), scale: 35e4)
@@ -39,7 +39,7 @@ class FeatureLayerGDBViewController: UIViewController {
         //load the geodatabase for feature tables
         self.geodatabase.load { [weak self] (error: Error?) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 let featureTable = self!.geodatabase.geodatabaseFeatureTable(withName: "Trailheads")!

@@ -213,23 +213,23 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         }()
     
     fileprivate lazy var pathAnimation: CABasicAnimation = {
-        var anim = CABasicAnimation(keyPath: "path")
+        var anim = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.path))
         anim.duration = 1.0
         anim.fromValue = self.fromPath
         anim.toValue = self.toPath
         anim.isRemovedOnCompletion = true
         anim.delegate = self
-        anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        anim.timingFunction = CAMediaTimingFunction(name: .easeOut)
         return anim
         }()
     
     fileprivate lazy var opacityAnimation: CABasicAnimation = {
-        var anim2 = CABasicAnimation(keyPath: "opacity")
+        var anim2 = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.opacity))
         anim2.duration = self.pingDuration
         anim2.fromValue = 1.0
         anim2.toValue = 0.0
         anim2.isRemovedOnCompletion = true
-        anim2.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        anim2.timingFunction = CAMediaTimingFunction(name: .easeOut)
         return anim2
         }()
     
@@ -320,15 +320,15 @@ open class DemoTouchManager {
     
     // MARK: Methods
     
-    open static func isShowingTouches() -> Bool {
+    public static func isShowingTouches() -> Bool {
         return UIApplication.isShowingTouches
     }
     
-    open static func showTouches() {
+    public static func showTouches() {
         UIApplication.showAllTouches()
     }
     
-    open static func hideTouches() {
+    public static func hideTouches() {
         UIApplication.hideAllTouches()
     }
 }
@@ -342,9 +342,9 @@ private class TouchView: UIView {
     // so that two finger single taps can be recognized.
     //
     var moved: Bool {
-        let xDist = (center.x - originalCenter.x);
-        let yDist = (center.y - originalCenter.y);
-        let distance = sqrt((xDist * xDist) + (yDist * yDist));
+        let xDist = center.x - originalCenter.x
+        let yDist = center.y - originalCenter.y
+        let distance = (xDist * xDist + yDist * yDist).squareRoot()
         return distance > moveTolerance
     }
     
@@ -420,7 +420,7 @@ private class DemoTouchesView: UIView {
 
                 // Ensure our DemoTouch view is always at the front of it's window
                 //
-                DemoTouchesView.sharedInstance.window!.bringSubview(toFront: DemoTouchesView.sharedInstance)
+                DemoTouchesView.sharedInstance.window!.bringSubviewToFront(DemoTouchesView.sharedInstance)
             }
         }
         

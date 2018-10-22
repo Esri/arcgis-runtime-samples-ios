@@ -30,7 +30,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GroupUsersViewController", "GroupUserCell"]
 
         //automatic cell sizing for table view
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 104
         
         //initialize portal with AGOL
@@ -53,7 +53,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
             
             if let error = error {
                 //show error
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 
@@ -64,7 +64,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
                 }
                 else {
                     //show error that no groups found
-                    SVProgressHUD.showError(withStatus: "No groups found")
+                    self?.presentAlert(message: "No groups found")
                 }
             }
         }
@@ -79,7 +79,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
             
             if let error = error {
                 //show error
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 
@@ -97,7 +97,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
                     self?.loadAllUsers()
                 }
                 else {
-                    SVProgressHUD.showError(withStatus: "No users found")
+                    self?.presentAlert(message: "No users found")
                 }
             }
         }
@@ -117,7 +117,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
                 self?.tableView.reloadData()
             }
             else {
-                SVProgressHUD.showError(withStatus: "Error while loading users data")
+                self?.presentAlert(message: "Error while loading users data")
             }
         }
     }

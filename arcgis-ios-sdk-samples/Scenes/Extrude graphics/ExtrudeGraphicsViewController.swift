@@ -35,7 +35,7 @@ class ExtrudeGraphicsViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ExtrudeGraphicsViewController"]
         
         //initialize scene with topographic basemap
-        let scene = AGSScene(basemap: AGSBasemap.topographic())
+        let scene = AGSScene(basemap: .topographic())
         //assign scene to the scene view
         self.sceneView.scene = scene
         
@@ -58,7 +58,9 @@ class ExtrudeGraphicsViewController: UIViewController {
         
         // add base surface for elevation data
         let surface = AGSSurface()
-        let elevationSource = AGSArcGISTiledElevationSource(url: URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!)
+        /// The url of the Terrain 3D ArcGIS REST Service.
+        let worldElevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
+        let elevationSource = AGSArcGISTiledElevationSource(url: worldElevationServiceURL)
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
         

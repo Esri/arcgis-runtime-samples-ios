@@ -34,7 +34,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindAddressViewController", "WorldAddressesViewController"]
         
         //instantiate a map with an imagery with labels basemap
-        let map = AGSMap(basemap: AGSBasemap.imageryWithLabels())
+        let map = AGSMap(basemap: .imageryWithLabels())
         self.mapView.map = map
         self.mapView.touchDelegate = self
         
@@ -52,7 +52,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         
         //register self for the keyboard show notification
         //in order to un hide the cancel button for search
-        NotificationCenter.default.addObserver(self, selector: #selector(FindAddressViewController.keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FindAddressViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     //method that returns a graphic object for the specified point and attributes
@@ -76,7 +76,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         //perform geocode with input text
         self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters, completion: { [weak self] (results:[AGSGeocodeResult]?, error:Error?) -> Void in
             if let error = error {
-                self?.showAlert(error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 if let results = results , results.count > 0 {
@@ -90,7 +90,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
                 }
                 else {
                     //provide feedback in case of failure
-                    self?.showAlert("No results found")
+                    self?.presentAlert(message: "No results found")
                 }
             }
         })
@@ -116,10 +116,6 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         self.mapView.callout.show(for: graphic, tapLocation: tapLocation, animated: true)
     }
     
-    private func showAlert(_ message:String) {
-        SVProgressHUD.showError(withStatus: message)
-    }
-    
     //MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
@@ -129,7 +125,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         //identify graphics at the tapped location
         self.mapView.identify(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult) -> Void in
             if let error = result.error {
-                self.showAlert(error.localizedDescription)
+                self.presentAlert(error: error)
             }
             else if result.graphics.count > 0 {
                 //show callout for the graphic

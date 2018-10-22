@@ -50,7 +50,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RouteAroundBarriersViewController", "DirectionsListViewController", "RouteParametersViewController"]
         
-        let map = AGSMap(basemap: AGSBasemap.topographic())
+        let map = AGSMap(basemap: .topographic())
         
         self.mapView.map = map
         self.mapView.touchDelegate = self
@@ -70,13 +70,13 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         //hide directions list
         self.toggleRouteDetails(false)
     }
-    
+
     //MARK: - Route logic
     
     func getDefaultParameters() {
         self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 self?.routeParameters = params
@@ -89,7 +89,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
     @IBAction func route() {
         //add check
         if self.routeParameters == nil || self.stopGraphicsOverlay.graphics.count < 2 {
-            SVProgressHUD.showError(withStatus: "Either parameters not loaded or not sufficient stops")
+            presentAlert(message: "Either parameters not loaded or not sufficient stops")
             return
         }
         
@@ -123,7 +123,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         
         self.routeTask.solveRoute(with: self.routeParameters) { [weak self] (routeResult:AGSRouteResult?, error:Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showError(withStatus: "\(error.localizedDescription) \((error as NSError).localizedFailureReason ?? "")")
+                self?.presentAlert(message: "\(error.localizedDescription) \((error as NSError).localizedFailureReason ?? "")")
             }
             else {
                 SVProgressHUD.dismiss()
@@ -230,7 +230,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             controller.routeParameters = self.routeParameters
         }
         else if segue.identifier == "DirectionsListSegue" {
-            self.directionsListViewController = segue.destination as! DirectionsListViewController
+            self.directionsListViewController = segue.destination as? DirectionsListViewController
             self.directionsListViewController.delegate = self
         }
     }

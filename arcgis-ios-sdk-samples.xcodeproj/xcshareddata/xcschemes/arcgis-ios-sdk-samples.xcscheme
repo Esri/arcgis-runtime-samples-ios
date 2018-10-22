@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3E23A9DF1AFC28F6002E2214"
-               BuildableName = "arcgis-ios-sdk-samples.app"
-               BlueprintName = "arcgis-ios-sdk-samples"
+               BuildableName = "ArcGIS Runtime SDK Samples.app"
+               BlueprintName = "ArcGIS Runtime SDK Samples"
                ReferencedContainer = "container:arcgis-ios-sdk-samples.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,15 +26,26 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      codeCoverageEnabled = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4CD2B5532142EAF900767D87"
+               BuildableName = "arcgis-ios-sdk-samplesTests.xctest"
+               BlueprintName = "arcgis-ios-sdk-samplesTests"
+               ReferencedContainer = "container:arcgis-ios-sdk-samples.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3E23A9DF1AFC28F6002E2214"
-            BuildableName = "arcgis-ios-sdk-samples.app"
-            BlueprintName = "arcgis-ios-sdk-samples"
+            BuildableName = "ArcGIS Runtime SDK Samples.app"
+            BlueprintName = "ArcGIS Runtime SDK Samples"
             ReferencedContainer = "container:arcgis-ios-sdk-samples.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,8 +67,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3E23A9DF1AFC28F6002E2214"
-            BuildableName = "arcgis-ios-sdk-samples.app"
-            BlueprintName = "arcgis-ios-sdk-samples"
+            BuildableName = "ArcGIS Runtime SDK Samples.app"
+            BlueprintName = "ArcGIS Runtime SDK Samples"
             ReferencedContainer = "container:arcgis-ios-sdk-samples.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -75,8 +86,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3E23A9DF1AFC28F6002E2214"
-            BuildableName = "arcgis-ios-sdk-samples.app"
-            BlueprintName = "arcgis-ios-sdk-samples"
+            BuildableName = "ArcGIS Runtime SDK Samples.app"
+            BlueprintName = "ArcGIS Runtime SDK Samples"
             ReferencedContainer = "container:arcgis-ios-sdk-samples.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

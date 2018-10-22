@@ -70,7 +70,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         //add self as the observer for the keyboard show notification
         //will display a button every time keyboard is display so the user
         //can tap and cancel search and hide the keyboard
-        NotificationCenter.default.addObserver(self, selector: #selector(GeocodeOfflineViewController.keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GeocodeOfflineViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         //zoom to San Diego
         self.mapView.setViewpointCenter(AGSPoint(x: -13042254.715252, y: 3857970.236806, spatialReference: AGSSpatialReference(wkid: 3857)), scale: 2e4, completion: nil)
@@ -80,7 +80,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         
         //the total amount by which we will need to offset the callout along y-axis
         //to show it correctly centered on the pushpin's head in the magnifier
-        let img = UIImage(named: "ArcGIS.bundle/Magnifier.png")!
+        let img = UIImage(named: "Magnifier", in: AGSBundle(), compatibleWith: nil)!
         self.magnifierOffset = CGPoint(x: 0, y: -img.size.height)
     }
     
@@ -97,7 +97,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         //perform geocode with the input
         self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters, completion: { [weak self]  (results:[AGSGeocodeResult]?, error:Error?) -> Void in
             if let error = error {
-                self?.showAlert(error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 //if a result was returned display the graphic on the map view
@@ -111,7 +111,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
                 }
                 else {
                     //if no result found, inform the user
-                    self?.showAlert("No results found")
+                    self?.presentAlert(message: "No results found")
                 }
             }
         })
@@ -195,10 +195,6 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         }
     }
     
-    private func showAlert(_ message:String) {
-        SVProgressHUD.showError(withStatus: message)
-    }
-    
     //MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
@@ -209,7 +205,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.mapView.identify(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult) -> Void in
 
             if let error = result.error {
-                self.showAlert(error.localizedDescription)
+                self.presentAlert(error: error)
             }
             else if result.graphics.count > 0 {
                 //show the callout for the first graphic found

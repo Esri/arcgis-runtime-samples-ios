@@ -16,12 +16,12 @@
 import UIKit
 import ArcGIS
 
-protocol OrderByFieldsViewControllerDelegate: class {
+protocol OrderByFieldsViewControllerDelegate: AnyObject {
     func setOrdering(with orderByFields: [AGSOrderBy])
 }
 
 class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    //
+
     // Outlets
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var tableNavigationItem: UINavigationItem!
@@ -54,7 +54,7 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
             messageLabel.text = "Only selected Group By Fields are valid for Order By Fields so please select Group By Fields first."
             messageLabel.numberOfLines = 0;
             messageLabel.textAlignment = .center;
-            messageLabel.font = UIFont(name: "HelveticaNeue", size: 20.0)!
+            messageLabel.font = UIFont.systemFont(ofSize: 20)
             messageLabel.sizeToFit()
             tableView.backgroundView?.backgroundColor = .white
             tableView.backgroundView = messageLabel;
@@ -100,15 +100,12 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - TableView delegates
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
         // Deselect row
         tableView.deselectRow(at: indexPath, animated: false)
         
-        //
         // Get the cell
         if let cell = tableView.cellForRow(at: indexPath) {
             if cell.accessoryType == .none {
-                //
                 // Set the accessory type to checkmark
                 cell.accessoryType = .checkmark
                 
@@ -117,7 +114,6 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
                 selectedOrderByFields.append(orderByField)
             }
             else {
-                //
                 // Set the accessory type to none
                 cell.accessoryType = .none
                 
@@ -131,7 +127,6 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - Actions
     
     @IBAction private func doneAction() {
-        //
         // Fire delegate
         delegate?.setOrdering(with: selectedOrderByFields)
         

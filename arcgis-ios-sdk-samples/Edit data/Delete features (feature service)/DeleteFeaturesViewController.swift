@@ -31,7 +31,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DeleteFeaturesViewController"]
         
         //instantiate map with a basemap
-        let map = AGSMap(basemap: AGSBasemap.streets())
+        let map = AGSMap(basemap: .streets())
         //set initial viewpoint
         map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: AGSSpatialReference.webMercator()), scale: 2e6)
         
@@ -71,11 +71,11 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     func applyEdits() {
         self.featureTable.applyEdits { (featureEditResults: [AGSFeatureEditResult]?, error: Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showError(withStatus: "Error while applying edits :: \(error.localizedDescription)")
+                self.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
             }
             else {
                 if let featureEditResults = featureEditResults , featureEditResults.count > 0 && featureEditResults[0].completedWithErrors == false {
-                    SVProgressHUD.showSuccess(withStatus: "Edits applied successfully")
+                    self.presentAlert(message: "Edits applied successfully")
                 }
             }
         }
@@ -111,9 +111,9 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.mapView.callout.dismiss()
         
         //confirmation
-        let alertController = UIAlertController(title: "Are you sure you want to delete the feature", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Are you sure you want to delete the feature", message: nil, preferredStyle: .alert)
         //action for Yes
-        let alertAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { [weak self] (action:UIAlertAction!) -> Void in
+        let alertAction = UIAlertAction(title: "Yes", style: .default) { [weak self] (action:UIAlertAction!) -> Void in
             self?.deleteFeature(self!.selectedFeature)
         }
         alertController.addAction(alertAction)

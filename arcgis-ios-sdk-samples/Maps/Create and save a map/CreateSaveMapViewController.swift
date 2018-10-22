@@ -27,7 +27,7 @@ extension UIImage {
         
         //crop image
         let croppedCGImage = self.cgImage!.cropping(to: rect)!
-        let croppedImage = UIImage(cgImage: croppedCGImage, scale: scale, orientation: UIImageOrientation.up)
+        let croppedImage = UIImage(cgImage: croppedCGImage, scale: scale, orientation: .up)
         
         return croppedImage
     }
@@ -58,7 +58,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
         AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
         
-        let map = AGSMap(basemap: AGSBasemap.imagery())
+        let map = AGSMap(basemap: .imagery())
         
         self.mapView.map = map
         
@@ -73,13 +73,13 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     }
     
     private func showSuccess() {
-        let alertController = UIAlertController(title: "Saved successfully", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Saved successfully", message: nil, preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "Ok", style: .cancel) { [weak self] _ in
+        let okAction = UIAlertAction(title: "OK", style: .cancel) { [weak self] _ in
             self?.dismiss(animated: true, completion: nil)
         }
         
-        let openAction = UIAlertAction(title: "Open in Safari", style: .default) { [weak self] _ in
+        let openAction = UIAlertAction(title: "Open In Safari", style: .default) { [weak self] _ in
             if let weakSelf = self {
                 UIApplication.shared.open(URL(string: "\(weakSelf.webmapURL)\(weakSelf.mapView.map!.item!.itemID)")!, options: [:])
             }
@@ -143,11 +143,11 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CreateOptionsEmbedSegue" {
-            self.createOptionsVC = segue.destination as! CreateOptionsViewController
+            self.createOptionsVC = segue.destination as? CreateOptionsViewController
             self.createOptionsVC.delegate = self
         }
         else if segue.identifier == "SaveAsEmbedSegue" {
-            self.saveAsVC = segue.destination as! SaveAsViewController
+            self.saveAsVC = segue.destination as? SaveAsViewController
             self.saveAsVC.delegate = self
         }
     }
@@ -188,7 +188,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
                     //dismiss progress hud
                     SVProgressHUD.dismiss()
                     if let error = error {
-                        SVProgressHUD.showError(withStatus: error.localizedDescription)
+                        self?.presentAlert(error: error)
                     }
                     else {
                         self?.showSuccess()
@@ -205,4 +205,5 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     func saveAsViewControllerDidCancel(_ saveAsViewController: SaveAsViewController) {
         self.toggleSaveAsView()
     }
+
 }

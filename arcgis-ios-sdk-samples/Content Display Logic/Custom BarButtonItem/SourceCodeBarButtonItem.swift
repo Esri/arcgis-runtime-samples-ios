@@ -16,9 +16,9 @@ import UIKit
 
 class SourceCodeBarButtonItem: UIBarButtonItem {
    
-    var filenames:[String]!
+    var filenames:[String]?
     weak var navController:UINavigationController?
-    var folderName:String!
+    var readmeURL:URL?
     
     override init() {
         super.init()
@@ -35,7 +35,7 @@ class SourceCodeBarButtonItem: UIBarButtonItem {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let controller = storyboard.instantiateViewController(withIdentifier: "SegmentedViewController") as! SegmentedViewController
         controller.filenames = filenames
-        controller.folderName = self.folderName
+        controller.readmeURL = readmeURL
         self.navController?.show(controller, sender: self)
     }
     

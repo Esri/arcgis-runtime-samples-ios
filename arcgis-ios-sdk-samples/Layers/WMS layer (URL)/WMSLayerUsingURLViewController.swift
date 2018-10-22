@@ -19,38 +19,34 @@ class WMSLayerUsingURLViewController: UIViewController {
     
     @IBOutlet private weak var mapView:AGSMapView!
     
-    private var map:AGSMap!
-    private var wmsLayer: AGSWMSLayer!
-    
-    private let WMS_SERVICE_URL = URL(string: "https://certmapper.cr.usgs.gov/arcgis/services/geology/africa/MapServer/WMSServer?request=GetCapabilities&service=WMS")!
-    private let WMS_SERVICE_LAYER_NAMES = ["0"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //initialize the map with imagery basemap, latitude, longitude, and level of detail
-        self.map = AGSMap(basemapType: .imagery, latitude: 2.0, longitude: 18.0, levelOfDetail: 3)
-        
+        //initialize the map with a light gray basemap centered on the United States
+        let map = AGSMap(basemapType: .lightGrayCanvasVector, latitude: 39, longitude: -98, levelOfDetail: 4)
         //assign the map to the map view
-        self.mapView.map = self.map
+        mapView.map = map
+        
+        // a URL to the GetCapabilities endpoint of a WMS service
+        let wmsServiceURL = URL(string: "https://nowcoast.noaa.gov/arcgis/services/nowcoast/radar_meteo_imagery_nexrad_time/MapServer/WMSServer?request=GetCapabilities&service=WMS")!
+        // the names of the layers to load at the WMS service
+        let wmsServiceLayerNames = ["1"]
         
         //initialize the WMS layer with the service URL and uniquely identifying WMS layer names
-        self.wmsLayer = AGSWMSLayer(url: WMS_SERVICE_URL, layerNames: WMS_SERVICE_LAYER_NAMES)
+        let wmsLayer = AGSWMSLayer(url: wmsServiceURL, layerNames: wmsServiceLayerNames)
         
         //load the WMS layer
-        self.wmsLayer.load {[weak self] (error) in
+        wmsLayer.load {[weak self] (error) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: "\(error.localizedDescription)")
-            } else {
-                if let weakSelf = self, weakSelf.wmsLayer.loadStatus == .loaded {
-                    //add the WMS layer to the map
-                    weakSelf.map.operationalLayers.add(weakSelf.wmsLayer)
-                }
+                self?.presentAlert(error: error)
+            } else if wmsLayer.loadStatus == .loaded {
+                //add the WMS layer to the map
+                map.operationalLayers.add(wmsLayer)
             }
         }
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["WMSLayerUsingURLViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["WMSLayerUsingURLViewController"]
     }
     
 }

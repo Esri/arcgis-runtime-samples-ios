@@ -29,7 +29,7 @@ class ManualCacheViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ManualCacheViewController"]
         
         //initialize map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.topographic())
+        self.map = AGSMap(basemap: .topographic())
         //initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13630484, y: 4545415, spatialReference: AGSSpatialReference.webMercator()), scale: 500000)
         
@@ -55,10 +55,10 @@ class ManualCacheViewController: UIViewController {
         params.whereClause = "req_Type = 'Tree Maintenance or Damage'"
         
         //populate features based on query
-        self.featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { (result:AGSFeatureQueryResult?, error:Error?) -> Void in
+        self.featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) {[weak self] (result:AGSFeatureQueryResult?, error:Error?) -> Void in
             //check for error
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 //the resulting features should be displayed on the map
@@ -67,4 +67,5 @@ class ManualCacheViewController: UIViewController {
             }
         }
     }
+    
 }

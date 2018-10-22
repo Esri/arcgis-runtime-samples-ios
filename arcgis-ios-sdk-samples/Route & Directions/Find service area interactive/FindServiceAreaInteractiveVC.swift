@@ -39,7 +39,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindServiceAreaInteractiveVC", "ServiceAreaSettingsVC"]
         
         //initialize map with basemap
-        let map = AGSMap(basemap: AGSBasemap.terrainWithLabels())
+        let map = AGSMap(basemap: .terrainWithLabels())
         
         //center for initial viewpoint
         let center = AGSPoint(x: -13041154, y: 3858170, spatialReference: AGSSpatialReference.webMercator())
@@ -85,7 +85,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         self.serviceAreaTask.defaultServiceAreaParameters { [weak self] (parameters: AGSServiceAreaParameters?, error: Error?) in
             
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: "Error getting default parameters:: \(error!.localizedDescription)")
+                self?.presentAlert(message: "Error getting default parameters:: \(error!.localizedDescription)")
                 return
             }
             
@@ -124,7 +124,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         //check if at least a single facility is added
         if self.facilitiesGraphicsOverlay.graphics.count == 0 {
             
-            SVProgressHUD.showInfo(withStatus: "At least one facility is required")
+            presentAlert(message: "At least one facility is required")
             
             return
         }
@@ -170,7 +170,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
             }
             
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: "Error solving service area:: \(error!.localizedDescription)")
+                self?.presentAlert(message: "Error solving service area:: \(error!.localizedDescription)")
                 return
             }
             

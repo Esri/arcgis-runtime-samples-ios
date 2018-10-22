@@ -35,7 +35,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ListRelatedFeaturesVC", "RelatedFeaturesListVC"]
         
         //initialize map with a basemap
-        let map = AGSMap(basemap: AGSBasemap.nationalGeographic())
+        let map = AGSMap(basemap: .nationalGeographic())
         
         //initial viewpoint
         let point = AGSPoint(x: -16507762.575543, y: 9058828.127243, spatialReference: AGSSpatialReference(wkid: 3857))
@@ -51,10 +51,6 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         
         //feature layer for parks
         self.parksFeatureLayer = AGSFeatureLayer(featureTable: self.parksFeatureTable)
-        
-        //change selection width for feature layer
-        self.parksFeatureLayer.selectionWidth = 4
-        self.parksFeatureLayer.selectionColor = .yellow
         
         //add parks feature layer to the map
         map.operationalLayers.add(self.parksFeatureLayer)
@@ -72,6 +68,9 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         
         //assign map to the map view
         self.mapView.map = map
+        
+        //set selection color
+        mapView.selectionProperties.color = .yellow
     }
     
     //MARK: - AGSGeoViewTouchDelegate
@@ -92,7 +91,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
             if let error = result.error {
                 
                 //dismiss progress hud
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 
@@ -133,7 +132,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
             if let error = error {
                 
                 //display error
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 
@@ -148,7 +147,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
                     self?.showRelatedFeatures()
                 }
                 else {  //else notify user
-                    SVProgressHUD.showInfo(withStatus: "No related features found")
+                    self?.presentAlert(message: "No related features found")
                 }
             }
         }

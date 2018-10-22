@@ -16,7 +16,7 @@
 
 import UIKit
 
-protocol HorizontalPickerDelegate: class {
+protocol HorizontalPickerDelegate: AnyObject {
     func horizontalPicker(_ horizontalPicker:HorizontalPicker, didUpdateSelectedIndex index: Int)
 }
 
@@ -99,7 +99,7 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
         self.nibView = self.loadViewFromNib()
         
         self.nibView.frame = self.bounds
-        nibView.autoresizingMask = [UIViewAutoresizing.flexibleHeight, .flexibleWidth]
+        nibView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         self.addSubview(self.nibView)
         
@@ -120,11 +120,11 @@ class HorizontalPicker: UIView, UICollectionViewDataSource, UICollectionViewDele
     private func setButtonsColor() {
         let prevImage = self.prevButton.imageView?.image?.withRenderingMode(.alwaysTemplate)
         self.prevButton.imageView?.tintColor = self.buttonsColor
-        self.prevButton.setImage(prevImage, for: UIControlState())
+        self.prevButton.setImage(prevImage, for: .normal)
         
         let nextImage = self.nextButton.imageView?.image?.withRenderingMode(.alwaysTemplate)
         self.nextButton.imageView?.tintColor = self.buttonsColor
-        self.nextButton.setImage(nextImage, for: UIControlState())
+        self.nextButton.setImage(nextImage, for: .normal)
     }
     
     private func updateButtonsState() {
@@ -230,7 +230,7 @@ class HorizontalPickerCell: UICollectionViewCell {
         
         //initialize and add title label
         self.titleLabel = UILabel(frame: self.contentView.bounds)
-        self.titleLabel.font = UIFont(name: "Avenir-Book", size: 17)
+        self.titleLabel.font = UIFont.systemFont(ofSize: 17)
         self.titleLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         self.titleLabel.textAlignment = .center
         

@@ -16,12 +16,12 @@
 import UIKit
 import ArcGIS
 
-protocol GroupByFieldsViewControllerDelegate: class {
+protocol GroupByFieldsViewControllerDelegate: AnyObject {
     func setGrouping(with fieldNames: [String])
 }
 
 class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    //
+
     // Outlets
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var tableNavigationItem: UINavigationItem!
@@ -65,15 +65,12 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     //MARK: - TableView delegates
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
         // Deselect row
         tableView.deselectRow(at: indexPath, animated: false)
         
-        //
         // Get the cell
         if let cell = tableView.cellForRow(at: indexPath) {
             if cell.accessoryType == .none {
-                //
                 // Set the accessory type to checkmark
                 cell.accessoryType = .checkmark
                 
@@ -82,7 +79,6 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
                 selectedFieldNames.append(fieldName)
             }
             else {
-                //
                 // Set the accessory type to none
                 cell.accessoryType = .none
                 
@@ -96,7 +92,6 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - Actions
     
     @IBAction private func doneAction() {
-        //
         // Fire delegate
         delegate?.setGrouping(with: selectedFieldNames)
         

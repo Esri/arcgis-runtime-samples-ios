@@ -19,19 +19,26 @@ import ArcGIS
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
-
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    
+    var splitViewController: UISplitViewController {
+        return window!.rootViewController as! UISplitViewController
+    }
+    var categoryBrowserViewController: ContentCollectionViewController {
+        return (splitViewController.viewControllers.first as! UINavigationController).viewControllers.first as! ContentCollectionViewController
+    }
+ 
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if url.absoluteString.range(of: "auth", options: [], range: nil, locale: nil) != nil {
             AGSApplicationDelegate.shared().application(app, open: url, options: options)
         }
         return true
     }
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // Override point for customization after application launch.
         let splitViewController = self.window!.rootViewController as! UISplitViewController
         splitViewController.presentsWithGesture = false
-        splitViewController.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
+        splitViewController.preferredDisplayMode = .allVisible
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         navigationController.topViewController!.navigationItem.leftItemsSupplementBackButton = true
@@ -40,6 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         //min max width for master
         splitViewController.minimumPrimaryColumnWidth = 320
         splitViewController.maximumPrimaryColumnWidth = 320
+        
+        // Decode and populate Categories.
+        categoryBrowserViewController.categories = decodeCategories(at: contentPlistURL)
         
         self.modifyAppearance()
         
@@ -93,7 +103,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     // MARK: - Appearance modification
     
     func modifyAppearance() {
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+        if #available(iOS 11.0, *) {
+            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        }
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().barTintColor = .primaryBlue
         UINavigationBar.appearance().tintColor = .white
         
@@ -127,6 +140,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         }
         return nil
     }
+    
+    // MARK: - Sample import
+    
+    /// The URL of the content plist file inside the bundle.
+    private var contentPlistURL: URL {
+        return Bundle.main.url(forResource: "ContentPList", withExtension: "plist")!
+    }
+    
+    /// Decodes an array of categories from the plist at the given URL.
+    ///
+    /// - Parameter url: The url of a plist that defines categories.
+    /// - Returns: An array of categories.
+    private func decodeCategories(at url: URL) -> [Category] {
+        do {
+            let data = try Data(contentsOf: url)
+            return try PropertyListDecoder().decode([Category].self, from: data)
+        } catch {
+            fatalError("Error decoding categories at \(url): \(error)")
+        }
+    }
+    
 }
 
 extension UIColor {

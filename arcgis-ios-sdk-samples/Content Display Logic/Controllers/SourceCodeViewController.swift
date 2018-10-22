@@ -13,23 +13,30 @@
 // limitations under the License.
 
 import UIKit
+import WebKit
 
-class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptivePresentationControllerDelegate {
-    
-    @IBOutlet private weak var webView:UIWebView!
-    @IBOutlet private weak var toolbarTitleButton:UIBarButtonItem!
+class SourceCodeViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
+    /// The view to which the web view is added.
+    @IBOutlet private weak var contentView: UIView!
+    /// The web view that displays the source code.
+    @IBOutlet private weak var webView: WKWebView!
+    @IBOutlet private weak var toolbarTitleButton: UIBarButtonItem!
     
     private var listViewController:ListViewController!
     private var selectedFilenameIndex = 0
     var filenames:[String]!
     
-    private var isListViewContainerVisible = false
-    private var isListViewContainerAnimating = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.webView.delegate = self
+        
+        // We must construct the web view in code as long as we support iOS 10.
+        // Prior to iOS 11, there was a bug in WKWebView.init(coder:) that
+        // caused a crash.
+        let webView = WKWebView(frame: contentView.bounds)
+        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        webView.scrollView.alwaysBounceHorizontal = true
+        contentView.addSubview(webView)
+        self.webView = webView
         
         if self.filenames != nil && self.filenames.count > 0 {
             self.loadHTMLPage(filename: self.filenames[0])
@@ -59,15 +66,19 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
         let cssPath = Bundle.main.path(forResource: "xcode", ofType: "css") ?? ""
         let jsPath = Bundle.main.path(forResource: "highlight.pack", ofType: "js") ?? ""
         let scale  = UIDevice.current.userInterfaceIdiom == .phone ? "0.5" : "1.0"
-        let stringForHTML = "<html> <head>" +
-            "<meta name='viewport' content='width=device-width, initial-scale='\(scale)'/> " +
-            "<link rel=\"stylesheet\" href=\"\(cssPath)\">" +
-            "<script src=\"\(jsPath)\"></script>" +
-            "<script>hljs.initHighlightingOnLoad();</script> </head> <body>" +
-            "<pre><code class=\"Swift\">\(content)</code></pre>" +
-            "</body> </html>"
-//        println(stringForHTML)
-        // style=\"white-space:initial;\"
+        let stringForHTML = """
+            <html>
+            <head>
+                <meta name='viewport' content='width=device-width, initial-scale='\(scale)'/>
+                <link rel="stylesheet" href="\(cssPath)">
+                <script src="\(jsPath)"></script>
+                <script>hljs.initHighlightingOnLoad();</script>
+            </head>
+            <body>
+                <pre><code class="Swift">\(content)</code></pre>
+            </body>
+            </html>
+            """
         return stringForHTML
     }
     
@@ -78,19 +89,10 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
             titleString = String(format: "%@ %@", (arrowPointingDown ? "▶︎" : " \u{25B4}"), filename)
         }
         else {
-            self.toolbarTitleButton.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : UIColor.black], for: UIControlState())
+            self.toolbarTitleButton.setTitleTextAttributes([.foregroundColor : UIColor.black], for: .normal)
         }
         self.toolbarTitleButton.title = titleString
     }
-    
-    //MARK: - web view delegate
-    
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        return true
-    }
-    
-    //MARK: - Actions
-    
     
     //MARK: - Navigation
     

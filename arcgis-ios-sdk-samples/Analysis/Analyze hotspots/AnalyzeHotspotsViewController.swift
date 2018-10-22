@@ -32,7 +32,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["AnalyzeHotspotsViewController", "HotspotSettingsViewController"]
 
         //initialize map with basemap
-        let map = AGSMap(basemap: AGSBasemap.topographic())
+        let map = AGSMap(basemap: .topographic())
         
         //center for initial viewpoint
         let center = AGSPoint(x: -13671170.647485, y: 5693633.356735, spatialReference: AGSSpatialReference(wkid: 3857))
@@ -72,7 +72,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         }) { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
             if let error = error {
                 //show error
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 //dismiss progress hud

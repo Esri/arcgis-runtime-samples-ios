@@ -30,7 +30,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["AddFeaturesViewController"]
         
         //instantiate map with a basemap
-        let map = AGSMap(basemap: AGSBasemap.streets())
+        let map = AGSMap(basemap: .streets())
         //set initial viewpoint
         map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: AGSSpatialReference.webMercator()), scale: 2e6)
         
@@ -65,7 +65,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         //add the feature to the feature table
         self.featureTable.add(feature) { [weak self] (error: Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showError(withStatus: "Error while adding feature :: \(error.localizedDescription)")
+                self?.presentAlert(message: "Error while adding feature :: \(error.localizedDescription)")
                 print("Error while adding feature :: \(error)")
             }
             else {
@@ -78,13 +78,13 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     
     func applyEdits() {
-        self.featureTable.applyEdits { (featureEditResults: [AGSFeatureEditResult]?, error: Error?) -> Void in
+        self.featureTable.applyEdits {[weak self] (featureEditResults: [AGSFeatureEditResult]?, error: Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showError(withStatus: "Error while applying edits :: \(error.localizedDescription)")
+                self?.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
             }
             else {
                 if let featureEditResults = featureEditResults , featureEditResults.count > 0 && featureEditResults[0].completedWithErrors == false {
-                    SVProgressHUD.showSuccess(withStatus: "Edits applied successfully")
+                    self?.presentAlert(message: "Edits applied successfully")
                 }
                 SVProgressHUD.dismiss()
             }

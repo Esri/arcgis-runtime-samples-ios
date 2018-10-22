@@ -16,7 +16,7 @@
 
 import UIKit
 
-protocol CustomContextSheetDelegate:class {
+protocol CustomContextSheetDelegate: AnyObject {
     func customContextSheet(_ customContextSheet:CustomContextSheet, didSelectItemAtIndex index:Int)
 }
 
@@ -133,19 +133,19 @@ class CustomContextSheet: UIView {
         let button = UIButton(frame: CGRect.zero)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.center = self.center
-        button.setImage(UIImage(named: image), for: UIControlState())
+        button.setImage(UIImage(named: image), for: .normal)
         if highlightImage != nil {
-            button.setImage(UIImage(named: highlightImage!), for: UIControlState.highlighted)
+            button.setImage(UIImage(named: highlightImage!), for: .highlighted)
         }
         button.layer.cornerRadius = self.buttonSize/2
         button.layer.masksToBounds = true
-        button.addTarget(self, action: action, for: UIControlEvents.touchUpInside)
+        button.addTarget(self, action: action, for: .touchUpInside)
         return button
     }
     
     func centerAlignConstraints(_ item:UIButton, retain:Bool) -> [NSLayoutConstraint] {
-        let centerXConstraint = NSLayoutConstraint(item: item, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerX, multiplier: 1.0, constant: 0)
-        let centerYConstraint = NSLayoutConstraint(item: item, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0)
+        let centerXConstraint = NSLayoutConstraint(item: item, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0)
+        let centerYConstraint = NSLayoutConstraint(item: item, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0)
         if retain {
             self.centerXConstraints.append(centerXConstraint)
             self.centerYConstraints.append(centerYConstraint)
@@ -154,8 +154,8 @@ class CustomContextSheet: UIView {
     }
     
     func sizeConstraints(_ item:UIButton, size:CGFloat) -> [NSLayoutConstraint] {
-        let heightConstraint = NSLayoutConstraint(item: item, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: size)
-        let widthConstraint = NSLayoutConstraint(item: item, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: size)
+        let heightConstraint = NSLayoutConstraint(item: item, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: size)
+        let widthConstraint = NSLayoutConstraint(item: item, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: size)
         return [heightConstraint, widthConstraint]
     }
     
@@ -170,16 +170,18 @@ class CustomContextSheet: UIView {
     }
     
     func labelConstraints(_ itemA:UIButton, itemB:UILabel) -> [NSLayoutConstraint] {
-        let horizontalSpacingConstraint = NSLayoutConstraint(item: itemA, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: itemB, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 10)
-        let centerYConstraint = NSLayoutConstraint(item: itemA, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: itemB, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0)
+        let horizontalSpacingConstraint = NSLayoutConstraint(item: itemA, attribute: .leading, relatedBy: .equal, toItem: itemB, attribute: .trailing, multiplier: 1.0, constant: 10)
+        let centerYConstraint = NSLayoutConstraint(item: itemA, attribute: .centerY, relatedBy: .equal, toItem: itemB, attribute: .centerY, multiplier: 1.0, constant: 0)
         return [horizontalSpacingConstraint, centerYConstraint]
     }
     
-    func attributedText(_ title:String) -> NSAttributedString {
-        let attributes = [NSAttributedStringKey.strokeWidth: -3,
-                          NSAttributedStringKey.strokeColor: UIColor.gray,
-                          NSAttributedStringKey.foregroundColor: UIColor.white,
-                          NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)] as [NSAttributedStringKey : Any]
+    func attributedText(_ title: String) -> NSAttributedString {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .strokeWidth: -3,
+            .strokeColor: UIColor.gray,
+            .foregroundColor: UIColor.white,
+            .font: UIFont.boldSystemFont(ofSize: 18)
+        ]
         return NSAttributedString(string: title, attributes: attributes)
     }
     
@@ -190,7 +192,7 @@ class CustomContextSheet: UIView {
             self.isAnimating = true
             
             //update the selection button to X
-            self.selectionButton.setImage(UIImage(named: "LocationDisplayClose"), for: UIControlState())
+            self.selectionButton.setImage(UIImage(named: "LocationDisplayClose"), for: .normal)
             //hide the selection label
             self.selectionLabel.attributedText = self.attributedText("Close")
             self.selectionLabel.sizeToFit()
@@ -205,7 +207,7 @@ class CustomContextSheet: UIView {
             
             let constraints = self.centerYConstraints
             
-            UIView.animateKeyframes(withDuration: self.animationDuration, delay: 0, options: UIViewKeyframeAnimationOptions(), animations: { [weak self] () -> Void in
+            UIView.animateKeyframes(withDuration: self.animationDuration, delay: 0, options: [], animations: { [weak self] () -> Void in
                 if let weakSelf = self {
                     let count = constraints.count
                     for i in 0...count-1 {
@@ -236,7 +238,7 @@ class CustomContextSheet: UIView {
             
             let constraints = self.centerYConstraints
             
-            UIView.animateKeyframes(withDuration: self.animationDuration, delay: 0, options: UIViewKeyframeAnimationOptions(), animations: { [weak self] () -> Void in
+            UIView.animateKeyframes(withDuration: self.animationDuration, delay: 0, options: [], animations: { [weak self] () -> Void in
                 if let weakSelf = self {
                     let count = constraints.count
                     for i in 0...count-1 {
@@ -283,7 +285,7 @@ class CustomContextSheet: UIView {
     }
     
     func updateSelectionButton(_ index:Int) {
-        self.selectionButton.setImage(UIImage(named: self.images[index]), for: UIControlState())
+        self.selectionButton.setImage(UIImage(named: self.images[index]), for: .normal)
         if self.titles != nil {
             self.selectionLabel.attributedText = self.attributedText(self.titles[index])
             self.selectionLabel.sizeToFit()
@@ -296,7 +298,7 @@ class CustomContextSheet: UIView {
         let x:CGFloat = max(frame.midX, screenFrame.size.width - frame.midX);
         let y:CGFloat = max(frame.midY, screenFrame.size.height - frame.midY);
         
-        let radius = sqrt(x*x + y*y)
+        let radius = (x * x + y * y).squareRoot()
         self.maskLayer = CAShapeLayer()
         self.maskLayer.frame = CGRect(x: bounds.midX-radius, y: bounds.midY-radius, width: radius*2, height: radius*2)
 
@@ -309,7 +311,7 @@ class CustomContextSheet: UIView {
     
     private func maskLayerAnimation(_ fill:Bool) -> CABasicAnimation {
         
-        let animation = CABasicAnimation(keyPath: "transform")
+        let animation = CABasicAnimation(keyPath: #keyPath(CALayer.transform))
         animation.duration = self.animationDuration
         if fill {
             animation.fromValue = NSValue(caTransform3D: CATransform3DMakeScale(0.0001, 0.0001, 0.0001))
@@ -320,7 +322,7 @@ class CustomContextSheet: UIView {
             animation.toValue = NSValue(caTransform3D: CATransform3DMakeScale(0.0001, 0.0001, 0.0001))
         }
         animation.isRemovedOnCompletion = false
-        animation.fillMode = kCAFillModeForwards
+        animation.fillMode = .forwards
         
         return animation
     }

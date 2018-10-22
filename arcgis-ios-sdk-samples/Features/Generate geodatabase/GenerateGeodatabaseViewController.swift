@@ -116,11 +116,11 @@ class GenerateGeodatabaseViewController: UIViewController {
                 }) { [weak self] (object: AnyObject?, error: Error?) -> Void in
                     if let error = error {
                         print(error)
-                        SVProgressHUD.showError(withStatus: error.localizedDescription)
+                        self?.presentAlert(error: error)
                     }
                     else {
                         SVProgressHUD.dismiss()
-                        self?.generatedGeodatabase = object as! AGSGeodatabase
+                        self?.generatedGeodatabase = object as? AGSGeodatabase
                         self?.displayLayersFromGeodatabase()
                     }
                 }
@@ -137,7 +137,7 @@ class GenerateGeodatabaseViewController: UIViewController {
         self.generatedGeodatabase.load { [weak self] (error:Error?) -> Void in
 
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 self?.map.operationalLayers.removeAllObjects()
@@ -151,7 +151,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                                 self?.map.operationalLayers.add(featureLayer)
                             }
                         }
-                        SVProgressHUD.showSuccess(withStatus: "Now showing data from geodatabase")
+                        self?.presentAlert(message: "Now showing data from geodatabase")
                     }
                 }
                 
@@ -167,14 +167,14 @@ class GenerateGeodatabaseViewController: UIViewController {
     }
     
     func unregisterGeodatabase() {
-        if self.generatedGeodatabase != nil {
-            self.syncTask.unregisterGeodatabase(self.generatedGeodatabase) { (error: Error?) -> Void in
+        if generatedGeodatabase != nil {
+            syncTask.unregisterGeodatabase(generatedGeodatabase) {[weak self] (error: Error?) -> Void in
 
                 if let error = error {
-                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+                    self?.presentAlert(error: error)
                 }
                 else {
-                    SVProgressHUD.showInfo(withStatus: "Geodatabase unregistered since we wont be editing it in this sample")
+                    self?.presentAlert(message: "Geodatabase unregistered since we wont be editing it in this sample")
                 }
             }
         }

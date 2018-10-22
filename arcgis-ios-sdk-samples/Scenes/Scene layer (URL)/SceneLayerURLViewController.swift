@@ -28,7 +28,7 @@ class SceneLayerURLViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SceneLayerURLViewController"]
         
         //initialize scene with topographic basemap
-        let scene = AGSScene(basemap: AGSBasemap.imagery())
+        let scene = AGSScene(basemap: .imagery())
         
         //assign scene to the scene view
         self.sceneView.scene = scene
@@ -40,12 +40,16 @@ class SceneLayerURLViewController: UIViewController {
         
         // add base surface for elevation data
         let surface = AGSSurface()
-        let elevationSource = AGSArcGISTiledElevationSource(url: URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!)
+        /// The url of the Terrain 3D ArcGIS REST Service.
+        let worldElevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
+        let elevationSource = AGSArcGISTiledElevationSource(url: worldElevationServiceURL)
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
         
+        /// The url of the scene service for buildings in Brest, France.
+        let brestBuildingsServiceURL = URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0")!
         //scene layer
-        let sceneLayer = AGSArcGISSceneLayer(url: URL(string: "http://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0")!)
+        let sceneLayer = AGSArcGISSceneLayer(url: brestBuildingsServiceURL)
         self.sceneView.scene?.operationalLayers.add(sceneLayer)
     }
 

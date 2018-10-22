@@ -21,42 +21,30 @@ class RasterLayerUsingServiceVC : UIViewController {
     
     @IBOutlet weak var mapView: AGSMapView!
     
-    private var map:AGSMap!
-    
-    private var rasterLayer: AGSRasterLayer!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //create an image service raster from an online raster service
-        let imageServiceRaster = AGSImageServiceRaster(url: URL(string:"https://sampleserver6.arcgisonline.com/arcgis/rest/services/NLCDLandCover2001/ImageServer")!)
+        // initialize a map with dark canvas vector basemap
+        let map = AGSMap(basemap: .darkGrayCanvasVector())
         
+        // assign the map to the map view
+        mapView.map = map
+        
+        // set the viewpoint to the Golden Gate of the San Francisco Bay
+        let center = AGSPoint(x: -13637000, y: 4550000, spatialReference: .webMercator())
+        mapView.setViewpointCenter(center, scale: 100000)
+        
+        /// The URL of an image service containing a bathymetric attributed grid.
+        let imageServiceURL = URL(string: "https://gis.ngdc.noaa.gov/arcgis/rest/services/bag_hillshades/ImageServer")!
+        // create an image service raster from an online raster service
+        let imageServiceRaster = AGSImageServiceRaster(url: imageServiceURL)
         // create a raster layer
-        self.rasterLayer = AGSRasterLayer(raster: imageServiceRaster)
+        let rasterLayer = AGSRasterLayer(raster: imageServiceRaster)
         
-        //initialize a map with dark canvas vector basemap
-        self.map = AGSMap(basemap: AGSBasemap.darkGrayCanvasVector())
-        
-        //add raster layer as an operational layer to the map
-        self.map.operationalLayers.add(self.rasterLayer)
-        
-        //assign the map to the map view
-        self.mapView.map = self.map
-        
-        //set map view's viewpoint to the raster layer's full extent
-        self.rasterLayer.load { [weak self] (error) in
-            
-            guard error == nil else {
-                SVProgressHUD.showError(withStatus: error!.localizedDescription)
-                return
-            }
-            
-            if let center = self?.rasterLayer.fullExtent?.center {
-                self?.mapView.setViewpoint(AGSViewpoint(center: center, scale: 50000000))
-            }
-        }
+        // add raster layer as an operational layer to the map
+        map.operationalLayers.add(rasterLayer)
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RasterLayerUsingServiceVC"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RasterLayerUsingServiceVC"]
     }
 }

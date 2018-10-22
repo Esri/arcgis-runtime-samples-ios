@@ -35,7 +35,7 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["AddDeleteRelatedFeaturesVC", "RelatedFeaturesViewController"]
 
         //initialize map with basemap
-        let map = AGSMap(basemap: AGSBasemap.streets())
+        let map = AGSMap(basemap: .streets())
         
         //initial viewpoint
         let point = AGSPoint(x: -16507762.575543, y: 9058828.127243, spatialReference: AGSSpatialReference(wkid: 3857))
@@ -80,7 +80,7 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
             guard result.error == nil else {
                 
                 //show error to user
-                SVProgressHUD.showError(withStatus: result.error!.localizedDescription)
+                self?.presentAlert(error: result.error!)
                 return
             }
             
@@ -109,7 +109,7 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
             let controller = navigationController.viewControllers[0] as! RelatedFeaturesViewController
             
             //share selected park
-            controller.originFeature = self.selectedPark as! AGSArcGISFeature
+            controller.originFeature = self.selectedPark as? AGSArcGISFeature
             
             //share parks feature table as origin feature table
             controller.originFeatureTable = self.parksFeatureTable

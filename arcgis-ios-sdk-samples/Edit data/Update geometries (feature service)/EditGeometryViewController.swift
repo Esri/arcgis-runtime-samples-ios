@@ -35,7 +35,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditGeometryViewController"]
         
-        self.map = AGSMap(basemap: AGSBasemap.oceans())
+        self.map = AGSMap(basemap: .oceans())
         //set initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -9030446.96, y: 943791.32, spatialReference: AGSSpatialReference.webMercator()), scale: 2e6)
         
@@ -74,10 +74,10 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     func applyEdits() {
         self.featureTable.applyEdits(completion: { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
-                SVProgressHUD.showSuccess(withStatus: "Saved successfully!")
+                self?.presentAlert(message: "Saved successfully!")
             }
             //un hide the feature
             self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
@@ -141,7 +141,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
             self.selectedFeature.geometry = newGeometry
             self.featureTable.update(self.selectedFeature, completion: { [weak self] (error:Error?) -> Void in
                 if let error = error {
-                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+                    self?.presentAlert(error: error)
                     
                     //un hide the feature
                     self?.featureLayer.setFeature(self!.selectedFeature, visible: true)

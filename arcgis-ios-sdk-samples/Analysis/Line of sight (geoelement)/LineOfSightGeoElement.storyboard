@@ -14,7 +14,7 @@
         <!--Line Of Sight Geo Element View Controller-->
         <scene sceneID="uVV-jY-ewq">
             <objects>
-                <viewController id="beF-yn-MU6" customClass="LineOfSightGeoElementViewController" customModule="arcgis_ios_sdk_samples" sceneMemberID="viewController">
+                <viewController id="beF-yn-MU6" customClass="LineOfSightGeoElementViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7gX-cs-H6x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

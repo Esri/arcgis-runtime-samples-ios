@@ -1,14 +1,15 @@
-arcgis-runtime-samples-ios [![](https://esri.box.com/shared/static/km0f6q9otadygg3mkszqd4mqn4k2yo6y.svg)](https://itunes.apple.com/us/app/arcgis-runtime-sdk-for-ios/id1180714771)
+ArcGIS Runtime SDK for iOS Samples [![](https://esri.box.com/shared/static/km0f6q9otadygg3mkszqd4mqn4k2yo6y.svg)](https://itunes.apple.com/us/app/arcgis-runtime-sdk-for-ios/id1180714771)
 ==========================
-This repository contains Swift sample code demonstrating the capabilities of [ArcGIS Runtime SDK for iOS](http://developers.arcgis.com/en/ios/). The project that can be opened in Xcode and instantly run on a simulator or a device.
 
-The ```master``` branch of this repository contains samples configured for the latest available version of [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/en/ios/). For samples configured for older versions of the SDK,  look under the ```Releases``` tab for a specific version.
+This repository contains Swift sample code demonstrating the capabilities of [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/). The project that can be opened in Xcode and instantly run on a simulator or a device.
 
+The ```master``` branch of this repository contains samples configured for the latest available version of [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/). For samples configured for older versions of the SDK,  look under the ```Releases``` tab for a specific version.
 
 ![](http://a1.mzstatic.com/us/r30/Purple111/v4/30/eb/f8/30ebf822-37e9-602e-c0da-bdb04a96239c/screen696x696.jpeg) | ![](http://a1.mzstatic.com/us/r30/Purple111/v4/0a/20/6e/0a206e52-fd59-9075-fdcb-fa48bc170b66/screen696x696.jpeg) | ![](http://a2.mzstatic.com/us/r30/Purple111/v4/6f/06/9e/6f069e2a-9da0-6694-58c6-137b8a6d0bc0/screen696x696.jpeg) | ![](http://a2.mzstatic.com/us/r30/Purple91/v4/f3/f4/9c/f3f49cea-19e8-8af4-4da5-1511f490cce7/screen696x696.jpeg)| ![](http://a2.mzstatic.com/us/r30/Purple122/v4/8c/25/ae/8c25aeec-c3a2-bd18-740f-6cc5384d4aaf/screen696x696.jpeg)
 | --- | --- | --- | --- | --- |
 
 ## Features
+
 * Maps - Open, create, inteact with and save maps
 * Layers - Layer types offered by the SDK
 * Features - Working with Feature layers
@@ -20,9 +21,10 @@ The ```master``` branch of this repository contains samples configured for the l
 * Scenes - Display scenes, 3D symbols, and scene layers
 
 ## Requirements
-* [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/en/ios/) 100.3.0 (or higher).
-* Xcode 9 (or higher)
-* iOS 11 SDK (or higher)
+
+* [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/) 100.4.0 (or higher).
+* Xcode 10.0 (or higher)
+* iOS 12 SDK (or higher)
 
 1. Fork and then clone the repo. Don't know how? [Get started here.](http://htmlpreview.github.com/?https://github.com/Esri/esri.github.com/blob/master/help/esri-getting-to-know-github.html)
 2. Build and run the project to create a single app containing all of the samples.
@@ -42,6 +44,7 @@ Find a bug or want to request a new feature?  Please let us know by submitting a
 Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/esri/contributing).
 
 ## Licensing
+
 Copyright 2013 Esri
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -57,5 +60,3 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 A copy of the license is available in the repository's [license.txt]( https://raw.github.com/Esri/arcgis-runtime-samples-ios/master/license.txt) file.
-
-

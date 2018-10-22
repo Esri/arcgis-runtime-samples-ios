@@ -29,7 +29,7 @@ class UniqueValueRendererViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["UniqueValueRendererViewController"]
 
         //instantiate map with basemap
-        let map = AGSMap(basemap: AGSBasemap.topographic())
+        let map = AGSMap(basemap: .topographic())
         
         //create feature layer
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3")!)

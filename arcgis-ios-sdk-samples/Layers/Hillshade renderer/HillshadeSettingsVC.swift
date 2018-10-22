@@ -15,12 +15,12 @@
 import UIKit
 import ArcGIS
 
-protocol HillshadeSettingsDelegate: class {
+protocol HillshadeSettingsDelegate: AnyObject {
     
     func hillshadeSettingsVC(_ hillshadeSettingsVC: HillshadeSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType)
 }
 
-class HillshadeSettingsVC: UIViewController {
+class HillshadeSettingsVC: UITableViewController {
     
     @IBOutlet var altitudeSlider: UISlider!
     @IBOutlet var azimuthSlider: UISlider!
@@ -33,35 +33,86 @@ class HillshadeSettingsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.horizontalPicker.options = ["None", "Degree", "Percent Rise", "Scaled"]
-        self.view.layer.cornerRadius = 10
+        horizontalPicker.options = ["None", "Degree", "Percent Rise", "Scaled"]
+        horizontalPicker.delegate = self
     }
     
-    func selectedSlope() -> AGSSlopeType {
-        switch self.horizontalPicker.selectedIndex {
-        case 0:
-            return AGSSlopeType.none
-        case 1:
-            return AGSSlopeType.degree
-        case 2:
-            return AGSSlopeType.percentRise
-        default:
-            return AGSSlopeType.scaled
+    var selectedSlope: AGSSlopeType {
+        set {
+            guard newValue != selectedSlope else {
+                return
+            }
+            switch newValue {
+            case .none:
+                horizontalPicker.selectedIndex = 0
+            case .degree:
+                horizontalPicker.selectedIndex = 1
+            case .percentRise:
+                horizontalPicker.selectedIndex = 2
+            case .scaled:
+                horizontalPicker.selectedIndex = 3
+            }
         }
+        get {
+            switch horizontalPicker.selectedIndex {
+            case 0:
+                return .none
+            case 1:
+                return .degree
+            case 2:
+                return .percentRise
+            default:
+                return .scaled
+            }
+        }
+    }
+    
+    var altitude: Double {
+        set {
+            guard newValue != altitude else {
+                return
+            }
+            altitudeLabel.text = "\(Int(newValue))"
+            altitudeSlider.value = Float(newValue)
+        }
+        get {
+            return Double(altitudeSlider.value)
+        }
+    }
+    
+    var azimuth: Double {
+        set {
+            guard newValue != azimuth else {
+                return
+            }
+            azimuthLabel.text = "\(Int(newValue))"
+            azimuthSlider.value = Float(newValue)
+        }
+        get {
+            return Double(azimuthSlider.value)
+        }
+    }
+    
+    private func hillshadeParametersChanged() {
+        delegate?.hillshadeSettingsVC(self, selectedAltitude: altitude, azimuth: azimuth, slopeType: selectedSlope)
     }
     
     //MARK: - Actions
     
     @IBAction func azimuthSliderValueChanged(_ slider: UISlider) {
-        self.azimuthLabel.text = "\(Int(slider.value))"
+        azimuth = Double(slider.value)
+        hillshadeParametersChanged()
     }
     
     @IBAction func altitudeSliderValueChanged(_ slider: UISlider) {
-        self.altitudeLabel.text = "\(Int(slider.value))"
+        altitude = Double(slider.value)
+        hillshadeParametersChanged()
     }
     
-    @IBAction func rendererAction() {
-        
-        self.delegate?.hillshadeSettingsVC(self, selectedAltitude: Double(self.altitudeSlider.value), azimuth: Double(self.azimuthSlider.value), slopeType: self.selectedSlope())
+}
+
+extension HillshadeSettingsVC: HorizontalPickerDelegate {
+    func horizontalPicker(_ horizontalPicker: HorizontalPicker, didUpdateSelectedIndex index: Int) {
+         hillshadeParametersChanged()
     }
 }

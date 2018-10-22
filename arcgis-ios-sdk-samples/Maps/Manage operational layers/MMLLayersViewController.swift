@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-protocol MMLLayersViewControllerDelegate: class {
+protocol MMLLayersViewControllerDelegate: AnyObject {
     func layersViewControllerWantsToClose(_ layersViewController: MMLLayersViewController, withDeletedLayers layers: [AGSLayer])
 }
 
@@ -84,7 +84,7 @@ class MMLLayersViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         switch Section(indexPath.section) {
         case .added:
             return .delete
@@ -110,7 +110,7 @@ class MMLLayersViewController: UITableViewController {
         layers.insert(layer, at:destinationIndex)
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         tableView.beginUpdates()
         defer { tableView.endUpdates() }
         switch editingStyle {

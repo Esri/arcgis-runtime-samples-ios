@@ -31,7 +31,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["IdentifyLayersViewController"]
         
         //create an instance of a map
-        self.map = AGSMap(basemap: AGSBasemap.topographic())
+        self.map = AGSMap(basemap: .topographic())
         
         //map image layer
         self.mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
@@ -84,7 +84,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
             SVProgressHUD.dismiss()
             
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self.presentAlert(error: error)
             }
             else {
                 self.handleIdentifyResults(results!)
@@ -115,10 +115,10 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         //if any elements were found show the results
         //else notify user that no elements were found
         if totalCount > 0 {
-            self.showAlertController("Number of elements found", message: messageString)
+            presentAlert(title: "Number of elements found", message: messageString)
         }
         else {
-            SVProgressHUD.showError(withStatus: "No element found")
+            presentAlert(message: "No element found")
         }
     }
     
@@ -151,14 +151,6 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         return count
     }
     
-    //helper method to show results to the user
-    private func showAlertController(_ title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "Ok", style: .cancel)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
 }
 
 

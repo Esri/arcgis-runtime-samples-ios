@@ -34,7 +34,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditFeaturesOnlineViewController","FeatureTemplatePickerViewController"]
         
-        self.map = AGSMap(basemap: AGSBasemap.topographic())
+        self.map = AGSMap(basemap: .topographic())
         //set initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -9184518.55, y: 3240636.90, spatialReference: AGSSpatialReference.webMercator()), scale: 7e5)
         self.mapView.map = self.map
@@ -61,13 +61,13 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //show progress hud
         SVProgressHUD.show(withStatus: "Applying edits")
         
-        (self.featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
+        (self.featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
             
             if let error = error {
-                SVProgressHUD.showError(withStatus: "Error while applying edits :: \(error.localizedDescription)")
+                self?.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
             }
             else {
-                SVProgressHUD.showSuccess(withStatus: "Edits applied successfully!")
+                self?.presentAlert(message: "Edits applied successfully!")
             }
         }
     }

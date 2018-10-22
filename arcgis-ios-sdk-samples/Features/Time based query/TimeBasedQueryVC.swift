@@ -29,7 +29,7 @@ class TimeBasedQueryVC: UIViewController {
         super.viewDidLoad()
         
         //initialize map with oceans basemap
-        self.map = AGSMap(basemap: AGSBasemap.oceans())
+        self.map = AGSMap(basemap: .oceans())
         
         //assign map to the map view
         self.mapView.map = self.map
@@ -70,11 +70,11 @@ class TimeBasedQueryVC: UIViewController {
         queryParams.timeExtent = timeExtent
         
         //populate features based on query parameters
-        self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { (result:AGSFeatureQueryResult?, error:Error?) -> Void in
+        self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) {[weak self] (result:AGSFeatureQueryResult?, error:Error?) -> Void in
             
             //check for error
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
                 //the resulting features should be displayed on the map

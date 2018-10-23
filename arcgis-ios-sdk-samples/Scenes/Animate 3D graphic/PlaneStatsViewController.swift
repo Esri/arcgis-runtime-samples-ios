@@ -21,10 +21,5 @@ class PlaneStatsViewController: UITableViewController {
     @IBOutlet var headingLabel: UILabel!
     @IBOutlet var pitchLabel: UILabel!
     @IBOutlet var rollLabel: UILabel!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        preferredContentSize = CGSize(width: 220, height: 200)
-    }
     
 }

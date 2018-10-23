@@ -18,9 +18,9 @@ import ArcGIS
 
 class Animate3DGraphicViewController: UIViewController {
 
-    @IBOutlet private var sceneView:AGSSceneView!
-    @IBOutlet private var mapView:AGSMapView!
-    @IBOutlet private var playBBI:UIBarButtonItem!
+    @IBOutlet private var sceneView: AGSSceneView!
+    @IBOutlet private var mapView: AGSMapView!
+    @IBOutlet private var playBBI: UIBarButtonItem!
     
     private var missionFileNames = ["GrandCanyon.csv", "Hawaii.csv", "Pyrenees.csv", "Snowdon.csv"]
     private var selectedMissionIndex = 0
@@ -185,13 +185,13 @@ class Animate3DGraphicViewController: UIViewController {
                 frames = lines.map { (line) -> Frame in
                     let details = line.components(separatedBy: ",")
                     
+                    let position = AGSPoint(x: Double(details[0])!, y: Double(details[1])!, z: Double(details[2])!, spatialReference: .wgs84())
+                    
                     //load position, heading, pitch and roll for each frame
-                    let frame = Frame()
-                    frame.position = AGSPoint(x: Double(details[0])!, y: Double(details[1])!, z: Double(details[2])!, spatialReference: AGSSpatialReference.wgs84())
-                    frame.heading = Double(details[3])!
-                    frame.pitch = Double(details[4])!
-                    frame.roll = Double(details[5])!
-                    return frame
+                    return Frame(position: position,
+                                 heading: Double(details[3])!,
+                                 pitch: Double(details[4])!,
+                                 roll: Double(details[5])!)
                 }
             }
         }
@@ -259,9 +259,9 @@ class Animate3DGraphicViewController: UIViewController {
         
         //update labels
         planeStatsViewController?.altitudeLabel?.text = "\(Int(frame.position.z)) m"
-        planeStatsViewController?.headingLabel?.text = "\(Int(frame.heading))º"
-        planeStatsViewController?.pitchLabel?.text = "\(Int(frame.pitch))º"
-        planeStatsViewController?.rollLabel?.text = "\(Int(frame.roll))º"
+        planeStatsViewController?.headingLabel?.text = "\(Int(frame.heading))°"
+        planeStatsViewController?.pitchLabel?.text = "\(Int(frame.pitch))°"
+        planeStatsViewController?.rollLabel?.text = "\(Int(frame.roll))°"
         
         //increment current frame index
         currentFrameIndex += 1
@@ -305,24 +305,25 @@ class Animate3DGraphicViewController: UIViewController {
             startAnimation()
         }
         
-        isAnimating = !isAnimating
+        isAnimating.toggle()
     }
     
     //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        // dismiss any shown view controllers
         dismiss(animated: false, completion: nil)
         
         if let controller = segue.destination as? CameraSettingsViewController {
-            controller.orbitGeoElementCameraController = self.orbitGeoElementCameraController
+            controller.orbitGeoElementCameraController = orbitGeoElementCameraController
             
             //pop over settings
             controller.presentationController?.delegate = self
-            controller.popoverPresentationController?.passthroughViews = [self.sceneView]
             
             //preferred content size
-            if self.traitCollection.horizontalSizeClass == .regular && self.traitCollection.verticalSizeClass == .regular {
+            if traitCollection.horizontalSizeClass == .regular,
+                traitCollection.verticalSizeClass == .regular {
                 controller.preferredContentSize = CGSize(width: 300, height: 380)
             }
             else {
@@ -339,10 +340,10 @@ class Animate3DGraphicViewController: UIViewController {
         else if let missionSettingsViewController = segue.destination as? MissionSettingsViewController {
             self.missionSettingsViewController = missionSettingsViewController
             //initial values
-            missionSettingsViewController.missionFileNames = self.missionFileNames
-            missionSettingsViewController.selectedMissionIndex = self.selectedMissionIndex
-            missionSettingsViewController.animationSpeed = self.animationSpeed
-            missionSettingsViewController.progress = Float(self.currentFrameIndex) / Float(self.frames.count)
+            missionSettingsViewController.missionFileNames = missionFileNames
+            missionSettingsViewController.selectedMissionIndex = selectedMissionIndex
+            missionSettingsViewController.animationSpeed = animationSpeed
+            missionSettingsViewController.progress = Float(currentFrameIndex) / Float(frames.count)
             
             //pop over settings
             missionSettingsViewController.presentationController?.delegate = self
@@ -380,15 +381,16 @@ extension Animate3DGraphicViewController: UIAdaptivePresentationControllerDelega
     }
 }
 
-class Frame {
-    var position: AGSPoint!
-    var heading: Double = 0.0
-    var pitch: Double = 0.0
-    var roll: Double = 0.0
-}
-
-private extension Double {
-    func format(f: String) -> String {
-        return String(format: "%\(f)f", self)
+private class Frame {
+    let position: AGSPoint
+    let heading: Double
+    let pitch: Double
+    let roll: Double
+    
+    init(position: AGSPoint, heading: Double, pitch: Double, roll: Double) {
+        self.position = position
+        self.heading = heading
+        self.pitch = pitch
+        self.roll = roll
     }
 }

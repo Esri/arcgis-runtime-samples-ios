@@ -41,8 +41,6 @@ class MissionSettingsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        preferredContentSize = CGSize(width: 300, height: 200)
         
         horizontalPicker.options = missionFileNames
         horizontalPicker.selectedIndex = selectedMissionIndex

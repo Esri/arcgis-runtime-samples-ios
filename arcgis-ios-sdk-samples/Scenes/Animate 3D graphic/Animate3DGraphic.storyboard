@@ -75,6 +75,9 @@
                                         <connections>
                                             <segue destination="buF-Ey-mem" kind="popoverPresentation" popoverAnchorBarButtonItem="gEP-JA-7Az" id="hZa-kf-1bi">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                <popoverPassthroughViews>
+                                                    <view reference="Evq-HD-FPT"/>
+                                                </popoverPassthroughViews>
                                             </segue>
                                         </connections>
                                     </barButtonItem>

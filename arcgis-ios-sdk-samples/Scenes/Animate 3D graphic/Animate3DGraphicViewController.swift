@@ -37,6 +37,8 @@ class Animate3DGraphicViewController: UIViewController {
     private weak var planeStatsViewController: PlaneStatsViewController?
     private weak var missionSettingsViewController: MissionSettingsViewController?
     
+    private let numberFormatter = NumberFormatter()
+    
     private var isAnimating = false {
         didSet {
             playBBI?.title = isAnimating ? "Pause" : "Play"
@@ -185,7 +187,10 @@ class Animate3DGraphicViewController: UIViewController {
                 frames = lines.map { (line) -> Frame in
                     let details = line.components(separatedBy: ",")
                     
-                    let position = AGSPoint(x: Double(details[0])!, y: Double(details[1])!, z: Double(details[2])!, spatialReference: .wgs84())
+                    let position = AGSPoint(x: Double(details[0])!,
+                                            y: Double(details[1])!,
+                                            z: Double(details[2])!,
+                                            spatialReference: .wgs84())
                     
                     //load position, heading, pitch and roll for each frame
                     return Frame(position: position,
@@ -255,13 +260,13 @@ class Animate3DGraphicViewController: UIViewController {
         mapView.setViewpoint(viewpoint)
         
         //update progress
-        missionSettingsViewController?.progress = Float(self.currentFrameIndex) / Float(self.frames.count)
+        missionSettingsViewController?.progress = Float(currentFrameIndex) / Float(frames.count)
         
         //update labels
-        planeStatsViewController?.altitudeLabel?.text = "\(Int(frame.position.z)) m"
-        planeStatsViewController?.headingLabel?.text = "\(Int(frame.heading))°"
-        planeStatsViewController?.pitchLabel?.text = "\(Int(frame.pitch))°"
-        planeStatsViewController?.rollLabel?.text = "\(Int(frame.roll))°"
+        planeStatsViewController?.altitudeLabel?.text = "\(numberFormatter.string(from: frame.position.z as NSNumber)!) m"
+        planeStatsViewController?.headingLabel?.text = "\(numberFormatter.string(from: frame.heading as NSNumber)!)°"
+        planeStatsViewController?.pitchLabel?.text = "\(numberFormatter.string(from: frame.pitch as NSNumber)!)°"
+        planeStatsViewController?.rollLabel?.text = "\(numberFormatter.string(from: frame.roll as NSNumber)!)°"
         
         //increment current frame index
         currentFrameIndex += 1

@@ -34,23 +34,17 @@ class HillshadeSettingsVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    }
-    
-    private var slopeTypeOptions: [AGSSlopeType] = [.none, .degree, .percentRise, .scaled]
-    
-    private func labelForSlopeType(_ slopeType: AGSSlopeType) -> String {
-        switch slopeType {
-        case .none: return "None"
-        case .degree: return "Degree"
-        case .percentRise: return "Percent Rise"
-        case .scaled: return "Scaled"
-        }
+        updateSlopeTypeLabel()
     }
     
     var slopeType: AGSSlopeType = .none {
         didSet {
-            slopeTypeLabel.text = labelForSlopeType(slopeType)
+            updateSlopeTypeLabel()
         }
+    }
+    
+    private func updateSlopeTypeLabel() {
+        slopeTypeLabel?.text = slopeType.title
     }
     
     var altitude: Double = 0 {
@@ -89,16 +83,30 @@ class HillshadeSettingsVC: UITableViewController {
         guard tableView.cellForRow(at: indexPath) == slopeTypeCell else {
             return
         }
-        let labels = slopeTypeOptions.map { (slopeType) -> String in
-            return labelForSlopeType(slopeType)
-        }
-        let selectedIndex = slopeTypeOptions.firstIndex(of: slopeType)!
-        let optionsTable = OptionsTableViewController(labels: labels, selectedIndex: selectedIndex) { (newIndex) in
-            self.slopeType = self.slopeTypeOptions[newIndex]
+        let optionsTableViewController = OptionsTableViewController(options: AGSSlopeType.allCases, selectedOption: slopeType) { (newOption) in
+            self.slopeType = newOption
             self.hillshadeParametersChanged()
+            
         }
-        optionsTable.title = "Slope Type"
-        show(optionsTable, sender: self)
+        optionsTableViewController.title = "Slope Type"
+        show(optionsTableViewController, sender: self)
     }
     
+}
+
+extension AGSSlopeType: CaseIterable {
+    public static var allCases: [AGSSlopeType] {
+        return [.none, .degree, .percentRise, .scaled]
+    }
+}
+
+extension AGSSlopeType: OptionProtocol {
+    var title: String {
+        switch self {
+        case .none: return "None"
+        case .degree: return "Degree"
+        case .percentRise: return "Percent Rise"
+        case .scaled: return "Scaled"
+        }
+    }
 }

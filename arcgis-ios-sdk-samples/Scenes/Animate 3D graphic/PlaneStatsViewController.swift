@@ -15,17 +15,16 @@
 
 import UIKit
 
-class PlaneStatsViewController: UIViewController {
+class PlaneStatsViewController: UITableViewController {
     
-    @IBOutlet var altitudeLabel:UILabel!
-    @IBOutlet var headingLabel:UILabel!
-    @IBOutlet var pitchLabel:UILabel!
-    @IBOutlet var rollLabel:UILabel!
+    @IBOutlet var altitudeLabel: UILabel!
+    @IBOutlet var headingLabel: UILabel!
+    @IBOutlet var pitchLabel: UILabel!
+    @IBOutlet var rollLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //preferred content size
-        self.preferredContentSize = CGSize(width: 220, height: 200)
+        preferredContentSize = CGSize(width: 220, height: 200)
     }
+    
 }

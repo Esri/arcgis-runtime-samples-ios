@@ -68,21 +68,21 @@ class CameraSettingsViewController: UITableViewController {
             return
         }
         distanceSlider.value = Float(cameraController.cameraDistance)
-        distanceLabel.text = numberFormatter.string(from: cameraController.cameraDistance as NSNumber)!
+        distanceLabel.text = numberFormatter.string(from: cameraController.cameraDistance as NSNumber)! + " m"
     }
     private func updateUIForHeadingOffset() {
         guard let cameraController = orbitGeoElementCameraController else {
             return
         }
         headingOffsetSlider.value = Float(cameraController.cameraHeadingOffset)
-        headingOffsetLabel.text = numberFormatter.string(from: cameraController.cameraHeadingOffset as NSNumber)!
+        headingOffsetLabel.text = numberFormatter.string(from: cameraController.cameraHeadingOffset as NSNumber)! + "°"
     }
     private func updateUIForPitchOffset() {
         guard let cameraController = orbitGeoElementCameraController else {
             return
         }
         pitchOffsetSlider.value = Float(cameraController.cameraPitchOffset)
-        pitchOffsetLabel.text = numberFormatter.string(from: cameraController.cameraPitchOffset as NSNumber)!
+        pitchOffsetLabel.text = numberFormatter.string(from: cameraController.cameraPitchOffset as NSNumber)! + "°"
     }
     
     //MARK: - Actions

@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegate {
+class Animate3DGraphicViewController: UIViewController {
 
     @IBOutlet private var sceneView:AGSSceneView!
     @IBOutlet private var mapView:AGSMapView!
@@ -258,7 +258,7 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
         missionSettingsViewController?.progress = Float(self.currentFrameIndex) / Float(self.frames.count)
         
         //update labels
-        planeStatsViewController?.altitudeLabel?.text = "\(Int(frame.position.z))"
+        planeStatsViewController?.altitudeLabel?.text = "\(Int(frame.position.z)) m"
         planeStatsViewController?.headingLabel?.text = "\(Int(frame.heading))º"
         planeStatsViewController?.pitchLabel?.text = "\(Int(frame.pitch))º"
         planeStatsViewController?.rollLabel?.text = "\(Int(frame.roll))º"
@@ -351,12 +351,13 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
         }
     }
     
-    //MARK: - MissionSettingsVCDelegate
+}
+
+extension Animate3DGraphicViewController: MissionSettingsVCDelegate {
     
     func missionSettingsViewController(_ missionSettingsViewController: MissionSettingsViewController, didSelectMissionAtIndex index: Int) {
         
         selectedMissionIndex = index
-        
         changeMissionAction()
     }
     
@@ -366,7 +367,6 @@ class Animate3DGraphicViewController: UIViewController, MissionSettingsVCDelegat
         
         if isAnimating {
             animationTimer?.invalidate()
-            
             startAnimation()
         }
     }

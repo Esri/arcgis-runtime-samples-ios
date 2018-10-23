@@ -22,18 +22,18 @@ protocol MissionSettingsVCDelegate: AnyObject {
     func missionSettingsViewController(_ missionSettingsViewController:MissionSettingsViewController, didChangeSpeed speed:Int)
 }
 
-class MissionSettingsViewController: UIViewController, HorizontalPickerDelegate {
+class MissionSettingsViewController: UITableViewController {
 
-    @IBOutlet private var horizontalPicker:HorizontalPicker!
-    @IBOutlet private var speedSlider:UISlider!
-    @IBOutlet private var progressView:UIProgressView!
+    @IBOutlet private var horizontalPicker: HorizontalPicker!
+    @IBOutlet private var speedSlider: UISlider!
+    @IBOutlet private var progressView: UIProgressView!
     
-    var missionFileNames:[String]!
+    var missionFileNames:[String] = []
     var selectedMissionIndex:Int = 0
     var animationSpeed = 50
     var progress:Float = 0 {
         didSet {
-            self.progressView?.progress = progress
+            progressView?.progress = progress
         }
     }
     
@@ -42,29 +42,27 @@ class MissionSettingsViewController: UIViewController, HorizontalPickerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //preferred content size
-        self.preferredContentSize = CGSize(width: 300, height: 200)
+        preferredContentSize = CGSize(width: 300, height: 200)
         
-        self.horizontalPicker.options = self.missionFileNames
-        self.horizontalPicker.selectedIndex = self.selectedMissionIndex
-        self.horizontalPicker.delegate = self
+        horizontalPicker.options = missionFileNames
+        horizontalPicker.selectedIndex = selectedMissionIndex
+        horizontalPicker.delegate = self
         
-        self.speedSlider.value = Float(self.animationSpeed)
-        self.progressView.progress = self.progress
+        speedSlider.value = Float(animationSpeed)
+        progressView.progress = progress
     }
     
     //MARK: - Actions
     
     @IBAction func speedValueChanged(_ sender: UISlider) {
         
-        self.delegate?.missionSettingsViewController(self, didChangeSpeed: Int(sender.value))
+        delegate?.missionSettingsViewController(self, didChangeSpeed: Int(sender.value))
     }
-    
-    //MARK: - HorizontalPickerDelegate
+}
+
+extension MissionSettingsViewController: HorizontalPickerDelegate {
     
     func horizontalPicker(_ horizontalPicker: HorizontalPicker, didUpdateSelectedIndex index: Int) {
-        
-        self.delegate?.missionSettingsViewController(self, didSelectMissionAtIndex: index)
+        delegate?.missionSettingsViewController(self, didSelectMissionAtIndex: index)
     }
-
 }

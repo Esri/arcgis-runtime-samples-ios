@@ -18,80 +18,71 @@ import ArcGIS
 
 class CameraSettingsViewController: UITableViewController {
 
-    weak var orbitGeoElementCameraController:AGSOrbitGeoElementCameraController?
+    weak var orbitGeoElementCameraController: AGSOrbitGeoElementCameraController?
     
-    @IBOutlet var headingOffsetSlider:UISlider!
-    @IBOutlet var pitchOffsetSlider:UISlider!
-    @IBOutlet var distanceSlider:UISlider!
-    @IBOutlet var distanceLabel:UILabel!
-    @IBOutlet var headingOffsetLabel:UILabel!
-    @IBOutlet var pitchOffsetLabel:UILabel!
-    @IBOutlet var speedSlider:UISlider!
-    @IBOutlet var speedLabel:UILabel!
-    @IBOutlet var autoHeadingEnabledSwitch:UISwitch!
-    @IBOutlet var autoPitchEnabledSwitch:UISwitch!
-    @IBOutlet var autoRollEnabledSwitch:UISwitch!
+    @IBOutlet var headingOffsetSlider: UISlider!
+    @IBOutlet var pitchOffsetSlider: UISlider!
+    @IBOutlet var distanceSlider: UISlider!
+    @IBOutlet var distanceLabel: UILabel!
+    @IBOutlet var headingOffsetLabel: UILabel!
+    @IBOutlet var pitchOffsetLabel: UILabel!
+    @IBOutlet var autoHeadingEnabledSwitch: UISwitch!
+    @IBOutlet var autoPitchEnabledSwitch: UISwitch!
+    @IBOutlet var autoRollEnabledSwitch: UISwitch!
+    
+    private var distanceObservation: NSKeyValueObservation?
+    private var headingObservation: NSKeyValueObservation?
+    private var pitchObservation: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //apply initial values to controls
-        self.setInitialValues()
-        
-        //add observers to update the sliders
-        self.orbitGeoElementCameraController?.addObserver(self, forKeyPath: #keyPath(AGSOrbitGeoElementCameraController.cameraDistance), options: .new, context: nil)
-        self.orbitGeoElementCameraController?.addObserver(self, forKeyPath: #keyPath(AGSOrbitGeoElementCameraController.cameraHeadingOffset), options: .new, context: nil)
-        self.orbitGeoElementCameraController?.addObserver(self, forKeyPath: #keyPath(AGSOrbitGeoElementCameraController.cameraPitchOffset), options: .new, context: nil)
-    }
-    
-    private func setInitialValues() {
-        
-        guard let cameraController = self.orbitGeoElementCameraController else {
+        guard let cameraController = orbitGeoElementCameraController else {
             return
         }
         
-        self.distanceSlider.value = Float(cameraController.cameraDistance)
-        self.distanceLabel.text = "\(Int(cameraController.cameraDistance))"
+        // apply initial values to controls
+        updateUIForDistance()
+        updateUIForHeadingOffset()
+        updateUIForPitchOffset()
+        autoHeadingEnabledSwitch.isOn = cameraController.isAutoHeadingEnabled
+        autoPitchEnabledSwitch.isOn = cameraController.isAutoPitchEnabled
+        autoRollEnabledSwitch.isOn = cameraController.isAutoRollEnabled
         
-        self.headingOffsetSlider.value = Float(cameraController.cameraHeadingOffset)
-        self.headingOffsetLabel.text = "\(Int(cameraController.cameraHeadingOffset))º"
-        
-        self.pitchOffsetSlider.value = Float(cameraController.cameraPitchOffset)
-        self.pitchOffsetLabel.text = "\(Int(cameraController.cameraPitchOffset))º"
-        
-        self.autoHeadingEnabledSwitch.isOn = cameraController.isAutoHeadingEnabled
-        self.autoPitchEnabledSwitch.isOn = cameraController.isAutoPitchEnabled
-        self.autoRollEnabledSwitch.isOn = cameraController.isAutoRollEnabled
+        // add observers to the values we want to show in the UI
+        distanceObservation = cameraController.observe(\.cameraDistance) {[weak self] (controller, change) in
+            self?.updateUIForDistance()
+        }
+        headingObservation = cameraController.observe(\.cameraHeadingOffset) {[weak self] (controller, change) in
+            self?.updateUIForHeadingOffset()
+        }
+        pitchObservation = cameraController.observe(\.cameraPitchOffset) {[weak self] (controller, change) in
+            self?.updateUIForPitchOffset()
+        }
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        
-        DispatchQueue.main.async { [weak self] in
-            
-            guard let weakSelf = self, let cameraController = self?.orbitGeoElementCameraController else {
-                return
-            }
-            
-            switch keyPath {
-            case #keyPath(AGSOrbitGeoElementCameraController.cameraDistance):
-                weakSelf.distanceSlider.value = Float(cameraController.cameraDistance)
-                
-                //update label
-                weakSelf.distanceLabel.text = "\(Int(weakSelf.distanceSlider.value))"
-            case #keyPath(AGSOrbitGeoElementCameraController.cameraHeadingOffset):
-                weakSelf.headingOffsetSlider.value = Float(cameraController.cameraHeadingOffset)
-                
-                //update label
-                weakSelf.headingOffsetLabel.text = "\(Int(weakSelf.headingOffsetSlider.value))º"
-            case #keyPath(AGSOrbitGeoElementCameraController.cameraPitchOffset):
-                weakSelf.pitchOffsetSlider.value = Float(cameraController.cameraPitchOffset)
-                
-                //update label
-                weakSelf.pitchOffsetLabel.text = "\(Int(weakSelf.pitchOffsetSlider.value))º"
-            default:
-                break
-            }
+    private let numberFormatter = NumberFormatter()
+    
+    private func updateUIForDistance() {
+        guard let cameraController = orbitGeoElementCameraController else {
+            return
         }
+        distanceSlider.value = Float(cameraController.cameraDistance)
+        distanceLabel.text = numberFormatter.string(from: cameraController.cameraDistance as NSNumber)!
+    }
+    private func updateUIForHeadingOffset() {
+        guard let cameraController = orbitGeoElementCameraController else {
+            return
+        }
+        headingOffsetSlider.value = Float(cameraController.cameraHeadingOffset)
+        headingOffsetLabel.text = numberFormatter.string(from: cameraController.cameraHeadingOffset as NSNumber)!
+    }
+    private func updateUIForPitchOffset() {
+        guard let cameraController = orbitGeoElementCameraController else {
+            return
+        }
+        pitchOffsetSlider.value = Float(cameraController.cameraPitchOffset)
+        pitchOffsetLabel.text = numberFormatter.string(from: cameraController.cameraPitchOffset as NSNumber)!
     }
     
     //MARK: - Actions
@@ -99,53 +90,46 @@ class CameraSettingsViewController: UITableViewController {
     @IBAction private func distanceValueChanged(sender:UISlider) {
         
         //update property
-        self.orbitGeoElementCameraController?.cameraDistance = Double(sender.value)
+        orbitGeoElementCameraController?.cameraDistance = Double(sender.value)
         
         //update label
-        self.distanceLabel.text = "\(Int(sender.value))"
+        updateUIForDistance()
     }
     
     @IBAction private func headingOffsetValueChanged(sender:UISlider) {
         
         //update property
-        self.orbitGeoElementCameraController?.cameraHeadingOffset = Double(sender.value)
+        orbitGeoElementCameraController?.cameraHeadingOffset = Double(sender.value)
         
         //update label
-        self.headingOffsetLabel.text = "\(Int(sender.value))"
+        updateUIForHeadingOffset()
     }
     
     @IBAction private func pitchOffsetValueChanged(sender:UISlider) {
         
         //update property
-        self.orbitGeoElementCameraController?.cameraPitchOffset = Double(sender.value)
+        orbitGeoElementCameraController?.cameraPitchOffset = Double(sender.value)
         
         //update label
-        self.pitchOffsetLabel.text = "\(Int(sender.value))"
+        updateUIForPitchOffset()
     }
     
     @IBAction private func autoHeadingEnabledValueChanged(sender:UISwitch) {
         
         //update property
-        self.orbitGeoElementCameraController?.isAutoHeadingEnabled = sender.isOn
+        orbitGeoElementCameraController?.isAutoHeadingEnabled = sender.isOn
     }
     
     @IBAction private func autoPitchEnabledValueChanged(sender:UISwitch) {
         
         //update property
-        self.orbitGeoElementCameraController?.isAutoPitchEnabled = sender.isOn
+        orbitGeoElementCameraController?.isAutoPitchEnabled = sender.isOn
     }
     
     @IBAction private func autoRollEnabledValueChanged(sender:UISwitch) {
         
         //update property
-        self.orbitGeoElementCameraController?.isAutoRollEnabled = sender.isOn
+        orbitGeoElementCameraController?.isAutoRollEnabled = sender.isOn
     }
     
-    deinit {
-        
-        //remove observers
-        self.orbitGeoElementCameraController?.removeObserver(self, forKeyPath: #keyPath(AGSOrbitGeoElementCameraController.cameraDistance))
-        self.orbitGeoElementCameraController?.removeObserver(self, forKeyPath: #keyPath(AGSOrbitGeoElementCameraController.cameraHeadingOffset))
-        self.orbitGeoElementCameraController?.removeObserver(self, forKeyPath: #keyPath(AGSOrbitGeoElementCameraController.cameraPitchOffset))
-    }
 }

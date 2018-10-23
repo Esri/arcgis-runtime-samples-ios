@@ -261,7 +261,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="500" minValue="500" maxValue="8000" translatesAutoresizingMaskIntoConstraints="NO" id="iYM-hv-Ly5">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-180" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="iYM-hv-Ly5">
                                                     <rect key="frame" x="14" y="40" width="347" height="31"/>
                                                     <color key="tintColor" red="0.0" green="0.36862745099999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -304,7 +304,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="500" minValue="500" maxValue="8000" translatesAutoresizingMaskIntoConstraints="NO" id="vdx-JQ-eYG">
+                                                <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="vdx-JQ-eYG">
                                                     <rect key="frame" x="14" y="40" width="347" height="31"/>
                                                     <color key="tintColor" red="0.0" green="0.36862745099999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>

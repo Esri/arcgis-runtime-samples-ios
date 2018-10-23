@@ -22,18 +22,20 @@ protocol HillshadeSettingsDelegate: AnyObject {
 
 class HillshadeSettingsVC: UITableViewController {
     
-    @IBOutlet var altitudeSlider: UISlider!
-    @IBOutlet var azimuthSlider: UISlider!
-    @IBOutlet var azimuthLabel: UILabel!
-    @IBOutlet var altitudeLabel: UILabel!
-    @IBOutlet weak var slopeTypeLabel: UILabel!
-    @IBOutlet weak var slopeTypeCell: UITableViewCell!
+    @IBOutlet weak var altitudeSlider: UISlider?
+    @IBOutlet weak var azimuthSlider: UISlider?
+    @IBOutlet weak var azimuthLabel: UILabel?
+    @IBOutlet weak var altitudeLabel: UILabel?
+    @IBOutlet weak var slopeTypeLabel: UILabel?
+    @IBOutlet weak var slopeTypeCell: UITableViewCell?
     
     weak var delegate: HillshadeSettingsDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateSlopeTypeUI()
+        updateAltitudeUI()
+        updateAzimuthUI()
     }
     
     private var slopeTypeOptions: [AGSSlopeType] = [.none, .degree, .percentRise, .scaled]
@@ -49,22 +51,31 @@ class HillshadeSettingsVC: UITableViewController {
     
     var slopeType: AGSSlopeType = .none {
         didSet {
-            slopeTypeLabel.text = labelForSlopeType(slopeType)
+            updateSlopeTypeUI()
         }
+    }
+    private func updateSlopeTypeUI() {
+        slopeTypeLabel?.text = labelForSlopeType(slopeType)
     }
     
     var altitude: Double = 0 {
         didSet {
-            altitudeLabel.text = "\(Int(altitude))"
-            altitudeSlider.value = Float(altitude)
+            updateAltitudeUI()
         }
+    }
+    private func updateAltitudeUI() {
+        altitudeLabel?.text = "\(Int(altitude))"
+        altitudeSlider?.value = Float(altitude)
     }
     
     var azimuth: Double = 0 {
         didSet {
-            azimuthLabel.text = "\(Int(azimuth))"
-            azimuthSlider.value = Float(azimuth)
+            updateAzimuthUI()
         }
+    }
+    private func updateAzimuthUI() {
+        azimuthLabel?.text = "\(Int(azimuth))"
+        azimuthSlider?.value = Float(azimuth)
     }
     
     private func hillshadeParametersChanged() {
@@ -93,12 +104,12 @@ class HillshadeSettingsVC: UITableViewController {
             return labelForSlopeType(slopeType)
         }
         let selectedIndex = slopeTypeOptions.firstIndex(of: slopeType)!
-        let optionsTable = OptionsTableViewController(labels: labels, selectedIndex: selectedIndex) { (newIndex) in
+        let optionsViewController = OptionsTableViewController(labels: labels, selectedIndex: selectedIndex) { (newIndex) in
             self.slopeType = self.slopeTypeOptions[newIndex]
             self.hillshadeParametersChanged()
         }
-        optionsTable.title = "Slope Type"
-        show(optionsTable, sender: self)
+        optionsViewController.title = "Slope Type"
+        show(optionsViewController, sender: self)
     }
     
 }

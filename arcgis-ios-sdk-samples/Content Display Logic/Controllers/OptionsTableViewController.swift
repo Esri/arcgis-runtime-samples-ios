@@ -27,9 +27,15 @@ class OptionsTableViewController: UITableViewController {
         self.selectedIndex = selectedIndex
         self.onChange = onChange
         super.init(nibName: nil, bundle: nil)
+        
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.register(OptionCell.self, forCellReuseIdentifier: "OptionCell")
     }
     
     // UITableViewDataSource
@@ -39,11 +45,10 @@ class OptionsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "OptionCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OptionCell", for: indexPath)
         cell.selectionStyle = .none
         cell.textLabel?.text = labels[indexPath.row]
         if selectedIndex == indexPath.row {
-            cell.accessoryType = .checkmark
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         }
         return cell
@@ -52,12 +57,14 @@ class OptionsTableViewController: UITableViewController {
     // UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
         selectedIndex = indexPath.row
         onChange(indexPath.row)
     }
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.accessoryType = .none
-    }
     
+}
+private class OptionCell: UITableViewCell {
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        accessoryType = selected ? .checkmark : .none
+    }
 }

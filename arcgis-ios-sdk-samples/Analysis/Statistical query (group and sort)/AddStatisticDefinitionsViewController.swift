@@ -17,19 +17,34 @@ import UIKit
 import ArcGIS
 
 protocol AddStatisticDefinitionsViewControllerDelegate: AnyObject {
-    func addStatisticDefinitions(_ statisticDefinitions: [AGSStatisticDefinition])
+    func addStatisticDefinition(_ statisticDefinition: AGSStatisticDefinition)
 }
 
-class AddStatisticDefinitionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AddStatisticDefinitionsViewController: UITableViewController {
 
-    @IBOutlet private var tableView: UITableView!
-    @IBOutlet private weak var fieldNamePicker: HorizontalPicker!
-    @IBOutlet private weak var statisticTypePicker: HorizontalPicker!
-    @IBOutlet private var tableNavigationItem: UINavigationItem!
+    @IBOutlet private weak var fieldNameCell: UITableViewCell!
+    @IBOutlet private weak var statisticTypeCell: UITableViewCell!
+    @IBOutlet private weak var fieldNameLabel: UILabel?
+    @IBOutlet private weak var statisticTypeLabel: UILabel?
     
-    public var fieldNames = [String]()
-    public var statisticDefinitions = [AGSStatisticDefinition]()
+    var fieldNames = [String]()
     private var statisticTypes = ["Average", "Count", "Maximum", "Minimum", "StandardDeviation", "Sum", "Variance"]
+    
+    var fieldName: String? {
+        // fieldNames may be empty if the view controller loaded before the data source loaded
+        return fieldNameIndex < fieldNames.count ? fieldNames[fieldNameIndex] : nil
+    }
+    
+    var fieldNameIndex: Int = 0 {
+        didSet {
+            fieldNameLabel?.text = fieldName
+        }
+    }
+    var statisticType: AGSStatisticType = .average {
+        didSet {
+            statisticTypeLabel?.text =  statisticTypes[statisticType.rawValue]
+        }
+    }
 
     // Delegate
     weak var delegate: AddStatisticDefinitionsViewControllerDelegate?
@@ -37,60 +52,39 @@ class AddStatisticDefinitionsViewController: UIViewController, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Setup UI Controls
-        setupUI()
-    }
-    
-    private func setupUI() {
-        // Add picker options
-        fieldNamePicker.options = fieldNames
-        statisticTypePicker.options =  statisticTypes
-        
-    }
-    
-    //MARK: - TableView data source
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return statisticDefinitions.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "StatisticDefinitionCell", for: indexPath)
-        if statisticDefinitions.count > 0 {
-            let statisticDefinition = statisticDefinitions[indexPath.row]
-            let statisticTypeString = statisticTypes[statisticDefinition.statisticType.rawValue]
-            let text = "\(statisticDefinition.onFieldName) (\(statisticTypeString))"
-            cell.textLabel?.text = text
-        }
-        return cell
+        fieldNameIndex = 0
+        statisticType = .average
     }
     
     // MARK: - Actions
     
     @IBAction func addStatisticDefinitionAction(_ sender: Any) {
         // Add statistic definition
-        if let statisticType = AGSStatisticType(rawValue: statisticTypePicker.selectedIndex) {
-            let fieldName = fieldNamePicker.options[fieldNamePicker.selectedIndex]
+        if let fieldName = fieldName{
             let statisticDefinition = AGSStatisticDefinition(onFieldName: fieldName, statisticType: statisticType, outputAlias: nil)
-            statisticDefinitions.append(statisticDefinition)
-
-            // Reload table
-            tableView.reloadData()
-        }
-        else {
-            print("Unable to determine AGSStatisticType from raw value \(statisticTypePicker.selectedIndex).")
+            delegate?.addStatisticDefinition(statisticDefinition)
         }
     }
     
-    @IBAction private func doneAction() {
-        // Fire delegate
-        delegate?.addStatisticDefinitions(statisticDefinitions)
-        
-        // Dismiss view controller
-        dismiss(animated: true, completion: nil)
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        switch cell {
+        case fieldNameCell:
+            let controller = OptionsTableViewController(labels: fieldNames, selectedIndex: fieldNameIndex) { (newIndex) in
+                self.fieldNameIndex = newIndex
+            }
+            controller.title = "Field Name"
+            show(controller, sender: self)
+        case statisticTypeCell:
+            let controller = OptionsTableViewController(labels: statisticTypes, selectedIndex: statisticType.rawValue) { (newIndex) in
+                self.statisticType = AGSStatisticType(rawValue: newIndex)!
+            }
+            controller.title = "Statistic Type"
+            show(controller, sender: self)
+        default:
+            break
+        }
     }
 }

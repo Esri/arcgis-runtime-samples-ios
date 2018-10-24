@@ -25,7 +25,7 @@ class StretchRendererSettingsVC: UITableViewController {
     
     weak var delegate: StretchRendererSettingsVCDelegate?
     
-    @IBOutlet var stretchTypePicker: HorizontalPicker!
+    weak var stretchTypeCell: StretchRendererStretchTypeCell?
     
     enum StretchType: Int, CaseIterable {
         case minMax, percentClip, standardDeviation
@@ -39,15 +39,13 @@ class StretchRendererSettingsVC: UITableViewController {
         }
     }
     
-    private var stretchType: StretchType = .minMax
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        stretchTypePicker.delegate = self
-        stretchTypePicker.options = StretchType.allCases.map({ (type) -> String in
-            return type.label
-        })
+    private var stretchType: StretchType = .minMax {
+        didSet{
+            updateStretchTypeLabel()
+        }
+    }
+    private func updateStretchTypeLabel() {
+        stretchTypeCell?.stretchTypeLabel.text = stretchType.label
     }
     
     private func makeStretchParameters() -> AGSStretchParameters {
@@ -79,14 +77,14 @@ class StretchRendererSettingsVC: UITableViewController {
         }
     }
     
-    private func renderAction() {
+    private func rendererParametersChanged() {
         delegate?.stretchRendererSettingsVC(self, didSelectStretchParameters: makeStretchParameters())
     }
     
     //MARK: - Actions
     
     @IBAction func textFieldAction(_ sender: UITextField) {
-        renderAction()
+        rendererParametersChanged()
     }
     
     //MARK: - UITableViewDataSource
@@ -102,7 +100,9 @@ class StretchRendererSettingsVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Row0", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "StretchRendererStretchTypeCell", for: indexPath) as! StretchRendererStretchTypeCell
+            stretchTypeCell = cell
+            updateStretchTypeLabel()
             return cell
         }
         else {
@@ -116,14 +116,24 @@ class StretchRendererSettingsVC: UITableViewController {
             }
         }
     }
-}
-
-extension StretchRendererSettingsVC: HorizontalPickerDelegate {
     
-    func horizontalPicker(_ horizontalPicker: HorizontalPicker, didUpdateSelectedIndex index: Int) {
-        stretchType = StretchType(rawValue: index)!
-        tableView.reloadData()
-        renderAction()
+    //MARK: - UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard tableView.cellForRow(at: indexPath) is StretchRendererStretchTypeCell else {
+            return
+        }
+        let labels = StretchType.allCases.map({ (type) -> String in
+            return type.label
+        })
+        let selectedIndex = stretchType.rawValue
+        let optionsViewController = OptionsTableViewController(labels: labels, selectedIndex: selectedIndex) { (newIndex) in
+            self.stretchType = StretchType(rawValue: newIndex)!
+            self.tableView.reloadData()
+            self.rendererParametersChanged()
+        }
+        optionsViewController.title = "Stretch Type"
+        show(optionsViewController, sender: self)
     }
     
 }

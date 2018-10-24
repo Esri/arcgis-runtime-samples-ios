@@ -48,9 +48,7 @@ class RGBRendererSettingsVC: UITableViewController {
         stretchTypeCell?.stretchTypeLabel.text = stretchType.label
     }
     
-    private func rendererParametersChanged() {
-        var stretchParameters:AGSStretchParameters
-        
+    private func makeStretchParameters() -> AGSStretchParameters {
         //get the values from textFields in rows based on the selected stretch type
         switch stretchType {
         case .minMax:
@@ -65,7 +63,7 @@ class RGBRendererSettingsVC: UITableViewController {
                 maxValue2 = Int(cell.textField2.text!) ?? 255
                 maxValue3 = Int(cell.textField3.text!) ?? 255
             }
-            stretchParameters = AGSMinMaxStretchParameters(minValues: [NSNumber(value: minValue1), NSNumber(value: minValue2), NSNumber(value: minValue3)], maxValues: [NSNumber(value: maxValue1), NSNumber(value: maxValue2), NSNumber(value: maxValue3)])
+            return AGSMinMaxStretchParameters(minValues: [NSNumber(value: minValue1), NSNumber(value: minValue2), NSNumber(value: minValue3)], maxValues: [NSNumber(value: maxValue1), NSNumber(value: maxValue2), NSNumber(value: maxValue3)])
         case .percentClip:
             var min = 0.0, max = 0.0
             if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? RGBRendererInputCell {
@@ -74,16 +72,18 @@ class RGBRendererSettingsVC: UITableViewController {
             if let cell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? RGBRendererInputCell {
                 max = Double(cell.textField.text!) ?? 0
             }
-            stretchParameters = AGSPercentClipStretchParameters(min: min, max: max)
+            return AGSPercentClipStretchParameters(min: min, max: max)
         case .standardDeviation:
             var factor = 1.0
             if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? RGBRendererInputCell {
                 factor = Double(cell.textField.text!) ?? 1
             }
-            stretchParameters = AGSStandardDeviationStretchParameters(factor: factor)
+            return AGSStandardDeviationStretchParameters(factor: factor)
         }
-        
-        delegate?.rgbRendererSettingsVC(self, didSelectStretchParameters: stretchParameters)
+    }
+    
+    private func rendererParametersChanged() {
+        delegate?.rgbRendererSettingsVC(self, didSelectStretchParameters: makeStretchParameters())
     }
     
     //MARK: - Actions

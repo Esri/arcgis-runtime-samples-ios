@@ -26,7 +26,7 @@ class StretchRendererViewController: UIViewController, StretchRendererSettingsVC
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["StretchRendererViewController", "StretchRendererSettingsVC", "StretchRendererInputCell"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["StretchRendererViewController", "StretchRendererSettingsVC", "Stretch Renderer Cells", "OptionsTableViewController"]
         
         //create raster
         let raster = AGSRaster(name: "ShastaBW", extension: "tif")
@@ -51,7 +51,8 @@ class StretchRendererViewController: UIViewController, StretchRendererSettingsVC
     //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let controller = segue.destination as? StretchRendererSettingsVC {
+        if let navController = segue.destination as? UINavigationController,
+            let controller = navController.viewControllers.first as? StretchRendererSettingsVC {
             controller.delegate = self
             controller.preferredContentSize = {
                 let height: CGFloat
@@ -63,7 +64,7 @@ class StretchRendererViewController: UIViewController, StretchRendererSettingsVC
                 }
                 return CGSize(width: 375, height: height)
             }()
-            controller.presentationController?.delegate = self
+            navController.presentationController?.delegate = self
         }
     }
 }

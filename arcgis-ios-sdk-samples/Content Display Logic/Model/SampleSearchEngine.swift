@@ -44,7 +44,7 @@ class SampleSearchEngine {
         func addToIndex(string:String,sampleDisplayName:String){
             
             tagger.string = string
-            let range = NSMakeRange(0, string.count)
+            let range = NSRange(location: 0, length: string.count)
             tagger.enumerateTags(in: range,
                                  scheme: NSLinguisticTagScheme.lexicalClass,
                                  options: [.omitWhitespace, .omitPunctuation],

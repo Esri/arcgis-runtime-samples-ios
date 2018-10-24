@@ -46,7 +46,7 @@ class SampleInfoViewController: UIViewController {
             //remove the images
             let pattern = "!\\[.*\\]\\(.*\\)"
             if let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive) {
-                let range = NSMakeRange(0, content.count)
+                let range = NSRange(location: 0, length: content.count)
                 return regex.stringByReplacingMatches(in: content, range: range, withTemplate: "")
             }
         }

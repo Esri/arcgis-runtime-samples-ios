@@ -23,6 +23,10 @@ protocol RGBRendererSettingsVCDelegate: AnyObject {
 
 class RGBRendererSettingsVC: UITableViewController {
     
+    weak var delegate: RGBRendererSettingsVCDelegate?
+    
+    weak var stretchTypeCell: RGBRendererStretchTypeCell?
+    
     enum StretchType: Int, CaseIterable {
         case minMax, percentClip, standardDeviation
         
@@ -35,56 +39,21 @@ class RGBRendererSettingsVC: UITableViewController {
         }
     }
     
-    private var stretchType: RGBRendererSettingsVC.StretchType = .minMax
-    
-    weak var delegate: RGBRendererSettingsVCDelegate?
-    
-    //MARK: - UITableViewDataSource
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return the rows based on the stretch type selected
-        switch self.stretchType {
-        case .minMax, .percentClip:
-            return 3
-        case .standardDeviation:
-            return 2
+    private var stretchType: RGBRendererSettingsVC.StretchType = .minMax {
+        didSet{
+            updateStretchTypeLabel()
         }
     }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        //first row cell is always Row0
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Row0", for: indexPath)
-            let picker = cell.accessoryView as! HorizontalPicker
-            picker.options = StretchType.allCases.map({ (type) -> String in
-                return type.label
-            })
-            picker.delegate = self
-            return cell
-        }
-        //load the rest of the cells based on the stretch type selected
-        else {
-            if self.stretchType == .minMax {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "MinMaxRow\(indexPath.row)", for: indexPath)
-                return cell
-            }
-            else if self.stretchType == .percentClip {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "PercentClipRow\(indexPath.row)", for: indexPath)
-                return cell
-            }
-            else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "StandardDeviationRow1", for: indexPath)
-                return cell
-            }
-        }
+    private func updateStretchTypeLabel(){
+        stretchTypeCell?.stretchTypeLabel.text = stretchType.label
     }
     
-    private func renderAction() {
+    private func rendererParametersChanged() {
         var stretchParameters:AGSStretchParameters
         
         //get the values from textFields in rows based on the selected stretch type
-        if stretchType == .minMax {
+        switch stretchType {
+        case .minMax:
             var minValue1 = 0, minValue2 = 0, minValue3 = 0, maxValue1 = 255, maxValue2 = 255, maxValue3 = 255
             if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? RGBRenderer3InputCell {
                 minValue1 = Int(cell.textField1.text!) ?? 0
@@ -97,8 +66,7 @@ class RGBRendererSettingsVC: UITableViewController {
                 maxValue3 = Int(cell.textField3.text!) ?? 255
             }
             stretchParameters = AGSMinMaxStretchParameters(minValues: [NSNumber(value: minValue1), NSNumber(value: minValue2), NSNumber(value: minValue3)], maxValues: [NSNumber(value: maxValue1), NSNumber(value: maxValue2), NSNumber(value: maxValue3)])
-        }
-        else if stretchType == .percentClip {
+        case .percentClip:
             var min = 0.0, max = 0.0
             if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? RGBRendererInputCell {
                 min = Double(cell.textField.text!) ?? 0
@@ -107,8 +75,7 @@ class RGBRendererSettingsVC: UITableViewController {
                 max = Double(cell.textField.text!) ?? 0
             }
             stretchParameters = AGSPercentClipStretchParameters(min: min, max: max)
-        }
-        else {
+        case .standardDeviation:
             var factor = 1.0
             if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? RGBRendererInputCell {
                 factor = Double(cell.textField.text!) ?? 1
@@ -118,16 +85,64 @@ class RGBRendererSettingsVC: UITableViewController {
         
         delegate?.rgbRendererSettingsVC(self, didSelectStretchParameters: stretchParameters)
     }
+    
+    //MARK: - Actions
+    
     @IBAction func textFieldAction(_ sender: UITextField) {
-        renderAction()
+        rendererParametersChanged()
     }
     
-}
-
-extension RGBRendererSettingsVC: HorizontalPickerDelegate {
-    func horizontalPicker(_ horizontalPicker: HorizontalPicker, didUpdateSelectedIndex index: Int) {
-        stretchType = StretchType(rawValue: horizontalPicker.selectedIndex)!
-        tableView.reloadData()
-        renderAction()
+    //MARK: - UITableViewDataSource
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //return the rows based on the stretch type selected
+        switch self.stretchType {
+        case .minMax, .percentClip:
+            return 3
+        case .standardDeviation:
+            return 2
+        }
     }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        //first row cell is always RGBRendererStretchTypeCell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RGBRendererStretchTypeCell", for: indexPath) as! RGBRendererStretchTypeCell
+            stretchTypeCell = cell
+            updateStretchTypeLabel()
+            return cell
+        }
+        else {
+            //load the rest of the cells based on the stretch type selected
+            switch stretchType {
+            case .minMax:
+                 return tableView.dequeueReusableCell(withIdentifier: "MinMaxRow\(indexPath.row)", for: indexPath)
+            case .percentClip:
+                 return tableView.dequeueReusableCell(withIdentifier: "PercentClipRow\(indexPath.row)", for: indexPath)
+            case .standardDeviation:
+                 return tableView.dequeueReusableCell(withIdentifier: "StandardDeviationRow1", for: indexPath)
+            }
+        }
+    }
+    
+    //MARK: - UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard tableView.cellForRow(at: indexPath) is RGBRendererStretchTypeCell else {
+            return
+        }
+        let labels = StretchType.allCases.map({ (type) -> String in
+            return type.label
+        })
+        let selectedIndex = stretchType.rawValue
+        let optionsViewController = OptionsTableViewController(labels: labels, selectedIndex: selectedIndex) { (newIndex) in
+            self.stretchType = StretchType(rawValue: newIndex)!
+            self.tableView.reloadData()
+            self.rendererParametersChanged()
+        }
+        optionsViewController.title = "Stretch Type"
+        show(optionsViewController, sender: self)
+    }
+    
 }

@@ -13,7 +13,7 @@
         <!--Renderer View Controller-->
         <scene sceneID="Z3y-zj-dGA">
             <objects>
-                <viewController id="g6b-IQ-NlX" customClass="RGBRendererViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="g6b-IQ-NlX" customClass="RGBRendererViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mNj-ES-Il3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +28,7 @@
                                     <barButtonItem title="Edit Renderer" id="hcB-n3-OyF">
                                         <connections>
                                             <action selector="editRendererAction" destination="g6b-IQ-NlX" id="rvM-Od-TJp"/>
-                                            <segue destination="Zaf-Hc-94A" kind="popoverPresentation" popoverAnchorBarButtonItem="hcB-n3-OyF" id="Pr7-Vq-V7q">
+                                            <segue destination="auB-ej-zsc" kind="popoverPresentation" popoverAnchorBarButtonItem="hcB-n3-OyF" id="Aif-Ip-QFI">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                 <popoverPassthroughViews>
                                                     <view reference="AKA-ls-ann"/>
@@ -64,36 +64,65 @@
             </objects>
             <point key="canvasLocation" x="339" y="421"/>
         </scene>
-        <!--Renderer SettingsVC-->
+        <!--Navigation Controller-->
+        <scene sceneID="M1D-JL-pFr">
+            <objects>
+                <navigationController id="auB-ej-zsc" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ScK-K8-JPS">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Zaf-Hc-94A" kind="relationship" relationship="rootViewController" id="wEn-eV-G9P"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RFB-Ib-yse" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1078" y="421"/>
+        </scene>
+        <!--Settings-->
         <scene sceneID="aiK-BN-ca1">
             <objects>
-                <tableViewController id="Zaf-Hc-94A" customClass="RGBRendererSettingsVC" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Zaf-Hc-94A" customClass="RGBRendererSettingsVC" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Sw-p9-QI2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Row0" textLabel="sTf-Bz-Tg9" style="IBUITableViewCellStyleDefault" id="p9w-Fi-zjL">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RGBRendererStretchTypeCell" id="p9w-Fi-zjL" customClass="RGBRendererStretchTypeCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p9w-Fi-zjL" id="wO4-Ec-Xbf">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Stretch Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="sTf-Bz-Tg9">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stretch Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gdu-ZM-Lay">
+                                            <rect key="frame" x="16" y="12" width="98" height="19.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1iP-Nz-Cv3">
+                                            <rect key="frame" x="291" y="12" width="42" height="21"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="1iP-Nz-Cv3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gdu-ZM-Lay" secondAttribute="trailing" constant="8" id="1AD-SK-syf"/>
+                                        <constraint firstItem="gdu-ZM-Lay" firstAttribute="top" secondItem="wO4-Ec-Xbf" secondAttribute="top" constant="12" id="3N3-Cv-CQh"/>
+                                        <constraint firstItem="gdu-ZM-Lay" firstAttribute="leading" secondItem="wO4-Ec-Xbf" secondAttribute="leadingMargin" id="P0l-Z6-PC2"/>
+                                        <constraint firstAttribute="bottom" secondItem="gdu-ZM-Lay" secondAttribute="bottom" constant="12" id="Pn1-IJ-MCe"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="1iP-Nz-Cv3" secondAttribute="trailing" id="QbR-pE-Gfn"/>
+                                        <constraint firstItem="gdu-ZM-Lay" firstAttribute="firstBaseline" secondItem="1iP-Nz-Cv3" secondAttribute="firstBaseline" id="XcL-Dx-qq2"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="accessoryView" destination="2Qa-UE-VOg" id="iiu-NP-fga"/>
+                                    <outlet property="stretchTypeLabel" destination="1iP-Nz-Cv3" id="U8c-7R-yxj"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MinMaxRow1" id="Kyl-7R-Dhy" customClass="RGBRenderer3InputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MinMaxRow1" id="Kyl-7R-Dhy" customClass="RGBRenderer3InputCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kyl-7R-Dhy" id="2jm-7z-mTk">
@@ -159,7 +188,7 @@
                                     <outlet property="textField3" destination="u6f-Ek-Gcf" id="Hy4-b8-NQf"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MinMaxRow2" id="rTK-e7-JLb" customClass="RGBRenderer3InputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MinMaxRow2" id="rTK-e7-JLb" customClass="RGBRenderer3InputCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rTK-e7-JLb" id="ceS-dL-WkJ">
@@ -226,7 +255,7 @@
                                     <outlet property="textField3" destination="VqR-Yw-yO8" id="hYt-7z-v2j"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PercentClipRow1" id="DNN-xa-WHe" customClass="RGBRendererInputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PercentClipRow1" id="DNN-xa-WHe" customClass="RGBRendererInputCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="160" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DNN-xa-WHe" id="5NZ-Va-n4K">
@@ -261,7 +290,7 @@
                                     <outlet property="textField" destination="vnr-kD-mlu" id="oGi-Ho-xMr"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PercentClipRow2" id="yAx-nG-EQf" customClass="RGBRendererInputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PercentClipRow2" id="yAx-nG-EQf" customClass="RGBRendererInputCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="204" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yAx-nG-EQf" id="qCR-Ts-4HX">
@@ -296,7 +325,7 @@
                                     <outlet property="textField" destination="gJ4-Gw-Pqc" id="yIb-E6-1Mi"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StandardDeviationRow1" id="ygk-Lp-ULy" customClass="RGBRendererInputCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StandardDeviationRow1" id="ygk-Lp-ULy" customClass="RGBRendererInputCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="248" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ygk-Lp-ULy" id="081-JO-dzb">
@@ -337,15 +366,11 @@
                             <outlet property="delegate" destination="Zaf-Hc-94A" id="EBD-dQ-XNX"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="R3b-7N-4kz"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9An-Ui-gvw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="2Qa-UE-VOg" customClass="HorizontalPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="175" height="30"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <viewLayoutGuide key="safeArea" id="fjv-Hx-heI"/>
-                </view>
             </objects>
-            <point key="canvasLocation" x="1038" y="421"/>
+            <point key="canvasLocation" x="1782" y="421"/>
         </scene>
     </scenes>
 </document>

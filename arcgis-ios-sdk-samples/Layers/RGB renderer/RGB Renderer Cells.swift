@@ -15,8 +15,22 @@
 
 import UIKit
 
-class RGBRendererInputCell: UITableViewCell {
+class RGBRendererStretchTypeCell: UITableViewCell {
+    
+    @IBOutlet weak var stretchTypeLabel: UILabel!
+    
+}
 
+class RGBRendererInputCell: UITableViewCell {
+    
     @IBOutlet var textField: UITextField!
+    
+}
+
+class RGBRenderer3InputCell: UITableViewCell {
+
+    @IBOutlet var textField1: UITextField!
+    @IBOutlet var textField2: UITextField!
+    @IBOutlet var textField3: UITextField!
 
 }

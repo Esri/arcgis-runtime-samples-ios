@@ -230,8 +230,7 @@
 		3EA15C761ED89EAE00B1F816 /* ChangeSublayerRendererVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA15C741ED89EAE00B1F816 /* ChangeSublayerRendererVC.swift */; };
 		3EA15C771ED8A52300B1F816 /* ChangeSublayerRendererVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EA15C741ED89EAE00B1F816 /* ChangeSublayerRendererVC.swift */; };
 		3EABC78F1DB1772000C161C6 /* RGBRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7891DB1772000C161C6 /* RGBRenderer.storyboard */; };
-		3EABC7901DB1772000C161C6 /* RGBRenderer3InputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC78A1DB1772000C161C6 /* RGBRenderer3InputCell.swift */; };
-		3EABC7911DB1772000C161C6 /* RGBRendererInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC78B1DB1772000C161C6 /* RGBRendererInputCell.swift */; };
+		3EABC7901DB1772000C161C6 /* RGB Renderer Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC78A1DB1772000C161C6 /* RGB Renderer Cells.swift */; };
 		3EABC7921DB1772000C161C6 /* RGBRendererSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC78C1DB1772000C161C6 /* RGBRendererSettingsVC.swift */; };
 		3EABC7941DB1772000C161C6 /* RGBRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC78E1DB1772000C161C6 /* RGBRendererViewController.swift */; };
 		3EABC7A01DB1793000C161C6 /* StretchRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC79B1DB1793000C161C6 /* StretchRenderer.storyboard */; };
@@ -257,8 +256,7 @@
 		3EABC7CD1DB197BF00C161C6 /* BlendRendererSettingsVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC7C71DB1947500C161C6 /* BlendRendererSettingsVC.swift */; };
 		3EABC7CE1DB197BF00C161C6 /* RGBRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC78E1DB1772000C161C6 /* RGBRendererViewController.swift */; };
 		3EABC7CF1DB197BF00C161C6 /* RGBRendererSettingsVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC78C1DB1772000C161C6 /* RGBRendererSettingsVC.swift */; };
-		3EABC7D11DB197BF00C161C6 /* RGBRenderer3InputCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC78A1DB1772000C161C6 /* RGBRenderer3InputCell.swift */; };
-		3EABC7D21DB197BF00C161C6 /* RGBRendererInputCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC78B1DB1772000C161C6 /* RGBRendererInputCell.swift */; };
+		3EABC7D11DB197BF00C161C6 /* RGB Renderer Cells.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC78A1DB1772000C161C6 /* RGB Renderer Cells.swift */; };
 		3EABC7D31DB197BF00C161C6 /* StretchRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC79F1DB1793000C161C6 /* StretchRendererViewController.swift */; };
 		3EABC7D41DB197BF00C161C6 /* StretchRendererSettingsVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC79D1DB1793000C161C6 /* StretchRendererSettingsVC.swift */; };
 		3EABC7D61DB197BF00C161C6 /* StretchRendererInputCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC79C1DB1793000C161C6 /* StretchRendererInputCell.swift */; };
@@ -699,8 +697,7 @@
 				3EABC7CD1DB197BF00C161C6 /* BlendRendererSettingsVC.swift in CopyFiles */,
 				3EABC7CE1DB197BF00C161C6 /* RGBRendererViewController.swift in CopyFiles */,
 				3EABC7CF1DB197BF00C161C6 /* RGBRendererSettingsVC.swift in CopyFiles */,
-				3EABC7D11DB197BF00C161C6 /* RGBRenderer3InputCell.swift in CopyFiles */,
-				3EABC7D21DB197BF00C161C6 /* RGBRendererInputCell.swift in CopyFiles */,
+				3EABC7D11DB197BF00C161C6 /* RGB Renderer Cells.swift in CopyFiles */,
 				3EABC7D31DB197BF00C161C6 /* StretchRendererViewController.swift in CopyFiles */,
 				3EABC7D41DB197BF00C161C6 /* StretchRendererSettingsVC.swift in CopyFiles */,
 				3EABC7D61DB197BF00C161C6 /* StretchRendererInputCell.swift in CopyFiles */,
@@ -970,8 +967,7 @@
 		3EA15C741ED89EAE00B1F816 /* ChangeSublayerRendererVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeSublayerRendererVC.swift; sourceTree = "<group>"; };
 		3EA34D591B38C3B3003DC0E8 /* Samples-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Samples-Bridging-Header.h"; path = "Content Display Logic/Samples-Bridging-Header.h"; sourceTree = "<group>"; };
 		3EABC7891DB1772000C161C6 /* RGBRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RGBRenderer.storyboard; sourceTree = "<group>"; };
-		3EABC78A1DB1772000C161C6 /* RGBRenderer3InputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBRenderer3InputCell.swift; sourceTree = "<group>"; };
-		3EABC78B1DB1772000C161C6 /* RGBRendererInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBRendererInputCell.swift; sourceTree = "<group>"; };
+		3EABC78A1DB1772000C161C6 /* RGB Renderer Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RGB Renderer Cells.swift"; sourceTree = "<group>"; };
 		3EABC78C1DB1772000C161C6 /* RGBRendererSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBRendererSettingsVC.swift; sourceTree = "<group>"; };
 		3EABC78E1DB1772000C161C6 /* RGBRendererViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBRendererViewController.swift; sourceTree = "<group>"; };
 		3EABC79B1DB1793000C161C6 /* StretchRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StretchRenderer.storyboard; sourceTree = "<group>"; };
@@ -2001,8 +1997,7 @@
 				3EABC7891DB1772000C161C6 /* RGBRenderer.storyboard */,
 				3EABC78E1DB1772000C161C6 /* RGBRendererViewController.swift */,
 				3EABC78C1DB1772000C161C6 /* RGBRendererSettingsVC.swift */,
-				3EABC78A1DB1772000C161C6 /* RGBRenderer3InputCell.swift */,
-				3EABC78B1DB1772000C161C6 /* RGBRendererInputCell.swift */,
+				3EABC78A1DB1772000C161C6 /* RGB Renderer Cells.swift */,
 			);
 			path = "RGB renderer";
 			sourceTree = "<group>";
@@ -3520,7 +3515,6 @@
 				3ED0286A1B8E3A8500ACA70D /* SetViewpointViewController.swift in Sources */,
 				3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */,
 				3E0B584F1E36BCCD00951767 /* AnalyzeHotspotsViewController.swift in Sources */,
-				3EABC7911DB1772000C161C6 /* RGBRendererInputCell.swift in Sources */,
 				3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */,
 				3ED0289A1B8E3A8500ACA70D /* ShowMagnifierViewController.swift in Sources */,
 				4C41B2EE211A617700EEA81E /* Sample.swift in Sources */,
@@ -3655,7 +3649,7 @@
 				3E6C77161CCFC4B200E89873 /* IdentifyLayersViewController.swift in Sources */,
 				3EEB2B981EB9695F00B52513 /* ListRelatedFeaturesVC.swift in Sources */,
 				3ECDD9B01E8470E100E645AB /* DownloadProgressView.swift in Sources */,
-				3EABC7901DB1772000C161C6 /* RGBRenderer3InputCell.swift in Sources */,
+				3EABC7901DB1772000C161C6 /* RGB Renderer Cells.swift in Sources */,
 				3E4B05F71B39EF250072E514 /* SVIndefiniteAnimatedView.m in Sources */,
 				3ED028741B8E3A8500ACA70D /* MapViewDrawStatusViewController.swift in Sources */,
 				D90407941FD8608A00BFE07B /* RasterLayerGPKGViewController.swift in Sources */,

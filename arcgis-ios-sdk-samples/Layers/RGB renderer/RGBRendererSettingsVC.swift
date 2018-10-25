@@ -25,7 +25,7 @@ class RGBRendererSettingsVC: UITableViewController {
     
     weak var delegate: RGBRendererSettingsVCDelegate?
     
-    weak var stretchTypeCell: RGBRendererStretchTypeCell?
+    weak var stretchTypeCell: UITableViewCell?
     
     enum StretchType: Int, CaseIterable {
         case minMax, percentClip, standardDeviation
@@ -45,7 +45,7 @@ class RGBRendererSettingsVC: UITableViewController {
         }
     }
     private func updateStretchTypeLabel(){
-        stretchTypeCell?.stretchTypeLabel.text = stretchType.label
+        stretchTypeCell?.detailTextLabel?.text = stretchType.label
     }
     
     private func makeStretchParameters() -> AGSStretchParameters {
@@ -108,7 +108,7 @@ class RGBRendererSettingsVC: UITableViewController {
 
         //first row cell is always RGBRendererStretchTypeCell
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RGBRendererStretchTypeCell", for: indexPath) as! RGBRendererStretchTypeCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RGBRendererStretchTypeCell", for: indexPath)
             stretchTypeCell = cell
             updateStretchTypeLabel()
             return cell
@@ -129,7 +129,7 @@ class RGBRendererSettingsVC: UITableViewController {
     //MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard tableView.cellForRow(at: indexPath) is RGBRendererStretchTypeCell else {
+        guard tableView.cellForRow(at: indexPath) == stretchTypeCell else {
             return
         }
         let labels = StretchType.allCases.map({ (type) -> String in

@@ -25,7 +25,7 @@ class StretchRendererSettingsVC: UITableViewController {
     
     weak var delegate: StretchRendererSettingsVCDelegate?
     
-    weak var stretchTypeCell: StretchRendererStretchTypeCell?
+    weak var stretchTypeCell: UITableViewCell?
     
     enum StretchType: Int, CaseIterable {
         case minMax, percentClip, standardDeviation
@@ -45,7 +45,7 @@ class StretchRendererSettingsVC: UITableViewController {
         }
     }
     private func updateStretchTypeLabel() {
-        stretchTypeCell?.stretchTypeLabel.text = stretchType.label
+        stretchTypeCell?.detailTextLabel?.text = stretchType.label
     }
     
     private func makeStretchParameters() -> AGSStretchParameters {
@@ -100,7 +100,7 @@ class StretchRendererSettingsVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "StretchRendererStretchTypeCell", for: indexPath) as! StretchRendererStretchTypeCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "StretchRendererStretchTypeCell", for: indexPath)
             stretchTypeCell = cell
             updateStretchTypeLabel()
             return cell
@@ -120,7 +120,7 @@ class StretchRendererSettingsVC: UITableViewController {
     //MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard tableView.cellForRow(at: indexPath) is StretchRendererStretchTypeCell else {
+        guard tableView.cellForRow(at: indexPath) == stretchTypeCell else {
             return
         }
         let labels = StretchType.allCases.map({ (type) -> String in

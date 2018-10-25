@@ -19,8 +19,6 @@ import ArcGIS
 class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate {
 
     @IBOutlet var mapView: AGSMapView!
-    @IBOutlet var containerView: UIView!
-    @IBOutlet var visualEffectView: UIVisualEffectView!
     
     private var rasterLayer: AGSRasterLayer?
     

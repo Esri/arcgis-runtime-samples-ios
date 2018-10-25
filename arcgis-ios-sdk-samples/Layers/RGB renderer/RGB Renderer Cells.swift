@@ -15,12 +15,6 @@
 
 import UIKit
 
-class RGBRendererStretchTypeCell: UITableViewCell {
-    
-    @IBOutlet weak var stretchTypeLabel: UILabel!
-    
-}
-
 class RGBRendererInputCell: UITableViewCell {
     
     @IBOutlet var textField: UITextField!

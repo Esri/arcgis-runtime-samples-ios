@@ -26,7 +26,7 @@ class StretchRendererViewController: UIViewController, StretchRendererSettingsVC
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["StretchRendererViewController", "StretchRendererSettingsVC", "Stretch Renderer Cells", "OptionsTableViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["StretchRendererViewController", "StretchRendererSettingsVC", "StretchRendererInputCell", "OptionsTableViewController"]
         
         //create raster
         let raster = AGSRaster(name: "ShastaBW", extension: "tif")

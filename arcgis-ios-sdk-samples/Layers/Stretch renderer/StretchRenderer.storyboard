@@ -89,39 +89,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="StretchRendererStretchTypeCell" id="E7h-iH-cPX" customClass="StretchRendererStretchTypeCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="StretchRendererStretchTypeCell" textLabel="00u-12-LJc" detailTextLabel="F93-fw-yQb" style="IBUITableViewCellStyleValue1" id="E7h-iH-cPX">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E7h-iH-cPX" id="2y8-ci-qaN">
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stretch Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y8Q-Tl-t4e">
-                                            <rect key="frame" x="16" y="12" width="98" height="19.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Stretch Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="00u-12-LJc">
+                                            <rect key="frame" x="16" y="12" width="98" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gIO-vf-cmW">
-                                            <rect key="frame" x="291" y="12" width="42" height="21"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="F93-fw-yQb">
+                                            <rect key="frame" x="296" y="12" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="gIO-vf-cmW" firstAttribute="firstBaseline" secondItem="y8Q-Tl-t4e" secondAttribute="firstBaseline" id="NoY-Uk-v69"/>
-                                        <constraint firstItem="y8Q-Tl-t4e" firstAttribute="leading" secondItem="2y8-ci-qaN" secondAttribute="leadingMargin" id="dUO-FC-4l6"/>
-                                        <constraint firstItem="y8Q-Tl-t4e" firstAttribute="top" secondItem="2y8-ci-qaN" secondAttribute="top" constant="12" id="llf-V9-O76"/>
-                                        <constraint firstAttribute="bottom" secondItem="y8Q-Tl-t4e" secondAttribute="bottom" constant="12" id="qZX-fc-BEy"/>
-                                        <constraint firstItem="gIO-vf-cmW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="y8Q-Tl-t4e" secondAttribute="trailing" constant="8" id="sm6-TT-xIn"/>
-                                        <constraint firstItem="gIO-vf-cmW" firstAttribute="trailing" secondItem="2y8-ci-qaN" secondAttribute="trailingMargin" id="wnG-0S-i5J"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <outlet property="stretchTypeLabel" destination="gIO-vf-cmW" id="wut-Bm-1s0"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MinMaxRow1" id="xFi-ly-tIa" customClass="StretchRendererInputCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>

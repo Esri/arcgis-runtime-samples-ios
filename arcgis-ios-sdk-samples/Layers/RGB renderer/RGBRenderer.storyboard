@@ -89,38 +89,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RGBRendererStretchTypeCell" id="p9w-Fi-zjL" customClass="RGBRendererStretchTypeCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RGBRendererStretchTypeCell" textLabel="6MN-u9-Uv0" detailTextLabel="W8T-l8-L2g" style="IBUITableViewCellStyleValue1" id="p9w-Fi-zjL">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p9w-Fi-zjL" id="wO4-Ec-Xbf">
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stretch Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gdu-ZM-Lay">
-                                            <rect key="frame" x="16" y="12" width="98" height="19.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Stretch Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="6MN-u9-Uv0">
+                                            <rect key="frame" x="16" y="12" width="98" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1iP-Nz-Cv3">
-                                            <rect key="frame" x="291" y="12" width="42" height="21"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="W8T-l8-L2g">
+                                            <rect key="frame" x="296" y="12" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="1iP-Nz-Cv3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gdu-ZM-Lay" secondAttribute="trailing" constant="8" id="1AD-SK-syf"/>
-                                        <constraint firstItem="gdu-ZM-Lay" firstAttribute="top" secondItem="wO4-Ec-Xbf" secondAttribute="top" constant="12" id="3N3-Cv-CQh"/>
-                                        <constraint firstItem="gdu-ZM-Lay" firstAttribute="leading" secondItem="wO4-Ec-Xbf" secondAttribute="leadingMargin" id="P0l-Z6-PC2"/>
-                                        <constraint firstAttribute="bottom" secondItem="gdu-ZM-Lay" secondAttribute="bottom" constant="12" id="Pn1-IJ-MCe"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="1iP-Nz-Cv3" secondAttribute="trailing" id="QbR-pE-Gfn"/>
-                                        <constraint firstItem="gdu-ZM-Lay" firstAttribute="firstBaseline" secondItem="1iP-Nz-Cv3" secondAttribute="firstBaseline" id="XcL-Dx-qq2"/>
-                                    </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="stretchTypeLabel" destination="1iP-Nz-Cv3" id="U8c-7R-yxj"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MinMaxRow1" id="Kyl-7R-Dhy" customClass="RGBRenderer3InputCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>

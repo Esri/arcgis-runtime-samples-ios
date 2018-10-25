@@ -15,12 +15,6 @@
 
 import UIKit
 
-class StretchRendererStretchTypeCell: UITableViewCell {
-    
-    @IBOutlet weak var stretchTypeLabel: UILabel!
-    
-}
-
 class StretchRendererInputCell: UITableViewCell {
 
     @IBOutlet var textField: UITextField!

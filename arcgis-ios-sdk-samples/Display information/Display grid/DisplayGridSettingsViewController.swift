@@ -19,25 +19,21 @@ import ArcGIS
 class DisplayGridSettingsViewController: UITableViewController {
     
     var mapView: AGSMapView?
-    private var labelPositionLabels = ["Geographic", "Bottom Left", "Bottom Right", "Top Left", "Top Right", "Center", "All Sides"]
-    private var labelUnitLabels = ["Kilometers Meters", "Meters"]
-    private var labelFormatLabels = ["Decimal Degrees", "Degrees Minutes Seconds"]
     
-    @IBOutlet weak var gridColorPicker: HorizontalColorPicker!
-    @IBOutlet weak var labelColorPicker: HorizontalColorPicker!
+    private let labelPositionLabels = ["Geographic", "Bottom Left", "Bottom Right", "Top Left", "Top Right", "Center", "All Sides"]
+    private let labelUnitLabels = ["Kilometers Meters", "Meters"]
+    private let labelFormatLabels = ["Decimal Degrees", "Degrees Minutes Seconds"]
     
-    @IBOutlet weak var gridVisibilitySwitch: UISwitch!
-    @IBOutlet weak var labelVisibilitySwitch: UISwitch!
+    @IBOutlet private weak var gridColorPicker: HorizontalColorPicker!
+    @IBOutlet private weak var labelColorPicker: HorizontalColorPicker!
     
-    @IBOutlet weak var gridTypeCell: UITableViewCell!
-    @IBOutlet weak var labelFormatCell: UITableViewCell!
-    @IBOutlet weak var labelUnitCell: UITableViewCell!
-    @IBOutlet weak var labelPositionCell: UITableViewCell!
+    @IBOutlet private weak var gridVisibilitySwitch: UISwitch!
+    @IBOutlet private weak var labelVisibilitySwitch: UISwitch!
     
-    @IBOutlet weak var gridTypeLabel: UILabel!
-    @IBOutlet weak var labelFormatLabel: UILabel!
-    @IBOutlet weak var labelUnitLabel: UILabel!
-    @IBOutlet weak var labelPositionLabel: UILabel!
+    @IBOutlet private weak var gridTypeCell: UITableViewCell!
+    @IBOutlet private weak var labelFormatCell: UITableViewCell!
+    @IBOutlet private weak var labelUnitCell: UITableViewCell!
+    @IBOutlet private weak var labelPositionCell: UITableViewCell!
     
     private enum GridType: Int, CaseIterable {
         case latLong, mgrs, utm, usng
@@ -52,15 +48,6 @@ class DisplayGridSettingsViewController: UITableViewController {
             }
         }
         
-        var grid: AGSGrid {
-            switch self {
-            case .latLong: return AGSLatitudeLongitudeGrid()
-            case .mgrs: return AGSMGRSGrid()
-            case .utm: return AGSUTMGrid()
-            case .usng: return AGSUSNGGrid()
-            }
-        }
-        
         var label: String {
             switch self {
             case .latLong: return "LatLong"
@@ -72,6 +59,15 @@ class DisplayGridSettingsViewController: UITableViewController {
         
     }
     
+    private func makeGrid(type: GridType)-> AGSGrid {
+        switch type {
+        case .latLong: return AGSLatitudeLongitudeGrid()
+        case .mgrs: return AGSMGRSGrid()
+        case .utm: return AGSUTMGrid()
+        case .usng: return AGSUSNGGrid()
+        }
+    }
+    
     // MARK: - View Methods
     
     override func viewDidLoad() {
@@ -80,11 +76,7 @@ class DisplayGridSettingsViewController: UITableViewController {
         // Set picker delegates
         gridColorPicker.delegate = self
         labelColorPicker.delegate = self
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
+        
         // Setup UI Controls
         updateUIForGrid()
     }
@@ -96,12 +88,12 @@ class DisplayGridSettingsViewController: UITableViewController {
             return
         }
 
-        gridTypeLabel.text = gridType.label
+        gridTypeCell.detailTextLabel?.text = gridType.label
         
         gridVisibilitySwitch.isOn = grid.isVisible
         labelVisibilitySwitch.isOn = grid.labelVisibility
         
-        labelPositionLabel.text = labelPositionLabels[grid.labelPosition.rawValue]
+        labelPositionCell.detailTextLabel?.text = labelPositionLabels[grid.labelPosition.rawValue]
         
         updateLabelFormatUI()
         updateLabelUnitUI()
@@ -109,13 +101,13 @@ class DisplayGridSettingsViewController: UITableViewController {
     
     private func updateLabelFormatUI(){
         if let grid = mapView?.grid as? AGSLatitudeLongitudeGrid {
-            labelFormatLabel.text = labelFormatLabels[grid.labelFormat.rawValue]
-            labelFormatLabel.isEnabled = true
+            labelFormatCell.detailTextLabel?.text = labelFormatLabels[grid.labelFormat.rawValue]
+            labelFormatCell.detailTextLabel?.isEnabled = true
             labelFormatCell.selectionStyle = .default
         }
         else {
-            labelFormatLabel.text = "N/A"
-            labelFormatLabel.isEnabled = false
+            labelFormatCell.detailTextLabel?.text = "N/A"
+            labelFormatCell.detailTextLabel?.isEnabled = false
             labelFormatCell.selectionStyle = .none
         }
     }
@@ -123,13 +115,13 @@ class DisplayGridSettingsViewController: UITableViewController {
     private func updateLabelUnitUI(){
         if let grid = mapView?.grid,
             let labelUnitID = (grid as? AGSMGRSGrid)?.labelUnit.rawValue ?? (grid as? AGSUSNGGrid)?.labelUnit.rawValue {
-            labelUnitLabel.text = labelUnitLabels[labelUnitID]
-            labelUnitLabel.isEnabled = true
+            labelUnitCell.detailTextLabel?.text = labelUnitLabels[labelUnitID]
+            labelUnitCell.detailTextLabel?.isEnabled = true
             labelUnitCell.selectionStyle = .default
         }
         else {
-            labelUnitLabel.text = "N/A"
-            labelUnitLabel.isEnabled = false
+            labelUnitCell.detailTextLabel?.text = "N/A"
+            labelUnitCell.detailTextLabel?.isEnabled = false
             labelUnitCell.selectionStyle = .none
         }
     }
@@ -149,7 +141,8 @@ class DisplayGridSettingsViewController: UITableViewController {
     private func changeGrid(to gridType: GridType) {
         
         let priorGrid = mapView!.grid!
-        let grid = gridType.grid
+        let grid = makeGrid(type: gridType)
+        
         // Set the grid
         mapView?.grid = grid
         
@@ -196,8 +189,7 @@ class DisplayGridSettingsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        guard cell?.selectionStyle != .none,
-            let grid = mapView?.grid else {
+        guard let grid = mapView?.grid else {
             return
         }
         switch cell {

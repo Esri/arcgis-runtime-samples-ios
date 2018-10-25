@@ -29,8 +29,6 @@ class BlendRendererSettingsVC: UITableViewController {
     @IBOutlet private weak var azimuthLabel: UILabel?
     @IBOutlet private weak var slopeTypeCell: UITableViewCell?
     @IBOutlet private weak var colorRampTypeCell: UITableViewCell?
-    @IBOutlet private weak var slopeTypeLabel: UILabel?
-    @IBOutlet private weak var colorRampTypeLabel: UILabel?
     
     weak var delegate: BlendRendererSettingsVCDelegate?
     
@@ -86,7 +84,7 @@ class BlendRendererSettingsVC: UITableViewController {
     }
     private let slopeTypeLabels = ["None", "Degree", "Percent Rise", "Scaled"]
     private func updateSlopeTypeControls() {
-        slopeTypeLabel?.text = slopeTypeLabels[slopeTypeID]
+        slopeTypeCell?.detailTextLabel?.text = slopeTypeLabels[slopeTypeID]
     }
     
     var colorRampType: AGSPresetColorRampType = .none {
@@ -119,7 +117,7 @@ class BlendRendererSettingsVC: UITableViewController {
     }
     private let colorRampLabels = ["None", "Elevation", "DEMLight", "DEMScreen"]
     private func updateColorRampTypeControls() {
-        colorRampTypeLabel?.text = colorRampLabels[colorRampTypeID]
+        colorRampTypeCell?.detailTextLabel?.text = colorRampLabels[colorRampTypeID]
     }
     
     override func viewDidLoad() {

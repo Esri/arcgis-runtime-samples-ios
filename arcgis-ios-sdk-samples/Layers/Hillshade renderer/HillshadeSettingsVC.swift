@@ -26,7 +26,6 @@ class HillshadeSettingsVC: UITableViewController {
     @IBOutlet weak var azimuthSlider: UISlider?
     @IBOutlet weak var azimuthLabel: UILabel?
     @IBOutlet weak var altitudeLabel: UILabel?
-    @IBOutlet weak var slopeTypeLabel: UILabel?
     @IBOutlet weak var slopeTypeCell: UITableViewCell?
     
     weak var delegate: HillshadeSettingsDelegate?
@@ -39,6 +38,8 @@ class HillshadeSettingsVC: UITableViewController {
     }
     
     private var slopeTypeOptions: [AGSSlopeType] = [.none, .degree, .percentRise, .scaled]
+    
+    private let numberFormatter = NumberFormatter()
     
     private func labelForSlopeType(_ slopeType: AGSSlopeType) -> String {
         switch slopeType {
@@ -55,7 +56,7 @@ class HillshadeSettingsVC: UITableViewController {
         }
     }
     private func updateSlopeTypeUI() {
-        slopeTypeLabel?.text = labelForSlopeType(slopeType)
+        slopeTypeCell?.detailTextLabel?.text = labelForSlopeType(slopeType)
     }
     
     var altitude: Double = 0 {
@@ -64,7 +65,7 @@ class HillshadeSettingsVC: UITableViewController {
         }
     }
     private func updateAltitudeUI() {
-        altitudeLabel?.text = "\(Int(altitude))"
+        altitudeLabel?.text = numberFormatter.string(from: altitude as NSNumber)
         altitudeSlider?.value = Float(altitude)
     }
     
@@ -74,7 +75,7 @@ class HillshadeSettingsVC: UITableViewController {
         }
     }
     private func updateAzimuthUI() {
-        azimuthLabel?.text = "\(Int(azimuth))"
+        azimuthLabel?.text = numberFormatter.string(from: azimuth as NSNumber)
         azimuthSlider?.value = Float(azimuth)
     }
     

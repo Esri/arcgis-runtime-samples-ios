@@ -166,34 +166,28 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="mtb-Bi-dsT">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="B8g-pb-4Pz" detailTextLabel="ThK-zT-k3i" style="IBUITableViewCellStyleValue1" id="mtb-Bi-dsT">
                                         <rect key="frame" x="0.0" y="90" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mtb-Bi-dsT" id="rRm-Q8-T41">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slope Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vN4-Dq-YMJ">
-                                                    <rect key="frame" x="16" y="12" width="86" height="21"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Slope Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="B8g-pb-4Pz">
+                                                    <rect key="frame" x="16" y="12" width="85.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlP-x4-kTV">
-                                                    <rect key="frame" x="299" y="12" width="42" height="21"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="ThK-zT-k3i">
+                                                    <rect key="frame" x="296" y="12" width="44" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="vN4-Dq-YMJ" firstAttribute="leading" secondItem="rRm-Q8-T41" secondAttribute="leading" constant="16" id="3yZ-dI-10i"/>
-                                                <constraint firstItem="GlP-x4-kTV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vN4-Dq-YMJ" secondAttribute="trailing" constant="8" id="FCW-i7-CqM"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="vN4-Dq-YMJ" secondAttribute="bottom" constant="1" id="GZk-Iu-azZ"/>
-                                                <constraint firstItem="GlP-x4-kTV" firstAttribute="centerY" secondItem="vN4-Dq-YMJ" secondAttribute="centerY" id="MZi-Jx-R2d"/>
-                                                <constraint firstItem="vN4-Dq-YMJ" firstAttribute="top" secondItem="rRm-Q8-T41" secondAttribute="topMargin" constant="1" id="W5R-At-1zc"/>
-                                                <constraint firstAttribute="trailing" secondItem="GlP-x4-kTV" secondAttribute="trailing" id="ZDq-Qg-gcr"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -211,7 +205,6 @@
                         <outlet property="azimuthLabel" destination="tEL-og-M5L" id="juc-au-nGo"/>
                         <outlet property="azimuthSlider" destination="NEe-D8-xR2" id="BVO-g0-eXa"/>
                         <outlet property="slopeTypeCell" destination="mtb-Bi-dsT" id="w3M-Sk-hxC"/>
-                        <outlet property="slopeTypeLabel" destination="GlP-x4-kTV" id="ctB-N9-vr9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXf-dA-DRv" userLabel="First Responder" sceneMemberID="firstResponder"/>

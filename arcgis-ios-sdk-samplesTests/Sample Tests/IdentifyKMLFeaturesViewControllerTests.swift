@@ -16,7 +16,7 @@
 
 import XCTest
 import ArcGIS
-@testable import arcgis_ios_sdk_samples
+@testable import ArcGIS_Runtime_SDK_Samples
 
 class IdentifyKMLFeaturesViewControllerTests: XCTestCase {
     func makeViewController() -> IdentifyKMLFeaturesViewController {

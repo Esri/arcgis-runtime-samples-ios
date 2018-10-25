@@ -25,7 +25,7 @@ class HillshadeRendererVC: UIViewController {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["HillshadeRendererVC", "HillshadeSettingsVC"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["HillshadeRendererVC", "HillshadeSettingsVC", "OptionsTableViewController"]
         
         let raster = AGSRaster(name: "srtm", extension: "tiff")
         let rasterLayer = AGSRasterLayer(raster: raster)
@@ -47,7 +47,8 @@ class HillshadeRendererVC: UIViewController {
     //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let controller = segue.destination as? HillshadeSettingsVC,
+        if let navController = segue.destination as? UINavigationController,
+            let controller = navController.viewControllers.first as? HillshadeSettingsVC,
             let renderer = rasterLayer?.renderer as? AGSHillshadeRenderer {
             controller.preferredContentSize = {
                 let height: CGFloat
@@ -59,12 +60,11 @@ class HillshadeRendererVC: UIViewController {
                 }
                 return CGSize(width: 375, height: height)
             }()
-            controller.presentationController?.delegate = self
-            controller.loadViewIfNeeded()
+            navController.presentationController?.delegate = self
             controller.delegate = self
             controller.altitude = renderer.altitude
             controller.azimuth = renderer.azimuth
-            controller.selectedSlope = renderer.slopeType
+            controller.slopeType = renderer.slopeType
         }
     }
 

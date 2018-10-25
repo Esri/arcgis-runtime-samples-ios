@@ -24,8 +24,6 @@ class AddStatisticDefinitionsViewController: UITableViewController {
 
     @IBOutlet private weak var fieldNameCell: UITableViewCell!
     @IBOutlet private weak var statisticTypeCell: UITableViewCell!
-    @IBOutlet private weak var fieldNameLabel: UILabel?
-    @IBOutlet private weak var statisticTypeLabel: UILabel?
     
     var fieldNames = [String]()
     private var statisticTypes = ["Average", "Count", "Maximum", "Minimum", "StandardDeviation", "Sum", "Variance"]
@@ -37,12 +35,12 @@ class AddStatisticDefinitionsViewController: UITableViewController {
     
     var fieldNameIndex: Int = 0 {
         didSet {
-            fieldNameLabel?.text = fieldName
+            fieldNameCell.detailTextLabel?.text = fieldName
         }
     }
     var statisticType: AGSStatisticType = .average {
         didSet {
-            statisticTypeLabel?.text =  statisticTypes[statisticType.rawValue]
+            statisticTypeCell.detailTextLabel?.text =  statisticTypes[statisticType.rawValue]
         }
     }
 

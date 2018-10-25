@@ -49,7 +49,7 @@ class Animate3DGraphicViewController: UIViewController {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["Animate3DGraphicViewController", "MissionSettingsViewController", "CameraSettingsViewController", "PlaneStatsViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["Animate3DGraphicViewController", "MissionSettingsViewController", "CameraSettingsViewController", "PlaneStatsViewController", "OptionsTableViewController"]
         
         //map
         let map = AGSMap(basemap: .streets())
@@ -342,18 +342,20 @@ class Animate3DGraphicViewController: UIViewController {
             planeStatsViewController.presentationController?.delegate = self
             planeStatsViewController.preferredContentSize = CGSize(width: 220, height: 200)
         }
-        else if let missionSettingsViewController = segue.destination as? MissionSettingsViewController {
-            self.missionSettingsViewController = missionSettingsViewController
+        else if let navController = segue.destination as? UINavigationController,
+            let controller = navController.viewControllers.first as? MissionSettingsViewController {
+            
+            self.missionSettingsViewController = controller
             //initial values
-            missionSettingsViewController.missionFileNames = missionFileNames
-            missionSettingsViewController.selectedMissionIndex = selectedMissionIndex
-            missionSettingsViewController.animationSpeed = animationSpeed
-            missionSettingsViewController.progress = Float(currentFrameIndex) / Float(frames.count)
+            controller.missionFileNames = missionFileNames
+            controller.selectedMissionIndex = selectedMissionIndex
+            controller.animationSpeed = animationSpeed
+            controller.progress = Float(currentFrameIndex) / Float(frames.count)
             
             //pop over settings
-            missionSettingsViewController.presentationController?.delegate = self
-            missionSettingsViewController.preferredContentSize = CGSize(width: 300, height: 200)
-            missionSettingsViewController.delegate = self
+            navController.presentationController?.delegate = self
+            controller.preferredContentSize = CGSize(width: 300, height: 200)
+            controller.delegate = self
         }
     }
     

@@ -24,43 +24,59 @@ protocol MissionSettingsVCDelegate: AnyObject {
 
 class MissionSettingsViewController: UITableViewController {
 
-    @IBOutlet private var horizontalPicker: HorizontalPicker!
-    @IBOutlet private var speedSlider: UISlider!
-    @IBOutlet private var progressView: UIProgressView!
+    @IBOutlet private weak var missionCell: UITableViewCell?
+    @IBOutlet private weak var speedSlider: UISlider?
+    @IBOutlet private weak var progressView: UIProgressView?
+    
+    weak var delegate:MissionSettingsVCDelegate?
     
     var missionFileNames:[String] = []
-    var selectedMissionIndex:Int = 0
+    var selectedMissionIndex:Int = 0 {
+        didSet {
+            updateMissionCell()
+        }
+    }
     var animationSpeed = 50
     var progress:Float = 0 {
         didSet {
-            progressView?.progress = progress
+            updateProgressViewForProgress()
         }
     }
     
-    weak var delegate:MissionSettingsVCDelegate?
+    private func updateProgressViewForProgress(){
+        progressView?.progress = progress
+    }
+    
+    private func updateMissionCell(){
+        if selectedMissionIndex < missionFileNames.count {
+            missionCell?.detailTextLabel?.text = missionFileNames[selectedMissionIndex]
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        horizontalPicker.options = missionFileNames
-        horizontalPicker.selectedIndex = selectedMissionIndex
-        horizontalPicker.delegate = self
+        updateMissionCell()
         
-        speedSlider.value = Float(animationSpeed)
-        progressView.progress = progress
+        speedSlider?.value = Float(animationSpeed)
+        updateProgressViewForProgress()
     }
     
     //MARK: - Actions
     
     @IBAction func speedValueChanged(_ sender: UISlider) {
-        
+        animationSpeed = Int(sender.value)
         delegate?.missionSettingsViewController(self, didChangeSpeed: Int(sender.value))
     }
-}
-
-extension MissionSettingsViewController: HorizontalPickerDelegate {
     
-    func horizontalPicker(_ horizontalPicker: HorizontalPicker, didUpdateSelectedIndex index: Int) {
-        delegate?.missionSettingsViewController(self, didSelectMissionAtIndex: index)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.cellForRow(at: indexPath) == missionCell {
+            let controller = OptionsTableViewController(labels: missionFileNames, selectedIndex: selectedMissionIndex) { (newIndex) in
+                self.selectedMissionIndex = newIndex
+                self.delegate?.missionSettingsViewController(self, didSelectMissionAtIndex: newIndex)
+            }
+            controller.title = "Mission"
+            show(controller, sender: self)
+        }
     }
 }

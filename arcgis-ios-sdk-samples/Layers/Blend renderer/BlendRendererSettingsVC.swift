@@ -23,14 +23,16 @@ protocol BlendRendererSettingsVCDelegate: AnyObject {
 
 class BlendRendererSettingsVC: UITableViewController {
 
-    @IBOutlet var altitudeSlider: UISlider?
-    @IBOutlet var altitudeLabel: UILabel?
-    @IBOutlet var azimuthSlider: UISlider?
-    @IBOutlet var azimuthLabel: UILabel?
-    @IBOutlet var slopeTypePicker: HorizontalPicker?
-    @IBOutlet var colorRampPicker: HorizontalPicker?
+    @IBOutlet private weak var altitudeSlider: UISlider?
+    @IBOutlet private weak var altitudeLabel: UILabel?
+    @IBOutlet private weak var azimuthSlider: UISlider?
+    @IBOutlet private weak var azimuthLabel: UILabel?
+    @IBOutlet private weak var slopeTypeCell: UITableViewCell?
+    @IBOutlet private weak var colorRampTypeCell: UITableViewCell?
     
-    let numberFormatter = NumberFormatter()
+    weak var delegate: BlendRendererSettingsVCDelegate?
+    
+    private let numberFormatter = NumberFormatter()
     
     var azimuth: Double = 0 {
         didSet {
@@ -52,6 +54,7 @@ class BlendRendererSettingsVC: UITableViewController {
         altitudeLabel?.text = numberFormatter.string(from: altitude as NSNumber)
     }
 
+    private let slopeTypeLabels = ["None", "Degree", "Percent Rise", "Scaled"]
     var slopeType: AGSSlopeType = .none {
         didSet {
             guard slopeType != oldValue else {
@@ -61,103 +64,66 @@ class BlendRendererSettingsVC: UITableViewController {
         }
     }
     private func updateSlopeTypeControls() {
-        switch slopeType {
-        case .none:
-            slopeTypePicker?.selectedIndex = 0
-        case .degree:
-            slopeTypePicker?.selectedIndex = 1
-        case .percentRise:
-            slopeTypePicker?.selectedIndex = 2
-        case .scaled:
-            slopeTypePicker?.selectedIndex = 3
-        }
+        slopeTypeCell?.detailTextLabel?.text = slopeTypeLabels[slopeType.rawValue + 1]
     }
     
+    private let colorRampLabels = ["None", "Elevation", "DEMScreen", "DEMLight"]
     var colorRampType: AGSPresetColorRampType = .none {
         didSet {
             guard colorRampType != oldValue else {
                 return
             }
-            updateColorRampControls()
+            updateColorRampTypeControls()
         }
     }
-    private func updateColorRampControls() {
-        switch colorRampType {
-        case .none:
-            colorRampPicker?.selectedIndex = 0
-        case .elevation:
-            colorRampPicker?.selectedIndex = 1
-        case .demLight:
-            colorRampPicker?.selectedIndex = 2
-        case .demScreen:
-            colorRampPicker?.selectedIndex = 3
-        }
+    private func updateColorRampTypeControls() {
+        colorRampTypeCell?.detailTextLabel?.text = colorRampLabels[colorRampType.rawValue + 1]
     }
-    
-    weak var delegate: BlendRendererSettingsVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        slopeTypePicker?.delegate = self
-        colorRampPicker?.delegate = self
-        slopeTypePicker?.options = ["None", "Degree", "Percent Rise", "Scaled"]
-        colorRampPicker?.options = ["None", "Elevation", "DEMLight", "DEMScreen"]
         
         updateAltitudeControls()
         updateAzimuthControls()
         updateSlopeTypeControls()
-        updateColorRampControls()
+        updateColorRampTypeControls()
     }
     
     //MARK: - Actions
     
     @IBAction func azimuthSliderValueChanged(_ slider: UISlider) {
         azimuth = Double(slider.value)
-        rendererAction()
+        blendRendererParametersChanged()
     }
     
     @IBAction func altitudeSliderValueChanged(_ slider: UISlider) {
         altitude = Double(slider.value)
-        rendererAction()
+        blendRendererParametersChanged()
     }
     
-    private func rendererAction() {
+    private func blendRendererParametersChanged() {
         delegate?.blendRendererSettingsVC(self, selectedAltitude: altitude, azimuth: azimuth, slopeType: slopeType, colorRampType: colorRampType)
     }
-}
-
-extension BlendRendererSettingsVC: HorizontalPickerDelegate {
     
-    func horizontalPicker(_ horizontalPicker: HorizontalPicker, didUpdateSelectedIndex index: Int) {
-        if horizontalPicker == slopeTypePicker {
-            slopeType = {
-                switch horizontalPicker.selectedIndex {
-                case 0:
-                    return .none
-                case 1:
-                    return .degree
-                case 2:
-                    return .percentRise
-                default:
-                    return .scaled
-                }
-            }()
+    // UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        if cell == slopeTypeCell {
+            let optionsViewController = OptionsTableViewController(labels: slopeTypeLabels, selectedIndex: slopeType.rawValue + 1) { (newIndex) in
+                self.slopeType = AGSSlopeType(rawValue: newIndex - 1)!
+                self.blendRendererParametersChanged()
+            }
+            optionsViewController.title = "Slope Type"
+            show(optionsViewController, sender: self)
         }
-        else if horizontalPicker == colorRampPicker {
-            colorRampType = {
-                switch horizontalPicker.selectedIndex {
-                case 0:
-                    return .none
-                case 1:
-                    return .elevation
-                case 2:
-                    return .demLight
-                default:
-                    return .demScreen
-                }
-            }()
+        else if cell == colorRampTypeCell {
+            let optionsViewController = OptionsTableViewController(labels: colorRampLabels, selectedIndex: colorRampType.rawValue + 1) { (newIndex) in
+                self.colorRampType = AGSPresetColorRampType(rawValue: newIndex - 1)!
+                self.blendRendererParametersChanged()
+            }
+            optionsViewController.title = "Color Ramp Type"
+            show(optionsViewController, sender: self)
         }
-        rendererAction()
     }
-    
 }

@@ -24,7 +24,7 @@ class DisplayGridViewController: UIViewController {
         super.viewDidLoad()
         
         // Add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayGridViewController", "DisplayGridSettingsViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayGridViewController", "DisplayGridSettingsViewController", "OptionsTableViewController"]
 
         // Initialize map with imagery basemap
         let map = AGSMap(basemap: .imagery())

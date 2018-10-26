@@ -33,7 +33,7 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["BlendRendererViewController", "BlendRendererSettingsVC"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["BlendRendererViewController", "BlendRendererSettingsVC", "OptionsTableViewController"]
         
         //initialize map
         let map = AGSMap()
@@ -97,7 +97,8 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
     //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let controller = segue.destination as? BlendRendererSettingsVC,
+        if let navController = segue.destination as? UINavigationController,
+            let controller = navController.viewControllers.first as? BlendRendererSettingsVC,
             let rasterLayer = mapView.map?.basemap.baseLayers.firstObject as? AGSRasterLayer,
             let renderer = rasterLayer.renderer as? AGSBlendRenderer {
            
@@ -111,7 +112,7 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
                 }
                 return CGSize(width: 375, height: height)
             }()
-            controller.presentationController?.delegate = self
+            navController.presentationController?.delegate = self
             controller.delegate = self
             controller.altitude = renderer.altitude
             controller.azimuth = renderer.azimuth

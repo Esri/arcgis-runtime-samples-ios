@@ -27,7 +27,7 @@ class StretchRendererSettingsVC: UITableViewController {
     
     weak var stretchTypeCell: UITableViewCell?
     
-    enum StretchType: Int, CaseIterable {
+    private enum StretchType: Int, CaseIterable {
         case minMax, percentClip, standardDeviation
         
         var label: String {

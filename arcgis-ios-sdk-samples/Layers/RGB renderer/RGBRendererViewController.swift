@@ -65,6 +65,9 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate
                 return CGSize(width: 375, height: height)
             }()
             controller.delegate = self
+            if let parameters = (rasterLayer?.renderer as? AGSRGBRenderer)?.stretchParameters{
+                controller.setupForParameters(parameters)
+            }
             navController.presentationController?.delegate = self
         }
     }

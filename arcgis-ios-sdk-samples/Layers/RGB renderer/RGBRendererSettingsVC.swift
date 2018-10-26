@@ -27,7 +27,7 @@ class RGBRendererSettingsVC: UITableViewController {
     
     weak var stretchTypeCell: UITableViewCell?
     
-    enum StretchType: Int, CaseIterable {
+    private enum StretchType: Int, CaseIterable {
         case minMax, percentClip, standardDeviation
         
         var label: String {
@@ -38,6 +38,30 @@ class RGBRendererSettingsVC: UITableViewController {
             }
         }
     }
+    
+    func setupForParameters(_ parameters: AGSStretchParameters) {
+        switch parameters {
+        case let parameters as AGSMinMaxStretchParameters:
+            minValues = parameters.minValues as! [Double]
+            maxValues = parameters.maxValues as! [Double]
+            stretchType = .minMax
+        case let parameters as AGSPercentClipStretchParameters:
+            stretchType = .percentClip
+            percentClipMin = parameters.min
+            percentClipMax = parameters.max
+        case let parameters as AGSStandardDeviationStretchParameters:
+            stretchType = .standardDeviation
+            standardDeviationFactor = parameters.factor
+        default:
+            break
+        }
+    }
+    
+    private var minValues: [Double] = [0, 0, 0]
+    private var maxValues: [Double] = [255, 255, 255]
+    private var percentClipMin: Double = 0
+    private var percentClipMax: Double = 1
+    private var standardDeviationFactor: Double = 1
     
     private var stretchType: RGBRendererSettingsVC.StretchType = .minMax {
         didSet{
@@ -120,11 +144,36 @@ class RGBRendererSettingsVC: UITableViewController {
             //load the rest of the cells based on the stretch type selected
             switch stretchType {
             case .minMax:
-                 return tableView.dequeueReusableCell(withIdentifier: "MinMaxRow\(indexPath.row)", for: indexPath)
+                 let cell = tableView.dequeueReusableCell(withIdentifier: "RGBRenderer3InputCell", for: indexPath) as! RGBRenderer3InputCell
+                 switch indexPath.row {
+                 case 1:
+                    cell.leadingLabel.text = "Min"
+                    cell.update(for: minValues)
+                 case 2:
+                    cell.leadingLabel.text = "Max"
+                    cell.update(for: maxValues)
+                 default:
+                    break
+                 }
+                 return cell
             case .percentClip:
-                 return tableView.dequeueReusableCell(withIdentifier: "PercentClipRow\(indexPath.row)", for: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: "RGBRendererInputCell", for: indexPath) as! RGBRendererInputCell
+                switch indexPath.row {
+                case 1:
+                    cell.leadingLabel.text = "Min"
+                    cell.update(for: percentClipMin)
+                case 2:
+                    cell.leadingLabel.text = "Max"
+                    cell.update(for: percentClipMax)
+                default:
+                    break
+                }
+                return cell
             case .standardDeviation:
-                 return tableView.dequeueReusableCell(withIdentifier: "StandardDeviationRow1", for: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: "RGBRendererInputCell", for: indexPath) as! RGBRendererInputCell
+                cell.leadingLabel.text = "Factor"
+                cell.update(for: standardDeviationFactor)
+                return cell
             }
         }
     }

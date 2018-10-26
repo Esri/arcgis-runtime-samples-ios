@@ -63,7 +63,10 @@ class RGBRendererSettingsVC: UITableViewController {
                 maxValue2 = Int(cell.textField2.text!) ?? 255
                 maxValue3 = Int(cell.textField3.text!) ?? 255
             }
-            return AGSMinMaxStretchParameters(minValues: [NSNumber(value: minValue1), NSNumber(value: minValue2), NSNumber(value: minValue3)], maxValues: [NSNumber(value: maxValue1), NSNumber(value: maxValue2), NSNumber(value: maxValue3)])
+            return AGSMinMaxStretchParameters(
+                minValues: [minValue1, minValue2, minValue3] as [NSNumber],
+                maxValues: [maxValue1, maxValue2, maxValue3] as [NSNumber]
+            )
         case .percentClip:
             var min = 0.0, max = 0.0
             if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? RGBRendererInputCell {

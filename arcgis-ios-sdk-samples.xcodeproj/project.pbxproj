@@ -506,10 +506,13 @@
 		C7094786215D36BA00BA0969 /* OfflineMapParameterOverridesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7094785215D36BA00BA0969 /* OfflineMapParameterOverridesViewController.swift */; };
 		C7094787215D68C200BA0969 /* GenerateOfflineMapOverridesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7094782215D34BA00BA0969 /* GenerateOfflineMapOverridesViewController.swift */; };
 		C7094788215D68C400BA0969 /* OfflineMapParameterOverridesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7094785215D36BA00BA0969 /* OfflineMapParameterOverridesViewController.swift */; };
+		C712881A2183CEE1007502A6 /* ColorPickerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C76F75712182729700938D8D /* ColorPickerViewController.swift */; };
 		C76817072163DB7C00EC82F4 /* DisplayKML.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C76817052163DB7C00EC82F4 /* DisplayKML.storyboard */; };
 		C76817082163DB7C00EC82F4 /* DisplayKMLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76817062163DB7C00EC82F4 /* DisplayKMLViewController.swift */; };
 		C76817092163DD8300EC82F4 /* DisplayKMLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C76817062163DB7C00EC82F4 /* DisplayKMLViewController.swift */; };
 		C768170C2163E31700EC82F4 /* US_State_Capitals.kml in Resources */ = {isa = PBXBuildFile; fileRef = C768170B2163E31700EC82F4 /* US_State_Capitals.kml */; };
+		C76F75722182729700938D8D /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76F75712182729700938D8D /* ColorPickerViewController.swift */; };
+		C76F757421827C9C00938D8D /* ColorPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C76F757321827C9C00938D8D /* ColorPicker.storyboard */; };
 		C7760332217FAC9B0092D978 /* OptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7760331217FAC9B0092D978 /* OptionsTableViewController.swift */; };
 		C7760334217FAD1E0092D978 /* OptionsTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7760331217FAC9B0092D978 /* OptionsTableViewController.swift */; };
 		C793B5DE21667194000A7A10 /* ListKMLContents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C793B5DC21667194000A7A10 /* ListKMLContents.storyboard */; };
@@ -612,6 +615,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				C712881A2183CEE1007502A6 /* ColorPickerViewController.swift in CopyFiles */,
 				C7760334217FAD1E0092D978 /* OptionsTableViewController.swift in CopyFiles */,
 				C7D22F8D2167F01500C39D5C /* ListKMLContentsSceneViewController.swift in CopyFiles */,
 				C793B5E321668587000A7A10 /* ListKMLContentsViewController.swift in CopyFiles */,
@@ -1163,6 +1167,8 @@
 		C76817052163DB7C00EC82F4 /* DisplayKML.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayKML.storyboard; sourceTree = "<group>"; };
 		C76817062163DB7C00EC82F4 /* DisplayKMLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayKMLViewController.swift; sourceTree = "<group>"; };
 		C768170B2163E31700EC82F4 /* US_State_Capitals.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = US_State_Capitals.kml; sourceTree = "<group>"; };
+		C76F75712182729700938D8D /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		C76F757321827C9C00938D8D /* ColorPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorPicker.storyboard; sourceTree = "<group>"; };
 		C7760331217FAC9B0092D978 /* OptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsTableViewController.swift; sourceTree = "<group>"; };
 		C793B5DC21667194000A7A10 /* ListKMLContents.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListKMLContents.storyboard; sourceTree = "<group>"; };
 		C793B5DD21667194000A7A10 /* ListKMLContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListKMLContentsViewController.swift; sourceTree = "<group>"; };
@@ -1574,6 +1580,7 @@
 				3ED5EB741B740A58009F9B75 /* SegmentedViewController.swift */,
 				3E3B2C1E1BBCA37F00A99C5E /* ContentCollectionViewController.swift */,
 				C7760331217FAC9B0092D978 /* OptionsTableViewController.swift */,
+				C71288192183CA81007502A6 /* Color Picker */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -2071,9 +2078,9 @@
 		3EAF09431D71086E00F8538F /* Change map view background */ = {
 			isa = PBXGroup;
 			children = (
+				3EAF09481D710AAF00F8538F /* ChangeMapViewBackground.storyboard */,
 				3EAF09441D7108DC00F8538F /* ChangeMapViewBackgroundVC.swift */,
 				3EAF09461D71093D00F8538F /* GridSettingsViewController.swift */,
-				3EAF09481D710AAF00F8538F /* ChangeMapViewBackground.storyboard */,
 			);
 			path = "Change map view background";
 			sourceTree = "<group>";
@@ -2884,6 +2891,15 @@
 			path = "Generate offline map (overrides)";
 			sourceTree = "<group>";
 		};
+		C71288192183CA81007502A6 /* Color Picker */ = {
+			isa = PBXGroup;
+			children = (
+				C76F757321827C9C00938D8D /* ColorPicker.storyboard */,
+				C76F75712182729700938D8D /* ColorPickerViewController.swift */,
+			);
+			path = "Color Picker";
+			sourceTree = "<group>";
+		};
 		C76817042163DA8D00EC82F4 /* Display KML */ = {
 			isa = PBXGroup;
 			children = (
@@ -3205,6 +3221,11 @@
 						CreatedOnToolsVersion = 6.2;
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 					4CD2B5532142EAF900767D87 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -3320,6 +3341,7 @@
 				3E8D54FB1D53E3F000E628D9 /* ScenePropertiesExpressions.storyboard in Resources */,
 				3ED028FA1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard in Resources */,
 				D97B7E6E1FD9BFE700E1239D /* Subdivisions.sbx in Resources */,
+				C76F757421827C9C00938D8D /* ColorPicker.storyboard in Resources */,
 				D97B7E621FD9BFE700E1239D /* Subdivisions.sbn in Resources */,
 				3ED028691B8E3A8500ACA70D /* SetViewpoint.storyboard in Resources */,
 				3EFCE1BD1CF36BC100E02F67 /* OpenMobileMapPackage.storyboard in Resources */,
@@ -3500,6 +3522,7 @@
 				3EFDE0F81E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift in Sources */,
 				3EABC7A21DB1793000C161C6 /* StretchRendererSettingsVC.swift in Sources */,
 				3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */,
+				C76F75722182729700938D8D /* ColorPickerViewController.swift in Sources */,
 				3ED75D041ED39EDF009B1F75 /* FindServiceAreaInteractiveVC.swift in Sources */,
 				3E4BF4441C5AEA6500D85919 /* WorldAddressesViewController.swift in Sources */,
 				3ED028EF1B8E3AA500ACA70D /* FLSelectionViewController.swift in Sources */,

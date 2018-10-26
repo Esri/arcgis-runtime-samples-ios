@@ -85,6 +85,25 @@ class ListKMLContentsViewController: UITableViewController {
         return []
     }
     
+    /// Returns a label `String` for the type of the `node` based on the `class`.
+    /// For example, a `node` with `class` `AGSKMLScreenOverlay` returns "Screen Overlay".
+    private func typeLabel(for node: AGSKMLNode) -> String {
+        var classNameString = "\(type(of: node))"
+        classNameString.removeFirst(6) // remove "AGSKML" prefix
+        // map the string to an array of strings, adding a space before capitals
+        let subStrings = classNameString.map { (char) -> String in
+            let charString = String(char)
+            if char != classNameString.first,
+                charString.uppercased() == charString {
+                // add a space before capital letters
+                return " \(charString)"
+            }
+            return charString
+        }
+        // rejoin and return the formatted string
+        return subStrings.joined()
+    }
+    
     //MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,7 +116,7 @@ class ListKMLContentsViewController: UITableViewController {
         let flattenedNodeInfo = flattenedNodes[indexPath.row]
         let node = flattenedNodeInfo.node
         cell.textLabel?.text = node.name
-        cell.detailTextLabel?.text = "\(type(of:node))"
+        cell.detailTextLabel?.text = typeLabel(for: node)
         // set the indentation based on the node hierarchy
         cell.indentationLevel = flattenedNodeInfo.level
         return cell

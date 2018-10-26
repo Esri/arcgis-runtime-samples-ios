@@ -54,6 +54,7 @@ class BlendRendererSettingsVC: UITableViewController {
         altitudeLabel?.text = numberFormatter.string(from: altitude as NSNumber)
     }
 
+    private let slopeTypeLabels = ["None", "Degree", "Percent Rise", "Scaled"]
     var slopeType: AGSSlopeType = .none {
         didSet {
             guard slopeType != oldValue else {
@@ -62,31 +63,11 @@ class BlendRendererSettingsVC: UITableViewController {
             updateSlopeTypeControls()
         }
     }
-    private var slopeTypeID: Int {
-        set {
-            slopeType = {
-                switch newValue {
-                case 0: return .none
-                case 1: return .degree
-                case 2: return .percentRise
-                default: return .scaled
-                }
-            }()
-        }
-        get {
-            switch slopeType {
-            case .none: return 0
-            case .degree: return 1
-            case .percentRise: return 2
-            case .scaled: return 3
-            }
-        }
-    }
-    private let slopeTypeLabels = ["None", "Degree", "Percent Rise", "Scaled"]
     private func updateSlopeTypeControls() {
-        slopeTypeCell?.detailTextLabel?.text = slopeTypeLabels[slopeTypeID]
+        slopeTypeCell?.detailTextLabel?.text = slopeTypeLabels[slopeType.rawValue + 1]
     }
     
+    private let colorRampLabels = ["None", "Elevation", "DEMScreen", "DEMLight"]
     var colorRampType: AGSPresetColorRampType = .none {
         didSet {
             guard colorRampType != oldValue else {
@@ -95,29 +76,8 @@ class BlendRendererSettingsVC: UITableViewController {
             updateColorRampTypeControls()
         }
     }
-    private var colorRampTypeID: Int {
-        set {
-            colorRampType = {
-                switch newValue {
-                case 0: return .none
-                case 1: return .elevation
-                case 2: return .demLight
-                default: return .demScreen
-                }
-            }()
-        }
-        get {
-            switch colorRampType {
-            case .none: return 0
-            case .elevation: return 1
-            case .demLight: return 2
-            case .demScreen: return 3
-            }
-        }
-    }
-    private let colorRampLabels = ["None", "Elevation", "DEMLight", "DEMScreen"]
     private func updateColorRampTypeControls() {
-        colorRampTypeCell?.detailTextLabel?.text = colorRampLabels[colorRampTypeID]
+        colorRampTypeCell?.detailTextLabel?.text = colorRampLabels[colorRampType.rawValue + 1]
     }
     
     override func viewDidLoad() {
@@ -150,16 +110,16 @@ class BlendRendererSettingsVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         if cell == slopeTypeCell {
-            let optionsViewController = OptionsTableViewController(labels: slopeTypeLabels, selectedIndex: slopeTypeID) { (newIndex) in
-                self.slopeTypeID = newIndex
+            let optionsViewController = OptionsTableViewController(labels: slopeTypeLabels, selectedIndex: slopeType.rawValue + 1) { (newIndex) in
+                self.slopeType = AGSSlopeType(rawValue: newIndex - 1)!
                 self.blendRendererParametersChanged()
             }
             optionsViewController.title = "Slope Type"
             show(optionsViewController, sender: self)
         }
         else if cell == colorRampTypeCell {
-            let optionsViewController = OptionsTableViewController(labels: colorRampLabels, selectedIndex: colorRampTypeID) { (newIndex) in
-                self.colorRampTypeID = newIndex
+            let optionsViewController = OptionsTableViewController(labels: colorRampLabels, selectedIndex: colorRampType.rawValue + 1) { (newIndex) in
+                self.colorRampType = AGSPresetColorRampType(rawValue: newIndex - 1)!
                 self.blendRendererParametersChanged()
             }
             optionsViewController.title = "Color Ramp Type"

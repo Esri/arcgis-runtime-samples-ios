@@ -19,8 +19,6 @@ import ArcGIS
 class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate {
 
     @IBOutlet var mapView: AGSMapView!
-    @IBOutlet var containerView: UIView!
-    @IBOutlet var visualEffectView: UIVisualEffectView!
     
     private var rasterLayer: AGSRasterLayer?
     
@@ -28,7 +26,7 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RGBRendererViewController", "RGBRendererSettingsVC", "RGBRendererTypeCell", "RGBRenderer3InputCell", "RGBRendererInputCell"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RGBRendererViewController", "RGBRendererSettingsVC", "RGB Renderer Cells", "OptionsTableViewController"]
 
         //create raster
         let raster = AGSRaster(name: "Shasta", extension: "tif")
@@ -54,7 +52,8 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate
     //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let controller = segue.destination as? RGBRendererSettingsVC {
+        if let navController = segue.destination as? UINavigationController,
+            let controller = navController.viewControllers.first as? RGBRendererSettingsVC {
             controller.preferredContentSize = {
                 let height: CGFloat
                 if traitCollection.horizontalSizeClass == .regular,
@@ -66,7 +65,10 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate
                 return CGSize(width: 375, height: height)
             }()
             controller.delegate = self
-            controller.presentationController?.delegate = self
+            if let parameters = (rasterLayer?.renderer as? AGSRGBRenderer)?.stretchParameters{
+                controller.setupForParameters(parameters)
+            }
+            navController.presentationController?.delegate = self
         }
     }
 }

@@ -20,12 +20,6 @@ class RGBRendererInputCell: UITableViewCell {
     @IBOutlet weak var leadingLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     
-    let numberFormatter = NumberFormatter()
-    
-    func update(for value: Double) {
-        textField.text = numberFormatter.string(from: value as NSNumber)
-    }
-    
 }
 
 class RGBRenderer3InputCell: UITableViewCell {
@@ -34,15 +28,5 @@ class RGBRenderer3InputCell: UITableViewCell {
     @IBOutlet weak var textField1: UITextField!
     @IBOutlet weak var textField2: UITextField!
     @IBOutlet weak var textField3: UITextField!
-    
-    let numberFormatter = NumberFormatter()
-    
-    func update(for values: [Double]) {
-        if values.count >= 3 {
-            textField1.text = numberFormatter.string(from: values[0] as NSNumber)
-            textField2.text = numberFormatter.string(from: values[1] as NSNumber)
-            textField3.text = numberFormatter.string(from: values[2] as NSNumber)
-        }
-    }
 
 }

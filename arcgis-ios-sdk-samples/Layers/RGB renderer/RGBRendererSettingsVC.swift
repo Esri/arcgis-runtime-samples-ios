@@ -148,10 +148,10 @@ class RGBRendererSettingsVC: UITableViewController {
                  switch indexPath.row {
                  case 1:
                     cell.leadingLabel.text = "Min"
-                    cell.update(for: minValues)
+                    updateCell(cell, for: minValues)
                  case 2:
                     cell.leadingLabel.text = "Max"
-                    cell.update(for: maxValues)
+                    updateCell(cell, for: maxValues)
                  default:
                     break
                  }
@@ -161,10 +161,10 @@ class RGBRendererSettingsVC: UITableViewController {
                 switch indexPath.row {
                 case 1:
                     cell.leadingLabel.text = "Min"
-                    cell.update(for: percentClipMin)
+                    updateCell(cell, for: percentClipMin)
                 case 2:
                     cell.leadingLabel.text = "Max"
-                    cell.update(for: percentClipMax)
+                    updateCell(cell, for: percentClipMax)
                 default:
                     break
                 }
@@ -172,10 +172,24 @@ class RGBRendererSettingsVC: UITableViewController {
             case .standardDeviation:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RGBRendererInputCell", for: indexPath) as! RGBRendererInputCell
                 cell.leadingLabel.text = "Factor"
-                cell.update(for: standardDeviationFactor)
+                updateCell(cell, for: standardDeviationFactor)
                 return cell
             }
         }
+    }
+    
+    private let numberFormatter = NumberFormatter()
+    
+    private func updateCell(_ cell: RGBRenderer3InputCell, for values: [Double]) {
+        if values.count >= 3 {
+            cell.textField1.text = numberFormatter.string(from: values[0] as NSNumber)
+            cell.textField2.text = numberFormatter.string(from: values[1] as NSNumber)
+            cell.textField3.text = numberFormatter.string(from: values[2] as NSNumber)
+        }
+    }
+    
+    private func updateCell(_ cell: RGBRendererInputCell, for value: Double) {
+        cell.textField.text = numberFormatter.string(from: value as NSNumber)
     }
     
     //MARK: - UITableViewDelegate

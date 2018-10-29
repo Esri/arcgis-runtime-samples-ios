@@ -13,7 +13,7 @@
         <!--Blend Renderer View Controller-->
         <scene sceneID="XzV-Xh-JsF">
             <objects>
-                <viewController id="N7u-AK-Y75" customClass="BlendRendererViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="N7u-AK-Y75" customClass="BlendRendererViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Ub-iF-hKv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,7 +32,7 @@
                                     <barButtonItem title="Edit Renderer" id="2Mg-AT-Tsg">
                                         <connections>
                                             <action selector="editRendererAction" destination="N7u-AK-Y75" id="BbT-cC-mfm"/>
-                                            <segue destination="VDk-RB-4PB" kind="popoverPresentation" popoverAnchorBarButtonItem="2Mg-AT-Tsg" id="oy8-sK-lVC">
+                                            <segue destination="36H-C3-QdO" kind="popoverPresentation" popoverAnchorBarButtonItem="2Mg-AT-Tsg" id="c9G-VA-KaC">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                 <popoverPassthroughViews>
                                                     <view reference="55E-Cz-Pew"/>
@@ -70,18 +70,34 @@
             </objects>
             <point key="canvasLocation" x="305" y="372"/>
         </scene>
-        <!--Blend Renderer SettingsVC-->
+        <!--Navigation Controller-->
+        <scene sceneID="cFo-TQ-isY">
+            <objects>
+                <navigationController id="36H-C3-QdO" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EQN-EV-zsE">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="VDk-RB-4PB" kind="relationship" relationship="rootViewController" id="9rf-YH-WzN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ksu-JI-G8k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1004" y="372"/>
+        </scene>
+        <!--Settings-->
         <scene sceneID="zuR-Aq-sif">
             <objects>
-                <tableViewController id="VDk-RB-4PB" customClass="BlendRendererSettingsVC" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ahD-36-Ds6">
+                <tableViewController id="VDk-RB-4PB" customClass="BlendRendererSettingsVC" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ahD-36-Ds6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
                             <tableViewSection id="4YX-4D-JWY">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="2Ke-9W-v8l">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="2Ke-9W-v8l">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="2Ke-9W-v8l" id="Ilu-dk-1Nc">
@@ -125,7 +141,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ZGf-zJ-bRI">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="ZGf-zJ-bRI">
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZGf-zJ-bRI" id="Rse-lH-8LV">
@@ -169,68 +185,52 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ZxQ-Wc-Ol4">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="7Sa-aZ-yMw" detailTextLabel="nXD-Z2-uHk" style="IBUITableViewCellStyleValue1" id="ZxQ-Wc-Ol4">
                                         <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZxQ-Wc-Ol4" id="wlq-Et-gVy">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slope Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fmn-cM-7pp">
-                                                    <rect key="frame" x="16" y="12" width="85.5" height="19.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Slope Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="7Sa-aZ-yMw">
+                                                    <rect key="frame" x="16" y="12" width="85.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQ2-qF-nAN" customClass="HorizontalPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                                    <rect key="frame" x="169" y="7" width="190" height="30"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="190" id="f0i-FA-Gmj"/>
-                                                        <constraint firstAttribute="height" constant="30" id="nUF-4b-xv0"/>
-                                                    </constraints>
-                                                </view>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="nXD-Z2-uHk">
+                                                    <rect key="frame" x="296" y="12" width="44" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="EQ2-qF-nAN" secondAttribute="trailing" constant="16" id="5G8-Hq-CfW"/>
-                                                <constraint firstAttribute="bottom" secondItem="fmn-cM-7pp" secondAttribute="bottom" constant="12" id="74u-QU-6nc"/>
-                                                <constraint firstItem="fmn-cM-7pp" firstAttribute="leading" secondItem="wlq-Et-gVy" secondAttribute="leadingMargin" id="Pa0-3z-ozG"/>
-                                                <constraint firstItem="fmn-cM-7pp" firstAttribute="top" secondItem="wlq-Et-gVy" secondAttribute="top" constant="12" id="VVS-3d-LzX"/>
-                                                <constraint firstItem="EQ2-qF-nAN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fmn-cM-7pp" secondAttribute="trailing" constant="6" id="kRA-gg-KT3"/>
-                                                <constraint firstItem="EQ2-qF-nAN" firstAttribute="centerY" secondItem="wlq-Et-gVy" secondAttribute="centerY" id="pXb-nv-Z8r"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="43" id="5xM-yz-9TW">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="iiR-ue-9er" detailTextLabel="ERv-GR-3Hz" rowHeight="43" style="IBUITableViewCellStyleValue1" id="5xM-yz-9TW">
                                         <rect key="frame" x="0.0" y="132" width="375" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5xM-yz-9TW" id="Mpb-uW-gvv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="42.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="42.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1c-zZ-S3q" customClass="HorizontalPicker" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                                    <rect key="frame" x="169" y="6.5" width="190" height="30"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="77K-IO-W0O"/>
-                                                        <constraint firstAttribute="width" constant="190" id="v2F-vI-a4p"/>
-                                                    </constraints>
-                                                </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color Ramp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jjE-yr-Ak7">
-                                                    <rect key="frame" x="16" y="12" width="90" height="18.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Color Ramp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="iiR-ue-9er">
+                                                    <rect key="frame" x="16" y="11" width="90" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="ERv-GR-3Hz">
+                                                    <rect key="frame" x="296" y="11" width="44" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="r1c-zZ-S3q" firstAttribute="centerY" secondItem="Mpb-uW-gvv" secondAttribute="centerY" id="14Z-QV-3jW"/>
-                                                <constraint firstItem="jjE-yr-Ak7" firstAttribute="top" secondItem="Mpb-uW-gvv" secondAttribute="top" constant="12" id="2Wn-ow-Znv"/>
-                                                <constraint firstAttribute="bottom" secondItem="jjE-yr-Ak7" secondAttribute="bottom" constant="12" id="Rqp-Go-aLt"/>
-                                                <constraint firstItem="jjE-yr-Ak7" firstAttribute="leading" secondItem="Mpb-uW-gvv" secondAttribute="leadingMargin" id="Zcf-Cp-C6Z"/>
-                                                <constraint firstItem="r1c-zZ-S3q" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jjE-yr-Ak7" secondAttribute="trailing" constant="6" id="fbM-Oy-dNn"/>
-                                                <constraint firstAttribute="trailing" secondItem="r1c-zZ-S3q" secondAttribute="trailing" constant="16" id="p4w-R2-mnV"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -241,19 +241,20 @@
                             <outlet property="delegate" destination="VDk-RB-4PB" id="sKO-yx-Z2j"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="O8p-Jl-wy6"/>
                     <size key="freeformSize" width="375" height="300"/>
                     <connections>
                         <outlet property="altitudeLabel" destination="99h-bc-aTu" id="oWc-sG-lsv"/>
                         <outlet property="altitudeSlider" destination="Zb8-rL-anc" id="CVf-Za-kUv"/>
                         <outlet property="azimuthLabel" destination="1cR-QC-z00" id="Ctm-x0-LHO"/>
                         <outlet property="azimuthSlider" destination="PXV-le-yNO" id="Pac-o0-TeT"/>
-                        <outlet property="colorRampPicker" destination="r1c-zZ-S3q" id="Kqm-CQ-diq"/>
-                        <outlet property="slopeTypePicker" destination="EQ2-qF-nAN" id="hh1-9w-c3h"/>
+                        <outlet property="colorRampTypeCell" destination="5xM-yz-9TW" id="3YT-uf-J6k"/>
+                        <outlet property="slopeTypeCell" destination="ZxQ-Wc-Ol4" id="1QQ-BF-t2L"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Opv-uP-mW4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1016.8" y="371.51424287856076"/>
+            <point key="canvasLocation" x="1834" y="207"/>
         </scene>
     </scenes>
 </document>

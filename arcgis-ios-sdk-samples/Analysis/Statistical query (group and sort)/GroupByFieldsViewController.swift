@@ -33,18 +33,8 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     // Delegate
     weak var delegate: GroupByFieldsViewControllerDelegate?
     
-    // MARK: - View Methods
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     //MARK: - TableView data source
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fieldNames.count
     }
@@ -86,16 +76,9 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
                 let index = selectedFieldNames.index(of: fieldNames[indexPath.row])
                 selectedFieldNames.remove(at: index!)
             }
+            
+            delegate?.setGrouping(with: selectedFieldNames)
         }
     }
-    
-    // MARK: - Actions
-    
-    @IBAction private func doneAction() {
-        // Fire delegate
-        delegate?.setGrouping(with: selectedFieldNames)
-        
-        // Dismiss view controller
-        dismiss(animated: true, completion: nil)
-    }
+
 }

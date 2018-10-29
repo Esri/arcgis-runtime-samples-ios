@@ -88,34 +88,31 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         //identify features at the tapped location
         self.mapView.identifyLayer(self.parksFeatureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result: AGSIdentifyLayerResult) in
             
+            //dismiss progress hud
+            SVProgressHUD.dismiss()
+            
             if let error = result.error {
                 
                 //dismiss progress hud
                 self?.presentAlert(error: error)
             }
-            else {
+            //Check if a feature is identified
+            else if result.geoElements.count > 0 {
                 
-                //dismiss progress hud
-                SVProgressHUD.dismiss()
+                //select the first feature
+                let feature = result.geoElements[0] as! AGSArcGISFeature
                 
-                //Check if a feature is identified
-                if result.geoElements.count > 0 {
-                    
-                    //select the first feature
-                    let feature = result.geoElements[0] as! AGSArcGISFeature
-                    
-                    //store as selected park to use for querying
-                    self?.selectedPark = feature
-                    
-                    //select feature on layer
-                    self?.parksFeatureLayer.select(feature)
-                    
-                    //store the screen point for the tapped location to show popover at that location
-                    self?.screenPoint = screenPoint
-                    
-                    //query for related features
-                    self?.queryRelatedFeatures()
-                }
+                //store as selected park to use for querying
+                self?.selectedPark = feature
+                
+                //select feature on layer
+                self?.parksFeatureLayer.select(feature)
+                
+                //store the screen point for the tapped location to show popover at that location
+                self?.screenPoint = screenPoint
+                
+                //query for related features
+                self?.queryRelatedFeatures()
             }
         }
     }
@@ -129,16 +126,15 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         //query for related features
         self.parksFeatureTable.queryRelatedFeatures(for: self.selectedPark) { [weak self] (results:[AGSRelatedFeatureQueryResult]?, error:Error?) in
             
+            
+            //dismiss progress hud
+            SVProgressHUD.dismiss()
+            
             if let error = error {
-                
                 //display error
                 self?.presentAlert(error: error)
             }
             else {
-                
-                //dismiss progress hud
-                SVProgressHUD.dismiss()
-                
                 //Show the related features found in popover
                 if let results = results, results.count > 0 {
                     self?.results = results

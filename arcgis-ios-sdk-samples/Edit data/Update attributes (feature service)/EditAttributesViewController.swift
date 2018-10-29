@@ -59,13 +59,20 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     func applyEdits() {
         SVProgressHUD.show(withStatus: "Applying edits")
         
-        self.featureTable.applyEdits(completion: { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
+        featureTable.applyEdits(completion: { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
+            
+            SVProgressHUD.dismiss()
+            
+            guard let self = self else {
+                return
+            }
+            
             if let error = error {
-                self?.presentAlert(error: error)
+                self.presentAlert(error: error)
             }
             else {
-                self?.presentAlert(message: "Edits applied successfully")
-                self?.showCallout(self!.selectedFeature, tapLocation: nil)
+                self.presentAlert(message: "Edits applied successfully")
+                self.showCallout(self.selectedFeature, tapLocation: nil)
             }
         })
     }
@@ -118,8 +125,11 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     func optionsViewController(_ optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int) {
         SVProgressHUD.show(withStatus: "Updating")
         
-        self.selectedFeature.attributes["typdamage"] = self.types[index]
-        self.featureTable.update(self.selectedFeature) { [weak self] (error: Error?) -> Void in
+        selectedFeature.attributes["typdamage"] = types[index]
+        featureTable.update(selectedFeature) { [weak self] (error: Error?) -> Void in
+            
+            SVProgressHUD.dismiss()
+            
             if let error = error {
                 self?.presentAlert(error: error)
             }

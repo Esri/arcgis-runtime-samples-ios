@@ -81,28 +81,34 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
     //MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        
         SVProgressHUD.show(withStatus: "Loading")
-        self.mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) -> Void in
+        
+        mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) -> Void in
 
-            if let error = error {
-                self?.presentAlert(error: error)
+            SVProgressHUD.dismiss()
+            
+            guard let self = self else {
+                return
             }
-            else {
-                SVProgressHUD.dismiss()
-                
+            
+            if let error = error {
+                self.presentAlert(error: error)
+            }
+            else if let results = results {
                 var popups = [AGSPopup]()
-                for result in results! {
+                for result in results {
                     for geoElement in result.geoElements {
                         popups.append(AGSPopup(geoElement: geoElement))
                     }
                 }
                 if popups.count > 0 {
-                    self?.popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
-                    self?.popupsVC.delegate = self!
-                    self?.present(self!.popupsVC, animated: true, completion: nil)
+                    self.popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
+                    self.popupsVC.delegate = self
+                    self.present(self.popupsVC, animated: true, completion: nil)
                 }
                 else {
-                    self?.presentAlert(message: "No features selected")
+                    self.presentAlert(message: "No features selected")
                 }
             }
         }
@@ -341,23 +347,29 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
         let fullPath = "\(path)/\(dateFormatter.string(from: Date())).geodatabase"
             
         //create a generate job from the sync task
-        self.generateJob = self.syncTask.generateJob(with: params, downloadFileURL: URL(string: fullPath)!)
+        generateJob = syncTask.generateJob(with: params, downloadFileURL: URL(string: fullPath)!)
         
         //start the job
-        self.generateJob.start(statusHandler: { (status: AGSJobStatus) -> Void in
+        generateJob.start(statusHandler: { (status: AGSJobStatus) -> Void in
+        
             SVProgressHUD.show(withStatus: status.statusString())
             
         }) { [weak self] (object: AnyObject?, error: Error?) -> Void in
             
-            if let error = error {
-                self?.presentAlert(error: error)
+            SVProgressHUD.dismiss()
+            
+            guard let self = self else {
+                return
             }
-            else {
-                SVProgressHUD.dismiss()
+            
+            if let error = error {
+                self.presentAlert(error: error)
+            }
+            else if let geodatabase = object as? AGSGeodatabase {
                 //save a reference to the geodatabase
-                self?.generatedGeodatabase = object as? AGSGeodatabase
+                self.generatedGeodatabase = geodatabase
                 //add the layers from geodatabase
-                self?.displayLayersFromGeodatabase()
+                self.displayLayersFromGeodatabase()
             }
         }
     }
@@ -408,14 +420,15 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
             
             SVProgressHUD.show(withStatus: status.statusString())
             
-        }, completion: { (results: [AGSSyncLayerResult]?, error: Error?) -> Void in
+        }, completion: {[weak self] (results: [AGSSyncLayerResult]?, error: Error?) -> Void in
+            
+            SVProgressHUD.dismiss()
+            
             if let error = error {
-                self.presentAlert(error: error)
+                self?.presentAlert(error: error)
             }
             else {
-                //TODO: use the results object
-                SVProgressHUD.dismiss()
-                self.updateUI()
+                self?.updateUI()
             }
             
             //call completion
@@ -489,6 +502,8 @@ class OfflineEditingViewController: UIViewController, AGSGeoViewTouchDelegate, A
             SVProgressHUD.show(withStatus: "Saving feature details...")
             
             (feature.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (featureEditResult: [AGSFeatureEditResult]?, error: Error?) -> Void in
+                
+                SVProgressHUD.dismiss()
                 
                 if let error = error {
                     self?.presentAlert(error: error)

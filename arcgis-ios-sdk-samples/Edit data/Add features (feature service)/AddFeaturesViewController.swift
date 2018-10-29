@@ -49,10 +49,9 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     
     func addFeature(at mappoint:AGSPoint) {
-        //show the progress hud
-        SVProgressHUD.show(withStatus: "Adding..")
+       
         //disable interaction with map view
-        self.mapView.isUserInteractionEnabled = false
+        mapView.isUserInteractionEnabled = false
         
         //normalize geometry
         let normalizedGeometry = AGSGeometryEngine.normalizeCentralMeridian(of: mappoint)!
@@ -60,13 +59,18 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         //attributes for the new feature
         let featureAttributes = ["typdamage" : "Minor", "primcause" : "Earthquake"]
         //create a new feature
-        let feature = self.featureTable.createFeature(attributes: featureAttributes, geometry: normalizedGeometry)
+        let feature = featureTable.createFeature(attributes: featureAttributes, geometry: normalizedGeometry)
+        
+        //show the progress hud
+        SVProgressHUD.show(withStatus: "Adding..")
         
         //add the feature to the feature table
-        self.featureTable.add(feature) { [weak self] (error: Error?) -> Void in
+        featureTable.add(feature) { [weak self] (error: Error?) -> Void in
+            
+            SVProgressHUD.dismiss()
+            
             if let error = error {
-                self?.presentAlert(message: "Error while adding feature :: \(error.localizedDescription)")
-                print("Error while adding feature :: \(error)")
+                self?.presentAlert(message: "Error while adding feature: \(error.localizedDescription)")
             }
             else {
                 //applied edits on success

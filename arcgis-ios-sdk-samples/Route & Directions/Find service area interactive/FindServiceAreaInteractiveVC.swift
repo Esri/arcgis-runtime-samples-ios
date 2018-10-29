@@ -119,24 +119,19 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
     @IBAction private func serviceArea() {
         
         //remove previously added service areas
-        self.serviceAreaGraphicsOverlay.graphics.removeAllObjects()
+        serviceAreaGraphicsOverlay.graphics.removeAllObjects()
         
         //check if at least a single facility is added
-        if self.facilitiesGraphicsOverlay.graphics.count == 0 {
-            
+        guard facilitiesGraphicsOverlay.graphics.count > 0 else {
             presentAlert(message: "At least one facility is required")
-            
             return
         }
-        
-        //show progress hud
-        SVProgressHUD.show(withStatus: "Loading")
         
         //add facilities
         var facilities = [AGSServiceAreaFacility]()
         
         //for each graphic in facilities graphicsOverlay add a facility to the parameters
-        for graphic in self.facilitiesGraphicsOverlay.graphics as AnyObject as! [AGSGraphic] {
+        for graphic in facilitiesGraphicsOverlay.graphics as AnyObject as! [AGSGraphic] {
             
             let point = graphic.geometry as! AGSPoint
             let facility = AGSServiceAreaFacility(point: point)
@@ -149,44 +144,47 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         var barriers = [AGSPolygonBarrier]()
         
         //for each graphic in barrier graphicsOverlay add a barrier to the parameters
-        for graphic in self.barriersGraphicsOverlay.graphics as AnyObject as! [AGSGraphic] {
+        for graphic in barriersGraphicsOverlay.graphics as AnyObject as! [AGSGraphic] {
             
             let polygon = graphic.geometry as! AGSPolygon
             let barrier = AGSPolygonBarrier(polygon: polygon)
             barriers.append(barrier)
         }
-        self.serviceAreaParameters.setPolygonBarriers(barriers)
+        serviceAreaParameters.setPolygonBarriers(barriers)
         
         //set time breaks
-        self.serviceAreaParameters.defaultImpedanceCutoffs = [NSNumber(value: self.firstTimeBreak), NSNumber(value: self.secondTimeBreak)]
+        serviceAreaParameters.defaultImpedanceCutoffs = [NSNumber(value: firstTimeBreak), NSNumber(value: secondTimeBreak)]
         
-        self.serviceAreaParameters.geometryAtOverlap = .dissolve
+        serviceAreaParameters.geometryAtOverlap = .dissolve
+        
+        //show progress hud
+        SVProgressHUD.show(withStatus: "Loading")
         
         //solve for service area
-        self.serviceAreaTask.solveServiceArea(with: self.serviceAreaParameters) { [weak self] (result: AGSServiceAreaResult?, error: Error?) in
-            
-            guard let weakSelf = self else {
-                return
-            }
-            
-            guard error == nil else {
-                self?.presentAlert(message: "Error solving service area:: \(error!.localizedDescription)")
-                return
-            }
+        serviceAreaTask.solveServiceArea(with: serviceAreaParameters) { [weak self] (result: AGSServiceAreaResult?, error: Error?) in
             
             //dismiss progress hud
             SVProgressHUD.dismiss()
             
-            //add resulting polygons as graphics to the overlay
-            //since we are using `geometryAtOVerlap` as `dissolve` and the cutoff values
-            //are the same across facilities, we only need to draw the resultPolygons at
-            //facility index 0. It will contain either merged or multipart polygons
-            if let polygons = result?.resultPolygons(atFacilityIndex: 0) {
-                for j in 0...polygons.count-1 {
-                    let polygon = polygons[j]
-                    let fillSymbol = weakSelf.serviceAreaSymbol(for: j)
-                    let graphic = AGSGraphic(geometry: polygon.geometry, symbol: fillSymbol, attributes: nil)
-                    weakSelf.serviceAreaGraphicsOverlay.graphics.add(graphic)
+            guard let self = self else {
+                return
+            }
+            
+            if let error = error {
+                self.presentAlert(message: "Error solving service area: \(error.localizedDescription)")
+            }
+            else {
+                //add resulting polygons as graphics to the overlay
+                //since we are using `geometryAtOVerlap` as `dissolve` and the cutoff values
+                //are the same across facilities, we only need to draw the resultPolygons at
+                //facility index 0. It will contain either merged or multipart polygons
+                if let polygons = result?.resultPolygons(atFacilityIndex: 0) {
+                    for j in 0...polygons.count-1 {
+                        let polygon = polygons[j]
+                        let fillSymbol = self.serviceAreaSymbol(for: j)
+                        let graphic = AGSGraphic(geometry: polygon.geometry, symbol: fillSymbol, attributes: nil)
+                        self.serviceAreaGraphicsOverlay.graphics.add(graphic)
+                    }
                 }
             }
         }

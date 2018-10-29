@@ -93,8 +93,6 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             return
         }
         
-        SVProgressHUD.show(withStatus: "Routing")
-        
         //clear routes
         self.routeGraphicsOverlay.graphics.removeAllObjects()
         
@@ -121,16 +119,24 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         self.routeParameters.clearPolygonBarriers()
         self.routeParameters.setPolygonBarriers(barriers)
         
+        SVProgressHUD.show(withStatus: "Routing")
+        
         self.routeTask.solveRoute(with: self.routeParameters) { [weak self] (routeResult:AGSRouteResult?, error:Error?) -> Void in
-            if let error = error {
-                self?.presentAlert(message: "\(error.localizedDescription) \((error as NSError).localizedFailureReason ?? "")")
+            
+            SVProgressHUD.dismiss()
+            
+            guard let self = self else {
+                return
             }
-            else {
-                SVProgressHUD.dismiss()
-                let route = routeResult!.routes[0]
-                let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self!.routeSymbol(), attributes: nil)
-                self?.routeGraphicsOverlay.graphics.add(routeGraphic)
-                self?.generatedRoute = route
+            
+            if let error = error {
+                self.presentAlert(error: error)
+            }
+            else if let routeResult = routeResult {
+                let route = routeResult.routes[0]
+                let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self.routeSymbol(), attributes: nil)
+                self.routeGraphicsOverlay.graphics.add(routeGraphic)
+                self.generatedRoute = route
             }
         }
     }

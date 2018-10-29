@@ -15,17 +15,58 @@
 
 import UIKit
 
-class PlaneStatsViewController: UIViewController {
+class PlaneStatsViewController: UITableViewController {
+    var frame: Frame? {
+        didSet {
+            updateUI()
+        }
+    }
+    let measurementFormatter: MeasurementFormatter = {
+        let formatter = MeasurementFormatter()
+        formatter.numberFormatter.maximumFractionDigits = 0
+        formatter.unitOptions = .providedUnit
+        return formatter
+    }()
     
-    @IBOutlet var altitudeLabel:UILabel!
-    @IBOutlet var headingLabel:UILabel!
-    @IBOutlet var pitchLabel:UILabel!
-    @IBOutlet var rollLabel:UILabel!
-
+    @IBOutlet private var altitudeLabel: UILabel!
+    @IBOutlet private var headingLabel: UILabel!
+    @IBOutlet private var pitchLabel: UILabel!
+    @IBOutlet private var rollLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //preferred content size
-        self.preferredContentSize = CGSize(width: 220, height: 200)
+        updateUI()
     }
+    
+    private var tableViewContentSizeObservation: NSKeyValueObservation?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableViewContentSizeObservation = tableView.observe(\.contentSize) { [unowned self] (tableView, _) in
+            self.preferredContentSize = CGSize(width: self.preferredContentSize.width, height: tableView.contentSize.height)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tableViewContentSizeObservation = nil
+    }
+    
+    func updateUI() {
+        guard isViewLoaded else { return }
+        if let frame = frame {
+            measurementFormatter.unitStyle = .medium
+            altitudeLabel.text = measurementFormatter.string(from: frame.altitude)
+            measurementFormatter.unitStyle = .short
+            headingLabel.text = measurementFormatter.string(from: frame.heading)
+            pitchLabel.text = measurementFormatter.string(from: frame.pitch)
+            rollLabel.text = measurementFormatter.string(from: frame.roll)
+        } else {
+            altitudeLabel.text = ""
+            headingLabel.text = ""
+            pitchLabel.text = ""
+            rollLabel.text = ""
+        }
+    }
+    
 }

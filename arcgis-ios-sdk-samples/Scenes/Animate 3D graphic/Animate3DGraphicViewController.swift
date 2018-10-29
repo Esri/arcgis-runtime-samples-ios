@@ -37,8 +37,6 @@ class Animate3DGraphicViewController: UIViewController {
     private weak var planeStatsViewController: PlaneStatsViewController?
     private weak var missionSettingsViewController: MissionSettingsViewController?
     
-    private let numberFormatter = NumberFormatter()
-    
     private var isAnimating = false {
         didSet {
             playBBI?.title = isAnimating ? "Pause" : "Play"
@@ -186,6 +184,7 @@ class Animate3DGraphicViewController: UIViewController {
                 //create a frame object for each line
                 frames = lines.map { (line) -> Frame in
                     let details = line.components(separatedBy: ",")
+                    precondition(details.count == 6)
                     
                     let position = AGSPoint(x: Double(details[0])!,
                                             y: Double(details[1])!,
@@ -194,9 +193,9 @@ class Animate3DGraphicViewController: UIViewController {
                     
                     //load position, heading, pitch and roll for each frame
                     return Frame(position: position,
-                                 heading: Double(details[3])!,
-                                 pitch: Double(details[4])!,
-                                 roll: Double(details[5])!)
+                                 heading: Measurement(value: Double(details[3])!, unit: UnitAngle.degrees),
+                                 pitch: Measurement(value: Double(details[4])!, unit: UnitAngle.degrees),
+                                 roll: Measurement(value: Double(details[5])!, unit: UnitAngle.degrees))
                 }
             }
         }
@@ -256,17 +255,14 @@ class Animate3DGraphicViewController: UIViewController {
         triangleGraphic.geometry = frame.position
         
         //set viewpoint for map view
-        let viewpoint = AGSViewpoint(center: frame.position, scale: 100000, rotation: 360 + Double(frame.heading))
+        let viewpoint = AGSViewpoint(center: frame.position, scale: 100000, rotation: 360 + frame.heading.value)
         mapView.setViewpoint(viewpoint)
         
         //update progress
         missionSettingsViewController?.progress = Float(currentFrameIndex) / Float(frames.count)
         
-        //update labels
-        planeStatsViewController?.altitudeLabel?.text = "\(numberFormatter.string(from: frame.position.z as NSNumber)!) m"
-        planeStatsViewController?.headingLabel?.text = "\(numberFormatter.string(from: frame.heading as NSNumber)!)°"
-        planeStatsViewController?.pitchLabel?.text = "\(numberFormatter.string(from: frame.pitch as NSNumber)!)°"
-        planeStatsViewController?.rollLabel?.text = "\(numberFormatter.string(from: frame.roll as NSNumber)!)°"
+        //update stats
+        planeStatsViewController?.frame = frame
         
         //increment current frame index
         currentFrameIndex += 1
@@ -340,7 +336,6 @@ class Animate3DGraphicViewController: UIViewController {
             
             //pop over settings
             planeStatsViewController.presentationController?.delegate = self
-            planeStatsViewController.preferredContentSize = CGSize(width: 220, height: 200)
         }
         else if let navController = segue.destination as? UINavigationController,
             let controller = navController.viewControllers.first as? MissionSettingsViewController {
@@ -388,16 +383,20 @@ extension Animate3DGraphicViewController: UIAdaptivePresentationControllerDelega
     }
 }
 
-private class Frame {
+struct Frame {
     let position: AGSPoint
-    let heading: Double
-    let pitch: Double
-    let roll: Double
+    let heading: Measurement<UnitAngle>
+    let pitch: Measurement<UnitAngle>
+    let roll: Measurement<UnitAngle>
     
-    init(position: AGSPoint, heading: Double, pitch: Double, roll: Double) {
+    init(position: AGSPoint, heading: Measurement<UnitAngle>, pitch: Measurement<UnitAngle>, roll: Measurement<UnitAngle>) {
         self.position = position
         self.heading = heading
         self.pitch = pitch
         self.roll = roll
+    }
+    
+    var altitude: Measurement<UnitLength> {
+        return Measurement(value: position.z, unit: UnitLength.meters)
     }
 }

@@ -32,18 +32,8 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     
     // Delegate
     weak var delegate: OrderByFieldsViewControllerDelegate?
-    
-    // MARK: - View Methods
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     // MARK: - TableView data source
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if orderByFields.count > 0 {
@@ -97,7 +87,7 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
         return true
     }
     
-    // MARK: - TableView delegates
+    // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Deselect row
@@ -121,17 +111,10 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
                 let index = selectedOrderByFields.index(of: orderByFields[indexPath.row])
                 selectedOrderByFields.remove(at: index!)
             }
+            
+            // Fire delegate
+            delegate?.setOrdering(with: selectedOrderByFields)
         }
-    }
-    
-    // MARK: - Actions
-    
-    @IBAction private func doneAction() {
-        // Fire delegate
-        delegate?.setOrdering(with: selectedOrderByFields)
-        
-        // Dismiss view controller
-        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Gesture Recognizer

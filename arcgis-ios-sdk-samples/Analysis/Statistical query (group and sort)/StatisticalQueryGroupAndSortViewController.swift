@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, GroupByFieldsViewControllerDelegate, OrderByFieldsViewControllerDelegate, AddStatisticDefinitionsViewControllerDelegate, UIAdaptivePresentationControllerDelegate, UIPopoverPresentationControllerDelegate {
+class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, GroupByFieldsViewControllerDelegate, OrderByFieldsViewControllerDelegate, AddStatisticDefinitionsViewControllerDelegate, UIAdaptivePresentationControllerDelegate {
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var getStatisticsButton: UIBarButtonItem!
@@ -35,7 +35,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         super.viewDidLoad()
         
         // Add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["StatisticalQueryGroupAndSortViewController", "AddStatisticDefinitionsViewController", "GroupByFieldsViewController", "OrderByFieldsViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["StatisticalQueryGroupAndSortViewController", "AddStatisticDefinitionsViewController", "GroupByFieldsViewController", "OrderByFieldsViewController", "OptionsTableViewController"]
         
         let serviceURL = URL(string: "https://services.arcgis.com/jIL9msH9OI208GCb/arcgis/rest/services/Counties_Obesity_Inactivity_Diabetes_2013/FeatureServer/0")!
         
@@ -61,11 +61,12 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             self.titleLabel.text = "Statistics: \(tableName)"
 
             // Get field names
-            for field in serviceFeatureTable.fields {
+            self.fieldNames = serviceFeatureTable.fields.compactMap({ (field) -> String? in
                 if field.type != .OID && field.type != .globalID {
-                    self.fieldNames.append(field.name)
+                    return field.name
                 }
-            }
+                return nil
+            })
         })
         
         // Setup UI Controls
@@ -84,8 +85,9 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     @IBAction private func getStatisticsAction(_ sender: Any) {
         // There should be at least one statistic
         // definition added to execute the query
-        if statisticDefinitions.count == 0 || selectedGroupByFieldNames.count == 0 {
-            presentAlert(message: "There sould be at least one statistic definition and one group by field to execute the query.")
+        guard !statisticDefinitions.isEmpty,
+            !selectedGroupByFieldNames.isEmpty else {
+            presentAlert(message: "There should be at least one statistic definition and one group by field to execute the query.")
             return
         }
         
@@ -166,11 +168,11 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         switch sender.tag {
         case 0:
             // Init view controller and set properties
-            let addStatisticDefinitionsViewController = storyboard!.instantiateViewController(withIdentifier: "AddStatisticDefinitionsViewController") as! AddStatisticDefinitionsViewController
+            let navController = storyboard!.instantiateViewController(withIdentifier: "AddStatisticDefinitionsViewController") as! UINavigationController
+            let addStatisticDefinitionsViewController = navController.viewControllers.first as! AddStatisticDefinitionsViewController
             addStatisticDefinitionsViewController.delegate = self
             addStatisticDefinitionsViewController.fieldNames = fieldNames
-            addStatisticDefinitionsViewController.statisticDefinitions = statisticDefinitions
-            setupAndPresent(viewController: addStatisticDefinitionsViewController)
+            setupAndPresent(viewController: navController)
         case 1:
             // Init view controller and set properties
             let groupByFieldsViewController = storyboard!.instantiateViewController(withIdentifier: "GroupByFieldsViewController") as! GroupByFieldsViewController
@@ -323,12 +325,12 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     
     // MARK: - Add Statistic Definition View Controller Delegate
     
-    func addStatisticDefinitions(_ statisticDefinitions: [AGSStatisticDefinition]) {
+    func addStatisticDefinition(_ statisticDefinition: AGSStatisticDefinition) {
         // Set the statistic definitions
-        self.statisticDefinitions = statisticDefinitions
+        statisticDefinitions.append(statisticDefinition)
         
         // Reload statistic sefinitions section
-        tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+        tableView.reloadSections([0], with: .automatic)
     }
 
     // MARK: - Group By Fields View Controller Delegate
@@ -371,13 +373,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // For popover or non modal presentation
-        return UIModalPresentationStyle.none
-    }
-    
-    // MARK: - UIPopoverPresentationControllerDelegate
-    
-    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
-        return false
+        return .none
     }
     
     // MARK: - Helper Methods

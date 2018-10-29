@@ -3221,11 +3221,6 @@
 						CreatedOnToolsVersion = 6.2;
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
-						SystemCapabilities = {
-							com.apple.iCloud = {
-								enabled = 0;
-							};
-						};
 					};
 					4CD2B5532142EAF900767D87 = {
 						CreatedOnToolsVersion = 9.4.1;

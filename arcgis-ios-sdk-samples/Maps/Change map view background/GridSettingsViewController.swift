@@ -18,28 +18,27 @@ import ArcGIS
 
 class GridSettingsViewController: UITableViewController {
     
-    @IBOutlet var colorSwatch: UIView!
-    @IBOutlet var lineColorSwatch: UIView!
+    @IBOutlet var colorSwatch: UIView?
+    @IBOutlet var lineColorSwatch: UIView?
     
-    @IBOutlet var lineWidthSlider: UISlider!
-    @IBOutlet var gridSizeSlider: UISlider!
-    @IBOutlet var lineWidthLabel: UILabel!
-    @IBOutlet var gridSizeLabel: UILabel!
+    @IBOutlet var lineWidthSlider: UISlider?
+    @IBOutlet var gridSizeSlider: UISlider?
+    @IBOutlet var lineWidthLabel: UILabel?
+    @IBOutlet var gridSizeLabel: UILabel?
     
     @IBOutlet weak var colorCell: UITableViewCell!
     @IBOutlet weak var gridLineColorCell: UITableViewCell!
     
-    weak var backgroundGrid: AGSBackgroundGrid?
+    weak var backgroundGrid: AGSBackgroundGrid? {
+        didSet {
+            updateUIForBackgroundGrid()
+        }
+    }
 
     private let numberFormatter = NumberFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        updateUIForGridColor()
-        updateUIForGridLineColor()
-        updateUIForGridLineWidth()
-        updateUIForGridSize()
         
         // set corner radius and border for color swatches
         for swatch in [colorSwatch, lineColorSwatch] {
@@ -47,6 +46,8 @@ class GridSettingsViewController: UITableViewController {
             swatch?.layer.borderColor = UIColor(hue: 0, saturation: 0, brightness: 0.9, alpha: 1).cgColor
             swatch?.layer.borderWidth = 1
         }
+        
+        updateUIForBackgroundGrid()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,25 +57,33 @@ class GridSettingsViewController: UITableViewController {
         updateUIForGridLineColor()
     }
     
+    
+    private func updateUIForBackgroundGrid() {
+        updateUIForGridColor()
+        updateUIForGridLineColor()
+        updateUIForGridLineWidth()
+        updateUIForGridSize()
+    }
+    
     private func updateUIForGridColor() {
-        colorSwatch.backgroundColor = backgroundGrid?.color
+        colorSwatch?.backgroundColor = backgroundGrid?.color
     }
     private func updateUIForGridLineColor() {
-        lineColorSwatch.backgroundColor = backgroundGrid?.gridLineColor
+        lineColorSwatch?.backgroundColor = backgroundGrid?.gridLineColor
     }
     private func updateUIForGridLineWidth() {
         guard let value = backgroundGrid?.gridLineWidth else {
             return
         }
-        lineWidthLabel.text = numberFormatter.string(from: value as NSNumber)
-        lineWidthSlider.value = Float(value)
+        lineWidthLabel?.text = numberFormatter.string(from: value as NSNumber)
+        lineWidthSlider?.value = Float(value)
     }
     private func updateUIForGridSize() {
         guard let value = backgroundGrid?.gridSize else {
             return
         }
-        gridSizeLabel.text = numberFormatter.string(from: value as NSNumber)
-        gridSizeSlider.value = Float(value)
+        gridSizeLabel?.text = numberFormatter.string(from: value as NSNumber)
+        gridSizeSlider?.value = Float(value)
     }
     
     //MARK: - Actions

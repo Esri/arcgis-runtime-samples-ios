@@ -34,6 +34,13 @@ class CameraSettingsViewController: UITableViewController {
     private var headingObservation: NSKeyValueObservation?
     private var pitchObservation: NSKeyValueObservation?
     
+    let measurementFormatter: MeasurementFormatter = {
+        let formatter = MeasurementFormatter()
+        formatter.numberFormatter.maximumFractionDigits = 0
+        formatter.unitOptions = .providedUnit
+        return formatter
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,39 +57,50 @@ class CameraSettingsViewController: UITableViewController {
         autoRollEnabledSwitch.isOn = cameraController.isAutoRollEnabled
         
         // add observers to the values we want to show in the UI
-        distanceObservation = cameraController.observe(\.cameraDistance) {[weak self] (controller, change) in
-            self?.updateUIForDistance()
+        distanceObservation = cameraController.observe(\.cameraDistance) {[weak self] (_, _) in
+            DispatchQueue.main.async {
+                self?.updateUIForDistance()
+            }
         }
-        headingObservation = cameraController.observe(\.cameraHeadingOffset) {[weak self] (controller, change) in
-            self?.updateUIForHeadingOffset()
+        headingObservation = cameraController.observe(\.cameraHeadingOffset) {[weak self] (_, _) in
+            DispatchQueue.main.async {
+                self?.updateUIForHeadingOffset()
+            }
         }
-        pitchObservation = cameraController.observe(\.cameraPitchOffset) {[weak self] (controller, change) in
-            self?.updateUIForPitchOffset()
+        pitchObservation = cameraController.observe(\.cameraPitchOffset) {[weak self] (_, _) in
+            DispatchQueue.main.async {
+                self?.updateUIForPitchOffset()
+            }
         }
     }
-    
-    private let numberFormatter = NumberFormatter()
     
     private func updateUIForDistance() {
         guard let cameraController = orbitGeoElementCameraController else {
             return
         }
         distanceSlider.value = Float(cameraController.cameraDistance)
-        distanceLabel.text = numberFormatter.string(from: cameraController.cameraDistance as NSNumber)! + " m"
+       
+        let measurement = Measurement(value: cameraController.cameraDistance, unit: UnitLength.meters)
+        measurementFormatter.unitStyle = .medium
+        distanceLabel.text = measurementFormatter.string(from: measurement)
     }
     private func updateUIForHeadingOffset() {
         guard let cameraController = orbitGeoElementCameraController else {
             return
         }
         headingOffsetSlider.value = Float(cameraController.cameraHeadingOffset)
-        headingOffsetLabel.text = numberFormatter.string(from: cameraController.cameraHeadingOffset as NSNumber)! + "°"
+        let measurement = Measurement(value: cameraController.cameraHeadingOffset, unit: UnitAngle.degrees)
+        measurementFormatter.unitStyle = .short
+        headingOffsetLabel.text = measurementFormatter.string(from: measurement)
     }
     private func updateUIForPitchOffset() {
         guard let cameraController = orbitGeoElementCameraController else {
             return
         }
         pitchOffsetSlider.value = Float(cameraController.cameraPitchOffset)
-        pitchOffsetLabel.text = numberFormatter.string(from: cameraController.cameraPitchOffset as NSNumber)! + "°"
+        let measurement = Measurement(value: cameraController.cameraPitchOffset, unit: UnitAngle.degrees)
+        measurementFormatter.unitStyle = .short
+        pitchOffsetLabel.text = measurementFormatter.string(from: measurement)
     }
     
     //MARK: - Actions

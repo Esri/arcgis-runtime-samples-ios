@@ -16,13 +16,15 @@ import UIKit
 
 class ColorPickerViewController: UITableViewController {
     
-    @IBOutlet var hueSlider: UISlider!
-    @IBOutlet var saturationSlider: UISlider!
-    @IBOutlet var brightnessSlider: UISlider!
+    @IBOutlet weak var hueSlider: UISlider!
+    @IBOutlet weak var saturationSlider: UISlider!
+    @IBOutlet weak var brightnessSlider: UISlider!
+    @IBOutlet weak var alphaSlider: UISlider!
     
-    @IBOutlet var hueLabel: UILabel!
-    @IBOutlet var saturationLabel: UILabel!
-    @IBOutlet var brightnessLabel: UILabel!
+    @IBOutlet weak var hueLabel: UILabel!
+    @IBOutlet weak var saturationLabel: UILabel!
+    @IBOutlet weak var brightnessLabel: UILabel!
+    @IBOutlet weak var alphaLabel: UILabel!
     
     private var color: UIColor {
         set {
@@ -54,10 +56,12 @@ class ColorPickerViewController: UITableViewController {
         hueSlider.value = Float(hue)
         saturationSlider.value = Float(saturation)
         brightnessSlider.value = Float(brightness)
+        alphaSlider.value = Float(alpha)
         
         hueLabel.text = numberFormatter.string(from: hue as NSNumber)
         saturationLabel.text = numberFormatter.string(from: saturation as NSNumber)
         brightnessLabel.text = numberFormatter.string(from: brightness as NSNumber)
+        alphaLabel.text = numberFormatter.string(from: alpha as NSNumber)
     }
     
     @IBAction func sliderAction(_ sender: UISlider) {
@@ -69,6 +73,8 @@ class ColorPickerViewController: UITableViewController {
             saturation = value
         case brightnessSlider:
             brightness = value
+        case alphaSlider:
+            alpha = value
         default:
             break
         }

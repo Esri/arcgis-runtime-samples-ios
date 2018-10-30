@@ -24,7 +24,10 @@ class DisplayGridViewController: UIViewController {
         super.viewDidLoad()
         
         // Add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayGridViewController", "DisplayGridSettingsViewController", "OptionsTableViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayGridViewController",
+                                                                                     "DisplayGridSettingsViewController",
+                                                                                     "OptionsTableViewController",
+                                                                                     "ColorPickerViewController"]
 
         // Initialize map with imagery basemap
         let map = AGSMap(basemap: .imagery())
@@ -40,43 +43,22 @@ class DisplayGridViewController: UIViewController {
         mapView.grid = AGSLatitudeLongitudeGrid()
     }
     
-    private var popoverViewController: UIViewController?
-    
-    private func makeSettingsPopoverViewController() -> UIViewController {
-        guard let navController = storyboard?.instantiateViewController(withIdentifier: "SettingsNavigationController") as? UINavigationController,
-            let viewController = navController.topViewController as? DisplayGridSettingsViewController else {
-            fatalError()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navController = segue.destination as? UINavigationController,
+            let controller = navController.viewControllers.first as? DisplayGridSettingsViewController {
+            controller.mapView = mapView
+            controller.preferredContentSize = {
+                let height: CGFloat
+                if traitCollection.horizontalSizeClass == .regular,
+                    traitCollection.verticalSizeClass == .regular {
+                    height = 350
+                } else {
+                    height = 250
+                }
+                return CGSize(width: 375, height: height)
+            }()
+            navController.presentationController?.delegate = self
         }
-        
-        viewController.mapView = mapView
-        navController.modalPresentationStyle = .popover
-        
-        return navController
-    }
-    
-    @IBAction func showSettings(_ sender: Any) {
-        let settingsViewController: UIViewController
-        if let viewController = popoverViewController {
-            settingsViewController = viewController
-        } else {
-            settingsViewController = makeSettingsPopoverViewController()
-            self.popoverViewController = settingsViewController
-        }
-        settingsViewController.preferredContentSize = {
-            let height: CGFloat
-            if traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular {
-                height = 350
-            } else {
-                height = 250
-            }
-            return CGSize(width: 375, height: height)
-        }()
-        settingsViewController.presentationController?.delegate = self
-        if let popoverPC = settingsViewController.popoverPresentationController {
-            popoverPC.barButtonItem = sender as? UIBarButtonItem
-            popoverPC.passthroughViews = [mapView]
-        }
-        present(settingsViewController, animated: true)
     }
     
 }

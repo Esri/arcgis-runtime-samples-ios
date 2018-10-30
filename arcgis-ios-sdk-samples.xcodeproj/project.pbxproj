@@ -1882,9 +1882,9 @@
 		3E81C1B71D8A0C7400470AA4 /* ArcGIS vector tiled layer (custom style) */ = {
 			isa = PBXGroup;
 			children = (
+				3E81C1BC1D8A189D00470AA4 /* VectorTileCustomStyle.storyboard */,
 				3E81C1B81D8A0EF700470AA4 /* VectorTileCustomStyleVC.swift */,
 				3E81C1BA1D8A17B600470AA4 /* VectorStylesViewController.swift */,
-				3E81C1BC1D8A189D00470AA4 /* VectorTileCustomStyle.storyboard */,
 			);
 			path = "ArcGIS vector tiled layer (custom style)";
 			sourceTree = "<group>";

@@ -18,40 +18,37 @@ import UIKit
 
 protocol VectorStylesVCDelegate: AnyObject {
     
-    func vectorStylesViewController(_ vectorStylesViewController: VectorStylesViewController, didSelectItemWithID itemID:String)
+    func vectorStylesViewController(_ vectorStylesViewController: VectorStylesViewController, didSelectItemWithID itemID: String)
 }
 
-class VectorStylesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class VectorStylesViewController: UITableViewController {
     
-    
-    var itemIDs = ["1349bfa0ed08485d8a92c442a3850b06", "bd8ac41667014d98b933e97713ba8377", "02f85ec376084c508b9c8e5a311724fa", "1bf0cc4a4380468fbbff107e100f65a5"]
+    var itemIDs: [String] = []
+    var selectedItemID: String?
     
     weak var delegate: VectorStylesVCDelegate?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.view.layer.cornerRadius = 10
-    }
-    
-    //MARK: - UITableViewDataSource
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = "Cell\(indexPath.row)"
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        
-        cell.backgroundColor = .clear
-        return cell
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let selectedItemID = selectedItemID,
+            let row = itemIDs.firstIndex(of: selectedItemID) {
+            let indexPath = IndexPath(row: row, section: 0)
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+            let cell = tableView.cellForRow(at: indexPath)
+            cell?.accessoryType = .checkmark
+        }
     }
     
     //MARK: - UITableViewDelegate
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let itemID = self.itemIDs[indexPath.row]
-        self.delegate?.vectorStylesViewController(self, didSelectItemWithID: itemID)
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let itemID = itemIDs[indexPath.row]
+        delegate?.vectorStylesViewController(self, didSelectItemWithID: itemID)
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
     }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .none
+    }
+    
 }

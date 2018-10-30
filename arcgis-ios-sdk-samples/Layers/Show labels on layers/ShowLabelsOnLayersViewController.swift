@@ -44,18 +44,24 @@ class ShowLabelsOnLayersViewController: UIViewController {
         // add the layer to the map
         map.operationalLayers.add(featureLayer)
         
-        // create label definitions for the two groups
-        let demDefinition = makeLabelDefinition(party: "Democrat", color: .blue)!
-        let repDefinition = makeLabelDefinition(party: "Republican", color: .red)!
-        
-        // add the label definitions to the layer
-        featureLayer.labelDefinitions.addObjects(from: [demDefinition, repDefinition])
         // turn on labelling
         featureLayer.labelsEnabled = true
+       
+        do {
+            // create label definitions for the two groups
+            let demDefinition = try makeLabelDefinition(party: "Democrat", color: .blue)
+            let repDefinition = try makeLabelDefinition(party: "Republican", color: .red)
+            
+            // add the label definitions to the layer
+            featureLayer.labelDefinitions.addObjects(from: [demDefinition, repDefinition])
+        }
+        catch {
+            presentAlert(error: error)
+        }
     }
     
     /// Creates a label definition for the given PARTY field value and color.
-    private func makeLabelDefinition(party: String, color: UIColor) -> AGSLabelDefinition? {
+    private func makeLabelDefinition(party: String, color: UIColor) throws -> AGSLabelDefinition {
         
         // The JSON syntax reference for AGSLabelDefinition.fromJSON(_:) can be found here:
         // https://developers.arcgis.com/web-map-specification/objects/labelingInfo/
@@ -66,8 +72,9 @@ class ShowLabelsOnLayersViewController: UIViewController {
         textSymbol.haloColor = .white
         textSymbol.haloWidth = 2
         textSymbol.color = color
+        
         // the object must be converted to a JSON object
-        let textSymbolJSON = try! textSymbol.toJSON()
+        let textSymbolJSON = try textSymbol.toJSON()
         
         /// A SQL WHERE statement for filtering the features this label applies to.
         let whereStatement = "PARTY = '\(party)'"
@@ -86,14 +93,18 @@ class ShowLabelsOnLayersViewController: UIViewController {
             "symbol": textSymbolJSON
         ]
         
-        do {
-            // create and return a label definition from the JSON object
-            return try AGSLabelDefinition.fromJSON(labelJSONObject) as? AGSLabelDefinition
+        // create and return a label definition from the JSON object
+        let result = try AGSLabelDefinition.fromJSON(labelJSONObject)
+        if let definition = result as? AGSLabelDefinition {
+            return definition
         }
-        catch {
-            presentAlert(error: error)
-            return nil
+        else {
+            throw ShowLabelsOnLayersError.withDescription("The JSON could not be read as a label definition.")
         }
+    }
+    
+    private enum ShowLabelsOnLayersError: Error {
+        case withDescription(String)
     }
     
 }

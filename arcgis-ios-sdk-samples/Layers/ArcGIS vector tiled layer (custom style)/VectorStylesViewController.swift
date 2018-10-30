@@ -28,17 +28,14 @@ class VectorStylesViewController: UITableViewController {
     
     weak var delegate: VectorStylesVCDelegate?
     
-    //MARK: - UITableViewDataSource
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+    override func viewWillAppear(_ animated: Bool) {
         if let selectedItemID = selectedItemID,
-            let row = itemIDs.firstIndex(of: selectedItemID),
-            indexPath.row == row {
+            let row = itemIDs.firstIndex(of: selectedItemID) {
+            let indexPath = IndexPath(row: row, section: 0)
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-            cell.accessoryType = .checkmark
+            let cell = tableView.cellForRow(at: indexPath)
+            cell?.accessoryType = .checkmark
         }
-        return cell
     }
     
     //MARK: - UITableViewDelegate

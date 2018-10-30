@@ -85,23 +85,30 @@ class ListKMLContentsViewController: UITableViewController {
         return []
     }
     
-    /// Returns a label `String` for the type of the `node` based on the `class`.
-    /// For example, a `node` with `class` `AGSKMLScreenOverlay` returns "Screen Overlay".
+    /// Returns a label `String` based on the `class` of the `node`.
     private func typeLabel(for node: AGSKMLNode) -> String {
-        var classNameString = "\(type(of: node))"
-        classNameString.removeFirst(6) // remove "AGSKML" prefix
-        // map the string to an array of strings, adding a space before capitals
-        let subStrings = classNameString.map { (char) -> String in
-            let charString = String(char)
-            if char != classNameString.first,
-                charString.uppercased() == charString {
-                // add a space before capital letters
-                return " \(charString)"
-            }
-            return charString
+        switch node {
+        case is AGSKMLDocument:
+            return "Document"
+        case is AGSKMLFolder:
+            return "Folder"
+        case is AGSKMLContainer:
+            return "Container"
+        case is AGSKMLGroundOverlay:
+            return "Ground Overlay"
+        case is AGSKMLNetworkLink:
+            return "Network Link"
+        case is AGSKMLPhotoOverlay:
+            return "Photo Overlay"
+        case is AGSKMLPlacemark:
+            return "Placemark"
+        case is AGSKMLScreenOverlay:
+            return "Screen Overlay"
+        case is AGSKMLTour:
+            return "Tour"
+        default:
+            return "Node"
         }
-        // rejoin and return the formatted string
-        return subStrings.joined()
     }
     
     //MARK: - UITableViewDataSource

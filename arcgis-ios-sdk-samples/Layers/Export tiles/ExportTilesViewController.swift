@@ -136,15 +136,16 @@ class ExportTilesViewController: UIViewController {
             //show job status
             SVProgressHUD.show(withStatus: status.statusString())
         }) { [weak self] (result: AnyObject?, error: Error?) -> Void in
+            
+            //hide progress view
+            SVProgressHUD.dismiss()
+            
             self?.downloading = false
             
             if let error = error {
                 self?.presentAlert(error: error)
             }
             else {
-                
-                //hide progress view
-                SVProgressHUD.dismiss()
                 self?.visualEffectView.isHidden = false
                 
                 let tileCache = result as! AGSTileCache

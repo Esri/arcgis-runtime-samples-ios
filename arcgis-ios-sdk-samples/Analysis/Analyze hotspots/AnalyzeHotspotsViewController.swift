@@ -70,28 +70,32 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
             SVProgressHUD.show(withStatus: status.statusString())
             
         }) { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
+            
+            //dismiss progress hud
+            SVProgressHUD.dismiss()
+            
+            guard let self = self else {
+                return
+            }
+            
             if let error = error {
                 //show error
-                self?.presentAlert(error: error)
+                self.presentAlert(error: error)
             }
             else {
-                //dismiss progress hud
-                SVProgressHUD.dismiss()
-                
                 //a map image layer is generated as a result
                 //remove any layer previously added to the map
-                self?.mapView.map?.operationalLayers.removeAllObjects()
+                self.mapView.map?.operationalLayers.removeAllObjects()
                 
                 //add the new layer to the map
-                self?.mapView.map?.operationalLayers.add(result!.mapImageLayer!)
+                self.mapView.map?.operationalLayers.add(result!.mapImageLayer!)
                 
                 //set map view's viewpoint to the new layer's full extent
-                (self?.mapView.map?.operationalLayers.firstObject as! AGSLayer).load { (error: Error?) in
+                (self.mapView.map?.operationalLayers.firstObject as! AGSLayer).load { (error: Error?) in
                     if error == nil {
-                        
                         //set viewpoint as the extent of the mapImageLayer
                         if let extent = result?.mapImageLayer?.fullExtent {
-                            self?.mapView.setViewpointGeometry(extent, completion: nil)
+                            self.mapView.setViewpointGeometry(extent, completion: nil)
                         }
                     }
                 }

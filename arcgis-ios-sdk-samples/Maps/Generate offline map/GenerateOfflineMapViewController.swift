@@ -200,6 +200,9 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         //default parameters for offline map task
         offlineMapTask?.defaultGenerateOfflineMapParameters(withAreaOfInterest: areaOfInterest) { [weak self] (parameters: AGSGenerateOfflineMapParameters?, error: Error?) in
             
+            //dismiss progress hud
+            SVProgressHUD.dismiss()
+            
             guard let parameters = parameters,
                 let self = self else {
                 return
@@ -209,8 +212,6 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
                 self.presentAlert(error: error)
                 return
             }
-            //dismiss progress hud
-            SVProgressHUD.dismiss()
             
             //will need the parameters for creating the job later
             self.parameters = parameters

@@ -77,17 +77,14 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
         //identify features at tapped location
         self.mapView.identifyLayer(self.parksFeatureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result) in
             
-            guard result.error == nil else {
-                
-                //show error to user
-                self?.presentAlert(error: result.error!)
-                return
-            }
-            
             //hide progress hud
             SVProgressHUD.dismiss()
             
-            if result.geoElements.count > 0 {
+            if let error = result.error {
+                //show error to user
+                self?.presentAlert(error: error)
+            }
+            else if result.geoElements.count > 0 {
                 
                 //select the first feature
                 let feature = result.geoElements[0] as! AGSFeature

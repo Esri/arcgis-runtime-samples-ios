@@ -49,14 +49,14 @@ class FeatureCollectionLayerQueryVC: UIViewController {
         //query feature from the table
         self.featureTable.queryFeatures(with: queryParams) { [weak self] (queryResult: AGSFeatureQueryResult?, error: Error?) in
             
+            //hide progress hud
+            SVProgressHUD.dismiss()
+            
             if let error = error {
                 //show error
-                SVProgressHUD.show(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
             }
             else {
-                //hide progress hud
-                SVProgressHUD.dismiss()
-                
                 //create a feature collection table fromt the query results
                 let featureCollectionTable = AGSFeatureCollectionTable(featureSet: queryResult!)
                 

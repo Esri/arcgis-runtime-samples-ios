@@ -35,6 +35,9 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         
         (self.feature.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (result, error) -> Void in
             
+            //dismiss progress hud
+            SVProgressHUD.dismiss()
+            
             if let error = error {
                 self?.presentAlert(error: error)
             }
@@ -50,14 +53,15 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         //show progress hud
         SVProgressHUD.show(withStatus: "Loading attachments")
         
-        self.feature.fetchAttachments { [weak self] (attachments:[AGSAttachment]?, error:Error?) in
+        feature.fetchAttachments { [weak self] (attachments:[AGSAttachment]?, error:Error?) in
+            
+            //dismiss progress hud
+            SVProgressHUD.dismiss()
+            
             if let error = error {
                 self?.presentAlert(error: error)
             }
             else {
-                //dismiss progress hud
-                SVProgressHUD.dismiss()
-                
                 self?.attachments = attachments
                 self?.tableView.reloadData()
             }
@@ -143,6 +147,8 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         
         let data = UIImage(named: "LocationDisplayOffIcon")!.pngData()!
         self.feature.addAttachment(withName: "Attachment.png", contentType: "png", data: data) { [weak self] (attachment:AGSAttachment?, error:Error?) -> Void in
+            
+            SVProgressHUD.dismiss()
             
             if let error = error {
                 self?.presentAlert(error: error)

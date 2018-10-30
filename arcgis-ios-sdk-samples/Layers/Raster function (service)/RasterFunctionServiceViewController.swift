@@ -36,18 +36,18 @@ class RasterFunctionServiceViewController: UIViewController {
         // Initialize image service raster and apply raster function when it's loaded
         imageServiceRaster = AGSImageServiceRaster(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NLCDLandCover2001/ImageServer")!)
         imageServiceRaster?.load { [weak self] (error) in
-            guard error == nil else {
-                SVProgressHUD.show(withStatus: error!.localizedDescription)
-                return
+            if let error = error {
+                self?.presentAlert(error: error)
             }
-            
-            // Set map view's viewpoint to the image service raster's full extent
-            if let center = self?.imageServiceRaster?.serviceInfo?.fullExtent?.center {
-                self?.mapView.setViewpoint(AGSViewpoint(center: center, scale: 58000000.0))
+            else {
+                // Set map view's viewpoint to the image service raster's full extent
+                if let center = self?.imageServiceRaster?.serviceInfo?.fullExtent?.center {
+                    self?.mapView.setViewpoint(AGSViewpoint(center: center, scale: 58000000.0))
+                }
+                
+                // Apply raster function
+                self?.applyRasterFunction()
             }
-            
-            // Apply raster function
-            self?.applyRasterFunction()
         }
         
     }

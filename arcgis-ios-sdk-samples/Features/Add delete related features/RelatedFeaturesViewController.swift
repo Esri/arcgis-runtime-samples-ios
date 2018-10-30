@@ -64,15 +64,13 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         //query for species related to the selected park
         self.originFeatureTable.queryRelatedFeatures(for: self.originFeature, parameters: parameters) { [weak self] (results:[AGSRelatedFeatureQueryResult]?, error:Error?) in
             
-            guard error == nil else {
-                self?.presentAlert(error: error!)
-                return
-            }
-            
             //dismiss progress hud
             SVProgressHUD.dismiss()
             
-            if let results = results, results.count > 0 {
+            if let error = error {
+                self?.presentAlert(error: error)
+            }
+            else if let results = results, results.count > 0 {
                 
                 //save the related features to display in the table view
                 self?.relatedFeatures = results[0].featureEnumerator().allObjects
@@ -85,9 +83,6 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
     
     private func addRelatedFeature() {
         
-        //show progress hud
-        SVProgressHUD.show(withStatus: "Adding feature")
-        
         //get related table using relationshipInfo
         let relatedTable = self.originFeatureTable.relatedTables(with: self.relationshipInfo)![0] as! AGSServiceFeatureTable
         
@@ -97,58 +92,67 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         //relate new feature to origin feature
         feature.relate(to: self.originFeature)
         
+        //show progress hud
+        SVProgressHUD.show(withStatus: "Adding feature")
+        
         //add new feature to related table
         relatedTable.add(feature) { [weak self] (error) in
             
-            guard error == nil else {
-                self?.presentAlert(error: error!)
-                return
-            }
+            SVProgressHUD.dismiss()
             
-            //apply edits
-            self?.applyEdits()
+            if let error = error {
+                self?.presentAlert(error: error)
+            }
+            else {
+                //apply edits
+                self?.applyEdits()
+            }
         }
     }
     
     private func deleteRelatedFeature(_ feature: AGSFeature) {
         
-        //show progress hud
-        SVProgressHUD.show(withStatus: "Deleting feature")
-        
         //get related table using relationshipInfo
         let relatedTable = self.originFeatureTable.relatedTables(with: self.relationshipInfo)![0] as! AGSServiceFeatureTable
+        
+        //show progress hud
+        SVProgressHUD.show(withStatus: "Deleting feature")
         
         //delete feature from related table
         relatedTable.delete(feature) { [weak self] (error) in
             
-            guard error == nil else {
-                self?.presentAlert(error: error!)
-                return
-            }
+            SVProgressHUD.dismiss()
             
-            //apply edits
-            self?.applyEdits()
+            if let error = error {
+                self?.presentAlert(error: error)
+            }
+            else {
+                //apply edits
+                self?.applyEdits()
+            }
         }
     }
     
     private func applyEdits() {
         
-        //show progress hud
-        SVProgressHUD.show(withStatus: "Applying edits")
-        
         //get the related table using the relationshipInfo
         let relatedTable = self.originFeatureTable.relatedTables(with: self.relationshipInfo)![0] as! AGSServiceFeatureTable
         
+        //show progress hud
+        SVProgressHUD.show(withStatus: "Applying edits")
+        
         relatedTable.applyEdits { [weak self] (results:[AGSFeatureEditResult]?, error:Error?) in
             
-            guard error == nil else {
-                //show error
-                self?.presentAlert(error: error!)
-                return
-            }
+            SVProgressHUD.dismiss()
             
-            //query to update features
-            self?.queryRelatedFeatures()
+            if let error = error {
+                //show error
+                self?.presentAlert(error: error)
+            }
+            else {
+                //query to update features
+                self?.queryRelatedFeatures()
+            }
         }
     }
     

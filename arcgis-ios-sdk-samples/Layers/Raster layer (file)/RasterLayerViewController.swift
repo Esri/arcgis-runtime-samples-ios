@@ -49,13 +49,13 @@ class RasterLayerViewController: UIViewController {
         //set map view's viewpoint to the raster layer's full extent
         self.rasterLayer.load { [weak self] (error) in
             
-            guard error == nil else {
-                SVProgressHUD.show(withStatus: error!.localizedDescription)
-                return
+            if let error = error {
+               self?.presentAlert(error: error)
             }
-            
-            if let center = self?.rasterLayer.fullExtent?.center {
-                self?.mapView.setViewpoint(AGSViewpoint(center: center, scale: 80000))
+            else {
+                if let center = self?.rasterLayer.fullExtent?.center {
+                    self?.mapView.setViewpoint(AGSViewpoint(center: center, scale: 80000))
+                }
             }
         }
     }

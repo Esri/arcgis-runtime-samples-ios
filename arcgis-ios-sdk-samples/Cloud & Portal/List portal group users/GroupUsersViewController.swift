@@ -51,20 +51,26 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
         //find groups with using query params
         self.portal.findGroups(with: queryParams) { [weak self] (resultSet: AGSPortalQueryResultSet?, error: Error?) in
             
+            SVProgressHUD.dismiss()
+            
+            guard let self = self else {
+                return
+            }
+            
             if let error = error {
                 //show error
-                self?.presentAlert(error: error)
+                self.presentAlert(error: error)
             }
             else {
-                
                 //fetch users for the resulting group
-                if let groups = resultSet?.results as? [AGSPortalGroup] , groups.count > 0 {
-                    self?.portalGroup = groups[0]
-                    self?.fetchGroupUsers()
+                if let groups = resultSet?.results as? [AGSPortalGroup],
+                    !groups.isEmpty {
+                    self.portalGroup = groups[0]
+                    self.fetchGroupUsers()
                 }
                 else {
                     //show error that no groups found
-                    self?.presentAlert(message: "No groups found")
+                    self.presentAlert(message: "No groups found")
                 }
             }
         }
@@ -77,27 +83,34 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
         //fetch users in group
         self.portalGroup.fetchUsers { [weak self] (users: [String]?, admins: [String]?, error: Error?) in
             
+            SVProgressHUD.dismiss()
+            
+            guard let self = self else {
+                return
+            }
+            
             if let error = error {
                 //show error
-                self?.presentAlert(error: error)
+                self.presentAlert(error: error)
             }
             else {
                 
                 //if there are users in the group
-                if let users = users , users.count > 0 {
-                    self?.portalUsers = [AGSPortalUser]()
+                if let users = users,
+                    !users.isEmpty {
+                    self.portalUsers = [AGSPortalUser]()
                     
                     //initialize AGSPortalUser objects with user names
                     for user in users {
-                        let portalUser = AGSPortalUser(portal: self!.portal, username: user)
-                        self?.portalUsers.append(portalUser)
+                        let portalUser = AGSPortalUser(portal: self.portal, username: user)
+                        self.portalUsers.append(portalUser)
                     }
                     
                     //load all users before populating into table view
-                    self?.loadAllUsers()
+                    self.loadAllUsers()
                 }
                 else {
-                    self?.presentAlert(message: "No users found")
+                    self.presentAlert(message: "No users found")
                 }
             }
         }
@@ -108,11 +121,12 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
         SVProgressHUD.show(withStatus: "Loading User Data")
         
         //load user data
-        AGSLoadObjects(self.portalUsers) { [weak self] (success) in
+        AGSLoadObjects(portalUsers) { [weak self] (success) in
+            
+            //dismiss hud
+            SVProgressHUD.dismiss()
+            
             if success {
-                //dismiss hud
-                SVProgressHUD.dismiss()
-                
                 //reload table view
                 self?.tableView.reloadData()
             }

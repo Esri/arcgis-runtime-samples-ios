@@ -29,6 +29,7 @@ class VectorStylesViewController: UITableViewController {
     weak var delegate: VectorStylesVCDelegate?
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if let selectedItemID = selectedItemID,
             let row = itemIDs.firstIndex(of: selectedItemID) {
             let indexPath = IndexPath(row: row, section: 0)

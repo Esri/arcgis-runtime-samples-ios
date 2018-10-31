@@ -162,7 +162,7 @@ class DisplayGridSettingsViewController: UITableViewController {
     //MARK: - Helpers
     
     /// Creates a new grid object based on the type, applies the common configuration
-    /// from the existing grid, and adds it to the map.
+    /// from the existing grid, and adds it to the map view.
     private func changeGrid(to newGridType: GridType) {
         
         guard let displayedGrid = mapView?.grid,

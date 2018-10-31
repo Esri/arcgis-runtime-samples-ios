@@ -65,24 +65,18 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         // set the color of "Cancel" text
         searchBar.tintColor = .white
         
-        if #available(iOS 11.0, *) {
-            // embed the search bar under the title in the navigation bar
-            navigationItem.searchController = searchController
-            navigationItem.hidesSearchBarWhenScrolling = false
-            // find the text field to customize its appearance
-            if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
-                // set the color of the insertion cursor
-                textfield.tintColor = UIColor.darkText
-                if let backgroundview = textfield.subviews.first {
-                    backgroundview.backgroundColor = UIColor.white
-                    backgroundview.layer.cornerRadius = 12
-                    backgroundview.clipsToBounds = true
-                }
+        // embed the search bar under the title in the navigation bar
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        // find the text field to customize its appearance
+        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+            // set the color of the insertion cursor
+            textfield.tintColor = UIColor.darkText
+            if let backgroundview = textfield.subviews.first {
+                backgroundview.backgroundColor = UIColor.white
+                backgroundview.layer.cornerRadius = 12
+                backgroundview.clipsToBounds = true
             }
-            
-        } else {
-            // embed the search bar in the title area of the navigation bar
-            navigationItem.titleView = searchController.searchBar
         }
         
     }

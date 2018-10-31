@@ -20,7 +20,9 @@ class DisplayGridSettingsViewController: UITableViewController {
     
     var mapView: AGSMapView? {
         didSet {
-            updateUIForGrid()
+            if isViewLoaded {
+                updateUIForGrid()
+            }
         }
     }
     
@@ -159,26 +161,34 @@ class DisplayGridSettingsViewController: UITableViewController {
     
     //MARK: - Helpers
     
-    private func changeGrid(to gridType: GridType) {
+    /// Creates a new grid object based on the type, applies the common configuration
+    /// from the existing grid, and adds it to the map.
+    private func changeGrid(to newGridType: GridType) {
         
-        let priorGrid = mapView!.grid!
-        let grid = makeGrid(type: gridType)
-        
-        // Set the grid
-        mapView?.grid = grid
-        
-        // Apply settings to selected grid
-        grid.labelPosition = priorGrid.labelPosition
-        grid.labelVisibility = priorGrid.labelVisibility
-        grid.isVisible = priorGrid.isVisible
-        
-        if let priorGridColor = gridColor(of: priorGrid) {
-            changeGridColor(of: grid, to: priorGridColor)
-        }
-        if let priorLabelColor = labelColor(of: priorGrid) {
-            changeLabelColor(of: grid, to: priorLabelColor)
+        guard let displayedGrid = mapView?.grid,
+            // don't replace the grid if it already has the target type
+            GridType(grid: displayedGrid) != newGridType else {
+            return
         }
         
+        // create a new grid object based on the type
+        let newGrid = makeGrid(type: newGridType)
+        
+        // apply the common settings of the exiting grid to the new grid
+        newGrid.labelPosition = displayedGrid.labelPosition
+        newGrid.labelVisibility = displayedGrid.labelVisibility
+        newGrid.isVisible = displayedGrid.isVisible
+        if let gridColor = gridColor(of: displayedGrid) {
+            changeGridColor(of: newGrid, to: gridColor)
+        }
+        if let labelColor = labelColor(of: displayedGrid) {
+            changeLabelColor(of: newGrid, to: labelColor)
+        }
+        
+        // set the newly-created grid as the map view's grid
+        mapView?.grid = newGrid
+        
+        // update the UI in case the
         updateUIForGrid()
     }
     

@@ -19,7 +19,9 @@ class ViewshedSettingsVC: UITableViewController {
     
     weak var viewshed: AGSLocationViewshed? {
         didSet {
-            updateUIForViewshed()
+            if isViewLoaded {
+                updateUIForViewshed()
+            }
         }
     }
     
@@ -80,6 +82,7 @@ class ViewshedSettingsVC: UITableViewController {
     }
     
     private func updateUIForViewshed() {
+        
         guard let viewshed = viewshed else {
             return
         }
@@ -130,23 +133,22 @@ class ViewshedSettingsVC: UITableViewController {
             return
         }
         
-        if sender == headingSlider {
-            viewshed.heading = Double(sender.value)
-        }
-        else if sender == pitchSlider {
-            viewshed.pitch = Double(sender.value)
-        }
-        else if sender == horizontalAngleSlider {
-            viewshed.horizontalAngle = Double(sender.value)
-        }
-        else if sender == verticalAngleSlider {
-            viewshed.verticalAngle = Double(sender.value)
-        }
-        else if sender == minDistanceSlider {
-            viewshed.minDistance = Double(sender.value)
-        }
-        else if sender == maxDistanceSlider {
-            viewshed.maxDistance = Double(sender.value)
+        let value = Double(sender.value)
+        switch sender {
+        case headingSlider:
+            viewshed.heading = value
+        case pitchSlider:
+            viewshed.pitch = value
+        case horizontalAngleSlider:
+            viewshed.horizontalAngle = value
+        case verticalAngleSlider:
+            viewshed.verticalAngle = value
+        case minDistanceSlider:
+            viewshed.minDistance = value
+        case maxDistanceSlider:
+            viewshed.maxDistance = value
+        default:
+            break
         }
         
         updateUIForViewshed()

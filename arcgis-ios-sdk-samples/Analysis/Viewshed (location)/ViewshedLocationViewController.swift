@@ -34,9 +34,11 @@ class ViewshedLocationViewController: UIViewController {
         super.viewDidLoad()
         
         // add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ViewshedLocationViewController",
-                                                                                     "ViewshedSettingsVC",
-                                                                                     "ColorPickerViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
+            "ViewshedLocationViewController",
+            "ViewshedSettingsVC",
+            "ColorPickerViewController"
+        ]
         
         // initialize the scene with an imagery basemap
         let scene = AGSScene(basemap: .imagery())

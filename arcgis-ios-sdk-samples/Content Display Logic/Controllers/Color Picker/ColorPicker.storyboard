@@ -42,7 +42,7 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="999" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="HLw-Qo-tVg">
                                                     <rect key="frame" x="14" y="29" width="347" height="1"/>
                                                     <connections>
-                                                        <action selector="sliderAction:" destination="WKq-Wo-x9z" eventType="valueChanged" id="5Vn-e6-bIB"/>
+                                                        <action selector="hueSliderAction:" destination="WKq-Wo-x9z" eventType="valueChanged" id="cFy-3J-0iN"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>
@@ -81,7 +81,7 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="999" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Y3M-rT-AhN">
                                                     <rect key="frame" x="14" y="29" width="347" height="1"/>
                                                     <connections>
-                                                        <action selector="sliderAction:" destination="WKq-Wo-x9z" eventType="valueChanged" id="KUo-IM-2YP"/>
+                                                        <action selector="saturationSliderAction:" destination="WKq-Wo-x9z" eventType="valueChanged" id="HVq-IT-mCE"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>
@@ -120,7 +120,7 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="999" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="M3K-G5-aWc">
                                                     <rect key="frame" x="14" y="29" width="347" height="1"/>
                                                     <connections>
-                                                        <action selector="sliderAction:" destination="WKq-Wo-x9z" eventType="valueChanged" id="hJ5-fz-oa9"/>
+                                                        <action selector="brightnessSliderAction:" destination="WKq-Wo-x9z" eventType="valueChanged" id="Ydl-JB-VCx"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>
@@ -159,7 +159,7 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="999" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="hOR-cl-uqK">
                                                     <rect key="frame" x="14" y="29" width="347" height="1"/>
                                                     <connections>
-                                                        <action selector="sliderAction:" destination="WKq-Wo-x9z" eventType="valueChanged" id="0Fh-wg-URW"/>
+                                                        <action selector="alphaSliderAction:" destination="WKq-Wo-x9z" eventType="valueChanged" id="cas-9t-WER"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>

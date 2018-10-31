@@ -47,41 +47,6 @@ class ColorPickerViewController: UITableViewController {
         return formatter
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        updateUIForColor()
-    }
-
-    private func updateUIForColor() {
-        hueSlider.value = Float(hue)
-        saturationSlider.value = Float(saturation)
-        brightnessSlider.value = Float(brightness)
-        alphaSlider.value = Float(alpha)
-        
-        hueLabel.text = numberFormatter.string(from: hue as NSNumber)
-        saturationLabel.text = numberFormatter.string(from: saturation as NSNumber)
-        brightnessLabel.text = numberFormatter.string(from: brightness as NSNumber)
-        alphaLabel.text = numberFormatter.string(from: alpha as NSNumber)
-    }
-    
-    @IBAction func sliderAction(_ sender: UISlider) {
-        let value = CGFloat(sender.value)
-        switch sender {
-        case hueSlider:
-            hue = value
-        case saturationSlider:
-            saturation = value
-        case brightnessSlider:
-            brightness = value
-        case alphaSlider:
-            alpha = value
-        default:
-            break
-        }
-        onUpdate?(color)
-        updateUIForColor()
-    }
-    
     static func instantiateWith(color: UIColor, onUpdate: @escaping ((UIColor)->Void)) -> ColorPickerViewController {
         let storyboard = UIStoryboard(name: "ColorPicker", bundle: nil)
         let controller = storyboard.instantiateInitialViewController() as! ColorPickerViewController
@@ -89,4 +54,51 @@ class ColorPickerViewController: UITableViewController {
         controller.onUpdate = onUpdate
         return controller
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateUIForHue()
+        updateUIForSaturation()
+        updateUIForBrightness()
+        updateUIForAlpha()
+    }
+    
+    private func updateUIForHue() {
+        hueSlider.value = Float(hue)
+        hueLabel.text = numberFormatter.string(from: hue as NSNumber)
+    }
+    private func updateUIForSaturation() {
+        saturationSlider.value = Float(saturation)
+        saturationLabel.text = numberFormatter.string(from: saturation as NSNumber)
+    }
+    private func updateUIForBrightness() {
+        brightnessSlider.value = Float(brightness)
+        brightnessLabel.text = numberFormatter.string(from: brightness as NSNumber)
+    }
+    private func updateUIForAlpha() {
+        alphaSlider.value = Float(alpha)
+        alphaLabel.text = numberFormatter.string(from: alpha as NSNumber)
+    }
+    
+    @IBAction func hueSliderAction(_ sender: UISlider) {
+        hue = CGFloat(sender.value)
+        updateUIForHue()
+        onUpdate?(color)
+    }
+    @IBAction func saturationSliderAction(_ sender: UISlider) {
+        saturation = CGFloat(sender.value)
+        updateUIForSaturation()
+        onUpdate?(color)
+    }
+    @IBAction func brightnessSliderAction(_ sender: UISlider) {
+        brightness = CGFloat(sender.value)
+        updateUIForBrightness()
+        onUpdate?(color)
+    }
+    @IBAction func alphaSliderAction(_ sender: UISlider) {
+        alpha = CGFloat(sender.value)
+        updateUIForAlpha()
+        onUpdate?(color)
+    }
+
 }

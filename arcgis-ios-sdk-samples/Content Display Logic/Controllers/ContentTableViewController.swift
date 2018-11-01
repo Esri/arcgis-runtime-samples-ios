@@ -189,10 +189,9 @@ class ContentTableViewController: UITableViewController {
         let presentingController: UIViewController? = searchEngine != nil ? presentingViewController : self
             
         let navController = UINavigationController(rootViewController: controller)
-        if #available(iOS 11.0, *) {
-            //don't use large titles on samples
-            controller.navigationItem.largeTitleDisplayMode = .never
-        }
+        
+        //don't use large titles on samples
+        controller.navigationItem.largeTitleDisplayMode = .never
         
         //add the button on the left on the detail view controller
         controller.navigationItem.leftBarButtonItem = presentingController?.splitViewController?.displayModeButtonItem

@@ -22,8 +22,10 @@ class GenerateGeodatabaseViewController: UIViewController {
     @IBOutlet var downloadBBI: UIBarButtonItem!
     @IBOutlet var extentView: UIView!
     
-    private let featureServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
-    private var syncTask: AGSGeodatabaseSyncTask?
+    private var syncTask: AGSGeodatabaseSyncTask = {
+        let featureServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
+        return AGSGeodatabaseSyncTask(url: featureServiceURL)
+    }()
     private var generatedGeodatabase: AGSGeodatabase?
     // must retain a strong reference to a job while it runs
     private var activeJob: AGSJob?
@@ -41,8 +43,6 @@ class GenerateGeodatabaseViewController: UIViewController {
         let map = AGSMap(basemap: AGSBasemap(baseLayer: localTiledLayer))
         mapView.map = map
         
-        syncTask = AGSGeodatabaseSyncTask(url: featureServiceURL)
-        
         addFeatureLayers()
 
         //setup extent view
@@ -52,9 +52,6 @@ class GenerateGeodatabaseViewController: UIViewController {
     }
     
     func addFeatureLayers() {
-        guard let syncTask = syncTask else {
-            return
-        }
         syncTask.load { [weak self] (error) -> Void in
             if let error = error {
                 print("Could not load feature service \(error)")
@@ -64,10 +61,10 @@ class GenerateGeodatabaseViewController: UIViewController {
                     return
                 }
                 
-                for (index, layerInfo) in syncTask.featureServiceInfo!.layerInfos.enumerated().reversed() {
+                for (index, layerInfo) in self.syncTask.featureServiceInfo!.layerInfos.enumerated().reversed() {
                     
                     //For each layer in the serice, add a layer to the map
-                    let layerURL = self.featureServiceURL.appendingPathComponent(String(index))
+                    let layerURL = self.syncTask.url!.appendingPathComponent(String(index))
                     let featureTable = AGSServiceFeatureTable(url:layerURL)
                     let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                     featureLayer.name = layerInfo.name
@@ -93,10 +90,6 @@ class GenerateGeodatabaseViewController: UIViewController {
     
     @IBAction func downloadAction() {
         
-        guard let syncTask = syncTask else {
-            return
-        }
-        
         //generate default param to contain all layers in the service
         syncTask.defaultGenerateGeodatabaseParameters(withExtent: self.frameToExtent()) { [weak self] (params: AGSGenerateGeodatabaseParameters?, error: Error?) in
             if let params = params,
@@ -112,7 +105,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                 let fullPath = "\(path)/\(dateFormatter.string(from: Date())).geodatabase"
                 
                 //request a job to generate the geodatabase
-                let generateJob = syncTask.generateJob(with: params, downloadFileURL: URL(string: fullPath)!)
+                let generateJob = self.syncTask.generateJob(with: params, downloadFileURL: URL(string: fullPath)!)
                 self.activeJob = generateJob
                 //kick off the job
                 generateJob.start(statusHandler: { (status: AGSJobStatus) -> Void in
@@ -173,7 +166,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                         self.downloadBBI.isEnabled = false
                     }
                     // unregister geodatabase as the sample wont be editing or syncing features
-                    self.syncTask?.unregisterGeodatabase(generatedGeodatabase)
+                    self.syncTask.unregisterGeodatabase(generatedGeodatabase)
                 }
             }
         }

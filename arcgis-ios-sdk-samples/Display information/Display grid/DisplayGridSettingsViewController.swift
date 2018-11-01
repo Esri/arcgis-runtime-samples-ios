@@ -18,22 +18,31 @@ import ArcGIS
 
 class DisplayGridSettingsViewController: UITableViewController {
     
-    var mapView: AGSMapView?
+    var mapView: AGSMapView? {
+        didSet {
+            if isViewLoaded {
+                updateUIForGrid()
+            }
+        }
+    }
     
     private let labelPositionLabels = ["Geographic", "Bottom Left", "Bottom Right", "Top Left", "Top Right", "Center", "All Sides"]
     private let labelUnitLabels = ["Kilometers Meters", "Meters"]
     private let labelFormatLabels = ["Decimal Degrees", "Degrees Minutes Seconds"]
     
-    @IBOutlet private weak var gridColorPicker: HorizontalColorPicker!
-    @IBOutlet private weak var labelColorPicker: HorizontalColorPicker!
+    @IBOutlet private weak var gridVisibilitySwitch: UISwitch?
+    @IBOutlet private weak var labelVisibilitySwitch: UISwitch?
     
-    @IBOutlet private weak var gridVisibilitySwitch: UISwitch!
-    @IBOutlet private weak var labelVisibilitySwitch: UISwitch!
+    @IBOutlet private weak var gridTypeCell: UITableViewCell?
+    @IBOutlet private weak var gridColorCell: UITableViewCell?
     
-    @IBOutlet private weak var gridTypeCell: UITableViewCell!
-    @IBOutlet private weak var labelFormatCell: UITableViewCell!
-    @IBOutlet private weak var labelUnitCell: UITableViewCell!
-    @IBOutlet private weak var labelPositionCell: UITableViewCell!
+    @IBOutlet private weak var labelFormatCell: UITableViewCell?
+    @IBOutlet private weak var labelUnitCell: UITableViewCell?
+    @IBOutlet private weak var labelPositionCell: UITableViewCell?
+    @IBOutlet private weak var labelColorCell: UITableViewCell?
+    
+    @IBOutlet private weak var gridColorSwatchView: UIView?
+    @IBOutlet private weak var labelColorSwatchView: UIView?
     
     private enum GridType: Int, CaseIterable {
         case latLong, mgrs, utm, usng
@@ -73,12 +82,22 @@ class DisplayGridSettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set picker delegates
-        gridColorPicker.delegate = self
-        labelColorPicker.delegate = self
-        
+        // set corner radius and border for color swatches
+        for swatch in [gridColorSwatchView, labelColorSwatchView] {
+            swatch?.layer.cornerRadius = 5
+            swatch?.layer.borderColor = UIColor(hue: 0, saturation: 0, brightness: 0.9, alpha: 1).cgColor
+            swatch?.layer.borderWidth = 1
+        }
+
         // Setup UI Controls
         updateUIForGrid()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // set the colors redundantly to avoid a visual glitch when closing the color picker
+        updateUIForGridColor()
+        updateUIForLabelColor()
     }
     
     private func updateUIForGrid() {
@@ -88,104 +107,140 @@ class DisplayGridSettingsViewController: UITableViewController {
             return
         }
 
-        gridTypeCell.detailTextLabel?.text = gridType.label
+        gridTypeCell?.detailTextLabel?.text = gridType.label
         
-        gridVisibilitySwitch.isOn = grid.isVisible
-        labelVisibilitySwitch.isOn = grid.labelVisibility
+        gridVisibilitySwitch?.isOn = grid.isVisible
+        labelVisibilitySwitch?.isOn = grid.labelVisibility
         
-        labelPositionCell.detailTextLabel?.text = labelPositionLabels[grid.labelPosition.rawValue]
+        labelPositionCell?.detailTextLabel?.text = labelPositionLabels[grid.labelPosition.rawValue]
         
         updateLabelFormatUI()
         updateLabelUnitUI()
+        updateUIForGridColor()
+        updateUIForLabelColor()
     }
     
     private func updateLabelFormatUI(){
         if let grid = mapView?.grid as? AGSLatitudeLongitudeGrid {
-            labelFormatCell.detailTextLabel?.text = labelFormatLabels[grid.labelFormat.rawValue]
-            labelFormatCell.detailTextLabel?.isEnabled = true
-            labelFormatCell.selectionStyle = .default
+            labelFormatCell?.detailTextLabel?.text = labelFormatLabels[grid.labelFormat.rawValue]
+            labelFormatCell?.detailTextLabel?.isEnabled = true
+            labelFormatCell?.selectionStyle = .default
         }
         else {
-            labelFormatCell.detailTextLabel?.text = "N/A"
-            labelFormatCell.detailTextLabel?.isEnabled = false
-            labelFormatCell.selectionStyle = .none
+            labelFormatCell?.detailTextLabel?.text = "N/A"
+            labelFormatCell?.detailTextLabel?.isEnabled = false
+            labelFormatCell?.selectionStyle = .none
         }
     }
     
     private func updateLabelUnitUI(){
         if let grid = mapView?.grid,
             let labelUnitID = (grid as? AGSMGRSGrid)?.labelUnit.rawValue ?? (grid as? AGSUSNGGrid)?.labelUnit.rawValue {
-            labelUnitCell.detailTextLabel?.text = labelUnitLabels[labelUnitID]
-            labelUnitCell.detailTextLabel?.isEnabled = true
-            labelUnitCell.selectionStyle = .default
+            labelUnitCell?.detailTextLabel?.text = labelUnitLabels[labelUnitID]
+            labelUnitCell?.detailTextLabel?.isEnabled = true
+            labelUnitCell?.selectionStyle = .default
         }
         else {
-            labelUnitCell.detailTextLabel?.text = "N/A"
-            labelUnitCell.detailTextLabel?.isEnabled = false
-            labelUnitCell.selectionStyle = .none
+            labelUnitCell?.detailTextLabel?.text = "N/A"
+            labelUnitCell?.detailTextLabel?.isEnabled = false
+            labelUnitCell?.selectionStyle = .none
         }
+    }
+    
+    private func updateUIForGridColor(){
+        if let grid = mapView?.grid {
+            gridColorSwatchView?.backgroundColor = gridColor(of: grid)
+        }
+    }
+    
+    private func updateUIForLabelColor(){
+        if let grid = mapView?.grid {
+            labelColorSwatchView?.backgroundColor = labelColor(of: grid)
+        }
+    }
+    
+    //MARK: - Helpers
+    
+    /// Creates a new grid object based on the type, applies the common configuration
+    /// from the existing grid, and adds it to the map view.
+    private func changeGrid(to newGridType: GridType) {
+        
+        guard let displayedGrid = mapView?.grid,
+            // don't replace the grid if it already has the target type
+            GridType(grid: displayedGrid) != newGridType else {
+            return
+        }
+        
+        // create a new grid object based on the type
+        let newGrid = makeGrid(type: newGridType)
+        
+        // apply the common settings of the exiting grid to the new grid
+        newGrid.labelPosition = displayedGrid.labelPosition
+        newGrid.labelVisibility = displayedGrid.labelVisibility
+        newGrid.isVisible = displayedGrid.isVisible
+        if let gridColor = gridColor(of: displayedGrid) {
+            changeGridColor(of: newGrid, to: gridColor)
+        }
+        if let labelColor = labelColor(of: displayedGrid) {
+            changeLabelColor(of: newGrid, to: labelColor)
+        }
+        
+        // set the newly-created grid as the map view's grid
+        mapView?.grid = newGrid
+        
+        // update the UI in case the
+        updateUIForGrid()
     }
     
     //MARK: - Actions
     
-    @IBAction private func gridVisibilityAction() {
-        mapView?.grid?.isVisible = gridVisibilitySwitch.isOn
+    @IBAction func gridVisibilityAction(_ sender: UISwitch) {
+        mapView?.grid?.isVisible = sender.isOn
     }
     
-    @IBAction private func labelVisibilityAction() {
-        mapView?.grid?.labelVisibility = labelVisibilitySwitch.isOn
+    @IBAction func labelVisibilityAction(_ sender: UISwitch) {
+        mapView?.grid?.labelVisibility = sender.isOn
     }
     
-    // MARK: - Helper Functions
+    // MARK: - Colors
     
-    private func changeGrid(to gridType: GridType) {
-        
-        let priorGrid = mapView!.grid!
-        let grid = makeGrid(type: gridType)
-        
-        // Set the grid
-        mapView?.grid = grid
-        
-        // Apply settings to selected grid
-        grid.labelPosition = priorGrid.labelPosition
-        grid.labelVisibility = priorGrid.labelVisibility
-        grid.isVisible = priorGrid.isVisible
-        
-        if let selectedColor = gridColorPicker.selectedColor {
-            changeGridColor(selectedColor)
+    private func gridColor(of grid: AGSGrid) -> UIColor? {
+        guard let lineSymbol = grid.lineSymbol(forLevel: 0) as? AGSLineSymbol else {
+            return nil
         }
-        if let selectedColor = labelColorPicker.selectedColor {
-            changeLabelColor(selectedColor)
-        }
-        
-        updateUIForGrid()
+        return lineSymbol.color
     }
     
-    // Change the grid color
-    private func changeGridColor(_ color: UIColor) {
-        if let grid = mapView?.grid {
-            for gridLevel in 0..<grid.levelCount {
-                let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: color, width: CGFloat(gridLevel+1))
-                grid.setLineSymbol(lineSymbol, forLevel: gridLevel)
-            }
+    private func labelColor(of grid: AGSGrid) -> UIColor? {
+        guard let textSymbol = grid.textSymbol(forLevel: 0) as? AGSTextSymbol else {
+            return nil
+        }
+        return textSymbol.color
+    }
+    
+    /// Changes the grid color.
+    private func changeGridColor(of grid: AGSGrid, to color: UIColor) {
+        for gridLevel in 0..<grid.levelCount {
+            let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: color, width: CGFloat(gridLevel+1))
+            grid.setLineSymbol(lineSymbol, forLevel: gridLevel)
         }
     }
     
-    // Change the grid label color
-    private func changeLabelColor(_ color: UIColor) {
-        if let grid = mapView?.grid {
-            for gridLevel in 0..<grid.levelCount {
-                let textSymbol = AGSTextSymbol()
-                textSymbol.color = color
-                textSymbol.size = 14
-                textSymbol.horizontalAlignment = .left
-                textSymbol.verticalAlignment = .bottom
-                textSymbol.haloColor = .white
-                textSymbol.haloWidth = CGFloat(gridLevel+1)
-                grid.setTextSymbol(textSymbol, forLevel: gridLevel)
-            }
+    /// Changes the grid label color.
+    private func changeLabelColor(of grid: AGSGrid, to color: UIColor) {
+        for gridLevel in 0..<grid.levelCount {
+            let textSymbol = AGSTextSymbol()
+            textSymbol.color = color
+            textSymbol.size = 14
+            textSymbol.horizontalAlignment = .left
+            textSymbol.verticalAlignment = .bottom
+            textSymbol.haloColor = .white
+            textSymbol.haloWidth = CGFloat(gridLevel+1)
+            grid.setTextSymbol(textSymbol, forLevel: gridLevel)
         }
     }
+    
+    //MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
@@ -237,23 +292,29 @@ class DisplayGridSettingsViewController: UITableViewController {
                 optionsViewController.title = "Unit"
                 show(optionsViewController, sender: self)
             }
+        case gridColorCell:
+            guard let color = gridColor(of: grid) else {
+                return
+            }
+            let controller = ColorPickerViewController.instantiateWith(color: color) { (color) in
+                self.changeGridColor(of: grid, to: color)
+                self.updateUIForGridColor()
+            }
+            controller.title = "Grid Color"
+            show(controller, sender: self)
+        case labelColorCell:
+            guard let color = labelColor(of: grid) else {
+                return
+            }
+            let controller = ColorPickerViewController.instantiateWith(color: color) { (color) in
+                self.changeLabelColor(of: grid, to: color)
+                self.updateUIForLabelColor()
+            }
+            controller.title = "Label Color"
+            show(controller, sender: self)
         default:
             break
         }
     }
     
-}
-
-extension DisplayGridSettingsViewController: HorizontalColorPickerDelegate {
-    
-    // MARK: Horizontal Color Picker Delegate
-    
-    func horizontalColorPicker(_ horizontalColorPicker: HorizontalColorPicker, didUpdateSelectedColor selectedColor: UIColor) {
-        if horizontalColorPicker == gridColorPicker {
-            changeGridColor(selectedColor)
-        }
-        else if horizontalColorPicker == labelColorPicker {
-            changeLabelColor(selectedColor)
-        }
-    }
 }

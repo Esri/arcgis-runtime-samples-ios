@@ -67,8 +67,6 @@
 		21E9CDEB1EF9C5EA00BD4D7D /* DisplayGrid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21E9CDE81EF9C5EA00BD4D7D /* DisplayGrid.storyboard */; };
 		21E9CDEC1EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E9CDE91EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift */; };
 		21E9CDED1EF9C5EA00BD4D7D /* DisplayGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E9CDEA1EF9C5EA00BD4D7D /* DisplayGridViewController.swift */; };
-		21E9CDF01EF9C64C00BD4D7D /* HorizontalColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E9CDEE1EF9C64C00BD4D7D /* HorizontalColorPicker.swift */; };
-		21E9CDF11EF9C64C00BD4D7D /* HorizontalColorPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21E9CDEF1EF9C64C00BD4D7D /* HorizontalColorPicker.xib */; };
 		21EBBBFD1FE07B0500567F14 /* StatisticalQueryGroupAndSort.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21EBBBFC1FE07B0500567F14 /* StatisticalQueryGroupAndSort.storyboard */; };
 		3E0225371DB569240049F7F8 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0225361DB569240049F7F8 /* CategoryCell.swift */; };
 		3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */; };
@@ -851,8 +849,6 @@
 		21E9CDE81EF9C5EA00BD4D7D /* DisplayGrid.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayGrid.storyboard; sourceTree = "<group>"; };
 		21E9CDE91EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayGridSettingsViewController.swift; sourceTree = "<group>"; };
 		21E9CDEA1EF9C5EA00BD4D7D /* DisplayGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayGridViewController.swift; sourceTree = "<group>"; };
-		21E9CDEE1EF9C64C00BD4D7D /* HorizontalColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalColorPicker.swift; sourceTree = "<group>"; };
-		21E9CDEF1EF9C64C00BD4D7D /* HorizontalColorPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorizontalColorPicker.xib; sourceTree = "<group>"; };
 		21EBBBFC1FE07B0500567F14 /* StatisticalQueryGroupAndSort.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StatisticalQueryGroupAndSort.storyboard; sourceTree = "<group>"; };
 		3E0225361DB569240049F7F8 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceCodeViewController.swift; sourceTree = "<group>"; };
@@ -1498,15 +1494,6 @@
 			path = "Hillshade renderer";
 			sourceTree = "<group>";
 		};
-		3E1E5EE81D9F0A4E00F4913C /* HorizontalPicker */ = {
-			isa = PBXGroup;
-			children = (
-				21E9CDEE1EF9C64C00BD4D7D /* HorizontalColorPicker.swift */,
-				21E9CDEF1EF9C64C00BD4D7D /* HorizontalColorPicker.xib */,
-			);
-			path = HorizontalPicker;
-			sourceTree = "<group>";
-		};
 		3E23A9D71AFC28F6002E2214 = {
 			isa = PBXGroup;
 			children = (
@@ -1655,7 +1642,6 @@
 			isa = PBXGroup;
 			children = (
 				21D919901FE1F368006EA79A /* ExpandableTableViewController */,
-				3E1E5EE81D9F0A4E00F4913C /* HorizontalPicker */,
 				3E4B05E71B39EF250072E514 /* SVProgressHUD */,
 				3EC398BD1D8B45AD0084612D /* DemoTouchView */,
 			);
@@ -3298,7 +3284,6 @@
 				3EBA25611D34178200AB0703 /* SimpleMarkerSymbol.storyboard in Resources */,
 				2182C9821FDA01A0003E3A0F /* StatisticalQuery.storyboard in Resources */,
 				3ED0286C1B8E3A8500ACA70D /* DisplayLocation.storyboard in Resources */,
-				21E9CDF11EF9C64C00BD4D7D /* HorizontalColorPicker.xib in Resources */,
 				D97B7E671FD9BFE700E1239D /* Subdivisions.dbf in Resources */,
 				3E03F09B1B05714A0078EB36 /* default.css in Resources */,
 				3E5E094D1EF850BA00FF3454 /* ManageSublayers.storyboard in Resources */,
@@ -3654,7 +3639,6 @@
 				D9316A611FDB4F060075AD92 /* GPKGLayerTableCell.swift in Sources */,
 				3EFCE1C31CF374C600E02F67 /* MapPackageCell.swift in Sources */,
 				3ED028631B8E3A8500ACA70D /* SwitchBasemapViewController.swift in Sources */,
-				21E9CDF01EF9C64C00BD4D7D /* HorizontalColorPicker.swift in Sources */,
 				E45991A21EF3021D0089E9FD /* WebMapCell.swift in Sources */,
 				C76817082163DB7C00EC82F4 /* DisplayKMLViewController.swift in Sources */,
 				3EEA06141D21C44000E03774 /* SurfacePlacementsViewController.swift in Sources */,

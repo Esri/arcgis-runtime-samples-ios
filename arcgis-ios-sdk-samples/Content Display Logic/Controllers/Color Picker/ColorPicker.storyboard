@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WKq-Wo-x9z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WKq-Wo-x9z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,7 +13,7 @@
         <scene sceneID="99e-FF-usw">
             <objects>
                 <tableViewController id="WKq-Wo-x9z" customClass="ColorPickerViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0CM-vF-q8p">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0CM-vF-q8p">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -42,7 +42,7 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="999" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="HLw-Qo-tVg">
                                                     <rect key="frame" x="14" y="29" width="347" height="1"/>
                                                     <connections>
-                                                        <action selector="sliderAction:" destination="WKq-Wo-x9z" eventType="valueChanged" id="5Vn-e6-bIB"/>
+                                                        <action selector="hueSliderAction:" destination="WKq-Wo-x9z" eventType="valueChanged" id="cFy-3J-0iN"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>
@@ -81,7 +81,7 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="999" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Y3M-rT-AhN">
                                                     <rect key="frame" x="14" y="29" width="347" height="1"/>
                                                     <connections>
-                                                        <action selector="sliderAction:" destination="WKq-Wo-x9z" eventType="valueChanged" id="KUo-IM-2YP"/>
+                                                        <action selector="saturationSliderAction:" destination="WKq-Wo-x9z" eventType="valueChanged" id="HVq-IT-mCE"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>
@@ -120,7 +120,7 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="999" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="M3K-G5-aWc">
                                                     <rect key="frame" x="14" y="29" width="347" height="1"/>
                                                     <connections>
-                                                        <action selector="sliderAction:" destination="WKq-Wo-x9z" eventType="valueChanged" id="hJ5-fz-oa9"/>
+                                                        <action selector="brightnessSliderAction:" destination="WKq-Wo-x9z" eventType="valueChanged" id="Ydl-JB-VCx"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>
@@ -137,6 +137,45 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="X8W-cO-tPJ">
+                                        <rect key="frame" x="0.0" y="132" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X8W-cO-tPJ" id="bub-Y5-2DS">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Alpha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQO-tg-7s4">
+                                                    <rect key="frame" x="16" y="12" width="44" height="9"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QO8-Kt-kzf">
+                                                    <rect key="frame" x="317" y="12" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="999" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="hOR-cl-uqK">
+                                                    <rect key="frame" x="14" y="29" width="347" height="1"/>
+                                                    <connections>
+                                                        <action selector="alphaSliderAction:" destination="WKq-Wo-x9z" eventType="valueChanged" id="cas-9t-WER"/>
+                                                    </connections>
+                                                </slider>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="QO8-Kt-kzf" firstAttribute="firstBaseline" secondItem="WQO-tg-7s4" secondAttribute="firstBaseline" id="35z-AW-kFm"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="hOR-cl-uqK" secondAttribute="bottom" constant="4" id="7ED-Bk-LpV"/>
+                                                <constraint firstItem="QO8-Kt-kzf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WQO-tg-7s4" secondAttribute="trailing" constant="8" id="7mL-5H-oIh"/>
+                                                <constraint firstItem="WQO-tg-7s4" firstAttribute="top" secondItem="bub-Y5-2DS" secondAttribute="top" constant="12" id="Mnx-PX-wM5"/>
+                                                <constraint firstItem="WQO-tg-7s4" firstAttribute="leading" secondItem="bub-Y5-2DS" secondAttribute="leadingMargin" id="UmI-Bn-Oci"/>
+                                                <constraint firstItem="QO8-Kt-kzf" firstAttribute="trailing" secondItem="bub-Y5-2DS" secondAttribute="trailingMargin" id="W7W-wa-SEe"/>
+                                                <constraint firstItem="hOR-cl-uqK" firstAttribute="trailing" secondItem="QO8-Kt-kzf" secondAttribute="trailing" id="f3W-VX-LXP"/>
+                                                <constraint firstItem="hOR-cl-uqK" firstAttribute="leading" secondItem="WQO-tg-7s4" secondAttribute="leading" id="jVC-zw-0OD"/>
+                                                <constraint firstItem="hOR-cl-uqK" firstAttribute="top" secondItem="WQO-tg-7s4" secondAttribute="bottom" constant="8" id="vJY-xl-mX6"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -146,6 +185,8 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="alphaLabel" destination="QO8-Kt-kzf" id="lqK-DQ-B2B"/>
+                        <outlet property="alphaSlider" destination="hOR-cl-uqK" id="1Nl-WV-WEu"/>
                         <outlet property="brightnessLabel" destination="aaP-E4-Gg6" id="dz5-4P-jik"/>
                         <outlet property="brightnessSlider" destination="M3K-G5-aWc" id="RfH-3R-8sP"/>
                         <outlet property="hueLabel" destination="k5P-Xz-PeO" id="dcV-7E-csz"/>

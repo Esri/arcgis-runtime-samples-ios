@@ -57,14 +57,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     }
     
     func toggleToolbar(_ on:Bool) {
-        
-        if #available(iOS 11.0, *) {
-            self.toolbarBottomConstraint.constant = on ? 0 : -44-view.safeAreaInsets.bottom
-            print(view.safeAreaInsets.bottom)
-        }
-        else {
-            self.toolbarBottomConstraint.constant = on ? 0 : -44
-        }
+        toolbarBottomConstraint.constant = on ? 0 : -44-view.safeAreaInsets.bottom
         
         UIView.animate(withDuration: 0.3, animations: { [weak self] () -> Void in
             self?.view.layoutIfNeeded()

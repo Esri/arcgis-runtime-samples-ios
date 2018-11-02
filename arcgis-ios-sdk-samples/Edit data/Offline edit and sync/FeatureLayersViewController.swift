@@ -44,7 +44,7 @@ class FeatureLayersViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeatureLayerCell", for: indexPath)
         
-        let layerInfo = self.featureLayerInfos[indexPath.row]
+        let layerInfo = featureLayerInfos[indexPath.row]
         cell.textLabel?.text = layerInfo.name
         if let indexPaths = tableView.indexPathsForSelectedRows, indexPaths.contains(indexPath) {
             cell.accessoryType = .checkmark

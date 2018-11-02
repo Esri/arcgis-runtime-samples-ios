@@ -1146,7 +1146,7 @@
 		4C72116F20BF444C004A7DD9 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
 		4C72117120BF4456004A7DD9 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		4C72117220BF4457004A7DD9 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
-		4C73C83421112B4300B0F9C7 /* ArcGIS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArcGIS.framework; path = "~/Library/SDKs/ArcGIS/iOS/Frameworks/Dynamic/ArcGIS.framework"; sourceTree = "<absolute>"; };
+		4C73C83421112B4300B0F9C7 /* ArcGIS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArcGIS.framework; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Dynamic/ArcGIS.framework; sourceTree = "<absolute>"; };
 		4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLayerSelectionViewController.swift; sourceTree = "<group>"; };
 		4C85044A20F423F600E37F43 /* SceneLayerSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SceneLayerSelection.storyboard; sourceTree = "<group>"; };
 		4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleWebMapServiceLayerViewController.swift; sourceTree = "<group>"; };
@@ -3775,7 +3775,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -3823,7 +3823,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -3848,7 +3848,7 @@
 					"$(USER_LIBRARY_DIR)/SDKs/ArcGIS/iOS/Frameworks/Dynamic",
 				);
 				INFOPLIST_FILE = "arcgis-ios-sdk-samples/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
@@ -3877,7 +3877,7 @@
 					"$(USER_LIBRARY_DIR)/SDKs/ArcGIS/iOS/Frameworks/Dynamic",
 				);
 				INFOPLIST_FILE = "arcgis-ios-sdk-samples/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
@@ -3905,7 +3905,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(USER_LIBRARY_DIR)/SDKs/ArcGIS/iOS/Frameworks/Dynamic";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "arcgis-ios-sdk-samplesTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samplesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3932,7 +3932,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(USER_LIBRARY_DIR)/SDKs/ArcGIS/iOS/Frameworks/Dynamic";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "arcgis-ios-sdk-samplesTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samplesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";

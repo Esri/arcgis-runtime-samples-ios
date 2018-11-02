@@ -19,7 +19,18 @@ class ManageMapLayersViewController: UIViewController {
     
     @IBOutlet weak var mapView: AGSMapView!
     
+    /// Every layer on the map or that could be added to the map.
     private var allLayers: [AGSLayer] = []
+    
+    /// The layers present in `allLayers` but not in the map's `operationalLayers`.
+    private var removedLayers: [AGSLayer] {
+        if let operationalLayers = mapView?.map?.operationalLayers as? [AGSLayer] {
+            return allLayers.filter({ (layer) -> Bool in
+                return !operationalLayers.contains(layer)
+            })
+        }
+        return []
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,17 +42,17 @@ class ManageMapLayersViewController: UIViewController {
         ]
                 
         let map = AGSMap(basemap: .topographic())
+        map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -133e5, y: 45e5, spatialReference: .webMercator()), scale: 2e7)
         
-        let imageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!)
-        map.operationalLayers.add(imageLayer)
+        let elevationImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!)
+        let censusTiledLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
         
-        let tiledLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
-        map.operationalLayers.add(tiledLayer)
+        allLayers = [elevationImageLayer, censusTiledLayer]
         
-        allLayers = [imageLayer, tiledLayer]
+        // load all the layers into the map to start
+        map.operationalLayers.addObjects(from: allLayers)
         
         mapView.map = map
-        mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -133e5, y: 45e5, spatialReference: AGSSpatialReference(wkid: 3857)), scale: 2e7))
     }
     
     //MARK: - Navigation
@@ -49,10 +60,18 @@ class ManageMapLayersViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,
             let controller = navController.viewControllers.first as? MMLLayersViewController {
-            
-            controller.operationalLayers = mapView.map?.operationalLayers
-            controller.allLayers = allLayers
-            controller.preferredContentSize = CGSize(width: 300, height: 300)
+            // convert and assign the map's operational layers as a Swift array
+            controller.operationalLayers = mapView.map?.operationalLayers as? [AGSLayer] ?? []
+            controller.removedLayers = removedLayers
+            controller.onChange = {[weak self] layers in
+                guard let map = self?.mapView.map else {
+                    return
+                }
+                // replace the map's operational layers with those from the view controller
+                map.operationalLayers.removeAllObjects()
+                map.operationalLayers.addObjects(from: layers)
+            }
+            controller.preferredContentSize = CGSize(width: 300, height: 200)
             navController.presentationController?.delegate = self
         }
     }

@@ -29,7 +29,7 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="0Ns-WL-avp"/>
-                                    <barButtonItem title="Operational Layers" id="MnU-iW-y5n">
+                                    <barButtonItem title="Manage Layers" id="MnU-iW-y5n">
                                         <connections>
                                             <segue destination="cCd-0w-JMY" kind="popoverPresentation" identifier="" popoverAnchorBarButtonItem="MnU-iW-y5n" id="Bfj-n8-jDL">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -89,7 +89,7 @@
             </objects>
             <point key="canvasLocation" x="165" y="-187"/>
         </scene>
-        <!--Operational Layers-->
+        <!--Manage Layers-->
         <scene sceneID="lHi-54-2ft">
             <objects>
                 <tableViewController id="Q8X-4R-rQE" customClass="MMLLayersViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
@@ -121,7 +121,7 @@
                             <outlet property="delegate" destination="Q8X-4R-rQE" id="CGk-cp-r31"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Operational Layers" id="mOD-w4-TEK"/>
+                    <navigationItem key="navigationItem" title="Manage Layers" id="mOD-w4-TEK"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vC0-E2-6EB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

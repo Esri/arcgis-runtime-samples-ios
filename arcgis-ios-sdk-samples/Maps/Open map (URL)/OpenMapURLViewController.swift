@@ -20,15 +20,38 @@ class OpenMapURLViewController: UIViewController {
     @IBOutlet private weak var mapView:AGSMapView!
     
     /// The portal item ID of the map now shown in the map view.
-    var displayedMapID: String? {
+    private var displayedMapID: String? {
         return (mapView.map?.item as? AGSPortalItem)?.itemID
     }
+
+    /// A model for the maps the user may toggle between.
+    struct MapAtURL {
+        var title: String
+        var thumbnailImage: UIImage
+        var id: String
+        
+        var url: URL? {
+            return URL(string: "https://www.arcgis.com/home/item.html?id=\(id)")
+        }
+    }
+    
+    private let mapModels: [MapAtURL] = [
+        MapAtURL(title: "Housing with Mortgages",
+                 thumbnailImage: #imageLiteral(resourceName: "OpenMapURLThumbnail1"),
+                 id: "2d6fa24b357d427f9c737774e7b0f977"),
+        MapAtURL(title: "USA Tapestry Segmentation",
+                 thumbnailImage: #imageLiteral(resourceName: "OpenMapURLThumbnail2"),
+                 id: "01f052c8995e4b9e889d73c3e210ebe3"),
+        MapAtURL(title: "Geology of United States",
+                 thumbnailImage: #imageLiteral(resourceName: "OpenMapURLThumbnail3"),
+                 id: "92ad152b9da94dee89b9e387dfe21acd")
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         /// The URL of the first map to show.
-        let initialMapURL = URL(string: "https://www.arcgis.com/home/item.html?id=2d6fa24b357d427f9c737774e7b0f977")!
+        let initialMapURL = mapModels.first!.url!
 
         // create the map for the url and add it to the map view
         showMap(at: initialMapURL)
@@ -51,6 +74,7 @@ class OpenMapURLViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? OpenMapURLSettingsViewController {
             controller.initialSelectedID = displayedMapID
+            controller.mapModels = mapModels
             controller.onChange = {[weak self] (url) in
                 self?.showMap(at: url)
             }

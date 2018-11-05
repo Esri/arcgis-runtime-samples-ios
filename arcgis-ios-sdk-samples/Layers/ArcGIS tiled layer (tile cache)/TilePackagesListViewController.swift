@@ -104,4 +104,3 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
         return String(name)
     }
 }
-

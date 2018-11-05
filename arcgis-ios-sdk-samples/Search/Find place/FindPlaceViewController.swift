@@ -493,5 +493,3 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         NotificationCenter.default.removeObserver(self)
     }
 }
-
-

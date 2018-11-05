@@ -105,5 +105,3 @@ class GraphicDrawOrderViewController: UIViewController {
         self.graphics[sender.tag].zIndex = self.drawIndex
     }
 }
-
-

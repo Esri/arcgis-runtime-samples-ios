@@ -112,7 +112,7 @@ class ListKMLContentsSceneViewController: UIViewController {
             return nil
         }
         
-        var surfaceElevation: Double? = nil
+        var surfaceElevation: Double?
         let group = DispatchGroup()
         group.enter()
         // we want to return the elevation synchronously, so run the task in the background and wait

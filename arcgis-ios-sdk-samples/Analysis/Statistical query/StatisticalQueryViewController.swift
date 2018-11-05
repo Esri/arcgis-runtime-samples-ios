@@ -107,4 +107,3 @@ class StatisticalQueryViewController: UIViewController {
     }
     
 }
-

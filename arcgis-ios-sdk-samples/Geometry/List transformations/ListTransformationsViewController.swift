@@ -47,7 +47,7 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
         //add original graphic to overlay
         addGraphic(originalGeometry, color: .red, style: .square)
         
-        mapView.map?.load() { [weak self] (error) in
+        mapView.map?.load { [weak self] (error) in
             if let error = error {
                 print("map load error = \(error)")
             }

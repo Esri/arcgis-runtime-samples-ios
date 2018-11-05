@@ -121,5 +121,3 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.reverseGeocode(mapPoint)
     }
 }
-
-

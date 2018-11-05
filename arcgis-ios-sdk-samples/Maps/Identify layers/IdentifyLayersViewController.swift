@@ -152,5 +152,3 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     
 }
-
-

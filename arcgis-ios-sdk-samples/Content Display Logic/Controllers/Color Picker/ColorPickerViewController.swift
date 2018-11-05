@@ -34,7 +34,7 @@ class ColorPickerViewController: UITableViewController {
             return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
         }
     }
-    private var onUpdate: ((UIColor)->Void)? = nil
+    private var onUpdate: ((UIColor) -> Void)?
     
     private var hue: CGFloat = 0
     private var saturation: CGFloat = 0

@@ -15,101 +15,80 @@
 import UIKit
 import ArcGIS
 
-class OpenMapURLViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    struct MapAtURL {
-        var title: String
-        var image: UIImage
-        var url: URL
-    }
-    
-    let mapModels:[MapAtURL] = [
-        MapAtURL(title: "Housing with Mortgages",
-                 image: #imageLiteral(resourceName: "OpenMapURLThumbnail1"),
-                 url: URL(string:"https://www.arcgis.com/home/item.html?id=2d6fa24b357d427f9c737774e7b0f977")!),
-        MapAtURL(title: "USA Tapestry Segmentation",
-                 image: #imageLiteral(resourceName: "OpenMapURLThumbnail2"),
-                 url: URL(string:"https://www.arcgis.com/home/item.html?id=01f052c8995e4b9e889d73c3e210ebe3")!),
-        MapAtURL(title: "Geology of United States",
-                 image: #imageLiteral(resourceName: "OpenMapURLThumbnail3"),
-                 url: URL(string:"https://www.arcgis.com/home/item.html?id=92ad152b9da94dee89b9e387dfe21acd")!)
-    ]
+class OpenMapURLViewController: UIViewController {
     
     @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var blurView:UIVisualEffectView!
-    @IBOutlet private weak var tableParentView:UIView!
-    @IBOutlet private weak var tableView:UITableView!
     
-    private var map:AGSMap?
+    /// The portal item ID of the map now shown in the map view.
+    private var displayedMapID: String? {
+        return (mapView.map?.item as? AGSPortalItem)?.itemID
+    }
+
+    /// A model for the maps the user may toggle between.
+    struct MapAtURL {
+        var title: String
+        var thumbnailImage: UIImage
+        var id: String
+        
+        var url: URL? {
+            return URL(string: "https://www.arcgis.com/home/item.html?id=\(id)")
+        }
+    }
     
+    private let mapModels: [MapAtURL] = [
+        MapAtURL(title: "Housing with Mortgages",
+                 thumbnailImage: #imageLiteral(resourceName: "OpenMapURLThumbnail1"),
+                 id: "2d6fa24b357d427f9c737774e7b0f977"),
+        MapAtURL(title: "USA Tapestry Segmentation",
+                 thumbnailImage: #imageLiteral(resourceName: "OpenMapURLThumbnail2"),
+                 id: "01f052c8995e4b9e889d73c3e210ebe3"),
+        MapAtURL(title: "Geology of United States",
+                 thumbnailImage: #imageLiteral(resourceName: "OpenMapURLThumbnail3"),
+                 id: "92ad152b9da94dee89b9e387dfe21acd")
+    ]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let defaultMapIndex = 0
-        
-        show(mapAtURL: mapModels[defaultMapIndex])
-                
-        //UI setup
-        //add rounded corners for table's parent view
-        tableParentView.layer.cornerRadius = 10
-        
-        //self sizing cells
-        tableView.estimatedRowHeight = 50
-        tableView.rowHeight = UITableView.automaticDimension
-        
-        tableView.selectRow(at: IndexPath(row: defaultMapIndex, section: 0), animated: false, scrollPosition: .none)
-        
+        /// The URL of the first map to show.
+        let initialMapURL = mapModels.first!.url!
+
+        // create the map for the url and add it to the map view
+        showMap(at: initialMapURL)
+
         //add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OpenMapURLViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
+            "OpenMapURLViewController",
+            "OpenMapURLSettingsViewController"
+        ]
     }
     
-    func show(mapAtURL:MapAtURL){
-        map = AGSMap(url: mapAtURL.url)
+    /// Creates a map for the url and adds it to the map view.
+    private func showMap(at url: URL){
+        // create a map object from the URL
+        let map = AGSMap(url: url)
+        // add the map to the map view
         mapView.map = map
     }
     
-    //MARK: - Actions
-    
-    @IBAction private func mapsAction() {
-        //toggle table view
-        blurView.isHidden = false
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? OpenMapURLSettingsViewController {
+            controller.initialSelectedID = displayedMapID
+            controller.mapModels = mapModels
+            controller.onChange = {[weak self] (url) in
+                self?.showMap(at: url)
+            }
+            controller.preferredContentSize = CGSize(width: 300, height: 250)
+            controller.presentationController?.delegate = self
+        }
     }
-    
-    //MARK: - TableView data source
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mapModels.count
-    }
-    
-    //MARK: - TableView delegates
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MapAtURLCell", for: indexPath)
-        cell.backgroundColor = .clear
-        
-        let mapModel = mapModels[indexPath.row]
-        
-        cell.textLabel?.text = mapModel.title
-        cell.imageView?.image = mapModel.image
-        cell.imageView?.contentMode = .scaleAspectFill
-        cell.imageView?.clipsToBounds = true
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        show(mapAtURL:mapModels[indexPath.row])
 
-        //toggle table view
-        blurView.isHidden = true
+}
+
+extension OpenMapURLViewController: UIAdaptivePresentationControllerDelegate {
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 85
-    }
 }

@@ -19,11 +19,13 @@ import UIKit
 class OptionsTableViewController: UITableViewController {
     
     private let labels: [String]
+    private let imageNames: [String]
     private var selectedIndex: Int
     private let onChange: (Int) -> Void
     
-    init(labels: [String], selectedIndex: Int, onChange: @escaping (Int) -> Void) {
+    init(labels: [String], imageNames: [String] = [], selectedIndex: Int, onChange: @escaping (Int) -> Void) {
         self.labels = labels
+        self.imageNames = imageNames
         self.selectedIndex = selectedIndex
         self.onChange = onChange
         super.init(nibName: nil, bundle: nil)
@@ -48,6 +50,9 @@ class OptionsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OptionCell", for: indexPath)
         cell.selectionStyle = .none
         cell.textLabel?.text = labels[indexPath.row]
+        if indexPath.row < imageNames.count {
+            cell.imageView?.image = UIImage(named: imageNames[indexPath.row])
+        }
         if selectedIndex == indexPath.row {
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         }

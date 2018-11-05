@@ -138,19 +138,19 @@ class OfflineEditingViewController: UIViewController {
                 
             dispatchGroup.enter()
             featureTable.addedFeaturesCount(completion: { (count: Int, error: Error?) in
-                totalCount = totalCount + count
+                totalCount += count
                 dispatchGroup.leave()
             })
             
             dispatchGroup.enter()
             featureTable.updatedFeaturesCount(completion: { (count: Int, error: Error?) in
-                totalCount = totalCount + count
+                totalCount += count
                 dispatchGroup.leave()
             })
             
             dispatchGroup.enter()
             featureTable.deletedFeaturesCount(completion: { (count: Int, error: Error?) in
-                totalCount = totalCount + count
+                totalCount += count
                 dispatchGroup.leave()
             })
         }
@@ -571,4 +571,3 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
         popupsVC = nil
     }
 }
-

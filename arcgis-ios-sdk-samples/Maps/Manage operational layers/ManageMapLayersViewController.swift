@@ -64,12 +64,27 @@ class ManageMapLayersViewController: UIViewController {
             controller.operationalLayers = mapView.map?.operationalLayers as? [AGSLayer] ?? []
             controller.removedLayers = removedLayers
             controller.onChange = {[weak self] layers in
-                guard let map = self?.mapView.map else {
+                guard let map = self?.mapView.map,
+                    let existingLayers = map.operationalLayers as? [AGSLayer] else {
                     return
                 }
                 // replace the map's operational layers with those from the view controller
-                map.operationalLayers.removeAllObjects()
-                map.operationalLayers.addObjects(from: layers)
+                let layersToRemove = Set(existingLayers).subtracting(Set(layers))
+                // remove the layers not present in the new array
+                map.operationalLayers.removeObjects(in: Array(layersToRemove))
+                
+                // set the order of the operationalLayers to match the new array, inserting layers as needed
+                for (layerIndex, layer) in layers.enumerated() {
+                    let existingIndex = map.operationalLayers.index(of: layer)
+                    if existingIndex != layerIndex {
+                        if existingIndex != NSNotFound {
+                            map.operationalLayers.exchangeObject(at: existingIndex, withObjectAt: layerIndex)
+                        }
+                        else {
+                            map.operationalLayers.insert(layer, at: layerIndex)
+                        }
+                    }
+                }
             }
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             navController.presentationController?.delegate = self

@@ -50,15 +50,15 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
         
         //load map packages from the documents directory
         //added using iTunes
-        let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
-        let subpaths = FileManager.default.subpaths(atPath: path[0])!
+        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let subpaths = FileManager.default.subpaths(atPath: documentDirectoryURL.path)!
         
         let predicate = NSPredicate(format: "SELF MATCHES %@", ".*mmpk$")
         let mmpks = subpaths.filter({ (objc) -> Bool in
             return predicate.evaluate(with: objc)
         })
         let documentMMPKPaths = mmpks.map({ (name:String) -> String in
-            return "\(path[0])/\(name)"
+            return documentDirectoryURL.appendingPathComponent(name).path
         })
         
         //create map packages from the paths

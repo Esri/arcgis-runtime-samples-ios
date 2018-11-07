@@ -101,11 +101,13 @@ class GenerateGeodatabaseViewController: UIViewController {
                 //create a unique name for the geodatabase based on current timestamp
                 let dateFormatter = ISO8601DateFormatter()
                 
-                let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-                let fullPath = "\(path)/\(dateFormatter.string(from: Date())).geodatabase"
+                let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                let downloadFileURL = documentDirectoryURL
+                    .appendingPathComponent(dateFormatter.string(from: Date()))
+                    .appendingPathExtension("geodatabase")
                 
                 //request a job to generate the geodatabase
-                let generateJob = self.syncTask.generateJob(with: params, downloadFileURL: URL(string: fullPath)!)
+                let generateJob = self.syncTask.generateJob(with: params, downloadFileURL: downloadFileURL)
                 self.activeJob = generateJob
                 //kick off the job
                 generateJob.start(statusHandler: { (status: AGSJobStatus) -> Void in

@@ -39,15 +39,15 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
         self.bundleTPKPaths = Bundle.main.paths(forResourcesOfType: "tpk", inDirectory: nil)
         self.tableView.reloadData()
         
-        let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
-        let subpaths = FileManager.default.subpaths(atPath: path[0])
+        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let subpaths = FileManager.default.subpaths(atPath: documentDirectoryURL.path)
         
         let predicate = NSPredicate(format: "SELF MATCHES %@", ".*tpk$")
         let tpks = subpaths?.filter { (objc) -> Bool in
             return predicate.evaluate(with: objc)
         }
         self.documentTPKPaths = tpks?.map { (name:String) -> String in
-            return "\(path[0])/\(name)"
+            return documentDirectoryURL.appendingPathComponent(name).path
         }
     }
     

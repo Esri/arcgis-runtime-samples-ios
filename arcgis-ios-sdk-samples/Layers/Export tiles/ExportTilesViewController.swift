@@ -126,11 +126,11 @@ class ExportTilesViewController: UIViewController {
     
     private func exportTilesUsingParameters(_ params: AGSExportTileCacheParameters) {
         //destination path for the tpk, including name
-        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let destinationPath = "\(path)/myTileCache.tpk"
+        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let downloadFileURL = documentDirectoryURL.appendingPathComponent("myTileCache.tpk")
         
         //get the job
-        self.job = self.exportTask.exportTileCacheJob(with: params, downloadFileURL: URL(string: destinationPath)!)
+        self.job = self.exportTask.exportTileCacheJob(with: params, downloadFileURL: downloadFileURL)
         //run the job
         self.job.start(statusHandler: { (status: AGSJobStatus) -> Void in
             //show job status
@@ -164,12 +164,13 @@ class ExportTilesViewController: UIViewController {
     
     private func deleteAllTpks() {
         
-        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         do {
-            let files = try FileManager.default.contentsOfDirectory(atPath: path)
+            let files = try FileManager.default.contentsOfDirectory(atPath: documentDirectoryURL.path)
             for file in files {
                 if file.hasSuffix(".tpk") {
-                    try FileManager.default.removeItem(atPath: (path as NSString).appendingPathComponent(file))
+                    let url = documentDirectoryURL.appendingPathComponent(file)
+                    try FileManager.default.removeItem(at: url)
                 }
             }
             print("deleted all local data")

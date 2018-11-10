@@ -187,14 +187,14 @@ class OfflineEditingViewController: UIViewController {
     
     private func deleteAllGeodatabases() {
         //Remove all files with .geodatabase, .geodatabase-shm and .geodatabase-wal file extensions
-        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         do {
-            let files = try FileManager.default.contentsOfDirectory(atPath: path)
+            let files = try FileManager.default.contentsOfDirectory(atPath: documentDirectoryURL.path)
             for file in files {
                 let remove = file.hasSuffix(".geodatabase") || file.hasSuffix(".geodatabase-shm") || file.hasSuffix(".geodatabase-wal")
                 if remove {
-                    try FileManager.default.removeItem(atPath: (path as NSString).appendingPathComponent(file))
-                    print("Deleting file: \(file)")
+                    let url = documentDirectoryURL.appendingPathComponent(file)
+                    try FileManager.default.removeItem(at: url)
                 }
             }
             print("Deleted all local data")
@@ -323,15 +323,17 @@ class OfflineEditingViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
-        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let fullPath = "\(path)/\(dateFormatter.string(from: Date())).geodatabase"
+        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let downloadFileURL = documentDirectoryURL
+            .appendingPathComponent(dateFormatter.string(from: Date()))
+            .appendingPathExtension("geodatabase")
         
         guard let syncTask = syncTask else {
             return
         }
             
         //create a generate job from the sync task
-        let generateJob = syncTask.generateJob(with: params, downloadFileURL: URL(string: fullPath)!)
+        let generateJob = syncTask.generateJob(with: params, downloadFileURL: downloadFileURL)
         self.generateJob = generateJob
         
         //start the job

@@ -15,15 +15,15 @@
 import UIKit
 
 protocol EAOptionsVCDelegate: AnyObject {
-    func optionsViewController(_ optionsViewController:EAOptionsViewController, didSelectOptionAtIndex index:Int)
+    func optionsViewController(_ optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int)
 }
 
 class EAOptionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIBarPositioningDelegate {
     
-    @IBOutlet private weak var tableView:UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
-    var options:[String]!
-    weak var delegate:EAOptionsVCDelegate!
+    var options: [String]!
+    weak var delegate: EAOptionsVCDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()

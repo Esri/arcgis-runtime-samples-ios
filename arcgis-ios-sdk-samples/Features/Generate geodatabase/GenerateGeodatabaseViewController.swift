@@ -65,7 +65,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                     
                     //For each layer in the serice, add a layer to the map
                     let layerURL = self.syncTask.url!.appendingPathComponent(String(index))
-                    let featureTable = AGSServiceFeatureTable(url:layerURL)
+                    let featureTable = AGSServiceFeatureTable(url: layerURL)
                     let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                     featureLayer.name = layerInfo.name
                     featureLayer.opacity = 0.65
@@ -138,7 +138,7 @@ class GenerateGeodatabaseViewController: UIViewController {
         guard let generatedGeodatabase = generatedGeodatabase else {
             return
         }
-        generatedGeodatabase.load { [weak self] (error:Error?) -> Void in
+        generatedGeodatabase.load { [weak self] (error: Error?) -> Void in
             
             guard let self = self else {
                 return

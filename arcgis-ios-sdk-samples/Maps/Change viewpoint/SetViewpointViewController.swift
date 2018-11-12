@@ -17,13 +17,13 @@ import ArcGIS
 
 class SetViewpointViewController: UIViewController {
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var segmentedControl:UISegmentedControl!
+    @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet private weak var segmentedControl: UISegmentedControl!
     
-    private var map:AGSMap!
+    private var map: AGSMap!
     
-    private var griffithParkGeometry:AGSPolygon!
-    private var londonCoordinate:AGSPoint!
+    private var griffithParkGeometry: AGSPolygon!
+    private var londonCoordinate: AGSPoint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ class SetViewpointViewController: UIViewController {
 
     }
     
-    func geometryFromTextFile(_ filename:String) -> AGSGeometry? {
+    func geometryFromTextFile(_ filename: String) -> AGSGeometry? {
         if let filepath = Bundle.main.path(forResource: filename, ofType: "txt") {
             if let jsonString = try? String(contentsOfFile: filepath, encoding: String.Encoding.utf8) {
                 let data = jsonString.data(using: String.Encoding.utf8, allowLossyConversion: false)
@@ -68,7 +68,7 @@ class SetViewpointViewController: UIViewController {
 
     //MARK: - Actions
     
-    @IBAction private func valueChanged(_ control:UISegmentedControl) {
+    @IBAction private func valueChanged(_ control: UISegmentedControl) {
         switch control.selectedSegmentIndex {
         case 0:
             self.mapView.setViewpointGeometry(self.griffithParkGeometry, padding: 50, completion: nil)
@@ -80,7 +80,7 @@ class SetViewpointViewController: UIViewController {
             let currentCenter = self.mapView.visibleArea!.extent.center
             self.mapView.setViewpoint(AGSViewpoint(center: currentCenter, scale: targetScale), duration: 5, curve: AGSAnimationCurve.easeInOutSine) { (finishedWithoutInterruption) -> Void in
                 if(finishedWithoutInterruption){
-                    self.mapView.setViewpoint(AGSViewpoint(center: currentCenter, scale: currentScale), duration: 5, curve: AGSAnimationCurve.easeInOutSine, completion:  nil);
+                    self.mapView.setViewpoint(AGSViewpoint(center: currentCenter, scale: currentScale), duration: 5, curve: AGSAnimationCurve.easeInOutSine, completion: nil);
                 }
             }
         default:

@@ -358,7 +358,7 @@ private class TouchView: UIView {
         
         originalCenter = center
         
-        super.init(frame: CGRect(origin: CGPoint.zero, size:size))
+        super.init(frame: CGRect(origin: CGPoint.zero, size: size))
         
         self.center = center
         layer.cornerRadius = size.width / 2.0
@@ -380,7 +380,7 @@ private class DemoTouchesView: UIView {
     var pingWidth: CGFloat = 2.0
 
     var currentTouches: Set<UITouch>?
-    var touchViewMap: [UITouch:TouchView] = [:]
+    var touchViewMap: [UITouch: TouchView] = [:]
     
     static let sharedInstance: DemoTouchesView = {
         var dtv = DemoTouchesView()

@@ -140,7 +140,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
         progressParentView.isHidden = false
         
         //start the job
-        generateOfflineMapJob.start(statusHandler: nil) { [weak self] (result:AGSGenerateOfflineMapResult?, error:Error?) in
+        generateOfflineMapJob.start(statusHandler: nil) { [weak self] (result: AGSGenerateOfflineMapResult?, error: Error?) in
             
             guard let self = self else {
                 return
@@ -172,7 +172,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
             
             let errorMessages = layerErrors.map { "\($0.key.name): \($0.value.localizedDescription)" } +
                 tableErrors.map { "\($0.key.displayName): \($0.value.localizedDescription)" }
-            presentAlert(title:"Offline Map Generated with Errors",
+            presentAlert(title: "Offline Map Generated with Errors",
                          message: "The following error(s) occurred while generating the offline map:\n\n\(errorMessages.joined(separator: "\n"))")
         }
         

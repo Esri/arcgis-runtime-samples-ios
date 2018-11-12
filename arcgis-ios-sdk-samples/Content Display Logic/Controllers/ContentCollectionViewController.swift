@@ -16,10 +16,10 @@ import UIKit
 
 class ContentCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    @IBOutlet private var collectionViewFlowLayout:UICollectionViewFlowLayout!
+    @IBOutlet private var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
     /// The categories to display in the collection view.
-    var categories:[Category] = []{
+    var categories: [Category] = []{
         didSet{
             // add search only after setting categories to ensure that the samples are available
             addSearchController()
@@ -35,7 +35,7 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         searchResultsController.searchEngine = SampleSearchEngine(samples: allSamples)
         
         // create the search controller
-        let searchController = UISearchController(searchResultsController:searchResultsController)
+        let searchController = UISearchController(searchResultsController: searchResultsController)
         searchController.obscuresBackgroundDuringPresentation = true
         searchController.hidesNavigationBarDuringPresentation = false
         // send search query updates to the results controller

@@ -18,19 +18,19 @@ import ArcGIS
 
 protocol MapPackageCellDelegate: AnyObject {
     
-    func mapPackageCell(_ mapPackageCell:MapPackageCell, didSelectMap map:AGSMap)
+    func mapPackageCell(_ mapPackageCell: MapPackageCell, didSelectMap map: AGSMap)
 }
 
 
 class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
 
-    @IBOutlet var titleLabel:UILabel!
-    @IBOutlet var collectionView:UICollectionView!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var collectionView: UICollectionView!
     
-    @IBOutlet var collectionViewHeightConstraint:NSLayoutConstraint!
-    @IBOutlet var collectionViewTopConstraint:NSLayoutConstraint!
+    @IBOutlet var collectionViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var collectionViewTopConstraint: NSLayoutConstraint!
     
-    weak var delegate:MapPackageCellDelegate?
+    weak var delegate: MapPackageCellDelegate?
     
     var isCollapsed = true {
         didSet {
@@ -38,14 +38,14 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         }
     }
     
-    var mapPackage:AGSMobileMapPackage! {
+    var mapPackage: AGSMobileMapPackage! {
         didSet {
             self.loadMapPackage()
         }
     }
     
     func loadMapPackage() {
-        self.mapPackage.load { [weak self] (error:Error?) in
+        self.mapPackage.load { [weak self] (error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
             }

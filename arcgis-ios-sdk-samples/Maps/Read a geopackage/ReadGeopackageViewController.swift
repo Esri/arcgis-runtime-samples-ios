@@ -16,10 +16,10 @@ import ArcGIS
 
 class ReadGeopackageViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
-    @IBOutlet weak var mapView:AGSMapView!
+    @IBOutlet weak var mapView: AGSMapView!
     
-    private var geoPackage:AGSGeoPackage?
-    private var allLayers:[AGSLayer] = []
+    private var geoPackage: AGSGeoPackage?
+    private var allLayers: [AGSLayer] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()

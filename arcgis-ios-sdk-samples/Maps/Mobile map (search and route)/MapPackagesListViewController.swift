@@ -18,11 +18,11 @@ import ArcGIS
 
 class MapPackagesListViewController: UITableViewController, MapPackageCellDelegate {
     
-    private var mapPackagesInBundle:[AGSMobileMapPackage]!
-    private var mapPackagesInDocumentsDir:[AGSMobileMapPackage]!
+    private var mapPackagesInBundle: [AGSMobileMapPackage]!
+    private var mapPackagesInDocumentsDir: [AGSMobileMapPackage]!
     
-    private var selectedRowIndexPath:IndexPath!
-    private var selectedMap:AGSMap!
+    private var selectedRowIndexPath: IndexPath!
+    private var selectedMap: AGSMap!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +57,7 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
         let mmpks = subpaths.filter({ (objc) -> Bool in
             return predicate.evaluate(with: objc)
         })
-        let documentMMPKPaths = mmpks.map({ (name:String) -> String in
+        let documentMMPKPaths = mmpks.map({ (name: String) -> String in
             return documentDirectoryURL.appendingPathComponent(name).path
         })
         
@@ -90,7 +90,7 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MapPackageCell", for: indexPath) as! MapPackageCell
         
-        var mapPackage:AGSMobileMapPackage
+        var mapPackage: AGSMobileMapPackage
         
         if indexPath.section == 0 {
             mapPackage = self.mapPackagesInBundle[indexPath.row]
@@ -149,7 +149,7 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
             let controller = segue.destination as! MobileMapViewController
             controller.map = self.selectedMap
             
-            var mapPackage:AGSMobileMapPackage!
+            var mapPackage: AGSMobileMapPackage!
             
             if self.selectedRowIndexPath.section == 0 {
                 mapPackage = self.mapPackagesInBundle[self.selectedRowIndexPath.row]

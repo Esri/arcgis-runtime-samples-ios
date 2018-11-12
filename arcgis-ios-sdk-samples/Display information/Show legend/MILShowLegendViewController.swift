@@ -17,12 +17,12 @@ import ArcGIS
 
 class MILShowLegendViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var legendBBI:UIBarButtonItem!
+    @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet private weak var legendBBI: UIBarButtonItem!
     
-    private var map:AGSMap!
-    private var mapImageLayer:AGSArcGISMapImageLayer!
-    private var popover:UIPopoverPresentationController!
+    private var map: AGSMap!
+    private var mapImageLayer: AGSArcGISMapImageLayer!
+    private var popover: UIPopoverPresentationController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,7 @@ class MILShowLegendViewController: UIViewController, UIAdaptivePresentationContr
         //add feature layer to the map
         self.map.operationalLayers.add(featureLayer)
         
-        self.map.load { [weak self] (error:Error?) -> Void in
+        self.map.load { [weak self] (error: Error?) -> Void in
             if error == nil {
                 self?.legendBBI.isEnabled = true
             }

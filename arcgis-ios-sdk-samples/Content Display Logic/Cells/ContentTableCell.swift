@@ -16,10 +16,10 @@ import UIKit
 
 class ContentTableCell: UITableViewCell {
 
-    @IBOutlet var titleLabel:UILabel!
-    @IBOutlet var detailLabel:UILabel!
-    @IBOutlet var infoButton:UIButton!
-    @IBOutlet var parentView:UIView!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var detailLabel: UILabel!
+    @IBOutlet var infoButton: UIButton!
+    @IBOutlet var parentView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

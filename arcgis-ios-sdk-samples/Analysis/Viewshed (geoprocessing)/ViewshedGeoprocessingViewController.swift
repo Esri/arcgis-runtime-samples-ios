@@ -19,7 +19,7 @@ let viewshedURLString = "https://sampleserver6.arcgisonline.com/arcgis/rest/serv
 
 class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDelegate {
 
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
     private var geoprocessingTask: AGSGeoprocessingTask!
     private var geoprocessingJob: AGSGeoprocessingJob!

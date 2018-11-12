@@ -16,9 +16,9 @@ import UIKit
 
 class SourceCodeBarButtonItem: UIBarButtonItem {
    
-    var filenames:[String]?
-    weak var navController:UINavigationController?
-    var readmeURL:URL?
+    var filenames: [String]?
+    weak var navController: UINavigationController?
+    var readmeURL: URL?
     
     override init() {
         super.init()

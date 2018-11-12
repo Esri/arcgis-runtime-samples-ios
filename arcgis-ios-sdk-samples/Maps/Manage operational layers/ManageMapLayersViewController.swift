@@ -17,10 +17,10 @@ import ArcGIS
 
 class ManageMapLayersViewController: UIViewController, MMLLayersViewControllerDelegate {
     
-    @IBOutlet weak var mapView:AGSMapView!
-    var map:AGSMap!
+    @IBOutlet weak var mapView: AGSMapView!
+    var map: AGSMap!
     
-    private var deletedLayers:[AGSLayer]!
+    private var deletedLayers: [AGSLayer]!
     
     override func viewDidLoad() {
         super.viewDidLoad()

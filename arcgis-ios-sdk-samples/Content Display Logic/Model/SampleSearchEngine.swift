@@ -16,12 +16,12 @@ import UIKit
 
 class SampleSearchEngine {
     
-    private var displayNamesByReadmeWords:[String: [String]] = [:]
+    private var displayNamesByReadmeWords: [String: [String]] = [:]
     private var isLoadingReadmeIndex = false
     
-    private let samples:[Sample]
+    private let samples: [Sample]
     
-    init(samples:[Sample]) {
+    init(samples: [Sample]) {
         self.samples = samples
         
         isLoadingReadmeIndex = true
@@ -41,14 +41,14 @@ class SampleSearchEngine {
         
         let tagger = NSLinguisticTagger(tagSchemes: [.tokenType, .nameType, .lexicalClass], options: 0)
         
-        func addToIndex(string:String,sampleDisplayName:String){
+        func addToIndex(string: String,sampleDisplayName: String){
             
             tagger.string = string
             let range = NSRange(location: 0, length: string.count)
             tagger.enumerateTags(in: range,
                                  scheme: NSLinguisticTagScheme.lexicalClass,
                                  options: [.omitWhitespace, .omitPunctuation],
-                                 using: { (tag:NSLinguisticTag?, tokenRange:NSRange, sentenceRange:NSRange, _) -> Void in
+                                 using: { (tag: NSLinguisticTag?, tokenRange: NSRange, sentenceRange: NSRange, _) -> Void in
                 
                 guard let tag = tag else {
                     return
@@ -80,13 +80,13 @@ class SampleSearchEngine {
             autoreleasepool {
                 if let readmeURL = sample.readmeURL,
                     let readmeContent = try? String(contentsOf: readmeURL, encoding: .utf8) {
-                    addToIndex(string:readmeContent, sampleDisplayName:sample.name)
+                    addToIndex(string: readmeContent, sampleDisplayName: sample.name)
                 }
             }
         }
     }
     
-    private func samplesWithReadmes(matching query:String) -> [Sample] {
+    private func samplesWithReadmes(matching query: String) -> [Sample] {
         
         // skip readmes if not yet loaded
         guard !isLoadingReadmeIndex else{
@@ -106,7 +106,7 @@ class SampleSearchEngine {
         return samplesForDisplayNames(displayNamesForReadmeMatches)
     }
     
-    private func samplesWithMetadata(matching query:String) -> [Sample] {
+    private func samplesWithMetadata(matching query: String) -> [Sample] {
         
         // the normalized term to find
         let lowercasedQuery = query.lowercased()
@@ -159,7 +159,7 @@ class SampleSearchEngine {
         return matchingSamples
     }
     
-    private func samplesForDisplayNames(_ names:[String]) -> [Sample] {
+    private func samplesForDisplayNames(_ names: [String]) -> [Sample] {
         // preserve order
         return names.compactMap { (name) -> Sample? in
             return samples.first(where: { (sample) -> Bool in
@@ -170,7 +170,7 @@ class SampleSearchEngine {
     
     //MARK: - Public methods
     
-    func sortedSamples(matching query:String) -> [Sample] {
+    func sortedSamples(matching query: String) -> [Sample] {
         
         // get nodes with titles or descriptions matching the query
         var matchingNodes = samplesWithMetadata(matching: query)

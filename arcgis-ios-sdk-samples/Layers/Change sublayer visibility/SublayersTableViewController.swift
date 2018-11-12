@@ -62,7 +62,7 @@ class SublayersTableViewController: UITableViewController {
         return cell
     }
     
-    @objc func switchChanged(_ sender:UISwitch) {
+    @objc func switchChanged(_ sender: UISwitch) {
         let index = sender.tag
         //change the visiblity
         let sublayer = self.sublayers[index]

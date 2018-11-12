@@ -19,9 +19,9 @@ import ArcGIS
 
 class WebMapViewController: UIViewController {
 
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
-    var portalItem:AGSPortalItem?
+    var portalItem: AGSPortalItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -17,19 +17,19 @@ import UIKit
 import ArcGIS
 
 protocol DirectionsListVCDelegate: AnyObject {
-    func directionsListViewController(_ directionsListViewController:DirectionsListViewController, didSelectDirectionManuever directionManeuver:AGSDirectionManeuver)
-    func directionsListViewControllerDidDeleteRoute(_ directionsListViewController:DirectionsListViewController)
+    func directionsListViewController(_ directionsListViewController: DirectionsListViewController, didSelectDirectionManuever directionManeuver: AGSDirectionManeuver)
+    func directionsListViewControllerDidDeleteRoute(_ directionsListViewController: DirectionsListViewController)
 }
 
 class DirectionsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet var tableView:UITableView!
-    @IBOutlet var milesLabel:UILabel!
-    @IBOutlet var minutesLabel:UILabel!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var milesLabel: UILabel!
+    @IBOutlet var minutesLabel: UILabel!
     
-    weak var delegate:DirectionsListVCDelegate?
+    weak var delegate: DirectionsListVCDelegate?
     
-    var route:AGSRoute! {
+    var route: AGSRoute! {
         didSet {
             self.tableView?.reloadData()
             self.updateLabels()

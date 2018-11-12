@@ -16,16 +16,16 @@ import UIKit
 
 protocol SaveAsVCDelegate: AnyObject {
     func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String)
-    func saveAsViewControllerDidCancel(_ saveAsViewController:SaveAsViewController)
+    func saveAsViewControllerDidCancel(_ saveAsViewController: SaveAsViewController)
 }
 
 class SaveAsViewController: UIViewController {
     
-    @IBOutlet  weak var titleTextField:UITextField!
-    @IBOutlet private weak var tagsTextField:UITextField!
-    @IBOutlet private weak var descriptionTextView:UITextView!
+    @IBOutlet  weak var titleTextField: UITextField!
+    @IBOutlet private weak var tagsTextField: UITextField!
+    @IBOutlet private weak var descriptionTextView: UITextView!
     
-    weak var delegate:SaveAsVCDelegate?
+    weak var delegate: SaveAsVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

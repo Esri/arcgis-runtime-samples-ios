@@ -224,7 +224,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         headerButton.frame = CGRect(x: tableView.frame.size.width - 32, y: 11, width: 22, height: 22)
         headerButton.tintColor = .white
         headerButton.tag = section
-        headerButton.addTarget(self, action:  #selector(headerButtonAction(_:)), for: .touchUpInside)
+        headerButton.addTarget(self, action: #selector(headerButtonAction(_:)), for: .touchUpInside)
         returnedView.addSubview(headerButton)
         headerButton.translatesAutoresizingMaskIntoConstraints = false
         returnedView.addConstraint(NSLayoutConstraint(item: headerButton, attribute: .centerY, relatedBy: .equal, toItem: returnedView, attribute: .centerY, multiplier: 1, constant: 0))

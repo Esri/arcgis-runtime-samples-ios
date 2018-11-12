@@ -17,20 +17,20 @@ import ArcGIS
 
 class FindRouteViewController: UIViewController {
     
-    @IBOutlet var mapView:AGSMapView!
-    @IBOutlet var routeBBI:UIBarButtonItem!
-    @IBOutlet var directionsListBBI:UIBarButtonItem!
+    @IBOutlet var mapView: AGSMapView!
+    @IBOutlet var routeBBI: UIBarButtonItem!
+    @IBOutlet var directionsListBBI: UIBarButtonItem!
     
-    var routeTask:AGSRouteTask!
-    var routeParameters:AGSRouteParameters!
+    var routeTask: AGSRouteTask!
+    var routeParameters: AGSRouteParameters!
     
     var stopGraphicsOverlay = AGSGraphicsOverlay()
     var routeGraphicsOverlay = AGSGraphicsOverlay()
     
-    var stop1Geometry:AGSPoint!
-    var stop2Geometry:AGSPoint!
+    var stop1Geometry: AGSPoint!
+    var stop2Geometry: AGSPoint!
     
-    var generatedRoute:AGSRoute! {
+    var generatedRoute: AGSRoute! {
         didSet {
             let flag = generatedRoute != nil
             self.directionsListBBI.isEnabled = flag
@@ -72,7 +72,7 @@ class FindRouteViewController: UIViewController {
     }
     
     //method provides a text symbol for stop with specified parameters
-    func stopSymbol(withName name:String, textColor:UIColor) -> AGSTextSymbol {
+    func stopSymbol(withName name: String, textColor: UIColor) -> AGSTextSymbol {
         return AGSTextSymbol(text: name, color: textColor, size: 20, horizontalAlignment: .center, verticalAlignment: .middle)
     }
     

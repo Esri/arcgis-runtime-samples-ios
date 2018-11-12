@@ -17,11 +17,11 @@ import ArcGIS
 
 class DisplayLocationViewController: UIViewController, CustomContextSheetDelegate {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    private var map:AGSMap!
+    private var map: AGSMap!
     
-    private var sheet:CustomContextSheet!
+    private var sheet: CustomContextSheet!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +46,7 @@ class DisplayLocationViewController: UIViewController, CustomContextSheetDelegat
         
         //if the user pans the map in Navigation mode, the autoPanMode will automatically change to Off mode
         //in order to reflect those changes on the context sheet listen to the autoPanModeChangedHandler
-        self.mapView.locationDisplay.autoPanModeChangedHandler = { [weak self] (autoPanMode:AGSLocationDisplayAutoPanMode) in
+        self.mapView.locationDisplay.autoPanModeChangedHandler = { [weak self] (autoPanMode: AGSLocationDisplayAutoPanMode) in
             DispatchQueue.main.async {
                 self?.sheet.selectedIndex = autoPanMode.rawValue + 1
             }
@@ -74,9 +74,9 @@ class DisplayLocationViewController: UIViewController, CustomContextSheetDelegat
     
     //to start location display, the first time
     //dont forget to add the location request field in the info.plist file
-    func startLocationDisplay(with autoPanMode:AGSLocationDisplayAutoPanMode) {
+    func startLocationDisplay(with autoPanMode: AGSLocationDisplayAutoPanMode) {
         self.mapView.locationDisplay.autoPanMode = autoPanMode
-        self.mapView.locationDisplay.start { (error:Error?) -> Void in
+        self.mapView.locationDisplay.start { (error: Error?) -> Void in
             if let error = error {
                 self.presentAlert(error: error)
                 

@@ -17,7 +17,7 @@ import ArcGIS
 
 class SwitchBasemapViewController: UIViewController {
 
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
     /// The basemap options plus labels.
     private let basemapInfoArray: [(basemap: AGSBasemap, label: String)] = [

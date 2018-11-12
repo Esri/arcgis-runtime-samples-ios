@@ -17,9 +17,9 @@ import ArcGIS
 
 class MILLegendTableViewController: UITableViewController {
 
-    var operationalLayers:NSMutableArray!
-    var legendInfosDict = [String:[AGSLegendInfo]]()
-    private var orderArray:[AGSLayerContent]!
+    var operationalLayers: NSMutableArray!
+    var legendInfosDict = [String: [AGSLegendInfo]]()
+    private var orderArray: [AGSLayerContent]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class MILLegendTableViewController: UITableViewController {
         self.populateLegends(with: self.operationalLayers as AnyObject as! [AGSLayerContent])
     }
     
-    func populateLegends(with layers:[AGSLayerContent]) {
+    func populateLegends(with layers: [AGSLayerContent]) {
 
         for i in 0...layers.count-1 {
             let layer = layers[i]
@@ -39,7 +39,7 @@ class MILLegendTableViewController: UITableViewController {
             else {
                 //else if no sublayers fetch legend info
                 self.orderArray.append(layer)
-                layer.fetchLegendInfos(completion: { [weak self] (legendInfos:[AGSLegendInfo]?, error:Error?) -> Void in
+                layer.fetchLegendInfos(completion: { [weak self] (legendInfos: [AGSLegendInfo]?, error: Error?) -> Void in
 
                     if let error = error {
                         print(error)
@@ -94,7 +94,7 @@ class MILLegendTableViewController: UITableViewController {
         return cell
     }
     
-    func geometryTypeForSymbol(_ symbol:AGSSymbol) -> AGSGeometryType {
+    func geometryTypeForSymbol(_ symbol: AGSSymbol) -> AGSGeometryType {
         if symbol is AGSFillSymbol {
             return AGSGeometryType.polygon
         }
@@ -112,7 +112,7 @@ class MILLegendTableViewController: UITableViewController {
         return String(UInt(bitPattern: ObjectIdentifier(obj)))
     }
 
-    func nameForLayerContent(_ layerContent:AGSLayerContent) -> String {
+    func nameForLayerContent(_ layerContent: AGSLayerContent) -> String {
         if let layer = layerContent as? AGSLayer {
             return layer.name
         }

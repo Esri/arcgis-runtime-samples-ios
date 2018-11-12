@@ -17,10 +17,10 @@ import ArcGIS
 
 class MapViewDrawStatusViewController: UIViewController {
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var activityIndicatorView:UIView!
+    @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet private weak var activityIndicatorView: UIView!
     
-    private var map:AGSMap?
+    private var map: AGSMap?
     /// The observation of the map view's draw status.
     private var drawStatusObservation: NSKeyValueObservation?
     

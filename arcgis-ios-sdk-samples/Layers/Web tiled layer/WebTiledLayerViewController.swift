@@ -19,7 +19,7 @@ import ArcGIS
 
 class WebTiledLayerViewController: UIViewController {
 
-    @IBOutlet private var mapView:AGSMapView!
+    @IBOutlet private var mapView: AGSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class WebTiledLayerViewController: UIViewController {
         self.applyWebTiledLayer(at: 0)
     }
     
-    private func applyWebTiledLayer(at index:Int) {
+    private func applyWebTiledLayer(at index: Int) {
         
         //web tiled layer
         let webTiledLayer = self.webTiledLayer(for: index)
@@ -45,7 +45,7 @@ class WebTiledLayerViewController: UIViewController {
         self.mapView.map = map
     }
     
-    private func webTiledLayer(for index:Int) -> AGSWebTiledLayer {
+    private func webTiledLayer(for index: Int) -> AGSWebTiledLayer {
         
         //url template for web tiled layer
         let urlTemplate: String

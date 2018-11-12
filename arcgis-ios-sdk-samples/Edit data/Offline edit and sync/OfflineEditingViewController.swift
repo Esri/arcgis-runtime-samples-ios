@@ -204,7 +204,7 @@ class OfflineEditingViewController: UIViewController {
         }
     }
     
-    @objc func sketchChanged(_ notification:Notification) {
+    @objc func sketchChanged(_ notification: Notification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the done bar button item
         if let geometry = self.mapView.sketchEditor?.geometry , !geometry.isEmpty {
@@ -222,7 +222,7 @@ class OfflineEditingViewController: UIViewController {
         guard let generatedGeodatabase = generatedGeodatabase else {
             return
         }
-        generatedGeodatabase.load(completion: { [weak self] (error:Error?) -> Void in
+        generatedGeodatabase.load(completion: { [weak self] (error: Error?) -> Void in
             
             guard let self = self else {
                 return
@@ -569,7 +569,7 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
     
     func popupsViewControllerDidFinishViewingPopups(_ popupsViewController: AGSPopupsViewController) {
         //dismiss the popups view controller
-        dismiss(animated: true, completion:nil)
+        dismiss(animated: true, completion: nil)
         popupsVC = nil
     }
 }

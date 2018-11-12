@@ -17,11 +17,11 @@ import ArcGIS
 
 class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     
-    @IBOutlet private var mapView:AGSMapView!
+    @IBOutlet private var mapView: AGSMapView!
     
-    private var featureTable:AGSServiceFeatureTable!
-    private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancelable!
+    private var featureTable: AGSServiceFeatureTable!
+    private var featureLayer: AGSFeatureLayer!
+    private var lastQuery: AGSCancelable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +48,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         map.operationalLayers.add(featureLayer)
     }
     
-    func addFeature(at mappoint:AGSPoint) {
+    func addFeature(at mappoint: AGSPoint) {
        
         //disable interaction with map view
         mapView.isUserInteractionEnabled = false
@@ -57,7 +57,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         let normalizedGeometry = AGSGeometryEngine.normalizeCentralMeridian(of: mappoint)!
         
         //attributes for the new feature
-        let featureAttributes = ["typdamage" : "Minor", "primcause" : "Earthquake"]
+        let featureAttributes = ["typdamage": "Minor", "primcause": "Earthquake"]
         //create a new feature
         let feature = featureTable.createFeature(attributes: featureAttributes, geometry: normalizedGeometry)
         

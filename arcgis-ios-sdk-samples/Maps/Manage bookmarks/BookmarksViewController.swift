@@ -17,11 +17,11 @@ import ArcGIS
 
 class BookmarksViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    private var map:AGSMap!
+    private var map: AGSMap!
     
-    private weak var bookmarksListVC:BookmarksListViewController!
+    private weak var bookmarksListVC: BookmarksListViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,7 @@ class BookmarksViewController: UIViewController, UIAdaptivePresentationControlle
     
     private func addDefaultBookmarks() {
         //create a few bookmarks and add them to the map
-        var viewpoint:AGSViewpoint, bookmark:AGSBookmark
+        var viewpoint: AGSViewpoint, bookmark: AGSBookmark
         
         //Mysterious Desert Pattern
         viewpoint = AGSViewpoint(latitude: 27.3805833, longitude: 33.6321389, scale: 6e3)
@@ -109,7 +109,7 @@ class BookmarksViewController: UIViewController, UIAdaptivePresentationControlle
         }
     }
     
-    private func addBookmark(withName name:String) {
+    private func addBookmark(withName name: String) {
         //instantiate a bookmark and set the properties
         let bookmark = AGSBookmark()
         bookmark.name = name
@@ -134,7 +134,7 @@ class BookmarksViewController: UIViewController, UIAdaptivePresentationControlle
             //assign the bookmarks to be shown
             controller.bookmarks = self.map.bookmarks as? [AGSBookmark]
             //set the closure to be executed when the user selects a bookmark
-            controller.setSelectAction { [weak self] (viewpoint:AGSViewpoint) -> Void in
+            controller.setSelectAction { [weak self] (viewpoint: AGSViewpoint) -> Void in
                 self?.mapView.setViewpoint(viewpoint)
             }
         }

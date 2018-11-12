@@ -16,12 +16,12 @@ import UIKit
 
 
 protocol WorldAddressesVCDelegate: AnyObject {
-    func worldAddressesViewController(_ worldAddressesViewController: WorldAddressesViewController, didSelectAddress address:String)
+    func worldAddressesViewController(_ worldAddressesViewController: WorldAddressesViewController, didSelectAddress address: String)
 }
     
 class WorldAddressesViewController: UITableViewController {
         
-        weak var delegate:WorldAddressesVCDelegate?
+        weak var delegate: WorldAddressesVCDelegate?
         
         private var addresses = ["277 N Avenida Caballeros, Palm Springs, CA", "380 New York St, Redlands, CA 92373", "Београд", "Москва", "北京"]
         

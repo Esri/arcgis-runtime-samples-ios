@@ -17,11 +17,11 @@ import ArcGIS
 
 class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    private var featureLayer:AGSFeatureLayer?
+    private var featureLayer: AGSFeatureLayer?
     // the query is retained internally by the SDK so use a weak reference
-    private weak var activeSelectionQuery:AGSCancelable?
+    private weak var activeSelectionQuery: AGSCancelable?
 
     override func viewDidLoad() {
         super.viewDidLoad()

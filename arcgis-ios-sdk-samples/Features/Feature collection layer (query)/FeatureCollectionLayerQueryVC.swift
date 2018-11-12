@@ -18,9 +18,9 @@ import ArcGIS
 
 class FeatureCollectionLayerQueryVC: UIViewController {
 
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
-    private var featureTable:AGSServiceFeatureTable!
+    private var featureTable: AGSServiceFeatureTable!
     
     override func viewDidLoad() {
         super.viewDidLoad()

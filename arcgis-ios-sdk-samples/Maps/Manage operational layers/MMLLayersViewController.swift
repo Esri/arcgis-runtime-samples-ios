@@ -107,7 +107,7 @@ class MMLLayersViewController: UITableViewController {
         let layer = layers[sourceIndex] as! AGSLayer
         
         layers.removeObject(at: sourceIndex)
-        layers.insert(layer, at:destinationIndex)
+        layers.insert(layer, at: destinationIndex)
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -124,7 +124,7 @@ class MMLLayersViewController: UITableViewController {
             //remove the layer from the data source array
             layers.removeObject(at: index)
             //delete the row
-            tableView.deleteRows(at: [indexPath], with:.automatic)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
             //insert the row in the deleteLayers array
             deletedLayers.append(layer)
             //insert the new row

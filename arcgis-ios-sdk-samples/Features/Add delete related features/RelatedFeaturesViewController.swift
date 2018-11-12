@@ -19,14 +19,14 @@ import ArcGIS
 
 class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet private var tableView:UITableView!
-    @IBOutlet private var featureLabel:UILabel!
+    @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var featureLabel: UILabel!
     
-    var originFeature:AGSArcGISFeature!
-    var originFeatureTable:AGSServiceFeatureTable!
+    var originFeature: AGSArcGISFeature!
+    var originFeatureTable: AGSServiceFeatureTable!
     
-    private var relationshipInfo:AGSRelationshipInfo!
-    private var relatedFeatures:[AGSFeature]!
+    private var relationshipInfo: AGSRelationshipInfo!
+    private var relatedFeatures: [AGSFeature]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +62,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         parameters.orderByFields = [AGSOrderBy(fieldName: "OBJECTID", sortOrder: .descending)]
         
         //query for species related to the selected park
-        self.originFeatureTable.queryRelatedFeatures(for: self.originFeature, parameters: parameters) { [weak self] (results:[AGSRelatedFeatureQueryResult]?, error:Error?) in
+        self.originFeatureTable.queryRelatedFeatures(for: self.originFeature, parameters: parameters) { [weak self] (results: [AGSRelatedFeatureQueryResult]?, error: Error?) in
             
             //dismiss progress hud
             SVProgressHUD.dismiss()
@@ -87,7 +87,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         let relatedTable = self.originFeatureTable.relatedTables(with: self.relationshipInfo)![0] as! AGSServiceFeatureTable
         
         //new feature
-        let feature = relatedTable.createFeature(attributes: ["Scientific_name" : "New species"], geometry: nil) as! AGSArcGISFeature
+        let feature = relatedTable.createFeature(attributes: ["Scientific_name": "New species"], geometry: nil) as! AGSArcGISFeature
         
         //relate new feature to origin feature
         feature.relate(to: self.originFeature)
@@ -141,7 +141,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         //show progress hud
         SVProgressHUD.show(withStatus: "Applying edits")
         
-        relatedTable.applyEdits { [weak self] (results:[AGSFeatureEditResult]?, error:Error?) in
+        relatedTable.applyEdits { [weak self] (results: [AGSFeatureEditResult]?, error: Error?) in
             
             SVProgressHUD.dismiss()
             

@@ -78,16 +78,13 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
                     self?.presentAlert(error: error)
                 }
             }
+            else if let result = results?.first {
+                graphic.attributes.addEntries(from: result.attributes!)
+                self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint)
+                return
+            }
             else {
-                if let results = results,
-                    !results.isEmpty {
-                    graphic.attributes.addEntries(from: results.first!.attributes!)
-                    self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint)
-                    return
-                }
-                else {
-                    self?.presentAlert(message: "No address found")
-                }
+                self?.presentAlert(message: "No address found")
             }
             self?.graphicsOverlay.graphics.remove(graphic)
         }

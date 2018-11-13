@@ -145,33 +145,32 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         //perform reverse geocode
         self.locatorTaskOperation = self.locatorTask.reverseGeocode(withLocation: normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) -> Void in
 
-            if let error = error as NSError?, error.code != NSUserCancelledError {
-                //print error instead alerting to avoid disturbing the flow
-                print(error.localizedDescription)
+            if let error = error as NSError? {
+                if error.code != NSUserCancelledError {
+                    //print error instead alerting to avoid disturbing the flow
+                    print(error.localizedDescription)
+                }
             }
-            else {
+            else if let result = results?.first {
                 //if a result is found extract the required attributes
                 //assign the attributes to the graphic
                 //and show the callout
-                if let results = results,
-                    !results.isEmpty {
-                    let cityString = results.first?.attributes?["City"] as? String ?? ""
-                    let streetString = results.first?.attributes?["Street"] as? String ?? ""
-                    let stateString = results.first?.attributes?["State"] as? String ?? ""
-                    graphic.attributes.addEntries(from: ["Match_addr": "\(streetString) \(cityString) \(stateString)"])
-                    self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint, animated: false, offset: self!.longPressedAndMoving)
-                    return
-                }
-                else {
-                    //no result was found
-                    //using print in log instead of alert to
-                    //avoid breaking the flow
-                    print("No address found")
+                let cityString = result.attributes?["City"] as? String ?? ""
+                let streetString = result.attributes?["Street"] as? String ?? ""
+                let stateString = result.attributes?["State"] as? String ?? ""
+                graphic.attributes.addEntries(from: ["Match_addr": "\(streetString) \(cityString) \(stateString)"])
+                self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint, animated: false, offset: self!.longPressedAndMoving)
+                return
+            }
+            else {
+                //no result was found
+                //using print in log instead of alert to
+                //avoid breaking the flow
+                print("No address found")
 
-                    //dismiss the callout if already visible
-                    self?.mapView.callout.dismiss()
+                //dismiss the callout if already visible
+                self?.mapView.callout.dismiss()
 
-                }
             }
             //in case of error or no results, remove the graphics
             self?.graphicsOverlay.graphics.remove(graphic)

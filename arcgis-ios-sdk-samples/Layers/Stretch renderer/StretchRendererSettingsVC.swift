@@ -40,7 +40,7 @@ class StretchRendererSettingsVC: UITableViewController {
     }
     
     private var stretchType: StretchType = .minMax {
-        didSet{
+        didSet {
             updateStretchTypeLabel()
         }
     }

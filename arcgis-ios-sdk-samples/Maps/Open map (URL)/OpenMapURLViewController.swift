@@ -64,7 +64,7 @@ class OpenMapURLViewController: UIViewController {
     }
     
     /// Creates a map for the url and adds it to the map view.
-    private func showMap(at url: URL){
+    private func showMap(at url: URL) {
         // create a map object from the URL
         let map = AGSMap(url: url)
         // add the map to the map view

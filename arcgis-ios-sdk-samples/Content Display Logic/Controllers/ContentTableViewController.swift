@@ -17,16 +17,16 @@ import UIKit
 class ContentTableViewController: UITableViewController {
     
     /// The samples to display in the table. Searching adjusts this value
-    var displayedSamples = [Sample](){
-        didSet{
+    var displayedSamples = [Sample]() {
+        didSet {
             guard isViewLoaded else { return }
             tableView.reloadData()
         }
     }
     
     /// All samples that could be displayed in the table
-    var allSamples = [Sample](){
-        didSet{
+    var allSamples = [Sample]() {
+        didSet {
             displayedSamples = allSamples
         }
     }
@@ -255,10 +255,10 @@ extension ContentTableViewController: UISearchResultsUpdating {
         
         if searchController.isActive,
             let query = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-            !query.isEmpty{
+            !query.isEmpty {
             displayedSamples = searchEngine.sortedSamples(matching: query)
         }
-        else{
+        else {
             displayedSamples = allSamples
         }
     }

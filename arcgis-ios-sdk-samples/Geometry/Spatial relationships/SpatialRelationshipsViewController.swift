@@ -223,7 +223,7 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
         if AGSGeometryEngine.geometry(geometry1, disjointTo: geometry2) { relationships.append("Disjoint") }
         if AGSGeometryEngine.geometry(geometry1, intersects: geometry2) { relationships.append("Intersects") }
         if AGSGeometryEngine.geometry(geometry1, overlapsGeometry: geometry2) { relationships.append("Overlaps") }
-        if AGSGeometryEngine.geometry(geometry1, touchesGeometry: geometry2)  { relationships.append("Touches") }
+        if AGSGeometryEngine.geometry(geometry1, touchesGeometry: geometry2) { relationships.append("Touches") }
         if AGSGeometryEngine.geometry(geometry1, within: geometry2) { relationships.append("Within") }
         return relationships
     }

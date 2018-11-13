@@ -19,14 +19,14 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
     @IBOutlet private var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
     /// The categories to display in the collection view.
-    var categories: [Category] = []{
-        didSet{
+    var categories: [Category] = [] {
+        didSet {
             // add search only after setting categories to ensure that the samples are available
             addSearchController()
         }
     }
     
-    private func addSearchController(){
+    private func addSearchController() {
         
         // create the view controller for displaying the search results
         let searchResultsController = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController

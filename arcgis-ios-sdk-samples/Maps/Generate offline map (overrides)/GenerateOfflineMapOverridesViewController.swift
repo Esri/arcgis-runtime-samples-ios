@@ -81,13 +81,13 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
         // load the map
         mapView.map?.load { [weak self] (error) in
             
-            guard let self = self else{
+            guard let self = self else {
                 return
             }
             
-            if let error = error{
+            if let error = error {
                 // don't show an error if the user cancelled from the login screen
-                if (error as NSError).code != NSUserCancelledError{
+                if (error as NSError).code != NSUserCancelledError {
                     //show error
                     self.presentAlert(error: error)
                 }
@@ -110,7 +110,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
 
         guard let offlineMapTask = offlineMapTask,
             let parameters = parameters,
-            let parameterOverrides = parameterOverrides else{
+            let parameterOverrides = parameterOverrides else {
             return
         }
         
@@ -184,7 +184,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
     }
     
     
-    func openParameterOverridesViewController(){
+    func openParameterOverridesViewController() {
         //instantiate the view controller
         let paramNavigationController = storyboard!.instantiateViewController(withIdentifier: "OfflineParametersNavigationController") as! UINavigationController
         let paramController = paramNavigationController.viewControllers.first as! OfflineMapParameterOverridesViewController
@@ -208,7 +208,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
         present(paramNavigationController, animated: true)
     }
     
-    func resetUIForOfflineMapGeneration(){
+    func resetUIForOfflineMapGeneration() {
         
         // close and reset the progress view
         progressParentView.isHidden = true
@@ -265,7 +265,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
             //build the parameter overrides object to be configured by the user
             offlineMapTask.generateOfflineMapParameterOverrides(with: parameters, completion: {[weak self] (parameterOverrides, error) in
                 
-                guard let self = self else{
+                guard let self = self else {
                     return
                 }
                 
@@ -274,7 +274,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
                     return
                 }
                 
-                guard let parameterOverrides = parameterOverrides else{
+                guard let parameterOverrides = parameterOverrides else {
                     return
                 }
                 self.parameterOverrides = parameterOverrides
@@ -326,7 +326,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
         return AGSEnvelope(min: minPoint, max: maxPoint)
     }
     
-    private func getNewOfflineGeodatabaseURL() -> URL{
+    private func getNewOfflineGeodatabaseURL() -> URL {
 
         //get a suitable directory to place files
         let directoryURL = FileManager.default.temporaryDirectory

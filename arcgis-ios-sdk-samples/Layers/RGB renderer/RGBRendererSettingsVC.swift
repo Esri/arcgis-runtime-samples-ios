@@ -64,11 +64,11 @@ class RGBRendererSettingsVC: UITableViewController {
     private var standardDeviationFactor: Double = 1
     
     private var stretchType: RGBRendererSettingsVC.StretchType = .minMax {
-        didSet{
+        didSet {
             updateStretchTypeLabel()
         }
     }
-    private func updateStretchTypeLabel(){
+    private func updateStretchTypeLabel() {
         stretchTypeCell?.detailTextLabel?.text = stretchType.label
     }
     
@@ -198,7 +198,7 @@ class RGBRendererSettingsVC: UITableViewController {
         guard tableView.cellForRow(at: indexPath) == stretchTypeCell else {
             return
         }
-        let labels = StretchType.allCases.map{ $0.label }
+        let labels = StretchType.allCases.map { $0.label }
         let selectedIndex = stretchType.rawValue
         let optionsViewController = OptionsTableViewController(labels: labels, selectedIndex: selectedIndex) { (newIndex) in
             self.stretchType = StretchType(rawValue: newIndex)!

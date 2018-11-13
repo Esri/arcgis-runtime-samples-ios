@@ -58,12 +58,12 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         
         //cancel the active query if it hasn't been completed yet
-        if let activeSelectionQuery = activeSelectionQuery{
+        if let activeSelectionQuery = activeSelectionQuery {
             activeSelectionQuery.cancel()
         }
         
         guard let map = mapView.map,
-            let featureLayer = featureLayer else{
+            let featureLayer = featureLayer else {
                 return
         }
         

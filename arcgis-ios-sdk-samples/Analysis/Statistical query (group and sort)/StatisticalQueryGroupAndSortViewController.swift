@@ -129,7 +129,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
                     expandableTableViewController.sectionHeaderTitles.append(groups.joined(separator: ", "))
                     
                     var statistics = [(String, String)]()
-                    for (key, value) in statisticRecord.statistics  {
+                    for (key, value) in statisticRecord.statistics {
                         statistics.append((key, String(describing: value)))
                     }
                     expandableTableViewController.sectionItems.append(statistics)
@@ -250,7 +250,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         cell.textLabel?.text = ""
         cell.accessoryType = .none
         
-        switch indexPath.section{
+        switch indexPath.section {
         case 0:
             if statisticDefinitions.count > 0 {
                 let statisticDefinition = statisticDefinitions[indexPath.row]

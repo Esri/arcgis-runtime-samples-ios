@@ -95,7 +95,7 @@ class StatisticalQueryViewController: UIViewController {
                 var resultMessage = " \n"
                 while statisticRecordEnumerator.hasNextObject() {
                     let statisticRecord = statisticRecordEnumerator.nextObject()
-                    for (key, value) in (statisticRecord?.statistics)!  {
+                    for (key, value) in (statisticRecord?.statistics)! {
                         resultMessage += "\(key): \(value) \n"
                     }
                 }

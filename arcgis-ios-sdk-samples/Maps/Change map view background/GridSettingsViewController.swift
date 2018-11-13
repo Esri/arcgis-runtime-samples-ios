@@ -102,7 +102,7 @@ class GridSettingsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        switch cell{
+        switch cell {
         case colorCell:
             guard let color = backgroundGrid?.color else {
                 return

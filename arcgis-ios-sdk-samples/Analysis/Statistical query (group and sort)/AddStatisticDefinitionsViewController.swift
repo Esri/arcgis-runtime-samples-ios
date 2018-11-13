@@ -58,7 +58,7 @@ class AddStatisticDefinitionsViewController: UITableViewController {
     
     @IBAction func addStatisticDefinitionAction(_ sender: Any) {
         // Add statistic definition
-        if let fieldName = fieldName{
+        if let fieldName = fieldName {
             let statisticDefinition = AGSStatisticDefinition(onFieldName: fieldName, statisticType: statisticType, outputAlias: nil)
             delegate?.addStatisticDefinition(statisticDefinition)
         }

@@ -74,12 +74,12 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         //disable the bar button item until the map loads
         mapView.map?.load { [weak self] (error) in
             
-            guard let self = self else{
+            guard let self = self else {
                 return
             }
             
-            if let error = error{
-                if (error as NSError).code != NSUserCancelledError{
+            if let error = error {
+                if (error as NSError).code != NSUserCancelledError {
                     //show error
                     self.presentAlert(error: error)
                 }
@@ -101,7 +101,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
     private func takeMapOffline() {
 
         guard let offlineMapTask = offlineMapTask,
-            let parameters = parameters else{
+            let parameters = parameters else {
             return
         }
         
@@ -269,7 +269,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         return AGSEnvelope(min: minPoint, max: maxPoint)
     }
     
-    private func getNewOfflineMapDirectoryURL() -> URL{
+    private func getNewOfflineMapDirectoryURL() -> URL {
 
         //get a suitable directory to place files
         let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!

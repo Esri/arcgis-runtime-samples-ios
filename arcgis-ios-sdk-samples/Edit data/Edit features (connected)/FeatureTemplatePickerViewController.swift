@@ -46,7 +46,7 @@ class FeatureTemplatePickerViewController: UITableViewController {
             }
         }
             //otherwise if layer contains feature types
-        else  {
+        else {
             //for each type
             for type in featureTable.featureTypes {
                 //for each temple in type

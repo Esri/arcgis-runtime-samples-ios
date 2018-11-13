@@ -45,7 +45,6 @@ class SetViewpointViewController: UIViewController {
             let griffithParkGraphic = AGSGraphic(geometry: griffithParkGeometry, symbol: griffithParkSymbol, attributes: nil)
             graphicsOverlay.graphics.add(griffithParkGraphic)
         }
-        
 
         self.mapView.graphicsOverlays.add(graphicsOverlay)
         
@@ -66,7 +65,7 @@ class SetViewpointViewController: UIViewController {
         return nil
     }
 
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction private func valueChanged(_ control: UISegmentedControl) {
         switch control.selectedSegmentIndex {
@@ -85,7 +84,6 @@ class SetViewpointViewController: UIViewController {
             }
         default:
             print("Never should get here")
-            
             
         }
         

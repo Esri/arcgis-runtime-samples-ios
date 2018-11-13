@@ -252,7 +252,6 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         add(opacityAnimation, forKey: "opacityAnimation")
     }
     
-    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -332,7 +331,6 @@ open class DemoTouchManager {
         UIApplication.hideAllTouches()
     }
 }
-
 
 private class TouchView: UIView {
     

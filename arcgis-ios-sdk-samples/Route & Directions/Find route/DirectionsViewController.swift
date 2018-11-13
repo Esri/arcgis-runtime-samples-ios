@@ -23,7 +23,7 @@ class DirectionsViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
     }
     
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.directionManeuvers?.count ?? 0

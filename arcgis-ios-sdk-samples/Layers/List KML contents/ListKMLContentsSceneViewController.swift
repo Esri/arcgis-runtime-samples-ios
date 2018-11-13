@@ -69,7 +69,7 @@ class ListKMLContentsSceneViewController: UIViewController {
     /// A queue for calculating the node viewpoint in the background.
     private let dispatchQueue = DispatchQueue(label: "node viewpoint getter", qos: .userInitiated, attributes: .concurrent, autoreleaseFrequency: .workItem, target: nil)
     
-    //MARK: - Viewpoint
+    // MARK: - Viewpoint
     
     /// Sets the viewpoint of the scene based on the node, or hides the node
     /// if a viewpoint cannot be determined.

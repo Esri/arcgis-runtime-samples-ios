@@ -112,7 +112,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         return compositeSymbol
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //on single tap, add stop graphic at the tapped location
@@ -144,7 +144,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.route(isLongPressed: true)
     }
     
-    //MARK: - Route logic
+    // MARK: - Route logic
     
     private func getDefaultParameters() {
         //get the default parameters
@@ -260,7 +260,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         return symbol
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func trashAction() {
         //empty both graphic overlays
@@ -302,7 +302,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         }
     }
     
-    //MARK: toggle details view
+    // MARK: toggle details view
     
     private func toggleDetailsView(on: Bool) {
         self.detailsViewBottomContraint.constant = on ? 0 : -36

@@ -90,14 +90,14 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelega
         
     }
     
-    //MARK: - MapImageSublayersVCDelegate
+    // MARK: - MapImageSublayersVCDelegate
     
     func mapImageSublayersVC(mapImageSublayersVC: MapImageSublayersVC, didCloseWith removedMapImageSublayers: [AGSArcGISMapImageSublayer]) {
         
         self.removedMapImageSublayers = removedMapImageSublayers
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

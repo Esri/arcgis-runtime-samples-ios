@@ -95,7 +95,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         }
     }
   
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //add a feature at the tapped location

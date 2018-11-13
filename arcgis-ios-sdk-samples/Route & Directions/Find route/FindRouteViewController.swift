@@ -82,7 +82,7 @@ class FindRouteViewController: UIViewController {
         return symbol
     }
     
-    //MARK: - Route logic
+    // MARK: - Route logic
     
     //method to get the default parameters for the route task
     func getDefaultParameters() {
@@ -139,7 +139,7 @@ class FindRouteViewController: UIViewController {
         }
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DirectionsSegue" {

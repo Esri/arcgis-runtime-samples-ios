@@ -113,13 +113,13 @@ class RGBRendererSettingsVC: UITableViewController {
         delegate?.rgbRendererSettingsVC(self, didSelectStretchParameters: makeStretchParameters())
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func textFieldAction(_ sender: UITextField) {
         rendererParametersChanged()
     }
     
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return the rows based on the stretch type selected
@@ -192,7 +192,7 @@ class RGBRendererSettingsVC: UITableViewController {
         cell.textField.text = numberFormatter.string(from: value as NSNumber)
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard tableView.cellForRow(at: indexPath) == stretchTypeCell else {

@@ -71,7 +71,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         self.toggleRouteDetails(false)
     }
 
-    //MARK: - Route logic
+    // MARK: - Route logic
     
     func getDefaultParameters() {
         self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
@@ -168,7 +168,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         return AGSSimpleFillSymbol(style: .diagonalCross, color: .red, outline: nil)
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //normalize geometry
@@ -194,7 +194,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         }
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func clearAction() {
         if segmentedControl.selectedSegmentIndex == 0 {
@@ -226,7 +226,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         }) 
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RouteSettingsSegue" {
@@ -248,7 +248,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         return .none
     }
     
-    //MARK: - DirectionsListVCDelegate
+    // MARK: - DirectionsListVCDelegate
     
     func directionsListViewControllerDidDeleteRoute(_ directionsListViewController: DirectionsListViewController) {
         self.generatedRoute = nil

@@ -33,9 +33,6 @@ extension UIImage {
     }
 }
 
-
-
-
 class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, SaveAsVCDelegate {
     
     let webmapURL = "https://www.arcgis.com/home/webmap/viewer.html?webmap="
@@ -91,7 +88,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         self.present(alertController, animated: true, completion: nil)
     }
     
-    //MARK: - hide/show create screen
+    // MARK: - hide/show create screen
     
     private func toggleCreateView() {
         self.createOptionsBlurView.isHidden = !self.createOptionsBlurView.isHidden
@@ -102,7 +99,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         }
     }
     
-    //MARK: - hide/show input screen
+    // MARK: - hide/show input screen
     
     private func toggleSaveAsView() {
         self.saveAsBlurView.isHidden = !self.saveAsBlurView.isHidden
@@ -110,7 +107,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         self.view.endEditing(true)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction private func newAction() {
         self.toggleCreateView()
@@ -129,7 +126,6 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         }
     }
     
-    
     @IBAction private func cancelAction() {
         self.view.endEditing(true)
         self.toggleSaveAsView()
@@ -139,7 +135,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         self.view.endEditing(true)
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CreateOptionsEmbedSegue" {
@@ -152,7 +148,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         }
     }
     
-    //MARK: - CreateOptionsVCDelegate
+    // MARK: - CreateOptionsVCDelegate
     
     func createOptionsViewController(_ createOptionsViewController: CreateOptionsViewController, didSelectBasemap basemap: AGSBasemap, layers: [AGSLayer]?) {
         
@@ -170,7 +166,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         self.toggleCreateView()
     }
     
-    //MARK: - SaveAsVCDelegate
+    // MARK: - SaveAsVCDelegate
     
     func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String) {
         SVProgressHUD.show(withStatus: "Saving")

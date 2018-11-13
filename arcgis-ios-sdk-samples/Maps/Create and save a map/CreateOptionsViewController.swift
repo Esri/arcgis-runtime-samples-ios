@@ -32,7 +32,6 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
     private var selectedBasemapIndex: Int!
     private var selectedLayersIndex = [Int]()
     
-    
     weak var delegate: CreateOptionsVCDelegate?
     
     override func viewDidLoad() {
@@ -56,7 +55,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
         self.tableView.reloadData()
     }
 
-    //MARK: - table view data source
+    // MARK: - table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -66,7 +65,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
         return section == 0 ? self.basemaps.count : self.layers.count
     }
     
-    //MARK: - table view delegates
+    // MARK: - table view delegates
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell
@@ -132,7 +131,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
         return section == 0 ? "Choose a basemap" : "Add operational layers"
     }
 
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction private func doneAction() {
         if self.selectedBasemapIndex == nil {

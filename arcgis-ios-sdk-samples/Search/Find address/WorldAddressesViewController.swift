@@ -14,7 +14,6 @@
 
 import UIKit
 
-
 protocol WorldAddressesVCDelegate: AnyObject {
     func worldAddressesViewController(_ worldAddressesViewController: WorldAddressesViewController, didSelectAddress address: String)
 }
@@ -39,7 +38,6 @@ class WorldAddressesViewController: UITableViewController {
         override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return self.addresses.count
         }
-        
         
         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell", for: indexPath)

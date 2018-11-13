@@ -81,13 +81,13 @@ class StretchRendererSettingsVC: UITableViewController {
         delegate?.stretchRendererSettingsVC(self, didSelectStretchParameters: makeStretchParameters())
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func textFieldAction(_ sender: UITextField) {
         rendererParametersChanged()
     }
     
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch stretchType {
@@ -117,7 +117,7 @@ class StretchRendererSettingsVC: UITableViewController {
         }
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard tableView.cellForRow(at: indexPath) == stretchTypeCell else {

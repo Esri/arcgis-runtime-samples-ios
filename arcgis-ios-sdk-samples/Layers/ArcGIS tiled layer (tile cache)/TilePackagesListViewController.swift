@@ -51,7 +51,7 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
         }
     }
     
-    //MARK : - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -83,7 +83,7 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
         return section == 0 ? "From the bundle" : "From the documents directory"
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let path: String

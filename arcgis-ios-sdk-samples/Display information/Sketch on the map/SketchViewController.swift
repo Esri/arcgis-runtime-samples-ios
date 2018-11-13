@@ -23,7 +23,6 @@ class SketchViewController: UIViewController {
     @IBOutlet private weak var redoBBI: UIBarButtonItem!
     @IBOutlet private weak var clearBBI: UIBarButtonItem!
     
-    
     private var map: AGSMap!
     private var sketchEditor: AGSSketchEditor!
     
@@ -57,7 +56,7 @@ class SketchViewController: UIViewController {
         self.clearBBI.isEnabled = self.sketchEditor.geometry != nil && !self.sketchEditor.geometry!.isEmpty
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func geometryValueChanged(_ segmentedControl: UISegmentedControl) {
         

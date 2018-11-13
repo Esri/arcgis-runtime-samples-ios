@@ -77,7 +77,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         })
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let lastQuery = self.lastQuery {
@@ -100,8 +100,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }
     }
     
-    
-    //MARK: - AGSCalloutDelegate
+    // MARK: - AGSCalloutDelegate
     
     func didTapAccessoryButton(for callout: AGSCallout) {
         //hide the callout
@@ -110,7 +109,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.performSegue(withIdentifier: self.optionsSegueName, sender: self)
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == self.optionsSegueName {
@@ -120,7 +119,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }
     }
     
-    //MARK: - EAOptionsVCDelegate
+    // MARK: - EAOptionsVCDelegate
     
     func optionsViewController(_ optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int) {
         SVProgressHUD.show(withStatus: "Updating")

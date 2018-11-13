@@ -86,7 +86,7 @@ class GenerateGeodatabaseViewController: UIViewController {
         return extent
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func downloadAction() {
         
@@ -160,7 +160,6 @@ class GenerateGeodatabaseViewController: UIViewController {
                             }
                         }
                         self.presentAlert(message: "Now showing data from geodatabase")
-                        
                         
                         // hide the extent view
                         self.extentView.isHidden = true

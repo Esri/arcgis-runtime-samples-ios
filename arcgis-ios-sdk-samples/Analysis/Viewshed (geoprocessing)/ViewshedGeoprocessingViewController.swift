@@ -153,7 +153,7 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
         })
     }
 
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //add a graphic in graphics overlay for the tapped point

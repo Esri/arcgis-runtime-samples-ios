@@ -46,7 +46,7 @@ class EditAttachmentViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.mapView.touchDelegate = self
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let lastQuery = self.lastQuery {
@@ -55,7 +55,6 @@ class EditAttachmentViewController: UIViewController, AGSGeoViewTouchDelegate, A
         
         //hide the callout
         self.mapView.callout.dismiss()
-        
         
         self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
             if let error = identifyLayerResult.error {
@@ -85,7 +84,7 @@ class EditAttachmentViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }
     }
     
-    //MARK: - AGSCalloutDelegate
+    // MARK: - AGSCalloutDelegate
     
     func didTapAccessoryButton(for callout: AGSCallout) {
         //hide the callout
@@ -95,8 +94,7 @@ class EditAttachmentViewController: UIViewController, AGSGeoViewTouchDelegate, A
         
     }
     
-    
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AttachmentsSegue" {

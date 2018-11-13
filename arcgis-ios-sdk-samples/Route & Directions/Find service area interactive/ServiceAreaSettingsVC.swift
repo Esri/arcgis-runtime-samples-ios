@@ -44,7 +44,7 @@ class ServiceAreaSettingsVC: UIViewController {
         self.secondTimeBreakSlider.value = Float(self.secondTimeBreak)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction private func sliderValueChanged(sender: UISlider) {
         

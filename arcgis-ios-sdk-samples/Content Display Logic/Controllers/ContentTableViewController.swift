@@ -233,7 +233,7 @@ class ContentTableViewController: UITableViewController {
 
 }
 
-//MARK: - DownloadProgressViewDelegate
+// MARK: - DownloadProgressViewDelegate
 extension ContentTableViewController: DownloadProgressViewDelegate {
 
     func downloadProgressViewDidCancel(downloadProgressView: DownloadProgressView) {

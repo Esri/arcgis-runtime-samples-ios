@@ -33,7 +33,7 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     // Delegate
     weak var delegate: GroupByFieldsViewControllerDelegate?
     
-    //MARK: - TableView data source
+    // MARK: - TableView data source
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fieldNames.count
@@ -52,7 +52,7 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
         return cell
     }
     
-    //MARK: - TableView delegates
+    // MARK: - TableView delegates
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Deselect row

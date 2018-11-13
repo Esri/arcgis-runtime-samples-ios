@@ -31,7 +31,7 @@ class SegmentedViewController: UIViewController {
         
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SourceCodeSegue" {
@@ -44,7 +44,7 @@ class SegmentedViewController: UIViewController {
         }
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func valueChanged(_ sender: UISegmentedControl) {
         self.infoContainerView.isHidden = (sender.selectedSegmentIndex == 1)

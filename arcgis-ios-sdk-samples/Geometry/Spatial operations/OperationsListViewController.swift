@@ -27,7 +27,7 @@ class OperationsListViewController: UIViewController, UITableViewDataSource, UIT
     
     var operations: [String]!
     
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.operations.count
@@ -42,7 +42,7 @@ class OperationsListViewController: UIViewController, UITableViewDataSource, UIT
         return cell
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.delegate?.operationsListViewController(self, didSelectOperation: indexPath.row)

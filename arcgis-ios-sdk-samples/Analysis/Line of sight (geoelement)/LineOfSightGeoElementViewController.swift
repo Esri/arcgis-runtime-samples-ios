@@ -78,7 +78,6 @@ class LineOfSightGeoElementViewController: UIViewController {
         overlay = AGSGraphicsOverlay()
         overlay.sceneProperties = AGSLayerSceneProperties(surfacePlacement: .relative)
 
-
         // =====================================================
         // initialize two graphics for both display and analysis
         // =====================================================
@@ -91,7 +90,6 @@ class LineOfSightGeoElementViewController: UIViewController {
         // initialize the observer graphic
         let observerSymbol = AGSSimpleMarkerSceneSymbol(style: .sphere, color: .red, height: 10, width: 10, depth: 10, anchorPosition: .center)
         observerGraphic = AGSGraphic(geometry: observerPoint, symbol: observerSymbol, attributes: nil)
-
 
         // ================
         // use the graphics
@@ -168,8 +166,6 @@ class LineOfSightGeoElementViewController: UIViewController {
         losObserver?.invalidate()
     }
 
-
-
     // start and stop animation
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -189,8 +185,6 @@ class LineOfSightGeoElementViewController: UIViewController {
 
         animationTimer?.invalidate()
     }
-
-    
 
     // current line of sight status
     private func updateLineOfSightVisibilityLabel(visibility: AGSLineOfSightTargetVisibility) {
@@ -215,8 +209,6 @@ class LineOfSightGeoElementViewController: UIViewController {
             return getFormattedString(z: observerLocation.z)
         }()
     }
-
-
 
     // Track animation progress
     private var animationProgess = (frameIndex: 0, pointIndex: 0)
@@ -255,8 +247,6 @@ class LineOfSightGeoElementViewController: UIViewController {
         taxiGraphic.geometry = animationPoint
         (taxiGraphic.symbol as? AGSModelSceneSymbol)?.heading = heading
     }
-
-    
     
     // Formatting z values for locale
     private let zValuesFormatter: MeasurementFormatter = {

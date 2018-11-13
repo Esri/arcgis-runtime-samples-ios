@@ -77,7 +77,7 @@ class OfflineEditingViewController: UIViewController {
 
     }
 
-    //MARK: - Helper methods
+    // MARK: - Helper methods
     
     private func addFeatureLayers() {
         
@@ -107,7 +107,6 @@ class OfflineEditingViewController: UIViewController {
             }
         }
     }
-    
     
     private func frameToExtent() -> AGSEnvelope {
         let frame = mapView.convert(extentView.frame, from: view)
@@ -253,7 +252,7 @@ class OfflineEditingViewController: UIViewController {
         })
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func generateGeodatabaseAction() {
         if barButtonItem.title == "Generate geodatabase" {
@@ -382,7 +381,6 @@ class OfflineEditingViewController: UIViewController {
         }
     }
     
-    
     @IBAction func syncAction() {
         syncAction(nil)
     }
@@ -439,7 +437,7 @@ class OfflineEditingViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
 
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FeatureLayersVCSegue" {
@@ -536,7 +534,6 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
         //normalize the geometry, this will take care of geometries that extend beyone the dateline
         //(ifwraparound was enabled on the map)
         feature.geometry = AGSGeometryEngine.normalizeCentralMeridian(of: feature.geometry!)
-        
         
         //sync changes if in service mode
         if liveMode {

@@ -183,7 +183,6 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
         mapView.map = result.offlineMap
     }
     
-    
     func openParameterOverridesViewController() {
         //instantiate the view controller
         let paramNavigationController = storyboard!.instantiateViewController(withIdentifier: "OfflineParametersNavigationController") as! UINavigationController
@@ -221,7 +220,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
         extentView.isHidden = false
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func generateOfflineMapAction() {
         
@@ -295,7 +294,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
         resetUIForOfflineMapGeneration()
     }
     
-    //MARK: - Helper methods
+    // MARK: - Helper methods
     
     private func showLoginQueryAlert() {
         

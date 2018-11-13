@@ -168,7 +168,7 @@ class SampleSearchEngine {
         }
     }
     
-    //MARK: - Public methods
+    // MARK: - Public methods
     
     func sortedSamples(matching query: String) -> [Sample] {
         

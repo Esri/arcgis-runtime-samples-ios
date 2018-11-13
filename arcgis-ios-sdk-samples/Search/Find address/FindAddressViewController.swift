@@ -96,7 +96,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         })
     }
     
-    //MARK: - Callout
+    // MARK: - Callout
     
     //method shows the callout for the specified graphic,
     //populates the title and detail of the callout with specific attributes
@@ -116,7 +116,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         self.mapView.callout.show(for: graphic, tapLocation: tapLocation, animated: true)
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //dismiss the callout
@@ -134,7 +134,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         }
     }
     
-    //MARK: - UISearchBar delegates
+    // MARK: - UISearchBar delegates
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.geocodeSearchText(searchBar.text!)
@@ -152,7 +152,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         self.performSegue(withIdentifier: "AddressesListSegue", sender: self)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     @objc func keyboardWillShow(_ sender: AnyObject) {
         self.button.isHidden = false
     }
@@ -166,7 +166,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         NotificationCenter.default.removeObserver(self)
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddressesListSegue" {
@@ -179,14 +179,14 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         }
     }
     
-    //MARK: - UIAdaptivePresentationControllerDelegate
+    // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
     
         return UIModalPresentationStyle.none
     }
     
-    //MARK: - AddressesListVCDelegate
+    // MARK: - AddressesListVCDelegate
     
     func worldAddressesViewController(_ worldAddressesViewController: WorldAddressesViewController, didSelectAddress address: String) {
         self.searchBar.text = address

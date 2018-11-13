@@ -65,7 +65,7 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.graphicsOverlays.add(self.graphicsOverlay)
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //use the following method to identify graphics in a specific graphics overlay

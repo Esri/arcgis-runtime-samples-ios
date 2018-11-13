@@ -47,7 +47,7 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
     /// The color ramp type that was used to create the currently applied blend renderer.
     private var displayedColorRampType: AGSPresetColorRampType = .none
 
-    //MARK: - BlendRendererSettingsVCDelegate
+    // MARK: - BlendRendererSettingsVCDelegate
     
     func blendRendererSettingsVC(_ blendRendererSettingsVC: BlendRendererSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) {
         setBlendRenderer(altitude: altitude, azimuth: azimuth, slopeType: slopeType, colorRampType: colorRampType)
@@ -94,7 +94,7 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
         mapView.map?.basemap.baseLayers.add(rasterLayer)
     }
 
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,

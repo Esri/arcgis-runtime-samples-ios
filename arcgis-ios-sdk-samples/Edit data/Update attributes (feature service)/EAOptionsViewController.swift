@@ -31,7 +31,7 @@ class EAOptionsViewController: UIViewController, UITableViewDataSource, UITableV
         // Do any additional setup after loading the view.
     }
     
-    //MARK:- Table view data source
+    // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -41,7 +41,7 @@ class EAOptionsViewController: UIViewController, UITableViewDataSource, UITableV
         return self.options?.count ?? 0
     }
     
-    //MARK: - Table view delegate
+    // MARK: - Table view delegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EAOptionsCell", for: indexPath)
@@ -56,13 +56,13 @@ class EAOptionsViewController: UIViewController, UITableViewDataSource, UITableV
         self.cancelAction()
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func cancelAction() {
         self.dismiss(animated: true, completion: nil)
     }
     
-    //MARK: - UIBarPositioningDelegate
+    // MARK: - UIBarPositioningDelegate
     
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached

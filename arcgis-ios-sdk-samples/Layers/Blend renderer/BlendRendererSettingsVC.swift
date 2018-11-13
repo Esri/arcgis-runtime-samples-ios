@@ -89,7 +89,7 @@ class BlendRendererSettingsVC: UITableViewController {
         updateColorRampTypeControls()
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func azimuthSliderValueChanged(_ slider: UISlider) {
         azimuth = Double(slider.value)

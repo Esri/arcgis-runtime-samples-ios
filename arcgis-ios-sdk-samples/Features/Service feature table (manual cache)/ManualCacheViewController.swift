@@ -46,7 +46,7 @@ class ManualCacheViewController: UIViewController {
         self.map.operationalLayers.add(featureLayer)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func populateAction(_ sender: AnyObject) {
         //set query parameters

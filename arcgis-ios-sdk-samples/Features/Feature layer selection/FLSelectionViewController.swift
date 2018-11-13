@@ -53,7 +53,7 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
         mapView.selectionProperties.color = .cyan
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         

@@ -37,7 +37,7 @@ class MapImageSublayersVC: UIViewController, UITableViewDataSource, UITableViewD
         self.tableView.allowsSelectionDuringEditing = true
     }
     
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -112,7 +112,7 @@ class MapImageSublayersVC: UIViewController, UITableViewDataSource, UITableViewD
         self.mapImageLayer.mapImageSublayers.insert(sublayer, at: destinationIndexPath.row)
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -148,7 +148,7 @@ class MapImageSublayersVC: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction private func doneAction() {
         

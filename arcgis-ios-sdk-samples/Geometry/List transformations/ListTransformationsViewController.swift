@@ -123,7 +123,7 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
         setupTransformsList()
     }
 
-    //MARK: - TableView data source
+    // MARK: - TableView data source
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datumTransformations.count
@@ -158,7 +158,7 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
         return cell
     }
     
-    //MARK: - TableView delegates
+    // MARK: - TableView delegates
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let mapViewSR = mapView.spatialReference else { return }

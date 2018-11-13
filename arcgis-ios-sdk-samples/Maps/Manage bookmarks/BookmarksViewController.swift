@@ -79,7 +79,7 @@ class BookmarksViewController: UIViewController, UIAdaptivePresentationControlle
         self.map.bookmarks.add(bookmark)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction private func addAction() {
         // Show an alert controller with textfield to get the name for the bookmark.
@@ -120,7 +120,7 @@ class BookmarksViewController: UIViewController, UIAdaptivePresentationControlle
         self.bookmarksListVC?.tableView.reloadData()
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PopoverSegue" {
@@ -140,7 +140,7 @@ class BookmarksViewController: UIViewController, UIAdaptivePresentationControlle
         }
     }
     
-    //MARK: - UIAdaptivePresentationControllerDelegate
+    // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         //for popover or non modal presentation

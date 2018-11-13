@@ -44,7 +44,7 @@ class RouteParametersViewController: UIViewController {
         self.preservceFirstStopSwitch.isEnabled = enable
     }
 
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         if sender == self.findBestSequenceSwitch {

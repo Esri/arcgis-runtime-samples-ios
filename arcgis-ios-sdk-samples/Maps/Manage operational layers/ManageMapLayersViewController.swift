@@ -15,51 +15,65 @@
 import UIKit
 import ArcGIS
 
-class ManageMapLayersViewController: UIViewController, MMLLayersViewControllerDelegate {
+class ManageMapLayersViewController: UIViewController {
     
     @IBOutlet weak var mapView: AGSMapView!
-    var map: AGSMap!
     
-    private var deletedLayers: [AGSLayer]!
+    /// Every layer on the map or that could be added to the map.
+    private var allLayers: [AGSLayer] = []
+    
+    /// The layers present in `allLayers` but not in the map's `operationalLayers`.
+    private var removedLayers: [AGSLayer] {
+        if let operationalLayers = mapView?.map?.operationalLayers as? [AGSLayer] {
+            return allLayers.filter({ (layer) -> Bool in
+                return !operationalLayers.contains(layer)
+            })
+        }
+        return []
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        self.map = AGSMap(basemap: .topographic())
-        
-        let imageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!)
-        self.map.operationalLayers.add(imageLayer)
-        
-        let tiledLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
-        self.map.operationalLayers.add(tiledLayer)
-
-        self.deletedLayers = [AGSLayer]()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ManageMapLayersViewController", "MMLLayersViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
+            "ManageMapLayersViewController",
+            "MMLLayersViewController"
+        ]
+                
+        let map = AGSMap(basemap: .topographic())
+        map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -133e5, y: 45e5, spatialReference: .webMercator()), scale: 2e7)
         
-        self.mapView.map = map
-        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -133e5, y: 45e5, spatialReference: AGSSpatialReference(wkid: 3857)), scale: 2e7))
+        let elevationImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!)
+        let censusTiledLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
+        
+        allLayers = [elevationImageLayer, censusTiledLayer]
+        
+        // load all the layers into the map to start
+        map.operationalLayers.addObjects(from: allLayers)
+        
+        mapView.map = map
     }
     
     //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "LayersSegue" {
-            
-            let navigationController = segue.destination as! UINavigationController
-            let controller = navigationController.viewControllers[0] as! MMLLayersViewController
-            controller.layers = self.map.operationalLayers
-            controller.deletedLayers = self.deletedLayers
-            controller.preferredContentSize = CGSize(width: 300, height: 300)
-            controller.delegate = self
+        if let navController = segue.destination as? UINavigationController,
+            let controller = navController.viewControllers.first as? MMLLayersViewController {
+            // convert and assign the map's operational layers as a Swift array
+            controller.map = mapView?.map
+            controller.allLayers = allLayers
+            controller.preferredContentSize = CGSize(width: 300, height: 200)
+            navController.presentationController?.delegate = self
         }
     }
+
+}
+
+extension ManageMapLayersViewController: UIAdaptivePresentationControllerDelegate {
     
-    //MARK: - MMLLayersViewControllerDelegate
-    
-    func layersViewControllerWantsToClose(_ layersViewController: MMLLayersViewController, withDeletedLayers layers: [AGSLayer]) {
-        self.deletedLayers = layers
-        self.dismiss(animated: true, completion: nil)
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
     }
+    
 }

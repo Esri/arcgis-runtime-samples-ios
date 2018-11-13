@@ -15,78 +15,83 @@
 import UIKit
 import ArcGIS
 
-protocol MMLLayersViewControllerDelegate: AnyObject {
-    func layersViewControllerWantsToClose(_ layersViewController: MMLLayersViewController, withDeletedLayers layers: [AGSLayer])
-}
-
 class MMLLayersViewController: UITableViewController {
-    var layers: NSMutableArray!
-    var deletedLayers: [AGSLayer]!
     
-    weak var delegate: MMLLayersViewControllerDelegate?
+    /// The map for which to manage the operational layers.
+    weak var map: AGSMap?
+    
+    /// Every layer on the map or that could be added to the map.
+    var allLayers: [AGSLayer] = []
+    
+    /// The layers present in `allLayers` but not in the map's `operationalLayers`.
+    private var removedLayers: [AGSLayer] {
+        if let operationalLayers = map?.operationalLayers as? [AGSLayer] {
+            return allLayers.filter({ (layer) -> Bool in
+                return !operationalLayers.contains(layer)
+            })
+        }
+        return []
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.tableView.isEditing = true
+        // enable the editing UI
+        tableView.isEditing = true
     }
     
-    func dataSourceIndexForIndexPath(_ dataSource: NSMutableArray, indexPath: IndexPath) -> Int {
-        return dataSource.count - indexPath.row - 1
-    }
-    
-    enum Section: Int {
-        case added
-        case removed
+    /// A convenience type for the table view sections.
+    private enum Section: Int {
+        case operational, removed
         
-        init(_ rawValue: Int) {
-            self.init(rawValue: rawValue)!
+        var label: String {
+            switch self {
+            case .operational:
+                 return "Operational Layers"
+            case .removed:
+                 return "Removed Layers"
+            }
         }
     }
     
-    //MARK: - table view data source
+    //MARK: - UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch Section(section) {
-        case .added:
-            return layers?.count ?? 0
+        switch Section(rawValue: section)! {
+        case .operational:
+            return map?.operationalLayers.count ?? 0
         case .removed:
-            return deletedLayers?.count ?? 0
+            return removedLayers.count
         }
     }
     
-    //MARK: - table view delegate
-    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch Section(section) {
-        case .added:
-            return "Added layers"
-        case .removed:
-            return "Removed layers"
-        }
+        return Section(rawValue: section)?.label
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LayerCell", for: indexPath)
-        switch Section(indexPath.section) {
-        case .added:
-            //layers in reverse order
-            let index = dataSourceIndexForIndexPath(layers, indexPath: indexPath)
-            cell.textLabel?.text = (layers[index] as AnyObject).name
-        case .removed:
-            let layer = deletedLayers[indexPath.row]
-            cell.textLabel?.text = layer.name
-        }
+        
+        let layerForIndexPath: AGSLayer? = {
+            switch Section(rawValue: indexPath.section)! {
+            case .operational:
+                return map?.operationalLayers.object(at: indexPath.row) as? AGSLayer
+            case .removed:
+                return removedLayers[indexPath.row]
+            }
+        }()
+        cell.textLabel?.text = layerForIndexPath?.name
         return cell
     }
+
+    //MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        switch Section(indexPath.section) {
-        case .added:
+        switch Section(rawValue: indexPath.section)! {
+        case .operational:
             return .delete
         case .removed:
             return .insert
@@ -94,71 +99,63 @@ class MMLLayersViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return indexPath.section == Section.added.rawValue
+        return Section(rawValue: indexPath.section) == .operational
     }
     
-    //update the order of layers in the array
+    override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        
+        if Section(rawValue: sourceIndexPath.section) == .operational,
+            Section(rawValue: proposedDestinationIndexPath.section) == .operational {
+            // only allow reordering within the operational layers section
+            return proposedDestinationIndexPath
+        }
+        return sourceIndexPath
+    }
+    
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        guard destinationIndexPath != sourceIndexPath else { return }
-        //layers in reverse order
-        let sourceIndex = dataSourceIndexForIndexPath(layers, indexPath: sourceIndexPath)
-        let destinationIndex = dataSourceIndexForIndexPath(layers, indexPath: destinationIndexPath)
+        // update the order of layers in the array
         
-        let layer = layers[sourceIndex] as! AGSLayer
-        
-        layers.removeObject(at: sourceIndex)
-        layers.insert(layer, at: destinationIndex)
+        if destinationIndexPath != sourceIndexPath {
+            map?.operationalLayers.exchangeObject(at: sourceIndexPath.row, withObjectAt: destinationIndexPath.row)
+        }
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        tableView.beginUpdates()
-        defer { tableView.endUpdates() }
         switch editingStyle {
         case .delete:
-            //layers in reverse order
-            let index = dataSourceIndexForIndexPath(layers, indexPath: indexPath)
+            // move the layer from the operational layers to the removed layers
+            guard let layerToRemove = map?.operationalLayers.object(at: indexPath.row) as? AGSLayer else {
+                return
+            }
+            map?.operationalLayers.removeObject(at: indexPath.row)
+           
+            // update the table
+            tableView.performBatchUpdates({
+                // delete the row
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                
+                let newIndexPath = IndexPath(row: removedLayers.firstIndex(of: layerToRemove)!, section: 1)
+                // insert the new row
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            })
             
-            //save the object in the deleted layers array
-            let layer = layers[index] as! AGSLayer
-            
-            //remove the layer from the data source array
-            layers.removeObject(at: index)
-            //delete the row
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            //insert the row in the deleteLayers array
-            deletedLayers.append(layer)
-            //insert the new row
-            let newIndexPath = IndexPath(row: deletedLayers.count-1, section: 1)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
         case .insert:
-            let layer = deletedLayers[indexPath.row]
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            deletedLayers.remove(at: indexPath.row)
+            // move the layer from the removed layers to the operational layers
+            let layer = removedLayers[indexPath.row]
+            map?.operationalLayers.insert(layer, at: 0)
             
-            layers.add(layer)
-            let newIndexPath = IndexPath(row: 0, section: 0)
-            tableView.insertRows(at: [newIndexPath], with: .fade)
+            // update the table
+            tableView.performBatchUpdates({
+                // delete the row
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                let newIndexPath = IndexPath(row: 0, section: 0)
+                // insert the new row
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            })
+            
         case .none:
             break
         }
     }
-    
-    override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        switch Section(sourceIndexPath.section) {
-        case .added:
-            if proposedDestinationIndexPath.section == sourceIndexPath.section {
-                return proposedDestinationIndexPath
-            } else {
-                return sourceIndexPath
-            }
-        case .removed:
-            return sourceIndexPath
-        }
-    }
-    
-    //MARK: - Actions
-    
-    @IBAction func doneAction() {
-        delegate?.layersViewControllerWantsToClose(self, withDeletedLayers: deletedLayers)
-    }
+
 }

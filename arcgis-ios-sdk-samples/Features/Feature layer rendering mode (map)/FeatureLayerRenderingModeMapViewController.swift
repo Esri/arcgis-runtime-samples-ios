@@ -21,8 +21,8 @@ class FeatureLayerRenderingModeMapViewController: UIViewController {
     @IBOutlet weak var staticMapView: AGSMapView!
     
     var _zoomed = false
-    var zoomedInViewpoint : AGSViewpoint!
-    var zoomedOutViewpoint : AGSViewpoint!
+    var zoomedInViewpoint: AGSViewpoint!
+    var zoomedOutViewpoint: AGSViewpoint!
     
     override func viewDidLoad() {
         super.viewDidLoad()

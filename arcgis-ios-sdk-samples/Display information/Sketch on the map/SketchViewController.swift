@@ -17,15 +17,15 @@ import ArcGIS
 
 class SketchViewController: UIViewController {
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var geometrySegmentedControl:UISegmentedControl!
-    @IBOutlet private weak var undoBBI:UIBarButtonItem!
-    @IBOutlet private weak var redoBBI:UIBarButtonItem!
-    @IBOutlet private weak var clearBBI:UIBarButtonItem!
+    @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet private weak var geometrySegmentedControl: UISegmentedControl!
+    @IBOutlet private weak var undoBBI: UIBarButtonItem!
+    @IBOutlet private weak var redoBBI: UIBarButtonItem!
+    @IBOutlet private weak var clearBBI: UIBarButtonItem!
     
     
-    private var map:AGSMap!
-    private var sketchEditor:AGSSketchEditor!
+    private var map: AGSMap!
+    private var sketchEditor: AGSSketchEditor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +59,7 @@ class SketchViewController: UIViewController {
     
     //MARK: - Actions
     
-    @IBAction func geometryValueChanged(_ segmentedControl:UISegmentedControl) {
+    @IBAction func geometryValueChanged(_ segmentedControl: UISegmentedControl) {
         
         switch segmentedControl.selectedSegmentIndex {
         

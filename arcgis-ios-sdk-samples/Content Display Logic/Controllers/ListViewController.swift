@@ -16,11 +16,11 @@ import UIKit
 
 class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet private weak var tableView:UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
-    var list:[String]! 
+    var list: [String]! 
     
-    private var selectAction:((Int) -> Void)!
+    private var selectAction: ((Int) -> Void)!
     
     func setSelectAction(_ action: @escaping (Int) -> Void) {
         self.selectAction = action

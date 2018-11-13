@@ -29,7 +29,7 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
     private var lastQueryCancelable: AGSCancelable?
     
     // strong reference needed for iOS 10
-    private var searchController:UISearchController?
+    private var searchController: UISearchController?
     
     override func viewDidLoad() {
         super.viewDidLoad()

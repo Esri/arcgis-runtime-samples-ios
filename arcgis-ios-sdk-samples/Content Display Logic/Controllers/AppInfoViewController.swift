@@ -17,8 +17,8 @@ import UIKit
 
 class AppInfoViewController: UIViewController {
 
-    @IBOutlet var appNameLabel:UILabel!
-    @IBOutlet var appVersionLabel:UILabel!
+    @IBOutlet var appNameLabel: UILabel!
+    @IBOutlet var appVersionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -18,18 +18,18 @@ import ArcGIS
 
 class ExportTilesViewController: UIViewController {
     
-    @IBOutlet var mapView:AGSMapView!
-    @IBOutlet var extentView:UIView!
-    @IBOutlet var visualEffectView:UIVisualEffectView!
-    @IBOutlet var previewMapView:AGSMapView!
-    @IBOutlet var barButtonItem:UIBarButtonItem!
+    @IBOutlet var mapView: AGSMapView!
+    @IBOutlet var extentView: UIView!
+    @IBOutlet var visualEffectView: UIVisualEffectView!
+    @IBOutlet var previewMapView: AGSMapView!
+    @IBOutlet var barButtonItem: UIBarButtonItem!
     
     private var graphicsOverlay = AGSGraphicsOverlay()
-    private var extentGraphic:AGSGraphic!
+    private var extentGraphic: AGSGraphic!
     
-    private var tiledLayer:AGSArcGISTiledLayer!
-    private var job:AGSExportTileCacheJob!
-    private var exportTask:AGSExportTileCacheTask!
+    private var tiledLayer: AGSArcGISTiledLayer!
+    private var job: AGSExportTileCacheJob!
+    private var exportTask: AGSExportTileCacheTask!
     
     private var downloading = false {
         didSet {

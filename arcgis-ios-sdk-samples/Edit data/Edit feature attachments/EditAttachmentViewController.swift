@@ -17,14 +17,14 @@ import ArcGIS
 
 class EditAttachmentViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    private var map:AGSMap!
-    private var featureTable:AGSServiceFeatureTable!
-    private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancelable!
+    private var map: AGSMap!
+    private var featureTable: AGSServiceFeatureTable!
+    private var featureLayer: AGSFeatureLayer!
+    private var lastQuery: AGSCancelable!
     
-    private var selectedFeature:AGSArcGISFeature!
+    private var selectedFeature: AGSArcGISFeature!
     private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
@@ -67,7 +67,7 @@ class EditAttachmentViewController: UIViewController, AGSGeoViewTouchDelegate, A
                 let title = feature.attributes["typdamage"] as! String
                 
                 //fetch attachment
-                feature.fetchAttachments { (attachments:[AGSAttachment]?, error:Error?) -> Void in
+                feature.fetchAttachments { (attachments: [AGSAttachment]?, error: Error?) -> Void in
                     if let error = error {
                         print(error)
                     }

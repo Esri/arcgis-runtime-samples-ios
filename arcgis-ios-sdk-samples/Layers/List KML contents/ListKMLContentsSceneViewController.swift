@@ -73,7 +73,7 @@ class ListKMLContentsSceneViewController: UIViewController {
     
     /// Sets the viewpoint of the scene based on the node, or hides the node
     /// if a viewpoint cannot be determined.
-    private func setSceneViewpoint(for node:AGSKMLNode){
+    private func setSceneViewpoint(for node: AGSKMLNode){
         
         dispatchQueue.async {
             // get the viewpoint asynchronously so not to block the main thread

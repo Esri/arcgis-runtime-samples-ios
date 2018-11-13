@@ -18,7 +18,7 @@ import ArcGIS
 
 class FeatureCollectionLayerVC: UIViewController {
 
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

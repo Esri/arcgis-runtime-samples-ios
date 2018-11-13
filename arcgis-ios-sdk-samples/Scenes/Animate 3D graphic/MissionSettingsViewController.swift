@@ -17,9 +17,9 @@ import UIKit
 
 protocol MissionSettingsVCDelegate: AnyObject {
     
-    func missionSettingsViewController(_ missionSettingsViewController:MissionSettingsViewController, didSelectMissionAtIndex index:Int)
+    func missionSettingsViewController(_ missionSettingsViewController: MissionSettingsViewController, didSelectMissionAtIndex index: Int)
     
-    func missionSettingsViewController(_ missionSettingsViewController:MissionSettingsViewController, didChangeSpeed speed:Int)
+    func missionSettingsViewController(_ missionSettingsViewController: MissionSettingsViewController, didChangeSpeed speed: Int)
 }
 
 class MissionSettingsViewController: UITableViewController {
@@ -28,16 +28,16 @@ class MissionSettingsViewController: UITableViewController {
     @IBOutlet private weak var speedSlider: UISlider?
     @IBOutlet private weak var progressView: UIProgressView?
     
-    weak var delegate:MissionSettingsVCDelegate?
+    weak var delegate: MissionSettingsVCDelegate?
     
-    var missionFileNames:[String] = []
-    var selectedMissionIndex:Int = 0 {
+    var missionFileNames: [String] = []
+    var selectedMissionIndex: Int = 0 {
         didSet {
             updateMissionCell()
         }
     }
     var animationSpeed = 50
-    var progress:Float = 0 {
+    var progress: Float = 0 {
         didSet {
             updateProgressViewForProgress()
         }

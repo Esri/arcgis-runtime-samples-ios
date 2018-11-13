@@ -17,10 +17,10 @@ import ArcGIS
 
 class SublayerVisibilityViewController: UIViewController {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    private var map:AGSMap!
-    private var mapImageLayer:AGSArcGISMapImageLayer!
+    private var map: AGSMap!
+    private var mapImageLayer: AGSArcGISMapImageLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -47,7 +47,7 @@ class LineOfSightGeoElementViewController: UIViewController {
     ]
 
     // handle onto any line of sight KVO observer
-    private var losObserver:NSKeyValueObservation?
+    private var losObserver: NSKeyValueObservation?
 
     private var initialViewpointCenter: AGSPoint {
         // If possible, find the middle of the block that the taxi will drive around, or else focus on the observer
@@ -220,7 +220,7 @@ class LineOfSightGeoElementViewController: UIViewController {
 
     // Track animation progress
     private var animationProgess = (frameIndex: 0, pointIndex: 0)
-    private var animationTimer:Timer?
+    private var animationTimer: Timer?
     private let framesPerSegment = 150
 
     private func startAnimation() {
@@ -267,12 +267,12 @@ class LineOfSightGeoElementViewController: UIViewController {
         return formatter
     }()
     
-    private func getFormattedString(z value:Double) -> String {
+    private func getFormattedString(z value: Double) -> String {
         return zValuesFormatter.string(from: Measurement<UnitLength>(value: value, unit: .meters))
     }
 }
 
-private func interpolatedPoint(firstPoint: AGSPoint, secondPoint:AGSPoint, progress:Double) -> (AGSPoint, Double) {
+private func interpolatedPoint(firstPoint: AGSPoint, secondPoint: AGSPoint, progress: Double) -> (AGSPoint, Double) {
     // Use the geometry engine to calculate the heading between point 1 and 2
     let geResult = AGSGeometryEngine.geodeticDistanceBetweenPoint1(firstPoint, point2: secondPoint,
                                                                    distanceUnit: .meters(),

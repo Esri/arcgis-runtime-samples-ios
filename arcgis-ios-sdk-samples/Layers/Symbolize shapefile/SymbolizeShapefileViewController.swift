@@ -18,7 +18,7 @@ class SymbolizeShapefileViewController: UIViewController {
     
     @IBOutlet weak var mapView: AGSMapView!
     
-    var featureLayer:AGSFeatureLayer?
+    var featureLayer: AGSFeatureLayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +48,7 @@ class SymbolizeShapefileViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SymbolizeShapefileViewController"]
     }
     
-    func zoom(mapView:AGSMapView, to featureLayer:AGSFeatureLayer) {
+    func zoom(mapView: AGSMapView, to featureLayer: AGSFeatureLayer) {
         // Ensure the feature layer's metadata is loaded.
         featureLayer.load { error in
             guard error == nil else {

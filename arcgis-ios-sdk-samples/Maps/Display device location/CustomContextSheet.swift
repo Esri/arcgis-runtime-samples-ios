@@ -17,29 +17,29 @@
 import UIKit
 
 protocol CustomContextSheetDelegate: AnyObject {
-    func customContextSheet(_ customContextSheet:CustomContextSheet, didSelectItemAtIndex index:Int)
+    func customContextSheet(_ customContextSheet: CustomContextSheet, didSelectItemAtIndex index: Int)
 }
 
 class CustomContextSheet: UIView {
 
-    private let animationDuration:CFTimeInterval = 0.3
-    private let buttonSize:CGFloat = 44
-    private let buttonDisplacement:CGFloat = 50
+    private let animationDuration: CFTimeInterval = 0.3
+    private let buttonSize: CGFloat = 44
+    private let buttonDisplacement: CGFloat = 50
     
-    var titles:[String]!
-    var images:[String]!
-    var highlightImages:[String]!
+    var titles: [String]!
+    var images: [String]!
+    var highlightImages: [String]!
     
-    var selectionButton:UIButton!
-    var selectionLabel:UILabel!
+    var selectionButton: UIButton!
+    var selectionLabel: UILabel!
     
-    var selectedIndex:Int = 0 {
+    var selectedIndex: Int = 0 {
         didSet {
             self.updateSelectionButton(selectedIndex)
         }
     }
     
-    weak var delegate:CustomContextSheetDelegate?
+    weak var delegate: CustomContextSheetDelegate?
     
     private var buttonsCollection = [UIButton]()
     private var labelsCollection = [UILabel]()
@@ -49,11 +49,11 @@ class CustomContextSheet: UIView {
     private var isButtonPressed = false
     private var isAnimating = false
     
-    private var maskLayer:CAShapeLayer!
+    private var maskLayer: CAShapeLayer!
     
     
     
-    init(images:[String], highlightImages:[String]?, titles:[String]?) {
+    init(images: [String], highlightImages: [String]?, titles: [String]?) {
         //frame based on the constraints applied
         super.init(frame: CGRect.zero)
         self.images = images
@@ -74,7 +74,7 @@ class CustomContextSheet: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override var intrinsicContentSize : CGSize {
+    override var intrinsicContentSize: CGSize {
         return CGSize(width: self.buttonSize, height: self.buttonSize)
     }
     
@@ -129,7 +129,7 @@ class CustomContextSheet: UIView {
         }
     }
     
-    func button(_ image:String, highlightImage:String?, action:Selector) -> UIButton {
+    func button(_ image: String, highlightImage: String?, action: Selector) -> UIButton {
         let button = UIButton(frame: CGRect.zero)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.center = self.center
@@ -143,7 +143,7 @@ class CustomContextSheet: UIView {
         return button
     }
     
-    func centerAlignConstraints(_ item:UIButton, retain:Bool) -> [NSLayoutConstraint] {
+    func centerAlignConstraints(_ item: UIButton, retain: Bool) -> [NSLayoutConstraint] {
         let centerXConstraint = NSLayoutConstraint(item: item, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0)
         let centerYConstraint = NSLayoutConstraint(item: item, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0)
         if retain {
@@ -153,13 +153,13 @@ class CustomContextSheet: UIView {
         return [centerXConstraint, centerYConstraint]
     }
     
-    func sizeConstraints(_ item:UIButton, size:CGFloat) -> [NSLayoutConstraint] {
+    func sizeConstraints(_ item: UIButton, size: CGFloat) -> [NSLayoutConstraint] {
         let heightConstraint = NSLayoutConstraint(item: item, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: size)
         let widthConstraint = NSLayoutConstraint(item: item, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: size)
         return [heightConstraint, widthConstraint]
     }
     
-    func label(_ title:String) -> UILabel {
+    func label(_ title: String) -> UILabel {
         let label = UILabel(frame: CGRect.zero)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
@@ -169,7 +169,7 @@ class CustomContextSheet: UIView {
         return label
     }
     
-    func labelConstraints(_ itemA:UIButton, itemB:UILabel) -> [NSLayoutConstraint] {
+    func labelConstraints(_ itemA: UIButton, itemB: UILabel) -> [NSLayoutConstraint] {
         let horizontalSpacingConstraint = NSLayoutConstraint(item: itemA, attribute: .leading, relatedBy: .equal, toItem: itemB, attribute: .trailing, multiplier: 1.0, constant: 10)
         let centerYConstraint = NSLayoutConstraint(item: itemA, attribute: .centerY, relatedBy: .equal, toItem: itemB, attribute: .centerY, multiplier: 1.0, constant: 0)
         return [horizontalSpacingConstraint, centerYConstraint]
@@ -221,7 +221,7 @@ class CustomContextSheet: UIView {
                         })
                     }
                 }
-            }, completion: { [weak self] (finished:Bool) -> Void in
+            }, completion: { [weak self] (finished: Bool) -> Void in
                 self?.isAnimating = false
                 self?.isButtonPressed = true
             })
@@ -253,7 +253,7 @@ class CustomContextSheet: UIView {
                     }
                     
                 }
-            }, completion: { [weak self] (finished:Bool) -> Void in
+            }, completion: { [weak self] (finished: Bool) -> Void in
                 self?.isAnimating = false
                 self?.isButtonPressed = false
                 for button in self!.buttonsCollection {
@@ -273,7 +273,7 @@ class CustomContextSheet: UIView {
         }
     }
     
-    @objc func valueChanged(_ sender:UIButton) {
+    @objc func valueChanged(_ sender: UIButton) {
         //get index of sender
         if let index = self.buttonsCollection.index(of: sender) {
             self.selectedIndex = index
@@ -284,7 +284,7 @@ class CustomContextSheet: UIView {
         }
     }
     
-    func updateSelectionButton(_ index:Int) {
+    func updateSelectionButton(_ index: Int) {
         self.selectionButton.setImage(UIImage(named: self.images[index]), for: .normal)
         if self.titles != nil {
             self.selectionLabel.attributedText = self.attributedText(self.titles[index])
@@ -309,7 +309,7 @@ class CustomContextSheet: UIView {
         self.layer.insertSublayer(self.maskLayer, at: 0)
     }
     
-    private func maskLayerAnimation(_ fill:Bool) -> CABasicAnimation {
+    private func maskLayerAnimation(_ fill: Bool) -> CABasicAnimation {
         
         let animation = CABasicAnimation(keyPath: #keyPath(CALayer.transform))
         animation.duration = self.animationDuration

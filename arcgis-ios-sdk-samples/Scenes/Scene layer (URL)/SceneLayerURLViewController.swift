@@ -19,7 +19,7 @@ import ArcGIS
 
 class SceneLayerURLViewController: UIViewController {
 
-    @IBOutlet var sceneView:AGSSceneView!
+    @IBOutlet var sceneView: AGSSceneView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

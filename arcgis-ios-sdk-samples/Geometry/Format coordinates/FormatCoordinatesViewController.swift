@@ -17,11 +17,11 @@ import ArcGIS
 
 class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate, UITextFieldDelegate {
 
-    @IBOutlet private var mapView:AGSMapView!
-    @IBOutlet private var latLongDDTextField:UITextField!
-    @IBOutlet private var latLongDMSTextField:UITextField!
-    @IBOutlet private var utmTextField:UITextField!
-    @IBOutlet private var usngTextField:UITextField!
+    @IBOutlet private var mapView: AGSMapView!
+    @IBOutlet private var latLongDDTextField: UITextField!
+    @IBOutlet private var latLongDMSTextField: UITextField!
+    @IBOutlet private var utmTextField: UITextField!
+    @IBOutlet private var usngTextField: UITextField!
     
     private var graphicsOverlay = AGSGraphicsOverlay()
     
@@ -65,7 +65,7 @@ class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate
         self.usngTextField.text = AGSCoordinateFormatter.usngString(from: point, precision: 4, addSpaces: true)
     }
     
-    private func displayGraphicAtPoint(_ point:AGSPoint) {
+    private func displayGraphicAtPoint(_ point: AGSPoint) {
         
         //remove previous graphic from graphics overlay
         self.graphicsOverlay.graphics.removeAllObjects()
@@ -85,7 +85,7 @@ class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate
             return true
         }
         
-        var point:AGSPoint?
+        var point: AGSPoint?
         
         //using tags on the textfield to differentiate
         switch textField.tag {

@@ -17,13 +17,13 @@ import ArcGIS
 
 class BookmarksListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var tableView:UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     //list of bookmarks
-    var bookmarks:[AGSBookmark]!
+    var bookmarks: [AGSBookmark]!
     
     //private property to store selection action for table cell
-    private var selectAction:((AGSViewpoint) -> Void)!
+    private var selectAction: ((AGSViewpoint) -> Void)!
     
     override func viewDidLoad() {
         super.viewDidLoad()

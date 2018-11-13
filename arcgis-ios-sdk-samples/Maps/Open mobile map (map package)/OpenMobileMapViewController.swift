@@ -19,9 +19,9 @@ import ArcGIS
 
 class OpenMobileMapViewController: UIViewController {
 
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
-    private var mapPackage:AGSMobileMapPackage!
+    private var mapPackage: AGSMobileMapPackage!
     
     override func viewDidLoad() {
         super.viewDidLoad()

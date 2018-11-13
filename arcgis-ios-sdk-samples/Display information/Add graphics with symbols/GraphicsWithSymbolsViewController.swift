@@ -17,9 +17,9 @@ import ArcGIS
 
 class GraphicsWithSymbolsViewController: UIViewController {
     
-    @IBOutlet private var mapView:AGSMapView!
+    @IBOutlet private var mapView: AGSMapView!
     
-    private var graphicsOverlay:AGSGraphicsOverlay!
+    private var graphicsOverlay: AGSGraphicsOverlay!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +46,7 @@ class GraphicsWithSymbolsViewController: UIViewController {
         addText(to: graphicsOverlay)
     }
     
-    private func addBuoyPoints(to graphicsOverlay:AGSGraphicsOverlay) {
+    private func addBuoyPoints(to graphicsOverlay: AGSGraphicsOverlay) {
         
         //define the buoy locations
         let wgs84 = AGSSpatialReference.wgs84()
@@ -70,7 +70,7 @@ class GraphicsWithSymbolsViewController: UIViewController {
         graphicsOverlay.graphics.addObjects(from: [buoyGraphic1, buoyGraphic2, buoyGraphic3, buoyGraphic4])
     }
     
-    private func addText(to graphicsOverlay:AGSGraphicsOverlay) {
+    private func addText(to graphicsOverlay: AGSGraphicsOverlay) {
         
         let wgs84 = AGSSpatialReference.wgs84()
         let bassLocation = AGSPoint(x: -2.640631, y: 56.078083, spatialReference: wgs84)
@@ -90,7 +90,7 @@ class GraphicsWithSymbolsViewController: UIViewController {
         graphicsOverlay.graphics.add(craigleithGraphic)
     }
     
-    private func addBoatTrip(to graphicsOverlay:AGSGraphicsOverlay) {
+    private func addBoatTrip(to graphicsOverlay: AGSGraphicsOverlay) {
         //boat trip geometry
         let boatRoute = self.boatTripGeometry()
         
@@ -106,7 +106,7 @@ class GraphicsWithSymbolsViewController: UIViewController {
         graphicsOverlay.graphics.add(boatTripGraphic)
     }
     
-    private func addNestingGround(to graphicsOverlay:AGSGraphicsOverlay) {
+    private func addNestingGround(to graphicsOverlay: AGSGraphicsOverlay) {
         //nesting ground geometry
         let nestingGround = self.nestingGroundGeometry()
         

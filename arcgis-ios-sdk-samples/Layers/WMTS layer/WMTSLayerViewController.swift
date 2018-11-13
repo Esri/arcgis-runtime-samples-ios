@@ -17,9 +17,9 @@ import ArcGIS
 
 class WMTSLayerViewController: UIViewController {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    private var map:AGSMap!
+    private var map: AGSMap!
     private var wmtsService: AGSWMTSService!
     
     private let WMTS_SERVICE_URL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer/WMTS")!

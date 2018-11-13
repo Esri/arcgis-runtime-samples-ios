@@ -17,16 +17,16 @@ import ArcGIS
 
 class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var toolbar:UIToolbar!
-    @IBOutlet private var toolbarBottomConstraint:NSLayoutConstraint!
+    @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet private weak var toolbar: UIToolbar!
+    @IBOutlet private var toolbarBottomConstraint: NSLayoutConstraint!
     
-    private var map:AGSMap!
-    private var featureTable:AGSServiceFeatureTable!
-    private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancelable!
+    private var map: AGSMap!
+    private var featureTable: AGSServiceFeatureTable!
+    private var featureLayer: AGSFeatureLayer!
+    private var lastQuery: AGSCancelable!
     
-    private var selectedFeature:AGSArcGISFeature!
+    private var selectedFeature: AGSArcGISFeature!
     private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
@@ -56,7 +56,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.toggleToolbar(false)
     }
     
-    func toggleToolbar(_ on:Bool) {
+    func toggleToolbar(_ on: Bool) {
         toolbarBottomConstraint.constant = on ? 0 : -44-view.safeAreaInsets.bottom
         
         UIView.animate(withDuration: 0.3, animations: { [weak self] () -> Void in
@@ -65,7 +65,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     }
     
     func applyEdits() {
-        self.featureTable.applyEdits(completion: { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
+        self.featureTable.applyEdits(completion: { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) -> Void in
             if let error = error {
                 self?.presentAlert(error: error)
             }
@@ -132,7 +132,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         if let newGeometry = self.mapView.sketchEditor?.geometry {
 
             self.selectedFeature.geometry = newGeometry
-            self.featureTable.update(self.selectedFeature, completion: { [weak self] (error:Error?) -> Void in
+            self.featureTable.update(self.selectedFeature, completion: { [weak self] (error: Error?) -> Void in
                 if let error = error {
                     self?.presentAlert(error: error)
                     

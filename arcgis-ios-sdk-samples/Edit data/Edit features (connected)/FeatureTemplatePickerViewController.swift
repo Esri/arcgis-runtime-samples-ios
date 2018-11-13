@@ -16,12 +16,12 @@ import UIKit
 import ArcGIS
 
 protocol FeatureTemplatePickerDelegate: AnyObject {
-    func featureTemplatePickerViewControllerWantsToDismiss(_ controller:FeatureTemplatePickerViewController)
-    func featureTemplatePickerViewController(_ controller:FeatureTemplatePickerViewController, didSelectFeatureTemplate template:AGSFeatureTemplate, forFeatureLayer featureLayer:AGSFeatureLayer)
+    func featureTemplatePickerViewControllerWantsToDismiss(_ controller: FeatureTemplatePickerViewController)
+    func featureTemplatePickerViewController(_ controller: FeatureTemplatePickerViewController, didSelectFeatureTemplate template: AGSFeatureTemplate, forFeatureLayer featureLayer: AGSFeatureLayer)
 }
 
 class FeatureTemplatePickerViewController: UITableViewController {
-    weak var delegate:FeatureTemplatePickerDelegate?
+    weak var delegate: FeatureTemplatePickerDelegate?
     
     private struct FeatureTemplateInfo {
         var featureLayer: AGSFeatureLayer!
@@ -30,7 +30,7 @@ class FeatureTemplatePickerViewController: UITableViewController {
     
     private var infos = [FeatureTemplateInfo]()
     
-    func addTemplatesFromLayer(_ featureLayer:AGSFeatureLayer) {
+    func addTemplatesFromLayer(_ featureLayer: AGSFeatureLayer) {
                 
         let featureTable = featureLayer.featureTable as! AGSServiceFeatureTable
         //if layer contains only templates (no feature types)

@@ -17,9 +17,9 @@ import ArcGIS
 
 class FeatureLayerGDBViewController: UIViewController {
 
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
-    private var geodatabase:AGSGeodatabase!
+    private var geodatabase: AGSGeodatabase!
     
     override func viewDidLoad() {
         super.viewDidLoad()

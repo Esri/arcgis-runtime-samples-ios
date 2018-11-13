@@ -19,10 +19,10 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     @IBOutlet var mapView: AGSMapView!
     
-    private var map:AGSMap!
+    private var map: AGSMap!
     
-    private var featureLayer:AGSFeatureLayer!
-    private var mapImageLayer:AGSArcGISMapImageLayer!
+    private var featureLayer: AGSFeatureLayer!
+    private var mapImageLayer: AGSArcGISMapImageLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()

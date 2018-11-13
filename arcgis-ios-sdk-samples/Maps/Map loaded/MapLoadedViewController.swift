@@ -38,7 +38,7 @@ class MapLoadedViewController: UIViewController {
         map.addObserver(self, forKeyPath: #keyPath(AGSMap.loadStatus), options: .initial, context: nil)
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         //update the banner label on main thread
         DispatchQueue.main.async { [weak self] in
             guard let strongSelf = self else { return }

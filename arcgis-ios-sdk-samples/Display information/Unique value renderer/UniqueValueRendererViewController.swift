@@ -18,9 +18,9 @@ import ArcGIS
 
 class UniqueValueRendererViewController: UIViewController {
 
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
-    private var featureLayer:AGSFeatureLayer!
+    private var featureLayer: AGSFeatureLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()

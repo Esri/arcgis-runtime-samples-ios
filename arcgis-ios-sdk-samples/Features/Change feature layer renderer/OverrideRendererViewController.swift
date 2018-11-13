@@ -17,10 +17,10 @@ import ArcGIS
 
 class OverrideRendererViewController: UIViewController {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    private var map:AGSMap!
-    private var featureLayer:AGSFeatureLayer!
+    private var map: AGSMap!
+    private var featureLayer: AGSFeatureLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()

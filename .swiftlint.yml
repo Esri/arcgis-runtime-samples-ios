@@ -1,6 +1,5 @@
 disabled_rules: # rule identifiers to exclude from running
   - block_based_kvo
-  - colon
   - comma
   - control_statement
   - cyclomatic_complexity

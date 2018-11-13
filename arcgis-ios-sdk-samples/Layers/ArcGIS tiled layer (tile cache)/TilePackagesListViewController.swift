@@ -16,17 +16,17 @@
 import UIKit
 
 protocol TilePackagesListVCDelegate: AnyObject {
-    func tilePackagesListViewController(_ tilePackagesListViewController:TilePackagesListViewController, didSelectTPKWithPath path:String)
+    func tilePackagesListViewController(_ tilePackagesListViewController: TilePackagesListViewController, didSelectTPKWithPath path: String)
 }
 
 class TilePackagesListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet var tableView:UITableView!
+    @IBOutlet var tableView: UITableView!
     
-    weak var delegate:TilePackagesListVCDelegate?
+    weak var delegate: TilePackagesListVCDelegate?
     
-    private var bundleTPKPaths:[String]!
-    private var documentTPKPaths:[String]!
+    private var bundleTPKPaths: [String]!
+    private var documentTPKPaths: [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +46,7 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
         let tpks = subpaths?.filter { (objc) -> Bool in
             return predicate.evaluate(with: objc)
         }
-        self.documentTPKPaths = tpks?.map { (name:String) -> String in
+        self.documentTPKPaths = tpks?.map { (name: String) -> String in
             return documentDirectoryURL.appendingPathComponent(name).path
         }
     }
@@ -95,7 +95,7 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
         delegate?.tilePackagesListViewController(self, didSelectTPKWithPath: path)
     }
     
-    func extractName(fromPath path:String) -> String {
+    func extractName(fromPath path: String) -> String {
         guard var index = path.range(of: "/", options: .backwards, range: nil, locale: nil)?.lowerBound else {
             return ""
         }

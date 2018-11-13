@@ -171,7 +171,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     func popupsViewControllerDidFinishViewingPopups(_ popupsViewController: AGSPopupsViewController) {
         
         //dismiss the popups view controller
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
         
         self.popupsVC = nil
     }

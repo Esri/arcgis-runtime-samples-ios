@@ -358,7 +358,7 @@ private class TouchView: UIView {
         
         originalCenter = center
         
-        super.init(frame: CGRect(origin: CGPoint.zero, size: size))
+        super.init(frame: CGRect(origin: .zero, size: size))
         
         self.center = center
         layer.cornerRadius = size.width / 2.0

@@ -112,7 +112,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                 //kick off the job
                 generateJob.start(statusHandler: { (status: AGSJobStatus) -> Void in
                     SVProgressHUD.show(withStatus: status.statusString())
-                }) { [weak self] (object: AnyObject?, error: Error?) -> Void in
+                }, completion: { [weak self] (object: AnyObject?, error: Error?) -> Void in
                     
                     SVProgressHUD.dismiss()
                     
@@ -125,7 +125,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                     }
                     
                     self?.activeJob = nil
-                }
+                })
                 
             }
             else {

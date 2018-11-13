@@ -135,7 +135,7 @@ class ExportTilesViewController: UIViewController {
         self.job.start(statusHandler: { (status: AGSJobStatus) -> Void in
             //show job status
             SVProgressHUD.show(withStatus: status.statusString())
-        }) { [weak self] (result: AnyObject?, error: Error?) -> Void in
+        }, completion: { [weak self] (result: AnyObject?, error: Error?) -> Void in
             
             //hide progress view
             SVProgressHUD.dismiss()
@@ -152,7 +152,7 @@ class ExportTilesViewController: UIViewController {
                 let newTiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
                 self?.previewMapView.map = AGSMap(basemap: AGSBasemap(baseLayer: newTiledLayer))
             }
-        }
+        })
     }
     
     @IBAction func closeAction() {

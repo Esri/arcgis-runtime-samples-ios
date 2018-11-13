@@ -28,7 +28,7 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelega
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ManageSublayersViewController","MapImageSublayersVC"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ManageSublayersViewController", "MapImageSublayersVC"]
         
         //instantiate map with basemap
         let map = AGSMap(basemap: .streets())

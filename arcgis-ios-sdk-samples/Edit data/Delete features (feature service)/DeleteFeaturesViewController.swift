@@ -49,7 +49,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         map.operationalLayers.add(featureLayer)
     }
     
-    func showCallout(for feature: AGSFeature,at tapLocation: AGSPoint) {
+    func showCallout(for feature: AGSFeature, at tapLocation: AGSPoint) {
         let title = feature.attributes["typdamage"] as! String
         self.mapView.callout.title = title
         self.mapView.callout.delegate = self
@@ -74,7 +74,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
                 self.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
             }
             else {
-                if let featureEditResults = featureEditResults , featureEditResults.count > 0 && featureEditResults[0].completedWithErrors == false {
+                if let featureEditResults = featureEditResults, featureEditResults.count > 0 && featureEditResults[0].completedWithErrors == false {
                     self.presentAlert(message: "Edits applied successfully")
                 }
             }
@@ -95,7 +95,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
             if let error = identifyLayerResult.error {
                 print(error)
             }
-            else if let features = identifyLayerResult.geoElements as? [AGSFeature] , features.count > 0 {
+            else if let features = identifyLayerResult.geoElements as? [AGSFeature], features.count > 0 {
                 //show callout for the first feature
                 self?.showCallout(for: features[0], at: mapPoint)
                 //update selected feature

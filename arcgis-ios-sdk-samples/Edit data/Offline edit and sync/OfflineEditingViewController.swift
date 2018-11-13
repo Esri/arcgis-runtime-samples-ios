@@ -207,7 +207,7 @@ class OfflineEditingViewController: UIViewController {
     @objc func sketchChanged(_ notification: Notification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the done bar button item
-        if let geometry = self.mapView.sketchEditor?.geometry , !geometry.isEmpty {
+        if let geometry = self.mapView.sketchEditor?.geometry, !geometry.isEmpty {
             doneBBI.isEnabled = true
         }
     }

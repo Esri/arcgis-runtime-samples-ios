@@ -357,7 +357,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
                 print(error.localizedDescription)
             }
             else {
-                if let result = result , result.count > 0 {
+                if let result = result, result.count > 0 {
                     self?.preferredSearchLocation = result[0].displayLocation
                     completion()
                 }
@@ -400,7 +400,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func handleGeocodeResultsForPOIs(_ geocodeResults: [AGSGeocodeResult]?, areExtentBased: Bool) {
-        if let results = geocodeResults , results.count > 0 {
+        if let results = geocodeResults, results.count > 0 {
             
             //show the graphics on the map
             for result in results {
@@ -432,7 +432,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     
     private func search() {
         //validation
-        guard let poi = self.poiTextField.text , !poi.isEmpty else {
+        guard let poi = self.poiTextField.text, !poi.isEmpty else {
             print("Point of interest required")
             return
         }

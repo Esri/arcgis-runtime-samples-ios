@@ -77,7 +77,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
             cell.textLabel?.text = basemap.name
             
             //accesory view
-            if let index = self.selectedBasemapIndex , index == indexPath.row {
+            if let index = self.selectedBasemapIndex, index == indexPath.row {
                 cell.accessoryType = .checkmark
             }
             else {

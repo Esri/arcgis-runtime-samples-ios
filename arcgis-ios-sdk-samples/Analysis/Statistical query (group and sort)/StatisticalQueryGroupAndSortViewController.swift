@@ -299,14 +299,14 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
                 selectedGroupByFieldNames.remove(at: indexPath.row)
                 
                 // Remove field from the order by fields
-                for (i,orderByField) in orderByFields.enumerated().reversed() {
+                for (i, orderByField) in orderByFields.enumerated().reversed() {
                     if orderByField.fieldName == selectedGroupByFieldName {
                         orderByFields.remove(at: i)
                     }
                 }
                 
                 // Remove field from the selected order by fields
-                for (i,selectedOrderByField) in selectedOrderByFields.enumerated().reversed() {
+                for (i, selectedOrderByField) in selectedOrderByFields.enumerated().reversed() {
                     if selectedOrderByField.fieldName == selectedGroupByFieldName {
                         selectedOrderByFields.remove(at: i)
                     }
@@ -349,14 +349,14 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         }
         
         // Remove selected order by field if it's not part of the new order by fields
-        for (i,orderByField) in selectedOrderByFields.enumerated().reversed() {
+        for (i, orderByField) in selectedOrderByFields.enumerated().reversed() {
             if !orderByFields.contains(where: { $0.fieldName == orderByField.fieldName }) {
                 selectedOrderByFields.remove(at: i)
             }
         }
         
         // Reload sections
-        tableView.reloadSections(IndexSet([1,2]), with: .automatic)
+        tableView.reloadSections(IndexSet([1, 2]), with: .automatic)
     }
     
     // MARK: - Order By Fields View Controller Delegate

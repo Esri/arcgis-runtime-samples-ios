@@ -35,7 +35,7 @@ class SwitchBasemapViewController: UIViewController {
         (.streetsVector(), "Streets (Vector)"),
         (.streetsNightVector(), "Streets Night (Vector)"),
         (.streetsWithReliefVector(), "Streets w/ Relief (Vector)"),
-        (.terrainWithLabels(),  "Terrain w/ Labels (Raster)"),
+        (.terrainWithLabels(), "Terrain w/ Labels (Raster)"),
         (.terrainWithLabelsVector(), "Terrain w/ Labels (Vector)"),
         (.topographic(), "Topographic (Raster)"),
         (.topographicVector(), "Topographic (Vector)")

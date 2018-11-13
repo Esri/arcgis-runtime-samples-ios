@@ -268,7 +268,7 @@ class Animate3DGraphicViewController: UIViewController {
         currentFrameIndex += 1
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func changeMissionAction() {
         
@@ -309,7 +309,7 @@ class Animate3DGraphicViewController: UIViewController {
         isAnimating.toggle()
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

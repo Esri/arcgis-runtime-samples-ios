@@ -54,7 +54,7 @@ class VectorTileCustomStyleVC: UIViewController, VectorStylesVCDelegate {
         mapView.map?.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? VectorStylesViewController {
@@ -75,7 +75,7 @@ class VectorTileCustomStyleVC: UIViewController, VectorStylesVCDelegate {
         }
     }
     
-    //MARK: - VectorStylesVCDelegate
+    // MARK: - VectorStylesVCDelegate
     
     func vectorStylesViewController(_ vectorStylesViewController: VectorStylesViewController, didSelectItemWithID itemID: String) {
         //show newly selected vector layer

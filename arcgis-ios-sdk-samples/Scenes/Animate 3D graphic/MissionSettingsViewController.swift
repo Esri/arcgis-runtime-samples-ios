@@ -62,7 +62,7 @@ class MissionSettingsViewController: UITableViewController {
         updateProgressViewForProgress()
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func speedValueChanged(_ sender: UISlider) {
         animationSpeed = Int(sender.value)

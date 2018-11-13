@@ -67,7 +67,7 @@ class FeatureTemplatePickerViewController: UITableViewController {
         self.delegate?.featureTemplatePickerViewControllerWantsToDismiss(self)
     }
     
-    //MARK: - table view data source
+    // MARK: - table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -88,7 +88,7 @@ class FeatureTemplatePickerViewController: UITableViewController {
         return cell
     }
     
-    //MARK: - table view delegate
+    // MARK: - table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Notify the delegate that the user picked a feature template

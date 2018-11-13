@@ -48,7 +48,6 @@ class GeodesicOperationsViewController: UIViewController, AGSGeoViewTouchDelegat
         super.init(coder: aDecoder)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,7 +63,6 @@ class GeodesicOperationsViewController: UIViewController, AGSGeoViewTouchDelegat
         // Set touch delegate on map view as self.
         mapView.touchDelegate = self
     }
-    
     
     // MARK: - AGSGeoViewTouchDelegate
     

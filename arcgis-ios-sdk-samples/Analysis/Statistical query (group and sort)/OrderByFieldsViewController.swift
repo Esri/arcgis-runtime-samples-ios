@@ -52,7 +52,6 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
         return orderByFields.count
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderByFieldsCell", for: indexPath)
         

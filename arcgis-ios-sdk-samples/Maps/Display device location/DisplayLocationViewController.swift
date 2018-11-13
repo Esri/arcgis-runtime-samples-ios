@@ -53,7 +53,7 @@ class DisplayLocationViewController: UIViewController, CustomContextSheetDelegat
         }
     }
 
-    //MARK: - CustomContextSheetDelegate
+    // MARK: - CustomContextSheetDelegate
     
     //for selection on the context sheet
     //update the autoPanMode based on the selection

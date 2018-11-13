@@ -106,7 +106,7 @@ class MILLegendTableViewController: UITableViewController {
         }
     }
 
-    //MARK: - Helper functions
+    // MARK: - Helper functions
     
     func hashString (for obj: AnyObject) -> String {
         return String(UInt(bitPattern: ObjectIdentifier(obj)))

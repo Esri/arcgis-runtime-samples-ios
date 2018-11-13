@@ -51,7 +51,6 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         //feature layer
         self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
         
-        
         //add feature layer add to the operational layers
         self.map.operationalLayers.add(self.featureLayer)
         
@@ -65,14 +64,14 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.touchDelegate = self
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //get the geoElements for all layers present at the tapped point
         self.identifyLayers(screenPoint)
     }
     
-    //MARK: - Identify layers
+    // MARK: - Identify layers
     
     private func identifyLayers(_ screen: CGPoint) {
         //show progress hud
@@ -92,7 +91,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         }
     }
     
-    //MARK: - Helper methods
+    // MARK: - Helper methods
     
     private func handleIdentifyResults(_ results: [AGSIdentifyLayerResult]) {
         

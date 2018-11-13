@@ -53,7 +53,7 @@ class MapRotationViewController: UIViewController {
         compassButton.transform = CGAffineTransform(rotationAngle: CGFloat(-mapView.rotation * Double.pi / 180))
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     //rotate the map view based on the value of the slider
     @IBAction private func sliderValueChanged(_ slider: UISlider) {

@@ -39,7 +39,7 @@ class VectorStylesViewController: UITableViewController {
         }
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemID = itemIDs[indexPath.row]

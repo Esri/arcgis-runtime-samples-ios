@@ -51,8 +51,6 @@ class CustomContextSheet: UIView {
     
     private var maskLayer: CAShapeLayer!
     
-    
-    
     init(images: [String], highlightImages: [String]?, titles: [String]?) {
         //frame based on the constraints applied
         super.init(frame: CGRect.zero)
@@ -101,7 +99,6 @@ class CustomContextSheet: UIView {
             //constraints
             self.addConstraints(self.labelConstraints(self.selectionButton, itemB: self.selectionLabel))
         }
-        
         
         //other buttons
         for i in 0...self.images.count-1 {
@@ -185,7 +182,7 @@ class CustomContextSheet: UIView {
         return NSAttributedString(string: title, attributes: attributes)
     }
     
-    //MARK: - Presentation logic
+    // MARK: - Presentation logic
     
     private func showButtons() {
         if !self.isAnimating && !self.isButtonPressed {
@@ -196,7 +193,6 @@ class CustomContextSheet: UIView {
             //hide the selection label
             self.selectionLabel.attributedText = self.attributedText("Close")
             self.selectionLabel.sizeToFit()
-            
             
             let animation = self.maskLayerAnimation(true)
             self.maskLayer.add(animation, forKey: animation.keyPath)
@@ -327,7 +323,7 @@ class CustomContextSheet: UIView {
         return animation
     }
     
-    //MARK: - 
+    // MARK: - 
     
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         if self.isButtonPressed {

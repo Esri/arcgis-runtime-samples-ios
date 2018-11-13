@@ -72,7 +72,7 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
         self.tableView.reloadData()
     }
     
-    //MARK : - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -110,7 +110,7 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
         return section == 0 ? "From the bundle" : "From the documents directory"
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -135,14 +135,14 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
         tableView.reloadRows(at: indexPathsArray, with: .automatic)
     }
     
-    //MARK: - MapPackageCellDelegate
+    // MARK: - MapPackageCellDelegate
     
     func mapPackageCell(_ mapPackageCell: MapPackageCell, didSelectMap map: AGSMap) {
         self.selectedMap = map
         self.performSegue(withIdentifier: "MobileMapVCSegue", sender: self)
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MobileMapVCSegue" {

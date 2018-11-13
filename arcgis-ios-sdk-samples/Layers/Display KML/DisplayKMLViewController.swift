@@ -83,7 +83,7 @@ class DisplayKMLViewController: UIViewController {
         }
     }
     
-    //MARK: - KML Loading
+    // MARK: - KML Loading
     
     private func display(kmlLayer: AGSKMLLayer) {
         

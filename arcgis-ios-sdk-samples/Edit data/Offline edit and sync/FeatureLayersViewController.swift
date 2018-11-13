@@ -35,7 +35,7 @@ class FeatureLayersViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return featureLayerInfos.count
@@ -56,7 +56,7 @@ class FeatureLayersViewController: UIViewController, UITableViewDataSource, UITa
         return cell
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark

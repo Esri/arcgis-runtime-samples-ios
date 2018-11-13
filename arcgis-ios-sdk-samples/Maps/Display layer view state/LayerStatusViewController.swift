@@ -113,7 +113,7 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
-    //MARK: - Table view data source
+    // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -123,7 +123,7 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         return self.map?.operationalLayers.count ?? 0
     }
     
-    //MARK: - Table view delegates
+    // MARK: - Table view delegates
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LayerStatusCell", for: indexPath)

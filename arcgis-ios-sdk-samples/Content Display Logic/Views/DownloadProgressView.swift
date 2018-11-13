@@ -99,7 +99,6 @@ class DownloadProgressView: UIView {
         self.progressLabel.layer.addSublayer(self.shapeLayer)
     }
     
-    
     func show(withStatus status: String, progress: CGFloat) {
         
         self.statusLabel.text = status
@@ -122,7 +121,6 @@ class DownloadProgressView: UIView {
         
         self.removeFromSuperview()
     }
-    
     
     @IBAction private func cancelAction() {
         

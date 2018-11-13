@@ -67,7 +67,7 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.mapView.touchDelegate = self
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         
@@ -96,7 +96,7 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
         }
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

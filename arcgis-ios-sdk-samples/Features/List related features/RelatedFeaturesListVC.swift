@@ -34,7 +34,7 @@ class RelatedFeaturesListVC: UIViewController, UITableViewDataSource, UITableVie
         self.tableView.estimatedRowHeight = 44
     }
     
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.results?.count ?? 0

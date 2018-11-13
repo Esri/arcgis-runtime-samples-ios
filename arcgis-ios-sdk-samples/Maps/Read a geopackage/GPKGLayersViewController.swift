@@ -54,7 +54,7 @@ class GPKGLayersViewController: UIViewController, UITableViewDataSource, UITable
         self.tableView.allowsSelectionDuringEditing = true
     }
     
-    //MARK: - table view data source
+    // MARK: - table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -64,7 +64,7 @@ class GPKGLayersViewController: UIViewController, UITableViewDataSource, UITable
         return section == 0 ? layersInMap.count : layersNotInMap.count
     }
     
-    //MARK: - table view delegate
+    // MARK: - table view delegate
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return section == 0 ? "Layers on the map" : "Layers not on the map"

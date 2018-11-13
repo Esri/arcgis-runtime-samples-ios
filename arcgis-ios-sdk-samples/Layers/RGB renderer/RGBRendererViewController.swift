@@ -41,7 +41,7 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate
         mapView.map = map
     }
     
-    //MARK: - RGBRendererSettingsVCDelegate
+    // MARK: - RGBRendererSettingsVCDelegate
     
     func rgbRendererSettingsVC(_ rgbRendererSettingsVC: RGBRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters) {
         
@@ -49,7 +49,7 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate
         rasterLayer?.renderer = renderer
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,

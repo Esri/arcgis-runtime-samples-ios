@@ -59,7 +59,7 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ReadGeopackageViewController", "GPKGLayersViewController", "GPKGLayerTableCell"]
     }
     
-    //MARK: - Segue to and from the Layer Control viewcontroller.
+    // MARK: - Segue to and from the Layer Control viewcontroller.
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LayersSegue",

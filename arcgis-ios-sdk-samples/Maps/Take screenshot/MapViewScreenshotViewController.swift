@@ -48,7 +48,7 @@ class MapViewScreenshotViewController: UIViewController {
         self.overlayImageView.layer.borderWidth = 2
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     //hide the screenshot overlay view
     @objc func hideOverlayParentView() {

@@ -21,7 +21,6 @@ protocol MapPackageCellDelegate: AnyObject {
     func mapPackageCell(_ mapPackageCell: MapPackageCell, didSelectMap map: AGSMap)
 }
 
-
 class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet var titleLabel: UILabel!
@@ -68,7 +67,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         self.collectionViewHeightConstraint.constant = 0
     }
 
-    //MARK: - UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.mapPackage?.maps.count ?? 0
@@ -103,7 +102,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         return cell
     }
     
-    //MARK: - UICollectionViewDelegate
+    // MARK: - UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.delegate?.mapPackageCell(self, didSelectMap: self.mapPackage.maps[indexPath.item])

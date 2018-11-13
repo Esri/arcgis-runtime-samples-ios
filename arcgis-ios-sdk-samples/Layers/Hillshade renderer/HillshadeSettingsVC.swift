@@ -83,7 +83,7 @@ class HillshadeSettingsVC: UITableViewController {
         delegate?.hillshadeSettingsVC(self, selectedAltitude: altitude, azimuth: azimuth, slopeType: slopeType)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func azimuthSliderValueChanged(_ slider: UISlider) {
         azimuth = Double(slider.value)

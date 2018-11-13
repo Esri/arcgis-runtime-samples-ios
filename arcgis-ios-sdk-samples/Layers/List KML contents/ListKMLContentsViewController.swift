@@ -67,7 +67,6 @@ class ListKMLContentsViewController: UITableViewController {
             self.tableView.reloadData()
         }
         
-        
         // create the view controller to display the scene throught the sample
         let sceneViewController = storyboard!.instantiateViewController(withIdentifier: "ListKMLContentsSceneViewController") as! ListKMLContentsSceneViewController
         sceneViewController.kmlDataset = kmlDataset
@@ -111,7 +110,7 @@ class ListKMLContentsViewController: UITableViewController {
         }
     }
     
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return flattenedNodes.count
@@ -129,7 +128,7 @@ class ListKMLContentsViewController: UITableViewController {
         return cell
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

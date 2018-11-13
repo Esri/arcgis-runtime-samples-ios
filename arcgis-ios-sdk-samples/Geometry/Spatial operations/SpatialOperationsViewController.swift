@@ -129,7 +129,7 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         }
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "OperationsListSegue" {
@@ -141,7 +141,7 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         }
     }
     
-    //MARK: - OperationsListVCDelegate
+    // MARK: - OperationsListVCDelegate
     
     func operationsListViewController(_ operationsListViewController: OperationsListViewController, didSelectOperation index: Int) {
         
@@ -156,7 +156,7 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         }
     }
     
-    //MARK: - UIAdaptivePresentationControllerDelegate
+    // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         

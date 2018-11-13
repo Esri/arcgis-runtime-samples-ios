@@ -181,7 +181,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         }
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func generateOfflineMapAction() {
         
@@ -238,7 +238,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         extentView.isHidden = false
     }
     
-    //MARK: - Helper methods
+    // MARK: - Helper methods
     
     private func showLoginQueryAlert() {
         

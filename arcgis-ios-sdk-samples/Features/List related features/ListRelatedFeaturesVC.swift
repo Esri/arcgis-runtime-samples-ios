@@ -73,7 +73,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         mapView.selectionProperties.color = .yellow
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         
@@ -126,7 +126,6 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         //query for related features
         self.parksFeatureTable.queryRelatedFeatures(for: self.selectedPark) { [weak self] (results: [AGSRelatedFeatureQueryResult]?, error: Error?) in
             
-            
             //dismiss progress hud
             SVProgressHUD.dismiss()
             
@@ -156,7 +155,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         self.performSegue(withIdentifier: "RelatedFeaturesSegue", sender: self)
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -174,7 +173,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         }
      }
     
-    //MARK: - UIPopoverPresentationControllerDelegate
+    // MARK: - UIPopoverPresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         

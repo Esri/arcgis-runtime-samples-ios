@@ -195,7 +195,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         }
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //dismiss the callout if already visible
@@ -232,7 +232,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.mapView.touchDelegate?.geoView!(self.mapView, didTapAtScreenPoint: screenPoint, mapPoint: mapPoint)
     }
     
-    //MARK: - UISearchBar delegates
+    // MARK: - UISearchBar delegates
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.geocodeSearchText(searchBar.text!)
@@ -246,7 +246,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.performSegue(withIdentifier: "AddressesListSegue", sender: self)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     @objc func keyboardWillShow(_ sender: AnyObject) {
         self.button.isHidden = false
     }
@@ -256,7 +256,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.button.isHidden = true
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddressesListSegue" {
@@ -269,14 +269,14 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         }
     }
     
-    //MARK: - UIAdaptivePresentationControllerDelegate
+    // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         
         return UIModalPresentationStyle.none
     }
     
-    //MARK: - SanDiegoAddressesVCDelegate
+    // MARK: - SanDiegoAddressesVCDelegate
     
     //when the user selects an address from the list
     //update the search bar text, geocode the selected address

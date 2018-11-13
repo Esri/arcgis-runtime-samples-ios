@@ -94,7 +94,7 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         return cell
     }
     
-    //MARK: - UICollectionViewDelegate
+    // MARK: - UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //hide keyboard if visible
@@ -107,7 +107,7 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         show(controller, sender: self)
     }
     
-    //MARK: - UICollectionViewDelegateFlowLayout
+    // MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let collectionViewSize = collectionView.bounds.inset(by: collectionView.safeAreaInsets).size

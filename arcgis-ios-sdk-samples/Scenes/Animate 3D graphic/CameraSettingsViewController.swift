@@ -103,7 +103,7 @@ class CameraSettingsViewController: UITableViewController {
         pitchOffsetLabel.text = measurementFormatter.string(from: measurement)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction private func distanceValueChanged(sender: UISlider) {
         

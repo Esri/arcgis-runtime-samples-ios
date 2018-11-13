@@ -191,7 +191,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //dismiss the callout if already visible
@@ -209,7 +209,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -247,7 +247,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -269,7 +269,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.animateTableView(expand: false)
     }
     
-    //MARK: - UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -316,7 +316,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.animateTableView(expand: false)
     }
     
-    //MARK: - Suggestions logic
+    // MARK: - Suggestions logic
     
     private func fetchSuggestions(_ string: String, suggestionType: SuggestionType, textField: UITextField) {
         //cancel previous requests
@@ -385,7 +385,6 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         params.searchArea = extent
         params.outputSpatialReference = self.mapView.spatialReference
         params.resultAttributeNames.append(contentsOf: ["*"])
-        
             
         //geocode using the search text and params
         self.locatorTask.geocode(withSearchText: poi, parameters: params) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) -> Void in
@@ -428,7 +427,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     private func search() {
         //validation
@@ -475,7 +474,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.geocodePOIs(self.poiTextField.text!, location: nil, extent: self.mapView.visibleArea!.extent)
     }
     
-    //MARK: - Gesture recognizers
+    // MARK: - Gesture recognizers
     
     @IBAction private func hideKeyboard() {
         self.view.endEditing(true)

@@ -77,7 +77,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         })
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let lastQuery = self.lastQuery {
@@ -104,7 +104,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         }
     }
     
-    //MARK: - AGSCalloutDelegate
+    // MARK: - AGSCalloutDelegate
     
     func didTapAccessoryButton(for callout: AGSCallout) {
         //hide the callout
@@ -126,7 +126,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.featureLayer.setFeature(self.selectedFeature, visible: false)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func doneAction() {
         if let newGeometry = self.mapView.sketchEditor?.geometry {

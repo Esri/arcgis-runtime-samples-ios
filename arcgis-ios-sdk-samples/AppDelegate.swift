@@ -84,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    //MARK: - Touch settings
+    // MARK: - Touch settings
     
     func setTouchPref() {
         //enable/disable touches based on settings
@@ -98,7 +98,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             DemoTouchManager.hideTouches()
         }
     }
-    
     
     // MARK: - Appearance modification
     

@@ -98,7 +98,7 @@ class ChangeSublayerRendererVC: UIViewController {
         return classBreakRenderer
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction private func applyRenderer() {
         

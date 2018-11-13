@@ -61,7 +61,7 @@ class MILShowLegendViewController: UIViewController, UIAdaptivePresentationContr
         self.mapView.setViewpointCenter(AGSPoint(x: -11e6, y: 6e6, spatialReference: AGSSpatialReference.webMercator()), scale: 9e7, completion: nil)
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LegendTableSegue" {
@@ -72,7 +72,7 @@ class MILShowLegendViewController: UIViewController, UIAdaptivePresentationContr
         }
     }
     
-    //MARK: - UIAdaptivePresentationControllerDelegate
+    // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none

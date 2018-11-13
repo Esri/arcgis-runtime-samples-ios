@@ -53,7 +53,7 @@ class MMLLayersViewController: UITableViewController {
         }
     }
     
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -87,7 +87,7 @@ class MMLLayersViewController: UITableViewController {
         return cell
     }
 
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         switch Section(rawValue: indexPath.section)! {

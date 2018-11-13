@@ -156,7 +156,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.relatedFeatures?.count ?? 0
@@ -174,7 +174,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         return cell
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
@@ -186,7 +186,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         }
     }
 
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction private func addAction() {
         

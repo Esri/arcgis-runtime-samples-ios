@@ -114,7 +114,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         return fillSymbol
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction private func serviceArea() {
         
@@ -138,7 +138,6 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
             facilities.append(facility)
         }
         self.serviceAreaParameters.setFacilities(facilities)
-        
         
         //add barriers
         var barriers = [AGSPolygonBarrier]()
@@ -198,7 +197,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         self.barriersGraphicsOverlay.graphics.removeAllObjects()
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         
@@ -217,7 +216,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         }
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ServiceAreaSettingsSegue" {
@@ -231,7 +230,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         }
     }
     
-    //MARK: - ServiceAreaSettingsVCDelegate
+    // MARK: - ServiceAreaSettingsVCDelegate
     
     func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsVC, didUpdateFirstTimeBreak timeBreak: Int) {
         
@@ -243,7 +242,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         self.secondTimeBreak = timeBreak
     }
     
-    //MARK: - UIAdaptivePresentationControllerDelegate
+    // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none

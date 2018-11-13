@@ -159,7 +159,7 @@ class DisplayGridSettingsViewController: UITableViewController {
         }
     }
     
-    //MARK: - Helpers
+    // MARK: - Helpers
     
     /// Creates a new grid object based on the type, applies the common configuration
     /// from the existing grid, and adds it to the map view.
@@ -192,7 +192,7 @@ class DisplayGridSettingsViewController: UITableViewController {
         updateUIForGrid()
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func gridVisibilityAction(_ sender: UISwitch) {
         mapView?.grid?.isVisible = sender.isOn
@@ -240,7 +240,7 @@ class DisplayGridSettingsViewController: UITableViewController {
         }
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)

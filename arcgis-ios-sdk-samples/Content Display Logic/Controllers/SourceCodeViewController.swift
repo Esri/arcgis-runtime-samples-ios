@@ -94,7 +94,7 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
         self.toolbarTitleButton.title = titleString
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if self.filenames.count > 1 {
@@ -121,7 +121,7 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
         }
     }
     
-    //MARK: - UIAdaptivePresentationControllerDelegate
+    // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         

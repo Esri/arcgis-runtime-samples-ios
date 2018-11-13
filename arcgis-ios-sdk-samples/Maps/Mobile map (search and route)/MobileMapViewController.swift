@@ -93,7 +93,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.callout.show(for: graphic, tapLocation: tapLocation, animated: animated)
     }
 
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if self.routeTask == nil && self.locatorTask == nil {
@@ -141,7 +141,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         }
     }
     
-    //MARK: - Locator
+    // MARK: - Locator
     
     private func reverseGeocode(point: AGSPoint, withGraphic graphic: AGSGraphic) {
         if self.locatorTask == nil {
@@ -176,7 +176,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         })
     }
     
-    //MARK: - Route
+    // MARK: - Route
     
     private func setupRouteTask() {
         //if map contains network data
@@ -246,7 +246,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         return stops
     }
     
-    //MARK: - actions
+    // MARK: - actions
     
     @IBAction private func trashAction() {
         //remove all markers
@@ -257,7 +257,6 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.callout.dismiss()
     }
 }
-
 
 //extension for extracting the right attributes if available
 extension AGSGeocodeResult {
@@ -273,7 +272,6 @@ extension AGSGeocodeResult {
         let city = attributes?["City"] as? String
         let region = attributes?["Region"] as? String
         let neighborhood = attributes?["Neighborhood"] as? String
-        
         
         if addr != nil && city != nil && region != nil {
             return "\(addr!), \(city!), \(region!)"

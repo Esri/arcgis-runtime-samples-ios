@@ -39,5 +39,4 @@ class SourceCodeBarButtonItem: UIBarButtonItem {
         self.navController?.show(controller, sender: self)
     }
     
-    
 }

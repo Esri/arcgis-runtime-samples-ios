@@ -20,7 +20,6 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var containerView: UIView!
     
-    
     private var geoprocessingTask: AGSGeoprocessingTask!
     private var geoprocessingJob: AGSGeoprocessingJob!
     private var graphicsOverlay = AGSGraphicsOverlay()
@@ -103,7 +102,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         }
     }
     
-    //MARK: - HotspotSettingsVCDelegate
+    // MARK: - HotspotSettingsVCDelegate
     
     func hotspotSettingsViewController(_ hotspotSettingsViewController: HotspotSettingsViewController, didSelectDates fromDate: String, toDate: String) {
         
@@ -111,7 +110,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         self.toggleSettingsView(on: false)
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SettingsSegue" {
@@ -120,13 +119,13 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         }
     }
     
-    //MARK: - Toggle settings view
+    // MARK: - Toggle settings view
     
     private func toggleSettingsView(on: Bool) {
         self.containerView.isHidden = !on
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func changeDatesAction() {
         self.toggleSettingsView(on: true)

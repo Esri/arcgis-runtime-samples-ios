@@ -74,7 +74,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         }
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let lastQuery = self.lastQuery {
@@ -105,7 +105,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         }
     }
     
-    //MARK: -  AGSPopupsViewControllerDelegate methods
+    // MARK: - AGSPopupsViewControllerDelegate methods
     
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, sketchEditorFor popup: AGSPopup) -> AGSSketchEditor? {
         
@@ -204,7 +204,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.sketchToolbar.isHidden = true
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FeatureTemplateSegue",
@@ -215,7 +215,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         }
     }
     
-    //MARK: - FeatureTemplatePickerDelegate
+    // MARK: - FeatureTemplatePickerDelegate
     
     func featureTemplatePickerViewController(_ controller: FeatureTemplatePickerViewController, didSelectFeatureTemplate template: AGSFeatureTemplate, forFeatureLayer featureLayer: AGSFeatureLayer) {
         

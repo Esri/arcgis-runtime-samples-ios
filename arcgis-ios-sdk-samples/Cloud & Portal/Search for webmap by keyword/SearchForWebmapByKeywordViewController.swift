@@ -81,7 +81,6 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         
     }
     
-    
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -118,7 +117,7 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         }
     }
 
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? WebMapViewController,
@@ -127,7 +126,7 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         }
     }
     
-    //MARK: - UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return resultPortalItems.count
@@ -183,7 +182,6 @@ extension SearchForWebmapByKeywordViewController: UISearchResultsUpdating {
     }
     
 }
-
 
 extension SearchForWebmapByKeywordViewController: AGSAuthenticationManagerDelegate {
     

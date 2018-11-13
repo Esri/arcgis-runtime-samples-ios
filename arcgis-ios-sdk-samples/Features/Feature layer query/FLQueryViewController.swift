@@ -107,7 +107,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
-    //MARK: - Search bar delegate
+    // MARK: - Search bar delegate
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text {

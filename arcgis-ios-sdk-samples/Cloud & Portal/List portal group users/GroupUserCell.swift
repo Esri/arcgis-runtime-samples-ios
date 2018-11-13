@@ -31,7 +31,6 @@ class GroupUserCell: UITableViewCell {
             
             self.thumbnailImageView.image = UIImage(named: "Placeholder")
             
-            
             if let thumbnail = portalUser.thumbnail {
                 if thumbnail.image != nil {
                     self.thumbnailImageView.image = thumbnail.image

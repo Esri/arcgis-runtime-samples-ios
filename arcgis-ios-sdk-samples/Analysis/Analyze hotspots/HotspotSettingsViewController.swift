@@ -49,7 +49,7 @@ class HotspotSettingsViewController: UIViewController, UITextFieldDelegate {
         self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @objc func datePickerValueChanged(_ sender: UIDatePicker) {
         self.selectedTextField.text = self.dateFormatter.string(from: sender.date)
@@ -70,7 +70,7 @@ class HotspotSettingsViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    //MARK: - UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.selectedTextField = textField

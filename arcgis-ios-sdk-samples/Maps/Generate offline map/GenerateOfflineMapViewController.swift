@@ -33,6 +33,8 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
     private var generateOfflineMapJob: AGSGenerateOfflineMapJob?
     private var shouldShowAlert = true
     
+    private var jobProgressObservation: NSKeyValueObservation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -110,8 +112,15 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         let generateOfflineMapJob = offlineMapTask.generateOfflineMapJob(with: parameters, downloadDirectory: downloadDirectory)
         self.generateOfflineMapJob = generateOfflineMapJob
         
-        //add observer for progress
-        generateOfflineMapJob.progress.addObserver(self, forKeyPath: #keyPath(Progress.fractionCompleted), options: .new, context: nil)
+        //observe the job's progress
+        jobProgressObservation = generateOfflineMapJob.progress.observe(\.fractionCompleted, options: .new, changeHandler: {[weak self] (progress, change) in
+            DispatchQueue.main.async { [weak self] in
+                //update progress label
+                self?.progressLabel.text = progress.localizedDescription
+                //update progress view
+                self?.progressView.progress = Float(progress.fractionCompleted)
+            }
+        })
         
         //unhide the progress parent view
         progressParentView.isHidden = false
@@ -124,7 +133,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             }
             
             //remove KVO observer
-            self.generateOfflineMapJob?.progress.removeObserver(self, forKeyPath: #keyPath(Progress.fractionCompleted))
+            self.jobProgressObservation = nil
             
             if let error = error {    
                 //do not display error if user simply cancelled the request
@@ -159,26 +168,6 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         
         //assign offline map to map view
         mapView.map = result.offlineMap
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        
-        if keyPath == #keyPath(Progress.fractionCompleted) {
-            
-            DispatchQueue.main.async { [weak self] in
-                
-                guard let self = self,
-                    let progress = self.generateOfflineMapJob?.progress else {
-                    return
-                }
-                
-                //update progress label
-                self.progressLabel.text = progress.localizedDescription
-                
-                //update progress view
-                self.progressView.progress = Float(progress.fractionCompleted)
-            }
-        }
     }
     
     // MARK: - Actions
@@ -280,18 +269,4 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         return documentDirectoryURL.appendingPathComponent("\(formattedDate)")
     }
 
-    deinit {
-        
-        guard let progress = generateOfflineMapJob?.progress else {
-            return
-        }
-        
-        let isCompleted = (progress.totalUnitCount == progress.completedUnitCount)
-        let isCancelled = progress.isCancelled
-        
-        if !isCancelled && !isCompleted {
-            //remove observer
-            progress.removeObserver(self, forKeyPath: #keyPath(Progress.fractionCompleted))
-        }
-    }
 }

@@ -1,5 +1,4 @@
 disabled_rules: # rule identifiers to exclude from running
-  - block_based_kvo
   - cyclomatic_complexity
   - file_length
   - for_where

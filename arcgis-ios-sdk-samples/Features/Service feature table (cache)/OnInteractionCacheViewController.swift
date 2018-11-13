@@ -37,7 +37,7 @@ class OnInteractionCacheViewController: UIViewController {
             yMin: 4014771.46954516,
             xMax: -1.30730056797177E7,
             yMax: 4016869.78617381,
-            spatialReference: AGSSpatialReference.webMercator()))
+            spatialReference: .webMercator()))
         
         //feature layer
         let featureTable = AGSServiceFeatureTable(url: URL(string: FEATURE_SERVICE_URL)!)

@@ -31,7 +31,7 @@ class DefinitionExpressionViewController: UIViewController {
         //initialize map using topographic basemap
         self.map = AGSMap(basemap: .topographic())
         //initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13630484, y: 4545415, spatialReference: AGSSpatialReference.webMercator()), scale: 90000)
+        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13630484, y: 4545415, spatialReference: .webMercator()), scale: 90000)
         
         //assign map to the map view's map
         self.mapView.map = self.map

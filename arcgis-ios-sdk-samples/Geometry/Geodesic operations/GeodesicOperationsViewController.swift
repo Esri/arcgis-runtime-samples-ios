@@ -24,7 +24,7 @@ class GeodesicOperationsViewController: UIViewController, AGSGeoViewTouchDelegat
     
     private let graphicsOverlay = AGSGraphicsOverlay()
     private let measurementFormatter = MeasurementFormatter()
-    private let JFKAirportLocation = AGSPoint(x: -73.7781, y: 40.6413, spatialReference: AGSSpatialReference.wgs84())
+    private let JFKAirportLocation = AGSPoint(x: -73.7781, y: 40.6413, spatialReference: .wgs84())
     
     /// Add graphics representing origin, destination, and path to a graphics overlay.
     required init?(coder aDecoder: NSCoder) {

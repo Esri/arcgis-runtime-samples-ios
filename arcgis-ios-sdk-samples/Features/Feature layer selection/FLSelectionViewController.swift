@@ -32,7 +32,7 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
         //initialize map with topographic basemap
         let map = AGSMap(basemap: .streets())
         //initial viewpoint
-        map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -180, yMin: -90, xMax: 180, yMax: 90, spatialReference: AGSSpatialReference.wgs84()))
+        map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -180, yMin: -90, xMax: 180, yMax: 90, spatialReference: .wgs84()))
         
         //assign map to the map view
         mapView.map = map

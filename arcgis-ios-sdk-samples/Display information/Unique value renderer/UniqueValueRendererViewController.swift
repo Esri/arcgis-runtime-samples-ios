@@ -42,7 +42,7 @@ class UniqueValueRendererViewController: UIViewController {
         self.mapView.map = map
         
         //set initial viewpoint
-        let center = AGSPoint(x: -12966000.5, y: 4441498.5, spatialReference: AGSSpatialReference.webMercator())
+        let center = AGSPoint(x: -12966000.5, y: 4441498.5, spatialReference: .webMercator())
         self.mapView.setViewpoint(AGSViewpoint(center: center, scale: 4e7))
         
         //add unique value renderer

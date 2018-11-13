@@ -58,7 +58,7 @@ class MILShowLegendViewController: UIViewController, UIAdaptivePresentationContr
         self.mapView.map = self.map
         
         //zoom to a custom viewpoint
-        self.mapView.setViewpointCenter(AGSPoint(x: -11e6, y: 6e6, spatialReference: AGSSpatialReference.webMercator()), scale: 9e7, completion: nil)
+        self.mapView.setViewpointCenter(AGSPoint(x: -11e6, y: 6e6, spatialReference: .webMercator()), scale: 9e7)
     }
     
     // MARK: - Navigation

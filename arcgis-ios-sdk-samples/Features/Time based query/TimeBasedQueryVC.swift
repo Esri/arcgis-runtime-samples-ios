@@ -53,7 +53,7 @@ class TimeBasedQueryVC: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["TimeBasedQueryVC"]
     }
     
-    func populateFeaturesWithQuery(){
+    func populateFeaturesWithQuery() {
         
         //create query parameters
         let queryParams = AGSQueryParameters()

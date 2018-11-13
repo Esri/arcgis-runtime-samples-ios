@@ -120,7 +120,7 @@ class DisplayGridSettingsViewController: UITableViewController {
         updateUIForLabelColor()
     }
     
-    private func updateLabelFormatUI(){
+    private func updateLabelFormatUI() {
         if let grid = mapView?.grid as? AGSLatitudeLongitudeGrid {
             labelFormatCell?.detailTextLabel?.text = labelFormatLabels[grid.labelFormat.rawValue]
             labelFormatCell?.detailTextLabel?.isEnabled = true
@@ -133,7 +133,7 @@ class DisplayGridSettingsViewController: UITableViewController {
         }
     }
     
-    private func updateLabelUnitUI(){
+    private func updateLabelUnitUI() {
         if let grid = mapView?.grid,
             let labelUnitID = (grid as? AGSMGRSGrid)?.labelUnit.rawValue ?? (grid as? AGSUSNGGrid)?.labelUnit.rawValue {
             labelUnitCell?.detailTextLabel?.text = labelUnitLabels[labelUnitID]
@@ -147,13 +147,13 @@ class DisplayGridSettingsViewController: UITableViewController {
         }
     }
     
-    private func updateUIForGridColor(){
+    private func updateUIForGridColor() {
         if let grid = mapView?.grid {
             gridColorSwatchView?.backgroundColor = gridColor(of: grid)
         }
     }
     
-    private func updateUIForLabelColor(){
+    private func updateUIForLabelColor() {
         if let grid = mapView?.grid {
             labelColorSwatchView?.backgroundColor = labelColor(of: grid)
         }

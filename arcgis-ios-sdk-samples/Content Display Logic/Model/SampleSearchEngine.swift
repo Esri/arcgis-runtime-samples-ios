@@ -41,7 +41,7 @@ class SampleSearchEngine {
         
         let tagger = NSLinguisticTagger(tagSchemes: [.tokenType, .nameType, .lexicalClass], options: 0)
         
-        func addToIndex(string: String, sampleDisplayName: String){
+        func addToIndex(string: String, sampleDisplayName: String) {
             
             tagger.string = string
             let range = NSRange(location: 0, length: string.count)
@@ -76,7 +76,7 @@ class SampleSearchEngine {
         }
         
         // index all nodes
-        for sample in samples{
+        for sample in samples {
             autoreleasepool {
                 if let readmeURL = sample.readmeURL,
                     let readmeContent = try? String(contentsOf: readmeURL, encoding: .utf8) {
@@ -89,7 +89,7 @@ class SampleSearchEngine {
     private func samplesWithReadmes(matching query: String) -> [Sample] {
         
         // skip readmes if not yet loaded
-        guard !isLoadingReadmeIndex else{
+        guard !isLoadingReadmeIndex else {
             return []
         }
         
@@ -98,7 +98,7 @@ class SampleSearchEngine {
         
         // search readmes, limited to matching a single word
         let displayNamesForReadmeMatches = displayNamesByReadmeWords.keys.flatMap { (readmeWord) -> [String] in
-            if readmeWord.contains(lowercasedQuery){
+            if readmeWord.contains(lowercasedQuery) {
                 return displayNamesByReadmeWords[readmeWord] ?? []
             }
             return []
@@ -121,26 +121,26 @@ class SampleSearchEngine {
             // for convenience, store normalized names for re-use
             let sample1Name = sample1.name.lowercased()
             let sample2Name = sample2.name.lowercased()
-            if let sample1Index = sample1Name.range(of: lowercasedQuery)?.lowerBound{
-                if let sample2Index = sample2Name.range(of: lowercasedQuery)?.lowerBound{
+            if let sample1Index = sample1Name.range(of: lowercasedQuery)?.lowerBound {
+                if let sample2Index = sample2Name.range(of: lowercasedQuery)?.lowerBound {
                     // matches are both in the titles
-                    if sample1Index != sample2Index{
+                    if sample1Index != sample2Index {
                         // sort by index
                         return sample1Index < sample2Index
                     }
                     // indexes are the same, sort alphabetically
                     return sample1Name < sample2Name
                 }
-                else{
+                else {
                     // only node1 has a title match, sort that first
                     return true
                 }
             }
-            else if sample2Name.contains(lowercasedQuery){
+            else if sample2Name.contains(lowercasedQuery) {
                 // only node2 has a title match, sort that first
                 return false
             }
-            else{
+            else {
                 // matches are both in the descriptions
                 
                 // for convenience, store normalized descriptions for re-use
@@ -148,7 +148,7 @@ class SampleSearchEngine {
                 let sample2Desc = sample2.description.lowercased()
                 let sample1Index = sample1Desc.range(of: lowercasedQuery)!.lowerBound
                 let sample2Index = sample2Desc.range(of: lowercasedQuery)!.lowerBound
-                if sample1Index != sample2Index{
+                if sample1Index != sample2Index {
                     // sort by index
                     return sample1Index < sample2Index
                 }
@@ -182,7 +182,7 @@ class SampleSearchEngine {
         nodesForReadmeMatches.subtract(matchingNodes)
         
         // simply sort alphabetically
-        let sortedNodesForReadmeMatches = nodesForReadmeMatches.sorted{ $0.name < $1.name }
+        let sortedNodesForReadmeMatches = nodesForReadmeMatches.sorted { $0.name < $1.name }
         
         // readme matches are less likely to be releavant so append to the end of the name/description results
         matchingNodes.append(contentsOf: sortedNodesForReadmeMatches)

@@ -43,11 +43,11 @@ class MissionSettingsViewController: UITableViewController {
         }
     }
     
-    private func updateProgressViewForProgress(){
+    private func updateProgressViewForProgress() {
         progressView?.progress = progress
     }
     
-    private func updateMissionCell(){
+    private func updateMissionCell() {
         if selectedMissionIndex < missionFileNames.count {
             missionCell?.detailTextLabel?.text = missionFileNames[selectedMissionIndex]
         }

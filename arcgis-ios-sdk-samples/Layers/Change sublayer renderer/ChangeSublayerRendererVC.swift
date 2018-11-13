@@ -112,7 +112,7 @@ class ChangeSublayerRendererVC: UIViewController {
     
     @IBAction private func reset() {
         
-        if let renderer = self.originalRenderer, let sublayer = self.mapImageLayer.mapImageSublayers[2] as? AGSArcGISMapImageSublayer  {
+        if let renderer = self.originalRenderer, let sublayer = self.mapImageLayer.mapImageSublayers[2] as? AGSArcGISMapImageSublayer {
                 
             //set the class breaks renderer on the counties sublayer
             sublayer.renderer = renderer

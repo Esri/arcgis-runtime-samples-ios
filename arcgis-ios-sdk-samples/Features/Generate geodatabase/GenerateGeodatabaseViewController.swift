@@ -128,7 +128,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                 }
                 
             }
-            else{
+            else {
                 print("Could not generate default parameters: \(error!)")
             }
         }

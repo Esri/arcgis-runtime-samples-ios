@@ -55,7 +55,7 @@ class ListKMLContentsSceneViewController: UIViewController {
     var node: AGSKMLNode? {
         didSet {
             guard kmlDataset != oldValue,
-                let node = node else{
+                let node = node else {
                 return
             }
             // set the title so the name will appear in the navigation bar
@@ -73,7 +73,7 @@ class ListKMLContentsSceneViewController: UIViewController {
     
     /// Sets the viewpoint of the scene based on the node, or hides the node
     /// if a viewpoint cannot be determined.
-    private func setSceneViewpoint(for node: AGSKMLNode){
+    private func setSceneViewpoint(for node: AGSKMLNode) {
         
         dispatchQueue.async {
             // get the viewpoint asynchronously so not to block the main thread
@@ -117,7 +117,7 @@ class ListKMLContentsSceneViewController: UIViewController {
         group.enter()
         // we want to return the elevation synchronously, so run the task in the background and wait
         surface.elevation(for: point, completion: { (elevation, error) in
-            if error == nil{
+            if error == nil {
                 surfaceElevation = elevation
             }
             group.leave()
@@ -134,10 +134,10 @@ class ListKMLContentsSceneViewController: UIViewController {
             // Convert the KML viewpoint to a viewpoint for the scene.
             // The KML viewpoint may not correspond to the node's geometry.
             
-            switch kmlViewpoint.type{
+            switch kmlViewpoint.type {
             case .lookAt:
                 var lookAtPoint = kmlViewpoint.location
-                if kmlViewpoint.altitudeMode != .absolute{
+                if kmlViewpoint.altitudeMode != .absolute {
                     // if the elevation is relative, account for the surface's elevation
                     let elevation = sceneSurfaceElevation(for: lookAtPoint) ?? 0
                     lookAtPoint = AGSPoint(x: lookAtPoint.x, y: lookAtPoint.y, z: lookAtPoint.z + elevation, spatialReference: lookAtPoint.spatialReference)

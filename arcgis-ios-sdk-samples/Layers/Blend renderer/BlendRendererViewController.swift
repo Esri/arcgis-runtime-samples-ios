@@ -53,7 +53,7 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
         setBlendRenderer(altitude: altitude, azimuth: azimuth, slopeType: slopeType, colorRampType: colorRampType)
     }
     
-    private func setBlendRenderer(altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType){
+    private func setBlendRenderer(altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) {
         
         displayedColorRampType = colorRampType
         

@@ -74,7 +74,7 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     
     private let numberFormatter = NumberFormatter()
     
-    private func updateTextField(for slider: UISlider){
+    private func updateTextField(for slider: UISlider) {
         if let text = numberFormatter.string(from: slider.value as NSNumber) {
             if slider == minScaleLevelSlider {
                 minScaleLevelLabel.text = text
@@ -126,7 +126,7 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     }
     
     /// Updates the `AGSGenerateOfflineMapParameterOverrides` object with the user-set values.
-    private func setParameterOverridesFromUI(){
+    private func setParameterOverridesFromUI() {
         
         restrictBasemapScaleLevelRange()
         bufferBasemapAreaOfInterest()
@@ -160,7 +160,7 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
         
         guard let tileCacheParameters = getExportTileCacheParametersForBasemapLayer(),
             /// The area initially specified for download when the default parameters object was created
-            let areaOfInterest = tileCacheParameters.areaOfInterest else{
+            let areaOfInterest = tileCacheParameters.areaOfInterest else {
                 return
         }
         
@@ -175,7 +175,7 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     
     //MARK: - Layer adjustment
     
-    private func addHydrantFilter(){
+    private func addHydrantFilter() {
         
         /// The user-set min flow rate value
         let minFlowRate = minHydrantFlowRateSlider.value
@@ -186,12 +186,12 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
         }
     }
     
-    private func evaluateLayerVisiblity(){
+    private func evaluateLayerVisiblity() {
         
         func excludeLayerFromDownload(named name: String) {
             if let layer = operationalMapLayer(named: name),
                 let serviceLayerID = serviceLayerID(for: layer),
-                let parameters = getGenerateGeodatabaseParameters(forLayer: layer){
+                let parameters = getGenerateGeodatabaseParameters(forLayer: layer) {
                 // Remove the options for this layer from the parameters
                 parameters.layerOptions.removeAll { $0.layerID == serviceLayerID }
             }
@@ -207,11 +207,11 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
         
     }
     
-    private func evaluatePipeLayersExtentCropping(){
+    private func evaluatePipeLayersExtentCropping() {
         // If the switch is off
         if !cropWaterPipesToExtentSwitch.isOn {
             // Two layers contain pipes, so loop through both
-            for pipeLayerName in ["Main", "Lateral"]{
+            for pipeLayerName in ["Main", "Lateral"] {
                 for option in getGenerateGeodatabaseParametersLayerOptions(forLayerNamed: pipeLayerName) {
                     // Turn off the geometry extent evaluation so that the entire layer is downloaded
                     option.useGeometry = false
@@ -224,7 +224,7 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     
     /// Retrieves the basemap's parameters from the `exportTileCacheParameters` dictionary.
     private func getExportTileCacheParametersForBasemapLayer() -> AGSExportTileCacheParameters? {
-        if let basemapLayer = map?.basemap.baseLayers.firstObject as? AGSLayer{
+        if let basemapLayer = map?.basemap.baseLayers.firstObject as? AGSLayer {
             let key = AGSOfflineMapParametersKey(layer: basemapLayer)
             return parameterOverrides?.exportTileCacheParameters[key]
         }
@@ -260,10 +260,10 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
         return parameterOverrides?.generateGeodatabaseParameters[key]
     }
     /// Retrieves the layer's options from the layer's parameter in the `generateGeodatabaseParameters` dictionary.
-    private func getGenerateGeodatabaseParametersLayerOptions(forLayerNamed name: String) -> [AGSGenerateLayerOption]{
+    private func getGenerateGeodatabaseParametersLayerOptions(forLayerNamed name: String) -> [AGSGenerateLayerOption] {
         if let layer = operationalMapLayer(named: name),
             let serviceLayerID = serviceLayerID(for: layer),
-            let parameters = getGenerateGeodatabaseParameters(forLayer: layer){
+            let parameters = getGenerateGeodatabaseParameters(forLayer: layer) {
             // The layers options may correspond to multiple layers, so filter based on the ID of the target layer.
             return parameters.layerOptions.filter { (option) -> Bool in
                 return option.layerID == serviceLayerID

@@ -65,7 +65,7 @@ class StatisticalQueryViewController: UIViewController {
         let statisticsQueryParameters = AGSStatisticsQueryParameters(statisticDefinitions: statisticDefinitions)
         
         // If only using features in the current extent, set up the spatial filter for the statistics query parameters
-        if (onlyInCurrentExtentSwitch.isOn) {
+        if onlyInCurrentExtentSwitch.isOn {
             //
             // Set the statistics query parameters geometry with the envelope
             statisticsQueryParameters.geometry = mapView.visibleArea?.extent
@@ -75,7 +75,7 @@ class StatisticalQueryViewController: UIViewController {
         }
         
         // If only evaluating the largest cities (over 5 million in population), set up an attribute filter
-        if (onlyBigCitiesSwitch.isOn) {
+        if onlyBigCitiesSwitch.isOn {
             statisticsQueryParameters.whereClause = "POP_RANK = 1"
         }
         

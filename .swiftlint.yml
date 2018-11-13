@@ -1,5 +1,4 @@
 disabled_rules: # rule identifiers to exclude from running
-  - control_statement
   - cyclomatic_complexity
   - file_length
   - for_where
@@ -8,7 +7,6 @@ disabled_rules: # rule identifiers to exclude from running
   - function_body_length
   - identifier_name
   - line_length
-  - multiple_closures_with_trailing_closure
   - notification_center_detachment
   - statement_position
   - todo
@@ -16,4 +14,3 @@ disabled_rules: # rule identifiers to exclude from running
   - type_body_length
   - type_name
   - unused_closure_parameter
-  - unused_optional_binding

@@ -340,7 +340,7 @@ class OfflineEditingViewController: UIViewController {
         
             SVProgressHUD.show(withStatus: status.statusString())
             
-        }) { [weak self] (object: AnyObject?, error: Error?) -> Void in
+        }, completion: { [weak self] (object: AnyObject?, error: Error?) -> Void in
             
             SVProgressHUD.dismiss()
             
@@ -357,7 +357,7 @@ class OfflineEditingViewController: UIViewController {
                 //add the layers from geodatabase
                 self.displayLayersFromGeodatabase()
             }
-        }
+        })
     }
     
     @IBAction func switchToServiceMode(_ sender: AnyObject) {

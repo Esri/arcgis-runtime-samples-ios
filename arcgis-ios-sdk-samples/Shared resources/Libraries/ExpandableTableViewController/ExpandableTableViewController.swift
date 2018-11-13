@@ -55,7 +55,7 @@ class ExpandableTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (expandedSectionHeaderNumber == section) {
+        if expandedSectionHeaderNumber == section {
             return sectionItems[section].count
         } else {
             return 0
@@ -63,7 +63,7 @@ class ExpandableTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if (sectionHeaderTitles.count != 0) {
+        if !sectionHeaderTitles.isEmpty {
             return sectionHeaderTitles[section]
         }
         return ""
@@ -142,11 +142,11 @@ class ExpandableTableViewController: UITableViewController {
         let section    = headerView.tag
         let eImageView = headerView.viewWithTag(kHeaderSectionTag + section) as? UIImageView
         
-        if (expandedSectionHeaderNumber == -1) {
+        if expandedSectionHeaderNumber == -1 {
             expandedSectionHeaderNumber = section
             tableViewExpandSection(section, imageView: eImageView!)
         } else {
-            if (expandedSectionHeaderNumber == section) {
+            if expandedSectionHeaderNumber == section {
                 tableViewCollapeSection(section, imageView: eImageView!)
             } else {
                 let cImageView = view.viewWithTag(kHeaderSectionTag + expandedSectionHeaderNumber) as? UIImageView
@@ -160,7 +160,7 @@ class ExpandableTableViewController: UITableViewController {
         let sectionData = sectionItems[section]
         
         expandedSectionHeaderNumber = -1
-        if (sectionData.count == 0) {
+        if sectionData.count == 0 {
             return
         } else {
             UIView.animate(withDuration: 0.25, animations: {
@@ -180,7 +180,7 @@ class ExpandableTableViewController: UITableViewController {
     func tableViewExpandSection(_ section: Int, imageView: UIImageView) {
         let sectionData = sectionItems[section]
         
-        if (sectionData.count == 0) {
+        if sectionData.count == 0 {
             expandedSectionHeaderNumber = -1
             return
         } else {

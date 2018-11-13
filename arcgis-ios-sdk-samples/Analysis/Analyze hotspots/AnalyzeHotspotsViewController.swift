@@ -68,7 +68,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
             //show progress hud with job status
             SVProgressHUD.show(withStatus: status.statusString())
             
-        }) { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
+        }, completion: { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
             
             //dismiss progress hud
             SVProgressHUD.dismiss()
@@ -99,7 +99,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
                     }
                 }
             }
-        }
+        })
     }
     
     // MARK: - HotspotSettingsVCDelegate

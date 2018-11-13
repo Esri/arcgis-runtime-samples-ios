@@ -251,7 +251,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
     //MARK: - DirectionsListVCDelegate
     
     func directionsListViewControllerDidDeleteRoute(_ directionsListViewController: DirectionsListViewController) {
-        self.generatedRoute = nil;
+        self.generatedRoute = nil
         self.routeGraphicsOverlay.graphics.removeAllObjects()
         self.directionsGraphicsOverlay.graphics.removeAllObjects()
     }

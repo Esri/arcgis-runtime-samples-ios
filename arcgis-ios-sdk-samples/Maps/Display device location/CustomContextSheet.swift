@@ -295,8 +295,8 @@ class CustomContextSheet: UIView {
     
     private func setupMaskLayer() {
         let screenFrame = UIScreen.main.bounds
-        let x:CGFloat = max(frame.midX, screenFrame.size.width - frame.midX);
-        let y:CGFloat = max(frame.midY, screenFrame.size.height - frame.midY);
+        let x = max(frame.midX, screenFrame.size.width - frame.midX)
+        let y = max(frame.midY, screenFrame.size.height - frame.midY)
         
         let radius = (x * x + y * y).squareRoot()
         self.maskLayer = CAShapeLayer()

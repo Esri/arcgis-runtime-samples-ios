@@ -20,7 +20,6 @@ disabled_rules: # rule identifiers to exclude from running
   - statement_position
   - syntactic_sugar
   - todo
-  - trailing_semicolon
   - trailing_whitespace
   - type_body_length
   - type_name

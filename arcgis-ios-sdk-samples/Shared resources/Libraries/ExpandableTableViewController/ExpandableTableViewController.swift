@@ -23,7 +23,7 @@ class ExpandableTableViewController: UITableViewController {
     public var sectionItems = [[(String, String)]]()
 
     private var expandedSectionHeaderNumber = -1
-    private let kHeaderSectionTag = 7000;
+    private let kHeaderSectionTag = 7000
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,21 +44,21 @@ class ExpandableTableViewController: UITableViewController {
         } else {
             let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height))
             messageLabel.text = "Retrieving data.\nPlease wait..."
-            messageLabel.numberOfLines = 0;
-            messageLabel.textAlignment = .center;
+            messageLabel.numberOfLines = 0
+            messageLabel.textAlignment = .center
             messageLabel.font = UIFont.systemFont(ofSize: 20)
             messageLabel.sizeToFit()
             tableView.backgroundView?.backgroundColor = .white
-            tableView.backgroundView = messageLabel;
+            tableView.backgroundView = messageLabel
         }
         return 0
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (expandedSectionHeaderNumber == section) {
-            return sectionItems[section].count;
+            return sectionItems[section].count
         } else {
-            return 0;
+            return 0
         }
     }
     
@@ -70,11 +70,11 @@ class ExpandableTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44.0;
+        return 44
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat{
-        return 0;
+        return 0
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -94,7 +94,7 @@ class ExpandableTableViewController: UITableViewController {
 
         // Add image view
         let headerFrame = view.frame.size
-        let imageView = UIImageView(frame: CGRect(x: headerFrame.width - 32, y: 13, width: 18, height: 18));
+        let imageView = UIImageView(frame: CGRect(x: headerFrame.width - 32, y: 13, width: 18, height: 18))
         if expandedSectionHeaderNumber == section {
             imageView.image = UIImage(named: "Expanded")
         }
@@ -159,9 +159,9 @@ class ExpandableTableViewController: UITableViewController {
     func tableViewCollapeSection(_ section: Int, imageView: UIImageView) {
         let sectionData = sectionItems[section]
         
-        expandedSectionHeaderNumber = -1;
+        expandedSectionHeaderNumber = -1
         if (sectionData.count == 0) {
-            return;
+            return
         } else {
             UIView.animate(withDuration: 0.25, animations: {
                 imageView.image = UIImage(named: "Collapsed")
@@ -181,8 +181,8 @@ class ExpandableTableViewController: UITableViewController {
         let sectionData = sectionItems[section]
         
         if (sectionData.count == 0) {
-            expandedSectionHeaderNumber = -1;
-            return;
+            expandedSectionHeaderNumber = -1
+            return
         } else {
             UIView.animate(withDuration: 0.25, animations: {
                 imageView.image = UIImage(named: "Expanded")

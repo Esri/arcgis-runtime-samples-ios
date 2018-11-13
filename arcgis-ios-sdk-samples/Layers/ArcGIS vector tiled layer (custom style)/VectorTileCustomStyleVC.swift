@@ -38,7 +38,7 @@ class VectorTileCustomStyleVC: UIViewController, VectorStylesVCDelegate {
         let map = AGSMap()
 
         //initial viewpoint
-        let centerPoint = AGSPoint(x: 1990591.559979, y: 794036.007991, spatialReference: AGSSpatialReference(wkid: 3857))
+        let centerPoint = AGSPoint(x: 1990591.559979, y: 794036.007991, spatialReference: .webMercator())
         map.initialViewpoint = AGSViewpoint(center: centerPoint, scale: 88659253.829259947)
         
         //assign map to map view

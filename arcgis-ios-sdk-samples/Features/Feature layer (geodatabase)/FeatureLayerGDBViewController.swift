@@ -31,7 +31,7 @@ class FeatureLayerGDBViewController: UIViewController {
         let map = AGSMap(basemap: .imageryWithLabels())
         
         //set initial viewpoint
-        map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13214155, y: 4040194, spatialReference: AGSSpatialReference(wkid: 3857)), scale: 35e4)
+        map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13214155, y: 4040194, spatialReference: .webMercator()), scale: 35e4)
         
         //instantiate geodatabase with name
         self.geodatabase = AGSGeodatabase(name: "LA_Trails")

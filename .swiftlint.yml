@@ -1,3 +1,9 @@
+custom_rules:
+  spatial_reference_web_mercator:
+    name: Web Mercator Spatial Reference
+    regex: AGSSpatialReference\(wkid:\s*(3857|102100)\)
+    message: "Use AGSSpatialReference.webMercator() instead."
+
 disabled_rules: # rule identifiers to exclude from running
   - cyclomatic_complexity
   - file_length

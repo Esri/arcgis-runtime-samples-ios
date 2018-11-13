@@ -55,7 +55,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.map.operationalLayers.add(self.featureLayer)
         
         //set initial viewpoint to a specific region
-        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -10977012.785807, y: 4514257.550369, spatialReference: AGSSpatialReference(wkid: 3857)), scale: 68015210)
+        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -10977012.785807, y: 4514257.550369, spatialReference: .webMercator()), scale: 68015210)
         
         //assign map to the map view
         self.mapView.map = self.map

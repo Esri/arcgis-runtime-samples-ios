@@ -51,7 +51,7 @@ class FindRouteViewController: UIViewController {
         self.mapView.graphicsOverlays.addObjects(from: [routeGraphicsOverlay, stopGraphicsOverlay])
         
         //zoom to viewpoint
-        self.mapView.setViewpointCenter(AGSPoint(x: -13041154.715252, y: 3858170.236806, spatialReference: AGSSpatialReference(wkid: 3857)), scale: 1e5, completion: nil)
+        self.mapView.setViewpointCenter(AGSPoint(x: -13041154.715252, y: 3858170.236806, spatialReference: .webMercator()), scale: 1e5)
         
         //initialize route task
         self.routeTask = AGSRouteTask(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route")!)
@@ -62,8 +62,8 @@ class FindRouteViewController: UIViewController {
     
     //add hard coded stops to the map view
     func addStops() {
-        self.stop1Geometry = AGSPoint(x: -13041171.537945, y: 3860988.271378, spatialReference: AGSSpatialReference(wkid: 3857))
-        self.stop2Geometry = AGSPoint(x: -13041693.562570, y: 3856006.859684, spatialReference: AGSSpatialReference(wkid: 3857))
+        self.stop1Geometry = AGSPoint(x: -13041171.537945, y: 3860988.271378, spatialReference: .webMercator())
+        self.stop2Geometry = AGSPoint(x: -13041693.562570, y: 3856006.859684, spatialReference: .webMercator())
         
         let startStopGraphic = AGSGraphic(geometry: self.stop1Geometry, symbol: self.stopSymbol(withName: "Origin", textColor: .blue), attributes: nil)
         let endStopGraphic = AGSGraphic(geometry: self.stop2Geometry, symbol: self.stopSymbol(withName: "Destination", textColor: .red), attributes: nil)

@@ -65,7 +65,7 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         //assign map to the map view
         self.mapView.map = self.map
         //zoom to custom viewpoint
-        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -11e6, y: 45e5, spatialReference: AGSSpatialReference(wkid: 3857)), scale: 5e7))
+        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -11e6, y: 45e5, spatialReference: .webMercator()), scale: 5e7))
         
         //layer status logic
         //assign a closure for layerViewStateChangedHandler, in order to receive layer view status changes

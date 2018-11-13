@@ -17,7 +17,7 @@ import ArcGIS
 
 class PictureMarkerSymbolsViewController: UIViewController {
 
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
     private var graphicsOverlay = AGSGraphicsOverlay()
     

@@ -17,7 +17,7 @@ import ArcGIS
 
 class DirectionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var directionManeuvers:[AGSDirectionManeuver]!
+    var directionManeuvers: [AGSDirectionManeuver]!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -17,7 +17,7 @@ import ArcGIS
 
 class FeatureLayerURLViewController: UIViewController {
 
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

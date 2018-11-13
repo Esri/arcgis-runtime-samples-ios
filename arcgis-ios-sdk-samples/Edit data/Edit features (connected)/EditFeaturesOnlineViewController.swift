@@ -17,22 +17,22 @@ import ArcGIS
 
 class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPopupsViewControllerDelegate, FeatureTemplatePickerDelegate {
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var sketchToolbar:UIToolbar!
-    @IBOutlet private weak var doneBBI:UIBarButtonItem!
+    @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet private weak var sketchToolbar: UIToolbar!
+    @IBOutlet private weak var doneBBI: UIBarButtonItem!
     
-    private var map:AGSMap!
-    private var sketchEditor:AGSSketchEditor!
-    private var featureLayer:AGSFeatureLayer!
-    private var popupsVC:AGSPopupsViewController!
+    private var map: AGSMap!
+    private var sketchEditor: AGSSketchEditor!
+    private var featureLayer: AGSFeatureLayer!
+    private var popupsVC: AGSPopupsViewController!
     
-    private var lastQuery:AGSCancelable!
+    private var lastQuery: AGSCancelable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditFeaturesOnlineViewController","FeatureTemplatePickerViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditFeaturesOnlineViewController", "FeatureTemplatePickerViewController"]
         
         self.map = AGSMap(basemap: .topographic())
         //set initial viewpoint
@@ -61,7 +61,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //show progress hud
         SVProgressHUD.show(withStatus: "Applying edits")
         
-        (featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
+        (featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) -> Void in
             
             SVProgressHUD.dismiss()
             
@@ -171,15 +171,15 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     func popupsViewControllerDidFinishViewingPopups(_ popupsViewController: AGSPopupsViewController) {
         
         //dismiss the popups view controller
-        self.dismiss(animated: true, completion:nil)
+        self.dismiss(animated: true)
         
         self.popupsVC = nil
     }
     
-    @objc func sketchChanged(_ notification:Notification) {
+    @objc func sketchChanged(_ notification: Notification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the sketchCompleteButton
-        if let geometry = self.mapView.sketchEditor?.geometry , !geometry.isEmpty {
+        if let geometry = self.mapView.sketchEditor?.geometry, !geometry.isEmpty {
             self.doneBBI.isEnabled = true
         }
     }
@@ -190,7 +190,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.navigationItem.rightBarButtonItem?.isEnabled = true
         
         //present the popups view controller again
-        self.present(self.popupsVC, animated:true, completion:nil)
+        self.present(self.popupsVC, animated: true, completion: nil)
         
         //remove self as observer for notifications
         NotificationCenter.default.removeObserver(self)
@@ -245,7 +245,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.popupsVC.modalPresentationStyle = .formSheet
 
         //First, dismiss the Feature Template Picker
-        self.dismiss(animated: false, completion:nil)
+        self.dismiss(animated: false, completion: nil)
 
         //Next, Present the popup view controller
         self.present(self.popupsVC, animated: true) { [weak self] () -> Void in

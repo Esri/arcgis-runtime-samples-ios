@@ -17,11 +17,11 @@ import ArcGIS
 
 class LayerStatusViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet private var mapView:AGSMapView!
-    @IBOutlet private var tableView:UITableView!
-    @IBOutlet private var visualEffectView:UIVisualEffectView!
+    @IBOutlet private var mapView: AGSMapView!
+    @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var visualEffectView: UIVisualEffectView!
     
-    private var map:AGSMap!
+    private var map: AGSMap!
     
     private var viewStatusArray = [String]()
     
@@ -69,7 +69,7 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         
         //layer status logic
         //assign a closure for layerViewStateChangedHandler, in order to receive layer view status changes
-        self.mapView.layerViewStateChangedHandler = { [weak self] (layer:AGSLayer, state:AGSLayerViewState) in
+        self.mapView.layerViewStateChangedHandler = { [weak self] (layer: AGSLayer, state: AGSLayerViewState) in
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
                 //find the index of layer in operational layers list

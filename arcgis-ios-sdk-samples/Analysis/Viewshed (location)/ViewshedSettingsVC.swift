@@ -127,7 +127,7 @@ class ViewshedSettingsVC: UITableViewController {
         viewshed?.isFrustumOutlineVisible = sender.isOn
     }
     
-    @IBAction private func sliderValueChanged(sender:UISlider) {
+    @IBAction private func sliderValueChanged(sender: UISlider) {
         
         guard let viewshed = viewshed else {
             return

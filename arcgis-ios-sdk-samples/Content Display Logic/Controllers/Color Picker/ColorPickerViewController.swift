@@ -47,7 +47,7 @@ class ColorPickerViewController: UITableViewController {
         return formatter
     }()
     
-    static func instantiateWith(color: UIColor, onUpdate: @escaping ((UIColor)->Void)) -> ColorPickerViewController {
+    static func instantiateWith(color: UIColor, onUpdate: @escaping ((UIColor) -> Void)) -> ColorPickerViewController {
         let storyboard = UIStoryboard(name: "ColorPicker", bundle: nil)
         let controller = storyboard.instantiateInitialViewController() as! ColorPickerViewController
         controller.color = color

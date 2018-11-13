@@ -22,9 +22,9 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
     @IBOutlet private weak var webView: WKWebView!
     @IBOutlet private weak var toolbarTitleButton: UIBarButtonItem!
     
-    private var listViewController:ListViewController!
+    private var listViewController: ListViewController!
     private var selectedFilenameIndex = 0
-    var filenames:[String]!
+    var filenames: [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,7 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
         }
     }
     
-    func loadHTMLPage(filename:String) {
+    func loadHTMLPage(filename: String) {
         if let content = self.contentOfFile(filename) {
             self.setupToolbarTitle(filename, arrowPointingDown: true)
             let htmlString = self.htmlStringForContent(content)
@@ -51,7 +51,7 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
         }
     }
     
-    func contentOfFile(_ name:String) -> String? {
+    func contentOfFile(_ name: String) -> String? {
         //find the path of the file
         if let path = Bundle.main.path(forResource: name, ofType: ".swift") {
             //read the content of the file
@@ -62,7 +62,7 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
         return nil
     }
     
-    func htmlStringForContent(_ content:String) -> String {
+    func htmlStringForContent(_ content: String) -> String {
         let cssPath = Bundle.main.path(forResource: "xcode", ofType: "css") ?? ""
         let jsPath = Bundle.main.path(forResource: "highlight.pack", ofType: "js") ?? ""
         let scale  = UIDevice.current.userInterfaceIdiom == .phone ? "0.5" : "1.0"
@@ -82,14 +82,14 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
         return stringForHTML
     }
     
-    func setupToolbarTitle(_ filename:String, arrowPointingDown:Bool) {
+    func setupToolbarTitle(_ filename: String, arrowPointingDown: Bool) {
 
         var titleString = filename
         if self.filenames.count > 1 {
             titleString = String(format: "%@ %@", (arrowPointingDown ? "▶︎" : " \u{25B4}"), filename)
         }
         else {
-            self.toolbarTitleButton.setTitleTextAttributes([.foregroundColor : UIColor.black], for: .normal)
+            self.toolbarTitleButton.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
         }
         self.toolbarTitleButton.title = titleString
     }
@@ -110,7 +110,7 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
             controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             
-            controller.setSelectAction({ [weak self] (index:Int) -> Void in
+            controller.setSelectAction({ [weak self] (index: Int) -> Void in
                 if let weakSelf = self {
                     weakSelf.selectedFilenameIndex = index
                     let filename = weakSelf.filenames[index]

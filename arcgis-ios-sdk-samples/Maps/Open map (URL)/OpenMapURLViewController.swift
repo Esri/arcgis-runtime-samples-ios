@@ -17,7 +17,7 @@ import ArcGIS
 
 class OpenMapURLViewController: UIViewController {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
     /// The portal item ID of the map now shown in the map view.
     private var displayedMapID: String? {

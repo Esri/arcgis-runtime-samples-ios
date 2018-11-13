@@ -17,9 +17,9 @@ import ArcGIS
 
 class OnInteractionCacheViewController: UIViewController {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    private var map:AGSMap!
+    private var map: AGSMap!
     
     private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0"
     

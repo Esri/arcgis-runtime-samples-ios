@@ -17,15 +17,15 @@ import ArcGIS
 
 class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate, EAOptionsVCDelegate {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    private var map:AGSMap!
-    private var featureTable:AGSServiceFeatureTable!
-    private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancelable!
+    private var map: AGSMap!
+    private var featureTable: AGSServiceFeatureTable!
+    private var featureLayer: AGSFeatureLayer!
+    private var lastQuery: AGSCancelable!
     
     private var types = ["Destroyed", "Major", "Minor", "Affected", "Inaccessible"]
-    private var selectedFeature:AGSArcGISFeature!
+    private var selectedFeature: AGSArcGISFeature!
     private let optionsSegueName = "OptionsSegue"
     
     private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
@@ -49,7 +49,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.mapView.touchDelegate = self
     }
     
-    func showCallout(_ feature:AGSFeature, tapLocation:AGSPoint?) {
+    func showCallout(_ feature: AGSFeature, tapLocation: AGSPoint?) {
         let title = feature.attributes["typdamage"] as! String
         self.mapView.callout.title = title
         self.mapView.callout.delegate = self
@@ -59,7 +59,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     func applyEdits() {
         SVProgressHUD.show(withStatus: "Applying edits")
         
-        featureTable.applyEdits(completion: { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
+        featureTable.applyEdits(completion: { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) -> Void in
             
             SVProgressHUD.dismiss()
             
@@ -91,7 +91,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
             if let error = identifyLayerResult.error {
                 print(error)
             }
-            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature] , features.count > 0 {
+            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature], features.count > 0 {
                 //show callout for the first feature
                 self?.showCallout(features[0], tapLocation: mapPoint)
                 //update selected feature

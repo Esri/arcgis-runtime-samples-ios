@@ -18,7 +18,7 @@ import ArcGIS
 class StatisticalQueryViewController: UIViewController {
     
     @IBOutlet private weak var mapView: AGSMapView!
-    @IBOutlet private var visualEffectView:UIVisualEffectView!
+    @IBOutlet private var visualEffectView: UIVisualEffectView!
     @IBOutlet private var getStatisticsButton: UIButton!
     @IBOutlet private var onlyInCurrentExtentSwitch: UISwitch!
     @IBOutlet private var onlyBigCitiesSwitch: UISwitch!
@@ -32,7 +32,7 @@ class StatisticalQueryViewController: UIViewController {
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["StatisticalQueryViewController"]
         
         // Constraint visual effect view to the map view's attribution label
-        visualEffectView.bottomAnchor.constraint(equalTo: mapView.attributionTopAnchor, constant:-10.0).isActive = true
+        visualEffectView.bottomAnchor.constraint(equalTo: mapView.attributionTopAnchor, constant: -10.0).isActive = true
         
         // Corner radius for button
         getStatisticsButton.layer.cornerRadius = 10

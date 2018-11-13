@@ -21,7 +21,7 @@ class GroupUserCell: UITableViewCell {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var descriptionLabel: UILabel!
     
-    var portalUser:AGSPortalUser! {
+    var portalUser: AGSPortalUser! {
         didSet {
             
             self.titleLabel.text = portalUser.fullName

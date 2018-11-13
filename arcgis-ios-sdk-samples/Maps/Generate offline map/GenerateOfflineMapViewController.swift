@@ -19,18 +19,18 @@ import ArcGIS
 
 class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManagerDelegate {
 
-    @IBOutlet var mapView:AGSMapView!
-    @IBOutlet var extentView:UIView!
-    @IBOutlet var barButtonItem:UIBarButtonItem!
-    @IBOutlet var progressView:UIProgressView!
-    @IBOutlet var progressLabel:UILabel!
-    @IBOutlet var progressParentView:UIView!
-    @IBOutlet var cancelButton:UIButton!
+    @IBOutlet var mapView: AGSMapView!
+    @IBOutlet var extentView: UIView!
+    @IBOutlet var barButtonItem: UIBarButtonItem!
+    @IBOutlet var progressView: UIProgressView!
+    @IBOutlet var progressLabel: UILabel!
+    @IBOutlet var progressParentView: UIView!
+    @IBOutlet var cancelButton: UIButton!
     
-    private var portalItem:AGSPortalItem?
-    private var parameters:AGSGenerateOfflineMapParameters?
-    private var offlineMapTask:AGSOfflineMapTask?
-    private var generateOfflineMapJob:AGSGenerateOfflineMapJob?
+    private var portalItem: AGSPortalItem?
+    private var parameters: AGSGenerateOfflineMapParameters?
+    private var offlineMapTask: AGSOfflineMapTask?
+    private var generateOfflineMapJob: AGSGenerateOfflineMapJob?
     private var shouldShowAlert = true
     
     override func viewDidLoad() {
@@ -117,7 +117,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         progressParentView.isHidden = false
         
         //start the job
-        generateOfflineMapJob.start(statusHandler: nil) { [weak self] (result:AGSGenerateOfflineMapResult?, error:Error?) in
+        generateOfflineMapJob.start(statusHandler: nil) { [weak self] (result: AGSGenerateOfflineMapResult?, error: Error?) in
             
             guard let self = self else {
                 return
@@ -150,7 +150,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             let errorMessages = layerErrors.map { "\($0.key.name): \($0.value.localizedDescription)" } +
                 tableErrors.map { "\($0.key.displayName): \($0.value.localizedDescription)" }
             
-            presentAlert(title:"Offline Map Generated with Errors",
+            presentAlert(title: "Offline Map Generated with Errors",
                          message: "The following error(s) occurred while generating the offline map:\n\n\(errorMessages.joined(separator: "\n"))")
         }
         
@@ -161,7 +161,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         mapView.map = result.offlineMap
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         
         if keyPath == #keyPath(Progress.fractionCompleted) {
             
@@ -269,7 +269,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         return AGSEnvelope(min: minPoint, max: maxPoint)
     }
     
-    private func getNewOfflineMapDirectoryURL()->URL{
+    private func getNewOfflineMapDirectoryURL() -> URL{
 
         //get a suitable directory to place files
         let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!

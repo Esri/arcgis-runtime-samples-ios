@@ -117,7 +117,7 @@ class ContentTableViewController: UITableViewController {
         }
     }
     
-    func downloadResource(for sample: Sample, at indexPath:IndexPath) {
+    func downloadResource(for sample: Sample, at indexPath: IndexPath) {
         
         guard let bundleResourceRequest = bundleResourceRequest else {
             return
@@ -208,11 +208,11 @@ class ContentTableViewController: UITableViewController {
 
     }
     
-    @objc func expandCell(_ sender:UIButton) {
+    @objc func expandCell(_ sender: UIButton) {
         updateExpandedRow(IndexPath(row: sender.tag, section: 0), collapseIfSelected: true)
     }
     
-    private func updateExpandedRow(_ indexPath:IndexPath, collapseIfSelected:Bool) {
+    private func updateExpandedRow(_ indexPath: IndexPath, collapseIfSelected: Bool) {
         //if same row selected then hide the detail view
         if indexPath.row == expandedRowIndex {
             if collapseIfSelected {

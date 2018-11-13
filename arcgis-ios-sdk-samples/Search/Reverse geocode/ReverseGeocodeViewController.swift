@@ -18,12 +18,12 @@ import ArcGIS
 class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     @IBOutlet weak var mapView: AGSMapView!
-    private var map:AGSMap!
+    private var map: AGSMap!
     
-    private var locatorTask:AGSLocatorTask!
-    private var reverseGeocodeParameters:AGSReverseGeocodeParameters!
+    private var locatorTask: AGSLocatorTask!
+    private var reverseGeocodeParameters: AGSReverseGeocodeParameters!
     private var graphicsOverlay = AGSGraphicsOverlay()
-    private var cancelable:AGSCancelable!
+    private var cancelable: AGSCancelable!
     
     private let locatorURL = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
     
@@ -53,7 +53,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.reverseGeocodeParameters.maxResults = 1
     }
     
-    private func reverseGeocode(_ point:AGSPoint) {
+    private func reverseGeocode(_ point: AGSPoint) {
         //cancel previous request
         if self.cancelable != nil {
             self.cancelable.cancel()
@@ -79,7 +79,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
                 }
             }
             else {
-                if let results = results , results.count > 0 {
+                if let results = results, results.count > 0 {
                     graphic.attributes.addEntries(from: results.first!.attributes!)
                     self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint)
                     return
@@ -98,14 +98,14 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
         symbol.leaderOffsetY = markerImage.size.height/2
         symbol.offsetY = markerImage.size.height/2
-        let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: [String:AnyObject]())
+        let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: [String: AnyObject]())
         return graphic
     }
     
     //method to show callout for the graphic
     //it gets the attributes from the graphic and populates the title
     //and detail for the callout
-    private func showCalloutForGraphic(_ graphic:AGSGraphic, tapLocation:AGSPoint) {
+    private func showCalloutForGraphic(_ graphic: AGSGraphic, tapLocation: AGSPoint) {
         let cityString = graphic.attributes["City"] as? String ?? ""
         let addressString = graphic.attributes["Address"] as? String ?? ""
         let stateString = graphic.attributes["State"] as? String ?? ""

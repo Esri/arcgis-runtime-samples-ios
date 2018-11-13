@@ -19,14 +19,14 @@ import ArcGIS
 class GraphicDrawOrderViewController: UIViewController {
     
     @IBOutlet var mapView: AGSMapView!
-    @IBOutlet var buttons:[UIButton]!
+    @IBOutlet var buttons: [UIButton]!
     
-    var map:AGSMap!
+    var map: AGSMap!
     
     private var graphicsOverlay = AGSGraphicsOverlay()
-    private var graphics:[AGSGraphic]!
+    private var graphics: [AGSGraphic]!
     
-    private var drawIndex:Int = 0
+    private var drawIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +46,7 @@ class GraphicDrawOrderViewController: UIViewController {
         self.addGraphics()
         
         //set map scale
-        let mapScale:Double = 53500
+        let mapScale: Double = 53500
         
         //initial viewpoint
         self.mapView.setViewpointCenter(AGSPoint(x: -13148960, y: 4000040, spatialReference: AGSSpatialReference.webMercator()), scale: mapScale, completion: nil)
@@ -58,10 +58,10 @@ class GraphicDrawOrderViewController: UIViewController {
     
     private func addGraphics() {
         //starting x and y
-        let x:Double = -13149000
-        let y:Double = 4e6
+        let x: Double = -13149000
+        let y: Double = 4e6
         //distance between the graphics
-        let delta:Double = 100
+        let delta: Double = 100
         
         //graphics array for reference when a button is tapped
         self.graphics = [AGSGraphic]()
@@ -96,7 +96,7 @@ class GraphicDrawOrderViewController: UIViewController {
     
     //MARK: - Actions
     
-    @IBAction func buttonAction(_ sender:UIButton) {
+    @IBAction func buttonAction(_ sender: UIButton) {
         //increment draw index by 1 and assign as the zIndex for the respective graphic
         self.drawIndex += 1
         

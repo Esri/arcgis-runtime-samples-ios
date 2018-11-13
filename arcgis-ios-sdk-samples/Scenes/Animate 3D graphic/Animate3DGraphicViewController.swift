@@ -297,7 +297,7 @@ class Animate3DGraphicViewController: UIViewController {
         animate()
     }
     
-    @IBAction func playAction(sender:UIBarButtonItem) {
+    @IBAction func playAction(sender: UIBarButtonItem) {
         
         if isAnimating {
             animationTimer?.invalidate()

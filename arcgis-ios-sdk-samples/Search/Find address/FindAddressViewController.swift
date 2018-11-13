@@ -17,13 +17,13 @@ import ArcGIS
 
 class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIAdaptivePresentationControllerDelegate, WorldAddressesVCDelegate {
     
-    @IBOutlet private var mapView:AGSMapView!
-    @IBOutlet private var button:UIButton!
-    @IBOutlet private var searchBar:UISearchBar!
+    @IBOutlet private var mapView: AGSMapView!
+    @IBOutlet private var button: UIButton!
+    @IBOutlet private var searchBar: UISearchBar!
     
-    private var locatorTask:AGSLocatorTask!
-    private var geocodeParameters:AGSGeocodeParameters!
-    private var graphicsOverlay:AGSGraphicsOverlay!
+    private var locatorTask: AGSLocatorTask!
+    private var geocodeParameters: AGSGeocodeParameters!
+    private var graphicsOverlay: AGSGraphicsOverlay!
     
     private let locatorURL = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
     
@@ -66,7 +66,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         return graphic
     }
     
-    private func geocodeSearchText(_ text:String) {
+    private func geocodeSearchText(_ text: String) {
         //clear already existing graphics
         self.graphicsOverlay.graphics.removeAllObjects()
         
@@ -74,14 +74,14 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         self.mapView.callout.dismiss()
         
         //perform geocode with input text
-        self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters, completion: { [weak self] (results:[AGSGeocodeResult]?, error:Error?) -> Void in
+        self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters, completion: { [weak self] (results: [AGSGeocodeResult]?, error: Error?) -> Void in
             if let error = error {
                 self?.presentAlert(error: error)
             }
             else {
-                if let results = results , results.count > 0 {
+                if let results = results, results.count > 0 {
                     //create a graphic for the first result and add to the graphics overlay
-                    let graphic = self?.graphicForPoint(results[0].displayLocation!, attributes: results[0].attributes as [String : AnyObject]?)
+                    let graphic = self?.graphicForPoint(results[0].displayLocation!, attributes: results[0].attributes as [String: AnyObject]?)
                     self?.graphicsOverlay.graphics.add(graphic!)
                     //zoom to the extent of the result
                     if let extent = results[0].extent {
@@ -101,7 +101,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
     //method shows the callout for the specified graphic,
     //populates the title and detail of the callout with specific attributes
     //hides the accessory button
-    private func showCalloutForGraphic(_ graphic:AGSGraphic, tapLocation:AGSPoint) {
+    private func showCalloutForGraphic(_ graphic: AGSGraphic, tapLocation: AGSPoint) {
         let addressType = graphic.attributes["Addr_type"] as! String
         self.mapView.callout.title = graphic.attributes["Match_addr"] as? String ?? ""
         
@@ -153,7 +153,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
     }
     
     //MARK: - Actions
-    @objc func keyboardWillShow(_ sender:AnyObject) {
+    @objc func keyboardWillShow(_ sender: AnyObject) {
         self.button.isHidden = false
     }
     

@@ -18,19 +18,19 @@ import ArcGIS
 
 class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, ServiceAreaSettingsVCDelegate, UIAdaptivePresentationControllerDelegate {
 
-    @IBOutlet private var mapView:AGSMapView!
-    @IBOutlet private var segmentedControl:UISegmentedControl!
-    @IBOutlet private var serviceAreaBBI:UIBarButtonItem!
+    @IBOutlet private var mapView: AGSMapView!
+    @IBOutlet private var segmentedControl: UISegmentedControl!
+    @IBOutlet private var serviceAreaBBI: UIBarButtonItem!
     
     private var facilitiesGraphicsOverlay = AGSGraphicsOverlay()
     private var barriersGraphicsOverlay = AGSGraphicsOverlay()
     private var serviceAreaGraphicsOverlay = AGSGraphicsOverlay()
-    private var barrierGraphic:AGSGraphic!
-    private var serviceAreaTask:AGSServiceAreaTask!
-    private var serviceAreaParameters:AGSServiceAreaParameters!
+    private var barrierGraphic: AGSGraphic!
+    private var serviceAreaTask: AGSServiceAreaTask!
+    private var serviceAreaParameters: AGSServiceAreaParameters!
     
-    var firstTimeBreak:Int = 3
-    var secondTimeBreak:Int = 8
+    var firstTimeBreak: Int = 3
+    var secondTimeBreak: Int = 8
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,10 +97,10 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         }
     }
     
-    private func serviceAreaSymbol(for index:Int) -> AGSSymbol {
+    private func serviceAreaSymbol(for index: Int) -> AGSSymbol {
         
         //fill symbol for service area
-        var fillSymbol:AGSSimpleFillSymbol
+        var fillSymbol: AGSSimpleFillSymbol
         
         if index == 0 {
             let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor(red: 0.4, green: 0.4, blue: 0, alpha: 0.3), width: 2)

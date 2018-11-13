@@ -66,7 +66,7 @@ extension UIApplication {
             if didAddMethod {
                 class_replaceMethod(self, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
             } else {
-                method_exchangeImplementations(originalMethod, swizzledMethod);
+                method_exchangeImplementations(originalMethod, swizzledMethod)
             }
         }
     }
@@ -94,7 +94,7 @@ extension UIApplication {
             
             // put the default implementation back
             //
-            method_exchangeImplementations(originalMethod, swizzledMethod);
+            method_exchangeImplementations(originalMethod, swizzledMethod)
         }
         
         // remove our view
@@ -358,7 +358,7 @@ private class TouchView: UIView {
         
         originalCenter = center
         
-        super.init(frame: CGRect(origin: CGPoint.zero, size:size))
+        super.init(frame: CGRect(origin: .zero, size: size))
         
         self.center = center
         layer.cornerRadius = size.width / 2.0
@@ -380,7 +380,7 @@ private class DemoTouchesView: UIView {
     var pingWidth: CGFloat = 2.0
 
     var currentTouches: Set<UITouch>?
-    var touchViewMap: [UITouch:TouchView] = [:]
+    var touchViewMap: [UITouch: TouchView] = [:]
     
     static let sharedInstance: DemoTouchesView = {
         var dtv = DemoTouchesView()
@@ -462,7 +462,7 @@ private class DemoTouchesView: UIView {
     fileprivate func removeTouch(_ touch: UITouch, cancelled: Bool = false) {
         if let tv = touchViewMap[touch] {
 
-            let animations: (()->Void) = {
+            let animations: (() -> Void) = {
                 tv.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
                 tv.alpha = 0.0
                 

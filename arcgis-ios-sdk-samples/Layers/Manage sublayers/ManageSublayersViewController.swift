@@ -18,17 +18,17 @@ import ArcGIS
 
 class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelegate {
 
-    @IBOutlet private var mapView:AGSMapView!
+    @IBOutlet private var mapView: AGSMapView!
     
     private var workspaceID = "MyDatabaseWorkspaceIDSSR2"
-    private var removedMapImageSublayers:[AGSArcGISMapImageSublayer]!
-    private var mapImageLayer:AGSArcGISMapImageLayer!
+    private var removedMapImageSublayers: [AGSArcGISMapImageSublayer]!
+    private var mapImageLayer: AGSArcGISMapImageLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ManageSublayersViewController","MapImageSublayersVC"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ManageSublayersViewController", "MapImageSublayersVC"]
         
         //instantiate map with basemap
         let map = AGSMap(basemap: .streets())
@@ -40,7 +40,7 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelega
         map.operationalLayers.add(self.mapImageLayer)
         
         //initial viewpoint
-        let envelope = AGSEnvelope(xMin: -13834661.666904, yMin: 331181.323482, xMax: -8255704.998713, yMax: 9118038.075882, spatialReference:AGSSpatialReference.webMercator())
+        let envelope = AGSEnvelope(xMin: -13834661.666904, yMin: 331181.323482, xMax: -8255704.998713, yMax: 9118038.075882, spatialReference: AGSSpatialReference.webMercator())
         
         //set initial viewpoint on map
         map.initialViewpoint = AGSViewpoint(targetExtent: envelope)

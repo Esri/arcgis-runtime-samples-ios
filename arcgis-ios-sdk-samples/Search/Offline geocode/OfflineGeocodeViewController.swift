@@ -17,16 +17,16 @@ import ArcGIS
 
 class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIAdaptivePresentationControllerDelegate, SanDiegoAddressesVCDelegate {
     
-    @IBOutlet private var mapView:AGSMapView!
-    @IBOutlet private var button:UIButton!
-    @IBOutlet private var searchBar:UISearchBar!
+    @IBOutlet private var mapView: AGSMapView!
+    @IBOutlet private var button: UIButton!
+    @IBOutlet private var searchBar: UISearchBar!
     
-    private var locatorTask:AGSLocatorTask!
-    private var geocodeParameters:AGSGeocodeParameters!
-    private var reverseGeocodeParameters:AGSReverseGeocodeParameters!
-    private var graphicsOverlay:AGSGraphicsOverlay!
-    private var locatorTaskOperation:AGSCancelable!
-    private var magnifierOffset:CGPoint!
+    private var locatorTask: AGSLocatorTask!
+    private var geocodeParameters: AGSGeocodeParameters!
+    private var reverseGeocodeParameters: AGSReverseGeocodeParameters!
+    private var graphicsOverlay: AGSGraphicsOverlay!
+    private var locatorTaskOperation: AGSCancelable!
+    private var magnifierOffset: CGPoint!
     private var longPressedAndMoving = false
     
     override func viewDidLoad() {
@@ -84,7 +84,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.magnifierOffset = CGPoint(x: 0, y: -img.size.height)
     }
     
-    private func geocodeSearchText(_ text:String) {
+    private func geocodeSearchText(_ text: String) {
         //hide keyboard
         self.hideKeyboard()
         
@@ -95,15 +95,15 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.graphicsOverlay.graphics.removeAllObjects()
         
         //perform geocode with the input
-        self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters, completion: { [weak self]  (results:[AGSGeocodeResult]?, error:Error?) -> Void in
+        self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters, completion: { [weak self]  (results: [AGSGeocodeResult]?, error: Error?) -> Void in
             if let error = error {
                 self?.presentAlert(error: error)
             }
             else {
                 //if a result was returned display the graphic on the map view
                 //using the first result, as it is the more relevant
-                if let results = results , results.count > 0 {
-                    let graphic = self?.graphicForPoint(results[0].displayLocation!, attributes: results[0].attributes as [String : AnyObject]?)
+                if let results = results, results.count > 0 {
+                    let graphic = self?.graphicForPoint(results[0].displayLocation!, attributes: results[0].attributes as [String: AnyObject]?)
                     self?.graphicsOverlay.graphics.add(graphic!)
                     
                     //zoom to the extent of the graphic
@@ -117,7 +117,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         })
     }
     
-    private func reverseGeocode(point:AGSPoint) {
+    private func reverseGeocode(point: AGSPoint) {
         //clear the search bar text to give feedback that the graphic
         //is based on the tap and not search
         self.searchBar.text = ""
@@ -134,13 +134,13 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         }
         
         //create a graphic and add to the overlay
-        let graphic = self.graphicForPoint(normalizedPoint, attributes: [String:AnyObject]())
+        let graphic = self.graphicForPoint(normalizedPoint, attributes: [String: AnyObject]())
         self.graphicsOverlay.graphics.add(graphic)
         
         //perform reverse geocode
         self.locatorTaskOperation = self.locatorTask.reverseGeocode(withLocation: normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) -> Void in
 
-            if let error = error as NSError? , error.code != NSUserCancelledError {
+            if let error = error as NSError?, error.code != NSUserCancelledError {
                 //print error instead alerting to avoid disturbing the flow
                 print(error.localizedDescription)
             }
@@ -148,11 +148,11 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
                 //if a result is found extract the required attributes
                 //assign the attributes to the graphic
                 //and show the callout
-                if let results = results , results.count > 0 {
+                if let results = results, results.count > 0 {
                     let cityString = results.first?.attributes?["City"] as? String ?? ""
                     let streetString = results.first?.attributes?["Street"] as? String ?? ""
                     let stateString = results.first?.attributes?["State"] as? String ?? ""
-                    graphic.attributes.addEntries(from: ["Match_addr":"\(streetString) \(cityString) \(stateString)"])
+                    graphic.attributes.addEntries(from: ["Match_addr": "\(streetString) \(cityString) \(stateString)"])
                     self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint, animated: false, offset: self!.longPressedAndMoving)
                     return
                 }
@@ -183,7 +183,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
     }
     
     //method to show the callout for the provided graphic, with tap location details
-    private func showCalloutForGraphic(_ graphic:AGSGraphic, tapLocation:AGSPoint, animated:Bool, offset:Bool) {
+    private func showCalloutForGraphic(_ graphic: AGSGraphic, tapLocation: AGSPoint, animated: Bool, offset: Bool) {
         self.mapView.callout.title = graphic.attributes["Match_addr"] as? String
         self.mapView.callout.isAccessoryButtonHidden = true
         
@@ -247,7 +247,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
     }
     
     //MARK: - Actions
-    @objc func keyboardWillShow(_ sender:AnyObject) {
+    @objc func keyboardWillShow(_ sender: AnyObject) {
         self.button.isHidden = false
     }
     

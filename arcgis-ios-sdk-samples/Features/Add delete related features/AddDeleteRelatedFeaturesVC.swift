@@ -19,14 +19,14 @@ import ArcGIS
 
 class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
 
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
-    private var parksFeatureTable:AGSServiceFeatureTable!
-    private var speciesFeatureTable:AGSServiceFeatureTable!
-    private var parksFeatureLayer:AGSFeatureLayer!
-    private var relatedFeatures:[AGSFeature]!
+    private var parksFeatureTable: AGSServiceFeatureTable!
+    private var speciesFeatureTable: AGSServiceFeatureTable!
+    private var parksFeatureLayer: AGSFeatureLayer!
+    private var relatedFeatures: [AGSFeature]!
     
-    private var selectedPark:AGSFeature!
+    private var selectedPark: AGSFeature!
     
     override func viewDidLoad() {
         super.viewDidLoad()

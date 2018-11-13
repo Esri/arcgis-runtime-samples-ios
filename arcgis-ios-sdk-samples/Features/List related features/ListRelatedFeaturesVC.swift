@@ -17,16 +17,16 @@ import ArcGIS
 
 class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopoverPresentationControllerDelegate {
 
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
-    private var parksFeatureLayer:AGSFeatureLayer!
-    private var parksFeatureTable:AGSServiceFeatureTable!
-    private var preservesFeatureTable:AGSServiceFeatureTable!
-    private var speciesFeatureTable:AGSServiceFeatureTable!
-    private var selectedPark:AGSArcGISFeature!
-    private var screenPoint:CGPoint!
+    private var parksFeatureLayer: AGSFeatureLayer!
+    private var parksFeatureTable: AGSServiceFeatureTable!
+    private var preservesFeatureTable: AGSServiceFeatureTable!
+    private var speciesFeatureTable: AGSServiceFeatureTable!
+    private var selectedPark: AGSArcGISFeature!
+    private var screenPoint: CGPoint!
     
-    private var results:[AGSRelatedFeatureQueryResult]!
+    private var results: [AGSRelatedFeatureQueryResult]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,7 +124,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         SVProgressHUD.show(withStatus: "Querying related features")
         
         //query for related features
-        self.parksFeatureTable.queryRelatedFeatures(for: self.selectedPark) { [weak self] (results:[AGSRelatedFeatureQueryResult]?, error:Error?) in
+        self.parksFeatureTable.queryRelatedFeatures(for: self.selectedPark) { [weak self] (results: [AGSRelatedFeatureQueryResult]?, error: Error?) in
             
             
             //dismiss progress hud

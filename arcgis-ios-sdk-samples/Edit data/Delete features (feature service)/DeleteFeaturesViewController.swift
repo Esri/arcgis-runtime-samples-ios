@@ -17,12 +17,12 @@ import ArcGIS
 
 class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
     
-    @IBOutlet private var mapView:AGSMapView!
+    @IBOutlet private var mapView: AGSMapView!
     
-    private var featureTable:AGSServiceFeatureTable!
-    private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancelable!
-    private var selectedFeature:AGSFeature!
+    private var featureTable: AGSServiceFeatureTable!
+    private var featureLayer: AGSFeatureLayer!
+    private var lastQuery: AGSCancelable!
+    private var selectedFeature: AGSFeature!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         map.operationalLayers.add(featureLayer)
     }
     
-    func showCallout(for feature:AGSFeature,at tapLocation:AGSPoint) {
+    func showCallout(for feature: AGSFeature, at tapLocation: AGSPoint) {
         let title = feature.attributes["typdamage"] as! String
         self.mapView.callout.title = title
         self.mapView.callout.delegate = self
@@ -57,7 +57,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.mapView.callout.show(for: feature, tapLocation: tapLocation, animated: true)
     }
     
-    func deleteFeature(_ feature:AGSFeature) {
+    func deleteFeature(_ feature: AGSFeature) {
         self.featureTable.delete(feature) { [weak self] (error: Error?) -> Void in
             if let error = error {
                 print("Error while deleting feature : \(error.localizedDescription)")
@@ -74,7 +74,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
                 self.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
             }
             else {
-                if let featureEditResults = featureEditResults , featureEditResults.count > 0 && featureEditResults[0].completedWithErrors == false {
+                if let featureEditResults = featureEditResults, featureEditResults.count > 0 && featureEditResults[0].completedWithErrors == false {
                     self.presentAlert(message: "Edits applied successfully")
                 }
             }
@@ -95,7 +95,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
             if let error = identifyLayerResult.error {
                 print(error)
             }
-            else if let features = identifyLayerResult.geoElements as? [AGSFeature] , features.count > 0 {
+            else if let features = identifyLayerResult.geoElements as? [AGSFeature], features.count > 0 {
                 //show callout for the first feature
                 self?.showCallout(for: features[0], at: mapPoint)
                 //update selected feature
@@ -113,7 +113,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         //confirmation
         let alertController = UIAlertController(title: "Are you sure you want to delete the feature", message: nil, preferredStyle: .alert)
         //action for Yes
-        let alertAction = UIAlertAction(title: "Yes", style: .default) { [weak self] (action:UIAlertAction!) -> Void in
+        let alertAction = UIAlertAction(title: "Yes", style: .default) { [weak self] (action: UIAlertAction!) -> Void in
             self?.deleteFeature(self!.selectedFeature)
         }
         alertController.addAction(alertAction)

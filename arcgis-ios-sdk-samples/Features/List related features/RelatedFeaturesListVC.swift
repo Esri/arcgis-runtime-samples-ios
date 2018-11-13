@@ -17,11 +17,11 @@ import ArcGIS
 
 class RelatedFeaturesListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet var tableView:UITableView!
-    @IBOutlet var label:UILabel!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var label: UILabel!
     
     //results required for display
-    var results:[AGSRelatedFeatureQueryResult]!
+    var results: [AGSRelatedFeatureQueryResult]!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -18,17 +18,17 @@ import ArcGIS
 
 protocol MapImageSublayersVCDelegate: AnyObject {
     
-    func mapImageSublayersVC(mapImageSublayersVC: MapImageSublayersVC, didCloseWith removedMapImageSublayers:[AGSArcGISMapImageSublayer])
+    func mapImageSublayersVC(mapImageSublayersVC: MapImageSublayersVC, didCloseWith removedMapImageSublayers: [AGSArcGISMapImageSublayer])
 }
 
 class MapImageSublayersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet var tableView:UITableView!
+    @IBOutlet var tableView: UITableView!
     
-    var mapImageLayer:AGSArcGISMapImageLayer!
-    var removedMapImageSublayers:[AGSArcGISMapImageSublayer]!
+    var mapImageLayer: AGSArcGISMapImageLayer!
+    var removedMapImageSublayers: [AGSArcGISMapImageSublayer]!
     
-    weak var delegate:MapImageSublayersVCDelegate?
+    weak var delegate: MapImageSublayersVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

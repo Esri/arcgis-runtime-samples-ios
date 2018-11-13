@@ -17,10 +17,10 @@ import ArcGIS
 
 class FLQueryViewController: UIViewController, UISearchBarDelegate {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    private var featureTable:AGSServiceFeatureTable?
-    private var featureLayer:AGSFeatureLayer?
+    private var featureTable: AGSServiceFeatureTable?
+    private var featureLayer: AGSFeatureLayer?
     
     private var selectedFeatures = [AGSFeature]()
     
@@ -60,7 +60,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         mapView.setViewpointCenter(AGSPoint(x: -11e6, y: 5e6, spatialReference: .webMercator()), scale: 9e7)
     }
     
-    func selectFeaturesForSearchTerm(_ searchTerm:String) {
+    func selectFeaturesForSearchTerm(_ searchTerm: String) {
         
         guard let featureLayer = featureLayer,
             let featureTable = featureTable else {
@@ -76,7 +76,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         let queryParams = AGSQueryParameters()
         queryParams.whereClause = "upper(STATE_NAME) LIKE '%\(searchTerm.uppercased())%'"
         
-        featureTable.queryFeatures(with: queryParams) { [weak self] (result:AGSFeatureQueryResult?, error:Error?) in
+        featureTable.queryFeatures(with: queryParams) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
             
             guard let self = self else {
                 return

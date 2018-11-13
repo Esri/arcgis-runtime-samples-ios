@@ -9,7 +9,6 @@ disabled_rules: # rule identifiers to exclude from running
   - file_length
   - for_where
   - force_cast
-  - force_try
   - function_body_length
   - identifier_name
   - line_length

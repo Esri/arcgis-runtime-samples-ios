@@ -39,7 +39,7 @@ class SetViewpointViewController: UIViewController {
         
         self.londonCoordinate = AGSPoint(x: 0.1275, y: 51.5072, spatialReference: .wgs84())
         
-        if let griffithParkGeometry = self.geometryFromTextFile("GriffithParkJson") {
+        if let griffithParkGeometry = geometryFromTextFile(filename: "GriffithParkJson") {
             self.griffithParkGeometry = griffithParkGeometry as? AGSPolygon
             let griffithParkSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.solid, color: UIColor(red: 0, green: 0.5, blue: 0, alpha: 0.7), outline: nil)
             let griffithParkGraphic = AGSGraphic(geometry: griffithParkGeometry, symbol: griffithParkSymbol, attributes: nil)
@@ -52,16 +52,14 @@ class SetViewpointViewController: UIViewController {
 
     }
     
-    func geometryFromTextFile(_ filename: String) -> AGSGeometry? {
-        if let filepath = Bundle.main.path(forResource: filename, ofType: "txt") {
-            if let jsonString = try? String(contentsOfFile: filepath, encoding: String.Encoding.utf8) {
-                let data = jsonString.data(using: String.Encoding.utf8, allowLossyConversion: false)
-                let dictionary = (try! JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions())) as! [AnyHashable: Any]
-                let geometry = (try? AGSGeometry.fromJSON(dictionary)) as? AGSGeometry
-                return geometry
-            }
+    private func geometryFromTextFile(filename: String) -> AGSGeometry? {
+        if let fileURL = Bundle.main.url(forResource: filename, withExtension: "txt"),
+            let data = try? Data(contentsOf: fileURL),
+            let jsonObject = try? JSONSerialization.jsonObject(with: data),
+            let geometry = try? AGSGeometry.fromJSON(jsonObject) {
+            
+            return geometry as? AGSGeometry
         }
-        
         return nil
     }
 

@@ -130,7 +130,7 @@ class Animate3DGraphicViewController: UIViewController {
         planeModelSymbol.anchorPosition = .center
         
         //arbitrary geometry for time being, the geometry will update with animation
-        let point = AGSPoint(x: 0, y: 0, z: 0, spatialReference: AGSSpatialReference.wgs84())
+        let point = AGSPoint(x: 0, y: 0, z: 0, spatialReference: .wgs84())
         
         //create graphic for the model
         let planeModelGraphic = AGSGraphic()

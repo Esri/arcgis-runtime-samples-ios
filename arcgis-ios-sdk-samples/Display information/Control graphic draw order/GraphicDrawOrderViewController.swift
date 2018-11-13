@@ -49,7 +49,7 @@ class GraphicDrawOrderViewController: UIViewController {
         let mapScale: Double = 53500
         
         //initial viewpoint
-        self.mapView.setViewpointCenter(AGSPoint(x: -13148960, y: 4000040, spatialReference: AGSSpatialReference.webMercator()), scale: mapScale, completion: nil)
+        self.mapView.setViewpointCenter(AGSPoint(x: -13148960, y: 4000040, spatialReference: .webMercator()), scale: mapScale)
         
         //restricting map scale to preserve the graphics overlapping
         self.map.minScale = mapScale
@@ -67,25 +67,25 @@ class GraphicDrawOrderViewController: UIViewController {
         self.graphics = [AGSGraphic]()
         
         //blue marker
-        var geometry = AGSPoint(x: x, y: y, spatialReference: AGSSpatialReference.webMercator())
+        var geometry = AGSPoint(x: x, y: y, spatialReference: .webMercator())
         var symbol = AGSPictureMarkerSymbol(image: UIImage(named: "BlueMarker")!)
         var graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
         self.graphics.append(graphic)
         
         //red marker
-        geometry = AGSPoint(x: x+delta, y: y, spatialReference: AGSSpatialReference.webMercator())
+        geometry = AGSPoint(x: x+delta, y: y, spatialReference: .webMercator())
         symbol = AGSPictureMarkerSymbol(image: UIImage(named: "RedMarker2")!)
         graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
         self.graphics.append(graphic)
         
         //green marker
-        geometry = AGSPoint(x: x, y: y+delta, spatialReference: AGSSpatialReference.webMercator())
+        geometry = AGSPoint(x: x, y: y+delta, spatialReference: .webMercator())
         symbol = AGSPictureMarkerSymbol(image: UIImage(named: "GreenMarker")!)
         graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
         self.graphics.append(graphic)
         
         //Violet marker
-        geometry = AGSPoint(x: x+delta, y: y+delta, spatialReference: AGSSpatialReference.webMercator())
+        geometry = AGSPoint(x: x+delta, y: y+delta, spatialReference: .webMercator())
         symbol = AGSPictureMarkerSymbol(image: UIImage(named: "VioletMarker")!)
         graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
         self.graphics.append(graphic)

@@ -42,7 +42,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         let map = AGSMap(basemap: .terrainWithLabels())
         
         //center for initial viewpoint
-        let center = AGSPoint(x: -13041154, y: 3858170, spatialReference: AGSSpatialReference.webMercator())
+        let center = AGSPoint(x: -13041154, y: 3858170, spatialReference: .webMercator())
         
         //initial viewpoint
         map.initialViewpoint = AGSViewpoint(center: center, scale: 1e5)

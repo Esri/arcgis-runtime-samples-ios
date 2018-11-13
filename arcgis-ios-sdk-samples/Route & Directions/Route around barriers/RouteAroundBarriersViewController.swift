@@ -132,8 +132,9 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             if let error = error {
                 self.presentAlert(error: error)
             }
-            else if let routeResult = routeResult {
-                let route = routeResult.routes[0]
+            else if let routeResult = routeResult,
+                let route = routeResult.routes.first {
+                
                 let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self.routeSymbol(), attributes: nil)
                 self.routeGraphicsOverlay.graphics.add(routeGraphic)
                 self.generatedRoute = route

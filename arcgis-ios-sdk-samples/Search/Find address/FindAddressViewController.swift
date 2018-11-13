@@ -75,23 +75,26 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         
         //perform geocode with input text
         self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters, completion: { [weak self] (results: [AGSGeocodeResult]?, error: Error?) -> Void in
+            
+            guard let self = self else {
+                return
+            }
+            
             if let error = error {
-                self?.presentAlert(error: error)
+                self.presentAlert(error: error)
+            }
+            else if let result = results?.first {
+                //create a graphic for the first result and add to the graphics overlay
+                let graphic = self.graphicForPoint(result.displayLocation!, attributes: result.attributes as [String: AnyObject]?)
+                self.graphicsOverlay.graphics.add(graphic)
+                //zoom to the extent of the result
+                if let extent = result.extent {
+                    self.mapView.setViewpointGeometry(extent, completion: nil)
+                }
             }
             else {
-                if let results = results, results.count > 0 {
-                    //create a graphic for the first result and add to the graphics overlay
-                    let graphic = self?.graphicForPoint(results[0].displayLocation!, attributes: results[0].attributes as [String: AnyObject]?)
-                    self?.graphicsOverlay.graphics.add(graphic!)
-                    //zoom to the extent of the result
-                    if let extent = results[0].extent {
-                        self?.mapView.setViewpointGeometry(extent, completion: nil)
-                    }
-                }
-                else {
-                    //provide feedback in case of failure
-                    self?.presentAlert(message: "No results found")
-                }
+                //provide feedback in case of failure
+                self.presentAlert(message: "No results found")
             }
         })
     }
@@ -127,9 +130,9 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
             if let error = result.error {
                 self.presentAlert(error: error)
             }
-            else if result.graphics.count > 0 {
+            else if let graphic = result.graphics.first {
                 //show callout for the graphic
-                self.showCalloutForGraphic(result.graphics[0], tapLocation: mapPoint)
+                self.showCalloutForGraphic(graphic, tapLocation: mapPoint)
             }
         }
     }

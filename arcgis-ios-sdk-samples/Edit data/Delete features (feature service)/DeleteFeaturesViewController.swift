@@ -74,7 +74,8 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
                 self.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
             }
             else {
-                if let featureEditResults = featureEditResults, featureEditResults.count > 0 && featureEditResults[0].completedWithErrors == false {
+                if let featureEditResults = featureEditResults,
+                    featureEditResults.first?.completedWithErrors == false {
                     self.presentAlert(message: "Edits applied successfully")
                 }
             }
@@ -95,11 +96,12 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
             if let error = identifyLayerResult.error {
                 print(error)
             }
-            else if let features = identifyLayerResult.geoElements as? [AGSFeature], features.count > 0 {
+            else if let features = identifyLayerResult.geoElements as? [AGSFeature],
+                let feature = features.first {
                 //show callout for the first feature
-                self?.showCallout(for: features[0], at: mapPoint)
+                self?.showCallout(for: feature, at: mapPoint)
                 //update selected feature
-                self?.selectedFeature = features[0]
+                self?.selectedFeature = feature
             }
         }
     }

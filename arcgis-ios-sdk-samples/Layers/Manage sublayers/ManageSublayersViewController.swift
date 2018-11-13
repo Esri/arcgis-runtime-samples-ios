@@ -101,9 +101,10 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelega
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "MapImageSublayersSegue" {
-            let navigationController = segue.destination as! UINavigationController
-            let controller = navigationController.viewControllers[0] as! MapImageSublayersVC
+        if segue.identifier == "MapImageSublayersSegue",
+            let navigationController = segue.destination as? UINavigationController,
+            let controller = navigationController.viewControllers.first as? MapImageSublayersVC {
+            
             controller.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 300)
             controller.mapImageLayer = self.mapImageLayer

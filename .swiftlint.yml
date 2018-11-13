@@ -33,6 +33,7 @@ opt_in_rules: # some rules are only opt-in
   - convenience_type
   - discouraged_direct_init
   - discouraged_optional_boolean
+  - empty_count
   - empty_string
   - empty_xctest_method
   - explicit_init

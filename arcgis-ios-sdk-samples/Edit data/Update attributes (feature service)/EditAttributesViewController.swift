@@ -91,11 +91,12 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
             if let error = identifyLayerResult.error {
                 print(error)
             }
-            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature], features.count > 0 {
+            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
+                let feature = features.first {
                 //show callout for the first feature
-                self?.showCallout(features[0], tapLocation: mapPoint)
+                self?.showCallout(feature, tapLocation: mapPoint)
                 //update selected feature
-                self?.selectedFeature = features[0]
+                self?.selectedFeature = feature
             }
         }
     }

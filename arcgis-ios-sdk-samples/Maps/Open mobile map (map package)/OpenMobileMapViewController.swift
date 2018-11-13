@@ -34,19 +34,20 @@ class OpenMobileMapViewController: UIViewController {
         
         //load map package
         self.mapPackage.load { [weak self] (error: Error?) in
+            
+            guard let self = self else {
+                return
+            }
+            
             if let error = error {
-                self?.presentAlert(error: error)
+                self.presentAlert(error: error)
+            }
+            else if let map = self.mapPackage.maps.first {
+                //assign the first map from the map package to the map view
+                self.mapView.map = map
             }
             else {
-                if let weakSelf = self {
-                    if weakSelf.mapPackage.maps.count > 0 {
-                        //assign the first map from the map package to the map view
-                        weakSelf.mapView.map = weakSelf.mapPackage.maps[0]
-                    }
-                    else {
-                        weakSelf.presentAlert(message: "No mobile maps found in the map package")
-                    }
-                }
+                self.presentAlert(message: "No mobile maps found in the map package")
             }
         }
     }

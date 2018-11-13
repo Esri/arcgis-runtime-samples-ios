@@ -95,7 +95,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
                     popups.append(popup)
                 }
                 
-                if popups.count > 0 {
+                if !popups.isEmpty {
                     weakSelf.popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
                     weakSelf.popupsVC.modalPresentationStyle = .formSheet
                     weakSelf.present(weakSelf.popupsVC, animated: true, completion: nil)

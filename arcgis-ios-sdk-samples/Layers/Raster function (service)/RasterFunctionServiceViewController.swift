@@ -82,7 +82,7 @@ class RasterFunctionServiceViewController: UIViewController {
                 let rasterFunctionArguments = rasterFunction.arguments
                 
                 // Get first raster name from raster function arguments
-                let rasterName = rasterFunctionArguments?.rasterNames[0]
+                let rasterName = rasterFunctionArguments?.rasterNames.first
                 
                 // Set image service raster in the raster function arguments with name
                 rasterFunctionArguments?.setRaster(imageServiceRaster, withName: rasterName!)

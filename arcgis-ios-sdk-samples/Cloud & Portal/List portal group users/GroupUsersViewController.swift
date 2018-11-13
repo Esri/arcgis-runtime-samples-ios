@@ -64,8 +64,8 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
             else {
                 //fetch users for the resulting group
                 if let groups = resultSet?.results as? [AGSPortalGroup],
-                    !groups.isEmpty {
-                    self.portalGroup = groups[0]
+                    let group = groups.first {
+                    self.portalGroup = group
                     self.fetchGroupUsers()
                 }
                 else {

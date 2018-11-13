@@ -43,7 +43,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         //get relationship info
         //feature table's layer info has an array of relationshipInfos, one for each relationship
         //in this case there is only one describing the 1..M relationship between parks and species
-        guard let relationshipInfo = self.originFeatureTable.layerInfo?.relationshipInfos[0] else {
+        guard let relationshipInfo = self.originFeatureTable.layerInfo?.relationshipInfos.first else {
             
             presentAlert(message: "Relationship info not found")
             return
@@ -70,10 +70,10 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
             if let error = error {
                 self?.presentAlert(error: error)
             }
-            else if let results = results, results.count > 0 {
+            else if let result = results?.first {
                 
                 //save the related features to display in the table view
-                self?.relatedFeatures = results[0].featureEnumerator().allObjects
+                self?.relatedFeatures = result.featureEnumerator().allObjects
                 
                 //reload table view to reflect changes
                 self?.tableView.reloadData()
@@ -84,10 +84,11 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
     private func addRelatedFeature() {
         
         //get related table using relationshipInfo
-        let relatedTable = self.originFeatureTable.relatedTables(with: self.relationshipInfo)![0] as! AGSServiceFeatureTable
-        
-        //new feature
-        let feature = relatedTable.createFeature(attributes: ["Scientific_name": "New species"], geometry: nil) as! AGSArcGISFeature
+        guard let relatedTable = originFeatureTable.relatedTables(with: relationshipInfo)?.first as? AGSServiceFeatureTable,
+            //new feature
+            let feature = relatedTable.createFeature(attributes: ["Scientific_name": "New species"], geometry: nil) as? AGSArcGISFeature else {
+            return
+        }
         
         //relate new feature to origin feature
         feature.relate(to: self.originFeature)
@@ -113,7 +114,9 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
     private func deleteRelatedFeature(_ feature: AGSFeature) {
         
         //get related table using relationshipInfo
-        let relatedTable = self.originFeatureTable.relatedTables(with: self.relationshipInfo)![0] as! AGSServiceFeatureTable
+        guard let relatedTable = originFeatureTable.relatedTables(with: relationshipInfo)?.first as? AGSServiceFeatureTable else {
+            return
+        }
         
         //show progress hud
         SVProgressHUD.show(withStatus: "Deleting feature")
@@ -136,7 +139,9 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
     private func applyEdits() {
         
         //get the related table using the relationshipInfo
-        let relatedTable = self.originFeatureTable.relatedTables(with: self.relationshipInfo)![0] as! AGSServiceFeatureTable
+        guard let relatedTable = originFeatureTable.relatedTables(with: relationshipInfo)?.first as? AGSServiceFeatureTable else {
+            return
+        }
         
         //show progress hud
         SVProgressHUD.show(withStatus: "Applying edits")

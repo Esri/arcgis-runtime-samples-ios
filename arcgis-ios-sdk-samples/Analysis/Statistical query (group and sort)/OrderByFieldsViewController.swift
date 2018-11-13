@@ -36,7 +36,7 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - TableView data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if orderByFields.count > 0 {
+        if !orderByFields.isEmpty {
             tableView.backgroundView = nil
             return orderByFields.count
         } else {

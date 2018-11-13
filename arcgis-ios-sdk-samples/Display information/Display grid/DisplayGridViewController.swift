@@ -35,7 +35,7 @@ class DisplayGridViewController: UIViewController {
         let map = AGSMap(basemap: .imagery())
         
         // Set initial viewpoint
-        let center = AGSPoint(x: -7702852.905619, y: 6217972.345771, spatialReference: AGSSpatialReference(wkid: 3857))
+        let center = AGSPoint(x: -7702852.905619, y: 6217972.345771, spatialReference: .webMercator())
         map.initialViewpoint = AGSViewpoint(center: center, scale: 23227)
         
         // Assign map to the map view

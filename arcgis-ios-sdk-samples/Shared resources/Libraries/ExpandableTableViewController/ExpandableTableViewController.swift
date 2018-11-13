@@ -18,9 +18,9 @@ import UIKit
 
 class ExpandableTableViewController: UITableViewController {
     
-    public var tableTitle: String?
-    public var sectionHeaderTitles = [String]()
-    public var sectionItems = [[(String, String)]]()
+    var tableTitle: String?
+    var sectionHeaderTitles = [String]()
+    var sectionItems = [[(String, String)]]()
 
     private var expandedSectionHeaderNumber = -1
     private let kHeaderSectionTag = 7000

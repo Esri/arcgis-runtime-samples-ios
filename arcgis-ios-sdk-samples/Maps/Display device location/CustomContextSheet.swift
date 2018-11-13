@@ -68,7 +68,7 @@ class CustomContextSheet: UIView {
         fatalError("init(frame:) has not been implemented")
     }
     
-    required internal init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -103,7 +103,7 @@ class CustomContextSheet: UIView {
         //other buttons
         for i in 0...self.images.count-1 {
             
-            let button = self.button(self.images[i], highlightImage: self.highlightImages?[i] ?? nil, action: #selector(CustomContextSheet.valueChanged(_:)))
+            let button = self.button(self.images[i], highlightImage: self.highlightImages?[i], action: #selector(CustomContextSheet.valueChanged(_:)))
             button.isHidden = true
             self.insertSubview(button, at: 0)
             self.buttonsCollection.append(button)

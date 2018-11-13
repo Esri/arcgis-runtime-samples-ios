@@ -17,7 +17,7 @@ import UIKit
 
 // Used to keep track of whether we are currently showing touches
 //
-private struct DemoTouchToken {
+private enum DemoTouchToken {
     static var showToken: Int = 0
     static var hideToken: Int = 0
     
@@ -268,11 +268,11 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
 
 // This is the object that should be used for showing/hiding touches
 //
-open class DemoTouchManager {
+enum DemoTouchManager {
     
     // MARK: Properties
     
-    open class var touchFillColor: UIColor {
+    static var touchFillColor: UIColor {
         set {
             DemoTouchesView.sharedInstance.touchFillColor = newValue
         }
@@ -281,7 +281,7 @@ open class DemoTouchManager {
         }
     }
     
-    open class var touchSize: CGFloat {
+    static var touchSize: CGFloat {
         set {
             DemoTouchesView.sharedInstance.touchSize = newValue
         }
@@ -290,7 +290,7 @@ open class DemoTouchManager {
         }
     }
     
-    open class var touchBorderColor: UIColor {
+    static var touchBorderColor: UIColor {
         set {
             DemoTouchesView.sharedInstance.touchBorderColor = newValue
         }
@@ -299,7 +299,7 @@ open class DemoTouchManager {
         }
     }
     
-    open class var touchBorderWidth: CGFloat {
+    static var touchBorderWidth: CGFloat {
         set {
             DemoTouchesView.sharedInstance.touchBorderWidth = newValue
         }
@@ -308,7 +308,7 @@ open class DemoTouchManager {
         }
     }
     
-    open class var pingWidth: CGFloat {
+    static var pingWidth: CGFloat {
         set {
             DemoTouchesView.sharedInstance.pingWidth = newValue
         }
@@ -319,15 +319,15 @@ open class DemoTouchManager {
     
     // MARK: Methods
     
-    public static func isShowingTouches() -> Bool {
+    static func isShowingTouches() -> Bool {
         return UIApplication.isShowingTouches
     }
     
-    public static func showTouches() {
+    static func showTouches() {
         UIApplication.showAllTouches()
     }
     
-    public static func hideTouches() {
+    static func hideTouches() {
         UIApplication.hideAllTouches()
     }
 }
@@ -505,22 +505,22 @@ private class DemoTouchesView: UIView {
         }
     }
     
-    fileprivate override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override fileprivate func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
         updateTouches(touches)
     }
     
-    fileprivate override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override fileprivate func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         updateTouches(touches)
     }
     
-    fileprivate override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override fileprivate func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         updateTouches(touches)
     }
     
-    fileprivate override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
+    override fileprivate func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
         
         updateTouches(touches)
     }

@@ -326,7 +326,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
         return AGSEnvelope(min: minPoint, max: maxPoint)
     }
     
-    private func getNewOfflineGeodatabaseURL()->URL{
+    private func getNewOfflineGeodatabaseURL() -> URL{
 
         //get a suitable directory to place files
         let directoryURL = FileManager.default.temporaryDirectory

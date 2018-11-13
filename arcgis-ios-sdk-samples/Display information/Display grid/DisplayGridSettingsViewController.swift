@@ -68,7 +68,7 @@ class DisplayGridSettingsViewController: UITableViewController {
         
     }
     
-    private func makeGrid(type: GridType)-> AGSGrid {
+    private func makeGrid(type: GridType) -> AGSGrid {
         switch type {
         case .latLong: return AGSLatitudeLongitudeGrid()
         case .mgrs: return AGSMGRSGrid()

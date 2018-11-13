@@ -148,7 +148,7 @@ extension DisplayKMLViewController: UIPopoverPresentationControllerDelegate {
 class DisplayKMLDataSourcesTableViewController: UITableViewController {
     
     fileprivate var initialSelectedIndex = 0
-    fileprivate var selectionHandler: ((KMLDataSource)->Void)?
+    fileprivate var selectionHandler: ((KMLDataSource) -> Void)?
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)

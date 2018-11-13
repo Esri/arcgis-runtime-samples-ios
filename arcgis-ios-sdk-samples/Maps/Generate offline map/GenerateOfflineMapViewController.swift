@@ -269,7 +269,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         return AGSEnvelope(min: minPoint, max: maxPoint)
     }
     
-    private func getNewOfflineMapDirectoryURL()->URL{
+    private func getNewOfflineMapDirectoryURL() -> URL{
 
         //get a suitable directory to place files
         let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!

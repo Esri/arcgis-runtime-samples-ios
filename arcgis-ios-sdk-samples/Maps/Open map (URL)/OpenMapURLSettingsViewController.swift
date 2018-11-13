@@ -19,7 +19,7 @@ class OpenMapURLSettingsViewController: UITableViewController {
     
     var mapModels: [OpenMapURLViewController.MapAtURL] = []
     var initialSelectedID: String?
-    var onChange: ((URL)->Void)?
+    var onChange: ((URL) -> Void)?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

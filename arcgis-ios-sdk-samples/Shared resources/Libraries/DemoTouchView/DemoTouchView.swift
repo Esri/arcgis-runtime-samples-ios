@@ -462,7 +462,7 @@ private class DemoTouchesView: UIView {
     fileprivate func removeTouch(_ touch: UITouch, cancelled: Bool = false) {
         if let tv = touchViewMap[touch] {
 
-            let animations: (()->Void) = {
+            let animations: (() -> Void) = {
                 tv.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
                 tv.alpha = 0.0
                 

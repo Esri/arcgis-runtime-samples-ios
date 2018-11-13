@@ -91,7 +91,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
             if let error = identifyLayerResult.error {
                 print(error)
             }
-            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature] , features.count > 0 {
+            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature], features.count > 0 {
                 let feature = features[0]
                 //show callout for the first feature
                 let title = feature.attributes["typdamage"] as! String

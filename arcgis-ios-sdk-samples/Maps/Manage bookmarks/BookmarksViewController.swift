@@ -39,7 +39,7 @@ class BookmarksViewController: UIViewController, UIAdaptivePresentationControlle
         self.map.initialViewpoint = (self.map.bookmarks.lastObject as AnyObject).viewpoint
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["BookmarksViewController","BookmarksListViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["BookmarksViewController", "BookmarksListViewController"]
     }
     
     private func addDefaultBookmarks() {

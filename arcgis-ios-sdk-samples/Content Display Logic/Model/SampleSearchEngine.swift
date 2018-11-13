@@ -41,7 +41,7 @@ class SampleSearchEngine {
         
         let tagger = NSLinguisticTagger(tagSchemes: [.tokenType, .nameType, .lexicalClass], options: 0)
         
-        func addToIndex(string: String,sampleDisplayName: String){
+        func addToIndex(string: String, sampleDisplayName: String){
             
             tagger.string = string
             let range = NSRange(location: 0, length: string.count)
@@ -54,7 +54,7 @@ class SampleSearchEngine {
                     return
                 }
                
-                if  [NSLinguisticTag.noun,.verb,.adjective,.otherWord].contains(tag) {
+                if  [NSLinguisticTag.noun, .verb, .adjective, .otherWord].contains(tag) {
                     let word = ((string as NSString).substring(with: tokenRange) as String).lowercased()
                     
                     //trivial comparisons

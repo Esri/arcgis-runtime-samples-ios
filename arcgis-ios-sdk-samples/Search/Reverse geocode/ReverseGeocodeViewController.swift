@@ -79,7 +79,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
                 }
             }
             else {
-                if let results = results , results.count > 0 {
+                if let results = results, results.count > 0 {
                     graphic.attributes.addEntries(from: results.first!.attributes!)
                     self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint)
                     return

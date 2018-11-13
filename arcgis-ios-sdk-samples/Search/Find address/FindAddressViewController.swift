@@ -79,7 +79,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
                 self?.presentAlert(error: error)
             }
             else {
-                if let results = results , results.count > 0 {
+                if let results = results, results.count > 0 {
                     //create a graphic for the first result and add to the graphics overlay
                     let graphic = self?.graphicForPoint(results[0].displayLocation!, attributes: results[0].attributes as [String: AnyObject]?)
                     self?.graphicsOverlay.graphics.add(graphic!)

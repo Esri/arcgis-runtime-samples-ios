@@ -102,7 +102,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
             else {
                 //if a result was returned display the graphic on the map view
                 //using the first result, as it is the more relevant
-                if let results = results , results.count > 0 {
+                if let results = results, results.count > 0 {
                     let graphic = self?.graphicForPoint(results[0].displayLocation!, attributes: results[0].attributes as [String: AnyObject]?)
                     self?.graphicsOverlay.graphics.add(graphic!)
                     
@@ -140,7 +140,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         //perform reverse geocode
         self.locatorTaskOperation = self.locatorTask.reverseGeocode(withLocation: normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) -> Void in
 
-            if let error = error as NSError? , error.code != NSUserCancelledError {
+            if let error = error as NSError?, error.code != NSUserCancelledError {
                 //print error instead alerting to avoid disturbing the flow
                 print(error.localizedDescription)
             }
@@ -148,7 +148,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
                 //if a result is found extract the required attributes
                 //assign the attributes to the graphic
                 //and show the callout
-                if let results = results , results.count > 0 {
+                if let results = results, results.count > 0 {
                     let cityString = results.first?.attributes?["City"] as? String ?? ""
                     let streetString = results.first?.attributes?["Street"] as? String ?? ""
                     let stateString = results.first?.attributes?["State"] as? String ?? ""

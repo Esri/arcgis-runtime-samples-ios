@@ -35,7 +35,7 @@ class CalloutViewController: UIViewController, AGSGeoViewTouchDelegate {
         //in order to get tap notifications
         self.mapView.touchDelegate = self
         //zoom to custom view point
-        self.mapView.setViewpointCenter(AGSPoint(x: -1.2e7, y: 5e6, spatialReference: AGSSpatialReference.webMercator()), scale: 4e7, completion: nil)
+        self.mapView.setViewpointCenter(AGSPoint(x: -1.2e7, y: 5e6, spatialReference: .webMercator()), scale: 4e7)
     }
     
     // MARK: - AGSGeoViewTouchDelegate

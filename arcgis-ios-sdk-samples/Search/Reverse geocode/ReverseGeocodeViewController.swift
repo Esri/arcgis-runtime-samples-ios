@@ -43,7 +43,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.graphicsOverlays.add(self.graphicsOverlay)
         
         //zoom to a specific extent
-        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -117.195, y: 34.058, spatialReference: AGSSpatialReference.wgs84()), scale: 5e4))
+        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -117.195, y: 34.058, spatialReference: .wgs84()), scale: 5e4))
         
         //initialize locator task
         self.locatorTask = AGSLocatorTask(url: URL(string: self.locatorURL)!)

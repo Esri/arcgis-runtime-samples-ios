@@ -31,8 +31,8 @@ class FeatureLayerRenderingModeMapViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureLayerRenderingModeMapViewController"]
         
         //points for zoomed in and zoomed out
-        let zoomedInPoint = AGSPoint(x: -118.37, y: 34.46, spatialReference: AGSSpatialReference.wgs84())
-        let zoomedOutPoint = AGSPoint(x: -118.45, y: 34.395, spatialReference: AGSSpatialReference.wgs84())
+        let zoomedInPoint = AGSPoint(x: -118.37, y: 34.46, spatialReference: .wgs84())
+        let zoomedOutPoint = AGSPoint(x: -118.45, y: 34.395, spatialReference: .wgs84())
         zoomedInViewpoint = AGSViewpoint(center: zoomedInPoint, scale: 650000, rotation: 0)
         zoomedOutViewpoint = AGSViewpoint(center: zoomedOutPoint, scale: 50000, rotation: 90)
         

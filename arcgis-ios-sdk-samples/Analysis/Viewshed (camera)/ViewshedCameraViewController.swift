@@ -34,7 +34,7 @@ class ViewshedCameraViewController: UIViewController {
         sceneView.scene = scene
         
         // initialize the camera and set the viewpoint specified by the camera position
-        let camera = AGSCamera(location: AGSPoint(x: -4.49492, y: 48.3808, z: 48.2511, spatialReference: AGSSpatialReference.wgs84()), heading: 344.488, pitch: 74.1212, roll: 0)
+        let camera = AGSCamera(location: AGSPoint(x: -4.49492, y: 48.3808, z: 48.2511, spatialReference: .wgs84()), heading: 344.488, pitch: 74.1212, roll: 0)
         sceneView.setViewpointCamera(camera)
         
         /// The url of the image service for elevation in Brest, France.

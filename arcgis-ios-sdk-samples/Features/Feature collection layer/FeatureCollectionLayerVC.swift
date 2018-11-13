@@ -30,7 +30,7 @@ class FeatureCollectionLayerVC: UIViewController {
         let map = AGSMap(basemap: .oceans())
         
         //initial viewpoint
-        let point = AGSPoint(x: -79.497238, y: 8.849289, spatialReference: AGSSpatialReference.wgs84())
+        let point = AGSPoint(x: -79.497238, y: 8.849289, spatialReference: .wgs84())
         map.initialViewpoint = AGSViewpoint(center: point, scale: 1.5e6)
         
         //assign map to the map view
@@ -64,7 +64,7 @@ class FeatureCollectionLayerVC: UIViewController {
         
         //initialize feature collection table with the fields created 
         //and geometry type as Point
-        let pointsCollectionTable = AGSFeatureCollectionTable(fields: fields, geometryType: .point, spatialReference: AGSSpatialReference.wgs84())
+        let pointsCollectionTable = AGSFeatureCollectionTable(fields: fields, geometryType: .point, spatialReference: .wgs84())
         
         //renderer
         let symbol = AGSSimpleMarkerSymbol(style: .triangle, color: .red, size: 18)
@@ -73,7 +73,7 @@ class FeatureCollectionLayerVC: UIViewController {
         // Create a new point feature, provide geometry and attribute values
         let pointFeature = pointsCollectionTable.createFeature()
         pointFeature.attributes["Place"] = "Current location"
-        let point = AGSPoint(x: -79.497238, y: 8.849289, spatialReference: AGSSpatialReference.wgs84())
+        let point = AGSPoint(x: -79.497238, y: 8.849289, spatialReference: .wgs84())
         pointFeature.geometry = point
         
         //add feature to the feature collection table
@@ -91,7 +91,7 @@ class FeatureCollectionLayerVC: UIViewController {
         
         //initialize feature collection table with the fields created
         //and geometry type as Polyline
-        let linesCollectionTable = AGSFeatureCollectionTable(fields: fields, geometryType: .polyline, spatialReference: AGSSpatialReference.wgs84())
+        let linesCollectionTable = AGSFeatureCollectionTable(fields: fields, geometryType: .polyline, spatialReference: .wgs84())
         
         //renderer
         let symbol = AGSSimpleLineSymbol(style: .dash, color: .green, width: 3)
@@ -102,8 +102,8 @@ class FeatureCollectionLayerVC: UIViewController {
         lineFeature.attributes["Boundary"] = "AManAPlanACanalPanama"
         
         //geometry
-        let point1 = AGSPoint(x: -79.497238, y: 8.849289, spatialReference: AGSSpatialReference.wgs84())
-        let point2 = AGSPoint(x: -80.035568, y: 9.432302, spatialReference: AGSSpatialReference.wgs84())
+        let point1 = AGSPoint(x: -79.497238, y: 8.849289, spatialReference: .wgs84())
+        let point2 = AGSPoint(x: -80.035568, y: 9.432302, spatialReference: .wgs84())
         lineFeature.geometry = AGSPolyline(points: [point1, point2])
         
         //add feature to the feature collection table
@@ -121,7 +121,7 @@ class FeatureCollectionLayerVC: UIViewController {
         
         //initialize feature collection table with the fields created
         //and geometry type as Polygon
-        let polygonsCollectionTable = AGSFeatureCollectionTable(fields: fields, geometryType: .polygon, spatialReference: AGSSpatialReference.wgs84())
+        let polygonsCollectionTable = AGSFeatureCollectionTable(fields: fields, geometryType: .polygon, spatialReference: .wgs84())
         
         //renderer
         let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .blue, width: 2)
@@ -133,9 +133,9 @@ class FeatureCollectionLayerVC: UIViewController {
         polygonFeature.attributes["Area"] = "Restricted area"
         
         //geometry
-        let point1 = AGSPoint(x: -79.497238, y: 8.849289, spatialReference: AGSSpatialReference.wgs84())
-        let point2 = AGSPoint(x: -79.337936, y: 8.638903, spatialReference: AGSSpatialReference.wgs84())
-        let point3 = AGSPoint(x: -79.11409, y: 8.895422, spatialReference: AGSSpatialReference.wgs84())
+        let point1 = AGSPoint(x: -79.497238, y: 8.849289, spatialReference: .wgs84())
+        let point2 = AGSPoint(x: -79.337936, y: 8.638903, spatialReference: .wgs84())
+        let point3 = AGSPoint(x: -79.11409, y: 8.895422, spatialReference: .wgs84())
         polygonFeature.geometry =  AGSPolygon(points: [point1, point2, point3])
         
         //add feature to the feature collection table

@@ -68,6 +68,7 @@ class RGBRendererSettingsVC: UITableViewController {
             updateStretchTypeLabel()
         }
     }
+    
     private func updateStretchTypeLabel() {
         stretchTypeCell?.detailTextLabel?.text = stretchType.label
     }

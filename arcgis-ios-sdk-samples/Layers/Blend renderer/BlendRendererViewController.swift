@@ -64,21 +64,22 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
         let elevationRaster = AGSRaster(name: "Shasta_Elevation", extension: "tif")
         
         // create a blend renderer
-        let blendRenderer = AGSBlendRenderer(elevationRaster: elevationRaster,
-                                        outputMinValues: [9],
-                                        outputMaxValues: [255],
-                                        sourceMinValues: [],
-                                        sourceMaxValues: [],
-                                        noDataValues: [],
-                                        gammas: [],
-                                        colorRamp: colorRamp,
-                                        altitude: altitude,
-                                        azimuth: azimuth,
-                                        zFactor: 1,
-                                        slopeType: slopeType,
-                                        pixelSizeFactor: 1,
-                                        pixelSizePower: 1,
-                                        outputBitDepth: 8)
+        let blendRenderer = AGSBlendRenderer(
+            elevationRaster: elevationRaster,
+            outputMinValues: [9],
+            outputMaxValues: [255],
+            sourceMinValues: [],
+            sourceMaxValues: [],
+            noDataValues: [],
+            gammas: [],
+            colorRamp: colorRamp,
+            altitude: altitude,
+            azimuth: azimuth,
+            zFactor: 1,
+            slopeType: slopeType,
+            pixelSizeFactor: 1,
+            pixelSizePower: 1,
+            outputBitDepth: 8)
         
         // remove the exisiting layers
         mapView.map?.basemap.baseLayers.removeAllObjects()

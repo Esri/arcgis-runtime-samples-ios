@@ -31,11 +31,11 @@ extension UIViewController {
     
 }
 
-extension UIAlertController {
+private extension UIAlertController {
     
     /// Initializes the alert controller with the given parameters, adding the
     /// actions successively and setting the first action as preferred.
-    fileprivate convenience init(title: String? = nil, message: String? = nil, preferredStyle: UIAlertController.Style = .alert, actions: [UIAlertAction] = []) {
+    convenience init(title: String? = nil, message: String? = nil, preferredStyle: UIAlertController.Style = .alert, actions: [UIAlertAction] = []) {
         self.init(title: title, message: message, preferredStyle: preferredStyle)
         for action in actions {
             addAction(action)

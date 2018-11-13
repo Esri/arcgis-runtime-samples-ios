@@ -20,3 +20,40 @@ disabled_rules: # rule identifiers to exclude from running
   - type_body_length
   - type_name
   - unused_closure_parameter
+
+opt_in_rules: # some rules are only opt-in
+  - anyobject_protocol
+  - array_init
+  - closure_spacing
+  - collection_alignment
+  - contains_over_first_not_nil
+  - convenience_type
+  - discouraged_direct_init
+  - discouraged_optional_boolean
+  - empty_string
+  - empty_xctest_method
+  - explicit_init
+  - extension_access_modifier
+  - fallthrough
+  - fatal_error_message
+  - first_where
+  - identical_operands
+  - joined_default_parameter
+  - legacy_random
+  - let_var_whitespace
+  - literal_expression_end_indentation
+  - modifier_order
+  - multiline_function_chains
+  - multiline_parameters
+  - overridden_super_call
+  - override_in_extension
+  - prohibited_super_call
+  - redundant_nil_coalescing
+  - redundant_type_annotation
+  - sorted_first_last
+  - static_operator
+  - toggle_bool
+  - unused_import
+  - unused_private_declaration
+  - vertical_parameter_alignment_on_call
+  - yoda_condition

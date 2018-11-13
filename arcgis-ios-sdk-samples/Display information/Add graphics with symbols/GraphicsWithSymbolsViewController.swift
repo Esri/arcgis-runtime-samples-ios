@@ -91,7 +91,8 @@ class GraphicsWithSymbolsViewController: UIViewController {
         let boatRoute = self.boatTripGeometry()
         
         //define a line symbol
-        let lineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.dash,
+        let lineSymbol = AGSSimpleLineSymbol(
+            style: .dash,
             color: UIColor(red: 0.5, green: 0, blue: 0.5, alpha: 1),
             width: 4)
         
@@ -107,11 +108,14 @@ class GraphicsWithSymbolsViewController: UIViewController {
         let nestingGround = self.nestingGroundGeometry()
         
         //define the fill symbol and outline
-        let outlineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.dash,
+        let outlineSymbol = AGSSimpleLineSymbol(
+            style: .dash,
             color: UIColor(red: 0, green: 0, blue: 0.5, alpha: 1),
             width: 1)
-        let fillSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.diagonalCross,
-            color: UIColor(red: 0, green: 80/255.0, blue: 0, alpha: 1), outline: outlineSymbol)
+        let fillSymbol = AGSSimpleFillSymbol(
+            style: .diagonalCross,
+            color: UIColor(red: 0, green: 80/255.0, blue: 0, alpha: 1),
+            outline: outlineSymbol)
         
         //nesting graphic
         let nestingGraphic = AGSGraphic(geometry: nestingGround, symbol: fillSymbol, attributes: nil)

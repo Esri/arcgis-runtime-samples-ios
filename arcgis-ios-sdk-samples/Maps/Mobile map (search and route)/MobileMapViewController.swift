@@ -259,9 +259,9 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
 }
 
 //extension for extracting the right attributes if available
-extension AGSGeocodeResult {
+private extension AGSGeocodeResult {
     
-    public var formattedAddressString: String? {
+    var formattedAddressString: String? {
         
         if !label.isEmpty {
             return label
@@ -286,15 +286,15 @@ extension AGSGeocodeResult {
         return addr
     }
     
-    public func attributeValueAs<T>(_ key: String) -> T? {
+    func attributeValueAs<T>(_ key: String) -> T? {
         return attributes![key] as? T
     }
     
-    public func attributeAsStringForKey(_ key: String) -> String? {
+    func attributeAsStringForKey(_ key: String) -> String? {
         return attributeValueAs(key)
     }
     
-    public func attributeAsNonEmptyStringForKey(_ key: String) -> String? {
+    func attributeAsNonEmptyStringForKey(_ key: String) -> String? {
         if let value = attributeAsStringForKey(key) {
             return value.isEmpty ? nil : value
         }

@@ -27,8 +27,8 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet private var tableNavigationItem: UINavigationItem!
     
     // List of fields and selected fields
-    public var orderByFields = [AGSOrderBy]()
-    public var selectedOrderByFields = [AGSOrderBy]()
+    var orderByFields = [AGSOrderBy]()
+    var selectedOrderByFields = [AGSOrderBy]()
     
     // Delegate
     weak var delegate: OrderByFieldsViewControllerDelegate?

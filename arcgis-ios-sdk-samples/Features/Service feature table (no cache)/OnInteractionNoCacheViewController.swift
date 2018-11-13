@@ -33,7 +33,8 @@ class OnInteractionNoCacheViewController: UIViewController {
         self.map = AGSMap(basemap: .topographic())
         
         //initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -1.30758164047166E7,
+        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(
+            xMin: -1.30758164047166E7,
             yMin: 4014771.46954516,
             xMax: -1.30730056797177E7,
             yMax: 4016869.78617381,

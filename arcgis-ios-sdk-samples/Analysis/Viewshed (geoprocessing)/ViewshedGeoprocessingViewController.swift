@@ -15,8 +15,6 @@
 import UIKit
 import ArcGIS
 
-let viewshedURLString = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Elevation/ESRI_Elevation_World/GPServer/Viewshed"
-
 class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDelegate {
 
     @IBOutlet var mapView: AGSMapView!
@@ -51,7 +49,8 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
         //add graphics overlays to the map view
         self.mapView.graphicsOverlays.addObjects(from: [self.resultGraphicsOverlay, self.inputGraphicsOverlay])
         
-        self.geoprocessingTask = AGSGeoprocessingTask(url: URL(string: viewshedURLString)!)
+        let viewshedURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Elevation/ESRI_Elevation_World/GPServer/Viewshed")!
+        self.geoprocessingTask = AGSGeoprocessingTask(url: viewshedURL)
     }
     
     private func addGraphicForPoint(_ point: AGSPoint) {
@@ -98,8 +97,7 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
             if let error = error {
                 //show error
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self?.performGeoprocessing(featureCollectionTable)
             }
         }
@@ -137,8 +135,7 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
                 if (error as NSError).code != NSUserCancelledError { //if not cancelled
                     self.presentAlert(error: error)
                 }
-            }
-            else {
+            } else {
                 //The service returns result in form of AGSGeoprocessingFeatures
                 //Cast the results and add the features from featureSet to graphics overlay
                 //in form of graphics

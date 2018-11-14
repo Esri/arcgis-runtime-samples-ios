@@ -74,8 +74,7 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
         // Set accessory type
         if selectedOrderByFields.contains(where: { $0.fieldName == orderByField.fieldName }) {
             cell.accessoryType = .checkmark
-        }
-        else {
+        } else {
             cell.accessoryType = .none
         }
         
@@ -101,8 +100,7 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
                 // Add field to selected order by fields
                 let orderByField = orderByFields[indexPath.row]
                 selectedOrderByFields.append(orderByField)
-            }
-            else {
+            } else {
                 // Set the accessory type to none
                 cell.accessoryType = .none
                 
@@ -129,8 +127,7 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
             let sortOrderString = stringFor(sortOrder: orderByField.sortOrder)
             let text = "\(orderByField.fieldName) (\(sortOrderString))"
             cell?.textLabel?.text = text
-        }
-        else {
+        } else {
             orderByField.sortOrder = .ascending
             cell?.imageView?.image = imageFor(sortOrder: orderByField.sortOrder)
             let sortOrderString = stringFor(sortOrder: orderByField.sortOrder)

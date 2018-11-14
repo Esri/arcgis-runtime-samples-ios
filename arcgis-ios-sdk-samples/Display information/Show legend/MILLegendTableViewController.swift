@@ -34,16 +34,14 @@ class MILLegendTableViewController: UITableViewController {
 
             if !layer.subLayerContents.isEmpty {
                 self.populateLegends(with: layer.subLayerContents)
-            }
-            else {
+            } else {
                 //else if no sublayers fetch legend info
                 self.orderArray.append(layer)
                 layer.fetchLegendInfos(completion: { [weak self] (legendInfos: [AGSLegendInfo]?, error: Error?) -> Void in
 
                     if let error = error {
                         print(error)
-                    }
-                    else {
+                    } else {
                         if let legendInfos = legendInfos {
                             self?.legendInfosDict[self!.hashString(for: layer)] = legendInfos
                             self?.tableView.reloadData()
@@ -96,11 +94,9 @@ class MILLegendTableViewController: UITableViewController {
     func geometryTypeForSymbol(_ symbol: AGSSymbol) -> AGSGeometryType {
         if symbol is AGSFillSymbol {
             return AGSGeometryType.polygon
-        }
-        else if symbol is AGSLineSymbol {
+        } else if symbol is AGSLineSymbol {
             return .polyline
-        }
-        else {
+        } else {
             return .point
         }
     }
@@ -114,8 +110,7 @@ class MILLegendTableViewController: UITableViewController {
     func nameForLayerContent(_ layerContent: AGSLayerContent) -> String {
         if let layer = layerContent as? AGSLayer {
             return layer.name
-        }
-        else {
+        } else {
             return (layerContent as! AGSArcGISSublayer).name
         }
     }

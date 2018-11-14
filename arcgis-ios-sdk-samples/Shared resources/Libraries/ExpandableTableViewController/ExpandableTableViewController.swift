@@ -97,8 +97,7 @@ class ExpandableTableViewController: UITableViewController {
         let imageView = UIImageView(frame: CGRect(x: headerFrame.width - 32, y: 13, width: 18, height: 18))
         if expandedSectionHeaderNumber == section {
             imageView.image = UIImage(named: "Expanded")
-        }
-        else {
+        } else {
             imageView.image = UIImage(named: "Collapsed")
         }
         imageView.tag = kHeaderSectionTag + section

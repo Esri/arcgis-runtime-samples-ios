@@ -163,8 +163,7 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
                 expandableTableViewController.sectionHeaderTitles.append("Relationship With Polygon")
                 let polygonSectionItems = polygonRelationships.map { ($0, "") }
                 expandableTableViewController.sectionItems.append(polygonSectionItems)
-            }
-            else if let pointGeometry = strongSelf.pointGraphic.geometry, let polygonGeometry = strongSelf.polygonGraphic.geometry, selectedGeometry.geometryType == .polyline {
+            } else if let pointGeometry = strongSelf.pointGraphic.geometry, let polygonGeometry = strongSelf.polygonGraphic.geometry, selectedGeometry.geometryType == .polyline {
                 //
                 // Get the relationships with point and polygon
                 let pointRelationships = strongSelf.getSpatialRelationships(geometry1: selectedGeometry, geometry2: pointGeometry)
@@ -179,8 +178,7 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
                 expandableTableViewController.sectionHeaderTitles.append("Relationship With Polygon")
                 let polygonSectionItems = polygonRelationships.map { ($0, "") }
                 expandableTableViewController.sectionItems.append(polygonSectionItems)
-            }
-            else if let pointGeometry = strongSelf.pointGraphic.geometry, let polylineGeometry = strongSelf.polylineGraphic.geometry, selectedGeometry.geometryType == .polygon {
+            } else if let pointGeometry = strongSelf.pointGraphic.geometry, let polylineGeometry = strongSelf.polylineGraphic.geometry, selectedGeometry.geometryType == .polygon {
                 //
                 // Get the relationships with point and polyline
                 let pointRelationships = strongSelf.getSpatialRelationships(geometry1: selectedGeometry, geometry2: pointGeometry)

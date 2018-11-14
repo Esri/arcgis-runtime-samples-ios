@@ -93,8 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             DemoTouchManager.showTouches()
             DemoTouchManager.touchBorderColor = .lightGray
             DemoTouchManager.touchFillColor = UIColor(white: 231 / 255.0, alpha: 1)
-        }
-        else {
+        } else {
             DemoTouchManager.hideTouches()
         }
     }
@@ -120,8 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         if secondaryViewController.restorationIdentifier == "DetailNavigationController" {
             return true
-        }
-        else {
+        } else {
             return false
         }
     }

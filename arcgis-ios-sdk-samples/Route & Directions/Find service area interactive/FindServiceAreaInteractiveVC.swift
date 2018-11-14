@@ -105,8 +105,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         if index == 0 {
             let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor(red: 0.4, green: 0.4, blue: 0, alpha: 0.3), width: 2)
             fillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor(red: 0.8, green: 0.8, blue: 0, alpha: 0.3), outline: lineSymbol)
-        }
-        else {
+        } else {
             let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor(red: 0, green: 0.4, blue: 0, alpha: 0.3), width: 2)
             fillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor(red: 0, green: 0.8, blue: 0, alpha: 0.3), outline: lineSymbol)
         }
@@ -173,8 +172,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
             
             if let error = error {
                 self.presentAlert(message: "Error solving service area: \(error.localizedDescription)")
-            }
-            else {
+            } else {
                 //add resulting polygons as graphics to the overlay
                 //since we are using `geometryAtOVerlap` as `dissolve` and the cutoff values
                 //are the same across facilities, we only need to draw the resultPolygons at
@@ -208,8 +206,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
             //facilities selected
             let graphic = AGSGraphic(geometry: mapPoint, symbol: nil, attributes: nil)
             self.facilitiesGraphicsOverlay.graphics.add(graphic)
-        }
-        else {
+        } else {
             
             //barriers selected
             let bufferedGeometry = AGSGeometryEngine.bufferGeometry(mapPoint, byDistance: 500)

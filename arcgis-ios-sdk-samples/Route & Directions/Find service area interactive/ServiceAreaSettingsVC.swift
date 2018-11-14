@@ -53,8 +53,7 @@ class ServiceAreaSettingsVC: UIViewController {
             self.firstTimeBreakLabel.text = "\(Int(sender.value))"
             
             self.delegate?.serviceAreaSettingsVC(self, didUpdateFirstTimeBreak: Int(sender.value))
-        }
-        else {
+        } else {
             
             self.secondTimeBreakLabel.text = "\(Int(sender.value))"
             

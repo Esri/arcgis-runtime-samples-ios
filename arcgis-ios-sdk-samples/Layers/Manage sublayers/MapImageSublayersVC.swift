@@ -46,8 +46,7 @@ class MapImageSublayersVC: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return self.mapImageLayer?.mapImageSublayers.count ?? 0
-        }
-        else {
+        } else {
             return self.removedMapImageSublayers?.count ?? 0
         }
     }
@@ -59,8 +58,7 @@ class MapImageSublayersVC: UIViewController, UITableViewDataSource, UITableViewD
         if indexPath.section == 0 {
             let sublayer = self.mapImageLayer.mapImageSublayers[indexPath.row] as AnyObject as! AGSArcGISMapImageSublayer
             cell.textLabel?.text = sublayer.name.isEmpty ? "Sublayer" : sublayer.name
-        }
-        else {
+        } else {
             let sublayer = self.removedMapImageSublayers[indexPath.row]
             cell.textLabel?.text = sublayer.name.isEmpty ? "Sublayer" : sublayer.name
         }
@@ -142,8 +140,7 @@ class MapImageSublayersVC: UIViewController, UITableViewDataSource, UITableViewD
         
         if sourceIndexPath.section != proposedDestinationIndexPath.section {
             return sourceIndexPath
-        }
-        else {
+        } else {
             return proposedDestinationIndexPath
         }
     }

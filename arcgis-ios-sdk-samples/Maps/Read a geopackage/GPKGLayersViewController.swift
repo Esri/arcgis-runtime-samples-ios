@@ -174,8 +174,7 @@ class GPKGLayersViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
         if sourceIndexPath.section != proposedDestinationIndexPath.section {
             return sourceIndexPath
-        }
-        else {
+        } else {
             return proposedDestinationIndexPath
         }
     }

@@ -71,8 +71,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
             
             if let error = error {
                 self?.presentAlert(message: "Error while adding feature: \(error.localizedDescription)")
-            }
-            else {
+            } else {
                 //applied edits on success
                 self?.applyEdits()
             }
@@ -85,8 +84,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.featureTable.applyEdits {[weak self] (featureEditResults: [AGSFeatureEditResult]?, error: Error?) -> Void in
             if let error = error {
                 self?.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
-            }
-            else {
+            } else {
                 if let featureEditResults = featureEditResults,
                     featureEditResults.first?.completedWithErrors == false {
                     self?.presentAlert(message: "Edits applied successfully")

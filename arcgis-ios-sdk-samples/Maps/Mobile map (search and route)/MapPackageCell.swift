@@ -47,8 +47,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         self.mapPackage.load { [weak self] (error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
-            }
-            else {
+            } else {
                 //update title label
                 self?.titleLabel.text = self?.mapPackage.item?.title
                 

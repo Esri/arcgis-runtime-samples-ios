@@ -151,8 +151,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
             if let error = error {
                 print(error)
-            }
-            else {
+            } else {
                 self?.params = params
             }
         }
@@ -210,8 +209,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
             
             if let error = error as NSError?, error.code != NSUserCancelledError {
                 print(error)
-            }
-            else {
+            } else {
                 //handle the route result
                 self?.displayRoutesOnMap(routeResult?.routes, isLongPressedResult: isLongPressed)
             }

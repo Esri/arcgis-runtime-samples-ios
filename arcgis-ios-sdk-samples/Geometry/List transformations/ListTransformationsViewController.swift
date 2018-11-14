@@ -50,8 +50,7 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
         mapView.map?.load { [weak self] (error) in
             if let error = error {
                 print("map load error = \(error)")
-            }
-            else {
+            } else {
                 self?.mapDidLoad()
             }
         }
@@ -79,8 +78,7 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
         // if orderByMapExtent is on, use the map extent when retrieving the transformations
         if orderByMapExtent.isOn {
             datumTransformations = AGSTransformationCatalog.transformationsBySuitability(withInputSpatialReference: inputSR, outputSpatialReference: outputSR, areaOfInterest: mapView.visibleArea?.extent)
-        }
-        else {
+        } else {
             datumTransformations = AGSTransformationCatalog.transformationsBySuitability(withInputSpatialReference: inputSR, outputSpatialReference: outputSR)
         }
         
@@ -169,13 +167,11 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
             if let graphic = projectedGraphic {
                 // we've already added the projected graphic
                 graphic.geometry = projectedGeometry
-            }
-            else {
+            } else {
                 // add projected graphic
                 addGraphic(projectedGeometry, color: .blue, style: .cross)
             }
-        }
-        else {
+        } else {
             // If a transformation is missing grid files, then it cannot be
             // successfully used to project a geometry, and "projectGeometry" will return nil.
             // In that case, remove projected graphic

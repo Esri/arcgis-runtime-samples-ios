@@ -66,8 +66,7 @@ class SampleSearchEngine {
                                 samples.append(sampleDisplayName)
                                 displayNamesByReadmeWords[word] = samples
                             }
-                        }
-                        else {
+                        } else {
                             displayNamesByReadmeWords[word] = [sampleDisplayName]
                         }
                     }
@@ -130,17 +129,14 @@ class SampleSearchEngine {
                     }
                     // indexes are the same, sort alphabetically
                     return sample1Name < sample2Name
-                }
-                else {
+                } else {
                     // only node1 has a title match, sort that first
                     return true
                 }
-            }
-            else if sample2Name.contains(lowercasedQuery) {
+            } else if sample2Name.contains(lowercasedQuery) {
                 // only node2 has a title match, sort that first
                 return false
-            }
-            else {
+            } else {
                 // matches are both in the descriptions
                 
                 // for convenience, store normalized descriptions for re-use

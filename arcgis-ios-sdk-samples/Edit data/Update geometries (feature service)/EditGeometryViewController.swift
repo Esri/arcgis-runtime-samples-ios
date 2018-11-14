@@ -68,8 +68,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.featureTable.applyEdits(completion: { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) -> Void in
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self?.presentAlert(message: "Saved successfully!")
             }
             //un hide the feature
@@ -90,8 +89,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
             if let error = identifyLayerResult.error {
                 print(error)
-            }
-            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
+            } else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
                 let feature = features.first {
                
                 //show callout for the first feature
@@ -139,8 +137,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
                     
                     //un hide the feature
                     self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
-                }
-                else {
+                } else {
                     //apply edits
                     self?.applyEdits()
                 }

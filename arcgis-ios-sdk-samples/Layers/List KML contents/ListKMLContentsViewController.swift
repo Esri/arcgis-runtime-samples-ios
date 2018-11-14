@@ -77,8 +77,7 @@ class ListKMLContentsViewController: UITableViewController {
     private func childNodes(of node: AGSKMLNode) -> [AGSKMLNode] {
         if let container = node as? AGSKMLContainer {
             return container.childNodes
-        }
-        else if let networkLink = node as? AGSKMLNetworkLink {
+        } else if let networkLink = node as? AGSKMLNetworkLink {
             return networkLink.childNodes
         }
         return []

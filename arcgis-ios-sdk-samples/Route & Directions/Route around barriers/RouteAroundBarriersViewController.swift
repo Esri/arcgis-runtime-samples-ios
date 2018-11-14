@@ -77,8 +77,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self?.routeParameters = params
                 //enable bar button item
                 self?.routeParametersBBI.isEnabled = true
@@ -131,8 +130,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             
             if let error = error {
                 self.presentAlert(error: error)
-            }
-            else if let routeResult = routeResult,
+            } else if let routeResult = routeResult,
                 let route = routeResult.routes.first {
                 
                 let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self.routeSymbol(), attributes: nil)
@@ -186,8 +184,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             if graphicsCount > 0 {
                 self.routeBBI.isEnabled = true
             }
-        }
-        else {
+        } else {
             let bufferedGeometry = AGSGeometryEngine.bufferGeometry(normalizedPoint, byDistance: 500)
             let symbol = self.barrierSymbol()
             let graphic = AGSGraphic(geometry: bufferedGeometry, symbol: symbol, attributes: nil)
@@ -201,8 +198,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         if segmentedControl.selectedSegmentIndex == 0 {
             self.stopGraphicsOverlay.graphics.removeAllObjects()
             self.routeBBI.isEnabled = false
-        }
-        else {
+        } else {
             self.barrierGraphicsOverlay.graphics.removeAllObjects()
         }
     }
@@ -241,8 +237,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 125)
             controller.routeParameters = self.routeParameters
-        }
-        else if segue.identifier == "DirectionsListSegue" {
+        } else if segue.identifier == "DirectionsListSegue" {
             self.directionsListViewController = segue.destination as? DirectionsListViewController
             self.directionsListViewController.delegate = self
         }

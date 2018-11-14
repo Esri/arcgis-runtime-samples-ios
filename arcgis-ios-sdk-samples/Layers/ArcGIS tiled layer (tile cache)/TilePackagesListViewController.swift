@@ -60,8 +60,7 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return self.bundleTPKPaths?.count ?? 0
-        }
-        else {
+        } else {
             return self.documentTPKPaths?.count ?? 0
         }
     }
@@ -71,8 +70,7 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
         
         if indexPath.section == 0 {
             cell.textLabel?.text = self.extractName(fromPath: self.bundleTPKPaths[indexPath.row])
-        }
-        else {
+        } else {
             cell.textLabel?.text = self.extractName(fromPath: self.documentTPKPaths[indexPath.row])
         }
         

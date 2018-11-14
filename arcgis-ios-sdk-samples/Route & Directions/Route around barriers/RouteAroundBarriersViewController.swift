@@ -212,7 +212,8 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             },
             completion: { [weak self] (finished) -> Void in
                 self?.isDirectionsListVisible.toggle()
-            })
+            }
+        )
     }
     
     func toggleRouteDetails(_ on: Bool) {
@@ -226,7 +227,8 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
                 if !on {
                     self?.isDirectionsListVisible = false
                 }
-            })
+            }
+        )
     }
     
     // MARK: - Navigation

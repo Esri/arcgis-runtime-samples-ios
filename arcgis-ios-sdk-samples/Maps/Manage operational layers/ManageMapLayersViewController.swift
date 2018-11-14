@@ -25,9 +25,7 @@ class ManageMapLayersViewController: UIViewController {
     /// The layers present in `allLayers` but not in the map's `operationalLayers`.
     private var removedLayers: [AGSLayer] {
         if let operationalLayers = mapView?.map?.operationalLayers as? [AGSLayer] {
-            return allLayers.filter({ (layer) -> Bool in
-                return !operationalLayers.contains(layer)
-            })
+            return allLayers.filter { !operationalLayers.contains($0) }
         }
         return []
     }

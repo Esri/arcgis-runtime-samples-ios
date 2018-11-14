@@ -110,21 +110,24 @@ class GenerateGeodatabaseViewController: UIViewController {
                 let generateJob = self.syncTask.generateJob(with: params, downloadFileURL: downloadFileURL)
                 self.activeJob = generateJob
                 //kick off the job
-                generateJob.start(statusHandler: { (status: AGSJobStatus) -> Void in
-                    SVProgressHUD.show(withStatus: status.statusString())
-                }, completion: { [weak self] (object: AnyObject?, error: Error?) -> Void in
-                    
-                    SVProgressHUD.dismiss()
-                    
-                    if let error = error {
-                        self?.presentAlert(error: error)
-                    } else {
-                        self?.generatedGeodatabase = object as? AGSGeodatabase
-                        self?.displayLayersFromGeodatabase()
+                generateJob.start(
+                    statusHandler: { (status: AGSJobStatus) -> Void in
+                        SVProgressHUD.show(withStatus: status.statusString())
+                    },
+                    completion: { [weak self] (object: AnyObject?, error: Error?) -> Void in
+                        
+                        SVProgressHUD.dismiss()
+                        
+                        if let error = error {
+                            self?.presentAlert(error: error)
+                        } else {
+                            self?.generatedGeodatabase = object as? AGSGeodatabase
+                            self?.displayLayersFromGeodatabase()
+                        }
+                        
+                        self?.activeJob = nil
                     }
-                    
-                    self?.activeJob = nil
-                })
+                )
                 
             } else {
                 print("Could not generate default parameters: \(error!)")

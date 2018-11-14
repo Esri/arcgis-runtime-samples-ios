@@ -97,7 +97,8 @@ class MapViewScreenshotViewController: UIViewController {
                 //show the screenshot on screen
                 self?.overlayImageView.image = image
                 self?.showOverlayParentView()
-            })
+            }
+        )
     }
     
     //to play the shutter sound once the screenshot is taken

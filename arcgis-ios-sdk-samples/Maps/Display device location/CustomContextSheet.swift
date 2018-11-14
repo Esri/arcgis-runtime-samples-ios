@@ -223,14 +223,16 @@ class CustomContextSheet: UIView {
                                     }
                                     weakSelf.labelsCollection[i].alpha = 1
                                     weakSelf.layoutIfNeeded()
-                                })
+                                }
+                            )
                         }
                     }
                 },
                 completion: { [weak self] (finished: Bool) -> Void in
                     self?.isAnimating = false
                     self?.isButtonPressed = true
-                })
+                }
+            )
             
         }
     }
@@ -261,7 +263,8 @@ class CustomContextSheet: UIView {
                                     }
                                     weakSelf.labelsCollection[count - 1 - i].alpha = 0
                                     weakSelf.layoutIfNeeded()
-                                })
+                                }
+                            )
                         }
                     }
                 },
@@ -272,7 +275,8 @@ class CustomContextSheet: UIView {
                         button.isHidden = true
                     }
                     self?.updateSelectionButton(self!.selectedIndex)
-                })
+                }
+            )
         }
     }
     

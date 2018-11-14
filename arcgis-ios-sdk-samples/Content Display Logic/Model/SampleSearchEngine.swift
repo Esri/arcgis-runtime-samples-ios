@@ -158,9 +158,7 @@ class SampleSearchEngine {
     private func samplesForDisplayNames(_ names: [String]) -> [Sample] {
         // preserve order
         return names.compactMap { (name) -> Sample? in
-            return samples.first(where: { (sample) -> Bool in
-                sample.name == name
-            })
+            return samples.first { $0.name == name }
         }
     }
     

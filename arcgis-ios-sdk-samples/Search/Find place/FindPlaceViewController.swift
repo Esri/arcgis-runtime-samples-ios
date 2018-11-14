@@ -143,7 +143,8 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
                 completion: { [weak self] (finished) -> Void in
                     self?.isTableViewAnimating = false
                     self?.isTableViewVisible = expand
-                })
+                }
+            )
         }
     }
     
@@ -441,7 +442,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
                 self.geocodeUsingSuggestResult(self.selectedSuggestResult, completion: { [weak self] () -> Void in
                     //find the POIs wrt location
                     self?.geocodePOIs(poi, location: self!.preferredSearchLocation, extent: nil)
-                    })
+                })
             } else {
                 self.geocodePOIs(poi, location: self.preferredSearchLocation, extent: nil)
             }

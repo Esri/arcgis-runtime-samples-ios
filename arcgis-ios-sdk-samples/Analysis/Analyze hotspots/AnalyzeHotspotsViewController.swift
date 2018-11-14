@@ -80,8 +80,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
             if let error = error {
                 //show error
                 self.presentAlert(error: error)
-            }
-            else {
+            } else {
                 //a map image layer is generated as a result
                 //remove any layer previously added to the map
                 self.mapView.map?.operationalLayers.removeAllObjects()

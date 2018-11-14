@@ -128,8 +128,7 @@ class OfflineEditingViewController: UIViewController {
             serviceModeToolbar.isHidden = false
             instructionsLabel.isHidden = true
             barButtonItem.title = "Generate geodatabase"
-        }
-        else {
+        } else {
             serviceModeToolbar.isHidden = true
             updateLabelWithEdits()
         }
@@ -203,8 +202,7 @@ class OfflineEditingViewController: UIViewController {
                 }
             }
             print("Deleted all local data")
-        }
-        catch {
+        } catch {
             print(error)
         }
     }
@@ -236,8 +234,7 @@ class OfflineEditingViewController: UIViewController {
             
             if let error = error {
                 print(error)
-            }
-            else {
+            } else {
                 
                 self.liveMode = false
                 
@@ -272,8 +269,7 @@ class OfflineEditingViewController: UIViewController {
             
             //update to done button
             barButtonItem.title = "Done"
-        }
-        else if barButtonItem.title == "Done" {
+        } else if barButtonItem.title == "Done" {
             //hide extent view
             extentView.isHidden = true
             
@@ -287,8 +283,7 @@ class OfflineEditingViewController: UIViewController {
             barButtonItem.title = "Download"
             
             featureLayersVC?.featureLayerInfos = syncTask?.featureServiceInfo?.layerInfos ?? []
-        }
-        else {
+        } else {
             
             guard let featureLayersVC = featureLayersVC else {
                 return
@@ -357,8 +352,7 @@ class OfflineEditingViewController: UIViewController {
             
             if let error = error {
                 self.presentAlert(error: error)
-            }
-            else if let geodatabase = object as? AGSGeodatabase {
+            } else if let geodatabase = object as? AGSGeodatabase {
                 //save a reference to the geodatabase
                 self.generatedGeodatabase = geodatabase
                 //add the layers from geodatabase
@@ -382,8 +376,7 @@ class OfflineEditingViewController: UIViewController {
             alert.addAction(noAction)
             alert.addAction(yesAction)
             self.present(alert, animated: true, completion: nil)
-        }
-        else {
+        } else {
             switchToServiceMode()
         }
     }
@@ -424,8 +417,7 @@ class OfflineEditingViewController: UIViewController {
             
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self?.updateUI()
             }
             
@@ -469,8 +461,7 @@ extension OfflineEditingViewController: AGSGeoViewTouchDelegate {
             
             if let error = error {
                 self.presentAlert(error: error)
-            }
-            else if let results = results {
+            } else if let results = results {
                 var popups = [AGSPopup]()
                 for result in results {
                     for geoElement in result.geoElements {
@@ -482,8 +473,7 @@ extension OfflineEditingViewController: AGSGeoViewTouchDelegate {
                     self.popupsVC = popupsVC
                     popupsVC.delegate = self
                     self.present(popupsVC, animated: true, completion: nil)
-                }
-                else {
+                } else {
                     self.presentAlert(message: "No features selected")
                 }
             }
@@ -552,13 +542,11 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
                 
                 if let error = error {
                     self?.presentAlert(error: error)
-                }
-                else {
+                } else {
                     self?.presentAlert(message: "Edits applied successfully")
                 }
             }
-        }
-        else {
+        } else {
             //update edit count and enable/disable sync button otherwise
             updateUI()
         }

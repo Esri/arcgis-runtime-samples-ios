@@ -38,8 +38,7 @@ class RasterFunctionServiceViewController: UIViewController {
         imageServiceRaster?.load { [weak self] (error) in
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 // Set map view's viewpoint to the image service raster's full extent
                 if let center = self?.imageServiceRaster?.serviceInfo?.fullExtent?.center {
                     self?.mapView.setViewpoint(AGSViewpoint(center: center, scale: 58000000.0))

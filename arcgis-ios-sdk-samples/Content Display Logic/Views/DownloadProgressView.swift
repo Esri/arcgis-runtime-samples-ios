@@ -132,11 +132,9 @@ class DownloadProgressView: UIView {
         
         if progress > 1 {
            self.progress = 1
-        }
-        else if progress < 0 {
+        } else if progress < 0 {
             self.progress = 0
-        }
-        else {
+        } else {
             self.progress = progress
         }
         
@@ -152,8 +150,7 @@ class DownloadProgressView: UIView {
             self.shapeLayer.strokeEnd = self.progress
             
             self.shapeLayer.add(animation, forKey: "strokeEnd")
-        }
-        else {
+        } else {
             self.shapeLayer.strokeEnd = self.progress
         }
         

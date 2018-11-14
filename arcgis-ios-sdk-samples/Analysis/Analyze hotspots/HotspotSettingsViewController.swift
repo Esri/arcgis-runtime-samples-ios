@@ -64,8 +64,7 @@ class HotspotSettingsViewController: UIViewController, UITextFieldDelegate {
         
         if !self.toTextField.text!.isEmpty && !self.fromTextField.text!.isEmpty {
             self.delegate?.hotspotSettingsViewController(self, didSelectDates: self.fromTextField.text!, toDate: self.toTextField.text!)
-        }
-        else {
+        } else {
             presentAlert(message: "Both dates are required")
         }
     }
@@ -77,12 +76,10 @@ class HotspotSettingsViewController: UIViewController, UITextFieldDelegate {
         if textField == self.fromTextField {
             self.datePicker.minimumDate = self.dateFormatter.date(from: "1998-01-01")
             self.datePicker.maximumDate = self.dateFormatter.date(from: "1998-05-29")
-        }
-        else {
+        } else {
             if let dateString = self.fromTextField.text, !dateString.isEmpty {
                 self.datePicker.minimumDate = self.dateFormatter.date(from: dateString)?.addingTimeInterval(2 * 60 * 60 * 24)
-            }
-            else {
+            } else {
                 self.datePicker.minimumDate = self.dateFormatter.date(from: "1998-01-01")
             }
             self.datePicker.maximumDate = self.dateFormatter.date(from: "1998-05-31")

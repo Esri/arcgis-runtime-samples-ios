@@ -40,8 +40,7 @@ class FeatureLayerGDBViewController: UIViewController {
         self.geodatabase.load { [weak self] (error: Error?) in
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 let featureTable = self!.geodatabase.geodatabaseFeatureTable(withName: "Trailheads")!
                 let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                 self?.mapView.map?.operationalLayers.add(featureLayer)

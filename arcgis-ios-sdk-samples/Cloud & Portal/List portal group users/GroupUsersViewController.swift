@@ -60,15 +60,13 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
             if let error = error {
                 //show error
                 self.presentAlert(error: error)
-            }
-            else {
+            } else {
                 //fetch users for the resulting group
                 if let groups = resultSet?.results as? [AGSPortalGroup],
                     let group = groups.first {
                     self.portalGroup = group
                     self.fetchGroupUsers()
-                }
-                else {
+                } else {
                     //show error that no groups found
                     self.presentAlert(message: "No groups found")
                 }
@@ -92,8 +90,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
             if let error = error {
                 //show error
                 self.presentAlert(error: error)
-            }
-            else {
+            } else {
                 
                 //if there are users in the group
                 if let users = users,
@@ -108,8 +105,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
                     
                     //load all users before populating into table view
                     self.loadAllUsers()
-                }
-                else {
+                } else {
                     self.presentAlert(message: "No users found")
                 }
             }
@@ -129,8 +125,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
             if success {
                 //reload table view
                 self?.tableView.reloadData()
-            }
-            else {
+            } else {
                 self?.presentAlert(message: "Error while loading users data")
             }
         }

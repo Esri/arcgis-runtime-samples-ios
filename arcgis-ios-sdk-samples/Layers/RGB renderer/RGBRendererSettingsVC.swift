@@ -140,8 +140,7 @@ class RGBRendererSettingsVC: UITableViewController {
             stretchTypeCell = cell
             updateStretchTypeLabel()
             return cell
-        }
-        else {
+        } else {
             //load the rest of the cells based on the stretch type selected
             switch stretchType {
             case .minMax:

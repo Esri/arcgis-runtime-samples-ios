@@ -118,8 +118,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                     
                     if let error = error {
                         self?.presentAlert(error: error)
-                    }
-                    else {
+                    } else {
                         self?.generatedGeodatabase = object as? AGSGeodatabase
                         self?.displayLayersFromGeodatabase()
                     }
@@ -127,8 +126,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                     self?.activeJob = nil
                 })
                 
-            }
-            else {
+            } else {
                 print("Could not generate default parameters: \(error!)")
             }
         }
@@ -146,8 +144,7 @@ class GenerateGeodatabaseViewController: UIViewController {
 
             if let error = error {
                 self.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self.mapView.map?.operationalLayers.removeAllObjects()
                 
                 AGSLoadObjects(generatedGeodatabase.geodatabaseFeatureTables) { (success: Bool) in

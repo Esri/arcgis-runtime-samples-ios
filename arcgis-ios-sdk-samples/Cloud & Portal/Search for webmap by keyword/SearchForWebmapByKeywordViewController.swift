@@ -104,13 +104,11 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
                 if (error as NSError).code != NSUserCancelledError {
                     print(error.localizedDescription)
                 }
-            }
-            else {
+            } else {
                 //if our results are an array of portal items, set it on our web maps collection ViewController
                 if let portalItems = resultSet?.results as? [AGSPortalItem] {
                     self?.resultPortalItems = portalItems
-                }
-                else {
+                } else {
                     self?.resultPortalItems = []
                 }
             }
@@ -150,14 +148,12 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         
         if let image = portalItem.thumbnail?.image {
             cell.thumbnail.image = image
-        }
-        else {
+        } else {
             cell.thumbnail.image = UIImage(named: "Placeholder")
             portalItem.thumbnail?.load(completion: {[weak self] (error: Error?) -> Void in
                 if let error = error {
                     print("Error downloading thumbnail :: \(error.localizedDescription)")
-                }
-                else {
+                } else {
                     self?.collectionView.reloadItems(at: [indexPath])
                 }
             })
@@ -174,8 +170,7 @@ extension SearchForWebmapByKeywordViewController: UISearchResultsUpdating {
         if let query = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),
             !query.isEmpty {
             startWebMapSearch(query: query)
-        }
-        else {
+        } else {
             lastQueryCancelable?.cancel()
             resultPortalItems = []
         }

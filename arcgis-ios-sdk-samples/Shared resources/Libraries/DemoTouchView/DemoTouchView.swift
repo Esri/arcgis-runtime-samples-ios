@@ -252,6 +252,7 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         add(opacityAnimation, forKey: "opacityAnimation")
     }
     
+    @available(*, unavailable)
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -362,6 +363,7 @@ private class TouchView: UIView {
         layer.cornerRadius = size.width / 2.0
     }
 
+    @available(*, unavailable)
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

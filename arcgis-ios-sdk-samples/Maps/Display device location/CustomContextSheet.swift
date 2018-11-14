@@ -60,14 +60,17 @@ class CustomContextSheet: UIView {
         self.setup()
     }
 
+    @available(*, unavailable)
     init() {
         fatalError("init() has not been implemented")
     }
     
+    @available(*, unavailable)
     override init(frame: CGRect) {
         fatalError("init(frame:) has not been implemented")
     }
     
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

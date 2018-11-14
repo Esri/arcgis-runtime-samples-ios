@@ -15,9 +15,6 @@
 import UIKit
 import ArcGIS
 
-private let observerZMin = 20.0
-private let observerZMax = 1500.0
-
 class LineOfSightGeoElementViewController: UIViewController {
     
     @IBOutlet weak var sceneView: AGSSceneView!
@@ -35,10 +32,13 @@ class LineOfSightGeoElementViewController: UIViewController {
     private let taxiGraphic: AGSGraphic
     private let observerGraphic: AGSGraphic
     private let lineOfSight: AGSGeoElementLineOfSight
+    
+    private let observerZMin = 20.0
+    private let observerZMax = 1500.0
+    
+    private let observerPoint: AGSPoint
 
     // locations used in the sample
-    private let observerPoint = AGSPoint(x: -73.984988, y: 40.748131, z: observerZMin, spatialReference: .wgs84())
-
     private let streetIntersectionLocations = [
         AGSPoint(x: -73.985068, y: 40.747786, spatialReference: .wgs84()),
         AGSPoint(x: -73.983452, y: 40.747091, spatialReference: .wgs84()),
@@ -58,6 +58,8 @@ class LineOfSightGeoElementViewController: UIViewController {
         // ====================================
         // set up the scene, layers and overlay
         // ====================================
+        
+        observerPoint = AGSPoint(x: -73.984988, y: 40.748131, z: observerZMin, spatialReference: .wgs84())
 
         // initialize the scene with an imagery basemap
         scene = AGSScene(basemap: .imageryWithLabels())

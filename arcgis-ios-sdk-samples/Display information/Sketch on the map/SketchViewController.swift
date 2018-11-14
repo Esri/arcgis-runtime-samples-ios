@@ -35,7 +35,7 @@ class SketchViewController: UIViewController {
         self.map = AGSMap(basemap: .lightGrayCanvas())
         
         self.sketchEditor = AGSSketchEditor()
-        self.mapView.sketchEditor =  self.sketchEditor
+        self.mapView.sketchEditor = self.sketchEditor
         
         self.sketchEditor.start(with: nil, creationMode: .polyline)
         

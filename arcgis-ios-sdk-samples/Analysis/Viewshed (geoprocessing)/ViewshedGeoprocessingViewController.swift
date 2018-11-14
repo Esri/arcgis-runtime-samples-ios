@@ -44,7 +44,7 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
         let renderer = AGSSimpleRenderer(symbol: pointSymbol)
         self.inputGraphicsOverlay.renderer = renderer
         
-        let fillColor = UIColor(red: 226/255.0, green: 119/255.0, blue: 40/255.0, alpha: 120/255.0)
+        let fillColor = UIColor(red: 226 / 255.0, green: 119 / 255.0, blue: 40 / 255.0, alpha: 120 / 255.0)
         let fillSymbol = AGSSimpleFillSymbol(style: .solid, color: fillColor, outline: nil)
         self.resultGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: fillSymbol)
         

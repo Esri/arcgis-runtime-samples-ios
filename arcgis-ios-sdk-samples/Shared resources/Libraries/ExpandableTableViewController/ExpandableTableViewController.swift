@@ -139,7 +139,7 @@ class ExpandableTableViewController: UITableViewController {
     
     @objc func sectionHeaderWasTouched(_ sender: UITapGestureRecognizer) {
         let headerView = sender.view as! UITableViewHeaderFooterView
-        let section    = headerView.tag
+        let section = headerView.tag
         let eImageView = headerView.viewWithTag(kHeaderSectionTag + section) as? UIImageView
         
         if expandedSectionHeaderNumber == -1 {

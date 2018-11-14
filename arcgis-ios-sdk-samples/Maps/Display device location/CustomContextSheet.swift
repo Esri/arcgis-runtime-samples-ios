@@ -101,7 +101,7 @@ class CustomContextSheet: UIView {
         }
         
         //other buttons
-        for i in 0...self.images.count-1 {
+        for i in 0..<images.count {
             
             let button = self.button(self.images[i], highlightImage: self.highlightImages?[i], action: #selector(CustomContextSheet.valueChanged(_:)))
             button.isHidden = true
@@ -134,7 +134,7 @@ class CustomContextSheet: UIView {
         if highlightImage != nil {
             button.setImage(UIImage(named: highlightImage!), for: .highlighted)
         }
-        button.layer.cornerRadius = self.buttonSize/2
+        button.layer.cornerRadius = self.buttonSize / 2
         button.layer.masksToBounds = true
         button.addTarget(self, action: action, for: .touchUpInside)
         return button
@@ -203,24 +203,31 @@ class CustomContextSheet: UIView {
             
             let constraints = self.centerYConstraints
             
-            UIView.animateKeyframes(withDuration: self.animationDuration, delay: 0, options: [], animations: { [weak self] () -> Void in
-                if let weakSelf = self {
-                    let count = constraints.count
-                    for i in 0...count-1 {
-                        UIView.addKeyframe(withRelativeStartTime: Double(i)/Double(count), relativeDuration: 1/Double(count), animations: { () -> Void in
-                            for j in i...count-1 {
-                                let layout = constraints[j]
-                                layout.constant -= weakSelf.buttonDisplacement
-                            }
-                            weakSelf.labelsCollection[i].alpha = 1
-                            weakSelf.layoutIfNeeded()
-                        })
+            UIView.animateKeyframes(
+                withDuration: self.animationDuration,
+                delay: 0,
+                animations: { [weak self] () -> Void in
+                    if let weakSelf = self {
+                        let count = constraints.count
+                        for i in 0..<count {
+                            UIView.addKeyframe(
+                                withRelativeStartTime: Double(i) / Double(count),
+                                relativeDuration: 1 / Double(count),
+                                animations: { () -> Void in
+                                    for j in i..<count {
+                                        let layout = constraints[j]
+                                        layout.constant -= weakSelf.buttonDisplacement
+                                    }
+                                    weakSelf.labelsCollection[i].alpha = 1
+                                    weakSelf.layoutIfNeeded()
+                                })
+                        }
                     }
-                }
-            }, completion: { [weak self] (finished: Bool) -> Void in
-                self?.isAnimating = false
-                self?.isButtonPressed = true
-            })
+                },
+                completion: { [weak self] (finished: Bool) -> Void in
+                    self?.isAnimating = false
+                    self?.isButtonPressed = true
+                })
             
         }
     }
@@ -234,29 +241,35 @@ class CustomContextSheet: UIView {
             
             let constraints = self.centerYConstraints
             
-            UIView.animateKeyframes(withDuration: self.animationDuration, delay: 0, options: [], animations: { [weak self] () -> Void in
-                if let weakSelf = self {
-                    let count = constraints.count
-                    for i in 0...count-1 {
-                        UIView.addKeyframe(withRelativeStartTime: Double(i)/Double(count), relativeDuration: 1/Double(count), animations: { () -> Void in
-                            for j in (count - 1 - i)...count-1 {
-                                let layout = constraints[j]
-                                layout.constant += weakSelf.buttonDisplacement
-                            }
-                            weakSelf.labelsCollection[count - 1 - i].alpha = 0
-                            weakSelf.layoutIfNeeded()
-                        })
+            UIView.animateKeyframes(
+                withDuration: self.animationDuration,
+                delay: 0,
+                animations: { [weak self] () -> Void in
+                    if let weakSelf = self {
+                        let count = constraints.count
+                        for i in 0..<count {
+                            UIView.addKeyframe(
+                                withRelativeStartTime: Double(i) / Double(count),
+                                relativeDuration: 1 / Double(count),
+                                animations: { () -> Void in
+                                    for j in (count - 1 - i)...count - 1 {
+                                        let layout = constraints[j]
+                                        layout.constant += weakSelf.buttonDisplacement
+                                    }
+                                    weakSelf.labelsCollection[count - 1 - i].alpha = 0
+                                    weakSelf.layoutIfNeeded()
+                                })
+                        }
                     }
-                    
-                }
-            }, completion: { [weak self] (finished: Bool) -> Void in
-                self?.isAnimating = false
-                self?.isButtonPressed = false
-                for button in self!.buttonsCollection {
-                    button.isHidden = true
-                }
-                self?.updateSelectionButton(self!.selectedIndex)
-            })
+                },
+                completion: { [weak self] (finished: Bool) -> Void in
+                    self?.isAnimating = false
+                    self?.isButtonPressed = false
+                    for button in self!.buttonsCollection {
+                        button.isHidden = true
+                    }
+                    self?.updateSelectionButton(self!.selectedIndex)
+                })
         }
     }
     
@@ -296,7 +309,7 @@ class CustomContextSheet: UIView {
         
         let radius = (x * x + y * y).squareRoot()
         self.maskLayer = CAShapeLayer()
-        self.maskLayer.frame = CGRect(x: bounds.midX-radius, y: bounds.midY-radius, width: radius*2, height: radius*2)
+        self.maskLayer.frame = CGRect(x: bounds.midX - radius, y: bounds.midY - radius, width: radius * 2, height: radius * 2)
 
         let path = CGPath(ellipseIn: self.maskLayer.bounds, transform: nil)
         self.maskLayer.path = path

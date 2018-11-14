@@ -112,7 +112,7 @@ class OfflineEditingViewController: UIViewController {
         let frame = mapView.convert(extentView.frame, from: view)
         
         let minPoint = mapView.screen(toLocation: frame.origin)
-        let maxPoint = mapView.screen(toLocation: CGPoint(x: frame.origin.x+frame.width, y: frame.origin.y+frame.height))
+        let maxPoint = mapView.screen(toLocation: CGPoint(x: frame.origin.x + frame.width, y: frame.origin.y + frame.height))
         let extent = AGSEnvelope(min: minPoint, max: maxPoint)
         return extent
     }

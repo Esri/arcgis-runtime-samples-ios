@@ -32,7 +32,7 @@ class SaveAsViewController: UIViewController {
         
         //stylize description textView
         self.descriptionTextView.layer.cornerRadius = 5
-        self.descriptionTextView.layer.borderColor = UIColor(white: 193.0/255.0, alpha: 1.0).cgColor
+        self.descriptionTextView.layer.borderColor = UIColor(white: 193.0 / 255.0, alpha: 1.0).cgColor
         self.descriptionTextView.layer.borderWidth = 0.5
     }
     

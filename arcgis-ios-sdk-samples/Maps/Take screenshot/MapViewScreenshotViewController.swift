@@ -85,16 +85,19 @@ class MapViewScreenshotViewController: UIViewController {
         self.mapView.addSubview(flashView)
         
         //animate the white flash view on and off to show the flash effect
-        UIView.animate(withDuration: 0.3, animations: { () -> Void in
-            flashView.alpha = 0
-        }, completion: { [weak self] (finished) -> Void in
-            //On completion play the shutter sound
-            self?.playShutterSound()
-            flashView.removeFromSuperview()
-            //show the screenshot on screen
-            self?.overlayImageView.image = image
-            self?.showOverlayParentView()
-        })
+        UIView.animate(
+            withDuration: 0.3,
+            animations: { () -> Void in
+                flashView.alpha = 0
+            },
+            completion: { [weak self] (finished) -> Void in
+                //On completion play the shutter sound
+                self?.playShutterSound()
+                flashView.removeFromSuperview()
+                //show the screenshot on screen
+                self?.overlayImageView.image = image
+                self?.showOverlayParentView()
+            })
     }
     
     //to play the shutter sound once the screenshot is taken

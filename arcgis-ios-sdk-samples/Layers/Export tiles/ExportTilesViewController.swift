@@ -66,7 +66,7 @@ class ExportTilesViewController: UIViewController {
         let frame = self.mapView.convert(self.extentView.frame, from: self.view)
         
         let minPoint = self.mapView.screen(toLocation: frame.origin)
-        let maxPoint = self.mapView.screen(toLocation: CGPoint(x: frame.origin.x+frame.width, y: frame.origin.y+frame.height))
+        let maxPoint = self.mapView.screen(toLocation: CGPoint(x: frame.origin.x + frame.width, y: frame.origin.y + frame.height))
         let extent = AGSEnvelope(min: minPoint, max: maxPoint)
         return extent
     }

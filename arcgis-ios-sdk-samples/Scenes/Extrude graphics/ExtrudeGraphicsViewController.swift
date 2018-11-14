@@ -87,7 +87,7 @@ class ExtrudeGraphicsViewController: UIViewController {
     private func polygonForStartingPoint(_ point: AGSPoint) -> AGSPolygon {
         let polygon = AGSPolygonBuilder(spatialReference: .wgs84())
         polygon.addPointWith(x: point.x, y: point.y)
-        polygon.addPointWith(x: point.x, y: point.y+squareSize)
+        polygon.addPointWith(x: point.x, y: point.y + squareSize)
         polygon.addPointWith(x: point.x + squareSize, y: point.y + squareSize)
         polygon.addPointWith(x: point.x + squareSize, y: point.y)
         return polygon.toGeometry()

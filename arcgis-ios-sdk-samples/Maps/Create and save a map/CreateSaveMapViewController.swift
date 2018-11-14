@@ -19,11 +19,11 @@ extension UIImage {
     
     func croppedImage(_ size: CGSize) -> UIImage {
         //calculate rect based on input size
-        let originX = (self.size.width - size.width)/2
-        let originY = (self.size.height - size.height)/2
+        let originX = (self.size.width - size.width) / 2
+        let originY = (self.size.height - size.height) / 2
         
         let scale = UIScreen.main.scale
-        let rect = CGRect(x: originX*scale, y: originY*scale, width: size.width*scale, height: size.height*scale)
+        let rect = CGRect(x: originX * scale, y: originY * scale, width: size.width * scale, height: size.height * scale)
         
         //crop image
         let croppedCGImage = self.cgImage!.cropping(to: rect)!

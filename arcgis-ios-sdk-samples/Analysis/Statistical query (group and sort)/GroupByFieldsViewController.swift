@@ -27,8 +27,8 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet private var tableNavigationItem: UINavigationItem!
     
     // List of fields and selected fields
-    public var fieldNames = [String]()
-    public var selectedFieldNames = [String]()
+    var fieldNames = [String]()
+    var selectedFieldNames = [String]()
     
     // Delegate
     weak var delegate: GroupByFieldsViewControllerDelegate?

@@ -135,12 +135,15 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         if (expand != self.isTableViewVisible) && !self.isTableViewAnimating {
             self.isTableViewAnimating = true
             self.tableViewHeightConstraint.constant = expand ? self.tableViewHeight : 0
-            UIView.animate(withDuration: 0.1, animations: { [weak self] () -> Void in
-                self?.view.layoutIfNeeded()
-            }, completion: { [weak self] (finished) -> Void in
-                self?.isTableViewAnimating = false
-                self?.isTableViewVisible = expand
-            })
+            UIView.animate(
+                withDuration: 0.1,
+                animations: { [weak self] () -> Void in
+                    self?.view.layoutIfNeeded()
+                },
+                completion: { [weak self] (finished) -> Void in
+                    self?.isTableViewAnimating = false
+                    self?.isTableViewVisible = expand
+                })
         }
     }
     
@@ -172,8 +175,8 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     private func graphicForPoint(_ point: AGSPoint, attributes: [String: AnyObject]?) -> AGSGraphic {
         let markerImage = UIImage(named: "RedMarker")!
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
-        symbol.leaderOffsetY = markerImage.size.height/2
-        symbol.offsetY = markerImage.size.height/2
+        symbol.leaderOffsetY = markerImage.size.height / 2
+        symbol.offsetY = markerImage.size.height / 2
         let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: attributes)
         return graphic
     }

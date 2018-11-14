@@ -94,8 +94,8 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
     private func graphicForPoint(_ point: AGSPoint) -> AGSGraphic {
         let markerImage = UIImage(named: "RedMarker")!
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
-        symbol.leaderOffsetY = markerImage.size.height/2
-        symbol.offsetY = markerImage.size.height/2
+        symbol.leaderOffsetY = markerImage.size.height / 2
+        symbol.offsetY = markerImage.size.height / 2
         let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: [String: AnyObject]())
         return graphic
     }

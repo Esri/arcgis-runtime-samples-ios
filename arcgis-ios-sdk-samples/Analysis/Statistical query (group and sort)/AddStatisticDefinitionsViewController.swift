@@ -40,7 +40,7 @@ class AddStatisticDefinitionsViewController: UITableViewController {
     }
     var statisticType: AGSStatisticType = .average {
         didSet {
-            statisticTypeCell.detailTextLabel?.text =  statisticTypes[statisticType.rawValue]
+            statisticTypeCell.detailTextLabel?.text = statisticTypes[statisticType.rawValue]
         }
     }
 

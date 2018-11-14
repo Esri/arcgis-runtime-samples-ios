@@ -59,8 +59,7 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
             if sender.value > maxScaleLevelSlider.value {
                 sender.value = maxScaleLevelSlider.value
             }
-        }
-        else if sender == maxScaleLevelSlider {
+        } else if sender == maxScaleLevelSlider {
             // Disallow a max value less than the minimum
             if sender.value < minScaleLevelSlider.value {
                 sender.value = minScaleLevelSlider.value
@@ -78,14 +77,11 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
         if let text = numberFormatter.string(from: slider.value as NSNumber) {
             if slider == minScaleLevelSlider {
                 minScaleLevelLabel.text = text
-            }
-            else if slider == maxScaleLevelSlider {
+            } else if slider == maxScaleLevelSlider {
                 maxScaleLevelLabel.text = text
-            }
-            else if slider == basemapExtentBufferSlider {
+            } else if slider == basemapExtentBufferSlider {
                 extentBufferLabel.text = text
-            }
-            else if slider == minHydrantFlowRateSlider {
+            } else if slider == minHydrantFlowRateSlider {
                 minHydrantFlowRateLabel.text = text
             }
         }

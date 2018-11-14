@@ -97,8 +97,7 @@ class ListKMLContentsSceneViewController: UIViewController {
                     
                     // set the viewpoint for the node
                     sceneView.setViewpoint(nodeViewpoint)
-                }
-                else {
+                } else {
                     // this node has no viewpoint so hide the scene view, showing the info text
                     sceneView.isHidden = true
                 }
@@ -181,8 +180,7 @@ class ListKMLContentsSceneViewController: UIViewController {
                 // only the camera parameter is used by the scene
                 return AGSViewpoint(targetExtent: extent, camera: camera)
                 
-            }
-            else {
+            } else {
                 // expand the extent to give some margins when framing the node
                 let bufferRadius = max(extent.width, extent.height) / 20
                 let bufferedExtent = AGSEnvelope(xMin: extent.xMin - bufferRadius,

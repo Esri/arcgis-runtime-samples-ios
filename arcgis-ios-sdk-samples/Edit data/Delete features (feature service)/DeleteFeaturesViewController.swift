@@ -61,8 +61,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.featureTable.delete(feature) { [weak self] (error: Error?) -> Void in
             if let error = error {
                 print("Error while deleting feature : \(error.localizedDescription)")
-            }
-            else {
+            } else {
                 self?.applyEdits()
             }
         }
@@ -72,8 +71,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.featureTable.applyEdits { (featureEditResults: [AGSFeatureEditResult]?, error: Error?) -> Void in
             if let error = error {
                 self.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
-            }
-            else {
+            } else {
                 if let featureEditResults = featureEditResults,
                     featureEditResults.first?.completedWithErrors == false {
                     self.presentAlert(message: "Edits applied successfully")
@@ -95,8 +93,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
             if let error = identifyLayerResult.error {
                 print(error)
-            }
-            else if let features = identifyLayerResult.geoElements as? [AGSFeature],
+            } else if let features = identifyLayerResult.geoElements as? [AGSFeature],
                 let feature = features.first {
                 //show callout for the first feature
                 self?.showCallout(for: feature, at: mapPoint)

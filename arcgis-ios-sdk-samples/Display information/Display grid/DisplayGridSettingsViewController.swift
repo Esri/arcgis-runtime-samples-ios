@@ -125,8 +125,7 @@ class DisplayGridSettingsViewController: UITableViewController {
             labelFormatCell?.detailTextLabel?.text = labelFormatLabels[grid.labelFormat.rawValue]
             labelFormatCell?.detailTextLabel?.isEnabled = true
             labelFormatCell?.selectionStyle = .default
-        }
-        else {
+        } else {
             labelFormatCell?.detailTextLabel?.text = "N/A"
             labelFormatCell?.detailTextLabel?.isEnabled = false
             labelFormatCell?.selectionStyle = .none
@@ -139,8 +138,7 @@ class DisplayGridSettingsViewController: UITableViewController {
             labelUnitCell?.detailTextLabel?.text = labelUnitLabels[labelUnitID]
             labelUnitCell?.detailTextLabel?.isEnabled = true
             labelUnitCell?.selectionStyle = .default
-        }
-        else {
+        } else {
             labelUnitCell?.detailTextLabel?.text = "N/A"
             labelUnitCell?.detailTextLabel?.isEnabled = false
             labelUnitCell?.selectionStyle = .none
@@ -283,8 +281,7 @@ class DisplayGridSettingsViewController: UITableViewController {
                 let optionsViewController = OptionsTableViewController(labels: labelUnitLabels, selectedIndex: selectedIndex) { (newIndex) in
                     if let grid = self.mapView?.grid as? AGSMGRSGrid {
                         grid.labelUnit = AGSMGRSGridLabelUnit(rawValue: newIndex)!
-                    }
-                    else if let grid = self.mapView?.grid as? AGSUSNGGrid {
+                    } else if let grid = self.mapView?.grid as? AGSUSNGGrid {
                         grid.labelUnit = AGSUSNGGridLabelUnit(rawValue: newIndex)!
                     }
                     self.updateLabelUnitUI()

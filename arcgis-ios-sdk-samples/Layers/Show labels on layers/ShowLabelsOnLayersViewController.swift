@@ -54,8 +54,7 @@ class ShowLabelsOnLayersViewController: UIViewController {
             
             // add the label definitions to the layer
             featureLayer.labelDefinitions.addObjects(from: [demDefinition, repDefinition])
-        }
-        catch {
+        } catch {
             presentAlert(error: error)
         }
     }
@@ -97,8 +96,7 @@ class ShowLabelsOnLayersViewController: UIViewController {
         let result = try AGSLabelDefinition.fromJSON(labelJSONObject)
         if let definition = result as? AGSLabelDefinition {
             return definition
-        }
-        else {
+        } else {
             throw ShowLabelsOnLayersError.withDescription("The JSON could not be read as a label definition.")
         }
     }

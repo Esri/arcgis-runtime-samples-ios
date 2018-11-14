@@ -154,8 +154,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
                 if (error as NSError).code != NSUserCancelledError {
                     self.presentAlert(error: error)
                 }
-            }
-            else if let result = result {
+            } else if let result = result {
                 self.offlineMapGenerationDidSucceed(with: result)
             }
         }

@@ -105,8 +105,7 @@ class StretchRendererSettingsVC: UITableViewController {
             stretchTypeCell = cell
             updateStretchTypeLabel()
             return cell
-        }
-        else {
+        } else {
             switch stretchType {
             case .minMax:
                 return tableView.dequeueReusableCell(withIdentifier: "MinMaxRow\(indexPath.row)", for: indexPath)

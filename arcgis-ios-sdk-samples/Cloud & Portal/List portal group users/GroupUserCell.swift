@@ -34,8 +34,7 @@ class GroupUserCell: UITableViewCell {
             if let thumbnail = portalUser.thumbnail {
                 if thumbnail.image != nil {
                     self.thumbnailImageView.image = thumbnail.image
-                }
-                else {
+                } else {
                     thumbnail.load { [weak self] (error: Error?) in
                         if error == nil {
                             self?.thumbnailImageView.image = thumbnail.image

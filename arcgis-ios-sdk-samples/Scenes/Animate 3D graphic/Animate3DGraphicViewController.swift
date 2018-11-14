@@ -198,8 +198,7 @@ class Animate3DGraphicViewController: UIViewController {
                                  roll: Measurement(value: Double(details[5])!, unit: UnitAngle.degrees))
                 }
             }
-        }
-        else {
+        } else {
             print("Mission file not found")
         }
     }
@@ -301,8 +300,7 @@ class Animate3DGraphicViewController: UIViewController {
         
         if isAnimating {
             animationTimer?.invalidate()
-        }
-        else {
+        } else {
             startAnimation()
         }
         
@@ -326,18 +324,15 @@ class Animate3DGraphicViewController: UIViewController {
             if traitCollection.horizontalSizeClass == .regular,
                 traitCollection.verticalSizeClass == .regular {
                 controller.preferredContentSize = CGSize(width: 300, height: 380)
-            }
-            else {
+            } else {
                 controller.preferredContentSize = CGSize(width: 300, height: 250)
             }
-        }
-        else if let planeStatsViewController = segue.destination as? PlaneStatsViewController {
+        } else if let planeStatsViewController = segue.destination as? PlaneStatsViewController {
             self.planeStatsViewController = planeStatsViewController
             
             //pop over settings
             planeStatsViewController.presentationController?.delegate = self
-        }
-        else if let navController = segue.destination as? UINavigationController,
+        } else if let navController = segue.destination as? UINavigationController,
             let controller = navController.viewControllers.first as? MissionSettingsViewController {
             
             self.missionSettingsViewController = controller

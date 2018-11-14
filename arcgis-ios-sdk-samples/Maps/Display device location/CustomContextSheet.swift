@@ -266,8 +266,7 @@ class CustomContextSheet: UIView {
     @objc func toggleButtons() {
         if self.isButtonPressed {
             self.hideButtons()
-        }
-        else {
+        } else {
             self.showButtons()
         }
     }
@@ -315,8 +314,7 @@ class CustomContextSheet: UIView {
         if fill {
             animation.fromValue = NSValue(caTransform3D: CATransform3DMakeScale(0.0001, 0.0001, 0.0001))
             animation.toValue = NSValue(caTransform3D: CATransform3DMakeScale(1, 1, 1))
-        }
-        else {
+        } else {
             animation.fromValue = NSValue(caTransform3D: CATransform3DMakeScale(1, 1, 1))
             animation.toValue = NSValue(caTransform3D: CATransform3DMakeScale(0.0001, 0.0001, 0.0001))
         }

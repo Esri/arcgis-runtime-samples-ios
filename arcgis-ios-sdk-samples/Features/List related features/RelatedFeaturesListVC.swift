@@ -45,8 +45,7 @@ class RelatedFeaturesListVC: UIViewController, UITableViewDataSource, UITableVie
         let result = self.results[section]
         if let tableName = result.relatedTable?.tableName {
             return "\(tableName)"
-        }
-        else {
+        } else {
             return "Related table \(section + 1)"
         }
     }

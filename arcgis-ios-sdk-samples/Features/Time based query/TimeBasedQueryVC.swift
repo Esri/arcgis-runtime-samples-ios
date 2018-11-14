@@ -75,8 +75,7 @@ class TimeBasedQueryVC: UIViewController {
             //check for error
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 //the resulting features should be displayed on the map
                 //you can print the count of features
                 print("Hurriance features during the time interval: \(result?.featureEnumerator().allObjects.count ?? 0)")

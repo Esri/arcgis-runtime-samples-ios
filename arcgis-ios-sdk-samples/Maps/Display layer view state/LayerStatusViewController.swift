@@ -134,8 +134,7 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         //else use a template
         if layer.loadStatus == .loaded {
             cell.textLabel?.text = layer.name
-        }
-        else {
+        } else {
             cell.textLabel?.text = "Layer \(indexPath.row)"
         }
         

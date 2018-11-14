@@ -69,8 +69,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
             
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else if let result = results?.first {
+            } else if let result = results?.first {
                 
                 //save the related features to display in the table view
                 self?.relatedFeatures = result.featureEnumerator().allObjects
@@ -103,8 +102,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
             
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 //apply edits
                 self?.applyEdits()
             }
@@ -128,8 +126,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
             
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 //apply edits
                 self?.applyEdits()
             }
@@ -153,8 +150,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
             if let error = error {
                 //show error
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 //query to update features
                 self?.queryRelatedFeatures()
             }

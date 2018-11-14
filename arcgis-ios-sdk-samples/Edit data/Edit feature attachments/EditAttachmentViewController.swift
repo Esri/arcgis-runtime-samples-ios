@@ -59,8 +59,7 @@ class EditAttachmentViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
             if let error = identifyLayerResult.error {
                 print(error)
-            }
-            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
+            } else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
                 let feature = features.first {
                 //show callout for the first feature
                 let title = feature.attributes["typdamage"] as! String
@@ -69,8 +68,7 @@ class EditAttachmentViewController: UIViewController, AGSGeoViewTouchDelegate, A
                 feature.fetchAttachments { (attachments: [AGSAttachment]?, error: Error?) -> Void in
                     if let error = error {
                         print(error)
-                    }
-                    else if let attachments = attachments {
+                    } else if let attachments = attachments {
                         let detail = "Number of attachments :: \(attachments.count)"
                         self?.mapView.callout.title = title
                         self?.mapView.callout.detail = detail

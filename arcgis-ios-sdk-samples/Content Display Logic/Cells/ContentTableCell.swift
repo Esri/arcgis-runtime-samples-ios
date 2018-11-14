@@ -36,8 +36,7 @@ class ContentTableCell: UITableViewCell {
             self.titleLabel.textColor = .white
             self.detailLabel.textColor = .white
             self.infoButton.tintColor = .white
-        }
-        else {
+        } else {
             self.parentView.backgroundColor = .white
             self.titleLabel.textColor = .primaryTextColor
             self.detailLabel.textColor = .secondaryTextColor
@@ -52,8 +51,7 @@ class ContentTableCell: UITableViewCell {
             self.titleLabel.textColor = .white
             self.detailLabel.textColor = .white
             self.infoButton.tintColor = .white
-        }
-        else {
+        } else {
             self.parentView.backgroundColor = .white
             self.titleLabel.textColor = .primaryTextColor
             self.detailLabel.textColor = .secondaryTextColor

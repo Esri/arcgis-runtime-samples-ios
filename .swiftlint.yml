@@ -17,7 +17,6 @@ disabled_rules: # rule identifiers to exclude from running
   - identifier_name
   - line_length
   - notification_center_detachment
-  - statement_position
   - todo
   - trailing_whitespace
   - type_body_length

@@ -40,8 +40,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
             
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self?.presentAlert(message: "Apply edits finished successfully")
                 self?.loadAttachments()
             }
@@ -60,8 +59,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
             
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self?.attachments = attachments
                 self?.tableView.reloadData()
             }
@@ -72,8 +70,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         self.feature.delete(attachment) { [weak self] (error: Error?) -> Void in
             if let error = error {
                 print(error)
-            }
-            else {
+            } else {
                 print("Attachment deleted")
                 self?.applyEdits()
             }
@@ -126,8 +123,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         attachment.fetchData { (data: Data?, error: Error?) -> Void in
             if let error = error {
                 print(error)
-            }
-            else if let data = data {
+            } else if let data = data {
                 let image = UIImage(data: data)
                 cell.imageView?.image = image
             }
@@ -152,8 +148,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
             
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self?.applyEdits()
             }
         }

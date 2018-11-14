@@ -51,8 +51,7 @@ class RasterLayerViewController: UIViewController {
             
             if let error = error {
                self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 if let center = self?.rasterLayer.fullExtent?.center {
                     self?.mapView.setViewpoint(AGSViewpoint(center: center, scale: 80000))
                 }

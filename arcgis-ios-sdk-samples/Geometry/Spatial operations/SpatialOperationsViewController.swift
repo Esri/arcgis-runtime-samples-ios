@@ -150,8 +150,7 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
                 self.graphicsOverlay.graphics.remove(self.resultGraphic)
                 self.resultGraphic = nil
             }
-        }
-        else {
+        } else {
             self.performOperation(index)
         }
     }

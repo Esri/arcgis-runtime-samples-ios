@@ -37,8 +37,7 @@ class SegmentedViewController: UIViewController {
         if segue.identifier == "SourceCodeSegue" {
             let controller = segue.destination as! SourceCodeViewController
             controller.filenames = filenames
-        }
-        else if segue.identifier == "SampleInfoSegue" {
+        } else if segue.identifier == "SampleInfoSegue" {
             let controller = segue.destination as! SampleInfoViewController
             controller.readmeURL = readmeURL
         }

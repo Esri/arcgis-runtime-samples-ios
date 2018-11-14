@@ -78,20 +78,17 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
             //accesory view
             if let index = self.selectedBasemapIndex, index == indexPath.row {
                 cell.accessoryType = .checkmark
-            }
-            else {
+            } else {
                 cell.accessoryType = .none
             }
-        }
-        else {
+        } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "CreateLayerCell", for: indexPath)
             let layer = self.layers[indexPath.row]
             cell.textLabel?.text = layer.name
             //accessory view
             if self.selectedLayersIndex.contains(indexPath.row) {
                 cell.accessoryType = .checkmark
-            }
-            else {
+            } else {
                 cell.accessoryType = .none
             }
         }
@@ -111,14 +108,12 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
                 indexPathArray.append(previousSelectionIndexPath)
             }
             self.selectedBasemapIndex = indexPath.row
-        }
-        else {
+        } else {
             //check if already selected
             if self.selectedLayersIndex.contains(indexPath.row) {
                 //remove the selection
                 self.selectedLayersIndex.remove(at: self.selectedLayersIndex.index(of: indexPath.row)!)
-            }
-            else {
+            } else {
                 self.selectedLayersIndex.append(indexPath.row)
             }
         }

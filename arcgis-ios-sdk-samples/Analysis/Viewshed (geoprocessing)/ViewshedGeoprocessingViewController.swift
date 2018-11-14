@@ -98,8 +98,7 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
             if let error = error {
                 //show error
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self?.performGeoprocessing(featureCollectionTable)
             }
         }
@@ -137,8 +136,7 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
                 if (error as NSError).code != NSUserCancelledError { //if not cancelled
                     self.presentAlert(error: error)
                 }
-            }
-            else {
+            } else {
                 //The service returns result in form of AGSGeoprocessingFeatures
                 //Cast the results and add the features from featureSet to graphics overlay
                 //in form of graphics

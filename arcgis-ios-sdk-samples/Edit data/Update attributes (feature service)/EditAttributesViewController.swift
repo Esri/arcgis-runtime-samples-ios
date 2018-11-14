@@ -69,8 +69,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
             
             if let error = error {
                 self.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self.presentAlert(message: "Edits applied successfully")
                 self.showCallout(self.selectedFeature, tapLocation: nil)
             }
@@ -90,8 +89,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
             if let error = identifyLayerResult.error {
                 print(error)
-            }
-            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
+            } else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
                 let feature = features.first {
                 //show callout for the first feature
                 self?.showCallout(feature, tapLocation: mapPoint)
@@ -132,8 +130,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
             
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self?.applyEdits()
             }
         }

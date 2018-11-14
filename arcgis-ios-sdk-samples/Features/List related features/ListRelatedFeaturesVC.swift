@@ -129,8 +129,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
             if let error = error {
                 //display error
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 //Show the related features found in popover
                 if let results = results,
                     !results.isEmpty {
@@ -138,8 +137,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
                     
                     //self?.performSegue(withIdentifier: "RelatedFeaturesSegue", sender: self)
                     self?.showRelatedFeatures()
-                }
-                else {  //else notify user
+                } else {  //else notify user
                     self?.presentAlert(message: "No related features found")
                 }
             }

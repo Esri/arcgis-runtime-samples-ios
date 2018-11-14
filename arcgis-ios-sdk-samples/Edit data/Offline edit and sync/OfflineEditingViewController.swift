@@ -75,6 +75,12 @@ class OfflineEditingViewController: UIViewController {
         //add online feature layers
         addFeatureLayers()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(OfflineEditingViewController.sketchChanged(_:)), name: .AGSSketchEditorGeometryDidChange, object: nil)
+    }
+    
+    deinit {
+        //remove self as observer for notifications
+        NotificationCenter.default.removeObserver(self, name: .AGSSketchEditorGeometryDidChange, object: nil)
     }
 
     // MARK: - Helper methods
@@ -206,7 +212,8 @@ class OfflineEditingViewController: UIViewController {
     @objc func sketchChanged(_ notification: Notification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the done bar button item
-        if let geometry = self.mapView.sketchEditor?.geometry, !geometry.isEmpty {
+        if let geometry = mapView.sketchEditor?.geometry,
+            !geometry.isEmpty {
             doneBBI.isEnabled = true
         }
     }
@@ -434,7 +441,6 @@ class OfflineEditingViewController: UIViewController {
         if let popupsVC = popupsVC {
              present(popupsVC, animated: true, completion: nil)
         }
-        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: - Navigation
@@ -521,7 +527,6 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
         //disable the done button until any geometry changes
         doneBBI.isEnabled = false
         
-        NotificationCenter.default.addObserver(self, selector: #selector(OfflineEditingViewController.sketchChanged(_:)), name: .AGSSketchEditorGeometryDidChange, object: nil)
     }
     
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, didFinishEditingFor popup: AGSPopup) {

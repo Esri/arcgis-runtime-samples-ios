@@ -50,6 +50,13 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
                 
         //hide the sketchToolbar initially
         self.sketchToolbar.isHidden = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(EditFeaturesOnlineViewController.sketchChanged(_:)), name: .AGSSketchEditorGeometryDidChange, object: nil)
+    }
+    
+    deinit {
+        //remove self as observer for notifications
+        NotificationCenter.default.removeObserver(self, name: .AGSSketchEditorGeometryDidChange, object: nil)
     }
     
     private func dismissFeatureTemplatePickerVC() {
@@ -141,7 +148,6 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //disable the done button until any geometry changes
         self.doneBBI.isEnabled = false
         
-        NotificationCenter.default.addObserver(self, selector: #selector(EditFeaturesOnlineViewController.sketchChanged(_:)), name: .AGSSketchEditorGeometryDidChange, object: nil)
     }
     
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, didCancelEditingFor popup: AGSPopup) {
@@ -179,8 +185,9 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     @objc func sketchChanged(_ notification: Notification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the sketchCompleteButton
-        if let geometry = self.mapView.sketchEditor?.geometry, !geometry.isEmpty {
-            self.doneBBI.isEnabled = true
+        if let geometry = mapView.sketchEditor?.geometry,
+            !geometry.isEmpty {
+            doneBBI.isEnabled = true
         }
     }
     
@@ -191,9 +198,6 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         
         //present the popups view controller again
         self.present(self.popupsVC, animated: true, completion: nil)
-        
-        //remove self as observer for notifications
-        NotificationCenter.default.removeObserver(self)
     }
     
     private func disableSketchEditor() {

@@ -39,11 +39,11 @@ class ListKMLContentsViewController: UITableViewController {
         // load the dataset asynchronously so we can list its contents
         kmlDataset.load {[weak self] (error) in
             
-            guard let self = self else{
+            guard let self = self else {
                 return
             }
             
-            guard error == nil else{
+            guard error == nil else {
                 // display the error as an alert
                 let alertController = UIAlertController(title: nil, message: error?.localizedDescription, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .default))
@@ -52,8 +52,8 @@ class ListKMLContentsViewController: UITableViewController {
             }
             
             self.flattenedNodes = []
-            func addNodes(_ nodes: [AGSKMLNode], level: Int){
-                for node in nodes{
+            func addNodes(_ nodes: [AGSKMLNode], level: Int) {
+                for node in nodes {
                     // some nodes are hidden by default, so set all to visible
                     node.isVisible = true
                     self.flattenedNodes.append((node, level))
@@ -66,7 +66,6 @@ class ListKMLContentsViewController: UITableViewController {
             // populate the outline view now that the data is loaded
             self.tableView.reloadData()
         }
-        
         
         // create the view controller to display the scene throught the sample
         let sceneViewController = storyboard!.instantiateViewController(withIdentifier: "ListKMLContentsSceneViewController") as! ListKMLContentsSceneViewController
@@ -111,7 +110,7 @@ class ListKMLContentsViewController: UITableViewController {
         }
     }
     
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return flattenedNodes.count
@@ -129,14 +128,14 @@ class ListKMLContentsViewController: UITableViewController {
         return cell
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // get the reusable view controller displaying the scene
         if let sceneViewController = sceneViewController,
             // if the view controller is not already presented
-             sceneViewController.presentingViewController == nil{
+             sceneViewController.presentingViewController == nil {
            
             /// The node for the selected row.
             let selectedNode = flattenedNodes[indexPath.row].node

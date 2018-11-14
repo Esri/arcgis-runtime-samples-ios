@@ -59,7 +59,7 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
         scene.baseSurface?.elevationSources.append(elevationSrc)
         
         // set the viewpoint specified by the camera position
-        let camera = AGSCamera(location: AGSPoint(x: -73.0815, y: -49.3272, z: 4059, spatialReference: AGSSpatialReference.wgs84()), heading: 11, pitch: 62, roll: 0)
+        let camera = AGSCamera(location: AGSPoint(x: -73.0815, y: -49.3272, z: 4059, spatialReference: .wgs84()), heading: 11, pitch: 62, roll: 0)
         sceneView.setViewpointCamera(camera)
         
         // set touch delegate on scene view as self
@@ -73,7 +73,7 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         // user tapped to place Line of Sight observer. Create Line of Sight analysis if need be
-        if (lineOfSight == nil) {
+        if lineOfSight == nil {
             // set initial Line of Sight analysis with tapped point
             lineOfSight = AGSLocationLineOfSight(observerLocation: mapPoint, targetLocation: mapPoint)
         } else {

@@ -17,13 +17,13 @@ import ArcGIS
 
 class BookmarksListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var tableView:UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     //list of bookmarks
-    var bookmarks:[AGSBookmark]!
+    var bookmarks: [AGSBookmark]!
     
     //private property to store selection action for table cell
-    private var selectAction:((AGSViewpoint) -> Void)!
+    private var selectAction: ((AGSViewpoint) -> Void)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class BookmarksListViewController: UIViewController, UITableViewDataSource, UITa
         self.selectAction = action
     }
     
-    //MARK: - TableView data source
+    // MARK: - TableView data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -45,7 +45,7 @@ class BookmarksListViewController: UIViewController, UITableViewDataSource, UITa
         return self.bookmarks?.count ?? 0
     }
     
-    //MARK: - TableView delegates
+    // MARK: - TableView delegates
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookmarkCell", for: indexPath)

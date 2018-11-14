@@ -17,14 +17,14 @@ import ArcGIS
 
 class EditAttachmentViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    private var map:AGSMap!
-    private var featureTable:AGSServiceFeatureTable!
-    private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancelable!
+    private var map: AGSMap!
+    private var featureTable: AGSServiceFeatureTable!
+    private var featureLayer: AGSFeatureLayer!
+    private var lastQuery: AGSCancelable!
     
-    private var selectedFeature:AGSArcGISFeature!
+    private var selectedFeature: AGSArcGISFeature!
     private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
@@ -35,7 +35,7 @@ class EditAttachmentViewController: UIViewController, AGSGeoViewTouchDelegate, A
         
         self.map = AGSMap(basemap: .oceans())
         //set initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -471534.03, y: 7297552.03, spatialReference: AGSSpatialReference.webMercator()), scale: 6e6)
+        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -471534.03, y: 7297552.03, spatialReference: .webMercator()), scale: 6e6)
         
         self.featureTable = AGSServiceFeatureTable(url: URL(string: FEATURE_SERVICE_URL)!)
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
@@ -46,28 +46,27 @@ class EditAttachmentViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.mapView.touchDelegate = self
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        if let lastQuery = self.lastQuery{
+        if let lastQuery = self.lastQuery {
             lastQuery.cancel()
         }
         
         //hide the callout
         self.mapView.callout.dismiss()
         
-        
         self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
             if let error = identifyLayerResult.error {
                 print(error)
             }
-            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature] , features.count > 0 {
-                let feature = features[0]
+            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
+                let feature = features.first {
                 //show callout for the first feature
                 let title = feature.attributes["typdamage"] as! String
                 
                 //fetch attachment
-                feature.fetchAttachments { (attachments:[AGSAttachment]?, error:Error?) -> Void in
+                feature.fetchAttachments { (attachments: [AGSAttachment]?, error: Error?) -> Void in
                     if let error = error {
                         print(error)
                     }
@@ -85,7 +84,7 @@ class EditAttachmentViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }
     }
     
-    //MARK: - AGSCalloutDelegate
+    // MARK: - AGSCalloutDelegate
     
     func didTapAccessoryButton(for callout: AGSCallout) {
         //hide the callout
@@ -95,8 +94,7 @@ class EditAttachmentViewController: UIViewController, AGSGeoViewTouchDelegate, A
         
     }
     
-    
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AttachmentsSegue" {

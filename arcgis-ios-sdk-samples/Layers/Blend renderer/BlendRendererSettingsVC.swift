@@ -39,6 +39,7 @@ class BlendRendererSettingsVC: UITableViewController {
            updateAzimuthControls()
         }
     }
+    
     private func updateAzimuthControls() {
         azimuthSlider?.value = Float(azimuth)
         azimuthLabel?.text = numberFormatter.string(from: azimuth as NSNumber)
@@ -49,6 +50,7 @@ class BlendRendererSettingsVC: UITableViewController {
             updateAltitudeControls()
         }
     }
+    
     private func updateAltitudeControls() {
         altitudeSlider?.value = Float(altitude)
         altitudeLabel?.text = numberFormatter.string(from: altitude as NSNumber)
@@ -63,6 +65,7 @@ class BlendRendererSettingsVC: UITableViewController {
             updateSlopeTypeControls()
         }
     }
+    
     private func updateSlopeTypeControls() {
         slopeTypeCell?.detailTextLabel?.text = slopeTypeLabels[slopeType.rawValue + 1]
     }
@@ -76,6 +79,7 @@ class BlendRendererSettingsVC: UITableViewController {
             updateColorRampTypeControls()
         }
     }
+    
     private func updateColorRampTypeControls() {
         colorRampTypeCell?.detailTextLabel?.text = colorRampLabels[colorRampType.rawValue + 1]
     }
@@ -89,7 +93,7 @@ class BlendRendererSettingsVC: UITableViewController {
         updateColorRampTypeControls()
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func azimuthSliderValueChanged(_ slider: UISlider) {
         azimuth = Double(slider.value)

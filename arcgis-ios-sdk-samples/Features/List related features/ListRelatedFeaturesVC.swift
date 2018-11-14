@@ -17,16 +17,16 @@ import ArcGIS
 
 class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopoverPresentationControllerDelegate {
 
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
-    private var parksFeatureLayer:AGSFeatureLayer!
-    private var parksFeatureTable:AGSServiceFeatureTable!
-    private var preservesFeatureTable:AGSServiceFeatureTable!
-    private var speciesFeatureTable:AGSServiceFeatureTable!
-    private var selectedPark:AGSArcGISFeature!
-    private var screenPoint:CGPoint!
+    private var parksFeatureLayer: AGSFeatureLayer!
+    private var parksFeatureTable: AGSServiceFeatureTable!
+    private var preservesFeatureTable: AGSServiceFeatureTable!
+    private var speciesFeatureTable: AGSServiceFeatureTable!
+    private var selectedPark: AGSArcGISFeature!
+    private var screenPoint: CGPoint!
     
-    private var results:[AGSRelatedFeatureQueryResult]!
+    private var results: [AGSRelatedFeatureQueryResult]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         let map = AGSMap(basemap: .nationalGeographic())
         
         //initial viewpoint
-        let point = AGSPoint(x: -16507762.575543, y: 9058828.127243, spatialReference: AGSSpatialReference(wkid: 3857))
+        let point = AGSPoint(x: -16507762.575543, y: 9058828.127243, spatialReference: .webMercator())
         //set initial viewpoint on map
         map.initialViewpoint = AGSViewpoint(center: point, scale: 36764077)
         
@@ -73,7 +73,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         mapView.selectionProperties.color = .yellow
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         
@@ -97,10 +97,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
                 self?.presentAlert(error: error)
             }
             //Check if a feature is identified
-            else if result.geoElements.count > 0 {
-                
-                //select the first feature
-                let feature = result.geoElements[0] as! AGSArcGISFeature
+            else if let feature = result.geoElements.first as? AGSArcGISFeature {
                 
                 //store as selected park to use for querying
                 self?.selectedPark = feature
@@ -124,8 +121,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         SVProgressHUD.show(withStatus: "Querying related features")
         
         //query for related features
-        self.parksFeatureTable.queryRelatedFeatures(for: self.selectedPark) { [weak self] (results:[AGSRelatedFeatureQueryResult]?, error:Error?) in
-            
+        self.parksFeatureTable.queryRelatedFeatures(for: self.selectedPark) { [weak self] (results: [AGSRelatedFeatureQueryResult]?, error: Error?) in
             
             //dismiss progress hud
             SVProgressHUD.dismiss()
@@ -136,7 +132,8 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
             }
             else {
                 //Show the related features found in popover
-                if let results = results, results.count > 0 {
+                if let results = results,
+                    !results.isEmpty {
                     self?.results = results
                     
                     //self?.performSegue(withIdentifier: "RelatedFeaturesSegue", sender: self)
@@ -156,7 +153,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         self.performSegue(withIdentifier: "RelatedFeaturesSegue", sender: self)
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -174,7 +171,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         }
      }
     
-    //MARK: - UIPopoverPresentationControllerDelegate
+    // MARK: - UIPopoverPresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         

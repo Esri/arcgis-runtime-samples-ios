@@ -17,16 +17,16 @@ import ArcGIS
 
 class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var toolbar:UIToolbar!
-    @IBOutlet private var toolbarBottomConstraint:NSLayoutConstraint!
+    @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet private weak var toolbar: UIToolbar!
+    @IBOutlet private var toolbarBottomConstraint: NSLayoutConstraint!
     
-    private var map:AGSMap!
-    private var featureTable:AGSServiceFeatureTable!
-    private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancelable!
+    private var map: AGSMap!
+    private var featureTable: AGSServiceFeatureTable!
+    private var featureLayer: AGSFeatureLayer!
+    private var lastQuery: AGSCancelable!
     
-    private var selectedFeature:AGSArcGISFeature!
+    private var selectedFeature: AGSArcGISFeature!
     private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         
         self.map = AGSMap(basemap: .oceans())
         //set initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -9030446.96, y: 943791.32, spatialReference: AGSSpatialReference.webMercator()), scale: 2e6)
+        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -9030446.96, y: 943791.32, spatialReference: .webMercator()), scale: 2e6)
         
         self.featureTable = AGSServiceFeatureTable(url: URL(string: FEATURE_SERVICE_URL)!)
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
@@ -56,7 +56,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.toggleToolbar(false)
     }
     
-    func toggleToolbar(_ on:Bool) {
+    func toggleToolbar(_ on: Bool) {
         toolbarBottomConstraint.constant = on ? 0 : -44-view.safeAreaInsets.bottom
         
         UIView.animate(withDuration: 0.3, animations: { [weak self] () -> Void in
@@ -65,7 +65,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     }
     
     func applyEdits() {
-        self.featureTable.applyEdits(completion: { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
+        self.featureTable.applyEdits(completion: { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) -> Void in
             if let error = error {
                 self?.presentAlert(error: error)
             }
@@ -77,10 +77,10 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         })
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        if let lastQuery = self.lastQuery{
+        if let lastQuery = self.lastQuery {
             lastQuery.cancel()
         }
         
@@ -91,8 +91,9 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
             if let error = identifyLayerResult.error {
                 print(error)
             }
-            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature] , features.count > 0 {
-                let feature = features[0]
+            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
+                let feature = features.first {
+               
                 //show callout for the first feature
                 let title = feature.attributes["typdamage"] as! String
                 self?.mapView.callout.title = title
@@ -104,7 +105,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         }
     }
     
-    //MARK: - AGSCalloutDelegate
+    // MARK: - AGSCalloutDelegate
     
     func didTapAccessoryButton(for callout: AGSCallout) {
         //hide the callout
@@ -126,13 +127,13 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.featureLayer.setFeature(self.selectedFeature, visible: false)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func doneAction() {
         if let newGeometry = self.mapView.sketchEditor?.geometry {
 
             self.selectedFeature.geometry = newGeometry
-            self.featureTable.update(self.selectedFeature, completion: { [weak self] (error:Error?) -> Void in
+            self.featureTable.update(self.selectedFeature, completion: { [weak self] (error: Error?) -> Void in
                 if let error = error {
                     self?.presentAlert(error: error)
                     

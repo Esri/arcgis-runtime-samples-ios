@@ -37,7 +37,7 @@ class LocalTiledLayerViewController: UIViewController, TilePackagesListVCDelegat
         self.mapView.map = map
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TilePackagesListSegue" {
@@ -46,7 +46,7 @@ class LocalTiledLayerViewController: UIViewController, TilePackagesListVCDelegat
         }
     }
     
-    //MARK: - TilePackagesListVCDelegate
+    // MARK: - TilePackagesListVCDelegate
     
     //called when a selection is made in the tile packages list
     func tilePackagesListViewController(_ tilePackagesListViewController: TilePackagesListViewController, didSelectTPKWithPath path: String) {

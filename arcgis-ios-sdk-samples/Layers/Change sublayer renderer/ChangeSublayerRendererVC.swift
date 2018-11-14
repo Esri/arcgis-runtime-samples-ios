@@ -17,13 +17,13 @@ import ArcGIS
 
 class ChangeSublayerRendererVC: UIViewController {
 
-    @IBOutlet private var mapView:AGSMapView!
-    @IBOutlet private var resetBarButtonItem:UIBarButtonItem!
-    @IBOutlet private var applyRendererBarButtonItem:UIBarButtonItem!
+    @IBOutlet private var mapView: AGSMapView!
+    @IBOutlet private var resetBarButtonItem: UIBarButtonItem!
+    @IBOutlet private var applyRendererBarButtonItem: UIBarButtonItem!
     
     //map image layer
     private var mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
-    private var originalRenderer:AGSRenderer?
+    private var originalRenderer: AGSRenderer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class ChangeSublayerRendererVC: UIViewController {
         map.operationalLayers.add(self.mapImageLayer)
         
         //initial viewpoint
-        let envelope = AGSEnvelope(xMin: -13834661.666904, yMin: 331181.323482, xMax: -8255704.998713, yMax: 9118038.075882, spatialReference:AGSSpatialReference.webMercator())
+        let envelope = AGSEnvelope(xMin: -13834661.666904, yMin: 331181.323482, xMax: -8255704.998713, yMax: 9118038.075882, spatialReference: .webMercator())
         
         //set initial viewpoint on map
         map.initialViewpoint = AGSViewpoint(targetExtent: envelope)
@@ -98,7 +98,7 @@ class ChangeSublayerRendererVC: UIViewController {
         return classBreakRenderer
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction private func applyRenderer() {
         
@@ -112,7 +112,7 @@ class ChangeSublayerRendererVC: UIViewController {
     
     @IBAction private func reset() {
         
-        if let renderer = self.originalRenderer, let sublayer = self.mapImageLayer.mapImageSublayers[2] as? AGSArcGISMapImageSublayer  {
+        if let renderer = self.originalRenderer, let sublayer = self.mapImageLayer.mapImageSublayers[2] as? AGSArcGISMapImageSublayer {
                 
             //set the class breaks renderer on the counties sublayer
             sublayer.renderer = renderer

@@ -47,13 +47,13 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
     /// The color ramp type that was used to create the currently applied blend renderer.
     private var displayedColorRampType: AGSPresetColorRampType = .none
 
-    //MARK: - BlendRendererSettingsVCDelegate
+    // MARK: - BlendRendererSettingsVCDelegate
     
     func blendRendererSettingsVC(_ blendRendererSettingsVC: BlendRendererSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) {
         setBlendRenderer(altitude: altitude, azimuth: azimuth, slopeType: slopeType, colorRampType: colorRampType)
     }
     
-    private func setBlendRenderer(altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType){
+    private func setBlendRenderer(altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) {
         
         displayedColorRampType = colorRampType
         
@@ -64,21 +64,22 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
         let elevationRaster = AGSRaster(name: "Shasta_Elevation", extension: "tif")
         
         // create a blend renderer
-        let blendRenderer = AGSBlendRenderer(elevationRaster: elevationRaster,
-                                        outputMinValues: [9],
-                                        outputMaxValues: [255],
-                                        sourceMinValues: [],
-                                        sourceMaxValues: [],
-                                        noDataValues: [],
-                                        gammas: [],
-                                        colorRamp: colorRamp,
-                                        altitude: altitude,
-                                        azimuth: azimuth,
-                                        zFactor: 1,
-                                        slopeType: slopeType,
-                                        pixelSizeFactor: 1,
-                                        pixelSizePower: 1,
-                                        outputBitDepth: 8)
+        let blendRenderer = AGSBlendRenderer(
+            elevationRaster: elevationRaster,
+            outputMinValues: [9],
+            outputMaxValues: [255],
+            sourceMinValues: [],
+            sourceMaxValues: [],
+            noDataValues: [],
+            gammas: [],
+            colorRamp: colorRamp,
+            altitude: altitude,
+            azimuth: azimuth,
+            zFactor: 1,
+            slopeType: slopeType,
+            pixelSizeFactor: 1,
+            pixelSizePower: 1,
+            outputBitDepth: 8)
         
         // remove the exisiting layers
         mapView.map?.basemap.baseLayers.removeAllObjects()
@@ -94,7 +95,7 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
         mapView.map?.basemap.baseLayers.add(rasterLayer)
     }
 
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,

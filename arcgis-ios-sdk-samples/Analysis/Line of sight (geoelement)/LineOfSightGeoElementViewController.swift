@@ -47,7 +47,7 @@ class LineOfSightGeoElementViewController: UIViewController {
     ]
 
     // handle onto any line of sight KVO observer
-    private var losObserver:NSKeyValueObservation?
+    private var losObserver: NSKeyValueObservation?
 
     private var initialViewpointCenter: AGSPoint {
         // If possible, find the middle of the block that the taxi will drive around, or else focus on the observer
@@ -78,7 +78,6 @@ class LineOfSightGeoElementViewController: UIViewController {
         overlay = AGSGraphicsOverlay()
         overlay.sceneProperties = AGSLayerSceneProperties(surfacePlacement: .relative)
 
-
         // =====================================================
         // initialize two graphics for both display and analysis
         // =====================================================
@@ -91,7 +90,6 @@ class LineOfSightGeoElementViewController: UIViewController {
         // initialize the observer graphic
         let observerSymbol = AGSSimpleMarkerSceneSymbol(style: .sphere, color: .red, height: 10, width: 10, depth: 10, anchorPosition: .center)
         observerGraphic = AGSGraphic(geometry: observerPoint, symbol: observerSymbol, attributes: nil)
-
 
         // ================
         // use the graphics
@@ -168,8 +166,6 @@ class LineOfSightGeoElementViewController: UIViewController {
         losObserver?.invalidate()
     }
 
-
-
     // start and stop animation
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -189,8 +185,6 @@ class LineOfSightGeoElementViewController: UIViewController {
 
         animationTimer?.invalidate()
     }
-
-    
 
     // current line of sight status
     private func updateLineOfSightVisibilityLabel(visibility: AGSLineOfSightTargetVisibility) {
@@ -216,11 +210,9 @@ class LineOfSightGeoElementViewController: UIViewController {
         }()
     }
 
-
-
     // Track animation progress
     private var animationProgess = (frameIndex: 0, pointIndex: 0)
-    private var animationTimer:Timer?
+    private var animationTimer: Timer?
     private let framesPerSegment = 150
 
     private func startAnimation() {
@@ -255,8 +247,6 @@ class LineOfSightGeoElementViewController: UIViewController {
         taxiGraphic.geometry = animationPoint
         (taxiGraphic.symbol as? AGSModelSceneSymbol)?.heading = heading
     }
-
-    
     
     // Formatting z values for locale
     private let zValuesFormatter: MeasurementFormatter = {
@@ -267,12 +257,12 @@ class LineOfSightGeoElementViewController: UIViewController {
         return formatter
     }()
     
-    private func getFormattedString(z value:Double) -> String {
+    private func getFormattedString(z value: Double) -> String {
         return zValuesFormatter.string(from: Measurement<UnitLength>(value: value, unit: .meters))
     }
 }
 
-private func interpolatedPoint(firstPoint: AGSPoint, secondPoint:AGSPoint, progress:Double) -> (AGSPoint, Double) {
+private func interpolatedPoint(firstPoint: AGSPoint, secondPoint: AGSPoint, progress: Double) -> (AGSPoint, Double) {
     // Use the geometry engine to calculate the heading between point 1 and 2
     let geResult = AGSGeometryEngine.geodeticDistanceBetweenPoint1(firstPoint, point2: secondPoint,
                                                                    distanceUnit: .meters(),

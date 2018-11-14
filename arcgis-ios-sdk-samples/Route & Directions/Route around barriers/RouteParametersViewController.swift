@@ -18,11 +18,11 @@ import ArcGIS
 
 class RouteParametersViewController: UIViewController {
 
-    @IBOutlet var findBestSequenceSwitch:UISwitch!
-    @IBOutlet var preservceFirstStopSwitch:UISwitch!
-    @IBOutlet var preservceLastStopSwitch:UISwitch!
+    @IBOutlet var findBestSequenceSwitch: UISwitch!
+    @IBOutlet var preservceFirstStopSwitch: UISwitch!
+    @IBOutlet var preservceLastStopSwitch: UISwitch!
     
-    var routeParameters:AGSRouteParameters!
+    var routeParameters: AGSRouteParameters!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,14 +39,14 @@ class RouteParametersViewController: UIViewController {
         }
     }
     
-    func enableSubSwitches(_ enable:Bool) {
+    func enableSubSwitches(_ enable: Bool) {
         self.preservceLastStopSwitch.isEnabled = enable
         self.preservceFirstStopSwitch.isEnabled = enable
     }
 
-    //MARK: - Actions
+    // MARK: - Actions
     
-    @IBAction func switchValueChanged(_ sender:UISwitch) {
+    @IBAction func switchValueChanged(_ sender: UISwitch) {
         if sender == self.findBestSequenceSwitch {
             self.routeParameters.findBestSequence = sender.isOn
             self.enableSubSwitches(sender.isOn)

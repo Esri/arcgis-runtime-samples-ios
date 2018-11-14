@@ -17,26 +17,26 @@ import ArcGIS
 
 class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPopupsViewControllerDelegate, FeatureTemplatePickerDelegate {
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var sketchToolbar:UIToolbar!
-    @IBOutlet private weak var doneBBI:UIBarButtonItem!
+    @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet private weak var sketchToolbar: UIToolbar!
+    @IBOutlet private weak var doneBBI: UIBarButtonItem!
     
-    private var map:AGSMap!
-    private var sketchEditor:AGSSketchEditor!
-    private var featureLayer:AGSFeatureLayer!
-    private var popupsVC:AGSPopupsViewController!
+    private var map: AGSMap!
+    private var sketchEditor: AGSSketchEditor!
+    private var featureLayer: AGSFeatureLayer!
+    private var popupsVC: AGSPopupsViewController!
     
-    private var lastQuery:AGSCancelable!
+    private var lastQuery: AGSCancelable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditFeaturesOnlineViewController","FeatureTemplatePickerViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditFeaturesOnlineViewController", "FeatureTemplatePickerViewController"]
         
         self.map = AGSMap(basemap: .topographic())
         //set initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -9184518.55, y: 3240636.90, spatialReference: AGSSpatialReference.webMercator()), scale: 7e5)
+        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -9184518.55, y: 3240636.90, spatialReference: .webMercator()), scale: 7e5)
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
         
@@ -61,7 +61,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //show progress hud
         SVProgressHUD.show(withStatus: "Applying edits")
         
-        (featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
+        (featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) -> Void in
             
             SVProgressHUD.dismiss()
             
@@ -74,10 +74,10 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         }
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        if let lastQuery = self.lastQuery{
+        if let lastQuery = self.lastQuery {
             lastQuery.cancel()
         }
 
@@ -95,7 +95,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
                     popups.append(popup)
                 }
                 
-                if popups.count > 0 {
+                if !popups.isEmpty {
                     weakSelf.popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
                     weakSelf.popupsVC.modalPresentationStyle = .formSheet
                     weakSelf.present(weakSelf.popupsVC, animated: true, completion: nil)
@@ -105,7 +105,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         }
     }
     
-    //MARK: -  AGSPopupsViewControllerDelegate methods
+    // MARK: - AGSPopupsViewControllerDelegate methods
     
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, sketchEditorFor popup: AGSPopup) -> AGSSketchEditor? {
         
@@ -171,15 +171,15 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     func popupsViewControllerDidFinishViewingPopups(_ popupsViewController: AGSPopupsViewController) {
         
         //dismiss the popups view controller
-        self.dismiss(animated: true, completion:nil)
+        self.dismiss(animated: true)
         
         self.popupsVC = nil
     }
     
-    @objc func sketchChanged(_ notification:Notification) {
+    @objc func sketchChanged(_ notification: Notification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the sketchCompleteButton
-        if let geometry = self.mapView.sketchEditor?.geometry , !geometry.isEmpty {
+        if let geometry = self.mapView.sketchEditor?.geometry, !geometry.isEmpty {
             self.doneBBI.isEnabled = true
         }
     }
@@ -190,7 +190,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.navigationItem.rightBarButtonItem?.isEnabled = true
         
         //present the popups view controller again
-        self.present(self.popupsVC, animated:true, completion:nil)
+        self.present(self.popupsVC, animated: true, completion: nil)
         
         //remove self as observer for notifications
         NotificationCenter.default.removeObserver(self)
@@ -204,7 +204,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.sketchToolbar.isHidden = true
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FeatureTemplateSegue",
@@ -215,7 +215,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         }
     }
     
-    //MARK: - FeatureTemplatePickerDelegate
+    // MARK: - FeatureTemplatePickerDelegate
     
     func featureTemplatePickerViewController(_ controller: FeatureTemplatePickerViewController, didSelectFeatureTemplate template: AGSFeatureTemplate, forFeatureLayer featureLayer: AGSFeatureLayer) {
         
@@ -245,7 +245,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.popupsVC.modalPresentationStyle = .formSheet
 
         //First, dismiss the Feature Template Picker
-        self.dismiss(animated: false, completion:nil)
+        self.dismiss(animated: false, completion: nil)
 
         //Next, Present the popup view controller
         self.present(self.popupsVC, animated: true) { [weak self] () -> Void in

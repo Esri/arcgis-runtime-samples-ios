@@ -25,14 +25,14 @@ class DisplayKMLViewController: UIViewController {
     
     /// The source currently loaded in the map.
     private var displayedSource: KMLDataSource = .url {
-        didSet{
+        didSet {
             updateMapForDisplayedSource()
         }
     }
     
     /// Loads the map contents based on the specified source.
     private func updateMapForDisplayedSource() {
-        switch displayedSource{
+        switch displayedSource {
         case .url:
             changeSourceToURL()
         case .localFile:
@@ -72,7 +72,7 @@ class DisplayKMLViewController: UIViewController {
             // setup the view controller
             sourceTableViewController.initialSelectedIndex = displayedSource.rawValue
             sourceTableViewController.selectionHandler = { [weak self] (dataSource) in
-                guard let self = self else{
+                guard let self = self else {
                     return
                 }
                 // close the popover
@@ -83,7 +83,7 @@ class DisplayKMLViewController: UIViewController {
         }
     }
     
-    //MARK: - KML Loading
+    // MARK: - KML Loading
     
     private func display(kmlLayer: AGSKMLLayer) {
         
@@ -148,11 +148,11 @@ extension DisplayKMLViewController: UIPopoverPresentationControllerDelegate {
 class DisplayKMLDataSourcesTableViewController: UITableViewController {
     
     fileprivate var initialSelectedIndex = 0
-    fileprivate var selectionHandler: ((KMLDataSource)->Void)?
+    fileprivate var selectionHandler: ((KMLDataSource) -> Void)?
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        if indexPath.row == initialSelectedIndex{
+        if indexPath.row == initialSelectedIndex {
             cell.accessoryType = .checkmark
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         }

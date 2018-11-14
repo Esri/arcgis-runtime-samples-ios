@@ -21,9 +21,9 @@ class TimeBasedQueryVC: UIViewController {
     
     @IBOutlet var mapView: AGSMapView!
     
-    private var map:AGSMap!
+    private var map: AGSMap!
     
-    private var featureTable:AGSServiceFeatureTable!
+    private var featureTable: AGSServiceFeatureTable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ class TimeBasedQueryVC: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["TimeBasedQueryVC"]
     }
     
-    func populateFeaturesWithQuery(){
+    func populateFeaturesWithQuery() {
         
         //create query parameters
         let queryParams = AGSQueryParameters()
@@ -70,7 +70,7 @@ class TimeBasedQueryVC: UIViewController {
         queryParams.timeExtent = timeExtent
         
         //populate features based on query parameters
-        self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) {[weak self] (result:AGSFeatureQueryResult?, error:Error?) -> Void in
+        self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) {[weak self] (result: AGSFeatureQueryResult?, error: Error?) -> Void in
             
             //check for error
             if let error = error {

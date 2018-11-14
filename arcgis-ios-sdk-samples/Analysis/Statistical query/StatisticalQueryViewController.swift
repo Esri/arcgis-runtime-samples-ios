@@ -18,7 +18,7 @@ import ArcGIS
 class StatisticalQueryViewController: UIViewController {
     
     @IBOutlet private weak var mapView: AGSMapView!
-    @IBOutlet private var visualEffectView:UIVisualEffectView!
+    @IBOutlet private var visualEffectView: UIVisualEffectView!
     @IBOutlet private var getStatisticsButton: UIButton!
     @IBOutlet private var onlyInCurrentExtentSwitch: UISwitch!
     @IBOutlet private var onlyBigCitiesSwitch: UISwitch!
@@ -32,7 +32,7 @@ class StatisticalQueryViewController: UIViewController {
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["StatisticalQueryViewController"]
         
         // Constraint visual effect view to the map view's attribution label
-        visualEffectView.bottomAnchor.constraint(equalTo: mapView.attributionTopAnchor, constant:-10.0).isActive = true
+        visualEffectView.bottomAnchor.constraint(equalTo: mapView.attributionTopAnchor, constant: -10.0).isActive = true
         
         // Corner radius for button
         getStatisticsButton.layer.cornerRadius = 10
@@ -65,7 +65,7 @@ class StatisticalQueryViewController: UIViewController {
         let statisticsQueryParameters = AGSStatisticsQueryParameters(statisticDefinitions: statisticDefinitions)
         
         // If only using features in the current extent, set up the spatial filter for the statistics query parameters
-        if (onlyInCurrentExtentSwitch.isOn) {
+        if onlyInCurrentExtentSwitch.isOn {
             //
             // Set the statistics query parameters geometry with the envelope
             statisticsQueryParameters.geometry = mapView.visibleArea?.extent
@@ -75,7 +75,7 @@ class StatisticalQueryViewController: UIViewController {
         }
         
         // If only evaluating the largest cities (over 5 million in population), set up an attribute filter
-        if (onlyBigCitiesSwitch.isOn) {
+        if onlyBigCitiesSwitch.isOn {
             statisticsQueryParameters.whereClause = "POP_RANK = 1"
         }
         
@@ -95,7 +95,7 @@ class StatisticalQueryViewController: UIViewController {
                 var resultMessage = " \n"
                 while statisticRecordEnumerator.hasNextObject() {
                     let statisticRecord = statisticRecordEnumerator.nextObject()
-                    for (key, value) in (statisticRecord?.statistics)!  {
+                    for (key, value) in (statisticRecord?.statistics)! {
                         resultMessage += "\(key): \(value) \n"
                     }
                 }

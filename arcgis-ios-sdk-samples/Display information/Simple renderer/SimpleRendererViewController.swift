@@ -18,7 +18,7 @@ import ArcGIS
 
 class SimpleRendererViewController: UIViewController {
 
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
     var graphicsOverlay = AGSGraphicsOverlay()
     
@@ -45,9 +45,9 @@ class SimpleRendererViewController: UIViewController {
         
         //Create points to add graphics to the map to allow a renderer to style them
         //These are in WGS84 coordinates (Long, Lat)
-        let oldFaithfulPoint = AGSPoint(x: -110.828140, y: 44.460458, spatialReference: AGSSpatialReference.wgs84())
-        let cascadeGeyserPoint = AGSPoint(x: -110.829004, y: 44.462438, spatialReference: AGSSpatialReference.wgs84())
-        let plumeGeyserPoint = AGSPoint(x: -110.829381, y: 44.462735, spatialReference: AGSSpatialReference.wgs84())
+        let oldFaithfulPoint = AGSPoint(x: -110.828140, y: 44.460458, spatialReference: .wgs84())
+        let cascadeGeyserPoint = AGSPoint(x: -110.829004, y: 44.462438, spatialReference: .wgs84())
+        let plumeGeyserPoint = AGSPoint(x: -110.829381, y: 44.462735, spatialReference: .wgs84())
         
         //create graphics
         let oldFaithfulGraphic = AGSGraphic(geometry: oldFaithfulPoint, symbol: nil, attributes: nil)

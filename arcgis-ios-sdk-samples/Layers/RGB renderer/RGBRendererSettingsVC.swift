@@ -64,11 +64,12 @@ class RGBRendererSettingsVC: UITableViewController {
     private var standardDeviationFactor: Double = 1
     
     private var stretchType: RGBRendererSettingsVC.StretchType = .minMax {
-        didSet{
+        didSet {
             updateStretchTypeLabel()
         }
     }
-    private func updateStretchTypeLabel(){
+    
+    private func updateStretchTypeLabel() {
         stretchTypeCell?.detailTextLabel?.text = stretchType.label
     }
     
@@ -113,13 +114,13 @@ class RGBRendererSettingsVC: UITableViewController {
         delegate?.rgbRendererSettingsVC(self, didSelectStretchParameters: makeStretchParameters())
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func textFieldAction(_ sender: UITextField) {
         rendererParametersChanged()
     }
     
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return the rows based on the stretch type selected
@@ -192,13 +193,13 @@ class RGBRendererSettingsVC: UITableViewController {
         cell.textField.text = numberFormatter.string(from: value as NSNumber)
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard tableView.cellForRow(at: indexPath) == stretchTypeCell else {
             return
         }
-        let labels = StretchType.allCases.map{ $0.label }
+        let labels = StretchType.allCases.map { $0.label }
         let selectedIndex = stretchType.rawValue
         let optionsViewController = OptionsTableViewController(labels: labels, selectedIndex: selectedIndex) { (newIndex) in
             self.stretchType = StretchType(rawValue: newIndex)!

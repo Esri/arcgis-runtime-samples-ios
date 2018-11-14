@@ -27,14 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return (splitViewController.viewControllers.first as! UINavigationController).viewControllers.first as! ContentCollectionViewController
     }
  
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         if url.absoluteString.range(of: "auth", options: [], range: nil, locale: nil) != nil {
             AGSApplicationDelegate.shared().application(app, open: url, options: options)
         }
         return true
     }
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         // Override point for customization after application launch.
         let splitViewController = self.window!.rootViewController as! UISplitViewController
         splitViewController.presentsWithGesture = false
@@ -84,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    //MARK: - Touch settings
+    // MARK: - Touch settings
     
     func setTouchPref() {
         //enable/disable touches based on settings
@@ -98,7 +98,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             DemoTouchManager.hideTouches()
         }
     }
-    
     
     // MARK: - Appearance modification
     
@@ -118,7 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     // MARK: - Split view
 
-    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         if secondaryViewController.restorationIdentifier == "DetailNavigationController" {
             return true
         }

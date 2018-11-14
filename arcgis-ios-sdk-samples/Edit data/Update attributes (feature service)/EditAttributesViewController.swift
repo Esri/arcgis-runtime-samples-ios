@@ -17,15 +17,15 @@ import ArcGIS
 
 class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate, EAOptionsVCDelegate {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    private var map:AGSMap!
-    private var featureTable:AGSServiceFeatureTable!
-    private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancelable!
+    private var map: AGSMap!
+    private var featureTable: AGSServiceFeatureTable!
+    private var featureLayer: AGSFeatureLayer!
+    private var lastQuery: AGSCancelable!
     
     private var types = ["Destroyed", "Major", "Minor", "Affected", "Inaccessible"]
-    private var selectedFeature:AGSArcGISFeature!
+    private var selectedFeature: AGSArcGISFeature!
     private let optionsSegueName = "OptionsSegue"
     
     private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
@@ -38,7 +38,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         
         self.map = AGSMap(basemap: .oceans())
         //set initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: AGSSpatialReference.webMercator()), scale: 2e6)
+        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6)
         
         self.featureTable = AGSServiceFeatureTable(url: URL(string: FEATURE_SERVICE_URL)!)
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
@@ -49,7 +49,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.mapView.touchDelegate = self
     }
     
-    func showCallout(_ feature:AGSFeature, tapLocation:AGSPoint?) {
+    func showCallout(_ feature: AGSFeature, tapLocation: AGSPoint?) {
         let title = feature.attributes["typdamage"] as! String
         self.mapView.callout.title = title
         self.mapView.callout.delegate = self
@@ -59,7 +59,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     func applyEdits() {
         SVProgressHUD.show(withStatus: "Applying edits")
         
-        featureTable.applyEdits(completion: { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
+        featureTable.applyEdits(completion: { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) -> Void in
             
             SVProgressHUD.dismiss()
             
@@ -77,10 +77,10 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         })
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        if let lastQuery = self.lastQuery{
+        if let lastQuery = self.lastQuery {
             lastQuery.cancel()
         }
         
@@ -91,17 +91,17 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
             if let error = identifyLayerResult.error {
                 print(error)
             }
-            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature] , features.count > 0 {
+            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
+                let feature = features.first {
                 //show callout for the first feature
-                self?.showCallout(features[0], tapLocation: mapPoint)
+                self?.showCallout(feature, tapLocation: mapPoint)
                 //update selected feature
-                self?.selectedFeature = features[0]
+                self?.selectedFeature = feature
             }
         }
     }
     
-    
-    //MARK: - AGSCalloutDelegate
+    // MARK: - AGSCalloutDelegate
     
     func didTapAccessoryButton(for callout: AGSCallout) {
         //hide the callout
@@ -110,7 +110,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.performSegue(withIdentifier: self.optionsSegueName, sender: self)
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == self.optionsSegueName {
@@ -120,7 +120,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         }
     }
     
-    //MARK: - EAOptionsVCDelegate
+    // MARK: - EAOptionsVCDelegate
     
     func optionsViewController(_ optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int) {
         SVProgressHUD.show(withStatus: "Updating")

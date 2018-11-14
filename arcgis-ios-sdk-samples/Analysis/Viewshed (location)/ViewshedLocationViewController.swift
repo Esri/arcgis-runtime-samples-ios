@@ -23,7 +23,7 @@ class ViewshedLocationViewController: UIViewController {
     
     private weak var viewshed: AGSLocationViewshed?
     
-    private var canMoveViewshed:Bool = false {
+    private var canMoveViewshed: Bool = false {
         didSet {
             setObserverOnTapInstruction.isHidden = canMoveViewshed
             updateObserverOnDragInstruction.isHidden = !canMoveViewshed
@@ -47,7 +47,7 @@ class ViewshedLocationViewController: UIViewController {
         sceneView.scene = scene
         
         // initialize the camera and set the viewpoint specified by the camera position
-        let camera = AGSCamera(lookAt: AGSPoint(x: -4.50, y: 48.4, z: 100.0, spatialReference: AGSSpatialReference.wgs84()), distance: 200, heading: 20, pitch: 70, roll: 0)
+        let camera = AGSCamera(lookAt: AGSPoint(x: -4.50, y: 48.4, z: 100.0, spatialReference: .wgs84()), distance: 200, heading: 20, pitch: 70, roll: 0)
         sceneView.setViewpointCamera(camera)
         
         /// The url of the image service for elevation in Brest, France.
@@ -63,7 +63,7 @@ class ViewshedLocationViewController: UIViewController {
         scene.operationalLayers.add(buildings)
         
         // initialize a viewshed analysis object with arbitrary location (the location will be defined by the user), heading, pitch, view angles, and distance range (in meters) from which visibility is calculated from the observer location
-        let viewshed = AGSLocationViewshed(location: AGSPoint(x: 0.0, y: 0.0, z: 0.0, spatialReference: AGSSpatialReference.wgs84()), heading: 20, pitch: 70, horizontalAngle: 45, verticalAngle: 90, minDistance: 50, maxDistance: 1000)
+        let viewshed = AGSLocationViewshed(location: AGSPoint(x: 0.0, y: 0.0, z: 0.0, spatialReference: .wgs84()), heading: 20, pitch: 70, horizontalAngle: 45, verticalAngle: 90, minDistance: 50, maxDistance: 1000)
         self.viewshed = viewshed
         
         // create an analysis overlay for the viewshed and to add it to the scene view

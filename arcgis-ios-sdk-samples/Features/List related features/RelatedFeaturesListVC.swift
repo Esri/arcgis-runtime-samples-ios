@@ -17,16 +17,16 @@ import ArcGIS
 
 class RelatedFeaturesListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet var tableView:UITableView!
-    @IBOutlet var label:UILabel!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var label: UILabel!
     
     //results required for display
-    var results:[AGSRelatedFeatureQueryResult]!
+    var results: [AGSRelatedFeatureQueryResult]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let result = results?[0] {
+        if let result = results?.first {
             self.label.text = result.feature?.attributes["UNIT_NAME"] as? String ?? "Origin Feature"
         }
         
@@ -34,7 +34,7 @@ class RelatedFeaturesListVC: UIViewController, UITableViewDataSource, UITableVie
         self.tableView.estimatedRowHeight = 44
     }
     
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.results?.count ?? 0

@@ -16,11 +16,14 @@ import UIKit
 import ArcGIS
 
 class MapLoadedViewController: UIViewController {
+    
     /// The map displayed in the map view.
     let map = AGSMap(basemap: .imageryWithLabels())
 
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var bannerLabel: UILabel!
+    
+    private var mapLoadStatusObservation: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,29 +33,27 @@ class MapLoadedViewController: UIViewController {
         
         //assign map to map view
         mapView.map = map
+        
+        mapLoadStatusObservation = map.observe(\.loadStatus, options: .initial) {[weak self] (map, change) in
+            //update the banner label on main thread
+            DispatchQueue.main.async { [weak self] in
+                self?.updateLoadStatusLabel()
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //register as an observer for loadStatus property on map
-        map.addObserver(self, forKeyPath: #keyPath(AGSMap.loadStatus), options: .initial, context: nil)
+        
+        updateLoadStatusLabel()
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        //update the banner label on main thread
-        DispatchQueue.main.async { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.bannerLabel.text = "Load status: \(strongSelf.map.loadStatus.title)"
-        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        map.removeObserver(self, forKeyPath: #keyPath(AGSMap.loadStatus))
+    private func updateLoadStatusLabel() {
+        bannerLabel.text = "Load status: \(map.loadStatus.title)"
     }
 }
 
-extension AGSLoadStatus {
+private extension AGSLoadStatus {
     /// The human readable name of the load status.
     var title: String {
         switch self {

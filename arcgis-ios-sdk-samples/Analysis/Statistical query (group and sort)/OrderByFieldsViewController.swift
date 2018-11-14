@@ -27,8 +27,8 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet private var tableNavigationItem: UINavigationItem!
     
     // List of fields and selected fields
-    public var orderByFields = [AGSOrderBy]()
-    public var selectedOrderByFields = [AGSOrderBy]()
+    var orderByFields = [AGSOrderBy]()
+    var selectedOrderByFields = [AGSOrderBy]()
     
     // Delegate
     weak var delegate: OrderByFieldsViewControllerDelegate?
@@ -36,22 +36,21 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - TableView data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if orderByFields.count > 0 {
+        if !orderByFields.isEmpty {
             tableView.backgroundView = nil
             return orderByFields.count
         } else {
             let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height))
             messageLabel.text = "Only selected Group By Fields are valid for Order By Fields so please select Group By Fields first."
-            messageLabel.numberOfLines = 0;
-            messageLabel.textAlignment = .center;
+            messageLabel.numberOfLines = 0
+            messageLabel.textAlignment = .center
             messageLabel.font = UIFont.systemFont(ofSize: 20)
             messageLabel.sizeToFit()
             tableView.backgroundView?.backgroundColor = .white
-            tableView.backgroundView = messageLabel;
+            tableView.backgroundView = messageLabel
         }
         return orderByFields.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderByFieldsCell", for: indexPath)
@@ -66,8 +65,8 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
         cell.imageView?.image = imageFor(sortOrder: orderByField.sortOrder)
         
         // Make image tappable
-        cell.imageView?.isUserInteractionEnabled = true;
-        cell.imageView?.tag = indexPath.row;
+        cell.imageView?.isUserInteractionEnabled = true
+        cell.imageView?.tag = indexPath.row
         let imageViewTapGesture = UITapGestureRecognizer()
         imageViewTapGesture.addTarget(self, action: #selector(imageViewWasTouched(_:)))
         cell.imageView?.addGestureRecognizer(imageViewTapGesture)

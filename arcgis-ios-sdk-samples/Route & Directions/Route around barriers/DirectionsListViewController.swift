@@ -17,19 +17,19 @@ import UIKit
 import ArcGIS
 
 protocol DirectionsListVCDelegate: AnyObject {
-    func directionsListViewController(_ directionsListViewController:DirectionsListViewController, didSelectDirectionManuever directionManeuver:AGSDirectionManeuver)
-    func directionsListViewControllerDidDeleteRoute(_ directionsListViewController:DirectionsListViewController)
+    func directionsListViewController(_ directionsListViewController: DirectionsListViewController, didSelectDirectionManuever directionManeuver: AGSDirectionManeuver)
+    func directionsListViewControllerDidDeleteRoute(_ directionsListViewController: DirectionsListViewController)
 }
 
 class DirectionsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet var tableView:UITableView!
-    @IBOutlet var milesLabel:UILabel!
-    @IBOutlet var minutesLabel:UILabel!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var milesLabel: UILabel!
+    @IBOutlet var minutesLabel: UILabel!
     
-    weak var delegate:DirectionsListVCDelegate?
+    weak var delegate: DirectionsListVCDelegate?
     
-    var route:AGSRoute! {
+    var route: AGSRoute! {
         didSet {
             self.tableView?.reloadData()
             self.updateLabels()
@@ -38,7 +38,6 @@ class DirectionsListViewController: UIViewController, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
     }
     
@@ -56,7 +55,7 @@ class DirectionsListViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
 
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.route?.directionManeuvers.count ?? 0
@@ -70,14 +69,14 @@ class DirectionsListViewController: UIViewController, UITableViewDataSource, UIT
         return cell
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let directionManeuver = self.route.directionManeuvers[indexPath.row]
         self.delegate?.directionsListViewController(self, didSelectDirectionManuever: directionManeuver)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func deleteRouteAction() {
         self.delegate?.directionsListViewControllerDidDeleteRoute(self)

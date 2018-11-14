@@ -32,7 +32,7 @@ class ChangeMapViewBackgroundVC: UIViewController {
         let map = AGSMap(basemap: AGSBasemap(baseLayer: tiledLayer))
         
         //set initial viewpoint
-        let center = AGSPoint(x: 3224786, y: 2661231, spatialReference: AGSSpatialReference(wkid: 3857))
+        let center = AGSPoint(x: 3224786, y: 2661231, spatialReference: .webMercator())
         map.initialViewpoint = AGSViewpoint(center: center, scale: 236663484)
 
         //assign map to the map view
@@ -44,7 +44,7 @@ class ChangeMapViewBackgroundVC: UIViewController {
         mapView.backgroundGrid = backgroundGrid
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,

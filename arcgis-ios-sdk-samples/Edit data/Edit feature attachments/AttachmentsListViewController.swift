@@ -17,10 +17,10 @@ import ArcGIS
 
 class AttachmentsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIBarPositioningDelegate {
     
-    @IBOutlet private weak var tableView:UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
-    var feature:AGSArcGISFeature!
-    private var attachments:[AGSAttachment]!
+    var feature: AGSArcGISFeature!
+    private var attachments: [AGSAttachment]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         //show progress hud
         SVProgressHUD.show(withStatus: "Loading attachments")
         
-        feature.fetchAttachments { [weak self] (attachments:[AGSAttachment]?, error:Error?) in
+        feature.fetchAttachments { [weak self] (attachments: [AGSAttachment]?, error: Error?) in
             
             //dismiss progress hud
             SVProgressHUD.dismiss()
@@ -68,8 +68,8 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
-    func deleteAttachment(_ attachment:AGSAttachment) {
-        self.feature.delete(attachment) { [weak self] (error:Error?) -> Void in
+    func deleteAttachment(_ attachment: AGSAttachment) {
+        self.feature.delete(attachment) { [weak self] (error: Error?) -> Void in
             if let error = error {
                 print(error)
             }
@@ -80,7 +80,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
-    //MARK: - Table view data source
+    // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -90,7 +90,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         return self.attachments?.count ?? 0
     }
     
-    //MARK: - Table view delegate
+    // MARK: - Table view delegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AttachmentCell", for: indexPath)
@@ -121,9 +121,9 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
-    func setImageForCell(_ cell:UITableViewCell, at indexPath:IndexPath) {
+    func setImageForCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
         let attachment = self.attachments[indexPath.row]
-        attachment.fetchData { (data:Data?, error:Error?) -> Void in
+        attachment.fetchData { (data: Data?, error: Error?) -> Void in
             if let error = error {
                 print(error)
             }
@@ -134,7 +134,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func cancelAction() {
         self.dismiss(animated: true, completion: nil)
@@ -146,7 +146,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         SVProgressHUD.show(withStatus: "Adding attachment")
         
         let data = UIImage(named: "LocationDisplayOffIcon")!.pngData()!
-        self.feature.addAttachment(withName: "Attachment.png", contentType: "png", data: data) { [weak self] (attachment:AGSAttachment?, error:Error?) -> Void in
+        self.feature.addAttachment(withName: "Attachment.png", contentType: "png", data: data) { [weak self] (attachment: AGSAttachment?, error: Error?) -> Void in
             
             SVProgressHUD.dismiss()
             
@@ -159,7 +159,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
-    //MARK: - UIBarPositioningDelegate
+    // MARK: - UIBarPositioningDelegate
     
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached

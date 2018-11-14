@@ -19,14 +19,14 @@ import ArcGIS
 
 class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
 
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
-    private var parksFeatureTable:AGSServiceFeatureTable!
-    private var speciesFeatureTable:AGSServiceFeatureTable!
-    private var parksFeatureLayer:AGSFeatureLayer!
-    private var relatedFeatures:[AGSFeature]!
+    private var parksFeatureTable: AGSServiceFeatureTable!
+    private var speciesFeatureTable: AGSServiceFeatureTable!
+    private var parksFeatureLayer: AGSFeatureLayer!
+    private var relatedFeatures: [AGSFeature]!
     
-    private var selectedPark:AGSFeature!
+    private var selectedPark: AGSFeature!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
         let map = AGSMap(basemap: .streets())
         
         //initial viewpoint
-        let point = AGSPoint(x: -16507762.575543, y: 9058828.127243, spatialReference: AGSSpatialReference(wkid: 3857))
+        let point = AGSPoint(x: -16507762.575543, y: 9058828.127243, spatialReference: .webMercator())
         
         //set initial viewpoint on map
         map.initialViewpoint = AGSViewpoint(center: point, scale: 36764077)
@@ -67,7 +67,7 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.mapView.touchDelegate = self
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         
@@ -84,10 +84,9 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
                 //show error to user
                 self?.presentAlert(error: error)
             }
-            else if result.geoElements.count > 0 {
+            else if let feature = result.geoElements.first as? AGSFeature {
                 
                 //select the first feature
-                let feature = result.geoElements[0] as! AGSFeature
                 self?.selectedPark = feature
                 
                 //show related features view controller
@@ -96,15 +95,14 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
         }
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "RelatedFeaturesSegue" {
-            
-            let navigationController = segue.destination as! UINavigationController
-            let controller = navigationController.viewControllers[0] as! RelatedFeaturesViewController
-            
+        if segue.identifier == "RelatedFeaturesSegue",
+            let navigationController = segue.destination as? UINavigationController,
+            let controller = navigationController.viewControllers.first as? RelatedFeaturesViewController {
+  
             //share selected park
             controller.originFeature = self.selectedPark as? AGSArcGISFeature
             

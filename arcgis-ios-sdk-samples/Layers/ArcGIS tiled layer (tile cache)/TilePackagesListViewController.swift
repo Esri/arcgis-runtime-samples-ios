@@ -16,17 +16,17 @@
 import UIKit
 
 protocol TilePackagesListVCDelegate: AnyObject {
-    func tilePackagesListViewController(_ tilePackagesListViewController:TilePackagesListViewController, didSelectTPKWithPath path:String)
+    func tilePackagesListViewController(_ tilePackagesListViewController: TilePackagesListViewController, didSelectTPKWithPath path: String)
 }
 
 class TilePackagesListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet var tableView:UITableView!
+    @IBOutlet var tableView: UITableView!
     
-    weak var delegate:TilePackagesListVCDelegate?
+    weak var delegate: TilePackagesListVCDelegate?
     
-    private var bundleTPKPaths:[String]!
-    private var documentTPKPaths:[String]!
+    private var bundleTPKPaths: [String]!
+    private var documentTPKPaths: [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,19 +39,19 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
         self.bundleTPKPaths = Bundle.main.paths(forResourcesOfType: "tpk", inDirectory: nil)
         self.tableView.reloadData()
         
-        let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
-        let subpaths = FileManager.default.subpaths(atPath: path[0])
+        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let subpaths = FileManager.default.subpaths(atPath: documentDirectoryURL.path)
         
         let predicate = NSPredicate(format: "SELF MATCHES %@", ".*tpk$")
         let tpks = subpaths?.filter { (objc) -> Bool in
             return predicate.evaluate(with: objc)
         }
-        self.documentTPKPaths = tpks?.map { (name:String) -> String in
-            return "\(path[0])/\(name)"
+        self.documentTPKPaths = tpks?.map { (name: String) -> String in
+            return documentDirectoryURL.appendingPathComponent(name).path
         }
     }
     
-    //MARK : - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -83,7 +83,7 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
         return section == 0 ? "From the bundle" : "From the documents directory"
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let path: String
@@ -95,7 +95,7 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
         delegate?.tilePackagesListViewController(self, didSelectTPKWithPath: path)
     }
     
-    func extractName(fromPath path:String) -> String {
+    func extractName(fromPath path: String) -> String {
         guard var index = path.range(of: "/", options: .backwards, range: nil, locale: nil)?.lowerBound else {
             return ""
         }

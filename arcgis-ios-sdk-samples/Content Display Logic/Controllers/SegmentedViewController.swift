@@ -16,12 +16,12 @@ import UIKit
 
 class SegmentedViewController: UIViewController {
     
-    @IBOutlet private weak var segmentedControl:UISegmentedControl!
-    @IBOutlet private weak var infoContainerView:UIView!
-    @IBOutlet private weak var codeContainerView:UIView!
+    @IBOutlet private weak var segmentedControl: UISegmentedControl!
+    @IBOutlet private weak var infoContainerView: UIView!
+    @IBOutlet private weak var codeContainerView: UIView!
     
-    private var sourceCodeVC:SourceCodeViewController!
-    private var sampleInfoVC:SampleInfoViewController!
+    private var sourceCodeVC: SourceCodeViewController!
+    private var sampleInfoVC: SampleInfoViewController!
     
     var filenames: [String]?
     var readmeURL: URL?
@@ -31,7 +31,7 @@ class SegmentedViewController: UIViewController {
         
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SourceCodeSegue" {
@@ -44,7 +44,7 @@ class SegmentedViewController: UIViewController {
         }
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func valueChanged(_ sender: UISegmentedControl) {
         self.infoContainerView.isHidden = (sender.selectedSegmentIndex == 1)

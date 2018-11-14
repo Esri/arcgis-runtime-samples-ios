@@ -57,7 +57,6 @@ class GridSettingsViewController: UITableViewController {
         updateUIForGridLineColor()
     }
     
-    
     private func updateUIForBackgroundGrid() {
         updateUIForGridColor()
         updateUIForGridLineColor()
@@ -86,7 +85,7 @@ class GridSettingsViewController: UITableViewController {
         gridSizeSlider?.value = Float(value)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction private func lineWidthSliderChanged(_ sender: UISlider) {
         backgroundGrid?.gridLineWidth = Double(sender.value)
@@ -98,11 +97,11 @@ class GridSettingsViewController: UITableViewController {
         updateUIForGridSize()
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        switch cell{
+        switch cell {
         case colorCell:
             guard let color = backgroundGrid?.color else {
                 return

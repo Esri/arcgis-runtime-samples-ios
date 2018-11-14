@@ -77,7 +77,7 @@ class OfflineEditingViewController: UIViewController {
 
     }
 
-    //MARK: - Helper methods
+    // MARK: - Helper methods
     
     private func addFeatureLayers() {
         
@@ -107,7 +107,6 @@ class OfflineEditingViewController: UIViewController {
             }
         }
     }
-    
     
     private func frameToExtent() -> AGSEnvelope {
         let frame = mapView.convert(extentView.frame, from: view)
@@ -187,14 +186,14 @@ class OfflineEditingViewController: UIViewController {
     
     private func deleteAllGeodatabases() {
         //Remove all files with .geodatabase, .geodatabase-shm and .geodatabase-wal file extensions
-        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         do {
-            let files = try FileManager.default.contentsOfDirectory(atPath: path)
+            let files = try FileManager.default.contentsOfDirectory(atPath: documentDirectoryURL.path)
             for file in files {
                 let remove = file.hasSuffix(".geodatabase") || file.hasSuffix(".geodatabase-shm") || file.hasSuffix(".geodatabase-wal")
                 if remove {
-                    try FileManager.default.removeItem(atPath: (path as NSString).appendingPathComponent(file))
-                    print("Deleting file: \(file)")
+                    let url = documentDirectoryURL.appendingPathComponent(file)
+                    try FileManager.default.removeItem(at: url)
                 }
             }
             print("Deleted all local data")
@@ -204,10 +203,10 @@ class OfflineEditingViewController: UIViewController {
         }
     }
     
-    @objc func sketchChanged(_ notification:Notification) {
+    @objc func sketchChanged(_ notification: Notification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the done bar button item
-        if let geometry = self.mapView.sketchEditor?.geometry , !geometry.isEmpty {
+        if let geometry = self.mapView.sketchEditor?.geometry, !geometry.isEmpty {
             doneBBI.isEnabled = true
         }
     }
@@ -222,7 +221,7 @@ class OfflineEditingViewController: UIViewController {
         guard let generatedGeodatabase = generatedGeodatabase else {
             return
         }
-        generatedGeodatabase.load(completion: { [weak self] (error:Error?) -> Void in
+        generatedGeodatabase.load(completion: { [weak self] (error: Error?) -> Void in
             
             guard let self = self else {
                 return
@@ -253,7 +252,7 @@ class OfflineEditingViewController: UIViewController {
         })
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func generateGeodatabaseAction() {
         if barButtonItem.title == "Generate geodatabase" {
@@ -323,15 +322,17 @@ class OfflineEditingViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
-        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let fullPath = "\(path)/\(dateFormatter.string(from: Date())).geodatabase"
+        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let downloadFileURL = documentDirectoryURL
+            .appendingPathComponent(dateFormatter.string(from: Date()))
+            .appendingPathExtension("geodatabase")
         
         guard let syncTask = syncTask else {
             return
         }
             
         //create a generate job from the sync task
-        let generateJob = syncTask.generateJob(with: params, downloadFileURL: URL(string: fullPath)!)
+        let generateJob = syncTask.generateJob(with: params, downloadFileURL: downloadFileURL)
         self.generateJob = generateJob
         
         //start the job
@@ -339,7 +340,7 @@ class OfflineEditingViewController: UIViewController {
         
             SVProgressHUD.show(withStatus: status.statusString())
             
-        }) { [weak self] (object: AnyObject?, error: Error?) -> Void in
+        }, completion: { [weak self] (object: AnyObject?, error: Error?) -> Void in
             
             SVProgressHUD.dismiss()
             
@@ -356,7 +357,7 @@ class OfflineEditingViewController: UIViewController {
                 //add the layers from geodatabase
                 self.displayLayersFromGeodatabase()
             }
-        }
+        })
     }
     
     @IBAction func switchToServiceMode(_ sender: AnyObject) {
@@ -379,7 +380,6 @@ class OfflineEditingViewController: UIViewController {
             switchToServiceMode()
         }
     }
-    
     
     @IBAction func syncAction() {
         syncAction(nil)
@@ -437,7 +437,7 @@ class OfflineEditingViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
 
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FeatureLayersVCSegue" {
@@ -471,7 +471,7 @@ extension OfflineEditingViewController: AGSGeoViewTouchDelegate {
                         popups.append(AGSPopup(geoElement: geoElement))
                     }
                 }
-                if popups.count > 0 {
+                if !popups.isEmpty {
                     let popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
                     self.popupsVC = popupsVC
                     popupsVC.delegate = self
@@ -535,7 +535,6 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
         //(ifwraparound was enabled on the map)
         feature.geometry = AGSGeometryEngine.normalizeCentralMeridian(of: feature.geometry!)
         
-        
         //sync changes if in service mode
         if liveMode {
             
@@ -567,7 +566,7 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
     
     func popupsViewControllerDidFinishViewingPopups(_ popupsViewController: AGSPopupsViewController) {
         //dismiss the popups view controller
-        dismiss(animated: true, completion:nil)
+        dismiss(animated: true, completion: nil)
         popupsVC = nil
     }
 }

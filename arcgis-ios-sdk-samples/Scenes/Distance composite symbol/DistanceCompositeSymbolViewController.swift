@@ -19,7 +19,7 @@ import ArcGIS
 
 class DistanceCompositeSymbolViewController: UIViewController {
     
-    @IBOutlet var sceneView:AGSSceneView!
+    @IBOutlet var sceneView: AGSSceneView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +64,7 @@ class DistanceCompositeSymbolViewController: UIViewController {
             compositeSymbol.ranges.append(AGSDistanceSymbolRange(symbol: circleSymbol, minDistance: 30001, maxDistance: 0))
             
             // create graphic
-            let aircraftPosition = AGSPoint(x: -2.708471, y: 56.096575, z: 5000, spatialReference: AGSSpatialReference.wgs84())
+            let aircraftPosition = AGSPoint(x: -2.708471, y: 56.096575, z: 5000, spatialReference: .wgs84())
             let aircraftGraphic = AGSGraphic(geometry: aircraftPosition, symbol: compositeSymbol, attributes: nil)
             
             // add graphic to graphics overlay

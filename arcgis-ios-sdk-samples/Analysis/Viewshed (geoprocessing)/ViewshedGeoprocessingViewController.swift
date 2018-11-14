@@ -19,7 +19,7 @@ let viewshedURLString = "https://sampleserver6.arcgisonline.com/arcgis/rest/serv
 
 class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDelegate {
 
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
     private var geoprocessingTask: AGSGeoprocessingTask!
     private var geoprocessingJob: AGSGeoprocessingJob!
@@ -153,7 +153,7 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
         })
     }
 
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //add a graphic in graphics overlay for the tapped point

@@ -16,10 +16,10 @@ import ArcGIS
 
 class GPKGLayersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet private weak var tableView:UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
-    var map:AGSMap?
-    var allLayers:[AGSLayer] = [] {
+    var map: AGSMap?
+    var allLayers: [AGSLayer] = [] {
         didSet {
             var rasterCount = 1
             for layer in allLayers where layer is AGSRasterLayer &&
@@ -31,13 +31,13 @@ class GPKGLayersViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    private var layersInMap:[AGSLayer] {
+    private var layersInMap: [AGSLayer] {
         // 0 is the bottom-most layer on the map, but first cell in a table.
         // By reversing the layer order from the map, we match the UITableView order.
         return map?.operationalLayers.reversed() as? [AGSLayer] ?? []
     }
 
-    private var layersNotInMap:[AGSLayer] {
+    private var layersNotInMap: [AGSLayer] {
         guard map != nil else {
             return allLayers
         }
@@ -54,7 +54,7 @@ class GPKGLayersViewController: UIViewController, UITableViewDataSource, UITable
         self.tableView.allowsSelectionDuringEditing = true
     }
     
-    //MARK: - table view data source
+    // MARK: - table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -64,14 +64,14 @@ class GPKGLayersViewController: UIViewController, UITableViewDataSource, UITable
         return section == 0 ? layersInMap.count : layersNotInMap.count
     }
     
-    //MARK: - table view delegate
+    // MARK: - table view delegate
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return section == 0 ? "Layers on the map" : "Layers not on the map"
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell:UITableViewCell
+        var cell: UITableViewCell
         
         if indexPath.section == 0 {
             // Set up the cell for a layer that is on the map.
@@ -160,7 +160,7 @@ class GPKGLayersViewController: UIViewController, UITableViewDataSource, UITable
         map?.operationalLayers.remove(layer)
         
         // Remove the row from the section of layers in the map.
-        self.tableView.deleteRows(at: [indexPath], with:.automatic)
+        self.tableView.deleteRows(at: [indexPath], with: .automatic)
         
         // Insert the removed row back in the section for layers not in the map.
         if let index = layersNotInMap.index(of: layer) {

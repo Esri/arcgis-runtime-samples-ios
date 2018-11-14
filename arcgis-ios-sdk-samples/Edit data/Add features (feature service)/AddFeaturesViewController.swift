@@ -17,11 +17,11 @@ import ArcGIS
 
 class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     
-    @IBOutlet private var mapView:AGSMapView!
+    @IBOutlet private var mapView: AGSMapView!
     
-    private var featureTable:AGSServiceFeatureTable!
-    private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancelable!
+    private var featureTable: AGSServiceFeatureTable!
+    private var featureLayer: AGSFeatureLayer!
+    private var lastQuery: AGSCancelable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         //instantiate map with a basemap
         let map = AGSMap(basemap: .streets())
         //set initial viewpoint
-        map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: AGSSpatialReference.webMercator()), scale: 2e6)
+        map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6)
         
         //assign the map to the map view
         self.mapView.map = map
@@ -48,7 +48,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         map.operationalLayers.add(featureLayer)
     }
     
-    func addFeature(at mappoint:AGSPoint) {
+    func addFeature(at mappoint: AGSPoint) {
        
         //disable interaction with map view
         mapView.isUserInteractionEnabled = false
@@ -57,7 +57,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         let normalizedGeometry = AGSGeometryEngine.normalizeCentralMeridian(of: mappoint)!
         
         //attributes for the new feature
-        let featureAttributes = ["typdamage" : "Minor", "primcause" : "Earthquake"]
+        let featureAttributes = ["typdamage": "Minor", "primcause": "Earthquake"]
         //create a new feature
         let feature = featureTable.createFeature(attributes: featureAttributes, geometry: normalizedGeometry)
         
@@ -87,7 +87,8 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
                 self?.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
             }
             else {
-                if let featureEditResults = featureEditResults , featureEditResults.count > 0 && featureEditResults[0].completedWithErrors == false {
+                if let featureEditResults = featureEditResults,
+                    featureEditResults.first?.completedWithErrors == false {
                     self?.presentAlert(message: "Edits applied successfully")
                 }
                 SVProgressHUD.dismiss()
@@ -95,7 +96,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         }
     }
   
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //add a feature at the tapped location

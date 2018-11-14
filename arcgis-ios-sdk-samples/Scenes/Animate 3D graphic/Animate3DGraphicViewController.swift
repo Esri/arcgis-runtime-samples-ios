@@ -130,7 +130,7 @@ class Animate3DGraphicViewController: UIViewController {
         planeModelSymbol.anchorPosition = .center
         
         //arbitrary geometry for time being, the geometry will update with animation
-        let point = AGSPoint(x: 0, y: 0, z: 0, spatialReference: AGSSpatialReference.wgs84())
+        let point = AGSPoint(x: 0, y: 0, z: 0, spatialReference: .wgs84())
         
         //create graphic for the model
         let planeModelGraphic = AGSGraphic()
@@ -268,7 +268,7 @@ class Animate3DGraphicViewController: UIViewController {
         currentFrameIndex += 1
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func changeMissionAction() {
         
@@ -297,7 +297,7 @@ class Animate3DGraphicViewController: UIViewController {
         animate()
     }
     
-    @IBAction func playAction(sender:UIBarButtonItem) {
+    @IBAction func playAction(sender: UIBarButtonItem) {
         
         if isAnimating {
             animationTimer?.invalidate()
@@ -309,7 +309,7 @@ class Animate3DGraphicViewController: UIViewController {
         isAnimating.toggle()
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

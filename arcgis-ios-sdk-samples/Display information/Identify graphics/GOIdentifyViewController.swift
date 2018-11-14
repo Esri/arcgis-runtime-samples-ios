@@ -17,10 +17,10 @@ import ArcGIS
 
 class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    private var map:AGSMap!
-    private var graphicsOverlay:AGSGraphicsOverlay!
+    private var map: AGSMap!
+    private var graphicsOverlay: AGSGraphicsOverlay!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,7 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     func addGraphicsOverlay() {
         //polygon graphic
-        let polygonGeometry = AGSPolygonBuilder(spatialReference: AGSSpatialReference.webMercator())
+        let polygonGeometry = AGSPolygonBuilder(spatialReference: .webMercator())
         polygonGeometry.addPointWith(x: -20e5, y: 20e5)
         polygonGeometry.addPointWith(x: 20e5, y: 20e5)
         polygonGeometry.addPointWith(x: 20e5, y: -20e5)
@@ -65,13 +65,13 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.graphicsOverlays.add(self.graphicsOverlay)
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //use the following method to identify graphics in a specific graphics overlay
         //otherwise if you need to identify on all the graphics overlay present in the map view
         //use `identifyGraphicsOverlaysAtScreenCoordinate:tolerance:maximumGraphics:completion:` method provided on map view
-        let tolerance:Double = 12
+        let tolerance: Double = 12
         
         self.mapView.identify(self.graphicsOverlay, screenPoint: screenPoint, tolerance: tolerance, returnPopupsOnly: false, maximumResults: 10) {[weak self] (result: AGSIdentifyGraphicsOverlayResult) -> Void in
             if let error = result.error {
@@ -79,7 +79,7 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
             }
             else {
                 //if a graphics is found then show an alert
-                if result.graphics.count > 0 {
+                if !result.graphics.isEmpty {
                     self?.presentAlert(message: "Tapped on graphic")
                 }
             }

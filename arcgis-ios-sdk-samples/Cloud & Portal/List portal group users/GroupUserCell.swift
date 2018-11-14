@@ -21,7 +21,7 @@ class GroupUserCell: UITableViewCell {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var descriptionLabel: UILabel!
     
-    var portalUser:AGSPortalUser! {
+    var portalUser: AGSPortalUser! {
         didSet {
             
             self.titleLabel.text = portalUser.fullName
@@ -30,7 +30,6 @@ class GroupUserCell: UITableViewCell {
             self.thumbnailImageView.layer.masksToBounds = true
             
             self.thumbnailImageView.image = UIImage(named: "Placeholder")
-            
             
             if let thumbnail = portalUser.thumbnail {
                 if thumbnail.image != nil {

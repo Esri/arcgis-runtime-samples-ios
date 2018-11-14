@@ -17,13 +17,13 @@ import ArcGIS
 
 class DirectionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var directionManeuvers:[AGSDirectionManeuver]!
+    var directionManeuvers: [AGSDirectionManeuver]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.directionManeuvers?.count ?? 0

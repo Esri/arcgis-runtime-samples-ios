@@ -18,17 +18,17 @@ import ArcGIS
 
 class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelegate {
 
-    @IBOutlet private var mapView:AGSMapView!
+    @IBOutlet private var mapView: AGSMapView!
     
     private var workspaceID = "MyDatabaseWorkspaceIDSSR2"
-    private var removedMapImageSublayers:[AGSArcGISMapImageSublayer]!
-    private var mapImageLayer:AGSArcGISMapImageLayer!
+    private var removedMapImageSublayers: [AGSArcGISMapImageSublayer]!
+    private var mapImageLayer: AGSArcGISMapImageLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ManageSublayersViewController","MapImageSublayersVC"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ManageSublayersViewController", "MapImageSublayersVC"]
         
         //instantiate map with basemap
         let map = AGSMap(basemap: .streets())
@@ -40,7 +40,7 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelega
         map.operationalLayers.add(self.mapImageLayer)
         
         //initial viewpoint
-        let envelope = AGSEnvelope(xMin: -13834661.666904, yMin: 331181.323482, xMax: -8255704.998713, yMax: 9118038.075882, spatialReference:AGSSpatialReference.webMercator())
+        let envelope = AGSEnvelope(xMin: -13834661.666904, yMin: 331181.323482, xMax: -8255704.998713, yMax: 9118038.075882, spatialReference: .webMercator())
         
         //set initial viewpoint on map
         map.initialViewpoint = AGSViewpoint(targetExtent: envelope)
@@ -90,20 +90,21 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelega
         
     }
     
-    //MARK: - MapImageSublayersVCDelegate
+    // MARK: - MapImageSublayersVCDelegate
     
     func mapImageSublayersVC(mapImageSublayersVC: MapImageSublayersVC, didCloseWith removedMapImageSublayers: [AGSArcGISMapImageSublayer]) {
         
         self.removedMapImageSublayers = removedMapImageSublayers
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "MapImageSublayersSegue" {
-            let navigationController = segue.destination as! UINavigationController
-            let controller = navigationController.viewControllers[0] as! MapImageSublayersVC
+        if segue.identifier == "MapImageSublayersSegue",
+            let navigationController = segue.destination as? UINavigationController,
+            let controller = navigationController.viewControllers.first as? MapImageSublayersVC {
+            
             controller.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 300)
             controller.mapImageLayer = self.mapImageLayer

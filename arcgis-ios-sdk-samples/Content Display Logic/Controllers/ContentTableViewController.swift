@@ -17,16 +17,16 @@ import UIKit
 class ContentTableViewController: UITableViewController {
     
     /// The samples to display in the table. Searching adjusts this value
-    var displayedSamples = [Sample](){
-        didSet{
+    var displayedSamples = [Sample]() {
+        didSet {
             guard isViewLoaded else { return }
             tableView.reloadData()
         }
     }
     
     /// All samples that could be displayed in the table
-    var allSamples = [Sample](){
-        didSet{
+    var allSamples = [Sample]() {
+        didSet {
             displayedSamples = allSamples
         }
     }
@@ -117,7 +117,7 @@ class ContentTableViewController: UITableViewController {
         }
     }
     
-    func downloadResource(for sample: Sample, at indexPath:IndexPath) {
+    func downloadResource(for sample: Sample, at indexPath: IndexPath) {
         
         guard let bundleResourceRequest = bundleResourceRequest else {
             return
@@ -208,11 +208,11 @@ class ContentTableViewController: UITableViewController {
 
     }
     
-    @objc func expandCell(_ sender:UIButton) {
+    @objc func expandCell(_ sender: UIButton) {
         updateExpandedRow(IndexPath(row: sender.tag, section: 0), collapseIfSelected: true)
     }
     
-    private func updateExpandedRow(_ indexPath:IndexPath, collapseIfSelected:Bool) {
+    private func updateExpandedRow(_ indexPath: IndexPath, collapseIfSelected: Bool) {
         //if same row selected then hide the detail view
         if indexPath.row == expandedRowIndex {
             if collapseIfSelected {
@@ -233,7 +233,7 @@ class ContentTableViewController: UITableViewController {
 
 }
 
-//MARK: - DownloadProgressViewDelegate
+// MARK: - DownloadProgressViewDelegate
 extension ContentTableViewController: DownloadProgressViewDelegate {
 
     func downloadProgressViewDidCancel(downloadProgressView: DownloadProgressView) {
@@ -255,10 +255,10 @@ extension ContentTableViewController: UISearchResultsUpdating {
         
         if searchController.isActive,
             let query = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-            !query.isEmpty{
+            !query.isEmpty {
             displayedSamples = searchEngine.sortedSamples(matching: query)
         }
-        else{
+        else {
             displayedSamples = allSamples
         }
     }

@@ -129,7 +129,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
                     expandableTableViewController.sectionHeaderTitles.append(groups.joined(separator: ", "))
                     
                     var statistics = [(String, String)]()
-                    for (key, value) in statisticRecord.statistics  {
+                    for (key, value) in statisticRecord.statistics {
                         statistics.append((key, String(describing: value)))
                     }
                     expandableTableViewController.sectionItems.append(statistics)
@@ -224,7 +224,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         headerButton.frame = CGRect(x: tableView.frame.size.width - 32, y: 11, width: 22, height: 22)
         headerButton.tintColor = .white
         headerButton.tag = section
-        headerButton.addTarget(self, action:  #selector(headerButtonAction(_:)), for: .touchUpInside)
+        headerButton.addTarget(self, action: #selector(headerButtonAction(_:)), for: .touchUpInside)
         returnedView.addSubview(headerButton)
         headerButton.translatesAutoresizingMaskIntoConstraints = false
         returnedView.addConstraint(NSLayoutConstraint(item: headerButton, attribute: .centerY, relatedBy: .equal, toItem: returnedView, attribute: .centerY, multiplier: 1, constant: 0))
@@ -250,21 +250,21 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         cell.textLabel?.text = ""
         cell.accessoryType = .none
         
-        switch indexPath.section{
+        switch indexPath.section {
         case 0:
-            if statisticDefinitions.count > 0 {
+            if !statisticDefinitions.isEmpty {
                 let statisticDefinition = statisticDefinitions[indexPath.row]
                 let statisticTypeString = statisticTypes[statisticDefinition.statisticType.rawValue]
                 let text = "\(statisticDefinition.onFieldName) (\(statisticTypeString))"
                 cell.textLabel?.text = text
             }
         case 1:
-            if selectedGroupByFieldNames.count > 0 {
+            if !selectedGroupByFieldNames.isEmpty {
                 let fieldName = selectedGroupByFieldNames[indexPath.row]
                 cell.textLabel?.text = fieldName
             }
         default:
-            if selectedOrderByFields.count > 0 {
+            if !selectedOrderByFields.isEmpty {
                 let orderByField = selectedOrderByFields[indexPath.row]
                 let sortOrderString = stringFor(sortOrder: orderByField.sortOrder)
                 let text = "\(orderByField.fieldName) (\(sortOrderString))"
@@ -284,13 +284,13 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         }
         switch indexPath.section {
         case 0:
-            if statisticDefinitions.count > 0 {
+            if !statisticDefinitions.isEmpty {
                 // Remove statistic definition
                 statisticDefinitions.remove(at: indexPath.row)
             }
         case 1:
             // Remove from selected group by field names
-            if selectedGroupByFieldNames.count > 0 {
+            if !selectedGroupByFieldNames.isEmpty {
                 //
                 // Get the field name so we can remove order by fields
                 let selectedGroupByFieldName = selectedGroupByFieldNames[indexPath.row]
@@ -299,21 +299,21 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
                 selectedGroupByFieldNames.remove(at: indexPath.row)
                 
                 // Remove field from the order by fields
-                for (i,orderByField) in orderByFields.enumerated().reversed() {
+                for (i, orderByField) in orderByFields.enumerated().reversed() {
                     if orderByField.fieldName == selectedGroupByFieldName {
                         orderByFields.remove(at: i)
                     }
                 }
                 
                 // Remove field from the selected order by fields
-                for (i,selectedOrderByField) in selectedOrderByFields.enumerated().reversed() {
+                for (i, selectedOrderByField) in selectedOrderByFields.enumerated().reversed() {
                     if selectedOrderByField.fieldName == selectedGroupByFieldName {
                         selectedOrderByFields.remove(at: i)
                     }
                 }
             }
         default:
-            if selectedOrderByFields.count > 0 {
+            if !selectedOrderByFields.isEmpty {
                 // Remove selected order by field
                 selectedOrderByFields.remove(at: indexPath.row)
             }
@@ -349,14 +349,14 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         }
         
         // Remove selected order by field if it's not part of the new order by fields
-        for (i,orderByField) in selectedOrderByFields.enumerated().reversed() {
+        for (i, orderByField) in selectedOrderByFields.enumerated().reversed() {
             if !orderByFields.contains(where: { $0.fieldName == orderByField.fieldName }) {
                 selectedOrderByFields.remove(at: i)
             }
         }
         
         // Reload sections
-        tableView.reloadSections(IndexSet([1,2]), with: .automatic)
+        tableView.reloadSections(IndexSet([1, 2]), with: .automatic)
     }
     
     // MARK: - Order By Fields View Controller Delegate

@@ -17,9 +17,9 @@ import ArcGIS
 
 class OnInteractionCacheViewController: UIViewController {
     
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    private var map:AGSMap!
+    private var map: AGSMap!
     
     private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0"
     
@@ -33,11 +33,12 @@ class OnInteractionCacheViewController: UIViewController {
         self.map = AGSMap(basemap: .lightGrayCanvas())
         
         //initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -1.30758164047166E7,
+        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(
+            xMin: -1.30758164047166E7,
             yMin: 4014771.46954516,
             xMax: -1.30730056797177E7,
             yMax: 4016869.78617381,
-            spatialReference: AGSSpatialReference.webMercator()))
+            spatialReference: .webMercator()))
         
         //feature layer
         let featureTable = AGSServiceFeatureTable(url: URL(string: FEATURE_SERVICE_URL)!)

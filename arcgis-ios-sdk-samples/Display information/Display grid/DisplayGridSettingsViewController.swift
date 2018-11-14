@@ -68,7 +68,7 @@ class DisplayGridSettingsViewController: UITableViewController {
         
     }
     
-    private func makeGrid(type: GridType)-> AGSGrid {
+    private func makeGrid(type: GridType) -> AGSGrid {
         switch type {
         case .latLong: return AGSLatitudeLongitudeGrid()
         case .mgrs: return AGSMGRSGrid()
@@ -120,7 +120,7 @@ class DisplayGridSettingsViewController: UITableViewController {
         updateUIForLabelColor()
     }
     
-    private func updateLabelFormatUI(){
+    private func updateLabelFormatUI() {
         if let grid = mapView?.grid as? AGSLatitudeLongitudeGrid {
             labelFormatCell?.detailTextLabel?.text = labelFormatLabels[grid.labelFormat.rawValue]
             labelFormatCell?.detailTextLabel?.isEnabled = true
@@ -133,7 +133,7 @@ class DisplayGridSettingsViewController: UITableViewController {
         }
     }
     
-    private func updateLabelUnitUI(){
+    private func updateLabelUnitUI() {
         if let grid = mapView?.grid,
             let labelUnitID = (grid as? AGSMGRSGrid)?.labelUnit.rawValue ?? (grid as? AGSUSNGGrid)?.labelUnit.rawValue {
             labelUnitCell?.detailTextLabel?.text = labelUnitLabels[labelUnitID]
@@ -147,19 +147,19 @@ class DisplayGridSettingsViewController: UITableViewController {
         }
     }
     
-    private func updateUIForGridColor(){
+    private func updateUIForGridColor() {
         if let grid = mapView?.grid {
             gridColorSwatchView?.backgroundColor = gridColor(of: grid)
         }
     }
     
-    private func updateUIForLabelColor(){
+    private func updateUIForLabelColor() {
         if let grid = mapView?.grid {
             labelColorSwatchView?.backgroundColor = labelColor(of: grid)
         }
     }
     
-    //MARK: - Helpers
+    // MARK: - Helpers
     
     /// Creates a new grid object based on the type, applies the common configuration
     /// from the existing grid, and adds it to the map view.
@@ -192,7 +192,7 @@ class DisplayGridSettingsViewController: UITableViewController {
         updateUIForGrid()
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func gridVisibilityAction(_ sender: UISwitch) {
         mapView?.grid?.isVisible = sender.isOn
@@ -240,7 +240,7 @@ class DisplayGridSettingsViewController: UITableViewController {
         }
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)

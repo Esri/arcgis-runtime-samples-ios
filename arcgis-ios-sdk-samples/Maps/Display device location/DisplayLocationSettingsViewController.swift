@@ -17,12 +17,12 @@ import ArcGIS
 
 class DisplayLocationSettingsViewController: UITableViewController {
     
-    //MARK: - Outlets
+    // MARK: - Outlets
     
     @IBOutlet weak var showSwitch: UISwitch!
     @IBOutlet weak var autoPanModeCell: UITableViewCell!
     
-    //MARK: - Model
+    // MARK: - Model
     
     /// The SDK object for displaying the device location. Attached to the map view.
     weak var locationDisplay: AGSLocationDisplay?
@@ -41,7 +41,7 @@ class DisplayLocationSettingsViewController: UITableViewController {
         }
     }
     
-    //MARK: - Views
+    // MARK: - Views
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +64,7 @@ class DisplayLocationSettingsViewController: UITableViewController {
         }
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func showLocationSwitchAction(_ sender: UISwitch) {
         
@@ -80,7 +80,7 @@ class DisplayLocationSettingsViewController: UITableViewController {
             // make sure to add the location request field in the info.plist file
             
             // attempt to start showing the device location
-            locationDisplay.start {[weak self] (error:Error?) -> Void in
+            locationDisplay.start {[weak self] (error: Error?) -> Void in
                 if let error = error {
                     // show the error if one occurred
                     self?.presentAlert(error: error)
@@ -93,7 +93,7 @@ class DisplayLocationSettingsViewController: UITableViewController {
         }
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else {

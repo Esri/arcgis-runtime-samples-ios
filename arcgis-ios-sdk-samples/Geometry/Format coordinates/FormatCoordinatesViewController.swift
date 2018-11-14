@@ -17,11 +17,11 @@ import ArcGIS
 
 class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate, UITextFieldDelegate {
 
-    @IBOutlet private var mapView:AGSMapView!
-    @IBOutlet private var latLongDDTextField:UITextField!
-    @IBOutlet private var latLongDMSTextField:UITextField!
-    @IBOutlet private var utmTextField:UITextField!
-    @IBOutlet private var usngTextField:UITextField!
+    @IBOutlet private var mapView: AGSMapView!
+    @IBOutlet private var latLongDDTextField: UITextField!
+    @IBOutlet private var latLongDMSTextField: UITextField!
+    @IBOutlet private var utmTextField: UITextField!
+    @IBOutlet private var usngTextField: UITextField!
     
     private var graphicsOverlay = AGSGraphicsOverlay()
     
@@ -44,7 +44,7 @@ class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate
         self.mapView.touchDelegate = self
         
         //initial point
-        let point = AGSPoint(x: 0, y: 0, spatialReference: AGSSpatialReference.webMercator())
+        let point = AGSPoint(x: 0, y: 0, spatialReference: .webMercator())
         
         //add initial graphic
         self.displayGraphicAtPoint(point)
@@ -65,7 +65,7 @@ class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate
         self.usngTextField.text = AGSCoordinateFormatter.usngString(from: point, precision: 4, addSpaces: true)
     }
     
-    private func displayGraphicAtPoint(_ point:AGSPoint) {
+    private func displayGraphicAtPoint(_ point: AGSPoint) {
         
         //remove previous graphic from graphics overlay
         self.graphicsOverlay.graphics.removeAllObjects()
@@ -76,7 +76,7 @@ class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate
         self.graphicsOverlay.graphics.add(graphic)
     }
     
-    //MARK: - UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
     
     //user can change any of the string and update the location by tapping return
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -85,7 +85,7 @@ class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate
             return true
         }
         
-        var point:AGSPoint?
+        var point: AGSPoint?
         
         //using tags on the textfield to differentiate
         switch textField.tag {
@@ -113,7 +113,7 @@ class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate
         return true
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         

@@ -16,12 +16,12 @@ import UIKit
 import ArcGIS
 
 protocol CreateOptionsVCDelegate: AnyObject {
-    func createOptionsViewController(_ createOptionsViewController:CreateOptionsViewController, didSelectBasemap basemap:AGSBasemap, layers:[AGSLayer]?)
+    func createOptionsViewController(_ createOptionsViewController: CreateOptionsViewController, didSelectBasemap basemap: AGSBasemap, layers: [AGSLayer]?)
 }
 
 class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet private weak var tableView:UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     private var basemaps: [AGSBasemap] = [.streets(), .imagery(), .topographic(), .oceans()]
     private var layers = [AGSLayer]()
@@ -29,11 +29,10 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
     private var layerURLs = ["https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer",
         "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Census/MapServer"]
     
-    private var selectedBasemapIndex:Int!
+    private var selectedBasemapIndex: Int!
     private var selectedLayersIndex = [Int]()
     
-    
-    weak var delegate:CreateOptionsVCDelegate?
+    weak var delegate: CreateOptionsVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +55,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
         self.tableView.reloadData()
     }
 
-    //MARK: - table view data source
+    // MARK: - table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -66,10 +65,10 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
         return section == 0 ? self.basemaps.count : self.layers.count
     }
     
-    //MARK: - table view delegates
+    // MARK: - table view delegates
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell:UITableViewCell
+        var cell: UITableViewCell
         
         if indexPath.section == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: "CreateBasemapCell", for: indexPath)
@@ -77,7 +76,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
             cell.textLabel?.text = basemap.name
             
             //accesory view
-            if let index = self.selectedBasemapIndex , index == indexPath.row {
+            if let index = self.selectedBasemapIndex, index == indexPath.row {
                 cell.accessoryType = .checkmark
             }
             else {
@@ -132,7 +131,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
         return section == 0 ? "Choose a basemap" : "Add operational layers"
     }
 
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction private func doneAction() {
         if self.selectedBasemapIndex == nil {
@@ -144,13 +143,14 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
         let basemap = self.basemaps[self.selectedBasemapIndex].copy() as! AGSBasemap
         
         //create an array of the selected operational layers
-        var layers = [AGSLayer]()
-        for index in self.selectedLayersIndex {
-            let layer = self.layers[index].copy() as! AGSLayer
-            layers.append(layer)
+        let selectedLayers: [AGSLayer]?
+        if !selectedLayersIndex.isEmpty {
+            selectedLayers = selectedLayersIndex.map { layers[$0].copy() as! AGSLayer }
+        } else {
+            selectedLayers = nil
         }
         
-        self.delegate?.createOptionsViewController(self, didSelectBasemap: basemap, layers: layers.count > 0 ? layers : nil)
+        self.delegate?.createOptionsViewController(self, didSelectBasemap: basemap, layers: selectedLayers)
     }
 
 }

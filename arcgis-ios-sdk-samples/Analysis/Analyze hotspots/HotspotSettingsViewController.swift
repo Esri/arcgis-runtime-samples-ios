@@ -49,7 +49,7 @@ class HotspotSettingsViewController: UIViewController, UITextFieldDelegate {
         self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @objc func datePickerValueChanged(_ sender: UIDatePicker) {
         self.selectedTextField.text = self.dateFormatter.string(from: sender.date)
@@ -70,7 +70,7 @@ class HotspotSettingsViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    //MARK: - UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.selectedTextField = textField
@@ -79,7 +79,7 @@ class HotspotSettingsViewController: UIViewController, UITextFieldDelegate {
             self.datePicker.maximumDate = self.dateFormatter.date(from: "1998-05-29")
         }
         else {
-            if let dateString = self.fromTextField.text , !dateString.isEmpty {
+            if let dateString = self.fromTextField.text, !dateString.isEmpty {
                 self.datePicker.minimumDate = self.dateFormatter.date(from: dateString)?.addingTimeInterval(2 * 60 * 60 * 24)
             }
             else {

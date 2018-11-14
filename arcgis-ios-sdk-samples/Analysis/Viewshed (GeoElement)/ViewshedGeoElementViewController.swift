@@ -64,7 +64,7 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
         let tankSymbol = AGSModelSceneSymbol(name: "bradle", extension: "3ds", scale: 10.0)
         tankSymbol.heading = 90.0
         tankSymbol.anchorPosition = .bottom
-        tank = AGSGraphic(geometry: AGSPoint(x: -4.506390, y: 48.385624, spatialReference: AGSSpatialReference.wgs84()),
+        tank = AGSGraphic(geometry: AGSPoint(x: -4.506390, y: 48.385624, spatialReference: .wgs84()),
                           symbol: tankSymbol,
                           attributes: ["HEADING": 0.0])
         graphicsOverlay.graphics.add(tank)
@@ -96,11 +96,11 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
 
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         // set the new waypoint
-        waypoint = mapPoint;
+        waypoint = mapPoint
         
         // start a timer to animate towards the waypoint
         timer = Timer.scheduledTimer(timeInterval: 0.1,
-                                     target:self as Any,
+                                     target: self as Any,
                                      selector: #selector(animate),
                                      userInfo: nil,
                                      repeats: true)

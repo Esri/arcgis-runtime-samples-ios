@@ -18,19 +18,19 @@ import ArcGIS
 
 class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, ServiceAreaSettingsVCDelegate, UIAdaptivePresentationControllerDelegate {
 
-    @IBOutlet private var mapView:AGSMapView!
-    @IBOutlet private var segmentedControl:UISegmentedControl!
-    @IBOutlet private var serviceAreaBBI:UIBarButtonItem!
+    @IBOutlet private var mapView: AGSMapView!
+    @IBOutlet private var segmentedControl: UISegmentedControl!
+    @IBOutlet private var serviceAreaBBI: UIBarButtonItem!
     
     private var facilitiesGraphicsOverlay = AGSGraphicsOverlay()
     private var barriersGraphicsOverlay = AGSGraphicsOverlay()
     private var serviceAreaGraphicsOverlay = AGSGraphicsOverlay()
-    private var barrierGraphic:AGSGraphic!
-    private var serviceAreaTask:AGSServiceAreaTask!
-    private var serviceAreaParameters:AGSServiceAreaParameters!
+    private var barrierGraphic: AGSGraphic!
+    private var serviceAreaTask: AGSServiceAreaTask!
+    private var serviceAreaParameters: AGSServiceAreaParameters!
     
-    var firstTimeBreak:Int = 3
-    var secondTimeBreak:Int = 8
+    var firstTimeBreak: Int = 3
+    var secondTimeBreak: Int = 8
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         let map = AGSMap(basemap: .terrainWithLabels())
         
         //center for initial viewpoint
-        let center = AGSPoint(x: -13041154, y: 3858170, spatialReference: AGSSpatialReference.webMercator())
+        let center = AGSPoint(x: -13041154, y: 3858170, spatialReference: .webMercator())
         
         //initial viewpoint
         map.initialViewpoint = AGSViewpoint(center: center, scale: 1e5)
@@ -97,10 +97,10 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         }
     }
     
-    private func serviceAreaSymbol(for index:Int) -> AGSSymbol {
+    private func serviceAreaSymbol(for index: Int) -> AGSSymbol {
         
         //fill symbol for service area
-        var fillSymbol:AGSSimpleFillSymbol
+        var fillSymbol: AGSSimpleFillSymbol
         
         if index == 0 {
             let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor(red: 0.4, green: 0.4, blue: 0, alpha: 0.3), width: 2)
@@ -114,15 +114,17 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         return fillSymbol
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction private func serviceArea() {
         
         //remove previously added service areas
         serviceAreaGraphicsOverlay.graphics.removeAllObjects()
         
+        let facilitiesGraphics = facilitiesGraphicsOverlay.graphics as! [AGSGraphic]
+        
         //check if at least a single facility is added
-        guard facilitiesGraphicsOverlay.graphics.count > 0 else {
+        guard !facilitiesGraphics.isEmpty else {
             presentAlert(message: "At least one facility is required")
             return
         }
@@ -131,7 +133,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         var facilities = [AGSServiceAreaFacility]()
         
         //for each graphic in facilities graphicsOverlay add a facility to the parameters
-        for graphic in facilitiesGraphicsOverlay.graphics as AnyObject as! [AGSGraphic] {
+        for graphic in facilitiesGraphics {
             
             let point = graphic.geometry as! AGSPoint
             let facility = AGSServiceAreaFacility(point: point)
@@ -139,12 +141,11 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         }
         self.serviceAreaParameters.setFacilities(facilities)
         
-        
         //add barriers
         var barriers = [AGSPolygonBarrier]()
         
         //for each graphic in barrier graphicsOverlay add a barrier to the parameters
-        for graphic in barriersGraphicsOverlay.graphics as AnyObject as! [AGSGraphic] {
+        for graphic in barriersGraphicsOverlay.graphics as! [AGSGraphic] {
             
             let polygon = graphic.geometry as! AGSPolygon
             let barrier = AGSPolygonBarrier(polygon: polygon)
@@ -198,7 +199,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         self.barriersGraphicsOverlay.graphics.removeAllObjects()
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         
@@ -217,7 +218,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         }
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ServiceAreaSettingsSegue" {
@@ -231,7 +232,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         }
     }
     
-    //MARK: - ServiceAreaSettingsVCDelegate
+    // MARK: - ServiceAreaSettingsVCDelegate
     
     func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsVC, didUpdateFirstTimeBreak timeBreak: Int) {
         
@@ -243,7 +244,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         self.secondTimeBreak = timeBreak
     }
     
-    //MARK: - UIAdaptivePresentationControllerDelegate
+    // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none

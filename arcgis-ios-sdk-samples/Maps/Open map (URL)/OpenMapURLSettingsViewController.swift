@@ -19,7 +19,7 @@ class OpenMapURLSettingsViewController: UITableViewController {
     
     var mapModels: [OpenMapURLViewController.MapAtURL] = []
     var initialSelectedID: String?
-    var onChange: ((URL)->Void)?
+    var onChange: ((URL) -> Void)?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -34,13 +34,13 @@ class OpenMapURLSettingsViewController: UITableViewController {
         }
     }
     
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mapModels.count
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MapAtURLCell", for: indexPath)

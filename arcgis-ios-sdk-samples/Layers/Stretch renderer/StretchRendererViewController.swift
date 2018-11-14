@@ -41,14 +41,14 @@ class StretchRendererViewController: UIViewController, StretchRendererSettingsVC
         mapView.map = map
     }
     
-    //MARK: - StretchRendererSettingsVCDelegate
+    // MARK: - StretchRendererSettingsVCDelegate
     
     func stretchRendererSettingsVC(_ stretchRendererSettingsVC: StretchRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters) {
         let renderer = AGSStretchRenderer(stretchParameters: parameters, gammas: [], estimateStatistics: true, colorRamp: AGSColorRamp(type: .none, size: 1))
         rasterLayer?.renderer = renderer
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,

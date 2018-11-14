@@ -10,26 +10,26 @@ import UIKit
 
 @objc protocol DownloadProgressViewDelegate: AnyObject {
     
-    @objc optional func downloadProgressViewDidCancel(downloadProgressView:DownloadProgressView)
+    @objc optional func downloadProgressViewDidCancel(downloadProgressView: DownloadProgressView)
 }
 
 class DownloadProgressView: UIView {
 
-    @IBOutlet private var containerView:UIView!
-    @IBOutlet private var progressLabel:UILabel!
-    @IBOutlet private var statusLabel:UILabel!
+    @IBOutlet private var containerView: UIView!
+    @IBOutlet private var progressLabel: UILabel!
+    @IBOutlet private var statusLabel: UILabel!
     
-    private var newWindow:UIWindow!
-    private var transparentShapeLayer:CAShapeLayer!
-    private var shapeLayer:CAShapeLayer!
-    private var bezierPath:UIBezierPath!
-    private var radius:CGFloat = 30
+    private var newWindow: UIWindow!
+    private var transparentShapeLayer: CAShapeLayer!
+    private var shapeLayer: CAShapeLayer!
+    private var bezierPath: UIBezierPath!
+    private var radius: CGFloat = 30
     
-    private var progress:CGFloat = 0.0
+    private var progress: CGFloat = 0.0
     
-    weak var delegate:DownloadProgressViewDelegate?
+    weak var delegate: DownloadProgressViewDelegate?
     
-    private var nibView:UIView!
+    private var nibView: UIView!
     
     init() {
         super.init(frame: UIScreen.main.bounds)
@@ -68,7 +68,7 @@ class DownloadProgressView: UIView {
     private func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "DownloadProgressView", bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        let view = nib.instantiate(withOwner: self, options: nil).first as! UIView
         
         return view
     }
@@ -99,8 +99,7 @@ class DownloadProgressView: UIView {
         self.progressLabel.layer.addSublayer(self.shapeLayer)
     }
     
-    
-    func show(withStatus status:String, progress:CGFloat) {
+    func show(withStatus status: String, progress: CGFloat) {
         
         self.statusLabel.text = status
         
@@ -122,7 +121,6 @@ class DownloadProgressView: UIView {
         
         self.removeFromSuperview()
     }
-    
     
     @IBAction private func cancelAction() {
         
@@ -177,9 +175,9 @@ class DownloadProgressView: UIView {
     override func draw(_ rect: CGRect) {
         if let context = UIGraphicsGetCurrentContext() {
             
-            let locations:[CGFloat] = [0, 1]
+            let locations: [CGFloat] = [0, 1]
             
-            let colors:[CGColor] = [UIColor.black.withAlphaComponent(0).cgColor, UIColor.black.withAlphaComponent(0.75).cgColor]
+            let colors: [CGColor] = [UIColor.black.withAlphaComponent(0).cgColor, UIColor.black.withAlphaComponent(0.75).cgColor]
             
             let colorSpace = CGColorSpaceCreateDeviceRGB()
             let gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: locations)!

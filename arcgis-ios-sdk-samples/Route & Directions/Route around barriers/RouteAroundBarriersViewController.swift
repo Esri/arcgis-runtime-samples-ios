@@ -18,24 +18,24 @@ import ArcGIS
 
 class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelegate, UIAdaptivePresentationControllerDelegate, DirectionsListVCDelegate {
     
-    @IBOutlet var mapView:AGSMapView!
-    @IBOutlet var segmentedControl:UISegmentedControl!
-    @IBOutlet var routeParametersBBI:UIBarButtonItem!
-    @IBOutlet var routeBBI:UIBarButtonItem!
-    @IBOutlet var directionsListBBI:UIBarButtonItem!
-    @IBOutlet var directionsBottomConstraint:NSLayoutConstraint!
+    @IBOutlet var mapView: AGSMapView!
+    @IBOutlet var segmentedControl: UISegmentedControl!
+    @IBOutlet var routeParametersBBI: UIBarButtonItem!
+    @IBOutlet var routeBBI: UIBarButtonItem!
+    @IBOutlet var directionsListBBI: UIBarButtonItem!
+    @IBOutlet var directionsBottomConstraint: NSLayoutConstraint!
     
     private var stopGraphicsOverlay = AGSGraphicsOverlay()
     private var barrierGraphicsOverlay = AGSGraphicsOverlay()
     private var routeGraphicsOverlay = AGSGraphicsOverlay()
     private var directionsGraphicsOverlay = AGSGraphicsOverlay()
     
-    private var routeTask:AGSRouteTask!
-    private var routeParameters:AGSRouteParameters!
+    private var routeTask: AGSRouteTask!
+    private var routeParameters: AGSRouteParameters!
     private var isDirectionsListVisible = false
-    private var directionsListViewController:DirectionsListViewController!
+    private var directionsListViewController: DirectionsListViewController!
     
-    var generatedRoute:AGSRoute! {
+    var generatedRoute: AGSRoute! {
         didSet {
             let flag = generatedRoute != nil
             self.directionsListBBI.isEnabled = flag
@@ -59,7 +59,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         self.mapView.graphicsOverlays.addObjects(from: [routeGraphicsOverlay, directionsGraphicsOverlay, barrierGraphicsOverlay, stopGraphicsOverlay])
         
         //zoom to viewpoint
-        self.mapView.setViewpointCenter(AGSPoint(x: -13042254.715252, y: 3857970.236806, spatialReference: AGSSpatialReference(wkid: 3857)), scale: 1e5, completion: nil)
+        self.mapView.setViewpointCenter(AGSPoint(x: -13042254.715252, y: 3857970.236806, spatialReference: .webMercator()), scale: 1e5)
         
         //initialize route task
         self.routeTask = AGSRouteTask(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route")!)
@@ -71,7 +71,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         self.toggleRouteDetails(false)
     }
 
-    //MARK: - Route logic
+    // MARK: - Route logic
     
     func getDefaultParameters() {
         self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
@@ -121,7 +121,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         
         SVProgressHUD.show(withStatus: "Routing")
         
-        self.routeTask.solveRoute(with: self.routeParameters) { [weak self] (routeResult:AGSRouteResult?, error:Error?) -> Void in
+        self.routeTask.solveRoute(with: self.routeParameters) { [weak self] (routeResult: AGSRouteResult?, error: Error?) -> Void in
             
             SVProgressHUD.dismiss()
             
@@ -132,8 +132,9 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             if let error = error {
                 self.presentAlert(error: error)
             }
-            else if let routeResult = routeResult {
-                let route = routeResult.routes[0]
+            else if let routeResult = routeResult,
+                let route = routeResult.routes.first {
+                
                 let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self.routeSymbol(), attributes: nil)
                 self.routeGraphicsOverlay.graphics.add(routeGraphic)
                 self.generatedRoute = route
@@ -168,7 +169,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         return AGSSimpleFillSymbol(style: .diagonalCross, color: .red, outline: nil)
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //normalize geometry
@@ -194,7 +195,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         }
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func clearAction() {
         if segmentedControl.selectedSegmentIndex == 0 {
@@ -215,7 +216,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         }) 
     }
     
-    func toggleRouteDetails(_ on:Bool) {
+    func toggleRouteDetails(_ on: Bool) {
         self.directionsBottomConstraint.constant = on ? -115 : -150
         UIView.animate(withDuration: 0.3, animations: { [weak self] () -> Void in
             self?.view.layoutIfNeeded()
@@ -226,7 +227,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         }) 
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RouteSettingsSegue" {
@@ -248,10 +249,10 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         return .none
     }
     
-    //MARK: - DirectionsListVCDelegate
+    // MARK: - DirectionsListVCDelegate
     
     func directionsListViewControllerDidDeleteRoute(_ directionsListViewController: DirectionsListViewController) {
-        self.generatedRoute = nil;
+        self.generatedRoute = nil
         self.routeGraphicsOverlay.graphics.removeAllObjects()
         self.directionsGraphicsOverlay.graphics.removeAllObjects()
     }

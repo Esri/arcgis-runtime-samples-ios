@@ -15,12 +15,12 @@
 import UIKit
 
 protocol SanDiegoAddressesVCDelegate: AnyObject {
-    func sanDiegoAddressesViewController(_ sanDiegoAddressesViewController: SanDiegoAddressesViewController, didSelectAddress address:String)
+    func sanDiegoAddressesViewController(_ sanDiegoAddressesViewController: SanDiegoAddressesViewController, didSelectAddress address: String)
 }
 
 class SanDiegoAddressesViewController: UITableViewController {
     
-    weak var delegate:SanDiegoAddressesVCDelegate?
+    weak var delegate: SanDiegoAddressesVCDelegate?
     
     //prepopulated list of addresses
     private var addresses = ["910 N Harbor Dr, San Diego, CA 92101",
@@ -43,7 +43,6 @@ class SanDiegoAddressesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.addresses.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell", for: indexPath)

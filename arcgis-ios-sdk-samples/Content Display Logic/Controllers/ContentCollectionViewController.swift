@@ -16,17 +16,17 @@ import UIKit
 
 class ContentCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    @IBOutlet private var collectionViewFlowLayout:UICollectionViewFlowLayout!
+    @IBOutlet private var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
     /// The categories to display in the collection view.
-    var categories:[Category] = []{
-        didSet{
+    var categories: [Category] = [] {
+        didSet {
             // add search only after setting categories to ensure that the samples are available
             addSearchController()
         }
     }
     
-    private func addSearchController(){
+    private func addSearchController() {
         
         // create the view controller for displaying the search results
         let searchResultsController = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
@@ -35,7 +35,7 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         searchResultsController.searchEngine = SampleSearchEngine(samples: allSamples)
         
         // create the search controller
-        let searchController = UISearchController(searchResultsController:searchResultsController)
+        let searchController = UISearchController(searchResultsController: searchResultsController)
         searchController.obscuresBackgroundDuringPresentation = true
         searchController.hidesNavigationBarDuringPresentation = false
         // send search query updates to the results controller
@@ -94,7 +94,7 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         return cell
     }
     
-    //MARK: - UICollectionViewDelegate
+    // MARK: - UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //hide keyboard if visible
@@ -107,7 +107,7 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         show(controller, sender: self)
     }
     
-    //MARK: - UICollectionViewDelegateFlowLayout
+    // MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let collectionViewSize = collectionView.bounds.inset(by: collectionView.safeAreaInsets).size

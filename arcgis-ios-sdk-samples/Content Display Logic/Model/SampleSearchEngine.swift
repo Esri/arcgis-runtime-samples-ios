@@ -16,12 +16,12 @@ import UIKit
 
 class SampleSearchEngine {
     
-    private var displayNamesByReadmeWords:[String: [String]] = [:]
+    private var displayNamesByReadmeWords: [String: [String]] = [:]
     private var isLoadingReadmeIndex = false
     
-    private let samples:[Sample]
+    private let samples: [Sample]
     
-    init(samples:[Sample]) {
+    init(samples: [Sample]) {
         self.samples = samples
         
         isLoadingReadmeIndex = true
@@ -41,20 +41,20 @@ class SampleSearchEngine {
         
         let tagger = NSLinguisticTagger(tagSchemes: [.tokenType, .nameType, .lexicalClass], options: 0)
         
-        func addToIndex(string:String,sampleDisplayName:String){
+        func addToIndex(string: String, sampleDisplayName: String) {
             
             tagger.string = string
             let range = NSRange(location: 0, length: string.count)
             tagger.enumerateTags(in: range,
                                  scheme: NSLinguisticTagScheme.lexicalClass,
                                  options: [.omitWhitespace, .omitPunctuation],
-                                 using: { (tag:NSLinguisticTag?, tokenRange:NSRange, sentenceRange:NSRange, _) -> Void in
+                                 using: { (tag: NSLinguisticTag?, tokenRange: NSRange, sentenceRange: NSRange, _) -> Void in
                 
                 guard let tag = tag else {
                     return
                 }
                
-                if  [NSLinguisticTag.noun,.verb,.adjective,.otherWord].contains(tag) {
+                if  [NSLinguisticTag.noun, .verb, .adjective, .otherWord].contains(tag) {
                     let word = ((string as NSString).substring(with: tokenRange) as String).lowercased()
                     
                     //trivial comparisons
@@ -76,20 +76,20 @@ class SampleSearchEngine {
         }
         
         // index all nodes
-        for sample in samples{
+        for sample in samples {
             autoreleasepool {
                 if let readmeURL = sample.readmeURL,
                     let readmeContent = try? String(contentsOf: readmeURL, encoding: .utf8) {
-                    addToIndex(string:readmeContent, sampleDisplayName:sample.name)
+                    addToIndex(string: readmeContent, sampleDisplayName: sample.name)
                 }
             }
         }
     }
     
-    private func samplesWithReadmes(matching query:String) -> [Sample] {
+    private func samplesWithReadmes(matching query: String) -> [Sample] {
         
         // skip readmes if not yet loaded
-        guard !isLoadingReadmeIndex else{
+        guard !isLoadingReadmeIndex else {
             return []
         }
         
@@ -98,7 +98,7 @@ class SampleSearchEngine {
         
         // search readmes, limited to matching a single word
         let displayNamesForReadmeMatches = displayNamesByReadmeWords.keys.flatMap { (readmeWord) -> [String] in
-            if readmeWord.contains(lowercasedQuery){
+            if readmeWord.contains(lowercasedQuery) {
                 return displayNamesByReadmeWords[readmeWord] ?? []
             }
             return []
@@ -106,7 +106,7 @@ class SampleSearchEngine {
         return samplesForDisplayNames(displayNamesForReadmeMatches)
     }
     
-    private func samplesWithMetadata(matching query:String) -> [Sample] {
+    private func samplesWithMetadata(matching query: String) -> [Sample] {
         
         // the normalized term to find
         let lowercasedQuery = query.lowercased()
@@ -121,26 +121,26 @@ class SampleSearchEngine {
             // for convenience, store normalized names for re-use
             let sample1Name = sample1.name.lowercased()
             let sample2Name = sample2.name.lowercased()
-            if let sample1Index = sample1Name.range(of: lowercasedQuery)?.lowerBound{
-                if let sample2Index = sample2Name.range(of: lowercasedQuery)?.lowerBound{
+            if let sample1Index = sample1Name.range(of: lowercasedQuery)?.lowerBound {
+                if let sample2Index = sample2Name.range(of: lowercasedQuery)?.lowerBound {
                     // matches are both in the titles
-                    if sample1Index != sample2Index{
+                    if sample1Index != sample2Index {
                         // sort by index
                         return sample1Index < sample2Index
                     }
                     // indexes are the same, sort alphabetically
                     return sample1Name < sample2Name
                 }
-                else{
+                else {
                     // only node1 has a title match, sort that first
                     return true
                 }
             }
-            else if sample2Name.contains(lowercasedQuery){
+            else if sample2Name.contains(lowercasedQuery) {
                 // only node2 has a title match, sort that first
                 return false
             }
-            else{
+            else {
                 // matches are both in the descriptions
                 
                 // for convenience, store normalized descriptions for re-use
@@ -148,7 +148,7 @@ class SampleSearchEngine {
                 let sample2Desc = sample2.description.lowercased()
                 let sample1Index = sample1Desc.range(of: lowercasedQuery)!.lowerBound
                 let sample2Index = sample2Desc.range(of: lowercasedQuery)!.lowerBound
-                if sample1Index != sample2Index{
+                if sample1Index != sample2Index {
                     // sort by index
                     return sample1Index < sample2Index
                 }
@@ -159,7 +159,7 @@ class SampleSearchEngine {
         return matchingSamples
     }
     
-    private func samplesForDisplayNames(_ names:[String]) -> [Sample] {
+    private func samplesForDisplayNames(_ names: [String]) -> [Sample] {
         // preserve order
         return names.compactMap { (name) -> Sample? in
             return samples.first(where: { (sample) -> Bool in
@@ -168,9 +168,9 @@ class SampleSearchEngine {
         }
     }
     
-    //MARK: - Public methods
+    // MARK: - Public methods
     
-    func sortedSamples(matching query:String) -> [Sample] {
+    func sortedSamples(matching query: String) -> [Sample] {
         
         // get nodes with titles or descriptions matching the query
         var matchingNodes = samplesWithMetadata(matching: query)
@@ -182,7 +182,7 @@ class SampleSearchEngine {
         nodesForReadmeMatches.subtract(matchingNodes)
         
         // simply sort alphabetically
-        let sortedNodesForReadmeMatches = nodesForReadmeMatches.sorted{ $0.name < $1.name }
+        let sortedNodesForReadmeMatches = nodesForReadmeMatches.sorted { $0.name < $1.name }
         
         // readme matches are less likely to be releavant so append to the end of the name/description results
         matchingNodes.append(contentsOf: sortedNodesForReadmeMatches)

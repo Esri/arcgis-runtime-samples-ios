@@ -68,7 +68,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         }
         
         // deselect all selected features
-        if selectedFeatures.count > 0 {
+        if !selectedFeatures.isEmpty {
             featureLayer.unselectFeatures(selectedFeatures)
             selectedFeatures.removeAll()
         }
@@ -87,12 +87,12 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
                 self.presentAlert(error: error)
             }
             else if let features = result?.featureEnumerator().allObjects {
-                if features.count > 0 {
+                if !features.isEmpty {
                     // display the selection
                     featureLayer.select(features)
                     
                     // zoom to the selected feature
-                    self.mapView.setViewpointGeometry(features[0].geometry!, padding: 25)
+                    self.mapView.setViewpointGeometry(features.first!.geometry!, padding: 25)
                     
                 } else {
                     if let fullExtent = featureLayer.fullExtent {

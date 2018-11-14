@@ -38,7 +38,7 @@ class ExpandableTableViewController: UITableViewController {
     // MARK: - Table View Data Source Methods
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if sectionHeaderTitles.count > 0 {
+        if !sectionHeaderTitles.isEmpty {
             tableView.backgroundView = nil
             return sectionHeaderTitles.count
         } else {
@@ -160,7 +160,7 @@ class ExpandableTableViewController: UITableViewController {
         let sectionData = sectionItems[section]
         
         expandedSectionHeaderNumber = -1
-        if sectionData.count == 0 {
+        if sectionData.isEmpty {
             return
         } else {
             UIView.animate(withDuration: 0.25, animations: {
@@ -180,7 +180,7 @@ class ExpandableTableViewController: UITableViewController {
     func tableViewExpandSection(_ section: Int, imageView: UIImageView) {
         let sectionData = sectionItems[section]
         
-        if sectionData.count == 0 {
+        if sectionData.isEmpty {
             expandedSectionHeaderNumber = -1
             return
         } else {

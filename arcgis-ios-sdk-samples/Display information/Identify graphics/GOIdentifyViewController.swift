@@ -79,7 +79,7 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
             }
             else {
                 //if a graphics is found then show an alert
-                if result.graphics.count > 0 {
+                if !result.graphics.isEmpty {
                     self?.presentAlert(message: "Tapped on graphic")
                 }
             }

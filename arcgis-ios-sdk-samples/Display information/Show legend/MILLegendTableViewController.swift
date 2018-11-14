@@ -33,7 +33,7 @@ class MILLegendTableViewController: UITableViewController {
         for i in 0...layers.count-1 {
             let layer = layers[i]
 
-            if layer.subLayerContents.count > 0 {
+            if !layer.subLayerContents.isEmpty {
                 self.populateLegends(with: layer.subLayerContents)
             }
             else {

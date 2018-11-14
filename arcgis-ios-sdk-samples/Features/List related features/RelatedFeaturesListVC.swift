@@ -26,7 +26,7 @@ class RelatedFeaturesListVC: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let result = results?[0] {
+        if let result = results?.first {
             self.label.text = result.feature?.attributes["UNIT_NAME"] as? String ?? "Origin Feature"
         }
         

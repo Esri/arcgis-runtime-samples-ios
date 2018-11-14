@@ -87,7 +87,8 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
                 self?.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
             }
             else {
-                if let featureEditResults = featureEditResults, featureEditResults.count > 0 && featureEditResults[0].completedWithErrors == false {
+                if let featureEditResults = featureEditResults,
+                    featureEditResults.first?.completedWithErrors == false {
                     self?.presentAlert(message: "Edits applied successfully")
                 }
                 SVProgressHUD.dismiss()

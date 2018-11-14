@@ -84,10 +84,9 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
                 //show error to user
                 self?.presentAlert(error: error)
             }
-            else if result.geoElements.count > 0 {
+            else if let feature = result.geoElements.first as? AGSFeature {
                 
                 //select the first feature
-                let feature = result.geoElements[0] as! AGSFeature
                 self?.selectedPark = feature
                 
                 //show related features view controller
@@ -100,11 +99,10 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "RelatedFeaturesSegue" {
-            
-            let navigationController = segue.destination as! UINavigationController
-            let controller = navigationController.viewControllers[0] as! RelatedFeaturesViewController
-            
+        if segue.identifier == "RelatedFeaturesSegue",
+            let navigationController = segue.destination as? UINavigationController,
+            let controller = navigationController.viewControllers.first as? RelatedFeaturesViewController {
+  
             //share selected park
             controller.originFeature = self.selectedPark as? AGSArcGISFeature
             

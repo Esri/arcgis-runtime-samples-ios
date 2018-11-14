@@ -68,7 +68,7 @@ class DownloadProgressView: UIView {
     private func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "DownloadProgressView", bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        let view = nib.instantiate(withOwner: self, options: nil).first as! UIView
         
         return view
     }

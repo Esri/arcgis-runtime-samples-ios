@@ -252,19 +252,19 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         
         switch indexPath.section {
         case 0:
-            if statisticDefinitions.count > 0 {
+            if !statisticDefinitions.isEmpty {
                 let statisticDefinition = statisticDefinitions[indexPath.row]
                 let statisticTypeString = statisticTypes[statisticDefinition.statisticType.rawValue]
                 let text = "\(statisticDefinition.onFieldName) (\(statisticTypeString))"
                 cell.textLabel?.text = text
             }
         case 1:
-            if selectedGroupByFieldNames.count > 0 {
+            if !selectedGroupByFieldNames.isEmpty {
                 let fieldName = selectedGroupByFieldNames[indexPath.row]
                 cell.textLabel?.text = fieldName
             }
         default:
-            if selectedOrderByFields.count > 0 {
+            if !selectedOrderByFields.isEmpty {
                 let orderByField = selectedOrderByFields[indexPath.row]
                 let sortOrderString = stringFor(sortOrder: orderByField.sortOrder)
                 let text = "\(orderByField.fieldName) (\(sortOrderString))"
@@ -284,13 +284,13 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         }
         switch indexPath.section {
         case 0:
-            if statisticDefinitions.count > 0 {
+            if !statisticDefinitions.isEmpty {
                 // Remove statistic definition
                 statisticDefinitions.remove(at: indexPath.row)
             }
         case 1:
             // Remove from selected group by field names
-            if selectedGroupByFieldNames.count > 0 {
+            if !selectedGroupByFieldNames.isEmpty {
                 //
                 // Get the field name so we can remove order by fields
                 let selectedGroupByFieldName = selectedGroupByFieldNames[indexPath.row]
@@ -313,7 +313,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
                 }
             }
         default:
-            if selectedOrderByFields.count > 0 {
+            if !selectedOrderByFields.isEmpty {
                 // Remove selected order by field
                 selectedOrderByFields.remove(at: indexPath.row)
             }

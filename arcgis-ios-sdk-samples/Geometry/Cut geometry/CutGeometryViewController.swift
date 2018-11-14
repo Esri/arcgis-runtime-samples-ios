@@ -125,7 +125,8 @@ class CutGeometryViewController: UIViewController {
         (sender as? UIBarButtonItem)?.isEnabled = false
         
         // cut the Lake Superior polygon using the border polyline
-        guard let parts = AGSGeometryEngine.cut(lakeSuperiorPolygonGraphic.geometry!, withCutter: borderPolylineGraphic.geometry! as! AGSPolyline), parts.count >= 2 else {
+        guard let parts = AGSGeometryEngine.cut(lakeSuperiorPolygonGraphic.geometry!, withCutter: borderPolylineGraphic.geometry! as! AGSPolyline),
+            parts.count >= 2 else {
             return
         }
         

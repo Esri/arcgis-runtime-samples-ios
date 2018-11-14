@@ -113,7 +113,11 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
                 self?.presentAlert(error: error)
             }
             else {
-                if result.graphics.count == 0 {
+                if let graphic = result.graphics.first {
+                    //reverse geocode
+                    self?.reverseGeocode(point: mapPoint, withGraphic: graphic)
+                }
+                else {
                     //add a graphic
                     var graphic: AGSGraphic
                     
@@ -132,10 +136,6 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
                     
                     //find route
                     self?.route()
-                }
-                else {
-                    //reverse geocode
-                    self?.reverseGeocode(point: mapPoint, withGraphic: result.graphics[0])
                 }
             }
         }
@@ -160,7 +160,8 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
             else {
                 //assign the label property of result as an attributes to the graphic
                 //and show the callout
-                if let results = results, results.count > 0 {
+                if let results = results,
+                    !results.isEmpty {
                     graphic.attributes["Match_addr"] = results.first!.formattedAddressString
                     self?.showCalloutForGraphic(graphic, tapLocation: point, animated: false, offset: false)
                     return
@@ -180,9 +181,9 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     private func setupRouteTask() {
         //if map contains network data
-        if self.map.transportationNetworks.count > 0 {
+        if let transportationNetwork = map.transportationNetworks.first {
 
-            self.routeTask = AGSRouteTask(dataset: self.map.transportationNetworks[0])
+            self.routeTask = AGSRouteTask(dataset: transportationNetwork)
             
             //get default parameters
             self.getDefaultParameters()
@@ -228,11 +229,9 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
                 //remove the last marker
                 self?.markerGraphicsOverlay.graphics.removeLastObject()
             }
-            else {
-                if let route = routeResult?.routes[0] {
-                    let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self?.routeSymbol(), attributes: nil)
-                    self?.routeGraphicsOverlay.graphics.add(routeGraphic)
-                }
+            else if let route = routeResult?.routes.first {
+                let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self?.routeSymbol(), attributes: nil)
+                self?.routeGraphicsOverlay.graphics.add(routeGraphic)
             }
         }
     }

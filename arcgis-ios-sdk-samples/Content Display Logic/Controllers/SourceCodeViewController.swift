@@ -38,8 +38,8 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
         contentView.addSubview(webView)
         self.webView = webView
         
-        if self.filenames != nil && self.filenames.count > 0 {
-            self.loadHTMLPage(filename: self.filenames[0])
+        if let filename = filenames.first {
+            loadHTMLPage(filename: filename)
         }
     }
     

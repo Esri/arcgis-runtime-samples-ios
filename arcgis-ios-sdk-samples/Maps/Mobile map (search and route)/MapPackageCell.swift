@@ -91,7 +91,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         let map = self.mapPackage.maps[indexPath.item]
         //route image view
         let routeImageView = cell.viewWithTag(13) as! UIImageView
-        routeImageView.isHidden = (map.transportationNetworks.count == 0)
+        routeImageView.isHidden = map.transportationNetworks.isEmpty
         
         //thumbnail
         let imageView = cell.viewWithTag(14) as! UIImageView

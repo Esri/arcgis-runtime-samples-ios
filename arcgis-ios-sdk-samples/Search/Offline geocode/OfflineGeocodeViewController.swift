@@ -96,22 +96,27 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         
         //perform geocode with the input
         self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters, completion: { [weak self]  (results: [AGSGeocodeResult]?, error: Error?) -> Void in
+            
+            guard let self = self else {
+                return
+            }
+            
             if let error = error {
-                self?.presentAlert(error: error)
+                self.presentAlert(error: error)
             }
             else {
                 //if a result was returned display the graphic on the map view
                 //using the first result, as it is the more relevant
-                if let results = results, results.count > 0 {
-                    let graphic = self?.graphicForPoint(results[0].displayLocation!, attributes: results[0].attributes as [String: AnyObject]?)
-                    self?.graphicsOverlay.graphics.add(graphic!)
+                if let result = results?.first {
+                    let graphic = self.graphicForPoint(result.displayLocation!, attributes: result.attributes as [String: AnyObject]?)
+                    self.graphicsOverlay.graphics.add(graphic)
                     
                     //zoom to the extent of the graphic
-                    self?.mapView.setViewpointGeometry(results[0].displayLocation!.extent, completion: nil)
+                    self.mapView.setViewpointGeometry(result.displayLocation!.extent, completion: nil)
                 }
                 else {
                     //if no result found, inform the user
-                    self?.presentAlert(message: "No results found")
+                    self.presentAlert(message: "No results found")
                 }
             }
         })
@@ -140,32 +145,32 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         //perform reverse geocode
         self.locatorTaskOperation = self.locatorTask.reverseGeocode(withLocation: normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) -> Void in
 
-            if let error = error as NSError?, error.code != NSUserCancelledError {
-                //print error instead alerting to avoid disturbing the flow
-                print(error.localizedDescription)
+            if let error = error as NSError? {
+                if error.code != NSUserCancelledError {
+                    //print error instead alerting to avoid disturbing the flow
+                    print(error.localizedDescription)
+                }
             }
-            else {
+            else if let result = results?.first {
                 //if a result is found extract the required attributes
                 //assign the attributes to the graphic
                 //and show the callout
-                if let results = results, results.count > 0 {
-                    let cityString = results.first?.attributes?["City"] as? String ?? ""
-                    let streetString = results.first?.attributes?["Street"] as? String ?? ""
-                    let stateString = results.first?.attributes?["State"] as? String ?? ""
-                    graphic.attributes.addEntries(from: ["Match_addr": "\(streetString) \(cityString) \(stateString)"])
-                    self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint, animated: false, offset: self!.longPressedAndMoving)
-                    return
-                }
-                else {
-                    //no result was found
-                    //using print in log instead of alert to
-                    //avoid breaking the flow
-                    print("No address found")
+                let cityString = result.attributes?["City"] as? String ?? ""
+                let streetString = result.attributes?["Street"] as? String ?? ""
+                let stateString = result.attributes?["State"] as? String ?? ""
+                graphic.attributes.addEntries(from: ["Match_addr": "\(streetString) \(cityString) \(stateString)"])
+                self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint, animated: false, offset: self!.longPressedAndMoving)
+                return
+            }
+            else {
+                //no result was found
+                //using print in log instead of alert to
+                //avoid breaking the flow
+                print("No address found")
 
-                    //dismiss the callout if already visible
-                    self?.mapView.callout.dismiss()
+                //dismiss the callout if already visible
+                self?.mapView.callout.dismiss()
 
-                }
             }
             //in case of error or no results, remove the graphics
             self?.graphicsOverlay.graphics.remove(graphic)
@@ -207,9 +212,9 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
             if let error = result.error {
                 self.presentAlert(error: error)
             }
-            else if result.graphics.count > 0 {
+            else if let graphic = result.graphics.first {
                 //show the callout for the first graphic found
-                self.showCalloutForGraphic(result.graphics.first!, tapLocation: mapPoint, animated: true, offset: false)
+                self.showCalloutForGraphic(graphic, tapLocation: mapPoint, animated: true, offset: false)
             }
         }
     }

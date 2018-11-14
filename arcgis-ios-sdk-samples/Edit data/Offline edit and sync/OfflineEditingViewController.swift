@@ -471,7 +471,7 @@ extension OfflineEditingViewController: AGSGeoViewTouchDelegate {
                         popups.append(AGSPopup(geoElement: geoElement))
                     }
                 }
-                if popups.count > 0 {
+                if !popups.isEmpty {
                     let popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
                     self.popupsVC = popupsVC
                     popupsVC.delegate = self

@@ -97,10 +97,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
                 self?.presentAlert(error: error)
             }
             //Check if a feature is identified
-            else if result.geoElements.count > 0 {
-                
-                //select the first feature
-                let feature = result.geoElements[0] as! AGSArcGISFeature
+            else if let feature = result.geoElements.first as? AGSArcGISFeature {
                 
                 //store as selected park to use for querying
                 self?.selectedPark = feature
@@ -135,7 +132,8 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
             }
             else {
                 //Show the related features found in popover
-                if let results = results, results.count > 0 {
+                if let results = results,
+                    !results.isEmpty {
                     self?.results = results
                     
                     //self?.performSegue(withIdentifier: "RelatedFeaturesSegue", sender: self)

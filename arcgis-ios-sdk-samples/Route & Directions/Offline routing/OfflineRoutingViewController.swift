@@ -233,7 +233,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         //if a route is returned, create a graphic for it
         //and add to the route graphics overlay
-        if let route = routes?[0] {
+        if let route = routes?.first {
             let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self.routeSymbol(), attributes: nil)
             //keep reference to the graphic in case of long press
             //to remove in case of cancel or move

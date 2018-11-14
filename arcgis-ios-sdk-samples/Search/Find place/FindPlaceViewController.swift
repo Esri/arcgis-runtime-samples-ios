@@ -180,8 +180,8 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     
     //method to zoom to an array of graphics
     func zoomToGraphics(_ graphics: [AGSGraphic]) {
-        if graphics.count > 0 {
-            let multipoint = AGSMultipointBuilder(spatialReference: graphics[0].geometry!.spatialReference)
+        if let spatialReference = graphics.first?.geometry?.spatialReference {
+            let multipoint = AGSMultipointBuilder(spatialReference: spatialReference)
             for graphic in graphics {
                 multipoint.points.add(graphic.geometry as! AGSPoint)
             }
@@ -202,9 +202,9 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
             if let error = result.error {
                 print(error)
             }
-            else if result.graphics.count > 0 {
+            else if let graphic = result.graphics.first {
                 //show callout for the first graphic in the array
-                self.showCalloutForGraphic(result.graphics[0], tapLocation: mapPoint)
+                self.showCalloutForGraphic(graphic, tapLocation: mapPoint)
             }
         }
     }
@@ -356,14 +356,12 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
             if let error = error {
                 print(error.localizedDescription)
             }
+            else if let geoCodeResults = result?.first {
+                self?.preferredSearchLocation = geoCodeResults.displayLocation
+                completion()
+            }
             else {
-                if let result = result, result.count > 0 {
-                    self?.preferredSearchLocation = result[0].displayLocation
-                    completion()
-                }
-                else {
-                    print("No location found for the suggest result")
-                }
+                print("No location found for the suggest result")
             }
         }
     }
@@ -399,7 +397,8 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func handleGeocodeResultsForPOIs(_ geocodeResults: [AGSGeocodeResult]?, areExtentBased: Bool) {
-        if let results = geocodeResults, results.count > 0 {
+        if let results = geocodeResults,
+            !results.isEmpty {
             
             //show the graphics on the map
             for result in results {

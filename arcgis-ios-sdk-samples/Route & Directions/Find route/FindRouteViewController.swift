@@ -128,11 +128,11 @@ class FindRouteViewController: UIViewController {
             if let error = error {
                 print(error)
             }
-            else {
+            else if let route = routeResult?.routes.first {
                 //show the resulting route on the map
                 //also save a reference to the route object
                 //in order to access directions
-                self.generatedRoute = routeResult!.routes[0]
+                self.generatedRoute = route
                 let routeGraphic = AGSGraphic(geometry: self.generatedRoute.routeGeometry, symbol: self.routeSymbol(), attributes: nil)
                 self.routeGraphicsOverlay.graphics.add(routeGraphic)
             }

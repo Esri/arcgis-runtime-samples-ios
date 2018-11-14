@@ -143,13 +143,14 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
         let basemap = self.basemaps[self.selectedBasemapIndex].copy() as! AGSBasemap
         
         //create an array of the selected operational layers
-        var layers = [AGSLayer]()
-        for index in self.selectedLayersIndex {
-            let layer = self.layers[index].copy() as! AGSLayer
-            layers.append(layer)
+        let selectedLayers: [AGSLayer]?
+        if !selectedLayersIndex.isEmpty {
+            selectedLayers = selectedLayersIndex.map { layers[$0].copy() as! AGSLayer }
+        } else {
+            selectedLayers = nil
         }
         
-        self.delegate?.createOptionsViewController(self, didSelectBasemap: basemap, layers: layers.count > 0 ? layers : nil)
+        self.delegate?.createOptionsViewController(self, didSelectBasemap: basemap, layers: selectedLayers)
     }
 
 }

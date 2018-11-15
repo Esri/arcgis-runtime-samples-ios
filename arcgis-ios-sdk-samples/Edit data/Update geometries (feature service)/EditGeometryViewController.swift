@@ -27,7 +27,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     private var lastQuery: AGSCancelable!
     
     private var selectedFeature: AGSArcGISFeature!
-    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
+    private let featureServiceURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         //set initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -9030446.96, y: 943791.32, spatialReference: .webMercator()), scale: 2e6)
         
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: FEATURE_SERVICE_URL)!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         self.map.operationalLayers.add(self.featureLayer)
@@ -53,11 +53,11 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         super.viewDidAppear(animated)
         
         //default state for toolbar is off
-        self.toggleToolbar(false)
+        self.toggleToolbar(visible: false)
     }
     
-    func toggleToolbar(_ on: Bool) {
-        toolbarBottomConstraint.constant = on ? 0 : -44 - view.safeAreaInsets.bottom
+    func toggleToolbar(visible: Bool) {
+        toolbarBottomConstraint.constant = visible ? 0 : -44 - view.safeAreaInsets.bottom
         
         UIView.animate(withDuration: 0.3, animations: { [weak self] () -> Void in
             self?.view.layoutIfNeeded()
@@ -119,7 +119,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.mapView.sketchEditor?.start(with: point)
         
         //show the toolbar
-        self.toggleToolbar(true)
+        self.toggleToolbar(visible: true)
         
         //hide the feature for time being
         self.featureLayer.setFeature(self.selectedFeature, visible: false)
@@ -145,7 +145,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         }
         
         //hide toolbar
-        self.toggleToolbar(false)
+        self.toggleToolbar(visible: false)
         
         //disable sketch editor
         self.mapView.sketchEditor?.stop()

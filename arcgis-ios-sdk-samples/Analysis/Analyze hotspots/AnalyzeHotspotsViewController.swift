@@ -106,7 +106,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
     func hotspotSettingsViewController(_ hotspotSettingsViewController: HotspotSettingsViewController, didSelectDates fromDate: String, toDate: String) {
         
         self.analyzeHotspots(fromDate, toDate: toDate)
-        self.toggleSettingsView(on: false)
+        self.toggleSettingsView(visible: false)
     }
     
     // MARK: - Navigation
@@ -120,13 +120,13 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
     
     // MARK: - Toggle settings view
     
-    private func toggleSettingsView(on: Bool) {
-        self.containerView.isHidden = !on
+    private func toggleSettingsView(visible: Bool) {
+        self.containerView.isHidden = !visible
     }
     
     // MARK: - Actions
     
     @IBAction func changeDatesAction() {
-        self.toggleSettingsView(on: true)
+        self.toggleSettingsView(visible: true)
     }
 }

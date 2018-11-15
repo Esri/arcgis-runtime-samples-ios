@@ -104,9 +104,9 @@ class CustomContextSheet: UIView {
         }
         
         //other buttons
-        for i in 0..<images.count {
+        for (index, image) in images.enumerated() {
             
-            let button = self.button(self.images[i], highlightImage: self.highlightImages?[i], action: #selector(CustomContextSheet.valueChanged(_:)))
+            let button = self.button(image, highlightImage: self.highlightImages?[index], action: #selector(CustomContextSheet.valueChanged(_:)))
             button.isHidden = true
             self.insertSubview(button, at: 0)
             self.buttonsCollection.append(button)
@@ -119,7 +119,7 @@ class CustomContextSheet: UIView {
             
             if self.titles != nil {
                 //labels
-                let label = self.label(self.titles[i])
+                let label = self.label(self.titles[index])
                 self.insertSubview(label, at: 0)
                 self.labelsCollection.append(label)
                 
@@ -211,17 +211,17 @@ class CustomContextSheet: UIView {
                 delay: 0,
                 animations: { [weak self] () -> Void in
                     if let weakSelf = self {
-                        let count = constraints.count
-                        for i in 0..<count {
+                        let constraintCount = constraints.count
+                        for frameIndex in 0..<constraintCount {
                             UIView.addKeyframe(
-                                withRelativeStartTime: Double(i) / Double(count),
-                                relativeDuration: 1 / Double(count),
+                                withRelativeStartTime: Double(frameIndex) / Double(constraintCount),
+                                relativeDuration: 1 / Double(constraintCount),
                                 animations: { () -> Void in
-                                    for j in i..<count {
-                                        let layout = constraints[j]
+                                    for layoutIndex in frameIndex..<constraintCount {
+                                        let layout = constraints[layoutIndex]
                                         layout.constant -= weakSelf.buttonDisplacement
                                     }
-                                    weakSelf.labelsCollection[i].alpha = 1
+                                    weakSelf.labelsCollection[frameIndex].alpha = 1
                                     weakSelf.layoutIfNeeded()
                                 }
                             )
@@ -251,17 +251,17 @@ class CustomContextSheet: UIView {
                 delay: 0,
                 animations: { [weak self] () -> Void in
                     if let weakSelf = self {
-                        let count = constraints.count
-                        for i in 0..<count {
+                        let constraintCount = constraints.count
+                        for frameIndex in 0..<constraintCount {
                             UIView.addKeyframe(
-                                withRelativeStartTime: Double(i) / Double(count),
-                                relativeDuration: 1 / Double(count),
+                                withRelativeStartTime: Double(frameIndex) / Double(constraintCount),
+                                relativeDuration: 1 / Double(constraintCount),
                                 animations: { () -> Void in
-                                    for j in (count - 1 - i)...count - 1 {
-                                        let layout = constraints[j]
+                                    for layoutIndex in (constraintCount - 1 - frameIndex)...constraintCount - 1 {
+                                        let layout = constraints[layoutIndex]
                                         layout.constant += weakSelf.buttonDisplacement
                                     }
-                                    weakSelf.labelsCollection[count - 1 - i].alpha = 0
+                                    weakSelf.labelsCollection[constraintCount - 1 - frameIndex].alpha = 0
                                     weakSelf.layoutIfNeeded()
                                 }
                             )

@@ -14,7 +14,6 @@ disabled_rules: # rule identifiers to exclude from running
   - for_where
   - force_cast
   - function_body_length
-  - identifier_name
   - line_length
   - notification_center_detachment
   - todo
@@ -70,3 +69,9 @@ opt_in_rules: # some rules are only opt-in
   - untyped_error_in_catch
   - vertical_parameter_alignment_on_call
   - yoda_condition
+
+identifier_name:
+  excluded: # allowed non-conforming identifiers
+    - x
+    - y
+    - z

@@ -165,13 +165,13 @@ class ExpandableTableViewController: UITableViewController {
             UIView.animate(withDuration: 0.25, animations: {
                 imageView.image = UIImage(named: "Collapsed")
             })
-            var indexesPath = [IndexPath]()
-            for i in 0 ..< sectionData.count {
-                let index = IndexPath(row: i, section: section)
-                indexesPath.append(index)
+            var indexPaths = [IndexPath]()
+            for index in 0..<sectionData.count {
+                let indexPath = IndexPath(row: index, section: section)
+                indexPaths.append(indexPath)
             }
             tableView!.beginUpdates()
-            tableView!.deleteRows(at: indexesPath, with: .fade)
+            tableView!.deleteRows(at: indexPaths, with: .fade)
             tableView!.endUpdates()
         }
     }
@@ -186,14 +186,14 @@ class ExpandableTableViewController: UITableViewController {
             UIView.animate(withDuration: 0.25, animations: {
                 imageView.image = UIImage(named: "Expanded")
             })
-            var indexesPath = [IndexPath]()
-            for i in 0 ..< sectionData.count {
-                let index = IndexPath(row: i, section: section)
-                indexesPath.append(index)
+            var indexPaths = [IndexPath]()
+            for index in 0..<sectionData.count {
+                let indexPath = IndexPath(row: index, section: section)
+                indexPaths.append(indexPath)
             }
             expandedSectionHeaderNumber = section
             tableView!.beginUpdates()
-            tableView!.insertRows(at: indexesPath, with: UITableView.RowAnimation.fade)
+            tableView!.insertRows(at: indexPaths, with: UITableView.RowAnimation.fade)
             tableView!.endUpdates()
         }
     }

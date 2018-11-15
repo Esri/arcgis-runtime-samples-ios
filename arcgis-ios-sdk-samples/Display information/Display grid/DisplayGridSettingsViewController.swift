@@ -219,7 +219,7 @@ class DisplayGridSettingsViewController: UITableViewController {
     /// Changes the grid color.
     private func changeGridColor(of grid: AGSGrid, to color: UIColor) {
         for gridLevel in 0..<grid.levelCount {
-            let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: color, width: CGFloat(gridLevel+1))
+            let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: color, width: CGFloat(gridLevel + 1))
             grid.setLineSymbol(lineSymbol, forLevel: gridLevel)
         }
     }
@@ -233,7 +233,7 @@ class DisplayGridSettingsViewController: UITableViewController {
             textSymbol.horizontalAlignment = .left
             textSymbol.verticalAlignment = .bottom
             textSymbol.haloColor = .white
-            textSymbol.haloWidth = CGFloat(gridLevel+1)
+            textSymbol.haloWidth = CGFloat(gridLevel + 1)
             grid.setTextSymbol(textSymbol, forLevel: gridLevel)
         }
     }

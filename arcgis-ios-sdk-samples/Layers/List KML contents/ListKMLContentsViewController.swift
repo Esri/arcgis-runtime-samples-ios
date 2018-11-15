@@ -57,7 +57,7 @@ class ListKMLContentsViewController: UITableViewController {
                     // some nodes are hidden by default, so set all to visible
                     node.isVisible = true
                     self.flattenedNodes.append((node, level))
-                    addNodes(self.childNodes(of: node), level: level+1)
+                    addNodes(self.childNodes(of: node), level: level + 1)
                 }
             }
             // recurse through the nodes and add them all to a flat array to use as a data source

@@ -65,7 +65,7 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
     func htmlStringForContent(_ content: String) -> String {
         let cssPath = Bundle.main.path(forResource: "xcode", ofType: "css") ?? ""
         let jsPath = Bundle.main.path(forResource: "highlight.pack", ofType: "js") ?? ""
-        let scale  = UIDevice.current.userInterfaceIdiom == .phone ? "0.5" : "1.0"
+        let scale = UIDevice.current.userInterfaceIdiom == .phone ? "0.5" : "1.0"
         let stringForHTML = """
             <html>
             <head>

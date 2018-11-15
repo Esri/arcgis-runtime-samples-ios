@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let splitViewController = self.window!.rootViewController as! UISplitViewController
         splitViewController.presentsWithGesture = false
         splitViewController.preferredDisplayMode = .allVisible
-        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
+        let navigationController = splitViewController.viewControllers.last as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         navigationController.topViewController!.navigationItem.leftItemsSupplementBackButton = true
         splitViewController.delegate = self
@@ -92,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         if bool {
             DemoTouchManager.showTouches()
             DemoTouchManager.touchBorderColor = .lightGray
-            DemoTouchManager.touchFillColor = UIColor(white: 231/255.0, alpha: 1)
+            DemoTouchManager.touchFillColor = UIColor(white: 231 / 255.0, alpha: 1)
         } else {
             DemoTouchManager.hideTouches()
         }

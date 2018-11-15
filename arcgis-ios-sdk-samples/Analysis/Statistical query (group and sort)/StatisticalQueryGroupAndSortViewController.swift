@@ -123,9 +123,9 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
                 // Let's build result message
                 while let statisticRecord = statisticRecordEnumerator.nextObject() {
                     
-                    let groups = self.selectedGroupByFieldNames.compactMap({ (fieldName) -> String? in
+                    let groups = self.selectedGroupByFieldNames.compactMap { (fieldName) -> String? in
                         return statisticRecord.group[fieldName] as? String
-                    })
+                    }
                     expandableTableViewController.sectionHeaderTitles.append(groups.joined(separator: ", "))
                     
                     var statistics = [(String, String)]()

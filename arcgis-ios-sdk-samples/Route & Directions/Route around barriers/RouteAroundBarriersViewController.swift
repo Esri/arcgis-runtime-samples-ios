@@ -102,7 +102,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         var stops = [AGSStop]()
         for graphic in self.stopGraphicsOverlay.graphics as AnyObject as! [AGSGraphic] {
             let stop = AGSStop(point: graphic.geometry as! AGSPoint)
-            stop.name = "\(self.stopGraphicsOverlay.graphics.index(of: graphic)+1)"
+            stop.name = "\(self.stopGraphicsOverlay.graphics.index(of: graphic) + 1)"
             stops.append(stop)
         }
         self.routeParameters.clearStops()
@@ -153,7 +153,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
     private func symbolForStopGraphic(withIndex index: Int) -> AGSSymbol {
         let markerImage = UIImage(named: "BlueMarker")!
         let markerSymbol = AGSPictureMarkerSymbol(image: markerImage)
-        markerSymbol.offsetY = markerImage.size.height/2
+        markerSymbol.offsetY = markerImage.size.height / 2
         
         let textSymbol = AGSTextSymbol(text: "\(index)", color: .white, size: 20, horizontalAlignment: .center, verticalAlignment: .middle)
         textSymbol.offsetY = markerSymbol.offsetY
@@ -176,7 +176,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         if segmentedControl.selectedSegmentIndex == 0 {
             //create a graphic for stop and add to the graphics overlay
             let graphicsCount = self.stopGraphicsOverlay.graphics.count
-            let symbol = self.symbolForStopGraphic(withIndex: graphicsCount+1)
+            let symbol = self.symbolForStopGraphic(withIndex: graphicsCount + 1)
             let graphic = AGSGraphic(geometry: normalizedPoint, symbol: symbol, attributes: nil)
             self.stopGraphicsOverlay.graphics.add(graphic)
             
@@ -205,22 +205,30 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
     
     @IBAction func directionsListAction() {
         self.directionsBottomConstraint.constant = self.isDirectionsListVisible ? -115 : 0
-        UIView.animate(withDuration: 0.3, animations: { [weak self] () -> Void in
-            self?.view.layoutIfNeeded()
-            }, completion: { [weak self] (finished) -> Void in
-                self?.isDirectionsListVisible = !self!.isDirectionsListVisible
-        }) 
+        UIView.animate(
+            withDuration: 0.3,
+            animations: { [weak self] () -> Void in
+                self?.view.layoutIfNeeded()
+            },
+            completion: { [weak self] (finished) -> Void in
+                self?.isDirectionsListVisible.toggle()
+            }
+        )
     }
     
     func toggleRouteDetails(_ on: Bool) {
         self.directionsBottomConstraint.constant = on ? -115 : -150
-        UIView.animate(withDuration: 0.3, animations: { [weak self] () -> Void in
-            self?.view.layoutIfNeeded()
-            }, completion: { [weak self] (finished) -> Void in
+        UIView.animate(
+            withDuration: 0.3,
+            animations: { [weak self] () -> Void in
+                self?.view.layoutIfNeeded()
+            },
+            completion: { [weak self] (finished) -> Void in
                 if !on {
                     self?.isDirectionsListVisible = false
                 }
-        }) 
+            }
+        )
     }
     
     // MARK: - Navigation

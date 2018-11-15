@@ -102,7 +102,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     private func symbolForStopGraphic(withIndex index: Int) -> AGSSymbol {
         let markerImage = UIImage(named: "BlueMarker")!
         let markerSymbol = AGSPictureMarkerSymbol(image: markerImage)
-        markerSymbol.offsetY = markerImage.size.height/2
+        markerSymbol.offsetY = markerImage.size.height / 2
         
         let textSymbol = AGSTextSymbol(text: "\(index)", color: .white, size: 20, horizontalAlignment: .center, verticalAlignment: .middle)
         textSymbol.offsetY = markerSymbol.offsetY
@@ -176,12 +176,12 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         //get the geometries for the last two graphics in the overlay
         let count = self.stopGraphicsOverlay.graphics.count
         
-        guard let geometry1 = (self.stopGraphicsOverlay.graphics[count-2] as? AGSGraphic)?.geometry as? AGSPoint else {
+        guard let geometry1 = (self.stopGraphicsOverlay.graphics[count - 2] as? AGSGraphic)?.geometry as? AGSPoint else {
             print("Graphic's geometry is invalid")
             return
         }
         
-        guard let geometry2 = (self.stopGraphicsOverlay.graphics[count-1] as? AGSGraphic)?.geometry as? AGSPoint else {
+        guard let geometry2 = (self.stopGraphicsOverlay.graphics[count - 1] as? AGSGraphic)?.geometry as? AGSPoint else {
             print("Graphic's geometry is invalid")
             return
         }

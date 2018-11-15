@@ -77,7 +77,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         
         //label
         let label = cell.viewWithTag(11) as! UILabel
-        label.text = "Map \(indexPath.item+1)"
+        label.text = "Map \(indexPath.item + 1)"
         
         //border
         cell.layer.borderColor = UIColor.black.cgColor

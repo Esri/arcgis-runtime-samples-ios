@@ -59,7 +59,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         let markerImage = UIImage(named: "BlueMarker")!
         let markerSymbol = AGSPictureMarkerSymbol(image: markerImage)
-        markerSymbol.offsetY = markerImage.size.height/2
+        markerSymbol.offsetY = markerImage.size.height / 2
         markerSymbol.leaderOffsetY = markerSymbol.offsetY
         
         if isIndexRequired && index != nil {
@@ -207,8 +207,8 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         //create stops for last and second last graphic
         let count = self.markerGraphicsOverlay.graphics.count
-        let lastGraphic = self.markerGraphicsOverlay.graphics[count-1] as! AGSGraphic
-        let secondLastGraphic = self.markerGraphicsOverlay.graphics[count-2] as! AGSGraphic
+        let lastGraphic = self.markerGraphicsOverlay.graphics[count - 1] as! AGSGraphic
+        let secondLastGraphic = self.markerGraphicsOverlay.graphics[count - 2] as! AGSGraphic
         let stops = self.stopsForGraphics([secondLastGraphic, lastGraphic])
         
         //add stops to the parameters

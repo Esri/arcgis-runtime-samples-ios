@@ -114,10 +114,10 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         
         let spacing: CGFloat = 10
         //first try for 3 items in a row
-        var width = (collectionViewSize.width - 4*spacing)/3
+        var width = (collectionViewSize.width - 4 * spacing) / 3
         if width < 150 {
             //if too small then go for 2 in a row
-            width = (collectionViewSize.width - 3*spacing)/2
+            width = (collectionViewSize.width - 3 * spacing) / 2
         }
         return CGSize(width: width, height: width)
     }

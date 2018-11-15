@@ -90,7 +90,7 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
     
     //initialize status array to `Unknown`
     func populateViewStatusArray() {
-        for _ in 0...self.map.operationalLayers.count-1 {
+        for _ in 0..<map.operationalLayers.count {
             self.viewStatusArray.append("Unknown")
         }
     }

@@ -112,7 +112,7 @@ class OfflineEditingViewController: UIViewController {
         let frame = mapView.convert(extentView.frame, from: view)
         
         let minPoint = mapView.screen(toLocation: frame.origin)
-        let maxPoint = mapView.screen(toLocation: CGPoint(x: frame.origin.x+frame.width, y: frame.origin.y+frame.height))
+        let maxPoint = mapView.screen(toLocation: CGPoint(x: frame.origin.x + frame.width, y: frame.origin.y + frame.height))
         let extent = AGSEnvelope(min: minPoint, max: maxPoint)
         return extent
     }
@@ -357,9 +357,9 @@ class OfflineEditingViewController: UIViewController {
     @IBAction func switchToServiceMode(_ sender: AnyObject) {
         if generatedGeodatabase?.hasLocalEdits() == true {
             let yesAction = UIAlertAction(title: "Yes", style: .default) { [weak self] _ in
-                self?.syncAction({ () -> Void in
+                self?.syncAction { () -> Void in
                     self?.switchToServiceMode()
-                })
+                }
             }
             let noAction = UIAlertAction(title: "No", style: .cancel) { [weak self] _ in
                 self?.switchToServiceMode()

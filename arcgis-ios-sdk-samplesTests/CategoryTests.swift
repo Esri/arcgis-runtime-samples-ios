@@ -18,36 +18,38 @@ import XCTest
 @testable import ArcGIS_Runtime_SDK_Samples
 
 class CategoryTests: XCTestCase {
+    
+    private let sampleData = """
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+        <dict>
+            <key>displayName</key>
+            <string>Maps</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display a map</string>
+                    <key>storyboardName</key>
+                    <string>DisplayMap</string>
+                    <key>descriptionText</key>
+                    <string>This sample shows you how to display a map with imagery basemap</string>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Change map view background</string>
+                    <key>storyboardName</key>
+                    <string>ChangeMapViewBackground</string>
+                    <key>descriptionText</key>
+                    <string>This sample shows you how to customize map view's background grid</string>
+                </dict>
+            </array>
+        </dict>
+        </plist>
+    """.data(using: .utf8)!
+    
     func testInitFromDecoder() {
-        let sampleData = """
-            <?xml version="1.0" encoding="UTF-8"?>
-            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-            <plist version="1.0">
-            <dict>
-                <key>displayName</key>
-                <string>Maps</string>
-                <key>children</key>
-                <array>
-                    <dict>
-                        <key>displayName</key>
-                        <string>Display a map</string>
-                        <key>storyboardName</key>
-                        <string>DisplayMap</string>
-                        <key>descriptionText</key>
-                        <string>This sample shows you how to display a map with imagery basemap</string>
-                    </dict>
-                    <dict>
-                        <key>displayName</key>
-                        <string>Change map view background</string>
-                        <key>storyboardName</key>
-                        <string>ChangeMapViewBackground</string>
-                        <key>descriptionText</key>
-                        <string>This sample shows you how to customize map view's background grid</string>
-                    </dict>
-                </array>
-            </dict>
-            </plist>
-        """.data(using: .utf8)!
         let expectedCategory = ArcGIS_Runtime_SDK_Samples.Category(
             name: "Maps",
             samples: [

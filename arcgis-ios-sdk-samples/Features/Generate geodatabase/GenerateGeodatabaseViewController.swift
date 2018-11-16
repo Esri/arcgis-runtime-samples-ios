@@ -57,12 +57,13 @@ class GenerateGeodatabaseViewController: UIViewController {
                 print("Could not load feature service \(error)")
                 
             } else {
-                guard let self = self else {
+                guard let self = self,
+                    let featureServiceInfo = self.syncTask.featureServiceInfo else {
                     return
                 }
                 
-                for (index, layerInfo) in self.syncTask.featureServiceInfo!.layerInfos.enumerated().reversed() {
-                    
+                for index in featureServiceInfo.layerInfos.indices.reversed() {
+                    let layerInfo = featureServiceInfo.layerInfos[index]
                     //For each layer in the serice, add a layer to the map
                     let layerURL = self.syncTask.url!.appendingPathComponent(String(index))
                     let featureTable = AGSServiceFeatureTable(url: layerURL)

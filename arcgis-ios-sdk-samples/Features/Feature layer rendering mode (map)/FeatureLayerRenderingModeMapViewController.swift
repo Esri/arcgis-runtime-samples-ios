@@ -20,7 +20,7 @@ class FeatureLayerRenderingModeMapViewController: UIViewController {
     @IBOutlet weak var dynamicMapView: AGSMapView!
     @IBOutlet weak var staticMapView: AGSMapView!
     
-    var _zoomed = false
+    private var zoomed = false
     var zoomedInViewpoint: AGSViewpoint!
     var zoomedOutViewpoint: AGSViewpoint!
     
@@ -68,14 +68,14 @@ class FeatureLayerRenderingModeMapViewController: UIViewController {
     }
 
     @IBAction func animateZoom(_ sender: Any) {
-        if _zoomed {
+        if zoomed {
             self.dynamicMapView.setViewpoint(zoomedOutViewpoint, duration: 5, completion: nil)
             self.staticMapView.setViewpoint(zoomedOutViewpoint, duration: 5, completion: nil)
         } else {
             self.dynamicMapView.setViewpoint(zoomedInViewpoint, duration: 5, completion: nil)
             self.staticMapView.setViewpoint(zoomedInViewpoint, duration: 5, completion: nil)
         }
-        _zoomed = !_zoomed
+        zoomed = !zoomed
     }
     
 }

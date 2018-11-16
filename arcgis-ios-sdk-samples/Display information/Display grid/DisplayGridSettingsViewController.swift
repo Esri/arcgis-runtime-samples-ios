@@ -241,77 +241,105 @@ class DisplayGridSettingsViewController: UITableViewController {
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        guard let grid = mapView?.grid else {
-            return
-        }
-        switch cell {
+        switch tableView.cellForRow(at: indexPath) {
         case gridTypeCell:
-            if let gridType = GridType(grid: grid) {
-                let selectedIndex = gridType.rawValue
-                let labels = GridType.allCases.map { (type) -> String in
-                    return type.label
-                }
-                let optionsViewController = OptionsTableViewController(labels: labels, selectedIndex: selectedIndex) { (newIndex) in
-                    self.changeGrid(to: GridType(rawValue: newIndex)!)
-                }
-                optionsViewController.title = "Grid Type"
-                show(optionsViewController, sender: self)
-            }
+            showGridTypePicker()
         case labelPositionCell:
-            let selectedIndex = grid.labelPosition.rawValue
-            let optionsViewController = OptionsTableViewController(labels: labelPositionLabels, selectedIndex: selectedIndex) { (newIndex) in
-                self.mapView?.grid?.labelPosition = AGSGridLabelPosition(rawValue: newIndex)!
-            }
-            optionsViewController.title = "Position"
-            show(optionsViewController, sender: self)
+            showLabelPositionPicker()
         case labelFormatCell:
-            if let selectedIndex = (grid as? AGSLatitudeLongitudeGrid)?.labelFormat.rawValue {
-                let optionsViewController = OptionsTableViewController(labels: labelFormatLabels, selectedIndex: selectedIndex) { (newIndex) in
-                    if let grid = self.mapView?.grid as? AGSLatitudeLongitudeGrid {
-                        grid.labelFormat = AGSLatitudeLongitudeGridLabelFormat(rawValue: newIndex)!
-                        self.updateLabelFormatUI()
-                    }
-                }
-                optionsViewController.title = "Format"
-                show(optionsViewController, sender: self)
-            }
+            showLabelFormatPicker()
         case labelUnitCell:
-            if let selectedIndex = (grid as? AGSUSNGGrid)?.labelUnit.rawValue ?? (grid as? AGSMGRSGrid)?.labelUnit.rawValue {
-                let optionsViewController = OptionsTableViewController(labels: labelUnitLabels, selectedIndex: selectedIndex) { (newIndex) in
-                    if let grid = self.mapView?.grid as? AGSMGRSGrid {
-                        grid.labelUnit = AGSMGRSGridLabelUnit(rawValue: newIndex)!
-                    } else if let grid = self.mapView?.grid as? AGSUSNGGrid {
-                        grid.labelUnit = AGSUSNGGridLabelUnit(rawValue: newIndex)!
-                    }
-                    self.updateLabelUnitUI()
-                }
-                optionsViewController.title = "Unit"
-                show(optionsViewController, sender: self)
-            }
+            showLabelUnitPicker()
         case gridColorCell:
-            guard let color = gridColor(of: grid) else {
-                return
-            }
-            let controller = ColorPickerViewController.instantiateWith(color: color) { (color) in
-                self.changeGridColor(of: grid, to: color)
-                self.updateUIForGridColor()
-            }
-            controller.title = "Grid Color"
-            show(controller, sender: self)
+            showGridColorPicker()
         case labelColorCell:
-            guard let color = labelColor(of: grid) else {
-                return
-            }
-            let controller = ColorPickerViewController.instantiateWith(color: color) { (color) in
-                self.changeLabelColor(of: grid, to: color)
-                self.updateUIForLabelColor()
-            }
-            controller.title = "Label Color"
-            show(controller, sender: self)
+            showLabelColorPicker()
         default:
             break
         }
+    }
+    
+    private func showLabelPositionPicker() {
+        guard let grid = mapView?.grid else {
+            return
+        }
+        let selectedIndex = grid.labelPosition.rawValue
+        let optionsViewController = OptionsTableViewController(labels: labelPositionLabels, selectedIndex: selectedIndex) { (newIndex) in
+            self.mapView?.grid?.labelPosition = AGSGridLabelPosition(rawValue: newIndex)!
+        }
+        optionsViewController.title = "Position"
+        show(optionsViewController, sender: self)
+    }
+    
+    private func showLabelFormatPicker() {
+        if let grid = mapView?.grid,
+            let selectedIndex = (grid as? AGSLatitudeLongitudeGrid)?.labelFormat.rawValue {
+            let optionsViewController = OptionsTableViewController(labels: labelFormatLabels, selectedIndex: selectedIndex) { (newIndex) in
+                if let grid = self.mapView?.grid as? AGSLatitudeLongitudeGrid {
+                    grid.labelFormat = AGSLatitudeLongitudeGridLabelFormat(rawValue: newIndex)!
+                    self.updateLabelFormatUI()
+                }
+            }
+            optionsViewController.title = "Format"
+            show(optionsViewController, sender: self)
+        }
+    }
+    
+    private func showLabelUnitPicker() {
+        if let grid = mapView?.grid,
+            let selectedIndex = (grid as? AGSUSNGGrid)?.labelUnit.rawValue ?? (grid as? AGSMGRSGrid)?.labelUnit.rawValue {
+            let optionsViewController = OptionsTableViewController(labels: labelUnitLabels, selectedIndex: selectedIndex) { (newIndex) in
+                if let grid = self.mapView?.grid as? AGSMGRSGrid {
+                    grid.labelUnit = AGSMGRSGridLabelUnit(rawValue: newIndex)!
+                } else if let grid = self.mapView?.grid as? AGSUSNGGrid {
+                    grid.labelUnit = AGSUSNGGridLabelUnit(rawValue: newIndex)!
+                }
+                self.updateLabelUnitUI()
+            }
+            optionsViewController.title = "Unit"
+            show(optionsViewController, sender: self)
+        }
+    }
+    
+    private func showGridTypePicker() {
+        if let grid = mapView?.grid,
+            let gridType = GridType(grid: grid) {
+            let selectedIndex = gridType.rawValue
+            let labels = GridType.allCases.map { (type) -> String in
+                return type.label
+            }
+            let optionsViewController = OptionsTableViewController(labels: labels, selectedIndex: selectedIndex) { (newIndex) in
+                self.changeGrid(to: GridType(rawValue: newIndex)!)
+            }
+            optionsViewController.title = "Grid Type"
+            show(optionsViewController, sender: self)
+        }
+    }
+    
+    private func showGridColorPicker() {
+        guard let grid = mapView?.grid,
+            let color = gridColor(of: grid) else {
+            return
+        }
+        let controller = ColorPickerViewController.instantiateWith(color: color) { (color) in
+            self.changeGridColor(of: grid, to: color)
+            self.updateUIForGridColor()
+        }
+        controller.title = "Grid Color"
+        show(controller, sender: self)
+    }
+    
+    private func showLabelColorPicker() {
+        guard let grid = mapView?.grid,
+            let color = labelColor(of: grid) else {
+            return
+        }
+        let controller = ColorPickerViewController.instantiateWith(color: color) { (color) in
+            self.changeLabelColor(of: grid, to: color)
+            self.updateUIForLabelColor()
+        }
+        controller.title = "Label Color"
+        show(controller, sender: self)
     }
     
 }

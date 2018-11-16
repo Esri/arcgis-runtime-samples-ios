@@ -88,7 +88,7 @@ class GraphicsWithSymbolsViewController: UIViewController {
     
     private func addBoatTrip(to graphicsOverlay: AGSGraphicsOverlay) {
         //boat trip geometry
-        let boatRoute = self.boatTripGeometry()
+        let boatRoute = boatTripGeometry
         
         //define a line symbol
         let lineSymbol = AGSSimpleLineSymbol(
@@ -105,7 +105,7 @@ class GraphicsWithSymbolsViewController: UIViewController {
     
     private func addNestingGround(to graphicsOverlay: AGSGraphicsOverlay) {
         //nesting ground geometry
-        let nestingGround = self.nestingGroundGeometry()
+        let nestingGround = nestingGroundGeometry
         
         //define the fill symbol and outline
         let outlineSymbol = AGSSimpleLineSymbol(
@@ -124,7 +124,7 @@ class GraphicsWithSymbolsViewController: UIViewController {
         graphicsOverlay.graphics.add(nestingGraphic)
     }
     
-    private func boatTripGeometry() -> AGSPolyline {
+    private var boatTripGeometry: AGSPolyline = {
         //create a polyline
         let boatRoute = AGSPolylineBuilder(spatialReference: .wgs84())
         
@@ -189,9 +189,9 @@ class GraphicsWithSymbolsViewController: UIViewController {
         boatRoute.addPointWith(x: -2.718307461756433, y: 56.06147084563517)
         
         return boatRoute.toGeometry()
-    }
+    }()
     
-    private func nestingGroundGeometry() -> AGSPolygon {
+    private var nestingGroundGeometry: AGSPolygon = {
         //create a polygon
         let nestingGround = AGSPolygonBuilder(spatialReference: .wgs84())
         
@@ -223,5 +223,5 @@ class GraphicsWithSymbolsViewController: UIViewController {
         nestingGround.addPointWith(x: -2.643077012566659, y: 56.077125346044475)
         
         return nestingGround.toGeometry()
-    }
+    }()
 }

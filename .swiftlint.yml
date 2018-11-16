@@ -13,7 +13,6 @@ disabled_rules: # rule identifiers to exclude from running
   - file_length
   - for_where
   - force_cast
-  - function_body_length
   - line_length
   - notification_center_detachment
   - todo

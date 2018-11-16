@@ -70,14 +70,17 @@ class ExtrudeGraphicsViewController: UIViewController {
     
     private func addGraphics() {
         //starting point
-        let x = self.cameraStartingPoint.x - 0.01
-        let y = self.cameraStartingPoint.y + 0.25
+        let x = cameraStartingPoint.x - 0.01
+        let y = cameraStartingPoint.y + 0.25
         
         //creating a grid of polygon graphics
-        for i in 0...6 {
-            for j in 0...4 {
-                let polygon = self.polygonForStartingPoint(AGSPoint(x: x + Double(i) * (squareSize + spacing), y: y + Double(j) * (squareSize + spacing), spatialReference: nil))
-                self.addGraphicForPolygon(polygon)
+        for column in stride(from: 0.0, through: 6.0, by: 1.0) {
+            for row in stride(from: 0.0, through: 4.0, by: 1.0) {
+                let startingX = x + column * (squareSize + spacing)
+                let startingY = y + row * (squareSize + spacing)
+                let startingPoint = AGSPoint(x: startingX, y: startingY, spatialReference: nil)
+                let polygon = polygonForStartingPoint(startingPoint)
+                addGraphicForPolygon(polygon)
             }
         }
     }

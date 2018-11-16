@@ -248,7 +248,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
             self.totalTime += route.totalTime
             self.totalDistance += route.totalLength
             
-            self.toggleDetailsView(on: true)
+            self.setDetailsViewVisibility(visible: true)
         }
     }
     
@@ -270,7 +270,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.totalDistance = 0
         
         //hide the details view
-        self.toggleDetailsView(on: false)
+        self.setDetailsViewVisibility(visible: false)
     }
     
     @IBAction func modeChanged(_ segmentedControl: UISegmentedControl) {
@@ -302,8 +302,8 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     // MARK: toggle details view
     
-    private func toggleDetailsView(on: Bool) {
-        self.detailsViewBottomContraint.constant = on ? 0 : -36
+    private func setDetailsViewVisibility(visible: Bool) {
+        self.detailsViewBottomContraint.constant = visible ? 0 : -36
         
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.view.layoutIfNeeded()

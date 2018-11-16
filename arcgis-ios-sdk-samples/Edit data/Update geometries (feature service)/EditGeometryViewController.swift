@@ -27,7 +27,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     private var lastQuery: AGSCancelable!
     
     private var selectedFeature: AGSArcGISFeature!
-    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
+    private let featureServiceURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         //set initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -9030446.96, y: 943791.32, spatialReference: .webMercator()), scale: 2e6)
         
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: FEATURE_SERVICE_URL)!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         self.map.operationalLayers.add(self.featureLayer)
@@ -53,11 +53,11 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         super.viewDidAppear(animated)
         
         //default state for toolbar is off
-        self.toggleToolbar(false)
+        self.setToolbarVisibility(visible: false)
     }
     
-    func toggleToolbar(_ on: Bool) {
-        toolbarBottomConstraint.constant = on ? 0 : -44-view.safeAreaInsets.bottom
+    func setToolbarVisibility(visible: Bool) {
+        toolbarBottomConstraint.constant = visible ? 0 : -44 - view.safeAreaInsets.bottom
         
         UIView.animate(withDuration: 0.3, animations: { [weak self] () -> Void in
             self?.view.layoutIfNeeded()
@@ -68,8 +68,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.featureTable.applyEdits(completion: { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) -> Void in
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self?.presentAlert(message: "Saved successfully!")
             }
             //un hide the feature
@@ -90,8 +89,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
             if let error = identifyLayerResult.error {
                 print(error)
-            }
-            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
+            } else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
                 let feature = features.first {
                
                 //show callout for the first feature
@@ -121,7 +119,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.mapView.sketchEditor?.start(with: point)
         
         //show the toolbar
-        self.toggleToolbar(true)
+        self.setToolbarVisibility(visible: true)
         
         //hide the feature for time being
         self.featureLayer.setFeature(self.selectedFeature, visible: false)
@@ -139,8 +137,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
                     
                     //un hide the feature
                     self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
-                }
-                else {
+                } else {
                     //apply edits
                     self?.applyEdits()
                 }
@@ -148,7 +145,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         }
         
         //hide toolbar
-        self.toggleToolbar(false)
+        self.setToolbarVisibility(visible: false)
         
         //disable sketch editor
         self.mapView.sketchEditor?.stop()

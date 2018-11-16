@@ -30,6 +30,20 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
 
         // set the sceneView's touch delegate so we can get user taps
         sceneView.touchDelegate = self
+
+        let graphicsOverlay = makeGraphicsOverlay()
+        sceneView.graphicsOverlays.add(graphicsOverlay)
+        
+        let analysisOverlay = makeAnalysisOverlay()
+        sceneView.analysisOverlays.add(analysisOverlay)
+        
+        let cameraController = makeCameraController()
+        sceneView.cameraController = cameraController
+
+        sceneView.scene = makeScene()
+    }
+    
+    private func makeScene() -> AGSScene {
         
         // create the scene
         let scene = AGSScene(basemap: .imagery())
@@ -41,17 +55,21 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
         let elevationSource = AGSArcGISTiledElevationSource(url: brestElevationServiceURL)
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
-
+        
         /// The url of the scene service for buildings in Brest, France.
         let brestBuildingsServiceURL = URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0")!
         // add a scene layer
         let buildings = AGSArcGISSceneLayer(url: brestBuildingsServiceURL)
         scene.operationalLayers.add(buildings)
-
+        
+        return scene
+    }
+    
+    private func makeGraphicsOverlay() -> AGSGraphicsOverlay {
+        
         // create a graphics overlay for the tank
         let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.sceneProperties = AGSLayerSceneProperties(surfacePlacement: .relative)
-        sceneView.graphicsOverlays.add(graphicsOverlay)
         
         // set up heading expression for tank
         let renderer3D = AGSSimpleRenderer()
@@ -59,24 +77,34 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
         sceneProperties.headingExpression = "[HEADING]"
         renderer3D.sceneProperties = sceneProperties
         graphicsOverlay.renderer = renderer3D
-
+        
         // create a graphic of a tank
         let tankSymbol = AGSModelSceneSymbol(name: "bradle", extension: "3ds", scale: 10.0)
         tankSymbol.heading = 90.0
         tankSymbol.anchorPosition = .bottom
-        tank = AGSGraphic(geometry: AGSPoint(x: -4.506390, y: 48.385624, spatialReference: .wgs84()),
-                          symbol: tankSymbol,
-                          attributes: ["HEADING": 0.0])
+        tank = AGSGraphic(
+            geometry: AGSPoint(x: -4.506390,
+                               y: 48.385624,
+                               spatialReference: .wgs84()),
+            symbol: tankSymbol,
+            attributes: ["HEADING": 0.0]
+        )
         graphicsOverlay.graphics.add(tank)
+        return graphicsOverlay
+    }
+    
+    private func makeAnalysisOverlay() -> AGSAnalysisOverlay {
         
         // create a viewshed to attach to the tank
-        let geoElementViewshed = AGSGeoElementViewshed(geoElement: tank,
-                                                       horizontalAngle: 90.0,
-                                                       verticalAngle: 40.0,
-                                                       minDistance: 0.1,
-                                                       maxDistance: 250.0,
-                                                       headingOffset: 0.0,
-                                                       pitchOffset: 0.0)
+        let geoElementViewshed = AGSGeoElementViewshed(
+           geoElement: tank,
+           horizontalAngle: 90.0,
+           verticalAngle: 40.0,
+           minDistance: 0.1,
+           maxDistance: 250.0,
+           headingOffset: 0.0,
+           pitchOffset: 0.0
+        )
         
         // offset viewshed observer location to top of tank
         geoElementViewshed.offsetZ = 3.0
@@ -84,14 +112,14 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
         // create an analysis overlay to add the viewshed to the scene view
         let analysisOverlay = AGSAnalysisOverlay()
         analysisOverlay.analyses.add(geoElementViewshed)
-        sceneView.analysisOverlays.add(analysisOverlay)
-
+        return analysisOverlay
+    }
+    
+    private func makeCameraController() -> AGSCameraController {
         // set camera controller to follow tank
         let cameraController = AGSOrbitGeoElementCameraController(targetGeoElement: tank, distance: 200.0)
         cameraController.cameraPitchOffset = 45.0
-        sceneView.cameraController = cameraController
-        
-        sceneView.scene = scene
+        return cameraController
     }
 
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {

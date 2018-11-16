@@ -47,8 +47,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         self.mapPackage.load { [weak self] (error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
-            }
-            else {
+            } else {
                 //update title label
                 self?.titleLabel.text = self?.mapPackage.item?.title
                 
@@ -78,7 +77,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         
         //label
         let label = cell.viewWithTag(11) as! UILabel
-        label.text = "Map \(indexPath.item+1)"
+        label.text = "Map \(indexPath.item + 1)"
         
         //border
         cell.layer.borderColor = UIColor.black.cgColor

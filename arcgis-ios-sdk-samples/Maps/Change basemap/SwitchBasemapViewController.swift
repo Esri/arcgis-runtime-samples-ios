@@ -61,9 +61,7 @@ class SwitchBasemapViewController: UIViewController {
         
         guard let basemap = mapView.map?.basemap,
             // get the index of the basemap currently shown in the map
-            let selectedIndex = basemapInfoArray.firstIndex(where: { (item) -> Bool in
-                item.basemap == basemap
-            }) else {
+            let selectedIndex = basemapInfoArray.firstIndex(where: { $0.basemap == basemap }) else {
             return
         }
         

@@ -67,8 +67,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
             
             if let error = error {
                 self?.presentAlert(message: "Error while applying edits: \(error.localizedDescription)")
-            }
-            else {
+            } else {
                 self?.presentAlert(message: "Edits applied successfully!")
             }
         }
@@ -84,8 +83,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 10) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
             if let error = identifyLayerResult.error {
                 print(error)
-            }
-            else if let weakSelf = self {
+            } else if let weakSelf = self {
                 var popups = [AGSPopup]()
                 let geoElements = identifyLayerResult.geoElements
                 
@@ -226,8 +224,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //set the geometry as the center of the screen
         if let visibleArea = self.mapView.visibleArea {
             newFeature.geometry = visibleArea.extent.center
-        }
-        else {
+        } else {
             newFeature.geometry = AGSPoint(x: 0, y: 0, spatialReference: self.map.spatialReference)
         }
 

@@ -76,8 +76,7 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.identify(self.graphicsOverlay, screenPoint: screenPoint, tolerance: tolerance, returnPopupsOnly: false, maximumResults: 10) {[weak self] (result: AGSIdentifyGraphicsOverlayResult) -> Void in
             if let error = result.error {
                 print("error while identifying :: \(error.localizedDescription)")
-            }
-            else {
+            } else {
                 //if a graphics is found then show an alert
                 if !result.graphics.isEmpty {
                     self?.presentAlert(message: "Tapped on graphic")

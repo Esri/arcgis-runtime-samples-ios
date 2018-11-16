@@ -74,7 +74,7 @@ class PictureMarkerSymbolsViewController: UIViewController {
         let pinSymbol = AGSPictureMarkerSymbol(image: UIImage(named: imageName)!)
         
         //change offsets, so the symbol aligns properly to the point
-        pinSymbol.offsetY = pinSymbol.image!.size.height/2
+        pinSymbol.offsetY = pinSymbol.image!.size.height / 2
         
         //location for pin
         let pinPoint = AGSPoint(x: -226773, y: 6550477, spatialReference: .webMercator())

@@ -59,7 +59,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         let markerImage = UIImage(named: "BlueMarker")!
         let markerSymbol = AGSPictureMarkerSymbol(image: markerImage)
-        markerSymbol.offsetY = markerImage.size.height/2
+        markerSymbol.offsetY = markerImage.size.height / 2
         markerSymbol.leaderOffsetY = markerSymbol.offsetY
         
         if isIndexRequired && index != nil {
@@ -98,8 +98,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if self.routeTask == nil && self.locatorTask == nil {
             return
-        }
-        else if routeTask == nil {
+        } else if routeTask == nil {
             //if routing is not possible, then clear previous graphics
             self.markerGraphicsOverlay.graphics.removeAllObjects()
         }
@@ -111,21 +110,18 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.identify(self.markerGraphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result: AGSIdentifyGraphicsOverlayResult) in
             if let error = result.error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 if let graphic = result.graphics.first {
                     //reverse geocode
                     self?.reverseGeocode(point: mapPoint, withGraphic: graphic)
-                }
-                else {
+                } else {
                     //add a graphic
                     var graphic: AGSGraphic
                     
                     if self?.routeTask != nil {
                         let index = self!.markerGraphicsOverlay.graphics.count + 1
                         graphic = self!.graphicForPoint(mapPoint, isIndexRequired: true, index: index)
-                    }
-                    else {
+                    } else {
                         graphic = self!.graphicForPoint(mapPoint, isIndexRequired: false, index: nil)
                     }
                     
@@ -156,8 +152,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.locatorTaskCancelable = self.locatorTask?.reverseGeocode(withLocation: point, parameters: self.reverseGeocodeParameters, completion: { [weak self](results: [AGSGeocodeResult]?, error: Error?) in
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 //assign the label property of result as an attributes to the graphic
                 //and show the callout
                 if let results = results,
@@ -165,8 +160,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
                     graphic.attributes["Match_addr"] = results.first!.formattedAddressString
                     self?.showCalloutForGraphic(graphic, tapLocation: point, animated: false, offset: false)
                     return
-                }
-                else {
+                } else {
                     //no result was found
                     self?.presentAlert(message: "No address found")
                     
@@ -195,8 +189,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self?.routeParameters = params
             }
         }
@@ -214,8 +207,8 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         //create stops for last and second last graphic
         let count = self.markerGraphicsOverlay.graphics.count
-        let lastGraphic = self.markerGraphicsOverlay.graphics[count-1] as! AGSGraphic
-        let secondLastGraphic = self.markerGraphicsOverlay.graphics[count-2] as! AGSGraphic
+        let lastGraphic = self.markerGraphicsOverlay.graphics[count - 1] as! AGSGraphic
+        let secondLastGraphic = self.markerGraphicsOverlay.graphics[count - 2] as! AGSGraphic
         let stops = self.stopsForGraphics([secondLastGraphic, lastGraphic])
         
         //add stops to the parameters
@@ -228,8 +221,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
                 self?.presentAlert(error: error)
                 //remove the last marker
                 self?.markerGraphicsOverlay.graphics.removeLastObject()
-            }
-            else if let route = routeResult?.routes.first {
+            } else if let route = routeResult?.routes.first {
                 let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self?.routeSymbol(), attributes: nil)
                 self?.routeGraphicsOverlay.graphics.add(routeGraphic)
             }

@@ -81,8 +81,7 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return self.mapPackagesInBundle?.count ?? 0
-        }
-        else {
+        } else {
             return self.mapPackagesInDocumentsDir?.count ?? 0
         }
     }
@@ -94,8 +93,7 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
         
         if indexPath.section == 0 {
             mapPackage = self.mapPackagesInBundle[indexPath.row]
-        }
-        else {
+        } else {
             mapPackage = self.mapPackagesInDocumentsDir[indexPath.row]
         }
         
@@ -122,13 +120,11 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
             if self.selectedRowIndexPath == indexPath {
                 //collapse
                 self.selectedRowIndexPath = nil
-            }
-            else {
+            } else {
                 indexPathsArray.append(self.selectedRowIndexPath)
                 self.selectedRowIndexPath = indexPath
             }
-        }
-        else {
+        } else {
             self.selectedRowIndexPath = indexPath
         }
         
@@ -153,8 +149,7 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
             
             if self.selectedRowIndexPath.section == 0 {
                 mapPackage = self.mapPackagesInBundle[self.selectedRowIndexPath.row]
-            }
-            else {
+            } else {
                 mapPackage = self.mapPackagesInDocumentsDir[self.selectedRowIndexPath.row]
             }
             

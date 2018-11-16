@@ -90,8 +90,7 @@ class FindRouteViewController: UIViewController {
         self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
             if let error = error {
                 print(error)
-            }
-            else {
+            } else {
                 //on completion store the parameters
                 self?.routeParameters = params
                 //add stops
@@ -127,8 +126,7 @@ class FindRouteViewController: UIViewController {
         self.routeTask.solveRoute(with: self.routeParameters) { (routeResult: AGSRouteResult?, error: Error?) -> Void in
             if let error = error {
                 print(error)
-            }
-            else if let route = routeResult?.routes.first {
+            } else if let route = routeResult?.routes.first {
                 //show the resulting route on the map
                 //also save a reference to the route object
                 //in order to access directions

@@ -80,8 +80,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
             if let error = error {
                 //show error
                 self.presentAlert(error: error)
-            }
-            else {
+            } else {
                 //a map image layer is generated as a result
                 //remove any layer previously added to the map
                 self.mapView.map?.operationalLayers.removeAllObjects()
@@ -106,8 +105,8 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
     
     func hotspotSettingsViewController(_ hotspotSettingsViewController: HotspotSettingsViewController, didSelectDates fromDate: String, toDate: String) {
         
-        self.analyzeHotspots(fromDate, toDate: toDate)
-        self.toggleSettingsView(on: false)
+        analyzeHotspots(fromDate, toDate: toDate)
+        setSettingsViewVisibility(visible: false)
     }
     
     // MARK: - Navigation
@@ -121,13 +120,13 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
     
     // MARK: - Toggle settings view
     
-    private func toggleSettingsView(on: Bool) {
-        self.containerView.isHidden = !on
+    private func setSettingsViewVisibility(visible: Bool) {
+        containerView.isHidden = !visible
     }
     
     // MARK: - Actions
     
     @IBAction func changeDatesAction() {
-        self.toggleSettingsView(on: true)
+        setSettingsViewVisibility(visible: true)
     }
 }

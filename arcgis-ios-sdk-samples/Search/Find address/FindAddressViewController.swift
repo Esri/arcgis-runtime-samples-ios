@@ -60,8 +60,8 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
     private func graphicForPoint(_ point: AGSPoint, attributes: [String: AnyObject]?) -> AGSGraphic {
         let markerImage = UIImage(named: "RedMarker")!
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
-        symbol.leaderOffsetY = markerImage.size.height/2
-        symbol.offsetY = markerImage.size.height/2
+        symbol.leaderOffsetY = markerImage.size.height / 2
+        symbol.offsetY = markerImage.size.height / 2
         let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: attributes)
         return graphic
     }
@@ -82,8 +82,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
             
             if let error = error {
                 self.presentAlert(error: error)
-            }
-            else if let result = results?.first {
+            } else if let result = results?.first {
                 //create a graphic for the first result and add to the graphics overlay
                 let graphic = self.graphicForPoint(result.displayLocation!, attributes: result.attributes as [String: AnyObject]?)
                 self.graphicsOverlay.graphics.add(graphic)
@@ -91,8 +90,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
                 if let extent = result.extent {
                     self.mapView.setViewpointGeometry(extent, completion: nil)
                 }
-            }
-            else {
+            } else {
                 //provide feedback in case of failure
                 self.presentAlert(message: "No results found")
             }
@@ -110,8 +108,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         
         if addressType == "POI" {
             self.mapView.callout.detail = graphic.attributes["Place_addr"] as? String ?? ""
-        }
-        else {
+        } else {
             self.mapView.callout.detail = nil
         }
         
@@ -129,8 +126,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         self.mapView.identify(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult) -> Void in
             if let error = result.error {
                 self.presentAlert(error: error)
-            }
-            else if let graphic = result.graphics.first {
+            } else if let graphic = result.graphics.first {
                 //show callout for the graphic
                 self.showCalloutForGraphic(graphic, tapLocation: mapPoint)
             }

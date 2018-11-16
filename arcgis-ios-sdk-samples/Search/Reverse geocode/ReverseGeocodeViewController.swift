@@ -77,13 +77,11 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
                 if error.code != NSUserCancelledError { //user canceled error
                     self?.presentAlert(error: error)
                 }
-            }
-            else if let result = results?.first {
+            } else if let result = results?.first {
                 graphic.attributes.addEntries(from: result.attributes!)
                 self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint)
                 return
-            }
-            else {
+            } else {
                 self?.presentAlert(message: "No address found")
             }
             self?.graphicsOverlay.graphics.remove(graphic)
@@ -94,8 +92,8 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
     private func graphicForPoint(_ point: AGSPoint) -> AGSGraphic {
         let markerImage = UIImage(named: "RedMarker")!
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
-        symbol.leaderOffsetY = markerImage.size.height/2
-        symbol.offsetY = markerImage.size.height/2
+        symbol.leaderOffsetY = markerImage.size.height / 2
+        symbol.offsetY = markerImage.size.height / 2
         let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: [String: AnyObject]())
         return graphic
     }

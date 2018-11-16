@@ -28,23 +28,23 @@ class OpenMapURLViewController: UIViewController {
     struct MapAtURL {
         var title: String
         var thumbnailImage: UIImage
-        var id: String
+        var portalID: String
         
         var url: URL? {
-            return URL(string: "https://www.arcgis.com/home/item.html?id=\(id)")
+            return URL(string: "https://www.arcgis.com/home/item.html?id=\(portalID)")
         }
     }
     
     private let mapModels: [MapAtURL] = [
         MapAtURL(title: "Housing with Mortgages",
                  thumbnailImage: #imageLiteral(resourceName: "OpenMapURLThumbnail1"),
-                 id: "2d6fa24b357d427f9c737774e7b0f977"),
+                 portalID: "2d6fa24b357d427f9c737774e7b0f977"),
         MapAtURL(title: "USA Tapestry Segmentation",
                  thumbnailImage: #imageLiteral(resourceName: "OpenMapURLThumbnail2"),
-                 id: "01f052c8995e4b9e889d73c3e210ebe3"),
+                 portalID: "01f052c8995e4b9e889d73c3e210ebe3"),
         MapAtURL(title: "Geology of United States",
                  thumbnailImage: #imageLiteral(resourceName: "OpenMapURLThumbnail3"),
-                 id: "92ad152b9da94dee89b9e387dfe21acd")
+                 portalID: "92ad152b9da94dee89b9e387dfe21acd")
     ]
 
     override func viewDidLoad() {

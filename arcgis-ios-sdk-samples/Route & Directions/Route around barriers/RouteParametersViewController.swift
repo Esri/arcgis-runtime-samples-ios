@@ -50,11 +50,9 @@ class RouteParametersViewController: UIViewController {
         if sender == self.findBestSequenceSwitch {
             self.routeParameters.findBestSequence = sender.isOn
             self.enableSubSwitches(sender.isOn)
-        }
-        else if sender == self.preservceFirstStopSwitch {
+        } else if sender == self.preservceFirstStopSwitch {
             self.routeParameters.preserveFirstStop = self.preservceFirstStopSwitch.isOn
-        }
-        else {
+        } else {
             self.routeParameters.preserveLastStop = self.preservceLastStopSwitch.isOn
         }
     }

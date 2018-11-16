@@ -48,8 +48,7 @@ class CalloutViewController: UIViewController, AGSGeoViewTouchDelegate {
             self.mapView.callout.detail = String(format: "x: %.2f, y: %.2f", mapPoint.x, mapPoint.y)
             self.mapView.callout.isAccessoryButtonHidden = true
             self.mapView.callout.show(at: mapPoint, screenOffset: CGPoint.zero, rotateOffsetWithMap: false, animated: true)
-        }
-        else {  //hide the callout
+        } else {  //hide the callout
             self.mapView.callout.dismiss()
         }
     }

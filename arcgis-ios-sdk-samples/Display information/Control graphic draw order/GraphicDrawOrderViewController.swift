@@ -73,19 +73,19 @@ class GraphicDrawOrderViewController: UIViewController {
         self.graphics.append(graphic)
         
         //red marker
-        geometry = AGSPoint(x: x+delta, y: y, spatialReference: .webMercator())
+        geometry = AGSPoint(x: x + delta, y: y, spatialReference: .webMercator())
         symbol = AGSPictureMarkerSymbol(image: UIImage(named: "RedMarker2")!)
         graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
         self.graphics.append(graphic)
         
         //green marker
-        geometry = AGSPoint(x: x, y: y+delta, spatialReference: .webMercator())
+        geometry = AGSPoint(x: x, y: y + delta, spatialReference: .webMercator())
         symbol = AGSPictureMarkerSymbol(image: UIImage(named: "GreenMarker")!)
         graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
         self.graphics.append(graphic)
         
         //Violet marker
-        geometry = AGSPoint(x: x+delta, y: y+delta, spatialReference: .webMercator())
+        geometry = AGSPoint(x: x + delta, y: y + delta, spatialReference: .webMercator())
         symbol = AGSPictureMarkerSymbol(image: UIImage(named: "VioletMarker")!)
         graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
         self.graphics.append(graphic)

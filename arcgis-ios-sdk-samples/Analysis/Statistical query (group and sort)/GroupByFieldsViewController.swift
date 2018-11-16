@@ -27,8 +27,8 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet private var tableNavigationItem: UINavigationItem!
     
     // List of fields and selected fields
-    public var fieldNames = [String]()
-    public var selectedFieldNames = [String]()
+    var fieldNames = [String]()
+    var selectedFieldNames = [String]()
     
     // Delegate
     weak var delegate: GroupByFieldsViewControllerDelegate?
@@ -45,8 +45,7 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
         cell.textLabel?.text = fieldName
         if selectedFieldNames.contains(fieldName) {
             cell.accessoryType = .checkmark
-        }
-        else {
+        } else {
             cell.accessoryType = .none
         }
         return cell
@@ -67,8 +66,7 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
                 // Add field name to selected group by fields
                 let fieldName = fieldNames[indexPath.row]
                 selectedFieldNames.append(fieldName)
-            }
-            else {
+            } else {
                 // Set the accessory type to none
                 cell.accessoryType = .none
                 

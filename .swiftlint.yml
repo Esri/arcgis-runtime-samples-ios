@@ -13,11 +13,8 @@ disabled_rules: # rule identifiers to exclude from running
   - file_length
   - for_where
   - force_cast
-  - function_body_length
-  - identifier_name
   - line_length
   - notification_center_detachment
-  - statement_position
   - todo
   - trailing_whitespace
   - type_body_length
@@ -27,6 +24,8 @@ disabled_rules: # rule identifiers to exclude from running
 opt_in_rules: # some rules are only opt-in
   - anyobject_protocol
   - array_init
+  - closure_body_length
+  - closure_end_indentation
   - closure_spacing
   - collection_alignment
   - contains_over_first_not_nil
@@ -46,9 +45,14 @@ opt_in_rules: # some rules are only opt-in
   - legacy_random
   - let_var_whitespace
   - literal_expression_end_indentation
+  - lower_acl_than_parent
+  - missing_docs
   - modifier_order
+  - multiline_arguments
   - multiline_function_chains
   - multiline_parameters
+  - operator_usage_whitespace
+  - operator_whitespace
   - overridden_super_call
   - override_in_extension
   - prohibited_super_call
@@ -59,5 +63,10 @@ opt_in_rules: # some rules are only opt-in
   - toggle_bool
   - unused_import
   - unused_private_declaration
+  - untyped_error_in_catch
   - vertical_parameter_alignment_on_call
   - yoda_condition
+
+identifier_name:
+  min_length:
+    warning: 0 # do not flag short identifiers

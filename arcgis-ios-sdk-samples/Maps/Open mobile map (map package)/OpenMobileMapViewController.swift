@@ -41,12 +41,10 @@ class OpenMobileMapViewController: UIViewController {
             
             if let error = error {
                 self.presentAlert(error: error)
-            }
-            else if let map = self.mapPackage.maps.first {
+            } else if let map = self.mapPackage.maps.first {
                 //assign the first map from the map package to the map view
                 self.mapView.map = map
-            }
-            else {
+            } else {
                 self.presentAlert(message: "No mobile maps found in the map package")
             }
         }

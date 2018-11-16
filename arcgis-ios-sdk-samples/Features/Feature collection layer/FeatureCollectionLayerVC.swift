@@ -136,7 +136,7 @@ class FeatureCollectionLayerVC: UIViewController {
         let point1 = AGSPoint(x: -79.497238, y: 8.849289, spatialReference: .wgs84())
         let point2 = AGSPoint(x: -79.337936, y: 8.638903, spatialReference: .wgs84())
         let point3 = AGSPoint(x: -79.11409, y: 8.895422, spatialReference: .wgs84())
-        polygonFeature.geometry =  AGSPolygon(points: [point1, point2, point3])
+        polygonFeature.geometry = AGSPolygon(points: [point1, point2, point3])
         
         //add feature to the feature collection table
         polygonsCollectionTable.add(polygonFeature, completion: nil)

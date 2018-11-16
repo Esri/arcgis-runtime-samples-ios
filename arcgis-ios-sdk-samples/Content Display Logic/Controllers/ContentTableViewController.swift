@@ -68,8 +68,7 @@ class ContentTableViewController: UITableViewController {
         
         if self.expandedRowIndex == indexPath.row {
             cell.detailLabel.text = sample.description
-        }
-        else {
+        } else {
             cell.detailLabel.text = nil
         }
         
@@ -107,8 +106,7 @@ class ContentTableViewController: UITableViewController {
                     }
                 }
             }
-        }
-        else {
+        } else {
             //clear bundleResourceRequest
             bundleResourceRequest?.endAccessingResources()
             
@@ -163,8 +161,7 @@ class ContentTableViewController: UITableViewController {
                     if (error as NSError).code != NSUserCancelledError {
                         self.presentAlert(message: "Failed to download raster resource :: \(error.localizedDescription)")
                     }
-                }
-                else {
+                } else {
                     
                     if self.bundleResourceRequest?.progress.isCancelled == false {
                         
@@ -218,12 +215,10 @@ class ContentTableViewController: UITableViewController {
             if collapseIfSelected {
                 expandedRowIndex = -1
                 tableView.reloadRows(at: [indexPath], with: .fade)
-            }
-            else {
+            } else {
                 return
             }
-        }
-        else {
+        } else {
             //get the two cells and update
             let previouslyExpandedIndexPath = IndexPath(row: expandedRowIndex, section: 0)
             expandedRowIndex = indexPath.row
@@ -257,8 +252,7 @@ extension ContentTableViewController: UISearchResultsUpdating {
             let query = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),
             !query.isEmpty {
             displayedSamples = searchEngine.sortedSamples(matching: query)
-        }
-        else {
+        } else {
             displayedSamples = allSamples
         }
     }

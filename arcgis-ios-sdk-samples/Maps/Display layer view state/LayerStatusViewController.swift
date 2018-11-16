@@ -90,7 +90,7 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
     
     //initialize status array to `Unknown`
     func populateViewStatusArray() {
-        for _ in 0...self.map.operationalLayers.count-1 {
+        for _ in 0..<map.operationalLayers.count {
             self.viewStatusArray.append("Unknown")
         }
     }
@@ -134,8 +134,7 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         //else use a template
         if layer.loadStatus == .loaded {
             cell.textLabel?.text = layer.name
-        }
-        else {
+        } else {
             cell.textLabel?.text = "Layer \(indexPath.row)"
         }
         

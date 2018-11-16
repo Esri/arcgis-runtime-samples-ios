@@ -144,17 +144,17 @@ extension UIApplication {
             
             // dispatch touches to our view
             //
-            if let b = began {
-                DemoTouchesView.sharedInstance.touchesBegan(b, with: event)
+            if let began = began {
+                DemoTouchesView.sharedInstance.touchesBegan(began, with: event)
             }
-            if let m = moved {
-                DemoTouchesView.sharedInstance.touchesMoved(m, with: event)
+            if let moved = moved {
+                DemoTouchesView.sharedInstance.touchesMoved(moved, with: event)
             }
-            if let e = ended {
-                DemoTouchesView.sharedInstance.touchesEnded(e, with: event)
+            if let ended = ended {
+                DemoTouchesView.sharedInstance.touchesEnded(ended, with: event)
             }
-            if let c = cancelled {
-                DemoTouchesView.sharedInstance.touchesCancelled(c, with: event)
+            if let cancelled = cancelled {
+                DemoTouchesView.sharedInstance.touchesCancelled(cancelled, with: event)
             }
         }
         
@@ -252,6 +252,7 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         add(opacityAnimation, forKey: "opacityAnimation")
     }
     
+    @available(*, unavailable)
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -362,6 +363,7 @@ private class TouchView: UIView {
         layer.cornerRadius = size.width / 2.0
     }
 
+    @available(*, unavailable)
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -390,30 +392,30 @@ private class DemoTouchesView: UIView {
     
     // MARK: Methods
     
-    func touchViewForPoint(_ pt: CGPoint) -> TouchView {
-        let tv = TouchView(center: pt, size: CGSize(width: touchSize, height: touchSize))
-        tv.backgroundColor = touchFillColor
-        tv.layer.borderWidth = touchBorderWidth
-        tv.layer.borderColor = touchBorderColor.cgColor
-        return tv
+    func touchViewForPoint(_ point: CGPoint) -> TouchView {
+        let touchView = TouchView(center: point, size: CGSize(width: touchSize, height: touchSize))
+        touchView.backgroundColor = touchFillColor
+        touchView.layer.borderWidth = touchBorderWidth
+        touchView.layer.borderColor = touchBorderColor.cgColor
+        return touchView
     }
     
     func pingLayerForTouch(_ touch: UITouch) -> PingLayer {
-        let pl = PingLayer(center: touch.location(in: self), fromRadius: 0, toRadius: touchSize)
-        pl.pingWidth = pingWidth
-        pl.pingColor = touchFillColor
-        return pl
+        let pingLayer = PingLayer(center: touch.location(in: self), fromRadius: 0, toRadius: touchSize)
+        pingLayer.pingWidth = pingWidth
+        pingLayer.pingColor = touchFillColor
+        return pingLayer
     }
     
     func updateTouches(_ touches: Set<NSObject>?) {
         
         currentTouches = touches as? Set<UITouch>
         
-        if let w = UIApplication.shared.keyWindow {
+        if let window = UIApplication.shared.keyWindow {
             
             if DemoTouchesView.sharedInstance.window == nil {
-                DemoTouchesView.sharedInstance.frame = w.frame
-                w.addSubview(DemoTouchesView.sharedInstance)
+                DemoTouchesView.sharedInstance.frame = window.frame
+                window.addSubview(DemoTouchesView.sharedInstance)
             } else {
 
                 // Ensure our DemoTouch view is always at the front of it's window
@@ -443,36 +445,36 @@ private class DemoTouchesView: UIView {
     }
     
     fileprivate func addTouch(_ touch: UITouch) {
-        let pt = touch.location(in: self)
-        let newTV = touchViewForPoint(pt)
+        let touchLocation = touch.location(in: self)
+        let newTouchView = touchViewForPoint(touchLocation)
         
-        DemoTouchesView.sharedInstance.addSubview(newTV)
-        touchViewMap[touch] = newTV
+        DemoTouchesView.sharedInstance.addSubview(newTouchView)
+        touchViewMap[touch] = newTouchView
     }
     
     fileprivate func moveTouch(_ touch: UITouch) {
-        if let tv = touchViewMap[touch] {
-            let pt = touch.location(in: self)
-            tv.center = pt
+        if let touchView = touchViewMap[touch] {
+            let touchLocation = touch.location(in: self)
+            touchView.center = touchLocation
         }
     }
     
     fileprivate func removeTouch(_ touch: UITouch, cancelled: Bool = false) {
-        if let tv = touchViewMap[touch] {
+        if let touchView = touchViewMap[touch] {
 
             let animations: (() -> Void) = {
-                tv.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-                tv.alpha = 0.0
+                touchView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+                touchView.alpha = 0.0
                 
                 // only show the ping for a non-cancelled touch that hasn't moved (a touch that actually ended)
                 // basically, a single tap
                 //
-                if !cancelled && !tv.moved {
+                if !cancelled && !touchView.moved {
                     self.showPingForTouch(touch)
                 }
             }
             UIView.animate(withDuration: 0.25, animations: animations, completion: { (finished) in
-                tv.removeFromSuperview()
+                touchView.removeFromSuperview()
             }) 
             
             // stop tracking the touch
@@ -485,10 +487,10 @@ private class DemoTouchesView: UIView {
     //
     fileprivate func intensifyTouchView(_ touch: UITouch) {
         
-        if let tv = touchViewMap[touch] {
+        if let touchView = touchViewMap[touch] {
             
-            if tv.alpha < 1.0 {
-                tv.alpha += CGFloat(0.05)
+            if touchView.alpha < 1.0 {
+                touchView.alpha += CGFloat(0.05)
             }
         }
     }

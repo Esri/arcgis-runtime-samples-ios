@@ -103,8 +103,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
             
             if let error = error {
                 self.presentAlert(error: error)
-            }
-            else {
+            } else {
                 //if a result was returned display the graphic on the map view
                 //using the first result, as it is the more relevant
                 if let result = results?.first {
@@ -113,8 +112,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
                     
                     //zoom to the extent of the graphic
                     self.mapView.setViewpointGeometry(result.displayLocation!.extent, completion: nil)
-                }
-                else {
+                } else {
                     //if no result found, inform the user
                     self.presentAlert(message: "No results found")
                 }
@@ -150,8 +148,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
                     //print error instead alerting to avoid disturbing the flow
                     print(error.localizedDescription)
                 }
-            }
-            else if let result = results?.first {
+            } else if let result = results?.first {
                 //if a result is found extract the required attributes
                 //assign the attributes to the graphic
                 //and show the callout
@@ -161,8 +158,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
                 graphic.attributes.addEntries(from: ["Match_addr": "\(streetString) \(cityString) \(stateString)"])
                 self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint, animated: false, offset: self!.longPressedAndMoving)
                 return
-            }
-            else {
+            } else {
                 //no result was found
                 //using print in log instead of alert to
                 //avoid breaking the flow
@@ -181,8 +177,8 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
     private func graphicForPoint(_ point: AGSPoint, attributes: [String: AnyObject]?) -> AGSGraphic {
         let markerImage = UIImage(named: "RedMarker")!
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
-        symbol.leaderOffsetY = markerImage.size.height/2
-        symbol.offsetY = markerImage.size.height/2
+        symbol.leaderOffsetY = markerImage.size.height / 2
+        symbol.offsetY = markerImage.size.height / 2
         let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: attributes)
         return graphic
     }
@@ -194,8 +190,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         
         if !offset {
             self.mapView.callout.show(for: graphic, tapLocation: tapLocation, animated: animated)
-        }
-        else {
+        } else {
             self.mapView.callout.show(at: tapLocation, screenOffset: self.magnifierOffset, rotateOffsetWithMap: false, animated: animated)
         }
     }
@@ -211,8 +206,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
 
             if let error = result.error {
                 self.presentAlert(error: error)
-            }
-            else if let graphic = result.graphics.first {
+            } else if let graphic = result.graphics.first {
                 //show the callout for the first graphic found
                 self.showCalloutForGraphic(graphic, tapLocation: mapPoint, animated: true, offset: false)
             }

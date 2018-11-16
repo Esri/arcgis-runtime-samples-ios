@@ -28,7 +28,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     private var selectedFeature: AGSArcGISFeature!
     private let optionsSegueName = "OptionsSegue"
     
-    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
+    private let featureServiceURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         //set initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6)
         
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: FEATURE_SERVICE_URL)!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         self.map.operationalLayers.add(self.featureLayer)
@@ -69,8 +69,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
             
             if let error = error {
                 self.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self.presentAlert(message: "Edits applied successfully")
                 self.showCallout(self.selectedFeature, tapLocation: nil)
             }
@@ -90,8 +89,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
             if let error = identifyLayerResult.error {
                 print(error)
-            }
-            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
+            } else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
                 let feature = features.first {
                 //show callout for the first feature
                 self?.showCallout(feature, tapLocation: mapPoint)
@@ -132,8 +130,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
             
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self?.applyEdits()
             }
         }

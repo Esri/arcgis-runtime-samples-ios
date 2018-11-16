@@ -91,8 +91,8 @@ class OfflineEditingViewController: UIViewController {
                 }
                 if let featureServiceInfo = self.syncTask?.featureServiceInfo,
                     let map = self.mapView.map {
-                    for (index, layerInfo) in featureServiceInfo.layerInfos.enumerated().reversed() {
-                        
+                    for index in featureServiceInfo.layerInfos.indices.reversed() {
+                        let layerInfo = featureServiceInfo.layerInfos[index]
                         //For each layer in the serice, add a layer to the map
                         let layerURL = self.featureServiceURL.appendingPathComponent(String(index))
                         let featureTable = AGSServiceFeatureTable(url: layerURL)
@@ -112,7 +112,7 @@ class OfflineEditingViewController: UIViewController {
         let frame = mapView.convert(extentView.frame, from: view)
         
         let minPoint = mapView.screen(toLocation: frame.origin)
-        let maxPoint = mapView.screen(toLocation: CGPoint(x: frame.origin.x+frame.width, y: frame.origin.y+frame.height))
+        let maxPoint = mapView.screen(toLocation: CGPoint(x: frame.origin.x + frame.width, y: frame.origin.y + frame.height))
         let extent = AGSEnvelope(min: minPoint, max: maxPoint)
         return extent
     }
@@ -122,8 +122,7 @@ class OfflineEditingViewController: UIViewController {
             serviceModeToolbar.isHidden = false
             instructionsLabel.isHidden = true
             barButtonItem.title = "Generate geodatabase"
-        }
-        else {
+        } else {
             serviceModeToolbar.isHidden = true
             updateLabelWithEdits()
         }
@@ -197,8 +196,7 @@ class OfflineEditingViewController: UIViewController {
                 }
             }
             print("Deleted all local data")
-        }
-        catch {
+        } catch {
             print(error)
         }
     }
@@ -229,8 +227,7 @@ class OfflineEditingViewController: UIViewController {
             
             if let error = error {
                 print(error)
-            }
-            else {
+            } else {
                 
                 self.liveMode = false
                 
@@ -265,8 +262,7 @@ class OfflineEditingViewController: UIViewController {
             
             //update to done button
             barButtonItem.title = "Done"
-        }
-        else if barButtonItem.title == "Done" {
+        } else if barButtonItem.title == "Done" {
             //hide extent view
             extentView.isHidden = true
             
@@ -280,8 +276,7 @@ class OfflineEditingViewController: UIViewController {
             barButtonItem.title = "Download"
             
             featureLayersVC?.featureLayerInfos = syncTask?.featureServiceInfo?.layerInfos ?? []
-        }
-        else {
+        } else {
             
             guard let featureLayersVC = featureLayersVC else {
                 return
@@ -350,8 +345,7 @@ class OfflineEditingViewController: UIViewController {
             
             if let error = error {
                 self.presentAlert(error: error)
-            }
-            else if let geodatabase = object as? AGSGeodatabase {
+            } else if let geodatabase = object as? AGSGeodatabase {
                 //save a reference to the geodatabase
                 self.generatedGeodatabase = geodatabase
                 //add the layers from geodatabase
@@ -363,9 +357,9 @@ class OfflineEditingViewController: UIViewController {
     @IBAction func switchToServiceMode(_ sender: AnyObject) {
         if generatedGeodatabase?.hasLocalEdits() == true {
             let yesAction = UIAlertAction(title: "Yes", style: .default) { [weak self] _ in
-                self?.syncAction({ () -> Void in
+                self?.syncAction { () -> Void in
                     self?.switchToServiceMode()
-                })
+                }
             }
             let noAction = UIAlertAction(title: "No", style: .cancel) { [weak self] _ in
                 self?.switchToServiceMode()
@@ -375,8 +369,7 @@ class OfflineEditingViewController: UIViewController {
             alert.addAction(noAction)
             alert.addAction(yesAction)
             self.present(alert, animated: true, completion: nil)
-        }
-        else {
+        } else {
             switchToServiceMode()
         }
     }
@@ -417,8 +410,7 @@ class OfflineEditingViewController: UIViewController {
             
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self?.updateUI()
             }
             
@@ -463,8 +455,7 @@ extension OfflineEditingViewController: AGSGeoViewTouchDelegate {
             
             if let error = error {
                 self.presentAlert(error: error)
-            }
-            else if let results = results {
+            } else if let results = results {
                 var popups = [AGSPopup]()
                 for result in results {
                     for geoElement in result.geoElements {
@@ -476,8 +467,7 @@ extension OfflineEditingViewController: AGSGeoViewTouchDelegate {
                     self.popupsVC = popupsVC
                     popupsVC.delegate = self
                     self.present(popupsVC, animated: true, completion: nil)
-                }
-                else {
+                } else {
                     self.presentAlert(message: "No features selected")
                 }
             }
@@ -547,13 +537,11 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
                 
                 if let error = error {
                     self?.presentAlert(error: error)
-                }
-                else {
+                } else {
                     self?.presentAlert(message: "Edits applied successfully")
                 }
             }
-        }
-        else {
+        } else {
             //update edit count and enable/disable sync button otherwise
             updateUI()
         }

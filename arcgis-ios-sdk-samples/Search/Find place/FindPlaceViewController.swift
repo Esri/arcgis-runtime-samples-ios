@@ -135,12 +135,16 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         if (expand != self.isTableViewVisible) && !self.isTableViewAnimating {
             self.isTableViewAnimating = true
             self.tableViewHeightConstraint.constant = expand ? self.tableViewHeight : 0
-            UIView.animate(withDuration: 0.1, animations: { [weak self] () -> Void in
-                self?.view.layoutIfNeeded()
-            }, completion: { [weak self] (finished) -> Void in
-                self?.isTableViewAnimating = false
-                self?.isTableViewVisible = expand
-            })
+            UIView.animate(
+                withDuration: 0.1,
+                animations: { [weak self] () -> Void in
+                    self?.view.layoutIfNeeded()
+                },
+                completion: { [weak self] (finished) -> Void in
+                    self?.isTableViewAnimating = false
+                    self?.isTableViewVisible = expand
+                }
+            )
         }
     }
     
@@ -160,8 +164,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         
         if addressType == "POI" {
             self.mapView.callout.detail = graphic.attributes["Place_addr"] as? String ?? ""
-        }
-        else {
+        } else {
             self.mapView.callout.detail = nil
         }
         self.mapView.callout.isAccessoryButtonHidden = true
@@ -172,8 +175,8 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     private func graphicForPoint(_ point: AGSPoint, attributes: [String: AnyObject]?) -> AGSGraphic {
         let markerImage = UIImage(named: "RedMarker")!
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
-        symbol.leaderOffsetY = markerImage.size.height/2
-        symbol.offsetY = markerImage.size.height/2
+        symbol.leaderOffsetY = markerImage.size.height / 2
+        symbol.offsetY = markerImage.size.height / 2
         let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: attributes)
         return graphic
     }
@@ -201,8 +204,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.mapView.identify(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult) -> Void in
             if let error = result.error {
                 print(error)
-            }
-            else if let graphic = result.graphics.first {
+            } else if let graphic = result.graphics.first {
                 //show callout for the first graphic in the array
                 self.showCalloutForGraphic(graphic, tapLocation: mapPoint)
             }
@@ -220,8 +222,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         if let count = self.suggestResults?.count {
             if self.selectedTextField == self.preferredSearchLocationTextField {
                 rows = count + 1
-            }
-            else {
+            } else {
                 rows = count
             }
         }
@@ -254,15 +255,13 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         if self.selectedTextField == self.preferredSearchLocationTextField {
             if indexPath.row == 0 {
                 self.preferredSearchLocationTextField.text = self.currentLocationText
-            }
-            else {
+            } else {
                 let suggestResult = self.suggestResults[indexPath.row - 1]
                 self.selectedSuggestResult = suggestResult
                 self.preferredSearchLocation = nil
                 self.selectedTextField.text = suggestResult.label
             }
-        }
-        else {
+        } else {
             let suggestResult = self.suggestResults[indexPath.row]
             self.selectedTextField.text = suggestResult.label
         }
@@ -281,13 +280,11 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
                 self.fetchSuggestions(newString, suggestionType: .populatedPlace, textField: self.preferredSearchLocationTextField)
             }
             self.clearPreferredLocationInfo()
-        }
-        else {
+        } else {
             self.selectedTextField = self.poiTextField
             if !newString.isEmpty {
                 self.fetchSuggestions(newString, suggestionType: .poi, textField: self.poiTextField)
-            }
-            else {
+            } else {
                 self.canDoExtentSearch = false
                 self.animateTableView(expand: false)
             }
@@ -298,8 +295,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         if textField == self.preferredSearchLocationTextField {
             self.clearPreferredLocationInfo()
-        }
-        else {
+        } else {
             self.canDoExtentSearch = false
             self.animateTableView(expand: false)
         }
@@ -335,8 +331,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
             if string == textField.text { //check if the search string has not changed in the meanwhile
                 if let error = error {
                     print(error.localizedDescription)
-                }
-                else {
+                } else {
                     //update the suggest results and reload the table
                     self.suggestResults = result
                     self.tableView.reloadData()
@@ -355,12 +350,10 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.locatorTask.geocode(with: suggestResult, parameters: params) { [weak self] (result: [AGSGeocodeResult]?, error: Error?) -> Void in
             if let error = error {
                 print(error.localizedDescription)
-            }
-            else if let geoCodeResults = result?.first {
+            } else if let geoCodeResults = result?.first {
                 self?.preferredSearchLocation = geoCodeResults.displayLocation
                 completion()
-            }
-            else {
+            } else {
                 print("No location found for the suggest result")
             }
         }
@@ -389,8 +382,7 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
             if let error = error {
                 print(error.localizedDescription)
                 self?.canDoExtentSearch = true
-            }
-            else {
+            } else {
                 self?.handleGeocodeResultsForPOIs(results, areExtentBased: (extent != nil))
             }
         }
@@ -413,12 +405,10 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
             //else if search is based on extent, no need to zoom, simply set the flag to true
             if !areExtentBased {
                 self.zoomToGraphics(self.graphicsOverlay.graphics as AnyObject as! [AGSGraphic])
-            }
-            else {
+            } else {
                 self.canDoExtentSearch = true
             }
-        }
-        else {
+        } else {
             //show alert for no results
             print("No results found")
             //set canDoExtentSearch flag to true, so that if the user pans, the button becomes visible
@@ -452,17 +442,14 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
                 self.geocodeUsingSuggestResult(self.selectedSuggestResult, completion: { [weak self] () -> Void in
                     //find the POIs wrt location
                     self?.geocodePOIs(poi, location: self!.preferredSearchLocation, extent: nil)
-                    })
-            }
-            else {
+                })
+            } else {
                 self.geocodePOIs(poi, location: self.preferredSearchLocation, extent: nil)
             }
-        }
-        else {
+        } else {
             if self.preferredSearchLocationTextField.text == self.currentLocationText {
                 self.geocodePOIs(poi, location: self.mapView.locationDisplay.mapLocation, extent: nil)
-            }
-            else {
+            } else {
                 self.geocodePOIs(poi, location: nil, extent: nil)
             }
         }

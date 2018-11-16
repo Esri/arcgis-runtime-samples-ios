@@ -83,8 +83,7 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
             if let error = result.error {
                 //show error to user
                 self?.presentAlert(error: error)
-            }
-            else if let feature = result.geoElements.first as? AGSFeature {
+            } else if let feature = result.geoElements.first as? AGSFeature {
                 
                 //select the first feature
                 self?.selectedPark = feature

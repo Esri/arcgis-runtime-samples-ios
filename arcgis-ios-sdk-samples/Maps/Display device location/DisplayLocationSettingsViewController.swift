@@ -86,8 +86,7 @@ class DisplayLocationSettingsViewController: UITableViewController {
                     self?.presentAlert(error: error)
                 }
             }
-        }
-        else {
+        } else {
             // stop showing the device location
             locationDisplay.stop()
         }

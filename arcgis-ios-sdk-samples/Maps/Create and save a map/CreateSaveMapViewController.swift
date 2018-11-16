@@ -19,11 +19,11 @@ extension UIImage {
     
     func croppedImage(_ size: CGSize) -> UIImage {
         //calculate rect based on input size
-        let originX = (self.size.width - size.width)/2
-        let originY = (self.size.height - size.height)/2
+        let originX = (self.size.width - size.width) / 2
+        let originY = (self.size.height - size.height) / 2
         
         let scale = UIScreen.main.scale
-        let rect = CGRect(x: originX*scale, y: originY*scale, width: size.width*scale, height: size.height*scale)
+        let rect = CGRect(x: originX * scale, y: originY * scale, width: size.width * scale, height: size.height * scale)
         
         //crop image
         let croppedCGImage = self.cgImage!.cropping(to: rect)!
@@ -118,8 +118,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         self.portal.load { (error) -> Void in
             if let error = error {
                 print(error)
-            }
-            else {
+            } else {
                 //get title etc
                 self.toggleSaveAsView()
             }
@@ -141,8 +140,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         if segue.identifier == "CreateOptionsEmbedSegue" {
             self.createOptionsVC = segue.destination as? CreateOptionsViewController
             self.createOptionsVC.delegate = self
-        }
-        else if segue.identifier == "SaveAsEmbedSegue" {
+        } else if segue.identifier == "SaveAsEmbedSegue" {
             self.saveAsVC = segue.destination as? SaveAsViewController
             self.saveAsVC.delegate = self
         }
@@ -185,8 +183,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
                     SVProgressHUD.dismiss()
                     if let error = error {
                         self?.presentAlert(error: error)
-                    }
-                    else {
+                    } else {
                         self?.showSuccess()
                     }
                     weakSelf.saveAsVC.resetInputFields()

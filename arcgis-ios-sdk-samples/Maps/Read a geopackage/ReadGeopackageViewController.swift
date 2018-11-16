@@ -18,7 +18,6 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
     
     @IBOutlet weak var mapView: AGSMapView!
     
-    private var geoPackage: AGSGeoPackage?
     private var allLayers: [AGSLayer] = []
 
     override func viewDidLoad() {
@@ -28,27 +27,25 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
         mapView.map = AGSMap(basemapType: .streets, latitude: 39.7294, longitude: -104.8319, levelOfDetail: 11)
         
         // Create a geopackage from a named bundle resource.
-        geoPackage = AGSGeoPackage(name: "AuroraCO")
+        let geoPackage = AGSGeoPackage(name: "AuroraCO")
         
         // Load the geopackage.
-        geoPackage?.load { [weak self] error in
+        geoPackage.load { [weak self] error in
             guard error == nil else {
                 self?.presentAlert(message: "Error opening Geopackage: \(error!.localizedDescription)")
                 return
             }
 
             // Create feature layers for each feature table in the geopackage.
-            let featureLayers = self?.geoPackage?.geoPackageFeatureTables.map({ featureTable -> AGSLayer in
-                return AGSFeatureLayer(featureTable: featureTable)
-            }) ?? []
+            let featureLayers = geoPackage.geoPackageFeatureTables.map { AGSFeatureLayer(featureTable: $0) }
             
             // Create raster layers for each raster in the geopackage.
-            let rasterLayers = self?.geoPackage?.geoPackageRasters.map({ raster -> AGSLayer in
+            let rasterLayers = geoPackage.geoPackageRasters.map({ raster -> AGSLayer in
                 let rasterLayer = AGSRasterLayer(raster: raster)
                 //make it semi-transparent so it doesn't obscure the contents under it
                 rasterLayer.opacity = 0.55
                 return rasterLayer
-            }) ?? []
+            })
 
             // Keep an array of all the feature layers and raster layers in this geopackage.
             self?.allLayers.append(contentsOf: rasterLayers)

@@ -59,8 +59,7 @@ class ManualCacheViewController: UIViewController {
             //check for error
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 //the resulting features should be displayed on the map
                 //you can print the count of features
                 print("Populated \(result?.featureEnumerator().allObjects.count ?? 0) features.")

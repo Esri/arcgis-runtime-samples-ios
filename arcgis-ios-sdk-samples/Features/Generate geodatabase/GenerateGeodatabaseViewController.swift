@@ -57,12 +57,13 @@ class GenerateGeodatabaseViewController: UIViewController {
                 print("Could not load feature service \(error)")
                 
             } else {
-                guard let self = self else {
+                guard let self = self,
+                    let featureServiceInfo = self.syncTask.featureServiceInfo else {
                     return
                 }
                 
-                for (index, layerInfo) in self.syncTask.featureServiceInfo!.layerInfos.enumerated().reversed() {
-                    
+                for index in featureServiceInfo.layerInfos.indices.reversed() {
+                    let layerInfo = featureServiceInfo.layerInfos[index]
                     //For each layer in the serice, add a layer to the map
                     let layerURL = self.syncTask.url!.appendingPathComponent(String(index))
                     let featureTable = AGSServiceFeatureTable(url: layerURL)
@@ -110,25 +111,26 @@ class GenerateGeodatabaseViewController: UIViewController {
                 let generateJob = self.syncTask.generateJob(with: params, downloadFileURL: downloadFileURL)
                 self.activeJob = generateJob
                 //kick off the job
-                generateJob.start(statusHandler: { (status: AGSJobStatus) -> Void in
-                    SVProgressHUD.show(withStatus: status.statusString())
-                }, completion: { [weak self] (object: AnyObject?, error: Error?) -> Void in
-                    
-                    SVProgressHUD.dismiss()
-                    
-                    if let error = error {
-                        self?.presentAlert(error: error)
+                generateJob.start(
+                    statusHandler: { (status: AGSJobStatus) -> Void in
+                        SVProgressHUD.show(withStatus: status.statusString())
+                    },
+                    completion: { [weak self] (object: AnyObject?, error: Error?) -> Void in
+                        
+                        SVProgressHUD.dismiss()
+                        
+                        if let error = error {
+                            self?.presentAlert(error: error)
+                        } else {
+                            self?.generatedGeodatabase = object as? AGSGeodatabase
+                            self?.displayLayersFromGeodatabase()
+                        }
+                        
+                        self?.activeJob = nil
                     }
-                    else {
-                        self?.generatedGeodatabase = object as? AGSGeodatabase
-                        self?.displayLayersFromGeodatabase()
-                    }
-                    
-                    self?.activeJob = nil
-                })
+                )
                 
-            }
-            else {
+            } else {
                 print("Could not generate default parameters: \(error!)")
             }
         }
@@ -146,8 +148,7 @@ class GenerateGeodatabaseViewController: UIViewController {
 
             if let error = error {
                 self.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self.mapView.map?.operationalLayers.removeAllObjects()
                 
                 AGSLoadObjects(generatedGeodatabase.geodatabaseFeatureTables) { (success: Bool) in

@@ -66,7 +66,7 @@ class ExportTilesViewController: UIViewController {
         let frame = self.mapView.convert(self.extentView.frame, from: self.view)
         
         let minPoint = self.mapView.screen(toLocation: frame.origin)
-        let maxPoint = self.mapView.screen(toLocation: CGPoint(x: frame.origin.x+frame.width, y: frame.origin.y+frame.height))
+        let maxPoint = self.mapView.screen(toLocation: CGPoint(x: frame.origin.x + frame.width, y: frame.origin.y + frame.height))
         let extent = AGSEnvelope(min: minPoint, max: maxPoint)
         return extent
     }
@@ -75,8 +75,7 @@ class ExportTilesViewController: UIViewController {
         if downloading {
             //cancel download
             self.cancelDownload()
-        }
-        else {
+        } else {
             //download
             self.initiateDownload()
         }
@@ -117,8 +116,7 @@ class ExportTilesViewController: UIViewController {
         self.exportTask.exportTileCacheParameters(withAreaOfInterest: self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale) { [weak self] (params: AGSExportTileCacheParameters?, error: Error?) in
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self?.exportTilesUsingParameters(params!)
             }
         }
@@ -144,8 +142,7 @@ class ExportTilesViewController: UIViewController {
             
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self?.visualEffectView.isHidden = false
                 
                 let tileCache = result as! AGSTileCache
@@ -174,8 +171,7 @@ class ExportTilesViewController: UIViewController {
                 }
             }
             print("deleted all local data")
-        }
-        catch {
+        } catch {
             print(error)
         }
     }

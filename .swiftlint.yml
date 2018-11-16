@@ -71,7 +71,5 @@ opt_in_rules: # some rules are only opt-in
   - yoda_condition
 
 identifier_name:
-  excluded: # allowed non-conforming identifiers
-    - x
-    - y
-    - z
+  min_length:
+    warning: 0 # do not flag short identifiers

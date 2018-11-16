@@ -272,48 +272,51 @@ class DisplayGridSettingsViewController: UITableViewController {
     }
     
     private func showLabelFormatPicker() {
-        if let grid = mapView?.grid,
-            let selectedIndex = (grid as? AGSLatitudeLongitudeGrid)?.labelFormat.rawValue {
-            let optionsViewController = OptionsTableViewController(labels: labelFormatLabels, selectedIndex: selectedIndex) { (newIndex) in
-                if let grid = self.mapView?.grid as? AGSLatitudeLongitudeGrid {
-                    grid.labelFormat = AGSLatitudeLongitudeGridLabelFormat(rawValue: newIndex)!
-                    self.updateLabelFormatUI()
-                }
-            }
-            optionsViewController.title = "Format"
-            show(optionsViewController, sender: self)
+        guard let grid = mapView?.grid,
+            let selectedIndex = (grid as? AGSLatitudeLongitudeGrid)?.labelFormat.rawValue else {
+            return
         }
+        let optionsViewController = OptionsTableViewController(labels: labelFormatLabels, selectedIndex: selectedIndex) { (newIndex) in
+            if let grid = self.mapView?.grid as? AGSLatitudeLongitudeGrid {
+                grid.labelFormat = AGSLatitudeLongitudeGridLabelFormat(rawValue: newIndex)!
+                self.updateLabelFormatUI()
+            }
+        }
+        optionsViewController.title = "Format"
+        show(optionsViewController, sender: self)
     }
     
     private func showLabelUnitPicker() {
-        if let grid = mapView?.grid,
-            let selectedIndex = (grid as? AGSUSNGGrid)?.labelUnit.rawValue ?? (grid as? AGSMGRSGrid)?.labelUnit.rawValue {
-            let optionsViewController = OptionsTableViewController(labels: labelUnitLabels, selectedIndex: selectedIndex) { (newIndex) in
-                if let grid = self.mapView?.grid as? AGSMGRSGrid {
-                    grid.labelUnit = AGSMGRSGridLabelUnit(rawValue: newIndex)!
-                } else if let grid = self.mapView?.grid as? AGSUSNGGrid {
-                    grid.labelUnit = AGSUSNGGridLabelUnit(rawValue: newIndex)!
-                }
-                self.updateLabelUnitUI()
-            }
-            optionsViewController.title = "Unit"
-            show(optionsViewController, sender: self)
+        guard let grid = mapView?.grid,
+            let selectedIndex = (grid as? AGSUSNGGrid)?.labelUnit.rawValue ?? (grid as? AGSMGRSGrid)?.labelUnit.rawValue else {
+            return
         }
+        let optionsViewController = OptionsTableViewController(labels: labelUnitLabels, selectedIndex: selectedIndex) { (newIndex) in
+            if let grid = self.mapView?.grid as? AGSMGRSGrid {
+                grid.labelUnit = AGSMGRSGridLabelUnit(rawValue: newIndex)!
+            } else if let grid = self.mapView?.grid as? AGSUSNGGrid {
+                grid.labelUnit = AGSUSNGGridLabelUnit(rawValue: newIndex)!
+            }
+            self.updateLabelUnitUI()
+        }
+        optionsViewController.title = "Unit"
+        show(optionsViewController, sender: self)
     }
     
     private func showGridTypePicker() {
-        if let grid = mapView?.grid,
-            let gridType = GridType(grid: grid) {
-            let selectedIndex = gridType.rawValue
-            let labels = GridType.allCases.map { (type) -> String in
-                return type.label
-            }
-            let optionsViewController = OptionsTableViewController(labels: labels, selectedIndex: selectedIndex) { (newIndex) in
-                self.changeGrid(to: GridType(rawValue: newIndex)!)
-            }
-            optionsViewController.title = "Grid Type"
-            show(optionsViewController, sender: self)
+        guard let grid = mapView?.grid,
+            let gridType = GridType(grid: grid) else {
+            return
         }
+        let selectedIndex = gridType.rawValue
+        let labels = GridType.allCases.map { (type) -> String in
+            return type.label
+        }
+        let optionsViewController = OptionsTableViewController(labels: labels, selectedIndex: selectedIndex) { (newIndex) in
+            self.changeGrid(to: GridType(rawValue: newIndex)!)
+        }
+        optionsViewController.title = "Grid Type"
+        show(optionsViewController, sender: self)
     }
     
     private func showGridColorPicker() {

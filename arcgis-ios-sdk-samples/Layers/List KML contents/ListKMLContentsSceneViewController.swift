@@ -182,30 +182,36 @@ class ListKMLContentsSceneViewController: UIViewController {
             return nil
         }
         
-        var center = extent.center
+        let extentCenter = extent.center
         // take the scene's elevation into account
-        let elevation = sceneSurfaceElevation(for: center) ?? 0
+        let elevation = sceneSurfaceElevation(for: extentCenter) ?? 0
         
         // It's possible for `isEmpty` to be false but for width/height to still be zero.
         if extent.width == 0,
             extent.height == 0 {
             
-            center = AGSPoint(x: center.x, y: center.y, z: center.z + elevation, spatialReference: extent.spatialReference)
+            let lookAtPoint = AGSPoint(
+                x: extentCenter.x,
+                y: extentCenter.y,
+                z: extentCenter.z + elevation,
+                spatialReference: extent.spatialReference
+            )
             // Defaults based on Google Earth.
-            let camera = AGSCamera(lookAt: center, distance: 1000, heading: 0, pitch: 45, roll: 0)
+            let camera = AGSCamera(lookAt: lookAtPoint, distance: 1000, heading: 0, pitch: 45, roll: 0)
             // only the camera parameter is used by the scene
             return AGSViewpoint(targetExtent: extent, camera: camera)
-            
         } else {
             // expand the extent to give some margins when framing the node
             let bufferRadius = max(extent.width, extent.height) / 20
-            let bufferedExtent = AGSEnvelope(xMin: extent.xMin - bufferRadius,
-                                             yMin: extent.yMin - bufferRadius,
-                                             zMin: extent.zMin - bufferRadius + elevation,
-                                             xMax: extent.xMax + bufferRadius,
-                                             yMax: extent.yMax + bufferRadius,
-                                             zMax: extent.zMax + bufferRadius + elevation,
-                                             spatialReference: .wgs84())
+            let bufferedExtent = AGSEnvelope(
+                xMin: extent.xMin - bufferRadius,
+                yMin: extent.yMin - bufferRadius,
+                zMin: extent.zMin - bufferRadius + elevation,
+                xMax: extent.xMax + bufferRadius,
+                yMax: extent.yMax + bufferRadius,
+                zMax: extent.zMax + bufferRadius + elevation,
+                spatialReference: .wgs84()
+            )
             return AGSViewpoint(targetExtent: bufferedExtent)
         }
     }

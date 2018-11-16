@@ -124,7 +124,7 @@ class GraphicsWithSymbolsViewController: UIViewController {
         graphicsOverlay.graphics.add(nestingGraphic)
     }
     
-    private var boatTripGeometry: AGSPolyline = {
+    private let boatTripGeometry: AGSPolyline = {
         //create a polyline
         let boatRoute = AGSPolylineBuilder(spatialReference: .wgs84())
         
@@ -191,7 +191,7 @@ class GraphicsWithSymbolsViewController: UIViewController {
         return boatRoute.toGeometry()
     }()
     
-    private var nestingGroundGeometry: AGSPolygon = {
+    private let nestingGroundGeometry: AGSPolygon = {
         //create a polygon
         let nestingGround = AGSPolygonBuilder(spatialReference: .wgs84())
         

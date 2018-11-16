@@ -116,18 +116,22 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
     // MARK: GeoView Touch Delegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        //
+
         // Identify graphics overlay
         geoView.identify(graphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self]  (result) in
             
+            guard let self = self else {
+                return
+            }
+            
             // Clear selection
-            self?.graphicsOverlay.clearSelection()
+            self.graphicsOverlay.clearSelection()
             
             // Present the error if present
             if let error = result.error {
-                self?.presentAlert(error: error)
+                self.presentAlert(error: error)
             } else if let identifiedGraphic = result.graphics.first {
-                self?.updateForIdentifiedGraphic(identifiedGraphic, popoverPoint: screenPoint)
+                self.updateForIdentifiedGraphic(identifiedGraphic, popoverPoint: screenPoint)
             }
         }
     }

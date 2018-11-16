@@ -31,11 +31,14 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
         // set the sceneView's touch delegate so we can get user taps
         sceneView.touchDelegate = self
 
-        addGraphicsOverlay()
+        let graphicsOverlay = makeGraphicsOverlay()
+        sceneView.graphicsOverlays.add(graphicsOverlay)
         
-        addAnalysisOverlay()
+        let analysisOverlay = makeAnalysisOverlay()
+        sceneView.analysisOverlays.add(analysisOverlay)
         
-        addCameraController()
+        let cameraController = makeCameraController()
+        sceneView.cameraController = cameraController
 
         sceneView.scene = makeScene()
     }
@@ -62,7 +65,7 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
         return scene
     }
     
-    private func addGraphicsOverlay() {
+    private func makeGraphicsOverlay() -> AGSGraphicsOverlay {
         
         // create a graphics overlay for the tank
         let graphicsOverlay = AGSGraphicsOverlay()
@@ -87,11 +90,10 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
             attributes: ["HEADING": 0.0]
         )
         graphicsOverlay.graphics.add(tank)
-        
-        sceneView.graphicsOverlays.add(graphicsOverlay)
+        return graphicsOverlay
     }
     
-    private func addAnalysisOverlay() {
+    private func makeAnalysisOverlay() -> AGSAnalysisOverlay {
         
         // create a viewshed to attach to the tank
         let geoElementViewshed = AGSGeoElementViewshed(
@@ -110,14 +112,14 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
         // create an analysis overlay to add the viewshed to the scene view
         let analysisOverlay = AGSAnalysisOverlay()
         analysisOverlay.analyses.add(geoElementViewshed)
-        sceneView.analysisOverlays.add(analysisOverlay)
+        return analysisOverlay
     }
     
-    private func addCameraController() {
+    private func makeCameraController() -> AGSCameraController {
         // set camera controller to follow tank
         let cameraController = AGSOrbitGeoElementCameraController(targetGeoElement: tank, distance: 200.0)
         cameraController.cameraPitchOffset = 45.0
-        sceneView.cameraController = cameraController
+        return cameraController
     }
 
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {

@@ -53,10 +53,10 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         super.viewDidAppear(animated)
         
         //default state for toolbar is off
-        self.toggleToolbar(visible: false)
+        self.setToolbarVisibility(visible: false)
     }
     
-    func toggleToolbar(visible: Bool) {
+    func setToolbarVisibility(visible: Bool) {
         toolbarBottomConstraint.constant = visible ? 0 : -44 - view.safeAreaInsets.bottom
         
         UIView.animate(withDuration: 0.3, animations: { [weak self] () -> Void in
@@ -119,7 +119,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.mapView.sketchEditor?.start(with: point)
         
         //show the toolbar
-        self.toggleToolbar(visible: true)
+        self.setToolbarVisibility(visible: true)
         
         //hide the feature for time being
         self.featureLayer.setFeature(self.selectedFeature, visible: false)
@@ -145,7 +145,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         }
         
         //hide toolbar
-        self.toggleToolbar(visible: false)
+        self.setToolbarVisibility(visible: false)
         
         //disable sketch editor
         self.mapView.sketchEditor?.stop()

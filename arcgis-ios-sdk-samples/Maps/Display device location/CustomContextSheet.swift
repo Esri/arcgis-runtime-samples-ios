@@ -104,9 +104,9 @@ class CustomContextSheet: UIView {
         }
         
         //other buttons
-        for (index, image) in images.enumerated() {
+        for index in images.indices {
             
-            let button = self.button(image, highlightImage: self.highlightImages?[index], action: #selector(CustomContextSheet.valueChanged(_:)))
+            let button = self.button(images[index], highlightImage: highlightImages?[index], action: #selector(CustomContextSheet.valueChanged(_:)))
             button.isHidden = true
             self.insertSubview(button, at: 0)
             self.buttonsCollection.append(button)

@@ -159,17 +159,11 @@ class ExpandableTableViewController: UITableViewController {
         let sectionData = sectionItems[section]
         
         expandedSectionHeaderNumber = -1
-        if sectionData.isEmpty {
-            return
-        } else {
+        if !sectionData.isEmpty {
             UIView.animate(withDuration: 0.25, animations: {
                 imageView.image = UIImage(named: "Collapsed")
             })
-            var indexPaths = [IndexPath]()
-            for index in 0..<sectionData.count {
-                let indexPath = IndexPath(row: index, section: section)
-                indexPaths.append(indexPath)
-            }
+            let indexPaths = sectionData.indices.map { IndexPath(row: $0, section: section) }
             tableView!.beginUpdates()
             tableView!.deleteRows(at: indexPaths, with: .fade)
             tableView!.endUpdates()
@@ -186,11 +180,7 @@ class ExpandableTableViewController: UITableViewController {
             UIView.animate(withDuration: 0.25, animations: {
                 imageView.image = UIImage(named: "Expanded")
             })
-            var indexPaths = [IndexPath]()
-            for index in 0..<sectionData.count {
-                let indexPath = IndexPath(row: index, section: section)
-                indexPaths.append(indexPath)
-            }
+            let indexPaths = sectionData.indices.map { IndexPath(row: $0, section: section) }
             expandedSectionHeaderNumber = section
             tableView!.beginUpdates()
             tableView!.insertRows(at: indexPaths, with: UITableView.RowAnimation.fade)

@@ -178,7 +178,8 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
                 //are the same across facilities, we only need to draw the resultPolygons at
                 //facility index 0. It will contain either merged or multipart polygons
                 if let polygons = result?.resultPolygons(atFacilityIndex: 0) {
-                    for (index, polygon) in polygons.enumerated() {
+                    for index in polygons.indices {
+                        let polygon = polygons[index]
                         let fillSymbol = self.serviceAreaSymbol(for: index)
                         let graphic = AGSGraphic(geometry: polygon.geometry, symbol: fillSymbol, attributes: nil)
                         self.serviceAreaGraphicsOverlay.graphics.add(graphic)

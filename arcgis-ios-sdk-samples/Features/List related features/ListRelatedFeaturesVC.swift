@@ -138,7 +138,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
                     //self?.performSegue(withIdentifier: "RelatedFeaturesSegue", sender: self)
                     self?.showRelatedFeatures()
                 } else {  //else notify user
-                    self?.presentAlert(message: "No related features found")
+                    self?.presentAlert(title: "No related features found")
                 }
             }
         }

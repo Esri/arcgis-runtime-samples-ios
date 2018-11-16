@@ -98,7 +98,7 @@ class QueryMapImageSublayerViewController: UIViewController {
     ///
     /// - Parameter error: The error that caused loading to fail.
     func mapImageLayer(_ layer: AGSArcGISMapImageLayer, didFailToLoadWith error: Error) {
-        presentAlert(message: "Failed to load ArcGIS map image layer \(layer.name).")
+        presentAlert(title: "Failed to load ArcGIS map image layer \(layer.name).")
     }
     
     /// Enables the text field and button if they can be enabled and haven't
@@ -125,7 +125,7 @@ class QueryMapImageSublayerViewController: UIViewController {
         } else if trimmedText.isEmpty {
             populationValue = nil
         } else {
-            presentAlert(message: "The population value must be numeric.")
+            presentAlert(title: "The population value must be numeric.")
         }
     }
     

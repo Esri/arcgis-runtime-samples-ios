@@ -115,7 +115,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         if totalCount > 0 {
             presentAlert(title: "Number of elements found", message: messageString)
         } else {
-            presentAlert(message: "No element found")
+            presentAlert(title: "No element found")
         }
     }
     

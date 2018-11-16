@@ -65,7 +65,7 @@ class HotspotSettingsViewController: UIViewController, UITextFieldDelegate {
         if !self.toTextField.text!.isEmpty && !self.fromTextField.text!.isEmpty {
             self.delegate?.hotspotSettingsViewController(self, didSelectDates: self.fromTextField.text!, toDate: self.toTextField.text!)
         } else {
-            presentAlert(message: "Both dates are required")
+            presentAlert(title: "Both dates are required")
         }
     }
     

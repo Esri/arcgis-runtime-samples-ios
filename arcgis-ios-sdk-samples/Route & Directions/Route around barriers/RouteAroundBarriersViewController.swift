@@ -88,7 +88,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
     @IBAction func route() {
         //add check
         if self.routeParameters == nil || self.stopGraphicsOverlay.graphics.count < 2 {
-            presentAlert(message: "Either parameters not loaded or not sufficient stops")
+            presentAlert(title: "Either parameters not loaded or not sufficient stops")
             return
         }
         

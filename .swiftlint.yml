@@ -42,6 +42,7 @@ opt_in_rules: # some rules are only opt-in
   - fallthrough
   - fatal_error_message
   - first_where
+  - function_default_parameter_at_end
   - identical_operands
   - joined_default_parameter
   - legacy_random

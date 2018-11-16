@@ -69,7 +69,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
             if let error = error {
                 self?.presentAlert(error: error)
             } else {
-                self?.presentAlert(message: "Saved successfully!")
+                self?.presentAlert(title: "Saved successfully!")
             }
             //un hide the feature
             self?.featureLayer.setFeature(self!.selectedFeature, visible: true)

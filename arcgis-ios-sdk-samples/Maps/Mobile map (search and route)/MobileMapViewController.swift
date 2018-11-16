@@ -162,7 +162,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
                     return
                 } else {
                     //no result was found
-                    self?.presentAlert(message: "No address found")
+                    self?.presentAlert(title: "No address found")
                     
                     //dismiss the callout if already visible
                     self?.mapView.callout.dismiss()

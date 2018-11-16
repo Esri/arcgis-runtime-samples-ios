@@ -41,7 +41,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
             if let error = error {
                 self?.presentAlert(error: error)
             } else {
-                self?.presentAlert(message: "Apply edits finished successfully")
+                self?.presentAlert(title: "Apply edits finished successfully")
                 self?.loadAttachments()
             }
         }

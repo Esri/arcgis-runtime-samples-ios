@@ -159,7 +159,7 @@ class ContentTableViewController: UITableViewController {
                         self.tableView.deselectRow(at: indexPath, animated: true)
                     }
                     if (error as NSError).code != NSUserCancelledError {
-                        self.presentAlert(message: "Failed to download raster resource :: \(error.localizedDescription)")
+                        self.presentAlert(title: "Failed to download raster resource :: \(error.localizedDescription)")
                     }
                 } else {
                     

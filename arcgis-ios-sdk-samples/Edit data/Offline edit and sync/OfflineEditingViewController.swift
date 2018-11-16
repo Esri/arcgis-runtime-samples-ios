@@ -242,7 +242,7 @@ class OfflineEditingViewController: UIViewController {
                                 self.mapView.map?.operationalLayers.add(featureLayer)
                             }
                         }
-                        self.presentAlert(message: "Now showing layers from the geodatabase")
+                        self.presentAlert(title: "Now showing layers from the geodatabase")
                     }
                 })
             }
@@ -286,7 +286,7 @@ class OfflineEditingViewController: UIViewController {
             let selectedLayerIds = featureLayersVC.selectedLayerInfos.map { $0.id }
             
             if selectedLayerIds.isEmpty {
-                presentAlert(message: "Please select at least one layer")
+                presentAlert(title: "Please select at least one layer")
                 return
             }
             
@@ -468,7 +468,7 @@ extension OfflineEditingViewController: AGSGeoViewTouchDelegate {
                     popupsVC.delegate = self
                     self.present(popupsVC, animated: true, completion: nil)
                 } else {
-                    self.presentAlert(message: "No features selected")
+                    self.presentAlert(title: "No features selected")
                 }
             }
         }
@@ -538,7 +538,7 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
                 if let error = error {
                     self?.presentAlert(error: error)
                 } else {
-                    self?.presentAlert(message: "Edits applied successfully")
+                    self?.presentAlert(title: "Edits applied successfully")
                 }
             }
         } else {

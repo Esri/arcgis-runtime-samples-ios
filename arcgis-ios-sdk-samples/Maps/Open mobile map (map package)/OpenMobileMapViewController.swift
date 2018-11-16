@@ -45,7 +45,7 @@ class OpenMobileMapViewController: UIViewController {
                 //assign the first map from the map package to the map view
                 self.mapView.map = map
             } else {
-                self.presentAlert(message: "No mobile maps found in the map package")
+                self.presentAlert(title: "No mobile maps found in the map package")
             }
         }
     }

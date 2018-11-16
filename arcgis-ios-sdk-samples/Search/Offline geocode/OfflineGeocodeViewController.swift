@@ -114,7 +114,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
                     self.mapView.setViewpointGeometry(result.displayLocation!.extent, completion: nil)
                 } else {
                     //if no result found, inform the user
-                    self.presentAlert(message: "No results found")
+                    self.presentAlert(title: "No results found")
                 }
             }
         })

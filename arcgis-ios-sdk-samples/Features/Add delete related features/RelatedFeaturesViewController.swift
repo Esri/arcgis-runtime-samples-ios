@@ -45,7 +45,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         //in this case there is only one describing the 1..M relationship between parks and species
         guard let relationshipInfo = self.originFeatureTable.layerInfo?.relationshipInfos.first else {
             
-            presentAlert(message: "Relationship info not found")
+            presentAlert(title: "Relationship info not found")
             return
         }
         

@@ -21,7 +21,7 @@ class OnInteractionNoCacheViewController: UIViewController {
     
     private var map: AGSMap!
     
-    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0"
+    private let featureServiceURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class OnInteractionNoCacheViewController: UIViewController {
             spatialReference: .webMercator()))
         
         //feature layer
-        let featureTable = AGSServiceFeatureTable(url: URL(string: FEATURE_SERVICE_URL)!)
+        let featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
         //set the request mode
         featureTable.featureRequestMode = AGSFeatureRequestMode.onInteractionNoCache
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)

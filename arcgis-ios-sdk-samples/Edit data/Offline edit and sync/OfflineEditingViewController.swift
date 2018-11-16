@@ -91,8 +91,8 @@ class OfflineEditingViewController: UIViewController {
                 }
                 if let featureServiceInfo = self.syncTask?.featureServiceInfo,
                     let map = self.mapView.map {
-                    for (index, layerInfo) in featureServiceInfo.layerInfos.enumerated().reversed() {
-                        
+                    for index in featureServiceInfo.layerInfos.indices.reversed() {
+                        let layerInfo = featureServiceInfo.layerInfos[index]
                         //For each layer in the serice, add a layer to the map
                         let layerURL = self.featureServiceURL.appendingPathComponent(String(index))
                         let featureTable = AGSServiceFeatureTable(url: layerURL)

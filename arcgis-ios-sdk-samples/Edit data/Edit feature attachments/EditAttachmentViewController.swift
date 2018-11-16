@@ -25,7 +25,7 @@ class EditAttachmentViewController: UIViewController, AGSGeoViewTouchDelegate, A
     private var lastQuery: AGSCancelable!
     
     private var selectedFeature: AGSArcGISFeature!
-    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
+    private let featureServiceURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ class EditAttachmentViewController: UIViewController, AGSGeoViewTouchDelegate, A
         //set initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -471534.03, y: 7297552.03, spatialReference: .webMercator()), scale: 6e6)
         
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: FEATURE_SERVICE_URL)!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         self.map.operationalLayers.add(self.featureLayer)

@@ -13,7 +13,6 @@ disabled_rules: # rule identifiers to exclude from running
   - file_length
   - for_where
   - force_cast
-  - identifier_name
   - line_length
   - notification_center_detachment
   - todo
@@ -56,16 +55,18 @@ opt_in_rules: # some rules are only opt-in
   - operator_whitespace
   - overridden_super_call
   - override_in_extension
-  - prefixed_toplevel_constant
   - prohibited_super_call
   - redundant_nil_coalescing
   - redundant_type_annotation
   - sorted_first_last
   - static_operator
   - toggle_bool
-  - unavailable_function
   - unused_import
   - unused_private_declaration
   - untyped_error_in_catch
   - vertical_parameter_alignment_on_call
   - yoda_condition
+
+identifier_name:
+  min_length:
+    warning: 0 # do not flag short identifiers

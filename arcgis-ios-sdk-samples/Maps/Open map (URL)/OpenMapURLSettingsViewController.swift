@@ -25,7 +25,7 @@ class OpenMapURLSettingsViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         let selectedMapIndex = mapModels.firstIndex { (mapAtURL) -> Bool in
-            mapAtURL.id == initialSelectedID
+            mapAtURL.portalID == initialSelectedID
         }
         if let selectedMapIndex = selectedMapIndex {
             let selectedIndexPath = IndexPath(row: selectedMapIndex, section: 0)

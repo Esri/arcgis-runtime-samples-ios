@@ -164,7 +164,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         }
 
         // Check button by tag
-        switch Section(rawValue: sender.tag)! {
+        switch Section.allCases[sender.tag] {
         case .definitions:
             // Init view controller and set properties
             let navController = storyboard!.instantiateViewController(withIdentifier: "AddStatisticDefinitionsViewController") as! UINavigationController
@@ -211,7 +211,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         // Add label
         let label = UILabel(frame: CGRect(x: 10, y: 7, width: view.frame.size.width, height: 25))
         label.text = {
-            switch Section(rawValue: section)! {
+            switch Section.allCases[section] {
             case .definitions:
                 return  "1. Add Statistic Definitions"
             case .groupByFields:
@@ -238,7 +238,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch Section(rawValue: section)! {
+        switch Section.allCases[section] {
         case .definitions:
             return statisticDefinitions.count
         case .groupByFields:
@@ -254,7 +254,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         cell.textLabel?.text = ""
         cell.accessoryType = .none
         
-        switch Section(rawValue: indexPath.section)! {
+        switch Section.allCases[indexPath.section] {
         case .definitions:
             if !statisticDefinitions.isEmpty {
                 let statisticDefinition = statisticDefinitions[indexPath.row]
@@ -287,7 +287,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         guard editingStyle == .delete else {
             return
         }
-        switch Section(rawValue: indexPath.section)! {
+        switch Section.allCases[indexPath.section] {
         case .definitions:
             // Remove statistic definition
             statisticDefinitions.remove(at: indexPath.row)

@@ -280,7 +280,8 @@ class CustomContextSheet: UIView {
         }
     }
     
-    @objc func toggleButtons() {
+    @objc
+    func toggleButtons() {
         if self.isButtonPressed {
             self.hideButtons()
         } else {
@@ -288,7 +289,8 @@ class CustomContextSheet: UIView {
         }
     }
     
-    @objc func valueChanged(_ sender: UIButton) {
+    @objc
+    func valueChanged(_ sender: UIButton) {
         //get index of sender
         if let index = self.buttonsCollection.index(of: sender) {
             self.selectedIndex = index

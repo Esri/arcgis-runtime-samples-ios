@@ -20,7 +20,7 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
     @IBOutlet var sceneView: AGSSceneView!
     var tank = AGSGraphic()
     var waypoint: AGSPoint?
-    var timer: Timer?
+    private var animationTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,14 +127,12 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
         waypoint = mapPoint
         
         // start a timer to animate towards the waypoint
-        timer = Timer.scheduledTimer(timeInterval: 0.1,
-                                     target: self as Any,
-                                     selector: #selector(animate),
-                                     userInfo: nil,
-                                     repeats: true)
+        animationTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {[weak self] (timer) in
+            self?.animate()
+        }
     }
     
-    @objc func animate() {
+    private func animate() {
         guard let waypoint = waypoint,
             let location = tank.geometry as? AGSPoint else { return }
         
@@ -163,7 +161,7 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
         // stop the animation when we're within 5 meters of the waypoint
         if distanceResult.distance <= 5 {
             self.waypoint = nil
-            timer?.invalidate()
+            animationTimer?.invalidate()
         }
     }
 }

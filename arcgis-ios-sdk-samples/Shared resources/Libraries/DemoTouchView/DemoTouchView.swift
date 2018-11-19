@@ -108,58 +108,27 @@ extension UIApplication {
         
         if let touches = event.allTouches {
             
-            var began: Set<UITouch>?
-            var moved: Set<UITouch>?
-            var cancelled: Set<UITouch>?
-            var ended: Set<UITouch>?
-            
-            for touch in touches {
-                switch touch.phase {
-                case .began:
-                    if began == nil {
-                        began = Set<UITouch>()
-                    }
-                    began!.insert(touch)
-                case .moved:
-                    if moved == nil {
-                        moved = Set<UITouch>()
-                    }
-                    moved!.insert(touch)
-                case .cancelled:
-                    if cancelled == nil {
-                        cancelled = Set<UITouch>()
-                    }
-                    cancelled!.insert(touch)
-                case .ended:
-                    if ended == nil {
-                        ended = Set<UITouch>()
-                    }
-                    ended!.insert(touch)
-                case .stationary:
-                    // NOTE: I've never actually seen this state.
-                    //
-                    continue
-                }
-            }
+            let began: Set<UITouch> = touches.filter { $0.phase == .began }
+            let moved: Set<UITouch> = touches.filter { $0.phase == .moved }
+            let cancelled: Set<UITouch> = touches.filter { $0.phase == .cancelled }
+            let ended: Set<UITouch> = touches.filter { $0.phase == .ended }
             
             // dispatch touches to our view
-            //
-            if let began = began {
+            if !began.isEmpty {
                 DemoTouchesView.sharedInstance.touchesBegan(began, with: event)
             }
-            if let moved = moved {
+            if !moved.isEmpty {
                 DemoTouchesView.sharedInstance.touchesMoved(moved, with: event)
             }
-            if let ended = ended {
+            if !ended.isEmpty {
                 DemoTouchesView.sharedInstance.touchesEnded(ended, with: event)
             }
-            if let cancelled = cancelled {
+            if !cancelled.isEmpty {
                 DemoTouchesView.sharedInstance.touchesCancelled(cancelled, with: event)
             }
         }
         
         // call original method
-        //
         self.sf_sendEvent(event)
     }
 }

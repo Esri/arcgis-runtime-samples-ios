@@ -85,7 +85,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         self.serviceAreaTask.defaultServiceAreaParameters { [weak self] (parameters: AGSServiceAreaParameters?, error: Error?) in
             
             guard error == nil else {
-                self?.presentAlert(title: "Error getting default parameters:: \(error!.localizedDescription)")
+                self?.presentAlert(message: "Error getting default parameters:: \(error!.localizedDescription)")
                 return
             }
             
@@ -124,7 +124,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         
         //check if at least a single facility is added
         guard !facilitiesGraphics.isEmpty else {
-            presentAlert(title: "At least one facility is required")
+            presentAlert(message: "At least one facility is required")
             return
         }
         
@@ -171,7 +171,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
             }
             
             if let error = error {
-                self.presentAlert(title: "Error solving service area: \(error.localizedDescription)")
+                self.presentAlert(message: "Error solving service area: \(error.localizedDescription)")
             } else {
                 //add resulting polygons as graphics to the overlay
                 //since we are using `geometryAtOVerlap` as `dissolve` and the cutoff values

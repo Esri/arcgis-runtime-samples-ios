@@ -52,7 +52,7 @@ class SaveAsViewController: UIViewController {
         //Validations
         guard let title = self.titleTextField.text, let tagsText = self.tagsTextField.text else {
             //show error message
-            presentAlert(title: "Title and tags are required fields")
+            presentAlert(message: "Title and tags are required fields")
             return
         }
         

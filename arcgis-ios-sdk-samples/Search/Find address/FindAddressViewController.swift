@@ -92,7 +92,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
                 }
             } else {
                 //provide feedback in case of failure
-                self.presentAlert(title: "No results found")
+                self.presentAlert(message: "No results found")
             }
         })
     }

@@ -80,7 +80,7 @@ class StyleWebMapServiceLayerViewController: UIViewController {
     ///
     /// - Parameter error: The error that caused loading to fail.
     func layerDidFailToLoad(with error: Error) {
-        presentAlert(title: "Failed to load WMS layer")
+        presentAlert(message: "Failed to load WMS layer")
     }
     
     /// Sets the enabled state of the segmented control based on whether there

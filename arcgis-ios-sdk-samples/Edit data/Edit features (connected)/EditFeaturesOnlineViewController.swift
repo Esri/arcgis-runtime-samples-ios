@@ -66,9 +66,9 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
             SVProgressHUD.dismiss()
             
             if let error = error {
-                self?.presentAlert(title: "Error while applying edits: \(error.localizedDescription)")
+                self?.presentAlert(message: "Error while applying edits: \(error.localizedDescription)")
             } else {
-                self?.presentAlert(title: "Edits applied successfully!")
+                self?.presentAlert(message: "Edits applied successfully!")
             }
         }
     }

@@ -160,7 +160,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                                 self.mapView.map?.operationalLayers.add(featureLayer)
                             }
                         }
-                        self.presentAlert(title: "Now showing data from geodatabase")
+                        self.presentAlert(message: "Now showing data from geodatabase")
                         
                         // hide the extent view
                         self.extentView.isHidden = true

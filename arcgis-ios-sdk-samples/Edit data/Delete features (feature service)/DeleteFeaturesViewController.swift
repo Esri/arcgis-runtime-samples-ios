@@ -70,11 +70,11 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     func applyEdits() {
         self.featureTable.applyEdits { (featureEditResults: [AGSFeatureEditResult]?, error: Error?) -> Void in
             if let error = error {
-                self.presentAlert(title: "Error while applying edits :: \(error.localizedDescription)")
+                self.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
             } else {
                 if let featureEditResults = featureEditResults,
                     featureEditResults.first?.completedWithErrors == false {
-                    self.presentAlert(title: "Edits applied successfully")
+                    self.presentAlert(message: "Edits applied successfully")
                 }
             }
         }

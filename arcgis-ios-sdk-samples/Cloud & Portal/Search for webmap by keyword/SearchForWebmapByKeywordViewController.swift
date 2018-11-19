@@ -196,7 +196,7 @@ extension SearchForWebmapByKeywordViewController: AGSAuthenticationManagerDelega
         }
         
         // notify the user
-        presentAlert(title: "Web map access denied")
+        presentAlert(message: "Web map access denied")
     }
     
 }

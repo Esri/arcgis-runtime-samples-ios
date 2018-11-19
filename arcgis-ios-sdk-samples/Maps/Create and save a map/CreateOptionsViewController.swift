@@ -130,7 +130,7 @@ class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBAction private func doneAction() {
         if self.selectedBasemapIndex == nil {
-            presentAlert(title: "Please select at least a basemap")
+            presentAlert(message: "Please select at least a basemap")
             return
         }
 

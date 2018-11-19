@@ -70,7 +70,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
             if let error = error {
                 self.presentAlert(error: error)
             } else {
-                self.presentAlert(title: "Edits applied successfully")
+                self.presentAlert(message: "Edits applied successfully")
                 self.showCallout(self.selectedFeature, tapLocation: nil)
             }
         })

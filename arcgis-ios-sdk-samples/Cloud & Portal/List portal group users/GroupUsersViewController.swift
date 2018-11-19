@@ -68,7 +68,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
                     self.fetchGroupUsers()
                 } else {
                     //show error that no groups found
-                    self.presentAlert(title: "No groups found")
+                    self.presentAlert(message: "No groups found")
                 }
             }
         }
@@ -106,7 +106,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
                     //load all users before populating into table view
                     self.loadAllUsers()
                 } else {
-                    self.presentAlert(title: "No users found")
+                    self.presentAlert(message: "No users found")
                 }
             }
         }
@@ -126,7 +126,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
                 //reload table view
                 self?.tableView.reloadData()
             } else {
-                self?.presentAlert(title: "Error while loading users data")
+                self?.presentAlert(message: "Error while loading users data")
             }
         }
     }

@@ -32,7 +32,7 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
         // Load the geopackage.
         geoPackage.load { [weak self] error in
             guard error == nil else {
-                self?.presentAlert(title: "Error opening Geopackage: \(error!.localizedDescription)")
+                self?.presentAlert(message: "Error opening Geopackage: \(error!.localizedDescription)")
                 return
             }
 

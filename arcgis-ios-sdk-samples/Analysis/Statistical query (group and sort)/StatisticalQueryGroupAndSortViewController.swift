@@ -87,7 +87,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         // definition added to execute the query
         guard !statisticDefinitions.isEmpty,
             !selectedGroupByFieldNames.isEmpty else {
-            presentAlert(title: "There should be at least one statistic definition and one group by field to execute the query.")
+            presentAlert(message: "There should be at least one statistic definition and one group by field to execute the query.")
             return
         }
         

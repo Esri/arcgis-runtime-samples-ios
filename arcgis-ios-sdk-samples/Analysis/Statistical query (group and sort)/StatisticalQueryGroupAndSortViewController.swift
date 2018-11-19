@@ -30,7 +30,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     private var statisticDefinitions = [AGSStatisticDefinition]()
     private var statisticTypes = ["Average", "Count", "Maximum", "Minimum", "StandardDeviation", "Sum", "Variance"]
     
-    private enum Section: Int, CaseIterable {
+    private enum Section: CaseIterable {
         case definitions, groupByFields, orderByFields
     }
     

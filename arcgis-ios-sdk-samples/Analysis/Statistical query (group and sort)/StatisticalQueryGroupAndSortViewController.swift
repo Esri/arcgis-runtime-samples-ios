@@ -32,17 +32,6 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     
     private enum Section: Int, CaseIterable {
         case definitions, groupByFields, orderByFields
-        
-        var title: String {
-            switch self {
-            case .definitions:
-                return  "1. Add Statistic Definitions"
-            case .groupByFields:
-                return "2. Select Group By Fields"
-            case .orderByFields:
-                return "3. Select Order By Fields"
-            }
-        }
     }
     
     override func viewDidLoad() {
@@ -210,10 +199,6 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         return 44
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Section(rawValue: section)?.title
-    }
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         // Create the view
@@ -225,7 +210,16 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
 
         // Add label
         let label = UILabel(frame: CGRect(x: 10, y: 7, width: view.frame.size.width, height: 25))
-        label.text = Section(rawValue: section)?.title
+        label.text = {
+            switch Section(rawValue: section)! {
+            case .definitions:
+                return  "1. Add Statistic Definitions"
+            case .groupByFields:
+                return "2. Select Group By Fields"
+            case .orderByFields:
+                return "3. Select Order By Fields"
+            }
+        }()
         label.textColor = .white
         returnedView.addSubview(label)
 

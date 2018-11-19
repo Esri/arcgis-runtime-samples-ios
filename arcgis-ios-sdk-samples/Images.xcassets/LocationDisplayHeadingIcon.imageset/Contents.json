@@ -6,12 +6,13 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "LocationDisplayHeadingIcon2@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "LocationDisplayHeading@3x.png"
+      "filename" : "LocationDisplayHeadingIcon2@3x.png"
     }
   ],
   "info" : {

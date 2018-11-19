@@ -19,13 +19,17 @@ class DisplayLocationSettingsViewController: UITableViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var showSwitch: UISwitch!
-    @IBOutlet weak var autoPanModeCell: UITableViewCell!
+    @IBOutlet weak var showSwitch: UISwitch?
+    @IBOutlet weak var autoPanModeCell: UITableViewCell?
     
     // MARK: - Model
     
     /// The SDK object for displaying the device location. Attached to the map view.
-    weak var locationDisplay: AGSLocationDisplay?
+    weak var locationDisplay: AGSLocationDisplay? {
+        didSet {
+            updateUIForLocationDisplay()
+        }
+    }
     
     /// Returns a suitable interface label `String` for the mode.
     private func label(for autoPanMode: AGSLocationDisplayAutoPanMode) -> String {
@@ -47,8 +51,7 @@ class DisplayLocationSettingsViewController: UITableViewController {
         super.viewDidLoad()
         
         // setup the UI for the initial model values
-        showSwitch.isOn = locationDisplay?.started == true
-        updateUIForAutoPanMode()
+        updateUIForLocationDisplay()
         
         // The auto-pan mode may be updated by the SDK as well as the user,
         // so use the change handler to set the UI
@@ -58,9 +61,14 @@ class DisplayLocationSettingsViewController: UITableViewController {
         }
     }
     
+    private func updateUIForLocationDisplay() {
+        showSwitch?.isOn = locationDisplay?.started == true
+        updateUIForAutoPanMode()
+    }
+    
     private func updateUIForAutoPanMode() {
         if let autoPanMode = locationDisplay?.autoPanMode {
-            autoPanModeCell.detailTextLabel?.text = label(for: autoPanMode)
+            autoPanModeCell?.detailTextLabel?.text = label(for: autoPanMode)
         }
     }
     

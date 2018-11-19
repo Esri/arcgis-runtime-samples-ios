@@ -18,18 +18,33 @@ import UIKit
 /// showing the checkmark accessory for the selected cell.
 class OptionsTableViewController: UITableViewController {
     
-    private let labels: [String]
-    private let imageNames: [String]
+    private let options: [Option]
     private var selectedIndex: Int
     private let onChange: (Int) -> Void
     
-    init(labels: [String], imageNames: [String] = [], selectedIndex: Int, onChange: @escaping (Int) -> Void) {
-        self.labels = labels
-        self.imageNames = imageNames
+    struct Option {
+        let label: String
+        let image: UIImage?
+        
+        init(label: String, imageName: String? = nil) {
+            self.label = label
+            if let imageName = imageName {
+                self.image = UIImage(named: imageName)
+            } else {
+                self.image = nil
+            }
+        }
+    }
+    
+    convenience init(labels: [String], selectedIndex: Int, onChange: @escaping (Int) -> Void) {
+        let options = labels.map { Option(label: $0) }
+        self.init(options: options, selectedIndex: selectedIndex, onChange: onChange)
+    }
+    init(options: [Option], selectedIndex: Int, onChange: @escaping (Int) -> Void) {
+        self.options = options
         self.selectedIndex = selectedIndex
         self.onChange = onChange
         super.init(nibName: nil, bundle: nil)
-        
     }
     
     @available(*, unavailable)
@@ -45,16 +60,15 @@ class OptionsTableViewController: UITableViewController {
     // UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return labels.count
+        return options.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OptionCell", for: indexPath)
         cell.selectionStyle = .none
-        cell.textLabel?.text = labels[indexPath.row]
-        if indexPath.row < imageNames.count {
-            cell.imageView?.image = UIImage(named: imageNames[indexPath.row])
-        }
+        let option = options[indexPath.row]
+        cell.textLabel?.text = option.label
+        cell.imageView?.image = option.image
         if selectedIndex == indexPath.row {
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         }

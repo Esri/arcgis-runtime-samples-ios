@@ -45,6 +45,19 @@ class DisplayLocationSettingsViewController: UITableViewController {
         }
     }
     
+    private func iconImageName(for autoPanMode: AGSLocationDisplayAutoPanMode) -> String {
+        switch autoPanMode {
+        case .off:
+            return "LocationDisplayOffIcon"
+        case .recenter:
+            return "LocationDisplayDefaultIcon"
+        case .navigation:
+            return "LocationDisplayNavigationIcon"
+        case .compassNavigation:
+            return "LocationDisplayHeadingIcon"
+        }
+    }
+    
     // MARK: - Views
     
     override func viewDidLoad() {
@@ -114,15 +127,11 @@ class DisplayLocationSettingsViewController: UITableViewController {
             let autoPanMode = locationDisplay?.autoPanMode,
             let selectedIndex = orderedAutoPanModes.firstIndex(of: autoPanMode) {
             
-            let labels = orderedAutoPanModes.map { label(for: $0) }
-            let imageNames = [
-                "LocationDisplayOffIcon",
-                "LocationDisplayDefaultIcon",
-                "LocationDisplayNavigationIcon",
-                "LocationDisplayHeadingIcon"
-            ]
+            let options = orderedAutoPanModes.map { (mode) -> OptionsTableViewController.Option in
+                OptionsTableViewController.Option(label: label(for: mode), imageName: iconImageName(for: mode))
+            }
 
-            let controller = OptionsTableViewController(labels: labels, imageNames: imageNames, selectedIndex: selectedIndex) { (index) in
+            let controller = OptionsTableViewController(options: options, selectedIndex: selectedIndex) { (index) in
                 // get the mode for the index
                 let autoPanMode = orderedAutoPanModes[index]
                 // set the displayed location mode to the selected one

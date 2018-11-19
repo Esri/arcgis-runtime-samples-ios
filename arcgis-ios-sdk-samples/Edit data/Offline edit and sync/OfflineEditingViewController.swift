@@ -501,8 +501,6 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
         //Prepare the current view controller for sketch mode
         mapView.callout.isHidden = true
         
-        //TODO: Hide the feature
-        
         //hide the back button
         navigationItem.hidesBackButton = true
         //disable the code button

@@ -17,7 +17,7 @@ import UIKit
 extension UIViewController {
     
     /// Shows an alert with the given title, message, and an OK button.
-    func presentAlert(title: String? = nil, message: String) {
+    func presentAlert(title: String? = nil, message: String? = nil) {
         let okAction = UIAlertAction(title: "OK", style: .default)
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert, actions: [okAction])
         present(alertController, animated: true)

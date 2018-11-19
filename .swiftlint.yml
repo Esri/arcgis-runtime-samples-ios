@@ -14,7 +14,6 @@ disabled_rules: # rule identifiers to exclude from running
   - force_cast
   - line_length
   - notification_center_detachment
-  - todo
   - trailing_whitespace
   - type_body_length
   - type_name
@@ -40,6 +39,7 @@ opt_in_rules: # some rules are only opt-in
   - fallthrough
   - fatal_error_message
   - first_where
+  - function_default_parameter_at_end
   - identical_operands
   - joined_default_parameter
   - legacy_random

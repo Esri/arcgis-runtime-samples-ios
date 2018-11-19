@@ -46,7 +46,9 @@ class IdentifyKMLFeaturesViewController: UIViewController {
     }
     
     func showCallout(for placemark: AGSKMLPlacemark, at point: AGSPoint) {
-        guard let data = placemark.balloonContent.data(using: .utf8) else { return }
+        guard let data = placemark.balloonContent.data(using: .utf8) else {
+            return
+        }
         do {
             let attributedText = try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
             let textView = UITextView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 50)))

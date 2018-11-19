@@ -89,7 +89,10 @@ class BookmarksViewController: UIViewController, UIAdaptivePresentationControlle
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         let doneAction = UIAlertAction(title: "Done", style: .default) { [weak self, textField = alertController.textFields?.first] (_) in
             // If the text field is empty, do nothing.
-            guard let text = textField?.text, !text.isEmpty else { return }
+            guard let text = textField?.text,
+                !text.isEmpty else {
+                return
+            }
             // Add the bookmark since the text isn't empty.
             self?.addBookmark(withName: text)
         }

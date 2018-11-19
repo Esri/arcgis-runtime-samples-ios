@@ -95,7 +95,9 @@ class DistanceMeasurementAnalysisViewController: UIViewController, AGSGeoViewTou
     }
     
     @IBAction func unitSystemSegmentedControl(_ sender: UISegmentedControl) {
-        guard let unitSystem = AGSUnitSystem(rawValue: sender.selectedSegmentIndex) else { return }
+        guard let unitSystem = AGSUnitSystem(rawValue: sender.selectedSegmentIndex) else {
+            return
+        }
         locationDistanceMeasurement.unitSystem = unitSystem
     }
     
@@ -107,7 +109,9 @@ class DistanceMeasurementAnalysisViewController: UIViewController, AGSGeoViewTou
     }()
     
     func updateMeasurementLabels() {
-        guard isViewLoaded else { return }
+        guard isViewLoaded else {
+            return
+        }
         if locationDistanceMeasurement.startLocation != locationDistanceMeasurement.endLocation,
             let directDistance = locationDistanceMeasurement.directDistance,
             let horizontalDistance = locationDistanceMeasurement.horizontalDistance,
@@ -126,7 +130,9 @@ class DistanceMeasurementAnalysisViewController: UIViewController, AGSGeoViewTou
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         sceneView.screen(toLocation: screenPoint) { [weak self] mapLocation in
-            guard let measurement = self?.locationDistanceMeasurement else { return }
+            guard let measurement = self?.locationDistanceMeasurement else {
+                return
+            }
             if measurement.startLocation != measurement.endLocation {
                 measurement.startLocation = mapLocation
             }
@@ -136,7 +142,9 @@ class DistanceMeasurementAnalysisViewController: UIViewController, AGSGeoViewTou
     
     func geoView(_ geoView: AGSGeoView, didLongPressAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         sceneView.screen(toLocation: screenPoint) { [weak self] mapLocation in
-            guard let measurement = self?.locationDistanceMeasurement else { return }
+            guard let measurement = self?.locationDistanceMeasurement else {
+                return
+            }
             if measurement.startLocation != measurement.endLocation {
                 measurement.startLocation = mapLocation
             }

@@ -53,7 +53,9 @@ class PlaneStatsViewController: UITableViewController {
     }
     
     func updateUI() {
-        guard isViewLoaded else { return }
+        guard isViewLoaded else {
+            return
+        }
         if let frame = frame {
             measurementFormatter.unitStyle = .medium
             altitudeLabel.text = measurementFormatter.string(from: frame.altitude)

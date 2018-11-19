@@ -19,7 +19,9 @@ class SublayersTableViewController: UITableViewController {
     /// The sublayers to be displayed in the table view.
     var sublayers = [AGSArcGISMapImageSublayer]() {
         didSet {
-            guard isViewLoaded else { return }
+            guard isViewLoaded else {
+                return
+            }
             tableView.reloadData()
         }
     }

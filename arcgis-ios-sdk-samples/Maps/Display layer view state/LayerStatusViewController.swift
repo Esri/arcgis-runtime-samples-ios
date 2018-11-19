@@ -71,14 +71,16 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         //assign a closure for layerViewStateChangedHandler, in order to receive layer view status changes
         self.mapView.layerViewStateChangedHandler = { [weak self] (layer: AGSLayer, state: AGSLayerViewState) in
             DispatchQueue.main.async {
-                guard let strongSelf = self else { return }
+                guard let self = self else {
+                    return
+                }
                 //find the index of layer in operational layers list
                 //and update its status
-                let index = strongSelf.map.operationalLayers.index(of: layer)
+                let index = self.map.operationalLayers.index(of: layer)
                 if index != NSNotFound {
-                    strongSelf.viewStatusArray[index] = strongSelf.viewStatusString(state.status)
+                    self.viewStatusArray[index] = self.viewStatusString(state.status)
                     
-                    strongSelf.tableView.reloadData()
+                    self.tableView.reloadData()
                 }
             }
         }

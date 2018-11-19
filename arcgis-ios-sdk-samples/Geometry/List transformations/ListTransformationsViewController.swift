@@ -73,7 +73,9 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
     func setupTransformsList() {
         guard let map = mapView.map,
             let inputSR = originalGeometry.spatialReference,
-            let outputSR = map.spatialReference else { return }
+            let outputSR = map.spatialReference else {
+            return
+        }
         
         // if orderByMapExtent is on, use the map extent when retrieving the transformations
         if orderByMapExtent.isOn {
@@ -103,7 +105,9 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
             .urls(for: .documentDirectory, in: .userDomainMask)
             .first?.appendingPathComponent("PEDataRuntime") {
             do {
-                guard try projectionEngineDataURL.checkResourceIsReachable() else { return }
+                guard try projectionEngineDataURL.checkResourceIsReachable() else {
+                    return
+                }
                 
                 // Normally, this method would be called immediately upon application startup before any other API method calls.
                 // So usually it would be called from AppDelegate.application(_:didFinishLaunchingWithOptions:), but for the purposes
@@ -159,7 +163,9 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
     // MARK: - TableView delegates
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let mapViewSR = mapView.spatialReference else { return }
+        guard let mapViewSR = mapView.spatialReference else {
+            return
+        }
 
         let selectedTransform = datumTransformations[indexPath.row]
         if let projectedGeometry = AGSGeometryEngine.projectGeometry(originalGeometry, to: mapViewSR, datumTransformation: selectedTransform) {

@@ -136,21 +136,28 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
     
     @objc func animate() {
         guard let waypoint = waypoint,
-            let location = tank.geometry as? AGSPoint else { return }
+            let location = tank.geometry as? AGSPoint else {
+            return
+        }
         
-        guard let distanceResult = AGSGeometryEngine.geodeticDistanceBetweenPoint1(location,
-                                                                                   point2: waypoint,
-                                                                                   distanceUnit: AGSLinearUnit.meters(),
-                                                                                   azimuthUnit: AGSAngularUnit.degrees(),
-                                                                                   curveType: .geodesic) else { return }
+        guard let distanceResult = AGSGeometryEngine.geodeticDistanceBetweenPoint1(
+            location,
+            point2: waypoint,
+            distanceUnit: .meters(),
+            azimuthUnit: .degrees(),
+            curveType: .geodesic) else {
+            return
+        }
 
         // move toward waypoint a short distance
-        let locations = AGSGeometryEngine.geodeticMove([location],
-                                                       distance: 1.0,
-                                                       distanceUnit: AGSLinearUnit.meters(),
-                                                       azimuth: distanceResult.azimuth1,
-                                                       azimuthUnit: distanceResult.azimuthUnit ?? AGSAngularUnit.degrees(),
-                                                       curveType: .geodesic)
+        let locations = AGSGeometryEngine.geodeticMove(
+            [location],
+            distance: 1.0,
+            distanceUnit: .meters(),
+            azimuth: distanceResult.azimuth1,
+            azimuthUnit: distanceResult.azimuthUnit ?? .degrees(),
+            curveType: .geodesic
+        )
         
         if let newLocation = locations?.first {
             tank.geometry = newLocation

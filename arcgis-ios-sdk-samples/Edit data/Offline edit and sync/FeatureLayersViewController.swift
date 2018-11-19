@@ -22,7 +22,9 @@ class FeatureLayersViewController: UIViewController, UITableViewDataSource, UITa
     /// The layer infos to display in the table view.
     var featureLayerInfos = [AGSIDInfo]() {
         didSet {
-            guard isViewLoaded else { return }
+            guard isViewLoaded else {
+                return
+            }
             tableView.reloadData()
         }
     }

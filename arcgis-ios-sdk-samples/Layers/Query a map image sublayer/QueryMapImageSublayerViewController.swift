@@ -140,7 +140,9 @@ class QueryMapImageSublayerViewController: UIViewController {
     func populationValueDidChange() {
         graphicsOverlay.graphics.removeAllObjects()
         
-        guard let populationValue = populationValue else { return }
+        guard let populationValue = populationValue else {
+            return
+        }
         
         let populationQuery = AGSQueryParameters()
         populationQuery.whereClause = "POP2000 > \(populationValue)"

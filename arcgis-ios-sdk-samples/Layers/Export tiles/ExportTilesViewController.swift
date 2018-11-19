@@ -74,21 +74,10 @@ class ExportTilesViewController: UIViewController {
     @IBAction func barButtonItemAction() {
         if downloading {
             //cancel download
-            self.cancelDownload()
+            job?.progress.cancel()
         } else {
             //download
-            self.initiateDownload()
-        }
-    }
-    
-    private func cancelDownload() {
-        if self.job != nil {
-            SVProgressHUD.dismiss()
-            //TODO: Cancel the job when the API is available
-            //self.job.cancel
-            self.job = nil
-            self.downloading = false
-            self.visualEffectView.isHidden = true
+            initiateDownload()
         }
     }
     
@@ -96,28 +85,28 @@ class ExportTilesViewController: UIViewController {
         
         //get the parameters by specifying the selected area,
         //mapview's current scale as the minScale and tiled layer's max scale as maxScale
-        let minScale = self.mapView.mapScale
-        let maxScale = self.self.tiledLayer.maxScale
+        var minScale = mapView.mapScale
+        let maxScale = tiledLayer.maxScale
         
-        //TODO: Remove this code once design has been udpated
-        if minScale == maxScale {
-            presentAlert(message: "Min scale and max scale cannot be the same")
-            return
+        if minScale < maxScale {
+            minScale = maxScale
         }
         
-        //set the state
-        self.downloading = true
-        
         //delete previous existing tpks
-        self.deleteAllTpks()
+        deleteAllTpks()
         
         //initialize the export task
-        self.exportTask = AGSExportTileCacheTask(url: self.tiledLayer.url!)
-        self.exportTask.exportTileCacheParameters(withAreaOfInterest: self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale) { [weak self] (params: AGSExportTileCacheParameters?, error: Error?) in
+        exportTask = AGSExportTileCacheTask(url: tiledLayer.url!)
+        exportTask.exportTileCacheParameters(withAreaOfInterest: frameToExtent(), minScale: minScale, maxScale: maxScale) { [weak self] (params: AGSExportTileCacheParameters?, error: Error?) in
+            
+            guard let self = self else {
+                return
+            }
+            
             if let error = error {
-                self?.presentAlert(error: error)
-            } else {
-                self?.exportTilesUsingParameters(params!)
+                self.presentAlert(error: error)
+            } else if let params = params {
+                self.exportTilesUsingParameters(params)
             }
         }
     }
@@ -127,10 +116,12 @@ class ExportTilesViewController: UIViewController {
         let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let downloadFileURL = documentDirectoryURL.appendingPathComponent("myTileCache.tpk")
         
+        downloading = true
+        
         //get the job
-        self.job = self.exportTask.exportTileCacheJob(with: params, downloadFileURL: downloadFileURL)
+        job = exportTask.exportTileCacheJob(with: params, downloadFileURL: downloadFileURL)
         //run the job
-        self.job.start(statusHandler: { (status: AGSJobStatus) -> Void in
+        job.start(statusHandler: { (status: AGSJobStatus) -> Void in
             //show job status
             SVProgressHUD.show(withStatus: status.statusString())
         }, completion: { [weak self] (result: AnyObject?, error: Error?) -> Void in
@@ -138,16 +129,23 @@ class ExportTilesViewController: UIViewController {
             //hide progress view
             SVProgressHUD.dismiss()
             
-            self?.downloading = false
+            guard let self = self else {
+                return
+            }
+
+            self.job = nil
+            self.downloading = false
             
             if let error = error {
-                self?.presentAlert(error: error)
+                if (error as NSError).code != NSUserCancelledError {
+                    self.presentAlert(error: error)
+                }
             } else {
-                self?.visualEffectView.isHidden = false
+                self.visualEffectView.isHidden = false
                 
                 let tileCache = result as! AGSTileCache
                 let newTiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
-                self?.previewMapView.map = AGSMap(basemap: AGSBasemap(baseLayer: newTiledLayer))
+                self.previewMapView.map = AGSMap(basemap: AGSBasemap(baseLayer: newTiledLayer))
             }
         })
     }

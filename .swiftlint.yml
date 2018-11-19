@@ -14,7 +14,6 @@ disabled_rules: # rule identifiers to exclude from running
   - force_cast
   - line_length
   - notification_center_detachment
-  - todo
   - trailing_whitespace
   - type_body_length
   - type_name

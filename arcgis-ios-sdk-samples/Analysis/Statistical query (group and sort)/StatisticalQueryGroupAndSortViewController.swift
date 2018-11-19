@@ -28,8 +28,11 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     private var orderByFields = [AGSOrderBy]()
     private var selectedOrderByFields = [AGSOrderBy]()
     private var statisticDefinitions = [AGSStatisticDefinition]()
-    private var sectionHeaderTitles = ["1. Add Statistic Definitions", "2. Select Group By Fields", "3. Select Order By Fields"]
     private var statisticTypes = ["Average", "Count", "Maximum", "Minimum", "StandardDeviation", "Sum", "Variance"]
+    
+    private enum Section: CaseIterable {
+        case definitions, groupByFields, orderByFields
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,13 +111,9 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             }
             
             // If there an error, display it
-            guard error == nil else {
-                self.presentAlert(error: error!)
-                return
-            }
-            
-            // Get the result
-            if let statisticRecordEnumerator = statisticsQueryResult?.statisticRecordEnumerator() {
+            if let error = error {
+                self.presentAlert(error: error)
+            } else if let statisticRecordEnumerator = statisticsQueryResult?.statisticRecordEnumerator() {
                 // Setup result view controller
                 let storyboard = UIStoryboard(name: "ExpandableTableViewController", bundle: nil)
                 let expandableTableViewController = storyboard.instantiateViewController(withIdentifier: "ExpandableTableViewController") as! ExpandableTableViewController
@@ -165,22 +164,22 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         }
 
         // Check button by tag
-        switch sender.tag {
-        case 0:
+        switch Section.allCases[sender.tag] {
+        case .definitions:
             // Init view controller and set properties
             let navController = storyboard!.instantiateViewController(withIdentifier: "AddStatisticDefinitionsViewController") as! UINavigationController
             let addStatisticDefinitionsViewController = navController.viewControllers.first as! AddStatisticDefinitionsViewController
             addStatisticDefinitionsViewController.delegate = self
             addStatisticDefinitionsViewController.fieldNames = fieldNames
             setupAndPresent(viewController: navController)
-        case 1:
+        case .groupByFields:
             // Init view controller and set properties
             let groupByFieldsViewController = storyboard!.instantiateViewController(withIdentifier: "GroupByFieldsViewController") as! GroupByFieldsViewController
             groupByFieldsViewController.delegate = self
             groupByFieldsViewController.fieldNames = fieldNames
             groupByFieldsViewController.selectedFieldNames = selectedGroupByFieldNames
             setupAndPresent(viewController: groupByFieldsViewController)
-        default:
+        case .orderByFields:
             // Init view controller and set properties
             let orderByFieldsViewController = storyboard!.instantiateViewController(withIdentifier: "OrderByFieldsViewController") as! OrderByFieldsViewController
             orderByFieldsViewController.delegate = self
@@ -193,15 +192,11 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     // MARK: - Table View Data Source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionHeaderTitles.count
+        return Section.allCases.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionHeaderTitles[section]
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -215,7 +210,16 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
 
         // Add label
         let label = UILabel(frame: CGRect(x: 10, y: 7, width: view.frame.size.width, height: 25))
-        label.text = sectionHeaderTitles[section]
+        label.text = {
+            switch Section.allCases[section] {
+            case .definitions:
+                return  "1. Add Statistic Definitions"
+            case .groupByFields:
+                return "2. Select Group By Fields"
+            case .orderByFields:
+                return "3. Select Order By Fields"
+            }
+        }()
         label.textColor = .white
         returnedView.addSubview(label)
 
@@ -234,12 +238,12 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
+        switch Section.allCases[section] {
+        case .definitions:
             return statisticDefinitions.count
-        case 1:
+        case .groupByFields:
             return selectedGroupByFieldNames.count
-        default:
+        case .orderByFields:
             return selectedOrderByFields.count
         }
     }
@@ -250,20 +254,20 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         cell.textLabel?.text = ""
         cell.accessoryType = .none
         
-        switch indexPath.section {
-        case 0:
+        switch Section.allCases[indexPath.section] {
+        case .definitions:
             if !statisticDefinitions.isEmpty {
                 let statisticDefinition = statisticDefinitions[indexPath.row]
                 let statisticTypeString = statisticTypes[statisticDefinition.statisticType.rawValue]
                 let text = "\(statisticDefinition.onFieldName) (\(statisticTypeString))"
                 cell.textLabel?.text = text
             }
-        case 1:
+        case .groupByFields:
             if !selectedGroupByFieldNames.isEmpty {
                 let fieldName = selectedGroupByFieldNames[indexPath.row]
                 cell.textLabel?.text = fieldName
             }
-        default:
+        case .orderByFields:
             if !selectedOrderByFields.isEmpty {
                 let orderByField = selectedOrderByFields[indexPath.row]
                 let sortOrderString = stringFor(sortOrder: orderByField.sortOrder)
@@ -279,36 +283,26 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        // only deletion is allowed
         guard editingStyle == .delete else {
             return
         }
-        switch indexPath.section {
-        case 0:
-            if !statisticDefinitions.isEmpty {
-                // Remove statistic definition
-                statisticDefinitions.remove(at: indexPath.row)
-            }
-        case 1:
-            // Remove from selected group by field names
-            if !selectedGroupByFieldNames.isEmpty {
-                //
-                // Get the field name so we can remove order by fields
-                let selectedGroupByFieldName = selectedGroupByFieldNames[indexPath.row]
-                
-                // Remove selected group by field
-                selectedGroupByFieldNames.remove(at: indexPath.row)
-                
-                // Remove field from the order by fields
-                orderByFields.removeAll { $0.fieldName == selectedGroupByFieldName }
-                
-                // Remove field from the selected order by fields
-                selectedOrderByFields.removeAll { $0.fieldName == selectedGroupByFieldName }
-            }
-        default:
-            if !selectedOrderByFields.isEmpty {
-                // Remove selected order by field
-                selectedOrderByFields.remove(at: indexPath.row)
-            }
+        switch Section.allCases[indexPath.section] {
+        case .definitions:
+            // Remove statistic definition
+            statisticDefinitions.remove(at: indexPath.row)
+        case .groupByFields:
+            // Remove selected group by field
+            let selectedGroupByFieldName = selectedGroupByFieldNames.remove(at: indexPath.row)
+            
+            // Remove field from the order by fields
+            orderByFields.removeAll { $0.fieldName == selectedGroupByFieldName }
+            
+            // Remove field from the selected order by fields
+            selectedOrderByFields.removeAll { $0.fieldName == selectedGroupByFieldName }
+        case .orderByFields:
+            // Remove selected order by field
+            selectedOrderByFields.remove(at: indexPath.row)
         }
         
         // Reload table

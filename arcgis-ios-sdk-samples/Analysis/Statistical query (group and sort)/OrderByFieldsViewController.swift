@@ -116,7 +116,8 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
     
     // MARK: - Gesture Recognizer
     
-    @objc func imageViewWasTouched(_ sender: UITapGestureRecognizer) {
+    @objc
+    func imageViewWasTouched(_ sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
         let indexPath = IndexPath(row: imageView.tag, section: 0)
         let cell = tableView.cellForRow(at: indexPath)

@@ -205,7 +205,8 @@ class ContentTableViewController: UITableViewController {
 
     }
     
-    @objc func expandCell(_ sender: UIButton) {
+    @objc
+    func expandCell(_ sender: UIButton) {
         updateExpandedRow(IndexPath(row: sender.tag, section: 0), collapseIfSelected: true)
     }
     

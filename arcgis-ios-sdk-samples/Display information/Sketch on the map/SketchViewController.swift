@@ -48,7 +48,8 @@ class SketchViewController: UIViewController {
         self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -10049589.670344, yMin: 3480099.843772, xMax: -10010071.251113, yMax: 3512023.489701, spatialReference: .webMercator()))
     }
     
-    @objc func respondToGeomChanged() {
+    @objc
+    func respondToGeomChanged() {
         
         //Enable/disable UI elements appropriately
         self.undoBBI.isEnabled = self.sketchEditor.undoManager.canUndo

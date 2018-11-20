@@ -212,13 +212,12 @@ class Animate3DGraphicViewController: UIViewController {
         let duration = 1 / Double(animationSpeed)
         
         //new timer
-        let animationTimer = Timer(timeInterval: duration, target: self, selector: #selector(animate), userInfo: nil, repeats: true)
-        self.animationTimer = animationTimer
-        RunLoop.main.add(animationTimer, forMode: .common)
+        animationTimer = Timer.scheduledTimer(withTimeInterval: duration, repeats: true) {[weak self] (timer) in
+            self?.animate()
+        }
     }
     
-    @objc
-    func animate() {
+    private func animate() {
         
         //validations
         guard !frames.isEmpty,

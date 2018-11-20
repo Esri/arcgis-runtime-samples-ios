@@ -148,7 +148,8 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         tableView.reloadData()
     }
     
-    @objc private func headerButtonAction(_ sender: UIButton) {
+    @objc
+    private func headerButtonAction(_ sender: UIButton) {
         
         func setupAndPresent(viewController: UIViewController) {
             

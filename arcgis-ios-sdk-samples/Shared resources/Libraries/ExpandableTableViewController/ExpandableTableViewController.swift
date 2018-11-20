@@ -136,7 +136,8 @@ class ExpandableTableViewController: UITableViewController {
     
     // MARK: - Expand / Collapse Methods
     
-    @objc func sectionHeaderWasTouched(_ sender: UITapGestureRecognizer) {
+    @objc
+    func sectionHeaderWasTouched(_ sender: UITapGestureRecognizer) {
         let headerView = sender.view as! UITableViewHeaderFooterView
         let section = headerView.tag
         let eImageView = headerView.viewWithTag(kHeaderSectionTag + section) as? UIImageView

@@ -22,6 +22,7 @@ disabled_rules: # rule identifiers to exclude from running
 opt_in_rules: # some rules are only opt-in
   - anyobject_protocol
   - array_init
+  - attributes
   - closure_body_length
   - closure_end_indentation
   - closure_spacing

@@ -348,11 +348,13 @@ class FindPlaceViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    @objc func showOverlayView() {
+    @objc
+    func showOverlayView() {
         self.overlayView.isHidden = false
     }
     
-    @objc func hideOverlayView() {
+    @objc
+    func hideOverlayView() {
         self.overlayView.isHidden = true
     }
     

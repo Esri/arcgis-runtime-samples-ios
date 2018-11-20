@@ -104,7 +104,8 @@ extension UIApplication {
     
     // MARK: - Method Swizzling
     
-    @objc func sf_sendEvent(_ event: UIEvent) {
+    @objc
+    func sf_sendEvent(_ event: UIEvent) {
         
         if let touches = event.allTouches {
             
@@ -228,7 +229,8 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
     
     // MARK: CALayer delegate
     
-    @objc fileprivate func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {        
+    @objc
+    fileprivate func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {        
         pathAnimation.delegate = nil
         
         self.removeAllAnimations()

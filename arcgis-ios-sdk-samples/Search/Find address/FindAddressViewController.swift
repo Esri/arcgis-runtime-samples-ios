@@ -162,10 +162,6 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         self.button.isHidden = true
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

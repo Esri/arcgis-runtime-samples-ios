@@ -41,20 +41,6 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>arcgis.com</key>
-			<dict>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-				<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-			<key>arcgisonline.com</key>
-			<dict>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-				<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
 			<key>buienradar.nl</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>

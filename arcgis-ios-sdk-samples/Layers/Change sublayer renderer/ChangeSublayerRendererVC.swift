@@ -22,7 +22,7 @@ class ChangeSublayerRendererVC: UIViewController {
     @IBOutlet private var applyRendererBarButtonItem: UIBarButtonItem!
     
     //map image layer
-    private var mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
+    private var mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
     private var originalRenderer: AGSRenderer?
     
     override func viewDidLoad() {

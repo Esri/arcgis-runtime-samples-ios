@@ -25,7 +25,7 @@ class SampleSearchEngine {
         self.samples = samples
         
         isLoadingReadmeIndex = true
-        DispatchQueue.global(qos: .background).async { [weak self] () -> Void in
+        DispatchQueue.global(qos: .background).async { [weak self] () in
             guard let strongSelf = self else {
                 return
             }
@@ -48,7 +48,7 @@ class SampleSearchEngine {
             tagger.enumerateTags(in: range,
                                  scheme: NSLinguisticTagScheme.lexicalClass,
                                  options: [.omitWhitespace, .omitPunctuation],
-                                 using: { (tag: NSLinguisticTag?, tokenRange: NSRange, sentenceRange: NSRange, _) -> Void in
+                                 using: { (tag: NSLinguisticTag?, tokenRange: NSRange, sentenceRange: NSRange, _) in
                 
                 guard let tag = tag else {
                     return

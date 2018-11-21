@@ -82,7 +82,7 @@ class OfflineEditingViewController: UIViewController {
     private func addFeatureLayers() {
         
         //Iterate through the layers in the service
-        syncTask?.load { [weak self] (error) -> Void in
+        syncTask?.load { [weak self] (error) in
             if let error = error {
                 print("Could not load feature service \(error)")
             } else {
@@ -161,7 +161,7 @@ class OfflineEditingViewController: UIViewController {
     private func switchToServiceMode() {
         if let generatedGeodatabase = generatedGeodatabase {
             //unregister geodatabase
-            syncTask?.unregisterGeodatabase(generatedGeodatabase) { (error: Error?) -> Void in
+            syncTask?.unregisterGeodatabase(generatedGeodatabase) { (error: Error?) in
                 if let error = error {
                     print("Error while unregistering geodatabase: \(error.localizedDescription)")
                 }
@@ -220,7 +220,7 @@ class OfflineEditingViewController: UIViewController {
         guard let generatedGeodatabase = generatedGeodatabase else {
             return
         }
-        generatedGeodatabase.load(completion: { [weak self] (error: Error?) -> Void in
+        generatedGeodatabase.load(completion: { [weak self] (error: Error?) in
             
             guard let self = self else {
                 return
@@ -332,11 +332,11 @@ class OfflineEditingViewController: UIViewController {
         self.generateJob = generateJob
         
         //start the job
-        generateJob.start(statusHandler: { (status: AGSJobStatus) -> Void in
+        generateJob.start(statusHandler: { (status: AGSJobStatus) in
         
             SVProgressHUD.show(withStatus: status.statusString())
             
-        }, completion: { [weak self] (object: AnyObject?, error: Error?) -> Void in
+        }, completion: { [weak self] (object: AnyObject?, error: Error?) in
             
             SVProgressHUD.dismiss()
             
@@ -358,7 +358,7 @@ class OfflineEditingViewController: UIViewController {
     @IBAction func switchToServiceMode(_ sender: AnyObject) {
         if generatedGeodatabase?.hasLocalEdits() == true {
             let yesAction = UIAlertAction(title: "Yes", style: .default) { [weak self] _ in
-                self?.syncAction { () -> Void in
+                self?.syncAction { () in
                     self?.switchToServiceMode()
                 }
             }
@@ -401,11 +401,11 @@ class OfflineEditingViewController: UIViewController {
         
         let syncJob = syncTask.syncJob(with: params, geodatabase: generatedGeodatabase)
         self.syncJob = syncJob
-        syncJob.start(statusHandler: { (status: AGSJobStatus) -> Void in
+        syncJob.start(statusHandler: { (status: AGSJobStatus) in
             
             SVProgressHUD.show(withStatus: status.statusString())
             
-        }, completion: {[weak self] (results: [AGSSyncLayerResult]?, error: Error?) -> Void in
+        }, completion: {[weak self] (results: [AGSSyncLayerResult]?, error: Error?) in
             
             SVProgressHUD.dismiss()
             
@@ -446,7 +446,7 @@ extension OfflineEditingViewController: AGSGeoViewTouchDelegate {
         
         SVProgressHUD.show(withStatus: "Loading")
         
-        mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) -> Void in
+        mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) in
             
             SVProgressHUD.dismiss()
             
@@ -530,7 +530,7 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
             //Tell the user edits are being saved int the background
             SVProgressHUD.show(withStatus: "Saving feature details...")
             
-            (feature.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (featureEditResult: [AGSFeatureEditResult]?, error: Error?) -> Void in
+            (feature.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (featureEditResult: [AGSFeatureEditResult]?, error: Error?) in
                 
                 SVProgressHUD.dismiss()
                 

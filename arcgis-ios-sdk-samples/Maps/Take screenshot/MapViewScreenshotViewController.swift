@@ -67,7 +67,7 @@ class MapViewScreenshotViewController: UIViewController {
         self.hideOverlayParentView()
         
         //the method on map view we can use to get the screenshot image
-        self.mapView.exportImage { [weak self] (image: UIImage?, error: Error?) -> Void in
+        self.mapView.exportImage { [weak self] (image: UIImage?, error: Error?) in
             if let error = error {
                 self?.presentAlert(error: error)
             }
@@ -88,10 +88,10 @@ class MapViewScreenshotViewController: UIViewController {
         //animate the white flash view on and off to show the flash effect
         UIView.animate(
             withDuration: 0.3,
-            animations: { () -> Void in
+            animations: { () in
                 flashView.alpha = 0
             },
-            completion: { [weak self] (finished) -> Void in
+            completion: { [weak self] (finished) in
                 //On completion play the shutter sound
                 self?.playShutterSound()
                 flashView.removeFromSuperview()

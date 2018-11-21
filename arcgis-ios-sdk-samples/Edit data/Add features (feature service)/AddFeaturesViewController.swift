@@ -65,7 +65,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         SVProgressHUD.show(withStatus: "Adding..")
         
         //add the feature to the feature table
-        featureTable.add(feature) { [weak self] (error: Error?) -> Void in
+        featureTable.add(feature) { [weak self] (error: Error?) in
             
             SVProgressHUD.dismiss()
             
@@ -81,7 +81,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     
     func applyEdits() {
-        self.featureTable.applyEdits {[weak self] (featureEditResults: [AGSFeatureEditResult]?, error: Error?) -> Void in
+        self.featureTable.applyEdits {[weak self] (featureEditResults: [AGSFeatureEditResult]?, error: Error?) in
             if let error = error {
                 self?.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
             } else {

@@ -148,7 +148,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     private func getDefaultParameters() {
         //get the default parameters
-        self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
+        self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
             if let error = error {
                 print(error)
             } else {
@@ -205,7 +205,7 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     func route(with params: AGSRouteParameters, isLongPressed: Bool) {
         
         //solve for route
-        self.routeTaskOperation = self.routeTask.solveRoute(with: params) { [weak self] (routeResult: AGSRouteResult?, error: Error?) -> Void in
+        self.routeTaskOperation = self.routeTask.solveRoute(with: params) { [weak self] (routeResult: AGSRouteResult?, error: Error?) in
             
             if let error = error as NSError?, error.code != NSUserCancelledError {
                 print(error)

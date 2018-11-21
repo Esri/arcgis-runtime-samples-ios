@@ -33,7 +33,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         //show progress hud
         SVProgressHUD.show(withStatus: "Applying edits")
         
-        (self.feature.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (result, error) -> Void in
+        (self.feature.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (result, error) in
             
             //dismiss progress hud
             SVProgressHUD.dismiss()
@@ -67,7 +67,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func deleteAttachment(_ attachment: AGSAttachment) {
-        self.feature.delete(attachment) { [weak self] (error: Error?) -> Void in
+        self.feature.delete(attachment) { [weak self] (error: Error?) in
             if let error = error {
                 print(error)
             } else {
@@ -120,7 +120,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
     
     func setImageForCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
         let attachment = self.attachments[indexPath.row]
-        attachment.fetchData { (data: Data?, error: Error?) -> Void in
+        attachment.fetchData { (data: Data?, error: Error?) in
             if let error = error {
                 print(error)
             } else if let data = data {
@@ -142,7 +142,7 @@ class AttachmentsListViewController: UIViewController, UITableViewDataSource, UI
         SVProgressHUD.show(withStatus: "Adding attachment")
         
         let data = UIImage(named: "LocationDisplayOffIcon")!.pngData()!
-        self.feature.addAttachment(withName: "Attachment.png", contentType: "png", data: data) { [weak self] (attachment: AGSAttachment?, error: Error?) -> Void in
+        self.feature.addAttachment(withName: "Attachment.png", contentType: "png", data: data) { [weak self] (attachment: AGSAttachment?, error: Error?) in
             
             SVProgressHUD.dismiss()
             

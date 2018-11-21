@@ -33,7 +33,7 @@ class ContentTableViewController: UITableViewController {
 
     var searchEngine: SampleSearchEngine?
     
-    private var expandedRowIndex: Int = -1
+    private var expandedRowIndices: Set<Int> = []
     
     private var bundleResourceRequest: NSBundleResourceRequest?
     private var downloadProgressView: DownloadProgressView?
@@ -49,36 +49,23 @@ class ContentTableViewController: UITableViewController {
         self.downloadProgressView = downloadProgressView
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+    // MARK: - UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayedSamples.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let reuseIdentifier = "ContentTableCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as! ContentTableCell
-
         let sample = displayedSamples[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContentTableCell") as! ContentTableCell
         cell.titleLabel.text = sample.name
-        
-        if self.expandedRowIndex == indexPath.row {
-            cell.detailLabel.text = sample.description
-        } else {
-            cell.detailLabel.text = nil
-        }
-        
-        cell.infoButton.addTarget(self, action: #selector(ContentTableViewController.expandCell(_:)), for: .touchUpInside)
-        cell.infoButton.tag = indexPath.row
-
-        cell.backgroundColor = .clear
-        
+        cell.detailLabel.text = sample.description
+        cell.isExpanded = expandedRowIndices.contains(indexPath.row)
         return cell
     }
+    
+    // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //hide keyboard if visible
@@ -115,7 +102,13 @@ class ContentTableViewController: UITableViewController {
         }
     }
     
-    func downloadResource(for sample: Sample, at indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        updateExpandedRow(indexPath, collapseIfSelected: true)
+    }
+    
+    // MARK: - helpers
+    
+    private func downloadResource(for sample: Sample, at indexPath: IndexPath) {
         
         guard let bundleResourceRequest = bundleResourceRequest else {
             return
@@ -175,9 +168,6 @@ class ContentTableViewController: UITableViewController {
     
     private func showSample(indexPath: IndexPath, sample: Sample) {
         
-        //expand the selected cell
-        updateExpandedRow(indexPath, collapseIfSelected: false)
-        
         let storyboard = UIStoryboard(name: sample.storyboardName, bundle: .main)
         let controller = storyboard.instantiateInitialViewController()!
         controller.title = sample.name
@@ -205,25 +195,19 @@ class ContentTableViewController: UITableViewController {
 
     }
     
-    @objc
-    func expandCell(_ sender: UIButton) {
-        updateExpandedRow(IndexPath(row: sender.tag, section: 0), collapseIfSelected: true)
-    }
-    
     private func updateExpandedRow(_ indexPath: IndexPath, collapseIfSelected: Bool) {
         //if same row selected then hide the detail view
-        if indexPath.row == expandedRowIndex {
+        if expandedRowIndices.contains(indexPath.row) {
             if collapseIfSelected {
-                expandedRowIndex = -1
-                tableView.reloadRows(at: [indexPath], with: .fade)
+                expandedRowIndices.remove(indexPath.row)
+                tableView.reloadRows(at: [indexPath], with: .automatic)
             } else {
                 return
             }
         } else {
             //get the two cells and update
-            let previouslyExpandedIndexPath = IndexPath(row: expandedRowIndex, section: 0)
-            expandedRowIndex = indexPath.row
-            tableView.reloadRows(at: [previouslyExpandedIndexPath, indexPath], with: .fade)
+            expandedRowIndices.update(with: indexPath.row)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
 

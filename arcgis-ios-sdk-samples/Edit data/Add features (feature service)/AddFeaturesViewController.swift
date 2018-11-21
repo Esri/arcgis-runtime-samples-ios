@@ -81,7 +81,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     
     func applyEdits() {
-        self.featureTable.applyEdits {[weak self] (featureEditResults: [AGSFeatureEditResult]?, error: Error?) -> Void in
+        self.featureTable.applyEdits { [weak self] (featureEditResults: [AGSFeatureEditResult]?, error: Error?) -> Void in
             if let error = error {
                 self?.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
             } else {

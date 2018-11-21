@@ -73,7 +73,7 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         //use `identifyGraphicsOverlaysAtScreenCoordinate:tolerance:maximumGraphics:completion:` method provided on map view
         let tolerance: Double = 12
         
-        self.mapView.identify(self.graphicsOverlay, screenPoint: screenPoint, tolerance: tolerance, returnPopupsOnly: false, maximumResults: 10) {[weak self] (result: AGSIdentifyGraphicsOverlayResult) -> Void in
+        self.mapView.identify(self.graphicsOverlay, screenPoint: screenPoint, tolerance: tolerance, returnPopupsOnly: false, maximumResults: 10) { [weak self] (result: AGSIdentifyGraphicsOverlayResult) -> Void in
             if let error = result.error {
                 print("error while identifying :: \(error.localizedDescription)")
             } else {

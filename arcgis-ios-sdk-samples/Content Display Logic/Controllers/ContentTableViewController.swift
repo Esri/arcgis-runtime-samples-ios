@@ -125,7 +125,7 @@ class ContentTableViewController: UITableViewController {
         downloadProgressView?.show(withStatus: "Just a moment while we download data for this sample...", progress: 0)
         
         //add an observer to update the progress in download progress view
-        downloadProgressObservation = bundleResourceRequest.progress.observe(\.fractionCompleted, changeHandler: {[weak self] (progress, change) in
+        downloadProgressObservation = bundleResourceRequest.progress.observe(\.fractionCompleted, changeHandler: { [weak self] (progress, change) in
             
             guard let self = self else {
                 return

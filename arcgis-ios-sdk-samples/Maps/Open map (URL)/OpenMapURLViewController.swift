@@ -75,7 +75,7 @@ class OpenMapURLViewController: UIViewController {
         if let controller = segue.destination as? OpenMapURLSettingsViewController {
             controller.initialSelectedID = displayedMapID
             controller.mapModels = mapModels
-            controller.onChange = {[weak self] (url) in
+            controller.onChange = { [weak self] (url) in
                 self?.showMap(at: url)
             }
             controller.preferredContentSize = CGSize(width: 300, height: 250)

@@ -37,7 +37,7 @@ class WMTSLayerViewController: UIViewController {
         self.wmtsService = AGSWMTSService(url: wmtsServiceURL)
         
         //load the WMTS service to access the service information
-        self.wmtsService.load {[weak self] (error) in
+        self.wmtsService.load { [weak self] (error) in
             if let error = error {
                 self?.presentAlert(message: "Failed to load WMTS layer: \(error.localizedDescription)")
             } else {

@@ -17,14 +17,13 @@ import ArcGIS
 
 class AttachmentsTableViewController: UITableViewController {
     
-    weak var feature: AGSArcGISFeature?
-    private var attachments: [AGSAttachment] = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        loadAttachments()
+    weak var feature: AGSArcGISFeature? {
+        didSet {
+            loadAttachments()
+        }
     }
+    
+    private var attachments: [AGSAttachment] = []
     
     private func loadAttachments() {
         
@@ -41,53 +40,90 @@ class AttachmentsTableViewController: UITableViewController {
             }
             
             if let error = error {
+                // show the error
                 self.presentAlert(error: error)
+            } else if let attachments = attachments {
+                self.attachments = attachments
+                self.tableView?.reloadData()
             }
-            
-            self.attachments = attachments ?? []
-            self.tableView.reloadData()
         }
     }
     
     private func deleteAttachment(_ attachment: AGSAttachment) {
         feature?.delete(attachment) { [weak self] (error: Error?) in
+            guard let self = self else {
+                return
+            }
             if let error = error {
                 print(error)
-            } else {
-                self?.loadAttachments()
+            } else if let attachmentIndex = self.attachments.firstIndex(of: attachment) {
+                let indexPathToRemove = IndexPath(row: attachmentIndex, section: 0)
+                // update the model
+                self.attachments.remove(at: attachmentIndex)
+                // update the table
+                self.tableView.deleteRows(at: [indexPathToRemove], with: .automatic)
             }
         }
     }
     
-    // MARK: - Table view data source
+    private func downloadImage(for attachment: AGSAttachment) {
+        
+        SVProgressHUD.show(withStatus: "Downloading attachment")
+        
+        attachment.fetchData { [weak self] (data: Data?, error: Error?) in
+            
+            SVProgressHUD.dismiss()
+            
+            guard let self = self else {
+                return
+            }
+            
+            if let error = error {
+                print(error)
+            } else if let data = data,
+                let index = self.attachments.firstIndex(of: attachment),
+                let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) {
+
+                cell.imageView?.image = UIImage(data: data)
+            }
+        }
+    }
+    
+    // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return attachments.count
     }
-    
-    // MARK: - Table view delegate
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AttachmentCell", for: indexPath)
-        
         let attachment = attachments[indexPath.row]
         cell.textLabel?.text = attachment.name
-        
-        cell.imageView?.image = UIImage(named: "CloudDownload", in: AGSBundle(), compatibleWith: nil)
         cell.imageView?.contentMode = .scaleAspectFit
-        cell.imageView?.autoresizingMask = []
-        cell.imageView?.clipsToBounds = true
         if attachment.hasFetchedData {
-            downloadAndSetAttachmentImageForCell(cell, at: indexPath)
+            attachment.fetchData { (data: Data?, error: Error?) in
+                if let data = data {
+                    cell.imageView?.image = UIImage(data: data)
+                }
+            }
+        } else {
+            cell.imageView?.image = UIImage(named: "CloudDownload", in: AGSBundle(), compatibleWith: nil)
         }
         
         return cell
     }
     
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return !attachments[indexPath.row].hasFetchedData
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)!
-        downloadAndSetAttachmentImageForCell(cell, at: indexPath)
-        cell.setSelected(false, animated: true)
+        
+        downloadImage(for: attachments[indexPath.row])
+        
+        tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -97,51 +133,32 @@ class AttachmentsTableViewController: UITableViewController {
         }
     }
     
-    private func downloadAndSetAttachmentImageForCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
-        let attachment = attachments[indexPath.row]
-        
-        if !attachment.hasFetchedData {
-            SVProgressHUD.show(withStatus: "Downloading attachment")
-        }
-        
-        attachment.fetchData { (data: Data?, error: Error?) in
-            
-            SVProgressHUD.dismiss()
-            
-            if let error = error {
-                print(error)
-            } else if let data = data,
-                let image = UIImage(data: data) {
-                cell.imageView?.image = image
-            }
-        }
-    }
-    
     // MARK: - Actions
     
     @IBAction func doneAction() {
         
-        guard let table = feature?.featureTable as? AGSServiceFeatureTable else {
+        if let table = feature?.featureTable as? AGSServiceFeatureTable {
+            
+            //show progress hud
+            SVProgressHUD.show(withStatus: "Applying edits")
+            
+            table.applyEdits { [weak self] (result, error) in
+                
+                //dismiss progress hud
+                SVProgressHUD.dismiss()
+                
+                guard let self = self else {
+                    return
+                }
+                
+                if let error = error {
+                    self.presentAlert(error: error)
+                }
+                self.dismiss(animated: true, completion: nil)
+            }
+            
+        } else {
             dismiss(animated: true, completion: nil)
-            return
-        }
-        
-        //show progress hud
-        SVProgressHUD.show(withStatus: "Applying edits")
-        
-        table.applyEdits { [weak self] (result, error) in
-            
-            //dismiss progress hud
-            SVProgressHUD.dismiss()
-            
-            guard let self = self else {
-                return
-            }
-            
-            if let error = error {
-                self.presentAlert(error: error)
-            }
-            self.dismiss(animated: true, completion: nil)
         }
         
     }
@@ -165,8 +182,13 @@ class AttachmentsTableViewController: UITableViewController {
             
             if let error = error {
                 self.presentAlert(error: error)
-            } else {
-                self.loadAttachments()
+            } else if let attachment = attachment {
+                // new attachments are added to the end
+                let indexPath = IndexPath(row: self.attachments.count, section: 0)
+                // update the model
+                self.attachments.append(attachment)
+                // update the table
+                self.tableView.insertRows(at: [indexPath], with: .automatic)
             }
         }
     }

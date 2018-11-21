@@ -19,10 +19,19 @@ class EditFeatureAttachmentsViewController: UIViewController {
     
     @IBOutlet private weak var mapView: AGSMapView!
     
-    private var featureLayer: AGSFeatureLayer?
+    private let featureLayer: AGSFeatureLayer
     private var lastQuery: AGSCancelable?
     
     private var selectedFeature: AGSArcGISFeature?
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+        let featureServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!
+        let featureTable = AGSServiceFeatureTable(url: featureServiceURL)
+        self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +48,6 @@ class EditFeatureAttachmentsViewController: UIViewController {
             center: AGSPoint(x: 0, y: 0, spatialReference: .webMercator()),
             scale: 100000000
         )
-        
-        let featureServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!
-        let featureTable = AGSServiceFeatureTable(url: featureServiceURL)
-        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-        self.featureLayer = featureLayer
-        
         map.operationalLayers.add(featureLayer)
         
         mapView.map = map
@@ -71,10 +74,6 @@ extension EditFeatureAttachmentsViewController: AGSGeoViewTouchDelegate {
         
         //hide the callout
         mapView.callout.dismiss()
-        
-        guard let featureLayer = featureLayer else {
-            return
-        }
         
         lastQuery = mapView.identifyLayer(featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
             

@@ -405,7 +405,7 @@ class OfflineEditingViewController: UIViewController {
             
             SVProgressHUD.show(withStatus: status.statusString())
             
-        }, completion: {[weak self] (results: [AGSSyncLayerResult]?, error: Error?) -> Void in
+        }, completion: { [weak self] (results: [AGSSyncLayerResult]?, error: Error?) -> Void in
             
             SVProgressHUD.dismiss()
             

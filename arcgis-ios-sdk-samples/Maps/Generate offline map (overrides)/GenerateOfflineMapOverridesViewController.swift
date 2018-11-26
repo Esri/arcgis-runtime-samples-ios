@@ -121,7 +121,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
                                                                          downloadDirectory: downloadDirectory)
         self.generateOfflineMapJob = generateOfflineMapJob
         
-        progressObservation = generateOfflineMapJob.progress.observe(\.fractionCompleted, options: .initial) {[weak self] (progress, _) in
+        progressObservation = generateOfflineMapJob.progress.observe(\.fractionCompleted, options: .initial) { [weak self] (progress, _) in
             DispatchQueue.main.async { [weak self] in
                 
                 guard let self = self else {
@@ -190,13 +190,13 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
         paramController.map = mapView.map
         
         // set the completion handler
-        paramController.startJobHandler = {[weak self] (paramController) in
+        paramController.startJobHandler = { [weak self] (paramController) in
             // start the job
             self?.takeMapOffline()
             // close the view
             paramController.navigationController?.dismiss(animated: true)
         }
-        paramController.cancelHandler = {[weak self] (paramController) in
+        paramController.cancelHandler = { [weak self] (paramController) in
             // reset the UI
             self?.resetUIForOfflineMapGeneration()
             // close the view
@@ -261,7 +261,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
             self.parameters = parameters
             
             //build the parameter overrides object to be configured by the user
-            offlineMapTask.generateOfflineMapParameterOverrides(with: parameters, completion: {[weak self] (parameterOverrides, error) in
+            offlineMapTask.generateOfflineMapParameterOverrides(with: parameters, completion: { [weak self] (parameterOverrides, error) in
                 
                 guard let self = self else {
                     return

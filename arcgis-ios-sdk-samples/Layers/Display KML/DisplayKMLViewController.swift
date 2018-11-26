@@ -97,7 +97,7 @@ class DisplayKMLViewController: UIViewController {
         
         // This load call is not required, but it allows for error
         // feedback and progress indication
-        kmlLayer.load {[weak self] (error) in
+        kmlLayer.load { [weak self] (error) in
             
             // Close the progress indicator
             SVProgressHUD.dismiss()

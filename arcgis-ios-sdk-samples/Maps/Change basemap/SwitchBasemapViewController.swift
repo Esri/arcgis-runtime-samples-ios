@@ -68,7 +68,7 @@ class SwitchBasemapViewController: UIViewController {
         let basemapLabels = basemapInfoArray.map { $0.label }
         
         /// A view controller allowing the user to select the basemap to show.
-        let controller = OptionsTableViewController(labels: basemapLabels, selectedIndex: selectedIndex) {[weak self] (newIndex) in
+        let controller = OptionsTableViewController(labels: basemapLabels, selectedIndex: selectedIndex) { [weak self] (newIndex) in
             if let self = self {
                 // update the map with the selected basemap
                 self.mapView?.map?.basemap = self.basemapInfoArray[newIndex].basemap

@@ -34,7 +34,7 @@ class MapLoadedViewController: UIViewController {
         //assign map to map view
         mapView.map = map
         
-        mapLoadStatusObservation = map.observe(\.loadStatus, options: .initial) {[weak self] (map, change) in
+        mapLoadStatusObservation = map.observe(\.loadStatus, options: .initial) { [weak self] (map, change) in
             //update the banner label on main thread
             DispatchQueue.main.async { [weak self] in
                 self?.updateLoadStatusLabel()

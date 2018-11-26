@@ -405,7 +405,7 @@ class OfflineEditingViewController: UIViewController {
             
             SVProgressHUD.show(withStatus: status.statusString())
             
-        }, completion: {[weak self] (results: [AGSSyncLayerResult]?, error: Error?) -> Void in
+        }, completion: { [weak self] (results: [AGSSyncLayerResult]?, error: Error?) -> Void in
             
             SVProgressHUD.dismiss()
             
@@ -427,7 +427,7 @@ class OfflineEditingViewController: UIViewController {
         if let popupsVC = popupsVC {
              present(popupsVC, animated: true, completion: nil)
         }
-        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self, name: .AGSSketchEditorGeometryDidChange, object: nil)
     }
 
     // MARK: - Navigation

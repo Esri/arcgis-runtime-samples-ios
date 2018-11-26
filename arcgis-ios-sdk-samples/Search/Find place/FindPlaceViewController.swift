@@ -358,9 +358,6 @@ class FindPlaceViewController: UIViewController {
         self.overlayView.isHidden = true
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
 }
 
 extension FindPlaceViewController: UITableViewDataSource {

@@ -127,9 +127,9 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
         waypoint = mapPoint
         
         // start a timer to animate towards the waypoint
-        animationTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: {[weak self] (timer) in
+        animationTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
             self?.animate()
-        })
+        }
     }
     
     private func animate() {

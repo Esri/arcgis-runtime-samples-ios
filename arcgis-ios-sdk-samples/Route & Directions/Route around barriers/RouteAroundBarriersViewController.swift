@@ -207,7 +207,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         self.directionsBottomConstraint.constant = self.isDirectionsListVisible ? -115 : 0
         UIView.animate(
             withDuration: 0.3,
-            animations: { [weak self] () in
+            animations: { [weak self] in
                 self?.view.layoutIfNeeded()
             },
             completion: { [weak self] (finished) in
@@ -220,7 +220,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         self.directionsBottomConstraint.constant = visible ? -115 : -150
         UIView.animate(
             withDuration: 0.3,
-            animations: { [weak self] () in
+            animations: { [weak self] in
                 self?.view.layoutIfNeeded()
             },
             completion: { [weak self] (finished) in

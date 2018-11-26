@@ -358,7 +358,7 @@ class OfflineEditingViewController: UIViewController {
     @IBAction func switchToServiceMode(_ sender: AnyObject) {
         if generatedGeodatabase?.hasLocalEdits() == true {
             let yesAction = UIAlertAction(title: "Yes", style: .default) { [weak self] _ in
-                self?.syncAction { () in
+                self?.syncAction {
                     self?.switchToServiceMode()
                 }
             }

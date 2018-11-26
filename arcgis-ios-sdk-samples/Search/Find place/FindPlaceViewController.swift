@@ -80,7 +80,7 @@ class FindPlaceViewController: UIViewController {
         }
         
         //logic to show the extent search button
-        self.mapView.viewpointChangedHandler = { [weak self] () in
+        self.mapView.viewpointChangedHandler = { [weak self] in
             DispatchQueue.main.async {
                 if self?.canDoExtentSearch ?? false {
                     self?.extentSearchButton.isHidden = false
@@ -137,7 +137,7 @@ class FindPlaceViewController: UIViewController {
             self.tableViewHeightConstraint.constant = expand ? self.tableViewHeight : 0
             UIView.animate(
                 withDuration: 0.1,
-                animations: { [weak self] () in
+                animations: { [weak self] in
                     self?.view.layoutIfNeeded()
                 },
                 completion: { [weak self] (finished) in
@@ -321,7 +321,7 @@ class FindPlaceViewController: UIViewController {
             //if no, then goecode the suggestion
             //else use the geocoded location, to find the POIs
             if self.preferredSearchLocation == nil {
-                self.geocodeUsingSuggestResult(self.selectedSuggestResult, completion: { [weak self] () in
+                self.geocodeUsingSuggestResult(self.selectedSuggestResult, completion: { [weak self] in
                     //find the POIs wrt location
                     self?.geocodePOIs(poi, location: self!.preferredSearchLocation, extent: nil)
                 })

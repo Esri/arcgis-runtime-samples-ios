@@ -59,7 +59,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     func setToolbarVisibility(visible: Bool) {
         toolbarBottomConstraint.constant = visible ? 0 : -44 - view.safeAreaInsets.bottom
         
-        UIView.animate(withDuration: 0.3, animations: { [weak self] () in
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
             self?.view.layoutIfNeeded()
         }) 
     }

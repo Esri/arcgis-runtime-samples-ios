@@ -246,7 +246,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.dismiss(animated: false, completion: nil)
 
         //Next, Present the popup view controller
-        self.present(self.popupsVC, animated: true) { [weak self] () in
+        self.present(self.popupsVC, animated: true) { [weak self] in
             self?.popupsVC.startEditingCurrentPopup()
         }
     }

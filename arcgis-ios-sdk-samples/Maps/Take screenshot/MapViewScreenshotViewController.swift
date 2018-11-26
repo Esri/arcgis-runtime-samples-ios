@@ -88,7 +88,7 @@ class MapViewScreenshotViewController: UIViewController {
         //animate the white flash view on and off to show the flash effect
         UIView.animate(
             withDuration: 0.3,
-            animations: { () in
+            animations: {
                 flashView.alpha = 0
             },
             completion: { [weak self] (finished) in

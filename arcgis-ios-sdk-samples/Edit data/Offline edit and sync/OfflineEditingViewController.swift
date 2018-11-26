@@ -201,7 +201,8 @@ class OfflineEditingViewController: UIViewController {
         }
     }
     
-    @objc func sketchChanged(_ notification: Notification) {
+    @objc
+    func sketchChanged(_ notification: Notification) {
         //Check if the sketch geometry is valid to decide whether to enable
         //the done bar button item
         if let geometry = self.mapView.sketchEditor?.geometry, !geometry.isEmpty {
@@ -404,7 +405,7 @@ class OfflineEditingViewController: UIViewController {
             
             SVProgressHUD.show(withStatus: status.statusString())
             
-        }, completion: {[weak self] (results: [AGSSyncLayerResult]?, error: Error?) -> Void in
+        }, completion: { [weak self] (results: [AGSSyncLayerResult]?, error: Error?) -> Void in
             
             SVProgressHUD.dismiss()
             
@@ -426,7 +427,7 @@ class OfflineEditingViewController: UIViewController {
         if let popupsVC = popupsVC {
              present(popupsVC, animated: true, completion: nil)
         }
-        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self, name: .AGSSketchEditorGeometryDidChange, object: nil)
     }
 
     // MARK: - Navigation
@@ -499,8 +500,6 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
         
         //Prepare the current view controller for sketch mode
         mapView.callout.isHidden = true
-        
-        //TODO: Hide the feature
         
         //hide the back button
         navigationItem.hidesBackButton = true

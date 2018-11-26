@@ -72,7 +72,6 @@
 		3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */; };
 		3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */ = {isa = PBXBuildFile; fileRef = 3E03F0981B056F9C0078EB36 /* highlight.pack.js */; };
 		3E03F09B1B05714A0078EB36 /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 3E03F09A1B05714A0078EB36 /* default.css */; };
-		3E0830BE1BC33681001AF9A7 /* SuggestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0830BD1BC33681001AF9A7 /* SuggestionTableViewCell.xib */; };
 		3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0B58471E36BCCD00951767 /* AnalyzeHotspots.storyboard */; };
 		3E0B584E1E36BCCD00951767 /* HotspotSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B58481E36BCCD00951767 /* HotspotSettingsViewController.swift */; };
 		3E0B584F1E36BCCD00951767 /* AnalyzeHotspotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B58491E36BCCD00951767 /* AnalyzeHotspotsViewController.swift */; };
@@ -309,7 +308,6 @@
 		3ED028651B8E3A8500ACA70D /* HighwayJson.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028121B8E3A8400ACA70D /* HighwayJson.txt */; };
 		3ED028691B8E3A8500ACA70D /* SetViewpoint.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028161B8E3A8400ACA70D /* SetViewpoint.storyboard */; };
 		3ED0286A1B8E3A8500ACA70D /* SetViewpointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028171B8E3A8400ACA70D /* SetViewpointViewController.swift */; };
-		3ED0286B1B8E3A8500ACA70D /* CustomContextSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028191B8E3A8400ACA70D /* CustomContextSheet.swift */; };
 		3ED0286C1B8E3A8500ACA70D /* DisplayLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED0281A1B8E3A8400ACA70D /* DisplayLocation.storyboard */; };
 		3ED0286D1B8E3A8500ACA70D /* DisplayLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0281B1B8E3A8400ACA70D /* DisplayLocationViewController.swift */; };
 		3ED028731B8E3A8500ACA70D /* MapViewDrawStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028221B8E3A8400ACA70D /* MapViewDrawStatus.storyboard */; };
@@ -363,9 +361,9 @@
 		3ED0293A1B8E3AB300ACA70D /* MILShowLegendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED029131B8E3AB300ACA70D /* MILShowLegendViewController.swift */; };
 		3ED0294B1B8E3AB300ACA70D /* Sketch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED029261B8E3AB300ACA70D /* Sketch.storyboard */; };
 		3ED0294C1B8E3AB300ACA70D /* SketchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED029271B8E3AB300ACA70D /* SketchViewController.swift */; };
-		3ED029641B8E3ACD00ACA70D /* AttachmentsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0294E1B8E3ACD00ACA70D /* AttachmentsListViewController.swift */; };
-		3ED029651B8E3ACD00ACA70D /* EditAttachment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED0294F1B8E3ACD00ACA70D /* EditAttachment.storyboard */; };
-		3ED029661B8E3ACD00ACA70D /* EditAttachmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED029501B8E3ACD00ACA70D /* EditAttachmentViewController.swift */; };
+		3ED029641B8E3ACD00ACA70D /* AttachmentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0294E1B8E3ACD00ACA70D /* AttachmentsTableViewController.swift */; };
+		3ED029651B8E3ACD00ACA70D /* EditFeatureAttachments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED0294F1B8E3ACD00ACA70D /* EditFeatureAttachments.storyboard */; };
+		3ED029661B8E3ACD00ACA70D /* EditFeatureAttachmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED029501B8E3ACD00ACA70D /* EditFeatureAttachmentsViewController.swift */; };
 		3ED029681B8E3ACD00ACA70D /* EAOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED029531B8E3ACD00ACA70D /* EAOptionsViewController.swift */; };
 		3ED029691B8E3ACD00ACA70D /* EditAttributes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED029541B8E3ACD00ACA70D /* EditAttributes.storyboard */; };
 		3ED0296A1B8E3ACD00ACA70D /* EditAttributesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED029551B8E3ACD00ACA70D /* EditAttributesViewController.swift */; };
@@ -382,7 +380,6 @@
 		3ED029821B8E571700ACA70D /* SetViewpointViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028171B8E3A8400ACA70D /* SetViewpointViewController.swift */; };
 		3ED029831B8E571700ACA70D /* MapRotationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028361B8E3A8500ACA70D /* MapRotationViewController.swift */; };
 		3ED029841B8E571700ACA70D /* ShowMagnifierViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028511B8E3A8500ACA70D /* ShowMagnifierViewController.swift */; };
-		3ED029851B8E571700ACA70D /* CustomContextSheet.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028191B8E3A8400ACA70D /* CustomContextSheet.swift */; };
 		3ED029861B8E571700ACA70D /* DisplayLocationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED0281B1B8E3A8400ACA70D /* DisplayLocationViewController.swift */; };
 		3ED029871B8E571700ACA70D /* MapViewScreenshotViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028551B8E3A8500ACA70D /* MapViewScreenshotViewController.swift */; };
 		3ED029881B8E571700ACA70D /* CreateSaveMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028031B8E3A8400ACA70D /* CreateSaveMapViewController.swift */; };
@@ -406,8 +403,8 @@
 		3ED0299B1B8E571700ACA70D /* MILShowLegendViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029131B8E3AB300ACA70D /* MILShowLegendViewController.swift */; };
 		3ED0299C1B8E571700ACA70D /* EAOptionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029531B8E3ACD00ACA70D /* EAOptionsViewController.swift */; };
 		3ED0299D1B8E571700ACA70D /* EditAttributesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029551B8E3ACD00ACA70D /* EditAttributesViewController.swift */; };
-		3ED0299F1B8E571700ACA70D /* AttachmentsListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED0294E1B8E3ACD00ACA70D /* AttachmentsListViewController.swift */; };
-		3ED029A01B8E571700ACA70D /* EditAttachmentViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029501B8E3ACD00ACA70D /* EditAttachmentViewController.swift */; };
+		3ED0299F1B8E571700ACA70D /* AttachmentsTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED0294E1B8E3ACD00ACA70D /* AttachmentsTableViewController.swift */; };
+		3ED029A01B8E571700ACA70D /* EditFeatureAttachmentsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029501B8E3ACD00ACA70D /* EditFeatureAttachmentsViewController.swift */; };
 		3ED5D36F1C75985C0091D621 /* FindRouteViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */; };
 		3ED5D3701C75985C0091D621 /* DirectionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6AE3F61C73B5480026E59C /* DirectionsViewController.swift */; };
 		3ED5EB731B7404D0009F9B75 /* SampleInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5EB721B7404D0009F9B75 /* SampleInfoViewController.swift */; };
@@ -503,6 +500,7 @@
 		C7094787215D68C200BA0969 /* GenerateOfflineMapOverridesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7094782215D34BA00BA0969 /* GenerateOfflineMapOverridesViewController.swift */; };
 		C7094788215D68C400BA0969 /* OfflineMapParameterOverridesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7094785215D36BA00BA0969 /* OfflineMapParameterOverridesViewController.swift */; };
 		C712881A2183CEE1007502A6 /* ColorPickerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C76F75712182729700938D8D /* ColorPickerViewController.swift */; };
+		C7237D0E2190F07500A72C76 /* DisplayLocationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7237D0D2190F07500A72C76 /* DisplayLocationSettingsViewController.swift */; };
 		C7432D3A2187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7432D382187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift */; };
 		C7432D3B2187C450009BF1D8 /* ShowLabelsOnLayers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7432D392187C450009BF1D8 /* ShowLabelsOnLayers.storyboard */; };
 		C7432D3C2187C499009BF1D8 /* ShowLabelsOnLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7432D382187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift */; };
@@ -619,6 +617,7 @@
 			dstSubfolderSpec = 7;
 			files = (
 				C7BE9C50219F5052003A03D2 /* SpatialRelationshipsTableViewController.swift in CopyFiles */,
+				3ED0299F1B8E571700ACA70D /* AttachmentsTableViewController.swift in CopyFiles */,
 				C7B29EBF218B90F6004E5DE4 /* OpenMapURLSettingsViewController.swift in CopyFiles */,
 				C7432D3C2187C499009BF1D8 /* ShowLabelsOnLayersViewController.swift in CopyFiles */,
 				C712881A2183CEE1007502A6 /* ColorPickerViewController.swift in CopyFiles */,
@@ -770,7 +769,6 @@
 				3ED029821B8E571700ACA70D /* SetViewpointViewController.swift in CopyFiles */,
 				3ED029831B8E571700ACA70D /* MapRotationViewController.swift in CopyFiles */,
 				3ED029841B8E571700ACA70D /* ShowMagnifierViewController.swift in CopyFiles */,
-				3ED029851B8E571700ACA70D /* CustomContextSheet.swift in CopyFiles */,
 				3ED029861B8E571700ACA70D /* DisplayLocationViewController.swift in CopyFiles */,
 				3ED029871B8E571700ACA70D /* MapViewScreenshotViewController.swift in CopyFiles */,
 				3ED029881B8E571700ACA70D /* CreateSaveMapViewController.swift in CopyFiles */,
@@ -794,8 +792,7 @@
 				3ED0299B1B8E571700ACA70D /* MILShowLegendViewController.swift in CopyFiles */,
 				3ED0299C1B8E571700ACA70D /* EAOptionsViewController.swift in CopyFiles */,
 				3ED0299D1B8E571700ACA70D /* EditAttributesViewController.swift in CopyFiles */,
-				3ED0299F1B8E571700ACA70D /* AttachmentsListViewController.swift in CopyFiles */,
-				3ED029A01B8E571700ACA70D /* EditAttachmentViewController.swift in CopyFiles */,
+				3ED029A01B8E571700ACA70D /* EditFeatureAttachmentsViewController.swift in CopyFiles */,
 				940A73F720E6BF3F00A06C80 /* CutGeometryViewController.swift in CopyFiles */,
 				4C85044C20F4252500E37F43 /* SceneLayerSelectionViewController.swift in CopyFiles */,
 				4C0F27B42152CB1200496666 /* IdentifyKMLFeaturesViewController.swift in CopyFiles */,
@@ -860,7 +857,6 @@
 		3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceCodeViewController.swift; sourceTree = "<group>"; };
 		3E03F0981B056F9C0078EB36 /* highlight.pack.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.pack.js; sourceTree = "<group>"; };
 		3E03F09A1B05714A0078EB36 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
-		3E0830BD1BC33681001AF9A7 /* SuggestionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuggestionTableViewCell.xib; sourceTree = "<group>"; };
 		3E0B58471E36BCCD00951767 /* AnalyzeHotspots.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnalyzeHotspots.storyboard; sourceTree = "<group>"; };
 		3E0B58481E36BCCD00951767 /* HotspotSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotspotSettingsViewController.swift; sourceTree = "<group>"; };
 		3E0B58491E36BCCD00951767 /* AnalyzeHotspotsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyzeHotspotsViewController.swift; sourceTree = "<group>"; };
@@ -1036,7 +1032,6 @@
 		3ED028121B8E3A8400ACA70D /* HighwayJson.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HighwayJson.txt; sourceTree = "<group>"; };
 		3ED028161B8E3A8400ACA70D /* SetViewpoint.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SetViewpoint.storyboard; sourceTree = "<group>"; };
 		3ED028171B8E3A8400ACA70D /* SetViewpointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetViewpointViewController.swift; sourceTree = "<group>"; };
-		3ED028191B8E3A8400ACA70D /* CustomContextSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomContextSheet.swift; sourceTree = "<group>"; };
 		3ED0281A1B8E3A8400ACA70D /* DisplayLocation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayLocation.storyboard; sourceTree = "<group>"; };
 		3ED0281B1B8E3A8400ACA70D /* DisplayLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayLocationViewController.swift; sourceTree = "<group>"; };
 		3ED028221B8E3A8400ACA70D /* MapViewDrawStatus.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapViewDrawStatus.storyboard; sourceTree = "<group>"; };
@@ -1090,9 +1085,9 @@
 		3ED029131B8E3AB300ACA70D /* MILShowLegendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MILShowLegendViewController.swift; sourceTree = "<group>"; };
 		3ED029261B8E3AB300ACA70D /* Sketch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sketch.storyboard; sourceTree = "<group>"; };
 		3ED029271B8E3AB300ACA70D /* SketchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SketchViewController.swift; sourceTree = "<group>"; };
-		3ED0294E1B8E3ACD00ACA70D /* AttachmentsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentsListViewController.swift; sourceTree = "<group>"; };
-		3ED0294F1B8E3ACD00ACA70D /* EditAttachment.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditAttachment.storyboard; sourceTree = "<group>"; };
-		3ED029501B8E3ACD00ACA70D /* EditAttachmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAttachmentViewController.swift; sourceTree = "<group>"; };
+		3ED0294E1B8E3ACD00ACA70D /* AttachmentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentsTableViewController.swift; sourceTree = "<group>"; };
+		3ED0294F1B8E3ACD00ACA70D /* EditFeatureAttachments.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditFeatureAttachments.storyboard; sourceTree = "<group>"; };
+		3ED029501B8E3ACD00ACA70D /* EditFeatureAttachmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFeatureAttachmentsViewController.swift; sourceTree = "<group>"; };
 		3ED029531B8E3ACD00ACA70D /* EAOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EAOptionsViewController.swift; sourceTree = "<group>"; };
 		3ED029541B8E3ACD00ACA70D /* EditAttributes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditAttributes.storyboard; sourceTree = "<group>"; };
 		3ED029551B8E3ACD00ACA70D /* EditAttributesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAttributesViewController.swift; sourceTree = "<group>"; };
@@ -1166,6 +1161,7 @@
 		C7094781215D34BA00BA0969 /* GenerateOfflineMapOverrides.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GenerateOfflineMapOverrides.storyboard; sourceTree = "<group>"; };
 		C7094782215D34BA00BA0969 /* GenerateOfflineMapOverridesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateOfflineMapOverridesViewController.swift; sourceTree = "<group>"; };
 		C7094785215D36BA00BA0969 /* OfflineMapParameterOverridesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineMapParameterOverridesViewController.swift; sourceTree = "<group>"; };
+		C7237D0D2190F07500A72C76 /* DisplayLocationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLocationSettingsViewController.swift; sourceTree = "<group>"; };
 		C7432D382187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowLabelsOnLayersViewController.swift; sourceTree = "<group>"; };
 		C7432D392187C450009BF1D8 /* ShowLabelsOnLayers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ShowLabelsOnLayers.storyboard; sourceTree = "<group>"; };
 		C76817052163DB7C00EC82F4 /* DisplayKML.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayKML.storyboard; sourceTree = "<group>"; };
@@ -1602,7 +1598,6 @@
 		3E3B2C201BBCADB300A99C5E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				3E0830BD1BC33681001AF9A7 /* SuggestionTableViewCell.xib */,
 				3E3B2C211BBCADDB00A99C5E /* ContentTableCell.swift */,
 				3E0225361DB569240049F7F8 /* CategoryCell.swift */,
 			);
@@ -2362,9 +2357,9 @@
 		3ED028181B8E3A8400ACA70D /* Display device location */ = {
 			isa = PBXGroup;
 			children = (
-				3ED028191B8E3A8400ACA70D /* CustomContextSheet.swift */,
 				3ED0281A1B8E3A8400ACA70D /* DisplayLocation.storyboard */,
 				3ED0281B1B8E3A8400ACA70D /* DisplayLocationViewController.swift */,
+				C7237D0D2190F07500A72C76 /* DisplayLocationSettingsViewController.swift */,
 			);
 			path = "Display device location";
 			sourceTree = "<group>";
@@ -2592,9 +2587,9 @@
 		3ED0294D1B8E3ACD00ACA70D /* Edit feature attachments */ = {
 			isa = PBXGroup;
 			children = (
-				3ED0294E1B8E3ACD00ACA70D /* AttachmentsListViewController.swift */,
-				3ED0294F1B8E3ACD00ACA70D /* EditAttachment.storyboard */,
-				3ED029501B8E3ACD00ACA70D /* EditAttachmentViewController.swift */,
+				3ED0294F1B8E3ACD00ACA70D /* EditFeatureAttachments.storyboard */,
+				3ED029501B8E3ACD00ACA70D /* EditFeatureAttachmentsViewController.swift */,
+				3ED0294E1B8E3ACD00ACA70D /* AttachmentsTableViewController.swift */,
 			);
 			path = "Edit feature attachments";
 			sourceTree = "<group>";
@@ -3311,7 +3306,6 @@
 				3E4BF44E1C5AF0AD00D85919 /* FindPlace.storyboard in Resources */,
 				3EABC7B11DB17B2C00C161C6 /* Shasta.tif.ovr in Resources */,
 				3E6AE3FA1C73B5480026E59C /* FindRoute.storyboard in Resources */,
-				3E0830BE1BC33681001AF9A7 /* SuggestionTableViewCell.xib in Resources */,
 				3E41DD741B9A241600DA11CC /* AddFeatures.storyboard in Resources */,
 				10859BAB1FE0AAE400F6E552 /* FeatureLayerExtrusion.storyboard in Resources */,
 				3EABC7C41DB191BC00C161C6 /* Shasta_Elevation.tif.ovr in Resources */,
@@ -3330,7 +3324,7 @@
 				3E676DF11B1D0B6000D4029A /* Camera Shutter.caf in Resources */,
 				3EABC7B81DB183E600C161C6 /* ShastaBW.tif.aux.xml in Resources */,
 				D9EE378D20E2C03800BF8AD1 /* LineOfSightGeoElement.storyboard in Resources */,
-				3ED029651B8E3ACD00ACA70D /* EditAttachment.storyboard in Resources */,
+				3ED029651B8E3ACD00ACA70D /* EditFeatureAttachments.storyboard in Resources */,
 				3EBA255D1D34025700AB0703 /* PictureMarkerSymbols.storyboard in Resources */,
 				127E11D71FD0C3F8002CBD12 /* WMTSLayer.storyboard in Resources */,
 				E4C4A4481EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard in Resources */,
@@ -3579,7 +3573,7 @@
 				3E8A25841D36B6E300D14F08 /* FeatureLayerGDBViewController.swift in Sources */,
 				4C72117020BF444C004A7DD9 /* SVProgressAnimatedView.m in Sources */,
 				127E11D81FD0C3F8002CBD12 /* WMTSLayerViewController.swift in Sources */,
-				3ED029641B8E3ACD00ACA70D /* AttachmentsListViewController.swift in Sources */,
+				3ED029641B8E3ACD00ACA70D /* AttachmentsTableViewController.swift in Sources */,
 				3ED0285F1B8E3A8500ACA70D /* SaveAsViewController.swift in Sources */,
 				D9ED2DA61FD758910043BFE1 /* FeatureLayerGPKGViewController.swift in Sources */,
 				218409DD1FE89D840098BC40 /* OrderByFieldsViewController.swift in Sources */,
@@ -3611,7 +3605,7 @@
 				3EAF09471D71093D00F8538F /* GridSettingsViewController.swift in Sources */,
 				D9316A641FDB4F060075AD92 /* ReadGeopackageViewController.swift in Sources */,
 				3ED028921B8E3A8500ACA70D /* SetInitialMapLocationViewController.swift in Sources */,
-				3ED029661B8E3ACD00ACA70D /* EditAttachmentViewController.swift in Sources */,
+				3ED029661B8E3ACD00ACA70D /* EditFeatureAttachmentsViewController.swift in Sources */,
 				3EFCE1C51CF374C600E02F67 /* MobileMapViewController.swift in Sources */,
 				3ED028B31B8E3A9800ACA70D /* TLUsingURLViewController.swift in Sources */,
 				1230046C1FE2F70300303AC2 /* LineOfSightLocationViewController.swift in Sources */,
@@ -3637,12 +3631,12 @@
 				3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */,
 				1259FB931FD295C90037105E /* WMSLayerUsingURLViewController.swift in Sources */,
 				4C66AAF92107C50B00EE6346 /* QueryMapImageSublayerViewController.swift in Sources */,
+				C7237D0E2190F07500A72C76 /* DisplayLocationSettingsViewController.swift in Sources */,
 				3ED028F81B8E3AA500ACA70D /* ManualCacheViewController.swift in Sources */,
 				C7760332217FAC9B0092D978 /* OptionsTableViewController.swift in Sources */,
 				3E1E5EE51D9F08ED00F4913C /* HillshadeRendererVC.swift in Sources */,
 				C7D22F8C2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift in Sources */,
 				3ED029291B8E3AB300ACA70D /* GORenderersViewController.swift in Sources */,
-				3ED0286B1B8E3A8500ACA70D /* CustomContextSheet.swift in Sources */,
 				E45991A41EF3021D0089E9FD /* WebMapViewController.swift in Sources */,
 				3E0B585B1E36D8D300951767 /* SpatialOperationsViewController.swift in Sources */,
 				3ED0287A1B8E3A8500ACA70D /* MMLLayersViewController.swift in Sources */,

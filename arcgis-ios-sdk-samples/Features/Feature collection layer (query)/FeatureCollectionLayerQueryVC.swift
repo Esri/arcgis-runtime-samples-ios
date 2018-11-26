@@ -35,7 +35,7 @@ class FeatureCollectionLayerQueryVC: UIViewController {
         self.mapView.map = map
         
         //initialize service feature table to be queried
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Wildfire/FeatureServer/0")!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Wildfire/FeatureServer/0")!)
         
         //create query parameters
         let queryParams = AGSQueryParameters()

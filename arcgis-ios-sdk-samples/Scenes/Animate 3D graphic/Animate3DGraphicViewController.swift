@@ -217,7 +217,8 @@ class Animate3DGraphicViewController: UIViewController {
         RunLoop.main.add(animationTimer, forMode: .common)
     }
     
-    @objc func animate() {
+    @objc
+    func animate() {
         
         //validations
         guard !frames.isEmpty,

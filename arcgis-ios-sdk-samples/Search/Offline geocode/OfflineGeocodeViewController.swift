@@ -246,7 +246,8 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
     }
     
     // MARK: - Actions
-    @objc func keyboardWillShow(_ sender: AnyObject) {
+    @objc
+    func keyboardWillShow(_ sender: AnyObject) {
         self.button.isHidden = false
     }
     
@@ -285,7 +286,4 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.dismiss(animated: true, completion: nil)
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
 }

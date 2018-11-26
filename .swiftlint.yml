@@ -7,15 +7,17 @@ custom_rules:
     name: WGS84 Spatial Reference
     regex: AGSSpatialReference\(wkid:\s*(4326)\)
     message: "Use AGSSpatialReference.wgs84() instead."
+  closure_opening_space:
+    name: Closure Opening Space
+    regex: \{\[|\{\s{2,}\[
+    message: "Use one space between the brace and bracket."
 
 disabled_rules: # rule identifiers to exclude from running
-  - cyclomatic_complexity
   - file_length
   - for_where
   - force_cast
   - line_length
   - notification_center_detachment
-  - todo
   - trailing_whitespace
   - type_body_length
   - type_name
@@ -24,6 +26,7 @@ disabled_rules: # rule identifiers to exclude from running
 opt_in_rules: # some rules are only opt-in
   - anyobject_protocol
   - array_init
+  - attributes
   - closure_body_length
   - closure_end_indentation
   - closure_spacing
@@ -40,6 +43,7 @@ opt_in_rules: # some rules are only opt-in
   - fallthrough
   - fatal_error_message
   - first_where
+  - function_default_parameter_at_end
   - identical_operands
   - joined_default_parameter
   - legacy_random

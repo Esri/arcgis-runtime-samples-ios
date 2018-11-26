@@ -32,11 +32,11 @@ class StyleWebMapServiceLayerViewController: UIViewController {
         // Create the map.
         map = AGSMap()
         
+        let wmsServiceURL = URL(string: "https://imageserver.gisdata.mn.gov/cgi-bin/mncomp?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities")!
+        let layerNames = ["mncomp"]
+        
         // Create the WMS layer and add it to the map.
-        layer = AGSWMSLayer(
-            url: URL(string: "http://geoint.lmic.state.mn.us/cgi-bin/wms?VERSION=1.3.0&SERVICE=WMS&REQUEST=GetCapabilities")!,
-            layerNames: ["fsa2017"]
-        )
+        layer = AGSWMSLayer(url: wmsServiceURL, layerNames: layerNames)
         map.operationalLayers.add(layer)
         
         super.init(coder: aDecoder)

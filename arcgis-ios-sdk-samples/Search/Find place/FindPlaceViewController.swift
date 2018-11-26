@@ -20,7 +20,7 @@ enum SuggestionType {
     case populatedPlace
 }
 
-class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, AGSGeoViewTouchDelegate {
+class FindPlaceViewController: UIViewController {
     
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var tableView: UITableView!
@@ -194,124 +194,6 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    // MARK: - AGSGeoViewTouchDelegate
-    
-    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        //dismiss the callout if already visible
-        self.mapView.callout.dismiss()
-        
-        //identify graphics at the tapped location
-        self.mapView.identify(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult) -> Void in
-            if let error = result.error {
-                print(error)
-            } else if let graphic = result.graphics.first {
-                //show callout for the first graphic in the array
-                self.showCalloutForGraphic(graphic, tapLocation: mapPoint)
-            }
-        }
-    }
-    
-    // MARK: - UITableViewDataSource
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var rows = 0
-        if let count = self.suggestResults?.count {
-            if self.selectedTextField == self.preferredSearchLocationTextField {
-                rows = count + 1
-            } else {
-                rows = count
-            }
-        }
-        self.animateTableView(expand: rows > 0)
-        return rows
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestCell", for: indexPath)
-        let isLocationTextField = (self.selectedTextField == self.preferredSearchLocationTextField)
-        
-        if isLocationTextField && indexPath.row == 0 {
-            cell.textLabel?.text = self.currentLocationText
-            cell.imageView?.image = UIImage(named: "CurrentLocationDisabledIcon")
-            return cell
-        }
-        
-        let rowNumber = isLocationTextField ? indexPath.row - 1 : indexPath.row
-        let suggestResult = self.suggestResults[rowNumber]
-        
-        cell.textLabel?.text = suggestResult.label
-        cell.imageView?.image = nil
-        return cell
-    }
-    
-    // MARK: - UITableViewDelegate
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if self.selectedTextField == self.preferredSearchLocationTextField {
-            if indexPath.row == 0 {
-                self.preferredSearchLocationTextField.text = self.currentLocationText
-            } else {
-                let suggestResult = self.suggestResults[indexPath.row - 1]
-                self.selectedSuggestResult = suggestResult
-                self.preferredSearchLocation = nil
-                self.selectedTextField.text = suggestResult.label
-            }
-        } else {
-            let suggestResult = self.suggestResults[indexPath.row]
-            self.selectedTextField.text = suggestResult.label
-        }
-        self.animateTableView(expand: false)
-    }
-    
-    // MARK: - UITextFieldDelegate
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-        
-        if textField == self.preferredSearchLocationTextField {
-            self.selectedTextField = self.preferredSearchLocationTextField
-            if !newString.isEmpty {
-                self.fetchSuggestions(newString, suggestionType: .populatedPlace, textField: self.preferredSearchLocationTextField)
-            }
-            self.clearPreferredLocationInfo()
-        } else {
-            self.selectedTextField = self.poiTextField
-            if !newString.isEmpty {
-                self.fetchSuggestions(newString, suggestionType: .poi, textField: self.poiTextField)
-            } else {
-                self.canDoExtentSearch = false
-                self.animateTableView(expand: false)
-            }
-        }
-        return true
-    }
-    
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        if textField == self.preferredSearchLocationTextField {
-            self.clearPreferredLocationInfo()
-        } else {
-            self.canDoExtentSearch = false
-            self.animateTableView(expand: false)
-        }
-        return true
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        self.search()
-        return true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        self.animateTableView(expand: false)
-    }
-    
     // MARK: - Suggestions logic
     
     private func fetchSuggestions(_ string: String, suggestionType: SuggestionType, textField: UITextField) {
@@ -466,15 +348,139 @@ class FindPlaceViewController: UIViewController, UITableViewDataSource, UITableV
         self.view.endEditing(true)
     }
     
-    @objc func showOverlayView() {
+    @objc
+    func showOverlayView() {
         self.overlayView.isHidden = false
     }
     
-    @objc func hideOverlayView() {
+    @objc
+    func hideOverlayView() {
         self.overlayView.isHidden = true
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+}
+
+extension FindPlaceViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var rows = 0
+        if let count = self.suggestResults?.count {
+            if self.selectedTextField == self.preferredSearchLocationTextField {
+                rows = count + 1
+            } else {
+                rows = count
+            }
+        }
+        self.animateTableView(expand: rows > 0)
+        return rows
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestCell", for: indexPath)
+        let isLocationTextField = (self.selectedTextField == self.preferredSearchLocationTextField)
+        
+        if isLocationTextField && indexPath.row == 0 {
+            cell.textLabel?.text = self.currentLocationText
+            cell.imageView?.image = UIImage(named: "CurrentLocationDisabledIcon")
+            return cell
+        }
+        
+        let rowNumber = isLocationTextField ? indexPath.row - 1 : indexPath.row
+        let suggestResult = self.suggestResults[rowNumber]
+        
+        cell.textLabel?.text = suggestResult.label
+        cell.imageView?.image = nil
+        return cell
+    }
+    
+}
+
+extension FindPlaceViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if self.selectedTextField == self.preferredSearchLocationTextField {
+            if indexPath.row == 0 {
+                self.preferredSearchLocationTextField.text = self.currentLocationText
+            } else {
+                let suggestResult = self.suggestResults[indexPath.row - 1]
+                self.selectedSuggestResult = suggestResult
+                self.preferredSearchLocation = nil
+                self.selectedTextField.text = suggestResult.label
+            }
+        } else {
+            let suggestResult = self.suggestResults[indexPath.row]
+            self.selectedTextField.text = suggestResult.label
+        }
+        self.animateTableView(expand: false)
+    }
+    
+}
+
+extension FindPlaceViewController: AGSGeoViewTouchDelegate {
+
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        //dismiss the callout if already visible
+        self.mapView.callout.dismiss()
+        
+        //identify graphics at the tapped location
+        self.mapView.identify(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult) -> Void in
+            if let error = result.error {
+                print(error)
+            } else if let graphic = result.graphics.first {
+                //show callout for the first graphic in the array
+                self.showCalloutForGraphic(graphic, tapLocation: mapPoint)
+            }
+        }
+    }
+}
+
+extension FindPlaceViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        
+        if textField == self.preferredSearchLocationTextField {
+            self.selectedTextField = self.preferredSearchLocationTextField
+            if !newString.isEmpty {
+                self.fetchSuggestions(newString, suggestionType: .populatedPlace, textField: self.preferredSearchLocationTextField)
+            }
+            self.clearPreferredLocationInfo()
+        } else {
+            self.selectedTextField = self.poiTextField
+            if !newString.isEmpty {
+                self.fetchSuggestions(newString, suggestionType: .poi, textField: self.poiTextField)
+            } else {
+                self.canDoExtentSearch = false
+                self.animateTableView(expand: false)
+            }
+        }
+        return true
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        if textField == self.preferredSearchLocationTextField {
+            self.clearPreferredLocationInfo()
+        } else {
+            self.canDoExtentSearch = false
+            self.animateTableView(expand: false)
+        }
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        self.search()
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.animateTableView(expand: false)
+    }
+    
 }

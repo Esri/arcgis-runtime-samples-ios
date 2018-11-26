@@ -48,7 +48,7 @@ class DisplayKMLNetworkLinksViewController: UIViewController {
         let kmlDataset = AGSKMLDataset(url: datasetURL)
         
         // register to receive the network link messages
-        kmlDataset.networkLinkMessageHandler = {[weak self] (_, message) in
+        kmlDataset.networkLinkMessageHandler = { [weak self] (_, message) in
             // run UI updates on the main thread
             DispatchQueue.main.async {
                 // append the message to the prior messages

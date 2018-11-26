@@ -11,6 +11,10 @@ custom_rules:
     name: Simple Closure
     regex: (-> Void in)|(\(\) in)
     message: "Void return and empty arguments should be avoided in closures."
+  closure_opening_space:
+    name: Closure Opening Space
+    regex: \{\[|\{\s{2,}\[
+    message: "Use one space between the brace and bracket."
 
 disabled_rules: # rule identifiers to exclude from running
   - file_length

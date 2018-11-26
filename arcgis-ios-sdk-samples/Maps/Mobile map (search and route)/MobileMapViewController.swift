@@ -216,7 +216,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.routeParameters.setStops(stops)
         
         //route
-        self.routeTaskCancelable = self.routeTask.solveRoute(with: self.routeParameters) {[weak self] (routeResult: AGSRouteResult?, error: Error?) in
+        self.routeTaskCancelable = self.routeTask.solveRoute(with: self.routeParameters) { [weak self] (routeResult: AGSRouteResult?, error: Error?) in
             if let error = error {
                 self?.presentAlert(error: error)
                 //remove the last marker

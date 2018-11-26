@@ -57,17 +57,17 @@ class CameraSettingsViewController: UITableViewController {
         autoRollEnabledSwitch.isOn = cameraController.isAutoRollEnabled
         
         // add observers to the values we want to show in the UI
-        distanceObservation = cameraController.observe(\.cameraDistance) {[weak self] (_, _) in
+        distanceObservation = cameraController.observe(\.cameraDistance) { [weak self] (_, _) in
             DispatchQueue.main.async {
                 self?.updateUIForDistance()
             }
         }
-        headingObservation = cameraController.observe(\.cameraHeadingOffset) {[weak self] (_, _) in
+        headingObservation = cameraController.observe(\.cameraHeadingOffset) { [weak self] (_, _) in
             DispatchQueue.main.async {
                 self?.updateUIForHeadingOffset()
             }
         }
-        pitchObservation = cameraController.observe(\.cameraPitchOffset) {[weak self] (_, _) in
+        pitchObservation = cameraController.observe(\.cameraPitchOffset) { [weak self] (_, _) in
             DispatchQueue.main.async {
                 self?.updateUIForPitchOffset()
             }

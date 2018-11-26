@@ -16,136 +16,106 @@ import UIKit
 import ArcGIS
 
 protocol CreateOptionsVCDelegate: AnyObject {
-    func createOptionsViewController(_ createOptionsViewController: CreateOptionsViewController, didSelectBasemap basemap: AGSBasemap, layers: [AGSLayer]?)
+    func createOptionsViewController(_ createOptionsViewController: CreateOptionsViewController, didSelectBasemap basemap: AGSBasemap, layers: [AGSLayer])
 }
 
-class CreateOptionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    @IBOutlet private weak var tableView: UITableView!
+class CreateOptionsViewController: UITableViewController {
     
-    private var basemaps: [AGSBasemap] = [.streets(), .imagery(), .topographic(), .oceans()]
-    private var layers = [AGSLayer]()
+    private let basemaps: [AGSBasemap] = [.streets(), .imagery(), .topographic(), .oceans()]
+    private var layers: [AGSLayer] = {
+        let layerURLStrings = [
+            "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer",
+            "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Census/MapServer"
+        ]
+        return layerURLStrings.map { AGSArcGISMapImageLayer(url: URL(string: $0)!) }
+    }()
     
-    private var layerURLs = ["https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer",
-        "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Census/MapServer"]
-    
-    private var selectedBasemapIndex: Int!
-    private var selectedLayersIndex = [Int]()
+    private var selectedBasemapIndex: Int = 0
+    private var selectedLayerIndices: IndexSet = []
     
     weak var delegate: CreateOptionsVCDelegate?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        //populate layers array
-        for urlString in self.layerURLs {
-            let layer = AGSArcGISMapImageLayer(url: URL(string: urlString)!)
-            self.layers.append(layer)
-        }
-        
-        //self sizing cells
-        self.tableView.estimatedRowHeight = 44
-        self.tableView.rowHeight = UITableView.automaticDimension
-        
-    }
+    // MARK: - UITableViewDataSource
     
-    func resetTableView() {
-        self.selectedBasemapIndex = nil
-        self.selectedLayersIndex = [Int]()
-        self.tableView.reloadData()
-    }
-
-    // MARK: - table view data source
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? self.basemaps.count : self.layers.count
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return section == 0 ? "Choose Basemap" : "Add Operational Layers"
     }
     
-    // MARK: - table view delegates
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return section == 0 ? basemaps.count : layers.count
+    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell
-        
-        if indexPath.section == 0 {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UITableViewCell
+        switch indexPath.section {
+        case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: "CreateBasemapCell", for: indexPath)
             let basemap = self.basemaps[indexPath.row]
             cell.textLabel?.text = basemap.name
             
             //accesory view
-            if let index = self.selectedBasemapIndex, index == indexPath.row {
+            if selectedBasemapIndex == indexPath.row {
                 cell.accessoryType = .checkmark
             } else {
                 cell.accessoryType = .none
             }
-        } else {
+        default:
             cell = tableView.dequeueReusableCell(withIdentifier: "CreateLayerCell", for: indexPath)
-            let layer = self.layers[indexPath.row]
+            let layer = layers[indexPath.row]
             cell.textLabel?.text = layer.name
+            
             //accessory view
-            if self.selectedLayersIndex.contains(indexPath.row) {
+            if selectedLayerIndices.contains(indexPath.row) {
                 cell.accessoryType = .checkmark
             } else {
                 cell.accessoryType = .none
             }
         }
-        
-        cell.backgroundColor = .clear
-        cell.selectionStyle = .none
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var indexPathArray = [IndexPath]()
-        
-        if indexPath.section == 0 {
-            if let previousSelectionIndex = self.selectedBasemapIndex {
-                //create a IndexPath for the previously selected index
-                let previousSelectionIndexPath = IndexPath(row: previousSelectionIndex, section: 0)
-                indexPathArray.append(previousSelectionIndexPath)
-            }
-            self.selectedBasemapIndex = indexPath.row
-        } else {
-            //check if already selected
-            if self.selectedLayersIndex.contains(indexPath.row) {
-                //remove the selection
-                self.selectedLayersIndex.remove(at: self.selectedLayersIndex.index(of: indexPath.row)!)
-            } else {
-                self.selectedLayersIndex.append(indexPath.row)
-            }
-        }
-        indexPathArray.append(indexPath)
-        //reload selected cells instead of the whole table view
-        tableView.reloadRows(at: indexPathArray, with: .none)
-    }
+    // MARK: - UITableViewDelegate
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "Choose a basemap" : "Add operational layers"
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            //create a IndexPath for the previously selected index
+            let previousSelectionIndexPath = IndexPath(row: selectedBasemapIndex, section: 0)
+            selectedBasemapIndex = indexPath.row
+            tableView.reloadRows(at: [indexPath, previousSelectionIndexPath], with: .none)
+        case 1:
+            //check if already selected
+            if selectedLayerIndices.contains(indexPath.row) {
+                //remove the selection
+                selectedLayerIndices.remove(indexPath.row)
+            } else {
+                selectedLayerIndices.update(with: indexPath.row)
+            }
+            tableView.reloadRows(at: [indexPath], with: .none)
+        default:
+            break
+        }
     }
 
     // MARK: - Actions
     
+    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
+    
     @IBAction private func doneAction() {
-        if self.selectedBasemapIndex == nil {
-            presentAlert(message: "Please select at least a basemap")
-            return
-        }
 
         //create a basemap with the selected basemap index
-        let basemap = self.basemaps[self.selectedBasemapIndex].copy() as! AGSBasemap
+        let basemap = basemaps[selectedBasemapIndex].copy() as! AGSBasemap
         
         //create an array of the selected operational layers
-        let selectedLayers: [AGSLayer]?
-        if !selectedLayersIndex.isEmpty {
-            selectedLayers = selectedLayersIndex.map { layers[$0].copy() as! AGSLayer }
-        } else {
-            selectedLayers = nil
-        }
+        let selectedLayers = selectedLayerIndices.sorted().map { layers[$0].copy() as! AGSLayer }
         
-        self.delegate?.createOptionsViewController(self, didSelectBasemap: basemap, layers: selectedLayers)
+        delegate?.createOptionsViewController(self, didSelectBasemap: basemap, layers: selectedLayers)
     }
 
 }

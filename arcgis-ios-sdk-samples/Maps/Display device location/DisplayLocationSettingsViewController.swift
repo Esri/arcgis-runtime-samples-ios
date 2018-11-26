@@ -68,7 +68,7 @@ class DisplayLocationSettingsViewController: UITableViewController {
         
         // The auto-pan mode may be updated by the SDK as well as the user,
         // so use the change handler to set the UI
-        locationDisplay?.autoPanModeChangedHandler = {[weak self] (change) in
+        locationDisplay?.autoPanModeChangedHandler = { [weak self] (change) in
             // update the UI for the new mode
             self?.updateUIForAutoPanMode()
         }
@@ -101,7 +101,7 @@ class DisplayLocationSettingsViewController: UITableViewController {
             // make sure to add the location request field in the info.plist file
             
             // attempt to start showing the device location
-            locationDisplay.start {[weak self] (error: Error?) -> Void in
+            locationDisplay.start { [weak self] (error: Error?) -> Void in
                 if let error = error {
                     // show the error if one occurred
                     self?.presentAlert(error: error)

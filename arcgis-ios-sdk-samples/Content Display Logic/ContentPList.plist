@@ -842,7 +842,7 @@
 				<key>displayName</key>
 				<string>Edit feature attachments</string>
 				<key>storyboardName</key>
-				<string>EditAttachment</string>
+				<string>EditFeatureAttachments</string>
 				<key>descriptionText</key>
 				<string>Tap on a feature to display a callout. The callout shows the number of attachments associated with that feature. Tap on the info button to open the list view. You can add, delete or download an attachment in this list</string>
 			</dict>

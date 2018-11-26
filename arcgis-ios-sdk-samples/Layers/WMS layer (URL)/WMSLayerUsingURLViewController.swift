@@ -36,7 +36,7 @@ class WMSLayerUsingURLViewController: UIViewController {
         let wmsLayer = AGSWMSLayer(url: wmsServiceURL, layerNames: wmsServiceLayerNames)
         
         //load the WMS layer
-        wmsLayer.load {[weak self] (error) in
+        wmsLayer.load { [weak self] (error) in
             if let error = error {
                 self?.presentAlert(error: error)
             } else if wmsLayer.loadStatus == .loaded {

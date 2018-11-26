@@ -55,7 +55,7 @@ class ManualCacheViewController: UIViewController {
         params.whereClause = "req_Type = 'Tree Maintenance or Damage'"
         
         //populate features based on query
-        self.featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) {[weak self] (result: AGSFeatureQueryResult?, error: Error?) -> Void in
+        self.featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) -> Void in
             //check for error
             if let error = error {
                 self?.presentAlert(error: error)

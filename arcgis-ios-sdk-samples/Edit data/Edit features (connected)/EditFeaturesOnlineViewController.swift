@@ -61,7 +61,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //show progress hud
         SVProgressHUD.show(withStatus: "Applying edits")
         
-        (featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) -> Void in
+        (featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) in
             
             SVProgressHUD.dismiss()
             
@@ -80,7 +80,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
             lastQuery.cancel()
         }
 
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 10) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 10) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
             if let error = identifyLayerResult.error {
                 print(error)
             } else if let weakSelf = self {
@@ -246,7 +246,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.dismiss(animated: false, completion: nil)
 
         //Next, Present the popup view controller
-        self.present(self.popupsVC, animated: true) { [weak self] () -> Void in
+        self.present(self.popupsVC, animated: true) { [weak self] in
             self?.popupsVC.startEditingCurrentPopup()
         }
     }

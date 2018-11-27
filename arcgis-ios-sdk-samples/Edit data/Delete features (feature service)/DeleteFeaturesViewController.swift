@@ -58,7 +58,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     }
     
     func deleteFeature(_ feature: AGSFeature) {
-        self.featureTable.delete(feature) { [weak self] (error: Error?) -> Void in
+        self.featureTable.delete(feature) { [weak self] (error: Error?) in
             if let error = error {
                 print("Error while deleting feature : \(error.localizedDescription)")
             } else {
@@ -68,7 +68,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     }
     
     func applyEdits() {
-        self.featureTable.applyEdits { (featureEditResults: [AGSFeatureEditResult]?, error: Error?) -> Void in
+        self.featureTable.applyEdits { (featureEditResults: [AGSFeatureEditResult]?, error: Error?) in
             if let error = error {
                 self.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
             } else {
@@ -90,7 +90,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         //hide the callout
         self.mapView.callout.dismiss()
         
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
             if let error = identifyLayerResult.error {
                 print(error)
             } else if let features = identifyLayerResult.geoElements as? [AGSFeature],
@@ -112,7 +112,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         //confirmation
         let alertController = UIAlertController(title: "Are you sure you want to delete the feature", message: nil, preferredStyle: .alert)
         //action for Yes
-        let alertAction = UIAlertAction(title: "Yes", style: .default) { [weak self] (action: UIAlertAction!) -> Void in
+        let alertAction = UIAlertAction(title: "Yes", style: .default) { [weak self] (action: UIAlertAction!) in
             self?.deleteFeature(self!.selectedFeature)
         }
         alertController.addAction(alertAction)

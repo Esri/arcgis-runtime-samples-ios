@@ -82,7 +82,7 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
         queryParams.geometry = envelope
         
         //run the selection query
-        activeSelectionQuery = featureLayer.selectFeatures(withQuery: queryParams, mode: .new) { [weak self] (queryResult: AGSFeatureQueryResult?, error: Error?) -> Void in
+        activeSelectionQuery = featureLayer.selectFeatures(withQuery: queryParams, mode: .new) { [weak self] (queryResult: AGSFeatureQueryResult?, error: Error?) in
             
             if let error = error {
                 self?.presentAlert(error: error)

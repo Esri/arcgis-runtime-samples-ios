@@ -59,7 +59,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     func applyEdits() {
         SVProgressHUD.show(withStatus: "Applying edits")
         
-        featureTable.applyEdits(completion: { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) -> Void in
+        featureTable.applyEdits(completion: { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) in
             
             SVProgressHUD.dismiss()
             
@@ -86,7 +86,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         //hide the callout
         self.mapView.callout.dismiss()
         
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
             if let error = identifyLayerResult.error {
                 print(error)
             } else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
@@ -124,7 +124,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         SVProgressHUD.show(withStatus: "Updating")
         
         selectedFeature.attributes["typdamage"] = types[index]
-        featureTable.update(selectedFeature) { [weak self] (error: Error?) -> Void in
+        featureTable.update(selectedFeature) { [weak self] (error: Error?) in
             
             SVProgressHUD.dismiss()
             

@@ -33,7 +33,7 @@ class ContentTableViewController: UITableViewController {
 
     var searchEngine: SampleSearchEngine?
     
-    private var expandedRowIndices: Set<Int> = []
+    private var expandedRowIndexPaths: Set<IndexPath> = []
     
     private var bundleResourceRequest: NSBundleResourceRequest?
     private var downloadProgressView: DownloadProgressView?
@@ -58,10 +58,10 @@ class ContentTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sample = displayedSamples[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ContentTableCell") as! ContentTableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContentTableCell", for: indexPath) as! ContentTableCell
         cell.titleLabel.text = sample.name
         cell.detailLabel.text = sample.description
-        cell.isExpanded = expandedRowIndices.contains(indexPath.row)
+        cell.isExpanded = expandedRowIndexPaths.contains(indexPath)
         return cell
     }
     
@@ -103,7 +103,7 @@ class ContentTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        updateExpandedRow(indexPath, collapseIfSelected: true)
+        toggleExpansion(at: indexPath)
     }
     
     // MARK: - helpers
@@ -195,20 +195,15 @@ class ContentTableViewController: UITableViewController {
 
     }
     
-    private func updateExpandedRow(_ indexPath: IndexPath, collapseIfSelected: Bool) {
+    private func toggleExpansion(at indexPath: IndexPath) {
         //if same row selected then hide the detail view
-        if expandedRowIndices.contains(indexPath.row) {
-            if collapseIfSelected {
-                expandedRowIndices.remove(indexPath.row)
-                tableView.reloadRows(at: [indexPath], with: .automatic)
-            } else {
-                return
-            }
+        if expandedRowIndexPaths.contains(indexPath) {
+            expandedRowIndexPaths.remove(indexPath)
         } else {
             //get the two cells and update
-            expandedRowIndices.update(with: indexPath.row)
-            tableView.reloadRows(at: [indexPath], with: .automatic)
+            expandedRowIndexPaths.update(with: indexPath)
         }
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 
 }
@@ -234,7 +229,7 @@ extension ContentTableViewController: UISearchResultsUpdating {
         }
         
         // do not preserve cell expansion when loading new results
-        expandedRowIndices = []
+        expandedRowIndexPaths = []
         
         if searchController.isActive,
             let query = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),

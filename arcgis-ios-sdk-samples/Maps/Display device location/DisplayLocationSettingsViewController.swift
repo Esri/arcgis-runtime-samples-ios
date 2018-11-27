@@ -101,7 +101,7 @@ class DisplayLocationSettingsViewController: UITableViewController {
             // make sure to add the location request field in the info.plist file
             
             // attempt to start showing the device location
-            locationDisplay.start { [weak self] (error: Error?) -> Void in
+            locationDisplay.start { [weak self] (error: Error?) in
                 if let error = error {
                     // show the error if one occurred
                     self?.presentAlert(error: error)

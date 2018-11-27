@@ -186,7 +186,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     private func getDefaultParameters() {
         //get the default parameters
-        self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
+        self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
             if let error = error {
                 self?.presentAlert(error: error)
             } else {

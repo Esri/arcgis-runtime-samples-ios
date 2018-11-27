@@ -74,7 +74,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
     // MARK: - Route logic
     
     func getDefaultParameters() {
-        self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
+        self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
             if let error = error {
                 self?.presentAlert(error: error)
             } else {
@@ -120,7 +120,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         
         SVProgressHUD.show(withStatus: "Routing")
         
-        self.routeTask.solveRoute(with: self.routeParameters) { [weak self] (routeResult: AGSRouteResult?, error: Error?) -> Void in
+        self.routeTask.solveRoute(with: self.routeParameters) { [weak self] (routeResult: AGSRouteResult?, error: Error?) in
             
             SVProgressHUD.dismiss()
             
@@ -207,10 +207,10 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         self.directionsBottomConstraint.constant = self.isDirectionsListVisible ? -115 : 0
         UIView.animate(
             withDuration: 0.3,
-            animations: { [weak self] () -> Void in
+            animations: { [weak self] in
                 self?.view.layoutIfNeeded()
             },
-            completion: { [weak self] (finished) -> Void in
+            completion: { [weak self] (finished) in
                 self?.isDirectionsListVisible.toggle()
             }
         )
@@ -220,10 +220,10 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         self.directionsBottomConstraint.constant = visible ? -115 : -150
         UIView.animate(
             withDuration: 0.3,
-            animations: { [weak self] () -> Void in
+            animations: { [weak self] in
                 self?.view.layoutIfNeeded()
             },
-            completion: { [weak self] (finished) -> Void in
+            completion: { [weak self] (finished) in
                 if !visible {
                     self?.isDirectionsListVisible = false
                 }

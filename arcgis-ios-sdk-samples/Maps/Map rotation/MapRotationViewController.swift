@@ -37,7 +37,7 @@ class MapRotationViewController: UIViewController {
         self.mapView.map = self.map
         
         //update the slider value when the user rotates by pinching
-        self.mapView.viewpointChangedHandler = { [weak self] () in
+        self.mapView.viewpointChangedHandler = { [weak self] in 
             DispatchQueue.main.async {
                 self?.mapViewpointDidChange()
             }

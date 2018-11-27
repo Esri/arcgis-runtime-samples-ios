@@ -16,44 +16,53 @@
 import UIKit
 import ArcGIS
 
-class RouteParametersViewController: UIViewController {
+class RouteParametersViewController: UITableViewController {
 
-    @IBOutlet var findBestSequenceSwitch: UISwitch!
-    @IBOutlet var preservceFirstStopSwitch: UISwitch!
-    @IBOutlet var preservceLastStopSwitch: UISwitch!
+    @IBOutlet var findBestSequenceSwitch: UISwitch?
+    @IBOutlet var preserveFirstStopSwitch: UISwitch?
+    @IBOutlet var preserveLastStopSwitch: UISwitch?
     
-    var routeParameters: AGSRouteParameters!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.setupUI()
-    }
-    
-    func setupUI() {
-        if self.routeParameters != nil {
-            self.findBestSequenceSwitch.isOn = self.routeParameters.findBestSequence
-            self.preservceFirstStopSwitch.isOn = self.routeParameters.preserveFirstStop
-            self.preservceLastStopSwitch.isOn = self.routeParameters.preserveLastStop
-            self.enableSubSwitches(self.routeParameters.findBestSequence)
+    var routeParameters: AGSRouteParameters? {
+        didSet {
+            setupUI()
         }
     }
     
-    func enableSubSwitches(_ enable: Bool) {
-        self.preservceLastStopSwitch.isEnabled = enable
-        self.preservceFirstStopSwitch.isEnabled = enable
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+    }
+    
+    private func setupUI() {
+        if let routeParameters = routeParameters {
+            findBestSequenceSwitch?.setOn(routeParameters.findBestSequence, animated: true)
+            
+            preserveFirstStopSwitch?.isEnabled = routeParameters.findBestSequence
+            preserveLastStopSwitch?.isEnabled = routeParameters.findBestSequence
+            
+            if routeParameters.findBestSequence {
+                preserveFirstStopSwitch?.setOn(routeParameters.preserveFirstStop, animated: true)
+                preserveLastStopSwitch?.setOn(routeParameters.preserveLastStop, animated: true)
+            } else {
+                preserveFirstStopSwitch?.setOn(false, animated: true)
+                preserveLastStopSwitch?.setOn(false, animated: true)
+            }
+        }
     }
 
     // MARK: - Actions
     
     @IBAction func switchValueChanged(_ sender: UISwitch) {
-        if sender == self.findBestSequenceSwitch {
-            self.routeParameters.findBestSequence = sender.isOn
-            self.enableSubSwitches(sender.isOn)
-        } else if sender == self.preservceFirstStopSwitch {
-            self.routeParameters.preserveFirstStop = self.preservceFirstStopSwitch.isOn
-        } else {
-            self.routeParameters.preserveLastStop = self.preservceLastStopSwitch.isOn
+        switch sender {
+        case findBestSequenceSwitch:
+            routeParameters?.findBestSequence = sender.isOn
+            setupUI()
+        case preserveFirstStopSwitch:
+            routeParameters?.preserveFirstStop = preserveFirstStopSwitch?.isOn == true
+        case preserveLastStopSwitch:
+            routeParameters?.preserveLastStop = preserveLastStopSwitch?.isOn == true
+        default:
+            break
         }
     }
 }

@@ -2140,10 +2140,10 @@
 		3EC39C191C9A5770003F6459 /* Route around barriers */ = {
 			isa = PBXGroup;
 			children = (
+				3EC39C201C9A59D5003F6459 /* RouteAroundBarriers.storyboard */,
 				3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */,
 				3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */,
 				3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */,
-				3EC39C201C9A59D5003F6459 /* RouteAroundBarriers.storyboard */,
 			);
 			path = "Route around barriers";
 			sourceTree = "<group>";

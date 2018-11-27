@@ -37,7 +37,7 @@ class MILLegendTableViewController: UITableViewController {
             } else {
                 //else if no sublayers fetch legend info
                 self.orderArray.append(layer)
-                layer.fetchLegendInfos(completion: { [weak self] (legendInfos: [AGSLegendInfo]?, error: Error?) -> Void in
+                layer.fetchLegendInfos(completion: { [weak self] (legendInfos: [AGSLegendInfo]?, error: Error?) in
 
                     if let error = error {
                         print(error)
@@ -79,7 +79,7 @@ class MILLegendTableViewController: UITableViewController {
         let legendInfo = legendInfos[indexPath.row]
 
         cell.textLabel?.text = legendInfo.name
-        legendInfo.symbol?.createSwatch(completion: { (image: UIImage?, error: Error?) -> Void in
+        legendInfo.symbol?.createSwatch(completion: { (image: UIImage?, error: Error?) in
             if let updateCell = tableView.cellForRow(at: indexPath) {
                 updateCell.imageView?.image = image
                 updateCell.setNeedsLayout()

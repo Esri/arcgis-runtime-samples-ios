@@ -115,7 +115,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     
     @IBAction func saveAsAction(_ sender: AnyObject) {
         self.portal = AGSPortal(url: URL(string: "https://www.arcgis.com")!, loginRequired: true)
-        self.portal.load { (error) -> Void in
+        self.portal.load { (error) in
             if let error = error {
                 print(error)
             } else {
@@ -172,14 +172,14 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         //set the initial viewpoint from map view
         self.mapView.map?.initialViewpoint = self.mapView.currentViewpoint(with: AGSViewpointType.centerAndScale)
         
-        self.mapView.exportImage { [weak self] (image: UIImage?, error: Error?) -> Void in
+        self.mapView.exportImage { [weak self] (image: UIImage?, error: Error?) in
             
             if let weakSelf = self {
                 //crop the image from the center
                 //also to cut on the size
                 let croppedImage: UIImage? = image?.croppedImage(CGSize(width: 200, height: 200))
                 
-                weakSelf.mapView.map?.save(as: title, portal: weakSelf.portal!, tags: tags, folder: nil, itemDescription: itemDescription, thumbnail: croppedImage, forceSaveToSupportedVersion: true) { [weak self] (error) -> Void in
+                weakSelf.mapView.map?.save(as: title, portal: weakSelf.portal!, tags: tags, folder: nil, itemDescription: itemDescription, thumbnail: croppedImage, forceSaveToSupportedVersion: true) { [weak self] (error) in
                     //dismiss progress hud
                     SVProgressHUD.dismiss()
                     if let error = error {

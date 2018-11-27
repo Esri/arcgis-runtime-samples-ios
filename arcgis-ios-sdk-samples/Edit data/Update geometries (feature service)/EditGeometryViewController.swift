@@ -59,13 +59,13 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     func setToolbarVisibility(visible: Bool) {
         toolbarBottomConstraint.constant = visible ? 0 : -44 - view.safeAreaInsets.bottom
         
-        UIView.animate(withDuration: 0.3, animations: { [weak self] () -> Void in
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
             self?.view.layoutIfNeeded()
         }) 
     }
     
     func applyEdits() {
-        self.featureTable.applyEdits(completion: { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) -> Void in
+        self.featureTable.applyEdits(completion: { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) in
             if let error = error {
                 self?.presentAlert(error: error)
             } else {
@@ -86,7 +86,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         //hide the callout
         self.mapView.callout.dismiss()
         
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
             if let error = identifyLayerResult.error {
                 print(error)
             } else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
@@ -131,7 +131,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         if let newGeometry = self.mapView.sketchEditor?.geometry {
 
             self.selectedFeature.geometry = newGeometry
-            self.featureTable.update(self.selectedFeature, completion: { [weak self] (error: Error?) -> Void in
+            self.featureTable.update(self.selectedFeature, completion: { [weak self] (error: Error?) in
                 if let error = error {
                     self?.presentAlert(error: error)
                     

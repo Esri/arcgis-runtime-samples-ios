@@ -121,10 +121,10 @@ class ExportTilesViewController: UIViewController {
         //get the job
         job = exportTask.exportTileCacheJob(with: params, downloadFileURL: downloadFileURL)
         //run the job
-        job.start(statusHandler: { (status: AGSJobStatus) -> Void in
+        job.start(statusHandler: { (status: AGSJobStatus) in
             //show job status
             SVProgressHUD.show(withStatus: status.statusString())
-        }, completion: { [weak self] (result: AnyObject?, error: Error?) -> Void in
+        }, completion: { [weak self] (result: AnyObject?, error: Error?) in
             
             //hide progress view
             SVProgressHUD.dismiss()

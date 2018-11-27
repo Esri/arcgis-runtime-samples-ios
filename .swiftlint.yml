@@ -7,6 +7,10 @@ custom_rules:
     name: WGS84 Spatial Reference
     regex: AGSSpatialReference\(wkid:\s*(4326)\)
     message: "Use AGSSpatialReference.wgs84() instead."
+  simple_closure:
+    name: Simple Closure
+    regex: (-> Void in)|(\(\) in)
+    message: "Void return and empty arguments should be avoided in closures."
   closure_opening_space:
     name: Closure Opening Space
     regex: \{\[|\{\s{2,}\[

@@ -87,7 +87,7 @@ class FindRouteViewController: UIViewController {
     //method to get the default parameters for the route task
     func getDefaultParameters() {
         
-        self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
+        self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
             if let error = error {
                 print(error)
             } else {
@@ -123,7 +123,7 @@ class FindRouteViewController: UIViewController {
         stop2.name = "Destination"
         self.routeParameters.setStops([stop1, stop2])
         
-        self.routeTask.solveRoute(with: self.routeParameters) { (routeResult: AGSRouteResult?, error: Error?) -> Void in
+        self.routeTask.solveRoute(with: self.routeParameters) { (routeResult: AGSRouteResult?, error: Error?) in
             if let error = error {
                 print(error)
             } else if let route = routeResult?.routes.first {

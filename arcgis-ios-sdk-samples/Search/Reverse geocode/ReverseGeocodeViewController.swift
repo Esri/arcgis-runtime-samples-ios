@@ -72,7 +72,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.graphicsOverlay.graphics.add(graphic)
             
         //reverse geocode
-        self.cancelable = self.locatorTask.reverseGeocode(withLocation: normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) -> Void in
+        self.cancelable = self.locatorTask.reverseGeocode(withLocation: normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) in
             if let error = error as NSError? {
                 if error.code != NSUserCancelledError { //user canceled error
                     self?.presentAlert(error: error)

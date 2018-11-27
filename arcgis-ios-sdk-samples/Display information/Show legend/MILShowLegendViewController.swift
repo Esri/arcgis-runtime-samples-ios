@@ -49,7 +49,7 @@ class MILShowLegendViewController: UIViewController, UIAdaptivePresentationContr
         //add feature layer to the map
         self.map.operationalLayers.add(featureLayer)
         
-        self.map.load { [weak self] (error: Error?) -> Void in
+        self.map.load { [weak self] (error: Error?) in
             if error == nil {
                 self?.legendBBI.isEnabled = true
             }

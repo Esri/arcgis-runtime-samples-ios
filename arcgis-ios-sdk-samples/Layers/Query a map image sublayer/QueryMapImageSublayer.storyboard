@@ -23,22 +23,22 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCv-05-Nj0">
-                                <rect key="frame" x="8" y="28" width="359" height="49"/>
+                                <rect key="frame" x="8" y="28" width="359" height="46"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cgR-8z-ZuK">
-                                    <rect key="frame" x="0.0" y="0.0" width="359" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="359" height="46"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wbD-0d-BEI">
-                                            <rect key="frame" x="8" y="8" width="343" height="33"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wbD-0d-BEI">
+                                            <rect key="frame" x="8" y="12.5" width="343" height="27"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POP2000 &gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBv-OZ-RE4">
-                                                    <rect key="frame" x="0.0" y="0.0" width="89.5" height="33"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="POP2000 &gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBv-OZ-RE4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="89.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="100000" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jkh-zh-w1R">
-                                                    <rect key="frame" x="97.5" y="0.0" width="190.5" height="33"/>
+                                                    <rect key="frame" x="97.5" y="-4.5" width="190.5" height="30"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -48,7 +48,7 @@
                                                     </connections>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Co-ma-VW1">
-                                                    <rect key="frame" x="296" y="0.0" width="47" height="33"/>
+                                                    <rect key="frame" x="296" y="-6" width="47" height="33"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <state key="normal" title="Query"/>
                                                     <connections>
@@ -56,16 +56,12 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="MBv-OZ-RE4" firstAttribute="firstBaseline" secondItem="Jkh-zh-w1R" secondAttribute="firstBaseline" id="0yA-Mq-3rP"/>
-                                                <constraint firstItem="Jkh-zh-w1R" firstAttribute="firstBaseline" secondItem="9Co-ma-VW1" secondAttribute="firstBaseline" id="Hid-wy-Mxb"/>
-                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Jkh-zh-w1R" firstAttribute="top" secondItem="cgR-8z-ZuK" secondAttribute="top" constant="8" id="CeK-EF-wJ9"/>
+                                        <constraint firstAttribute="bottom" secondItem="Jkh-zh-w1R" secondAttribute="bottom" constant="8" id="Lnh-8O-zdz"/>
                                         <constraint firstAttribute="trailing" secondItem="wbD-0d-BEI" secondAttribute="trailing" constant="8" id="T7A-PN-iPE"/>
-                                        <constraint firstItem="wbD-0d-BEI" firstAttribute="top" secondItem="cgR-8z-ZuK" secondAttribute="top" constant="8" id="VV4-wH-lym"/>
-                                        <constraint firstAttribute="bottom" secondItem="wbD-0d-BEI" secondAttribute="bottom" constant="8" id="mmg-Yd-HSr"/>
                                         <constraint firstItem="wbD-0d-BEI" firstAttribute="leading" secondItem="cgR-8z-ZuK" secondAttribute="leading" constant="8" id="yRj-b3-ceB"/>
                                     </constraints>
                                 </view>

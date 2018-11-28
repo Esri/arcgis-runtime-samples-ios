@@ -137,7 +137,7 @@
                                 <action selector="cancelAction:" destination="8cL-Af-ycY" id="Tbs-4U-YSa"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="gFz-M8-OCs">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="gFz-M8-OCs">
                             <connections>
                                 <action selector="analyzeAction" destination="8cL-Af-ycY" id="4lW-OT-ohx"/>
                             </connections>

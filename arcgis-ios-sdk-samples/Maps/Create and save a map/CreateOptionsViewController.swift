@@ -22,12 +22,12 @@ protocol CreateOptionsVCDelegate: AnyObject {
 class CreateOptionsViewController: UITableViewController {
     
     private let basemaps: [AGSBasemap] = [.streets(), .imagery(), .topographic(), .oceans()]
-    private var layers: [AGSLayer] = {
-        let layerURLStrings = [
-            "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer",
-            "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Census/MapServer"
+    private let layers: [AGSLayer] = {
+        let layerURLs = [
+            URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!,
+            URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Census/MapServer")!
         ]
-        return layerURLStrings.map { AGSArcGISMapImageLayer(url: URL(string: $0)!) }
+        return layerURLs.map { AGSArcGISMapImageLayer(url: $0) }
     }()
     
     private var selectedBasemapIndex: Int = 0
@@ -50,11 +50,10 @@ class CreateOptionsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OptionCell", for: indexPath)
         switch indexPath.section {
         case 0:
-            cell = tableView.dequeueReusableCell(withIdentifier: "CreateBasemapCell", for: indexPath)
-            let basemap = self.basemaps[indexPath.row]
+            let basemap = basemaps[indexPath.row]
             cell.textLabel?.text = basemap.name
             
             //accesory view
@@ -64,7 +63,6 @@ class CreateOptionsViewController: UITableViewController {
                 cell.accessoryType = .none
             }
         default:
-            cell = tableView.dequeueReusableCell(withIdentifier: "CreateLayerCell", for: indexPath)
             let layer = layers[indexPath.row]
             cell.textLabel?.text = layer.name
             
@@ -113,7 +111,7 @@ class CreateOptionsViewController: UITableViewController {
         let basemap = basemaps[selectedBasemapIndex].copy() as! AGSBasemap
         
         //create an array of the selected operational layers
-        let selectedLayers = selectedLayerIndices.sorted().map { layers[$0].copy() as! AGSLayer }
+        let selectedLayers = selectedLayerIndices.map { layers[$0].copy() as! AGSLayer }
         
         delegate?.createOptionsViewController(self, didSelectBasemap: basemap, layers: selectedLayers)
     }

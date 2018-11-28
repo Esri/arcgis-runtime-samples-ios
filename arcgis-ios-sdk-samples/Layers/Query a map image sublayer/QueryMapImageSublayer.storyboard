@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rtM-Ml-JFc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rtM-Ml-JFc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,7 +13,7 @@
         <!--Query Map Image Sublayer View Controller-->
         <scene sceneID="A23-Wi-nqR">
             <objects>
-                <viewController id="rtM-Ml-JFc" customClass="QueryMapImageSublayerViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rtM-Ml-JFc" customClass="QueryMapImageSublayerViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1s2-zU-GzG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,31 +28,41 @@
                                     <rect key="frame" x="0.0" y="0.0" width="359" height="46"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Population 2000 &gt;" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jkh-zh-w1R">
-                                            <rect key="frame" x="8" y="8" width="293" height="30"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="rtM-Ml-JFc" id="xVF-g1-7SJ"/>
-                                            </connections>
-                                        </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Co-ma-VW1">
-                                            <rect key="frame" x="309" y="7" width="42" height="30"/>
-                                            <state key="normal" title="Query"/>
-                                            <connections>
-                                                <action selector="query:" destination="rtM-Ml-JFc" eventType="touchUpInside" id="T1j-k2-zy8"/>
-                                            </connections>
-                                        </button>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wbD-0d-BEI">
+                                            <rect key="frame" x="8" y="12.5" width="343" height="27"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="POP2000 &gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBv-OZ-RE4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="89.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="100000" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jkh-zh-w1R">
+                                                    <rect key="frame" x="97.5" y="-4.5" width="190.5" height="30"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="rtM-Ml-JFc" id="xVF-g1-7SJ"/>
+                                                    </connections>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Co-ma-VW1">
+                                                    <rect key="frame" x="296" y="-6" width="47" height="33"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <state key="normal" title="Query"/>
+                                                    <connections>
+                                                        <action selector="query:" destination="rtM-Ml-JFc" eventType="touchUpInside" id="T1j-k2-zy8"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Jkh-zh-w1R" secondAttribute="bottom" id="LKR-lZ-U0K"/>
-                                        <constraint firstItem="Jkh-zh-w1R" firstAttribute="top" secondItem="cgR-8z-ZuK" secondAttribute="top" constant="8" id="YN3-CA-wLR"/>
-                                        <constraint firstItem="Jkh-zh-w1R" firstAttribute="leading" secondItem="cgR-8z-ZuK" secondAttribute="leading" constant="8" id="bfk-XV-0wb"/>
-                                        <constraint firstAttribute="trailing" secondItem="9Co-ma-VW1" secondAttribute="trailing" constant="8" id="mD0-5h-N5A"/>
-                                        <constraint firstItem="9Co-ma-VW1" firstAttribute="leading" secondItem="Jkh-zh-w1R" secondAttribute="trailing" constant="8" symbolic="YES" id="qdO-qC-e0w"/>
-                                        <constraint firstItem="9Co-ma-VW1" firstAttribute="baseline" secondItem="Jkh-zh-w1R" secondAttribute="baseline" id="uj5-IP-LdB"/>
+                                        <constraint firstItem="Jkh-zh-w1R" firstAttribute="top" secondItem="cgR-8z-ZuK" secondAttribute="top" constant="8" id="CeK-EF-wJ9"/>
+                                        <constraint firstAttribute="bottom" secondItem="Jkh-zh-w1R" secondAttribute="bottom" constant="8" id="Lnh-8O-zdz"/>
+                                        <constraint firstAttribute="trailing" secondItem="wbD-0d-BEI" secondAttribute="trailing" constant="8" id="T7A-PN-iPE"/>
+                                        <constraint firstItem="wbD-0d-BEI" firstAttribute="leading" secondItem="cgR-8z-ZuK" secondAttribute="leading" constant="8" id="yRj-b3-ceB"/>
                                     </constraints>
                                 </view>
                                 <constraints>

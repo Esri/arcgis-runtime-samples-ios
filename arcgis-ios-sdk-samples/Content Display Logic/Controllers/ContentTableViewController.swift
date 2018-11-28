@@ -229,7 +229,7 @@ extension ContentTableViewController: UISearchResultsUpdating {
         }
         
         // do not preserve cell expansion when loading new results
-        expandedRowIndexPaths = []
+        expandedRowIndexPaths.removeAll()
         
         if searchController.isActive,
             let query = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),

@@ -22,14 +22,7 @@ class ContentTableCell: UITableViewCell {
     
     var isExpanded: Bool = false {
         didSet {
-            guard stackView.arrangedSubviews.contains(detailLabel) != isExpanded else {
-                return
-            }
-            if isExpanded {
-                stackView.addArrangedSubview(detailLabel)
-            } else {
-                detailLabel.removeFromSuperview()
-            }
+            detailLabel.isHidden = !isExpanded
         }
     }
     

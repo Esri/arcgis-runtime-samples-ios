@@ -34,20 +34,13 @@ class RouteParametersViewController: UITableViewController {
     }
     
     private func setupUI() {
-        if let routeParameters = routeParameters {
-            findBestSequenceSwitch?.setOn(routeParameters.findBestSequence, animated: true)
-            
-            preserveFirstStopSwitch?.isEnabled = routeParameters.findBestSequence
-            preserveLastStopSwitch?.isEnabled = routeParameters.findBestSequence
-            
-            if routeParameters.findBestSequence {
-                preserveFirstStopSwitch?.setOn(routeParameters.preserveFirstStop, animated: true)
-                preserveLastStopSwitch?.setOn(routeParameters.preserveLastStop, animated: true)
-            } else {
-                preserveFirstStopSwitch?.setOn(false, animated: true)
-                preserveLastStopSwitch?.setOn(false, animated: true)
-            }
+        guard let routeParameters = routeParameters else {
+            return
         }
+        
+        findBestSequenceSwitch?.isOn = routeParameters.findBestSequence
+        preserveFirstStopSwitch?.isOn = routeParameters.preserveFirstStop
+        preserveLastStopSwitch?.isOn = routeParameters.preserveLastStop
     }
 
     // MARK: - Actions
@@ -56,13 +49,26 @@ class RouteParametersViewController: UITableViewController {
         switch sender {
         case findBestSequenceSwitch:
             routeParameters?.findBestSequence = sender.isOn
+            if sender.isOn {
+                tableView?.insertSections([1], with: .fade)
+            } else {
+                tableView?.deleteSections([1], with: .fade)
+            }
             setupUI()
         case preserveFirstStopSwitch:
-            routeParameters?.preserveFirstStop = preserveFirstStopSwitch?.isOn == true
+            routeParameters?.preserveFirstStop = sender.isOn
         case preserveLastStopSwitch:
-            routeParameters?.preserveLastStop = preserveLastStopSwitch?.isOn == true
+            routeParameters?.preserveLastStop = sender.isOn
         default:
             break
         }
     }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        if routeParameters?.findBestSequence == false {
+            return 1
+        }
+        return super.numberOfSections(in: tableView)
+    }
+
 }

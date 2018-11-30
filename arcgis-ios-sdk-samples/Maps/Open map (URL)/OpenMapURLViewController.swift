@@ -44,7 +44,7 @@ class OpenMapURLViewController: UIViewController {
                  portalID: "01f052c8995e4b9e889d73c3e210ebe3"),
         MapAtURL(title: "Geology of United States",
                  thumbnailImage: #imageLiteral(resourceName: "OpenMapURLThumbnail3"),
-                 portalID: "3a3e6324b0e74b6abacf34cce2499d8f")
+                 portalID: "92ad152b9da94dee89b9e387dfe21acd")
     ]
 
     override func viewDidLoad() {

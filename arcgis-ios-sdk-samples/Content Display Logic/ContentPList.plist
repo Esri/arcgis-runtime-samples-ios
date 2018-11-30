@@ -1207,6 +1207,14 @@
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to identify geoelements in a scene layer.</string>
 			</dict>
+			<dict>
+				<key>descriptionText</key>
+				<string>Change the appearance of the atmosphere in a scene.</string>
+				<key>storyboardName</key>
+				<string>ChangeAtmosphereEffect</string>
+				<key>displayName</key>
+				<string>Change atmosphere effect</string>
+			</dict>
 		</array>
 	</dict>
 </array>

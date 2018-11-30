@@ -3232,7 +3232,6 @@
 				TargetAttributes = {
 					3E23A9DF1AFC28F6002E2214 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 75Z67E6SV2;
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
@@ -3495,7 +3494,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "echo $BUILT_PRODUCTS_DIR\n#readme for the project to skip\nDEFAULT_README=$SRCROOT/README.md\n#find all README.md files in the project\nfind ${SRCROOT} -name \"README.md\" | while read file\ndo\n    #skip if its the default readme for project\n    if [ \"$file\" = \"$DEFAULT_README\" ]\n    then\n        echo $BUILT_PRODUCTS_DIR\n        continue\n    fi\n    #extract the folder name from the path\n    FILE_PATH=$(dirname \"$file\")\n    FOLDER_NAME=$(basename \"$FILE_PATH\")\n    #path of the folder to be created for each readme\n    BUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/${FOLDER_NAME}\n\n    #for legacy setting the build folder is also within the SRCROOT folder\n    #check if source path is equal to destination then skip\n    if [ \"$file\" != \"${BUILD_APP_DIR}/README.md\" ]\n    then\n        mkdir -p \"${BUILD_APP_DIR}\"\n        cp \"${file}\" \"${BUILD_APP_DIR}/README.md\"\n    fi\ndone\n";
+			shellScript = "echo $BUILT_PRODUCTS_DIR\n#readme for the project to skip\nDEFAULT_README=$SRCROOT/README.md\n#find all README.md files in the project\nfind ${SRCROOT} -name \"README.md\" | while read file\ndo\n    #skip if its the default readme for project\n    if [ \"$file\" = \"$DEFAULT_README\" ]\n    then\n        echo $BUILT_PRODUCTS_DIR\n        continue\n    fi\n    #extract the folder name from the path\n    FILE_PATH=$(dirname \"$file\")\n    FOLDER_NAME=$(basename \"$FILE_PATH\")\n    #path of the folder to be created for each readme\n    BUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/${FOLDER_NAME}\n\n    #for legacy setting the build folder is also within the SRCROOT folder\n    #check if source path is equal to destination then skip\n    if [ \"$file\" != \"${BUILD_APP_DIR}/README.md\" ]\n    then\n        mkdir -p \"${BUILD_APP_DIR}\"\n        cp \"${file}\" \"${BUILD_APP_DIR}/README.md\"\n    fi\ndone";
 		};
 		4CBDB3192190E88F006E5D39 /* Lint Code */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3872,7 +3871,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 75Z67E6SV2;
+				DEVELOPMENT_TEAM = "";
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3901,7 +3900,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 75Z67E6SV2;
+				DEVELOPMENT_TEAM = "";
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (

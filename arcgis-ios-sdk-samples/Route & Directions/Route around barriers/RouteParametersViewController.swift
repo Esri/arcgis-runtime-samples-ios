@@ -49,11 +49,19 @@ class RouteParametersViewController: UITableViewController {
         switch sender {
         case findBestSequenceSwitch:
             routeParameters?.findBestSequence = sender.isOn
-            if sender.isOn {
-                tableView?.insertSections([1], with: .fade)
-            } else {
-                tableView?.deleteSections([1], with: .fade)
-            }
+            let sections: IndexSet = [1]
+            tableView.performBatchUpdates({
+                if sender.isOn {
+                    tableView?.insertSections(sections, with: .fade)
+                } else {
+                    tableView?.deleteSections(sections, with: .fade)
+                }
+            }, completion: { (finished) in
+                guard finished else {
+                    return
+                }
+                self.preferredContentSize.height = self.tableView.contentSize.height
+            })
             setupUI()
         case preserveFirstStopSwitch:
             routeParameters?.preserveFirstStop = sender.isOn
@@ -65,10 +73,11 @@ class RouteParametersViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
+        let superCount = super.numberOfSections(in: tableView)
         if routeParameters?.findBestSequence == false {
-            return 1
+            return superCount - 1
         }
-        return super.numberOfSections(in: tableView)
+        return superCount
     }
 
 }

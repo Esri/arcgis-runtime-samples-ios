@@ -33,7 +33,7 @@ class ContentTableViewController: UITableViewController {
 
     var searchEngine: SampleSearchEngine?
     
-    private var expandedRowIndex: Int = -1
+    private var expandedRowIndexPaths: Set<IndexPath> = []
     
     private var bundleResourceRequest: NSBundleResourceRequest?
     private var downloadProgressView: DownloadProgressView?
@@ -49,36 +49,23 @@ class ContentTableViewController: UITableViewController {
         self.downloadProgressView = downloadProgressView
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+    // MARK: - UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayedSamples.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let reuseIdentifier = "ContentTableCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as! ContentTableCell
-
         let sample = displayedSamples[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContentTableCell", for: indexPath) as! ContentTableCell
         cell.titleLabel.text = sample.name
-        
-        if self.expandedRowIndex == indexPath.row {
-            cell.detailLabel.text = sample.description
-        } else {
-            cell.detailLabel.text = nil
-        }
-        
-        cell.infoButton.addTarget(self, action: #selector(ContentTableViewController.expandCell(_:)), for: .touchUpInside)
-        cell.infoButton.tag = indexPath.row
-
-        cell.backgroundColor = .clear
-        
+        cell.detailLabel.text = sample.description
+        cell.isExpanded = expandedRowIndexPaths.contains(indexPath)
         return cell
     }
+    
+    // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //hide keyboard if visible
@@ -115,7 +102,13 @@ class ContentTableViewController: UITableViewController {
         }
     }
     
-    func downloadResource(for sample: Sample, at indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        toggleExpansion(at: indexPath)
+    }
+    
+    // MARK: - helpers
+    
+    private func downloadResource(for sample: Sample, at indexPath: IndexPath) {
         
         guard let bundleResourceRequest = bundleResourceRequest else {
             return
@@ -175,9 +168,6 @@ class ContentTableViewController: UITableViewController {
     
     private func showSample(indexPath: IndexPath, sample: Sample) {
         
-        //expand the selected cell
-        updateExpandedRow(indexPath, collapseIfSelected: false)
-        
         let storyboard = UIStoryboard(name: sample.storyboardName, bundle: .main)
         let controller = storyboard.instantiateInitialViewController()!
         controller.title = sample.name
@@ -205,26 +195,15 @@ class ContentTableViewController: UITableViewController {
 
     }
     
-    @objc
-    func expandCell(_ sender: UIButton) {
-        updateExpandedRow(IndexPath(row: sender.tag, section: 0), collapseIfSelected: true)
-    }
-    
-    private func updateExpandedRow(_ indexPath: IndexPath, collapseIfSelected: Bool) {
+    private func toggleExpansion(at indexPath: IndexPath) {
         //if same row selected then hide the detail view
-        if indexPath.row == expandedRowIndex {
-            if collapseIfSelected {
-                expandedRowIndex = -1
-                tableView.reloadRows(at: [indexPath], with: .fade)
-            } else {
-                return
-            }
+        if expandedRowIndexPaths.contains(indexPath) {
+            expandedRowIndexPaths.remove(indexPath)
         } else {
             //get the two cells and update
-            let previouslyExpandedIndexPath = IndexPath(row: expandedRowIndex, section: 0)
-            expandedRowIndex = indexPath.row
-            tableView.reloadRows(at: [previouslyExpandedIndexPath, indexPath], with: .fade)
+            expandedRowIndexPaths.update(with: indexPath)
         }
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 
 }
@@ -248,6 +227,9 @@ extension ContentTableViewController: UISearchResultsUpdating {
         guard let searchEngine = searchEngine else {
             return
         }
+        
+        // do not preserve cell expansion when loading new results
+        expandedRowIndexPaths.removeAll()
         
         if searchController.isActive,
             let query = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),

@@ -24,12 +24,9 @@
                             </view>
                             <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyN-P3-x5p">
                                 <rect key="frame" x="0.0" y="692" width="414" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="UYH-H8-pDQ"/>
-                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="X9z-MH-seV"/>
-                                    <barButtonItem title="Change Effect" id="caH-Vi-LeO">
+                                    <barButtonItem title="Change Effect" style="plain" id="caH-Vi-LeO">
                                         <connections>
                                             <action selector="changeEffectAction:" destination="63G-ME-4qp" id="sgV-nT-zEp"/>
                                         </connections>

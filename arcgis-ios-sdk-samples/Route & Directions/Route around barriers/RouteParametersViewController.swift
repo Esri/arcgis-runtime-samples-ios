@@ -33,6 +33,12 @@ class RouteParametersViewController: UITableViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+        preferredContentSize.height = tableView.contentSize.height
+    }
+    
     private func setupUI() {
         guard let routeParameters = routeParameters else {
             return

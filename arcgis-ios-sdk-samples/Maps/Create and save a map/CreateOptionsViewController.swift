@@ -101,10 +101,6 @@ class CreateOptionsViewController: UITableViewController {
 
     // MARK: - Actions
     
-    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
-        dismiss(animated: true)
-    }
-    
     @IBAction private func doneAction() {
 
         //create a basemap with the selected basemap index

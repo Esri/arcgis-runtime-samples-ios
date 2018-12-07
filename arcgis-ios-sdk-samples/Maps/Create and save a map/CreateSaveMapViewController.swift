@@ -37,7 +37,6 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     
     @IBOutlet private weak var mapView: AGSMapView!
     
-    private let webmapURL = "https://www.arcgis.com/home/webmap/viewer.html?webmap="
     private var portal: AGSPortal?
     
     override func viewDidLoad() {
@@ -55,8 +54,8 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
         AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
         
-        let map = AGSMap(basemap: .imagery())
-        mapView.map = map
+        // initially show the map creation UI
+        performSegue(withIdentifier: "CreateNewSegue", sender: self)
     }
     
     private func showSuccess() {
@@ -65,11 +64,11 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         
         let okAction = UIAlertAction(title: "OK", style: .cancel)
         
-        let openAction = UIAlertAction(title: "Open In Safari", style: .default) { [weak self] _ in
-            if let self = self,
-                let itemID = self.mapView.map?.item?.itemID,
-                let url = URL(string: "\(self.webmapURL)\(itemID)") {
-                UIApplication.shared.open(url, options: [:])
+        let openAction = UIAlertAction(title: "Open In Safari", style: .default) { _ in
+            if let itemID = self.mapView.map?.item?.itemID,
+                var components = URLComponents(string: "https://www.arcgis.com/home/webmap/viewer.html") {
+                components.queryItems = [URLQueryItem(name: "webmap", value: itemID)]
+                UIApplication.shared.open(components.url!, options: [:])
             }
         }
         
@@ -145,11 +144,13 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
                 //dismiss progress hud
                 SVProgressHUD.dismiss()
                 if let error = error {
-                    self?.presentAlert(error: error)
+                    saveAsViewController.presentAlert(error: error)
+                    saveAsViewController.dismiss(animated: true)
                 } else {
-                    self?.showSuccess()
+                    saveAsViewController.dismiss(animated: true) {
+                        self?.showSuccess()
+                    }
                 }
-                saveAsViewController.dismiss(animated: true)
             }
         }
     }

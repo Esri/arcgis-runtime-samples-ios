@@ -31,7 +31,7 @@
                                     <barButtonItem title="New" id="nTf-dP-Gn9">
                                         <connections>
                                             <action selector="newAction" destination="oSL-y7-4lj" id="nG7-Sz-O2W"/>
-                                            <segue destination="iro-gz-9sV" kind="presentation" modalPresentationStyle="formSheet" id="16f-LT-pfg"/>
+                                            <segue destination="iro-gz-9sV" kind="presentation" identifier="CreateNewSegue" modalPresentationStyle="formSheet" id="16f-LT-pfg"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="fpk-2g-NJf"/>
@@ -107,11 +107,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Create A Map" id="fpE-NA-Y1o">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Fah-pd-IOf">
-                            <connections>
-                                <action selector="cancelAction:" destination="Mrh-2f-MIb" id="gAX-tY-aEV"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="n84-WS-bCX">
                             <connections>
                                 <action selector="doneAction" destination="Mrh-2f-MIb" id="gdm-Vb-3a9"/>

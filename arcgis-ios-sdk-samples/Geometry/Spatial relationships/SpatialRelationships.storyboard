@@ -53,10 +53,10 @@
             </objects>
             <point key="canvasLocation" x="29.600000000000001" y="-48.125937031484263"/>
         </scene>
-        <!--Spatial Relationships Table View Controller-->
+        <!--Table View Controller-->
         <scene sceneID="XNo-LX-LJg">
             <objects>
-                <tableViewController storyboardIdentifier="SpatialRelationshipsTableViewController" id="0OM-9T-R5c" customClass="SpatialRelationshipsTableViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SpatialRelationshipsTableViewController" id="0OM-9T-R5c" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dxr-v1-lXb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -81,7 +81,6 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="0OM-9T-R5c" id="06L-Fd-LJQ"/>
                             <outlet property="delegate" destination="0OM-9T-R5c" id="mXX-ju-PW1"/>
                         </connections>
                     </tableView>

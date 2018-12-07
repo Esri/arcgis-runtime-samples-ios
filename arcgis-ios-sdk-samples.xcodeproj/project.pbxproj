@@ -521,8 +521,6 @@
 		C793B5EB2166BC90000A7A10 /* OpenStreetMapLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C793B5E72166BB71000A7A10 /* OpenStreetMapLayerViewController.swift */; };
 		C7B29EBE218B8FEA004E5DE4 /* OpenMapURLSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B29EBD218B8FEA004E5DE4 /* OpenMapURLSettingsViewController.swift */; };
 		C7B29EBF218B90F6004E5DE4 /* OpenMapURLSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7B29EBD218B8FEA004E5DE4 /* OpenMapURLSettingsViewController.swift */; };
-		C7BE9C4F219F4FE0003A03D2 /* SpatialRelationshipsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BE9C4E219F4FE0003A03D2 /* SpatialRelationshipsTableViewController.swift */; };
-		C7BE9C50219F5052003A03D2 /* SpatialRelationshipsTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7BE9C4E219F4FE0003A03D2 /* SpatialRelationshipsTableViewController.swift */; };
 		C7D0EEDA215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D0EED8215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift */; };
 		C7D0EEDB215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7D0EED9215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard */; };
 		C7D0EEDC215EA8A700ECDD2C /* DisplayKMLNetworkLinksViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7D0EED8215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift */; };
@@ -616,7 +614,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				C7BE9C50219F5052003A03D2 /* SpatialRelationshipsTableViewController.swift in CopyFiles */,
 				3ED0299F1B8E571700ACA70D /* AttachmentsTableViewController.swift in CopyFiles */,
 				C7B29EBF218B90F6004E5DE4 /* OpenMapURLSettingsViewController.swift in CopyFiles */,
 				C7432D3C2187C499009BF1D8 /* ShowLabelsOnLayersViewController.swift in CopyFiles */,
@@ -1176,7 +1173,6 @@
 		C793B5E72166BB71000A7A10 /* OpenStreetMapLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenStreetMapLayerViewController.swift; sourceTree = "<group>"; };
 		C793B5E82166BB71000A7A10 /* OpenStreetMapLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OpenStreetMapLayer.storyboard; sourceTree = "<group>"; };
 		C7B29EBD218B8FEA004E5DE4 /* OpenMapURLSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMapURLSettingsViewController.swift; sourceTree = "<group>"; };
-		C7BE9C4E219F4FE0003A03D2 /* SpatialRelationshipsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatialRelationshipsTableViewController.swift; sourceTree = "<group>"; };
 		C7D0EED8215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayKMLNetworkLinksViewController.swift; sourceTree = "<group>"; };
 		C7D0EED9215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayKMLNetworkLinks.storyboard; sourceTree = "<group>"; };
 		C7D22F8B2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListKMLContentsSceneViewController.swift; sourceTree = "<group>"; };
@@ -1358,7 +1354,6 @@
 			children = (
 				215E23CF21024715001DE092 /* SpatialRelationships.storyboard */,
 				215E23D021024715001DE092 /* SpatialRelationshipsViewController.swift */,
-				C7BE9C4E219F4FE0003A03D2 /* SpatialRelationshipsTableViewController.swift */,
 			);
 			path = "Spatial relationships";
 			sourceTree = "<group>";
@@ -3530,7 +3525,6 @@
 				21E9CDEC1EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift in Sources */,
 				3ED029711B8E3ACD00ACA70D /* EditGeometryViewController.swift in Sources */,
 				3ED028791B8E3A8500ACA70D /* ManageMapLayersViewController.swift in Sources */,
-				C7BE9C4F219F4FE0003A03D2 /* SpatialRelationshipsTableViewController.swift in Sources */,
 				3E4BF44C1C5AF04300D85919 /* FindPlaceViewController.swift in Sources */,
 				3E8A05CF1ECE68E80032231C /* PlaneStatsViewController.swift in Sources */,
 				3EFDE0F81E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift in Sources */,

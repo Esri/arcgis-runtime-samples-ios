@@ -19,8 +19,6 @@ import ArcGIS
 
 class SyncMapAndSceneViewsViewController: UIViewController {
 
-    /// The stack view containing the map and scene views.
-    @IBOutlet private weak var stackView: UIStackView!
     /// The map view to display the map.
     @IBOutlet private weak var mapView: AGSMapView!
     /// The scene view to display the scene.

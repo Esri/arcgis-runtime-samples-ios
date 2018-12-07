@@ -45,7 +45,6 @@
                     <connections>
                         <outlet property="mapView" destination="AYs-rD-OF9" id="BFV-kG-19N"/>
                         <outlet property="sceneView" destination="AuT-rQ-Koa" id="CQ5-Ve-uj6"/>
-                        <outlet property="stackView" destination="JVr-Qh-fl9" id="JTB-VV-Xss"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coZ-7k-3QB" userLabel="First Responder" sceneMemberID="firstResponder"/>

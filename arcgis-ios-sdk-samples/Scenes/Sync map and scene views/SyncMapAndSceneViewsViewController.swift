@@ -50,9 +50,6 @@ class SyncMapAndSceneViewsViewController: UIViewController {
             }
             self.synchronizeViewpoints(to: self.sceneView)
         }
-        
-        // set the initial stack view axis based on the size class
-        setStackViewAxis()
     }
     
     /// Sets the viewpoint of all views to that of the sender.
@@ -80,24 +77,5 @@ class SyncMapAndSceneViewsViewController: UIViewController {
         }
         
     }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        
-        // update the axis in case the size class changed
-        setStackViewAxis()
-    }
-    
-    /// Sets the map and scene views to be stacked vertically or horizontally
-    /// based on the vertical size class of this view controller.
-    private func setStackViewAxis() {
-        if traitCollection.verticalSizeClass == .compact {
-            // the view is short, stack views left-to-right
-            stackView.axis = .horizontal
-        } else {
-            // the view is tall, stack views top-to-bottom
-            stackView.axis = .vertical
-        }
-    }
-    
+
 }

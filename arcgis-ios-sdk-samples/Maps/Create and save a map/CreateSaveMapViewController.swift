@@ -144,9 +144,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
                 //dismiss progress hud
                 SVProgressHUD.dismiss()
                 if let error = error {
-                    saveAsViewController.dismiss(animated: true) {
-                        self?.presentAlert(error: error)
-                    }
+                    saveAsViewController.presentAlert(error: error)
                 } else {
                     saveAsViewController.dismiss(animated: true) {
                         self?.showSuccess()

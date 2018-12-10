@@ -529,6 +529,8 @@
 		C7D0EEDC215EA8A700ECDD2C /* DisplayKMLNetworkLinksViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7D0EED8215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift */; };
 		C7D22F8C2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D22F8B2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift */; };
 		C7D22F8D2167F01500C39D5C /* ListKMLContentsSceneViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7D22F8B2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift */; };
+		C7E5EB7021ADA2DF004D48F7 /* FormatCoordinatesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E5EB6F21ADA2DF004D48F7 /* FormatCoordinatesTableViewController.swift */; };
+		C7E5EB7121ADA34F004D48F7 /* FormatCoordinatesTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7E5EB6F21ADA2DF004D48F7 /* FormatCoordinatesTableViewController.swift */; };
 		C7E86C9121751D1E001C65C3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E86C9021751D1E001C65C3 /* UIViewController.swift */; };
 		D90407941FD8608A00BFE07B /* RasterLayerGPKGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */; };
 		D90407951FD8608A00BFE07B /* RasterLayerGPKG.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90407931FD8608A00BFE07B /* RasterLayerGPKG.storyboard */; };
@@ -617,6 +619,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				C7E5EB7121ADA34F004D48F7 /* FormatCoordinatesTableViewController.swift in CopyFiles */,
 				3ED0299F1B8E571700ACA70D /* AttachmentsTableViewController.swift in CopyFiles */,
 				C7B29EBF218B90F6004E5DE4 /* OpenMapURLSettingsViewController.swift in CopyFiles */,
 				C7432D3C2187C499009BF1D8 /* ShowLabelsOnLayersViewController.swift in CopyFiles */,
@@ -1182,6 +1185,7 @@
 		C7D0EED8215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayKMLNetworkLinksViewController.swift; sourceTree = "<group>"; };
 		C7D0EED9215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayKMLNetworkLinks.storyboard; sourceTree = "<group>"; };
 		C7D22F8B2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListKMLContentsSceneViewController.swift; sourceTree = "<group>"; };
+		C7E5EB6F21ADA2DF004D48F7 /* FormatCoordinatesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatCoordinatesTableViewController.swift; sourceTree = "<group>"; };
 		C7E86C9021751D1E001C65C3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterLayerGPKGViewController.swift; sourceTree = "<group>"; };
 		D90407931FD8608A00BFE07B /* RasterLayerGPKG.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RasterLayerGPKG.storyboard; sourceTree = "<group>"; };
@@ -2743,6 +2747,7 @@
 			children = (
 				3EF024E61ECBC10600166EC5 /* FormatCoordinates.storyboard */,
 				3EF024E71ECBC10600166EC5 /* FormatCoordinatesViewController.swift */,
+				C7E5EB6F21ADA2DF004D48F7 /* FormatCoordinatesTableViewController.swift */,
 			);
 			path = "Format coordinates";
 			sourceTree = "<group>";
@@ -3678,6 +3683,7 @@
 				E45991A21EF3021D0089E9FD /* WebMapCell.swift in Sources */,
 				C76817082163DB7C00EC82F4 /* DisplayKMLViewController.swift in Sources */,
 				3EEA06141D21C44000E03774 /* SurfacePlacementsViewController.swift in Sources */,
+				C7E5EB7021ADA2DF004D48F7 /* FormatCoordinatesTableViewController.swift in Sources */,
 				F4159C7120925B710016E53D /* OpenSceneViewController.swift in Sources */,
 				3EAF09451D7108DC00F8538F /* ChangeMapViewBackgroundVC.swift in Sources */,
 				3EEE1D701E4935FC003263FC /* GroupUsersViewController.swift in Sources */,

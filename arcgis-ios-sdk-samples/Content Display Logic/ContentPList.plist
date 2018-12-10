@@ -1213,7 +1213,7 @@
 				<key>storyboardName</key>
 				<string>SyncMapAndSceneViews</string>
 				<key>descriptionText</key>
-				<string>Keep the viewpoints of two map or scene views in sync with each other.</string>
+				<string>Demonstrates how to keep the viewpoints of two map or scene views in sync with each other.</string>
 			</dict>
 			<dict>
 				<key>descriptionText</key>

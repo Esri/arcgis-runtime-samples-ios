@@ -26,15 +26,23 @@ class FeatureLayerRenderingModeSceneViewController: UIViewController {
     /// The length of one animation, zooming in or out.
     private let animationDurationInSeconds = 5.0
     
+    /// The flag indicating the zoom state of the view.
+    private var zoomedIn = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureLayerRenderingModeSceneViewController"]
-
-        // create and assign scenes to the scene views
-        dynamicSceneView.scene = AGSScene()
-        staticSceneView.scene = AGSScene()
+        
+        for view in [staticSceneView, dynamicSceneView] {
+            // create and assign scenes to the scene views
+            view?.scene = AGSScene()
+            // set the initial viewpoint cameras with the zoomed out camera
+            view?.setViewpointCamera(zoomedOutCamera)
+            // disable user interaction to prevent the viewpoints from getting out of sync
+            view?.isUserInteractionEnabled = false
+        }
         
         // create service feature tables using point, polygon, and polyline services
         let pointTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Energy/Geology/FeatureServer/0")!)
@@ -57,26 +65,30 @@ class FeatureLayerRenderingModeSceneViewController: UIViewController {
             dynamicSceneView.scene?.operationalLayers.add(dynamicFeatureLayer)
             staticSceneView.scene?.operationalLayers.add(staticFeatureLayer)
         }
-        
-        // set the initial viewpoint cameras with the zoomed out camera
-        dynamicSceneView.setViewpointCamera(zoomedOutCamera)
-        staticSceneView.setViewpointCamera(zoomedOutCamera)
-        
-        // start the animation by zooming in
-        animateZoom(zoomIn: true)
     }
+    
+    @IBAction func animateZoomAction(_ sender: UIBarButtonItem) {
+        
+        // disable the button during the animation
+        sender.isEnabled = false
 
-    private func animateZoom(zoomIn: Bool) {
+        /// The title for the bar button following the animation.
+        let targetTitle = zoomedIn ? "Zoom In" : "Zoom Out"
         
         // toggle between the zoomed in and zoomed out cameras
-        let targetCamera = zoomIn ? zoomedInCamera : zoomedOutCamera
-
+        let targetCamera = zoomedIn ? zoomedOutCamera : zoomedInCamera
+        
         // start the animation to the opposite viewpoint in both scenes
         dynamicSceneView.setViewpointCamera(targetCamera, duration: animationDurationInSeconds)
         staticSceneView.setViewpointCamera(targetCamera, duration: animationDurationInSeconds) { [weak self] _ in
-            // Upon completion, start the reverse animation.
-            // Only call this for one of the views since it will affect both.
-            self?.animateZoom(zoomIn: !zoomIn)
+            // we only need to run the completion handler for one view
+            
+            // update the title for the new state
+            sender.title = targetTitle
+            // re-enable the button
+            sender.isEnabled = true
+            // update the model
+            self?.zoomedIn.toggle()
         }
     }
     

@@ -6,7 +6,7 @@ This sample demonstrates how to set the rendering mode for feature layers in a s
 
 ## How to use the sample
 
-The sample shows two `AGSSceneView`s, each showing the same set of feature layers. The feature layers in the top view are in dynamic mode, and the layers in the bottom view are in static mode. Observe the differences in how the layers are rendered in each view as they animate.
+The sample shows two `AGSSceneView`s, each showing the same set of feature layers. The feature layers in the top view are in dynamic mode, and the layers in the bottom view are in static mode. Use the button in the bottom toolbar to zoom the views in and out. Observe the differences in how the layers are rendered in each view as they animate.
 
 ## How it works
 

@@ -502,6 +502,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Feature layer rendering mode (scene)</string>
+				<key>storyboardName</key>
+				<string>FeatureLayerRenderingModeScene</string>
+				<key>descriptionText</key>
+				<string>Control the rendering mode of feature layers in scenes.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Feature layer (feature service)</string>
 				<key>storyboardName</key>
 				<string>FeatureLayerURL</string>

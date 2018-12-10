@@ -532,6 +532,9 @@
 		C7E5EB7021ADA2DF004D48F7 /* FormatCoordinatesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E5EB6F21ADA2DF004D48F7 /* FormatCoordinatesTableViewController.swift */; };
 		C7E5EB7121ADA34F004D48F7 /* FormatCoordinatesTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7E5EB6F21ADA2DF004D48F7 /* FormatCoordinatesTableViewController.swift */; };
 		C7E86C9121751D1E001C65C3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E86C9021751D1E001C65C3 /* UIViewController.swift */; };
+		C7FF07D621B9D258000D4055 /* FeatureLayerRenderingModeSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FF07D421B9D257000D4055 /* FeatureLayerRenderingModeSceneViewController.swift */; };
+		C7FF07D721B9D258000D4055 /* FeatureLayerRenderingModeScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7FF07D521B9D257000D4055 /* FeatureLayerRenderingModeScene.storyboard */; };
+		C7FF07D821B9D68F000D4055 /* FeatureLayerRenderingModeSceneViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7FF07D421B9D257000D4055 /* FeatureLayerRenderingModeSceneViewController.swift */; };
 		D90407941FD8608A00BFE07B /* RasterLayerGPKGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */; };
 		D90407951FD8608A00BFE07B /* RasterLayerGPKG.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90407931FD8608A00BFE07B /* RasterLayerGPKG.storyboard */; };
 		D90407961FD8651600BFE07B /* RasterLayerGPKGViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */; };
@@ -676,6 +679,7 @@
 				E45991A51EF31DE40089E9FD /* SearchForWebmapByKeywordViewController.swift in CopyFiles */,
 				E45991A61EF31DE40089E9FD /* WebMapCell.swift in CopyFiles */,
 				E45991A81EF31DE40089E9FD /* WebMapViewController.swift in CopyFiles */,
+				C7FF07D821B9D68F000D4055 /* FeatureLayerRenderingModeSceneViewController.swift in CopyFiles */,
 				166E8F9F1EE62E2400C57C46 /* RasterLayerViewController.swift in CopyFiles */,
 				104659AA1EF34F5200EFCB50 /* TerrainExaggerationViewController.swift in CopyFiles */,
 				E4A0BD8B1EE9E5D300CDE436 /* DistanceCompositeSymbolViewController.swift in CopyFiles */,
@@ -1187,6 +1191,8 @@
 		C7D22F8B2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListKMLContentsSceneViewController.swift; sourceTree = "<group>"; };
 		C7E5EB6F21ADA2DF004D48F7 /* FormatCoordinatesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatCoordinatesTableViewController.swift; sourceTree = "<group>"; };
 		C7E86C9021751D1E001C65C3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		C7FF07D421B9D257000D4055 /* FeatureLayerRenderingModeSceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerRenderingModeSceneViewController.swift; sourceTree = "<group>"; };
+		C7FF07D521B9D257000D4055 /* FeatureLayerRenderingModeScene.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerRenderingModeScene.storyboard; sourceTree = "<group>"; };
 		D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterLayerGPKGViewController.swift; sourceTree = "<group>"; };
 		D90407931FD8608A00BFE07B /* RasterLayerGPKG.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RasterLayerGPKG.storyboard; sourceTree = "<group>"; };
 		D9316A5D1FDB4F060075AD92 /* GPKGLayerTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPKGLayerTableCell.swift; sourceTree = "<group>"; };
@@ -2240,6 +2246,7 @@
 			isa = PBXGroup;
 			children = (
 				F4E5CD7720704369000A6D35 /* Feature layer rendering mode (map) */,
+				C7FF07D321B9D227000D4055 /* Feature layer rendering mode (scene) */,
 				3E5848FC1B91222200AB3CE9 /* Feature layer (feature service) */,
 				3E8A257E1D36B6E300D14F08 /* Feature layer (geodatabase) */,
 				D9ED2DA21FD758010043BFE1 /* Feature layer (geopackage) */,
@@ -2979,6 +2986,15 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
+		C7FF07D321B9D227000D4055 /* Feature layer rendering mode (scene) */ = {
+			isa = PBXGroup;
+			children = (
+				C7FF07D521B9D257000D4055 /* FeatureLayerRenderingModeScene.storyboard */,
+				C7FF07D421B9D257000D4055 /* FeatureLayerRenderingModeSceneViewController.swift */,
+			);
+			path = "Feature layer rendering mode (scene)";
+			sourceTree = "<group>";
+		};
 		D90407911FD8602B00BFE07B /* Raster layer (geopackage) */ = {
 			isa = PBXGroup;
 			children = (
@@ -3284,6 +3300,7 @@
 				3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */,
 				3ED028651B8E3A8500ACA70D /* HighwayJson.txt in Resources */,
 				3EC39C3A1C9B23DF003F6459 /* GenerateGeodatabase.storyboard in Resources */,
+				C7FF07D721B9D258000D4055 /* FeatureLayerRenderingModeScene.storyboard in Resources */,
 				C793B5E221667B15000A7A10 /* esri_test_data.kmz in Resources */,
 				3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */,
 				3ED028E41B8E3AA500ACA70D /* DefinitionExpression.storyboard in Resources */,
@@ -3561,6 +3578,7 @@
 				C7D0EEDA215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift in Sources */,
 				3EEA06101D21C44000E03774 /* DisplaySceneViewController.swift in Sources */,
 				10859BAC1FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift in Sources */,
+				C7FF07D621B9D258000D4055 /* FeatureLayerRenderingModeSceneViewController.swift in Sources */,
 				3E8526381B90D92700690EBD /* BookmarksListViewController.swift in Sources */,
 				127D29F7200EC5FC00DD6CDC /* ViewshedLocationViewController.swift in Sources */,
 				3E8A05CE1ECE68E80032231C /* MissionSettingsViewController.swift in Sources */,

@@ -109,7 +109,7 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
             controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             
-            controller.setSelectAction({ [weak self] (index: Int) -> Void in
+            controller.setSelectAction({ [weak self] (index: Int) in
                 if let weakSelf = self {
                     weakSelf.selectedFilenameIndex = index
                     let filename = weakSelf.filenames[index]

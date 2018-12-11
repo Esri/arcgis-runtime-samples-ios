@@ -15,18 +15,18 @@
 import UIKit
 import ArcGIS
 
-extension UIImage {
+private extension UIImage {
     
     func croppedImage(_ size: CGSize) -> UIImage {
         //calculate rect based on input size
-        let originX = (self.size.width - size.width) / 2
-        let originY = (self.size.height - size.height) / 2
+        let originX = (size.width - size.width) / 2
+        let originY = (size.height - size.height) / 2
         
         let scale = UIScreen.main.scale
         let rect = CGRect(x: originX * scale, y: originY * scale, width: size.width * scale, height: size.height * scale)
         
         //crop image
-        let croppedCGImage = self.cgImage!.cropping(to: rect)!
+        let croppedCGImage = cgImage!.cropping(to: rect)!
         let croppedImage = UIImage(cgImage: croppedCGImage, scale: scale, orientation: .up)
         
         return croppedImage
@@ -35,169 +35,123 @@ extension UIImage {
 
 class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, SaveAsVCDelegate {
     
-    let webmapURL = "https://www.arcgis.com/home/webmap/viewer.html?webmap="
-    
     @IBOutlet private weak var mapView: AGSMapView!
-    @IBOutlet private weak var createOptionsBlurView: UIVisualEffectView!
-    @IBOutlet private weak var saveAsBlurView: UIVisualEffectView!
-    @IBOutlet private weak var savingToolbar: UIToolbar!
     
-    private var createOptionsVC: CreateOptionsViewController!
-    private var saveAsVC: SaveAsViewController!
-    
-    private var portal: AGSPortal!
+    private var portal: AGSPortal?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //add the source code button item to the right of navigation bar
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
+            "CreateSaveMapViewController",
+            "CreateOptionsViewController",
+            "SaveAsViewController"
+        ]
         
         //Auth Manager settings
         let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
         AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
         AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
         
-        let map = AGSMap(basemap: .imagery())
-        
-        self.mapView.map = map
-        
-        //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["CreateSaveMapViewController", "CreateOptionsViewController", "SaveAsViewController"]
-        
-        //add tap gesture recognizer to hide keyboard
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        tapGestureRecognizer.numberOfTapsRequired = 1
-        tapGestureRecognizer.numberOfTouchesRequired = 1
-        self.saveAsBlurView.addGestureRecognizer(tapGestureRecognizer)
+        // initially show the map creation UI
+        performSegue(withIdentifier: "CreateNewSegue", sender: self)
     }
     
     private func showSuccess() {
-        let alertController = UIAlertController(title: "Saved successfully", message: nil, preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "OK", style: .cancel) { [weak self] _ in
-            self?.dismiss(animated: true, completion: nil)
-        }
+        let alertController = UIAlertController(title: "Saved Successfully", message: nil, preferredStyle: .alert)
         
-        let openAction = UIAlertAction(title: "Open In Safari", style: .default) { [weak self] _ in
-            if let weakSelf = self {
-                UIApplication.shared.open(URL(string: "\(weakSelf.webmapURL)\(weakSelf.mapView.map!.item!.itemID)")!, options: [:])
+        let okAction = UIAlertAction(title: "OK", style: .cancel)
+        
+        let openAction = UIAlertAction(title: "Open In Safari", style: .default) { _ in
+            if let itemID = self.mapView.map?.item?.itemID,
+                var components = URLComponents(string: "https://www.arcgis.com/home/webmap/viewer.html") {
+                components.queryItems = [URLQueryItem(name: "webmap", value: itemID)]
+                UIApplication.shared.open(components.url!, options: [:])
             }
         }
         
         alertController.addAction(okAction)
         alertController.addAction(openAction)
         
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    // MARK: - hide/show create screen
-    
-    private func toggleCreateView() {
-        self.createOptionsBlurView.isHidden = !self.createOptionsBlurView.isHidden
-        
-        //reset selection
-        if !self.createOptionsBlurView.isHidden {
-            self.createOptionsVC.resetTableView()
-        }
-    }
-    
-    // MARK: - hide/show input screen
-    
-    private func toggleSaveAsView() {
-        self.saveAsBlurView.isHidden = !self.saveAsBlurView.isHidden
-        
-        self.view.endEditing(true)
+        present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - Actions
     
-    @IBAction private func newAction() {
-        self.toggleCreateView()
-    }
-    
     @IBAction func saveAsAction(_ sender: AnyObject) {
-        self.portal = AGSPortal(url: URL(string: "https://www.arcgis.com")!, loginRequired: true)
-        self.portal.load { (error) -> Void in
+        let portal = AGSPortal(url: URL(string: "https://www.arcgis.com")!, loginRequired: true)
+        self.portal = portal
+        portal.load { [weak self] (error) in
             if let error = error {
                 print(error)
             } else {
-                //get title etc
-                self.toggleSaveAsView()
+                self?.performSegue(withIdentifier: "SaveAsSegue", sender: self)
             }
         }
-    }
-    
-    @IBAction private func cancelAction() {
-        self.view.endEditing(true)
-        self.toggleSaveAsView()
-    }
-    
-    @objc
-    func hideKeyboard() {
-        self.view.endEditing(true)
     }
     
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "CreateOptionsEmbedSegue" {
-            self.createOptionsVC = segue.destination as? CreateOptionsViewController
-            self.createOptionsVC.delegate = self
-        } else if segue.identifier == "SaveAsEmbedSegue" {
-            self.saveAsVC = segue.destination as? SaveAsViewController
-            self.saveAsVC.delegate = self
+        if let navController = segue.destination as? UINavigationController,
+            let rootController = navController.viewControllers.last {
+            if let createOptionsVC = rootController as? CreateOptionsViewController {
+                createOptionsVC.delegate = self
+            } else if let saveAsVC = rootController as? SaveAsViewController {
+                saveAsVC.delegate = self
+            }
         }
     }
     
     // MARK: - CreateOptionsVCDelegate
     
-    func createOptionsViewController(_ createOptionsViewController: CreateOptionsViewController, didSelectBasemap basemap: AGSBasemap, layers: [AGSLayer]?) {
+    func createOptionsViewController(_ createOptionsViewController: CreateOptionsViewController, didSelectBasemap basemap: AGSBasemap, layers: [AGSLayer]) {
         
         //create a map with the selected basemap
         let map = AGSMap(basemap: basemap)
         
         //add the selected operational layers
-        if let layers = layers {
-            map.operationalLayers.addObjects(from: layers)
-        }
-        //assign the new map to the map view
-        self.mapView.map = map
+        map.operationalLayers.addObjects(from: layers)
         
-        //hide the create view
-        self.toggleCreateView()
+        //assign the new map to the map view
+        mapView.map = map
+        
+        createOptionsViewController.dismiss(animated: true)
     }
     
     // MARK: - SaveAsVCDelegate
     
     func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String) {
-        SVProgressHUD.show(withStatus: "Saving")
-        //set the initial viewpoint from map view
-        self.mapView.map?.initialViewpoint = self.mapView.currentViewpoint(with: AGSViewpointType.centerAndScale)
         
-        self.mapView.exportImage { [weak self] (image: UIImage?, error: Error?) -> Void in
+        SVProgressHUD.show(withStatus: "Saving")
+        
+        //set the initial viewpoint from map view
+        mapView.map?.initialViewpoint = mapView.currentViewpoint(with: AGSViewpointType.centerAndScale)
+        
+        mapView.exportImage { [weak self] (image: UIImage?, error: Error?) in
             
-            if let weakSelf = self {
-                //crop the image from the center
-                //also to cut on the size
-                let croppedImage: UIImage? = image?.croppedImage(CGSize(width: 200, height: 200))
-                
-                weakSelf.mapView.map?.save(as: title, portal: weakSelf.portal!, tags: tags, folder: nil, itemDescription: itemDescription, thumbnail: croppedImage, forceSaveToSupportedVersion: true) { [weak self] (error) -> Void in
-                    //dismiss progress hud
-                    SVProgressHUD.dismiss()
-                    if let error = error {
-                        self?.presentAlert(error: error)
-                    } else {
+            guard let self = self else {
+                return
+            }
+            
+            //crop the image from the center
+            //also to cut on the size
+            let croppedImage: UIImage? = image?.croppedImage(CGSize(width: 200, height: 200))
+            
+            self.mapView.map?.save(as: title, portal: self.portal!, tags: tags, folder: nil, itemDescription: itemDescription, thumbnail: croppedImage, forceSaveToSupportedVersion: true) { [weak self] (error) in
+                //dismiss progress hud
+                SVProgressHUD.dismiss()
+                if let error = error {
+                    saveAsViewController.presentAlert(error: error)
+                } else {
+                    saveAsViewController.dismiss(animated: true) {
                         self?.showSuccess()
                     }
-                    weakSelf.saveAsVC.resetInputFields()
                 }
             }
         }
-        
-        //hide the input screen
-        self.toggleSaveAsView()
-    }
-    
-    func saveAsViewControllerDidCancel(_ saveAsViewController: SaveAsViewController) {
-        self.toggleSaveAsView()
     }
 
 }

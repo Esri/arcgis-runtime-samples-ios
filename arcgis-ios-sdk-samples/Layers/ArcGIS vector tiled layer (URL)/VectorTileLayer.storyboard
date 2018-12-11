@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FtN-l1-Ps1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FtN-l1-Ps1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--Vector Tile Layer View Controller-->
         <scene sceneID="sPz-QM-Qqk">
             <objects>
-                <viewController id="FtN-l1-Ps1" customClass="VectorTileLayerViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FtN-l1-Ps1" customClass="VectorTileLayerViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G2H-JP-vNV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,21 +29,10 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="BiJ-pM-m7v"/>
-                                    <barButtonItem style="plain" id="Nvh-ah-YiH">
-                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="QWL-cT-bZH">
-                                            <rect key="frame" x="16" y="7" width="343" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <segments>
-                                                <segment title="Mid-Century"/>
-                                                <segment title="Colored Pencil"/>
-                                                <segment title="Newspaper"/>
-                                                <segment title="Nova"/>
-                                                <segment title="Night"/>
-                                            </segments>
-                                            <connections>
-                                                <action selector="segmentedControlChanged:" destination="FtN-l1-Ps1" eventType="valueChanged" id="eZH-Nk-Gne"/>
-                                            </connections>
-                                        </segmentedControl>
+                                    <barButtonItem title="Change Vector Tiled Layer" id="rSI-kY-mPd">
+                                        <connections>
+                                            <action selector="changeVectorTiledLayer:" destination="FtN-l1-Ps1" id="sTs-GN-Ipy"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="L4P-WL-NhO"/>
                                 </items>
@@ -63,7 +52,6 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="vpa-mD-ZH4" id="c90-zp-qQT"/>
-                        <outlet property="segmentedControl" destination="QWL-cT-bZH" id="fAT-2x-PWM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="92P-Ys-VIE" userLabel="First Responder" sceneMemberID="firstResponder"/>

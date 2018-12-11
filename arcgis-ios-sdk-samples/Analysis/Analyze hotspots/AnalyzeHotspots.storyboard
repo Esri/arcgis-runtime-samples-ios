@@ -31,7 +31,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="TKf-Pw-3b8"/>
                                     <barButtonItem title="Analyze" id="1IF-Ns-Kew">
                                         <connections>
-                                            <segue destination="3hR-ud-St7" kind="presentation" id="V3g-zQ-JyC"/>
+                                            <segue destination="3hR-ud-St7" kind="presentation" modalPresentationStyle="formSheet" id="V3g-zQ-JyC"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="kYO-GB-HVs"/>
@@ -62,15 +62,15 @@
         <scene sceneID="pI8-sn-Jwf">
             <objects>
                 <tableViewController id="8cL-Af-ycY" customClass="HotspotSettingsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lYi-T1-OHZ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="lYi-T1-OHZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="From" id="CU1-1c-J8M">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="0dY-8m-9YL">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0dY-8m-9YL" id="MeS-OZ-bqI">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -102,7 +102,7 @@
                             <tableViewSection headerTitle="To" id="8lL-kQ-Qow">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="e7Q-gS-euB">
-                                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="155.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e7Q-gS-euB" id="bzA-Ou-RAD">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>

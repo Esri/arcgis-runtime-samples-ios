@@ -91,7 +91,8 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
         
         // Add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
-            "SpatialRelationshipsViewController"
+            "SpatialRelationshipsViewController",
+            "SpatialRelationshipsTableViewController"
         ]
         
         // Set the touch delegate
@@ -142,17 +143,20 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
     
     // MARK: Helper Function
     
+    struct RelationshipsSection {
+        let relationships: [String]
+        let title: String
+    }
+    
     private func showRelationships(for graphic: AGSGraphic, popoverPoint: CGPoint) {
         
         guard let selectedGeometry = graphic.geometry,
             let tableSections = relationshipTableSections(for: selectedGeometry.geometryType),
-            let controller = storyboard?.instantiateViewController(withIdentifier: "SpatialRelationshipsTableViewController") as? UITableViewController else {
+            let controller = storyboard?.instantiateViewController(withIdentifier: "SpatialRelationshipsTableViewController") as? SpatialRelationshipsTableViewController else {
             return
         }
         
-        self.resultsTableSections = tableSections
-        
-        controller.tableView.dataSource = self
+        controller.sections = tableSections
         
         controller.modalPresentationStyle = .popover
         controller.presentationController?.delegate = self
@@ -164,14 +168,7 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
         present(controller, animated: true)
     }
     
-    private struct ResultsTableSection {
-        let relationships: [String]
-        let title: String
-    }
-    
-    private var resultsTableSections: [ResultsTableSection] = []
-    
-    private func relationshipTableSections(for geometryType: AGSGeometryType) -> [ResultsTableSection]? {
+    private func relationshipTableSections(for geometryType: AGSGeometryType) -> [RelationshipsSection]? {
         
         guard let pointGeometry = pointGraphic.geometry,
             let polylineGeometry = polylineGraphic.geometry,
@@ -182,33 +179,33 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
         switch geometryType {
         case .point:
             return [
-                ResultsTableSection(
+                RelationshipsSection(
                     relationships: getSpatialRelationships(of: pointGeometry, with: polylineGeometry),
                     title: "Relationship With Polyline"
                 ),
-                ResultsTableSection(
+                RelationshipsSection(
                     relationships: getSpatialRelationships(of: pointGeometry, with: polygonGeometry),
                     title: "Relationship With Polygon"
                 )
             ]
         case .polyline:
             return [
-                ResultsTableSection(
+                RelationshipsSection(
                     relationships: getSpatialRelationships(of: polylineGeometry, with: pointGeometry),
                     title: "Relationship With Point"
                 ),
-                ResultsTableSection(
+                RelationshipsSection(
                     relationships: getSpatialRelationships(of: polylineGeometry, with: polygonGeometry),
                     title: "Relationship With Polygon"
                 )
             ]
         case .polygon:
             return [
-                ResultsTableSection(
+                RelationshipsSection(
                     relationships: getSpatialRelationships(of: polygonGeometry, with: pointGeometry),
                     title: "Relationship With Point"
                 ),
-                ResultsTableSection(
+                RelationshipsSection(
                     relationships: getSpatialRelationships(of: polygonGeometry, with: polylineGeometry),
                     title: "Relationship With Polyline"
                 )
@@ -262,28 +259,6 @@ extension SpatialRelationshipsViewController: UIPopoverPresentationControllerDel
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         // Clear selection when popover is dismissed
         graphicsOverlay.clearSelection()
-    }
-    
-}
-
-extension SpatialRelationshipsViewController: UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return resultsTableSections.count
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return resultsTableSections[section].relationships.count
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return resultsTableSections[section].title
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SpatialRelationshipCell", for: indexPath)
-        cell.textLabel?.text = resultsTableSections[indexPath.section].relationships[indexPath.row]
-        return cell
     }
     
 }

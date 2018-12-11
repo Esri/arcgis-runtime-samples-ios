@@ -22,7 +22,7 @@ class VectorTileLayerViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView!
     
     /// The model array containing the layer options.
-    private let vectorTiledLayerItems: [(label: String, id: String)] = [
+    private let vectorTiledLayerItems: [(label: String, itemID: String)] = [
         ("Mid-Century", "7675d44bb1e4428aa2c30a9b68f97822"),
         ("Colored Pencil", "4cf7e1fb9f254dcda9c8fbadb15cf0f8"),
         ("Newspaper", "dfb04de5f3144a80bc3f9f336228d24a"),
@@ -40,7 +40,7 @@ class VectorTileLayerViewController: UIViewController {
         ]
         
         /// The URL of the initial layer to display.
-        let url = arcGISURL(for: vectorTiledLayerItems.first!.id)
+        let url = makeArcGISURL(itemID: vectorTiledLayerItems.first!.itemID)
         
         // create a vector tiled layer
         let vectorTileLayer = AGSArcGISVectorTiledLayer(url: url)
@@ -55,8 +55,10 @@ class VectorTileLayerViewController: UIViewController {
 
     }
     
-    private func arcGISURL(for id: String) -> URL {
-        return URL(string: "https://www.arcgis.com/home/item.html?id=\(id)")!
+    private func makeArcGISURL(itemID: String) -> URL {
+        var urlComponents = URLComponents(string: "https://www.arcgis.com/home/item.html")!
+        urlComponents.queryItems = [URLQueryItem(name: "id", value: itemID)]
+        return urlComponents.url!
     }
 
     @IBAction func changeVectorTiledLayer(_ sender: UIBarButtonItem) {
@@ -64,7 +66,7 @@ class VectorTileLayerViewController: UIViewController {
         guard let layer = mapView.map?.basemap.baseLayers.firstObject as? AGSArcGISVectorTiledLayer,
             let selectedItemID = layer.item?.itemID,
             // get the index of the layer currently shown in the map
-            let selectedIndex = vectorTiledLayerItems.firstIndex(where: { $0.id == selectedItemID }) else {
+            let selectedIndex = vectorTiledLayerItems.firstIndex(where: { $0.itemID == selectedItemID }) else {
             return
         }
         
@@ -79,9 +81,9 @@ class VectorTileLayerViewController: UIViewController {
             }
             
             // get the layer ID for the index
-            let id = self.vectorTiledLayerItems[newIndex].id
+            let itemID = self.vectorTiledLayerItems[newIndex].itemID
             // get the url for the layer ID
-            let url = self.arcGISURL(for: id)
+            let url = self.makeArcGISURL(itemID: itemID)
             // create the new vector tiled layer using the url
             let vectorTileLayer = AGSArcGISVectorTiledLayer(url: url)
             // change the basemap to the new layer
@@ -91,7 +93,7 @@ class VectorTileLayerViewController: UIViewController {
         // configure the options controller as a popover
         controller.modalPresentationStyle = .popover
         controller.presentationController?.delegate = self
-        controller.preferredContentSize = CGSize(width: 300, height: 200)
+        controller.preferredContentSize = CGSize(width: 300, height: 220)
         controller.popoverPresentationController?.barButtonItem = sender
         controller.popoverPresentationController?.passthroughViews?.append(mapView)
         

@@ -30,7 +30,7 @@ class BufferOptionsViewController: UITableViewController {
         // use a measurement formatter so the value is automatically localized
         let formatter = MeasurementFormatter()
         // don't show decimal places
-        formatter.numberFormatter.roundingIncrement = 1
+        formatter.numberFormatter.maximumFractionDigits = 0
         return formatter
     }()
     

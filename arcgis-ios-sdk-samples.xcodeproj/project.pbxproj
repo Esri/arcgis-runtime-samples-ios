@@ -534,6 +534,11 @@
 		C7E5EB7021ADA2DF004D48F7 /* FormatCoordinatesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E5EB6F21ADA2DF004D48F7 /* FormatCoordinatesTableViewController.swift */; };
 		C7E5EB7121ADA34F004D48F7 /* FormatCoordinatesTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7E5EB6F21ADA2DF004D48F7 /* FormatCoordinatesTableViewController.swift */; };
 		C7E86C9121751D1E001C65C3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E86C9021751D1E001C65C3 /* UIViewController.swift */; };
+		C7E9D7C621C0500300E6C47E /* BufferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E9D7C321C0500300E6C47E /* BufferViewController.swift */; };
+		C7E9D7C721C0500300E6C47E /* BufferOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E9D7C421C0500300E6C47E /* BufferOptionsViewController.swift */; };
+		C7E9D7C821C0500300E6C47E /* Buffer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7E9D7C521C0500300E6C47E /* Buffer.storyboard */; };
+		C7E9D7C921C0560600E6C47E /* BufferViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7E9D7C321C0500300E6C47E /* BufferViewController.swift */; };
+		C7E9D7CA21C0561B00E6C47E /* BufferOptionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7E9D7C421C0500300E6C47E /* BufferOptionsViewController.swift */; };
 		C7FF07D621B9D258000D4055 /* FeatureLayerRenderingModeSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FF07D421B9D257000D4055 /* FeatureLayerRenderingModeSceneViewController.swift */; };
 		C7FF07D721B9D258000D4055 /* FeatureLayerRenderingModeScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7FF07D521B9D257000D4055 /* FeatureLayerRenderingModeScene.storyboard */; };
 		C7FF07D821B9D68F000D4055 /* FeatureLayerRenderingModeSceneViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7FF07D421B9D257000D4055 /* FeatureLayerRenderingModeSceneViewController.swift */; };
@@ -649,6 +654,7 @@
 				F4E5CD7E207058D8000A6D35 /* FeatureLayerRenderingModeMapViewController.swift in CopyFiles */,
 				F4159C72209262200016E53D /* OpenSceneViewController.swift in CopyFiles */,
 				1230046D1FE2F77F00303AC2 /* LineOfSightLocationViewController.swift in CopyFiles */,
+				C7E9D7CA21C0561B00E6C47E /* BufferOptionsViewController.swift in CopyFiles */,
 				127D29FA200EC69100DD6CDC /* ViewshedLocationViewController.swift in CopyFiles */,
 				127D29F9200EC67000DD6CDC /* ViewshedSettingsVC.swift in CopyFiles */,
 				12BF9E471FE9D84E00B1E6C4 /* ViewshedCameraViewController.swift in CopyFiles */,
@@ -704,6 +710,7 @@
 				3E0B58521E36D54800951767 /* AnalyzeHotspotsViewController.swift in CopyFiles */,
 				3E0B58531E36D54800951767 /* HotspotSettingsViewController.swift in CopyFiles */,
 				3E0B58541E36D54800951767 /* ViewshedGeoprocessingViewController.swift in CopyFiles */,
+				C7E9D7C921C0560600E6C47E /* BufferViewController.swift in CopyFiles */,
 				3EFDE0F91E36AE3100CBCD92 /* FeatureCollectionLayerVC.swift in CopyFiles */,
 				3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */,
 				3EE179991DE37199005E0759 /* GridSettingsViewController.swift in CopyFiles */,
@@ -1195,6 +1202,9 @@
 		C7D22F8B2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListKMLContentsSceneViewController.swift; sourceTree = "<group>"; };
 		C7E5EB6F21ADA2DF004D48F7 /* FormatCoordinatesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatCoordinatesTableViewController.swift; sourceTree = "<group>"; };
 		C7E86C9021751D1E001C65C3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		C7E9D7C321C0500300E6C47E /* BufferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferViewController.swift; sourceTree = "<group>"; };
+		C7E9D7C421C0500300E6C47E /* BufferOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferOptionsViewController.swift; sourceTree = "<group>"; };
+		C7E9D7C521C0500300E6C47E /* Buffer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Buffer.storyboard; sourceTree = "<group>"; };
 		C7FF07D421B9D257000D4055 /* FeatureLayerRenderingModeSceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerRenderingModeSceneViewController.swift; sourceTree = "<group>"; };
 		C7FF07D521B9D257000D4055 /* FeatureLayerRenderingModeScene.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerRenderingModeScene.storyboard; sourceTree = "<group>"; };
 		D90407921FD8608900BFE07B /* RasterLayerGPKGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterLayerGPKGViewController.swift; sourceTree = "<group>"; };
@@ -2137,6 +2147,7 @@
 				E4477CBC20EC0CAE004E14F9 /* List transformations */,
 				940A73F220E5889B00A06C80 /* Cut geometry */,
 				215E23CE21024715001DE092 /* Spatial relationships */,
+				C7E9D7C221C04B2100E6C47E /* Buffer */,
 			);
 			path = Geometry;
 			sourceTree = "<group>";
@@ -2991,6 +3002,16 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
+		C7E9D7C221C04B2100E6C47E /* Buffer */ = {
+			isa = PBXGroup;
+			children = (
+				C7E9D7C521C0500300E6C47E /* Buffer.storyboard */,
+				C7E9D7C321C0500300E6C47E /* BufferViewController.swift */,
+				C7E9D7C421C0500300E6C47E /* BufferOptionsViewController.swift */,
+			);
+			path = Buffer;
+			sourceTree = "<group>";
+		};
 		C7FF07D321B9D227000D4055 /* Feature layer rendering mode (scene) */ = {
 			isa = PBXGroup;
 			children = (
@@ -3402,6 +3423,7 @@
 				3ED029701B8E3ACD00ACA70D /* EditGeometry.storyboard in Resources */,
 				3E5849001B9123E900AB3CE9 /* FeatureLayerURL.storyboard in Resources */,
 				3E8A25911D36B97A00D14F08 /* MapLoaded.storyboard in Resources */,
+				C7E9D7C821C0500300E6C47E /* Buffer.storyboard in Resources */,
 				3ED028E91B8E3AA500ACA70D /* FLQuery.storyboard in Resources */,
 				E4B2E2651FE31E5200E610FF /* bradle.3ds in Resources */,
 				3E7162351BA1F529008DE398 /* GraphicsWithSymbols.storyboard in Resources */,
@@ -3594,6 +3616,7 @@
 				3E0B584F1E36BCCD00951767 /* AnalyzeHotspotsViewController.swift in Sources */,
 				3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */,
 				3ED0289A1B8E3A8500ACA70D /* ShowMagnifierViewController.swift in Sources */,
+				C7E9D7C621C0500300E6C47E /* BufferViewController.swift in Sources */,
 				4C41B2EE211A617700EEA81E /* Sample.swift in Sources */,
 				3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */,
 				218409DB1FE87E220098BC40 /* GroupByFieldsViewController.swift in Sources */,
@@ -3669,6 +3692,7 @@
 				3E4BF4561C5BD66C00D85919 /* OfflineGeocodeViewController.swift in Sources */,
 				3E0B584E1E36BCCD00951767 /* HotspotSettingsViewController.swift in Sources */,
 				3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */,
+				C7E9D7C721C0500300E6C47E /* BufferOptionsViewController.swift in Sources */,
 				1259FB931FD295C90037105E /* WMSLayerUsingURLViewController.swift in Sources */,
 				4C66AAF92107C50B00EE6346 /* QueryMapImageSublayerViewController.swift in Sources */,
 				C7237D0E2190F07500A72C76 /* DisplayLocationSettingsViewController.swift in Sources */,

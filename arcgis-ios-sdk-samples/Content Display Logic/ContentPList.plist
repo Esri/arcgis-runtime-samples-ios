@@ -943,6 +943,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Densify and generalize</string>
+				<key>storyboardName</key>
+				<string>DensifyAndGeneralize</string>
+				<key>descriptionText</key>
+				<string>Apply densify and generalize functions to polyline geometry.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Buffer</string>
 				<key>storyboardName</key>
 				<string>Buffer</string>

@@ -949,6 +949,14 @@
 				<key>descriptionText</key>
 				<string>Apply densify and generalize functions to polyline geometry.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Buffer</string>
+				<key>storyboardName</key>
+				<string>Buffer</string>
+				<key>descriptionText</key>
+				<string>Create buffers around the tap location with a given radius.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

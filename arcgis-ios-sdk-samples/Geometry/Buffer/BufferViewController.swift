@@ -82,7 +82,7 @@ class BufferViewController: UIViewController {
             controller.delegate = self
             controller.bufferDistance = bufferDistance
             controller.presentationController?.delegate = self
-            controller.preferredContentSize = CGSize(width: 300, height: 140)
+            controller.preferredContentSize = CGSize(width: 300, height: 78)
         }
     }
     

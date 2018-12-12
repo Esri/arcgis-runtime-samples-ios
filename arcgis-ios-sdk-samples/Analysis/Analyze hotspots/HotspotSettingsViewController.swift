@@ -33,11 +33,10 @@ class HotspotSettingsViewController: UITableViewController {
     
     /// Set the date picker limits to maintain a valid state.
     private func updateDatePickerLimits() {
-        let oneDayInSeconds: TimeInterval = 24 * 60 * 60
         // keep the start date less than the end date
-        startDatePicker.maximumDate = endDatePicker.date - oneDayInSeconds
+        startDatePicker.maximumDate = Calendar.current.date(byAdding: .day, value: -1, to: endDatePicker.date)
         // keep the end date greater than the start date
-        endDatePicker.minimumDate = startDatePicker.date + oneDayInSeconds
+        endDatePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 1, to: startDatePicker.date)
     }
     
     // MARK: - Actions

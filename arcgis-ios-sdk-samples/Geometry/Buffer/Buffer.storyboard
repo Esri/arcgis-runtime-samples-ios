@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wXy-eD-QP8">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Buffer View Controller-->
+        <scene sceneID="Jzw-TF-33y">
+            <objects>
+                <viewController id="wXy-eD-QP8" customClass="BufferViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8z2-nZ-bKd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7o-7M-cMe" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJH-PV-h1x">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="5aQ-cI-FQi"/>
+                                    <barButtonItem title="Options" id="up8-yW-buV">
+                                        <connections>
+                                            <segue destination="Vkn-5F-h7v" kind="popoverPresentation" popoverAnchorBarButtonItem="up8-yW-buV" id="waU-8R-GEv">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                <popoverPassthroughViews>
+                                                    <view reference="T7o-7M-cMe"/>
+                                                </popoverPassthroughViews>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Z3Z-Xb-W6N"/>
+                                    <barButtonItem title="Clear All" id="o5k-lv-LpS">
+                                        <connections>
+                                            <action selector="clearAllAction:" destination="wXy-eD-QP8" id="KHY-DX-bd8"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="JB4-lb-8pk"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="T7o-7M-cMe" secondAttribute="trailing" id="GBz-tP-50I"/>
+                            <constraint firstItem="T7o-7M-cMe" firstAttribute="top" secondItem="hcd-vh-Nc6" secondAttribute="top" id="HBS-Zd-hCh"/>
+                            <constraint firstItem="T7o-7M-cMe" firstAttribute="leading" secondItem="8z2-nZ-bKd" secondAttribute="leading" id="MEB-Rw-fcU"/>
+                            <constraint firstItem="T7o-7M-cMe" firstAttribute="bottom" secondItem="vJH-PV-h1x" secondAttribute="top" id="P6T-Ol-Z3P"/>
+                            <constraint firstItem="vJH-PV-h1x" firstAttribute="trailing" secondItem="hcd-vh-Nc6" secondAttribute="trailing" id="cWl-b8-3y9"/>
+                            <constraint firstItem="vJH-PV-h1x" firstAttribute="leading" secondItem="hcd-vh-Nc6" secondAttribute="leading" id="fms-TG-JeV"/>
+                            <constraint firstItem="hcd-vh-Nc6" firstAttribute="bottom" secondItem="vJH-PV-h1x" secondAttribute="bottom" id="gK6-VT-Egl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hcd-vh-Nc6"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="T7o-7M-cMe" id="AHr-Kq-4ay"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A9Q-b5-ebG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="312.80000000000001" y="342.27886056971516"/>
+        </scene>
+        <!--Buffer Options View Controller-->
+        <scene sceneID="2mO-pQ-d7O">
+            <objects>
+                <tableViewController id="Vkn-5F-h7v" customClass="BufferOptionsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="SOU-k9-jhE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection id="xKH-1i-1dM">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="pUb-t3-8i4">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pUb-t3-8i4" id="iw6-9n-4J5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Buffer Radius" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FN4-wU-P5V">
+                                                    <rect key="frame" x="16" y="11" width="104" height="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="500" minValue="200" maxValue="2000" translatesAutoresizingMaskIntoConstraints="NO" id="Jir-BV-Gk4">
+                                                    <rect key="frame" x="14" y="33" width="347" height="1"/>
+                                                    <connections>
+                                                        <action selector="bufferSliderAction:" destination="Vkn-5F-h7v" eventType="valueChanged" id="1cq-74-gOU"/>
+                                                    </connections>
+                                                </slider>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500 mi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eA6-Cf-qU7">
+                                                    <rect key="frame" x="305" y="11" width="54" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Jir-BV-Gk4" firstAttribute="leading" secondItem="FN4-wU-P5V" secondAttribute="leading" id="0ba-aL-ER6"/>
+                                                <constraint firstItem="Jir-BV-Gk4" firstAttribute="trailing" secondItem="eA6-Cf-qU7" secondAttribute="trailing" id="9kS-ba-OBa"/>
+                                                <constraint firstItem="FN4-wU-P5V" firstAttribute="leading" secondItem="iw6-9n-4J5" secondAttribute="leadingMargin" id="F6e-qW-FN6"/>
+                                                <constraint firstItem="eA6-Cf-qU7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FN4-wU-P5V" secondAttribute="trailing" id="Php-Pl-hvG"/>
+                                                <constraint firstItem="eA6-Cf-qU7" firstAttribute="firstBaseline" secondItem="FN4-wU-P5V" secondAttribute="firstBaseline" id="jGO-fJ-wJG"/>
+                                                <constraint firstItem="Jir-BV-Gk4" firstAttribute="top" secondItem="FN4-wU-P5V" secondAttribute="bottom" constant="8" id="oAj-7g-DWa"/>
+                                                <constraint firstItem="eA6-Cf-qU7" firstAttribute="trailing" secondItem="iw6-9n-4J5" secondAttribute="trailingMargin" id="rBc-la-8li"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Jir-BV-Gk4" secondAttribute="bottom" id="sm8-MR-y5K"/>
+                                                <constraint firstItem="FN4-wU-P5V" firstAttribute="top" secondItem="iw6-9n-4J5" secondAttribute="topMargin" id="vnX-iC-IkT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Vkn-5F-h7v" id="6by-rC-tRn"/>
+                            <outlet property="delegate" destination="Vkn-5F-h7v" id="kAZ-1Y-gg0"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="distanceLabel" destination="eA6-Cf-qU7" id="Jjp-W1-0CI"/>
+                        <outlet property="distanceSlider" destination="Jir-BV-Gk4" id="rPb-a1-RgH"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="joT-JX-bq5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048.8" y="341.37931034482762"/>
+        </scene>
+    </scenes>
+</document>

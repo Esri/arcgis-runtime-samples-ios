@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7OF-WW-ois">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Feature layer rendering mode (map)-->
+        <scene sceneID="dmm-Cq-FsP">
+            <objects>
+                <viewController storyboardIdentifier="FeatureLayerRenderingModeMapStoryboard" title="Feature layer rendering mode (map)" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7OF-WW-ois" customClass="FeatureLayerRenderingModeSceneViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tmZ-VH-cn3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="nae-Eq-pEL">
+                                <rect key="frame" x="0.0" y="44" width="375" height="690"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MHI-Dx-Wlm" userLabel="Dynamic Map View" customClass="AGSSceneView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="338"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vR4-Yr-oi4" userLabel="Static Map View" customClass="AGSSceneView">
+                                        <rect key="frame" x="0.0" y="352" width="375" height="338"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dynamic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4G-d2-Z1I">
+                                <rect key="frame" x="20" y="64" width="66.666666666666671" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Static" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQ5-jH-GCE">
+                                <rect key="frame" x="20" y="416" width="44" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0CO-T4-sXC">
+                                <rect key="frame" x="0.0" y="734" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="NaI-d4-KFb"/>
+                                    <barButtonItem title="Zoom In" id="rGg-1q-Ig1">
+                                        <connections>
+                                            <action selector="animateZoomAction:" destination="7OF-WW-ois" id="u4X-aW-1jF"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ERk-sO-DtG"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0CO-T4-sXC" firstAttribute="top" secondItem="nae-Eq-pEL" secondAttribute="bottom" id="3Xi-Vn-5aA"/>
+                            <constraint firstItem="nae-Eq-pEL" firstAttribute="trailing" secondItem="tmZ-VH-cn3" secondAttribute="trailing" id="7nl-US-aci"/>
+                            <constraint firstItem="aQ5-jH-GCE" firstAttribute="leading" secondItem="vR4-Yr-oi4" secondAttribute="leading" constant="20" id="806-bi-mIx"/>
+                            <constraint firstItem="nae-Eq-pEL" firstAttribute="top" secondItem="rqu-X2-DNl" secondAttribute="top" id="LQD-Or-nND"/>
+                            <constraint firstItem="nae-Eq-pEL" firstAttribute="leading" secondItem="tmZ-VH-cn3" secondAttribute="leading" id="TlB-Yj-NwB"/>
+                            <constraint firstItem="0CO-T4-sXC" firstAttribute="trailing" secondItem="tmZ-VH-cn3" secondAttribute="trailing" id="UIp-xW-pdT"/>
+                            <constraint firstItem="Y4G-d2-Z1I" firstAttribute="leading" secondItem="MHI-Dx-Wlm" secondAttribute="leading" constant="20" id="X04-cD-ezy"/>
+                            <constraint firstItem="Y4G-d2-Z1I" firstAttribute="top" secondItem="MHI-Dx-Wlm" secondAttribute="top" constant="20" id="fS9-bu-GEo"/>
+                            <constraint firstItem="0CO-T4-sXC" firstAttribute="leading" secondItem="tmZ-VH-cn3" secondAttribute="leading" id="lZ6-NV-qI0"/>
+                            <constraint firstItem="rqu-X2-DNl" firstAttribute="bottom" secondItem="0CO-T4-sXC" secondAttribute="bottom" id="msP-vE-uFw"/>
+                            <constraint firstItem="aQ5-jH-GCE" firstAttribute="top" secondItem="vR4-Yr-oi4" secondAttribute="top" constant="20" id="uFL-DX-gUw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rqu-X2-DNl"/>
+                    </view>
+                    <connections>
+                        <outlet property="dynamicSceneView" destination="MHI-Dx-Wlm" id="ey3-nL-f5Q"/>
+                        <outlet property="staticSceneView" destination="vR4-Yr-oi4" id="0jh-mM-3b3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JMI-gX-ZKf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-76" y="43.596059113300491"/>
+        </scene>
+    </scenes>
+</document>

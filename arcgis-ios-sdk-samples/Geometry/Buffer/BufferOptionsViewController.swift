@@ -34,7 +34,7 @@ class BufferOptionsViewController: UITableViewController {
         return formatter
     }()
     
-    var bufferDistance: Measurement<UnitLength> = Measurement(value: 0, unit: .miles) {
+    var bufferDistance = Measurement(value: 0, unit: UnitLength.miles) {
         didSet {
             updateUIForBufferRadius()
         }

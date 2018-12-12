@@ -87,6 +87,9 @@
                                                     <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
                                                         <!--2037-12-31 11:00:00 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="datePickerAction:" destination="8cL-Af-ycY" eventType="valueChanged" id="cmI-DQ-372"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -113,6 +116,9 @@
                                                     <date key="date" timeIntervalSinceReferenceDate="-93466799.429250002">
                                                         <!--1998-01-15 05:00:00 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="datePickerAction:" destination="8cL-Af-ycY" eventType="valueChanged" id="8DC-co-Kvz"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>

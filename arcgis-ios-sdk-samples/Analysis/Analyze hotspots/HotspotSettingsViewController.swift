@@ -28,14 +28,28 @@ class HotspotSettingsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateDatePickerLimits()
+    }
+    
+    /// Set the date picker limits to maintain a valid state.
+    private func updateDatePickerLimits() {
+        let oneDayInSeconds: TimeInterval = 24 * 60 * 60
+        // keep the start date less than the end date
+        startDatePicker.maximumDate = endDatePicker.date - oneDayInSeconds
+        // keep the end date greater than the start date
+        endDatePicker.minimumDate = startDatePicker.date + oneDayInSeconds
     }
     
     // MARK: - Actions
     
+    @IBAction func datePickerAction(_ sender: Any) {
+        updateDatePickerLimits()
+    }
+    
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
+    
     @IBAction func analyzeAction() {
         delegate?.hotspotSettingsViewController(self, didSelectDates: startDatePicker.date, toDate: endDatePicker.date)
     }

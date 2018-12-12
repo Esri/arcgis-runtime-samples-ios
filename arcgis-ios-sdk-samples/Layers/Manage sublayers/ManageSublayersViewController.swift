@@ -105,21 +105,10 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelega
             let navigationController = segue.destination as? UINavigationController,
             let controller = navigationController.viewControllers.first as? MapImageSublayersVC {
             
-            navigationController.presentationController?.delegate = self
-            
             controller.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 300)
             controller.mapImageLayer = self.mapImageLayer
             controller.removedMapImageSublayers = self.removedMapImageSublayers
         }
     }
-}
-
-extension ManageSublayersViewController: UIAdaptivePresentationControllerDelegate {
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        // present as popover even in size-constrained environments
-        return .none
-    }
-    
 }

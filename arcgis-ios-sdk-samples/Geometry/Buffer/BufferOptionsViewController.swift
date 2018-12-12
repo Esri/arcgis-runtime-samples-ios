@@ -47,7 +47,7 @@ class BufferOptionsViewController: UITableViewController {
     
     private func updateUIForBufferRadius() {
         // update the slider and label to match the buffer distance
-        distanceSlider?.value = Float(bufferDistance.converted(to: .miles).value)
+        distanceSlider?.value = Float(bufferDistance.value)
         distanceLabel?.text = measurementFormatter.string(from: bufferDistance)
     }
 

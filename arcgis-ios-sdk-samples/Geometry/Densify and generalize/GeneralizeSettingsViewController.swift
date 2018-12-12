@@ -16,7 +16,7 @@ import UIKit
 
 protocol GeneralizeSettingsViewControllerDelegate: AnyObject {
     
-    func generalizeSettingsViewController(_ generalizeSettingsViewController: GeneralizeSettingsViewController, didUpdateShouldGeneralize shouldGeneralize: Bool, maxDeviation: Double, shouldDensify: Bool, maxSegmentLength: Double)
+    func generalizeSettingsViewControllerDidUpdate(_ generalizeSettingsViewController: GeneralizeSettingsViewController)
 }
 
 class GeneralizeSettingsViewController: UITableViewController {
@@ -98,11 +98,10 @@ class GeneralizeSettingsViewController: UITableViewController {
             break
         }
         notifyDelegateOfUpdate()
-        tableView.reloadData()
     }
     
     private func notifyDelegateOfUpdate() {
-        delegate?.generalizeSettingsViewController(self, didUpdateShouldGeneralize: shouldGeneralize, maxDeviation: maxDeviation, shouldDensify: shouldDensify, maxSegmentLength: maxSegmentLength)
+        delegate?.generalizeSettingsViewControllerDidUpdate(self)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

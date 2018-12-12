@@ -43,10 +43,11 @@ class DensifyAndGeneralizeViewController: UIViewController {
     private var shouldDensify = false
     private var maxSegmentLength = 100.0
     
-    /// The base collection of points from which the original polyline and mulitpoint
-    /// geometries are made.
-    private let pointCollection: AGSMutablePointCollection = {
+    required init?(coder aDecoder: NSCoder) {
+        
         let spatialReference = AGSSpatialReference(wkid: 32126)
+        /// The base collection of points from which the original polyline and mulitpoint
+        /// geometries are made.
         let collection = AGSMutablePointCollection(spatialReference: spatialReference)
         collection.addPointWith(x: 2330611.130549, y: 202360.002957)
         collection.addPointWith(x: 2330583.834672, y: 202525.984012)
@@ -65,14 +66,10 @@ class DensifyAndGeneralizeViewController: UIViewController {
         collection.addPointWith(x: 2330680.644719, y: 206660.240923)
         collection.addPointWith(x: 2330386.957926, y: 207340.947204)
         collection.addPointWith(x: 2330485.861737, y: 207742.298501)
-        return collection
-    }()
-    
-    required init?(coder aDecoder: NSCoder) {
         
         // create the base geometries
-        originalPolyline = AGSPolyline(points: pointCollection.array())
-        let multipoint = AGSMultipoint(points: pointCollection.array())
+        originalPolyline = AGSPolyline(points: collection.array())
+        let multipoint = AGSMultipoint(points: collection.array())
         
         // create graphics for displaying the base points and lines
         let originalPolylineGraphic = AGSGraphic(geometry: originalPolyline, symbol: AGSSimpleLineSymbol(style: .dot, color: .red, width: 3))
@@ -160,12 +157,12 @@ class DensifyAndGeneralizeViewController: UIViewController {
 
 extension DensifyAndGeneralizeViewController: GeneralizeSettingsViewControllerDelegate {
     
-    func generalizeSettingsViewController(_ generalizeSettingsViewController: GeneralizeSettingsViewController, didUpdateShouldGeneralize shouldGeneralize: Bool, maxDeviation: Double, shouldDensify: Bool, maxSegmentLength: Double) {
+    func generalizeSettingsViewControllerDidUpdate(_ generalizeSettingsViewController: GeneralizeSettingsViewController) {
         // update the model with the new values
-        self.shouldDensify = shouldDensify
-        self.shouldGeneralize = shouldGeneralize
-        self.maxSegmentLength = maxSegmentLength
-        self.maxDeviation = maxDeviation
+        shouldDensify = generalizeSettingsViewController.shouldDensify
+        shouldGeneralize = generalizeSettingsViewController.shouldGeneralize
+        maxSegmentLength = generalizeSettingsViewController.maxSegmentLength
+        maxDeviation = generalizeSettingsViewController.maxDeviation
         
         // update the graphics for the new values
         updateGraphicsForDensifyAndGeneralize()

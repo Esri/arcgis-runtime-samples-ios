@@ -53,7 +53,7 @@ class BufferOptionsViewController: UITableViewController {
 
     @IBAction func bufferSliderAction(_ sender: UISlider) {
         // update the buffer distance for the slider value
-        bufferDistance = Measurement(value: Double(sender.value), unit: .miles)
+        bufferDistance.value = Double(sender.value)
         // notify the delegate with the new value
         delegate?.bufferOptionsViewController(self, bufferDistanceChangedTo: bufferDistance)
     }

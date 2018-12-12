@@ -36,11 +36,6 @@ class DirectionsListViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
     func updateLabels() {
         if self.route != nil {
             let miles = String(format: "%.2f", self.route.totalLength * 0.000621371)

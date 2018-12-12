@@ -16,44 +16,74 @@
 import UIKit
 import ArcGIS
 
-class RouteParametersViewController: UIViewController {
+class RouteParametersViewController: UITableViewController {
 
-    @IBOutlet var findBestSequenceSwitch: UISwitch!
-    @IBOutlet var preservceFirstStopSwitch: UISwitch!
-    @IBOutlet var preservceLastStopSwitch: UISwitch!
+    @IBOutlet var findBestSequenceSwitch: UISwitch?
+    @IBOutlet var preserveFirstStopSwitch: UISwitch?
+    @IBOutlet var preserveLastStopSwitch: UISwitch?
     
-    var routeParameters: AGSRouteParameters!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.setupUI()
-    }
-    
-    func setupUI() {
-        if self.routeParameters != nil {
-            self.findBestSequenceSwitch.isOn = self.routeParameters.findBestSequence
-            self.preservceFirstStopSwitch.isOn = self.routeParameters.preserveFirstStop
-            self.preservceLastStopSwitch.isOn = self.routeParameters.preserveLastStop
-            self.enableSubSwitches(self.routeParameters.findBestSequence)
+    var routeParameters: AGSRouteParameters? {
+        didSet {
+            setupUI()
         }
     }
     
-    func enableSubSwitches(_ enable: Bool) {
-        self.preservceLastStopSwitch.isEnabled = enable
-        self.preservceFirstStopSwitch.isEnabled = enable
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+        preferredContentSize.height = tableView.contentSize.height
+    }
+    
+    private func setupUI() {
+        guard let routeParameters = routeParameters else {
+            return
+        }
+        
+        findBestSequenceSwitch?.isOn = routeParameters.findBestSequence
+        preserveFirstStopSwitch?.isOn = routeParameters.preserveFirstStop
+        preserveLastStopSwitch?.isOn = routeParameters.preserveLastStop
     }
 
     // MARK: - Actions
     
     @IBAction func switchValueChanged(_ sender: UISwitch) {
-        if sender == self.findBestSequenceSwitch {
-            self.routeParameters.findBestSequence = sender.isOn
-            self.enableSubSwitches(sender.isOn)
-        } else if sender == self.preservceFirstStopSwitch {
-            self.routeParameters.preserveFirstStop = self.preservceFirstStopSwitch.isOn
-        } else {
-            self.routeParameters.preserveLastStop = self.preservceLastStopSwitch.isOn
+        switch sender {
+        case findBestSequenceSwitch:
+            routeParameters?.findBestSequence = sender.isOn
+            let sections: IndexSet = [1]
+            tableView.performBatchUpdates({
+                if sender.isOn {
+                    tableView?.insertSections(sections, with: .fade)
+                } else {
+                    tableView?.deleteSections(sections, with: .fade)
+                }
+            }, completion: { (finished) in
+                guard finished else {
+                    return
+                }
+                self.preferredContentSize.height = self.tableView.contentSize.height
+            })
+            setupUI()
+        case preserveFirstStopSwitch:
+            routeParameters?.preserveFirstStop = sender.isOn
+        case preserveLastStopSwitch:
+            routeParameters?.preserveLastStop = sender.isOn
+        default:
+            break
         }
     }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        let superCount = super.numberOfSections(in: tableView)
+        if routeParameters?.findBestSequence == false {
+            return superCount - 1
+        }
+        return superCount
+    }
+
 }

@@ -502,6 +502,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Feature layer rendering mode (scene)</string>
+				<key>storyboardName</key>
+				<string>FeatureLayerRenderingModeScene</string>
+				<key>descriptionText</key>
+				<string>Control the rendering mode of feature layers in scenes.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Feature layer (feature service)</string>
 				<key>storyboardName</key>
 				<string>FeatureLayerURL</string>
@@ -933,6 +941,22 @@
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to use the AGSGeometryEngine to evaluate the spatial relationships between geometries.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Densify and generalize</string>
+				<key>storyboardName</key>
+				<string>DensifyAndGeneralize</string>
+				<key>descriptionText</key>
+				<string>Apply densify and generalize functions to polyline geometry.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Buffer</string>
+				<key>storyboardName</key>
+				<string>Buffer</string>
+				<key>descriptionText</key>
+				<string>Create buffers around the tap location with a given radius.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1206,6 +1230,14 @@
 				<string>SceneLayerSelection</string>
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to identify geoelements in a scene layer.</string>
+			</dict>
+			<dict>
+				<key>descriptionText</key>
+				<string>Change the appearance of the atmosphere in a scene.</string>
+				<key>storyboardName</key>
+				<string>ChangeAtmosphereEffect</string>
+				<key>displayName</key>
+				<string>Change atmosphere effect</string>
 			</dict>
 		</array>
 	</dict>

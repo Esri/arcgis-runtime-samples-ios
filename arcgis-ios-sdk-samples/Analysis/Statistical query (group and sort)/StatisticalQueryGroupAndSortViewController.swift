@@ -24,6 +24,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     
     private var serviceFeatureTable: AGSServiceFeatureTable?
     private var fieldNames = [String]()
+    private var numericFieldNames = [String]()
     private var selectedGroupByFieldNames = [String]()
     private var orderByFields = [AGSOrderBy]()
     private var selectedOrderByFields = [AGSOrderBy]()
@@ -65,12 +66,21 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             self.titleLabel.text = "Statistics: \(tableName)"
 
             // Get field names
-            self.fieldNames = serviceFeatureTable.fields.compactMap({ (field) -> String? in
+            self.fieldNames = serviceFeatureTable.fields.compactMap { (field) -> String? in
                 if field.type != .OID && field.type != .globalID {
                     return field.name
                 }
                 return nil
-            })
+            }
+            self.numericFieldNames = serviceFeatureTable.fields.compactMap { (field) -> String? in
+                if field.type == .double ||
+                    field.type == .float ||
+                    field.type == .int32 ||
+                    field.type == .int16 {
+                    return field.name
+                }
+                return nil
+            }
         })
         
         // Setup UI Controls
@@ -161,7 +171,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             let navController = storyboard!.instantiateViewController(withIdentifier: "AddStatisticDefinitionsViewController") as! UINavigationController
             let addStatisticDefinitionsViewController = navController.viewControllers.first as! AddStatisticDefinitionsViewController
             addStatisticDefinitionsViewController.delegate = self
-            addStatisticDefinitionsViewController.fieldNames = fieldNames
+            addStatisticDefinitionsViewController.fieldNames = numericFieldNames
             setupAndPresent(viewController: navController)
         case .groupByFields:
             // Init view controller and set properties

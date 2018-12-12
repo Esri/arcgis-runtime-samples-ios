@@ -30,6 +30,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     private var selectedOrderByFields = [AGSOrderBy]()
     private var statisticDefinitions = [AGSStatisticDefinition]()
     private var statisticTypes = ["Average", "Count", "Maximum", "Minimum", "StandardDeviation", "Sum", "Variance"]
+    private var statisticsQueryResult: AGSStatisticsQueryResult?
     
     private enum Section: CaseIterable {
         case definitions, groupByFields, orderByFields
@@ -123,31 +124,20 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             // If there an error, display it
             if let error = error {
                 self.presentAlert(error: error)
-            } else if let statisticRecordEnumerator = statisticsQueryResult?.statisticRecordEnumerator() {
+            } else if let statisticsQueryResult = statisticsQueryResult {
                 // Setup result view controller
-                let storyboard = UIStoryboard(name: "ExpandableTableViewController", bundle: nil)
-                let expandableTableViewController = storyboard.instantiateViewController(withIdentifier: "ExpandableTableViewController") as! ExpandableTableViewController
-                expandableTableViewController.tableTitle = "Statistical Query Results"
-                
-                // Let's build result message
-                while let statisticRecord = statisticRecordEnumerator.nextObject() {
-                    
-                    let groups = self.selectedGroupByFieldNames.compactMap { (fieldName) -> String? in
-                        return statisticRecord.group[fieldName] as? String
-                    }
-                    expandableTableViewController.sectionHeaderTitles.append(groups.joined(separator: ", "))
-                    
-                    var statistics = [(String, String)]()
-                    for (key, value) in statisticRecord.statistics {
-                        statistics.append((key, String(describing: value)))
-                    }
-                    expandableTableViewController.sectionItems.append(statistics)
-                }
-                
-                // Show result
-                self.navigationController?.show(expandableTableViewController, sender: self)
+                self.statisticsQueryResult = statisticsQueryResult
+                self.performSegue(withIdentifier: "ShowResultsSegue", sender: self)
             }
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navController = segue.destination as? UINavigationController,
+            let controller = navController.viewControllers.first as? GroupSortQueryResultsViewController {
+            controller.selectedGroupByFieldNames = selectedGroupByFieldNames
+            controller.statisticsQueryResult = statisticsQueryResult
+        }
     }
     
     @IBAction func resetAction(_ sender: Any) {
@@ -381,4 +371,81 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             return "Descending"
         }
     }
+}
+
+class GroupSortQueryResultsViewController: UITableViewController {
+    
+    var statisticsQueryResult: AGSStatisticsQueryResult? {
+        didSet {
+            statisticRecords = statisticsQueryResult?.statisticRecordEnumerator().allObjects ?? []
+        }
+    }
+    
+    var selectedGroupByFieldNames: [String] = []
+    
+    var statisticRecords: [AGSStatisticRecord] = [] {
+        didSet {
+            guard isViewLoaded else {
+                return
+            }
+            tableView?.reloadData()
+        }
+    }
+    
+    @IBAction func closeButtonAction(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? GroupSortQueryResultsDetailViewController,
+            let cell = sender as? UITableViewCell,
+            let indexPath = tableView.indexPath(for: cell) {
+            controller.title = cell.textLabel?.text
+            controller.statisticRecord = statisticRecords[indexPath.row]
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return statisticRecords.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell", for: indexPath)
+        let record = statisticRecords[indexPath.row]
+        let groupNames = selectedGroupByFieldNames.compactMap { record.group[$0] as? String }
+        cell.textLabel?.text = groupNames.joined(separator: ", ")
+        return cell
+    }
+
+}
+
+class GroupSortQueryResultsDetailViewController: UITableViewController {
+    
+    var statisticRecord: AGSStatisticRecord? {
+        didSet {
+            statistics = statisticRecord?.statistics.sorted { $0.key < $1.key } ?? []
+        }
+    }
+    
+    var statistics: [(key: String, value: Any)] = [] {
+        didSet {
+            guard isViewLoaded else {
+                return
+            }
+            tableView?.reloadData()
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return statistics.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StatisticCell", for: indexPath)
+        let statistic = statistics[indexPath.row]
+        cell.textLabel?.text = statistic.key
+        cell.detailTextLabel?.text = String(describing: statistic.value)
+        return cell
+    }
+
 }

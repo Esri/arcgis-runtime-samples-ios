@@ -234,14 +234,13 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "RouteSettingsSegue" {
-            let controller = segue.destination as! RouteParametersViewController
+        if let controller = segue.destination as? RouteParametersViewController {
             controller.presentationController?.delegate = self
-            controller.preferredContentSize = CGSize(width: 300, height: 125)
-            controller.routeParameters = self.routeParameters
-        } else if segue.identifier == "DirectionsListSegue" {
-            self.directionsListViewController = segue.destination as? DirectionsListViewController
-            self.directionsListViewController.delegate = self
+            controller.preferredContentSize = CGSize(width: 300, height: 150)
+            controller.routeParameters = routeParameters
+        } else if let directionsListViewController = segue.destination as? DirectionsListViewController {
+            self.directionsListViewController = directionsListViewController
+            directionsListViewController.delegate = self
         }
     }
     

@@ -502,6 +502,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Feature layer rendering mode (scene)</string>
+				<key>storyboardName</key>
+				<string>FeatureLayerRenderingModeScene</string>
+				<key>descriptionText</key>
+				<string>Control the rendering mode of feature layers in scenes.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Feature layer (feature service)</string>
 				<key>storyboardName</key>
 				<string>FeatureLayerURL</string>
@@ -1206,6 +1214,14 @@
 				<string>SceneLayerSelection</string>
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to identify geoelements in a scene layer.</string>
+			</dict>
+			<dict>
+				<key>descriptionText</key>
+				<string>Change the appearance of the atmosphere in a scene.</string>
+				<key>storyboardName</key>
+				<string>ChangeAtmosphereEffect</string>
+				<key>displayName</key>
+				<string>Change atmosphere effect</string>
 			</dict>
 		</array>
 	</dict>

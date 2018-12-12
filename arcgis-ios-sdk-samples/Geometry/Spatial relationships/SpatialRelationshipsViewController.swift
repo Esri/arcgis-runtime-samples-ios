@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDelegate, UIPopoverPresentationControllerDelegate {
+class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDelegate {
 
     @IBOutlet weak var mapView: AGSMapView!
     private let graphicsOverlay = AGSGraphicsOverlay()
@@ -90,7 +90,10 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
         super.viewDidLoad()
         
         // Add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SpatialRelationshipsViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
+            "SpatialRelationshipsViewController",
+            "SpatialRelationshipsTableViewController"
+        ]
         
         // Set the touch delegate
         mapView.touchDelegate = self
@@ -131,76 +134,86 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
             if let error = result.error {
                 self.presentAlert(error: error)
             } else if let identifiedGraphic = result.graphics.first {
-                self.updateForIdentifiedGraphic(identifiedGraphic, popoverPoint: screenPoint)
+                // Select identified graphic
+                identifiedGraphic.isSelected = true
+                self.showRelationships(for: identifiedGraphic, popoverPoint: screenPoint)
             }
         }
     }
     
-    private func updateForIdentifiedGraphic(_ graphic: AGSGraphic, popoverPoint: CGPoint) {
+    // MARK: Helper Function
+    
+    struct RelationshipsSection {
+        let relationships: [String]
+        let title: String
+    }
+    
+    private func showRelationships(for graphic: AGSGraphic, popoverPoint: CGPoint) {
         
-        // Select identified graphic
-        graphic.isSelected = true
-        
-        // Return if there is no graphic identified or geometry is not available
         guard let selectedGeometry = graphic.geometry,
-            let tableInfoArray = expandableTableInfo(geometryType: selectedGeometry.geometryType) else {
+            let tableSections = relationshipTableSections(for: selectedGeometry.geometryType),
+            let controller = storyboard?.instantiateViewController(withIdentifier: "SpatialRelationshipsTableViewController") as? SpatialRelationshipsTableViewController else {
             return
         }
         
-        // Setup result view controller
-        let storyboard = UIStoryboard(name: "ExpandableTableViewController", bundle: nil)
-        let expandableTableViewController = storyboard.instantiateViewController(withIdentifier: "ExpandableTableViewController") as! ExpandableTableViewController
+        controller.sections = tableSections
         
-        for tableInfo in tableInfoArray {
-            let sectionItems = tableInfo.relationships.map { ($0, "") }
-            expandableTableViewController.sectionItems.append(sectionItems)
-            expandableTableViewController.sectionHeaderTitles.append(tableInfo.title)
-        }
+        controller.modalPresentationStyle = .popover
+        controller.presentationController?.delegate = self
+        controller.popoverPresentationController?.sourceView = mapView
+        controller.popoverPresentationController?.sourceRect = CGRect(origin: popoverPoint, size: .zero)
+        controller.preferredContentSize = CGSize(width: 300, height: 200)
         
         // Show the results
-        expandableTableViewController.modalPresentationStyle = .popover
-        expandableTableViewController.presentationController?.delegate = self
-        expandableTableViewController.popoverPresentationController?.sourceView = mapView
-        expandableTableViewController.popoverPresentationController?.sourceRect = CGRect(origin: popoverPoint, size: .zero)
-        expandableTableViewController.preferredContentSize = CGSize(width: 300, height: 200)
-        
-        present(expandableTableViewController, animated: true)
+        present(controller, animated: true)
     }
     
-    private func expandableTableInfo(geometryType: AGSGeometryType) -> [(relationships: [String], title: String)]? {
+    private func relationshipTableSections(for geometryType: AGSGeometryType) -> [RelationshipsSection]? {
         
         guard let pointGeometry = pointGraphic.geometry,
             let polylineGeometry = polylineGraphic.geometry,
             let polygonGeometry = polygonGraphic.geometry else {
-                return []
+                return nil
         }
         
         switch geometryType {
         case .point:
-            let polylineRelationships = getSpatialRelationships(of: pointGeometry, with: polylineGeometry)
-            let polygonRelationships = getSpatialRelationships(of: pointGeometry, with: polygonGeometry)
-            return [(polylineRelationships, "Relationship With Polyline"),
-                    (polygonRelationships, "Relationship With Polygon")]
-            
+            return [
+                RelationshipsSection(
+                    relationships: getSpatialRelationships(of: pointGeometry, with: polylineGeometry),
+                    title: "Relationship With Polyline"
+                ),
+                RelationshipsSection(
+                    relationships: getSpatialRelationships(of: pointGeometry, with: polygonGeometry),
+                    title: "Relationship With Polygon"
+                )
+            ]
         case .polyline:
-            let pointRelationships = getSpatialRelationships(of: polylineGeometry, with: pointGeometry)
-            let polygonRelationships = getSpatialRelationships(of: polylineGeometry, with: polygonGeometry)
-            
-            return [(pointRelationships, "Relationship With Point"),
-                    (polygonRelationships, "Relationship With Polygon")]
-            
+            return [
+                RelationshipsSection(
+                    relationships: getSpatialRelationships(of: polylineGeometry, with: pointGeometry),
+                    title: "Relationship With Point"
+                ),
+                RelationshipsSection(
+                    relationships: getSpatialRelationships(of: polylineGeometry, with: polygonGeometry),
+                    title: "Relationship With Polygon"
+                )
+            ]
         case .polygon:
-            let pointRelationships = getSpatialRelationships(of: polygonGeometry, with: pointGeometry)
-            let polylineRelationships = getSpatialRelationships(of: polygonGeometry, with: polylineGeometry)
-            return [(pointRelationships, "Relationship With Point"),
-                    (polylineRelationships, "Relationship With Polyline")]
-            
+            return [
+                RelationshipsSection(
+                    relationships: getSpatialRelationships(of: polygonGeometry, with: pointGeometry),
+                    title: "Relationship With Point"
+                ),
+                RelationshipsSection(
+                    relationships: getSpatialRelationships(of: polygonGeometry, with: polylineGeometry),
+                    title: "Relationship With Polyline"
+                )
+            ]
         default:
             return nil
         }
     }
-    
-    // MARK: Helper Function
     
     /// This function checks the different relationships between
     /// two geometries and returns result as an array of strings
@@ -234,16 +247,18 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
         }
         return relationships
     }
-    
-    // MARK: UIPopoverPresentationControllerDelegate
 
+}
+
+extension SpatialRelationshipsViewController: UIPopoverPresentationControllerDelegate {
+    
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-        //
         // Clear selection when popover is dismissed
         graphicsOverlay.clearSelection()
     }
+    
 }

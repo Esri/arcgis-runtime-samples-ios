@@ -375,6 +375,9 @@ class GroupSortQueryResultsViewController: UITableViewController {
     
     var statisticRecords: [AGSStatisticRecord] = [] {
         didSet {
+            guard isViewLoaded else {
+                return
+            }
             tableView?.reloadData()
         }
     }
@@ -410,12 +413,15 @@ class GroupSortQueryResultsDetailViewController: UITableViewController {
     
     var statisticRecord: AGSStatisticRecord? {
         didSet {
-            statistics = statisticRecord?.statistics.sorted(by: { $0.key < $1.key }) ?? []
+            statistics = statisticRecord?.statistics.sorted { $0.key < $1.key } ?? []
         }
     }
     
     var statistics: [(key: String, value: Any)] = [] {
         didSet {
+            guard isViewLoaded else {
+                return
+            }
             tableView?.reloadData()
         }
     }

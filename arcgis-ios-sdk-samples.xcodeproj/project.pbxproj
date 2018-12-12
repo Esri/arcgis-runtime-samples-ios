@@ -504,6 +504,11 @@
 		C7432D3A2187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7432D382187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift */; };
 		C7432D3B2187C450009BF1D8 /* ShowLabelsOnLayers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7432D392187C450009BF1D8 /* ShowLabelsOnLayers.storyboard */; };
 		C7432D3C2187C499009BF1D8 /* ShowLabelsOnLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7432D382187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift */; };
+		C74ECB4F21C17E9100129D6D /* GeneralizeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74ECB4C21C17E9100129D6D /* GeneralizeSettingsViewController.swift */; };
+		C74ECB5021C17E9100129D6D /* DensifyAndGeneralizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74ECB4D21C17E9100129D6D /* DensifyAndGeneralizeViewController.swift */; };
+		C74ECB5121C17E9100129D6D /* DensifyAndGeneralize.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C74ECB4E21C17E9100129D6D /* DensifyAndGeneralize.storyboard */; };
+		C74ECB5221C1991000129D6D /* DensifyAndGeneralizeViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C74ECB4D21C17E9100129D6D /* DensifyAndGeneralizeViewController.swift */; };
+		C74ECB5321C1991300129D6D /* GeneralizeSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C74ECB4C21C17E9100129D6D /* GeneralizeSettingsViewController.swift */; };
 		C76817072163DB7C00EC82F4 /* DisplayKML.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C76817052163DB7C00EC82F4 /* DisplayKML.storyboard */; };
 		C76817082163DB7C00EC82F4 /* DisplayKMLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76817062163DB7C00EC82F4 /* DisplayKMLViewController.swift */; };
 		C76817092163DD8300EC82F4 /* DisplayKMLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C76817062163DB7C00EC82F4 /* DisplayKMLViewController.swift */; };
@@ -647,6 +652,8 @@
 				D9EE379B20E2DC5800BF8AD1 /* LineOfSightGeoElementViewController.swift in CopyFiles */,
 				4C2B52D720D2C3180071EBB6 /* DistanceMeasurementAnalysisViewController.swift in CopyFiles */,
 				F4E5CD7E207058D8000A6D35 /* FeatureLayerRenderingModeMapViewController.swift in CopyFiles */,
+				C74ECB5221C1991000129D6D /* DensifyAndGeneralizeViewController.swift in CopyFiles */,
+				C74ECB5321C1991300129D6D /* GeneralizeSettingsViewController.swift in CopyFiles */,
 				F4159C72209262200016E53D /* OpenSceneViewController.swift in CopyFiles */,
 				1230046D1FE2F77F00303AC2 /* LineOfSightLocationViewController.swift in CopyFiles */,
 				127D29FA200EC69100DD6CDC /* ViewshedLocationViewController.swift in CopyFiles */,
@@ -1175,6 +1182,9 @@
 		C7237D0D2190F07500A72C76 /* DisplayLocationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLocationSettingsViewController.swift; sourceTree = "<group>"; };
 		C7432D382187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowLabelsOnLayersViewController.swift; sourceTree = "<group>"; };
 		C7432D392187C450009BF1D8 /* ShowLabelsOnLayers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ShowLabelsOnLayers.storyboard; sourceTree = "<group>"; };
+		C74ECB4C21C17E9100129D6D /* GeneralizeSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralizeSettingsViewController.swift; sourceTree = "<group>"; };
+		C74ECB4D21C17E9100129D6D /* DensifyAndGeneralizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DensifyAndGeneralizeViewController.swift; sourceTree = "<group>"; };
+		C74ECB4E21C17E9100129D6D /* DensifyAndGeneralize.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DensifyAndGeneralize.storyboard; sourceTree = "<group>"; };
 		C76817052163DB7C00EC82F4 /* DisplayKML.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayKML.storyboard; sourceTree = "<group>"; };
 		C76817062163DB7C00EC82F4 /* DisplayKMLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayKMLViewController.swift; sourceTree = "<group>"; };
 		C768170B2163E31700EC82F4 /* US_State_Capitals.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = US_State_Capitals.kml; sourceTree = "<group>"; };
@@ -2137,6 +2147,7 @@
 				E4477CBC20EC0CAE004E14F9 /* List transformations */,
 				940A73F220E5889B00A06C80 /* Cut geometry */,
 				215E23CE21024715001DE092 /* Spatial relationships */,
+				C74ECB4B21C17D8F00129D6D /* Densify and generalize */,
 			);
 			path = Geometry;
 			sourceTree = "<group>";
@@ -2920,6 +2931,16 @@
 			path = "Show labels on layers";
 			sourceTree = "<group>";
 		};
+		C74ECB4B21C17D8F00129D6D /* Densify and generalize */ = {
+			isa = PBXGroup;
+			children = (
+				C74ECB4E21C17E9100129D6D /* DensifyAndGeneralize.storyboard */,
+				C74ECB4D21C17E9100129D6D /* DensifyAndGeneralizeViewController.swift */,
+				C74ECB4C21C17E9100129D6D /* GeneralizeSettingsViewController.swift */,
+			);
+			path = "Densify and generalize";
+			sourceTree = "<group>";
+		};
 		C76817042163DA8D00EC82F4 /* Display KML */ = {
 			isa = PBXGroup;
 			children = (
@@ -3387,6 +3408,7 @@
 				3E4BF47D1C5BDDCA00D85919 /* san-diego-locator.loc.xml in Resources */,
 				D97B7E5C1FD9BFE700E1239D /* Subdivisions.prj in Resources */,
 				C7AF465F21B1C8AC0050CC49 /* ChangeAtmosphereEffect.storyboard in Resources */,
+				C74ECB5121C17E9100129D6D /* DensifyAndGeneralize.storyboard in Resources */,
 				D9EE379720E2CC7700BF8AD1 /* dolmus_front.jpeg in Resources */,
 				3E0D3AD71AFD481900FC60D6 /* Main.storyboard in Resources */,
 				3EABC7B41DB181DD00C161C6 /* ShastaBW.tfw in Resources */,
@@ -3665,6 +3687,7 @@
 				3EC39C3F1C9B47C2003F6459 /* OfflineEditingViewController.swift in Sources */,
 				D9EE378C20E2C03100BF8AD1 /* LineOfSightGeoElementViewController.swift in Sources */,
 				3ED028E21B8E3AA500ACA70D /* OverrideRendererViewController.swift in Sources */,
+				C74ECB5021C17E9100129D6D /* DensifyAndGeneralizeViewController.swift in Sources */,
 				218409DF1FE9A1E00098BC40 /* AddStatisticDefinitionsViewController.swift in Sources */,
 				3E4BF4561C5BD66C00D85919 /* OfflineGeocodeViewController.swift in Sources */,
 				3E0B584E1E36BCCD00951767 /* HotspotSettingsViewController.swift in Sources */,
@@ -3715,6 +3738,7 @@
 				3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */,
 				21E9CDED1EF9C5EA00BD4D7D /* DisplayGridViewController.swift in Sources */,
 				09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */,
+				C74ECB4F21C17E9100129D6D /* GeneralizeSettingsViewController.swift in Sources */,
 				21E914411FDEFBF800C7D6DC /* StatisticalQueryGroupAndSortViewController.swift in Sources */,
 				4CC00F7520C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift in Sources */,
 				3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */,

@@ -21,9 +21,7 @@ protocol MapImageSublayersVCDelegate: AnyObject {
     func mapImageSublayersVC(mapImageSublayersVC: MapImageSublayersVC, didCloseWith removedMapImageSublayers: [AGSArcGISMapImageSublayer])
 }
 
-class MapImageSublayersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    @IBOutlet var tableView: UITableView!
+class MapImageSublayersVC: UITableViewController {
     
     var mapImageLayer: AGSArcGISMapImageLayer!
     var removedMapImageSublayers: [AGSArcGISMapImageSublayer]!
@@ -33,17 +31,16 @@ class MapImageSublayersVC: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.isEditing = true
-        self.tableView.allowsSelectionDuringEditing = true
+        tableView.isEditing = true
     }
     
     // MARK: - UITableViewDataSource
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return self.mapImageLayer?.mapImageSublayers.count ?? 0
         } else {
@@ -51,7 +48,7 @@ class MapImageSublayersVC: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MapImageSublayerCell", for: indexPath)
         
@@ -66,16 +63,28 @@ class MapImageSublayersVC: UIViewController, UITableViewDataSource, UITableViewD
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "Added" : "Removed (Tap to add)"
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return section == 0 ? "Added" : "Removed"
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return indexPath.section == 0
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        switch indexPath.section {
+        case 0:
+            return .delete
+        case 1:
+            return .insert
+        default:
+            return .none
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
             
             tableView.beginUpdates()
             
@@ -96,25 +105,7 @@ class MapImageSublayersVC: UIViewController, UITableViewDataSource, UITableViewD
             tableView.insertRows(at: [indexPath], with: .automatic)
             
             tableView.endUpdates()
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return indexPath.section == 0
-    }
-    
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
-        let sublayer = self.mapImageLayer.mapImageSublayers[sourceIndexPath.row]
-        self.mapImageLayer.mapImageSublayers.removeObject(at: sourceIndexPath.row)
-        self.mapImageLayer.mapImageSublayers.insert(sublayer, at: destinationIndexPath.row)
-    }
-    
-    // MARK: - UITableViewDelegate
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if indexPath.section == 1 {
+        case .insert:
             
             tableView.beginUpdates()
             
@@ -133,10 +124,25 @@ class MapImageSublayersVC: UIViewController, UITableViewDataSource, UITableViewD
             tableView.insertRows(at: [indexPath], with: .automatic)
             
             tableView.endUpdates()
+        default:
+            break
         }
     }
     
-    func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.section == 0
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+        let sublayer = self.mapImageLayer.mapImageSublayers[sourceIndexPath.row]
+        self.mapImageLayer.mapImageSublayers.removeObject(at: sourceIndexPath.row)
+        self.mapImageLayer.mapImageSublayers.insert(sublayer, at: destinationIndexPath.row)
+    }
+    
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
         
         if sourceIndexPath.section != proposedDestinationIndexPath.section {
             return sourceIndexPath

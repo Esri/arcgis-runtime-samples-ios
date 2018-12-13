@@ -78,7 +78,7 @@ class ClipGeometryViewController: UIViewController {
             spatialReference: .webMercator())
         
         /// A semi-transparent blue color for the fill.
-        let fillColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.2)
+        let fillColor = UIColor.blue.withAlphaComponent(0.2)
         /// The fill symbol for displaying Colorado.
         let fillSymbol = AGSSimpleFillSymbol(
             style: .solid,

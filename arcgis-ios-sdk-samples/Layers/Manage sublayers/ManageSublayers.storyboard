@@ -31,7 +31,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="J9K-Vc-wO5"/>
                                     <barButtonItem title="Manage Sublayers" id="CmR-Ri-JIK">
                                         <connections>
-                                            <segue destination="cg1-iZ-LA9" kind="presentation" identifier="MapImageSublayersSegue" id="MXS-1S-AVQ"/>
+                                            <segue destination="cg1-iZ-LA9" kind="presentation" identifier="MapImageSublayersSegue" modalPresentationStyle="formSheet" id="MXS-1S-AVQ"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="lp2-zd-J6k"/>
@@ -63,13 +63,13 @@
         <scene sceneID="hgS-yY-ZCr">
             <objects>
                 <tableViewController id="Cix-X6-4BY" customClass="MapImageSublayersVC" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7uH-wp-jAp">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="7uH-wp-jAp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MapImageSublayerCell" id="tRt-wA-mP0">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tRt-wA-mP0" id="rzu-yR-jQz">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>

@@ -75,7 +75,7 @@ class FeatureLayerRenderingModeMapViewController: UIViewController {
             self.dynamicMapView.setViewpoint(zoomedInViewpoint, duration: 5, completion: nil)
             self.staticMapView.setViewpoint(zoomedInViewpoint, duration: 5, completion: nil)
         }
-        zoomed = !zoomed
+        zoomed.toggle()
     }
     
 }

@@ -498,6 +498,9 @@
 		C7094788215D68C400BA0969 /* OfflineMapParameterOverridesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7094785215D36BA00BA0969 /* OfflineMapParameterOverridesViewController.swift */; };
 		C712881A2183CEE1007502A6 /* ColorPickerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C76F75712182729700938D8D /* ColorPickerViewController.swift */; };
 		C7237D0E2190F07500A72C76 /* DisplayLocationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7237D0D2190F07500A72C76 /* DisplayLocationSettingsViewController.swift */; };
+		C734B1F421C2DDE500E1BE76 /* ClipGeometryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C734B1F221C2DDE500E1BE76 /* ClipGeometryViewController.swift */; };
+		C734B1F521C2DDE500E1BE76 /* ClipGeometry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C734B1F321C2DDE500E1BE76 /* ClipGeometry.storyboard */; };
+		C734B1F621C2DDF600E1BE76 /* ClipGeometryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C734B1F221C2DDE500E1BE76 /* ClipGeometryViewController.swift */; };
 		C7432D3A2187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7432D382187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift */; };
 		C7432D3B2187C450009BF1D8 /* ShowLabelsOnLayers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7432D392187C450009BF1D8 /* ShowLabelsOnLayers.storyboard */; };
 		C7432D3C2187C499009BF1D8 /* ShowLabelsOnLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7432D382187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift */; };
@@ -654,6 +657,7 @@
 				D9EE379B20E2DC5800BF8AD1 /* LineOfSightGeoElementViewController.swift in CopyFiles */,
 				4C2B52D720D2C3180071EBB6 /* DistanceMeasurementAnalysisViewController.swift in CopyFiles */,
 				F4E5CD7E207058D8000A6D35 /* FeatureLayerRenderingModeMapViewController.swift in CopyFiles */,
+				C734B1F621C2DDF600E1BE76 /* ClipGeometryViewController.swift in CopyFiles */,
 				C74ECB5221C1991000129D6D /* DensifyAndGeneralizeViewController.swift in CopyFiles */,
 				C74ECB5321C1991300129D6D /* GeneralizeSettingsViewController.swift in CopyFiles */,
 				F4159C72209262200016E53D /* OpenSceneViewController.swift in CopyFiles */,
@@ -1181,6 +1185,8 @@
 		C7094782215D34BA00BA0969 /* GenerateOfflineMapOverridesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateOfflineMapOverridesViewController.swift; sourceTree = "<group>"; };
 		C7094785215D36BA00BA0969 /* OfflineMapParameterOverridesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineMapParameterOverridesViewController.swift; sourceTree = "<group>"; };
 		C7237D0D2190F07500A72C76 /* DisplayLocationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLocationSettingsViewController.swift; sourceTree = "<group>"; };
+		C734B1F221C2DDE500E1BE76 /* ClipGeometryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClipGeometryViewController.swift; sourceTree = "<group>"; };
+		C734B1F321C2DDE500E1BE76 /* ClipGeometry.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClipGeometry.storyboard; sourceTree = "<group>"; };
 		C7432D382187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowLabelsOnLayersViewController.swift; sourceTree = "<group>"; };
 		C7432D392187C450009BF1D8 /* ShowLabelsOnLayers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ShowLabelsOnLayers.storyboard; sourceTree = "<group>"; };
 		C74ECB4C21C17E9100129D6D /* GeneralizeSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralizeSettingsViewController.swift; sourceTree = "<group>"; };
@@ -2139,6 +2145,7 @@
 				123AC27A20E588A00026A7D6 /* Geodesic operations */,
 				E4477CBC20EC0CAE004E14F9 /* List transformations */,
 				940A73F220E5889B00A06C80 /* Cut geometry */,
+				C734B1F121C2DD7C00E1BE76 /* Clip geometry */,
 				215E23CE21024715001DE092 /* Spatial relationships */,
 				C74ECB4B21C17D8F00129D6D /* Densify and generalize */,
 				C7E9D7C221C04B2100E6C47E /* Buffer */,
@@ -2916,6 +2923,15 @@
 			path = "Color Picker";
 			sourceTree = "<group>";
 		};
+		C734B1F121C2DD7C00E1BE76 /* Clip geometry */ = {
+			isa = PBXGroup;
+			children = (
+				C734B1F321C2DDE500E1BE76 /* ClipGeometry.storyboard */,
+				C734B1F221C2DDE500E1BE76 /* ClipGeometryViewController.swift */,
+			);
+			path = "Clip geometry";
+			sourceTree = "<group>";
+		};
 		C7432D372187C405009BF1D8 /* Show labels on layers */ = {
 			isa = PBXGroup;
 			children = (
@@ -3372,6 +3388,7 @@
 				3E41DD741B9A241600DA11CC /* AddFeatures.storyboard in Resources */,
 				10859BAB1FE0AAE400F6E552 /* FeatureLayerExtrusion.storyboard in Resources */,
 				3EABC7C41DB191BC00C161C6 /* Shasta_Elevation.tif.ovr in Resources */,
+				C734B1F521C2DDE500E1BE76 /* ClipGeometry.storyboard in Resources */,
 				3E4BF47C1C5BDDCA00D85919 /* san-diego-locator.loc in Resources */,
 				3E8A05CB1ECE68E80032231C /* Animate3DGraphic.storyboard in Resources */,
 				3ED5EB771B752A42009F9B75 /* style.css in Resources */,
@@ -3721,6 +3738,7 @@
 				4C85044920F4239600E37F43 /* SceneLayerSelectionViewController.swift in Sources */,
 				3E8526391B90D92700690EBD /* BookmarksViewController.swift in Sources */,
 				C7094784215D34BA00BA0969 /* GenerateOfflineMapOverridesViewController.swift in Sources */,
+				C734B1F421C2DDE500E1BE76 /* ClipGeometryViewController.swift in Sources */,
 				3EC39C1E1C9A59B9003F6459 /* DirectionsListViewController.swift in Sources */,
 				3E8D54FC1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift in Sources */,
 				3E6AE3EE1C6D11FD0026E59C /* OfflineRoutingViewController.swift in Sources */,

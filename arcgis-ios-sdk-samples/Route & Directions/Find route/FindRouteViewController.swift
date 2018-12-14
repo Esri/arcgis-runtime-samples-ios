@@ -140,8 +140,7 @@ class FindRouteViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "DirectionsSegue" {
-            let controller = segue.destination as! DirectionsViewController
+        if let controller = segue.destination as? DirectionsViewController {
             controller.directionManeuvers = self.generatedRoute.directionManeuvers
         }
     }

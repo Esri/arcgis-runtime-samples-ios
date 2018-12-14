@@ -123,9 +123,7 @@ class BookmarksViewController: UIViewController, UIAdaptivePresentationControlle
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PopoverSegue" {
-            //get the destination view controller as BookmarksListViewController
-            let controller = segue.destination as! BookmarksListViewController
+        if let controller = segue.destination as? BookmarksListViewController {
             //store a weak reference in order to update the table view when adding new bookmark
             self.bookmarksListVC = controller
             //popover presentation logic

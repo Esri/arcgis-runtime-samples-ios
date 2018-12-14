@@ -19,9 +19,7 @@ protocol TilePackagesListVCDelegate: AnyObject {
     func tilePackagesListViewController(_ tilePackagesListViewController: TilePackagesListViewController, didSelectTPKWithPath path: String)
 }
 
-class TilePackagesListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    @IBOutlet var tableView: UITableView!
+class TilePackagesListViewController: UITableViewController {
     
     weak var delegate: TilePackagesListVCDelegate?
     
@@ -53,11 +51,11 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
     
     // MARK: - UITableViewDataSource
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return self.bundleTPKPaths?.count ?? 0
         } else {
@@ -65,7 +63,7 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TilePackageCell", for: indexPath)
         
         if indexPath.section == 0 {
@@ -77,13 +75,13 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return section == 0 ? "From the bundle" : "From the documents directory"
     }
     
     // MARK: - UITableViewDelegate
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let path: String
         if indexPath.section == 0 {
             path = bundleTPKPaths[indexPath.row]

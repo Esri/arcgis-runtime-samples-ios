@@ -40,8 +40,7 @@ class LocalTiledLayerViewController: UIViewController, TilePackagesListVCDelegat
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "TilePackagesListSegue" {
-            let controller = segue.destination as! TilePackagesListViewController
+        if let controller = segue.destination as? TilePackagesListViewController {
             controller.delegate = self
         }
     }

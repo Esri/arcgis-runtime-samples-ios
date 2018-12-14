@@ -15,20 +15,13 @@
 import UIKit
 import ArcGIS
 
-class BookmarksListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    @IBOutlet weak var tableView: UITableView!
+class BookmarksListViewController: UITableViewController {
     
     //list of bookmarks
     var bookmarks: [AGSBookmark]!
     
     //private property to store selection action for table cell
     private var selectAction: ((AGSViewpoint) -> Void)!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
-    }
     
     //executed for tableview row selection
     func setSelectAction(_ action : @escaping ((AGSViewpoint) -> Void)) {
@@ -37,17 +30,17 @@ class BookmarksListViewController: UIViewController, UITableViewDataSource, UITa
     
     // MARK: - TableView data source
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.bookmarks?.count ?? 0
     }
     
     // MARK: - TableView delegates
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookmarkCell", for: indexPath)
         cell.backgroundColor = .clear
         //get the respective bookmark
@@ -58,12 +51,11 @@ class BookmarksListViewController: UIViewController, UITableViewDataSource, UITa
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let bookmark = self.bookmarks[indexPath.row]
         //execute the closure if it exists
-        if self.selectAction != nil {
-            self.selectAction(bookmark.viewpoint!)
-        }
+        selectAction?(bookmark.viewpoint!)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

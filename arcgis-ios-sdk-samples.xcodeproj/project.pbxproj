@@ -524,12 +524,12 @@
 		C793B5E92166BB71000A7A10 /* OpenStreetMapLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C793B5E72166BB71000A7A10 /* OpenStreetMapLayerViewController.swift */; };
 		C793B5EA2166BB71000A7A10 /* OpenStreetMapLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C793B5E82166BB71000A7A10 /* OpenStreetMapLayer.storyboard */; };
 		C793B5EB2166BC90000A7A10 /* OpenStreetMapLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C793B5E72166BB71000A7A10 /* OpenStreetMapLayerViewController.swift */; };
-		C7AF466521B1DCD60050CC49 /* SyncMapAndSceneViewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AF466321B1DCD60050CC49 /* SyncMapAndSceneViewsViewController.swift */; };
-		C7AF466621B1DCD60050CC49 /* SyncMapAndSceneViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7AF466421B1DCD60050CC49 /* SyncMapAndSceneViews.storyboard */; };
-		C7AF466721B1E34C0050CC49 /* SyncMapAndSceneViewsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7AF466321B1DCD60050CC49 /* SyncMapAndSceneViewsViewController.swift */; };
 		C7AF465F21B1C8AC0050CC49 /* ChangeAtmosphereEffect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7AF465D21B1C8AC0050CC49 /* ChangeAtmosphereEffect.storyboard */; };
 		C7AF466021B1C8AC0050CC49 /* ChangeAtmosphereEffectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AF465E21B1C8AC0050CC49 /* ChangeAtmosphereEffectViewController.swift */; };
 		C7AF466121B1D14B0050CC49 /* ChangeAtmosphereEffectViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7AF465E21B1C8AC0050CC49 /* ChangeAtmosphereEffectViewController.swift */; };
+		C7AF466521B1DCD60050CC49 /* SyncMapAndSceneViewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AF466321B1DCD60050CC49 /* SyncMapAndSceneViewsViewController.swift */; };
+		C7AF466621B1DCD60050CC49 /* SyncMapAndSceneViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7AF466421B1DCD60050CC49 /* SyncMapAndSceneViews.storyboard */; };
+		C7AF466721B1E34C0050CC49 /* SyncMapAndSceneViewsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7AF466321B1DCD60050CC49 /* SyncMapAndSceneViewsViewController.swift */; };
 		C7B29EBE218B8FEA004E5DE4 /* OpenMapURLSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B29EBD218B8FEA004E5DE4 /* OpenMapURLSettingsViewController.swift */; };
 		C7B29EBF218B90F6004E5DE4 /* OpenMapURLSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7B29EBD218B8FEA004E5DE4 /* OpenMapURLSettingsViewController.swift */; };
 		C7BE9C4F219F4FE0003A03D2 /* SpatialRelationshipsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BE9C4E219F4FE0003A03D2 /* SpatialRelationshipsTableViewController.swift */; };
@@ -1207,10 +1207,10 @@
 		C793B5E121667580000A7A10 /* esri_test_data.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; path = esri_test_data.kmz; sourceTree = "<group>"; };
 		C793B5E72166BB71000A7A10 /* OpenStreetMapLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenStreetMapLayerViewController.swift; sourceTree = "<group>"; };
 		C793B5E82166BB71000A7A10 /* OpenStreetMapLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OpenStreetMapLayer.storyboard; sourceTree = "<group>"; };
-		C7AF466321B1DCD60050CC49 /* SyncMapAndSceneViewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncMapAndSceneViewsViewController.swift; sourceTree = "<group>"; };
-		C7AF466421B1DCD60050CC49 /* SyncMapAndSceneViews.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SyncMapAndSceneViews.storyboard; sourceTree = "<group>"; };
 		C7AF465D21B1C8AC0050CC49 /* ChangeAtmosphereEffect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChangeAtmosphereEffect.storyboard; sourceTree = "<group>"; };
 		C7AF465E21B1C8AC0050CC49 /* ChangeAtmosphereEffectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeAtmosphereEffectViewController.swift; sourceTree = "<group>"; };
+		C7AF466321B1DCD60050CC49 /* SyncMapAndSceneViewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncMapAndSceneViewsViewController.swift; sourceTree = "<group>"; };
+		C7AF466421B1DCD60050CC49 /* SyncMapAndSceneViews.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SyncMapAndSceneViews.storyboard; sourceTree = "<group>"; };
 		C7B29EBD218B8FEA004E5DE4 /* OpenMapURLSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMapURLSettingsViewController.swift; sourceTree = "<group>"; };
 		C7BE9C4E219F4FE0003A03D2 /* SpatialRelationshipsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatialRelationshipsTableViewController.swift; sourceTree = "<group>"; };
 		C7D0EED8215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayKMLNetworkLinksViewController.swift; sourceTree = "<group>"; };
@@ -2216,9 +2216,9 @@
 		3EC39C3D1C9B4754003F6459 /* Offline edit and sync */ = {
 			isa = PBXGroup;
 			children = (
+				3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */,
 				3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */,
 				3EC39C401C9B4857003F6459 /* FeatureLayersViewController.swift */,
-				3EC39C421C9B4872003F6459 /* OfflineEditing.storyboard */,
 			);
 			path = "Offline edit and sync";
 			sourceTree = "<group>";
@@ -2995,15 +2995,6 @@
 			path = "OpenStreetMap layer";
 			sourceTree = "<group>";
 		};
-		C7AF466221B1DC500050CC49 /* Sync map and scene views */ = {
-			isa = PBXGroup;
-			children = (
-				C7AF466421B1DCD60050CC49 /* SyncMapAndSceneViews.storyboard */,
-				C7AF466321B1DCD60050CC49 /* SyncMapAndSceneViewsViewController.swift */,
-			);
-			path = "Sync map and scene views";
-			sourceTree = "<group>";
-		};
 		C7AF465C21B1C84A0050CC49 /* Change atmosphere effect */ = {
 			isa = PBXGroup;
 			children = (
@@ -3011,6 +3002,15 @@
 				C7AF465E21B1C8AC0050CC49 /* ChangeAtmosphereEffectViewController.swift */,
 			);
 			path = "Change atmosphere effect";
+			sourceTree = "<group>";
+		};
+		C7AF466221B1DC500050CC49 /* Sync map and scene views */ = {
+			isa = PBXGroup;
+			children = (
+				C7AF466421B1DCD60050CC49 /* SyncMapAndSceneViews.storyboard */,
+				C7AF466321B1DCD60050CC49 /* SyncMapAndSceneViewsViewController.swift */,
+			);
+			path = "Sync map and scene views";
 			sourceTree = "<group>";
 		};
 		C7D0EED7215EA56E00ECDD2C /* Display KML network links */ = {

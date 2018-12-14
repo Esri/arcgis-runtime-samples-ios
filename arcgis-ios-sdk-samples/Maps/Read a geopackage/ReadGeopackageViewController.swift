@@ -59,8 +59,7 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
     // MARK: - Segue to and from the Layer Control viewcontroller.
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "LayersSegue",
-            let gpkgLayersVC = segue.destination as? GPKGLayersViewController {
+        if let gpkgLayersVC = segue.destination as? GPKGLayersViewController {
             // Provide the map and all layers to the layer controller UI.
             gpkgLayersVC.map = mapView.map
             gpkgLayersVC.allLayers = allLayers

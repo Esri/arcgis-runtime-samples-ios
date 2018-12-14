@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FzM-2V-EQz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FzM-2V-EQz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--Read Geopackage View Controller-->
         <scene sceneID="Up0-T1-XQd">
             <objects>
-                <viewController id="FzM-2V-EQz" customClass="ReadGeopackageViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FzM-2V-EQz" customClass="ReadGeopackageViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LjG-Av-qXX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,7 +31,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="0Ns-WL-avp"/>
                                     <barButtonItem title="Manage Geopackage Layers" id="MnU-iW-y5n">
                                         <connections>
-                                            <segue destination="oe0-Xg-vZM" kind="popoverPresentation" identifier="LayersSegue" popoverAnchorBarButtonItem="MnU-iW-y5n" id="2ug-el-fJc">
+                                            <segue destination="OWX-qD-jbh" kind="popoverPresentation" popoverAnchorBarButtonItem="MnU-iW-y5n" id="Y93-aS-VQj">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
@@ -68,69 +68,33 @@
             </objects>
             <point key="canvasLocation" x="-494" y="-195"/>
         </scene>
-        <!--Geopackage Layers-->
-        <scene sceneID="w3p-Zf-WgD">
+        <!--Layers View Controller-->
+        <scene sceneID="0a6-en-TCN">
             <objects>
-                <viewController id="oe0-Xg-vZM" customClass="GPKGLayersViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Rft-BM-iyU">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                <tableViewController id="OWX-qD-jbh" customClass="GPKGLayersViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="S4f-PP-p3i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="l9u-Fn-8ss">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GPKGLayersCell" id="K7b-hD-pnh" customClass="GPKGLayerTableCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="22" width="300" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K7b-hD-pnh" id="bUp-MK-9FT">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GPKGRemovedLayersCell" id="Bdv-0V-GEr" customClass="GPKGLayerTableCell" customModule="arcgis_ios_sdk_samples" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="66" width="300" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bdv-0V-GEr" id="dUR-W3-RGG">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="oe0-Xg-vZM" id="rfO-zP-NKZ"/>
-                                    <outlet property="delegate" destination="oe0-Xg-vZM" id="UlI-Fl-hvY"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="l9u-Fn-8ss" firstAttribute="top" secondItem="Rft-BM-iyU" secondAttribute="top" id="Q9e-XH-asd"/>
-                            <constraint firstItem="9Hh-fh-fT6" firstAttribute="trailing" secondItem="l9u-Fn-8ss" secondAttribute="trailing" id="Rwq-CK-WtK"/>
-                            <constraint firstAttribute="bottom" secondItem="l9u-Fn-8ss" secondAttribute="bottom" id="f6z-2e-zSk"/>
-                            <constraint firstItem="l9u-Fn-8ss" firstAttribute="leading" secondItem="9Hh-fh-fT6" secondAttribute="leading" id="nsN-Az-2Xl"/>
-                            <constraint firstItem="l9u-Fn-8ss" firstAttribute="top" secondItem="9Hh-fh-fT6" secondAttribute="top" id="z07-Sd-byo"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="9Hh-fh-fT6"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="z07-Sd-byo"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <navigationItem key="navigationItem" title="Geopackage Layers" id="o7Y-Oo-Q0F">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="gxa-RV-5pj"/>
-                    </navigationItem>
-                    <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="300"/>
-                    <connections>
-                        <outlet property="tableView" destination="l9u-Fn-8ss" id="nfV-LO-ikb"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ohQ-v1-BMz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GPKGLayersCell" id="K7b-hD-pnh" customClass="GPKGLayerTableCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K7b-hD-pnh" id="bUp-MK-9FT">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="OWX-qD-jbh" id="Evq-J1-rNL"/>
+                            <outlet property="delegate" destination="OWX-qD-jbh" id="2fE-7t-Lxc"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="luM-CF-dqO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="401" y="-188"/>
+            <point key="canvasLocation" x="314" y="-196"/>
         </scene>
     </scenes>
 </document>

@@ -1240,6 +1240,14 @@
 				<string>This sample demonstrates how to identify geoelements in a scene layer.</string>
 			</dict>
 			<dict>
+				<key>displayName</key>
+				<string>Sync map and scene views</string>
+				<key>storyboardName</key>
+				<string>SyncMapAndSceneViews</string>
+				<key>descriptionText</key>
+				<string>Demonstrates how to keep the viewpoints of two map or scene views in sync with each other.</string>
+			</dict>
+			<dict>
 				<key>descriptionText</key>
 				<string>Change the appearance of the atmosphere in a scene.</string>
 				<key>storyboardName</key>

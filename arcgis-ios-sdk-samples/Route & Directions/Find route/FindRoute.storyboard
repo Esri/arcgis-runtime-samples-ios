@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hxJ-u5-xSg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hxJ-u5-xSg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--Find Route View Controller-->
         <scene sceneID="U6K-2G-Ysp">
             <objects>
-                <viewController id="hxJ-u5-xSg" customClass="FindRouteViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hxJ-u5-xSg" customClass="FindRouteViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cuz-tT-dx6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,7 +33,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="1jB-cq-7pQ"/>
                                     <barButtonItem enabled="NO" image="DirectionsList" id="6RB-xr-fpj">
                                         <connections>
-                                            <segue destination="Qje-Qg-2FG" kind="show" identifier="DirectionsSegue" id="5Mg-hM-lHB"/>
+                                            <segue destination="PuY-V9-yyC" kind="show" identifier="DirectionsSegue" id="NQ0-rf-TNq"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -66,49 +66,36 @@
             </objects>
             <point key="canvasLocation" x="1133" y="640"/>
         </scene>
-        <!--Directions View Controller-->
-        <scene sceneID="x57-8W-Jxt">
+        <!--Directions-->
+        <scene sceneID="p9r-HD-BUA">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Qje-Qg-2FG" customClass="DirectionsViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="j12-XH-Ari">
+                <tableViewController title="Directions" id="PuY-V9-yyC" customClass="DirectionsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Yn7-OJ-h1K">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Drx-b2-tLb">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DirectionsCell" id="cYL-Ib-dqo">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cYL-Ib-dqo" id="TzM-s1-jKF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="Qje-Qg-2FG" id="pKA-ye-HcI"/>
-                                    <outlet property="delegate" destination="Qje-Qg-2FG" id="xBk-dX-utP"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Drx-b2-tLb" secondAttribute="bottom" id="F4f-NC-kef"/>
-                            <constraint firstItem="Drx-b2-tLb" firstAttribute="leading" secondItem="j12-XH-Ari" secondAttribute="leading" id="Vk3-9d-SUw"/>
-                            <constraint firstItem="Drx-b2-tLb" firstAttribute="top" secondItem="ozA-6c-fBN" secondAttribute="top" id="bmW-3e-ZwP"/>
-                            <constraint firstAttribute="trailing" secondItem="Drx-b2-tLb" secondAttribute="trailing" id="upR-fi-la5"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="ozA-6c-fBN"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3kH-ul-rlN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DirectionsCell" id="cYL-Ib-dqo">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cYL-Ib-dqo" id="TzM-s1-jKF">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PuY-V9-yyC" id="Ykt-z9-8io"/>
+                            <outlet property="delegate" destination="PuY-V9-yyC" id="kG0-1Y-ES2"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DOE-G5-V7S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1831" y="640"/>
+            <point key="canvasLocation" x="1871" y="639"/>
         </scene>
     </scenes>
     <resources>
-        <image name="DirectionsList" width="22" height="22"/>
+        <image name="DirectionsList" width="44" height="44"/>
     </resources>
 </document>

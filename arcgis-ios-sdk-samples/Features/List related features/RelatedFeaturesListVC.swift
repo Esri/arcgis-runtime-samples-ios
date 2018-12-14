@@ -15,10 +15,7 @@
 import UIKit
 import ArcGIS
 
-class RelatedFeaturesListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet var label: UILabel!
+class RelatedFeaturesListVC: UITableViewController {
     
     //results required for display
     var results: [AGSRelatedFeatureQueryResult]!
@@ -27,7 +24,7 @@ class RelatedFeaturesListVC: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         
         if let result = results?.first {
-            self.label.text = result.feature?.attributes["UNIT_NAME"] as? String ?? "Origin Feature"
+            title = result.feature?.attributes["UNIT_NAME"] as? String ?? "Origin Feature"
         }
         
         self.tableView.rowHeight = UITableView.automaticDimension
@@ -36,11 +33,11 @@ class RelatedFeaturesListVC: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: - UITableViewDataSource
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return self.results?.count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         let result = self.results[section]
         if let tableName = result.relatedTable?.tableName {
@@ -50,12 +47,12 @@ class RelatedFeaturesListVC: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let result = results[section]
         return result.featureEnumerator().allObjects.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let result = self.results[indexPath.section]
         let feature = result.featureEnumerator().allObjects[indexPath.row]
@@ -70,7 +67,7 @@ class RelatedFeaturesListVC: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
     
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = .white
     }
 

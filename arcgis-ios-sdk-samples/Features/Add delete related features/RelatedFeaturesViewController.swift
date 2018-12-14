@@ -17,11 +17,8 @@
 import UIKit
 import ArcGIS
 
-class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class RelatedFeaturesViewController: UITableViewController {
 
-    @IBOutlet private var tableView: UITableView!
-    @IBOutlet private var featureLabel: UILabel!
-    
     var originFeature: AGSArcGISFeature!
     var originFeatureTable: AGSServiceFeatureTable!
     
@@ -35,7 +32,7 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         self.queryRelatedFeatures()
         
         //Displaying information on selected park using the field UNIT_NAME, name of the park
-        self.featureLabel.text = self.originFeature.attributes["UNIT_NAME"] as? String ?? "Origin Feature"
+        self.title = self.originFeature.attributes["UNIT_NAME"] as? String ?? "Origin Feature"
     }
     
     private func queryRelatedFeatures() {
@@ -159,11 +156,11 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
     
     // MARK: - UITableViewDataSource
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.relatedFeatures?.count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "RelatedFeatureCell", for: indexPath)
         
@@ -175,9 +172,13 @@ class RelatedFeaturesViewController: UIViewController, UITableViewDataSource, UI
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Related Features (Species)"
+    }
+    
     // MARK: - UITableViewDelegate
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
             

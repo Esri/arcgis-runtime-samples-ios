@@ -111,8 +111,10 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == self.optionsSegueName {
-            let controller = segue.destination as! EAOptionsViewController
+        if segue.identifier == self.optionsSegueName,
+            let navController = segue.destination as? UINavigationController,
+            let controller = navController.viewControllers.first as? EAOptionsViewController {
+            
             controller.options = self.types
             controller.delegate = self
         }

@@ -35,9 +35,7 @@
                     <navigationItem key="navigationItem" id="9Z5-ly-HC8"/>
                     <connections>
                         <outlet property="mapView" destination="C5z-Rg-ePU" id="EWn-Mc-4cM"/>
-                        <segue destination="LRS-We-yMb" kind="popoverPresentation" identifier="RelatedFeaturesSegue" popoverAnchorView="C5z-Rg-ePU" id="62M-X6-XgU">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES"/>
-                        </segue>
+                        <segue destination="LRS-We-yMb" kind="presentation" identifier="RelatedFeaturesSegue" modalPresentationStyle="formSheet" id="62M-X6-XgU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sIR-r3-Iuj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -77,7 +75,13 @@
                             <outlet property="delegate" destination="pJo-lp-fwM" id="b6Q-eN-zMb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="u9O-ET-UAV"/>
+                    <navigationItem key="navigationItem" id="u9O-ET-UAV">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="m3s-mV-XgA">
+                            <connections>
+                                <action selector="doneAction:" destination="pJo-lp-fwM" id="mXK-WB-vgK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EYv-gx-opx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

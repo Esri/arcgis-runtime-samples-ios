@@ -18,16 +18,10 @@ protocol EAOptionsVCDelegate: AnyObject {
     func optionsViewController(_ optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int)
 }
 
-class EAOptionsViewController: UITableViewController, UIBarPositioningDelegate {
+class EAOptionsViewController: UITableViewController {
     
     var options: [String]!
     weak var delegate: EAOptionsVCDelegate!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-    }
     
     // MARK: - Table view data source
     
@@ -60,9 +54,4 @@ class EAOptionsViewController: UITableViewController, UIBarPositioningDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-    // MARK: - UIBarPositioningDelegate
-    
-    func position(for bar: UIBarPositioning) -> UIBarPosition {
-        return .topAttached
-    }
 }

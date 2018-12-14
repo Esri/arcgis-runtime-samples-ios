@@ -26,9 +26,6 @@ class RelatedFeaturesListVC: UITableViewController {
         if let result = results?.first {
             title = result.feature?.attributes["UNIT_NAME"] as? String ?? "Origin Feature"
         }
-        
-        self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.estimatedRowHeight = 44
     }
     
     // MARK: - UITableViewDataSource
@@ -70,5 +67,11 @@ class RelatedFeaturesListVC: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = .white
     }
-
+    
+    // MARK: - Actions
+    
+    @IBAction func doneAction(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
+    
 }

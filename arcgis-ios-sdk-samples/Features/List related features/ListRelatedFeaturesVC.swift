@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopoverPresentationControllerDelegate {
+class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
 
     @IBOutlet var mapView: AGSMapView!
     
@@ -161,20 +161,8 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
             
             //set results from related features query
             controller.results = self.results
-
-            //other settings for popover
-            navController.popoverPresentationController?.sourceView = self.mapView
-            navController.popoverPresentationController?.sourceRect = CGRect(origin: self.screenPoint, size: CGSize.zero)
-            navController.popoverPresentationController?.delegate = self
         }
      }
-    
-    // MARK: - UIPopoverPresentationControllerDelegate
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        
-        return UIModalPresentationStyle.none
-    }
     
     //to hide popover controller on rotation
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

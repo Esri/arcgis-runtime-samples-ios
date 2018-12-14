@@ -27,7 +27,6 @@ class OfflineEditingViewController: UIViewController {
     @IBOutlet var barButtonItem: UIBarButtonItem!
     @IBOutlet var syncBBI: UIBarButtonItem!
     @IBOutlet var instructionsLabel: UILabel!
-    @IBOutlet var featureLayersContainerView: UIView!
     
     private var sketchEditor: AGSSketchEditor?
     private let featureServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
@@ -37,7 +36,6 @@ class OfflineEditingViewController: UIViewController {
     private var generateJob: AGSGenerateGeodatabaseJob?
     private var syncJob: AGSSyncGeodatabaseJob?
     private var popupsVC: AGSPopupsViewController?
-    private var featureLayersVC: FeatureLayersViewController?
     
     private var liveMode = true {
         didSet {
@@ -121,7 +119,7 @@ class OfflineEditingViewController: UIViewController {
         if liveMode {
             serviceModeToolbar.isHidden = false
             instructionsLabel.isHidden = true
-            barButtonItem.title = "Generate geodatabase"
+            barButtonItem.title = "Generate Geodatabase"
         } else {
             serviceModeToolbar.isHidden = true
             updateLabelWithEdits()
@@ -252,8 +250,8 @@ class OfflineEditingViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func generateGeodatabaseAction() {
-        if barButtonItem.title == "Generate geodatabase" {
+    @IBAction func generateGeodatabaseAction(_ sender: UIBarButtonItem) {
+        if sender.title == "Generate Geodatabase" {
             //show the instructions label and update the text
             instructionsLabel.isHidden = false
             instructionsLabel.text = "Choose an extent by keeping the desired area within the shown block"
@@ -262,40 +260,9 @@ class OfflineEditingViewController: UIViewController {
             extentView.isHidden = false
             
             //update to done button
-            barButtonItem.title = "Done"
-        } else if barButtonItem.title == "Done" {
-            //hide extent view
-            extentView.isHidden = true
-            
-            //update the instructions label
-            instructionsLabel.text = "Select the feature layers to be included"
-            
-            //show options to pick layers
-            featureLayersContainerView.isHidden = false
-            
-            //update to download button
-            barButtonItem.title = "Download"
-            
-            featureLayersVC?.featureLayerInfos = syncTask?.featureServiceInfo?.layerInfos ?? []
-        } else {
-            
-            guard let featureLayersVC = featureLayersVC else {
-                return
-            }
-            
-            //get selected layer ids
-            let selectedLayerIds = featureLayersVC.selectedLayerInfos.map { $0.id }
-            
-            if selectedLayerIds.isEmpty {
-                presentAlert(message: "Please select at least one layer")
-                return
-            }
-            
-            //hide featureLayersVC
-            featureLayersContainerView.isHidden = true
-            
-            //generate a geodatabase
-            generateGeodatabase(selectedLayerIds, extent: frameToExtent())
+            sender.title = "Done"
+        } else if sender.title == "Done" {
+            performSegue(withIdentifier: "FeatureLayersSegue", sender: self)
         }
     }
     
@@ -433,8 +400,16 @@ class OfflineEditingViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "FeatureLayersVCSegue" {
-            featureLayersVC = segue.destination as? FeatureLayersViewController
+        if let navController = segue.destination as? UINavigationController,
+            let featureLayerController = navController.viewControllers.first as? FeatureLayersViewController {
+            featureLayerController.featureLayerInfos = syncTask?.featureServiceInfo?.layerInfos ?? []
+            featureLayerController.onCompletion = { [weak self] selectedLayerIDs in
+                //hide extent view
+                self?.extentView.isHidden = true
+                if let extent = self?.frameToExtent() {
+                    self?.generateGeodatabase(selectedLayerIDs, extent: extent)
+                }
+            }
         }
     }
     

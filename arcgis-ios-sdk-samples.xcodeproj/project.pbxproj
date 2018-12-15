@@ -157,9 +157,9 @@
 		3E5E09381EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5E09361EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift */; };
 		3E5E09391EF2F5ED00FF3454 /* GenerateOfflineMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5E09361EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift */; };
 		3E5E093E1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5E093B1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard */; };
-		3E5E093F1EF4567A00FF3454 /* AddDeleteRelatedFeaturesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5E093C1EF4567A00FF3454 /* AddDeleteRelatedFeaturesVC.swift */; };
+		3E5E093F1EF4567A00FF3454 /* AddDeleteRelatedFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5E093C1EF4567A00FF3454 /* AddDeleteRelatedFeaturesViewController.swift */; };
 		3E5E09401EF4567A00FF3454 /* RelatedFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5E093D1EF4567A00FF3454 /* RelatedFeaturesViewController.swift */; };
-		3E5E09411EF470DB00FF3454 /* AddDeleteRelatedFeaturesVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5E093C1EF4567A00FF3454 /* AddDeleteRelatedFeaturesVC.swift */; };
+		3E5E09411EF470DB00FF3454 /* AddDeleteRelatedFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5E093C1EF4567A00FF3454 /* AddDeleteRelatedFeaturesViewController.swift */; };
 		3E5E09421EF470DB00FF3454 /* RelatedFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5E093D1EF4567A00FF3454 /* RelatedFeaturesViewController.swift */; };
 		3E5E094D1EF850BA00FF3454 /* ManageSublayers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5E094A1EF850BA00FF3454 /* ManageSublayers.storyboard */; };
 		3E5E094E1EF850BA00FF3454 /* ManageSublayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5E094B1EF850BA00FF3454 /* ManageSublayersViewController.swift */; };
@@ -692,7 +692,7 @@
 				21C9968C1F05BB4D00A062F7 /* DisplayGridSettingsViewController.swift in CopyFiles */,
 				21C9968D1F05BB4D00A062F7 /* DisplayGridViewController.swift in CopyFiles */,
 				3E5E09391EF2F5ED00FF3454 /* GenerateOfflineMapViewController.swift in CopyFiles */,
-				3E5E09411EF470DB00FF3454 /* AddDeleteRelatedFeaturesVC.swift in CopyFiles */,
+				3E5E09411EF470DB00FF3454 /* AddDeleteRelatedFeaturesViewController.swift in CopyFiles */,
 				3E5E09421EF470DB00FF3454 /* RelatedFeaturesViewController.swift in CopyFiles */,
 				3EA15C771ED8A52300B1F816 /* ChangeSublayerRendererVC.swift in CopyFiles */,
 				3E5E09501EF8528600FF3454 /* ManageSublayersViewController.swift in CopyFiles */,
@@ -950,7 +950,7 @@
 		3E5E09351EF2E8E200FF3454 /* GenerateOfflineMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GenerateOfflineMap.storyboard; sourceTree = "<group>"; };
 		3E5E09361EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateOfflineMapViewController.swift; sourceTree = "<group>"; };
 		3E5E093B1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddDeleteRelatedFeatures.storyboard; sourceTree = "<group>"; };
-		3E5E093C1EF4567A00FF3454 /* AddDeleteRelatedFeaturesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeleteRelatedFeaturesVC.swift; sourceTree = "<group>"; };
+		3E5E093C1EF4567A00FF3454 /* AddDeleteRelatedFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeleteRelatedFeaturesViewController.swift; sourceTree = "<group>"; };
 		3E5E093D1EF4567A00FF3454 /* RelatedFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedFeaturesViewController.swift; sourceTree = "<group>"; };
 		3E5E094A1EF850BA00FF3454 /* ManageSublayers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ManageSublayers.storyboard; sourceTree = "<group>"; };
 		3E5E094B1EF850BA00FF3454 /* ManageSublayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageSublayersViewController.swift; sourceTree = "<group>"; };
@@ -1817,7 +1817,7 @@
 			isa = PBXGroup;
 			children = (
 				3E5E093B1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard */,
-				3E5E093C1EF4567A00FF3454 /* AddDeleteRelatedFeaturesVC.swift */,
+				3E5E093C1EF4567A00FF3454 /* AddDeleteRelatedFeaturesViewController.swift */,
 				3E5E093D1EF4567A00FF3454 /* RelatedFeaturesViewController.swift */,
 			);
 			path = "Add delete related features";
@@ -3817,7 +3817,7 @@
 				3E8A05CD1ECE68E80032231C /* CameraSettingsViewController.swift in Sources */,
 				3EC39C371C9B1ADA003F6459 /* AGSExtensions.swift in Sources */,
 				3E3B2C1F1BBCA37F00A99C5E /* ContentCollectionViewController.swift in Sources */,
-				3E5E093F1EF4567A00FF3454 /* AddDeleteRelatedFeaturesVC.swift in Sources */,
+				3E5E093F1EF4567A00FF3454 /* AddDeleteRelatedFeaturesViewController.swift in Sources */,
 				3ED5EB751B740A58009F9B75 /* SegmentedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -208,17 +208,14 @@ class ContentTableViewController: UITableViewController {
 
 }
 
-// MARK: - DownloadProgressViewDelegate
 extension ContentTableViewController: DownloadProgressViewDelegate {
-
-    func downloadProgressViewDidCancel(downloadProgressView: DownloadProgressView) {
+    func downloadProgressViewDidCancel(_ downloadProgressView: DownloadProgressView) {
         guard let bundleResourceRequest = bundleResourceRequest else {
             return
         }
         bundleResourceRequest.progress.cancel()
         bundleResourceRequest.endAccessingResources()
     }
-
 }
 
 extension ContentTableViewController: UISearchResultsUpdating {

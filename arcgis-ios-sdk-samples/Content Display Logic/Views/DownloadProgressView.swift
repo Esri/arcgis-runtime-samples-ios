@@ -1,17 +1,23 @@
 //
-//  DownloadProgressView.swift
-//  MapViewDemo-Swift
+// Copyright © 2017 Esri.
 //
-//  Created by Gagandeep Singh on 3/23/17.
-//  Copyright © 2017 Esri. All rights reserved.
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 //
 
 import UIKit
 
-@objc protocol DownloadProgressViewDelegate: AnyObject {
-    
-    @objc
-    optional func downloadProgressViewDidCancel(downloadProgressView: DownloadProgressView)
+protocol DownloadProgressViewDelegate: AnyObject {
+    func downloadProgressViewDidCancel(_ downloadProgressView: DownloadProgressView)
 }
 
 class DownloadProgressView: UIView {
@@ -126,7 +132,7 @@ class DownloadProgressView: UIView {
     @IBAction private func cancelAction() {
         
         self.dismiss()
-        self.delegate?.downloadProgressViewDidCancel?(downloadProgressView: self)
+        self.delegate?.downloadProgressViewDidCancel(self)
     }
     
     func updateProgress(progress: CGFloat, animated: Bool) {

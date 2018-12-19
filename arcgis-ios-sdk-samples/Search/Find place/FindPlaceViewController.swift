@@ -15,11 +15,6 @@
 import UIKit
 import ArcGIS
 
-enum SuggestionType {
-    case poi
-    case populatedPlace
-}
-
 class FindPlaceViewController: UIViewController {
     
     @IBOutlet var mapView: AGSMapView!
@@ -195,6 +190,11 @@ class FindPlaceViewController: UIViewController {
     }
     
     // MARK: - Suggestions logic
+    
+    enum SuggestionType {
+        case poi
+        case populatedPlace
+    }
     
     private func fetchSuggestions(_ string: String, suggestionType: SuggestionType, textField: UITextField) {
         //cancel previous requests

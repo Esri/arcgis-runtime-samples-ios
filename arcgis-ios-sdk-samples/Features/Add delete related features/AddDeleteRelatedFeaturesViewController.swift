@@ -17,14 +17,13 @@
 import UIKit
 import ArcGIS
 
-class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
+class AddDeleteRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
 
     @IBOutlet var mapView: AGSMapView!
     
     private var parksFeatureTable: AGSServiceFeatureTable!
     private var speciesFeatureTable: AGSServiceFeatureTable!
     private var parksFeatureLayer: AGSFeatureLayer!
-    private var relatedFeatures: [AGSFeature]!
     
     private var selectedPark: AGSFeature!
     
@@ -32,7 +31,7 @@ class AddDeleteRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, AGS
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["AddDeleteRelatedFeaturesVC", "RelatedFeaturesViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["AddDeleteRelatedFeaturesViewController", "RelatedFeaturesViewController"]
 
         //initialize map with basemap
         let map = AGSMap(basemap: .streets())

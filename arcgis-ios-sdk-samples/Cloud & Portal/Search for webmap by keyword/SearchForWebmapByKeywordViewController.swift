@@ -28,9 +28,6 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
     
     private var lastQueryCancelable: AGSCancelable?
     
-    // strong reference needed for iOS 10
-    private var searchController: UISearchController?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,9 +39,10 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
     
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SearchForWebmapByKeywordViewController", "WebMapCell", "WebMapViewController"]
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if searchController == nil {
+        if navigationItem.searchController == nil {
             addSearchController()
         }
     }
@@ -57,8 +55,6 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         // send search query updates to the results controller
         searchController.searchResultsUpdater = self
-        // retain a strong reference for iOS 10
-        self.searchController = searchController
         
         let searchBar = searchController.searchBar
         searchBar.autocapitalizationType = .none

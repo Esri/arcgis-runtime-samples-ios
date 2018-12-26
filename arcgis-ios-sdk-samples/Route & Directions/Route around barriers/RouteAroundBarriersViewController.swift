@@ -39,7 +39,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         didSet {
             let flag = generatedRoute != nil
             self.directionsListBBI.isEnabled = flag
-            self.setRouteDetailsVisibility(visible: flag)
+            self.setRouteDetailsVisibility(visible: flag, animated: true)
             self.directionsListViewController.route = generatedRoute
         }
     }
@@ -67,8 +67,15 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         //get default parameters
         self.getDefaultParameters()
         
+//        //hide directions list
+//        self.setRouteDetailsVisibility(visible: false)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         //hide directions list
-        self.setRouteDetailsVisibility(visible: false)
+        self.setRouteDetailsVisibility(visible: generatedRoute != nil, animated: false)
     }
 
     // MARK: - Route logic
@@ -216,10 +223,11 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         )
     }
     
-    func setRouteDetailsVisibility(visible: Bool) {
+    func setRouteDetailsVisibility(visible: Bool, animated: Bool) {
         self.directionsBottomConstraint.constant = visible ? -115 : -150
+        let duration: TimeInterval = animated ? 0.3 : 0
         UIView.animate(
-            withDuration: 0.3,
+            withDuration: duration,
             animations: { [weak self] in
                 self?.view.layoutIfNeeded()
             },

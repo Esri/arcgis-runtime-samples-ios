@@ -1271,6 +1271,14 @@
 				<key>displayName</key>
 				<string>Change atmosphere effect</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Calculate 3D distance</string>
+				<key>descriptionText</key>
+				<string>Shows how to calculate the 3D distance between two graphics.</string>
+				<key>storyboardName</key>
+				<string>Calculate3DDistance</string>
+			</dict>
 		</array>
 	</dict>
 </array>

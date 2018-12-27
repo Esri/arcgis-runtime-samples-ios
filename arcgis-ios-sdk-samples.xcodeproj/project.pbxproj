@@ -473,6 +473,10 @@
 		4C1A7C2121D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */; };
 		4C1A7C2321D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2221D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift */; };
 		4C1A7C2621D4083300E16E94 /* mil2525d.stylx in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2521D4082400E16E94 /* mil2525d.stylx */; };
+		4C1A7C2C21D412B800E16E94 /* Calculate3DDistance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2B21D412B800E16E94 /* Calculate3DDistance.storyboard */; };
+		4C1A7C2E21D412CE00E16E94 /* Calculate3DDistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2D21D412CE00E16E94 /* Calculate3DDistanceViewController.swift */; };
+		4C1A7C3021D412FA00E16E94 /* Calculate3DDistanceViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2F21D412FA00E16E94 /* Calculate3DDistanceViewControllerTests.swift */; };
+		4C1A7C3421D56F1A00E16E94 /* Calculate3DDistanceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C1A7C2D21D412CE00E16E94 /* Calculate3DDistanceViewController.swift */; };
 		4C2B52D720D2C3180071EBB6 /* DistanceMeasurementAnalysisViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */; };
 		4C41B2EE211A617700EEA81E /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C41B2ED211A617700EEA81E /* Sample.swift */; };
 		4C66AAF72107C4F400EE6346 /* QueryMapImageSublayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */; };
@@ -838,6 +842,7 @@
 				4C0F27B42152CB1200496666 /* IdentifyKMLFeaturesViewController.swift in CopyFiles */,
 				4CECF8CD21DD86D400A56161 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in CopyFiles */,
 				4CECF8A621D5930400A56161 /* SetMinMaxScaleViewController.swift in CopyFiles */,
+				4C1A7C3421D56F1A00E16E94 /* Calculate3DDistanceViewController.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1180,6 +1185,9 @@
 		4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsOverlayDictionaryRenderer3DViewController.swift; sourceTree = "<group>"; };
 		4C1A7C2221D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift; sourceTree = "<group>"; };
 		4C1A7C2521D4082400E16E94 /* mil2525d.stylx */ = {isa = PBXFileReference; lastKnownFileType = file; path = mil2525d.stylx; sourceTree = "<group>"; };
+		4C1A7C2B21D412B800E16E94 /* Calculate3DDistance.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calculate3DDistance.storyboard; sourceTree = "<group>"; };
+		4C1A7C2D21D412CE00E16E94 /* Calculate3DDistanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculate3DDistanceViewController.swift; sourceTree = "<group>"; };
+		4C1A7C2F21D412FA00E16E94 /* Calculate3DDistanceViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculate3DDistanceViewControllerTests.swift; sourceTree = "<group>"; };
 		4C41B2ED211A617700EEA81E /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
 		4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QueryMapImageSublayer.storyboard; sourceTree = "<group>"; };
 		4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryMapImageSublayerViewController.swift; sourceTree = "<group>"; };
@@ -2728,6 +2736,7 @@
 				4C85044720F4236B00E37F43 /* Scene layer selection */,
 				C7AF466221B1DC500050CC49 /* Sync map and scene views */,
 				C7AF465C21B1C84A0050CC49 /* Change atmosphere effect */,
+				4C1A7C2A21D4129600E16E94 /* Calculate 3D distance */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -2866,6 +2875,7 @@
 		4C0F27B521540B5F00496666 /* Sample Tests */ = {
 			isa = PBXGroup;
 			children = (
+				4C1A7C2F21D412FA00E16E94 /* Calculate3DDistanceViewControllerTests.swift */,
 				4C0F27B621540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift */,
 				4C1A7C2221D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift */,
 				4CECF8A221D5802E00A56161 /* SetMinMaxScaleViewControllerTests.swift */,
@@ -2896,6 +2906,15 @@
 				4CECF8C921DD5C2200A56161 /* Mil2525DMessages.xml */,
 			);
 			path = "Military messages";
+            sourceTree = "<group>";
+        };
+		4C1A7C2A21D4129600E16E94 /* Calculate 3D distance */ = {
+			isa = PBXGroup;
+			children = (
+				4C1A7C2B21D412B800E16E94 /* Calculate3DDistance.storyboard */,
+				4C1A7C2D21D412CE00E16E94 /* Calculate3DDistanceViewController.swift */,
+			);
+			path = "Calculate 3D distance";
 			sourceTree = "<group>";
 		};
 		4C66AAF52107C4BB00EE6346 /* Query a map image sublayer */ = {
@@ -3532,6 +3551,7 @@
 				4C85044B20F423F600E37F43 /* SceneLayerSelection.storyboard in Resources */,
 				3E4BF47E1C5BDDCA00D85919 /* san-diego-locator.locb in Resources */,
 				3EEA06111D21C44000E03774 /* ExtrudeGraphics.storyboard in Resources */,
+				4C1A7C2C21D412B800E16E94 /* Calculate3DDistance.storyboard in Resources */,
 				3EABC7B01DB17B2C00C161C6 /* Shasta.tif.aux.xml in Resources */,
 				F4159C6F20925AAE0016E53D /* OpenScene.storyboard in Resources */,
 				3E4B05F81B39EF250072E514 /* SVProgressHUD.bundle in Resources */,
@@ -3754,6 +3774,7 @@
 				3ED0286D1B8E3A8500ACA70D /* DisplayLocationViewController.swift in Sources */,
 				215E23D421024715001DE092 /* SpatialRelationshipsViewController.swift in Sources */,
 				3ED75D071ED4D913009B1F75 /* ServiceAreaSettingsVC.swift in Sources */,
+				4C1A7C2E21D412CE00E16E94 /* Calculate3DDistanceViewController.swift in Sources */,
 				166E8F9E1EE62E0E00C57C46 /* RasterLayerViewController.swift in Sources */,
 				C7432D3A2187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift in Sources */,
 				3E8A25921D36B97A00D14F08 /* MapLoadedViewController.swift in Sources */,
@@ -3894,6 +3915,7 @@
 			files = (
 				4C1A7C2321D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift in Sources */,
 				4CD2B55F2142EB2600767D87 /* SampleTests.swift in Sources */,
+				4C1A7C3021D412FA00E16E94 /* Calculate3DDistanceViewControllerTests.swift in Sources */,
 				4C0F27B721540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift in Sources */,
 				4CECF8A321D5802E00A56161 /* SetMinMaxScaleViewControllerTests.swift in Sources */,
 				4CD2B5612142F09700767D87 /* CategoryTests.swift in Sources */,
